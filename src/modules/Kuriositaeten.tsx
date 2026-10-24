@@ -37,7 +37,7 @@ export default function Kuriositaeten() {
 
         {/* NAVIGATION FOR REKORDE / KURIOSITÄTEN */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-2 mt-6 p-1.5 bg-slate-100 rounded-xl border border-slate-200" id="curio-navigation">
-          <button
+          <button aria-pressed={activeCurioTab === 'pantheon'}
             onClick={() => setActiveCurioTab('pantheon')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'pantheon'
@@ -49,7 +49,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Pantheon-Kuppel</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'burjkhalifa'}
             onClick={() => setActiveCurioTab('burjkhalifa')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'burjkhalifa'
@@ -61,7 +61,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Burj Khalifa Rheologie</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'eiffel'}
             onClick={() => setActiveCurioTab('eiffel')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'eiffel'
@@ -73,7 +73,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Eiffelturm-Stahl</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'olympia'}
             onClick={() => setActiveCurioTab('olympia')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'olympia'
@@ -85,7 +85,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Olympiadach Seilnetz</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'uhpc'}
             onClick={() => setActiveCurioTab('uhpc')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'uhpc'
@@ -97,7 +97,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">UHPC-Gefüge</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'selfhealing'}
             onClick={() => setActiveCurioTab('selfhealing')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'selfhealing'
@@ -109,7 +109,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Römische Rissheilung</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'reinforcement'}
             onClick={() => setActiveCurioTab('reinforcement')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'reinforcement'
@@ -121,7 +121,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Verbund Monier</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'giantconcrete'}
             onClick={() => setActiveCurioTab('giantconcrete')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'giantconcrete'
@@ -133,7 +133,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Massenbeton Talsperre</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'gotthard'}
             onClick={() => setActiveCurioTab('gotthard')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'gotthard'
@@ -145,7 +145,7 @@ export default function Kuriositaeten() {
             <span className="truncate w-full text-[11px]">Gotthard Spritzbeton</span>
           </button>
 
-          <button
+          <button aria-pressed={activeCurioTab === 'seawater'}
             onClick={() => setActiveCurioTab('seawater')}
             className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
               activeCurioTab === 'seawater'

@@ -868,7 +868,7 @@ export default function Abfaelle() {
                         3. Hydrogeologie (Natürlicher Bodenschutz & Deckschicht)
                       </label>
                       <div className="grid grid-cols-2 gap-2">
-                        <button
+                        <button aria-pressed={ebvGrundwasser === 'deckschicht_ja'}
                           type="button"
                           onClick={() => setEbvGrundwasser('deckschicht_ja')}
                           className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -880,7 +880,7 @@ export default function Abfaelle() {
                           <span className="font-bold">Günstige Deckschicht</span>
                           <span className="text-xs opacity-90 mt-0.5 font-semibold">Lehm/Ton vorhanden, Abstand &gt; 1,5m</span>
                         </button>
-                        <button
+                        <button aria-pressed={ebvGrundwasser === 'deckschicht_nein'}
                           type="button"
                           onClick={() => setEbvGrundwasser('deckschicht_nein')}
                           className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -899,7 +899,7 @@ export default function Abfaelle() {
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold">4. Einbausituation / Bauweise</label>
                       <div className="grid grid-cols-2 gap-2">
-                        <button
+                        <button aria-pressed={ebvEinbauweise === 'versiegelt'}
                           type="button"
                           onClick={() => setEbvEinbauweise('versiegelt')}
                           className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -911,7 +911,7 @@ export default function Abfaelle() {
                           <span className="font-bold">Bautechnische Sicherung</span>
                           <span className="text-xs opacity-90 mt-0.5 font-semibold">Unter dichten Decken (Asphalt/Beton/Pflaster)</span>
                         </button>
-                        <button
+                        <button aria-pressed={ebvEinbauweise === 'offen'}
                           type="button"
                           onClick={() => setEbvEinbauweise('offen')}
                           className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -930,7 +930,7 @@ export default function Abfaelle() {
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold">5. Einbauvolumen (Meldepflicht nach § 22)</label>
                       <div className="grid grid-cols-2 gap-2">
-                        <button
+                        <button aria-pressed={ebvVolumen === 'unter_250'}
                           type="button"
                           onClick={() => setEbvVolumen('unter_250')}
                           className={`py-2 px-3 text-center rounded-lg text-xs font-semibold border transition-all ${
@@ -941,7 +941,7 @@ export default function Abfaelle() {
                         >
                           Kleinsteinbau (&lt; 250 m³)
                         </button>
-                        <button
+                        <button aria-pressed={ebvVolumen === 'ab_250'}
                           type="button"
                           onClick={() => setEbvVolumen('ab_250')}
                           className={`py-2 px-3 text-center rounded-lg text-xs font-semibold border transition-all ${
@@ -2193,7 +2193,7 @@ export default function Abfaelle() {
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">2. Homogenität des Materials:</label>
                         <div className="grid grid-cols-2 gap-2">
-                          <button
+                          <button aria-pressed={pnMaterialState === 'homogen'}
                             type="button"
                             onClick={() => setPnMaterialState('homogen')}
                             className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -2205,7 +2205,7 @@ export default function Abfaelle() {
                             Homogen
                             <span className="block text-xs opacity-80 font-normal mt-0.5">(z.B. reiner Asphalt, Sand)</span>
                           </button>
-                          <button
+                          <button aria-pressed={pnMaterialState === 'heterogen'}
                             type="button"
                             onClick={() => setPnMaterialState('heterogen')}
                             className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer ${

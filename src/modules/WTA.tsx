@@ -261,7 +261,7 @@ export default function WTA() {
 
       {/* Interactive WTA Modular Content Section */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto gap-2 mb-6">
-        <button
+        <button aria-pressed={activeTab === 'injektion'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'injektion' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -269,7 +269,7 @@ export default function WTA() {
         >
           <Droplets size={16} /> WTA 4-10 (Horizontalsperre)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'sanierputz'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'sanierputz' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -277,7 +277,7 @@ export default function WTA() {
         >
           <Building size={16} /> WTA 2-9 (Sanierputzsysteme 2020)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'innendaemmung'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'innendaemmung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -285,7 +285,7 @@ export default function WTA() {
         >
           <Thermometer size={16} /> WTA 6-5 (Innendämmung)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'pruefung'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'pruefung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -293,7 +293,7 @@ export default function WTA() {
         >
           <ShieldCheck size={16} /> Qualitätsprüfung &amp; QS
         </button>
-        <button
+        <button aria-pressed={activeTab === 'kombination'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'kombination' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -302,7 +302,7 @@ export default function WTA() {
         >
           <Sliders size={16} /> Kombi-Planer (Tab 5)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'abdichtung_4_6'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'abdichtung_4_6' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -385,7 +385,7 @@ export default function WTA() {
             <div className="space-y-1.5 text-xs">
               <label className="font-bold text-text-main block">Typ des Mauergefüges:</label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button
+                <button aria-pressed={masonryType === 'brick'}
                   type="button"
                   onClick={() => setMasonryType('brick')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -396,7 +396,7 @@ export default function WTA() {
                 >
                   Homogener Ziegel
                 </button>
-                <button
+                <button aria-pressed={masonryType === 'mixed'}
                   type="button"
                   onClick={() => setMasonryType('mixed')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -407,7 +407,7 @@ export default function WTA() {
                 >
                   Mischmauerwerk
                 </button>
-                <button
+                <button aria-pressed={masonryType === 'hollow'}
                   type="button"
                   onClick={() => setMasonryType('hollow')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -425,7 +425,7 @@ export default function WTA() {
             <div className="space-y-1.5 text-xs">
               <label className="font-bold text-text-main block">Soll-Salzbelastung (Chloride/Nitrate/Sulfate):</label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button
+                <button aria-pressed={saltLoad === 'low'}
                   type="button"
                   onClick={() => setSaltLoad('low')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -436,7 +436,7 @@ export default function WTA() {
                 >
                   Gering
                 </button>
-                <button
+                <button aria-pressed={saltLoad === 'medium'}
                   type="button"
                   onClick={() => setSaltLoad('medium')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -447,7 +447,7 @@ export default function WTA() {
                 >
                   Mittel
                 </button>
-                <button
+                <button aria-pressed={saltLoad === 'high'}
                   type="button"
                   onClick={() => setSaltLoad('high')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -567,7 +567,7 @@ export default function WTA() {
               <div className="space-y-2 text-xs">
                 <label className="font-bold text-text-main block">Bauschädliche Salzkonzentration:</label>
                 <div className="grid grid-cols-1 gap-2">
-                  <button
+                  <button aria-pressed={saltLoad === 'low'}
                     type="button"
                     onClick={() => setSaltLoad('low')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${
@@ -578,7 +578,7 @@ export default function WTA() {
                   >
                     <span>Gering (&lt; 0,1% M.-%)</span>
                   </button>
-                  <button
+                  <button aria-pressed={saltLoad === 'medium'}
                     type="button"
                     onClick={() => setSaltLoad('medium')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${
@@ -589,7 +589,7 @@ export default function WTA() {
                   >
                     <span>Mittel (0,1% - 0,5% M.-%)</span>
                   </button>
-                  <button
+                  <button aria-pressed={saltLoad === 'high'}
                     type="button"
                     onClick={() => setSaltLoad('high')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${

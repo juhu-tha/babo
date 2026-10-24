@@ -136,7 +136,7 @@ export default function BpPutzEstrich() {
 
         {/* Primary Tabs */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -146,7 +146,7 @@ export default function BpPutzEstrich() {
           >
             <BookOpen size={16} /> Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -156,7 +156,7 @@ export default function BpPutzEstrich() {
           >
             <FileText size={16} /> Basiswissen &amp; Mörtelarten
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -166,7 +166,7 @@ export default function BpPutzEstrich() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

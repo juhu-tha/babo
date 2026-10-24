@@ -424,7 +424,7 @@ export function Stahlbetoninstandhaltung() {
 
       {/* Tab Navigation as Buttons */}
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'regelwerke'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'regelwerke' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -433,7 +433,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('regelwerke')}>
           <BookOpen size={16} /> Regelwerke im Vergleich (TR vs. SIB vs. EN 1504)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'tr'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'tr' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -442,7 +442,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('tr')}>
           <FileText size={16} /> TR Instandhaltung (Prinzipien)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'os'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'os' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -451,7 +451,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('os')}>
           <Layers size={16} /> Oberflächenschutzsysteme (OS)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'en1504'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'en1504' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -460,7 +460,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('en1504')}>
           <BookOpen size={16} /> DIN EN 1504 (Prinzipien)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'produkte'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'produkte' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -469,7 +469,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('produkte')}>
           <Wrench size={16} /> Instandsetzungsprodukte (RM/PCC)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'fortbildung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'fortbildung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -478,7 +478,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('fortbildung')}>
           <CheckCircle2 size={16} /> Qualifikation &amp; Zertifikate
         </button>
-        <button
+        <button aria-pressed={activeTab === 'rissinjektion'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'rissinjektion' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -487,7 +487,7 @@ export function Stahlbetoninstandhaltung() {
           onClick={() => setActiveTab('rissinjektion')}>
           <GitCommit size={16} /> Rissinjektion (DIN EN 1504-5)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'chloridrechner'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'chloridrechner' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1473,7 +1473,7 @@ export function Stahlbetoninstandhaltung() {
                 <div>
                   <label className="block font-bold text-slate-800 mb-1.5">2. Kinetik der Rissbewegung:</label>
                   <div className="grid grid-cols-2 gap-2">
-                    <button
+                    <button aria-pressed={crackActivity === 'ruhend'}
                       type="button"
                       onClick={() => setCrackActivity('ruhend')}
                       className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
@@ -1484,7 +1484,7 @@ export function Stahlbetoninstandhaltung() {
                     >
                       Ruhender Riss (&Delta;w ≤ 0,05 mm)
                     </button>
-                    <button
+                    <button aria-pressed={crackActivity === 'dynamisch'}
                       type="button"
                       onClick={() => setCrackActivity('dynamisch')}
                       className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${

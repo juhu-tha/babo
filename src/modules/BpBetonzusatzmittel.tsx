@@ -316,7 +316,7 @@ export default function BpBetonzusatzmittel() {
 
         {/* Primary Tabs Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -326,7 +326,7 @@ export default function BpBetonzusatzmittel() {
           >
             <BookOpen size={16} /> Einführung &amp; Wirkprinzipien
           </button>
-          <button
+          <button aria-pressed={activeTab === 'wirkstoffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'wirkstoffe' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -336,7 +336,7 @@ export default function BpBetonzusatzmittel() {
           >
             <Atom size={16} /> Wirkstoff-Katalog DIN 934-2
           </button>
-          <button
+          <button aria-pressed={activeTab === 'dosierung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'dosierung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -346,7 +346,7 @@ export default function BpBetonzusatzmittel() {
           >
             <Gauge size={16} /> E-Schein w/z-Anrechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -356,7 +356,7 @@ export default function BpBetonzusatzmittel() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -464,7 +464,7 @@ export default function BpBetonzusatzmittel() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Repulsion Selector Buttons */}
                 <div className="lg:col-span-4 flex flex-col gap-2.5">
-                  <button
+                  <button aria-pressed={activeRepulsionType === 'electrostatic'}
                     onClick={() => setActiveRepulsionType('electrostatic')}
                     className={`p-4 rounded-xl border text-left cursor-pointer transition-all ${
                       activeRepulsionType === 'electrostatic'
@@ -479,7 +479,7 @@ export default function BpBetonzusatzmittel() {
                     <span className="text-xxs text-text-main/50 block mt-1">Typisch bei klassischen BV (LSA, Melamin- / Naphthalinsulfonat)</span>
                   </button>
 
-                  <button
+                  <button aria-pressed={activeRepulsionType === 'steric'}
                     onClick={() => setActiveRepulsionType('steric')}
                     className={`p-4 rounded-xl border text-left cursor-pointer transition-all ${
                       activeRepulsionType === 'steric'
@@ -862,7 +862,7 @@ export default function BpBetonzusatzmittel() {
                 <div className="space-y-3 pt-2 border-t">
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Bewehrungskategorie &amp; Chloridschranke</span>
                   <div className="flex gap-2">
-                    <button
+                    <button aria-pressed={concreteApplication === 'spann'}
                       onClick={() => setConcreteApplication('spann')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'spann'
@@ -872,7 +872,7 @@ export default function BpBetonzusatzmittel() {
                     >
                       Spannbeton
                     </button>
-                    <button
+                    <button aria-pressed={concreteApplication === 'stahl'}
                       onClick={() => setConcreteApplication('stahl')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'stahl'
@@ -882,7 +882,7 @@ export default function BpBetonzusatzmittel() {
                     >
                       Stahlbeton
                     </button>
-                    <button
+                    <button aria-pressed={concreteApplication === 'unbewehrt'}
                       onClick={() => setConcreteApplication('unbewehrt')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'unbewehrt'

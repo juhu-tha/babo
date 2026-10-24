@@ -36,7 +36,7 @@ export default function Qualitaetssicherung() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button 
+          <button aria-pressed={activeTab === 'QualitaetssicherungGrundlagen'} 
             onClick={() => setActiveTab('QualitaetssicherungGrundlagen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'QualitaetssicherungGrundlagen' 
@@ -46,7 +46,7 @@ export default function Qualitaetssicherung() {
           >
             <ClipboardCheck size={16} /> Qualitätssicherung
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'Betonbauklassen'} 
             onClick={() => setActiveTab('Betonbauklassen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'Betonbauklassen' 
@@ -56,7 +56,7 @@ export default function Qualitaetssicherung() {
           >
             <ShieldCheck size={16} /> Betonbauklassen (BBQ)
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'Konformitaetskontrolle'} 
             onClick={() => setActiveTab('Konformitaetskontrolle')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'Konformitaetskontrolle' 
@@ -66,7 +66,7 @@ export default function Qualitaetssicherung() {
           >
             <CheckCircle2 size={16} /> Konformitätskontrolle
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'CscZertifizierung'} 
             onClick={() => setActiveTab('CscZertifizierung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'CscZertifizierung' 

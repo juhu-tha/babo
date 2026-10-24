@@ -378,7 +378,7 @@ export default function Modulstruktur() {
 
           {/* Filter nach Typ */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <button
+            <button aria-pressed={selectedType === 'all'}
               onClick={() => setSelectedType('all')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                 selectedType === 'all'
@@ -388,7 +388,7 @@ export default function Modulstruktur() {
             >
               Alle
             </button>
-            <button
+            <button aria-pressed={selectedType === 'calculator'}
               onClick={() => setSelectedType('calculator')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'calculator'
@@ -398,7 +398,7 @@ export default function Modulstruktur() {
             >
               <Calculator size={12} /> Rechner
             </button>
-            <button
+            <button aria-pressed={selectedType === 'database'}
               onClick={() => setSelectedType('database')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'database'
@@ -408,7 +408,7 @@ export default function Modulstruktur() {
             >
               <Database size={12} /> Daten
             </button>
-            <button
+            <button aria-pressed={selectedType === 'quiz'}
               onClick={() => setSelectedType('quiz')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'quiz'
@@ -418,7 +418,7 @@ export default function Modulstruktur() {
             >
               <HelpCircle size={12} /> Quizzes
             </button>
-            <button
+            <button aria-pressed={selectedType === 'norm'}
               onClick={() => setSelectedType('norm')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'norm'
@@ -432,7 +432,7 @@ export default function Modulstruktur() {
 
           {/* Ansichtswähler */}
           <div className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20">
-            <button
+            <button aria-pressed={viewStyle === 'tree_full'}
               onClick={() => setViewStyle('tree_full')}
               title="Vollständiger Baum mit Verbindungslinien (Standard)"
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -443,7 +443,7 @@ export default function Modulstruktur() {
             >
               <ListTree size={14} /> Baum
             </button>
-            <button
+            <button aria-pressed={viewStyle === 'tree_columns'}
               onClick={() => setViewStyle('tree_columns')}
               title="Spalten-Baum (Multi-Column Grid)"
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -454,7 +454,7 @@ export default function Modulstruktur() {
             >
               <Columns size={14} /> Spalten
             </button>
-            <button
+            <button aria-pressed={viewStyle === 'outline'}
               onClick={() => setViewStyle('outline')}
               title="Gliederungsindex"
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -509,9 +509,11 @@ export default function Modulstruktur() {
                   <div className="flex items-start gap-3">
                     <button
                       onClick={() => toggleCluster(cluster.id)}
+                      aria-label={`Cluster ${cluster.number}: ${cluster.name} ${collapsedClusters[cluster.id] ? 'aufklappen' : 'zuklappen'}`}
+                      aria-expanded={!collapsedClusters[cluster.id]}
                       className="w-10 h-10 rounded-xl bg-white border-2 border-shiraz/40 hover:border-shiraz text-shiraz flex items-center justify-center shrink-0 shadow-xs z-10 transition-colors cursor-pointer group"
                     >
-                      <ClusterIcon size={20} className="group-hover:scale-110 transition-transform" />
+                      <ClusterIcon aria-hidden="true" size={20} className="group-hover:scale-110 transition-transform" />
                     </button>
 
                     <div className="flex-1">

@@ -1253,7 +1253,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
         {/* SECTION TABS */}
         <div className="border-b border-home-grau/30 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-950/20 p-2 sm:p-4 print:hidden">
           <div className="flex flex-wrap gap-2">
-            <button
+            <button aria-pressed={activeSection === 'grundlagen'}
               onClick={() => setActiveSection('grundlagen')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'grundlagen'
@@ -1264,7 +1264,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <Info size={14} />
               <span className="truncate">Modulbasis</span>
             </button>
-            <button
+            <button aria-pressed={activeSection === 'ueberblick'}
               onClick={() => setActiveSection('ueberblick')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'ueberblick'
@@ -1275,7 +1275,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <Compass size={14} />
               <span className="truncate">Überblick</span>
             </button>
-            <button
+            <button aria-pressed={activeSection === 'inhalte'}
               onClick={() => setActiveSection('inhalte')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'inhalte'
@@ -1286,7 +1286,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <BookOpen size={14} />
               <span className="truncate">Lehrthemen</span>
             </button>
-            <button
+            <button aria-pressed={activeSection === 'weiterfuehrend'}
               onClick={() => setActiveSection('weiterfuehrend')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'weiterfuehrend'
@@ -1297,7 +1297,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <FileSearch size={14} />
               <span className="truncate">Quellen</span>
             </button>
-            <button
+            <button aria-pressed={activeSection === 'historie'}
               onClick={() => setActiveSection('historie')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'historie'
@@ -1309,7 +1309,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <span className="truncate">Historie</span>
             </button>
             {normalizedGroup === 'baustoffe' && (
-              <button
+              <button aria-pressed={activeSection === 'klassifizierung'}
                 onClick={() => setActiveSection('klassifizierung')}
                 className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeSection === 'klassifizierung'

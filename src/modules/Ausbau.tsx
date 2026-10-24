@@ -10,7 +10,7 @@ export default function Ausbau() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'trockenbau'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'trockenbau' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -20,7 +20,7 @@ export default function Ausbau() {
         >
           <Layers size={16} /> Trockenbau
         </button>
-        <button
+        <button aria-pressed={activeTab === 'estriche'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'estriche' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -30,7 +30,7 @@ export default function Ausbau() {
         >
           <Box size={16} /> Estriche &amp; Böden
         </button>
-        <button
+        <button aria-pressed={activeTab === 'keramik'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'keramik' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -40,7 +40,7 @@ export default function Ausbau() {
         >
           <Grid size={16} /> Keramik &amp; Fliesen
         </button>
-        <button
+        <button aria-pressed={activeTab === 'anstrich'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'anstrich' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -50,7 +50,7 @@ export default function Ausbau() {
         >
           <PaintRoller size={16} /> Anstrichsysteme
         </button>
-        <button
+        <button aria-pressed={activeTab === 'abdichtung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'abdichtung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -60,7 +60,7 @@ export default function Ausbau() {
         >
           <Droplets size={16} /> Abdichtungen
         </button>
-        <button
+        <button aria-pressed={activeTab === 'kleben'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'kleben' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

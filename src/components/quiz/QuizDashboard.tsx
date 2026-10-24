@@ -303,7 +303,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-text-main uppercase tracking-wider">Ansicht:</span>
           <div className="flex bg-off-white p-1 rounded-xl border border-home-grau/25 text-xs font-bold">
-            <button
+            <button aria-pressed={metricView === 'both'}
               onClick={() => setMetricView('both')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'both' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -311,7 +311,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             >
               Kombiniert
             </button>
-            <button
+            <button aria-pressed={metricView === 'line'}
               onClick={() => setMetricView('line')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'line' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -319,7 +319,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             >
               Liniendiagramm (Verlauf)
             </button>
-            <button
+            <button aria-pressed={metricView === 'heatmap'}
               onClick={() => setMetricView('heatmap')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'heatmap' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -515,7 +515,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
 
             {/* Cluster Filter Buttons */}
             <div className="flex flex-wrap items-center gap-1.5 bg-off-white p-1 rounded-xl border border-home-grau/20 self-start md:self-auto">
-              <button
+              <button aria-pressed={selectedClusterFilter === 'all'}
                 type="button"
                 onClick={() => setSelectedClusterFilter('all')}
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${

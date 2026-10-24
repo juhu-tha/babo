@@ -452,7 +452,7 @@ export default function IngenieurbauLCA() {
             <div className="space-y-1.5">
               <label className="font-bold text-slate-700 block">Baustellenführung (B8):</label>
               <div className="grid grid-cols-2 gap-1.5">
-                <button
+                <button aria-pressed={constructionStrategy === 'standard'}
                   type="button"
                   onClick={() => setConstructionStrategy('standard')}
                   className={`p-2 rounded-lg border text-[11px] font-bold transition-all text-center cursor-pointer ${
@@ -463,7 +463,7 @@ export default function IngenieurbauLCA() {
                 >
                   Konventionell
                 </button>
-                <button
+                <button aria-pressed={constructionStrategy === 'accelerated'}
                   type="button"
                   onClick={() => setConstructionStrategy('accelerated')}
                   className={`p-2 rounded-lg border text-[11px] font-bold transition-all text-center cursor-pointer ${

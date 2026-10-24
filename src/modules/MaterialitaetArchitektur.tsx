@@ -374,7 +374,7 @@ export default function MaterialitaetArchitektur() {
 
               {/* Light simulation switcher */}
               <div className="flex items-center gap-1 bg-off-white p-1 rounded-lg border border-home-grau/20 self-start sm:self-center">
-                <button
+                <button aria-pressed={lightModePreview === 'sonne'}
                   onClick={() => setLightModePreview('sonne')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'sonne' ? 'bg-white shadow-xs text-amber-600 font-bold' : 'text-text-main/60 hover:text-text-main'
@@ -383,7 +383,7 @@ export default function MaterialitaetArchitektur() {
                 >
                   <Sun size={13} /> Sonne
                 </button>
-                <button
+                <button aria-pressed={lightModePreview === 'diffus'}
                   onClick={() => setLightModePreview('diffus')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'diffus' ? 'bg-white shadow-xs text-slate-700 font-bold' : 'text-text-main/60 hover:text-text-main'
@@ -392,7 +392,7 @@ export default function MaterialitaetArchitektur() {
                 >
                   <Eye size={13} /> Diffus
                 </button>
-                <button
+                <button aria-pressed={lightModePreview === 'nacht'}
                   onClick={() => setLightModePreview('nacht')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'nacht' ? 'bg-slate-900 text-amber-300 shadow-xs font-bold' : 'text-text-main/60 hover:text-text-main'

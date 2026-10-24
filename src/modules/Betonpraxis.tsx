@@ -411,7 +411,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
 
       {/* Sub tabs navigation */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto whitespace-nowrap scrollbar-none gap-2">
-        <button
+        <button aria-pressed={activeSubTab === 'diagnostik'}
           onClick={() => setActiveSubTab('diagnostik')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'diagnostik' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -420,7 +420,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <Beaker size={15} />
           Frischbeton-Diagnostik
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'zusammenhalt'}
           onClick={() => setActiveSubTab('zusammenhalt')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'zusammenhalt' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -429,7 +429,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <Droplets size={15} />
           Zusammenhalt &amp; Wasser-Sim
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'einbau'}
           onClick={() => setActiveSubTab('einbau')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'einbau' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -438,7 +438,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <Wrench size={15} />
           Einbau &amp; Industrieboden
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'nachbehandlung'}
           onClick={() => setActiveSubTab('nachbehandlung')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'nachbehandlung' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -447,7 +447,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <Calendar size={15} />
           Nachbehandlung &amp; Betonierbarkeit
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'krell_tabelle'}
           onClick={() => setActiveSubTab('krell_tabelle')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'krell_tabelle' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -456,7 +456,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <Grid size={15} />
           Krell-Tabelle &amp; WU
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'festigkeit'}
           onClick={() => setActiveSubTab('festigkeit')}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
             activeSubTab === 'festigkeit' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
@@ -1013,7 +1013,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-text-main block">1. Expositionsklasse &amp; Schutzbedürfnis</label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <button
+                    <button aria-pressed={curingExposure === 'x0_xc1'}
                       type="button"
                       onClick={() => setCuringExposure('x0_xc1')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -1024,7 +1024,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     >
                       X0, XC1 (Trocken / Kein Risiko)
                     </button>
-                    <button
+                    <button aria-pressed={curingExposure === 'standard'}
                       type="button"
                       onClick={() => setCuringExposure('standard')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -1035,7 +1035,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     >
                       Alle übrigen Klassen
                     </button>
-                    <button
+                    <button aria-pressed={curingExposure === 'erhoeht'}
                       type="button"
                       onClick={() => setCuringExposure('erhoeht')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${

@@ -371,7 +371,7 @@ export default function Nawaro() {
 
         {/* Outer Navigation Tabs */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20" id="nawaro_nav_tabs">
-          <button
+          <button aria-pressed={activeTab === 'overview'}
             id="tab_overview"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'overview' 
@@ -383,7 +383,7 @@ export default function Nawaro() {
             <Layers size={16} /> Übersicht &amp; C-Kreislauf
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'fnr_db'}
             id="tab_fnr_db"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'fnr_db' 
@@ -395,7 +395,7 @@ export default function Nawaro() {
             <BookOpen size={16} /> FNR Baustoff-Datenbank
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'navigator'}
             id="tab_navigator"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'navigator' 
@@ -407,7 +407,7 @@ export default function Nawaro() {
             <Calculator size={16} /> Interaktiver Dämm-Navigator
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'comparison'}
             id="tab_comparison"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'comparison' 
@@ -530,7 +530,7 @@ export default function Nawaro() {
             {/* Filter Toolbar */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <div className="flex flex-wrap gap-2">
-                <button
+                <button aria-pressed={dbCategory === 'all'}
                   onClick={() => setDbCategory('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'all' 
@@ -540,7 +540,7 @@ export default function Nawaro() {
                 >
                   Alle Produkte
                 </button>
-                <button
+                <button aria-pressed={dbCategory === 'daemmung'}
                   onClick={() => setDbCategory('daemmung')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'daemmung' 
@@ -550,7 +550,7 @@ export default function Nawaro() {
                 >
                   Dämmstoffe
                 </button>
-                <button
+                <button aria-pressed={dbCategory === 'tragwerk'}
                   onClick={() => setDbCategory('tragwerk')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'tragwerk' 
@@ -560,7 +560,7 @@ export default function Nawaro() {
                 >
                   Tragwerk
                 </button>
-                <button
+                <button aria-pressed={dbCategory === 'lehm_putz'}
                   onClick={() => setDbCategory('lehm_putz')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'lehm_putz' 
@@ -570,7 +570,7 @@ export default function Nawaro() {
                 >
                   Lehm &amp; Putze
                 </button>
-                <button
+                <button aria-pressed={dbCategory === 'boden'}
                   onClick={() => setDbCategory('boden')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'boden' 
@@ -729,7 +729,7 @@ export default function Nawaro() {
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-text-main uppercase tracking-wider">Planerischer Ziel-Fokus</label>
                   <div className="flex flex-col gap-2">
-                    <button
+                    <button aria-pressed={navGoal === 'summer'}
                       onClick={() => setNavGoal('summer')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'summer'
@@ -744,7 +744,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button
+                    <button aria-pressed={navGoal === 'heat'}
                       onClick={() => setNavGoal('heat')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'heat'
@@ -759,7 +759,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button
+                    <button aria-pressed={navGoal === 'sound'}
                       onClick={() => setNavGoal('sound')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'sound'
@@ -774,7 +774,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button
+                    <button aria-pressed={navGoal === 'moisture'}
                       onClick={() => setNavGoal('moisture')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'moisture'
@@ -789,7 +789,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button
+                    <button aria-pressed={navGoal === 'eco'}
                       onClick={() => setNavGoal('eco')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'eco'

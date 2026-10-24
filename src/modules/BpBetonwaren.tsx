@@ -120,7 +120,7 @@ export default function BpBetonwaren() {
 
         {/* TABS SELECTOR */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 px-6 pt-4">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -130,7 +130,7 @@ export default function BpBetonwaren() {
           >
             <BookOpen size={16} /> Basiswissen &amp; Materialanalyse
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -140,7 +140,7 @@ export default function BpBetonwaren() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

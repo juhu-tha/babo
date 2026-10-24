@@ -546,7 +546,7 @@ export default function InstandsetzungChecklisten() {
           <span className="text-xs font-semibold text-slate-500 flex items-center gap-1">
             <Filter size={12} /> Status:
           </span>
-          <button
+          <button aria-pressed={statusFilter === 'all'}
             onClick={() => setStatusFilter('all')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'all' ? 'bg-shiraz text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -554,7 +554,7 @@ export default function InstandsetzungChecklisten() {
           >
             Alle
           </button>
-          <button
+          <button aria-pressed={statusFilter === 'critical'}
             onClick={() => setStatusFilter('critical')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'critical' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200'
@@ -562,7 +562,7 @@ export default function InstandsetzungChecklisten() {
           >
             Nur Zwingend
           </button>
-          <button
+          <button aria-pressed={statusFilter === 'mandatory'}
             onClick={() => setStatusFilter('mandatory')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'mandatory' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200'

@@ -199,11 +199,11 @@ export default function Verankerungslaenge() {
               <div className="mt-4">
                 <label className="text-sm font-medium text-text-main mb-1 block">Beanspruchung</label>
                 <div className="flex bg-white rounded-md border border-home-grau/20 shadow-sm">
-                  <button 
+                  <button aria-pressed={beanspruchung === 'zug'} 
                     onClick={() => setBeanspruchung('zug')} 
                     className={`flex-1 py-2 text-sm font-medium rounded-l-md ${beanspruchung === 'zug' ? 'bg-shiraz text-white' : 'text-text-main hover:bg-off-white'}`}
                   >Zug</button>
-                  <button 
+                  <button aria-pressed={beanspruchung === 'druck'} 
                     onClick={() => setBeanspruchung('druck')} 
                     className={`flex-1 py-2 text-sm font-medium rounded-r-md ${beanspruchung === 'druck' ? 'bg-shiraz text-white' : 'text-text-main hover:bg-off-white'}`}
                   >Druck</button>

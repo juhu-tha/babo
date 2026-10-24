@@ -489,7 +489,7 @@ export default function Materialoptimierung() {
 
       {/* --- Navigation Subtabs --- */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border gap-1">
-        <button
+        <button aria-pressed={activeSubTab === 'saeulen'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'saeulen' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
@@ -497,7 +497,7 @@ export default function Materialoptimierung() {
         >
           <Layers size={14} /> Die 4 Säulen der Stoffoptimierung
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'betonoptimierung'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'betonoptimierung' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
@@ -505,7 +505,7 @@ export default function Materialoptimierung() {
         >
           <Beaker size={14} /> Betonoptimierungs-Leitfaden (Prinzipien)
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'dafstb_richtlinie'}
           className={`flex-1 min-w-[180px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'dafstb_richtlinie' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}

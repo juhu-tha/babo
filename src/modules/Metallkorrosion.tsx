@@ -154,7 +154,7 @@ export default function Metallkorrosion() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4 mb-6">
-          <button
+          <button aria-pressed={activeSection === 'simulation'}
             onClick={() => setActiveSection('simulation')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'simulation'
@@ -165,7 +165,7 @@ export default function Metallkorrosion() {
             <Zap size={14} />
             <span>Grundlagen & Simulation</span>
           </button>
-          <button
+          <button aria-pressed={activeSection === 'deckschichten'}
             onClick={() => setActiveSection('deckschichten')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'deckschichten'
@@ -176,7 +176,7 @@ export default function Metallkorrosion() {
             <Layers size={14} />
             <span>Deckschichten & Passivierung</span>
           </button>
-          <button
+          <button aria-pressed={activeSection === 'arten'}
             onClick={() => setActiveSection('arten')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'arten'
@@ -187,7 +187,7 @@ export default function Metallkorrosion() {
             <ShieldAlert size={14} />
             <span>Korrosionsarten</span>
           </button>
-          <button
+          <button aria-pressed={activeSection === 'schutz'}
             onClick={() => setActiveSection('schutz')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'schutz'

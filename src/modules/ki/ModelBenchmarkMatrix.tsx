@@ -141,7 +141,7 @@ export default function ModelBenchmarkMatrix() {
 
         {/* Filter Buttons */}
         <div className="flex p-1 bg-slate-100 rounded-xl max-w-max self-start sm:self-center">
-          <button
+          <button aria-pressed={filterType === 'all'}
             onClick={() => setFilterType('all')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'all' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
@@ -149,7 +149,7 @@ export default function ModelBenchmarkMatrix() {
           >
             Alle Modelle
           </button>
-          <button
+          <button aria-pressed={filterType === 'cloud'}
             onClick={() => setFilterType('cloud')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'cloud' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
@@ -157,7 +157,7 @@ export default function ModelBenchmarkMatrix() {
           >
             Nur Cloud
           </button>
-          <button
+          <button aria-pressed={filterType === 'local'}
             onClick={() => setFilterType('local')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'local' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'

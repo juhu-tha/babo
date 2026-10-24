@@ -406,7 +406,7 @@ export default function Mauerwerk() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -416,7 +416,7 @@ export default function Mauerwerk() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'material'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'material' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -426,7 +426,7 @@ export default function Mauerwerk() {
           >
             <Layers size={16} /> Steine &amp; Mörtel
           </button>
-          <button
+          <button aria-pressed={activeTab === 'verband'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'verband' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -436,7 +436,7 @@ export default function Mauerwerk() {
           >
             <Ruler size={16} /> Mauerwerksverband
           </button>
-          <button
+          <button aria-pressed={activeTab === 'bemessung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bemessung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -446,7 +446,7 @@ export default function Mauerwerk() {
           >
             <Calculator size={16} /> Festigkeit &amp; Bemessung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'ziegellexikon'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ziegellexikon' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

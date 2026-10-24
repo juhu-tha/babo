@@ -202,7 +202,7 @@ export default function Admin() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'pruefraster'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pruefraster'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -212,7 +212,7 @@ export default function Admin() {
           >
             <CheckCircle2 size={16} /> Die 6 Prüfdimensionen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'prompt'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'prompt'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -222,7 +222,7 @@ export default function Admin() {
           >
             <FileText size={16} /> Auditprompt
           </button>
-          <button
+          <button aria-pressed={activeTab === 'gestaltung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'gestaltung'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -232,7 +232,7 @@ export default function Admin() {
           >
             <Palette size={16} /> Gestaltung der App
           </button>
-          <button
+          <button aria-pressed={activeTab === 'tech_stack'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'tech_stack'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -242,7 +242,7 @@ export default function Admin() {
           >
             <Cpu size={16} /> Sprachen &amp; Tools
           </button>
-          <button
+          <button aria-pressed={activeTab === 'code_umfang'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'code_umfang'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -559,7 +559,7 @@ export default function Beispielfach() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={\`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer \${
               activeTab === 'steckbrief'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'

@@ -195,7 +195,7 @@ function FeedbackContent() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2"><label className="text-sm font-bold text-text-main">Art des Feedbacks</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <button
+            <button aria-pressed={type === 'fehler'}
               type="button"
               onClick={() => setType('fehler')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -207,7 +207,7 @@ function FeedbackContent() {
               <AlertCircle size={18} />
               <span>Fehler melden</span>
             </button>
-            <button
+            <button aria-pressed={type === 'idee'}
               type="button"
               onClick={() => setType('idee')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -219,7 +219,7 @@ function FeedbackContent() {
               <Lightbulb size={18} />
               <span>Ergänzung vorschlagen</span>
             </button>
-            <button
+            <button aria-pressed={type === 'lob'}
               type="button"
               onClick={() => setType('lob')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -287,13 +287,13 @@ export default function Feedback() {
         </div>
 
         <div className="flex gap-4 mb-2">
-          <button
+          <button aria-pressed={activeTab === 'feedback'}
             onClick={() => setActiveTab('feedback')}
             className={`px-4 py-2 font-bold text-sm rounded-lg transition-colors ${activeTab === 'feedback' ? 'bg-shiraz text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
           >
             Feedback
           </button>
-          <button
+          <button aria-pressed={activeTab === 'evaluierung'}
             onClick={() => setActiveTab('evaluierung')}
             className={`px-4 py-2 font-bold text-sm rounded-lg transition-colors ${activeTab === 'evaluierung' ? 'bg-shiraz text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
           >

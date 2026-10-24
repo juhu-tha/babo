@@ -145,7 +145,7 @@ export default function HydratationPruefverfahren() {
 
       {/* Sub Tabs */}
       <div className="flex flex-wrap gap-2">
-        <button
+        <button aria-pressed={panelTab === 'reissrahmen'}
           onClick={() => setPanelTab('reissrahmen')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'reissrahmen'
@@ -155,7 +155,7 @@ export default function HydratationPruefverfahren() {
         >
           <Activity size={16} /> 1. Reißrahmen / Cracking Frame
         </button>
-        <button
+        <button aria-pressed={panelTab === 'schwindrinne'}
           onClick={() => setPanelTab('schwindrinne')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'schwindrinne'
@@ -165,7 +165,7 @@ export default function HydratationPruefverfahren() {
         >
           <Layers size={16} /> 2. Schwindmessrinne
         </button>
-        <button
+        <button aria-pressed={panelTab === 'kalorimetrie'}
           onClick={() => setPanelTab('kalorimetrie')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'kalorimetrie'

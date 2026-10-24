@@ -50,7 +50,7 @@ export default function Probenahme() {
 
         {/* Tab Selection */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 px-6">
-          <button
+          <button aria-pressed={activeTab === 'haufwerk'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-1.5 border shadow-sm cursor-pointer ${
               activeTab === 'haufwerk' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -60,7 +60,7 @@ export default function Probenahme() {
           >
             Haufwerke &amp; Schüttgüter
           </button>
-          <button
+          <button aria-pressed={activeTab === 'diagnostik'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-1.5 border shadow-sm cursor-pointer ${
               activeTab === 'diagnostik' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

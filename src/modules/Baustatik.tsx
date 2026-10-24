@@ -422,7 +422,7 @@ export default function Baustatik() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'traeger'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'traeger' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -431,7 +431,7 @@ export default function Baustatik() {
           onClick={() => setActiveTab('traeger')}>
           <Minus size={16} /> Träger (1D)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'rahmen'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'rahmen' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -674,9 +674,9 @@ export default function Baustatik() {
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-sm font-bold text-center">Systemskizze & Schnittgrößen</h3>
                   <div className="flex bg-off-white rounded-lg p-1 border border-home-grau/30">
-                    <button className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'M' ? 'bg-white shadow-sm text-shiraz' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('M')}>Moment (M)</button>
-                    <button className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? 'bg-white shadow-sm text-[#A3113E]' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}>Querkraft (V)</button>
-                    <button className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}>Normalkraft (N)</button>
+                    <button aria-pressed={rahmenSchnitt === 'M'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'M' ? 'bg-white shadow-sm text-shiraz' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('M')}>Moment (M)</button>
+                    <button aria-pressed={rahmenSchnitt === 'V'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? 'bg-white shadow-sm text-[#A3113E]' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}>Querkraft (V)</button>
+                    <button aria-pressed={rahmenSchnitt === 'N'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}>Normalkraft (N)</button>
                   </div>
                 </div>
                 <div className="min-w-[600px] flex justify-center">

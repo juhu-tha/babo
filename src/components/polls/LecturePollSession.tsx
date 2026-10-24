@@ -642,7 +642,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                   Umfang des Resets:
                 </label>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <button
+                  <button aria-pressed={resetScope === 'current'}
                     type="button"
                     onClick={() => setResetScope('current')}
                     className={`p-2.5 rounded-xl border text-left font-semibold cursor-pointer transition-all ${
@@ -653,7 +653,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                   >
                     Aktuelle Frage (Q{formatDeWert(currentIdx + 1)})
                   </button>
-                  <button
+                  <button aria-pressed={resetScope === 'all'}
                     type="button"
                     onClick={() => setResetScope('all')}
                     className={`p-2.5 rounded-xl border text-left font-semibold cursor-pointer transition-all ${

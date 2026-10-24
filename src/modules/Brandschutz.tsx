@@ -76,7 +76,7 @@ export default function Brandschutz() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'baustoffklassen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'baustoffklassen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -86,7 +86,7 @@ export default function Brandschutz() {
           >
             <Layers size={16} /> Baustoffklassen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'baulicher_brandschutz'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'baulicher_brandschutz' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -96,7 +96,7 @@ export default function Brandschutz() {
           >
             <Shield size={16} /> Baulicher Brandschutz
           </button>
-          <button
+          <button aria-pressed={activeTab === 'holzabbrand'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'holzabbrand' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

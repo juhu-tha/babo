@@ -200,7 +200,7 @@ function GefuegebildungSimulator() {
             <div className="pt-3 border-t border-home-grau/20 space-y-1.5 text-xs">
               <span className="font-bold text-text-main block">Zementkategorie:</span>
               <div className="grid grid-cols-2 gap-2">
-                <button
+                <button aria-pressed={cementType === 'CEM_I'}
                   onClick={() => setCementType('CEM_I')}
                   className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                     cementType === 'CEM_I'
@@ -211,7 +211,7 @@ function GefuegebildungSimulator() {
                   <span className="block font-bold text-xs">CEM I (Portland)</span>
                   <span className="text-[10px] opacity-75">Schnelles Alit-Wachstum</span>
                 </button>
-                <button
+                <button aria-pressed={cementType === 'CEM_III'}
                   onClick={() => setCementType('CEM_III')}
                   className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                     cementType === 'CEM_III'
@@ -663,7 +663,7 @@ export default function Zementchemie() {
 
         {/* Tab Selection */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -673,7 +673,7 @@ export default function Zementchemie() {
           >
             <BookOpen size={16} /> Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'bogue'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bogue' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -683,7 +683,7 @@ export default function Zementchemie() {
           >
             <Calculator size={16} /> Klinkerberechnung &amp; Hydratation (Bogue)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'gefluege'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'gefluege' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -693,7 +693,7 @@ export default function Zementchemie() {
           >
             <Microscope size={16} /> Gefügebildung &amp; C-S-H Simulator
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zusatzstoffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zusatzstoffe' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

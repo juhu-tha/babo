@@ -1015,7 +1015,7 @@ export default function KriechenSchwinden() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={material === 'beton'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               material === 'beton'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -1025,7 +1025,7 @@ export default function KriechenSchwinden() {
           >
             <Activity size={16} /> Beton
           </button>
-          <button
+          <button aria-pressed={material === 'stahl'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               material === 'stahl'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -1035,7 +1035,7 @@ export default function KriechenSchwinden() {
           >
             <Layers size={16} /> Spannstahl
           </button>
-          <button
+          <button aria-pressed={material === 'rheologie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               material === 'rheologie'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'

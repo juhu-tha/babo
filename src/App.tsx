@@ -1,6 +1,7 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import {
+  MoreHorizontal,
   Calculator,
   Globe,
   GraduationCap,
@@ -53,6 +54,8 @@ import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import { NAV_TAB_GRUPPEN, TAB_KEYWORDS, MODUL_BY_ID } from './registry/modules';
 import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimerBanner';
 import { iconFor } from './registry/icons';
+import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
+import { VolltextTreffer } from './components/navigation/VolltextTreffer';
 import StudentPollVoteView from './components/polls/StudentPollVoteView';
 import { CURRENT_VERSION } from './data/versionData';
 
@@ -140,6 +143,23 @@ function AppContent() {
     }
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobilWerkzeugeOffen, setMobilWerkzeugeOffen] = useState(false);
+  useAutoFormLabels('module-content', activeTab);
+  useEffect(() => { setMobilWerkzeugeOffen(false); }, [activeTab]);
+  useEffect(() => {
+    if (!mobilWerkzeugeOffen) return;
+    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setMobilWerkzeugeOffen(false); };
+    window.addEventListener('keydown', esc);
+    return () => window.removeEventListener('keydown', esc);
+  }, [mobilWerkzeugeOffen]);
+  // Schmale Ansicht: geschlossene Seitenleiste per inert aus Tastatur- und Screenreader-Reihenfolge nehmen (Phase 2, AP 2.3)
+  const [istSchmal, setIstSchmal] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const aendern = () => setIstSchmal(mq.matches);
+    mq.addEventListener('change', aendern);
+    return () => mq.removeEventListener('change', aendern);
+  }, []);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
     try {
@@ -390,10 +410,21 @@ function AppContent() {
 
   return (
   <div className="min-h-screen bg-off-white dark:bg-slate-950 text-text-main dark:text-slate-100 flex font-sans">
+    {/* Sprunglink zum Inhalt (kein #-Link, weil der Hash das Modul auswählt) */}
+    <button
+      type="button"
+      onClick={() => document.getElementById('scroll-container')?.focus()}
+      className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-shiraz focus:text-white focus:font-bold focus:shadow-lg"
+    >
+      {language === 'en' ? 'Skip to content' : 'Zum Inhalt springen'}
+    </button>
     {mobileMenuOpen && (
       <div className="fixed inset-0 bg-black/60 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)} />
     )}
-    <aside className={"fixed md:sticky top-0 left-0 z-50 h-screen bg-white dark:bg-slate-900 border-r border-home-grau/30 dark:border-slate-800 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden " + 
+    <aside
+      aria-label={language === 'en' ? 'Module navigation' : 'Modulnavigation'}
+      inert={(istSchmal && !mobileMenuOpen) || (!istSchmal && sidebarCollapsed) ? true : undefined}
+      className={"fixed md:sticky top-0 left-0 z-50 h-screen bg-white dark:bg-slate-900 border-r border-home-grau/30 dark:border-slate-800 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden " + 
       (sidebarCollapsed ? "md:w-0 md:opacity-0 md:pointer-events-none md:border-r-0" : "md:w-72 md:opacity-100") + " " +
       (mobileMenuOpen ? "translate-x-0 w-72" : "-translate-x-full md:translate-x-0 w-72")}>
       <div className="p-4 border-b border-home-grau/20 dark:border-slate-800 flex flex-col gap-4 bg-white dark:bg-slate-900 z-10 sticky top-0">
@@ -410,7 +441,7 @@ function AppContent() {
               <GraduationCap size={18} />
             </div>
             <div>
-              <h1 className="text-sm font-bold text-text-main dark:text-slate-100 leading-tight">BaustoffBoard</h1>
+              <p className="text-sm font-bold text-text-main dark:text-slate-100 leading-tight">BaustoffBoard</p>
               <span className="text-[10px] text-text-main/60 dark:text-slate-400 block">Prof. Huber - TH Augsburg</span>
             </div>
           </button>
@@ -433,6 +464,7 @@ function AppContent() {
             className="w-full pl-9 pr-8 py-2 border border-home-grau/30 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-shiraz focus:border-transparent bg-white dark:bg-slate-800 dark:text-white" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
+            aria-label={language === 'en' ? 'Search modules and content' : 'Module und Inhalte durchsuchen'}
           />
           {searchQuery && (
             <button 
@@ -510,6 +542,8 @@ function AppContent() {
                       : "bg-white/40 dark:bg-slate-800 border-home-grau/20 dark:border-slate-700 text-slate-500 hover:text-shiraz"
                   }`}
                   title={isAllgemeinOpen ? (language === 'en' ? "Collapse menu" : "Start-Menü einklappen") : (language === 'en' ? "Expand menu" : "Start-Menü ausklappen")}
+                  aria-label={language === 'en' ? 'General pages' : 'Allgemeine Seiten'}
+                  aria-expanded={isAllgemeinOpen}
                 >
                   <ChevronRight size={14} className={`transition-transform duration-200 ${isAllgemeinOpen ? "rotate-90" : ""}`} />
                 </button>
@@ -624,6 +658,7 @@ function AppContent() {
               {/* Cluster Header */}
               <button
                 onClick={() => toggleCluster(cluster.id)}
+                aria-expanded={isClusterOpen}
                 className="w-full px-2.5 py-2 flex items-center justify-between gap-2 text-left rounded-xl transition-colors hover:bg-home-grau/5 dark:hover:bg-slate-800/60"
               >
                 <div className="flex items-center gap-2 min-w-0">
@@ -696,6 +731,7 @@ function AppContent() {
                       <div key={group.name} className="flex flex-col rounded-lg">
                         <button 
                           onClick={() => setOpenDropdown(isGroupOpen ? null : group.name)} 
+                          aria-expanded={isGroupOpen}
                           className={"text-xs tracking-wide px-2 py-1.5 flex justify-between items-center rounded-lg transition-colors text-left w-full " + 
                             (isGroupActive ? "font-bold text-shiraz dark:text-rose-400 bg-shiraz/5 dark:bg-rose-950/20" : "font-medium text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800/60")}
                         >
@@ -703,7 +739,7 @@ function AppContent() {
                             {React.createElement(GROUP_ICONS[group.name] || Layers, { size: 12, className: "shrink-0 opacity-70" })}
                             <span className="truncate text-left">{groupDisplayName}</span>
                           </div>
-                          <span className="text-[10px] text-home-grau dark:text-slate-400 shrink-0 ml-1">
+                          <span aria-hidden="true" className="text-[10px] text-home-grau dark:text-slate-400 shrink-0 ml-1">
                             {isGroupOpen ? "▲" : "▼"}
                           </span>
                         </button>
@@ -763,6 +799,7 @@ function AppContent() {
             </div>
           );
         })}
+        <VolltextTreffer anfrage={searchQuery} oeffne={(id) => { setActiveTab(id); setMobileMenuOpen(false); }} />
       </nav>
       <div className="p-4 border-t border-home-grau/20 dark:border-slate-800 text-xs text-home-grau dark:text-slate-400 text-center relative">
           <div className="flex items-center justify-center gap-1.5">
@@ -775,15 +812,25 @@ function AppContent() {
          <div className="px-4 sm:px-6">
            <div className="flex items-center justify-between h-14">
              <div className="flex items-center gap-3 md:hidden">
-               <button className="text-text-main dark:text-slate-100 p-2 -ml-2 rounded-lg hover:bg-home-grau/10 dark:hover:bg-slate-800" onClick={() => setMobileMenuOpen(true)}> 
-                 <Menu size={24} />
+               <button
+                 className="text-text-main dark:text-slate-100 p-2 -ml-2 rounded-lg hover:bg-home-grau/10 dark:hover:bg-slate-800 min-w-11 min-h-11 flex items-center justify-center"
+                 onClick={() => setMobileMenuOpen(true)}
+                 aria-label={language === 'en' ? 'Open menu' : 'Menü öffnen'}
+                 aria-expanded={mobileMenuOpen}
+               >
+                 <Menu size={24} aria-hidden="true" />
                </button>
+               {/* Mobil: aktuelles Modul statt nur Markenname (Phase 2, AP 2.5) */}
                <button 
                  onClick={() => { setActiveTab('start'); }} 
-                 className="font-bold text-text-main dark:text-slate-100 flex items-center gap-1 text-sm hover:opacity-85 transition-opacity text-left active:scale-[0.98] duration-150"
+                 className="font-bold text-text-main dark:text-slate-100 flex items-center gap-1 text-sm hover:opacity-85 transition-opacity text-left active:scale-[0.98] duration-150 min-w-0"
                  title="Zur Startseite"
                >
-                <GraduationCap size={16} className="text-shiraz"/> BaustoffBoard
+                <GraduationCap size={16} className="text-shiraz shrink-0" aria-hidden="true"/>
+                <span className="truncate max-w-[52vw]">{(() => {
+                  const m = activeTab !== 'start' ? MODUL_BY_ID.get(activeTab) : undefined;
+                  return m ? getTabLabel(m.id, m.label) : 'BaustoffBoard';
+                })()}</span>
               </button>
             </div>
             <div className="hidden md:flex items-center gap-2 text-sm font-medium text-text-main/70 dark:text-slate-300 min-w-0">
@@ -791,6 +838,8 @@ function AppContent() {
                 onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
                 className="text-text-main dark:text-slate-100 p-2 -ml-2 rounded-lg hover:bg-home-grau/10 dark:hover:bg-slate-800 transition-colors flex items-center justify-center shrink-0"
                 title={sidebarCollapsed ? "Sidebar einblenden" : "Sidebar ausblenden"}
+                aria-label={sidebarCollapsed ? (language === 'en' ? 'Show navigation' : 'Navigation einblenden') : (language === 'en' ? 'Hide navigation' : 'Navigation ausblenden')}
+                aria-expanded={!sidebarCollapsed}
               >
                 <Menu size={20} />
               </button>
@@ -873,7 +922,41 @@ function AppContent() {
                 );
               })()}
             </div>
-            <div className="flex items-center gap-2 ml-auto">
+            {/* Mobil: Werkzeuge im „⋯“-Menü (Phase 2, AP 2.5) */}
+            <div className="sm:hidden ml-auto relative">
+              <button
+                type="button"
+                onClick={() => setMobilWerkzeugeOffen(o => !o)}
+                aria-expanded={mobilWerkzeugeOffen}
+                aria-controls="mobil-werkzeuge"
+                aria-label={language === 'en' ? 'Tools: language, accessibility, theme, PDF' : 'Werkzeuge: Sprache, Barrierefreiheit, Darstellung, PDF'}
+                className="min-w-11 min-h-11 flex items-center justify-center rounded-lg border border-home-grau/20 dark:border-slate-700 bg-off-white dark:bg-slate-800 text-text-main dark:text-white"
+              >
+                <MoreHorizontal size={20} aria-hidden="true" />
+              </button>
+              {mobilWerkzeugeOffen && (
+                <div id="mobil-werkzeuge" className="absolute right-0 top-12 z-50 w-64 p-3 rounded-xl border border-home-grau/30 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg flex flex-col gap-2">
+                  <LanguageSwitcher />
+                  <AccessibilityToolbar />
+                  <button
+                    onClick={() => { toggleTheme(); setMobilWerkzeugeOffen(false); }}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-off-white dark:bg-slate-800 text-text-main dark:text-white border border-home-grau/20 dark:border-slate-700 text-sm"
+                  >
+                    {theme === 'light' ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
+                    <span>{theme === 'light' ? t('themeDark') : t('themeLight')}</span>
+                  </button>
+                  <button
+                    onClick={() => { setMobilWerkzeugeOffen(false); handleExport(); }}
+                    disabled={isExporting}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-off-white dark:bg-slate-800 text-text-main dark:text-white border border-home-grau/20 dark:border-slate-700 text-sm disabled:opacity-50"
+                  >
+                    <Download size={16} aria-hidden="true" />
+                    <span>{isExporting ? t('exporting') : t('exportPdf')}</span>
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="hidden sm:flex items-center gap-2 ml-auto">
               <LanguageSwitcher />
               <AccessibilityToolbar />
               <button 
@@ -900,7 +983,7 @@ function AppContent() {
                     ? (language === 'en' ? "Width: Wide 1536px (Click for Full Width 100%)" : "Bildschirmbreite: Breit 1536px (Klicken für 100% Vollbild)")
                     : (language === 'en' ? "Width: Full 100% (Click for Standard 1152px)" : "Bildschirmbreite: 100% Vollbild (Klicken für Standard 1152px)")
                 }
-                aria-label="Bildschirmbreite anpassen"
+                aria-label={`${screenWidth === 'standard' ? (language === 'en' ? 'Standard' : 'Standard (1152px)') : screenWidth === 'wide' ? (language === 'en' ? 'Wide' : 'Breit (1536px)') : (language === 'en' ? '100% Full' : '100% Vollbild')} – ${language === 'en' ? 'page width' : 'Seitenbreite'}`}
               >
                 {screenWidth === 'full' ? (
                   <Maximize2 size={14} className="text-white" />
@@ -926,7 +1009,7 @@ function AppContent() {
                 {theme === 'light' ? <Moon size={14} /> : <Sun size={14} />}
                 <span className="text-xs font-medium leading-none select-none">{theme === 'light' ? t('themeDark') : t('themeLight')}</span>
               </button>
-              <button onClick={handleExport} disabled={isExporting} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 text-sm font-medium text-text-main dark:text-white bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-750 border border-home-grau/20 dark:border-slate-700 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
+              <button onClick={handleExport} disabled={isExporting} aria-label={t('exportPdf')} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 text-sm font-medium text-text-main dark:text-white bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-750 border border-home-grau/20 dark:border-slate-700 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
                 <Download size={16} />
                 <span className="hidden sm:inline">{isExporting ? t('exporting') : t('exportPdf')}</span>
               </button>
@@ -934,7 +1017,13 @@ function AppContent() {
           </div>
         </div>
       </header>
-      <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar" id="scroll-container">
+      <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar focus:outline-none" id="scroll-container" tabIndex={-1}>
+        {/* Genau eine Hauptüberschrift je Seite: der Modulname (Phase 2, AP 2.2) */}
+        <h1 className="sr-only">{(() => {
+          const m = MODUL_BY_ID.get(activeTab);
+          const label = m ? getTabLabel(m.id, m.baum?.titel ?? m.label) : 'BaustoffBoard';
+          return activeTab === 'start' ? 'BaustoffBoard – Lern- und Wissensplattform der TH Augsburg' : `${label} – BaustoffBoard`;
+        })()}</h1>
         <div 
           data-fluid={screenWidth === 'full' ? "true" : "false"}
           data-width={screenWidth}
@@ -965,7 +1054,7 @@ function AppContent() {
             <div className="hidden pdf-header mb-8 pb-4 border-b-2 border-shiraz">
               <div className="flex justify-between items-start">
                 <div>
-                  <h1 className="text-2xl font-bold text-text-main">{t('testProtocol')}</h1>
+                  <p className="text-2xl font-bold text-text-main">{t('testProtocol')}</p>
                   <p className="text-sm text-text-main/80 mt-1">Modul: {(() => {
                     const tabObj = tabGroups.flatMap(g => g.tabs as unknown as any[]).find(t => t.id === activeTab);
                     return tabObj ? getTabLabel(tabObj.id, tabObj.label) : activeTab;

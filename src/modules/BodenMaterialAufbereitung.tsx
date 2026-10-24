@@ -363,7 +363,7 @@ export default function BodenMaterialAufbereitung() {
           
           {/* Tabs / Reiter Navigation */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 bg-slate-50/50 p-2 rounded-2xl border border-home-grau/30 mb-2">
-            <button
+            <button aria-pressed={activeTab === 'vorschriften'}
               onClick={() => setActiveTab('vorschriften')}
               className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
                 activeTab === 'vorschriften'
@@ -374,7 +374,7 @@ export default function BodenMaterialAufbereitung() {
               <BookOpen size={16} />
               <span>Vorschriften &amp; Rahmen</span>
             </button>
-            <button
+            <button aria-pressed={activeTab === 'simulator'}
               onClick={() => setActiveTab('simulator')}
               className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
                 activeTab === 'simulator'
@@ -385,7 +385,7 @@ export default function BodenMaterialAufbereitung() {
               <Sliders size={16} />
               <span>Aufbereitungssimulator</span>
             </button>
-            <button
+            <button aria-pressed={activeTab === 'qualitaet'}
               onClick={() => setActiveTab('qualitaet')}
               className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
                 activeTab === 'qualitaet'
@@ -396,7 +396,7 @@ export default function BodenMaterialAufbereitung() {
               <Activity size={16} />
               <span>Qualitätssicherung / QS</span>
             </button>
-            <button
+            <button aria-pressed={activeTab === 'probenahme'}
               onClick={() => setActiveTab('probenahme')}
               className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
                 activeTab === 'probenahme'

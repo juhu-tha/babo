@@ -89,7 +89,7 @@ export default function Erdbau() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -98,7 +98,7 @@ export default function Erdbau() {
             onClick={() => setActiveTab('steckbrief')}>
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'grundlagen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'grundlagen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -107,7 +107,7 @@ export default function Erdbau() {
             onClick={() => setActiveTab('grundlagen')}>
             <Layers size={16} /> Grundlagen Erdbau
           </button>
-          <button
+          <button aria-pressed={activeTab === 'klassifikation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'klassifikation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -116,7 +116,7 @@ export default function Erdbau() {
             onClick={() => setActiveTab('klassifikation')}>
             <Calculator size={16} /> Bodenklassifikation (DIN 18196)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'frostschutz'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'frostschutz' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

@@ -41,7 +41,7 @@ export default function HydratationFolgen() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button 
+          <button aria-pressed={activeTab === 'IntegrationVerformungen'} 
             onClick={() => setActiveTab('IntegrationVerformungen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'IntegrationVerformungen' 
@@ -51,7 +51,7 @@ export default function HydratationFolgen() {
           >
             <BookOpen size={16} /> Übersicht &amp; Zusammenhänge
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'Hydratation'} 
             onClick={() => setActiveTab('Hydratation')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'Hydratation' 
@@ -61,7 +61,7 @@ export default function HydratationFolgen() {
           >
             <Activity size={16} /> 1. Hydratation &amp; Reife
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'Praxisbeispiele'} 
             onClick={() => setActiveTab('Praxisbeispiele')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'Praxisbeispiele' 
@@ -71,7 +71,7 @@ export default function HydratationFolgen() {
           >
             <ShieldAlert size={16} /> 2. Zwang &amp; Risse
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'HydratationRissberechnung'} 
             onClick={() => setActiveTab('HydratationRissberechnung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'HydratationRissberechnung' 
@@ -81,7 +81,7 @@ export default function HydratationFolgen() {
           >
             <Cpu size={16} /> Präziser Rissnachweis (EC2)
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'Eigenspannungen'} 
             onClick={() => setActiveTab('Eigenspannungen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'Eigenspannungen' 
@@ -91,7 +91,7 @@ export default function HydratationFolgen() {
           >
             <Flame size={16} /> 3. Eigenspannungen
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'KriechenSchwinden'} 
             onClick={() => setActiveTab('KriechenSchwinden')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'KriechenSchwinden' 
@@ -101,7 +101,7 @@ export default function HydratationFolgen() {
           >
             <Layers size={16} /> 4. Kriechen &amp; Schwinden
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'MassigeBauteile'} 
             onClick={() => setActiveTab('MassigeBauteile')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'MassigeBauteile' 
@@ -111,7 +111,7 @@ export default function HydratationFolgen() {
           >
             <Layers size={16} /> Massige Bauteile
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'HydratationPruefverfahren'} 
             onClick={() => setActiveTab('HydratationPruefverfahren')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'HydratationPruefverfahren' 

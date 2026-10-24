@@ -798,7 +798,7 @@ export default function Betonkennwerte() {
 
         {/* 4-Stufen-Lehrpfad Tab Navigation */}
         <div className="flex flex-wrap gap-2 pt-4 mt-2">
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'rechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -809,7 +809,7 @@ export default function Betonkennwerte() {
             <Calculator size={15} /> 1. Interaktiver Kennwertrechner
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'tabelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'tabelle' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -820,7 +820,7 @@ export default function Betonkennwerte() {
             <BookOpen size={15} /> 2. EC2 Tabelle 3.1 Matrix
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'zeit_theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'zeit_theorie' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -831,7 +831,7 @@ export default function Betonkennwerte() {
             <Activity size={15} /> 3. Zeitverläufe &amp; Theorie
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -842,7 +842,7 @@ export default function Betonkennwerte() {
             <ShieldCheck size={15} /> 4. Ingenieurpraxis &amp; GZG
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'ausblick2025'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'ausblick2025' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -853,7 +853,7 @@ export default function Betonkennwerte() {
             <Sparkles size={15} /> 5. Neuerungen EC2 Gen 2 (2025)
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'test'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'test' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

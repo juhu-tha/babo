@@ -201,7 +201,7 @@ export default function Holzkorrosion() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4 mb-6">
-          <button
+          <button aria-pressed={activeSection === 'simulation'}
             onClick={() => setActiveSection('simulation')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'simulation'
@@ -212,7 +212,7 @@ export default function Holzkorrosion() {
             <Droplets size={14} />
             <span>Grundlagen & Simulation</span>
           </button>
-          <button
+          <button aria-pressed={activeSection === 'schaedlinge'}
             onClick={() => setActiveSection('schaedlinge')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'schaedlinge'
@@ -223,7 +223,7 @@ export default function Holzkorrosion() {
             <Bug size={14} />
             <span>Holzschädlinge</span>
           </button>
-          <button
+          <button aria-pressed={activeSection === 'schutz'}
             onClick={() => setActiveSection('schutz')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               activeSection === 'schutz'

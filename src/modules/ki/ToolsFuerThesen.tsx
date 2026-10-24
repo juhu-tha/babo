@@ -471,7 +471,7 @@ export default function ToolsFuerThesen() {
 
       {/* SUB-TABS NAVIGATION */}
       <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeSubTab === 'literatur'}
           onClick={() => setActiveSubTab('literatur')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
             activeSubTab === 'literatur'
@@ -482,7 +482,7 @@ export default function ToolsFuerThesen() {
           <Search size={15} /> 1. Literatur &amp; Research Mapping
         </button>
 
-        <button
+        <button aria-pressed={activeSubTab === 'schreiben'}
           onClick={() => setActiveSubTab('schreiben')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
             activeSubTab === 'schreiben'
@@ -493,7 +493,7 @@ export default function ToolsFuerThesen() {
           <FileText size={15} /> 2. Schreiben, Synthese &amp; LaTeX
         </button>
 
-        <button
+        <button aria-pressed={activeSubTab === 'coding'}
           onClick={() => setActiveSubTab('coding')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
             activeSubTab === 'coding'
@@ -504,7 +504,7 @@ export default function ToolsFuerThesen() {
           <Code size={15} /> 3. Tools programmieren &amp; Datenanalyse
         </button>
 
-        <button
+        <button aria-pressed={activeSubTab === 'prompts'}
           onClick={() => setActiveSubTab('prompts')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
             activeSubTab === 'prompts'
@@ -515,7 +515,7 @@ export default function ToolsFuerThesen() {
           <Sparkles size={15} /> 4. Thesis-Prompt-Labor
         </button>
 
-        <button
+        <button aria-pressed={activeSubTab === 'integritaet'}
           onClick={() => setActiveSubTab('integritaet')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
             activeSubTab === 'integritaet'

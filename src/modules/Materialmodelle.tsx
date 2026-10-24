@@ -624,7 +624,7 @@ export default function Materialmodelle() {
 
         {/* Tab-Navigation für die Grundmodelle */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-2 relative">
-          <button
+          <button aria-pressed={activeModel === 'linear'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'linear' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -633,7 +633,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('linear')}>
             <TrendingUp size={16} /> Linear-Elastisch
           </button>
-          <button
+          <button aria-pressed={activeModel === 'non-linear'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'non-linear' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -642,7 +642,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('non-linear')}>
             <Activity size={16} /> Nichtlinear
           </button>
-          <button
+          <button aria-pressed={activeModel === 'ideal-plastic'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'ideal-plastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -651,7 +651,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('ideal-plastic')}>
             <GitCommit size={16} /> Elastisch-Idealplastisch
           </button>
-          <button
+          <button aria-pressed={activeModel === 'elasto-plastic'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'elasto-plastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -660,7 +660,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('elasto-plastic')}>
             <GitCommit size={16} /> Elasto-Plastisch mit Verfestigung
           </button>
-          <button
+          <button aria-pressed={activeModel === 'visco-elastic'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'visco-elastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -669,7 +669,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('visco-elastic')}>
             <Timer size={16} /> Rheologisch (Zeitabh.)
           </button>
-          <button
+          <button aria-pressed={activeModel === 'thixotropy-rheopexy'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'thixotropy-rheopexy' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

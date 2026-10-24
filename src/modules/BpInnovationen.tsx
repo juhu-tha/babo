@@ -193,7 +193,7 @@ export default function BpInnovationen() {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'ueberblick'}
             onClick={() => setActiveTab('ueberblick')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ueberblick'
@@ -203,7 +203,7 @@ export default function BpInnovationen() {
           >
             <Compass size={16} /> a) Innovation &amp; Transformation
           </button>
-          <button
+          <button aria-pressed={activeTab === 'trl'}
             onClick={() => setActiveTab('trl')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'trl'
@@ -213,7 +213,7 @@ export default function BpInnovationen() {
           >
             <BarChart3 size={16} /> b) TRL-Skala (1–9) im Bauwesen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'forschung'}
             onClick={() => setActiveTab('forschung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'forschung'
@@ -223,7 +223,7 @@ export default function BpInnovationen() {
           >
             <FlaskConical size={16} /> c) F&amp;E-Landschaft &amp; Förderung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'werkstoffe'}
             onClick={() => setActiveTab('werkstoffe')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'werkstoffe'
@@ -233,7 +233,7 @@ export default function BpInnovationen() {
           >
             <Layers size={16} /> d) Zukunftswerkstoffe im Portrait
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zulassung'}
             onClick={() => setActiveTab('zulassung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zulassung'
@@ -243,7 +243,7 @@ export default function BpInnovationen() {
           >
             <FileCheck size={16} /> e) Zulassungswege (DIBt / ETA)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechner'

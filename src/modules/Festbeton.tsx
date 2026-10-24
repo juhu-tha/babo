@@ -248,7 +248,7 @@ export default function Festbeton() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button 
+          <button aria-pressed={activeTab === 'druckfestigkeitsklassen'} 
             onClick={() => setActiveTab('druckfestigkeitsklassen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'druckfestigkeitsklassen' 
@@ -258,7 +258,7 @@ export default function Festbeton() {
           >
             <Layers size={16} /> Druckfestigkeitsklassen (DIN EN 206 / EC2)
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'festigkeitsentwicklung'} 
             onClick={() => setActiveTab('festigkeitsentwicklung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'festigkeitsentwicklung' 
@@ -268,7 +268,7 @@ export default function Festbeton() {
           >
             <Calendar size={16} /> Festigkeitsentwicklung &amp; Geometrie
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'statistik'} 
             onClick={() => setActiveTab('statistik')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'statistik' 
@@ -278,7 +278,7 @@ export default function Festbeton() {
           >
             <TrendingUp size={16} /> Statistik &amp; Normalverteilung
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'konformitaet'} 
             onClick={() => setActiveTab('konformitaet')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'konformitaet' 
@@ -659,7 +659,7 @@ export default function Festbeton() {
                   <div>
                     <label className="text-xs font-bold text-text-main block mb-1">Referenz-Prüfformat:</label>
                     <div className="grid grid-cols-2 gap-2 text-xs">
-                      <button 
+                      <button aria-pressed={statFormat === 'zylinder'} 
                         onClick={() => setStatFormat('zylinder')}
                         className={`p-2 rounded-xl font-bold border transition-all cursor-pointer ${
                           statFormat === 'zylinder' 
@@ -669,7 +669,7 @@ export default function Festbeton() {
                       >
                         Zylinder (f_ck,cyl)
                       </button>
-                      <button 
+                      <button aria-pressed={statFormat === 'wuerfel'} 
                         onClick={() => setStatFormat('wuerfel')}
                         className={`p-2 rounded-xl font-bold border transition-all cursor-pointer ${
                           statFormat === 'wuerfel' 

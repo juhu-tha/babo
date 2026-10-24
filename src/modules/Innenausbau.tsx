@@ -335,7 +335,7 @@ export default function Innenausbau() {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap gap-2 pt-4 pb-1">
-          <button
+          <button aria-pressed={mainTab === 'uebersicht'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               mainTab === 'uebersicht' 
                 ? 'bg-shiraz text-white border-shiraz shadow-sm' 
@@ -345,7 +345,7 @@ export default function Innenausbau() {
           >
             <LayoutGrid size={15} /> Modul-Navigator
           </button>
-          <button
+          <button aria-pressed={mainTab === 'estriche'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               mainTab === 'estriche' 
                 ? 'bg-shiraz text-white border-shiraz shadow-sm' 
@@ -355,7 +355,7 @@ export default function Innenausbau() {
           >
             <Layers size={15} /> Estriche (CT/CA/AS) &amp; Belegreife
           </button>
-          <button
+          <button aria-pressed={mainTab === 'trockenbau'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               mainTab === 'trockenbau' 
                 ? 'bg-shiraz text-white border-shiraz shadow-sm' 
@@ -365,7 +365,7 @@ export default function Innenausbau() {
           >
             <Box size={15} /> Trockenbau &amp; Gipsplatten
           </button>
-          <button
+          <button aria-pressed={mainTab === 'abdichtung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               mainTab === 'abdichtung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-sm' 
@@ -375,7 +375,7 @@ export default function Innenausbau() {
           >
             <Droplets size={15} /> Verbundabdichtung (DIN 18534)
           </button>
-          <button
+          <button aria-pressed={mainTab === 'rechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               mainTab === 'rechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-sm' 
@@ -780,7 +780,7 @@ export default function Innenausbau() {
                 <div>
                   <label className="text-xs font-bold text-text-main block mb-1.5">Estrich-Bindemittel:</label>
                   <div className="grid grid-cols-2 gap-2">
-                    <button
+                    <button aria-pressed={estrichArt === 'CT'}
                       type="button"
                       onClick={() => setEstrichArt('CT')}
                       className={`p-2.5 rounded-xl border font-bold text-xs cursor-pointer transition-all ${
@@ -791,7 +791,7 @@ export default function Innenausbau() {
                     >
                       Zementestrich (CT)
                     </button>
-                    <button
+                    <button aria-pressed={estrichArt === 'CA'}
                       type="button"
                       onClick={() => setEstrichArt('CA')}
                       className={`p-2.5 rounded-xl border font-bold text-xs cursor-pointer transition-all ${

@@ -149,7 +149,7 @@ export default function Asphalt() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -159,7 +159,7 @@ export default function Asphalt() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'grundlagen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'grundlagen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -169,7 +169,7 @@ export default function Asphalt() {
           >
             <Layers size={16} /> Grundlagen &amp; Zusammensetzung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'arten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'arten' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -179,7 +179,7 @@ export default function Asphalt() {
           >
             <Layers size={16} /> Asphaltarten
           </button>
-          <button
+          <button aria-pressed={activeTab === 'eigenschaften'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'eigenschaften' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -189,7 +189,7 @@ export default function Asphalt() {
           >
             <Layers size={16} /> Material- &amp; Produkteigenschaften
           </button>
-          <button
+          <button aria-pressed={activeTab === 'nta'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'nta' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

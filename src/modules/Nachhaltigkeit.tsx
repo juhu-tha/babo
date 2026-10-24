@@ -644,7 +644,7 @@ export default function Nachhaltigkeit() {
 
           {/* Workspace select button group */}
           <div className="flex flex-wrap gap-2">
-            <button
+            <button aria-pressed={activeWorkspace === 'wandkonfigurator'}
               onClick={() => setActiveWorkspace('wandkonfigurator')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
                 activeWorkspace === 'wandkonfigurator'
@@ -654,7 +654,7 @@ export default function Nachhaltigkeit() {
             >
               1. Wandaufbau
             </button>
-            <button
+            <button aria-pressed={activeWorkspace === 'qng_nachweis'}
               onClick={() => setActiveWorkspace('qng_nachweis')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
                 activeWorkspace === 'qng_nachweis'
@@ -664,7 +664,7 @@ export default function Nachhaltigkeit() {
             >
               2. QNG-Nachweis
             </button>
-            <button
+            <button aria-pressed={activeWorkspace === 'crrem_regulatorik'}
               onClick={() => setActiveWorkspace('crrem_regulatorik')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
                 activeWorkspace === 'crrem_regulatorik'
@@ -674,7 +674,7 @@ export default function Nachhaltigkeit() {
             >
               3. CRREM &amp; Regulatorik
             </button>
-            <button
+            <button aria-pressed={activeWorkspace === 'praxis_innovationen'}
               onClick={() => setActiveWorkspace('praxis_innovationen')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
                 activeWorkspace === 'praxis_innovationen'
@@ -684,7 +684,7 @@ export default function Nachhaltigkeit() {
             >
               4. Praxis &amp; Gebäudetyp E
             </button>
-            <button
+            <button aria-pressed={activeWorkspace === 'leitfaden'}
               onClick={() => setActiveWorkspace('leitfaden')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
                 activeWorkspace === 'leitfaden'
@@ -855,7 +855,7 @@ export default function Nachhaltigkeit() {
                 </div>
                 <div className="w-full md:w-56 shrink-0">
                   <div className="grid grid-cols-2 bg-slate-100 p-1 rounded-lg text-center text-xs">
-                    <button
+                    <button aria-pressed={connectionType === 'glued'}
                       onClick={() => setConnectionType('glued')}
                       className={`py-1.5 rounded-md cursor-pointer transition-all font-semibold ${
                         connectionType === 'glued'
@@ -865,7 +865,7 @@ export default function Nachhaltigkeit() {
                     >
                       🔗 Verklebt / Mörtel
                     </button>
-                    <button
+                    <button aria-pressed={connectionType === 'screwed'}
                       onClick={() => setConnectionType('screwed')}
                       className={`py-1.5 rounded-md cursor-pointer transition-all font-semibold ${
                         connectionType === 'screwed'
@@ -1344,7 +1344,7 @@ export default function Nachhaltigkeit() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <button
+              <button aria-pressed={regulatorikSubTab === 'rechtsrahmen'}
                 onClick={() => setRegulatorikSubTab('rechtsrahmen')}
                 className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border cursor-pointer ${
                   regulatorikSubTab === 'rechtsrahmen'
@@ -1354,7 +1354,7 @@ export default function Nachhaltigkeit() {
               >
                 <Scale size={16} /> 1. Rechtsrahmen-Kompendium &amp; Hierarchie
               </button>
-              <button
+              <button aria-pressed={regulatorikSubTab === 'crrem_sim'}
                 onClick={() => setRegulatorikSubTab('crrem_sim')}
                 className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border cursor-pointer ${
                   regulatorikSubTab === 'crrem_sim'
@@ -1414,7 +1414,7 @@ export default function Nachhaltigkeit() {
               <div>
                 <label className="block text-xs font-bold text-slate-900 mb-2">Immobilien-Assetklasse:</label>
                 <div className="grid grid-cols-2 gap-3">
-                  <button
+                  <button aria-pressed={crremBuildingType === 'office'}
                     onClick={() => setCrremBuildingType('office')}
                     className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       crremBuildingType === 'office'
@@ -1426,7 +1426,7 @@ export default function Nachhaltigkeit() {
                     <strong className="block text-xs">Büroimmobilie (Commercial Office)</strong>
                     <span className="text-[10px] text-slate-400 font-normal">CRREM-Basispfad: 52 kg CO₂e (2020) &rarr; 18 kg (2030) &rarr; 0 kg (2050)</span>
                   </button>
-                  <button
+                  <button aria-pressed={crremBuildingType === 'residential'}
                     onClick={() => setCrremBuildingType('residential')}
                     className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       crremBuildingType === 'residential'

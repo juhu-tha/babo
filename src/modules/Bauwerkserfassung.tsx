@@ -128,7 +128,7 @@ export default function Bauwerkserfassung() {
 
       {/* --- Module-Level Tabs --- */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border">
-        <button
+        <button aria-pressed={activeSubTab === 'grundlagen'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'grundlagen' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
@@ -136,7 +136,7 @@ export default function Bauwerkserfassung() {
         >
           <Building2 size={14} /> Grundlagen &amp; Genauigkeitsstufen
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'methoden'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'methoden' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
@@ -144,7 +144,7 @@ export default function Bauwerkserfassung() {
         >
           <Compass size={14} /> Messverfahren im Vergleich
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'leica_workflow'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'leica_workflow' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
@@ -152,7 +152,7 @@ export default function Bauwerkserfassung() {
         >
           <Monitor size={14} /> Leica Punktwolken-Workflow
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'tragwerksplanung'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'tragwerksplanung' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}

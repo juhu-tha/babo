@@ -345,7 +345,7 @@ export default function Bestand() {
 
         {/* Tab Navigation following GEMINI_md */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -355,7 +355,7 @@ export default function Bestand() {
           >
             <Calendar size={16} /> Baualtersklassen &amp; Epochen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'sanierung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'sanierung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -365,7 +365,7 @@ export default function Bestand() {
           >
             <Calculator size={16} /> Sanierungs-Simulator (GModG)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'vergleich'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'vergleich' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -375,7 +375,7 @@ export default function Bestand() {
           >
             <BarChart3 size={16} /> Epochen-Vergleich &amp; U-Werte
           </button>
-          <button
+          <button aria-pressed={activeTab === 'theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

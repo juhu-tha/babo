@@ -374,7 +374,7 @@ export default function LCC() {
 
         {/* Flat horizontal buttons for subtabs inside the main view to keep single screen clean */}
         <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-home-grau/20 mt-4">
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechner'
@@ -384,7 +384,7 @@ export default function LCC() {
           >
             <Coins size={14} /> 1. Interaktiver Kostenrechner &amp; Szenarien
           </button>
-          <button
+          <button aria-pressed={activeTab === 'theorie'}
             onClick={() => setActiveTab('theorie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie'

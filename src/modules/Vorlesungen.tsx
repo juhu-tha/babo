@@ -85,7 +85,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         {/* Tab-Navigation for Submodules */}
         <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
 
-          <button
+          <button aria-pressed={activeSubTab === 'bauen_im_bestand'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'bauen_im_bestand'
@@ -97,7 +97,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             <Building2 size={16} /> 1. Bauen im Bestand
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'nachhaltiges_bauen'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'nachhaltiges_bauen'
@@ -109,7 +109,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             <Leaf size={16} /> 2. Nachhaltiges Bauen
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'bauschaeden'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'bauschaeden'
@@ -121,7 +121,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             <AlertTriangle size={16} /> 3. Bauschäden
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'baustoffkunde'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'baustoffkunde'
@@ -133,7 +133,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             <Layers size={16} /> 4. Baustoffkunde
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'instandhaltung'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'instandhaltung'

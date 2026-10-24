@@ -214,7 +214,7 @@ export default function Bauwerksunters_Monitoring() {
 
       {/* 2. Top Navigation Tabs */}
       <div className="flex border border-home-grau/30 bg-white p-1 rounded-2xl shadow-sm gap-1 flex-wrap md:flex-nowrap">
-        <button
+        <button aria-pressed={activeTab === 'monitoring'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'monitoring'
               ? 'bg-shiraz text-white shadow-sm'
@@ -225,7 +225,7 @@ export default function Bauwerksunters_Monitoring() {
           <Activity size={16} />
           Tragwerks-Monitoring &amp; Sensorik (SHM)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'grundlagen'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'grundlagen'
               ? 'bg-shiraz text-white shadow-sm'
@@ -236,7 +236,7 @@ export default function Bauwerksunters_Monitoring() {
           <Hammer size={16} />
           Holzdiagnostik &amp; Resistographie
         </button>
-        <button
+        <button aria-pressed={activeTab === 'rechner'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'rechner'
               ? 'bg-shiraz text-white shadow-sm'
@@ -247,7 +247,7 @@ export default function Bauwerksunters_Monitoring() {
           <ClipboardCheck size={16} />
           Schadens- &amp; Feuchterechner
         </button>
-        <button
+        <button aria-pressed={activeTab === 'katalog'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'katalog'
               ? 'bg-shiraz text-white shadow-sm'

@@ -288,7 +288,7 @@ export default function InnovativeWerkstoffe() {
 
       {/* Sub Tabs */}
       <div className="bg-slate-50 p-1.5 rounded-2xl border border-home-grau/30 shadow-sm grid grid-cols-2 md:grid-cols-5 gap-2">
-        <button
+        <button aria-pressed={activeSubTab === 'katalog'}
           onClick={() => setActiveSubTab('katalog')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'katalog'
@@ -298,7 +298,7 @@ export default function InnovativeWerkstoffe() {
         >
           <Layers size={14} /> Material-Spezifikationen
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'druck'}
           onClick={() => setActiveSubTab('druck')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'druck'
@@ -308,7 +308,7 @@ export default function InnovativeWerkstoffe() {
         >
           <Cpu size={14} /> 3D-Betondruck (3DCP)
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'finder'}
           onClick={() => setActiveSubTab('finder')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'finder'
@@ -318,7 +318,7 @@ export default function InnovativeWerkstoffe() {
         >
           <Settings size={14} /> Baustoff-Wegweiser
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'vergleich'}
           onClick={() => setActiveSubTab('vergleich')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'vergleich'
@@ -328,7 +328,7 @@ export default function InnovativeWerkstoffe() {
         >
           <Scale size={14} /> CO₂/Kosten Trade-off
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'trends'}
           onClick={() => setActiveSubTab('trends')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'trends'
@@ -346,7 +346,7 @@ export default function InnovativeWerkstoffe() {
           <div className="space-y-8 animate-in fade-in duration-300">
             {/* Secondary chapter pills */}
             <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-              <button
+              <button aria-pressed={druckSubTab === 'verfahren'}
                 onClick={() => setDruckSubTab('verfahren')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   druckSubTab === 'verfahren'
@@ -356,7 +356,7 @@ export default function InnovativeWerkstoffe() {
               >
                 <Layers size={12} /> 1. Druckverfahren
               </button>
-              <button
+              <button aria-pressed={druckSubTab === 'rheologie'}
                 onClick={() => setDruckSubTab('rheologie')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   druckSubTab === 'rheologie'
@@ -366,7 +366,7 @@ export default function InnovativeWerkstoffe() {
               >
                 <Activity size={12} /> 2. Rheologie &amp; Eigenschaften
               </button>
-              <button
+              <button aria-pressed={druckSubTab === 'bemessung'}
                 onClick={() => setDruckSubTab('bemessung')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   druckSubTab === 'bemessung'
@@ -376,7 +376,7 @@ export default function InnovativeWerkstoffe() {
               >
                 <Scale size={12} /> 3. Standsicherheit &amp; Nachweise
               </button>
-              <button
+              <button aria-pressed={druckSubTab === 'bewehrung'}
                 onClick={() => setDruckSubTab('bewehrung')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   druckSubTab === 'bewehrung'
@@ -386,7 +386,7 @@ export default function InnovativeWerkstoffe() {
               >
                 <Wrench size={12} /> 4. Bewehrungstechniken
               </button>
-              <button
+              <button aria-pressed={druckSubTab === 'simulator'}
                 onClick={() => setDruckSubTab('simulator')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   druckSubTab === 'simulator'
@@ -803,7 +803,7 @@ export default function InnovativeWerkstoffe() {
                       <div className="pt-2">
                         <label className="text-xs font-bold text-slate-700 block mb-1.5">Bauteilverlauf (Stabilitätsform)</label>
                         <div className="grid grid-cols-3 gap-2">
-                          <button
+                          <button aria-pressed={structuralShape === 'straight'}
                             onClick={() => setStructuralShape('straight')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'straight'
@@ -813,7 +813,7 @@ export default function InnovativeWerkstoffe() {
                           >
                             Gerade Wand
                           </button>
-                          <button
+                          <button aria-pressed={structuralShape === 'rounded'}
                             onClick={() => setStructuralShape('rounded')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'rounded'
@@ -823,7 +823,7 @@ export default function InnovativeWerkstoffe() {
                           >
                             Kreisförmig
                           </button>
-                          <button
+                          <button aria-pressed={structuralShape === 'folded'}
                             onClick={() => setStructuralShape('folded')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'folded'

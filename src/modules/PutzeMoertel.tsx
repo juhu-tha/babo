@@ -461,7 +461,7 @@ export default function PutzeMoertel() {
 
         {/* Tab switchers */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             onClick={() => setActiveTab('steckbrief')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
@@ -471,7 +471,7 @@ export default function PutzeMoertel() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'moertel'}
             onClick={() => setActiveTab('moertel')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'moertel' 
@@ -481,7 +481,7 @@ export default function PutzeMoertel() {
           >
             <Hammer size={16} /> 1. Mauermörtel
           </button>
-          <button
+          <button aria-pressed={activeTab === 'putze'}
             onClick={() => setActiveTab('putze')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'putze' 
@@ -491,7 +491,7 @@ export default function PutzeMoertel() {
           >
             <Droplets size={16} /> 2. Putzmörtel
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechner' 
@@ -501,7 +501,7 @@ export default function PutzeMoertel() {
           >
             <Calculator size={16} /> 3. Material-Rechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'reaktionen'}
             onClick={() => setActiveTab('reaktionen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'reaktionen' 

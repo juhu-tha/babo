@@ -1,0 +1,1625 @@
+{
+ "start": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "anleitung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "modulstruktur": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "feedback": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "versionen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "impressum": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "datenschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "barrierefreiheit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "grundlagen_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "baustoffkunde": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "einheiten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialkennwerte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "baustoffkenngroessen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauchemie": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "sicherheitskonzept": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "regularien": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "labor_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "probenahme": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "messen_pruefen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "analytik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "mechanische_pruefungen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "labor": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "statistik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "festbeton_statistik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "baustoffe_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "gesteine": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "mauerwerk": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "putzemoertel": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "gips": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kalk": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "lehm": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "erdbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "glas": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "stahl": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "metalle": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzwerkstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "nawaro": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "asphalt": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kunststoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "daemmstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ausbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kombinationen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "sonstiges": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauprodukte_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_baustoffindustrie": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_innovationen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_recht_grundlagen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_recht_avcp": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_recht_konformitaet": {
+  "seitlich": 335,
+  "abgeschnitten": 5,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.",
+   "SPAN.",
+   "SPAN."
+  ]
+ },
+ "bp_recht_normen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_beton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_betonfertigteile": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_betonwaren": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_mauerwerk": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_dach_fassade": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_rsto": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_asphalt": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_bitumen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_pruefung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_betondecken": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_tiefbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_bahn": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehr_tunnel": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_trockenbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_putz_estrich": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_abdichtung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_daemmung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_befestigung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_klebstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_farben_lacke": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_betonzusatzmittel": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_holzprodukte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_kunststoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_mineralisch": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_glaeser": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_lehmbauprodukte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_metallisch": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_stahlbauprofile": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "beton_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "beton_a_z": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "grundlagen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bindemittel": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "mischungsberechnung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "herstellung_einbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "frischbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "hydratation_folgen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "nachbehandlung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "festbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "betonkennwerte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "sichtbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "sonderbetone": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "innovative_werkstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "qualitaetssicherung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "expositionsklassen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "betonpraxis": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "stahlbeton_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "stahlbeton_bemessung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "spannbeton": {
+  "seitlich": 4,
+  "abgeschnitten": 5,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.",
+   "SPAN.katex",
+   "SPAN.katex-html"
+  ]
+ },
+ "wu-bauwerke": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "carbonbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_werkstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_konstruktion": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_bemessung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_verbindung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzbau_bauphysik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "innenausbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "mechanik_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "mechanische_kenngroessen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "formaenderungen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialmodelle": {
+  "seitlich": 8,
+  "abgeschnitten": 3,
+  "kleineZiele": 0,
+  "beispiele": [
+   "DIV.bg-white border-y border-home-grau/30 -mx-4 sm:mx-0 sm:round",
+   "DIV.absolute top-0 right-0 w-[500px] h-[500px] bg-[#A3113E]/5 ro",
+   "DIV.px-4 md:px-8 flex flex-col gap-8 pb-8"
+  ]
+ },
+ "emodul": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "festigkeit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "baustatik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "knicken": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bruchmechanik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bodenmechanik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauphysik_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauphysik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "waermeeigenschaften": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "feuchteschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "daemmung_vergleich": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schallschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "brandschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "energieausweis": {
+  "seitlich": 54,
+  "abgeschnitten": 2,
+  "kleineZiele": 0,
+  "beispiele": [
+   "DIV.absolute top-0 -translate-x-1/2 -mt-10 flex flex-col items-c",
+   "DIV.bg-text-main text-white px-2.5 py-1 rounded-lg font-bold tex"
+  ]
+ },
+ "nachhaltigkeit_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "nachhaltigkeit_daten_regeln": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialoptimierung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "oekobilanz_lca": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "zertifizierung_siegel": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kreislauf_dpp": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ressourcen_umwelt": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "lebenszyklus_kosten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bestand_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bestand": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauwerkserfassung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "denkmalpflege": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "modernisierung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauwerksuntersuchung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "historisch": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "historische_bauweisen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "historische_bauprodukte": {
+  "seitlich": 49,
+  "abgeschnitten": 1,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.text-[10px] font-mono font-bold text-shiraz bg-shiraz/5 bord"
+  ]
+ },
+ "bestand_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rueckbau_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rueckbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "boden_materialaufbereitung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "abfaelle": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schadstoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ressourceneffizienz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rueckbau_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "dauerhaftigkeit_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "dauerhaftigkeit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "korrosion": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schadreaktionen_beton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "holzkorrosion": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "metallkorrosion": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weitere_organik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "dauerhaftigkeit_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schaeden_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauschaeden": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schadensbilder": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bauwerksunters_monitoring": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vdi6200": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "material_schaeden_gross": {
+  "seitlich": 61,
+  "abgeschnitten": 2,
+  "kleineZiele": 0,
+  "beispiele": [
+   "BUTTON.px-4 py-2 bg-shiraz text-white rounded-xl text-xs font-bold ",
+   "SPAN."
+  ]
+ },
+ "schaeden_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "schutz_grundlagen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_materialien": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandhaltung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "wta": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "digitales_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "online_tools": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bim_baustoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialdatenbanken": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialpaesse": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "dpp": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_ueberblick": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_system": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_prompting": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_llmpraxis": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_thesen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_recht_ethik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_lokal": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_ressourcen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_onlinekurse": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "praxiswissen_info": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "px_planung": {
+  "seitlich": 43,
+  "abgeschnitten": 1,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
+  ]
+ },
+ "px_bauleitung": {
+  "seitlich": 209,
+  "abgeschnitten": 5,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
+  ]
+ },
+ "px_bautagebuch": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "px_produktion": {
+  "seitlich": 498,
+  "abgeschnitten": 4,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
+  ]
+ },
+ "px_karriere": {
+  "seitlich": 151,
+  "abgeschnitten": 2,
+  "kleineZiele": 0,
+  "beispiele": [
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
+   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
+  ]
+ },
+ "software": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "glossar": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "fortbildungen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "informationsquellen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "literatur": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kuriositaeten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "studium_tha": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_tha": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_bauing": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_pm": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_ausbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_fassade": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_holzbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_ttz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "weiter_mapr": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "thesen_projekte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_trainer": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_komplex": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_quiz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_beton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_stahlbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_holzbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_weitere": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_bauprodukte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_mechanik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_bauphysik": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_nachhaltigkeit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_bestand": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_dauerhaftigkeit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_rueckbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_kennwerte": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_digitales": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_u_wert": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_beton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_stahlbeton": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_holzbau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_mauerwerk": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_nachhaltigkeit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_bestand": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_schallschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rechnung_brandschutz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vl_bauen_im_bestand": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vl_nachhaltiges_bauen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vl_bauschaeden": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vl_baustoffkunde": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "vl_instandhaltung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "labor_sicherheit": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_klausur": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "aufgaben_stahl": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "biegebemessung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_rechtliches": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "bp_verkehrswegebau": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "durchstanzen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "eigenspannungen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "faserverbund": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_asphalt": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_holz": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_kunststoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_mauerwerk": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "instandsetzung_metalle": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "ki_baustoffe": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "kriechen": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "materialitaet_architektur": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "nachhaltigkeit_checklisten": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "querkraftbemessung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "rissbreite": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "spannung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "stuetzenbemessung": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "verankerungslaenge": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "zfp": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ },
+ "zwang": {
+  "seitlich": 0,
+  "abgeschnitten": 0,
+  "kleineZiele": 0,
+  "beispiele": []
+ }
+}

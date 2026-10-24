@@ -926,7 +926,7 @@ export default function Fortbildungen() {
                 <div className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto pr-1">
                   
                   {/* Shared/Universal goals tailored contextually */}
-                  <button
+                  <button aria-pressed={userGoal === 'sanierung'}
                     onClick={() => setUserGoal('sanierung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'sanierung'
@@ -937,7 +937,7 @@ export default function Fortbildungen() {
                     <span>Betonbau- / Parkhaus- / Brückeninstandsetzung leiten</span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'bauleitung'}
                     onClick={() => setUserGoal('bauleitung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'bauleitung'
@@ -948,7 +948,7 @@ export default function Fortbildungen() {
                     <span>Bauüberwachung auf anspruchsvollen Sanierungsbaustellen</span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'holzschutz'}
                     onClick={() => setUserGoal('holzschutz')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'holzschutz'
@@ -959,7 +959,7 @@ export default function Fortbildungen() {
                     <span>Historischen Holzbau &amp; Dachstühle sanieren und begutachten</span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'schadstoffe'}
                     onClick={() => setUserGoal('schadstoffe')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'schadstoffe'
@@ -970,7 +970,7 @@ export default function Fortbildungen() {
                     <span>Schadstoffsanierung &amp; Innenraumhygiene (Asbest/Schimmel) leiten</span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'rissinjektion'}
                     onClick={() => setUserGoal('rissinjektion')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'rissinjektion'
@@ -981,7 +981,7 @@ export default function Fortbildungen() {
                     <span>Rissabdichtungen &amp; Harzinjektionen fachgerecht ausführen</span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'baustellen_sicherheit'}
                     onClick={() => setUserGoal('baustellen_sicherheit')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'baustellen_sicherheit'
@@ -992,7 +992,7 @@ export default function Fortbildungen() {
                     <span>Sicherheitskoordination nach BaustellV (SiGeKo RAB 30)</span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'bauwerk_diagnose'}
                     onClick={() => setUserGoal('bauwerk_diagnose')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'bauwerk_diagnose'
@@ -1003,7 +1003,7 @@ export default function Fortbildungen() {
                     <span>Bauwerksdiagnostik, Inspektion &amp; Messtechnik (z. B. Drohne/Thermografie)</span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button
+                  <button aria-pressed={userGoal === 'abdichtung'}
                     onClick={() => setUserGoal('abdichtung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'abdichtung'
@@ -1018,7 +1018,7 @@ export default function Fortbildungen() {
                   {/* Engineer exclusivities */}
                   {userBackground === 'engineer' && (
                     <>
-                      <button
+                      <button aria-pressed={userGoal === 'stahlbau'}
                         onClick={() => setUserGoal('stahlbau')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'stahlbau'
@@ -1029,7 +1029,7 @@ export default function Fortbildungen() {
                         <span>Stahlbau- / Schweißaufsicht nach DIN EN 1090 übernehmen</span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
-                      <button
+                      <button aria-pressed={userGoal === 'spezialwerke'}
                         onClick={() => setUserGoal('spezialwerke')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'spezialwerke'
@@ -1040,7 +1040,7 @@ export default function Fortbildungen() {
                         <span>Elektrochemischen KKS-Schutz für Chloridschäden planen</span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
-                      <button
+                      <button aria-pressed={userGoal === 'denkmal_energie'}
                         onClick={() => setUserGoal('denkmal_energie')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'denkmal_energie'
@@ -1055,7 +1055,7 @@ export default function Fortbildungen() {
                   )}
 
                   {userBackground === 'student' && (
-                    <button
+                    <button aria-pressed={userGoal === 'denkmal_energie'}
                       onClick={() => setUserGoal('denkmal_energie')}
                       className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                         userGoal === 'denkmal_energie'

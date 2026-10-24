@@ -345,7 +345,7 @@ export default function Bindemittel() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'herstellung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'herstellung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -355,7 +355,7 @@ export default function Bindemittel() {
           >
             <Factory size={16} /> Herstellung &amp; Eigenschaften
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zement'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zement' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -365,7 +365,7 @@ export default function Bindemittel() {
           >
             <Layers size={16} /> Zement &amp; Hydratation
           </button>
-          <button
+          <button aria-pressed={activeTab === 'normzemente'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'normzemente' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -375,7 +375,7 @@ export default function Bindemittel() {
           >
             <BookOpen size={16} /> Normzemente (DIN EN 197 / DIN 1045-2)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zementchemie_bogue'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zementchemie_bogue' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -385,7 +385,7 @@ export default function Bindemittel() {
           >
             <Flame size={16} /> Zementchemie
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zusatzstoffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zusatzstoffe' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

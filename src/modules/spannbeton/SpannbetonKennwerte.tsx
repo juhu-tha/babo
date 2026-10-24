@@ -417,7 +417,7 @@ export default function SpannbetonKennwerte() {
               EC2
             </span>
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'beton'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'beton'
@@ -429,7 +429,7 @@ export default function SpannbetonKennwerte() {
             <Building size={15} /> Beton-Materialeigenschaften (<InlineMath math="f_{ck}, E_{cm}" />)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'einpressmoertel'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'einpressmoertel'
@@ -441,7 +441,7 @@ export default function SpannbetonKennwerte() {
             <Droplets size={15} /> Einpressmörtel &amp; Systembaustoffe (DIN EN 447, Hüllrohre, Fette)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'kriechen'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'kriechen'
@@ -453,7 +453,7 @@ export default function SpannbetonKennwerte() {
             <Clock size={15} /> Kriechen (<InlineMath math="\varphi" />)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'schwinden'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'schwinden'
@@ -465,7 +465,7 @@ export default function SpannbetonKennwerte() {
             <Droplets size={15} /> Schwinden (<InlineMath math="\varepsilon_{cs}" />)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'relaxation'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'relaxation'
@@ -477,7 +477,7 @@ export default function SpannbetonKennwerte() {
             <Zap size={15} /> Stahlrelaxation (<InlineMath math="\Delta\sigma_{pr}" />)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'elastisch'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'elastisch'
@@ -489,7 +489,7 @@ export default function SpannbetonKennwerte() {
             <Layers size={15} /> Elastische Stauchung &amp; E-Modul
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'kopplung'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'kopplung'
@@ -501,7 +501,7 @@ export default function SpannbetonKennwerte() {
             <Scale size={15} /> EC2-Kopplung (c+s+r)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'mechanisch'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'mechanisch'
@@ -513,7 +513,7 @@ export default function SpannbetonKennwerte() {
             <Compass size={15} /> Reibung &amp; Keilschlupf
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'beispielrechnung'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'beispielrechnung'
@@ -525,7 +525,7 @@ export default function SpannbetonKennwerte() {
             <Calculator size={15} /> EC2-Beispielrechnung (Zahlenbeispiel)
           </button>
 
-          <button
+          <button aria-pressed={activeSubTab === 'rechner'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeSubTab === 'rechner'

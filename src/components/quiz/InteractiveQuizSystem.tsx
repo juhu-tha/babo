@@ -334,7 +334,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
       {/* Sub-Navigation between Quiz & Dashboard */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-2 rounded-2xl border border-home-grau/30 shadow-xs">
         <div className="flex items-center gap-2">
-          <button
+          <button aria-pressed={activeMainTab === 'quiz'}
             type="button"
             onClick={() => setActiveMainTab('quiz')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
@@ -347,7 +347,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <span>Quiz &amp; Wissenscheck</span>
           </button>
 
-          <button
+          <button aria-pressed={activeMainTab === 'dashboard'}
             type="button"
             onClick={() => setActiveMainTab('dashboard')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
@@ -440,7 +440,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {/* Option 1: 360 Diagnostic */}
-              <button
+              <button aria-pressed={quizScope === 'diagnose_15'}
                 type="button"
                 onClick={() => setQuizScope('diagnose_15')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -466,7 +466,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 2: Express Check */}
-              <button
+              <button aria-pressed={quizScope === 'express_10'}
                 type="button"
                 onClick={() => setQuizScope('express_10')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -492,7 +492,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 3: Cluster Focus */}
-              <button
+              <button aria-pressed={quizScope === 'cluster'}
                 type="button"
                 onClick={() => setQuizScope('cluster')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -518,7 +518,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 4: Module Focus */}
-              <button
+              <button aria-pressed={quizScope === 'module'}
                 type="button"
                 onClick={() => setQuizScope('module')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -544,7 +544,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 5: Gaps Retest (if gaps exist) */}
-              <button
+              <button aria-pressed={quizScope === 'gaps_retest'}
                 type="button"
                 disabled={storedGaps.length === 0}
                 onClick={() => setQuizScope('gaps_retest')}
@@ -573,7 +573,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 6: Full Library */}
-              <button
+              <button aria-pressed={quizScope === 'full'}
                 type="button"
                 onClick={() => setQuizScope('full')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -659,7 +659,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               <Brain size={16} className="text-shiraz" /> 2. Didaktischen Feedback-Modus wählen
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-              <button
+              <button aria-pressed={feedbackMode === 'instant'}
                 type="button"
                 onClick={() => setFeedbackMode('instant')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
@@ -679,7 +679,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 </div>
               </button>
 
-              <button
+              <button aria-pressed={feedbackMode === 'exam'}
                 type="button"
                 onClick={() => setFeedbackMode('exam')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${

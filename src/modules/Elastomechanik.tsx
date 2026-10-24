@@ -121,7 +121,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
       {/* Tabs configuration inside layout */}
       <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-px">
-        <button
+        <button aria-pressed={activeTab === 'spannungen'}
           onClick={() => setActiveTab('spannungen')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'spannungen'
@@ -132,7 +132,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <Weight className="w-4 h-4" />
           1. Spannungen (Stress)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'dehnungen'}
           onClick={() => setActiveTab('dehnungen')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'dehnungen'
@@ -143,7 +143,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <Ruler className="w-4 h-4" />
           2. Dehnungen (Strain)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'emodul'}
           onClick={() => setActiveTab('emodul')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'emodul'
@@ -207,7 +207,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 <div className="space-y-2 pt-2">
                   <label className="text-xs font-bold text-text-main/80 block">Querschnittsgeometrie (A):</label>
                   <div className="grid grid-cols-3 gap-2">
-                    <button
+                    <button aria-pressed={shapeInputType === 'rectangle'}
                       onClick={() => setShapeInputType('rectangle')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'rectangle'
@@ -217,7 +217,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     >
                       Rechteck
                     </button>
-                    <button
+                    <button aria-pressed={shapeInputType === 'circle'}
                       onClick={() => setShapeInputType('circle')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'circle'
@@ -227,7 +227,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     >
                       Kreis
                     </button>
-                    <button
+                    <button aria-pressed={shapeInputType === 'direct'}
                       onClick={() => setShapeInputType('direct')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'direct'

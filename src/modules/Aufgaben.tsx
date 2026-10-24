@@ -103,7 +103,7 @@ export default function Aufgaben() {
     <div className="flex flex-col gap-8">
       {/* Central Mode Switcher */}
       <div className="flex flex-wrap sm:flex-nowrap bg-white p-1.5 rounded-2xl border border-home-grau/30 max-w-4xl mx-auto w-full shadow-xs gap-1">
-        <button
+        <button aria-pressed={mode === 'exercises'}
           onClick={() => setMode('exercises')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
             mode === 'exercises'
@@ -114,7 +114,7 @@ export default function Aufgaben() {
           <ClipboardCheck size={16} />
           <span>Übungen</span>
         </button>
-        <button
+        <button aria-pressed={mode === 'trainer'}
           onClick={() => setMode('trainer')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
             mode === 'trainer'
@@ -125,7 +125,7 @@ export default function Aufgaben() {
           <Calculator size={16} />
           <span>Prüfungs-Trainer</span>
         </button>
-        <button
+        <button aria-pressed={mode === 'forensik'}
           onClick={() => setMode('forensik')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
             mode === 'forensik'
@@ -136,7 +136,7 @@ export default function Aufgaben() {
           <Search size={16} />
           <span>Bauforensik</span>
         </button>
-        <button
+        <button aria-pressed={mode === 'quizzes'}
           onClick={() => setMode('quizzes')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
             mode === 'quizzes'
@@ -147,7 +147,7 @@ export default function Aufgaben() {
           <GraduationCap size={16} />
           <span>Fach-Quizze</span>
         </button>
-        <button
+        <button aria-pressed={mode === 'klausur'}
           onClick={() => setMode('klausur')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
             mode === 'klausur'

@@ -157,7 +157,7 @@ export function AccessibilityToolbar() {
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
-        aria-label="Barrierefreiheit & Anzeige-Optionen (A11y = Accessibility, WCAG 2.1 / BITV)"
+        aria-label="A11y – Barrierefreiheit und Anzeige-Optionen"
         className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors border shadow-2xs ${
           settings.highContrast || settings.fontSizeScale !== 1.0 || settings.dyslexicFont || settings.focusHighlight
             ? 'bg-shiraz text-white border-shiraz'

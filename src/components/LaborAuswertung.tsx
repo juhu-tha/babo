@@ -450,7 +450,7 @@ export default function LaborAuswertung() {
         
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 self-start md:self-auto shrink-0">
-          <button
+          <button aria-pressed={activeTab === 'bericht'}
             onClick={() => setActiveTab('bericht')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'bericht'
@@ -460,7 +460,7 @@ export default function LaborAuswertung() {
           >
             <BookOpen size={13} /> Fachübersicht
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'rechner'
@@ -470,7 +470,7 @@ export default function LaborAuswertung() {
           >
             <Calculator size={13} /> Isotopen- &amp; Wasser-Rechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'kompass'}
             onClick={() => setActiveTab('kompass')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'kompass'
@@ -480,7 +480,7 @@ export default function LaborAuswertung() {
           >
             <Compass size={13} /> Schadens-Kompass
           </button>
-          <button
+          <button aria-pressed={activeTab === 'tabelle'}
             onClick={() => setActiveTab('tabelle')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'tabelle'
@@ -736,7 +736,7 @@ export default function LaborAuswertung() {
                 <div>
                   <span className="text-xs font-bold text-slate-700 block mb-2">Anthropogenes Gadolinium (Gd)</span>
                   <div className="grid grid-cols-2 gap-2">
-                    <button
+                    <button aria-pressed={gadolinium === 'none'}
                       onClick={() => setGadolinium('none')}
                       className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                         gadolinium === 'none'
@@ -746,7 +746,7 @@ export default function LaborAuswertung() {
                     >
                       Klinisch unauffällig
                     </button>
-                    <button
+                    <button aria-pressed={gadolinium === 'elevated'}
                       onClick={() => setGadolinium('elevated')}
                       className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                         gadolinium === 'elevated'
@@ -766,7 +766,7 @@ export default function LaborAuswertung() {
                 <div className="pt-2 border-t border-slate-100">
                   <span className="text-xs font-bold text-slate-700 block mb-2">Microbial Source qPCR (Wirts-Genotyp)</span>
                   <div className="grid grid-cols-3 gap-2">
-                    <button
+                    <button aria-pressed={mst === 'none'}
                       onClick={() => setMst('none')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'none'
@@ -776,7 +776,7 @@ export default function LaborAuswertung() {
                     >
                       Bakterienfrei
                     </button>
-                    <button
+                    <button aria-pressed={mst === 'human'}
                       onClick={() => setMst('human')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'human'
@@ -786,7 +786,7 @@ export default function LaborAuswertung() {
                     >
                       Humane Sequenzen
                     </button>
-                    <button
+                    <button aria-pressed={mst === 'animal'}
                       onClick={() => setMst('animal')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'animal'
@@ -837,7 +837,7 @@ export default function LaborAuswertung() {
             <div className="md:col-span-1.5 flex flex-col gap-1.5">
               <span className="text-[10px] font-mono text-slate-400 uppercase font-bold px-1">Betreffende Bauteile</span>
               
-              <button
+              <button aria-pressed={selectedTopic === 'akr'}
                 onClick={() => setSelectedTopic('akr')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'akr'
@@ -848,7 +848,7 @@ export default function LaborAuswertung() {
                 "Betonkrebs" (AKR / Opalflint)
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'sulfat'}
                 onClick={() => setSelectedTopic('sulfat')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'sulfat'
@@ -859,7 +859,7 @@ export default function LaborAuswertung() {
                 Ettringit / Thaumasit (Sulfat)
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'mörtel'}
                 onClick={() => setSelectedTopic('mörtel')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'mörtel'
@@ -870,7 +870,7 @@ export default function LaborAuswertung() {
                 Hist. Mörtel (TGA-Hydraulik)
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'asbest'}
                 onClick={() => setSelectedTopic('asbest')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'asbest'
@@ -881,7 +881,7 @@ export default function LaborAuswertung() {
                 Asbest (Fliesenkleber, Putze)
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'toxine'}
                 onClick={() => setSelectedTopic('toxine')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'toxine'
@@ -892,7 +892,7 @@ export default function LaborAuswertung() {
                 Fogging &amp; Weichmacher (Phthalate)
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'fugen'}
                 onClick={() => setSelectedTopic('fugen')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'fugen'
@@ -903,7 +903,7 @@ export default function LaborAuswertung() {
                 PCB &amp; PAK in elastischen Fugen
               </button>
 
-              <button
+              <button aria-pressed={selectedTopic === 'pollen'}
                 onClick={() => setSelectedTopic('pollen')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'pollen'
@@ -1090,7 +1090,7 @@ export default function LaborAuswertung() {
                 <span className="text-[10px] font-bold text-slate-500 px-2 flex items-center gap-1">
                   <Filter size={11} /> ZfP / NDT:
                 </span>
-                <button
+                <button aria-pressed={filterNdt === 'all'}
                   onClick={() => setFilterNdt('all')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'all' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'
@@ -1098,7 +1098,7 @@ export default function LaborAuswertung() {
                 >
                   Alle
                 </button>
-                <button
+                <button aria-pressed={filterNdt === 'jdt'}
                   onClick={() => setFilterNdt('jdt')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'jdt' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'
@@ -1106,7 +1106,7 @@ export default function LaborAuswertung() {
                 >
                   Zerstörungsfrei
                 </button>
-                <button
+                <button aria-pressed={filterNdt === 'notndt'}
                   onClick={() => setFilterNdt('notndt')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'notndt' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'

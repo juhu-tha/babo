@@ -419,7 +419,7 @@ export default function Baustoffkenngroessen() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'eigenschaften'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'eigenschaften' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -429,7 +429,7 @@ export default function Baustoffkenngroessen() {
           >
             <Layers size={16} /> Eigenschaften
           </button>
-          <button
+          <button aria-pressed={activeTab === 'mechanisch'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'mechanisch' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -439,7 +439,7 @@ export default function Baustoffkenngroessen() {
           >
             <Activity size={16} /> Mechanisch
           </button>
-          <button
+          <button aria-pressed={activeTab === 'physikalisch'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'physikalisch' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -449,7 +449,7 @@ export default function Baustoffkenngroessen() {
           >
             <Scale size={16} /> Physikalisch
           </button>
-          <button
+          <button aria-pressed={activeTab === 'hygrisch'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'hygrisch' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -459,7 +459,7 @@ export default function Baustoffkenngroessen() {
           >
             <Droplets size={16} /> Hygrisch
           </button>
-          <button
+          <button aria-pressed={activeTab === 'thermisch'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'thermisch' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -469,7 +469,7 @@ export default function Baustoffkenngroessen() {
           >
             <Flame size={16} /> Thermisch
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zeitlich'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zeitlich' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -479,7 +479,7 @@ export default function Baustoffkenngroessen() {
           >
             <Clock size={16} /> Zeitabh. Eigenschaften
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechenbeispiele'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechenbeispiele' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

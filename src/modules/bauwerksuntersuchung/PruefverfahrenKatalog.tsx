@@ -46,7 +46,7 @@ export default function PruefverfahrenKatalog() {
         {/* Filter Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-home-grau/20">
           <div className="flex flex-wrap gap-1.5">
-            <button
+            <button aria-pressed={selectedCategory === 'all'}
               type="button"
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -57,7 +57,7 @@ export default function PruefverfahrenKatalog() {
             >
               Alle ({PRUEFVERFAHREN_LIST.length})
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'zfp'}
               type="button"
               onClick={() => setSelectedCategory('zfp')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -68,7 +68,7 @@ export default function PruefverfahrenKatalog() {
             >
               Zerstörungsfrei ZfP (6)
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'minimalinvasiv'}
               type="button"
               onClick={() => setSelectedCategory('minimalinvasiv')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -79,7 +79,7 @@ export default function PruefverfahrenKatalog() {
             >
               Minimalinvasiv (4)
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'zerstoerend'}
               type="button"
               onClick={() => setSelectedCategory('zerstoerend')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${

@@ -794,7 +794,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
           
           {/* View Mode Toggle Buttons */}
           <div className="flex flex-wrap items-center gap-1.5 p-1 bg-off-white rounded-xl border border-home-grau/30 shrink-0">
-            <button
+            <button aria-pressed={viewMode === 'kaskade'}
               onClick={() => setViewMode('kaskade')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'kaskade'
@@ -804,7 +804,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Layers size={13} /> Kaskade (5 Ebenen)
             </button>
-            <button
+            <button aria-pressed={viewMode === 'diagramm'}
               onClick={() => setViewMode('diagramm')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'diagramm'
@@ -814,7 +814,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Globe size={13} /> System-Fluss
             </button>
-            <button
+            <button aria-pressed={viewMode === 'timeline'}
               onClick={() => setViewMode('timeline')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'timeline'
@@ -824,7 +824,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Calendar size={13} /> Fahrplan 2024–2050
             </button>
-            <button
+            <button aria-pressed={viewMode === 'synopse'}
               onClick={() => setViewMode('synopse')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'synopse'
@@ -888,7 +888,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
 
         {/* Level Selector Tabs */}
         <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/15">
-          <button
+          <button aria-pressed={selectedLevel === 'all'}
             onClick={() => setSelectedLevel('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer flex items-center gap-1.5 ${
               selectedLevel === 'all'

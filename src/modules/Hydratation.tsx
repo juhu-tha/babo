@@ -781,7 +781,7 @@ export default function Hydratation() {
 
               {/* Modus-Umschalter */}
               <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl border border-home-grau/25 mb-3 text-xs font-semibold">
-                <button
+                <button aria-pressed={festigkeitsModus === 'relativ'}
                   type="button"
                   onClick={() => setFestigkeitsModus('relativ')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -793,7 +793,7 @@ export default function Hydratation() {
                 >
                   [%] Relativ
                 </button>
-                <button
+                <button aria-pressed={festigkeitsModus === 'druck'}
                   type="button"
                   onClick={() => setFestigkeitsModus('druck')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -805,7 +805,7 @@ export default function Hydratation() {
                 >
                   [MPa] Druck
                 </button>
-                <button
+                <button aria-pressed={festigkeitsModus === 'zug'}
                   type="button"
                   onClick={() => setFestigkeitsModus('zug')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -817,7 +817,7 @@ export default function Hydratation() {
                 >
                   [MPa] Zug
                 </button>
-                <button
+                <button aria-pressed={festigkeitsModus === 'emodul'}
                   type="button"
                   onClick={() => setFestigkeitsModus('emodul')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -829,7 +829,7 @@ export default function Hydratation() {
                 >
                   [GPa] E-Modul
                 </button>
-                <button
+                <button aria-pressed={festigkeitsModus === 'alle_absolut'}
                   type="button"
                   onClick={() => setFestigkeitsModus('alle_absolut')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${

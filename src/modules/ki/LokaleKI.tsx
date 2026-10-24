@@ -116,7 +116,7 @@ export default function LokaleKI() {
 
         {/* SUB-TABS */}
         <div className="flex flex-wrap gap-2 pt-5 border-b border-home-grau/20 mt-2">
-          <button
+          <button aria-pressed={activeSubTab === 'anleitung'}
             onClick={() => setActiveSubTab('anleitung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'anleitung'
@@ -126,7 +126,7 @@ export default function LokaleKI() {
           >
             <Download size={14} /> 1. LM Studio Schritt-für-Schritt
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'warum'}
             onClick={() => setActiveSubTab('warum')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'warum'
@@ -136,7 +136,7 @@ export default function LokaleKI() {
           >
             <ShieldCheck size={14} /> 2. Warum Lokal im Bauwesen?
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'modelle'}
             onClick={() => setActiveSubTab('modelle')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'modelle'
@@ -146,7 +146,7 @@ export default function LokaleKI() {
           >
             <Database size={14} /> 3. Modell-Empfehlungen (GGUF)
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'benchmark'}
             onClick={() => setActiveSubTab('benchmark')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'benchmark'
@@ -156,7 +156,7 @@ export default function LokaleKI() {
           >
             <Gauge size={14} /> 4. Benchmarking (Cloud vs. Lokal)
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'server'}
             onClick={() => setActiveSubTab('server')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'server'
@@ -166,7 +166,7 @@ export default function LokaleKI() {
           >
             <Terminal size={14} /> 5. Lokaler Server (API-Anbindung)
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'hardware'}
             onClick={() => setActiveSubTab('hardware')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'hardware'
@@ -176,7 +176,7 @@ export default function LokaleKI() {
           >
             <Cpu size={14} /> 6. Hardware-Dimensionierung
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'rechner'}
             onClick={() => setActiveSubTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'rechner'

@@ -331,7 +331,7 @@ export default function Regularien() {
 
         {/* Navigation Tabs */}
         <div className="flex border-b border-home-grau/30 overflow-x-auto w-full">
-          <button
+          <button aria-pressed={activeTab === 'hierarchie'}
             className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'hierarchie' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -339,7 +339,7 @@ export default function Regularien() {
           >
             <Scale size={16} /> Hierarchie aller Regelungen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'katalog'}
             className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'katalog' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -347,7 +347,7 @@ export default function Regularien() {
           >
             <Building size={16} /> Grundbegriffe &amp; Bauaufsicht
           </button>
-          <button
+          <button aria-pressed={activeTab === 'normen'}
             className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'normen' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}

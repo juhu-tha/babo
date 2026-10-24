@@ -1072,19 +1072,19 @@ export default function Schadstoffe() {
                       <p className="text-xs text-slate-500 mb-4">Wählen Sie einen repräsentativen Baustoff aus, um die Grenzwerte und Einbauklassen der EBV zu visualisieren.</p>
                       
                       <div className="grid grid-cols-3 gap-2 mb-4">
-                        <button 
+                        <button aria-pressed={selectedMEB === 'rc_baustoff'} 
                           onClick={() => setSelectedMEB('rc_baustoff')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'rc_baustoff' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           RC-Bauschutt
                         </button>
-                        <button 
+                        <button aria-pressed={selectedMEB === 'bodenaushub'} 
                           onClick={() => setSelectedMEB('bodenaushub')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'bodenaushub' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           Bodenaushub
                         </button>
-                        <button 
+                        <button aria-pressed={selectedMEB === 'hm_asche'} 
                           onClick={() => setSelectedMEB('hm_asche')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'hm_asche' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >

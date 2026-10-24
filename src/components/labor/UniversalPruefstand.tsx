@@ -1120,7 +1120,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 {/* Diagram Mode Switcher & Chart Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <button
+                    <button aria-pressed={chartViewMode === 'sigma_eps'}
                       onClick={() => setChartViewMode('sigma_eps')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartViewMode === 'sigma_eps'
@@ -1130,7 +1130,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     >
                       Spannung-Dehnung (σ – ε)
                     </button>
-                    <button
+                    <button aria-pressed={chartViewMode === 'f_delta'}
                       onClick={() => setChartViewMode('f_delta')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartViewMode === 'f_delta'

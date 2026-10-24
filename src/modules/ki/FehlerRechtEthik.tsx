@@ -132,7 +132,7 @@ export default function FehlerRechtEthik() {
 
         {/* SUB-TABS */}
         <div className="flex flex-wrap gap-2 pt-5 border-b border-home-grau/20 mt-2">
-          <button
+          <button aria-pressed={activeSubTab === 'grenzen'}
             onClick={() => setActiveSubTab('grenzen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'grenzen'
@@ -142,7 +142,7 @@ export default function FehlerRechtEthik() {
           >
             <FileWarning size={14} /> 1. Technische Grenzen &amp; Halluzinationen
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'haftung'}
             onClick={() => setActiveSubTab('haftung')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'haftung'
@@ -152,7 +152,7 @@ export default function FehlerRechtEthik() {
           >
             <Scale size={14} /> 2. BGB-Haftung &amp; EU AI Act
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'datenschutz'}
             onClick={() => setActiveSubTab('datenschutz')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'datenschutz'
@@ -162,7 +162,7 @@ export default function FehlerRechtEthik() {
           >
             <Lock size={14} /> 3. Datenschutz &amp; Geschäftsgeheimnis
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'ethik'}
             onClick={() => setActiveSubTab('ethik')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'ethik'
@@ -172,7 +172,7 @@ export default function FehlerRechtEthik() {
           >
             <Leaf size={14} /> 4. Ethik, Ökologie &amp; Bias
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'simulator'}
             onClick={() => setActiveSubTab('simulator')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'simulator'
@@ -182,7 +182,7 @@ export default function FehlerRechtEthik() {
           >
             <Sliders size={14} /> 5. Interaktiver Risiko-Check
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'deklaration'}
             onClick={() => setActiveSubTab('deklaration')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'deklaration'

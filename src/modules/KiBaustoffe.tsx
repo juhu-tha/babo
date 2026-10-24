@@ -346,7 +346,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         {/* PRIMARY TABS */}
         {!forceTab && (
           <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'system'}
             onClick={() => setActiveTab('system')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'system' 
@@ -356,7 +356,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <Cpu size={16} /> a) Systemarchitektur
           </button>
-          <button
+          <button aria-pressed={activeTab === 'prompting'}
             onClick={() => setActiveTab('prompting')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'prompting' 
@@ -366,7 +366,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <MessageSquare size={16} /> b) Prompting-Praxis
           </button>
-          <button
+          <button aria-pressed={activeTab === 'llmpraxis'}
             onClick={() => setActiveTab('llmpraxis')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'llmpraxis' 
@@ -376,7 +376,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <Terminal size={16} /> c) LLM-Praxis (Claude &amp; ChatGPT)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'thesen'}
             onClick={() => setActiveTab('thesen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'thesen' 
@@ -386,7 +386,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <BookOpen size={16} /> d) Tools für Thesen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'recht_ethik'}
             onClick={() => setActiveTab('recht_ethik')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'recht_ethik' 
@@ -396,7 +396,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <ShieldAlert size={16} /> e) Fehler, Recht &amp; Ethik
           </button>
-          <button
+          <button aria-pressed={activeTab === 'lokal'}
             onClick={() => setActiveTab('lokal')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'lokal' 
@@ -406,7 +406,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <Server size={16} /> f) Lokale KI (LM Studio)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'ressourcen'}
             onClick={() => setActiveTab('ressourcen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ressourcen' 
@@ -416,7 +416,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           >
             <Compass size={16} /> g) Unabhängige KI-Seiten
           </button>
-          <button
+          <button aria-pressed={activeTab === 'onlinekurse'}
             onClick={() => setActiveTab('onlinekurse')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'onlinekurse' 

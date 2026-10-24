@@ -373,7 +373,7 @@ export default function BeiwerteKatalog() {
       {/* Filterleiste */}
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
         <div className="flex flex-wrap gap-1.5">
-          <button
+          <button aria-pressed={selectedFilter === 'alle'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'alle'
@@ -384,7 +384,7 @@ export default function BeiwerteKatalog() {
           >
             Alle Beiwerte ({BEIWERTE_KATALOG.length})
           </button>
-          <button
+          <button aria-pressed={selectedFilter === 'kriechen'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'kriechen'
@@ -395,7 +395,7 @@ export default function BeiwerteKatalog() {
           >
             Kriechen (φ)
           </button>
-          <button
+          <button aria-pressed={selectedFilter === 'schwinden'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'schwinden'
@@ -406,7 +406,7 @@ export default function BeiwerteKatalog() {
           >
             Schwinden (ε_cs)
           </button>
-          <button
+          <button aria-pressed={selectedFilter === 'relaxation'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'relaxation'
@@ -417,7 +417,7 @@ export default function BeiwerteKatalog() {
           >
             Stahlrelaxation (ρ, Δσ_pr)
           </button>
-          <button
+          <button aria-pressed={selectedFilter === 'mechanisch'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'mechanisch'
@@ -428,7 +428,7 @@ export default function BeiwerteKatalog() {
           >
             Reibung &amp; Schlupf (μ, k, w)
           </button>
-          <button
+          <button aria-pressed={selectedFilter === 'sicherheit'}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'sicherheit'

@@ -225,7 +225,7 @@ export default function BpAbdichtung() {
 
         {/* Primary Tabs */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -235,7 +235,7 @@ export default function BpAbdichtung() {
           >
             <BookOpen size={16} /> Basiswissen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -245,7 +245,7 @@ export default function BpAbdichtung() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

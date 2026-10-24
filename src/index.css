@@ -1024,3 +1024,77 @@ input[type=range]:focus {
 
 
 
+
+/* ==========================================================================
+   KONTRAST-MINDESTWERTE (Umsetzungsplan Phase 2, AP 2.4)
+   Ungeschichtet, damit sie die Tailwind-Utilities überschreiben. Ziel: Text ≥ 4,5:1 (WCAG 2.1 AA).
+   Hellmodus: text-main ≥ 68 % Deckkraft (≈ 5,5:1 auf Weiß), home-grau voll deckend (4,8:1),
+   slate-/gray-400/500 → #5a687e (≥ 4,5:1 bis slate-200) – außer auf dunklen Flächen (exakte Klassen-Tokens). Weiß auf Farbe ≥ 85 % (≈ 5,9:1 auf Shiraz).
+   ========================================================================== */
+.text-text-main\/30, .text-text-main\/40, .text-text-main\/45, .text-text-main\/50,
+.text-text-main\/55, .text-text-main\/60, .text-text-main\/65 {
+  color: color-mix(in oklab, var(--color-text-main) 68%, transparent);
+}
+.text-home-grau\/30, .text-home-grau\/40, .text-home-grau\/50, .text-home-grau\/55,
+.text-home-grau\/60, .text-home-grau\/65, .text-home-grau\/70, .text-home-grau\/80, .text-home-grau\/90 {
+  color: var(--color-home-grau);
+}
+.text-white\/40, .text-white\/50, .text-white\/60, .text-white\/70, .text-white\/75 {
+  color: rgb(255 255 255 / 0.85);
+}
+html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray-500):not([class~="bg-slate-700"] *, [class~="bg-slate-800"] *, [class~="bg-slate-900"] *, [class~="bg-slate-950"] *, [class~="bg-slate-900/90"] *, [class~="bg-slate-900/95"] *, [class~="bg-slate-800/90"] *, [class~="bg-gray-800"] *, [class~="bg-gray-900"] *, [class~="bg-zinc-900"] *, [class~="bg-stone-900"] *, [class~="bg-neutral-900"] *, [class~="bg-black"] *, [class~="bg-shiraz"] *, [class~="bg-shiraz-dark"] *, [class~="bg-emerald-900"] *, [class~="bg-emerald-950"] *, [class~="bg-blue-900"] *, [class~="bg-indigo-900"] *, [class~="bg-rose-900"] *, [class~="bg-amber-900"] *, [class~="bg-amber-950"] *, [class~="bg-red-900"] *, [class~="bg-slate-950/90"] *) {
+  color: #5a687e; /* zwischen slate-500 und slate-600: ≥ 4,5:1 bis Hintergrund slate-200 */
+}
+
+/* Pulsieren nur dezent (Text bleibt lesbar, Kontrast ≥ AA) und aus bei reduzierter Bewegung (AP 2.4/2.11) */
+@keyframes bb-pulse-dezent { 50% { opacity: 0.82; } }
+.animate-pulse { animation: bb-pulse-dezent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse, .animate-spin, .animate-bounce, .animate-ping { animation: none !important; }
+}
+
+/* ==========================================================================
+   MOBIL-UMBRUCH (Umsetzungsplan Phase 2, AP 2.6): kein seitliches Abschneiden bei 390 px
+   ========================================================================== */
+#module-content { min-width: 0; overflow-wrap: break-word; }
+#module-content .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+#module-content .grid > * { min-width: 0; }
+@media (max-width: 640px) {
+  #module-content { overflow-wrap: anywhere; }
+  /* Zeilen aus Chips/Schaltflächen umbrechen statt über den Rand laufen */
+  #module-content .flex:not(.flex-col):not(.flex-nowrap):not(.flex-col-reverse) { flex-wrap: wrap; }
+  /* Breite Tabellen horizontal scrollbar statt abgeschnitten (role="table" setzt useAutoFormLabels) */
+  #module-content table { display: block; max-width: 100%; overflow-x: auto; }
+  #module-content select { max-width: 100%; min-width: 0; width: auto; }
+  #module-content .flex > select, #module-content .grid > * { min-width: 0; }
+  #module-content pre, #module-content code { white-space: pre-wrap; }
+}
+
+/* Mindestgröße für Bedienelemente auf Touch-Geräten: 24 × 24 px (WCAG 2.2, 2.5.8; AP 2.7) */
+@media (pointer: coarse), (max-width: 640px) {
+  #module-content button, header button, #module-content select,
+  #module-content a[href]:not(p a):not(li a):not(td a):not(span a) {
+    min-height: 24px;
+    min-width: 24px;
+  }
+  #module-content input[type="checkbox"], #module-content input[type="radio"] { width: 24px; height: 24px; }
+  #module-content input[type="range"] { min-height: 24px; }
+  #module-content input[type="number"], #module-content input[type="text"] { min-height: 24px; }
+}
+
+/* ==========================================================================
+   LESBARKEIT (Umsetzungsplan Phase 2, AP 2.11)
+   Mindestschriftgröße 12 px für Beschriftungen, Zeilenlänge im Fließtext höchstens ~80 Zeichen.
+   ========================================================================== */
+.text-\[8px\], .text-\[8\.5px\], .text-\[9px\], .text-\[9\.5px\], .text-\[10px\], .text-\[10\.5px\],
+.text-\[11px\], .text-xxs {
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+#module-content p:not(.text-center):not([class*="max-w-"]),
+#module-content li:not(.text-center) {
+  max-width: 80ch;
+}
+header button { white-space: nowrap; }
+#mobil-werkzeuge #a11y-toggle-btn span.hidden { display: inline; }
+#mobil-werkzeuge > * { width: 100%; justify-content: flex-start; }

@@ -721,7 +721,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
 
                   <div className="flex items-center gap-2">
                     <div className="inline-flex rounded-lg border border-home-grau/30 p-0.5 bg-slate-50 text-xs">
-                      <button
+                      <button aria-pressed={chartMode === 'stress'}
                         onClick={() => setChartMode('stress')}
                         className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer ${
                           chartMode === 'stress' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -729,7 +729,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                       >
                         Spannung (MPa)
                       </button>
-                      <button
+                      <button aria-pressed={chartMode === 'force'}
                         onClick={() => setChartMode('force')}
                         className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer ${
                           chartMode === 'force' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'

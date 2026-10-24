@@ -1384,7 +1384,7 @@ export default function Stahl() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1394,7 +1394,7 @@ export default function Stahl() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'spannungsdehnung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'spannungsdehnung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1404,7 +1404,7 @@ export default function Stahl() {
           >
             <Activity size={16} /> Spannungs-Dehnungs-Linien
           </button>
-          <button
+          <button aria-pressed={activeTab === 'stahlsorten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'stahlsorten' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1414,7 +1414,7 @@ export default function Stahl() {
           >
             <Layers size={16} /> Stahlwerkstoffe &amp; Güten
           </button>
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1424,7 +1424,7 @@ export default function Stahl() {
           >
             <Shield size={16} /> Allgemein &amp; Ermüdung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'walzen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'walzen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1434,7 +1434,7 @@ export default function Stahl() {
           >
             <Minimize2 size={16} /> Walzprofile (Eigenspannungen)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'schweissen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'schweissen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1444,7 +1444,7 @@ export default function Stahl() {
           >
             <Flame size={16} /> Schweißverbindungen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'legierungen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'legierungen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -2125,7 +2125,7 @@ export default function Stahl() {
                 <span className="text-[11px] font-bold text-slate-500 uppercase px-2 flex items-center gap-1">
                   <Maximize2 size={13} /> Skalierung:
                 </span>
-                <button
+                <button aria-pressed={strainZoom === 'auto'}
                   onClick={() => setStrainZoom('auto')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'auto' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
@@ -2134,7 +2134,7 @@ export default function Stahl() {
                 >
                   Auto-Skalierung
                 </button>
-                <button
+                <button aria-pressed={strainZoom === 'detail'}
                   onClick={() => setStrainZoom('detail')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'detail' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
@@ -2142,7 +2142,7 @@ export default function Stahl() {
                 >
                   Fließbeginn (0–3 %)
                 </button>
-                <button
+                <button aria-pressed={strainZoom === 'work'}
                   onClick={() => setStrainZoom('work')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'work' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
@@ -2150,7 +2150,7 @@ export default function Stahl() {
                 >
                   Arbeitsbereich (0–15 %)
                 </button>
-                <button
+                <button aria-pressed={strainZoom === 'full'}
                   onClick={() => setStrainZoom('full')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'full' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
@@ -2249,12 +2249,12 @@ export default function Stahl() {
                     Virtueller Zugversuch: Belastungssimulator bei Dehnung <InlineMath math="\varepsilon" />
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 min-w-0 max-w-full">
                   <span className="text-xs font-semibold text-slate-500">Prüfwerkstoff:</span>
                   <select aria-label="Prüfwerkstoff"
                     value={simGradeId}
                     onChange={(e) => setSimGradeId(e.target.value)}
-                    className="p-1.5 text-xs font-bold border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:border-shiraz"
+                    className="w-full sm:w-auto max-w-full min-w-0 p-1.5 text-xs font-bold border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:border-shiraz"
                   >
                     {steelCurveDefinitions.map(def => (
                       <option key={def.id} value={def.id}>{def.name} ({def.sub})</option>
@@ -2495,7 +2495,7 @@ export default function Stahl() {
               </div>
 
               <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
-                <button
+                <button aria-pressed={reinforcementDeepDiveTab === 'bewehrung'}
                   onClick={() => setReinforcementDeepDiveTab('bewehrung')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     reinforcementDeepDiveTab === 'bewehrung' 
@@ -2505,7 +2505,7 @@ export default function Stahl() {
                 >
                   Bewehrungsstähle (DIN 488 / EC2)
                 </button>
-                <button
+                <button aria-pressed={reinforcementDeepDiveTab === 'spannstahl'}
                   onClick={() => setReinforcementDeepDiveTab('spannstahl')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     reinforcementDeepDiveTab === 'spannstahl' 
@@ -2748,7 +2748,7 @@ export default function Stahl() {
 
               {/* Kategorie Filter-Pills */}
               <div className="flex flex-wrap gap-1.5 text-xs">
-                <button
+                <button aria-pressed={steelCatalogFilter === 'all'}
                   onClick={() => setSteelCatalogFilter('all')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'all'
@@ -2758,7 +2758,7 @@ export default function Stahl() {
                 >
                   Alle ({extendedSteelGrades.length})
                 </button>
-                <button
+                <button aria-pressed={steelCatalogFilter === 'baustahl'}
                   onClick={() => setSteelCatalogFilter('baustahl')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'baustahl'
@@ -2768,7 +2768,7 @@ export default function Stahl() {
                 >
                   Baustähle ({extendedSteelGrades.filter(g => g.category === 'baustahl').length})
                 </button>
-                <button
+                <button aria-pressed={steelCatalogFilter === 'bewehrung'}
                   onClick={() => setSteelCatalogFilter('bewehrung')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'bewehrung'
@@ -2778,7 +2778,7 @@ export default function Stahl() {
                 >
                   Bewehrungsstähle ({extendedSteelGrades.filter(g => g.category === 'bewehrung').length})
                 </button>
-                <button
+                <button aria-pressed={steelCatalogFilter === 'spannstahl'}
                   onClick={() => setSteelCatalogFilter('spannstahl')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'spannstahl'
@@ -2788,7 +2788,7 @@ export default function Stahl() {
                 >
                   Spannstähle ({extendedSteelGrades.filter(g => g.category === 'spannstahl').length})
                 </button>
-                <button
+                <button aria-pressed={steelCatalogFilter === 'edelstahl'}
                   onClick={() => setSteelCatalogFilter('edelstahl')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'edelstahl'

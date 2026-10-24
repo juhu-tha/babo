@@ -140,7 +140,7 @@ export default function Lebensdauern() {
 
         {/* Tab Navigation following GEMINI_md */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button
+          <button aria-pressed={activeTab === 'austauschrechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'austauschrechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -150,7 +150,7 @@ export default function Lebensdauern() {
           >
             <Calculator size={16} /> Austauschzyklen-Rechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'diagramm'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'diagramm' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -160,7 +160,7 @@ export default function Lebensdauern() {
           >
             <BarChart3 size={16} /> Lebensdauer-Spannen (Diagramm)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'tabelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'tabelle' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -170,7 +170,7 @@ export default function Lebensdauern() {
           >
             <Table size={16} /> Bauteiltabelle (BNB / BBSR)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

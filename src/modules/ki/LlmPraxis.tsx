@@ -165,7 +165,7 @@ ${normGuidelines[genNorm]}
   // Main interactive tabs & content block
   const tabsNavigation = (
     <div className="flex flex-wrap gap-2 pt-2 border-b border-home-grau/20 pb-3">
-      <button
+      <button aria-pressed={activeTab === 'uebersicht'}
         onClick={() => setActiveTab('uebersicht')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'uebersicht'
@@ -175,7 +175,7 @@ ${normGuidelines[genNorm]}
       >
         <Bot size={16} /> 1. Claude vs. ChatGPT im Bau
       </button>
-      <button
+      <button aria-pressed={activeTab === 'skills_konnektoren'}
         onClick={() => setActiveTab('skills_konnektoren')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'skills_konnektoren'
@@ -185,7 +185,7 @@ ${normGuidelines[genNorm]}
       >
         <Zap size={16} /> 2. Skills &amp; MCP-Konnektoren
       </button>
-      <button
+      <button aria-pressed={activeTab === 'markdown'}
         onClick={() => setActiveTab('markdown')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'markdown'
@@ -195,7 +195,7 @@ ${normGuidelines[genNorm]}
       >
         <FileCode size={16} /> 3. Markdown (.md) Standard
       </button>
-      <button
+      <button aria-pressed={activeTab === 'verzeichnisse'}
         onClick={() => setActiveTab('verzeichnisse')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'verzeichnisse'
@@ -205,7 +205,7 @@ ${normGuidelines[genNorm]}
       >
         <FolderTree size={16} /> 4. Projektverzeichnisse &amp; CLAUDE.md
       </button>
-      <button
+      <button aria-pressed={activeTab === 'browser'}
         onClick={() => setActiveTab('browser')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'browser'
@@ -215,7 +215,7 @@ ${normGuidelines[genNorm]}
       >
         <Globe size={16} /> 5. Browser &amp; Web-Grounding
       </button>
-      <button
+      <button aria-pressed={activeTab === 'praxisvorlagen'}
         onClick={() => setActiveTab('praxisvorlagen')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
           activeTab === 'praxisvorlagen'
@@ -423,19 +423,19 @@ ${normGuidelines[genNorm]}
 
               {/* Subtabs for Skills & MCP */}
               <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                <button
+                <button aria-pressed={skillSubTab === 'skills_system'}
                   onClick={() => setSkillSubTab('skills_system')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'skills_system' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   1. Was sind Skills?
                 </button>
-                <button
+                <button aria-pressed={skillSubTab === 'mcp_arch'}
                   onClick={() => setSkillSubTab('mcp_arch')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'mcp_arch' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   2. MCP-Architektur
                 </button>
-                <button
+                <button aria-pressed={skillSubTab === 'mcp_servers'}
                   onClick={() => setSkillSubTab('mcp_servers')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'mcp_servers' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
@@ -675,19 +675,19 @@ triggers: [bedenkenanmeldung, vob b § 4, vorleistung fehlerhaft, behinderungsan
 
               {/* View toggle */}
               <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                <button
+                <button aria-pressed={markdownView === 'vergleich'}
                   onClick={() => setMarkdownView('vergleich')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'vergleich' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   Warum .md?
                 </button>
-                <button
+                <button aria-pressed={markdownView === 'syntax'}
                   onClick={() => setMarkdownView('syntax')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'syntax' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   Ingenieur-Syntax
                 </button>
-                <button
+                <button aria-pressed={markdownView === 'rechner'}
                   onClick={() => setMarkdownView('rechner')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'rechner' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
@@ -864,7 +864,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                   <div>
                     <label className="text-xs font-semibold text-text-main/80 block mb-1">Eingabeformat:</label>
                     <div className="grid grid-cols-2 gap-2">
-                      <button
+                      <button aria-pressed={calcDocType === 'pdf_scan'}
                         onClick={() => setCalcDocType('pdf_scan')}
                         className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_scan' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
@@ -872,7 +872,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                       >
                         PDF-Scan (OCR)
                       </button>
-                      <button
+                      <button aria-pressed={calcDocType === 'pdf_text'}
                         onClick={() => setCalcDocType('pdf_text')}
                         className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_text' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
@@ -880,7 +880,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                       >
                         PDF (Digital)
                       </button>
-                      <button
+                      <button aria-pressed={calcDocType === 'word_docx'}
                         onClick={() => setCalcDocType('word_docx')}
                         className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'word_docx' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
@@ -888,7 +888,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                       >
                         Word (.docx)
                       </button>
-                      <button
+                      <button aria-pressed={calcDocType === 'markdown'}
                         onClick={() => setCalcDocType('markdown')}
                         className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'markdown' ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-white text-text-main border-home-grau/30'
@@ -958,19 +958,19 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 
               {/* Project Type Selector */}
               <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                <button
+                <button aria-pressed={dirProjectType === 'bauleitung'}
                   onClick={() => setDirProjectType('bauleitung')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'bauleitung' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   Bauleitung (VOB)
                 </button>
-                <button
+                <button aria-pressed={dirProjectType === 'pruefstatik'}
                   onClick={() => setDirProjectType('pruefstatik')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'pruefstatik' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   Prüfstatik (EC2)
                 </button>
-                <button
+                <button aria-pressed={dirProjectType === 'masterarbeit'}
                   onClick={() => setDirProjectType('masterarbeit')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'masterarbeit' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
@@ -1127,19 +1127,19 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 
               {/* Browser Engine Toggle */}
               <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                <button
+                <button aria-pressed={browserEngine === 'perplexity'}
                   onClick={() => setBrowserEngine('perplexity')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'perplexity' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   Perplexity / Deep Research
                 </button>
-                <button
+                <button aria-pressed={browserEngine === 'chatgpt_search'}
                   onClick={() => setBrowserEngine('chatgpt_search')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'chatgpt_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >
                   ChatGPT Search
                 </button>
-                <button
+                <button aria-pressed={browserEngine === 'claude_search'}
                   onClick={() => setBrowserEngine('claude_search')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'claude_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                 >

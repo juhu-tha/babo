@@ -498,7 +498,7 @@ export default function Statistik() {
       </div>
 
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'grundlagen'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'grundlagen' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -508,7 +508,7 @@ export default function Statistik() {
         >
           <Calculator size={16} /> Grundlagen &amp; Begriffserklärer
         </button>
-        <button
+        <button aria-pressed={activeTab === 'probengenerator'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'probengenerator' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -518,7 +518,7 @@ export default function Statistik() {
         >
           <Calculator size={16} /> Probengenerator
         </button>
-        <button
+        <button aria-pressed={activeTab === 'doe'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'doe' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -556,7 +556,7 @@ export default function Statistik() {
             
             {/* Chart Mode Toggle Buttons */}
             <div className="flex bg-stone-100 hover:bg-stone-200/80 p-1 rounded-xl self-start border border-stone-200 shrink-0 select-none">
-              <button
+              <button aria-pressed={interactiveChartMode === 'pdf'}
                 type="button"
                 onClick={() => setInteractiveChartMode('pdf')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -568,7 +568,7 @@ export default function Statistik() {
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 Dichtefunktion (PDF / Glocke)
               </button>
-              <button
+              <button aria-pressed={interactiveChartMode === 'cdf'}
                 type="button"
                 onClick={() => setInteractiveChartMode('cdf')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${

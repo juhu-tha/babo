@@ -303,7 +303,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'ueberblick'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'ueberblick'
@@ -314,7 +314,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <Box size={16} /> Systematik &amp; Prinzipien
           </button>
-          <button
+          <button aria-pressed={activeTab === 'aufbauten'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'aufbauten'
@@ -325,7 +325,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <Layers size={16} /> Schichtaufbau Außenwand
           </button>
-          <button
+          <button aria-pressed={activeTab === 'faserverbund'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'faserverbund'
@@ -336,7 +336,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <Network size={16} /> Faserverbund (CFK/GFK Simulator)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'verbundwerkstoffe'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'verbundwerkstoffe'
@@ -347,7 +347,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <GitMerge size={16} /> Makroverbunde (Stb/Sandwich/VSG)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'schutzschichten'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'schutzschichten'
@@ -358,7 +358,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <Shield size={16} /> Schutzschichten &amp; Grenzflächen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'rechner'
@@ -369,7 +369,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <Calculator size={16} /> Interaktiver Schichtrechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'steckbrief'
