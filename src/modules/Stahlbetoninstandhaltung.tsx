@@ -802,7 +802,7 @@ export function Stahlbetoninstandhaltung() {
                       <span className="font-bold text-xs text-slate-900 block">Klassifizierung der Injektionsstoffe (Füllgüter):</span>
                       <ul className="text-[11px] text-text-main/95 space-y-2 leading-relaxed">
                         <li>
-                          <strong>U (Kraftschlüssiges Füllen / Kraftübertragend):</strong> Epoxidharze (EP) besitzen enorme Haft- und Zugfestigkeiten. Sie übertragen Zug- und Druckspannungen und stellen den Bauteilverbund wieder her (f_ct,EP &gt; 15 N/mm²).
+                          <strong>F (Kraftschlüssiges Füllen / Kraftübertragend):</strong> Epoxidharze (EP) besitzen enorme Haft- und Zugfestigkeiten. Sie übertragen Zug- und Druckspannungen und stellen den Bauteilverbund wieder her (f_ct,EP &gt; 15 N/mm²).
                         </li>
                         <li>
                           <strong>D (Dehnfähiges Füllen / Abdichtend):</strong> Polyurethane (PUR). Ideal für bewegte Risse. Sie reagieren bei Wasserkontakt unter leichter Schaumbildung und dichten das Bauteil dauerhaft elastisch ab.

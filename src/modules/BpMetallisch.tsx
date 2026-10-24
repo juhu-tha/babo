@@ -131,16 +131,16 @@ export const metalsDb: MetalMaterial[] = [
   {
     id: 'zinc',
     name: 'Verzinkter Stahl (Zinküberzug)',
-    density: 7140,
-    potential: -0.76,
-    lambda: 110,
-    alpha: 22,
-    crystalStructure: 'Hexagonal dichteste Kugelpackung (hdp)',
+    density: 7850, // Grundstahl (Zink allein: 7140 kg/m³)
+    potential: -0.76, // Oberfläche Zink
+    lambda: 50, // Grundstahl (Zink allein: ca. 110 W/(m·K))
+    alpha: 12, // Grundstahl (Zink allein: ca. 22–29 · 10⁻⁶/K)
+    crystalStructure: 'Grundstahl krz; Zinküberzug hexagonal dichteste Kugelpackung (hdp)',
     eModul: 210000, // Grundstahl 210 GPa, Zinkschicht ca. 100 GPa
     yieldStrength: 'fy = 220 – 350 N/mm² (DX51D / S250GD)',
     standards: 'DIN EN ISO 1461, DIN EN 10346, DIN EN 988',
     corrosionCategory: 'C1 bis C4 (Abtragsrate Zink: 0,2–2 µm/Jahr)',
-    poissonRatio: 0.25,
+    poissonRatio: 0.30,
     elongationAtBreak: 'A80 ≥ 22 % (Tiefziehgüte)',
     recyclingRate: '> 95 % im Elektrostahlwerk',
     description: `Stahl geschützt durch einen metallischen Zinküberzug (Stückverzinkung im Tauchbad bei ca. 450 °C mit diffusionsbedingter Eisen-Zink-Phasenbildung Γ-, δ- und ζ-Phase oder kontinuierliche Bandverzinkung mit Zink-Aluminium-Magnesium-Überzügen ZM). Zink bildet auf der Oberfläche durch Reaktion mit Sauerstoff, Feuchte und Kohlendioxid eine dichte, festhaftende Schutzschicht aus basischem Zinkcarbonat (2 ZnCO₃ · 3 Zn(OH)₂).
@@ -623,7 +623,7 @@ export default function BpMetallisch() {
                 <strong className="text-slate-800">{formatDeZahl(deltaE, 2)} V ({formatDeZahl((deltaE * 1000), 0)} mV)</strong>
               </div>
               <div className="flex justify-between font-mono text-[10px]">
-                <span>Grenzschwelle DIN 8044:</span>
+                <span>Grenzschwelle (Lehrannahme):</span>
                 <span className="text-slate-500">≤ 150 mV empfohlen</span>
               </div>
             </div>

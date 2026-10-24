@@ -663,7 +663,7 @@ export default function Bauwerkserfassung() {
                         </div>
                       ) : (
                         <div className="text-slate-700 border-indigo-100 bg-indigo-50/20 p-2 rounded">
-                          <strong>Tragverhalten stabil:</strong> Das verformte Bauteil hält den Lasten noch stand (Auslastung: {formatDeZahl(staticsResults.limitRatio, 1)} %). Die Auslastung steigt durch die Exzentrizität von <strong>{formatDeZahl(staticsResults.limitRatioIdeal, 1)} %</strong> auf <strong>{formatDeZahl(staticsResults.limitRatio, 1)} %</strong> (Interaktion σ_c,d/(k_c·f_c,0,d) + σ_m,d/f_m,d ≤ 1, EC5 6.3.2).
+                          <strong>Tragverhalten stabil:</strong> Das verformte Bauteil hält den Lasten noch stand (Auslastung: {formatDeZahl(staticsResults.limitRatio, 1)} %). Die Auslastung steigt durch die Exzentrizität von <strong>{formatDeZahl(staticsResults.limitRatioIdeal, 1)} %</strong> auf <strong>{formatDeZahl(staticsResults.limitRatio, 1)} %</strong> (Interaktion σ_c,d/f_c,0,d + σ_m,d/f_m,d ≤ 1 mit Moment nach Theorie II. Ordnung; vereinfachte, auf der sicheren Seite liegende lineare Form des Querschnittsnachweises nach EC5 6.2.4).
                         </div>
                       )}
                     </div>
@@ -702,7 +702,7 @@ export default function Bauwerkserfassung() {
           { titel: 'Spannungen', erklaerung: 'f_c,0,d = 0,9 · 21/1,3 = 14,5 N/mm²:', formel: '\\sigma_{c,0,d} = \\frac{20\\,000}{14\\,000} = 1{,}43, \\quad \\sigma_{m,d} = 12{,}2 + 2{,}8 = 15{,}0\\,\\text{N/mm}^2' },
           { titel: 'Interaktion', erklaerung: 'Querschnittsnachweis Druck und Biegung:', formel: '\\left(\\frac{1{,}43}{14{,}5}\\right)^2 + \\frac{15{,}0}{16{,}6} = 0{,}01 + 0{,}90 = 0{,}91 \\le 1' }
         ]}
-        ergebnisHinweis="Die gemessene Verformung erhöht die Ausnutzung um rund 17 Prozentpunkte. Der Stabilitätsnachweis (Knicken, Kippen) nach DIN EN 1995-1-1, 6.3 ist zusätzlich zu führen."
+        ergebnisHinweis="Die gemessene Verformung erhöht die Ausnutzung um rund 17 Prozentpunkte. Der Stabilitätsnachweis (Knicken, Kippen) nach DIN EN 1995-1-1, 6.3 ist zusätzlich zu führen. Der interaktive Rechner verwendet abweichend die lineare Interaktion (ohne Quadrat des Druckanteils) mit Momenten nach Theorie II. Ordnung und liefert daher etwas höhere Ausnutzungen."
         normQuelle="DIN EN 1995-1-1:2010-12, Gl. (6.19)"
       />
 
@@ -738,7 +738,7 @@ export default function Bauwerkserfassung() {
           },
           {
             formel: "M_d = \\frac{q_d \\cdot L^2}{8} + N_d \\cdot e_0",
-            erklaerung: "Kombiniertes Biegemoment aus Gleichlast (q_d) und exzentrischem Kraftangriff infolge gemessener Vorverformung (e_0); Vergrößerung nach Theorie II. Ordnung hier nicht berücksichtigt.",
+            erklaerung: "Kombiniertes Biegemoment aus Gleichlast (q_d) und exzentrischem Kraftangriff infolge gemessener Vorverformung (e_0); im Rechner zusätzlich mit dem Vergrößerungsfaktor α_cr/(α_cr − 1) nach Theorie II. Ordnung beaufschlagt (α_cr = N_cr/N_d).",
             quelle: "Eurocode 5"
           }
         ]}

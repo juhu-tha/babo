@@ -252,7 +252,7 @@ export default function Bautagebuch() {
     setStoerungen(scenario.suggestedIncident);
     setAnweisungen('');
     setBehinderung(scenario.id === 'delay_excavator');
-    setBehinderungDetails(scenario.id === 'delay_excavator' ? 'Erdbaufirma ausgefallen, Kranstillstand veranlasst.' : '');
+    setBehinderungDetails(scenario.id === 'delay_excavator' ? 'Vergussmörtel Takt 1 verspätet geliefert, Festigkeitsnachweis ausstehend; Montage Takt 2 blockiert, Kranstillstand.' : '');
     setBedenken(scenario.id === 'claim_conflict');
     setBedenkenDetails(scenario.id === 'claim_conflict' ? 'Formale Bedenkenanmeldung an Bauherr wegen Stornierung der Rissabdichtung übergeben.' : '');
     setSelectedTesting([]);

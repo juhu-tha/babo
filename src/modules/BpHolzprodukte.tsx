@@ -280,8 +280,10 @@ export default function BpHolzprodukte() {
   const f_md = (k_mod * activeMat.f_mk) / activeMat.gammaM;
   const bendingUtilization = (sigma_md / f_md) * 100;
 
-  // Shear stress: tau_d = 1.5 * V_Ed * 10^3 / (b * h)
-  const tau_d = (1.5 * v_ed * 1000) / (beamWidth * beamHeight);
+  // Shear stress with crack factor (EC 5, 6.1.7 + NA): b_ef = k_cr * b
+  // k_cr = 2,0 / f_vk (Nadelvollholz), 2,5 / f_vk (BSH)
+  const k_cr = Math.min(1, (woodClass === 'c24' ? 2.0 : 2.5) / activeMat.f_vk);
+  const tau_d = (1.5 * v_ed * 1000) / (k_cr * beamWidth * beamHeight);
   // Shear strength design: f_vd = k_mod * f_vk / gammaM
   const f_vd = (k_mod * activeMat.f_vk) / activeMat.gammaM;
   const shearUtilization = (tau_d / f_vd) * 100;
@@ -603,7 +605,7 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    τ_d = {formatDeZahl(tau_d, 2)} N/mm² vs. f_vd = {formatDeZahl(f_vd, 2)} N/mm²
+                    τ_d = {formatDeZahl(tau_d, 2)} N/mm² (b_ef = k_cr · b, k_cr = {formatDeZahl(k_cr, 2)}) vs. f_vd = {formatDeZahl(f_vd, 2)} N/mm²
                   </span>
                 </div>
 
@@ -734,6 +736,11 @@ export default function BpHolzprodukte() {
             formel: '\\sigma_{m,y,d} = \\frac{M_{y,Ed}}{W_y} \\le f_{m,y,d} = k_{\\text{mod}} \\cdot \\frac{f_{m,y,k}}{\\gamma_M}', 
             erklaerung: 'Biegespannungsnachweis (ULS) nach EC 5 unter Berücksichtigung von Modifikationsbeiwert kmod und Teilsicherheitsbeiwert gamma_M (γ_M = 1,3 für Vollholz und BSH nach DIN EN 1995-1-1/NA).',
             quelle: 'DIN EN 1995-1-1 Abs. 6.1.6'
+          },
+          { 
+            formel: '\\tau_d = \\frac{1{,}5 \\cdot V_{Ed}}{k_{cr} \\cdot b \\cdot h} \\le f_{v,d}', 
+            erklaerung: 'Schubnachweis mit Rissbeiwert k_cr (wirksame Breite b_ef = k_cr · b); nach NA: k_cr = 2,0/f_v,k für Nadelvollholz, 2,5/f_v,k für BSH.',
+            quelle: 'DIN EN 1995-1-1 Abs. 6.1.7 mit NA'
           },
           { 
             formel: 'w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}', 

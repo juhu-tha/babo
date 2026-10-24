@@ -190,7 +190,7 @@ export default function Systemarchitektur() {
           output: 'Tabelle mit Abweichungen, Risikoeinschätzungen und Paragrafenverweisen'
         },
         {
-          titel: 'Rechtlich belastbare Bedenkenanzeigen nach § 4 Abs. 7 VOB/B',
+          titel: 'Rechtlich belastbare Bedenkenanzeigen nach § 4 Abs. 3 VOB/B',
           bereich: 'Bauleitung & Projektmanagement',
           beschreibung: 'Formulierung präziser, formal unangreifbarer Bedenkenanzeigen aus Stichpunkten des Baustellen-Tagebuchs (z. B. unzureichende Vorleistung, zu hohe Bauteilfeuchte vor Estrichverlegung).',
           output: 'Fertiger, unterschriftsreifer Briefentwurf mit Fristsetzung'

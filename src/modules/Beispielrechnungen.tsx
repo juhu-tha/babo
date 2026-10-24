@@ -201,12 +201,11 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [colHeight, setColHeight] = useState<number>(14); // cross-section h in cm
   const [designForce, setDesignForce] = useState<number>(65); // N_d in kN
   const [timberGrade, setTimberGrade] = useState<'C24' | 'C30'>('C24');
-  const [serviceClass, setServiceClass] = useState<1 | 2>(1);
 
   // Material parameters
   const f_c0k = timberGrade === 'C24' ? 21 : 24; // f_c,0,k nach DIN EN 338: C24 = 21, C30 = 24 N/mm²
   const E_005 = timberGrade === 'C24' ? 7400 : 8000; // 5th-percentile modulus of elasticity in N/mm²
-  const k_mod = 0.90; // kurze Lasteinwirkung, NKL 1 und 2 (DIN EN 1995-1-1, Tab. 3.1)
+  const k_mod = 0.90; // KLED kurz (maßgebende kurzzeitige Einwirkung angenommen), NKL 1 und 2 (DIN EN 1995-1-1, Tab. 3.1)
   const gamma_M = 1.3; // Solid timber partial factor
 
   const f_c0d = k_mod * f_c0k / gamma_M; // design compressive strength
@@ -311,8 +310,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
     B600: 60.0
   }[histBetonKlasse];
 
-  // Convert to standard 150mm cube: beta_WN,150 = 0.95 * beta_WN
-  const beta_WN_150 = 0.95 * beta_WN;
+  // Convert 200-mm cube to standard 150-mm cube: beta_WN,150 = beta_WN,200 / 0.95
+  const beta_WN_150 = beta_WN / 0.95;
   // Convert to standard cylinder: f_ck,cyl = 0.8 * beta_WN_150
   const f_ck_cyl_raw = 0.8 * beta_WN_150;
   // Apply DAfStb safety deduct if document-only:
@@ -827,9 +826,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <p className="mt-1">
                         Da <InlineMath math={`c_{\\text{erf}} = ${formatDeTeX(cementFromWz, 1)} \\, \\text{kg/m}^3`} /> mit dem normativen Mindestzementgehalt <InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /> abgeglichen werden muss, wählen wir:
                       </p>
-                      <BlockMath math={`c = \\max(c_{\\text{erf}}, z_{min}) = \\color{#A3113E}{${cementContent}} \\, \\text{kg/m}^3`} />
+                      <BlockMath math={`c = \\max(c_{\\text{erf}}, z_{min}) = \\color{#A3113E}{${formatDeTeX(cementContent, 1)}} \\, \\text{kg/m}^3`} />
                       <p className="mt-1">Daraus resultiert der tatsächliche (wirksame) w/z-Wert:</p>
-                      <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${cementContent}}} = \\color{#A3113E}{${formatDeTeX(actualWz, 3)}}`} />
+                      <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${formatDeTeX(cementContent, 1)}}} = \\color{#A3113E}{${formatDeTeX(actualWz, 3)}}`} />
                     </div>
 
                     <div className="border-t border-slate-100 pt-3">
@@ -1401,14 +1400,14 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <>
                       <p className="mt-1">
                         Da <InlineMath math={`\\mu_{Ed} = ${formatDeTeX(mu_Ed, 4)} \\le \\mu_{lim} = 0{,}371`} /> ist, liegt ein reiner Zugbruch vor. Keine Druckbewehrung erforderlich.
-                        Der mechanische Bewehrungsbeiwert <InlineMath math="\omega" /> und der Hebelarmbeiwert <InlineMath math="\zeta" /> ergeben sich aus dem parabolisch-rechteckigen Spannungsdiagramm zu:
+                        Der mechanische Bewehrungsbeiwert <InlineMath math="\omega" /> und der Hebelarmbeiwert <InlineMath math="\zeta" /> ergeben sich hier vereinfacht aus einem rechteckigen Spannungsblock über die gesamte Druckzonenhöhe (Näherung; genauer: Parabel-Rechteck-Diagramm bzw. Spannungsblock mit λ = 0,8 nach DIN EN 1992-1-1, 3.1.7) zu:
                       </p>
                       <BlockMath math={`\\zeta = \\frac{1 + \\sqrt{1 - 2 \\cdot \\mu_{Ed}}}{2} = \\frac{1 + \\sqrt{1 - 2 \\cdot \\color{#A3113E}{${formatDeTeX(mu_Ed, 4)}}}}{2} = \\color{#A3113E}{${formatDeTeX(zeta, 4)}}`} />
                       <BlockMath math={`z = \\zeta \\cdot d = \\color{#A3113E}{${formatDeTeX(zeta, 4)}} \\cdot \\color{#A3113E}{${formatDeTeX(d_m, 3)}} = \\color{#A3113E}{${formatDeTeX(z_m, 3)}} \\, \\text{m}`} />
                     </>
                   ) : (
                     <p className="text-red-600 font-bold">
-                      Achtung! \mu_Ed (<span className="text-shiraz">{formatDeZahl(mu_Ed, 4)}</span>) &gt; \mu_lim ({formatDeWert(mu_lim)}). Der Querschnitt ist überbeansprucht! 
+                      Achtung! μ_Ed (<span className="text-shiraz">{formatDeZahl(mu_Ed, 4)}</span>) &gt; μ_lim ({formatDeWert(mu_lim)}). Der Querschnitt ist überbeansprucht! 
                       Es ist Druckbewehrung erforderlich oder die Balkenabmessungen (b, h) müssen vergrößert werden, um ein sprödes Betonversagen zu verhindern.
                     </p>
                   )}
@@ -1441,12 +1440,16 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option A (Standard):</span>
                       <strong className="text-shiraz">3 Ø 16</strong> (6,03 cm²)
-                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {formatDeZahl((a_s_req / 6.03 * 100), 0)}%</span>
+                      <span className={`block text-[10px] mt-1 ${6.03 >= a_s_req ? 'text-slate-400' : 'text-red-700 font-bold'}`}>
+                        {6.03 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 6.03 * 100), 0)}%` : `Fläche unzureichend (${formatDeZahl((a_s_req / 6.03 * 100), 0)} %)!`}
+                      </span>
                     </div>
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option B (Kompakt):</span>
                       <strong className="text-teal-700">2 Ø 20</strong> (6,28 cm²)
-                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {formatDeZahl((a_s_req / 6.28 * 100), 0)}%</span>
+                      <span className={`block text-[10px] mt-1 ${6.28 >= a_s_req ? 'text-slate-400' : 'text-red-700 font-bold'}`}>
+                        {6.28 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 6.28 * 100), 0)}%` : `Fläche unzureichend (${formatDeZahl((a_s_req / 6.28 * 100), 0)} %)!`}
+                      </span>
                     </div>
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option C (Minimalistisch):</span>
@@ -1550,7 +1553,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <strong>Schritt 1: Festigkeiten bestimmen</strong>
                   <p className="mt-1">
                     Für die Holzgüte <span className="text-shiraz font-bold">{timberGrade}</span> beträgt der Festigkeitswert <InlineMath math={`f_{c,0,k} = ${f_c0k} \\, \\text{N/mm}^2`} />. <br />
-                    Unter Klasse NKL 1 (beheizter Innenraum) ist <InlineMath math="k_{mod} = 0{,}9" />. Der Bemessungswert lautet:
+                    Für Nutzungsklasse 1 oder 2 und die Klasse der Lasteinwirkungsdauer (KLED) „kurz“ – angenommen ist, dass eine kurzzeitige Einwirkung (z. B. Schnee unter 1000 m ü. NN) die maßgebende Kombination bestimmt – gilt <InlineMath math="k_{mod} = 0{,}9" /> (DIN EN 1995-1-1, Tab. 3.1). Bei ständiger bzw. langer Lasteinwirkung wäre k_mod = 0,6 bzw. 0,7 anzusetzen. Der Bemessungswert lautet:
                   </p>
                   <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0{,}9 \\cdot \\frac{\\color{#A3113E}{${f_c0k}}}{1{,}3} = \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}} \\, \\text{N/mm}^2`} />
                 </div>
@@ -2211,7 +2214,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1 text-xxs">
                           Die historische Kantenlänge von 200 mm wird auf den heutigen 150 mm Prüfwürfel normiert:
                         </p>
-                        <BlockMath math={`\\beta_{WN,150} = 0{,}95 \\cdot \\beta_{WN} = 0{,}95 \\cdot \\color{#A3113E}{${formatDeTeX(beta_WN, 1)}} = \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} \\, \\text{N/mm}^2`} />
+                        <BlockMath math={`\\beta_{WN,150} = \\frac{\\beta_{WN,200}}{0{,}95} = \\frac{\\color{#A3113E}{${formatDeTeX(beta_WN, 1)}}}{0{,}95} = \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} \\, \\text{N/mm}^2`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">

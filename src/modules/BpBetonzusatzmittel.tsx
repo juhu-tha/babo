@@ -103,7 +103,7 @@ const admixtureProducts: AdmixtureProduct[] = [
   {
     name: 'Erhärtungsbeschleuniger',
     abbreviation: 'BE / SBE',
-    standard: 'DIN EN 934-2 (Tabelle 6)',
+    standard: 'DIN EN 934-2 (Tabelle 7)',
     chemicalBase: 'Calciumnitrat, Triethanolamine, nanostrukturierte C-S-H Keimsuspensionen',
     dosageCode: '1,0 - 3,5 M.-% vom Zementgewicht',
     primaryEffect: 'Beschleunigung der Festigkeitsentwicklung im frühen Stadium (0 bis 24 Stunden).',
@@ -123,7 +123,7 @@ const admixtureProducts: AdmixtureProduct[] = [
   {
     name: 'Erstarrungsbeschleuniger',
     abbreviation: 'SB',
-    standard: 'DIN EN 934-2 (Tabelle 5)',
+    standard: 'DIN EN 934-2 (Tabelle 6); Spritzbetonbeschleuniger: DIN EN 934-5',
     chemicalBase: 'Aluminiumhydroxid, Alkalicarbonate, Alkalisilicate (Wasserglas)',
     dosageCode: '3,0 - 6,0 M.-% vom Zementgewicht',
     primaryEffect: 'Sehr schnelles Ansteifen (Sekunden bis Minuten) nach dem Aufspritzen',
@@ -138,7 +138,7 @@ const admixtureProducts: AdmixtureProduct[] = [
       'Erhöhte Staubentwicklung und signifikanter Spritzrückprall (Rebound)',
       'Mögliche Einbußen bei der Endfestigkeit (heute meist alkalifreie Beschleuniger)'
     ],
-    classificationCode: 'Wirkungsgruppe SB - DIN EN 934-2 Tab. 11.1'
+    classificationCode: 'Wirkungsgruppe SB - DIN EN 934-2 Tab. 6 / DIN EN 934-5'
   },
   {
     name: 'Luftporenbildner',
@@ -184,7 +184,7 @@ const admixtureProducts: AdmixtureProduct[] = [
   {
     name: 'Stabilisierer',
     abbreviation: 'ST',
-    standard: 'DIN EN 934-2 (Tabelle 13)',
+    standard: 'DIN EN 934-2 (Tabelle 4)',
     chemicalBase: 'Modifizierte Celluloseether, natürliche Biopolymere (Welan-Gum), Polyacrylamide',
     dosageCode: '0,1 - 1,0 M.-% vom Zementgewicht',
     primaryEffect: 'Vermeidung von Entmischung (Sedimentation der Gesteinskörnung) und unruhigem Bluten.',
@@ -218,7 +218,7 @@ const admixtureProducts: AdmixtureProduct[] = [
     disadvantages: [
       'Mischzeiten und Verarbeitungsregeln (DIN EN 447) genau einhalten'
     ],
-    classificationCode: 'Wirkungsgruppe EH - DIN EN 934-2 Tab. 12'
+    classificationCode: 'Wirkungsgruppe EH - DIN EN 934-4'
   }
 ];
 
@@ -288,7 +288,7 @@ export default function BpBetonzusatzmittel() {
   const admixtureWaterMass = admixtureMass * (admixtureWaterContent / 100); // kg/m³ (approx. l/m³)
 
   // The 3-liter / 3-kg rule of German E-Schein
-  const isWaterAnrechnungMandatory = admixtureVolume >= 3.0;
+  const isWaterAnrechnungMandatory = admixtureVolume > 3.0;
   const effectiveWater = isWaterAnrechnungMandatory ? (freshWaterAdd + admixtureWaterMass) : freshWaterAdd;
   const rawWcRatio = freshWaterAdd / cementContent;
   const effectiveWcRatio = effectiveWater / cementContent;
@@ -997,11 +997,11 @@ export default function BpBetonzusatzmittel() {
                     </div>
                     {isWaterAnrechnungMandatory ? (
                       <p className="text-xs leading-relaxed font-normal">
-                        <strong>Pflichtiges Prüfungskriterium!</strong> Da das zugegebene flüssige Zusatzmittelvolumen mit **{formatDeZahl(admixtureVolume, 2)} Litern** die kritische Schranke von **≥ 3,0 Litern je m³** erreicht bzw. überschreitet, muss das in der Emulsion enthaltene Eigenwasser (W_Eigenwasser = {formatDeZahl(admixtureWaterMass, 1)} l) **zwingend** als Mischwasser angerechnet werden!
+                        <strong>Pflichtiges Prüfungskriterium!</strong> Da das zugegebene flüssige Zusatzmittelvolumen mit <strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong> die Grenze von <strong>3,0 Litern je m³</strong> überschreitet, muss das im Zusatzmittel enthaltene Eigenwasser (W_Eigenwasser = {formatDeZahl(admixtureWaterMass, 1)} l) <strong>zwingend</strong> als Mischwasser angerechnet werden!
                       </p>
                     ) : (
                       <p className="text-xs leading-relaxed font-normal">
-                        Da das zugegebene Volumen mit **{formatDeZahl(admixtureVolume, 2)} Litern** unter der Grenze von **&lt; 3,0 Litern je m³** liegt, ist eine rechnerische Wasseranrechnung nach deutscher Norm nicht explizit verpflichtend (für Standardbeton). Für anspruchsvolle HPC/UHPC-Rezepturen wird die Anrechnung dennoch dringend unaufgefordert durchgeführt.
+                        Da das zugegebene Volumen mit <strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong> die Grenze von <strong>3,0 Litern je m³</strong> nicht überschreitet, ist eine rechnerische Wasseranrechnung nach deutscher Norm nicht explizit verpflichtend (für Standardbeton). Für anspruchsvolle HPC/UHPC-Rezepturen wird die Anrechnung dennoch dringend unaufgefordert durchgeführt.
                       </p>
                     )}
 

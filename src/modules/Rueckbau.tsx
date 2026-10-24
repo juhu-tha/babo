@@ -266,7 +266,7 @@ export default function Rueckbau() {
           chemical: 'PCB-Gemische (Weichmacher)',
           foundIn: 'Dauerelastische Fugendichtungsmassen (Thiokolfugen), Flammschutzanstriche, Deckenplatten kleber.',
           probability: 'Mittel',
-          handling: 'Herausschneiden der Fugenflanken, Unterdruck, Sanierungspflicht bei Raumluftwerten > 300 ng/m³.',
+          handling: 'Herausschneiden der Fugenflanken, Unterdruck, PCB-Richtlinie: Raumluft ≤ 300 ng/m³ Zielwert (langfristig tolerierbar), 300–3000 ng/m³ Quellensuche und mittelfristige Sanierung, > 3000 ng/m³ unverzügliche Sanierung (Gefahrenwert).',
           rules: 'PCB-Richtlinie (Bayern), TRGS 524'
         },
         {

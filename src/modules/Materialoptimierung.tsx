@@ -511,7 +511,7 @@ export default function Materialoptimierung() {
           }`}
           onClick={() => setActiveSubTab('dafstb_richtlinie')}
         >
-          <Scale size={14} /> DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Stahlbeton
+          <Scale size={14} /> DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton
         </button>
       </div>
 
@@ -785,7 +785,7 @@ export default function Materialoptimierung() {
         </div>
       )}
 
-      {/* --- Tab 3: DAfStb-Richtlinie Treibhausgasoptimierte Tragwerke aus Stahlbeton --- */}
+      {/* --- Tab 3: DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton --- */}
       {activeSubTab === 'dafstb_richtlinie' && (
         <div className="space-y-6 animate-fade-in">
           
@@ -797,7 +797,7 @@ export default function Materialoptimierung() {
                   <Scale size={13} /> DAfStb-Regelwerk • Gründruck / Richtlinie
                 </div>
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-                  DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton
+                  DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton
                 </h3>
               </div>
               <span className="text-xs font-mono font-bold px-3 py-1 bg-slate-100 text-slate-700 rounded-lg border border-slate-200">
@@ -808,7 +808,7 @@ export default function Materialoptimierung() {
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
               <p>
                 Rund <strong>60 bis 70 % der gebundenen Treibhausgasemissionen (Embodied Carbon / Modul A1–A5)</strong> eines Rohbaus entfallen auf das tragende Massivbaugerüst – vor allem auf Decken, Stützen und Wände.
-                Die <strong>DAfStb-Richtlinie „Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton“</strong> schließt die Lücke zwischen der rein standsicherheitsorientierten Tragwerksplanung nach <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> und den zwingenden Dekarbonisierungsanforderungen (EU-Taxonomie, EPBD 2024, QNG, DGNB).
+                Die <strong>DAfStb-Richtlinie „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“</strong> schließt die Lücke zwischen der rein standsicherheitsorientierten Tragwerksplanung nach <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> und den zwingenden Dekarbonisierungsanforderungen (EU-Taxonomie, EPBD 2024, QNG, DGNB).
                 Sie definiert erstmals verbindliche <strong>THG-Referenzwerte, Nachweisverfahren und Effizienzklassen</strong> für Bauteile und Tragwerke über ihren Lebenszyklus.
               </p>
             </div>
@@ -1359,9 +1359,9 @@ export default function Materialoptimierung() {
                 <strong className="text-xs font-bold text-slate-900 block">
                   4. Äquivalenter Wasserzementwert mit k-Wert (DIN 1045-2)
                 </strong>
-                <BlockMath math="(w/c)_{\text{eq}} = \frac{w}{c + k \cdot z} \quad \text{mit } k_{\text{FA}} = 0{,}4; \: k_{\text{HS}} = 0{,}6" />
+                <BlockMath math="(w/z)_{\text{eq}} = \frac{w}{z + k \cdot f} \quad \text{mit } k_{\text{FA}} = 0{,}4; \: k_{\text{HS}} = 0{,}6" />
                 <p className="text-[11px] text-slate-500 leading-relaxed">
-                  Erlaubt die normative Anrechnung von Flugasche (FA) und Hüttensandmehl (HS) als zementersetzende Zusatzstoffe Typ II zur Klinkerreduktion.
+                  Mit z = Zementgehalt und f = Gehalt des anrechenbaren Zusatzstoffs (jeweils kg/m³). Erlaubt die normative Anrechnung von Flugasche (FA) und Hüttensandmehl (HS) als zementersetzende Zusatzstoffe Typ II zur Klinkerreduktion.
                 </p>
               </div>
             </div>
@@ -1447,7 +1447,7 @@ export default function Materialoptimierung() {
                   </h5>
                   <p className="text-[11px] text-slate-500 leading-normal font-normal">
                     Ein Standardbeton C25/30 verursacht ca. 240 kg CO₂ pro Kubikmeter. 
-                    Substituiert man 10 kg Feinstsand durch 10 kg hochaktive Pflanzenkohle (Erhöhung des Biochar-Anteils um ca. 3% des Zementgewichts), filtert und bindet diese Menge rechnerisch rund **25 bis 30 kg CO₂** im Bauteil. 
+                    Substituiert man 10 kg Feinstsand durch 10 kg hochaktive Pflanzenkohle (Erhöhung des Biochar-Anteils um ca. 3% des Zementgewichts), filtert und bindet diese Menge rechnerisch rund <strong>25 bis 30 kg CO₂</strong> im Bauteil. 
                     Damit reduziert sich die herstellungsbedingte Gesamtbilanz auf einen Schlag um <strong>über 10 %</strong>!
                   </p>
                 </div>
@@ -1478,7 +1478,7 @@ export default function Materialoptimierung() {
               <div className="p-4 bg-shiraz/5 text-rose-950 rounded-xl border border-rose-200/40 space-y-1.5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-shiraz block font-mono">Normative Einordnung &amp; Zertifizierung</span>
                 <p className="text-xs text-slate-600 font-normal leading-relaxed">
-                  Pflanzenkohle fällt derzeit noch nicht unter das Standardregelwerk der DIN EN 206 (kein genormter Typ-II-Zusatzstoff). Für tragende Teile ist eine **Zustimmung im Einzelfall (ZiE)** oder eine vorzeitige bauaufsichtliche Zulassung (abZ) erforderlich. 
+                  Pflanzenkohle fällt derzeit noch nicht unter das Standardregelwerk der DIN EN 206 (kein genormter Typ-II-Zusatzstoff). Für tragende Teile ist eine <strong>Zustimmung im Einzelfall (ZiE)</strong> oder eine vorzeitige bauaufsichtliche Zulassung (abZ) erforderlich. 
                   Die Zertifizierung über das <strong>European Biochar Certificate (EBC-Bau)</strong> garantiert, dass die Aktivkohle schadstofffrei ist (Einheit über polyzyklische aromatische Kohlenwasserstoffe - PAKs) und unbedenklich verbaut werden darf.
                 </p>
               </div>

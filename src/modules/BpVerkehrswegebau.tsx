@@ -1090,7 +1090,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     const v_sicker_liters = q_sicker_l_s * (tiefbauDuration * 60);
                     const v_sicker_m3 = v_sicker_liters / 1000;
 
-                    const v_speicher_m3 = Math.max(0.1, (v_zu_m3 - v_sicker_m3) / tiefbauFss);
+                    const f_S = 1.1; // Sicherheitsbeiwert (DWA-A 138)
+                    const v_speicher_m3 = Math.max(0.1, f_S * (v_zu_m3 - v_sicker_m3) / tiefbauFss);
                     const h_rig = 0.6;
                     const b_rig = 1.2;
                     const l_rig = v_speicher_m3 / (h_rig * b_rig);
