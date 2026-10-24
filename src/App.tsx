@@ -1081,7 +1081,10 @@ function AppContent() {
           {activeTab === 'nachhaltigkeit_daten_regeln' && <NachhaltigkeitDatenRegeln />}
           {activeTab === 'materialoptimierung' && <Materialoptimierung />}
           {activeTab === 'nachhaltigkeit_checklisten' && <NachhaltigkeitChecklisten />}
-          {activeTab === 'oekobilanz_lca' && <OekobilanzLCA />}
+          {activeTab === 'oekobilanz_lca' && <OekobilanzLCA teil="grundlagen" />}
+          {activeTab === 'lca_rechner' && <OekobilanzLCA teil="rechner" />}
+          {activeTab === 'lca_ingenieurbau' && <OekobilanzLCA teil="ingenieurbau" />}
+          {activeTab === 'lca_regulatorik' && <OekobilanzLCA teil="regulatorik" />}
           {activeTab === 'zertifizierung_siegel' && <ZertifizierungSiegel />}
           {activeTab === 'lebenszyklus_kosten' && <LebenszyklusKosten />}
           {activeTab === 'ressourcen_umwelt' && <RessourcenUmwelt />}

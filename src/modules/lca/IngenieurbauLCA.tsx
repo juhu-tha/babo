@@ -44,7 +44,7 @@ export default function IngenieurbauLCA() {
     const gwpB2B5_Beton = gwpB_Asphalt_Beton + gwpB_Kappen_Beton + gwpB_Lager_Beton + gwpB_Betonsanierung;
 
     // Modul B8: Nutzer-Stauemissionen während Instandsetzungen
-    // Bei Spannbeton: Belagswechsel + Fugenersatz erfordern je 18 Tage Teilsperrung
+    // Bei Spannbeton: je Belagswechsel 18 Tage Teilsperrung (Fugen- und Lagerwechsel im Modell nicht gesondert erfasst)
     const stautage_Beton = asphaltCycles * 18 * stauTageFactor;
     const gwpB8_Beton = stautage_Beton * (dtvSchwerverkehr * 0.4) * co2PerDelayedVehicle;
 
@@ -71,7 +71,7 @@ export default function IngenieurbauLCA() {
     const gwpB2B5_Stahl = gwpB_Asphalt_Stahl + gwpB_Kappen_Stahl + gwpB_Lager_Stahl + gwpB_Coating_Stahl;
 
     // Modul B8: Nutzer-Stauemissionen während Instandsetzungen
-    // Stahlverbundbrücke: Belagswechsel wie Beton; Korrosionsschutz erfolgt meist von unten (Einhausung), jedoch Vollsperrung bei Lagerwechsel
+    // Stahlverbundbrücke: Belagswechsel wie Beton, zusätzlich 4 Sperrtage je Korrosionsschutz-Erneuerung (Lagerwechsel im Modell nicht gesondert erfasst)
     const stautage_Stahl = (asphaltCycles * 18 + coatingCycles * 4) * stauTageFactor;
     const gwpB8_Stahl = stautage_Stahl * (dtvSchwerverkehr * 0.4) * co2PerDelayedVehicle;
 
@@ -347,7 +347,7 @@ export default function IngenieurbauLCA() {
                 <li>Umwegfahrten des Schwerlastverkehrs über das nachgeordnete Landstraßennetz.</li>
               </ul>
               <div className="p-3.5 bg-amber-50/60 border border-amber-200/70 rounded-xl text-amber-950 text-xs">
-                <strong>Verblüffendes Praxisfaktum:</strong> Auf einer Bundesautobahn mit <InlineMath math="5.000" /> Schwerlast-Fahrzeugen pro Tag verursacht eine 30-tägige Baustellen-Verzögerung schnell über <InlineMath math="150\text{ t CO}_2\text{-eq}" /> an reinen Stau-Mehrverbräuchen – oft mehr als die gesamte Herstellungsenergie des eingebauten Asphalts!
+                <strong>Verblüffendes Praxisfaktum:</strong> Auf einer Bundesautobahn mit <InlineMath math="5.000" /> Schwerlast-Fahrzeugen pro Tag verursacht eine 30-tägige Baustellen-Verzögerung nach dem vereinfachten Modell dieses Rechners (40 % der Lkw betroffen, 0,95 kg CO₂-Äq. je Lkw) rund <InlineMath math="57\text{ t CO}_2\text{-eq}" /> an reinen Stau-Mehrverbräuchen – oft mehr als die gesamte Herstellungsenergie des eingebauten Asphalts!
               </div>
             </div>
 

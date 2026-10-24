@@ -1038,13 +1038,39 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   oekobilanz_lca: {
-    niveau: "B/M", minuten: 240, vorwissen: ["nachhaltigkeit_daten_regeln", "materialoptimierung"],
+    niveau: "B/M", minuten: 75, vorwissen: ["nachhaltigkeit_daten_regeln", "materialoptimierung"],
     ziele: [
       { stufe: "Verstehen", text: "die Lebenszyklusmodule A bis D nach DIN EN 15978 und DIN EN 15804 den Phasen eines Bauwerks zuordnen und die Systemgrenzen erläutern." },
       { stufe: "Verstehen", text: "die Wirkungsindikatoren GWP, ODP, AP, EP und POCP unterscheiden und ihre Einheiten angeben." },
+      { stufe: "Anwenden", text: "mit der EPD-Musterdatenbank das GWP der Herstellung (A1–A3) und des Transports (A4) einer Materialmenge berechnen." },
+      { stufe: "Analysieren", text: "den Zementanteil am GWP eines Transportbetons abschätzen und die Wirkung der Zementart auf das Ergebnis vergleichen." },
+    ],
+  },
+  lca_rechner: {
+    niveau: "B/M", minuten: 90, vorwissen: ["oekobilanz_lca", "bauphysik"],
+    ziele: [
       { stufe: "Anwenden", text: "mit dem interaktiven CO₂-Rechner das Treibhauspotenzial einer Gebäudevariante einschließlich Transport (A4) und Modul D berechnen." },
+      { stufe: "Anwenden", text: "das GWP eines Wandaufbaus je m² Wand aus den Schichten ermitteln und mit dem U-Wert gegenüberstellen." },
       { stufe: "Analysieren", text: "in der Transportbeton-Übung die Ökobilanz von Betonrezepturen mit CEM I, CEM III/A und RC-Gesteinskörnung vergleichen." },
-      { stufe: "Bewerten", text: "verschiedene Bauweisen anhand der Ergebnisse mit den QNG-Anforderungswerten vergleichen und die Besonderheiten von Ingenieurbauwerken nach DIN EN 17472 begründen." },
+      { stufe: "Bewerten", text: "den spezifischen Lebenszyklus-Kennwert eines Wohngebäudes mit den QNG-Anforderungswerten vergleichen und begründen, warum Modul D nicht angerechnet wird." },
+    ],
+  },
+  lca_ingenieurbau: {
+    niveau: "M", minuten: 60, vorwissen: ["oekobilanz_lca"],
+    ziele: [
+      { stufe: "Verstehen", text: "die Besonderheiten der Ökobilanz von Ingenieurbauwerken nach DIN EN 17472 gegenüber Gebäuden nach DIN EN 15978 erläutern." },
+      { stufe: "Anwenden", text: "die Anzahl der Austauschzyklen von Belag, Lagern und Korrosionsschutz für einen Betrachtungszeitraum bestimmen." },
+      { stufe: "Analysieren", text: "den Lebenszyklus-GWP einer Spannbeton-Hohlkastenbrücke und einer Stahlverbundbrücke modulweise vergleichen." },
+      { stufe: "Bewerten", text: "den Einfluss verkehrsbedingter Stauemissionen (B8) und einer beschleunigten Bauweise auf die Variantenwahl beurteilen." },
+    ],
+  },
+  lca_regulatorik: {
+    niveau: "B/M", minuten: 75, vorwissen: ["oekobilanz_lca", "nachhaltigkeit_daten_regeln"],
+    ziele: [
+      { stufe: "Verstehen", text: "die Ebenen des Rechtsrahmens von Green Deal und EU-Klimagesetz bis BauPVO, EPBD, ESPR und CBAM einordnen." },
+      { stufe: "Anwenden", text: "mit dem CRREM-Simulator das Stranding-Jahr eines Büro- oder Wohngebäudes für verschiedene Sanierungsstufen bestimmen." },
+      { stufe: "Analysieren", text: "die Wirkung von Betriebsoptimierung, Hüllsanierung und Tiefensanierung auf den Dekarbonisierungspfad vergleichen." },
+      { stufe: "Bewerten", text: "Praxisansätze wie Gebäudetyp E, Urban Mining, Lehmbau und Holz-Hybrid hinsichtlich ihres Beitrags zur Ressourcenschonung beurteilen." },
     ],
   },
   online_tools: {

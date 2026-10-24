@@ -4004,8 +4004,8 @@
     "id": "q_oe_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
-    "moduleId": "oekobilanz_lca",
-    "moduleTitle": "Ökobilanzierung (LCA)",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
     "topic": "QNG-Anforderungswerte",
     "difficulty": "Basis",
     "normRef": "QNG-Handbuch Anlage 3 (v1.4)",
@@ -4030,9 +4030,9 @@
       "topic": "QNG-Anforderungswerte",
       "misconception": "Veraltete (bis 2022: PLUS 28) oder erfundene Werte und falsche Bezugsfläche.",
       "coreRule": "QNG WG23: 24/20 kg CO₂-Äq. und 96/64 kWh je m² NRF und Jahr.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
-      "targetModuleTab": "oekobilanz_lca",
-      "targetModuleLabel": "Ökobilanzierung (LCA)"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
     "verified": false
   },
@@ -15229,6 +15229,618 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturzerlegung“ im Modul Eigenspannungen noch einmal durch.",
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_rechner_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "Gebäudevariante mit Transport A4",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 15978",
+    "question": "Im CO₂-Rechner werden 20 m³ Normalbeton C25/30 (CEM I) bilanziert: A1–A3 = 245 kg CO₂-Äq./m³, C = 15 kg CO₂-Äq./m³, Rohdichte 2400 kg/m³. Transport A4: 100 km per LKW (0,15 kg CO₂/(t·km)). Bezug: 100 m² NRF und 50 Jahre. Welcher Kennwert der Module A–C ergibt sich?",
+    "options": [
+      "1,04 kg CO₂-Äq./(m²·a)",
+      "1,12 kg CO₂-Äq./(m²·a)",
+      "1,18 kg CO₂-Äq./(m²·a)",
+      "1,07 kg CO₂-Äq./(m²·a)"
+    ],
+    "correctIdx": 2,
+    "explanation": "A1–A3 = 20 · 245 = 4900 kg; Masse = 20 · 2,4 t = 48 t; A4 = 48 t · 100 km · 0,15 = 720 kg; C = 20 · 15 = 300 kg. Summe A–C = 5920 kg; 5920 / (100 m² · 50 a) = 1,18 kg CO₂-Äq./(m²·a). Modul D bleibt im Rechner außerhalb dieses Nachweiswerts.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier fehlt der Transport A4 (720 kg); der Rechner addiert A4 aus Masse, Distanz und Emissionsfaktor.",
+      "Hier wurde die Entsorgung C (300 kg) weggelassen; der Nachweiswert umfasst die Module A bis C.",
+      "",
+      "Dieser Wert gilt für den Güterzug mit 0,03 kg CO₂/(t·km); gefragt war der LKW mit 0,15 kg CO₂/(t·km)."
+    ],
+    "gapAnalysis": {
+      "topic": "Kennwertbildung A–C",
+      "misconception": "A4 oder C werden beim Gebäudekennwert vergessen bzw. falsch skaliert.",
+      "coreRule": "Kennwert = (A1–A3 + A4 + C) / (NRF · Betrachtungszeitraum); A4 = Masse [t] · Distanz [km] · Faktor [kg CO₂/(t·km)].",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phase A4: Logistik-Transport“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_rechner_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "Wandaufbau: GWP vs. U-Wert",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN ISO 6946",
+    "question": "Der Wandkonfigurator liefert für „Stahlbeton + EPS (WDVS)“ U = 0,232 W/(m²K) und GWP A1–A3 = 64,8 kg CO₂-Äq./m², für den monolithischen Perlite-Ziegel (36,5 cm) U = 0,184 W/(m²K) und 112,0 kg CO₂-Äq./m². Welche Auswertung ist zutreffend?",
+    "options": [
+      "Der Ziegel dämmt besser, verursacht aber das rund 1,7-fache GWP A1–A3 je m² Wand.",
+      "Der Ziegel ist in beiden Kenngrößen überlegen, weil er ohne fossile Dämmung auskommt.",
+      "Die WDVS-Wand dämmt besser, da ihr U-Wert kleiner ist als der des Ziegels.",
+      "Beide Wände sind gleichwertig, weil sich die GWP-Werte je kg Baustoff kaum unterscheiden."
+    ],
+    "correctIdx": 0,
+    "explanation": "Ein kleinerer U-Wert bedeutet bessere Dämmung: 0,184 < 0,232 W/(m²K). Das GWP A1–A3 des Ziegelaufbaus beträgt jedoch 112,0 / 64,8 ≈ 1,7-mal so viel. Verglichen werden muss je funktioneller Einheit (1 m² Wand mit U-Wert), nicht je kg Material.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Beim GWP A1–A3 ist der Ziegel mit 112,0 gegenüber 64,8 kg CO₂-Äq./m² deutlich ungünstiger.",
+      "Der U-Wert der WDVS-Wand ist mit 0,232 größer; ein größerer U-Wert bedeutet höhere Wärmeverluste.",
+      "Ein Vergleich je kg ist die im Modul beschriebene Falle; maßgebend ist der Bezug auf 1 m² Bauteil."
+    ],
+    "gapAnalysis": {
+      "topic": "Funktionelle Einheit Wand",
+      "misconception": "U-Wert und GWP werden nicht getrennt bewertet oder der Massebezug wird als Vergleichsbasis genutzt.",
+      "coreRule": "Bauteile werden je m² mit gefordertem U-Wert verglichen; niedriger U-Wert = bessere Dämmung, GWP separat bewerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wandaufbau-Konfigurator“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_rechner_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "Transportbeton: Hebel der Rezeptur",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 15804+A2",
+    "question": "In der Transportbeton-Übung sinkt das GWP A1–A5 von rund 299 kg CO₂-Äq./m³ (CEM I, 320 kg) auf rund 106 kg CO₂-Äq./m³ beim Preset mit CEM III/B (280 kg) und 550 kg RC-Kies. Worauf ist diese Minderung im Wesentlichen zurückzuführen?",
+    "options": [
+      "Auf den RC-Kies, dessen Emissionsfaktor nur etwa halb so hoch ist wie der von Primärkies.",
+      "Auf den Emissionsfaktor des Zements (0,28 statt 0,85 kg CO₂-Äq./kg).",
+      "Auf die kürzere Anlieferung der Gesteinskörnung (15 statt 25 km) im Modul A2.",
+      "Auf die Flugasche, die als Zusatzstoff den Zementgehalt vollständig ersetzt."
+    ],
+    "correctIdx": 1,
+    "explanation": "A1 Zement: 320 · 0,85 = 272 kg gegenüber 280 · 0,28 = 78,4 kg CO₂-Äq./m³. Der Ersatz von 550 kg Primärkies durch RC-Kies spart dagegen nur 550 · (0,0035 − 0,0018) ≈ 0,9 kg CO₂-Äq./m³; A2-Transporte liegen bei rund 4–5 kg. Das Beton-GWP wird von der Zementart dominiert.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der RC-Kies spart rechnerisch nur rund 0,9 kg CO₂-Äq./m³ und erklärt die Minderung damit kaum.",
+      "",
+      "Das gesamte Modul A2 macht nur rund 4–5 kg CO₂-Äq./m³ aus; die Distanzänderung wirkt marginal.",
+      "Die 50 kg Flugasche ersetzen den Zement nicht vollständig; sie werden mit k = 0,4 angerechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "Treiber im Beton-GWP",
+      "misconception": "Rezyklierte Gesteinskörnung wird als Haupthebel zur CO₂-Minderung von Beton überschätzt.",
+      "coreRule": "Der Zement (Menge × Emissionsfaktor) dominiert das GWP von Beton; Gesteinskörnung und Transport sind Nebeneffekte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Excel-Übung: Transportbeton“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_rechner_4",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "QNG-Nachweis und Modul D",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 15978",
+    "question": "Ein Mehrfamilienhaus (1200 m² NRF, 50 a) erreicht 24,2 kg CO₂-Äq./(m²·a) (Konstruktion 1 050 000 kg, Betrieb 400 000 kg). Der Bauherr möchte 90 000 kg Recyclinggutschrift aus Modul D abziehen, um QNG-PLUS (≤ 24) zu erreichen. Wie ist das zu bewerten?",
+    "options": [
+      "Zulässig: Mit Modul D ergeben sich 22,7 kg CO₂-Äq./(m²·a), damit ist QNG-PLUS erreicht.",
+      "Zulässig, weil Modul D als Bestandteil des Betriebs B6 gilt und dort angerechnet wird.",
+      "Unzulässig, Modul D ist separat auszuweisen; PLUS gelänge z. B. als Holzhybrid (21,5).",
+      "Unzulässig, weil QNG-PLUS nur für Holzgebäude ohne Betriebsemissionen vergeben wird."
+    ],
+    "correctIdx": 2,
+    "explanation": "Gutschriften aus Modul D liegen außerhalb der Systemgrenze und dürfen im QNG-Nachweis nicht verrechnet werden; der Kennwert bleibt 1 450 000 / 60 000 = 24,2 > 24. Wird die Konstruktion um 15 % reduziert (Holzhybrid), ergibt sich (892 500 + 400 000) / 60 000 = 21,5 ≤ 24: PLUS erreicht, PREMIUM (≤ 20) nicht.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Rechnung ist korrekt, die Verrechnung aber nicht: Modul D darf den Nachweiswert nicht senken.",
+      "Modul D ist kein Teil von B6; es bilanziert Potenziale jenseits der Systemgrenze im Folgesystem.",
+      "",
+      "QNG-PLUS ist an den Anforderungswert von 24 kg CO₂-Äq./(m²·a) gebunden, nicht an eine Bauweise."
+    ],
+    "gapAnalysis": {
+      "topic": "Modul D im QNG-Nachweis",
+      "misconception": "Recyclinggutschriften werden zur Unterschreitung des QNG-Anforderungswerts eingesetzt.",
+      "coreRule": "QNG-Kennwert = (Konstruktion + Betrieb) / (NRF · 50 a) ohne Modul D; Modul D wird getrennt berichtet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel: QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_rechner_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "Design for Deconstruction",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Warum reduziert der Wandkonfigurator den Zirkularitätsindex, wenn die Fügungsmethode von „Geschraubt (Trocken)“ auf „Verklebt / Mörtel“ umgestellt wird?",
+    "options": [
+      "Weil Klebstoffe und Mörtel das GWP A1–A3 der Wand so stark erhöhen, dass der Index sinkt.",
+      "Weil verklebte Schichten den U-Wert verschlechtern und damit die Recyclingquote mindern.",
+      "Weil Mörtel die Rohdichte der Schichten erhöht und so die Masse der Wand verdoppelt.",
+      "Weil vollflächige Verbindungen die sortenreine Trennung im Rückbau verhindern."
+    ],
+    "correctIdx": 3,
+    "explanation": "Der Index ergibt sich aus dem massegewichteten inhärenten Kreislaufpotenzial mal Trennungsfaktor: 1,0 für geschraubte, 0,45 für verklebte Fügung. Nassputze und Verklebungen verhindern die sortenreine Trennung; mechanisches Fügen erhält die Recyclingfähigkeit.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Fügungsmethode geht in die GWP-Berechnung des Konfigurators nicht ein, nur in den Zirkularitätsindex.",
+      "Der U-Wert hängt nur von Schichtdicken und λ-Werten ab, nicht von der Art der Fügung.",
+      "Die Masse der Schichten bleibt unverändert; berücksichtigt wird allein die Trennbarkeit.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rückbaufähigkeit",
+      "misconception": "Die Fügungsart wird als Einflussgröße für GWP oder U-Wert missverstanden.",
+      "coreRule": "Effektive Zirkularität = inhärentes Kreislaufpotenzial × Trennungsfaktor (geschraubt 1,0; verklebt 0,45).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wandaufbau-Konfigurator“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "DIN EN 17472 vs. DIN EN 15978",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 17472",
+    "question": "Welches Merkmal unterscheidet die Ökobilanz von Ingenieurbauwerken nach DIN EN 17472 von der Gebäudebilanz nach DIN EN 15978?",
+    "options": [
+      "Für Brücken wird die Betriebsenergie B6 zur dominierenden Lebenszyklusphase erklärt.",
+      "Sie verwendet einen Betrachtungszeitraum von typisch 50 Jahren wie bei QNG und DGNB.",
+      "Sie bezieht die Wirkungen auf 1 m² Nettoraumfläche des zugehörigen Betriebsgebäudes.",
+      "Sie bilanziert Stauemissionen der Nutzer in Modul B8 über 80 bis 100 Jahre."
+    ],
+    "correctIdx": 3,
+    "explanation": "DIN EN 17472 verankert lange Nutzungsdauern von 80 bis 100+ Jahren (DIN EN 1990, Auslegungskategorie 5), eigene funktionelle Einheiten wie 1 m² Brückendeckfläche und das Modul B8 für baustellenbedingte Nutzer- und Stauemissionen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Bei Ingenieurbauwerken dominieren A1–A3, die Austauschzyklen B2–B5 und B8, nicht die Betriebsenergie.",
+      "Die 50 Jahre sind typisch für Gebäude; Brücken werden über 80 bis 100+ Jahre betrachtet.",
+      "Bezugsgrößen sind z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Normenvergleich Hoch-/Tiefbau",
+      "misconception": "Methodik des Hochbaus wird unverändert auf Infrastruktur übertragen.",
+      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten, 80–100+ a Betrachtungszeitraum, Modul B8 für Nutzerstau.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Differenzierungsmatrix: Hochbau vs. Tiefbau“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "Austauschzyklen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 17472",
+    "question": "Der Brücken-Simulator rechnet mit Austauschintervallen von 15 a (Fahrbahnbelag), 30 a (Lager) und 25 a (Korrosionsschutz) und zählt nur volle Intervalle. Wie viele Austauschzyklen ergeben sich bei einem Betrachtungszeitraum von 80 Jahren?",
+    "options": [
+      "Belag 6, Lager 3, Korrosionsschutz 4",
+      "Belag 5, Lager 2, Korrosionsschutz 3",
+      "Belag 5, Lager 3, Korrosionsschutz 3",
+      "Belag 4, Lager 2, Korrosionsschutz 3"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Simulator bildet die Zyklen mit abgerundeten Quotienten: 80/15 = 5,3 → 5; 80/30 = 2,7 → 2; 80/25 = 3,2 → 3. Die Werte 6/3/4 gelten für den Standardzeitraum von 100 Jahren.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Diese Zyklen gelten für 100 Jahre (100/15 → 6, 100/30 → 3, 100/25 → 4), nicht für 80 Jahre.",
+      "",
+      "Bei den Lagern wurde aufgerundet: 80/30 = 2,7 ergibt nach dem Simulator nur 2 volle Zyklen.",
+      "Beim Belag wurde ein Zyklus zu wenig gezählt: 80/15 = 5,3 ergibt 5 volle Austauschzyklen."
+    ],
+    "gapAnalysis": {
+      "topic": "Austauschzyklen B2–B5",
+      "misconception": "Zyklenzahl wird aufgerundet oder vom Standardzeitraum übernommen.",
+      "coreRule": "Anzahl Zyklen = abgerundet (Betrachtungszeitraum / Nutzungsdauer der Komponente).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Brücken-LCA-Simulator (100 Jahre)“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "Modul B8 berechnen",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 17472",
+    "question": "Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die B8-Stauemissionen?",
+    "options": [
+      "rund 184,7 t CO₂-Äq.",
+      "rund 461,7 t CO₂-Äq.",
+      "rund 64,6 t CO₂-Äq.",
+      "rund 30,8 t CO₂-Äq."
+    ],
+    "correctIdx": 0,
+    "explanation": "Stautage = 6 · 18 = 108 d. B8 = 108 d · (4500 · 0,4) Fahrzeuge/d · 0,95 kg = 184 680 kg ≈ 184,7 t CO₂-Äq. Mit Schnellbau (Faktor 0,35) wären es rund 64,6 t.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Hier fehlt der Anteil von 40 % der Schwerverkehrsfahrzeuge, die im Simulator als gestaut gelten.",
+      "Dieser Wert ergibt sich erst mit der Schnellbau-Strategie, die die Sperrzeit um 65 % verkürzt.",
+      "Hier wurde nur ein einzelner Belagswechsel statt der 6 Zyklen im Betrachtungszeitraum angesetzt."
+    ],
+    "gapAnalysis": {
+      "topic": "Stauemissionen B8",
+      "misconception": "Einzelne Faktoren (Zyklenzahl, Stauanteil, Bauweise) werden in der B8-Formel übersehen.",
+      "coreRule": "B8 = Stautage · (DTV-SV · Stauanteil) · Mehremission je Fahrzeug; Stautage = Zyklen · Sperrtage · Strategiefaktor.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Das Modul B8: Baustellen-Stauemissionen“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_4",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "Variantenvergleich Brücke",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 17472",
+    "question": "Bei 1500 m² Deckfläche und 100 Jahren liefert der Simulator für die Module A–C: Spannbeton 863 t (A1–A3: 400 t, B2–B5: 194 t, B8: 185 t) und Stahlverbund 825 t (A1–A3: 317 t, B2–B5: 233 t, B8: 212 t). Welche Analyse trifft zu?",
+    "options": [
+      "Die Stahlverbundbrücke ist in allen Lebenszyklusmodulen günstiger als die Spannbetonbrücke.",
+      "Der Vorteil der Stahlverbundbrücke entsteht vor allem durch Instandhaltung und Stau.",
+      "Ihr A1–A3-Vorteil wird durch Korrosionsschutz (B2–B5) und Stautage (B8) zum Großteil aufgezehrt.",
+      "Beide Varianten sind gleichwertig, da sich ihre Gutschriften in Modul D vollständig ausgleichen."
+    ],
+    "correctIdx": 2,
+    "explanation": "Die Stahlverbundbrücke spart in A1–A3 rund 83 t, verursacht aber durch vier Korrosionsschutzerneuerungen rund 39 t mehr in B2–B5 und durch zusätzliche Sperrtage rund 27 t mehr in B8. Netto bleiben etwa 39 t Vorteil (5,50 statt 5,76 kg CO₂-Äq./(m²·a)). Modul D (−57 t bzw. −128 t) wird separat ausgewiesen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "In B2–B5 und B8 liegt die Stahlverbundbrücke höher als die Spannbetonbrücke, nicht niedriger.",
+      "Gerade in B2–B5 und B8 schneidet die Stahlverbundbrücke schlechter ab; ihr Vorteil liegt in A1–A3.",
+      "",
+      "Die Gutschriften unterscheiden sich stark (−57 t gegenüber −128 t) und gehören nicht in die Summe A–C."
+    ],
+    "gapAnalysis": {
+      "topic": "Modulweiser Variantenvergleich",
+      "misconception": "Ein Vorteil in der Herstellung wird mit einem Lebenszyklusvorteil gleichgesetzt.",
+      "coreRule": "Varianten modulweise vergleichen: A1–A3, B2–B5 und B8 können gegenläufig wirken; D getrennt ausweisen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Brücken-LCA-Simulator (100 Jahre)“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "Schnellbau und Variantenwahl",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 17472",
+    "question": "Mit Schnellbau (−65 % Sperrzeit) sinkt die Summe A–C der Spannbetonbrücke im Simulator von 863 t auf 743 t, die der Stahlverbundbrücke von 825 t auf 687 t. Konventionell gebaut liegt Stahlverbund bei 825 t. Welche Bewertung ist fachlich am besten begründet?",
+    "options": [
+      "Die Bauweise bleibt nachrangig, weil Modul B8 nur einen Anteil von unter 5 % der Bilanz ausmacht.",
+      "Schnellbau lohnt sich nur bei Stahlverbund, da Spannbeton keine Sperrzeiten im Betrieb verursacht.",
+      "Die Variantenwahl hängt allein vom Material ab; Stahlverbund ist in jedem Szenario günstiger.",
+      "Im Schnellbau unterbietet Spannbeton sogar den konventionell gebauten Stahlverbund."
+    ],
+    "correctIdx": 3,
+    "explanation": "Spannbeton mit Schnellbau (743 t) liegt unter Stahlverbund konventionell (825 t). Bei hohem Schwerverkehr ist B8 ein maßgeblicher Bilanzanteil (z. B. 185 t von 863 t ≈ 21 %); Bauverfahren und Verkehrsführung müssen daher gemeinsam mit dem Tragwerk bewertet werden.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "B8 macht konventionell rund 21 % (185 von 863 t) der Spannbetonbilanz aus und ist damit maßgeblich.",
+      "Auch bei Spannbeton entstehen bei sechs Belagswechseln je 18 Sperrtage; Schnellbau senkt B8 hier deutlich.",
+      "Der Vergleich 743 t (Spannbeton, Schnellbau) zu 825 t (Stahlverbund, konventionell) widerlegt das.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Bauverfahren und B8",
+      "misconception": "Die Variantenwahl wird allein über Materialkennwerte ohne Bauverfahren getroffen.",
+      "coreRule": "Bei hohem Verkehrsaufkommen bestimmen Sperrzeiten (B8) die Lebenszyklusbilanz mit; Bauverfahren gehört in den Variantenvergleich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Das Modul B8: Baustellen-Stauemissionen“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_ingenieurbau_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_ingenieurbau",
+    "moduleTitle": "LCA im Ingenieurbau (DIN EN 17472)",
+    "topic": "Kennwert nach DIN EN 17472",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 17472",
+    "question": "Auf welche Bezugsgröße wird der spezifische Kennwert GWP_Ing einer Brücke im Modul normiert?",
+    "options": [
+      "Auf Brückendeckfläche mal Betrachtungszeitraum",
+      "Auf die Nettoraumfläche nach DIN 277 multipliziert mit 50 Jahren",
+      "Auf die eingebaute Betonmasse in Tonnen je Nutzungsjahr",
+      "Auf die tägliche Verkehrsstärke des Schwerverkehrs (DTV-SV)"
+    ],
+    "correctIdx": 0,
+    "explanation": "GWP_Ing = (GWP_A + Σ GWP_B2–B5 + GWP_B8 + GWP_C) / (A_Deck · t_ref) in kg CO₂-Äq./(m²·a). Die Normierung auf 1 m² Deckfläche und Jahr erlaubt den Vergleich unterschiedlicher Tragwerke; Modul D steht nicht im Zähler.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die NRF ist die Bezugsgröße des QNG für Gebäude; Brücken werden auf die Deckfläche bezogen.",
+      "Eine Masse als Bezug würde leichte und schwere Tragwerke nicht nach ihrer Funktion vergleichen.",
+      "DTV-SV geht nur in die Berechnung von B8 ein und ist keine funktionelle Bezugsgröße des Kennwerts."
+    ],
+    "gapAnalysis": {
+      "topic": "Funktionelle Einheit Brücke",
+      "misconception": "Die Bezugsgrößen des Hochbaus werden auf Ingenieurbauwerke übertragen.",
+      "coreRule": "GWP_Ing in kg CO₂-Äq./(m²·a) = Summe der Module A, B2–B5, B8, C geteilt durch A_Deck · t_ref.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normen-Architektur & Prinzipien“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
+      "targetModuleTab": "lca_ingenieurbau",
+      "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "Ebenen des Rechtsrahmens",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Welche Einordnung entspricht dem Rechtsrahmen-Kompendium des Moduls?",
+    "options": [
+      "EPBD (EU) 2024/1275: unmittelbar geltende Verordnung auf der Ebene Baustoffe",
+      "BauPVO (EU) 2024/3110: unmittelbar geltende Verordnung, Ebene Baustoffe",
+      "CBAM (EU) 2023/956: national umzusetzende Richtlinie auf der Ebene Gebäude",
+      "EU-Klimagesetz (EU) 2021/1119: Richtlinie auf der Ebene Finanzen und Vergabe"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die BauPVO ist als EU-Verordnung unmittelbar geltendes Recht (Ebene 3: Baustoffe, Bauprodukte & Ökodesign). Die EPBD ist eine national umzusetzende Richtlinie (Ebene 2: Gebäude), CBAM eine Verordnung auf Ebene 4 (Bepreisung), das Klimagesetz eine Verordnung auf Ebene 1 (strategischer Überbau).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die EPBD ist eine Richtlinie, die national umzusetzen ist, und gehört zur Ebene Gebäude und Bestand.",
+      "",
+      "CBAM ist eine unmittelbar geltende Verordnung und gehört zur Ebene Emissionshandel und Bepreisung.",
+      "Das Klimagesetz ist eine Verordnung und bildet den strategischen Überbau (Ebene 1)."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechtsrahmen-Kaskade",
+      "misconception": "Verordnung und Richtlinie sowie die Ebenen der Kaskade werden verwechselt.",
+      "coreRule": "Verordnung = unmittelbar geltend; Richtlinie = national umzusetzen. Ebenen: Strategie, Gebäude, Baustoffe, Bepreisung, Finanzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsrahmen-Kompendium & Hierarchie“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "CRREM-Stranding-Jahr",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "CRREM-Simulator, Büroimmobilie: Ausgangsintensität 45 kg CO₂-Äq./(m²·a), Maßnahme „Deep Capex: Hülle + WP + PV (−75 %)“. Der Zielpfad sinkt linear von 18 (2030) auf 10 (2035) kg CO₂-Äq./(m²·a). In welchem Jahr wird das Gebäude stranded?",
+    "options": [
+      "2023",
+      "2028",
+      "2035",
+      "2032"
+    ],
+    "correctIdx": 2,
+    "explanation": "Effektive Intensität: 45 · 0,25 = 11,25 kg CO₂-Äq./(m²·a). Zielwerte: 2033 = 13,2; 2034 = 11,6; 2035 = 10,0. Erstmals überschritten wird der Pfad 2035 (11,25 > 10,0).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "2023 ist das Stranding-Jahr ohne Maßnahme (45 > 43,6 im Jahr 2023).",
+      "2028 ergibt sich mit der Hüllsanierung (−35 %): 29,25 > 26,0 im Jahr 2028.",
+      "",
+      "2032 läge vor dem Überschreiten: 11,25 ist kleiner als der Zielwert 14,8 im Jahr 2032."
+    ],
+    "gapAnalysis": {
+      "topic": "Stranding-Jahr bestimmen",
+      "misconception": "Reduktion und Zielpfad werden nicht Jahr für Jahr verglichen.",
+      "coreRule": "Stranding-Jahr = erstes Jahr, in dem die effektive Intensität (Ist · (1 − Reduktion)) über dem CRREM-Zielwert liegt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CRREM-Dekarbonisierungssimulator“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "Dekarbonisierungshebel vergleichen",
+    "difficulty": "Transfer",
+    "normRef": "",
+    "question": "Wohngebäude mit 30 kg CO₂-Äq./(m²·a): Der Simulator liefert als Stranding-Jahr ohne Maßnahme 2023, mit Opex (−15 %) 2026, mit Hüllsanierung (−35 %) 2028 und mit Deep Capex (−75 %) 2036. Welche Schlussfolgerung ist zutreffend?",
+    "options": [
+      "Betriebsoptimierung genügt, weil sie das Stranding bereits über das Jahr 2030 hinausschiebt.",
+      "Hülle und Deep Capex wirken gleich, da beide das Gebäude vor 2030 aus dem Pfad bringen.",
+      "Opex und Hülle verschieben das Stranding nur um 3–5 Jahre, erst Deep Capex bis 2036.",
+      "Der Hebel ist unerheblich, weil ein bereits gestrandetes Gebäude den Pfad nicht mehr erreichen kann."
+    ],
+    "correctIdx": 2,
+    "explanation": "Effektive Intensitäten: 25,5 (Opex), 19,5 (Hülle), 7,5 (Deep Capex). Der steile Pfadabfall bis 2030 (15 kg) und 2035 (8 kg) überholt Opex 2026 und die Hülle 2028; erst die Kombination aus Hülle, Wärmepumpe und PV hält das Gebäude bis 2035 im Korridor.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Mit Opex wird das Gebäude bereits 2026 stranded, also deutlich vor 2030.",
+      "Deep Capex hält das Gebäude bis 2035 im Pfad; das Stranding tritt erst 2036 ein.",
+      "",
+      "Die Simulation zeigt, dass eine tiefe Sanierung das Stranding-Jahr um 13 Jahre verschiebt."
+    ],
+    "gapAnalysis": {
+      "topic": "Sanierungsstufen und CRREM",
+      "misconception": "Teilmaßnahmen werden als ausreichend für den Paris-Pfad eingeschätzt.",
+      "coreRule": "Je steiler der Pfad nach 2025 fällt, desto eher reichen nur tiefe Sanierungen (Hülle + Energieträgerwechsel).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CRREM-Dekarbonisierungssimulator“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_4",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "Ressourcenschonung in der Praxis",
+    "difficulty": "Transfer",
+    "normRef": "",
+    "question": "Welcher der im Modul vorgestellten Praxisansätze schont Primärressourcen auf der höchsten Stufe der Abfallhierarchie?",
+    "options": [
+      "Rathaus Korbach: Bauschutt wird vor Ort zu RC-Gesteinskörnung für den Neubau gebrochen.",
+      "Timber Pioneer: Die Holz-Hybrid-Tragstruktur ist mit 300 kg/m² rund 57 % leichter.",
+      "Gebäudetyp E: Komfortnormen werden zugunsten einfacherer Bauweisen vertraglich abbedungen.",
+      "Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert."
+    ],
+    "correctIdx": 3,
+    "explanation": "Die direkte Wiederverwendung ganzer Bauteile (Component-Re-Use) steht in der Abfallhierarchie vor dem Recycling: Die Ziegel behalten ihre Form und Funktion, für ihre Herstellung fällt keine neue graue Energie an. Korbach ist hochwertiges Recycling, Timber Pioneer und Gebäudetyp E setzen bei Materialeinsatz und Suffizienz an.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das Brechen zu RC-Körnung ist Recycling und steht in der Hierarchie unter der Wiederverwendung.",
+      "Leichtbau reduziert den Materialeinsatz, ist aber kein Ansatz zur Kreislaufführung von Bauteilen.",
+      "Gebäudetyp E wirkt über Suffizienz und Vertragsrecht, nicht über die Weiterverwendung von Bauteilen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Abfallhierarchie und Re-Use",
+      "misconception": "Recycling und Wiederverwendung werden gleichgesetzt.",
+      "coreRule": "Vermeidung und Wiederverwendung stehen vor Recycling; Re-Use erhält Bauteile ohne neue graue Energie.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Urban Mining & Materialpässe“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "CBAM-Ausgleich berechnen",
+    "difficulty": "Vertiefung",
+    "normRef": "VO (EU) 2023/956",
+    "question": "Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Preis beträgt 80 €/t CO₂, im Herkunftsland wurden bereits 20 €/t CO₂ gezahlt. Welche CBAM-Kosten ergeben sich nach der im Modul angegebenen Formel?",
+    "options": [
+      "48 000 €",
+      "64 000 €",
+      "80 000 €",
+      "16 000 €"
+    ],
+    "correctIdx": 0,
+    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird angerechnet.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Hier fehlt die Anrechnung des im Herkunftsland gezahlten CO₂-Preises von 20 €/t.",
+      "Hier wurde der volle Preis je Tonne Zement statt je Tonne CO₂ angesetzt (1000 · 80 €).",
+      "Hier wurde nur der Preis im Herkunftsland (20 €/t) angesetzt statt der Differenz zum ETS-Preis."
+    ],
+    "gapAnalysis": {
+      "topic": "CBAM-Formel",
+      "misconception": "Der Herkunftslandpreis oder der Emissionsfaktor wird in der Ausgleichsformel vergessen.",
+      "coreRule": "CBAM-Kosten = Menge · eingebettete Emissionen · (P_ETS − P_Herkunft).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsrahmen-Kompendium & Hierarchie“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lca_regulatorik_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "lca_regulatorik",
+    "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
+    "topic": "EPBD und Lebenszyklus-GWP",
+    "difficulty": "Basis",
+    "normRef": "Richtlinie (EU) 2024/1275",
+    "question": "Ab wann ist das Lebenszyklus-GWP nach der EPBD (EU) 2024/1275 laut Modul für Neubauten zu berechnen und im Energieausweis offenzulegen?",
+    "options": [
+      "Ab 2025 für alle Neubauten, zeitgleich mit dem Subventionsstopp für fossile Kessel",
+      "Ab 2028 für Neubauten über 1000 m² Nutzfläche, ab 2030 für alle Neubauten",
+      "Ab 2030 nur für öffentliche Gebäude, ab 2040 für alle übrigen Neubauten",
+      "Ab 2033 für Nichtwohngebäude im Rahmen der Mindesteffizienzstandards"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach EPBD Art. 7 und Anhang III ist das Lebenszyklus-GWP über 50 Jahre für Neubauten ab 1. Januar 2028 (Nutzfläche über 1000 m²) und ab 1. Januar 2030 für alle Neubauten zu berechnen und im Energieausweis offenzulegen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "2025 betrifft den Subventionsstopp für eigenständige fossile Heizkessel, nicht die GWP-Pflicht.",
+      "",
+      "2040 ist das Zieljahr für den Ausstieg aus fossilen Heizkesseln, nicht für die GWP-Offenlegung.",
+      "Die Jahreszahl 2033 betrifft die Sanierungsquote (26 %) für Nichtwohngebäude, nicht das GWP."
+    ],
+    "gapAnalysis": {
+      "topic": "EPBD-Fristen",
+      "misconception": "Die verschiedenen Fristen der EPBD (Kessel, MEPS, GWP) werden verwechselt.",
+      "coreRule": "Lebenszyklus-GWP: ab 2028 Neubauten > 1000 m², ab 2030 alle Neubauten (EPBD Art. 7).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsrahmen-Kompendium & Hierarchie“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
+      "targetModuleTab": "lca_regulatorik",
+      "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
     "verified": false
   }

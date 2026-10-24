@@ -256,7 +256,7 @@ const PRESET_WALLS: Record<string, { name: string; desc: string; layers: Configu
     ]
   },
   holz_staender: {
-    name: 'Holzrahmenbau (Passivhaus)',
+    name: 'Holzrahmenbau (gedämmt)',
     desc: 'Hocheffiziente, kreislauffähige Leichtbaukonstruktion mit sehr guter Dämmwirkung und biogenem Kohlenstoffspeicher.',
     layers: [
       { materialKey: 'gypsum_board', thicknessCm: 1.25 },
@@ -298,8 +298,12 @@ const PRESET_WALLS: Record<string, { name: string; desc: string; layers: Configu
   }
 };
 
-export default function Nachhaltigkeit() {
-  const [activeWorkspace, setActiveWorkspace] = useState<'wandkonfigurator' | 'qng_nachweis' | 'crrem_regulatorik' | 'praxis_innovationen' | 'leitfaden'>('wandkonfigurator');
+export type NachhaltigkeitBereich = 'wandkonfigurator' | 'qng_nachweis' | 'crrem_regulatorik' | 'praxis_innovationen' | 'leitfaden';
+const ALLE_BEREICHE: readonly NachhaltigkeitBereich[] = ['wandkonfigurator', 'qng_nachweis', 'crrem_regulatorik', 'praxis_innovationen', 'leitfaden'];
+
+export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?: readonly NachhaltigkeitBereich[] }) {
+  const [activeWorkspace, setActiveWorkspace] = useState<NachhaltigkeitBereich>(bereiche[0]);
+  const zeige = (b: NachhaltigkeitBereich) => bereiche.includes(b);
   const [activeStep, setActiveStep] = useState<number>(0);
   const [activeEcoDb, setActiveEcoDb] = useState<'oekobaudat' | 'dgnb' | 'ibu' | 'wecobis'>('oekobaudat');
   const [regulatorikSubTab, setRegulatorikSubTab] = useState<'rechtsrahmen' | 'crrem_sim'>('rechtsrahmen');
@@ -487,20 +491,20 @@ export default function Nachhaltigkeit() {
   const getGegRating = (uVal: number) => {
     if (uVal <= 0.15) {
       return {
-        label: 'Passivhaus-Standard (KfW 40)',
+        label: 'Passivhaus-Niveau (U ≤ 0,15)',
         color: 'bg-slate-100 text-slate-800 border-slate-300',
         rating: 'Exzellent'
       };
     }
     if (uVal <= 0.24) {
       return {
-        label: 'GEG-Sanierungsanforderung',
+        label: 'Erfüllt GEG-Höchstwert Sanierung (0,24)',
         color: 'bg-slate-50 text-slate-700 border-slate-200',
         rating: 'Konform'
       };
     }
     return {
-      label: 'Mangelnde Dämmwirkung (Nicht GEG-konform für Neubauten)',
+      label: 'Über GEG-Höchstwert Sanierung (0,24 W/(m²K))',
       color: 'bg-shiraz/5 text-shiraz border-shiraz/20',
       rating: 'Kritisch'
     };
@@ -644,6 +648,7 @@ export default function Nachhaltigkeit() {
 
           {/* Workspace select button group */}
           <div className="flex flex-wrap gap-2">
+            {zeige('wandkonfigurator') && (
             <button aria-pressed={activeWorkspace === 'wandkonfigurator'}
               onClick={() => setActiveWorkspace('wandkonfigurator')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
@@ -652,8 +657,10 @@ export default function Nachhaltigkeit() {
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
             >
-              1. Wandaufbau
+              Wandaufbau
             </button>
+            )}
+            {zeige('qng_nachweis') && (
             <button aria-pressed={activeWorkspace === 'qng_nachweis'}
               onClick={() => setActiveWorkspace('qng_nachweis')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
@@ -662,8 +669,10 @@ export default function Nachhaltigkeit() {
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
             >
-              2. QNG-Nachweis
+              QNG-Nachweis
             </button>
+            )}
+            {zeige('crrem_regulatorik') && (
             <button aria-pressed={activeWorkspace === 'crrem_regulatorik'}
               onClick={() => setActiveWorkspace('crrem_regulatorik')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
@@ -672,8 +681,10 @@ export default function Nachhaltigkeit() {
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
             >
-              3. CRREM &amp; Regulatorik
+              CRREM &amp; Regulatorik
             </button>
+            )}
+            {zeige('praxis_innovationen') && (
             <button aria-pressed={activeWorkspace === 'praxis_innovationen'}
               onClick={() => setActiveWorkspace('praxis_innovationen')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
@@ -682,8 +693,10 @@ export default function Nachhaltigkeit() {
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
             >
-              4. Praxis &amp; Gebäudetyp E
+              Praxis &amp; Gebäudetyp E
             </button>
+            )}
+            {zeige('leitfaden') && (
             <button aria-pressed={activeWorkspace === 'leitfaden'}
               onClick={() => setActiveWorkspace('leitfaden')}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
@@ -692,8 +705,9 @@ export default function Nachhaltigkeit() {
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
             >
-              5. EPD- &amp; QNG-Leitfaden
+              EPD- &amp; QNG-Leitfaden
             </button>
+            )}
           </div>
         </div>
 
@@ -1086,7 +1100,7 @@ export default function Nachhaltigkeit() {
                 <span className="font-bold text-slate-900">{formatDeZahl(computedWall.gwpBiogenicA1A3, 1)} kg CO₂-eq/m²</span> biogenen Kohlenstoff in der Herstellungsphase. 
                 Die herstellungsbedingten fossilen Emissionen belaufen sich auf{' '}
                 <span className="font-bold text-shiraz">+{formatDeZahl(computedWall.gwpFossilA1A3, 1)} kg CO₂-eq</span>. 
-                Die Netto-LCA über 50 Jahre schließt die Entsorgungsemissionen und Recyclinggutschriften außerhalb der Systemgrenze voll ein.
+                Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet.
               </div>
             </div>
 
@@ -3002,7 +3016,7 @@ export default function Nachhaltigkeit() {
                           no: '6', 
                           title: 'Instandhaltung (B4) vergessen', 
                           err: 'Dichtungsschichten, Verputze oder mechanische Klimateile werden mit 50 Jahren Lebensdauer fehlerfrei durchgeschleust.', 
-                          sol: 'Nutzeffekt-Intervalle nach BBSR-Tabelle abbilden (z.B. Heizkessel RSL 20 a, d.h. 1,5-facher Austausch nötig).' 
+                          sol: 'Nutzeffekt-Intervalle nach BBSR-Tabelle abbilden (z. B. Heizkessel RSL 20 a: zwei Austausche nach 20 und 40 Jahren im Betrachtungszeitraum von 50 Jahren).' 
                         },
                         { 
                           no: '7', 
