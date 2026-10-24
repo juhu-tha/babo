@@ -6,7 +6,6 @@ import { Layers, Scissors } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { EC2_NA_DE } from '@/src/data/normParams';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,7 +19,8 @@ import {
 } from 'chart.js';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
-import { fctmVonFck } from '@/src/data/kennwerte';
+import { bemesseQuerkraft } from '@/src/calc/querkraft';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -51,138 +51,21 @@ export default function Querkraftbemessung() {
   const [vEd, setVEd] = useState(250); // Bemessungswert der Querkraft in kN
   const [theta, setTheta] = useState(40); // Druckstrebenneigung in Grad (18.4° bis 45°)
 
-  const results = useMemo(() => {
-    // Umrechnung in m und MN für die Berechnung
-    const b_m = b / 100;
-    const h_m = h / 100;
-    const d_m = Math.max(0.01, (h - d1) / 100);
-    const vEd_MN = vEd / 1000;
-    const theta_rad = (theta * Math.PI) / 180;
-    const cot_theta = 1 / Math.tan(theta_rad);
-
-    // Materialkennwerte aus zentraler Registry
-    const gamma_c = EC2_NA_DE.gammaC;
-    const alpha_cc = EC2_NA_DE.alphaCC;
-    
-    const fcd = (alpha_cc * fck) / gamma_c; // in MPa (MN/m²)
-    
-    let fyd = 0;
-    const isStahl = bewehrungsArt === 'Stahl';
-
-    if (isStahl) {
-      const gamma_s = EC2_NA_DE.gammaS;
-      fyd = fyk / gamma_s; // in MPa (MN/m²)
-    } else {
-      fyd = ftk / gammaFRP; // in MPa (MN/m²)
-    }
-
-    // Innerer Hebelarm z (vereinfacht 0.9 * d)
-    const z = 0.9 * d_m;
-
-    // VRd,max (Maximale Querkrafttragfähigkeit der Druckstrebe nach NA DE)
-    const v2 = Math.min(1.0, 1.1 - fck / 500);
-    const nu1 = EC2_NA_DE.nu1 * v2; // Abminderungsfaktor für gerissenen Beton (nach DIN EN 1992-1-1/NA)
-    const alpha_cw = 1.0; // für nicht vorgespannte Bauteile
-    
-    const vRd_max = (alpha_cw * b_m * z * nu1 * fcd) / (Math.tan(theta_rad) + cot_theta);
-
-    // Erforderliche Querkraftbewehrung (Bügel) a_sw
-    const asw_req_m2_m = vEd_MN / (z * fyd * cot_theta);
-    const asw_req_cm2_m = asw_req_m2_m * 10000; // in cm²/m
-
-    // Mindestquerkraftbewehrung nach NA DE: rho_w,min = 0.16 * fctm / fyk
-    const fctm = fctmVonFck(fck);
-    const rho_w_min = EC2_NA_DE.rhoWmin(fctm, isStahl ? fyk : ftk);
-    const asw_min_cm2_m = rho_w_min * b_m * 10000; // senkrechte Bügel (alpha = 90°)
-
-    // Querkrafttragfähigkeit ohne Querkraftbewehrung VRd,c (nach DIN EN 1992-1-1/NA DE)
-    const k = Math.min(2.0, 1 + Math.sqrt(200 / (d_m * 1000))); // Maßstabsfaktor
-    const Asl_req_m2 = asl / 10000; // in m²
-    const rho_l = Math.min(0.02, Asl_req_m2 / (b_m * d_m)); // Längsbewehrungsgrad
-    const CRdc = EC2_NA_DE.CRdc_Querkraft; // 0.15 / gamma_c nach NA DE
-    // v_min nach DIN EN 1992-1-1/NA, NDP 6.2.1(1): 0,0525/γc für d ≤ 600 mm, 0,0375/γc für d > 800 mm, dazwischen linear
-    const d_mm_v = d_m * 1000;
-    const vmin_k1 = d_mm_v <= 600 ? 0.0525 : d_mm_v >= 800 ? 0.0375 : 0.0525 - (0.0525 - 0.0375) * (d_mm_v - 600) / 200;
-    const v_min = (vmin_k1 / 1.5) * Math.pow(k, 1.5) * Math.pow(fck, 0.5); // MIN-Wert nach NA DE
-
-    let vRdc_MN = (CRdc * k * Math.pow(100 * rho_l * fck, 1 / 3)) * b_m * d_m;
-    const vRdc_min_MN = v_min * b_m * d_m;
-    vRdc_MN = Math.max(vRdc_MN, vRdc_min_MN);
-
-    // Begrenzung von cot theta nach DIN EN 1992-1-1/NA, Gl. 6.7aDE
-    // VRd,cc = 0.5 * 0.48 * fck^(1/3) * bw * z (in N mit bw, z in mm)
-    const bw_mm = b_m * 1000;
-    const z_mm = z * 1000;
-    const vRd_cc_N = 0.5 * 0.48 * Math.pow(fck, 1 / 3) * bw_mm * z_mm;
-    const vEd_N = vEd * 1000;
-    
-    let cot_theta_max = EC2_NA_DE.cotThetaMax;
-    if (vEd_N > vRd_cc_N) {
-      cot_theta_max = Math.min(EC2_NA_DE.cotThetaMax, 1.2 / (1 - vRd_cc_N / vEd_N));
-    }
-    const theta_min_deg = (Math.atan(1 / cot_theta_max) * 180) / Math.PI;
-    const isCotThetaExceeded = cot_theta > cot_theta_max + 0.005;
-
-    const isVRdcExceeded = vEd_MN > vRdc_MN;
-    const asw_final = isVRdcExceeded ? Math.max(asw_req_cm2_m, asw_min_cm2_m) : asw_min_cm2_m;
-    const isVRdMaxExceeded = vEd_MN > vRd_max;
-
-    return {
-      d: d_m * 100,
-      z: z * 100,
-      fcd,
-      fyd,
-      vRd_max: vRd_max * 1000, // in kN
-      vRd_c: vRdc_MN * 1000, // in kN
-      vRd_cc_kN: vRd_cc_N / 1000,
-      cot_theta,
-      cot_theta_max,
-      theta_min_deg,
-      isCotThetaExceeded,
-      asw_req: asw_req_cm2_m,
-      asw_min: asw_min_cm2_m,
-      asw_final,
-      isVRdcExceeded,
-      isVRdMaxExceeded,
-      fctm
-    };
-  }, [b, h, d1, fck, bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta]);
+  const results = useMemo(
+    () => bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta }),
+    [b, h, d1, fck, bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta]
+  );
 
   // Diagrammdaten: a_sw über V_Ed
   const chartData = useMemo(() => {
-    const vEd_values = [];
-    const asw_values = [];
-    const asw_min_values = [];
-
-    const b_m = b / 100;
-    const d_m = Math.max(0.01, (h - d1) / 100);
-    const z = 0.9 * d_m;
-    const theta_rad = (theta * Math.PI) / 180;
-    const cot_theta = 1 / Math.tan(theta_rad);
-
-    let fyd = 0;
-    if (bewehrungsArt === 'Stahl') {
-      fyd = fyk / EC2_NA_DE.gammaS;
-    } else {
-      fyd = ftk / gammaFRP;
-    }
-
-    const fctm = fctmVonFck(fck);
-    const rho_w_min = EC2_NA_DE.rhoWmin(fctm, bewehrungsArt === 'Stahl' ? fyk : ftk);
-    const asw_min_cm2_m = rho_w_min * b_m * 10000;
-
+    const vEd_values: number[] = [];
+    const asw_values: number[] = [];
+    const asw_min_values: number[] = [];
     for (let v = 20; v <= Math.min(results.vRd_max * 1.1, 1000); v += 20) {
+      const r = bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd: v, theta });
       vEd_values.push(v);
-      const v_MN = v / 1000;
-      const asw_req = (v_MN / (z * fyd * cot_theta)) * 10000;
-      
-      const vRdc_kN = results.vRd_c;
-      if (v > vRdc_kN) {
-        asw_values.push(Math.max(asw_req, asw_min_cm2_m));
-      } else {
-        asw_values.push(asw_min_cm2_m);
-      }
-      asw_min_values.push(asw_min_cm2_m);
+      asw_values.push(r.asw_final);
+      asw_min_values.push(r.asw_min);
     }
 
     return {
@@ -206,7 +89,7 @@ export default function Querkraftbemessung() {
         }
       ]
     };
-  }, [b, h, d1, theta, bewehrungsArt, fyk, ftk, gammaFRP, fck, results.vRd_max, results.vRd_c]);
+  }, [b, h, d1, theta, bewehrungsArt, fyk, ftk, gammaFRP, fck, asl, results.vRd_max]);
 
   const chartOptions = {
     responsive: true,
@@ -359,6 +242,7 @@ export default function Querkraftbemessung() {
           </div>
 
           <div className="lg:col-span-7 flex flex-col gap-6">
+            <EingabeHinweise hinweise={results.hinweise.filter(x => x.feld !== 'cotTheta' && x.feld !== 'vRdMax')} />
             <div className="p-6 rounded-xl shadow-md text-white bg-shiraz transition-colors">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90 flex items-center gap-2">
                 <Scissors size={18} /> Bemessungsergebnisse (NA DE)

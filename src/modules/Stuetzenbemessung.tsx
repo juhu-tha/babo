@@ -2,7 +2,8 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { EC2_NA_DE } from '@/src/data/normParams';
+import { bemesseStuetze } from '@/src/calc/stuetze';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { AlertTriangle, Layers } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -39,164 +40,10 @@ export default function Stuetzenbemessung() {
   const [fck, setFck] = useState(30); // MPa
   const [fyk, setFyk] = useState(500); // MPa
 
-  const results = useMemo(() => {
-    // Umrechnung in m
-    const b_m = b / 100;
-    const h_m = h / 100;
-    const d1_m = d1 / 100;
-    
-    // Materialkennwerte aus zentraler Registry
-    const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC; // MPa
-    const fyd = fyk / EC2_NA_DE.gammaS; // MPa
-    
-    // Mindestausmitte e0 und Imperfektion ei nach NA DE
-    const e0_m = EC2_NA_DE.e0Min_mm(h * 10) / 1000; // max(h/30; 20 mm) in m
-    const ei_m = l0 / 400; // in m
-    
-    // Bemessungsmoment nach Theorie I. Ordnung inkl. Imperfektionen
-    const mEd_1 = Math.max(mEd, nEd * e0_m) + nEd * ei_m; // in kNm
-
-    // Schlankheit lambda = l0 / i
-    const i_radius = h_m / Math.sqrt(12); // m
-    const lambda = l0 / i_radius;
-
-    // Bezogene Schnittgrößen
-    const nu_Ed = (-nEd / 1000) / (b_m * h_m * fcd); // Druck ist negativ
-    const mu_Ed = Math.abs((mEd_1 / 1000) / (b_m * h_m * h_m * fcd));
-
-    // Grenzschlankheit nach DIN EN 1992-1-1/NA, 5.8.3.1: λ_lim = 25 für |n| ≥ 0,41, sonst 16/√|n|
-    const n = Math.abs(nu_Ed);
-    const lambda_lim = n >= 0.41 ? 25 : n > 0 ? 16 / Math.sqrt(n) : 100;
-    const isTheorie2Ordnung = lambda > lambda_lim;
-
-    // EC2 Dehnungsiteration für Interaktionsdiagramm
-    const generateInteractionData = (omega: number) => {
-      const points = [];
-      const d = h_m - d1_m;
-      
-      // 1. Reiner Zug
-      points.push({ x: 0, y: omega });
-
-      // Verteilung der Dehnung an der Druckseite
-      const eps_top_calc = (xi: number) => {
-        if (xi <= 1.0) return -3.5;
-        return (-2.0 * xi) / (xi - 3 / 7);
-      };
-
-      // 2. Biegung mit Längskraft (xi = x/h variiert)
-      const num_points = 100;
-      for (let i = 0; i <= num_points; i++) {
-        const xi = 0.001 * Math.pow(100000, i / num_points);
-        const eps_top = eps_top_calc(xi);
-        
-        const eps_s1 = eps_top * ((xi - (d / h_m)) / xi);
-        const eps_s2 = eps_top * ((xi - (d1_m / h_m)) / xi);
-        
-        const sig_s1 = Math.max(-fyd, Math.min(fyd, (eps_s1 / 1000) * 200000));
-        const sig_s2 = Math.max(-fyd, Math.min(fyd, (eps_s2 / 1000) * 200000));
-        
-        let y = 0.8 * xi * h_m;
-        if (y > h_m) y = h_m;
-        
-        const Fc = -y * b_m * fcd;
-        const zc = h_m / 2 - y / 2;
-        const Mc = Fc < 0 ? -Fc * zc : 0; 
-        
-        const As1 = 0.5 * omega * b_m * h_m * (fcd / fyd);
-        const As2 = As1;
-        
-        const Fs1 = As1 * sig_s1;
-        const Fs2 = As2 * sig_s2;
-        
-        const N = Fc + Fs1 + Fs2;
-        const Ms = Fs1 * (h_m / 2 - d1_m) - Fs2 * (h_m / 2 - d1_m);
-        const M = Mc + Ms;
-        
-        const nu = N / (b_m * h_m * fcd);
-        const mu = Math.abs(M / (b_m * h_m * h_m * fcd));
-        
-        points.push({ x: mu, y: nu });
-      }
-      
-      // 3. Reiner Druck
-      const eps_c = -2.0; // Promille
-      const sig_s = Math.max(-fyd, Math.min(fyd, (eps_c / 1000) * 200000));
-      const N_comp = -b_m * h_m * fcd + omega * b_m * h_m * (fcd / fyd) * sig_s;
-      const nu_comp = N_comp / (b_m * h_m * fcd);
-      points.push({ x: 0, y: nu_comp });
-
-      return { omega, points, nu_comp };
-    };
-
-    // Diagrammlinien für Visualisierung
-    const omegaValues = [0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0];
-    const interactionCurves: Array<{ omega: number; points: { x: number; y: number }[]; nu_comp: number; isRequired?: boolean }> = omegaValues.map(generateInteractionData);
-
-    // Finde erforderliches omega durch iteratives Annähern
-    let req_omega = 0;
-    let isPossible = false;
-    
-    for (let o = 0; o <= 2.5; o += 0.01) {
-      const { points, nu_comp } = generateInteractionData(o);
-      
-      let inside = false;
-      if (nu_Ed <= o && nu_Ed >= nu_comp) {
-        let mu_max = -1;
-        for (let k = 0; k < points.length - 1; k++) {
-          const p1 = points[k];
-          const p2 = points[k + 1];
-          if ((nu_Ed <= p1.y && nu_Ed >= p2.y) || (nu_Ed >= p1.y && nu_Ed <= p2.y)) {
-            if (p1.y === p2.y) {
-              mu_max = Math.max(mu_max, p1.x, p2.x);
-            } else {
-              const t = (nu_Ed - p2.y) / (p1.y - p2.y);
-              const interpol_mu = p2.x + t * (p1.x - p2.x);
-              if (interpol_mu > mu_max) mu_max = interpol_mu;
-            }
-          }
-        }
-        if (mu_Ed <= mu_max + 0.002) { 
-          inside = true;
-        }
-      }
-      
-      if (inside) {
-        req_omega = o;
-        isPossible = true;
-        break;
-      }
-    }
-    
-    if (isPossible && !omegaValues.includes(req_omega)) {
-      const req_curve = generateInteractionData(req_omega);
-      interactionCurves.push({ ...req_curve, isRequired: true });
-      interactionCurves.sort((a, b) => a.omega - b.omega);
-    }
-
-    const as_tot_req = req_omega * b_m * h_m * (fcd / fyd) * 10000; // cm²
-    
-    // Mindestbewehrung für Stützen nach NA DE: As,min = 0.15 * |NEd| / fyd
-    // NEd in kN (1000 N), fyd in MPa (N/mm²), As,min in cm² = (mm² / 100)
-    const as_min = (EC2_NA_DE.AsMinStuetze(nEd * 1000, fyd)) / 100; // cm²
-    const as_final = isPossible ? Math.max(as_tot_req, as_min) : 0;
-
-    return {
-      nu_Ed,
-      mu_Ed,
-      mEd_1,
-      e0_mm: e0_m * 1000,
-      ei_mm: ei_m * 1000,
-      lambda,
-      lambda_lim,
-      isTheorie2Ordnung,
-      req_omega,
-      as_tot_req,
-      as_min,
-      as_final,
-      isPossible,
-      interactionCurves
-    };
-  }, [b, h, d1, l0, nEd, mEd, fck, fyk]);
+  const results = useMemo(
+    () => bemesseStuetze({ b, h, d1, l0, nEd, mEd, fck, fyk }),
+    [b, h, d1, l0, nEd, mEd, fck, fyk]
+  );
 
   const chartData = {
     datasets: [
@@ -338,7 +185,7 @@ export default function Stuetzenbemessung() {
                   <span className="font-mono font-bold">{formatDeZahl(results.ei_mm, 1)} mm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
-                  <span>Maßgebendes <FormulaText text="M_{Ed,1}" />:</span>
+                  <span>Maßgebendes <FormulaText text="M_{Ed} = \max(M_{0Ed} + N_{Ed} e_i;\; N_{Ed} e_0)" />:</span>
                   <span className="font-mono font-bold text-shiraz">{formatDeZahl(results.mEd_1, 2)} kNm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
@@ -350,6 +197,7 @@ export default function Stuetzenbemessung() {
           </div>
 
           <div className="lg:col-span-7 space-y-6">
+            <EingabeHinweise hinweise={results.hinweise.filter(x => x.feld !== 'theorie2')} />
             <div className={`p-6 rounded-xl border ${results.isPossible ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'}`}>
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4">Ergebnis (NA DE)</h3>
               <div className="grid grid-cols-2 gap-4 mb-4">
