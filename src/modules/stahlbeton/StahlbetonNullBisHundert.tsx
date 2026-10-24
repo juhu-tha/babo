@@ -1,3 +1,4 @@
+import { MU_LIM_STAHL } from '@/src/calc/biegung';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { InlineMath } from 'react-katex';
@@ -105,7 +106,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
   
   // zeta = 0.5 * (1 + sqrt(1 - 2*mu))
   let zeta = 0.5 * (1 + Math.sqrt(Math.max(0, 1 - 2 * Math.min(0.48, mu_Eds))));
-  if (mu_Eds > 0.296) {
+  if (mu_Eds > MU_LIM_STAHL) {
     zeta = 0.814; // Approximate limit before compressive reinforcement
   }
   const As_erf_cm2 = (Med_Nmm / (zeta * d_mm * fyd)) / 100;
@@ -655,7 +656,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Beiwert μ_Eds</span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeZahl(mu_Eds, 3)}</span>
                   <span className="text-[10px] text-slate-500 block font-mono">
-                    {mu_Eds <= 0.296 ? '✓ Einfach bewehrt' : '⚠ Druckbewehrung nötig'}
+                    {mu_Eds <= MU_LIM_STAHL ? '✓ Einfach bewehrt' : '⚠ Druckbewehrung nötig'}
                   </span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
