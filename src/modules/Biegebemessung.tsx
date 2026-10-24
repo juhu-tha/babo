@@ -1,4 +1,5 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { EC2_NA_DE } from '@/src/data/normParams';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -261,6 +262,68 @@ export default function Biegebemessung() {
                 {results.isPossible && <div>Druckzonenhöhe <FormulaText text="x" />: {formatDeZahl(results.x, 1)} cm</div>}
               </div>
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Biegebemessung mit den aktuellen Eingaben"
+              zielGleichung={`A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{f_{yd}} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`}
+              normQuelle="DIN EN 1992-1-1 mit NA (DE), 3.1.7 und 6.1"
+              schritte={[
+                {
+                  titel: 'Bemessungswerte der Baustoffe',
+                  erklaerung: bewehrungsArt === 'Stahl'
+                    ? 'Beton mit α_cc = 0,85 und γ_c = 1,5, Betonstahl mit γ_s = 1,15.'
+                    : 'Beton mit α_cc = 0,85 und γ_c = 1,5; nichtmetallische Bewehrung mit dem gewählten Teilsicherheitsbeiwert γ_FRP.',
+                  formel: bewehrungsArt === 'Stahl'
+                    ? `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{yd} = \\frac{${formatDeTeX(fyk, 0)}}{${formatDeTeX(EC2_NA_DE.gammaS, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`
+                    : `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{fd} = \\frac{${formatDeTeX(ftk, 0)}}{${formatDeTeX(gammaFRP, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`,
+                },
+                {
+                  titel: 'Statische Nutzhöhe',
+                  erklaerung: 'Abstand vom gedrückten Rand bis zur Achse der Zugbewehrung.',
+                  formel: `d = h - d_1 = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm}`,
+                },
+                {
+                  titel: 'Bezogenes Moment',
+                  erklaerung: results.mu_Ed > (bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP)
+                    ? (bewehrungsArt === 'Stahl'
+                      ? 'Der Grenzwert ist überschritten: Der Querschnitt wird mit μ_lim bemessen, das Restmoment übernimmt eine Druckbewehrung A_s2.'
+                      : 'Der Grenzwert ist überschritten: Die Druckzone versagt, der Querschnitt muss vergrößert werden.')
+                    : 'Der Grenzwert ist eingehalten, eine Druckbewehrung ist nicht erforderlich.',
+                  formel: `\\mu_{Eds} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}} = \\frac{${formatDeTeX(med / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.d / 100, 3)}^2 \\cdot ${formatDeTeX(results.fcd, 1)}} = ${formatDeTeX(results.mu_Ed, 3)} \\;${results.mu_Ed > (bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP) ? '>' : '\\le'}\\; \\mu_{lim} = ${formatDeTeX(bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP, 3)}`,
+                },
+                {
+                  titel: 'Mechanischer Bewehrungsgrad und Druckzone',
+                  erklaerung: 'Rechteckiger Spannungsblock mit λ = 0,8; die Druckzonenhöhe folgt aus x = ω · d / λ.',
+                  formel: results.isPossible
+                    ? `\\omega = 1 - \\sqrt{1 - 2 \\cdot ${formatDeTeX(Math.min(results.mu_Ed, bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP), 3)}} = ${formatDeTeX(results.omega, 3)};\\quad x = \\frac{${formatDeTeX(results.omega, 3)} \\cdot ${formatDeTeX(results.d, 1)}}{0{,}8} = ${formatDeTeX(results.x, 1)}\\,\\text{cm}`
+                    : `\\text{${results.message}}`,
+                },
+                {
+                  titel: 'Erforderliche Zugbewehrung',
+                  erklaerung: results.as2_req > 0
+                    ? `Anteil aus dem Grenzmoment plus Anteil der Druckbewehrung (A_s2 = ${formatDeZahl(results.as2_req, 2)} cm², σ_s2 = ${formatDeZahl(results.sigma_s2, 0)} N/mm²).`
+                    : bewehrungsArt === 'Stahl'
+                      ? 'Die Bewehrung fließt; Bemessung mit f_yd.'
+                      : 'Nichtmetallische Bewehrung: Bemessung mit der Spannung σ_f aus dem ebenen Dehnungszustand (höchstens f_fd).',
+                  formel: !results.isPossible
+                    ? '\\text{nicht bemessbar}'
+                    : results.as2_req > 0
+                      ? `A_{s1} = ${formatDeTeX(results.omega, 3)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(results.d, 1)} \\cdot \\frac{${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(results.fyd, 1)}} + ${formatDeTeX(results.as2_req, 2)} \\cdot \\frac{${formatDeTeX(results.sigma_s2, 0)}}{${formatDeTeX(results.fyd, 1)}} = ${formatDeTeX(results.as1_req, 2)}\\,\\text{cm}^2`
+                      : bewehrungsArt === 'Stahl'
+                        ? `A_{s1} = ${formatDeTeX(results.omega, 3)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(results.d, 1)} \\cdot \\frac{${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(results.fyd, 1)}} = ${formatDeTeX(results.as1_req, 2)}\\,\\text{cm}^2`
+                        : `A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{\\sigma_f} = ${formatDeTeX(results.as1_req, 2)}\\,\\text{cm}^2 \\quad (\\sigma_f = ${formatDeTeX(results.as1_req > 0 ? results.omega * b * results.d * results.fcd / results.as1_req : NaN, 0)}\\,\\text{N/mm}^2)`,
+                },
+                {
+                  titel: 'Mindestbewehrung und maßgebender Wert',
+                  erklaerung: 'Robustheitsbewehrung nach NA (DE): A_s,min = M_cr / (f_yk · z) mit z = 0,9 d; maßgebend ist der größere Wert.',
+                  formel: results.isPossible
+                    ? `M_{cr} = ${formatDeTeX(results.mcr_kNm, 2)}\\,\\text{kNm},\\; A_{s,min} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2 \\;\\Rightarrow\\; A_{s1} = \\max(${formatDeTeX(results.as1_req, 2)};\\, ${formatDeTeX(results.as_min, 2)}) = ${formatDeTeX(results.as_final, 2)}\\,\\text{cm}^2`
+                    : `M_{cr} = ${formatDeTeX(results.mcr_kNm, 2)}\\,\\text{kNm},\\; A_{s,min} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2`,
+                },
+              ]}
+              ergebnisHinweis={results.isPossible ? `Maßgebende Zugbewehrung A_s1 = ${formatDeZahl(results.as_final, 2)} cm²` : results.message}
+            />
 
             {/* Interaktives Schnittgrößenmodell */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col">

@@ -7,7 +7,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -279,6 +279,40 @@ export default function Knicken() {
                     ? 'STABILITÄTSVERSAGEN: ideale Knicklast erreicht (N_Ed ≥ F_K)'
                     : `Unterhalb der idealen Knicklast (N_Ed/F_K = ${formatDeZahl(results.utilization, 0)} %) – der Bemessungsnachweis erfordert zusätzlich den Abminderungsbeiwert χ nach DIN EN 1993-1-1, 6.3.1`}
                 </div>
+
+                <FormulaDerivationBox
+                  live
+                  title="Ihr Rechenweg: Euler-Knicklast mit den aktuellen Eingaben"
+                  zielGleichung={`F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{(\\beta \\cdot l)^2} = ${formatDeTeX(results.F_K_kN, 1)}\\,\\text{kN}`}
+                  normQuelle="Euler-Knickfälle; Theorie II. Ordnung (Lehrmodell)"
+                  schritte={[
+                    {
+                      titel: 'Knicklänge',
+                      erklaerung: `Euler-Fall ${formatDeZahl(eulerFall, 0)} mit dem Knicklängenbeiwert β = ${formatDeZahl(results.beta, 1)}.`,
+                      formel: `l_k = \\beta \\cdot l = ${formatDeTeX(results.beta, 1)} \\cdot ${formatDeTeX(l, 2)} = ${formatDeTeX(results.l_k, 2)}\\,\\text{m}`,
+                    },
+                    {
+                      titel: 'Ideale Knicklast',
+                      erklaerung: `Mit E = ${formatDeZahl(eModul, 0)} N/mm² und I = ${formatDeZahl(i, 0)} cm⁴ = ${formatDeZahl(i / 100, 2)} · 10⁶ mm⁴.`,
+                      formel: `F_K = \\frac{\\pi^2 \\cdot ${formatDeTeX(eModul, 0)} \\cdot ${formatDeTeX(i / 100, 2)} \\cdot 10^{6}}{${formatDeTeX(results.l_k * 1000, 0)}^2} \\cdot 10^{-3} = ${formatDeTeX(results.F_K_kN, 1)}\\,\\text{kN}`,
+                    },
+                    {
+                      titel: 'Einwirkende Normalkraft',
+                      erklaerung: 'Die Last wird als Anteil der idealen Knicklast eingestellt.',
+                      formel: `N_{Ed} = ${formatDeTeX(loadPercent / 100, 2)} \\cdot ${formatDeTeX(results.F_K_kN, 1)} = ${formatDeTeX(results.N_Ed_kN, 1)}\\,\\text{kN}`,
+                    },
+                    {
+                      titel: 'Ausbiegung nach Theorie II. Ordnung',
+                      erklaerung: results.isBuckled
+                        ? 'N_Ed ≥ F_K: Der Stab ist instabil, die Ausbiegung wächst theoretisch unbegrenzt (Darstellung auf den 12,5-fachen Wert begrenzt).'
+                        : 'Angenommene Vorkrümmung w₀ = l/300; der Vergrößerungsfaktor ist für die Darstellung auf 12,5 begrenzt.',
+                      formel: results.isBuckled || 1 - loadPercent / 100 < 0.08
+                        ? `w = ${formatDeTeX((l * 1000) / 300, 1)} \\cdot 12{,}5 = ${formatDeTeX(results.maxDeflectionMm, 1)}\\,\\text{mm}`
+                        : `w = \\frac{w_0}{1 - N_{Ed}/F_K} = \\frac{${formatDeTeX((l * 1000) / 300, 1)}}{1 - ${formatDeTeX(loadPercent / 100, 2)}} = ${formatDeTeX(results.maxDeflectionMm, 1)}\\,\\text{mm}`,
+                    },
+                  ]}
+                  ergebnisHinweis={`F_K = ${formatDeZahl(results.F_K_kN, 1)} kN, w ≈ ${formatDeZahl(results.maxDeflectionMm, 1)} mm`}
+                />
 
               </div>
             </div>

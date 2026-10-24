@@ -4,6 +4,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { bemesseStuetze } from '@/src/calc/stuetze';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { EC2_NA_DE } from '@/src/data/normParams';
 import { AlertTriangle, Layers } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -225,6 +227,47 @@ export default function Stuetzenbemessung() {
                 )}
               </div>
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Stützenbemessung mit den aktuellen Eingaben"
+              zielGleichung={`A_{s,tot} = \\omega \\cdot b \\cdot h \\cdot \\frac{f_{cd}}{f_{yd}} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`}
+              normQuelle="DIN EN 1992-1-1 mit NA (DE), 5.2, 5.8.3.1, 6.1 und 9.5.2"
+              schritte={[
+                {
+                  titel: 'Ausmitten und maßgebendes Moment',
+                  erklaerung: 'Imperfektion e_i = l₀/400 und Mindestausmitte e₀ = max(h/30; 20 mm) werden nicht addiert; maßgebend ist der größere Wert.',
+                  formel: `M_{Ed} = \\max(${formatDeTeX(mEd, 0)} + ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.ei_mm / 1000, 4)};\; ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.e0_mm / 1000, 3)}) = ${formatDeTeX(results.mEd_1, 2)}\\,\\text{kNm}`,
+                },
+                {
+                  titel: 'Schlankheit',
+                  erklaerung: results.isTheorie2Ordnung
+                    ? 'λ > λ_lim: Theorie II. Ordnung wäre erforderlich; das Ergebnis nach Theorie I. Ordnung liegt auf der unsicheren Seite.'
+                    : 'λ ≤ λ_lim: Die Bemessung nach Theorie I. Ordnung ist zulässig.',
+                  formel: `\\lambda = \\frac{l_0}{h/\\sqrt{12}} = \\frac{${formatDeTeX(l0, 2)}}{${formatDeTeX(h / 100, 2)}/\\sqrt{12}} = ${formatDeTeX(results.lambda, 1)} \;${results.isTheorie2Ordnung ? '>' : '\\le'}\; \\lambda_{lim} = ${formatDeTeX(results.lambda_lim, 1)}`,
+                },
+                {
+                  titel: 'Bezogene Schnittgrößen',
+                  erklaerung: `Mit f_cd = 0,85 · ${formatDeZahl(fck, 0)} / 1,5 = ${formatDeZahl((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)} N/mm²; Druck negativ.`,
+                  formel: `\\nu_{Ed} = \\frac{-${formatDeTeX(nEd / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)} \\cdot ${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}} = ${formatDeTeX(results.nu_Ed, 3)};\\quad \\mu_{Ed} = \\frac{${formatDeTeX(results.mEd_1 / 1000, 4)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)}^2 \\cdot ${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}} = ${formatDeTeX(results.mu_Ed, 3)}`,
+                },
+                {
+                  titel: 'Mechanischer Bewehrungsgrad aus dem Interaktionsdiagramm',
+                  erklaerung: results.isPossible
+                    ? 'Der Rechner sucht in Schritten von 0,01 das kleinste ω, dessen Interaktionskurve den Punkt (μ_Ed; ν_Ed) umschließt.'
+                    : 'Auch mit ω = 2,5 wird der Punkt (μ_Ed; ν_Ed) nicht umschlossen: Der Querschnitt reicht nicht aus.',
+                  formel: results.isPossible
+                    ? `\\omega = ${formatDeTeX(results.req_omega, 2)} \;\\Rightarrow\; A_{s,tot} = ${formatDeTeX(results.req_omega, 2)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} \\cdot \\frac{${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} = ${formatDeTeX(results.as_tot_req, 2)}\\,\\text{cm}^2`
+                    : '\\omega > 2{,}5',
+                },
+                {
+                  titel: 'Mindestbewehrung und maßgebender Wert',
+                  erklaerung: 'Mindestlängsbewehrung nach NA (DE) 9.5.2(2): A_s,min = 0,15 · |N_Ed| / f_yd.',
+                  formel: `A_{s,min} = \\frac{0{,}15 \\cdot ${formatDeTeX(nEd * 1000, 0)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} \\cdot 10^{-2} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2 \;\\Rightarrow\; A_{s,tot} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`,
+                },
+              ]}
+              ergebnisHinweis={results.isPossible ? `Erforderliche Gesamtbewehrung A_s,tot = ${formatDeZahl(results.as_final, 2)} cm²` : 'Querschnitt nicht ausreichend'}
+            />
 
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm h-[400px]">
               <h3 className="text-sm font-bold text-text-main mb-4">Interaktionsdiagramm (Dehnungsiteration)</h3>

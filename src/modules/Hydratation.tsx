@@ -1,4 +1,5 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Flame, Activity, Info } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
@@ -49,6 +50,10 @@ export default function Hydratation() {
     strength, 
     temperature, 
     te28, 
+    te2d,
+    beta2d,
+    sBeiwert,
+    fckRechen,
     maxTempDiff, 
     rissgefahr, 
     ausschalTage,
@@ -132,6 +137,8 @@ export default function Hydratation() {
     const tempAdiabatic: number[] = [];
 
     let te28_val = 0;
+    let te2d_val = 0;
+    let beta2d_val = 0;
     let currentTempCore = frischbetonTemp;
     let currentTempRand = frischbetonTemp;
     let currentAdiaTemp = frischbetonTemp;
@@ -216,6 +223,7 @@ export default function Hydratation() {
         ? Math.min(1.25, Math.exp(s * (1 - Math.sqrt(28/current_te_act))))
         : 0;
 
+      if (t === 2) { te2d_val = current_te_act; beta2d_val = beta_act; }
       const fc_act_v = beta_act * fcm28;
       const fct_act_v = (current_te_act < 28 ? beta_act : Math.pow(beta_act, 2/3)) * fctm28;
       const E_act_v = Math.pow(beta_act, 0.3) * Ecm28;
@@ -424,6 +432,10 @@ export default function Hydratation() {
 
     return {
       te28: te28_val,
+      te2d: te2d_val,
+      beta2d: beta2d_val,
+      sBeiwert: s,
+      fckRechen: fck,
       maxTempDiff,
       rissgefahr,
       ausschalTage,
@@ -874,6 +886,43 @@ export default function Hydratation() {
                 <strong>Kinetik nach EC2 (DIN EN 1992-1-1):</strong> Der <strong>E-Modul</strong> eilt stark voraus und erreicht nach 2 Tagen bereits <strong>{formatDeZahl(E_2d_rel, 0)} % ({formatDeZahl(E_2d_val, 1)} GPa)</strong>, während die <strong>Druckfestigkeit</strong> erst bei <strong>{formatDeZahl(fc_2d_rel, 0)} % ({formatDeZahl(fc_2d_val, 1)} MPa)</strong> liegt. Die <strong>Zugfestigkeit</strong> <InlineMath math="f_{ctm}" /> folgt <InlineMath math="\beta_{cc}^{1{,}0}" /> ({formatDeZahl(fct_2d_val, 2)} MPa bei 2d).
               </span>
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Festigkeit nach 2 Tagen mit den aktuellen Eingaben"
+              zielGleichung={`f_{cm}(2\\,\\text{d}) = \\beta_{cc}(t_e) \\cdot f_{cm} = ${formatDeTeX(fc_2d_val, 1)}\\,\\text{N/mm}^2`}
+              normQuelle="DIN EN 1992-1-1, 3.1.2 und 3.1.3; Reifefunktion nach gewähltem Verfahren"
+              schritte={[
+                {
+                  titel: '28-Tage-Kennwerte',
+                  erklaerung: `Rechenwert f_ck = ${formatDeZahl(fckRechen, 1)} N/mm² aus der gewählten Festigkeitsklasse (Lehrvereinfachung).`,
+                  formel: `f_{cm} = ${formatDeTeX(fckRechen, 1)} + 8 = ${formatDeTeX(fcm28, 1)};\\quad f_{ctm} = 0{,}30 \\cdot ${formatDeTeX(fckRechen, 1)}^{2/3} = ${formatDeTeX(fctm28, 2)}\\,\\text{N/mm}^2;\\quad E_{cm} = 22 \\cdot \\left(\\tfrac{${formatDeTeX(fcm28, 1)}}{10}\\right)^{0{,}3} = ${formatDeTeX(Ecm28, 1)}\\,\\text{GPa}`,
+                },
+                {
+                  titel: 'Wirksames Betonalter',
+                  erklaerung: `Reifeverfahren „${reifeVerfahren}“: Die Kerntemperatur wird in Zeitschritten von 0,1 d über einen Temperaturfaktor k_T aufsummiert.`,
+                  formel: `t_e(2\\,\\text{d}) = \\sum k_T(T_{Kern}) \\cdot \\Delta t = ${formatDeTeX(te2d, 2)}\\,\\text{d}`,
+                },
+                {
+                  titel: 'Zeitbeiwert der Festigkeit',
+                  erklaerung: `Zementbeiwert s = ${formatDeZahl(sBeiwert, 2)} (Festigkeitsklasse und Erhärtungsgeschwindigkeit).`,
+                  formel: `\\beta_{cc}(t_e) = \\exp\\left[${formatDeTeX(sBeiwert, 2)} \\cdot \\left(1 - \\sqrt{\\tfrac{28}{${formatDeTeX(te2d, 2)}}}\\right)\\right] = ${formatDeTeX(beta2d, 3)}`,
+                },
+                {
+                  titel: 'Kennwerte nach 2 Tagen',
+                  erklaerung: 'Zugfestigkeit mit β_cc^1,0 (t < 28 d), E-Modul mit β_cc^0,3.',
+                  formel: `f_{cm} = ${formatDeTeX(beta2d, 3)} \\cdot ${formatDeTeX(fcm28, 1)} = ${formatDeTeX(fc_2d_val, 1)};\\quad f_{ctm} = ${formatDeTeX(beta2d, 3)} \\cdot ${formatDeTeX(fctm28, 2)} = ${formatDeTeX(fct_2d_val, 2)}\\,\\text{N/mm}^2;\\quad E_{cm} = ${formatDeTeX(beta2d, 3)}^{0{,}3} \\cdot ${formatDeTeX(Ecm28, 1)} = ${formatDeTeX(E_2d_val, 1)}\\,\\text{GPa}`,
+                },
+                {
+                  titel: 'Ausschalfrist',
+                  erklaerung: `Ausgeschalt werden darf, sobald β_cc(t_e) den gewählten Anteil von ${formatDeZahl(ausschalFestigkeit, 0)} % erreicht.`,
+                  formel: ausschalTage > 0
+                    ? `\\beta_{cc}(t_e) \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \;\\Rightarrow\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
+                    : `\\beta_{cc}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \;\\text{bis}\; t = 28\\,\\text{d}`,
+                },
+              ]}
+              ergebnisHinweis={`Nach 2 Tagen: f_cm = ${formatDeZahl(fc_2d_val, 1)} MPa, f_ctm = ${formatDeZahl(fct_2d_val, 2)} MPa, E_cm = ${formatDeZahl(E_2d_val, 1)} GPa`}
+            />
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[460px]">
