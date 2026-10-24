@@ -18,6 +18,9 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
+import { bemesseRiss, rissbreiteFuerAs, type RissEingabe } from '@/src/calc/rissbreite';
+import { betonNachKlasse } from '@/src/data/kennwerte';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 ChartJS.register(
@@ -31,15 +34,6 @@ ChartJS.register(
   Legend
 );
 
-const CONCRETE_DATA: Record<string, { fctm: number; ecm: number }> = {
-  'C20/25': { fctm: 2.2, ecm: 30000 },
-  'C25/30': { fctm: 2.6, ecm: 31000 },
-  'C30/37': { fctm: 2.9, ecm: 33000 },
-  'C35/45': { fctm: 3.2, ecm: 34000 },
-  'C40/50': { fctm: 3.5, ecm: 35000 },
-  'C45/55': { fctm: 3.8, ecm: 36000 },
-  'C50/60': { fctm: 4.1, ecm: 37000 },
-};
 
 export default function Rissbreite() {
   const [wkReq, setWkReq] = useState(EC2_NA_DE.wmax_StB.XC2); // 0.3 mm (XC2)
@@ -56,73 +50,28 @@ export default function Rissbreite() {
   const [zwangNach28d, setZwangNach28d] = useState(false);
   const [kt, setKt] = useState(0.4); // 0.4: langzeitig, 0.6: kurzzeitig
 
-  const as = useMemo(() => {
-    const barArea = (Math.PI * Math.pow(phiS, 2)) / 4;
-    const barCount = b / (spacing * 10);
-    return barCount * barArea;
-  }, [phiS, spacing, b]);
-
-  const Es = 200000; // MPa
-
-  // Handle Concrete Class selection
+  // Handle Concrete Class selection (Kennwerte aus der zentralen Tabelle EC2 Tab. 3.1)
   const handleConcreteChange = (selectedClass: string) => {
     setConcreteClass(selectedClass);
-    if (CONCRETE_DATA[selectedClass]) {
-      setFctEff(CONCRETE_DATA[selectedClass].fctm);
-      setEcm(CONCRETE_DATA[selectedClass].ecm);
+    const k = betonNachKlasse(selectedClass);
+    if (k) {
+      setFctEff(k.fctm);
+      setEcm(k.Ecm);
     }
   };
 
-  // Calculate effective tension area A_ct,eff
-  const d = h - cNom - phiS / 2;
-  const hc_ef = Math.min(2.5 * (h - d), h / 2); // Simplified without neutral axis x
-  const actEff = b * hc_ef;
-
-  const rhoPEff = as / actEff;
-
-  // Wirksame Betonzugfestigkeit: Wenn Zwang nach 28 d möglich ist, gilt f_ct,eff >= 3.0 MPa
-  const effectiveFct = zwangNach28d ? Math.max(fctEff, EC2_NA_DE.fctEffMinLangzeit) : fctEff;
-  
-  // Max crack spacing sr,max nach DIN EN 1992-1-1/NA DE (ohne k1, k2, k3, k4)
-  const srMax = Math.min(
-    phiS / (3.6 * rhoPEff),
-    (sigmaS * phiS) / (3.6 * effectiveFct)
-  );
-  
-  // Strain difference using dynamic ecm
-  const alphaE = Es / ecm;
-  const epsSmEpsCm = Math.max(
-    (sigmaS - kt * (effectiveFct / rhoPEff) * (1 + alphaE * rhoPEff)) / Es,
-    (0.6 * sigmaS) / Es
-  );
-  
-  // Calculated crack width
-  const wkCalc = srMax * epsSmEpsCm;
-
-  // Mindestbewehrung zur Begrenzung der Rissbreite nach DIN EN 1992-1-1/NA
-  const kFactor = EC2_NA_DE.kAsMin(h);
-  const kcFactor = beanspruchung === 'biegung' ? 0.4 : 1.0;
-  const act = beanspruchung === 'biegung' ? (b * h) / 2 : b * h;
-  const asMinReq = (kcFactor * kFactor * effectiveFct * act) / sigmaS;
-
-  const isOk = wkCalc <= wkReq;
+  const eingabe: RissEingabe = {
+    h, b, cNom, phi: phiS, abstand: spacing, sigmaS, fctEff, ecm, beanspruchung, zwangNach28d, kt, wkReq,
+  };
+  const ergebnis = useMemo(() => bemesseRiss(eingabe), [h, b, cNom, phiS, spacing, sigmaS, fctEff, ecm, beanspruchung, zwangNach28d, kt, wkReq]);
+  const { as, hcEf: hc_ef, actEff, rhoPEff, srMax, epsSmEpsCm, wkCalc, asMinReq, isOk } = ergebnis;
 
   const chartData = useMemo(() => {
     const dataWk = [];
     const dataWkReq = [];
 
     for (let a = 100; a <= 5000; a += 100) {
-      const rho_p_eff = a / actEff;
-      const sr_max = Math.min(
-        phiS / (3.6 * rho_p_eff),
-        (sigmaS * phiS) / (3.6 * effectiveFct)
-      );
-      const eps_sm_eps_cm = Math.max(
-        (sigmaS - kt * (effectiveFct / rho_p_eff) * (1 + alphaE * rho_p_eff)) / Es,
-        (0.6 * sigmaS) / Es
-      );
-      const wk = sr_max * eps_sm_eps_cm;
-      
+      const wk = ergebnis.hinweise.some(x => x.stufe === 'fehler') ? NaN : rissbreiteFuerAs(eingabe, a).wkCalc;
       dataWk.push({ x: a, y: wk });
       dataWkReq.push({ x: a, y: wkReq });
     }
@@ -162,7 +111,8 @@ export default function Rissbreite() {
         }
       ],
     };
-  }, [actEff, phiS, sigmaS, effectiveFct, wkReq, as, wkCalc, kt, alphaE]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ergebnis, wkReq]);
 
   const chartOptions = {
     responsive: true,
@@ -381,7 +331,7 @@ export default function Rissbreite() {
           <div className="flex justify-between items-start w-full mb-4">
             <h3 className="text-sm font-bold text-text-main">Querschnitt &amp; Wirksame Zugzone</h3>
             <div className="text-xs text-home-grau bg-off-white px-2 py-1 rounded">
-              Hinweis: <FormulaText text="h_{c,ef}" /> wird hier vereinfacht ohne Druckzonenhöhe <FormulaText text="x" /> berechnet.
+              <FormulaText text="$h_{c,ef} = \min\{2{,}5\,(h-d);\; (h-x)/3;\; h/2\}$" /> mit der Druckzonenhöhe <FormulaText text="x" /> im Zustand II ({formatDeZahl(ergebnis.x, 1)} mm, bei zentrischem Zug ohne den Term <FormulaText text="$(h-x)/3$" />).
             </div>
           </div>
           <svg width="100%" height="250" viewBox="0 0 500 250" className="max-w-md">
@@ -435,6 +385,7 @@ export default function Rissbreite() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
             <h3 className="text-sm font-bold text-text-main mb-3">Berechnungsergebnisse (NA DE)</h3>
+            <EingabeHinweise hinweise={ergebnis.hinweise.filter(x => x.feld !== 'as')} />
             <div className="flex flex-col gap-3 text-sm">
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80 flex items-center gap-1">
