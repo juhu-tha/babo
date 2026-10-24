@@ -43,17 +43,18 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   bauphysik: {
-    kurz: 'U-Wert nach DIN EN ISO 6946, Temperatur- und Dampfdruckverlauf, vereinfachtes Glaser-Verfahren, sommerlicher Wärmeschutz und Raumakustik.',
+    kurz: 'U-Wert nach DIN EN ISO 6946, Temperaturverlauf und Temperaturfaktor f_Rsi, sommerlicher Wärmeschutz und Raumakustik (Glaser-Verfahren im Modul Feuchteschutz).',
     grenzen: [
       'Homogene Schichten ohne Wärmebrücken, Befestigungsmittel und Luftschichtkorrekturen.',
-      'Glaser-Verfahren vereinfacht: eine Tauwasserebene an einer Schichtgrenze, Verdunstungsklima 12 °C / 70 %; die Randbedingungen der DIN 4108-3:2024 weichen ab.',
+      'f_Rsi mit R_si = 0,25 m²K/W in der ungestörten Fläche; Wärmebrücken sind nicht erfasst.',
       'GEG-Höchstwerte für die Änderung bestehender Gebäude (Anlage 7).',
     ],
   },
   feuchteschutz: {
-    kurz: 'Taupunkt, Schimmeltemperatur und Feuchtezustand von Raumluft und Bauteiloberflächen nach DIN 4108-3.',
+    kurz: 'Taupunkt, Schimmeltemperatur, s_d-Werte und Tauwassernachweis nach dem Glaser-Verfahren (DIN 4108-3).',
     grenzen: [
       'Sättigungsdampfdruck nach der Magnus-Formel der DIN 4108-3 (über Eis unter 0 °C).',
+      'Glaser-Verfahren vereinfacht: Wand mit R_si = 0,13 und R_se = 0,04 m²K/W, eine Tauwasserebene an einer Schichtgrenze, Verdunstungsklima 12 °C / 70 % über 90 Tage; die Randbedingungen der DIN 4108-3:2024 weichen ab.',
       'Stationäre Betrachtung ohne Feuchtespeicherung und kapillaren Transport.',
     ],
   },

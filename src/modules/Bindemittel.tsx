@@ -405,12 +405,18 @@ export default function Bindemittel() {
               Die Herstellung von Zement ist ein energie- und ressourcenintensiver Prozess, bestehend aus mehreren Phasen:
             </p>
             <ol className="list-decimal list-inside text-sm text-text-main/80 space-y-3">
-              <li><strong>Rohstoffgewinnung & Aufbereitung:</strong> Abbau von Kalkstein (CaCO₃) und Ton/Mergel, anschließend Brechen und Mahlen zum Rohmehl.</li>
-              <li><strong>Brennen:</strong> Erhitzen im Drehrohrofen auf ca. 1.450 °C (Sintern). Kalkstein entsäuert (CO₂ wird frei), die Mineralien verschmelzen chemisch zum Zementklinker.</li>
-              <li><strong>Mahlen:</strong> Der Klinker wird stark abgekühlt und anschließend zusammen mit Gips (als Erstarrungsverzögerer) sowie möglichen weiteren Bestandteilen (Hüttensand, Flugasche) zu feinem Zement vermahlen.</li>
+              <li><strong>Rohstoffgewinnung & Aufbereitung:</strong> Kalkstein (CaCO₃) und Ton bzw. Mergel (Silikate, Aluminate) werden im Steinbruch gewonnen, zerkleinert, homogenisiert und zu feinem Rohmehl vermahlen.</li>
+              <li><strong>Zyklonvorwärmer & Kalzinator:</strong> Das Rohmehl wird auf 800-900 °C erhitzt. Dabei findet die Entsäuerung (Kalzinierung) statt: Kalkstein spaltet CO₂ ab und wird zu Branntkalk (CaO). Diese rohstoffbedingten Emissionen machen rund zwei Drittel der CO₂-Emissionen der Klinkerherstellung aus (Umweltbundesamt).</li>
+              <li><strong>Sintern im Drehrohrofen:</strong> Bei ca. 1.450 °C Brenngut-Temperatur schmelzen die Rohstoffe ansatzweise und reagieren zu den Klinkerphasen Alit (C₃S), Belit (C₂S), Aluminat (C₃A) und Ferrit (C₄AF) – dem Portlandzementklinker.</li>
+              <li><strong>Kühlen & Mahlen:</strong> Der Klinker wird rasch abgekühlt und zusammen mit Gips bzw. Anhydrit (Erstarrungsregler) sowie je nach Zementart weiteren Hauptbestandteilen (Hüttensand, Flugasche, Kalkstein) fein vermahlen.</li>
             </ol>
             <div className="bg-torch-red/10 border border-torch-red/20 p-4 rounded-xl mt-2 text-sm text-text-main/90">
               <strong>CO₂-Emissionen:</strong> Die Zementherstellung verursacht hohe Emissionen, teilweise brennstoffbedingt, aber überwiegend prozessbedingt durch das Entsäuern des Kalksteins (CaCO₃ → CaO + CO₂).
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li><strong>Alternative Brennstoffe:</strong> Biomasse und Ersatzbrennstoffe statt Kohle.</li>
+                <li><strong>Klinkerreduktion:</strong> Mehr Kompositzemente (CEM II bis CEM VI), Klinkerersatz durch Hüttensand oder calcinierte Tone.</li>
+                <li><strong>Carbon Capture (CCS/CCU):</strong> Abscheidung des Prozess-CO₂ mit Speicherung oder Nutzung.</li>
+              </ul>
             </div>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">

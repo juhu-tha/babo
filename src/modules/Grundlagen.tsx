@@ -1,30 +1,40 @@
 import React, { useState } from 'react';
-import { Layers, Sparkles, Flame, Microscope } from 'lucide-react';
+import { Layers, Sparkles, Flame, Microscope, Droplets, ArrowRight } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import Regularien from './Regularien';
+import { useTabContext } from '@/src/contexts/TabContext';
+import { ExpositionsKurzkarte } from '@/src/components/ui/ExpositionsKurzkarte';
+import { springeZu } from '@/src/components/ui/Querverweis';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function Grundlagen() {
-  const [activeTab, setActiveTab] = useState<'druckfestigkeit' | 'expositionsklassen' | 'konsistenz' | 'zement' | 'herstellung' | 'gesteinskoernung' | 'mehlkorn' | 'zusatzstoffe' | 'regulatives'>('druckfestigkeit');
+  const [activeTab, setActiveTab] = useState<'zement' | 'wasser' | 'gesteinskoernung' | 'zusatzstoffe' | 'mehlkorn'>('zement');
+  const { setActiveTab: setModul } = useTabContext();
+  // Themen mit eigener Quelle (AP 3.9): hier nur verlinkt
+  const WEITER = [
+    { ziel: 'bindemittel', label: 'Zementherstellung & Hydratation', modul: 'Bindemittel' },
+    { ziel: 'frischbeton', label: 'Konsistenzklassen', modul: 'Frischbeton' },
+    { ziel: 'festbeton', label: 'Druckfestigkeitsklassen', modul: 'Festbeton' },
+    { ziel: 'expositionsklassen', label: 'Expositions- & Feuchtigkeitsklassen', modul: 'Expositionsklassen' },
+    { ziel: 'regularien', label: 'Normen & Regelwerke', modul: 'Regulatives' },
+  ] as const;
 
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Grundlagen & Regularien (Nachschlagewerk)
+          <Layers className="text-shiraz" /> Ausgangsstoffe des Betons
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Beton besteht aus Zement, Wasser und Gesteinskörnung, ergänzt um Zusatzstoffe und Zusatzmittel. Festlegung, Eigenschaften und Konformität regeln DIN EN 206 und DIN 1045-2. Dieser Reiter fasst die Kennwerte zusammen, die Sie für Festlegung und Mischungsentwurf brauchen.
+            Beton besteht aus Zement, Zugabewasser und Gesteinskörnung, ergänzt um Zusatzstoffe und Zusatzmittel. Dieses Modul beschreibt die Ausgangsstoffe und ihre Kennwerte für den Mischungsentwurf; Festlegung, Eigenschaften und Konformität regeln DIN EN 206 und DIN 1045-2.
           </p>
           <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
             <strong className="mr-1">Lernpfad:</strong>
             {([
-              ['herstellung', 'Zementherstellung'], ['zement', 'Zementarten'], ['gesteinskoernung', 'Gesteinskörnung'],
-              ['zusatzstoffe', 'Zusatzstoffe'], ['mehlkorn', 'Mehlkorn'], ['konsistenz', 'Konsistenz'],
-              ['druckfestigkeit', 'Festigkeit'], ['expositionsklassen', 'Exposition'],
+              ['zement', 'Zement'], ['wasser', 'Zugabewasser'], ['gesteinskoernung', 'Gesteinskörnung'],
+              ['zusatzstoffe', 'Zusätze'], ['mehlkorn', 'Mehlkorn'],
             ] as const).map(([id, label], i) => (
               <React.Fragment key={id}>
                 {i > 0 && <span className="text-text-main/40">→</span>}
@@ -32,38 +42,29 @@ export default function Grundlagen() {
               </React.Fragment>
             ))}
           </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs" data-weiterfuehrend="grundlagen">
+            <strong className="mr-1">Eigene Module:</strong>
+            {WEITER.map(w => (
+              <button key={w.ziel} onClick={() => springeZu(setModul, w.ziel)} title={`Zum Modul ${w.modul}`}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-home-grau/30 hover:border-shiraz hover:text-shiraz cursor-pointer">
+                {w.label} <ArrowRight size={11} />
+              </button>
+            ))}
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">
-          <button aria-pressed={activeTab === 'druckfestigkeit'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'druckfestigkeit' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('druckfestigkeit')}
-          >
-            Druckfestigkeitsklassen
-          </button>
-          <button aria-pressed={activeTab === 'expositionsklassen'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'expositionsklassen' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('expositionsklassen')}
-          >
-            Expositions- & Feuchtigkeitsklassen
-          </button>
-          <button aria-pressed={activeTab === 'konsistenz'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'konsistenz' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('konsistenz')}
-          >
-            Konsistenzbereiche
-          </button>
           <button aria-pressed={activeTab === 'zement'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'zement' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('zement')}
           >
             Zementarten
           </button>
-          <button aria-pressed={activeTab === 'herstellung'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'herstellung' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('herstellung')}
+          <button aria-pressed={activeTab === 'wasser'}
+            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'wasser' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
+            onClick={() => setActiveTab('wasser')}
           >
-            Zementherstellung
+            Zugabewasser
           </button>
           <button aria-pressed={activeTab === 'gesteinskoernung'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'gesteinskoernung' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
@@ -83,202 +84,50 @@ export default function Grundlagen() {
           >
             Zusätze
           </button>
-          <button aria-pressed={activeTab === 'regulatives'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'regulatives' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('regulatives')}
-          >
-            Regulatives
-          </button>
         </div>
 
-        {activeTab === 'druckfestigkeit' && (
+        {activeTab === 'wasser' && (
           <div className="flex flex-col gap-6 animate-fade-in">
-            <h3 className="text-lg font-bold">Druckfestigkeitsklassen für Normal- und Schwerbeton</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse">
-                <thead>
-                  <tr className="border-b-2 border-home-grau/30 bg-off-white">
-                    <th className="py-3 px-4 font-bold">Klasse</th>
-                    <th className="py-3 px-4 font-bold">f<sub>ck,cyl</sub> (Zylinder) [N/mm²]</th>
-                    <th className="py-3 px-4 font-bold">f<sub>ck,cube</sub> (Würfel) [N/mm²]</th>
-                    <th className="py-3 px-4 font-bold">Charakteristik</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ['C8/10', '8', '10', 'Magerbeton / Füllbeton'],
-                    ['C12/15', '12', '15', 'Sauberkeitsschichten'],
-                    ['C16/20', '16', '20', 'Unbewehrte Bauteile'],
-                    ['C20/25', '20', '25', 'Standardbeton Innenbauteile'],
-                    ['C25/30', '25', '30', 'Standardbeton Außenbauteile'],
-                    ['C30/37', '30', '37', 'Erhöhte Anforderungen, WU-Beton'],
-                    ['C35/45', '35', '45', 'Frost-Tausalz-Beanspruchung (XF2, XF3)'],
-                    ['C40/50', '40', '50', 'Vorgespannte Bauteile'],
-                    ['C45/55', '45', '55', 'Ingenieurbau'],
-                    ['C50/60', '50', '60', 'Höchste Klasse des normalfesten Betons'],
-                    ['C55/67 - C100/115', '55 - 100', '67 - 115', 'Hochfester Beton (ab C55/67, DIN EN 206)'],
-                  ].map((row, i) => (
-                    <tr key={i} className="border-b border-home-grau/10 hover:bg-off-white/50">
-                      <td className="py-2 px-4 font-bold text-shiraz">{row[0]}</td>
-                      <td className="py-2 px-4">{row[1]}</td>
-                      <td className="py-2 px-4">{row[2]}</td>
-                      <td className="py-2 px-4 text-text-main/70">{row[3]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <h3 className="text-lg font-bold mt-4">Druckfestigkeitsklassen für Leichtbeton (LC)</h3>
-            <p className="text-sm text-text-main/80 mb-2">Beispielklassen gemäß DIN EN 206:</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 8/9</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 12/13</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 16/18</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 20/22</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 25/28</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">LC 30/33</div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">... bis LC 80/88</div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'expositionsklassen' && (
-          <div className="flex flex-col gap-6 animate-fade-in">
-            <h3 className="text-lg font-bold">Expositionsklassen (Dauerhaftigkeit)</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">X0</span> Kein Angriffsrisiko</h4>
-                <p className="text-sm text-text-main/70">Unbewehrter Beton in nicht frostgefährdeter Umgebung (z.B. Sauberkeitsschicht).</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XC</span> Karbonatisierung</h4>
-                <p className="text-sm text-text-main/70">Korrosion der Bewehrung, ausgelöst durch CO<sub>2</sub>. (XC1: trocken, XC2: nass/selten trocken, XC3: mäßige Feuchte, XC4: wechselnd nass/trocken).</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XD</span> Chloride (ohne Meerwasser)</h4>
-                <p className="text-sm text-text-main/70">Korrosion durch Tausalze oder Sole. (XD1: mäßig feucht, XD2: nass, XD3: wechselnd). Typisch: Parkhäuser, Tausalz-Sprühnebel.</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XS</span> Chloride (Meerwasser)</h4>
-                <p className="text-sm text-text-main/70">Meeresluft (XS1), unter Wasser (XS2), Tidenhub/Spritzwasser (XS3).</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XF</span> Frost & Taumittel</h4>
-                <p className="text-sm text-text-main/70">XF1: mäßige Sättigung ohne Taumittel, XF2: mäßig mit Taumittel, XF3: hohe Sättigung ohne Taumittel, XF4: hohe Sättigung mit Taumittel.</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XA</span> Chemischer Angriff</h4>
-                <p className="text-sm text-text-main/70">Schwach (XA1), mäßig (XA2) oder stark (XA3) angreifende chemische Umgebung (z.B. Sulfate im Boden, Gülle).</p>
-              </div>
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <h4 className="font-bold flex items-center gap-2 mb-2"><span className="w-8 h-8 rounded bg-white flex items-center justify-center font-mono text-xs text-shiraz border border-home-grau/30">XM</span> Verschleiß</h4>
-                <p className="text-sm text-text-main/70">Mechanische Abnutzung. Mäßig (XM1), schwer (XM2), extrem (XM3). Typisch: Industrieböden.</p>
-              </div>
-            </div>
-
-            <h3 className="text-lg font-bold mt-6">Feuchtigkeitsklassen (Alkali-Kieselsäure-Reaktion AKR) nach DAfStb</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse">
-                <thead>
-                  <tr className="border-b-2 border-home-grau/30 bg-off-white">
-                    <th className="py-2 px-4 font-bold">Klasse</th>
-                    <th className="py-2 px-4 font-bold">Bedingung</th>
-                    <th className="py-2 px-4 font-bold">Beispiele</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4 font-bold">WO</td>
-                    <td className="py-2 px-4">Trocken</td>
-                    <td className="py-2 px-4">Innenraumbauteile (Wohnräume)</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4 font-bold">WF</td>
-                    <td className="py-2 px-4">Feucht</td>
-                    <td className="py-2 px-4">Außenbauteile, Feuchträume, drückendes Wasser</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4 font-bold">WA</td>
-                    <td className="py-2 px-4">Feucht + Alkalien von außen</td>
-                    <td className="py-2 px-4">Bauteile mit Meerwasser- oder Tausalzkontakt</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4 font-bold">WS</td>
-                    <td className="py-2 px-4">Feucht + Alkalien + Dyn. Last</td>
-                    <td className="py-2 px-4">Betondecken in Straßen</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'konsistenz' && (
-          <div className="flex flex-col gap-6 animate-fade-in">
-            <h3 className="text-lg font-bold">Konsistenzklassen (Verarbeitbarkeit)</h3>
+            <h3 className="text-lg font-bold flex items-center gap-2"><Droplets size={18} className="text-shiraz" /> Zugabewasser (DIN EN 1008)</h3>
             <p className="text-sm text-text-main/80">
-              Die Einstufung erfolgt typischerweise über das Ausbreitmaß (F) oder das Verdichtungsmaß (C). Im Hochbau ist F3 (weich) üblich. Ausbreitmaß- und Verdichtungsmaßklassen sind nicht direkt vergleichbar; die Beschreibungen (steif, plastisch, weich) gelten je Klasse.
+              Das Zugabewasser löst die Hydratation des Zements aus und stellt zusammen mit der Oberflächenfeuchte der Gesteinskörnung den wirksamen Wassergehalt, auf den sich der w/z-Wert bezieht. Die Eignung von Wasser regelt DIN EN 1008; maßgebend sind vor allem Stoffe, die das Erstarren, die Festigkeitsentwicklung oder den Korrosionsschutz der Bewehrung beeinträchtigen.
             </p>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse">
+              <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-home-grau/30 bg-off-white">
-                    <th className="py-2 px-4 font-bold">Konsistenzbereich</th>
-                    <th className="py-2 px-4 font-bold">Verdichtungsmaß (C)</th>
-                    <th className="py-2 px-4 font-bold">Ausbreitmaß (F)</th>
-                    <th className="py-2 px-4 font-bold">Verwendungsbeispiel</th>
+                  <tr className="bg-off-white text-left">
+                    <th className="p-3 border border-home-grau/30">Wasserart</th>
+                    <th className="p-3 border border-home-grau/30">Eignung nach DIN EN 1008</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Sehr steif</td>
-                    <td className="py-2 px-4 font-mono">C0 (≥ 1,46)</td>
-                    <td className="py-2 px-4 font-mono">–</td>
-                    <td className="py-2 px-4">Walzbeton, Pflastersteine</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Steif</td>
-                    <td className="py-2 px-4 font-mono">C1 (1,45 - 1,26)</td>
-                    <td className="py-2 px-4 font-mono">F1 (≤ 340 mm)</td>
-                    <td className="py-2 px-4">Bordsteinfundamente, Rüttelbeton</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Plastisch</td>
-                    <td className="py-2 px-4 font-mono">C2 (1,25 - 1,11)</td>
-                    <td className="py-2 px-4 font-mono">F2 (350 - 410 mm)</td>
-                    <td className="py-2 px-4">Gefällebeton</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Weich (Standard)</td>
-                    <td className="py-2 px-4 font-mono">C3 (1,10 - 1,04)</td>
-                    <td className="py-2 px-4 font-mono">F3 (420 - 480 mm)</td>
-                    <td className="py-2 px-4">Standardhochbau, bewehrte Bauteile</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Sehr weich</td>
-                    <td className="py-2 px-4 font-mono">–</td>
-                    <td className="py-2 px-4 font-mono">F4 (490 - 550 mm)</td>
-                    <td className="py-2 px-4">Pumpbeton, feingliedrige Bauteile</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Fließfähig</td>
-                    <td className="py-2 px-4 font-mono">–</td>
-                    <td className="py-2 px-4 font-mono">F5 (560 - 620 mm)</td>
-                    <td className="py-2 px-4">Hochbewehrte Bereiche</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 px-4">Sehr fließfähig</td>
-                    <td className="py-2 px-4 font-mono">–</td>
-                    <td className="py-2 px-4 font-mono">F6 (≥ 630 mm)</td>
-                    <td className="py-2 px-4">Sehr dicht bewehrte Bauteile; SVB wird über das Setzfließmaß (SF) eingestuft</td>
-                  </tr>
-                  </tbody>
+                  <tr><td className="p-3 border border-home-grau/30 font-semibold">Trinkwasser</td><td className="p-3 border border-home-grau/30">Geeignet, eine Prüfung ist nicht erforderlich.</td></tr>
+                  <tr><td className="p-3 border border-home-grau/30 font-semibold">Restwasser aus der Betonherstellung</td><td className="p-3 border border-home-grau/30">Geeignet, wenn die Anforderungen der Norm (u. a. Begrenzung des zusätzlichen Feststoffeintrags) eingehalten werden.</td></tr>
+                  <tr><td className="p-3 border border-home-grau/30 font-semibold">Grundwasser, natürliches Oberflächenwasser, Brauchwasser aus der Industrie</td><td className="p-3 border border-home-grau/30">Kann geeignet sein; vor der Verwendung zu prüfen.</td></tr>
+                  <tr><td className="p-3 border border-home-grau/30 font-semibold">Meerwasser, Brackwasser</td><td className="p-3 border border-home-grau/30">Allenfalls für unbewehrten Beton; für Stahl- und Spannbeton wegen der Chloride nicht geeignet.</td></tr>
+                  <tr><td className="p-3 border border-home-grau/30 font-semibold">Häusliches Abwasser</td><td className="p-3 border border-home-grau/30">Nicht geeignet.</td></tr>
+                </tbody>
               </table>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
+                <h4 className="font-bold text-shiraz mb-2">Prüfmerkmale</h4>
+                <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-700">
+                  <li><strong>Vorprüfung:</strong> Öle und Fette, Detergenzien, Farbe, Schwebstoffe, Geruch, Säuregehalt (pH-Wert) und Huminstoffe.</li>
+                  <li><strong>Chemische Prüfung:</strong> Chlorid-, Sulfat- und Alkaligehalt sowie schädliche Verunreinigungen wie Zucker, Phosphate, Nitrate, Blei und Zink.</li>
+                  <li><strong>Vergleichsprüfung:</strong> Erstarrungszeit und Druckfestigkeit gegenüber einer Mischung mit destilliertem bzw. Trinkwasser.</li>
+                </ul>
+              </div>
+              <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
+                <h4 className="font-bold text-shiraz mb-2">Wirksamer Wassergehalt</h4>
+                <p className="text-sm text-gray-700">
+                  Für den w/z-Wert zählt das Zugabewasser zuzüglich des Oberflächenwassers der Gesteinskörnung (und des Wassers aus Zusatzmitteln). Das von der Gesteinskörnung aufgenommene Kernwasser zählt nicht dazu – poröse Körnungen (Leicht- oder RC-Gesteinskörnung) sind deshalb vorzunässen oder ihr Wasseranspruch ist bei der Zugabe zu berücksichtigen.
+                </p>
+              </div>
             </div>
           </div>
         )}
-        
+
         {activeTab === 'gesteinskoernung' && (
           <div className="flex flex-col gap-6 animate-fade-in">
              <h3 className="text-lg font-bold">Gesteinskörnungen für Beton (DIN EN 12620 / DIN 1045-2)</h3>
@@ -337,65 +186,12 @@ export default function Grundlagen() {
           </div>
         )}
 
-        {activeTab === 'herstellung' && (
-          <div className="flex flex-col gap-6 animate-fade-in">
-             <h3 className="text-lg font-bold">Zementherstellung & Klinker</h3>
-             <p className="text-sm text-text-main/80">
-               Von der Rohstoffgewinnung über den Drehrohrofen bis zum fertigen Bindemittel.
-             </p>
-
-            <div className="space-y-4">
-              <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 flex gap-4 items-start">
-                <div className="bg-white px-3 py-1 rounded-lg border font-bold text-shiraz">1</div>
-                <div>
-                  <h4 className="font-bold mb-1">Rohstoffgewinnung & Aufbereitung</h4>
-                  <p className="text-sm text-gray-700">Kalkstein (CaCO₃) und Ton (Silikate, Aluminate) werden im Steinbruch gewonnen, zerkleinert, homogenisiert und in der Vertikalmühle zu feinem <strong>Rohmehl</strong> vermahlen.</p>
-                </div>
-              </div>
-
-              <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 flex gap-4 items-start">
-                <div className="bg-white px-3 py-1 rounded-lg border font-bold text-shiraz">2</div>
-                <div>
-                  <h4 className="font-bold mb-1">Zyklonvorwärmer & Kalzinator</h4>
-                  <p className="text-sm text-gray-700">Das Rohmehl wird auf 800-900 °C erhitzt. Dabei findet die <strong>Entsäuerung (Kalzinierung)</strong> statt: Kalkstein (CaCO₃) spaltet CO₂ ab und wird zu Branntkalk (CaO). Diese rohstoffbedingten Emissionen machen rund zwei Drittel der CO₂-Emissionen der Klinkerherstellung aus (Umweltbundesamt).</p>
-                </div>
-              </div>
-
-              <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 flex gap-4 items-start">
-                <div className="bg-white px-3 py-1 rounded-lg border font-bold text-shiraz">3</div>
-                <div>
-                  <h4 className="font-bold mb-1">Sintern im Drehrohrofen</h4>
-                  <p className="text-sm text-gray-700">Im Ofen wird das Material auf 1450 °C erhitzt (Flammentemperatur ca. 2000 °C). Die Rohstoffe schmelzen ansatzweise (Sintern) und reagieren zu neuen Mineralien: Alit (C₃S), Belit (C₂S), Aluminat (C₃A) und Ferrit (C₄AF). Das Granulat ist der <strong>Portlandzementklinker</strong>.</p>
-                </div>
-              </div>
-
-              <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 flex gap-4 items-start">
-                <div className="bg-white px-3 py-1 rounded-lg border font-bold text-shiraz">4</div>
-                <div>
-                  <h4 className="font-bold mb-1">Mahlung & Zumahlstoffe</h4>
-                  <p className="text-sm text-gray-700">Der gekühlte Klinker wird fein gemahlen. Zur Regelung des Erstarrens wird <strong>Gips (Sulfat)</strong> zugegeben. Um die CO₂-Bilanz zu senken, werden oft <strong>Zumahlstoffe</strong> (Kalksteinmehl, Hüttensand, Flugasche) hinzugegeben (CEM II bis CEM VI Zemente).</p>
-                </div>
-              </div>
-            </div>
-
-            <h3 className="text-lg font-bold mt-4">CO₂-Reduktion & Dekarbonisierung</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-                <h4 className="font-bold text-shiraz mb-2">Ansatzpunkte der Industrie</h4>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                  <li><strong>Alternative Brennstoffe:</strong> z.B. Biomasse, Ersatzbrennstoffe statt Kohle.</li>
-                  <li><strong>Klinkerreduktion:</strong> Mehr Kompositzemente, Klinkerersatz durch calcinierte Tone oder Hüttensand.</li>
-                  <li><strong>Carbon Capture and Storage (CCS):</strong> Abspaltung und Speicherung des Prozess-CO₂.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-
         {activeTab === 'zement' && (
           <div className="flex flex-col gap-6 animate-fade-in">
             <h3 className="text-lg font-bold">Zementarten nach DIN EN 197-1 / DIN EN 197-5</h3>
-            <p className="text-sm text-text-main/80 mb-4">Übersicht der Hauptzementarten und ihrer wesentlichen Zusätze.</p>
+            <p className="text-sm text-text-main/80 mb-4">Übersicht der Hauptzementarten und ihrer wesentlichen Zusätze. Zement ist ein hydraulisches Bindemittel: Portlandzementklinker aus Kalkstein und Ton, fein gemahlen mit Gips bzw. Anhydrit als Erstarrungsregler und je nach Zementart weiteren Hauptbestandteilen. Herstellung, Klinkerphasen und Hydratation stehen im Modul{' '}
+              <button onClick={() => springeZu(setModul, 'bindemittel')} className="underline decoration-dotted text-shiraz hover:text-shiraz/80 cursor-pointer">Bindemittel</button>.
+            </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                {[
@@ -603,12 +399,7 @@ export default function Grundlagen() {
               ]}
               ergebnisHinweis="(w/z)eq = 0,51 ≤ 0,60 – die Flugasche verbessert den rechnerischen Wasserzementwert."
             />
-          </div>
-        )}
-
-        {activeTab === 'regulatives' && (
-          <div className="animate-fade-in flex flex-col gap-6">
-            <Regularien />
+            <ExpositionsKurzkarte hinweis="Ob und in welchem Umfang Zusatzstoffe angerechnet und rezyklierte Gesteinskörnungen verwendet werden dürfen, hängt von der Expositionsklasse ab. Grenzwerte (w/z, Mindestfestigkeit, Zementgehalt) stehen im Modul Expositionsklassen." />
           </div>
         )}
 
@@ -619,7 +410,7 @@ export default function Grundlagen() {
       <ModuleFooter
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' },
+          { title: 'Gesteinskörnung', url: 'https://de.wikipedia.org/wiki/Gesteinsk%C3%B6rnung' },
           { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
           { title: 'Wasserzementwert', url: 'https://de.wikipedia.org/wiki/Wasserzementwert' }
         ]}
@@ -632,14 +423,11 @@ export default function Grundlagen() {
           { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)' },
           { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien)' },
+          { title: 'DIN EN 1008:2002-10 (Zugabewasser für Beton – Festlegung für die Probenahme, Prüfung und Beurteilung der Eignung)' },
+          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)' },
           { title: 'DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)' }
         ]}
         formeln={[
-          {
-            formel: 'f_{ck,cube} \\approx (1{,}20 \\ldots 1{,}25) \\cdot f_{ck,cyl} \\quad (\\text{bis C50/60})',
-            erklaerung: 'Aus den Klassenwerten abgelesen (z. B. C30/37: 37/30 = 1,23; C50/60: 60/50 = 1,20). Verhältnis zwischen Zylinderdruckfestigkeit (150 mm Durchmesser, 300 mm Höhe) und Würfeldruckfestigkeit (150 mm Kantenlänge) aufgrund der Querdehnungsbehinderung an den Prüfmaschinenplatten.',
-            quelle: 'DIN EN 206 / DIN 1045-2'
-          },
           {
             formel: '(w/z)_{eq} = \\frac{w}{z + k \\cdot f}',
             erklaerung: 'Äquivalenter Wasserzementwert unter Berücksichtigung reaktiver puzzolanischer oder latent-hydraulischer Betonzusatzstoffe Typ II (Flugasche, Silikastaub) mit dem Anrechnungsfaktor k.',

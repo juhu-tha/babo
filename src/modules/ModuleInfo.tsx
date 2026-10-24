@@ -535,7 +535,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Taupunkt-Lokalisator', desc: 'Berechnung des Wasserdampfdruckverlaufs zur Verhinderung schädlichen Schimmelpilzwachstums.' }
     ],
     submodules: [
-      { title: 'Bauphysik (Grundlagen)', icon: Thermometer, purpose: 'U-Wert, Temperatur- und Dampfdruckverlauf (Glaser), Temperaturfaktor f_Rsi sowie Nachhallzeit von Räumen.', standards: 'DIN EN ISO 6946; DIN 4108-2/-3; DIN 18041', useCase: 'Nachweis einer gedämmten Außenwand und akustische Ertüchtigung eines Klassenraums.' },
+      { title: 'Bauphysik (Grundlagen)', icon: Thermometer, purpose: 'U-Wert, Temperaturverlauf, Temperaturfaktor f_Rsi, sommerlicher Wärmeschutz sowie Nachhallzeit von Räumen.', standards: 'DIN EN ISO 6946; DIN 4108-2; DIN 18041', useCase: 'Nachweis einer gedämmten Außenwand und akustische Ertüchtigung eines Klassenraums.' },
       { title: 'Thermische Eigenschaften', icon: Flame, purpose: 'Wärmeleitfähigkeiten, Dämmdicken, spezifische Wärmekapazitäten gängiger Baustoffe.', standards: 'DIN 4108-4; DIN EN ISO 10456', useCase: 'Erforderliche Dämmdicke für die nachträgliche Außendämmung einer Bestandswand.' },
       { title: 'Feuchteschutz & Tauwasser', icon: Droplets, purpose: 'Stationäre Transportrechnung von Wasserdampf (Glaser-Verfahren), relative Luftfeuchten berechnen.', standards: 'DIN 4108-3:2024-03; DIN EN ISO 13788', useCase: 'Nachweis der Tauwasserfreiheit im Bauteilinneren einer Holzständerwand.' },
       { title: 'Dämmung im Vergleich', icon: Thermometer, purpose: 'Vor- und Nachteile von Innendämmung (Taupunkt verlagert sich) versus Außendämmung (WDVS).', standards: 'DIN 4108-3; WTA-Merkblätter 6-4 / 6-5', useCase: 'Sanierungskonzept für eine erhaltenswerte Ziegelfassade.' },

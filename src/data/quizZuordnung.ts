@@ -20,7 +20,6 @@ export const QUIZ_MODUL_ROUTE: Readonly<Record<string, ModulId>> = {
   eigenspannungen: 'hydratation_folgen',
   zfp: 'bauwerksuntersuchung',
   ki_baustoffe: 'ki_ueberblick',
-  materialitaet_architektur: 'kombinationen',
 };
 
 export type ClusterNummer = 'I' | 'II' | 'III' | 'IV' | 'V' | 'VI';

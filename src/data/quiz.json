@@ -3389,11 +3389,83 @@
     "verified": false
   },
   {
+    "id": "qn_bauphysik_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bauphysik",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
+    "topic": "Temperaturfaktor f_Rsi",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2",
+    "question": "Eine Außenwand hat U = 0,40 W/(m²K). Wie groß ist der Temperaturfaktor f_Rsi mit R_si = 0,25 m²K/W, und ist das Mindestkriterium nach DIN 4108-2 erfüllt?",
+    "options": [
+      "f_Rsi = 0,90 – erfüllt (≥ 0,70)",
+      "f_Rsi = 0,10 – nicht erfüllt",
+      "f_Rsi = 0,95 – erfüllt (≥ 0,70)",
+      "f_Rsi = 0,60 – nicht erfüllt"
+    ],
+    "correctIdx": 0,
+    "explanation": "In der ungestörten Fläche gilt f_Rsi = 1 − R_si · U = 1 − 0,25 · 0,40 = 0,90. Gefordert ist f_Rsi ≥ 0,70; das Kriterium ist erfüllt. Maßgebend für Schimmel sind in der Praxis Wärmebrücken.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,10 ist nur das Produkt R_si · U; der Temperaturfaktor ist 1 minus dieses Produkt.",
+      "Mit R_si = 0,13 m²K/W ergäbe sich 0,95; für den Schimmelnachweis gilt der erhöhte Wert R_si = 0,25 m²K/W.",
+      "0,60 entsteht, wenn U mit dem Kehrwert verwechselt wird; der Temperaturfaktor einer ungestörten Wand liegt bei üblichen U-Werten nahe 1."
+    ],
+    "gapAnalysis": {
+      "topic": "Temperaturfaktor f_Rsi",
+      "misconception": "Der Temperaturfaktor wird mit R_si = 0,13 m²K/W gebildet.",
+      "coreRule": "f_Rsi = 1 − 0,25 · U ≥ 0,70 (DIN 4108-2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturfaktor f_Rsi“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
+      "targetModuleTab": "bauphysik",
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_bauphysik_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bauphysik",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
+    "topic": "Sommerlicher Wärmeschutz",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2",
+    "question": "Welche Eigenschaft vergrößert bei gleichem U-Wert die Phasenverschiebung einer Außenwand am stärksten?",
+    "options": [
+      "Hohe Rohdichte und Wärmekapazität der Schichten",
+      "Geringere Wärmeleitfähigkeit der äußeren Putzschicht",
+      "Hellere Farbe der äußeren Fassadenoberfläche",
+      "Höherer Diffusionswiderstand der Dämmschicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Phasenverschiebung wächst mit der Speichermasse: Schichten mit hoher Rohdichte und Wärmekapazität nehmen die Wärme verzögert auf und geben sie zeitversetzt ab. Bei Dämmstoffen ist deshalb eine hohe Rohdichte günstig (z. B. Holzfaser gegenüber EPS).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Eine dünne Putzschicht beeinflusst die Speicherwirkung der Wand kaum.",
+      "Eine helle Oberfläche verringert die Strahlungsaufnahme, verschiebt aber den zeitlichen Verlauf nicht.",
+      "Der Diffusionswiderstand betrifft den Feuchtetransport, nicht die Wärmespeicherung."
+    ],
+    "gapAnalysis": {
+      "topic": "Sommerlicher Wärmeschutz",
+      "misconception": "Nur der U-Wert bestimmt den sommerlichen Wärmeschutz.",
+      "coreRule": "Phasenverschiebung und Amplitudendämpfung steigen mit ρ · c der Schichten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sommerlicher Wärmeschutz“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
+      "targetModuleTab": "bauphysik",
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
+    },
+    "verified": false
+  },
+  {
     "id": "q_bp_1",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
     "topic": "U-Wert",
     "difficulty": "Basis",
     "normRef": "DIN EN ISO 6946",
@@ -3418,9 +3490,9 @@
       "topic": "U-Wert",
       "misconception": "U-Wert und Wärmedurchgangswiderstand werden verwechselt.",
       "coreRule": "U = 1/(R_si + Σ d/λ + R_se); Wand: R_si = 0,13, R_se = 0,04 m²K/W.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „U-Wert“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „U-Wert“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
     "verified": false
   },
@@ -3429,7 +3501,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
     "topic": "Nachhallzeit nach Sabine",
     "difficulty": "Vertiefung",
     "normRef": "DIN 18041",
@@ -3454,9 +3526,9 @@
       "topic": "Nachhallzeit nach Sabine",
       "misconception": "Der Faktor 0,163 s/m wird vergessen oder V und A werden vertauscht.",
       "coreRule": "T = 0,163 · V/A mit A = Σ S_i · α_i.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachhallzeit nach Sabine“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachhallzeit nach Sabine“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
     "verified": false
   },
@@ -8252,8 +8324,8 @@
     "id": "q_bgl_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "grundlagen",
-    "moduleTitle": "Beton – Grundlagen",
+    "moduleId": "frischbeton",
+    "moduleTitle": "Frischbeton",
     "topic": "Konsistenzklassen",
     "difficulty": "Basis",
     "normRef": "DIN EN 206 / DIN 1045-2",
@@ -8278,9 +8350,81 @@
       "topic": "Konsistenzklassen",
       "misconception": "Ausbreitmaß- und Verdichtungsmaßklassen gleicher Nummer seien gleichwertig.",
       "coreRule": "F1 steif, F2 plastisch, F3 weich, F4 sehr weich, F5 fließfähig, F6 sehr fließfähig.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Beton – Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Frischbeton noch einmal durch.",
+      "targetModuleTab": "frischbeton",
+      "targetModuleLabel": "Frischbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_grundlagen_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
+    "topic": "Zugabewasser",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1008",
+    "question": "Welches Wasser darf nach DIN EN 1008 ohne vorherige Prüfung als Zugabewasser für Beton verwendet werden?",
+    "options": [
+      "Trinkwasser aus der öffentlichen Versorgung",
+      "Grundwasser aus einem Baustellenbrunnen",
+      "Meerwasser für bewehrte Bauteile im Hafen",
+      "Restwasser ohne Kontrolle des Feststoffanteils"
+    ],
+    "correctIdx": 0,
+    "explanation": "Trinkwasser gilt nach DIN EN 1008 ohne Prüfung als geeignet. Grundwasser und Restwasser können geeignet sein, sind aber zu prüfen bzw. an Bedingungen geknüpft; Meerwasser scheidet für Stahl- und Spannbeton wegen der Chloride aus.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Grundwasser kann geeignet sein, muss aber vor der Verwendung geprüft werden.",
+      "Meerwasser enthält Chloride und ist für bewehrten Beton nicht geeignet.",
+      "Restwasser ist nur zulässig, wenn die Anforderungen der Norm, u. a. an den Feststoffeintrag, eingehalten werden."
+    ],
+    "gapAnalysis": {
+      "topic": "Zugabewasser",
+      "misconception": "Jedes klare Wasser ist ohne Prüfung geeignet.",
+      "coreRule": "Trinkwasser: ohne Prüfung; Grund-, Oberflächen-, Restwasser: prüfen; Meerwasser: nicht für Stahlbeton.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zugabewasser“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
       "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Beton – Grundlagen"
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_grundlagen_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
+    "topic": "Zugabewasser",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1008",
+    "question": "Welches Wasser bildet den wirksamen Wassergehalt, auf den sich der w/z-Wert bezieht?",
+    "options": [
+      "Zugabewasser plus Oberflächenwasser der Gesteinskörnung",
+      "Zugabewasser plus Kernwasser der porösen Gesteinskörnung",
+      "Nur das an der Mischanlage abgemessene Zugabewasser",
+      "Gesamtes Wasser einschließlich chemisch gebundenen Wassers"
+    ],
+    "correctIdx": 0,
+    "explanation": "Wirksam ist das Wasser, das für die Hydratation und die Verarbeitbarkeit zur Verfügung steht: Zugabewasser zuzüglich Oberflächenwasser der Gesteinskörnung (und Wasser aus Zusatzmitteln). Das von der Körnung aufgenommene Kernwasser zählt nicht dazu.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Das Kernwasser ist in den Poren der Körnung gebunden und steht dem Zementleim nicht zur Verfügung.",
+      "Das Oberflächenwasser feuchter Gesteinskörnung wirkt wie Zugabewasser und muss mitgerechnet werden.",
+      "Chemisch gebundenes Wasser entsteht erst bei der Hydratation und ist keine Eingangsgröße des w/z-Werts."
+    ],
+    "gapAnalysis": {
+      "topic": "Zugabewasser",
+      "misconception": "Nur das abgemessene Zugabewasser zählt für den w/z-Wert.",
+      "coreRule": "w_eff = Zugabewasser + Oberflächenwasser (+ Wasser aus Zusatzmitteln), ohne Kernwasser.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zugabewasser“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
+      "targetModuleTab": "grundlagen",
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
     "verified": false
   },
@@ -8289,7 +8433,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "grundlagen",
-    "moduleTitle": "Beton – Grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Äquivalenter w/z-Wert",
     "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2",
@@ -8314,9 +8458,9 @@
       "topic": "Äquivalenter w/z-Wert",
       "misconception": "Flugasche werde wie Zement voll (k = 1) angerechnet.",
       "coreRule": "(w/z)eq = w/(z + k · f); anrechenbare Flugaschemenge begrenzt (f/z ≤ 0,33).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Beton – Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
       "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Beton – Grundlagen"
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
     "verified": false
   },
@@ -12385,6 +12529,222 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Patina“ im Modul Materialität & Architektur noch einmal durch.",
       "targetModuleTab": "materialitaet_architektur",
       "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Licht & Reflexion",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Bei welcher Lichtsituation treten Oberflächenreliefs wie Schalungsabdrücke oder Putzstrukturen am deutlichsten hervor?",
+    "options": [
+      "Streiflicht, flach über die Fläche einfallend",
+      "Diffuses Licht eines bedeckten Himmels",
+      "Senkrecht auf die Fläche fallendes Licht",
+      "Kunstlicht mit hoher Farbtemperatur und Blendung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Flach einfallendes Streiflicht erzeugt hinter jeder Erhebung lange Schatten und macht so selbst geringe Unebenheiten sichtbar; diffuses oder frontales Licht lässt das Relief verflachen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Diffuses Licht wirft kaum Schatten – Reliefs wirken dadurch flach.",
+      "Frontal einfallendes Licht erzeugt nur sehr kurze Schatten; das Relief tritt kaum hervor.",
+      "Die Farbtemperatur ändert den Farbeindruck, nicht die Schattenbildung des Reliefs."
+    ],
+    "gapAnalysis": {
+      "topic": "Licht & Reflexion",
+      "misconception": "Relief ist bei jeder Beleuchtung gleich gut sichtbar.",
+      "coreRule": "Streiflicht macht Oberflächenrelief sichtbar, diffuses Licht ebnet es optisch ein.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Licht & Reflexion“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Würde des Alterns",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Warum vergraut unbehandeltes Holz an einer bewitterten Fassade?",
+    "options": [
+      "UV-Abbau des Lignins, Auswaschung und Pilzbewuchs der Oberfläche",
+      "Austrocknung, bei der die Farbpigmente des Holzes verdunsten",
+      "Oxidation der Cellulose zu grauem Kohlenstoff durch Luftsauerstoff",
+      "Braunfäule, die das Holz von innen heraus zersetzt und verfärbt"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Vergrauung ist ein reiner Oberflächeneffekt: photochemischer Ligninabbau, Auswaschung durch Niederschlag und Besiedlung durch Schimmel- und Bläuepilze. Die Festigkeit des Holzes bleibt dabei im Wesentlichen erhalten.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Austrocknung allein verändert die Farbe kaum; entscheidend sind UV-Licht und Auswaschung.",
+      "Cellulose wird nicht zu Kohlenstoff oxidiert; die graue Farbe stammt von Pilzbewuchs auf der ausgewaschenen Oberfläche.",
+      "Braunfäule ist ein holzzerstörender Pilzbefall bei dauerhaft hoher Holzfeuchte; Vergrauung ist ein Oberflächeneffekt."
+    ],
+    "gapAnalysis": {
+      "topic": "Würde des Alterns",
+      "misconception": "Vergrauung bedeutet Holzzerstörung.",
+      "coreRule": "Vergrauung = UV-Ligninabbau + Auswaschung + Pilzverfärbung an der Oberfläche.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Würde des Alterns“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Würde des Alterns",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Unter welcher Voraussetzung bildet wetterfester Baustahl (Cortenstahl) eine schützende, dichte Rostschicht?",
+    "options": [
+      "Regelmäßiger Wechsel von Befeuchtung und Abtrocknung",
+      "Dauerhafte Nässe, z. B. in stehendem Wasser oder Erdreich",
+      "Chloridreiche Meeresluft mit ständiger Salzbeaufschlagung",
+      "Werkseitige Grundbeschichtung mit Zinkstaubfarbe"
+    ],
+    "correctIdx": 0,
+    "explanation": "Wetterfester Baustahl enthält geringe Anteile an Kupfer, Chrom und Nickel. Nur bei Nass-Trocken-Wechseln entsteht eine dichte Deckschicht; ständige Nässe oder hohe Chloridbelastung verhindern sie, der Stahl rostet dann weiter.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Ständige Nässe verhindert die Ausbildung der dichten Deckschicht – Wasseransammlungen sind konstruktiv zu vermeiden.",
+      "Chloride stören die Deckschichtbildung; in Küstennähe ist wetterfester Stahl nur eingeschränkt geeignet.",
+      "Die Schutzwirkung entsteht durch die Patina selbst; eine Zinkbeschichtung würde sie gerade verhindern."
+    ],
+    "gapAnalysis": {
+      "topic": "Würde des Alterns",
+      "misconception": "Cortenstahl ist unter allen Bedingungen korrosionsbeständig.",
+      "coreRule": "Deckschicht nur bei Nass-Trocken-Wechsel, nicht bei Dauernässe oder Chloriden.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Würde des Alterns“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Haptik",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Für einen Handlauf im Innenraum wird ein Werkstoff gesucht, der sich bei Berührung möglichst warm anfühlt. Welche Wahl ist bauphysikalisch am günstigsten?",
+    "options": [
+      "Eichenholz, geölt",
+      "Edelstahl, geschliffen",
+      "Granit, poliert",
+      "Floatglas, satiniert"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Kontakttemperatur liegt umso näher an der Hauttemperatur, je kleiner der Wärmeeindringkoeffizient b = √(λρc) des Werkstoffs ist. Holz hat einen deutlich kleineren b-Wert als Metall, Naturstein oder Glas und fühlt sich deshalb warm an.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Metalle haben einen sehr hohen Wärmeeindringkoeffizienten und entziehen der Hand schnell Wärme – sie fühlen sich kalt an.",
+      "Naturstein hat einen hohen Wärmeeindringkoeffizienten und fühlt sich bei Raumtemperatur kühl an.",
+      "Glas hat einen deutlich höheren Wärmeeindringkoeffizienten als Holz und wirkt kühl."
+    ],
+    "gapAnalysis": {
+      "topic": "Haptik",
+      "misconception": "Alle Werkstoffe mit Raumtemperatur fühlen sich gleich warm an.",
+      "coreRule": "Kleiner Wärmeeindringkoeffizient b = warmes Griffgefühl (Holz), großer b = kalt (Metall, Stein, Glas).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haptik“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_komb_sandwich_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "Verbundwerkstoffe",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Warum besitzt eine Sandwichplatte bei geringem Gewicht eine hohe Biegesteifigkeit?",
+    "options": [
+      "Die Deckschichten wirken mit großem Abstand zur Schwerachse",
+      "Der leichte Kern besitzt einen sehr hohen E-Modul",
+      "Die Deckschichten sind deutlich dicker als der Kern",
+      "Kern und Deckschichten verformen sich unabhängig voneinander"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die steifen Deckschichten nehmen die Biegezug- und Biegedruckspannungen auf; der leichte Kern hält sie auf Abstand und überträgt den Schub. Das Flächenträgheitsmoment wächst mit dem Quadrat des Abstands der Deckschichten von der Schwerachse.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Der Kern ist gerade weich und leicht; er muss vor allem Schub übertragen und die Deckschichten auf Abstand halten.",
+      "Die Deckschichten sind dünn; die Wirkung kommt aus ihrem Abstand, nicht aus ihrer Dicke.",
+      "Ohne schubfesten Verbund wirken die Schichten als lose Einzelplatten – die Steifigkeit bricht ein."
+    ],
+    "gapAnalysis": {
+      "topic": "Verbundwerkstoffe",
+      "misconception": "Die Steifigkeit einer Sandwichplatte kommt aus dem Kernmaterial.",
+      "coreRule": "Deckschichten tragen Biegung über großen Hebelarm, der Kern überträgt Schub.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundwerkstoffe“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_komb_vhf_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "Schichtenprinzip",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Welche Ebene übernimmt bei einer vorgehängten hinterlüfteten Fassade (VHF) den Schutz vor Schlagregen?",
+    "options": [
+      "Die Bekleidung mit dahinterliegender Hinterlüftung",
+      "Die Dämmschicht aus hydrophobierter Mineralwolle",
+      "Das tragende Mauerwerk hinter der Unterkonstruktion",
+      "Die raumseitige Dampfbremse der Innenbekleidung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Im Prinzip Tragen – Dämmen – Schützen schützt die äußere Bekleidung vor Witterung; eindringendes Wasser und Feuchte werden über die Hinterlüftungsebene abgeführt. Dämmung und Tragschale bleiben dadurch trocken.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Dämmschicht übernimmt die Wärmedämmung; sie soll durch die Bekleidung vor Durchfeuchtung geschützt werden.",
+      "Das Mauerwerk ist die Tragschale; bei der VHF wird es von der Witterung abgeschirmt.",
+      "Die Dampfbremse regelt die Diffusion von innen und hat mit dem Schlagregenschutz außen nichts zu tun."
+    ],
+    "gapAnalysis": {
+      "topic": "Schichtenprinzip",
+      "misconception": "Die Dämmung übernimmt den Witterungsschutz.",
+      "coreRule": "VHF: Bekleidung + Hinterlüftung schützen, Dämmung dämmt, Wand trägt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schichtenprinzip“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
     },
     "verified": false
   },
@@ -17685,7 +18045,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
     "topic": "U-Wert und Höchstwert",
     "difficulty": "Vertiefung",
     "normRef": "",
@@ -17710,9 +18070,9 @@
       "topic": "U-Wert und Höchstwert",
       "misconception": "Wärmedurchgangswiderstand und U-Wert werden verwechselt oder Übergangswiderstände vergessen.",
       "coreRule": "R_T = R_si + Σ d/λ + R_se; U = 1/R_T; Vergleich mit dem Höchstwert der Anlage 7.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: U-Wert und Temperaturfaktor einer gedämmten Kalksandsteinwand“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: U-Wert und Temperaturfaktor einer gedämmten Kalksandsteinwand“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
     "verified": false
   },
@@ -17721,7 +18081,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleTitle": "Bauphysik (Wärme & Akustik)",
     "topic": "Temperaturverlauf im Bauteil",
     "difficulty": "Vertiefung",
     "normRef": "",
@@ -17746,9 +18106,9 @@
       "topic": "Temperaturverlauf im Bauteil",
       "misconception": "Der Temperaturverlauf wird linear über die Bauteildicke statt über die Wärmedurchlasswiderstände bestimmt.",
       "coreRule": "θ_x = θ_i − (R_si + Σ R bis x)/R_T · (θ_i − θ_e); große Temperaturabfälle liegen in der Dämmschicht.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „U-Wert & Thermische Bilanz“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „U-Wert & Thermische Bilanz“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
     "verified": false
   },
@@ -17756,8 +18116,8 @@
     "id": "qn_bauphysik_3",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
-    "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleId": "feuchteschutz",
+    "moduleTitle": "Feuchteschutz & Tauwasser",
     "topic": "Tauwasserebene",
     "difficulty": "Vertiefung",
     "normRef": "DIN 4108-3",
@@ -17782,9 +18142,9 @@
       "topic": "Tauwasserebene",
       "misconception": "Tauwasser wird nur bei 100 % Raumfeuchte oder Frost erwartet.",
       "coreRule": "Glaser: Tauwasser, wo der Partialdampfdruck p den temperaturabhängigen Sättigungsdampfdruck p_sat(θ) erreicht.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glaser-Sättigungsdiagramm (Dampfdrücke)“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
-      "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glaser-Diagramm & Tauwasserbilanz“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "targetModuleTab": "feuchteschutz",
+      "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
     "verified": false
   },
@@ -17792,8 +18152,8 @@
     "id": "qn_bauphysik_4",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
-    "moduleId": "bauphysik",
-    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "moduleId": "feuchteschutz",
+    "moduleTitle": "Feuchteschutz & Tauwasser",
     "topic": "Lage von Dämmung und Dampfbremse",
     "difficulty": "Transfer",
     "normRef": "",
@@ -17818,9 +18178,9 @@
       "topic": "Lage von Dämmung und Dampfbremse",
       "misconception": "Die Wirkung einer Dampfbremse wird unabhängig von ihrer Lage im Temperaturverlauf gesehen.",
       "coreRule": "Dampfbremse warmseitig (innen); außen möglichst diffusionsoffen – „innen dichter als außen“.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchte- & Wärmeschutz (Glaser)“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
-      "targetModuleTab": "bauphysik",
-      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „s_d-Wert Sandbox“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "targetModuleTab": "feuchteschutz",
+      "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
     "verified": false
   },
@@ -24344,8 +24704,8 @@
     "id": "qn_grundlagen_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "grundlagen",
-    "moduleTitle": "Grundlagen",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
     "topic": "Zementherstellung",
     "difficulty": "Basis",
     "normRef": "",
@@ -24370,9 +24730,9 @@
       "topic": "Zementherstellung",
       "misconception": "Die hohe Brenntemperatur im Drehrohrofen wird als Hauptquelle des CO₂ angesehen.",
       "coreRule": "Prozess-CO₂ stammt aus der Entsäuerung CaCO₃ → CaO + CO₂ bei 800–900 °C.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementherstellung“ im Modul Grundlagen noch einmal durch.",
-      "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Grundlagen"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementherstellung“ im Modul Bindemittel noch einmal durch.",
+      "targetModuleTab": "bindemittel",
+      "targetModuleLabel": "Bindemittel"
     },
     "verified": false
   },
@@ -24381,7 +24741,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "grundlagen",
-    "moduleTitle": "Grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Mehlkorngehalt",
     "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2:2008-08, Tab. F.4.1",
@@ -24406,9 +24766,9 @@
       "topic": "Mehlkorngehalt",
       "misconception": "Der Grenzwert wird stufenweise abgelesen statt interpoliert.",
       "coreRule": "Zwischen den Tabellenwerten des Mehlkorngehalts linear interpolieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mehlkorngehalt“ im Modul Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mehlkorngehalt“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
       "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Grundlagen"
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
     "verified": false
   },
@@ -24417,7 +24777,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "grundlagen",
-    "moduleTitle": "Grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Betonzusatzstoffe",
     "difficulty": "Basis",
     "normRef": "",
@@ -24442,9 +24802,9 @@
       "topic": "Betonzusatzstoffe",
       "misconception": "Alle feinen mineralischen Zusatzstoffe werden als reaktiv angesehen.",
       "coreRule": "Typ I = inert (Füller, Pigmente); Typ II = puzzolanisch oder latent-hydraulisch.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zusätze“ im Modul Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zusätze“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
       "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Grundlagen"
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
     "verified": false
   },
@@ -24453,7 +24813,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "grundlagen",
-    "moduleTitle": "Grundlagen",
+    "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Zementbezeichnung",
     "difficulty": "Basis",
     "normRef": "DIN EN 197-1",
@@ -24478,9 +24838,9 @@
       "topic": "Zementbezeichnung",
       "misconception": "Bezeichnungsteile wie Untergruppe und N/R werden verwechselt.",
       "coreRule": "CEM-Art/Untergruppe – Normfestigkeit (28 d) – Anfangsfestigkeit L/N/R.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementarten“ im Modul Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementarten“ im Modul Ausgangsstoffe des Betons noch einmal durch.",
       "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Grundlagen"
+      "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
     "verified": false
   },

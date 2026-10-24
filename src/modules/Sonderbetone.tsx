@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import Leichtbeton from './Leichtbeton';
-import Sichtbeton from './Sichtbeton';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import Spritzbeton from './Spritzbeton';
 import Recyclingbeton from './Recyclingbeton';
 import UHPC from './UHPC';
@@ -95,7 +95,16 @@ export default function Sonderbetone() {
         <Leichtbeton />
       )}
       {activeTab === 'Sichtbeton' && (
-        <Sichtbeton />
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+          <Querverweis ziel="sichtbeton" titel="Sichtbeton – eigenes Modul" linkText="Zum Modul Sichtbeton (SB 1–4)">
+            <p>
+              Sichtbeton ist kein eigener Betontyp, sondern Beton mit festgelegten Anforderungen an die Ansichtsfläche. Nach dem DBV/VDZ-Merkblatt „Sichtbeton“ werden die Anforderungsklassen SB 1 bis SB 4 vereinbart; sie regeln u. a. Textur, Porigkeit, Farbtongleichmäßigkeit, Ebenheit und Arbeits- bzw. Schalhautfugen.
+            </p>
+            <p>
+              Maßgebend sind Schalung und Trennmittel, eine gleichbleibende Betonzusammensetzung, sorgfältiges Verdichten und eine gleichmäßige Nachbehandlung. Ausführliche Inhalte (Klassen, Schalungshaut, Gestaltungsmerkmale) stehen im Modul Sichtbeton.
+            </p>
+          </Querverweis>
+        </div>
       )}
       {activeTab === 'Spritzbeton' && (
         <Spritzbeton />
