@@ -185,7 +185,7 @@ export default function Stuetzenbemessung() {
                   <span className="font-mono font-bold">{formatDeZahl(results.ei_mm, 1)} mm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
-                  <span>Maßgebendes <FormulaText text="M_{Ed} = \max(M_{0Ed} + N_{Ed} e_i;\; N_{Ed} e_0)" />:</span>
+                  <span>Maßgebendes <FormulaText text="$M_{Ed} = \max(M_{0Ed} + N_{Ed}\,e_i;\; N_{Ed}\,e_0)$" />:</span>
                   <span className="font-mono font-bold text-shiraz">{formatDeZahl(results.mEd_1, 2)} kNm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
