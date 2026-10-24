@@ -653,14 +653,12 @@ if __name__ == "__main__":
 export default function OnlineTools() {
   const [currentView, setCurrentView] = useState<'matrix' | 'api_lab'>('matrix');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedAccess, setSelectedAccess] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const filteredTools = useMemo(() => {
     return ONLINE_TOOLS.filter(tool => {
       const matchCategory = selectedCategory === 'all' || tool.category === selectedCategory;
-      const matchAccess = selectedAccess === 'all' || tool.accessType === selectedAccess;
       const matchSearch = searchQuery.trim() === '' || 
         tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         tool.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -668,9 +666,9 @@ export default function OnlineTools() {
         tool.standards.toLowerCase().includes(searchQuery.toLowerCase()) ||
         tool.institutionOrAuthor.toLowerCase().includes(searchQuery.toLowerCase());
 
-      return matchCategory && matchAccess && matchSearch;
+      return matchCategory && matchSearch;
     });
-  }, [selectedCategory, selectedAccess, searchQuery]);
+  }, [selectedCategory, searchQuery]);
 
   const handleCopyCode = (id: string, code: string) => {
     navigator.clipboard.writeText(code);

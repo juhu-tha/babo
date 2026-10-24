@@ -342,9 +342,14 @@ export function DynamischerAufgabenGenerator() {
 
   // Evaluation
   const parsedUserVal = useMemo(() => {
-    if (!userAnswer.trim()) return NaN;
-    const clean = userAnswer.replace(',', '.').trim();
-    return parseFloat(clean);
+    // Deutsche Zahleneingabe: Tausenderpunkte nur im Muster d.ddd entfernen, Komma → Punkt
+    let clean = userAnswer.trim().replace(/\s+/g, '').replace(/^\u2212/, '-');
+    if (!clean) return NaN;
+    if (/^[-+]?\d{1,3}(\.\d{3})+(,\d*)?$/.test(clean)) clean = clean.replace(/\./g, '');
+    if ((clean.match(/,/g) ?? []).length > 1 || (clean.includes(',') && clean.includes('.'))) return NaN;
+    clean = clean.replace(',', '.');
+    if (!/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(clean)) return NaN;
+    return Number(clean);
   }, [userAnswer]);
 
   const evaluationResult = useMemo(() => {
@@ -502,7 +507,7 @@ export function DynamischerAufgabenGenerator() {
               <div className="relative flex-1">
                 <input
                   type="text"
-                  placeholder="Zahlenwert eingeben (z.B. 2.45)"
+                  placeholder="Zahlenwert eingeben (z. B. 2,45)"
                   value={userAnswer}
                   onChange={(e) => {
                     setUserAnswer(e.target.value);

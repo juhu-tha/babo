@@ -414,7 +414,7 @@
       "c_nom = 20 mm für sämtliche Bauteile und Umweltklassen pauschal"
     ],
     "correctIdx": 2,
-    "explanation": "Nach EC2 gilt c_nom = c_min + Δc_dev. Die Mindestdeckung c_min sichert den Korrosionsschutz (Dauerhaftigkeit c_min,dur) und den Verbund (c_min,b). Das Vorhaltemaß Δc_dev beträgt im Hochbau in der Regel 10 mm (bei besonderer Qualitätskontrolle reduzierbar auf 5 mm).",
+    "explanation": "Nach EC2 gilt c_nom = c_min + Δc_dev. Die Mindestdeckung c_min sichert den Korrosionsschutz (Dauerhaftigkeit c_min,dur) und den Verbund (c_min,b). Das Vorhaltemaß Δc_dev beträgt nach NA DE 15 mm (XC1: 10 mm) und darf bei besonderer Qualitätskontrolle um 5 mm verringert werden.",
     "gapAnalysis": {
       "topic": "Betondeckungsermittlung nach Eurocode 2",
       "misconception": "Vergessen des Vorhaltemaßes Δc_dev oder Verwechslung von c_min und c_nom.",
@@ -31045,7 +31045,7 @@
     "topic": "Grenze der Druckzone",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1992-1-1",
-    "question": "Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,371 aus dem Modul zu bewerten?",
+    "question": "Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,296 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?",
     "options": [
       "Zulässig, da μ_Ed nur bei Platten gegen den Grenzwert μ_lim geprüft werden muss",
       "Ohne Druckbewehrung unzulässig; Querschnitt vergrößern oder Druckbewehrung einlegen",
@@ -31053,7 +31053,7 @@
       "Unzulässig; allein eine höhere Stahlgüte als B500B behebt das Problem zuverlässig"
     ],
     "correctIdx": 1,
-    "explanation": "μ_Ed = 0,516 > μ_lim = 0,371: Die Betondruckzone reicht ohne Druckbewehrung nicht aus, ein sprödes Betonversagen droht. Abhilfe schaffen größere Abmessungen (vor allem h), eine höhere Betonfestigkeit oder Druckbewehrung.",
+    "explanation": "μ_Ed = 0,516 > μ_lim = 0,296: Die Betondruckzone reicht ohne Druckbewehrung nicht aus, ein sprödes Betonversagen droht. Abhilfe schaffen größere Abmessungen (vor allem h), eine höhere Betonfestigkeit oder Druckbewehrung.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [

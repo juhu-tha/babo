@@ -151,7 +151,6 @@ export default function MechanischeKenngroessen() {
   // Kriech-Simulator State
   const [kriechZahl, setKriechZahl] = useState<number>(0.0);
   const [schwindMassPromille, setSchwindMassPromille] = useState<number>(0.0);
-  const [relaxDauerTage, setRelaxDauerTage] = useState<number>(1000);
 
   // Rheologie-Labor State (Tab 4: Kriechen vs. Relaxieren)
   const [rheoModus, setRheoModus] = useState<'relaxieren' | 'kriechen'>('relaxieren');
@@ -279,11 +278,6 @@ export default function MechanischeKenngroessen() {
     const deltaL_gesamt_mm = deltaL_elastisch_plus_kriechen_mm + deltaL_schwinden_mm;
     const endLaengeGesamt_mm = L0_mm + deltaL_gesamt_mm;
 
-    // 14. Spannungsrelaxation (Maxwell Modell): sigma(t) = sigma0 * exp(-t / tau)
-    const tauRelax = 250; // Tage (Modellwert)
-    const sigmaRelaxiert = absSigma * Math.exp(-relaxDauerTage / tauRelax);
-    const relaxVerlustProzent = ((absSigma - sigmaRelaxiert) / (absSigma || 1)) * 100;
-
     // Stabmasse
     const volumen_m3 = (A0_mm2 / 1e6) * stabLaengeM;
     const masse_kg = volumen_m3 * mat.dichte;
@@ -330,11 +324,9 @@ export default function MechanischeKenngroessen() {
       deltaL_schwinden_mm,
       deltaL_gesamt_mm,
       endLaengeGesamt_mm,
-      sigmaRelaxiert,
-      relaxVerlustProzent,
       masse_kg
     };
-  }, [mat, lastArt, kraftKn, stabLaengeM, querschnittTyp, durchmesserMm, breiteMm, hoeheMm, kriechZahl, schwindMassPromille, relaxDauerTage]);
+  }, [mat, lastArt, kraftKn, stabLaengeM, querschnittTyp, durchmesserMm, breiteMm, hoeheMm, kriechZahl, schwindMassPromille]);
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">

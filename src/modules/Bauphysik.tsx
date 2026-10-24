@@ -273,18 +273,19 @@ export default function Bauphysik() {
       totalHeatCapacity += l.d * l.density * l.c;
     });
 
-    // Phase shift (Phasenverschiebung eta in hours)
-    // eta = sum(d_k * sqrt(pi * rho_k * c_k / (24 * 3600 * lambda_k))) * (24 / pi)
-    let phaseShift = 0;
+    // Dämpfungsexponent X = Σ d_k / δ_k mit Eindringtiefe δ_k = sqrt(λ_k · T / (π · ρ_k · c_k)), T = 24 h
+    let dampingExponent = 0;
     resolvedLayers.forEach(l => {
       if (l.lambda > 0) {
-        phaseShift += l.d * Math.sqrt((Math.PI * l.density * l.c) / (86400 * l.lambda)) * (24 / Math.PI);
+        dampingExponent += l.d * Math.sqrt((Math.PI * l.density * l.c) / (86400 * l.lambda));
       }
     });
 
-    // Amplitude Damping Factor (Tapering proportion TAV)
-    // Expressed as simple attenuation ratio from 0 to 1. Larger phase shifts damp heat wave completely.
-    const TAV = Math.exp(-0.27 * phaseShift);
+    // Phasenverschiebung η = X · T/(2π) = X · 24/(2π) in Stunden
+    const phaseShift = dampingExponent * (24 / (2 * Math.PI));
+
+    // Amplitudenverhältnis TAV = e^(-X) – konsistent zu η (vereinfacht, ohne Übergangswiderstände)
+    const TAV = Math.exp(-dampingExponent);
 
     return {
       totalHeatCapacity: totalHeatCapacity / 1000, // converted to kJ/m²K

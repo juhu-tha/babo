@@ -1284,7 +1284,6 @@ export default function Expositionsklassen() {
   const [wasserGehalt, setWasserGehalt] = useState<number>(165);
   const [flugascheGehalt, setFlugascheGehalt] = useState<number>(50);
   const [silikaGehalt, setSilikaGehalt] = useState<number>(0);
-  const [zementTyp, setZementTyp] = useState<'CEM_I' | 'CEM_II_A'>('CEM_I');
 
 
   // Toggle class selection for calculator

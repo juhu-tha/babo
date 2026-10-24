@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -93,43 +93,43 @@ function generateCustomPrompt(materialId: string, objectiveId: string, formatId:
       role = "Prüfsachverständiger für Baustoffe im Hoch- und Ingenieurbau";
       task = `Überprüfen Sie die baurechtliche Konformität des folgenden Materials:
 Baustoff: ${materialName} (${matSubject})
-- Führe alle harmonisierten Prüf- und Anforderungsnormen an (z. B. DIN, EN, ISO).
-- Analysiere Leistungserklärungen (DoP), CE-Kennzeichnungen und bauaufsichtliche Zulassungen (abZ).
-- Hebe kritische Kennwerte (Festigkeitsklassen, Schwindmaß, etc.) hervor.`;
+- Führen Sie alle harmonisierten Prüf- und Anforderungsnormen an (z. B. DIN, EN, ISO).
+- Analysieren Sie Leistungserklärungen (DoP), CE-Kennzeichnungen und bauaufsichtliche Zulassungen (abZ).
+- Heben Sie kritische Kennwerte (Festigkeitsklassen, Schwindmaß etc.) hervor.`;
       break;
     case 'schaden':
       role = "Unabhängiger Schadengutachter im Bauwesen mit Schwerpunkt Werkstoffmikromechanik";
-      task = `Führe eine präventive Schadensanalyse und mikromechanische Ursachenforschung durch für:
+      task = `Führen Sie eine präventive Schadensanalyse und mikromechanische Ursachenforschung durch für:
 Baustoff/Einsatzszenario: ${materialName} (${matSubject})
-- Untersuche chemische Alterung (z.B. Carbonatisierung, Weichmacherverlust, Alkalitreiben) und physikalische Risiken.
-- Definiere zerstörungsfreie oder laboratoriumstechnische Prüfverfahren (z.B. Dünnschliffmikroskopie, REM, FTIR-Spektroskopie) zum klaren Nachweis.`;
+- Untersuchen Sie chemische Alterung (z.B. Carbonatisierung, Weichmacherverlust, Alkalitreiben) und physikalische Risiken.
+- Definieren Sie zerstörungsfreie oder laboratoriumstechnische Prüfverfahren (z.B. Dünnschliffmikroskopie, REM, FTIR-Spektroskopie) zum klaren Nachweis.`;
       break;
     case 'nachhaltig':
       role = "DGNB-Auditor und Fachexperte für Ökobilanzierung (LCA/EPD) nach DIN EN 15804";
       task = `Erstellen Sie ein Optimierungskonzept zur CO2-Reduktion bzw. Ressourceneinsparung für:
 Baustoff/Einsatzszenario: ${materialName} (${matSubject})
-- Optimiere die Lebenszyklus-Module A1-A3 (Rohstoffe/Herstellung), C3 (Rückbau) und D (Recyclingpotenzial).
-- Schätze das Treibhauspotenzial (GWP in kg CO2-eq) ab und schlage konkrete Ersatzstoffe vor.`;
+- Optimieren Sie die Lebenszyklus-Module A1-A3 (Rohstoffe/Herstellung), C3 (Rückbau) und D (Recyclingpotenzial).
+- Schätzen Sie das Treibhauspotenzial (GWP in kg CO2-eq) ab und schlagen Sie konkrete Ersatzstoffe vor.`;
       break;
     default:
       role = "Bautechnischer Berater";
-      task = `Analysiere den Baustoff ${materialName} im Kontext von ${matSubject}.`;
+      task = `Analysieren Sie den Baustoff ${materialName} im Kontext von ${matSubject}.`;
   }
 
   // 3. Output Format instructions
   let formatDesc = "";
   switch (formatId) {
     case 'report':
-      formatDesc = "Präsentiere die Antwort als strukturierter technischer Bericht in Fließtext mit prägnanten ingenieurwissenschaftlichen Zwischenüberschriften (Einleitung, Untersuchung, Befund, Fazit).";
+      formatDesc = "Präsentieren Sie die Antwort als strukturierten technischen Bericht in Fließtext mit prägnanten ingenieurwissenschaftlichen Zwischenüberschriften (Einleitung, Untersuchung, Befund, Fazit).";
       break;
     case 'bullets':
       formatDesc = "Geben Sie die Ergebnisse als extrem kondensierte, tabelle-ähnliche oder listenbasierte Checkliste im Telegrammstil aus. Perfekt zur schnellen Qualitätskontrolle direkt am Bau.";
       break;
     case 'code':
-      formatDesc = "Ergänze das Ergebnis um ein sauberes Python-Grafikskript (z.B. Streamlit- oder Matplotlib-Code), welches die numerischen Beziehungen, Festigkeitskurven oder CO₂-Einsparungen dieses Baustoffs visualisiert.";
+      formatDesc = "Ergänzen Sie das Ergebnis um ein sauberes Python-Grafikskript (z.B. Streamlit- oder Matplotlib-Code), welches die numerischen Beziehungen, Festigkeitskurven oder CO₂-Einsparungen dieses Baustoffs visualisiert.";
       break;
     default:
-      formatDesc = "Formatiere strukturiert.";
+      formatDesc = "Formatieren Sie die Antwort strukturiert.";
   }
 
   // 4. Tone / Target Audience instructions
@@ -139,16 +139,16 @@ Baustoff/Einsatzszenario: ${materialName} (${matSubject})
       toneDesc = "Wählen Sie einen hochgradig sachlichen, präzisen, akademischen Schreibstil. Verwenden Sie exakte physikalische und mikrostrukturelle Fachbegriffe (z.B. Adhäsionsversagen, Hydratationswärme, Porengrößenverteilung).";
       break;
     case 'pragmatic':
-      toneDesc = "Formuliere die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichte auf unnötige akademische Schnörkel und fokussiere Sie auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.";
+      toneDesc = "Formulieren Sie die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichten Sie auf unnötige akademische Schnörkel und konzentrieren Sie sich auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.";
       break;
     case 'didactic':
-      toneDesc = "Wählen Sie die Perspektive eines didaktischen Hochschul-Dozenten (sokratische Methode). Erkläre die Hintergründe schrittweise, formuliere 3 nützliche Zwischenfragen zum Selbststudium und schließe mit einer eingängigen Eselsbrücke (Mnemonic) ab.";
+      toneDesc = "Wählen Sie die Perspektive eines didaktischen Hochschul-Dozenten (sokratische Methode). Erklären Sie die Hintergründe schrittweise, formulieren Sie 3 nützliche Zwischenfragen zum Selbststudium und schließen Sie mit einer eingängigen Eselsbrücke (Mnemonic) ab.";
       break;
     default:
-      toneDesc = "Schreibe sachbezogen.";
+      toneDesc = "Schreiben Sie sachbezogen.";
   }
 
-  const promptText = `Rolle: Du agierst als ${role}.
+  const promptText = `Rolle: Sie agieren als ${role}.
 
 Aufgabe und Kontext:
 ${task}
@@ -159,7 +159,7 @@ ${formatDesc}
 Tonalität & Zielgruppe:
 ${toneDesc}
 
-Wichtig: Verweise explizit auf Baustoffeigenschaften und deutsches/europäisches Regelwerk. Nehmen Sie direkten Bezug auf die Praxis oder Nutzung beim Lernen.`;
+Wichtig: Verweisen Sie explizit auf Baustoffeigenschaften und deutsches/europäisches Regelwerk. Nehmen Sie direkten Bezug auf die Praxis oder Nutzung beim Lernen.`;
 
   const explanation = `Dieser Prompt kombiniert perfekt die vier Säulen des Prompt Engineering:
 1. **Spezifischer Baustoff-Kontext: ${materialName}**
@@ -206,11 +206,28 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
   const [apiMode, setApiMode] = useState<'live' | 'simulated' | null>(null);
   const [hinweisBestaetigt, setHinweisBestaetigt] = useState<boolean>(false);
 
-  // Sync custom prompt text when presets change
+  // Zuletzt erzeugter Vorlagen-Prompt und ggf. zurückgehaltener neuer Vorschlag (bei bearbeitetem Text)
+  const lastPresetPrompt = useRef<string>('');
+  const [pendingPresetPrompt, setPendingPresetPrompt] = useState<string | null>(null);
+
+  // Prompt bei Vorlagenwechsel nur überschreiben, wenn der Text seit der letzten Vorlage unverändert ist
   useEffect(() => {
-    const generated = generateCustomPrompt(selectedMaterial, selectedObjective, selectedFormat, selectedTonality);
-    setCustomPromptText(generated.promptText);
+    const generated = generateCustomPrompt(selectedMaterial, selectedObjective, selectedFormat, selectedTonality).promptText;
+    if (customPromptText === '' || customPromptText === lastPresetPrompt.current) {
+      setCustomPromptText(generated);
+      setPendingPresetPrompt(null);
+    } else {
+      setPendingPresetPrompt(generated);
+    }
+    lastPresetPrompt.current = generated;
+    // customPromptText bewusst nicht in den Abhängigkeiten: nur Vorlagenwechsel lösen den Abgleich aus
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMaterial, selectedObjective, selectedFormat, selectedTonality]);
+
+  const uebernehmeVorlage = () => {
+    if (pendingPresetPrompt !== null) setCustomPromptText(pendingPresetPrompt);
+    setPendingPresetPrompt(null);
+  };
 
   // Handler to call backend Gemini proxy
   const handleRunAiPrompt = async () => {
@@ -567,6 +584,16 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                     </button>
                   </div>
                   
+                  {pendingPresetPrompt !== null && (
+                    <div className="px-4 py-2.5 bg-amber-50 border-b border-amber-200 text-xs text-amber-900 flex flex-col sm:flex-row sm:items-center justify-between gap-2" role="status">
+                      <span>Sie haben den Prompt bearbeitet. Soll er durch die neue Vorlage ersetzt werden?</span>
+                      <span className="flex gap-2">
+                        <button type="button" onClick={uebernehmeVorlage} className="px-2.5 py-1 rounded-lg bg-shiraz text-white font-bold">Vorlage übernehmen</button>
+                        <button type="button" onClick={() => setPendingPresetPrompt(null)} className="px-2.5 py-1 rounded-lg border border-amber-300 bg-white font-bold">Eigenen Text behalten</button>
+                      </span>
+                    </div>
+                  )}
+
                   {/* Editable prompt text area */}
                   <textarea
                     rows={8}

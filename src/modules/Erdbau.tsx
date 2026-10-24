@@ -16,8 +16,8 @@ export default function Erdbau() {
   const [feinanteil, setFeinanteil] = useState(10); // Prozent < 0.063mm
   const [kiesanteil, setKiesanteil] = useState(60); // Prozent Kies am Grobkorn
   const [sandanteil, setSandanteil] = useState(40); // Prozent Sand am Grobkorn
-  const [organik, setOrganik] = useState<'keine' | 'gering' | 'stark'>('keine');
-  const [plastizitaet, setPlastizitaet] = useState<'nicht' | 'gering' | 'mittel' | 'ausgeprägt'>('nicht');
+  const [organik, setOrganik] = useState<'keine' | 'stark'>('keine');
+  const [plastizitaet, setPlastizitaet] = useState<'nicht' | 'mittel' | 'ausgeprägt'>('nicht');
 
   // Frostschutz State
   const [frostzone, setFrostzone] = useState(2); // Frostzone I, II, III (1, 2, 3)
@@ -235,16 +235,16 @@ export default function Erdbau() {
                 <h3 className="font-bold border-b border-home-grau/30 pb-2 mt-2">Weitere Eigenschaften</h3>
                 <div className="space-y-2">
                   <label className="text-sm font-bold block">Plastizität der Feinanteile</label>
-                  <select aria-label="Plastizität der Feinanteile" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={plastizitaet} onChange={(e) => setPlastizitaet(e.target.value as any)}>
+                  <select aria-label="Plastizität der Feinanteile" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={plastizitaet} onChange={(e) => setPlastizitaet(e.target.value as 'nicht' | 'mittel' | 'ausgeprägt')}>
                     <option value="nicht">Nicht bis schwach plastisch</option>
-                    <option value="mittel">Lediglich leicht plastisch</option>
+                    <option value="mittel">Mittelplastisch</option>
                     <option value="ausgeprägt">Ausgeprägt plastisch (tonig)</option>
                   </select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold block">Organische Beimengungen</label>
-                  <select aria-label="Organische Beimengungen" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={organik} onChange={(e) => setOrganik(e.target.value as any)}>
-                    <option value="none">Keine / gering (mineralischer Boden)</option>
+                  <select aria-label="Organische Beimengungen" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={organik} onChange={(e) => setOrganik(e.target.value as 'keine' | 'stark')}>
+                    <option value="keine">Keine / gering (mineralischer Boden)</option>
                     <option value="stark">Stark (Torf, Humus)</option>
                   </select>
                 </div>

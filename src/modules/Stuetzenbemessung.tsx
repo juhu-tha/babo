@@ -34,7 +34,7 @@ export default function Stuetzenbemessung() {
   const [b, setB] = useState(30); // cm
   const [h, setH] = useState(30); // cm
   const [d1, setD1] = useState(4); // cm
-  const [l0, setL0] = useState(3.0); // m (Ersatzlänge nach DIN EN 1992-1-1)
+  const [l0, setL0] = useState(2.0); // m (Ersatzlänge nach DIN EN 1992-1-1); λ = 23,1 ≤ λ_lim = 25, damit ist das Startbeispiel nach Theorie I. Ordnung zulässig
   const [nEd, setNEd] = useState(1000); // kN (Druckkraft)
   const [mEd, setMEd] = useState(50); // kNm
   const [fck, setFck] = useState(30); // MPa

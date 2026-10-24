@@ -98,7 +98,6 @@ interface Scenario {
   tempMin: number;
   tempMax: number;
   weatherConditions: string[];
-  suggestedIncident: string;
   objective: string;
   hints: string[];
 }
@@ -113,7 +112,6 @@ const SCENARIOS: Scenario[] = [
     tempMin: 1.5,
     tempMax: 4.5,
     weatherConditions: ['Rain', 'Frost'],
-    suggestedIncident: 'Bodenplatte gegossen. Starker Wind begünstigt Verdunstung. Polier regte unzulässige Wasserzugabe an, um Fließen zu beschleunigen. Wurde strikt untersagt. Einbau-Frischbetontemperatur gemessen.',
     objective: 'Dokumentieren Sie die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).',
     hints: [
       'Geben Sie die Min-Temperatur exakt auf 1,5 °C an, um die Frost-Hydratationswarnung auszulösen.',
@@ -131,7 +129,6 @@ const SCENARIOS: Scenario[] = [
     tempMin: 19.0,
     tempMax: 26.5,
     weatherConditions: ['Sunny'],
-    suggestedIncident: 'Mündliche Anweisung von Herrn Schmidt, auf das Abdichtungssystem am Fundamentanschluss zu verzichten bzw. dieses wegzulassen.',
     objective: 'Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Melden Sie als ausführendes Unternehmen schriftlich Bedenken nach VOB/B § 4 Abs. 3 an und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
     hints: [
       'Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.',
@@ -148,7 +145,6 @@ const SCENARIOS: Scenario[] = [
     tempMin: 12.0,
     tempMax: 17.5,
     weatherConditions: ['Cloudy'],
-    suggestedIncident: 'Subunternehmer meldet Verzug bei Spezial-Quellvergussmörtel. Labor-Festigkeitsattest steht noch aus. Kranmontage Takt 2 blockiert.',
     objective: 'Protokollieren Sie die Baustörung. Aktivieren Sie die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie den Festigkeitsnachweis (Prüfbericht) sowie den Verwendbarkeitsnachweis des Vergussmörtels an.',
     hints: [
       'Grenzfälle im Fertigteilbau sind sicherheitskritisch: Markieren Sie die Behinderungsanzeige auf JA.',
@@ -249,12 +245,13 @@ export default function Bautagebuch() {
     setSelectedWeather(scenario.weatherConditions);
     setWeatherEinfluss(scenario.tempMin < 5 ? 'Beeinträchtigung' : 'Keine Beeinflussung');
     setFortschritt('');
-    setStoerungen(scenario.suggestedIncident);
+    // Lösungsfelder starten leer: Die Aufgabe steht in der Szenariobeschreibung, gelöst wird im Editor.
+    setStoerungen('');
     setAnweisungen('');
-    setBehinderung(scenario.id === 'delay_excavator');
-    setBehinderungDetails(scenario.id === 'delay_excavator' ? 'Vergussmörtel Takt 1 verspätet geliefert, Festigkeitsnachweis ausstehend; Montage Takt 2 blockiert, Kranstillstand.' : '');
-    setBedenken(scenario.id === 'claim_conflict');
-    setBedenkenDetails(scenario.id === 'claim_conflict' ? 'Formale Bedenkenanmeldung an Bauherr wegen Stornierung der Rissabdichtung übergeben.' : '');
+    setBehinderung(false);
+    setBehinderungDetails('');
+    setBedenken(false);
+    setBedenkenDetails('');
     setSelectedTesting([]);
     setReviewResult(null);
     setActiveTab('editor');
@@ -874,6 +871,11 @@ export default function Bautagebuch() {
                   )}
                 </h3>
                 <p className="text-xs text-slate-600">Tragen Sie alle relevanten Witterungs- und baubetrieblichen Werte ein.</p>
+                {activeScenarioId && (
+                  <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg p-2 max-w-2xl">
+                    <strong>Lage:</strong> {SCENARIOS.find(sc => sc.id === activeScenarioId)?.description}
+                  </p>
+                )}
               </div>
               <div className="flex gap-2">
                 <button
