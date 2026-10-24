@@ -1066,7 +1066,7 @@ function AppContent() {
             </div>
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
-          {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzenFuer(activeTab)) && grenzenFuer(activeTab)?.rechnet !== false && (
+          {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzenFuer(activeTab)) && (
             <CalculatorDisclaimerBanner
               className="mb-4"
               grenzen={grenzenFuer(activeTab)}
