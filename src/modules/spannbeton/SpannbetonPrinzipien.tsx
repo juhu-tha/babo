@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { fckT, betaCc, CementClass } from '@/src/utils/ec2Spannbeton';
+import { fckT, betaCc, CementClass } from '@/src/calc/spannbeton';
 import SpannbetonDehnungsAnimation from './SpannbetonDehnungsAnimation';
 import {
   Info,

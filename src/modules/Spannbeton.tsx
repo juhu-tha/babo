@@ -11,7 +11,8 @@ import SpannbetonKennwerte from './spannbeton/SpannbetonKennwerte';
 import SpannbetonDauerhaftigkeit from './spannbeton/SpannbetonDauerhaftigkeit';
 import SpannbetonPrinzipien from './spannbeton/SpannbetonPrinzipien';
 import SpannbetonNullBisHundert from './spannbeton/SpannbetonNullBisHundert';
-import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, type RelaxationClass } from '@/src/utils/ec2Spannbeton';
+import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass } from '@/src/calc/spannbeton';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import {
   Settings,
   Activity,
@@ -103,6 +104,10 @@ export default function Spannbeton() {
   const [totalCurvature, setTotalCurvature] = useState<number>(0.15); // theta in rad
   const [anchorSlip, setAnchorSlip] = useState<number>(4); // w in mm (Standard Keilschlupf)
   const [nTendons, setNTendons] = useState<number>(4); // Anzahl nacheinander gespannter Spannglieder
+
+  const eingabeHinweise = useMemo(() => pruefeSpannbeton({
+    p0, b, h, ep, mG1, mPerm, mChar, concreteAge, spanLength, frictionCoeff, wobbleCoeff, totalCurvature, anchorSlip, nTendons,
+  }), [p0, b, h, ep, mG1, mPerm, mChar, concreteAge, spanLength, frictionCoeff, wobbleCoeff, totalCurvature, anchorSlip, nTendons]);
 
   const materialResults = useMemo(() => {
     const conc = CONCRETE_CLASSES[concreteClass] || CONCRETE_CLASSES['C40/50'];
@@ -858,6 +863,7 @@ export default function Spannbeton() {
 
         {/* Right Outputs & Visualization - Span 7 cols */}
         <div className="lg:col-span-7 space-y-6">
+          <EingabeHinweise hinweise={eingabeHinweise} />
           {/* Card A: Chart of stresses */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <div className="flex justify-between items-center border-b border-home-grau/10 pb-2">
