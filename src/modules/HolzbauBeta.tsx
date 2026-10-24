@@ -336,7 +336,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const W_yfi = b_fi > 0 && h_fi > 0 ? (b_fi * Math.pow(h_fi, 2)) / 6 : 0; // mm³
 
     const areaLossPercent = A_0 > 0 ? ((A_0 - A_fi) / A_0) * 100 : 100;
-    const stiffnessLossPercent = W_y0 > 0 ? ((W_y0 - W_yfi) / W_y0) * 100 : 100;
+    const stiffnessLossPercent /* Verlust an Widerstandsmoment W (nicht EI) */ = W_y0 > 0 ? ((W_y0 - W_yfi) / W_y0) * 100 : 100;
 
     return {
       beta_0,
@@ -1859,7 +1859,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                         {formatDeZahl(fireResults.d_ef, 1)} mm
                       </span>
                       <span className="text-[9px] text-text-main/50 block leading-tight mt-0.5">
-                        ({formatDeZahl(fireResults.d_char0, 1)} mm Kohle + 7mm pyrolytische Zerrüttungsschicht)
+                        ({formatDeZahl(fireResults.d_char0, 1)} mm Kohle + k₀ · 7 mm Zerrüttungsschicht, k₀ = min(1; t/20))
                       </span>
                     </div>
 
@@ -1884,7 +1884,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                       <span className="font-mono font-black text-rose-700 text-sm">{formatDeZahl(fireResults.areaLossPercent, 1)}%</span>
                     </div>
                     <div className="text-xs bg-white p-2.5 rounded border border-home-grau/10 text-center">
-                      <span className="text-text-main/50 font-semibold block text-[10px]">VERLUST BIEGESTEIFIGKEIT</span>
+                      <span className="text-text-main/50 font-semibold block text-[10px]">VERLUST WIDERSTANDSMOMENT W</span>
                       <span className="font-mono font-black text-rose-700 text-sm">{formatDeZahl(fireResults.stiffnessLossPercent, 1)}%</span>
                     </div>
                   </div>

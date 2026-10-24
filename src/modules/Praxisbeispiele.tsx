@@ -86,7 +86,8 @@ export default function Praxisbeispiele() {
       strengthCurve.push(f_ct);
 
       // E-Modulus curve
-      const E_c = t > 0 ? 30000 * Math.exp(s * (1 - Math.sqrt(28 / t))) : 0;
+      // DIN EN 1992-1-1, 3.1.3: E_cm(t) = (f_cm(t)/f_cm)^0,3 · E_cm = β_cc(t)^0,3 · E_cm
+      const E_c = t > 0 ? 30000 * Math.pow(Math.exp(s * (1 - Math.sqrt(28 / t))), 0.3) : 0;
 
       // Stress curve
       let sigma = 0;

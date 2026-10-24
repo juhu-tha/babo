@@ -1754,7 +1754,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
                       if (betonFreshAir > reqMax) {
                         strengthLoss = (betonFreshAir - reqMin) * 4.5; // assume 4.5% loss per 1% extra air
-                        lpMsg = `⚠ Luftporengehalt über ${formatDeWert(reqMax)} %: Die Festigkeit sinkt (Faustregel ca. 4–5 % je 1 % zusätzlicher Luft; hier rund ${formatDeZahl(strengthLoss, 0)} %).`;
+                        lpMsg = `⚠ Luftporengehalt über ${formatDeWert(reqMax)} %: Die Festigkeit sinkt (Faustregel ca. 4–5 % je 1 % Luft über dem Mindestwert von ${formatDeWert(reqMin)} %; hier rund ${formatDeZahl(strengthLoss, 0)} %).`;
                         lpColor = "bg-amber-50 text-amber-800 border-amber-200";
                       } else if (betonFreshAir < reqMin) {
                         lpMsg = `✗ Luftporengehalt zu niedrig (${formatDeWert(betonFreshAir)} % < ${formatDeWert(reqMin)} %): unzureichender Frost-Tausalz-Widerstand, Abwitterung möglich.`;

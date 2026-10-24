@@ -63,7 +63,8 @@ export default function Knicken() {
     // Theorie II. Ordnung: Auslenkung w = w0 / (1 − N/F_K) mit angenommener Vorkrümmung w0 = l/300 (Lehrwert;
     // die Ersatzimperfektionen nach DIN EN 1993-1-1, Tab. 5.1 hängen von der Knicklinie ab)
     const w0_mm = (l * 1000) / 300;
-    const amplification = isBuckled ? 8.5 : (1 / Math.max(0.08, 1 - (loadPercent / 100)));
+    // Darstellung: Verstärkung auf 12,5 begrenzt; ab N ≥ F_K bleibt sie auf dem Höchstwert (instabil, Auslenkung theoretisch unbegrenzt)
+    const amplification = isBuckled ? 12.5 : (1 / Math.max(0.08, 1 - (loadPercent / 100)));
     const maxDeflectionMm = w0_mm * amplification;
 
     // Qualitative Biegelinie für Diagramm

@@ -48,7 +48,7 @@ export default function HydratationRissberechnung() {
     const isCracked = crackingFactor >= 1.0;
 
     // 5. Coefficient k according to DIN EN 1992-1-1 Cl. 7.3.2 (abhängig von Bauteildicke h)
-    // k = 1.0 für h <= 300mm, k = 0.5 für h >= 800mm, dazwischen linear interpoliert
+    // NA DE: k = 0,8 für h ≤ 300 mm, k = 0,5 für h ≥ 800 mm, dazwischen linear interpoliert
     let kCoeff = 0.8;
     if (thickness <= 0.3) {
       kCoeff = 0.8;
