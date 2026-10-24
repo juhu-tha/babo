@@ -1,4 +1,5 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -466,6 +467,45 @@ export default function Rissbreite() {
             </p>
           </div>
         </div>
+
+        <FormulaDerivationBox
+          live
+          title="Ihr Rechenweg: Rissbreite mit den aktuellen Eingaben"
+          zielGleichung={`w_k = s_{r,max} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm}) = ${formatDeTeX(wkCalc, 3)}\\,\\text{mm} \;${isOk ? '\\le' : '>'}\; ${formatDeTeX(wkReq, 2)}\\,\\text{mm}`}
+          normQuelle="DIN EN 1992-1-1 mit NA (DE), 7.3.2 und 7.3.4"
+          schritte={[
+            {
+              titel: 'Vorhandene Bewehrung',
+              erklaerung: `Stäbe Ø ${formatDeZahl(phiS, 0)} mm im Abstand ${formatDeZahl(spacing, 1)} cm auf der Breite b = ${formatDeZahl(b, 0)} mm.`,
+              formel: `A_s = \\frac{b}{s} \\cdot \\frac{\\pi \\cdot \\varnothing^2}{4} = \\frac{${formatDeTeX(b, 0)}}{${formatDeTeX(spacing * 10, 0)}} \\cdot \\frac{\\pi \\cdot ${formatDeTeX(phiS, 0)}^2}{4} = ${formatDeTeX(as, 0)}\\,\\text{mm}^2`,
+            },
+            {
+              titel: 'Wirksame Zugzone',
+              erklaerung: beanspruchung === 'biegung'
+                ? `Biegung: Druckzonenhöhe im Zustand II x = ${formatDeZahl(ergebnis.x, 1)} mm, Nutzhöhe d = ${formatDeZahl(ergebnis.d, 1)} mm.`
+                : `Zentrischer Zug: h_c,ef je Seite, Nutzhöhe d = ${formatDeZahl(ergebnis.d, 1)} mm.`,
+              formel: beanspruchung === 'biegung'
+                ? `h_{c,ef} = \\min\\left(2{,}5 \\cdot ${formatDeTeX(h - ergebnis.d, 1)};\; \\tfrac{${formatDeTeX(h - ergebnis.x, 1)}}{3};\; \\tfrac{${formatDeTeX(h, 0)}}{2}\\right) = ${formatDeTeX(hc_ef, 1)}\\,\\text{mm};\\quad \\rho_{p,eff} = \\frac{${formatDeTeX(as, 0)}}{${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(hc_ef, 1)}} = ${formatDeTeX(rhoPEff, 4)}`
+                : `h_{c,ef} = \\min\\left(2{,}5 \\cdot ${formatDeTeX(h - ergebnis.d, 1)};\; \\tfrac{${formatDeTeX(h, 0)}}{2}\\right) = ${formatDeTeX(hc_ef, 1)}\\,\\text{mm};\\quad \\rho_{p,eff} = \\frac{${formatDeTeX(as, 0)}}{${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(hc_ef, 1)}} = ${formatDeTeX(rhoPEff, 4)}`,
+            },
+            {
+              titel: 'Maximaler Rissabstand',
+              erklaerung: `Gl. (7.11DE) nach NA (DE) mit f_ct,eff = ${formatDeZahl(ergebnis.effectiveFct, 2)} N/mm²${zwangNach28d ? ' (Zwang nach 28 Tagen: mindestens 3,0 N/mm²)' : ''}.`,
+              formel: `s_{r,max} = \\min\\left(\\frac{${formatDeTeX(phiS, 0)}}{3{,}6 \\cdot ${formatDeTeX(rhoPEff, 4)}};\; \\frac{${formatDeTeX(sigmaS, 0)} \\cdot ${formatDeTeX(phiS, 0)}}{3{,}6 \\cdot ${formatDeTeX(ergebnis.effectiveFct, 2)}}\\right) = ${formatDeTeX(srMax, 1)}\\,\\text{mm}`,
+            },
+            {
+              titel: 'Mittlere Dehnungsdifferenz',
+              erklaerung: `Gl. (7.9) mit k_t = ${formatDeZahl(kt, 1)} und α_e = E_s/E_cm = ${formatDeZahl(200000 / ecm, 2)}; Untergrenze 0,6 · σ_s/E_s.`,
+              formel: `\\varepsilon_{sm} - \\varepsilon_{cm} = \\max\\left(\\frac{${formatDeTeX(sigmaS, 0)} - ${formatDeTeX(kt, 1)} \\cdot \\frac{${formatDeTeX(ergebnis.effectiveFct, 2)}}{${formatDeTeX(rhoPEff, 4)}} \\cdot (1 + ${formatDeTeX(200000 / ecm, 2)} \\cdot ${formatDeTeX(rhoPEff, 4)})}{200\\,000};\; \\frac{0{,}6 \\cdot ${formatDeTeX(sigmaS, 0)}}{200\\,000}\\right) = ${formatDeTeX(epsSmEpsCm * 1000, 3)} \\cdot 10^{-3}`,
+            },
+            {
+              titel: 'Rechnerische Rissbreite',
+              erklaerung: isOk ? 'Die zulässige Rissbreite ist eingehalten.' : 'Die zulässige Rissbreite ist überschritten.',
+              formel: `w_k = ${formatDeTeX(srMax, 1)} \\cdot ${formatDeTeX(epsSmEpsCm * 1000, 3)} \\cdot 10^{-3} = ${formatDeTeX(wkCalc, 3)}\\,\\text{mm} \;${isOk ? '\\le' : '>'}\; w_{max} = ${formatDeTeX(wkReq, 2)}\\,\\text{mm}`,
+            },
+          ]}
+          ergebnisHinweis={`Berechnete Rissbreite w_k = ${formatDeZahl(wkCalc, 3)} mm (${isOk ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'})`}
+        />
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
           <h3 className="text-sm font-bold text-text-main mb-4">Rissbreite in Abhängigkeit vom Bewehrungsquerschnitt</h3>

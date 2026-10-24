@@ -24,7 +24,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
-import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeXWert, formatDeTeX } from '@/src/utils/numberFormat';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
 import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 
@@ -1257,6 +1257,45 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 )}
               </div>
 
+              <FormulaDerivationBox
+                live
+                title="Ihr Rechenweg: Knicknachweis mit den aktuellen Eingaben"
+                zielGleichung={`\\frac{N_{Ed}}{k_c \\cdot A \\cdot f_{c,0,d}} = \\frac{${formatDeTeX(designLoad, 1)}}{${formatDeTeX(calculationResults.F_c_R_d_kN, 1)}} = ${formatDeTeX(calculationResults.utilization, 1)}\\,\\%`}
+                normQuelle="DIN EN 1995-1-1 mit NA (DE), 6.3.2"
+                schritte={[
+                  {
+                    titel: 'Bemessungswert der Druckfestigkeit',
+                    erklaerung: `${currentMaterial.class}, Nutzungsklasse ${formatDeZahl(serviceClass, 0)}: k_mod = ${formatDeZahl(calculationResults.k_mod, 2)}, γ_M = 1,3.`,
+                    formel: `f_{c,0,d} = \\frac{${formatDeTeX(calculationResults.k_mod, 2)} \\cdot ${formatDeTeX(currentMaterial.f_c0k, 1)}}{${formatDeTeX(calculationResults.gamma_M, 1)}} = ${formatDeTeX(calculationResults.f_c0d, 2)}\\,\\text{N/mm}^2`,
+                  },
+                  {
+                    titel: 'Knicklänge und Schlankheit',
+                    erklaerung: `Euler-Fall ${formatDeZahl(eulerCase, 0)} mit β = ${formatDeZahl(calculationResults.l_ef / (colLen * 1000), 1)}; maßgebend ist der kleinere Trägheitsradius.`,
+                    formel: `l_{ef} = ${formatDeTeX(calculationResults.l_ef / (colLen * 1000), 1)} \\cdot ${formatDeTeX(colLen * 1000, 0)} = ${formatDeTeX(calculationResults.l_ef, 0)}\\,\\text{mm};\\quad i = \\frac{${formatDeTeX(Math.min(colB, colH), 0)}}{\\sqrt{12}} = ${formatDeTeX(Math.min(calculationResults.iy, calculationResults.iz), 1)}\\,\\text{mm};\\quad \\lambda = ${formatDeTeX(calculationResults.lambda_z, 1)}`,
+                  },
+                  {
+                    titel: 'Bezogene Schlankheit',
+                    erklaerung: `Mit E_0,05 = ${formatDeZahl(calculationResults.E_05, 0)} N/mm².`,
+                    formel: `\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{${formatDeTeX(calculationResults.lambda_z, 1)}}{\\pi} \\sqrt{\\frac{${formatDeTeX(currentMaterial.f_c0k, 1)}}{${formatDeTeX(calculationResults.E_05, 0)}}} = ${formatDeTeX(calculationResults.lambda_rel_z, 3)}`,
+                  },
+                  {
+                    titel: 'Knickbeiwert',
+                    erklaerung: calculationResults.lambda_rel_z <= 0.3
+                      ? 'λ_rel ≤ 0,3: Kein Knickeinfluss, k_c = 1,0.'
+                      : `Imperfektionsbeiwert β_c = ${currentMaterial.class.startsWith('GL') ? '0,1 (Brettschichtholz)' : '0,2 (Vollholz)'}.`,
+                    formel: calculationResults.lambda_rel_z <= 0.3
+                      ? 'k_c = 1{,}0'
+                      : `k = 0{,}5 \\,[1 + ${currentMaterial.class.startsWith('GL') ? '0{,}1' : '0{,}2'} \\cdot (${formatDeTeX(calculationResults.lambda_rel_z, 3)} - 0{,}3) + ${formatDeTeX(calculationResults.lambda_rel_z, 3)}^2] = ${formatDeTeX(0.5 * (1 + (currentMaterial.class.startsWith('GL') ? 0.1 : 0.2) * (calculationResults.lambda_rel_z - 0.3) + calculationResults.lambda_rel_z ** 2), 3)};\\quad k_c = ${formatDeTeX(calculationResults.k_cz, 4)}`,
+                  },
+                  {
+                    titel: 'Knicktragfähigkeit und Ausnutzung',
+                    erklaerung: calculationResults.isUnsafe ? 'Die Ausnutzung liegt über 100 %: Der Nachweis ist nicht erfüllt.' : 'Die Ausnutzung liegt unter 100 %: Der Nachweis ist erfüllt.',
+                    formel: `F_{c,R,d} = ${formatDeTeX(calculationResults.k_cz, 4)} \\cdot ${formatDeTeX(calculationResults.A, 0)} \\cdot ${formatDeTeX(calculationResults.f_c0d, 2)} \\cdot 10^{-3} = ${formatDeTeX(calculationResults.F_c_R_d_kN, 1)}\\,\\text{kN};\\quad \\eta = \\frac{${formatDeTeX(designLoad, 1)}}{${formatDeTeX(calculationResults.F_c_R_d_kN, 1)}} = ${formatDeTeX(calculationResults.utilization, 1)}\\,\\%`,
+                  },
+                ]}
+                ergebnisHinweis={`Ausnutzung ${formatDeZahl(calculationResults.utilization, 1)} % (${calculationResults.isUnsafe ? 'nicht erfüllt' : 'erfüllt'})`}
+              />
+
             </div>
 
           </div>
@@ -1669,6 +1708,41 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <strong>Nachweis im Lehrmodell erfüllt:</strong> Herausziehen und Abscheren sind vereinfacht nachgewiesen (ohne n_ef, Abstände, Blockscherversagen; Schraubenwerte nach ETA).
                   </div>
                 )}
+
+                <FormulaDerivationBox
+                  live
+                  title="Ihr Rechenweg: Schraubenverbindung mit den aktuellen Eingaben"
+                  zielGleichung={`F_{v,Rd} = \\frac{k_{mod} \\cdot n \\cdot F_{v,Rk}}{\\gamma_M} = ${formatDeTeX(connResults.F_v_Rd_total_kN, 1)}\\,\\text{kN};\\quad F_{ax,Rd} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`}
+                  normQuelle="DIN EN 1995-1-1 mit NA (DE), 8.2 und 8.7 (Lehrmodell)"
+                  schritte={[
+                    {
+                      titel: 'Ausziehfestigkeit',
+                      erklaerung: `Lehrwert f_ax,k = 12 N/mm², Rohdichte ρ_k = ${formatDeZahl(connResults.rho_k, 0)} kg/m³, Einschraubwinkel ${formatDeZahl(connAngle, 0)}°.`,
+                      formel: `f_{ax,\\alpha,k} = 12 \\cdot ${formatDeTeX(connResults.factor_alpha, 3)} \\cdot \\left(\\frac{${formatDeTeX(connResults.rho_k, 0)}}{350}\\right)^{0{,}8} = ${formatDeTeX(connResults.f_ax_alpha_k, 2)}\\,\\text{N/mm}^2`,
+                    },
+                    {
+                      titel: 'Ausziehwiderstand der Gruppe',
+                      erklaerung: 'Lehrmodell mit k_mod = 0,8 und γ_M = 1,3, ohne wirksame Anzahl n_ef.',
+                      formel: `F_{ax,Rd} = \\frac{0{,}8 \\cdot ${formatDeTeX(connCount, 0)} \\cdot ${formatDeTeX(connResults.f_ax_alpha_k, 2)} \\cdot ${formatDeTeX(connD, 0)} \\cdot ${formatDeTeX(connLef, 0)}}{1{,}3} \\cdot 10^{-3} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`,
+                    },
+                    {
+                      titel: 'Lochleibungsfestigkeit und Fließmoment',
+                      erklaerung: 'Lochleibungsfestigkeit nach EC5 (Ansatz für vorgebohrte Hölzer), Fließmoment mit f_u,k = 400 N/mm².',
+                      formel: `f_{h,k} = 0{,}082 \\cdot (1 - 0{,}01 \\cdot ${formatDeTeX(connD, 0)}) \\cdot ${formatDeTeX(connResults.rho_k, 0)} = ${formatDeTeX(connResults.f_h_k, 2)}\\,\\text{N/mm}^2;\\quad M_{y,Rk} = 0{,}3 \\cdot 400 \\cdot ${formatDeTeX(connD, 0)}^{2{,}6} = ${formatDeTeX(connResults.M_y_Rk, 0)}\\,\\text{Nmm}`,
+                    },
+                    {
+                      titel: 'Schertragfähigkeit je Schraube',
+                      erklaerung: `Kleinerer Wert aus Lochleibungsversagen und Fließgelenk-Mechanismus mit Seileffekt (${formatDeZahl(connResults.rope_effect, 0)} N).`,
+                      formel: `F_{v,Rk} = \\min(${formatDeTeX(connResults.f_h_k * connLef * connD, 0)};\; ${formatDeTeX(1.15 * Math.sqrt(2 * connResults.M_y_Rk * connResults.f_h_k * connD), 0)} + ${formatDeTeX(connResults.rope_effect, 0)}) = ${formatDeTeX((connResults.F_v_Rk_total_kN * 1000) / connCount, 0)}\\,\\text{N}`,
+                    },
+                    {
+                      titel: 'Bemessungswerte und Ausnutzung',
+                      erklaerung: `V_Ed = ${formatDeZahl(connForce, 1)} kN wird hier beiden Nachweisen gegenübergestellt.`,
+                      formel: `F_{v,Rd} = \\frac{0{,}8 \\cdot ${formatDeTeX(connResults.F_v_Rk_total_kN, 2)}}{1{,}3} = ${formatDeTeX(connResults.F_v_Rd_total_kN, 1)}\\,\\text{kN};\\quad \\eta_v = ${formatDeTeX(connResults.utilShear, 1)}\\,\\%,\; \\eta_{ax} = ${formatDeTeX(connResults.utilAxial, 1)}\\,\\%`,
+                    },
+                  ]}
+                  ergebnisHinweis={`Ausnutzung Scherung ${formatDeZahl(connResults.utilShear, 1)} %, axial ${formatDeZahl(connResults.utilAxial, 1)} %`}
+                />
               </div>
             </div>
           </div>
