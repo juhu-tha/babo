@@ -213,10 +213,13 @@ export default function SpannungDehnung() {
             <Slider 
               label={<FormulaText text="Charakt. Druckfestigkeit (f_{ck})" />}
               info="Zylinderdruckfestigkeit nach 28 Tagen. Höhere Festigkeit führt zu spröderem Versagen."
-              min={12} max={100} step={1} 
+              min={12} max={90} step={1} 
               value={fck} unit="MPa" 
               onChange={(e) => setFck(Number(e.target.value))} 
             />
+            <p className="text-[11px] text-slate-500 mt-2">
+              Hinweis: Die Formeln der Spannungs-Dehnungs-Linie nach DIN EN 1992-1-1, 3.1 gelten nur bis C90/105 (f_ck ≤ 90 MPa); der Regler ist deshalb auf 90 MPa begrenzt.
+            </p>
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>

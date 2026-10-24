@@ -10,11 +10,7 @@ import '@/src/lib/chartSetup';
 import Elastomechanik from './Elastomechanik';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 
-import { betonAuswahl } from '@/src/data/kennwerte';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
-// Kennwerte nach EC2 Tab. 3.1 aus der zentralen Tabelle (src/data/kennwerte.ts)
-const CONCRETE_PROPS_MAP = betonAuswahl(['C20/25', 'C25/30', 'C30/37', 'C35/45', 'C50/60'] as const);
 
 export default function Baustoffkenngroessen() {
   const [activeTab, setActiveTab] = useState<'eigenschaften' | 'mechanisch' | 'physikalisch' | 'hygrisch' | 'thermisch' | 'zeitlich' | 'rechenbeispiele'>('eigenschaften');
@@ -41,16 +37,6 @@ export default function Baustoffkenngroessen() {
   const [saeulenL0, setSaeulenL0] = useState(3.0); // m
   const [saeulenE, setSaeulenE] = useState(30000); // MPa
   const [saeulenFy, setSaeulenFy] = useState(30); // MPa (Grenzfestigkeit)
-
-  // State für Rechenbeispiel B (Beton mit Kriechen, Schwinden und Zwang)
-  const [betonKlasse, setBetonKlasse] = useState<'C20/25' | 'C25/30' | 'C30/37' | 'C35/45' | 'C50/60'>('C30/37');
-  const [loadingAge, setLoadingAge] = useState(7); // t0, Tage bei Erstbelastung (3-90)
-  const [observationDays, setObservationDays] = useState(365); // t, Tage (3-10000)
-  const [sustainedForce, setSustainedForce] = useState(250); // kN sustained load (Dauerlast)
-  const [creepCoeffInf, setCreepCoeffInf] = useState(2.5); // Endkriechbeiwert phi_inf (0.5-4.0)
-  const [shrinkageStrainInf, setShrinkageStrainInf] = useState(-0.5); // Endschwindmaß in Promille (negativ)
-  const [restraintGrad, setRestraintGrad] = useState(0.8); // Zwang-Grad K (0-1)
-  const [tempDrop, setTempDrop] = useState(15); // Delta T Abkühlung in K
 
   // Physikalisch State
   const [masse, setMasse] = useState(2400); // kg
@@ -202,101 +188,6 @@ export default function Baustoffkenngroessen() {
   const deltaLA = strainA * saeulenL0 * 1000; // mm
   const utilizationA = (stressA / saeulenFy) * 100; // Auslastungsgrad (%)
 
-  // Berechnungen: Rechenbeispiel B: Beton zeitabhängig (Kriechen, Schwinden, Zwang)
-  const cInfo = CONCRETE_PROPS_MAP[betonKlasse] || CONCRETE_PROPS_MAP['C30/37'];
-  const obsT = Math.max(loadingAge + 1, observationDays);
-
-  // t0, Erstbelastung
-  const beta_cc_t0 = Math.exp(0.25 * (1 - Math.sqrt(28 / loadingAge)));
-  const f_cm_t0 = beta_cc_t0 * cInfo.fcm;
-  const Ecm_t0 = cInfo.Ecm * Math.pow(f_cm_t0 / cInfo.fcm, 0.3);
-
-  // t, Beobachtungsalter
-  const beta_cc_t = Math.exp(0.25 * (1 - Math.sqrt(28 / obsT)));
-  const f_cm_t = beta_cc_t * cInfo.fcm;
-  // Zugfestigkeitsentwicklung (Eurocode 2 Näherung)
-  const f_ctm_t = obsT <= 28 
-    ? cInfo.fctm * beta_cc_t 
-    : cInfo.fctm * Math.pow(beta_cc_t, 2 / 3);
-
-  // Kriechbeiwertentwicklung bei Beobachtungsdauer obsT
-  const beta_c_t = (obsT - loadingAge) / ((obsT - loadingAge) + 30);
-  const phi_t = creepCoeffInf * beta_c_t;
-  const E_eff_t = Ecm_t0 / (1 + phi_t);
-
-  // Lastbedingte Spannungen von F_g
-  const sigma_c0 = (sustainedForce * 1000) / (saeulenA * 100); // MPa (Stütze Fläche A_saeule)
-  const eps_el0 = (sigma_c0 / Ecm_t0) * 1000; // initial elastisch ‰
-  const eps_cr = eps_el0 * phi_t; // ‰ (Kriechdehnung)
-
-  // Schwinden
-  const beta_ds_t = obsT / (obsT + 150);
-  const eps_cs = shrinkageStrainInf * beta_ds_t; // ‰ (Schwinddehnung, negativ)
-
-  // Abkühlung
-  const eps_temp = -tempDrop * 1.0e-5 * 1000; // ‰ (negativ)
-
-  // Zwangskraft-Berechnung: Grad des Zwangs x (Dehnungen aus Schwinden & Temp)
-  const totalContraction = eps_cs + eps_temp; // negative Dehnung
-  const sigma_zwang = restraintGrad * Math.abs(totalContraction) * (E_eff_t / 1000); // positive Zugspannung
-  const utilizationB = (sigma_zwang / f_ctm_t) * 100; // Rissauslastung in %
-
-  // Kurvendaten über Zeitachse für Beispiel B generieren
-  const daysList = [3, 7, 14, 28, 56, 90, 180, 270, 360, 720, 1080];
-  const chartLabelsB = daysList.map(d => `${formatDeWert(d)} d`);
-
-  const tensileStrengthsB = daysList.map(x => {
-    const b_cc = Math.exp(0.25 * (1 - Math.sqrt(28 / x)));
-    const f_ct_x = x <= 28 
-      ? cInfo.fctm * b_cc 
-      : cInfo.fctm * Math.pow(b_cc, 2 / 3);
-    return Number(f_ct_x.toFixed(2));
-  });
-
-  const restraintStressesB = daysList.map(x => {
-    if (x <= loadingAge) return 0;
-    const b_cc_t0_x = Math.exp(0.25 * (1 - Math.sqrt(28 / loadingAge)));
-    const f_cm_t0_x = b_cc_t0_x * cInfo.fcm;
-    const Ecm_t0_x = cInfo.Ecm * Math.pow(f_cm_t0_x / cInfo.fcm, 0.3);
-
-    const b_c_x = (x - loadingAge) / ((x - loadingAge) + 30);
-    const phi_x = creepCoeffInf * b_c_x;
-    const E_eff_x = Ecm_t0_x / (1 + phi_x);
-
-    const b_ds_x = x / (x + 150);
-    const eps_cs_x = shrinkageStrainInf * b_ds_x;
-    const eps_temp_x = -tempDrop * 1.0e-5 * 1000;
-
-    const sig_zw_x = restraintGrad * Math.abs(eps_cs_x + eps_temp_x) * (E_eff_x / 1000);
-    return Number(sig_zw_x.toFixed(2));
-  });
-
-  const concreteChartData = {
-    labels: chartLabelsB,
-    datasets: [
-      {
-        label: 'Beton-Zugfestigkeit f_ctm(t) [MPa]',
-        data: tensileStrengthsB,
-        borderColor: '#475569', // Gray slate
-        backgroundColor: 'rgba(71, 85, 105, 0.05)',
-        borderDash: [5, 5],
-        borderWidth: 2,
-        tension: 0.1,
-        pointRadius: 3,
-      },
-      {
-        label: 'Zwangspannung σ_zwang(t) [MPa]',
-        data: restraintStressesB,
-        borderColor: '#A3113E', // Shiraz red
-        backgroundColor: 'rgba(163, 17, 62, 0.1)',
-        borderWidth: 3,
-        tension: 0.1,
-        fill: true,
-        pointRadius: 4,
-      }
-    ]
-  };
-
   // Berechnungen Physikalisch
   const dichte = masse / volumen;
   const porositaet = (1 - (rohdichte / reindichte)) * 100;
@@ -329,7 +220,9 @@ export default function Baustoffkenngroessen() {
     const beta_ds = t === 0 ? 0 : t / (t + 150);
     const eps_cs = zeitlichSchwindenInf * beta_ds;
     
-    const eps_total = eps_el + eps_cr + eps_cs;
+    // Druckbeanspruchung: ε_el und ε_cr sind Stauchungen (als Betrag), ε_cs ist negativ (Verkürzung).
+    // Beide Anteile verkürzen das Bauteil, daher addieren sich die Beträge.
+    const eps_total = eps_el + eps_cr + Math.abs(eps_cs);
 
     const psi_t = (zeitlichRelaxationInf / 100) * beta_c;
     const sigma_t = zeitlichSigma0 * (1 - psi_t);
@@ -370,8 +263,8 @@ export default function Baustoffkenngroessen() {
         pointRadius: 2,
       },
       {
-        label: 'Schwinden (negativ)',
-        data: timeLabels.map(d => calcTimedValues(d).eps_cs),
+        label: 'Schwindverkürzung |ε_cs|',
+        data: timeLabels.map(d => Math.abs(calcTimedValues(d).eps_cs)),
         borderColor: '#1e293b',
         backgroundColor: '#1e293b',
         borderWidth: 2,
@@ -379,7 +272,7 @@ export default function Baustoffkenngroessen() {
         pointRadius: 2,
       },
       {
-        label: 'Gesamtverformung (Summe)',
+        label: 'Gesamtstauchung (Betrag)',
         data: timeLabels.map(d => calcTimedValues(d).eps_total),
         borderColor: '#A3113E',
         backgroundColor: '#A3113E',
@@ -1056,11 +949,11 @@ export default function Baustoffkenngroessen() {
               <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-rose-600 font-bold block uppercase">Summenverformung ε_total(t)</span>
-                  <span className="text-[9px] text-rose-500 mt-0.5 block">ε_gesamt = ε_el + ε_cr + ε_cs</span>
+                  <span className="text-[9px] text-rose-500 mt-0.5 block">|ε_gesamt| = ε_el + ε_cr + |ε_cs| (alle Anteile verkürzen)</span>
                 </div>
                 <div className="text-right">
                   <span className="text-xl font-black text-shiraz">{formatDeZahl(currentTimed.eps_total, 3)} ‰</span>
-                  <span className="text-[10px] text-rose-600 font-bold block">Gesamtdehnung</span>
+                  <span className="text-[10px] text-rose-600 font-bold block">Gesamtstauchung (Betrag)</span>
                 </div>
               </div>
 

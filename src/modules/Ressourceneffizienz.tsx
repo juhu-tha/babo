@@ -1178,7 +1178,7 @@ export default function Ressourceneffizienz() {
                         max="80" 
                         step="5"
                         value={wasteOptimization} 
-                        onChange={(e) => setWasteOptimization(parseInt(e.target.value) || 30)}
+                        onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setWasteOptimization(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
                       <div className="flex justify-between text-xs text-slate-400 dark:text-slate-500">
@@ -1199,7 +1199,7 @@ export default function Ressourceneffizienz() {
                         max="60" 
                         step="5"
                         value={recyclingUsage} 
-                        onChange={(e) => setRecyclingUsage(parseInt(e.target.value) || 20)}
+                        onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setRecyclingUsage(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
                       <div className="flex justify-between text-xs text-slate-400 dark:text-slate-500">

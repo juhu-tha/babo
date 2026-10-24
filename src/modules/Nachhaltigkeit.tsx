@@ -311,7 +311,6 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   // CRREM Simulator States
   const [crremBuildingType, setCrremBuildingType] = useState<'office' | 'residential'>('office');
   const [crremCurrentGwp, setCrremCurrentGwp] = useState<number>(45); // kg CO2e/(m²·a)
-  const [crremCurrentEnergy, setCrremCurrentEnergy] = useState<number>(135); // kWh/(m²·a)
   const [crremRetrofit, setCrremRetrofit] = useState<'none' | 'opex' | 'capex_huelle' | 'capex_deep'>('none');
 
   // Praxis & Suffizienz States

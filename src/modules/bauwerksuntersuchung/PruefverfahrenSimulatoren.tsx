@@ -140,12 +140,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Covermeter
   const coverCalc = useMemo(() => {
+    // c_min,dur nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl); Vorhaltemaß Δc_dev = 15 mm (XC1: 10 mm)
     const minMap = {
-      XC1: { min: 15, dev: 10, req: 25 },
-      XC3: { min: 25, dev: 10, req: 35 },
-      XC4: { min: 30, dev: 10, req: 40 },
-      XD1: { min: 35, dev: 10, req: 45 },
-      XD3: { min: 45, dev: 10, req: 55 }
+      XC1: { min: 10, dev: 10, req: 20 },
+      XC3: { min: 20, dev: 15, req: 35 },
+      XC4: { min: 25, dev: 15, req: 40 },
+      XD1: { min: 40, dev: 15, req: 55 },
+      XD3: { min: 40, dev: 15, req: 55 }
     };
     const req = minMap[exposureClass];
     const diff = measuredCover - req.req;
@@ -154,7 +155,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     return {
       c_min: req.min,
       c_nom: req.req,
-      diff: diff > 0 ? `+${formatDeWert(diff)}` : `${diff}`,
+      diff: diff > 0 ? `+${formatDeWert(diff)}` : formatDeWert(diff),
       isOk
     };
   }, [exposureClass, measuredCover]);
@@ -193,13 +194,14 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     // t = 1 h -> sqrt(t) = 1.0
     // w_kap = (deltaV * 1e-3 kg) / (0.00045 m² * 1) = deltaV * 2.22 kg/(m²*sqrt(h))
     const w = waterLoss60 * 2.222;
-    let evalText = 'Wasserabweisend (Hydrophobiert)';
+    // Einstufung nach DIN 4108-3: w ≤ 0,5 wasserabweisend, w ≤ 2,0 wasserhemmend, darüber wassersaugend
+    let evalText = 'Wasserabweisend (w ≤ 0,5 kg/(m²·√h), DIN 4108-3)';
     let badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-    if (w > 0.5) {
-      evalText = 'Stark saugender Untergrund (Hohes Schadensrisiko)';
+    if (w > 2.0) {
+      evalText = 'Wassersaugend (w > 2,0 kg/(m²·√h)) – kein Schlagregenschutz';
       badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
-    } else if (w >= 0.1) {
-      evalText = 'Wasserhemmend (Normaler Außenputz)';
+    } else if (w > 0.5) {
+      evalText = 'Wasserhemmend (0,5 < w ≤ 2,0 kg/(m²·√h), DIN 4108-3)';
       badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
     }
 
@@ -701,13 +703,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Eingesaugtes Wasservolumen nach 60 min:</span>
-                <span className="font-bold text-shiraz font-mono">{formatDeZahl(waterLoss60, 1)} ml</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(waterLoss60, 2)} ml</span>
               </div>
               <input
                 type="range"
-                min="0.1"
+                min="0.05"
                 max="5.0"
-                step="0.1"
+                step="0.05"
                 value={waterLoss60}
                 onChange={(e) => setWaterLoss60(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"

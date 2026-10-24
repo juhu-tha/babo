@@ -221,6 +221,10 @@ export default function LCA() {
     const gwpA4 = weightInTonnes * calcDistance * transportFactor;
     
     const totalGwp = gwpA1A3 + gwpA4;
+    // Anteile über Beträge, damit ein negativer A1–A3-Wert (biogener Kohlenstoff) keine negativen oder > 100 % Anteile erzeugt
+    const betragSumme = Math.abs(gwpA1A3) + Math.abs(gwpA4);
+    const anteilA1A3 = betragSumme > 0 ? (Math.abs(gwpA1A3) / betragSumme) * 100 : 0;
+    const anteilA4 = betragSumme > 0 ? (Math.abs(gwpA4) / betragSumme) * 100 : 0;
     const penrtTotal = selectedMat.penrt * calcQuantity;
     
     return {
@@ -229,6 +233,8 @@ export default function LCA() {
       weightInTonnes,
       gwpA1A3,
       gwpA4,
+      anteilA1A3,
+      anteilA4,
       totalGwp,
       penrtTotal,
       isWood: selectedMat.category === 'Holz' || selectedMat.id.includes('holz')
@@ -1214,26 +1220,26 @@ export default function LCA() {
                           {/* A1-A3 Bar (min clamped) */}
                           <div 
                             className="bg-slate-400 text-[9px] text-white font-mono font-bold flex items-center justify-center transition-all duration-300 hover:opacity-90 cursor-pointer"
-                            style={{ width: `${Math.max(10, (calcResults.gwpA1A3 / calcResults.totalGwp) * 100)}%` }}
+                            style={{ width: `${Math.max(10, calcResults.anteilA1A3)}%` }}
                             title={`A1-A3: ${formatDeZahl(calcResults.gwpA1A3, 1)} kg`}
                           >
-                            {((calcResults.gwpA1A3 / calcResults.totalGwp) * 100) > 15 ? 'A1-A3' : ''}
+                            {calcResults.anteilA1A3 > 15 ? 'A1-A3' : ''}
                           </div>
                           {/* A4 Bar (transport) */}
                           <div 
                             className="bg-amber-500 text-[9px] text-white font-mono font-bold flex items-center justify-center transition-all duration-300 hover:opacity-90 cursor-pointer"
-                            style={{ width: `${Math.max(10, (calcResults.gwpA4 / calcResults.totalGwp) * 100)}%` }}
+                            style={{ width: `${Math.max(10, calcResults.anteilA4)}%` }}
                             title={`A4: ${formatDeZahl(calcResults.gwpA4, 1)} kg`}
                           >
-                            {((calcResults.gwpA4 / calcResults.totalGwp) * 100) > 15 ? 'A4' : ''}
+                            {calcResults.anteilA4 > 15 ? 'A4' : ''}
                           </div>
                         </div>
                         <div className="flex gap-4 justify-between text-[9px] text-slate-400 font-mono">
                           <span className="flex gap-1 items-center">
-                            <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> Herstellung: {formatDeWert(Math.round((calcResults.gwpA1A3 / calcResults.totalGwp) * 100))}%
+                            <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> Herstellung: {formatDeWert(Math.round(calcResults.anteilA1A3))}%
                           </span>
                           <span className="flex gap-1 items-center">
-                            <span className="w-2 h-2 rounded bg-amber-500 inline-block" /> Transport: {formatDeWert(Math.round((calcResults.gwpA4 / calcResults.totalGwp) * 100))}%
+                            <span className="w-2 h-2 rounded bg-amber-500 inline-block" /> Transport: {formatDeWert(Math.round(calcResults.anteilA4))}%
                           </span>
                         </div>
                       </div>
@@ -1258,7 +1264,7 @@ export default function LCA() {
                       <div>
                         {calcResults.gwpA4 > (calcResults.gwpA1A3 * 0.3) ? (
                           <p className="leading-relaxed">
-                            Achtung! Die Transport-Emissionen (Modul A4) betragen über 30 % der Herstellungsfracht. Bei großen Entfernungen ({formatDeWert(calcDistance)} km) ist ein Umstieg von LKW auf die <strong>Schienen-Bahnfracht</strong> angeraten, um die Transportfracht um ca. 75 % zu minimieren, oder lerne, Baustoffwerke im Regionalradius zu bemühen.
+                            Achtung! Die Transport-Emissionen (Modul A4) betragen über 30 % der Herstellungsfracht. Bei großen Entfernungen ({formatDeWert(calcDistance)} km) ist ein Umstieg von LKW auf die <strong>Schienen-Bahnfracht</strong> angeraten, um die Transportfracht um ca. 75 % zu minimieren, oder beziehen Sie die Baustoffe aus Werken im regionalen Umkreis.
                           </p>
                         ) : (
                           <p className="leading-relaxed">

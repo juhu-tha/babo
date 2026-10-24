@@ -38,7 +38,7 @@ export default function HydratationRissberechnung() {
 
     // 2. Resulting restraint stress with Relaxation effect included
     // sigma_z = Ecm * eps_tot * R * k_relax
-    const restraintStress = Ecm * (totalFreeStrain * 1000) * restraint * relaxation; // MPa (since Ecm is in MPa and strain is scaled)
+    const restraintStress = Ecm * totalFreeStrain * restraint * relaxation; // MPa (Ecm in MPa, Dehnung dimensionslos)
 
     // 3. Effective early-age concrete tensile strength (meist 0.70 * fctm für das erste Hydratationsmaximum)
     const fctEff = 0.70 * fctm;
@@ -348,7 +348,7 @@ export default function HydratationRissberechnung() {
                   <>
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={18} />
                     <span className="text-xs font-semibold leading-tight text-emerald-900">
-                      Zwangspannung liegt unterhalb der Dehngrenze. Makroskopisches Reißen unwahrscheinlich.
+                      Zwangspannung liegt unterhalb der wirksamen Zugfestigkeit f_ct,eff. Makroskopisches Reißen unwahrscheinlich.
                     </span>
                   </>
                 )}

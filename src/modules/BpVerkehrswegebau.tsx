@@ -1091,11 +1091,13 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     const v_sicker_m3 = v_sicker_liters / 1000;
 
                     const f_S = 1.1; // Sicherheitsbeiwert (DWA-A 138)
+                    // Bruttovolumen der Rigole (Füllkörper bzw. Kies inkl. Feststoff): V_R = f_S · (V_zu − V_s) / s_R
                     const v_speicher_m3 = Math.max(0.1, f_S * (v_zu_m3 - v_sicker_m3) / tiefbauFss);
+                    const v_nutz_m3 = v_speicher_m3 * tiefbauFss; // speicherwirksames Porenvolumen
                     const h_rig = 0.6;
                     const b_rig = 1.2;
                     const l_rig = v_speicher_m3 / (h_rig * b_rig);
-                    const num_boxes = Math.ceil(v_speicher_m3 / 0.24);
+                    const num_boxes = Math.ceil(v_nutz_m3 / 0.24);
 
                     return (
                       <div className="md:col-span-7 space-y-4">
@@ -1125,7 +1127,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 relative overflow-hidden">
                           <div className="flex justify-between items-start">
                             <div>
-                              <span className="text-[10px] uppercase font-mono font-bold text-shiraz">Erforderliches Rigolen-Nutzvolumen (V_rig)</span>
+                              <span className="text-[10px] uppercase font-mono font-bold text-shiraz">Erforderliches Rigolen-Bruttovolumen (V_rig)</span>
                               <div className="text-3xl font-extrabold text-slate-900 font-mono mt-1">{formatDeZahl(v_speicher_m3, 2)} m³</div>
                             </div>
                             <div className="text-right text-[10px] text-slate-800 font-mono">
@@ -1144,7 +1146,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                                 </p>
                               ) : (
                                 <p className="text-[11px] mt-0.5 text-slate-900 font-medium">
-                                  Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0,3): Gesamter Aushubgraben benötigt ein Volumen von ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl((v_speicher_m3 / 0.3), 1)} m³</span>.
+                                  Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0,3): Der Kieskörper benötigt ein Bruttovolumen von ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl(v_speicher_m3, 1)} m³</span>, davon speicherwirksam (Porenraum) ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl(v_nutz_m3, 1)} m³</span>.
                                 </p>
                               )}
                             </div>

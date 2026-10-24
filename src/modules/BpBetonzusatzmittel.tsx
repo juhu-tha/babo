@@ -620,7 +620,7 @@ export default function BpBetonzusatzmittel() {
                     Gleichmäßigkeitsprüfung (Chargenkontrolle)
                   </h5>
                   <p className="leading-relaxed text-[11px] text-indigo-900">
-                    Jede hergestellte Charge eines Betonzusatzmittels unterliegt einer ununterbrochenen werkseigenen Produktionskontrolle (WPK). Gemessen werden im Labor der **Infrarotspektralbereich (IR-Fingerabdruck)**, der **Trockenrückstand**, der **pH-Wert** sowie die **Dichte** mit dem hydrostatischen Messverfahren.
+                    Jede hergestellte Charge eines Betonzusatzmittels unterliegt einer ununterbrochenen werkseigenen Produktionskontrolle (WPK). Gemessen werden im Labor der <strong>Infrarotspektralbereich (IR-Fingerabdruck)</strong>, der <strong>Trockenrückstand</strong>, der <strong>pH-Wert</strong> sowie die <strong>Dichte</strong> mit dem hydrostatischen Messverfahren.
                   </p>
                 </div>
               </div>
@@ -739,7 +739,7 @@ export default function BpBetonzusatzmittel() {
             <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/10 text-sm leading-relaxed text-text-main/80">
               <h3 className="font-extrabold text-shiraz text-base mb-1.5">E-Schein Prüfungsrelevanz: Die Wasser- &amp; Mengenschranken</h3>
               <p className="mb-2">
-                Bei der Bemessung hochpräziser Betonschlämmen greifen strikte normative Schranken aus <strong>DIN EN 206 / DIN 1045-2</strong> sowie der **Zusatzmittelrichtlinie**. Verwenden Sie den nachfolgenden Simulator, um die Grenzbereiche zu prüfen. Er prüft Dosiergrenzen und berechnet das anrechenbare Wasser von verflüssigendem Additivwasser auf den korrigierten w/z-Wert.
+                Bei der Bemessung hochpräziser Betonschlämmen greifen strikte normative Schranken aus <strong>DIN EN 206 / DIN 1045-2</strong> sowie der <strong>Zusatzmittelrichtlinie</strong>. Verwenden Sie den nachfolgenden Simulator, um die Grenzbereiche zu prüfen. Er prüft Dosiergrenzen und berechnet das anrechenbare Wasser von verflüssigendem Additivwasser auf den korrigierten w/z-Wert.
               </p>
               <div className="flex flex-wrap gap-4 mt-3 text-xs bg-white p-4 rounded-lg border border-shiraz/10 text-slate-800">
                 <div className="flex items-center gap-1">
@@ -928,7 +928,7 @@ export default function BpBetonzusatzmittel() {
                         <AlertTriangle className="text-yellow-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Achtung: Sehr geringe Rezeptdosierung ({formatDeWert(dosagePercent)} M.-%)</span>
-                          Unter **0,2 M.-%** Zementgewicht ist eine gleichmäßige Verteilung des Zusatzmittels im Standard-Mischprozess gefährdet. Das Zusatzmittel sollte zwingend in einem Teil des Zugabewassers vorverdünnt eingedüst werden.
+                          Unter <strong>0,2 M.-%</strong> Zementgewicht ist eine gleichmäßige Verteilung des Zusatzmittels im Standard-Mischprozess gefährdet. Das Zusatzmittel sollte zwingend in einem Teil des Zugabewassers vorverdünnt eingedüst werden.
                         </div>
                       </div>
                     ) : (
@@ -944,7 +944,7 @@ export default function BpBetonzusatzmittel() {
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Fehler: Höchstdosierung nach DIN EN 206 verletzt!</span>
-                          Die Dosierung von **{formatDeWert(dosagePercent)} M.-%** ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
+                          Die Dosierung von <strong>{formatDeWert(dosagePercent)} M.-%</strong> ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich <strong>nicht über 5,0 M.-%</strong> bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
                         </div>
                       </div>
                     ) : (
@@ -960,7 +960,7 @@ export default function BpBetonzusatzmittel() {
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Fehler: Unzulässige Korrosionsgefährdung (Spannbeton)</span>
-                          Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln **≤ 0,10 M.-%** betragen. Der eingegebene Wert von **{formatDeWert(admixtureChlorideContent)} M.-%** birgt akute Gefahren von katalytischem Lochfraß unter Zugspannung.
+                          Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln <strong>≤ 0,10 M.-%</strong> betragen. Der eingegebene Wert von <strong>{formatDeWert(admixtureChlorideContent)} M.-%</strong> birgt akute Gefahren von katalytischem Lochfraß unter Zugspannung.
                         </div>
                       </div>
                     ) : (

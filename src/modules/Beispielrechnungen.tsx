@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
+import { MU_LIM_STAHL } from '@/src/calc/biegung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
   Calculator, 
@@ -58,7 +59,6 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [targetExposure, setTargetExposure] = useState<'XC4' | 'XD3'>('XC4');
   const [consClass, setConsClass] = useState<'F2' | 'F3' | 'F4'>('F3');
   const [maxGrainSize, setMaxGrainSize] = useState<16 | 32>(32);
-  const [chosenCementStrength, setChosenCementStrength] = useState<number>(42.5);
 
   // Specifications based on DIN 1045-2 & DIN EN 206
   // DIN 1045-2, Tab. F.2.1: XC4 max. w/z = 0,60, z_min = 280 kg/m³; XD3 max. w/z = 0,45, z_min = 320 kg/m³
@@ -183,7 +183,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // Bending dimensionless coefficient
   // mEd is in kNm, f_cd in MPa (= MN/m²). f_cd * 1000 converts MPa to kN/m² so that both numerator and denominator are in kNm:
   const mu_Ed = mEd / (b_m * Math.pow(d_m, 2) * f_cd * 1000);
-  const mu_lim = 0.371; // limit for failure in tension without compression reinforcement (for C50/60 is smaller, but here for C20-C30)
+  const mu_lim = MU_LIM_STAHL; // µ_Eds,lim ≈ 0,296 für ξ_lim = 0,45 (DIN EN 1992-1-1/NA, 5.4.1), wie src/calc/biegung.ts
 
   // Mechanical reinforcement ratio omega
   const omega = mu_Ed < mu_lim ? 1 - Math.sqrt(1 - 2 * mu_Ed) : 0;
@@ -1399,7 +1399,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   {mu_Ed < mu_lim ? (
                     <>
                       <p className="mt-1">
-                        Da <InlineMath math={`\\mu_{Ed} = ${formatDeTeX(mu_Ed, 4)} \\le \\mu_{lim} = 0{,}371`} /> ist, liegt ein reiner Zugbruch vor. Keine Druckbewehrung erforderlich.
+                        Da <InlineMath math={`\\mu_{Ed} = ${formatDeTeX(mu_Ed, 4)} \\le \\mu_{lim} = ${formatDeTeX(mu_lim, 3)}`} /> ist (Grenze für <InlineMath math="\xi_{lim} = 0{,}45" /> nach NA DE), ist keine Druckbewehrung erforderlich.
                         Der mechanische Bewehrungsbeiwert <InlineMath math="\omega" /> und der Hebelarmbeiwert <InlineMath math="\zeta" /> ergeben sich hier vereinfacht aus einem rechteckigen Spannungsblock über die gesamte Druckzonenhöhe (Näherung; genauer: Parabel-Rechteck-Diagramm bzw. Spannungsblock mit λ = 0,8 nach DIN EN 1992-1-1, 3.1.7) zu:
                       </p>
                       <BlockMath math={`\\zeta = \\frac{1 + \\sqrt{1 - 2 \\cdot \\mu_{Ed}}}{2} = \\frac{1 + \\sqrt{1 - 2 \\cdot \\color{#A3113E}{${formatDeTeX(mu_Ed, 4)}}}}{2} = \\color{#A3113E}{${formatDeTeX(zeta, 4)}}`} />
@@ -1407,8 +1407,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     </>
                   ) : (
                     <p className="text-red-600 font-bold">
-                      Achtung! μ_Ed (<span className="text-shiraz">{formatDeZahl(mu_Ed, 4)}</span>) &gt; μ_lim ({formatDeWert(mu_lim)}). Der Querschnitt ist überbeansprucht! 
-                      Es ist Druckbewehrung erforderlich oder die Balkenabmessungen (b, h) müssen vergrößert werden, um ein sprödes Betonversagen zu verhindern.
+                      Achtung! μ_Ed (<span className="text-shiraz">{formatDeZahl(mu_Ed, 4)}</span>) &gt; μ_lim ({formatDeZahl(mu_lim, 3)}, ξ_lim = 0,45 nach NA DE). Druckbewehrung erforderlich!
+                      Ohne Druckbewehrung müssen die Balkenabmessungen (b, h) vergrößert werden, damit die Bewehrung fließt und ein sprödes Betonversagen ausgeschlossen ist.
                     </p>
                   )}
                 </div>
@@ -2548,6 +2548,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                         <BlockMath math={`R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0 = 32{,}4 \\cdot \\lg(${formatDeTeX(schall_m_total, 1)}) - 26{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_Rw, 1)}}} \\, \\text{dB}`} />
                       </div>
+                      <p className="mt-1 text-xxs text-slate-500">
+                        Hinweis zur Gültigkeit: Die Massekurve gilt ab ca. <InlineMath math="m' \approx 65 \, \text{kg/m}^2" />; für leichtere Bauteile ist das Ergebnis nicht belastbar.
+                      </p>
                     </div>
 
                     {/* Step 3: Bauschalldämmmaß */}
