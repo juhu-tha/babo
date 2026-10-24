@@ -5,6 +5,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
+import { bemesseDurchstanzen } from '@/src/calc/durchstanzen';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 export default function Durchstanzen() {
@@ -18,66 +20,10 @@ export default function Durchstanzen() {
   const [rhoL, setRhoL] = useState(0.01); // Längsbewehrungsgrad
   const [beta, setBeta] = useState(EC2_NA_DE.betaInnen); // 1.10 (Innenstütze nach NA DE)
 
-  const results = useMemo(() => {
-    // 1. Kritischer Rundschnitt u1 (Abstand 2d von der Stütze) und Stützenumfang u0
-    let u1 = 0;
-    let u0 = 0;
-    
-    if (colType === 'rund') {
-      u0 = Math.PI * c;
-      u1 = Math.PI * (c + 4 * d);
-    } else {
-      u0 = 2 * (cx + cy);
-      u1 = 2 * (cx + cy) + 4 * Math.PI * d;
-    }
-
-    // 2. Einwirkende Querkraftspannung im kritischen Rundschnitt u1
-    const vEd_stress = (beta * vEd * 1000) / (u1 * d); // MPa (N/mm²)
-
-    // 3. Durchstanzwiderstand ohne Durchstanzbewehrung (v_Rd,c) nach DIN EN 1992-1-1/NA DE
-    const k = Math.min(1 + Math.sqrt(200 / d), 2.0);
-    const rhoL_eff = Math.min(rhoL, 0.02);
-    
-    // CRd,c nach NA DE aus zentraler Registry
-    const u0_d = u0 / d;
-    let CRdc = EC2_NA_DE.CRdc_Durchstanz;
-    if (u0_d < 4) {
-      CRdc = EC2_NA_DE.CRdc_Durchstanz * (0.1 * u0_d + 0.6);
-    }
-
-    const vMin = (0.0525 / EC2_NA_DE.gammaC) * Math.pow(k, 1.5) * Math.sqrt(fck);
-    let vRdc = CRdc * k * Math.pow(100 * rhoL_eff * fck, 1 / 3);
-    if (vRdc < vMin) {
-      vRdc = vMin;
-    }
-
-    // 4. Maximaler Durchstanzwiderstand nach NA DE: v_Rd,max = 1.4 * v_Rd,c (im Rundschnitt u1)
-    const vRdMax = EC2_NA_DE.vRdMaxFaktor_u1 * vRdc;
-
-    const needsReinforcement = vEd_stress > vRdc;
-    const isOverloaded = vEd_stress > vRdMax;
-
-    // 5. Erforderliche Durchstanzbewehrung abschätzen (pro Rundschnitt der Form u1)
-    let asw_req_ring = 0;
-    if (needsReinforcement && !isOverloaded) {
-      const v_s = vEd_stress - 0.75 * vRdc;
-      const fywd_ef = Math.min(250 + 0.25 * d, 435); 
-      asw_req_ring = (v_s * u1 * d) / (2.0 * fywd_ef);
-    }
-
-    return {
-      u1,
-      u0,
-      u0_d,
-      CRdc,
-      vEd_stress,
-      vRdc,
-      vRdMax,
-      needsReinforcement,
-      isOverloaded,
-      asw_req_ring
-    };
-  }, [colType, vEd, d, c, cx, cy, fck, rhoL, beta]);
+  const results = useMemo(
+    () => bemesseDurchstanzen({ form: colType, vEd, d, c, cx, cy, fck, rhoL, beta }),
+    [colType, vEd, d, c, cx, cy, fck, rhoL, beta]
+  );
 
   // Dimensions for SVG Diagram
   const svgSize = 250;
@@ -229,6 +175,7 @@ export default function Durchstanzen() {
           </div>
 
           <div className="space-y-6">
+            <EingabeHinweise hinweise={results.hinweise} />
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main">Nachweisführung (DIN EN 1992-1-1/NA)</h3>
               

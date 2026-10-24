@@ -5,6 +5,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
+import { bemesseVerankerung } from '@/src/calc/verankerung';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Layers } from 'lucide-react';
 
 export default function Verankerungslaenge() {
@@ -25,93 +27,10 @@ export default function Verankerungslaenge() {
   const [asErf, setAsErf] = useState(10); // cm²
   const [asVorh, setAsVorh] = useState(12); // cm²
 
-  const results = useMemo(() => {
-    // 1. Bemessungswert der Verbundspannung (f_bd)
-    const gammaC = EC2_NA_DE.gammaC;
-    // Anmerkung: Nach NA(DE) wird oft alpha_ct = 0.85 für f_ctd verwendet, 
-    // aber bei der Verbundspannung (f_bd) explizit 1.0 (bzw. ist direkt ohne alpha_ct definiert). 
-    // Wir setzen alphaCt = 1.0 für f_bd gem. Standard-EC2/NA.
-    const alphaCt = 1.0; 
-    
-    // Zugfestigkeit
-    let fctm;
-    if (fck <= 50) {
-      fctm = 0.3 * Math.pow(fck, 2/3);
-    } else {
-      fctm = 2.12 * Math.log(1 + (fck + 8) / 10);
-    }
-    const fctk005 = 0.7 * fctm; // 5%-Quantil
-    const fctd = (alphaCt * fctk005) / gammaC;
-    
-    const eta1 = verbundBedingung === 'gut' ? 1.0 : 0.7;
-    const eta2 = phi <= 32 ? 1.0 : (132 - phi) / 100;
-    
-    const fbd = 2.25 * eta1 * eta2 * fctd; // MPa (N/mm²)
-
-    // 2. Grundwert der Verankerungslänge (l_b,rqd)
-    const gammaS = EC2_NA_DE.gammaS;
-    const fyd = fyk / gammaS;
-    const sigmaSd = fyd; // Annahme: volle Ausnutzung für Grundwert
-    
-    const lbRqd = (phi / 4) * (sigmaSd / fbd); // mm
-
-    // 3. Bemessungswert der Verankerungslänge (l_bd) / Übergreifungslänge (l_0)
-    // alpha1 = 1.0 für gerade Stäbe, 0.7 für Haken/Winkel bei Zug
-    let currentAlpha1 = 1.0;
-    if (beanspruchung === 'zug' && verankerungsArt !== 'gerade') {
-      currentAlpha1 = 0.7;
-    }
-
-    // Für Druckbeanspruchung sind alle alphas = 1.0
-    const a1 = beanspruchung === 'zug' ? currentAlpha1 : 1.0;
-    const a2 = beanspruchung === 'zug' ? alpha2 : 1.0;
-    const a3 = beanspruchung === 'zug' ? alpha3 : 1.0;
-    const a5 = beanspruchung === 'zug' ? alpha5 : 1.0;
-    const a6 = berechnungsArt === 'uebergreifung' ? alpha6 : 1.0;
-
-    // EC2 Gl. (8.5): α2 · α3 · α5 ≥ 0,7 (α1 geht unabhängig davon ein); NA-Regeln zu α2/α3: manuell prüfen
-    const a235 = Math.max(0.7, a2 * a3 * a5);
-    const alphaProduct = a1 * a235;
-    
-    // Für Übergreifung gilt: l0 = alpha1*alpha2*alpha3*alpha5*alpha6 * lbRqd
-    const totalAlpha = alphaProduct * a6;
-
-    // Verhältnis As,erf / As,vorh
-    const asRatio = Math.max(0.0, Math.min(asErf / asVorh, 1.0));
-
-    let lbd = totalAlpha * lbRqd * asRatio;
-
-    // 4. Mindestlänge (l_b,min bzw. l_0,min)
-    let lbMin = 0;
-    if (berechnungsArt === 'verankerung') {
-      if (beanspruchung === 'zug') {
-        lbMin = Math.max(0.3 * lbRqd, 10 * phi, 100);
-      } else {
-        lbMin = Math.max(0.6 * lbRqd, 10 * phi, 100);
-      }
-    } else {
-      // Übergreifung
-      lbMin = Math.max(0.3 * a6 * lbRqd, 15 * phi, 200);
-    }
-
-    if (lbd < lbMin) {
-      lbd = lbMin;
-    }
-
-    return {
-      fctk005,
-      fctd,
-      fbd,
-      lbRqd,
-      alphaProduct,
-      totalAlpha,
-      a6,
-      asRatio,
-      lbMin,
-      lbd,
-      currentAlpha1: a1
-    };
-  }, [fck, fyk, phi, verbundBedingung, beanspruchung, berechnungsArt, verankerungsArt, alpha2, alpha3, alpha5, alpha6, asErf, asVorh]);
+  const results = useMemo(
+    () => bemesseVerankerung({ fck, fyk, phi, verbund: verbundBedingung, beanspruchung, art: berechnungsArt, form: verankerungsArt, alpha2, alpha3, alpha5, alpha6, asErf, asVorh }),
+    [fck, fyk, phi, verbundBedingung, beanspruchung, berechnungsArt, verankerungsArt, alpha2, alpha3, alpha5, alpha6, asErf, asVorh]
+  );
 
   return (
     <div className="space-y-8">
@@ -289,6 +208,7 @@ export default function Verankerungslaenge() {
           </div>
 
           <div className="space-y-6">
+            <EingabeHinweise hinweise={results.hinweise} />
             <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main">Ergebnisse</h3>
               
