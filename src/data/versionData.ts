@@ -8,6 +8,20 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v4.0.0',
+    date: '24.10.2026',
+    title: 'BaustoffBoard 4.0: geprüfte Rechenkerne, Barrierefreiheit, Rechtssicherheit und neue Qualitätssicherung',
+    badge: 'major',
+    changes: [
+      'Neue Hauptversion nach Umsetzung der Phasen 0–4 des Umsetzungsplans „sehr gut“: automatische Qualitätssicherung bei jeder Änderung, zentrale Modul-Registry, barrierefreie Oberfläche (0 Befunde in der WCAG-Prüfung), überarbeitete Rechtstexte und Erklärung zur Barrierefreiheit.',
+      'Geprüfte Rechenkerne für alle Bemessungsrechner im Stahlbeton (Biegung, Querkraft, Stütze, Durchstanzen, Verankerung, Rissbreite), Spannbeton, Holzbau, Wärmeschutz, Mischungsberechnung, Bodenmechanik und Baustatik – jeweils mit Handrechnungen, unabhängigen Vergleichsmodellen, Randfällen und Zufallstests.',
+      'Bodenmechanik: Klassifikation des Zwischenbereichs UL/TL nach DIN 18196, sichtbare Fehlermeldung bei w_P ≥ w_L und σ₁ < σ₃, Konsolidierungskurve ohne Endlosschleifen-Risiko.',
+      'Spannbeton: Plausibilitätsprüfung der Eingaben im Querschnitts-Rechner (Exzentrizität, Einwirkungskombinationen, Reibungswerte) und Hinweis zur vereinfachten Dekompression.',
+      'Baustatik: Stützmoment des Zweifeldträgers (Clapeyron) durch eine unabhängige Verträglichkeitsrechnung bestätigt; Dreigelenkrahmen mit Gelenkbedingung geprüft.',
+      'Versionsangabe systemweit 4.0.0 (Startseite, Fußzeile, PDF-Export, Versionsverlauf).'
+    ]
+  },
+  {
     version: 'v3.26.1',
     date: '24.10.2026',
     title: 'Geprüfte Rechenkerne Wärmeschutz und Mischungsberechnung',

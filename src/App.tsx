@@ -1374,7 +1374,7 @@ function AppContent() {
 
           {/* Global Footer */}
           <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
-            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg</span>
+            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {CURRENT_VERSION.version}</span>
           </footer>
         </div>
       </main>
