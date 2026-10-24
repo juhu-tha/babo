@@ -17,6 +17,8 @@ interface FormulaDerivationBoxProps {
   ergebnisHinweis?: string;
   normQuelle?: string;
   defaultExpanded?: boolean;
+  /** Rechenweg mit den aktuellen Eingaben des Rechners (AP 3.7): zeigt den Hinweis „Live“ */
+  live?: boolean;
 }
 
 export function FormulaDerivationBox({
@@ -25,7 +27,8 @@ export function FormulaDerivationBox({
   schritte,
   ergebnisHinweis,
   normQuelle,
-  defaultExpanded = false
+  defaultExpanded = false,
+  live = false
 }: FormulaDerivationBoxProps) {
   const { formulaDerivationMode } = useTabContext();
   const [localExpanded, setLocalExpanded] = useState<boolean | null>(null);
@@ -52,7 +55,7 @@ export function FormulaDerivationBox({
                 {title}
               </span>
               <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-shiraz text-white">
-                Herleitung
+                {live ? 'Live' : 'Herleitung'}
               </span>
             </div>
             <div className="text-[11px] text-text-main/70 font-mono mt-0.5 overflow-x-auto">
@@ -75,7 +78,9 @@ export function FormulaDerivationBox({
       {isExpanded && (
         <div className="p-4 sm:p-5 space-y-4 border-t border-home-grau/20 animate-in fade-in duration-200">
           <div className="text-xs text-text-main/80 leading-relaxed bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-            <strong>Didaktischer Nachweis:</strong> Nachfolgend wird der vollständige analytische Rechenweg schrittweise dargelegt, um das Zustandekommen des Rechenergebnisses transparent nachvollziehen zu können.
+            {live
+              ? <><strong>Ihr Rechenweg:</strong> Die Schritte verwenden die aktuellen Eingaben des Rechners. Ändern Sie einen Wert, rechnet der Weg mit.</>
+              : <><strong>Didaktischer Nachweis:</strong> Nachfolgend wird der vollständige analytische Rechenweg schrittweise dargelegt, um das Zustandekommen des Rechenergebnisses transparent nachvollziehen zu können.</>}
           </div>
 
           <div className="space-y-3">

@@ -1870,6 +1870,42 @@ export default function Mischungsberechnung() {
               </div>
             </div>
 
+            {/* Live-Rechenweg (AP 3.7): Stoffraumrechnung mit den aktuellen Eingaben */}
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Stoffraumrechnung für 1 m³ Beton"
+              zielGleichung="V_G = 1000 - \left(\frac{z}{\rho_z} + \frac{w}{\rho_w} + \sum \frac{m_i}{\rho_i} + 10 \cdot p\right)"
+              schritte={[
+                {
+                  titel: 'Zementvolumen',
+                  erklaerung: `${zementArt} mit der Reindichte ρ_z = ${formatDeZahl(zementData[zementArt].rho, 2)} kg/dm³:`,
+                  formel: `V_z = \\frac{${formatDeTeX(zement, 0)}}{${formatDeTeX(zementData[zementArt].rho, 2)}} = ${formatDeTeX(results.volZement, 1)}\\,\\text{dm}^3`
+                },
+                {
+                  titel: 'Wasser, Zusatzstoffe, Zusatzmittel, Fasern und Luft',
+                  erklaerung: `Wasser mit ρ_w = 1,0 kg/dm³, Luftgehalt ${formatDeZahl(luft, 1)} Vol.-% entspricht ${formatDeZahl(results.volLuft, 0)} dm³:`,
+                  formel: `V_w + V_{ZS} + V_{ZM} + V_F + V_L = ${formatDeTeX(results.wasserTrocken, 1)} + ${formatDeTeX(results.volFa + results.volSf + results.volKsm + results.volBiochar, 1)} + ${formatDeTeX(results.volZM, 1)} + ${formatDeTeX(results.volFasernGesamt, 1)} + ${formatDeTeX(results.volLuft, 1)}\\,\\text{dm}^3`
+                },
+                {
+                  titel: 'Stoffraum der Gesteinskörnung',
+                  erklaerung: 'Der Rest bis 1000 dm³ steht für die Gesteinskörnung zur Verfügung:',
+                  formel: `V_G = 1000 - ${formatDeTeX(1000 - results.volGestein, 1)} = ${formatDeTeX(results.volGestein, 1)}\\,\\text{dm}^3`
+                },
+                {
+                  titel: 'Masse der Gesteinskörnung (trocken)',
+                  erklaerung: `Mit der Kornrohdichte ρ_G = ${formatDeZahl(rhoGestein, 2)} kg/dm³:`,
+                  formel: `m_G = ${formatDeTeX(results.volGestein, 1)} \\cdot ${formatDeTeX(rhoGestein, 2)} = ${formatDeTeX(results.masseGesteinTrocken, 0)}\\,\\text{kg}`
+                },
+                {
+                  titel: 'Frischbetonrohdichte',
+                  erklaerung: 'Summe aller Ausgangsstoffmassen je m³:',
+                  formel: `\\rho_{fb} = ${formatDeTeX(zement + results.wasserTrocken + fa + sf + hues + biochar + zusatzmittel + stahlfaser + ppFaser, 0)} + ${formatDeTeX(results.masseGesteinTrocken, 0)} = ${formatDeTeX(results.frischbetonRohdichte * 1000, 0)}\\,\\text{kg/m}^3`
+                }
+              ]}
+              ergebnisHinweis="Die Aufteilung auf die Kornfraktionen und die Korrektur der Eigenfeuchte folgen in der Dosiertabelle."
+              normQuelle="DIN EN 206:2021-06; DIN 1045-2:2023-08"
+            />
+
             {/* CO2 Box */}
             <div className="bg-green-50 border border-green-200 p-6 rounded-xl shadow-sm">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-green-800"><FormulaText text="CO_2-Fußabdruck (GWP)" /></h3>

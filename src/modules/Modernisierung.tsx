@@ -18,7 +18,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
@@ -153,7 +153,8 @@ export default function Modernisierung() {
       totalInvestEuro,
       amortizationYears,
       annualCo2KgSaved,
-      dReqMm, fx, mehrkosten
+      dReqMm, fx, mehrkosten,
+      qNutz: sav.qNutz, materialCost, baseLaborCost
     };
   }, [originalU, thicknessMm, componentArea, activeMaterial, activeComponent, energyPriceKwh, hgtVal, etaSys, sowiesoAktiv]);
 
@@ -756,8 +757,8 @@ export default function Modernisierung() {
                     <div>
                       <h4 className="font-bold text-xs uppercase tracking-wider">
                         {simResults.isCompliant 
-                          ? `GMODG-KONFORM (§ 36 GModG eingehalten: U ≤ ${activeComponent.limitU} W/m²K)` 
-                          : `GMODG-GRENZWERT ÜBERSCHRITTEN (Zulässig: U ≤ ${activeComponent.limitU} W/m²K)`}
+                          ? `GMODG-KONFORM (§ 36 GModG eingehalten: U ≤ ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K))` 
+                          : `GMODG-GRENZWERT ÜBERSCHRITTEN (Zulässig: U ≤ ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K))`}
                       </h4>
                       <p className="text-xs mt-1 opacity-90 leading-normal">
                         {simResults.isCompliant 
@@ -768,6 +769,46 @@ export default function Modernisierung() {
                     </div>
                   </div>
                 </div>
+
+                {/* Live-Rechenweg (AP 3.7) mit den aktuellen Simulator-Eingaben */}
+                <FormulaDerivationBox
+                  live
+                  title="Ihr Rechenweg: Einsparung und Amortisation"
+                  zielGleichung="t_A = \frac{K_{\text{Mehr}}}{\Delta U \cdot A \cdot F_x \cdot G_t \cdot 24/1000 \,/\, \eta \cdot p}"
+                  schritte={[
+                    {
+                      titel: 'U-Wert nach der Dämmung',
+                      erklaerung: `Zusätzlicher Wärmedurchlasswiderstand der ${formatDeZahl(thicknessMm, 0)} mm dicken Dämmschicht (λ = ${formatDeWert(activeMaterial.wlg)} W/(mK)):`,
+                      formel: `U_{neu} = \\frac{1}{\\frac{1}{${formatDeTeX(originalU, 2)}} + \\frac{${formatDeTeXWert(thicknessMm / 1000)}}{${formatDeTeXWert(activeMaterial.wlg)}}} = ${formatDeTeX(simResults.newU, 3)}\\,\\text{W/(m}^2\\text{K)}`
+                    },
+                    {
+                      titel: 'Eingesparte Nutzwärme',
+                      erklaerung: `Mit Temperatur-Korrekturfaktor F_x = ${formatDeZahl(simResults.fx, 1)} und Gradtagzahl G_t = ${formatDeWert(hgtVal)} Kd/a (24 h/d, Umrechnung in kWh):`,
+                      formel: `Q_N = (${formatDeTeX(originalU, 2)} - ${formatDeTeX(simResults.newU, 3)}) \\cdot ${formatDeTeX(componentArea, 0)} \\cdot ${formatDeTeX(simResults.fx, 1)} \\cdot ${formatDeTeX(hgtVal, 0)} \\cdot \\frac{24}{1000} = ${formatDeTeX(simResults.qNutz, 0)}\\,\\text{kWh/a}`
+                    },
+                    {
+                      titel: 'Endenergie und Kosten',
+                      erklaerung: `Geteilt durch den Anlagennutzungsgrad η = ${formatDeZahl(etaSys, 2)}, multipliziert mit dem Energiepreis:`,
+                      formel: `Q_E = \\frac{${formatDeTeX(simResults.qNutz, 0)}}{${formatDeTeX(etaSys, 2)}} = ${formatDeTeX(simResults.annualKwhSaved, 0)}\\,\\text{kWh/a} \\;\\Rightarrow\\; ${formatDeTeX(simResults.annualKwhSaved, 0)} \\cdot ${formatDeTeX(energyPriceKwh, 2)} = ${formatDeTeX(simResults.annualEuroSaved, 0)}\\,\\text{€/a}`
+                    },
+                    {
+                      titel: 'Energiebedingte Mehrkosten',
+                      erklaerung: sowiesoAktiv
+                        ? 'Gerüst, Putz und Montage fallen ohnehin an (Kopplungsprinzip) – nur der Dämmstoff zählt:'
+                        : 'Dämmstoff plus Montage (85 €/m² für Gerüst, Armierung, Putz):',
+                      formel: sowiesoAktiv
+                        ? `K_{\\text{Mehr}} = ${formatDeTeX(simResults.totalInvestEuro, 0)} - ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
+                        : `K_{\\text{Mehr}} = ${formatDeTeX(simResults.materialCost, 0)} + ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
+                    },
+                    {
+                      titel: 'Statische Amortisationszeit',
+                      erklaerung: 'Mehrkosten geteilt durch die jährliche Kosteneinsparung (ohne Preissteigerung und Zinsen):',
+                      formel: `t_A = \\frac{${formatDeTeX(simResults.mehrkosten, 0)}}{${formatDeTeX(simResults.annualEuroSaved, 0)}} = ${formatDeTeX(simResults.amortizationYears, 1)}\\,\\text{a}`
+                    }
+                  ]}
+                  ergebnisHinweis="Statische Betrachtung; eine dynamische Barwertrechnung finden Sie im Modul Lebenszykluskosten."
+                  normQuelle="DIN EN ISO 6946:2018-03; DIN V 4108-6 (F_x); VDI 4710 (Gradtagzahlen)"
+                />
 
               </div>
             </div>

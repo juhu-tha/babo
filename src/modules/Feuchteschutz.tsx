@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
 import React, { useState, useMemo } from 'react';
 import { 
@@ -261,6 +261,18 @@ export default function Feuchteschutz() {
     setLayers(updated);
   };
 
+  // Live-Rechenweg (AP 3.7): Magnus-Koeffizienten wie im Rechenkern (über Eis für θ < 0 °C bzw. p < 610,5 Pa)
+  const tex = (x: number, n: number) => formatDeTeX(x, n);
+  const magnusTeX = (theta: number) => {
+    const [a, b] = theta < 0 ? [21.875, 265.5] : [17.269, 237.3];
+    return `610{,}5 \\cdot \\exp\\left(\\frac{${tex(a, 3)} \\cdot ${tex(theta, 1)}}{${tex(b, 1)} + ${tex(theta, 1)}}\\right)`;
+  };
+  const taupunktTeX = (p: number) => {
+    const [a, b] = p < 610.5 ? [21.875, 265.5] : [17.269, 237.3];
+    const l = Math.log(p / 610.5);
+    return `\\frac{${tex(b, 1)} \\cdot ${tex(l, 4)}}{${tex(a, 3)} - ${tex(l, 4)}}`;
+  };
+
   return (
     <div className="flex flex-col gap-8 pb-12">
       {/* Introduction */}
@@ -414,6 +426,42 @@ export default function Feuchteschutz() {
               </div>
             </div>
           </div>
+
+          {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Innenklima */}
+          <FormulaDerivationBox
+            live
+            title="Ihr Rechenweg: Taupunkt und Oberflächenfeuchte"
+            zielGleichung="\varphi_{si} = \frac{\varphi_i \cdot p_{sat}(\theta_i)}{p_{sat}(\theta_{si})}"
+            schritte={[
+              {
+                titel: 'Sättigungsdampfdruck der Raumluft',
+                erklaerung: `Magnus-Formel nach DIN 4108-3 für θ_i = ${formatDeZahl(Ti, 1)} °C:`,
+                formel: `p_{sat}(\\theta_i) = ${magnusTeX(Ti)} = ${tex(indoorClimate.psat, 1)}\\,\\text{Pa}`
+              },
+              {
+                titel: 'Vorhandener Wasserdampfteildruck',
+                erklaerung: `Relative Feuchte φ_i = ${formatDeZahl(phiI, 0)} % mal Sättigungsdruck:`,
+                formel: `p = ${tex(phiI / 100, 2)} \\cdot ${tex(indoorClimate.psat, 1)} = ${tex(indoorClimate.p_act, 1)}\\,\\text{Pa}`
+              },
+              {
+                titel: 'Taupunkttemperatur',
+                erklaerung: 'Umkehrung der Magnus-Formel: Bei dieser Temperatur ist die Luft gesättigt (φ = 100 %):',
+                formel: `\\theta_s = ${taupunktTeX(indoorClimate.p_act)} = ${tex(indoorClimate.dewPoint, 1)}\\,^{\\circ}\\text{C}`
+              },
+              {
+                titel: 'Schimmelgrenze (80 % r. F.)',
+                erklaerung: 'Gesucht ist die Temperatur, bei der p genau 80 % des Sättigungsdrucks beträgt:',
+                formel: `p_{sat} = \\frac{${tex(indoorClimate.p_act, 1)}}{0{,}8} = ${tex(indoorClimate.p_act / 0.8, 1)}\\,\\text{Pa} \\;\\Rightarrow\\; \\theta_{80} = ${tex(indoorClimate.schimmelPoint, 1)}\\,^{\\circ}\\text{C}`
+              },
+              {
+                titel: 'Relative Feuchte an der Oberfläche',
+                erklaerung: `An der ${formatDeZahl(Tsi, 1)} °C kalten Oberfläche ist der Sättigungsdruck kleiner, die relative Feuchte steigt:`,
+                formel: `\\varphi_{si} = \\frac{${tex(indoorClimate.p_act, 1)}}{${tex(calcPsat(Tsi), 1)}} = ${tex(surfaceAuditStatus.actualSurfaceRH, 0)}\\,\\%`
+              }
+            ]}
+            ergebnisHinweis="Liegt φ_si dauerhaft über 80 %, droht Schimmelpilzwachstum; bei θ_si ≤ θ_s fällt Tauwasser aus."
+            normQuelle="DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium)"
+          />
         </div>
 
         {/* Right Side: Visual Graph & Physics (7 Cols) */}

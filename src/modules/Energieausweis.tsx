@@ -6,7 +6,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 export default function Energieausweis() {
@@ -219,7 +219,12 @@ export default function Energieausweis() {
       q_t_jahr: Math.round(q_t_jahr),
       q_v_jahr: Math.round(q_v_jahr),
       q_gewinne: Math.round(q_gewinne),
-      f_p
+      f_p,
+      // Zwischenwerte für den Live-Rechenweg (ungerundet)
+      h_t, h_v, n_eff, v_netto, f_klima_k,
+      q_t_roh: q_t_jahr, q_v_roh: q_v_jahr, q_solar, q_intern, eta_ausnutzung, q_gewinne_roh: q_gewinne,
+      q_w, q_verlust_netz, w_hilfsstrom, jaz, eta_erzeuger,
+      istWP: simHeizung.startsWith('wp')
     };
   }, [simBuildingType, simArea, simHuelleStandard, simVentilation, simHeizung]);
 
@@ -1023,6 +1028,53 @@ export default function Energieausweis() {
                     )}
                   </div>
                 </div>
+
+                {/* Live-Rechenweg (AP 3.7) mit den aktuellen Simulator-Einstellungen */}
+                <FormulaDerivationBox
+                  live
+                  title={`Ihr Rechenweg: Energiebilanz für ${formatDeZahl(simArea, 0)} m²`}
+                  zielGleichung="Q_E = \frac{Q_h + Q_W + Q_{\text{Verl}}}{\eta \;\text{bzw.}\; \text{JAZ}} + W_{\text{Hilf}}"
+                  schritte={[
+                    {
+                      titel: 'Transmissionswärmeverlust',
+                      erklaerung: `Wärmetransferkoeffizient der Hülle H_T (inkl. Wärmebrückenzuschlag) mal Lehr-Klimafaktor ${formatDeZahl(simResults.f_klima_k, 0)} kKh/a, bezogen auf die Fläche:`,
+                      formel: `Q_T = \\frac{${formatDeTeX(simResults.h_t, 1)}\\,\\text{W/K} \\cdot ${formatDeTeX(simResults.f_klima_k, 0)}\\,\\text{kKh/a}}{${formatDeTeX(simArea, 0)}\\,\\text{m}^2} = ${formatDeTeX(simResults.q_t_roh, 1)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    },
+                    {
+                      titel: 'Lüftungswärmeverlust',
+                      erklaerung: `Mit V = 2,5 m · A_N und der wirksamen Luftwechselrate n = ${formatDeZahl(simResults.n_eff, 2)} 1/h:`,
+                      formel: `H_V = 0{,}34 \\cdot ${formatDeTeX(simResults.n_eff, 2)} \\cdot ${formatDeTeX(simResults.v_netto, 0)} = ${formatDeTeX(simResults.h_v, 1)}\\,\\text{W/K} \\;\\Rightarrow\\; Q_V = ${formatDeTeX(simResults.q_v_roh, 1)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    },
+                    {
+                      titel: 'Nutzbare Wärmegewinne',
+                      erklaerung: 'Solare und interne Gewinne, gewichtet mit dem Ausnutzungsgrad η:',
+                      formel: `\\eta \\cdot (Q_S + Q_I) = ${formatDeTeX(simResults.eta_ausnutzung, 2)} \\cdot (${formatDeTeX(simResults.q_solar, 1)} + ${formatDeTeX(simResults.q_intern, 0)}) = ${formatDeTeX(simResults.q_gewinne_roh, 1)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    },
+                    {
+                      titel: 'Nutzwärmebedarf',
+                      erklaerung: 'Verluste minus Gewinne, auf ganze kWh gerundet (mindestens 10 kWh/(m²a)):',
+                      formel: `Q_h = ${formatDeTeX(simResults.q_t_roh, 1)} + ${formatDeTeX(simResults.q_v_roh, 1)} - ${formatDeTeX(simResults.q_gewinne_roh, 1)} \\approx ${formatDeTeX(simResults.q_h, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    },
+                    {
+                      titel: 'Endenergiebedarf',
+                      erklaerung: simResults.istWP
+                        ? `Wärme für Heizung, Warmwasser und Verteilverluste geteilt durch die Jahresarbeitszahl JAZ = ${formatDeZahl(simResults.jaz, 1)}, zuzüglich Hilfsstrom:`
+                        : `Wärme für Heizung, Warmwasser und Verteilverluste geteilt durch den Erzeugernutzungsgrad η = ${formatDeZahl(simResults.eta_erzeuger, 2)}, zuzüglich Hilfsstrom:`,
+                      formel: `Q_E = \\frac{${formatDeTeX(simResults.q_h, 0)} + ${formatDeTeX(simResults.q_w, 1)} + ${formatDeTeX(simResults.q_verlust_netz, 0)}}{${formatDeTeX(simResults.istWP ? simResults.jaz : simResults.eta_erzeuger, 2)}} + ${formatDeTeX(simResults.w_hilfsstrom, 1)} \\approx ${formatDeTeX(simResults.q_e, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    },
+                    {
+                      titel: 'Primärenergiebedarf',
+                      erklaerung: simResults.istWP
+                        ? `Der Strom der Wärmepumpe wird mit dem Primärenergiefaktor f_p = ${formatDeZahl(simResults.f_p, 1)} bewertet:`
+                        : `Brennstoff mit f_p = ${formatDeZahl(simResults.f_p, 1)}, Hilfsstrom mit f_p = 1,8:`,
+                      formel: simResults.istWP
+                        ? `Q_P = ${formatDeTeX(simResults.q_e, 0)} \\cdot ${formatDeTeX(simResults.f_p, 1)} \\approx ${formatDeTeX(simResults.q_p, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
+                        : `Q_P = ${formatDeTeX((simResults.q_h + simResults.q_w + simResults.q_verlust_netz) / simResults.eta_erzeuger, 1)} \\cdot ${formatDeTeX(simResults.f_p, 1)} + ${formatDeTeX(simResults.w_hilfsstrom, 1)} \\cdot 1{,}8 \\approx ${formatDeTeX(simResults.q_p, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
+                    }
+                  ]}
+                  ergebnisHinweis={`Effizienzklasse ${simResults.klasse} ergibt sich aus dem Endenergiebedarf Q_E. Vereinfachte Lehrbilanz – kein Ersatz für eine Berechnung nach DIN V 18599.`}
+                  normQuelle="DIN V 18599; GModG/GEG Anlage 10"
+                />
 
               </div>
             </div>

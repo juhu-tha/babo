@@ -8,6 +8,7 @@ import { EC2_NA_DE } from '@/src/data/normParams';
 import { bemesseDurchstanzen } from '@/src/calc/durchstanzen';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 export default function Durchstanzen() {
   const [colType, setColType] = useState<'rund' | 'rechteckig'>('rund');
@@ -227,6 +228,60 @@ export default function Durchstanzen() {
                 </div>
               </div>
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Durchstanznachweis mit den aktuellen Eingaben"
+              zielGleichung={`v_{Ed} = \\frac{\\beta \\cdot V_{Ed}}{u_1 \\cdot d} = ${formatDeTeX(results.vEd_stress, 3)} \\;${results.needsReinforcement ? '>' : '\\le'}\\; v_{Rd,c} = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`}
+              normQuelle="DIN EN 1992-1-1 mit NA (DE), 6.4"
+              schritte={[
+                {
+                  titel: 'Rundschnitte',
+                  erklaerung: colType === 'rund'
+                    ? 'Kreisförmige Stütze: Stützenumfang u₀ und kritischer Rundschnitt u₁ im Abstand 2d.'
+                    : 'Rechteckstütze: Stützenumfang u₀; der kritische Rundschnitt u₁ im Abstand 2d hat ausgerundete Ecken.',
+                  formel: colType === 'rund'
+                    ? `u_0 = \\pi \\cdot ${formatDeTeX(c, 0)} = ${formatDeTeX(results.u0, 0)}\\,\\text{mm};\\quad u_1 = \\pi \\cdot (${formatDeTeX(c, 0)} + 4 \\cdot ${formatDeTeX(d, 0)}) = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`
+                    : `u_0 = 2 \\cdot (${formatDeTeX(cx, 0)} + ${formatDeTeX(cy, 0)}) = ${formatDeTeX(results.u0, 0)}\\,\\text{mm};\\quad u_1 = u_0 + 4\\pi \\cdot ${formatDeTeX(d, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`,
+                },
+                {
+                  titel: 'Einwirkende Schubspannung',
+                  erklaerung: `Lasterhöhungsfaktor β = ${formatDeZahl(beta, 2)} für die gewählte Stützenposition.`,
+                  formel: `v_{Ed} = \\frac{${formatDeTeX(beta, 2)} \\cdot ${formatDeTeX(vEd * 1000, 0)}}{${formatDeTeX(results.u1, 0)} \\cdot ${formatDeTeX(d, 0)}} = ${formatDeTeX(results.vEd_stress, 3)}\\,\\text{N/mm}^2`,
+                },
+                {
+                  titel: 'Beiwerte für den Betonwiderstand',
+                  erklaerung: results.u0_d < 4
+                    ? `Wegen u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4 wird C_Rd,c nach NA (DE) abgemindert; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
+                    : `u₀/d = ${formatDeZahl(results.u0_d, 2)} ≥ 4, daher C_Rd,c = 0,18/γ_c; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`,
+                  formel: `k = \\min\\left(1 + \\sqrt{\\tfrac{200}{${formatDeTeX(d, 0)}}};\\, 2\\right) = ${formatDeTeX(Math.min(1 + Math.sqrt(200 / d), 2.0), 3)};\\quad \\rho_l = ${formatDeTeX(results.rhoL_eff, 4)};\\quad C_{Rd,c} = ${formatDeTeX(results.CRdc, 4)}`,
+                },
+                {
+                  titel: 'Durchstanzwiderstand ohne Bewehrung',
+                  erklaerung: 'Der größere Wert aus der Bemessungsgleichung und der Mindesttragfähigkeit v_min ist maßgebend.',
+                  formel: `v_{Rd,c} = \\max\\left(${formatDeTeX(results.CRdc, 4)} \\cdot ${formatDeTeX(Math.min(1 + Math.sqrt(200 / d), 2.0), 3)} \\cdot (100 \\cdot ${formatDeTeX(results.rhoL_eff, 4)} \\cdot ${formatDeTeX(fck, 0)})^{1/3};\\; v_{min} = ${formatDeTeX((0.0525 / EC2_NA_DE.gammaC) * Math.pow(Math.min(1 + Math.sqrt(200 / d), 2.0), 1.5) * Math.sqrt(fck), 3)}\\right) = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`,
+                },
+                {
+                  titel: 'Maximaltragfähigkeit',
+                  erklaerung: results.isOverloaded
+                    ? 'v_Ed > v_Rd,max: Der Nachweis ist auch mit Durchstanzbewehrung nicht erfüllbar.'
+                    : 'v_Ed ≤ v_Rd,max: Die Maximaltragfähigkeit ist eingehalten.',
+                  formel: `v_{Rd,max} = ${formatDeTeX(EC2_NA_DE.vRdMaxFaktor_u1, 1)} \\cdot ${formatDeTeX(results.vRdc, 3)} = ${formatDeTeX(results.vRdMax, 3)}\\,\\text{N/mm}^2 \\;${results.isOverloaded ? '<' : '\\ge'}\\; v_{Ed} = ${formatDeTeX(results.vEd_stress, 3)}\\,\\text{N/mm}^2`,
+                },
+                {
+                  titel: 'Durchstanzbewehrung je Reihe',
+                  erklaerung: results.needsReinforcement && !results.isOverloaded
+                    ? 'Abschätzung nach Gl. (6.52) mit s_r = 0,75 · d und f_ywd,ef = 250 + 0,25 · d ≤ f_yd (ohne Faktoren κ_sw).'
+                    : results.needsReinforcement
+                      ? 'Keine Bemessung möglich, da v_Rd,max überschritten ist.'
+                      : 'v_Ed ≤ v_Rd,c: Es ist keine Durchstanzbewehrung erforderlich.',
+                  formel: results.needsReinforcement && !results.isOverloaded
+                    ? `A_{sw} = \\frac{(${formatDeTeX(results.vEd_stress, 3)} - 0{,}75 \\cdot ${formatDeTeX(results.vRdc, 3)}) \\cdot ${formatDeTeX(results.u1, 0)} \\cdot ${formatDeTeX(d, 0)}}{2{,}0 \\cdot ${formatDeTeX(Math.min(250 + 0.25 * d, 500 / EC2_NA_DE.gammaS), 1)}} = ${formatDeTeX(results.asw_req_ring, 0)}\\,\\text{mm}^2`
+                    : `A_{sw} = 0`,
+                },
+              ]}
+              ergebnisHinweis={results.isOverloaded ? 'v_Rd,max überschritten – Querschnitt vergrößern' : results.needsReinforcement ? `Durchstanzbewehrung je Reihe ≈ ${formatDeZahl(results.asw_req_ring, 0)} mm²` : 'Keine Durchstanzbewehrung erforderlich'}
+            />
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">

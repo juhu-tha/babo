@@ -20,7 +20,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -399,6 +399,37 @@ export default function Bodenmechanik() {
                 </div>
               </div>
             </div>
+
+            {/* Live-Rechenweg (AP 3.7) mit den aktuellen Wassergehalten */}
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Konsistenz und Bodengruppe"
+              zielGleichung="I_P = w_L - w_P, \quad I_C = \frac{w_L - w}{I_P}"
+              schritte={[
+                {
+                  titel: 'Plastizitätszahl',
+                  erklaerung: 'Spanne des plastischen Bereichs zwischen Fließ- und Ausrollgrenze:',
+                  formel: `I_P = ${formatDeTeX(wL, 1)} - ${formatDeTeX(wP, 1)} = ${formatDeTeX(results.iP, 1)}\\,\\%`
+                },
+                {
+                  titel: 'Konsistenzzahl',
+                  erklaerung: `Abstand des natürlichen Wassergehalts w = ${formatDeZahl(w, 1)} % von der Fließgrenze, bezogen auf I_P:`,
+                  formel: `I_C = \\frac{${formatDeTeX(wL, 1)} - ${formatDeTeX(w, 1)}}{${formatDeTeX(results.iP, 1)}} = ${formatDeTeX(results.iC, 2)}`
+                },
+                {
+                  titel: 'Zustandsform',
+                  erklaerung: `Einordnung nach den Grenzen 0 / 0,50 / 0,75 / 1,00: Der Boden ist ${results.zustand}.`,
+                  formel: `I_C = ${formatDeTeX(results.iC, 2)} \\;\\Rightarrow\\; \\text{${results.zustand}}`
+                },
+                {
+                  titel: 'Lage zur A-Linie',
+                  erklaerung: `Liegt I_P über der A-Linie (und I_P ≥ 7 %), handelt es sich um einen Ton, sonst um einen Schluff: ${results.klasse}.`,
+                  formel: `I_{P,A} = 0{,}73 \\cdot (${formatDeTeX(wL, 1)} - 20) = ${formatDeTeX(0.73 * (wL - 20), 1)}\\,\\% \\quad I_P = ${formatDeTeX(results.iP, 1)}\\,\\% ${results.iP >= 0.73 * (wL - 20) ? '\\ge' : '<'} I_{P,A}`
+                }
+              ]}
+              ergebnisHinweis="Plastizitätsdiagramm nach DIN 18196; organische Beimengungen sind gesondert zu prüfen."
+              normQuelle="DIN EN ISO 17892-12:2022-08; DIN EN ISO 14688-2; DIN 18196:2023-02"
+            />
           </div>
         </div>
         </div>

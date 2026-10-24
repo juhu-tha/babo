@@ -1,4 +1,5 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -935,6 +936,45 @@ export default function Spannbeton() {
               </div>
             </div>
           </div>
+
+          <FormulaDerivationBox
+            live
+            title={timeState === 'short_term' ? 'Ihr Rechenweg: Randspannungen beim Spannen (t = 0)' : 'Ihr Rechenweg: Randspannungen im Endzustand (t = ∞)'}
+            zielGleichung={`\\sigma_{o/u} = -\\frac{P}{A_c} \\pm \\frac{P \\cdot e_p}{W} \\mp \\frac{M}{W} = ${formatDeTeX(materialResults.sigmaTotalTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaTotalBot, 2)}\\,\\text{N/mm}^2`}
+            normQuelle="DIN EN 1992-1-1 mit NA (DE), 5.10 und 7.2"
+            schritte={[
+              {
+                titel: 'Querschnittswerte',
+                erklaerung: 'Ungerissener Rechteckquerschnitt (Zustand I), Bruttowerte ohne Spannstahl.',
+                formel: `A_c = ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} = ${formatDeTeX(materialResults.ac, 0)}\\,\\text{mm}^2;\\quad W = \\frac{b \\cdot h^2}{6} = ${formatDeTeX(materialResults.wTop / 1e6, 2)} \\cdot 10^{6}\\,\\text{mm}^3`,
+              },
+              {
+                titel: 'Wirksame Vorspannkraft',
+                erklaerung: timeState === 'short_term'
+                  ? `Nach den Sofortverlusten (Reibung, Keilschlupf, elastische Verkürzung) von zusammen ${formatDeZahl(materialResults.totalImmediateLossPct, 1)} %.`
+                  : `Nach allen Verlusten (Sofortverluste sowie Kriechen, Schwinden und Relaxation) von zusammen ${formatDeZahl(materialResults.totalLossPct, 1)} %.`,
+                formel: `P = ${formatDeTeX(p0, 0)} \\cdot \\left(1 - \\frac{${formatDeTeX(timeState === 'short_term' ? materialResults.totalImmediateLossPct : materialResults.totalLossPct, 2)}}{100}\\right) = ${formatDeTeX(materialResults.pEff, 0)}\\,\\text{kN}`,
+              },
+              {
+                titel: 'Spannungen aus der Vorspannung',
+                erklaerung: 'Zentrischer Anteil −P/A_c und Anteil aus dem Vorspannmoment P · e_p (Zug oben, Druck unten bei Ausmitte nach unten).',
+                formel: `\\sigma_N = -\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)}}{${formatDeTeX(materialResults.ac, 0)}} = ${formatDeTeX(materialResults.sigmaN, 2)};\\quad \\sigma_{P,o/u} = \\pm\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)} \\cdot ${formatDeTeX(ep, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMPTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaMPBot, 2)}\\,\\text{N/mm}^2`,
+              },
+              {
+                titel: timeState === 'short_term' ? 'Spannungen aus dem Eigengewicht' : 'Spannungen aus der charakteristischen Last',
+                erklaerung: timeState === 'short_term'
+                  ? 'Beim Spannen wirkt nur das Eigengewicht M_g1.'
+                  : 'Im Endzustand wird das Moment der charakteristischen (seltenen) Kombination angesetzt.',
+                formel: `\\sigma_{M,o/u} = \\mp\\frac{${formatDeTeX((timeState === 'short_term' ? mG1 : mChar) * 1e6, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMEdTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaMEdBot, 2)}\\,\\text{N/mm}^2`,
+              },
+              {
+                titel: 'Randspannungen (Druck negativ)',
+                erklaerung: `Superposition der Anteile. Grenzwert der Betondruckspannung: ${timeState === 'short_term' ? `0,60 · f_ck(t₀) = ${formatDeZahl(materialResults.permCompStress_t0, 1)}` : `0,60 · f_ck = ${formatDeZahl(materialResults.permCompStressRare, 1)}`} N/mm².`,
+                formel: `\\sigma_o = ${formatDeTeX(materialResults.sigmaN, 2)} + ${formatDeTeX(materialResults.sigmaMPTop, 2)} + (${formatDeTeX(materialResults.sigmaMEdTop, 2)}) = ${formatDeTeX(materialResults.sigmaTotalTop, 2)};\\quad \\sigma_u = ${formatDeTeX(materialResults.sigmaN, 2)} + (${formatDeTeX(materialResults.sigmaMPBot, 2)}) + ${formatDeTeX(materialResults.sigmaMEdBot, 2)} = ${formatDeTeX(materialResults.sigmaTotalBot, 2)}\\,\\text{N/mm}^2`,
+              },
+            ]}
+            ergebnisHinweis={`Oberer Rand ${formatDeZahl(materialResults.sigmaTotalTop, 2)} MPa, unterer Rand ${formatDeZahl(materialResults.sigmaTotalBot, 2)} MPa`}
+          />
 
           {/* Card GZG: Spannungsbegrenzungen nach DIN EN 1992-1-1, 7.2 */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">

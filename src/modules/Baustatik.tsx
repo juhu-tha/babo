@@ -18,7 +18,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 
@@ -72,6 +72,7 @@ export default function Baustatik() {
     let maxM = 0;
     let minM = 0;
     let maxV = 0;
+    let xMaxM = 0, xMinM = 0, xMaxV = 0, vAtMax = 0;
 
     for (let i = 0; i <= steps; i++) {
       const x = i * dx;
@@ -83,12 +84,14 @@ export default function Baustatik() {
       shearData.push(vx);
       momentData.push(mx);
 
-      if (mx > maxM) maxM = mx;
-      if (mx < minM) minM = mx;
-      if (Math.abs(vx) > maxV) maxV = Math.abs(vx);
+      if (mx > maxM) { maxM = mx; xMaxM = x; }
+      if (mx < minM) { minM = mx; xMinM = x; }
+      if (Math.abs(vx) > maxV) { maxV = Math.abs(vx); xMaxV = x; vAtMax = vx; }
     }
 
     const maxAbsM = Math.max(Math.abs(maxM), Math.abs(minM));
+    const xAbsM = Math.abs(maxM) >= Math.abs(minM) ? xMaxM : xMinM;
+    const mAtMax = Math.abs(maxM) >= Math.abs(minM) ? maxM : minM;
 
     const momentChart = {
       labels,
@@ -120,7 +123,7 @@ export default function Baustatik() {
       ]
     };
 
-    return { A, B, C, MA, maxAbsM, maxV, momentChart, shearChart, a_pos, am_pos, totalLength, hinweise: st.hinweise };
+    return { A, B, C, MA, MB: st.MB, l1_pos, maxAbsM, xAbsM, mAtMax, maxV, xMaxV, vAtMax, momentChart, shearChart, a_pos, am_pos, totalLength, hinweise: st.hinweise };
   }, [system, l, l1, q, f, a, m0, a_m]);
 
   const rahmenResults = useMemo(() => dreigelenkrahmen(rahmenH, rahmenL, rahmenQ, rahmenW), [rahmenH, rahmenL, rahmenQ, rahmenW]);
@@ -445,6 +448,65 @@ export default function Baustatik() {
                 </div>
               </div>
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Auflagerkräfte und Schnittgrößen mit den aktuellen Eingaben"
+              zielGleichung={`|M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm},\\quad |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`}
+              normQuelle="Gleichgewichtsbedingungen; Dreimomentengleichung (Zweifeldträger)"
+              schritte={[
+                system === 'einfeld'
+                  ? {
+                      titel: 'Auflagerkraft A',
+                      erklaerung: 'Momentengleichgewicht um das rechte Auflager B.',
+                      formel: `A = \\frac{q \\cdot l}{2} + \\frac{F \\cdot (l - a)}{l} - \\frac{M_0}{l} = \\frac{${formatDeTeX(q, 1)} \\cdot ${formatDeTeX(l, 1)}}{2} + \\frac{${formatDeTeX(f, 1)} \\cdot ${formatDeTeX(l - results.a_pos, 2)}}{${formatDeTeX(l, 1)}} - \\frac{${formatDeTeX(m0, 1)}}{${formatDeTeX(l, 1)}} = ${formatDeTeX(results.A, 1)}\\,\\text{kN}`,
+                    }
+                  : system === 'kragarm'
+                    ? {
+                        titel: 'Einspannkräfte',
+                        erklaerung: 'Vertikal- und Momentengleichgewicht an der Einspannung A (links).',
+                        formel: `A = q \\cdot l + F = ${formatDeTeX(q, 1)} \\cdot ${formatDeTeX(l, 1)} + ${formatDeTeX(f, 1)} = ${formatDeTeX(results.A, 1)}\\,\\text{kN};\\quad M_A = -\\frac{q l^2}{2} - F a - M_0 = ${formatDeTeX(results.MA, 1)}\\,\\text{kNm}`,
+                      }
+                    : {
+                        titel: 'Stützmoment über dem Mittelauflager',
+                        erklaerung: `Dreimomentengleichung (Clapeyron) mit l₁ = ${formatDeZahl(results.l1_pos, 2)} m und l₂ = ${formatDeZahl(l - results.l1_pos, 2)} m, EI konstant.`,
+                        formel: `M_B = -\\frac{q \\cdot (l_1^3 + l_2^3)}{8 \\cdot l} + \\Delta M_{B,F} + \\Delta M_{B,M_0} = -\\frac{${formatDeTeX(q, 1)} \\cdot (${formatDeTeX(results.l1_pos, 2)}^3 + ${formatDeTeX(l - results.l1_pos, 2)}^3)}{8 \\cdot ${formatDeTeX(l, 1)}} + \\ldots = ${formatDeTeX(results.MB, 2)}\\,\\text{kNm}`,
+                      },
+                system === 'einfeld'
+                  ? {
+                      titel: 'Auflagerkraft B',
+                      erklaerung: 'Momentengleichgewicht um das linke Auflager A.',
+                      formel: `B = \\frac{q \\cdot l}{2} + \\frac{F \\cdot a}{l} + \\frac{M_0}{l} = ${formatDeTeX((q * l) / 2, 2)} + ${formatDeTeX((f * results.a_pos) / l, 2)} + ${formatDeTeX(m0 / l, 2)} = ${formatDeTeX(results.B, 1)}\\,\\text{kN}`,
+                    }
+                  : system === 'kragarm'
+                    ? {
+                        titel: 'Freies Ende',
+                        erklaerung: 'Am freien Ende B gibt es keine Auflagerkraft.',
+                        formel: 'B = 0',
+                      }
+                    : {
+                        titel: 'Auflagerkräfte',
+                        erklaerung: 'Auflagerkräfte der beiden Einfeldträger, korrigiert um den Anteil des Stützmoments M_B/l₁ bzw. M_B/l₂.',
+                        formel: `A = ${formatDeTeX(results.A, 1)}\\,\\text{kN};\\quad B = ${formatDeTeX(results.B, 1)}\\,\\text{kN};\\quad C = ${formatDeTeX(results.C, 1)}\\,\\text{kN}`,
+                      },
+                {
+                  titel: 'Kontrolle des Vertikalgleichgewichts',
+                  erklaerung: 'Die Summe der Auflagerkräfte muss der Summe der Vertikallasten entsprechen.',
+                  formel: `\\sum A_i = ${formatDeTeX(results.A + (system === 'kragarm' ? 0 : results.B) + (system === 'zweifeld' ? results.C : 0), 1)}\\,\\text{kN} = q \\cdot l + F = ${formatDeTeX(q * l + f, 1)}\\,\\text{kN}`,
+                },
+                {
+                  titel: 'Größtes Biegemoment',
+                  erklaerung: `Der Momentenverlauf M(x) wird an 101 Stellen ausgewertet; der Betragsgrößtwert liegt bei x = ${formatDeZahl(results.xAbsM, 2)} m.`,
+                  formel: `M(${formatDeTeX(results.xAbsM, 2)}) = ${formatDeTeX(results.mAtMax, 1)}\\,\\text{kNm} \\;\\Rightarrow\\; |M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm}`,
+                },
+                {
+                  titel: 'Größte Querkraft',
+                  erklaerung: `Der Betragsgrößtwert der Querkraft liegt bei x = ${formatDeZahl(results.xMaxV, 2)} m.`,
+                  formel: `V(${formatDeTeX(results.xMaxV, 2)}) = ${formatDeTeX(results.vAtMax, 1)}\\,\\text{kN} \\;\\Rightarrow\\; |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`,
+                },
+              ]}
+              ergebnisHinweis={`|M|max = ${formatDeZahl(results.maxAbsM, 1)} kNm, |V|max = ${formatDeZahl(results.maxV, 1)} kN`}
+            />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">

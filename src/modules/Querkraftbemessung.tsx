@@ -1,4 +1,6 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { EC2_NA_DE } from '@/src/data/normParams';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -301,6 +303,45 @@ export default function Querkraftbemessung() {
                 </div>
               )}
             </div>
+
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Querkraftbemessung mit den aktuellen Eingaben"
+              zielGleichung={`a_{sw} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = ${formatDeTeX(results.asw_final, 2)}\\,\\text{cm}^2/\\text{m}`}
+              normQuelle="DIN EN 1992-1-1 mit NA (DE), 6.2.2, 6.2.3 und 9.2.2"
+              schritte={[
+                {
+                  titel: 'Nutzhöhe und Hebelarm',
+                  erklaerung: 'Vereinfachter innerer Hebelarm z = 0,9 · d.',
+                  formel: `d = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm};\\quad z = 0{,}9 \\cdot ${formatDeTeX(results.d, 1)} = ${formatDeTeX(results.z, 1)}\\,\\text{cm}`,
+                },
+                {
+                  titel: 'Tragfähigkeit ohne Querkraftbewehrung',
+                  erklaerung: `Maßstabsfaktor k und Längsbewehrungsgrad ρ_l (höchstens 0,02); v_min nach NA (DE) ist als Untergrenze berücksichtigt. V_Ed ${results.isVRdcExceeded ? '>' : '≤'} V_Rd,c: ${results.isVRdcExceeded ? 'Querkraftbewehrung rechnerisch erforderlich' : 'nur Mindestbewehrung erforderlich'}.`,
+                  formel: `k = \\min\\left(1 + \\sqrt{\\tfrac{200}{${formatDeTeX(results.d * 10, 0)}}};\\, 2\\right) = ${formatDeTeX(Math.min(2, 1 + Math.sqrt(200 / (results.d * 10))), 2)};\\; \\rho_l = \\frac{${formatDeTeX(asl, 1)}}{${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(results.d, 1)}} = ${formatDeTeX(Math.min(0.02, asl / (b * results.d)), 4)};\\; V_{Rd,c} = ${formatDeTeX(results.vRd_c, 1)}\\,\\text{kN}`,
+                },
+                {
+                  titel: 'Druckstrebentragfähigkeit',
+                  erklaerung: `ν₁ = 0,75 · min(1,0; 1,1 − f_ck/500). Ausnutzung der Druckstrebe: ${formatDeZahl((vEd / results.vRd_max) * 100, 1)} %.`,
+                  formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(Math.tan((theta * Math.PI) / 180), 3)} + ${formatDeTeX(results.cot_theta, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
+                },
+                {
+                  titel: 'Rechnerisch erforderliche Bügelbewehrung',
+                  erklaerung: results.isCotThetaExceeded
+                    ? `Achtung: Das gewählte cot θ = ${formatDeZahl(results.cot_theta, 2)} überschreitet die Grenze cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)} nach Gl. (6.7aDE); der Rechner rechnet trotzdem mit dem gewählten Winkel.`
+                    : `Senkrechte Bügel, cot θ = ${formatDeZahl(results.cot_theta, 2)} ≤ cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)}.`,
+                  formel: `a_{sw,erf} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = \\frac{${formatDeTeX(vEd / 1000, 3)}}{${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(results.fyd, 1)} \\cdot ${formatDeTeX(results.cot_theta, 3)}} \\cdot 10^4 = ${formatDeTeX(results.asw_req, 2)}\\,\\text{cm}^2/\\text{m}`,
+                },
+                {
+                  titel: 'Mindestbewehrung und maßgebender Wert',
+                  erklaerung: results.isVRdcExceeded
+                    ? 'Maßgebend ist der größere Wert aus rechnerischer Bewehrung und Mindestbewehrung.'
+                    : 'Da V_Ed ≤ V_Rd,c ist, wird nur die Mindestbewehrung angeordnet.',
+                  formel: `a_{sw,min} = 0{,}16 \\cdot \\frac{${formatDeTeX(results.fctm, 1)}}{${formatDeTeX(bewehrungsArt === 'Stahl' ? fyk : ftk, 0)}} \\cdot ${formatDeTeX(b, 0)} \\cdot 100 = ${formatDeTeX(results.asw_min, 2)}\\,\\text{cm}^2/\\text{m} \\;\\Rightarrow\\; a_{sw} = ${formatDeTeX(results.asw_final, 2)}\\,\\text{cm}^2/\\text{m}`,
+                },
+              ]}
+              ergebnisHinweis={`Erforderliche Bügelbewehrung a_sw = ${formatDeZahl(results.asw_final, 2)} cm²/m`}
+            />
 
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Zwischenwerte</h3>
