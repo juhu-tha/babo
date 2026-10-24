@@ -13,7 +13,7 @@ import {
   creep,
   shrinkage,
   CementClass
-} from '@/src/utils/ec2Spannbeton';
+} from '@/src/calc/spannbeton';
 import {
   Clock,
   Droplets,

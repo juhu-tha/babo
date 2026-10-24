@@ -1,3 +1,5 @@
+import { erddruckRankine, konsolidierung, mohrCoulomb, zustandsgrenzen } from '@/src/calc/boden';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -39,47 +41,10 @@ export default function Bodenmechanik() {
   const [wP, setWP] = useState(20); // Ausrollgrenze (Plastic Limit)
 
   const results = useMemo(() => {
-    // Plastizitätszahl I_P = w_L - w_P
-    const iP = wL - wP;
-
-    // Konsistenzzahl I_c = (w_L - w) / I_P
-    const iC = iP !== 0 ? (wL - w) / iP : 0;
-
-    let zustand = '';
-    let farbe = 'bg-gray-500';
-
-    if (iC < 0) {
-      zustand = 'flüssig';
-      farbe = 'bg-blue-500';
-    } else if (iC >= 0 && iC < 0.5) {
-      zustand = 'breiig';
-      farbe = 'bg-teal-500';
-    } else if (iC >= 0.5 && iC < 0.75) {
-      zustand = 'weich';
-      farbe = 'bg-green-500';
-    } else if (iC >= 0.75 && iC < 1.0) {
-      zustand = 'steif';
-      farbe = 'bg-yellow-600';
-    } else {
-      zustand = 'halbfest / fest';
-      farbe = 'bg-amber-800';
-    }
-
-    // Bodenklassifikation nach DIN 18196 / Casagrande (vereinfacht)
-    let klasse = '';
-    const aLine = 0.73 * (wL - 20); // A-Linie im Plastizitätsdiagramm
-    
-    if (iP >= aLine && iP >= 4) {
-      if (wL < 35) klasse = 'TL (Ton, leicht plastisch)';
-      else if (wL <= 50) klasse = 'TM (Ton, mittelplastisch)';
-      else klasse = 'TA (Ton, ausgeprägt plastisch) bzw. OT bei organischen Beimengungen';
-    } else {
-      if (wL < 35) klasse = 'UL (Schluff, leicht plastisch)';
-      else if (wL <= 50) klasse = 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen';
-      else klasse = 'UA (Schluff, ausgeprägt plastisch)';
-    }
-
-    return { iP, iC, zustand, farbe, klasse };
+    const z = zustandsgrenzen(w, wL, wP);
+    const farbe = z.zustand === 'flüssig' ? 'bg-blue-500' : z.zustand === 'breiig' ? 'bg-teal-500' : z.zustand === 'weich' ? 'bg-green-500'
+      : z.zustand === 'steif' ? 'bg-yellow-600' : z.zustand === '–' ? 'bg-gray-500' : 'bg-amber-800';
+    return { ...z, farbe };
   }, [w, wL, wP]);
 
   // Scherfestigkeit State
@@ -89,20 +54,10 @@ export default function Bodenmechanik() {
   const [sigma1, setSigma1] = useState(150); // Größte Hauptspannung in kN/m²
 
   const shearResults = useMemo(() => {
-    // Mohr-Coulomb: tau = c + sigma * tan(phi)
+    const mc = mohrCoulomb(c, phi, sigma1, sigma3);
     const phiRad = (phi * Math.PI) / 180;
-    
-    const center = (sigma1 + sigma3) / 2;
-    const radius = Math.abs(sigma1 - sigma3) / 2;
-    
-    // Distance from center to failure envelope
-    const distanceToEnvelope = center * Math.sin(phiRad) + c * Math.cos(phiRad);
-    const isFailing = radius > distanceToEnvelope + 0.1; // Add small epsilon for floating point
-    
-    // Calculate sigma1 at failure for the given sigma3
-    const tan45PlusPhiHalf = Math.tan(Math.PI/4 + phiRad/2);
-    const sigma1_f = sigma3 * Math.pow(tan45PlusPhiHalf, 2) + 2 * c * tan45PlusPhiHalf;
-
+    const { center, radius, isFailing } = mc;
+    const sigma1_f = Number.isFinite(mc.sigma1_f) ? mc.sigma1_f : 0;
     const maxSigma = Math.max(300, sigma1 * 1.2, sigma1_f * 1.2);
     
     const envelopeData = [
@@ -144,7 +99,7 @@ export default function Bodenmechanik() {
       ]
     };
 
-    return { center, radius, isFailing, sigma1_f, chartData, maxSigma };
+    return { center, radius, isFailing, sigma1_f, chartData, maxSigma, hinweise: mc.hinweise };
   }, [c, phi, sigma1, sigma3]);
 
   // Erddruck State
@@ -153,22 +108,9 @@ export default function Bodenmechanik() {
   const [h, setH] = useState(5); // Wandhöhe in m
 
   const erddruckResults = useMemo(() => {
-    const phiRad = (phiErddruck * Math.PI) / 180;
-    
-    // Erddruckbeiwerte nach Rankine
-    const k_a = Math.pow(Math.tan(Math.PI/4 - phiRad/2), 2);
-    const k_p = Math.pow(Math.tan(Math.PI/4 + phiRad/2), 2);
-    const k_0 = 1 - Math.sin(phiRad);
-
-    // Erddruckordinaten an der Wandbasis
-    const e_a = k_a * gamma * h;
-    const e_p = k_p * gamma * h;
-    const e_0 = k_0 * gamma * h;
-
-    // Resultierende Erddruckkräfte
-    const E_a = 0.5 * e_a * h;
-    const E_p = 0.5 * e_p * h;
-    const E_0 = 0.5 * e_0 * h;
+    const r = erddruckRankine(phiErddruck, gamma, h);
+    const { k_a, k_p, k_0, E_a, E_p, E_0 } = r;
+    const e_a = k_a * gamma * h, e_p = k_p * gamma * h, e_0 = k_0 * gamma * h;
 
     const chartData = {
       datasets: [
@@ -211,36 +153,9 @@ export default function Bodenmechanik() {
   const [drainage, setDrainage] = useState<'einseitig' | 'zweiseitig'>('zweiseitig');
 
   const konsolidierungResults = useMemo(() => {
-    // Endsetzung s = (deltaSigma / Es) * h
-    // Umrechnung Es von MN/m² in kN/m² -> * 1000
-    const s_end = (deltaSigma / (es * 1000)) * hSchicht * 1000; // in mm
-
-    // Entwässerungsweg d
-    const d = drainage === 'zweiseitig' ? hSchicht / 2 : hSchicht;
-
-    // Zeit für Konsolidierungsgrade
-    // Tv = (cv * t) / d^2  => t = (Tv * d^2) / cv
-    // Tv für U=50% approx 0.197
-    // Tv für U=90% approx 0.848
-    const t_50 = (0.197 * d * d) / cv;
-    const t_90 = (0.848 * d * d) / cv;
-
-    // Zeit-Setzungs-Kurve
-    const labels = [];
-    const setzungsData = [];
-    const maxT = Math.ceil(t_90 * 1.5);
-    const step = maxT / 50;
-
-    for (let t = 0; t <= maxT; t += step) {
-      const Tv = (cv * t) / (d * d);
-      let U = 0;
-      if (Tv <= 0.283) {
-        U = Math.sqrt((4 * Tv) / Math.PI);
-      } else {
-        U = 1 - Math.pow(10, -(Tv + 0.085) / 0.933);
-      }
-      setzungsData.push({ x: t, y: s_end * U });
-    }
+    const k = konsolidierung(hSchicht, deltaSigma, es, cv, drainage);
+    const { s_end, t_50, t_90 } = k;
+    const setzungsData = k.kurve;
 
     const chartData = {
       datasets: [
@@ -256,7 +171,7 @@ export default function Bodenmechanik() {
       ]
     };
 
-    return { s_end, t_50, t_90, chartData };
+    return { s_end, t_50, t_90, chartData, hinweise: k.hinweise };
   }, [hSchicht, deltaSigma, es, cv, drainage]);
 
   const scherfestigkeitChartOptions = {
@@ -474,6 +389,7 @@ export default function Bodenmechanik() {
                 </div>
               </div>
               
+              <EingabeHinweise hinweise={results.hinweise} />
               <div className="bg-white/10 p-4 rounded-lg border border-white/20">
                 <div className="text-sm font-bold mb-1 flex items-center gap-2">
                   <Mountain size={16} /> Bodenklassifikation (vereinfacht)
@@ -530,6 +446,7 @@ export default function Bodenmechanik() {
                 </div>
               </div>
 
+              <EingabeHinweise hinweise={shearResults.hinweise} />
               <div className={`p-6 rounded-xl shadow-md text-white transition-colors ${shearResults.isFailing ? 'bg-torch-red' : 'bg-emerald-600'}`}>
                 <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Zustandsbewertung</h3>
                 <div>
