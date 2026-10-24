@@ -383,7 +383,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   rechnung_brandschutz: {
     kurz: "Biegenachweis eines Holzbalkens im Brandfall mit reduziertem Querschnitt.",
     grenzen: [
-      "k₀·d₀ pauschal 7 mm, k_fi = 1,15, η_fi pauschal 0,6.",
+      "Zerrüttungsschicht k₀·d₀ pauschal 7 mm, Reduktionsbeiwert η_fi pauschal 0,6.",
       "Beton nur als statische Tabelle.",
     ],
   },
