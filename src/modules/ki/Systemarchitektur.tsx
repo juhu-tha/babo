@@ -699,7 +699,7 @@ export default function Systemarchitektur() {
             const Icon = tab.icon;
             const isSelected = selectedTech === tab.key;
             return (
-              <button
+              <button aria-pressed={isSelected}
                 key={tab.key}
                 type="button"
                 onClick={() => setSelectedTech(tab.key)}

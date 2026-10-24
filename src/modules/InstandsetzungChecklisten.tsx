@@ -480,7 +480,7 @@ export default function InstandsetzungChecklisten() {
             const prog = getSectionProgress(sec.id);
 
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={sec.id}
                 onClick={() => setActiveSubTab(sec.id)}
                 className={`p-3 rounded-xl border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${
@@ -629,6 +629,7 @@ export default function InstandsetzungChecklisten() {
                     <input
                       type="checkbox"
                       checked={isDone}
+                      aria-label={item.task}
                       onChange={() => {}} // handled by parent div onClick
                       className="mt-0.5 w-4 h-4 rounded text-shiraz focus:ring-shiraz cursor-pointer shrink-0 accent-shiraz"
                     />

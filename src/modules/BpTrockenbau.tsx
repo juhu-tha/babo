@@ -448,7 +448,7 @@ export default function BpTrockenbau() {
                     Verfügbare Ausbauprodukte &amp; Platten
                   </h4>
                   {DRY_PRODUCTS_DB.map((prod) => (
-                    <button
+                    <button aria-pressed={selectedProductId === prod.id}
                       key={prod.id}
                       onClick={() => setSelectedProductId(prod.id)}
                       className={`p-3 text-left rounded-xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
@@ -563,7 +563,7 @@ export default function BpTrockenbau() {
                     Ausgewählte Trockenbau-Montagesysteme
                   </h4>
                   {DRY_SYSTEMS_DB.map((sys) => (
-                    <button
+                    <button aria-pressed={selectedSystemId === sys.id}
                       key={sys.id}
                       onClick={() => setSelectedSystemId(sys.id)}
                       className={`p-3 text-left rounded-xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${

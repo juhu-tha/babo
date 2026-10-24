@@ -399,7 +399,7 @@ export default function Bestand() {
                 </h3>
                 <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                   {BAUALTERSKLASSEN.map((era) => (
-                    <button
+                    <button aria-pressed={selectedEra === era.id}
                       key={era.id}
                       onClick={() => setSelectedEra(era.id)}
                       className={`text-left p-3 rounded-xl border transition-all cursor-pointer ${
@@ -539,7 +539,7 @@ export default function Bestand() {
                         { id: 'roof' as const, label: 'Steildach / oGD' },
                         { id: 'floor' as const, label: 'Kellerdecke' }
                       ].map(c => (
-                        <button
+                        <button aria-pressed={selectedComp === c.id}
                           key={c.id}
                           onClick={() => setSelectedComp(c.id)}
                           className={`p-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${

@@ -283,7 +283,7 @@ export default function Metalle() {
                   { key: 'blei', name: 'Blei', symbol: 'Pb' },
                   { key: 'titan', name: 'Titan', symbol: 'Ti' }
                 ].map((item) => (
-                  <button
+                  <button aria-pressed={selectedSteckbriefMetal === item.key}
                     key={item.key}
                     onClick={() => setSelectedSteckbriefMetal(item.key)}
                     className={`p-3 text-left rounded-xl border transition-all ${
@@ -294,7 +294,7 @@ export default function Metalle() {
                   >
                     <div className="flex justify-between items-center text-sm">
                       <span>{item.name}</span>
-                      <span className="text-xs opacity-70 font-mono">{item.symbol}</span>
+                      <span className="text-xs opacity-90 font-mono">{item.symbol}</span>
                     </div>
                   </button>
                 ))}
@@ -330,7 +330,7 @@ export default function Metalle() {
                     >
                       <div className="flex justify-between items-center">
                         <span>{metal.name}</span>
-                        <span className="text-xs opacity-70 font-mono">{metal.symbol}</span>
+                        <span className="text-xs opacity-90 font-mono">{metal.symbol}</span>
                       </div>
                     </button>
                   ))}

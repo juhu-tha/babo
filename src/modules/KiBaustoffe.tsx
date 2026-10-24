@@ -457,7 +457,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">1. Baustoff / Bauprodukt:</label>
                   <div className="space-y-2">
                     {promptPresetMaterials.map((mat) => (
-                      <button
+                      <button aria-pressed={selectedMaterial === mat.id}
                         key={mat.id}
                         onClick={() => setSelectedMaterial(mat.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -481,7 +481,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">2. Zielsetzung / Aufgabe:</label>
                   <div className="space-y-2">
                     {promptObjectives.map((obj) => (
-                      <button
+                      <button aria-pressed={selectedObjective === obj.id}
                         key={obj.id}
                         onClick={() => setSelectedObjective(obj.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -505,7 +505,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">3. Format / Ausgabeformat:</label>
                   <div className="space-y-2">
                     {promptFormats.map((fmt) => (
-                      <button
+                      <button aria-pressed={selectedFormat === fmt.id}
                         key={fmt.id}
                         onClick={() => setSelectedFormat(fmt.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -529,7 +529,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">4. Tonalität / Zielgruppe:</label>
                   <div className="space-y-2">
                     {promptTonalities.map((tone) => (
-                      <button
+                      <button aria-pressed={selectedTonality === tone.id}
                         key={tone.id}
                         onClick={() => setSelectedTonality(tone.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${

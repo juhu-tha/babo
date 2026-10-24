@@ -320,24 +320,24 @@ export default function BimBaustoffe() {
               
               <div className="flex-1 bg-gray-950 p-4 rounded-xl font-mono text-[11px] leading-relaxed text-gray-300 overflow-x-auto whitespace-pre select-all shadow-inner">
                 {/* Visualizing synthetic schema with customized token classes */}
-                <div><span className="text-gray-500">/* Bauteil-Zuweisungsstruktur für Building Information Modeling */</span></div>
+                <div><span className="text-gray-400">/* Bauteil-Zuweisungsstruktur für Building Information Modeling */</span></div>
                 <div>#100 = <span className="text-emerald-400 font-bold">IFCWALL</span>('2X3g5_w1S', #15, 'Aussenwand_Tragend', $, $, #101, $, $);</div>
                 <div>#110 = <span className="text-emerald-400 font-bold">IFCMATERIAL</span>(<span className="text-amber-300">'{archetype.name}'</span>);</div>
                 <div>#120 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENTSET</span>('Schichtstruktur', $, (#130), $);</div>
                 <div>#130 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENT</span>($, #110, $, $, 'Tragende Schicht');</div>
                 <div>#140 = <span className="text-emerald-400 font-bold">IFCRELASSOCIATESMATERIAL</span>('3J7y$', #15, 'Material_Assoc', $, (#100), #120);</div>
                 <br />
-                <div><span className="text-gray-500">/* Property-Set: Mechanische Werkstoffdaten fuer Statik */</span></div>
+                <div><span className="text-gray-400">/* Property-Set: Mechanische Werkstoffdaten fuer Statik */</span></div>
                 <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialCommon', $, (#160), #110);</div>
                 <div>#155 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialMechanical', $, (#170), #110);</div>
                 <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('MassDensity', $, <span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
                 <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('YoungModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
                 <br />
-                <div><span className="text-gray-500">/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */</span></div>
+                <div><span className="text-gray-400">/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */</span></div>
                 <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialThermal', $, (#190), #110);</div>
                 <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ThermalConductivity', $, <span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
                 <br />
-                <div><span className="text-gray-500">/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */</span></div>
+                <div><span className="text-gray-400">/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */</span></div>
                 <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('CPset_Umweltdaten', $, (#210), #110);</div>
                 <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GWP_A1_A3', $, <span className="text-yellow-400">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
               </div>

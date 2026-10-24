@@ -347,7 +347,7 @@ export default function Kreislaufwirtschaft() {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
@@ -377,7 +377,7 @@ export default function Kreislaufwirtschaft() {
               <div className="flex flex-col items-center w-full gap-2 mt-2">
                 {strategies.map((s, index) => (
                   <React.Fragment key={s.id}>
-                    <button
+                    <button aria-pressed={activeStrategy === s.id}
                       onClick={() => setActiveStrategy(s.id)}
                       className={`relative py-3 px-4 rounded-xl flex items-center justify-between text-white font-bold transition-all duration-300 w-full hover:-translate-y-0.5 shadow-sm ${activeStrategy === s.id ? s.activeColor : s.bgColor}`}
                       style={{ maxWidth: `${100 - index * 6}%` }}
@@ -386,7 +386,7 @@ export default function Kreislaufwirtschaft() {
                         <div className="bg-white/20 w-6 h-6 rounded-full flex items-center justify-center text-sm">{formatDeWert(s.id)}</div>
                         <span className="text-left text-sm sm:text-base">{s.name}</span>
                       </div>
-                      <span className="text-xs sm:text-sm font-medium opacity-90 hidden sm:block truncate ml-2">{s.label}</span>
+                      <span className="text-xs sm:text-sm font-medium hidden sm:block truncate ml-2">{s.label}</span>
                     </button>
                     {activeStrategy === s.id && (
                       <div className={`w-full my-2 p-5 rounded-2xl border shadow-inner animate-in fade-in slide-in-from-top-2 duration-300 ${s.panelBg}`}>

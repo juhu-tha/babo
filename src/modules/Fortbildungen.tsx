@@ -737,7 +737,7 @@ export default function Fortbildungen() {
             {filteredCerts.map((cert) => {
               const isActive = activeCertId === cert.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={cert.id}
                   onClick={() => setActiveCertId(cert.id)}
                   className={`w-full text-left p-3.5 rounded-xl border transition-all text-xs sm:text-sm flex justify-between items-center gap-2 ${

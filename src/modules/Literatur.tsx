@@ -460,7 +460,7 @@ export default function Literatur() {
           {/* Kategorien-Tabs */}
           <div className="flex flex-wrap gap-1.5">
             {categories.map(cat => (
-              <button
+              <button aria-pressed={selectedCategory === cat.key}
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 border ${

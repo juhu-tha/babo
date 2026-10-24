@@ -8,6 +8,7 @@ import { Leaf, BookOpen, Calculator, FileSpreadsheet, Milestone } from 'lucide-r
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function OekobilanzLCA() {
   const [activeTab, setActiveTab ] = useState<'LCA' | 'InteractiveCalc' | 'Ingenieurbau' | 'TransportbetonExcel' | 'Nachhaltigkeit'>('LCA');
@@ -35,38 +36,15 @@ export default function OekobilanzLCA() {
         </div>
         </div>
 
-        <div className="p-4 bg-slate-50/50 border-b border-home-grau/30">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`p-3.5 rounded-xl border transition-all duration-200 flex flex-col sm:flex-row items-center gap-2.5 text-center sm:text-left h-full cursor-pointer ${
-                    isActive 
-                      ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                      : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'
-                  }`}
-                >
-                  <Icon size={18} className={isActive ? 'text-shiraz' : 'text-slate-500'} />
-                  <span className="text-xs font-bold leading-tight">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
+        <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
+          <div className="p-6">
+            {activeTab === 'LCA' && <LCA />}
+            {activeTab === 'InteractiveCalc' && <InteractiveLCACalc />}
+            {activeTab === 'Ingenieurbau' && <IngenieurbauLCA />}
+            {activeTab === 'TransportbetonExcel' && <TransportbetonLcaUebung />}
+            {activeTab === 'Nachhaltigkeit' && <Nachhaltigkeit />}
           </div>
-        </div>
-
-        <div className="p-6">
-          {activeTab === 'LCA' && <LCA />}
-          {activeTab === 'InteractiveCalc' && <InteractiveLCACalc />}
-          {activeTab === 'Ingenieurbau' && <IngenieurbauLCA />}
-          {activeTab === 'TransportbetonExcel' && <TransportbetonLcaUebung />}
-          {activeTab === 'Nachhaltigkeit' && <Nachhaltigkeit />}
-        </div>
+        </ModuleTabs>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

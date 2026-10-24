@@ -80,7 +80,7 @@ export default function Produktsiegel() {
           {isoTypes.map((type) => {
             const isActive = activeIsoType === type.id;
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={type.id}
                 onClick={() => setActiveIsoType(type.id)}
                 className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between h-full gap-2 ${

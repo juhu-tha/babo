@@ -448,7 +448,7 @@ export default function Baustoffkunde() {
                 {materialClasses.map((item) => {
                   const isActive = selectedClass === item.id;
                   return (
-                    <button
+                    <button aria-pressed={isActive}
                       key={item.id}
                       onClick={() => setSelectedClass(item.id)}
                       className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 flex items-center justify-between group ${
@@ -716,7 +716,7 @@ export default function Baustoffkunde() {
                   {pioneers.map((p) => {
                     const isActive = selectedPioneer === p.id;
                     return (
-                      <button
+                      <button aria-pressed={isActive}
                         key={p.id}
                         onClick={() => setSelectedPioneer(p.id)}
                         className={`w-full p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 flex items-center justify-between group ${

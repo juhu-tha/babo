@@ -972,7 +972,7 @@ export default function InnovativeWerkstoffe() {
               
               <div className="space-y-2.5">
                 {FUTURE_MATERIALS.map((mat) => (
-                  <button
+                  <button aria-pressed={selectedMat === mat.id}
                     key={mat.id}
                     onClick={() => setSelectedMat(mat.id)}
                     className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between h-full relative ${
@@ -1145,7 +1145,7 @@ export default function InnovativeWerkstoffe() {
                       { id: 'mittel', label: 'Mittel', note: 'Standarddecken (<8m)' },
                       { id: 'gross', label: 'Groß', note: 'Großspannbrücken, Hallen' }
                     ].map((s) => (
-                      <button
+                      <button aria-pressed={spanLength === s.id}
                         key={s.id}
                         type="button"
                         onClick={() => setSpanLength(s.id)}

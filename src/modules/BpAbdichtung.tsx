@@ -1126,7 +1126,7 @@ export default function BpAbdichtung() {
                       { id: 'drueckend_tief', label: 'Drückendes Grundwasser (> 3,0 m)', detail: 'Dauerhafter Wasserdruck bei tiefer Gründungssohle im Grundwasser (W2.2-E).' },
                       { id: 'spritzwasser', label: 'Spritzwasser im Sockelquerschnitt', detail: 'Oberflächenwasser und Spritzzone im Außen-Bodenanschluss (W4-E).' }
                     ].map((opt) => (
-                      <button
+                      <button aria-pressed={waterLoad === opt.id}
                         key={opt.id}
                         type="button"
                         onClick={() => setWaterLoad(opt.id)}
@@ -1162,7 +1162,7 @@ export default function BpAbdichtung() {
                       { id: 'standard', label: 'Standard (Anforderungsklasse B)', detail: 'Nutzungskeller, Technikräume, Werkbänke. Geringfügiger Feuchtefilm tolerierbar.' },
                       { id: 'kriechkeller', label: 'Gering (Anforderungsklasse C)', detail: 'Kriechkeller, Installationsgänge oder offene Tiefgaragen.' }
                     ].map((opt) => (
-                      <button
+                      <button aria-pressed={roomRequirement === opt.id}
                         key={opt.id}
                         type="button"
                         onClick={() => setRoomRequirement(opt.id)}

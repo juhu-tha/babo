@@ -602,7 +602,7 @@ export default function Nawaro() {
               <div className="lg:col-span-5 flex flex-col gap-2 max-h-[480px] overflow-y-auto pr-2">
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map(p => (
-                    <button
+                    <button aria-pressed={selectedProduct === p.id}
                       key={p.id}
                       onClick={() => setSelectedProduct(p.id)}
                       className={`p-4 rounded-xl border text-left transition-all flex flex-col gap-1.5 cursor-pointer ${

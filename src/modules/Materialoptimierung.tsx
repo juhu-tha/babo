@@ -534,7 +534,7 @@ export default function Materialoptimierung() {
               {/* Pillar Selector Buttons */}
               <div className="md:col-span-4 flex flex-col gap-3">
                 {SAEULEN_DATA.map((saeule) => (
-                  <button
+                  <button aria-pressed={selectedSaeule === saeule.id}
                     key={saeule.id}
                     type="button"
                     onClick={() => setSelectedSaeule(saeule.id)}

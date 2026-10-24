@@ -556,6 +556,7 @@ export default function Feuchteschutz() {
                     <div className="col-span-6">
                       <select 
                         value={layer.matId}
+                        aria-label={`Baustoff der Schicht ${index + 1}`}
                         onChange={(e) => updateLayer(index, 'matId', e.target.value)}
                         className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-bold text-slate-800 cursor-pointer focus:ring-1 focus:ring-orange-800"
                       >
@@ -569,6 +570,7 @@ export default function Feuchteschutz() {
                     <div className="col-span-3 relative flex items-center">
                       <input 
                         type="number" step="0.005" min="0.0001"
+                        aria-label={`Dicke der Schicht ${index + 1} in m`}
                         value={layer.d}
                         onChange={(e) => updateLayer(index, 'd', e.target.value)}
                         className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-mono text-slate-800 text-center pr-5"

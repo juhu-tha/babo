@@ -176,7 +176,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
                 const IconComponent = entry.icon;
                 const isSelected = selectedTermId === entry.id;
                 return (
-                  <button
+                  <button aria-pressed={isSelected}
                     key={entry.id}
                     onClick={() => setSelectedTermId(entry.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${

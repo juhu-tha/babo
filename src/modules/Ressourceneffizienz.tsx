@@ -442,7 +442,7 @@ export default function Ressourceneffizienz() {
           const IconComponent = concept.icon;
           const isSelected = activeTab === concept.id;
           return (
-            <button
+            <button aria-pressed={isSelected}
               key={concept.id}
               onClick={() => setActiveTab(concept.id)}
               className={`text-left p-5 rounded-xl border ${concept.borderColorClass} transition-all duration-200 transform hover:-translate-y-0.5 ${concept.colorClass} ${
@@ -648,7 +648,7 @@ export default function Ressourceneffizienz() {
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/10 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 0).map((strategy) => (
-                                  <button
+                                  <button aria-pressed={selectedR === strategy.id}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}
@@ -681,7 +681,7 @@ export default function Ressourceneffizienz() {
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 1).map((strategy) => (
-                                  <button
+                                  <button aria-pressed={selectedR === strategy.id}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}
@@ -714,7 +714,7 @@ export default function Ressourceneffizienz() {
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 2).map((strategy) => (
-                                  <button
+                                  <button aria-pressed={selectedR === strategy.id}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}

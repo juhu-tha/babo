@@ -448,7 +448,7 @@ export default function LCC() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {SCENARIOS.map((scen) => (
-                <button
+                <button aria-pressed={selectedScenarioId === scen.id}
                   key={scen.id}
                   onClick={() => setSelectedScenarioId(scen.id)}
                   className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer ${

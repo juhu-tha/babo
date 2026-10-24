@@ -467,7 +467,7 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
       {/* Auswahl-Karten der 4 Benchmarks */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {BENCHMARK_EXAMPLES.map(bsp => (
-          <button
+          <button aria-pressed={selectedId === bsp.id}
             key={bsp.id}
             onClick={() => setSelectedId(bsp.id)}
             className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${

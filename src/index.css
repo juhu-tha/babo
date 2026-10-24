@@ -511,14 +511,14 @@ body {
 }
 
 .dark .text-shiraz {
-  color: #ff3377 !important; /* luminous Shiraz with high WCAG contrast in dark mode */
+  color: #ff85aa !important; /* Shiraz hell: ≥ 4,5:1 auch auf slate-700/Rosé-Flächen (Phase 2, AP 2.4) */
 }
 
 .dark .text-gray-400,
 .dark .text-slate-400,
 .dark .text-stone-400,
 .dark .text-zinc-400 {
-  color: #64748b !important; /* slate-500 */
+  color: #94a3b8 !important; /* slate-400: ≥ 4,5:1 auf slate-800 (vorher slate-500, 3,1:1) */
 }
 
 /* STUFE 3: Dark Mode Harmonisation - Streng Schwarz, Weiß, Graustufen & THA-Magenta */
@@ -526,7 +526,7 @@ body {
 .dark [class*="text-red-"],
 .dark [class*="text-fuchsia-"],
 .dark [class*="text-magenta"] {
-  color: #ff3b77 !important; /* Luminous THA-Magenta for text accents */
+  color: #ff85aa !important; /* THA-Magenta hell für Textakzente (≥ 4,5:1) */
 }
 
 /* Alle weiteren Textfarben auf klare neutrale Graustufen standardisieren */
@@ -1039,10 +1039,13 @@ input[type=range]:focus {
 .text-home-grau\/60, .text-home-grau\/65, .text-home-grau\/70, .text-home-grau\/80, .text-home-grau\/90 {
   color: var(--color-home-grau);
 }
+/* home-grau (#64748b) erreicht auf getönten Flächen nur 4,3:1 → als Textfarbe im Hellmodus etwas dunkler */
+html:not(.dark) :is(.text-home-grau, .text-home-grau\/30, .text-home-grau\/40, .text-home-grau\/50, .text-home-grau\/55,
+.text-home-grau\/60, .text-home-grau\/65, .text-home-grau\/70, .text-home-grau\/80, .text-home-grau\/90) { color: #556275; }
 .text-white\/40, .text-white\/50, .text-white\/60, .text-white\/70, .text-white\/75 {
   color: rgb(255 255 255 / 0.85);
 }
-html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray-500):not([class~="bg-slate-700"] *, [class~="bg-slate-800"] *, [class~="bg-slate-900"] *, [class~="bg-slate-950"] *, [class~="bg-slate-900/90"] *, [class~="bg-slate-900/95"] *, [class~="bg-slate-800/90"] *, [class~="bg-gray-800"] *, [class~="bg-gray-900"] *, [class~="bg-zinc-900"] *, [class~="bg-stone-900"] *, [class~="bg-neutral-900"] *, [class~="bg-black"] *, [class~="bg-shiraz"] *, [class~="bg-shiraz-dark"] *, [class~="bg-emerald-900"] *, [class~="bg-emerald-950"] *, [class~="bg-blue-900"] *, [class~="bg-indigo-900"] *, [class~="bg-rose-900"] *, [class~="bg-amber-900"] *, [class~="bg-amber-950"] *, [class~="bg-red-900"] *, [class~="bg-slate-950/90"] *) {
+html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray-500, .text-zinc-400, .text-zinc-500, .text-neutral-400, .text-neutral-500, .text-stone-400, .text-stone-500):not([class~="bg-slate-700"] *, [class~="bg-slate-800"] *, [class~="bg-slate-900"] *, [class~="bg-slate-950"] *, [class~="bg-slate-900/90"] *, [class~="bg-slate-900/95"] *, [class~="bg-slate-800/90"] *, [class~="bg-gray-800"] *, [class~="bg-gray-900"] *, [class~="bg-zinc-900"] *, [class~="bg-stone-900"] *, [class~="bg-neutral-900"] *, [class~="bg-black"] *, [class~="bg-shiraz"] *, [class~="bg-shiraz-dark"] *, [class~="bg-emerald-900"] *, [class~="bg-emerald-950"] *, [class~="bg-blue-900"] *, [class~="bg-indigo-900"] *, [class~="bg-rose-900"] *, [class~="bg-amber-900"] *, [class~="bg-amber-950"] *, [class~="bg-red-900"] *, [class~="bg-slate-950/90"] *) {
   color: #5a687e; /* zwischen slate-500 und slate-600: ≥ 4,5:1 bis Hintergrund slate-200 */
 }
 
@@ -1068,6 +1071,11 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
   #module-content select { max-width: 100%; min-width: 0; width: auto; }
   #module-content .flex > select, #module-content .grid > * { min-width: 0; }
   #module-content pre, #module-content code { white-space: pre-wrap; }
+  /* nicht schrumpfende Chips mit langem Text dürfen höchstens so breit wie der Inhalt werden */
+  #module-content :is(span, div, button, a, p).shrink-0, #module-content :is(span, div, button, a, p).flex-shrink-0 { max-width: 100%; }
+  #module-content button { white-space: normal; }
+  #module-content .katex { font-size: 1em; }
+  #module-content [class*="-mx-"] { margin-left: 0; margin-right: 0; }
 }
 
 /* Mindestgröße für Bedienelemente auf Touch-Geräten: 24 × 24 px (WCAG 2.2, 2.5.8; AP 2.7) */
@@ -1098,3 +1106,17 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
 header button { white-space: nowrap; }
 #mobil-werkzeuge #a11y-toggle-btn span.hidden { display: inline; }
 #mobil-werkzeuge > * { width: 100%; justify-content: flex-start; }
+
+
+/* Dunkelmodus: Kontrast-Nachbesserungen (Phase 2, AP 2.4) */
+.dark .bg-shiraz, .dark .hover\:bg-shiraz:hover { background-color: #be185d !important; } /* weißer Text 6:1 */
+.dark .text-text-main\/70, .dark .text-text-main\/75 { color: #cbd5e1 !important; }
+.dark .bg-slate-50\/40, .dark .bg-slate-50\/50, .dark .bg-slate-50\/60, .dark .bg-slate-50\/80,
+.dark .hover\:bg-slate-50\/80:hover { background-color: rgb(30 41 59 / 0.7) !important; }
+
+/* Hellmodus: weitere blasse Töne anheben */
+html:not(.dark) .text-slate-450 { color: #5a687e; }
+html:not(.dark) :is(.text-shiraz\/40, .text-shiraz\/50, .text-shiraz\/60, .text-shiraz\/70) { color: var(--color-shiraz); }
+
+/* Links im Fließtext erkennbar machen (WCAG 1.4.1, link-in-text-block) */
+#module-content :is(p, li, td, dd) a[href] { text-decoration: underline; text-underline-offset: 2px; }

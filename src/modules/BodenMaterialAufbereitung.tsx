@@ -487,7 +487,7 @@ export default function BodenMaterialAufbereitung() {
                       { id: 'bauschutt_gemisch' as const, label: 'Mineralischer Bauschutt (Beton, Ziegel)', info: 'Klassische Abbruch-Mischfraktion' },
                       { id: 'altablagerung' as const, label: 'Altablagerungen / Deponiekörper', info: 'Extreme Heterogenität, oft Organikbeimischung' }
                     ].map((mat) => (
-                      <button
+                      <button aria-pressed={treatmentMaterial === mat.id}
                         key={mat.id}
                         onClick={() => setTreatmentMaterial(mat.id)}
                         className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -513,7 +513,7 @@ export default function BodenMaterialAufbereitung() {
                       { id: 'asbest_faser' as const, label: 'Asbest / KMF', desc: 'Gefährliche Fasern' },
                       { id: 'gips_sulfat' as const, label: 'Gips & Sulfat', desc: 'Gefahr v. Gipstreiben' }
                     ].map((cont) => (
-                      <button
+                      <button aria-pressed={treatmentContaminant === cont.id}
                         key={cont.id}
                         onClick={() => setTreatmentContaminant(cont.id)}
                         className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${

@@ -1,0 +1,86 @@
+import React, { useId, useRef } from 'react';
+
+/**
+ * Einheitliche Reiter für Module (Umsetzungsplan Phase 2, AP 2.8): ARIA-Tabs-Muster mit
+ * Pfeiltasten (←/→, Pos1/Ende), „roving tabindex“ und zugehörigem Inhaltsbereich.
+ *
+ *   <ModuleTabs label="Bereiche" tabs={tabs} aktiv={tab} onWechsel={setTab}>
+ *     {tab === 'a' && <A />}
+ *   </ModuleTabs>
+ */
+export interface ModulTab<T extends string> {
+  id: T;
+  label: string;
+  icon?: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>;
+}
+
+interface Props<T extends string> {
+  label: string;
+  tabs: readonly ModulTab<T>[];
+  aktiv: T;
+  onWechsel: (id: T) => void;
+  /** Darstellung: „pill“ (Standard, Schaltflächen) oder „kachel“ (Raster mit Symbol) */
+  variante?: 'pill' | 'kachel';
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export function ModuleTabs<T extends string>({ label, tabs, aktiv, onWechsel, variante = 'pill', children, className = '' }: Props<T>) {
+  const basis = useId();
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const index = Math.max(0, tabs.findIndex(t => t.id === aktiv));
+
+  const taste = (e: React.KeyboardEvent) => {
+    let ziel = -1;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') ziel = (index + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ziel = (index - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') ziel = 0;
+    else if (e.key === 'End') ziel = tabs.length - 1;
+    if (ziel < 0) return;
+    e.preventDefault();
+    onWechsel(tabs[ziel].id);
+    refs.current[ziel]?.focus();
+  };
+
+  const listeKlasse = variante === 'kachel'
+    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3'
+    : 'flex flex-wrap gap-2';
+
+  return (
+    <div className={className}>
+      <div role="tablist" aria-label={label} className={listeKlasse} onKeyDown={taste}>
+        {tabs.map((t, i) => {
+          const an = t.id === aktiv;
+          const Icon = t.icon;
+          const klasse = variante === 'kachel'
+            ? `p-3.5 rounded-xl border transition-all duration-200 flex flex-col sm:flex-row items-center gap-2.5 text-center sm:text-left h-full cursor-pointer ${an ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'}`
+            : `px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${an ? 'bg-shiraz text-white border-shiraz shadow-md' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`;
+          return (
+            <button
+              key={t.id}
+              ref={el => { refs.current[i] = el; }}
+              type="button"
+              role="tab"
+              id={`${basis}-tab-${t.id}`}
+              aria-selected={an}
+              aria-controls={`${basis}-panel`}
+              tabIndex={an ? 0 : -1}
+              onClick={() => onWechsel(t.id)}
+              className={klasse}
+            >
+              {Icon && <Icon size={variante === 'kachel' ? 18 : 16} aria-hidden={true} />}
+              <span className={variante === 'kachel' ? 'text-xs font-bold leading-tight' : undefined}>{t.label}</span>
+            </button>
+          );
+        })}
+      </div>
+      {children !== undefined && (
+        <div role="tabpanel" id={`${basis}-panel`} aria-labelledby={`${basis}-tab-${aktiv}`} tabIndex={0} className="focus:outline-none">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default ModuleTabs;

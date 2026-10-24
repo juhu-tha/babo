@@ -579,7 +579,7 @@ export default function Schadstoffe() {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
@@ -613,7 +613,7 @@ export default function Schadstoffe() {
                 {SCHADSTOFFE_DATA.map((stoff) => {
                   const isActive = activeSchadstoff === stoff.id;
                   return (
-                    <button
+                    <button aria-pressed={isActive}
                       key={stoff.id}
                       onClick={() => setActiveSchadstoff(stoff.id)}
                       className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full ${
@@ -824,7 +824,7 @@ export default function Schadstoffe() {
                           { id: '1990-1999', label: '1990 - 1999', desc: 'Übergang & Verbote (1993)' },
                           { id: 'nach-2000', label: 'Ab 2000', desc: 'Moderne, unbedenkl. KMF, VOC' }
                         ].map((z) => (
-                          <button
+                          <button aria-pressed={finderZeitraum === z.id}
                             key={z.id}
                             onClick={() => setFinderZeitraum(z.id)}
                             className={`p-3 text-left rounded-xl border transition-all cursor-pointer ${
@@ -852,7 +852,7 @@ export default function Schadstoffe() {
                           { id: 'holz', label: 'Holzbauteile', detail: 'Dachstühle, Fachwerkbalken, Deckenpaneele' },
                           { id: 'technik', label: 'Haustechnik & Metalle', detail: 'Leitungen, Rohrschalen, Leuchtenkompensatoren, Mennige' }
                         ].map((b) => (
-                          <button
+                          <button aria-pressed={finderBauteil === b.id}
                             key={b.id}
                             onClick={() => setFinderBauteil(b.id)}
                             className={`p-2.5 rounded-lg border text-left transition-all flex justify-between items-center cursor-pointer ${

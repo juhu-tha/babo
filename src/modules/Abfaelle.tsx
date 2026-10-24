@@ -341,7 +341,7 @@ export default function Abfaelle() {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
@@ -846,7 +846,7 @@ export default function Abfaelle() {
                           { id: 'wsg_3', label: 'Zone III / III B' },
                           { id: 'wsg_1_2', label: 'Zone I / II / III A' }
                         ].map((z) => (
-                          <button
+                          <button aria-pressed={ebvSchutzgebiet === z.id}
                             key={z.id}
                             type="button"
                             onClick={() => setEbvSchutzgebiet(z.id)}

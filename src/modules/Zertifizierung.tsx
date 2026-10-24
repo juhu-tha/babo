@@ -231,7 +231,7 @@ export default function Zertifizierung() {
             {/* System Selector */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {SYSTEMS.map((system) => (
-            <button
+            <button aria-pressed={activeSystem === system.id}
               key={system.id}
               onClick={() => setActiveSystem(system.id)}
               className={`p-4 rounded-xl border text-left transition-all ${
@@ -715,7 +715,7 @@ export default function Zertifizierung() {
                 { id: 'qng' as const, label: '3. QNG Gütesiegel', badge: 'Basis für Bundesförderung' },
                 { id: 'birn' as const, label: '4. BiRN (BNK / BNG)', badge: 'Spezifisch Wohnungsbau' }
               ].map((tab) => (
-                <button
+                <button aria-pressed={beispieleSubTab === tab.id}
                   key={tab.id}
                   onClick={() => setBeispieleSubTab(tab.id)}
                   className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex flex-col justify-start items-start gap-0.5 border shadow-sm cursor-pointer min-w-[170px] ${

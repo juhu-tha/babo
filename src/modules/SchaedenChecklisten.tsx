@@ -247,7 +247,7 @@ export default function SchaedenChecklisten() {
             const isActive = activeSubTab === sec.id;
 
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={sec.id}
                 onClick={() => setActiveSubTab(sec.id)}
                 className={`p-3 rounded-xl border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${

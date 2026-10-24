@@ -523,7 +523,7 @@ export default function Rueckbau() {
           <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-2 pb-2 border-b border-home-grau/10">
-                <span className="text-3xl font-extrabold text-shiraz/20">Phase 0{formatDeWert(selectedPhase)}</span>
+                <span className="text-3xl font-extrabold text-shiraz/70">Phase 0{formatDeWert(selectedPhase)}</span>
                 <div>
                   <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                     {processPhases[selectedPhase - 1].title}

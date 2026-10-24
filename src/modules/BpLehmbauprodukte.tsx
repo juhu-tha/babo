@@ -212,7 +212,7 @@ export default function BpLehmbauprodukte() {
               {/* Sidebar Selector list */}
               <div className="lg:col-span-1 flex flex-col gap-2">
                 {LOAM_STANDARDS_DB.map((item) => (
-                  <button
+                  <button aria-pressed={selectedStandard === item.id}
                     key={item.id}
                     onClick={() => setSelectedStandard(item.id)}
                     className={`p-3.5 rounded-xl border text-left transition-all flex flex-col gap-1 items-start cursor-pointer ${

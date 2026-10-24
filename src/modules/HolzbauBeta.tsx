@@ -845,7 +845,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               {/* Left Item Buttons (span 5) */}
               <div className="lg:col-span-5 flex flex-col gap-2 max-h-[350px] overflow-y-auto pr-2">
                 {filteredConstructions.map(c => (
-                  <button
+                  <button aria-pressed={selectedConst === c.id}
                     key={c.id}
                     onClick={() => setSelectedConst(c.id)}
                     className={`p-3.5 rounded-xl border text-left transition-all flex flex-col gap-1.5 cursor-pointer ${
@@ -1180,9 +1180,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
             {/* Simulated 2D Render of Floor stack */}
             <div className="flex-grow flex flex-col gap-1 bg-off-white/50 p-4 rounded-xl border border-home-grau/25 min-h-[180px] justify-center">
               <div className="w-full bg-[#4f46e5] text-white text-[10px] font-mono p-1 text-center font-bold tracking-wider rounded-t-lg">Estrich (65 mm)</div>
-              <div className="w-full bg-[#3b82f6] text-white text-[10px] font-mono p-1.5 text-center font-bold tracking-wider">Trittschallminderung (30 mm)</div>
+              <div className="w-full bg-[#1d4ed8] text-white text-[10px] font-mono p-1.5 text-center font-bold tracking-wider">Trittschallminderung (30 mm)</div>
               <div className="w-full bg-[#78716c] text-white text-[10px] font-mono p-2.5 text-center font-bold tracking-wider">Schüttungsmasse zur Trittschall-Dämpfung (60 mm, gebunden)</div>
-              <div className="w-full bg-[#d97706] text-white text-[10px] font-mono p-4 text-center font-black tracking-wider rounded-b-lg">
+              <div className="w-full bg-[#b45309] text-white text-[10px] font-mono p-4 text-center font-black tracking-wider rounded-b-lg">
                 BSP / CLT Brettsperrholz-Tragscheibe (140 mm 5-lagig)
                 <div className="flex justify-around mt-1">
                   <span className="border-t border-white/50 w-full text-[8px] italic">Sichtqualität-Unterseite</span>
