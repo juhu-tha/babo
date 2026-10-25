@@ -87,6 +87,7 @@ const MechanischeKenngroessen = React.lazy(() => import('../modules/MechanischeK
 const HydratationFolgen = React.lazy(() => import('../modules/HydratationFolgen'));
 const Sonderbetone = React.lazy(() => import('../modules/Sonderbetone'));
 const Stahlbetonbemessung = React.lazy(() => import('../modules/Stahlbetonbemessung'));
+const ForschungTransfer = React.lazy(() => import('../modules/ForschungTransfer'));
 const Impressum = React.lazy(() => import('../modules/Impressum'));
 const Versionen = React.lazy(() => import('../modules/Versionen'));
 const Bauchemie = React.lazy(() => import('../modules/Bauchemie').then(module => ({ default: module.Bauchemie })));
@@ -238,6 +239,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'rechnung_schallschutz' && <Beispielrechnungen forceTab="schallschutz" />}
     {activeTab === 'rechnung_brandschutz' && <Beispielrechnungen forceTab="brandschutz" />}
     {activeTab === 'impressum' && <Impressum />}
+    {activeTab === 'forschung_transfer' && <ForschungTransfer />}
     {activeTab === 'datenschutz' && <Datenschutz />}
     {activeTab === 'barrierefreiheit' && <Barrierefreiheit />}
     {activeTab === 'versionen' && <Versionen />}
