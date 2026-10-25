@@ -343,32 +343,8 @@ export const TAB_EN: Record<string, string> = {
   "vl_instandhaltung": "Lecture: Repair & Maintenance"
 };
 
-export const UI_DE: Record<keyof typeof UI_EN, string> = {
-  appName: "BaustoffBoard THA",
-  dashboard: "Dashboard-Übersicht",
-  searchPlaceholder: "Modul, Norm oder Stichwort suchen...",
-  clearSearch: "Leeren",
-  backToStart: "Zur Startseite",
-  allModules: "Alle Module",
-  favorites: "Favoriten",
-  noFavorites: "Noch keine Favoriten gespeichert. Klicken Sie auf das Sternsymbol neben einem Modul.",
-  recentTabs: "Zuletzt geöffnet",
-  themeDark: "Dunkel",
-  themeLight: "Hell",
-  exportPdf: "PDF-Export",
-  exporting: "Exportiere...",
-  languageToggle: "Sprache: DE",
-  disclaimer: "Nur für akademische & didaktische Zwecke.",
-  close: "Schließen",
-  filter: "Filter",
-  openModule: "Modul öffnen",
-  testProtocol: "Prüfprotokoll",
-  date: "Datum",
-  openAudit: "Metadaten-Audit",
-  quickTranslateNotice: "Englisch-Modus aktiv: Benutzeroberfläche und Navigation auf Englisch. Klicken Sie unten für die Tiefenübersetzung via Google Translate.",
-  translateContentBtn: "Inhalte übersetzen",
-  revertToGermanBtn: "Originale deutsche Inhalte"
-};
+// Deutsche UI-Texte liegen in ./uiDe.ts (im Einstieg); diese Datei wird nur für Englisch nachgeladen (AP 5.5 Nachtrag)
+export { UI_DE } from './uiDe';
 
 export const UI_EN = {
   appName: "BaustoffBoard THA",

@@ -1,5 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { GROUP_EN, CLUSTER_EN, TAB_EN, UI_EN, UI_DE } from '../i18n/translations';
+import type { UI_EN } from '../i18n/translations';
+import { UI_DE } from '../i18n/uiDe';
+
+// Englische Texte nur bei Bedarf laden (Phase 5, AP 5.5 Nachtrag); bis zum Eintreffen gelten die deutschen.
+type Englisch = typeof import('../i18n/translations');
+let englisch: Englisch | undefined;
+const ladeEnglisch = () => import('../i18n/translations').then(m => (englisch = m));
 
 export type Language = 'de' | 'en';
 
@@ -29,6 +35,17 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   });
 
   const [isDeepTranslating, setIsDeepTranslating] = useState<boolean>(false);
+  const [en, setEn] = useState<Englisch | undefined>(englisch);
+  useEffect(() => {
+    if (language !== 'en' || en) return;
+    let aktiv = true;
+    ladeEnglisch().then(m => { if (aktiv) setEn(m); }).catch(() => {});
+    return () => { aktiv = false; };
+  }, [language, en]);
+  const UI_EN_: Partial<typeof UI_EN> = en?.UI_EN ?? {};
+  const GROUP_EN: Record<string, string> = en?.GROUP_EN ?? {};
+  const CLUSTER_EN: Record<string, string> = en?.CLUSTER_EN ?? {};
+  const TAB_EN: Record<string, string> = en?.TAB_EN ?? {};
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -44,13 +61,14 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   const t = (key: keyof typeof UI_EN, fallback?: string): string => {
-    if (language === 'en' && UI_EN[key]) {
-      return UI_EN[key];
+    const enText = UI_EN_[key];
+    if (language === 'en' && enText) {
+      return enText;
     }
     if (language === 'de' && UI_DE[key]) {
       return UI_DE[key];
     }
-    return fallback || UI_DE[key] || UI_EN[key] || String(key);
+    return fallback || UI_DE[key] || UI_EN_[key] || String(key);
   };
 
   const getTabLabel = (tabId: string, defaultLabel: string): string => {

@@ -28,6 +28,7 @@ import { GEG_U_MAX, temperaturverlauf, uebergang, uWert } from '@/src/calc/waerm
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
 const materialLibrary = [
@@ -693,6 +694,8 @@ export default function Bauphysik() {
 
           {/* Visualization & Evaluation Results - Right spanning 7 columns */}
           <div className="lg:col-span-7 space-y-6">
+            {/* unterhalb des Bildausschnitts (mobil) erst nach dem ersten Bild rendern (AP 5.5 Nachtrag) */}
+            <NachErstemBild minHoehe="40rem">
             
             {/* Feuchteschutz: eine Quelle (AP 3.9) */}
             <Querverweis ziel="feuchteschutz" titel="Tauwasser im Bauteil? → Glaser-Verfahren im Modul Feuchteschutz" linkText="Zum Glaser-Rechner (Feuchteschutz)">
@@ -859,6 +862,7 @@ export default function Bauphysik() {
                 </table>
               </div>
             </div>
+            </NachErstemBild>
           </div>
         </div>
       )}
@@ -1384,6 +1388,7 @@ export default function Bauphysik() {
           </div>
         </div>
       )}      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <NachErstemBild minHoehe="30rem">
       <FormulaDerivationBox
         title="Beispiel 1: U-Wert und Temperaturfaktor einer gedämmten Kalksandsteinwand"
         zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}, \quad f_{Rsi} = 1 - R_{si}^{*} \cdot U"
@@ -1407,6 +1412,7 @@ export default function Bauphysik() {
         ergebnisHinweis="Eine vollflächige Akustikdecke senkt die Nachhallzeit auf rund ein Sechstel. Personen und Möblierung bringen zusätzliche Absorption; für tiefe Frequenzen sind oft zusätzliche Absorber an der Rückwand nötig."
         normQuelle="DIN 18041:2016-03 (Gruppe A, Nutzungsart A3)"
       />
+      </NachErstemBild>
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bauphysik" />

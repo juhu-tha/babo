@@ -1,4 +1,4 @@
-import { NAV_TAB_GRUPPEN } from '../registry/modules';
+import { NAV_TAB_GRUPPEN } from '../registry/kern';
 import { iconFor } from '../registry/icons';
 
 // Menü wird aus der zentralen Modul-Registry erzeugt (src/registry/modules.ts)

@@ -1,7 +1,7 @@
 import React, { useId, useState } from 'react';
 import { ChevronDown, Clock, Target } from 'lucide-react';
 import type { ModulLernziele as Daten } from '@/src/data/lernziele';
-import { MODUL_BY_ID } from '@/src/registry/modules';
+import { MODUL_KERN } from '@/src/registry/kern';
 import { anzahlFragenRoute } from '@/src/data/quizLader';
 import { formatDeWert } from '@/src/utils/numberFormat';
 
@@ -39,7 +39,7 @@ export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: str
                 <React.Fragment key={v}>
                   {i > 0 && ', '}
                   <button type="button" onClick={() => oeffneModul(v)} className="underline underline-offset-2 text-shiraz">
-                    {MODUL_BY_ID.get(v)?.baum?.titel ?? MODUL_BY_ID.get(v)?.label ?? v}
+                    {MODUL_KERN.get(v)?.titel ?? MODUL_KERN.get(v)?.label ?? v}
                   </button>
                 </React.Fragment>
               ))}

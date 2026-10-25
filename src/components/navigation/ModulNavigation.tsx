@@ -9,7 +9,7 @@ import {
 import { useTabContext } from '../../contexts/TabContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { META_CLUSTERS } from '../../data/metaClusters';
-import { TAB_KEYWORDS } from '../../registry/modules';
+import { ladeSuchbegriffe } from '../../registry/kern';
 import { tabGroups } from '../../routing/tabGroups';
 import { VolltextTreffer } from './VolltextTreffer';
 
@@ -49,6 +49,20 @@ const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className
   'Kuriositäten': Sparkles
 };
 
+// Suchbegriffe stehen in der vollständigen Registry: erst bei der ersten Suche laden (Phase 5, AP 5.5 Nachtrag).
+// Bis zum Eintreffen (ein Abruf) wird nur über die Beschriftungen gefiltert.
+let suchbegriffe: Record<string, string[]> | undefined;
+function useSuchbegriffe(benoetigt: boolean): Record<string, string[]> {
+  const [werte, setWerte] = React.useState(suchbegriffe);
+  React.useEffect(() => {
+    if (!benoetigt || werte) return;
+    let aktiv = true;
+    ladeSuchbegriffe().then(w => { suchbegriffe = w; if (aktiv) setWerte(w); }).catch(() => {});
+    return () => { aktiv = false; };
+  }, [benoetigt, werte]);
+  return werte ?? {};
+}
+
 export interface ModulNavigationProps {
   searchQuery: string;
   openClusters: Record<string, boolean>;
@@ -67,6 +81,7 @@ export function ModulNavigation({
 }: ModulNavigationProps) {
   const { activeTab, setActiveTab } = useTabContext();
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
+  const TAB_KEYWORDS = useSuchbegriffe(searchQuery !== '');
   return (
     <>
     {/* Schnellzugriff: Dashboard / Start & Allgemein */}
