@@ -65,6 +65,7 @@ export function datumDe(iso: string | undefined): string {
 // Stand 25.10.2026: Im Repository liegen keine dokumentierten Modulprüfungen vor → alle 'offen'.
 export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   abfaelle: { status: 'offen' },
+  altholz_urban_mining: { status: 'offen' },
   analytik: { status: 'offen' },
   asphalt: { status: 'offen' },
   ausbau: { status: 'offen' },
@@ -83,6 +84,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   betonpraxis: { status: 'offen' },
   bim_baustoffe: { status: 'offen' },
   bindemittel: { status: 'offen' },
+  biokohlebeton: { status: 'offen' },
   boden_materialaufbereitung: { status: 'offen' },
   bodenmechanik: { status: 'offen' },
   bp_abdichtung: { status: 'offen' },
@@ -202,6 +204,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   nawaro: { status: 'offen' },
   oekobilanz_lca: { status: 'offen' },
   online_tools: { status: 'offen' },
+  pfas_baustoffe: { status: 'offen' },
   probenahme: { status: 'offen' },
   putzemoertel: { status: 'offen' },
   px_bauleitung: { status: 'offen' },
@@ -227,6 +230,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   schadreaktionen_beton: { status: 'offen' },
   schadstoffe: { status: 'offen' },
   schallschutz: { status: 'offen' },
+  schnellkarbonatisierung: { status: 'offen' },
   schutz_grundlagen: { status: 'offen' },
   sicherheitskonzept: { status: 'offen' },
   sichtbeton: { status: 'offen' },
