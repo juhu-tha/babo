@@ -1213,6 +1213,7 @@ function AppContent() {
           {activeTab === 'stahl' && <Stahl />}
           {activeTab === 'bp_stahlbauprofile' && <BpStahlbauprofile />}
           {activeTab === 'mauerwerk' && <Mauerwerk />}
+          {activeTab === 'keramik_ziegel' && <KeramikZiegel />}
           {activeTab === 'glas' && <Glas />}
           {activeTab === 'asphalt' && <Asphalt />}
           {activeTab === 'putzemoertel' && <PutzeMoertel />}
@@ -1223,6 +1224,7 @@ function AppContent() {
             <Kombinationen initialTab={activeTab === 'faserverbund' ? 'faserverbund' : undefined} />
           )}
           {activeTab === 'kunststoffe' && <Kunststoffe />}
+          {activeTab === 'membranen_etfe' && <MembranenETFE />}
           {activeTab === 'nawaro' && <Nawaro />}
           {activeTab === 'lehm' && <Lehm />}
           {activeTab === 'bp_lehmbauprodukte' && <BpLehmbauprodukte />}
@@ -1271,10 +1273,12 @@ function AppContent() {
           {activeTab === 'materialmodelle' && <Materialmodelle />}
           {activeTab === 'bruchmechanik' && <Bruchmechanik />}
           {activeTab === 'knicken' && <Knicken />}
+          {activeTab === 'stahlbau_ec3' && <StahlbauEC3 />}
           {activeTab === 'baustatik' && <Baustatik />}
           {activeTab === 'bodenmechanik' && <Bodenmechanik />}
           {activeTab === 'bauphysik' && <Bauphysik />}
           {activeTab === 'feuchteschutz' && <Feuchteschutz />}
+          {activeTab === 'sommerlicher_waermeschutz' && <SommerlicherWaermeschutz />}
           {activeTab === 'schallschutz' && <Schallschutz />}
           {activeTab === 'brandschutz' && <Brandschutz />}
           {activeTab === 'energieausweis' && <Energieausweis />}
@@ -1339,6 +1343,7 @@ function AppContent() {
           {activeTab === 'dauerhaftigkeit_checklisten' && <DauerhaftigkeitChecklisten />}
           {activeTab === 'holzkorrosion' && <Holzkorrosion />}
           {activeTab === 'metallkorrosion' && <Metallkorrosion />}
+          {activeTab === 'korrosionsschutz_beschichtungen' && <KorrosionsschutzBeschichtungen />}
           {activeTab === 'weitere_organik' && <WeitereOrganik />}
           {/* Schäden */}
           {activeTab === 'bauschaeden' && <Bauschaeden />}
@@ -1450,6 +1455,11 @@ class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasErr
 }
 
 // Lazy loaded modules
+const SommerlicherWaermeschutz = React.lazy(() => import('./modules/SommerlicherWaermeschutz'));
+const MembranenETFE = React.lazy(() => import('./modules/MembranenETFE'));
+const KorrosionsschutzBeschichtungen = React.lazy(() => import('./modules/KorrosionsschutzBeschichtungen'));
+const KeramikZiegel = React.lazy(() => import('./modules/KeramikZiegel'));
+const StahlbauEC3 = React.lazy(() => import('./modules/StahlbauEC3'));
 const Vorlesungen = React.lazy(() => import('./modules/Vorlesungen'));
 const NachhaltigkeitDatenRegeln = React.lazy(() => import('./modules/NachhaltigkeitDatenRegeln'));
 const OekobilanzLCA = React.lazy(() => import('./modules/OekobilanzLCA'));
