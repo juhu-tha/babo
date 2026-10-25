@@ -906,7 +906,7 @@ export default function WUBauwerke() {
           { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Abschnitt 7.3 Rissbreitenbegrenzung)' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)' },
-          { title: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)' },
+          { title: 'DIN 18533-1:2026-06 (Abdichtung von erdberührten Bauteilen)' },
           { title: 'DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)' }
         ]}
         literatur={[

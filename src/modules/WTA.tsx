@@ -1119,13 +1119,18 @@ export default function WTA() {
                 Nachträgliche Bauwerksabdichtung erdberührter Bauteile
               </h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: WTA 4-6-24/D / DIN 18533:2017-07 + A1:2024</span>
+            <span className="text-xs text-home-grau font-mono">Stand: WTA 4-6-24/D / DIN 18533-1:2017-07 + A1:2018-09 (neu: 2026-06)</span>
           </div>
 
           <p className="text-xs text-text-main/80 leading-relaxed">
             Das <strong>WTA-Merkblatt 4-6</strong> regelt die fachgerechte Planung und Ausführung der nachträglichen Abdichtung von erdberührten 
             Bestandsbauwerken (Außenabdichtung, Innenabdichtung, Querschnittsabdichtung). Die Einordnung der Beanspruchung 
             erfolgt zwingend harmonisiert nach den Wassereinwirkungsklassen der <strong>DIN 18533</strong>.
+          </p>
+          <p className="text-[11px] text-text-main/70 leading-relaxed">
+            <strong>Hinweis zur Neuausgabe:</strong> DIN 18533-1:2026-06 ersetzt die Ausgabe 2017-07 und A1:2018-09. Die Klassen heißen dort
+            „Wasserbeanspruchungsklassen“ (Grundstruktur W1-E bis W4-E bleibt), Riss- und Rissüberbrückungsklassen wurden zusammengeführt.
+            Die folgenden Unterklassen geben den Stand 2017-07 wieder, auf den sich das WTA-Merkblatt 4-6-24/D bezieht.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1218,7 +1223,7 @@ export default function WTA() {
         regelwerke={[
           { title: "WTA-Merkblatt 2-9-20/D (Ausgabe 2020-03): Sanierputzsysteme", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 4-6-24/D (Ausgabe 2024-12): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)" },
+          { title: "DIN 18533-1 bis -3:2026-06 (Abdichtung von erdberührten Bauteilen - Wasserbeanspruchungsklassen W1-E bis W4-E; ersetzt 2017-07 und A1:2018-09)" },
           { title: "WTA-Merkblatt 4-10-24/D: Injektionsverfahren mit zertifizierten Injektionsstoffen gegen kapillaren Feuchtetransport (Ausgabe 03.2024)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5-14/D (Ausgabe 2014-04): Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]} 

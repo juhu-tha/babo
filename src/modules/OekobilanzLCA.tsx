@@ -74,7 +74,7 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
         </div>
 
         {tabs.length > 1 ? (
-          <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
+          <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
             {inhalt}
           </ModuleTabs>
         ) : inhalt}
@@ -130,7 +130,7 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
           { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Umweltmanagement - Ökobilanz)' },
           { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen – Grundregeln)' },
           { title: 'DIN EN 15978:2026-09 (EN 15978:2026; Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10, Übergangsregeln in QNG/DGNB manuell prüfen)' },
-          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
+          { title: 'DIN EN 17472:2024-06 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
           { title: 'DGNB System Kriterium ENV1.1 \'Klimaschutz und Energie\' (Version 2023.2; in Version 2018: \'Ökobilanz des Gebäudes\')', url: 'https://www.dgnb.de/' },
           { title: 'QNG-Handbuch, Anlage 3 (Version 1.4 vom 19.07.2024): Anforderungswerte Lebenszyklus-THG und PENRT', url: 'https://www.qng.info/' }
         ]}
@@ -148,7 +148,7 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
           {
             formel: 'GWP_{\\text{Ing}} = \\frac{\\text{GWP}_{\\text{A1-A5}} + \\sum_{k} \\text{GWP}_{\\text{B2-B5},k} + \\text{GWP}_{\\text{B8}} + \\text{GWP}_{\\text{C1-C4}}}{A_{\\text{Deck}} \\cdot t_{\\text{ref}}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]',
             erklaerung: 'Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken über 80 bis 100 Jahre (DIN EN 1990 Auslegungskategorie 5) unter Berücksichtigung von periodischen Austauschzyklen (Lager, Übergänge, Beläge B2-B5) und verkehrsbedingten Stauemissionen während Baustellen (Modul B8).',
-            quelle: 'DIN EN 17472:2022-09'
+            quelle: 'DIN EN 17472:2024-06'
           }
         ]}
       />

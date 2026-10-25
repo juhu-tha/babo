@@ -37,6 +37,7 @@ const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className
   'Beispielrechnungen': Calculator,
   'Übungsaufgaben': ClipboardCheck,
   'Vorlesungen': GraduationCap,
+  'Lehrveranstaltungen': ClipboardCheck,
   'Übersicht & Zugang': GraduationCap,
   'Bauen im Bestand (VL)': Building2,
   'Nachhaltiges Bauen (VL)': Leaf,

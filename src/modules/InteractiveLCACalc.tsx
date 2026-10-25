@@ -609,6 +609,7 @@ export default function InteractiveLCACalc() {
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                         <div className="flex-1 w-full">
                           <select
+                            aria-label="Baustoff"
                             value={row.materialId}
                             onChange={(e) => updateRow(row.id, { materialId: e.target.value })}
                             className="w-full text-xs font-semibold p-2 bg-white border border-home-grau/30 rounded-lg focus:ring-1 focus:ring-shiraz focus:outline-none cursor-pointer"
@@ -627,6 +628,7 @@ export default function InteractiveLCACalc() {
                               type="number"
                               min="0.1"
                               step="0.5"
+                              aria-label={`Menge in ${currentMat?.unit ?? 'Einheiten'}`}
                               value={row.quantity}
                               onChange={(e) => updateRow(row.id, { quantity: Math.max(0.1, parseFloat(e.target.value) || 0) })}
                               className="w-16 text-xs font-bold text-right font-mono focus:outline-none"
@@ -870,7 +872,7 @@ export default function InteractiveLCACalc() {
         regelwerke={[
           { title: "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)" },
           { title: "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)" },
-          { title: "DIN EN 17472:2022-09 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)" },
+          { title: "DIN EN 17472:2024-06 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)" },
           { title: "Qualitätssiegel Nachhaltiges Gebäude (QNG Anhangdokument 3.1.1, Stand 2026)", url: "https://www.qng.info/" },
           { title: "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)" },
           { title: "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)", url: "https://www.oekobaudat.de/" }

@@ -127,7 +127,7 @@ export default function IngenieurbauLCA() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono">
-                  DIN EN 17472:2022-09
+                  DIN EN 17472:2024-06
                 </span>
                 <span className="text-[10px] text-slate-500 font-mono">CEN/TC 350 Infrastruktur</span>
               </div>
@@ -143,7 +143,7 @@ export default function IngenieurbauLCA() {
 
         <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
           <p>
-            Während die klassische <strong>DIN EN 15978</strong> ausschließlich die Ökobilanzierung von Hochbauten (Wohn- und Nichtwohngebäude) über typischerweise 50 Jahre Betrachtungszeitraum regelt, schließt die europäische Norm <strong>DIN EN 17472:2022-09</strong> die Lücke für die gesamte Verkehrsinfrastruktur und den Tiefbau: <strong>Brücken, Tunnel, Straßen, Eisenbahntrassen, Wasserbauwerke, Staudämme und Leitungsnetze</strong>.
+            Während die klassische <strong>DIN EN 15978</strong> ausschließlich die Ökobilanzierung von Hochbauten (Wohn- und Nichtwohngebäude) über typischerweise 50 Jahre Betrachtungszeitraum regelt, schließt die europäische Norm <strong>DIN EN 17472:2024-06</strong> die Lücke für die gesamte Verkehrsinfrastruktur und den Tiefbau: <strong>Brücken, Tunnel, Straßen, Eisenbahntrassen, Wasserbauwerke, Staudämme und Leitungsnetze</strong>.
           </p>
           <p>
             Sie definiert eigene funktionelle Einheiten, verankert <strong>Nutzungsdauern von 80 bis 100+ Jahren</strong> (nach DIN EN 1990 Auslegungskategorie 5) und quantifiziert zusätzlich die <strong>baustellenbedingten Nutzer- und Stauemissionen im Modul B8</strong>.
