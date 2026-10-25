@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
 import { bemesseDruckstab, bemesseQuerdruck, KMOD, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { woodMaterials, dataholzConstructions } from './holzbaubeta/daten';
@@ -339,6 +340,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         />
       </div>
       )}
+
+      <Querverweis ziel="normen_ausblick" titel="Neue Eurocode-Generation erschienen" linkText="Zum Modul Ausblick: neue Normengeneration">
+        <p>Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen.</p>
+      </Querverweis>
 
       <ModulTest moduleId="holzbau" />
 

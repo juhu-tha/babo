@@ -37344,5 +37344,257 @@
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
     "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Maßgebende Betonnorm",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Ein Tragwerksplaner legt im Oktober 2026 einen Beton für ein Parkhaus in Bayern fest. Welche Normenkombination ist bauaufsichtlich maßgebend?",
+    "options": [
+      "DIN EN 206-1:2026-07 zusammen mit DIN 1045-2:2023-08",
+      "DIN EN 206:2021-06 zusammen mit DIN 1045-2:2023-08",
+      "DIN EN 206-1 und DIN EN 206-2:2026-07 ohne nationale Ergänzung",
+      "DIN EN 206-2:2026-07 zusammen mit DIN EN 1992-1-1:2025-09"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Neuausgaben DIN EN 206-1/-2:2026-07 sind erschienen, aber noch nicht bauaufsichtlich eingeführt. DIN 1045-2:2023-08 ist auf DIN EN 206:2021-06 abgestimmt; eine passende Neufassung steht aus.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "DIN 1045-2:2023-08 ist auf DIN EN 206:2021-06 abgestimmt, nicht auf die Neuausgabe 2026; die Kombination wäre nicht konsistent.",
+      "",
+      "In Deutschland wird DIN EN 206 nur mit dem nationalen Anwendungsdokument DIN 1045-2 angewendet; die Grenzwerte je Expositionsklasse stehen dort.",
+      "Teil 2 regelt die Konformitätsbewertung, nicht die Betonfestlegung; auch EC2:2025-09 ist noch nicht eingeführt."
+    ],
+    "gapAnalysis": {
+      "topic": "Erschienen gegen eingeführt",
+      "misconception": "Eine neu erschienene Norm wird für sofort anwendbar gehalten.",
+      "coreRule": "Maßgebend ist die über die MVV TB eingeführte Ausgabe: DIN EN 206:2021-06 mit DIN 1045-2:2023-08.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „DIN EN 206-1/-2:2026“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Aufbau EN 206:2026",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206-2:2026-07",
+    "question": "Welcher Inhalt wurde bei der Neuausgabe aus EN 206 in den eigenen Teil EN 206-2 überführt?",
+    "options": [
+      "die Anforderungen an Beton für geotechnische Zwecke (bisher Anhang D)",
+      "die Klassen bezüglich CO₂-Emissionen (neuer Abschnitt 5.4)",
+      "alle Aspekte der Konformitätsbewertung und Zertifizierung",
+      "die Grenzwerte der Zusammensetzung je Expositionsklasse"
+    ],
+    "correctIdx": 2,
+    "explanation": "EN 206 wurde in drei Teile geteilt: Teil 1 Eigenschaften, Anforderungen und Produktionskontrolle, Teil 2 Konformitätsbewertung und Zertifizierung, Teil 3 Beton im Spezialtiefbau (bisher Anhang D).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Anhang D zu Beton für geotechnische Zwecke ging in Teil 3, nicht in Teil 2.",
+      "Der neue Abschnitt 5.4 zu CO₂-Klassen steht in Teil 1.",
+      "",
+      "Grenzwerte je Expositionsklasse stehen in Deutschland in DIN 1045-2; informative Inhalte zu Expositionsklassen kamen in Anhang C von Teil 1."
+    ],
+    "gapAnalysis": {
+      "topic": "Gliederung von EN 206:2026",
+      "misconception": "Die drei neuen Teile werden verwechselt.",
+      "coreRule": "Teil 1: Eigenschaften und WPK; Teil 2: Konformität und Zertifizierung; Teil 3: Spezialtiefbau.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „DIN EN 206-1/-2:2026“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Expositionswiderstandsklassen",
+    "difficulty": "Vertiefung",
+    "normRef": "EN 1992-1-1:2023",
+    "question": "Welche Rolle übernehmen die Expositionswiderstandsklassen (ERC) in EN 1992-1-1:2023?",
+    "options": [
+      "Sie ersetzen die Anforderungsklassen S1 bis S6 bei der Festlegung der Mindestbetondeckung.",
+      "Sie ersetzen die Expositionsklassen XC, XD und XS als Beschreibung der Umgebungsbedingungen am Bauteil.",
+      "Sie legen die Druckfestigkeitsklasse fest, die für ein Bauteil mindestens nötig ist.",
+      "Sie beschreiben den Widerstand gegen Frost-Tausalz- und chemischen Angriff."
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Mindestbetondeckung ergibt sich künftig aus Expositionsklasse und ERC des Betons. Die Expositionsklassen beschreiben weiter die Umgebung; ERC beschreibt den Widerstand gegen Karbonatisierung (XRC) und Chlorideindringen (XRDS).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Expositionsklassen bleiben als Beschreibung der Einwirkung erhalten; ERC kommt als Widerstandsseite hinzu.",
+      "ERC ist keine Festigkeitsklasse, sondern eine Klasse des Widerstands gegen bewehrungskorrosionsrelevante Einwirkungen.",
+      "Frost und chemischer Angriff sind nicht Gegenstand der ERC; dafür gelten weiter nationale Bestimmungen."
+    ],
+    "gapAnalysis": {
+      "topic": "ERC und Betondeckung",
+      "misconception": "Exposition (Einwirkung) und Expositionswiderstand werden gleichgesetzt.",
+      "coreRule": "c_min,dur folgt aus Expositionsklasse und ERC (XRC, XRDS); S1–S6 entfallen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Expositionswiderstand (ERC)“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "XRC abschätzen",
+    "difficulty": "Vertiefung",
+    "normRef": "EN 1992-1-1:2023",
+    "question": "Ein Beton ist der Klasse XRC 2 zugeordnet (Rate in mm/√a). Welche Karbonatisierungstiefe nach 50 Jahren unter Referenzbedingungen ergibt sich nach dem Wurzel-t-Gesetz etwa?",
+    "options": [
+      "etwa 2 mm",
+      "etwa 100 mm",
+      "etwa 25 mm",
+      "etwa 14 mm"
+    ],
+    "correctIdx": 3,
+    "explanation": "x ≈ XRC · √50 = 2 · 7,07 ≈ 14 mm. Die Klassenzahl ist eine Rate in mm/√a; je kleiner sie ist, desto höher ist der Karbonatisierungswiderstand.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "2 mm wäre die Tiefe nach einem Jahr; die Zeit geht mit √t ein.",
+      "100 mm entspräche einer linearen Zunahme mit der Zeit (2 · 50) statt mit √t.",
+      "25 mm entspricht eher XRC 3,5; für XRC 2 ist √50 ≈ 7,07 anzusetzen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Lesart der XRC-Klassen",
+      "misconception": "Die Klassenzahl wird als Tiefe in mm oder linear über die Zeit gelesen.",
+      "coreRule": "XRC-Zahl in mm/√a; x_c,50 ≈ XRC · √50 ≈ 7,1 · XRC (Lesart).",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Expositionswiderstand (ERC)“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Prüfverfahren für XRC",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-12",
+    "question": "Unter welcher Bedingung darf nach der Fachliteratur die Schnellkarbonatisierung nach DIN EN 12390-12 für den XRC-Nachweis herangezogen werden?",
+    "options": [
+      "wenn die Prüfung zur Zeitersparnis bei 20 % CO₂ statt bei 3 % CO₂ durchgeführt wird",
+      "wenn national ein Umrechnungsfaktor auf natürliche Bedingungen festgelegt ist",
+      "wenn der geprüfte Beton zusätzlich die Anforderungen der Expositionsklasse XF4 erfüllt",
+      "wenn die Probekörper vor der Prüfung mindestens 90 Tage unter Wasser gelagert werden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Referenzverfahren ist die natürliche Karbonatisierung nach DIN EN 12390-10. Das beschleunigte Verfahren nach DIN EN 12390-12 (3 % CO₂) ist nutzbar, wenn national ein Umrechnungsfaktor auf natürliche Bedingungen festgelegt ist.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Höhere Konzentrationen verändern die Reaktionsprodukte; DIN EN 12390-12 arbeitet mit 3 % CO₂.",
+      "",
+      "Der Frostwiderstand ist nicht Teil der ERC und keine Voraussetzung für den XRC-Nachweis.",
+      "Eine verlängerte Wasserlagerung ist keine Bedingung; zu feuchte Proben karbonatisieren sogar langsamer."
+    ],
+    "gapAnalysis": {
+      "topic": "Prüfung des Karbonatisierungswiderstands",
+      "misconception": "Beschleunigte und natürliche Prüfung gelten als direkt gleichwertig.",
+      "coreRule": "Referenz DIN EN 12390-10; DIN EN 12390-12 nur mit national festgelegtem Umrechnungsfaktor.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Expositionswiderstand (ERC)“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Zeitplan Eurocodes",
+    "difficulty": "Vertiefung",
+    "normRef": "Mandat M/515",
+    "question": "Welche Termine hat CEN für die Eurocodes der 2. Generation festgelegt (nationale Veröffentlichung / Zurückziehung der 1. Generation)?",
+    "options": [
+      "30.03.2026 / 30.09.2027",
+      "01.07.2012 / 30.03.2026",
+      "30.09.2027 / 30.03.2028",
+      "30.03.2028 / 30.09.2030"
+    ],
+    "correctIdx": 2,
+    "explanation": "Spätester Termin der nationalen Veröffentlichung (DoP) ist der 30.09.2027, die entgegenstehenden nationalen Normen der 1. Generation sind bis 30.03.2028 zurückzuziehen (DoW). Die bauaufsichtliche Einführung in Deutschland regelt davon getrennt die MVV TB.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der 30.03.2026 war der Termin für die Verteilung der endgültigen Texte (DAV), nicht für die nationale Veröffentlichung.",
+      "Der 01.07.2012 war der Stichtag für die Einführung der 1. Generation in Deutschland.",
+      "",
+      "Der 30.03.2028 ist die Zurückziehung der 1. Generation, nicht die nationale Veröffentlichung."
+    ],
+    "gapAnalysis": {
+      "topic": "CEN-Termine der 2. Generation",
+      "misconception": "DAV, DoP und DoW werden verwechselt.",
+      "coreRule": "DAV bis 30.03.2026, DoP 30.09.2027, DoW 30.03.2028.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Eurocodes 2. Generation“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_normen_ausblick_7",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "normen_ausblick",
+    "moduleTitle": "Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "topic": "Erschienen und eingeführt",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1995-1-1:2026-09",
+    "question": "DIN EN 1995-1-1:2026-09 ist erschienen. Was folgt daraus für eine Holzbaustatik, die im Oktober 2026 eingereicht wird?",
+    "options": [
+      "Die Neuausgabe ist bereits verbindlich, weil sie DIN EN 1995-1-1:2010-12 ersetzt.",
+      "Die Neuausgabe darf mit dem bisherigen NA:2013-08 kombiniert werden.",
+      "Die Bemessung ist bis zur Zurückziehung 2028 wahlweise nach beiden Ausgaben ohne NA zulässig.",
+      "Maßgebend bleibt die eingeführte Ausgabe 2010-12 + A2:2014-07 mit NA:2013-08."
+    ],
+    "correctIdx": 3,
+    "explanation": "Die DIN-Ausgabe ersetzt normungstechnisch die alte, bauaufsichtlich eingeführt ist aber nach MVV TB 2025/1 weiter DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08. Ein NA zur neuen Ausgabe steht aus.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der Ersatzvermerk betrifft das Normenwerk; verbindlich wird eine Ausgabe erst über die Technischen Baubestimmungen.",
+      "Nationale Anhänge gehören zu einer bestimmten Generation; der NA:2013-08 passt nicht zu den neuen Klauseln.",
+      "Eurocodes werden in Deutschland nur mit Nationalem Anhang angewendet; eine Wahlfreiheit ohne NA sieht das Bauordnungsrecht nicht vor.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Norm gegen Technische Baubestimmung",
+      "misconception": "Der Ersatzvermerk einer DIN-Norm wird mit der bauaufsichtlichen Einführung gleichgesetzt.",
+      "coreRule": "Verbindlich ist die in der MVV TB genannte Ausgabe mit dem zugehörigen NA.",
+      "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Was gilt wann?“.",
+      "targetModuleTab": "normen_ausblick",
+      "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
   }
 ]
