@@ -25,9 +25,9 @@ function KursKarte({ kurs, nr }: { kurs: TtzKurs; nr: number }) {
       </div>
       <h4 className="text-base sm:text-lg font-bold text-text-main leading-snug">{kurs.titel}</h4>
       <dl className="grid grid-cols-1 gap-2 text-sm text-text-main/85">
-        <div className="flex gap-2"><dt className="shrink-0"><Target size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Ziel</span></dt><dd>{kurs.ziel}</dd></div>
-        <div className="flex gap-2"><dt className="shrink-0"><Users size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Zielgruppe</span></dt><dd>{kurs.zielgruppe}</dd></div>
-        <div className="flex gap-2"><dt className="shrink-0"><Clock size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Umfang</span></dt><dd>{kurs.umfang}</dd></div>
+        <div className="flex flex-nowrap gap-2"><dt className="shrink-0"><Target size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Ziel</span></dt><dd className="min-w-0">{kurs.ziel}</dd></div>
+        <div className="flex flex-nowrap gap-2"><dt className="shrink-0"><Users size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Zielgruppe</span></dt><dd className="min-w-0">{kurs.zielgruppe}</dd></div>
+        <div className="flex flex-nowrap gap-2"><dt className="shrink-0"><Clock size={16} className="text-shiraz mt-0.5" aria-hidden="true" /><span className="sr-only">Umfang</span></dt><dd className="min-w-0">{kurs.umfang}</dd></div>
       </dl>
       <div>
         <p className="text-xs font-bold uppercase tracking-wider text-text-main/75 mb-2">Module (empfohlene Reihenfolge)</p>

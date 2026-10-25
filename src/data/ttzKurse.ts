@@ -8,17 +8,20 @@
  * zieht seine Fragen über src/data/quizLader.ts aus genau diesen Modulen (tests/ttzKurse.test.ts
  * prüft, dass je Kurs mindestens KURSQUIZ_FRAGEN verschiedene Fragen zur Verfügung stehen).
  *
- * Schema bewusst schlank und eigenständig; wird mit AP 6.1 (src/data/lernpfade.ts, Lehrveranstaltungen)
- * zusammengeführt, sobald dieses Schema vorliegt (dort als kind 'weiterbildung').
+ * Schema an AP 6.1 angelehnt (src/data/lernpfade.ts): gleiche Status-Werte, Modul-IDs als ModulId,
+ * Art des Lernpfads kind 'weiterbildung' (LernpfadArt). Statt eines Terminplans hat ein Kurs eine Modulliste
+ * und ein Kursquiz mit Bestehensgrenze.
  */
+import type { ModulId } from '../registry/modules';
+import type { LernpfadArt, LernpfadStatus } from './lernpfade';
 
 export type KursStrang = 'zirkularitaet' | 'lca' | 'zertifizierung' | 'technologie';
-export type KursStatus = 'entwurf' | 'freigegeben';
+export type KursStatus = LernpfadStatus;
 
 export interface TtzKurs {
   id: string;
   /** Art des Lernpfads – Anschluss an das Schema von AP 6.1 */
-  kind: 'weiterbildung';
+  kind: Extract<LernpfadArt, 'weiterbildung'>;
   strang: KursStrang;
   titel: string;
   /** Lernziel des Kurses (ein bis zwei Sätze) */
@@ -27,7 +30,7 @@ export interface TtzKurs {
   /** Umfang als Selbstlernzeit */
   umfang: string;
   /** Modul-IDs der App, in empfohlener Reihenfolge; zugleich Fragenquelle des Kursquiz */
-  module: readonly string[];
+  module: readonly ModulId[];
   status: KursStatus;
 }
 

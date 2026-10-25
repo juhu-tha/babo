@@ -155,9 +155,9 @@ export function KursQuiz({ kurs }: { kurs: TtzKurs }) {
           </p>
           {bestanden && (
             <div className="flex flex-col gap-3">
-              <p className="text-sm text-text-main/80 flex items-start gap-2">
+              <p className="text-sm text-text-main/80 flex flex-nowrap items-start gap-2">
                 <ShieldCheck size={18} className="text-shiraz shrink-0 mt-0.5" aria-hidden="true" />
-                <span>{BESTAETIGUNG_HINWEIS}. Ihr Name wird nur in Ihrem Browser in das PDF geschrieben – er wird weder gespeichert noch übertragen.</span>
+                <span className="min-w-0">{BESTAETIGUNG_HINWEIS}. Ihr Name wird nur in Ihrem Browser in das PDF geschrieben – er wird weder gespeichert noch übertragen.</span>
               </p>
               <div className="flex flex-col sm:flex-row sm:items-end gap-3">
                 <div className="flex flex-col gap-1 flex-1 min-w-0">

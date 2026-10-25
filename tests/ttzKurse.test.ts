@@ -26,7 +26,7 @@ for (const k of TTZ_KURSE) {
     pruefe(MODUL_BY_ID.has(m), `${k.id}: Modul ${m} fehlt in der Registry`);
     pruefe(pool.some(f => f.moduleId === m), `${k.id}: Modul ${m} hat keine Quizfragen`);
   }
-  const kursPool = eindeutigeFragen(pool.filter(f => k.module.includes(f.moduleId)));
+  const kursPool = eindeutigeFragen(pool.filter(f => (k.module as readonly string[]).includes(f.moduleId)));
   pruefe(kursPool.length >= KURSQUIZ_FRAGEN, `${k.id}: nur ${kursPool.length} verschiedene Fragen (≥ ${KURSQUIZ_FRAGEN} nötig)`);
 }
 pruefe(ENTWURF_HINWEIS === 'Entwurf – Kursliste durch Prof. Huber noch nicht freigegeben', 'Entwurfshinweis geändert');
@@ -54,9 +54,9 @@ pruefe(r1 !== r3, 'Auswahl hängt nicht vom Zufall ab');
 pruefe(waehleKursFragen(testPool.slice(0, 4), 10).length === 4, 'kleiner Pool: Auswahl darf nicht mehr Fragen liefern als vorhanden');
 // echter Kurspool: jede Auswahl hat KURSQUIZ_FRAGEN verschiedene Fragen
 for (const k of TTZ_KURSE) {
-  const a = waehleKursFragen(pool.filter(f => k.module.includes(f.moduleId)));
+  const a = waehleKursFragen(pool.filter(f => (k.module as readonly string[]).includes(f.moduleId)));
   pruefe(a.length === KURSQUIZ_FRAGEN && new Set(a.map(f => f.id)).size === a.length, `${k.id}: Kursauswahl fehlerhaft`);
-  pruefe(a.every(f => k.module.includes(f.moduleId)), `${k.id}: Frage außerhalb der Kursmodule`);
+  pruefe(a.every(f => (k.module as readonly string[]).includes(f.moduleId)), `${k.id}: Frage außerhalb der Kursmodule`);
 }
 
 // 3. Bestehensgrenze 80 %
