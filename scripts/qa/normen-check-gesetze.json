@@ -1,0 +1,31 @@
+{
+  "_hinweis": "Vom Normen-Check (scripts/qa/normen-check.mjs, AP 6.7) abgefragte Vorschriften. gii = Pfad bei gesetze-im-internet.de (https://www.gesetze-im-internet.de/<gii>/); suchmuster = regulärer Ausdruck für Fundstellen in src/; bekannterStand = Ausgangsstand (JJJJ-MM-TT), sonst gilt der Stand des letzten Laufs (docs/normen-check/*.json). Ein falscher gii-Pfad erscheint im Bericht als ‚nicht abrufbar‘. EU-Rechtsakte werden nicht automatisch abgefragt, sondern als manuelle Prüfpunkte geführt.",
+  "gesetze": [
+    { "kurz": "GModG", "titel": "Gebäudemodernisierungsgesetz (vormals GEG)", "gii": "geg", "registryId": "GEG_2024", "suchmuster": "\\b(GModG|GEG)\\b|Gebäudeenergiegesetz|Gebäudemodernisierungsgesetz" },
+    { "kurz": "GefStoffV", "titel": "Gefahrstoffverordnung", "gii": "gefstoffv_2010", "suchmuster": "\\bGefStoffV\\b|Gefahrstoffverordnung" },
+    { "kurz": "GewAbfV", "titel": "Gewerbeabfallverordnung", "gii": "gewabfv_2017", "suchmuster": "\\bGewAbfV\\b|Gewerbeabfallverordnung" },
+    { "kurz": "ErsatzbaustoffV", "titel": "Ersatzbaustoffverordnung", "gii": "ersatzbaustoffv", "suchmuster": "\\b(ErsatzbaustoffV|EBV)\\b|Ersatzbaustoffverordnung" },
+    { "kurz": "DepV", "titel": "Deponieverordnung", "gii": "depv_2009", "suchmuster": "\\bDepV\\b|Deponieverordnung" },
+    { "kurz": "KrWG", "titel": "Kreislaufwirtschaftsgesetz", "gii": "krwg", "suchmuster": "\\bKrWG\\b|Kreislaufwirtschaftsgesetz" },
+    { "kurz": "BBodSchV", "titel": "Bundes-Bodenschutz- und Altlastenverordnung", "gii": "bbodschv_2023", "suchmuster": "\\bBBodSchV\\b" },
+    { "kurz": "BBodSchG", "titel": "Bundes-Bodenschutzgesetz", "gii": "bbodschg", "suchmuster": "\\bBBodSchG\\b" },
+    { "kurz": "BImSchG", "titel": "Bundes-Immissionsschutzgesetz", "gii": "bimschg", "suchmuster": "\\bBImSchG\\b" },
+    { "kurz": "4. BImSchV", "titel": "Verordnung über genehmigungsbedürftige Anlagen", "gii": "bimschv_4_2013", "suchmuster": "4\\.\\s*BImSchV" },
+    { "kurz": "ChemVerbotsV", "titel": "Chemikalien-Verbotsverordnung", "gii": "chemverbotsv_2017", "suchmuster": "\\bChemVerbotsV\\b" },
+    { "kurz": "ArbSchG", "titel": "Arbeitsschutzgesetz", "gii": "arbschg", "suchmuster": "\\bArbSchG\\b" },
+    { "kurz": "BetrSichV", "titel": "Betriebssicherheitsverordnung", "gii": "betrsichv_2015", "suchmuster": "\\bBetrSichV\\b" },
+    { "kurz": "WHG", "titel": "Wasserhaushaltsgesetz", "gii": "whg_2009", "suchmuster": "\\bWHG\\b" },
+    { "kurz": "HOAI", "titel": "Honorarordnung für Architekten und Ingenieure", "gii": "hoai_2013", "suchmuster": "\\bHOAI\\b" },
+    { "kurz": "BGB", "titel": "Bürgerliches Gesetzbuch (Werk- und Bauvertragsrecht)", "gii": "bgb", "suchmuster": "\\bBGB\\b" },
+    { "kurz": "UrhG", "titel": "Urheberrechtsgesetz", "gii": "urhg", "suchmuster": "\\bUrhG\\b" },
+    { "kurz": "BauGB", "titel": "Baugesetzbuch", "gii": "bbaug", "suchmuster": "\\bBauGB\\b" }
+  ],
+  "eu": [
+    { "kurz": "BauPVO", "fundstelle": "VO (EU) 2024/3110", "url": "https://eur-lex.europa.eu/eli/reg/2024/3110/oj" },
+    { "kurz": "KI-VO", "fundstelle": "VO (EU) 2024/1689 inkl. Digital Omnibus", "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    { "kurz": "ESPR", "fundstelle": "VO (EU) 2024/1781", "url": "https://eur-lex.europa.eu/eli/reg/2024/1781/oj" },
+    { "kurz": "EPBD", "fundstelle": "RL (EU) 2024/1275", "url": "https://eur-lex.europa.eu/eli/dir/2024/1275/oj" },
+    { "kurz": "REACH", "fundstelle": "VO (EG) 1907/2006, Anhang XVII", "url": "https://eur-lex.europa.eu/eli/reg/2006/1907/oj" },
+    { "kurz": "Taxonomie-VO", "fundstelle": "VO (EU) 2020/852 mit Delegierten Rechtsakten", "url": "https://eur-lex.europa.eu/eli/reg/2020/852/oj" }
+  ]
+}
