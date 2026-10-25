@@ -195,7 +195,7 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                     <span className="font-bold text-slate-700 block">Verwertungskaskade:</span>
                     <select aria-label="Verwertungskaskade"
                       value={detail.recoveryType}
-                      onChange={(e) => updateRow(detail.rowId, { recoveryType: e.target.value as any })}
+                      onChange={(e) => updateRow(detail.rowId, { recoveryType: e.target.value as "high_grade" | "downcycling" | "reuse" | "thermal" | undefined })}
                       className="w-full text-xs font-semibold p-1.5 bg-white border border-slate-300 rounded-md focus:ring-1 focus:ring-teal-600 focus:outline-none cursor-pointer"
                     >
                       <option value="reuse">Direkte Wiederverwendung (Reuse, Faktor 1,45)</option>

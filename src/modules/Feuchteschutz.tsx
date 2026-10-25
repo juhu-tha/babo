@@ -234,7 +234,7 @@ export default function Feuchteschutz() {
     setLayers(updated);
   };
 
-  const updateLayer = (index: number, key: 'matId' | 'd', value: any) => {
+  const updateLayer = (index: number, key: 'matId' | 'd', value: string) => {
     const updated = [...layers];
     if (key === 'matId') {
       const mat = MAT_LIBRARY.find(m => m.id === value) || MAT_LIBRARY[0];

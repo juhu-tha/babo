@@ -122,7 +122,7 @@ export default function Schallschutz() {
     }
   };
 
-  const updateLayer = (id: string, field: string, value: any) => {
+  const updateLayer = (id: string, field: keyof (typeof layers)[number], value: string | number) => {
     setLayers(layers.map(l => l.id === id ? { ...l, [field]: value } : l));
   };
 

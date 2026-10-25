@@ -160,7 +160,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
             <select aria-label="Werkstoff-Gefügetyp" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
               value={selectedDichtePreset}
-              onChange={(e) => handleDichtePresetChange(e.target.value as any)}
+              onChange={(e) => handleDichtePresetChange(e.target.value as "ziegel" | "granit" | "porenbeton" | "custom" | "blaehton")}
             >
               <option value="ziegel">Ziegelton (Poröse Keramik)</option>
               <option value="blaehton">Blähton (Zellulär hochporös)</option>

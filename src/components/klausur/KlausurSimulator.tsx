@@ -63,7 +63,7 @@ export const KlausurSimulator: React.FC = () => {
       timerRef.current = setInterval(() => {
         setSecondsRemaining(prev => {
           if (prev <= 1) {
-            clearInterval(timerRef.current as any);
+            clearInterval(timerRef.current ?? undefined);
             setIsTimeUp(true);
             return 0;
           }
@@ -211,7 +211,7 @@ export const KlausurSimulator: React.FC = () => {
                     key={item.count}
                     onClick={() => setConfig(prev => ({ 
                       ...prev, 
-                      questionCount: item.count as any,
+                      questionCount: item.count as 10 | 20 | 30,
                       durationMinutes: item.count === 10 ? 15 : item.count === 20 ? 30 : 45
                     }))}
                     className={`p-3 rounded-xl border text-left transition-all ${
@@ -242,7 +242,7 @@ export const KlausurSimulator: React.FC = () => {
                 ].map(item => (
                   <button
                     key={item.mins}
-                    onClick={() => setConfig(prev => ({ ...prev, durationMinutes: item.mins as any }))}
+                    onClick={() => setConfig(prev => ({ ...prev, durationMinutes: item.mins as 15 | 30 | 45 }))}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       config.durationMinutes === item.mins
                         ? 'bg-shiraz text-white border-shiraz shadow-xs font-semibold'
@@ -265,7 +265,7 @@ export const KlausurSimulator: React.FC = () => {
               </label>
               <select aria-label="3. Themenschwerpunkt"
                 value={config.selectedCategory}
-                onChange={(e) => setConfig(prev => ({ ...prev, selectedCategory: e.target.value as any }))}
+                onChange={(e) => setConfig(prev => ({ ...prev, selectedCategory: e.target.value as QuizCategory | "all" }))}
                 className="p-3 bg-white border border-home-grau/30 rounded-xl text-sm font-medium focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz"
               >
                 <option value="all">🌐 Alle Themenbereiche (Gemischt)</option>

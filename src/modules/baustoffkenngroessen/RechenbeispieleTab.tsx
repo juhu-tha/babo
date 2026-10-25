@@ -37,7 +37,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
             <select aria-label="Material Preset" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
               value={saeulenMaterial}
-              onChange={(e) => handleSaeulenMaterialChange(e.target.value as any)}
+              onChange={(e) => handleSaeulenMaterialChange(e.target.value as "stahl" | "holz" | "beton" | "custom" | "alu")}
             >
               <option value="beton">Beton (z.B. C30/37)</option>
               <option value="stahl">Baustahl S235</option>

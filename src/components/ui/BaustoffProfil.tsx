@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ARCHITEKTUR_MATERIALITAET } from '@/src/data/architekturMaterialitaet';
 
+import type { TabId } from '@/src/contexts/TabContext';
 export interface ProfilSection {
   title: string;
   icon: React.ReactNode;
@@ -854,7 +855,7 @@ export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
           {calcLinks.map((link, idx) => (
             <button
               key={idx}
-              onClick={() => setActiveTab && setActiveTab(link.tab as any)}
+              onClick={() => setActiveTab && setActiveTab(link.tab as TabId)}
               className="flex flex-col text-left p-2.5 rounded-xl border border-home-grau/25 bg-white hover:border-shiraz/40 hover:shadow-sm hover:bg-off-white transition-all group cursor-pointer"
             >
               <div className="flex items-center justify-between gap-1 w-full">

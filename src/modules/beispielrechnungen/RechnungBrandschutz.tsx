@@ -85,7 +85,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                 <label className="text-xs font-bold text-slate-700 block">Holzart &amp; Festigkeit:</label>
                 <select aria-label="Holzart &amp; Festigkeit"
                   value={holzArtBrand}
-                  onChange={(e) => setHolzArtBrand(e.target.value as any)}
+                  onChange={(e) => setHolzArtBrand(e.target.value as "laubholz" | "bsh" | "c24")}
                   className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
                 >
                   <option value="bsh">Brettschichtholz GL28h (β_n = 0,70 mm/min, fmk = 28 N/mm²)</option>
@@ -153,7 +153,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     <button
                       key={mins}
                       type="button"
-                      onClick={() => setBrandDauerMin(mins as any)}
+                      onClick={() => setBrandDauerMin(mins as 60 | 30 | 90 | 120)}
                       className={`p-2 rounded-lg border text-center cursor-pointer transition-all font-bold ${
                             brandDauerMin === mins 
                               ? 'bg-shiraz text-white border-shiraz shadow-xs' 

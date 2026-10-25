@@ -63,7 +63,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                   ].map((item) => (
                     <button
                       key={item.id}
-                      onClick={() => setConstructionType(item.id as any)}
+                      onClick={() => setConstructionType(item.id as "holzbau" | "hybrid" | "massiv")}
                       className={`p-3 rounded-xl border text-left flex flex-col gap-1 transition-all ${
                           constructionType === item.id
                             ? 'border-shiraz bg-shiraz/5 shadow-sm font-bold'

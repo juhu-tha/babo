@@ -326,11 +326,11 @@ export default function Aufgaben() {
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      setActiveTab((task.moduleHint as any).id);
+                                      if (!Array.isArray(task.moduleHint)) setActiveTab(task.moduleHint.id);
                                     }}
                                     className="text-[11px] font-bold text-shiraz bg-shiraz/5 hover:bg-shiraz/10 px-3 py-1.5 rounded-lg border border-shiraz/10 transition-colors inline-flex items-center gap-1.5"
                                   >
-                                    <BookOpen size={12} /> Modul: {(task.moduleHint as any).name}
+                                    <BookOpen size={12} /> Modul: {task.moduleHint.name}
                                   </button>
                                 )}
                               </div>

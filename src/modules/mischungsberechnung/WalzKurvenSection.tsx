@@ -1,3 +1,4 @@
+import type { TooltipItem } from 'chart.js';
 import { useState, useMemo } from 'react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
@@ -81,7 +82,7 @@ export function WalzKurvenSection() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} N/mm²`
+          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} N/mm²`
         }
       }
     }

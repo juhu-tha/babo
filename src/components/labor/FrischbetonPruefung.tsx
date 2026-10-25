@@ -11,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -607,7 +608,7 @@ export default function FrischbetonPruefung() {
                         legend: { display: false },
                         tooltip: {
                           callbacks: {
-                            label: (ctx: any) => `τ = ${formatDeZahl(Number(ctx.parsed.y), 1)} Pa bei γ̇ = ${formatDeZahl(Number(ctx.parsed.x), 0)} 1/s`
+                            label: (ctx: TooltipItem<'line'>) => `τ = ${formatDeZahl(Number(ctx.parsed.y), 1)} Pa bei γ̇ = ${formatDeZahl(Number(ctx.parsed.x), 0)} 1/s`
                           }
                         }
                       }

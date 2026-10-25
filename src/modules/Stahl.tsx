@@ -11,7 +11,11 @@ import {
   Tooltip,
   Legend,
   LogarithmicScale,
-  Filler
+  Filler,
+  type ChartDataset,
+  type ChartOptions,
+  type Point,
+  type ScriptableContext,
 } from 'chart.js';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -141,7 +145,7 @@ export default function Stahl() {
             label: 'Eigenspannung σ_res (MPa)',
             data: stressData,
             borderColor: '#475569',
-            backgroundColor: (context: any) => {
+            backgroundColor: (context: ScriptableContext<'line'>) => {
               const ctx = context.chart.ctx;
               const gradient = ctx.createLinearGradient(0, 0, 0, context.chart.height);
               gradient.addColorStop(0, 'rgba(239, 68, 68, 0.2)'); // Zug (Rot)
@@ -365,7 +369,7 @@ export default function Stahl() {
   const stressStrainMultiData = useMemo(() => {
     const activeDefs = activeCurveDefs;
     
-    const datasets: any[] = activeDefs.map(def => {
+    const datasets: ChartDataset<'line', Point[]>[] = activeDefs.map(def => {
       const pts = generateSteelCurveDataPoints(def);
       return {
         label: `${def.name} (fy = ${formatDeWert(def.fy)} MPa)`,
@@ -469,7 +473,7 @@ export default function Stahl() {
           },
           ticks: {
             stepSize: stepX,
-            callback: (v: any) => `${v} %`,
+            callback: (v) => `${v} %`,
             font: { size: 11, weight: 'bold' as const },
             color: '#475569'
           },
@@ -486,7 +490,7 @@ export default function Stahl() {
           },
           ticks: {
             stepSize: stepY,
-            callback: (v: any) => `${v} MPa`,
+            callback: (v) => `${v} MPa`,
             font: { size: 11 },
             color: '#64748b'
           },
@@ -504,19 +508,19 @@ export default function Stahl() {
         },
         tooltip: {
           callbacks: {
-            title: (items: any) => {
+            title: (items) => {
               if (!items.length) return '';
               const xVal = items[0].parsed.x;
-              return `Dehnung ε = ${formatDeZahl(xVal, 2)} % (${formatDeZahl((xVal * 10), 1)} ‰)`;
+              return `Dehnung ε = ${formatDeZahl(xVal, 2)} % (${formatDeZahl(((xVal ?? 0) * 10), 1)} ‰)`;
             },
-            label: (context: any) => {
+            label: (context) => {
               const yVal = context.parsed.y;
               return `${context.dataset.label}: ${formatDeZahl(yVal, 1)} MPa`;
             }
           }
         }
       }
-    };
+    } satisfies ChartOptions<'line'>;
   }, [strainZoom, maxActiveStrain, maxActiveStress]);
 
   return (

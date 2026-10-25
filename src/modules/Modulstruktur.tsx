@@ -29,6 +29,7 @@ import { iconFor } from '@/src/registry/icons';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { formatDeWert } from '@/src/utils/numberFormat';
 
+import type { TabId } from '@/src/contexts/TabContext';
 export type NodeType = 'calculator' | 'database' | 'quiz' | 'standard' | 'info' | 'norm';
 
 export interface TreeNode {
@@ -253,7 +254,7 @@ export default function Modulstruktur() {
   }, [searchQuery, selectedType]);
 
   const handleNodeClick = (nodeId: string) => {
-    setActiveTab(nodeId as any);
+    setActiveTab(nodeId as TabId);
   };
 
   const renderBadge = (type: NodeType, norm?: string) => {

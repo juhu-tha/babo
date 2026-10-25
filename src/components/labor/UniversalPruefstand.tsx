@@ -1,3 +1,4 @@
+import type { ChartDataset, Point } from 'chart.js';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Zap } from 'lucide-react';
@@ -11,6 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -643,7 +645,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           y: (d.y * specimenCrossSection) / 1000
         }));
 
-    const list: any[] = [
+    const list: ChartDataset<'line', Point[]>[] = [
       {
         label: chartViewMode === 'sigma_eps' 
           ? `${materialProps.name} (${testType === 'emodul' ? 'Zyklen DIN EN 12390-13' : 'Messkurve'})` 
@@ -750,10 +752,10 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => chartViewMode === 'f_delta'
+          title: (items: TooltipItem<'line'>[]) => chartViewMode === 'f_delta'
             ? `Weg ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`
             : `Dehnung ε = ${formatDeZahl(Number(items[0].parsed.x), 3)} ‰`,
-          label: (item: any) => chartViewMode === 'f_delta'
+          label: (item: TooltipItem<'line'>) => chartViewMode === 'f_delta'
             ? `Kraft F = ${formatDeZahl(Number(item.parsed.y), 1)} kN`
             : `Spannung σ = ${formatDeZahl(Number(item.parsed.y), 2)} MPa (${formatDeZahl(((Number(item.parsed.y) * specimenCrossSection) / 1000), 1)} kN)`
         }

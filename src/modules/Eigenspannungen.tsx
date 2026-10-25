@@ -18,7 +18,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  type ScriptableContext
 } from 'chart.js';
 
 ChartJS.register(
@@ -130,7 +131,7 @@ export default function Eigenspannungen() {
             label: 'Eigenspannung σ_V (MPa)',
             data: stressVData,
             borderColor: '#475569',
-            backgroundColor: (context: any) => {
+            backgroundColor: (context: ScriptableContext<'line'>) => {
               const ctx = context.chart.ctx;
               const gradient = ctx.createLinearGradient(0, 0, 0, context.chart.height);
               gradient.addColorStop(0, 'rgba(239, 68, 68, 0.2)'); // Zug (Rot)

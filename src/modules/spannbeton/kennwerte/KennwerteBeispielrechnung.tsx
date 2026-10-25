@@ -53,7 +53,7 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
                 <label className="font-bold text-slate-700 block">Betonklasse:</label>
                 <select aria-label="Betonklasse"
                   value={exConcreteClass}
-                  onChange={(e) => setExConcreteClass(e.target.value as any)}
+                  onChange={(e) => setExConcreteClass(e.target.value as "C45/55" | "C35/45" | "C70/85")}
                   className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
                 >
                   <option value="C35/45">C35/45 (Ecm = 34.000 MPa)</option>

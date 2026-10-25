@@ -212,7 +212,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   <label className="block text-xs font-semibold text-text-main mb-1">Maximales Größtkorn:</label>
                   <select aria-label="Maximales Größtkorn" 
                     value={betonMaxAggregateSize}
-                    onChange={(e) => setBetonMaxAggregateSize(parseInt(e.target.value) as any)}
+                    onChange={(e) => setBetonMaxAggregateSize(parseInt(e.target.value) as 32 | 22)}
                     className="w-full text-xs p-2 rounded-lg border border-zinc-200 font-sans"
                   >
                     <option value="32">GK 32 mm (Max. Korn 32)</option>
@@ -365,7 +365,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   <label className="block text-[11px] font-bold text-text-main mb-1">Gesteinskörnung (Edelsplitt):</label>
                   <select aria-label="Gesteinskörnung (Edelsplitt)" 
                     value={betonAggregate}
-                    onChange={(e) => setBetonAggregate(e.target.value as any)}
+                    onChange={(e) => setBetonAggregate(e.target.value as "basalt" | "kalk" | "quarz")}
                     className="w-full text-xs p-2 rounded border border-zinc-200 bg-white"
                   >
                     <option value="quarz">Quarzhaltiger Kies / Opalsand (hochreaktiv)</option>
@@ -378,7 +378,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   <label className="block text-[11px] font-bold text-text-main mb-1">Alkaligehalt des Zements:</label>
                   <select aria-label="Alkaligehalt des Zements" 
                     value={betonCementAlkali}
-                    onChange={(e) => setBetonCementAlkali(e.target.value as any)}
+                    onChange={(e) => setBetonCementAlkali(e.target.value as "low" | "high")}
                     className="w-full text-xs p-1.5 rounded border border-zinc-200 bg-white"
                   >
                     <option value="high">Standard CEM I (Na2O_eq ≥ 0,60%)</option>

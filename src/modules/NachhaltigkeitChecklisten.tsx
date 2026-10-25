@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { 
   Building2, 
@@ -21,7 +22,7 @@ interface ChecklistSection {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: LucideIcon;
   items: ChecklistItem[];
 }
 

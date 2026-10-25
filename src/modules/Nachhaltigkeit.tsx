@@ -1,3 +1,4 @@
+import type { ChartData, ChartOptions, ScriptableContext } from 'chart.js';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { useState, useMemo } from 'react';
 import '@/src/lib/chartSetup';
@@ -173,7 +174,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   }, [wallLayers, connectionType]);
 
   // Chart configuration for dynamic GWP breakdown
-  const chartData = {
+  const chartData: ChartData<'bar'> = {
     labels: ['Herstellung (A1-A3)', 'Entsorgung (C3-C4)', 'Gutschriften (Modul D)', 'Ökobilanz Netto-Gesamt'],
     datasets: [
       {
@@ -184,8 +185,8 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
           computedWall.gwpD,
           computedWall.gwpNetTotal
         ],
-        backgroundColor: (context: any) => {
-          const value = context.raw;
+        backgroundColor: (context: ScriptableContext<'bar'>) => {
+          const value = context.raw as number;
           if (value < 0) return '#475569'; // positive credit is teal green
           if (context.dataIndex === 3) return '#A3113E'; // Net total is deep red
           return '#475569'; // basic emission is slate-blue
@@ -196,14 +197,14 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
     ]
   };
 
-  const chartOptions = {
+  const chartOptions: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: (context: any) => ` ${formatDeZahl(context.raw, 2)} kg CO₂-eq`
+          label: (context) => ` ${formatDeZahl(context.raw as number, 2)} kg CO₂-eq`
         }
       }
     },

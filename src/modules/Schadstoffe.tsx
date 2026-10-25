@@ -623,7 +623,7 @@ export default function Schadstoffe() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-home-grau/30">
                   <div className="flex items-center gap-3">
                     <div className="p-3 rounded-lg bg-slate-50 border border-home-grau/30 text-shiraz">
-                      {React.cloneElement(selectedSchadstoff.icon as React.ReactElement<any>, { className: 'text-shiraz' })}
+                      {React.cloneElement(selectedSchadstoff.icon as React.ReactElement<{ className?: string }>, { className: 'text-shiraz' })}
                     </div>
                     <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                         {selectedSchadstoff.name}

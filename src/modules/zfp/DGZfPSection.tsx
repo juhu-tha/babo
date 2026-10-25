@@ -199,7 +199,7 @@ export function DGZfPSection() {
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">2. Gewünschte Prüfmethode</label>
               <select aria-label="2. Gewünschte Prüfmethode" 
                 value={method} 
-                onChange={(e) => setMethod(e.target.value as any)}
+                onChange={(e) => setMethod(e.target.value as typeof method)}
                 className="w-full p-2.5 bg-white border border-home-grau/30 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-shiraz font-medium"
               >
                 <option value="gpr">Georadar-Verfahren (GPR-Bau)</option>
