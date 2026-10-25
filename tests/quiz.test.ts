@@ -7,6 +7,7 @@ import { MODULE, MODUL_BY_ID, type ModulEintrag } from '../src/registry/modules'
 import { grenzenFuer } from '../src/data/rechnerGrenzen';
 import { AUFGABEN_QUIZ_GRUPPEN } from '../src/data/aufgabenQuizGruppen';
 import { MODULTEST_IN_APP } from '../src/data/quizZuordnung';
+import { teileFragenpool, fragenJeModul, QUIZ_TEILE } from '../scripts/quizPool';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -107,6 +108,24 @@ for (const m of fach) {
   if (m.baum?.typ === 'calculator' || grenzenFuer(m.id)) pruefe(qs.some(q => q.bloom === 'Anwenden' && /\d/.test(q.question)), `${m.id}: Rechner-Modul ohne Rechenfrage`);
 }
 pruefe(QUIZ_QUESTIONS.length >= 850, `nur ${QUIZ_QUESTIONS.length} Fragen (≥ 850 verlangt)`);
+
+// 9. Aufteilung für den Browser (AP 5.4, Vite-Plugin scripts/quizPool.ts): Teilpakete ergeben zusammen
+//    genau quiz.json in Originalreihenfolge, keins ist leer; Modulpakete decken jede Frage genau einmal ab.
+const roh = JSON.parse(fs.readFileSync('src/data/quiz.json', 'utf8')) as { id: string; moduleId: string }[];
+const teile = teileFragenpool(roh);
+pruefe(teile.length === QUIZ_TEILE && teile.every(t => t.length > 0), `Teilpakete: ${teile.map(t => t.length).join('/')}`);
+pruefe(JSON.stringify(teile.flat()) === JSON.stringify(roh), 'Teilpakete ergeben nicht quiz.json');
+const groesste = Math.max(...teile.map(t => JSON.stringify(t).length));
+pruefe(groesste < 0.4 * JSON.stringify(roh).length, `Teilpaket zu groß: ${groesste} Zeichen`);
+const jeModul = fragenJeModul(roh);
+pruefe([...jeModul.values()].reduce((s, f) => s + f.length, 0) === roh.length, 'Modulpakete decken nicht jede Frage genau einmal ab');
+// Browser-Code lädt Fragen nur über src/data/quizLader.ts – nie quizData.ts/quiz.json direkt (sonst ein ~380-kB-Chunk)
+const quellen = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? quellen(path.join(dir, e.name)) : /\.tsx?$/.test(e.name) ? [path.join(dir, e.name)] : []);
+for (const datei of quellen('src')) {
+  if (datei.endsWith(path.join('data', 'quizData.ts'))) continue;
+  const text = fs.readFileSync(datei, 'utf8');
+  pruefe(!/from ['"][^'"]*\/(quizData|quiz\.json)['"]/.test(text), `${datei}: importiert quizData/quiz.json – im Browser quizLader.ts verwenden`);
+}
 
 if (fehler.length) {
   for (const f of fehler) console.error(`FAIL: ${f}`);

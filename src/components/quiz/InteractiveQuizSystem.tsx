@@ -11,12 +11,9 @@ import {
   Target
 } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
-import { 
-  QUIZ_QUESTIONS, 
-  QuizQuestion,
-  questionsToCsv,
-  parseCsvToQuestions
-} from '@/src/data/quizData';
+import type { QuizQuestion } from '@/src/data/quizModell';
+import { useAlleFragen } from '@/src/data/quizLader';
+import { questionsToCsv, parseCsvToQuestions } from '@/src/utils/quizCsv';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { 
   saveQuizSessionResult, 
@@ -102,7 +99,9 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   }, [phase, activeMainTab]);
 
   // Combined questions pool (P26)
-  const allQuestions = useMemo(() => [...QUIZ_QUESTIONS, ...customQuestions], [customQuestions]);
+  // Fragenpool in Teilpaketen nachgeladen (quizLader); bis dahin leer
+  const pool = useAlleFragen();
+  const allQuestions = useMemo(() => [...(pool ?? []), ...customQuestions], [pool, customQuestions]);
 
   // Unique modules list from available questions
   const availableModules = useMemo(() => {
@@ -788,7 +787,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <button
               type="button"
               onClick={() => startQuiz()}
-              className="w-full sm:w-auto px-8 py-4 bg-shiraz hover:bg-shiraz/90 text-white font-bold text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-95"
+              disabled={!pool}
+              className="w-full sm:w-auto px-8 py-4 disabled:opacity-60 disabled:cursor-wait bg-shiraz hover:bg-shiraz/90 text-white font-bold text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-95"
             >
               <span>Wissenscheck starten</span>
               <ArrowRight size={18} />

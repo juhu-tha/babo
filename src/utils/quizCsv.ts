@@ -2,7 +2,7 @@
  * Utility for CSV Export and Import of Quiz Questions according to P26.
  */
 import type { ClusterNummer } from '@/src/data/quizZuordnung';
-import { QuizQuestion, KnowledgeGapInfo, QuizCategory } from '@/src/data/quizData';
+import { QuizQuestion, KnowledgeGapInfo, QuizCategory } from '@/src/data/quizModell';
 
 export function questionsToCsv(questions: QuizQuestion[]): string {
   const headers = [

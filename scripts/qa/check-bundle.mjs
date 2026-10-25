@@ -3,7 +3,7 @@
  * Bundle-Budget (Umsetzungsplan Phase 5, AP 5.4)
  * Liest dist/ nach `npm run build` und prüft die gzip-Größen:
  *   - Einstiegs-Chunk (das <script type="module"> in dist/index.html) samt statisch importierter Chunks
- *   - größter JS-Chunk; jeder Chunk ≤ GRENZE_CHUNK, außer benannten Datenchunks mit eigener Ratsche
+ *   - größter JS-Chunk; jeder Chunk ≤ GRENZE_CHUNK (ohne Ausnahmen)
  * Die Grenzen sind eine Ratsche auf den erreichten Werten (+ kleiner Puffer): sinkt ein Wert dauerhaft,
  * die Grenze nachziehen; steigt er, ist das ein Befund (lazy laden statt Grenze anheben).
  *   node scripts/qa/check-bundle.mjs [--dist dist] [--top 10]
@@ -13,13 +13,13 @@ import path from 'path';
 import zlib from 'zlib';
 
 const KB = 1024;
-// Ratsche (gzip -9, kB) – Stand Phase 5: Einstieg 138,9 kB (vorher 638,6), größter Chunk außer Daten
-// 247,7 kB (three.js/drei, nur Holz/Mauerwerk 3D), quizData 382,0 kB
+// Ratsche (gzip -9, kB) – Stand Phase 5: Einstieg 138,9 kB (vorher 638,6), größter Chunk
+// 247,7 kB (three.js/drei, nur Holz/Mauerwerk 3D). Der Fragenpool (früher quizData 382 kB) wird seit
+// AP 5.4 je Modul (≤ 5 kB) bzw. in 4 Teilpaketen (≤ 100 kB) geladen (Vite-Plugin scripts/quizPool.ts).
 const GRENZE_EINSTIEG = 140;
 const GRENZE_CHUNK = 300;
-// Datenchunks, die (noch) über GRENZE_CHUNK liegen, mit eigener Ratsche.
-// quizData: src/data/quiz.json (Fragenpool, ~1,8 MB roh) – Aufteilung je Cluster offen.
-const AUSNAHMEN = { quizData: 385 };
+// Ausnahmen mit eigener Ratsche (Basisname des Chunks → kB); derzeit keine.
+const AUSNAHMEN = {};
 
 const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');

@@ -4,7 +4,8 @@ import {
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
   RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
 } from 'lucide-react';
-import { QUIZ_QUESTIONS, QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizData';
+import { QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizModell';
+import { useAlleFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';
 
@@ -30,6 +31,8 @@ const calculateGrade = (percent: number): { grade: string; text: string; passed:
 
 export const KlausurSimulator: React.FC = () => {
   const [phase, setPhase] = useState<'config' | 'exam' | 'result'>('config');
+  // Fragenpool in Teilpaketen nachgeladen (quizLader); null, solange er lädt
+  const alleFragen = useAlleFragen();
   
   // Configuration
   const [config, setConfig] = useState<ExamConfig>({
@@ -83,7 +86,7 @@ export const KlausurSimulator: React.FC = () => {
 
   const startExam = () => {
     // Filter questions
-    let pool = QUIZ_QUESTIONS;
+    let pool = alleFragen ?? [];
     if (config.selectedCategory !== 'all') {
       pool = pool.filter(q => q.category === config.selectedCategory);
     }
@@ -285,11 +288,12 @@ export const KlausurSimulator: React.FC = () => {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-home-grau/20">
             <div className="text-xs text-text-main/60">
-              Verfügbarer Aufgabenpool: <strong>{QUIZ_QUESTIONS.filter(q => q.verified !== false).length} fachlich geprüfte Fragen</strong> (Reviewer: Prof. Dr.-Ing. Jürgen Huber)
+              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.filter(q => q.verified !== false).length : '…'} fachlich geprüfte Fragen</strong> (Reviewer: Prof. Dr.-Ing. Jürgen Huber)
             </div>
             <button
               onClick={startExam}
-              className="w-full sm:w-auto px-8 py-3.5 bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              disabled={!alleFragen}
+              className="w-full sm:w-auto px-8 py-3.5 disabled:opacity-60 disabled:cursor-wait bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Klausur jetzt starten</span>
               <ArrowRight size={18} />

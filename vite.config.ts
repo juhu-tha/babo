@@ -2,10 +2,12 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
+import {quizPoolPlugin} from './scripts/quizPool';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    // quizPoolPlugin: Fragenpool quiz.json je Modul bzw. in Teilpaketen nachladen (docs/architektur.md)
+    plugins: [react(), tailwindcss(), quizPoolPlugin()],
     // Hinweis: GEMINI_API_KEY wird bewusst NICHT per `define` in das Frontend geschrieben.
     // Der Schlüssel wird nur im Server (server.ts) verwendet.
     resolve: {
