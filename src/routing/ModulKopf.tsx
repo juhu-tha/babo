@@ -1,4 +1,4 @@
-// Kopfbereich eines Fachmoduls: Lernziele, Kurzfassung, Erkundungsauftrag, Rechner-Haftungshinweis.
+// Kopfbereich eines Fachmoduls: Prüfvermerk, Lernziele, Kurzfassung, Erkundungsauftrag, Rechner-Haftungshinweis.
 // Wird per React.lazy geladen, damit die umfangreichen Daten (lernziele, erkundung, rechnerGrenzen,
 // kurzfassung) nicht im Einstiegs-Chunk liegen (Phase 5, AP 5.4).
 import React from 'react';
@@ -12,10 +12,15 @@ import { ErkundungsAuftrag } from '../components/ui/ErkundungsAuftrag';
 import { ModulKurzfassung } from '../components/ui/ModulKurzfassung';
 import { KURZFASSUNG } from '../data/kurzfassung';
 import { ERKUNDUNG } from '../data/erkundung';
+import { PruefVermerk } from '../components/ui/PruefVermerk';
+import { pruefvermerkFuer } from '../data/pruefvermerke';
 
 export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabId; setActiveTab: (tab: TabId) => void }) {
+  const vermerk = pruefvermerkFuer(activeTab);
   return (
     <>
+      {/* Redaktionsmodell: „fachlich geprüft am … von …“ bzw. „Prüfung ausstehend“ (Phase 6, AP 6.6) */}
+      {vermerk && <PruefVermerk vermerk={vermerk} />}
       {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
       {LERNZIELE[activeTab] && <ModulLernziele moduleId={activeTab} daten={LERNZIELE[activeTab]} oeffneModul={(id) => setActiveTab(id as TabId)} />}
       {/* „Das Wichtigste in 5 Punkten“ vor langen Modulen (Phase 3, AP 3.8) */}

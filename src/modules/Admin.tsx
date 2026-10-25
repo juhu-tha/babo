@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { adminLogin, adminLogout, verifyAdminSession } from '@/src/utils/adminAuth';
 import { FragenFreigabe } from '@/src/components/admin/FragenFreigabe';
+import { MeineModule } from '@/src/components/admin/MeineModule';
 import { 
   ShieldCheck, 
   Lock, 
@@ -90,7 +91,7 @@ export default function Admin() {
       active = false;
     };
   }, []);
-  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe'>('pruefraster');
+  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module'>('pruefraster');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -262,6 +263,16 @@ export default function Admin() {
             onClick={() => setActiveTab('fragenfreigabe')}
           >
             <ShieldCheck size={16} /> Fragenfreigabe
+          </button>
+          <button aria-pressed={activeTab === 'meine_module'}
+            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
+              activeTab === 'meine_module'
+                ? 'bg-shiraz text-white border-shiraz shadow-md'
+                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
+            }`}
+            onClick={() => setActiveTab('meine_module')}
+          >
+            <Layers size={16} /> Meine Module
           </button>
         </div>
 
@@ -684,6 +695,7 @@ export default function Beispielfach() {
 
         {/* TAB 6: TOOL-UMFANG, MODULE & CODE-STATISTIK */}
         {activeTab === 'fragenfreigabe' && <FragenFreigabe />}
+        {activeTab === 'meine_module' && <MeineModule />}
 
         {activeTab === 'code_umfang' && (
           <div className="space-y-6">
