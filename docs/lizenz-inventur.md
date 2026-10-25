@@ -74,7 +74,7 @@ Repository liegt **kein** Normtext als PDF oder Volltext. Gefunden wurden:
    selbst lizenzieren oder zustimmen muss – ist zu klären. **Blocker für MIT und CC BY-SA.**
 2. **Impressum widerspricht offener Lizenz:** „… bedürfen der schriftlichen Zustimmung des Autors“
    (`src/modules/Impressum.tsx`). Vorbereitet: Mit `LIZENZ_AKTIV = true` erscheint stattdessen
-   `IMPRESSUM_URHEBERRECHT_OFFEN` aus `src/data/lizenz.ts`.
+   `IMPRESSUM_URHEBERRECHT_OFFEN` aus `src/data/lizenzTexte.ts`.
 3. **KI-unterstützt erstellte Inhalte und Code:** Große Teile entstanden mit KI-Werkzeugen (Google AI Studio,
    Claude; siehe Commit-Historie, `GEMINI.md`). Rein maschinell erzeugte Teile sind nach h. M. nicht
    urheberrechtlich geschützt; die Lizenz greift dann nur für menschlich geprägte Anteile. Kein Hindernis für
@@ -102,6 +102,6 @@ Repository liegt **kein** Normtext als PDF oder Volltext. Gefunden wurden:
 - Marken- und Siegelnamen.
 - Schrift Inter (bleibt unter SIL OFL 1.1).
 
-Der Lizenzhinweis (`LIZENZ_AUSNAHMEN` in `src/data/lizenz.ts`) fasst diese Liste zusammen. Empfehlung: die
+Der Lizenzhinweis (`LIZENZ_AUSNAHMEN` in `src/data/lizenzTexte.ts`) fasst diese Liste zusammen. Empfehlung: die
 betroffenen Module zusätzlich im Modulfuß mit „Tabellenwerte: © DIN Media / Normungsorganisation, nicht
 CC BY-SA“ kennzeichnen (eigenes Arbeitspaket nach der Klärung).

@@ -31,7 +31,7 @@ Lizenzdateien als Entwurf in `docs/lizenz-entwurf/`). Material Dritter: `docs/li
    - Wortlaut der Definition „Nachhaltiges Bauen“ (Modul Nachhaltigkeit/Definitionen) gegen DIN EN 15643 und
      den BMWSB-Leitfaden prüfen; LAGA PN 98 einordnen lassen.
 3. **Freigabe** der Lizenzentwürfe (`docs/lizenz-entwurf/*`) und des Lizenzhinweistextes
-   (`LIZENZ_AUSNAHMEN`, `IMPRESSUM_URHEBERRECHT_OFFEN` in `src/data/lizenz.ts`) durch die THA einholen.
+   (`LIZENZ_AUSNAHMEN`, `IMPRESSUM_URHEBERRECHT_OFFEN` in `src/data/lizenzTexte.ts`) durch die THA einholen.
 4. **ORCID** von Prof. Huber bereitstellen (für `CITATION.cff` und `.zenodo.json`).
 
 ## B. Umschalten im Repository (Entwicklung, ein PR)
@@ -66,7 +66,7 @@ Zugangsdaten prüfen (z. B. mit `gitleaks`), da die gesamte Historie sichtbar wi
     `.zenodo.json` (hat Vorrang vor `CITATION.cff`, siehe Zenodo-Hilfe
     <https://help.zenodo.org/docs/github/describe-software/zenodo-json>).
 13. Konzept-DOI in `CITATION.cff` (`identifiers`), README und – falls gewünscht – in der Namensnennung
-    (`NAMENSNENNUNG` in `src/data/lizenz.ts`) eintragen; DOI-Badge im README.
+    (`NAMENSNENNUNG` in `src/data/lizenzTexte.ts`) eintragen; DOI-Badge im README.
 14. Drittlizenzen dem Release beilegen (Apache-2.0 von `xlsx`/`@google/genai` verlangt den Erhalt der
     Lizenzhinweise): Liste der Abhängigkeiten mit Lizenzen als `THIRD-PARTY-LICENSES.txt` erzeugen.
 15. Optional: Zenodo-Community (z. B. der THA, falls vorhanden) in `.zenodo.json` → `communities`.

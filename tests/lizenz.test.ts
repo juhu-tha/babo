@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { h, rendere, text, kompakt, sicher, testlauf } from './hilfen/komponenten';
 const { LicenseNotice } = await import('../src/components/ui/LicenseNotice');
-const { LIZENZ_AKTIV, LIZENZ, NAMENSNENNUNG, IMPRESSUM_URHEBERRECHT_OFFEN } = await import('../src/data/lizenz');
+const { LIZENZ_AKTIV, LIZENZ, NAMENSNENNUNG, IMPRESSUM_URHEBERRECHT_OFFEN } = await import('../src/data/lizenzTexte');
 
 const t = testlauf('Lizenzhinweis');
 

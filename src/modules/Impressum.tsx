@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Mail, MapPin, Building2, User, Link as LinkIcon, FileText, Globe } from 'lucide-react';
-import { LIZENZ_AKTIV, IMPRESSUM_URHEBERRECHT_OFFEN } from '@/src/data/lizenz';
+import { LIZENZ_AKTIV, IMPRESSUM_URHEBERRECHT_OFFEN } from '@/src/data/lizenzTexte';
 
 export default function Impressum() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LIZENZ, LIZENZ_AKTIV, LIZENZ_AUSNAHMEN } from '@/src/data/lizenz';
+import { LIZENZ, LIZENZ_AKTIV, LIZENZ_AUSNAHMEN } from '@/src/data/lizenzTexte';
 
 interface LicenseNoticeProps {
   /** Nur für Tests: überschreibt den Schalter LIZENZ_AKTIV (src/data/lizenz.ts) */
