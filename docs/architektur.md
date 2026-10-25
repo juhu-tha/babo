@@ -16,16 +16,33 @@ Stand: Phase 5 (Oktober 2026). Kurzüberblick für Pflege und Weiterentwicklung.
 | Module | `src/modules/*.tsx` | Fachmodule (Darstellung); große Teilansichten in Unterordnern (z. B. `modules/holz/HolzSchwinden3D.tsx`) |
 | Rechenkerne | `src/calc/*.ts` | reine, getestete Rechenfunktionen ohne React (Tests in `tests/`) |
 | Daten | `src/data/*` | Inhalte und Kennwerte (Quiz `quiz.json`, Lernziele, Erkundung, Rechnergrenzen, Versionen …) |
+| Fragenpool | `src/data/quiz.json` → `scripts/quizPool.ts` (Vite-Plugin) → `src/data/quizLader.ts` | Fragen im Browser je Modul bzw. in Teilpaketen nachladen (siehe unten); Typen/Kategorien in `quizModell.ts` |
 | Server | `server.ts` | Express: statische Auslieferung, Gemini-Proxy, Abstimmungen, Admin, `GET /api/health` |
 
 Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulInhalt.tsx` (lazy import und `activeTab === '<id>'`). `tests/registry.test.ts` prüft, dass jede ID dort verdrahtet ist, und dass `App.tsx` ≤ 800 Zeilen bleibt.
 
 ## Ladeverhalten (Bundle-Budget)
 
-- Einstiegs-Chunk enthält nur Layout, Navigation, Registry und React. Module, Modulkopf, Modul-Selbsttest (`quiz.json`), Abstimmungsansicht und SEO-Audit werden nachgeladen.
+- Einstiegs-Chunk enthält nur Layout, Navigation, Registry und React. Module, Modulkopf, Modul-Selbsttest, Abstimmungsansicht und SEO-Audit werden nachgeladen.
 - three.js / @react-three nur in den 3D-Teilansichten von Holz und Mauerwerk (`React.lazy` innerhalb des Moduls).
 - Große Teilansichten neuer Module ebenso per `React.lazy` + `<React.Suspense>` auslagern.
-- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg, jeder Chunk ≤ 300 kB; `quizData` mit eigener Grenze, bis `quiz.json` aufgeteilt ist).
+- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg ≤ 140 kB, jeder Chunk ≤ 300 kB, keine Ausnahmen).
+- Schriften: Inter Regular/Bold als WOFF2-Teilmenge in `public/fonts/` (`font-display: swap`, Regular per Preload). Neue Sonderzeichen außerhalb der Teilmenge erscheinen in der Fallback-Schrift – dann Teilmenge neu erzeugen (Befehl in `docs/performance.md`).
+- Messung (LCP, CLS, TBT-Näherung, Klick-Latenz): `scripts/qa/perf-messung.mjs`, Ergebnisse in `docs/performance.md`.
+
+### Fragenpool (AP 5.4)
+
+`src/data/quiz.json` ist die **einzige Quelle** der Quizfragen; Tests (`tests/quiz.test.ts`, `tests/begriffe.test.ts`) und Skripte (`scripts/quiz-freigabe.mjs`, `scripts/qa/metriken.mjs`) lesen sie direkt. Für den Browser teilt das Vite-Plugin `scripts/quizPool.ts` (eingebunden in `vite.config.ts`) die Datei beim Build und im Dev-Server in virtuelle Module – es entstehen keine generierten Dateien im Repository, also auch nichts, das veralten kann:
+
+| Virtuelles Modul | Inhalt | gzip | genutzt von |
+|---|---|---|---|
+| `virtual:quiz-pool` | Anzahl Fragen je `moduleId` + Lader | 5,5 kB (mit `quizLader`) | `ModulTest`-Kopfzeile, Lernziele-Kopfzeile, Cluster-Angabe in Aufgaben |
+| `virtual:quiz-pool/quiz-modul-<id>` | Fragen eines Moduls | 0,9–4,7 kB | `ModulTest` |
+| `virtual:quiz-pool/quiz-teil-1…4` | zusammenhängende Viertel des Pools | je 94–99 kB | Quiz, Klausursimulator, Quiz-Dashboard, Fragenfreigabe (parallel) |
+
+Zugriff im Frontend nur über `src/data/quizLader.ts`: `useModulFragen(id)`, `useAlleFragen()` (liefern `null`, solange geladen wird), `anzahlFragenModul/-Route`, `clusterDerGruppen`. `src/data/quizData.ts` (`QUIZ_QUESTIONS`, synchron, ganzer Pool) ist Tests und Node-Skripten vorbehalten; `tests/quiz.test.ts` schlägt fehl, wenn Code unter `src/` `quizData` oder `quiz.json` importiert, und prüft, dass die Teilpakete zusammen genau `quiz.json` ergeben.
+
+Verworfene Alternativen: per Skript erzeugte `src/data/quiz/<cluster>.json` (doppelter Datenbestand im Repository, Aktualitätstest nötig) und ein dynamischer Import der ganzen JSON (bliebe ein 382-kB-Chunk). Teilpakete je Cluster bräuchten im Plugin die Modul-Registry (React-Icons); die Aufteilung nach Modul (Selbsttest) bzw. nach Größe (Gesamtpool) kommt ohne aus.
 
 ## QA-Skripte
 
@@ -40,6 +57,8 @@ Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulI
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow) |
 | `node scripts/qa/e2e-smoke.mjs [--basis URL]` | E2E-Smoke: je Meta-Cluster I–VI eine Route – eine h1 mit Modultitel, keine Seitenfehler, Lernziele und Selbsttest vorhanden (Playwright, siehe unten) |
+
+| `scripts/qa/perf-messung.mjs` | LCP/CLS/TBT/Klick-Latenz mobil gedrosselt → `docs/performance.md` (Playwright, nicht in der CI) |
 
 ### Komponententests
 

@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { clusterDerGruppen as clusterIds } from '@/src/data/quizLader';
 import { AUFGABEN_QUIZ_GRUPPEN } from '@/src/data/aufgabenQuizGruppen';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, Trophy, ClipboardCheck, ArrowRight, Calculator } from 'lucide-react';
@@ -16,8 +16,7 @@ const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
 
 function clusterDerGruppen(gruppen?: string[]): string {
   if (!gruppen) return 'I–V';
-  const ids = [...new Set(QUIZ_QUESTIONS.filter(q => q.gruppe && gruppen.includes(q.gruppe)).map(q => q.clusterId))];
-  return ids.join(', ') || '–';
+  return clusterIds(gruppen).join(', ') || '–';
 }
 
 export default function Aufgaben() {

@@ -693,7 +693,8 @@ function AppContent() {
                 </div>
               </div>
             </div>
-<React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
+{/* Platzhalter mindestens bildschirmhoch: sonst steht die Fußzeile beim Nachladen im Bild und springt weg (CLS, AP 5.5) */}
+<React.Suspense fallback={<div className="flex justify-center items-start pt-32 min-h-[100svh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
           {activeTab !== 'start' && <ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} />}
           <ModulInhalt activeTab={activeTab} />
