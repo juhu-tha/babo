@@ -1,0 +1,153 @@
+import { ZEMENT_DATA } from '@/src/calc/mischung';
+
+export const zementData = ZEMENT_DATA;
+
+export const festigkeitsklassen = ['32.5 N', '32.5 R', '42.5 N', '42.5 R', '52.5 N', '52.5 R'];
+
+export const KONSISTENZ_DATA: Record<string, { label: string, waterMod: number }> = {
+  'C0': { label: 'C0 (sehr steif)', waterMod: -40 },
+  'C1': { label: 'C1 (steif)', waterMod: -30 },
+  'C2': { label: 'C2 (plastisch)', waterMod: -15 },
+  'C3': { label: 'C3 (weich)', waterMod: 0 },
+  'F1': { label: 'F1 (steif)', waterMod: -30 },
+  'F2': { label: 'F2 (plastisch)', waterMod: -15 },
+  'F3': { label: 'F3 (weich - Standard)', waterMod: 0 },
+  'F4': { label: 'F4 (sehr weich)', waterMod: 15 },
+  'F5': { label: 'F5 (fließfähig)', waterMod: 30 },
+  'F6': { label: 'F6 (sehr fließfähig)', waterMod: 45 },
+};
+
+export const KORN_WATER_BASE: Record<number, number> = {
+  8: 210,
+  16: 190,
+  32: 175
+};
+
+export const BAUTEILE = [
+  { id: 'manuell', name: 'Manuelle Eingabe', description: 'Wählen Sie die Expositionsklassen manuell aus.', classes: [] },
+  // Innenbauteile
+  { id: 'innen_trocken', name: 'Innenbauteil (trocken)', description: 'Bauteile in geschlossenen Gebäuden mit normaler Luftfeuchte (z.B. Wohnzimmerdecke, Innenwand).', classes: ['XC1'] },
+  { id: 'innen_feucht', name: 'Innenbauteil (Feuchtraum)', description: 'Bauteile in Feuchträumen (z.B. gewerbliche Küchen, Bäder, Hallenbäder).', classes: ['XC3'] },
+
+  // Außenbauteile
+  { id: 'aussen_geschuetzt', name: 'Außenbauteil (vor Regen geschützt)', description: 'Bauteile im Freien, die vor direktem Niederschlag geschützt sind (z.B. offene Hallen, unter Vordächern).', classes: ['XC3'] },
+  { id: 'aussen_beregnet', name: 'Außenbauteil (direkt beregnet)', description: 'Bauteile im Freien, die direktem Niederschlag ausgesetzt sind (z.B. Fassaden, Balkone).', classes: ['XC4', 'XF1'] },
+
+  // Fundamente & Wasser
+  { id: 'fundament', name: 'Fundament (im Erdreich)', description: 'Bauteile, die ständig im Erdreich oder Wasser liegen (ohne Frost).', classes: ['XC2'] },
+  { id: 'fundament_chemie', name: 'Fundament (schwach angreifendes Grundwasser)', description: 'Gründungsbauteile in Böden oder Grundwasser mit schwachem chemischem Angriff (z.B. Sulfattreiben).', classes: ['XC2', 'XA1'] },
+  { id: 'wasserbehaelter_offen', name: 'Offener Wasserbehälter (Süßwasser)', description: 'Wasserbecken im Freien, die Frost ausgesetzt sind, aber keinem Tausalz.', classes: ['XC4', 'XF3'] },
+  { id: 'solebad', name: 'Solebad / Thermalbad', description: 'Schwimmbecken mit chloridhaltigem Wasser (ohne Frost).', classes: ['XC2', 'XD2'] },
+
+  // Verkehr & Tausalz
+  { id: 'parkhaus', name: 'Parkhausdeck / Tiefgarage', description: 'Bauteile, die mit chloridhaltigem Wasser (Tausalz) in Kontakt kommen.', classes: ['XC3', 'XD3', 'XF2'] },
+  { id: 'brueckenkappe', name: 'Brückenkappe / Spritzwasserbereich', description: 'Bauteile an Straßen, die starkem Tausalzsprühnebel und Frost ausgesetzt sind.', classes: ['XC4', 'XD3', 'XF4'] },
+  { id: 'fahrbahndecke', name: 'Fahrbahndecke (Straße)', description: 'Betonfahrbahnen mit Frost-Tausalz-Beanspruchung und mechanischem Verschleiß.', classes: ['XC4', 'XD3', 'XF4', 'XM2'] },
+
+  // Industrie & Landwirtschaft
+  { id: 'klaeranlage', name: 'Kläranlage / Güllebehälter', description: 'Bauteile, die mäßigem chemischem Angriff durch Abwasser oder Gülle ausgesetzt sind.', classes: ['XC4', 'XA2'] },
+  { id: 'industrie_stark', name: 'Industrieanlage (starker chem. Angriff)', description: 'Bauteile, die stark angreifenden chemischen Substanzen ausgesetzt sind (z.B. Säurebecken).', classes: ['XC4', 'XA3'] },
+  { id: 'industrieboden', name: 'Industrieboden (Staplerverkehr)', description: 'Böden in Industriehallen mit mechanischer Beanspruchung (z.B. Gabelstapler mit luft- oder vulkollanbereiften Rädern).', classes: ['XC3', 'XM2'] },
+  { id: 'industrieboden_ketten', name: 'Industrieboden (Kettenfahrzeuge)', description: 'Böden mit sehr starker mechanischer Beanspruchung (z.B. Kettenfahrzeuge, Stahlrollen).', classes: ['XC3', 'XM3'] },
+
+  // Meerwasser
+  { id: 'meer_kueste', name: 'Außenbauteil in Küstennähe', description: 'Bauteile, die salzhaltiger Luft ausgesetzt sind (ohne direkten Wasserkontakt).', classes: ['XC4', 'XS1'] },
+  { id: 'meer_unterwasser', name: 'Hafenanlage (ständig unter Wasser)', description: 'Bauteile in Meerwasser, die ständig unter Wasser liegen.', classes: ['XC2', 'XS2'] },
+  { id: 'meer_tide', name: 'Hafenanlage (Tidebereich)', description: 'Bauteile in der Wechsel- oder Spritzwasserzone von Meerwasser, zusätzlich Frost ausgesetzt.', classes: ['XC4', 'XS3', 'XF4'] }
+];
+
+export const EXPOSITIONSKLASSEN: Record<string, { name: string, desc: string, wZ: number, minFestigkeit: string, minZement: number, minFestigkeitNum: number, cMin?: number, maxZement?: number }> = {
+  'XC1': { name: 'Karbonatisierung: Trocken oder ständig nass', desc: 'Innenräume mit üblicher Luftfeuchte, oder ständig unter Wasser.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 10 },
+  'XC2': { name: 'Karbonatisierung: Nass, selten trocken', desc: 'Teile von Wasserbehältern, Gründungsbauteile im feuchten Erdreich.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 20 },
+  'XC3': { name: 'Karbonatisierung: Mäßige Feuchte', desc: 'Innenräume mit hoher Luftfeuchte, offene Hallen.', wZ: 0.65, minFestigkeit: 'C20/25', minZement: 260, minFestigkeitNum: 20, cMin: 20 },
+  'XC4': { name: 'Karbonatisierung: Wechselnd nass und trocken', desc: 'Außenbauteile mit direkter Beregnung.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25, cMin: 25 },
+  
+  'XD1': { name: 'Chloride: Mäßige Feuchte', desc: 'Bauteile im Sprühnebelbereich von Verkehrsflächen.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 40 },
+  'XD2': { name: 'Chloride: Nass, selten trocken', desc: 'Solebäder, Bauteile, die chloridhaltigen Wässern ausgesetzt sind.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
+  'XD3': { name: 'Chloride: Wechselnd nass und trocken', desc: 'Parkdecks, Brückenkappen, Spritzwasserbereiche.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
+  
+  'XS1': { name: 'Meerwasser: Salzhaltige Luft', desc: 'Außenbauteile in Küstennähe.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 40 },
+  'XS2': { name: 'Meerwasser: Unter Wasser', desc: 'Bauteile in Hafenanlagen, die ständig unter Wasser liegen.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
+  'XS3': { name: 'Meerwasser: Tidebereiche', desc: 'Bauteile in der Spritzwasser- oder Wechselzone von Meerwasser.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
+  
+  'XF1': { name: 'Frost: Mäßige Wassersättigung, ohne Taumittel', desc: 'Außenbauteile (Fassaden).', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
+  'XF2': { name: 'Frost: Mäßige Wassersättigung, mit Taumittel', desc: 'Bauteile im Sprühnebelbereich von tausalzbehandelten Straßen.', wZ: 0.50, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
+  'XF3': { name: 'Frost: Hohe Wassersättigung, ohne Taumittel', desc: 'Offene Wasserbehälter, Bauteile in der Wasserwechselzone (Süßwasser).', wZ: 0.50, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
+  'XF4': { name: 'Frost: Hohe Wassersättigung, mit Taumittel', desc: 'Straßendecken, Brückenkappen, Räumflächen.', wZ: 0.50, minFestigkeit: 'C30/37 (mit LP)', minZement: 320, minFestigkeitNum: 30 },
+  
+  'XA1': { name: 'Chem. Angriff: Schwach', desc: 'Behälter für schwach angreifende Wässer/Böden.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
+  'XA2': { name: 'Chem. Angriff: Mäßig', desc: 'Kläranlagen, Güllebehälter.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35 },
+  'XA3': { name: 'Chem. Angriff: Stark', desc: 'Industrieanlagen mit starkem chemischen Angriff.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35 },
+  
+  'XM1': { name: 'Verschleiß: Mäßig', desc: 'Böden in Wohn- und Bürogebäuden.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, maxZement: 380 },
+  'XM2': { name: 'Verschleiß: Stark', desc: 'Industrieböden mit Staplerverkehr.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 380 },
+  'XM3': { name: 'Verschleiß: Sehr stark', desc: 'Böden mit Kettenfahrzeugen.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 380 },
+};
+
+export const allExpClasses = Object.keys(EXPOSITIONSKLASSEN);
+
+export type Rezeptur = {
+  name: string;
+  zementArt: string;
+  zementFestigkeit: string;
+  zement: number;
+  wz: number;
+  fa: number;
+  sf: number;
+  hues: number;
+  zusatzmittel: number;
+  luft: number;
+  groesstkorn: 8 | 16 | 32;
+  f04: number;
+  f48: number;
+  f816: number;
+  f1632: number;
+  stahlfaser?: number;
+  ppFaser?: number;
+};
+
+export const rezepturen: Record<string, Rezeptur> = {
+  'Hochbau (Standard)': {
+    name: 'Hochbau (Standard)', zementArt: 'CEM II/A', zementFestigkeit: '32.5 R', zement: 300, wz: 0.60, fa: 0, sf: 0, hues: 0, zusatzmittel: 0, luft: 2.0, groesstkorn: 16, f04: 45, f48: 20, f816: 35, f1632: 0, stahlfaser: 0, ppFaser: 0
+  },
+  'Stahlfaserbeton (Industrieboden)': {
+    name: 'Stahlfaserbeton (Industrieboden)', zementArt: 'CEM I', zementFestigkeit: '42.5 N', zement: 340, wz: 0.48, fa: 40, sf: 0, hues: 0, zusatzmittel: 2.5, luft: 1.5, groesstkorn: 16, f04: 45, f48: 25, f816: 30, f1632: 0, stahlfaser: 35, ppFaser: 0
+  },
+  'Tunnelbeton (Brandschutz PP-Faser)': {
+    name: 'Tunnelbeton (Brandschutz PP-Faser)', zementArt: 'CEM I', zementFestigkeit: '42.5 R', zement: 360, wz: 0.44, fa: 50, sf: 0, hues: 0, zusatzmittel: 3.5, luft: 2.0, groesstkorn: 16, f04: 45, f48: 20, f816: 35, f1632: 0, stahlfaser: 0, ppFaser: 1.5
+  },
+  'Ingenieurbau (Brücke)': {
+    name: 'Ingenieurbau (Brücke)', zementArt: 'CEM I', zementFestigkeit: '42.5 N', zement: 340, wz: 0.45, fa: 0, sf: 0, hues: 0, zusatzmittel: 2, luft: 2.0, groesstkorn: 32, f04: 35, f48: 15, f816: 20, f1632: 30, stahlfaser: 0, ppFaser: 0
+  },
+  'Bohrpfahl': {
+    name: 'Bohrpfahl', zementArt: 'CEM III/A', zementFestigkeit: '32.5 N', zement: 380, wz: 0.55, fa: 0, sf: 0, hues: 0, zusatzmittel: 3, luft: 2.0, groesstkorn: 16, f04: 45, f48: 20, f816: 35, f1632: 0, stahlfaser: 0, ppFaser: 0
+  },
+  'Massenbeton': {
+    name: 'Massenbeton', zementArt: 'CEM III/B', zementFestigkeit: '32.5 N', zement: 280, wz: 0.55, fa: 0, sf: 0, hues: 0, zusatzmittel: 0, luft: 2.0, groesstkorn: 32, f04: 35, f48: 15, f816: 20, f1632: 30, stahlfaser: 0, ppFaser: 0
+  },
+  'Spritzbeton': {
+    name: 'Spritzbeton', zementArt: 'CEM I', zementFestigkeit: '42.5 R', zement: 400, wz: 0.45, fa: 0, sf: 0, hues: 0, zusatzmittel: 4, luft: 2.0, groesstkorn: 8, f04: 60, f48: 40, f816: 0, f1632: 0, stahlfaser: 40, ppFaser: 0
+  },
+  'Straßendecken': {
+    name: 'Straßendecken', zementArt: 'CEM I', zementFestigkeit: '42.5 N', zement: 350, wz: 0.45, fa: 0, sf: 0, hues: 0, zusatzmittel: 1, luft: 4.5, groesstkorn: 32, f04: 30, f48: 15, f816: 25, f1632: 30, stahlfaser: 0, ppFaser: 0
+  },
+  'SVB (Selbstverdichtend)': {
+    name: 'SVB (Selbstverdichtend)', zementArt: 'CEM I', zementFestigkeit: '42.5 R', zement: 380, wz: 0.40, fa: 100, sf: 0, hues: 0, zusatzmittel: 6, luft: 2.0, groesstkorn: 16, f04: 50, f48: 20, f816: 30, f1632: 0, stahlfaser: 0, ppFaser: 0
+  },
+  'Leichtbeton (LC20/22)': {
+    name: 'Leichtbeton (LC20/22)', zementArt: 'CEM I', zementFestigkeit: '42.5 N', zement: 350, wz: 0.50, fa: 0, sf: 0, hues: 0, zusatzmittel: 3, luft: 3.0, groesstkorn: 16, f04: 40, f48: 30, f816: 30, f1632: 0, stahlfaser: 0, ppFaser: 0
+  },
+  'Infraleichtbeton (ILC)': {
+    name: 'Infraleichtbeton (ILC)', zementArt: 'CEM I', zementFestigkeit: '52.5 R', zement: 400, wz: 0.45, fa: 0, sf: 30, hues: 0, zusatzmittel: 5, luft: 4.0, groesstkorn: 16, f04: 30, f48: 35, f816: 35, f1632: 0, stahlfaser: 0, ppFaser: 0
+  },
+  'UHPC': {
+    name: 'UHPC', zementArt: 'CEM I', zementFestigkeit: '52.5 R', zement: 700, wz: 0.20, fa: 0, sf: 150, hues: 0, zusatzmittel: 20, luft: 1.5, groesstkorn: 8, f04: 100, f48: 0, f816: 0, f1632: 0, stahlfaser: 120, ppFaser: 0
+  }
+};
+
+export const FEUCHTIGKEITSKLASSEN = [
+  { id: 'WO', name: 'WO (Trocken)', desc: 'Beton, der nach dem Austrocknen während der Nutzung trocken bleibt (z.B. Innenräume).' },
+  { id: 'WF', name: 'WF (Feucht)', desc: 'Beton, der häufig oder lange feucht ist (z.B. ungeschützte Außenbauteile).' },
+  { id: 'WA', name: 'WA (Feucht + Alkalien)', desc: 'Beton, der häufig feucht ist und externe Alkalien aufnimmt (z.B. Tausalzbereiche).' },
+  { id: 'WS', name: 'WS (Feucht + Alkalien + Dynamisch)', desc: 'Wie WA, aber mit starker dynamischer mechanischer Beanspruchung (z.B. Betondecken auf Straßen).' }
+];
