@@ -58,8 +58,8 @@ const LIMITATION_CASES: LimitationCase[] = [
     title: 'Zitieren veralteter / zurückgezogener Normen',
     problemDescription: 'Trainingsdatensätze enthalten historische Baufachbücher, alte Foreneinträge und veraltete DIN-Normen. Das LLM "weiß" ohne Retrieval nicht, welche Normausgabe heute gilt.',
     kiClaim: '"Die Abdichtung erdberührter Bauteile gegen Bodenfeuchte erfolgt gemäß DIN 18195-4."',
-    realityCheck: 'VERALTET! Die DIN 18195 wurde bereits im Juli 2017 grundlegend umstrukturiert. Erdberührte Bauwerksabdichtungen werden heute verbindlich nach der Normenreihe DIN 18533 (Teile 1 bis 3) geregelt. Die alte DIN 18195 fungiert nur noch als Bezeichnungs- und Begriffsnorm.',
-    normReference: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)',
+    realityCheck: 'VERALTET! Die DIN 18195 wurde bereits im Juli 2017 grundlegend umstrukturiert. Erdberührte Bauwerksabdichtungen werden heute verbindlich nach der Normenreihe DIN 18533 (Teile 1 bis 3, aktuelle Ausgabe 2026-06) geregelt. Die DIN 18195 (aktuell 2025-12) fungiert nur noch als Bezeichnungs- und Begriffsnorm.',
+    normReference: 'DIN 18533-1:2026-06 (Abdichtung von erdberührten Bauteilen)',
     preventionGuideline: 'Jede zitierte Norm in der aktuellen Baunormen-Datenbank (z. B. DIN Media / Beuth, Perinorm) auf Gültigkeitsstatus und Ausgabedatum gegenprüfen.'
   },
   {

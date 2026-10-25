@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import type { UI_EN } from '../i18n/translations';
 import { UI_DE } from '../i18n/uiDe';
+import type * as EnTexte from '../i18n/translations';
 
-// Englische Texte nur bei Bedarf laden (Phase 5, AP 5.5 Nachtrag); bis zum Eintreffen gelten die deutschen.
-type Englisch = typeof import('../i18n/translations');
-let englisch: Englisch | undefined;
-const ladeEnglisch = () => import('../i18n/translations').then(m => (englisch = m));
+// Englische Texte erst bei Bedarf laden (Bundle-Budget Einstieg, AP 6.1); bis dahin deutsche Beschriftungen.
+type EnPaket = typeof EnTexte;
+let enGeladen: EnPaket | undefined;
+const ladeEn = (): Promise<EnPaket> => import('../i18n/translations').then(m => (enGeladen = m));
 
 export type Language = 'de' | 'en';
 
@@ -13,7 +13,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: (key: keyof typeof UI_EN, fallback?: string) => string;
+  t: (key: keyof typeof EnTexte.UI_EN, fallback?: string) => string;
   getTabLabel: (tabId: string, defaultLabel: string) => string;
   getGroupName: (groupName: string) => string;
   getClusterName: (clusterId: string, defaultName: string) => string;
@@ -35,17 +35,14 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   });
 
   const [isDeepTranslating, setIsDeepTranslating] = useState<boolean>(false);
-  const [en, setEn] = useState<Englisch | undefined>(englisch);
+  const [en, setEn] = useState<EnPaket | undefined>(enGeladen);
+
   useEffect(() => {
     if (language !== 'en' || en) return;
     let aktiv = true;
-    ladeEnglisch().then(m => { if (aktiv) setEn(m); }).catch(() => {});
+    ladeEn().then(m => { if (aktiv) setEn(m); }, e => console.error('Englische Texte konnten nicht geladen werden', e));
     return () => { aktiv = false; };
   }, [language, en]);
-  const UI_EN_: Partial<typeof UI_EN> = en?.UI_EN ?? {};
-  const GROUP_EN: Record<string, string> = en?.GROUP_EN ?? {};
-  const CLUSTER_EN: Record<string, string> = en?.CLUSTER_EN ?? {};
-  const TAB_EN: Record<string, string> = en?.TAB_EN ?? {};
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -60,34 +57,33 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     setLanguage(nextLang);
   };
 
-  const t = (key: keyof typeof UI_EN, fallback?: string): string => {
-    const enText = UI_EN_[key];
-    if (language === 'en' && enText) {
-      return enText;
+  const t = (key: keyof typeof EnTexte.UI_EN, fallback?: string): string => {
+    if (language === 'en' && en?.UI_EN[key]) {
+      return en.UI_EN[key];
     }
     if (language === 'de' && UI_DE[key]) {
       return UI_DE[key];
     }
-    return fallback || UI_DE[key] || UI_EN_[key] || String(key);
+    return fallback || UI_DE[key] || en?.UI_EN[key] || String(key);
   };
 
   const getTabLabel = (tabId: string, defaultLabel: string): string => {
-    if (language === 'en' && TAB_EN[tabId]) {
-      return TAB_EN[tabId];
+    if (language === 'en' && en?.TAB_EN[tabId]) {
+      return en.TAB_EN[tabId];
     }
     return defaultLabel;
   };
 
   const getGroupName = (groupName: string): string => {
-    if (language === 'en' && GROUP_EN[groupName]) {
-      return GROUP_EN[groupName];
+    if (language === 'en' && en?.GROUP_EN[groupName]) {
+      return en.GROUP_EN[groupName];
     }
     return groupName;
   };
 
   const getClusterName = (clusterId: string, defaultName: string): string => {
-    if (language === 'en' && CLUSTER_EN[clusterId]) {
-      return CLUSTER_EN[clusterId];
+    if (language === 'en' && en?.CLUSTER_EN[clusterId]) {
+      return en.CLUSTER_EN[clusterId];
     }
     return defaultName;
   };

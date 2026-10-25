@@ -741,7 +741,7 @@ export default function WeitereOrganik() {
         regelwerke={[
           { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)' },
           { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02)' },
-          { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)' }
+          { title: 'DIN 18531-1 bis -5 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen; Teil 1:2025-08)' }
         ]}
         literatur={[
           'Schunck, E.; Oster, H. J.; Barthel, R.; Kießl, K.: Dach Atlas – Geneigte Dächer. München: Edition Detail (aktuelle Auflage)',

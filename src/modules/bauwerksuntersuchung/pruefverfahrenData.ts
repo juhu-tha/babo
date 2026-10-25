@@ -319,7 +319,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Gefahr von Querschnittsfehlern bei unzureichend verankertem Bohrstativ (Riffelungen am Zylindermantel).',
       'Bewehrungstreffer im Bohrkern verfälschen das Bruchbild und führen zur Ungültigkeit der Druckprüfung.'
     ],
-    referenceValues: 'Druckfestigkeitsklassen nach DIN EN 206-1: C20/25 (f_ck,cyl = 20 N/mm², f_ck,cube = 25 N/mm²); C30/37 (f_ck,cyl = 30 N/mm²); C50/60 (f_ck,cyl = 50 N/mm²). Nach DIN EN 13791 Tab. 1 gilt eine Druckfestigkeitsklasse als erreicht, wenn f_ck,is ≥ 0,85 · f_ck (Verhältnis Bauwerk/Normprobekörper – nicht der Dauerstandsbeiwert α_cc aus EC2).',
+    referenceValues: 'Druckfestigkeitsklassen nach DIN EN 206: C20/25 (f_ck,cyl = 20 N/mm², f_ck,cube = 25 N/mm²); C30/37 (f_ck,cyl = 30 N/mm²); C50/60 (f_ck,cyl = 50 N/mm²). Nach DIN EN 13791 Tab. 1 gilt eine Druckfestigkeitsklasse als erreicht, wenn f_ck,is ≥ 0,85 · f_ck (Verhältnis Bauwerk/Normprobekörper – nicht der Dauerstandsbeiwert α_cc aus EC2).',
     interactiveType: 'bohrkern'
   },
 

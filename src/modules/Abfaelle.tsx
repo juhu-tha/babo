@@ -347,7 +347,7 @@ export default function Abfaelle() {
           aktiv={aktiveGruppe.id}
           onWechsel={(id) => setActiveTab(gruppen.find(g => g.id === id)!.bereiche[0])}
           variante="kachel"
-          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 lg:[&>[role=tablist]]:grid-cols-4"
+          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 lg:[&>[role=tablist]]:grid-cols-4"
         >
         <div className="p-6">
           <UnterReiter tabs={unterReiter} aktiv={activeTab} onWechsel={setActiveTab} label={`Bereiche: ${aktiveGruppe.label}`}>

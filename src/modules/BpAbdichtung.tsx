@@ -1319,8 +1319,8 @@ export default function BpAbdichtung() {
           'Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18533-1 bis -3:2023 (Abdichtung von erdberührten Bauteilen)' }, 
-          { title: 'DIN 18534 (Abdichtung von Innenräumen)' },
+          { title: 'DIN 18533-1 bis -3:2026-06 (Abdichtung von erdberührten Bauteilen; Riss- und Rissüberbrückungsklassen zusammengeführt, „Wasserbeanspruchungsklassen“)' },
+          { title: 'DIN 18534-1 bis -6:2025-10 (Abdichtung von Innenräumen)' },
           { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Injektion von Betonbauteilen)' },
           { title: 'DIN 18197 (Abdichten von Fugen in Beton mit Fugenbändern)' },
           { title: 'ZTV-ING Teil 3 Abschnitt 5 (Füllen von Rissen und Hohlräumen in Betonbauteilen)' },

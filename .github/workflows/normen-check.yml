@@ -1,0 +1,105 @@
+# Halbjährlicher Normen- und Rechtsstand-Check (Umsetzungsplan Phase 6, AP 6.7)
+# Vorgehen und Quellen: docs/normen-check/README.md
+name: Normen-Check
+
+on:
+  schedule:
+    # 1. März und 1. September, 05:17 UTC (krumme Minute: weniger Last auf den Quellen und bei GitHub)
+    - cron: '17 5 1 3,9 *'
+  workflow_dispatch:
+    inputs:
+      ohne_dinmedia:
+        description: 'DIN Media nicht abfragen (nur manuelle Prüfliste)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: normen-check
+  cancel-in-progress: false
+
+jobs:
+  normen-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # Keine npm-Abhängigkeiten nötig (nur Node-Bordmittel)
+      - name: Abruf-Cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/normen-check
+          key: normen-check-${{ github.run_id }}
+          restore-keys: normen-check-
+
+      - name: Normen-Check ausführen
+        id: check
+        run: |
+          set +e
+          node scripts/qa/normen-check.mjs --pr-body "$RUNNER_TEMP/pr-body.md" ${{ inputs.ohne_dinmedia && '--ohne-dinmedia' || '' }}
+          code=$?
+          echo "exitcode=$code" >> "$GITHUB_OUTPUT"
+          # 2 = keine Quelle erreichbar → Bericht trotzdem als PR (manuelle Prüfliste), zusätzlich Issue
+          if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then exit "$code"; fi
+
+      - name: Branch und Pull Request anlegen
+        id: pr
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- docs/normen-check docs/quiz-pruefhinweise.md)" ]; then
+            echo "Keine Änderungen gegenüber dem letzten Lauf."
+            echo "erstellt=keine_aenderung" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          basis="${GITHUB_REF_NAME}"
+          branch="normen-check/$(date -u +%Y-%m-%d)"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then branch="${branch}-${GITHUB_RUN_ID}"; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add docs/normen-check docs/quiz-pruefhinweise.md
+          git commit -m "Normen-Check $(date -u +%Y-%m): Bericht und Prüfliste" -m "Automatischer Lauf ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          git push origin "$branch"
+          {
+            cat "$RUNNER_TEMP/pr-body.md"
+            echo
+            echo "Workflow-Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > "$RUNNER_TEMP/pr-body-voll.md"
+          titel="Normen-Check $(date -u +%Y-%m): ${{ steps.check.outputs.handlungsbedarf || '?' }} Punkte mit Handlungsbedarf"
+          if url=$(gh pr create --base "$basis" --head "$branch" --title "$titel" --body-file "$RUNNER_TEMP/pr-body-voll.md"); then
+            echo "PR: $url"
+            echo "erstellt=pr" >> "$GITHUB_OUTPUT"
+            echo "url=$url" >> "$GITHUB_OUTPUT"
+          else
+            # z. B. wenn „Allow GitHub Actions to create and approve pull requests“ deaktiviert ist
+            echo "PR konnte nicht angelegt werden – Issue folgt."
+            echo "erstellt=branch" >> "$GITHUB_OUTPUT"
+            echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Issue anlegen (keine Quelle erreichbar, kein PR möglich oder Fehler)
+        if: always() && (failure() || steps.check.outputs.exitcode == '2' || steps.pr.outputs.erstellt == 'branch')
+        run: |
+          {
+            echo "Der halbjährliche Normen-Check (AP 6.7) konnte nicht vollständig automatisch abgeschlossen werden."
+            echo
+            echo "- Exit-Code Skript: ${{ steps.check.outputs.exitcode || 'nicht erreicht' }} (2 = keine Quelle erreichbar)"
+            echo "- Ergebnis PR-Schritt: ${{ steps.pr.outputs.erstellt || 'nicht ausgeführt' }} ${{ steps.pr.outputs.url }}"
+            if [ -n "${{ steps.pr.outputs.branch }}" ]; then echo "- Bericht liegt auf Branch \`${{ steps.pr.outputs.branch }}\` – PR bitte manuell anlegen."; fi
+            echo "- Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo
+            echo "Bitte die manuelle Prüfliste im Bericht abarbeiten (docs/normen-check/README.md)."
+            if [ -f "$RUNNER_TEMP/pr-body.md" ]; then echo; cat "$RUNNER_TEMP/pr-body.md"; fi
+          } > "$RUNNER_TEMP/issue.md"
+          gh issue create --title "Normen-Check $(date -u +%Y-%m): manuelle Prüfung erforderlich" --body-file "$RUNNER_TEMP/issue.md"

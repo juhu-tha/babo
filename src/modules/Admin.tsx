@@ -42,7 +42,7 @@ Jedes einzelne Fachmodul wird zwingend anhand folgender 6 Qualitätsdimensionen 
         und mechanischen Gleichungen.
       - Aktualität aller Regelwerke nach neuester Ausgabegeneration (DIN Media / Beuth / ISO)
         inklusive exakter Jahres- und Monatsangabe (z.B. DIN EN 1992-1-1:2023-08,
-        DIN 1045-2:2023-08, DIN EN 1995-1-1:2024-03).
+        DIN 1045-2:2023-08, DIN EN 1995-1-1:2026-09).
       - Bereinigung veralteter Normzitate und ungenauer Kennwerte.
 
   [2] DIDAKTIK & VERSTÄNDLICHKEIT:

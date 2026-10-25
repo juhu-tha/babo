@@ -1,4 +1,4 @@
-// Deutsche UI-Texte (Einstieg). Englische Übersetzungen in ./translations.ts werden nur bei Bedarf geladen.
+// Deutsche UI-Texte (Standardsprache, im Einstieg). Englisch: ./translations.ts, nur bei Bedarf nachgeladen.
 import type { UI_EN } from './translations';
 
 export const UI_DE: Record<keyof typeof UI_EN, string> = {

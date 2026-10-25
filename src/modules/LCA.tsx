@@ -361,7 +361,7 @@ export default function LCA() {
               <div className="border-l-4 border-amber-600 pl-3 text-xs bg-amber-50/40 p-2.5 rounded-r-lg">
                 <strong className="text-slate-900 block font-bold flex items-center gap-1.5">
                   <Milestone size={13} className="text-amber-700" />
-                  DIN EN 17472:2022-09 (Ingenieurbauwerke &amp; Infrastruktur)
+                  DIN EN 17472:2024-06 (Ingenieurbauwerke &amp; Infrastruktur)
                 </strong>
                 <span className="text-slate-700 leading-relaxed block mt-1">
                   Europäisches Pendant zu EN 15978 für Brücken, Tunnel, Straßen, Bahntrassen und Wasserbauten. Wesentliche Spezifika: Betrachtungszeitraum typisch <strong>80–100+ Jahre</strong> (DIN EN 1990 Auslegungskategorie 5), Dominanz periodischer Bauteilaustauschzyklen (Lager, Fahrbahnübergänge, Asphaltschichten, Korrosionsschutz B2–B5) sowie Quantifizierung von <strong>baustellenbedingten Stau- und Nutzeremissionen (Modul B8)</strong>.
@@ -1342,7 +1342,7 @@ export default function LCA() {
           { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)' },
           { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)' },
           { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)' },
-          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
+          { title: 'DIN EN 17472:2024-06 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
           { title: 'QNG Handbuch: Bilanzierungsregeln für Gebäude-Ökobilanzen', url: 'https://www.qng.info/' }
         ]}
         weblinks={[
@@ -1365,7 +1365,7 @@ export default function LCA() {
           {
             formel: 'GWP_{\\text{Ing}} = \\frac{\\text{GWP}_{\\text{A1-A5}} + \\sum_{k} \\text{GWP}_{\\text{B2-B5},k} + \\text{GWP}_{\\text{B8}} + \\text{GWP}_{\\text{C1-C4}}}{A_{\\text{Deck}} \\cdot t_{\\text{ref}}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]',
             erklaerung: 'Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken nach DIN EN 17472 über 80 bis 100 Jahre (DIN EN 1990) unter Berücksichtigung von periodischen Austauschzyklen (B2-B5) und baustellenbedingten Stau- und Nutzeremissionen (Modul B8).',
-            quelle: 'DIN EN 17472:2022-09'
+            quelle: 'DIN EN 17472:2024-06'
           }
         ]}
       />
