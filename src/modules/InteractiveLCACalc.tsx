@@ -872,7 +872,7 @@ export default function InteractiveLCACalc() {
         regelwerke={[
           { title: "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)" },
           { title: "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)" },
-          { title: "DIN EN 17472:2022-09 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)" },
+          { title: "DIN EN 17472:2024-06 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)" },
           { title: "Qualitätssiegel Nachhaltiges Gebäude (QNG Anhangdokument 3.1.1, Stand 2026)", url: "https://www.qng.info/" },
           { title: "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)" },
           { title: "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)", url: "https://www.oekobaudat.de/" }

@@ -17,12 +17,12 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   'DIN_EN_206': {
     id: 'DIN_EN_206',
-    code: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08',
+    code: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)',
     title: 'Beton - Festlegung, Eigenschaften, Herstellung und Konformität',
     category: 'beton',
     ausgabeStand: '2023-08',
     status: 'gueltig',
-    beschreibung: 'Zentrales Regelwerk für Expositionsklassen (XC, XD, XS, XF, XA, XM), w/z-Werte, Mindestdruckfestigkeiten und Konformitätskriterien im DACH-Raum.',
+    beschreibung: 'Zentrales Regelwerk für Expositionsklassen (XC, XD, XS, XF, XA, XM), w/z-Werte, Mindestdruckfestigkeiten und Konformitätskriterien im DACH-Raum. Maßgebend bleibt die aufeinander abgestimmte Kombination DIN EN 206:2021-06 mit DIN 1045-2:2023-08. Neue Ausgabe 2026-07 erschienen (EN 206 in Teile 1 bis 3 aufgeteilt; DIN EN 206-1 und -2 ersetzen DIN EN 206:2021-06 teilweise; u. a. neue Bindemittel-Terminologie und CO2-Klassen); die passende Neufassung von DIN 1045-2 und die bauaufsichtliche Einführung stehen noch aus.',
     relevanteModule: ['beton_a_z', 'mischungsberechnung', 'dauerhaftigkeit', 'labor', 'sonderbetone']
   },
   'DIN_1045_3': {
@@ -118,6 +118,90 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
 
   // -------------------------------------------------------------
+  // PRÜFNORMEN BETON, ZEMENT & KORROSION (Versuchs-Handouts, AP 6.4; Ausgaben geprüft 10/2026)
+  // -------------------------------------------------------------
+  'DIN_EN_12350_1': {
+    id: 'DIN_EN_12350_1',
+    code: 'DIN EN 12350-1:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 1: Probenahme und Prüfgeräte',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Probenahme von Frischbeton (Stichprobe, Sammelprobe) und gemeinsame Anforderungen an die Prüfgeräte der Normenreihe.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_5': {
+    id: 'DIN_EN_12350_5',
+    code: 'DIN EN 12350-5:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 5: Ausbreitmaß',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Ausbreitversuch auf dem Ausbreittisch (15 Hübe) zur Bestimmung der Konsistenz; Ergebnis als Mittel zweier Durchmesser auf 10 mm.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_6': {
+    id: 'DIN_EN_12350_6',
+    code: 'DIN EN 12350-6:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 6: Frischbetonrohdichte',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Bestimmung der Rohdichte von verdichtetem Frischbeton in einem kalibrierten Behälter.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_7': {
+    id: 'DIN_EN_12350_7',
+    code: 'DIN EN 12350-7:2022-05',
+    title: 'Prüfung von Frischbeton - Teil 7: Luftgehalt - Druckverfahren (EN 12350-7:2019 + AC:2022)',
+    category: 'beton',
+    ausgabeStand: '2022-05',
+    status: 'gueltig',
+    beschreibung: 'Luftgehalt von verdichtetem Frischbeton mit Normal- oder Schwerzuschlag nach dem Wassersäulen- bzw. Druckausgleichsverfahren.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12390_2': {
+    id: 'DIN_EN_12390_2',
+    code: 'DIN EN 12390-2:2019-10',
+    title: 'Prüfung von Festbeton - Teil 2: Herstellung und Lagerung von Probekörpern für Festigkeitsprüfungen',
+    category: 'beton',
+    ausgabeStand: '2019-10',
+    status: 'gueltig',
+    beschreibung: 'Herstellung, Verdichtung und Lagerung von Probekörpern; nationaler Anhang zur Trockenlagerung (f_c,dry) und deren Umrechnung.',
+    relevanteModule: ['labor_druckfestigkeit', 'festbeton']
+  },
+  'DIN_EN_12390_3': {
+    id: 'DIN_EN_12390_3',
+    code: 'DIN EN 12390-3:2019-10',
+    title: 'Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern',
+    category: 'beton',
+    ausgabeStand: '2019-10',
+    status: 'gueltig',
+    beschreibung: 'Druckprüfung an Würfeln und Zylindern mit Belastungsrate (0,6 ± 0,2) MPa/s, Beurteilung der Bruchbilder.',
+    relevanteModule: ['labor_druckfestigkeit', 'festbeton', 'mechanische_pruefungen']
+  },
+  'DIN_EN_196_1': {
+    id: 'DIN_EN_196_1',
+    code: 'DIN EN 196-1:2016-11',
+    title: 'Prüfverfahren für Zement - Teil 1: Bestimmung der Festigkeit',
+    category: 'beton',
+    ausgabeStand: '2016-11',
+    status: 'gueltig',
+    beschreibung: 'Normmörtel (450 g Zement, 1350 g CEN-Normsand, 225 g Wasser), Prismen 40 × 40 × 160 mm, Biegezug- und Druckfestigkeit; Entwurf prEN 196-1:2026 liegt vor.',
+    relevanteModule: ['labor_moertelprismen', 'bindemittel']
+  },
+  'DIN_EN_ISO_8407': {
+    id: 'DIN_EN_ISO_8407',
+    code: 'DIN EN ISO 8407:2025-08',
+    title: 'Korrosion von Metallen und Legierungen - Entfernen von Korrosionsprodukten von Korrosionsprüfkörpern (ISO 8407:2021 + Amd 1:2025)',
+    category: 'metall',
+    ausgabeStand: '2025-08',
+    status: 'gueltig',
+    beschreibung: 'Chemische, elektrolytische und mechanische Verfahren zum Entfernen von Korrosionsprodukten vor der gravimetrischen Auswertung, mit Blindwertkorrektur.',
+    relevanteModule: ['labor_auslagerung', 'metallkorrosion']
+  },
+
+  // -------------------------------------------------------------
   // MAUERWERKSBAU
   // -------------------------------------------------------------
   'DIN_EN_1996_1_1': {
@@ -156,12 +240,12 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   'DIN_EN_1995_1_1': {
     id: 'DIN_EN_1995_1_1',
-    code: 'DIN EN 1995-1-1:2010-12 (Eurocode 5)',
+    code: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (eingeführt) / DIN EN 1995-1-1:2026-09 (2. Generation)',
     title: 'Bemessung und Konstruktion von Holzbauten - Allgemeine Regeln',
     category: 'holz',
-    ausgabeStand: '2010-12',
-    status: 'in_ueberarbeitung',
-    beschreibung: 'Planung, Bemessung und Detailkonstruktionen von Holzkonstruktionen und Ingenieurholzbau-Systemen.',
+    ausgabeStand: '2026-09',
+    status: 'gueltig',
+    beschreibung: 'Planung, Bemessung und Detailkonstruktionen von Holzkonstruktionen und Ingenieurholzbau-Systemen. Bauaufsichtlich eingeführt (MVV TB 2025/1) ist DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08. Neue Ausgabe 2026-09 erschienen (2. Generation, Deutsche Fassung EN 1995-1-1:2025, u. a. Brettsperrholz, Ermüdung, Holzpfähle); bauaufsichtlich noch nicht eingeführt, NA ausstehend.',
     relevanteModule: ['holz', 'holzwerkstoffe', 'holzbau_beta', 'knicken']
   },
   'DIN_1052': {
@@ -171,7 +255,8 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2008-12',
     status: 'ersetzt',
-    ersetztDurch: 'DIN EN 1995-1-1 mit NA und DIN 1052-10:2012-05',
+    ersetztDurch: 'DIN EN 1995-1-1:2010-12 mit NA und DIN 1052-10:2012-05',
+    url: 'https://www.dinmedia.de/de/norm/din-1052/112565498',
     beschreibung: 'Frühere nationale Holzbau-Bemessungsnorm (zurückgezogen); seit Einführung von Eurocode 5 nur noch für die Beurteilung von Bestandsstatiken relevant. Ausführungsregeln: DIN 1052-10.',
     relevanteModule: ['holz', 'holzwerkstoffe']
   },
@@ -187,7 +272,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_EN_300': {
     id: 'DIN_EN_300',
-    code: 'DIN EN 300:2006-09 / DIN EN 310',
+    code: 'DIN EN 300:2006-09 / DIN EN 310:1993-08',
     title: 'Platten aus langen, flachen, ausgerichteten Spänen (OSB)',
     category: 'holz',
     ausgabeStand: '2006-09',
@@ -221,20 +306,20 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_EN_10025': {
     id: 'DIN_EN_10025',
-    code: 'DIN EN 10025-1 bis -6:2019-10',
+    code: 'DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06',
     title: 'Warmgewalzte Erzeugnisse aus Baustählen',
     category: 'metall',
-    ausgabeStand: '2019-10',
+    ausgabeStand: '2023-06',
     status: 'gueltig',
     beschreibung: 'Materialspezifikation für Baustähle wie S235, S355 inklusive Schweißeignung und Kerbschlagarbeit.',
     relevanteModule: ['metalle', 'stahl', 'bp_stahlbauprofile']
   },
   'DIN_EN_ISO_12944': {
     id: 'DIN_EN_ISO_12944',
-    code: 'DIN EN ISO 12944-1 bis -9:2018-06',
+    code: 'DIN EN ISO 12944-1:2019-01 (Teil 1; Reihe Teile 1 bis 9)',
     title: 'Korrosionsschutz von Stahlbauten durch Beschichtungssysteme',
     category: 'metall',
-    ausgabeStand: '2018-06',
+    ausgabeStand: '2019-01',
     status: 'gueltig',
     beschreibung: 'Definiert die Korrosivitätskategorien (C1 bis C5-M) und beschreibt geeignete Beschichtungen zum langfristigen Stahlschutz.',
     relevanteModule: ['metallkorrosion', 'korrosion', 'instandsetzung_materialien']
@@ -285,12 +370,12 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_4102_1': {
     id: 'DIN_4102_1',
-    code: 'DIN 4102-1 bis -22',
+    code: 'DIN 4102-1:1998-05 (Teil 1; Reihe Teile 1 bis 22)',
     title: 'Brandverhalten von Baustoffen und Bauteilen',
     category: 'bauphysik',
-    ausgabeStand: '2016-05',
+    ausgabeStand: '1998-05',
     status: 'gueltig',
-    beschreibung: 'Nationale Baustoffklassen (A1, A2, B1, B2, B3) und Feuerwiderstandsklassen (F30 bis F120) von Bauteilen im Hochbau.',
+    beschreibung: 'Nationale Baustoffklassen (A1, A2, B1, B2, B3) nach Teil 1 und Feuerwiderstandsklassen (F30 bis F120) von Bauteilen im Hochbau. DIN 4102-1:1998-05 ist aktuell, aber teilweise durch DIN EN 13238:2001-12 ersetzt (Konditionierung und Trägerplatten für Prüfungen).',
     relevanteModule: ['brandschutz', 'daemmstoffe']
   },
   'DIN_EN_13501_1': {
@@ -305,37 +390,37 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_18531': {
     id: 'DIN_18531',
-    code: 'DIN 18531:2017-07',
+    code: 'DIN 18531-1:2025-08 (Reihe Teile 1 bis 5)',
     title: 'Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen',
     category: 'bauphysik',
-    ausgabeStand: '2017-07',
+    ausgabeStand: '2025-08',
     status: 'gueltig',
-    beschreibung: 'Regelt Planung, Stoffauswahl, Bemessung und Ausführung von flachen und geneigten Dach- sowie Balkonabdichtungen.',
+    beschreibung: 'Regelt Planung, Stoffauswahl, Bemessung und Ausführung von flachen und geneigten Dach- sowie Balkonabdichtungen. Neuausgabe 2025 als Normenreihe DIN 18531-1 bis -5 (Teil 1: nicht genutzte und genutzte Dächer; Teil 5: Balkone, Loggien, Laubengänge); gegenüber 2017-07 entfallen Beanspruchungsstufen, Beanspruchungsklassen und die Anwendungsklassen K1/K2, die Gefälleregeln wurden überarbeitet.',
     relevanteModule: ['feuchteschutz', 'bauphysik', 'ausbau']
   },
   'DIN_18533': {
     id: 'DIN_18533',
-    code: 'DIN 18533-1 bis -3:2017-07',
+    code: 'DIN 18533-1 bis -3:2026-06',
     title: 'Abdichtung von erdberührten Bauteilen',
     category: 'bauphysik',
-    ausgabeStand: '2017-07',
+    ausgabeStand: '2026-06',
     status: 'gueltig',
-    beschreibung: 'Wassereinwirkungsklassen W1.1-E bis W4-E, Rissüberbrückungsklassen und Abdichtungsstoffe für Keller und Bodenplatten.',
+    beschreibung: 'Wasserbeanspruchungsklassen W1-E bis W4-E (bis 2017-07: „Wassereinwirkungsklassen“), Rissklassen und Abdichtungsstoffe für Keller und Bodenplatten. Ausgabe 2026-06 ersetzt DIN 18533-1:2017-07 und A1:2018-09: Riss- und Rissüberbrückungsklassen zusammengeführt, Wasser aus dem Baugrund aus DIN 4095-1 übernommen, Tür- und Fensteranschlüsse mit DIN 18531/18532 abgestimmt.',
     relevanteModule: ['feuchteschutz', 'bauphysik', 'wu_bauwerke', 'instandsetzung_materialien']
   },
   'DIN_18534': {
     id: 'DIN_18534',
-    code: 'DIN 18534-1 bis -6:2017-07',
+    code: 'DIN 18534-1 bis -6:2025-10',
     title: 'Abdichtung von Innenräumen',
     category: 'bauphysik',
-    ausgabeStand: '2017-07',
+    ausgabeStand: '2025-10',
     status: 'gueltig',
-    beschreibung: 'Regelt Abdichtungskonzepte für Nassbereiche im Hochbau wie gewerbliche Küchen, Schwimmbeckenränder und häusliche Badezimmer.',
+    beschreibung: 'Regelt Abdichtungskonzepte für Nassbereiche im Hochbau wie gewerbliche Küchen, Schwimmbeckenränder und häusliche Badezimmer (Wassereinwirkungsklassen W0-I bis W3-I). Ausgabe 2025-10 ersetzt 2017-07; u. a. präzisierte Regeln für W1-I-Wände im Trockenbau, Untergründe in W2-I, nachträgliche Durchdringungen und Schnittschutz unter Wartungsfugen.',
     relevanteModule: ['feuchteschutz', 'ausbau']
   },
   'DIN_18535': {
     id: 'DIN_18535',
-    code: 'DIN 18535:2017-07',
+    code: 'DIN 18535-1 bis -3:2017-07',
     title: 'Abdichtung von Behältern und Becken',
     category: 'bauphysik',
     ausgabeStand: '2017-07',
@@ -345,12 +430,12 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_18195': {
     id: 'DIN_18195',
-    code: 'DIN 18195:2017-07',
-    title: 'Bauwerksabdichtung - Begriffe',
+    code: 'DIN 18195:2025-12',
+    title: 'Abdichtung von Bauwerken - Begriffe',
     category: 'bauphysik',
-    ausgabeStand: '2017-07',
+    ausgabeStand: '2025-12',
     status: 'gueltig',
-    beschreibung: 'Die traditionsreiche Grundlagennorm zur Definition aller zentralen Abkürzungen und verfahrenstechnischen Begriffe im Feuchteschutz.',
+    beschreibung: 'Die traditionsreiche Grundlagennorm zur Definition aller zentralen Abkürzungen und verfahrenstechnischen Begriffe im Feuchteschutz. Ausgabe 2025-12 ersetzt 2017-07, ergänzt u. a. Bemessungswasserstand, Kapillarsperre, Retention und Schutzabdeckung sowie einen Anhang A mit Erläuterungen zu den Hauptbegriffen.',
     relevanteModule: ['feuchteschutz', 'bauphysik']
   },
 
@@ -477,10 +562,10 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_EN_17472': {
     id: 'DIN_EN_17472',
-    code: 'DIN EN 17472:2022-09',
+    code: 'DIN EN 17472:2024-06 (berichtigte Fassung von 2022-09)',
     title: 'Nachhaltigkeit von Bauwerken - Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden',
     category: 'nachhaltigkeit',
-    ausgabeStand: '2022-09',
+    ausgabeStand: '2024-06',
     status: 'gueltig',
     beschreibung: 'Europäische Norm zur Nachhaltigkeits- und Ökobilanzierung von Ingenieurbauwerken (Brücken, Tunnel, Straßen, Bahntrassen) über 80-100 Jahre Betrachtungszeitraum inkl. Baustellen-Stauemissionen (Modul B8).',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
@@ -511,12 +596,12 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_18203': {
     id: 'DIN_18203',
-    code: 'DIN 18203-1 bis -3:2014-08',
+    code: 'DIN 18203-3:2008-08 (Teile 1 und 2 zurückgezogen)',
     title: 'Toleranzen im Hochbau - Vorgefertigte Bauteile',
     category: 'qualitaet',
-    ausgabeStand: '2014-08',
+    ausgabeStand: '2008-08',
     status: 'gueltig',
-    beschreibung: 'Regelt Detailtoleranzen für Beton- (Teil 1), Stahl- (Teil 2) und Holzkonstruktionen (Teil 3) zur montagegerechten Passbarkeit.',
+    beschreibung: 'Regelt Detailtoleranzen für Bauteile aus Holz und Holzwerkstoffen (Teil 3:2008-08, aktuell). Teil 1 (Beton, 1997-04) und Teil 2 (Stahl, 2006-08) sind zurückgezogen; DIN Media verweist für Betonfertigteile auf DIN EN 13369 und DIN V 20000-120, für Stahlbauteile auf DIN EN ISO 13920.',
     relevanteModule: ['qualitaetssicherung', 'betonpraxis']
   },
   'DIN_18040': {
@@ -526,7 +611,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2014-12',
     status: 'gueltig',
-    beschreibung: 'Regelt bauaufsichtliche Anforderungen an schwellenfreie, rollstuhlgerechte Erschließung von Wegen, öffentlichen Räumen und Wohnungen.',
+    beschreibung: 'Regelt bauaufsichtliche Anforderungen an schwellenfreie, rollstuhlgerechte Erschließung von Wegen, öffentlichen Räumen und Wohnungen. Alle drei Teile sind aktuell; Teil 1 ist teilweise durch DIN EN 17210:2021-08 ersetzt, zu Teil 2 liegt der Entwurf E DIN 18040-2:2023-02 vor.',
     relevanteModule: ['regularien', 'ausbau']
   },
   'DIN_18015': {

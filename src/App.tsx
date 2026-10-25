@@ -34,6 +34,7 @@ import { version as PAKET_VERSION } from '../package.json';
 import { tabGroups } from './routing/tabGroups';
 import { ModulNavigation } from './components/navigation/ModulNavigation';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { LIZENZ_AKTIV } from './data/lizenz';
 
 import type { TabId } from '@/src/contexts/TabContext';
 // Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
@@ -44,6 +45,7 @@ const ModulKopf = React.lazy(() => import('./routing/ModulKopf'));
 const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m => ({ default: m.ModulTest })));
 const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
 const Kurzfragebogen = React.lazy(() => import('./components/feedback/Kurzfragebogen'));
+const LicenseNotice = React.lazy(() => import('./components/ui/LicenseNotice'));
 const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
 
@@ -708,6 +710,8 @@ function AppContent() {
           {/* Global Footer */}
           <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
             <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {AKTUELLE_VERSION}</span>
+            {/* Lizenzhinweis (AP 6.8): erst nach THA-Freigabe, Schalter in src/data/lizenz.ts */}
+            {LIZENZ_AKTIV && <React.Suspense fallback={null}><LicenseNotice /></React.Suspense>}
           </footer>
         </div>
       </main>
