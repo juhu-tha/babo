@@ -936,7 +936,7 @@ export default function Statistik() {
                 <span className="font-mono text-xs font-bold text-blue-600 ml-auto">{formatDeZahl(intStats.median, 1)} MPa</span>
               </div>
               <div className="text-[9.5px] text-stone-500 font-mono mb-1 bg-stone-100 px-1.5 py-0.5 rounded inline-block">
-                Sortierte Messreihe: {intStats.sorted.map(x => x.toFixed(0)).join(', ')}
+                Sortierte Messreihe: {intStats.sorted.map(x => formatDeZahl(x, 1)).join('; ')}
               </div>
               <p className="text-[11px] text-slate-600 leading-relaxed mt-1">
                 Teilt die sortierte Stichprobe exakt in <strong>zwei Hälften</strong> (50% kleiner, 50% größer). Der Median ist <strong>robust gegen Ausreißer</strong>: Egal wie hoch der Maximalwert ist – der Median bleibt in der Mitte der sortierten Reihe.
@@ -1004,7 +1004,7 @@ export default function Statistik() {
               erklaerung: intStats.n % 2 === 0
                 ? 'Bei gerader Anzahl ist der Median der Mittelwert der beiden mittleren Werte der sortierten Reihe:'
                 : 'Bei ungerader Anzahl ist der Median der mittlere Wert der sortierten Reihe:',
-              formel: `${intStats.sorted.map(v => formatDeTeXWert(v)).join(';\\; ')} \\;\\Rightarrow\\; \\tilde{x} = ${formatDeTeX(intStats.median, 1)}\\,\\text{MPa}`
+              formel: `${intStats.sorted.map(v => formatDeTeX(v, 1)).join(';\\; ')} \\;\\Rightarrow\\; \\tilde{x} = ${formatDeTeX(intStats.median, 1)}\\,\\text{MPa}`
             },
             {
               titel: 'Quadratsumme der Abweichungen',

@@ -1099,7 +1099,7 @@ function TimberDurabilitySimulator() {
       gk: 'GK 0',
       name: 'Innenbereich, ständig trocken (beheiztes Gebäude)',
       risks: 'Keine Gefährdung durch Pilze oder Insekten.',
-      recos: 'Chemischer Holzschutz ist laut DIN 68800-1 gesetzlich VERBOTEN. Konstruktiver Standard genügt.'
+      recos: 'Vorbeugender chemischer Holzschutz ist in GK 0 nach DIN 68800 nicht erforderlich und soll unterbleiben (Vorrang baulicher Maßnahmen; DIN 68800 ist eine Norm, kein Gesetz). Konstruktiver Standard genügt.'
     };
   };
 
@@ -1265,7 +1265,7 @@ function TimberDurabilitySimulator() {
               <div className="space-y-1">
                 <p className="font-semibold text-slate-800">Schritt 1: Umgebungsdiagnostik (Feuchteeinwirkung)</p>
                 <p className="text-slate-600 leading-relaxed">
-                  Wasser ist der biologische Katalysator. Pilze können pflanzliche Masse nur abbauen, wenn die Fasersättigungsfeuchte dauerhaft u ≥ 20% erreicht.
+                  Wasser ist der biologische Katalysator. Pilze können Holz nur abbauen, wenn die Holzfeuchte dauerhaft über ca. 20 % liegt (Fasersättigung bei ca. 28–30 %).
                   Unter beheizten Innenbedingungen bleibt u bei ca. 8–12 %, weshalb kein Pilzrisiko besteht. Sobald Erdkontakt oder Bewitterung einsetzen, stellt sich freies Wasser im Holzgefüge ein.
                 </p>
               </div>

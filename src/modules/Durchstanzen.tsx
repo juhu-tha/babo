@@ -22,7 +22,7 @@ export default function Durchstanzen() {
   const [beta, setBeta] = useState(EC2_NA_DE.betaInnen); // 1.10 (Innenstütze nach NA DE)
 
   const results = useMemo(
-    () => bemesseDurchstanzen({ form: colType, vEd, d, c, cx, cy, fck, rhoL, beta }),
+    () => bemesseDurchstanzen({ form: colType, vEd, d, c, cx, cy, fck, rhoL, beta, lage: beta === EC2_NA_DE.betaEcke ? 'ecke' : beta === EC2_NA_DE.betaRand ? 'rand' : 'innen' }),
     [colType, vEd, d, c, cx, cy, fck, rhoL, beta]
   );
 
@@ -251,8 +251,10 @@ export default function Durchstanzen() {
                 },
                 {
                   titel: 'Beiwerte für den Betonwiderstand',
-                  erklaerung: results.u0_d < 4
-                    ? `Wegen u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4 wird C_Rd,c nach NA (DE) abgemindert; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
+                  erklaerung: results.u0_d < 4 && beta !== EC2_NA_DE.betaRand && beta !== EC2_NA_DE.betaEcke
+                    ? `Wegen u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4 wird C_Rd,c bei der Innenstütze nach NA (DE) abgemindert; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
+                    : results.u0_d < 4
+                    ? `u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4, die Abminderung von C_Rd,c gilt nach NA (DE) aber nur für Innenstützen: C_Rd,c = 0,18/γ_c; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
                     : `u₀/d = ${formatDeZahl(results.u0_d, 2)} ≥ 4, daher C_Rd,c = 0,18/γ_c; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`,
                   formel: `k = \\min\\left(1 + \\sqrt{\\tfrac{200}{${formatDeTeX(d, 0)}}};\\, 2\\right) = ${formatDeTeX(Math.min(1 + Math.sqrt(200 / d), 2.0), 3)};\\quad \\rho_l = ${formatDeTeX(results.rhoL_eff, 4)};\\quad C_{Rd,c} = ${formatDeTeX(results.CRdc, 4)}`,
                 },

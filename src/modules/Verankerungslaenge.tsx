@@ -349,7 +349,7 @@ export default function Verankerungslaenge() {
         normQuelle="DIN EN 1992-1-1 mit NA, 8.4.2 und 8.4.3"
         schritte={[
           { titel: '1. Betonzugfestigkeit', formel: 'f_{ctk;0{,}05} = 0{,}7 \\cdot 0{,}30 \\cdot 30^{2/3} = 2{,}03\\,\\text{N/mm}^2;\\; f_{ctd} = 2{,}03/1{,}5 = 1{,}35\\,\\text{N/mm}^2', erklaerung: 'α_ct = 1,0 für die Verbundspannung.' },
-          { titel: '2. Verbundspannung', formel: 'f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}35 = 3{,}0\\,\\text{N/mm}^2', erklaerung: 'Guter Verbund (η₁ = 1,0), Ø ≤ 32 mm (η₂ = 1,0).' },
+          { titel: '2. Verbundspannung', formel: 'f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}35 = 3{,}04\\,\\text{N/mm}^2', erklaerung: 'Guter Verbund (η₁ = 1,0), Ø ≤ 32 mm (η₂ = 1,0).' },
           { titel: '3. Grundwert', formel: 'l_{b,rqd} = \\frac{16}{4} \\cdot \\frac{435}{3{,}04} = 572\\,\\text{mm}', erklaerung: 'Volle Ausnutzung σ_sd = f_yd.' },
         ]}
         ergebnisHinweis="l_b,rqd ≈ 570 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ und A_s,erf/A_s,vorh."

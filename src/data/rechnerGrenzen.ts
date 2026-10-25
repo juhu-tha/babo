@@ -31,7 +31,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
       'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
-      'Dekompression vereinfacht als Betonspannung in e_p + 25 mm (genaue Abgrenzung nach NA DE offen).',
+      'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
     ],
   },
   holzbau_bemessung: {

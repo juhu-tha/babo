@@ -27558,10 +27558,10 @@
       "Keine Druckspannung über 0,45·f_ck am oberen Querschnittsrand",
       "Rissbreiten von höchstens 0,2 mm im Bereich der Spannglieder",
       "Spannstahlspannung unter 0,65·f_pk nach Abzug aller Spannkraftverluste",
-      "Keine Zugspannung an dem Rand, der dem Spannglied am nächsten liegt"
+      "Beton im Bereich max(100 mm; h/10) um das Spannglied überdrückt"
     ],
     "correctIdx": 3,
-    "explanation": "Nach NA(DE) dürfen am spanngliednahen Rand keine Zugspannungen auftreten (Nachweis am ungerissenen Querschnitt). Bei XC2–XC4 gilt die quasi-ständige, bei XD/XS die häufige Kombination; die EN-Empfehlung verlangt stattdessen 25 mm Überdrückung um das Spannglied.",
+    "explanation": "Nach DIN EN 1992-1-1/NA (NCI zu 7.3.1) muss der Beton um das Spannglied im Bereich von 100 mm oder 1/10 der Querschnittshöhe unter Druckspannungen stehen; der größere Bereich ist maßgebend (Randkriterium nur bei Brücken nach DIN EN 1992-2/NA). Bei XC2–XC4 gilt die quasi-ständige, bei XD/XS die häufige Kombination; die EN-Empfehlung verlangt stattdessen 25 mm Überdrückung um das Spannglied.",
     "bloom": "Verstehen",
     "niveau": "M",
     "distraktorFeedback": [
@@ -27573,7 +27573,7 @@
     "gapAnalysis": {
       "topic": "Dekompression",
       "misconception": "Dekompression wird mit anderen GZG-Spannungsgrenzen verwechselt.",
-      "coreRule": "Dekompression NA(DE): spanngliednaher Rand ohne Zug unter maßgebender Kombination.",
+      "coreRule": "Dekompression NA(DE): Beton im Bereich max(100 mm; h/10) um das Spannglied überdrückt.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „6. Nachweiskonzept & Bemessungsregeln“ im Modul Spannbeton noch einmal durch.",
       "targetModuleTab": "spannbeton",
       "targetModuleLabel": "Spannbeton"
@@ -28996,7 +28996,7 @@
     "question": "In einem Gebäude von 1965 liegt unter dem Parkett ein schwarzer, pechartiger Kleber. Welcher Schadstoff ist nach dem Modul vorrangig zu vermuten?",
     "options": [
       "PCB aus dauerelastischen Fugendichtungsmassen auf Polysulfidbasis",
-      "HBCD als Flammschutzmittel in EPS-Dämmplatten aus der Zeit vor 2014",
+      "HBCD als Flammschutzmittel in EPS-Dämmplatten aus der Zeit bis ca. 2015",
       "Formaldehyd aus Harnstoff-Formaldehyd-Ortschaum in Hohlräumen",
       "PAK aus Steinkohlenteerpech in sogenanntem Schwarzkleber"
     ],
@@ -29013,7 +29013,7 @@
     "gapAnalysis": {
       "topic": "Schadstoffverdacht Bodenaufbau",
       "misconception": "Schadstoffe werden nicht den typischen Bauprodukten zugeordnet.",
-      "coreRule": "Schwarzer Parkettkleber → PAK (Teer/Pech); Fugenmassen → PCB; EPS vor 2014 → HBCD.",
+      "coreRule": "Schwarzer Parkettkleber → PAK (Teer/Pech); Fugenmassen → PCB; EPS bis ca. 2015 → HBCD.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachkriegszeit & Wiederaufbau“ im Modul Hist. Bauprodukte noch einmal durch.",
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"

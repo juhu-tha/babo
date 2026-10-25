@@ -18,7 +18,7 @@ import {
   Wrench,
   History
 } from 'lucide-react';
-import { bemesseDruckstab, bemesseQuerdruck, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
+import { bemesseDruckstab, bemesseQuerdruck, KMOD, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -224,6 +224,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [connAngle, setConnAngle] = useState<number>(90); // deg (45 or 90)
   const [connCount, setConnCount] = useState<number>(4); // number of screws
   const [connForce, setConnForce] = useState<number>(15); // V_Ed Design Shear in kN
+  const [connServiceClass, setConnServiceClass] = useState<Nutzungsklasse>(1); // NKL der Verbindung
+  const [connLoadDuration, setConnLoadDuration] = useState<KLED>('mtl'); // KLED der maßgebenden Einwirkung
 
   // 4. Brandschutz-Abbrand-Rechner
   const [fireTime, setFireTime] = useState<number>(30); // minutes
@@ -267,7 +269,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const F_ax_Rk_total_N = connCount * F_ax_Rk_single_N;
     const F_ax_Rk_total_kN = F_ax_Rk_total_N / 1000;
 
-    const k_mod = 0.8;
+    // k_mod nach DIN EN 1995-1-1, Tab. 3.1 aus gewählter NKL und KLED der Verbindung
+    const k_mod = KMOD[connServiceClass][connLoadDuration];
     const F_ax_Rd_total_kN = (k_mod * F_ax_Rk_total_kN) / 1.3;
 
     // 2. Shear Capacity (with rope effect)
@@ -290,6 +293,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const utilShear = (connForce / F_v_Rd_total_kN) * 100;
 
     return {
+      k_mod,
       rho_k,
       factor_alpha,
       f_ax_alpha_k,
@@ -305,7 +309,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
       isAxialUnsafe: utilAxial > 100,
       isShearUnsafe: utilShear > 100
     };
-  }, [connWoodClass, connD, connLef, connAngle, connCount, connForce]);
+  }, [connWoodClass, connD, connLef, connAngle, connCount, connForce, connServiceClass, connLoadDuration]);
 
   const fireResults = useMemo(() => {
     // ideelle Abbrandrate beta_n inkl. Eckausrundung (DIN EN 1995-1-2, Tab. 3.1)
@@ -1617,6 +1621,37 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                 </div>
 
+                {/* NKL / KLED → k_mod */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-xs font-bold text-text-main">Nutzungsklasse (Verbindung)</label>
+                    <select aria-label="Nutzungsklasse der Verbindung"
+                      value={connServiceClass}
+                      onChange={(e) => setConnServiceClass(Number(e.target.value) as Nutzungsklasse)}
+                      className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main"
+                    >
+                      <option value={1}>NKL 1</option>
+                      <option value={2}>NKL 2</option>
+                      <option value={3}>NKL 3</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-xs font-bold text-text-main">KLED (Verbindung)</label>
+                    <select aria-label="KLED der Verbindung"
+                      value={connLoadDuration}
+                      onChange={(e) => setConnLoadDuration(e.target.value as KLED)}
+                      className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main"
+                    >
+                      <option value="stnd">ständig</option>
+                      <option value="lg">lang</option>
+                      <option value="mtl">mittel</option>
+                      <option value="krt">kurz</option>
+                      <option value="sfs">sehr kurz</option>
+                    </select>
+                  </div>
+                  <p className="col-span-2 text-[10px] text-text-main/60 leading-snug">k<sub>mod</sub> = {formatDeZahl(connResults.k_mod, 2)} nach DIN EN 1995-1-1, Tab. 3.1 (Vollholz/BSH).</p>
+                </div>
+
                 {/* Load */}
                 <div className="flex flex-col gap-1 border-t border-home-grau/10 pt-2.5">
                   <label className="text-xs font-bold text-rose-800">Bemessungseinwirkung V_Ed (kN)</label>
@@ -1629,6 +1664,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     />
                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2 font-mono text-[10px] text-text-main/50 font-bold">kN</span>
                   </div>
+                  <p className="text-[10px] text-text-main/60 leading-snug">Vereinfachung: Derselbe Wert wird getrennt als reine Ausziehkraft F<sub>ax,Ed</sub> und als reine Abscherkraft F<sub>v,Ed</sub> nachgewiesen. Eine kombinierte Beanspruchung (DIN EN 1995-1-1, 8.7.3) ist nicht abgebildet.</p>
                 </div>
               </div>
 
@@ -1722,8 +1758,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     },
                     {
                       titel: 'Ausziehwiderstand der Gruppe',
-                      erklaerung: 'Lehrmodell mit k_mod = 0,8 und γ_M = 1,3, ohne wirksame Anzahl n_ef.',
-                      formel: `F_{ax,Rd} = \\frac{0{,}8 \\cdot ${formatDeTeX(connCount, 0)} \\cdot ${formatDeTeX(connResults.f_ax_alpha_k, 2)} \\cdot ${formatDeTeX(connD, 0)} \\cdot ${formatDeTeX(connLef, 0)}}{1{,}3} \\cdot 10^{-3} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`,
+                      erklaerung: `Lehrmodell mit k_mod = ${formatDeZahl(connResults.k_mod, 2)} (NKL ${formatDeZahl(connServiceClass, 0)}, KLED gewählt) und γ_M = 1,3, ohne wirksame Anzahl n_ef.`,
+                      formel: `F_{ax,Rd} = \\frac{${formatDeTeX(connResults.k_mod, 2)} \\cdot ${formatDeTeX(connCount, 0)} \\cdot ${formatDeTeX(connResults.f_ax_alpha_k, 2)} \\cdot ${formatDeTeX(connD, 0)} \\cdot ${formatDeTeX(connLef, 0)}}{1{,}3} \\cdot 10^{-3} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`,
                     },
                     {
                       titel: 'Lochleibungsfestigkeit und Fließmoment',
@@ -1737,8 +1773,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     },
                     {
                       titel: 'Bemessungswerte und Ausnutzung',
-                      erklaerung: `V_Ed = ${formatDeZahl(connForce, 1)} kN wird hier beiden Nachweisen gegenübergestellt.`,
-                      formel: `F_{v,Rd} = \\frac{0{,}8 \\cdot ${formatDeTeX(connResults.F_v_Rk_total_kN, 2)}}{1{,}3} = ${formatDeTeX(connResults.F_v_Rd_total_kN, 1)}\\,\\text{kN};\\quad \\eta_v = ${formatDeTeX(connResults.utilShear, 1)}\\,\\%,\\; \\eta_{ax} = ${formatDeTeX(connResults.utilAxial, 1)}\\,\\%`,
+                      erklaerung: `V_Ed = ${formatDeZahl(connForce, 1)} kN wird vereinfacht beiden Nachweisen getrennt gegenübergestellt (keine kombinierte Beanspruchung nach 8.7.3).`,
+                      formel: `F_{v,Rd} = \\frac{${formatDeTeX(connResults.k_mod, 2)} \\cdot ${formatDeTeX(connResults.F_v_Rk_total_kN, 2)}}{1{,}3} = ${formatDeTeX(connResults.F_v_Rd_total_kN, 1)}\\,\\text{kN};\\quad \\eta_v = ${formatDeTeX(connResults.utilShear, 1)}\\,\\%,\\; \\eta_{ax} = ${formatDeTeX(connResults.utilAxial, 1)}\\,\\%`,
                     },
                   ]}
                   ergebnisHinweis={`Ausnutzung Scherung ${formatDeZahl(connResults.utilShear, 1)} %, axial ${formatDeZahl(connResults.utilAxial, 1)} %`}

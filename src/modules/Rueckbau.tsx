@@ -50,7 +50,7 @@ const baustoffRecyclingData = [
       "Gesteinskörnungen für die Asphaltproduktion (feine Gesteinsmehle)."
     ],
     risks: "Anhaftender Gipsputz (Gefahr von Ettringittreiben), organische Anhaftungen (Holz, Kunststoffe), Farbanstriche (historisch asbesthaltig oder bleihaltig), Karbonatisierungstiefe.",
-    regulations: "Ersatzbaustoffverordnung (EBV) 2023: Zuweisung zu den Einbauklassen (BM-0, BM-F1 bis BM-F3) bestimmt die zulässigen hydrogeologischen Einbaubedingungen."
+    regulations: "Ersatzbaustoffverordnung (EBV) 2023: Die Materialklasse des Recycling-Baustoffs (RC-1, RC-2, RC-3) bestimmt die zulässigen Einbauweisen und hydrogeologischen Einbaubedingungen (BM-Klassen gelten für Bodenmaterial)."
   },
   {
     name: "Ziegel & Mauerwerk",
@@ -66,7 +66,7 @@ const baustoffRecyclingData = [
       "Unterbau im Erd- und Wegebau (EBV-Klasse Ziegelmaterial)."
     ],
     risks: "Sulphathaltige Mörtelreste (Gipsmörtel). Gips im Ziegel führt bei Recycling-Einsatz im Beton zu enormen Quellschäden. Dämmmörtel-Anhaftungen.",
-    regulations: "GewAbfV § 3 Abs. 1 verlangt die getrennte Erfassung von Ziegeln an der Anfallstelle, um biologisch-chemische Restkontaminationen zu minimieren."
+    regulations: "GewAbfV § 8 Abs. 1 verlangt die getrennte Sammlung von Ziegeln als eigene Fraktion von Bau- und Abbruchabfällen an der Anfallstelle, um Störstoffe (z. B. Gips) aus dem Recycling herauszuhalten."
   },
   {
     name: "Gips- und Calciumsulfatbaustoffe",
@@ -139,7 +139,7 @@ const baustoffRecyclingData = [
       "Kabelkanäle, Abstandshalter und baustellenspezifische Spritzgussteile.",
       "Ersatzbrennstoff in Zementwerken (Thermische Verwertung hochkalorischer, zersplitterter Fraktionen)."
     ],
-    risks: "Hexabromcyclododecan (HBCD) in Dämmstoffen des Typs EPS/XPS vor Baujahr 2014 (Flammschutzmittel, giftig/schädlich). Weichmacher (Phthalate in PVC-Böden, chlorierte Paraffine).",
+    risks: "Hexabromcyclododecan (HBCD) in Dämmstoffen des Typs EPS/XPS bis Baujahr ca. 2015 (Flammschutzmittel, giftig/schädlich). Weichmacher (Phthalate in PVC-Böden, chlorierte Paraffine).",
     regulations: "POP-Verordnung der EU: Dämmstoffe mit > 1000 mg/kg HBCD gelten als persistente organische Abfälle und müssen in zugelassenen Müllverbrennungsanlagen zerstört werden."
   },
   {
@@ -247,7 +247,7 @@ export default function Rueckbau() {
       pollutants: [
         {
           name: 'Asbest (fest & schwach gebunden)',
-          chemical: 'Silikatminerale (Chrysolit, Krokydolith)',
+          chemical: 'Silikatminerale (Chrysotil, Krokydolith)',
           foundIn: 'Faserzementplatten (Eternit), Spritzasbest an Trägern, Fliesenkleber, Putz, Fensterkitte.',
           probability: 'Sehr hoch',
           handling: 'Staubfreier Ausbau unter Unterdruck, Personenschleusen, Vollschutz, TRGS 519 Zertifikat zwingend.',

@@ -180,23 +180,23 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
   let kAdvice = '';
 
   if (kValue <= 0.25) {
-    kResultText = 'Sehr klebrig / Kaum bis kein Bluten (≤ 0.25)';
+    kResultText = 'Sehr klebrig / Kaum bis kein Bluten (≤ 0,25)';
     kResultClass = 'bg-yellow-50 text-yellow-800 border-yellow-200';
     kAdvice = 'Der Beton klebt stark. Nahezu keine Wasserabgabe nach oben. Achtung beim Verdichten: Putscher/Stochern reicht meist nicht aus! Gefahr von eingeschlossenem Luftgehalt (bis zu 4-6% Gesamtluft möglich). Unbedingt sorgfältig mit der Rüttelflasche verdichten.';
   } else if (kValue <= 0.27) {
-    kResultText = 'Klebend / Geringes Bluten (≤ 0.27)';
+    kResultText = 'Klebend / Geringes Bluten (≤ 0,27)';
     kResultClass = 'bg-green-50 text-green-800 border-green-200';
     kAdvice = 'Beton hat ein vermindertes Bluten und eine geringere Wasseranreicherung oben. Gute Verarbeitungseigenschaft für geneigte Flächen, benötigt aber gewissenhafte Verdichtung.';
   } else if (kValue <= 0.31) {
-    kResultText = 'Normales Zusammenhaltevermögen (~0.30)';
+    kResultText = 'Normales Zusammenhaltevermögen (~0,30)';
     kResultClass = 'bg-sky-50 text-sky-800 border-sky-100';
     kAdvice = 'Übliches Bluten von ca. 3 bis 5 l/m³ (bzw. 0,5 Vol.-%). Bietet ein ausgewogenes Verhalten für übliche Hochbauteile bei 20°C.';
   } else if (kValue <= 0.34) {
-    kResultText = 'Mäßige Wasseranreicherung oben ("normal / dünn") (≥ 0.33)';
+    kResultText = 'Mäßige Wasseranreicherung oben ("normal / dünn") (≥ 0,33)';
     kResultClass = 'bg-orange-50 text-orange-800 border-orange-200';
     kAdvice = 'Mäßige bis deutliche Wasserbewegung nach oben. Gefahr von Wasseranreicherung unter Bewehrungen oder an der Oberfläche. Achten Sie auf eine adäquate Rüttelzeit und vermeiden Sie stehendes Oberflächenwasser vor dem Oberflächenfinish.';
   } else {
-    kResultText = 'Deutliches Bluten / Läuft stark aus ("dünn") (≥ 0.35)';
+    kResultText = 'Deutliches Bluten / Läuft stark aus ("dünn") (≥ 0,35)';
     kResultClass = 'bg-red-50 text-red-800 border-red-200';
     kAdvice = 'Erhebliche Gefahr einer unkontrollierten Entmischung und starker Wasseranreicherung an der Oberfläche. Hohe Gefahr von Schwindrissen/Netzrissen und minderfester Betonschicht an der Oberfläche. Mehlkornanteil erhöhen oder w/z-Wert reduzieren!';
   }

@@ -651,7 +651,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <p>
                   <strong>Was bedeutet „Dekompression“?</strong><br />
                   Der Dekompressionsnachweis verlangt, dass unter der maßgebenden Einwirkungskombination (meist der 
-                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) fordert stattdessen, dass an dem Rand, der dem Spannglied am nächsten liegt, keine Zugspannungen auftreten.
+                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) fordert stattdessen, dass der Beton um das Spannglied im Bereich von <strong>100 mm bzw. h/10</strong> (der größere Wert ist maßgebend) unter Druckspannungen steht.
                 </p>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/30 text-center font-mono">
                   <BlockMath math="\sigma_{c,\text{Spannglied}} \le 0 \quad (\text{nur Betondruckspannung zulässig!})" />

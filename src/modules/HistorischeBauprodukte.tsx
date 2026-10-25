@@ -921,7 +921,7 @@ export default function HistorischeBauprodukte() {
           { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)' },
           { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)' },
           { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)' },
-          { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
+          { title: 'GefStoffV (Novelle 12/2024), § 5a: Informations- und Mitwirkungspflicht des Veranlassers (Baujahr bzw. Baubeginn 1993–1996); Erkundung im Rahmen der Gefährdungsbeurteilung durch das ausführende Unternehmen', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },
           { title: 'Trinkwasserverordnung 2023, § 17 (Bleileitungen: Entfernung bzw. Stilllegung bis 12.01.2026; Fristverlängerung nach Abs. 2/3 möglich)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },

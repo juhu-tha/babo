@@ -236,6 +236,7 @@ export default function Querkraftbemessung() {
                     <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md mt-2">
                       In DE ist cot θ zusätzlich durch V<sub>Rd,cc</sub> begrenzt (DIN EN 1992-1-1/NA, Gl. 6.7aDE). 
                       Für V<sub>Ed</sub> = {formatDeWert(vEd)} kN und V<sub>Rd,cc</sub> = {formatDeZahl(results.vRd_cc_kN, 1)} kN gilt cot θ,max = {formatDeZahl(results.cot_theta_max, 2)} (θ ≥ {formatDeZahl(results.theta_min_deg, 1)}°).
+                      {' '}<strong>Der Rechner begrenzt deshalb auf cot θ = {formatDeZahl(results.cot_theta_eff, 2)} (θ = {formatDeZahl(results.theta_eff_deg, 1)}°)</strong> für V<sub>Rd,max</sub> und a<sub>sw</sub>.
                     </div>
                   )}
                 </div>
@@ -323,14 +324,14 @@ export default function Querkraftbemessung() {
                 {
                   titel: 'Druckstrebentragfähigkeit',
                   erklaerung: `ν₁ = 0,75 · min(1,0; 1,1 − f_ck/500). Ausnutzung der Druckstrebe: ${formatDeZahl((vEd / results.vRd_max) * 100, 1)} %.`,
-                  formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(Math.tan((theta * Math.PI) / 180), 3)} + ${formatDeTeX(results.cot_theta, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
+                  formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(1 / results.cot_theta_eff, 3)} + ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
                 },
                 {
                   titel: 'Rechnerisch erforderliche Bügelbewehrung',
                   erklaerung: results.isCotThetaExceeded
-                    ? `Achtung: Das gewählte cot θ = ${formatDeZahl(results.cot_theta, 2)} überschreitet die Grenze cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)} nach Gl. (6.7aDE); der Rechner rechnet trotzdem mit dem gewählten Winkel.`
+                    ? `Achtung: Das gewählte cot θ = ${formatDeZahl(results.cot_theta, 2)} überschreitet die Grenze cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)} nach Gl. (6.7aDE); der Rechner begrenzt deshalb auf cot θ = ${formatDeZahl(results.cot_theta_eff, 2)} (θ = ${formatDeZahl(results.theta_eff_deg, 1)}°).`
                     : `Senkrechte Bügel, cot θ = ${formatDeZahl(results.cot_theta, 2)} ≤ cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)}.`,
-                  formel: `a_{sw,erf} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = \\frac{${formatDeTeX(vEd / 1000, 3)}}{${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(results.fyd, 1)} \\cdot ${formatDeTeX(results.cot_theta, 3)}} \\cdot 10^4 = ${formatDeTeX(results.asw_req, 2)}\\,\\text{cm}^2/\\text{m}`,
+                  formel: `a_{sw,erf} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = \\frac{${formatDeTeX(vEd / 1000, 3)}}{${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(results.fyd, 1)} \\cdot ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^4 = ${formatDeTeX(results.asw_req, 2)}\\,\\text{cm}^2/\\text{m}`,
                 },
                 {
                   titel: 'Mindestbewehrung und maßgebender Wert',

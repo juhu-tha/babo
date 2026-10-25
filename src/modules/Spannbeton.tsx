@@ -240,10 +240,15 @@ export default function Spannbeton() {
     const permCompStressQuasi = 0.45 * conc.fck; // EC2 7.2: 0.45 * f_ck (lineares Kriechen)
     const isQuasiStressOk = maxCompStress_perm <= permCompStressQuasi;
 
-    // 4. Dekompressionsnachweis nach EC2 (Betonspannung in Spanngliedhöhe ± Bereich nach EC2 Tab. 7.1N):
-    // Unter quasi-ständiger Einwirkung in Spanngliedzone z = ep + 25mm (bis max h/2):
-    const zTendonZone = Math.min(h / 2, ep + 25);
-    const sigmaTendonZone_perm = sigmaN_inf + ((mPinf + mPermNmm) * zTendonZone) / ic;
+    // 4. Dekompressionsnachweis nach DIN EN 1992-1-1/NA (NCI zu 7.3.1, Tab. 7.1DE):
+    // Beton um das Spannglied im Bereich von 100 mm oder h/10 (größerer Wert) überdrückt
+    // (EN-Empfehlung: 25 mm). Maßgebend ist die größere Spannung an den Bereichsgrenzen ep ± d_dek,
+    // jeweils auf den Querschnitt (± h/2) begrenzt; vereinfacht am ungerissenen Querschnitt (Zustand I).
+    const dDekompression = Math.max(100, h / 10);
+    const sigmaAt = (z: number) => sigmaN_inf + ((mPinf + mPermNmm) * z) / ic;
+    const zTendonZoneA = Math.max(-h / 2, Math.min(h / 2, ep - dDekompression));
+    const zTendonZoneB = Math.max(-h / 2, Math.min(h / 2, ep + dDekompression));
+    const sigmaTendonZone_perm = Math.max(sigmaAt(zTendonZoneA), sigmaAt(zTendonZoneB));
     const sigmaTendonLevel_perm = sigmaN_inf + ((mPinf + mPermNmm) * ep) / ic;
     const isDecompressed = sigmaTendonZone_perm <= 0;
 
@@ -776,9 +781,9 @@ export default function Spannbeton() {
                     className="w-full accent-shiraz"
                   />
                   <div className="text-[10px] text-zinc-500 flex justify-between">
-                    <span>0.05 Monolitze</span>
-                    <span>0.13 Plastik</span>
-                    <span>0,20-0.24 Metall</span>
+                    <span>{formatDeZahl(0.05, 2)} Monolitze</span>
+                    <span>{formatDeZahl(0.13, 2)} Plastik</span>
+                    <span>{formatDeZahl(0.20, 2)}–{formatDeZahl(0.24, 2)} Metall</span>
                   </div>
                 </div>
 
@@ -1009,7 +1014,7 @@ export default function Spannbeton() {
               </div>
 
               <div className={`p-2.5 rounded-lg border ${materialResults.isDecompressed ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-                <div className="text-[10px] uppercase font-sans font-bold">4. Dekompression (±25 mm)</div>
+                <div className="text-[10px] uppercase font-sans font-bold">4. Dekompression (± max(100 mm; h/10))</div>
                 <div className="text-sm font-bold mt-0.5">{formatDeZahl(materialResults.sigmaTendonZone_perm, 2)} MPa</div>
                 <div className="text-[10px] mt-1 font-sans">{materialResults.isDecompressed ? '✓ Rissfrei überdrückt' : '✗ Zugspannung am Kabel!'}</div>
               </div>
@@ -1046,7 +1051,7 @@ export default function Spannbeton() {
                     <td className="p-2 font-mono">{formatDeZahl(materialResults.maxCompStress_perm, 1)} MPa {materialResults.isQuasiStressOk ? <span className="text-emerald-700 font-bold">✓ OK</span> : <span className="text-amber-700 font-bold">⚠ Nichtlinear</span>}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-2 font-semibold">Dekompression (Spanngliedhöhe ± 25 mm)</td>
+                    <td className="p-2 font-semibold">Dekompression (Spanngliedhöhe ± max(100 mm; h/10), NA DE)</td>
                     <td className="p-2 font-mono"><InlineMath math="\sigma_c \le 0" /> (Druckzone um Kabel)</td>
                     <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\infty} + M_{perm}" /></td>
                     <td className="p-2 font-mono">{formatDeZahl(materialResults.sigmaTendonZone_perm, 2)} MPa {materialResults.isDecompressed ? <span className="text-emerald-700 font-bold">✓ OK (überdrückt)</span> : <span className="text-red-700 font-bold">✗ Zugspannungen!</span>}</td>
@@ -1417,7 +1422,7 @@ export default function Spannbeton() {
         ]}
         formeln={[
           {
-            erklaerung: "Zeitliche Entwicklung der Zylinderdruckfestigkeit f_cm(t): s = Zementbeiwert (0.20 für R, 0.25 für N, 0.38 für S), t = Betonalter in Tagen.",
+            erklaerung: "Zeitliche Entwicklung der Zylinderdruckfestigkeit f_cm(t): s = Zementbeiwert (0,20 für R, 0,25 für N, 0,38 für S), t = Betonalter in Tagen.",
             formel: "f_{cm}(t) = \\beta_{cc}(t) \\cdot f_{cm} = \\exp\\left\\{ s \\cdot \\left[1 - \\left(\\frac{28}{t}\\right)^{1/2}\\right] \\right\\} \\cdot f_{cm}",
             quelle: "DIN EN 1992-1-1 Gl. (3.1) & (3.2)"
           },

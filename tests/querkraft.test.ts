@@ -35,7 +35,17 @@ pruefe(nahe(rr.vRd_c, 0.1 * (1 + Math.sqrt(200 / 450)) * Math.cbrt(100 * 0.02 * 
 const rk = bemesseQuerkraft({ ...basis, vEd: 40 });
 pruefe(!rk.isVRdcExceeded && rk.asw_final === rk.asw_min, 'nur Mindestbügel');
 // Flaches θ bei hoher Querkraft → Hinweis aus (6.7aDE)
-pruefe(bemesseQuerkraft({ ...basis, theta: 18.5, vEd: 600 }).hinweise.some(x => x.feld === 'cotTheta'), 'cot θ-Grenze');
+const rf = bemesseQuerkraft({ ...basis, theta: 18.5, vEd: 600 });
+pruefe(rf.hinweise.some(x => x.feld === 'cotTheta'), 'cot θ-Grenze');
+// … und es wird mit cot θ,max gerechnet (nicht mit dem gewählten flacheren Winkel):
+//    V_Rd,cc = 0,5·0,48·30^(1/3)·0,30·0,405 = 0,0905 MN → cot θ,max = 1,2/(1 − 90,5/600) = 1,413
+//    a_sw = 0,600/(0,405·434,8·1,413) = 24,11 cm²/m
+pruefe(rf.cot_theta_eff === rf.cot_theta_max && rf.cot_theta > rf.cot_theta_max, 'cot θ auf cot θ,max begrenzt');
+pruefe(nahe(rf.cot_theta_max, 1.413, 2e-3), `cot θ,max ${rf.cot_theta_max}`);
+pruefe(nahe(rf.asw_req, 24.11, 3e-3), `a_sw begrenzt ${rf.asw_req}`);
+pruefe(nahe(rf.vRd_max, 0.30 * 0.405 * 0.75 * 17 / (1 / rf.cot_theta_max + rf.cot_theta_max) * 1000, 1e-9), 'V_Rd,max mit cot θ,max');
+// innerhalb der Grenze bleibt der gewählte Winkel maßgebend
+pruefe(r.cot_theta_eff === r.cot_theta, 'cot θ unverändert, wenn zulässig');
 // V_Rd,max überschritten
 pruefe(bemesseQuerkraft({ ...basis, vEd: 900 }).isVRdMaxExceeded, 'V_Rd,max überschritten');
 

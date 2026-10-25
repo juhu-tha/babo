@@ -423,11 +423,11 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
   {
     id: 'Y1860',
     name: 'Y1860 S7 (Spannlitze)',
-    sub: 'Ultrahochfester Spannstahl für den Spannbetonbau (DIN EN 10138-3)',
+    sub: 'Ultrahochfester Spannstahl für den Spannbetonbau (abZ des DIBt; prEN 10138-3 nur Entwurf)',
     werkstoffnummer: '1.8105',
     category: 'spannstahl',
     categoryLabel: 'Spannstahl (Litze)',
-    norm: 'DIN EN 10138-3',
+    norm: 'abZ (DIBt); prEN 10138-3 (Entwurf)',
     fy: 1660, // Rp0.2 (fp0.1k = 1600 MPa)
     fu: 1860, // fpk
     description: 'Patentierter, mehrfach kaltgezogener Eutektoid-Kohlenstoffstahl (ca. 0,82 % C), verseilt zu einer 7-drähtigen Litze mit thermomechanischer Reck- und Stabilisierungsglühung. Bietet die höchste Festigkeit aller Bauwerkstoffe bei extrem niedriger Spannungsrelaxation.',
@@ -460,7 +460,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     werkstoffnummer: '1.8010',
     category: 'spannstahl',
     categoryLabel: 'Spannstahl (Gewindestab)',
-    norm: 'DIN EN 10138-4 / Zulassung',
+    norm: 'abZ (DIBt); prEN 10138-4 (Entwurf)',
     fy: 670,
     fu: 800,
     description: 'Warmgewalzter, mikrolegierter Rundstahl mit beidseitig aufgewalzten Gewinderippen. Das durchgehende Grobgewinde erlaubt das bauseitige Ablängen an beliebiger Stelle und die kraftschlüssige Verbindung mittels Schraubmuffen und Verankerungsmuttern.',
@@ -642,7 +642,7 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     name: 'Spannstahl Y1860',
     sub: 'Kaltgezogene 7-drähtige Spannlitze',
     werkstoffnummer: '1.8105',
-    norm: 'DIN EN 10138-3',
+    norm: 'abZ (DIBt); prEN 10138-3 (Entwurf)',
     color: '#0284c7', // Helles Blau
     category: 'sonder',
     categoryLabel: 'Bewehrungs- & Spannstahl',
@@ -682,7 +682,7 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     name: 'Spannstab SAS 670',
     sub: 'Warmgewalzter Gewindespannstahl (Y1050)',
     werkstoffnummer: '1.8010',
-    norm: 'DIN EN 10138-4 / Zulassung',
+    norm: 'abZ (DIBt); prEN 10138-4 (Entwurf)',
     color: '#0ea5e9', // Sky Blue
     category: 'sonder',
     categoryLabel: 'Bewehrungs- & Spannstahl',
@@ -2489,7 +2489,7 @@ export default function Stahl() {
                     Fachwissen: Bewehrungsstähle &amp; Spannstähle im Beton- &amp; Spannbetonbau
                   </h4>
                   <p className="text-xs text-text-main/70">
-                    Normative Grundlagen nach DIN 488, DIN EN 10138 und Eurocode 2 (DIN EN 1992-1-1)
+                    Normative Grundlagen nach DIN 488, Spannstahl-Zulassungen (abZ; prEN 10138 nur Entwurf) und Eurocode 2 (DIN EN 1992-1-1)
                   </p>
                 </div>
               </div>
@@ -2513,7 +2513,7 @@ export default function Stahl() {
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Spannstähle (DIN EN 10138)
+                  Spannstähle (abZ / prEN 10138)
                 </button>
               </div>
             </div>
@@ -2635,7 +2635,7 @@ export default function Stahl() {
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spannlitzen</span>
-                        <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono font-semibold">DIN EN 10138-3</span>
+                        <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-3 / abZ</span>
                       </div>
                       <div className="text-sm font-bold text-text-main">Y1860 S7 (7-drähtig)</div>
                       <p className="text-xs text-text-main/75 leading-relaxed">
@@ -2659,7 +2659,7 @@ export default function Stahl() {
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spannstäbe</span>
-                        <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-mono font-semibold">DIN EN 10138-4</span>
+                        <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-4 / abZ</span>
                       </div>
                       <div className="text-sm font-bold text-text-main">SAS 670 / SAS 950</div>
                       <p className="text-xs text-text-main/75 leading-relaxed">
@@ -2683,7 +2683,7 @@ export default function Stahl() {
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spanndrähte</span>
-                        <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono font-semibold">DIN EN 10138-2</span>
+                        <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-2 / abZ</span>
                       </div>
                       <div className="text-sm font-bold text-text-main">Y1770 C (Einzeldraht)</div>
                       <p className="text-xs text-text-main/75 leading-relaxed">

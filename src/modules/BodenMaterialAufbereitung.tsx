@@ -21,7 +21,7 @@ const TREATMENT_OPTIONS = {
         'Schwertwäsche & Attrition: Intensives Reiben der Partikel löst die schadstoffbelastete Feinstaubschicht.',
         'Zyklonierung & Dichtetrennung: Hydrozyklone separieren den sauberen Sand von belastetem Schluff.',
         'Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).',
-        'Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0/BM-1).'
+        'Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*).'
       ],
       rules: 'EBV § 15 & BBodSchV Anh. 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten.'
     },
@@ -68,7 +68,7 @@ const TREATMENT_OPTIONS = {
         'Sedimentations- und Waschwasserbehandlung mit Fällungsmitteln zur Sulfat-Abreicherung.',
         'Analytischer Nachweis des Restsulfatgehalts im Feststoff.'
       ],
-      rules: 'Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Bauwerksbruch und Recyclingbaustoffe gelten strenge Sulfatgrenzwerte (RC-1: ≤ 150 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen.'
+      rules: 'Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1 000 mg/l, RC-3 ≤ 3 500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen.'
     }
   },
   boden_ton: {
@@ -131,7 +131,7 @@ const TREATMENT_OPTIONS = {
         'Kontinuierliche Setzungsmessungen.',
         'Güteüberwachung mittels Eluattests über min. 28 Tage.'
       ],
-      rules: 'EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F3 (erheblich eingeschränkter Einbau) oder BM-2 zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter.'
+      rules: 'EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F2 oder BM-F3 (erheblich eingeschränkter Einbau) zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter.'
     }
   },
   bauschutt_gemisch: {
@@ -149,7 +149,7 @@ const TREATMENT_OPTIONS = {
         'Feinstaubabscheidung über Zyklon-Waschanlagen.',
         'Entwässerung der RC-Gesteinskörnung zur direkten Wiederverwendung.'
       ],
-      rules: 'EBV Anhang 1 / DIN EN 206: Das gereinigte Material muss die Eluatgrenzwerte für RC-1 einhalten, um als Gesteinskörnung im R-Beton eingesetzt werden zu dürfen (z. B. Cu ≤ 100 µg/l, Pb ≤ 40 µg/l).'
+      rules: 'EBV Anlage 1 / DIN 4226-101: Für die Verwertung als RC-1 muss das gereinigte Material die Materialwerte der EBV einhalten (z. B. Cu ≤ 110 µg/l, Cr ges. ≤ 150 µg/l im Eluat); als Gesteinskörnung im R-Beton gelten zusätzlich DIN 4226-101 und die DAfStb-Richtlinie.'
     },
     mkw_pak: {
       method: 'Selektiver Rückbau & Thermische Reinigung',
@@ -162,7 +162,7 @@ const TREATMENT_OPTIONS = {
         'Mechanische Oberflächenreinigung (z.B. Kugelstrahlen/Fräsen) falls kontaminierte Flächen lokalisiert sind.',
         'Thermische Behandlung des Feinkorns im Drehrohr zur PAK-Vergasung.',
         'Rauchgasreinigung und Abgaswäsche zur sicheren Dioxin- und furanfreien Verbrennung.',
-        'Gütemäßige Abschlussprüfung auf PAK16 (Grenzwert RC-1: ≤ 4 mg/kg im Feststoff).'
+        'Gütemäßige Abschlussprüfung auf PAK16 (Materialwert RC-1: ≤ 10 mg/kg im Feststoff, EBV Anlage 1).'
       ],
       rules: 'Gewerbeabfallverordnung (GewAbfV) / Ersatzbaustoffverordnung: Teer- und PAK-belastete Bauschutt-Gemische dürfen unter keinen Umständen unaufbereitet verwertet werden. Grenzwertüberschreitungen führen zur Einstufung als gefährlicher Abfall.'
     },
@@ -194,7 +194,7 @@ const TREATMENT_OPTIONS = {
         'Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.',
         'Pneumatischer Auswurf der Gipsfraktion.'
       ],
-      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0,8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
+      rules: 'DIN 4226-101 (rezyklierte Gesteinskörnungen, keine EBV-Regel): Typ 1 darf höchstens 0,8 M.-% säurelösliches Sulfat aufweisen (Kategorie AS0,8). Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
     }
   },
   altablagerung: {
