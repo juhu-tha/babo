@@ -118,6 +118,90 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
 
   // -------------------------------------------------------------
+  // PRÜFNORMEN BETON, ZEMENT & KORROSION (Versuchs-Handouts, AP 6.4; Ausgaben geprüft 10/2026)
+  // -------------------------------------------------------------
+  'DIN_EN_12350_1': {
+    id: 'DIN_EN_12350_1',
+    code: 'DIN EN 12350-1:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 1: Probenahme und Prüfgeräte',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Probenahme von Frischbeton (Stichprobe, Sammelprobe) und gemeinsame Anforderungen an die Prüfgeräte der Normenreihe.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_5': {
+    id: 'DIN_EN_12350_5',
+    code: 'DIN EN 12350-5:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 5: Ausbreitmaß',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Ausbreitversuch auf dem Ausbreittisch (15 Hübe) zur Bestimmung der Konsistenz; Ergebnis als Mittel zweier Durchmesser auf 10 mm.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_6': {
+    id: 'DIN_EN_12350_6',
+    code: 'DIN EN 12350-6:2019-09',
+    title: 'Prüfung von Frischbeton - Teil 6: Frischbetonrohdichte',
+    category: 'beton',
+    ausgabeStand: '2019-09',
+    status: 'gueltig',
+    beschreibung: 'Bestimmung der Rohdichte von verdichtetem Frischbeton in einem kalibrierten Behälter.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12350_7': {
+    id: 'DIN_EN_12350_7',
+    code: 'DIN EN 12350-7:2022-05',
+    title: 'Prüfung von Frischbeton - Teil 7: Luftgehalt - Druckverfahren (EN 12350-7:2019 + AC:2022)',
+    category: 'beton',
+    ausgabeStand: '2022-05',
+    status: 'gueltig',
+    beschreibung: 'Luftgehalt von verdichtetem Frischbeton mit Normal- oder Schwerzuschlag nach dem Wassersäulen- bzw. Druckausgleichsverfahren.',
+    relevanteModule: ['labor_frischbeton', 'frischbeton']
+  },
+  'DIN_EN_12390_2': {
+    id: 'DIN_EN_12390_2',
+    code: 'DIN EN 12390-2:2019-10',
+    title: 'Prüfung von Festbeton - Teil 2: Herstellung und Lagerung von Probekörpern für Festigkeitsprüfungen',
+    category: 'beton',
+    ausgabeStand: '2019-10',
+    status: 'gueltig',
+    beschreibung: 'Herstellung, Verdichtung und Lagerung von Probekörpern; nationaler Anhang zur Trockenlagerung (f_c,dry) und deren Umrechnung.',
+    relevanteModule: ['labor_druckfestigkeit', 'festbeton']
+  },
+  'DIN_EN_12390_3': {
+    id: 'DIN_EN_12390_3',
+    code: 'DIN EN 12390-3:2019-10',
+    title: 'Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern',
+    category: 'beton',
+    ausgabeStand: '2019-10',
+    status: 'gueltig',
+    beschreibung: 'Druckprüfung an Würfeln und Zylindern mit Belastungsrate (0,6 ± 0,2) MPa/s, Beurteilung der Bruchbilder.',
+    relevanteModule: ['labor_druckfestigkeit', 'festbeton', 'mechanische_pruefungen']
+  },
+  'DIN_EN_196_1': {
+    id: 'DIN_EN_196_1',
+    code: 'DIN EN 196-1:2016-11',
+    title: 'Prüfverfahren für Zement - Teil 1: Bestimmung der Festigkeit',
+    category: 'beton',
+    ausgabeStand: '2016-11',
+    status: 'gueltig',
+    beschreibung: 'Normmörtel (450 g Zement, 1350 g CEN-Normsand, 225 g Wasser), Prismen 40 × 40 × 160 mm, Biegezug- und Druckfestigkeit; Entwurf prEN 196-1:2026 liegt vor.',
+    relevanteModule: ['labor_moertelprismen', 'bindemittel']
+  },
+  'DIN_EN_ISO_8407': {
+    id: 'DIN_EN_ISO_8407',
+    code: 'DIN EN ISO 8407:2025-08',
+    title: 'Korrosion von Metallen und Legierungen - Entfernen von Korrosionsprodukten von Korrosionsprüfkörpern (ISO 8407:2021 + Amd 1:2025)',
+    category: 'metall',
+    ausgabeStand: '2025-08',
+    status: 'gueltig',
+    beschreibung: 'Chemische, elektrolytische und mechanische Verfahren zum Entfernen von Korrosionsprodukten vor der gravimetrischen Auswertung, mit Blindwertkorrektur.',
+    relevanteModule: ['labor_auslagerung', 'metallkorrosion']
+  },
+
+  // -------------------------------------------------------------
   // MAUERWERKSBAU
   // -------------------------------------------------------------
   'DIN_EN_1996_1_1': {
