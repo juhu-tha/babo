@@ -74,7 +74,7 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
         </div>
 
         {tabs.length > 1 ? (
-          <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
+          <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
             {inhalt}
           </ModuleTabs>
         ) : inhalt}

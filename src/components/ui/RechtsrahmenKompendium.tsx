@@ -1013,7 +1013,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                                 ))}
                               </div>
 
-                              <button className="w-8 h-8 rounded-lg bg-off-white border border-home-grau/30 flex items-center justify-center text-slate-600 hover:text-shiraz transition-colors">
+                              <button type="button" aria-expanded={isExpanded} aria-label={`${item.fullName}: Details ${isExpanded ? 'einklappen' : 'aufklappen'}`} className="w-8 h-8 rounded-lg bg-off-white border border-home-grau/30 flex items-center justify-center text-slate-600 hover:text-shiraz transition-colors">
                                 {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                               </button>
                             </div>
