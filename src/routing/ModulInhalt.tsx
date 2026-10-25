@@ -11,6 +11,7 @@ const KorrosionsschutzBeschichtungen = React.lazy(() => import('../modules/Korro
 const KeramikZiegel = React.lazy(() => import('../modules/KeramikZiegel'));
 const StahlbauEC3 = React.lazy(() => import('../modules/StahlbauEC3'));
 const Vorlesungen = React.lazy(() => import('../modules/Vorlesungen'));
+const Lehrveranstaltungen = React.lazy(() => import('../modules/Lehrveranstaltungen'));
 const NachhaltigkeitDatenRegeln = React.lazy(() => import('../modules/NachhaltigkeitDatenRegeln'));
 const OekobilanzLCA = React.lazy(() => import('../modules/OekobilanzLCA'));
 const ZertifizierungSiegel = React.lazy(() => import('../modules/ZertifizierungSiegel'));
@@ -511,6 +512,9 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     }
     />
     )}
+    {/* Lernpfade je Lehrveranstaltung (AP 6.1), Daten in src/data/lernpfade.ts */}
+    {activeTab === 'lehrveranstaltungen' && <Lehrveranstaltungen />}
+    {(activeTab === 'lv_baustoffkunde' || activeTab === 'lv_bauen_im_bestand' || activeTab === 'lv_aryc' || activeTab === 'lv_wpf_nachhaltiges_bauen' || activeTab === 'lv_vnhb' || activeTab === 'lv_ki_master' || activeTab === 'lv_zert_ausbau_bestand') && <Lehrveranstaltungen kursId={activeTab} />}
     {activeTab === 'studium_tha' && <StudiumTHA />}
     {activeTab === 'thesen_projekte' && <ThesenProjekte />}
     {activeTab === 'kuriositaeten' && <Kuriositaeten />}
