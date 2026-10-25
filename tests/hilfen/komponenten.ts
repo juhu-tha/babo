@@ -1,29 +1,59 @@
 // Gemeinsame Hilfen für Komponententests (AP 5.6) – ohne Testing Library/Vitest:
 // Rendern per react-dom/server, Prüfungen auf dem erzeugten HTML.
 //
-// react-katex liegt nur als UMD-Bundle vor; Node-ESM erkennt daraus keine benannten Exporte
-// (InlineMath, BlockMath). Ein kleiner Lade-Hook liefert ein ESM-Gegenstück. Deshalb importieren
-// die Testdateien Komponenten erst NACH diesem Modul per `await import(...)`.
+// Lade-Hook für Module, die Node-ESM allein nicht laden kann:
+//   – react-katex liegt nur als UMD-Bundle vor; Node erkennt daraus keine benannten Exporte
+//     (InlineMath, BlockMath) → ESM-Gegenstück über createRequire.
+//   – virtual:quiz-pool[/quiz-modul-<id> | /quiz-teil-<n>] (AP 5.4) gibt es sonst nur über das Vite-Plugin.
+//     Die Quelltexte erzeugt dasselbe Plugin (scripts/quizPool.ts, resolveId/load) aus src/data/quiz.json.
+// Deshalb importieren die Testdateien Komponenten erst NACH diesem Modul per `await import(...)`.
 import { register, createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { quizPoolPlugin, fragenJeModul, teileFragenpool, QUIZ_POOL_ID } from '../../scripts/quizPool';
+import roh from '../../src/data/quiz.json' with { type: 'json' };
 
 const basis = pathToFileURL(process.cwd() + '/package.json').href;
+
+/** Quelltexte aller virtuellen Fragenpool-Module, erzeugt mit dem Vite-Plugin selbst */
+function quizPoolQuellen(): Record<string, string> {
+  const plugin = quizPoolPlugin();
+  const kontext = { addWatchFile() {}, error(m: string): never { throw new Error(m); } };
+  const resolveId = plugin.resolveId as (id: string) => string | undefined;
+  const load = plugin.load as (this: typeof kontext, id: string) => string | undefined;
+  const fragen = roh as { id: string; moduleId: string }[];
+  const ids = [
+    QUIZ_POOL_ID,
+    ...[...fragenJeModul(fragen).keys()].map(m => `${QUIZ_POOL_ID}/quiz-modul-${encodeURIComponent(m)}`),
+    ...teileFragenpool(fragen).map((_, i) => `${QUIZ_POOL_ID}/quiz-teil-${i + 1}`),
+  ];
+  return Object.fromEntries(ids.map(id => {
+    const quelle = load.call(kontext, resolveId(id)!);
+    if (typeof quelle !== 'string') throw new Error(`quiz-pool: kein Quelltext für ${id}`);
+    return [id, quelle];
+  }));
+}
+
 const hook = `
-const SHIM = 'babo-shim:react-katex';
+const KATEX = 'babo-shim:react-katex';
+const QUIZ = 'babo-shim:quiz/';
+let quiz = {};
+export async function initialize(daten) { quiz = daten.quiz; }
 export async function resolve(spec, ctx, next) {
-  if (spec === 'react-katex') return { url: SHIM, shortCircuit: true };
+  if (spec === 'react-katex') return { url: KATEX, shortCircuit: true };
+  if (spec in quiz) return { url: QUIZ + encodeURIComponent(spec), shortCircuit: true };
   return next(spec, ctx);
 }
 export async function load(url, ctx, next) {
-  if (url === SHIM) return { format: 'module', shortCircuit: true, source:
+  if (url === KATEX) return { format: 'module', shortCircuit: true, source:
     "import { createRequire } from 'node:module';" +
     "const m = createRequire(" + ${JSON.stringify(JSON.stringify(basis))} + ")('react-katex');" +
     "export const InlineMath = m.InlineMath; export const BlockMath = m.BlockMath; export default m;" };
+  if (url.startsWith(QUIZ)) return { format: 'module', shortCircuit: true, source: quiz[decodeURIComponent(url.slice(QUIZ.length))] };
   return next(url, ctx);
 }`;
-register('data:text/javascript,' + encodeURIComponent(hook));
+register('data:text/javascript,' + encodeURIComponent(hook), { data: { quiz: quizPoolQuellen() } });
 // Sicherstellen, dass das CJS-Bundle auflösbar ist (sonst früh und verständlich scheitern)
 createRequire(basis).resolve('react-katex');
 

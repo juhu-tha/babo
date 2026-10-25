@@ -62,7 +62,7 @@ Verworfene Alternativen: per Skript erzeugte `src/data/quiz/<cluster>.json` (dop
 
 ### Komponententests
 
-`tests/komponenten-*.test.ts` rendern zentrale Bausteine (Modulkopf, Selbsttest, Reiter, Formeln, Hinweise, Suche) mit `react-dom/server` (`renderToStaticMarkup`) und prüfen das HTML – ohne Testing Library/Vitest und ohne DOM. `tests/hilfen/komponenten.ts` stellt `rendere()` (mit `LanguageProvider` › `TabProvider` wie in der App), einen kleinen Testläufer und einen Lade-Hook für `react-katex` bereit (das Paket ist ein UMD-Bundle ohne ESM-Exporte); Komponenten werden deshalb erst danach per `await import(...)` geladen. Interaktionslogik, die sich ohne DOM nicht auslösen lässt, liegt als reine Funktion neben der Komponente (z. B. `reiterZiel` in `ModuleTabs`, `zielBeiGruppenwechsel` in `GruppierteModuleTabs`).
+`tests/komponenten-*.test.ts` rendern zentrale Bausteine (Modulkopf, Selbsttest, Reiter, Formeln, Hinweise, Suche) mit `react-dom/server` (`renderToStaticMarkup`) und prüfen das HTML – ohne Testing Library/Vitest und ohne DOM. `tests/hilfen/komponenten.ts` stellt `rendere()` (mit `LanguageProvider` › `TabProvider` wie in der App), einen kleinen Testläufer und einen Lade-Hook bereit – für `react-katex` (UMD-Bundle ohne ESM-Exporte) und für `virtual:quiz-pool…` (Quelltexte erzeugt das Vite-Plugin `scripts/quizPool.ts` aus `quiz.json`); Komponenten werden deshalb erst danach per `await import(...)` geladen. Interaktionslogik, die sich ohne DOM nicht auslösen lässt, liegt als reine Funktion neben der Komponente (z. B. `reiterZiel` in `ModuleTabs`, `zielBeiGruppenwechsel` in `GruppierteModuleTabs`).
 
 ### E2E-Smoke (Playwright, nicht in package.json)
 

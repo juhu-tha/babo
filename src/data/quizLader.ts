@@ -34,12 +34,14 @@ export function clusterDerGruppen(gruppen: readonly string[]): ClusterNummer[] {
 }
 
 const modulCache = new Map<string, Promise<QuizQuestion[]>>();
+/** bereits geladene Modulfragen: bei erneutem Öffnen sofort verfügbar (kein Ladezustand) */
+const modulGeladen = new Map<string, QuizQuestion[]>();
 export function ladeModulFragen(moduleId: string): Promise<QuizQuestion[]> {
   const lade = ladeModul[moduleId];
   if (!lade) return Promise.resolve([]);
   let p = modulCache.get(moduleId);
   if (!p) {
-    p = lade().then(m => m.default.map(mitZuordnung));
+    p = lade().then(m => { const f = m.default.map(mitZuordnung); modulGeladen.set(moduleId, f); return f; });
     p.catch(() => modulCache.delete(moduleId));
     modulCache.set(moduleId, p);
   }
@@ -68,9 +70,9 @@ function useGeladen(lade: (() => Promise<QuizQuestion[]>) | undefined, schluesse
   return stand?.k === schluessel ? stand.f : null;
 }
 
-/** Fragen eines Moduls; null, solange sie geladen werden */
+/** Fragen eines Moduls; null, solange sie geladen werden (danach aus dem Cache sofort verfügbar) */
 export function useModulFragen(moduleId: string): QuizQuestion[] | null {
-  return useGeladen(() => ladeModulFragen(moduleId), moduleId);
+  return useGeladen(() => ladeModulFragen(moduleId), moduleId, modulGeladen.get(moduleId));
 }
 
 /** Gesamtpool; null, solange er geladen wird (danach aus dem Cache sofort verfügbar) */

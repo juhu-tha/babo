@@ -8,6 +8,7 @@ const { QUIZ_QUESTIONS } = await import('../src/data/quizData');
 const { LERNZIELE } = await import('../src/data/lernziele');
 const { ERKUNDUNG } = await import('../src/data/erkundung');
 const { KURZFASSUNG } = await import('../src/data/kurzfassung');
+const { ladeModulFragen, anzahlFragenModul, anzahlFragenRoute } = await import('../src/data/quizLader');
 
 const t = testlauf('Komponenten Modulkopf/Selbsttest');
 const proModul = new Map<string, number>();
@@ -35,6 +36,20 @@ t.test('ModulTest: standardmäßig eingeklappt (aria-expanded=false, keine Frage
   const erste = QUIZ_QUESTIONS.find(q => q.moduleId === id)!;
   sicher(html.includes('aria-expanded="false"'), 'aria-expanded fehlt');
   sicher(!text(html).includes(kompakt(erste.question)), 'Frage sichtbar, obwohl eingeklappt');
+});
+// Fragen kommen asynchron aus dem virtuellen Fragenpool (AP 5.4): vor dem Laden Ladezustand,
+// nach `await ladeModulFragen()` rendert ModulTest sie sofort aus dem Cache.
+t.test('ModulTest: aufgeklappt vor dem Laden Ladehinweis, Anzahl schon aus dem Index', () => {
+  const [id, n] = viele;
+  const s = text(rendere(h(ModulTest, { moduleId: id, defaultOpen: true })));
+  sicher(s.includes('Fragen werden geladen') && s.includes(`${n} Fragen`), 'Ladezustand/Anzahl fehlt');
+  sicher(anzahlFragenModul(id) === n, 'Index-Anzahl weicht von quiz.json ab');
+});
+const geladen = await ladeModulFragen(viele[0]);
+t.test('Fragenpool-Lader: Modulpaket entspricht quiz.json (Reihenfolge, Zuordnung)', () => {
+  const erwartet = QUIZ_QUESTIONS.filter(q => q.moduleId === viele[0]);
+  sicher(geladen.map(q => q.id).join() === erwartet.map(q => q.id).join(), 'IDs/Reihenfolge weichen ab');
+  sicher(geladen.every(q => q.route === erwartet[0].route && q.clusterId === erwartet[0].clusterId), 'Zuordnung (Route/Cluster) fehlt');
 });
 t.test('ModulTest: aufgeklappt alle Fragen des Moduls mit Nummerierung und Optionen', () => {
   const [id, n] = viele;
@@ -66,6 +81,7 @@ t.test('ModulLernziele: Kopf mit Niveau, Dauer und Selbsttest-Anzahl', () => {
   const s = text(rendere(h(ModulLernziele, { moduleId: lzId, daten: lz, oeffneModul: () => {} })));
   const niveau = { B: 'Bachelor', M: 'Master', 'B/M': 'Bachelor und Master' }[lz.niveau];
   const n = QUIZ_QUESTIONS.filter(q => q.route === lzId).length;
+  sicher(anzahlFragenRoute(lzId) === n, 'Index-Anzahl je Route weicht ab');
   sicher(s.includes('Lernziele') && s.includes(niveau), 'Titel/Niveau fehlt');
   sicher(s.includes(`ca. ${lz.minuten} min`), 'Bearbeitungsdauer fehlt');
   sicher(s.includes(`Selbsttest: ${n} ${n === 1 ? 'Frage' : 'Fragen'}`), `Selbsttest-Anzahl ${n} fehlt`);
