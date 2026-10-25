@@ -24,7 +24,7 @@ for (const [id, l] of Object.entries(LERNZIELE)) {
 }
 
 // Abdeckung der Fachmodule (Typ standard oder calculator, ohne Info-/Studienbereiche) – Ratsche bis 100 %
-const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
+const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Lehrveranstaltungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
 const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
 const ohne = fach.filter(m => !LERNZIELE[m.id]).length;
 const MAX_OHNE = 0;

@@ -98,7 +98,7 @@ const duenn = [...proModul.values()].filter(n => n < 5).length;
 pruefe(duenn <= MAX_DUENN, `${duenn} Module mit < 5 Fragen (Grenze ${MAX_DUENN})`);
 
 // 7. Abdeckung der Fachmodule (AP 3.4): je Route ≥ 6 Fragen, Rechner-Module mit Rechenfrage, Spannbeton ≥ 10, Pool ≥ 850
-const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
+const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Lehrveranstaltungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
 const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
 const proRoute = new Map<string, typeof QUIZ_QUESTIONS>();
 for (const q of QUIZ_QUESTIONS) { const r = quizRoute(q.moduleId); if (r) proRoute.set(r, [...(proRoute.get(r) ?? []), q]); }

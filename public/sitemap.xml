@@ -1576,6 +1576,56 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Lehrveranstaltungen -->
+  <url>
+    <loc>https://baustoffboard.de/#lehrveranstaltungen</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_baustoffkunde</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_bauen_im_bestand</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_aryc</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_wpf_nachhaltiges_bauen</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_vnhb</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_ki_master</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#lv_zert_ausbau_bestand</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Baustofflabor -->
   <url>
     <loc>https://baustoffboard.de/#labor_sicherheit</loc>

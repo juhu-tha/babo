@@ -1,5 +1,5 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
   RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
@@ -29,10 +29,22 @@ const calculateGrade = (percent: number): { grade: string; text: string; passed:
   return { grade: '5,0', text: 'Nicht bestanden', passed: false, color: 'text-rose-700 bg-rose-50 border-rose-300' };
 };
 
-export const KlausurSimulator: React.FC = () => {
+export interface KlausurSimulatorProps {
+  /** nur Fragen dieser Routen (Modul-IDs), z. B. die Module eines Lernpfads (AP 6.1); fehlt = Gesamtpool */
+  routen?: readonly string[];
+  /** Überschrift statt „Simulierte Klausur: Baustoffe & Werkstoffmechanik“ */
+  titel?: string;
+}
+
+export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, titel }) => {
   const [phase, setPhase] = useState<'config' | 'exam' | 'result'>('config');
   // Fragenpool in Teilpaketen nachgeladen (quizLader); null, solange er lädt
-  const alleFragen = useAlleFragen();
+  const gesamtPool = useAlleFragen();
+  const routenSchluessel = routen?.join('|');
+  const alleFragen = useMemo(
+    () => (gesamtPool && routen ? gesamtPool.filter(q => !!q.route && routen.includes(q.route)) : gesamtPool),
+    [gesamtPool, routenSchluessel],
+  );
   
   // Configuration
   const [config, setConfig] = useState<ExamConfig>({
@@ -184,7 +196,7 @@ export const KlausurSimulator: React.FC = () => {
                   Prüfungssimulation TH Augsburg
                 </span>
                 <h3 className="text-xl font-bold text-text-main">
-                  Simulierte Klausur: Baustoffe &amp; Werkstoffmechanik
+                  {titel ?? 'Simulierte Klausur: Baustoffe & Werkstoffmechanik'}
                 </h3>
               </div>
             </div>
@@ -221,7 +233,7 @@ export const KlausurSimulator: React.FC = () => {
                     }`}
                   >
                     <div className="text-sm font-bold">{item.label}</div>
-                    <div className={`text-xs ${config.questionCount === item.count ? 'text-white/80' : 'text-text-main/60'}`}>
+                    <div className={`text-xs ${config.questionCount === item.count ? 'text-white' : 'text-text-main/60'}`}>
                       {item.desc}
                     </div>
                   </button>
@@ -250,7 +262,7 @@ export const KlausurSimulator: React.FC = () => {
                     }`}
                   >
                     <div className="text-sm font-bold">{item.label}</div>
-                    <div className={`text-xs ${config.durationMinutes === item.mins ? 'text-white/80' : 'text-text-main/60'}`}>
+                    <div className={`text-xs ${config.durationMinutes === item.mins ? 'text-white' : 'text-text-main/60'}`}>
                       {item.desc}
                     </div>
                   </button>
@@ -288,11 +300,11 @@ export const KlausurSimulator: React.FC = () => {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-home-grau/20">
             <div className="text-xs text-text-main/60">
-              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.filter(q => q.verified !== false).length : '…'} fachlich geprüfte Fragen</strong> (Reviewer: Prof. Dr.-Ing. Jürgen Huber)
+              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.length : '…'} Fragen</strong>{alleFragen && <> (davon {alleFragen.filter(q => q.verified !== false).length} fachlich geprüft; Reviewer: Prof. Dr.-Ing. Jürgen Huber)</>}
             </div>
             <button
               onClick={startExam}
-              disabled={!alleFragen}
+              disabled={!alleFragen || alleFragen.length === 0}
               className="w-full sm:w-auto px-8 py-3.5 disabled:opacity-60 disabled:cursor-wait bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Klausur jetzt starten</span>
