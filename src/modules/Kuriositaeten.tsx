@@ -1,6 +1,7 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   History, 
@@ -17,8 +18,32 @@ import {
   BookOpen
 } from 'lucide-react';
 
+type KurioReiter = 'pantheon' | 'burjkhalifa' | 'eiffel' | 'olympia' | 'uhpc' | 'selfhealing' | 'reinforcement' | 'giantconcrete' | 'gotthard' | 'seawater';
+
+// Reiter (AP 3.8): 4 thematische Hauptbereiche statt 10 Einzelreitern; die Bauwerke bilden die zweite Ebene
+const GRUPPEN: readonly ModulTabGruppe<KurioReiter>[] = [
+  { id: 'antike_g', label: 'Antike Betone', icon: Compass, mitglieder: [
+    { id: 'pantheon', label: 'Pantheon-Kuppel', icon: Compass },
+    { id: 'selfhealing', label: 'Römische Rissheilung', icon: Activity },
+    { id: 'seawater', label: 'Seekais Antik', icon: Anchor },
+  ] },
+  { id: 'stahl_g', label: 'Stahl, Seile & Verbund', icon: Layers, mitglieder: [
+    { id: 'eiffel', label: 'Eiffelturm-Stahl', icon: Layers },
+    { id: 'reinforcement', label: 'Verbund Monier', icon: Dumbbell },
+    { id: 'olympia', label: 'Olympiadach Seilnetz', icon: Wind },
+  ] },
+  { id: 'hochleistung_g', label: 'Hochleistungsbeton', icon: Sparkles, mitglieder: [
+    { id: 'burjkhalifa', label: 'Burj Khalifa Rheologie', icon: Droplet },
+    { id: 'uhpc', label: 'UHPC-Gefüge', icon: Sparkles },
+  ] },
+  { id: 'gross_g', label: 'Massen- & Tunnelbeton', icon: Mountain, mitglieder: [
+    { id: 'giantconcrete', label: 'Massenbeton Talsperre', icon: Waves },
+    { id: 'gotthard', label: 'Gotthard Spritzbeton', icon: Mountain },
+  ] },
+];
+
 export default function Kuriositaeten() {
-  const [activeCurioTab, setActiveCurioTab] = useState<'pantheon' | 'burjkhalifa' | 'eiffel' | 'olympia' | 'uhpc' | 'selfhealing' | 'reinforcement' | 'giantconcrete' | 'gotthard' | 'seawater'>('pantheon');
+  const [activeCurioTab, setActiveCurioTab] = useState<KurioReiter>('pantheon');
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">
@@ -34,133 +59,18 @@ export default function Kuriositaeten() {
         <p className="text-sm text-slate-650 leading-relaxed max-w-4xl">
           Wissenschaftliche Aufbereitung baustofflicher und tragwerkstechnischer Meilensteine. Diese Dokumentation analysiert werkstoffphysikalische, chemische und statische Beanspruchungszustände anhand detaillierter ingenieurwissenschaftlicher Kennwerte und Berechnungsmodelle.
         </p>
-
-        {/* NAVIGATION FOR REKORDE / KURIOSITÄTEN */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-2 mt-6 p-1.5 bg-slate-100 rounded-xl border border-slate-200" id="curio-navigation">
-          <button aria-pressed={activeCurioTab === 'pantheon'}
-            onClick={() => setActiveCurioTab('pantheon')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'pantheon'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Compass size={16} />
-            <span className="truncate w-full text-[11px]">Pantheon-Kuppel</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'burjkhalifa'}
-            onClick={() => setActiveCurioTab('burjkhalifa')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'burjkhalifa'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Droplet size={16} />
-            <span className="truncate w-full text-[11px]">Burj Khalifa Rheologie</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'eiffel'}
-            onClick={() => setActiveCurioTab('eiffel')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'eiffel'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Layers size={16} />
-            <span className="truncate w-full text-[11px]">Eiffelturm-Stahl</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'olympia'}
-            onClick={() => setActiveCurioTab('olympia')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'olympia'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Wind size={16} />
-            <span className="truncate w-full text-[11px]">Olympiadach Seilnetz</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'uhpc'}
-            onClick={() => setActiveCurioTab('uhpc')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'uhpc'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Sparkles size={16} />
-            <span className="truncate w-full text-[11px]">UHPC-Gefüge</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'selfhealing'}
-            onClick={() => setActiveCurioTab('selfhealing')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'selfhealing'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Activity size={16} />
-            <span className="truncate w-full text-[11px]">Römische Rissheilung</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'reinforcement'}
-            onClick={() => setActiveCurioTab('reinforcement')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'reinforcement'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Dumbbell size={16} />
-            <span className="truncate w-full text-[11px]">Verbund Monier</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'giantconcrete'}
-            onClick={() => setActiveCurioTab('giantconcrete')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'giantconcrete'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Waves size={16} />
-            <span className="truncate w-full text-[11px]">Massenbeton Talsperre</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'gotthard'}
-            onClick={() => setActiveCurioTab('gotthard')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'gotthard'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Mountain size={16} />
-            <span className="truncate w-full text-[11px]">Gotthard Spritzbeton</span>
-          </button>
-
-          <button aria-pressed={activeCurioTab === 'seawater'}
-            onClick={() => setActiveCurioTab('seawater')}
-            className={`px-2 py-2.5 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1.5 cursor-pointer ${
-              activeCurioTab === 'seawater'
-                ? 'bg-shiraz text-white shadow-sm'
-                : 'text-slate-700 hover:bg-white/60 hover:text-shiraz'
-            }`}
-          >
-            <Anchor size={16} />
-            <span className="truncate w-full text-[11px]">Seekais Antik</span>
-          </button>
-        </div>
       </div>
 
+      {/* NAVIGATION FOR REKORDE / KURIOSITÄTEN (AP 3.8: 4 Bereiche, Bauwerke als zweite Ebene) */}
+      <GruppierteModuleTabs
+        label="Meilensteine: Bereiche"
+        gruppen={GRUPPEN}
+        aktiv={activeCurioTab}
+        onWechsel={setActiveCurioTab}
+        className="[&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-slate-200"
+      >
       {/* CORE CONTENT LAYOUTS WITHOUT CALCULATORS */}
-      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm min-h-[450px]" id="curio-content">
+      <div className="mt-6 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm min-h-[450px]" id="curio-content">
         
         {/* 1. PANTHEON ROM */}
         {activeCurioTab === 'pantheon' && (
@@ -862,6 +772,7 @@ export default function Kuriositaeten() {
         )}
 
       </div>
+      </GruppierteModuleTabs>
 
       {/* FOOTER & REFERENCES */}
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}

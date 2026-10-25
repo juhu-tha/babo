@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
@@ -171,6 +172,40 @@ Er erzeugt hochpräzise Antworten frei von leerem Marketing-Slang.`;
   return { promptText, explanation };
 }
 
+type KiReiter = 'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse';
+
+// Reiter (AP 3.8): 7 Hauptreiter statt 8; nur die reinen Linksammlungen (KI-Seiten, Onlinekurse)
+// teilen sich einen Reiter mit zweiter Ebene. Bereiche mit eigener Reiterleiste (Systemarchitektur,
+// LLM-Praxis, Thesen, Recht & Ethik, Lokale KI) bleiben Hauptreiter, damit höchstens 2 Ebenen entstehen.
+const KI_GRUPPEN: readonly ModulTabGruppe<KiReiter>[] = [
+  { id: 'system_g', label: 'a) Systemarchitektur', icon: Cpu, mitglieder: [{ id: 'system', label: 'a) Systemarchitektur' }] },
+  { id: 'prompting_g', label: 'b) Prompting-Praxis', icon: MessageSquare, mitglieder: [{ id: 'prompting', label: 'b) Prompting-Praxis' }] },
+  { id: 'llmpraxis_g', label: 'c) LLM-Praxis (Claude & ChatGPT)', icon: Terminal, mitglieder: [{ id: 'llmpraxis', label: 'c) LLM-Praxis (Claude & ChatGPT)' }] },
+  { id: 'thesen_g', label: 'd) Tools für Thesen', icon: BookOpen, mitglieder: [{ id: 'thesen', label: 'd) Tools für Thesen' }] },
+  { id: 'recht_g', label: 'e) Fehler, Recht & Ethik', icon: ShieldAlert, mitglieder: [{ id: 'recht_ethik', label: 'e) Fehler, Recht & Ethik' }] },
+  { id: 'lokal_g', label: 'f) Lokale KI (LM Studio)', icon: Server, mitglieder: [{ id: 'lokal', label: 'f) Lokale KI (LM Studio)' }] },
+  { id: 'ressourcen_g', label: 'g)–h) KI-Seiten & Onlinekurse', icon: Compass, mitglieder: [
+    { id: 'ressourcen', label: 'g) Unabhängige KI-Seiten', icon: Compass },
+    { id: 'onlinekurse', label: 'h) Onlinekurse', icon: Video },
+  ] },
+];
+
+/** Reiterleiste nur ohne festen Einsprung (forceTab); sonst wird der Inhalt unverändert durchgereicht. */
+function KiReiterRahmen({ zeigen, aktiv, onWechsel, children }: { zeigen: boolean; aktiv: KiReiter; onWechsel: (t: KiReiter) => void; children: React.ReactNode }) {
+  if (!zeigen) return <>{children}</>;
+  return (
+    <GruppierteModuleTabs
+      label="KI in der Baustoffkunde: Bereiche"
+      gruppen={KI_GRUPPEN}
+      aktiv={aktiv}
+      onWechsel={onWechsel}
+      className="my-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+    >
+      <div className="mt-6">{children}</div>
+    </GruppierteModuleTabs>
+  );
+}
+
 interface KiBaustoffeProps {
   forceTab?: 'ueberblick' | 'system' | 'prompting' | 'anwendungen' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse';
 }
@@ -185,9 +220,9 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
 function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
   const { setActiveTab: oeffneModul } = useTabContext();
 
-  const [localActiveTab, setLocalActiveTab] = useState<'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse'>('system');
+  const [localActiveTab, setLocalActiveTab] = useState<KiReiter>('system');
   const activeTab = forceTab || localActiveTab;
-  const setActiveTab = (tab: 'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse') => {
+  const setActiveTab = (tab: KiReiter) => {
     if (!forceTab) {
       setLocalActiveTab(tab);
     }
@@ -360,92 +395,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           <KiGlossar initialExpanded={!forceTab || activeTab === 'system'} />
         </div>
 
-        {/* PRIMARY TABS */}
-        {!forceTab && (
-          <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'system'}
-            onClick={() => setActiveTab('system')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'system' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Cpu size={16} /> a) Systemarchitektur
-          </button>
-          <button aria-pressed={activeTab === 'prompting'}
-            onClick={() => setActiveTab('prompting')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'prompting' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <MessageSquare size={16} /> b) Prompting-Praxis
-          </button>
-          <button aria-pressed={activeTab === 'llmpraxis'}
-            onClick={() => setActiveTab('llmpraxis')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'llmpraxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Terminal size={16} /> c) LLM-Praxis (Claude &amp; ChatGPT)
-          </button>
-          <button aria-pressed={activeTab === 'thesen'}
-            onClick={() => setActiveTab('thesen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'thesen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <BookOpen size={16} /> d) Tools für Thesen
-          </button>
-          <button aria-pressed={activeTab === 'recht_ethik'}
-            onClick={() => setActiveTab('recht_ethik')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'recht_ethik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <ShieldAlert size={16} /> e) Fehler, Recht &amp; Ethik
-          </button>
-          <button aria-pressed={activeTab === 'lokal'}
-            onClick={() => setActiveTab('lokal')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'lokal' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Server size={16} /> f) Lokale KI (LM Studio)
-          </button>
-          <button aria-pressed={activeTab === 'ressourcen'}
-            onClick={() => setActiveTab('ressourcen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'ressourcen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Compass size={16} /> g) Unabhängige KI-Seiten
-          </button>
-          <button aria-pressed={activeTab === 'onlinekurse'}
-            onClick={() => setActiveTab('onlinekurse')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'onlinekurse' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Video size={16} /> h) Onlinekurse
-          </button>
-        </div>
-        )}
-
+        {/* PRIMARY TABS (AP 3.8: 7 Hauptreiter, zweite Ebene nur für KI-Seiten & Onlinekurse) */}
+        <KiReiterRahmen zeigen={!forceTab} aktiv={localActiveTab} onWechsel={setActiveTab}>
         {/* TAB 1: SYSTEMARCHITEKTUR */}
         {activeTab === 'system' && (
           <Systemarchitektur />
@@ -830,6 +781,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         {activeTab === 'onlinekurse' && (
           <KiOnlinekurse />
         )}
+        </KiReiterRahmen>
 
       </div>
 

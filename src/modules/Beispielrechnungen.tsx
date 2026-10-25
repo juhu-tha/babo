@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/
 import React, { useState } from 'react';
 import { MU_LIM_STAHL } from '@/src/calc/biegung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { 
   Calculator, 
   Layers, 
@@ -20,15 +21,52 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 
+type RechnungReiter = 'u_wert' | 'beton' | 'stahlbeton' | 'holzbau' | 'mauerwerk' | 'nachhaltigkeit' | 'bestand' | 'schallschutz' | 'brandschutz';
+
+// Reiter (AP 3.8): 6 Hauptreiter statt 9 (nur ohne festen Einsprung sichtbar; die Routen rechnung_*
+// setzen forceTab und zeigen genau eine Rechnung). Rechnungen mit eigener Reiterleiste (Beton,
+// Nachhaltigkeit, Bestand, Brandschutz) bleiben Hauptreiter, damit höchstens 2 Ebenen entstehen.
+const RECHNUNG_GRUPPEN: readonly ModulTabGruppe<RechnungReiter>[] = [
+  { id: 'bauphysik_g', label: 'a) + h) Bauphysik & Bauakustik', icon: Layers, mitglieder: [
+    { id: 'u_wert', label: 'a) Bauphysik: U-Wert', icon: Layers },
+    { id: 'schallschutz', label: 'h) Bauakustik: Schallschutz', icon: Volume2 },
+  ] },
+  { id: 'beton_g', label: 'b) Beton: Mischungsentwurf', icon: BookOpen, mitglieder: [{ id: 'beton', label: 'b) Beton: Mischungsentwurf' }] },
+  { id: 'tragwerk_g', label: 'c)–e) Tragwerksnachweise', icon: Sliders, mitglieder: [
+    { id: 'stahlbeton', label: 'c) Massivbau: Biegung im GZT', icon: Sliders },
+    { id: 'holzbau', label: 'd) Holzbau: Stützenknicken', icon: Scale },
+    { id: 'mauerwerk', label: 'e) Mauerwerk: Tragfähigkeit', icon: Settings },
+  ] },
+  { id: 'nachhaltigkeit_g', label: 'f) Nachhaltigkeit & Ökobilanz', icon: Leaf, mitglieder: [{ id: 'nachhaltigkeit', label: 'f) Nachhaltigkeit & Ökobilanz' }] },
+  { id: 'bestand_g', label: 'g) Bauen im Bestand', icon: History, mitglieder: [{ id: 'bestand', label: 'g) Bauen im Bestand' }] },
+  { id: 'brandschutz_g', label: 'i) Brandschutz: Heißbemessung', icon: Flame, mitglieder: [{ id: 'brandschutz', label: 'i) Brandschutz: Heißbemessung' }] },
+];
+
+/** Reiterleiste nur ohne festen Einsprung (forceTab); sonst wird der Inhalt unverändert durchgereicht. */
+function RechnungReiterRahmen({ zeigen, aktiv, onWechsel, children }: { zeigen: boolean; aktiv: RechnungReiter; onWechsel: (t: RechnungReiter) => void; children: React.ReactNode }) {
+  if (!zeigen) return <>{children}</>;
+  return (
+    <GruppierteModuleTabs
+      label="Beispielrechnungen: Bereiche"
+      gruppen={RECHNUNG_GRUPPEN}
+      aktiv={aktiv}
+      onWechsel={onWechsel}
+      className="my-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+    >
+      <div className="mt-6">{children}</div>
+    </GruppierteModuleTabs>
+  );
+}
+
 interface BeispielrechnungenProps {
-  forceTab?: 'u_wert' | 'beton' | 'stahlbeton' | 'holzbau' | 'mauerwerk' | 'nachhaltigkeit' | 'bestand' | 'schallschutz' | 'brandschutz';
+  forceTab?: RechnungReiter;
 }
 
 export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps = {}) {
-  const [localActiveTab, setLocalActiveTab] = useState<'u_wert' | 'beton' | 'stahlbeton' | 'holzbau' | 'mauerwerk' | 'nachhaltigkeit' | 'bestand' | 'schallschutz' | 'brandschutz'>('u_wert');
+  const [localActiveTab, setLocalActiveTab] = useState<RechnungReiter>('u_wert');
   const activeTab = forceTab || localActiveTab;
 
-  const setActiveTab = (tab: 'u_wert' | 'beton' | 'stahlbeton' | 'holzbau' | 'mauerwerk' | 'nachhaltigkeit' | 'bestand' | 'schallschutz' | 'brandschutz') => {
+  const setActiveTab = (tab: RechnungReiter) => {
     if (!forceTab) {
       setLocalActiveTab(tab);
     }
@@ -423,102 +461,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           </p>
         </div>
 
-        {/* TAB NAVIGATION */}
-        {!forceTab && (
-          <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-            <button aria-pressed={activeTab === 'u_wert'}
-              onClick={() => setActiveTab('u_wert')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'u_wert' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Layers size={16} /> a) Bauphysik: U-Wert
-            </button>
-            <button aria-pressed={activeTab === 'beton'}
-              onClick={() => setActiveTab('beton')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'beton' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <BookOpen size={16} /> b) Beton: Mischungsentwurf
-            </button>
-            <button aria-pressed={activeTab === 'stahlbeton'}
-              onClick={() => setActiveTab('stahlbeton')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'stahlbeton' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Sliders size={16} /> c) Massivbau: Biegung im GZT
-            </button>
-            <button aria-pressed={activeTab === 'holzbau'}
-              onClick={() => setActiveTab('holzbau')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'holzbau' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Scale size={16} /> d) Holzbau: Stützenknicken
-            </button>
-            <button aria-pressed={activeTab === 'mauerwerk'}
-              onClick={() => setActiveTab('mauerwerk')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'mauerwerk' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Settings size={16} /> e) Mauerwerk: Tragfähigkeit
-            </button>
-            <button aria-pressed={activeTab === 'nachhaltigkeit'}
-              onClick={() => setActiveTab('nachhaltigkeit')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'nachhaltigkeit' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Leaf size={16} /> f) Nachhaltigkeit & Ökobilanz
-            </button>
-            <button aria-pressed={activeTab === 'bestand'}
-              onClick={() => setActiveTab('bestand')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'bestand' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <History size={16} /> g) Bauen im Bestand
-            </button>
-            <button aria-pressed={activeTab === 'schallschutz'}
-              onClick={() => setActiveTab('schallschutz')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'schallschutz' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Volume2 size={16} /> h) Bauakustik: Schallschutz
-            </button>
-            <button aria-pressed={activeTab === 'brandschutz'}
-              onClick={() => setActiveTab('brandschutz')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeTab === 'brandschutz' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <Flame size={16} /> i) Brandschutz: Heißbemessung
-            </button>
-          </div>
-        )}
-
+        {/* TAB NAVIGATION (AP 3.8: 6 Hauptreiter, zweite Ebene für Bauphysik und Tragwerksnachweise) */}
+        <RechnungReiterRahmen zeigen={!forceTab} aktiv={localActiveTab} onWechsel={setActiveTab}>
         {/* --- 1. TAB CONTENT: U-WERT --- */}
         {activeTab === 'u_wert' && (
           <div className="space-y-6 animate-in fade-in duration-300">
@@ -2854,6 +2798,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             )}
           </div>
         )}
+        </RechnungReiterRahmen>
 
       </div>
 

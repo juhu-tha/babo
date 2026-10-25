@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -116,6 +117,8 @@ const RSTO_CONCRETE_DATA: Record<string, RstoProfile> = {
   }
 };
 
+type VerkehrReiter = 'rsto_rechner' | 'vergleich' | 'bindemittel' | 'prueftechnik' | 'bahnbau' | 'tunnelbau' | 'tiefbau' | 'betondecken';
+
 interface BpVerkehrswegebauProps {
   initialTab?: 'rsto_rechner' | 'vergleich' | 'bindemittel' | 'prueftechnik' | 'bahnbau' | 'tunnelbau' | 'tiefbau' | 'betondecken';
 }
@@ -193,6 +196,21 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
     };
   }, [asphaltMischung]);
 
+  // Reiter (AP 3.8): 6 Hauptbereiche; Asphalt (Sorten, Bitumen/Gesteine, Prüfmethoden) als zweite Ebene.
+  // Zustand bleibt die bisherige Reiter-ID, damit die Routen bp_verkehr_* (initialTab) weiter passen.
+  const gruppen: readonly ModulTabGruppe<VerkehrReiter>[] = [
+    { id: 'rsto_g', label: 'Oberbau-Rechner (RStO 12/24)', icon: Calculator, mitglieder: [{ id: 'rsto_rechner', label: 'Oberbau-Rechner (RStO 12/24)' }] },
+    { id: 'asphalt_g', label: 'Asphalt, Bitumen & Prüfung', icon: Layers, mitglieder: [
+      { id: 'vergleich', label: 'Asphaltsorten & Tragschichten', icon: Layers },
+      { id: 'bindemittel', label: 'Bitumen & PSV-Gesteine', icon: FileText },
+      { id: 'prueftechnik', label: 'Labor-Prüfmethoden', icon: BookOpen },
+    ] },
+    { id: 'betondecken_g', label: 'Betondecken', icon: Layers, mitglieder: [{ id: 'betondecken', label: 'Betondecken' }] },
+    { id: 'tiefbau_g', label: 'Tiefbau & Entwässerung', icon: Droplets, mitglieder: [{ id: 'tiefbau', label: 'Tiefbau & Entwässerung' }] },
+    { id: 'bahnbau_g', label: 'Bahnbau', icon: Train, mitglieder: [{ id: 'bahnbau', label: 'Bahnbau' }] },
+    { id: 'tunnelbau_g', label: 'Tunnelbau', icon: HardHat, mitglieder: [{ id: 'tunnelbau', label: 'Tunnelbau' }] },
+  ];
+
   const handleLinkToAsphaltBase = () => {
     setActiveTab('asphalt');
   };
@@ -218,90 +236,15 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           </button>
         </div>
 
-        {/* Tab Selection */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'rsto_rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('rsto_rechner')}
-          >
-            <Calculator size={16} /> Oberbau-Rechner (RStO 12/24)
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'vergleich' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('vergleich')}
-          >
-            <Layers size={16} /> Asphaltsorten &amp; Tragschichten
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bindemittel' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('bindemittel')}
-          >
-            <FileText size={16} /> Bitumen &amp; PSV-Gesteine
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'prueftechnik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('prueftechnik')}
-          >
-            <BookOpen size={16} /> Labor-Prüfmethoden
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'betondecken' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('betondecken')}
-          >
-            <Layers size={16} /> Betondecken
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'tiefbau' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('tiefbau')}
-          >
-            <Droplets size={16} /> Tiefbau &amp; Entwässerung
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bahnbau' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('bahnbau')}
-          >
-            <Train size={16} /> Bahnbau
-          </button>
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'tunnelbau' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab2('tunnelbau')}
-          >
-            <HardHat size={16} /> Tunnelbau
-          </button>
-        </div>
-
+        {/* Reiter: 6 Hauptbereiche, Asphalt mit zweiter Ebene (AP 3.8) */}
+        <GruppierteModuleTabs
+          label="Verkehr und Tiefbau: Bereiche"
+          gruppen={gruppen}
+          aktiv={activeTab}
+          onWechsel={setActiveTab2}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+        >
+        <div className="mt-6">
         {/* TAB 1: RStO Oberbau-Rechner */}
         {activeTab === 'rsto_rechner' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -1953,6 +1896,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
             </div>
           </div>
         )}
+        </div>
+        </GruppierteModuleTabs>
 
       </div>
 

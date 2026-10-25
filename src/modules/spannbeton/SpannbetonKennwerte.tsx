@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberF
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BeiwerteKatalog from './BeiwerteKatalog';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import {
   CONCRETE,
   fckT,
@@ -35,10 +36,24 @@ import {
   Package
 } from 'lucide-react';
 
+type KennwertBereich = 'beiwerte' | 'beton' | 'einpressmoertel' | 'kriechen' | 'schwinden' | 'relaxation' | 'elastisch' | 'kopplung' | 'mechanisch' | 'beispielrechnung' | 'rechner';
+type KennwertReiter = 'beton_r' | 'kriechen_schwinden_r' | 'relaxation_r' | 'sofortverluste_r' | 'einpressmoertel_r' | 'kopplung_r' | 'beiwerte_r';
+
+// Reiter (AP 3.8): Diese Leiste liegt bereits unter dem Spannbeton-Reiter „Baustoffkennwerte“ (2. Ebene),
+// daher flach mit 7 Reitern statt 11; verwandte Bereiche stehen untereinander auf einem Reiter.
+const KENNWERT_REITER: readonly (ModulTab<KennwertReiter> & { bereiche: readonly KennwertBereich[] })[] = [
+  { id: 'beton_r', label: 'Beton-Materialeigenschaften (fck, Ecm)', icon: Building, bereiche: ['beton'] },
+  { id: 'kriechen_schwinden_r', label: 'Kriechen (φ) & Schwinden (εcs)', icon: Clock, bereiche: ['kriechen', 'schwinden'] },
+  { id: 'relaxation_r', label: 'Stahlrelaxation (Δσpr)', icon: Zap, bereiche: ['relaxation'] },
+  { id: 'sofortverluste_r', label: 'Elastische Stauchung, Reibung & Keilschlupf', icon: Layers, bereiche: ['elastisch', 'mechanisch'] },
+  { id: 'einpressmoertel_r', label: 'Einpressmörtel & Systembaustoffe (DIN EN 447)', icon: Droplets, bereiche: ['einpressmoertel'] },
+  { id: 'kopplung_r', label: 'EC2-Kopplung (c+s+r) & Beispielrechnung', icon: Calculator, bereiche: ['kopplung', 'beispielrechnung'] },
+  { id: 'beiwerte_r', label: 'Beiwerte-Katalog & Schnellrechner', icon: Scale, bereiche: ['beiwerte', 'rechner'] },
+];
+
 export default function SpannbetonKennwerte() {
-  const [activeSubTab, setActiveSubTab] = useState<
-    'beiwerte' | 'beton' | 'einpressmoertel' | 'kriechen' | 'schwinden' | 'relaxation' | 'elastisch' | 'kopplung' | 'mechanisch' | 'beispielrechnung' | 'rechner'
-  >('beton');
+  const [activeSubTab, setActiveSubTab] = useState<KennwertReiter>('beton_r');
+  const zeige = (b: KennwertBereich) => KENNWERT_REITER.find(r => r.id === activeSubTab)?.bereiche.includes(b) ?? false;
 
   // Concrete Material States (Festigkeit, E-Modul, Reife, Zugfestigkeit, Gestein)
   const [matGrade, setMatGrade] = useState<string>('C45/55');
@@ -389,7 +404,7 @@ export default function SpannbetonKennwerte() {
           </span>
         </div>
 
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
           <p>
             Im konventionellen Stahlbetonbau werden Risse in der Zugzone bewusst toleriert (Zustand II). Im 
             <strong> Spannbetonbau</strong> hingegen wird das Tragwerk durch künstlich aufgebrachte Druckspannungen so überdrückt, 
@@ -400,154 +415,26 @@ export default function SpannbetonKennwerte() {
           </p>
         </div>
 
-        {/* Sub-Tab Navigation */}
-        <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-          <button
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === "beiwerte"
-                ? "bg-shiraz text-white border-shiraz shadow-sm"
-                : "bg-amber-50/80 text-amber-950 border-amber-300 hover:bg-amber-100/80"
-            }`}
-            onClick={() => setActiveSubTab('beiwerte')}
-          >
-            <Scale size={15} className={activeSubTab === 'beiwerte' ? 'text-white' : 'text-amber-800'} />
-            <span>Beiwerte-Katalog (Schätz- vs. Rechenwerte)</span>
-            <span className="ml-1 px-1.5 py-0.2 text-[10px] rounded bg-shiraz/20 text-shiraz font-mono font-bold">
-              EC2
-            </span>
-          </button>
-          <button aria-pressed={activeSubTab === 'beton'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'beton'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('beton')}
-          >
-            <Building size={15} /> Beton-Materialeigenschaften (<InlineMath math="f_{ck}, E_{cm}" />)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'einpressmoertel'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'einpressmoertel'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('einpressmoertel')}
-          >
-            <Droplets size={15} /> Einpressmörtel &amp; Systembaustoffe (DIN EN 447, Hüllrohre, Fette)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'kriechen'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'kriechen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('kriechen')}
-          >
-            <Clock size={15} /> Kriechen (<InlineMath math="\varphi" />)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'schwinden'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'schwinden'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('schwinden')}
-          >
-            <Droplets size={15} /> Schwinden (<InlineMath math="\varepsilon_{cs}" />)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'relaxation'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'relaxation'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('relaxation')}
-          >
-            <Zap size={15} /> Stahlrelaxation (<InlineMath math="\Delta\sigma_{pr}" />)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'elastisch'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'elastisch'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('elastisch')}
-          >
-            <Layers size={15} /> Elastische Stauchung &amp; E-Modul
-          </button>
-
-          <button aria-pressed={activeSubTab === 'kopplung'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'kopplung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('kopplung')}
-          >
-            <Scale size={15} /> EC2-Kopplung (c+s+r)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'mechanisch'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'mechanisch'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('mechanisch')}
-          >
-            <Compass size={15} /> Reibung &amp; Keilschlupf
-          </button>
-
-          <button aria-pressed={activeSubTab === 'beispielrechnung'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'beispielrechnung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('beispielrechnung')}
-          >
-            <Calculator size={15} /> EC2-Beispielrechnung (Zahlenbeispiel)
-          </button>
-
-          <button aria-pressed={activeSubTab === 'rechner'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeSubTab === 'rechner'
-                ? 'bg-zinc-800 text-white border-zinc-800 shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveSubTab('rechner')}
-          >
-            <Activity size={15} /> Kennwerte-Schnellrechner
-          </button>
-        </div>
       </div>
 
+      {/* Reiter: 7 Bereiche (AP 3.8) */}
+      <ModuleTabs
+        label="Baustoffkennwerte im Spannbetonbau: Bereiche"
+        tabs={KENNWERT_REITER}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="[&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+      >
+      <div className="mt-6 space-y-6">
       {/* 0. TAB: BEIWERTE-KATALOG (SCHÄTZ- VS. RECHENWERTE) */}
-      {activeSubTab === 'beiwerte' && (
+      {zeige('beiwerte') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <BeiwerteKatalog />
         </div>
       )}
 
       {/* 0. TAB: BETON-MATERIALEIGENSCHAFTEN */}
-      {activeSubTab === 'beton' && (
+      {zeige('beton') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           {/* Hauptkarte: Werkstoff-Labor & Reife-Simulator */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
@@ -1240,7 +1127,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 0b. TAB: EINPRESSMÖRTEL & SYSTEMBAUSTOFFE */}
-      {activeSubTab === 'einpressmoertel' && (
+      {zeige('einpressmoertel') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/15 pb-4">
@@ -1726,7 +1613,7 @@ export default function SpannbetonKennwerte() {
           </div>
         </div>
       )}
-      {activeSubTab === 'kriechen' && (
+      {zeige('kriechen') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -1983,7 +1870,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 2. TAB: SCHWINDEN DES BETONS */}
-      {activeSubTab === 'schwinden' && (
+      {zeige('schwinden') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -2133,7 +2020,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 3. TAB: STAHLRELAXATION */}
-      {activeSubTab === 'relaxation' && (
+      {zeige('relaxation') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -2322,7 +2209,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 4. TAB: ELASTISCHE STAUCHUNG */}
-      {activeSubTab === 'elastisch' && (
+      {zeige('elastisch') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -2402,7 +2289,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 5. TAB: EC2-KOPPLUNGSFORMEL */}
-      {activeSubTab === 'kopplung' && (
+      {zeige('kopplung') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -2485,7 +2372,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 6. TAB: REIBUNG & KEILSCHLUPF */}
-      {activeSubTab === 'mechanisch' && (
+      {zeige('mechanisch') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -2586,7 +2473,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 7. TAB: VOLLSTÄNDIGE EUROCODE 2 BEISPIELRECHNUNG */}
-      {activeSubTab === 'beispielrechnung' && (
+      {zeige('beispielrechnung') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/15 pb-4">
@@ -2972,7 +2859,7 @@ export default function SpannbetonKennwerte() {
       )}
 
       {/* 7. TAB: INTERAKTIVER SCHNELLRECHNER */}
-      {activeSubTab === 'rechner' && (
+      {zeige('rechner') && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
@@ -3101,6 +2988,8 @@ export default function SpannbetonKennwerte() {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
     </div>
   );
 }
