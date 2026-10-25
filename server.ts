@@ -164,6 +164,22 @@ function voterId(req: Request, res: Response): string {
 
 // --- Sicherheits-Header -------------------------------------------------------
 
+// Inline-Skripte in dist/index.html (Vorladen der Modul-Chunks, AP 5.5) per SHA-256 in der CSP erlauben;
+// Datenblöcke (application/json, application/ld+json) werden nicht ausgeführt und brauchen keinen Hash.
+let skriptHashes: string[] | undefined;
+export function inlineSkriptHashes(html: string): string[] {
+  return [...html.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/g)]
+    .filter(([, attrs, inhalt]) => inhalt.trim() && !/type="application\/(ld\+)?json"/.test(attrs))
+    .map(([, , inhalt]) => `'sha256-${crypto.createHash("sha256").update(inhalt).digest("base64")}'`);
+}
+function distSkriptHashes(): string[] {
+  if (!skriptHashes) {
+    try { skriptHashes = inlineSkriptHashes(fs.readFileSync(path.join(process.cwd(), "dist", "index.html"), "utf8")); }
+    catch { skriptHashes = []; }
+  }
+  return skriptHashes;
+}
+
 function securityHeaders(_req: Request, res: Response, next: NextFunction) {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
@@ -178,13 +194,13 @@ function securityHeaders(_req: Request, res: Response, next: NextFunction) {
       ["object-src 'none'", "base-uri 'self'", "form-action 'self'"].join("; ")
     );
     // Vollständige Richtlinie zunächst berichtend: Skripte ohne 'unsafe-inline' (Inline-Skripte sind
-    // nach public/boot/ ausgelagert). Nach Prüfung der Browser-Konsole im Betrieb (Google Translate!)
-    // auf "Content-Security-Policy" umstellen.
+    // nach public/boot/ ausgelagert; Ausnahme: das Vorlade-Skript, per SHA-256 erlaubt, s. inlineSkriptHashes).
+    // Nach Prüfung der Browser-Konsole im Betrieb (Google Translate!) auf "Content-Security-Policy" umstellen.
     res.setHeader(
       "Content-Security-Policy-Report-Only",
       [
         "default-src 'self'",
-        "script-src 'self' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com",
+        ["script-src 'self'", ...distSkriptHashes(), "https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com"].join(" "),
         "style-src 'self' 'unsafe-inline' https://translate.googleapis.com https://www.gstatic.com",
         "img-src 'self' data: blob: https:",
         "font-src 'self' data:",

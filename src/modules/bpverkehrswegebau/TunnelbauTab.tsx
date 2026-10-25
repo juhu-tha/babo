@@ -124,7 +124,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
               <label className="block text-xs font-semibold text-text-main">Betonfestigkeitsklasse (Spritzbeton):</label>
               <select aria-label="Betonfestigkeitsklasse (Spritzbeton)" 
                 value={betonKlasse}
-                onChange={(e) => setBetonKlasse(e.target.value as any)}
+                onChange={(e) => setBetonKlasse(e.target.value as "C25/30" | "C20/25" | "C30/37")}
                 className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white"
               >
                 <option value="C20/25">C20/25 (zylindrische Festigkeit f_ck = 20 MPa)</option>

@@ -18,6 +18,8 @@ jobs:
       - run: npm install --no-audit --no-fund
       - name: Typprüfung
         run: npm run -s lint
+      - name: any-Ratsche
+        run: node scripts/qa/check-any.mjs
       - name: Tests
         run: npm test
       - name: Formeln (KaTeX)

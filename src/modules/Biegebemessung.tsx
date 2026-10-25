@@ -23,6 +23,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 import { bemesseBiegung, MU_LIM_STAHL, MU_LIM_FRP } from '@/src/calc/biegung';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -126,6 +127,8 @@ export default function Biegebemessung() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Spalten unterhalb des Bildausschnitts erst nach dem ersten Bild (Ladezeit, AP 5.5) */}
+          <NachErstemBild minHoehe="30rem">
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Querschnitt &amp; Einwirkung</h3>
@@ -204,7 +207,9 @@ export default function Biegebemessung() {
               </div>
             </div>
           </div>
+          </NachErstemBild>
 
+          <NachErstemBild minHoehe="40rem">
           <div className="lg:col-span-6 flex flex-col gap-6">
             <EingabeHinweise hinweise={results.hinweise} />
             <div className={`${results.isPossible ? 'bg-shiraz/5 border-shiraz/20' : 'bg-red-100 border-red-300'} p-6 rounded-xl border flex flex-col justify-center`}>
@@ -436,9 +441,11 @@ export default function Biegebemessung() {
               </div>
             </div>
           </div>
+          </NachErstemBild>
         </div>
       </div>
       
+      <NachErstemBild minHoehe="14rem">
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Biegebemessung Rechteckquerschnitt (Standardwerte)"
         zielGleichung="A_{s1} = \omega \cdot b \cdot d \cdot \frac{f_{cd}}{f_{yd}}, \quad \omega = 1 - \sqrt{1 - 2\mu_{Eds}}"
@@ -452,6 +459,7 @@ export default function Biegebemessung() {
         ]}
         ergebnisHinweis="A_s1 ≈ 11,5 cm², z. B. 6 Ø 16 (12,1 cm²)."
       />
+      </NachErstemBild>
 
       <CalculatorDisclaimerBanner className="my-2" />
     </div>

@@ -657,7 +657,7 @@ export default function SchutzGrundlagen() {
               ].map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => setSelectedDamageSource(item.id as any)}
+                  onClick={() => setSelectedDamageSource(item.id as typeof selectedDamageSource)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                     selectedDamageSource === item.id
                       ? 'bg-shiraz text-white border-shiraz'

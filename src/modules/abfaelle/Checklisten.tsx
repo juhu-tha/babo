@@ -34,7 +34,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             return (
               <button aria-pressed={isActive}
                 key={subTab.id}
-                onClick={() => setActiveChecklistSubTab(subTab.id as any)}
+                onClick={() => setActiveChecklistSubTab(subTab.id as "probenahme" | "rueckbau" | "deponie" | "gefahrstoffe" | "einstufung" | "mineralik")}
                 className={`flex-1 min-w-[150px] p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                         isActive
                           ? 'bg-shiraz/5 border-shiraz shadow-sm ring-1 ring-shiraz/35'

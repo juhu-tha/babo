@@ -446,7 +446,7 @@ ${normGuidelines[genNorm]}
                 <label className="font-bold text-text-main block mb-1.5">1. Ingenieur-Rolle / Fachdisziplin:</label>
                 <select aria-label="1. Ingenieur-Rolle / Fachdisziplin" 
                   value={genRole} 
-                  onChange={(e) => setGenRole(e.target.value as any)}
+                  onChange={(e) => setGenRole(e.target.value as typeof genRole)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
                 >
                   <option value="pruefstatik">Prüfstatiker (Eurocode 2 / DIN 1045-2)</option>
@@ -461,7 +461,7 @@ ${normGuidelines[genNorm]}
                 <label className="font-bold text-text-main block mb-1.5">2. Leitendes Regelwerk:</label>
                 <select aria-label="2. Leitendes Regelwerk" 
                   value={genNorm} 
-                  onChange={(e) => setGenNorm(e.target.value as any)}
+                  onChange={(e) => setGenNorm(e.target.value as typeof genNorm)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
                 >
                   <option value="ec2_din1045">DIN EN 1992-1-1 &amp; DIN 1045-2 (Betonbau)</option>
@@ -476,7 +476,7 @@ ${normGuidelines[genNorm]}
                 <label className="font-bold text-text-main block mb-1.5">3. Ziel-Formatierung:</label>
                 <select aria-label="3. Ziel-Formatierung" 
                   value={genFormat} 
-                  onChange={(e) => setGenFormat(e.target.value as any)}
+                  onChange={(e) => setGenFormat(e.target.value as typeof genFormat)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
                 >
                   <option value="claudemd">CLAUDE.md (Projektordner-Regeln)</option>

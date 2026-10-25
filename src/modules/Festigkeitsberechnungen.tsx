@@ -18,6 +18,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 
 ChartJS.register(
@@ -270,8 +271,8 @@ export default function Festigkeitsberechnungen() {
                 plugins: {
                   tooltip: {
                     callbacks: {
-                      label: (context: any) => {
-                        return `${context.dataset.label}: ${formatLength(context.raw)}`;
+                      label: (context: TooltipItem<'bar'>) => {
+                        return `${context.dataset.label}: ${formatLength(context.raw as number)}`;
                       }
                     }
                   }

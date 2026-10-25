@@ -520,7 +520,7 @@ export default function Baustatik() {
                     ...chartOptions.scales,
                     y: { title: { display: true, text: 'Moment [kNm]', font: { weight: 'bold' as const } }, reverse: true }
                   }
-                } as any} />
+                }} />
               </div>
             </div>
             
@@ -533,7 +533,7 @@ export default function Baustatik() {
                     ...chartOptions.scales,
                     y: { title: { display: true, text: 'Querkraft [kN]', font: { weight: 'bold' as const } } }
                   }
-                } as any} />
+                }} />
               </div>
             </div>
 

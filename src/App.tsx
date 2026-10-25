@@ -35,6 +35,7 @@ import { tabGroups } from './routing/tabGroups';
 import { ModulNavigation } from './components/navigation/ModulNavigation';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
+import type { TabId } from '@/src/contexts/TabContext';
 // Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
 // Modul-Selbsttest (zieht quiz.json), Abstimmungsansicht (?poll=…) und SEO-Audit-Modal
 const AKTUELLE_VERSION = `v${PAKET_VERSION}`;
@@ -135,11 +136,11 @@ function AppContent() {
   const [showMetadataModal, setShowMetadataModal] = useState(false);
 
   const printMetadataConsoleTable = () => {
-    const rows: any[] = [];
-    tabGroups.forEach((group: any) => {
+    const rows: Record<string, string | number>[] = [];
+    tabGroups.forEach((group) => {
       const cluster = GROUP_TO_CLUSTER[group.name];
       const clusterName = cluster ? `${cluster.number}: ${cluster.name}` : (group.name === 'Allgemein' ? 'Allgemein' : group.name);
-      group.tabs.forEach((tab: any) => {
+      group.tabs.forEach((tab) => {
         if (tab.id.startsWith('divider_')) return;
         const title = `BaustoffBoard THA - ${tab.label}`;
         const desc = TAB_DESCRIPTIONS[tab.id];
@@ -187,7 +188,7 @@ function AppContent() {
     });
 
     // Auto open parent group and cluster for active tab (exklusiv: andere schließen)
-    const parentGroup = tabGroups.find(g => (g.tabs as readonly any[]).some(t => t.id === activeTab));
+    const parentGroup = tabGroups.find(g => g.tabs.some(t => t.id === activeTab));
     if (parentGroup) {
       setOpenDropdown(parentGroup.name);
       const cluster = GROUP_TO_CLUSTER[parentGroup.name];
@@ -253,8 +254,8 @@ function AppContent() {
     
     // JSON-LD Validation integration
     let jsonLdStatusText = "";
-    if (typeof (window as any).validateJSONLD === 'function') {
-      const report = (window as any).validateJSONLD();
+    if (typeof window.validateJSONLD === 'function') {
+      const report = window.validateJSONLD();
       if (report && report.results) {
         const errorCount = report.errors?.length || 0;
         const warnCount = report.warnings?.length || 0;
@@ -318,7 +319,7 @@ function AppContent() {
     // Dynamic document title update for better user context and crawler indexing
     let tabLabel = "";
     for (const group of tabGroups) {
-      const found = group.tabs.find((t: any) => t.id === activeTab);
+      const found = group.tabs.find((t) => t.id === activeTab);
       if (found) {
         tabLabel = found.label;
         break;
@@ -483,9 +484,9 @@ function AppContent() {
                   </span>
                 </div>
               ) : (() => {
-                const currentGroup = tabGroups.find(g => (g.tabs as readonly any[]).some(t => t.id === activeTab));
+                const currentGroup = tabGroups.find(g => g.tabs.some(t => t.id === activeTab));
                 const currentCluster = currentGroup ? GROUP_TO_CLUSTER[currentGroup.name] : null;
-                const currentTabObj = currentGroup ? (currentGroup.tabs as readonly any[]).find(t => t.id === activeTab) : null;
+                const currentTabObj = currentGroup ? currentGroup.tabs.find(t => t.id === activeTab) : null;
                 const ClusterIcon = currentCluster?.icon || Compass;
                 const clusterDisplayName = currentCluster ? getClusterName(currentCluster.id, currentCluster.name) : '';
                 const groupDisplayName = currentGroup ? getGroupName(currentGroup.name) : '';
@@ -687,14 +688,15 @@ function AppContent() {
                 <div>
                   <p className="text-2xl font-bold text-text-main">{t('testProtocol')}</p>
                   <p className="text-sm text-text-main/80 mt-1">Modul: {(() => {
-                    const tabObj = tabGroups.flatMap(g => g.tabs as unknown as any[]).find(t => t.id === activeTab);
+                    const tabObj = tabGroups.flatMap(g => g.tabs).find(t => t.id === activeTab);
                     return tabObj ? getTabLabel(tabObj.id, tabObj.label) : activeTab;
                   })()}</p>
                   <p className="text-sm text-text-main/80">{t('date')}: {new Date().toLocaleDateString(language === 'en' ? "en-US" : "de-DE")}</p>
                 </div>
               </div>
             </div>
-<React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
+{/* Platzhalter mindestens bildschirmhoch: sonst steht die Fußzeile beim Nachladen im Bild und springt weg (CLS, AP 5.5) */}
+<React.Suspense fallback={<div className="flex justify-center items-start pt-32 min-h-[100svh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
           {activeTab !== 'start' && <ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} />}
           <ModulInhalt activeTab={activeTab} />
@@ -722,7 +724,7 @@ function AppContent() {
       tabDescriptions={TAB_DESCRIPTIONS}
       groupToCluster={GROUP_TO_CLUSTER}
       onSelectTab={(tabId) => {
-        setActiveTab(tabId as any);
+        setActiveTab(tabId as TabId);
         setShowMetadataModal(false);
       }}
     /></React.Suspense>}

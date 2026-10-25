@@ -48,7 +48,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                   key={preset.name}
                   onClick={() => {
                     setBuildingVolume(preset.vol);
-                    setStructureType(preset.type as any);
+                    setStructureType(preset.type as "concrete" | "masonry" | "timber" | "composite");
                   }}
                   className={`text-left p-2.5 rounded-lg border text-xs transition-all flex justify-between items-center ${
                         buildingVolume === preset.vol && structureType === preset.type

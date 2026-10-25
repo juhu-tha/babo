@@ -6,6 +6,10 @@ export const exportToPDF = async (elementId: string, filename: string) => {
   const element = document.getElementById(elementId);
   if (!element) return;
 
+  // Diagramme werden erst bei Sichtbarkeit gezeichnet (AP 5.5) – vor der Aufnahme alle zeichnen
+  const { zeichneAlleDiagramme } = await import('./chartBedarf');
+  await zeichneAlleDiagramme();
+
   // Show PDF header
   const header = element.querySelector('.pdf-header') as HTMLElement;
   if (header) {
@@ -180,7 +184,7 @@ export const exportToPDF = async (elementId: string, filename: string) => {
         document.body.removeChild(fallbackLink);
       }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error('PDF Export failed:', error);
   } finally {
     if (appendix && appendix.parentNode) {

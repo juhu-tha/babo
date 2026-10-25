@@ -130,7 +130,7 @@ export default function Nachbehandlung() {
               <select aria-label="Festigkeitsentwicklung (r)" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={festigkeitsEntwicklung}
-                onChange={(e) => setFestigkeitsEntwicklung(e.target.value as any)}
+                onChange={(e) => setFestigkeitsEntwicklung(e.target.value as typeof festigkeitsEntwicklung)}
               >
                 <option value="schnell">Schnell (r ≥ 0,50)</option>
                 <option value="mittel">Mittel (r ≥ 0,30)</option>
@@ -144,7 +144,7 @@ export default function Nachbehandlung() {
               <select aria-label="Expositionsklasse" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={expositionsklasse}
-                onChange={(e) => setExpositionsklasse(e.target.value as any)}
+                onChange={(e) => setExpositionsklasse(e.target.value as typeof expositionsklasse)}
               >
                 <option value="x0_xc1">X0, XC1</option>
                 <option value="andere">Andere (XC2–XC4, XD, XS, XF, XA)</option>
@@ -157,7 +157,7 @@ export default function Nachbehandlung() {
               <select aria-label="Oberflächentemperatur" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={oberflaechentemp}
-                onChange={(e) => setOberflaechentemp(e.target.value as any)}
+                onChange={(e) => setOberflaechentemp(e.target.value as typeof oberflaechentemp)}
               >
                 <option value="ge25">T ≥ 25 °C</option>
                 <option value="15_25">15 °C ≤ T &lt; 25 °C</option>

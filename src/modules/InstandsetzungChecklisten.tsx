@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
@@ -32,7 +33,7 @@ interface ChecklistSection {
   title: string;
   phase: string;
   description: string;
-  icon: any;
+  icon: LucideIcon;
   items: ChecklistItem[];
 }
 

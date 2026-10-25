@@ -263,7 +263,7 @@ export default function Glas() {
                 <select aria-label="Lasteinwirkungsdauer" 
                   className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                   value={duration}
-                  onChange={(e) => setDuration(e.target.value as any)}
+                  onChange={(e) => setDuration(e.target.value as typeof duration)}
                 >
                   <option value="short">Kurz (Wind, Stoß)</option>
                   <option value="medium">Mittel (Schnee, Personen)</option>

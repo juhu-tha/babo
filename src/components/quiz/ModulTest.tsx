@@ -2,13 +2,13 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useMemo, useState } from 'react';
 import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
-import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { anzahlFragenModul, useModulFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 
 /**
  * Stufe 4 des Lehrpfads (Grundlagen → Labor → Bemessung → Test):
  * Modulbezogener Selbsttest mit begründetem Feedback.
- * Fragen stammen aus dem zentralen Fragenpool (src/data/quiz.json) und erscheinen
+ * Fragen stammen aus dem zentralen Fragenpool (src/data/quiz.json, je Modul nachgeladen über quizLader) und erscheinen
  * damit zugleich im Prüfungsmodus der Übungsaufgaben. Markup und Klassen entsprechen
  * der Fragendarstellung in InteractiveQuizSystem (Sofort-Feedback).
  *
@@ -22,11 +22,14 @@ export interface ModulTestProps {
 
 export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestProps) {
   const { setActiveTab } = useTabContext();
-  const questions = useMemo(() => QUIZ_QUESTIONS.filter(q => q.moduleId === moduleId).map(q => mischeAntworten(q)), [moduleId]);
+  // Anzahl sofort aus dem Index (Kopfzeile ohne Layoutsprung), Fragen selbst als kleiner Chunk nachgeladen
+  const anzahl = anzahlFragenModul(moduleId);
+  const geladen = useModulFragen(moduleId);
+  const questions = useMemo(() => (geladen ?? []).map(q => mischeAntworten(q)), [geladen]);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
-  if (questions.length === 0) return null;
+  if (anzahl === 0) return null;
 
   const answered = questions.filter(q => answers[q.id] !== undefined);
   const correct = answered.filter(q => answers[q.id] === q.correctIdx).length;
@@ -54,11 +57,11 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
           </div>
           <div className="flex items-center gap-1.5 ml-0 sm:ml-2">
             <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-off-white text-text-main/70 border border-home-grau/30">
-              {questions.length} {questions.length === 1 ? 'Frage' : 'Fragen'}
+              {formatDeWert(anzahl)} {anzahl === 1 ? 'Frage' : 'Fragen'}
             </span>
             {answered.length > 0 && (
               <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-shiraz text-white">
-                {formatDeWert(correct)} / {questions.length} richtig
+                {formatDeWert(correct)} / {formatDeWert(anzahl)} richtig
               </span>
             )}
           </div>
@@ -78,7 +81,10 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
       </button>
 
       {/* Ausklappbarer Inhalt */}
-      {isOpen && (
+      {isOpen && !geladen && (
+        <p className="pt-4 border-t border-home-grau/20 text-xs text-text-main/70" role="status">Fragen werden geladen …</p>
+      )}
+      {isOpen && geladen && (
         <div className="pt-4 border-t border-home-grau/20 flex flex-col gap-6 animate-in fade-in duration-200">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-off-white/60 p-4 rounded-2xl border border-home-grau/20">
             <div className="text-xs font-medium text-text-main/80">

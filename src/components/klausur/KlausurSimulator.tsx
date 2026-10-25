@@ -4,7 +4,8 @@ import {
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
   RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
 } from 'lucide-react';
-import { QUIZ_QUESTIONS, QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizData';
+import { QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizModell';
+import { useAlleFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';
 
@@ -30,6 +31,8 @@ const calculateGrade = (percent: number): { grade: string; text: string; passed:
 
 export const KlausurSimulator: React.FC = () => {
   const [phase, setPhase] = useState<'config' | 'exam' | 'result'>('config');
+  // Fragenpool in Teilpaketen nachgeladen (quizLader); null, solange er lädt
+  const alleFragen = useAlleFragen();
   
   // Configuration
   const [config, setConfig] = useState<ExamConfig>({
@@ -60,7 +63,7 @@ export const KlausurSimulator: React.FC = () => {
       timerRef.current = setInterval(() => {
         setSecondsRemaining(prev => {
           if (prev <= 1) {
-            clearInterval(timerRef.current as any);
+            clearInterval(timerRef.current ?? undefined);
             setIsTimeUp(true);
             return 0;
           }
@@ -83,7 +86,7 @@ export const KlausurSimulator: React.FC = () => {
 
   const startExam = () => {
     // Filter questions
-    let pool = QUIZ_QUESTIONS;
+    let pool = alleFragen ?? [];
     if (config.selectedCategory !== 'all') {
       pool = pool.filter(q => q.category === config.selectedCategory);
     }
@@ -208,7 +211,7 @@ export const KlausurSimulator: React.FC = () => {
                     key={item.count}
                     onClick={() => setConfig(prev => ({ 
                       ...prev, 
-                      questionCount: item.count as any,
+                      questionCount: item.count as 10 | 20 | 30,
                       durationMinutes: item.count === 10 ? 15 : item.count === 20 ? 30 : 45
                     }))}
                     className={`p-3 rounded-xl border text-left transition-all ${
@@ -239,7 +242,7 @@ export const KlausurSimulator: React.FC = () => {
                 ].map(item => (
                   <button
                     key={item.mins}
-                    onClick={() => setConfig(prev => ({ ...prev, durationMinutes: item.mins as any }))}
+                    onClick={() => setConfig(prev => ({ ...prev, durationMinutes: item.mins as 15 | 30 | 45 }))}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       config.durationMinutes === item.mins
                         ? 'bg-shiraz text-white border-shiraz shadow-xs font-semibold'
@@ -262,7 +265,7 @@ export const KlausurSimulator: React.FC = () => {
               </label>
               <select aria-label="3. Themenschwerpunkt"
                 value={config.selectedCategory}
-                onChange={(e) => setConfig(prev => ({ ...prev, selectedCategory: e.target.value as any }))}
+                onChange={(e) => setConfig(prev => ({ ...prev, selectedCategory: e.target.value as QuizCategory | "all" }))}
                 className="p-3 bg-white border border-home-grau/30 rounded-xl text-sm font-medium focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz"
               >
                 <option value="all">🌐 Alle Themenbereiche (Gemischt)</option>
@@ -285,11 +288,12 @@ export const KlausurSimulator: React.FC = () => {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-home-grau/20">
             <div className="text-xs text-text-main/60">
-              Verfügbarer Aufgabenpool: <strong>{QUIZ_QUESTIONS.filter(q => q.verified !== false).length} fachlich geprüfte Fragen</strong> (Reviewer: Prof. Dr.-Ing. Jürgen Huber)
+              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.filter(q => q.verified !== false).length : '…'} fachlich geprüfte Fragen</strong> (Reviewer: Prof. Dr.-Ing. Jürgen Huber)
             </div>
             <button
               onClick={startExam}
-              className="w-full sm:w-auto px-8 py-3.5 bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              disabled={!alleFragen}
+              className="w-full sm:w-auto px-8 py-3.5 disabled:opacity-60 disabled:cursor-wait bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Klausur jetzt starten</span>
               <ArrowRight size={18} />

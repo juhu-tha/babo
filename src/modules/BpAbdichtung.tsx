@@ -832,7 +832,7 @@ export default function BpAbdichtung() {
                   <span className="font-bold text-[11px] text-shiraz uppercase tracking-wider block">Injektionsmedium</span>
                   <select aria-label="Injektionsmedium" 
                     value={isMedium}
-                    onChange={(e) => setIsMedium(e.target.value as any)}
+                    onChange={(e) => setIsMedium(e.target.value as typeof isMedium)}
                     className="w-full text-xs p-1.5 border rounded-md mt-1 focus:outline-none focus:ring-1 focus:ring-shiraz"
                   >
                     <option value="acrylgel">Acrylatgel (re-injizierbar)</option>

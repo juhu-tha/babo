@@ -2,7 +2,7 @@
  * Utility for CSV Export and Import of Quiz Questions according to P26.
  */
 import type { ClusterNummer } from '@/src/data/quizZuordnung';
-import { QuizQuestion, KnowledgeGapInfo, QuizCategory } from '@/src/data/quizData';
+import { QuizQuestion, KnowledgeGapInfo, QuizCategory, type Schwierigkeit } from '@/src/data/quizModell';
 
 export function questionsToCsv(questions: QuizQuestion[]): string {
   const headers = [
@@ -31,7 +31,7 @@ export function questionsToCsv(questions: QuizQuestion[]): string {
     'verified'
   ];
 
-  const escapeCell = (val: any): string => {
+  const escapeCell = (val: unknown): string => {
     if (val === undefined || val === null) return '';
     const str = typeof val === 'object' ? JSON.stringify(val) : String(val);
     if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
@@ -174,7 +174,7 @@ export function parseCsvToQuestions(csvText: string): QuizQuestion[] {
       moduleId: getVal('moduleid') || 'allgemein',
       moduleTitle: getVal('moduletitle') || 'Allgemein',
       topic: getVal('topic') || 'Allgemein',
-      difficulty: (getVal('difficulty') as any) || 'Basis',
+      difficulty: (getVal('difficulty') as Schwierigkeit | '') || 'Basis',
       normRef: getVal('normref') || undefined,
       question: questionText,
       options,

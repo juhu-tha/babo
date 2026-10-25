@@ -482,7 +482,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                   <input aria-label="Schuppeneis (kg): Ersetzt Wasser" 
                     type="range" min="0" max="50" step="5"
                     value={mIceInput}
-                    onChange={(e) => setMIceInput(Math.min(e.target.value as any, mWaterInput))}
+                    onChange={(e) => setMIceInput(Math.min(Number(e.target.value), mWaterInput))}
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-xxs text-text-main/70 font-mono">

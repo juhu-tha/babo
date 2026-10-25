@@ -1,15 +1,32 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Recycle } from 'lucide-react';
 
+/** Bilanzergebnis aus InteractiveLCACalc (nur die hier angezeigten Größen) */
+export interface LcaDashboardErgebnis {
+  gwpA1A3: number;
+  gwpA4: number;
+  gwpBioStorageInstalled: number;
+  gwpC: number;
+  gwpD: number;
+  gwpPerSqmYearAC: number;
+  gwpPerSqmYearD: number;
+  gwpPerSqmYearNet: number;
+  penrtKwhPerSqmYear: number;
+  totalGwpNet: number;
+  weightedUmi: number;
+}
+export interface QngSchwellen { plus: number; premium: number; label: string }
+export interface QngBenchmarkStatus { label: string; color: string; badge: string; desc: string }
+
 // Subcomponent for Calculation Dashboard
 export function CalculationDashboard({
   results,
   qngThresholds,
   benchmarkStatus
 }: {
-  results: any;
-  qngThresholds: any;
-  benchmarkStatus: any;
+  results: LcaDashboardErgebnis;
+  qngThresholds: QngSchwellen;
+  benchmarkStatus: QngBenchmarkStatus;
 }) {
   return (
     <div className="bg-white border border-home-grau/30 rounded-2xl p-5 shadow-sm space-y-5">

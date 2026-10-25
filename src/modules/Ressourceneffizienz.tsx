@@ -963,7 +963,7 @@ export default function Ressourceneffizienz() {
                     <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block">1. Bauteiltyp und Standardmaß</label>
                     <select aria-label="1. Bauteiltyp und Standardmaß" 
                       value={selectedBauteil}
-                      onChange={(e: any) => setSelectedBauteil(e.target.value)}
+                      onChange={(e) => setSelectedBauteil(e.target.value as typeof selectedBauteil)}
                       className="w-full px-2.5 py-1.5 border border-slate-250 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 focus:ring-1 focus:ring-shiraz dark:focus:ring-rose-500"
                     >
                       <option value="slab">Stahlbetondeckenplatte (ca. 120 m³ Beton)</option>
