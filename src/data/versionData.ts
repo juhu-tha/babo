@@ -8,6 +8,21 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v4.2.0',
+    date: '25.10.2026',
+    title: 'Didaktik: Lernziele überall, 969 Selbsttestfragen, Ausprobieren und Live-Rechenweg, gestraffte Module, rund 120 Fachkorrekturen',
+    badge: 'minor',
+    changes: [
+      'Lernziele für alle Fachmodule (Niveau, Bearbeitungszeit, Vorwissen, 3–5 operationalisierte Ziele); 23 Menütexte an den tatsächlichen Inhalt angepasst.',
+      'Selbsttests: 532 neue Fragen (Pool 969) – jedes Fachmodul mit mindestens 6 Fragen, Spannbeton mit 10, jedes Rechner-Modul mit Rechenfrage; Selbsttest jetzt in allen Modulen sichtbar.',
+      '„Ausprobieren“: 191 Vorhersageaufgaben für alle 64 Rechner mit Notizfeld und Auflösung; „Live-Rechenweg“ in 24 Rechnern, der mit den aktuellen Eingaben rechnet.',
+      'Ökobilanz in vier Module geteilt (Grundlagen, Rechner & QNG, Ingenieurbau, Rechtsrahmen & CRREM); „Das Wichtigste in 5 Punkten“ vor 17 langen Modulen; alle Reiterleisten mit höchstens 7 Einträgen.',
+      'Eine Quelle je Thema: Glaser-Verfahren nur im Feuchteschutz, Kurzkarte Expositionsklassen, Sichtbeton und U_w-Rechner je einmal, „Materialität in der Architektur“ wieder erreichbar, Grundlagen → „Ausgangsstoffe des Betons“ mit neuem Reiter Zugabewasser.',
+      'Rechnerkorrekturen u. a.: Zwangsspannung in der Hydratations-Rissberechnung (Faktor 1000), Phasenverschiebung (Faktor 2), µ_lim nach NA DE, cot θ_max bei der Querkraft, C_Rd,c-Abminderung nur für Innenstützen, k_mod nach NKL/KLED im Holzbau, Dekompression nach NA DE, Schnellkarbonatisierung, Ressourceneffizienz-Regler.',
+      'Fachkorrekturen u. a.: Δc_dev 15 mm, Kriechzahl, η_1 bei Leichtbeton, DIN 18196 gemischtkörnige Böden, DepV-Barriere und -Dichtung, EBV-Klassen und RC-1-Grenzwerte, PCB 300/3000 ng/m³, Kostengruppen DIN 18960, Euroklassen EPS/XPS, Rechtsrahmen (EPBD, ETS II, EUDR, Gebäudetyp E).'
+    ]
+  },
+  {
     version: 'v4.1.0',
     date: '24.10.2026',
     title: 'Überarbeitete Selbsttests mit Rückmeldung je Antwort, Lernziele, Rechnergrenzen und Korrekturen',
