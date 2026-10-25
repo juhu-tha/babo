@@ -11,5 +11,6 @@ dist/
 
 # Laufzeitdaten / Python
 analytics.json
+laufzeitdaten/
 __pycache__/
 *.pyc
