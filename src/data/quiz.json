@@ -36134,5 +36134,503 @@
       "targetModuleLabel": "Sommerlicher Wärmeschutz"
     },
     "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "CO₂-Speicher je kg Kohlenstoff",
+    "difficulty": "Basis",
+    "question": "Warum wird der Kohlenstoffgehalt der Pflanzenkohle bei der CO₂-Bilanz mit dem Faktor 44/12 multipliziert?",
+    "options": [
+      "Der Faktor rechnet die Masse Kohlenstoff in die Masse CO₂ um, aus der er stammt (molare Massen 44 und 12 g/mol).",
+      "Der Faktor berücksichtigt den Anteil des Kohlenstoffs, der im Zementstein über einen Zeitraum von 100 Jahren dauerhaft gebunden bleibt.",
+      "Der Faktor rechnet die Trockenmasse der Kohle auf die feuchte Anlieferungsmasse einschließlich des Porenwassers um.",
+      "Der Faktor ist ein Sicherheitsbeiwert, der die Streuung der Kohlenstoffanalyse im Labor abdeckt."
+    ],
+    "correctIdx": 0,
+    "explanation": "Ein Molekül CO₂ (44 g/mol) enthält ein Atom C (12 g/mol). 1 kg gebundener Kohlenstoff entspricht daher 44/12 = 3,67 kg CO₂, das die Pflanze der Atmosphäre entzogen hat. Die Beständigkeit wird getrennt über den Permanenzfaktor erfasst.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Das beschreibt den Permanenzfaktor F_perm, der zusätzlich zum Faktor 44/12 angesetzt wird.",
+      "Der Bezug auf die Trockenmasse erfolgt über den Kohlenstoffgehalt, nicht über 44/12.",
+      "44/12 ist ein stöchiometrisches Verhältnis und kein Sicherheitsbeiwert."
+    ],
+    "gapAnalysis": {
+      "topic": "Stöchiometrie der CO₂-Bindung",
+      "misconception": "Der Faktor 44/12 wird mit Permanenz oder Feuchte verwechselt.",
+      "coreRule": "m_CO2 = m_C · 44/12; Permanenz wird getrennt über F_perm berücksichtigt.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Pflanzenkohle: Herstellung & Kennwerte“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "CO₂-Bilanz je m³",
+    "difficulty": "Vertiefung",
+    "question": "Ein Beton enthält 12 kg/m³ Pflanzenkohle mit 75 M.-% Kohlenstoff. Angesetzt werden F_perm = 0,80 und eine Herstellungsemission von 0,4 kg CO₂e je kg Kohle. Wie groß ist die Netto-Senke der Pflanzenkohle?",
+    "options": [
+      "etwa 21,6 kg CO₂/m³",
+      "etwa 26,4 kg CO₂/m³",
+      "etwa 33,0 kg CO₂/m³",
+      "etwa 2,4 kg CO₂/m³"
+    ],
+    "correctIdx": 0,
+    "explanation": "12 · 0,75 · 44/12 = 33,0 kg CO₂; mit F_perm = 0,80 bleiben 26,4 kg; abzüglich 12 · 0,4 = 4,8 kg Herstellungsemission ergibt sich eine Netto-Senke von 21,6 kg CO₂/m³.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "26,4 kg berücksichtigen den Permanenzabschlag, aber nicht die Herstellungsemission von 4,8 kg.",
+      "33,0 kg ist der Kohlenstoff als CO₂ ohne Permanenzabschlag und ohne Herstellungsemission.",
+      "2,4 kg entstehen, wenn der Faktor 44/12 vergessen wird (12 · 0,75 · 0,8 − 4,8)."
+    ],
+    "gapAnalysis": {
+      "topic": "CO₂-Bilanz der Pflanzenkohle",
+      "misconception": "Permanenzabschlag oder Herstellungsemission werden vergessen.",
+      "coreRule": "Netto-Senke = m_PK · w_C · 44/12 · F_perm − m_PK · e_PK.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Rechner CO₂-Bilanz“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Vergleich mit Zementreduktion",
+    "difficulty": "Transfer",
+    "question": "Die Netto-Senke von 1 kg Pflanzenkohle beträgt 2,0 kg CO₂. Wie viel Zement mit einem Treibhauspotenzial von 0,80 kg CO₂e/kg müsste man einsparen, um dieselbe Bilanzwirkung zu erzielen?",
+    "options": [
+      "etwa 1,6 kg Zement",
+      "etwa 2,5 kg Zement",
+      "etwa 2,0 kg Zement",
+      "etwa 0,4 kg Zement"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gleichwertige Zementmenge = Netto-Senke / GWP_Z = 2,0 / 0,80 = 2,5 kg. Anders als eine Zementreduktion berührt die Kohlezugabe weder den Mindestzementgehalt noch den w/z-Wert.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "1,6 kg ergibt sich, wenn mit dem GWP multipliziert statt dividiert wird (2,0 · 0,80).",
+      "",
+      "Gleiche Massen setzen voraus, dass Zement 1,0 kg CO₂e/kg verursacht.",
+      "0,4 kg entspricht der Differenz 2,0 − 0,8 und hat keine physikalische Bedeutung."
+    ],
+    "gapAnalysis": {
+      "topic": "Äquivalente Zementmenge",
+      "misconception": "Senke und Zementeinsparung werden ohne Bezug auf das GWP des Zements verglichen.",
+      "coreRule": "z_äq = (C_PK − E_PK) / GWP_Z.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Rechner CO₂-Bilanz“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Wasseranspruch",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2",
+    "question": "Warum wird Pflanzenkohle vor dem Mischen häufig vorgenässt oder das von ihr aufgesaugte Wasser zusätzlich zugegeben?",
+    "options": [
+      "Die poröse Kohle saugt sonst Anmachwasser auf; Konsistenz und wirksamer w/z-Wert ändern sich unkontrolliert.",
+      "Trockene Pflanzenkohle reagiert mit Calciumhydroxid und würde sonst den Abbindebeginn deutlich beschleunigen.",
+      "Das Vornässen wäscht lösliche Salze aus, die sonst die Bewehrung angreifen.",
+      "Nur nasse Pflanzenkohle lässt sich nach DIN 1045-2 als Zusatzstoff mit k-Wert anrechnen."
+    ],
+    "correctIdx": 0,
+    "explanation": "Pflanzenkohle hat eine große offene Porosität und nimmt häufig mehr als ihre eigene Masse an Wasser auf. Ungesättigt entzieht sie dem Frischbeton Wasser. Vorgenässt kann das gespeicherte Wasser später als innere Nachbehandlung wirken.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Pflanzenkohle ist nicht reaktiv; eine Reaktion mit Calciumhydroxid findet praktisch nicht statt.",
+      "Ziel des Vornässens ist die Wassersättigung der Poren, nicht das Auswaschen von Salzen.",
+      "Pflanzenkohle ist auch vorgenässt kein genormter Zusatzstoff und wird nicht mit k-Wert angerechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "Wasseranspruch poröser Zusätze",
+      "misconception": "Die Wasseraufnahme der Kohle wird übersehen oder als chemische Reaktion gedeutet.",
+      "coreRule": "Vornässwasser = m_PK · W_PK; es zählt nicht zum wirksamen Wasser.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Karbonatisierung und pH-Wert",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-12",
+    "question": "Ein Teil des Zements wird durch Pflanzenkohle ersetzt. Welche Wirkung auf die Karbonatisierung ist aus den Mechanismen heraus am ehesten zu erwarten?",
+    "options": [
+      "Eine langsamere Karbonatisierung, weil die alkalische Kohle den pH-Wert der Porenlösung zusätzlich anhebt und so die Passivschicht stabilisiert.",
+      "Tendenziell schnellere Karbonatisierung durch weniger Calciumhydroxid und mehr Poren; der Effekt ist je Rezeptur zu prüfen.",
+      "Keine messbare Wirkung, weil die Karbonatisierungsgeschwindigkeit im Wesentlichen von der Betondeckung abhängt.",
+      "Eine deutlich verlangsamte Karbonatisierung, weil der Kohlenstoff der Pflanzenkohle das eindringende CO₂ chemisch bindet."
+    ],
+    "correctIdx": 1,
+    "explanation": "Weniger Klinker bedeutet weniger karbonatisierbares Calciumhydroxid (geringere Pufferkapazität); zusätzliche Poren erleichtern die Diffusion. Gegenläufig kann die innere Nachbehandlung das Gefüge verdichten. Der Karbonatisierungswiderstand ist daher je Rezeptur zu prüfen, z. B. nach DIN EN 12390-12.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Pflanzenkohle liegt mit pH 8 bis 10 unter dem pH-Wert der Porenlösung und kann ihn nicht anheben.",
+      "",
+      "Die Deckung bestimmt, wann die Front die Bewehrung erreicht – die Geschwindigkeit hängt vom Beton ab.",
+      "Kohlenstoff bindet kein CO₂; gebunden wird es durch Calciumhydroxid zu Calciumcarbonat."
+    ],
+    "gapAnalysis": {
+      "topic": "Karbonatisierung bei geändertem Bindemittel",
+      "misconception": "Die Alkalität der Kohle wird mit der Pufferkapazität des Zementsteins gleichgesetzt.",
+      "coreRule": "Karbonatisierungswiderstand = Bindekapazität (Ca(OH)₂) und Dichtheit; je Rezeptur prüfen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Dunkle Matrix",
+    "difficulty": "Basis",
+    "question": "Welche Folge der dunklen Färbung durch Pflanzenkohle ist bei besonnten Sichtbetonbauteilen zu beachten?",
+    "options": [
+      "Höhere Oberflächentemperaturen durch stärkere Absorption der Sonnenstrahlung und auffälligere Kalkausblühungen.",
+      "Die Färbung verschwindet nach wenigen Jahren, weil der Kohlenstoff an der Oberfläche durch UV-Strahlung abgebaut wird.",
+      "Die Wärmeleitfähigkeit des Betons halbiert sich, sodass keine Wärmedämmung mehr erforderlich ist.",
+      "Die dunkle Oberfläche reflektiert die Wärmestrahlung und bleibt kühler als heller Beton."
+    ],
+    "correctIdx": 0,
+    "explanation": "Dunkle Oberflächen absorbieren mehr Strahlung; das erhöht Oberflächentemperaturen und Temperaturspannungen. Helle Ausblühungen und Wolken fallen auf dunklem Grund stärker auf. Da die Kohle den ganzen Querschnitt färbt, bleibt der Farbton auch bei Abrieb erhalten.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Färbung durchzieht den Querschnitt; ein schneller UV-Abbau des Kohlenstoffs ist nicht zu erwarten.",
+      "Die geringe Dosierung ändert die Wärmeleitfähigkeit nur wenig; Wärmedämmung bleibt erforderlich.",
+      "Dunkle Flächen absorbieren mehr Sonnenstrahlung und werden wärmer, nicht kühler."
+    ],
+    "gapAnalysis": {
+      "topic": "Pigmentwirkung der Pflanzenkohle",
+      "misconception": "Die gestalterische Wirkung wird ohne bauphysikalische Folgen betrachtet.",
+      "coreRule": "Dunkle Matrix: mehr Absorption, sichtbarere Ausblühungen, konstante Dosierung für gleichmäßigen Farbton.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_7",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Normative Einordnung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 206",
+    "question": "Eine Planerin möchte 30 kg/m³ Zement durch Pflanzenkohle ersetzen und dabei den w/z-Wert mit k-Wert-Ansatz unverändert lassen. Wie ist das zu beurteilen?",
+    "options": [
+      "Zulässig, wenn die Pflanzenkohle mindestens 50 M.-% Kohlenstoff enthält und nach den EBC-Richtlinien zertifiziert ist; ein weiterer Nachweis entfällt.",
+      "Zulässig, weil Pflanzenkohle nach DIN EN 206 als inerter Zusatzstoff Typ I gilt und mit k = 0,4 angerechnet werden darf.",
+      "Nicht ohne Weiteres: Pflanzenkohle ist kein Zusatzstoff mit k-Wert; der w/z-Wert steigt, ggf. ist eine abZ oder ZiE nötig.",
+      "Zulässig, sofern die geforderte Druckfestigkeitsklasse durch eine einzelne Würfelprüfung nach 28 Tagen bestätigt wird."
+    ],
+    "correctIdx": 2,
+    "explanation": "DIN EN 206 und DIN 1045-2 kennen keinen k-Wert für Pflanzenkohle. Der Zement der Variante bestimmt w/z-Wert und Mindestzementgehalt. Für nicht genormte Ausgangsstoffe kann bei bauaufsichtlich relevanter Verwendung eine abZ oder ZiE erforderlich sein.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Kohlenstoffgehalt und EBC-Zertifikat beschreiben die Kohlequalität, ersetzen aber keinen bauaufsichtlichen Verwendbarkeitsnachweis.",
+      "Typ-I-Zusatzstoffe werden nicht mit k-Wert angerechnet; k = 0,4 gilt für Flugasche (Typ II).",
+      "",
+      "Eine Festigkeitsprüfung ersetzt weder w/z-Grenzwerte noch den Verwendbarkeitsnachweis."
+    ],
+    "gapAnalysis": {
+      "topic": "Pflanzenkohle im Regelwerk",
+      "misconception": "Pflanzenkohle wird wie ein genormter Zusatzstoff behandelt.",
+      "coreRule": "Kein k-Wert; w/z und z_min aus dem Zement der Variante; nicht genormte Stoffe ggf. abZ/ZiE.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Grenzen & Regelwerk“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Prüfbedingungen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-12",
+    "question": "Bei welcher CO₂-Konzentration werden die Probekörper nach DIN EN 12390-12 gelagert?",
+    "options": [
+      "(3,0 ± 0,5) Vol.-% CO₂",
+      "(0,04 ± 0,01) Vol.-% CO₂",
+      "(50 ± 5) Vol.-% CO₂",
+      "(10 ± 1) Vol.-% CO₂"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN EN 12390-12 lagert bei (3,0 ± 0,5) Vol.-% CO₂, etwa 57 % relativer Luftfeuchte und 20 °C. Die Konzentration beschleunigt die Karbonatisierung, ohne die Reaktionsprodukte so stark zu verändern wie sehr hohe Konzentrationen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,04 % entspricht der Außenluft; dafür gilt die natürliche Prüfung nach DIN EN 12390-10.",
+      "Bei 50 % entstünden andere Reaktionsprodukte und Gefüge als unter natürlichen Bedingungen.",
+      "10 % ist deutlich höher als in der Norm; die Übertragbarkeit wäre schlechter."
+    ],
+    "gapAnalysis": {
+      "topic": "Prüfbedingungen der Schnellkarbonatisierung",
+      "misconception": "Prüf- und Umgebungskonzentration werden verwechselt.",
+      "coreRule": "DIN EN 12390-12: 3 % CO₂, 57 % r. F., 20 °C nach 28 d Wasser- und 14 d Laborlagerung.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Prüfverfahren“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Wurzel-t-Gesetz",
+    "difficulty": "Basis",
+    "question": "Nach dem Wurzel-t-Gesetz beträgt die Karbonatisierungstiefe nach 25 Jahren 10 mm. Welche Tiefe ist nach 100 Jahren zu erwarten?",
+    "options": [
+      "40 mm",
+      "20 mm",
+      "14 mm",
+      "100 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "x = K · √t: Die vierfache Zeit ergibt die √4 = 2-fache Tiefe, also 20 mm. Umgekehrt verlängert eine doppelte Deckung die Zeit bis zur Depassivierung auf das Vierfache.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "40 mm entspräche einem linearen Zeitgesetz.",
+      "",
+      "14 mm ergibt sich mit √2 statt √4 – die Zeit hat sich aber vervierfacht.",
+      "100 mm folgt aus einer Verzehnfachung, die kein Zeitgesetz begründet."
+    ],
+    "gapAnalysis": {
+      "topic": "Wurzel-t-Gesetz",
+      "misconception": "Die Karbonatisierung wird als linear in der Zeit angenommen.",
+      "coreRule": "x_c = K · √t; t_c = (c/K)².",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Grundlagen“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Regression K_AC",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-12",
+    "question": "Nach 7, 28 und 70 Tagen bei 3 % CO₂ werden 2,0 / 4,0 / 6,3 mm gemessen. Wie groß ist K_AC bei einer Regression durch den Ursprung (K = Σ√t·d / Σt)?",
+    "options": [
+      "etwa 4,86 mm/√d",
+      "etwa 0,75 mm/√d",
+      "etwa 0,09 mm/√d",
+      "etwa 14,4 mm/√d"
+    ],
+    "correctIdx": 1,
+    "explanation": "Σ√t·d = 2,646 · 2,0 + 5,292 · 4,0 + 8,367 · 6,3 = 5,29 + 21,17 + 52,71 = 79,17; Σt = 7 + 28 + 70 = 105. K_AC = 79,17 / 105 = 0,754 mm/√d.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "4,86 entsteht, wenn durch Σ√t statt durch Σt geteilt wird – das ist eine gewichtete mittlere Tiefe in mm.",
+      "",
+      "0,09 mm/√d entsteht, wenn statt √t die Zeit t selbst verwendet wird (d/t).",
+      "14,4 ist K_AC mit √365 multipliziert – also bereits in mm/√a umgerechnet, ohne Konzentrationsfaktor."
+    ],
+    "gapAnalysis": {
+      "topic": "Regression über √t",
+      "misconception": "K wird aus einem Einzelwert oder über t statt √t bestimmt.",
+      "coreRule": "K_AC = Σ s_i d_i / Σ s_i² mit s_i = √t_i (durch den Ursprung).",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Auswertung & Umrechnung“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Umrechnung auf natürliche Bedingungen",
+    "difficulty": "Vertiefung",
+    "question": "Ein Beton hat K_AC = 1,0 mm/√d bei 3 % CO₂. Welcher Koeffizient ergibt sich näherungsweise für 0,04 % CO₂ in mm/√a, wenn nur die Konzentration berücksichtigt wird?",
+    "options": [
+      "etwa 0,12 mm/√a",
+      "etwa 19,1 mm/√a",
+      "etwa 2,2 mm/√a",
+      "etwa 0,25 mm/√a"
+    ],
+    "correctIdx": 2,
+    "explanation": "K_nat = K_AC · √(0,04/3) · √365 = 1,0 · 0,1155 · 19,1 = 2,2 mm/√a. Das ist nur eine Größenordnung: Feuchte, Beregnung und Temperatur sind nicht erfasst.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,12 mm/√a enthält nur den Konzentrationsfaktor, die Umrechnung von Tagen auf Jahre fehlt.",
+      "19,1 mm/√a enthält nur die Zeitumrechnung, der Konzentrationsfaktor fehlt.",
+      "",
+      "0,25 mm/√a folgt aus einem linearen Konzentrationsverhältnis (0,04/3 · 19,1) statt der Wurzel."
+    ],
+    "gapAnalysis": {
+      "topic": "Umrechnung K_AC → K_nat",
+      "misconception": "Wurzelgesetz oder Zeiteinheit werden bei der Umrechnung vergessen.",
+      "coreRule": "K_nat ≈ K_AC · √(c_nat/c_acc) · √365 (Näherung).",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Auswertung & Umrechnung“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Prognose gegenüber der Deckung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1992-1-1",
+    "question": "Für einen Beton gilt näherungsweise K_nat = 3,0 mm/√a. Nach wie vielen Jahren erreicht die Karbonatisierungsfront eine Betondeckung von 30 mm?",
+    "options": [
+      "nach etwa 10 Jahren",
+      "nach etwa 33,3 Jahren",
+      "nach etwa 90 Jahren",
+      "nach etwa 100 Jahren"
+    ],
+    "correctIdx": 3,
+    "explanation": "t_c = (c/K)² = (30/3,0)² = 10² = 100 Jahre. Bei 20 mm Deckung wären es nur (20/3)² = 44 Jahre.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "10 Jahre ist der Quotient c/K ohne Quadrieren.",
+      "33,3 Jahre entstehen, wenn (c/K)² = 100 nochmals durch K = 3,0 geteilt wird.",
+      "90 Jahre entstehen, wenn mit c · K = 30 · 3,0 statt mit (c/K)² gerechnet wird.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Zeit bis zur Depassivierung",
+      "misconception": "Das Wurzel-t-Gesetz wird beim Umstellen nach t nicht quadriert.",
+      "coreRule": "t_c = (c/K_nat)².",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Rechner K_AC & Prognose“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Phenolphthalein-Test",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14630",
+    "question": "Was zeigt der farblose Saum nach dem Besprühen einer frischen Bruchfläche mit Phenolphthalein an?",
+    "options": [
+      "Den Bereich mit pH-Werten unter etwa 9, also den karbonatisierten Randbereich des Betons.",
+      "Den Bereich, in den Chloride aus Tausalz bis zum kritischen, korrosionsauslösenden Gehalt eingedrungen sind.",
+      "Den Bereich, in dem der Zement wegen fehlender Nachbehandlung noch nicht vollständig hydratisiert ist.",
+      "Den Bereich mit dem höchsten Gehalt an Calciumhydroxid und damit den größten Alkalitätsvorrat."
+    ],
+    "correctIdx": 0,
+    "explanation": "Phenolphthalein färbt sich oberhalb von etwa pH 9 rotviolett. Der farblose Saum ist karbonatisiert. Teilkarbonatisierte Bereiche können über die sichtbare Front hinausreichen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Für Chloride sind andere Verfahren nötig, etwa Silbernitrat-Sprühtest oder chemische Analyse.",
+      "Der Indikator zeigt den pH-Wert, nicht den Hydratationsgrad.",
+      "Dort, wo viel Calciumhydroxid vorliegt, ist der pH hoch – dieser Bereich färbt sich rotviolett."
+    ],
+    "gapAnalysis": {
+      "topic": "Phenolphthalein-Test",
+      "misconception": "Der Indikator wird mit Chlorid- oder Hydratationsnachweisen verwechselt.",
+      "coreRule": "Farblos = pH < 9 = karbonatisiert; Messung an frischen Bruchflächen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Prüfverfahren“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_7",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Aussagekraft der Prüfung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 12390-12",
+    "question": "Ein Gutachter will aus K_AC eines Prüfbetons die Karbonatisierungstiefe eines 40 Jahre alten Parkhauses genau vorhersagen. Wie ist das zu bewerten?",
+    "options": [
+      "Gut geeignet, weil die Prüfung bei 57 % Luftfeuchte die Bedingungen in Parkhäusern exakt abbildet.",
+      "Gut geeignet, sofern K_AC vorher mit dem Faktor 365 von Tagen auf Jahre umgerechnet und dann mit √40 multipliziert wird.",
+      "Ungeeignet, weil Phenolphthalein an Betonen, die älter als etwa 20 Jahre sind, keinen deutlichen Farbumschlag mehr zeigt.",
+      "Nur als Größenordnung: Die Prüfung vergleicht Betone; Feuchte, Ausführung und Deckungsstreuung im Bauwerk fehlen."
+    ],
+    "correctIdx": 3,
+    "explanation": "DIN EN 12390-12 ist kein Verfahren für bestehende Bauwerke. Für das Parkhaus sind Bohrkerne oder Bruchflächen vor Ort zu untersuchen. Die Umrechnung aus der Laborprüfung liefert nur eine Größenordnung.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Prüfbedingungen sind Laborbedingungen; Feuchte und CO₂-Gehalt im Parkhaus weichen ab und schwanken.",
+      "Die Zeiteinheit wird mit √365 umgerechnet – und auch dann fehlen Umwelt- und Ausführungseinflüsse.",
+      "Der Phenolphthalein-Test ist auch an alten Betonen anwendbar (DIN EN 14630).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzen der Schnellprüfung",
+      "misconception": "Ein Laborkennwert wird als Bauwerksprognose verwendet.",
+      "coreRule": "K_AC = Vergleichswert; Bauwerk: Messung vor Ort, Umrechnung nur als Näherung.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Grenzen“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
   }
 ]
