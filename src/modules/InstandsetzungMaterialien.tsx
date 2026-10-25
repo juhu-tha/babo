@@ -411,7 +411,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-shiraz block mb-1">3. Schutzdauerbereiche nach DIN EN ISO 12944-1 (Fassung 2018)</strong>
+                  <strong className="text-shiraz block mb-1">3. Schutzdauerbereiche nach DIN EN ISO 12944-1 (Ausgabe 2019-01)</strong>
                   <p className="text-slate-700 leading-relaxed mb-2">
                     Die Neufassung der Normenreihe definiert vier statt der früheren drei Schutzdauerklassen bis zur ersten grundlegenden Instandsetzung:
                   </p>

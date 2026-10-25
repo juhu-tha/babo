@@ -411,7 +411,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'karbonatisierung',
     samplingPoints: {
       titel: 'Karbonatisierungs-Tiefenmessung (DIN EN 14630)',
-      normVorgabe: 'DIN EN 14630, DIN EN 206-1, DIBt TR Instandhaltung',
+      normVorgabe: 'DIN EN 14630, DIN EN 206, DIBt TR Instandhaltung',
       mindestAnzahl: 'Mind. 3–5 Prüfstellen je Bauteil / Himmelsrichtung; mind. 5–10 Einzelablesungen entlang der Bruchkante.',
       rasterMass: 'Messstellen über Bauteilhöhe verteilt (z.B. 0,5 m, 1,5 m, 2,5 m); Sonnen- und Wetterseite getrennt untersuchen.',
       auswahlKriterien: [
@@ -440,7 +440,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         scope: 'Verbindliche Prüfvorschrift in ganz Europa.'
       },
       {
-        code: 'DIN EN 206-1:2021-06',
+        code: 'DIN EN 206:2021-06',
         title: 'Beton – Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität',
         date: '2021-06',
         scope: 'Definition der Expositionsklassen XC1 bis XC4.'

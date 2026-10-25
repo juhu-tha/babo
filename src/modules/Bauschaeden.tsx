@@ -1327,8 +1327,8 @@ ${senderName}`;
           { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)' },
           { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)' },
           { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' },
-          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)' },
+          { title: 'DIN 18533-1 bis -3:2026-06 (Abdichtung von erdberührten Bauteilen)' },
+          { title: 'DIN 18195:2025-12 (Abdichtung von Bauwerken - Begriffe)' },
           { title: 'WTA-Merkblatt 4-6 (Nachträgliches Abdichten erdberührter Bauteile)', url: 'https://www.wta-gmbh.de/' },
           { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)' }
         ]} 
