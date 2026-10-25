@@ -1,6 +1,7 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Mail, MapPin, Building2, User, Link as LinkIcon, FileText, Globe } from 'lucide-react';
+import { LIZENZ_AKTIV, IMPRESSUM_URHEBERRECHT_OFFEN } from '@/src/data/lizenz';
 
 export default function Impressum() {
   return (
@@ -138,7 +139,9 @@ export default function Impressum() {
               </p>
               
               <p>
-                <strong>Urheberrecht &amp; Normenzitate:</strong> Die auf dieser Seite bereitgestellten Inhalte, Diagramme, interaktiven Berechnungsmodule und Grafiken unterliegen dem deutschen Urheberrecht. Vervielfältigungen, Bearbeitungen, Verbreitungen und Verwertungen außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors. DIN, EN, ISO, Eurocode und DIBt sind eingetragene Bezeichnungen bzw. Markenzeichen der jeweiligen Normungsorganisationen. Ihre Nennung sowie der Verweis auf Berechnungsformeln und Grenzwerte erfolgt ausschließlich zu wissenschaftlichen Lehr-, Erläuterungs- und Belegzwecken gemäß § 51 UrhG (Zitatrecht).
+                <strong>Urheberrecht &amp; Normenzitate:</strong>{' '}
+                {/* AP 6.8: offener Lizenztext erst nach THA-Freigabe (src/data/lizenz.ts) */}
+                {LIZENZ_AKTIV ? IMPRESSUM_URHEBERRECHT_OFFEN : <>Die auf dieser Seite bereitgestellten Inhalte, Diagramme, interaktiven Berechnungsmodule und Grafiken unterliegen dem deutschen Urheberrecht. Vervielfältigungen, Bearbeitungen, Verbreitungen und Verwertungen außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors. DIN, EN, ISO, Eurocode und DIBt sind eingetragene Bezeichnungen bzw. Markenzeichen der jeweiligen Normungsorganisationen. Ihre Nennung sowie der Verweis auf Berechnungsformeln und Grenzwerte erfolgt ausschließlich zu wissenschaftlichen Lehr-, Erläuterungs- und Belegzwecken gemäß § 51 UrhG (Zitatrecht).</>}
               </p>
             </div>
 

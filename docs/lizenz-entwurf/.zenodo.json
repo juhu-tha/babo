@@ -1,0 +1,32 @@
+{
+  "title": "BaustoffBoard – interaktive Lernplattform Baustoffkunde",
+  "description": "<p>Interaktive, deutschsprachige Lernplattform für Baustoffkunde, Bauphysik, Dauerhaftigkeit und nachhaltiges Bauen (Technische Hochschule Augsburg). Quellcode: MIT-Lizenz. Lehrinhalte: CC BY-SA 4.0, ausgenommen Inhalte Dritter (insbesondere Normtabellen; siehe LICENSE-CONTENT.md).</p>",
+  "upload_type": "software",
+  "license": "mit",
+  "access_right": "open",
+  "language": "deu",
+  "creators": [
+    {
+      "name": "Huber, Jürgen",
+      "affiliation": "Technische Hochschule Augsburg",
+      "orcid": "PLATZHALTER-ORCID-EINTRAGEN"
+    }
+  ],
+  "keywords": [
+    "Baustoffkunde",
+    "Bauingenieurwesen",
+    "Lehre",
+    "Open Educational Resources",
+    "OER",
+    "Beton",
+    "Nachhaltiges Bauen"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://www.baustoffboard.de",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "ENTWURF (AP 6.8): vor dem Verschieben ins Wurzelverzeichnis ORCID eintragen (oder Feld entfernen) und diese Notiz löschen. Lehrinhalte stehen unter CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/legalcode.de); das Feld license in .zenodo.json nimmt nur eine Lizenz auf, daher hier die Code-Lizenz."
+}

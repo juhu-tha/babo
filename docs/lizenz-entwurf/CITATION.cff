@@ -1,0 +1,36 @@
+# ENTWURF (AP 6.8) – erst nach THA-Freigabe ins Wurzelverzeichnis verschieben. Keine Rechtsberatung.
+# Vorher: ORCID eintragen (Zeile unten entkommentieren), Version/Datum an das Release anpassen,
+# nach dem ersten Zenodo-Release die Konzept-DOI unter `identifiers` ergänzen.
+# Hinweis: Liegt zusätzlich .zenodo.json im Repository, liest Zenodo nur diese; CITATION.cff dient dann der
+# Zitierangabe auf GitHub („Cite this repository“).
+cff-version: 1.2.0
+message: "Wenn Sie das BaustoffBoard verwenden, zitieren Sie es bitte wie folgt."
+type: software
+title: "BaustoffBoard – interaktive Lernplattform Baustoffkunde"
+abstract: >-
+  Interaktive, deutschsprachige Lernplattform für Baustoffkunde, Bauphysik, Dauerhaftigkeit und
+  nachhaltiges Bauen mit Rechenmodulen, Aufgaben und Selbsttests für Bauingenieurwesen und Architektur.
+authors:
+  - family-names: Huber
+    given-names: Jürgen
+    affiliation: "Technische Hochschule Augsburg"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # PLATZHALTER – echte ORCID eintragen
+version: "4.3.0"
+date-released: "2026-00-00"   # PLATZHALTER – Datum des Releases (JJJJ-MM-TT)
+url: "https://www.baustoffboard.de"
+repository-code: "https://github.com/juhu-tha/babo"
+license:
+  - MIT
+  - CC-BY-SA-4.0
+keywords:
+  - Baustoffkunde
+  - Bauingenieurwesen
+  - Lehre
+  - Open Educational Resources
+  - OER
+  - Beton
+  - Nachhaltiges Bauen
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.XXXXXXX"   # Konzept-DOI nach dem ersten Release
+#     description: "Konzept-DOI (alle Versionen)"
