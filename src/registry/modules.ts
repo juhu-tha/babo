@@ -65,6 +65,7 @@ export const NAV_GRUPPEN = [
   'Übungsaufgaben',
   'Beispielrechnungen',
   'Vorlesungen',
+  'Lehrveranstaltungen',
   'Baustofflabor'
 ] as const;
 export type NavGruppe = (typeof NAV_GRUPPEN)[number];
@@ -1062,6 +1063,36 @@ export const MODULE = [
     baum: { titel: 'Instandhaltung (VL)', typ: 'info', kurz: 'DIN EN 1504 Instandsetzungsprinzipien und Betonsanierung.', icon: 'Wrench' },
     meta: 'Vorlesung Instandhaltung: Schutz- und Instandsetzungsprinzipien nach DIN EN 1504, DAfStb RL SIB und WTA-Merkblätter.',
     suche: ['vorlesung instandhaltung', 'betoninstandhaltung', 'din en 1504', 'rl sib', 'wta', 'monitoring'] },
+  // Lernpfade je Lehrveranstaltung (AP 6.1) – Daten in src/data/lernpfade.ts, keine Fachmodule (Typ info).
+  // Texte bewusst knapp: die Registry liegt im Einstiegs-Chunk (Bundle-Budget 140 kB).
+  { id: 'lehrveranstaltungen', label: 'Alle Lehrveranstaltungen', icon: 'ClipboardList', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfade: Übersicht', typ: 'info', kurz: 'Terminplan, Lernziele, Quizset und Klausurtraining je Lehrveranstaltung.', icon: 'ClipboardList' },
+    meta: 'Lernpfade je Lehrveranstaltung: Terminplan, Module, Lernziele, Quizset und Klausurtraining.',
+    suche: ['lernpfad', 'terminplan', 'lehrveranstaltung'] },
+  { id: 'lv_baustoffkunde', label: 'Baustoffkunde', icon: 'Layers', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad Baustoffkunde', typ: 'info', kurz: 'Bachelor, Grundlagen (Entwurf).', icon: 'Layers' },
+    meta: 'Lernpfad Baustoffkunde (Bachelor): Terminplan mit Modulen, Lernzielen, Quizset und Klausurtraining.' },
+  { id: 'lv_bauen_im_bestand', label: 'Bauen im Bestand', icon: 'Building2', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad Bauen im Bestand', typ: 'info', kurz: 'Diagnose, historische Baustoffe, Bewertung (Entwurf).', icon: 'Building2' },
+    meta: 'Lernpfad Bauen im Bestand: Terminplan mit Modulen, Lernzielen, Quizset und Klausurtraining.' },
+  { id: 'lv_aryc', label: 'A.RYC Recycling, Abfälle, Altlasten', icon: 'Recycle', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad A.RYC', typ: 'info', kurz: 'ARYC-00 bis ARYC-13 (Entwurf).', icon: 'Recycle' },
+    meta: 'Lernpfad A.RYC (Recycling, Abfälle, Altlasten): Termine ARYC-00 bis ARYC-13 mit Modulen und Quizset.',
+    suche: ['aryc', 'gewabfv', 'ebv'] },
+  { id: 'lv_wpf_nachhaltiges_bauen', label: 'WPF Nachhaltiges Bauen', icon: 'Leaf', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad WPF Nachhaltiges Bauen', typ: 'info', kurz: 'BI, 7. Semester, 12 Termine (Entwurf).', icon: 'Leaf' },
+    meta: 'Lernpfad Wahlpflichtfach Nachhaltiges Bauen (BI, 7. Semester): Ökobilanz, DGNB, Deklarationen.',
+    suche: ['wahlpflichtfach', 'dgnb'] },
+  { id: 'lv_vnhb', label: 'VNHB Vertiefung Nachhaltiges Bauen', icon: 'Leaf', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad VNHB', typ: 'info', kurz: 'Fallbeispiel MFH Augsburg-Nord (Entwurf).', icon: 'Leaf' },
+    meta: 'Lernpfad VNHB (Vertiefung Nachhaltiges Bauen) am durchgehenden Fallbeispiel MFH Augsburg-Nord.',
+    suche: ['vnhb'] },
+  { id: 'lv_ki_master', label: 'KI im Bauwesen (Master)', icon: 'Sparkles', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad KI im Bauwesen', typ: 'info', kurz: 'Master, Grundlagenteil 24 UE (Entwurf).', icon: 'Sparkles' },
+    meta: 'Lernpfad KI im Bauwesen (Master): 24 UE Grundlagen mit Hands-on-Übungen, Quizset und Klausurtraining.' },
+  { id: 'lv_zert_ausbau_bestand', label: 'Zertifikat Ausbau und Bestand', icon: 'Award', gruppe: 'Lehrveranstaltungen',
+    baum: { titel: 'Lernpfad Zertifikat Ausbau und Bestand', typ: 'info', kurz: 'Module A 1 bis A 3 (Entwurf).', icon: 'Award' },
+    meta: 'Lernpfad zum Zertifikat Ausbau und Bestand (Weiter@THA): Module A 1 bis A 3 mit passenden Modulen.' },
   { id: 'labor_sicherheit', label: 'Laborsicherheit', icon: 'ShieldAlert', gruppe: 'Baustofflabor',
     baum: { titel: 'Laborsicherheit Gebäude G2', typ: 'norm', kurz: 'Laborordnung, PSA-Vorschriften, Notfallkette und Sicherheitsunterweisung.', icon: 'ShieldAlert', norm: 'Laborordnung THA' },
     meta: 'Sicherheit im Baustofflabor der TH Augsburg: Laborordnung, PSA-Pflichten, Einzugsgefahren, Sperrgeräte, Notfallkette Gebäude G2 und Ersthelferkontakte.',
@@ -1176,6 +1207,7 @@ export const TAB_ALIASES = {
   'vl_baustoffe': 'vl_baustoffkunde',
   'vl_instandsetzung': 'vl_instandhaltung',
   'moduluebersicht': 'modulstruktur',
+  'lernpfade': 'lehrveranstaltungen',
 } as const satisfies Record<string, ModulId>;
 export type AliasId = keyof typeof TAB_ALIASES;
 
@@ -1240,6 +1272,8 @@ export const BAUM_GRUPPEN = [
     knoten: ['labor_sicherheit'] },
   { id: 'grp_vorlesungen', name: 'Vorlesungen', icon: 'GraduationCap', cluster: 'cluster_6',
     knoten: ['vl_bauen_im_bestand', 'vl_nachhaltiges_bauen', 'vl_bauschaeden', 'vl_baustoffkunde', 'vl_instandhaltung'] },
+  { id: 'grp_lehrveranstaltungen', name: 'Lehrveranstaltungen', icon: 'ClipboardList', cluster: 'cluster_6',
+    knoten: ['lehrveranstaltungen', 'lv_baustoffkunde', 'lv_bauen_im_bestand', 'lv_aryc', 'lv_wpf_nachhaltiges_bauen', 'lv_vnhb', 'lv_ki_master', 'lv_zert_ausbau_bestand'] },
   { id: 'grp_weiterbildung', name: 'Weiter@THA', icon: 'Award', cluster: 'cluster_6',
     knoten: ['weiter_tha', 'weiter_bauing', 'weiter_pm', 'weiter_ausbau', 'weiter_fassade', 'weiter_holzbau', 'weiter_ttz', 'weiter_mapr'] },
   { id: 'grp_thesen', name: 'Thesen & Projekte', icon: 'FileText', cluster: 'cluster_6',
