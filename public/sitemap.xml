@@ -978,6 +978,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://baustoffboard.de/#altholz_urban_mining</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#pfas_baustoffe</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://baustoffboard.de/#ressourceneffizienz</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>

@@ -5369,6 +5369,502 @@
     "verified": false
   },
   {
+    "id": "qn_altholz_urban_mining_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "AltholzV & Kategorien",
+    "difficulty": "Basis",
+    "question": "Welcher Altholzkategorie nach AltholzV ist ein lackiertes Möbelteil aus Spanplatte ohne PVC-Beschichtung und ohne Holzschutzmittel zuzuordnen?",
+    "options": [
+      "A I",
+      "A III",
+      "A II",
+      "A IV"
+    ],
+    "correctIdx": 2,
+    "explanation": "A II umfasst verleimtes, gestrichenes, beschichtetes oder lackiertes Altholz ohne halogenorganische Verbindungen in der Beschichtung und ohne Holzschutzmittel (§ 2 AltholzV).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "A I ist nur naturbelassenes oder lediglich mechanisch bearbeitetes Holz; Leim und Lack schließen A I aus.",
+      "A III setzt halogenorganische Verbindungen in der Beschichtung voraus, z. B. PVC – hier liegt keine PVC-Beschichtung vor.",
+      "",
+      "A IV betrifft mit Holzschutzmitteln behandeltes oder sonst schadstoffbelastetes Holz; das ist hier nicht der Fall."
+    ],
+    "gapAnalysis": {
+      "topic": "AltholzV & Kategorien",
+      "misconception": "Jede Beschichtung führe automatisch zu A III oder A IV.",
+      "coreRule": "Behandelt ohne Halogenorganik und ohne Holzschutzmittel = A II; Halogenorganik (PVC) = A III; Holzschutzmittel = A IV.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „AltholzV & Kategorien“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "AltholzV § 2"
+  },
+  {
+    "id": "qn_altholz_urban_mining_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "AltholzV & Kategorien",
+    "difficulty": "Vertiefung",
+    "question": "Welche Altholzkategorien dürfen nach AltholzV ohne besondere Vorbehandlung zu Holzhackschnitzeln für die Herstellung von Holzwerkstoffen aufbereitet werden?",
+    "options": [
+      "nur A I",
+      "A I und A II",
+      "A I bis A III",
+      "A I bis A IV bei Einhaltung von Anhang II"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach § 3 und Anhang I AltholzV ist die Aufbereitung zu Holzwerkstoffen für A I und A II zulässig. A III nur, wenn Lacke und Beschichtungen weitgehend entfernt werden; A IV ist ausgeschlossen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Auch A II (z. B. lackierte oder verleimte Hölzer ohne Halogenorganik) ist für Holzwerkstoffe zugelassen.",
+      "",
+      "A III ist nur zulässig, wenn die Beschichtungen vorher oder bei der Aufbereitung weitgehend entfernt werden.",
+      "A IV ist von der Holzwerkstoffherstellung ausgeschlossen – die Grenzwerte ersetzen diese Regel nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "AltholzV & Kategorien",
+      "misconception": "Die Einhaltung der Grenzwerte allein genüge, damit jede Kategorie stofflich verwertet werden darf.",
+      "coreRule": "Holzwerkstoffe: A I und A II zulässig, A III nur nach Entfernen der Beschichtung, A IV nicht.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „AltholzV & Kategorien“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "AltholzV § 3, Anhang I"
+  },
+  {
+    "id": "qn_altholz_urban_mining_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "NIR-Sortierung",
+    "difficulty": "Basis",
+    "question": "Worauf beruht die Unterscheidung von Holz, Holzwerkstoffen und Beschichtungen mit der NIR-Spektroskopie?",
+    "options": [
+      "auf der elektrischen Leitfähigkeit der Holzoberfläche und ihrer Beschichtung",
+      "auf der Röntgenfluoreszenz schwerer Elemente wie Kupfer, Chrom und Arsen",
+      "auf der Rohdichte, gemessen über die Durchstrahlung der einzelnen Stücke",
+      "auf Schwingungsbanden von C–H-, O–H- und N–H-Bindungen"
+    ],
+    "correctIdx": 3,
+    "explanation": "Im nahen Infrarot (ab etwa 780 nm) absorbieren Ober- und Kombinationsschwingungen von C–H-, O–H- und N–H-Bindungen. Das reflektierte Spektrum ist daher ein Abbild der organischen Zusammensetzung der Oberfläche.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Leitfähigkeit wird z. B. bei der Metallabscheidung (Wirbelstrom) genutzt, nicht bei NIR.",
+      "Röntgenfluoreszenz ist ein eigenes Verfahren für Elemente wie Kupfer, Chrom oder Arsen.",
+      "Durchstrahlungsverfahren (z. B. Röntgentransmission) messen die Dichte; NIR misst reflektiertes Licht.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "NIR-Sortierung",
+      "misconception": "NIR messe Elemente oder die Dichte des Materials.",
+      "coreRule": "NIR = molekulare Schwingungen (C–H, O–H, N–H) an der Oberfläche; Elemente misst die RFA.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „NIR-Sortierung“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "Siesler et al. 2002"
+  },
+  {
+    "id": "qn_altholz_urban_mining_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Grenzen der Sensorik",
+    "difficulty": "Vertiefung",
+    "question": "Warum reicht eine NIR-Sortierung allein nicht aus, um mit Kupfer-Chrom-Salzen imprägniertes Altholz sicher auszuschleusen?",
+    "options": [
+      "weil anorganische Salze kaum NIR-Banden zeigen",
+      "weil NIR nur an feuchtem Holz zuverlässige Spektren liefert",
+      "weil NIR lediglich Nadelholz von Laubholz unterscheiden kann",
+      "weil Kupfer die Hyperspektralkamera des Sortierers stört"
+    ],
+    "correctIdx": 0,
+    "explanation": "Anorganische Holzschutzmittel zeigen kaum eigene NIR-Banden, und NIR erfasst nur wenige Millimeter der Oberfläche. Elementanalytische Sensoren (RFA, LIBS) und Herkunftsinformationen ergänzen die Sortierung.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Feuchte stört die NIR-Messung eher, als dass sie sie ermöglicht.",
+      "NIR unterscheidet deutlich mehr – etwa Holzwerkstoffe, Lacke und PVC-Beschichtungen.",
+      "Kupfer stört die Kamera nicht; das Problem ist das fehlende NIR-Signal der Salze."
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzen der Sensorik",
+      "misconception": "NIR erkenne jedes Holzschutzmittel zuverlässig.",
+      "coreRule": "NIR ist ein Oberflächenverfahren für organische Stoffe; anorganische Holzschutzmittel brauchen Elementanalytik.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Grenzen der Sensorik“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Rechner Sortierbilanz",
+    "difficulty": "Vertiefung",
+    "question": "Eine Anlage erhält 100 t Altholz: 60 t A I/A II und 40 t A III/A IV. 54 t A I/A II gelangen in die stoffliche Linie, außerdem 2 t A IV. Wie groß ist die stoffliche Verwertungsquote nach dem Modell des Rechners?",
+    "options": [
+      "54 %",
+      "56 %",
+      "60 %",
+      "90 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gezählt wird nur richtig sortiertes A I/A II: q_st = 54 t / 100 t = 54 %. Die 2 t A IV erhöhen die Masse der stofflichen Linie auf 56 t, sind aber Fehlsortierung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "56 % entspricht der Masse der stofflichen Linie einschließlich der fehlsortierten 2 t A IV.",
+      "60 % wäre der Höchstwert bei idealer Sortierung (Anteil A I + A II im Eingang).",
+      "90 % ist das Ausbringen von A I/A II (54/60), nicht die Verwertungsquote bezogen auf den Eingang."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Sortierbilanz",
+      "misconception": "Alles, was in der stofflichen Linie landet, zähle zur Verwertungsquote.",
+      "coreRule": "q_st = richtig sortiertes A I/A II / Eingangsmasse; Fremdanteile zählen nicht.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Sortierbilanz“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Rechner Sortierbilanz",
+    "difficulty": "Vertiefung",
+    "question": "In einer Sortierbilanz werden von 25 t A IV 1,25 t in die stoffliche Linie fehlgelenkt, die insgesamt 58,25 t umfasst. Wie groß ist der A-IV-Anteil im stofflichen Strom?",
+    "options": [
+      "rund 1,3 %",
+      "rund 5,0 %",
+      "rund 2,1 %",
+      "rund 8,8 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "w = 1,25 t / 58,25 t = 0,0215 = rund 2,1 %. Schon dieser Anteil kann die Grenzwerte nach Anhang II AltholzV gefährden.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "1,3 % entsteht, wenn man 1,25 t auf 100 t Eingang statt auf die stoffliche Linie bezieht.",
+      "5,0 % ist der Anteil fehlgelenkten A IV bezogen auf die A-IV-Eingangsmasse (1,25/25).",
+      "",
+      "8,8 % entspricht der Fehlsortierquote des gesamten Beispiels, nicht dem A-IV-Anteil."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Sortierbilanz",
+      "misconception": "Der Fremdanteil werde auf den Eingang oder auf die Kategorie bezogen.",
+      "coreRule": "Anteil im Strom = fehlgelenkte Masse / Masse des Zielstroms.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Sortierbilanz“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_7",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Urban Mining & Kataster",
+    "difficulty": "Basis",
+    "question": "Was beschreibt ein Materialkataster im Sinne des Urban Mining?",
+    "options": [
+      "ein Verzeichnis der zugelassenen Bauprodukte eines Herstellers",
+      "eine Liste der Deponien mit freier Kapazität in einer Region",
+      "den Nachweis der CO₂-Emissionen bei der Herstellung von Baustoffen",
+      "die Erfassung von Art, Menge und Ort verbauter Materialien"
+    ],
+    "correctIdx": 3,
+    "explanation": "Ein Materialkataster erfasst, welche Materialien in welcher Menge und Qualität wo verbaut sind – bottom-up über Materialpässe einzelner Gebäude oder top-down über Gebäudebestand und Materialintensitäten. Es macht das anthropogene Lager planbar.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Produktverzeichnisse beschreiben lieferbare Produkte, nicht das verbaute Lager.",
+      "Deponiekapazitäten sind ein Thema der Entsorgungsplanung, nicht des Materialkatasters.",
+      "Herstellungsemissionen werden in Ökobilanzen bzw. EPDs ausgewiesen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Urban Mining & Kataster",
+      "misconception": "Urban Mining betreffe nur die Entsorgung, nicht die Bestandserfassung.",
+      "coreRule": "Materialkataster = Art, Menge, Qualität und Ort verbauter Materialien (bottom-up oder top-down).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Urban Mining & Kataster“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Was sind PFAS?",
+    "difficulty": "Basis",
+    "question": "Warum werden PFAS als „Ewigkeitschemikalien“ bezeichnet?",
+    "options": [
+      "weil die C–F-Bindung in der Umwelt kaum gespalten wird",
+      "weil sie radioaktiv sind und nur sehr langsam zerfallen",
+      "weil sie nur in Gebäuden aus der Zeit vor 1950 verbaut wurden",
+      "weil sie in Wasser rasch zu ungiftigem Fluorid zerfallen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Kohlenstoff-Fluor-Bindung gehört zu den stärksten Einfachbindungen der organischen Chemie. Perfluoralkylsäuren werden in der Umwelt praktisch nicht abgebaut und reichern sich an.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "PFAS sind nicht radioaktiv; „Ewigkeit“ bezieht sich auf die fehlende Abbaubarkeit.",
+      "PFAS werden seit den 1950er-Jahren hergestellt und bis heute verwendet.",
+      "Gerade das Gegenteil: PFAS sind in Wasser beständig und werden dort nicht abgebaut."
+    ],
+    "gapAnalysis": {
+      "topic": "Was sind PFAS?",
+      "misconception": "PFAS zerfielen mit der Zeit von selbst.",
+      "coreRule": "Starke C–F-Bindung → Perfluoralkylsäuren sind in der Umwelt praktisch nicht abbaubar.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Was sind PFAS?“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "OECD 2021"
+  },
+  {
+    "id": "qn_pfas_baustoffe_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "PFAS in Baustoffen",
+    "difficulty": "Basis",
+    "question": "Welche Anwendung im Bauwesen hat besonders häufig zu PFAS-Altlasten in Boden, Grundwasser und Beton geführt?",
+    "options": [
+      "Gipsputze und Spachtelmassen im Innenausbau von Wohnungen",
+      "Mineralwolle-Dämmung im Dach von Einfamilienhäusern",
+      "Löschschäume (AFFF) auf Feuerwehrübungsflächen",
+      "Kalksandsteinmauerwerk mit Dünnbettmörtel im Keller"
+    ],
+    "correctIdx": 2,
+    "explanation": "AFFF-Löschschäume enthielten Fluortenside (früher PFOS). Auf Feuerwehrübungsflächen, Flughäfen und Brandorten gelangten sie direkt in Boden, Grundwasser und Betonflächen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Gipsputze enthalten üblicherweise keine PFAS.",
+      "Mineralwolle ist ein Thema bei KMF, nicht bei PFAS-Altlasten.",
+      "",
+      "Kalksandstein enthält keine PFAS-haltigen Zusätze."
+    ],
+    "gapAnalysis": {
+      "topic": "PFAS in Baustoffen",
+      "misconception": "PFAS seien vor allem in mineralischen Massenbaustoffen enthalten.",
+      "coreRule": "Größte Eintragsquelle im Bau- und Liegenschaftsbereich: AFFF-Löschschäume.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „PFAS in Baustoffen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Regulierung",
+    "difficulty": "Vertiefung",
+    "question": "Welche Grenzwerte gelten nach der Trinkwasserverordnung für die Summen PFAS-20 und PFAS-4?",
+    "options": [
+      "PFAS-20: 0,5 µg/l; PFAS-4: 0,1 µg/l",
+      "PFAS-20: 0,02 µg/l; PFAS-4: 0,1 µg/l",
+      "PFAS-20: 1,0 µg/l; PFAS-4: 0,2 µg/l",
+      "PFAS-20: 0,1 µg/l; PFAS-4: 0,02 µg/l"
+    ],
+    "correctIdx": 3,
+    "explanation": "TrinkwV Anlage 2 Teil I: Summe PFAS-20 höchstens 0,1 µg/l ab 12.01.2026, Summe PFAS-4 (PFOA, PFNA, PFHxS, PFOS) höchstens 0,02 µg/l ab 12.01.2028.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,5 µg/l ist der EU-Parameter „PFAS gesamt“, den die TrinkwV nicht übernommen hat.",
+      "Die Werte sind vertauscht: Der strengere Grenzwert gilt für die kleinere Summe PFAS-4.",
+      "Diese Werte sind um eine Größenordnung zu hoch.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Regulierung",
+      "misconception": "Die Grenzwerte seien gleich oder die größere Summe habe den strengeren Wert.",
+      "coreRule": "PFAS-20 ≤ 0,1 µg/l (ab 2026), PFAS-4 ≤ 0,02 µg/l (ab 2028).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Regulierung“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+  },
+  {
+    "id": "qn_pfas_baustoffe_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Regulierung",
+    "difficulty": "Vertiefung",
+    "question": "Welchen Stand hat der universelle PFAS-Beschränkungsvorschlag unter REACH im Herbst 2026?",
+    "options": [
+      "Er gilt seit 2025 verbindlich für alle Bauprodukte in der EU.",
+      "Er ist im Verfahren; SEAC und Kommission entscheiden noch.",
+      "Er wurde 2024 von der ECHA zurückgezogen und nicht weiterverfolgt.",
+      "Er betrifft nur Feuerlöschschäume und ist bereits abgeschlossen."
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Vorschlag von fünf Staaten (2023, überarbeitet 2025) wurde vom RAC im März 2026 bewertet; die SEAC-Konsultation lief bis Mai 2026, die SEAC-Stellungnahme wird Ende 2026 erwartet. Danach entscheiden Kommission und Mitgliedstaaten.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Vorschlag ist noch nicht in Kraft; Ausnahmen und Fristen für Bauprodukte sind offen.",
+      "",
+      "Der Vorschlag wurde nicht zurückgezogen, sondern 2025 überarbeitet.",
+      "Feuerlöschschäume sind in einer eigenen, bereits erlassenen Beschränkung (EU) 2025/1988 geregelt."
+    ],
+    "gapAnalysis": {
+      "topic": "Regulierung",
+      "misconception": "Die umfassende PFAS-Beschränkung sei bereits geltendes Recht.",
+      "coreRule": "Universelle Beschränkung: im Verfahren (RAC 2026 erledigt, SEAC und Kommission offen); Löschschäume separat geregelt.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Regulierung“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Rechner PFAS-Summen",
+    "difficulty": "Vertiefung",
+    "question": "In einer Trinkwasserprobe werden PFOA 6 ng/l, PFNA 1 ng/l, PFHxS 4 ng/l und PFOS 7 ng/l gemessen. Wie ist die Summe PFAS-4 gegenüber dem Grenzwert ab 2028 zu bewerten?",
+    "options": [
+      "14 ng/l, eingehalten",
+      "18 ng/l, überschritten",
+      "18 ng/l, eingehalten",
+      "22 ng/l, überschritten"
+    ],
+    "correctIdx": 2,
+    "explanation": "Σ PFAS-4 = 6 + 1 + 4 + 7 = 18 ng/l = 0,018 µg/l. Der Grenzwert von 0,02 µg/l = 20 ng/l wird eingehalten (Ausschöpfung 90 %).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "14 ng/l ergibt sich, wenn ein Stoff (PFHxS) vergessen wird.",
+      "Die Summe ist richtig, aber 18 ng/l liegen unter dem Grenzwert von 20 ng/l.",
+      "",
+      "22 ng/l ist falsch addiert; die Summe beträgt 18 ng/l."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner PFAS-Summen",
+      "misconception": "Der Grenzwert 0,02 µg/l entspreche 2 ng/l oder einzelne Stoffe würden nicht summiert.",
+      "coreRule": "PFAS-4 = PFOA + PFNA + PFHxS + PFOS; 0,02 µg/l = 20 ng/l.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner PFAS-Summen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+  },
+  {
+    "id": "qn_pfas_baustoffe_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Rechner PFAS-Summen",
+    "difficulty": "Transfer",
+    "question": "Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?",
+    "options": [
+      "eindeutig eingehalten, da 92 ng/l < 100 ng/l",
+      "eindeutig überschritten, da 92 + 20 = 112 ng/l",
+      "nicht bewertbar, da Werte unter der BG fehlen",
+      "nicht eindeutig: Spanne 92 bis 112 ng/l"
+    ],
+    "correctIdx": 3,
+    "explanation": "Untere Schranke 92 ng/l (< BG = 0), obere Schranke 92 + 10 · 2 = 112 ng/l (< BG = BG). Der Grenzwert 100 ng/l liegt dazwischen – die Bewertung hängt vom Ansatz ab; eine empfindlichere Analytik schafft Klarheit.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das gilt nur, wenn alle Werte unter der BG null wären; sie können aber bis 2 ng/l betragen.",
+      "Der Ansatz „< BG = BG“ ist die ungünstigste Annahme, keine sichere Überschreitung.",
+      "Die Probe ist bewertbar; die Werte unter der BG ergeben eine Spanne.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner PFAS-Summen",
+      "misconception": "Werte unter der Bestimmungsgrenze seien gleich null.",
+      "coreRule": "Spanne: Σ mit < BG = 0 bis Σ mit < BG = BG; liegt der Grenzwert dazwischen, ist die Bewertung nicht eindeutig.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner PFAS-Summen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_7",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Analytik",
+    "difficulty": "Vertiefung",
+    "question": "Wozu dient der TOP-Assay in der PFAS-Analytik?",
+    "options": [
+      "zur Erfassung oxidierbarer Vorläufer",
+      "zur Messung von gelöstem Fluorid im Trinkwasser",
+      "zur Bestimmung des Wassergehalts von Bauschutt",
+      "zur Bestimmung des Brandverhaltens von Fluorpolymeren"
+    ],
+    "correctIdx": 0,
+    "explanation": "Beim Total Oxidizable Precursor Assay wird die Probe oxidiert. Vorläufer wandeln sich in Perfluorcarbonsäuren um; die Zunahme gegenüber der Ausgangsmessung zeigt das Vorläuferpotenzial, das die Target-Analytik nicht erfasst.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Fluorid wird z. B. ionenchromatographisch bestimmt; der TOP-Assay zielt auf organische Vorläufer.",
+      "Der Wassergehalt wird durch Trocknung bestimmt, nicht durch Oxidation.",
+      "Das Brandverhalten wird nach DIN EN 13501-1 klassifiziert."
+    ],
+    "gapAnalysis": {
+      "topic": "Analytik",
+      "misconception": "Die Target-Analytik erfasse alle PFAS einer Probe.",
+      "coreRule": "TOP-Assay: Vorläufer → PFCA durch Oxidation; Differenz = Vorläuferpotenzial.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Analytik“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
     "id": "q_re_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
