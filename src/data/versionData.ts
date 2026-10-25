@@ -8,6 +8,20 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v4.3.0',
+    date: '25.10.2026',
+    title: 'Fünf neue Module: Stahlbau EC 3, Keramik und Ziegel, Korrosionsschutz durch Beschichtungen, Membranen und ETFE, Sommerlicher Wärmeschutz',
+    badge: 'minor',
+    changes: [
+      'Stahlbau nach Eurocode 3 – Grundlagen: Werkstoffe, Querschnittsklassen, Zug, Biegung und Biegeknicken mit Knicklinien a0–d; Rechner für N_b,Rd mit gängigen Walzprofilen; Verweis aus dem Modul Knicken.',
+      'Keramik und Ziegel: Rohstoffe, Brand, Scherbenarten, Ziegelarten, DIN EN 771-1 und DIN EN 14411; Rechner für Wasseraufnahme, Fliesengruppe, Rohdichte und Porosität.',
+      'Korrosionsschutz durch Beschichtungen: DIN EN ISO 12944 (C1–CX, Im1–Im4, Schutzdauer), Beschichtungssysteme, Feuerverzinken nach DIN EN ISO 1461, Duplex; Rechner für die Schutzdauer von Zinküberzügen.',
+      'Membranen und ETFE-Folien: Gewebe und Folien, Tragverhalten, Kennwerte, Bauphysik, Regelwerke (DIN 4134-1, CEN/TS 19102); Rechner nach der Kesselformel.',
+      'Sommerlicher Wärmeschutz nach DIN 4108-2: Sonneneintragskennwerte S_vorh und S_zul, F_C-Werte, Verzichtsregeln; Rechner für den kritischen Raum.',
+      'Jedes neue Modul mit Lernzielen, Selbsttest (39 neue Fragen, Pool 1 008), „Ausprobieren“, Live-Rechenweg, Annahmen und Grenzen sowie geprüftem Rechenkern mit Tests.'
+    ]
+  },
+  {
     version: 'v4.2.0',
     date: '25.10.2026',
     title: 'Didaktik: Lernziele überall, 969 Selbsttestfragen, Ausprobieren und Live-Rechenweg, gestraffte Module, rund 120 Fachkorrekturen',

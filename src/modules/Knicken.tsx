@@ -20,6 +20,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 
 ChartJS.register(
   CategoryScale,
@@ -555,6 +556,9 @@ export default function Knicken() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="stahlbau_ec3" titel="Bemessung nach Eurocode 3: Abminderungsbeiwert χ" linkText="Zum Modul Stahlbau nach Eurocode 3">
+        Die Euler-Last ist die ideale Obergrenze. Den Bemessungswert N_b,Rd mit Knicklinien und χ berechnet das Modul Stahlbau nach Eurocode 3.
+      </Querverweis>
       <ModulTest moduleId="knicken" />
 
       <ModuleFooter 

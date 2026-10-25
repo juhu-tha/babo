@@ -172,6 +172,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://baustoffboard.de/#keramik_ziegel</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://baustoffboard.de/#putzemoertel</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -245,6 +251,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#kunststoffe</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#membranen_etfe</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -724,6 +736,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://baustoffboard.de/#stahlbau_ec3</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://baustoffboard.de/#bruchmechanik</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -757,6 +775,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#feuchteschutz</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#sommerlicher_waermeschutz</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -993,6 +1017,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#metallkorrosion</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#korrosionsschutz_beschichtungen</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

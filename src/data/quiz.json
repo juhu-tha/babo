@@ -34743,5 +34743,1396 @@
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
     "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Teilsicherheitsbeiwerte",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Welcher Teilsicherheitsbeiwert γ_M1 gilt nach dem deutschen Nationalen Anhang zu DIN EN 1993-1-1 für den Biegeknicknachweis?",
+    "options": [
+      "1,10",
+      "1,00",
+      "1,25",
+      "1,05"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der NA (DE) legt γ_M1 = 1,1 für Stabilitätsnachweise fest; die EN empfiehlt 1,0. γ_M0 = 1,0 gilt für Querschnitte, γ_M2 = 1,25 für den Bruch des Nettoquerschnitts.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "1,00 ist der Empfehlungswert der EN und in Deutschland der Wert für γ_M0, nicht für γ_M1.",
+      "1,25 ist γ_M2 für den Bruch im Nettoquerschnitt.",
+      "1,05 ist in DIN EN 1993-1-1 mit NA (DE) für keinen dieser Beiwerte festgelegt."
+    ],
+    "gapAnalysis": {
+      "topic": "Teilsicherheitsbeiwerte",
+      "misconception": "γ_M0, γ_M1 und γ_M2 werden verwechselt oder der EN-Empfehlungswert wird übernommen.",
+      "coreRule": "NA (DE): γ_M0 = 1,0 (Querschnitt), γ_M1 = 1,1 (Stabilität), γ_M2 = 1,25 (Nettoquerschnittsbruch).",
+      "actionableAdvice": "Wiederholen Sie im Modul Stahlbau nach Eurocode 3 den Reiter „Einführung“ (Teilsicherheitsbeiwerte).",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Querschnittsklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Was kennzeichnet einen Querschnitt der Klasse 3 nach DIN EN 1993-1-1?",
+    "options": [
+      "Nur die Randfaser erreicht f_y; bemessen wird elastisch.",
+      "Er bildet ein Fließgelenk mit großer Rotationskapazität aus.",
+      "Er erreicht das plastische Moment, rotiert aber nur begrenzt.",
+      "Er beult örtlich aus, bevor f_y in der Randfaser erreicht ist."
+    ],
+    "correctIdx": 0,
+    "explanation": "Klasse 3: Die Randspannung erreicht f_y, örtliches Beulen verhindert aber eine weitere Plastizierung; maßgebend sind elastische Querschnittswerte (W_el). Klasse 1 und 2 erreichen M_pl, Klasse 4 beult vorher aus.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Das beschreibt Klasse 1, die plastische Tragwerksberechnungen erlaubt.",
+      "Das beschreibt Klasse 2: M_pl erreichbar, Rotationskapazität begrenzt.",
+      "Das beschreibt Klasse 4, für die wirksame Querschnitte nach DIN EN 1993-1-5 nötig sind."
+    ],
+    "gapAnalysis": {
+      "topic": "Querschnittsklassen",
+      "misconception": "Die vier Querschnittsklassen werden in ihrer Tragfähigkeit verwechselt.",
+      "coreRule": "Klasse 1/2: plastisch (W_pl); Klasse 3: elastisch (W_el); Klasse 4: wirksame Querschnittswerte.",
+      "actionableAdvice": "Arbeiten Sie im Modul Stahlbau nach Eurocode 3 den Abschnitt „Querschnittsklassen“ im Reiter Grundlagen durch.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Zugstab mit Lochschwächung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Ein Flachstahl 100 × 10 mm aus S235 (f_u = 360 N/mm²) hat ein Schraubenloch d₀ = 18 mm. Wie groß ist N_u,Rd nach DIN EN 1993-1-1 mit NA (DE)?",
+    "options": [
+      "212,5 kN",
+      "235,0 kN",
+      "236,2 kN",
+      "138,7 kN"
+    ],
+    "correctIdx": 0,
+    "explanation": "A_net = 1 000 − 18 · 10 = 820 mm²; N_u,Rd = 0,9 · 820 · 360/1,25 = 212 544 N = 212,5 kN. Mit N_pl,Rd = 235,0 kN ist der Nettoquerschnitt maßgebend.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "235,0 kN ist N_pl,Rd = A · f_y/γ_M0 des Bruttoquerschnitts, nicht der Bruchwiderstand.",
+      "236,2 kN ergibt sich ohne den Faktor 0,9 aus Gl. (6.7).",
+      "138,7 kN entsteht, wenn f_y statt f_u eingesetzt wird."
+    ],
+    "gapAnalysis": {
+      "topic": "Zugstab mit Lochschwächung",
+      "misconception": "Faktor 0,9, Zugfestigkeit f_u oder γ_M2 = 1,25 werden beim Nettoquerschnitt vergessen.",
+      "coreRule": "N_u,Rd = 0,9 · A_net · f_u/γ_M2 mit γ_M2 = 1,25; N_t,Rd = min(N_pl,Rd; N_u,Rd).",
+      "actionableAdvice": "Rechnen Sie im Modul Stahlbau nach Eurocode 3 das Beispiel 1 (Zugstab) Schritt für Schritt nach.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Bezogener Schlankheitsgrad",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Eine Stütze HEB 200 aus S235 (i_z = 5,07 cm, i_y = 8,54 cm) hat L_cr = 4,0 m um beide Achsen. Wie groß ist der bezogene Schlankheitsgrad λ̄_z?",
+    "options": [
+      "0,84",
+      "0,50",
+      "1,03",
+      "78,9"
+    ],
+    "correctIdx": 0,
+    "explanation": "λ_z = 4 000/50,7 = 78,9; λ₁ = π · √(210 000/235) = 93,9; λ̄_z = 78,9/93,9 = 0,84.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,50 ist λ̄_y mit i_y = 8,54 cm, nicht der Wert um die schwache Achse.",
+      "1,03 ergäbe sich für S355 (λ₁ = 76,4), nicht für S235.",
+      "78,9 ist die geometrische Schlankheit L_cr/i, die noch durch λ₁ zu teilen ist."
+    ],
+    "gapAnalysis": {
+      "topic": "Bezogener Schlankheitsgrad",
+      "misconception": "Geometrische und bezogene Schlankheit oder die beiden Achsen werden verwechselt.",
+      "coreRule": "λ̄ = (L_cr/i)/λ₁ mit λ₁ = 93,9 · ε; maßgebend ist meist die schwache Achse z.",
+      "actionableAdvice": "Nutzen Sie im Modul Stahlbau nach Eurocode 3 den Rechner Biegeknicken und vergleichen Sie λ̄_y und λ̄_z.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Knicklinien nach Tab. 6.2",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Welche Knicklinie gilt nach DIN EN 1993-1-1 (Zuordnungstabelle der Knicklinien) für eine gewalzte HEB 200 (h/b = 1,0; t_f = 15 mm) aus S235 beim Ausweichen um die z-Achse?",
+    "options": [
+      "Knicklinie c",
+      "Knicklinie a",
+      "Knicklinie b",
+      "Knicklinie d"
+    ],
+    "correctIdx": 0,
+    "explanation": "Für gewalzte I-Querschnitte mit h/b ≤ 1,2 und t_f ≤ 100 mm gilt in S235 bis S420 um y-y die Linie b, um z-z die Linie c (α = 0,49).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Linie a gilt um y-y für schlanke Profile mit h/b > 1,2 (z. B. IPE) oder für S460 mit h/b ≤ 1,2.",
+      "Linie b gilt bei diesem Profil für das Ausweichen um die starke Achse y-y.",
+      "Linie d gilt erst bei Flanschdicken über 100 mm."
+    ],
+    "gapAnalysis": {
+      "topic": "Knicklinien nach Tab. 6.2",
+      "misconception": "Die Zuordnung der Knicklinien nach Profilform, Achse und Stahlgüte wird verwechselt.",
+      "coreRule": "Gewalzte I-Profile h/b ≤ 1,2, t_f ≤ 100 mm: y-y Linie b, z-z Linie c (S235–S420); S460: a/a.",
+      "actionableAdvice": "Schlagen Sie im Modul Stahlbau nach Eurocode 3 im Reiter „Kennwerte & Tabellen“ die Tab. 6.2 nach.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_6",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Einfluss der Stahlgüte auf die Querschnittsklasse",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Der Steg eines IPE 300 hat c/t = 35,0. Unter reinem Druck ist er in S235 Klasse 2, in S355 aber Klasse 4. Warum?",
+    "options": [
+      "Die Grenzwerte c/t sinken mit ε = √(235/f_y).",
+      "Der Steg wird in S355 dünner gewalzt als in S235.",
+      "S355 hat einen kleineren E-Modul als S235.",
+      "In S355 wird der Steg als einseitig gestützt eingestuft."
+    ],
+    "correctIdx": 0,
+    "explanation": "Die c/t-Grenzen der DIN EN 1993-1-1 sind mit ε = √(235/f_y) skaliert: In S355 ist ε = 0,81, die Klasse-3-Grenze 42ε sinkt auf 34,2 < 35,0. Höhere Streckgrenze bedeutet, dass Beulen vor dem Fließen eher maßgebend wird.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Abmessungen eines Walzprofils sind von der Stahlgüte unabhängig.",
+      "Alle Baustähle haben nach DIN EN 1993-1-1 denselben E-Modul von 210 000 N/mm².",
+      "Der Steg ist bei beiden Güten ein beidseitig gestütztes Querschnittsteil."
+    ],
+    "gapAnalysis": {
+      "topic": "Einfluss der Stahlgüte auf die Querschnittsklasse",
+      "misconception": "Es wird nicht erkannt, dass die c/t-Grenzen über ε von der Streckgrenze abhängen.",
+      "coreRule": "c/t-Grenzen (z. B. 33ε/38ε/42ε für Stege unter Druck) mit ε = √(235/f_y): höhere Güte → strengere Grenzen.",
+      "actionableAdvice": "Wechseln Sie im Rechner des Moduls Stahlbau nach Eurocode 3 beim IPE 300 die Stahlgüte und beobachten Sie die Klasse.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_7",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Einfluss der Knicklänge",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Bei einer HEB 200 aus S235 wird L_cr von 3 m auf 6 m verdoppelt (Ausweichen um z). Wie ändert sich N_b,Rd nach Eurocode 3?",
+    "options": [
+      "Er sinkt auf etwa 53 % des Ausgangswerts.",
+      "Er sinkt auf 25 % wie die Euler-Knicklast.",
+      "Er sinkt auf genau 50 % des Ausgangswerts.",
+      "Er bleibt gleich, da χ nur von f_y abhängt."
+    ],
+    "correctIdx": 0,
+    "explanation": "N_b,Rd fällt von 1 280 kN (λ̄_z = 0,63; χ = 0,767) auf 678 kN (λ̄_z = 1,26; χ = 0,406), also auf rund 53 %. N_cr sinkt auf ein Viertel, χ reagiert aber gedämpft, weil im mittleren Schlankheitsbereich Imperfektionen und Fließen zusammenwirken.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Nur die ideale Knicklast N_cr fällt mit 1/L² auf 25 %; χ nimmt weniger stark ab.",
+      "Ein linearer Zusammenhang zwischen L_cr und N_b,Rd besteht nicht.",
+      "χ hängt über λ̄ = (L_cr/i)/λ₁ wesentlich von der Knicklänge ab."
+    ],
+    "gapAnalysis": {
+      "topic": "Einfluss der Knicklänge",
+      "misconception": "Die Abhängigkeit des Knickwiderstands von der Knicklänge wird mit der Euler-Last gleichgesetzt.",
+      "coreRule": "N_b,Rd = χ(λ̄) · A · f_y/γ_M1; χ nimmt mit λ̄ ab, aber schwächer als N_cr ∝ 1/L_cr².",
+      "actionableAdvice": "Variieren Sie im Rechner Biegeknicken des Moduls Stahlbau nach Eurocode 3 die Knicklänge und verfolgen Sie den Punkt im χ-Diagramm.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahlbau_ec3_8",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahlbau_ec3",
+    "moduleTitle": "Stahlbau nach Eurocode 3 – Grundlagen",
+    "topic": "Vernachlässigung des Knicknachweises",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "Unter welcher Bedingung darf nach DIN EN 1993-1-1 der Biegeknicknachweis entfallen?",
+    "options": [
+      "λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04",
+      "λ̄ ≤ 1,0 oder N_Ed/N_cr ≤ 0,40",
+      "Bei Querschnitten der Klasse 1",
+      "Bei Stahlgüten ab S355"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei λ̄ ≤ 0,2 ist χ = 1, bei N_Ed/N_cr ≤ 0,04 ist der Einfluss der Verformungen vernachlässigbar; dann genügen die Querschnittsnachweise.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Bei λ̄ = 1,0 ist χ je nach Knicklinie nur 0,47 bis 0,73 – der Nachweis ist dann maßgebend.",
+      "Die Querschnittsklasse betrifft örtliches Beulen, nicht das Ausweichen des ganzen Stabs.",
+      "Eine höhere Streckgrenze vergrößert λ̄ und macht das Knicken eher maßgebend."
+    ],
+    "gapAnalysis": {
+      "topic": "Vernachlässigung des Knicknachweises",
+      "misconception": "Die Grenze, unterhalb der Stabilität vernachlässigt werden darf, wird zu großzügig angesetzt.",
+      "coreRule": "Biegeknicken vernachlässigbar bei λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04 (6.3.1.2(4)).",
+      "actionableAdvice": "Lesen Sie im Modul Stahlbau nach Eurocode 3 den Abschnitt „Biegeknicken“ im Reiter Grundlagen.",
+      "targetModuleTab": "stahlbau_ec3",
+      "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Brand von Ziegelton",
+    "difficulty": "Basis",
+    "question": "Welcher Vorgang macht beim Brand von Ziegelton die Umwandlung zur Keramik irreversibel?",
+    "options": [
+      "Verdunsten des Schwindungswassers bis 200 °C",
+      "Abgabe des Kristallwassers der Tonminerale",
+      "Umwandlung von Tief- in Hochquarz bei 573 °C",
+      "Ausbrennen der organischen Porosierungsmittel"
+    ],
+    "correctIdx": 1,
+    "explanation": "Zwischen etwa 450 und 650 °C geben die Tonminerale ihr Kristallwasser (OH-Gruppen) ab, Kaolinit wird zu Metakaolin. Danach ist die Masse nicht mehr plastisch – aus Ton ist Keramik geworden.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Restwasser verdunstet reversibel; ein getrockneter Formling lässt sich wieder einsumpfen und formen.",
+      "",
+      "Die Quarzumwandlung kehrt sich beim Abkühlen um; sie verursacht Kühlrisse, aber keine Keramisierung.",
+      "Das Ausbrennen erzeugt Poren, verändert die Tonminerale selbst aber nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Brand von Ziegelton",
+      "misconception": "Schon das Trocknen mache aus Ton dauerhaft Keramik.",
+      "coreRule": "Erst die Abgabe des Kristallwassers der Tonminerale (etwa 450 bis 650 °C) ist irreversibel.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rohstoffe & Herstellung“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Fliesengruppen nach DIN EN 14411",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 14411:2016-12",
+    "question": "Eine trockengepresste Fliese wiegt trocken 400 g und nach dem Kochverfahren 410 g. Welcher Gruppe nach DIN EN 14411 gehört sie an?",
+    "options": [
+      "BIb",
+      "BIIa",
+      "BIIb",
+      "AIIa"
+    ],
+    "correctIdx": 0,
+    "explanation": "E_b = (410 − 400)/400 · 100 % = 2,5 %. Für trockengepresste Fliesen gilt in Gruppe BIb 0,5 % < E_b ≤ 3 %.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "BIIa beginnt erst oberhalb von 3 %; hier sind es 10/400 = 2,5 %.",
+      "BIIb umfasst 6 bis 10 %; der Wert 2,5 % liegt deutlich darunter.",
+      "A steht für stranggepresste Fliesen; die Fliese ist trockengepresst (B), zudem liegt E_b unter 3 %."
+    ],
+    "gapAnalysis": {
+      "topic": "Fliesengruppen nach DIN EN 14411",
+      "misconception": "Die Wasseraufnahme werde auf die Nassmasse bezogen oder die Formgebung spiele keine Rolle.",
+      "coreRule": "E_b = (m_n − m_t)/m_t; Gruppe aus Formgebung (A/B) und E_b-Grenzen 0,5/3/6/10 %.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Wasseraufnahme“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Offene Porosität",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 10545-3:2018-06",
+    "question": "Ein Scherben hat die Trockenmasse 200 g, die Nassmasse 220 g und unter Wasser die Masse 120 g. Wie groß ist die offene Porosität?",
+    "options": [
+      "10 %",
+      "20 %",
+      "16,7 %",
+      "9,1 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Volumen ist V = m_n − m_a = 100 cm³ (ρ_w = 1 g/cm³). Das offene Porenvolumen entspricht dem aufgenommenen Wasser von 20 cm³, also P_offen = 20/100 = 20 %; die Rohdichte beträgt 2,0 g/cm³.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist die Wasseraufnahme E_b = 20/200; die Porosität bezieht das Porenvolumen auf das Gesamtvolumen von 100 cm³.",
+      "",
+      "20/120 bezieht das Porenwasser auf die Unterwassermasse; maßgebend ist das Volumen V = m_n − m_a = 100 cm³.",
+      "20/220 bezieht das Wasser auf die Nassmasse; die offene Porosität ist auf das Volumen V bezogen."
+    ],
+    "gapAnalysis": {
+      "topic": "Offene Porosität",
+      "misconception": "Wasseraufnahme und offene Porosität seien dasselbe.",
+      "coreRule": "P_offen = (m_n − m_t)/(m_n − m_a); E_b bezieht dieselbe Wassermasse auf m_t.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Wasseraufnahme“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Frostwiderstand von Ziegeln",
+    "difficulty": "Vertiefung",
+    "question": "Welche Aussage zum Frostwiderstand von Ziegeln trifft zu?",
+    "options": [
+      "Er hängt vor allem von Porengefüge und Sättigungsgrad ab",
+      "Er folgt allein aus der Wasseraufnahme des Scherbens",
+      "Er wird über die Rohdichteklasse des Ziegels deklariert",
+      "Er ist bei Hochlochziegeln durch die senkrechte Lochung gegeben"
+    ],
+    "correctIdx": 0,
+    "explanation": "Entscheidend ist, ob beim Gefrieren Ausweichraum für das Eis bleibt: Porengrößenverteilung und Sättigungsgrad. DIN EN 771-1 sieht dafür die Kategorien F0, F1 und F2 vor; Sichtmauerwerk verlangt in der Regel F2.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Zwei Ziegel mit gleicher Wasseraufnahme können sich je nach Porenradienverteilung im Frost sehr unterschiedlich verhalten.",
+      "Die Rohdichteklasse beschreibt die Masse je Volumen; der Frostwiderstand wird als Kategorie F0 bis F2 nach DIN EN 771-1 deklariert.",
+      "Die Lochung verbessert den Wärmeschutz, nicht den Frostwiderstand; Hintermauerziegel sind oft nicht für Frostbeanspruchung vorgesehen."
+    ],
+    "gapAnalysis": {
+      "topic": "Frostwiderstand von Ziegeln",
+      "misconception": "Eine geringe Wasseraufnahme allein garantiere Frostbeständigkeit.",
+      "coreRule": "Frostwiderstand hängt von Porengefüge und Sättigungsgrad ab; Deklaration F0/F1/F2 nach DIN EN 771-1.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Ziegelarten & Eigenschaften“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Normen für Mauerziegel",
+    "difficulty": "Basis",
+    "normRef": "DIN 20000-401:2017-01",
+    "question": "Welche Norm legt in Deutschland die Regeln für die Verwendung von Mauerziegeln nach DIN EN 771-1 fest?",
+    "options": [
+      "DIN 20000-401",
+      "DIN EN 1304",
+      "DIN EN ISO 10545-3",
+      "DIN 105-100"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN EN 771-1 ist die harmonisierte Produktnorm. Welche deklarierten Leistungen, etwa Druckfestigkeits- und Rohdichteklasse, für die Verwendung in Deutschland nötig sind, legt die Anwendungsnorm DIN 20000-401 fest.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "DIN EN 1304 ist die Produktnorm für Dach- und Formziegel.",
+      "DIN EN ISO 10545-3 beschreibt die Prüfung der Wasseraufnahme keramischer Fliesen.",
+      "DIN 105-100 regelte Mauerziegel mit besonderen Eigenschaften und ist zurückgezogen (ersetzt durch DIN 105-4 und DIN 105-41)."
+    ],
+    "gapAnalysis": {
+      "topic": "Normen für Mauerziegel",
+      "misconception": "Die europäische Produktnorm regele bereits die Verwendung im Bauwerk.",
+      "coreRule": "Produktnorm DIN EN 771-1 (Leistungserklärung) und Anwendungsnorm DIN 20000-401 (Verwendung in Deutschland).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Normen & Fliesengruppen“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "Auswahl keramischer Beläge",
+    "difficulty": "Transfer",
+    "question": "Für einen frostbeanspruchten Terrassenbelag stehen trockengepresste Fliesen verschiedener Gruppen zur Wahl. Welche ist am besten geeignet?",
+    "options": [
+      "BIa mit E_b ≤ 0,5 %",
+      "BIIb mit E_b um 8 %",
+      "BIII, glasiert, E_b über 10 %",
+      "BIIa mit E_b um 5 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Feinsteinzeug (BIa) ist dicht gesintert und nimmt kaum Wasser auf. Fliesen der Gruppe I eignen sich für frostbeanspruchte Außenbeläge; die Frostbeständigkeit ist zusätzlich nach DIN EN ISO 10545-12 nachzuweisen.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Mit rund 8 % Wasseraufnahme kann der Scherben im Frost viel Wasser binden; für Außenbeläge ungünstig.",
+      "BIII-Fliesen sind poröse Steingut-Wandfliesen für den Innenbereich und nicht frostbeständig.",
+      "Auch 5 % Wasseraufnahme sind für frostbeanspruchte Beläge zu hoch; dichte Scherben der Gruppe I sind vorzuziehen."
+    ],
+    "gapAnalysis": {
+      "topic": "Auswahl keramischer Beläge",
+      "misconception": "Die Glasur mache auch einen porösen Scherben frostbeständig.",
+      "coreRule": "Für Frostbeanspruchung dichte Scherben (Gruppe I, v. a. BIa) wählen; Frostprüfung nach DIN EN ISO 10545-12.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Normen & Fliesengruppen“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_keramik_ziegel_7",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "keramik_ziegel",
+    "moduleTitle": "Keramik und Ziegel",
+    "topic": "CO₂ aus dem Rohstoff",
+    "difficulty": "Vertiefung",
+    "question": "Wie viel CO₂ setzt die Zersetzung von 1 kg Calcit (CaCO₃) im Ziegelton beim Brand rechnerisch frei?",
+    "options": [
+      "0,44 kg",
+      "0,56 kg",
+      "1,00 kg",
+      "0,12 kg"
+    ],
+    "correctIdx": 0,
+    "explanation": "CaCO₃ → CaO + CO₂ mit den Molmassen 100, 56 und 44 g/mol: Je kg Calcit entweichen 0,44 kg CO₂. Diese rohstoffbedingte Emission entsteht unabhängig vom eingesetzten Brennstoff.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,56 kg ist der Massenanteil CaO (56/100), der im Scherben verbleibt, nicht das freigesetzte CO₂.",
+      "Es entweicht nur das CO₂; das Calciumoxid bleibt im Scherben gebunden.",
+      "0,12 kg entspricht dem Kohlenstoffanteil (12/100), nicht der Masse des Kohlendioxids."
+    ],
+    "gapAnalysis": {
+      "topic": "CO₂ aus dem Rohstoff",
+      "misconception": "CO₂ entstehe beim Ziegelbrand nur aus dem Brennstoff.",
+      "coreRule": "Carbonatzersetzung: 0,44 kg CO₂ je kg CaCO₃, unabhängig von der Energiequelle.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Nachhaltigkeit“ im Modul Keramik und Ziegel noch einmal durch.",
+      "targetModuleTab": "keramik_ziegel",
+      "targetModuleLabel": "Keramik und Ziegel"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Schutzdauerklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 12944-1",
+    "question": "Welche Schutzdauerklasse nach DIN EN ISO 12944-1 steht für eine erwartete Schutzdauer von 15 bis 25 Jahren?",
+    "options": [
+      "M (mittel)",
+      "H (hoch)",
+      "VH (sehr hoch)",
+      "L (niedrig)"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN EN ISO 12944-1 unterscheidet L (bis 7 Jahre), M (7 bis 15 Jahre), H (15 bis 25 Jahre) und VH (mehr als 25 Jahre). Die Schutzdauer ist keine Gewährleistungsfrist.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "M umfasst 7 bis 15 Jahre und liegt damit eine Klasse tiefer.",
+      "",
+      "VH gilt erst für mehr als 25 Jahre.",
+      "L umfasst nur bis zu 7 Jahre."
+    ],
+    "gapAnalysis": {
+      "topic": "Schutzdauerklassen",
+      "misconception": "Die Klassen seien gleich breit oder VH beginne bereits bei 15 Jahren.",
+      "coreRule": "L bis 7, M 7 bis 15, H 15 bis 25, VH über 25 Jahre.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schutzdauerklassen“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Schutzdauer einer Zinkschicht",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 9223",
+    "question": "Ein feuerverzinktes Bauteil (85 µm Zink) steht in Kategorie C4 mit einem Zinkabtrag von 2,1 bis 4,2 µm/a. Welche Schutzdauer ergibt sich im ungünstigen Fall?",
+    "options": [
+      "rund 40 Jahre",
+      "rund 30 Jahre",
+      "rund 20 Jahre",
+      "rund 10 Jahre"
+    ],
+    "correctIdx": 2,
+    "explanation": "Ungünstig ist die obere Abtragsrate: t = 85 µm / 4,2 µm/a = 20,2 Jahre. Mit der unteren Rate ergäben sich 85 / 2,1 = 40,5 Jahre.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist der günstige Wert mit der unteren Rate 2,1 µm/a.",
+      "Hier wurde mit dem Mittelwert der Spanne gerechnet; maßgebend ist die obere Rate.",
+      "",
+      "Das entspräche einer Rate von 8,4 µm/a, also der Kategorie C5."
+    ],
+    "gapAnalysis": {
+      "topic": "Schutzdauer einer Zinkschicht",
+      "misconception": "Die günstige untere Abtragsrate sei für die Planung maßgebend.",
+      "coreRule": "t = d_Zn / r_corr,Zn mit der oberen Abtragsrate der Kategorie.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schutzdauer einer Zinkschicht“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Oberflächenvorbereitung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 8501-1",
+    "question": "Was beschreibt der Oberflächenvorbereitungsgrad Sa 2½ nach DIN EN ISO 8501-1?",
+    "options": [
+      "Gründlich gestrahlt, feste Reste noch zulässig",
+      "Sehr gründlich gestrahlt, nur leichte Schatten",
+      "Maschinell gebürstet bis zum Metallglanz",
+      "Gestrahlt bis zum optisch reinen Stahl"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Sa 2½ ist die Oberfläche frei von sichtbarem Öl, Fett, Walzhaut, Rost und Beschichtungen; Reste sind nur noch als leichte punkt- oder streifenförmige Schattierungen erkennbar.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das beschreibt Sa 2 (gründliches Strahlen).",
+      "",
+      "Das ist der Grad St 3 der maschinellen Entrostung, kein Strahlgrad.",
+      "Das ist Sa 3, der höchste Strahlgrad."
+    ],
+    "gapAnalysis": {
+      "topic": "Oberflächenvorbereitung",
+      "misconception": "Sa 2½ bedeute metallisch blanken Stahl ohne jede Schattierung.",
+      "coreRule": "Sa 2½ = sehr gründliches Strahlen mit nur leichten Schattierungen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenvorbereitung“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Duplex-System",
+    "difficulty": "Vertiefung",
+    "question": "Warum ist die Schutzdauer eines Duplex-Systems größer als die Summe der Schutzdauern von Feuerverzinkung und Beschichtung?",
+    "options": [
+      "Beschichtung bremst Zinkabtrag, Zink hemmt Unterrostung",
+      "Die Beschichtung legiert beim Einbrennen mit der Zinkschicht",
+      "Das Zink macht die Beschichtung dicker und dadurch dichter",
+      "Die Beschichtung wirkt selbst als Opferanode für das Zink"
+    ],
+    "correctIdx": 0,
+    "explanation": "Beide Schichten schützen sich gegenseitig: Die Beschichtung hält Feuchte und Schadstoffe vom Zink fern, das Zink verhindert an Fehlstellen die Unterrostung der Beschichtung. Der Synergiefaktor liegt nach Literatur bei etwa 1,2 bis 2,5.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Eine Legierungsbildung findet zwischen organischer Beschichtung und Zink nicht statt.",
+      "Die Schichtdicke der Beschichtung hängt nicht vom Zink ab.",
+      "Organische Beschichtungen sind nicht leitfähig und wirken nicht als Anode."
+    ],
+    "gapAnalysis": {
+      "topic": "Duplex-System",
+      "misconception": "Der Duplex-Effekt beruhe auf einer chemischen Verbindung der Schichten.",
+      "coreRule": "t_D = f · (t_Zn + t_B) mit f > 1 durch gegenseitigen Schutz.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Duplex-System“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Kontaktkorrosion",
+    "difficulty": "Transfer",
+    "question": "Welche Verbindung ist an der Atmosphäre hinsichtlich Kontaktkorrosion am ungünstigsten?",
+    "options": [
+      "Edelstahlschrauben in verzinktem Blech",
+      "Verzinkte Schrauben in Edelstahlblech",
+      "Verzinkte Schrauben in verzinktem Blech",
+      "Edelstahlschrauben in Edelstahlblech"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ungünstig ist eine kleine Anode an einer großen Kathode: Die kleine Zinkfläche der Schrauben muss die große Fläche aus nichtrostendem Stahl kathodisch schützen und wird rasch verbraucht.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier ist die Anode (Zinkblech) groß und die Kathode klein; der Abtrag verteilt sich.",
+      "",
+      "Gleiche Metalle bilden kein galvanisches Element.",
+      "Gleiche Werkstoffe ohne Potentialdifferenz sind unkritisch."
+    ],
+    "gapAnalysis": {
+      "topic": "Kontaktkorrosion",
+      "misconception": "Kritisch sei stets das edlere Metall als kleines Teil.",
+      "coreRule": "Kleine Anode an großer Kathode ist ungünstig (Flächenregel).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Gitterschnitt",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 2409",
+    "question": "Ein Beschichtungssystem auf Stahl ist 100 µm dick. Welchen Schnittabstand verlangt die Gitterschnittprüfung nach DIN EN ISO 2409?",
+    "options": [
+      "1 mm",
+      "2 mm",
+      "3 mm",
+      "5 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Auf harten Untergründen gilt: 1 mm bis 60 µm, 2 mm von 61 bis 120 µm, 3 mm von 121 bis 250 µm. Für 100 µm ist daher ein Abstand von 2 mm zu wählen.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "1 mm gilt nur bis 60 µm Schichtdicke.",
+      "",
+      "3 mm gilt erst ab 121 µm.",
+      "Ein Abstand von 5 mm ist in der Norm nicht vorgesehen."
+    ],
+    "gapAnalysis": {
+      "topic": "Gitterschnitt",
+      "misconception": "Der Schnittabstand sei unabhängig von der Schichtdicke.",
+      "coreRule": "Schnittabstand nach Schichtdicke: 1/2/3 mm bis 60/120/250 µm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gitterschnitt“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_7",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Haftabzug",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 4624",
+    "question": "Beim Haftabzug nach DIN EN ISO 4624 reißt ein Prüfstempel mit 20 mm Durchmesser bei 1,9 kN ab. Wie groß ist die Abreißfestigkeit?",
+    "options": [
+      "rund 4,8 MPa",
+      "rund 6,0 MPa",
+      "rund 1,5 MPa",
+      "rund 24 MPa"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Stempelfläche ist A = π · (20 mm)² / 4 = 314 mm². Damit ist σ = 1 900 N / 314 mm² = 6,0 N/mm² = 6,0 MPa. Zusätzlich ist das Bruchbild anzugeben.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde mit einer quadratischen Fläche 20 · 20 = 400 mm² gerechnet.",
+      "",
+      "Hier wurde der Durchmesser als Radius eingesetzt (A = 1 257 mm²).",
+      "Hier wurde der Radius 10 mm in A = π · d² / 4 eingesetzt (A = 79 mm²)."
+    ],
+    "gapAnalysis": {
+      "topic": "Haftabzug",
+      "misconception": "Die Stempelfläche ergebe sich aus dem Durchmesser zum Quadrat.",
+      "coreRule": "σ = F / A mit A = π · d² / 4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftabzug“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_korrosionsschutz_beschichtungen_8",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "korrosionsschutz_beschichtungen",
+    "moduleTitle": "Korrosionsschutz durch Beschichtungen",
+    "topic": "Korrosivitätskategorien",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 12944-2",
+    "question": "Welcher Korrosivitätskategorie nach DIN EN ISO 12944-2 ordnet die Norm die Innenatmosphäre eines Schwimmbads beispielhaft zu?",
+    "options": [
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ],
+    "correctIdx": 2,
+    "explanation": "DIN EN ISO 12944-2 nennt Chemieanlagen, Schwimmbäder und Bootsschuppen über Meerwasser als Innenraumbeispiele für C4 (stark). C5 betrifft Bereiche mit nahezu ständiger Kondensation und starker Verunreinigung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "C2 betrifft unbeheizte Gebäude wie Lager oder Sporthallen.",
+      "C3 betrifft Produktionsräume mit hoher Feuchte wie Brauereien oder Wäschereien.",
+      "",
+      "C5 gilt erst bei nahezu ständiger Kondensation und starker Verunreinigung."
+    ],
+    "gapAnalysis": {
+      "topic": "Korrosivitätskategorien",
+      "misconception": "Jede feuchte Innenatmosphäre sei C3.",
+      "coreRule": "Schwimmbäder sind nach DIN EN ISO 12944-2 ein Innenbeispiel für C4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Korrosivitätskategorien“ im Modul Korrosionsschutz durch Beschichtungen noch einmal durch.",
+      "targetModuleTab": "korrosionsschutz_beschichtungen",
+      "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Rechner Kesselformel",
+    "difficulty": "Vertiefung",
+    "question": "Ein zylindrisch gewölbter ETFE-Kissenstreifen hat den Krümmungsradius 4 m und steht unter 300 Pa Innendruck. Wie groß ist die Membrankraft nach der Kesselformel?",
+    "options": [
+      "0,6 kN/m",
+      "1,2 kN/m",
+      "2,4 kN/m",
+      "12 kN/m"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für den Zylinder gilt n = p · r = 300 N/m² · 4 m = 1 200 N/m = 1,2 kN/m. Die Kugelformel p · r/2 würde 0,6 kN/m liefern.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,6 kN/m ergibt die Kugelformel n = p · r/2; der Streifen ist aber einfach (zylindrisch) gekrümmt.",
+      "",
+      "2,4 kN/m entspricht p · 2r – hier wurde der Durchmesser statt des Radius eingesetzt.",
+      "12 kN/m ist um den Faktor 10 zu groß; prüfen Sie die Umrechnung von N/m in kN/m."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Kesselformel",
+      "misconception": "Die Membrankraft sei unabhängig von der Krümmung bzw. Kugel- und Zylinderformel seien gleich.",
+      "coreRule": "Zylinder: n = p · r, Kugel: n = p · r/2 (p in N/m², r in m, n in N/m).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Kesselformel“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Tragverhalten",
+    "difficulty": "Basis",
+    "question": "Welche Krümmung muss eine mechanisch vorgespannte Membranfläche ohne Innendruck aufweisen, damit sie Lasten abtragen kann?",
+    "options": [
+      "gegensinnig (antiklastisch)",
+      "gleichsinnig (synklastisch)",
+      "einfach gekrümmt (zylindrisch)",
+      "eben mit hoher Vorspannung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Aus der Membrangleichung n1/R1 + n2/R2 = p folgt für p = 0, dass die Krümmungen entgegengesetzte Vorzeichen haben: Die Fläche ist sattelförmig (antiklastisch).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Gleichsinnige Krümmung erfordert einen Überdruck p > 0 – das ist der Fall pneumatischer Kissen.",
+      "Eine einfach gekrümmte Fläche hat in einer Richtung keine Krümmung und kann ohne Innendruck nicht stabil vorgespannt werden.",
+      "Eine ebene Membran trägt Querlasten nur mit sehr großer Durchbiegung, auch bei hoher Vorspannung."
+    ],
+    "gapAnalysis": {
+      "topic": "Tragverhalten",
+      "misconception": "Jede gekrümmte Form sei für eine mechanisch vorgespannte Membran geeignet.",
+      "coreRule": "Ohne Innendruck: antiklastisch (Sattel); mit Innendruck: synklastisch (Kissen).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Tragverhalten“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Gewebe & ETFE",
+    "difficulty": "Basis",
+    "question": "Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Floatglas?",
+    "options": [
+      "Sie lässt kaum sichtbares Licht durch.",
+      "Sie lässt UV-A-Strahlung weitgehend durch.",
+      "Sie filtert UV-A-Strahlung vollständig.",
+      "Sie ist nur für Infrarotstrahlung durchlässig."
+    ],
+    "correctIdx": 1,
+    "explanation": "Klare ETFE-Folie lässt rund 90 bis 95 % des sichtbaren Lichts und einen großen Teil der UV-A-Strahlung durch – ein Grund für ihren Einsatz bei Pflanzenhäusern wie dem Eden Project.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Klare ETFE-Folie ist sehr lichtdurchlässig (rund 90 bis 95 % im sichtbaren Bereich).",
+      "",
+      "Gerade die UV-A-Durchlässigkeit unterscheidet ETFE von Floatglas, das UV stärker absorbiert.",
+      "ETFE ist im sichtbaren Bereich hoch transparent; die Aussage trifft nicht zu."
+    ],
+    "gapAnalysis": {
+      "topic": "Gewebe & ETFE",
+      "misconception": "ETFE verhalte sich optisch wie Glas.",
+      "coreRule": "Klares ETFE: sichtbares Licht rund 90 bis 95 %, UV-A weitgehend durchlässig.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Gewebe & ETFE“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Kennwerte & Bauphysik",
+    "difficulty": "Basis",
+    "question": "Welcher U-Wert ist für ein dreilagiges ETFE-Kissen (zwei Luftkammern) nach Herstellerangaben realistisch?",
+    "options": [
+      "rund 0,3 W/(m²K)",
+      "rund 1,9 W/(m²K)",
+      "rund 2,9 W/(m²K)",
+      "rund 5,6 W/(m²K)"
+    ],
+    "correctIdx": 1,
+    "explanation": "Herstellerangaben nennen für dreilagige Kissen rund 1,8 bis 2,0 W/(m²K), für zweilagige rund 2,9 und für eine einlagige Folie rund 5,6 W/(m²K).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,3 W/(m²K) erreichen nur hochgedämmte opake Bauteile, kein Luftkissen.",
+      "",
+      "Rund 2,9 W/(m²K) gelten für ein zweilagiges Kissen mit nur einer Luftkammer.",
+      "Rund 5,6 W/(m²K) gelten für eine einlagige Folie ohne Luftkammer."
+    ],
+    "gapAnalysis": {
+      "topic": "Kennwerte & Bauphysik",
+      "misconception": "Mehrlagige Kissen dämmten wie eine Wärmedämmung.",
+      "coreRule": "ETFE-Kissen: 2-lagig rund 2,9, 3-lagig rund 1,8 bis 2,0, 4-lagig rund 1,4 W/(m²K).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Kennwerte & Bauphysik“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Regelwerke & Bauten",
+    "difficulty": "Vertiefung",
+    "normRef": "CEN/TS 19102:2023",
+    "question": "Welches Dokument beschreibt europäisch die Bemessung vorgespannter Membrantragwerke und soll durch einen Eurocode abgelöst werden?",
+    "options": [
+      "DIN EN 13782",
+      "CEN/TS 19102",
+      "DIN 4134-1",
+      "DIN EN 13501-1"
+    ],
+    "correctIdx": 1,
+    "explanation": "CEN/TS 19102:2023 (deutsch DIN CEN/TS 19102:2024-08) behandelt mechanisch und pneumatisch vorgespannte Membranen; der Entwurf prEN 19102-1-1 (Eurocode 12) soll sie ablösen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "DIN EN 13782 regelt die Sicherheit von Zelten als Fliegende Bauten.",
+      "",
+      "DIN 4134-1 regelt Tragluftbauten, nicht Membrantragwerke allgemein.",
+      "DIN EN 13501-1 klassifiziert das Brandverhalten von Bauprodukten."
+    ],
+    "gapAnalysis": {
+      "topic": "Regelwerke & Bauten",
+      "misconception": "Membrantragwerke würden allein über Produkt- oder Brandschutznormen bemessen.",
+      "coreRule": "Bemessung: CEN/TS 19102 (künftig EN 19102); in DE zusätzlich abZ/aBG bzw. vBG.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Regelwerke & Bauten“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Gewebe & ETFE",
+    "difficulty": "Basis",
+    "question": "Warum werden PTFE/Glas-Membranen bei Transport und Montage besonders sorgfältig behandelt?",
+    "options": [
+      "PTFE versprödet bei Raumtemperatur.",
+      "Die Glasfasern brechen beim Knicken.",
+      "Die Beschichtung löst sich bei Nässe.",
+      "Das Gewebe kriecht unter Eigenlast."
+    ],
+    "correctIdx": 1,
+    "explanation": "Glasfasern sind knick- und faltempfindlich. PTFE/Glas wird deshalb auf großen Rollen transportiert und mit möglichst wenigen Faltungen montiert; PVC/PES ist hier unempfindlicher.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "PTFE bleibt bei Raumtemperatur zäh; das Problem liegt beim Glasgewebe.",
+      "",
+      "Die PTFE-Beschichtung ist wasserabweisend und chemisch sehr beständig.",
+      "Glasgewebe kriecht kaum; ausgeprägtes Kriechen zeigen eher Polyestergewebe und ETFE."
+    ],
+    "gapAnalysis": {
+      "topic": "Gewebe & ETFE",
+      "misconception": "Alle Membrangewebe seien gleich unempfindlich gegen Falten.",
+      "coreRule": "PTFE/Glas: dauerhaft und schmutzabweisend, aber knick- und faltempfindlich.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Gewebe & ETFE“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_7",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Rechner Kesselformel",
+    "difficulty": "Transfer",
+    "question": "Der Stich einer Kissenlage mit 3 m Spannweite wird von 0,3 m auf 0,15 m halbiert. Wie ändert sich die Membrankraft bei gleichem Innendruck ungefähr?",
+    "options": [
+      "sie halbiert sich etwa",
+      "sie verdoppelt sich etwa",
+      "sie bleibt gleich",
+      "sie vervierfacht sich etwa"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Radius r = L²/(8f) + f/2 steigt von 3,90 auf 7,58 m, also etwa auf das Doppelte. Da n = p · r gilt, verdoppelt sich auch die Membrankraft. Flache Kissen sind daher hoch beansprucht.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Ein kleinerer Stich vergrößert den Radius – die Kraft steigt, statt zu sinken.",
+      "",
+      "Der Radius und damit n hängen direkt vom Stich ab.",
+      "Der Radius geht nur linear ein, und r wächst bei halbem Stich etwa auf das Doppelte."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Kesselformel",
+      "misconception": "Ein flacheres Kissen sei weniger beansprucht.",
+      "coreRule": "Kleiner Stich → großer Radius → große Membrankraft (n = p · r).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Kesselformel“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_membranen_etfe_8",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "membranen_etfe",
+    "moduleTitle": "Membranen und ETFE-Folien",
+    "topic": "Kennwerte & Bauphysik",
+    "difficulty": "Basis",
+    "question": "Welcher Kennwert beschreibt, wie gut ein Membrangewebe einem bereits vorhandenen Einriss widersteht?",
+    "options": [
+      "Streifenzugfestigkeit",
+      "Weiterreißfestigkeit",
+      "Schälfestigkeit der Naht",
+      "Bruchdehnung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Weiterreißfestigkeit (z. B. Trapezversuch an eingeschnittenen Proben) beschreibt den Widerstand gegen das Fortschreiten eines Risses; sie ist für das Versagen von Membranen oft maßgebend.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Streifenzugfestigkeit gilt für ungeschädigte Proben ohne Einschnitt.",
+      "",
+      "Die Schälfestigkeit beschreibt die Haftung von Beschichtung bzw. Naht, nicht den Rissfortschritt.",
+      "Die Bruchdehnung ist eine Verformungsgröße beim Bruch, kein Widerstand gegen Weiterreißen."
+    ],
+    "gapAnalysis": {
+      "topic": "Kennwerte & Bauphysik",
+      "misconception": "Die Zugfestigkeit allein beschreibe die Sicherheit einer Membran.",
+      "coreRule": "Rissfortschritt: Weiterreißfestigkeit; ungeschädigter Querschnitt: Streifenzugfestigkeit (N/5 cm).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Kennwerte & Bauphysik“ im Modul Membranen und ETFE-Folien noch einmal durch.",
+      "targetModuleTab": "membranen_etfe",
+      "targetModuleLabel": "Membranen und ETFE-Folien"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Nachweisverfahren",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Welche Größe vergleicht das vereinfachte Nachweisverfahren nach DIN 4108-2:2013-02 mit dem zulässigen Wert S_zul?",
+    "options": [
+      "Den Sonneneintragskennwert S_vorh",
+      "Die Phasenverschiebung der Außenwand",
+      "Den Wärmedurchgangskoeffizienten U_w",
+      "Die Übertemperaturgradstunden"
+    ],
+    "correctIdx": 0,
+    "explanation": "Im Sonneneintragskennwert-Verfahren wird der vorhandene Kennwert S_vorh = Σ(A_w · g_tot)/A_G des kritischen Raums mit S_zul = Σ S_x verglichen. Übertemperaturgradstunden gehören zur thermischen Simulation.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Phasenverschiebung beschreibt die Trägheit eines Bauteils, ist aber kein Kriterium des Nachweises nach DIN 4108-2.",
+      "Der U-Wert betrifft den winterlichen Wärmeschutz; im Sommerfall zählen g-Wert und Sonnenschutz.",
+      "Übertemperaturgradstunden sind die Anforderungsgröße der thermischen Simulation, nicht des vereinfachten Verfahrens."
+    ],
+    "gapAnalysis": {
+      "topic": "Nachweisverfahren",
+      "misconception": "Sommerlicher Wärmeschutz wird über Bauteilkennwerte wie U-Wert oder Phasenverschiebung beurteilt.",
+      "coreRule": "S_vorh = Σ(A_w · g_tot)/A_G ≤ S_zul = Σ S_x (Tab. 8).",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Nachweisverfahren“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Rechner",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Ein Raum hat A_G = 20 m² und ein Südfenster mit 5 m², g = 0,60 und außenliegendem Raffstore 45° (F_C = 0,25). Wie groß ist S_vorh?",
+    "options": [
+      "0,038",
+      "0,150",
+      "0,009",
+      "0,750"
+    ],
+    "correctIdx": 0,
+    "explanation": "g_tot = g · F_C = 0,60 · 0,25 = 0,15. S_vorh = A_w · g_tot / A_G = 5 · 0,15 / 20 = 0,0375, gerundet 0,038.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,150 ergibt sich ohne Abminderungsfaktor: 5 · 0,60 / 20. F_C = 0,25 muss als g_tot = g · F_C eingehen.",
+      "0,009 entsteht, wenn F_C doppelt angesetzt wird; g_tot = 0,60 · 0,25 wird nur einmal mit der Fensterfläche multipliziert.",
+      "0,750 ist nur A_w · g_tot; der Wert muss noch durch die Nettogrundfläche A_G = 20 m² geteilt werden."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner",
+      "misconception": "Der Abminderungsfaktor oder der Bezug auf die Grundfläche wird vergessen.",
+      "coreRule": "S_vorh = Σ(A_w · g · F_C)/A_G.",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Rechner“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Grundlagen",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Warum erhöht eine erhöhte Nachtlüftung den zulässigen Sonneneintragskennwert S_zul?",
+    "options": [
+      "Sie entlädt nachts die tagsüber gespeicherte Wärme",
+      "Sie senkt den g-Wert der Verglasung im Tagbetrieb",
+      "Sie verringert die Fensterfläche des kritischen Raums",
+      "Sie ersetzt den Nachweis durch eine Simulation"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit n ≥ 2 1/h in der zweiten Nachthälfte wird die in den Bauteilen gespeicherte Wärme abgeführt; am nächsten Tag steht wieder Speicherkapazität zur Verfügung. Tab. 8 bildet das im Kennwert S1 ab.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Der g-Wert ist eine Eigenschaft der Verglasung und wird durch Lüften nicht verändert.",
+      "Die Fensterfläche bleibt gleich; Nachtlüftung wirkt über die Entladung der Speichermasse im Kennwert S1.",
+      "Nachtlüftung ist eine Randbedingung beider Verfahren und ersetzt keinen Nachweisweg."
+    ],
+    "gapAnalysis": {
+      "topic": "Grundlagen",
+      "misconception": "Nachtlüftung wird als Eigenschaft des Fensters statt als Entladung der Speichermasse verstanden.",
+      "coreRule": "Nachtlüftung und Bauart gehen gemeinsam in S1 ein (Tab. 8).",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Grundlagen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Grundlagen",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Für einen Raum ergibt sich eine wirksame Wärmespeicherfähigkeit C_wirk/A_G = 140 Wh/(m²K). Wie ist die Bauart einzustufen?",
+    "options": [
+      "schwere Bauart",
+      "mittlere Bauart",
+      "leichte Bauart",
+      "sehr leichte Bauart"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Einstufung lautet leicht unter 50, mittel von 50 bis 130 und schwer über 130 Wh/(m²K). Mit 140 Wh/(m²K) gilt die schwere Bauart.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Mittlere Bauart reicht nur bis 130 Wh/(m²K); 140 Wh/(m²K) liegt darüber.",
+      "Leicht ist ein Raum unter 50 Wh/(m²K) oder ohne Nachweis der Speicherfähigkeit.",
+      "Eine Bauart „sehr leicht“ kennt das Verfahren der Ausgabe 2013-02 nicht; es unterscheidet leicht, mittel und schwer."
+    ],
+    "gapAnalysis": {
+      "topic": "Grundlagen",
+      "misconception": "Die Grenzen 50 und 130 Wh/(m²K) werden verwechselt.",
+      "coreRule": "Bauart nach C_wirk/A_G: leicht < 50, mittel 50 bis 130, schwer > 130 Wh/(m²K).",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Grundlagen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Grundlagen",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Welcher Bezugswert der Innentemperatur ist nach DIN 4108-2:2013-02 der Sommerklimaregion C zugeordnet?",
+    "options": [
+      "27 °C",
+      "25 °C",
+      "26 °C",
+      "28 °C"
+    ],
+    "correctIdx": 0,
+    "explanation": "Region A (sommerkühl) hat 25 °C, Region B (gemäßigt) 26 °C und Region C (sommerheiß) 27 °C als Bezugswert. Er dient in der Simulation als Grenze für die Übertemperaturgradstunden.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "25 °C gilt für die sommerkühle Region A.",
+      "26 °C gilt für die gemäßigte Region B.",
+      "28 °C ist keiner Sommerklimaregion zugeordnet; der höchste Bezugswert ist 27 °C."
+    ],
+    "gapAnalysis": {
+      "topic": "Grundlagen",
+      "misconception": "Die Bezugswerte der drei Regionen werden verwechselt.",
+      "coreRule": "Bezugswerte: A 25 °C, B 26 °C, C 27 °C.",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Grundlagen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Nachweisverfahren",
+    "difficulty": "Transfer",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Ein Wohnraum hat einen Fensterflächenanteil f_WG von 30 %; seine Süd- und Westfenster (g = 0,60) erhalten Außenrollläden mit F_C = 0,30. Wie ist der Nachweis zu bewerten?",
+    "options": [
+      "Er kann nach der 35-%-Regel entfallen",
+      "Er ist mit einer Simulation zu führen",
+      "Er ist mit S_vorh und S_zul rechnerisch zu führen",
+      "Er entfällt erst bei f_WG unter 7 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei Wohnnutzung darf auf den Nachweis verzichtet werden, wenn der kritische Raum höchstens 35 % Fensterflächenanteil hat und die Ost-, Süd- und Westfenster außenliegenden Sonnenschutz mit F_C ≤ 0,30 (g > 0,40) besitzen.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Eine Simulation ist eine Alternative, aber hier nicht nötig, weil die Verzichtsregel für Wohnnutzung greift.",
+      "Die Rechnung wäre zulässig, ist aber entbehrlich: f_WG ≤ 35 % und außenliegender Sonnenschutz mit F_C ≤ 0,30.",
+      "Die 7-%-Grenze der Tab. 6 gilt für geneigte Fenster; für Wohnräume gibt es zusätzlich die 35-%-Regel."
+    ],
+    "gapAnalysis": {
+      "topic": "Nachweisverfahren",
+      "misconception": "Die Verzichtsregel für Wohngebäude mit außenliegendem Sonnenschutz ist unbekannt.",
+      "coreRule": "Wohnnutzung: f_WG ≤ 35 % und OSW-Fenster mit außen F_C ≤ 0,30 (g > 0,40) bzw. ≤ 0,35 (g ≤ 0,40) → Nachweis entbehrlich.",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Nachweisverfahren“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_7",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Kennwerte & Tabellen",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Warum ist ein außenliegender Sonnenschutz wirksamer als ein innenliegender?",
+    "options": [
+      "Die Strahlung wird vor der Verglasung abgefangen",
+      "Er erhöht den g-Wert der Verglasung deutlich",
+      "Er vergrößert die wirksame Speichermasse",
+      "Er verbessert den U-Wert des gesamten Fensters erheblich"
+    ],
+    "correctIdx": 0,
+    "explanation": "Außenliegender Schutz hält die Strahlung vor der Scheibe ab; die absorbierte Wärme wird nach außen abgegeben. Innenliegender Schutz erwärmt sich im Raum. Daher F_C etwa 0,25 bis 0,35 außen gegenüber 0,65 bis 0,90 innen (Tab. 7).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Ein Sonnenschutz senkt den wirksamen Energiedurchlass g_tot = g · F_C; der g-Wert des Glases selbst bleibt.",
+      "Die Speichermasse hängt von den raumumschließenden Bauteilen ab, nicht vom Sonnenschutz.",
+      "Der U-Wert betrifft Wärmeverluste im Winter; im Nachweis zählt der Abminderungsfaktor F_C."
+    ],
+    "gapAnalysis": {
+      "topic": "Kennwerte & Tabellen",
+      "misconception": "Innen- und außenliegender Sonnenschutz werden als gleichwertig angesehen.",
+      "coreRule": "g_tot = g · F_C; außen F_C ≈ 0,25 bis 0,35, innen ≈ 0,65 bis 0,90.",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Kennwerte & Tabellen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_sommerlicher_waermeschutz_8",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "sommerlicher_waermeschutz",
+    "moduleTitle": "Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "topic": "Kennwerte & Tabellen",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4108-2:2013-02",
+    "question": "Wie wirken Dachflächenfenster mit 30° Neigung im Verfahren nach DIN 4108-2:2013-02?",
+    "options": [
+      "Sie verringern S_zul über den Kennwert S4",
+      "Sie erhöhen S_zul über den Kennwert S5",
+      "Sie bleiben im Verfahren unberücksichtigt",
+      "Sie verringern S_vorh um den Faktor 0,035"
+    ],
+    "correctIdx": 0,
+    "explanation": "Fenster mit 0° bis 60° Neigung erhalten viel Sonnenstrahlung. Tab. 8 berücksichtigt das mit S4 = −0,035 · f_neig; der zulässige Wert sinkt. Außerdem gilt für den Nachweisverzicht nach Tab. 6 die strenge Grenze von 7 %.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "S5 ist ein Bonus für nordorientierte senkrechte oder eigenverschattete Fenster, nicht für Dachflächenfenster.",
+      "Geneigte Fenster gehen sowohl in S_vorh als auch über S4 in S_zul ein.",
+      "Der Faktor −0,035 wirkt auf S_zul (Kennwert S4), nicht auf den vorhandenen Kennwert."
+    ],
+    "gapAnalysis": {
+      "topic": "Kennwerte & Tabellen",
+      "misconception": "Geneigte Fenster werden wie senkrechte Fassadenfenster behandelt.",
+      "coreRule": "S4 = −0,035 · f_neig für Fenster mit 0° bis 60° Neigung.",
+      "actionableAdvice": "Arbeiten Sie den Reiter zu „Kennwerte & Tabellen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
+      "targetModuleTab": "sommerlicher_waermeschutz",
+      "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
   }
 ]
