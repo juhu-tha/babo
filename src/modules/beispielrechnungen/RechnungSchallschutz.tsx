@@ -63,7 +63,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                     key={mat.id}
                     type="button"
                     onClick={() => {
-                      setSchallWandTyp(mat.id as any);
+                      setSchallWandTyp(mat.id as "porenbeton" | "beton" | "ks" | "hlz");
                       setSchallRohdichte(mat.rho);
                       setSchallDicke(mat.defD);
                     }}
@@ -141,7 +141,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
               <label className="text-xs font-bold text-slate-700 block">Flankenübertragung (K_F):</label>
               <select aria-label="Flankenübertragung (K_F)" 
                 value={schallFlanke}
-                onChange={(e) => setSchallFlanke(e.target.value as any)}
+                onChange={(e) => setSchallFlanke(e.target.value as "massiv" | "entkoppelt" | "leicht")}
                 className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
               >
                 <option value="entkoppelt">Akustisch entkoppelt / Vorsatzschale (KF = 0 dB)</option>
@@ -155,7 +155,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
               <label className="text-xs font-bold text-slate-700 block">Gefordertes Schutzziel (DIN 4109-1):</label>
               <select aria-label="Gefordertes Schutzziel (DIN 4109-1)" 
                 value={schallSollTyp}
-                onChange={(e) => setSchallSollTyp(e.target.value as any)}
+                onChange={(e) => setSchallSollTyp(e.target.value as "wohnungstrenn" | "treppenhaus" | "behandlung" | "doppelhaus")}
                 className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
               >
                 <option value="wohnungstrenn">Wohnungstrennwand (erf. R&apos;w ≥ 53 dB)</option>

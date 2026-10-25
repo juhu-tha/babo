@@ -873,6 +873,8 @@ export interface SamplingPreset {
   flaeche: number; // m²
   pruefaufgabe: string;
   empfohleneVerfahren: string[];
+  /** nur beim Holz-Preset gepflegt; derzeit nicht angezeigt */
+  mindestAnzahlBohrwiderstand?: string;
   mindestUmfang: {
     bohrkerne: number;
     zfpMesspunkte: number;
@@ -971,4 +973,4 @@ export const SAMPLING_PRESETS: SamplingPreset[] = [
     normativeBegruendung: 'WTA 4-5 und DIN EN 16302 fordern Beprobung in unterschiedlichen Expositionshöhen zur Differenzierung von Spritzwasser vs. Schlagregen.',
     konditionierungsFokus: 'Trockenes Wetter (24 h regenfrei); plastische Knetabdichtung ohne Leckage; schonendes Abbürsten ohne Zerstörung historischer Fassungen.'
   }
-] as any[];
+];

@@ -1,4 +1,5 @@
 // Ausgelagert aus src/modules/ModuleInfo.tsx (AP 5.2)
+import type React from 'react';
 import {
   Layers,
   ClipboardCheck,
@@ -48,7 +49,11 @@ import {
 } from 'lucide-react';
 
 // Inline Custom SVG Helper Icons
-export const TableIcon = (props: any) => (
+export interface HilfsIconProps { size?: number | string; className?: string }
+/** Lucide-Icon oder eines der Hilfs-Icons unten */
+export type ModulInfoIcon = React.ComponentType<HilfsIconProps>;
+
+export const TableIcon = (props: HilfsIconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
     <path d="M12 3v18" />
     <path d="M3 12h18" />
@@ -56,14 +61,14 @@ export const TableIcon = (props: any) => (
   </svg>
 );
 
-export const LeafIcon = (props: any) => (
+export const LeafIcon = (props: HilfsIconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2Z" />
     <path d="M9 22v-4" />
   </svg>
 );
 
-export const CircleDashedIcon = (props: any) => (
+export const CircleDashedIcon = (props: HilfsIconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
     <path d="M10.1 2.18a10 10 0 0 0-4.82 2.72" />
     <path d="M2.5 11a10 10 0 0 0 .68 4.2" />
@@ -75,7 +80,7 @@ export const CircleDashedIcon = (props: any) => (
   </svg>
 );
 
-export const QrCodeIcon = (props: any) => (
+export const QrCodeIcon = (props: HilfsIconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
     <rect width="5" height="5" x="3" y="3" rx="1" />
     <rect width="5" height="5" x="16" y="3" rx="1" />
@@ -93,7 +98,7 @@ export const QrCodeIcon = (props: any) => (
   </svg>
 );
 
-export const Building2Icon = (props: any) => (
+export const Building2Icon = (props: HilfsIconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={props.className}>
     <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18" />
     <path d="M18 22H4" />
@@ -111,7 +116,7 @@ export const Building2Icon = (props: any) => (
 
 export interface SubmoduleItem {
   title: string;
-  icon: any;
+  icon: ModulInfoIcon;
   purpose: string;
   standards: string;
   useCase: string;
@@ -120,7 +125,7 @@ export interface SubmoduleItem {
 export interface GroupData {
   title: string;
   tagline: string;
-  icon: any;
+  icon: ModulInfoIcon;
   basicsTitle: string;
   basicsDesc1: string;
   basicsDesc2: string;

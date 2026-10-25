@@ -9,7 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -132,7 +133,7 @@ export default function FestbetonStatistik() {
         },
         ticks: {
           stepSize: 1,
-          callback: function(value: any) {
+          callback: function(value: string | number) {
             if (Number.isInteger(value)) {
               return value;
             }
@@ -145,7 +146,7 @@ export default function FestbetonStatistik() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          title: (context: any) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
+          title: (context: TooltipItem<'line'>[]) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
           label: () => '' // Simplify tooltip
         }
       }

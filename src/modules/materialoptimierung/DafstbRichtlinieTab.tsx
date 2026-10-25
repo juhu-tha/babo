@@ -277,7 +277,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             <select aria-label="1. Bauteiltyp"
               value={dafstbBauteil}
               onChange={(e) => {
-                const b = e.target.value as any;
+                const b = e.target.value as typeof dafstbBauteil;
                 setDafstbBauteil(b);
                 if (b === 'decke') setDafstbBauweise('hohlkoerper');
                 else if (b === 'stuetze') setDafstbBauweise('hochfest_c50_schlank');
@@ -340,7 +340,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             </label>
             <select aria-label="3. Zement- &amp; Bindemittelart"
               value={dafstbZement}
-              onChange={(e) => setDafstbZement(e.target.value as any)}
+              onChange={(e) => setDafstbZement(e.target.value as "cem1" | "cem2_all" | "cem2_bs" | "cem3_a" | "cem2_cm")}
               className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
             >
               <option value="cem1">CEM I (Klinker 95% - Ref. 310 kg/m³)</option>
@@ -360,7 +360,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             <div className="flex gap-2">
               <select aria-label="4. Prüfalter &amp; Stahlroute"
                 value={dafstbPruefalter}
-                onChange={(e) => setDafstbPruefalter(Number(e.target.value) as any)}
+                onChange={(e) => setDafstbPruefalter(Number(e.target.value) as 28 | 56)}
                 className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
               >
                 <option value={28}>28 Tage (Standard)</option>
@@ -368,7 +368,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               </select>
               <select
                 value={dafstbStahlRoute}
-                onChange={(e) => setDafstbStahlRoute(e.target.value as any)}
+                onChange={(e) => setDafstbStahlRoute(e.target.value as "standard_bof" | "gruen_eaf")}
                 className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
               >
                 <option value="standard_bof">BOF-Stahl (0,98 kg)</option>

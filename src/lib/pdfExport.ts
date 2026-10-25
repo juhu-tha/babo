@@ -180,7 +180,7 @@ export const exportToPDF = async (elementId: string, filename: string) => {
         document.body.removeChild(fallbackLink);
       }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error('PDF Export failed:', error);
   } finally {
     if (appendix && appendix.parentNode) {

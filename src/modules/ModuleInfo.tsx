@@ -19,6 +19,7 @@ import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 import { MODULES_DATA } from './moduleinfo/daten';
 import { COMPREHENSIVE_RESOURCES } from './moduleinfo/ressourcen';
 
+import type { TabId } from '@/src/contexts/TabContext';
 interface ModuleInfoProps {
   group: string;
 }
@@ -662,7 +663,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         ].map((m) => (
                           <button
                             key={m.name}
-                            onClick={() => setActiveTab(m.tab as any)}
+                            onClick={() => setActiveTab(m.tab as TabId)}
                             className="text-[11px] bg-slate-100 hover:bg-shiraz/10 border border-slate-250 hover:border-shiraz/40 text-slate-700 hover:text-shiraz py-1 px-2 rounded-md font-medium transition-all cursor-pointer whitespace-nowrap"
                           >
                             {m.name} ✓
@@ -685,7 +686,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         ].map((m) => (
                           <button
                             key={m.name}
-                            onClick={() => setActiveTab(m.tab as any)}
+                            onClick={() => setActiveTab(m.tab as TabId)}
                             className="text-[11px] bg-slate-100 hover:bg-shiraz/10 border border-slate-250 hover:border-shiraz/40 text-slate-700 hover:text-shiraz py-1 px-2 rounded-md font-medium transition-all cursor-pointer whitespace-nowrap"
                           >
                             {m.name} ✓
@@ -715,7 +716,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         ].map((m) => (
                           <button
                             key={m.name}
-                            onClick={() => setActiveTab(m.tab as any)}
+                            onClick={() => setActiveTab(m.tab as TabId)}
                             className="text-[11px] bg-slate-100 hover:bg-shiraz/10 border border-slate-250 hover:border-shiraz/40 text-slate-700 hover:text-shiraz py-1 px-2 rounded-md font-medium transition-all cursor-pointer whitespace-nowrap"
                           >
                             {m.name} ✓
@@ -737,7 +738,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         ].map((m) => (
                           <button
                             key={m.name}
-                            onClick={() => setActiveTab(m.tab as any)}
+                            onClick={() => setActiveTab(m.tab as TabId)}
                             className="text-[11px] bg-slate-100 hover:bg-shiraz/10 border border-slate-250 hover:border-shiraz/40 text-slate-700 hover:text-shiraz py-1 px-2 rounded-md font-medium transition-all cursor-pointer whitespace-nowrap"
                           >
                             {m.name} ✓
@@ -757,7 +758,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         ].map((m) => (
                           <button
                             key={m.name}
-                            onClick={() => setActiveTab(m.tab as any)}
+                            onClick={() => setActiveTab(m.tab as TabId)}
                             className="text-[11px] bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 py-1 px-2 rounded-md font-medium transition-all cursor-pointer whitespace-nowrap"
                           >
                             {m.name} ✓

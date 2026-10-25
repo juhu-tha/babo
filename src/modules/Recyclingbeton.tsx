@@ -1,3 +1,4 @@
+import type { ChartOptions } from 'chart.js';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -253,7 +254,7 @@ export default function Recyclingbeton() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Einfluss des RC-Anteils</h3>
               <div className="h-[250px] w-full">
-                <Line data={chartData} options={chartOptions as any} />
+                <Line data={chartData} options={chartOptions as ChartOptions<'line'>} />
               </div>
             </div>
 

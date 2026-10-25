@@ -659,7 +659,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                   <button
                     key={c.id}
                     type="button"
-                    onClick={() => setSelectedCluster(c.id as any)}
+                    onClick={() => setSelectedCluster(c.id as typeof selectedCluster)}
                     className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                       selectedCluster === c.id
                         ? 'bg-shiraz text-white border-shiraz shadow-xs'

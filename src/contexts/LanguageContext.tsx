@@ -85,13 +85,13 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       document.cookie = `googtrans=/de/en; domain=${window.location.hostname}; path=/`;
 
       // Check if google translate script is loaded
-      if (!(window as any).google || !(window as any).google.translate) {
+      if (!window.google || !window.google.translate) {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
         script.async = true;
-        (window as any).googleTranslateElementInit = () => {
-          new (window as any).google.translate.TranslateElement(
+        window.googleTranslateElementInit = () => {
+          new window.google!.translate!.TranslateElement(
             { pageLanguage: 'de', includedLanguages: 'en,de', autoDisplay: false },
             'google_translate_element'
           );
@@ -99,7 +99,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         document.body.appendChild(script);
       } else {
         try {
-          new (window as any).google.translate.TranslateElement(
+          new window.google!.translate!.TranslateElement(
             { pageLanguage: 'de', includedLanguages: 'en,de', autoDisplay: false },
             'google_translate_element'
           );
@@ -145,7 +145,7 @@ const defaultContext: LanguageContextType = {
   language: 'de',
   setLanguage: () => {},
   toggleLanguage: () => {},
-  t: (key, fallback) => fallback || (UI_DE as any)[key] || String(key),
+  t: (key, fallback) => fallback || UI_DE[key] || String(key),
   getTabLabel: (_id, defaultLabel) => defaultLabel,
   getGroupName: (name) => name,
   getClusterName: (_id, defaultName) => defaultName,

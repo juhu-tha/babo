@@ -92,7 +92,7 @@ export default function RechnerTab({ aggregateType, ambientTempT, areaAc, axialS
             <select aria-label="Zementbeiwert s (Abschnitt 1)" 
               className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
               value={cementClass}
-              onChange={(e) => setCementClass(e.target.value as any)}
+              onChange={(e) => setCementClass(e.target.value as "S" | "N" | "R")}
             >
               <option value="S">Klasse S (s = 0,38 - CEM 32,5 N)</option>
               <option value="N">Klasse N (s = 0,25 - CEM 32,5 R, CEM 42,5 N)</option>
@@ -107,7 +107,7 @@ export default function RechnerTab({ aggregateType, ambientTempT, areaAc, axialS
             <select aria-label="Gesteinskörnung α_E (Abschnitt 3)" 
               className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
               value={aggregateType}
-              onChange={(e) => setAggregateType(e.target.value as any)}
+              onChange={(e) => setAggregateType(e.target.value as "kalkstein" | "sandstein" | "basalt" | "quarzit")}
             >
               <option value="quarzit">Quarzit (α_E = 1,00 - Regelfall)</option>
               <option value="kalkstein">Kalkstein (α_E = 0,90; -10 %)</option>

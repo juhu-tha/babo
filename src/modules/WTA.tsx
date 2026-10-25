@@ -927,7 +927,7 @@ export default function WTA() {
                 <label className="font-bold text-text-main block">Innendämm-System:</label>
                 <select aria-label="Innendämm-System" 
                   value={kombiDaemm} 
-                  onChange={(e) => setKombiDaemm(e.target.value as any)}
+                  onChange={(e) => setKombiDaemm(e.target.value as typeof kombiDaemm)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
                 >
                   <option value="calciumsilicat">Calciumsilicat-Platte (kapillaraktiv, mineralisch, basisch)</option>
@@ -942,7 +942,7 @@ export default function WTA() {
                 <label className="font-bold text-text-main block">Vorschalt-Horizontalsperre (WTA 4-10):</label>
                 <select aria-label="Vorschalt-Horizontalsperre (WTA 4-10)" 
                   value={kombiSperre} 
-                  onChange={(e) => setKombiSperre(e.target.value as any)}
+                  onChange={(e) => setKombiSperre(e.target.value as typeof kombiSperre)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
                 >
                   <option value="ok">Funktionstüchtig &amp; unbedenklich (Mauerfeuchte DF ≤ 60%)</option>
@@ -956,7 +956,7 @@ export default function WTA() {
                 <label className="font-bold text-text-main block">Mauerwerks-Salzbelastung (WTA 2-9):</label>
                 <select aria-label="Mauerwerks-Salzbelastung (WTA 2-9)" 
                   value={kombiSalz} 
-                  onChange={(e) => setKombiSalz(e.target.value as any)}
+                  onChange={(e) => setKombiSalz(e.target.value as typeof kombiSalz)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
                 >
                   <option value="low">Vernachlässigbare Salzlast (WTA-Salzklasse S1)</option>
@@ -970,7 +970,7 @@ export default function WTA() {
                 <label className="font-bold text-text-main block">Schlagregenbelastung der Fassade:</label>
                 <select aria-label="Schlagregenbelastung der Fassade" 
                   value={kombiRegen} 
-                  onChange={(e) => setKombiRegen(e.target.value as any)}
+                  onChange={(e) => setKombiRegen(e.target.value as typeof kombiRegen)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
                 >
                   <option value="group1">Gering (Schattenlage / Wettergeschützt / Putz einwandfrei)</option>

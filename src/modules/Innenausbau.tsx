@@ -406,7 +406,7 @@ export default function Innenausbau() {
                 return (
                   <button
                     key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id as any)}
+                    onClick={() => setSelectedCategory(cat.id as typeof selectedCategory)}
                     className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-2xs cursor-pointer ${
                       isActive
                         ? 'bg-shiraz text-white border-shiraz shadow-sm'
@@ -837,7 +837,7 @@ export default function Innenausbau() {
                   <label className="text-xs font-bold text-text-main block mb-1.5">Geplanter Oberbodenbelag:</label>
                   <select aria-label="Geplanter Oberbodenbelag"
                     value={belagArt}
-                    onChange={(e) => setBelagArt(e.target.value as any)}
+                    onChange={(e) => setBelagArt(e.target.value as typeof belagArt)}
                     className="w-full p-2.5 rounded-xl border border-home-grau/30 bg-white text-xs font-medium text-text-main focus:border-shiraz focus:outline-hidden"
                   >
                     <option value="parkett">Parkett / Massivholz / Laminat (feuchteempfindlich)</option>

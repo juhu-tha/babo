@@ -1,3 +1,4 @@
+import type { ChartData } from 'chart.js';
 import React, { useState, useMemo } from "react";
 import {
   Chart as ChartJS,
@@ -836,7 +837,7 @@ export default function Korrosion() {
               )}
 
               <div className="flex-1 relative w-full h-full">
-                <Line data={chloridChartData as any} options={chloridOptions} />
+                <Line data={chloridChartData as ChartData<'line', (number | null)[]>} options={chloridOptions} />
               </div>
             </div>
 
@@ -1120,7 +1121,7 @@ export default function Korrosion() {
 
               <div className="flex-1 relative w-full h-full">
                 <Line
-                  data={karbonatisierungChartData as any}
+                  data={karbonatisierungChartData as ChartData<'line', (number | null)[]>}
                   options={karbonatisierungOptions}
                 />
               </div>

@@ -188,7 +188,7 @@ export default function Bruchmechanik() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
               <h3 className="text-sm font-bold text-center mb-2">Spannungsintensität vs. Risslänge</h3>
               <div className="flex-1 relative">
-                <Line data={results.chartData} options={chartOptions as any} />
+                <Line data={results.chartData} options={chartOptions} />
               </div>
             </div>
 

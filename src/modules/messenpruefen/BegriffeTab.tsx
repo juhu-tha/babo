@@ -154,7 +154,7 @@ export function BegriffeTab({ setSelectedTool, setToolInputValue, selectedTool, 
               <button
                 key={t.id}
                 onClick={() => {
-                  setSelectedTool(t.id as any);
+                  setSelectedTool(t.id as "laser" | "meterstab" | "messschieber" | "risslupe" | "nivellier");
                   // Default values fitted to the tool range
                   if (t.id === 'meterstab') setToolInputValue(2000);
                   else if (t.id === 'messschieber') setToolInputValue(120);

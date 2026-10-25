@@ -9,6 +9,7 @@ import {
   Filler,
   Tooltip,
   Legend,
+  type TooltipItem,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -29,6 +30,9 @@ ChartJS.register(
 
 import libraryData from '@/src/data/materials.json';
 
+/** Material aus materials.json: Name, Kategorie und die Kennwerte (properties) flach daneben */
+interface MaterialEintrag { name: string; category: string; [kennwert: string]: string | number }
+
 const materialsData = libraryData.materials.reduce((acc, m) => {
   acc[m.id] = { 
     name: m.name, 
@@ -36,7 +40,7 @@ const materialsData = libraryData.materials.reduce((acc, m) => {
     ...m.properties 
   };
   return acc;
-}, {} as Record<string, any>);
+}, {} as Record<string, MaterialEintrag>);
 
 const properties = libraryData.schema;
 
@@ -65,7 +69,7 @@ export default function Materialkennwerte() {
       if (!acc[mat.category]) acc[mat.category] = [];
       acc[mat.category].push({ key, ...mat });
       return acc;
-    }, {} as Record<string, any[]>);
+    }, {} as Record<string, (MaterialEintrag & { key: string })[]>);
   }, []);
 
   const selectedMaterials = useMemo(() => {
@@ -117,8 +121,8 @@ export default function Materialkennwerte() {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
-            const dataset = context.dataset;
+          label: (context: TooltipItem<'radar'>) => {
+            const dataset = context.dataset as typeof context.dataset & { rawData: number[] };
             const index = context.dataIndex;
             const rawValue = dataset.rawData[index];
             const propInfo = properties[index];
@@ -310,10 +314,10 @@ export default function Materialkennwerte() {
                       {wertart}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat1][prop.id])}</td>
-                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat2][prop.id])}</td>
+                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat1][prop.id] as number)}</td>
+                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat2][prop.id] as number)}</td>
                   {mat3 !== 'none' && (
-                    <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat3][prop.id])}</td>
+                    <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat3][prop.id] as number)}</td>
                   )}
                 </tr>
               );

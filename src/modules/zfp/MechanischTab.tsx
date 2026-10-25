@@ -2,6 +2,7 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import type { ChartOptions } from 'chart.js';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
@@ -14,7 +15,7 @@ export interface MechanischTabProps {
   karstenAbsorbed: number;
   karstenResults: { w: number; tHours: number; eingruppierung: string; textClass: string; color: string; detailtext: string; };
   karstenTime: number;
-  options: { responsive: boolean; maintainAspectRatio: boolean; scales: { y: { title: { display: boolean; text: string; }; min: number; max: number; }; x: { title: { display: boolean; text: string; }; }; }; plugins: { tooltip: { callbacks: { label: (context: any) => string; }; }; }; };
+  options: ChartOptions<'line'>;
   rebound: number;
   reboundResults: { rCorr: number; fc: number; };
   renderEmbeddedGeraete: (tabKey: string, deviceIds: string[]) => React.JSX.Element | null;
@@ -66,7 +67,7 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
               <select aria-label="Prüfrichtung (Winkel)" 
                 className="p-2 border border-home-grau/30 rounded-md bg-slate-50 focus:outline-none focus:border-shiraz text-sm"
                 value={angle}
-                onChange={(e) => setAngle(e.target.value as any)}
+                onChange={(e) => setAngle(e.target.value as "0" | "90" | "-90")}
               >
                 <option value="0">Horizontal (0°)</option>
                 <option value="90">Nach unten (+90°)</option>

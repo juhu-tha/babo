@@ -52,7 +52,7 @@ export default function StatistischeVersuchsplanung() {
     let countHigh = 0;
     let countLow = 0;
 
-    currentData.forEach((row: any) => {
+    currentData.forEach((row) => {
       if (row[factor] === 1) {
         sumHigh += row.response;
         countHigh++;
@@ -72,8 +72,8 @@ export default function StatistischeVersuchsplanung() {
     let countHigh = 0;
     let countLow = 0;
 
-    currentData.forEach((row: any) => {
-      const interaction = row[f1] * row[f2];
+    currentData.forEach((row) => {
+      const interaction = (row[f1] ?? NaN) * (row[f2] ?? NaN); // C fehlt im 2-Faktor-Plan → NaN wie zuvor
       if (interaction === 1) {
         sumHigh += row.response;
         countHigh++;
@@ -162,13 +162,13 @@ export default function StatistischeVersuchsplanung() {
                 {currentData.map((row) => (
                   <tr key={row.run} className="border-b border-home-grau/10 last:border-0 hover:bg-off-white/50">
                     <td className="px-4 py-2">{formatDeWert(row.run)}</td>
-                    <td className="px-4 py-2 font-mono">{(row as any).A > 0 ? '+1' : '-1'}</td>
-                    <td className="px-4 py-2 font-mono">{(row as any).B > 0 ? '+1' : '-1'}</td>
-                    {factors === 3 && <td className="px-4 py-2 font-mono">{(row as any).C > 0 ? '+1' : '-1'}</td>}
+                    <td className="px-4 py-2 font-mono">{row.A > 0 ? '+1' : '-1'}</td>
+                    <td className="px-4 py-2 font-mono">{row.B > 0 ? '+1' : '-1'}</td>
+                    {factors === 3 && <td className="px-4 py-2 font-mono">{(row.C ?? 0) > 0 ? '+1' : '-1'}</td>}
                     <td className="px-4 py-2">
                       <input 
                         type="number" 
-                        value={(row as any).response}
+                        value={row.response}
                         onChange={(e) => handleResponseChange(row.run, e.target.value)}
                         className="w-20 p-1 border border-home-grau/30 rounded font-bold text-shiraz bg-white text-right"
                         step="0.1"

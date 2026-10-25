@@ -269,7 +269,7 @@ export default function TransportbetonLcaUebung() {
               ].map(c => (
                 <button
                   key={c.id}
-                  onClick={() => setCemType(c.id as any)}
+                  onClick={() => setCemType(c.id as typeof cemType)}
                   className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
                     cemType === c.id
                       ? 'bg-shiraz text-white border-shiraz font-bold shadow-xs'

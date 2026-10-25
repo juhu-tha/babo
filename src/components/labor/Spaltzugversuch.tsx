@@ -11,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -253,8 +254,8 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Weg Δd = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
-          label: (ctx: any) => chartMode === 'stress'
+          title: (items: TooltipItem<'line'>[]) => `Weg Δd = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
+          label: (ctx: TooltipItem<'line'>) => chartMode === 'stress'
             ? `Spaltzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
             : `Prüfkraft F: ${formatDeZahl(Number(ctx.parsed.y), 1)} kN`
         }

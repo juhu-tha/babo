@@ -4,6 +4,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
 import { Line } from 'react-chartjs-2';
+import type { ChartData } from 'chart.js';
 import { Sparkles, Info } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -40,7 +41,7 @@ interface StahlWerkstoffkundeProps {
   setTemp: Dispatch<SetStateAction<number>>;
   stressStrainData: { labels: string[]; datasets: ({ label: string; data: number[]; borderColor: string; borderDash: number[]; borderWidth: number; pointRadius: number; backgroundColor?: undefined; fill?: undefined; } | { label: string; data: number[]; borderColor: string; backgroundColor: string; fill: boolean; borderWidth: number; pointRadius: number; borderDash?: undefined; })[]; };
   temp: number;
-  walzResults: { maxCompressive: number; maxTensile: number; chartData: { labels: string[]; datasets: ({ label: string; data: number[]; borderColor: string; backgroundColor: (context: any) => any; fill: boolean; tension: number; pointRadius: number; borderDash?: undefined; borderWidth?: undefined; } | { label: string; data: number[]; borderColor: string; borderDash: number[]; borderWidth: number; pointRadius: number; fill: boolean; backgroundColor?: undefined; tension?: undefined; })[]; }; };
+  walzResults: { maxCompressive: number; maxTensile: number; chartData: ChartData<'line'> };
   weldResults: { b_t: number; chartData: { labels: string[]; datasets: ({ label: string; data: number[]; borderColor: string; backgroundColor: string; fill: boolean; tension: number; pointRadius: number; borderDash?: undefined; borderWidth?: undefined; } | { label: string; data: number[]; borderColor: string; borderDash: number[]; borderWidth: number; pointRadius: number; fill: boolean; backgroundColor?: undefined; tension?: undefined; })[]; }; };
   woehlerData: { labels: number[]; datasets: ({ label: string; data: number[]; borderColor: string; borderWidth: number; pointRadius: number; pointBackgroundColor: string; fill: boolean; backgroundColor?: undefined; pointStyle?: undefined; showLine?: undefined; } | { label: string; data: (number | null)[]; borderColor: string; backgroundColor: string; pointRadius: number; pointStyle: string; borderWidth: number; showLine: boolean; pointBackgroundColor?: undefined; fill?: undefined; })[]; };
 }
