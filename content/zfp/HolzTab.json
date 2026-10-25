@@ -1,0 +1,22 @@
+{
+  "texte": {
+    "bohrwiderstandsmessungNadelbohrverfahren": " Bohrwiderstandsmessung (Nadelbohrverfahren)",
+    "einDünnerBohrerMeist": "Ein dünner Bohrer (meist Ø 1,5 - 3,0 mm) wird mit konstanter Geschwindigkeit in das Holz getrieben. Der elektrische Energieaufwand (Bohrwiderstand) wird in Abhängigkeit von der Bohrtiefe aufgezeichnet.",
+    "anwendungErkennungVonFäulnis": "**Anwendung:** Erkennung von Fäulnis, Hohlräumen, Rissen und Insektengängen im Inneren von Holzbauteilen.",
+    "ergebnisEinBohrprofilResistogramm": "**Ergebnis:** Ein Bohrprofil (Resistogramm). Intaktes Holz zeigt hohe Widerstände (mit sichtbaren Jahrringschwankungen), geschädigtes Holz zeigt starke Abfälle im Widerstand.",
+    "vorteilQuasiZerstörungsfreiSehr": "**Vorteil:** Quasi-zerstörungsfrei (sehr kleines Bohrloch), liefert direkte in-situ Informationen über den Restquerschnitt.",
+    "dynamischerEModulUltraschall": " Dynamischer E-Modul (Ultraschall / Resonanz)",
+    "bestimmungDerFestigkeitUnd": "Bestimmung der Festigkeit und Steifigkeit von Holzbauteilen über die Ausbreitungsgeschwindigkeit von Schallwellen.",
+    "prinzipSchallBreitetSich": "**Prinzip:** Schall breitet sich in dichtem, gesundem Holz schneller aus als in geschädigtem oder porösem Holz.",
+    "anwendungAbschätzungDerFestigkeitsklasse": "**Anwendung:** Abschätzung der Festigkeitsklasse (Sortierung), Erkennung von inneren Schäden (Pilzbefall verringert die Schallgeschwindigkeit drastisch).",
+    "hinweisDerDynamischeE": "**Hinweis:** Der dynamische E-Modul ist in der Regel ca. 10-20% höher als der statische E-Modul.",
+    "dieHolzfeuchteIstDer": "Die Holzfeuchte ist der kritischste Parameter für die Dauerhaftigkeit (Gefahr von Pilzbefall ab ca. 20% Holzfeuchte).",
+    "widerstandsmessungZweiElektrodenWerden": "**Widerstandsmessung:** Zwei Elektroden werden ins Holz geschlagen. Der elektrische Widerstand sinkt mit steigender Feuchtigkeit. Genau im Bereich von 6% bis 30% (Fasersättigungspunkt).",
+    "kapazitiveMessungZerstörungsfreiDurch": "**Kapazitive Messung:** Zerstörungsfrei durch Auflegen eines Sensors. Misst die Änderung der Dielektrizitätskonstante. Gut für schnelle Rastermessungen, aber anfällig für Dichteschwankungen.",
+    "darrMethodeZerstörendProbenentnahme": "**Darr-Methode:** Zerstörend (Probenentnahme), aber das genaueste Referenzverfahren.",
+    "altersbestimmungVonHolzAnhand": "Altersbestimmung von Holz anhand der charakteristischen Abfolge von breiten und schmalen Jahrringen.",
+    "prinzipDasBaumwachstumJahrringbreite": "**Prinzip:** Das Baumwachstum (Jahrringbreite) wird stark vom Klima (Temperatur, Niederschlag) des jeweiligen Jahres beeinflusst. Diese Muster sind regional einheitlich.",
+    "anwendungExakteDatierungVon": "**Anwendung:** Exakte Datierung von historischen Dachstühlen, Fachwerkhäusern oder archäologischen Funden (oft auf das genaue Fälljahr bestimmbar).",
+    "vorgehenEntnahmeEinesBohrkerns": "**Vorgehen:** Entnahme eines Bohrkerns (Zuwachsbohrer), Ausmessen der Jahrringbreiten und Abgleich mit regionalen Referenzkurven (Masterchronologien)."
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "texte": {
+    "grundlagenDerElastomechanikSpannungen": "Grundlagen der Elastomechanik: Spannungen, Dehnungen & Hooke'sches Gesetz. Das mechanische Verhalten von Baustoffen beschreibt, wie ein Körper auf äußere mechanische Belastungen (Kräfte, Verformungen) reagiert. Mithilfe der Grundgrößen **Spannung ($\\sigma$ oder $\\tau$)**, **Dehnung ($\\varepsilon$)** und dem Proportionalitätsfaktor **E-Modul ($E$)** lässt sich das Tragverhalten im elastischen Bereich exakt berechnen.",
+    "t1SpannungenStress": "1. Spannungen (Stress)",
+    "t2DehnungenStrain": "2. Dehnungen (Strain)",
+    "t3EModulElastizität": "3. E-Modul & Elastizität (Hooke)",
+    "wasIstEineMechanische": "Was ist eine mechanische Spannung?",
+    "wirdEinBauteilDurch": "Wird ein Bauteil durch eine äußere Kraft belastet, reagiert der Werkstoff mit einer inneren Gegenkraft. Die **mechanische Spannung ($\\sigma$)** gibt diese Belastung bezogen auf die zur Kraftrichtung senkrechte Querschnittsfläche an.",
+    "sigmaNennspannungNMm": "\\sigma = Nennspannung [N/mm² = MPa] | F = Normalkraft [N] | A = Querschnittsfläche [mm²]",
+    "normalVsSchubspannung": "💡 Normal- vs. Schubspannung:",
+    "normalspannungenSigmaWirkenSenkrecht": "• **Normalspannungen ($\\sigma$):** Wirken senkrecht auf der Schnittfläche (Zug oder Druck).<br>• **Schub- oder Scherspannungen ($\\tau$):** Wirken tangential in der Schnittebene (z.B. bei Querkraft oder Torsion).",
+    "interaktiverSpannungsrechner": "Interaktiver Spannungsrechner",
+    "nEntsprechendDemGewicht": " N | entsprechend dem Gewicht von ca. ",
+    "querschnittsgeometrieA": "Querschnittsgeometrie (A):",
+    "flächeDirekt": "Fläche (direkt)",
+    "vorhandeneNormalspannung": "Vorhandene Normalspannung (σ)",
+    "berechnungsschritt": "🔢 Berechnungsschritt:",
+    "grenzwertEinordnungBeiTypischen": "Grenzwert-Einordnung bei typischen Baustoffen:",
+    "c3037BetonCharakteristische": "🧱 C30/37 Beton (charakteristische Zylinderdruckfestigkeit f_ck):",
+    "s235BaustahlStreckgrenzeF": "🏗️ S235 Baustahl (Streckgrenze f_y, t ≤ 40 mm):",
+    "visuelleAnalogieEinwirkendesKraftverhält": "Visuelle Analogie: Einwirkendes Kraftverhältnis",
+    "wasIstEineMechanische2": "Was ist eine mechanische Dehnung?",
+    "unterEinerMechanischerZugbelastung": "Unter einer mechanischer Zugbelastung verlängert sich ein Bauteil um die Länge $\\Delta l$. Die **Dehnung ($\\varepsilon$)** definiert diese relative Längenänderung bezogen auf die Ursprungslänge $l_0$. Da sich gleichartige Einheiten kürzen (mm/mm), ist die Dehnung **dimensionslos** (wird aber oft in Promille ‰ oder Prozent % angegeben).",
+    "varepsilonDehnungOderDelta": "\\varepsilon = Dehnung [- oder ‰] | \\Delta l = Längenänderung [mm] | l_0 = Ursprungslänge [mm]",
+    "vorzeichenregel": "⚠️ Vorzeichenregel:",
+    "positiveDehnungVarepsilon0": "• **Positive Dehnung ($\\varepsilon > 0$):** Entspricht einer Zugbeanspruchung (Zunahme der Bauteillänge).<br>• **Negative Dehnung ($\\varepsilon < 0$):** Entspricht einer Stauchung (Druckbeanspruchung / Verkürzung).",
+    "interaktiverDehnungsrechner": "Interaktiver Dehnungsrechner",
+    "berechnungsschritt2": "🔢 Berechnungsschritt:",
+    "dehnungsgrenzwerteImBaustoffbereich": "Dehnungsgrenzwerte im Baustoffbereich:",
+    "betonStauchungBeiErreichen": "🧱 Beton: Stauchung bei Erreichen der Festigkeit ($\\varepsilon_{c2}$, bis C50/60):",
+    "t20ParabelRechteck": "−2,0 ‰ (Parabel-Rechteck-Diagramm)",
+    "betonBruchstauchungVarepsilonCu2": "🏗️ Beton-Bruchstauchung ($\\varepsilon_{cu2}$):",
+    "t35GrenzstauchungBis": "−3,5 ‰ (Grenzstauchung, bis C50/60)",
+    "stahldehnungBeiStreckgrenzeS235": "🏗️ Stahldehnung bei Streckgrenze S235 ($\\varepsilon_{y} = f_y / E$):",
+    "visuelleElongationsÜbertreibung": "Visuelle Elongations-Übertreibung",
+    "ausgangszustandL": "Ausgangszustand (l₀ = ",
+    "längeNeu": "Länge neu (+ ",
+    "dasHookeScheGesetz": "Das Hooke'sche Gesetz & der E-Modul",
+    "derElastizitätsmodulEBeschreibt": "Der **Elastizitätsmodul ($E$)** beschreibt den proportionalen Zusammenhang zwischen Spannung ($\\sigma$) und Dehnung ($\\varepsilon$) im elastischen Verformungsbereich. Er ist die Steifigkeits-Kenngröße eines Werkstoffs.",
+    "sigmaElastischeSpannungN": "\\sigma = Elastische Spannung [N/mm²] | E = E-Modul [N/mm² oder MPa] | \\varepsilon = Relative Verformung [-]",
+    "merksatz": "🧠 Merksatz:",
+    "jeHöherDerE": "Je **höher** der E-Modul eines Baustoffs, desto **größer** ist der mechanische Widerstand gegen Verformung (Standsicherheit & Steifigkeit).",
+    "materialStiffnessVergleiche": "Material-Stiffness Vergleiche",
+    "eigenenEModulFestlegen": "Eigenen E-Modul festlegen:",
+    "berechnungVonHookesBereich": "Berechnung von Hookes Bereich",
+    "mmVerlängerungProMeter": " mm Verlängerung pro Meter Länge)",
+    "errechneteElastischeSpannung": "Errechnete Elastische Spannung (σ)",
+    "berechnungsschritt3": "🔢 Berechnungsschritt:",
+    "mpaNMmBr": " MPa (N/mm²)<br>ε = ",
+    "graphischerSteifigkeitVergleichSteigung": "Graphischer Steifigkeit-Vergleich (σ / ε Steigung)"
+  },
+  "werte": {
+    "äußereLastNormalkraftF": "Äußere Last / Normalkraft (F)",
+    "durchmesserD": "Durchmesser (d)",
+    "ursprungslängeDesBauteilsL": "Ursprungslänge des Bauteils (l₀)",
+    "längenänderungL": "Längenänderung (Δl)",
+    "negativeLängenänderungStauchung": "Negative Längenänderung (Stauchung)",
+    "positiveLängenänderungZugVerlängerung": "Positive Längenänderung (Zug-Verlängerung)",
+    "errechneteStauchung": "Errechnete Stauchung",
+    "errechneteDehnung": "Errechnete Dehnung",
+    "gewählteDehnung": "Gewählte Dehnung (ε)",
+    "hookeschesGesetz": "Hookesches Gesetz"
+  },
+  "daten": {
+    "MATERIAL_PRESETS": [
+      {
+        "name": "Baustahl (S235)",
+        "eModul": 210000,
+        "f_yk": 235,
+        "description": "Klassischer Konstruktionsstahl mit hoher Steifigkeit und ausgeprägtem Fließbereichen."
+      },
+      {
+        "name": "Normalbeton (C30/37)",
+        "eModul": 33000,
+        "f_yk": 30,
+        "description": "Spröder Verbundbaustoff, hohe Druckfestigkeit, aber geringe Zugfestigkeit (ca. 10%)."
+      },
+      {
+        "name": "Nadelholz (C24)",
+        "eModul": 11000,
+        "f_yk": 24,
+        "description": "Anisotroper Faserwerkstoff (Werte faserparallel; Festigkeit hier: Biegefestigkeit f_m,k = 24 N/mm²). Hohes Verhältnis von E-Modul zu Eigengewicht."
+      },
+      {
+        "name": "Floatglas",
+        "eModul": 70000,
+        "f_yk": 45,
+        "description": "Amorpher, rein elastischer Werkstoff (Festigkeit: charakteristische Biegezugfestigkeit 45 N/mm²). Versagt ohne Vorwarnung spröde."
+      },
+      {
+        "name": "CFK (Kohlenstofffaser)",
+        "eModul": 150000,
+        "f_yk": 1200,
+        "description": "Hochleistungswerkstoff mit extrem hoher Zugfestigkeit und geringem Eigengewicht."
+      }
+    ],
+    "Elastomechanik.literatur": [
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A. (2021): Technische Mechanik 2: Elastostatik (Springer Vieweg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Elastomechanik.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbeton- und Spannbetontragwerken)"
+      },
+      {
+        "title": "DIN EN 12390-13 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druckbelastung)"
+      }
+    ],
+    "Elastomechanik.formeln": [
+      {
+        "formel": "\\sigma = E \\cdot \\varepsilon",
+        "erklaerung": "Hookesches Gesetz (eindimensional): Normalspannung sigma ist im linear-elastischen Bereich direkt proportional zur bezogenen Dehnung epsilon über den Elastizitätsmodul E.",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "\\nu = -\\frac{\\varepsilon_{\\text{quer}}}{\\varepsilon_{\\text{längs}}}",
+        "erklaerung": "Querkontraktionszahl (Poissonzahl nu): Verhältnis der relativen Querdehnung zur Längsdehnung unter einachsiger Normalbeanspruchung.",
+        "quelle": "DIN EN 12390-13"
+      }
+    ]
+  }
+}

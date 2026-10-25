@@ -21,6 +21,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Querverweis } from '@/src/components/ui/Querverweis';
+import inhalt from '@/content/knicken/Knicken.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -123,20 +125,12 @@ export default function Knicken() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Activity className="text-shiraz" /> Knicken &amp; Stabilitätsversagen (Euler-Fälle 1–4)
-          </h2>
-          <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20">
-            DIN EN 1993-1-1 / Eurocode 3
-          </span>
+            <Activity className="text-shiraz" /><MdText text={inhalt.texte.knickenStabilitätsversagenEulerFälle} /></h2>
+          <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20"><MdText text={inhalt.texte.dinEn19931} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
-          <p>
-            Das <strong>Knicken</strong> ist ein plötzliches Stabilitätsversagen schlanker Druckstäbe (z. B. Stützen, Fachwerkstäbe, Bogenträger). 
-            Sobald die axial wirkende Druckkraft <InlineMath math="N_{\text{Ed}}" /> die ideale Knicklast <InlineMath math="F_K" /> nach Euler erreicht, 
-            verliert der Stab sein stabiles Gleichgewicht und knickt seitlich aus. 
-            Die Knicklänge <InlineMath math="l_k = \beta \cdot l" /> wird entscheidend durch die Lagerung (Einspannung vs. Gelenk) bestimmt.
-          </p>
+          <p><MdText text={inhalt.texte.dasKnickenIstEin} /></p>
         </div>
 
         {/* Tab-Navigation */}
@@ -149,8 +143,7 @@ export default function Knicken() {
             }`}
             onClick={() => setActiveTab('simulation')}
           >
-            <Sliders size={16} /> Interaktiver Knickprüfstand (Live Last)
-          </button>
+            <Sliders size={16} /><MdText text={inhalt.texte.interaktiverKnickprüfstandLiveLast} /></button>
           <button aria-pressed={activeTab === 'diagramm'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'diagramm'
@@ -159,8 +152,7 @@ export default function Knicken() {
             }`}
             onClick={() => setActiveTab('diagramm')}
           >
-            <Activity size={16} /> Biegelinie II. Ordnung (Diagramm)
-          </button>
+            <Activity size={16} /><MdText text={inhalt.texte.biegelinieIiOrdnungDiagramm} /></button>
           <button aria-pressed={activeTab === 'eulerfaelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'eulerfaelle'
@@ -169,8 +161,7 @@ export default function Knicken() {
             }`}
             onClick={() => setActiveTab('eulerfaelle')}
           >
-            <BookOpen size={16} /> Die 4 Euler-Fälle im Vergleich
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.die4EulerFälle} /></button>
         </div>
 
         {/* TAB 1: Interaktiver Knickprüfstand */}
@@ -181,13 +172,12 @@ export default function Knicken() {
             <div className="lg:col-span-5 flex flex-col gap-5">
               <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/20 pb-2">
-                  <Sliders size={16} className="text-shiraz" /> 1. Last &amp; Geometrie
-                </h3>
+                  <Sliders size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1LastGeometrie} /></h3>
 
                 {/* Axial Load Slider */}
                 <div className="space-y-1.5 p-3 rounded-xl border border-home-grau/30 bg-off-white">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="font-bold text-text-main">Normalkraft N_Ed:</span>
+                    <span className="font-bold text-text-main"><MdText text={inhalt.texte.normalkraftNEd} /></span>
                     <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs ${
                       results.isBuckled ? 'bg-red-100 text-red-800 animate-pulse' : 'bg-slate-200 text-slate-800'
                     }`}>
@@ -204,7 +194,7 @@ export default function Knicken() {
                     className="w-full h-2.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <div className="flex justify-between text-[10px] text-text-main/60 font-mono">
-                    <span>0 kN (Entlastet)</span>
+                    <span><MdText text={inhalt.texte.t0KnEntlastet} /></span>
                     <span className="font-bold text-shiraz">Knicklast: {formatDeZahl(results.F_K_kN, 1)} kN</span>
                     <span>120 %</span>
                   </div>
@@ -212,8 +202,8 @@ export default function Knicken() {
 
                 {/* Euler Fall Selection */}
                 <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
-                  <label className="text-xs font-bold text-text-main block">Lagerungsbedingung (Euler-Fall):</label>
-                  <select aria-label="Lagerungsbedingung (Euler-Fall)"
+                  <label className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.lagerungsbedingungEulerFall} /></label>
+                  <select aria-label={inhalt.werte.lagerungsbedingungEulerFall}
                     value={eulerFall}
                     onChange={(e) => setEulerFall(Number(e.target.value))}
                     className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-xs font-medium focus:ring-2 focus:ring-shiraz outline-none cursor-pointer"
@@ -238,7 +228,7 @@ export default function Knicken() {
 
                 {/* Flächenträgheitsmoment Slider */}
                 <Slider
-                  label={<FormulaText text="Trägheitsmoment I" />}
+                  label={<FormulaText text={inhalt.werte.trägheitsmomentI} />}
                   min={50}
                   max={3000}
                   step={50}
@@ -249,20 +239,20 @@ export default function Knicken() {
 
                 {/* E-Modul */}
                 <div className="flex items-center justify-between text-xs pt-2 border-t border-home-grau/20">
-                  <span className="text-text-main/70">Elastizitätsmodul E:</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.elastizitätsmodulE} /></span>
                   <span className="font-mono font-bold text-text-main">{formatDeWert(eModul)} MPa (Stahl)</span>
                 </div>
 
                 {/* Results Card */}
                 <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-home-grau/20">
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                    <span className="text-[10px] uppercase font-bold text-text-main/60 block">Knicklänge l_k</span>
+                    <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.knicklängeLK} /></span>
                     <span className="text-lg font-mono font-bold text-text-main">{formatDeZahl(results.l_k, 2)} m</span>
                     <span className="text-[9px] text-text-main/70 block">β = {formatDeWert(results.beta)}</span>
                   </div>
 
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                    <span className="text-[10px] uppercase font-bold text-text-main/60 block">Euler-Knicklast FK</span>
+                    <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.eulerKnicklastFk} /></span>
                     <span className="text-lg font-mono font-bold text-shiraz">{formatDeZahl(results.F_K_kN, 1)} kN</span>
                     <span className="text-[9px] text-text-main/70 block">Stabilitätsgrenze</span>
                   </div>
@@ -277,15 +267,15 @@ export default function Knicken() {
                     : 'bg-emerald-50 text-emerald-800 border-emerald-300'
                 }`}>
                   {results.isBuckled
-                    ? 'STABILITÄTSVERSAGEN: ideale Knicklast erreicht (N_Ed ≥ F_K)'
+                    ? inhalt.werte.stabilitätsversagenIdealeKnicklastErreic
                     : `Unterhalb der idealen Knicklast (N_Ed/F_K = ${formatDeZahl(results.utilization, 0)} %) – der Bemessungsnachweis erfordert zusätzlich den Abminderungsbeiwert χ nach DIN EN 1993-1-1, 6.3.1`}
                 </div>
 
                 <FormulaDerivationBox
                   live
-                  title="Ihr Rechenweg: Euler-Knicklast mit den aktuellen Eingaben"
+                  title={inhalt.werte.ihrRechenwegEulerKnicklast}
                   zielGleichung={`F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{(\\beta \\cdot l)^2} = ${formatDeTeX(results.F_K_kN, 1)}\\,\\text{kN}`}
-                  normQuelle="Euler-Knickfälle; Theorie II. Ordnung (Lehrmodell)"
+                  normQuelle={inhalt.werte.eulerKnickfälleTheorieIi}
                   schritte={[
                     {
                       titel: 'Knicklänge',
@@ -293,20 +283,20 @@ export default function Knicken() {
                       formel: `l_k = \\beta \\cdot l = ${formatDeTeX(results.beta, 1)} \\cdot ${formatDeTeX(l, 2)} = ${formatDeTeX(results.l_k, 2)}\\,\\text{m}`,
                     },
                     {
-                      titel: 'Ideale Knicklast',
+                      titel: inhalt.werte.idealeKnicklast,
                       erklaerung: `Mit E = ${formatDeZahl(eModul, 0)} N/mm² und I = ${formatDeZahl(i, 0)} cm⁴ = ${formatDeZahl(i / 100, 2)} · 10⁶ mm⁴.`,
                       formel: `F_K = \\frac{\\pi^2 \\cdot ${formatDeTeX(eModul, 0)} \\cdot ${formatDeTeX(i / 100, 2)} \\cdot 10^{6}}{${formatDeTeX(results.l_k * 1000, 0)}^2} \\cdot 10^{-3} = ${formatDeTeX(results.F_K_kN, 1)}\\,\\text{kN}`,
                     },
                     {
-                      titel: 'Einwirkende Normalkraft',
-                      erklaerung: 'Die Last wird als Anteil der idealen Knicklast eingestellt.',
+                      titel: inhalt.werte.einwirkendeNormalkraft,
+                      erklaerung: inhalt.werte.dieLastWirdAls,
                       formel: `N_{Ed} = ${formatDeTeX(loadPercent / 100, 2)} \\cdot ${formatDeTeX(results.F_K_kN, 1)} = ${formatDeTeX(results.N_Ed_kN, 1)}\\,\\text{kN}`,
                     },
                     {
-                      titel: 'Ausbiegung nach Theorie II. Ordnung',
+                      titel: inhalt.werte.ausbiegungNachTheorieIi,
                       erklaerung: results.isBuckled
-                        ? 'N_Ed ≥ F_K: Der Stab ist instabil, die Ausbiegung wächst theoretisch unbegrenzt (Darstellung auf den 12,5-fachen Wert begrenzt).'
-                        : 'Angenommene Vorkrümmung w₀ = l/300; der Vergrößerungsfaktor ist für die Darstellung auf 12,5 begrenzt.',
+                        ? inhalt.werte.nEdFK
+                        : inhalt.werte.angenommeneVorkrümmungWL,
                       formel: results.isBuckled || 1 - loadPercent / 100 < 0.08
                         ? `w = ${formatDeTeX((l * 1000) / 300, 1)} \\cdot 12{,}5 = ${formatDeTeX(results.maxDeflectionMm, 1)}\\,\\text{mm}`
                         : `w = \\frac{w_0}{1 - N_{Ed}/F_K} = \\frac{${formatDeTeX((l * 1000) / 300, 1)}}{1 - ${formatDeTeX(loadPercent / 100, 2)}} = ${formatDeTeX(results.maxDeflectionMm, 1)}\\,\\text{mm}`,
@@ -325,10 +315,9 @@ export default function Knicken() {
                 <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
                   <div>
                     <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                      <Activity size={18} className="text-shiraz" /> 2. Live Knickfigur &amp; Auslenkung
-                    </h3>
+                      <Activity size={18} className="text-shiraz" /><MdText text={inhalt.texte.t2LiveKnickfigurAuslenkung} /></h3>
                     <span className="text-xs text-text-main/70 font-medium">
-                      Euler-Fall {formatDeWert(eulerFall)}: {eulerFall === 1 ? 'Kragarm' : eulerFall === 2 ? 'Gelenk-Gelenk' : eulerFall === 3 ? 'Eingespannt-Gelenk' : 'Beidseitig eingespannt'}
+                      Euler-Fall {formatDeWert(eulerFall)}: {eulerFall === 1 ? 'Kragarm' : eulerFall === 2 ? 'Gelenk-Gelenk' : eulerFall === 3 ? 'Eingespannt-Gelenk' : inhalt.werte.beidseitigEingespannt}
                     </span>
                   </div>
                   <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200">
@@ -479,11 +468,8 @@ export default function Knicken() {
 
                 {/* Info Text below */}
                 <div className="mt-2 p-3 bg-off-white rounded-xl border border-home-grau/25 text-xs text-text-main/80 space-y-1">
-                  <div className="font-bold text-shiraz">Theorie II. Ordnung (Verformungsrückkopplung):</div>
-                  <p className="leading-relaxed">
-                    Mit steigender Normalkraft <InlineMath math="N_{\text{Ed}}" /> erzeugt die Querverschiebung <InlineMath math="w(x)" /> zusätzliche Biegemomente <InlineMath math="\Delta M = N \cdot w" />. 
-                    Bei <InlineMath math="N \rightarrow F_K" /> wächst die Verformung theoretisch über alle Grenzen; in der Realität versagt der Stab vorher durch Fließen bzw. Bruch des Querschnitts. Hier angenommen: Vorkrümmung w₀ = l/300.
-                  </p>
+                  <div className="font-bold text-shiraz"><MdText text={inhalt.texte.theorieIiOrdnungVerformungsrückkopplung} /></div>
+                  <p className="leading-relaxed"><MdText text={inhalt.texte.mitSteigenderNormalkraftN} /></p>
                 </div>
 
               </div>
@@ -496,8 +482,7 @@ export default function Knicken() {
         {activeTab === 'diagramm' && (
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-300">
             <h3 className="font-bold text-base text-text-main mb-3 flex items-center gap-2">
-              <Activity className="text-shiraz" /> Biegelinienverlauf über die Stablänge (Theorie II. Ordnung)
-            </h3>
+              <Activity className="text-shiraz" /><MdText text={inhalt.texte.biegelinienverlaufÜberDieStablänge} /></h3>
             <div className="h-[360px] relative w-full">
               <Line data={results.chartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
@@ -508,12 +493,7 @@ export default function Knicken() {
         {activeTab === 'eulerfaelle' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { fall: 1, beta: 2.0, name: 'Euler-Fall 1', lk: 'lk = 2 · l', desc: 'Kragarm (unten fest eingespannt, oben völlig frei verschieblich). Kleinste Knicklast aller Fälle.' },
-                { fall: 2, beta: 1.0, name: 'Euler-Fall 2', lk: 'lk = 1 · l', desc: 'Grundfall: Beidseitig gelenkig gelagert. Sinushalbwelle über die volle Stablänge.' },
-                { fall: 3, beta: 0.7, name: 'Euler-Fall 3', lk: 'lk ≈ 0,7 · l', desc: 'Unten starr eingespannt, oben unverschieblich gelenkig gelagert. Der Abstand zwischen Wendepunkt der Knickfigur und Gelenk beträgt ≈ 0,7 l (rund doppelte Knicklast gegenüber Fall 2).' },
-                { fall: 4, beta: 0.5, name: 'Euler-Fall 4', lk: 'lk = 0,5 · l', desc: 'Beidseitig starr eingespannt. Höchste Knicklast (4-fache Knicklast im Vergleich zu Fall 2!).' }
-              ].map((f) => (
+              {inhalt.daten.Knicken.map((f) => (
                 <div key={f.fall} className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
@@ -533,61 +513,33 @@ export default function Knicken() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Euler-Knicklast einer Stahlstütze – gelenkig vs. Kragarm"
+        title={inhalt.werte.beispiel1EulerKnicklast}
         zielGleichung="F_K = \frac{\pi^2 \cdot E \cdot I}{(\beta \cdot l)^2}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.', formel: 'E \\cdot I = 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}\\,\\text{Nmm}^2' },
-          { titel: 'Euler-Fall 2 (β = 1,0)', erklaerung: 'Beidseitig gelenkig, Knicklänge 3500 mm:', formel: 'F_K = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}}{3\\,500^2} = 1\\,438\\,\\text{kN}' },
-          { titel: 'Euler-Fall 1 (β = 2,0)', erklaerung: 'Kragstütze: doppelte Knicklänge, also ein Viertel der Knicklast:', formel: 'F_K = \\frac{1\\,438}{4} = 360\\,\\text{kN}' }
-        ]}
-        ergebnisHinweis="Die Lagerung wirkt quadratisch: Die Kragstütze trägt nur ein Viertel, die beidseitig eingespannte Stütze (β = 0,5) das Vierfache des Grundfalls."
-        normQuelle="Euler (1744); Knicklängenbeiwerte der vier Euler-Fälle"
+        schritte={inhalt.daten["Knicken.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieLagerungWirktQuadratisch}
+        normQuelle={inhalt.werte.euler1744KnicklängenbeiwerteDer}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Wie stark vergrößert sich eine Vorkrümmung bei 65 % der Knicklast?"
+        title={inhalt.werte.beispiel2WieStark}
         zielGleichung="w = \frac{w_0}{1 - N_{Ed}/F_K}"
-        schritte={[
-          { titel: 'Vorkrümmung', erklaerung: 'Angenommene Vorkrümmung l/300 bei l = 3,5 m:', formel: 'w_0 = \\frac{3\\,500}{300} = 11{,}7\\,\\text{mm}' },
-          { titel: 'Vergrößerungsfaktor', erklaerung: 'Bei N_Ed/F_K = 0,65:', formel: '\\frac{1}{1 - 0{,}65} = 2{,}86' },
-          { titel: 'Gesamtausmitte', erklaerung: 'Ausbiegung in Stabmitte nach Theorie II. Ordnung:', formel: 'w = 2{,}86 \\cdot 11{,}7 = 33{,}3\\,\\text{mm}' }
-        ]}
-        ergebnisHinweis="Das Zusatzmoment N · w kann den Querschnitt zum Fließen bringen, lange bevor F_K erreicht ist – deshalb rechnet der Eurocode mit Abminderungsbeiwerten χ < 1."
-        normQuelle="Stabilitätstheorie; Nachweis nach DIN EN 1993-1-1, 6.3.1"
+        schritte={inhalt.daten["Knicken.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dasZusatzmomentNW}
+        normQuelle={inhalt.werte.stabilitätstheorieNachweisNachDin}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <Querverweis ziel="stahlbau_ec3" titel="Bemessung nach Eurocode 3: Abminderungsbeiwert χ" linkText="Zum Modul Stahlbau nach Eurocode 3">
-        Die Euler-Last ist die ideale Obergrenze. Den Bemessungswert N_b,Rd mit Knicklinien und χ berechnet das Modul Stahlbau nach Eurocode 3.
-      </Querverweis>
+      <Querverweis ziel="stahlbau_ec3" titel={inhalt.werte.bemessungNachEurocode3} linkText={inhalt.werte.zumModulStahlbauNach}>{inhalt.werte.dieEulerLastIst}</Querverweis>
       <ModulTest moduleId="knicken" />
 
       <ModuleFooter 
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Euler-Fälle, Theorie II. Ordnung und Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
           { title: 'Knicken', url: 'https://de.wikipedia.org/wiki/Knicken' },
-          { title: 'Eulersche Knickfälle', url: 'https://de.wikipedia.org/wiki/Knicken' }
+          { title: inhalt.werte.eulerscheKnickfälle, url: 'https://de.wikipedia.org/wiki/Knicken' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (bauaufsichtlich eingeführt; 6.3 Biegeknicken); neue Generation DIN EN 1993-1-1:2025-04' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (5.8 Theorie II. Ordnung); neue Generation DIN EN 1992-1-1:2025-09' },
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (6.3 Ersatzstabverfahren, Biegeknicken)' }
-        ]}
-        literatur={[
-          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)',
-          'Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007'
-        ]}
-        formeln={[
-          {
-            formel: 'F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{l_k^2} = \\frac{\\pi^2 \\cdot E \\cdot I}{(\\beta \\cdot l)^2}',
-            erklaerung: 'Ideale Euler-Knicklast FK eines schlanken Druckstabs unter Berücksichtigung des Knicklängenbeiwerts β.',
-            quelle: 'Gross et al.: Technische Mechanik 2'
-          },
-          {
-            formel: 'w(x) = \\frac{w_0(x)}{1 - \\frac{N_{\\text{Ed}}}{F_K}}',
-            erklaerung: 'Theorie II. Ordnung: Vergrößerung einer sinusförmigen Vorverformung w₀ unter der Längsdruckkraft N_Ed (Näherung, Dischinger-Faktor 1/(1 − N/F_K)).',
-            quelle: 'Technische Mechanik / Stabilitätstheorie'
-          }
-        ]}
+        regelwerke={inhalt.daten["Knicken.regelwerke"]}
+        literatur={inhalt.daten["Knicken.literatur"]}
+        formeln={inhalt.daten["Knicken.formeln"]}
       />
 
     </div>

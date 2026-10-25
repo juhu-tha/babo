@@ -18,6 +18,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
+import inhalt from '@/content/bruchmechanik/Bruchmechanik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -66,7 +68,7 @@ export default function Bruchmechanik() {
       labels,
       datasets: [
         {
-          label: 'Spannungsintensität K_I',
+          label: inhalt.werte.spannungsintensitätKI,
           data: kIData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -74,7 +76,7 @@ export default function Bruchmechanik() {
           fill: false,
         },
         {
-          label: 'Risszähigkeit K_Ic (Grenzwert)',
+          label: inhalt.werte.risszähigkeitKIcGrenzwert,
           data: kIcData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -83,7 +85,7 @@ export default function Bruchmechanik() {
           fill: false,
         },
         {
-          label: 'Aktueller Zustand',
+          label: inhalt.werte.aktuellerZustand,
           data: currentPointData,
           borderColor: '#A3113E',
           backgroundColor: '#A3113E',
@@ -105,10 +107,10 @@ export default function Bruchmechanik() {
     },
     scales: {
       x: {
-        title: { display: true, text: 'Risslänge a [mm]', font: { weight: 'bold' as const } }
+        title: { display: true, text: inhalt.werte.risslängeAMm, font: { weight: 'bold' as const } }
       },
       y: {
-        title: { display: true, text: 'Spannungsintensität K_I [MPa√m]', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.spannungsintensitätKIMpa, font: { weight: 'bold' as const } },
         min: 0,
       }
     }
@@ -117,32 +119,30 @@ export default function Bruchmechanik() {
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Activity className="text-shiraz" /> Bruchmechanik (Linear-elastisch)</h2>
+        <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Activity className="text-shiraz" /><MdText text={inhalt.texte.bruchmechanikLinearElastisch} /></h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
-          <p>
-            Die Bruchmechanik befasst sich mit der Rissausbreitung in rissbehafteten Bauteilen. Die linear-elastische Bruchmechanik (LEBM) beschreibt spröde Werkstoffe wie Glas sehr gut. Beton ist dagegen quasi-spröde: Vor der Rissspitze bildet sich eine ausgedehnte Bruchprozesszone, daher werden dort nichtlineare Modelle (z. B. fiktives Rissmodell nach Hillerborg mit der Bruchenergie G_F) verwendet.
-          </p>
+          <p><MdText text={inhalt.texte.dieBruchmechanikBefasstSich} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <Slider info="Die von außen aufgebrachte Nennspannung im ungestörten Bauteilquerschnitt." label={<FormulaText text="Nennspannung (\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
-              <div className="mt-4"><Slider info="Die Länge des primären Risses (bzw. halbe Risslänge bei Innenrissen)." label={<FormulaText text="Risslänge (a)" />} min={0.1} max={100} step={0.1} value={a} unit="mm" onChange={(e) => setA(Number(e.target.value))} /></div>
-              <div className="mt-4"><Slider info="Korrekturbeiwert für die Bauteilgeometrie, Risslage und Einspannbedingungen." label={<FormulaText text="Geometriefaktor (Y)" />} min={0.5} max={3.0} step={0.01} value={y} unit="-" onChange={(e) => setY(Number(e.target.value))} /></div>
-              <div className="mt-4"><Slider info="Kritischer Spannungsintensitätsfaktor, bei dem instabile Rissausbreitung beginnt. Richtwerte: Glas ≈ 0,75; Beton ≈ 0,5–1,5 (scheinbar, größenabhängig); Baustahl ≈ 50–150 MPa√m." label={<FormulaText text="Risszähigkeit (K_{Ic})" />} min={0.1} max={100} step={0.1} value={kIc} unit="MPa√m" onChange={(e) => setKIc(Number(e.target.value))} /></div>
+              <Slider info={inhalt.werte.dieVonAußenAufgebrachte} label={<FormulaText text="Nennspannung (\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
+              <div className="mt-4"><Slider info={inhalt.werte.dieLängeDesPrimären} label={<FormulaText text={inhalt.werte.risslängeA} />} min={0.1} max={100} step={0.1} value={a} unit="mm" onChange={(e) => setA(Number(e.target.value))} /></div>
+              <div className="mt-4"><Slider info={inhalt.werte.korrekturbeiwertFürDieBauteilgeometrie} label={<FormulaText text={inhalt.werte.geometriefaktorY} />} min={0.5} max={3.0} step={0.01} value={y} unit="-" onChange={(e) => setY(Number(e.target.value))} /></div>
+              <div className="mt-4"><Slider info={inhalt.werte.kritischerSpannungsintensitätsfaktorBeiD} label={<FormulaText text={inhalt.werte.risszähigkeitKIc} />} min={0.1} max={100} step={0.1} value={kIc} unit="MPa√m" onChange={(e) => setKIc(Number(e.target.value))} /></div>
               <div className={`mt-4 p-3 rounded-lg border text-sm ${results.isCritical ? 'bg-shiraz/10 border-shiraz/20 text-shiraz' : 'bg-white border-home-grau/30 text-text-main'}`}>
-                <div className="flex justify-between"><span>Spannungsintensität K_I:</span><strong>{formatDeZahl(results.kI, 2)} MPa√m</strong></div>
-                <div className="flex justify-between"><span>Ausnutzung K_I / K_Ic:</span><strong>{formatDeZahl(results.kI / kIc, 2)}</strong></div>
-                <div className="mt-1 font-bold">{results.isCritical ? 'K_I ≥ K_Ic: instabile Rissausbreitung (Bruch)' : `Riss stabil, Sicherheit gegen Bruch η = ${formatDeZahl(results.safetyFactor, 2)}`}</div>
+                <div className="flex justify-between"><span><MdText text={inhalt.texte.spannungsintensitätKI} /></span><strong>{formatDeZahl(results.kI, 2)} MPa√m</strong></div>
+                <div className="flex justify-between"><span><MdText text={inhalt.texte.ausnutzungKIK} /></span><strong>{formatDeZahl(results.kI / kIc, 2)}</strong></div>
+                <div className="mt-1 font-bold">{results.isCritical ? inhalt.werte.kIKIc : `Riss stabil, Sicherheit gegen Bruch η = ${formatDeZahl(results.safetyFactor, 2)}`}</div>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-6">
             {/* Visualization */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center">
-              <h3 className="text-sm font-bold text-text-main mb-4 self-start">Rissmodell (Kantenriss)</h3>
+              <h3 className="text-sm font-bold text-text-main mb-4 self-start"><MdText text={inhalt.texte.rissmodellKantenriss} /></h3>
               <svg width="100%" height="200" viewBox="0 0 400 200" className="max-w-sm">
                 <defs>
                   <pattern id="material" patternUnits="userSpaceOnUse" width="10" height="10">
@@ -186,7 +186,7 @@ export default function Bruchmechanik() {
             </div>
 
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
-              <h3 className="text-sm font-bold text-center mb-2">Spannungsintensität vs. Risslänge</h3>
+              <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.spannungsintensitätVsRisslänge} /></h3>
               <div className="flex-1 relative">
                 <Line data={results.chartData} options={chartOptions} />
               </div>
@@ -194,7 +194,7 @@ export default function Bruchmechanik() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Rissöffnungsmodi</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungRissöffnungsmodi} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="160" viewBox="0 0 450 160">
                   {/* Modus I (Opening) */}
@@ -241,9 +241,7 @@ export default function Bruchmechanik() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Die Bruchmechanik unterscheidet drei Rissöffnungsarten. Modus I (Öffnung durch Normalspannung senkrecht zum Riss) ist in der Praxis meist maßgebend. Modus II (ebener Schub) und Modus III (nicht-ebener Schub) entstehen durch Schubspannungen.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.dieBruchmechanikUnterscheidetDrei} /></div>
               </div>
             </div>
           </div>
@@ -252,57 +250,31 @@ export default function Bruchmechanik() {
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Warum bricht Glas schon bei geringen Spannungen?"
+        title={inhalt.werte.beispiel1WarumBricht}
         zielGleichung="\sigma_c = \frac{K_{Ic}}{Y \cdot \sqrt{\pi \cdot a}}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Kalk-Natron-Glas, K_Ic ≈ 0,75 MPa√m; Kratzer an der Kante mit Tiefe a = 0,5 mm, Kantenriss Y = 1,12.', formel: 'a = 0{,}5\\,\\text{mm} = 5 \\cdot 10^{-4}\\,\\text{m}' },
-          { titel: 'Kritische Spannung', erklaerung: 'Umstellen des Bruchkriteriums K_I = K_Ic nach σ:', formel: '\\sigma_c = \\frac{0{,}75}{1{,}12 \\cdot \\sqrt{\\pi \\cdot 5 \\cdot 10^{-4}}} = 16{,}9\\,\\text{MPa}' }
-        ]}
-        ergebnisHinweis="Ein halber Millimeter Kantenverletzung senkt die Festigkeit weit unter die charakteristische Biegezugfestigkeit von 45 MPa – deshalb werden Glaskanten geschliffen und Gläser vorgespannt."
-        normQuelle="LEBM nach Irwin; vgl. Gross/Seelig 2016"
+        schritte={inhalt.daten["Bruchmechanik.schritte"]}
+        ergebnisHinweis={inhalt.werte.einHalberMillimeterKantenverletzung}
+        normQuelle={inhalt.werte.lebmNachIrwinVgl}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Ist ein 10 mm tiefer Riss in einem Stahlblech gefährlich?"
+        title={inhalt.werte.beispiel2IstEin}
         zielGleichung="K_I = Y \cdot \sigma \cdot \sqrt{\pi \cdot a},\qquad \eta = \frac{K_{Ic}}{K_I}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Baustahl mit K_Ic ≈ 100 MPa√m, Nennspannung 200 MPa, Kantenriss a = 10 mm (Y = 1,12).', formel: 'a = 0{,}010\\,\\text{m}' },
-          { titel: 'Spannungsintensität', erklaerung: 'Einsetzen:', formel: 'K_I = 1{,}12 \\cdot 200 \\cdot \\sqrt{\\pi \\cdot 0{,}010} = 39{,}7\\,\\text{MPa}\\sqrt{\\text{m}}' },
-          { titel: 'Sicherheit gegen instabiles Risswachstum', erklaerung: 'Verhältnis zur Risszähigkeit:', formel: '\\eta = \\frac{100}{39{,}7} = 2{,}5' }
-        ]}
-        ergebnisHinweis="Statisch unkritisch – unter wiederholter Belastung kann der Riss aber durch Ermüdung wachsen. Bei tiefen Temperaturen sinkt die Zähigkeit (Gütegruppe nach DIN EN 1993-1-10 wählen)."
-        normQuelle="LEBM; Stahlgütewahl nach DIN EN 1993-1-10"
+        schritte={inhalt.daten["Bruchmechanik.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.statischUnkritischUnterWiederholter}
+        normQuelle={inhalt.werte.lebmStahlgütewahlNachDin}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bruchmechanik" />
 
       <ModuleFooter 
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: LEBM, Risszähigkeiten und Grenzen für Beton geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
           { title: 'Bruchmechanik', url: 'https://de.wikipedia.org/wiki/Bruchmechanik' }
         ]}
-        regelwerke={[
-          { title: 'fib Model Code for Concrete Structures 2010 (Bruchenergie G_F, Zugentfestigung)', url: 'https://www.fib-international.org/' },
-          { title: 'RILEM TC 50-FMC (1985): Bestimmung der Bruchenergie von Mörtel und Beton am gekerbten Balken', url: 'https://www.rilem.net/' },
-          { title: 'ISO 12737 (Metallische Werkstoffe – Bestimmung der Bruchzähigkeit bei ebener Dehnung K_Ic)' }
-        ]}
-        literatur={[
-          'Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. 6. Aufl., Berlin: Springer Vieweg 2016',
-          'Karihaloo, B. L.: Fracture Mechanics and Structural Concrete. Harlow: Longman 1995',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'K_{\\text{I}} = Y \\cdot \\sigma \\cdot \\sqrt{\\pi \\cdot a} \\quad [\\text{MPa}\\sqrt{\\text{m}}]',
-            erklaerung: 'Spannungsintensitätsfaktor im Rissöffnungsmodus I nach Irwin: Y ist der Geometriefaktor des Bauteils, σ die anliegende Nennspannung und a die Risslänge.',
-            quelle: 'Gross, D.; Seelig, T.: Bruchmechanik'
-          },
-          {
-            formel: 'K_{\\text{I}} \\le K_{\\text{Ic}} \\iff \\eta = \\frac{K_{\\text{Ic}}}{K_{\\text{I}}} \\ge 1{,}0',
-            erklaerung: 'Linear-elastisches Bruchkriterium: Instabiles Risswachstum tritt ein, wenn der Spannungsintensitätsfaktor KI die werkstoffspezifische Risszähigkeit (kritischer Spannungsintensitätsfaktor KIc) erreicht oder übersteigt.',
-            quelle: 'Linear-Elastische Bruchmechanik (LEBM)'
-          }
-        ]}
+        regelwerke={inhalt.daten["Bruchmechanik.regelwerke"]}
+        literatur={inhalt.daten["Bruchmechanik.literatur"]}
+        formeln={inhalt.daten["Bruchmechanik.formeln"]}
       />
     </div>
   );

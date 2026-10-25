@@ -1,5 +1,7 @@
 import React from 'react';
 import { Activity, Layers, Settings, Map, ShieldCheck } from 'lucide-react';
+import inhalt from '@/content/faserbeton/Faserbeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Faserbeton() {
   return (
@@ -10,7 +12,7 @@ export default function Faserbeton() {
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>Durch die gezielte Zugabe von Fasern in die Frischbetonmischung lassen sich die Zug- und Biegezugfestigkeit sowie die Dauerhaftigkeit stark verbessern. Das spröde Materialverhalten wird hierbei duktiler.</p>
+          <p><MdText text={inhalt.texte.durchDieGezielteZugabe} /></p>
         </div>
       </div>
 
@@ -21,50 +23,40 @@ export default function Faserbeton() {
             <Layers className="text-shiraz" size={20} />
             Ausgangsstoffe
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Standard-Betonausgangsstoffe plus die Beimischung von Fasern: Stahlfasern, Polymerfasern (PP, PVA), Glasfasern (AR-Glas) oder Carbonfasern. Fasertyp und -dosierung hängen vom Zweck ab (Brandschutz vs. Tragfähigkeit).
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.standardBetonausgangsstoffePlusDie} /></p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
             <Settings className="text-shiraz" size={20} />
             Herstellung
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Fasern werden meist am Ende des Mischprozesses im Werk oder auf der Baustelle im Fahrmischer zugegeben (sorgfältiges Einmischen, um »Igelbildung« zu vermeiden).
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.fasernWerdenMeistAm} /></p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
             <Activity className="text-shiraz" size={20} />
             Eigenschaften
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Verbessertes Nachriss-Zugverhalten (Duktilität). Das spröde Versagen des Betons wird durch die Rissüberbrückung der Fasern in ein zäheres Nachrissverhalten umgewandelt.
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.verbessertesNachrissZugverhaltenDuktilit} /></p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
             <Map className="text-shiraz" size={20} />
             Anwendungsgebiete
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Industrieböden, Spritzbeton für den Tunnelbau, Sohlplatten, Betonfertigteile und als konstruktiver Brandschutz (Mikro-PP-Fasern, die bei Hitze schmelzen und Porenraum für Dampfdruck freigeben).
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.industriebödenSpritzbetonFürDen} /></p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm lg:col-span-2">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
             <ShieldCheck className="text-shiraz" size={20} />
             Dauerhaftigkeit
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Bei Stahlfasern kann es an der Bauteiloberfläche bei Rissen zu leichten Roststellen kommen (optischer Mangel). Kunststoff- und Glasfasern sind in der Regel rostfrei. Alkalibeständiges (AR) Glas ist bei Glasfasern Pflicht.
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.beiStahlfasernKannEs} /></p>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte, Lehrbeispiel)</h3>
+        <h3 className="font-bold text-text-main text-lg mb-4"><MdText text={inhalt.texte.beispielrezepturRichtwerteLehrbeispiel} /></h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -84,7 +76,7 @@ export default function Faserbeton() {
               </tr>
               <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
                 <td className="py-2 px-3 text-sm text-text-main font-medium">Sand/Kies</td>
-                <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 1800 kg/m³</td>
+                <td className="py-2 px-3 text-sm text-text-main/70 text-right"><MdText text={inhalt.texte.t1800KgM} /></td>
               </tr>
               <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
                 <td className="py-2 px-3 text-sm text-text-main font-medium">w/z</td>

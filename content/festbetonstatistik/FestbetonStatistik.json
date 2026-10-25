@@ -1,0 +1,140 @@
+{
+  "texte": {
+    "festbetonStatistikKonformität": " Festbeton Statistik & Konformität",
+    "bemessungswerteDesign": "Bemessungswerte (Design)",
+    "konformitätskriterienDinEn206": "Konformitätskriterien (DIN EN 206, Tab. 14)",
+    "erstherstellungN3": "Erstherstellung (n = 3)",
+    "stetigeHerstellungN15": "Stetige Herstellung (n ≥ 15)",
+    "fürDieStetigeHerstellung": "Für die stetige Herstellung (n ≥ 15, σ aus mindestens 35 Ergebnissen, σ ≥ 3 N/mm²) gelten:",
+    "beiEinemAngestrebten5": "Bei einem angestrebten 5%-Fraktil von ",
+    "mussDerMittelwertVon": "muss der Mittelwert von n ≥ 15 Ergebnissen mindestens ",
+    "betragenUndKeinEinzelwert": " betragen, und kein Einzelwert darf ",
+    "fürDieErstherstellungGruppen": "Für die Erstherstellung (Gruppen von n = 3 Ergebnissen) gelten die Kriterien:",
+    "beiEinemAngestrebten52": "Bei einem angestrebten 5%-Fraktil von ",
+    "mussDerMittelwertAus": "muss der Mittelwert aus 3 Proben mindestens ",
+    "betragenUndKeinEinzelwert2": " betragen, und kein Einzelwert darf ",
+    "charakteristischerWert5Fraktile": "Charakteristischer Wert (5% Fraktile)",
+    "beiNormalverteilungUnterschreiten5": "Bei Normalverteilung unterschreiten 5 % der Grundgesamtheit diesen Wert.",
+    "bemessungswertDesign": "Bemessungswert (Design)",
+    "dieserWertWirdFür": "Dieser Wert wird für die Bemessung im Grenzzustand der Tragfähigkeit (GZT) verwendet und basiert auf der Zylinderfestigkeit.",
+    "gaußscheNormalverteilungDerFestigkeit": "Gaußsche Normalverteilung der Festigkeit",
+    "mittelwert": "Mittelwert (μ):",
+    "standardabweichung": "Standardabweichung (σ):",
+    "t5FraktilFCk": "5%-Fraktil (f_ck):",
+    "schematischeDarstellungZylinderVs": "Schematische Darstellung: Zylinder- vs. Würfeldruckfestigkeit",
+    "zylinder150X300": "Zylinder (150 x 300 mm)",
+    "derMittlereBereichBleibt": "Der mittlere Bereich bleibt weitgehend unbeeinflusst von der Reibung an den Druckplatten; die Querdehnung ist dort kaum behindert. Geringere gemessene Festigkeit (f_ck,cyl).",
+    "würfel150X150": "Würfel (150 x 150 x 150 mm)",
+    "dieReibungskegelDerDruckplatten": "Die Reibungskegel der Druckplatten durchdringen den gesamten Probekörper und behindern die Querdehnung. Höhere gemessene Festigkeit (f_ck,cube)."
+  },
+  "werte": {
+    "t5FraktilAusschuss": "5%-Fraktil (Ausschuss)",
+    "betonIstEinNaturprodukt": "Beton ist ein Naturprodukt, dessen Festigkeit streut. Dieses Modul zeigt, wie aus vielen Einzelprüfungen (Mittelwert f_{cm} und Streuung σ) der verlässliche charakteristische Wert (f_{ck}) berechnet wird, der für die statische Bemessung (f_{cd}) verwendet wird.",
+    "derStatistischeMittelwertAller": "Der statistische Mittelwert aller ermittelten Druckfestigkeiten aus der Probekörperserie.",
+    "mittlereFestigkeitFCm": "Mittlere Festigkeit (f_{cm,cyl})",
+    "maßFürDieStreuung": "Maß für die Streuung der Festigkeitswerte um den Mittelwert. Höhere Werte bedeuten stärkere Produktionsschwankungen.",
+    "standardabweichungCyl": "Standardabweichung (σ_{cyl})",
+    "wählenSieDasGeometrische": "Wählen Sie das geometrische Prüf-Format für die Auswertung.",
+    "beiwertZurBerücksichtigungVon": "Beiwert zur Berücksichtigung von Langzeitwirkungen auf die Druckfestigkeit und ungünstiger Lasteinflüsse (nach DIN EN 1992-1-1/NA für Normalbeton 0,85).",
+    "beiwertCc": "Beiwert (α_{cc})",
+    "teilsicherheitsbeiwertFürBetonDin": "Teilsicherheitsbeiwert für Beton (DIN EN 1992-1-1/NA: 1,5 für ständige und vorübergehende, 1,2 für außergewöhnliche Bemessungssituationen).",
+    "teilsicherheitsbeiwertC": "Teilsicherheitsbeiwert (γ_c)",
+    "wählenSieDieHerstellungsart": "Wählen Sie die Herstellungsart: Erstherstellung (bis zum Vorliegen von 35 Ergebnissen, Gruppen von n = 3) oder stetige Herstellung (n ≥ 15 bei bekannter Standardabweichung σ).",
+    "mittelwertFCm": "Mittelwert (f_{cm}):",
+    "standardabweichung": "Standardabweichung (σ):",
+    "charakteristischeFestigkeitFCk": "Charakteristische Festigkeit (f_{ck}):",
+    "charakteristischerWertFCk": "Charakteristischer Wert (f_{ck,cyl}):",
+    "faktorenCcC": "Faktoren (α_{cc} / γ_c):",
+    "bemessungswertFCd": "Bemessungswert (f_{cd}):",
+    "das5FraktilF": "Das 5%-Fraktil (f_{ck}) markiert den Wert, der nur von 5% der Proben unterschritten wird (rote Fläche).",
+    "beispiel1KonformitätBei": "Beispiel 1: Konformität bei Erstherstellung (C30/37, Würfel)",
+    "beideKriterienSindErfüllt": "Beide Kriterien sind erfüllt – die Gruppe ist konform. Ein Mittelwert von nur 40,9 N/mm² hätte Kriterium 1 knapp verfehlt.",
+    "dinEn2062021": "DIN EN 206:2021-06, 8.2.1, Tab. 14",
+    "beispiel2KonformitätBei": "Beispiel 2: Konformität bei stetiger Herstellung und Bemessungswert",
+    "dieKonformitätWirdIm": "Die Konformität wird im Format der Prüfkörper (hier Würfel) nachgewiesen, die Bemessung erfolgt immer mit der Zylinderfestigkeit.",
+    "dinEn20620212": "DIN EN 206:2021-06, Tab. 14; DIN EN 1992-1-1/NA, 3.1.6",
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Konformitätskriterien DIN EN 206, Tab. 14, Fraktilwert und Bemessungswert nach DIN EN 1992-1-1/NA geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "FestbetonStatistik.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Drei Würfelergebnisse einer neuen Betonsorte C30/37 (f_ck,cube = 37 N/mm²): 41,0 / 39,5 / 43,2 N/mm².",
+        "formel": "f_{ck,cube} = 37\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Kriterium 1 (Mittelwert)",
+        "erklaerung": "Mittelwert der Gruppe:",
+        "formel": "f_{cm} = \\frac{41{,}0 + 39{,}5 + 43{,}2}{3} = 41{,}2 \\geq 37 + 4 = 41{,}0 \\;\\checkmark"
+      },
+      {
+        "titel": "Kriterium 2 (Einzelwert)",
+        "erklaerung": "Kleinster Einzelwert:",
+        "formel": "f_{ci,min} = 39{,}5 \\geq 37 - 4 = 33{,}0 \\;\\checkmark"
+      }
+    ],
+    "FestbetonStatistik.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "C30/37, n = 15 Würfelergebnisse, Mittelwert 44,5 N/mm², kleinster Einzelwert 34,1 N/mm², Standardabweichung aus 35 Vorwerten σ = 4,0 N/mm².",
+        "formel": "\\sigma = 4{,}0 \\geq 3{,}0\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Mittelwertkriterium",
+        "erklaerung": "Erforderlicher Mittelwert:",
+        "formel": "37 + 1{,}48 \\cdot 4{,}0 = 42{,}9 \\leq 44{,}5 \\;\\checkmark"
+      },
+      {
+        "titel": "Einzelwertkriterium",
+        "erklaerung": "Kleinster Einzelwert:",
+        "formel": "34{,}1 \\geq 37 - 4 = 33{,}0 \\;\\checkmark"
+      },
+      {
+        "titel": "Bemessungswert",
+        "erklaerung": "Der Statiker rechnet mit der Zylinderfestigkeit f_ck = 30 N/mm² (α_cc = 0,85; γ_c = 1,5):",
+        "formel": "f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2"
+      }
+    ],
+    "FestbetonStatistik.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)"
+      },
+      {
+        "title": "DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 (bauaufsichtlich eingeführt); neue Generation DIN EN 1992-1-1:2025-09"
+      }
+    ],
+    "FestbetonStatistik.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin: Springer 2010",
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001"
+    ],
+    "FestbetonStatistik.formeln": [
+      {
+        "formel": "f_{ck} = f_{cm} - 1{,}645 \\cdot \\sigma",
+        "erklaerung": "Charakteristische Druckfestigkeit (5 %-Fraktil bei angenommener Gaußscher Normalverteilung): fcm = Mittelwert, σ = Standardabweichung, 1,645 = Quantilwert.",
+        "quelle": "DIN EN 206:2021-06 / DIN EN 1990, Anhang D"
+      },
+      {
+        "formel": "f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c}",
+        "erklaerung": "Bemessungswert der Druckfestigkeit nach Eurocode 2: αcc = Langzeitbeiwert (im Nationalen Anhang Deutschland meist 0,85), γc = 1,50 (Teilsicherheitsbeiwert).",
+        "quelle": "DIN EN 1992-1-1, 3.1.6 mit NA"
+      },
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 4 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4",
+        "erklaerung": "Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die Erstherstellung (Gruppen von n = 3 Ergebnissen, Werte in N/mm²).",
+        "quelle": "DIN EN 206:2021-06 Tab. 14"
+      },
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4",
+        "erklaerung": "Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die stetige Herstellung (n ≥ 15 Ergebnisse, Standardabweichung σ aus mindestens 35 Ergebnissen).",
+        "quelle": "DIN EN 206:2021-06 Tab. 14"
+      }
+    ]
+  }
+}

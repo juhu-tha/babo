@@ -10,6 +10,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Flame, Shield, Activity, Layers } from 'lucide-react';
+import inhalt from '@/content/brandschutz/Brandschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Brandschutz() {
   const [activeTab, setActiveTab] = useState<'baustoffklassen' | 'baulicher_brandschutz' | 'holzabbrand'>('baustoffklassen');
@@ -41,7 +43,7 @@ export default function Brandschutz() {
       chartData: {
         datasets: [
           {
-            label: 'ISO-Normbrandkurve (°C)',
+            label: inhalt.werte.isoNormbrandkurveC,
             data: isoData,
             borderColor: '#A3113E',
             backgroundColor: 'rgba(239, 68, 68, 0.1)',
@@ -49,7 +51,7 @@ export default function Brandschutz() {
             pointRadius: 0,
           },
           {
-            label: 'Aktuelle Branddauer',
+            label: inhalt.werte.aktuelleBranddauer,
             data: [{ x: dauer, y: tempIso }],
             backgroundColor: '#1e293b',
             borderColor: '#1e293b',
@@ -70,9 +72,7 @@ export default function Brandschutz() {
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Der Brandschutz gliedert sich in das Brandverhalten von Baustoffen (Baustoffklassen) und den baulichen Brandschutz von Bauteilen (Feuerwiderstandsdauer).
-          </p>
+          <p><MdText text={inhalt.texte.derBrandschutzGliedertSich} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -94,8 +94,7 @@ export default function Brandschutz() {
             }`}
             onClick={() => setActiveTab('baulicher_brandschutz')}
           >
-            <Shield size={16} /> Baulicher Brandschutz
-          </button>
+            <Shield size={16} /><MdText text={inhalt.texte.baulicherBrandschutz} /></button>
           <button aria-pressed={activeTab === 'holzabbrand'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'holzabbrand' 
@@ -104,17 +103,14 @@ export default function Brandschutz() {
             }`}
             onClick={() => setActiveTab('holzabbrand')}
           >
-            <Activity size={16} /> Holzabbrand (Simulation)
-          </button>
+            <Activity size={16} /><MdText text={inhalt.texte.holzabbrandSimulation} /></button>
         </div>
       </div>
 
       {activeTab === 'baustoffklassen' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-300">
-          <h2 className="text-xl font-bold text-text-main mb-4">Brandverhalten von Baustoffen (Baustoffklassen)</h2>
-          <div className="text-sm text-text-main/80 mb-6">
-            Die Klassifizierung von Baustoffen beschreibt deren Beitrag zum Brandgeschehen (Entflammbarkeit, Rauchentwicklung, brennendes Abtropfen). In Deutschland gelten parallel die nationale Norm <strong>DIN 4102-1</strong> und die europäische Norm <strong>DIN EN 13501-1</strong>.
-          </div>
+          <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.brandverhaltenVonBaustoffenBaustoffklass} /></h2>
+          <div className="text-sm text-text-main/80 mb-6"><MdText text={inhalt.texte.dieKlassifizierungVonBaustoffen} /></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* DIN 4102-1 */}
@@ -125,18 +121,18 @@ export default function Brandschutz() {
               </h3>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2">A - Nichtbrennbare Baustoffe</h4>
+                  <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2"><MdText text={inhalt.texte.aNichtbrennbareBaustoffe} /></h4>
                   <ul className="text-sm space-y-2">
-                    <li className="flex gap-2"><span className="font-bold w-8 text-shiraz">A1</span> <span>Ohne brennbare Bestandteile (z.B. Beton, Ziegel, Glas, Stahl)</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-8 text-shiraz">A2</span> <span>Mit geringen brennbaren Bestandteilen (z.B. Gipskartonplatten)</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-8 text-shiraz">A1</span> <span><MdText text={inhalt.texte.ohneBrennbareBestandteileZ} /></span></li>
+                    <li className="flex gap-2"><span className="font-bold w-8 text-shiraz">A2</span> <span><MdText text={inhalt.texte.mitGeringenBrennbarenBestandteilen} /></span></li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2">B - Brennbare Baustoffe</h4>
+                  <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2"><MdText text={inhalt.texte.bBrennbareBaustoffe} /></h4>
                   <ul className="text-sm space-y-2">
-                    <li className="flex gap-2"><span className="font-bold w-8 text-orange-600">B1</span> <span>Schwerentflammbar (z.B. brandschutzbehandeltes Holz, HWL-Platten)</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-8 text-orange-500">B2</span> <span>Normalentflammbar (z.B. Holz ab best. Dicke, normale Kunststoffe)</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-8 text-red-600">B3</span> <span>Leichtentflammbar (z.B. Papier, Stroh - im Bauwesen unzulässig!)</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-8 text-orange-600">B1</span> <span><MdText text={inhalt.texte.schwerentflammbarZBBrandschutzbehandelte} /></span></li>
+                    <li className="flex gap-2"><span className="font-bold w-8 text-orange-500">B2</span> <span><MdText text={inhalt.texte.normalentflammbarZBHolz} /></span></li>
+                    <li className="flex gap-2"><span className="font-bold w-8 text-red-600">B3</span> <span><MdText text={inhalt.texte.leichtentflammbarZBPapier} /></span></li>
                   </ul>
                 </div>
               </div>
@@ -145,43 +141,41 @@ export default function Brandschutz() {
             {/* DIN EN 13501-1 */}
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-text-main mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs">Europäisch</span>
-                DIN EN 13501-1
-              </h3>
+                <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs">Europäisch</span><MdText text={inhalt.texte.dinEn135011} /></h3>
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2">Hauptklassen</h4>
                   <ul className="text-sm space-y-2">
-                    <li className="flex gap-2"><span className="font-bold w-12 text-shiraz">A1, A2</span> <span>Nichtbrennbar (A2 nur mit s1, d0; Zuordnung nach MVV TB, Anhang 4)</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-12 text-orange-600">B, C</span> <span>Schwerentflammbar (abhängig von Rauch- und Abtropfklasse)</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-shiraz">A1, A2</span> <span><MdText text={inhalt.texte.nichtbrennbarA2NurMit} /></span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-orange-600">B, C</span> <span><MdText text={inhalt.texte.schwerentflammbarAbhängigVonRauch} /></span></li>
                     <li className="flex gap-2"><span className="font-bold w-12 text-orange-500">D, E</span> <span>Normalentflammbar</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-12 text-red-600">F</span> <span>Leichtentflammbar bzw. keine Leistung festgestellt</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-red-600">F</span> <span><MdText text={inhalt.texte.leichtentflammbarBzwKeineLeistung} /></span></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2">Zusatzklassifizierungen</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="font-medium mb-1">Rauchentwicklung (s - smoke)</div>
+                      <div className="font-medium mb-1"><MdText text={inhalt.texte.rauchentwicklungSSmoke} /></div>
                       <ul className="space-y-1 text-xs">
-                        <li><span className="font-bold">s1:</span> Geringe Rauchentwicklung</li>
-                        <li><span className="font-bold">s2:</span> Mittlere Rauchentwicklung</li>
-                        <li><span className="font-bold">s3:</span> Hohe Rauchentwicklung</li>
+                        <li><span className="font-bold">s1:</span><MdText text={inhalt.texte.geringeRauchentwicklung} /></li>
+                        <li><span className="font-bold">s2:</span><MdText text={inhalt.texte.mittlereRauchentwicklung} /></li>
+                        <li><span className="font-bold">s3:</span><MdText text={inhalt.texte.hoheRauchentwicklung} /></li>
                       </ul>
                     </div>
                     <div>
-                      <div className="font-medium mb-1">Brennendes Abtropfen (d - droplets)</div>
+                      <div className="font-medium mb-1"><MdText text={inhalt.texte.brennendesAbtropfenDDroplets} /></div>
                       <ul className="space-y-1 text-xs">
-                        <li><span className="font-bold">d0:</span> Kein Abtropfen</li>
-                        <li><span className="font-bold">d1:</span> Begrenztes Abtropfen</li>
-                        <li><span className="font-bold">d2:</span> Starkes Abtropfen</li>
+                        <li><span className="font-bold">d0:</span><MdText text={inhalt.texte.keinAbtropfen} /></li>
+                        <li><span className="font-bold">d1:</span><MdText text={inhalt.texte.begrenztesAbtropfen} /></li>
+                        <li><span className="font-bold">d2:</span><MdText text={inhalt.texte.starkesAbtropfen} /></li>
                       </ul>
                     </div>
                   </div>
                   <div className="mt-3 text-xs bg-white p-3 rounded-lg border border-home-grau/30 flex items-center gap-2">
                     <span className="font-bold text-text-main">Beispiel:</span> 
                     <span className="font-mono bg-blue-50 text-blue-800 px-2 py-1 rounded font-bold">A2 - s1, d0</span> 
-                    <span className="text-text-main/70">(Nichtbrennbar, kaum Rauch, kein Abtropfen)</span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.nichtbrennbarKaumRauchKein} /></span>
                   </div>
                 </div>
               </div>
@@ -192,59 +186,43 @@ export default function Brandschutz() {
 
       {activeTab === 'baulicher_brandschutz' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-300">
-          <h2 className="text-xl font-bold text-text-main mb-4">Baulicher Brandschutz (Feuerwiderstandsdauer)</h2>
-          <div className="text-sm text-text-main/80 mb-6">
-            Der bauliche Brandschutz bewertet nicht das Material selbst, sondern das Verhalten von <strong>Bauteilen</strong> (z.B. Wände, Decken, Stützen) im Brandfall. Ziel ist es, die Tragfähigkeit und den Raumabschluss für eine bestimmte Zeitdauer (Feuerwiderstandsdauer) sicherzustellen, um Flucht und Rettung zu ermöglichen.
-          </div>
+          <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.baulicherBrandschutzFeuerwiderstandsdaue} /></h2>
+          <div className="text-sm text-text-main/80 mb-6"><MdText text={inhalt.texte.derBaulicheBrandschutzBewertet} /></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-text-main mb-4 flex items-center gap-2">
-                <span className="bg-shiraz text-white px-2 py-1 rounded text-xs">Kriterien</span>
-                Europäische Klassifizierung (DIN EN 13501-2)
-              </h3>
-              <p className="text-sm text-text-main/80 mb-4">Die europäische Norm verwendet Buchstaben zur Beschreibung der Leistungsmerkmale eines Bauteils im Brandfall:</p>
+                <span className="bg-shiraz text-white px-2 py-1 rounded text-xs">Kriterien</span><MdText text={inhalt.texte.europäischeKlassifizierungDinEn} /></h3>
+              <p className="text-sm text-text-main/80 mb-4"><MdText text={inhalt.texte.dieEuropäischeNormVerwendet} /></p>
               <ul className="space-y-3 text-sm">
                 <li className="flex gap-3 items-start">
                   <span className="font-bold text-shiraz w-6 shrink-0 text-lg">R</span>
-                  <div>
-                    <strong>Tragfähigkeit (Résistance)</strong><br/>
-                    Das Bauteil (z.B. Stütze, Träger) trägt die anliegenden Lasten weiterhin ohne einzustürzen.
-                  </div>
+                  <div><MdText text={inhalt.texte.tragfähigkeitRSistanceBr} /></div>
                 </li>
                 <li className="flex gap-3 items-start">
                   <span className="font-bold text-shiraz w-6 shrink-0 text-lg">E</span>
-                  <div>
-                    <strong>Raumabschluss (Étanchéité)</strong><br/>
-                    Das Bauteil (z.B. Wand, Tür) verhindert den Durchtritt von Flammen und heißen Gasen auf die brandabgewandte Seite.
-                  </div>
+                  <div><MdText text={inhalt.texte.raumabschlussTanchItBr} /></div>
                 </li>
                 <li className="flex gap-3 items-start">
                   <span className="font-bold text-shiraz w-6 shrink-0 text-lg">I</span>
-                  <div>
-                    <strong>Wärmedämmung (Isolation)</strong><br/>
-                    Das Bauteil begrenzt die Temperaturerhöhung auf der brandabgewandten Seite (meist max. 140K im Mittel), sodass sich dort keine brennbaren Materialien entzünden.
-                  </div>
+                  <div><MdText text={inhalt.texte.wärmedämmungIsolationBrDas} /></div>
                 </li>
               </ul>
               <div className="mt-4 text-xs bg-white p-3 rounded-lg border border-home-grau/30">
-                <span className="font-bold text-text-main">Beispiel REI 90:</span> Eine tragende und raumabschließende Wand, die für 90 Minuten ihre Tragfähigkeit (R), ihren Raumabschluss (E) und ihre Wärmedämmung (I) behält.
-              </div>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.beispielRei90} /></span><MdText text={inhalt.texte.eineTragendeUndRaumabschließende} /></div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-text-main mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs">Vergleich</span>
-                National vs. Europäisch
-              </h3>
+                <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs">Vergleich</span><MdText text={inhalt.texte.nationalVsEuropäisch} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left">
                   <thead className="bg-home-grau/10 text-text-main">
                     <tr>
                       <th className="px-3 py-2 rounded-tl-lg">Dauer (min)</th>
-                      <th className="px-3 py-2">Bauaufsichtliche Benennung</th>
-                      <th className="px-3 py-2">DIN 4102-2 (National)</th>
-                      <th className="px-3 py-2 rounded-tr-lg">DIN EN 13501-2 (Europa)</th>
+                      <th className="px-3 py-2"><MdText text={inhalt.texte.bauaufsichtlicheBenennung} /></th>
+                      <th className="px-3 py-2"><MdText text={inhalt.texte.din41022National} /></th>
+                      <th className="px-3 py-2 rounded-tr-lg"><MdText text={inhalt.texte.dinEn135012} /></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/20">
@@ -252,32 +230,30 @@ export default function Brandschutz() {
                       <td className="px-3 py-2 font-bold">≥ 30</td>
                       <td className="px-3 py-2">feuerhemmend</td>
                       <td className="px-3 py-2 font-mono">F 30</td>
-                      <td className="px-3 py-2 font-mono">R 30 / REI 30</td>
+                      <td className="px-3 py-2 font-mono"><MdText text={inhalt.texte.r30Rei30} /></td>
                     </tr>
                     <tr className="hover:bg-home-grau/5">
                       <td className="px-3 py-2 font-bold">≥ 60</td>
                       <td className="px-3 py-2">hochfeuerhemmend</td>
                       <td className="px-3 py-2 font-mono">F 60</td>
-                      <td className="px-3 py-2 font-mono">R 60 / REI 60</td>
+                      <td className="px-3 py-2 font-mono"><MdText text={inhalt.texte.r60Rei60} /></td>
                     </tr>
                     <tr className="hover:bg-home-grau/5">
                       <td className="px-3 py-2 font-bold">≥ 90</td>
                       <td className="px-3 py-2">feuerbeständig</td>
                       <td className="px-3 py-2 font-mono">F 90</td>
-                      <td className="px-3 py-2 font-mono">R 90 / REI 90</td>
+                      <td className="px-3 py-2 font-mono"><MdText text={inhalt.texte.r90Rei90} /></td>
                     </tr>
                     <tr className="hover:bg-home-grau/5">
                       <td className="px-3 py-2 font-bold">≥ 120</td>
-                      <td className="px-3 py-2">(kein Begriff der MBO; z. B. Sonderbauten)</td>
+                      <td className="px-3 py-2"><MdText text={inhalt.texte.keinBegriffDerMbo} /></td>
                       <td className="px-3 py-2 font-mono">F 120</td>
-                      <td className="px-3 py-2 font-mono">R 120 / REI 120</td>
+                      <td className="px-3 py-2 font-mono"><MdText text={inhalt.texte.r120Rei120} /></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs text-text-main/70 mt-4">
-                Hinweis: Die nationale Bezeichnung "F" (z.B. F90) impliziert bei tragenden, raumabschließenden Bauteilen automatisch die Eigenschaften R, E und I. In der europäischen Norm werden diese explizit angegeben (z.B. REI90). Für eine reine Stütze ohne Raumabschluss reicht "R90".
-              </p>
+              <p className="text-xs text-text-main/70 mt-4"><MdText text={inhalt.texte.hinweisDieNationaleBezeichnung} /></p>
             </div>
           </div>
         </div>
@@ -285,23 +261,23 @@ export default function Brandschutz() {
 
       {activeTab === 'holzabbrand' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-300">
-          <h2 className="text-xl font-bold text-text-main mb-4">Holzabbrand (Simulation)</h2>
+          <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.holzabbrandSimulation2} /></h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="flex flex-col gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <Slider label="Branddauer t" info="Dauer der Brandeinwirkung in Minuten." min={0} max={120} step={5} value={dauer} unit="min" onChange={(e) => setDauer(Number(e.target.value))} />
+                <Slider label={inhalt.werte.branddauerT} info={inhalt.werte.dauerDerBrandeinwirkungIn} min={0} max={120} step={5} value={dauer} unit="min" onChange={(e) => setDauer(Number(e.target.value))} />
                 <div className="mt-6 border-t border-home-grau/30 pt-4">
-                  <h4 className="font-bold text-sm mb-4">Holzquerschnitt (3-seitig beflammt)</h4>
+                  <h4 className="font-bold text-sm mb-4"><MdText text={inhalt.texte.holzquerschnitt3SeitigBeflammt} /></h4>
                   <Slider label="Breite b"  min={50} max={400} step={10} value={holzBreite} unit="mm" onChange={(e) => setHolzBreite(Number(e.target.value))} />
-                  <div className="mt-4"><Slider label="Höhe h" info="Höhe des Bauteilquerschnitts." min={100} max={800} step={10} value={holzHoehe} unit="mm" onChange={(e) => setHolzHoehe(Number(e.target.value))} /></div>
+                  <div className="mt-4"><Slider label="Höhe h" info={inhalt.werte.höheDesBauteilquerschnitts} min={100} max={800} step={10} value={holzHoehe} unit="mm" onChange={(e) => setHolzHoehe(Number(e.target.value))} /></div>
                 </div>
               </div>
               <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
                 <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Brandverhalten</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div><div className="text-white/70 text-sm">Gastemperatur (ISO)</div><div className="text-2xl font-bold">{formatDeZahl(results.tempIso, 0)} °C</div></div>
-                  <div><div className="text-white/70 text-sm">Abbrandtiefe Holz</div><div className="text-2xl font-bold">{formatDeZahl(results.abbrandTiefe, 1)} mm</div></div>
-                  <div className="col-span-2 mt-2"><div className="text-white/70 text-sm">Restquerschnitt Holz</div><div className="text-2xl font-bold">{formatDeZahl(results.restBreite, 0)} × {formatDeZahl(results.restHoehe, 0)} mm ({formatDeZahl(results.restFlaeche, 1)} %)</div></div>
+                  <div><div className="text-white/70 text-sm"><MdText text={inhalt.texte.gastemperaturIso} /></div><div className="text-2xl font-bold">{formatDeZahl(results.tempIso, 0)} °C</div></div>
+                  <div><div className="text-white/70 text-sm"><MdText text={inhalt.texte.abbrandtiefeHolz} /></div><div className="text-2xl font-bold">{formatDeZahl(results.abbrandTiefe, 1)} mm</div></div>
+                  <div className="col-span-2 mt-2"><div className="text-white/70 text-sm"><MdText text={inhalt.texte.restquerschnittHolz} /></div><div className="text-2xl font-bold">{formatDeZahl(results.restBreite, 0)} × {formatDeZahl(results.restHoehe, 0)} mm ({formatDeZahl(results.restFlaeche, 1)} %)</div></div>
                 </div>
               </div>
             </div>
@@ -312,8 +288,8 @@ export default function Brandschutz() {
                   options={{
                     responsive: true, maintainAspectRatio: false,
                     scales: {
-                      x: { type: 'linear', title: { display: true, text: "Zeit t (min)" } },
-                      y: { title: { display: true, text: 'Temperatur (°C)' } }
+                      x: { type: 'linear', title: { display: true, text: inhalt.werte.zeitTMin } },
+                      y: { title: { display: true, text: inhalt.werte.temperaturC } }
                     }
                   }} 
                 />
@@ -321,7 +297,7 @@ export default function Brandschutz() {
 
               {/* Schematische Darstellung */}
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-                <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Holzabbrand (3-seitig)</h3>
+                <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungHolzabbrand3} /></h3>
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                   <svg width="100%" height="160" viewBox="0 0 350 160">
                     {/* Ursprünglicher Querschnitt */}
@@ -365,9 +341,7 @@ export default function Brandschutz() {
                     <text x="175" y="160" fontSize="10" fill="#1e293b" textAnchor="middle">b</text>
 
                   </svg>
-                  <div className="text-xs text-text-main/70 text-center mt-2">
-                    Bei dreiseitiger Brandbeanspruchung (z.B. Deckenbalken) brennt das Holz von unten und den Seiten ab. Es entsteht eine schützende Holzkohleschicht (schwarz). Der innere Restquerschnitt (grau) bleibt tragfähig. Dargestellt ist die Abbrandtiefe mit β_n = 0,7 mm/min (Nadel-Brettschichtholz); für die Bemessung nach DIN EN 1995-1-2 kommt die Schicht ohne Festigkeit k₀ · d₀ = 7 mm hinzu.
-                  </div>
+                  <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.beiDreiseitigerBrandbeanspruchungZ} /></div>
                 </div>
               </div>
             </div>
@@ -377,62 +351,32 @@ export default function Brandschutz() {
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Brandraumtemperatur nach der Einheitstemperaturzeitkurve"
+        title={inhalt.werte.beispiel1BrandraumtemperaturNach}
         zielGleichung="\theta_g = 20 + 345 \cdot \lg(8t + 1)"
-        schritte={[
-          { titel: '30 Minuten', erklaerung: 'Feuerhemmend (F 30 / R 30):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 241 = 842\\,^\\circ\\text{C}' },
-          { titel: '60 Minuten', erklaerung: 'Hochfeuerhemmend (F 60 / R 60):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 481 = 945\\,^\\circ\\text{C}' },
-          { titel: '90 Minuten', erklaerung: 'Feuerbeständig (F 90 / R 90):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 721 = 1\\,006\\,^\\circ\\text{C}' }
-        ]}
-        ergebnisHinweis="Die Kurve steigt anfangs steil und flacht dann ab: Zwischen 30 und 90 Minuten kommen nur rund 160 K hinzu. Für die Bauteile zählt deshalb vor allem die Dauer der Beanspruchung."
-        normQuelle="DIN EN 1363-1; DIN EN 1991-1-2"
+        schritte={inhalt.daten["Brandschutz.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieKurveSteigtAnfangs}
+        normQuelle={inhalt.werte.dinEn13631}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Restquerschnitt eines BSH-Deckenbalkens nach 30 und 60 Minuten"
+        title={inhalt.werte.beispiel2RestquerschnittEines}
         zielGleichung="d_{ef} = \beta_n \cdot t + k_0 \cdot d_0"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'BSH-Balken b/h = 200/400 mm, dreiseitig beflammt (unten und seitlich), β_n = 0,7 mm/min, d₀ = 7 mm:', formel: 'b = 200\\,\\text{mm},\\; h = 400\\,\\text{mm}' },
-          { titel: 'Nach 30 Minuten', erklaerung: 'Effektive Abbrandtiefe und Restquerschnitt:', formel: 'd_{ef} = 21 + 7 = 28\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 144 \\times 372\\,\\text{mm}' },
-          { titel: 'Nach 60 Minuten', erklaerung: 'Doppelte Branddauer:', formel: 'd_{ef} = 42 + 7 = 49\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 102 \\times 351\\,\\text{mm}' },
-          { titel: 'Biegewiderstand', erklaerung: 'Verhältnis der Widerstandsmomente W = b · h²/6:', formel: '\\frac{W_{ef,30}}{W_0} = \\frac{144 \\cdot 372^2}{200 \\cdot 400^2} = 0{,}62, \\quad \\frac{W_{ef,60}}{W_0} = \\frac{102 \\cdot 351^2}{200 \\cdot 400^2} = 0{,}39' }
-        ]}
-        ergebnisHinweis="Im Brandfall wirken geringere Lasten (außergewöhnliche Kombination) und höhere Festigkeiten (k_mod,fi = 1, 20-%-Fraktile); ob 39 % Restwiderstand für R 60 reichen, entscheidet der Nachweis nach DIN EN 1995-1-2."
-        normQuelle="DIN EN 1995-1-2:2010-12, 4.2.2 (Methode mit reduziertem Querschnitt)"
+        schritte={inhalt.daten["Brandschutz.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.imBrandfallWirkenGeringere}
+        normQuelle={inhalt.werte.dinEn19951}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="brandschutz" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Euroklassen-Zuordnung, Feuerwiderstandsbegriffe, Abbrand und Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
         { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
         { title: 'Baustoffklasse', url: 'https://de.wikipedia.org/wiki/Baustoffklasse' }
       ]}
-        literatur={[
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Hosser, D. (Hrsg.): Leitfaden Ingenieurmethoden des Brandschutzes. vfdb-Technischer Bericht TB 04-01, 3. Aufl. 2013'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)' },
-          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)' },
-          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10' },
-          { title: 'Musterbauordnung (MBO, Fassung November 2002, zuletzt geändert durch Beschluss der Bauministerkonferenz vom 26./27.09.2024; Gebäudeklassen § 2 Abs. 3, Brandschutzanforderungen §§ 26–32)', url: 'https://www.bauministerkonferenz.de/' },
-          { title: 'DIN EN 13501-2:2023-12 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I)' }
-        ]}
-        formeln={[
-          {
-            formel: 'd_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0',
-            erklaerung: 'Effektive Abbrandtiefe def von Holz nach Eurocode 5 (DIN EN 1995-1-2): Rechnerische Berücksichtigung der durch Erwärmung geschwächten Übergangsschicht d0 = 7 mm (k0 = 1 ab 20 min bei ungeschützten Oberflächen).',
-            quelle: 'DIN EN 1995-1-2:2010-12, Gl. (4.1)'
-          },
-          {
-            formel: '\\theta_g - 20 = 345 \\cdot \\log_{10}(8t + 1) \\quad [^\\circ\\text{C}]',
-            erklaerung: 'Einheitstemperaturzeitkurve (ETK) nach DIN EN 1363-1 / DIN 4102 zur standardisierten Brandprüfung von Bauteilen im Ofen.',
-            quelle: 'DIN EN 1363-1; DIN EN 1991-1-2'
-          }
-        ]}
+        literatur={inhalt.daten["Brandschutz.literatur"]}
+        regelwerke={inhalt.daten["Brandschutz.regelwerke"]}
+        formeln={inhalt.daten["Brandschutz.formeln"]}
       />
     </div>
   );

@@ -12,6 +12,8 @@ import {
   Info
 } from 'lucide-react';
 import { generateTransportbetonExcel, LCA_BENCHMARKS } from './TransportbetonExcelExport';
+import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ConcretePreset {
   id: string;
@@ -33,8 +35,8 @@ interface ConcretePreset {
 const PRESETS: ConcretePreset[] = [
   {
     id: 'standard',
-    name: '1. Standard C25/30 (Referenz CEM I)',
-    description: 'Konventioneller Transportbeton mit reinem Portlandzement und 100% Natursteinkörnung. Sehr hoher Klinkeranteil.',
+    name: inhalt.werte.t1StandardC2530,
+    description: inhalt.werte.konventionellerTransportbetonMitReinem,
     cemType: 'cem1',
     cemAmount: 320,
     flyAsh: 0,
@@ -49,8 +51,8 @@ const PRESETS: ConcretePreset[] = [
   },
   {
     id: 'eco_cem3',
-    name: '2. Klinkereffizient C25/30 (CEM III/A + Flugasche)',
-    description: 'Klimaschonender Beton mit hüttensandreichem Zement CEM III/A und Flugasche. Reduziert A1 um ~45%.',
+    name: inhalt.werte.t2KlinkereffizientC2530,
+    description: inhalt.werte.klimaschonenderBetonMitHüttensandreichem,
     cemType: 'cem3a',
     cemAmount: 290,
     flyAsh: 40,
@@ -65,8 +67,8 @@ const PRESETS: ConcretePreset[] = [
   },
   {
     id: 'circular_rc',
-    name: '3. Zirkulärer Öko-Beton (CEM III/B + 45% RC-Gestein)',
-    description: 'Maximal ressourcen- und klimaschonend mit Hüttensandzement CEM III/B und hochwertig aufbereitetem RC-Kies.',
+    name: inhalt.werte.t3ZirkulärerÖkoBeton,
+    description: inhalt.werte.maximalRessourcenUndKlimaschonend,
     cemType: 'cem3b',
     cemAmount: 280,
     flyAsh: 50,
@@ -185,18 +187,12 @@ export default function TransportbetonLcaUebung() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-home-grau/20">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xxs font-extrabold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
-              Interaktives Lehr- &amp; Übungsmodul
-            </span>
-            <span className="text-xxs text-slate-400 font-mono">DIN EN 15804+A2 / ÖKOBAUDAT</span>
+            <span className="px-2.5 py-0.5 rounded-full text-xxs font-extrabold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300"><MdText text={inhalt.texte.interaktivesLehrÜbungsmodul} /></span>
+            <span className="text-xxs text-slate-400 font-mono"><MdText text={inhalt.texte.dinEn15804A2} /></span>
           </div>
           <h3 className="text-lg font-bold text-text-main mt-1 flex items-center gap-2">
-            <FileSpreadsheet className="w-5 h-5 text-shiraz" />
-            Ökobilanzierung Transportbeton (A1–A5) mit Excel-Download
-          </h3>
-          <p className="text-xs text-text-main/70 mt-1 max-w-3xl">
-            Untersuchen Sie den Einfluss von Zementart, Hüttensand- und Flugaschesubstitution, RC-Gesteinskörnung und Logistik auf das Treibhauspotenzial (GWP) von 1 m³ Transportbeton. Laden Sie das vollständige Übungsblatt mit lebenden Formeln direkt für Excel herunter.
-          </p>
+            <FileSpreadsheet className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.ökobilanzierungTransportbetonA1A5} /></h3>
+          <p className="text-xs text-text-main/70 mt-1 max-w-3xl"><MdText text={inhalt.texte.untersuchenSieDenEinfluss} /></p>
         </div>
 
         {/* Download Button */}
@@ -206,11 +202,9 @@ export default function TransportbetonLcaUebung() {
             className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 cursor-pointer"
           >
             {isDownloaded ? <CheckCircle2 size={16} /> : <Download size={16} />}
-            <span>{isDownloaded ? 'Excel-Datei heruntergeladen!' : 'Excel-Arbeitsblatt herunterladen (.xlsx)'}</span>
+            <span>{isDownloaded ? inhalt.werte.excelDateiHeruntergeladen : inhalt.werte.excelArbeitsblattHerunterladenXlsx}</span>
           </button>
-          <span className="block text-[10px] text-slate-400 text-center mt-1 font-mono">
-            Inkl. Formeln, 4 Tabellenblättern &amp; Studentenaufgabe
-          </span>
+          <span className="block text-[10px] text-slate-400 text-center mt-1 font-mono"><MdText text={inhalt.texte.inklFormeln4Tabellenblättern} /></span>
         </div>
       </div>
 
@@ -218,10 +212,8 @@ export default function TransportbetonLcaUebung() {
       <div className="space-y-2">
         <label className="text-xs font-bold text-text-main flex items-center justify-between">
           <span className="flex items-center gap-1.5">
-            <Sliders size={14} className="text-shiraz" />
-            Schnellauswahl: Rezeptur-Presets zum Testen
-          </span>
-          <span className="text-xxs text-slate-400 font-normal">Klicken zum Laden der Werte:</span>
+            <Sliders size={14} className="text-shiraz" /><MdText text={inhalt.texte.schnellauswahlRezepturPresetsZum} /></span>
+          <span className="text-xxs text-slate-400 font-normal"><MdText text={inhalt.texte.klickenZumLadenDer} /></span>
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {PRESETS.map((p) => (
@@ -234,8 +226,7 @@ export default function TransportbetonLcaUebung() {
                 <h5 className="font-bold text-xs text-text-main leading-tight">{p.name}</h5>
                 <p className="text-xxs text-text-main/70 mt-1 leading-relaxed">{p.description}</p>
               </div>
-              <span className="text-[10px] text-shiraz font-bold mt-2 inline-flex items-center gap-1">
-                Preset laden <ArrowRight size={11} />
+              <span className="text-[10px] text-shiraz font-bold mt-2 inline-flex items-center gap-1"><MdText text={inhalt.texte.presetLaden} /><ArrowRight size={11} />
               </span>
             </button>
           ))}
@@ -248,24 +239,21 @@ export default function TransportbetonLcaUebung() {
         {/* Linke Spalte: Rezeptur-Eingaben (7 Spalten) */}
         <div className="lg:col-span-7 bg-off-white p-5 rounded-2xl border border-home-grau/30 space-y-4">
           <h4 className="font-bold text-xs text-text-main uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-            <Layers size={14} className="text-shiraz" />
-            1. Rezepturkomponenten &amp; Ausgangsstoffe (pro 1 m³ Festbeton)
-          </h4>
+            <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.t1RezepturkomponentenAusgangsstoffePro} /></h4>
 
           {/* Zementart-Wahl */}
           <div className="space-y-1.5">
             <label className="text-xxs font-bold text-text-main/80 flex items-center justify-between">
-              <span>Zementtyp (Bindemittel nach DIN EN 197-1):</span>
+              <span><MdText text={inhalt.texte.zementtypBindemittelNachDin} /></span>
               <span className="text-slate-500 font-mono text-[10px]">
-                EF: {formatDeZahl(cemFactor, 3)} kg CO₂-eq/kg
-              </span>
+                EF: {formatDeZahl(cemFactor, 3)}<MdText text={inhalt.texte.kgCoEqKg} /></span>
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[
-                { id: 'cem1', label: 'CEM I 42.5 R', sub: 'Klinker ~95%' },
+                { id: 'cem1', label: inhalt.werte.cemI425, sub: inhalt.werte.klinker95 },
                 { id: 'cem2', label: 'CEM II/A-LL', sub: 'Kalkstein' },
-                { id: 'cem3a', label: 'CEM III/A', sub: 'Hüttensand 50%' },
-                { id: 'cem3b', label: 'CEM III/B', sub: 'Hüttensand 70%' }
+                { id: 'cem3a', label: 'CEM III/A', sub: inhalt.werte.hüttensand50 },
+                { id: 'cem3b', label: 'CEM III/B', sub: inhalt.werte.hüttensand70 }
               ].map(c => (
                 <button
                   key={c.id}
@@ -307,7 +295,7 @@ export default function TransportbetonLcaUebung() {
 
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-text-main/80">
-                <span>Zusatzstoff: Flugasche:</span>
+                <span><MdText text={inhalt.texte.zusatzstoffFlugasche} /></span>
                 <span className="text-slate-700 font-mono">{formatDeWert(flyAsh)} kg/m³</span>
               </div>
               <input 
@@ -328,13 +316,11 @@ export default function TransportbetonLcaUebung() {
 
           {/* Gesteinskörnung & RC-Anteil */}
           <div className="pt-2 border-t border-home-grau/20 space-y-3">
-            <h5 className="text-xxs font-bold text-slate-500 uppercase tracking-wider">
-              Gesteinskörnung &amp; Rezyklate (DIN 4226-101)
-            </h5>
+            <h5 className="text-xxs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.gesteinskörnungRezyklateDin4226} /></h5>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-slate-700">
-                  <span>Sand 0/4 mm:</span>
+                  <span><MdText text={inhalt.texte.sand04Mm} /></span>
                   <span className="font-mono">{formatDeWert(sand)} kg</span>
                 </div>
                 <input 
@@ -345,7 +331,7 @@ export default function TransportbetonLcaUebung() {
               </div>
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-slate-700">
-                  <span>Kies 4/16 (Primär):</span>
+                  <span><MdText text={inhalt.texte.kies416Primär} /></span>
                   <span className="font-mono">{formatDeWert(gravel)} kg</span>
                 </div>
                 <input 
@@ -356,7 +342,7 @@ export default function TransportbetonLcaUebung() {
               </div>
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-emerald-800">
-                  <span>RC-Kies 4/16 (Typ 1):</span>
+                  <span><MdText text={inhalt.texte.rcKies416} /></span>
                   <span className="font-mono font-bold text-emerald-700">{formatDeWert(rcGravel)} kg</span>
                 </div>
                 <input 
@@ -383,7 +369,7 @@ export default function TransportbetonLcaUebung() {
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-slate-700">
-                <span>Fließmittel PCE:</span>
+                <span><MdText text={inhalt.texte.fließmittelPce} /></span>
                 <span className="font-mono">{formatDeZahl(superplasticizer, 1)} kg/m³</span>
               </div>
               <input 
@@ -397,37 +383,36 @@ export default function TransportbetonLcaUebung() {
           {/* Transport- & Einbau-Parameter (A2 / A4) */}
           <div className="pt-2 border-t border-home-grau/20 space-y-2">
             <h5 className="text-xxs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
-              <Truck size={12} /> Logistik &amp; Transportdistanzen (A2 &amp; A4)
-            </h5>
+              <Truck size={12} /><MdText text={inhalt.texte.logistikTransportdistanzenA2A4} /></h5>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xxs">
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
-                <span className="block text-slate-500">Zementwerk ➔ Betonwerk (A2):</span>
+                <span className="block text-slate-500"><MdText text={inhalt.texte.zementwerkBetonwerkA2} /></span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input aria-label="Zementwerk ➔ Betonwerk (A2)" 
+                  <input aria-label={inhalt.werte.zementwerkBetonwerkA2} 
                     type="number" min="0" value={distA2Cement} onChange={e => setDistA2Cement(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
-                  <span className="text-slate-400">km (Lkw 40t)</span>
+                  <span className="text-slate-400"><MdText text={inhalt.texte.kmLkw40t} /></span>
                 </div>
               </div>
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
-                <span className="block text-slate-500">Kieswerk ➔ Betonwerk (A2):</span>
+                <span className="block text-slate-500"><MdText text={inhalt.texte.kieswerkBetonwerkA2} /></span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input aria-label="Kieswerk ➔ Betonwerk (A2)" 
+                  <input aria-label={inhalt.werte.kieswerkBetonwerkA2} 
                     type="number" min="0" value={distA2Aggregates} onChange={e => setDistA2Aggregates(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
-                  <span className="text-slate-400">km (Lkw 40t)</span>
+                  <span className="text-slate-400"><MdText text={inhalt.texte.kmLkw40t2} /></span>
                 </div>
               </div>
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
-                <span className="block text-slate-500">Betonwerk ➔ Baustelle (A4):</span>
+                <span className="block text-slate-500"><MdText text={inhalt.texte.betonwerkBaustelleA4} /></span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input aria-label="Betonwerk ➔ Baustelle (A4)" 
+                  <input aria-label={inhalt.werte.betonwerkBaustelleA4} 
                     type="number" min="0" value={distA4Jobsite} onChange={e => setDistA4Jobsite(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
-                  <span className="text-slate-400">km (Fahrmischer)</span>
+                  <span className="text-slate-400"><MdText text={inhalt.texte.kmFahrmischer} /></span>
                 </div>
               </div>
             </div>
@@ -441,7 +426,7 @@ export default function TransportbetonLcaUebung() {
           {/* Großes Ergebnisbanner */}
           <div className="bg-off-white text-text-main p-5 rounded-2xl border border-home-grau/30 space-y-3 shadow-xs">
             <div className="flex items-center justify-between">
-              <span className="text-xxs font-mono uppercase text-text-main/70">GWP Gesamt (Modul A1–A5):</span>
+              <span className="text-xxs font-mono uppercase text-text-main/70"><MdText text={inhalt.texte.gwpGesamtModulA1} /></span>
               <span className={`px-2.5 py-0.5 rounded-full text-xxs font-bold ${
                 savingPct > 30 ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-white text-text-main border border-home-grau/30'
               }`}>
@@ -453,20 +438,20 @@ export default function TransportbetonLcaUebung() {
               <span className="text-3xl font-black font-mono tracking-tight text-shiraz">
                 {formatDeZahl(total_A1A5, 1)}
               </span>
-              <span className="text-xs text-text-main/70 font-mono">kg CO₂-eq / m³</span>
+              <span className="text-xs text-text-main/70 font-mono"><MdText text={inhalt.texte.kgCoEqM} /></span>
             </div>
 
             {/* Spezifische Kennwerte */}
             <div className="grid grid-cols-2 gap-2 pt-3 border-t border-home-grau/20 text-xxs">
               <div>
-                <span className="text-text-main/70 block">Äquivalenter (w/z)_eq:</span>
+                <span className="text-text-main/70 block"><MdText text={inhalt.texte.äquivalenterWZEq} /></span>
                 <span className={`font-mono font-bold text-xs ${wz_eq <= 0.50 ? 'text-emerald-700' : 'text-amber-700'}`}>
                   {formatDeZahl(wz_eq, 2)}
                 </span>
-                <span className="text-[10px] text-text-main/60 block">{wz_eq <= 0.50 ? 'Normkonform ≤ 0,50' : 'Warnung: > 0,50'}</span>
+                <span className="text-[10px] text-text-main/60 block">{wz_eq <= 0.50 ? inhalt.werte.normkonform050 : inhalt.werte.warnung050}</span>
               </div>
               <div>
-                <span className="text-text-main/70 block">Cradle-to-Gate (A1-A3):</span>
+                <span className="text-text-main/70 block"><MdText text={inhalt.texte.cradleToGateA1} /></span>
                 <span className="font-mono font-bold text-xs text-text-main">
                   {formatDeZahl(sum_A1A3, 1)} kg CO₂/m³
                 </span>
@@ -478,14 +463,14 @@ export default function TransportbetonLcaUebung() {
           {/* Aufschlüsselung nach Lebenszyklusmodulen */}
           <div className="bg-white p-4 rounded-xl border border-home-grau/30 space-y-2.5">
             <h5 className="font-bold text-xs text-text-main flex items-center justify-between">
-              <span>Anteilige Treibhausgas-Emissionen:</span>
+              <span><MdText text={inhalt.texte.anteiligeTreibhausgasEmissionen} /></span>
               <span className="text-xxs text-slate-400 font-mono">A1–A5 Split</span>
             </h5>
 
             <div className="space-y-2 text-xxs">
               <div>
                 <div className="flex justify-between mb-0.5">
-                  <span className="font-semibold text-slate-700">A1: Rohstoffe &amp; Zement</span>
+                  <span className="font-semibold text-slate-700"><MdText text={inhalt.texte.a1RohstoffeZement} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(sum_A1, 1)} kg ({formatDeZahl((sum_A1 / total_A1A5 * 100), 0)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -495,7 +480,7 @@ export default function TransportbetonLcaUebung() {
 
               <div>
                 <div className="flex justify-between mb-0.5">
-                  <span className="font-semibold text-slate-700">A2: Transport der Rohstoffe zum Werk</span>
+                  <span className="font-semibold text-slate-700"><MdText text={inhalt.texte.a2TransportDerRohstoffe} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(sum_A2, 1)} kg ({formatDeZahl((sum_A2 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -505,7 +490,7 @@ export default function TransportbetonLcaUebung() {
 
               <div>
                 <div className="flex justify-between mb-0.5">
-                  <span className="font-semibold text-slate-700">A3: Betonmischwerk (Strom &amp; Wärme)</span>
+                  <span className="font-semibold text-slate-700"><MdText text={inhalt.texte.a3BetonmischwerkStromWärme} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(sum_A3, 1)} kg ({formatDeZahl((sum_A3 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -515,7 +500,7 @@ export default function TransportbetonLcaUebung() {
 
               <div>
                 <div className="flex justify-between mb-0.5">
-                  <span className="font-semibold text-slate-700">A4: Fahrmischer-Transport zur Baustelle</span>
+                  <span className="font-semibold text-slate-700"><MdText text={inhalt.texte.a4FahrmischerTransportZur} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(sum_A4, 1)} kg ({formatDeZahl((sum_A4 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -525,7 +510,7 @@ export default function TransportbetonLcaUebung() {
 
               <div>
                 <div className="flex justify-between mb-0.5">
-                  <span className="font-semibold text-slate-700">A5: Einbau &amp; Betonpumpe</span>
+                  <span className="font-semibold text-slate-700"><MdText text={inhalt.texte.a5EinbauBetonpumpe} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(sum_A5, 1)} kg ({formatDeZahl((sum_A5 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -539,10 +524,9 @@ export default function TransportbetonLcaUebung() {
           <div className="bg-emerald-50/80 p-4 rounded-xl border border-emerald-200 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xxs font-bold uppercase text-emerald-900 flex items-center gap-1">
-                <Building2 size={13} /> Hochrechnung Gesamtbauwerk:
-              </span>
+                <Building2 size={13} /><MdText text={inhalt.texte.hochrechnungGesamtbauwerk} /></span>
               <div className="flex items-center gap-1">
-                <input aria-label="Hochrechnung Gesamtbauwerk" 
+                <input aria-label={inhalt.werte.hochrechnungGesamtbauwerk} 
                   type="number" min="0" 
                   value={projectVolumeM3} 
                   onChange={e => setProjectVolumeM3(Number(e.target.value))}
@@ -554,13 +538,13 @@ export default function TransportbetonLcaUebung() {
 
             <div className="grid grid-cols-2 gap-2 text-xxs pt-1">
               <div>
-                <span className="text-emerald-800 block">Projekt-CO₂ (A1-A5):</span>
+                <span className="text-emerald-800 block"><MdText text={inhalt.texte.projektCoA1A5} /></span>
                 <span className="font-mono font-bold text-xs text-emerald-950">
                   {formatDeZahl(projectTotalCO2Ton, 1)} t CO₂-eq
                 </span>
               </div>
               <div>
-                <span className="text-emerald-800 block">Eingespart ggü. CEM I:</span>
+                <span className="text-emerald-800 block"><MdText text={inhalt.texte.eingespartGgüCemI} /></span>
                 <span className="font-mono font-bold text-xs text-emerald-700">
                   {formatDeZahl(projectSavedCO2Ton, 1)} t CO₂-eq
                 </span>
@@ -575,26 +559,16 @@ export default function TransportbetonLcaUebung() {
       {/* Didaktische Infobox zum Excel-Arbeitsblatt */}
       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/25 space-y-2">
         <h5 className="font-bold text-xs text-text-main flex items-center gap-2">
-          <Info size={15} className="text-shiraz" />
-          Aufbau der herunterladbaren Excel-Datei (.xlsx) für Studierende:
-        </h5>
+          <Info size={15} className="text-shiraz" /><MdText text={inhalt.texte.aufbauDerHerunterladbarenExcel} /></h5>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xxs text-text-main/80 pt-1">
           <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-            <strong className="block text-slate-800 mb-0.5">Blatt 1: Anleitung &amp; Normen</strong>
-            Systemgrenzen nach DIN EN 15804, Moduldefinitionen A1–A5, DGNB-Anforderungen und Arbeitsanweisung.
-          </div>
+            <strong className="block text-slate-800 mb-0.5"><MdText text={inhalt.texte.blatt1AnleitungNormen} /></strong><MdText text={inhalt.texte.systemgrenzenNachDinEn} /></div>
           <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-            <strong className="block text-slate-800 mb-0.5">Blatt 2: Live-Rechner mit Formeln</strong>
-            Vollständige Tabelle mit verknüpften Formeln (<code>=C6*D6</code>, <code>=SUM()</code>), Rezepturvergleich CEM I vs. CEM III.
-          </div>
+            <strong className="block text-slate-800 mb-0.5"><MdText text={inhalt.texte.blatt2LiveRechner} /></strong><MdText text={inhalt.texte.vollständigeTabelleMitVerknüpften} /></div>
           <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-            <strong className="block text-slate-800 mb-0.5">Blatt 3: Übungsaufgabe Augsburg</strong>
-            Konkrete Fallstudie: 850 m³ Bodenplatte C30/37, Selbstkontrolle, Ziel: ≥ 35% CO₂-Minderung.
-          </div>
+            <strong className="block text-slate-800 mb-0.5"><MdText text={inhalt.texte.blatt3ÜbungsaufgabeAugsburg} /></strong><MdText text={inhalt.texte.konkreteFallstudie850M} /></div>
           <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-            <strong className="block text-slate-800 mb-0.5">Blatt 4: EPD-Stammdaten</strong>
-            Amtliche ÖKOBAUDAT-Emissionsfaktoren für Bindemittel, Gesteine, Transporte und Baustellengeräte.
-          </div>
+            <strong className="block text-slate-800 mb-0.5"><MdText text={inhalt.texte.blatt4EpdStammdaten} /></strong><MdText text={inhalt.texte.amtlicheÖkobaudatEmissionsfaktorenFür} /></div>
         </div>
       </div>
 

@@ -1,0 +1,142 @@
+{
+  "texte": {
+    "altlastenBodenschutzBbodschgBbodschv": "Altlasten & Bodenschutz (BBodSchG / BBodSchV)",
+    "dasBundesBodenschutzgesetzBbodschg": "Das Bundes-Bodenschutzgesetz (BBodSchG) schützt den Boden vor schädlichen Veränderungen, regelt die Sanierung kontaminierter Altstandorte und setzt strenge Grenzen für Belastungen nach dem Wirkungspfad-Prinzip.",
+    "die3GesetzlichenWirkungspfade": " Die 3 gesetzlichen Wirkungspfade",
+    "schadstoffeImBodenWerden": "Schadstoffe im Boden werden nicht isoliert betrachtet, sondern stets bezogen auf konkrete \"Wirkpfade\" (Wege, auf denen Lebewesen oder das Grundwasser gefährdet werden) bewertet:",
+    "bodenMenschDirekterKontakt": "**Boden-Mensch:** Direkter Kontakt, Verschlucken von kontaminierter Erde (z.B. Kleinkinder auf Spielplätzen), Einatmen belasteter Staubpartikel.",
+    "bodenNutzpflanzeSchadstofftransferAus": "**Boden-Nutzpflanze:** Schadstofftransfer aus dem Boden in die Nutzpflanzenwurzel (Gefahr in der landwirtschaftlichen Nahrungskette).",
+    "bodenGrundwasserSchadstoffauswaschungDur": "**Boden-Grundwasser:** Schadstoffauswaschung durch Niederschlagswasser durch den Bodenkörper ins nutzbare Grundwasser (Sickerwasserprognose).",
+    "prüfVsMaßnahmenwerte": " Prüf- vs. Maßnahmenwerte",
+    "dieVerordnungUnterscheidetScharf": "Die Verordnung unterscheidet scharf zwischen zwei Bewertungsschwellen:",
+    "prüfwerteTriggers": "Prüfwerte (Triggers):",
+    "beiÜberschreitungBestehtEin": " Bei Überschreitung besteht ein \"Altlastenverdacht\". Die Behörde fordert zwingend weiterführende Detailuntersuchungen (z.B. qualifizierte Tiefenbohrungen).",
+    "maßnahmenwerteActionLimits": "Maßnahmenwerte (Action Limits):",
+    "beiÜberschreitungBestehtUnmittelbare": " Bei Überschreitung besteht unmittelbare Gefahr für die Gesundheit oder das Grundwasser. Es besteht sofortiger, gesetzlicher Handlungsbedarf (Sanierung, Kapselung, Absperrung oder Nutzungsbeschränkung).",
+    "bbodschvPrüfwerteKatalog": "BBodSchV Prüfwerte-Katalog",
+    "nutzenSieDenInteraktiven": "Nutzen Sie den interaktiven Pfad-Checker, um die gesetzlichen Prüfwerte nach der novellierten Bundes-Bodenschutzverordnung (BBodSchV, gültig seit 01.08.2023) abzurufen.",
+    "szenarioNutzungspfad": "Szenario / Nutzungspfad:",
+    "wirkungspfadLogikDieWerte": "📌 **Wirkungspfad-Logik:** Die Werte für Kinderspielplätze sind extrem niedrig angesetzt, da Kleinkinder beim Spielen Schmutz oral aufnehmen (\"Pica-Verhalten\"). Für Gewerbeflächen gelten bis zu 10-fach höhere Grenzwerte.",
+    "pfasMeilenstein2023Unter": "🌱 **PFAS-Meilenstein 2023:** Unter der novellierten BBodSchV sind die per- und polyfluorierten Alkylsubstanzen (PFAS, \"Ewigkeitschemikalien\") erstmals explizit mit einem bundeseinheitlichen Eluatprüfwert von 0.1 µg/l für die Summe aus vier Hauptverbindungen (PFOA, PFOS, PFHxS, PFNA) gesetzlich geregelt. Dies bürdet Bauherren erhebliche Erkundungspflichten auf.",
+    "physikalischerBodenschutzAufBaustellen": "Physikalischer Bodenschutz auf Baustellen (§ 17 BBodSchV)",
+    "nebenDerChemischenSchadstoffbelastung": "Neben der chemischen Schadstoffbelastung verpflichtet das modernisierte Bodenschutzrecht Planer und Ausführende zu einem sorgsamen Umgang mit der Bodenstruktur selbst. Schwere Erdbewegungsmaschinen können irreversible Zerstörungen im Bodengefüge (Verdichtung, Scherspannungen) anrichten.",
+    "t1VermeidungVonBodenschäden": "1. Vermeidung von Bodenschäden (Konstruktive Maßnahmen)",
+    "bodendruckReduzieren": "Bodendruck reduzieren:",
+    "verwendungVonKettenlaufwerkenBreitreifen": " Verwendung von Kettenlaufwerken, Breitreifen im Niederdruckbereich (≤ 0,8 bar) oder Baggermatten aus Hartholz.",
+    "hydrologischeGrenzwerteEinhalten": "Hydrologische Grenzwerte einhalten:",
+    "keineBefahrungVonWeichen": " Keine Befahrung von weichen, schluffigen oder tonigen Böden im feuchten Zustand (pF-Wert ≤ 1,8 oder Saugspannung beachten).",
+    "abtragDesOberbodensMutterboden": " Abtrag des Oberbodens (Mutterboden) vor Baubeginn und sachgemäße Lagerung in Mieten (≤ 2 m Höhe, Belüftung bewahren) zur Erhaltung der Mikrobiologie.",
+    "t2BodenkundlicheBaubegleitungBbb": "2. Bodenkundliche Baubegleitung (BBB) Pflicht",
+    "wannErforderlich": "Wann erforderlich?",
+    "gesetzlichEmpfohlenUndOft": " Gesetzlich empfohlen und oft baurechtlich erzwungen bei Bauvorhaben mit Bodenbewegungen ≥ 3.000 m³ oder auf sensiblem Agrarland.",
+    "aufgabeDerBbb": "Aufgabe der BBB:",
+    "freigabeVonFahrtrassenFestlegen": " Freigabe von Fahrtrassen, Festlegen von temperatur- und feuchtigkeitsbedingten Erdbaupausen (z. B. Baustopp bei Staunässe), Qualitätskontrolle bei der Rekultivierung.",
+    "nachBauabschlussMussVerdichtetes": " Nach Bauabschluss muss verdichtetes Gelände im Unterboden tiefengelockert werden, bevor der Oberboden schonend aufgetragen wird.",
+    "bodenmaterialklassenZKlassenBm": "Bodenmaterialklassen: Z-Klassen & BM-Klassen",
+    "bodenUndBauabfälleWerden": "Boden und Bauabfälle werden für ihre Verwertung oder Entsorgung je nach Schadstoffbelastung klassifiziert. Dies ist extrem wichtig für die Vergabe von Erdarbeiten:",
+    "ersatzbaustoffvAktuellBmKlassen": "ErsatzbaustoffV (aktuell): BM-Klassen",
+    "nachDerSeitAug": "Nach der (seit Aug 2023 gültigen) Ersatzbaustoffverordnung (EBV) wird Bodenmaterial (\"BM\") in neue Güteklassen eingeteilt:",
+    "bm0Bm0": "BM-0 / BM-0*:",
+    "unbelastetesBisGeringfügigVerändertes": " Unbelastetes bis geringfügig verändertes Bodenmaterial (z.B. vergleichbar mit Sandkastensand). Sehr hohe Verwertbarkeit ohne Einschränkungen.",
+    "bodenmaterialMitEtwasMehr": " Bodenmaterial mit etwas mehr Feinkorn und sehr leichten Belastungen. In bestimmten Bauweisen frei verwendbar.",
+    "bmF2BmF3": "BM-F2 / BM-F3:",
+    "zunehmendeSchadstoffgehalteErfordernOft": " Zunehmende Schadstoffgehalte, erfordern oft bautechnischen Grundwasserschutz beim Wiedereinbau.",
+    "lagaM20HistorischBodenverwertung": "LAGA M20 (Historisch / Bodenverwertung): Z-Klassen",
+    "langeZeitDasStandardwerk": "Lange Zeit das Standardwerk. Viele Ausschreibungen und Deponien referenzieren oft noch die \"Zuordnungswerte\" (Z-Klassen) der alten LAGA M20:",
+    "z0Z0": "Z 0 / Z 0 *:",
+    "uneingeschränktVerwertbarUnbelasteterErd": " Uneingeschränkt verwertbar (unbelasteter Erdaushub).",
+    "z11Z": "Z 1.1 / Z 1.2:",
+    "eingeschränktVerwertbarerBodenMit": " Eingeschränkt verwertbarer Boden (mit technischen Sicherungsmaßnahmen nutzbar, z.B. unter Asphalt).",
+    "eingeschränktVerwertbarMitDefinierten": " Eingeschränkt verwertbar mit definierten technischen Sicherungen, höhere Belastungen.",
+    "meistDeponierungAufDk": " Meist Deponierung auf DK I bis DK III oder thermische/biologische Bodenaufbereitung nötig.",
+    "stufenweiserAblaufDerAltlastenbearbeitun": " Stufenweiser Ablauf der Altlastenbearbeitung",
+    "historischeErkundung": "Historische Erkundung",
+    "rechercheInBauaktenArchiven": "Recherche in Bauakten, Archiven und Luftbildern: Gab es Bombenabwürfe? War hier eine chemische Reinigung, alte Gerberei oder Tankstelle?",
+    "orientierendeUntersuchung": "Orientierende Untersuchung",
+    "ersteBohrungenRammkernessSchürfe": "Erste Bohrungen (Rammkerness-Schürfe) und Laboranalysen. Bestätigt sich der Altlastenverdacht? Sind Prüfwerte (Trigger-Werte) überschritten?",
+    "exakte3dAbgrenzungDes": "Exakte 3D-Abgrenzung des Kontaminationsherds (Schadstofffahne). Fundierte Gefährdungsabschätzung (Sickerwasserprognose, Grundwassermonitoring).",
+    "sanierungSicherung": "Sanierung / Sicherung",
+    "bodenaustauschAushubVerfüllungBodenlufta": "Bodenaustausch (Aushub/Verfüllung), Bodenluftabsaugung, Pump-and-Treat (Wasserreinigung) oder Einkapselung (Spundwände/Versiegelung)."
+  },
+  "werte": {
+    "szenarioNutzungspfad": "Szenario / Nutzungspfad"
+  },
+  "daten": {
+    "Altlasten.bbodData": {
+      "spielplatz": {
+        "title": "Wirkpfad Boden-Mensch: Kinderspielplätze",
+        "unit": "mg/kg TM (Trockenmasse im Feststoff)",
+        "values": {
+          "Arsen (As)": 25,
+          "Blei (Pb)": 200,
+          "Cadmium (Cd)": 2,
+          "Chrom (Cr)": 100,
+          "Nickel (Ni)": 70,
+          "Quecksilber (Hg)": 10,
+          "Benzo(a)pyren": 2
+        }
+      },
+      "wohngebiet": {
+        "title": "Wirkpfad Boden-Mensch: Wohngebiete (Gärten etc.)",
+        "unit": "mg/kg TM (Trockenmasse im Feststoff)",
+        "values": {
+          "Arsen (As)": 50,
+          "Blei (Pb)": 400,
+          "Cadmium (Cd)": 10,
+          "Chrom (Cr)": 200,
+          "Nickel (Ni)": 140,
+          "Quecksilber (Hg)": 20,
+          "Benzo(a)pyren": 4
+        }
+      },
+      "park": {
+        "title": "Wirkpfad Boden-Mensch: Park- und Freizeitanlagen",
+        "unit": "mg/kg TM (Trockenmasse im Feststoff)",
+        "values": {
+          "Arsen (As)": 125,
+          "Blei (Pb)": 1000,
+          "Cadmium (Cd)": 50,
+          "Chrom (Cr)": 500,
+          "Nickel (Ni)": 350,
+          "Quecksilber (Hg)": 70,
+          "Benzo(a)pyren": 10
+        }
+      },
+      "industrie": {
+        "title": "Wirkpfad Boden-Mensch: Industrie- und Gewerbeflächen",
+        "unit": "mg/kg TM (Trockenmasse im Feststoff)",
+        "values": {
+          "Arsen (As)": 140,
+          "Blei (Pb)": 2000,
+          "Cadmium (Cd)": 60,
+          "Chrom (Cr)": 1000,
+          "Nickel (Ni)": 900,
+          "Quecksilber (Hg)": 80,
+          "Benzo(a)pyren": 12
+        }
+      },
+      "grundwasser": {
+        "title": "Wirkpfad Boden-Grundwasser: Sickerwasserpfad (Universal)",
+        "unit": "µg/l im Eluat / Sickerwasser",
+        "values": {
+          "Arsen (As)": 10,
+          "Blei (Pb)": 10,
+          "Cadmium (Cd)": 0.5,
+          "Chrom (Cr-Gesamt)": 50,
+          "Nickel (Ni)": 20,
+          "Quecksilber (Hg)": 0.2,
+          "PFAS (Summe 4)": 0.1
+        }
+      },
+      "nutzpflanze": {
+        "title": "Wirkpfad Boden-Nutzpflanze: Landwirtschaft / Nutzgärten",
+        "unit": "mg/kg TM (Pflanzenverfügbare Fraktion)",
+        "values": {
+          "Cadmium (Cd)": 0.1,
+          "Blei (Pb)": 0.1,
+          "Quecksilber (Hg)": 1
+        }
+      }
+    }
+  }
+}

@@ -29,6 +29,8 @@ ChartJS.register(
 );
 
 import libraryData from '@/src/data/materials.json';
+import inhalt from '@/content/materialkennwerte/Materialkennwerte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 /** Material aus materials.json: Name, Kategorie und die Kennwerte (properties) flach daneben */
 interface MaterialEintrag { name: string; category: string; [kennwert: string]: string | number }
@@ -146,26 +148,22 @@ export default function Materialkennwerte() {
       {/* HEADER CARD WITH Standard Template Info */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Scale className="text-shiraz" /> Kennwerte &amp; Materialdatenbank
-        </h2>
+          <Scale className="text-shiraz" /><MdText text={inhalt.texte.kennwerteMaterialdatenbank} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Wahl des richtigen Baustoffs hängt von den spezifischen Anforderungen des Tragwerks und der Bauphysik ab. Vergleichen Sie charakteristische Materialparameter wie Rohdichte, Festigkeit und Elastizitätsmodul direkt im visuellen Netzdiagramm und der tabellarischen Übersicht.
-          </p>
+          <p><MdText text={inhalt.texte.dieWahlDesRichtigen} /></p>
         </div>
       </div>
 
       {/* SELECTION BLOCK FOR MATERIALS */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4 animate-in fade-in duration-300">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Scale size={18} className="text-shiraz" /> Materialien für den Vergleich auswählen:
-        </h3>
+          <Scale size={18} className="text-shiraz" /><MdText text={inhalt.texte.materialienFürDenVergleich} /></h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <label className="text-xs font-bold text-shiraz">Material 1</label>
-              <InfoTooltip text="Erstes zu vergleichendes Material." />
+              <InfoTooltip text={inhalt.werte.erstesZuVergleichendesMaterial} />
             </div>
             <div className="flex items-center gap-3">
               <div className="text-shiraz">{getCategoryIcon(materialsData[mat1].category)}</div>
@@ -188,7 +186,7 @@ export default function Materialkennwerte() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <label className="text-xs font-bold text-[#0e558c]">Material 2</label>
-              <InfoTooltip text="Zweites zu vergleichendes Material." />
+              <InfoTooltip text={inhalt.werte.zweitesZuVergleichendesMaterial} />
             </div>
             <div className="flex items-center gap-3">
               <div className="text-[#0e558c]">{getCategoryIcon(materialsData[mat2].category)}</div>
@@ -210,8 +208,8 @@ export default function Materialkennwerte() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <label className="text-xs font-bold text-[#333333]">Material 3 (Optional)</label>
-              <InfoTooltip text="Drittes zu vergleichendes Material." />
+              <label className="text-xs font-bold text-[#333333]"><MdText text={inhalt.texte.material3Optional} /></label>
+              <InfoTooltip text={inhalt.werte.drittesZuVergleichendesMaterial} />
             </div>
             <div className="flex items-center gap-3">
               <div className="text-[#333333]">
@@ -240,15 +238,12 @@ export default function Materialkennwerte() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4 animate-in fade-in duration-300">
         <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
           <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-            <BarChart2 className="text-shiraz w-5 h-5" /> Visueller Kennwerte-Vergleich (Netzdiagramm)
-          </h3>
+            <BarChart2 className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.visuellerKennwerteVergleichNetzdiagramm} /></h3>
           <span className="text-xs text-text-main/60 font-mono bg-off-white px-2.5 py-1 rounded-md border border-home-grau/20">
             Radar-Profil
           </span>
         </div>
-        <p className="text-sm text-text-main/70">
-          Das Netzdiagramm zeigt die normalisierten Kennwerte der gewählten Baustoffe im direkten Vergleich (Maximum der ausgewählten Materialien entspricht 100%).
-        </p>
+        <p className="text-sm text-text-main/70"><MdText text={inhalt.texte.dasNetzdiagrammZeigtDie} /></p>
         <div className="h-[420px] w-full relative">
           <Radar data={chartData} options={chartOptions} />
         </div>
@@ -258,8 +253,7 @@ export default function Materialkennwerte() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 overflow-x-auto flex flex-col gap-4 animate-in fade-in duration-300">
         <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
           <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz w-5 h-5" /> Kennwerte-Tabelle im direkten Vergleich
-          </h3>
+            <Layers className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.kennwerteTabelleImDirekten} /></h3>
           <span className="text-xs text-text-main/60 font-mono bg-off-white px-2.5 py-1 rounded-md border border-home-grau/20">
             {properties.length} Parameter
           </span>
@@ -296,9 +290,9 @@ export default function Materialkennwerte() {
               const wertartMap: Record<string, string> = {
                 density: 'Mittelwert',
                 eModul: 'Mittelwert',
-                compressive: 'charakteristisch / Nennwert',
-                tensile: 'charakteristisch / Nennwert',
-                thermalCond: 'Tabellen- / Nennwert',
+                compressive: inhalt.werte.charakteristischNennwert,
+                tensile: inhalt.werte.charakteristischNennwert2,
+                thermalCond: inhalt.werte.tabellenNennwert,
                 thermalExp: 'Mittelwert',
                 heatCap: 'Mittelwert'
               };
@@ -325,8 +319,8 @@ export default function Materialkennwerte() {
           </tbody>
         </table>
         <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs text-text-main/70 flex flex-col gap-1.5">
-          <div><strong>Lesehinweis Festigkeiten (charakteristisch / Nennwert):</strong> Beton <FormulaText text="f_{ck}" /> und <FormulaText text="f_{ctk;0,05}" /> nach DIN EN 1992-1-1 Tab. 3.1 (bei Leichtbeton mit <FormulaText text="\eta_1" /> abgemindert); Baustahl, Edelstahl, Aluminium, Titan: Streckgrenze bzw. 0,2-%-Dehngrenze (Spalte Druck) und Zugfestigkeit (Spalte Zug); Holz: <FormulaText text="f_{c,0,k}" /> und <FormulaText text="f_{t,0,k}" /> nach DIN EN 338 bzw. DIN EN 14080 (z. B. C24: <FormulaText text="f_{t,0,k} = 14{,}5\text{ N/mm}^2" />); Glas: charakteristische Biegezugfestigkeit (Floatglas 45, ESG 120 N/mm²); Mauerwerk: Steindruckfestigkeitsklasse des Steins, nicht die Mauerwerksfestigkeit <FormulaText text="f_k" />; Gesteine, Dämm- und Kunststoffe: typische Mittelwerte aus Herstellerangaben.</div>
-          <div><strong>Steifigkeit und Dichte</strong> sind Mittelwerte (<FormulaText text="E_{cm}" />, <FormulaText text="E_{0,mean}" />, <FormulaText text="\rho_{mean}" />). Ein Wärmedehnkoeffizient von 0 bei Faserdämmstoffen und VIP bedeutet „kein sinnvoller Kennwert“ (lose bzw. faserige Struktur), nicht „keine Wärmedehnung“. Für Nachweise sind stets die Werte der jeweiligen Produktnorm, Leistungserklärung bzw. Bemessungsnorm maßgebend.</div>
+          <div><MdText text={inhalt.texte.lesehinweisFestigkeitenCharakteristischN} /><FormulaText text="f_{ck}" /> und <FormulaText text="f_{ctk;0,05}" /><MdText text={inhalt.texte.nachDinEn1992} /><FormulaText text="\eta_1" /><MdText text={inhalt.texte.abgemindertBaustahlEdelstahlAluminium} /><FormulaText text="f_{c,0,k}" /> und <FormulaText text="f_{t,0,k}" /><MdText text={inhalt.texte.nachDinEn338} /><FormulaText text="f_{t,0,k} = 14{,}5\text{ N/mm}^2" /><MdText text={inhalt.texte.glasCharakteristischeBiegezugfestigkeitF} /><FormulaText text="f_k" /><MdText text={inhalt.texte.gesteineDämmUndKunststoffe} /></div>
+          <div><MdText text={inhalt.texte.steifigkeitUndDichteSind} /><FormulaText text="E_{cm}" />, <FormulaText text="E_{0,mean}" />, <FormulaText text="\rho_{mean}" /><MdText text={inhalt.texte.einWärmedehnkoeffizientVon0} /></div>
         </div>
       </div>
 
@@ -334,36 +328,27 @@ export default function Materialkennwerte() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
         <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
           <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-            <BookOpen className="text-shiraz w-5 h-5" /> Hintergrund &amp; Einordnung (Physikalisch-mechanische Grundlagen)
-          </h3>
+            <BookOpen className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.hintergrundEinordnungPhysikalischMechani} /></h3>
           <span className="text-xs text-text-main/60 font-mono bg-off-white px-2.5 py-1 rounded-md border border-home-grau/20">
             Werkstoffmechanik
           </span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
-            <h4 className="font-bold text-shiraz h-7 flex items-center">Steifigkeit vs. Festigkeit</h4>
-            <p className="text-sm text-text-main/80 leading-relaxed">
-              Stahl hat einen sehr hohen E-Modul (210.000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat parallel zur Faser aber nur etwa ein Zwanzigstel der Steifigkeit von Stahl (E₀,mean ≈ 11.000 MPa bei C24). Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.
-            </p>
+            <h4 className="font-bold text-shiraz h-7 flex items-center"><MdText text={inhalt.texte.steifigkeitVsFestigkeit} /></h4>
+            <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.stahlHatEinenSehr} /></p>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
-            <h4 className="font-bold text-shiraz h-7 flex items-center">Zug- vs. Druckfestigkeit</h4>
-            <p className="text-sm text-text-main/80 leading-relaxed">
-              Beton und Mauerwerk können hohe Druckkräfte aufnehmen, versagen aber bei Zugbeanspruchung sehr früh (Beton: mittlere Zugfestigkeit f_ctm nur etwa 7–10 % der Druckfestigkeit), weshalb sie im Verbund mit zugfestem Stahl bewehrt werden müssen.
-            </p>
+            <h4 className="font-bold text-shiraz h-7 flex items-center"><MdText text={inhalt.texte.zugVsDruckfestigkeit} /></h4>
+            <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.betonUndMauerwerkKönnen} /></p>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
-            <h4 className="font-bold text-shiraz h-7 flex items-center">Bauphysik &amp; Dämmung</h4>
-            <p className="text-sm text-text-main/80 leading-relaxed">
-              Metalle wie Stahl und Aluminium leiten Wärme exzellent, was zu kritischen Wärmebrücken führen kann. Dämmstoffe wie EPS oder Mineralwolle haben extrem geringe Rohdichten und isolieren hervorragend.
-            </p>
+            <h4 className="font-bold text-shiraz h-7 flex items-center"><MdText text={inhalt.texte.bauphysikDämmung} /></h4>
+            <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.metalleWieStahlUnd} /></p>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
             <h4 className="font-bold text-shiraz h-7 flex items-center">Wärmedehnung</h4>
-            <p className="text-sm text-text-main/80 leading-relaxed">
-              Aluminium dehnt sich bei Erwärmung fast doppelt so stark aus wie Stahl oder Beton. Bei Mischkonstruktionen muss dies durch Dehnfugen, Gleitlager oder Langlöcher berücksichtigt werden, damit keine Zwängungen und Schäden entstehen.
-            </p>
+            <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.aluminiumDehntSichBei} /></p>
           </div>
         </div>
       </div>
@@ -371,30 +356,20 @@ export default function Materialkennwerte() {
       {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2 animate-in fade-in duration-300">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2 border-b border-home-grau/20 pb-3">
-          <Scale className="text-shiraz w-5 h-5" /> Anwendung: Kennwerte im Rechenbeispiel
-        </h3>
+          <Scale className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.anwendungKennwerteImRechenbeispiel} /></h3>
         <FormulaDerivationBox
-          title="Beispiel 1: Wärmedehnung einer Aluminium-Attikaabdeckung neben Stahlbeton"
+          title={inhalt.werte.beispiel1WärmedehnungEiner}
           zielGleichung="\Delta L = \alpha_T \cdot L_0 \cdot \Delta T"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'Attikaabdeckung aus Aluminium, Länge L₀ = 10 m, Temperaturspanne zwischen Montage und Sommerhöchstwert ΔT = 60 K. Zum Vergleich: Stahlbeton-Attika gleicher Länge.', formel: 'L_0 = 10\\,000\\,\\text{mm},\\quad \\Delta T = 60\\,\\text{K}' },
-            { titel: 'Aluminium', erklaerung: 'Mit α_T = 23 · 10⁻⁶ 1/K aus der Kennwerte-Tabelle:', formel: '\\Delta L_{Al} = 23 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 13{,}8\\,\\text{mm}', einheit: 'mm' },
-            { titel: 'Stahlbeton', erklaerung: 'Mit α_T = 10 · 10⁻⁶ 1/K (DIN EN 1992-1-1, 3.1.3):', formel: '\\Delta L_{StB} = 10 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 6{,}0\\,\\text{mm}', einheit: 'mm' },
-            { titel: 'Bewertung', erklaerung: 'Die Relativbewegung von rund 8 mm je 10 m muss über Langlöcher, Gleitbefestigungen oder Stoßfugen aufgenommen werden. Starr verschraubt entstehen Zwängungen, die Befestiger abscheren oder die Abdeckung beulen.', formel: '\\Delta L_{Al} - \\Delta L_{StB} = 7{,}8\\,\\text{mm}' }
-          ]}
-          ergebnisHinweis="Aluminium dehnt sich gut doppelt so stark wie Stahlbeton – Fugen- und Befestigungsabstände richten sich nach diesem Unterschied."
-          normQuelle="DIN EN 1991-1-5 (Temperatureinwirkungen); α_T-Werte: DIN EN 1992-1-1, DIN EN 1999-1-1"
+          schritte={inhalt.daten["Materialkennwerte.schritte"]}
+          ergebnisHinweis={inhalt.werte.aluminiumDehntSichGut}
+          normQuelle={inhalt.werte.dinEn19911}
         />
         <FormulaDerivationBox
-          title="Beispiel 2: Spezifische Steifigkeit – warum Holz trotz kleinem E-Modul effizient ist"
+          title={inhalt.werte.beispiel2SpezifischeSteifigkeit}
           zielGleichung="\frac{E}{\rho}\ \text{(spezifische Steifigkeit)}"
-          schritte={[
-            { titel: 'Baustahl S235', erklaerung: 'E = 210.000 MPa, ρ = 7.850 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{210\\,000}{7\\,850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
-            { titel: 'Nadelholz C24 (faserparallel)', erklaerung: 'E₀,mean = 11.000 MPa, ρ_mean = 420 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{11\\,000}{420} \\approx 26{,}2\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
-            { titel: 'Beton C30/37', erklaerung: 'E_cm = 33.000 MPa, ρ = 2.400 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{33\\,000}{2\\,400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' }
-          ]}
-          ergebnisHinweis="Bezogen auf das Gewicht sind Stahl und Holz (in Faserrichtung) etwa gleich steif, Beton nur halb so steif. Das Netzdiagramm zeigt absolute Werte – für den Leichtbau zählt das Verhältnis."
-          normQuelle="Kennwerte: DIN EN 1993-1-1, DIN EN 338, DIN EN 1992-1-1"
+          schritte={inhalt.daten["Materialkennwerte.schritte_2"]}
+          ergebnisHinweis={inhalt.werte.bezogenAufDasGewicht}
+          normQuelle={inhalt.werte.kennwerteDinEn1993}
         />
       </div>
 
@@ -408,33 +383,10 @@ export default function Materialkennwerte() {
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
-          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)' },
-          { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)' },
-          { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)' },
-          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)' },
-          { title: 'DIN EN 338 (Bauholz für tragende Zwecke – Festigkeitsklassen)' },
-          { title: 'DIN EN 14080 (Brettschichtholz und Balkenschichtholz)' },
-          { title: 'DIN EN ISO 10456 (Wärmetechnische Eigenschaften – Tabellierte Bemessungswerte)' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
-        ]}
-        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Kennwerte gegen DIN EN 1992-1-1, DIN EN 338, DIN EN 14080, DIN EN 1993-1-4 geprüft; fachliche Freigabe durch den Autor ausstehend)"
-        formeln={[
-          {
-            formel: 'E = \\frac{\\sigma}{\\varepsilon} \\quad [\\text{MPa}] \\quad \\text{bzw.} \\quad G = \\frac{E}{2\\,(1 + \\nu)}',
-            erklaerung: 'Hookesches Gesetz für linearelastisches Materialverhalten sowie Beziehung zwischen Elastizitätsmodul E, Schubmodul G und Querdehnungszahl (Poissonzahl) nu.',
-            quelle: 'Festigkeitslehre / DIN EN 1990'
-          },
-          {
-            formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T \\quad [\\text{mm}]',
-            erklaerung: 'Thermische Längenänderung eines Werkstoffs in Abhängigkeit von Ausgangslänge L_0, linearem thermischem Ausdehnungskoeffizienten alpha_T [10^-6 / K] und Temperaturdifferenz.',
-            quelle: 'DIN EN 1991-1-5'
-          }
-        ]}
+        regelwerke={inhalt.daten["Materialkennwerte.regelwerke"]}
+        literatur={inhalt.daten["Materialkennwerte.literatur"]}
+        lastReviewed={inhalt.werte.oktober2026Ap3}
+        formeln={inhalt.daten["Materialkennwerte.formeln"]}
       />
     </div>
   );

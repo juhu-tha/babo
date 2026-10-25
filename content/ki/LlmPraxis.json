@@ -1,0 +1,147 @@
+{
+  "texte": {
+    "t1ClaudeVsChatgpt": " 1. Claude vs. ChatGPT im Bau",
+    "t2SkillsMcpKonnektoren": " 2. Skills & MCP-Konnektoren",
+    "t3MarkdownMdStandard": " 3. Markdown (.md) Standard",
+    "t4ProjektverzeichnisseClaudeMd": " 4. Projektverzeichnisse & CLAUDE.md",
+    "t5BrowserWebGrounding": " 5. Browser & Web-Grounding",
+    "t6InteraktiverGeneratorVorlagen": " 6. Interaktiver Generator & Vorlagen",
+    "claudeAnthropic": "Claude (Anthropic)",
+    "claudeSonnetOpusAktuelle": "Claude Sonnet / Opus (aktuelle Generation)",
+    "starkBeiPräziserTechnischer": "Stark bei präziser technischer Dokumentenanalyse, Code-Erstellung, strikte Formatierung und ausgedehnten Reasoning-Modus.",
+    "claudeProjects200kToken": " Claude Projects (200k+ Token Context + Caching)",
+    "zentraleWissensbasisFürGanze": "Zentrale Wissensbasis für ganze Bauprojekte. Bodengutachten, statische Vorbemessungen und Baubeschreibungen dauerhaft hinterlegen. Durch **Prompt Caching** sinken die Abfragekosten um bis zu 90 %.",
+    "artifactsInteraktiveToolsSvg": " Artifacts (Interaktive Tools & SVG)",
+    "claudeRendertInteraktiveReact": "Claude rendert interaktive React-Rechner, Sieblinien-Visualisierer und technische SVG-Bewehrungszeichnungen direkt im geteilten Seitenfenster – ideal zum schnellen Prototyping vor Ort.",
+    "extendedThinkingDeepReasoning": " Extended Thinking (Deep Reasoning)",
+    "ermöglichtTransparenteDenkkettenBei": "Ermöglicht transparente Denkketten bei mehrstufigen statischen Nachweisen (z. B. Biegebemessung mit Druckbewehrung oder Rissbreitennachweis nach EC2).",
+    "besteEignung": "Beste Eignung:",
+    "gutachtenLvsCodeProjektordner": "Gutachten, LVs, Code & Projektordner",
+    "chatgptOpenai": "ChatGPT (OpenAI)",
+    "gptAktuelleGenerationInkl": "GPT (aktuelle Generation inkl. Reasoning)",
+    "verbreitetFürNumerischeDatenanalysen": "Verbreitet für numerische Datenanalysen in Sandboxes, kollaboratives Text-Editing und multimodale Sprach-/Bildinteraktion.",
+    "advancedDataAnalysisPython": " Advanced Data Analysis (Python Sandbox)",
+    "ladenSieCsvRohdaten": "Laden Sie CSV-Rohdaten von Zugversuchen, Druckprüfmaschinen oder Temperaturfühlern hoch. ChatGPT führt echten Python-Code aus und erzeugt druckfertige Diagramme und Regressionen ohne Rechenfehler.",
+    "canvasKooperativerTexteditor": " Canvas (Kooperativer Texteditor)",
+    "erlaubtDasGezielteÜberarbeiten": "Erlaubt das gezielte Überarbeiten einzelner Abschnitte in Gutachten oder Mängelrügen, ohne den gesamten Text neu generieren zu müssen. Mit integrierter Versionshistorie.",
+    "customGptsMitOpenapi": " Custom GPTs mit OpenAPI-Actions",
+    "bindenSieEigeneBürowerkzeuge": "Binden Sie eigene Bürowerkzeuge an (z. B. REST-API für Wetterdaten am Bautag oder Abruf von tagesaktuellen Betonpreisen aus dem ERP-System).",
+    "besteEignung2": "Beste Eignung:",
+    "messreihenExcelCsvVoice": "Messreihen, Excel/CSV, Voice & Canvas",
+    "entscheidungsmatrixWannWelchesModell": " Entscheidungsmatrix: Wann welches Modell einsetzen?",
+    "empfohlenesModell": "Empfohlenes Modell",
+    "bevorzugtesFeature": "Bevorzugtes Feature",
+    "technischerHintergrundMehrwert": "Technischer Hintergrund & Mehrwert",
+    "baugrundgutachten150SeitenPdf": "Baugrundgutachten (150 Seiten PDF) zusammenfassen",
+    "claudeSonnet": "Claude Sonnet",
+    "claudeProject200kWindow": "Claude Project + 200k Window",
+    "höchsteSchärfeBeimAuffinden": "Höchste Schärfe beim Auffinden einzelner Schichtdicken im tiefen Fließtext (\"Needle in a Haystack Benchmark\").",
+    "zugversuchsRohdatenCsvMit": "Zugversuchs-Rohdaten (CSV mit 50.000 Messpunkten)",
+    "chatgptPlusPro": "ChatGPT Plus / Pro",
+    "advancedDataAnalysisPython2": "Advanced Data Analysis (Python)",
+    "rechnetMitEchtenPandas": "Rechnet mit echten Pandas-Bibliotheken im Sandbox-Container; kein Token-Verbrauch für reine Zahlenkolonnen.",
+    "prüfberichtFürBauschadenSchreiben": "Prüfbericht für Bauschaden schreiben & iterieren",
+    "chatgptCanvas": "ChatGPT (Canvas)",
+    "canvasInlineEditing": "Canvas Inline-Editing",
+    "präziseKorrekturenAnEinzelnen": "Präzise Korrekturen an einzelnen Absätzen (z. B. Ursachennachweis), ohne dass die Formatierung zerbricht.",
+    "erstellungEinesBauphysikRechners": "Erstellung eines Bauphysik-Rechners (U-Wert / Glaser)",
+    "claudeSonnet2": "Claude Sonnet",
+    "artifactsReactHtml": "Artifacts (React / HTML)",
+    "sofortBedienbareInteraktiveOberfläche": "Sofort bedienbare, interaktive Oberfläche im Browserfenster zum Testen und Weiterentwickeln.",
+    "rechtssichereVobMängelrüge4": "Rechtssichere VOB-Mängelrüge (§ 4 Abs. 7 VOB/B)",
+    "claudeSonnet3": "Claude Sonnet",
+    "formuliertFormellNüchternPräzise": "Formuliert formell nüchtern, präzise nach Baurecht, ohne blumige Füllwörter oder typische AI-Klischees.",
+    "rechercheZuDibtZulassungen": "Recherche zu DIBt-Zulassungen & neuen Normen",
+    "perplexityChatgptSearch": "Perplexity / ChatGPT Search",
+    "webGroundingZitate": "Web-Grounding + Zitate",
+    "liveWebsucheMitDirekten": "Live-Websuche mit direkten Quellenlinks verhindert Normen-Halluzinationen bei veralteten Ständen.",
+    "interaktiverIngenieurPromptVorlagen": " Interaktiver Ingenieur-Prompt- & Vorlagen-Generator",
+    "konfiguriereMaßgeschneiderteSystemPrompt": "Konfiguriere maßgeschneiderte System-Prompts, ",
+    "projektdateienOderWorkflowAnweisungen": "-Projektdateien oder Workflow-Anweisungen für Ihr Büro oder Ihre Masterarbeit. Mit 1-Klick kopieren und direkt in Claude Projects oder Custom GPTs einfügen.",
+    "t1IngenieurRolleFachdisziplin": "1. Ingenieur-Rolle / Fachdisziplin:",
+    "t2LeitendesRegelwerk": "2. Leitendes Regelwerk:",
+    "t3ZielFormatierung": "3. Ziel-Formatierung:",
+    "vorlageKopieren": " Vorlage kopieren",
+    "weitereGeprüfteKopiervorlagenFür": " Weitere geprüfte Kopiervorlagen für die Baupraxis",
+    "vobBMängelrüge4": "VOB/B Mängelrüge (§ 4 Abs. 7)",
+    "erstelltAufBasisVon": "Erstellt auf Basis von Baustellenfotos und Bautagebuch-Notizen ein formelles Schreiben mit Nachfrist und Kündigungsandrohung.",
+    "musterPromptKopieren": "Muster-Prompt kopieren",
+    "vobBBedenkenhinweis4": "VOB/B Bedenkenhinweis (§ 4 Abs. 3)",
+    "schütztDasUnternehmenVor": "Schützt das Unternehmen vor Schadensersatzansprüchen bei fehlerhaften Vorleistungen anderer Gewerke (z. B. unebene Bodenplatte vor Estrich).",
+    "musterPromptKopieren2": "Muster-Prompt kopieren",
+    "prüftEineGegebeneMischung": "Prüft eine gegebene Mischung (Zement, w/z, Flugasche, Gestein) gegen Expositionsklassen XC4, XF1 und berechnet den äquivalenten Wasserzementwert.",
+    "musterPromptKopieren3": "Muster-Prompt kopieren",
+    "vorbemessungEinfeldträger": "Vorbemessung Einfeldträger",
+    "führtEineStatischeVorbemessung": "Führt eine statische Vorbemessung für einen Stahlbetonbalken durch: Lastkombination $q_{Ed}$, Biegemoment $M_{Ed}$ und erforderliche Bewehrung $a_s$.",
+    "musterPromptKopieren4": "Muster-Prompt kopieren",
+    "strukturiertDieSchadensaufnahmeBei": "Strukturiert die Schadensaufnahme bei Feuchteschäden im Kellerbereich (Wassereinwirkungsklasse W1-E bis W2-E) mit Sanierungskonzept.",
+    "musterPromptKopieren5": "Muster-Prompt kopieren",
+    "generiertEinPythonSkript": "Generiert ein Python-Skript zur automatisierten Auswertung von 28-Tage-Würfeldruckfestigkeiten mit Gauß-Plot und Konformitätscheck.",
+    "musterPromptKopieren6": "Muster-Prompt kopieren",
+    "claudeChatgptProfessional": "Claude & ChatGPT Professional",
+    "llmPraxisImBauwesen": "LLM-Praxis im Bauwesen",
+    "skillsMcpKonnektorenMarkdown": "Skills, MCP-Konnektoren, Markdown-Standardisierung, Projektverzeichnisse & Web-Grounding",
+    "leitfadenFürIngenieurbüroMasterstudium": "Leitfaden für Ingenieurbüro & Masterstudium",
+    "projektordner": "Projektordner (",
+    "derNaiveEinsatzVon": "Der naive Einsatz von Large Language Models (LLMs) per unstrukturiertem Copy-Paste führt im Bauwesen schnell zu gefährlichen Halluzinationen, Normenverwechslungen und explodierenden Token-Kosten. Dieses Modul vermittelt den **professionellen Ingenieur-Workflow**: Wie Sie **Claude** und **ChatGPT** durch maßgeschneiderte **Skills**, offene **MCP-Konnektoren**, verlustfreie **Markdown-Hierarchien**, kuratierte ",
+    "undGerichtetesBrowserGrounding": " und gerichtetes **Browser-Grounding** in zuverlässige Hochleistungs-Kopiloten für Statik, Bauleitung und Gutachten verwandeln."
+  },
+  "werte": {
+    "t1IngenieurRolleFachdisziplin": "1. Ingenieur-Rolle / Fachdisziplin",
+    "t2LeitendesRegelwerk": "2. Leitendes Regelwerk",
+    "t3ZielFormatierung": "3. Ziel-Formatierung",
+    "duBistBauleiterEines": "Du bist Bauleiter eines Generalunternehmers. Formuliere auf Basis nachfolgender Stichpunkte eine formelle Mängelrüge nach § 4 Abs. 7 VOB/B vor Abnahme.\nGewerke: Estricharbeiten.\nMangel: Massive Rissbildungen (Rissbreite > 1,5 mm) und fehlende Randdämmstreifen im 1. OG Raum 102-105.\nForderungen:\n1. Konkrete Aufforderung zur Mängelbeseitigung bis zum [Datum in 6 Werktagen].\n2. Androhung, dass nach fruchtlosem Fristablauf der Auftrag für diese Restleistung nach § 8 Abs. 3 VOB/B entzogen und ein Drittunternehmen auf Kosten des Auftragnehmers beauftragt wird.\n3. Sachlicher, bestimmter Tonfall ohne Emotionen.",
+    "duBistBauleiterEines2": "Du bist Bauleiter eines Estrichlegers. Formuliere eine Bedenkenanmeldung nach § 4 Abs. 3 VOB/B an den Auftraggeber:\nSachverhalt:\nDie bauseits gestellte Stahlbeton-Bodenplatte weist Unebenheiten von bis zu 22 mm auf einer 4-Meter-Messstrecke auf (Zulässig nach DIN 18202 Zeile 3: max. 10 mm).\nRisiko: Bei Verlegung des Estrichs auf Trennlage droht ungleichmäßige Estrichdicke, Abreißen der Fugen und Rissbildung.\nForderung: Aufforderung an den AG, den Ausgleich durch den Rohbauer herstellen zu lassen oder schriftliche Freigabe für einen kostenpflichtigen Ausgleichsestrich zu erteilen.",
+    "prüfeFolgendeBetonrezepturAuf": "Prüfe folgende Betonrezeptur auf normgerechte Einhaltung der Mindestanforderungen nach DIN EN 206 / DIN 1045-2 für Expositionsklassen XC4, XF1:\nRezeptur pro m³:\n- Zement: 300 kg CEM II/A-LL 42,5 R\n- Steinkohlenflugasche: 50 kg\n- Wirksamer Wassergehalt: 165 Liter\n- Gesteinskörnung: 1850 kg (A/B16)\nAufgaben:\n1. Berechne den anrechenbaren Flugascheanteil mit k-Wert (k = 0,4) und den resultierenden äquivalenten w/z-Wert (w/z)_eq.\n2. Prüfe die Einhaltung von min z, max (w/z)_eq und Mindestdruckfestigkeit.\n3. Gib das Ergebnis in einer übersichtlichen Konformitätstabelle aus.",
+    "duBistPrüfingenieurFür": "Du bist Prüfingenieur für Tragwerksplanung nach Eurocode 2 (DIN EN 1992-1-1).\nFühre eine Vorbemessung für einen frei aufliegenden Stahlbeton-Einfeldträger durch:\nEckdaten:\n- Stützweite: L = 6,50 m\n- Querschnitt: b = 30 cm, h = 50 cm\n- Baustoffe: Beton C30/37, Betonstahl B500B\n- Ständige Last: g_k = 18 kN/m (inkl. Eigengewicht)\n- Veränderliche Last: q_k = 12 kN/m\nAufgaben:\n1. Berechne die Bemessungslast q_Ed im GZT mit Teilsicherheitsbeiwerten (gamma_G=1,35, gamma_Q=1,50).\n2. Berechne das maximale Feldmoment M_Ed.\n3. Berechne die erforderliche Längsbewehrung a_s mit Angabe der statischen Nutzhöhe d (d1 = 5 cm).\n4. Schlage eine praxisgerechte Bewehrungswahl vor (z. B. 4 d 20).",
+    "duBistÖffentlichBestellter": "Du bist öffentlich bestellter und vereidigter Sachverständiger für Bauschäden.\nErstelle eine gutachterliche Gliederung und Befundaufnahme zu folgendem Fall:\nBefund: Im Kellergeschoss eines 2018 errichteten Wohnhauses tritt an der Sohlen-Wand-Fuge Wasser ein.\nWandbaustoff: Ortbeton C25/30, außen Bitumen-Dickbeschichtung (PMBC).\nGrundwasserstand: HGW liegt 80 cm über Oberkante Kellersohle.\nAufgaben:\n1. Einordnung der Wassereinwirkungsklasse nach DIN 18533 (W1.1-E vs. W2.1-E).\n2. Typische Schadensursachen an der Hohlkehle / Fugenblech analysieren.\n3. Notwendige zerstörungsfreie und invasive Baustoffprüfungen auflisten.\n4. Skizziere zwei Sanierungsansätze (innenliegende Schleierinjektion vs. Freilegen von außen).",
+    "schreibeEinVollständigesSauber": "Schreibe ein vollständiges, sauber kommentiertes Python-Skript (pandas, scipy.stats, matplotlib) zur statistischen Auswertung einer Betonprüfserie nach DIN EN 206:\nInput: CSV-Datei mit Spalte 'Druckfestigkeit_MPa' (15 Proben C30/37).\nBerechnungen:\n1. Mittelwert f_cm, Standardabweichung s und charakteristische Festigkeit f_ck,est = f_cm - 1,48 * s.\n2. Prüfung von Kriterium 1 (f_cm >= f_ck + 1,48*s) und Kriterium 2 (f_ci >= f_ck - 4).\n3. Ausgabe einer Matplotlib-Grafik mit Histogramm, gefitteter Gauß-Glockenkurve und eingezeichnetem Grenzwert f_ck = 30 MPa.",
+    "modelContextProtocolMcp": "Model Context Protocol (MCP)",
+    "largeLanguageModel": "Large Language Model"
+  },
+  "daten": {
+    "LlmPraxis.roleTitles": {
+      "pruefstatik": "Prüfingenieur für Tragwerksplanung & Massivbau (Eurocode 2 & DIN 1045-2)",
+      "bauleitung_vob": "Erfahrener Oberbauleiter mit VOB/B-, Nachtrags- und Abnahme-Fokus",
+      "sachverstaendiger": "Öffentlich bestellter und vereidigter Sachverständiger für Bauschäden & Bauwerksdiagnostik",
+      "baustofflabor": "Leiter Baustoffprüflabor (Erstprüfung, Konformitätskontrolle nach DIN EN 206 & DIN 1045)",
+      "nachhaltigkeit_lca": "DGNB-Auditor & Berater für kreislaufgerechtes Bauen und Ökobilanzierung (LCA/LCC)"
+    },
+    "LlmPraxis.normGuidelines": {
+      "ec2_din1045": "Grundlage aller Berechnungen sind DIN EN 1992-1-1 mit nationalem Anhang (NA) und DIN 1045-2. Verwende ausschließlich charakteristische Werte f_ck, f_yk und führe Bemessungswerte f_cd, f_yd transparent mit Teilsicherheitsbeiwerten (gamma_C=1,5, gamma_S=1,15) an.",
+      "vob_b": "Fokussiere auf VOB/B §§ 4, 13 (Mängelhaftung) und 15 (Bautagebuch & Stundenlohn). Formuliere Mängelrügen und Bedenkenanmeldungen nach VOB/B § 4 Abs. 3 präzise mit konkreter Fristsetzung und Androhung der Kündigung nach § 8 Abs. 3.",
+      "din18533": "Beurteile alle erdberührten Abdichtungen streng nach DIN 18533 (Wassereinwirkungsklassen W1-E bis W4-E, Rissklassen R1-E bis R4-E). Weise stets auf Übergangsdetails und Hohlkehlenausbildungen hin.",
+      "din_en_206": "Prüfen Sie Konformitätskriterien nach DIN EN 206 Tabellen 17 bis 19. Differenziere exakt zwischen Anfangsherstellung (3 Proben) und stetiger Herstellung (15 Proben).",
+      "geg_dgnb": "Berechnen Sie U-Werte und H'T-Grenzwerte nach dem Gebäudemodernisierungsgesetz (GModG, vormals GEG) und DIN 4108-2 (Mindestwärmeschutz f_Rsi >= 0,70). Berücksichtige EPD-Kennwerte (GWP_total in kg CO2-Äq/m²a)."
+    },
+    "LlmPraxis.literatur": [
+      "Anthropic (2024): Model Context Protocol Specification & Architecture (modelcontextprotocol.io)",
+      "VDI 2552 Blatt 1ff.: Building Information Modeling (BIM) - Datenmanagement und Informationsaustausch",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "LlmPraxis.regelwerke": [
+      {
+        "title": "EU AI Act (Verordnung (EU) 2024/1689 zur Regulierung Künstlicher Intelligenz)",
+        "url": "https://eur-lex.europa.eu/"
+      },
+      {
+        "title": "DIN EN ISO 19650: Organisation und Digitalisierung von Informationen zu Bauwerken und Ingenieurleistungen (BIM)"
+      },
+      {
+        "title": "VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen"
+      }
+    ],
+    "LlmPraxis.formeln": [
+      {
+        "formel": "T_{\\text{eff}} = N_{\\text{words}} \\cdot 1{,}33 \\quad [\\text{Tokens}]",
+        "erklaerung": "Faustformel für deutschsprachigen technischen Text: 1 Wort entspricht im Durchschnitt ca. 1,33 bis 1,5 Subword-Tokens im BPE-Tokenizer (Byte Pair Encoding).",
+        "quelle": "OpenAI / Anthropic Tokenizer Guidelines"
+      },
+      {
+        "formel": "\\text{Context-Ratio} = \\frac{\\sum T_{\\text{Prompt}} + \\sum T_{\\text{Docs}}}{T_{\\text{MaxWindow}}} \\le 0{,}70",
+        "erklaerung": "Empfohlene Obergrenze der Kontextauslastung. Um den \"Lost-in-the-Middle\"-Effekt bei RAG und langen Projektordnern zu minimieren, sollte der Arbeitskontext unter 70 % des maximalen Fensters gehalten werden.",
+        "quelle": "Liu et al. (2023): Lost in the Middle - How Language Models Use Long Contexts"
+      }
+    ]
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "texte": {
+    "korrosionsschutzDurchBeschichtungen": "Korrosionsschutz durch Beschichtungen",
+    "dinEnIso12944": "DIN EN ISO 12944 Teile 1 bis 9 • DIN EN ISO 8501-1 • DIN EN ISO 1461 • DIN EN ISO 2409 • DIN EN ISO 4624",
+    "unlegierterBaustahlRostetAn": "Unlegierter Baustahl rostet an der Atmosphäre, sobald Feuchte und Sauerstoff einwirken. Beschichtungen und Zinküberzüge trennen den Stahl von diesem Elektrolyten oder schützen ihn kathodisch. Das Modul führt von der Einstufung der Umgebung über Oberflächenvorbereitung und Schichtaufbau bis zur Abschätzung der Schutzdauer einer Feuerverzinkung und eines Duplex-Systems.",
+    "wirkprinzipienDesKorrosionsschutzes": "Wirkprinzipien des Korrosionsschutzes",
+    "barrierewirkungPassivDieBeschichtung": "**Barrierewirkung (passiv):** Die Beschichtung behindert den Zutritt von Wasser, Sauerstoff und Ionen (Chlorid, Sulfat). Plättchenförmige Pigmente wie Eisenglimmer verlängern den Diffusionsweg.",
+    "kathodischeSchutzwirkungAktivZink": "**Kathodische Schutzwirkung (aktiv):** Zink ist unedler als Eisen und löst sich an Fehlstellen bevorzugt auf (Opferanode). So wirken Zinküberzüge und zinkstaubreiche Grundbeschichtungen.",
+    "inhibierungKorrosionsschutzpigmenteVerla": "**Inhibierung:** Korrosionsschutzpigmente verlangsamen die Teilreaktionen an der Stahloberfläche.",
+    "dieNormenreiheDinEn": "Die Normenreihe DIN EN ISO 12944 gilt für Stahlbauten aus unlegiertem oder niedriglegiertem Stahl mit mindestens 3 mm Dicke, die nach einem Festigkeitsnachweis bemessen werden. Sie regelt den Weg von der Umgebung über Gestaltung und Oberflächenvorbereitung bis zum Beschichtungssystem und zu dessen Ausführung und Prüfung.",
+    "dieNeunTeileDer": "Die neun Teile der DIN EN ISO 12944",
+    "schutzdauerklassenNachDinEn": "Schutzdauerklassen nach DIN EN ISO 12944-1",
+    "dieSchutzdauerIstDie": "Die Schutzdauer ist die erwartete Zeit bis zur ersten Teilerneuerung des Beschichtungssystems. Sie ist ein Planungswert und ausdrücklich keine Gewährleistungsfrist.",
+    "t1OberflächenvorbereitungNachDin": "1. Oberflächenvorbereitung nach DIN EN ISO 8501-1",
+    "dieHaftungUndDamit": "Die Haftung und damit die Schutzdauer eines Beschichtungssystems hängen entscheidend vom Untergrund ab. DIN EN ISO 8501-1 beschreibt mit fotografischen Vergleichsmustern den Ausgangszustand (Rostgrade A bis D) und den erreichten Vorbereitungsgrad.",
+    "rostgradeAusgangszustand": "Rostgrade (Ausgangszustand)",
+    "sa2IstDer": "**Sa 2½** ist der übliche Vorbereitungsgrad für hochwertige Systeme auf Stahl. Zusätzlich sind die Rauheit (Rauheitsvergleichsmuster nach DIN EN ISO 8503) sowie Staub und lösliche Salze (DIN EN ISO 8502) zu beachten. Beschichtet wird nur bei ausreichendem Abstand der Stahltemperatur zum Taupunkt; in der Praxis gilt meist mindestens 3 K über dem Taupunkt, maßgebend sind DIN EN ISO 12944-7 und das Datenblatt des Herstellers.",
+    "t2AufbauEinesBeschichtungssystems": "2. Aufbau eines Beschichtungssystems",
+    "haftungAufDemStahl": "Haftung auf dem Stahl, aktiver Schutz durch Zinkstaub oder Korrosionsschutzpigmente.",
+    "schichtdickeUndBarrierewirkungOft": "Schichtdicke und Barrierewirkung, oft mit Eisenglimmer; Haftbrücke zur Deckschicht.",
+    "witterungsUndUvSchutz": "Witterungs- und UV-Schutz, Farbton, mechanische und chemische Beständigkeit.",
+    "bindemittelNachDinEn": "Bindemittel nach DIN EN ISO 12944-5",
+    "typischeRolle": "Typische Rolle",
+    "dinEnIso129442": "DIN EN ISO 12944-5 nennt außerdem Polyaspartat (PAS) und Polysiloxan (PS). Welche Kombination für eine Kategorie und Schutzdauer geeignet ist, entnehmen Sie den Systemtabellen der Norm oder einem nach DIN EN ISO 12944-6 bzw. -9 geprüften Herstellersystem.",
+    "t3SollschichtdickeNdft": "3. Sollschichtdicke (NDFT)",
+    "dieSollschichtdickeNdftNominal": "Die **Sollschichtdicke NDFT** (nominal dry film thickness) ist die festgelegte Trockenschichtdicke je Schicht und für das Gesamtsystem. Die Gesamtdicke ist die Summe der Einzelschichten:",
+    "lehrbeispielEinesDreischichtigenSystems": "Lehrbeispiel eines dreischichtigen Systems: EP-Zinkstaub 60 µm + EP-Eisenglimmer 120 µm + PUR-Deckbeschichtung 60 µm = 240 µm. Abnahmeregel nach DIN EN ISO 12944-5 und -7, sofern nichts anderes vereinbart: Einzelwerte unter NDFT sind zulässig, wenn sie mindestens 80 % der NDFT betragen und höchstens 20 % aller Messwerte unter NDFT liegen. Eine Höchstschichtdicke ist zu vereinbaren, da zu dicke Schichten zu Rissen und Enthaftung neigen.",
+    "t4PrüfungUndAbnahme": "4. Prüfung und Abnahme",
+    "zerstörungsfreiMagnetinduktivBzwMit": "Zerstörungsfrei magnetinduktiv bzw. mit Wirbelstrom nach DIN EN ISO 2808; auf gestrahlten (rauen) Flächen mit Korrekturwert nach ISO 19840. Für Zinküberzüge gelten die Messregeln der DIN EN ISO 1461.",
+    "gitterschnittDinEnIso": "Gitterschnitt (DIN EN ISO 2409)",
+    "gitterAusSechsSchnitten": "Gitter aus sechs Schnitten je Richtung bis auf den Untergrund, Abreißen mit Klebeband, Einstufung von 0 (kein Abplatzen) bis 5. Schnittabstand auf harten Untergründen: 1 mm bis 60 µm, 2 mm von 61 bis 120 µm, 3 mm von 121 bis 250 µm; für dickere Systeme ungeeignet.",
+    "haftabzugDinEnIso": "Haftabzug (DIN EN ISO 4624)",
+    "prüfstempelAufklebenSenkrechtAbziehen": "Prüfstempel aufkleben, senkrecht abziehen, Abreißfestigkeit aus Kraft und Stempelfläche. Anzugeben ist zusätzlich das Bruchbild: Adhäsionsbruch zwischen Schichten, Kohäsionsbruch in einer Schicht oder Bruch im Klebstoff.",
+    "feuerverzinkenNachDinEn": "Feuerverzinken nach DIN EN ISO 1461 (Stückverzinken)",
+    "dasGereinigteUndGebeizte": "Das gereinigte und gebeizte Bauteil wird in schmelzflüssiges Zink getaucht (etwa 450 °C). Es entstehen Eisen-Zink-Legierungsschichten mit einer äußeren Reinzinkschicht, die metallurgisch mit dem Stahl verbunden sind. Die Schichtdicke steigt mit der Stahldicke und hängt von der Stahlzusammensetzung ab (vor allem Silicium und Phosphor).",
+    "zinkSchütztDoppeltAls": "Zink schützt doppelt: als Barriere, die selbst langsam abgetragen wird, und kathodisch an Kratzern und Schnittkanten. Auf frisch verzinkten Flächen kann sich bei Kondensation Weißrost bilden; die schützende Deckschicht aus Zinkcarbonat entsteht erst bei Wechsel von Befeuchtung und Trocknung.",
+    "mindestwerteDerZinküberzugsdickeTeile": "Mindestwerte der Zinküberzugsdicke (Teile nicht geschleudert)",
+    "örtlichM": "örtlich [µm]",
+    "durchschnittM": "Durchschnitt [µm]",
+    "duplexSystemFeuerverzinkungPlus": "Duplex-System: Feuerverzinkung plus Beschichtung",
+    "beimDuplexSystemWird": "Beim Duplex-System wird die Feuerverzinkung zusätzlich beschichtet. Die Beschichtung bremst den Zinkabtrag, das Zink verhindert an Fehlstellen der Beschichtung die Unterrostung. Die Schutzdauer ist deshalb größer als die Summe der Einzelschutzdauern:",
+    "derSynergiefaktorFIst": "Der Synergiefaktor f ist ein Erfahrungswert aus der Literatur und keine Normgröße: Das Institut Feuerverzinken nennt 1,2 bis 2, Fachveröffentlichungen bis 2,5. Voraussetzung ist eine fachgerechte Vorbereitung der Zinkoberfläche (z. B. Sweep-Strahlen nach DIN EN ISO 12944-4) und ein für verzinkten Stahl geeignetes System nach DIN EN ISO 12944-5.",
+    "berührenSichZweiMetalle": "Berühren sich zwei Metalle mit unterschiedlichem Potential in Gegenwart eines Elektrolyten, korrodiert das unedlere Metall verstärkt. Maßgebend ist neben der Potentialdifferenz das **Flächenverhältnis**: Eine kleine Anode an einer großen Kathode wird rasch abgetragen.",
+    "ungünstigVerzinkteSchraubenIn": "**Ungünstig:** Verzinkte Schrauben in einem Blech aus nichtrostendem Stahl – die kleine Zinkfläche der Schraube schützt die große edle Fläche und wird schnell verbraucht.",
+    "meistUnkritischAnDer": "**Meist unkritisch an der Atmosphäre:** Schrauben aus nichtrostendem Stahl in verzinktem Blech – die große Anode verteilt den Abtrag.",
+    "gegenmaßnahmenTrennungDurchIsolierende": "**Gegenmaßnahmen:** Trennung durch isolierende Scheiben und Hülsen, Elektrolyt fernhalten (konstruktiv nach DIN EN ISO 12944-3), bei Beschichtung vor allem das edlere Metall beschichten, damit Fehlstellen keine kleinen Anoden bilden.",
+    "korrosivitätskategorienDerAtmosphäreDin": "Korrosivitätskategorien der Atmosphäre (DIN EN ISO 12944-2)",
+    "dickenabnahmeImErstenJahr": "Dickenabnahme im ersten Jahr der Auslagerung für unlegierten Stahl und Zink; die Werte stimmen mit DIN EN ISO 9223 überein. Die Beispiele dienen der Orientierung, im Zweifel ist die Kategorie durch Messung (Probeblech) oder aus Umweltdaten nach DIN EN ISO 9223 zu bestimmen.",
+    "beispielAußen": "Beispiel außen",
+    "beispielInnen": "Beispiel innen",
+    "stahlMA": "Stahl [µm/a]",
+    "kategorienFürWasserUnd": "Kategorien für Wasser und Erdreich",
+    "fürImKategorienGibt": "Für Im-Kategorien gibt die Norm keine Abtragsraten an; die Systemwahl stützt sich auf Laborprüfungen nach DIN EN ISO 12944-6 bzw. -9.",
+    "mindestDurchschnittswertNachDin": "Mindest-Durchschnittswert nach DIN EN ISO 1461 übernehmen (",
+    "zinkschichtdickeDZn": "Zinkschichtdicke d_Zn",
+    "gewünschteSchutzdauerklasse": "Gewünschte Schutzdauerklasse",
+    "duplexSystemZusätzlicheBeschichtung": "Duplex-System (zusätzliche Beschichtung)",
+    "schutzdauerDerBeschichtungAllein": "Schutzdauer der Beschichtung allein t_B",
+    "synergiefaktorFLiteraturwert": "Synergiefaktor f (Literaturwert)",
+    "keinNormwertLehrannahme": "; kein Normwert, Lehrannahme.",
+    "schutzdauerJeKategorieBei": "Schutzdauer je Kategorie bei ",
+    "jahreKlassengrenzenBei7": " Jahre; Klassengrenzen bei 7, 15 und 25 Jahren.",
+    "erstDieUmgebungEinstufen": "Erst die Umgebung einstufen (C1 bis CX, Im1 bis Im4), dann die Schutzdauer festlegen, dann das System wählen.",
+    "ohneOberflächenvorbereitungInDer": "Ohne Oberflächenvorbereitung, in der Regel Sa 2½, versagt auch ein dickes System vorzeitig.",
+    "dieSchutzdauerEinerZinkschicht": "Die Schutzdauer einer Zinkschicht wächst linear mit der Schichtdicke und sinkt mit der Abtragsrate der Kategorie."
+  },
+  "werte": {
+    "verzinkenDuplex": "Verzinken & Duplex",
+    "kennwerteTabellen": "Kennwerte & Tabellen",
+    "rechnerSchutzdauer": "Rechner Schutzdauer",
+    "nachObenOffen": "nach oben offen",
+    "bereicheDesModulsKorrosionsschutz": "Bereiche des Moduls Korrosionsschutz",
+    "elektrochemischeGrundlagen": "Elektrochemische Grundlagen",
+    "zumModulMetallkorrosion": "Zum Modul Metallkorrosion",
+    "anodeKathodeSpannungsreiheUnd": "Anode, Kathode, Spannungsreihe und die Korrosionsarten (Flächen-, Loch-, Spalt- und Kontaktkorrosion) sind im Modul Metallkorrosion erklärt. Dieses Modul baut darauf auf.",
+    "werkstoffStahl": "Werkstoff Stahl",
+    "zumModulStahl": "Zum Modul Stahl",
+    "stahlsortenGefügeUndFestigkeiten": "Stahlsorten, Gefüge und Festigkeiten der Baustähle sowie die Bezeichnung nach DIN EN 10025 finden Sie im Modul Stahl.",
+    "duplexUngünstig": "Duplex ungünstig",
+    "zinkUngünstig": "Zink ungünstig",
+    "duplexGünstig": "Duplex günstig",
+    "zinkGünstig": "Zink günstig",
+    "balkendiagrammDerSchutzdauerJe": "Balkendiagramm der Schutzdauer je Korrosivitätskategorie",
+    "ihrRechenwegSchutzdauerDer": "Ihr Rechenweg: Schutzdauer der Zinkschicht",
+    "abtragsrateDerKategorie": "Abtragsrate der Kategorie",
+    "ungünstigeSchutzdauer": "Ungünstige Schutzdauer",
+    "günstigeSchutzdauer": "Günstige Schutzdauer",
+    "inC1IstDie": "In C1 ist die untere Abtragsrate praktisch null; die Schutzdauer ist nach oben offen.",
+    "mitDerUnterenAbtragsrate": "Mit der unteren Abtragsrate:",
+    "vergleichMitDerSchutzdauerklasse": "Vergleich mit der Schutzdauerklasse",
+    "linearesLehrmodellMitErstjahresraten": "Lineares Lehrmodell mit Erstjahresraten; Zink korrodiert in den Folgejahren meist etwas langsamer (DIN EN ISO 9224).",
+    "dinEnIso9223": "DIN EN ISO 9223:2012-05; DIN EN ISO 12944-1:2019-01; DIN EN ISO 1461:2022-12",
+    "beispiel1FeuerverzinkteHallenstütze": "Beispiel 1: Feuerverzinkte Hallenstütze in Stadtatmosphäre (C3)",
+    "inC3ErreichtEine": "In C3 erreicht eine normgerechte Feuerverzinkung ohne Beschichtung die Schutzdauerklasse VH.",
+    "dinEnIso1461": "DIN EN ISO 1461:2022-12; DIN EN ISO 9223:2012-05; DIN EN ISO 12944-1:2019-01",
+    "beispiel2GeländerAn": "Beispiel 2: Geländer an der Küste (C5) – reicht Zink oder braucht es Duplex?",
+    "erstDasDuplexSystem": "Erst das Duplex-System erreicht VH. Mit f = 1,2 ergäbe sich 24,1 a und damit nur Klasse H – der Faktor ist objektbezogen zu begründen.",
+    "dinEnIso92232": "DIN EN ISO 9223:2012-05; DIN EN ISO 12944-1:2019-01; Synergiefaktor nach Literatur",
+    "oktober2026ModulNeu": "Oktober 2026 (Modul neu erstellt; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "TEILE": [
+      {
+        "teil": "1",
+        "titel": "Allgemeine Einleitung",
+        "inhalt": "Geltungsbereich, Begriffe, Schutzdauerklassen L bis VH"
+      },
+      {
+        "teil": "2",
+        "titel": "Einteilung der Umgebungsbedingungen",
+        "inhalt": "Korrosivitätskategorien C1 bis CX (Atmosphäre), Im1 bis Im4 (Wasser, Erdreich)"
+      },
+      {
+        "teil": "3",
+        "titel": "Grundregeln zur Gestaltung",
+        "inhalt": "Korrosionsschutzgerechtes Konstruieren: Zugänglichkeit, Spalte, Kanten, Wassersäcke, Kontaktkorrosion"
+      },
+      {
+        "teil": "4",
+        "titel": "Arten von Oberflächen und Oberflächenvorbereitung",
+        "inhalt": "Rostgrade, Vorbereitungsverfahren, Bezug auf DIN EN ISO 8501 bis 8503"
+      },
+      {
+        "teil": "5",
+        "titel": "Beschichtungssysteme",
+        "inhalt": "Bindemitteltypen, Systemtabellen je Kategorie und Schutzdauer, Sollschichtdicken (NDFT)"
+      },
+      {
+        "teil": "6",
+        "titel": "Laborprüfungen zur Bewertung von Beschichtungssystemen",
+        "inhalt": "Künstliche Alterung (u. a. Salzsprühnebel, Kondenswasser) als Eignungsnachweis"
+      },
+      {
+        "teil": "7",
+        "titel": "Ausführung und Überwachung der Beschichtungsarbeiten",
+        "inhalt": "Verarbeitungsbedingungen, Schichtdickenmessung, Kontrollflächen"
+      },
+      {
+        "teil": "8",
+        "titel": "Erarbeitung von Spezifikationen für Erstschutz und Instandsetzung",
+        "inhalt": "Leistungsbeschreibung, Projektablauf, Dokumentation"
+      },
+      {
+        "teil": "9",
+        "titel": "Beschichtungssysteme und Laborprüfverfahren für Offshore- und vergleichbare Bauwerke",
+        "inhalt": "Systeme für CX und Im4, erweiterte Prüfungen"
+      }
+    ],
+    "BINDEMITTEL": [
+      {
+        "kurz": "EP",
+        "name": "Epoxidharz (2K)",
+        "rolle": "Grund- und Zwischenbeschichtung",
+        "text": "Sehr gute Haftung, Chemikalien- und Wasserbeständigkeit; kreidet unter UV-Strahlung, daher selten als Deckbeschichtung im Freien."
+      },
+      {
+        "kurz": "PUR",
+        "name": "Polyurethan (2K, aliphatisch)",
+        "rolle": "Deckbeschichtung",
+        "text": "Witterungs-, UV- und farbtonstabil; schützt die darunterliegenden EP-Schichten vor Abbau."
+      },
+      {
+        "kurz": "AY",
+        "name": "Acrylharz",
+        "rolle": "Grund- bis Deckbeschichtung",
+        "text": "Physikalisch trocknend, häufig wasserverdünnbar; für geringere Belastungen und kurze Systeme."
+      },
+      {
+        "kurz": "ESI",
+        "name": "Ethylsilikat mit Zinkstaub",
+        "rolle": "Grundbeschichtung",
+        "text": "Anorganisch, zinkstaubreich; kathodische Schutzwirkung, hohe Abrieb- und Temperaturbeständigkeit; härtet mit Luftfeuchte aus."
+      },
+      {
+        "kurz": "Zn (R)",
+        "name": "Zinkstaubreiche Grundbeschichtung",
+        "rolle": "Grundbeschichtung",
+        "text": "Kennzeichnung in DIN EN ISO 12944-5 für Grundbeschichtungen mit hohem Zinkstaubanteil (z. B. EP- oder ESI-Bindemittel); das Zink wirkt an Fehlstellen als Opferanode."
+      }
+    ],
+    "IM": [
+      {
+        "k": "Im1",
+        "umgebung": "Süßwasser",
+        "beispiel": "Flussbauten, Wasserkraftwerke"
+      },
+      {
+        "k": "Im2",
+        "umgebung": "Meer- oder Brackwasser ohne kathodischen Schutz",
+        "beispiel": "Eingetauchte Bauwerke ohne KKS, z. B. Hafenbereiche mit Schleusentoren, Molen"
+      },
+      {
+        "k": "Im3",
+        "umgebung": "Erdreich",
+        "beispiel": "Behälter im Erdreich, Stahlspundwände, Stahlrohre"
+      },
+      {
+        "k": "Im4",
+        "umgebung": "Meer- oder Brackwasser mit kathodischem Schutz",
+        "beispiel": "Eingetauchte Bauwerke mit KKS, z. B. Offshore-Bauwerke"
+      }
+    ],
+    "ROSTGRADE": [
+      {
+        "g": "A",
+        "text": "Stahloberfläche weitgehend mit festhaftendem Zunder bedeckt, kaum Rost"
+      },
+      {
+        "g": "B",
+        "text": "Beginnender Rost, der Zunder blättert ab"
+      },
+      {
+        "g": "C",
+        "text": "Zunder weggerostet oder abschabbar, wenige Rostnarben sichtbar"
+      },
+      {
+        "g": "D",
+        "text": "Zunder weggerostet, verbreitet Rostnarben (Lochfraß) sichtbar"
+      }
+    ],
+    "VORBEREITUNG": [
+      {
+        "g": "Sa 1",
+        "text": "Leichtes Strahlen: lose Walzhaut, loser Rost und lose Beschichtungen entfernt."
+      },
+      {
+        "g": "Sa 2",
+        "text": "Gründliches Strahlen: nahezu alle Walzhaut, Rost und Beschichtungen entfernt; Reste festhaftend."
+      },
+      {
+        "g": "Sa 2½",
+        "text": "Sehr gründliches Strahlen: frei von sichtbarem Öl, Fett, Schmutz, Walzhaut, Rost und Beschichtungen; Reste nur als leichte punkt- oder streifenförmige Schattierungen."
+      },
+      {
+        "g": "Sa 3",
+        "text": "Strahlen bis zum optisch reinen Stahl: einheitliche metallische Farbe."
+      },
+      {
+        "g": "St 2 / St 3",
+        "text": "Hand- bzw. maschinelle Entrostung (Bürsten, Schleifen); St 3 gründlicher mit metallischem Glanz."
+      }
+    ],
+    "KorrosionsschutzBeschichtungen.schritte": [
+      {
+        "titel": "Schichtdicke",
+        "erklaerung": "Walzprofil mit 10 mm Stegdicke, also Stahl > 6 mm: Mindest-Durchschnittswert nach DIN EN ISO 1461:",
+        "formel": "d_{Zn} = 85\\,\\mu\\text{m}"
+      },
+      {
+        "titel": "Abtragsrate",
+        "erklaerung": "Kategorie C3: Zinkabtrag 0,7 bis 2,1 µm/a.",
+        "formel": "r_{corr,Zn} = 0{,}7 \\text{ bis } 2{,}1\\,\\mu\\text{m/a}"
+      },
+      {
+        "titel": "Schutzdauer",
+        "erklaerung": "Ungünstig mit der oberen, günstig mit der unteren Rate:",
+        "formel": "t_{Zn} = \\frac{85}{2{,}1} = 40{,}5\\,\\text{a} \\quad \\text{bis} \\quad \\frac{85}{0{,}7} = 121{,}4\\,\\text{a}"
+      },
+      {
+        "titel": "Einstufung",
+        "erklaerung": "Schon der ungünstige Wert liegt über 25 Jahren:",
+        "formel": "t_{Zn,min} = 40{,}5\\,\\text{a} > 25\\,\\text{a} \\;\\Rightarrow\\; \\text{VH}"
+      }
+    ],
+    "KorrosionsschutzBeschichtungen.schritte_2": [
+      {
+        "titel": "Zink allein",
+        "erklaerung": "85 µm in C5 (Zinkabtrag 4,2 bis 8,4 µm/a):",
+        "formel": "t_{Zn} = \\frac{85}{8{,}4} = 10{,}1\\,\\text{a} \\quad \\text{bis} \\quad \\frac{85}{4{,}2} = 20{,}2\\,\\text{a}"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Gefordert ist VH (mehr als 25 Jahre). Ungünstig ergibt sich nur Klasse M:",
+        "formel": "10{,}1\\,\\text{a} \\le 15\\,\\text{a} \\;\\Rightarrow\\; \\text{M} < \\text{VH}"
+      },
+      {
+        "titel": "Duplex-System",
+        "erklaerung": "Zusätzliche Beschichtung mit 10 Jahren Eigenschutzdauer (Lehrwert), Synergiefaktor 1,5 (Literaturwert):",
+        "formel": "t_{D,min} = 1{,}5 \\cdot (10{,}1 + 10) = 30{,}2\\,\\text{a} > 25\\,\\text{a} \\;\\Rightarrow\\; \\text{VH}"
+      }
+    ],
+    "KorrosionsschutzBeschichtungen.literatur": [
+      "Institut Feuerverzinken GmbH: Arbeitsblatt F2 – DIN EN ISO 1461. Düsseldorf, Stand 08/2025",
+      "Düren-Rost, P.: Duplex-Systeme – Erkenntnisse aus Praxis und Forschung. GAV-Forschungskolloquium, Hannover, 17.10.2023",
+      "Kaesche, H.: Die Korrosion der Metalle. 3. Aufl., Berlin: Springer 1990"
+    ],
+    "KorrosionsschutzBeschichtungen.regelwerke": [
+      {
+        "title": "DIN EN ISO 12944-1:2019-01 (Beschichtungsstoffe – Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teil 1: Allgemeine Einleitung)"
+      },
+      {
+        "title": "DIN EN ISO 12944-2:2018-04 (Teil 2: Einteilung der Umgebungsbedingungen)"
+      },
+      {
+        "title": "DIN EN ISO 12944-5:2020-03 (Teil 5: Beschichtungssysteme)"
+      },
+      {
+        "title": "DIN EN ISO 12944 Teile 3, 4 und 6 bis 9 (Gestaltung, Oberflächenvorbereitung, Laborprüfungen, Ausführung, Spezifikation, Offshore; DIN-Ausgaben 2018)"
+      },
+      {
+        "title": "DIN EN ISO 8501-1:2007-12 (Vorbereitung von Stahloberflächen – Visuelle Beurteilung der Oberflächenreinheit – Teil 1: Rostgrade und Oberflächenvorbereitungsgrade)"
+      },
+      {
+        "title": "DIN EN ISO 9223:2012-05 (Korrosion von Metallen und Legierungen – Korrosivität von Atmosphären – Klassifizierung, Bestimmung und Abschätzung)"
+      },
+      {
+        "title": "DIN EN ISO 1461:2022-12 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge (Stückverzinken) – Anforderungen und Prüfungen)"
+      },
+      {
+        "title": "DIN EN ISO 14713-1 (Zinküberzüge – Leitfäden und Empfehlungen zum Schutz von Eisen- und Stahlkonstruktionen vor Korrosion – Teil 1; ISO 14713-1:2017)"
+      },
+      {
+        "title": "DIN EN ISO 2409:2020-12 (Beschichtungsstoffe – Gitterschnittprüfung)"
+      },
+      {
+        "title": "DIN EN ISO 4624:2023-09 (Beschichtungsstoffe – Abreißversuch zur Bestimmung der Haftfestigkeit)"
+      }
+    ],
+    "KorrosionsschutzBeschichtungen.formeln": [
+      {
+        "formel": "t_{Zn} = \\frac{d_{Zn}}{r_{corr,Zn}}",
+        "erklaerung": "Schutzdauer einer Zinkschicht [a] aus Schichtdicke d_Zn [µm] und Zinkabtragsrate r_corr,Zn [µm/a] der Korrosivitätskategorie (lineares Lehrmodell).",
+        "quelle": "DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1"
+      },
+      {
+        "formel": "t_{D} = f \\cdot (t_{Zn} + t_{B})",
+        "erklaerung": "Schutzdauer eines Duplex-Systems mit Synergiefaktor f ≈ 1,2 bis 2,5 (Literaturwert, nicht genormt) und Schutzdauer t_B der Beschichtung allein.",
+        "quelle": "Institut Feuerverzinken (2023); Fachliteratur"
+      },
+      {
+        "formel": "\\sigma = \\frac{4\\,F}{\\pi\\,d^2}",
+        "erklaerung": "Abreißfestigkeit [MPa] beim Haftabzugsversuch aus Abreißkraft F [N] und Stempeldurchmesser d [mm].",
+        "quelle": "DIN EN ISO 4624:2023-09"
+      }
+    ]
+  }
+}

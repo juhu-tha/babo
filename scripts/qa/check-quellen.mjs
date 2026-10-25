@@ -12,13 +12,17 @@ const RULES = [
 ];
 const files = [];
 (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : /\.tsx?$/.test(f) && files.push(p); } })(ROOT);
+// ausgelagerte Fachtexte (AP 5.3)
+const CONTENT = new URL('../../content', import.meta.url).pathname;
+try { (function walk(d) { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : f.endsWith('.json') && files.push(p); } })(CONTENT); } catch { /* kein content/ */ }
 let errors = 0;
 for (const f of files) {
   if (SKIP.some(s => f.includes(s))) continue;
-  const lines = readFileSync(f, 'utf8').split('\n');
+  // in JSON gilt ein maskiertes Anführungszeichen (\") als Zitat – wie &quot; im TSX
+  const lines = readFileSync(f, 'utf8').split('\n').map(l => f.endsWith('.json') ? l.replace(/\\"/g, '„') : l);
   lines.forEach((l, i) => {
     if (/^\s*(\/\/|\*)/.test(l) || l.includes('console.')) return;
-    for (const r of RULES) { r.re.lastIndex = 0; if (r.re.test(l)) { errors++; console.log(`${f.replace(ROOT, 'src')}:${i + 1}  ${r.name}: ${l.trim().slice(0, 110)}`); } }
+    for (const r of RULES) { r.re.lastIndex = 0; if (r.re.test(l)) { errors++; console.log(`${f.replace(ROOT, 'src').replace(CONTENT, 'content')}:${i + 1}  ${r.name}: ${l.trim().slice(0, 110)}`); } }
   });
 }
 console.log(errors ? `\n${errors} Verstöße` : `${files.length} Dateien geprüft, 0 Verstöße.`);

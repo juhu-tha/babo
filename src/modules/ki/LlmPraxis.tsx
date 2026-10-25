@@ -32,6 +32,8 @@ import { BrowserTab } from './LlmPraxisTeile/BrowserTab';
 import { VerzeichnisseTab } from './LlmPraxisTeile/VerzeichnisseTab';
 import { MarkdownTab } from './LlmPraxisTeile/MarkdownTab';
 import { SkillsKonnektorenTab } from './LlmPraxisTeile/SkillsKonnektorenTab';
+import inhalt from '@/content/ki/LlmPraxis.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface LlmPraxisProps {
   embedded?: boolean;
@@ -89,21 +91,9 @@ export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
 
   // Dynamic generated template
   const generatedTemplate = useMemo(() => {
-    const roleTitles = {
-      pruefstatik: 'Prüfingenieur für Tragwerksplanung & Massivbau (Eurocode 2 & DIN 1045-2)',
-      bauleitung_vob: 'Erfahrener Oberbauleiter mit VOB/B-, Nachtrags- und Abnahme-Fokus',
-      sachverstaendiger: 'Öffentlich bestellter und vereidigter Sachverständiger für Bauschäden & Bauwerksdiagnostik',
-      baustofflabor: 'Leiter Baustoffprüflabor (Erstprüfung, Konformitätskontrolle nach DIN EN 206 & DIN 1045)',
-      nachhaltigkeit_lca: 'DGNB-Auditor & Berater für kreislaufgerechtes Bauen und Ökobilanzierung (LCA/LCC)'
-    };
+    const roleTitles = inhalt.daten["LlmPraxis.roleTitles"];
 
-    const normGuidelines = {
-      ec2_din1045: 'Grundlage aller Berechnungen sind DIN EN 1992-1-1 mit nationalem Anhang (NA) und DIN 1045-2. Verwende ausschließlich charakteristische Werte f_ck, f_yk und führe Bemessungswerte f_cd, f_yd transparent mit Teilsicherheitsbeiwerten (gamma_C=1,5, gamma_S=1,15) an.',
-      vob_b: 'Fokussiere auf VOB/B §§ 4, 13 (Mängelhaftung) und 15 (Bautagebuch & Stundenlohn). Formuliere Mängelrügen und Bedenkenanmeldungen nach VOB/B § 4 Abs. 3 präzise mit konkreter Fristsetzung und Androhung der Kündigung nach § 8 Abs. 3.',
-      din18533: 'Beurteile alle erdberührten Abdichtungen streng nach DIN 18533 (Wassereinwirkungsklassen W1-E bis W4-E, Rissklassen R1-E bis R4-E). Weise stets auf Übergangsdetails und Hohlkehlenausbildungen hin.',
-      din_en_206: 'Prüfen Sie Konformitätskriterien nach DIN EN 206 Tabellen 17 bis 19. Differenziere exakt zwischen Anfangsherstellung (3 Proben) und stetiger Herstellung (15 Proben).',
-      geg_dgnb: 'Berechnen Sie U-Werte und H\'T-Grenzwerte nach dem Gebäudemodernisierungsgesetz (GModG, vormals GEG) und DIN 4108-2 (Mindestwärmeschutz f_Rsi >= 0,70). Berücksichtige EPD-Kennwerte (GWP_total in kg CO2-Äq/m²a).'
-    };
+    const normGuidelines = inhalt.daten["LlmPraxis.normGuidelines"];
 
     if (genFormat === 'claudemd') {
       return `# CLAUDE.md - Projektrichtlinien für das Ingenieurbüro
@@ -177,8 +167,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <Bot size={16} /> 1. Claude vs. ChatGPT im Bau
-      </button>
+        <Bot size={16} /><MdText text={inhalt.texte.t1ClaudeVsChatgpt} /></button>
       <button aria-pressed={activeTab === 'skills_konnektoren'}
         onClick={() => setActiveTab('skills_konnektoren')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -187,8 +176,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <Zap size={16} /> 2. Skills &amp; MCP-Konnektoren
-      </button>
+        <Zap size={16} /><MdText text={inhalt.texte.t2SkillsMcpKonnektoren} /></button>
       <button aria-pressed={activeTab === 'markdown'}
         onClick={() => setActiveTab('markdown')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -197,8 +185,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <FileCode size={16} /> 3. Markdown (.md) Standard
-      </button>
+        <FileCode size={16} /><MdText text={inhalt.texte.t3MarkdownMdStandard} /></button>
       <button aria-pressed={activeTab === 'verzeichnisse'}
         onClick={() => setActiveTab('verzeichnisse')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -207,8 +194,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <FolderTree size={16} /> 4. Projektverzeichnisse &amp; CLAUDE.md
-      </button>
+        <FolderTree size={16} /><MdText text={inhalt.texte.t4ProjektverzeichnisseClaudeMd} /></button>
       <button aria-pressed={activeTab === 'browser'}
         onClick={() => setActiveTab('browser')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -217,8 +203,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <Globe size={16} /> 5. Browser &amp; Web-Grounding
-      </button>
+        <Globe size={16} /><MdText text={inhalt.texte.t5BrowserWebGrounding} /></button>
       <button aria-pressed={activeTab === 'praxisvorlagen'}
         onClick={() => setActiveTab('praxisvorlagen')}
         className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -227,8 +212,7 @@ ${normGuidelines[genNorm]}
             : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
         }`}
       >
-        <Sliders size={16} /> 6. Interaktiver Generator &amp; Vorlagen
-      </button>
+        <Sliders size={16} /><MdText text={inhalt.texte.t6InteraktiverGeneratorVorlagen} /></button>
     </div>
   );
 
@@ -247,49 +231,36 @@ ${normGuidelines[genNorm]}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
-                    <h3 className="text-lg font-bold text-text-main">Claude (Anthropic)</h3>
+                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.claudeAnthropic} /></h3>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                    Claude Sonnet / Opus (aktuelle Generation)
-                  </span>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200"><MdText text={inhalt.texte.claudeSonnetOpusAktuelle} /></span>
                 </div>
-                <p className="text-xs text-text-main/70">
-                  Stark bei präziser technischer Dokumentenanalyse, Code-Erstellung, strikte Formatierung und ausgedehnten Reasoning-Modus.
-                </p>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.starkBeiPräziserTechnischer} /></p>
 
                 <div className="space-y-2.5 pt-2">
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <FolderGit2 size={14} className="text-amber-600" /> Claude Projects (200k+ Token Context + Caching)
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Zentrale Wissensbasis für ganze Bauprojekte. Bodengutachten, statische Vorbemessungen und Baubeschreibungen dauerhaft hinterlegen. Durch <strong>Prompt Caching</strong> sinken die Abfragekosten um bis zu 90 %.
-                    </p>
+                      <FolderGit2 size={14} className="text-amber-600" /><MdText text={inhalt.texte.claudeProjects200kToken} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.zentraleWissensbasisFürGanze} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <Code size={14} className="text-amber-600" /> Artifacts (Interaktive Tools &amp; SVG)
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Claude rendert interaktive React-Rechner, Sieblinien-Visualisierer und technische SVG-Bewehrungszeichnungen direkt im geteilten Seitenfenster – ideal zum schnellen Prototyping vor Ort.
-                    </p>
+                      <Code size={14} className="text-amber-600" /><MdText text={inhalt.texte.artifactsInteraktiveToolsSvg} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.claudeRendertInteraktiveReact} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <Sparkles size={14} className="text-amber-600" /> Extended Thinking (Deep Reasoning)
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Ermöglicht transparente Denkketten bei mehrstufigen statischen Nachweisen (z. B. Biegebemessung mit Druckbewehrung oder Rissbreitennachweis nach EC2).
-                    </p>
+                      <Sparkles size={14} className="text-amber-600" /><MdText text={inhalt.texte.extendedThinkingDeepReasoning} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ermöglichtTransparenteDenkkettenBei} /></p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 pt-3 border-t border-home-grau/20 text-xs text-text-main/60 flex items-center justify-between">
-                <span>Beste Eignung:</span>
-                <strong className="text-shiraz">Gutachten, LVs, Code &amp; Projektordner</strong>
+                <span><MdText text={inhalt.texte.besteEignung} /></span>
+                <strong className="text-shiraz"><MdText text={inhalt.texte.gutachtenLvsCodeProjektordner} /></strong>
               </div>
             </div>
 
@@ -299,49 +270,36 @@ ${normGuidelines[genNorm]}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <h3 className="text-lg font-bold text-text-main">ChatGPT (OpenAI)</h3>
+                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.chatgptOpenai} /></h3>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    GPT (aktuelle Generation inkl. Reasoning)
-                  </span>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200"><MdText text={inhalt.texte.gptAktuelleGenerationInkl} /></span>
                 </div>
-                <p className="text-xs text-text-main/70">
-                  Verbreitet für numerische Datenanalysen in Sandboxes, kollaboratives Text-Editing und multimodale Sprach-/Bildinteraktion.
-                </p>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.verbreitetFürNumerischeDatenanalysen} /></p>
 
                 <div className="space-y-2.5 pt-2">
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <Database size={14} className="text-emerald-600" /> Advanced Data Analysis (Python Sandbox)
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Laden Sie CSV-Rohdaten von Zugversuchen, Druckprüfmaschinen oder Temperaturfühlern hoch. ChatGPT führt echten Python-Code aus und erzeugt druckfertige Diagramme und Regressionen ohne Rechenfehler.
-                    </p>
+                      <Database size={14} className="text-emerald-600" /><MdText text={inhalt.texte.advancedDataAnalysisPython} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ladenSieCsvRohdaten} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <FileText size={14} className="text-emerald-600" /> Canvas (Kooperativer Texteditor)
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Erlaubt das gezielte Überarbeiten einzelner Abschnitte in Gutachten oder Mängelrügen, ohne den gesamten Text neu generieren zu müssen. Mit integrierter Versionshistorie.
-                    </p>
+                      <FileText size={14} className="text-emerald-600" /><MdText text={inhalt.texte.canvasKooperativerTexteditor} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.erlaubtDasGezielteÜberarbeiten} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <Bot size={14} className="text-emerald-600" /> Custom GPTs mit OpenAPI-Actions
-                    </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Binden Sie eigene Bürowerkzeuge an (z. B. REST-API für Wetterdaten am Bautag oder Abruf von tagesaktuellen Betonpreisen aus dem ERP-System).
-                    </p>
+                      <Bot size={14} className="text-emerald-600" /><MdText text={inhalt.texte.customGptsMitOpenapi} /></div>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.bindenSieEigeneBürowerkzeuge} /></p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 pt-3 border-t border-home-grau/20 text-xs text-text-main/60 flex items-center justify-between">
-                <span>Beste Eignung:</span>
-                <strong className="text-emerald-700">Messreihen, Excel/CSV, Voice &amp; Canvas</strong>
+                <span><MdText text={inhalt.texte.besteEignung2} /></span>
+                <strong className="text-emerald-700"><MdText text={inhalt.texte.messreihenExcelCsvVoice} /></strong>
               </div>
             </div>
           </div>
@@ -349,55 +307,54 @@ ${normGuidelines[genNorm]}
           {/* DECISION MATRIX */}
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
             <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Table size={18} className="text-shiraz" /> Entscheidungsmatrix: Wann welches Modell einsetzen?
-            </h3>
+              <Table size={18} className="text-shiraz" /><MdText text={inhalt.texte.entscheidungsmatrixWannWelchesModell} /></h3>
             
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-home-grau/30 bg-slate-50">
                     <th className="p-3 font-bold text-text-main">Ingenieuraufgabe</th>
-                    <th className="p-3 font-bold text-text-main">Empfohlenes Modell</th>
-                    <th className="p-3 font-bold text-text-main">Bevorzugtes Feature</th>
-                    <th className="p-3 font-bold text-text-main">Technischer Hintergrund &amp; Mehrwert</th>
+                    <th className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.empfohlenesModell} /></th>
+                    <th className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.bevorzugtesFeature} /></th>
+                    <th className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.technischerHintergrundMehrwert} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Baugrundgutachten (150 Seiten PDF) zusammenfassen</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
-                    <td className="p-3">Claude Project + 200k Window</td>
-                    <td className="p-3">Höchste Schärfe beim Auffinden einzelner Schichtdicken im tiefen Fließtext ("Needle in a Haystack Benchmark").</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.baugrundgutachten150SeitenPdf} /></td>
+                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.claudeProject200kWindow} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.höchsteSchärfeBeimAuffinden} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Zugversuchs-Rohdaten (CSV mit 50.000 Messpunkten)</td>
-                    <td className="p-3 text-emerald-700 font-bold">ChatGPT Plus / Pro</td>
-                    <td className="p-3">Advanced Data Analysis (Python)</td>
-                    <td className="p-3">Rechnet mit echten Pandas-Bibliotheken im Sandbox-Container; kein Token-Verbrauch für reine Zahlenkolonnen.</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.zugversuchsRohdatenCsvMit} /></td>
+                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.chatgptPlusPro} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.advancedDataAnalysisPython2} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.rechnetMitEchtenPandas} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Prüfbericht für Bauschaden schreiben &amp; iterieren</td>
-                    <td className="p-3 text-emerald-700 font-bold">ChatGPT (Canvas)</td>
-                    <td className="p-3">Canvas Inline-Editing</td>
-                    <td className="p-3">Präzise Korrekturen an einzelnen Absätzen (z. B. Ursachennachweis), ohne dass die Formatierung zerbricht.</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.prüfberichtFürBauschadenSchreiben} /></td>
+                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.chatgptCanvas} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.canvasInlineEditing} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.präziseKorrekturenAnEinzelnen} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Erstellung eines Bauphysik-Rechners (U-Wert / Glaser)</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
-                    <td className="p-3">Artifacts (React / HTML)</td>
-                    <td className="p-3">Sofort bedienbare, interaktive Oberfläche im Browserfenster zum Testen und Weiterentwickeln.</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.erstellungEinesBauphysikRechners} /></td>
+                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet2} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.artifactsReactHtml} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.sofortBedienbareInteraktiveOberfläche} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Rechtssichere VOB-Mängelrüge (§ 4 Abs. 7 VOB/B)</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.rechtssichereVobMängelrüge4} /></td>
+                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet3} /></td>
                     <td className="p-3">Markdown-Striktheit</td>
-                    <td className="p-3">Formuliert formell nüchtern, präzise nach Baurecht, ohne blumige Füllwörter oder typische AI-Klischees.</td>
+                    <td className="p-3"><MdText text={inhalt.texte.formuliertFormellNüchternPräzise} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium">Recherche zu DIBt-Zulassungen &amp; neuen Normen</td>
-                    <td className="p-3 text-blue-700 font-bold">Perplexity / ChatGPT Search</td>
-                    <td className="p-3">Web-Grounding + Zitate</td>
-                    <td className="p-3">Live-Websuche mit direkten Quellenlinks verhindert Normen-Halluzinationen bei veralteten Ständen.</td>
+                    <td className="p-3 font-medium"><MdText text={inhalt.texte.rechercheZuDibtZulassungen} /></td>
+                    <td className="p-3 text-blue-700 font-bold"><MdText text={inhalt.texte.perplexityChatgptSearch} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.webGroundingZitate} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.liveWebsucheMitDirekten} /></td>
                   </tr>
                 </tbody>
               </table>
@@ -432,19 +389,15 @@ ${normGuidelines[genNorm]}
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                <Sliders size={20} className="text-shiraz" /> Interaktiver Ingenieur-Prompt- &amp; Vorlagen-Generator
-              </h3>
-              <p className="text-xs sm:text-sm text-text-main/75 leading-relaxed">
-                Konfiguriere maßgeschneiderte System-Prompts, <code className="font-mono text-xs">CLAUDE.md</code>-Projektdateien oder Workflow-Anweisungen 
-                für Ihr Büro oder Ihre Masterarbeit. Mit 1-Klick kopieren und direkt in Claude Projects oder Custom GPTs einfügen.
-              </p>
+                <Sliders size={20} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverIngenieurPromptVorlagen} /></h3>
+              <p className="text-xs sm:text-sm text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.konfiguriereMaßgeschneiderteSystemPrompt} /><code className="font-mono text-xs">CLAUDE.md</code><MdText text={inhalt.texte.projektdateienOderWorkflowAnweisungen} /></p>
             </div>
 
             {/* CONFIGURATION CONTROLS */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs">
               <div>
-                <label className="font-bold text-text-main block mb-1.5">1. Ingenieur-Rolle / Fachdisziplin:</label>
-                <select aria-label="1. Ingenieur-Rolle / Fachdisziplin" 
+                <label className="font-bold text-text-main block mb-1.5"><MdText text={inhalt.texte.t1IngenieurRolleFachdisziplin} /></label>
+                <select aria-label={inhalt.werte.t1IngenieurRolleFachdisziplin} 
                   value={genRole} 
                   onChange={(e) => setGenRole(e.target.value as typeof genRole)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -458,8 +411,8 @@ ${normGuidelines[genNorm]}
               </div>
 
               <div>
-                <label className="font-bold text-text-main block mb-1.5">2. Leitendes Regelwerk:</label>
-                <select aria-label="2. Leitendes Regelwerk" 
+                <label className="font-bold text-text-main block mb-1.5"><MdText text={inhalt.texte.t2LeitendesRegelwerk} /></label>
+                <select aria-label={inhalt.werte.t2LeitendesRegelwerk} 
                   value={genNorm} 
                   onChange={(e) => setGenNorm(e.target.value as typeof genNorm)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -473,8 +426,8 @@ ${normGuidelines[genNorm]}
               </div>
 
               <div>
-                <label className="font-bold text-text-main block mb-1.5">3. Ziel-Formatierung:</label>
-                <select aria-label="3. Ziel-Formatierung" 
+                <label className="font-bold text-text-main block mb-1.5"><MdText text={inhalt.texte.t3ZielFormatierung} /></label>
+                <select aria-label={inhalt.werte.t3ZielFormatierung} 
                   value={genFormat} 
                   onChange={(e) => setGenFormat(e.target.value as typeof genFormat)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -503,8 +456,7 @@ ${normGuidelines[genNorm]}
                     </>
                   ) : (
                     <>
-                      <Copy size={13} /> Vorlage kopieren
-                    </>
+                      <Copy size={13} /><MdText text={inhalt.texte.vorlageKopieren} /></>
                   )}
                 </button>
               </div>
@@ -517,58 +469,39 @@ ${normGuidelines[genNorm]}
             {/* CURATED READY-TO-USE INGENIEUR TEMPLATES */}
             <div className="space-y-3 pt-2">
               <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <BookOpen size={16} className="text-shiraz" /> Weitere geprüfte Kopiervorlagen für die Baupraxis
-              </h4>
+                <BookOpen size={16} className="text-shiraz" /><MdText text={inhalt.texte.weitereGeprüfteKopiervorlagenFür} /></h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                 {/* TEMPLATE 1: VOB MÄNGELRÜGE */}
                 <div className="p-4 bg-white rounded-xl border border-home-grau/30 space-y-3 flex flex-col justify-between shadow-xs">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-bold text-text-main">VOB/B Mängelrüge (§ 4 Abs. 7)</span>
+                      <span className="font-bold text-text-main"><MdText text={inhalt.texte.vobBMängelrüge4} /></span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">Rechtssicher</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Erstellt auf Basis von Baustellenfotos und Bautagebuch-Notizen ein formelles Schreiben mit Nachfrist und Kündigungsandrohung.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.erstelltAufBasisVon} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Du bist Bauleiter eines Generalunternehmers. Formuliere auf Basis nachfolgender Stichpunkte eine formelle Mängelrüge nach § 4 Abs. 7 VOB/B vor Abnahme.
-Gewerke: Estricharbeiten.
-Mangel: Massive Rissbildungen (Rissbreite > 1,5 mm) und fehlende Randdämmstreifen im 1. OG Raum 102-105.
-Forderungen:
-1. Konkrete Aufforderung zur Mängelbeseitigung bis zum [Datum in 6 Werktagen].
-2. Androhung, dass nach fruchtlosem Fristablauf der Auftrag für diese Restleistung nach § 8 Abs. 3 VOB/B entzogen und ein Drittunternehmen auf Kosten des Auftragnehmers beauftragt wird.
-3. Sachlicher, bestimmter Tonfall ohne Emotionen.`, 'vob_ruege')}
+                    onClick={() => copyToClipboard(inhalt.werte.duBistBauleiterEines, 'vob_ruege')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'vob_ruege' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'vob_ruege' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren} /></button>
                 </div>
 
                 {/* TEMPLATE 2: VOB BEDENKENANMELDUNG */}
                 <div className="p-4 bg-white rounded-xl border border-home-grau/30 space-y-3 flex flex-col justify-between shadow-xs">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-bold text-text-main">VOB/B Bedenkenhinweis (§ 4 Abs. 3)</span>
+                      <span className="font-bold text-text-main"><MdText text={inhalt.texte.vobBBedenkenhinweis4} /></span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">Vorleistung</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Schützt das Unternehmen vor Schadensersatzansprüchen bei fehlerhaften Vorleistungen anderer Gewerke (z. B. unebene Bodenplatte vor Estrich).
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.schütztDasUnternehmenVor} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Du bist Bauleiter eines Estrichlegers. Formuliere eine Bedenkenanmeldung nach § 4 Abs. 3 VOB/B an den Auftraggeber:
-Sachverhalt:
-Die bauseits gestellte Stahlbeton-Bodenplatte weist Unebenheiten von bis zu 22 mm auf einer 4-Meter-Messstrecke auf (Zulässig nach DIN 18202 Zeile 3: max. 10 mm).
-Risiko: Bei Verlegung des Estrichs auf Trennlage droht ungleichmäßige Estrichdicke, Abreißen der Fugen und Rissbildung.
-Forderung: Aufforderung an den AG, den Ausgleich durch den Rohbauer herstellen zu lassen oder schriftliche Freigabe für einen kostenpflichtigen Ausgleichsestrich zu erteilen.`, 'vob_bedenken')}
+                    onClick={() => copyToClipboard(inhalt.werte.duBistBauleiterEines2, 'vob_bedenken')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'vob_bedenken' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'vob_bedenken' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren2} /></button>
                 </div>
 
                 {/* TEMPLATE 3: BETONREZEPTUR CHECK */}
@@ -578,58 +511,29 @@ Forderung: Aufforderung an den AG, den Ausgleich durch den Rohbauer herstellen z
                       <span className="font-bold text-text-main">Betonrezeptur-Prüfung</span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">DIN EN 206</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Prüft eine gegebene Mischung (Zement, w/z, Flugasche, Gestein) gegen Expositionsklassen XC4, XF1 und berechnet den äquivalenten Wasserzementwert.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.prüftEineGegebeneMischung} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Prüfe folgende Betonrezeptur auf normgerechte Einhaltung der Mindestanforderungen nach DIN EN 206 / DIN 1045-2 für Expositionsklassen XC4, XF1:
-Rezeptur pro m³:
-- Zement: 300 kg CEM II/A-LL 42,5 R
-- Steinkohlenflugasche: 50 kg
-- Wirksamer Wassergehalt: 165 Liter
-- Gesteinskörnung: 1850 kg (A/B16)
-Aufgaben:
-1. Berechne den anrechenbaren Flugascheanteil mit k-Wert (k = 0,4) und den resultierenden äquivalenten w/z-Wert (w/z)_eq.
-2. Prüfe die Einhaltung von min z, max (w/z)_eq und Mindestdruckfestigkeit.
-3. Gib das Ergebnis in einer übersichtlichen Konformitätstabelle aus.`, 'beton_check')}
+                    onClick={() => copyToClipboard(inhalt.werte.prüfeFolgendeBetonrezepturAuf, 'beton_check')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'beton_check' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'beton_check' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren3} /></button>
                 </div>
 
                 {/* TEMPLATE 4: STATISCHE VORBEMESSUNG */}
                 <div className="p-4 bg-white rounded-xl border border-home-grau/30 space-y-3 flex flex-col justify-between shadow-xs">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-bold text-text-main">Vorbemessung Einfeldträger</span>
+                      <span className="font-bold text-text-main"><MdText text={inhalt.texte.vorbemessungEinfeldträger} /></span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">Eurocode 2</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Führt eine statische Vorbemessung für einen Stahlbetonbalken durch: Lastkombination <InlineMath math="q_{Ed}" />, Biegemoment <InlineMath math="M_{Ed}" /> und erforderliche Bewehrung <InlineMath math="a_s" />.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.führtEineStatischeVorbemessung} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Du bist Prüfingenieur für Tragwerksplanung nach Eurocode 2 (DIN EN 1992-1-1).
-Führe eine Vorbemessung für einen frei aufliegenden Stahlbeton-Einfeldträger durch:
-Eckdaten:
-- Stützweite: L = 6,50 m
-- Querschnitt: b = 30 cm, h = 50 cm
-- Baustoffe: Beton C30/37, Betonstahl B500B
-- Ständige Last: g_k = 18 kN/m (inkl. Eigengewicht)
-- Veränderliche Last: q_k = 12 kN/m
-Aufgaben:
-1. Berechne die Bemessungslast q_Ed im GZT mit Teilsicherheitsbeiwerten (gamma_G=1,35, gamma_Q=1,50).
-2. Berechne das maximale Feldmoment M_Ed.
-3. Berechne die erforderliche Längsbewehrung a_s mit Angabe der statischen Nutzhöhe d (d1 = 5 cm).
-4. Schlage eine praxisgerechte Bewehrungswahl vor (z. B. 4 d 20).`, 'statik_vor')}
+                    onClick={() => copyToClipboard(inhalt.werte.duBistPrüfingenieurFür, 'statik_vor')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'statik_vor' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'statik_vor' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren4} /></button>
                 </div>
 
                 {/* TEMPLATE 5: BAUSCHADEN DIAGNOSTIK DIN 18533 */}
@@ -639,26 +543,13 @@ Aufgaben:
                       <span className="font-bold text-text-main">Bauschadens-Befundung</span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">DIN 18533</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Strukturiert die Schadensaufnahme bei Feuchteschäden im Kellerbereich (Wassereinwirkungsklasse W1-E bis W2-E) mit Sanierungskonzept.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.strukturiertDieSchadensaufnahmeBei} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Du bist öffentlich bestellter und vereidigter Sachverständiger für Bauschäden.
-Erstelle eine gutachterliche Gliederung und Befundaufnahme zu folgendem Fall:
-Befund: Im Kellergeschoss eines 2018 errichteten Wohnhauses tritt an der Sohlen-Wand-Fuge Wasser ein.
-Wandbaustoff: Ortbeton C25/30, außen Bitumen-Dickbeschichtung (PMBC).
-Grundwasserstand: HGW liegt 80 cm über Oberkante Kellersohle.
-Aufgaben:
-1. Einordnung der Wassereinwirkungsklasse nach DIN 18533 (W1.1-E vs. W2.1-E).
-2. Typische Schadensursachen an der Hohlkehle / Fugenblech analysieren.
-3. Notwendige zerstörungsfreie und invasive Baustoffprüfungen auflisten.
-4. Skizziere zwei Sanierungsansätze (innenliegende Schleierinjektion vs. Freilegen von außen).`, 'schaden_din')}
+                    onClick={() => copyToClipboard(inhalt.werte.duBistÖffentlichBestellter, 'schaden_din')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'schaden_din' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'schaden_din' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren5} /></button>
                 </div>
 
                 {/* TEMPLATE 6: PYTHON DATENAUSWERTUNG LABOR */}
@@ -668,22 +559,13 @@ Aufgaben:
                       <span className="font-bold text-text-main">Prüfdaten-Python-Skript</span>
                       <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-mono">Automatisierung</span>
                     </div>
-                    <p className="text-text-main/70 leading-relaxed">
-                      Generiert ein Python-Skript zur automatisierten Auswertung von 28-Tage-Würfeldruckfestigkeiten mit Gauß-Plot und Konformitätscheck.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.generiertEinPythonSkript} /></p>
                   </div>
                   <button
-                    onClick={() => copyToClipboard(`Schreibe ein vollständiges, sauber kommentiertes Python-Skript (pandas, scipy.stats, matplotlib) zur statistischen Auswertung einer Betonprüfserie nach DIN EN 206:
-Input: CSV-Datei mit Spalte 'Druckfestigkeit_MPa' (15 Proben C30/37).
-Berechnungen:
-1. Mittelwert f_cm, Standardabweichung s und charakteristische Festigkeit f_ck,est = f_cm - 1,48 * s.
-2. Prüfung von Kriterium 1 (f_cm >= f_ck + 1,48*s) und Kriterium 2 (f_ci >= f_ck - 4).
-3. Ausgabe einer Matplotlib-Grafik mit Histogramm, gefitteter Gauß-Glockenkurve und eingezeichnetem Grenzwert f_ck = 30 MPa.`, 'python_labor')}
+                    onClick={() => copyToClipboard(inhalt.werte.schreibeEinVollständigesSauber, 'python_labor')}
                     className="w-full py-2 bg-slate-100 hover:bg-shiraz hover:text-white rounded-lg font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    {copiedKey === 'python_labor' ? <Check size={14} /> : <Copy size={14} />}
-                    Muster-Prompt kopieren
-                  </button>
+                    {copiedKey === 'python_labor' ? <Check size={14} /> : <Copy size={14} />}<MdText text={inhalt.texte.musterPromptKopieren6} /></button>
                 </div>
               </div>
             </div>
@@ -713,31 +595,19 @@ Berechnungen:
               <Terminal size={28} />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
-                LLM-Praxis im Bauwesen
-                <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-shiraz/10 text-shiraz border border-shiraz/20">
-                  Claude &amp; ChatGPT Professional
-                </span>
+              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight"><MdText text={inhalt.texte.llmPraxisImBauwesen} /><span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-shiraz/10 text-shiraz border border-shiraz/20"><MdText text={inhalt.texte.claudeChatgptProfessional} /></span>
               </h2>
-              <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider mt-0.5">
-                Skills, MCP-Konnektoren, Markdown-Standardisierung, Projektverzeichnisse &amp; Web-Grounding
-              </p>
+              <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider mt-0.5"><MdText text={inhalt.texte.skillsMcpKonnektorenMarkdown} /></p>
             </div>
           </div>
           <div className="flex items-center gap-2 self-start md:self-auto bg-slate-50 px-3 py-1.5 rounded-xl border border-home-grau/20 text-xs text-text-main/70">
             <Laptop size={14} className="text-shiraz" />
-            <span>Leitfaden für Ingenieurbüro &amp; Masterstudium</span>
+            <span><MdText text={inhalt.texte.leitfadenFürIngenieurbüroMasterstudium} /></span>
           </div>
         </div>
 
         <div className="mt-4 text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/20 leading-relaxed">
-          <p>
-            Der naive Einsatz von Large Language Models (LLMs) per unstrukturiertem Copy-Paste führt im Bauwesen schnell zu gefährlichen Halluzinationen, Normenverwechslungen und explodierenden Token-Kosten. 
-            Dieses Modul vermittelt den <strong>professionellen Ingenieur-Workflow</strong>: Wie Sie <strong>Claude</strong> und <strong>ChatGPT</strong> durch 
-            maßgeschneiderte <strong>Skills</strong>, offene <strong>MCP-Konnektoren</strong>, verlustfreie <strong>Markdown-Hierarchien</strong>, 
-            kuratierte <strong>Projektordner (<code className="text-xs bg-slate-200 px-1 py-0.5 rounded">CLAUDE.md</code>)</strong> und 
-            gerichtetes <strong>Browser-Grounding</strong> in zuverlässige Hochleistungs-Kopiloten für Statik, Bauleitung und Gutachten verwandeln.
-          </p>
+          <p><MdText text={inhalt.texte.derNaiveEinsatzVon} /><strong><MdText text={inhalt.texte.projektordner} /><code className="text-xs bg-slate-200 px-1 py-0.5 rounded">CLAUDE.md</code>)</strong><MdText text={inhalt.texte.undGerichtetesBrowserGrounding} /></p>
         </div>
 
         {innerContent}
@@ -746,32 +616,13 @@ Berechnungen:
       {/* MODULE FOOTER */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Model Context Protocol (MCP)', url: 'https://modelcontextprotocol.io' },
-          { title: 'Large Language Model', url: 'https://de.wikipedia.org/wiki/Gro%C3%9Fes_Sprachmodell' },
+          { title: inhalt.werte.modelContextProtocolMcp, url: 'https://modelcontextprotocol.io' },
+          { title: inhalt.werte.largeLanguageModel, url: 'https://de.wikipedia.org/wiki/Gro%C3%9Fes_Sprachmodell' },
           { title: 'Markdown', url: 'https://de.wikipedia.org/wiki/Markdown' }
         ]}
-        literatur={[
-          'Anthropic (2024): Model Context Protocol Specification & Architecture (modelcontextprotocol.io)',
-          'VDI 2552 Blatt 1ff.: Building Information Modeling (BIM) - Datenmanagement und Informationsaustausch',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'EU AI Act (Verordnung (EU) 2024/1689 zur Regulierung Künstlicher Intelligenz)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN ISO 19650: Organisation und Digitalisierung von Informationen zu Bauwerken und Ingenieurleistungen (BIM)' },
-          { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen' }
-        ]}
-        formeln={[
-          {
-            formel: 'T_{\\text{eff}} = N_{\\text{words}} \\cdot 1{,}33 \\quad [\\text{Tokens}]',
-            erklaerung: 'Faustformel für deutschsprachigen technischen Text: 1 Wort entspricht im Durchschnitt ca. 1,33 bis 1,5 Subword-Tokens im BPE-Tokenizer (Byte Pair Encoding).',
-            quelle: 'OpenAI / Anthropic Tokenizer Guidelines'
-          },
-          {
-            formel: '\\text{Context-Ratio} = \\frac{\\sum T_{\\text{Prompt}} + \\sum T_{\\text{Docs}}}{T_{\\text{MaxWindow}}} \\le 0{,}70',
-            erklaerung: 'Empfohlene Obergrenze der Kontextauslastung. Um den "Lost-in-the-Middle"-Effekt bei RAG und langen Projektordnern zu minimieren, sollte der Arbeitskontext unter 70 % des maximalen Fensters gehalten werden.',
-            quelle: 'Liu et al. (2023): Lost in the Middle - How Language Models Use Long Contexts'
-          }
-        ]}
+        literatur={inhalt.daten["LlmPraxis.literatur"]}
+        regelwerke={inhalt.daten["LlmPraxis.regelwerke"]}
+        formeln={inhalt.daten["LlmPraxis.formeln"]}
       />
     </div>
   );

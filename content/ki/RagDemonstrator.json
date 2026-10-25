@@ -1,0 +1,104 @@
+{
+  "texte": {
+    "interaktiverRagDemonstratorNormen": "Interaktiver RAG-Demonstrator (Normen-Retrieval)",
+    "visualisierungDes4Stufigen": "Visualisierung des 4-stufigen RAG-Pipelines: Embedding ➔ Vektorsuche ➔ Kontext-Injektion ➔ Halluzinationsfreie Antwort.",
+    "ingenieurFormuliertFragestellungIn": "Ingenieur formuliert Fragestellung in natürlicher Sprache.",
+    "queryWirdInHochdimensionalen": "Query wird in hochdimensionalen Zahlenvektor umgerechnet ($\\vec{q} \\in \\mathbb{R}^d$).",
+    "cosineSimilarity": "Cosine Similarity",
+    "vektordatenbankFindetPassendsteNormenabs": "Vektordatenbank findet passendste Normenabschnitte nach Cosinus-Winkel.",
+    "contextInject": "Context Inject",
+    "llmAntwortetStrengGebunden": "LLM antwortet streng gebunden an die injizierten Normen-Auszüge.",
+    "ingenieurFragestellungUserPrompt": "Ingenieur-Fragestellung (User Prompt):",
+    "klickenSieAufEin": "Klicken Sie auf ein Baubeispiel:",
+    "tiefgaragenrampeXf4Xc4": "Tiefgaragenrampe (XF4 / XC4)",
+    "teilsicherheitsbeiwerteCS": "Teilsicherheitsbeiwerte (γ_c / γ_s)",
+    "bauwerksabdichtungW2E": "Bauwerksabdichtung (W2-E)",
+    "trefferAusDerVektordatenbank": "Treffer aus der Vektordatenbank (Normen-Chunks):",
+    "retrievalTiefeTopK": "Retrieval-Tiefe Top-K:",
+    "modellantwortImDirektenVergleich": "Modellantwort im direkten Vergleich (Impact-Analyse):",
+    "ohneRagFreiesLlm": "Ohne RAG (Freies LLM, reines Parametertraining)",
+    "gefahrHoch": "Gefahr: Hoch",
+    "fürDieTiefgaragenrampeReicht": "\"Für die Tiefgaragenrampe reicht üblicherweise ein **C25/30 mit w/z = 0,55**. Die Betondeckung kann mit **20 mm** angesetzt werden. Als Sicherheitsbeiwert für Beton nutze nach Eurocode 2 den Wert **γ_c = 1,35**.\"",
+    "wZ055": "w/z = 0,55 führt bei XF4 zu schnellem Frost-Tausalz-Abplatzen (zulässig max. 0,50 und nur mit Luftporen).",
+    "t20MmBetondeckungFührt": "20 mm Betondeckung führt bei XC4/XD3 zu Chloridkorrosion der Bewehrung (min 25–40 mm erforderlich).",
+    "c135Ist": "γ_c = 1,35 ist erfunden (DIN EN 1992-1-1/NA verlangt zwingend γ_c = 1,50).",
+    "analyseDerFehler": "**Analyse der Fehler:**",
+    "mitRagGesteuertDurch": "Mit RAG (Gesteuert durch gefundene Normen-Chunks)",
+    "geprüftNachDinEc2": "Geprüft nach DIN / EC2",
+    "gemäßDin10452": "\"Gemäß **DIN 1045-2 / DIN EN 206 (Tabelle F.2.1)** ist für die Taumittel-Exposition **XF4** zwingend Luftporenbeton mit **max (w/z)_eq = 0,50** und eine Mindestfestigkeitsklasse **C30/37** einzuhalten (320 kg/m³ Zement bei LP-Beton).",
+    "fürDieBewehrungsüberdeckungGilt": "Für die Bewehrungsüberdeckung gilt nach **DIN EN 1992-1-1 (Abschnitt 4.4.1.2)** bei Expositionsklasse XC4 eine Mindestbetondeckung von **c_min,dur = 25 mm** (zzgl. Vorhaltemaß $\\Delta c_{dev} = 15\\text{ mm}$ nach NA ergibt sich das Nennmaß $c_{nom} = 40\\text{ mm}$).",
+    "alleTragfähigkeitsnachweiseMüssenVerbind": "Alle Tragfähigkeitsnachweise müssen verbindlich mit dem nationalen Teilsicherheitsbeiwert **γ_c = 1,50** geführt werden (DIN EN 1992-1-1/NA).\""
+  },
+  "werte": {
+    "welcheBetonrezepturUndBetondeckung": "Welche Betonrezeptur und Betondeckung fordert die Norm für eine frost- und tausalzbeanspruchte Tiefgaragenrampe?",
+    "ragAktivQuellentreu": "RAG AKTIV (Quellentreu)",
+    "ragAusReineLlm": "RAG AUS (Reine LLM-Intuition)",
+    "welcheBetonrezepturUndBetondeckung2": "Welche Betonrezeptur und Betondeckung fordert die Norm für eine frost- und tausalzbeanspruchte Tiefgaragenrampe?",
+    "wieHochSindDie": "Wie hoch sind die Teilsicherheitsbeiwerte für Beton und Stahl nach deutschem Eurocode 2?",
+    "welcheWassereinwirkungsklasseGiltFür": "Welche Wassereinwirkungsklasse gilt für eine Kellerwand gegen drückendes Grundwasser nach DIN 18533?",
+    "retrievalTiefeTopK": "Retrieval-Tiefe Top-K"
+  },
+  "daten": {
+    "SAMPLE_CHUNKS": [
+      {
+        "id": "chunk_1",
+        "norm": "DIN 1045-2 / DIN EN 206",
+        "section": "Tabelle F.2.1",
+        "title": "Grenzwerte für Beton nach Expositionsklassen (XC4, XD3, XF4)",
+        "content": "Für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel, z. B. Parkdecks und Spritzwasserzonen) gilt: max (w/z)_eq = 0,50 nur als Luftporenbeton (LP), Mindestdruckfestigkeitsklasse C30/37, Mindestzementgehalt 320 kg/m³.",
+        "vectorSim": 0.94,
+        "keyTopics": [
+          "XF4",
+          "Taumittel",
+          "w/z-Wert",
+          "Luftporenbeton",
+          "C30/37"
+        ]
+      },
+      {
+        "id": "chunk_2",
+        "norm": "DIN EN 1992-1-1 (EC2)",
+        "section": "Abschnitt 4.4.1.2",
+        "title": "Mindestbetondeckung c_min zum Korrosionsschutz",
+        "content": "Die Mindestbetondeckung zum Schutz gegen Bewehrungskorrosion c_min,dur beträgt für Expositionsklasse XC4 bei 50 Jahren Nutzungsdauer und Betonstahl 25 mm. Bei Bauteiloberflächen der Anforderungsklasse XC1 reichen 10 mm.",
+        "vectorSim": 0.82,
+        "keyTopics": [
+          "c_min",
+          "Betondeckung",
+          "XC4",
+          "Bewehrung",
+          "Dauerhaftigkeit"
+        ]
+      },
+      {
+        "id": "chunk_3",
+        "norm": "DIN EN 1992-1-1 / NA",
+        "section": "NDP zu 2.4.2.4",
+        "title": "Nationale Teilsicherheitsbeiwerte für Baustoffe (Deutschland)",
+        "content": "Für die ständige und vorübergehende Bemessungssituation gilt verbindlich nach deutschem Nationalen Anhang: Beton γ_c = 1,50 und Betonstahl γ_s = 1,15. Der Beiwert α_cc zur Berücksichtigung von Langzeitwirkungen beträgt 0,85.",
+        "vectorSim": 0.76,
+        "keyTopics": [
+          "Teilsicherheitsbeiwert",
+          "γ_c = 1,50",
+          "γ_s = 1,15",
+          "α_cc = 0,85"
+        ]
+      },
+      {
+        "id": "chunk_4",
+        "norm": "DIN 18533-1:2017",
+        "section": "Tabelle 5",
+        "title": "Wassereinwirkungsklassen bei erdberührten Bauteilen",
+        "content": "W1-E: Bodenfeuchte und nichtdrückendes Wasser; W2-E: Drückendes Wasser (Grundwasser oder Hochwasser bis HHW); W3-E: Nicht drückendes Wasser auf erdüberschütteten Decken; W4-E: Spritzwasser am Wandsockel.",
+        "vectorSim": 0.61,
+        "keyTopics": [
+          "W1-E",
+          "W2-E",
+          "Abdichtung",
+          "Bodenfeuchte",
+          "Grundwasser"
+        ]
+      }
+    ]
+  }
+}

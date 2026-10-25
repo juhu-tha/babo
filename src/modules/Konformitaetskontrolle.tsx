@@ -14,6 +14,8 @@ import {
   ClipboardCheck,
   BookOpen
 } from 'lucide-react';
+import inhalt from '@/content/konformitaetskontrolle/Konformitaetskontrolle.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ConcreteClass {
   name: string;
@@ -57,9 +59,9 @@ export default function Konformitaetskontrolle() {
 
   // QA Protocol Mock state 
   const [protocolMeta, setProtocolMeta] = useState({
-    project: 'Beispielprojekt, Bauteil Stütze A1',
-    contractor: 'Musterbau GmbH',
-    inspector: 'N. N. (Überwachungsstelle)',
+    project: inhalt.werte.beispielprojektBauteilStützeA1,
+    contractor: inhalt.werte.musterbauGmbh,
+    inspector: inhalt.werte.nNÜberwachungsstelle,
     date: '2026-06-10'
   });
 
@@ -182,7 +184,7 @@ export default function Konformitaetskontrolle() {
         meanPassed: false,
         minPassed: false,
         isConform: false,
-        msg: 'Keine Prüfwerte vorhanden.'
+        msg: inhalt.werte.keinePrüfwerteVorhanden
       };
     }
 
@@ -229,7 +231,7 @@ export default function Konformitaetskontrolle() {
         meanPassed = mean >= requiredMean;
       }
       if (n > 6) {
-        limitMessage = `Hinweis: Identitätsprüfungen werden vor Ort üblicherweise an kleinen Chargen (n = 1 bis n = 6) vorgenommen.`;
+        limitMessage = inhalt.werte.hinweisIdentitätsprüfungenWerdenVor;
       }
     }
 
@@ -283,62 +285,50 @@ export default function Konformitaetskontrolle() {
       {/* 1. Einleitender normativer Text & WPK */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2 mb-4">
-          <CheckCircle2 className="text-shiraz" /> Produktions- und Konformitätskontrolle nach DIN EN 206 / DIN 1045-2
-        </h2>
+          <CheckCircle2 className="text-shiraz" /><MdText text={inhalt.texte.produktionsUndKonformitätskontrolleNach} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
-          <p>
-            Um die Sicherheit und Langlebigkeit von Tragwerken zu garantieren, unterliegt die Betonherstellung einem strengen zweistufigen Überwachungssystem. 
-            Einerseits führt das Betonwerk eine <strong>werkseigene Produktionskontrolle (WPK)</strong> durch, andererseits muss durch statistisch begründete 
-            Prüfpläne die <strong>Konformität</strong> der Festigkeit nachgewiesen werden. Bauherren und Prüfingenieure verlangen auf der Baustelle im 
-            Zweifelsfall ergänzend eine <strong>Identitätsprüfung</strong>.
-          </p>
+          <p><MdText text={inhalt.texte.umDieSicherheitUnd} /></p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* WPK */}
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 space-y-3">
             <h3 className="font-bold text-base text-text-main flex items-center gap-1.5 border-b pb-2 border-home-grau/20">
-              <ClipboardCheck className="text-shiraz" size={18} /> Werkseigene Produktionskontrolle (WPK)
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Die werkseigene Produktionskontrolle (WPK) sichert die kontinuierliche Homogenität des Mischguts im Betonwerk:
-            </p>
+              <ClipboardCheck className="text-shiraz" size={18} /><MdText text={inhalt.texte.werkseigeneProduktionskontrolleWpk} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieWerkseigeneProduktionskontrolleWpk} /></p>
             <ul className="list-disc pl-5 text-xs text-text-main/80 space-y-1.5">
-              <li><strong>Prüfung der Ausgangsstoffe:</strong> Eignungsprüfungen an Zement, Zuschlägen, Wasser und chemischen Zusatzmitteln.</li>
-              <li><strong>Dosierungsprüfungen:</strong> Justierung von Waagen zur exakten Einhaltung des theoretischen Zement- und w/z-Werts.</li>
-              <li><strong>Frischbetonüberwachung:</strong> Konsistenzprüfungen (z. B. Ausbreitversuch), Rohdichte und Ermittlung des Luftporengehalts bei Frostschutzbeton (LP-Töpfe).</li>
-              <li><strong>Festbetonprüfung:</strong> Kontinuierliche Absicherung der Gesteinsdruckfestigkeiten nach 28 Tagen Lagerung unter Normbedingungen (Wasserlagerung).</li>
+              <li><MdText text={inhalt.texte.prüfungDerAusgangsstoffeEignungsprüfunge} /></li>
+              <li><MdText text={inhalt.texte.dosierungsprüfungenJustierungVonWaagen} /></li>
+              <li><MdText text={inhalt.texte.frischbetonüberwachungKonsistenzprüfunge} /></li>
+              <li><MdText text={inhalt.texte.festbetonprüfungKontinuierlicheAbsicheru} /></li>
             </ul>
           </div>
 
           {/* Konformitätskriterien */}
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 space-y-3">
             <h3 className="font-bold text-base text-text-main flex items-center gap-1.5 border-b pb-2 border-home-grau/20">
-              <Calculator className="text-shiraz" size={18} /> Kriterien für Druckfestigkeit
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Beton gilt als konform, wenn sowohl das <strong>Mittelwertkriterium</strong> als auch das <strong>Einzelwertkriterium</strong> eingehalten werden:
-            </p>
+              <Calculator className="text-shiraz" size={18} /><MdText text={inhalt.texte.kriterienFürDruckfestigkeit} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.betonGiltAlsKonform} /></p>
             <div className="space-y-2 text-xs">
               <div className="bg-white p-2 rounded border border-home-grau/20 font-sans">
-                <strong className="text-shiraz block mb-1">Mittelwertkriterium (f_cm):</strong>
+                <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.mittelwertkriteriumFCm} /></strong>
                 <ul className="list-none pl-0 space-y-1 text-[11px] text-text-main/90">
                   <li className="flex justify-between">
-                    <span>Anfangsproduktion (n = 3):</span>
-                    <span className="font-mono font-bold bg-stone-100 px-1 rounded">f_cm &ge; f_ck + 4</span>
+                    <span><MdText text={inhalt.texte.anfangsproduktionN3} /></span>
+                    <span className="font-mono font-bold bg-stone-100 px-1 rounded"><MdText text={inhalt.texte.fCmFCk} /></span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Stetige Produktion (n &ge; 15):</span>
-                    <span className="font-mono font-bold bg-stone-100 px-1 rounded">f_cm &ge; f_ck + 1,48 &middot; &sigma;</span>
+                    <span><MdText text={inhalt.texte.stetigeProduktionN15} /></span>
+                    <span className="font-mono font-bold bg-stone-100 px-1 rounded"><MdText text={inhalt.texte.fCmFCk2} /></span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-white p-2 rounded border border-home-grau/20 font-sans">
-                <strong className="text-shiraz block mb-1">Einzelwertkriterium (f_ci):</strong>
+                <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.einzelwertkriteriumFCi} /></strong>
                 <div className="flex justify-between items-center text-[11px]">
-                  <span>Jedes Einzelergebnis im Kollektiv:</span>
-                  <span className="font-mono font-bold bg-stone-100 px-1 rounded text-red-750">f_ci &ge; f_ck - 4</span>
+                  <span><MdText text={inhalt.texte.jedesEinzelergebnisImKollektiv} /></span>
+                  <span className="font-mono font-bold bg-stone-100 px-1 rounded text-red-750"><MdText text={inhalt.texte.fCiFCk} /></span>
                 </div>
               </div>
             </div>
@@ -352,19 +342,15 @@ export default function Konformitaetskontrolle() {
           <div className="flex items-center gap-2">
             <span className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">Labor-Konfigurator</span>
             <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5 font-sans">
-              <Sparkles className="text-shiraz shrink-0" size={18} />
-              Interaktiver Sanierungs- &amp; Festigkeitsprüfer (DIN EN 206)
-            </h3>
+              <Sparkles className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.interaktiverSanierungsFestigkeitsprüferD} /></h3>
           </div>
-          <span className="text-[10px] text-home-grau font-mono">Stand: DIN EN 206 / DIN 1045-2</span>
+          <span className="text-[10px] text-home-grau font-mono"><MdText text={inhalt.texte.standDinEn206} /></span>
         </div>
 
         {/* DIN EN 206 Examples Row (No manual input required) */}
         <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20">
           <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-            <BookOpen className="text-shiraz w-4 h-4" />
-            Normative Fallbeispiele nach DIN EN 206 (Ein-Klick-Szenarien, ohne manuelle Eingabe)
-          </span>
+            <BookOpen className="text-shiraz w-4 h-4" /><MdText text={inhalt.texte.normativeFallbeispieleNachDin} /></span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             
             {/* Example 1 */}
@@ -375,16 +361,12 @@ export default function Konformitaetskontrolle() {
             >
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-[11px] font-bold text-emerald-800">Szenario 1: Erstanlauf (C25/30)</span>
+                  <span className="text-[11px] font-bold text-emerald-800"><MdText text={inhalt.texte.szenario1ErstanlaufC25} /></span>
                   <span className="bg-emerald-100 text-emerald-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">KONFORM</span>
                 </div>
-                <p className="text-[10px] text-text-main/70 leading-normal">
-                  Eignungsprüfung (Anfangsproduktion <span className="font-mono font-bold">n = 3</span>) für Deckenbeton. Alle Einzelwerte erfüllen das Kriterium (f_ci &ge; 26,0) und der Mittelwert übertrifft die geforderten 34,0 N/mm².
-                </p>
+                <p className="text-[10px] text-text-main/70 leading-normal"><MdText text={inhalt.texte.eignungsprüfungAnfangsproduktion} /><span className="font-mono font-bold">n = 3</span><MdText text={inhalt.texte.fürDeckenbetonAlleEinzelwerte} /></p>
               </div>
-              <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded">
-                Messwerte: 34.8, 35.5, 36,2 N/mm²
-              </div>
+              <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded"><MdText text={inhalt.texte.messwerte34835} /></div>
             </button>
 
             {/* Example 2 */}
@@ -395,16 +377,12 @@ export default function Konformitaetskontrolle() {
             >
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-[11px] font-bold text-emerald-800">Szenario 2: Statische Kontrolle (C30/37)</span>
+                  <span className="text-[11px] font-bold text-emerald-800"><MdText text={inhalt.texte.szenario2StatischeKontrolle} /></span>
                   <span className="bg-emerald-100 text-emerald-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">KONFORM</span>
                 </div>
-                <p className="text-[10px] text-text-main/70 leading-normal">
-                  Stetiges Produktionskontrollverfahren (<span className="font-mono font-bold">n = 15</span> Würfel). Die Standardabweichung beträgt realistische 1,76 N/mm² (unterer Deckel s=3.0 greift). Eingehalten!
-                </p>
+                <p className="text-[10px] text-text-main/70 leading-normal"><MdText text={inhalt.texte.stetigesProduktionskontrollverfahren} /><span className="font-mono font-bold">n = 15</span><MdText text={inhalt.texte.würfelDieStandardabweichungBeträgt} /></p>
               </div>
-              <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded truncate">
-                n = 15 (Mittel: 41,67 N/mm² &ge; Soll-Mittel: 41.44)
-              </div>
+              <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded truncate"><MdText text={inhalt.texte.n15Mittel41} /></div>
             </button>
 
             {/* Example 3 */}
@@ -415,16 +393,12 @@ export default function Konformitaetskontrolle() {
             >
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-[11px] font-bold text-red-800">Szenario 3: Baustellen-Zweifel (C30/37)</span>
+                  <span className="text-[11px] font-bold text-red-800"><MdText text={inhalt.texte.szenario3BaustellenZweifel} /></span>
                   <span className="bg-rose-100 text-rose-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">MANGELHAFT</span>
                 </div>
-                <p className="text-[10px] text-text-main/70 leading-normal">
-                  Identitätsprüfung für Zylinder (<span className="font-mono font-bold">n = 3</span>). Einzelwerte liegen über dem Mindestwert, aber der Mittelwert (29,93 N/mm²) reißt die geforderten 31,0 N/mm² (f_ck + 1,0).
-                </p>
+                <p className="text-[10px] text-text-main/70 leading-normal"><MdText text={inhalt.texte.identitätsprüfungFürZylinder} /><span className="font-mono font-bold">n = 3</span><MdText text={inhalt.texte.einzelwerteLiegenÜberDem} /></p>
               </div>
-              <div className="mt-2 text-[9.5px] font-mono font-bold text-red-800 bg-rose-50/50 p-1 rounded">
-                Messwerte: 31.2, 28.5, 30,1 N/mm²
-              </div>
+              <div className="mt-2 text-[9.5px] font-mono font-bold text-red-800 bg-rose-50/50 p-1 rounded"><MdText text={inhalt.texte.messwerte31228} /></div>
             </button>
 
           </div>
@@ -435,9 +409,7 @@ export default function Konformitaetskontrolle() {
           {/* Left Column: Controls and Inputs */}
           <div className="lg:col-span-5 space-y-6 bg-stone-50/70 p-5 rounded-2xl border border-home-grau/25">
             <div>
-              <span className="text-xs font-black text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25 mb-4">
-                1. Systemparameter &amp; Normprüfung
-              </span>
+              <span className="text-xs font-black text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25 mb-4"><MdText text={inhalt.texte.t1SystemparameterNormprüfung} /></span>
 
               {/* Festigkeitsklasse */}
               <div className="space-y-1.5 text-xs">
@@ -466,23 +438,19 @@ export default function Konformitaetskontrolle() {
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${
                         specimenType === 'cube' ? 'bg-shiraz text-white' : 'text-slate-600'
                       }`}
-                    >
-                      Würfel f_ck,cube
-                    </button>
+                    ><MdText text={inhalt.texte.würfelFCkCube} /></button>
                     <button aria-pressed={specimenType === 'cylinder'}
                       type="button"
                       onClick={() => setSpecimenType('cylinder')}
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${
                         specimenType === 'cylinder' ? 'bg-shiraz text-white' : 'text-slate-600'
                       }`}
-                    >
-                      Zylinder f_ck,cyl
-                    </button>
+                    ><MdText text={inhalt.texte.zylinderFCkCyl} /></button>
                   </div>
                 </div>
 
                 <div>
-                  <span className="font-semibold text-text-main/80 block mb-1">Charakt. Wert f_ck:</span>
+                  <span className="font-semibold text-text-main/80 block mb-1"><MdText text={inhalt.texte.charaktWertFCk} /></span>
                   <div className="bg-stone-100 border border-home-grau/30 rounded-lg p-1.5 text-center font-mono font-bold text-slate-800">
                     {formatDeWert(fck)} N/mm²
                   </div>
@@ -491,7 +459,7 @@ export default function Konformitaetskontrolle() {
 
               {/* Prüfverfahren / Prüfverfahrensmodus */}
               <div className="space-y-1.5 mt-4 text-xs">
-                <span className="font-bold text-text-main block">Überwachungstyp nach DIN EN 206:</span>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.überwachungstypNachDinEn} /></span>
                 <div className="grid grid-cols-1 gap-1 bg-white p-1 rounded-lg border border-home-grau/30">
                   <button
                     type="button"
@@ -500,8 +468,8 @@ export default function Konformitaetskontrolle() {
                       testMode === 'anfang' ? 'bg-shiraz text-white' : 'text-slate-700 hover:bg-stone-50'
                     }`}
                   >
-                    <span>Anfangsproduktion (n = 3...14)</span>
-                    <span className="font-mono text-[9px] opacity-80">(f_cm &ge; f_ck + 4)</span>
+                    <span><MdText text={inhalt.texte.anfangsproduktionN314} /></span>
+                    <span className="font-mono text-[9px] opacity-80"><MdText text={inhalt.texte.fCmFCk3} /></span>
                   </button>
                   
                   <button
@@ -511,8 +479,8 @@ export default function Konformitaetskontrolle() {
                       testMode === 'stetig' ? 'bg-shiraz text-white' : 'text-slate-700 hover:bg-stone-50'
                     }`}
                   >
-                    <span>Stetige Produktion (n &ge; 15)</span>
-                    <span className="font-mono text-[9px] opacity-80">(f_cm &ge; f_ck + 1,48&middot;s)</span>
+                    <span><MdText text={inhalt.texte.stetigeProduktionN152} /></span>
+                    <span className="font-mono text-[9px] opacity-80"><MdText text={inhalt.texte.fCmFCk4} /></span>
                   </button>
 
                   <button
@@ -522,8 +490,8 @@ export default function Konformitaetskontrolle() {
                       testMode === 'identitaet' ? 'bg-shiraz text-white' : 'text-slate-700 hover:bg-stone-50'
                     }`}
                   >
-                    <span>Identitätsprüfung (Kanal n = 1...6)</span>
-                    <span className="font-mono text-[9px] opacity-80">(on-site Baustelle)</span>
+                    <span><MdText text={inhalt.texte.identitätsprüfungKanalN1} /></span>
+                    <span className="font-mono text-[9px] opacity-80"><MdText text={inhalt.texte.onSiteBaustelle} /></span>
                   </button>
                 </div>
               </div>
@@ -531,14 +499,12 @@ export default function Konformitaetskontrolle() {
 
             {/* Daten einspeisen */}
             <div className="space-y-3">
-              <span className="text-xs font-black text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25">
-                2. Labordaten eingeben
-              </span>
+              <span className="text-xs font-black text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25"><MdText text={inhalt.texte.t2LabordatenEingeben} /></span>
 
               {/* Add single result */}
               <form onSubmit={handleAddValue} className="flex gap-2 items-end">
                 <div className="flex-1 space-y-1">
-                  <label className="text-[10px] font-bold text-text-main">Einzelwert f_ci (N/mm²):</label>
+                  <label className="text-[10px] font-bold text-text-main"><MdText text={inhalt.texte.einzelwertFCiN} /></label>
                   <input
                     type="text"
                     placeholder="z. B. 34.2"
@@ -557,13 +523,11 @@ export default function Konformitaetskontrolle() {
 
               {/* Bulk-CSV import */}
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-text-main flex items-center gap-1">
-                  Reihe einpusten (CSV; Komma / Leerzeichen separiert):
-                </label>
+                <label className="text-[10px] font-bold text-text-main flex items-center gap-1"><MdText text={inhalt.texte.reiheEinpustenCsvKomma} /></label>
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="z. B. 32.4 34.8 33.1 36.2"
+                    placeholder={inhalt.werte.zB324}
                     value={csvInput}
                     onChange={(e) => setCsvInput(e.target.value)}
                     className="flex-1 bg-white border border-home-grau/30 rounded-lg p-1.5 font-mono text-xs"
@@ -580,38 +544,30 @@ export default function Konformitaetskontrolle() {
 
               {/* Fast presets */}
               <div className="space-y-1">
-                <span className="text-[9.5px] font-bold text-slate-500 block uppercase tracking-wide">
-                  Labor-Kurzkombinationen laden (Szenarioerklärung):
-                </span>
+                <span className="text-[9.5px] font-bold text-slate-500 block uppercase tracking-wide"><MdText text={inhalt.texte.laborKurzkombinationenLadenSzenarioerklä} /></span>
                 <div className="flex flex-wrap gap-1">
                   <button
                     type="button"
                     onClick={() => loadPreset(testMode === 'stetig' ? 'pass_stetig' : testMode === 'identitaet' ? 'pass_identitaet' : 'pass_anfang')}
                     className="bg-white border border-emerald-300 hover:border-emerald-500 text-emerald-800 text-[9.5px] rounded p-1 font-bold shadow-2xs"
-                  >
-                    Muster: Bestanden ✅
-                  </button>
+                  ><MdText text={inhalt.texte.musterBestanden} /></button>
                   <button
                     type="button"
                     onClick={() => loadPreset(testMode === 'stetig' ? 'fail_stetig' : testMode === 'identitaet' ? 'fail_identitaet' : 'fail_mean_anfang')}
                     className="bg-white border border-orange-300 hover:border-orange-500 text-orange-850 text-[9.5px] rounded p-1 font-bold shadow-2xs"
-                  >
-                    Muster: Mittelwert-Fehler ❌
-                  </button>
+                  ><MdText text={inhalt.texte.musterMittelwertFehler} /></button>
                   <button
                     type="button"
                     onClick={() => loadPreset('fail_single_anfang')}
                     className="bg-white border border-rose-300 hover:border-rose-500 text-rose-800 text-[9.5px] rounded p-1 font-bold shadow-2xs"
-                  >
-                    Muster: Ausreißer-Problem ❌
-                  </button>
+                  ><MdText text={inhalt.texte.musterAusreißerProblem} /></button>
                 </div>
               </div>
 
               {/* Interactive Values list */}
               <div className="space-y-1.5 mt-3">
                 <div className="flex justify-between items-center text-[10px] font-bold text-text-main border-b border-home-grau/15 pb-1">
-                  <span>Eingegebene Proben (n = {testValues.length}):</span>
+                  <span><MdText text={inhalt.texte.eingegebeneProbenN} />{testValues.length}):</span>
                   {testValues.length > 0 && (
                     <button
                       type="button"
@@ -624,9 +580,7 @@ export default function Konformitaetskontrolle() {
                 </div>
 
                 {testValues.length === 0 ? (
-                  <div className="text-center p-4 bg-white border border-dashed border-home-grau/25 rounded-xl text-xs text-home-grau font-semibold">
-                    Keine Prüfkörper gelistet. Tragen Sie Werte ein oder wählen Sie ein Muster.
-                  </div>
+                  <div className="text-center p-4 bg-white border border-dashed border-home-grau/25 rounded-xl text-xs text-home-grau font-semibold"><MdText text={inhalt.texte.keinePrüfkörperGelistetTragen} /></div>
                 ) : (
                   <div className="flex flex-wrap gap-1 max-h-28 overflow-y-auto p-1 bg-white rounded-lg border border-stone-200">
                     {testValues.map((val, idx) => (
@@ -659,9 +613,7 @@ export default function Konformitaetskontrolle() {
             
             {/* 1. Conformity verdict banner */}
             {testValues.length === 0 ? (
-              <div className="bg-[#f8fafc] border border-home-grau/35 rounded-2xl p-6 text-center text-sm font-semibold text-slate-600">
-                Geben Sie links Frischbetonprüfwerte oder Festbeton-Messungen ein, um die automatische Konformitätsprüfung nach DIN EN 206 anzustoßen.
-              </div>
+              <div className="bg-[#f8fafc] border border-home-grau/35 rounded-2xl p-6 text-center text-sm font-semibold text-slate-600"><MdText text={inhalt.texte.gebenSieLinksFrischbetonprüfwerte} /></div>
             ) : (
               <div className="space-y-4">
                 
@@ -672,26 +624,20 @@ export default function Konformitaetskontrolle() {
                     : 'bg-rose-50/50 border-rose-300 text-rose-950'
                 }`}>
                   <div className="space-y-1">
-                    <span className="text-[10px] font-black uppercase tracking-wider block text-slate-500">
-                      Sicherheitsbewertung nach DIN 1045 / DIN EN 206
-                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-wider block text-slate-500"><MdText text={inhalt.texte.sicherheitsbewertungNachDin1045} /></span>
                     <h4 className="text-xl font-bold flex items-center gap-1.5">
                       {stats.isConform ? (
                         <>
-                          <CheckCircle2 className="text-emerald-600 shrink-0" size={22} />
-                          BETON KONFORM (BESTANDEN)
-                        </>
+                          <CheckCircle2 className="text-emerald-600 shrink-0" size={22} /><MdText text={inhalt.texte.betonKonformBestanden} /></>
                       ) : (
                         <>
-                          <AlertTriangle className="text-red-700 shrink-0" size={22} />
-                          BETON NICHT KONFORM
-                        </>
+                          <AlertTriangle className="text-red-700 shrink-0" size={22} /><MdText text={inhalt.texte.betonNichtKonform} /></>
                       )}
                     </h4>
                     <p className="text-xs font-semibold leading-relaxed text-slate-700">
                       {stats.isConform 
                         ? `Die Probe-Ergebnisse weisen die geforderte Güte für ${selectedClass.name} auf. Der Beton ist statisch und bauseitig zugelassen.`
-                        : `Gewährleistungsrisiko! Eines oder mehrere Kriterien des Überwachungsverfahrens wurden verfehlt.`}
+                        : inhalt.werte.gewährleistungsrisikoEinesOderMehrere}
                     </p>
                   </div>
 
@@ -712,14 +658,14 @@ export default function Konformitaetskontrolle() {
                       {testMode === 'anfang' && stats.n < 3 && (
                         <li className="flex gap-1.5 items-start font-semibold">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
-                          <span>Probenzahl zu gering für Anfangsproduktion: <strong className="font-mono">{stats.n}</strong> von geforderten <strong>3</strong>.</span>
+                          <span><MdText text={inhalt.texte.probenzahlZuGeringFür} /><strong className="font-mono">{stats.n}</strong><MdText text={inhalt.texte.vonGeforderten3} /></span>
                         </li>
                       )}
                       
                       {testMode === 'stetig' && stats.n < 15 && (
                         <li className="flex gap-1.5 items-start font-semibold">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
-                          <span>Probenzahl ungenügend für stetigen Konformitätsnachweis: <strong className="font-mono">{stats.n}</strong> von geforderten <strong>15</strong>.</span>
+                          <span><MdText text={inhalt.texte.probenzahlUngenügendFürStetigen} /><strong className="font-mono">{stats.n}</strong><MdText text={inhalt.texte.vonGeforderten15} /></span>
                         </li>
                       )}
 
@@ -727,8 +673,7 @@ export default function Konformitaetskontrolle() {
                       {!stats.meanPassed && (
                         <li className="flex gap-1.5 items-start font-semibold text-rose-950">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
-                          <span>
-                            Mittelwertkriterium verfehlt: Der Gesamtmittelwert <strong className="font-mono">{formatDeWert(stats.mean)} N/mm²</strong> liegt unter dem normativ geforderten Mindestmittelwert von <strong className="font-mono">{formatDeWert(stats.requiredMean)} N/mm²</strong>. (Fehlbetrag: {formatDeZahl((stats.requiredMean - stats.mean), 2)} N/mm²).
+                          <span><MdText text={inhalt.texte.mittelwertkriteriumVerfehltDerGesamtmitt} /><strong className="font-mono">{formatDeWert(stats.mean)} N/mm²</strong><MdText text={inhalt.texte.liegtUnterDemNormativ} /><strong className="font-mono">{formatDeWert(stats.requiredMean)} N/mm²</strong><MdText text={inhalt.texte.fehlbetrag} />{formatDeZahl((stats.requiredMean - stats.mean), 2)} N/mm²).
                           </span>
                         </li>
                       )}
@@ -737,9 +682,7 @@ export default function Konformitaetskontrolle() {
                       {!stats.minPassed && (
                         <li className="flex gap-1.5 items-start font-semibold text-rose-950">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
-                          <span>
-                            Einzelwert-Ausreißer gefunden: Mindestens ein geprüfter Wert (<strong className="font-mono text-red-750">{formatDeWert(stats.minVal)} N/mm²</strong>) liegt unter der kritischen Schranke von <strong className="font-mono">{formatDeWert(stats.requiredMin)} N/mm²</strong> (f_ck - 4). Das stellt eine lokale strukturelle Gefährdung dar!
-                          </span>
+                          <span><MdText text={inhalt.texte.einzelwertAusreißerGefundenMindestens} /><strong className="font-mono text-red-750">{formatDeWert(stats.minVal)} N/mm²</strong><MdText text={inhalt.texte.liegtUnterDerKritischen} /><strong className="font-mono">{formatDeWert(stats.requiredMin)} N/mm²</strong><MdText text={inhalt.texte.fCk4Das} /></span>
                         </li>
                       )}
                     </ul>
@@ -756,37 +699,35 @@ export default function Konformitaetskontrolle() {
 
                 {/* Tabular analysis data */}
                 <div className="bg-white border border-home-grau/35 rounded-xl p-4 shadow-2xs space-y-3">
-                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">
-                    Statistische Kennwerte der Serie:
-                  </span>
+                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block"><MdText text={inhalt.texte.statistischeKennwerteDerSerie} /></span>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
                     
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
-                      <span className="text-slate-500 text-[9px] uppercase font-bold block">Probenzahl (n)</span>
+                      <span className="text-slate-500 text-[9px] uppercase font-bold block"><MdText text={inhalt.texte.probenzahlN} /></span>
                       <span className="text-lg font-mono font-black text-slate-800 mt-0.5 block">{stats.n}</span>
                       <span className="text-[9px] text-slate-400">Prüfkörper</span>
                     </div>
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
-                      <span className="text-slate-500 text-[9px] uppercase font-bold block">Mittelwert (f_cm)</span>
+                      <span className="text-slate-500 text-[9px] uppercase font-bold block"><MdText text={inhalt.texte.mittelwertFCm} /></span>
                       <span className={`text-lg font-mono font-black mt-0.5 block ${stats.meanPassed ? 'text-emerald-700' : 'text-red-700'}`}>{formatDeWert(stats.mean)}</span>
                       <span className="text-[9px] text-slate-500">Soll: &ge;<strong>{formatDeWert(stats.requiredMean)}</strong> N/mm²</span>
                     </div>
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
-                      <span className="text-slate-500 text-[9px] uppercase font-bold block">Standardabweichung (s)</span>
+                      <span className="text-slate-500 text-[9px] uppercase font-bold block"><MdText text={inhalt.texte.standardabweichungS} /></span>
                       <span className="text-lg font-mono font-black text-slate-800 mt-0.5 block">
                         {testValues.length > 1 ? stats.stdDev : '—'}
                       </span>
                       {testMode === 'stetig' ? (
                         <span className="text-[9px] text-slate-500">Angewandt: <strong>{formatDeWert(stats.stdDevUsed)}</strong> (min 3.0)</span>
                       ) : (
-                        <span className="text-[9px] text-slate-400">Inaktiv bei n &lt; 15</span>
+                        <span className="text-[9px] text-slate-400"><MdText text={inhalt.texte.inaktivBeiN15} /></span>
                       )}
                     </div>
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
-                      <span className="text-slate-500 text-[9px] uppercase font-bold block">Min. Einzelwert</span>
+                      <span className="text-slate-500 text-[9px] uppercase font-bold block"><MdText text={inhalt.texte.minEinzelwert} /></span>
                       <span className={`text-lg font-mono font-black mt-0.5 block ${stats.minPassed ? 'text-slate-850' : 'text-red-700 animate-pulse'}`}>{formatDeWert(stats.minVal)}</span>
                       <span className="text-[9px] text-slate-500">Grenz: &ge;<strong>{formatDeWert(stats.requiredMin)}</strong> N/mm²</span>
                     </div>
@@ -797,10 +738,8 @@ export default function Konformitaetskontrolle() {
                 {/* Interactive SVG Compression Graph */}
                 <div className="bg-white border border-home-grau/35 rounded-xl p-4 shadow-2xs space-y-3">
                   <div className="flex justify-between items-center border-b border-stone-100 pb-2">
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">
-                      📈 Festigkeitsentwicklung &amp; Grenzwert-Schnitt:
-                    </span>
-                    <span className="text-[10px] bg-stone-100 px-2 py-0.5 rounded font-mono font-semibold">Einheit: N/mm²</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block"><MdText text={inhalt.texte.festigkeitsentwicklungGrenzwertSchnitt} /></span>
+                    <span className="text-[10px] bg-stone-100 px-2 py-0.5 rounded font-mono font-semibold"><MdText text={inhalt.texte.einheitNMm} /></span>
                   </div>
 
                   <div className="w-full relative overflow-x-auto">
@@ -1038,23 +977,20 @@ export default function Konformitaetskontrolle() {
                 <div className="bg-stone-50 border border-home-grau/25 rounded-2xl p-5 space-y-4 print:border-none print:shadow-none print:p-0" id="concrete-lab-protocol">
                   <div className="flex justify-between items-center border-b border-home-grau/25 pb-2">
                     <span className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                      <FileText size={16} className="text-shiraz" />
-                      Norm-Prüfprotokoll Generator (DIN 1045)
-                    </span>
+                      <FileText size={16} className="text-shiraz" /><MdText text={inhalt.texte.normPrüfprotokollGeneratorDin} /></span>
                     <button
                       type="button"
                       onClick={handlePrint}
                       className="bg-white hover:bg-stone-100 border border-home-grau/25 text-slate-700 rounded-lg py-1 px-2.5 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
                     >
-                      <Printer size={12} /> Bericht drucken
-                    </button>
+                      <Printer size={12} /><MdText text={inhalt.texte.berichtDrucken} /></button>
                   </div>
 
                   {/* Input Metadata fields (Interactive) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] bg-white p-3.5 rounded-xl border border-home-grau/15">
                     <div className="space-y-1">
-                      <span className="block text-home-grau font-semibold">Bauvorhaben / Bauwerksabschnitt:</span>
-                      <input aria-label="Bauvorhaben / Bauwerksabschnitt" 
+                      <span className="block text-home-grau font-semibold"><MdText text={inhalt.texte.bauvorhabenBauwerksabschnitt} /></span>
+                      <input aria-label={inhalt.werte.bauvorhabenBauwerksabschnitt} 
                         type="text" 
                         value={protocolMeta.project}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, project: e.target.value })}
@@ -1062,8 +998,8 @@ export default function Konformitaetskontrolle() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <span className="block text-home-grau font-semibold">Ausführende Unternehmung (Bauleitung):</span>
-                      <input aria-label="Ausführende Unternehmung (Bauleitung)" 
+                      <span className="block text-home-grau font-semibold"><MdText text={inhalt.texte.ausführendeUnternehmungBauleitung} /></span>
+                      <input aria-label={inhalt.werte.ausführendeUnternehmungBauleitung} 
                         type="text" 
                         value={protocolMeta.contractor}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, contractor: e.target.value })}
@@ -1071,8 +1007,8 @@ export default function Konformitaetskontrolle() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <span className="block text-home-grau font-semibold">Konformitätsbeauftragter / Prüfer:</span>
-                      <input aria-label="Konformitätsbeauftragter / Prüfer" 
+                      <span className="block text-home-grau font-semibold"><MdText text={inhalt.texte.konformitätsbeauftragterPrüfer} /></span>
+                      <input aria-label={inhalt.werte.konformitätsbeauftragterPrüfer} 
                         type="text" 
                         value={protocolMeta.inspector}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, inspector: e.target.value })}
@@ -1080,8 +1016,8 @@ export default function Konformitaetskontrolle() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <span className="block text-home-grau font-semibold">Prüfdatum (Festigkeits-Abnahme):</span>
-                      <input aria-label="Prüfdatum (Festigkeits-Abnahme)" 
+                      <span className="block text-home-grau font-semibold"><MdText text={inhalt.texte.prüfdatumFestigkeitsAbnahme} /></span>
+                      <input aria-label={inhalt.werte.prüfdatumFestigkeitsAbnahme} 
                         type="date" 
                         value={protocolMeta.date}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, date: e.target.value })}
@@ -1091,9 +1027,7 @@ export default function Konformitaetskontrolle() {
                   </div>
 
                   <div className="text-[10px] leading-relaxed text-slate-500 italic bg-white p-3 rounded-xl border border-stone-150">
-                    <p>
-                      <strong>Fremdüberwachungs-Hinweis:</strong> Dieses Prüfprotokoll dient zur Dokumentation der Betonsorte <strong>{selectedClass.name}</strong> ({specimenType === 'cube' ? 'Würfelprüfung' : 'Zylinderprüfung'}). Bei Prüfklasse ÜK2 oder ÜK3 ist die zusätzliche Absignatur des Fremdüberwachers (z. B. TÜV, Bau-Zert) gesetzlich vorgeschrieben und bewahrt die Ausführenden vor massiven Planerhaftungsansprüchen bei nachträglichen Bauschäden.
-                    </p>
+                    <p><MdText text={inhalt.texte.fremdüberwachungsHinweisDiesesPrüfprotok} /><strong>{selectedClass.name}</strong> ({specimenType === 'cube' ? 'Würfelprüfung' : 'Zylinderprüfung'}<MdText text={inhalt.texte.beiPrüfklasseÜk2Oder} /></p>
                   </div>
                 </div>
 

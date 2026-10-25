@@ -1,0 +1,357 @@
+{
+  "texte": {
+    "digitalerProduktpassDpp": " Digitaler Produktpass (DPP)",
+    "umweltproduktdeklarationEpd": " Umweltproduktdeklaration (EPD)",
+    "derDigitaleProduktpassDpp": "Der **Digitale Produktpass (DPP)** ist ein zentrales Instrument der EU-Ökodesign-Verordnung (ESPR). Er speichert produktspezifische Daten über den gesamten Lebenszyklus hinweg, um Transparenz, Rückverfolgbarkeit und die Kreislaufwirtschaft (Circular Economy) im Bauwesen nachhaltig zu fördern.",
+    "t1WissenschaftlicheGrundlagenZiele": "1. Wissenschaftliche Grundlagen & Ziele",
+    "euEcodesignForSustainable": "EU Ecodesign for Sustainable Products Regulation (ESPR)",
+    "dieGrundlagenDesDpp": "Die Grundlagen des DPP basieren auf der Erkenntnis, dass zirkuläre Materialströme am Fehlen standardisierter, herstellerübergreifender und maschinenlesbarer Produktinformationen scheitern. Durch die Beseitigung dieser Informationsasymmetrien wird der gesamte Lebenszyklus eines Bauprodukts transparent nachvollziehbar gemacht.",
+    "gültigkeitRechtlicherRahmen": "Gültigkeit & Rechtlicher Rahmen",
+    "imBaubereichWirdDer": "Im Baubereich wird der Digitale Produktpass über die neue **Bauprodukteverordnung (EU) 2024/3110** eingeführt (in Kraft seit 07.01.2025, anwendbar seit 08.01.2026). Er wird verpflichtend, sobald dies für die jeweilige Produktfamilie festgelegt ist, und betrifft:",
+    "harmonisierteNormenHen": "Harmonisierte Normen (hEN)",
+    "produkteMitHarmonisierterTechnischer": "Produkte mit harmonisierter technischer Spezifikation, sobald diese und ein delegierter Rechtsakt den DPP vorsehen; er begleitet die Leistungs- und Konformitätserklärung.",
+    "technBewertungenEta": "Techn. Bewertungen (ETA)",
+    "auchProdukteMitEuropäischer": "Auch Produkte mit Europäischer Technischer Bewertung (ETA) können einbezogen werden; der DPP ersetzt die Konformitätsbewertung nicht, sondern stellt deren Informationen digital bereit.",
+    "lückenloseTransparenzFürAlle": "Lückenlose Transparenz für alle Akteure über Schadstoffe, Primärrohstoffe und Treibhauspotenziale.",
+    "zirkuläreOptimierung": "Zirkuläre Optimierung",
+    "entscheidungenZurWiederverwendungUnd": "Entscheidungen zur Wiederverwendung und zum Recycling beruhen auf präzise dokumentierten Fakten statt auf Schätzungen.",
+    "t2TechnischeUmsetzungStandardisierung": "2. Technische Umsetzung & Standardisierung",
+    "identifikatorenSchnittstellenUndDatenstr": "Identifikatoren, Schnittstellen und Datenstrukturen",
+    "dieUmsetzungDesDpp": "Die Umsetzung des DPP erfordert eine dezentrale und hochgradig standardisierte IT-Architektur. Es wird **keine** zentrale EU-Datenbank geben, die alle Produktdetails speichert. Stattdessen verbleiben die Daten dezentral beim Hersteller und sind über APIs abrufbar:",
+    "m2mInteroperabilitätDatenablageStrukturi": "**M2M-Interoperabilität:** Datenablage strukturiert nach dem concept der **Asset Administration Shell (AAS / Verwaltungsschale)** gemäß DIN EN IEC 63278.",
+    "eindeutigeIdentifikationVerwendungStanda": "**Eindeutige Identifikation:** Verwendung standardisierter Barcodes und Links (z. B. GS1 Digital Link) gekoppelt an GTIN- und UID-Schlüssel für jedes einzelne verbaute Element.",
+    "bimIntegrationDirekteMaschinelle": "**BIM-Integration:** Direkte maschinelle Verknüpfung der Produktdatenblätter (Product Data Templates - PDT) mit den BIM-Gebäudemodellen über offene Dateiformate wie IFC.",
+    "t3ZuDokumentierendeInhalte": "3. Zu dokumentierende Inhalte (Datenfelder)",
+    "billOfMaterialsBom": "Bill of Materials (BOM) & Schadstoff-Screening",
+    "einNormkonformerDigitalerProduktpass": "Ein normkonformer Digitaler Produktpass stellt Datenfelder für unterschiedliche Lebenszyklusphasen und Akteure rollenbasiert bereit:",
+    "typischeKennwerteParameter": "Typische Kennwerte / Parameter",
+    "herstellerdatenHerstellungsortChargeUid": "Herstellerdaten, Herstellungsort, Charge, UID/UPI, Herstellungsdatum, CE-Zeichen, Leistungserklärung.",
+    "stücklisteBom": "Stückliste (BOM)",
+    "chemischeHauptbestandteileRecyclingAntei": "Chemische Hauptbestandteile, Recycling-Anteile (Pre- & Post-Consumer), REACH-Schadstoffdeklarationen.",
+    "verweistabelleAufEpdKennwerte": "Verweistabelle auf EPD-Kennwerte (Treibhauspotenzial GWP, nicht-erneuerbare Primärenergie PENRT).",
+    "leitfädenZurZerstörungsfreienDemontage": "Leitfäden zur zerstörungsfreien Demontage, sortenreinen Materialtrennbarkeit und Entsorgungshinweise.",
+    "t4ZeitschieneZurStufenweisen": "4. Zeitschiene zur stufenweisen Einführung",
+    "euWeiteImplementierungsstufenDer": "EU-weite Implementierungsstufen der ESPR und CPR",
+    "dieSchrittweiseEinführungDes": "Die schrittweise Einführung des Digitalen Produktpasses im Bauwesen erfolgt eng verzahnt mit der europäischen Bauprodukteverordnung (CPR):",
+    "t18072024Inkrafttreten": "18.07.2024 (Inkrafttreten)",
+    "inkrafttretenDerÖkodesignVerordnung": "Inkrafttreten der Ökodesign-Verordnung (EU) 2024/1781 (ESPR, erlassen am 13.06.2024). Konkrete DPP-Pflichten folgen erst über produktgruppenspezifische delegierte Rechtsakte.",
+    "t2025Bis2027Arbeitsplan": "2025 bis 2027 (Arbeitsplan und Grundlagen)",
+    "esprArbeitsplan20252030": "ESPR-Arbeitsplan 2025–2030 (16.04.2025) mit Prioritäten u. a. Eisen/Stahl, Aluminium, Textilien, Möbel, Reifen, Matratzen; DPP-Register (Durchführungsverordnung 2026); Batteriepass nach Verordnung (EU) 2023/1542 ab 18.02.2027.",
+    "ab08012026": "Ab 08.01.2026 (neue BauPVO)",
+    "dieBauprodukteverordnungEu2024": "Die Bauprodukteverordnung (EU) 2024/3110 gilt seit 08.01.2026. Ein DPP für Bauprodukte wird je Produktfamilie über delegierte Rechtsakte und neue harmonisierte technische Spezifikationen verpflichtend; feste Termine stehen noch nicht fest.",
+    "bisEtwa2040Übergang": "Bis etwa 2040 (Übergang)",
+    "schrittweiserÜbergangAllerProduktfamilie": "Schrittweiser Übergang aller Produktfamilien in das neue System; bis zur Zitierung neuer harmonisierter technischer Spezifikationen bleiben die bisherigen harmonisierten Normen anwendbar (VO 305/2011 spätestens bis 08.01.2040; alte EAD bis 08.01.2031, darauf gestützte ETA bis 08.01.2036).",
+    "t5GesetzlicheVerpflichtungenAkteureskreis": "5. Gesetzliche Verpflichtungen & Akteureskreis",
+    "werIstWannZu": "Wer ist wann zu welchen Maßnahmen rechtlich verpflichtet?",
+    "dieEinführungDesDpp": "Die Einführung des DPP bringt weitreichende rechtliche Pflichten für alle baubeteiligten Personengruppen mit sich:",
+    "herstellungVertrieb": "Herstellung & Vertrieb",
+    "verpflichtetZurBereitstellungDer": "Verpflichtet zur Bereitstellung der Datenstrukturen und Anbringung unzerstörbarer Datenträger. Ohne DPP verliert das Produkt seine Verkehrs- und CE-Zulassung.",
+    "planungEntsorgung": "Planung & Entsorgung",
+    "planerMüssenDppWerte": "Planer müssen DPP-Werte (z.B. Recyclinganteile) für Gebäuderessourcenpässe konsolidieren. Entsorger scannen Bauteile für schadstofffreie Sortierungen.",
+    "expertentippDppDatenFließen": "Expertentipp: DPP-Daten fließen direkt in den Gebäuderessourcenpass (Madaster) ein und sind hochgradig DGNB/QNG-relevant.",
+    "scannerAktiv": "Scanner aktiv",
+    "cameraSimulator": "CAMERA: SIMULATOR",
+    "resolution1080p": "RESOLUTION: 1080P",
+    "verwendenSieSimulator": ". Verwenden Sie Simulator.",
+    "scannbareBauteile": "Scannbare Bauteile",
+    "wählenSieEinesDer": "Wählen Sie eines der vorpräparierten Bauteile, um den Scan-Vorgang auszuführen:",
+    "stahlbetonstützeC3545": "Stahlbetonstütze C35/45",
+    "precastSolutionsGmbhId": "Precast Solutions GmbH • ID: 1234-BETON",
+    "woodbuildAgId5678": "WoodBuild AG • ID: 5678-HOLZ",
+    "integrierteDatenAuditsNach": "🔒 Integrierte Daten-Audits nach **DIN SPEC 91484** & **91525** standardgerechter Validierung.",
+    "eindeutigeIdUid": "Eindeutige ID (UID): ",
+    "verifiziertAktiv": " Verifiziert & Aktiv",
+    "chargeAbnahme": "Charge / Abnahme",
+    "materialzusammensetzungBomBillOf": " Materialzusammensetzung (BOM - Bill of Materials)",
+    "komponenteWerkstoff": "Komponente / Werkstoff",
+    "recyclinganteilSekundär": "Recyclinganteil (Sekundär)",
+    "zirkularitätDemontageRecyclinganleitung": " Zirkularität, Demontage- & Recyclinganleitung",
+    "konstruktivGeplanteRecyclingfähigkeit": "Konstruktiv geplante Recyclingfähigkeit:",
+    "integrierteKonformitätsnachweiseDeklarat": " Integrierte Konformitätsnachweise & Deklarationen",
+    "keinScannerErgebnisGeladen": "Kein Scanner-Ergebnis geladen",
+    "klickenSieAufEin": "Klicken Sie auf ein Bauteil im Handy-Mockup, um die ausgelesenen Daten des digitalen Bauteilpasses hier anzuzeigen.",
+    "eineEnvironmentalProductDeclaration": "Eine **Environmental Product Declaration (EPD)** nach DIN EN 15804 liefert transparente, vergleichbare und überprüfte Informationen über die Umweltleistung von Bauprodukten über ihren Lebenszyklus. Sie bildet die Datengrundlage für die Gebäudeökobilanzierung (LCA).",
+    "deklarierteEinheit": "Deklarierte Einheit: ",
+    "umweltwirkungenNachLebenszyklusphasen": "Umweltwirkungen nach Lebenszyklusphasen",
+    "kgCoÄqv": "[kg CO₂-Äqv.]",
+    "molHÄqv": "[mol H⁺-Äqv.]",
+    "rohstoffgewinnungTransportZumWerk": "Rohstoffgewinnung, Transport zum Werk, Herstellung",
+    "transportZurBaustelleEinbau": "Transport zur Baustelle, Einbau/Errichtung",
+    "nutzungInstandhaltungEntsorgungRückbau": "Nutzung (Instandhaltung) & Entsorgung (Rückbau, Abfall)",
+    "gutschriftenUndLastenAußerhalb": "Gutschriften und Lasten außerhalb der Systemgrenze (Recycling)"
+  },
+  "werte": {
+    "bereitFürScan": "BEREIT FÜR SCAN",
+    "zugriffBlockiertOderIframe": "Zugriff blockiert (oder iFrame Sandbox Einschränkung)",
+    "reichweitePrüfen": "REICHWEITE PRÜFEN...",
+    "auslesenUid": "AUSLESEN (UID)...",
+    "passUidEntschlüsselt": "PASS-UID ENTSCHLÜSSELT",
+    "digitalerProduktpassDpp": "Digitaler Produktpass (DPP)",
+    "umweltproduktdeklarationEpd": "Umweltproduktdeklaration (EPD)",
+    "zentralesInstrumentDerEu": "Zentrales Instrument der EU-Ökodesign-Verordnung (ESPR) für lückenlose Materialtransparenz.",
+    "zertifizierterKonformitätsnachweisDerUmw": "Zertifizierter Konformitätsnachweis der Umweltwirkungen von Baustoffen über alle Lebenszyklusphasen.",
+    "t1Grundlagen": "1. Grundlagen",
+    "t2Umsetzung": "2. Umsetzung",
+    "t3InhalteBom": "3. Inhalte (BOM)",
+    "t4Zeitschiene": "4. Zeitschiene",
+    "t5Verpflichtung": "5. Verpflichtung",
+    "kameraStoppen": "Kamera Stoppen",
+    "echteWebcam": "Echte Webcam",
+    "bereitFürScan2": "BEREIT FÜR SCAN",
+    "globalWarmingPotentialTreibhauspotenzial": "Global Warming Potential (Treibhauspotenzial)",
+    "primaryEnergyNonRenewable": "Primary Energy Non-Renewable Total (Nicht-erneuerbare Primärenergie)",
+    "acidificationPotentialVersauerungspotenz": "Acidification Potential (Versauerungspotenzial von Boden und Wasser)",
+    "eutrophicationPotentialSüßwasserEutrophi": "Eutrophication Potential, Süßwasser (Eutrophierungspotenzial / Überdüngung; nach EN 15804+A2 zusätzlich Meer [kg N-Äqv.] und terrestrisch [mol N-Äqv.])",
+    "beispiel1DeklarierteModule": "Beispiel 1: Deklarierte Module einer EPD richtig zusammenfassen",
+    "nachEn15804A2": "Nach EN 15804+A2 sind die Module C1–C4 und D bei den meisten Produkten zu deklarieren; Modul D wird nicht mit A–C saldiert, sondern daneben angegeben.",
+    "dinEn158042022": "DIN EN 15804:2022-03",
+    "beispiel2PrimärenergieEnergetisch": "Beispiel 2: Primärenergie – energetisch und stofflich",
+    "beiDerVerbrennungAm": "Bei der Verbrennung am Lebensende wird PENRM als Energie frei – deshalb wird der stoffliche Anteil getrennt ausgewiesen.",
+    "dinEn1580420222": "DIN EN 15804:2022-03",
+    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: ESPR 2024/1781, BauPVO 2024/3110, DPP-Zeitplan, EN 15804+A2 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "DPP_MOCK_DATA": {
+      "uid-1234-beton": {
+        "name": "Stahlbetonfertigteil-Stütze",
+        "manufacturer": "Precast Solutions GmbH",
+        "productionDate": "2025-10-12",
+        "location": "Werk Augsburg",
+        "batchId": "B-2025-10-12-04",
+        "materials": [
+          {
+            "name": "Normalbeton C35/45",
+            "amount": "1,2 m³",
+            "recycledContent": "15%"
+          },
+          {
+            "name": "Betonstahl B500B",
+            "amount": "180 kg",
+            "recycledContent": "100%"
+          }
+        ],
+        "carbonFootprint": "385 kg CO₂-Äqv.",
+        "circularity": {
+          "recyclability": "95%",
+          "instructions": "Demontage über Schraubverbindungen am Fußpunkt. Stahl und Beton können im Brecher getrennt und recycelt werden."
+        },
+        "compliance": [
+          "CE-Kennzeichnung",
+          "DIN EN 13225",
+          "EPD verfügbar"
+        ]
+      },
+      "uid-5678-holz": {
+        "name": "Brettschichtholz-Träger (BSH)",
+        "manufacturer": "WoodBuild AG",
+        "productionDate": "2026-01-05",
+        "location": "Werk Rosenheim",
+        "batchId": "H-2026-01-05-12",
+        "materials": [
+          {
+            "name": "Fichtenholz (PEFC zertifiziert)",
+            "amount": "0,8 m³",
+            "recycledContent": "0%"
+          },
+          {
+            "name": "Melamin-Harnstoff-Harz (MUF)",
+            "amount": "12 kg",
+            "recycledContent": "0%"
+          }
+        ],
+        "carbonFootprint": "-620 kg CO₂-Äqv. (inkl. biogener Kohlenstoff)",
+        "circularity": {
+          "recyclability": "80%",
+          "instructions": "Kaskadennutzung empfohlen. Zuerst Wiederverwendung als Bauteil, danach stoffliche Verwertung (Spanplatten), zuletzt thermische Verwertung."
+        },
+        "compliance": [
+          "FSC/PEFC",
+          "DIN EN 14080",
+          "Blauer Engel"
+        ]
+      }
+    },
+    "EPD_DATA": [
+      {
+        "id": "beton",
+        "name": "Normalbeton C25/30",
+        "manufacturer": "MusterBeton GmbH",
+        "validUntil": "2028-12-31",
+        "deklarationsnummer": "EPD-MBG-20230115-IBC1-DE",
+        "einheit": "1 m³",
+        "phasen": {
+          "a1a3": {
+            "name": "Herstellung (A1-A3)",
+            "gwp": 245,
+            "penrt": 1850,
+            "ap": 0.45,
+            "ep": 0.12
+          },
+          "a4": {
+            "name": "Transport (A4)",
+            "gwp": 15.5,
+            "penrt": 210,
+            "ap": 0.08,
+            "ep": 0.02
+          },
+          "c3": {
+            "name": "Abfallbehandlung (C3)",
+            "gwp": 8.2,
+            "penrt": 120,
+            "ap": 0.03,
+            "ep": 0.01
+          },
+          "d": {
+            "name": "Recyclingpotenzial (D)",
+            "gwp": -12.5,
+            "penrt": -180,
+            "ap": -0.05,
+            "ep": -0.01
+          }
+        }
+      },
+      {
+        "id": "stahl",
+        "name": "Betonstahl B500B (100% Recycling)",
+        "manufacturer": "EcoSteel AG",
+        "validUntil": "2027-06-30",
+        "deklarationsnummer": "EPD-ECO-20220610-IBA1-DE",
+        "einheit": "1 t",
+        "phasen": {
+          "a1a3": {
+            "name": "Herstellung (A1-A3)",
+            "gwp": 450,
+            "penrt": 4200,
+            "ap": 1.2,
+            "ep": 0.3
+          },
+          "a4": {
+            "name": "Transport (A4)",
+            "gwp": 25,
+            "penrt": 350,
+            "ap": 0.1,
+            "ep": 0.03
+          },
+          "c3": {
+            "name": "Abfallbehandlung (C3)",
+            "gwp": 5,
+            "penrt": 80,
+            "ap": 0.02,
+            "ep": 0.01
+          },
+          "d": {
+            "name": "Recyclingpotenzial (D)",
+            "gwp": -300,
+            "penrt": -2800,
+            "ap": -0.8,
+            "ep": -0.2
+          }
+        }
+      },
+      {
+        "id": "holz",
+        "name": "Brettschichtholz (BSH)",
+        "manufacturer": "WoodBuild GmbH",
+        "validUntil": "2029-03-15",
+        "deklarationsnummer": "EPD-WBG-20240315-IBA1-DE",
+        "einheit": "1 m³",
+        "phasen": {
+          "a1a3": {
+            "name": "Herstellung (A1-A3)",
+            "gwp": -750,
+            "penrt": 3100,
+            "ap": 0.8,
+            "ep": 0.25
+          },
+          "a4": {
+            "name": "Transport (A4)",
+            "gwp": 35,
+            "penrt": 480,
+            "ap": 0.15,
+            "ep": 0.04
+          },
+          "c3": {
+            "name": "Abfallbehandlung (C3)",
+            "gwp": 820,
+            "penrt": 150,
+            "ap": 0.1,
+            "ep": 0.05
+          },
+          "d": {
+            "name": "Recyclingpotenzial (D)",
+            "gwp": -450,
+            "penrt": -4200,
+            "ap": -0.6,
+            "ep": -0.15
+          }
+        }
+      }
+    ],
+    "DppEpd.schritte": [
+      {
+        "titel": "Herstellung",
+        "erklaerung": "EPD eines Betonfertigteils je m³:",
+        "formel": "GWP_{A1\\text{–}A3} = 250\\,\\text{kg CO}_2\\text{e}"
+      },
+      {
+        "titel": "Entsorgung",
+        "erklaerung": "Abfallbehandlung C3 = 5, Beseitigung C4 = 2:",
+        "formel": "GWP_{A\\text{–}C} = 250 + 5 + 2 = 257\\,\\text{kg CO}_2\\text{e}"
+      },
+      {
+        "titel": "Modul D",
+        "erklaerung": "Gutschrift für Recycling außerhalb der Systemgrenze:",
+        "formel": "D = -30\\,\\text{kg CO}_2\\text{e (separat ausweisen)}"
+      }
+    ],
+    "DppEpd.schritte_2": [
+      {
+        "titel": "Energetisch",
+        "erklaerung": "Nicht erneuerbare Primärenergie als Energieträger:",
+        "formel": "PENRE = 1\\,800\\,\\text{MJ}"
+      },
+      {
+        "titel": "Stofflich",
+        "erklaerung": "Im Produkt gebundene nicht erneuerbare Rohstoffe (z. B. Erdöl in Kunststoff):",
+        "formel": "PENRM = 200\\,\\text{MJ}"
+      },
+      {
+        "titel": "Summe",
+        "erklaerung": "Gesamter nicht erneuerbarer Primärenergieeinsatz:",
+        "formel": "PENRT = 2\\,000\\,\\text{MJ}"
+      }
+    ],
+    "DppEpd.literatur": [
+      "König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Detail 2009",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "IBU (Institut Bauen und Umwelt e.V.): Allgemeine Programmanleitung für EPDs"
+    ],
+    "DppEpd.regelwerke": [
+      {
+        "title": "DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln für die Produktkategorie Bauprodukte)"
+      },
+      {
+        "title": "DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)"
+      },
+      {
+        "title": "Verordnung (EU) 2024/1781 (Ökodesign, ESPR) und Verordnung (EU) 2024/3110 (Bauprodukteverordnung)",
+        "url": "https://eur-lex.europa.eu/"
+      },
+      {
+        "title": "DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)"
+      }
+    ],
+    "DppEpd.formeln": [
+      {
+        "formel": "\\text{GWP}_{100} = \\sum_{i} m_i \\cdot \\text{GWP}_{i} \\quad [\\text{kg CO}_2\\text{-Äquiv.}]",
+        "erklaerung": "Global Warming Potential (Treibhauspotenzial): Summe der emittierten Massen mi multipliziert mit ihrem jeweiligen Treibhausfaktor bezogen auf CO2 über einen Betrachtungshorizont von 100 Jahren (z. B. nach IPCC AR5 ohne Klima-Kohlenstoff-Rückkopplung CH4 = 28, N2O = 265; die nach EN 15804+A2 verwendeten EF-Faktoren weichen davon ab – Werte am EF-Referenzpaket prüfen).",
+        "quelle": "DIN EN 15804 / IPCC"
+      },
+      {
+        "formel": "\\text{PENRT} = \\text{PENRE} + \\text{PENRM} \\quad [\\text{MJ}]",
+        "erklaerung": "Total nicht erneuerbare Primärenergie (Total Non-Renewable Primary Energy): Summe aus energetisch genutzter (PENRE) und stofflich gebundener (PENRM) Primärenergie.",
+        "quelle": "DIN EN 15804 Tabelle 4"
+      }
+    ]
+  }
+}

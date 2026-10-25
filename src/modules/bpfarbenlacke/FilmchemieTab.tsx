@@ -1,6 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { REACTION_MECHANISMS } from './daten';
 import { AlertTriangle, Atom, Layers } from 'lucide-react';
+import inhalt from '@/content/bpfarbenlacke/FilmchemieTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface FilmchemieTabProps {
   setSelectedMech: Dispatch<SetStateAction<string>>;
@@ -11,22 +13,16 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
-        <h3 className="font-bold text-shiraz text-base mb-2">Makromolekulare Lackchemie &amp; Filmbildung</h3>
-        <p className="mb-3">
-          Lacke bestehen nicht nur aus farbgebenden Pigmenten; ihre tatsächliche Funktion beruht auf der Verknüpfung winziger Monomere und Oligomere zu riesigen Polymernetzwerken. Dieser Übergang vom flüssigen in den festen Zustand bestimmt die mechanischen und chemischen Resistenzen des Baustoffs.
-        </p>
+        <h3 className="font-bold text-shiraz text-base mb-2"><MdText text={inhalt.texte.makromolekulareLackchemieFilmbildung} /></h3>
+        <p className="mb-3"><MdText text={inhalt.texte.lackeBestehenNichtNur} /></p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 bg-white p-4 rounded-lg border border-home-grau/20">
           <div>
-            <h5 className="font-bold text-text-main text-xs uppercase tracking-wider mb-1">Physikalische Filmbildung</h5>
-            <p className="text-xs text-text-main/70">
-              Reines Trocknen durch das Verdunsten flüchtiger organischer Lösemittel oder Wasser. Die Polymerketten liegen bereits voll funktional vor und "verknäueln" sich lediglich mechanisch. Reversibel löslich (z.B. Dispersionsfarben, Chlorkautschuksysteme).
-            </p>
+            <h5 className="font-bold text-text-main text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.physikalischeFilmbildung} /></h5>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.reinesTrocknenDurchDas} /></p>
           </div>
           <div>
-            <h5 className="font-bold text-shiraz text-xs uppercase tracking-wider mb-1">Chemische Filmbildung</h5>
-            <p className="text-xs text-text-main/70">
-              Irreversible chemische Reaktion während der Verarbeitungsphase. Durch Autoxidation, Polyaddition oder lichtinitiierte Polymerisation vernetzen sich Moleküle dreidimensional über kovalente Hauptvalenzbindungen. Nicht wieder anlösbar (z.B. Polyurethane, Epoxide, Silikate).
-            </p>
+            <h5 className="font-bold text-shiraz text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.chemischeFilmbildung} /></h5>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.irreversibleChemischeReaktionWährend} /></p>
           </div>
         </div>
       </div>
@@ -35,7 +31,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Linke Leiste (Navigation der Mechanismen) */}
         <div className="lg:col-span-4 flex flex-col gap-2">
-          <div className="text-xs font-bold text-text-main/50 uppercase tracking-widest pl-2 mb-1">Mechanismen der Lehre (VCI)</div>
+          <div className="text-xs font-bold text-text-main/50 uppercase tracking-widest pl-2 mb-1"><MdText text={inhalt.texte.mechanismenDerLehreVci} /></div>
           {Object.entries(REACTION_MECHANISMS).map(([key, mech]) => (
             <button
               key={key}
@@ -56,12 +52,8 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
           
           {/* Physikalische Erklärung der Lichtstreuung */}
           <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-950 space-y-2">
-            <h5 className="font-bold flex items-center gap-1.5"><Layers size={14} className="text-amber-800" /> Streukraft-Exkurs (Brechzahl)</h5>
-            <p className="leading-relaxed">
-              Die Deckkraft weißer Pigmente beruht auf dem Unterschied ihrer Brechzahl zum Bindemittel (<span className="font-mono">n ≈ 1,5</span>). 
-              <strong>Titandioxid (Rutil)</strong> besitzt mit <span className="font-mono">n = 2,7</span> das größte Deckvermögen. 
-              Füllstoffe wie <strong>Kreide</strong> (<span className="font-mono">n = 1,6</span>) erscheinen im Bindemittel fast transparent und dienen primär der Füllvolumen-Erhöhung.
-            </p>
+            <h5 className="font-bold flex items-center gap-1.5"><Layers size={14} className="text-amber-800" /><MdText text={inhalt.texte.streukraftExkursBrechzahl} /></h5>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.dieDeckkraftWeißerPigmente} /><span className="font-mono">n ≈ 1,5</span><MdText text={inhalt.texte.titandioxidRutilBesitztMit} /><span className="font-mono">n = 2,7</span><MdText text={inhalt.texte.dasGrößteDeckvermögenFüllstoffe} /><span className="font-mono">n = 1,6</span><MdText text={inhalt.texte.erscheinenImBindemittelFast} /></p>
           </div>
         </div>
     
@@ -88,18 +80,18 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
                 {/* Chemische Partner */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1">Reaktive Edukte (Bindungspartner)</span>
+                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1"><MdText text={inhalt.texte.reaktiveEdukteBindungspartner} /></span>
                     <span className="text-xs font-medium text-text-main/90 leading-relaxed">{mech.reactants}</span>
                   </div>
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1">Katalysatoren / Reaktions-Initiatoren</span>
+                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1"><MdText text={inhalt.texte.katalysatorenReaktionsInitiatoren} /></span>
                     <span className="text-xs font-medium text-text-main/90 leading-relaxed">{mech.catalysts}</span>
                   </div>
                 </div>
     
                 {/* Molekülgleichung */}
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block">Chemische Struktur- und Vernetzungs-Gleichung</span>
+                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.chemischeStrukturUndVernetzungs} /></span>
                   <pre className="font-mono text-xs p-4 bg-stone-900 text-stone-200 rounded-xl overflow-x-auto whitespace-pre leading-relaxed border border-stone-850 shadow-inner">
                     {mech.molecularReaction}
                   </pre>
@@ -107,7 +99,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
     
                 {/* Beschreibung */}
                 <div className="space-y-1.5">
-                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block">Prozessbeschreibung (Mikroskopische Ebene)</span>
+                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.prozessbeschreibungMikroskopischeEbene} /></span>
                   <p className="text-sm text-text-main/80 leading-relaxed bg-off-white/40 p-3 rounded-lg border border-home-grau/10">
                     {mech.description}
                   </p>
@@ -116,9 +108,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
                 {/* Verarbeitungsvorschriften */}
                 <div className="bg-amber-50/70 p-5 rounded-xl border border-amber-200/60 space-y-3">
                   <h5 className="font-bold text-amber-950 text-sm flex items-center gap-2">
-                    <AlertTriangle className="text-amber-700" size={18} />
-                    Kritische Ausführungs- &amp; Verarbeitungsregeln für Bauproﬁs:
-                  </h5>
+                    <AlertTriangle className="text-amber-700" size={18} /><MdText text={inhalt.texte.kritischeAusführungsVerarbeitungsregelnF} /></h5>
                   <ul className="list-disc list-inside text-xs text-amber-900 space-y-1.5 pl-1 leading-relaxed">
                     {mech.processingRules.map((rule, idx) => (
                       <li key={idx} className="align-top">
@@ -130,7 +120,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
     
                 {/* Herstellerneutrale Bausysteme */}
                 <div className="space-y-3">
-                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block">Herstellerneutrale Systeme &amp; Erzeugnisse im Hoch- &amp; Tiefbau</span>
+                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.herstellerneutraleSystemeErzeugnisseIm} /></span>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {mech.neutralProducts.map((p, pIdx) => (
                       <div key={pIdx} className="p-4 rounded-xl border border-home-grau/20 bg-white shadow-3xs space-y-1 hover:border-shiraz/40 transition-colors">
@@ -144,12 +134,12 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
     
                 {/* Interaktiver Phasen-Visualisierer */}
                 <div className="border-t border-home-grau/20 pt-5">
-                  <div className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block mb-3">Phasen der Trocknung und Filmbildung (Schematisch)</div>
+                  <div className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block mb-3"><MdText text={inhalt.texte.phasenDerTrocknungUnd} /></div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-stone-50 p-3.5 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                       <div>
-                        <span className="text-xs font-bold text-shiraz">Phase 1: Nassauftrag</span>
-                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal">Bindemittel, Pigmente und Lösemittelmoleküle sind homogen verteilt und frei gleitend.</p>
+                        <span className="text-xs font-bold text-shiraz"><MdText text={inhalt.texte.phase1Nassauftrag} /></span>
+                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal"><MdText text={inhalt.texte.bindemittelPigmenteUndLösemittelmoleküle} /></p>
                       </div>
                       <div className="h-10 bg-white rounded border border-home-grau/20 mt-3 relative overflow-hidden flex items-center justify-around px-2">
                         <div className="absolute top-0 inset-x-0 h-1 bg-sky-300 animate-pulse"></div>
@@ -163,8 +153,8 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
     
                     <div className="bg-stone-50 p-3.5 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                       <div>
-                        <span className="text-xs font-bold text-shiraz">Phase 2: Verdampfung &amp; Start</span>
-                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal">Trägerstoff entweicht. Erste Vernetzungspunkte oder Kettenverhakungen entstehen.</p>
+                        <span className="text-xs font-bold text-shiraz"><MdText text={inhalt.texte.phase2VerdampfungStart} /></span>
+                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal"><MdText text={inhalt.texte.trägerstoffEntweichtErsteVernetzungspunk} /></p>
                       </div>
                       <div className="h-10 bg-white rounded border border-home-grau/20 mt-3 relative overflow-hidden flex items-center justify-center">
                         <div className="absolute -top-3 text-[10px] text-sky-400 animate-bounce">↑ ↑ ↑</div>
@@ -178,8 +168,8 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
     
                     <div className="bg-stone-50 p-3.5 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                       <div>
-                        <span className="text-xs font-bold text-shiraz">Phase 3: Ausgehärtet</span>
-                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal">Ein räumlich vermaschter, unlöslicher Farbfilm haftet fest auf dem Untergrund.</p>
+                        <span className="text-xs font-bold text-shiraz"><MdText text={inhalt.texte.phase3Ausgehärtet} /></span>
+                        <p className="text-[11px] text-text-main/70 mt-1 leading-normal"><MdText text={inhalt.texte.einRäumlichVermaschterUnlöslicher} /></p>
                       </div>
                       <div className="h-10 bg-shiraz/10 rounded border border-shiraz/30 mt-3 relative overflow-hidden flex items-center justify-center">
                         <div className="w-11/12 h-0.5 bg-shiraz absolute"></div>

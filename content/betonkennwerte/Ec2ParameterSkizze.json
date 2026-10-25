@@ -1,0 +1,10 @@
+{
+  "texte": {
+    "systemskizzeEinwirkendeGrößenBauteilgeom": "Systemskizze: Einwirkende Größen, Bauteilgeometrie & Zeitparameter (Abschnitt 1 – 6)",
+    "veranschaulichungDerNormativenZusammenhä": "Veranschaulichung der normativen Zusammenhänge nach DIN EN 1992-1-1 (EC2) mit aktuellen Werten",
+    "druckfestigkeit": "① Druckfestigkeit",
+    "zugfestigkeit": "② Zugfestigkeit",
+    "eModulG": "③ E-Modul & G",
+    "dehnungen": "④ Dehnungen σ-ε"
+  }
+}

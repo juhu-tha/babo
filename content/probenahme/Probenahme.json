@@ -1,0 +1,275 @@
+{
+  "texte": {
+    "probenahmeErkundung": " Probenahme & Erkundung",
+    "präziseMaterialentnahmeProbenteilungUnd": "Präzise Materialentnahme, Probenteilung und baukritische Bestandsdiagnostik",
+    "haufwerkeSchüttgüter": "Haufwerke & Schüttgüter",
+    "bauwerksdiagnostikImBestand": "Bauwerksdiagnostik im Bestand",
+    "grundlagenDerBeprobung": "Grundlagen der Beprobung",
+    "umDieEigenschaftenEines": "Um die Eigenschaften eines großen Haufwerks (z. B. mineralische Ersatzbaustoffe, Gesteinskörnung, Bauabfälle, Erdaushub) repräsentativ beurteilen zu können, muss die Probenahme planmäßig und normgerecht erfolgen. Zufällige oder unsachgemäße Probenahmen führen zu verfälschten Ergebnissen (z. B. Entmischung beim Schütten, wo große Körner nach außen rollen). Dies ist besonders kritisch bei der Klassifizierung nach der **Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023)** – die Probenahme hat nach § 8 EBV gemäß **LAGA PN 98** zu erfolgen (DIN 19698-1/-2 darf ergänzend herangezogen werden), da Fehler in der Beprobung zu massiven Fehleinschätzungen der Materialwerte und Entsorgungskosten führen.",
+    "dieProbenHierarchie": "Die \"Proben-Hierarchie\"",
+    "t1EinzelprobeStichprobe": "1. Einzelprobe / Stichprobe",
+    "eineMengeAnMaterial": "Eine Menge an Material, die in einem einzigen Durchgang (z. B. mit Schaufel oder Bohrgestänge) punktuell entnommen wurde.",
+    "t2Sammelprobe": "2. Sammelprobe",
+    "entstehtDurchDasHomogene": "Entsteht durch das homogene Vermischen mehrerer repräsentativer Einzelproben aus verschiedenen Haufwerksbereichen.",
+    "t3Laborprobe": "3. Laborprobe",
+    "eineDurchNormgerechteProbenteilung": "Eine durch normgerechte \"Probenteilung\" verkleinerte Teilmenge der Sammelprobe, die ans Prüflabor geht.",
+    "t4MessprobeOderPrüfprobe": "4. Messprobe oder Prüfprobe",
+    "dieKleineFraktionOft": "Die kleine Fraktion (oft nur wenige Gramm bis wenige Kilogramm), die konkret in das Prüfverfahren (z. B. Eluatherstellung nach DIN 19529) gegeben wird.",
+    "derKorrekteProzessablaufZ": " Der korrekte Prozessablauf (z. B. nach LAGA PN 98)",
+    "besondersBeiDerEntsorgung": "Besonders bei der Entsorgung von Boden, Bauschutt und dekontaminationspflichtigen Materialien müssen repräsentative Proben erstellt werden. Wer einfach nur eine Schaufel von der Oberfläche des Haufwerks kratzt, erhält kein verwertbares Ergebnis: Die Deklaration ist angreifbar, und Fehleinstufungen verursachen erhebliche Mehrkosten bei Verwertung oder Entsorgung.",
+    "vorabbegehungRasterungDasHaufwerk": "**Vorabbegehung & Rasterung:** Das Haufwerk (z. B. 500 m³ Bodenaushub) wird in Teilmengen (Lose) untergeteilt und gedanklich gerastert. Auffällige Zonen (z. B. Öl-Geruch oder schwarze Färbungen) werden sofort separiert (Hot-Spot-Beprobung).",
+    "stichprobenentnahmeEinzelprobenMitGeeign": "**Stichprobenentnahme (Einzelproben):** Mit geeignetem Gerät (z. B. Radlader für tiefe Schichten, Handbohrstock) werden über das Haufwerk verteilt (Tiefenprofil beachten!) eine vordefinierte Anzahl an Einzelproben entnommen (Anzahl nach LAGA PN 98 abhängig vom Haufwerksvolumen).",
+    "homogenisierungZurSammelprobeDie": "**Homogenisierung zur Sammelprobe:** Die Einzelproben werden in einer Wanne oder auf Planen intensiv durchmischt. Grobe Stücke werden zerkleinert; die Probenvorbehandlung im Labor richtet sich nach DIN 19747.",
+    "probenteilerLaborprobeErstellenDa": "**Probenteiler (Laborprobe erstellen):** Da die Sammelprobe meist viel zu groß ist (z. B. 20 kg), muss sie durch normgerechte Probenteilung (DIN EN 932-2) auf die vom Labor benötigte Menge (z. B. 3–5 kg) verkleinert werden.",
+    "vorsichtBeiLeichtflüchtigenSchadstoffen": "**Vorsicht bei leichtflüchtigen Schadstoffen (z. B. LHKW, BTEX, Naphthalin):** Hier darf *nicht* intensiv gemischt oder homogenisiert werden, da die Schadstoffe sonst ausgasen und die Laboranalyse fälschlicherweise \"sauberes\" Material anzeigt! In diesen Fällen werden die Einzelproben direkt gasdicht in Probengläser (z. B. mit Septum bzw. Methanolvorlage) gefüllt. Die meisten PAK sind dagegen schwerflüchtig und werden regulär über die Sammelprobe erfasst.",
+    "dieEntnahmemengeSammelprobeMuss": "Die Entnahmemenge (Sammelprobe) muss repräsentativ verkleinert werden. Keinesfalls darf einfach unstrukturiert weggenommen werden, da sich Material bei der Handhabung entmischt. Grobe Steine rollen nach außen, Feinstkorn bleibt in der Mitte.",
+    "riffelkastenRiffelbombe": " Riffelkasten (Riffelbombe)",
+    "einGerätMitAbwechselnd": "Ein Gerät mit abwechselnd nach links und rechts geneigten Schächten. Wenn das Material oben gleichmäßig eingeschüttet wird, teilt es sich exakt in zwei Hälften (in zwei Auffangschalen).",
+    "halbiertDieProbeSchrittweise": "Halbiert die Probe schrittweise (100% → 50% → 25% usw.)",
+    "sehrGenauUndNormgerecht": "Sehr genau und normgerecht (DIN EN 932-2) für rolliges / trockenes Material.",
+    "dieSchachtbreiteMussDeutlich": "Die Schachtbreite muss deutlich größer als das Größtkorn sein; das Mindestverhältnis und die Gerätegrößen legt DIN EN 932-2 fest.",
+    "kegelnUndVierteln": " Kegeln und Vierteln",
+    "einManuellesVerfahrenDie": "Ein manuelles Verfahren: Die Sammelprobe wird auf einer sauberen Fläche zu einem Kegel aufgeschüttet. Der Kegel wird flachgedrückt und kreuzweise in 4 gleich große Viertel geteilt.",
+    "zweiDiagonalGegenüberliegendeViertel": "Zwei diagonal gegenüberliegende Viertel werden verworfen.",
+    "dieVerbleibendenZweiViertel": "Die verbleibenden zwei Viertel werden neu gemischt und der Vorgang wiederholt, bis die Zielmenge erreicht ist.",
+    "gutFürLeichtFeuchte": "Gut für leicht feuchte oder bindige (klebrige) Materialien, wo Riffelkästen verstopfen.",
+    "grundlagenDerBauwerksdiagnostik": "Grundlagen der Bauwerksdiagnostik",
+    "imGegensatzZurLockeren": "Im Gegensatz zur lockeren Schüttgutbeprobung erfordert die Bauwerksprüfung an stehenden Bauteilen (z. B. Brücken, Stützwänden, Parkhäusern) ein zerstörungsarmes, materialtechnisches Vorgehen. Die Schonung der tragenden Substanz, die regelmäßige Überprüfung der Standsicherheit (VDI 6200) sowie die zuverlässige Lokalisierung von Schadensfronten (Karbonatisierungstiefe, Chlorideintragstiefe) stehen im Mittelpunkt.",
+    "t1EntnahmeorteVorbereitungDer": " 1. Entnahmeorte & Vorbereitung der Prüfstellen",
+    "umRepräsentativeUndUnverschleierte": "Um repräsentative und unverschleierte Schadensindikatoren zu generieren, muss die Wahl und physische Aufbereitung der Prüfstelle nach strengen Kriterien stattfinden. Willkürliche Stichproben bergen die Gefahr, gravierende, lokal begrenzte Schäden (Hot-Spots) zu übersehen oder umgekehrt singuläre Mängel überzubewerten.",
+    "praxisregelnDerProbenstellung": " Praxisregeln der Probenstellung",
+    "sondierungspflichtVorJedemEingriff": "**Sondierungspflicht vor jedem Eingriff:** Vor jeder Tiefbohrung oder Kernentnahme muss die Bewehrung mittels deckungsmessender Wirbelstromprüfung (Covermeter) oder Georadar exakt geortet werden. Dies verhindert eine statisch irreversible Beschädigung der Zug- und Querkraftbewehrung und schützt die Bohrkronen.",
+    "trockeneOberflächenSäuberungFremdschicht": "**Trockene Oberflächen-Säuberung:** Fremdschichten wie Bitumenbahnen, Fliesen, Spachtelmassen oder Farbanstriche müssen rückstandslos abgetragen werden. Hierbei darf **kein Wasser** zur Kühlung verwendet werden, da dies an der Oberfläche angelagerte Salze (Chloride) auswaschen oder tiefenmäßig verlagern würde.",
+    "systematischeSchadVsReferenzstellen": "**Systematische Schad- vs. Referenzstellen:** Prüfungen müssen planmäßig in den am stärksten belasteten Bereichen erfolgen (z.B. Deckenfugen unter Tausalzeintrag, Spritzwasserbereich der Säulenfüße) und durch \"trockene\", geschützte Referenzstellen abgeglichen werden, um Alterungs- von Schadprozessen abzugrenzen.",
+    "entnahmeTaktikNachBauteiltyp": " Entnahme-Taktik nach Bauteiltyp",
+    "wählenSieIhrBauteil": "Wählen Sie Ihr Bauteil zur Analyse:",
+    "empfohleneProbenanzahlLehrRichtwert": "Empfohlene Probenanzahl (Lehr-Richtwert – maßgebend ist der objektspezifische Prüfplan):",
+    "kritischeEntnahmeorte": "Kritische Entnahmeorte:",
+    "t2BohrkerneGeometrieGrößtkorn": " 2. Bohrkerne: Geometrie & Größtkorn-Effekt",
+    "bohrkerneWerdenMeistNass": "Bohrkerne werden meist nass aus der Tragstruktur ausgeschnitten, um im Labor die Druckfestigkeit prüfen zu lassen. Die Gültigkeit der Ergebnisse hängt jedoch elementar vom geometrischen Zusammenspiel aus Bohrkerndurchmesser (d) und dem Größtkorn der Gesteinskörnung (D_max) ab.",
+    "statischeGeometrischeAnforderungen": " Statische & geometrische Anforderungen",
+    "dieDreifachRegelD": "**Die Dreifach-Regel (d ≥ 3 · D_max):** Ist der Kerndurchmesser kleiner als das Dreifache des Größtkorns der Gesteinskörnung, wirken einzelne große Körner im schmalen Zylinder wie Störkörper – die Ergebnisse streuen stark. Regelkerne haben d = 100 mm oder 150 mm; kleinere Kerne (z. B. 50 mm) lässt DIN EN 13791 nur mit erhöhter Probenanzahl zu.",
+    "schlankheitseinflussHDVerhältnis": "**Schlankheitseinfluss (h/d-Verhältnis):** Die Stahlplatten der Prüfpresse behindern die Querdehnung des Betonkerns an den Endflächen durch Reibung. Bei kurzen Kernen (h/d = 1) stützt dieser Effekt den Kern weitgehend; das Ergebnis entspricht nach DIN EN 13791 einer In-situ-*Würfel*druckfestigkeit. Erst bei h/d = 2 herrscht im Mittelbereich ein nahezu einachsiger Spannungszustand – das Ergebnis entspricht der In-situ-*Zylinder*druckfestigkeit.",
+    "sofortigeHohlraumverfüllungDieVerbleiben": "**Sofortige Hohlraumverfüllung:** Die verbleibenden Bohrlöcher müssen nach der Entnahme umgehend statisch kraftschlüssig mit schrumpffreiem PCC-Vergussmörtel gleicher oder höherer Festigkeitsklasse mineralisch verschlossen werden, um mechanische Schwachstellen und Eintrittspfade für CO₂ zu blockieren.",
+    "kernGeometrieAggregatprüfer": " Kern-Geometrie & Aggregatprüfer",
+    "maximalesGesteinskornDMax": "Maximales Gesteinskorn (D_max):",
+    "geplanterBohrkernDurchmesserD": "Geplanter Bohrkern-Durchmesser (d):",
+    "gewonnenePrüfHöheH": "Gewonnene Prüf-Höhe (h):",
+    "mmMussDerBohrdurchmesser": " mm muss der Bohrdurchmesser d ≥ ",
+    "mmBetragenIhrKern": " mm betragen. Ihr Kern hat d = ",
+    "schlankheitHD": "Schlankheit λ = h/d:",
+    "aufHD2": "auf h/d = 2 (Literaturansatz ASTM C42; nur für 1 ≤ h/d ≤ 2)",
+    "t3ChloridbeprobungStatistischeAbsicherung": " 3. Chloridbeprobung: Statistische Absicherung & Profilgenauigkeit",
+    "derEintrittVonChloridhaltigem": "Der Eintritt von chloridhaltigem Tausalz erfolgt sehr heterogen über Fehlstellen, Haarrisse und Kiesnester. Daher ist eine statistisch dichte und streng verunreinigungsfreie Probenahme ein absolutes Muss, um folgenschwere Fehlentscheidungen bei der Instandsetzungsplanung zu verhindern.",
+    "laborpräparierteQualitätssicherung": " Laborpräparierte Qualitätssicherung",
+    "fülleDerProbestellenMin": "**Fülle der Probestellen (Min. 3 bis 5 Stellen):** Ein einzelner Bohrmehlabstich ist statistisch wertlos. Zur Bewertung eines homogenen Traggliedabschnitts (z. B. einer Parkdeckstütze) müssen mindestens 3, besser 5 separate Beprobungsstellen untersucht werden. Andernfalls verfälscht das zufällige Treffen eines chloridfreien Quarzkieses den Wert fälschlicherweise gegen Null.",
+    "verschleppungsverbotStufenbohrungWirdEin": "**Verschleppungsverbot & Stufenbohrung:** Wird ein Bohrloch tiefer getrieben, rieselt hochbelastetes Bohrmehl von der Oberfläche hinab. Bei der stufenweisen Probe (z. B. in Tiefenstufen von 10 mm) muss vor jedem tieferen Schritt das Loch penibelst staubfrei ausgesaugt und die Bohrkrone abgebürstet werden (Vermeidung von Verschleppungsfehlern).",
+    "ausreichendeProbenmengeRichtwert5": "**Ausreichende Probenmenge (Richtwert ≥ 5 g je Tiefenstufe):** Für die nasschemische Bestimmung des Chloridgehalts (Aufschluss mit Salpetersäure und Titration nach DIN EN 14629, z. B. potentiometrisch oder nach Volhard) muss genügend Bohrmehl vorliegen; die konkrete Mindestmenge legt das Prüflabor fest. Bei geringen Bohrdurchmessern müssen daher mehrere benachbarte Löcher für denselben Tiefenbereich vereinigt werden.",
+    "bohrdurchmesserDB": "Bohrdurchmesser (D_b):",
+    "schichtIntervallDz": "Schicht-Intervall (dz):",
+    "vereinigteBohrungenN": "Vereinigte Bohrungen (N):",
+    "ausbeuteBohrmehl": "Ausbeute Bohrmehl:",
+    "mengeProLoch": "Menge pro Loch:",
+    "dieGewonneneMengeLiegt": "Die gewonnene Menge liegt unter dem hier angesetzten Richtwert von 5 g. Es sollte der Bohrdurchmesser vergrößert oder mehr Löcher vereinigt werden, um repräsentative Zementsteingehalte zu sichern.",
+    "t4RückprallhammerUntergrundpräparationKor": " 4. Rückprallhammer: Untergrundpräparation & Korrekturen",
+    "derRückprallhammerSchmidtHammer": "Der Rückprallhammer (Schmidt-Hammer, DIN EN 12504-2) dient vor allem der schnellen, zerstörungsfreien Beurteilung der Gleichmäßigkeit des Betons; eine Festigkeitsschätzung ist nur über eine Kalibrierung an Bohrkernen nach DIN EN 13791 zulässig. Die gemessene Härte (Rebound-Wert R) reagiert jedoch hochsensibel auf Oberflächenstörungen.",
+    "fehlerquellenStoßwinkelkorrektur": " Fehlerquellen & Stoßwinkelkorrektur",
+    "derKarbonatisierungsfehlerKarbonatisieru": "**Der Karbonatisierungsfehler (Karbonatisierungshaut):** Atmosphärisches CO₂ wandelt Calciumhydroxid in der Randzone in Calciumcarbonat (CaCO₃) um. Die dichtere, härtere Randzone erhöht den Rückprallwert – bei älterem Beton mit tiefer Karbonatisierung wird die Festigkeit ohne Kalibrierung deutlich überschätzt. Die Prüffläche wird nach DIN EN 12504-2 nur mit einem Schleifstein geglättet; die Karbonatisierungsschicht bleibt dabei erhalten. Deshalb wird die Karbonatisierungstiefe mitgemessen und der Einfluss über Vergleichsbohrkerne (DIN EN 13791) erfasst.",
+    "winkelkorrekturGravitationsEinflussDie": "**Winkelkorrektur (Gravitations-Einfluss):** Die Schwerkraft wirkt auf den zurückprallenden Schlagbolzen. Schlägt man senkrecht nach unten (Bodenplatte), muss die Masse gegen die Schwerkraft zurückprallen – der Wert fällt zu *niedrig* aus, die Korrektur ist positiv. Gegen eine Decke (nach oben) unterstützt die Schwerkraft den Rückprall – der Wert fällt zu *hoch* aus, die Korrektur ist negativ. Die Korrekturwerte sind gerätespezifisch (Bedienungsanleitung des Herstellers); bei Kalibrierung nach DIN EN 13791 wird in derselben Schlagrichtung kalibriert.",
+    "messfeldAuswertungNachDin": "**Messfeld & Auswertung nach DIN EN 12504-2:** Ein einzelner Schlag hat keine Aussagekraft. Je Prüffläche (ca. 300 mm × 300 mm) werden mindestens 9 Schläge mit mindestens 25 mm Abstand zueinander und zum Rand ausgeführt. Kennwert ist der **Median**. Weichen mehr als 20 % der Einzelwerte um mehr als 25 % vom Median ab, wird die gesamte Messreihe verworfen. Schläge, die eine oberflächennahe Pore eindrücken, werden nicht gewertet.",
+    "karbonatisierungsWinkeljustierung": " Karbonatisierungs- & Winkeljustierung",
+    "rohwertRückprallMedianR": "Rohwert Rückprall (Median R):",
+    "karbonatisierungsTiefeXCo": "Karbonatisierungs-Tiefe (x_CO₂):",
+    "schlagrichtungEinbauwinkel": "Schlagrichtung / Einbauwinkel (α):",
+    "korrekturKarbonatisierungLehrmodell": "Korrektur Karbonatisierung (Lehrmodell):",
+    "korrekturWinkelHerstellerrichtwert": "Korrektur Winkel (Herstellerrichtwert):",
+    "schätzungAusRohwertLehr": "Schätzung aus Rohwert (Lehr-Näherung):",
+    "schätzungAusKorrigiertemR": "Schätzung aus korrigiertem R (Lehr-Näherung):",
+    "lehrmodellWinkelkorrekturNachTypischen": "Lehrmodell: Winkelkorrektur nach typischen Herstellertabellen, Karbonatisierungsabzug und Festigkeitsgerade sind didaktische Näherungen. Eine belastbare Festigkeitsaussage ist nur mit einer Beziehung aus Vergleichsbohrkernen nach DIN EN 13791 möglich.",
+    "merksatzDerDiagnostikAuswertungsmethoden": "**Merksatz der Diagnostik:** Auswertungsmethoden an Bauwerken unterliegen immer statistischen Einflüssen. Ein einzelnes Testergebnis besitzt keine normative Aussagekraft. Durch Mehrfachbeprobung und konsequente Fehlerbereinigung (Schleifen, Absaugen) werden verfälschte Beurteilungen effektiv ausgeschlossen."
+  },
+  "werte": {
+    "orientierungswert46Probestellen": "Orientierungswert: 4–6 Probestellen je Pfeiler",
+    "spritzwasserbereichCa01": "Spritzwasserbereich (ca. 0–1,5 m über Gelände bzw. Fahrbahn), unberegnete, trockene Flächen (dort schreitet die Karbonatisierung am schnellsten fort).",
+    "bewehrungsscanMitCovermeterZwingend": "Bewehrungsscan mit Covermeter zwingend vorab, Entfernung von Streusalzkrusten trocken mit Drahtbürste.",
+    "orientierungswert68Probestellen": "Orientierungswert: 6–8 Probestellen je Fahrgassenabschnitt",
+    "tiefpunkteImGefälleEntwässerungsrinnen": "Tiefpunkte im Gefälle, Entwässerungsrinnen, Fugenübergänge, Risszonen über den Stützen und Stützenfüße.",
+    "entfernenDerOsDichtungsbeschichtung": "Entfernen der OS-Dichtungsbeschichtung mittels Fräse/Schleifwerkzeug im Durchmesser von ca. 150 mm.",
+    "orientierungswert3StellenJe": "Orientierungswert: 3 Stellen je Wandachse",
+    "horizontaldichtungsebeneErdberührendeSoc": "Horizontaldichtungsebene, erdberührende Sockelbereiche (Dränagewasser-Einfluss), Rissverläufe.",
+    "abklopfenHohlerPutzschichtenGetrennte": "Abklopfen hohler Putzschichten; getrennte Beprobung von Mörtelfuge und Ziegelkörper, um Verfälschungen auszuschließen.",
+    "orientierungswert3Probestellen": "Orientierungswert: 3 Probestellen",
+    "balkonschnittkanteTropfnasenBereichFreib": "Balkonschnittkante (Tropfnasen-Bereich), freibewitterte Hauptfläche, Einspannungsquerschnitt am Wandanschluss.",
+    "messungDerTatsächlichenBetondeckung": "Messung der tatsächlichen Betondeckung; Karbonatisierungstiefe an frischer Bruch- oder Spaltfläche mit Phenolphthalein-Lösung bestimmen.",
+    "maximalesGesteinskornDMax": "Maximales Gesteinskorn (D_max)",
+    "geplanterBohrkernDurchmesserD": "Geplanter Bohrkern-Durchmesser (d)",
+    "gewonnenePrüfHöheH": "Gewonnene Prüf-Höhe (h)",
+    "nichtRepräsentativ": "⚠ Nicht repräsentativ",
+    "entsprichtWürfelDinEn": "entspricht Würfel (DIN EN 13791)",
+    "entsprichtZylinderDinEn": "entspricht Zylinder (DIN EN 13791)",
+    "zuKurzNichtPrüfbar": "zu kurz – nicht prüfbar",
+    "zuLangAufH": "zu lang – auf h/d = 2 kürzen",
+    "zwischenwertUmrechnungNötig": "Zwischenwert – Umrechnung nötig",
+    "mengeAusreichend": "✔ Menge ausreichend",
+    "zuGering5G": "⚠ Zu gering (< 5 g)",
+    "boden90": "Boden (-90°)",
+    "decke90": "Decke (+90°)",
+    "beispiel1ReichtDas": "Beispiel 1: Reicht das Bohrmehl einer Tiefenstufe für die Chloridanalyse?",
+    "jedeTiefenstufeBrauchtZwei": "Jede Tiefenstufe braucht zwei vereinigte Bohrungen. Zwischen den Stufen das Loch aussaugen, sonst verschleppt hochbelastetes Mehl aus der Randzone in die tieferen Proben.",
+    "dinEn146292007": "DIN EN 14629:2007-06 (Chloridbestimmung); Mengenrichtwert laborabhängig",
+    "beispiel2BohrkernMit": "Beispiel 2: Bohrkern mit h/d = 1,5 auf Zylinderfestigkeit umrechnen",
+    "einEinzelkernIstKein": "Ein Einzelkern ist kein Festigkeitsnachweis. Die charakteristische In-situ-Festigkeit wird nach DIN EN 13791 aus mehreren Kernen eines Prüfbereichs statistisch ermittelt.",
+    "dinEn125041": "DIN EN 12504-1:2021-02, DIN EN 13791:2020-02; Faktor k nach ASTM C42/C42M (Literaturansatz)",
+    "beispiel3RückprallwertAn": "Beispiel 3: Rückprallwert an einer Deckenunterseite korrigieren",
+    "dieKorrekturwerteSindGerätespezifisch": "Die Korrekturwerte sind gerätespezifisch. Für eine Festigkeitsaussage wird R mit Vergleichsbohrkernen derselben Bauteile kalibriert (DIN EN 13791).",
+    "dinEn125042": "DIN EN 12504-2:2021-10 (Durchführung, Median); Korrekturwerte nach Herstellerangaben",
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Probenahme nach EBV § 8/LAGA PN 98, Bohrkerne, Chloridbeprobung und Rückprallprüfung gegen DIN EN 12504-1/-2, DIN EN 13791 und DIN EN 14629 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Probenahme": [
+      {
+        "id": "pier",
+        "label": "Brückenpfeiler",
+        "exp": "Spritzwasser / Karbonatisierung"
+      },
+      {
+        "id": "deck",
+        "label": "Parkdeck-Platte",
+        "exp": "Hoher Chlorideintrag"
+      },
+      {
+        "id": "wall",
+        "label": "Kellerwand",
+        "exp": "Feuchte & bauschädliche Salze"
+      },
+      {
+        "id": "balcony",
+        "label": "Balkonplatte",
+        "exp": "Karbonatisierung / Betondeckung"
+      }
+    ],
+    "Probenahme.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Parkdeckstütze, Bohrdurchmesser D_b = 16 mm, Tiefenstufe Δz = 10 mm, Rohdichte des Bohrmehls als Beton ρ ≈ 2,2 g/cm³, Richtwert des Labors: mindestens 5 g je Stufe.",
+        "formel": "D_b = 1{,}6\\,\\text{cm},\\quad \\Delta z = 1{,}0\\,\\text{cm}"
+      },
+      {
+        "titel": "Volumen je Bohrloch",
+        "erklaerung": "Zylindervolumen der Tiefenstufe:",
+        "formel": "V = \\pi \\cdot 0{,}8^2 \\cdot 1{,}0 = 2{,}01\\,\\text{cm}^3"
+      },
+      {
+        "titel": "Masse je Bohrloch",
+        "erklaerung": "Ein einzelnes Loch liefert zu wenig Material:",
+        "formel": "m_1 = 2{,}01 \\cdot 2{,}2 = 4{,}42\\,\\text{g} < 5\\,\\text{g}"
+      },
+      {
+        "titel": "Zwei Bohrlöcher vereinigen",
+        "erklaerung": "Das Bohrmehl zweier benachbarter Löcher derselben Tiefenstufe wird zu einer Probe vereinigt:",
+        "formel": "m_2 = 2 \\cdot 4{,}42 = 8{,}85\\,\\text{g} \\geq 5\\,\\text{g}"
+      }
+    ],
+    "Probenahme.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Bohrkern aus einer Decke, d = 100 mm, nach dem Planschleifen h = 150 mm, Größtkorn D_max = 16 mm, gemessene Bruchspannung f_core = 35,0 N/mm².",
+        "formel": "d \\geq 3 \\cdot D_{max} = 48\\,\\text{mm} \\;\\checkmark"
+      },
+      {
+        "titel": "Schlankheit",
+        "erklaerung": "Der Kern liegt zwischen den beiden in DIN EN 13791 geregelten Fällen h/d = 1 (Würfel) und h/d = 2 (Zylinder):",
+        "formel": "\\lambda = \\frac{150}{100} = 1{,}5"
+      },
+      {
+        "titel": "Korrekturfaktor",
+        "erklaerung": "Literaturansatz ASTM C42 für die Umrechnung auf h/d = 2:",
+        "formel": "k(1{,}5) = 0{,}96"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Gleichwertige Zylinderdruckfestigkeit dieses einen Kerns:",
+        "formel": "f_{c,\\,h/d=2} = 0{,}96 \\cdot 35{,}0 = 33{,}6\\,\\text{N/mm}^2"
+      }
+    ],
+    "Probenahme.schritte_3": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Prüffläche an einer Deckenunterseite, Schlagrichtung nach oben (α = +90°), Median aus 9 gültigen Schlägen: R = 36.",
+        "formel": "R_{Median} = 36"
+      },
+      {
+        "titel": "Richtung der Korrektur",
+        "erklaerung": "Nach oben unterstützt die Schwerkraft den Rückprall – der Wert ist zu hoch, die Korrektur also negativ.",
+        "formel": "\\Delta R_{\\alpha} < 0"
+      },
+      {
+        "titel": "Korrekturwert (Herstellertabelle, interpoliert)",
+        "erklaerung": "Typische Werte Typ N: −5,4 bei R = 20 und −2,3 bei R = 60:",
+        "formel": "\\Delta R_{\\alpha} = -5{,}4 + 3{,}1 \\cdot \\frac{36-20}{40} = -4{,}2"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Auf horizontale Schlagrichtung bezogener Rückprallwert:",
+        "formel": "R_{korr} = 36 - 4{,}2 = 31{,}8"
+      }
+    ],
+    "Probenahme.literatur": [
+      "Ersatzbaustoffverordnung (EBV) vom 09.07.2021 (BGBl. I S. 2598), in Kraft seit 01.08.2023 – § 8 Probenahme",
+      "LAGA PN 98: Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen (Stand Mai 2019)",
+      "ASTM C42/C42M: Standard Test Method for Obtaining and Testing Drilled Cores and Sawed Beams of Concrete (Korrekturfaktoren für h/d < 2)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Probenahme.regelwerke": [
+      {
+        "title": "Ersatzbaustoffverordnung (EBV) – § 8 Probenahme und Probenaufbereitung",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/__8.html"
+      },
+      {
+        "title": "LAGA PN 98 (Beprobung von Haufwerken - Richtlinie für das Vorgehen)",
+        "url": "https://www.laga-online.de/"
+      },
+      {
+        "title": "DIN 19698-1:2014-05 / DIN 19698-2:2016-12 (Probenahme von festen und stichfesten Materialien)"
+      },
+      {
+        "title": "DIN 19747:2009-07 (Probenvorbehandlung, -vorbereitung und -aufarbeitung)"
+      },
+      {
+        "title": "DIN EN 932-1:1996-11 / DIN EN 932-2:1999-03 (Gesteinskörnungen – Probenahme; Einengen von Laboratoriumsproben)"
+      },
+      {
+        "title": "DIN 19528:2009-01 (Elution von Feststoffen – Perkolationsverfahren) / DIN 19529:2015-12 (Schüttelverfahren W/F = 2 l/kg)"
+      },
+      {
+        "title": "DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)"
+      },
+      {
+        "title": "DIN EN 12504-2:2021-10 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)"
+      },
+      {
+        "title": "DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken)"
+      },
+      {
+        "title": "DIN EN 14629:2007-06 (Bestimmung des Chloridgehalts in Festbeton)"
+      }
+    ],
+    "Probenahme.formeln": [
+      {
+        "formel": "d_{\\text{Kern}} \\ge 3 \\cdot D_{\\text{max}}",
+        "erklaerung": "Geometrische Mindestanforderung an den Bohrkerndurchmesser d_Kern bezogen auf das Größtkorn D_max der Gesteinskörnung zur Begrenzung der Streuung.",
+        "quelle": "Fachregel; vgl. DIN EN 12504-1 / DIN EN 13791"
+      },
+      {
+        "formel": "f_{c,\\,h/d=2} = k(\\lambda) \\cdot f_{\\text{core}},\\quad \\lambda = h/d,\\; k(1{,}0) = 0{,}87 \\ldots k(2{,}0) = 1{,}00",
+        "erklaerung": "Umrechnung der Bohrkernfestigkeit f_core mit Schlankheit 1 ≤ h/d ≤ 2 auf die gleichwertige Festigkeit eines Kerns mit h/d = 2. DIN EN 13791 ordnet h/d = 1 der Würfel- und h/d = 2 der Zylinderdruckfestigkeit zu; Zwischenwerte nach Literaturansatz.",
+        "quelle": "ASTM C42/C42M; DIN EN 13791:2020-02"
+      },
+      {
+        "formel": "m = n \\cdot \\pi \\cdot (D_b/2)^2 \\cdot \\Delta z \\cdot \\rho",
+        "erklaerung": "Bohrmehlmasse je Tiefenstufe aus n vereinigten Bohrungen mit Durchmesser D_b, Stufenhöhe Δz und Rohdichte ρ.",
+        "quelle": "Geometrie; Probenahme nach DIN EN 14629"
+      }
+    ]
+  }
+}

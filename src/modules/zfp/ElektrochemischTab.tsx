@@ -5,6 +5,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 import { Zap, Battery } from 'lucide-react';
+import inhalt from '@/content/zfp/ElektrochemischTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ElektrochemischTabProps {
   potential: number;
@@ -28,7 +30,7 @@ export default function ElektrochemischTab({ potential, potentialResults, render
             <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
               <Battery size={24} />
             </div>
-            <h2 className="text-xl font-bold text-slate-900">Potentialmessung (Half-cell)</h2>
+            <h2 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.potentialmessungHalfCell} /></h2>
           </div>
           
           <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
@@ -38,7 +40,7 @@ export default function ElektrochemischTab({ potential, potentialResults, render
           </div>
 
           <Slider
-            label="Gemessenes Potential"
+            label={inhalt.werte.gemessenesPotential}
             min={-600} max={0} step={10}
             value={potential} unit="mV"
             onChange={(e) => setPotential(Number(e.target.value))}
@@ -59,34 +61,32 @@ export default function ElektrochemischTab({ potential, potentialResults, render
             <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
               <Zap size={24} />
             </div>
-            <h2 className="text-xl font-bold text-slate-900">Betonwiderstand (Wenner-Sonde)</h2>
+            <h2 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.betonwiderstandWennerSonde} /></h2>
           </div>
 
           <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-            <p>
-              Das 4-Punkt Wenner-Sonden-Verfahren misst den spezifischen elektrischen Widerstand <InlineMath math="\rho" />. Dies korreliert mit der Durchfeuchtung und der Korrosionsgeschwindigkeit im Beton.
-            </p>
+            <p><MdText text={inhalt.texte.das4PunktWenner} /></p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Slider 
-              label="Elektrodenabstand (a)"
+              label={inhalt.werte.elektrodenabstandA}
               min={20} max={100} step={5}
               value={wennerSpacing} unit="mm"
-              info="Gleichmäßiger Abstand zwischen den 4 Messnadeln."
+              info={inhalt.werte.gleichmäßigerAbstandZwischenDen}
               onChange={(e) => setWennerSpacing(Number(e.target.value))}
             />
             <Slider 
-              label="Elektrolytwiderstand (R)"
+              label={inhalt.werte.elektrolytwiderstandR}
               min={10} max={2000} step={10}
               value={wennerResistance} unit="Ohm"
-              info="Gemessener Widerstandswert zwischen den Innenelektroden."
+              info={inhalt.werte.gemessenerWiderstandswertZwischenDen}
               onChange={(e) => setWennerResistance(Number(e.target.value))}
             />
           </div>
 
           <div className="mt-2 p-4 rounded-xl border border-home-grau/20 bg-slate-50 flex flex-col gap-2">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Spezifischer elektrischer Widerstand</div>
+            <div className="text-xs font-bold uppercase tracking-wider text-slate-500"><MdText text={inhalt.texte.spezifischerElektrischerWiderstand} /></div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-slate-900">{formatDeZahl(wennerResults.rho, 1)} Ω·m</span>
               <span className="text-sm text-slate-500">({formatDeZahl(wennerResults.rhoKohmCm, 1)} kΩ·cm)</span>

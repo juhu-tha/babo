@@ -1,0 +1,229 @@
+{
+  "texte": {
+    "pfasInBaustoffen": " PFAS in Baustoffen",
+    "perUndPolyfluorierteAlkylsubstanzen": "Per- und polyfluorierte Alkylsubstanzen (PFAS) sind extrem beständig, wasser-, fett- und schmutzabweisend – Eigenschaften, die sie für Beschichtungen, Dichtstoffe, Membranen und Löschschäume interessant gemacht haben. Gerade ihre Beständigkeit macht sie zu einem Umwelt- und Rückbauproblem. Das Modul zeigt, wo PFAS im Bauwesen vorkommen, wie sie reguliert werden, was das für Rückbau und Entsorgung bedeutet und wie sie analysiert werden. Der Rechner bewertet eine Wasserprobe gegen die Summengrenzwerte der Trinkwasserverordnung.",
+    "projekthinweisPfasInBaustoffen": "**Projekthinweis:** PFAS in Baustoffen und im Rückbau sind ein Forschungsthema an der Technischen Hochschule Augsburg bzw. im TTZ Aichach. Dieses Modul gibt ausschließlich den öffentlich zugänglichen Stand von Recht, Normung und Fachliteratur wieder; Zahlenangaben ohne Rechtsbezug sind Richtwerte.",
+    "definitionUndStoffgruppen": "Definition und Stoffgruppen",
+    "definitionOecd2021Pfas": "**Definition (OECD 2021):** PFAS sind fluorierte Stoffe, die mindestens ein vollständig fluoriertes Methyl- oder Methylen-Kohlenstoffatom enthalten. Darunter fallen mehr als 10.000 Einzelstoffe.",
+    "perfluoralkylsäurenPfaaCarbonsäurenPfca": "**Perfluoralkylsäuren (PFAA):** Carbonsäuren (PFCA, z. B. PFOA) und Sulfonsäuren (PFSA, z. B. PFOS). Sie sind die Endprodukte des Abbaus und werden in der Routineanalytik gemessen.",
+    "vorläuferPräkursorenZB": "**Vorläufer (Präkursoren):** z. B. Fluortelomeralkohole und -sulfonate; sie wandeln sich in der Umwelt in PFAA um.",
+    "polymereFluorpolymereMitFluorierter": "**Polymere:** Fluorpolymere mit fluorierter Hauptkette (PTFE, PVDF, ETFE, FEP) und Polymere mit fluorierten Seitenketten (z. B. Fluoracrylate in Imprägnierungen).",
+    "warumEwigkeitschemikalien": "Warum „Ewigkeitschemikalien“?",
+    "cFBindungDie": "**C–F-Bindung:** Die Kohlenstoff-Fluor-Bindung gehört zu den stärksten Einfachbindungen der organischen Chemie. PFAA werden in der Umwelt praktisch nicht abgebaut.",
+    "mobilitätKurzkettigePfasC4": "**Mobilität:** Kurzkettige PFAS (C4–C7) sind gut wasserlöslich und gelangen schnell ins Grundwasser; langkettige reichern sich stärker in Organismen an.",
+    "gesundheitDieEuropäischeBehörde": "**Gesundheit:** Die Europäische Behörde für Lebensmittelsicherheit (EFSA) hat 2020 für die Summe aus PFOA, PFNA, PFHxS und PFOS eine tolerierbare wöchentliche Aufnahme von 4,4 ng je kg Körpergewicht abgeleitet. Daraus leitet sich die Summe „PFAS-4“ ab.",
+    "woPfasImBauwesen": "Wo PFAS im Bauwesen vorkommen",
+    "übersichtNachAnwendungenOb": "Übersicht nach Anwendungen; ob ein konkretes Produkt PFAS enthält, zeigen nur Sicherheitsdatenblatt, Herstellerangabe oder Analyse.",
+    "beschichtungenCoilCoatingVon": "Beschichtungen (Coil-Coating von Fassaden- und Dachblechen, Pulverlacke)",
+    "fluorpolymerePvdfFluorierteAdditive": "Fluorpolymere (PVDF), fluorierte Additive",
+    "witterungsUndUvBeständigkeit": "Witterungs- und UV-Beständigkeit, Farbtonstabilität",
+    "geringImGebrauchAbrieb": "gering im Gebrauch; Abrieb, Brand, Entsorgung",
+    "imprägnierungenUndAntiGraffiti": "Imprägnierungen und Anti-Graffiti-Systeme (Naturstein, Beton, Pflaster)",
+    "seitenkettenFluoriertePolymereFluortensi": "Seitenketten-fluorierte Polymere, Fluortenside",
+    "ölWasserUndSchmutzabweisend": "öl-, wasser- und schmutzabweisend",
+    "auswaschungAbbauZuPfaa": "Auswaschung, Abbau zu PFAA",
+    "farbenLackeKlebstoffe": "Farben, Lacke, Klebstoffe",
+    "fluortensideNetzUndVerlaufsmittel": "Fluortenside (Netz- und Verlaufsmittel)",
+    "benetzungOberflächengüte": "Benetzung, Oberflächengüte",
+    "geringeGehalteAuswaschung": "geringe Gehalte, Auswaschung",
+    "dichtstoffeUndDichtungen": "Dichtstoffe und Dichtungen",
+    "ptfeBänderFluorelastomereFkm": "PTFE-Bänder, Fluorelastomere (FKM), fluorierte Additive",
+    "chemischeUndThermischeBeständigkeit": "chemische und thermische Beständigkeit, Gleitfähigkeit",
+    "geringImGebrauchEntsorgung": "gering im Gebrauch; Entsorgung",
+    "membranenUndFolien": "Membranen und Folien",
+    "ptfeBeschichteteGlasgewebeEtfe": "PTFE-beschichtete Glasgewebe, ETFE-Folien, fluorierte Deckschichten",
+    "dauerhaftigkeitSelbstreinigungLichtdurch": "Dauerhaftigkeit, Selbstreinigung, Lichtdurchlässigkeit",
+    "geringImGebrauchBrand": "gering im Gebrauch; Brand, Entsorgung",
+    "kabelUndTechnischeGebäudeausrüstung": "Kabel und technische Gebäudeausrüstung",
+    "fluorpolymereFepPtfe": "Fluorpolymere (FEP, PTFE)",
+    "isolierungBrandverhalten": "Isolierung, Brandverhalten",
+    "entsorgungBrand": "Entsorgung, Brand",
+    "brandschutzWasserfilmbildendeLöschschäum": "Brandschutz: wasserfilmbildende Löschschäume (AFFF)",
+    "fluortensideFrüherPfosSpäter": "Fluortenside (früher PFOS, später kurzkettige Fluortelomere)",
+    "schnellesLöschenVonFlüssigkeitsbränden": "schnelles Löschen von Flüssigkeitsbränden",
+    "direktInBodenUnd": "direkt in Boden und Grundwasser; Altlasten",
+    "typischeStandorteFeuerwehrübungsflächenF": "**Typische Standorte:** Feuerwehrübungsflächen, Flughäfen, Raffinerien und Tanklager, Brandorte mit Schaumeinsatz, Standorte stationärer Schaumlöschanlagen.",
+    "bauteileBetonUndEstrich": "**Bauteile:** Beton und Estrich von Übungsflächen, Löschwasserrückhaltebecken und Abwasserkanälen nehmen PFAS auf und geben sie über Jahre wieder ab. Sie sind beim Rückbau als belastet zu behandeln, bis eine Analyse das Gegenteil zeigt.",
+    "bodenUndGrundwasserKurzkettige": "**Boden und Grundwasser:** Kurzkettige PFAS wandern weit; Grundwasserfahnen reichen oft Kilometer über den Eintragsort hinaus.",
+    "industrielleBausubstanz": "Industrielle Bausubstanz",
+    "inGalvanikbetriebenPfosAls": "In Galvanikbetrieben (PFOS als Netzmittel zur Sprühnebelunterdrückung), in der Papier- und Textilveredelung sowie in der Fluorchemie können Böden, Wände und Entwässerungsleitungen belastet sein. Die historische Erkundung im Rückbaukonzept sollte nach solchen Nutzungen fragen.",
+    "stoffrechtEuUndInternational": "Stoffrecht (EU und international)",
+    "stockholmerÜbereinkommenPopVerordnung": "**Stockholmer Übereinkommen / POP-Verordnung (EU) 2019/1021:** PFOS (2009), PFOA (2019) und PFHxS (2022) samt Salzen und verwandten Verbindungen sind als persistente organische Schadstoffe weitgehend verboten.",
+    "reachBeschränkungenAnhangXvii": "**REACH-Beschränkungen (Anhang XVII):** u. a. langkettige Perfluorcarbonsäuren C9–C14 (Verordnung (EU) 2021/1297), PFHxA (Verordnung (EU) 2024/2462) und PFAS in Feuerlöschschäumen (Verordnung (EU) 2025/1988, in Kraft seit 23.10.2025; Summe aller PFAS ab 1 mg/l, gestaffelte Übergangsfristen je nach Anwendung).",
+    "universellerPfasBeschränkungsvorschlagDe": "**Universeller PFAS-Beschränkungsvorschlag:** Deutschland, Dänemark, die Niederlande, Norwegen und Schweden haben 2023 bei der ECHA eine Beschränkung der gesamten Stoffgruppe vorgeschlagen und 2025 überarbeitet. Der Ausschuss für Risikobeurteilung (RAC) hat seine Stellungnahme im März 2026 verabschiedet; der Entwurf des Ausschusses für sozioökonomische Analyse (SEAC) war bis Mai 2026 in der Konsultation, die abschließende SEAC-Stellungnahme wird für Ende 2026 erwartet. Danach entscheidet die EU-Kommission mit den Mitgliedstaaten. **Die Beschränkung ist noch nicht in Kraft;** Ausnahmen und Übergangsfristen, auch für Bauprodukte, sind offen.",
+    "trinkwasserverordnungTrinkwvVom20": "Trinkwasserverordnung (TrinkwV) vom 20.06.2023, Anlage 2 Teil I; Umsetzung der Richtlinie (EU) 2020/2184",
+    "summePfas2020": "**Summe PFAS-20** (20 PFCA und PFSA mit C4–C13)",
+    "t01GL": "0,1 µg/l = 100 ng/l",
+    "summePfas4Pfoa": "**Summe PFAS-4** (PFOA, PFNA, PFHxS, PFOS)",
+    "t002GL": "0,02 µg/l = 20 ng/l",
+    "dieEuTrinkwasserrichtlinieKennt": "Die EU-Trinkwasserrichtlinie kennt daneben den Parameter „PFAS gesamt“ (0,5 µg/l), den Deutschland nicht übernommen hat.",
+    "bodenGrundwasserAbfall": "Boden, Grundwasser, Abfall",
+    "leitfadenZurPfasBewertung": "**Leitfaden zur PFAS-Bewertung (BMUV 2022):** bundeseinheitliche Empfehlungen zur Bewertung von Boden- und Gewässerverunreinigungen und zur Entsorgung PFAS-haltigen Bodenmaterials; die Länder haben ihn per Erlass eingeführt.",
+    "popAbfälleAbfälleDie": "**POP-Abfälle:** Abfälle, die PFOS, PFOA oder PFHxS oberhalb der Konzentrationsgrenzen des Anhangs IV der POP-Verordnung enthalten, müssen so behandelt werden, dass die Stoffe zerstört werden.",
+    "konsequenzenFürRückbauUnd": "Konsequenzen für Rückbau und Entsorgung",
+    "erkundenNutzungsgeschichteAuswertenLösch": "**Erkunden:** Nutzungsgeschichte auswerten (Löschübungen, Brände mit Schaumeinsatz, Galvanik, Imprägnierungen). PFAS gehören bei Verdacht in das Schadstoffkataster des Rückbaukonzepts.",
+    "beprobenBauschuttEstrichBeton": "**Beproben:** Bauschutt, Estrich, Beton und Boden auf PFAS im Feststoff und im Eluat untersuchen; Ergebnis entscheidet über Verwertungsweg und Abfallschlüssel.",
+    "trennenBelasteteBauteileSelektiv": "**Trennen:** belastete Bauteile selektiv ausbauen und getrennt halten – eine Vermischung mit unbelastetem RC-Material verbreitet die Stoffe in neue Bauwerke.",
+    "entsorgenBelastetesMaterialDarf": "**Entsorgen:** Belastetes Material darf nicht als Ersatzbaustoff in offene Bauweisen gelangen. Infrage kommen Deponien mit Sickerwasserfassung und -behandlung oder eine thermische Behandlung bei hohen Temperaturen (Sonderabfallverbrennung).",
+    "wasserSchützenBaugrubenUnd": "**Wasser schützen:** Baugruben- und Waschwasser aus belasteten Bereichen fassen und vor der Einleitung behandeln (z. B. Aktivkohle, Ionenaustauscher).",
+    "pvdfBeschichteteBlechePtfe": "PVDF-beschichtete Bleche, PTFE-Membranen und ETFE-Folien gelten im Gebrauch als wenig mobil. Kritisch sind Herstellung (Prozesshilfsstoffe), Brand und Entsorgung.",
+    "beiUnvollständigerVerbrennungKönnen": "Bei unvollständiger Verbrennung können kurzkettige PFAS und Fluorwasserstoff entstehen; Verbrennungsanlagen brauchen ausreichende Temperatur und Rauchgasreinigung.",
+    "beschichteteMetallblecheWerdenIm": "Beschichtete Metallbleche werden im Schrottrecycling eingeschmolzen; die Beschichtung verbrennt dabei. Die Abgasreinigung der Hütte ist maßgebend.",
+    "beimAbbruchBelasteterBauteile": "Beim Abbruch belasteter Bauteile staubarm arbeiten, Staub- und Hautkontakt vermeiden und die Gefährdungsbeurteilung nach Gefahrstoffverordnung auf PFAS erweitern.",
+    "einzelstoffanalytikTargetAnalytik": "Einzelstoffanalytik (Target-Analytik)",
+    "verfahrenAnreicherungÜberFestphasenextra": "**Verfahren:** Anreicherung über Festphasenextraktion, Trennung mit Flüssigchromatographie und Detektion mit Tandem-Massenspektrometrie (LC-MS/MS).",
+    "normenWasserNachDin": "**Normen:** Wasser nach DIN 38407-42 bzw. ISO 21675, Schlamm, Kompost und Boden nach DIN 38414-14. Feststoffe werden zusätzlich eluiert, z. B. im Schüttelverfahren nach DIN 19529 oder im Säulenversuch nach DIN 19528.",
+    "empfindlichkeitBestimmungsgrenzenJeEinze": "**Empfindlichkeit:** Bestimmungsgrenzen je Einzelstoff liegen im Wasser typischerweise bei etwa 1 ng/l (Richtwert, laborabhängig).",
+    "grenzeGemessenWirdNur": "**Grenze:** Gemessen wird nur, was auf der Stoffliste steht – bei über 10.000 PFAS bleibt ein großer Teil unerkannt.",
+    "summenparameterUndVorläufer": "Summenparameter und Vorläufer",
+    "aofEofAdsorbierbaresBzw": "**AOF / EOF:** adsorbierbares bzw. extrahierbares organisch gebundenes Fluor, bestimmt mit Verbrennungs-Ionenchromatographie (CIC); für AOF in Wasser genormt nach DIN EN ISO 18127 (ersetzt DIN 38409-59). Erfasst auch unbekannte PFAS, aber ohne Stoffzuordnung.",
+    "topAssayOxidationDer": "**TOP-Assay:** Oxidation der Probe wandelt Vorläufer in messbare Perfluorcarbonsäuren um; die Zunahme gegenüber der Ausgangsmessung zeigt das Vorläuferpotenzial.",
+    "pfasSindInVielen": "PFAS sind in vielen Materialien des Alltags enthalten. Probenahmegeräte und Gefäße sollten PFAS-frei sein (z. B. Polypropylen oder Polyethylen statt PTFE), Blindproben dokumentieren mögliche Verschleppungen.",
+    "messwerteInNgL": "Messwerte in ng/l",
+    "beispielLaden": "Beispiel laden",
+    "leeresFeldOderBg": "Leeres Feld oder „< BG“ = unter der Bestimmungsgrenze. Fett: Stoffe der Summe PFAS-4. Beispiel: fiktive Grundwasserprobe.",
+    "anteilKurzkettigerPfasC4": "Anteil kurzkettiger PFAS (C4–C7) an PFAS-20: ",
+    "stoffeBg": " · Stoffe < BG: ",
+    "keineBerechnungMöglich": "Keine Berechnung möglich."
+  },
+  "werte": {
+    "wasSindPfas": "Was sind PFAS?",
+    "pfasInBaustoffen": "PFAS in Baustoffen",
+    "rückbauEntsorgung": "Rückbau & Entsorgung",
+    "rechnerPfasSummen": "Rechner PFAS-Summen",
+    "nichtEindeutig": " (nicht eindeutig)",
+    "werteUnterDerBestimmungsgrenze": "Werte unter der Bestimmungsgrenze",
+    "summePfas20": "Summe PFAS-20",
+    "alle20PerfluoralkylcarbonUnd": "Alle 20 Perfluoralkylcarbon- und -sulfonsäuren mit 4 bis 13 C-Atomen:",
+    "summePfas4": "Summe PFAS-4",
+    "pfoaPfnaPfhxsUnd": "PFOA, PFNA, PFHxS und PFOS – die vier Stoffe der EFSA-Bewertung von 2020:",
+    "vergleichMitDenGrenzwerten": "Vergleich mit den Grenzwerten der TrinkwV",
+    "beideSummenLiegenUnter": "Beide Summen liegen unter dem jeweiligen Grenzwert.",
+    "mindestensEineSummeÜberschreitet": "Mindestens eine Summe überschreitet ihren Grenzwert.",
+    "spanneDurchDieBestimmungsgrenze": "Spanne durch die Bestimmungsgrenze",
+    "derGrenzwertLiegtInnerhalb": "Der Grenzwert liegt innerhalb der Spanne – die Bewertung hängt vom Ansatz ab.",
+    "derGrenzwertLiegtAußerhalb": "Der Grenzwert liegt außerhalb der Spanne – die Bewertung ist unabhängig vom Ansatz.",
+    "bereicheDesModulsPfas": "Bereiche des Moduls PFAS in Baustoffen",
+    "weitereGebäudeschadstoffe": "Weitere Gebäudeschadstoffe",
+    "zumModulSchadUnd": "Zum Modul Schad- und Gefahrstoffe",
+    "asbestPakPcbUnd": "Asbest, PAK, PCB und weitere Schadstoffe im Bestand sowie eine Kurzübersicht zu PFAS finden Sie im Modul Schad- und Gefahrstoffe.",
+    "fluorpolymereImMembranbau": "Fluorpolymere im Membranbau",
+    "zumModulMembranenEtfe": "Zum Modul Membranen & ETFE",
+    "aufbauUndEigenschaftenVon": "Aufbau und Eigenschaften von PTFE/Glas-Membranen und ETFE-Folien beschreibt das Modul Membranen und ETFE-Folien.",
+    "selektiverRückbau": "Selektiver Rückbau",
+    "zumModulRückbauMaterial": "Zum Modul Rückbau & Material",
+    "rückbaukonzeptSchadstofferkundungUndSele": "Rückbaukonzept, Schadstofferkundung und selektiver Abbruch werden im Modul Rückbau & Material behandelt.",
+    "analytischeGrundlagen": "Analytische Grundlagen",
+    "zumModulAnalytik": "Zum Modul Analytik",
+    "chromatographieMassenspektrometrieUndPro": "Chromatographie, Massenspektrometrie und Probenvorbereitung im Überblick finden Sie im Modul Analytik.",
+    "lehrrechnerSummenbildungNachTrinkwv": "Lehrrechner: Summenbildung nach TrinkwV Anlage 2 Teil I. Für die amtliche Bewertung gelten die Vorgaben der TrinkwV, des Gesundheitsamts und des akkreditierten Labors.",
+    "bestimmungsgrenzeBgJeEinzelstoff": "Bestimmungsgrenze BG je Einzelstoff",
+    "ansatzDerWerteUnter": "Ansatz der Werte unter der Bestimmungsgrenze",
+    "summePfas202": "Summe PFAS-20",
+    "summePfas42": "Summe PFAS-4",
+    "eineProbeKannPfas": "Eine Probe kann PFAS-20 einhalten und PFAS-4 trotzdem überschreiten: Der strengere Grenzwert gilt für die vier gesundheitlich am besten untersuchten Stoffe.",
+    "trinkwv2023Anlage2": "TrinkwV 2023, Anlage 2 Teil I (Summen PFAS-20 und PFAS-4); Ansatz unter der Bestimmungsgrenze als Lehrvariante",
+    "beispiel1MischungVon": "Beispiel 1: Mischung von Rohwässern zur Einhaltung von PFAS-4",
+    "mindestens36DesRohwassers": "Mindestens 36 % des Rohwassers müssen aus dem geringer belasteten Brunnen stammen. Mischen verdünnt nur – die Fracht bleibt; dauerhaft helfen Aktivkohle, Ionenaustausch oder Umkehrosmose.",
+    "mischungsrechnungMassenbilanzGrenzwertNa": "Mischungsrechnung (Massenbilanz); Grenzwert nach TrinkwV Anlage 2 Teil I",
+    "beispiel2EluatAus": "Beispiel 2: Eluat aus Betonbruch einer Löschübungsfläche",
+    "dieFreigesetzteMasseWirkt": "Die freigesetzte Masse wirkt klein – bezogen auf einen Grenzwert von 20 ng/l könnten 0,4 g aber rechnerisch 20 Mio. Liter Wasser auf den Grenzwert belasten. Belasteter Bauschutt gehört deshalb nicht in offene Bauweisen.",
+    "elutionNachDin19529": "Elution nach DIN 19529 (W/F = 2 l/kg); Eluatwert als Lehrwert",
+    "oktober2026NeuErstellt": "Oktober 2026 (neu erstellt, AP 6.2 (d); fachliche Freigabe durch den Autor ausstehend)",
+    "perUndPolyfluorierteAlkylverbindungen": "Per- und polyfluorierte Alkylverbindungen",
+    "echaPerAndPolyfluoroalkyl": "ECHA: Per- and polyfluoroalkyl substances (PFAS)",
+    "bmuvLeitfadenZurPfas": "BMUV: Leitfaden zur PFAS-Bewertung (2022)"
+  },
+  "daten": {
+    "PfasBaustoffe": [
+      {
+        "titel": "Keine Berechnung",
+        "erklaerung": "Die Eingaben sind unzulässig – siehe Hinweise im Rechner."
+      }
+    ],
+    "PfasBaustoffe.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Brunnen 1 mit Σ PFAS-4 = 28 ng/l (Rechnerbeispiel), Brunnen 2 mit 6 ng/l. Welcher Anteil von Brunnen 2 hält ab 2028 die 20 ng/l ein?",
+        "formel": "c_1 = 28\\,\\text{ng/l}, \\quad c_2 = 6\\,\\text{ng/l}, \\quad c_{zul} = 20\\,\\text{ng/l}"
+      },
+      {
+        "titel": "Mischungsrechnung",
+        "erklaerung": "Anteil x von Brunnen 2 so wählen, dass die Mischung den Grenzwert erreicht:",
+        "formel": "(1 - x) \\cdot 28 + x \\cdot 6 = 20 \\;\\Rightarrow\\; x = \\frac{28 - 20}{28 - 6} = 0{,}36"
+      }
+    ],
+    "PfasBaustoffe.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Schüttelversuch nach DIN 19529 mit dem Wasser-Feststoff-Verhältnis 2 l/kg. Im Eluat werden 0,5 µg/l Σ PFAS gemessen (Lehrwert).",
+        "formel": "\\frac{V}{m} = 2\\,\\text{l/kg}, \\quad c_{Eluat} = 0{,}5\\,\\mu\\text{g/l}"
+      },
+      {
+        "titel": "Freigesetzte Menge je kg",
+        "erklaerung": "Konzentration mal Wasser-Feststoff-Verhältnis:",
+        "formel": "E = 0{,}5 \\cdot 2 = 1{,}0\\,\\mu\\text{g/kg}"
+      },
+      {
+        "titel": "Hochrechnung",
+        "erklaerung": "Für 400 t Betonbruch:",
+        "formel": "1{,}0\\,\\tfrac{\\mu\\text{g}}{\\text{kg}} \\cdot 400\\,000\\,\\text{kg} = 0{,}4\\,\\text{g}"
+      }
+    ],
+    "PfasBaustoffe.weblinks.0": {
+      "title": "Trinkwasserverordnung (TrinkwV) – Gesetze im Internet",
+      "url": "https://www.gesetze-im-internet.de/trinkwv_2023/"
+    },
+    "PfasBaustoffe.literatur": [
+      "OECD: Reconciling Terminology of the Universe of Per- and Polyfluoroalkyl Substances: Recommendations and Practical Guidance. Series on Risk Management No. 61. Paris: OECD Publishing 2021",
+      "EFSA CONTAM Panel: Risk to human health related to the presence of perfluoroalkyl substances in food. EFSA Journal 18 (2020) 9, 6223",
+      "Umweltbundesamt (Hrsg.): PFAS – Gekommen, um zu bleiben. Schwerpunkt-Magazin. Dessau-Roßlau: UBA 2020"
+    ],
+    "PfasBaustoffe.regelwerke": [
+      {
+        "title": "TrinkwV – Trinkwasserverordnung vom 20.06.2023, Anlage 2 Teil I (Summe PFAS-20, Summe PFAS-4)"
+      },
+      {
+        "title": "Richtlinie (EU) 2020/2184 über die Qualität von Wasser für den menschlichen Gebrauch"
+      },
+      {
+        "title": "Verordnung (EU) 2019/1021 über persistente organische Schadstoffe (POP-Verordnung)"
+      },
+      {
+        "title": "Verordnung (EG) Nr. 1907/2006 (REACH), Anhang XVII; Beschränkungen (EU) 2021/1297, (EU) 2024/2462, (EU) 2025/1988"
+      },
+      {
+        "title": "DIN 38407-42:2011-03 (Bestimmung ausgewählter polyfluorierter Verbindungen in Wasser mit HPLC-MS/MS)"
+      },
+      {
+        "title": "DIN 38414-14:2011-08 (Bestimmung ausgewählter polyfluorierter Verbindungen in Schlamm, Kompost und Boden)"
+      },
+      {
+        "title": "ISO 21675:2019 (Water quality – Determination of perfluoroalkyl and polyfluoroalkyl substances in water – LC-MS/MS)"
+      },
+      {
+        "title": "DIN EN ISO 18127:2026-07 (adsorbierbares organisch gebundenes Fluor, Chlor, Brom und Iod mit Verbrennungs-Ionenchromatographie; ersetzt DIN 38409-59:2022-10)"
+      },
+      {
+        "title": "DIN 19529:2015-12 (Elution von Feststoffen – Schüttelverfahren mit W/F = 2 l/kg)"
+      }
+    ],
+    "PfasBaustoffe.formeln": [
+      {
+        "formel": "\\Sigma_{20} = \\sum_{i=1}^{20} c_i \\le 0{,}1\\,\\mu\\text{g/l}",
+        "erklaerung": "Summe der 20 Perfluoralkylcarbon- und -sulfonsäuren C4–C13 nach TrinkwV Anlage 2 Teil I.",
+        "quelle": "TrinkwV 2023"
+      },
+      {
+        "formel": "\\Sigma_{4} = c_{PFOA} + c_{PFNA} + c_{PFHxS} + c_{PFOS} \\le 0{,}02\\,\\mu\\text{g/l}",
+        "erklaerung": "Summe der vier PFAS der EFSA-Bewertung, Grenzwert ab 12.01.2028.",
+        "quelle": "TrinkwV 2023"
+      },
+      {
+        "formel": "E = c_{Eluat} \\cdot \\frac{V}{m}",
+        "erklaerung": "Freigesetzte Stoffmenge je kg Feststoff aus der Eluatkonzentration und dem Wasser-Feststoff-Verhältnis.",
+        "quelle": "DIN 19529"
+      }
+    ]
+  }
+}

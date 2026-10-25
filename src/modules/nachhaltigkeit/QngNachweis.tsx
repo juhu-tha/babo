@@ -1,6 +1,8 @@
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { AlertTriangle, CheckCircle } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
+import inhalt from '@/content/nachhaltigkeit/QngNachweis.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface QngNachweisProps {
   bgf: number;
@@ -25,8 +27,8 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
 
             <div className="border-b border-home-grau/30 pb-2">
-              <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Gebäudekonfiguration &amp; Primärenergetik</h3>
-              <p className="text-xs text-slate-400 mt-0.5">Stellen Sie Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.</p>
+              <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider"><MdText text={inhalt.texte.gebäudekonfigurationPrimärenergetik} /></h3>
+              <p className="text-xs text-slate-400 mt-0.5"><MdText text={inhalt.texte.stellenSieBausubstanzUnd} /></p>
             </div>
 
             <div className="space-y-4">
@@ -34,7 +36,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
               {/* BGF Slider */}
               <div>
                 <div className="flex justify-between text-xs text-slate-900 font-bold mb-1.5">
-                  <span>Bruttogrundfläche (BGF):</span>
+                  <span><MdText text={inhalt.texte.bruttogrundflächeBgf} /></span>
                   <span className="font-mono text-shiraz">{formatDeWert(bgf)} m²</span>
                 </div>
                 <input
@@ -47,19 +49,19 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                   className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
                 <div className="flex justify-between text-[9px] text-slate-400 mt-1 uppercase tracking-wider font-mono">
-                  <span>Einfamilienhaus (150 m²)</span>
-                  <span>Mehrfamilienhaus (&gt; 800 m²)</span>
+                  <span><MdText text={inhalt.texte.einfamilienhaus150M} /></span>
+                  <span><MdText text={inhalt.texte.mehrfamilienhaus800M} /></span>
                 </div>
               </div>
 
               {/* Construction materials selection block */}
               <div>
-                <label className="block text-xs font-bold text-slate-900 mb-2">Hauptsächliche Bauweise (Tragwerk &amp; Decken):</label>
+                <label className="block text-xs font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.hauptsächlicheBauweiseTragwerkDecken} /></label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {[
-                    { id: 'holzbau', name: 'Holzrahmen- & Massivholzbau', r_coef: 'Niedrige graue Energie' },
-                    { id: 'hybrid', name: 'Holz-Beton-Hybridbau', r_coef: 'Ausgewogene graue Energie' },
-                    { id: 'massiv', name: 'Klassischer Massivbau (Mauerwerk/Beton)', r_coef: 'Hohe graue Energie' }
+                    { id: 'holzbau', name: inhalt.werte.holzrahmenMassivholzbau, r_coef: inhalt.werte.niedrigeGraueEnergie },
+                    { id: 'hybrid', name: 'Holz-Beton-Hybridbau', r_coef: inhalt.werte.ausgewogeneGraueEnergie },
+                    { id: 'massiv', name: inhalt.werte.klassischerMassivbauMauerwerkBeton, r_coef: inhalt.werte.hoheGraueEnergie }
                   ].map((item) => (
                     <button
                       key={item.id}
@@ -79,14 +81,9 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
 
               {/* Heating systems */}
               <div>
-                <label className="block text-xs font-bold text-slate-900 mb-2">Energieträger / Primär-Heizungssystem:</label>
+                <label className="block text-xs font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.energieträgerPrimärHeizungssystem} /></label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {[
-                    { id: 'waermepumpe', name: 'Zentrale Luft-Wasser-Wärmepumpe', details: 'Hocheffizienter Stromprozess' },
-                    { id: 'fernwaerme', name: 'Fern- / Nahwärmenetz mit Kraft-Wärme-Kopplung', details: 'Fernwärme fossiler/regenerativer Mix' },
-                    { id: 'biomasse', name: 'Pelletkessel / Holzbiomasse', details: 'CO2-neutraler Holzbrennstoff' },
-                    { id: 'gasherdfossil', name: 'Fossil-Brennwertkessel (Erdgas)', details: 'Zukunftskritische fossile Verbrennung' }
-                  ].map((item) => (
+                  {inhalt.daten.QngNachweis.map((item) => (
                     <button aria-pressed={heatingSystem === item.id}
                       key={item.id}
                       onClick={() => setHeatingSystem(item.id)}
@@ -109,8 +106,8 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 {/* Green Tariff Switch */}
                 <div className="bg-slate-50 p-4 border border-home-grau/30 rounded-xl flex items-center justify-between">
                   <div>
-                    <strong className="text-xs text-slate-900 block">Ökostromvertrag (Zertifiziert)</strong>
-                    <span className="text-[10px] text-slate-400">Senkt den Emissionsfaktor der Wärmepumpenschleife.</span>
+                    <strong className="text-xs text-slate-900 block"><MdText text={inhalt.texte.ökostromvertragZertifiziert} /></strong>
+                    <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.senktDenEmissionsfaktorDer} /></span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer select-none">
                     <input 
@@ -139,7 +136,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                     onChange={(e) => setPvSizeKwp(parseInt(e.target.value))}
                     className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                   />
-                  <span className="text-[9px] text-slate-400 block mt-0.5">Erzeugt Strom für Eigenverbrauch &amp; Netzeinspeisung.</span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.erzeugtStromFürEigenverbrauch} /></span>
                 </div>
 
               </div>
@@ -154,18 +151,14 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
 
           {/* Main result badge */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center text-center gap-4">
-            <span className="text-[10px] uppercase font-bold text-slate-400 tracking-widest block font-bold">
-              PROGNOSTIZIERTE JAHRESBILANZ
-            </span>
+            <span className="text-[10px] uppercase font-bold text-slate-400 tracking-widest block font-bold"><MdText text={inhalt.texte.prognostizierteJahresbilanz} /></span>
 
             <div className="flex flex-col items-center">
               <span className="text-[11px] text-slate-400 uppercase tracking-wider block font-medium">Nachweis-GWP</span>
               <strong className="text-4xl font-mono text-shiraz font-black mt-1">
                 {formatDeZahl(qngComputation.totalYearlyGwp, 1)}
               </strong>
-              <span className="text-[10px] text-slate-500 block mt-0.5">
-                kg CO₂-eq / m² NRF / Jahr
-              </span>
+              <span className="text-[10px] text-slate-500 block mt-0.5"><MdText text={inhalt.texte.kgCoEqM} /></span>
             </div>
 
             {/* Status block showing certificate limits */}
@@ -176,15 +169,15 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
             {/* Gauge Limits explanation */}
             <div className="w-full text-xs space-y-2 mt-2 leading-relaxed font-normal text-slate-500">
               <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
-                <span className="font-bold">QNG-Premium Grenzwert:</span>
+                <span className="font-bold"><MdText text={inhalt.texte.qngPremiumGrenzwert} /></span>
                 <span className="font-mono bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">≤ 20,0</span>
               </div>
               <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
-                <span className="font-bold">QNG-Plus Grenzwert:</span>
+                <span className="font-bold"><MdText text={inhalt.texte.qngPlusGrenzwert} /></span>
                 <span className="font-mono bg-green-100 text-green-800 px-1.5 py-0.5 rounded font-bold">≤ 24,0</span>
               </div>
               <div className="flex justify-between items-center text-[11px] text-slate-400">
-                <span>Projektlaufzeit Referenzwert:</span>
+                <span><MdText text={inhalt.texte.projektlaufzeitReferenzwert} /></span>
                 <span>50 Jahre</span>
               </div>
             </div>
@@ -204,10 +197,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 <div className="flex gap-2.5 items-start bg-red-50 text-red-950 p-3 rounded-lg border border-red-150">
                   <span className="text-red-600 block text-lg leading-none shrink-0 font-bold">&#10007;</span>
                   <div>
-                    <strong className="block text-[11px] font-bold">Fossile Energie blockiert das Siegel:</strong>
-                    Der Erdgaskessel erzeugt extreme Verbrennungsfrachten von ca. 28 kg CO₂/(m² NRF · a). 
-                    Das QNG-Siegel ist so unmöglich zu erreichen. 
-                    <span className="font-bold block mt-1 underline">Lösung: Installiere eine Wärmepumpe.</span>
+                    <strong className="block text-[11px] font-bold"><MdText text={inhalt.texte.fossileEnergieBlockiertDas} /></strong><MdText text={inhalt.texte.derErdgaskesselErzeugtExtreme} /><span className="font-bold block mt-1 underline"><MdText text={inhalt.texte.lösungInstalliereEineWärmepumpe} /></span>
                   </div>
                 </div>
               )}
@@ -216,9 +206,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 <div className="flex gap-2.5 items-start bg-white text-slate-850 p-3 rounded-lg border border-slate-200">
                   <span className="text-amber-600 block text-lg leading-none shrink-0 font-bold">&#9888;</span>
                   <div>
-                    <strong className="block text-[11px] font-bold">Graue Energie des Massivbaus senken:</strong>
-                    Decken und Pfahlgründungen aus Standardbeton binden Enormen Zement-Footprint. 
-                    <span className="block mt-1">Lösung: Ersetze klassischen Beton durch Öko- oder RC-Beton bzw. wandle tragende Wände in Holzständerbauweisen um, um Negativgutschriften zu erwirtschaften.</span>
+                    <strong className="block text-[11px] font-bold"><MdText text={inhalt.texte.graueEnergieDesMassivbaus} /></strong><MdText text={inhalt.texte.deckenUndPfahlgründungenAus} /><span className="block mt-1"><MdText text={inhalt.texte.lösungErsetzeKlassischenBeton} /></span>
                   </div>
                 </div>
               )}
@@ -227,9 +215,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 <div className="flex gap-2.5 items-start bg-indigo-50 text-indigo-950 p-3 rounded-lg border border-indigo-150 animate-in fade-in">
                   <span className="text-indigo-600 block text-lg leading-none shrink-0 font-bold">&#10137;</span>
                   <div>
-                    <strong className="block text-[11px] font-bold">PV-Potenziale ausschöpfen:</strong>
-                    Die Photovoltaikanlage speist wertvollen Grünstrom ins Netz und verringert die eigene rechnerische Deckungslücke der QNG-Zertifizierung.
-                    <span className="font-bold block mt-1">Lösung: PV-Leistung auf mindestens 12 kWp auslegen.</span>
+                    <strong className="block text-[11px] font-bold"><MdText text={inhalt.texte.pvPotenzialeAusschöpfen} /></strong><MdText text={inhalt.texte.diePhotovoltaikanlageSpeistWertvollen} /><span className="font-bold block mt-1"><MdText text={inhalt.texte.lösungPvLeistungAuf} /></span>
                   </div>
                 </div>
               )}
@@ -238,10 +224,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 <div className="flex gap-2.5 items-start bg-emerald-50 text-emerald-950 p-3 rounded-lg border border-emerald-150 animate-in shrink-0">
                   <CheckCircle size={16} className="text-emerald-700 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-[11px] font-bold text-emerald-900">Ausgezeichnete KfW 40 QNG-Förderfähigkeit:</strong>
-                    Ihr Entwurf erzielt mit {formatDeZahl(qngComputation.totalYearlyGwp, 1)} kg CO₂-eq locker die Premium-Stufe. 
-                    Sie erfüllen alle Anforderungen des BMWSB zur Beantragung zinsgünstiger Kredite.
-                  </div>
+                    <strong className="block text-[11px] font-bold text-emerald-900"><MdText text={inhalt.texte.ausgezeichneteKfw40Qng} /></strong><MdText text={inhalt.texte.ihrEntwurfErzieltMit} />{formatDeZahl(qngComputation.totalYearlyGwp, 1)}<MdText text={inhalt.texte.kgCoEqLocker} /></div>
                 </div>
               )}
 

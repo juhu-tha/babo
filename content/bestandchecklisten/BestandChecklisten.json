@@ -1,0 +1,141 @@
+{
+  "texte": {
+    "checklistenBauenImBestand": " Checklisten: Bauen im Bestand",
+    "stufenweiseQualitätssicherungUndDiagnost": "Stufenweise Qualitätssicherung und Diagnostik im Bestandsbau zur sicheren Tragfähigkeitsnachrechnung, In-Situ-Befundung und Denkmalsanierung nach VDI 6200 (Standsicherheit), WTA-Merkblättern, Denkmalschutzgesetz und – bei Brücken und Ingenieurbauwerken – DIN 1076.",
+    "fehlendeStatikUnterlagenNehmen": "**Fehlende Statik-Unterlagen?** Nehmen Sie rechtzeitig Kontakt mit dem historischen Archiv des örtlichen Bauamts auf, um langwierige Erkundungsoffensiven einzusparen."
+  },
+  "werte": {
+    "t1ArchivrechercheVoruntersuchung": "1. Archivrecherche & Voruntersuchung",
+    "systematischeErhebungHistorischerPlan": "Systematische Erhebung historischer Plan- und Berechnungsgrundlagen vor Beginn baulicher Eingriffe.",
+    "bauakteneinsichtAltstatikSicherung": "Bauakteneinsicht & Altstatik-Sicherung",
+    "vollständigeSichtungDerBestandsakten": "Vollständige Sichtung der Bestandsakten beim Bauordnungsamt zur Beschaffung der originalen Tragwerksplanung, Schal- und Bewehrungspläne sowie Baugenehmigungen.",
+    "lboVdi6200": "LBO / VDI 6200",
+    "klärungDesDenkmalschutzstatusUdb": "Klärung des Denkmalschutzstatus (UDB)",
+    "anfrageBeiDerUnteren": "Anfrage bei der Unteren Denkmalschutzbehörde bezüglich Einzeldenkmalstatus, Ensembleschutz oder Erhaltungssatzung, um gesetzliche Auflagen frühzeitig zu erfassen.",
+    "denkmalschutzgesetzDschg": "Denkmalschutzgesetz (DSchG)",
+    "historischeErkundungDesStandorts": "Historische Erkundung des Standorts",
+    "rechercheBezüglichFrühererIndustrieller": "Recherche bezüglich früherer industrieller Nutzung, Bombentreffern im Zweiten Weltkrieg (Kampfmittelverdacht: Pflichten nach Landesrecht und Bauherrenverantwortung, Arbeitshilfen Kampfmittelräumung des Bundes) oder nachträglicher Umbauten, die nicht dokumentiert wurden.",
+    "landesrechtAhKmr": "Landesrecht / AH KMR",
+    "nutzungsgeschichteUndSchadstoffverdachtE": "Nutzungsgeschichte und Schadstoffverdacht ermitteln",
+    "erfassungFrühererVerwendungenZ": "Erfassung früherer Verwendungen (z. B. chemische Reinigung, Werkstatt) zur Eingrenzung des Risikos für Kontaminationen und verdeckte Schadstoffe.",
+    "vdi6202Blatt1": "VDI 6202 Blatt 1",
+    "schadstofferkundungVorEingriffen": "Schadstofferkundung vor Eingriffen",
+    "beiGebäudenMitBaubeginn": "Bei Gebäuden mit Baubeginn vor dem 31.10.1993 muss der Veranlasser vor Tätigkeiten an der Bausubstanz vorhandene Informationen (Baujahr, Asbestverdacht) ermitteln und den ausführenden Betrieben übergeben; bei Verdacht Probenahme und Analyse.",
+    "gefstoffv5aTrgs519": "GefStoffV § 5a / TRGS 519",
+    "t2BauwerkserfassungBauaufnahme": "2. Bauwerkserfassung & Bauaufnahme",
+    "zustandserfassungUndAufmaßZur": "Zustandserfassung und Aufmaß zur Erstellung präziser Verformungspläne und Systemanalysen.",
+    "bauaufnahmeGenauigkeitsstufeFestlegen": "Bauaufnahme-Genauigkeitsstufe festlegen",
+    "festlegungDerGenauigkeitsstufeDer": "Festlegung der Genauigkeitsstufe der Bauaufnahme (Stufe I bis IV nach Eckstein) je nach Planungstiefe.",
+    "vdiVde2634Verband": "VDI/VDE 2634 / Verband Dt. Vermessungsing.",
+    "t3dLaserscanningVerformungsgetreuesAufmaß": "3D-Laserscanning & Verformungsgetreues Aufmaß",
+    "durchführungEinerDigitalenBestandserfass": "Durchführung einer digitalen Bestandserfassung (LiDAR) zur Abbildung von Schiefstellungen, Durchbiegungen und Maßabweichungen im Tragwerk.",
+    "din187101Verformungsgetreues": "DIN 18710-1 / Verformungsgetreues Aufmaß",
+    "bauteilschichtenKonstruktionsprinzipienK": "Bauteilschichten & Konstruktionsprinzipien klären",
+    "lokalisierungUndZuordnungVon": "Lokalisierung und Zuordnung von Deckenkonstruktionen (z.B. Kappendecke, Holzbalkendecke, Rippendecke) mittels zerstörungsarmer Bauteilöffnungen. Grundlage: Sicherheitskonzept DIN EN 1990/NA; Bewertung bestehender Tragwerke nach ISO 13822 bzw. EN 1990-2:2026 (ersetzt CEN/TS 17440:2020).",
+    "iso13822En1990": "ISO 13822 / EN 1990-2:2026",
+    "baugrundUndGründungsuntersuchungAnstoßen": "Baugrund- und Gründungsuntersuchung anstoßen",
+    "prüfungDerFundamenteDurch": "Prüfung der Fundamente durch Suchschlitze sowie Erkundung der Bodenkennwerte bei geplanten Lastaufstockungen.",
+    "din4020Eurocode7": "DIN 4020 / Eurocode 7",
+    "t3BauwerksdiagnostikZfp": "3. Bauwerksdiagnostik & ZfP",
+    "zerstörungsfreieUndZerstörungsarmePrüfun": "Zerstörungsfreie und zerstörungsarme Prüfungen der Bestandsmaterialien zur Ermittlung realer Kennwerte.",
+    "bewehrungsortungBetondeckungsmessung": "Bewehrungsortung & Betondeckungsmessung",
+    "zerstörungsfreieBestimmungDerLage": "Zerstörungsfreie Bestimmung der Lage, des Durchmessers und der konkreten Betondeckungsverhältnisse der Bewehrung mittels elektromagnetischer Verfahren.",
+    "dbvMerkblattBetondeckungUnd": "DBV-Merkblatt \"Betondeckung und Bewehrung\"",
+    "carbonatisierungstiefeChloridprofilErmit": "Carbonatisierungstiefe & Chloridprofil ermitteln",
+    "indikatorprüfungMitPhenolphthaleinAn": "Indikatorprüfung mit Phenolphthalein an frischen Bruchflächen und Bohrmehlanalysen im Labor zur Feststellung des Korrosionsrisikos für den Bewehrungsstahl.",
+    "dinEn14630Din": "DIN EN 14630 / DIN EN 14629 / TR Instandhaltung",
+    "zerstörungsfreiePrüfungDerMauerwerks": "Zerstörungsfreie Prüfung der Mauerwerks- und Holzfestigkeit",
+    "zerstörungsfreieBzwZerstörungsarmeFestig": "Zerstörungsfreie bzw. zerstörungsarme Festigkeitsabschätzungen mittels Rückprallhammer (Schmidthammer), Widerstandsbohrung (Resistograph) oder Ultraschallmessungen. Rückprallhammer nur mit Kalibrierung an Bohrkernen; Bohrwiderstandsmessung an Holz ist nicht genormt.",
+    "dinEn125042": "DIN EN 12504-2/-4, DIN EN 13791",
+    "feuchtemessungenAnKritischenBauteilen": "Feuchtemessungen an kritischen Bauteilen",
+    "bestimmungDerMaterialfeuchteZ": "Bestimmung der Materialfeuchte (z. B. CM-Methode oder Darr-Methode) an erdberührten Bauteilen und in Nassbereichen zur Schadensprävention.",
+    "wtaMerkblatt45": "WTA-Merkblatt 4-5 / DIN 18560",
+    "t4NachrechnungTragfähigkeitsnachweis": "4. Nachrechnung & Tragfähigkeitsnachweis",
+    "bewertungDerRechnerischenStandsicherheit": "Bewertung der rechnerischen Standsicherheit und Resttragfähigkeit bestehender Bauteile.",
+    "nachrechnungNachDerNachrechnungsrichtlin": "Nachrechnung nach der Nachrechnungsrichtlinie",
+    "rechnerischeÜberprüfungBestehenderBrücke": "Rechnerische Überprüfung bestehender Brücken- und Hochbautragwerke im Hinblick auf geänderte Nutzungs- und Verkehrslasten. Straßenbrücken: Nachrechnungsrichtlinie (Ausgabe 05/2011 mit 1. und 2. Ergänzung); Hochbau: DIN EN 1990 ff. mit NA, ergänzend ISO 13822.",
+    "nachrechnungsrichtlinieDinEn1990": "Nachrechnungsrichtlinie / DIN EN 1990 + NA",
+    "sicherheitskonzeptImBestandAnwenden": "Sicherheitskonzept im Bestand anwenden",
+    "nutzungVonModifiziertenTeilsicherheitsbe": "Nutzung von modifizierten Teilsicherheitsbeiwerten auf Basis messtechnisch abgesicherter Geometrien und Werkstofffestigkeiten.",
+    "iso13822EurocodeBestandskonzept": "ISO 13822 / Eurocode (Bestandskonzept)",
+    "bestimmungVonIstFestigkeitsklassen": "Bestimmung von Ist-Festigkeitsklassen",
+    "rückrechnungDerCharakteristischenBeton": "Rückrechnung der charakteristischen Beton- oder Mauerwerksdruckfestigkeiten anhand von Bohrkernprüfdaten.",
+    "dinEn13791Din": "DIN EN 13791 / DIN EN 1996",
+    "abstimmungErgänzenderInstandsetzungsmaßn": "Abstimmung ergänzender Instandsetzungsmaßnahmen",
+    "konzipierungVonVerstärkungsmaßnahmenZ": "Konzipierung von Verstärkungsmaßnahmen (z.B. CFK-Lamellen, Spritzbetonverstärkung) bei rechnerischem Defizit.",
+    "trInstandhaltungAbz": "TR Instandhaltung / abZ",
+    "ankündigungsverhaltenBeiSprkGefährdetem": "Ankündigungsverhalten bei SpRK-gefährdetem Spannstahl",
+    "beiSpannbetonMitSpannungsrisskorrosionsg": "Bei Spannbeton mit spannungsrisskorrosionsgefährdetem Spannstahl (z. B. Hennigsdorfer, Sigma oval, ölschlussvergütete Stähle bis ca. 1978) Nachweis des Ankündigungsverhaltens (Riss-vor-Bruch) führen bzw. Monitoring vorsehen.",
+    "handlungsanweisungSprk2011": "Handlungsanweisung SpRK (2011)",
+    "kritischHaftungsrelevant": "Kritisch / Haftungsrelevant",
+    "standDerTechnik": "Stand der Technik",
+    "beispiel1ChloridgehaltAus": "Beispiel 1: Chloridgehalt aus Bohrmehl auf den Zementgehalt umrechnen",
+    "istDerZementgehaltUnbekannt": "Ist der Zementgehalt unbekannt, ist er zu schätzen oder analytisch zu bestimmen – der Fehler geht direkt in das Ergebnis ein.",
+    "dinEn14629Tr": "DIN EN 14629; TR Instandhaltung (DIBt)",
+    "beispiel2MaterialfeuchteNach": "Beispiel 2: Materialfeuchte nach der Darr-Methode",
+    "fürDieBewertungIst": "Für die Bewertung ist der Durchfeuchtungsgrad aussagekräftiger (Bezug auf die maximale Wasseraufnahme); zusätzlich sind Salzgehalt und hygroskopische Feuchte zu bestimmen (WTA-Merkblatt 4-5).",
+    "wtaMerkblatt452": "WTA-Merkblatt 4-5 (Mauerwerksdiagnostik)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Regelwerke und Prüfverfahren geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "bauenImBestand": "Bauen im Bestand",
+    "zerstörungsfreiePrüfungImBauwesen": "Zerstörungsfreie Prüfung im Bauwesen"
+  },
+  "daten": {
+    "BestandChecklisten.schritte": [
+      {
+        "titel": "Analyse",
+        "erklaerung": "Bohrmehl aus 20–40 mm Tiefe: 0,08 M.-% Chlorid bezogen auf Beton; Rohdichte 2 350 kg/m³, Zementgehalt laut Bestandsunterlagen 300 kg/m³.",
+        "formel": "Cl_B = 0{,}08\\,\\text{M.-\\%}"
+      },
+      {
+        "titel": "Umrechnung",
+        "erklaerung": "Bezug auf Zementmasse:",
+        "formel": "Cl_Z = 0{,}08 \\cdot \\frac{2\\,350}{300} = 0{,}63\\,\\text{M.-\\% v. z}"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Anhaltswert für korrosionsauslösenden Chloridgehalt ≈ 0,5 M.-% bezogen auf Zement (objektspezifisch festzulegen):",
+        "formel": "0{,}63 > 0{,}5 \\Rightarrow \\text{Korrosionsrisiko in Bewehrungstiefe}"
+      }
+    ],
+    "BestandChecklisten.schritte_2": [
+      {
+        "titel": "Wägung",
+        "erklaerung": "Probe aus erdberührtem Ziegelmauerwerk: feucht 520 g, nach Trocknung bei 105 °C bis zur Massekonstanz 495 g.",
+        "formel": "m_f = 520\\,\\text{g},\\; m_{tr} = 495\\,\\text{g}"
+      },
+      {
+        "titel": "Feuchtegehalt",
+        "erklaerung": "Massebezogener Wassergehalt:",
+        "formel": "u = \\frac{520 - 495}{495} \\cdot 100 = 5{,}1\\,\\text{M.-\\%}"
+      }
+    ],
+    "BestandChecklisten.regelwerke": [
+      {
+        "title": "VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung)",
+        "url": "https://www.vdi.de/"
+      },
+      {
+        "title": "WTA-Merkblatt 4-5-99/D: Beurteilung von Mauerwerk – Mauerwerksdiagnostik",
+        "url": "https://www.wta-gmbh.de/"
+      },
+      {
+        "title": "DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)"
+      }
+    ],
+    "BestandChecklisten.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "BestandChecklisten.formeln": [
+      {
+        "formel": "v_u = \\frac{s}{t} \\quad [\\text{m/s}] \\implies E_{\\text{dyn}} = \\rho \\cdot v_u^2 \\cdot \\frac{(1+\\nu)(1-2\\nu)}{1-\\nu}",
+        "erklaerung": "Zerstörungsfreie Prüfung im Bestand: Dynamischer Elastizitätsmodul E_dyn aus der Ultraschall-Impulsgeschwindigkeit v_u, Rohdichte rho und Querdehnzahl nu.",
+        "quelle": "DIN EN 12504-4"
+      },
+      {
+        "formel": "f_{\\text{ck,is}} = \\min\\left(f_{c,m(n),is} - k_n \\cdot s;\\; f_{c,is,\\text{lowest}} + M\\right), \\quad f_{ck} = f_{\\text{ck,is}}/0{,}85",
+        "erklaerung": "Charakteristische In-situ-Druckfestigkeit aus n ≥ 8 Bohrkernen (k_n = 2,00 bis 1,64; s mindestens entsprechend V = 8 %; M = 1–4 N/mm² je nach Tiefstwert) und Einstufung in eine Druckfestigkeitsklasse.",
+        "quelle": "DIN EN 13791:2020-02"
+      }
+    ]
+  }
+}

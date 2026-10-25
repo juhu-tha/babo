@@ -1,0 +1,192 @@
+{
+  "texte": {
+    "bimFürBaustoffe": "BIM für Baustoffe",
+    "buildingInformationModelingBim": "Building Information Modeling (BIM) kennzeichnet den umfassenden digitalen Wandel im Bauwesen. Es ist mehr als 3D-CAD: BIM verknüpft geometrische Körper mit semantischen Eigenschaften (Sachdaten). Im digitalen Zwilling wird jeder Baustoff als exklusiver Informationsträger abgebildet.",
+    "t1SemantischeTiefeVom": "1. Semantische Tiefe (Vom Strich zum Bauteil)",
+    "imKlassischen2dCad": "Im klassischen 2D-CAD besteht eine Wand aus zwei nackten, parallelen Vektorlinien. Im BIM-Modell dagegen deklarieren wir ein intelligentes Bauteil-Objekt (z.B. ",
+    "welchesPhysikalischDeterminierteEigensch": "), welches physikalisch determinierte Eigenschaften aufweist:",
+    "materialzuweisungPräziseReferenzierungKo": "**Materialzuweisung:** Präzise Referenzierung konkreter Baustoffe.",
+    "mehrschichtigkeitVerknüpfungKomplexerMat": "**Mehrschichtigkeit:** Verknüpfung komplexer Materialschichten.",
+    "mengenTakeOffVollautomatische": "**Mengen-Take-Off:** Vollautomatische Massenberechnung aus der 3D-Geometrie für Kostenermittlungen.",
+    "t2ParameterSetsJe": "2. Parameter-Sets je Fachdisziplin",
+    "einBaustoffImBim": "Ein Baustoff im BIM-Prozess agiert als vernetztes Datenpaket, das von unterschiedlichen Projektbeteiligten gefüllt und ausgelesen wird:",
+    "tragwerkerFestigkeitsklasseElastizitätsm": "**Tragwerker:** Festigkeitsklasse, Elastizitätsmodul, Querkontraktionszahl.",
+    "bauphysikerWärmeleitfähigkeitWasserdampf": "**Bauphysiker:** Wärmeleitfähigkeit (λ), Wasserdampfdiffusionswiderstand (μ).",
+    "nachhaltigkeitsplanerLcaGlobalesErwärmun": "**Nachhaltigkeitsplaner (LCA):** Globales Erwärmungspotenzial (GWP aus EPDs).",
+    "facilityManagerFmReinigungszyklen": "**Facility Manager (FM):** Reinigungszyklen, Wartungshinweise, Recyclingcodes.",
+    "interaktiverOpenbimAttributgeneratorIfc": "Interaktiver OpenBIM-Attributgenerator (IFC 4 / 4.3)",
+    "simulierenSieWieMaterial": "Simulieren Sie, wie Material-Fachparameter im offenen Standard IFC strukturiert werden.",
+    "rohdichteMassdensity": "Rohdichte (MassDensity):",
+    "wärmeleitfähigkeit": "Wärmeleitfähigkeit (λ):",
+    "coGwpA1A3": "CO₂-GWP (A1-A3):",
+    "dieseKennwerteSteuernBerechnungs": "Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), GEG-U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂).",
+    "ifcExpressSchemaPhysical": "IFC-EXPRESS Schema Physical File (.ifc)",
+    "iso1030321": "ISO 10303-21",
+    "bauteilZuweisungsstrukturFürBuilding": "/* Bauteil-Zuweisungsstruktur für Building Information Modeling */",
+    "t2x3g5W1s15Aussenwand": "('2X3g5_w1S', #15, 'Aussenwand_Tragend', \\$, \\$, #101, \\$, \\$);",
+    "schichtstruktur130": "('Schichtstruktur', \\$, (#130), \\$);",
+    "t110TragendeSchicht": "(\\$, #110, \\$, \\$, 'Tragende Schicht');",
+    "t3j7y15MaterialAssoc": "('3J7y\\$', #15, 'Material_Assoc', \\$, (#100), #120);",
+    "propertySetMechanischeWerkstoffdaten": "/* Property-Set: Mechanische Werkstoffdaten fuer Statik */",
+    "psetMaterialcommon160110": "('Pset_MaterialCommon', $, (#160), #110);",
+    "psetMaterialmechanical170110": "('Pset_MaterialMechanical', $, (#170), #110);",
+    "massdensity": "('MassDensity', $, ",
+    "youngmodulus": "('YoungModulus', $, ",
+    "propertySetThermischeEigenschaften": "/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */",
+    "psetMaterialthermal190110": "('Pset_MaterialThermal', $, (#190), #110);",
+    "thermalconductivity": "('ThermalConductivity', $, ",
+    "projektspezifischesPropertySetKein": "/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */",
+    "cpsetUmweltdaten210110": "('CPset_Umweltdaten', $, (#210), #110);",
+    "gwpA1A3": "('GWP_A1_A3', $, ",
+    "inDerIfcDatei": " In der IFC-Datei werden Geometrie-Objekte (",
+    "überBeziehungsentitäten": ") über Beziehungsentitäten (",
+    "sauberVonMaterialressourcen": ") sauber von Materialressourcen (",
+    "undAttributSets": ") und Attribut-Sets (",
+    "getrenntDeklariertDiesErmöglicht": ") getrennt deklariert. Dies ermöglicht vollkommene M2M-Dateninteroperabilität.",
+    "epdsUndBimBuilding": "EPDs und BIM (Building Lifecycle Assessment)",
+    "umEinAutomatisiertesLifecycle": "Um ein automatisiertes Lifecycle Assessment (Gebäude-LCA) durchzuführen, verknüpfen moderne Ökobilanzierungstools (wie One Click LCA oder CAALA) direkt die geometrischen Massen aus dem BIM-Modell mit den parametrischen Daten aus Umweltproduktdeklarationen (EPDs):",
+    "t1BimModellOpenbim": "1. BIM-Modell (OpenBIM)",
+    "bereitstellungExakterBauteilVolumina": "Bereitstellung exakter Bauteil-Volumina (m³) und Massen (kg) über IFC-Mengen-Take-Off.",
+    "t2EpdDatenbankZ": "2. EPD-Datenbank (z.B. ÖKOBAUDAT)",
+    "schnittstelleRestApiLiefert": "Schnittstelle (REST-API) liefert normgerechte CO₂-Faktoren (kg CO₂-eq pro m³ oder kg) je Baustoff.",
+    "automatisierteGebäudeÖkobilanzierungLca": "Automatisierte Gebäude-Ökobilanzierung (LCA)"
+  },
+  "werte": {
+    "treibhauspotenzialDesBaustoffsGlobal": "Treibhauspotenzial des Baustoffs (Global Warming Potential) aus der EPD.",
+    "codeInZwischenablageKopieren": "Code in Zwischenablage kopieren",
+    "alsIfcDateiHerunterladen": "Als .ifc-Datei herunterladen",
+    "beispiel1TreibhauspotenzialEiner": "Beispiel 1: Treibhauspotenzial einer Wand aus dem BIM-Mengengerüst",
+    "dieRechnungIstNur": "Die Rechnung ist nur so gut wie die Verknüpfung: Modelle müssen Netto-Volumen (ohne Öffnungen, ohne Doppelzählung an Wandanschlüssen) und eindeutige Material-IDs liefern. Bewehrung wird getrennt bilanziert.",
+    "dinEn15804A2": "DIN EN 15804+A2; ISO 16739-1:2024 (IFC 4.3)",
+    "beispiel2UWert": "Beispiel 2: U-Wert eines mehrschichtigen Bauteils aus den Materialattributen",
+    "gehörtAlsBemessungswertIn": "λ gehört als Bemessungswert in die Material-Property ThermalConductivity (Pset_MaterialThermal); ohne gepflegte Attribute ist eine automatische Auswertung nicht möglich.",
+    "dinEnIso6946": "DIN EN ISO 6946:2018-03; IFC 4.3",
+    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: IFC-Property-Sets (Pset_MaterialCommon, YoungModulus, keine Fantasie-Psets), Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "buildingInformationModeling": "Building Information Modeling",
+    "industryFoundationClasses": "Industry Foundation Classes"
+  },
+  "daten": {
+    "ARCHETYPES": [
+      {
+        "id": "beton",
+        "name": "Normalbeton C30/37",
+        "defaultDensity": 2400,
+        "defaultConductivity": 2.1,
+        "defaultEModulus": 33000,
+        "defaultGwp": 245,
+        "description": "Klassischer mineralischer Baustoff mit hoher Tragfähigkeit, hoher thermischer Masse, aber signifikantem CO₂-Rucksack.",
+        "ifcClass": "IfcMaterial"
+      },
+      {
+        "id": "holz",
+        "name": "Brettschichtholz (Fichte)",
+        "defaultDensity": 450,
+        "defaultConductivity": 0.13,
+        "defaultEModulus": 11000,
+        "defaultGwp": -480,
+        "description": "Nachwachsender Tragwerksbaustoff mit integriertem biogenem Kohlenstoffspeicher und hervorragendem Gewichts-Festigkeits-Verhältnis.",
+        "ifcClass": "IfcMaterial"
+      },
+      {
+        "id": "mineralwolle",
+        "name": "Mineralwolle (Dämmung)",
+        "defaultDensity": 60,
+        "defaultConductivity": 0.035,
+        "defaultEModulus": 5,
+        "defaultGwp": 42,
+        "description": "Hochleistungsdämmstoff zur thermischen Trennung und Minimierung der Transmissionswärmeverluste der thermischen Gebäudehülle.",
+        "ifcClass": "IfcMaterial"
+      },
+      {
+        "id": "stahl",
+        "name": "Baustahl S355",
+        "defaultDensity": 7850,
+        "defaultConductivity": 50,
+        "defaultEModulus": 210000,
+        "defaultGwp": 1450,
+        "description": "Duktiler Tragwerkswerkstoff mit sehr guten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.",
+        "ifcClass": "IfcMaterial"
+      }
+    ],
+    "BimBaustoffe.schritte": [
+      {
+        "titel": "Menge aus dem Modell",
+        "erklaerung": "IfcWall 12,0 m × 3,0 m × 0,24 m, Material Stahlbeton:",
+        "formel": "V = 12{,}0 \\cdot 3{,}0 \\cdot 0{,}24 = 8{,}64\\,\\text{m}^3"
+      },
+      {
+        "titel": "EPD-Kennwert",
+        "erklaerung": "Volumenbezogener GWP-Wert der Module A1–A3 aus einer verknüpften EPD (Lehrwert):",
+        "formel": "gwp_V = 280\\,\\text{kg CO}_2\\text{e/m}^3"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Herstellungsphase der Wand:",
+        "formel": "GWP_{A1\\text{–}A3} = 8{,}64 \\cdot 280 = 2\\,419\\,\\text{kg CO}_2\\text{e}"
+      }
+    ],
+    "BimBaustoffe.schritte_2": [
+      {
+        "titel": "Schichten",
+        "erklaerung": "Innenputz 15 mm (λ = 0,70), Stahlbeton 200 mm (λ = 2,3), Mineralwolle 160 mm (λ = 0,035) W/(mK):",
+        "formel": "\\sum \\frac{d}{\\lambda} = 0{,}021 + 0{,}087 + 4{,}571 = 4{,}680"
+      },
+      {
+        "titel": "Übergangswiderstände",
+        "erklaerung": "Horizontaler Wärmestrom:",
+        "formel": "R_T = 0{,}13 + 4{,}680 + 0{,}04 = 4{,}85\\,\\text{m}^2\\text{K/W}"
+      },
+      {
+        "titel": "U-Wert",
+        "erklaerung": "Kehrwert:",
+        "formel": "U = \\frac{1}{4{,}85} = 0{,}21\\,\\text{W/(m}^2\\text{K)}"
+      }
+    ],
+    "BimBaustoffe.literatur": [
+      "Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021",
+      "buildingSMART International: IFC4.3 Spezifikationen und Pset-Definitionen"
+    ],
+    "BimBaustoffe.regelwerke": [
+      {
+        "title": "DIN EN ISO 19650-1/-2:2019-08 (Informationsmanagement mit BIM)"
+      },
+      {
+        "title": "ISO 16739-1:2024 (Industry Foundation Classes, IFC 4.3)",
+        "url": "https://www.iso.org/"
+      },
+      {
+        "title": "DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)"
+      }
+    ],
+    "BimBaustoffe.weblinks": [
+      {
+        "title": "thatOpen Company – Open-Source WebGL IFC Viewer",
+        "url": "https://thatopen.com/"
+      },
+      {
+        "title": "BIM Deutschland – BIM-Portal des Bundes",
+        "url": "https://www.bimdeutschland.de"
+      },
+      {
+        "title": "Geoportal.de – Amtliche Geodaten & Geländemodelle",
+        "url": "https://www.geoportal.de/"
+      },
+      {
+        "title": "Calcpad – Parametrische Eurocode-Berechnungen",
+        "url": "https://calcpad.eu/"
+      }
+    ],
+    "BimBaustoffe.formeln": [
+      {
+        "formel": "m_i = V_i \\cdot \\rho_i \\quad [\\text{kg}], \\quad GWP_i = m_i \\cdot gwp_{\\text{spec},i} \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Mengenermittlung aus dem BIM-Attributmodell (Volumen V und Rohdichte MassDensity) multipliziert mit dem spezifischen Treibhauspotenzial gwp der verknüpften EPD.",
+        "quelle": "DIN EN 15804 / IFC Mengen-Takeoff"
+      },
+      {
+        "formel": "U = \\frac{1}{R_{si} + \\sum_{j=1}^n \\frac{d_j}{\\lambda_j} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]",
+        "erklaerung": "Wärmedurchgangskoeffizient mehrschichtiger BIM-Bauteile (IfcWallStandardCase) aus den thermischen Materialeigenschaften.",
+        "quelle": "DIN EN ISO 6946"
+      }
+    ]
+  }
+}

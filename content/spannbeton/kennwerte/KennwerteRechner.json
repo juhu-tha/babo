@@ -1,0 +1,18 @@
+{
+  "texte": {
+    "interaktiverKennwerteVerlustExplorer": "Interaktiver Kennwerte- & Verlust-Explorer",
+    "verändernSieDieWesentlichen": "Verändern Sie die wesentlichen baustofflichen Einflussgrößen und beobachten Sie, wie Kriechzahl, Schwindmaß und der resultierende Gesamtverlust im Zusammenspiel reagieren:",
+    "betonfestigkeitFCk": "Betonfestigkeit f_ck:",
+    "vorspannalterT": "Vorspannalter t₀:",
+    "luftfeuchteRh": "Luftfeuchte RH:",
+    "resultierendeKriechzahl": "Resultierende Kriechzahl φ(∞):",
+    "gesamtschwindmaßCs": "Gesamtschwindmaß ε_cs(∞):",
+    "nMmTheoretischemSpannungsabfall": " N/mm² theoretischem Spannungsabfall",
+    "prognostizierterGesamtverlustCS": "Prognostizierter Gesamtverlust (c+s+r):",
+    "restspannkraftImEndzustandCa": "Restspannkraft im Endzustand: ca. "
+  },
+  "werte": {
+    "hohesKriechenJungerBeton": "Hohes Kriechen (junger Beton / trockene Luft)",
+    "geringesKriechenGünstig": "Geringes Kriechen (günstig)"
+  }
+}

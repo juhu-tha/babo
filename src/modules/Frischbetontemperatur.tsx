@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Thermometer } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
+import inhalt from '@/content/frischbetontemperatur/Frischbetontemperatur.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Frischbetontemperatur() {
   // Massen in kg/m³
@@ -68,12 +70,7 @@ export default function Frischbetontemperatur() {
           Frischbetontemperatur
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Frischbetontemperatur ergibt sich aus der Mischung der Ausgangsstoffe unter Berücksichtigung ihrer Massen, 
-          Temperaturen und spezifischen Wärmekapazitäten. Besonders im Sommer ist die Steuerung der 
-          Frischbetontemperatur wichtig. Die Zugabe von Scherbeneis ist dabei extrem effektiv, da die Schmelzenthalpie 
-          des Eises dem Gemisch massiv Wärmeenergie entzieht.
-          </p>
+          <p><MdText text={inhalt.texte.dieFrischbetontemperaturErgibtSich} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -82,7 +79,7 @@ export default function Frischbetontemperatur() {
               <h3 className="font-semibold mb-4 text-text-main">Zement</h3>
               <div className="space-y-4">
                 <Slider
-                  label="Masse (m_z)" info="Masse des Zements."
+                  label="Masse (m_z)" info={inhalt.werte.masseDesZements}
                   value={mZement}
                   min={200}
                   max={500}
@@ -90,23 +87,23 @@ export default function Frischbetontemperatur() {
                   onChange={(e) => setMZement(Number(e.target.value))}
                   unit="kg/m³"
                 />
-                <Slider  label="Temperatur (T_z)"
+                <Slider  label={inhalt.werte.temperaturTZ}
                   value={tZement}
                   min={10}
                   max={80}
                   step={1}
                   onChange={(e) => setTZement(Number(e.target.value))}
                   unit="°C"
-                  info="Zement kann durch den Mahlprozess im Silo sehr warm sein (oft 50-70°C)."
+                  info={inhalt.werte.zementKannDurchDen}
                 />
               </div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Wasser & Eis</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.wasserEis} /></h3>
               <div className="space-y-4">
                 <Slider
-                  label="Zugabewasser flüssig (m_w)" info="Masse des flüssig zugegebenen Wassers."
+                  label={inhalt.werte.zugabewasserFlüssigMW} info={inhalt.werte.masseDesFlüssigZugegebenen}
                   value={mWasser}
                   min={50}
                   max={250}
@@ -115,7 +112,7 @@ export default function Frischbetontemperatur() {
                   unit="kg/m³"
                 />
                 <Slider
-                  label="Temperatur Wasser (T_w)" 
+                  label={inhalt.werte.temperaturWasserTW} 
                   value={tWasser}
                   min={2}
                   max={40}
@@ -124,7 +121,7 @@ export default function Frischbetontemperatur() {
                   unit="°C"
                 />
                 <div className="pt-4 border-t border-home-grau/30">
-                  <Slider info="Masse des zugegebenen Eises zur Kühlung." label="Scherbeneis (m_eis)"
+                  <Slider info={inhalt.werte.masseDesZugegebenenEises} label={inhalt.werte.scherbeneisMEis}
                     value={mEis}
                     min={0}
                     max={100}
@@ -134,7 +131,7 @@ export default function Frischbetontemperatur() {
                     
                   />
                   <div className="flex justify-between text-sm mt-2 font-medium text-text-main/80">
-                    <span>Gesamtwasser (Zugabe + Eis + Eigenfeuchte):</span>
+                    <span><MdText text={inhalt.texte.gesamtwasserZugabeEisEigenfeuchte} /></span>
                     <span>{formatDeZahl((mWasser + mEis + results.mEigenfeuchte), 1)} kg/m³</span>
                   </div>
                 </div>
@@ -145,7 +142,7 @@ export default function Frischbetontemperatur() {
               <h3 className="font-semibold mb-4 text-text-main">Gesteinskörnung</h3>
               <div className="space-y-4">
                 <Slider
-                  label="Masse trocken (m_g)" info="Masse der trockenen Gesteinskörnung."
+                  label={inhalt.werte.masseTrockenMG} info={inhalt.werte.masseDerTrockenenGesteinskörnung}
                   value={mGestein}
                   min={1500}
                   max={2200}
@@ -154,7 +151,7 @@ export default function Frischbetontemperatur() {
                   unit="kg/m³"
                 />
                 <Slider
-                  label="Eigenfeuchte" info="Wassergehalt der Gesteinskörnung. Dieses Wasser hat die gleiche Temperatur wie das Gestein."
+                  label="Eigenfeuchte" info={inhalt.werte.wassergehaltDerGesteinskörnungDieses}
                   value={feuchteGestein}
                   min={0}
                   max={10}
@@ -162,14 +159,14 @@ export default function Frischbetontemperatur() {
                   onChange={(e) => setFeuchteGestein(Number(e.target.value))}
                   unit="%"
                 />
-                <Slider  label="Temperatur (T_g)"
+                <Slider  label={inhalt.werte.temperaturTG}
                   value={tGestein}
                   min={-5}
                   max={40}
                   step={1}
                   onChange={(e) => setTGestein(Number(e.target.value))}
                   unit="°C"
-                  info="Entspricht meist der Umgebungstemperatur bei Außenlagerung."
+                  info={inhalt.werte.entsprichtMeistDerUmgebungstemperatur}
                 />
               </div>
             </div>
@@ -178,27 +175,24 @@ export default function Frischbetontemperatur() {
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col items-center justify-center h-48 relative overflow-hidden">
               {mEis > 0 && (
-                <div className="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  Eiskühlung aktiv (-{formatDeZahl((results.kuehlleistungEis / 1000), 1)} MJ)
+                <div className="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg"><MdText text={inhalt.texte.eiskühlungAktiv} />{formatDeZahl((results.kuehlleistungEis / 1000), 1)} MJ)
                 </div>
               )}
-              <h3 className="text-sm font-bold text-text-main/70 mb-2">Erwartete Frischbetontemperatur</h3>
+              <h3 className="text-sm font-bold text-text-main/70 mb-2"><MdText text={inhalt.texte.erwarteteFrischbetontemperatur} /></h3>
               <div className={`text-5xl font-bold ${results.tFrischbeton > 30 ? 'text-torch-red' : results.tFrischbeton < 5 ? 'text-blue-600' : 'text-emerald-600'}`}>
                 {formatDeZahl(results.tFrischbeton, 1)} °C
               </div>
               <p className="text-sm text-text-main/60 mt-4 text-center max-w-xs">
-                {results.tFrischbeton > 30 && 'Achtung: Temperatur > 30°C. Gefahr von zu schnellem Ansteifen und Festigkeitseinbußen.'}
-                {results.tFrischbeton < 5 && 'Achtung: Temperatur < 5°C. Hydratation kommt nahezu zum Erliegen. Frostgefahr!'}
-                {results.tFrischbeton >= 5 && results.tFrischbeton <= 30 && 'Temperatur im normalen Verarbeitungsbereich (optimal 15-25°C).'}
+                {results.tFrischbeton > 30 && inhalt.werte.achtungTemperatur30C}
+                {results.tFrischbeton < 5 && inhalt.werte.achtungTemperatur5C}
+                {results.tFrischbeton >= 5 && results.tFrischbeton <= 30 && inhalt.werte.temperaturImNormalenVerarbeitungsbereich}
               </p>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Einfluss der Ausgangsstoffe auf die Temperatur</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.einflussDerAusgangsstoffeAuf} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Dieser Balken zeigt, wie stark die einzelnen Stoffe die thermische Masse dominieren (Produkt aus Masse und Wärmekapazität).
-          </p>
+          <p><MdText text={inhalt.texte.dieserBalkenZeigtWie} /></p>
         </div>
               <div className="w-full h-8 rounded-full overflow-hidden flex">
                 <div 
@@ -224,15 +218,15 @@ export default function Frischbetontemperatur() {
                 </div>
               </div>
               <div className="flex justify-between text-xs text-text-main/60 mt-2">
-                <span>c_z = 0,84 kJ/(kg·K)</span>
-                <span>c_w = 4,18 kJ/(kg·K)</span>
-                <span>c_g = 0,84 kJ/(kg·K)</span>
+                <span><MdText text={inhalt.texte.cZ084} /></span>
+                <span><MdText text={inhalt.texte.cW418} /></span>
+                <span><MdText text={inhalt.texte.cG084} /></span>
               </div>
             </div>
 
             {/* Visualisierung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Energiebilanz</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeEnergiebilanz} /></h3>
               <div className="relative w-full h-40 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
                 <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
                   {/* Mischer */}

@@ -1,0 +1,101 @@
+{
+  "texte": {
+    "dasZwiebelschalenModellWie": "Das Zwiebelschalen-Modell: Wie die Begriffe zusammenhängen",
+    "keineSynonyme": "Keine Synonyme!",
+    "oftWerdenDieBegriffe": "Oft werden die Begriffe *Künstliche Intelligenz*, *Machine Learning* und *Neuronale Netze* durcheinandergeworfen. In Wahrheit verhalten sie sich wie die Schalen einer Zwiebel – von der umfassenden Idee bis zum konkreten Spezialwerkzeug:",
+    "ebene1ÄußersteSchale": "Ebene 1 (Äußerste Schale)",
+    "künstlicheIntelligenzKi": "Künstliche Intelligenz (KI)",
+    "dasGesamtfeldJedeMaschine": "Das Gesamtfeld: Jede Maschine, die menschenähnliche Problemlösungen zeigt (auch einfache Wenn-Dann-Logiken).",
+    "ebene2Teilmenge": "Ebene 2 (Teilmenge)",
+    "machineLearningMl": "Machine Learning (ML)",
+    "lernenAusDatenAlgorithmen": "Lernen aus Daten: Algorithmen finden mathematische Muster in Beispielen, ohne fest verdrahtete Regeln.",
+    "ebene3Spezialisierung": "Ebene 3 (Spezialisierung)",
+    "deepLearning": "Deep Learning",
+    "mehrschichtigeNeuronaleNetzeFür": "Mehrschichtige neuronale Netze für Rohdaten wie Fotos, Punktwolken oder Schwingungsspektren.",
+    "ebene4ModernerKern": "Ebene 4 (Moderner Kern)",
+    "llmsGenerativeKi": "LLMs & Generative KI",
+    "transformerModelleDieSprache": "Transformer-Modelle, die Sprache, Normen, Tabellen oder Programmcode verstehen und neu generieren.",
+    "die7KernbegriffeDer": "Die 7 Kernbegriffe der Bauinformatik & KI-Technologie im Detail",
+    "ingenieurtechnischeAnwendungsfälleAusTra": "Ingenieurtechnische Anwendungsfälle aus Tragwerksplanung, Baustoffkunde & Bauüberwachung",
+    "nachweiseNachDinEn": "Nachweise nach DIN EN, Eurocodes & VOB",
+    "normativerBezug": "**Normativer Bezug:** ",
+    "problemstellungNormativeRandbedingungen": "**Problemstellung & Normative Randbedingungen:** ",
+    "eingangsgrößenDatenbasisInput": "Eingangsgrößen & Datenbasis (Input):",
+    "algorithmischeProzessierungInferenzProce": "Algorithmische Prozessierung & Inferenz (Process):",
+    "prüffähigesRechenergebnisArtefaktOutput": "Prüffähiges Rechenergebnis & Artefakt (Output):",
+    "ingenieurtechnischeRelevanzWirtschaftlic": "Ingenieurtechnische Relevanz & Wirtschaftlichkeit:",
+    "wissenschaftlicheDefinitionFunktionsprin": "Wissenschaftliche Definition & Funktionsprinzip:",
+    "ingenieurwissenschaftlicheSchlüsselmerkm": "Ingenieurwissenschaftliche Schlüsselmerkmale:",
+    "prozessarchitekturAlgorithmischerSignalf": "Prozessarchitektur & algorithmischer Signalfluss:",
+    "komparativeProzessanalyseKonventionelleI": "Komparative Prozessanalyse: Konventionelle Ingenieurmethodik vs. KI-gestützter Workflow",
+    "konventionelleMethodik": "Konventionelle Methodik",
+    "systematischeSchwachstelle": "**Systematische Schwachstelle:** ",
+    "kiGestützteMethodik": "KI-gestützte Methodik",
+    "mathematischPhysikalischeModellierungZie": "Mathematisch-physikalische Modellierung & Zielfunktion",
+    "mathematischeErläuterung": "**Mathematische Erläuterung:** ",
+    "nomenklaturPhysikalischeEinheitenParamet": "Nomenklatur, physikalische Einheiten & Parameterbedeutung:",
+    "normativeKonformitätFehlerschrankenHaftu": "Normative Konformität, Fehlerschranken & Haftungsrechtliche Einordnung",
+    "kritischeFehlermodiSystemgrenzen": "Kritische Fehlermodi & Systemgrenzen:",
+    "sorgfaltsPrüfpflichtenDesIngenieurs": "Sorgfalts- & Prüfpflichten des Ingenieurs (BGB / HOAI / BauO):",
+    "normativerGesetzlicherBezugsrahmen": "Normativer & gesetzlicher Bezugsrahmen:"
+  },
+  "daten": {
+    "KernbegriffeTab": [
+      {
+        "id": "ki",
+        "label": "1. Künstliche Intelligenz (KI-Systeme)"
+      },
+      {
+        "id": "ml",
+        "label": "2. Maschinelles Lernen (ML)"
+      },
+      {
+        "id": "dl",
+        "label": "3. Deep Learning (ANN / CNN)"
+      },
+      {
+        "id": "llm",
+        "label": "4. Large Language Models (LLM)"
+      },
+      {
+        "id": "rag",
+        "label": "5. Retrieval-Augmented Generation (RAG)"
+      },
+      {
+        "id": "vision",
+        "label": "6. Computer Vision & Sensorik"
+      },
+      {
+        "id": "agenten",
+        "label": "7. KI-Agenten & Tool-Use"
+      }
+    ],
+    "KernbegriffeTab_2": [
+      {
+        "id": "beispiele",
+        "label": "🏗️ 3 Ingenieur-Praxisanwendungen",
+        "count": "EC / Normen"
+      },
+      {
+        "id": "funktionsweise",
+        "label": "📘 Systemarchitektur & Methodik",
+        "count": "Algorithmen"
+      },
+      {
+        "id": "vergleich",
+        "label": "⚖️ Konventionell vs. KI-Workflow",
+        "count": "Prozessanalyse"
+      },
+      {
+        "id": "formel",
+        "label": "📐 Mathematische Modellierung",
+        "count": "LaTeX"
+      },
+      {
+        "id": "risiken",
+        "label": "⚠️ Normative Konformität & Haftung",
+        "count": "Risikoklasse"
+      }
+    ]
+  }
+}

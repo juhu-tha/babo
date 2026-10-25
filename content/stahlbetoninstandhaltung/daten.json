@@ -1,0 +1,227 @@
+{
+  "werte": {
+    "prinzipWWassergehalt": "Prinzip W (Wassergehalt)",
+    "absenkungDesWassergehaltsIm": "Absenkung des Wassergehalts im Beton zur Reduzierung der elektrolytischen Leitfähigkeit.",
+    "wirdOftDurchOberflächenschutzsysteme": "Wird oft durch Oberflächenschutzsysteme (OS) erreicht. Ziel ist es, den Beton auszutrocknen, sodass die Korrosion der Bewehrung mangels Feuchtigkeit zum Erliegen kommt.",
+    "prinzipCCoating": "Prinzip C (Coating)",
+    "beschichtungDerBewehrungCoating": "Beschichtung der Bewehrung (Coating) zum Schutz vor korrosiven Einflüssen.",
+    "verhindertDenDirektenKontakt": "Verhindert den direkten Kontakt korrosiver Stoffe mit dem Stahl. Hinweis: In der TR Instandhaltung Teil 1 gelten Prinzipien und Verfahren nach DIN EN 1504-9 (Tab. 1 & 2).",
+    "prinzipRRepassivierung": "Prinzip R (Repassivierung)",
+    "repassivierungWiederherstellungDesAlkali": "Repassivierung (Wiederherstellung des alkalischen Milieus) durch vollflächigen oder partiellen Betonersatz mit alkalischem Mörtel.",
+    "derCarbonatisierteOderChloridbelastete": "Der carbonatisierte oder chloridbelastete Beton wird abgetragen und durch einen neuen, hochalkalischen Mörtel (PCC/SPCC) ersetzt, der die Bewehrung wieder passiviert.",
+    "prinzipKKathodischerKorrosionsschutz": "Prinzip K (Kathodischer Korrosionsschutz)",
+    "kathodischerKorrosionsschutzDurchAnlegen": "Kathodischer Korrosionsschutz durch Anlegen eines elektrischen Gleichstroms oder durch Opferanoden.",
+    "dieBewehrungWirdKathodisch": "Die Bewehrung wird kathodisch polarisiert, wodurch die anodische Teilreaktion (Eisenauflösung) thermodynamisch unterbunden wird."
+  },
+  "daten": {
+    "szenarien": [
+      {
+        "id": "standsicherheit",
+        "title": "Tragender Stützenfuß in einer Tiefgarage",
+        "problem": "Schwere Frost-Tausalz-Schäden (Chloridbelastung) an statisch hoch belasteten Stützenfüßen.",
+        "regulatoryAnswer": "Zwingend TR Instandhaltung (DIBt) anzuwenden!",
+        "details": "Da die Standsicherheit des Gebäudes berührt ist, gilt die Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung, DIBt) bauaufsichtlich verbindlich nach Einführung in der jeweiligen Landes-Verwaltungsvorschrift Technische Baubestimmungen. Ein zertifizierter Sachkundiger Planer (SKP) muss die Instandsetzungsplanung unterzeichnen, und qualifizierte Fachkräfte (z. B. mit SIVV-Schein) müssen die Ausführung überwachen. Die verwendeten Mörtel müssen eine CE-Kennzeichnung mit Leistungserklärung nach DIN EN 1504-x aufweisen.",
+        "badgeColor": "bg-red-50 text-red-700 border-red-200"
+      },
+      {
+        "id": "balkon",
+        "title": "Oberflächlicher Putzabplatz am privaten Balkon",
+        "problem": "Lokale kosmetische Ausbrüche im Randbereich eines freitragenden Balkons (Standsicherheit unberührt).",
+        "regulatoryAnswer": "Zivilrechtliche und vertragliche Grundlagen (z.B. DAfStb-Rili SIB / Branchenregeln)",
+        "details": "Ist die Standsicherheit nachweislich unberührt, greift das Bauordnungsrecht hier nicht zwingend. Zur mangelfreien Durchführung wird bei privaten Verträgen (BGB/VOB) dennoch die Vereinbarung anerkannter Regeln der Technik dringend empfohlen. Hierbei dient die historische DAfStb-Richtlinie SIB oder anerkannte Fachregeln als hervorragender vertraglicher Standard.",
+        "badgeColor": "bg-green-50 text-green-700 border-green-200"
+      },
+      {
+        "id": "produkt",
+        "title": "Inverkehrbringen eines neuen Instandsetzungs-Produkts",
+        "problem": "Ein Baustoffhersteller möchte einen neu entwickelten, carbonatisierungsbremsenden Anstrich in der EU vertreiben.",
+        "regulatoryAnswer": "DIN EN 1504-2 (Harmonisierte europäische Produktnorm)",
+        "details": "Das reine Bereitstellen und Verkaufen von Produkten auf dem europäischen Markt unterliegt rein der DIN EN 1504-Reihe (in diesem Fall Teil 2 für Oberflächenschutz). Das Produkt muss die europäische Konformitätsbewertung durchlaufen, ein CE-Zeichen besitzen und die deklarierten Mindestwerte nachweisen. Für den standsicherheitsrelevanten Einbau in DE fordert die TR Instandhaltung (Teil 3) zusätzlich die nationalen Konformitätsnachweise.",
+        "badgeColor": "bg-blue-50 text-blue-700 border-blue-200"
+      },
+      {
+        "id": "rissinjektion",
+        "title": "Trennrisse im massiven Brückenüberbau",
+        "problem": "Wasserführende Risse im Fahrbahnbereich einer Spannbetonbrücke gefährden die Spannstähle.",
+        "regulatoryAnswer": "Kombination: Technische Regeln (ZTV-ING / TR Instandhaltung) + DIN EN 1504-5",
+        "details": "Bei Bundesfernstraßen und kritischer Infrastruktur greifen die Regelwerke Hand in Hand. Die ZTV-ING (Zusätzliche Technische Vertragsbedingungen) schreibt die TR Instandhaltung für Planer und Firmen zwingend vor. Die Injektion darf ausschließlich von zertifizierten Fachkräften vorgenommen werden, während der Injektionsstoff die harmonisierten Kriterien der DIN EN 1504-5 (und das entsprechende nationale Sicherheitsniveau) erfüllen muss.",
+        "badgeColor": "bg-amber-50 text-amber-700 border-amber-200"
+      }
+    ],
+    "osSysteme": [
+      {
+        "id": "OS 1",
+        "old": "OS A",
+        "name": "Hydrophobierung",
+        "use": "Wasserabweisende Imprägnierung für nicht begehbare Flächen.",
+        "thickness": "Keine Schichtdicke",
+        "crackBridging": "Nein"
+      },
+      {
+        "id": "OS 2",
+        "old": "OS B",
+        "name": "Beschichtung (nicht begehbar)",
+        "use": "Farbige Beschichtung für Fassaden, Wände und Untersichten.",
+        "thickness": "ca. 0,1 - 0,3 mm",
+        "crackBridging": "Nein"
+      },
+      {
+        "id": "OS 4",
+        "old": "OS C",
+        "name": "Beschichtung mit erhöhter Dichtheit, nicht rissüberbrückend",
+        "use": "Für nicht begehbare Flächen mit erhöhtem Schutzbedarf.",
+        "thickness": "ca. 0,3 - 1,0 mm",
+        "crackBridging": "Nein"
+      },
+      {
+        "id": "OS 5",
+        "old": "OS D/II",
+        "name": "Beschichtung mit erhöhter Rissüberbrückung",
+        "use": "Für nicht begehbare Flächen mit höheren Anforderungen an die Rissüberbrückung.",
+        "thickness": "ca. 1,0 - 2,0 mm",
+        "crackBridging": "Ja (dynamisch)"
+      },
+      {
+        "id": "OS 8",
+        "old": "-",
+        "name": "Starre Beschichtung (befahrbar)",
+        "use": "Für mechanisch stark belastete, befahrbare Flächen (z.B. Parkhäuser, Tiefgaragen) ohne Rissgefahr.",
+        "thickness": "ca. 2,0 - 3,0 mm",
+        "crackBridging": "Nein"
+      },
+      {
+        "id": "OS 10",
+        "old": "-",
+        "name": "Rissüberbrückende Beschichtung (befahrbar)",
+        "use": "Für befahrbare Flächen mit Rissgefahr. Besteht aus einer rissüberbrückenden Dichtungsschicht und einer mechanisch belastbaren Nutzschicht.",
+        "thickness": "ca. 4,0 - 5,0 mm",
+        "crackBridging": "Ja (dynamisch)"
+      },
+      {
+        "id": "OS 11",
+        "old": "OS F",
+        "name": "Rissüberbrückende Beschichtung (befahrbar)",
+        "use": "Für befahrbare Flächen mit hoher dynamischer Rissgefahr (z.B. frei bewitterte Parkdecks). Oft als OS 11a (zwei Schichten) oder OS 11b (eine Schicht) ausgeführt.",
+        "thickness": "ca. 3,0 - 5,0 mm",
+        "crackBridging": "Ja (hoch dynamisch)"
+      }
+    ],
+    "en1504Prinzipien": [
+      {
+        "id": 1,
+        "code": "PI",
+        "name": "Schutz gegen das Eindringen von Stoffen",
+        "desc": "Verhindert das Eindringen von flüssigen oder gasförmigen Stoffen (z.B. CO2, Wasser, Chloride).",
+        "examples": [
+          "Applikation einer Hydrophobierung (OS 1) an Fassaden zur dauerhaften Wasserabweisung.",
+          "Aufbringen einer carbonatisierungsbremsenden Beschichtung (OS 2/OS 4) auf Sichtbetonwänden.",
+          "Füllen und Versiegeln von oberflächennahen Rissen mittels Epoxidharz-Injektion (nach DIN EN 1504-5)."
+        ]
+      },
+      {
+        "id": 2,
+        "code": "MC",
+        "name": "Feuchtigkeitsregulierung",
+        "desc": "Reguliert und hält den Feuchtigkeitsgehalt im Beton auf einem bestimmten Niveau.",
+        "examples": [
+          "Aufbringen dampfdiffusionsoffener, aber flüssigkeitsdichter Beschichtungs- oder Imprägniersysteme.",
+          "Erhalt der Diffusionsfähigkeit bei gleichzeitig verringertem porensaugenden Wassertransport.",
+          "Installation hinterlüfteter Klimaschutzverkleidungen."
+        ]
+      },
+      {
+        "id": 3,
+        "code": "CR",
+        "name": "Betonersatz",
+        "desc": "Wiederherstellung der ursprünglichen Form und Funktion des Betontragwerks durch Mörtel oder Beton.",
+        "examples": [
+          "Händisches Reprofilieren lokaler Abplatzungen und Ausbrüche mit kunststoffmodifiziertem Zementmörtel (PCC).",
+          "Vollflächiger Auftrag von Spritzmörtel oder Spritzbeton (SPCC) zur Wiederherstellung der Tragstruktur.",
+          "Austausch schadhafter Betonabschnitte durch Gussbeton."
+        ]
+      },
+      {
+        "id": 4,
+        "code": "SS",
+        "name": "Verstärkung",
+        "desc": "Erhöhung oder Wiederherstellung der Tragfähigkeit des Betontragwerks.",
+        "examples": [
+          "Aufkleben hochfester Kohlenstofffaser-Lamellen (CFK) zur Biegungsverstärkung (z.B. an Balkenunterseiten).",
+          "Einfräsen und Einkleben schlaffer oder vorgespannter Bewehrung in nachträglich erstellten Schlitzen.",
+          "Säulen- oder Stützenumschnürung mittels CFK-Gelegen oder Stahlmänteln."
+        ]
+      },
+      {
+        "id": 5,
+        "code": "PR",
+        "name": "Erhöhung der physikalischen Widerstandsfähigkeit",
+        "desc": "Verbesserung des Widerstands gegen mechanische Angriffe (z.B. Abrieb, Stoß).",
+        "examples": [
+          "Aufbringen mineralischer Verschleißschichten mit Hartstoffzusätzen auf Industrieböden.",
+          "Spezifische Dickbeschichtungen auf Epoxidharz- (EP) oder Polyurethanbasis (PU) an Rampen oder Fahrbahnen."
+        ]
+      },
+      {
+        "id": 6,
+        "code": "RC",
+        "name": "Erhöhung der chemischen Widerstandsfähigkeit",
+        "desc": "Verbesserung des Widerstands gegen chemische Angriffe.",
+        "examples": [
+          "Spezialbeschichtungen nach WHG (Wasserhaushaltsgesetz) an Auffangwannen in Tanklagern.",
+          "Auskleidung von Abwasseranlagen und Klärschächten mit hochgradig säurefesten Spezialmörteln."
+        ]
+      },
+      {
+        "id": 7,
+        "code": "RP",
+        "name": "Erhalt oder Wiederherstellung der Passivität",
+        "desc": "Schaffung chemischer Bedingungen, bei denen die Oberfläche der Bewehrung im passiven Zustand bleibt oder wieder passiviert wird.",
+        "examples": [
+          "Abtrag des carbonatisierten Betons und Reprofilierung mit hochalkalischem PCC-Mörtel (pH > 12,5).",
+          "Elektrochemische Realkalisierung (ER) des carbonatisierten Betonkerns durch zeitweisen Gleichstrom.",
+          "Elektrochemische Chloridentfernung (ECE) zur Absenkung des Chloridgehalts."
+        ]
+      },
+      {
+        "id": 8,
+        "code": "IR",
+        "name": "Erhöhung des elektrischen Widerstands",
+        "desc": "Erhöhung des elektrischen Widerstands des Betons zur Reduzierung der Korrosionsgeschwindigkeit.",
+        "examples": [
+          "Applikation hochgradig diffusionsdichter Versiegelungen oder tiefergehender hydrophober Imprägnierungen.",
+          "Durch Reduktion des feuchten Elektrolyten steigt der Innenwiderstand, und der Korrosionsstrom bricht zusammen."
+        ]
+      },
+      {
+        "id": 9,
+        "code": "CC",
+        "name": "Kontrolle der kathodischen Bereiche",
+        "desc": "Schaffung von Bedingungen, bei denen kathodische Bereiche der Bewehrung keine Korrosion zulassen.",
+        "examples": [
+          "Vollflächige Sauerstoff-Sperrbeschichtung (z.B. Epoxidharze) über den gesamten, auch unbeschädigten Bereich.",
+          "Durch den Sauerstoffentzug wird die kathodische Reduktionsreaktion unterbunden."
+        ]
+      },
+      {
+        "id": 10,
+        "code": "CP",
+        "name": "Kathodischer Korrosionsschutz",
+        "desc": "Anwendung eines elektrischen Potenzials zur Verhinderung der Korrosion.",
+        "examples": [
+          "Installation eines KKS-Fremdstromsystems mittels edelmetallbeschichteter Titananodenbänder oder -netze.",
+          "Anbringung und Einbettung galvanischer Opferankergürtel (z.B. Zink-Opferanoden) am Bauteil."
+        ]
+      },
+      {
+        "id": 11,
+        "code": "CA",
+        "name": "Kontrolle der anodischen Bereiche",
+        "desc": "Schaffung von Bedingungen, bei denen anodische Bereiche der Bewehrung keine Korrosion zulassen (z.B. durch Inhibitoren).",
+        "examples": [
+          "Einsatz migrierender Korrosionsinhibitoren (MCI), die aufgesprüht werden und bis zum Stahl wandern.",
+          "Direkter Auftrag aktiver, zementgebundener Korrosionsschutzbeschichtungen auf die sandgestrahlte Bewehrung."
+        ]
+      }
+    ]
+  }
+}

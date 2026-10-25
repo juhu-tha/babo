@@ -1,0 +1,147 @@
+{
+  "texte": {
+    "checklistenKlausurklassikerFehlerprävent": "Checklisten & Klausurklassiker (Fehlerprävention)",
+    "studienerfolgeHängenMeistDavon": "Studienerfolge hängen meist davon ab, systematische Ungenauigkeiten auszuschließen. Verwenden Sie diese interaktiven Checklisten für Ihre Seminar- und Klausurausarbeitungen.",
+    "checklisteProduktökobilanzEpdNutzung": "✓ Checkliste Produktökobilanz / EPD-Nutzung",
+    "checklisteGebäudeökobilanzQng": "✓ Checkliste Gebäudeökobilanz (QNG)",
+    "die12HäufigstenFehleingaben": " DIE 12 HÄUFIGSTEN FEHLEINGABEN (PRAXISKREISE & EXAMEN)",
+    "typischerFehler": "Typischer Fehler:",
+    "richtigeLösung": "Richtige Lösung:"
+  },
+  "daten": {
+    "AnhangChecklisten": [
+      {
+        "id": "epd_1",
+        "text": "Deklarierte Einheit exakt notiert und auf Projektbezug umgerechnet (1 kg ≠ 1 m³ ≠ 1 m²)"
+      },
+      {
+        "id": "epd_2",
+        "text": "Normfassung prüfen (EN 15804+A1 und +A2 nicht vermischen!)"
+      },
+      {
+        "id": "epd_3",
+        "text": "Datensatztyp (spezifisch vs. repräsentativ) und Bezugsjahr im Beiblatt dokumentieren"
+      },
+      {
+        "id": "epd_4",
+        "text": "GWP-fossil und GWP-biogenic getrennt ausgewiesen und bilanziert (unfreiwilliges Greenwashing vermieden)"
+      },
+      {
+        "id": "epd_5",
+        "text": "Szenarien (Transportdistanzen A4, Nutzungsdauer RSL, EoL C/D) auf Projektpassung geprüft"
+      },
+      {
+        "id": "epd_6",
+        "text": "Nutzeffekt Modul D streng getrennt ausgewiesen und nicht unzulässig in Summen A-C eingerechnet"
+      }
+    ],
+    "AnhangChecklisten_2": [
+      {
+        "id": "qng_1",
+        "text": "Grundflächenbezug: Netto-Raumfläche NRF(R) nach DIN 277:2021-08 ermittelt (Nicht NGF oder Wohnfläche!)"
+      },
+      {
+        "id": "qng_2",
+        "text": "Betrachtungszeitraum einheitlich auf 50 Jahre festgesetzt"
+      },
+      {
+        "id": "qng_3",
+        "text": "Lebenszyklusmodule A1-A3, B4, B6, C3, C4 und D getrennt bilanziert"
+      },
+      {
+        "id": "qng_4",
+        "text": "Mengengerüst vollständig: Kostengruppe 300 (Bauwerk) u. Kostengruppe 400 (Haustechnik Pauschale) nach DIN 276 erfasst"
+      },
+      {
+        "id": "qng_5",
+        "text": "ÖKOBAUDAT-Datensätze regelkonform gewählt und deren UUID-Kennungen dokumentiert"
+      },
+      {
+        "id": "qng_6",
+        "text": "Nutzungsdauern (RSL) nach BBSR-Tabelle richtig eingepflegt und Ersatzzyklen für B4 kalkuliert"
+      },
+      {
+        "id": "qng_7",
+        "text": "Betrieblicher Energiebedarf (B6) exakt aus GEG-Zertifikat (DIN V 18599) überführt"
+      },
+      {
+        "id": "qng_8",
+        "text": "Das errechnete CO₂-Gesamtergebnis plausibilisiert (Zahlenwerte kg/m²a mit Benchmarks abgeglichen)"
+      }
+    ],
+    "AnhangChecklisten_3": [
+      {
+        "no": "1",
+        "title": "Datensätze mischen",
+        "err": "Datensätze der Normversionen EN 15804+A1 und +A2 werden fälschlich addiert.",
+        "sol": "GWP-Indikatoren sind nicht deckungsgleich. Niemals Datensätze unterschiedlicher Normgenerationen mischen."
+      },
+      {
+        "no": "2",
+        "title": "Falsche Bezugsfläche",
+        "err": "Nutzung der Netto-Grundfläche (NGF) oder Reinen Wohnfläche als Basis.",
+        "sol": "Das QNG verlangt die Netto-Raumfläche NRF(R) nach DIN 277:2021-08."
+      },
+      {
+        "no": "3",
+        "title": "Einheitenfehler",
+        "err": "GWP-Faktoren (kg CO2-eq/kg) werden direkt mit Bauteilvolumen (m³) multipliziert, ohne die Rohdichte einzurechnen.",
+        "sol": "Stets den Dichteabgleich durchführen: Masse = Volumen * Rohdichte."
+      },
+      {
+        "no": "4",
+        "title": "Einberechnen des Moduls D",
+        "err": "Ökologische Recycling-Gutschriften (Modul D) werden in die GWP-Gesamtsumme A-C hineingerechnet.",
+        "sol": "Gutschriften außerhalb der Systemgrenzen müssen als separater Posten deklariert werden!"
+      },
+      {
+        "no": "5",
+        "title": "Biogenen Kohlenstoff ignorieren",
+        "err": "Vergleich von Holzbaustoffen rein im Modul A1-A3, ohne die Freisetzung im Modul C3/C4 zu bilanzieren.",
+        "sol": "Holz bindet CO₂ im Wachstum (A1-A3 negativ), gibt dieses aber bei Verbrennung/EoL (C3) wieder frei (Netto-Effekt ≈ 0)."
+      },
+      {
+        "no": "6",
+        "title": "Instandhaltung (B4) vergessen",
+        "err": "Dichtungsschichten, Verputze oder mechanische Klimateile werden mit 50 Jahren Lebensdauer fehlerfrei durchgeschleust.",
+        "sol": "Nutzeffekt-Intervalle nach BBSR-Tabelle abbilden (z. B. Heizkessel RSL 20 a: zwei Austausche nach 20 und 40 Jahren im Betrachtungszeitraum von 50 Jahren)."
+      },
+      {
+        "no": "7",
+        "title": "Ungleiche funktionale Einheit",
+        "err": "Konkurrierende Tragwerkswände (Beton vs. Holz) werden ohne denselben Schall- und Brandschutzeffekt berechnet.",
+        "sol": "Niemals reine Stoffmengen vergleichen, sondern gleichwertige bauphysikalische Gesamtbauteile!"
+      },
+      {
+        "no": "8",
+        "title": "Veraltete Datenbestände",
+        "err": "Nutzung nicht regelkonform, veralteter ÖKOBAUDAT-Uraltversionen für neue Nachweise.",
+        "sol": "Nutzen Sie für QNG-konforme Audits immer die aktuell freigegebene BBSR-Rechenwert-Generiktabelle."
+      },
+      {
+        "no": "9",
+        "title": "Kategorien aufaddieren",
+        "err": "Wirkungswerte verschiedener Wirkungskategorien (z.B. kg CO₂-eq + kg SO₂-eq) werden zu einem einzigen Gesamtwert aufsummiert.",
+        "sol": "Es ist physikalisch unmöglich und methodisch unzulässig, unterschiedliche Umweltwirkungen zu addieren."
+      },
+      {
+        "no": "10",
+        "title": "Unvollständige Mengenermittlung",
+        "err": "Fehlende Erfassung der Technischen Anlagen (Kostengruppe 400) oder doppelte Bilanzierung von Putzen.",
+        "sol": "Sicherstellen, dass alle Konstruktionsbereiche nach DIN 276 vollständig und überschneidungsfrei vorliegen."
+      },
+      {
+        "no": "11",
+        "title": "EPD-Szenarien blind übernehmen",
+        "err": "Spezifische Hersteller-EPD-Transportdistanzen ungeprüft in die Gebäudeermittlung einrechnen.",
+        "sol": "Die Standardvorgaben des QNG-Handbuchs (z.B. Pauschalen für Transportdistanzen) müssen vorrangig genutzt werden."
+      },
+      {
+        "no": "12",
+        "title": "Scheingenauigkeit",
+        "err": "Ergebnisdeklarationen mit 3 bis 4 Nachkommastellen bei einer inhärenten Datenunsicherheit von ±30 %.",
+        "sol": "Runden Sie Ihre Endergebnisse sinngemäß auf eine Nachkommastelle, um eine realistische Präzision zu suggerieren."
+      }
+    ]
+  }
+}

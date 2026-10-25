@@ -13,25 +13,27 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/sommerlicherwaermeschutz/SommerlicherWaermeschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type Reiter = 'einfuehrung' | 'grundlagen' | 'kennwerte' | 'rechner' | 'beispiele';
 const REITER = [
   { id: 'einfuehrung' as const, label: 'Einführung', icon: Sun },
   { id: 'grundlagen' as const, label: 'Grundlagen', icon: BookOpen },
-  { id: 'kennwerte' as const, label: 'Kennwerte & Tabellen', icon: Table2 },
+  { id: 'kennwerte' as const, label: inhalt.werte.kennwerteTabellen, icon: Table2 },
   { id: 'rechner' as const, label: 'Rechner', icon: Calculator },
   { id: 'beispiele' as const, label: 'Beispiele', icon: ClipboardList },
 ];
 
 const NUTZUNG_NAME: Record<Nutzung, string> = { wohn: 'Wohngebäude', nichtwohn: 'Nichtwohngebäude' };
 const BAUART_NAME: Record<Bauart, string> = { leicht: 'leicht', mittel: 'mittel', schwer: 'schwer' };
-const NL_NAME: Record<Nachtlueftung, string> = { ohne: 'ohne', erhoeht: 'erhöht (n ≥ 2 h⁻¹)', hoch: 'hoch (n ≥ 5 h⁻¹)' };
-const REGION_NAME: Record<Klimaregion, string> = { A: 'A – sommerkühl', B: 'B – gemäßigt', C: 'C – sommerheiß' };
+const NL_NAME: Record<Nachtlueftung, string> = { ohne: 'ohne', erhoeht: inhalt.werte.erhöhtN2H, hoch: inhalt.werte.hochN5H };
+const REGION_NAME: Record<Klimaregion, string> = { A: inhalt.werte.aSommerkühl, B: inhalt.werte.bGemäßigt, C: inhalt.werte.cSommerheiß };
 
 interface FensterZeile extends Fenster { id: string }
 const STANDARD_FENSTER: FensterZeile[] = [
   { id: 'f1', name: 'Fenster Süd', A: 6, g: 0.59, scheiben: 2, orientierung: 'S', neigung: 90, schutz: 'rollladen_34' },
-  { id: 'f2', name: 'Fenster West', A: 5, g: 0.59, scheiben: 2, orientierung: 'W', neigung: 90, schutz: 'rollladen_34' },
+  { id: 'f2', name: inhalt.werte.fensterWest, A: 5, g: 0.59, scheiben: 2, orientierung: 'W', neigung: 90, schutz: 'rollladen_34' },
 ];
 
 const karte = 'bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30';
@@ -70,49 +72,30 @@ export default function SommerlicherWaermeschutz() {
     <div className="flex flex-col gap-6 pb-12">
       <div className={karte}>
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Sun className="w-5 h-5 text-shiraz" aria-hidden="true" /> Sommerlicher Wärmeschutz (DIN 4108-2)
-        </h2>
-        <p className="text-xs text-text-main/60 font-mono mt-1">
-          Sonneneintragskennwert-Verfahren nach DIN 4108-2:2013-02, Abschnitt 8 – Anforderung nach § 14 GModG (vormals GEG)
-        </p>
+          <Sun className="w-5 h-5 text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.sommerlicherWärmeschutzDin4108} /></h2>
+        <p className="text-xs text-text-main/60 font-mono mt-1"><MdText text={inhalt.texte.sonneneintragskennwertVerfahrenNachDin} /></p>
         <p className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           Neubauten müssen so geplant werden, dass sich Aufenthaltsräume im Sommer ohne Klimaanlage nicht unzumutbar aufheizen.
-          Der Nachweis vergleicht den <strong>vorhandenen Sonneneintragskennwert</strong> des kritischen Raums mit einem
-          <strong> zulässigen Wert</strong>, der von Klimaregion, Bauart, Nachtlüftung und Fenstereigenschaften abhängt.
+          Der Nachweis vergleicht den <strong><MdText text={inhalt.texte.vorhandenenSonneneintragskennwert} /></strong> des kritischen Raums mit einem
+          <strong><MdText text={inhalt.texte.zulässigenWert} /></strong>, der von Klimaregion, Bauart, Nachtlüftung und Fenstereigenschaften abhängt.
         </p>
       </div>
 
-      <ModuleTabs label="Bereiche Sommerlicher Wärmeschutz" tabs={REITER} aktiv={reiter} onWechsel={setReiter}
+      <ModuleTabs label={inhalt.werte.bereicheSommerlicherWärmeschutz} tabs={REITER} aktiv={reiter} onWechsel={setReiter}
         className="[&>[role=tablist]]:mb-5">
 
         {reiter === 'einfuehrung' && (
           <div className="space-y-5">
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Ziel und rechtliche Anforderung</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.zielUndRechtlicheAnforderung} /></h3>
               <div className="text-sm text-text-main/85 leading-relaxed space-y-2">
-                <p>
-                  Nach <strong>§ 14 Abs. 1 GModG</strong> (bis 28.07.2026 Gebäudeenergiegesetz GEG) ist ein zu errichtendes Gebäude so auszuführen,
-                  dass der Sonneneintrag durch einen ausreichenden baulichen sommerlichen Wärmeschutz begrenzt wird. Die Anforderungen an die
-                  Tageslichtversorgung bleiben unberührt.
-                </p>
-                <p>
-                  Ausreichend ist der sommerliche Wärmeschutz nach <strong>§ 14 Abs. 2</strong>, wenn die Anforderungen nach DIN 4108-2:2013-02,
-                  Abschnitt 8, eingehalten sind: Der nach 8.3.2 bestimmte Sonneneintragskennwert darf den zulässigen Wert nach 8.3.3 nicht überschreiten.
-                  Alternativ erlaubt <strong>Abs. 3</strong> eine thermische Gebäudesimulation nach 8.4; die Übertemperaturgradstunden nach Tab. 9 dürfen dann
-                  nicht überschritten werden. Nach <strong>Abs. 5</strong> entfallen die Berechnungen unter den Voraussetzungen von Abschnitt 8.2.2.
-                </p>
-                <p>
-                  Wird ein Wohngebäude mit Kühlanlage über die Simulation nachgewiesen, sind nach <strong>Abs. 4</strong> bauliche Maßnahmen nach
-                  DIN 4108-2, Abschnitt 4.3, vorzusehen, soweit sich die Investitionen über eingesparte Kühlenergie innerhalb der üblichen Nutzungsdauer erwirtschaften.
-                </p>
+                <p><MdText text={inhalt.texte.nach14Abs1} /></p>
+                <p><MdText text={inhalt.texte.ausreichendIstDerSommerliche} /></p>
+                <p><MdText text={inhalt.texte.wirdEinWohngebäudeMit} /></p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { t: '1 · Nachweisverzicht', d: 'Kleiner Fensterflächenanteil nach Tab. 6 oder Wohnraum mit außenliegendem Sonnenschutz (35-%-Regel, 8.2.2).' },
-                { t: '2 · Sonneneintragskennwerte', d: 'Handrechenverfahren nach 8.3 für den kritischen Raum: $S_{vorh} \\le S_{zul}$.' },
-                { t: '3 · Thermische Simulation', d: 'Dynamische Gebäudesimulation nach 8.4: Übertemperaturgradstunden unter dem Anforderungswert der Tab. 9.' },
-              ].map(k => (
+              {inhalt.daten.SommerlicherWaermeschutz.map(k => (
                 <div key={k.t} className="p-4 rounded-xl border border-home-grau/30 bg-off-white text-sm">
                   <div className="font-bold text-shiraz mb-1">{k.t}</div>
                   <p className="text-text-main/80 text-xs leading-relaxed"><FormulaText text={k.d} /></p>
@@ -121,14 +104,10 @@ export default function SommerlicherWaermeschutz() {
             </div>
             <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/60 text-xs text-amber-950 leading-relaxed flex gap-2">
               <Info size={16} className="shrink-0 mt-0.5" aria-hidden="true" />
-              <span>
-                <strong>Normenstand:</strong> § 14 GModG verweist ausdrücklich auf DIN 4108-2:2013-02. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen
-                und gliedert den sommerlichen Wärmeschutz neu (Sonneneintragskennwerte, Simulation und Abminderungsfaktoren in eigenen Abschnitten).
-                Alle Werte dieses Moduls folgen der Ausgabe 2013-02; vor einer Anwendung nach der Neuausgabe sind Tabellen und Abschnittsnummern abzugleichen.
-              </span>
+              <span><MdText text={inhalt.texte.normenstand14GmodgVerweist} /></span>
             </div>
-            <Querverweis ziel="bauphysik" titel="Phasenverschiebung und Temperaturamplitudendämpfung → Modul Bauphysik" linkText="Zum Modul Bauphysik">
-              <p>Die Trägheit einzelner Bauteile (Phasenverschiebung, TAV) beschreibt das Modul Bauphysik. Sie ist <strong>kein</strong> Kriterium des Nachweises nach DIN 4108-2: Maßgebend sind Sonneneintrag, Speichermasse des Raums und Lüftung.</p>
+            <Querverweis ziel="bauphysik" titel={inhalt.werte.phasenverschiebungUndTemperaturamplitude} linkText={inhalt.werte.zumModulBauphysik}>
+              <p><MdText text={inhalt.texte.dieTrägheitEinzelnerBauteile} /></p>
             </Querverweis>
           </div>
         )}
@@ -136,76 +115,48 @@ export default function SommerlicherWaermeschutz() {
         {reiter === 'grundlagen' && (
           <div className="space-y-5">
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Vorhandener Sonneneintragskennwert</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.vorhandenerSonneneintragskennwert} /></h3>
               <BlockMath math="S_{vorh} = \frac{\sum_j A_{w,j} \cdot g_{tot,j}}{A_G}, \qquad g_{tot} = g \cdot F_C" />
               <ul className="text-sm text-text-main/85 leading-relaxed list-disc pl-5 space-y-1 mt-2">
-                <li><FormulaText text="$A_{w,j}$: Fensterfläche (lichtes Rohbaumaß) des Fensters j in m²" /></li>
-                <li><FormulaText text="$g$: Gesamtenergiedurchlassgrad der Verglasung (senkrechter Strahlungseinfall, Herstellerangabe)" /></li>
-                <li><FormulaText text="$F_C$: Abminderungsfaktor der fest installierten Sonnenschutzvorrichtung nach Tab. 7; alternativ ein produktspezifischer Wert für $g_{tot}$ (z. B. nach DIN EN 14501 bzw. DIN EN ISO 52022)" /></li>
-                <li><FormulaText text="$A_G$: Nettogrundfläche des Raums aus den lichten Raummaßen; bei sehr tiefen Räumen ist die Raumtiefe auf das Dreifache der lichten Raumhöhe begrenzt" /></li>
+                <li><FormulaText text={inhalt.werte.aWJFensterfläche} /></li>
+                <li><FormulaText text={inhalt.werte.gGesamtenergiedurchlassgradDerVerglasung} /></li>
+                <li><FormulaText text={inhalt.werte.fCAbminderungsfaktorDer} /></li>
+                <li><FormulaText text={inhalt.werte.aGNettogrundflächeDes} /></li>
               </ul>
-              <p className="text-sm text-text-main/80 mt-3">
-                Nachzuweisen ist der <strong>kritische Raum</strong> an der Fassade – in der Regel ein Raum mit großem Fensterflächenanteil, Fenstern
-                nach zwei oder mehr Richtungen (Südost, Südwest) oder mit Dachflächenfenstern. Ist er nachgewiesen, gelten die übrigen Räume als erfüllt.
-              </p>
+              <p className="text-sm text-text-main/80 mt-3"><MdText text={inhalt.texte.nachzuweisenIstDerKritische} /></p>
             </div>
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Zulässiger Sonneneintragskennwert</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.zulässigerSonneneintragskennwert} /></h3>
               <BlockMath math="S_{zul} = \sum_x S_x = S_1 + S_2 + S_3 + S_4 + S_5 + S_6" />
-              <p className="text-sm text-text-main/85 leading-relaxed">
-                Die anteiligen Kennwerte nach Tab. 8 bilden die Einflüsse ab: <FormulaText text="$S_1$" /> Klimaregion, Bauart und Nachtlüftung;
-                <FormulaText text=" $S_2$" /> Korrektur für den grundflächenbezogenen Fensterflächenanteil (S1 gilt für etwa 25 %);
-                <FormulaText text=" $S_3$" /> Sonnenschutzglas; <FormulaText text=" $S_4$" /> geneigte Fenster; <FormulaText text=" $S_5$" /> Nordorientierung oder
-                dauernde Eigenverschattung; <FormulaText text=" $S_6$" /> passive Kühlung. Bei unterschiedlichen Fenstern eines Raums dürfen die Anteile
-                flächenanteilig ermittelt werden.
-              </p>
+              <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.dieAnteiligenKennwerteNach} /><FormulaText text="$S_1$" /><MdText text={inhalt.texte.klimaregionBauartUndNachtlüftung} /><FormulaText text=" $S_2$" /><MdText text={inhalt.texte.korrekturFürDenGrundflächenbezogenen} /><FormulaText text=" $S_3$" /> Sonnenschutzglas; <FormulaText text=" $S_4$" /><MdText text={inhalt.texte.geneigteFenster} /><FormulaText text=" $S_5$" /><MdText text={inhalt.texte.nordorientierungOderDauerndeEigenverscha} /><FormulaText text=" $S_6$" /><MdText text={inhalt.texte.passiveKühlungBeiUnterschiedlichen} /></p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div className={karte}>
-                <h4 className="font-bold text-text-main mb-2 text-sm">Sommerklimaregionen A, B, C</h4>
-                <p className="text-xs text-text-main/85 leading-relaxed">
-                  Die Karte in Abschnitt 8.1 teilt Deutschland nach Lufttemperatur und Solarstrahlung in drei Regionen. Jeder Region ist ein
-                  Bezugswert der Innentemperatur zugeordnet: A sommerkühl {formatDeZahl(BEZUGSTEMPERATUR.A, 0)} °C, B gemäßigt {formatDeZahl(BEZUGSTEMPERATUR.B, 0)} °C,
-                  C sommerheiß {formatDeZahl(BEZUGSTEMPERATUR.C, 0)} °C. Die höheren Bezugswerte berücksichtigen die Gewöhnung der Menschen an das regionale Sommerklima.
-                  Ist die Zuordnung nicht eindeutig, gilt die höhere Region (B statt A, C statt A oder B).
-                </p>
+                <h4 className="font-bold text-text-main mb-2 text-sm"><MdText text={inhalt.texte.sommerklimaregionenABC} /></h4>
+                <p className="text-xs text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.dieKarteInAbschnitt} />{formatDeZahl(BEZUGSTEMPERATUR.A, 0)}<MdText text={inhalt.texte.cBGemäßigt} />{formatDeZahl(BEZUGSTEMPERATUR.B, 0)}<MdText text={inhalt.texte.cCSommerheiß} />{formatDeZahl(BEZUGSTEMPERATUR.C, 0)}<MdText text={inhalt.texte.cDieHöherenBezugswerte} /></p>
               </div>
               <div className={karte}>
-                <h4 className="font-bold text-text-main mb-2 text-sm">Bauart und wirksame Wärmespeicherfähigkeit</h4>
-                <p className="text-xs text-text-main/85 leading-relaxed">
-                  Speicherfähige Bauteile nehmen tagsüber Wärme auf und geben sie nachts ab. Eingestuft wird über
-                  <FormulaText text=" $C_{wirk}/A_G$" />: leicht unter 50, mittel 50 bis 130, schwer über 130 Wh/(m²K). Angerechnet werden nur raumnahe
-                  Schichten (Außenbauteile höchstens die inneren 10 cm, nur bis zur ersten Dämmschicht). Pauschal <strong>mittel</strong> bei
-                  Stahlbetondecke und massiven Bauteilen mit gemittelter Rohdichte ≥ 600 kg/m³, <strong>schwer</strong> ab 1.600 kg/m³ – jeweils ohne
-                  Innendämmung, abgehängte Decke und Räume über 4,5 m Höhe. Ohne Nachweis gilt <strong>leicht</strong>.
-                </p>
+                <h4 className="font-bold text-text-main mb-2 text-sm"><MdText text={inhalt.texte.bauartUndWirksameWärmespeicherfähigkeit} /></h4>
+                <p className="text-xs text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.speicherfähigeBauteileNehmenTagsüber} /><FormulaText text=" $C_{wirk}/A_G$" /><MdText text={inhalt.texte.leichtUnter50Mittel} /></p>
               </div>
               <div className={karte}>
-                <h4 className="font-bold text-text-main mb-2 text-sm">Nachtlüftung und passive Kühlung</h4>
+                <h4 className="font-bold text-text-main mb-2 text-sm"><MdText text={inhalt.texte.nachtlüftungUndPassiveKühlung} /></h4>
                 <p className="text-xs text-text-main/85 leading-relaxed">
                   Nächtliches Lüften entlädt die Speichermasse. <strong>Erhöhte</strong> Nachtlüftung (n ≥ 2 h⁻¹, zweite Nachthälfte) darf bei
                   Wohnnutzung in der Regel angesetzt werden, ebenso mit einer entsprechend ausgelegten Lüftungsanlage. <strong>Hohe</strong>
                   Nachtlüftung (n ≥ 5 h⁻¹) setzt geschossübergreifende Querlüftung (Atrium, Treppenhaus, Galerie) oder eine passende Anlage voraus.
-                  <strong> Passive Kühlung</strong> (S6) meint Systeme, die nur Energie für den Transport des Kühlmediums benötigen, etwa Bauteilaktivierung mit Erdreich.
+                  <strong><MdText text={inhalt.texte.passiveKühlung} /></strong> (S6) meint Systeme, die nur Energie für den Transport des Kühlmediums benötigen, etwa Bauteilaktivierung mit Erdreich.
                 </p>
               </div>
             </div>
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Thermische Gebäudesimulation (Abschnitt 8.4)</h3>
-              <p className="text-sm text-text-main/85 leading-relaxed">
-                Für Räume, auf die das vereinfachte Verfahren nicht passt (Doppelfassaden, transparente Wärmedämmung, Hallen, mehrgeschossige offene
-                Räume) oder um Spielräume auszuloten, wird mit einem dynamischen Simulationsprogramm und dem Testreferenzjahr der Region gerechnet.
-                Ausgewertet werden die <strong>Übertemperaturgradstunden</strong>: Für jede Stunde der Anwesenheitszeit wird die Überschreitung der
-                operativen Raumtemperatur über den Bezugswert der Region aufsummiert. Zulässig sind nach Tab. 9 höchstens
-                {' '}{formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.wohn, 0)} Kh/a für Wohngebäude und {formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.nichtwohn, 0)} Kh/a für Nichtwohngebäude.
-              </p>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.thermischeGebäudesimulationAbschnitt8} /></h3>
+              <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.fürRäumeAufDie} />{formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.wohn, 0)}<MdText text={inhalt.texte.khAFürWohngebäude} />{formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.nichtwohn, 0)}<MdText text={inhalt.texte.khAFürNichtwohngebäude} /></p>
               <BlockMath math="\sum_{t} \max\left(0;\; \theta_{op}(t) - \theta_{b,op}\right) \cdot 1\,\text{h} \;\le\; 1\,200\,\text{Kh/a (Wohnen)}" />
-              <p className="text-xs text-text-main/70">
-                Beispiel: 1.200 Kh/a entsprechen 1.200 Stunden mit 1 K oder 300 Stunden mit 4 K über dem Bezugswert.
-              </p>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.beispiel1200Kh} /></p>
             </div>
-            <Querverweis ziel="feuchteschutz" titel="Winterlicher Wärme- und Feuchteschutz → Modul Feuchteschutz" linkText="Zum Modul Feuchteschutz">
-              <p>DIN 4108-2 regelt neben dem Sommerfall den Mindestwärmeschutz im Winter (Temperaturfaktor, 80-%-Schimmelkriterium). Taupunkt, Schimmelgrenze und Glaser-Verfahren rechnet das Modul Feuchteschutz.</p>
+            <Querverweis ziel="feuchteschutz" titel={inhalt.werte.winterlicherWärmeUndFeuchteschutz} linkText={inhalt.werte.zumModulFeuchteschutz}>
+              <p><MdText text={inhalt.texte.din41082Regelt} /></p>
             </Querverweis>
           </div>
         )}
@@ -213,35 +164,31 @@ export default function SommerlicherWaermeschutz() {
         {reiter === 'kennwerte' && (
           <div className="space-y-5">
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Tab. 6 – Fensterflächenanteil, bis zu dem der Nachweis entfallen kann</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.tab6FensterflächenanteilBis} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs border-collapse">
-                  <thead><tr className="bg-off-white text-left"><th className="p-2 border">Neigung gegenüber der Horizontalen</th><th className="p-2 border">Orientierung</th><th className="p-2 border text-right">f_WG</th></tr></thead>
+                  <thead><tr className="bg-off-white text-left"><th className="p-2 border"><MdText text={inhalt.texte.neigungGegenüberDerHorizontalen} /></th><th className="p-2 border">Orientierung</th><th className="p-2 border text-right">f_WG</th></tr></thead>
                   <tbody>
-                    <tr><td className="p-2 border" rowSpan={2}>über 60° bis 90°</td><td className="p-2 border">Nordwest über Süd bis Nordost</td><td className="p-2 border text-right">10 %</td></tr>
-                    <tr><td className="p-2 border">alle anderen Nordorientierungen</td><td className="p-2 border text-right">15 %</td></tr>
-                    <tr><td className="p-2 border">von 0° bis 60°</td><td className="p-2 border">alle Orientierungen</td><td className="p-2 border text-right">7 %</td></tr>
+                    <tr><td className="p-2 border" rowSpan={2}><MdText text={inhalt.texte.über60Bis90} /></td><td className="p-2 border"><MdText text={inhalt.texte.nordwestÜberSüdBis} /></td><td className="p-2 border text-right">10 %</td></tr>
+                    <tr><td className="p-2 border"><MdText text={inhalt.texte.alleAnderenNordorientierungen} /></td><td className="p-2 border text-right">15 %</td></tr>
+                    <tr><td className="p-2 border"><MdText text={inhalt.texte.von0Bis60} /></td><td className="p-2 border"><MdText text={inhalt.texte.alleOrientierungen} /></td><td className="p-2 border text-right">7 %</td></tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-xs text-text-main/75 mt-2 leading-relaxed">
-                <FormulaText text="$f_{WG} = A_W / A_G$" /> mit der Summe aller Fensterflächen des Raums; bei Fenstern unterschiedlicher Orientierung gilt der kleinere Grenzwert.
-                Zusätzlich entfällt der Nachweis nach 8.2.2 bei <strong>Wohnnutzung</strong>, wenn der kritische Raum höchstens 35 % Fensterflächenanteil hat und seine
-                Ost-, Süd- und Westfenster außenliegenden Sonnenschutz mit <FormulaText text="$F_C \le 0{,}30$" /> (Glas g &gt; 0,40) bzw.
-                <FormulaText text=" $F_C \le 0{,}35$" /> (g ≤ 0,40) haben – praktisch Rollläden oder Raffstores.
-              </p>
+                <FormulaText text={inhalt.werte.fWgAW} /><MdText text={inhalt.texte.mitDerSummeAller} /><FormulaText text="$F_C \le 0{,}30$" /><MdText text={inhalt.texte.glasG040} /><FormulaText text=" $F_C \le 0{,}35$" /><MdText text={inhalt.texte.g040Haben} /></p>
             </div>
 
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Tab. 7 – Anhaltswerte für Abminderungsfaktoren F_C</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.tab7AnhaltswerteFür} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs border-collapse">
                   <thead>
                     <tr className="bg-off-white text-left">
-                      <th className="p-2 border">Sonnenschutzvorrichtung (fest installiert)</th>
-                      <th className="p-2 border text-right">g ≤ 0,40 zweifach (Sonnenschutzglas)</th>
-                      <th className="p-2 border text-right">g &gt; 0,40 dreifach</th>
-                      <th className="p-2 border text-right">g &gt; 0,40 zweifach</th>
+                      <th className="p-2 border"><MdText text={inhalt.texte.sonnenschutzvorrichtungFestInstalliert} /></th>
+                      <th className="p-2 border text-right"><MdText text={inhalt.texte.g040Zweifach} /></th>
+                      <th className="p-2 border text-right"><MdText text={inhalt.texte.g040Dreifach} /></th>
+                      <th className="p-2 border text-right"><MdText text={inhalt.texte.g040Zweifach2} /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -263,12 +210,12 @@ export default function SommerlicherWaermeschutz() {
             </div>
 
             <div className={karte}>
-              <h3 className="font-bold text-text-main mb-2">Tab. 8 – Anteilige Sonneneintragskennwerte S_x</h3>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.tab8AnteiligeSonneneintragskennwerte} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs border-collapse">
                   <thead>
                     <tr className="bg-off-white">
-                      <th className="p-2 border text-left" rowSpan={2}>S1: Nachtlüftung</th><th className="p-2 border text-left" rowSpan={2}>Bauart</th>
+                      <th className="p-2 border text-left" rowSpan={2}><MdText text={inhalt.texte.s1Nachtlüftung} /></th><th className="p-2 border text-left" rowSpan={2}>Bauart</th>
                       <th className="p-2 border" colSpan={3}>Wohngebäude</th><th className="p-2 border" colSpan={3}>Nichtwohngebäude</th>
                     </tr>
                     <tr className="bg-off-white">{['A', 'B', 'C', 'A', 'B', 'C'].map((r, i) => <th key={i} className="p-2 border">{r}</th>)}</tr>
@@ -295,9 +242,7 @@ export default function SommerlicherWaermeschutz() {
                   <FormulaText text={`$S_6$ (passive Kühlung): leicht ${formatDeZahl(S6_PASSIV.leicht, 2)}, mittel ${formatDeZahl(S6_PASSIV.mittel, 2)}, schwer ${formatDeZahl(S6_PASSIV.schwer, 2)}`} />
                 </div>
               </div>
-              <p className="text-[11px] text-text-main/60 mt-3">
-                Wiedergabe nach KALKSANDSTEIN-Planungshandbuch, Kap. 11 (Tafel 3) und TR Sonnenschutz des BVRS (Tabelle 3); maßgebend ist der Normtext DIN 4108-2:2013-02, Tab. 8.
-              </p>
+              <p className="text-[11px] text-text-main/60 mt-3"><MdText text={inhalt.texte.wiedergabeNachKalksandsteinPlanungshandb} /></p>
             </div>
           </div>
         )}
@@ -306,7 +251,7 @@ export default function SommerlicherWaermeschutz() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 space-y-5">
               <div className={`${karte} space-y-3`}>
-                <h3 className="font-bold text-text-main text-sm">Gebäude und Raum</h3>
+                <h3 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.gebäudeUndRaum} /></h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
                   <label className="flex flex-col gap-1 font-semibold text-slate-700">Nutzung
                     <select className={feld} value={nutzung} onChange={e => setNutzung(e.target.value as Nutzung)}>
@@ -328,21 +273,18 @@ export default function SommerlicherWaermeschutz() {
                       {(['ohne', 'erhoeht', 'hoch'] as const).map(n => <option key={n} value={n}>{NL_NAME[n]}</option>)}
                     </select>
                   </label>
-                  <label className="flex flex-col gap-1 font-semibold text-slate-700">Nettogrundfläche A_G [m²]
-                    <input type="number" min="1" step="0.5" className={feld} value={Number.isFinite(AG) ? AG : ''} onChange={e => setAG(zahl(e.target.value))} />
+                  <label className="flex flex-col gap-1 font-semibold text-slate-700"><MdText text={inhalt.texte.nettogrundflächeAGM} /><input type="number" min="1" step="0.5" className={feld} value={Number.isFinite(AG) ? AG : ''} onChange={e => setAG(zahl(e.target.value))} />
                   </label>
                   <label className="flex items-center gap-2 font-semibold text-slate-700 mt-5">
-                    <input type="checkbox" checked={passiv} onChange={e => setPassiv(e.target.checked)} className="accent-shiraz" /> Passive Kühlung (S6)
-                  </label>
+                    <input type="checkbox" checked={passiv} onChange={e => setPassiv(e.target.checked)} className="accent-shiraz" /><MdText text={inhalt.texte.passiveKühlungS6} /></label>
                 </div>
               </div>
 
               <div className={`${karte} space-y-3`}>
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-text-main text-sm">Fenster des kritischen Raums</h3>
+                  <h3 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.fensterDesKritischenRaums} /></h3>
                   <button type="button" onClick={neuesFenster} className="px-3 py-1.5 bg-shiraz text-white rounded-lg text-xs font-bold flex items-center gap-1 cursor-pointer">
-                    <Plus size={14} aria-hidden="true" /> Fenster hinzufügen
-                  </button>
+                    <Plus size={14} aria-hidden="true" /><MdText text={inhalt.texte.fensterHinzufügen} /></button>
                 </div>
                 {fenster.map((f, i) => {
                   const fc = fcAusTabelle(f.schutz, f.g, f.scheiben);
@@ -376,8 +318,7 @@ export default function SommerlicherWaermeschutz() {
                         </label>
                       </div>
                       <div className="flex flex-wrap items-end gap-x-3 gap-y-2 text-[11px]">
-                        <label className="flex flex-col gap-0.5 text-slate-600 flex-1 min-w-[14rem]">Sonnenschutz (Tab. 7)
-                          <select className={feld} value={f.schutz} onChange={e => aendere(i, { schutz: e.target.value })}>
+                        <label className="flex flex-col gap-0.5 text-slate-600 flex-1 min-w-[14rem]"><MdText text={inhalt.texte.sonnenschutzTab7} /><select className={feld} value={f.schutz} onChange={e => aendere(i, { schutz: e.target.value })}>
                             {SONNENSCHUTZ.map(z => <option key={z.id} value={z.id}>{z.name}</option>)}
                           </select>
                         </label>
@@ -391,9 +332,7 @@ export default function SommerlicherWaermeschutz() {
                     </div>
                   );
                 })}
-                <p className="text-[11px] text-text-main/60">
-                  Neigung 90° = senkrechtes Fassadenfenster; bis 60° zählt ein Fenster als geneigt (Dachflächenfenster). F_C-Spalte nach g und Scheibenzahl.
-                </p>
+                <p className="text-[11px] text-text-main/60"><MdText text={inhalt.texte.neigung90SenkrechtesFassadenfenster} /></p>
               </div>
             </div>
 
@@ -420,21 +359,21 @@ export default function SommerlicherWaermeschutz() {
                     <div className={`p-3 rounded-xl border flex items-start gap-2 text-xs ${erg.erfuellt ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
                       {erg.erfuellt ? <CheckCircle size={16} className="text-emerald-600 shrink-0" aria-hidden="true" /> : <AlertTriangle size={16} className="text-red-600 shrink-0" aria-hidden="true" />}
                       <span>
-                        <strong>{erg.erfuellt ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'}:</strong>{' '}
+                        <strong>{erg.erfuellt ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}:</strong>{' '}
                         S_vorh = {z3(erg.Svorh)} {erg.erfuellt ? '≤' : '>'} S_zul = {z3(erg.Szul)}.
-                        {!erg.erfuellt && ' Wirksam sind außenliegender Sonnenschutz, kleinere oder anders orientierte Fenster, mehr Speichermasse und Nachtlüftung.'}
+                        {!erg.erfuellt && inhalt.werte.wirksamSindAußenliegenderSonnenschutz}
                       </span>
                     </div>
                     <table className="w-full text-xs">
                       <tbody>
                         {[
-                          ['f_{WG}', erg.fWG, 'Fensterfläche / Grundfläche'],
+                          ['f_{WG}', erg.fWG, inhalt.werte.fensterflächeGrundfläche],
                           ['S_1', erg.S1, `${NUTZUNG_NAME[nutzung]}, Region ${region}, ${BAUART_NAME[bauart]}, Nachtlüftung ${NL_NAME[nachtlueftung]}`],
                           ['S_2', erg.S2, 'Fensterflächenanteil'],
                           ['S_3', erg.S3, `Sonnenschutzglas (Anteil ${formatDeZahl(erg.fSSG * 100, 0)} %)`],
                           ['S_4', erg.S4, `geneigte Fenster (f_neig = ${formatDeZahl(erg.fNeig, 2)})`],
                           ['S_5', erg.S5, `Nord/verschattet (f_nord = ${formatDeZahl(erg.fNord, 2)})`],
-                          ['S_6', erg.S6, passiv ? 'passive Kühlung' : 'keine passive Kühlung'],
+                          ['S_6', erg.S6, passiv ? inhalt.werte.passiveKühlung : inhalt.werte.keinePassiveKühlung],
                         ].map(([s, v, t]) => (
                           <tr key={s as string} className="border-b border-slate-100">
                             <td className="py-1 pr-2"><FormulaText text={`$${s}$`} /></td>
@@ -444,11 +383,8 @@ export default function SommerlicherWaermeschutz() {
                         ))}
                       </tbody>
                     </table>
-                    <div className={`p-3 rounded-xl border text-xs ${erg.verzicht.entbehrlich ? 'bg-sky-50 border-sky-200 text-sky-950' : 'bg-off-white border-home-grau/30 text-text-main/80'}`}>
-                      <strong>Nachweisverzicht nach 8.2.2:</strong>{' '}
-                      Tab. 6: f_WG = {formatDeZahl(erg.fWG * 100, 1)} % {erg.verzicht.tab6 ? '≤' : '>'} {formatDeZahl(erg.verzicht.grenzeTab6 * 100, 0)} %
-                      {' · '}35-%-Regel: {erg.verzicht.wohn35 ? 'erfüllt' : nutzung === 'wohn' ? 'nicht erfüllt' : 'nur für Wohnnutzung'}.
-                      {erg.verzicht.entbehrlich ? ' Die Berechnung wäre entbehrlich.' : ' Der rechnerische Nachweis ist zu führen.'}
+                    <div className={`p-3 rounded-xl border text-xs ${erg.verzicht.entbehrlich ? 'bg-sky-50 border-sky-200 text-sky-950' : 'bg-off-white border-home-grau/30 text-text-main/80'}`}><MdText text={inhalt.texte.nachweisverzichtNach82} />{formatDeZahl(erg.fWG * 100, 1)} % {erg.verzicht.tab6 ? '≤' : '>'} {formatDeZahl(erg.verzicht.grenzeTab6 * 100, 0)}<MdText text={inhalt.texte.t35Regel} />{erg.verzicht.wohn35 ? 'erfüllt' : nutzung === 'wohn' ? inhalt.werte.nichtErfüllt : inhalt.werte.nurFürWohnnutzung}.
+                      {erg.verzicht.entbehrlich ? inhalt.werte.dieBerechnungWäreEntbehrlich : inhalt.werte.derRechnerischeNachweisIst}
                     </div>
                   </>
                 )}
@@ -456,18 +392,18 @@ export default function SommerlicherWaermeschutz() {
 
               <FormulaDerivationBox
                 live
-                title="Ihr Rechenweg: Sonneneintragskennwerte"
+                title={inhalt.werte.ihrRechenwegSonneneintragskennwerte}
                 zielGleichung="S_{vorh} \le S_{zul} = \sum S_x"
                 schritte={[
-                  { titel: 'Gesamtenergiedurchlassgrad mit Sonnenschutz', erklaerung: `g_tot = g · F_C für ${erg.fenster.length} Fenster (F_C nach Tab. 7):`, formel: gtotTeX },
-                  { titel: 'Vorhandener Sonneneintragskennwert', erklaerung: `Summe über alle Fenster, bezogen auf A_G = ${formatDeZahl(AG, 1)} m²:`, formel: `S_{vorh} = \\frac{${summeTeX}}{${t2(AG)}} = ${t3(erg.Svorh)}` },
-                  { titel: 'Grundflächenbezogener Fensterflächenanteil', erklaerung: 'Summe der Fensterflächen geteilt durch die Nettogrundfläche:', formel: `f_{WG} = \\frac{${t2(erg.AW)}}{${t2(AG)}} = ${t3(erg.fWG)}` },
-                  { titel: 'Anteilskennwerte S1 und S2', erklaerung: `S1 aus Tab. 8 (${NUTZUNG_NAME[nutzung]}, Region ${region}, Bauart ${BAUART_NAME[bauart]}, Nachtlüftung ${NL_NAME[nachtlueftung]}); S2 korrigiert den Fensterflächenanteil:`, formel: `S_1 = ${t3(erg.S1)}, \\quad S_2 = ${t3(a2)} - ${t3(b2)} \\cdot ${t3(erg.fWG)} = ${t3(erg.S2)}` },
-                  { titel: 'Anteilskennwerte S3 bis S6', erklaerung: 'Sonnenschutzglas (flächenanteilig), geneigte Fenster, Nordorientierung bzw. Eigenverschattung, passive Kühlung:', formel: `\\begin{gathered} S_3 = 0{,}03 \\cdot ${t2(erg.fSSG)} = ${t3(erg.S3)}, \\quad S_4 = -0{,}035 \\cdot ${t2(erg.fNeig)} = ${t3(erg.S4)} \\\\ S_5 = 0{,}10 \\cdot ${t2(erg.fNord)} = ${t3(erg.S5)}, \\quad S_6 = ${t3(erg.S6)} \\end{gathered}` },
-                  { titel: 'Nachweis', erklaerung: erg.erfuellt ? 'Der vorhandene Wert hält den zulässigen ein:' : 'Der vorhandene Wert überschreitet den zulässigen:', formel: `S_{zul} = ${t3(erg.Szul)} \\;\\Rightarrow\\; S_{vorh} = ${t3(erg.Svorh)} ${erg.erfuellt ? '\\le' : '>'} S_{zul}` },
+                  { titel: inhalt.werte.gesamtenergiedurchlassgradMitSonnenschut, erklaerung: `g_tot = g · F_C für ${erg.fenster.length} Fenster (F_C nach Tab. 7):`, formel: gtotTeX },
+                  { titel: inhalt.werte.vorhandenerSonneneintragskennwert, erklaerung: `Summe über alle Fenster, bezogen auf A_G = ${formatDeZahl(AG, 1)} m²:`, formel: `S_{vorh} = \\frac{${summeTeX}}{${t2(AG)}} = ${t3(erg.Svorh)}` },
+                  { titel: inhalt.werte.grundflächenbezogenerFensterflächenantei, erklaerung: inhalt.werte.summeDerFensterflächenGeteilt, formel: `f_{WG} = \\frac{${t2(erg.AW)}}{${t2(AG)}} = ${t3(erg.fWG)}` },
+                  { titel: inhalt.werte.anteilskennwerteS1UndS2, erklaerung: `S1 aus Tab. 8 (${NUTZUNG_NAME[nutzung]}, Region ${region}, Bauart ${BAUART_NAME[bauart]}, Nachtlüftung ${NL_NAME[nachtlueftung]}); S2 korrigiert den Fensterflächenanteil:`, formel: `S_1 = ${t3(erg.S1)}, \\quad S_2 = ${t3(a2)} - ${t3(b2)} \\cdot ${t3(erg.fWG)} = ${t3(erg.S2)}` },
+                  { titel: inhalt.werte.anteilskennwerteS3BisS6, erklaerung: inhalt.werte.sonnenschutzglasFlächenanteiligGeneigteF, formel: `\\begin{gathered} S_3 = 0{,}03 \\cdot ${t2(erg.fSSG)} = ${t3(erg.S3)}, \\quad S_4 = -0{,}035 \\cdot ${t2(erg.fNeig)} = ${t3(erg.S4)} \\\\ S_5 = 0{,}10 \\cdot ${t2(erg.fNord)} = ${t3(erg.S5)}, \\quad S_6 = ${t3(erg.S6)} \\end{gathered}` },
+                  { titel: 'Nachweis', erklaerung: erg.erfuellt ? inhalt.werte.derVorhandeneWertHält : inhalt.werte.derVorhandeneWertÜberschreitet, formel: `S_{zul} = ${t3(erg.Szul)} \\;\\Rightarrow\\; S_{vorh} = ${t3(erg.Svorh)} ${erg.erfuellt ? '\\le' : '>'} S_{zul}` },
                 ]}
-                ergebnisHinweis="Der Nachweis gilt für den kritischen Raum; maßgebend sind die Tabellenwerte der DIN 4108-2 bzw. produktspezifische g_tot-Werte."
-                normQuelle="DIN 4108-2:2013-02, 8.3, Tab. 7 und 8; § 14 GModG"
+                ergebnisHinweis={inhalt.werte.derNachweisGiltFür}
+                normQuelle={inhalt.werte.din410822013}
               />
             </div>
           </div>
@@ -476,31 +412,19 @@ export default function SommerlicherWaermeschutz() {
         {reiter === 'beispiele' && (
           <div className="space-y-4">
             <FormulaDerivationBox
-              title="Beispiel 1: Wohnzimmer mit großer Südverglasung (Region B)"
+              title={inhalt.werte.beispiel1WohnzimmerMit}
               zielGleichung="S_{vorh} = \frac{A_w \cdot g \cdot F_C}{A_G} \le S_{zul}"
               defaultExpanded
-              schritte={[
-                { titel: 'Eingangswerte', erklaerung: 'Wohnzimmer 5 × 5 m (A_G = 25 m²), Fensterfläche 11 m² (f_WG = 0,44), Zweifach-Wärmeschutzglas g = 0,59, Rollladen ¾ geschlossen; mittlere Bauart, erhöhte Nachtlüftung, Region B.', formel: 'F_C = 0{,}30 \\;\\Rightarrow\\; g_{tot} = 0{,}59 \\cdot 0{,}30 = 0{,}177' },
-                { titel: 'Vorhandener Kennwert', erklaerung: 'Fensterfläche mal g_tot, bezogen auf die Grundfläche:', formel: 'S_{vorh} = \\frac{11 \\cdot 0{,}177}{25} = 0{,}078' },
-                { titel: 'Zulässiger Kennwert', erklaerung: 'S1 aus Tab. 8 (Wohnen, B, mittel, erhöhte Nachtlüftung); S2 mit f_WG = 0,44; S3 bis S6 entfallen:', formel: 'S_{zul} = 0{,}103 + (0{,}060 - 0{,}231 \\cdot 0{,}44) = 0{,}103 - 0{,}042 = 0{,}061' },
-                { titel: 'Bewertung', erklaerung: 'Der Nachweis ist nicht erfüllt; auch die 35-%-Regel greift nicht (f_WG = 44 %).', formel: 'S_{vorh} = 0{,}078 > S_{zul} = 0{,}061' },
-                { titel: 'Verbesserung', erklaerung: 'Raffstore mit 45°-Lamellen (F_C = 0,25) und schwere Bauart (Stahlbetondecke, Kalksandstein):', formel: 'S_{vorh} = \\frac{11 \\cdot 0{,}59 \\cdot 0{,}25}{25} = 0{,}065 \\le S_{zul} = 0{,}113 - 0{,}042 = 0{,}071' },
-              ]}
-              ergebnisHinweis="Sonnenschutz allein senkt S_vorh nur auf 0,065 – erst zusammen mit mehr Speichermasse wird der Nachweis erfüllt. Hohe Nachtlüftung (S1 = 0,152) hätte ebenfalls genügt."
-              normQuelle="DIN 4108-2:2013-02, Tab. 7 und 8; Rechengang nach TR Sonnenschutz (BVRS, 2024), Beispiel 3.5.2"
+              schritte={inhalt.daten["SommerlicherWaermeschutz.schritte"]}
+              ergebnisHinweis={inhalt.werte.sonnenschutzAlleinSenktS}
+              normQuelle={inhalt.werte.din4108220132}
             />
             <FormulaDerivationBox
-              title="Beispiel 2: Dachgeschoss in Holzbauweise mit Dachflächenfenster"
+              title={inhalt.werte.beispiel2DachgeschossIn}
               zielGleichung="S_4 = -0{,}035 \cdot f_{neig}"
-              schritte={[
-                { titel: 'Eingangswerte', erklaerung: 'Kinderzimmer A_G = 14 m², leichte Bauart, erhöhte Nachtlüftung, Region B. Dachflächenfenster Süd 1,5 m² (45°, Dreifachglas g = 0,50, Außenrollladen ¾: F_C = 0,30); Giebelfenster West 1,2 m² ohne Sonnenschutz.', formel: 'g_{tot,1} = 0{,}50 \\cdot 0{,}30 = 0{,}150, \\quad g_{tot,2} = 0{,}50' },
-                { titel: 'Vorhandener Kennwert', erklaerung: 'Beide Fenster zusammen:', formel: 'S_{vorh} = \\frac{1{,}5 \\cdot 0{,}150 + 1{,}2 \\cdot 0{,}50}{14} = \\frac{0{,}825}{14} = 0{,}059' },
-                { titel: 'Nachweisverzicht?', erklaerung: 'Mit Dachflächenfenster gilt nach Tab. 6 die Grenze 7 %; das Westfenster hat keinen Außenschutz, die 35-%-Regel greift nicht.', formel: 'f_{WG} = \\frac{2{,}7}{14} = 0{,}193 > 0{,}07' },
-                { titel: 'Anteilskennwerte', erklaerung: 'S1 (Wohnen, B, leicht, erhöht) = 0,088; S2 mit f_WG; S4 mit dem Anteil geneigter Fenster f_neig = 1,5 / 2,7 = 0,556:', formel: 'S_2 = 0{,}060 - 0{,}231 \\cdot 0{,}193 = 0{,}015, \\quad S_4 = -0{,}035 \\cdot 0{,}556 = -0{,}019' },
-                { titel: 'Nachweis', erklaerung: 'Summe der Anteile und Vergleich:', formel: 'S_{zul} = 0{,}088 + 0{,}015 - 0{,}019 = 0{,}084 \\ge S_{vorh} = 0{,}059' },
-              ]}
-              ergebnisHinweis="Erfüllt dank kleinem Fensterflächenanteil und Nachtlüftung. Ohne Nachtlüftung (S1 = 0,056) wäre S_zul = 0,052 < 0,059 – im Holzbau entscheidet die Lüftung."
-              normQuelle="DIN 4108-2:2013-02, 8.2.2, Tab. 6 bis 8"
+              schritte={inhalt.daten["SommerlicherWaermeschutz.schritte_2"]}
+              ergebnisHinweis={inhalt.werte.erfülltDankKleinemFensterflächenanteil}
+              normQuelle={inhalt.werte.din4108220133}
             />
           </div>
         )}
@@ -509,25 +433,14 @@ export default function SommerlicherWaermeschutz() {
       <ModulTest moduleId="sommerlicher_waermeschutz" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 3.13 neu erstellt; Tabellenwerte gegen zwei Sekundärquellen geprüft, Abgleich mit DIN 4108-2:2026-05 und fachliche Freigabe durch den Autor ausstehend)"
-        regelwerke={[
-          { title: 'DIN 4108-2:2026-05 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 2: Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; sommerlicher Wärmeschutz neu gegliedert, Werte dieses Moduls noch nicht abgeglichen)' },
-          { title: 'DIN 4108-2:2013-02 (Vorgängerausgabe „Mindestanforderungen an den Wärmeschutz“; Abschnitt 8 mit Tab. 6 bis 9, in § 14 GModG in Bezug genommen)' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG), § 14 Sommerlicher Wärmeschutz', url: 'https://www.gesetze-im-internet.de/geg/__14.html' },
-        ]}
-        literatur={[
-          'Bundesverband Rollladen + Sonnenschutz e. V. (Hrsg.): TR Sonnenschutz – Nachweisverfahren, Energieeinsparung, Tageslichtversorgung. Ausgabe April 2024, Bonn',
-          'Bundesverband Kalksandsteinindustrie e. V. (Hrsg.): KALKSANDSTEIN – Planungshandbuch, Kapitel 11 „Sommerlicher Wärmeschutz“. Stand 01/2018',
-        ]}
+        lastReviewed={inhalt.werte.oktober2026Ap3}
+        regelwerke={inhalt.daten["SommerlicherWaermeschutz.regelwerke"]}
+        literatur={inhalt.daten["SommerlicherWaermeschutz.literatur"]}
         weblinks={[
-          { title: 'BVRS: TR Sonnenschutz (PDF, April 2024)', url: 'https://rs-fachverband.de/wp-content/uploads/2025/04/TR-Sonnenschutz-April-2024.pdf' },
-          { title: 'KALKSANDSTEIN-Planungshandbuch, Kap. 11 Sommerlicher Wärmeschutz (PDF)', url: 'https://www.kalksandstein.de/media/08_downloadcenter/12_pka_7_kap11_sommerlicher-waermeschutz_de.pdf' },
+          { title: inhalt.werte.bvrsTrSonnenschutzPdf, url: 'https://rs-fachverband.de/wp-content/uploads/2025/04/TR-Sonnenschutz-April-2024.pdf' },
+          { title: inhalt.werte.kalksandsteinPlanungshandbuchKap11, url: 'https://www.kalksandstein.de/media/08_downloadcenter/12_pka_7_kap11_sommerlicher-waermeschutz_de.pdf' },
         ]}
-        formeln={[
-          { formel: 'S_{vorh} = \\frac{\\sum_j A_{w,j} \\cdot g_{tot,j}}{A_G}', erklaerung: 'Vorhandener Sonneneintragskennwert des kritischen Raums; A_w Fensterfläche, g_tot Gesamtenergiedurchlassgrad einschließlich Sonnenschutz, A_G Nettogrundfläche.', quelle: 'DIN 4108-2:2013-02, 8.3.2' },
-          { formel: 'g_{tot} = g \\cdot F_C', erklaerung: 'Gesamtenergiedurchlassgrad mit Sonnenschutz; F_C Abminderungsfaktor der fest installierten Sonnenschutzvorrichtung.', quelle: 'DIN 4108-2:2013-02, Tab. 7' },
-          { formel: 'S_{zul} = \\sum_x S_x, \\quad S_2 = a - b \\cdot f_{WG}', erklaerung: 'Zulässiger Sonneneintragskennwert als Summe der anteiligen Kennwerte S1 bis S6; f_WG grundflächenbezogener Fensterflächenanteil.', quelle: 'DIN 4108-2:2013-02, 8.3.3, Tab. 8' },
-        ]}
+        formeln={inhalt.daten["SommerlicherWaermeschutz.formeln"]}
       />
     </div>
   );

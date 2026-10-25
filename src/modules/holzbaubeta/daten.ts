@@ -1,3 +1,4 @@
+import inhalt from '@/content/holzbaubeta/daten.json';
 // Solid timber & engineered wood database for Tab 2
 export interface WoodMaterial {
   class: string;
@@ -13,13 +14,13 @@ export interface WoodMaterial {
 }
 
 export const woodMaterials: WoodMaterial[] = [
-  { class: 'C24', type: 'Nadelholz (S10)', f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, E_005: 7400, rho_k: 350, rho_mean: 420 },
-  { class: 'C30', type: 'Nadelholz (S13)', f_mk: 30, f_t0k: 19, f_c0k: 24, f_vk: 4.0, E_0mean: 12000, E_005: 8000, rho_k: 380, rho_mean: 460 },
-  { class: 'D30', type: 'Laubholz (EN 338:2016)', f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
-  { class: 'D40', type: 'Laubholz (EN 338:2016)', f_mk: 40, f_t0k: 24, f_c0k: 27, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 550, rho_mean: 660 },
-  { class: 'GL24h', type: 'Brettschichtholz (homogen)', f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, E_005: 9600, rho_k: 385, rho_mean: 420 },
-  { class: 'GL28c', type: 'Brettschichtholz (kombiniert)', f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, E_005: 10400, rho_k: 390, rho_mean: 430 },
-  { class: 'GL30h', type: 'Brettschichtholz (homogen)', f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, E_005: 11300, rho_k: 430, rho_mean: 480 },
+  { class: 'C24', type: inhalt.werte.nadelholzS10, f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, E_005: 7400, rho_k: 350, rho_mean: 420 },
+  { class: 'C30', type: inhalt.werte.nadelholzS13, f_mk: 30, f_t0k: 19, f_c0k: 24, f_vk: 4.0, E_0mean: 12000, E_005: 8000, rho_k: 380, rho_mean: 460 },
+  { class: 'D30', type: inhalt.werte.laubholzEn3382016, f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
+  { class: 'D40', type: inhalt.werte.laubholzEn33820162, f_mk: 40, f_t0k: 24, f_c0k: 27, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 550, rho_mean: 660 },
+  { class: 'GL24h', type: inhalt.werte.brettschichtholzHomogen, f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, E_005: 9600, rho_k: 385, rho_mean: 420 },
+  { class: 'GL28c', type: inhalt.werte.brettschichtholzKombiniert, f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, E_005: 10400, rho_k: 390, rho_mean: 430 },
+  { class: 'GL30h', type: inhalt.werte.brettschichtholzHomogen2, f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, E_005: 11300, rho_k: 430, rho_mean: 480 },
 ];
 
 // dataholz.eu construction database
@@ -37,70 +38,70 @@ export interface DataholzConstruction {
 export const dataholzConstructions: DataholzConstruction[] = [
   {
     id: 'aw_hfr_01',
-    name: 'Außenwand in Holzrahmenbauweise',
+    name: inhalt.werte.außenwandInHolzrahmenbauweise,
     type: 'Aussenwand',
-    structure: 'Putzträgerplatte + Holzständer (160 mm Steinwolle) + Hanf-Faserplatte + Gipsfaserplatte raumseitig',
+    structure: inhalt.werte.putzträgerplatteHolzständer160Mm,
     uValue: 0.18,
     fireClass: 'REI 60',
     soundRating: 48,
     components: [
-      'Silikonharzputz mit Gewebearmierung (10 mm)',
-      'Holzfaserdämmplatte Typ HFD-Putzträger (40 mm)',
-      'Konstruktionsvollholz-Ständer b/h = 60/160 mm e = 62,5 cm, ausgefacht mit Mineralwolle',
-      'OSB/3-Platte als Dampfbremse & aussteifende Plattenlage (15 mm, Fugen luftdicht abgeklebt)',
-      'Installationsebene unterkonstruiert, ausgefacht mit Holzfaserdämmstoff (40 mm)',
-      'Gipsfaserplatte Typ GF als raumseitige Beplankung (12,5 mm)'
+      inhalt.werte.silikonharzputzMitGewebearmierung10,
+      inhalt.werte.holzfaserdämmplatteTypHfdPutzträger,
+      inhalt.werte.konstruktionsvollholzStänderBH,
+      inhalt.werte.osb3PlatteAls,
+      inhalt.werte.installationsebeneUnterkonstruiertAusgef,
+      inhalt.werte.gipsfaserplatteTypGfAls
     ]
   },
   {
     id: 'aw_clt_01',
-    name: 'Außenwand in Massivholzbauweise (CLT / BSP)',
+    name: inhalt.werte.außenwandInMassivholzbauweiseClt,
     type: 'Aussenwand',
-    structure: 'Verkleideter CLT-Kern (90 mm 3-schichtig) + Holzfaser-WDVS (160 mm) + mineralischer Putz',
+    structure: inhalt.werte.verkleideterCltKern90,
     uValue: 0.16,
     fireClass: 'REI 90 (Kapselkriterium K₂30)',
     soundRating: 51,
     components: [
-      'Außenputzsystem mineralisch (12 mm)',
-      'Holzfaserdämmplatte HFD-U (160 mm)',
-      'Brettsperrholz-Wandelement CLT (90 mm, 3 Schichten kreuzweise verklebt)',
-      'Installationsebene unterkonstruiert mit Justierschwingen (50 mm), gedämmt mit Hanffaser',
-      'Doppelte Gipsplattenbeplankung Gipsfaser / Gipskarton (2 x 12,5 mm)'
+      inhalt.werte.außenputzsystemMineralisch12Mm,
+      inhalt.werte.holzfaserdämmplatteHfdU160,
+      inhalt.werte.brettsperrholzWandelementClt90,
+      inhalt.werte.installationsebeneUnterkonstruiertMitJus,
+      inhalt.werte.doppelteGipsplattenbeplankungGipsfaserGi
     ]
   },
   {
     id: 'de_clt_01',
-    name: 'Geschossdecke Brettsperrholz mit Estrich',
+    name: inhalt.werte.geschossdeckeBrettsperrholzMitEstrich,
     type: 'Decke',
-    structure: 'CLT-Tragschale (140 mm) + gebundene Splittschüttung (60 mm) + Trittschalldämmung + Heizestrich',
+    structure: inhalt.werte.cltTragschale140Mm,
     uValue: 0.32,
     fireClass: 'REI 60 / REI 90 (klassifiziert ab 140 mm CLT)',
     soundRating: 62,
     components: [
-      'Anhydrit-Fließestrich als Heizestrich (65 mm)',
+      inhalt.werte.anhydritFließestrichAlsHeizestrich,
       'PE-Feldtrennfolie',
-      'Trittschalldämmplatte Mineralwolle Typ TDPT (30 mm, s\' ≤ 15 MN/m³)',
-      'Gebundene schwere Splittschüttung als Masse-Lage zur Tiefton-Dämpfung (60 mm, ca. 120 kg/m²)',
+      inhalt.werte.trittschalldämmplatteMineralwolleTypTdpt,
+      inhalt.werte.gebundeneSchwereSplittschüttungAls,
       'Rieselschutzpapier',
-      'Brettsperrholz-Deckenplatte CLT (140 mm, 5 Schichten, Sichtqualität unten)'
+      inhalt.werte.brettsperrholzDeckenplatteClt140
     ]
   },
   {
     id: 'da_sd_01',
-    name: 'Steildach mit Zwischen- und Untersparrendämmung',
+    name: inhalt.werte.steildachMitZwischenUnd,
     type: 'Dach',
-    structure: 'Ziegeldeck + Unterdachbahn + Sparren (200 mm Holzfaser) + Klimamembran + raumseitige Gipsfaser',
+    structure: inhalt.werte.ziegeldeckUnterdachbahnSparren200,
     uValue: 0.14,
     fireClass: 'REI 30',
     soundRating: 46,
     components: [
-      'Dachziegel / Betondachsteine',
-      'Traglattung und Konterlattung (Hinterlüftungsebene, 40/60 mm)',
-      'Unterdeckplatte aus Holzfasern, wasserableitend Typ HFD-UD (35 mm)',
-      'Konstruktionsvollholz-Konstruktionssparren 80/200 mm, e = 75 cm, Gefach ausgedämmt mit flexibler Holzfaser (200 mm)',
-      'Feuchtevariable Dampfbremse (s_d-Wert feuchteabhängig, z. B. 0,5 bis 5 m; ermöglicht sommerliche Rücktrocknung)',
-      'Unterkonstruktion gedämmt mit Hanfmatten (40 mm)',
-      'Gipskarton-Feuerschutzplatte Typ GKF raumseitig (15 mm)'
+      inhalt.werte.dachziegelBetondachsteine,
+      inhalt.werte.traglattungUndKonterlattungHinterlüftung,
+      inhalt.werte.unterdeckplatteAusHolzfasernWasserableit,
+      inhalt.werte.konstruktionsvollholzKonstruktionssparre,
+      inhalt.werte.feuchtevariableDampfbremseSD,
+      inhalt.werte.unterkonstruktionGedämmtMitHanfmatten,
+      inhalt.werte.gipskartonFeuerschutzplatteTypGkf
     ]
   }
 ];

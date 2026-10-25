@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
+import inhalt from '@/content/bauwerksuntersuchung/InterpretationNavigator.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface DiagnosticScenario {
   id: string;
@@ -31,8 +33,8 @@ interface DiagnosticScenario {
 const PRESET_SCENARIOS: DiagnosticScenario[] = [
   {
     id: 'tiefgarage_chlorid',
-    titel: 'Tiefgarage: Akuter Chlorid-Lochfraß (XD3)',
-    objekt: 'Stahlbetondecke / Fahrgasse BJ 1988',
+    titel: inhalt.werte.tiefgarageAkuterChloridLochfraß,
+    objekt: inhalt.werte.stahlbetondeckeFahrgasseBj1988,
     defaultValues: {
       chlorid: 1.25,
       deckung: 28,
@@ -44,12 +46,12 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'A',
       holzRest: 100
     },
-    schadensmechanismus: 'Eintrag von Deicing-Salzen (Tausalz). Chloridionen haben die Passivschicht durchdrungen. Lochfraßkorrosion aktiv ohne Oberflächenrisse!'
+    schadensmechanismus: inhalt.werte.eintragVonDeicingSalzen
   },
   {
     id: 'balkon_karbonatisierung',
-    titel: 'Balkonbrüstung: Vollständige Depassivierung (XC4)',
-    objekt: 'Frei bewitterte Fertigteil-Balkone BJ 1976',
+    titel: inhalt.werte.balkonbrüstungVollständigeDepassivierung,
+    objekt: inhalt.werte.freiBewitterteFertigteilBalkone,
     defaultValues: {
       chlorid: 0.15,
       deckung: 18,
@@ -61,12 +63,12 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'A',
       holzRest: 100
     },
-    schadensmechanismus: 'Karbonatisierungsfront hat die Bewehrungsebene um 6 mm überrannt. Rostbildung mit 4-facher Volumenzunahme sprengt Betondeckung ab.'
+    schadensmechanismus: inhalt.werte.karbonatisierungsfrontHatDieBewehrungseb
   },
   {
     id: 'halle_druckfestigkeit',
-    titel: 'Industriehalle: Unterschreitung der Betondruckfestigkeit',
-    objekt: 'Stützenreihe einer Kranbahn BJ 1965',
+    titel: inhalt.werte.industriehalleUnterschreitungDerBetondru,
+    objekt: inhalt.werte.stützenreiheEinerKranbahnBj,
     defaultValues: {
       chlorid: 0.20,
       deckung: 35,
@@ -78,12 +80,12 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'A',
       holzRest: 100
     },
-    schadensmechanismus: 'Rechnerische In-situ-Festigkeit erreicht nur 55 % des Planwerts. Schwerwiegendes Defizit bei beabsichtigter Erhöhung der Kranlast.'
+    schadensmechanismus: inhalt.werte.rechnerischeInSituFestigkeit
   },
   {
     id: 'instandsetzung_haftung',
-    titel: 'Tiefgaragenboden: Mangelhafte Verbundhaftung',
-    objekt: 'Frisch applizierte OS 8 Beschichtung',
+    titel: inhalt.werte.tiefgaragenbodenMangelhafteVerbundhaftun,
+    objekt: inhalt.werte.frischApplizierteOs8,
     defaultValues: {
       chlorid: 0.30,
       deckung: 30,
@@ -95,12 +97,12 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'AB',
       holzRest: 100
     },
-    schadensmechanismus: 'Abreißversuch liefert Festigkeitswerte weit unter 1,5 N/mm² mit Bruch in der Grenzfläche (Typ A/B). Mangelhafte Untergrundvorbereitung!'
+    schadensmechanismus: inhalt.werte.abreißversuchLiefertFestigkeitswerteWeit
   },
   {
     id: 'holz_hausschwamm',
-    titel: 'Altbaudachstuhl: Querschnittsverlust Balkenkopf',
-    objekt: 'Auflagerknoten Holzbalkendecke BJ 1898',
+    titel: inhalt.werte.altbaudachstuhlQuerschnittsverlustBalken,
+    objekt: inhalt.werte.auflagerknotenHolzbalkendeckeBj1898,
     defaultValues: {
       chlorid: 0.05,
       deckung: 0,
@@ -112,7 +114,7 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'A',
       holzRest: 55
     },
-    schadensmechanismus: 'Bohrwiderstandsmessung zeigt Braunfäule durch Echten Hausschwamm. Tragfähiger Restquerschnitt um 45 % reduziert.'
+    schadensmechanismus: inhalt.werte.bohrwiderstandsmessungZeigtBraunfäuleDur
   }
 ];
 
@@ -206,28 +208,20 @@ export default function InterpretationNavigator() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <Scale className="text-shiraz" size={20} />
-              Interpretation &amp; Ingenieurtechnische Anwendung der Diagnoseergebnisse
-            </h3>
-            <p className="text-xs text-text-main/70 mt-1">
-              Vom Messwert zur bautechnischen Entscheidung: Statische Traglastauswirkung, Restlebensdauerprognose und Instandsetzungskonzepte nach DIBt TR Instandhaltung
-            </p>
+              <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.interpretationIngenieurtechnischeAnwendu} /></h3>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.vomMesswertZurBautechnischen} /></p>
           </div>
         </div>
 
         <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 text-xs text-slate-750 leading-relaxed">
-          <p>
-            <strong>Wichtig für Gutachter und Tragwerksplaner:</strong> Reine Messzahlen (z.B. „1,2 % Chlorid“ oder „f_ck,is = 22 MPa“) haben für sich allein genommen keinen baurechtlichen Wert. Erst ihre <em>differenzierte Korrelation</em> (z. B. Chloridgehalt im Verhältnis zur Betondeckung, Potentialfeldgradient zur Rissgeometrie, In-situ-Festigkeit zum EC2-Sicherheitsbeiwert <InlineMath math="\gamma_c" />) ermöglicht eine belastbare Festlegung, ob ein <strong>sofortiger Höchstdruckwasserstrahl-Abtrag (HDW)</strong>, ein <strong>Kathodischer Korrosionsschutz (KKS)</strong>, eine <strong>Traglastminderung</strong> oder lediglich eine <strong>präventive Oberflächenbeschichtung (OS 4 / OS 11)</strong> erforderlich ist.
-          </p>
+          <p><MdText text={inhalt.texte.wichtigFürGutachterUnd} /></p>
         </div>
       </div>
 
       {/* 2. Szenarien-Wähler & Live-Parameter-Labor */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
         <div>
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-            Reale Schadensszenarien aus der Ingenieurpraxis laden:
-          </span>
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.realeSchadensszenarienAusDer} /></span>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
             {PRESET_SCENARIOS.map((s) => {
               const isSelected = s.id === selectedScenarioId;
@@ -257,9 +251,7 @@ export default function InterpretationNavigator() {
         <div className="p-5 bg-off-white rounded-2xl border border-home-grau/25 space-y-5">
           <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
             <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-              <Activity size={15} className="text-shiraz" />
-              Messparameter interaktiv anpassen &amp; Systemreaktion testen:
-            </span>
+              <Activity size={15} className="text-shiraz" /><MdText text={inhalt.texte.messparameterInteraktivAnpassenSystemrea} /></span>
             <span className="text-xs text-slate-500 font-mono italic">
               {activeScenario.schadensmechanismus}
             </span>
@@ -269,7 +261,7 @@ export default function InterpretationNavigator() {
             {/* 1. Chlorid */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Chlorid an Bewehrung:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.chloridAnBewehrung} /></span>
                 <span className={`font-mono ${chloridVal >= 0.5 ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(chloridVal, 2)} M.-%
                 </span>
@@ -283,15 +275,13 @@ export default function InterpretationNavigator() {
                 onChange={(e) => setChloridVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
-              <span className="text-[10px] text-slate-400 block">
-                Grenzwert <InlineMath math="C_{krit} = 0{,}50\,\text{M.-\%}" /> (Spannstahl: 0,20 %)
-              </span>
+              <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.grenzwertCKrit0} /></span>
             </div>
 
             {/* 2. Karbonatisierung vs Betondeckung */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Deckung c / Karb. d_k:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.deckungCKarbD} /></span>
                 <span className={`font-mono ${evaluation.passivierungsReserve <= 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(deckungVal, 0)} mm / {formatDeZahl(karbVal, 0)} mm
                 </span>
@@ -303,7 +293,7 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={deckungVal}
-                  title="Betondeckung c [mm]"
+                  title={inhalt.werte.betondeckungCMm}
                   onChange={(e) => setDeckungVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -313,7 +303,7 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={karbVal}
-                  title="Karbonatisierung d_k [mm]"
+                  title={inhalt.werte.karbonatisierungDKMm}
                   onChange={(e) => setKarbVal(Number(e.target.value))}
                   className="w-full accent-amber-600"
                 />
@@ -326,7 +316,7 @@ export default function InterpretationNavigator() {
             {/* 3. Potentialfeld */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Halbzellenpotential U_CSE:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.halbzellenpotentialUCse} /></span>
                 <span className={`font-mono ${potentialVal <= -350 ? 'text-rose-600' : potentialVal <= -200 ? 'text-amber-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(potentialVal, 0)} mV
                 </span>
@@ -340,17 +330,15 @@ export default function InterpretationNavigator() {
                 onChange={(e) => setPotentialVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
-              <span className="text-[10px] text-slate-400 block">
-                ASTM C876: &lt; -350 mV = Korrosionswahrsch. &gt; 90 %
-              </span>
+              <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.astmC876350Mv} /></span>
             </div>
 
             {/* 4. In-situ-Festigkeit */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Druckfestigkeit f_ck,is:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.druckfestigkeitFCkIs} /></span>
                 <span className={`font-mono ${evaluation.isStrengthDeficient ? 'text-rose-600' : 'text-emerald-600'}`}>
-                  {formatDeZahl(fckIsVal, 1)} N/mm² (Soll: {formatDeZahl(fckPlanVal, 0)})
+                  {formatDeZahl(fckIsVal, 1)}<MdText text={inhalt.texte.nMmSoll} />{formatDeZahl(fckPlanVal, 0)})
                 </span>
               </div>
               <input
@@ -363,14 +351,13 @@ export default function InterpretationNavigator() {
                 className="w-full accent-shiraz"
               />
               <span className="text-[10px] text-slate-400 block">
-                Verhältnis: <strong>{formatDeZahl(evaluation.festigkeitsVerhaeltnis * 100, 0)} %</strong> des Planwerts
-              </span>
+                Verhältnis: <strong>{formatDeZahl(evaluation.festigkeitsVerhaeltnis * 100, 0)} %</strong><MdText text={inhalt.texte.desPlanwerts} /></span>
             </div>
 
             {/* 5. Haftzug & Bruchbild */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Haftzug f_ct &amp; Bruchbild:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.haftzugFCtBruchbild} /></span>
                 <span className={`font-mono ${haftzugVal < 1.5 || bruchTyp !== 'A' ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(haftzugVal, 2)} N/mm² (Typ {bruchTyp})
                 </span>
@@ -396,15 +383,13 @@ export default function InterpretationNavigator() {
                   <option value="Y">Typ Y (Kleber)</option>
                 </select>
               </div>
-              <span className="text-[10px] text-slate-400 block">
-                Soll Hochbau: <InlineMath math="f_{ct} \ge 1{,}5\,\text{N/mm}^2" /> (Bruch im Altbeton A)
-              </span>
+              <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.sollHochbauFCt} /></span>
             </div>
 
             {/* 6. Holz Restquerschnitt */}
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
-                <span className="text-slate-700">Holz Restquerschnitt:</span>
+                <span className="text-slate-700"><MdText text={inhalt.texte.holzRestquerschnitt} /></span>
                 <span className={`font-mono ${holzRestVal < 70 ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(holzRestVal, 0)} %
                 </span>
@@ -418,9 +403,7 @@ export default function InterpretationNavigator() {
                 onChange={(e) => setHolzRestVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
-              <span className="text-[10px] text-slate-400 block">
-                Biegetragfähigkeit: Widerstandsmoment sinkt mit <InlineMath math="W \sim h_{eff}^2" />
-              </span>
+              <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.biegetragfähigkeitWiderstandsmomentSinkt} /></span>
             </div>
           </div>
         </div>
@@ -440,12 +423,9 @@ export default function InterpretationNavigator() {
                <CheckCircle2 size={20} />}
             </div>
             <div>
-              <h4 className="text-base font-bold text-text-main">
-                Synthese der Bauwerksdiagnostik: Gefährdungsstufe {evaluation.overallRisk.toUpperCase()}
+              <h4 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.syntheseDerBauwerksdiagnostikGefährdungs} />{evaluation.overallRisk.toUpperCase()}
               </h4>
-              <p className="text-xs text-text-main/70">
-                Ganzheitliche ingenieurtechnische Beurteilung für Statik &amp; Instandsetzungsplanung
-              </p>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.ganzheitlicheIngenieurtechnischeBeurteil} /></p>
             </div>
           </div>
 
@@ -455,12 +435,11 @@ export default function InterpretationNavigator() {
               evaluation.overallRisk === 'hoch' ? 'bg-amber-100 text-amber-800 border border-amber-300' :
               evaluation.overallRisk === 'mittel' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
               'bg-emerald-100 text-emerald-800 border border-emerald-300'
-            }`}>
-              Gutachterliche Dringlichkeit (Ampel, nicht VDI 6200): {
-                evaluation.overallRisk === 'akut' ? 'Stufe 4 (sofortiger Handlungsbedarf)' :
-                evaluation.overallRisk === 'hoch' ? 'Stufe 3 (Erheblich)' :
-                evaluation.overallRisk === 'mittel' ? 'Stufe 2 (Beobachtung)' :
-                'Stufe 1 (Gering)'
+            }`}><MdText text={inhalt.texte.gutachterlicheDringlichkeitAmpelNicht} />{
+                evaluation.overallRisk === 'akut' ? inhalt.werte.stufe4SofortigerHandlungsbedarf :
+                evaluation.overallRisk === 'hoch' ? inhalt.werte.stufe3Erheblich :
+                evaluation.overallRisk === 'mittel' ? inhalt.werte.stufe2Beobachtung :
+                inhalt.werte.stufe1Gering
               }
             </span>
           </div>
@@ -472,64 +451,52 @@ export default function InterpretationNavigator() {
           <div className="p-5 bg-off-white rounded-2xl border border-home-grau/25 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                1. Werkstoff- &amp; Gefügebefund
-              </span>
-              <h5 className="font-bold text-sm text-slate-800">Physikochemischer Zustand</h5>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1WerkstoffGefügebefund} /></span>
+              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.physikochemischerZustand} /></h5>
               
               <div className="space-y-2 text-xs text-slate-700">
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Passivierung &amp; Korrosionsschutz:</strong>
-                  <p className="text-[11px] text-slate-650">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.passivierungKorrosionsschutz} /><p className="text-[11px] text-slate-650">
                     {evaluation.isCarbDepassivated ? (
-                      <span className="text-rose-700 font-semibold">Bewehrung vollständig depassiviert (d_k ≥ c). pH-Wert im Zementstein unter 9,0 abgesunken.</span>
+                      <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.bewehrungVollständigDepassiviertD} /></span>
                     ) : evaluation.passivierungsReserve < 10 ? (
-                      <span className="text-amber-700">Restreserve knapp (&lt; 10 mm). Depassivierungsfront erreicht in wenigen Jahren den Bewehrungsstahl.</span>
+                      <span className="text-amber-700"><MdText text={inhalt.texte.restreserveKnapp10Mm} /></span>
                     ) : (
-                      <span className="text-emerald-700">Alkalische Schutzhülle intakt (Restreserve &gt; 10 mm).</span>
+                      <span className="text-emerald-700"><MdText text={inhalt.texte.alkalischeSchutzhülleIntaktRestreserve} /></span>
                     )}
                   </p>
                 </div>
 
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Chloridinduzierte Lochfraßgefahr:</strong>
-                  <p className="text-[11px] text-slate-650">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.chloridinduzierteLochfraßgefahr} /><p className="text-[11px] text-slate-650">
                     {evaluation.isChlorideSevere ? (
-                      <span className="text-rose-700 font-semibold">Erhöhte Korrosionsgefahr: Chloridgehalt liegt beim {formatDeZahl(chloridVal / 0.5, 1)}-fachen des Anhaltswerts ≈ 0,5 M.-% bez. Zement. Querschnittsverluste durch Lochkorrosion möglich – Bewehrung freilegen und messen.</span>
+                      <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.erhöhteKorrosionsgefahrChloridgehaltLieg} />{formatDeZahl(chloridVal / 0.5, 1)}<MdText text={inhalt.texte.fachenDesAnhaltswerts0} /></span>
                     ) : evaluation.isChlorideCritical ? (
-                      <span className="text-amber-700">Anhaltswert ≈ 0,5 M.-% bez. Zement überschritten – Lochfraß wahrscheinlich (Grenze objektspezifisch durch SKP festlegen).</span>
+                      <span className="text-amber-700"><MdText text={inhalt.texte.anhaltswert05M} /></span>
                     ) : (
-                      <span className="text-emerald-700">Chloridgehalt unter dem Anhaltswert ≈ 0,5 M.-% bez. Zement. Geringes Lochfraßrisiko.</span>
+                      <span className="text-emerald-700"><MdText text={inhalt.texte.chloridgehaltUnterDemAnhaltswert} /></span>
                     )}
                   </p>
                 </div>
 
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Elektrochemische Makroelemente:</strong>
-                  <p className="text-[11px] text-slate-650">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.elektrochemischeMakroelemente} /><p className="text-[11px] text-slate-650">
                     {evaluation.potentialStatus === 'aktiv' ? (
-                      <span className="text-rose-700 font-semibold">Stark negatives Potential ({formatDeWert(potentialVal)} mV). Aktive galvanische Elementbildung mit benachbarten Kathoden nachgewiesen.</span>
+                      <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.starkNegativesPotential} />{formatDeWert(potentialVal)}<MdText text={inhalt.texte.mvAktiveGalvanischeElementbildung} /></span>
                     ) : (
-                      <span className="text-emerald-700">Kein Hinweis auf aktive Korrosion (Potential im passiven bzw. Unsicherheitsbereich; ASTM C876: −200 bis −350 mV unsicher).</span>
+                      <span className="text-emerald-700"><MdText text={inhalt.texte.keinHinweisAufAktive} /></span>
                     )}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200">
-              Grundlage: DIN EN 14630, DIN EN 14629, DGZfP B1
-            </div>
+            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200"><MdText text={inhalt.texte.grundlageDinEn14630} /></div>
           </div>
 
           {/* SÄULE 2: STATISCHE TRAGWERKSAUSWIRKUNG */}
           <div className="p-5 bg-off-white rounded-2xl border border-home-grau/25 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                2. Statik &amp; Standsicherheit
-              </span>
-              <h5 className="font-bold text-sm text-slate-800">Auswirkung auf Tragfähigkeit</h5>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2StatikStandsicherheit} /></span>
+              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.auswirkungAufTragfähigkeit} /></h5>
 
               <div className="space-y-2 text-xs text-slate-700">
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
@@ -538,109 +505,93 @@ export default function InterpretationNavigator() {
                     <InlineMath math="f_{cd,is} = \frac{0{,}85 \cdot f_{ck,is}}{\gamma_c} =" /> <strong>{formatDeZahl((0.85 * fckIsVal) / 1.5, 1)} N/mm²</strong>
                     <p className="mt-1">
                       {evaluation.isStrengthDeficient ? (
-                        <span className="text-rose-700 font-medium">Rechnerisches Festigkeitsdefizit! Nachweis der Grenzzustände GZT nach DIN EN 1992-1-1 nicht erfüllt.</span>
+                        <span className="text-rose-700 font-medium"><MdText text={inhalt.texte.rechnerischesFestigkeitsdefizitNachweisD} /></span>
                       ) : (
-                        <span className="text-emerald-700">Tragfähigkeitsreserve ausreichend für geplante Lasten.</span>
+                        <span className="text-emerald-700"><MdText text={inhalt.texte.tragfähigkeitsreserveAusreichendFürGepla} /></span>
                       )}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Bewehrungsquerschnitt A_s:</strong>
-                  <p className="text-[11px] text-slate-650">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.bewehrungsquerschnittAS} /><p className="text-[11px] text-slate-650">
                     {evaluation.isChlorideSevere ? (
-                      <span className="text-rose-700 font-medium">Querschnittsverlust der Bewehrung nach Freilegung messen und in der Nachrechnung ansetzen.</span>
+                      <span className="text-rose-700 font-medium"><MdText text={inhalt.texte.querschnittsverlustDerBewehrungNach} /></span>
                     ) : evaluation.isCarbDepassivated ? (
-                      <span className="text-amber-700">Oberflächlicher Querschnittsverlust (Muldenkorrosion) von ca. 5–10 % zu berücksichtigen.</span>
+                      <span className="text-amber-700"><MdText text={inhalt.texte.oberflächlicherQuerschnittsverlustMulden} /></span>
                     ) : (
-                      <span className="text-emerald-700">Voller Nennquerschnitt A_s,nom ansetzbar.</span>
+                      <span className="text-emerald-700"><MdText text={inhalt.texte.vollerNennquerschnittAS} /></span>
                     )}
                   </p>
                 </div>
 
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Holz-Widerstandsmoment W_eff:</strong>
-                  <p className="text-[11px] text-slate-650">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.holzWiderstandsmomentWEff} /><p className="text-[11px] text-slate-650">
                     {holzRestVal < 100 ? (
-                      <span>Rest-Widerstandsmoment beträgt nur noch <strong>{formatDeZahl(Math.pow(holzRestVal / 100, 2) * 100, 0)} %</strong> des Ursprungswertes!</span>
+                      <span><MdText text={inhalt.texte.restWiderstandsmomentBeträgtNur} /><strong>{formatDeZahl(Math.pow(holzRestVal / 100, 2) * 100, 0)} %</strong><MdText text={inhalt.texte.desUrsprungswertes} /></span>
                     ) : (
-                      <span className="text-slate-500">Keine Holzquerschnittsschwächung relevant.</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.keineHolzquerschnittsschwächungRelevant} /></span>
                     )}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200">
-              Grundlage: DIN EN 1992-1-1 (EC 2), DIN EN 1995-1-1 (EC 5)
-            </div>
+            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200"><MdText text={inhalt.texte.grundlageDinEn1992} /></div>
           </div>
 
           {/* SÄULE 3: INSTANDSETZUNGSKONZEPT & HANDLUNG */}
           <div className="p-5 bg-off-white rounded-2xl border border-home-grau/25 space-y-3 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                3. Instandsetzung nach TR Instandhaltung
-              </span>
-              <h5 className="font-bold text-sm text-slate-800">Verbindliche Maßnahmen</h5>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3InstandsetzungNachTr} /></span>
+              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.verbindlicheMaßnahmen} /></h5>
 
               <div className="space-y-2 text-xs text-slate-700">
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Empfohlenes Instandsetzungsprinzip:</strong>
-                  <p className="text-[11px] font-semibold text-shiraz">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.empfohlenesInstandsetzungsprinzip} /><p className="text-[11px] font-semibold text-shiraz">
                     {evaluation.isChlorideSevere ? (
-                      'Prinzip R (chloridbelasteten Beton entfernen, reprofilieren) ODER Prinzip K (Kathodischer Korrosionsschutz DIN EN ISO 12696)'
+                      inhalt.werte.prinzipRChloridbelastetenBeton
                     ) : evaluation.isCarbDepassivated ? (
-                      'Prinzip R (Reprofilierung mit PCC/SPCC) + Prinzip W (Trockenhalten mit OS 4/OS 5a)'
+                      inhalt.werte.prinzipRReprofilierungMit
                     ) : evaluation.isStrengthDeficient ? (
-                      'Bauliche Verstärkung: CFK-Lamellen, Aufbeton oder Stahllaschen'
+                      inhalt.werte.baulicheVerstärkungCfkLamellen
                     ) : (
-                      'Präventiver Schutz: Oberflächenschutzsystem OS 8 oder OS 11a'
+                      inhalt.werte.präventiverSchutzOberflächenschutzsystem
                     )}
                   </p>
                 </div>
 
-                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <strong>Konkrete Ausführungsschritte:</strong>
-                  <ul className="text-[11px] text-slate-650 space-y-1 list-disc list-inside leading-snug">
+                <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.konkreteAusführungsschritte} /><ul className="text-[11px] text-slate-650 space-y-1 list-disc list-inside leading-snug">
                     {evaluation.isChlorideSevere && (
                       <>
-                        <li>HDW-Strahlen mit ≥ 2.000 bar mind. 20 mm hinter den korrodierten Bewehrungsstahl.</li>
-                        <li>Entrosten der Bewehrung auf Reinheitsgrad Sa 2½ (DIN EN ISO 8501-1).</li>
-                        <li>Aufbringen von 2K-Korrosionsschutz und SPCC-Spritzmörtel.</li>
+                        <li><MdText text={inhalt.texte.hdwStrahlenMit2} /></li>
+                        <li><MdText text={inhalt.texte.entrostenDerBewehrungAuf} /></li>
+                        <li><MdText text={inhalt.texte.aufbringenVon2kKorrosionsschutz} /></li>
                       </>
                     )}
                     {evaluation.isCarbDepassivated && !evaluation.isChlorideSevere && (
                       <>
-                        <li>Mechanisches Freilegen der Roststellen und Bürstenentrosten (St 3).</li>
-                        <li>Reprofilierung mit PCC-Mörtel (DIN EN 1504-3 Klasse R3/R4).</li>
-                        <li>CO₂-bremsende Beschichtung mit <InlineMath math="s_{d,\text{CO2}} \ge 50\,\text{m}" /> (OS 4).</li>
+                        <li><MdText text={inhalt.texte.mechanischesFreilegenDerRoststellen} /></li>
+                        <li><MdText text={inhalt.texte.reprofilierungMitPccMörtel} /></li>
+                        <li><MdText text={inhalt.texte.coBremsendeBeschichtungMit} /></li>
                       </>
                     )}
                     {!evaluation.isHaftzugOk && (
-                      <li className="text-rose-700 font-semibold">
-                        Abreißfestigkeit ungenügend! Vor Beschichtung zwingend Kugelstrahlen oder Feinfräsen zur Entfernung der mürben Zementschlämme.
-                      </li>
+                      <li className="text-rose-700 font-semibold"><MdText text={inhalt.texte.abreißfestigkeitUngenügendVorBeschichtun} /></li>
                     )}
                     {evaluation.isHolzCrit && (
                       <>
-                        <li>Bei Echtem Hausschwamm Rückschnitt deutlich über den sichtbaren Befall hinaus (Größenordnung 1 m) und Behandlung des Mauerwerks nach DIN 68800-4.</li>
-                        <li>Einbau von verzinkten Balkenschuhen oder beidseitigen Stahl-U-Profilen.</li>
+                        <li><MdText text={inhalt.texte.beiEchtemHausschwammRückschnitt} /></li>
+                        <li><MdText text={inhalt.texte.einbauVonVerzinktenBalkenschuhen} /></li>
                       </>
                     )}
                     {!evaluation.isChlorideSevere && !evaluation.isCarbDepassivated && (
-                      <li>Präventive Rissoberflächenabdichtung und regelmäßige Begehung nach VDI 6200.</li>
+                      <li><MdText text={inhalt.texte.präventiveRissoberflächenabdichtungUndRe} /></li>
                     )}
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200">
-              Grundlage: DIBt TR Instandhaltung (2020), DIN EN 1504
-            </div>
+            <div className="text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200"><MdText text={inhalt.texte.grundlageDibtTrInstandhaltung} /></div>
           </div>
         </div>
       </div>
@@ -648,48 +599,38 @@ export default function InterpretationNavigator() {
       {/* 4. Gutachterliche Checkliste zur Ergebnisabnahme */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-          <FileCheck className="text-shiraz" size={16} />
-          Gutachterliche Prüfliste: Vollständigkeit der Diagnoseunterlagen für die Genehmigungsplanung
-        </h4>
+          <FileCheck className="text-shiraz" size={16} /><MdText text={inhalt.texte.gutachterlichePrüflisteVollständigkeitDe} /></h4>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-800">Probenahmeprotokoll &amp; Kalibrierzertifikate:</strong>
-              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
-                Sind alle ZfP-Geräte vor Messbeginn an Prüfamboss (Schmidt-Hammer), Nullpunktplatte (Covermeter) oder Prüfstab (Ultraschall) kalibriert und dokumentiert worden?
-              </p>
+              <strong className="text-slate-800"><MdText text={inhalt.texte.probenahmeprotokollKalibrierzertifikate} /></strong>
+              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug"><MdText text={inhalt.texte.sindAlleZfpGeräte} /></p>
             </div>
           </div>
 
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-800">Konditionierungsnachweis der Proben:</strong>
-              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
-                Wurden Feuchtigkeitszustand (u), Prüftemperatur und Probenlagerung (Luft- vs. Wasserlagerung bei Bohrkernen) normgerecht festgehalten?
-              </p>
+              <strong className="text-slate-800"><MdText text={inhalt.texte.konditionierungsnachweisDerProben} /></strong>
+              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug"><MdText text={inhalt.texte.wurdenFeuchtigkeitszustandUPrüftemperatu} /></p>
             </div>
           </div>
 
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-800">Statistische Signifikanz (Prüfdimension 3):</strong>
-              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
-                Wurden die Mindeststichprobenumfänge nach DIN EN 13791:2020-02 (Anzahl gemäß geltender Fassung prüfen) oder DBV (mind. 20–30 Covermeter-Punkte für 5 %-Quantil) vollständig eingehalten?
-              </p>
+              <strong className="text-slate-800"><MdText text={inhalt.texte.statistischeSignifikanzPrüfdimension3} /></strong>
+              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug"><MdText text={inhalt.texte.wurdenDieMindeststichprobenumfängeNach} /></p>
             </div>
           </div>
 
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-800">Beweissichernde Schadenskataster-Kartierung:</strong>
-              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
-                Sind Risse, Hohlstellen, Potentialfeld-Gradienten und Bohrmehl-Chloridprofile maßstäblich in CAD-Bestandspläne übertragen und mit dem Tragwerksplaner abgestimmt?
-              </p>
+              <strong className="text-slate-800"><MdText text={inhalt.texte.beweissicherndeSchadenskatasterKartierun} /></strong>
+              <p className="text-slate-650 text-[11px] mt-0.5 leading-snug"><MdText text={inhalt.texte.sindRisseHohlstellenPotentialfeld} /></p>
             </div>
           </div>
         </div>

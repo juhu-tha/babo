@@ -1,0 +1,43 @@
+{
+  "texte": {
+    "recyclingfähigkeitEinzelnerBaustoffeNach": " Recyclingfähigkeit einzelner Baustoffe nach GewAbfV & EBV 2023",
+    "gemäßDerGewerbeabfallverordnungGewabfv": "Gemäß der Gewerbeabfallverordnung (GewAbfV) gilt an bayerischen Baustellen eine strikte Pflicht zur getrennten Sammlung von mineralischen Gemischen, Holz, Glas, Kunststoffen und Metallen. Die stoffliche Analyse und Aufbereitung entscheidet über die Wiederverzahnung im Wirtschaftskreislauf.",
+    "typischeVerwertungspfade": "Typische Verwertungspfade",
+    "störstoffrisikoSensibilität": "Störstoffrisiko & Sensibilität",
+    "rechtlicheNormierungBeachtung": "Rechtliche Normierung & Beachtung",
+    "abfallschlüsselAvv": "Abfallschlüssel (AVV):",
+    "vergleichendeRecyclingmatrixFürBaustoffe": "Vergleichende Recyclingmatrix für Baustoffe",
+    "umfassendeZusammenstellungAllerRecycling": "Umfassende Zusammenstellung aller recyclingrelevanten Kennwerte der Hauptmassenströme im Baubestand.",
+    "verwertungsklasseRechtliches": "Verwertungsklasse / Rechtliches",
+    "bodenErdaushubaufbereitungVerfahrenVorsc": "Boden- & Erdaushubaufbereitung (Verfahren, Vorschriften, QS)",
+    "stofflicheErholungVonKontaminierten": "Stoffliche Erholung von kontaminierten Böden nach Ersatzbaustoffverordnung (EBV) 2023",
+    "dieWiederverwendungVonBodenähnlichen": "Die Wiederverwendung von bodenähnlichen Massen ist in der modernen Kreislaufwirtschaft von elementarer Bedeutung. Seit Inkrafttreten der **Ersatzbaustoffverordnung (EBV)** am 1. August 2023 gelten bundesweit einheitliche Standards. Je nach Belastung der Bodenmatrix (Schwermetalle, organische Kohlenwasserstoffe, PAK, etc.) kommen unterschiedliche physikalisch-chemische Verfahren zum Einsatz, um das Zielprodukt wieder bautechnisch nutzbar zu machen.",
+    "t1Aufbereitungsverfahren": "1. Aufbereitungsverfahren",
+    "nassmechanischeBodenwaschVerfahren": "Nassmechanische Bodenwasch-Verfahren:",
+    "prallwäscheTrenntKontaminierteFeinfrakti": "Prallwäsche trennt kontaminierte Feinfraktionen (Silt, Ton) physikalisch von sauberen Sanden und Kiesen ab. Schadstoffe wandern hochkonzentriert in den Filterkuchen.",
+    "thermischeDesorptionsanlagenDrehrohr": "Thermische Desorptionsanlagen (Drehrohr):",
+    "beiErhitzungAuf350": "Bei Erhitzung auf 350°C bis 600°C verdampfen persistente organische Schadstoffe (MKW, PAK, Teer) restlos und werden in der Nachverbrennung bei >850°C zerstört.",
+    "biologischeMietenaufbereitungBioremediat": "Biologische Mietenaufbereitung (Bioremediation):",
+    "mikrobiellerAbbauLeichtFlüchtiger": "Mikrobieller Abbau leicht flüchtiger Mineralöle. Der Boden wird in Mieten aufgesetzt, belüftet, bewässert und mit Stickstoff/Phosphor-Nährlösungen konditioniert.",
+    "t2GesetzlicheVorschriften": "2. Gesetzliche Vorschriften",
+    "ebvGüteUndEinbauklassen": "EBV (Güte- und Einbauklassen):",
+    "gereinigteBödenWerdenJe": "Gereinigte Böden werden je nach Messwert im Sickerwasser (Eluat) Klassen wie BM-0 (unbeschränkt), BM-F1/F2/F3 (z. B. im Lärm- und Straßenbau mit technischer Barriere) zugewiesen.",
+    "bundesBodenschutzverordnungBbodschv": "Bundes-Bodenschutzverordnung (BBodSchV):",
+    "trittInKraftWenn": "Tritt in Kraft, wenn aufbereitetes Material außerhalb technischer Bauwerke (z. B. bei landwirtschaftlicher Rekultivierung oder im Landschaftsbau) direkt eingebracht werden soll.",
+    "ersatzbaustoffregisterMeldepflicht22": "Ersatzbaustoffregister Meldepflicht (§ 22):",
+    "einbauerstatterMüssenEinbautenMineralisc": "Einbauerstatter müssen Einbauten mineralischer Ersatzbaustoffe ab 250 m³ behördlich melden. Das Register dient der lückenlosen behördlichen Dokumentation.",
+    "t3QualitätssicherungGüteüberwachung": "3. Qualitätssicherung (Güteüberwachung)",
+    "werkseigeneProduktionskontrolleWpk": "Werkseigene Produktionskontrolle (WPK):",
+    "dasAufbereitungswerkFührtKontinuierliche": "Das Aufbereitungswerk führt kontinuierliche, tägliche Eigenüberwachungen (Sieblinie, Dichte, Feuchtigkeitsgrad, Eluatprüfungen) und Dokumentationen durch.",
+    "fremdüberwachungPrüfstellen": "Fremdüberwachung (Prüfstellen):",
+    "unabhängigeStaatlichAnerkanntePrüfinstit": "Unabhängige, staatlich anerkannte Prüfinstitute entnehmen mehrmals im Jahr unangekündigt Stichproben, um die Zuverlässigkeit der Analytik des Werks zu validieren.",
+    "gütegemeinschaftenZertifikate": "Gütegemeinschaften & Zertifikate:",
+    "etablierteVerbändeZB": "Etablierte Verbände (z. B. **QRB - Qualitätssicherungs-System Recycelte Baustoffe**, **bvse**) verleihen nach erfolgreicher Fremdüberwachung das Gütesiegel für sicheren Absatz.",
+    "interaktiveBerechnungenUndTiefergehende": "Interaktive Berechnungen und tiefergehende verfahrenstechnische Details aller Substrat-Schadstoff-Konfigurationen finden Sie im Modulbereich **Schad- und Gefahrstoffe** unter der neuen Rubrik **Boden- & Materialaufbereitung**."
+  },
+  "werte": {
+    "fälltUnterDieAllgemeinen": "Fällt unter die allgemeinen Getrennthaltungspflichten der Gewerbeabfallverordnung (GewAbfV). Unvermischter Transport zu qualifizierten Verwerterbetrieben zwingend vorgeschrieben.",
+    "gewabfvStandard": "GewAbfV Standard",
+    "gewabfvGetrennthaltungspflicht": "GewAbfV Getrennthaltungspflicht"
+  }
+}

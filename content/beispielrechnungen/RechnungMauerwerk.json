@@ -1,0 +1,34 @@
+{
+  "texte": {
+    "tragfähigkeitsnachweisEinerUnbewehrtenMa": "Tragfähigkeitsnachweis einer unbewehrten Mauerwerkswand unter Vertikallast",
+    "wasBerechnetWirdDie": "**Was?** Berechnet wird die maximale aufnehmbare Vertikalkraft $N_{Rd}$ in $\\text{kN/m}$ einer tragenden Innen- oder Außenwand. <br>**Warum?** Mauerwerk besitzt durch das Fugenbild und Steinmaterial ein ausgeprägtes anisotropes Tragverhalten und reagiert hochsensibel auf außermittige Lasteintragungen sowie Knickgefahren. <br>**Wie?** Mit dem vereinfachten Nachweisverfahren nach **Eurocode 6 (DIN EN 1996-3)**.",
+    "wandparameterEinstellen": " Wandparameter einstellen",
+    "wandhöheHM": "Wandhöhe $h$ (m):",
+    "dickeTCm": "Dicke $t$ (cm):",
+    "druckkraftNEdKn": "Druckkraft $N_{Ed}$ (kN/m):",
+    "steinfestigkeitArt": "Steinfestigkeit / Art:",
+    "vereinfachterTragfähigkeitsnachweisEuroc": "Vereinfachter Tragfähigkeitsnachweis (Eurocode 6) Schritt für Schritt",
+    "derBemessungswertDerDruckfestigkeit": "Der Bemessungswert der Druckfestigkeit $f_d$ berechnet sich aus der charakteristischen Festigkeit $f_k$ und dem materialspezifischen Sicherheitsbeiwert $\\gamma_M = 1{,}5$ (unter vereinfachten Verfahren):",
+    "schritt1RechnerischeMauerwerksfestigkeit": "**Schritt 1: Rechnerische Mauerwerksfestigkeit f_d**",
+    "beiZweiseitigerHalterungAm": "Bei zweiseitiger Halterung am Wandkopf und Wandfuß durch ausreichend steife Deckenplatten entspricht die effektive Knicklänge der lichten Wandhöhe $h_{ef} = h$:",
+    "achtungWandIstZu": "Achtung: Wand ist zu schlank! Erhöhen Sie die Dicke t.",
+    "grenzbedingungErfülltSlenderness25": "Grenzbedingung erfüllt (Slenderness ≤ 25).",
+    "nachDinEn1996": "Nach DIN EN 1996-3 darf die Slenderness bei tragenden Wänden im vereinfachten Verfahren den Grenzwert **25** nicht überschreiten. <br>Die Schlankheit beträgt: ",
+    "schritt2WirksameSchlankheit": "**Schritt 2: Wirksame Schlankheit bestimmen**",
+    "derAbminderungsfaktorPhiBerücksichtigt": "Der Abminderungsfaktor $\\Phi$ berücksichtigt Tragfähigkeitseinbußen durch Exzentrizitäten und Verformungen in Wandmitte nach dem vereinfachten Verfahren:",
+    "schritt3AbminderungsfaktorPhi": "**Schritt 3: Abminderungsfaktor \\Phi bestimmen**",
+    "derBemessungswertDerAufnehmbaren": "Der Bemessungswert der aufnehmbaren Vertikallast pro Meter Wandlänge ergibt sich aus:",
+    "schritt4VertikalerTraglastwiderstand": "**Schritt 4: Vertikaler Traglastwiderstand N_Rd**",
+    "schritt5Auslastungsvergleich": "**Schritt 5: Auslastungsvergleich**",
+    "ausnutzungsgradEurocode6": "Ausnutzungsgrad (Eurocode 6):",
+    "dieMauerwerkswandIstZu": "Die Mauerwerkswand ist zu "
+  },
+  "werte": {
+    "wandhöheM": "Wandhöhe (m)",
+    "druckkraftKnM": "Druckkraft (kN/m)",
+    "steinfestigkeitArt": "Steinfestigkeit / Art",
+    "nichtErfüllt": "Nicht erfüllt",
+    "derStandsicherheitsnachweisFürUnbewehrte": "Der Standsicherheitsnachweis für unbewehrtes Mauerwerk unter vertikalen Lasten ist erfolgreich erfüllt. Die Wandstärke reicht aus, um Knickerscheinungen und Quetschversagen zu verhindern.",
+    "dieWandIstÜberlastet": "Die Wand ist überlastet oder überschreitet die zulässige Grenzschlankheit. Erhöhen Sie die Wandstärke t oder wechseln Sie zu einem Steinmaterial mit höherer Steinfestigkeitsklasse (z.B. Kalksandstein)."
+  }
+}

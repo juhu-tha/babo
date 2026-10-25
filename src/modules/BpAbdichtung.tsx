@@ -23,6 +23,8 @@ import {
   FileText,
   LayoutGrid
 } from 'lucide-react';
+import inhalt from '@/content/bpabdichtung/BpAbdichtung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function BpAbdichtung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -56,146 +58,80 @@ export default function BpAbdichtung() {
     switch (waterLoad) {
       case 'bodenfeuchte':
         waterClass = 'W1.1-E';
-        waterDesc = 'Bodenfeuchte und nichtstauendes Sickerwasser bei hochdurchlässigen Böden (z. B. Sand, Kies).';
+        waterDesc = inhalt.werte.bodenfeuchteUndNichtstauendesSickerwasse;
         break;
       case 'stauend':
         waterClass = 'W2.1-E';
-        waterDesc = 'Mäßige Einwirkung von außen drückendem Wasser (aufstauendes Sickerwasser auf tonigen Böden ohne Drainage).';
+        waterDesc = inhalt.werte.mäßigeEinwirkungVonAußen;
         break;
       case 'stauend_drain':
         waterClass = 'W1.2-E';
-        waterDesc = 'Bodenfeuchte und nichtstauendes Sickerwasser bei wenig durchlässigen Böden mit funktionstüchtiger Drainage nach DIN 4095.';
+        waterDesc = inhalt.werte.bodenfeuchteUndNichtstauendesSickerwasse2;
         break;
       case 'drueckend_flach':
         waterClass = 'W2.1-E';
-        waterDesc = 'Mäßige Einwirkung von außen drückendem Wasser (Eintauchtiefe ≤ 3,0 m).';
+        waterDesc = inhalt.werte.mäßigeEinwirkungVonAußen2;
         break;
       case 'drueckend_tief':
         waterClass = 'W2.2-E';
-        waterDesc = 'Hohe Einwirkung von außen drückendem Wasser (Grundwasserstand dauerhaft > 3,0 m über der Fundamentsohle).';
+        waterDesc = inhalt.werte.hoheEinwirkungVonAußen;
         break;
       case 'spritzwasser':
         waterClass = 'W4-E';
-        waterDesc = 'Spritzwasser am Wandsockel sowie Kapillarwasser in und unter Wänden.';
+        waterDesc = inhalt.werte.spritzwasserAmWandsockelSowie;
         break;
     }
 
     if (waterLoad === 'spritzwasser') {
-      systemTitle = 'Flankenschutz & Sockelabdichtung (Fassadenübergang)';
-      systemDesc = 'Robuster Schutz an erdberührten Wandsockeln gegen herabspritzendes Regenwasser, aufsteigende Feuchte und Tausalze im Winter.';
-      products = [
-        'Flexible mineralische Dichtungsschlämme (MDS) als rissüberbrückender Feuchteschutz',
-        'Zweikomponentige flexible polymermodifizierte Dickbeschichtung (FPD) im erdberührten Übergang',
-        'Kapillarsperren (Dichtungsschlämmen oder Bitumenbahnen) unter der ersten Steinlage'
-      ];
-      techSpecs = [
-        { label: 'Mindesthöhe', value: 'Min. 30 cm über geplanter Geländeoberkante (GOK)' },
-        { label: 'Mindestschichtdicke (MDS)', value: 'Trockenschichtdicke ≥ 2,0 mm' },
-        { label: 'Arbeitsgänge', value: 'Zweilagiger Auftrag mit Bürste, Schlämmkelle oder Spritzgerät' }
-      ];
-      guidelines = [
-        'DIN 18533 Teil 1: Anforderungen an den Sockelbereich',
-        'WTA-Merkblatt 4-6: Nachträgliche Abdichtung erdberührter Bauteile'
-      ];
+      systemTitle = inhalt.werte.flankenschutzSockelabdichtungFassadenübe;
+      systemDesc = inhalt.werte.robusterSchutzAnErdberührten;
+      products = inhalt.daten.getAdvisorRecommendation;
+      techSpecs = inhalt.daten.getAdvisorRecommendation_2;
+      guidelines = inhalt.daten.getAdvisorRecommendation_3;
     } else if (waterLoad === 'stauend' || waterLoad === 'drueckend_flach' || waterLoad === 'drueckend_tief') {
       if (roomRequirement === 'hochwertig') {
-        systemTitle = 'K-Wanne / Systemergänzung (WU-Beton + Frischbetonverbundfolie - FBV)';
-        systemDesc = 'Hinterlaufstabile Frischbetonverbundfolie (FBV) auf einer dichten "Weißen Wanne" (Stahlbetontragwerk). Da WU-Beton Wasserdampfdiffusion im ständigen Kontakt mit drückendem Wasser nicht vollständig stoppen kann, sperrt das FBV-System jegliche Feuchtetransporte für sensible Wohn- und Arbeitsräume absolut ab.';
-        products = [
-          'Vlies- oder sandbeschichtete FPO-Dichtungsbahnen (Frischbetonverbundfolie)',
-          'Hinterlaufschutz-Klebekomponenten (Zementleim-Verkrallung)',
-          'System-Dichtbänder für Bauteilecken und Anschlüsse',
-          'Wasserundurchlässiger Beton (WU-Beton) als tragendes, abdichtendes Primärtragwerk'
-        ];
-        techSpecs = [
-          { label: 'Rissbreitenbegrenzung wk', value: 'Begrenzung auf ≤ 0,15 mm bis 0,20 mm zur Vermeidung freien Wasserdurchtritts' },
-          { label: 'Wasserdiffusionswiderstand', value: 'Diffusionsoffene bis diffusionsdichte FPO-Bahnen verhindern Feuchtepeaks' },
-          { label: 'Mindestdicke Betonsohle', value: '≥ 25 cm (empfohlen nach WU-Richtlinie)' }
-        ];
-        guidelines = [
-          'WU-Richtlinie des DAfStb (Stahlbetonbauwerke für Wasserundurchlässigkeit)',
-          'DBV-Merkblatt Frischbetonverbundsysteme (FBV)',
-          'DIN 18533: Abdichtung erdberührter Bauteile'
-        ];
+        systemTitle = inhalt.werte.kWanneSystemergänzungWu;
+        systemDesc = inhalt.werte.hinterlaufstabileFrischbetonverbundfolie;
+        products = inhalt.daten.getAdvisorRecommendation_4;
+        techSpecs = inhalt.daten.getAdvisorRecommendation_5;
+        guidelines = inhalt.daten.getAdvisorRecommendation_6;
       } else if (roomRequirement === 'standard') {
-        systemTitle = 'Moderne "Weiße Wanne" (Wasserundurchlässiges Betonbauwerk)';
-        systemDesc = 'Das Tragwerk übernimmt die statischen Lasten und dient gleichzeitig als Abdichtung (Primärsystem). Einteilig betoniert mit integrierten Arbeits- und Dehnungsfugen-Abdichtungen.';
-        products = [
-          'WU-Beton mit dichtem Zementsteingefüge und geringem Wasserbindemittelwert (w/z ≤ 0,55)',
-          'Fugenbleche bzw. Fugenbänder zur Verlängerung des Wasserwegs in Arbeitsfugen',
-          'Hochelastische PVC-P Fugenbänder für Dehnungsfugen',
-          'Injektionsschläuche im Betonierstoß zur nachträglichen Verpressung im Schadensfall'
-        ];
-        techSpecs = [
-          { label: 'Trennrisse (Nutzungsklasse A)', value: 'Trennrisse vermeiden (Entwurfsgrundsatz a) oder zulassen und planmäßig abdichten/verpressen (c); Selbstheilung über begrenzte Rissbreiten (b) nur in Nutzungsklasse B' },
-          { label: 'Mindestdicke Wand', value: '≥ 24 cm (besser 30 cm)' },
-          { label: 'Kiesnestervermeidung', value: 'Sorgfältiger Rüttlereinsatz an den Bewehrungsflanken unabdingbar' }
-        ];
-        guidelines = [
-          'Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie DAfStb)',
-          'DIN EN 206 / DIN 1045-2: Tragwerke aus Beton'
-        ];
+        systemTitle = inhalt.werte.moderneWeißeWanneWasserundurchlässiges;
+        systemDesc = inhalt.werte.dasTragwerkÜbernimmtDie;
+        products = inhalt.daten.getAdvisorRecommendation_7;
+        techSpecs = inhalt.daten.getAdvisorRecommendation_8;
+        guidelines = inhalt.daten.getAdvisorRecommendation_9;
       } else {
-        systemTitle = 'Betonkonstruktion ohne WU-Anforderung (keine Nutzungsklasse nach WU-Richtlinie)';
-        systemDesc = 'Betonkonstruktion ohne besondere Dichtheitsanforderung für Bereiche, in denen Feuchtstellen hingenommen werden (z. B. offene Tiefgaragen).';
-        products = [
-          'WU-Beton (Standardgüte)',
-          'Integrierte Fugenbleche oder Bentonit-Quellbänder in den Arbeitsfugen'
-        ];
-        techSpecs = [
-          { label: 'Rissbreite wk', value: 'Rissbreite nach EC2/Expositionsklasse (z. B. w_max = 0,3 mm), keine WU-Anforderung' },
-          { label: 'Mindestdicke Wand', value: '≥ 24 cm' }
-        ];
-        guidelines = [
-          'Standard-Tragwerksplanung nach DIN EN 1992-1-1'
-        ];
+        systemTitle = inhalt.werte.betonkonstruktionOhneWuAnforderung;
+        systemDesc = inhalt.werte.betonkonstruktionOhneBesondereDichtheits;
+        products = inhalt.daten.getAdvisorRecommendation_10;
+        techSpecs = inhalt.daten.getAdvisorRecommendation_11;
+        guidelines = inhalt.daten.getAdvisorRecommendation_12;
       }
     } else {
       // Bodenfeuchte oder stauend + drain (W1.1-E oder W1.2-E)
       if (roomRequirement === 'hochwertig') {
-        systemTitle = 'Klassische "Schwarze Wanne" mit Premium-Materialmix';
-        systemDesc = 'Vollflächig dichte, flexible Abdichtungsschale auf der Außenseite von Beton- oder Mauerwerkswänden. Hervorragende Absicherung hochwertiger Kellerräume.';
-        products = [
-          'Zweilagige Polymerbitumen-Dickbeschichtung (PMBC) mit vollflächig eingebetteter Gittergewebeeinlage',
-          'Umlaufendes Noppenschutzbahn-System mit aufkaschiertem Geotextilvlies zur Filterung von Feinstteilen',
-          'Perimeterdämmung aus druckfestem und wasserabweisendem XPS (Extrudiertes Polystyrol)'
-        ];
-        techSpecs = [
-          { label: 'Mindesttrockenschichtdicke', value: '≥ 4,0 mm (PMBC) bei stauendem Einbau' },
-          { label: 'Rissüberbrückungsklasse', value: 'Rissüberbrückung nach DIN 18533 ≥ 0,4 mm' },
-          { label: 'Gewebeschutz', value: 'Gewebe nimmt thermische Kontraktionesbewegungen des Untergrunds rissfrei auf' }
-        ];
-        guidelines = [
-          'DIN 18533 Teil 3 (Stoffe für Bitumendickbeschichtungen)',
-          'DIN 4095: Dränung zum Schutz von baulichen Anlagen'
-        ];
+        systemTitle = inhalt.werte.klassischeSchwarzeWanneMit;
+        systemDesc = inhalt.werte.vollflächigDichteFlexibleAbdichtungsscha;
+        products = inhalt.daten.getAdvisorRecommendation_13;
+        techSpecs = inhalt.daten.getAdvisorRecommendation_14;
+        guidelines = inhalt.daten.getAdvisorRecommendation_15;
       } else if (roomRequirement === 'standard') {
-        systemTitle = 'Schwarze Wanne (Standard Bitumen- oder Mineralkomponente)';
-        systemDesc = 'Hautabdichtung für Keller-Nutzzonen mit Standard-Feuchtigkeitssperre gegen Erdreichfeuchte.';
-        products = [
-          'Polymermodifizierte Dickbeschichtung (PMBC) oder rissüberbrückende Reaktivabdichtung (FPD)',
-          'Mineralische Dichtungsschlämmen (MDS, flexibel) als Sockel- und Bodenabdichtungen'
-        ];
-        techSpecs = [
-          { label: 'Mindesttrockenschichtdicke', value: '≥ 3,0 mm' },
-          { label: 'Untergrundqualität', value: 'Frei von Graten, Löcher spachteln (Kratzspachtelung)' }
-        ];
+        systemTitle = inhalt.werte.schwarzeWanneStandardBitumen;
+        systemDesc = inhalt.werte.hautabdichtungFürKellerNutzzonen;
+        products = inhalt.daten.getAdvisorRecommendation_16;
+        techSpecs = inhalt.daten.getAdvisorRecommendation_17;
         guidelines = [
-          'DIN 18533 Teil 3'
+          inhalt.werte.din18533Teil3
         ];
       } else {
-        systemTitle = 'Minimal-Feuchteschutz (Braune Wanne oder Starre MDS)';
-        systemDesc = 'Kostengünstiger mineralischer Feuchteschutz für Abstellflächen.';
-        products = [
-          'Starre mineralische Dichtungsschlämmen (MDS) zur Absperrung kapillarer Feuchtebahnen',
-          'Ökologischer Natriumbentonit als Braune Wanne (Quelltonschicht)'
-        ];
+        systemTitle = inhalt.werte.minimalFeuchteschutzBrauneWanne;
+        systemDesc = inhalt.werte.kostengünstigerMineralischerFeuchteschut;
+        products = inhalt.daten.getAdvisorRecommendation_18;
         techSpecs = [
-          { label: 'Mindestschichtdicke (MDS)', value: '≥ 2,0 mm' }
+          { label: inhalt.werte.mindestschichtdickeMds, value: '≥ 2,0 mm' }
         ];
-        guidelines = [
-          'DIN 18533 Teil 1 / WTA-Richtlinien'
-        ];
+        guidelines = inhalt.daten.getAdvisorRecommendation_19;
       }
     }
 
@@ -216,17 +152,14 @@ export default function BpAbdichtung() {
         
         {/* Module Header */}
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Abdichtungen (Bauprodukte)
-          </h2>
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.abdichtungenBauprodukte} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Regelkonforme Abdichtungssysteme, Fugentechnik im Betonbau und professionelle Bauwerksinstandsetzung durch Rissinjektion.
-          </p>
+          <p><MdText text={inhalt.texte.regelkonformeAbdichtungssystemeFugentech} /></p>
         </div>
 
         {/* Primary Tabs (AP 3.8: ARIA-Reiter) */}
         <ModuleTabs
-          label="Bereiche Abdichtung"
+          label={inhalt.werte.bereicheAbdichtung}
           tabs={[
             { id: 'allgemein' as const, label: 'Basiswissen', icon: BookOpen },
             { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
@@ -240,12 +173,12 @@ export default function BpAbdichtung() {
           <>
             {/* Sub-Tab Navigation (zweite Ebene, ARIA-Reiter) */}
             <ModuleTabs
-              label="Themen Basiswissen Abdichtung"
+              label={inhalt.werte.themenBasiswissenAbdichtung}
               tabs={[
-                { id: 'material' as const, label: 'Materialien & Baustoffe', icon: Layers },
-                { id: 'fugen' as const, label: 'Fugen (Konstruktion & Material)', icon: Split },
-                { id: 'risse' as const, label: 'Risse & Verpressungen', icon: Activity },
-                { id: 'berater' as const, label: 'DIN-Klassen-Berater & Systeme', icon: Calculator }
+                { id: 'material' as const, label: inhalt.werte.materialienBaustoffe, icon: Layers },
+                { id: 'fugen' as const, label: inhalt.werte.fugenKonstruktionMaterial, icon: Split },
+                { id: 'risse' as const, label: inhalt.werte.risseVerpressungen, icon: Activity },
+                { id: 'berater' as const, label: inhalt.werte.dinKlassenBeraterSysteme, icon: Calculator }
               ]}
               aktiv={activeSubTab}
               onWechsel={setActiveSubTab}
@@ -257,12 +190,8 @@ export default function BpAbdichtung() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Informational Header for Deutsche Bauchemie e.V. Sealing Guidelines */}
             <div className="text-xs text-text-main hover:text-text-main bg-stone-50 p-4.5 rounded-xl border border-home-grau/30 space-y-2">
-              <span className="text-[10px] font-black uppercase tracking-wider text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">
-                Planungsgrundlage: Deutsche Bauchemie e.V.
-              </span>
-              <p className="leading-relaxed font-medium">
-                Erdberührte Bauwerksabdichtungen sowie Sockel- und Nassraumabdichtungen müssen nach den neuesten Normen und anerkannten Regeln der Technik geplant werden. Als herstellerneutrale Fachregeln gelten hierzu insbesondere die Richtlinien der <strong>Deutsche Bauchemie e.V.</strong> für die Stoffklassen <strong>PMBC</strong>, <strong>MDS</strong> und <strong>FPD</strong>.
-              </p>
+              <span className="text-[10px] font-black uppercase tracking-wider text-shiraz bg-shiraz/10 px-2 py-0.5 rounded"><MdText text={inhalt.texte.planungsgrundlageDeutscheBauchemieE} /></span>
+              <p className="leading-relaxed font-medium"><MdText text={inhalt.texte.erdberührteBauwerksabdichtungenSowieSock} /></p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -270,158 +199,126 @@ export default function BpAbdichtung() {
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3 flex flex-col justify-between">
                 <div className="space-y-3">
                   <span className="text-[10px] font-bold text-shiraz tracking-wider uppercase bg-rose-50 px-2 py-0.5 rounded block w-max">Bitumensystem</span>
-                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">PMBC (Polymermodifizierte Bitumendickbeschichtungen)</h3>
-                  <p className="text-xs text-slate-500 leading-normal">
-                    Lösemittelfreie, organische Pasten auf Bitumenemulsionsbasis (früher KMB). Genormt in <strong>DIN 18533</strong>. Optimal für feuchtigkeitsdichte, hochflexible Rissüberbrückungen auf rauen mineralischen Untergründen.
-                  </p>
+                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base"><MdText text={inhalt.texte.pmbcPolymermodifizierteBitumendickbeschi} /></h3>
+                  <p className="text-xs text-slate-500 leading-normal"><MdText text={inhalt.texte.lösemittelfreieOrganischePastenAuf} /></p>
                   <ul className="text-[11px] text-slate-600 pl-1 list-none space-y-2">
                     <li className="flex items-start gap-1.5 border-t border-slate-100 pt-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Untergrundvorbereitung (Kratzspachtelung):</strong> Auf Beton und Mauerwerk ist eine vollflächige Kratzspachtelung (Porenverschluss) zwingend vorgeschrieben. Dies verhindert wirksam den gefährlichen <i>Pinhole-Effekt</i> (Blasen- und Porenbildung durch thermische Ausgasungen der Poren bei Sonneneinstrahlung).</span>
+                      <span><MdText text={inhalt.texte.untergrundvorbereitungKratzspachtelungAu} /><i>Pinhole-Effekt</i><MdText text={inhalt.texte.blasenUndPorenbildungDurch} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Sollschichtdicke &amp; Messung:</strong> W1-E / W4-E verlangen Trockenschichtdicke <span className="font-mono font-bold text-slate-800">≥ 3,0 mm</span>; W2.1-E verlangt <span className="font-mono font-bold text-slate-800">≥ 4,0 mm</span> mit vollflächiger Gewebeeinbettung. Schichtdickenkontrolle muss nass (mit Schichtdickenkamm) und trocken zerstörungsfrei oder per Keilschnittprüfung am Referenzkörper dokumentiert werden.</span>
+                      <span><MdText text={inhalt.texte.sollschichtdickeMessungW1E} /><span className="font-mono font-bold text-slate-800">≥ 3,0 mm</span><MdText text={inhalt.texte.w21EVerlangt} /><span className="font-mono font-bold text-slate-800">≥ 4,0 mm</span><MdText text={inhalt.texte.mitVollflächigerGewebeeinbettungSchichtd} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Flanken- &amp; Eckenbehandlung:</strong> Innenecken und Fundament-Wand-Übergänge dürfen nicht scharfkantig ausgeführt werden. Eine Hohlkehle (Radius 4 - 6 cm) aus Zementmörtel oder PMBC selbst ist vor dem Flächenauftrag herzustellen.</span>
+                      <span><MdText text={inhalt.texte.flankenEckenbehandlungInneneckenUnd} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Witterungseinschränkungen:</strong> Verarbeitung nur bei Luft- und Wandtemperaturen von +5°C bis +30°C. Der frische Film ist vor Frost, Regen sowie direkter extremer Prallsonne zu schützen.</span>
+                      <span><MdText text={inhalt.texte.witterungseinschränkungenVerarbeitungNur} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit polymermodifizierten Bitumendickbeschichtungen (PMBC), Deutsche Bauchemie e. V., 4. Ausgabe, Dezember 2018“.
-                </div>
+                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight"><MdText text={inhalt.texte.regelwerkRichtlinieFürDie} /></div>
               </div>
 
               {/* MDS SECTION */}
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <span className="text-[10px] font-bold text-emerald-800 tracking-wider uppercase bg-emerald-50 px-2 py-0.5 rounded block w-max">Mineralisches System</span>
-                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">MDS (Mineralische Dichtungsschlämmen)</h3>
-                  <p className="text-xs text-slate-500 leading-normal">
-                    Zementgebundene Bauwerksabdichtungssysteme mit sandigen Zuschlägen und dispergierten organischen Polymeradditiven. Hervorragend geeignet für starre bis zugfeste Feuchtigkeitsabsperrungen im erdberührten Verbund.
-                  </p>
+                  <span className="text-[10px] font-bold text-emerald-800 tracking-wider uppercase bg-emerald-50 px-2 py-0.5 rounded block w-max"><MdText text={inhalt.texte.mineralischesSystem} /></span>
+                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base"><MdText text={inhalt.texte.mdsMineralischeDichtungsschlämmen} /></h3>
+                  <p className="text-xs text-slate-500 leading-normal"><MdText text={inhalt.texte.zementgebundeneBauwerksabdichtungssystem} /></p>
                   <ul className="text-[11px] text-slate-600 pl-1 list-none space-y-2">
                     <li className="flex items-start gap-1.5 border-t border-slate-100 pt-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Untergrundsteuerung (Vornässen):</strong> Mineralische Untergründe müssen unmittelbar vor dem MDS-Auftrag gründlich vorgenässt werden, bis sie matt-feucht sind (kein stehendes Wasser!). Ein trockener Untergrund entzieht der Schlämme Wasser, was zum "Aufbrennen" (Minderfestigkeiten und kreidendes Abstauben des Zements) führt.</span>
+                      <span><MdText text={inhalt.texte.untergrundsteuerungVornässenMineralische} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Schichtdicken-Regularien:</strong> Jede Stelle des Abdichtungsfeldes muss eine Mindesttrockenschichtdicke von <span className="font-mono font-bold text-slate-800">≥ 2,0 mm</span> aufweisen. Der Einbau erfolgt porenfrei in mindestens zwei bis drei Arbeitsgängen per Schlämmbürste, Quast oder Kelle.</span>
+                      <span><MdText text={inhalt.texte.schichtdickenRegularienJedeStelle} /><span className="font-mono font-bold text-slate-800">≥ 2,0 mm</span><MdText text={inhalt.texte.aufweisenDerEinbauErfolgt} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Schwindriss-Prophylaxe:</strong> Zu dicke Einzelaufträge (&gt; 2 mm pro Arbeitsgang) bergen akutes Risiko von Schwindrissen durch Schereigenspannungen. Die frisch fertiggestellte Dichtungsschlämme muss vor raschem Wind- und Sonnenentzug geschützt werden.</span>
+                      <span><MdText text={inhalt.texte.schwindrissProphylaxeZuDicke} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit mineralischen Dichtungsschlämmen (MDS), Deutsche Bauchemie e. V., 1. Ausgabe, Juli 2020“.
-                </div>
+                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight"><MdText text={inhalt.texte.regelwerkRichtlinieFürDie2} /></div>
               </div>
 
               {/* FPD SECTION (INNOVATIVE REAKTIVABDICHTUNGEN) */}
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <span className="text-[10px] font-bold text-indigo-800 tracking-wider uppercase bg-indigo-50 px-2 py-0.5 rounded block w-max">Hybrid-System (Zukunft)</span>
-                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">FPD (Flexible polymermodifizierte Dickbeschichtungen)</h3>
-                  <p className="text-xs text-slate-500 leading-normal">
-                    Bitumenfreie, flexible, schnell erhärtende Flüssigabdichtungen (Reaktivsysteme). Sie verbinden die Rissüberbrückung von PMBC mit dem guten Haftverbund mineralischer Dichtungsschlämmen.
-                  </p>
+                  <span className="text-[10px] font-bold text-indigo-800 tracking-wider uppercase bg-indigo-50 px-2 py-0.5 rounded block w-max"><MdText text={inhalt.texte.hybridSystemZukunft} /></span>
+                  <h3 className="font-extrabold text-slate-800 text-sm lg:text-base"><MdText text={inhalt.texte.fpdFlexiblePolymermodifizierteDickbeschi} /></h3>
+                  <p className="text-xs text-slate-500 leading-normal"><MdText text={inhalt.texte.bitumenfreieFlexibleSchnellErhärtende} /></p>
                   <ul className="text-[11px] text-slate-600 pl-1 list-none space-y-2">
                     <li className="flex items-start gap-1.5 border-t border-slate-100 pt-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Haftung &amp; Multifunktionalität:</strong> Gute Haftung auf Beton, Mauerwerk, Metall, Kunststoffen und tragfähigen bituminösen Altabdichtungen (Untergrund sauber und staubfrei). Geeignet für Sanierungen und Übergänge.</span>
+                      <span><MdText text={inhalt.texte.haftungMultifunktionalitätGuteHaftung} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Bauökologie &amp; Systemvorteile:</strong> Lösemittelfrei, geruchsneutral, UV-beständig und verputzfähig. Durch Reaktionshärtung schnell regenfest und früh hinterfüllbar (Zeiten nach Herstellerangabe).</span>
+                      <span><MdText text={inhalt.texte.bauökologieSystemvorteileLösemittelfreiG} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Muster-Schichtdicken:</strong> Trockenschichtdicke <span className="font-mono font-bold text-slate-800">≥ 2,0 mm</span> bei W1-E / W4-E. Unter mäßigem drückendem Wasser (W2.1-E) sind regelkonforme <span className="font-mono font-bold text-slate-800">≥ 3,0 mm</span> einzuhalten und bauaufsichtlich zu belegen (abP).</span>
+                      <span><MdText text={inhalt.texte.musterSchichtdickenTrockenschichtdicke} /><span className="font-mono font-bold text-slate-800">≥ 2,0 mm</span><MdText text={inhalt.texte.beiW1EW4} /><span className="font-mono font-bold text-slate-800">≥ 3,0 mm</span><MdText text={inhalt.texte.einzuhaltenUndBauaufsichtlichZu} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit flexiblen polymermodifizierten Dickbeschichtungen (FPD), Deutsche Bauchemie e. V., 1. Ausgabe, Februar 2020“.
-                </div>
+                <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight"><MdText text={inhalt.texte.regelwerkRichtlinieFürDie3} /></div>
               </div>
             </div>
 
             {/* SYNTHETISCHE & NATÜRLICHE SYSTEME */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3">
-                <span className="text-xs font-bold text-blue-700 tracking-wider uppercase block">SYNTHETISCHE BAHNEN &amp; FLÜSSIGKUNSTSTOFF</span>
-                <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">Kunststoffbahnen (EPDM, FPO, PVC) &amp; FLK</h3>
-                <p className="text-xs text-slate-500 leading-normal">
-                  Rollenversiegelungen und dichte Harzanstriche bieten nahtlose, witterungsbeständige Langzeitabsicherungen für Flachdächer und komplizierte TGA-Durchführungsgeometrien:
-                </p>
+                <span className="text-xs font-bold text-blue-700 tracking-wider uppercase block"><MdText text={inhalt.texte.synthetischeBahnenFlüssigkunststoff} /></span>
+                <h3 className="font-extrabold text-slate-800 text-sm lg:text-base"><MdText text={inhalt.texte.kunststoffbahnenEpdmFpoPvc} /></h3>
+                <p className="text-xs text-slate-500 leading-normal"><MdText text={inhalt.texte.rollenversiegelungenUndDichteHarzanstric} /></p>
                 <ul className="list-disc list-inside text-xs text-slate-650 space-y-1.5 pl-1 leading-normal">
-                  <li><strong>EPDM &amp; FPO Kunststoffbahnen:</strong> Einlagige Rollenbahnen mit extremer Alterungsstabilität. EPDM-Kautschukbahnen weisen dauerhafte Dehnungsreserven von über 400 % auf.</li>
-                  <li><strong>Flüssigkunststoffe (FLK - PMMA / PUR):</strong> Gemäß den FLK-Richtlinien der Deutschen Bauchemie ist eine <strong>vollflächige Vliesarmierung (Spezial-Polyestervlies)</strong> zwingend vorgeschrieben, die vollkommen blasenfrei in zwei Harzlagen nass-in-nass eingebettet wird. Dies garantiert sichere Rissüberbrückungen an komplexen Schnittstellen, Fensterbänken, Türschwellen und Gullys. Auf kritischen Untergründen (Asphalt, Metall) sind systemadäquate Primersysteme (Haftbrücken) einzusetzen.</li>
+                  <li><MdText text={inhalt.texte.epdmFpoKunststoffbahnenEinlagige} /></li>
+                  <li><MdText text={inhalt.texte.flüssigkunststoffeFlkPmmaPur} /></li>
                 </ul>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3">
-                <span className="text-xs font-bold text-amber-800 tracking-wider uppercase block">MINERALISCHER BENTONIT (TONMINERALIEN)</span>
-                <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">Trägergestützte Quellton-Abdichtungssysteme</h3>
-                <p className="text-xs text-slate-500 leading-normal">
-                  Kompletter ökologischer Feuchteschutz im Grundwasser- und Gründungsbereich durch quellfähige Mineralien ohne den Einsatz chemischer Lösungsmittel:
-                </p>
+                <span className="text-xs font-bold text-amber-800 tracking-wider uppercase block"><MdText text={inhalt.texte.mineralischerBentonitTonmineralien} /></span>
+                <h3 className="font-extrabold text-slate-800 text-sm lg:text-base"><MdText text={inhalt.texte.trägergestützteQuelltonAbdichtungssystem} /></h3>
+                <p className="text-xs text-slate-500 leading-normal"><MdText text={inhalt.texte.kompletterÖkologischerFeuchteschutzIm} /></p>
                 <ul className="list-disc list-inside text-xs text-slate-650 space-y-1.5 pl-1 leading-normal">
-                  <li><strong>Bentonitbahnen ("Braune Wanne"):</strong> Robuste Geotextilbahnen, zwischen deren Gewebeschichten pulverförmiges Natriumbentonit fest gekapselt ist. Unter Erdanpressdruck quillt das Bentonit bei Wasserkontakt und bildet eine sehr dichte, gelartige Tonschicht.</li>
-                  <li><strong>Bentonitquellbänder:</strong> Biegsame Dichtbänder zur zuverlässigen Primär-Abdichtung in rauen Betonierarbeitsfugen.</li>
+                  <li><MdText text={inhalt.texte.bentonitbahnenBrauneWanneRobuste} /></li>
+                  <li><MdText text={inhalt.texte.bentonitquellbänderBiegsameDichtbänderZu} /></li>
                 </ul>
               </div>
             </div>
 
             <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-sm mt-4">
               <h3 className="font-bold text-text-main text-sm mb-3 flex items-center gap-1.5">
-                <ShieldCheck size={16} className="text-shiraz" />
-                Bauaufsichtliche Prüfnachweise &amp; Leistungsnachweise (Herstellerneutral)
-              </h3>
-              <p className="text-xs text-text-main/70 mb-4 leading-relaxed">
-                Da viele moderne Bauwerksabdichtungen (wie Verbundabdichtungen, Frischbetonverbundfolien oder Quellbänder) im nationalen Regelwerk nicht abschließend genormt sind, verlangt die VOB/C im öffentlichen Bauwesen herstellerneutrale Konformitätsnachweise:
-              </p>
+                <ShieldCheck size={16} className="text-shiraz" /><MdText text={inhalt.texte.bauaufsichtlichePrüfnachweiseLeistungsna} /></h3>
+              <p className="text-xs text-text-main/70 mb-4 leading-relaxed"><MdText text={inhalt.texte.daVieleModerneBauwerksabdichtungen} /></p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/15">
                   <span className="font-extrabold text-slate-800 flex items-center gap-1 mb-1">
-                    <FileText size={14} className="text-shiraz" /> allgemeines bauaufsichtliches Prüfzeugnis (abP)
-                  </span>
-                  <p className="text-text-main/70 leading-normal">
-                    Nachweis für regelungsbedürftige Bauprodukte und Abdichtungssysteme mit geringem Risikopotenzial (z. B. flüssige Verbundabdichtungen im Bad). Bestätigt die Brauchbarkeit anhand festgeschriebener Prüfverfahren.
-                  </p>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.allgemeinesBauaufsichtlichesPrüfzeugnisA} /></span>
+                  <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.nachweisFürRegelungsbedürftigeBauprodukt} /></p>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/15">
                   <span className="font-extrabold text-slate-800 flex items-center gap-1 mb-1">
-                    <FileText size={14} className="text-shiraz" /> Europäische Technische Bewertung (ETA)
-                  </span>
-                  <p className="text-text-main/70 leading-normal">
-                    Wegbereiter für CE-Kennzeichnungen von innovativen Abdichtungsprodukten ohne harmonisierte EN-Norm (z. B. hochelastische EPDM-Bahnen, Bentonitmembranen oder Flüssigkunststoffe mit langen Nutzungsdauern).
-                  </p>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.europäischeTechnischeBewertungEta} /></span>
+                  <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.wegbereiterFürCeKennzeichnungen} /></p>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/15">
                   <span className="font-extrabold text-slate-800 flex items-center gap-1 mb-1">
-                    <FileText size={14} className="text-shiraz" /> allgemeine bauaufsichtliche Zulassung (abZ)
-                  </span>
-                  <p className="text-text-main/70 leading-normal">
-                    Erteilt durch das Deutsche Institut für Bautechnik (DIBt) für hochinnovative Sonderkonstruktionen (z. B. druckwasserdichte Rohrdurchführungen, bauwerksübergreifende Fugenkonstruktionen im Bahnbau).
-                  </p>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.allgemeineBauaufsichtlicheZulassungAbz} /></span>
+                  <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.erteiltDurchDasDeutsche} /></p>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/15">
                   <span className="font-extrabold text-slate-800 flex items-center gap-1 mb-1">
-                    <FileText size={14} className="text-shiraz" /> WTA-Zertifikate &amp; Merkblätter
-                  </span>
-                  <p className="text-text-main/70 leading-normal">
-                    Merkblätter und Zertifizierungen der Wissenschaftlich-Technischen Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege (WTA), z. B. für Sanierputze und Injektionsverfahren gegen kapillar aufsteigende Feuchte. Keine bauaufsichtlichen Zulassungen.
-                  </p>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.wtaZertifikateMerkblätter} /></span>
+                  <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.merkblätterUndZertifizierungenDer} /></p>
                 </div>
               </div>
             </div>
@@ -434,50 +331,35 @@ export default function BpAbdichtung() {
             <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 flex items-start gap-3">
               <Info size={18} className="text-shiraz mt-0.5 shrink-0" />
               <div>
-                <p className="leading-relaxed">
-                  Fugen unterteilen große Bauteile zur Rissvermeidung oder Bewegungskompensation. Im WU-Stahlbetonbau (Weiße Wanne) ist jede Fuge eine potenzielle Schwachstelle und muss mit geprüften Fugenabdichtungen fachgerecht gesichert werden.
-                </p>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.fugenUnterteilenGroßeBauteile} /></p>
               </div>
             </div>
 
             {/* FUGEN-KONSTRUKTIONEN */}
             <div>
               <h3 className="font-extrabold text-sm text-text-main mb-3 flex items-center gap-1.5 border-b border-home-grau/15 pb-2">
-                <Hammer size={16} className="text-shiraz" /> 1. Fugenarten und konstruktive Ausbildungen
-              </h3>
+                <Hammer size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1FugenartenUndKonstruktive} /></h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="border border-home-grau/15 p-4 rounded-xl space-y-2">
                   <span className="text-xs uppercase font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">AF</span>
-                  <h4 className="font-bold text-text-main text-xs">Arbeitsfugen (Betonierfugen)</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed">
-                    Schnittstelle zwischen zeitversetzten Betonierabschnitten (z.B. Sohlplatte zu aufstehender Kellerwand). Keine Relativbewegungen erwünscht.
-                  </p>
-                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60">
-                    <strong>Konstruktion:</strong> Aufrauung der Fuge, Reinigung von Zementschlämmen zur Erzielung eines guten Verbunds.
-                  </div>
+                  <h4 className="font-bold text-text-main text-xs"><MdText text={inhalt.texte.arbeitsfugenBetonierfugen} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.schnittstelleZwischenZeitversetztenBeton} /></p>
+                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60"><MdText text={inhalt.texte.konstruktionAufrauungDerFuge} /></div>
                 </div>
 
                 <div className="border border-home-grau/15 p-4 rounded-xl space-y-2">
                   <span className="text-xs uppercase font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">BF / DF</span>
-                  <h4 className="font-bold text-text-main text-xs">Dehnungs- &amp; Bewegungsfugen</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed">
-                    Trennen Bauteile vollständig, um thermisch oder setzungsbedingte Bewegungen und Längenänderungen zwangsfrei abzubauen.
-                  </p>
-                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60">
-                    <strong>Konstruktion:</strong> Vollständige Entkopplung, ausgefüllt mit komprimierbarer Füllplatte (z.B. Styropor oder PE).
-                  </div>
+                  <h4 className="font-bold text-text-main text-xs"><MdText text={inhalt.texte.dehnungsBewegungsfugen} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.trennenBauteileVollständigUm} /></p>
+                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60"><MdText text={inhalt.texte.konstruktionVollständigeEntkopplungAusge} /></div>
                 </div>
 
                 <div className="border border-home-grau/15 p-4 rounded-xl space-y-2">
                   <span className="text-xs uppercase font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">SF</span>
-                  <h4 className="font-bold text-text-main text-xs">Sollrissfugen (Schrumpffugen)</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed">
-                    Querschnittsschwächungen zur gezielten örtlichen Zuweisung des Schwindrisses. Verhindert unkontrollierte wilde Risse.
-                  </p>
-                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60">
-                    <strong>Konstruktion:</strong> Eingelegte Profilleisten schwächen die Wandstärke um min. 1/3. Im Kern sitzt ein Dichtelement.
-                  </div>
+                  <h4 className="font-bold text-text-main text-xs"><MdText text={inhalt.texte.sollrissfugenSchrumpffugen} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.querschnittsschwächungenZurGezieltenÖrtl} /></p>
+                  <div className="p-2 bg-stone-50 rounded text-xs text-text-main/60"><MdText text={inhalt.texte.konstruktionEingelegteProfilleistenSchwä} /></div>
                 </div>
               </div>
             </div>
@@ -485,21 +367,16 @@ export default function BpAbdichtung() {
             {/* FUGEN-MATERIALIEN */}
             <div>
               <h3 className="font-extrabold text-sm text-text-main mb-3 flex items-center gap-1.5 border-b border-home-grau/15 pb-2">
-                <Layers size={16} className="text-shiraz" /> 2. Fugenabdichtmaterialien &amp; Einbauprodukte im Überblick
-              </h3>
+                <Layers size={16} className="text-shiraz" /><MdText text={inhalt.texte.t2FugenabdichtmaterialienEinbauprodukteIm} /></h3>
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row border border-home-grau/15 rounded-xl overflow-hidden text-xs">
-                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10">
-                    Fugenbänder (PVC-P / Elastomer)
-                  </div>
+                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10"><MdText text={inhalt.texte.fugenbänderPvcPElastomer} /></div>
                   <div className="md:w-3/4 p-4 space-y-2">
-                    <p className="text-text-main/70 leading-relaxed">
-                      Klassische mechanische Abdichtung für Dehnungs- und Arbeitsfugen. Es gibt <strong>innenliegende</strong> Fugenbänder (durch Beton umschlossen) und <strong>außenliegende</strong> Fugenbänder (auf dem Erdreich oder Schalung aufliegend). Geregelt in <strong>DIN 18197</strong>.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.klassischeMechanischeAbdichtungFür} /></p>
                     <div className="flex flex-wrap gap-4 text-[10px] text-text-main/50">
-                      <span><strong>Materialien:</strong> Weichpolyvinylchlorid (PVC-P) oder hochelastischer Kautschuk (SBR/EPDM für Dehnungsfugen).</span>
-                      <span><strong>Einbau:</strong> Schweißverbindung auf der Baustelle mittels Schweißschwert erforderlich.</span>
+                      <span><MdText text={inhalt.texte.materialienWeichpolyvinylchloridPvcP} /></span>
+                      <span><MdText text={inhalt.texte.einbauSchweißverbindungAufDer} /></span>
                     </div>
                   </div>
                 </div>
@@ -509,41 +386,30 @@ export default function BpAbdichtung() {
                     Injektionsschläuche
                   </div>
                   <div className="md:w-3/4 p-4 space-y-2">
-                    <p className="text-text-main/70 leading-relaxed">
-                      Perforierte, mit Spezial-Gewebe umhüllte Kunststoffschläuche, die direkt mittig in der Arbeitsfuge auf dem ersten Betonierabschnitt fixiert werden. Sie dienen als &apos;Sicherheits-Backup&apos;: Zeigt die Fuge später eine Leckage, wird flüssiges Dichtungsharz über die stirnseitigen Schlauchenden eingepresst.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.perforierteMitSpezialGewebe} /></p>
                     <div className="flex flex-wrap gap-4 text-[10px] text-text-main/50">
-                      <span><strong>Typ:</strong> Einfachinjektionssysteme oder mehrfach injizierbare Varianten (über Vakuum).</span>
-                      <span><strong>Kombianwendung:</strong> Häufig als redundante Zusatzabdichtung neben Fugenblechen.</span>
+                      <span><MdText text={inhalt.texte.typEinfachinjektionssystemeOderMehrfach} /></span>
+                      <span><MdText text={inhalt.texte.kombianwendungHäufigAlsRedundante} /></span>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row border border-home-grau/15 rounded-xl overflow-hidden text-xs">
-                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10">
-                    Fugenbleche (beschichtet)
-                  </div>
+                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10"><MdText text={inhalt.texte.fugenblecheBeschichtet} /></div>
                   <div className="md:w-3/4 p-4 space-y-2">
-                    <p className="text-text-main/70 leading-relaxed">
-                      Verzinkte Blechstreifen mit ein- oder beidseitiger Spezialbeschichtung (Bitumen oder thermoplastische Spezialbeschichtung). Sie verkleben dauerhaft mit dem Frischbeton und versperren kriechendem Sickerwasser den Kriechweg.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.verzinkteBlechstreifenMitEin} /></p>
                     <div className="flex flex-wrap gap-4 text-[10px] text-text-main/50">
-                      <span><strong>Vorteil:</strong> Schnelle Montage auf der oberen Bewehrungslage der Sohlplatte vor Wandbetonage.</span>
+                      <span><MdText text={inhalt.texte.vorteilSchnelleMontageAuf} /></span>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row border border-home-grau/15 rounded-xl overflow-hidden text-xs">
-                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10">
-                    Quelldichtungen &amp; Fugendichtstoffe
-                  </div>
+                  <div className="md:w-1/4 bg-stone-50 p-4 font-bold text-text-main border-r border-home-grau/10"><MdText text={inhalt.texte.quelldichtungenFugendichtstoffe} /></div>
                   <div className="md:w-3/4 p-4 space-y-2">
-                    <p className="text-text-main/70 leading-relaxed">
-                      <strong>Quellbänder:</strong> Profile aus Bentonit oder quellfähigen Polymeren quellen bei Kontakt mit Feuchtigkeit auf und verpressen mechanisch den Hohlraum. 
-                      <strong>Fugendichtstoffe:</strong> Hochelastische, einkomponentige Dichtstoffe (Polyurethan, MS-Polymer) für sichtbare Anschlussfugen an Fassaden und Böden.
-                    </p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.quellbänderProfileAusBentonit} /></p>
                     <div className="flex flex-wrap gap-4 text-[10px] text-text-main/50">
-                      <span><strong>Wichtig:</strong> Quellbänder benötigen eine ausreichende Betonüberdeckung gegen Abplatzen durch den Quelldruck (Mindestmaße nach abP/Herstellerangabe, häufig ca. 8–10 cm).</span>
+                      <span><MdText text={inhalt.texte.wichtigQuellbänderBenötigenEine} /></span>
                     </div>
                   </div>
                 </div>
@@ -554,11 +420,9 @@ export default function BpAbdichtung() {
             <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 space-y-4">
               <div className="flex items-center gap-2 border-b border-zinc-200 pb-2">
                 <Calculator className="text-shiraz" size={18} />
-                <h4 className="font-extrabold text-sm text-text-main">3. Interaktiver Fugenband-Planer (DIN 18197 &amp; DIN 18533)</h4>
+                <h4 className="font-extrabold text-sm text-text-main"><MdText text={inhalt.texte.t3InteraktiverFugenbandPlaner} /></h4>
               </div>
-              <p className="text-xs text-slate-600 leading-normal">
-                Geben Sie die Bauteilabmessungen und Wassereinwirkungen an, um die konforme Bandbreite und die Mindestbauteildicke nach DIN 18197 zu prüfen.
-              </p>
+              <p className="text-xs text-slate-600 leading-normal"><MdText text={inhalt.texte.gebenSieDieBauteilabmessungen} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Inputs */}
@@ -572,9 +436,7 @@ export default function BpAbdichtung() {
                         checked={fbJointType === 'arbeitsfuge'} 
                         onChange={() => setFbJointType('arbeitsfuge')} 
                         className="accent-shiraz"
-                      />
-                      Arbeitsfuge (statisch)
-                    </label>
+                      /><MdText text={inhalt.texte.arbeitsfugeStatisch} /></label>
                     <label className="flex items-center gap-1.5 text-xs text-slate-700 cursor-pointer">
                       <input 
                         type="radio" 
@@ -582,9 +444,7 @@ export default function BpAbdichtung() {
                         checked={fbJointType === 'dehnungsfuge'} 
                         onChange={() => setFbJointType('dehnungsfuge')} 
                         className="accent-shiraz"
-                      />
-                      Dehnungsfuge (beweglich)
-                    </label>
+                      /><MdText text={inhalt.texte.dehnungsfugeBeweglich} /></label>
                   </div>
                 </div>
 
@@ -605,8 +465,7 @@ export default function BpAbdichtung() {
                       className="w-full accent-shiraz"
                     />
                     <div className="text-[10px] text-zinc-400">
-                      ({formatDeZahl((fbWaterPressure * 0.1), 1)} bar hydrostatischer Druck)
-                    </div>
+                      ({formatDeZahl((fbWaterPressure * 0.1), 1)}<MdText text={inhalt.texte.barHydrostatischerDruck} /></div>
                   </div>
                 </div>
 
@@ -614,7 +473,7 @@ export default function BpAbdichtung() {
                   <span className="font-bold text-[11px] text-shiraz uppercase tracking-wider block">Bauteildicke</span>
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
-                      <span>Wand-/Sohldicke (d):</span>
+                      <span><MdText text={inhalt.texte.wandSohldickeD} /></span>
                       <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(fbSlabThickness)} cm</span>
                     </div>
                     <input 
@@ -626,9 +485,7 @@ export default function BpAbdichtung() {
                       onChange={(e) => setFbSlabThickness(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
-                    <div className="text-[10px] text-zinc-400">
-                      Empfohlen Wand min. 24 cm
-                    </div>
+                    <div className="text-[10px] text-zinc-400"><MdText text={inhalt.texte.empfohlenWandMin24} /></div>
                   </div>
                 </div>
 
@@ -642,9 +499,7 @@ export default function BpAbdichtung() {
                         checked={fbMaxAggregate === 16} 
                         onChange={() => setFbMaxAggregate(16)} 
                         className="accent-shiraz"
-                      />
-                      GK 16 mm (feiner)
-                    </label>
+                      /><MdText text={inhalt.texte.gk16MmFeiner} /></label>
                     <label className="flex items-center gap-1.5 text-xs text-slate-700 cursor-pointer">
                       <input 
                         type="radio" 
@@ -652,9 +507,7 @@ export default function BpAbdichtung() {
                         checked={fbMaxAggregate === 32} 
                         onChange={() => setFbMaxAggregate(32)} 
                         className="accent-shiraz"
-                      />
-                      GK 32 mm (Standard)
-                    </label>
+                      /><MdText text={inhalt.texte.gk32MmStandard} /></label>
                   </div>
                 </div>
               </div>
@@ -668,25 +521,25 @@ export default function BpAbdichtung() {
                 if (fbJointType === 'arbeitsfuge') {
                   if (fbWaterPressure <= 5) {
                     reqWidth = 200;
-                    bandDesignation = 'A 200 (Bitumenkompatibel / PVC-P)';
+                    bandDesignation = inhalt.werte.a200BitumenkompatibelPvc;
                   } else if (fbWaterPressure <= 12) {
                     reqWidth = 240;
-                    bandDesignation = 'A 240 (PVC-P) oder FM 250 (Hochelastomer)';
+                    bandDesignation = inhalt.werte.a240PvcP;
                   } else {
                     reqWidth = 320;
-                    bandDesignation = 'A 320 (PVC-P) bzw. FM 350 (Elastomer-Spezial)';
+                    bandDesignation = inhalt.werte.a320PvcP;
                   }
                 } else {
                   // Dehnungsfuge
                   if (fbWaterPressure <= 3) {
                     reqWidth = 240;
-                    bandDesignation = 'D 240 (PVC-P) / FM 250 (Dehnungsfuge Elastomer)';
+                    bandDesignation = inhalt.werte.d240PvcP;
                   } else if (fbWaterPressure <= 8) {
                     reqWidth = 320;
-                    bandDesignation = 'D 320 (Standard-PVC-P) oder FM 350';
+                    bandDesignation = inhalt.werte.d320StandardPvc;
                   } else {
                     reqWidth = 400;
-                    bandDesignation = 'FM 400 (Hochelastomer-Dehnfugenband) / D 500';
+                    bandDesignation = inhalt.werte.fm400HochelastomerDehnfugenband;
                   }
                 }
 
@@ -704,23 +557,23 @@ export default function BpAbdichtung() {
 
                 return (
                   <div className="bg-white p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">
-                    <h5 className="font-bold text-zinc-800">Prüfbericht Fugenband-Eignung nach DIN 18197:</h5>
+                    <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.prüfberichtFugenbandEignungNach} /></h5>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-[11px] text-slate-800">
                       <div>
-                        <span className="text-zinc-500 block">Empfohlene Mindestbreite (a):</span>
+                        <span className="text-zinc-500 block"><MdText text={inhalt.texte.empfohleneMindestbreiteA} /></span>
                         <strong className="text-shiraz text-xs">{formatDeWert(reqWidth)} mm</strong>
                       </div>
                       <div>
-                        <span className="text-zinc-500 block">Normative Produktbezeichnung:</span>
+                        <span className="text-zinc-500 block"><MdText text={inhalt.texte.normativeProduktbezeichnung} /></span>
                         <strong className="text-zinc-800 text-xs">{bandDesignation}</strong>
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
-                        <span className="text-zinc-500 block">Geforderte Mindestdeckendicke:</span>
-                        <span>{formatDeWert(reqWidth / 10)} cm (Soll: d ≥ a)</span>
+                        <span className="text-zinc-500 block"><MdText text={inhalt.texte.geforderteMindestdeckendicke} /></span>
+                        <span>{formatDeWert(reqWidth / 10)}<MdText text={inhalt.texte.cmSollDA} /></span>
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
-                        <span className="text-zinc-500 block">Mindest-Randabstand (Größtkorn check):</span>
+                        <span className="text-zinc-500 block"><MdText text={inhalt.texte.mindestRandabstandGrößtkornCheck} /></span>
                         <span>{formatDeZahl(minCoverFromGK, 1)} cm (3 · GK)</span>
                       </div>
                     </div>
@@ -730,9 +583,9 @@ export default function BpAbdichtung() {
                         isThicknessOk ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-red-50 text-red-800 border-red-200'
                       }`}>
                         {isThicknessOk ? (
-                          <span>✓ <strong>Bauteildicke konform:</strong> Die Bauteildicke von d = {formatDeWert(fbSlabThickness)} cm ist ausreichend groß, damit das Fugenband ({formatDeWert(reqWidth)} mm) vollständig betoniert und porenfrei ummantelt wird.</span>
+                          <span><MdText text={inhalt.texte.bauteildickeKonformDieBauteildicke} />{formatDeWert(fbSlabThickness)}<MdText text={inhalt.texte.cmIstAusreichendGroß} />{formatDeWert(reqWidth)}<MdText text={inhalt.texte.mmVollständigBetoniertUnd} /></span>
                         ) : (
-                          <span>✗ <strong>Bauteil zu dünn:</strong> Die Bauteildicke ({formatDeWert(fbSlabThickness)} cm) reicht für ein {formatDeWert(reqWidth)} mm breites Fugenband nicht aus – Gefahr von Fehlstellen beim Einbetonieren (Lehrannahme). Mindestens {formatDeWert(reqWidth / 10)} cm Dicke einplanen.</span>
+                          <span><MdText text={inhalt.texte.bauteilZuDünnDie} />{formatDeWert(fbSlabThickness)}<MdText text={inhalt.texte.cmReichtFürEin} />{formatDeWert(reqWidth)}<MdText text={inhalt.texte.mmBreitesFugenbandNicht} />{formatDeWert(reqWidth / 10)}<MdText text={inhalt.texte.cmDickeEinplanen} /></span>
                         )}
                       </div>
 
@@ -740,9 +593,9 @@ export default function BpAbdichtung() {
                         isGkCoverOk ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-amber-50 text-amber-800 border-amber-200'
                       }`}>
                         {isGkCoverOk ? (
-                          <span>✓ <strong>Kornverkrallung gesichert:</strong> Randabstand von ca. {formatDeZahl(actualCoverEdge, 1)} cm bietet genügend Fließraum für Beton mit GK {fbMaxAggregate} mm (min. erforderlich: {formatDeZahl(minCoverFromGK, 1)} cm).</span>
+                          <span><MdText text={inhalt.texte.kornverkrallungGesichertRandabstandVon} />{formatDeZahl(actualCoverEdge, 1)}<MdText text={inhalt.texte.cmBietetGenügendFließraum} />{fbMaxAggregate}<MdText text={inhalt.texte.mmMinErforderlich} />{formatDeZahl(minCoverFromGK, 1)} cm).</span>
                         ) : (
-                          <span>⚠ <strong>Enger Einbauraum:</strong> Der Freiraum an den Fugenbandflanken ist knapp für Größtkorn {fbMaxAggregate} mm. Kleineres Größtkorn wählen oder besonders sorgfältig verdichten.</span>
+                          <span><MdText text={inhalt.texte.engerEinbauraumDerFreiraum} />{fbMaxAggregate}<MdText text={inhalt.texte.mmKleineresGrößtkornWählen} /></span>
                         )}
                       </div>
                     </div>
@@ -755,11 +608,9 @@ export default function BpAbdichtung() {
             <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 space-y-4">
               <div className="flex items-center gap-2 border-b border-zinc-200 pb-2">
                 <Calculator className="text-shiraz" size={18} />
-                <h4 className="font-extrabold text-sm text-text-main">4. Interaktiver Injektionsschlauch-Planungsplaner</h4>
+                <h4 className="font-extrabold text-sm text-text-main"><MdText text={inhalt.texte.t4InteraktiverInjektionsschlauchPlanungsp} /></h4>
               </div>
-              <p className="text-xs text-slate-600 leading-normal">
-                Prüfen Sie die Machbarkeit und Detailierungsrichtlinien für Verpressschläuche, um Ausbrüche und mangelhafte Injektionen auf der Baustelle zu vermeiden.
-              </p>
+              <p className="text-xs text-slate-600 leading-normal"><MdText text={inhalt.texte.prüfenSieDieMachbarkeit} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="bg-white p-3.5 rounded-lg border border-zinc-200 space-y-2">
@@ -778,9 +629,7 @@ export default function BpAbdichtung() {
                       onChange={(e) => setIsLength(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
-                    <div className="text-[10px] text-zinc-400">
-                      Standardrolle typisch 10 m
-                    </div>
+                    <div className="text-[10px] text-zinc-400"><MdText text={inhalt.texte.standardrolleTypisch10M} /></div>
                   </div>
                 </div>
 
@@ -788,7 +637,7 @@ export default function BpAbdichtung() {
                   <span className="font-bold text-[11px] text-shiraz uppercase tracking-wider block">Betonüberdeckung</span>
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
-                      <span>Abstand zum Rand:</span>
+                      <span><MdText text={inhalt.texte.abstandZumRand} /></span>
                       <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(isConCover)} cm</span>
                     </div>
                     <input 
@@ -800,9 +649,7 @@ export default function BpAbdichtung() {
                       onChange={(e) => setIsConCover(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
-                    <div className="text-[10px] text-zinc-400">
-                      WU-RL fordert min. 8-10 cm
-                    </div>
+                    <div className="text-[10px] text-zinc-400"><MdText text={inhalt.texte.wuRlFordertMin} /></div>
                   </div>
                 </div>
 
@@ -822,9 +669,7 @@ export default function BpAbdichtung() {
                       onChange={(e) => setIsFasteningInterval(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
-                    <div className="text-[10px] text-zinc-400">
-                      Max. Abstand zur Lagestabilität
-                    </div>
+                    <div className="text-[10px] text-zinc-400"><MdText text={inhalt.texte.maxAbstandZurLagestabilität} /></div>
                   </div>
                 </div>
 
@@ -850,16 +695,16 @@ export default function BpAbdichtung() {
 
                 let mediumDesc = '';
                 if (isMedium === 'acrylgel') {
-                  mediumDesc = 'Acrylatgel hat eine sehr niedrige Viskosität. Mehrfach verpressbare Schläuche können nach dem Spülen bzw. Vakuumieren erneut injiziert werden; Acrylatgele dichten dauerhaft, solange sie feucht bleiben.';
+                  mediumDesc = inhalt.werte.acrylatgelHatEineSehr;
                 } else if (isMedium === 'pur_harz') {
-                  mediumDesc = 'Polyurethan (PUR) reagiert zäh-elastisch und bildet eine geschlossenzellige, wasserunlösliche Struktur. Es fängt dynamische Spannungsbewegungen in der Arbeitsfuge elastisch ab.';
+                  mediumDesc = inhalt.werte.polyurethanPurReagiertZäh;
                 } else {
-                  mediumDesc = 'Epoxidharz (EP) härtet vollkommen spröde und starr aus. Es stellt ein hohes mechanisches Verbundleistungsvermögen dar, kann aber bei witterungsbedingten Fugendehnungen schnell erneut reißen.';
+                  mediumDesc = inhalt.werte.epoxidharzEpHärtetVollkommen;
                 }
 
                 return (
                   <div className="bg-white p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">
-                    <h5 className="font-bold text-zinc-800">Evaluierung des Injektionssystems:</h5>
+                    <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.evaluierungDesInjektionssystems} /></h5>
                     
                     <div className="space-y-2">
                       {/* Check 1: Länge */}
@@ -868,11 +713,11 @@ export default function BpAbdichtung() {
                           {isLengthOk ? 'KONFORM' : 'PROB-LÄNGE'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Schlauchlänge ({formatDeWert(isLength)} m):</strong>{' '}
+                          <strong><MdText text={inhalt.texte.schlauchlänge} />{formatDeWert(isLength)} m):</strong>{' '}
                           {isLengthOk ? (
-                            <span className="text-slate-600">Sicherer verpressbarer Kreislauf. Der Fließdruck bleibt innerhalb des zulässigen Fensters der Verpresspumpe.</span>
+                            <span className="text-slate-600"><MdText text={inhalt.texte.sichererVerpressbarerKreislaufDer} /></span>
                           ) : (
-                            <span className="text-red-800"><strong>Kritisch!</strong> Lange Schlauchabschnitte (Lehrannahme &gt; 10 m; Herstellerangaben beachten) erschweren die vollständige Füllung, weil das Material vor dem Ende reagieren kann. Abschnitte begrenzen.</span>
+                            <span className="text-red-800"><MdText text={inhalt.texte.kritischLangeSchlauchabschnitteLehrannah} /></span>
                           )}
                         </div>
                       </div>
@@ -883,11 +728,11 @@ export default function BpAbdichtung() {
                           {isCoverOk ? 'KONFORM' : 'ABSPRENGGEFAHR'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Betonüberdeckung ({formatDeWert(isConCover)} cm):</strong>{' '}
+                          <strong><MdText text={inhalt.texte.betonüberdeckung} />{formatDeWert(isConCover)} cm):</strong>{' '}
                           {isCoverOk ? (
-                            <span className="text-slate-600">Sicherer Tiefenhalt. Keine Beschädigung des Betonrandes beim Hochdruck-Füllvorgang.</span>
+                            <span className="text-slate-600"><MdText text={inhalt.texte.sichererTiefenhaltKeineBeschädigung} /></span>
                           ) : (
-                            <span className="text-red-800"><strong>Achtung Ausbrüche!</strong> Bei geringer Überdeckung ({formatDeWert(isConCover)} cm) kann der Injektionsdruck Abplatzungen verursachen. Verpressschläuche werden mit vergleichsweise geringem Druck nach Herstellerangabe injiziert.</span>
+                            <span className="text-red-800"><MdText text={inhalt.texte.achtungAusbrücheBeiGeringer} />{formatDeWert(isConCover)}<MdText text={inhalt.texte.cmKannDerInjektionsdruck} /></span>
                           )}
                         </div>
                       </div>
@@ -898,18 +743,17 @@ export default function BpAbdichtung() {
                           {isFasteningOk ? 'STABIL' : 'LAGEMANGEL'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Montageabstand ({formatDeWert(isFasteningInterval)} cm):</strong>{' '}
+                          <strong><MdText text={inhalt.texte.montageabstand} />{formatDeWert(isFasteningInterval)} cm):</strong>{' '}
                           {isFasteningOk ? (
-                            <span className="text-slate-600">Der Schlauch fließt und treibt im zähen Betonstrom nicht auf (perfekter mittiger Sitz gewährleistet).</span>
+                            <span className="text-slate-600"><MdText text={inhalt.texte.derSchlauchFließtUnd} /></span>
                           ) : (
-                            <span className="text-amber-800"><strong>Ungesicherte Lage!</strong> Durch weite Clipabstände kann der Schlauch aufschwimmen oder an die Außenwand rutschen, wodurch die dichte Betonschutzdecke unterschritten wird.</span>
+                            <span className="text-amber-800"><MdText text={inhalt.texte.ungesicherteLageDurchWeite} /></span>
                           )}
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-2.5 p-2.5 bg-indigo-50/50 rounded text-[11px] text-indigo-950 leading-relaxed font-sans border border-indigo-100">
-                      <strong>Wirkungsweise des Injektionsmediums:</strong> {mediumDesc}
+                    <div className="mt-2.5 p-2.5 bg-indigo-50/50 rounded text-[11px] text-indigo-950 leading-relaxed font-sans border border-indigo-100"><MdText text={inhalt.texte.wirkungsweiseDesInjektionsmediums} />{mediumDesc}
                     </div>
                   </div>
                 );
@@ -920,10 +764,8 @@ export default function BpAbdichtung() {
             <div className="bg-red-50 border border-red-200 p-4 rounded-xl flex items-start gap-2 text-xs">
               <ShieldAlert className="text-red-700 mt-0.5 shrink-0" size={16} />
               <div>
-                <strong className="text-red-950 font-bold block">Fehlerrisiko Fugenbänder:</strong>
-                <p className="text-red-900 leading-relaxed mt-0.5">
-                  Fugenbänder neigen beim Betoneinbau unter Rütteldruck zum Umknicken (&apos;Faltbildung&apos;). Wird der Beton nicht extrem sorgfältig an den Flanken gestochert, kommt es zu Kiesnestern direkt um das Band. Folge: Sickerwasser kriecht um das Fugenband herum direkt ins Gebäudeinnere!
-                </p>
+                <strong className="text-red-950 font-bold block"><MdText text={inhalt.texte.fehlerrisikoFugenbänder} /></strong>
+                <p className="text-red-900 leading-relaxed mt-0.5"><MdText text={inhalt.texte.fugenbänderNeigenBeimBetoneinbau} /></p>
               </div>
             </div>
 
@@ -936,9 +778,7 @@ export default function BpAbdichtung() {
             <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 flex items-start gap-3">
               <Droplet size={18} className="text-shiraz mt-0.5 shrink-0" />
               <div>
-                <p className="leading-relaxed">
-                  Risse im Stahlbeton sind werkstofftypische Begleierscheinungen. Überschreiten sie das zulässige Maß (z.B. &gt; 0,2 mm bei WU-Konstruktionen), drohen Bewehrungskorrosion und Wasseraustritte. Die Sanierung erfolgt regelkonform durch <strong>Rissinjektion (Rissverpressung)</strong> nach der <strong>DIN EN 1504-5</strong>.
-                </p>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.risseImStahlbetonSind} /></p>
               </div>
             </div>
 
@@ -946,14 +786,13 @@ export default function BpAbdichtung() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="border border-home-grau/15 p-4 rounded-xl space-y-3">
                 <h4 className="font-bold text-text-main text-sm lg:text-base border-b border-home-grau/10 pb-1.5 flex items-center gap-1">
-                  <Activity size={14} className="text-shiraz" /> Risseigenschaften für die Injektionsauswahl
-                </h4>
+                  <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.risseigenschaftenFürDieInjektionsauswahl} /></h4>
                 <div className="space-y-2 text-sm text-text-main/70">
-                  <p>Bevor ein Verpressstoff gewählt wird, muss der Zustand des Risses klassifiziert werden:</p>
+                  <p><MdText text={inhalt.texte.bevorEinVerpressstoffGewählt} /></p>
                   <ul className="list-disc list-inside space-y-1 pl-1">
-                    <li><strong>Feuchtigkeitszustand:</strong> Trocken, feucht, wasserführend oder unter hydrostatischem Druck stehend.</li>
-                    <li><strong>Zweck der Maßnahme:</strong> Dehnfähiges, abdichtendes Schließen (Zäh-elastisch) vs. tragendes, wiederherstellendes Verbinden (Kraftschlüssig).</li>
-                    <li><strong>Rissbreitenschwankung:</strong> Dynamisch beanspruchte Risse verlangen flexiblen Verschluss.</li>
+                    <li><MdText text={inhalt.texte.feuchtigkeitszustandTrockenFeuchtWasserf} /></li>
+                    <li><MdText text={inhalt.texte.zweckDerMaßnahmeDehnfähiges} /></li>
+                    <li><MdText text={inhalt.texte.rissbreitenschwankungDynamischBeanspruch} /></li>
                   </ul>
                 </div>
               </div>
@@ -963,10 +802,10 @@ export default function BpAbdichtung() {
                   <Wrench size={14} className="text-shiraz" /> Einbau-Packertechnik
                 </h4>
                 <div className="space-y-2 text-sm text-text-main/70">
-                  <p>Packer leiten die Injektionsflüssigkeit hochdrucksicher direkt in den Riss:</p>
+                  <p><MdText text={inhalt.texte.packerLeitenDieInjektionsflüssigkeit} /></p>
                   <ul className="list-disc list-inside space-y-1 pl-1">
-                    <li><strong>Bohrpacker (Schraubpacker):</strong> Schräg versetzt in einem Winkel von 45° bis zur Rissmitte gebohrte Metall- oder Kunststoffdübel. Für hohe Drücke (&gt;100 bar).</li>
-                    <li><strong>Klebepacker (Oberflächenpacker):</strong> Werden direkt auf den gereinigten Rissspalt geklebt. Nur bei geringen Einpressdrücken (Niederdruckverfahren) verwendbar oder um mechanische Bauteilbeschädigungen zu vermeiden.</li>
+                    <li><MdText text={inhalt.texte.bohrpackerSchraubpackerSchrägVersetzt} /></li>
+                    <li><MdText text={inhalt.texte.klebepackerOberflächenpackerWerdenDirekt} /></li>
                   </ul>
                 </div>
               </div>
@@ -974,60 +813,44 @@ export default function BpAbdichtung() {
 
             {/* INJEKTIONSSTOFFE IM DETAILED VERGLEICH */}
             <div>
-              <h3 className="font-extrabold text-sm text-text-main mb-3">Die 4 Kern-Injektionsstoffe nach DIN EN 1504-5</h3>
+              <h3 className="font-extrabold text-sm text-text-main mb-3"><MdText text={inhalt.texte.die4KernInjektionsstoffe} /></h3>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 
                 <div className="bg-red-50/25 border border-red-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-red-700 bg-red-50 px-1.5 py-0.5 rounded tracking-wider">KRAFTSCHLÜSSIG</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1">Epoxidharze (EP)</h5>
-                    <p className="text-[11px] text-text-main/60 leading-normal">
-                      Hohe Haftfestigkeit auf trockenen Rissflanken; kraftschlüssiges Schließen von Rissen (nicht bei wasserführenden oder sich bewegenden Rissen).
-                    </p>
+                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.epoxidharzeEp} /></h5>
+                    <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.hoheHaftfestigkeitAufTrockenen} /></p>
                   </div>
-                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
-                    Anwendung: Trocken/Feucht, Tragwerksstabilisierung
-                  </div>
+                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungTrockenFeuchtTragwerksstabilisi} /></div>
                 </div>
 
                 <div className="bg-emerald-50/25 border border-emerald-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
-                    <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded tracking-wider">ELASTISCH / DICHTEND</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1">Polyurethanharze (PUR)</h5>
-                    <p className="text-[11px] text-text-main/60 leading-normal">
-                      Elastisches Harz für dehnfähiges Abdichten; schäumende PUR-Varianten (SPUR) stoppen akute Wasserzutritte vorübergehend.
-                    </p>
+                    <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.elastischDichtend} /></span>
+                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.polyurethanharzePur} /></h5>
+                    <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.elastischesHarzFürDehnfähiges} /></p>
                   </div>
-                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
-                    Anwendung: Wasserführende Risse, Risse unter Bewegung
-                  </div>
+                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungWasserführendeRisseRisse} /></div>
                 </div>
 
                 <div className="bg-amber-50/25 border border-amber-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
-                    <span className="text-[9px] font-black uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded tracking-wider">MINERALISCH FÜLLEND</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1">Zementsuspensionen (ZS)</h5>
-                    <p className="text-[11px] text-text-main/60 leading-normal">
-                      Feinstzementleim zur mineralischen Auffüllung breiterer Risse, Poren und großer Fehlstellen im Verbund.
-                    </p>
+                    <span className="text-[9px] font-black uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.mineralischFüllend} /></span>
+                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.zementsuspensionenZs} /></h5>
+                    <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.feinstzementleimZurMineralischenAuffüllu} /></p>
                   </div>
-                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
-                    Anwendung: Hohlraumverfüllung, Denkmalpflege, Mauerwerk
-                  </div>
+                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungHohlraumverfüllungDenkmalpflege} /></div>
                 </div>
 
                 <div className="bg-blue-50/25 border border-blue-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
-                    <span className="text-[9px] font-black uppercase text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded tracking-wider">GELBILDUNG EXTERN</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1">Acrylatgele (AY)</h5>
-                    <p className="text-[11px] text-text-main/60 leading-normal">
-                      Wasserquellfähige Gele mit extrem niedriger Viskosität. Dringen tief in feinste Kavernen und Mikrorisse ein.
-                    </p>
+                    <span className="text-[9px] font-black uppercase text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.gelbildungExtern} /></span>
+                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.acrylatgeleAy} /></h5>
+                    <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.wasserquellfähigeGeleMitExtrem} /></p>
                   </div>
-                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
-                    Anwendung: Schleierinjektionen (erdseitig), Kellerwandsanierung
-                  </div>
+                  <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungSchleierinjektionenErdseitigKel} /></div>
                 </div>
 
               </div>
@@ -1036,25 +859,16 @@ export default function BpAbdichtung() {
             {/* GRAPHICAL STEP-BY-STEP DIALOGUE FOR THE SITE ENGINEER */}
             <div className="bg-stone-50 border border-home-grau/25 p-5 rounded-2xl space-y-3">
               <h4 className="font-bold text-xs text-text-main flex items-center gap-1.5">
-                <Wrench className="text-shiraz" size={16} /> Ablauf der Akut-Injektion (Wasserführender Riss)
-              </h4>
+                <Wrench className="text-shiraz" size={16} /><MdText text={inhalt.texte.ablaufDerAkutInjektion} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-[11px] leading-relaxed">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
-                  <strong className="block font-bold text-shiraz text-xs mb-1">1. Rissvorbereitung</strong>
-                  Rissverlauf reinigen, lockere Schichten entfernen. Bohrungen schräg im 45°-Winkel versetzt anlegen, sodass Bohrkanal den Riss auf halber Bauteiltiefe schneidet.
-                </div>
+                  <strong className="block font-bold text-shiraz text-xs mb-1"><MdText text={inhalt.texte.t1Rissvorbereitung} /></strong><MdText text={inhalt.texte.rissverlaufReinigenLockereSchichten} /></div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
-                  <strong className="block font-bold text-shiraz text-xs mb-1">2. Packer setzen</strong>
-                  Bohrstaub gründlich ausblasen (sonst Verstopfungsgefahr!). Bohrpacker einsetzen und druckfest festziehen. Freie Rissbereiche oberflächlich abdämmen (Zementmörtel spachteln).
-                </div>
+                  <strong className="block font-bold text-shiraz text-xs mb-1"><MdText text={inhalt.texte.t2PackerSetzen} /></strong><MdText text={inhalt.texte.bohrstaubGründlichAusblasenSonst} /></div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
-                  <strong className="block font-bold text-shiraz text-xs mb-1">3. Vordichtung (PUR-Schaum)</strong>
-                  Bei starkem Wasseraustritt: Vorinjizieren mit einkomponentigem PU-Schnellschaum. Nach Kontakt mit Wasser quillt dieser extrem schnell auf und stoppt den Wasserfluss zeitweise.
-                </div>
+                  <strong className="block font-bold text-shiraz text-xs mb-1"><MdText text={inhalt.texte.t3VordichtungPurSchaum} /></strong><MdText text={inhalt.texte.beiStarkemWasseraustrittVorinjizieren} /></div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
-                  <strong className="block font-bold text-shiraz text-xs mb-1">4. Hauptinjektion (Dauerhaft)</strong>
-                  Dauerhaft elastisches 2K-Polyurethanharz durch die Packer pressen (von unten nach oben arbeiten). Sobald Harz am Nachbarpacker austritt, Pumpe umkoppeln. Nach Erhärtung Packer abschlagen.
-                </div>
+                  <strong className="block font-bold text-shiraz text-xs mb-1"><MdText text={inhalt.texte.t4HauptinjektionDauerhaft} /></strong><MdText text={inhalt.texte.dauerhaftElastisches2kPolyurethanharz} /></div>
               </div>
             </div>
 
@@ -1067,9 +881,7 @@ export default function BpAbdichtung() {
             <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 flex items-start gap-3">
               <Calculator size={18} className="text-shiraz mt-0.5 shrink-0" />
               <div>
-                <p className="leading-relaxed">
-                  <strong>Interaktiver DIN 18533 Planungsberater:</strong> Ermitteln Sie die normgerechte Wassereinwirkungsklasse (W-E) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.
-                </p>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.interaktiverDin18533Planungsberater} /></p>
               </div>
             </div>
 
@@ -1080,22 +892,11 @@ export default function BpAbdichtung() {
                 {/* Section 1: Water Load Situations */}
                 <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3">
                   <h4 className="font-bold text-text-main text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-home-grau/10 pb-2">
-                    <Droplet size={14} className="text-shiraz text-blue-500" />
-                    1. Wasserverhältnisse &amp; Baugrund
-                  </h4>
-                  <p className="text-[11px] text-text-main/60 leading-normal font-medium">
-                    Welche geohydrologischen Gewässer- oder Sickerwasserverhältnisse liegen am Gebäude an?
-                  </p>
+                    <Droplet size={14} className="text-shiraz text-blue-500" /><MdText text={inhalt.texte.t1WasserverhältnisseBaugrund} /></h4>
+                  <p className="text-[11px] text-text-main/60 leading-normal font-medium"><MdText text={inhalt.texte.welcheGeohydrologischenGewässerOder} /></p>
                   
                   <div className="space-y-2 pt-1">
-                    {[
-                      { id: 'bodenfeuchte', label: 'Bodenfeuchte / Sickerwasser', detail: 'Durchlässiger Kies-/Sandboden (W1.1-E). Kein stauendes Wasser.' },
-                      { id: 'stauend_drain', label: 'Schwach durchlässig + Dränung nach DIN 4095', detail: 'Lehm-/Tonboden mit voll funktionsfähigem Drainagesystem (W1.2-E).' },
-                      { id: 'stauend', label: 'Aufstauendes Sickerwasser (O-Drain)', detail: 'Wenig durchlässiger Lehmboden OHNE dränendes Leitungssystem (W2.1-E).' },
-                      { id: 'drueckend_flach', label: 'Drückendes Grundwasser (≤ 3,0 m)', detail: 'Grundwasserstand liegt dauerhaft bis zu 3,0 m über Kellerebene (W2.1-E).' },
-                      { id: 'drueckend_tief', label: 'Drückendes Grundwasser (> 3,0 m)', detail: 'Dauerhafter Wasserdruck bei tiefer Gründungssohle im Grundwasser (W2.2-E).' },
-                      { id: 'spritzwasser', label: 'Spritzwasser im Sockelquerschnitt', detail: 'Oberflächenwasser und Spritzzone im Außen-Bodenanschluss (W4-E).' }
-                    ].map((opt) => (
+                    {inhalt.daten.BpAbdichtung.map((opt) => (
                       <button aria-pressed={waterLoad === opt.id}
                         key={opt.id}
                         type="button"
@@ -1119,19 +920,11 @@ export default function BpAbdichtung() {
                 {/* Section 2: Room Requirements */}
                 <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-3">
                   <h4 className="font-bold text-text-main text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-home-grau/10 pb-2">
-                    <LayoutGrid size={14} className="text-shiraz" />
-                    2. Raumnutzung &amp; Anforderungsklasse
-                  </h4>
-                  <p className="text-[11px] text-text-main/60 leading-normal font-medium">
-                    Welcher Grad an Feuchtetoleranz oder Trockenheit ist vertraglich einzuhalten?
-                  </p>
+                    <LayoutGrid size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2RaumnutzungAnforderungsklasse} /></h4>
+                  <p className="text-[11px] text-text-main/60 leading-normal font-medium"><MdText text={inhalt.texte.welcherGradAnFeuchtetoleranz} /></p>
                   
                   <div className="space-y-2 pt-1">
-                    {[
-                      { id: 'hochwertig', label: 'Hochwertig (Anforderungsklasse A)', detail: 'Wohnräume, Einliegerwohnungen, Büros, Archive. Absolut staubtrocken, keine Feuchtstellen.' },
-                      { id: 'standard', label: 'Standard (Anforderungsklasse B)', detail: 'Nutzungskeller, Technikräume, Werkbänke. Geringfügiger Feuchtefilm tolerierbar.' },
-                      { id: 'kriechkeller', label: 'Gering (Anforderungsklasse C)', detail: 'Kriechkeller, Installationsgänge oder offene Tiefgaragen.' }
-                    ].map((opt) => (
+                    {inhalt.daten.BpAbdichtung_2.map((opt) => (
                       <button aria-pressed={roomRequirement === opt.id}
                         key={opt.id}
                         type="button"
@@ -1159,9 +952,7 @@ export default function BpAbdichtung() {
                 
                 {/* Title block */}
                 <div className="border-b border-home-grau/20 pb-4">
-                  <span className="text-[10px] font-extrabold uppercase text-shiraz bg-shiraz/10 px-2 py-0.5 rounded tracking-wide inline-block mb-2">
-                    Berechnete Systemempfehlung nach DIN 18533
-                  </span>
+                  <span className="text-[10px] font-extrabold uppercase text-shiraz bg-shiraz/10 px-2 py-0.5 rounded tracking-wide inline-block mb-2"><MdText text={inhalt.texte.berechneteSystemempfehlungNachDin} /></span>
                   <h3 className="font-extrabold text-text-main text-lg leading-snug">
                     {(() => {
                       const res = getAdvisorRecommendation();
@@ -1197,17 +988,17 @@ export default function BpAbdichtung() {
                   </div>
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                     <div>
-                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest">Bauaufsichtliche Einstufung</span>
+                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest"><MdText text={inhalt.texte.bauaufsichtlicheEinstufung} /></span>
                       <span className="text-sm font-black text-slate-800 block mt-1">
-                        {roomRequirement === 'hochwertig' ? 'Hochwertig (Klasse A)' : roomRequirement === 'standard' ? 'Standard (Klasse B)' : 'Einfach (Klasse C)'}
+                        {roomRequirement === 'hochwertig' ? inhalt.werte.hochwertigKlasseA : roomRequirement === 'standard' ? inhalt.werte.standardKlasseB : inhalt.werte.einfachKlasseC}
                       </span>
                     </div>
                     <span className="text-[10px] text-text-main/60 leading-relaxed mt-1.5 block">
                       {roomRequirement === 'hochwertig' 
-                        ? 'Feuchtstellen auf Innenflächen vertraglich ausgeschlossen (Wohnen).' 
+                        ? inhalt.werte.feuchtstellenAufInnenflächenVertraglich 
                         : roomRequirement === 'standard' 
-                          ? 'Dunkle Verfärbungen auf Wänden zeitweise gestattet.' 
-                          : 'Lokale Tropfenbildungen und feuchte Betonoberflächen unkritisch.'}
+                          ? inhalt.werte.dunkleVerfärbungenAufWänden 
+                          : inhalt.werte.lokaleTropfenbildungenUndFeuchte}
                     </span>
                   </div>
                 </div>
@@ -1215,9 +1006,7 @@ export default function BpAbdichtung() {
                 {/* Target Products */}
                 <div>
                   <h4 className="font-extrabold text-xs text-text-main uppercase tracking-wider mb-2 flex items-center gap-1.5 border-b border-home-grau/10 pb-1">
-                    <Layers size={14} className="text-shiraz" />
-                    Zugelassene System-Bauprodukte (Herstellerneutral):
-                  </h4>
+                    <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.zugelasseneSystemBauprodukteHerstellerne} /></h4>
                   <ul className="space-y-2 text-xs text-text-main/70">
                     {(() => {
                       const res = getAdvisorRecommendation();
@@ -1234,15 +1023,13 @@ export default function BpAbdichtung() {
                 {/* Technical Specifications */}
                 <div>
                   <h4 className="font-extrabold text-xs text-text-main uppercase tracking-wider mb-2 flex items-center gap-1.5 border-b border-home-grau/10 pb-1">
-                    <Wrench size={14} className="text-shiraz" />
-                    Soll-Dimensionierung &amp; Einbaurichtlinien:
-                  </h4>
+                    <Wrench size={14} className="text-shiraz" /><MdText text={inhalt.texte.sollDimensionierungEinbaurichtlinien} /></h4>
                   <div className="bg-stone-50 border border-home-grau/15 rounded-lg overflow-hidden text-xs">
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="border-b border-home-grau/15 bg-white">
-                          <th className="p-2 font-bold text-text-main w-2/5">Vorgeschriebener Parameter</th>
-                          <th className="p-2 font-bold text-text-main w-3/5">Technische Mindestanforderung / Wert</th>
+                          <th className="p-2 font-bold text-text-main w-2/5"><MdText text={inhalt.texte.vorgeschriebenerParameter} /></th>
+                          <th className="p-2 font-bold text-text-main w-3/5"><MdText text={inhalt.texte.technischeMindestanforderungWert} /></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1263,9 +1050,7 @@ export default function BpAbdichtung() {
                 {/* Technical Standards references */}
                 <div>
                   <h4 className="font-extrabold text-xs text-text-main uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                    <FileText size={14} className="text-shiraz" />
-                    Konformität &amp; anwendbares Baurecht:
-                  </h4>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.konformitätAnwendbaresBaurecht} /></h4>
                   <ul className="list-disc list-inside space-y-1 text-xs text-text-main/60 pl-1 leading-normal">
                     {(() => {
                       const res = getAdvisorRecommendation();
@@ -1293,16 +1078,11 @@ export default function BpAbdichtung() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Nassschichtdicke einer PMBC-Abdichtung (W2.1-E)"
+          title={inhalt.werte.anwendungsbeispielNassschichtdickeEinerP}
           zielGleichung="d_{wet} = \frac{d_{dry}}{1 - V_{fl}/100}"
-          normQuelle="DIN 18533-3 (Mindesttrockenschichtdicke); Feststoffanteil als Lehrannahme"
-          schritte={[
-            { titel: '1. Anforderung', formel: 'd_{dry} \\ge 4{,}0\\,\\text{mm}', erklaerung: 'W2.1-E: Mindesttrockenschichtdicke mit Verstärkungseinlage.' },
-            { titel: '2. Flüchtige Anteile', formel: 'V_{fl} = 30\\,\\%', erklaerung: 'Wasser der Bitumenemulsion, das verdunstet (Lehrannahme; Herstellerangabe maßgebend).' },
-            { titel: '3. Nassschichtdicke', formel: 'd_{wet} = 4{,}0 / 0{,}70 = 5{,}7\\,\\text{mm}', erklaerung: 'Mit dem Schichtdickenkamm im frischen Zustand prüfen.' },
-            { titel: '4. Mit Zuschlag für Unebenheit', formel: 'd_{wet,Soll} \\approx 6\\,\\text{mm}', erklaerung: 'Kein Punkt darf unter dem Mindestmaß liegen.' },
-          ]}
-          ergebnisHinweis="Rund 6 mm nass, in zwei Arbeitsgängen mit eingebetteter Einlage – die Trockenschichtdicke wird zusätzlich an Referenzproben kontrolliert."
+          normQuelle={inhalt.werte.din185333Mindesttrockenschichtdicke}
+          schritte={inhalt.daten["BpAbdichtung.schritte"]}
+          ergebnisHinweis={inhalt.werte.rund6MmNass}
         />
       </div>
 
@@ -1313,31 +1093,9 @@ export default function BpAbdichtung() {
           { title: 'Bauwerksabdichtung', url: 'https://de.wikipedia.org/wiki/Bauwerksabdichtung' },
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' }
         ]} 
-        literatur={[ 
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018',
-          'Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)' 
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN 18533-1 bis -3:2023 (Abdichtung von erdberührten Bauteilen)' }, 
-          { title: 'DIN 18534 (Abdichtung von Innenräumen)' },
-          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Injektion von Betonbauteilen)' },
-          { title: 'DIN 18197 (Abdichten von Fugen in Beton mit Fugenbändern)' },
-          { title: 'ZTV-ING Teil 3 Abschnitt 5 (Füllen von Rissen und Hohlräumen in Betonbauteilen)' },
-          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
-        ]} 
-        formeln={[
-          {
-            formel: 'd_{\\text{dry}} = d_{\\text{wet}} \\cdot \\left(1 - \\frac{\\text{Flüchtige Anteile}}{100}\\right) \\ge d_{\\text{min,Norm}}',
-            erklaerung: 'Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533-3 an jeder Stelle das Mindestmaß einhalten (z. B. 3 mm bei W1-E, 4 mm mit Verstärkungseinlage bei W2.1-E).',
-            quelle: 'DIN 18533-3'
-          },
-          {
-            formel: 'V_{\\text{Riss}} \\approx w \\cdot t \\cdot l',
-            erklaerung: 'Theoretisches Füllvolumen eines Risses (Rissbreite w, Bauteildicke t, Risslänge l) zur Abschätzung der Injektionsmenge; der tatsächliche Verbrauch ist wegen Verlusten höher. Der zulässige Injektionsdruck richtet sich nach Material, Rissbreite und Bauteil (Herstellerangaben, ZTV-ING).',
-            quelle: 'Lehrmodell'
-          }
-        ]} 
+        literatur={inhalt.daten["BpAbdichtung.literatur"]} 
+        regelwerke={inhalt.daten["BpAbdichtung.regelwerke"]} 
+        formeln={inhalt.daten["BpAbdichtung.formeln"]} 
       />
     </div>
   );

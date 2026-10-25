@@ -1,5 +1,7 @@
 import { ClipboardList, List, Recycle, ShieldCheck, Database, Search, AlertTriangle, Scale } from 'lucide-react';
 import React from 'react';
+import inhalt from '@/content/abfaelle/Checklisten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ChecklistenProps {
   activeChecklistSubTab: "einstufung" | "mineralik" | "rueckbau" | "deponie" | "probenahme" | "gefahrstoffe";
@@ -11,23 +13,19 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
         <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30">
           <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2 mb-2">
-            <ClipboardList className="w-5 h-5 text-shiraz" />
-            Praxis-Checklisten für Abfälle, Altlasten und Rückbau
-          </h3>
-          <p className="text-sm text-slate-600 leading-relaxed font-normal">
-            Kompakte und rechtlich belastbare Handlungsanleitungen für die Baustellenpraxis. Wählen Sie unten ein Thema aus, um die detaillierte Checkliste für anfallende Prozesse anzuzeigen.
-          </p>
+            <ClipboardList className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.praxisChecklistenFürAbfälle} /></h3>
+          <p className="text-sm text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.kompakteUndRechtlichBelastbare} /></p>
         </div>
 
         {/* Sub-Tabs / Reiter */}
         <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4">
           {[
-            { id: 'einstufung', label: '1. Abfalleinstufung', icon: List, desc: 'KrWG / AVV / GewAbfV' },
-            { id: 'mineralik', label: '2. Ersatzbaustoffe', icon: Recycle, desc: 'EBV / Einbau' },
-            { id: 'rueckbau', label: '3. Rückbau-Audit', icon: ShieldCheck, desc: 'VDI 6202 / Abbruch' },
-            { id: 'deponie', label: '4. Deponierung', icon: Database, desc: 'DepV / DK-Zuordnung' },
-            { id: 'probenahme', label: '5. Probenahme', icon: Search, desc: 'LAGA PN 98 / DIN 19698' },
-            { id: 'gefahrstoffe', label: '6. Gefahrstoffe & PSA', icon: AlertTriangle, desc: 'TRGS 519 / 521 / 524' }
+            { id: 'einstufung', label: inhalt.werte.t1Abfalleinstufung, icon: List, desc: inhalt.werte.krwgAvvGewabfv },
+            { id: 'mineralik', label: inhalt.werte.t2Ersatzbaustoffe, icon: Recycle, desc: inhalt.werte.ebvEinbau },
+            { id: 'rueckbau', label: inhalt.werte.t3RückbauAudit, icon: ShieldCheck, desc: inhalt.werte.vdi6202Abbruch },
+            { id: 'deponie', label: inhalt.werte.t4Deponierung, icon: Database, desc: inhalt.werte.depvDkZuordnung },
+            { id: 'probenahme', label: inhalt.werte.t5Probenahme, icon: Search, desc: inhalt.werte.lagaPn98Din },
+            { id: 'gefahrstoffe', label: inhalt.werte.t6GefahrstoffePsa, icon: AlertTriangle, desc: inhalt.werte.trgs519521524 }
           ].map((subTab) => {
             const Icon = subTab.icon;
             const isActive = activeChecklistSubTab === subTab.id;
@@ -61,52 +59,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <Scale className="text-shiraz w-5 h-5" /> Leitfaden zur rechtlich belastbaren Abfalleinstufung (§ 3, 5, 8 KrWG &amp; AVV)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Rechtliche Zuordnung, Bestimmung gefährlicher/nicht gefährlicher Abfälle und Voraussetzungen für das Erreichen des Produktstatus (Abfallende).
-                </p>
+                  <Scale className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.leitfadenZurRechtlichBelastbaren} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.rechtlicheZuordnungBestimmungGefährliche} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Getrennthaltung prüfen (§ 8 GewAbfV)',
-                    desc: 'Sammeln Sie sämtliche Abbruch- und Bauabfälle (Beton, Ziegel, Fliesen, Holz, Glas, Kunststoffe, Metalle, Bitumengemische) strikt getrennt vor Ort. Falls dies technisch unmöglich oder wirtschaftlich unzumutbar ist, erstelle ein lückenloses Abfall-Getrennthaltungsprotokoll (§ 8 Abs. 3 GewAbfV) zur Vorlage bei der Kreisbehörde.',
-                    ref: 'Gewerbeabfallverordnung § 8'
-                  },
-                  {
-                    step: 2,
-                    title: 'Erstzuordnung nach Herkunft (AVV Kap. 17)',
-                    desc: 'Suchen Sie die zutreffende Abfallbezeichnung im Kapitel 17 (Bau- und Abbruchabfälle inklusive Baustellenaushub) der Abfallverzeichnis-Verordnung heraus. Nutzen Sie z. B. 17 01 01 für reinen Beton, 17 01 02 für Ziegel oder 17 05 04 für Bodenaushub.',
-                    ref: 'AVV Anhang 1 Kapitel 17'
-                  },
-                  {
-                    step: 3,
-                    title: 'Prüfung auf historische / verdeckte Schadstoffe',
-                    desc: 'Bewerten Sie Schadstoffrisiken anhand des Baujahres des Gebäudes (Asbest-Verdacht vor 1993, KMF-Verdacht vor 2000, Teer-Verdacht im Straßenbau bei alten Asphaltbelägen) und recherchieren Sie die historische Nutzung des Grundstücks im Altlastenkataster.',
-                    ref: 'VDI 6202 Blatt 1'
-                  },
-                  {
-                    step: 4,
-                    title: 'Identifikation von Spiegeleinträgen',
-                    desc: 'Analysieren Sie, ob Ihre Abfallfraktion als Spiegeleintrag deklariert ist (z.B. gefährlich: 17 05 03* vs. nicht gefährlich: 17 05 04 für Boden). Ist dies der Fall, müssen chemische Laborprüfungen angestrengt werden, um die Unterschreitung der Gefährlichkeitskriterien zu belegen.',
-                    ref: 'AVV Einleitung Abs. 2 / Bmuv'
-                  },
-                  {
-                    step: 5,
-                    title: 'Prüfung der kumulativen Voraussetzungen des Abfallendes (§ 5 KrWG)',
-                    desc: 'Kann das Material die Abfalleigenschaft verlieren und Produktstatus erlangen? Prüfen Sie: 1) Zweckbestimmung (Nutzung für Wegebau o.ä.), 2) Marktnachfrage, 3) Erfüllung aller technischen Normen (z.B. Frostschutz nach TL BuB), 4) Unbedenklichkeit für Mensch und Umwelt (EBV-Konformität).',
-                    ref: 'Kreislaufwirtschaftsgesetz § 5 (1)'
-                  },
-                  {
-                    step: 6,
-                    title: 'Dokumentation & Nachweisführung über das eANV',
-                    desc: 'Handelt es sich um einen gefährlichen Abfall (mit * markiert), muss das elektronische Abfallnachweisverfahren genutzt werden. Generieren Sie behördliche Erzeugernummern, Entsorgungsnachweise sowie Begleit- oder Übernahmescheine und bewahren Sie diese mindestens 3 Jahre ab Einstellung in das Register auf (§ 25 NachwV).',
-                    ref: 'Nachweisverordnung (NachwV) § 4'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -122,7 +80,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>
@@ -135,52 +93,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <Recycle className="text-shiraz w-5 h-5" /> Qualitätssicherung &amp; Wiedereinbau mineralischer Ersatzbaustoffe (EBV)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Voraussetzungen für den rechtskonformen Wiedereinbau von güteüberwachten Recycling-Baustoffen (RC) und Bodenmaterialien (BM).
-                </p>
+                  <Recycle className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.qualitätssicherungWiedereinbauMineralisc} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.voraussetzungenFürDenRechtskonformen} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Güteüberwachung des RC-Herstellers absichern',
-                    desc: 'Stellen Sie sicher, dass der Sekundärbaustoff aus einer gemäß EBV zugelassenen Brech- und Siebanlage stammt. Fordern Sie das aktuelle QUBA-Gütezeichen (Qualitätssicherung Sekundärbaustoffe) oder das landesspezifische QRB-Zertifikat an.',
-                    ref: 'EBV § 4 - § 11'
-                  },
-                  {
-                    step: 2,
-                    title: 'Konformitätszertifikat & Laborwerte prüfen',
-                    desc: 'Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleichen Sie die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.',
-                    ref: 'EBV Anhang 1 Tabellen'
-                  },
-                  {
-                    step: 3,
-                    title: 'Standortbezogene Schutzgebiete abgleichen',
-                    desc: 'Überprüfen Sie, ob sich der geplante Einbauort außerhalb von empfindlichen Wasserschutzgebieten (WSG Zone I, II, III/IIIA), Heilquellenschutzgebieten oder Überschwemmungsgebieten befindet. In Zone I ist der Einbau aller MEB verboten; in Zone II sind nur BM-0, BG-0, SKG und GS-0 sowie deren Gemische zulässig (§ 19 Abs. 6 EBV), in Zone III A/III B nur die nach Anlage 2 und 3 zulässigen Einbauweisen.',
-                    ref: 'EBV § 19 & Anhang 2'
-                  },
-                  {
-                    step: 4,
-                    title: 'Mindestabstand zum Grundwasser (HGW) sicherstellen',
-                    desc: 'Ermitteln Sie den höchsten Grundwasserstand (HGW). Beim Einbau von z. B. RC-1 oder BM-0* ist die Grundwasserdeckschicht nach § 19 Abs. 8 EBV nachzuweisen (günstig: grundwasserfreie Sickerstrecke > 1 m zuzüglich 0,5 m Sicherheitsabstand). Bei offener (unversiegelter) Bauweise ohne dichte Deckschicht gelten andere Grenzwerte.',
-                    ref: 'EBV § 20'
-                  },
-                  {
-                    step: 5,
-                    title: 'Bautechnische Eignung & Verdichtungsgüte nachweisen',
-                    desc: 'Stellen Sie sicher, dass das RC-Gemisch die mechanischen Anforderungen der TL Gestein-StB erfüllt (z.B. Frostbeständigkeit, Tragfähigkeit). Prüfen Sie nach Einbau den Verdichtungsgrad mittels Plattendruckversuchen (Soll-Wert: Ev2 ≥ 120 MN/m² bei Tragschichten).',
-                    ref: 'ZTV SoB-StB / DIN EN 13285'
-                  },
-                  {
-                    step: 6,
-                    title: 'Kataster- & Voranzeigepflicht prüfen (§ 22 EBV)',
-                    desc: 'Liegt die geplante Einbaumenge über 250 m³? Wenn ja, sende eine Voranzeige mindestens 4 Wochen vor Baubeginn an die zuständige Untere Umweltbehörde. Reichen Sie im Nachgang die Abschlussanzeige (Ersatzbaustoffkataster) ein.',
-                    ref: 'EBV § 22 (Bauherrenpflicht)'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten_2.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -196,7 +114,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig2} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>
@@ -209,52 +127,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <ShieldCheck className="text-shiraz w-5 h-5" /> Selektiver Rückbau &amp; Pre-Demolition-Audit (VDI 6202 Blatt 1)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Systematischer Projektablauf für Abbruch-, Entkernungs- und Rückbaumaßnahmen zur Maximierung der RC-Baustoffqualitäten und zum Schutz der Gesundheit.
-                </p>
+                  <ShieldCheck className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.selektiverRückbauPreDemolition} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.systematischerProjektablaufFürAbbruch} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Historische Recherche des Baukörpers',
-                    desc: 'Werten Sie alte Pläne, statische Nachweise und das Baulastenverzeichnis aus. Klären Sie das Baujahr (Verdacht auf asbest- und teerhaltige Baustoffe bei Objekten mit Errichtung vor 1993, KMF-Fasern vor 2000). Analysiere die gewerbliche Vornutzung (Reinigung, Galvanik, Tankstelle).',
-                    ref: 'VDI 6202 Blatt 1:2013-10; § 5a GefStoffV'
-                  },
-                  {
-                    step: 2,
-                    title: 'Visuelle Bestandserundung (Schadstoff-Audit)',
-                    desc: 'Lassen Sie das Gebäude im Vorfeld des Umbaues oder Abbruches durch einen zertifizierten Sachverständigen begehen. Markieren Sie verdächtige Bauteile (Fugenmassen, Brandschutzklappen, Fliesenkleber, Putze, künstliche Mineralwollen, Altholz im Außenbereich).',
-                    ref: 'GefStoffV / ArbSchG'
-                  },
-                  {
-                    step: 3,
-                    title: 'Probenahme- und Analytikplan (VDI 6202 Blatt 3, VDI 3866 Blatt 5)',
-                    desc: 'Legen Sie ein systematisches Raster zur Probenentnahme fest. Führen Sie gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
-                    ref: 'VDI 6202 Blatt 3:2021-09 / VDI 3866 Blatt 5'
-                  },
-                  {
-                    step: 4,
-                    title: 'Erstellung des Schadstoff- &amp; Bauteilkatasters',
-                    desc: 'Zusammenfassung aller Fundorte, Schadstoffqualitäten sowie Mengenschätzungen in einem fälschungssicheren Gutachten. Formulieren Sie spezifische Entsorgungs- und Rückbauvorgaben für die ausführenden Unternehmen und legen Sie Entsorgungswege fest.',
-                    ref: 'VDI 6202 Blatt 1:2013-10; DIN SPEC 91484:2023-09'
-                  },
-                  {
-                    step: 5,
-                    title: 'Sortenreiner Rückbau &amp; Entkernungskette',
-                    desc: 'Demontieren Sie Störstoffe, Verbundbaustoffe, Fenster, Türen und Haustechnik vollständig vor dem Abbruch. Giftige Substanzen wie asbesthaltige Dichtungen oder HBCD-haltige Dämmplatten müssen in abgeriegelten Schutzbereichen demontiert werden, bevor mechanische Baggerarbeiten an der mineralischen Haupttragstruktur starten.',
-                    ref: 'GewAbfV § 8 / TRGS 519'
-                  },
-                  {
-                    step: 6,
-                    title: 'Verwertungsbericht &amp; Behördenfreigabe',
-                    desc: 'Erstellen Sie nach Abschluss der Abbrucharbeiten eine Massenbilanz mitsamt Entsorgungsbelegen und Wiegescheinen. Legen Sie diesen Verwertungsbericht der zuständigen Bauordnungsbehörde/Umweltbehörde zur abschließenden Entlastung des Bauherrn vor.',
-                    ref: 'LBO / KrWG Abfallregister'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten_3.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -270,7 +148,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig3} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>
@@ -283,52 +161,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <Database className="text-shiraz w-5 h-5" /> Deponierungsverfahren &amp; Deklarationsgrundlagen (DepV)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Ablaufplanung zur rechtskonformen Annahme und Ablagerung ungenutzter Abfallmassen auf deponietechnischen Anlagen (DK 0 bis DK IV).
-                </p>
+                  <Database className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.deponierungsverfahrenDeklarationsgrundla} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.ablaufplanungZurRechtskonformenAnnahme} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Verwertungsausschluss formell prüfen &amp; begründen',
-                    desc: 'Dokumentieren Sie pflichtbewusst, dass eine stoffliche (z.B. Brechanlage) oder energetische Verwertung aus technischen Gründen unmöglich oder wegen unverhältnismäßiger Mehrkosten unzumutbar ist. Deponierung ist gesetzlich die allerletzte Entsorgungsstufe.',
-                    ref: 'KrWG § 6 Abfallhierarchie'
-                  },
-                  {
-                    step: 2,
-                    title: 'Grundlegende Charakterisierung (§ 8 DepV)',
-                    desc: 'Der Abfallerzeuger muss die rechtlichen Stammdaten des Abfalls schriftlich niederlegen. Dazu gehören: Herkunftsort, Genese, AVV-Schlüssel, Masse, physikalische Beschaffenheit, Geruch, Farbe und potenzielle Schadstoffrisiken.',
-                    ref: 'DepV § 8 / Anhang 3'
-                  },
-                  {
-                    step: 3,
-                    title: 'Repräsentative Deklarationsanalytik veranlassen',
-                    desc: 'Lassen Sie Feststoffe und Eluate durch ein dafür zugelassenes Prüflabor nasschemisch analysieren. Wichtige Leitparameter der Zuordnungsanalytik sind: Kohlenwasserstoffe (KW-Index), TOC, Glühverlust, Arsen, Blei, Cadmium, Kupfer, Zink, Chlorid, Sulfat und Fluorid.',
-                    ref: 'DepV Anhang 3 Tabelle 2'
-                  },
-                  {
-                    step: 4,
-                    title: 'Einstufung in Deponieklassen (DK 0 bis DK IV)',
-                    desc: 'Vergleichen Sie die Messwerte mit den Zuordnungswerten der DepV: DK 0 (unbelasteter Inertabfall), DK I (oberirdisch, geringe Belastung), DK II (Hausmüll, typischer schwerer Bauschutt), DK III (gefährlicher Industrieabfall), DK IV (Sonderabfälle, unter Tage).',
-                    ref: 'DepV Anhang 3 Tabelle 2'
-                  },
-                  {
-                    step: 5,
-                    title: 'Annahmeverfahren &amp; Entsorgungszusage',
-                    desc: 'Reichen Sie den Charakterisierungsbogen und die Analyseberichte beim Deponiebetreiber ein. Nach Einzelfallprüfung stellt die Deponie den "Bestätigungsschein" mitsamt der Zuweisung der konkreten Ablade- und Einbaustelle aus.',
-                    ref: 'DepV § 8 Abs. 4'
-                  },
-                  {
-                    step: 6,
-                    title: 'Eingangskontrolle &amp; Identitätsprüfung am Deponietor',
-                    desc: 'Jede LKW-Ladung wird am Deponietor visuell geprüft (Geruch, Fremdstoffanteil), gewogen und der Begleitschein elektronisch quittiert. Der Betreiber zieht unangekündigt Stichproben zur Absicherung ("Rückstellproben" für min. 1 Monat).',
-                    ref: 'DepV § 12'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten_4.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -344,7 +182,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig4} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>
@@ -357,52 +195,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <Search className="text-shiraz w-5 h-5" /> Repräsentative Probenahme (LAGA PN 98 / DIN 19698)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Sicherstellung der Repräsentativität bei der Feld-Beprobung von Haufwerken, Schütthalden und anstehenden Bodenschichten.
-                </p>
+                  <Search className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.repräsentativeProbenahmeLagaPn} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.sicherstellungDerRepräsentativitätBei} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Probenahmestrategie &amp; Untersuchungsziele definieren',
-                    desc: 'Erstellen Sie vorab einen schriftlichen Probenahmeplan. Bestimmen Sie das Ziel der Untersuchung (z.B. Schadstoffbewertung gemäß BBodSchV oder Entsorgungsdeklaration) und definiere die Analyse-Kennwerte im Labor.',
-                    ref: 'DIN 19698-1 / LAGA PN 98'
-                  },
-                  {
-                    step: 2,
-                    title: 'Haufwerksvolumen schätzen &amp; Beprobungszahl ermitteln',
-                    desc: 'Schätzen Sie das Volumen (V) des zu prüfenden Haufwerks ein. Ermitteln Sie die Zahl der erforderlichen Einzelproben (EP) und Mischproben (MP). (LAGA PN 98 Tabelle 2: bis 30 m³ 8 EP / 2 MP / 2 LP; bis 100 m³ 16 EP / 4 MP / 4 LP; bis 600 m³ 40 EP / 10 MP / 10 LP; darüber je angefangene 100 m³ eine weitere MP).',
-                    ref: 'LAGA PN 98 Tabelle 2'
-                  },
-                  {
-                    step: 3,
-                    title: 'Sachkundeprüfung &amp; Probenahmeausrüstung',
-                    desc: 'Beauftragen Sie ausschließlich Fachpersonal mit zertifiziertem Sachkundenachweis nach LAGA PN 98 / DIN ISO. Stellen Sie kontaminationsfreies Werkzeug (Spaten, Schaufeln aus Edelstahl) sowie sterile Probenbehälter (Weithals-Glasflaschen für Organik, PE-Beutel für Schwermetalle) bereit.',
-                    ref: 'DGUV-Regel 101-004 / LAGA'
-                  },
-                  {
-                    step: 4,
-                    title: 'Einzelproben (EP) im Feld entnehmen',
-                    desc: 'Entnehmen Sie die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwenden Sie ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
-                    ref: 'DIN 19698-1:2014-05'
-                  },
-                  {
-                    step: 5,
-                    title: 'Sorgfältige Homogenisierung &amp; Probenverjüngung',
-                    desc: 'Vereinen Sie die Einzelproben auf einer sauberen und chemisch inerten Plane zu einer Verbundprobe. Nutzen Sie Verteilmethoden (Kegeln, Vierteln und Kreuz-Vierteln), um das Probenvolumen für das Prüflabor repräsentativ zu reduzieren.',
-                    ref: 'LAGA PN 98 Anhänge / DIN 19698'
-                  },
-                  {
-                    step: 6,
-                    title: 'Protokollierung &amp; gekühlter Transport',
-                    desc: 'Dokumentieren Sie jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
-                    ref: 'DIN 19698-1:2014-05'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten_5.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -418,7 +216,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig5} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>
@@ -431,52 +229,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             <div className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <AlertTriangle className="text-shiraz w-5 h-5" /> Gefahrstoffe, Arbeitsschutz &amp; PSA (Asbest, KMF, PCB)
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Sicherheitstechnische Schutzmaßnahmen, behördliche Anzeigepflichten und Entsorgungserfordernisse im Umgang mit toxischen Bauststoffen auf Sanierungsbaustellen.
-                </p>
+                  <AlertTriangle className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.gefahrstoffeArbeitsschutzPsaAsbest} /></h4>
+                <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.sicherheitstechnischeSchutzmaßnahmenBehö} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    step: 1,
-                    title: 'Gefahrstoff-Identifikation im Bestand',
-                    desc: 'Lokalisieren Sie kritische Schadstoffe im Bestand: Liegt Asbest vor (z. B. asbesthaltige Dichtungen, Fliesenkleber)? Gibt es künstliche Mineralfasern (KMF) ohne Nachweis der Biosolubilität? Sind Teerkleber unter Parkett oder polychlorierte Biphenyle (PCB) in Dehnungsfugen vorhanden?',
-                    ref: 'GefStoffV Anhang II'
-                  },
-                  {
-                    step: 2,
-                    title: 'Gefährdungsbeurteilung &amp; behördliche Arbeitsanzeige',
-                    desc: 'Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Tätigkeiten mit Asbest (TRGS 519) sind der zuständigen Behörde (Gewerbeaufsicht) spätestens eine Woche vor Beginn anzuzeigen (§ 11a GefStoffV); Arbeiten in kontaminierten Bereichen (TRGS 524) sind ebenfalls rechtzeitig vor Beginn der Behörde und der BG BAU anzuzeigen.',
-                    ref: 'GefStoffV / TRGS 519 Abs. 3'
-                  },
-                  {
-                    step: 3,
-                    title: 'Personelle Sachkunde &amp; Fachbetriebsnachweis',
-                    desc: 'Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stellen Sie sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.',
-                    ref: 'TRGS 519 Abs. 2.7 / TRGS 524'
-                  },
-                  {
-                    step: 4,
-                    title: 'Einrichtung von Sicherheitsbereichen &amp; Schutzstufen',
-                    desc: 'Richten Sie staubdichte Abschottungen (Schwarz-Weiß-Bereiche) mit Unterdruckanlagen und Schleusen ein, um eine Faserverschleppung in unbelastete Gebäudeteile auszuschließen. Verhindern Sie Staubbildung durch permanentes Befeuchten oder Absaugen.',
-                    ref: 'TRGS 519 Abs. 7'
-                  },
-                  {
-                    step: 5,
-                    title: 'Persönliche Schutzausrüstung (PSA) bereitstellen',
-                    desc: 'Rüsten Sie sämtliche im Arbeitsbereich tätige Mitarbeiter mit partikelfiltrierendem Atemschutz (min. Halbmasken mit P3-Filter oder gebläseunterstützte Vollhauben), staubdichten Einweg-Schutzanzügen (Typ 5/6, z. B. Tyvek), dichten Schutzbrillen und Handschuhen aus.',
-                    ref: 'TRGS 519 Abs. 9 / TRGS 521'
-                  },
-                  {
-                    step: 6,
-                    title: 'Verpackung, Kennzeichnung &amp; eANV-Transport',
-                    desc: 'Verpacken Sie kontaminierte Massen direkt an der Arbeitsstelle in staubdichte, zugelassene Big-Bags oder Platten-Bags, die mit dem offiziellen Asbest-Warnzeichen ("a"-Symbol) bedruckt sind. Deklarieren Sie das Material als gefährlichen Abfall.',
-                    ref: 'GefStoffV § 8 / TRGS 519 Abs. 14'
-                  }
-                ].map((item) => (
+                {inhalt.daten.Checklisten_6.map((item) => (
                   <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -492,7 +250,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
                       </p>
                     </div>
                     <div className="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-mono font-medium text-slate-400">
-                      <span>Status: Beachtungspflichtig</span>
+                      <span><MdText text={inhalt.texte.statusBeachtungspflichtig6} /></span>
                       <span className="text-shiraz">{item.ref}</span>
                     </div>
                   </div>

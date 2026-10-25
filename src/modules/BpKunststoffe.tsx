@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpkunststoffe/BpKunststoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface PlasticType {
   id: string;
@@ -45,12 +47,12 @@ interface PlasticType {
 const plasticsDatabase: PlasticType[] = [
   {
     id: 'pe',
-    name: 'Polyethylen (PE-HD / PE-LD)',
+    name: inhalt.werte.polyethylenPeHdPe,
     short: 'PE',
     density: 0.95,
     lambda: 0.40,
     alpha: 200, // extremely high thermal expansion
-    tempRange: '-50 °C bis +85 °C',
+    tempRange: inhalt.werte.t50CBis85,
     resistances: {
       acids: 'A',
       alkalis: 'A',
@@ -58,17 +60,17 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'B',
       uv: 'B' // Needs carbon black additives to be UV stable
     },
-    pros: ['Hervorragende Zähigkeit bei Kälte', 'Geringes Gewicht', 'Keine Weichmacher', 'Physiologisch unbedenklich (Trinkwasser)'],
-    mainApp: 'Dampfbremsfolien, Gas- und Trinkwasserrohre im Erdreich, Drainagefolien'
+    pros: [inhalt.werte.hervorragendeZähigkeitBeiKälte, inhalt.werte.geringesGewicht, inhalt.werte.keineWeichmacher, inhalt.werte.physiologischUnbedenklichTrinkwasser],
+    mainApp: inhalt.werte.dampfbremsfolienGasUndTrinkwasserrohre
   },
   {
     id: 'pvc-u',
-    name: 'Hart-PVC (Polyvinylchlorid unplastifiziert)',
+    name: inhalt.werte.hartPvcPolyvinylchloridUnplastifiziert,
     short: 'PVC-U',
     density: 1.40,
     lambda: 0.15,
     alpha: 80,
-    tempRange: '0 °C bis +60 °C',
+    tempRange: inhalt.werte.t0CBis60,
     resistances: {
       acids: 'A',
       alkalis: 'A',
@@ -76,17 +78,17 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'A',
       uv: 'A'
     },
-    pros: ['Sehr hohe mechanische Steifigkeit', 'Flammwidrig (selbstlöschend)', 'Äußerst kostengünstig', 'Lange Nutzungsdauer'],
-    mainApp: 'Kanalrohre (KG-Rohre), Fensterprofile, Kabelkanäle, Regenrinnen'
+    pros: [inhalt.werte.sehrHoheMechanischeSteifigkeit, inhalt.werte.flammwidrigSelbstlöschend, inhalt.werte.äußerstKostengünstig, inhalt.werte.langeNutzungsdauer],
+    mainApp: inhalt.werte.kanalrohreKgRohreFensterprofile
   },
   {
     id: 'pp',
-    name: 'Polypropylen (PP)',
+    name: inhalt.werte.polypropylenPp,
     short: 'PP',
     density: 0.91,
     lambda: 0.22,
     alpha: 150,
-    tempRange: '0 °C bis +100 °C (heißwasserbeständig)',
+    tempRange: inhalt.werte.t0CBis100,
     resistances: {
       acids: 'A',
       alkalis: 'A',
@@ -94,17 +96,17 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'B',
       uv: 'C' // Sehr empfindlich gegen UV-Strahlung ohne Stabilisierung
     },
-    pros: ['Hohe Wärmeformbeständigkeit', 'Sehr gute Schlagzähigkeit', 'Hervorragend recycelbar'],
-    mainApp: 'Hausabflussrohre (HT-Heißwasserrohre), Geotextilien, Fassadenbahnen'
+    pros: [inhalt.werte.hoheWärmeformbeständigkeit, inhalt.werte.sehrGuteSchlagzähigkeit, inhalt.werte.hervorragendRecycelbar],
+    mainApp: inhalt.werte.hausabflussrohreHtHeißwasserrohreGeotext
   },
   {
     id: 'epdm',
-    name: 'EPDM (Kautschuk-Elastomer)',
+    name: inhalt.werte.epdmKautschukElastomer,
     short: 'EPDM',
     density: 1.20,
     lambda: 0.25,
     alpha: 160,
-    tempRange: '-40 °C bis +120 °C',
+    tempRange: inhalt.werte.t40CBis120,
     resistances: {
       acids: 'A',
       alkalis: 'A',
@@ -112,17 +114,17 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'C',
       uv: 'A' // Phänomenale Witterungs- und Ozonstabilität
     },
-    pros: ['Extreme Elastizität (>400% Dehnung)', 'Sicherer Verbund, extrem witterungs- und ozonbeständig (>50 Jahre Lebensdauer)'],
-    mainApp: 'Teichfolien, Flachdachbahnen (Resitrix), Dichtungsprofile bei Fenstern'
+    pros: [inhalt.werte.extremeElastizität400Dehnung, inhalt.werte.sichererVerbundExtremWitterungs],
+    mainApp: inhalt.werte.teichfolienFlachdachbahnenResitrixDichtu
   },
   {
     id: 'pmma',
-    name: 'Acrylglas (Polymethylmethacrylat)',
+    name: inhalt.werte.acrylglasPolymethylmethacrylat,
     short: 'PMMA',
     density: 1.19,
     lambda: 0.19,
     alpha: 70,
-    tempRange: '-40 °C bis +80 °C',
+    tempRange: inhalt.werte.t40CBis80,
     resistances: {
       acids: 'B',
       alkalis: 'B',
@@ -130,17 +132,17 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'B',
       uv: 'A' // Höchste UV-Stabilität und sehr gute Transparenz
     },
-    pros: ['Lichtdurchlässigkeit (92%) höher als Glas', 'Hervorragende Brillanz und Farbechtheit', 'Wetterfest'],
-    mainApp: 'Lärmschutzwände, Lichtkuppeln, Plexiglasscheiben, Sanitärelemente'
+    pros: [inhalt.werte.lichtdurchlässigkeit92HöherAls, inhalt.werte.hervorragendeBrillanzUndFarbechtheit, 'Wetterfest'],
+    mainApp: inhalt.werte.lärmschutzwändeLichtkuppelnPlexiglassche
   },
   {
     id: 'pc',
-    name: 'Polycarbonat (PC)',
+    name: inhalt.werte.polycarbonatPc,
     short: 'PC',
     density: 1.20,
     lambda: 0.20,
     alpha: 65,
-    tempRange: '-40 °C bis +120 °C',
+    tempRange: inhalt.werte.t40CBis1202,
     resistances: {
       acids: 'A',
       alkalis: 'C',
@@ -148,8 +150,8 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'B',
       uv: 'C' // Vergilbt ohne spezielle UV-Schutzlackierung
     },
-    pros: ['Sehr hohe Schlagzähigkeit (auch für durchwurf-/durchschusshemmende Verglasungen)', 'Hohe Wärmeformbeständigkeit', 'Glasartig glänzende Optik'],
-    mainApp: 'Vandalismus-Schutzverglasungen, Gewächshäuser (Stegmehrfachplatten), Schutzhelme'
+    pros: [inhalt.werte.sehrHoheSchlagzähigkeitAuch, inhalt.werte.hoheWärmeformbeständigkeit2, inhalt.werte.glasartigGlänzendeOptik],
+    mainApp: inhalt.werte.vandalismusSchutzverglasungenGewächshäus
   }
 ];
 
@@ -164,12 +166,8 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Kunststoffe im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Weiter zu den anderen Teilen des Lehrpfads:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadKunststoffeIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.weiterZuDenAnderen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -184,11 +182,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Eigenschaften</span>
+            <span><MdText text={inhalt.texte.t1BaustoffEigenschaften} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Thermoplasten vs. Duroplasten, E-Modul-Temperatur-Scherkurven & Arten.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.thermoplastenVsDuroplastenE} /></span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -208,11 +204,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik & Rechner</span>
+            <span><MdText text={inhalt.texte.t2MechanikRechner} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            PE-HD Folien, PVC-U Rohre, Flachdachbahnen (EPDM) & Dehnungsrechner.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.peHdFolienPvc} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -232,11 +226,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Alterung & Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3AlterungDauerhaftigkeit} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            UV-Verspödung, Weichmacher-Auswaschung, Spannungsrisse & thermische Alterung.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.uvVerspödungWeichmacherAuswaschung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -271,40 +263,7 @@ export default function BpKunststoffe() {
   const elongationConcrete = 10 * length * tempDelta * 0.001; // mm (Concrete ~ 10)
 
   // Burgers calculation
-  const burgersParams = {
-    pe: { 
-      name: 'PE-HD (Polyethylen)', 
-      E1: 1000, 
-      E2: 700, 
-      eta1: 35000, 
-      eta2: 1200, 
-      desc: 'Hohe Kriechneigung. Zeigt unter Dauerlast erhebliche viskositäre Verformungen sowie verzögerte Rückstellkräfte.' 
-    },
-    pvc: { 
-      name: 'PVC-U (Hart-PVC)', 
-      E1: 3000, 
-      E2: 2400, 
-      eta1: 180000, 
-      eta2: 8000, 
-      desc: 'Sehr formstabil im baurelevanten Temperaturbereich. Geringes viskoses Fließen und hohe Eigendämpfung.' 
-    },
-    pmma: { 
-      name: 'PMMA (Acrylglas)', 
-      E1: 3300, 
-      E2: 3800, 
-      eta1: 320000, 
-      eta2: 15000, 
-      desc: 'Hohe Steifigkeit und Festigkeit. Weist die geringsten Langzeit-Deformationszuwächse bei normaler Beanspruchung auf.' 
-    },
-    epdm: { 
-      name: 'EPDM (Präzipitierter Kautschuk)', 
-      E1: 6, 
-      E2: 4, 
-      eta1: 250, 
-      eta2: 15, 
-      desc: 'Sehr geringe Steifigkeit; großer gummielastischer Dehnbereich.' 
-    }
-  };
+  const burgersParams = inhalt.daten["BpKunststoffe.burgersParams"];
 
   const currentBurgers = burgersParams[burgersPolymer];
   
@@ -322,23 +281,17 @@ export default function BpKunststoffe() {
       case 'A':
         return (
           <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-md font-sans text-xs font-bold leading-none">
-            <CheckCircle2 size={13} className="text-emerald-600" />
-            Hochbeständig (A)
-          </span>
+            <CheckCircle2 size={13} className="text-emerald-600" /><MdText text={inhalt.texte.hochbeständigA} /></span>
         );
       case 'B':
         return (
           <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-md font-sans text-xs font-bold leading-none animate-pulse">
-            <Info size={13} className="text-amber-600" />
-            Bedingt beständig (B)
-          </span>
+            <Info size={13} className="text-amber-600" /><MdText text={inhalt.texte.bedingtBeständigB} /></span>
         );
       case 'C':
         return (
           <span className="inline-flex items-center gap-1 bg-rose-50 text-rose-800 border border-rose-200 px-2.5 py-1 rounded-md font-sans text-xs font-bold leading-none">
-            <AlertTriangle size={13} className="text-rose-600" />
-            Ungeeignet (C)
-          </span>
+            <AlertTriangle size={13} className="text-rose-600" /><MdText text={inhalt.texte.ungeeignetC} /></span>
         );
     }
   };
@@ -354,14 +307,10 @@ export default function BpKunststoffe() {
           </div>
           <div>
             <span className="text-xs font-semibold text-shiraz uppercase tracking-wider block">Fachmodul</span>
-            <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Bauprodukte: Synthetische Kunststoffe
-            </h2>
+            <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.bauprodukteSynthetischeKunststoffe} /></h2>
           </div>
         </div>
-        <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Synthetische Bauprodukte auf Polymerbasis zeichnen sich durch flexibel modifizierbare Kennwertekombinationen aus. Die mechanisch-thermische Stabilität beruht direkt auf chemischen Reaktionstypen und molekularen Vernetzungsarchitekturen. Im Bauwesen erfordern kunststofftypische Merkmale wie <strong>photochemischer Strahlungungsabbau</strong>, <strong>Weichmachermigration</strong> und <strong>Ausflussspannungswiderstand (Viskoelastizität)</strong> differenzierte Planungsregeln und Systemkenntnisse.
-        </p>
+        <p className="text-sm text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.synthetischeBauprodukteAufPolymerbasis} /></p>
 
         {/* Tab Navigation Menu */}
         <div className="flex flex-wrap gap-1.5 pb-2 border-b border-home-grau/20 mt-6 -mx-6 px-6">
@@ -384,8 +333,7 @@ export default function BpKunststoffe() {
             }`}
             onClick={() => setActiveTab('synthese')}
           >
-            <Settings size={14} /> 1. Synthesen & Chemie
-          </button>
+            <Settings size={14} /><MdText text={inhalt.texte.t1SynthesenChemie} /></button>
 
           <button aria-pressed={activeTab === 'viskoelastizitaet'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
@@ -395,8 +343,7 @@ export default function BpKunststoffe() {
             }`}
             onClick={() => setActiveTab('viskoelastizitaet')}
           >
-            <Activity size={14} /> 2. Burgers-Kriechmodell
-          </button>
+            <Activity size={14} /><MdText text={inhalt.texte.t2BurgersKriechmodell} /></button>
 
           <button aria-pressed={activeTab === 'systeme'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
@@ -406,8 +353,7 @@ export default function BpKunststoffe() {
             }`}
             onClick={() => setActiveTab('systeme')}
           >
-            <Wrench size={14} /> 3. Bausysteme & Produkte
-          </button>
+            <Wrench size={14} /><MdText text={inhalt.texte.t3BausystemeProdukte} /></button>
 
           <button aria-pressed={activeTab === 'rechner'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
@@ -417,8 +363,7 @@ export default function BpKunststoffe() {
             }`}
             onClick={() => setActiveTab('rechner')}
           >
-            <Thermometer size={14} /> 4. Längenrechner
-          </button>
+            <Thermometer size={14} /><MdText text={inhalt.texte.t4Längenrechner} /></button>
 
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
@@ -448,7 +393,7 @@ export default function BpKunststoffe() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-200">
           {/* Left selector */}
           <div className="lg:col-span-4 space-y-3">
-            <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block">Synthetische Werkstoff-Auswahl:</span>
+            <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.synthetischeWerkstoffAuswahl} /></span>
             <div className="flex flex-col gap-2">
               {plasticsDatabase.map((p) => (
                 <button
@@ -474,11 +419,9 @@ export default function BpKunststoffe() {
             <div className="bg-emerald-50/40 p-4 border border-emerald-200/50 rounded-xl space-y-2 text-xs text-emerald-900 leading-relaxed mt-4">
               <div className="flex gap-1.5 items-center font-bold">
                 <ShieldAlert size={14} className="text-emerald-800" />
-                <span>Weichmacher-Migration beachten!</span>
+                <span><MdText text={inhalt.texte.weichmacherMigrationBeachten} /></span>
               </div>
-              <p className="font-normal text-[11px] text-emerald-950/80 leading-relaxed">
-                Bei direktem Kontakt von <strong>EPS-Dämmstoffen</strong> mit <strong>Weich-PVC-Folien (PVC-P)</strong> wandern Weichmacher in das EPS. Die PVC-Bahn schrumpft und versprödet, das EPS wird angelöst. <strong>Konstruktion:</strong> Trennlage zwischen PVC-P und EPS vorsehen (z. B. Glasvlies; Flächengewicht nach Herstellerangabe).
-              </p>
+              <p className="font-normal text-[11px] text-emerald-950/80 leading-relaxed"><MdText text={inhalt.texte.beiDirektemKontaktVon} /></p>
             </div>
           </div>
 
@@ -490,7 +433,7 @@ export default function BpKunststoffe() {
                 <h3 className="text-lg font-extrabold text-text-main">{selectedPlastic.name}</h3>
               </div>
               <div className="bg-slate-50 px-3 py-1.5 rounded-lg border border-home-grau/10 text-right">
-                <span className="text-[10px] text-text-main/40 block leading-tight">Ausdehnungskoeff. α</span>
+                <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.ausdehnungskoeff} /></span>
                 <span className="text-sm font-bold text-slate-800 font-mono">{formatDeWert(selectedPlastic.alpha)} × 10⁻⁶/K</span>
               </div>
             </div>
@@ -498,29 +441,29 @@ export default function BpKunststoffe() {
             {/* Quick Specifications */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Dichte (Haftgewicht)</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.dichteHaftgewicht} /></span>
                 <span className="text-sm font-bold font-mono text-slate-800">{formatDeZahl(selectedPlastic.density, 2)} g/cm³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Thermische Leitfähigkeit λ</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.thermischeLeitfähigkeit} /></span>
                 <span className="text-sm font-bold font-mono text-slate-800">{formatDeZahl(selectedPlastic.lambda, 2)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Einsatztemperatur (lim.)</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.einsatztemperaturLim} /></span>
                 <span className="text-xs font-bold text-slate-800 leading-normal block mt-1">{selectedPlastic.tempRange}</span>
               </div>
             </div>
 
             {/* Chemical Resistances Dashboard */}
             <div className="space-y-3 pt-2">
-              <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider">Chemische &amp; Mediale Beständigkeit:</span>
+              <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider"><MdText text={inhalt.texte.chemischeMedialeBeständigkeit} /></span>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
                 <div className="bg-slate-50/50 p-2.5 rounded-xl border border-home-grau/30 flex flex-col justify-between items-center text-center gap-1.5">
                   <span className="text-[10px] font-bold uppercase text-text-main/50">Säuren</span>
                   {renderRating(selectedPlastic.resistances.acids)}
                 </div>
                 <div className="bg-slate-50/50 p-2.5 rounded-xl border border-home-grau/30 flex flex-col justify-between items-center text-center gap-1.5">
-                  <span className="text-[10px] font-bold uppercase text-text-main/50">Laugen / Alkalis</span>
+                  <span className="text-[10px] font-bold uppercase text-text-main/50"><MdText text={inhalt.texte.laugenAlkalis} /></span>
                   {renderRating(selectedPlastic.resistances.alkalis)}
                 </div>
                 <div className="bg-slate-50/50 p-2.5 rounded-xl border border-home-grau/30 flex flex-col justify-between items-center text-center gap-1.5">
@@ -552,13 +495,11 @@ export default function BpKunststoffe() {
                 </ul>
               </div>
               <div className="space-y-2 bg-slate-50/70 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-xs font-bold text-text-main/50 uppercase block">Primäre Bauprodukt-Verwendung:</span>
+                <span className="text-xs font-bold text-text-main/50 uppercase block"><MdText text={inhalt.texte.primäreBauproduktVerwendung} /></span>
                 <p className="text-xs font-bold text-slate-800 leading-relaxed">
                   {selectedPlastic.mainApp}
                 </p>
-                <span className="text-[10px] text-text-main/50 leading-relaxed mt-1 block font-normal leading-normal">
-                  Im erdberührten Bauwerksschutz sind thermo-mechanische Spannungen aufgrund hoher Verlegungspräzision gering zu halten (Längsdehnung!).
-                </span>
+                <span className="text-[10px] text-text-main/50 leading-relaxed mt-1 block font-normal leading-normal"><MdText text={inhalt.texte.imErdberührtenBauwerksschutzSind} /></span>
               </div>
             </div>
           </div>
@@ -570,11 +511,8 @@ export default function BpKunststoffe() {
         <div className="space-y-6 animate-in fade-in duration-200">
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm">
             <h3 className="text-lg font-extrabold text-slate-850 mb-2 flex items-center gap-2">
-              <Settings className="text-shiraz" size={20} /> Synthesereaktionen & Reaktionsmechanismen
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Kunststoffe werden durch kovalente Verknüpfung niedermolekularer Monomere zu langkettigen Makromolekülen synthetisiert. Die Herstellungsreaktionen bestimmen im hohen Maße das chemische Tragwerk (Kettenaufbau, Reinheit, Restmonomeranteile) und werden in drei Fundamentalpfade unterteilt:
-            </p>
+              <Settings className="text-shiraz" size={20} /><MdText text={inhalt.texte.synthesereaktionenReaktionsmechanismen} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.kunststoffeWerdenDurchKovalente} /></p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -586,24 +524,22 @@ export default function BpKunststoffe() {
                   <span className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold px-2 py-1 rounded-md uppercase">
                     Polymerisation
                   </span>
-                  <span className="text-xs font-semibold text-slate-400 font-mono">Keine Spaltprodukte</span>
+                  <span className="text-xs font-semibold text-slate-400 font-mono"><MdText text={inhalt.texte.keineSpaltprodukte} /></span>
                 </div>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-2">Kettenpolymerisation (C=C Öffnung)</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Doppelbindungen ungesättigter Monomere werden thermisch oder katalytisch (freies Radikal <InlineMath math="R^\bullet" />) aufgebrochen. Die Monomere lagern sich in einer schnellen Kettenreaktion kontinuierlich an, ohne dass kleine Spaltmoleküle abgespalten werden.
-                </p>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-2"><MdText text={inhalt.texte.kettenpolymerisationCCÖffnung} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4"><MdText text={inhalt.texte.doppelbindungenUngesättigterMonomereWerd} /></p>
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-1">
-                  <span className="font-bold text-[10px] block">CHEMISCHE MATRIX</span>
-                  <code className="text-shiraz font-mono block text-[11px]">n CH₂=CH-Cl → -[CH₂-CHCl]-n</code>
-                  <span className="text-[10px] text-slate-500 block">Reines Polymerohne verbleibende Abgase.</span>
+                  <span className="font-bold text-[10px] block"><MdText text={inhalt.texte.chemischeMatrix} /></span>
+                  <code className="text-shiraz font-mono block text-[11px]"><MdText text={inhalt.texte.nChChCl} /></code>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.reinesPolymerohneVerbleibendeAbgase} /></span>
                 </div>
               </div>
               <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
-                <span className="text-[10px] font-bold block uppercase text-slate-400">Reale Systeme &amp; Industriemarken</span>
+                <span className="text-[10px] font-bold block uppercase text-slate-400"><MdText text={inhalt.texte.realeSystemeIndustriemarken} /></span>
                 <div className="text-xs space-y-1 text-slate-700">
-                  <p>• <strong>KG-Kanalgrundrohr (z. B. Ostendorf als Beispiel):</strong> PVC-U Abwasserrohre</p>
-                  <p>• <strong>PE-HD-Entwässerungssystem (z. B. Geberit als Beispiel):</strong> Entwässerungssysteme im Industriebau</p>
-                  <p>• <strong>Feuchtevariable Dampfbremsbahn (z. B. Pro Clima Intello als Beispiel):</strong> Feuchtevariable PE-Polymerbahnen</p>
+                  <p><MdText text={inhalt.texte.kgKanalgrundrohrZB} /></p>
+                  <p><MdText text={inhalt.texte.peHdEntwässerungssystemZ} /></p>
+                  <p><MdText text={inhalt.texte.feuchtevariableDampfbremsbahnZB} /></p>
                 </div>
               </div>
             </div>
@@ -615,24 +551,22 @@ export default function BpKunststoffe() {
                   <span className="bg-purple-50 text-purple-800 border border-purple-200 text-[10px] font-bold px-2 py-1 rounded-md uppercase">
                     Polyaddition
                   </span>
-                  <span className="text-xs font-semibold text-slate-400 font-mono">H-Umlagerung, Rein</span>
+                  <span className="text-xs font-semibold text-slate-400 font-mono"><MdText text={inhalt.texte.hUmlagerungRein} /></span>
                 </div>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-2">Stufenaddition (Hydrogen-Shift)</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Reaktion von Monomeren mit unterschiedlichen funktionellen Endgruppen (z.B. Isocyanate und Alkohole). Die Bindung entsteht durch Umlagerung von Wasserstoffatomen. Es spalten sich auch hier keine Nebenprodukte ab. Das Polymer ist sofort homogen.
-                </p>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-2"><MdText text={inhalt.texte.stufenadditionHydrogenShift} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4"><MdText text={inhalt.texte.reaktionVonMonomerenMit} /></p>
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-1">
-                  <span className="font-bold text-[10px] block">CHEMISCHE MATRIX</span>
-                  <code className="text-shiraz font-mono block text-[10px]">O=C=N-R-N=C=O + HO-R'-OH → [Urethanbrücken]</code>
-                  <span className="text-[10px] text-slate-500 block">Verzögerungsfreie Vernetzung unter Hitze/Druck.</span>
+                  <span className="font-bold text-[10px] block"><MdText text={inhalt.texte.chemischeMatrix2} /></span>
+                  <code className="text-shiraz font-mono block text-[10px]"><MdText text={inhalt.texte.oCNR} /></code>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.verzögerungsfreieVernetzungUnterHitze} /></span>
                 </div>
               </div>
               <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
-                <span className="text-[10px] font-bold block uppercase text-slate-400">Systemlösungen der Praxis</span>
+                <span className="text-[10px] font-bold block uppercase text-slate-400"><MdText text={inhalt.texte.systemlösungenDerPraxis} /></span>
                 <div className="text-xs space-y-1 text-slate-700">
-                  <p>• <strong>PIR-Dauerschäumungen:</strong> Polyurethan-Hartschaum (<InlineMath math="\lambda = 0{,}022\text{ W/(m}\cdot\text{K)}" />)</p>
-                  <p>• <strong>CFK-Verstärkungslamellen:</strong> Epoxidharz-gebundene CFK-Lamellen</p>
-                  <p>• <strong>2K-Epoxidschutzschichten:</strong> Reaktionsharzbeschichtungen für befahrbare Parkdecks</p>
+                  <p><MdText text={inhalt.texte.pirDauerschäumungenPolyurethanHartschaum} /></p>
+                  <p><MdText text={inhalt.texte.cfkVerstärkungslamellenEpoxidharzGebunde} /></p>
+                  <p><MdText text={inhalt.texte.t2kEpoxidschutzschichtenReaktionsharzbesc} /></p>
                 </div>
               </div>
             </div>
@@ -644,24 +578,22 @@ export default function BpKunststoffe() {
                   <span className="bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold px-2 py-1 rounded-md uppercase">
                     Polykondensation
                   </span>
-                  <span className="text-xs font-semibold text-slate-400 font-mono">Abspaltung (H₂O, HCl)</span>
+                  <span className="text-xs font-semibold text-slate-400 font-mono"><MdText text={inhalt.texte.abspaltungHOHcl} /></span>
                 </div>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-2">Kondensationspolymerisation (Step-Growth)</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Monomere reagieren unter obligatorischer Abspaltung eines niedermolekularen Spaltprodukts (oft Wasser H₂O oder Chlorwasserstoff HCl). Die Reaktion erfordert lange Verweilzeiten und ist thermodynamisch reversibel (Achtung vor Hydrolyse im feuchten Zustand!).
-                </p>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-2"><MdText text={inhalt.texte.kondensationspolymerisationStepGrowth} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4"><MdText text={inhalt.texte.monomereReagierenUnterObligatorischer} /></p>
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-1">
-                  <span className="font-bold text-[10px] block">CHEMISCHE MATRIX</span>
-                  <code className="text-shiraz font-mono block text-[11px]">R-COOH + R\'-NH₂ → R-CO-NH-R\' + H₂O ↑</code>
-                  <span className="text-[10px] text-slate-500 block">Das abgeführte Wasser muss abgesaugt werden.</span>
+                  <span className="font-bold text-[10px] block"><MdText text={inhalt.texte.chemischeMatrix3} /></span>
+                  <code className="text-shiraz font-mono block text-[11px]"><MdText text={inhalt.texte.rCoohRNh} /></code>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.dasAbgeführteWasserMuss} /></span>
                 </div>
               </div>
               <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
-                <span className="text-[10px] font-bold block uppercase text-slate-400">Systemlösungen der Praxis</span>
+                <span className="text-[10px] font-bold block uppercase text-slate-400"><MdText text={inhalt.texte.systemlösungenDerPraxis2} /></span>
                 <div className="text-xs space-y-1 text-slate-700">
-                  <p>• <strong>Polyamid-Verbindungselemente:</strong> Konstruktionen aus Polyamid 6 (Nylon-Kondensat)</p>
-                  <p>• <strong>Phenolharz-Hartschaumplatten:</strong> Hochleistungsträger für schlanke Wärmeschutzkerne</p>
-                  <p>• <strong>Feuchtigkeitsvernetzendes Silicon:</strong> Elastischer B1-Fugenfüllstoff</p>
+                  <p><MdText text={inhalt.texte.polyamidVerbindungselementeKonstruktione} /></p>
+                  <p><MdText text={inhalt.texte.phenolharzHartschaumplattenHochleistungs} /></p>
+                  <p><MdText text={inhalt.texte.feuchtigkeitsvernetzendesSiliconElastisc} /></p>
                 </div>
               </div>
             </div>
@@ -675,34 +607,31 @@ export default function BpKunststoffe() {
         <div className="space-y-6 animate-in fade-in duration-200">
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-3">
             <h3 className="text-lg font-extrabold text-slate-850 flex items-center gap-2">
-              <Activity className="text-shiraz" size={20} /> Viskoelastizität &amp; Das Burgers-Vier-Element-Modell
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-              Im Gegensatz zu ideal-elastischen mineralischen Baustoffen (Zementstein, Stahl) reagieren feste Kunststoffe stark zeitabhängig auf Biege- und Druckspannungen. Unter gleichbleibender mechanischer Spannung steigt die viskoelastische Verformung kontinuierlich. Das **Burgers-Modell** (Kombination aus einer Maxwell-Einheit und einer Kelvin-Voigt-Einheit in Reihe) beschreibt dieses Verhalten präzise mit vier Parametern:
-            </p>
+              <Activity className="text-shiraz" size={20} /><MdText text={inhalt.texte.viskoelastizitätDasBurgersVier} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.imGegensatzZuIdeal} /></p>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
               <div className="bg-blue-50/50 p-3 rounded-lg border border-blue-100 text-center">
-                <span className="text-[10px] text-blue-900 font-bold block uppercase leading-none mb-1">Feder E₁ (Maxwell)</span>
-                <span className="text-xs font-semibold text-slate-700">Sofort-elastische Dehnung (reversibel)</span>
+                <span className="text-[10px] text-blue-900 font-bold block uppercase leading-none mb-1"><MdText text={inhalt.texte.federEMaxwell} /></span>
+                <span className="text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.sofortElastischeDehnungReversibel} /></span>
               </div>
               <div className="bg-purple-50/50 p-3 rounded-lg border border-purple-100 text-center">
-                <span className="text-[10px] text-purple-900 font-bold block uppercase leading-none mb-1">Dämpfer η₁ (Maxwell)</span>
-                <span className="text-xs font-semibold text-slate-700">Viskoses Fließen (irreversibel / plastisch)</span>
+                <span className="text-[10px] text-purple-900 font-bold block uppercase leading-none mb-1"><MdText text={inhalt.texte.dämpferMaxwell} /></span>
+                <span className="text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.viskosesFließenIrreversibelPlastisch} /></span>
               </div>
               <div className="bg-amber-50/50 p-3 rounded-lg border border-amber-100 text-center">
-                <span className="text-[10px] text-amber-900 font-bold block uppercase leading-none mb-1">Feder E₂ (Kelvin)</span>
-                <span className="text-xs font-semibold text-slate-700">Rückstellfeder zur verzögerten Elastik</span>
+                <span className="text-[10px] text-amber-900 font-bold block uppercase leading-none mb-1"><MdText text={inhalt.texte.federEKelvin} /></span>
+                <span className="text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.rückstellfederZurVerzögertenElastik} /></span>
               </div>
               <div className="bg-emerald-50/50 p-3 rounded-lg border border-emerald-100 text-center">
-                <span className="text-[10px] text-emerald-900 font-bold block uppercase leading-none mb-1">Dämpfer η₂ (Kelvin)</span>
-                <span className="text-xs font-semibold text-slate-700">Verzögerungselement der viskoelastischen Relevanz</span>
+                <span className="text-[10px] text-emerald-900 font-bold block uppercase leading-none mb-1"><MdText text={inhalt.texte.dämpferKelvin} /></span>
+                <span className="text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.verzögerungselementDerViskoelastischenRe} /></span>
               </div>
             </div>
           </div>
 
           {/* Rheologisches SVG Schaubild */}
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-            <h4 className="font-extrabold text-sm text-slate-800">Rheologischer Modellaufbau</h4>
+            <h4 className="font-extrabold text-sm text-slate-800"><MdText text={inhalt.texte.rheologischerModellaufbau} /></h4>
             <div className="flex flex-col md:flex-row gap-6 items-center bg-slate-50 p-4 rounded-xl border border-slate-200">
               <div className="w-full md:w-1/3 flex justify-center py-2">
                 <svg width="220" height="150" viewBox="0 0 220 150" className="opacity-90">
@@ -749,19 +678,15 @@ export default function BpKunststoffe() {
                 </svg>
               </div>
               <div className="w-full md:w-2/3 space-y-2 text-xs">
-                <span className="font-bold text-slate-800 block">Kriech-Mathematik für Bauteilprüfungen:</span>
-                <p className="leading-relaxed font-normal">
-                  Die Kriechgleichung ermittelt die resultierende Gesamtdehnung <InlineMath math="\varepsilon(t)" /> im Belastungsverlauf:
-                </p>
+                <span className="font-bold text-slate-800 block"><MdText text={inhalt.texte.kriechMathematikFürBauteilprüfungen} /></span>
+                <p className="leading-relaxed font-normal"><MdText text={inhalt.texte.dieKriechgleichungErmitteltDie} /></p>
                 <div className="bg-white p-3 rounded border border-slate-200 text-center py-2.5">
-                  <code className="text-shiraz font-semibold font-mono text-xs sm:text-sm">
-                    ε(t) = σ₀/E₁ + (σ₀/η₁)·t + (σ₀/E₂)·[1 - e^(-(E₂/η₂)·t)]
-                  </code>
+                  <code className="text-shiraz font-semibold font-mono text-xs sm:text-sm"><MdText text={inhalt.texte.tETE} /></code>
                 </div>
                 <div className="pt-1.5 space-y-1 text-[11px] text-slate-650 leading-relaxed font-normal">
-                  <p>• <strong>σ₀/E₁:</strong> Spontanelastischer, voll-reversibler Dehnweg beim Erstkontakt.</p>
-                  <p>• <strong>(σ₀/η₁)·t:</strong> Unbegrenzt ansteigendes viskoses Fließen (bleibt dauerhaft als Verzug bestehen).</p>
-                  <p>• <strong>(σ₀/E₂)·[1 - e^(-t/τ)]:</strong> Verzögerte gummielastische Dehnung mit der Retardationszeit t_ret = η₂/E₂.</p>
+                  <p><MdText text={inhalt.texte.eSpontanelastischerVollReversibler} /></p>
+                  <p><MdText text={inhalt.texte.tUnbegrenztAnsteigendesViskoses} /></p>
+                  <p><MdText text={inhalt.texte.e1ET} /></p>
                 </div>
               </div>
             </div>
@@ -769,16 +694,14 @@ export default function BpKunststoffe() {
 
           {/* Interactive Burgers Simulation Calculator */}
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
-            <h4 className="font-extrabold text-slate-850 text-sm border-b border-slate-100 pb-2">
-              Kriech-Simulator (Dehnungsberechnung unter konstanten Dauerlasten)
-            </h4>
+            <h4 className="font-extrabold text-slate-850 text-sm border-b border-slate-100 pb-2"><MdText text={inhalt.texte.kriechSimulatorDehnungsberechnungUnter} /></h4>
             
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/* Sliders Area */}
               <div className="md:col-span-5 space-y-5">
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-text-main flex items-center justify-between">
-                    <span>1. Werkstoff wählen:</span>
+                    <span><MdText text={inhalt.texte.t1WerkstoffWählen} /></span>
                     <span className="text-xs text-shiraz font-mono font-bold">{currentBurgers.name}</span>
                   </label>
                   <select
@@ -796,7 +719,7 @@ export default function BpKunststoffe() {
 
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs font-bold">
-                    <label className="text-text-main">2. Zugspannung (Konstantlast σ₀):</label>
+                    <label className="text-text-main"><MdText text={inhalt.texte.t2ZugspannungKonstantlast} /></label>
                     <span className="text-shiraz font-mono font-bold">{formatDeZahl(burgersStress, 1)} MPa</span>
                   </div>
                   <input 
@@ -808,12 +731,12 @@ export default function BpKunststoffe() {
                     value={burgersStress}
                     onChange={(e) => setBurgersStress(Number(e.target.value))}
                   />
-                  <span className="text-[10px] text-slate-400 block leading-none">Lastniveau im Inneren von Rohrleitungen oder Tragprofilen.</span>
+                  <span className="text-[10px] text-slate-400 block leading-none"><MdText text={inhalt.texte.lastniveauImInnerenVon} /></span>
                 </div>
 
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs font-bold">
-                    <label className="text-text-main">3. Standzeit / Lastzeitraum (t):</label>
+                    <label className="text-text-main"><MdText text={inhalt.texte.t3StandzeitLastzeitraumT} /></label>
                     <span className="text-shiraz font-mono font-bold">{formatDeWert(burgersTime)} Stunden</span>
                   </div>
                   <input 
@@ -825,14 +748,14 @@ export default function BpKunststoffe() {
                     value={burgersTime}
                     onChange={(e) => setBurgersTime(Number(e.target.value))}
                   />
-                  <span className="text-[10px] text-slate-400 block leading-none">Intervall zur Veranschaulichung des fortlaufenden Kriechverhaltens.</span>
+                  <span className="text-[10px] text-slate-400 block leading-none"><MdText text={inhalt.texte.intervallZurVeranschaulichungDes} /></span>
                 </div>
               </div>
 
               {/* Outputs Area */}
               <div className="md:col-span-7 bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <span className="text-xs font-bold text-slate-700 uppercase block">Berechnungsdaten (ε-Anteile) nach {formatDeWert(burgersTime)} Stunden:</span>
+                  <span className="text-xs font-bold text-slate-700 uppercase block"><MdText text={inhalt.texte.berechnungsdatenAnteileNach} />{formatDeWert(burgersTime)} Stunden:</span>
                   
                   {/* Results bars stack representation */}
                   <div className="space-y-3.5">
@@ -840,7 +763,7 @@ export default function BpKunststoffe() {
                     {/* Elastic Strain */}
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
-                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-red-600 rounded-full inline-block"></span>Sofortelastisch (reversible ε_elastic):</span>
+                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-red-600 rounded-full inline-block"></span><MdText text={inhalt.texte.sofortelastischReversibleElastic} /></span>
                         <span className="font-mono font-bold text-red-600">{formatDeZahl(strainElastic, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -851,7 +774,7 @@ export default function BpKunststoffe() {
                     {/* Delayed elastic strain */}
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
-                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-amber-500 rounded-full inline-block"></span>Verzögert-elastisch (Viskoelastisches ε_delayed):</span>
+                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-amber-500 rounded-full inline-block"></span><MdText text={inhalt.texte.verzögertElastischViskoelastischesDelaye} /></span>
                         <span className="font-mono font-bold text-amber-500">{formatDeZahl(strainDelayed, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -862,7 +785,7 @@ export default function BpKunststoffe() {
                     {/* Viscous flow */}
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
-                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-purple-600 rounded-full inline-block"></span>Zähflüssige Gleitung (irreversibles ε_viscous):</span>
+                        <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-purple-600 rounded-full inline-block"></span><MdText text={inhalt.texte.zähflüssigeGleitungIrreversiblesViscous} /></span>
                         <span className="font-mono font-bold text-purple-600">{formatDeZahl(strainViscous, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -876,13 +799,11 @@ export default function BpKunststoffe() {
                 {/* Total results callout block */}
                 <div className="bg-white p-4 rounded-xl border border-slate-300 mt-4 flex flex-col justify-between sm:flex-row items-center gap-4">
                   <div className="text-center sm:text-left">
-                    <span className="text-[10px] text-slate-400 uppercase font-extrabold tracking-wider block">Gesamtdehnung (ε_total)</span>
+                    <span className="text-[10px] text-slate-400 uppercase font-extrabold tracking-wider block"><MdText text={inhalt.texte.gesamtdehnungTotal} /></span>
                     <span className="text-xl font-black text-rose-800 leading-tight block">{formatDeZahl(strainTotal, 3)} %</span>
-                    <span className="text-[9px] text-slate-400 font-medium leading-none block mt-0.5">Dauerhafte Kriechverformung: {formatDeZahl((strainViscous), 3)}%</span>
+                    <span className="text-[9px] text-slate-400 font-medium leading-none block mt-0.5"><MdText text={inhalt.texte.dauerhafteKriechverformung} />{formatDeZahl((strainViscous), 3)}%</span>
                   </div>
-                  <div className="bg-rose-50 text-rose-950 px-3.5 py-2 rounded-lg border border-rose-100 text-[11px] leading-relaxed max-w-[280px] font-normal">
-                    <strong>Hinweis:</strong> Unter Dauerlast sinkt der wirksame Modul (Kriechmodul E_c) von Kunststoffen deutlich – je nach Werkstoff, Temperatur und Dauer auf einen Bruchteil des Kurzzeitwerts. Für Langzeitnachweise ist daher der Kriechmodul anzusetzen.
-                  </div>
+                  <div className="bg-rose-50 text-rose-950 px-3.5 py-2 rounded-lg border border-rose-100 text-[11px] leading-relaxed max-w-[280px] font-normal"><MdText text={inhalt.texte.hinweisUnterDauerlastSinkt} /></div>
                 </div>
 
               </div>
@@ -897,11 +818,8 @@ export default function BpKunststoffe() {
         <div className="space-y-6 animate-in fade-in duration-200">
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm">
             <h3 className="text-lg font-extrabold text-slate-850 mb-2 flex items-center gap-2">
-              <Wrench className="text-shiraz" size={20} /> Baupraktische Bausysteme &amp; Kommerzielle Markenprodukte
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-              In der Bauplanung wird selten vom reinen Rohpolymer gesprochen, sondern von zugelassenen, anwendungsbereiten Baustoffsystemen. Die folgende Zusammenstellung listet die wichtigsten bauaufsichtlich geprüften Systeme auf, namentlich zugeordnet zu den führenden Branchen-Klassikern:
-            </p>
+              <Wrench className="text-shiraz" size={20} /><MdText text={inhalt.texte.baupraktischeBausystemeKommerzielleMarke} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.inDerBauplanungWird} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -909,174 +827,162 @@ export default function BpKunststoffe() {
             {/* Rohrleitungen */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Infrastruktur &amp; Haustechnik</span>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-3">Thermodimensionierte Rohrleitungssysteme</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Kanalisationen im Erdreich verlangen hohe Ringsteifigkeiten, während haustechnische Abflussleitungen heißwasser-resistent bis 95 °C sein müssen. Trinkwasser-Installationen erfordern hygienisch geeignete Werkstoffe (UBA-Bewertungsgrundlagen) und Flexibilität.
-                </p>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.infrastrukturHaustechnik} /></span>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-3"><MdText text={inhalt.texte.thermodimensionierteRohrleitungssysteme} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.kanalisationenImErdreichVerlangen} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">HT-Abflussrohr (Polypropylen, z. B. Ostendorf als Beispiel)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: PP (Polypropylen, grau) für den Heißwasser-Innenbereich. Beständig gegen alkalische Medien.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.htAbflussrohrPolypropylenZ} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffPpPolypropylenGrau} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">KG-Kanalrohr (PVC-U, z. B. Ostendorf als Beispiel)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Unplastifiziertes PVC (ziegelrot) mit hoher Ringsteifigkeit (SN4/SN8) für den Erdkabel- und Kanalbau.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.kgKanalrohrPvcU} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffUnplastifiziertesPvcZiegelrot} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">PE-Xa-Installationssystem (z. B. REHAU RAUTITAN als Beispiel)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: PE-Xa (Vernetztes Polyethylen). Sehr zähes Rohr, z. B. mit Schiebehülsen-Verbindung, für Trinkwasser- und Heizungsinstallationen.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.peXaInstallationssystemZ} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffPeXaVernetztes} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">Warmwasserleitungen aus Kunststoff dehnen sich durch Temperatur deutlich aus. Fest- und Gleitpunkte sowie Dehnungsausgleich einplanen.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.warmwasserleitungenAusKunststoffDehnen} /></p>
               </div>
             </div>
 
             {/* Dämmstoffe */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Wärmeschutz &amp; Perimeter</span>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-3">Schäumbare Thermoplaste &amp; Duroplaste</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Wärmedämmstoffe unterscheiden sich in ihrer Druckbelastbarkeit und Wasseraufnahmefähigkeit. Perimeterdämmungen im nassen Erdreich erfordern geschlossenzellige Porenstrukturen, während Flachabdichtungen geringste Leitfähigkeiten einfordern.
-                </p>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.wärmeschutzPerimeter} /></span>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-3"><MdText text={inhalt.texte.schäumbareThermoplasteDuroplaste} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.wärmedämmstoffeUnterscheidenSichIn} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Spezifische XPS-Platten</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Extrudiertes Polystyrol (XPS). Hohe Druckfestigkeit (≥ 300 kPa), sehr geringe Wasseraufnahme, für Perimeterdämmung geeignet (Anwendung im Grundwasser nach Zulassung).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.spezifischeXpsPlatten} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffExtrudiertesPolystyrolXps} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Spezifische EPS-Platten</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Expandiertes Polystyrol (EPS). Geschlossenzellig, sehr wirtschaftlich für WDVS-Fassaden. Empfindlich bei Dauernässe.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.spezifischeEpsPlatten} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffExpandiertesPolystyrolEps} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">PIR-Hartschaumplatten (Standard-Werte)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polyisocyanurat-Hartschaum (Duroplast). Dünne Platten mit sehr guter Dämmwirkung (λ ab ca. 0,022 W/(m·K), mit Alu-Kaschierung).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.pirHartschaumplattenStandardWerte} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffPolyisocyanuratHartschaumDuropl} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Phenolharz-Resolhartschaum (Standard-Werte)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Phenolformaldehyd-Resolhartschaum (λ = 0,021 W/(m·K)) für schlankeste Außendämmung. Hoher Brandschutz (B1).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.phenolharzResolhartschaumStandardWerte} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffPhenolformaldehydResolhartschau} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">XPS besitzt eine raue gaufrierte Oberfläche zur sicheren Putzhaftung im Perimeterbereich.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.xpsBesitztEineRaue} /></p>
               </div>
             </div>
 
             {/* Dichtungsbahnen */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Bauwerksabdichtung (Flachdach)</span>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-3">Dauerhafte Abdichtungsorgane</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Flachdachabdichtungen sind extremen Witterungszyklen (≥ 80 °C im Sommer unter Strahlung, ≤ -20 °C im Winter) sowie Ozonkonzentrationen ausgesetzt. Nur hochstabilisierte flexible Membranen gewährleisten Standzeiten über 40 Jahre.
-                </p>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.bauwerksabdichtungFlachdach} /></span>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-3"><MdText text={inhalt.texte.dauerhafteAbdichtungsorgane} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.flachdachabdichtungenSindExtremenWitteru} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Mehrlagige EPDM-Dichtungsbahn (selbstklebend)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: EPDM (Ethylen-Propylen-Dien-Mischpolymerisat) teils mit selbstklebender Unterseite. Sehr alterungsbeständig und wurzelfest (Nutzungsdauer nach Herstellerangaben mehrere Jahrzehnte).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.mehrlagigeEpdmDichtungsbahnSelbstklebend} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffEpdmEthylenPropylen} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">FPO-Dichtungsbahn (FPO / TPO)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Flexible Polyolefine. Ökologisch rückbaufähig, chlor- und halogenfrei, Heißluft-Schmelzschweißung an den Stoßkanten.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.fpoDichtungsbahnFpoTpo} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffFlexiblePolyolefineÖkologisch} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Weich-PVC-Dichtungsbahn (PVC-P)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Weichgemachtes PVC. Wirtschaftlichste Flachdachbahnsorte. Enthält Weichmacher, die über Jahrzehnte diffundieren können.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.weichPvcDichtungsbahnPvc} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffWeichgemachtesPvcWirtschaftlich} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">Beim Überlappen von PVC-Bahnen auf bituminösen Vorgängerbahnen unbdingt mechanische Vliestrennlagen vorsehen (Migration!).</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.beimÜberlappenVonPvc} /></p>
               </div>
             </div>
 
             {/* Flüssigabdichtung & Epoxide */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Sanierung &amp; Harzsysteme</span>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.sanierungHarzsysteme} /></span>
                 <h4 className="font-extrabold text-slate-800 text-sm mb-3">Reaktionsharz-Flüssigkunststoffe</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Komplizierte Sockelanschlüsse, Fensteranschlussfugen oder befahrbare Industrieböden erfordern flüssig aufzutragende reactive Harze, die rasch ohne Schrumpfung homogen durchhärten.
-                </p>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.komplizierteSockelanschlüsseFensteransch} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Schnellreaktives PMMA-Flüssigharz</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polymethylmethacrylat-Schnellharz. Härtet nach Zugabe eines Peroxid-Katalysators sehr schnell aus (regenfest oft nach ca. 30 min, Herstellerangabe). Geeignet für Anschlüsse an Gullys, Geländer und Durchdringungen.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.schnellreaktivesPmmaFlüssigharz} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffPolymethylmethacrylatSchnellhar} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Geruchsarmer 2K-PUR-Flüssigkunststoff</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: 2-Komponenten-Polyurethanbeschichtung. Lösemittel- und geruchsarm. Bevorzugt in Krankenhäusern, Schulen und Innenräumen zur detailreichen Flächenabdichtung.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.geruchsarmer2kPurFlüssigkunststoff} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoff2KomponentenPolyurethanbeschich} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Strukturelle CFK-Lamellen &amp; Epoxydharz-Klebstoff</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: CFK (Kohlenstofffaserverstärktes Plastik) als starre Zugschnittlamelle, verklebt mit thixotropem Zwei-Komponenten-Epoxidharzkleber zur statischen Bauwerksverstärkung im Brückenbau und Hochleistungsbauwerke.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.strukturelleCfkLamellenEpoxydharz} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffCfkKohlenstofffaserverstärktesP} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">Flüssigkunststoffe verlangen staubtrockene und tragfähige Zementuntergründe mit einer Restfeuchte ≤ 4%.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.flüssigkunststoffeVerlangenStaubtrockene} /></p>
               </div>
             </div>
 
             {/* Befestigungstechnik */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Dübel- &amp; Ankertechnik</span>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-3">Strukturelle Dübelbefestigung</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Dübel müssen Kräfte mechanisch durch Spreizung, Faltung oder Verknotung sicher übertragen. Das Trägermaterial (Polyamid PA6) beeinflusst entscheidend die Alterungsbeständigkeit und Zugbelastung über Jahrzehnte.
-                </p>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.dübelAnkertechnik} /></span>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-3"><MdText text={inhalt.texte.strukturelleDübelbefestigung} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.dübelMüssenKräfteMechanisch} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">Mehrzonen-Universaldübel (Polyamid PA6)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">2-Komponenten-Technologie: Weiches elastisches Polyamid für optimalen Halt und spreizendes robustes Polyamid 6 für sichere Führung der Stahlschraube. Passt sich durch Falten, Knoten oder Spreizen automatisch dem Baustofftyp an.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.mehrzonenUniversaldübelPolyamidPa6} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.t2KomponentenTechnologieWeiches} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">4-fach-Spreizdübel aus Polyamid</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Flügeldübel aus reinem Polyamid PA6. Hohe Auszugswerte in Vollbaustoffen wie Beton durch robusten 4-fach-Spreizdruck.</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.t4FachSpreizdübelAus} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.flügeldübelAusReinemPolyamid} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">GFK-Bewehrungsstäbe (nicht metallisch)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Hochfester glasfaserverstärkter Kunststoffstab (GFK) als Korrosionsfreie Betonbewehrungsalternative im Tiefsee- und Schienenbau (nicht magnetisch, hohe Zugfestigkeit 1000 MPa).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.gfkBewehrungsstäbeNichtMetallisch} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.hochfesterGlasfaserverstärkterKunststoff} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">Nylon-Universaldübel weisen bei Dauertemperaturen ≥ 80 °C erhebliche Tragkraftminderungen auf.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.nylonUniversaldübelWeisenBei} /></p>
               </div>
             </div>
 
             {/* Sonderanwendungen / Membranbau */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Architektonischer Membranbau</span>
-                <h4 className="font-extrabold text-slate-800 text-sm mb-3">Flurierte Polymerfolienkissen</h4>
-                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Transparente, sehr leichte Dächer überspannen große Hallen. Fluorpolymer-Folien wiegen nur einen Bruchteil von Glas und sind lichtdurchlässig, auch für UV-Strahlung.
-                </p>
+                <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.architektonischerMembranbau} /></span>
+                <h4 className="font-extrabold text-slate-800 text-sm mb-3"><MdText text={inhalt.texte.fluriertePolymerfolienkissen} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.transparenteSehrLeichteDächer} /></p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
-                    <strong className="block text-slate-800">ETFE-Kissenfassaden (z.B. Allianz-Arena)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Ethylen-Tetrafluorethylen-Copolymer-Folie (unplastifiziert). Zwei- bis fünflagige Kissen, pneumatisch mit minimalem Gebläsedruck (ca. 300 Pa) aufgespannt. UV-durchlässig, schmutzabweisend (antiadhäsive Oberfläche, kein Lotuseffekt).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.etfeKissenfassadenZB} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffEthylenTetrafluorethylenCopolym} /></span>
                   </div>
                   <div className="text-xs">
-                    <strong className="block text-slate-800">PTFE (Polytetrafluorethylen / Teflon)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Glasfasergewebe mit PTFE-Beschichtung. Hochfeste, dauerhafte Membranen für Stadion- und Hallendächer. Chemisch sehr beständig; Brandverhalten je nach Produkt bis nichtbrennbar (A2).</span>
+                    <strong className="block text-slate-800"><MdText text={inhalt.texte.ptfePolytetrafluorethylenTeflon} /></strong>
+                    <span className="text-[11px] text-slate-500 leading-normal block"><MdText text={inhalt.texte.werkstoffGlasfasergewebeMitPtfe} /></span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">ETFE-Kissen werden durch Gebläse dauerhaft unter Innendruck gehalten; bei Schnee oder Wind wird der Druck erhöht.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium"><MdText text={inhalt.texte.etfeKissenWerdenDurch} /></p>
               </div>
             </div>
 
@@ -1089,17 +995,15 @@ export default function BpKunststoffe() {
         <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-200">
           <div className="flex items-center gap-2 border-b border-home-grau/15 pb-4">
             <Thermometer className="text-shiraz" />
-            <h3 className="text-lg font-extrabold text-text-main">
-              Thermischer Längenänderungs-Rechner (α_T Schnittstelle)
-            </h3>
+            <h3 className="text-lg font-extrabold text-text-main"><MdText text={inhalt.texte.thermischerLängenänderungsRechnerT} /></h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Controls Column (col span 5) */}
             <div className="md:col-span-5 space-y-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-text-main">Vergleichs-Plastik aus Liste:</label>
-                <select aria-label="Vergleichs-Plastik aus Liste"
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.vergleichsPlastikAusListe} /></label>
+                <select aria-label={inhalt.werte.vergleichsPlastikAusListe}
                   value={comparativePlastic}
                   onChange={(e) => setComparativePlastic(e.target.value)}
                   className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800 focus:outline-none focus:border-shiraz"
@@ -1114,7 +1018,7 @@ export default function BpKunststoffe() {
 
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-xs font-bold">
-                  <label className="text-text-main">Ausgangslänge L₀ des Profils/Rohrs:</label>
+                  <label className="text-text-main"><MdText text={inhalt.texte.ausgangslängeLDesProfils} /></label>
                   <span className="text-shiraz font-mono font-bold">{formatDeZahl(length, 1)} Meter</span>
                 </div>
                 <input 
@@ -1130,7 +1034,7 @@ export default function BpKunststoffe() {
 
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-xs font-bold">
-                  <label className="text-text-main">Temperaturbereich ΔT (z. B. Montage vs. Extrem-Sommer):</label>
+                  <label className="text-text-main"><MdText text={inhalt.texte.temperaturbereichTZB} /></label>
                   <span className="text-shiraz font-mono font-bold">{formatDeWert(tempDelta)} K (°C)</span>
                 </div>
                 <input 
@@ -1142,14 +1046,14 @@ export default function BpKunststoffe() {
                   onChange={(e) => setTempDelta(Number(e.target.value))} 
                   className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
-                <span className="text-[10px] text-text-main/40 block leading-none">Wände/Verkleidungen unter direkter Solarstrahlung erreichen im Hochsommer bis zu 75°C.</span>
+                <span className="text-[10px] text-text-main/40 block leading-none"><MdText text={inhalt.texte.wändeVerkleidungenUnterDirekter} /></span>
               </div>
             </div>
 
             {/* Visual Bar Elongation comparison (col span 7) */}
             <div className="md:col-span-7 bg-slate-50 p-5 rounded-2xl border border-home-grau/30 flex flex-col justify-between gap-4">
               <div>
-                <span className="text-xs font-bold text-slate-700 uppercase block mb-3">Berechnete Längenänderung (ΔL = L₀ · α · ΔT)</span>
+                <span className="text-xs font-bold text-slate-700 uppercase block mb-3"><MdText text={inhalt.texte.berechneteLängenänderungLL} /></span>
                 
                 <div className="space-y-3 font-mono text-xs">
                   {/* comparative Plastic Bar */}
@@ -1169,7 +1073,7 @@ export default function BpKunststoffe() {
                   {/* Steel Bar */}
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-600">
-                      <span className="font-sans font-semibold text-text-main/80">Baustahl / Betonstahl (α ≈ 12):</span>
+                      <span className="font-sans font-semibold text-text-main/80"><MdText text={inhalt.texte.baustahlBetonstahl12} /></span>
                       <span className="font-bold text-slate-750">+{formatDeZahl(elongationSteel, 2)} mm</span>
                     </div>
                     <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -1183,7 +1087,7 @@ export default function BpKunststoffe() {
                   {/* Concrete Bar */}
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-600">
-                      <span className="font-sans font-semibold text-text-main/80">Beton (α ≈ 10):</span>
+                      <span className="font-sans font-semibold text-text-main/80"><MdText text={inhalt.texte.beton10} /></span>
                       <span className="font-bold text-slate-750">+{formatDeZahl(elongationConcrete, 2)} mm</span>
                     </div>
                     <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -1200,12 +1104,10 @@ export default function BpKunststoffe() {
               <div className="bg-white p-3 rounded-xl border border-rose-100/80 text-rose-900 text-xs mt-1 space-y-1">
                 <div className="flex items-center gap-1 text-red-800 font-bold">
                   <AlertTriangle size={13} />
-                  <span>Konstruktionsempfehlung gegen Zwangsspannungen</span>
+                  <span><MdText text={inhalt.texte.konstruktionsempfehlungGegenZwangsspannu} /></span>
                 </div>
-                <p className="leading-snug text-text-main/80 text-[11px] font-normal leading-relaxed">
-                  Der Thermodehnungs-Mismatch beträgt ca. <strong>{formatDeZahl((elongationPlastic / Math.max(0.1, elongationConcrete)), 1)}x</strong> gegenüber Normalbeton. Ohne Gleitmuffen oder Dehnungskompensatoren entstehen an Muffen sofort Risse und Undichtigkeiten. 
-                  {compObj.id === 'pe' && ' Bei PE-HD-Leitungen Festpunkte und Dehnungsausgleich (z. B. Dehnungsmuffen, Biegeschenkel) nach Herstellerangabe planen.'}
-                  {compObj.id === 'pvc-u' && ' Hart-PVC-Rinnen müssen an den Rinnenkopplungen min. 10 - 15 mm Verfahrweg aufweisen, ansonsten beult die Rinne im Sommer aus.'}
+                <p className="leading-snug text-text-main/80 text-[11px] font-normal leading-relaxed"><MdText text={inhalt.texte.derThermodehnungsMismatchBeträgt} /><strong>{formatDeZahl((elongationPlastic / Math.max(0.1, elongationConcrete)), 1)}x</strong><MdText text={inhalt.texte.gegenüberNormalbetonOhneGleitmuffen} />{compObj.id === 'pe' && inhalt.werte.beiPeHdLeitungen}
+                  {compObj.id === 'pvc-u' && inhalt.werte.hartPvcRinnenMüssen}
                 </p>
               </div>
             </div>
@@ -1229,16 +1131,11 @@ export default function BpKunststoffe() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Kriechdehnung im Burgers-Modell"
+          title={inhalt.werte.anwendungsbeispielKriechdehnungImBurgers}
           zielGleichung="\varepsilon(t) = \frac{\sigma_0}{E_1} + \frac{\sigma_0}{\eta_1} t + \frac{\sigma_0}{E_2}\left(1 - e^{-t E_2/\eta_2}\right)"
-          normQuelle="Rheologisches Lehrmodell (Parameter als Lehrwerte)"
-          schritte={[
-            { titel: '1. Gegeben', formel: '\\sigma_0 = 5\\,\\text{N/mm}^2,\\; E_1 = 1000,\\; E_2 = 2000\\,\\text{N/mm}^2,\\; \\eta_1 = 5 \\cdot 10^6,\\; \\eta_2 = 10^5\\,\\text{N·h/mm}^2', erklaerung: 'Thermoplast unter konstanter Spannung; t in Stunden.' },
-            { titel: '2. Sofortdehnung', formel: '\\varepsilon_0 = 5/1000 = 0{,}50\\,\\%', erklaerung: 'Elastischer Anteil (Feder E_1).' },
-            { titel: '3. Nach t = 1000 h', formel: '\\varepsilon = 0{,}50\\,\\% + \\tfrac{5 \\cdot 1000}{5 \\cdot 10^6} + \\tfrac{5}{2000}\\left(1 - e^{-20}\\right) = 0{,}50 + 0{,}10 + 0{,}25 = 0{,}85\\,\\%', erklaerung: 'Viskoses Fließen plus verzögert elastischer Anteil.' },
-            { titel: '4. Wirksamer Kriechmodul', formel: 'E_c = \\sigma_0 / \\varepsilon = 5 / 0{,}0085 = 590\\,\\text{N/mm}^2', erklaerung: 'Rund 60 % des Kurzzeitmoduls.' },
-          ]}
-          ergebnisHinweis="Schon nach gut einem Monat ist die Dehnung um 70 % gewachsen – deshalb wird mit dem Kriechmodul statt dem Kurzzeit-E-Modul bemessen."
+          normQuelle={inhalt.werte.rheologischesLehrmodellParameterAls}
+          schritte={inhalt.daten["BpKunststoffe.schritte"]}
+          ergebnisHinweis={inhalt.werte.schonNachGutEinem}
         />
       </div>
 
@@ -1246,37 +1143,13 @@ export default function BpKunststoffe() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: "Kunststoffe im Bauwesen", url: "https://de.wikipedia.org/wiki/Kunststoff" },
+          { title: inhalt.werte.kunststoffeImBauwesen, url: "https://de.wikipedia.org/wiki/Kunststoff" },
           { title: "Flachdachabdichtung", url: "https://de.wikipedia.org/wiki/Flachdach" },
-          { title: "Polymethylmethacrylat (Plexiglas)", url: "https://de.wikipedia.org/wiki/Polymethylmethacrylat" }
+          { title: inhalt.werte.polymethylmethacrylatPlexiglas, url: "https://de.wikipedia.org/wiki/Polymethylmethacrylat" }
         ]} 
-        literatur={[ 
-          'Elsner, P.; Eyerer, P.; Hirth, T. (Hrsg.): Domininghaus – Kunststoffe: Eigenschaften und Anwendungen. 8. Aufl., Berlin: Springer 2012',
-          'Ehrenstein, G. W.: Polymer-Werkstoffe. 3. Aufl., München: Hanser 2011',
-          'ZVDH: Fachregel für Abdichtungen – Flachdachrichtlinie (Ausgabe Januar 2026)' 
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)' },
-          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)' },
-          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)' }
-        ]} 
-        formeln={[
-          { 
-            formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T', 
-            erklaerung: 'Thermische Längenänderung von Kunststoffbauteilen (z.B. PE alpha_T ca. 150-200·10⁻⁶ 1/K, PVC-U ca. 70-80·10⁻⁶ 1/K im Vergleich zu Beton mit 10·10⁻⁶ 1/K).',
-            quelle: 'Domininghaus: Kunststoffe'
-          },
-          { 
-            formel: '\\sigma_{\\text{th}} = E_c(t, T) \\cdot \\alpha_T \\cdot \\Delta T', 
-            erklaerung: 'Thermisches Zwangsspannungsrisiko bei beidseitig starrer Festhaltung unter Berücksichtigung des Kriechmoduls Ec.',
-            quelle: 'Ehrenstein: Polymerwerkstoffe'
-          },
-          { 
-            formel: '\\varepsilon(t) = \\frac{\\sigma_0}{E_1} + \\frac{\\sigma_0}{\\eta_1} \\cdot t + \\frac{\\sigma_0}{E_2} \\cdot \\left(1 - e^{-\\frac{E_2}{\\eta_2} \\cdot t}\\right)', 
-            erklaerung: 'Burgers-Vier-Element-Modell (Reihenschaltung aus Maxwell- und Kelvin-Voigt-Element) zur Abbildung von elastischer Spontandehnung, viskosem Fließen und verzögerter elastischer Nachdehnung.',
-            quelle: 'Rheologie / Werkstoffkunde'
-          }
-        ]} 
+        literatur={inhalt.daten["BpKunststoffe.literatur"]} 
+        regelwerke={inhalt.daten["BpKunststoffe.regelwerke"]} 
+        formeln={inhalt.daten["BpKunststoffe.formeln"]} 
       />
     </div>
   );

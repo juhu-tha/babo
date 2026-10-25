@@ -1,0 +1,620 @@
+{
+  "texte": {
+    "zuJedemThemenblockLlm": "Zu jedem Themenblock – LLM-Grundlagen, Prompting im Ingenieurbüro, Agenten, RAG mit Regelwerken, „sich programmieren lassen“ sowie Fehlerbilder und Verifikation – gibt es eine code-freie Selbstlernübung für den Microsoft Copilot der Hochschule, mit Prompt-Vorlagen und Verifikations-Checkliste.",
+    "professionellesPromptEngineeringIm": "Professionelles Prompt Engineering im Bauwesen",
+    "künstlicheIntelligenzIstNur": "Künstliche Intelligenz ist nur so scharf wie der eingegebene Text. Reines Chatten führt oft zu verallgemeinerndem \"Schwafeln\". Für prägnante Antworten nutzen Ingenieure strukturierte Templates, die dem Modell eine \\*\\*Rolle\\*\\*, klare \\*\\*Aufgabenstellungen\\*\\*, relevante \\*\\*Randbedingungen\\*\\* und das \\*\\*Soll-Format\\*\\* vorgeben.",
+    "interaktiverBaustoffPromptGenerator": " Interaktiver Baustoff-Prompt-Generator",
+    "t1BaustoffBauprodukt": "1. Baustoff / Bauprodukt:",
+    "t2ZielsetzungAufgabe": "2. Zielsetzung / Aufgabe:",
+    "t3FormatAusgabeformat": "3. Format / Ausgabeformat:",
+    "t4TonalitätZielgruppe": "4. Tonalität / Zielgruppe:",
+    "modellInputDirektIm": " Modell-Input (Direkt im Browser edtierbar)",
+    "sieHabenDenPrompt": "Sie haben den Prompt bearbeitet. Soll er durch die neue Vorlage ersetzt werden?",
+    "vorlageÜbernehmen": "Vorlage übernehmen",
+    "eigenenTextBehalten": "Eigenen Text behalten",
+    "derPromptWirdZur": "Der Prompt wird zur Beantwortung an Google (Gemini) übermittelt. Ich gebe keine personenbezogenen oder vertraulichen Daten ein. Details in der ",
+    "geminiGeneriert": "Gemini generiert...",
+    "analyseLiveAusführen": "Analyse live ausführen",
+    "didaktischerHintergrund": "Didaktischer Hintergrund:",
+    "kiGeneriertGoogleGemini": "● KI-generiert (Google Gemini)",
+    "demoModus": "● Demo-Modus",
+    "dieKiGoogleGemini": "Die KI (Google Gemini) erzeugt eine Antwort …",
+    "kiGenerierteAntwortGoogle": "KI-generierte Antwort (Google Gemini), nicht vom Autor geprüft. Inhalte können fehlerhaft sein und ersetzen keinen Nachweis und keine Normprüfung.",
+    "goldeneRegelnPromptHacks": " Goldene Regeln & Prompt-Hacks für Ingenieure",
+    "ergänzendZumPromptGenerator": "Ergänzend zum Prompt-Generator können Sie diese bewährten Taktiken direkt in Ihren Entwurfsprozess integrieren, um Halluzinationen zu verhindern und exakte Regelwerksprüfungen zu forcieren.",
+    "stelleRückfragenVorDer": "Stelle Rückfragen vor der Bearbeitung",
+    "verhindernSieFalscheAnnahmen": "Verhindern Sie falsche Annahmen der KI. Zwingen Sie das System dazu, Unbeziffertes proaktiv zu klären, bevor wertvolle Arbeitszeit mit ungenauen Antworten verloren geht.",
+    "bevorDuMitDer": "\"Bevor du mit der Rezeptur-Berechnung beginnst: Stelle mir 3 gezielte Verständnisfragen zu den Expositionsklassen oder Baugrundverhältnissen, um Fehler zu minimieren.\"",
+    "regelwerkeAbsätzeKritischVerifizieren": "Regelwerke & Absätze kritisch verifizieren",
+    "llmsHalluzinierenGelegentlichNormnummern": "LLMs halluzinieren gelegentlich Normnummern. Fordern Sie einen expliziten, zweitstufigen Prüfdurchlauf ein, der die Ergebnisse gegen deutsches/europäisches Recht abgleicht.",
+    "erstelleDenEntwurfGehe": "\"Erstelle den Entwurf. Gehe das Dokument danach nochmals Schritt für Schritt durch und prüfe es kritisch auf Vereinbarkeit mit den Grenzwerten der DIN EN 206.\"",
+    "chainOfThoughtHerleitungsschritte": "Chain of Thought (Herleitungsschritte fordern)",
+    "fehlerBeiMathematischenBerechnungen": "Fehler bei mathematischen Berechnungen verringern sich drastisch, wenn die KI gezwungen wird, Zwischenrechnungen und Annahmen zuerst auszuschreiben.",
+    "berechneMirDiePackungsdichte": "\"Berechne mir die Packungsdichte der Gesteinskörnung. Leite jeden mathematischen Schritt nach dem Modell von Funk & Dinger einzeln her, bevor du die Gesamtsumme nennst.\"",
+    "referenzvorgabenBestimmenFewShot": "Referenzvorgaben bestimmen (Few-Shot Prompts)",
+    "fütternSieDieKi": "Füttern Sie die KI mit einem kurzen Textmuster oder einer Tabellenstruktur, um das Design und die fachliche Tiefe der Antwort exakt abzustimmen.",
+    "schreibeEinTechnischesGutachten": "\"Schreibe ein technisches Gutachten. Nutzen Sie exakt folgenden Aufbau: [Dauerhaftigkeitsklasse] / [Mikroskopischer Befund] / [Normbezug DIN 1045] / [Sanierungsempfehlung].\"",
+    "unabhängigeKiAnwendungenIm": "Unabhängige KI-Anwendungen im Überblick",
+    "verwendenSieFürIhre": "Verwenden Sie für Ihre Studienprojekte, Laborberechnungen oder wissenschaftlichen Arbeiten stets das am besten geeignete Werkzeug. Nachfolgend finden Sie eine sorgfältig kuratierte Zusammenstellung mächtiger KI-Seiten mit direktem Best-Practice-Bezug für das Bauwesen.",
+    "praxisNutzenImBauwesen": "Praxis-Nutzen im Bauwesen:"
+  },
+  "werte": {
+    "recyclingBetonRcBeton": "Recycling-Beton (RC-Beton mit Typ-1-Gesteinskörnung nach DIN EN 206 / DIN 1045-2)",
+    "einsatzImHochbauExpositionsklassen": "Einsatz im Hochbau, Expositionsklassen XC1 bis XC4, Klinkerreduktion durch Hüttensandmehl.",
+    "kunststoffmodifizierterZementärerDünnbet": "Kunststoffmodifizierter zementärer Dünnbettmörtel (DIN EN 12004 Klasse C2 TE S1)",
+    "verlegungVonGroßformatfliesenAuf": "Verlegung von Großformatfliesen auf Heizestrich (thermodynamische Längenänderungen).",
+    "brettschichtholzBshGl24hDin": "Brettschichtholz (BSH GL24h DIN EN 14080)",
+    "einsatzInChemischAggressiver": "Einsatz in chemisch aggressiver Atmosphäre (Schwimmbaddach), Holzfeuchte-Steuerung.",
+    "reguläreBauanwendung": "Reguläre Bauanwendung.",
+    "prüfsachverständigerFürBaustoffeIm": "Prüfsachverständiger für Baustoffe im Hoch- und Ingenieurbau",
+    "unabhängigerSchadengutachterImBauwesen": "Unabhängiger Schadengutachter im Bauwesen mit Schwerpunkt Werkstoffmikromechanik",
+    "dgnbAuditorUndFachexperte": "DGNB-Auditor und Fachexperte für Ökobilanzierung (LCA/EPD) nach DIN EN 15804",
+    "bautechnischerBerater": "Bautechnischer Berater",
+    "präsentierenSieDieAntwort": "Präsentieren Sie die Antwort als strukturierten technischen Bericht in Fließtext mit prägnanten ingenieurwissenschaftlichen Zwischenüberschriften (Einleitung, Untersuchung, Befund, Fazit).",
+    "gebenSieDieErgebnisse": "Geben Sie die Ergebnisse als extrem kondensierte, tabelle-ähnliche oder listenbasierte Checkliste im Telegrammstil aus. Perfekt zur schnellen Qualitätskontrolle direkt am Bau.",
+    "ergänzenSieDasErgebnis": "Ergänzen Sie das Ergebnis um ein sauberes Python-Grafikskript (z.B. Streamlit- oder Matplotlib-Code), welches die numerischen Beziehungen, Festigkeitskurven oder CO₂-Einsparungen dieses Baustoffs visualisiert.",
+    "formatierenSieDieAntwort": "Formatieren Sie die Antwort strukturiert.",
+    "wählenSieEinenHochgradig": "Wählen Sie einen hochgradig sachlichen, präzisen, akademischen Schreibstil. Verwenden Sie exakte physikalische und mikrostrukturelle Fachbegriffe (z.B. Adhäsionsversagen, Hydratationswärme, Porengrößenverteilung).",
+    "formulierenSieDieAntwort": "Formulieren Sie die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichten Sie auf unnötige akademische Schnörkel und konzentrieren Sie sich auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.",
+    "wählenSieDiePerspektive": "Wählen Sie die Perspektive eines didaktischen Hochschul-Dozenten (sokratische Methode). Erklären Sie die Hintergründe schrittweise, formulieren Sie 3 nützliche Zwischenfragen zum Selbststudium und schließen Sie mit einer eingängigen Eselsbrücke (Mnemonic) ab.",
+    "schreibenSieSachbezogen": "Schreiben Sie sachbezogen.",
+    "aSystemarchitektur": "a) Systemarchitektur",
+    "aSystemarchitektur2": "a) Systemarchitektur",
+    "bPromptingPraxis": "b) Prompting-Praxis",
+    "bPromptingPraxis2": "b) Prompting-Praxis",
+    "cLlmPraxisClaude": "c) LLM-Praxis (Claude & ChatGPT)",
+    "cLlmPraxisClaude2": "c) LLM-Praxis (Claude & ChatGPT)",
+    "dToolsFürThesen": "d) Tools für Thesen",
+    "dToolsFürThesen2": "d) Tools für Thesen",
+    "eFehlerRechtEthik": "e) Fehler, Recht & Ethik",
+    "eFehlerRechtEthik2": "e) Fehler, Recht & Ethik",
+    "fLokaleKiLm": "f) Lokale KI (LM Studio)",
+    "fLokaleKiLm2": "f) Lokale KI (LM Studio)",
+    "gHKiSeiten": "g)–h) KI-Seiten & Onlinekurse",
+    "gUnabhängigeKiSeiten": "g) Unabhängige KI-Seiten",
+    "hOnlinekurse": "h) Onlinekurse",
+    "kiInDerBaustoffkunde": "KI in der Baustoffkunde: Bereiche",
+    "künstlicheIntelligenzKiIn": "Künstliche Intelligenz (KI) in der Baustoffkunde",
+    "werkzeugeWieLlmsMaschinelles": "Werkzeuge wie LLMs, Maschinelles Lernen, Vibe Coding und KI-Agenten verändern die Art, wie Baustoffe entwickelt, geprüft und verplant werden. Dieses Modul vermittelt Grundlagen, Prompt-Konzepte, Live-Agenten-Simulationen und hilfreiche Ressourcen speziell für Bauingenieure.",
+    "schrittweiseErklärungAllerSchlüsseltechn": "Schrittweise Erklärung aller Schlüsseltechnologien der Künstlichen Intelligenz (ML, Deep Learning, LLM, RAG, Computer Vision, Agenten und Edge-KI), ihrer mathematischen Mechanismen und praktischen bautechnischen Einsatzzwecke.",
+    "promptingPraxisFürIngenieure": "Prompting-Praxis für Ingenieure",
+    "nutzenSieDenInteraktiven": "Nutzen Sie den interaktiven Prompt-Optimierer, um präzise, ingenieurgerechte Arbeitsanweisungen mit klarer Tonalität und strukturiertem Output zu generieren.",
+    "llmPraxisEffizienteAnwendung": "LLM-Praxis: Effiziente Anwendung von Claude & ChatGPT",
+    "masterWorkflowsFürBauingenieure": "Master-Workflows für Bauingenieure: Skills, MCP-Konnektoren, verlustfreie Markdown-Hierarchien, kuratierte Projektordner (CLAUDE.md) und quellenbasiertes Browser-Grounding.",
+    "toolsFürThesenBachelor": "Tools für Thesen (Bachelor- & Masterarbeiten)",
+    "wissenschaftlichesArbeitenImBauingenieur": "Wissenschaftliches Arbeiten im Bauingenieurwesen: Von Literatur-Mapping (Elicit, Connected Papers) über quellentreue Synthese (NotebookLM, Overleaf) bis zur Prüfmaschinen-Datenauswertung (Python, Cursor) und KI-Deklarationsvorlagen.",
+    "fehlerAnwendungsgrenzenRechtEthik": "Fehler, Anwendungsgrenzen, Recht & Ethik",
+    "sicherheitsUndHaftungsrisikenVon": "Sicherheits- und Haftungsrisiken von KI im Bauwesen: BGB-Werkvertragsrecht, HOAI-Sorgfaltspflichten, EU AI Act, Vermeidung von Normen-Halluzinationen und Rechenfehlern.",
+    "lokaleKiLmStudio": "Lokale KI & LM Studio (Datensouveränität)",
+    "betreibenSieLeistungsstarkeOpen": "Betreiben Sie leistungsstarke Open-Source-LLMs (z. B. Qwen, Llama, DeepSeek) offline auf Ihrer büroeigenen Hardware – ohne Cloud-Übermittlung (DSGVO-Pflichten bleiben bestehen).",
+    "unabhängigeKiRessourcenVerzeichnisse": "Unabhängige KI-Ressourcen & Verzeichnisse",
+    "eineKuratierteSammlungUnabhängiger": "Eine kuratierte Sammlung unabhängiger Suchdatenbanken, Forschungsplattformen und Repositories für weitreichende Recherchen im Bauwesen.",
+    "onlinekurseVideoLernpfadeFür": "Onlinekurse & Video-Lernpfade für Bauingenieure",
+    "kuratierteDeutschsprachigeTutorialsYoutu": "Kuratierte deutschsprachige Tutorials, YouTube-Kanäle und Hochschul-MOOCs für Python, Data Science, Machine Learning, RAG-Pipelines und lokale KI im Ingenieurwesen.",
+    "handsOnÜbungenZum": "Hands-on-Übungen zum Master-Modul",
+    "zuDenSechsÜbungen": "Zu den sechs Übungen",
+    "inDieZwischenablage": "In die Zwischenablage",
+    "promptHöchstens4000": "Prompt (höchstens 4 000 Zeichen)",
+    "websiteÖffnen": "Website öffnen",
+    "verwandteDigitalisierungsPlanungsmodule": "Verwandte Digitalisierungs- & Planungsmodule",
+    "didaktischVernetzteQuerverweiseZu": "Didaktisch vernetzte Querverweise zu BIM, Datenanalyse, Automatisierung und wissenschaftlicher Abschlussarbeit",
+    "handsOnÜbungenMaster": "Hands-on-Übungen (Master)",
+    "sechsCodeFreieSelbstlernübungen": "Sechs code-freie Selbstlernübungen mit Prompt-Vorlagen, Erwartungshorizont und Verifikations-Checkliste für den Hochschul-Copilot.",
+    "bimMaterialdatenIfc": "BIM & Materialdaten (IFC)",
+    "ifc4Ifc43Klassifikation": "IFC4/IFC4.3-Klassifikation, benutzerdefinierte Property Sets (Pset) und Baustoffdatenübergabe.",
+    "datenanalyseStatistik": "Datenanalyse & Statistik",
+    "gaußNormalverteilungKonfidenzintervalleU": "Gauß-Normalverteilung, Konfidenzintervalle und Regressionsanalyse zur Validierung von ML-Modellen.",
+    "thesenSemesterprojekte": "Thesen & Semesterprojekte",
+    "themenkatalogFürBachelorUnd": "Themenkatalog für Bachelor- und Masterarbeiten an der TH Augsburg mit KI- und Werkstofffokus.",
+    "ökobilanzierungLcaEpd": "Ökobilanzierung (LCA/EPD)",
+    "gwpBerechnungNachDin": "GWP-Berechnung nach DIN EN 15804 zur KI-gestützten Optimierung von CO₂-neutralen Bindemitteln.",
+    "messenPrüfenSensorik": "Messen & Prüfen (Sensorik)",
+    "sensorenDmsUndDigitale": "Sensoren, DMS und digitale Messdatenerfassung zur Speisung automatisierter Auswertungspipelines.",
+    "engineeringSoftwareTools": "Engineering Software & Tools",
+    "übersichtÜberFeSoftware": "Übersicht über FE-Software, BIM-Viewer, Python-Umgebungen und bauphysikalische Rechner.",
+    "beispiel1KosinusÄhnlichkeit": "Beispiel 1: Kosinus-Ähnlichkeit im RAG-Retrieval",
+    "hoheÄhnlichkeitHeißtNur": "Hohe Ähnlichkeit heißt nur thematische Nähe, nicht fachliche Richtigkeit: Der gefundene Abschnitt muss aus der aktuellen Normausgabe stammen, sonst zitiert das System veraltete Werte.",
+    "grundlagenInformationRetrievalIso": "Grundlagen Information Retrieval; ISO/IEC 22989:2022",
+    "beispiel2AusgabeEines": "Beispiel 2: Ausgabe eines einzelnen Neurons",
+    "einNetzBestehtAus": "Ein Netz besteht aus Millionen bis Milliarden solcher Gewichte; die Schwelle 0,5 ist eine Festlegung und muss an Fehlerkosten (übersehener Riss vs. Fehlalarm) angepasst werden.",
+    "goodfellowBengioCourvilleDeep": "Goodfellow/Bengio/Courville: Deep Learning (2016)",
+    "beispiel1TokenUnd": "Beispiel 1: Token- und Kostenabschätzung für eine Normenanalyse",
+    "tarifeÄndernSichHäufig": "Tarife ändern sich häufig (Stand 10/2026; vor Nutzung beim Anbieter prüfen). Bei wiederholten Rückfragen wird der gesamte Verlauf erneut als Eingabe berechnet – die Kosten wachsen mit jeder Runde.",
+    "anbieterPreislistenStand10": "Anbieter-Preislisten (Stand 10/2026)",
+    "beispiel2KontextfensterBudget": "Beispiel 2: Kontextfenster-Budget",
+    "auchWennEinDokument": "Auch wenn ein Dokument formal hineinpasst, sinkt die Trefferquote für Details in der Mitte langer Kontexte – wichtige Abschnitte gezielt zitieren lassen.",
+    "beispiel1FehlerquoteAus": "Beispiel 1: Fehlerquote aus einer Stichprobenprüfung",
+    "schonEineKleineFehlerquote": "Schon eine kleine Fehlerquote ist bei sicherheitsrelevanten Dokumenten nicht hinnehmbar. Die Stichprobe zeigt nur die Größenordnung, sie ersetzt keine Einzelprüfung.",
+    "lehrbeispielPrüfpflichtNachBgb": "Lehrbeispiel; Prüfpflicht nach BGB § 633",
+    "beispiel2MehrheitsentscheidAus": "Beispiel 2: Mehrheitsentscheid aus drei Abfragen",
+    "mehrfachabfragenErhöhenDieZuverlässigkei": "Mehrfachabfragen erhöhen die Zuverlässigkeit nur bei zufälligen Fehlern. Gegen systematische Fehler hilft nur ein unabhängiger Rechenweg, z. B. Handrechnung oder geprüfte Software.",
+    "lehrbeispielBinomialverteilung": "Lehrbeispiel (Binomialverteilung)",
+    "beispiel1PrecisionUnd": "Beispiel 1: Precision und Recall einer KI-Literatursuche",
+    "einViertelDerRelevanten": "Ein Viertel der relevanten Literatur fehlt. KI-Recherche ergänzt die systematische Suche in Fachdatenbanken und Bibliothekskatalogen, ersetzt sie aber nicht.",
+    "beispiel2BestimmtheitsmaßEines": "Beispiel 2: Bestimmtheitsmaß eines KI-generierten Auswerteskripts nachrechnen",
+    "inDerAbschlussarbeitSind": "In der Abschlussarbeit sind Werkzeug, Version und Zweck des KI-Einsatzes zu deklarieren; die Verantwortung für die Auswertung liegt bei der Verfasserin oder dem Verfasser.",
+    "prüfungsordnungDerHochschuleLehrbeispiel": "Prüfungsordnung der Hochschule; Lehrbeispiel",
+    "beispiel1FristenDer": "Beispiel 1: Fristen der KI-Verordnung",
+    "dieVerschiebungBetrifftDie": "Die Verschiebung betrifft die Hochrisiko-Pflichten; sie gilt seit Inkrafttreten der Verordnung (EU) 2026/1744 (ABl. L vom 24.07.2026) am 27.07.2026. Der Omnibus führt zudem ab 02.12.2026 zusätzliche Verbote ein.",
+    "verordnungEu20241689": "Verordnung (EU) 2024/1689 Art. 113; Digital Omnibus zur KI-VO",
+    "beispiel2BußgeldrahmenNach": "Beispiel 2: Bußgeldrahmen nach DSGVO",
+    "dasSindObergrenzenFür": "Das sind Obergrenzen für schwere Verstöße (Art. 83 Abs. 5). Die tatsächliche Höhe richtet sich nach Art, Schwere, Dauer, Vorsatz und Mitwirkung (Art. 83 Abs. 2).",
+    "verordnungEu2016679": "Verordnung (EU) 2016/679 Art. 83",
+    "beispiel1SpeicherbedarfEines": "Beispiel 1: Speicherbedarf eines quantisierten 14B-Modells",
+    "derKontextCacheWächst": "Der Kontext-Cache wächst mit der Kontextlänge; sehr lange Dokumente benötigen deutlich mehr Speicher oder werden auf CPU/RAM ausgelagert und dann langsam.",
+    "ggufLlamaCppDokumentation": "GGUF/llama.cpp-Dokumentation (github.com/ggml-org/llama.cpp)",
+    "beispiel2WirkungDer": "Beispiel 2: Wirkung der Quantisierung bei einem 70B-Modell",
+    "quantisierungKostetEtwasGenauigkeit": "Quantisierung kostet etwas Genauigkeit, besonders bei Rechenaufgaben. 42 GB Gewichte erfordern 48 GB Grafikspeicher oder einen Rechner mit 64 GB gemeinsamem Speicher.",
+    "beispiel1UnsicherheitEines": "Beispiel 1: Unsicherheit eines Benchmark-Ergebnisses",
+    "ranglistenUnabhängigerKiSeiten": "Ranglisten unabhängiger KI-Seiten sind Momentaufnahmen. Kleine Abstände sind statistisch oft nicht belastbar; maßgeblich ist ein eigener Test mit fachtypischen Aufgaben.",
+    "lehrbeispielBinomialverteilung2": "Lehrbeispiel (Binomialverteilung)",
+    "beispiel2StrombedarfUnd": "Beispiel 2: Strombedarf und Emissionen einer lokalen Auswertung",
+    "dieRechnungErfasstNur": "Die Rechnung erfasst nur den Betrieb. Herstellung der Hardware und – bei Cloud-Diensten – Rechenzentrum und Kühlung kommen hinzu und sind schwer zu beziffern.",
+    "umweltbundesamtCoEmissionsfaktorenFür": "Umweltbundesamt: CO₂-Emissionsfaktoren für den Strommix (manuell prüfen)",
+    "beispiel1EinSchritt": "Beispiel 1: Ein Schritt des Gradientenabstiegs",
+    "zuGroßeLernratenLassen": "Zu große Lernraten lassen das Verfahren über das Minimum hinausspringen, zu kleine machen es langsam – ein Kernthema fast aller Einführungskurse in maschinelles Lernen.",
+    "goodfellowBengioCourvilleDeep2": "Goodfellow/Bengio/Courville: Deep Learning (2016), Kap. 4",
+    "beispiel2LernzeitFür": "Beispiel 2: Lernzeit für einen Onlinekurs planen",
+    "ohneEigeneProgrammierübungenBleibt": "Ohne eigene Programmierübungen bleibt Videowissen oberflächlich; Lernziele vorab festlegen und mit einem kleinen eigenen Projekt abschließen.",
+    "lehrbeispielEctsLeitfaden": "Lehrbeispiel; ECTS-Leitfaden",
+    "beispiel1FestigkeitsprognoseMit": "Beispiel 1: Festigkeitsprognose mit einem linearen Lehrmodell",
+    "einPrognosemodellErsetztKeine": "Ein Prognosemodell ersetzt keine Erstprüfung und keinen Konformitätsnachweis. Außerhalb des Datenbereichs (andere Zemente, Zusatzstoffe) kann es grob falsch liegen.",
+    "dinEn206Din": "DIN EN 206 / DIN 1045-2:2023-08 (Erstprüfung)",
+    "beispiel2ModellgüteMit": "Beispiel 2: Modellgüte mit MAE und RMSE",
+    "derRmseGewichtetGroße": "Der RMSE gewichtet große Ausreißer stärker. Validierungsdaten dürfen nicht zum Training verwendet worden sein, sonst wird die Güte überschätzt.",
+    "oktober2026Ap14": "Oktober 2026 (AP 14 KI: KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt; fachliche Freigabe durch den Autor ausstehend)",
+    "künstlicheIntelligenz": "Künstliche Intelligenz",
+    "maschinellesLernen": "Maschinelles Lernen"
+  },
+  "daten": {
+    "promptPresetMaterials": [
+      {
+        "id": "beton",
+        "name": "RC-Beton (Recycling-Beton)",
+        "description": "Gesteinskörnungen und Klinkerreduktion"
+      },
+      {
+        "id": "fliesenkleber",
+        "name": "Zementärer Flexmörtel S1",
+        "description": "Kunststoffmodifiziert nach DIN EN 12004"
+      },
+      {
+        "id": "bsh",
+        "name": "Brettschichtholz (BSH)",
+        "description": "Anisotropie-Ausgleich im Holzbau"
+      }
+    ],
+    "promptObjectives": [
+      {
+        "id": "norm",
+        "name": "Regelwerksprüfung & Konformität",
+        "desc": "Übereinstimmung mit DIN / EN / Eurocode"
+      },
+      {
+        "id": "schaden",
+        "name": "Schadensanalyse & Prävention",
+        "desc": "Mikromechanische Ursachenforschung"
+      },
+      {
+        "id": "nachhaltig",
+        "name": "LCA & CO₂-Optimierung",
+        "desc": "Verminderung des Treibhauspotenzials"
+      }
+    ],
+    "promptFormats": [
+      {
+        "id": "report",
+        "name": "Technisches Gutachten / Prosa",
+        "desc": "Formeller Fließtext mit klaren Fachüberschriften"
+      },
+      {
+        "id": "bullets",
+        "name": "Kondensierte Checkliste / Stichpunkte",
+        "desc": "Ideal zur schnellen Qualitätskontrolle"
+      },
+      {
+        "id": "code",
+        "name": "Interaktiver Python-Rechner",
+        "desc": "Nutzung von Streamlit oder Matplotlib zur Simulation"
+      }
+    ],
+    "promptTonalities": [
+      {
+        "id": "scientific",
+        "name": "Akademisch / Wissenschaftlich",
+        "desc": "Exakte mikrostrukturelle & physikalische Terme"
+      },
+      {
+        "id": "pragmatic",
+        "name": "Baustellen-Pragmatisch",
+        "desc": "Lösungsorientierte Einbau-Anweisungen"
+      },
+      {
+        "id": "didactic",
+        "name": "Didaktisch / Sokratischer Tutor",
+        "desc": "Zwischenfragen & Eselsbrücken zum Lernen"
+      }
+    ],
+    "KiBaustoffeInhalt.aiResources": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com",
+        "description": "Die weltweit größte Entwicklungs- und Open-Source-Plattform. Ein unschätzbarer Pool an gebrauchsfertigen KI-Repositories, bautechnischen Python-Skripten, CAD-Automatisierungen und ML-Modellen.",
+        "baucase": "Auffinden von Machine-Learning-Skripten zur videobasierten Risserkennung und automatisierten Auswertung von Druckversuchen.",
+        "iconCircle": "bg-slate-100 text-slate-800"
+      },
+      {
+        "name": "Futurepedia",
+        "url": "https://www.futurepedia.io",
+        "description": "Das führende Verzeichnis für künstliche Intelligenz. Aggregiert täglich die neuesten spezialisierten AI-Werkzeuge, geordnet nach praktischen Anwendungskategorien und Nutzerbewertungen.",
+        "baucase": "Schnelle Suche nach spezialisierten PDF-Analysetools zur Auslesung von mehrhundertseitigen Ausschreibungs- und Prüffertigungsdokumenten.",
+        "iconCircle": "bg-indigo-100 text-indigo-800"
+      },
+      {
+        "name": "THE DECODER",
+        "url": "https://the-decoder.de",
+        "description": "Hervorragendes deutsches Online-Fachmagazin und Info-Portal für Künstliche Intelligenz. Bietet fundierten, unabhängigen Journalismus, News-Analysen sowie tiefe Berichte über den Stand der Forschung.",
+        "baucase": "Verfolgen des aktuellen Forschungsstands bezüglich physikgestützter neuronaler Netze (PINNs) in Strömungs- und Festkörpersimulationen.",
+        "iconCircle": "bg-red-100 text-red-800"
+      },
+      {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co",
+        "description": "Die universelle Open-Source-Plattform der weltweiten AI-Forschungscommunity. Hostet Millionen fertige, direkt nutzbare Machine-Learning-Modelle, Datensätze und Demos (Spaces).",
+        "baucase": "Lokales Herunterladen von quelloffenen Bildklassifizierungs-Modellen zur automatischen Klassifikation von Betonoberflächen-Schäden per Smartphone-Foto.",
+        "iconCircle": "bg-amber-100 text-amber-800"
+      },
+      {
+        "name": "AI Valley",
+        "url": "https://aivalley.ai",
+        "description": "Eine umfangreiche, kuratierte Plattform für Produktivitätswerkzeuge, modernste KI-Anwendungen und AI-Automatisierungslinks mit anwendernahem Praxisbezug.",
+        "baucase": "Recherche nach lokalen, datenschutzkonformen AI-Werkzeugen zur Zusammenfassung von Protokollen bei Baustellen-Jour-Fixes.",
+        "iconCircle": "bg-blue-100 text-blue-800"
+      },
+      {
+        "name": "There's An AI For That",
+        "url": "https://theresanaiforthat.com",
+        "description": "Die größte, chronologische Suchdatenbank für KI-Systeme weltweit. Listet tausende Tools für extrem spezifische Problemstellungen auf und lässt sich filtern.",
+        "baucase": "Spezifische Stichwortsuche für Nischenkomponenten wie automatische GIS-Geländemuster-Analysatoren oder Betonporen-Bildauswerter.",
+        "iconCircle": "bg-purple-100 text-purple-800"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte": [
+      {
+        "titel": "Vektoren",
+        "erklaerung": "Frage-Embedding a und zwei Textabschnitte b (Expositionsklassen) und c (Schalung), vereinfacht dreidimensional:",
+        "formel": "\\vec a = (0{,}8;\\ 0{,}6;\\ 0),\\ \\vec b = (0{,}6;\\ 0{,}8;\\ 0),\\ \\vec c = (0;\\ 0{,}6;\\ 0{,}8)"
+      },
+      {
+        "titel": "Skalarprodukte",
+        "erklaerung": "Alle Vektoren haben die Länge 1, daher entspricht das Skalarprodukt direkt dem Kosinus:",
+        "formel": "\\vec a\\cdot\\vec b = 0{,}48 + 0{,}48 = 0{,}96;\\quad \\vec a\\cdot\\vec c = 0 + 0{,}36 + 0 = 0{,}36"
+      },
+      {
+        "titel": "Ranking",
+        "erklaerung": "Der Retriever übergibt Abschnitt b an das Sprachmodell:",
+        "formel": "\\cos\\theta_{ab} = 0{,}96 > \\cos\\theta_{ac} = 0{,}36"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_2": [
+      {
+        "titel": "Gewichtete Summe",
+        "erklaerung": "Zwei normierte Eingänge x = (1,2; 0,4), Gewichte w = (0,8; −0,5), Bias b = 0,1:",
+        "formel": "z = 0{,}8 \\cdot 1{,}2 - 0{,}5 \\cdot 0{,}4 + 0{,}1 = 0{,}86"
+      },
+      {
+        "titel": "Aktivierung",
+        "erklaerung": "Sigmoid-Funktion:",
+        "formel": "y = \\frac{1}{1 + e^{-0{,}86}} = \\frac{1}{1 + 0{,}423} = 0{,}70"
+      },
+      {
+        "titel": "Deutung",
+        "erklaerung": "Bei einem Klassifikator für Riss ja/nein entspricht y einem Score, nicht einer kalibrierten Wahrscheinlichkeit:",
+        "formel": "y = 0{,}70 > 0{,}5 \\Rightarrow \\text{Klasse Riss}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_3": [
+      {
+        "titel": "Eingabe",
+        "erklaerung": "40 Seiten mit je 500 Wörtern; für deutsche Fachtexte etwa 1,5 Token pro Wort (Lehrannahme):",
+        "formel": "n_{in} = 40 \\cdot 500 \\cdot 1{,}5 = 30\\,000\\ \\text{Token}"
+      },
+      {
+        "titel": "Preise",
+        "erklaerung": "Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2 000 Token:",
+        "formel": "K = 0{,}03 \\cdot 3 + 0{,}002 \\cdot 15 = 0{,}09 + 0{,}03"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Kosten je Anfrage:",
+        "formel": "K = 0{,}12\\ \\text{€}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_4": [
+      {
+        "titel": "Bilanz",
+        "erklaerung": "Kontext 128 000 Token, Systemprompt 2 000, Reserve für die Antwort 8 000:",
+        "formel": "n_{frei} = 128\\,000 - 2\\,000 - 8\\,000 = 118\\,000"
+      },
+      {
+        "titel": "Seiten",
+        "erklaerung": "Mit 750 Token pro Seite (500 Wörter × 1,5):",
+        "formel": "n_S = \\frac{118\\,000}{750} = 157\\ \\text{Seiten}"
+      },
+      {
+        "titel": "Konsequenz",
+        "erklaerung": "Ein 300-seitiges Baugrundgutachten passt nicht vollständig hinein:",
+        "formel": "300 > 157 \\Rightarrow \\text{RAG oder Kapitelweise}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_5": [
+      {
+        "titel": "Stichprobe",
+        "erklaerung": "Von 50 KI-gelieferten Normzitaten erweisen sich 6 als falsch oder veraltet:",
+        "formel": "\\hat p = \\frac{6}{50} = 0{,}12"
+      },
+      {
+        "titel": "Hochrechnung",
+        "erklaerung": "Erwartete Fehler in einem Bericht mit 200 Zitaten:",
+        "formel": "E = 200 \\cdot 0{,}12 = 24"
+      },
+      {
+        "titel": "Konsequenz",
+        "erklaerung": "Jedes Zitat ist gegen die Originalquelle zu prüfen:",
+        "formel": "E > 0 \\Rightarrow \\text{Vollprüfung}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_6": [
+      {
+        "titel": "Annahme",
+        "erklaerung": "Jede Abfrage liefert mit p = 0,8 das richtige Ergebnis, die Abfragen seien unabhängig:",
+        "formel": "p = 0{,}8"
+      },
+      {
+        "titel": "Rechnung",
+        "erklaerung": "Mindestens zwei von drei richtig:",
+        "formel": "P = 0{,}512 + 3 \\cdot 0{,}64 \\cdot 0{,}2 = 0{,}512 + 0{,}384 = 0{,}896"
+      },
+      {
+        "titel": "Grenze",
+        "erklaerung": "Bei systematischen Fehlern (gleiche falsche Trainingsquelle) sind die Abfragen nicht unabhängig:",
+        "formel": "P \\to p = 0{,}8"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_7": [
+      {
+        "titel": "Treffer",
+        "erklaerung": "Das Tool liefert 40 Artikel, davon 22 relevant; bekannt sind 30 relevante Artikel:",
+        "formel": "TP = 22,\\ FP = 18,\\ FN = 8"
+      },
+      {
+        "titel": "Precision",
+        "erklaerung": "Anteil relevanter Treffer:",
+        "formel": "P = \\frac{22}{40} = 0{,}55"
+      },
+      {
+        "titel": "Recall",
+        "erklaerung": "Anteil gefundener relevanter Artikel:",
+        "formel": "R = \\frac{22}{30} = 0{,}73"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_8": [
+      {
+        "titel": "Kennwerte",
+        "erklaerung": "Das Skript gibt für eine Regression Festigkeit über w/z-Wert an:",
+        "formel": "SS_{res} = 12,\\quad SS_{tot} = 150"
+      },
+      {
+        "titel": "Rechnung",
+        "erklaerung": "Handkontrolle:",
+        "formel": "R^2 = 1 - \\frac{12}{150} = 1 - 0{,}08 = 0{,}92"
+      },
+      {
+        "titel": "Abgleich",
+        "erklaerung": "Weicht der vom Skript ausgegebene Wert ab, liegt ein Fehler im Code oder in den Daten vor:",
+        "formel": "R^2_{Skript} \\overset{!}{=} 0{,}92"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_9": [
+      {
+        "titel": "Gestaffelte Anwendung",
+        "erklaerung": "In Kraft 1. August 2024; Verbote und KI-Kompetenz seit 2. Februar 2025; Modelle mit allgemeinem Verwendungszweck seit 2. August 2025; Art. 50 ab 2. August 2026:",
+        "formel": "t_0 = \\text{1. August 2024}"
+      },
+      {
+        "titel": "Hochrisiko nach Digital Omnibus",
+        "erklaerung": "Anhang III ab 2. Dezember 2027, Anhang I ab 2. August 2028:",
+        "formel": "t_{III} = \\text{2. Dezember 2027}"
+      },
+      {
+        "titel": "Restzeit",
+        "erklaerung": "Vom 20. Oktober 2026 bis zum 2. Dezember 2027:",
+        "formel": "\\Delta t = 365 + 31 + 12 = 408\\ \\text{Tage} \\approx 13{,}4\\ \\text{Monate}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_10": [
+      {
+        "titel": "Großunternehmen",
+        "erklaerung": "Weltweiter Jahresumsatz U = 800 Mio. €:",
+        "formel": "0{,}04 \\cdot 800 = 32\\ \\text{Mio. €} > 20\\ \\text{Mio. €}"
+      },
+      {
+        "titel": "Ingenieurbüro",
+        "erklaerung": "Jahresumsatz U = 5 Mio. €:",
+        "formel": "0{,}04 \\cdot 5 = 0{,}2\\ \\text{Mio. €} < 20\\ \\text{Mio. €}"
+      },
+      {
+        "titel": "Obergrenzen",
+        "erklaerung": "Es gilt jeweils der höhere Betrag:",
+        "formel": "B_{max} = 32\\ \\text{Mio. €}\\ \\text{bzw.}\\ 20\\ \\text{Mio. €}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_11": [
+      {
+        "titel": "Gewichte",
+        "erklaerung": "N = 14 · 10⁹ Parameter, Q4_K_M mit rund 4,85 bit je Gewicht:",
+        "formel": "\\frac{14 \\cdot 10^9 \\cdot 4{,}85}{8} = 8{,}5 \\cdot 10^9\\ \\text{Byte} \\approx 8{,}5\\ \\text{GB}"
+      },
+      {
+        "titel": "Kontext-Cache",
+        "erklaerung": "Für mittlere Kontextlängen rund 1,5 GB (Lehrannahme):",
+        "formel": "M \\approx 8{,}5 + 1{,}5 = 10\\ \\text{GB}"
+      },
+      {
+        "titel": "Hardware",
+        "erklaerung": "Passt auf eine Grafikkarte mit 12 GB:",
+        "formel": "10\\ \\text{GB} < 12\\ \\text{GB}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_12": [
+      {
+        "titel": "FP16",
+        "erklaerung": "16 bit je Gewicht:",
+        "formel": "M_{FP16} = \\frac{70 \\cdot 10^9 \\cdot 16}{8} = 140\\ \\text{GB}"
+      },
+      {
+        "titel": "Q4_K_M",
+        "erklaerung": "Rund 4,85 bit je Gewicht:",
+        "formel": "M_{Q4} = \\frac{70 \\cdot 10^9 \\cdot 4{,}85}{8} = 42\\ \\text{GB}"
+      },
+      {
+        "titel": "Verhältnis",
+        "erklaerung": "Speichereinsparung:",
+        "formel": "\\frac{42}{140} = 0{,}30 \\Rightarrow -70\\ \\%"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_13": [
+      {
+        "titel": "Messung",
+        "erklaerung": "Modell A löst 78 % von n = 200 Aufgaben, Modell B 74 %:",
+        "formel": "p_A = 0{,}78,\\quad p_B = 0{,}74"
+      },
+      {
+        "titel": "95-%-Intervall A",
+        "erklaerung": "Normalapproximation:",
+        "formel": "u = 1{,}96 \\cdot \\sqrt{\\frac{0{,}78 \\cdot 0{,}22}{200}} = 1{,}96 \\cdot 0{,}029 = 0{,}057"
+      },
+      {
+        "titel": "Vergleich",
+        "erklaerung": "Der Unterschied von 4 Prozentpunkten liegt innerhalb der Unsicherheit:",
+        "formel": "0{,}04 < 0{,}057"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_14": [
+      {
+        "titel": "Energie",
+        "erklaerung": "Grafikkarte 350 W, Rechenzeit 30 min:",
+        "formel": "E = 0{,}35\\ \\text{kW} \\cdot 0{,}5\\ \\text{h} = 0{,}175\\ \\text{kWh}"
+      },
+      {
+        "titel": "Emissionen",
+        "erklaerung": "Emissionsfaktor des Strommixes als Lehrwert 0,36 kg CO₂/kWh (aktuellen UBA-Wert prüfen):",
+        "formel": "CO_2 = 0{,}175 \\cdot 0{,}36 = 0{,}063\\ \\text{kg}"
+      },
+      {
+        "titel": "Kosten",
+        "erklaerung": "Strompreis 0,35 €/kWh (Lehrwert):",
+        "formel": "K = 0{,}175 \\cdot 0{,}35 = 0{,}061\\ \\text{€}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_15": [
+      {
+        "titel": "Verlustfunktion",
+        "erklaerung": "L(w) = (w − 1)², Startwert w = 2,0:",
+        "formel": "L(2{,}0) = 1{,}0,\\quad \\frac{\\partial L}{\\partial w} = 2(w-1) = 2{,}0"
+      },
+      {
+        "titel": "Schritt",
+        "erklaerung": "Lernrate η = 0,1:",
+        "formel": "w_{neu} = 2{,}0 - 0{,}1 \\cdot 2{,}0 = 1{,}8"
+      },
+      {
+        "titel": "Kontrolle",
+        "erklaerung": "Der Verlust sinkt:",
+        "formel": "L(1{,}8) = 0{,}8^2 = 0{,}64 < 1{,}0"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_16": [
+      {
+        "titel": "Aufwand",
+        "erklaerung": "24 h Videomaterial, Faktor 1,5 für Übungen und Nacharbeit (Erfahrungswert):",
+        "formel": "t_{ges} = 24 \\cdot 1{,}5 = 36\\ \\text{h}"
+      },
+      {
+        "titel": "Wochenplan",
+        "erklaerung": "6 h je Woche verfügbar:",
+        "formel": "n = \\frac{36}{6} = 6\\ \\text{Wochen}"
+      },
+      {
+        "titel": "Leistungspunkte",
+        "erklaerung": "Bei 30 h je ECTS-Punkt entspricht das etwa:",
+        "formel": "\\frac{36}{30} = 1{,}2\\ \\text{ECTS}"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_17": [
+      {
+        "titel": "Modell",
+        "erklaerung": "Aus Laborreihen angepasst (Lehrwerte): a = 105 N/mm², b = 110 N/mm²:",
+        "formel": "f_{c,pred} = 105 - 110 \\cdot (w/z)"
+      },
+      {
+        "titel": "Prognose",
+        "erklaerung": "Rezeptur mit w/z = 0,50:",
+        "formel": "f_{c,pred} = 105 - 55 = 50\\ \\text{N/mm}^2"
+      },
+      {
+        "titel": "Gültigkeit",
+        "erklaerung": "Nur innerhalb des Trainingsbereichs (hier w/z 0,40 bis 0,65) belastbar:",
+        "formel": "0{,}40 \\le w/z \\le 0{,}65"
+      }
+    ],
+    "KiBaustoffeInhalt.schritte_18": [
+      {
+        "titel": "Fehler",
+        "erklaerung": "Vier Validierungswürfel, Abweichung Prognose minus Messung in N/mm²:",
+        "formel": "e = (3;\\ -2;\\ 4;\\ -1)"
+      },
+      {
+        "titel": "MAE",
+        "erklaerung": "Mittlerer absoluter Fehler:",
+        "formel": "MAE = \\frac{3 + 2 + 4 + 1}{4} = 2{,}5\\ \\text{N/mm}^2"
+      },
+      {
+        "titel": "RMSE",
+        "erklaerung": "Wurzel des mittleren quadratischen Fehlers:",
+        "formel": "RMSE = \\sqrt{\\frac{9 + 4 + 16 + 1}{4}} = \\sqrt{7{,}5} = 2{,}74\\ \\text{N/mm}^2"
+      }
+    ],
+    "KiBaustoffeInhalt.literatur": [
+      "Russell, S.; Norvig, P.: Artificial Intelligence – A Modern Approach. 4. Aufl., Hoboken: Pearson 2021",
+      "Goodfellow, I.; Bengio, Y.; Courville, A.: Deep Learning. Cambridge (MA): MIT Press 2016"
+    ],
+    "KiBaustoffeInhalt.regelwerke": [
+      {
+        "title": "Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Verordnung (EU) 2026/1744 (Digital Omnibus, ABl. L vom 24.07.2026)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+      },
+      {
+        "title": "Verordnung (EU) 2016/679 (DSGVO)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+      },
+      {
+        "title": "UrhG § 44b (Text und Data Mining) und § 60d (wissenschaftliche Forschung)",
+        "url": "https://www.gesetze-im-internet.de/urhg/__44b.html"
+      },
+      {
+        "title": "ISO/IEC 42001:2023 (KI-Managementsysteme)"
+      }
+    ],
+    "KiBaustoffeInhalt.formeln": [
+      {
+        "formel": "f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}",
+        "erklaerung": "Prädiktive Druckfestigkeitsschätzung im KI-Modell"
+      },
+      {
+        "formel": "GWP_{total} = \\sum_{i=1}^{n} m_i \\cdot GWP_i \\quad \\text{[kg CO₂-Eq]}",
+        "erklaerung": "Optimierte Treibhauspotenzials-Zielfunktion des Agenten"
+      }
+    ]
+  }
+}

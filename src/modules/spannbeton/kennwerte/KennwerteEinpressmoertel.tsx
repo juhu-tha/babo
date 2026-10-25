@@ -2,6 +2,8 @@ import { Droplets, Activity, Calculator, Layers, Wrench, ShieldCheck, Package } 
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
+import inhalt from '@/content/spannbeton/kennwerte/KennwerteEinpressmoertel.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface KennwerteEinpressmoertelProps {
   groutAdmixturePct: number;
@@ -26,39 +28,33 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/15 pb-4">
             <div>
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Droplets className="text-shiraz h-5 w-5" />
-                Einpressmörtel &amp; Systembaustoffe im Spannbetonbau
-              </h4>
-              <p className="text-xs text-text-main/70 mt-1">
-                Zementeinpressmörtel nach DIN EN 447 / 445 / 446, Hüllrohrsysteme (DIN EN 523 vs. fib Bulletin 75), Korrosionsschutzfette &amp; Keilverankerungen
-              </p>
+                <Droplets className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.einpressmörtelSystembaustoffeImSpannbeto} /></h4>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.zementeinpressmörtelNachDinEn} /></p>
             </div>
-            <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-              DIN EN 447 &amp; fib Bulletin 75
-            </span>
+            <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.dinEn447Fib} /></span>
           </div>
 
           {/* Didaktische Einleitung */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
             <div>
-              <strong className="text-text-main block mb-1">Die 4 Schutz- und Verbundelemente des Spannglieds:</strong>
+              <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.die4SchutzUnd} /></strong>
               <p>
                 Im nachträglichen Verbund und bei unverbundenen Spanngliedern ist der hochfeste Spannstahl extrem 
-                korrosionsgefährdet (Gefahr von <strong>Spannungsrisskorrosion / Wasserstoffversprödung</strong>). 
+                korrosionsgefährdet (Gefahr von <strong><MdText text={inhalt.texte.spannungsrisskorrosionWasserstoffversprö} /></strong>). 
                 Die Systembaustoffe bilden eine mehrstufige Barriere: 
-                <strong> 1. Einpressmörtel</strong> (chemische Passivierung mit <InlineMath math="\text{pH} \ge 12{,}5" />), 
+                <strong><MdText text={inhalt.texte.t1Einpressmörtel} /></strong> (chemische Passivierung mit <InlineMath math="\text{pH} \ge 12{,}5" />), 
                 <strong> 2. Hüllrohr</strong> (mechanischer Schutz gegen Feuchte und Chloride), 
-                <strong> 3. Korrosionsschutzfett/Wachs</strong> (bei Monolitzen) und 
-                <strong> 4. Keilverankerungen</strong> aus einsatzgehärtetem Qualitätsstahl.
+                <strong><MdText text={inhalt.texte.t3KorrosionsschutzfettWachs} /></strong> (bei Monolitzen) und 
+                <strong><MdText text={inhalt.texte.t4Keilverankerungen} /></strong> aus einsatzgehärtetem Qualitätsstahl.
               </p>
             </div>
             <div>
-              <strong className="text-text-main block mb-1">Warum ist Einpressmörtel kein normaler Mörtel?</strong>
+              <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.warumIstEinpressmörtelKein} /></strong>
               <p>
                 Einpressmörtel muss über Entfernungen von bis zu 100 m durch enge Litzenzwischenräume gepresst werden. 
-                Er erfordert <strong>extrem hohe Fließfähigkeit</strong> bei gleichzeitig 
-                <strong> minimalem Wassergehalt (<InlineMath math="w/z \le 0{,}35 - 0{,}40" />)</strong>, 
-                darf <strong>kein freies Wasser absondern (Bluten <InlineMath math="\le 0{,}3\,\%" />)</strong> und muss durch 
+                Er erfordert <strong><MdText text={inhalt.texte.extremHoheFließfähigkeit} /></strong> bei gleichzeitig 
+                <strong><MdText text={inhalt.texte.minimalemWassergehaltWZ} /></strong>, 
+                darf <strong><MdText text={inhalt.texte.keinFreiesWasserAbsondern} /></strong> und muss durch 
                 spezielle Quellmittel das plastische Schwinden vollständig kompensieren.
               </p>
             </div>
@@ -68,12 +64,8 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                <Activity size={14} className="text-shiraz" />
-                Mörtel-Labor &amp; Gütesimulation nach DIN EN 447 / DIN EN 445
-              </span>
-              <span className="text-[11px] font-mono text-slate-500">
-                Prüfung bei 20 °C Normtemperatur
-              </span>
+                <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.mörtelLaborGütesimulationNach} /></span>
+              <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.prüfungBei20C} /></span>
             </div>
 
             {/* Steuerregler: w/z-Wert, Zusatzmittel, Zement */}
@@ -81,7 +73,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
               {/* w/z-Wert */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Wasserzementwert (w/z):</span>
+                  <span><MdText text={inhalt.texte.wasserzementwertWZ} /></span>
                   <span className={`font-mono font-bold ${
                       groutWz <= 0.40 ? 'text-emerald-700' : 'text-rose-600'
                     }`}>
@@ -98,17 +90,17 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   className="w-full accent-shiraz cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-slate-400">
-                  <span>0,30 (sehr zäh)</span>
-                  <span className="text-emerald-700 font-bold">0,36 (Optimum)</span>
-                  <span className="text-rose-600 font-bold">0,44 (Grenze DIN EN 447 prüfen)</span>
-                  <span>0,45 (Bluten!)</span>
+                  <span><MdText text={inhalt.texte.t030SehrZäh} /></span>
+                  <span className="text-emerald-700 font-bold"><MdText text={inhalt.texte.t036Optimum} /></span>
+                  <span className="text-rose-600 font-bold"><MdText text={inhalt.texte.t044GrenzeDin} /></span>
+                  <span><MdText text={inhalt.texte.t045Bluten} /></span>
                 </div>
               </div>
 
               {/* Einpresshilfe / Zusatzmittel */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Einpresshilfe (DIN EN 934-4):</span>
+                  <span><MdText text={inhalt.texte.einpresshilfeDinEn934} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeZahl(groutAdmixturePct, 1)} % v. Zement</span>
                 </div>
                 <input
@@ -121,18 +113,16 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   className="w-full accent-shiraz cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-slate-400">
-                  <span>0,2 % (Gering)</span>
-                  <span className="text-shiraz font-bold">1,0 % (Standard)</span>
-                  <span>2,0 % (Stark quellend)</span>
+                  <span><MdText text={inhalt.texte.t02Gering} /></span>
+                  <span className="text-shiraz font-bold"><MdText text={inhalt.texte.t10Standard} /></span>
+                  <span><MdText text={inhalt.texte.t20StarkQuellend} /></span>
                 </div>
               </div>
 
               {/* Zementart */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-text-main block">
-                  Bindemittel (DIN EN 197-1):
-                </label>
-                <select aria-label="Bindemittel (DIN EN 197-1)"
+                <label className="text-xs font-semibold text-text-main block"><MdText text={inhalt.texte.bindemittelDinEn197} /></label>
+                <select aria-label={inhalt.werte.bindemittelDinEn197}
                   value={groutCementType}
                   onChange={(e) => setGroutCementType(e.target.value)}
                   className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
@@ -141,7 +131,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   <option value="CEM I 42.5 N (Standard)">CEM I 42.5 N (Standard-Portlandzement)</option>
                   <option value="Werktrockenmörtel (Zugelassen)">Werkstrockenmörtel (werksgemischt nach EAD)</option>
                 </select>
-                <p className="text-[10px] text-slate-500">Chloridgehalt strikt ≤ 0,10 M-%</p>
+                <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.chloridgehaltStrikt010} /></p>
               </div>
             </div>
 
@@ -152,7 +142,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   groutCalculations.flowValid ? 'bg-white border-home-grau/30' : 'bg-rose-50 border-rose-200'
                 }`}>
                 <div className="flex items-center justify-between text-xs text-text-main/70">
-                  <span className="font-semibold uppercase tracking-wider">Fließvermögen (Trichterverfahren DIN EN 445)</span>
+                  <span className="font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.fließvermögenTrichterverfahrenDinEn} /></span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
                       groutCalculations.flowValid ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
                     }`}>
@@ -165,12 +155,12 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 </div>
                 <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                   <div className="flex justify-between">
-                    <span>Normbereich t₀:</span>
-                    <strong className="font-mono">t₀, t₃₀ ≤ 25 s</strong>
+                    <span><MdText text={inhalt.texte.normbereichT} /></span>
+                    <strong className="font-mono"><MdText text={inhalt.texte.tT25S} /></strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Nach 30 min (t₃₀):</span>
-                    <strong className="font-mono">{formatDeWert(groutCalculations.flowTimeT30)} s (max. 28 s)</strong>
+                    <span><MdText text={inhalt.texte.nach30MinT} /></span>
+                    <strong className="font-mono">{formatDeWert(groutCalculations.flowTimeT30)}<MdText text={inhalt.texte.sMax28S} /></strong>
                   </div>
                 </div>
               </div>
@@ -180,11 +170,11 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   groutCalculations.bleedingValid ? 'bg-white border-home-grau/30' : 'bg-rose-50 border-rose-200'
                 }`}>
                 <div className="flex items-center justify-between text-xs text-text-main/70">
-                  <span className="font-semibold uppercase tracking-wider">Wasserabsondern (3 h)</span>
+                  <span className="font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.wasserabsondern3H} /></span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
                       groutCalculations.bleedingValid ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
                     }`}>
-                    {groutCalculations.bleedingValid ? 'Normkonform' : 'Gefahr Bluten!'}
+                    {groutCalculations.bleedingValid ? 'Normkonform' : inhalt.werte.gefahrBluten}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-1">
@@ -197,12 +187,12 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 </div>
                 <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                   <div className="flex justify-between">
-                    <span>Grenzwert DIN EN 447:</span>
+                    <span><MdText text={inhalt.texte.grenzwertDinEn447} /></span>
                     <strong className="font-mono">≤ 0,30 %</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Wiederaufnahme 24 h:</span>
-                    <strong className="font-mono text-emerald-700">100 % (Vollständig)</strong>
+                    <span><MdText text={inhalt.texte.wiederaufnahme24H} /></span>
+                    <strong className="font-mono text-emerald-700"><MdText text={inhalt.texte.t100Vollständig} /></strong>
                   </div>
                 </div>
               </div>
@@ -212,7 +202,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   groutCalculations.expansionValid ? 'bg-white border-home-grau/30' : 'bg-amber-50 border-amber-200'
                 }`}>
                 <div className="flex items-center justify-between text-xs text-text-main/70">
-                  <span className="font-semibold uppercase tracking-wider">Volumenänderung (24 h)</span>
+                  <span className="font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.volumenänderung24H} /></span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
                       groutCalculations.expansionValid ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
                     }`}>
@@ -228,11 +218,11 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                   <div className="flex justify-between">
                     <span>Normbereich:</span>
-                    <strong className="font-mono">−1 % bis +5 %</strong>
+                    <strong className="font-mono"><MdText text={inhalt.texte.t1Bis5} /></strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Wirkung Quellmittel:</span>
-                    <span className="text-[10px] text-slate-500">Keine Schwindsäcke</span>
+                    <span><MdText text={inhalt.texte.wirkungQuellmittel} /></span>
+                    <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.keineSchwindsäcke} /></span>
                   </div>
                 </div>
               </div>
@@ -240,7 +230,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
               {/* 4. Druckfestigkeit & Passivierung */}
               <div className="p-3 rounded-xl bg-white border border-home-grau/30 space-y-1">
                 <div className="flex items-center justify-between text-xs text-text-main/70">
-                  <span className="font-semibold uppercase tracking-wider">Druckfestigkeit / pH</span>
+                  <span className="font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.druckfestigkeitPh} /></span>
                   <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
                     Hochfest
                   </span>
@@ -251,12 +241,12 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 </div>
                 <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                   <div className="flex justify-between">
-                    <span>Nach 7 Tagen (fc,7):</span>
+                    <span><MdText text={inhalt.texte.nach7TagenFc} /></span>
                     <strong className="font-mono">{formatDeWert(groutCalculations.fc7d)} MPa (≥ 27)</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Alkalische Passivierung:</span>
-                    <strong className="font-mono text-emerald-700">pH 12.8 ≥ 12,5</strong>
+                    <span><MdText text={inhalt.texte.alkalischePassivierung} /></span>
+                    <strong className="font-mono text-emerald-700"><MdText text={inhalt.texte.ph12812} /></strong>
                   </div>
                 </div>
               </div>
@@ -268,23 +258,18 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-home-grau/15 pb-2">
               <div>
                 <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                  <Calculator className="text-shiraz h-4 w-4" />
-                  Injektions- &amp; Materialmengen-Rechner für Spannglieder
-                </h5>
-                <p className="text-[11px] text-text-main/70">
-                  Berechnung von Netto-Hohlraumvolumen, Zement-, Wasser- und Zusatzmittelbedarf je Spannglied
-                </p>
+                  <Calculator className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.injektionsMaterialmengenRechnerFür} /></h5>
+                <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.berechnungVonNettoHohlraumvolumen} /></p>
               </div>
               <span className="text-xs font-mono bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
-                Länge: {formatDeWert(groutTendonLength)} m | {groutStrandCount} Litzen 150 mm²
-              </span>
+                Länge: {formatDeWert(groutTendonLength)} m | {groutStrandCount}<MdText text={inhalt.texte.litzen150Mm} /></span>
             </div>
 
             {/* Steuerregler: Spanngliedlänge, Litzenanzahl, Hüllrohr-Durchmesser */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Spanngliedlänge (L):</span>
+                  <span><MdText text={inhalt.texte.spanngliedlängeL} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(groutTendonLength)} m</span>
                 </div>
                 <input
@@ -298,14 +283,14 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 />
                 <div className="flex justify-between text-[10px] text-slate-400">
                   <span>10 m</span>
-                  <span>45 m (Standard)</span>
-                  <span>120 m (Großbrücke)</span>
+                  <span><MdText text={inhalt.texte.t45MStandard} /></span>
+                  <span><MdText text={inhalt.texte.t120MGroßbrücke} /></span>
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Litzenbelegung (Ap = {groutStrandCount * 150} mm²):</span>
+                  <span><MdText text={inhalt.texte.litzenbelegungAp} />{groutStrandCount * 150} mm²):</span>
                   <span className="font-mono text-shiraz font-bold">{groutStrandCount} Litzen</span>
                 </div>
                 <select
@@ -323,7 +308,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Hüllrohr-Innendurchmesser (Di):</span>
+                  <span><MdText text={inhalt.texte.hüllrohrInnendurchmesserDi} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(groutDuctDia)} mm</span>
                 </div>
                 <select
@@ -345,25 +330,25 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
               <div className="space-y-0.5">
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">Netto-Mörtelvolumen</span>
                 <span className="text-xl font-bold font-mono text-slate-800">{formatDeWert(groutCalculations.netVoidVolumeLiter)} Liter</span>
-                <span className="text-[10px] text-slate-500">Freier Hohlquerschnitt – zzgl. 10–20 % für Entlüftung, Leitungen und Überlauf</span>
+                <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.freierHohlquerschnittZzgl10} /></span>
               </div>
 
               <div className="space-y-0.5">
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">Zementbedarf</span>
                 <span className="text-xl font-bold font-mono text-shiraz">{formatDeWert(groutCalculations.totalCementKg)} kg</span>
-                <span className="text-[10px] text-slate-500">ca. {formatDeWert(groutCalculations.cementBags25)} Säcke à 25 kg</span>
+                <span className="text-[10px] text-slate-500">ca. {formatDeWert(groutCalculations.cementBags25)}<MdText text={inhalt.texte.säcke25Kg} /></span>
               </div>
 
               <div className="space-y-0.5">
-                <span className="text-[10px] uppercase font-bold text-slate-500 block">Wasserbedarf (w/z = {formatDeWert(groutWz)})</span>
+                <span className="text-[10px] uppercase font-bold text-slate-500 block"><MdText text={inhalt.texte.wasserbedarfWZ} />{formatDeWert(groutWz)})</span>
                 <span className="text-xl font-bold font-mono text-blue-700">{formatDeWert(groutCalculations.totalWaterLiter)} Liter</span>
                 <span className="text-[10px] text-slate-500">Trinkwasserqualität</span>
               </div>
 
               <div className="space-y-0.5">
-                <span className="text-[10px] uppercase font-bold text-slate-500 block">Einpresshilfe ({formatDeWert(groutAdmixturePct)} %)</span>
+                <span className="text-[10px] uppercase font-bold text-slate-500 block"><MdText text={inhalt.texte.einpresshilfe} />{formatDeWert(groutAdmixturePct)} %)</span>
                 <span className="text-xl font-bold font-mono text-purple-700">{formatDeWert(groutCalculations.totalAdmixtureKg)} kg</span>
-                <span className="text-[10px] text-slate-500">Quell- &amp; Fließmittel</span>
+                <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.quellFließmittel} /></span>
               </div>
             </div>
 
@@ -371,21 +356,13 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-amber-50/60 p-3 rounded-xl border border-amber-200 text-amber-950">
               <div>
                 <strong>Einpressgeschwindigkeit:</strong>
-                <p className="text-[11px] text-amber-900 mt-0.5">
-                  <strong>5 – 15 m/min</strong> (kontinuierlich, um Lufteinschlüsse laminar voranzuschieben).
-                </p>
+                <p className="text-[11px] text-amber-900 mt-0.5"><MdText text={inhalt.texte.t515MMin} /></p>
               </div>
-              <div>
-                <strong>Maximaler Einpressdruck:</strong>
-                <p className="text-[11px] text-amber-900 mt-0.5">
-                  <strong>p ≤ 10 – 15 bar</strong> an der Presse; Nachdrücken mit <strong>5 bar für 1–2 min</strong>.
-                </p>
+              <div><MdText text={inhalt.texte.maximalerEinpressdruck} /><p className="text-[11px] text-amber-900 mt-0.5"><MdText text={inhalt.texte.p1015Bar} /></p>
               </div>
               <div>
                 <strong>Entlüftungsstellen:</strong>
-                <p className="text-[11px] text-amber-900 mt-0.5">
-                  An allen Scheitelpunkten (Hochpunkten) sowie alle <strong>≤ 30 m</strong> Entlüftungsrohre setzen!
-                </p>
+                <p className="text-[11px] text-amber-900 mt-0.5"><MdText text={inhalt.texte.anAllenScheitelpunktenHochpunkten} /></p>
               </div>
             </div>
           </div>
@@ -394,10 +371,8 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
               <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <Layers className="text-shiraz h-4 w-4" />
-                Hüllrohr-Systemvergleich: Stahlwellblech (DIN EN 523) vs. Kunststoff-Wellrohr (fib Bulletin 75)
-              </h5>
-              <span className="text-[11px] text-slate-500">fib Category PL1, PL2 &amp; PL3</span>
+                <Layers className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.hüllrohrSystemvergleichStahlwellblechDin} /></h5>
+              <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.fibCategoryPl1Pl2} /></span>
             </div>
 
             <div className="overflow-x-auto">
@@ -405,47 +380,47 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                 <thead>
                   <tr className="bg-slate-100 text-text-main border-b border-home-grau/30 font-semibold">
                     <th className="p-2.5">Eigenschaft</th>
-                    <th className="p-2.5">Stahlwellrohr (DIN EN 523 / fib PL1)</th>
-                    <th className="p-2.5 text-shiraz">Kunststoff-Wellrohr (HDPE/PP / fib PL2 &amp; PL3)</th>
-                    <th className="p-2.5">Praxis-Auswirkung im Spannbeton</th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.stahlwellrohrDinEn523} /></th>
+                    <th className="p-2.5 text-shiraz"><MdText text={inhalt.texte.kunststoffWellrohrHdpePp} /></th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.praxisAuswirkungImSpannbeton} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                   <tr className="hover:bg-off-white">
-                    <td className="p-2.5 font-bold">Werkstoff &amp; Wanddicke</td>
-                    <td className="p-2.5">Gefalztes, verzinktes Bandstahl (t ≈ 0,35–0,50 mm)</td>
-                    <td className="p-2.5 font-semibold text-shiraz">Extrudiertes High-Density Polyethylen (HDPE / PP, t ≥ 2,0 mm)</td>
-                    <td className="p-2.5 text-[11px]">Kunststoffrohre sind extrem schlagzäh und knicksicher.</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.werkstoffWanddicke} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.gefalztesVerzinktesBandstahlT} /></td>
+                    <td className="p-2.5 font-semibold text-shiraz"><MdText text={inhalt.texte.extrudiertesHighDensityPolyethylen} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.kunststoffrohreSindExtremSchlagzäh} /></td>
                   </tr>
                   <tr className="hover:bg-off-white">
-                    <td className="p-2.5 font-bold">Reibungsbeiwert μ</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.reibungsbeiwert} /></td>
                     <td className="p-2.5 font-mono">0,18 – 0,22</td>
                     <td className="p-2.5 font-mono font-bold text-shiraz">0,12 – 0,14 (-35 %)</td>
-                    <td className="p-2.5 text-[11px]">Erheblich geringere Reibungsverluste ΔP(μ) beim Spannen!</td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.erheblichGeringereReibungsverlusteP} /></td>
                   </tr>
                   <tr className="hover:bg-off-white">
-                    <td className="p-2.5 font-bold">Ungewollte Krümmung (Wobble k)</td>
-                    <td className="p-2.5 font-mono">0,005 – 0,010 rad/m</td>
-                    <td className="p-2.5 font-mono text-shiraz">0,004 – 0,007 rad/m</td>
-                    <td className="p-2.5 text-[11px]">Steifere Geometrie verringert Wellenbildung beim Betonieren.</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.ungewollteKrümmungWobbleK} /></td>
+                    <td className="p-2.5 font-mono"><MdText text={inhalt.texte.t00050010} /></td>
+                    <td className="p-2.5 font-mono text-shiraz"><MdText text={inhalt.texte.t00040007} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.steifereGeometrieVerringertWellenbildung} /></td>
                   </tr>
                   <tr className="hover:bg-off-white">
                     <td className="p-2.5 font-bold">Korrosionsschutzbarriere</td>
-                    <td className="p-2.5">Verzinkung opfert sich; Rost bei Wassereintritt</td>
-                    <td className="p-2.5 font-semibold text-emerald-700">sehr dicht gegen Chloride und Feuchte</td>
-                    <td className="p-2.5 text-[11px]">Vollständige Kapselung des Spannstahls vor Tausalzen.</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.verzinkungOpfertSichRost} /></td>
+                    <td className="p-2.5 font-semibold text-emerald-700"><MdText text={inhalt.texte.sehrDichtGegenChloride} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.vollständigeKapselungDesSpannstahls} /></td>
                   </tr>
                   <tr className="hover:bg-off-white">
-                    <td className="p-2.5 font-bold">Elektrische Isolierung (EIT)</td>
-                    <td className="p-2.5 text-slate-500">Nicht möglich (leitfähig mit Beton)</td>
-                    <td className="p-2.5 font-semibold text-emerald-700">Ja (Electrically Isolated Tendon, R ≥ 1 MΩ·m)</td>
-                    <td className="p-2.5 text-[11px]">Ermöglicht zerstörungsfreie Dichtigkeits- &amp; Korrosionsüberwachung über Lebensdauer.</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.elektrischeIsolierungEit} /></td>
+                    <td className="p-2.5 text-slate-500"><MdText text={inhalt.texte.nichtMöglichLeitfähigMit} /></td>
+                    <td className="p-2.5 font-semibold text-emerald-700"><MdText text={inhalt.texte.jaElectricallyIsolatedTendon} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.ermöglichtZerstörungsfreieDichtigkeitsKo} /></td>
                   </tr>
                   <tr className="hover:bg-off-white">
-                    <td className="p-2.5 font-bold">Verschleiß bei Umlenkung</td>
-                    <td className="p-2.5">Gefahr des Durchscheuerns bei hoher Pressung</td>
-                    <td className="p-2.5 font-semibold text-shiraz">Sehr hohe Ermüdungs- und Abriebfestigkeit</td>
-                    <td className="p-2.5 text-[11px]">Kein metallischer Reibkontakt Spanndraht / Hüllrohr.</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.verschleißBeiUmlenkung} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.gefahrDesDurchscheuernsBei} /></td>
+                    <td className="p-2.5 font-semibold text-shiraz"><MdText text={inhalt.texte.sehrHoheErmüdungsUnd} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.keinMetallischerReibkontaktSpanndraht} /></td>
                   </tr>
                 </tbody>
               </table>
@@ -457,49 +432,37 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
             {/* Box 1: Keile & Keilmechanik */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <Wrench className="h-4 w-4 text-shiraz" />
-                1. Spannkeile &amp; Ankerkörper
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Die Verankerung hochfester Litzen (<InlineMath math="f_{pk} = 1860\text{ MPa}" />) stellt extreme Werkstoffanforderungen:
-              </p>
+                <Wrench className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t1SpannkeileAnkerkörper} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieVerankerungHochfesterLitzen} /></p>
               <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                <li><strong>Einsatzgehärteter Sonderstahl:</strong> Z. B. 16MnCr5 mit <strong>Randschichthärte 58–62 HRC</strong> (krallt sich sicher in die Litzen) und <strong>zäh-elastischem Kern (ca. 35 HRC)</strong> gegen Sprödbruch.</li>
-                <li><strong>Mehrteilige Keile:</strong> 2-teilig oder 3-teilig mit elastischem Federring zur symmetrischen Krafteinleitung.</li>
-                <li><strong>Ankerplatten:</strong> Sphäroguss <strong>EN-GJS-400-15</strong> oder Schmiedestahl zur optimalen Lastverteilung in die Teilflächenzone.</li>
+                <li><MdText text={inhalt.texte.einsatzgehärteterSonderstahlZB} /></li>
+                <li><MdText text={inhalt.texte.mehrteiligeKeile2Teilig} /></li>
+                <li><MdText text={inhalt.texte.ankerplattenSphärogussEnGjs} /></li>
               </ul>
             </div>
 
             {/* Box 2: Korrosionsschutzfette für Monolitzen */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-shiraz" />
-                2. Korrosionsschutzfette &amp; Monolitzen
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Bei der <strong>Vorspannung ohne Verbund</strong> (z. B. Flachdecken im Hochbau) gleiten Monolitzen in einer PE-Hülle:
-              </p>
+                <ShieldCheck className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t2KorrosionsschutzfetteMonolitzen} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.beiDerVorspannungOhne} /></p>
               <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                <li><strong>Spezialfett / Schutzwachs:</strong> Verseifungsfreie Kohlenwasserstofffette mit Korrosionsinhibitoren (<InlineMath math="\ge 45\,\text{g/m}" />).</li>
-                <li><strong>Temperaturbeständigkeit:</strong> Tropfpunkt <InlineMath math="\ge 85 - 100^{\circ}\text{C}" />, kälteflexibel bis -20 °C, keine Verharzung.</li>
-                <li><strong>PE-Schutzmantel:</strong> Nahtlos extrudiertes Polyethylen hoher Dichte (HDPE, Mindestwandstärke <InlineMath math="t \ge 1{,}0\,\text{mm}" />).</li>
-                <li><strong>Reibungsbeiwert:</strong> Extrem gering (<InlineMath math="\mu \approx 0{,}05 - 0{,}06" />).</li>
+                <li><MdText text={inhalt.texte.spezialfettSchutzwachsVerseifungsfreieKo} /></li>
+                <li><MdText text={inhalt.texte.temperaturbeständigkeitTropfpunktGe85} /></li>
+                <li><MdText text={inhalt.texte.peSchutzmantelNahtlosExtrudiertes} /></li>
+                <li><MdText text={inhalt.texte.reibungsbeiwertExtremGeringMu} /></li>
               </ul>
             </div>
 
             {/* Box 3: Dichtungskappen & Entlüfter */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <Package className="h-4 w-4 text-shiraz" />
-                3. Dichtungskappen &amp; Prüfstutzen
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Dauerhafter Schutz der Verankerungs- und Entlüftungsstellen:
-              </p>
+                <Package className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t3DichtungskappenPrüfstutzen} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dauerhafterSchutzDerVerankerungs} /></p>
               <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                <li><strong>Permanente Ankerkappen:</strong> Druckfeste Schutzkappen aus PE oder korrosionsgeschütztem Guss mit O-Ring-Dichtung.</li>
-                <li><strong>Entlüftungsstutzen:</strong> Transparente PE-Schläuche an allen Hochpunkten zur optischen Kontrolle des blasenfreien Mörtelaustritts.</li>
-                <li><strong>Verschluss:</strong> Nach dem Abbinden werden Entlüfter bündig abgeschnitten und luft- und wasserdicht versiegelt.</li>
+                <li><MdText text={inhalt.texte.permanenteAnkerkappenDruckfesteSchutzkap} /></li>
+                <li><MdText text={inhalt.texte.entlüftungsstutzenTransparentePeSchläuch} /></li>
+                <li><MdText text={inhalt.texte.verschlussNachDemAbbinden} /></li>
               </ul>
             </div>
           </div>

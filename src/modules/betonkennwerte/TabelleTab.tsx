@@ -2,6 +2,8 @@
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { EC2_CONCRETE_CLASSES } from './daten';
+import inhalt from '@/content/betonkennwerte/TabelleTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface TabelleTabProps {
   selectedClassIdx: number;
@@ -14,17 +16,11 @@ export default function TabelleTab({ selectedClassIdx, setSelectedClassIdx }: Ta
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-home-grau/20 mb-4">
           <div>
-            <h3 className="font-bold text-slate-900 text-base">
-              DIN EN 1992-1-1 Tabelle 3.1: Festigkeits- und Verformungseigenschaften
-            </h3>
-            <p className="text-xs text-slate-500">
-              Vergleichende Übersicht aller 15 genormten Betonfestigkeitsklassen von Normal- bis Ultra-Hochleistungsbeton
-            </p>
+            <h3 className="font-bold text-slate-900 text-base"><MdText text={inhalt.texte.dinEn19921} /></h3>
+            <p className="text-xs text-slate-500"><MdText text={inhalt.texte.vergleichendeÜbersichtAller15} /></p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-bold font-mono">
-              Abschnitt 7 der Formelsammlung
-            </span>
+            <span className="text-xs px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-bold font-mono"><MdText text={inhalt.texte.abschnitt7DerFormelsammlung} /></span>
           </div>
         </div>
 
@@ -92,9 +88,7 @@ export default function TabelleTab({ selectedClassIdx, setSelectedClassIdx }: Ta
           </table>
         </div>
 
-        <div className="mt-4 p-3 bg-off-white rounded-xl border border-home-grau/20 text-xs text-slate-600 leading-relaxed">
-          <strong>Hinweis zu Hochleistungsbetonen (&gt; C50/60):</strong> Beachten Sie das veränderte Verformungsverhalten. Die Bruchdehnung <InlineMath math="\varepsilon_{cu2}" /> sinkt von 3,5 ‰ kontinuierlich auf bis zu 2,6 ‰ ab (spröderes Bruchverhalten), und der Exponent des Parabel-Rechteck-Diagramms <InlineMath math="n" /> sinkt von 2,0 auf 1,4.
-        </div>
+        <div className="mt-4 p-3 bg-off-white rounded-xl border border-home-grau/20 text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.hinweisZuHochleistungsbetonenC50} /></div>
       </div>
     </div>
   );

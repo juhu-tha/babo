@@ -2,23 +2,23 @@
 import { Info } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { riliSibPrinzipien } from './daten';
+import inhalt from '@/content/stahlbetoninstandhaltung/TrTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function TrTab() {
   return (
     <div className="space-y-6">
       <div className="bg-white border-y border-r border-l-4 border-blue-500 border-home-grau/20 p-4 rounded-xl">
         <h3 className="font-bold text-blue-800 flex items-center gap-2">
-          <Info size={20} />
-          Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung, DIBt)
-        </h3>
+          <Info size={20} /><MdText text={inhalt.texte.technischeRegelInstandhaltungVon} /></h3>
         <p className="text-blue-900 mt-2 text-sm">
-          <FormulaText text="Die Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung, DIBt) regelt die Planung und Ausführung der Instandhaltung von Betonbauwerken in Deutschland. Sie ist bauaufsichtlich verbindlich nach Einführung in der jeweiligen Landes-Verwaltungsvorschrift Technische Baubestimmungen. Prinzipien und Verfahren richten sich nach DIN EN 1504-9 (TR Instandhaltung Teil 1 Tab. 1 & 2)." />
+          <FormulaText text={inhalt.werte.dieTechnischeRegelInstandhaltung} />
         </p>
       </div>
 
       {/* Historisch: Instandsetzungsprinzipien der DAfStb-Rili-SIB (2001) */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center">
-        <h3 className="text-sm font-bold text-text-main mb-6 self-start">Historisch: Instandsetzungsprinzipien der DAfStb-Rili-SIB (2001)</h3>
+        <h3 className="text-sm font-bold text-text-main mb-6 self-start"><MdText text={inhalt.texte.historischInstandsetzungsprinzipienDerDa} /></h3>
         <svg width="100%" height="250" viewBox="0 0 800 250" className="max-w-3xl">
           <defs>
             <pattern id="concrete-tr" patternUnits="userSpaceOnUse" width="20" height="20">

@@ -1,0 +1,101 @@
+{
+  "texte": {
+    "studiumFakultätAB": " Studium @ Fakultät A+B",
+    "studierendenportalThaAugsburg": "Studierendenportal THA (Augsburg)",
+    "willkommenImAkademischenPortal": "Willkommen im akademischen Portal für das Bauwesen- & Architekturstudium an der **Technischen Hochschule Augsburg (THA)**. Hier finden Sie einen schnellen Zugang zur wichtigsten digitalen Infrastruktur und Direktlinks zum Studierendenportal **app.tha.de**.",
+    "campusAppAppTha": "Campus-App app.tha.de direkt öffnen",
+    "digitaleThaInfrastrukturAuf": " Digitale THA-Infrastruktur auf einen Blick",
+    "derStudienalltagAnDer": "Der Studienalltag an der THA wird über verschiedene Systeme verwaltet. Die wichtigste Anlaufstelle ist das personalisierte Portal ",
+    "welchesVieleDieserServices": ", welches viele dieser Services komfortabel aggregiert. Nutzen Sie Ihren zentralen RZ-Account (Single-Sign-On) für den Zugriff.",
+    "portalÖffnen": "Portal öffnen ",
+    "appThaDeAls": " app.tha.de als native Web-App installieren",
+    "istAlsProgressiveWeb": " ist als Progressive Web App (PWA) optimiert. Sie können es direkt über die Browserleiste auf Ihrem Smartphone oder Desktop als eigenständige App installieren, um noch schnelleren Zugriff auf Ihren Stundenplan und Mensaspeiseplan zu erhalten."
+  },
+  "werte": {
+    "technischeHochschuleAugsburg": "Technische Hochschule Augsburg",
+    "zentralesStudentenportalAppTha": "Zentrales Studentenportal app.tha.de",
+    "eLearningMoodleTha": "E-Learning Moodle THA",
+    "stundenpläneWebuntisTha": "Stundenpläne (WebUntis) THA",
+    "careerServiceThaPraktika": "Career Service THA (Praktika & Jobs)",
+    "mensaSpeisepläneStudierendenwerkAugsburg": "Mensa-Speisepläne Studierendenwerk Augsburg",
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen"
+  },
+  "daten": {
+    "THA_PORTALS": [
+      {
+        "tag": "app.tha.de",
+        "name": "Campus App & Studentenportal",
+        "desc": "Offizielle Campus-Webapp der THA: Bündelt Ihren Vorlesungsplan (Stundenplan), Mensamenüs der Woche, Moodle-Shortcuts sowie aktuelle Campus-News an einer Stelle.",
+        "url": "https://app.tha.de/",
+        "colorClass": "text-shiraz",
+        "badgeBg": "bg-shiraz/10 text-shiraz"
+      },
+      {
+        "tag": "Moodle",
+        "name": "E-Learning & Kursunterlagen",
+        "desc": "Das offizielle Lernmanagementsystem. Dozenten hinterlegen hier Skripte, Vorlesungsfolien, Aufgabenblätter sowie Upload-Schnittstellen für Hausarbeiten.",
+        "url": "https://moodle.tha.de/",
+        "colorClass": "text-amber-600",
+        "badgeBg": "bg-amber-50 text-amber-700"
+      },
+      {
+        "tag": "WebUntis",
+        "name": "Stundenpläne & Raumbelegung",
+        "desc": "Bietet tagesaktuelle, stundengenaue Stundenpläne. Zeigt Raumänderungen, Verschiebungen oder Ausfälle für alle Lehrveranstaltungen der Fakultät A+B.",
+        "url": "https://hektor.webuntis.com/WebUntis/?school=hs-augsburg",
+        "colorClass": "text-green-600",
+        "badgeBg": "bg-green-50 text-green-700"
+      },
+      {
+        "tag": "OPAC / InfoGuide",
+        "name": "Bibliothek & Literaturrecherche",
+        "desc": "Onlinekatalog (InfoGuide) der THA-Bibliothek: Suchen Sie nach Fachbüchern, Zeitschriften, E-Books und Normen (wie DIN-Vorschriften) sowie Bibliothekskonto-Verwaltung.",
+        "url": "https://infoguide.hs-augsburg.de/opacTHA.html",
+        "colorClass": "text-indigo-600",
+        "badgeBg": "bg-indigo-50 text-indigo-700"
+      },
+      {
+        "tag": "RZ-Portal",
+        "name": "Zentrale IT & Rechenzentrum",
+        "desc": "Anlaufstelle für Ihre IT-Infrastruktur: Studentische E-Mail-Adresse, WLAN-Einrichtung (eduroam), VPN-Zugänge für Zuhause und Druckkonten-Verwaltung.",
+        "url": "https://www.tha.de/hochschule/organisation/einrichtungen/zentrale-it/",
+        "colorClass": "text-teal-600",
+        "badgeBg": "bg-teal-50 text-teal-700"
+      },
+      {
+        "tag": "Career Service",
+        "name": "Karriere, Praktika & Jobs",
+        "desc": "Der Career Service der THA: Unterstützung bei Praktika, Werkstudierendentätigkeiten, Einstiegsjobs und Firmenkontaktmessen.",
+        "url": "https://www.tha.de/studium/berufseinstieg-und-alumni/studium-beruf/career-service/",
+        "colorClass": "text-rose-600",
+        "badgeBg": "bg-rose-50 text-rose-700"
+      },
+      {
+        "tag": "Mensa-Plan",
+        "name": "Speiseplan Campus Augsburg",
+        "desc": "Tagesaktuelle Menüs, Preise und Angebote der Mensen und Cafeterien des Studierendenwerks Augsburg am Campus Brunnenlech und Campus Rotes Tor.",
+        "url": "https://studierendenwerk-augsburg.de/speiseplaene/",
+        "colorClass": "text-emerald-600",
+        "badgeBg": "bg-emerald-50 text-emerald-700"
+      }
+    ],
+    "StudiumTHA.weblinks.1": {
+      "title": "Onlinekatalog OPAC / InfoGuide Bibliothek THA",
+      "url": "https://infoguide.hs-augsburg.de/opacTHA.html"
+    },
+    "StudiumTHA.literatur": [
+      "Modulhandbuch Bachelor Bauingenieurwesen (Fakultät für Architektur und Bauwesen, THA)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "StudiumTHA.regelwerke": [
+      {
+        "title": "Allgemeine Prüfungsordnung (APO) der Technischen Hochschule Augsburg (THA)",
+        "url": "https://www.tha.de/"
+      },
+      {
+        "title": "Studien- und Prüfungsordnung (SPO) Bauingenieurwesen B.Eng.",
+        "url": "https://www.tha.de/"
+      }
+    ]
+  }
+}

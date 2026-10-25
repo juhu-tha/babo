@@ -17,6 +17,8 @@ import ZeitTheorieTab from './betonkennwerte/ZeitTheorieTab';
 import PraxisTab from './betonkennwerte/PraxisTab';
 import Ausblick2025Tab from './betonkennwerte/Ausblick2025Tab';
 import TestTab from './betonkennwerte/TestTab';
+import inhalt from '@/content/betonkennwerte/Betonkennwerte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 export { EC2_CONCRETE_CLASSES } from './betonkennwerte/daten';
 export type { ConcreteClassData } from './betonkennwerte/daten';
 
@@ -310,52 +312,7 @@ export default function Betonkennwerte() {
   }, [selectedClassIdx, cementClass, aggregateType, relativeHumidity, areaAc, perimeterU, elementHeightH, curingDaysTs, loadingAgeT0, targetAgeT, ambientTempT, axialStressSigmaC, elementLengthL, baseConcrete]);
 
   // Quiz-Fragen zur Überprüfung (Stufe 4 des Lehrpfads)
-  const QUIZ_ITEMS = [
-    {
-      q: 'Aus welcher einzigen primären Eingangsgröße leitet Eurocode 2 (DIN EN 1992-1-1) sämtliche mechanischen Kennwerte für Normalbeton ab?',
-      options: [
-        'Aus dem Zementgehalt in kg/m³.',
-        'Aus dem statischen Elastizitätsmodul Ecm.',
-        'Aus der Frischbetonkonsistenz (Ausbreitmaß).',
-        'Aus der 28-Tage-Zylinderdruckfestigkeit fck (in MPa bzw. N/mm²).'
-      ],
-      correct: 3,
-      feedback: 'Vollkommen richtig! Wie in Abschnitt 1 der Norm und Formelsammlung definiert, basieren alle Kennwerte (fcm, fcd, fctm, Ecm, Dehnungen, Kriech- und Schwindbeiwerte) auf der 28-Tage-Zylinderdruckfestigkeit fck.'
-    },
-    {
-      q: 'Welche Gleichung gilt nach EC2 Gl. (3.7) für das nichtlineare Kriechen, wenn die Dauerspannung σc den Grenzwert 0,45·fck(t₀) übersteigt?',
-      options: [
-        'φk(t, t0) = φ(t, t0) · (1 + k_sigma)',
-        'φk(t, t0) = φ(t, t0) · exp( 1,5 · (k_sigma - 0,45) ) mit k_sigma = σc / fck(t0)',
-        'φk(t, t0) = φ(t, t0) / 0,45',
-        'Die Kriechzahl verdoppelt sich pauschal um den Faktor 2,0.'
-      ],
-      correct: 1,
-      feedback: 'Exakt! Nach EC2 Abschnitt 3.1.4(4) und Gl. (3.7) führt eine hohe Beanspruchung zu Gefügemikrorissen, die die Kriechzahl über die Exponentialfunktion exp[1,5·(k_sigma - 0,45)] vergrößern.'
-    },
-    {
-      q: 'Welcher Gesteinsbeiwert αE ist nach Abschnitt 3.1.3(2) für quarzitische Gesteinskörnung bzw. für Sandstein anzusetzen?',
-      options: [
-        'Quarzit: αE = 1,0 ; Sandstein: αE = 0,7 (-30 % Steifigkeit)',
-        'Quarzit: αE = 1,2 ; Sandstein: αE = 1,0',
-        'Quarzit: αE = 0,9 ; Sandstein: αE = 1,2 (+20 % Steifigkeit)',
-        'Alle Gesteinsarten haben nach Eurocode 2 denselben E-Modul (αE = 1,0).'
-      ],
-      correct: 0,
-      feedback: 'Richtig! Quarzit bildet den Standardwert mit αE = 1,0. Sandstein weist infolge hoher Kornporosität eine um 30 % geringere Steifigkeit auf (αE = 0,7), während Basalt den E-Modul um ca. +20 % steigert (αE = 1,2).'
-    },
-    {
-      q: 'Wie berechnet sich der effektive Elastizitätsmodul für Langzeitverformungen nach EC2 Abs. 7.4.3 (Gl. 7.20)?',
-      options: [
-        'Ec,eff = Ecm · (1 - φ)',
-        'Ec,eff = Ecm · φ(t, t0)',
-        'Ec,eff = Ecm / (1 + φ(t, t0))',
-        'Ec,eff = 1,05 · Ecm / (1 + 2·φ)'
-      ],
-      correct: 2,
-      feedback: 'Richtig! Durch das Kriechen nimmt die elastische Ersatzsteifigkeit um den Faktor (1 + φ) ab: Ec,eff = Ecm / (1 + φ(t, t0)). Für Schwindzwang kann mit dem Relaxationsbeiwert ρ ≈ 0,8 gerechnet werden.'
-    }
-  ];
+  const QUIZ_ITEMS = inhalt.daten["Betonkennwerte.QUIZ_ITEMS"];
 
   return (
     <div className="flex flex-col gap-8 max-w-7xl mx-auto px-4 py-2">
@@ -368,24 +325,18 @@ export default function Betonkennwerte() {
               <span className="p-2 rounded-xl bg-shiraz/10 text-shiraz">
                 <Sliders size={22} />
               </span>
-              <h2 className="text-xl md:text-2xl font-bold text-text-main">
-                Betonkennwerte nach Eurocode 2 (DIN EN 1992-1-1)
-              </h2>
+              <h2 className="text-xl md:text-2xl font-bold text-text-main"><MdText text={inhalt.texte.betonkennwerteNachEurocode2} /></h2>
             </div>
-            <p className="text-xs text-text-main/60 mt-1">
-              Vollständige Berechnung mechanischer &amp; zeitabhängiger Parameter nach Abs. 3.1 &amp; Anhang B (inkl. DIN EN 1992-1-1/NA)
-            </p>
+            <p className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.vollständigeBerechnungMechanischerZeitab} /></p>
           </div>
           <div className="flex items-center gap-2 bg-off-white px-3 py-1.5 rounded-xl border border-home-grau/25 text-xs">
             <span className="font-bold text-slate-700">Normengeneration:</span>
-            <span className="font-mono text-shiraz font-semibold">EC2 (2011/2013) &amp; EC2 Gen 2 (2025)</span>
+            <span className="font-mono text-shiraz font-semibold"><MdText text={inhalt.texte.ec220112013Ec2} /></span>
           </div>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>
-            Die Berechnung sämtlicher Kennwerte für Normalbeton (<strong>C12/15 bis C100/115</strong>) basiert im Eurocode 2 auf einer einzigen primären Eingangsgröße: der <strong>charakteristischen 28-Tage-Zylinderdruckfestigkeit <InlineMath math="f_{ck}" /></strong>. Dieses Modul implementiert die vollständige Gleichungsfolge der bauaufsichtlich eingeführten Normengeneration (DIN EN 1992-1-1 mit NA) für Tragfähigkeits- und Gebrauchstauglichkeitsnachweise (GZT/GZG) sowie zeitabhängige Verformungen aus Schwinden und Kriechen.
-          </p>
+          <p><MdText text={inhalt.texte.dieBerechnungSämtlicherKennwerte} /></p>
         </div>
 
         {/* 4-Stufen-Lehrpfad Tab Navigation */}
@@ -398,8 +349,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('rechner')}
           >
-            <Calculator size={15} /> 1. Interaktiver Kennwertrechner
-          </button>
+            <Calculator size={15} /><MdText text={inhalt.texte.t1InteraktiverKennwertrechner} /></button>
 
           <button aria-pressed={activeTab === 'tabelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -409,8 +359,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('tabelle')}
           >
-            <BookOpen size={15} /> 2. EC2 Tabelle 3.1 Matrix
-          </button>
+            <BookOpen size={15} /><MdText text={inhalt.texte.t2Ec2Tabelle3} /></button>
 
           <button aria-pressed={activeTab === 'zeit_theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -420,8 +369,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('zeit_theorie')}
           >
-            <Activity size={15} /> 3. Zeitverläufe &amp; Theorie
-          </button>
+            <Activity size={15} /><MdText text={inhalt.texte.t3ZeitverläufeTheorie} /></button>
 
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -431,8 +379,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('praxis')}
           >
-            <ShieldCheck size={15} /> 4. Ingenieurpraxis &amp; GZG
-          </button>
+            <ShieldCheck size={15} /><MdText text={inhalt.texte.t4IngenieurpraxisGzg} /></button>
 
           <button aria-pressed={activeTab === 'ausblick2025'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -442,8 +389,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('ausblick2025')}
           >
-            <Sparkles size={15} /> 5. Neuerungen EC2 Gen 2 (2025)
-          </button>
+            <Sparkles size={15} /><MdText text={inhalt.texte.t5NeuerungenEc2Gen} /></button>
 
           <button aria-pressed={activeTab === 'test'}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -453,8 +399,7 @@ export default function Betonkennwerte() {
             }`}
             onClick={() => setActiveTab('test')}
           >
-            <CheckCircle2 size={15} /> 6. Wissenstest
-          </button>
+            <CheckCircle2 size={15} /><MdText text={inhalt.texte.t6Wissenstest} /></button>
         </div>
       </div>
 
@@ -490,44 +435,11 @@ export default function Betonkennwerte() {
 
       {/* 5. Standardisierter Modul-Footer (DIN-Normen OHNE LINKS gemäß System-Direktive) */}
       <ModuleFooter 
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 / A1:2015-03 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Bemessungsregeln und Regeln für den Hochbau)' },
-          { title: 'DIN EN 1992-1-1/NA:2013-04 (Nationaler Anhang - National festgelegte Parameter - Eurocode 2)' },
-          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Teil 1-1: Allgemeine Regeln; Deutsche Fassung EN 1992-1-1:2023; 2. Generation, bauaufsichtlich noch nicht eingeführt)' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
-          { title: 'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Deutscher Ausschuss für Stahlbeton)' }
-        ]}
-        literatur={[
-          'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau nach DIN 1045-1 und EN 1992-1-1. 2. Aufl., Berlin: Springer 2010',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'DAfStb-Heft 525: Erläuterungen zu DIN 1045-1 (Deutscher Ausschuss für Stahlbeton)',
-          'FIB Model Code for Concrete Structures 2010 (fib Bulletin 65/66)'
-        ]}
+        regelwerke={inhalt.daten["Betonkennwerte.regelwerke"]}
+        literatur={inhalt.daten["Betonkennwerte.literatur"]}
         formeln={
           activeTab === 'rechner' || activeTab === 'zeit_theorie'
-            ? [
-                {
-                  formel: 'f_{cm} = f_{ck} + 8\\,\\text{MPa}, \\quad f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c}',
-                  erklaerung: 'Mittelwert und Bemessungswert der Zylinderdruckfestigkeit nach EC2 (in DE: \\alpha_{cc} = 0,85; \\gamma_c = 1,50).',
-                  quelle: 'DIN EN 1992-1-1 Abs. 3.1.2 & 3.1.6'
-                },
-                {
-                  formel: 'E_{cm} = 22000 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0{,}3} \\cdot \\alpha_E\\,\\text{MPa}',
-                  erklaerung: 'Sekantenmodul der Elastizität mit Korrekturbeiwert \\alpha_E für Gesteinskörnungen (Quarzit 1,0; Kalkstein 0,9; Sandstein 0,7; Basalt 1,2).',
-                  quelle: 'DIN EN 1992-1-1 Tab. 3.1'
-                },
-                {
-                  formel: '\\varepsilon_{cs}(t, t_s) = \\varepsilon_{cd}(t, t_s) + \\varepsilon_{ca}(t), \\quad \\varphi(t, t_0) = \\varphi_0 \\cdot \\beta_c(t, t_0)',
-                  erklaerung: 'Gesamtschwinden (Trocknungsschwinden + autogenes Schwinden) und Kriechzahlverlauf in Abhängigkeit von h_0 = 2·A_c/u und der relativen Luftfeuchte.',
-                  quelle: 'DIN EN 1992-1-1 Abs. 3.1.4 & Anhang B'
-                },
-                {
-                  formel: '\\varphi_{k}(t, t_0) = \\varphi(t, t_0) \\cdot \\exp\\left(1{,}5 \\cdot (k_{\\sigma} - 0{,}45)\\right) \\quad \\text{mit } k_{\\sigma} = \\frac{\\sigma_c}{f_{ck}(t_0)}',
-                  erklaerung: 'Nichtlineare Kriechvergrößerung bei hohen Dauerdruckspannungen \\sigma_c > 0,45·f_{ck}(t_0).',
-                  quelle: 'DIN EN 1992-1-1 Gl. (3.7)'
-                }
-              ]
+            ? inhalt.daten.Betonkennwerte
             : []
         }
       />

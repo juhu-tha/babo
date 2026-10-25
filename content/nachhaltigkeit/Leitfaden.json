@@ -1,0 +1,75 @@
+{
+  "texte": {
+    "akademischerWegweiser": "Akademischer Wegweiser",
+    "epdQngLeitfadenFür": " EPD- & QNG-Leitfaden für Studierende",
+    "einePraxisbezogeneSchrittweiseAnleitung": "Eine praxisbezogene, schrittweise Anleitung zur fachgerechten Erstellung einer Gebäude-Ökobilanz (LCA), dem wissenschaftlichen Umgang mit Umweltproduktdeklarationen (EPDs) sowie dem Konformitätsnachweis nach DGNB- und QNG-Kriterien.",
+    "ökobilanzierungenSindKernbestandteilMode": "Ökobilanzierungen sind Kernbestandteil moderner Bauingenieurs- und Projektmanagement-Thesis-Ausarbeitungen. Verwenden Sie diesen Leitfaden als strukturelles Grundgerüst.",
+    "schritt2Von5": "Schritt 2 von 5",
+    "mengenermittlungDichteabgleichBimKopplun": "Mengenermittlung, Dichteabgleich & BIM-Kopplung",
+    "epdWerteSindIn": "EPD-Werte sind in der Regel auf eine funktionelle Einheit (**Functional Unit**) normiert, meist auf **1 kg** eines Stoffs oder **1 m³** eines Bauprodukts. Um eine vollständige Bauteil- oder Gebäude-Ökobilanzierung zu berechnen, müssen Sie die Volumina akkurat ermitteln und mittels Rohdichten in Massen konvertieren.",
+    "rohdichtenVariierenStarkJe": "Rohdichten variieren stark je nach Gesteinskörnung, Feuchte und Porenanteil. Nutzen Sie die baustoffkundigen Standardwerte der Board-Module.",
+    "kopplungMitDerBim": "Kopplung mit der BIM-Methodik",
+    "inModernenPlanungsbürosUnd": "In modernen Planungsbüros und bei Studienprojekten werden Volumina direkt aus 3D-BIM-Modellen (z.B. Autodesk Revit, Allplan) über Bauteillisten oder den IFC-Datenstandard exportiert.",
+    "interdisziplinärerBezugZuAnderen": "Interdisziplinärer Bezug zu anderen Board-Modulen:",
+    "bimBaustoffe": "BIM & Baustoffe",
+    "attributeSchichtdatenSchaueIn": "**Attribute & Schichtdaten:** Schaue in dieses Modul, um zu sehen, wie IFC-Schnittstellen Schichtdicken und Material-UUIDs halten, um automatisierte Ökobilanzen direkt im CAD-Kern anzustoßen.",
+    "ökobaudatMappingBietetDirekten": "**ÖKOBAUDAT Mapping:** Bietet direkten Zugang zu den Datenbankportalen und Suchregistern, um LCA-Charakterisierungsfaktoren verifiziert abzugreifen.",
+    "dichtewertePorositätFindeDort": "**Dichtewerte & Porosität:** Finde dort exakte physikalische Kenngrößen von mineralischen und metallischen Rohstoffen für genaue Massenabbildungen.",
+    "schritt3Von5": "Schritt 3 von 5",
+    "systemgrenzenLebenszyklusmoduleDinEn": "Systemgrenzen & Lebenszyklusmodule (DIN EN 15978)",
+    "lebenszyklusberechnungenErfassenNichtNur": "Lebenszyklusberechnungen erfassen nicht nur die unmittelbare Produktion eines Baustoffs, sondern bewerten die ökologischen Einflüsse in streng abgegrenzten Modulen von der Wiege bis zur Bahre (**Cradle to Grave**) sowie darüber hinaus (Wiederverwertbarkeit):",
+    "schnittstelleZurKreislaufwirtschaftRückb": "Schnittstelle zur Kreislaufwirtschaft & Rückbaufähigkeit:",
+    "spezielleBerechnungenFürDas": "Spezielle Berechnungen für das **Modul D** setzen vertieftes Wissen über Sortenreinheit, Trennbarkeit und Recyclingquoten voraus. Verweise hierzu finden Sie im Modul **Kreislaufwirtschaft & Altlasten** sowie im Modul **Rückbau**. Geringe Verbundstoffanteile begünstigen ein hohes Entsorgungs- und Substitutionsergebnis in Modul D!"
+  },
+  "werte": {
+    "schritt1EpdKonzepte": "Schritt 1: EPD-Konzepte",
+    "datenquellenEpdTypen": "Datenquellen & EPD-Typen",
+    "schritt2MengenDichten": "Schritt 2: Mengen & Dichten",
+    "massenbilanzBim": "Massenbilanz & BIM",
+    "schritt3Lebenszyklus": "Schritt 3: Lebenszyklus",
+    "dinEn15978Phasen": "DIN EN 15978 Phasen",
+    "schritt4LcaBerechnung": "Schritt 4: LCA-Berechnung",
+    "formelnFaktoren": "Formeln & Faktoren",
+    "schritt5DgnbQng": "Schritt 5: DGNB & QNG",
+    "förderungAuditierung": "Förderung & Auditierung",
+    "anhang1Praxisbeispiele": "Anhang 1: Praxisbeispiele",
+    "außenwandGebäude": "Außenwand & Gebäude",
+    "anhang2ChecklistenFehler": "Anhang 2: Checklisten & Fehler",
+    "präventionKontrollen": "Prävention & Kontrollen",
+    "anhang3Übungsaufgaben": "Anhang 3: Übungsaufgaben",
+    "klausurenLösungen": "Klausuren & Lösungen",
+    "anhang4ÖkoDatenbanken": "Anhang 4: Öko-Datenbanken",
+    "qngDgnbIbuCo": "QNG, DGNB, IBU & Co.",
+    "anhang5GlossarSoftware": "Anhang 5: Glossar & Software",
+    "wichtigeBegriffeTools": "Wichtige Begriffe & Tools"
+  },
+  "daten": {
+    "Leitfaden": [
+      {
+        "code": "A1 - A3",
+        "phase": "Herstellungsphase (Cradle-to-Gate)",
+        "desc": "Rohstoffbereitstellung (A1), Transport zum Werk (A2), tatsächliche Herstellung im Werk (A3). Dies ist die fossil-intensivste Phase mineralischer Baustoffe."
+      },
+      {
+        "code": "A4 - A5",
+        "phase": "Errichtungsphase",
+        "desc": "Transporte zur Baustelle (A4), Einbautätigkeiten und Baustellenabfälle (A5)."
+      },
+      {
+        "code": "B1 - B7",
+        "phase": "Nutzungsphase",
+        "desc": "Nutzung (B1), Instandhaltung/Wartung (B2), Reparatur (B3), Ersatz (B4) sowie der operative Energie- (B6) und Wasserverbrauch (B7)."
+      },
+      {
+        "code": "C1 - C4",
+        "phase": "Entsorgungsphase (End-of-Life)",
+        "desc": "Rückbau/Abbruch (C1), Transport zum Recycling (C2), Abfallaufbereitung (C3) und finale Beseitigung/Deponierung (C4). Bei Biomassen wird hier das CO₂ wieder freigesetzt."
+      },
+      {
+        "code": "Modul D",
+        "phase": "Gutschriften und Lasten außerhalb der Systemgrenzen",
+        "desc": "Recyclingpotenziale, thermische Verwertung mit Gutschriften für verdrängte fossile Kraftwerke und Wiederverwendungsnutzen. Enorm wichtig für nachwachsende Werkstoffe."
+      }
+    ]
+  }
+}

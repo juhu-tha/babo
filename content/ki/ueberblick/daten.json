@@ -1,0 +1,871 @@
+{
+  "daten": {
+    "termsData": {
+      "ki": {
+        "title": "1. Künstliche Intelligenz (Synthetische Informationssysteme)",
+        "badge": "Systemtheoretischer Oberbegriff",
+        "analogy": "Deterministische Wissensrepräsentation & Stochastische Inferenzsysteme",
+        "summary": "Oberkategorie aller algorithmischen Systeme zur rechnergestützten Automatisierung kognitiver ingenieurtechnischer Prozesse – von regelbasierten Expertensystemen (Deduktion) bis zu datengetriebenen probabilistischen Modellen (Induktion).",
+        "simpleExpl": "Systematische Abbildung ingenieurwissenschaftlicher Entscheidungslogik auf Rechenarchitekturen. Während klassische Bau-Software deterministische physikalische Differentialgleichungen (z. B. FEM-Steifigkeitsmatrizen) löst, verknüpft moderne KI regelbasierte Heuristiken, Optimierungsalgorithmen und selbstlernende statistische Approximationen zur Bewältigung hochdimensionaler Planungsprobleme.",
+        "constructionExample": "Ein System, das automatisch eine Baugenehmigung auf Vollständigkeit prüft oder Bauzeitenpläne optimiert.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Symbolische Wissensmodellierung",
+            "desc": "Prädikatenlogische Formalisierung baurechtlicher und geometrischer Restriktionen (z. B. regelbasierte Modellprüfung im IFC-Standard nach ISO 16739)."
+          },
+          {
+            "step": "02",
+            "title": "Subsymbolische Musterinduktion",
+            "desc": "Statistische Approximation hochgradig nichtlinearer Baustoff- und Verformungsphänomene aus empirischen Messreihen ohne a-priori geschlossene physikalische Gleichung."
+          },
+          {
+            "step": "03",
+            "title": "Mehrkriterielle Optimierung",
+            "desc": "Gradientenfreie metaheuristische Algorithmen (z. B. Partikelschwarm-Optimierung, Genetische Algorithmen) zur Lösung nicht-konvexer Zielkonflikte (z. B. Eigenfrequenzmaximierung bei Massenminimierung)."
+          },
+          {
+            "step": "04",
+            "title": "Deterministische Validierung",
+            "desc": "Rückkopplung probabilistischer Modellvorschläge an normativ verankerte Nachweisalgorithmen der Grenzzustände (GZT / GZG nach DIN EN 1990)."
+          }
+        ],
+        "keyCharacteristics": [
+          "Taxonomisches Dach: Umfasst maschinelle Lernverfahren, Expertensysteme, Wissensgraphen und generative Inferenzmodelle.",
+          "Kombination aus deduktiver Logik (Normenkataloge) und induktiver Datenanalyse (Prüfstandsdaten).",
+          "Unterstützung des Building Information Modeling (BIM) über offene Schnittstellen (openBIM, IFC4, BCF).",
+          "Rechtliche Determiniertheit: Das System agiert als Rechenhilfsmittel; die Nachweisführung verbleibt in der persönlichen Verantwortung des bauvorlageberechtigten Ingenieurs."
+        ],
+        "examples": [
+          {
+            "title": "Automatisiertes Modellprüfverfahren (Rule-Checking) im openBIM-Fachmodell (IFC4)",
+            "category": "LPH 4 / Genehmigungsplanung & Bauordnungsrecht",
+            "scenario": "Prüfung der normativen Konformität eines 6-geschossigen Hochbaus nach Musterbauordnung (MBO) vor Einreichung der Bauvorlagen.",
+            "input": "Semantisch annotiertes IFC4-Modell (3D-Geometrie, Raumvolumina, Feuerwiderstandsklassen REI, lichte Öffnungsmaße).",
+            "process": "Rechnerische Überprüfung der Fluchtweggeometrien (Lauflänge ≤ 35 m nach MBO), Brandabschnittstrennungen und Abstandsflächengeometrien (§ 6 LBO) mittels räumlicher Topologieabfragen.",
+            "output": "Strukturierter Prüfbericht im BCF-Standard (BIM Collaboration Format) mit georeferenzierten Kollisionselementen.",
+            "benefit": "Reduktion behördlicher Nachforderungszyklen um bis zu 75 %; Ausschluss formeller Planungsfehler im Genehmigungsverfahren.",
+            "normRef": "Musterbauordnung (MBO) § 33 & jeweilige Landesbauordnungen (LBO § 6)"
+          },
+          {
+            "title": "Topologieoptimierung im Grenzzustand der Tragfähigkeit (SIMP-Verfahren)",
+            "category": "LPH 2–3 / Tragwerksplanung & Entwurf",
+            "scenario": "Eigengewichts- und Steifigkeitsoptimierung eines weitgespannten Dachträgers (L = 30 m) unter asymmetrischer Schneelast.",
+            "input": "Bauraumgrenzen, Stützweiten, Auflagerfreiheitsgrade und Einwirkungskombinationen nach DIN EN 1991-1-1 / DIN EN 1991-1-3.",
+            "process": "Kopplung der Solid Isotropic Material with Penalisation (SIMP)-Methode mit einem FEM-Solver zur Minimierung der Nachgiebigkeit (Compliance) unter Erhaltung der Vergleichsspannung σ_v ≤ f_y,d.",
+            "output": "Topologieoptimiertes Raumfachwerk (Stahlgüte S355J2) mit idealisiertem Kraftfluss und Fertigungsdaten für CNC-Zuschnitte.",
+            "benefit": "Massereduktion um 32 % bei identischer globaler Steifigkeit; unmittelbare Senkung der embodied carbon-Werte.",
+            "normRef": "DIN EN 1993-1-1 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)"
+          },
+          {
+            "title": "Stochastische 4D-Bauablaufsimulation & Kritischer-Pfad-Optimierung (CPM)",
+            "category": "LPH 8 / Bauoberleitung & Ausführung",
+            "scenario": "Termin- und Ressourcenoptimierung getakteter Ortbetonierabschnitte bei beengten innerstädtischen Baustellenverhältnissen.",
+            "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung nach de Vree), Wetterdaten und Krankapazitäten.",
+            "process": "Monte-Carlo-Simulation von 10.000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
+            "output": "Dynamisch angepasster Taktterminplan mit probabilistischer Eintrittswahrscheinlichkeit für Meilensteintermine.",
+            "benefit": "Minimierung von Bauzeitverzug und vertraglichen Pönalen nach VOB/B § 5; Vermeidung von Frischbeton-Verzögerungsschäden.",
+            "normRef": "VOB/B § 5 (Ausführungsfristen) & VDI 2552 (Building Information Modeling)"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Händischer visueller Soll-Ist-Abgleich zweidimensionaler Plandokumente gegen Gesetzestexte.",
+            "Räumliche geometrische Kollisionen zwischen TGA und Tragwerk werden erst auf der Baustelle offenkundig.",
+            "Dimensionierung von Trägern erfolgt auf Basis grober tabellarischer Vorbemessungswerte."
+          ],
+          "classicDisadvantage": "Hohe Fehleranfälligkeit bei Planungsänderungen, erhebliche Personalbindung, langwierige Genehmigungsverfahren.",
+          "aiTitle": "KI-gestützte Ingenieurmethodik (Hybride Inferenz / Automatisierung)",
+          "aiSteps": [
+            "Vollautomatischer digitaler LBO- und Kollisionscheck im semantischen IFC-Modell in unter 3 Minuten.",
+            "Topologieoptimierte Querschnittssynthese führt zu signifikanten Masseneinsparungen bei voller Normkonformität.",
+            "Ingenieur agiert als evaluierende Instanz und fokussiert auf komplexe bautechnische Detaillösungen."
+          ],
+          "aiAdvantage": "Faktor 20 gesteigerte Prüfgeschwindigkeit, 100 % Prüfdichte, nachweisbare Werkstoff- und CO2-Einsparung.",
+          "roiSummary": "70–80 % Zeitersparnis bei der Modellvalidierung und Bauantragsvorbereitung."
+        },
+        "math": {
+          "formula": "\\mathcal{A}^* = \\arg\\max_{a \\in \\mathcal{A}} \\mathbb{E}\\left[\\sum_{t=0}^T \\gamma^t R(s_t, a_t)\\right]",
+          "formulaName": "Markov-Entscheidungsprozess (MDP / Bellman-Optimierungsoperatoren)",
+          "formulaText": "Mathematische Formulierung optimaler baulicher Entscheidungsfindung unter stochastischen Randbedingungen.",
+          "explanation": "Die KI ermittelt die Handlungssequenz a*, die den mathematischen Erwartungswert einer mehrkriteriellen Zielfunktion R (z. B. minimale Baukosten, minimale CO2-Emissionen, maximale Tragsicherheit) über den Zeithorizont T maximiert.",
+          "variables": [
+            {
+              "sym": "\\mathcal{A}^*",
+              "name": "Optimale Strategie",
+              "desc": "Menge optimaler bautechnischer Entscheidungen (z. B. Topologieauswahl, Takttaktung)."
+            },
+            {
+              "sym": "s_t, a_t",
+              "name": "Zustand & Aktion",
+              "desc": "Zustandsvektor des Bauprojekts zum Zeitschritt t und ausgeführte Dimensionierungs- oder Steuerungsaktion."
+            },
+            {
+              "sym": "R(s, a)",
+              "name": "Zielfunktion (Reward)",
+              "desc": "Skalare Bewertungsfunktion (z. B. Ausnutzungsgrad nach Eurocode, Herstellkosten, GWP-Kennwert)."
+            },
+            {
+              "sym": "\\gamma",
+              "name": "Diskontierungsfaktor",
+              "desc": "Gewichtung künftiger Bau- und Lebenszyklusfolgen gegenüber kurzfristigen Investitionskosten (0 < gamma <= 1)."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Fehlende Nachvollziehbarkeit bei rein probabilistischen Heuristiken; Risiko systematischer Fehleinschätzungen bei atypischen Randbedingungen.",
+          "engineerDuty": "Der Entwurfsverfasser und bauvorlageberechtigte Ingenieur haftet persönlich gemäß BGB § 634 und Landesbauordnung. KI-Systeme entbinden nicht von der Pflicht zur unabhängigen statisch-konstruktiven Plausibilitätsprüfung.",
+          "standards": "KI-VO (EU) 2024/1689 (Hochrisiko nur bei Zweckbestimmung nach Art. 6 / Anhang I oder III), DIN SPEC 92001, HOAI"
+        }
+      },
+      "ml": {
+        "title": "2. Maschinelles Lernen (Statistische Inferenz & Regression)",
+        "badge": "Empirische Induktion",
+        "analogy": "Multivariate Inferenzmodelle & Statistische Versuchsfeldkalibrierung",
+        "summary": "Mathematische Verfahren zur Extraktion verallgemeinerungsfähiger Gesetzmäßigkeiten aus empirischen Versuchs- und Messdaten ohne explizite analytische Modellierung.",
+        "simpleExpl": "Maschinelles Lernen approximiert die unbekannte multivariate Übertragungsfunktion zwischen Materialzusammensetzungen und mechanischen Kennwerten. Anhand historischer Labordaten minimiert das Modell eine quadratische oder logarithmische Verlustfunktion, wodurch hochkomplexe nichtlineare Zusammenhänge (z. B. Hydratationskinetik von Klinkerersatzstoffen) exakt abgebildet werden.",
+        "constructionExample": "Aus 5.000 protokollierten Beton-Druckprüfungen prognostiziert das Modell die 28-Tage-Druckfestigkeit einer neuen Mischung.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Merkmalsraum-Parametrisierung",
+            "desc": "Definition und Normalisierung des Eingangsvektors x in R^d (z. B. äquivalenter Wasserzementwert (w/z)_eq, Zementgehalt in kg/m³, Klinker-Phasenbestand, Gesteinsmehlanteil)."
+          },
+          {
+            "step": "02",
+            "title": "Verlustfunktions-Minimierung",
+            "desc": "Numerische Parameteroptimierung (z. B. Stochastic Gradient Descent, L-BFGS) zur Minimierung des mittleren quadratischen Prognosefehlers (MSE)."
+          },
+          {
+            "step": "03",
+            "title": "Regularisierung & Kreuzvalidierung",
+            "desc": "Unterdrückung von Überanpassung (Overfitting) an Messrauschen durch L1/L2-Strafmatrizen und k-fache Stratified Cross-Validation."
+          },
+          {
+            "step": "04",
+            "title": "Inferenz & Konfidenzintervall",
+            "desc": "Punktschätzung der Zielgröße f_ck inklusive quantitativer 95%-Konfidenzintervalle auf Basis der asymptotischen Modellkovarianz."
+          }
+        ],
+        "keyCharacteristics": [
+          "Supervised Learning: Kalibrierung an normativ verifizierten Prüfstandsdaten (z. B. Festbetondruckprüfungen nach DIN EN 12390-3).",
+          "Unsupervised Learning: Autonome Clusteranalyse zur Detektion geotechnischer Schichtgrenzen oder Werkstoffanomalien.",
+          "Feature Importance: Quantitative Bestimmung der Haupteinflussfaktoren über SHAP-Vektoren (Shapley Additive Explanations).",
+          "Strikte Gültigkeitsgrenzen: Gültigkeit beschränkt auf den konvexen Hüllkörper des Trainingsdatensatzes (keine uneingeschränkte Extrapolation)."
+        ],
+        "examples": [
+          {
+            "title": "Multivariate Inferenz der 28-Tage-Betondruckfestigkeit aus Frühfestigkeitsdaten",
+            "category": "Baustoffprüfung & Betontechnologie (DIN EN 206)",
+            "scenario": "Echtzeit-Konformitätsprüfung im Transportbetonwerk zur Minimierung von Schalungsstandzeiten im Hochbau.",
+            "input": "Zusammensetzungsvektor (CEM-Typ, Klinkergehalt, Hüttensandanteil, PCE-Fließmitteldosierung, (w/z)_eq) und 24h-Frühdruckfestigkeit f_c,1d.",
+            "process": "Gradient-Boosted Decision Trees (XGBoost) ermitteln die nichtlineare Kinetik der Festigkeitsentwicklung auf Basis von 12.000 Laborversuchsreihen.",
+            "output": "Prognostizierte 28-Tage-Druckfestigkeit f_ck,28d mit zweiseitigem 95%-Konfidenzintervall (z. B. 37,8 ± 1,4 N/mm² -> gesicherte Einstufung in C30/37).",
+            "benefit": "Sichere Reduktion der Ausschalfristen um bis zu 48 Stunden; unmittelbare Chargenkorrektur vor Einbau im Folgegeschoss.",
+            "normRef": "DIN EN 206 / DIN 1045-2 & DIN EN 12390-3"
+          },
+          {
+            "title": "Numerische Modellierung der Karbonatisierungsfront x_c(t) im Ingenieurbau",
+            "category": "Bauwerkserhaltung & Dauerhaftigkeitsbemessung",
+            "scenario": "Restlebensdauerprognose von Stahlbeton-Brückenbauwerken bezüglich Depassivierung der Bewehrung.",
+            "input": "Bauwerksalter, Mikroklimadaten (relative Feuchte RH, CO2-Partialdruck), gemessene Betondeckung c_nom und Sorptionsporosität.",
+            "process": "Support Vector Regression (SVR) mit Radial-Basis-Funktionskern zur Approximation des feuchteabhängigen Diffusionskoeffizienten D_CO2(RH).",
+            "output": "Zeitabhängiger Verlauf der Karbonatisierungstiefe x_c(t) = k · √t und Schadenseintrittswahrscheinlichkeit P(c ≤ x_c).",
+            "benefit": "Objektivierte Instandsetzungsplanung nach ZTV-ING; gezielte Festlegung von Reprofilierungs- und Oberflächenschutzsystemen.",
+            "normRef": "DIN EN 1504 & DAfStb-Instandsetzungsrichtlinie"
+          },
+          {
+            "title": "Räumliche Geostatistik & Baugrund-Setzungsanalyse aus CPT-Sondierungen",
+            "category": "Geotechnik & Spezialtiefbau",
+            "scenario": "Gründungsoptimierung für Flächengründungen bei stark wechselnden Schichtmächtigkeiten.",
+            "input": "Messdaten kontinuierlicher Drucksondierungen (Spitzenwiderstand q_c, Mantelreibung f_s, Porenwasserdruck u).",
+            "process": "Kombination aus K-Nearest Neighbors und Kriging-Interpolation zur Konstruktion eines 3D-Bodensteifigkeitsmodells (E_s-Modul).",
+            "output": "Kontinuierliche Verteilung des Bettungsmoduls k_s(x,y) zur Übergabe an die FE-Plattenstatik.",
+            "benefit": "Minimierung von Differenzsetzungen; signifikante Reduzierung unvorhersehbarer Baugrundrisiken nach § 644 BGB.",
+            "normRef": "DIN 4020 & DIN EN 1997-1 (Eurocode 7: Geotechnik)"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Anwendung empirischer Potenzansätze (z. B. Walz-Diagramme) mit stark eingeschränktem Bindemittelspektrum.",
+            "Keine rechnerische Erfassung komplexer synergistischer Wechselwirkungen klinkerreduzierter Zemente (CEM II/C, CEM III/A).",
+            "28-tägige Zwangswartezeit auf Labor-Würfeldruckprüfungen vor statischer Endabnahme."
+          ],
+          "classicDisadvantage": "Überdimensionierte Sicherheitsbeiwerte bei Zementgehalten, hoher Klinkereinsatz, verlängerte Taktzeiten.",
+          "aiTitle": "ML-gestützte Inferenzmethodik",
+          "aiSteps": [
+            "Multivariates Modell verarbeitet bis zu 20 physikochemische Einflussfaktoren simultan.",
+            "Prognosegüte der 28-Tage-Druckfestigkeit erreicht Bestimmtheitsmaße R² > 0,96 bereits 24 h nach Betonage.",
+            "Gezielte Klinkersubstitution ermöglicht CO2-reduzierte Betone bei nachgewiesener Festigkeitskonformität."
+          ],
+          "aiAdvantage": "Verlässliche Frühfestigkeits-Inferenz, beschleunigte Taktzyklen, planbare Bindemitteloptimierung.",
+          "roiSummary": "15 % Klinkereinsparung und 2–3 Tage Bauzeitverkürzung pro Geschosstakt."
+        },
+        "math": {
+          "formula": "y = f(\\mathbf{x}) + \\varepsilon \\quad \\text{mit} \\quad \\min_{\\mathbf{w}} \\frac{1}{N}\\sum_{i=1}^N \\left(y_i - \\mathbf{w}^T \\phi(\\mathbf{x}_i)\\right)^2 + \\lambda \\|\\mathbf{w}\\|_2^2",
+          "formulaName": "Tikhonov-regularisierte Ridge-Regression & Feature-Mapping",
+          "formulaText": "Mathematische Zielfunktion zur Vorhersage kontinuierlicher Baustoffkennwerte.",
+          "explanation": "Minimierung der Residuenquadratsumme zwischen Prüfstandsmesswert yi und Modellschätzung w^T phi(xi), stabilisiert durch die L2-Norm zur Unterdrückung von Multikollinearität der Eingangsparameter.",
+          "variables": [
+            {
+              "sym": "y",
+              "name": "Skalare Zielgröße",
+              "desc": "Gesuchter Baustoffkennwert (z. B. 28-Tage-Zylinderdruckfestigkeit f_ck in N/mm² oder Setzung s in mm)."
+            },
+            {
+              "sym": "\\mathbf{x}",
+              "name": "Parametervektor",
+              "desc": "Vektor der Einflussgrößen ((w/z)_eq, Zementgehalt in kg/m³, Feuchte, Reifealter)."
+            },
+            {
+              "sym": "\\mathbf{w}",
+              "name": "Regressionskoeffizienten",
+              "desc": "Numerisch optimierte Gewichtungsfaktoren des Inferenzmodells."
+            },
+            {
+              "sym": "\\lambda \\|\\mathbf{w}\\|^2",
+              "name": "Tikhonov-Penalty",
+              "desc": "Regularisierungsterm zur Gewährleistung numerischer Stabilität und Generalisierbarkeit."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Modellunsicherheit bei Extrapolation außerhalb des Trainingsbereichs (Domain Shift): Bei gänzlich neuartigen Zementphasen oder unkalibrierten Betonzusatzmitteln liefert das Modell scheinkonforme, physikalisch fehlerhafte Werte.",
+          "engineerDuty": "Erforderlichkeit von Plausibilitätsprüfungen gegen baustoffphysikalische Grenzbedingungen (z. B. Abrams-Gesetz: monotone Festigkeitsabnahme bei steigendem Wasserzementwert).",
+          "standards": "DIN EN 12390, DIN EN 206, DIN SPEC 92001"
+        }
+      },
+      "dl": {
+        "title": "3. Deep Learning & Künstliche Neuronale Netze (ANN / CNN)",
+        "badge": "Hierarchische Repräsentationsnetze",
+        "analogy": "Vielschichtige Tensortransformationen & Faltungsoperatoren",
+        "summary": "Vielschichtige künstliche neuronale Netzarchitekturen zur hierarchischen Merkmalsextraktion aus unstrukturierten, hochdimensionalen Signalen (Bilddaten, Punktwolken, Zeitserien).",
+        "simpleExpl": "Deep-Learning-Netzwerke transformieren sensorische Rohdaten schichtweise über gewichtete Tensoren und nichtlineare Aktivierungsfunktionen. Dadurch erlernen sie autonome Repräsentationen – von lokalen Bildgradienten bis hin zu komplexen Rissgeometrien oder Eigenfrequenzverschiebungen.",
+        "constructionExample": "Automatische Risserkennung: Ein neuronales Netz durchsucht hochauflösende Drohnenbilder einer Pfeileroberfläche und markiert Haarrisse mit Sub-Millimeter-Genauigkeit.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Räumliche Faltung (Spatial Convolutions)",
+            "desc": "Multiplikation diskreter Faltungskerne mit Bildmatrizen zur Detektion frequenz- und kantenbezogener Schadensmerkmale."
+          },
+          {
+            "step": "02",
+            "title": "Nichtlineare Aktivierung (ReLU / GELU)",
+            "desc": "Anwendung von Aktivierungsfunktionen zur mathematischen Abbildung hochgradig nichtlinearer Bruch- und Schadensmechanismen."
+          },
+          {
+            "step": "03",
+            "title": "Gradientenbasierte Fehlerrückführung (Backpropagation)",
+            "desc": "Exakte Berechnung partieller Ableitungen dL/dW über die Kettenregel zur Parameteraktualisierung via AdamW-Optimizer."
+          },
+          {
+            "step": "04",
+            "title": "Pixelweise Segmentierung",
+            "desc": "U-Net- oder Feature-Pyramid-Decoder zur Rekonstruktion vollständiger semantischer Masken in nativer Bildauflösung."
+          }
+        ],
+        "keyCharacteristics": [
+          "End-to-End-Lernfähigkeit ohne manuelle Feature-Definition (kein heuristisches Feature Engineering).",
+          "Skalierbarkeit auf Multi-Megapixel-Bilddaten, multispektrale Sensoren und hochfrequente Körperschallsignale.",
+          "Hohe Inferenzgeschwindigkeit auf dedizierter Tensor-Hardware (GPUs / TPUs).",
+          "Erfordert methodische Validierung bezüglich Modellunsicherheit und visueller Artefaktbildung."
+        ],
+        "examples": [
+          {
+            "title": "Sub-Millimeter-Risssegmentierung auf Betonoberflächen via CNN (U-Net)",
+            "category": "Bauwerksprüfung nach DIN 1076 / ZfP-Bau",
+            "scenario": "Zustandserfassung von Brückenpfeilern und Hohlkästen ohne verkehrsbeeinträchtigende Rüstung.",
+            "input": "Kalibrierte 4K-Bildserien einer autonomen Drohnenbefliegung mit GSD (Ground Sampling Distance) ≤ 0,2 mm/Pixel.",
+            "process": "U-Net-Architektur segmentiert Rissstrukturen, differenziert Schalungsgrate und Texturunregelmäßigkeiten und berechnet die Rissbreite w orthogonal zur Mittellinie.",
+            "output": "Georeferenzierter Schadensatlas mit tabellarischer Erfassung aller Risse w ≥ 0,1 mm gemäß DIN 1076.",
+            "benefit": "Steigerung der Inspektionsgeschwindigkeit um Faktor 5; vollständige Reproduzierbarkeit der Rissbreitenentwicklung über Inspektionsintervalle.",
+            "normRef": "DIN 1076 & RI-EBW-PRÜF"
+          },
+          {
+            "title": "Modale Systemidentifikation & Schwingungsmonitoring schlanker Tragwerke",
+            "category": "Structural Health Monitoring (SHM) & Baudynamik",
+            "scenario": "Kontinuierliche Schwingungsüberwachung einer Fußgänger-Hängebrücke unter dynamischer Erregung.",
+            "input": "Zeitserien von 16 piezoelektrischen 3-Achs-Beschleunigungssensoren (Abtastrate f_s = 200 Hz).",
+            "process": "Rekurrente Temporal-Transformer-Netzwerke isolieren modale Parameter (Eigenfrequenzen f_i, modale Dämpfung D_i) und berechnen temperaturkorrigierte Residuen.",
+            "output": "Echtzeit-Schadensindex; automatische Alarmierung bei signifikanter Eigenfrequenzreduktion Δf_1 > 1,5 % infolge Spanngliedversagens.",
+            "benefit": "Frühzeitige Erkennung von Ermüdungsschäden vor dem Eintreten irreversibler plastischer Verformungen.",
+            "normRef": "VDI 4551 & VDI 6200 (Standsicherheit baulicher Anlagen)"
+          },
+          {
+            "title": "Semantische Klassifikation von 3D-LiDAR-Punktwolken für den Soll-Ist-Toleranzabgleich",
+            "category": "BIM-Qualitätssicherung & Bauvermessung",
+            "scenario": "Geometrische Überprüfung von Ortbetonbauteilen und Einbauteilen vor dem Schließen von Schalungen.",
+            "input": "Terrestrischer 3D-Laserscan mit 50 Mio. diskreten Raumkoordinaten (x, y, z) und Reflektivitätswerten.",
+            "process": "PointNet++ klassifiziert Punkte in semantische Bauteilklassen (Stütze, Unterzug, Bewehrungslage) und berechnet geometrische Abweichungen zum IFC-Planungsmodell.",
+            "output": "Orthogonale Abweichungskarte mit automatischer Grenzwertprüfung der Grenzmaße nach DIN 18202.",
+            "benefit": "Sofortige Identifikation von Maßtoleranzüberschreitungen vor der Betonage; Vermeidung kostenintensiver Stemmarbeiten.",
+            "normRef": "DIN 18202 (Toleranzen im Hochbau) & DIN EN ISO 19650"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Visuelle Bauwerksprüfung mittels Rissbreitenlineal und optischer Lupe im Korb eines Hubsteigers.",
+            "Händisches Eintragen von Rissverläufen mit Wachskreide und Fotokamera.",
+            "Manuelles Zusammenstellen von Schadensberichten im Büro über mehrere Arbeitstage."
+          ],
+          "classicDisadvantage": "Subjektive Befundung, hohe Unfallgefahr, schwer zugängliche Bereiche bleiben ungeprüft.",
+          "aiTitle": "Deep-Learning-Ablauf",
+          "aiSteps": [
+            "Drohnen erfassen das gesamte Bauwerk lückenlos mit Sub-Millimeter-Auflösung in wenigen Stunden.",
+            "Neuronale Netze vermessen zehntausende Risse pixelgenau und klassifizieren Schadensursachen.",
+            "Automatischer digitaler Schadenskataster-Export direkt in Bauwerksdatenbanken (z. B. SIB-Bauwerke)."
+          ],
+          "aiAdvantage": "Vollständig reproduzierbar, 100 % Prüfdichte, null Verkehrsbeeinträchtigung.",
+          "roiSummary": "70 % Kosteneinsparung bei Bauwerkshauptprüfungen nach DIN 1076."
+        },
+        "math": {
+          "formula": "\\mathbf{a}^{(l)} = \\sigma\\left(\\mathbf{W}^{(l)} \\mathbf{a}^{(l-1)} + \\mathbf{b}^{(l)}\\right) \\quad \\text{mit} \\quad \\mathcal{L}_{BCE} = -\\frac{1}{N}\\sum_{i=1}^N \\left[y_i \\ln(\\hat{y}_i) + (1-y_i)\\ln(1-\\hat{y}_i)\\right]",
+          "formulaName": "Mehrschichtige Vorwärtstransformation & Binary Cross-Entropy Loss",
+          "formulaText": "Mathematische Signalweiterleitung durch Schichten und pixelweiser Segmentierungsfehler.",
+          "explanation": "In jeder Netzschicht werden die Ausgänge der vorherigen Schicht mit der Gewichtsmatrix W multipliziert, um den Bias b verschoben und durch die nichtlineare Aktivierungsfunktion sigma (z. B. ReLU) geleitet.",
+          "variables": [
+            {
+              "sym": "\\mathbf{a}^{(l)}",
+              "name": "Aktivierungsvektor",
+              "desc": "Repräsentation der Merkmale in Schicht l (z. B. Kanten, Rissbreiten)."
+            },
+            {
+              "sym": "\\mathbf{W}^{(l)}",
+              "name": "Gewichtsmatrix",
+              "desc": "Faltungskerne und Verbindungsgewichte der Schicht l."
+            },
+            {
+              "sym": "\\mathbf{b}^{(l)}",
+              "name": "Bias-Vektor",
+              "desc": "Schwellenwertverschiebung der künstlichen Neuronen."
+            },
+            {
+              "sym": "\\mathcal{L}_{BCE}",
+              "name": "Verlustfunktion",
+              "desc": "Misst den Fehler bei der Risssegmentierung (Riss vs. intakter Beton)."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Optische Fehldeutungen: Schlagschatten von Gerüsten, feuchte Wasserläufe oder Schalungsnähte können vom Netz irrtümlich als kritische Trennrisse interpretiert werden (\"Black Box\").",
+          "engineerDuty": "Stichprobenartige Validierung der detektierten Risse vor Ort durch sachkundige ZfP-Prüfer (DGZfP Stufe 2/3).",
+          "standards": "DGZfP-Merkblätter, DIN 1076, VDI 6200 (Standsicherheit baulicher Anlagen)"
+        }
+      },
+      "llm": {
+        "title": "4. Large Language Models (Transformer-basierte Sprachmodelle)",
+        "badge": "Kontextuelle Sequenzmodelle",
+        "analogy": "Autoregressive Aufmerksamkeits-Architekturen & Syntax-Parser",
+        "summary": "Auf der Transformer-Architektur basierende Sprachmodelle zur semantischen Interpretation, Synthese und Transformation bautechnischer Texte, Regelwerke und Skriptsprachen.",
+        "simpleExpl": "Modelle dieser Klasse berechnen über Multi-Head-Self-Attention-Tensoren die kontextuelle Abhängigkeit zwischen Tokens über lange Textsequenzen hinweg. Sie ermöglichen das automatisierte Parsing von Gutachten, die Generierung VOB-konformer Leistungstexte sowie die Erstellung von API-Schnittstellencode für Statiksoftware.",
+        "constructionExample": "Zusammenfassung eines 120-seitigen Baugrundgutachtens in eine übersichtliche Tabelle mit Bodenkennwerten (Bodenklasse, Reibungswinkel φ, Kohäsion c).",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Byte-Pair-Encoding (BPE) Tokenisierung",
+            "desc": "Zerlegung ingenieurtechnischer Fachbegriffe in optimierte Subword-Einheiten unter Erhalt semantischer Wortstämme."
+          },
+          {
+            "step": "02",
+            "title": "Multi-Head Self-Attention",
+            "desc": "Parallele Berechnung relationaler Gewichtungsmatrizen zwischen Querverweisen, Lastfällen und Materialkennwerten im Text."
+          },
+          {
+            "step": "03",
+            "title": "Positionskodierung (RoPE)",
+            "desc": "Mathematische Einbettung der relativen und absoluten Distanz zwischen Normabsätzen und Bemessungsregeln im Aufmerksamkeitsraum."
+          },
+          {
+            "step": "04",
+            "title": "Autoregressive Inferenz & Temperature-Skalierung",
+            "desc": "Deterministische Wortgenerierung mit reduzierter Entropie (Temperature ≈ 0) zur Minimierung stochastischer Varianzen."
+          }
+        ],
+        "keyCharacteristics": [
+          "Erfassung unstrukturierter bautechnischer Fachliteratur, statischer Vorberichte und juristischer Vertragstexte.",
+          "Synthese formaler Programmiersprachen (Python, C#, Dynamo, Grasshopper) für ingenieurtechnische Schnittstellen.",
+          "Multimodale Erweiterung: Synchrone Verarbeitung von Textbeschreibungen und Plan-Vektorgrafiken.",
+          "Deterministischer Schutzbedarf: Unverankerte Modelle neigen bei numerischen Fachfragen zu Halluzinationen."
+        ],
+        "examples": [
+          {
+            "title": "Strukturierte Informationsextraktion aus geotechnischen Untersuchungsberichten",
+            "category": "Geotechnik & Tragwerksplanung (LPH 1–4)",
+            "scenario": "Überführung unstrukturierter Baugrundgutachten in strukturierte Berechnungsparameter für FE-Fundamentberechnungen.",
+            "input": "150-seitiges Baugrundgutachten (PDF) mit Sondierdiagrammen, Schichtenprofilen und Laborversuchsergebnissen.",
+            "process": "LLM extrahiert bodenmechanische Bemessungskennwerte (Bodenklasse nach DIN 18196, Reibungswinkel φ', Kohäsion c', Wichten γ / γ', Steifemoduln E_s) und filtert Grundwasserstände.",
+            "output": "Validiertes JSON-Datenschema zur direkten Belegung der Materialdatenbank in geotechnischer Berechnungssoftware.",
+            "benefit": "Reduktion des manuellen Erfassungsaufwands um 85 %; vollständiger Ausschluss von Ablese- und Übertragungsfehlern.",
+            "normRef": "DIN 1054 / DIN 4020 (Geotechnische Untersuchungen)"
+          },
+          {
+            "title": "VOB-konforme Formulierung von Leistungsbeschreibungen (STLB-Bau / GAEB)",
+            "category": "Ausschreibung & Vergabe (LPH 6)",
+            "scenario": "Erstellung detaillierter Ausschreibungstexte für eine wasserundurchlässige Weiße Wanne nach WU-Richtlinie.",
+            "input": "Bauteilspezifikation: \"WU-Bodenplatte d = 40 cm, Beton C35/45, XC4, XD2, XF3, Bewehrungsgehalt 120 kg/m³, Fugenabdichtungssystem\".",
+            "process": "LLM generiert Leistungsbeschreibungen unter Berücksichtigung von DIN 18331, benennt Nebenleistungen und Prüfpflichten und strukturiert die Ordnungszahlen.",
+            "output": "GAEB DA XML (X83)-kompatible Leistungsverzeichnis-Datei zur nahtlosen Übernahme in AVA-Systeme.",
+            "benefit": "Minimierung von Nachtragspotenzialen infolge lückenhafter Leistungsbeschreibungen nach VOB/A § 7.",
+            "normRef": "VOB/C DIN 18331 (Betonarbeiten) & GAEB-Standard"
+          },
+          {
+            "title": "Code-Synthese für Statik-Programmierschnittstellen (FEM-Automation via Python)",
+            "category": "Computational Structural Engineering",
+            "scenario": "Parametrisierte Erzeugung von Geometrie- und Lastkombinationsmodellen für iterative Vorbemessungen.",
+            "input": "Technische Spezifikation: \"Erzeuge ein Berechnungsmodell für einen 3-Feld-Träger mit variablen Stützweiten unter EC0/EC1-Kombinatorik in RFEM 6.\"",
+            "process": "LLM synthetisiert ein syntaktisch fehlerfreies Python-Skript unter Einbindung der herstellerspezifischen REST-API der Statiksoftware.",
+            "output": "Ausführbares Skript mit vollständiger Definition von Strukturknoten, Elementquerschnitten, Auflagern und Lastfallgruppen.",
+            "benefit": "Zeitersparnis bei der Modellinitialisierung von mehreren Stunden auf wenige Sekunden.",
+            "normRef": "DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Händisches Herauskopieren von Textbausteinen aus Altdokumenten mit hohem Übertragungsfehlerrisiko.",
+            "Gefahr der Verwendung zurückgezogener Regelwerksstände (z. B. DIN 1045 statt Eurocode 2).",
+            "Programmierung von Statik-Schnittstellen erfordert tiefe IT- und Softwareentwicklungs-Spezialkenntnisse."
+          ],
+          "classicDisadvantage": "Hoher Zeitaufwand, Copy-Paste-Fehler führen zu Gewährleistungs- und Nachtragsrisiken.",
+          "aiTitle": "LLM-gestützter Ablauf",
+          "aiSteps": [
+            "LLM synthetisiert normaktuelle, baurechtlich präzise Fachtexte und Automationsskripte in wenigen Sekunden.",
+            "Semantische Prüfung von Leistungsbeschreibungen und Bauverträgen auf Vollständigkeit und Normkonformität.",
+            "Der Ingenieur agiert als qualitätssichernde Prüf- und Freigabeinstanz."
+          ],
+          "aiAdvantage": "Faktor 10 gesteigerte Effizienz bei technischen Berichten, Ausschreibungstexten und Skripten.",
+          "roiSummary": "80 % Zeitersparnis bei der Erstellung von Standardberichten und Leistungsverzeichnissen."
+        },
+        "math": {
+          "formula": "\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V \\quad \\text{mit} \\quad P(w_t \\mid w_1, \\dots, w_{t-1})",
+          "formulaName": "Scaled Dot-Product Attention & Autoregressive Wahrscheinlichkeit",
+          "formulaText": "Aufmerksamkeitsmechanismus der Transformer-Architektur.",
+          "explanation": "Attention berechnet, wie stark jedes Wort im Bauvertrag oder Normtext auf jedes andere Wort achten muss, skaliert durch die Wurzel der Dimension dk.",
+          "variables": [
+            {
+              "sym": "Q",
+              "name": "Query-Matrix",
+              "desc": "Die aktuelle Suchanfrage oder das zu interpretierende Fachwort."
+            },
+            {
+              "sym": "K",
+              "name": "Key-Matrix",
+              "desc": "Schlüsselvektoren aller Wörter im gesamten Dokumentenkontext."
+            },
+            {
+              "sym": "V",
+              "name": "Value-Matrix",
+              "desc": "Die semantischen Bedeutungsinhalte der Textbestandteile."
+            },
+            {
+              "sym": "d_k",
+              "name": "Skalierungsfaktor",
+              "desc": "Dimension der Key-Vektoren, verhindert extreme Gradienten in der Softmax-Funktion."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Stochastische Konfabulation (Halluzination): Unverankerte Sprachmodelle neigen dazu, nicht existente Normabsätze, falsche Expositionsklassen-Zuordnungen oder fehlerhafte Sicherheitsbeiwerte mit hoher grammatikalischer Sicherheit zu behaupten.",
+          "engineerDuty": "Ausschließliche Verwendung verankerter RAG-Systeme für rechts- und nachweisrelevante Ingenieurentscheidungen; persönliche Kontrolle aller numerischen Ausgaben.",
+          "standards": "VOB Teil A/B/C, DIN EN 1990–1999 (Eurocodes), HOAI § 634 BGB"
+        }
+      },
+      "rag": {
+        "title": "5. Retrieval-Augmented Generation (RAG)",
+        "badge": "Evidenzbasierte Inferenz",
+        "analogy": "Wissenseinbettung & Vektordatenbank-Retrieval",
+        "summary": "Hybride Systemarchitektur, die parametrisches Sprachmodellwissen mit extern indizierten, normativ verifizierten Wissensdatenbanken koppelt, um Halluzinationen auszuschließen.",
+        "simpleExpl": "RAG trennt Wissensspeicherung und Textsynthese: Die Anfrage des Ingenieurs wird in einen semantischen Vektor transformiert. Eine Vektordatenbank identifiziert über Abstandsmetriken die mathematisch ähnlichsten Dokumentenauszüge. Das LLM generiert die Antwort ausschließlich konditioniert auf diesen belegten Primärquellen.",
+        "constructionExample": "Frage: \"Welche Betondeckung verlangt DIN EN 1992-1-1 bei XC4?\" -> RAG findet Tabelle 4.4DE des NA -> LLM antwortet exakt mit c_min,dur = 25 mm + Δc_dev = 15 mm = c_nom 40 mm und nennt die exakte Seitenzahl.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Dokumenten-Chunking & Metadatenstruktur",
+            "desc": "Deterministische Zerlegung von Normen und Fachgutachten in semantisch geschlossene Chunks mit Metadaten (Norm, Kapitel, Revisionsstand)."
+          },
+          {
+            "step": "02",
+            "title": "Dense Vector Embedding",
+            "desc": "Abbildung von Textpassagen in hochdimensionale Vektoren d in R^1536 über vortrainierte Einbettungsmodelle."
+          },
+          {
+            "step": "03",
+            "title": "Approximate Nearest Neighbor (ANN) Retrieval",
+            "desc": "Berechnung der Cosinus-Ähnlichkeit zwischen Suchvektor und Dokumentenbestand in unter 50 ms."
+          },
+          {
+            "step": "04",
+            "title": "Konditionierte Prompt-Injektion",
+            "desc": "Synthese der Ingenieurantwort unter strenger Restriktion: \"Antworte ausschließlich basierend auf den übergebenen Nachweisdokumenten!\"."
+          }
+        ],
+        "keyCharacteristics": [
+          "Deterministische Zitationsgenauigkeit mit Angabe von Normabsatz, Tabelle und Seitenzahl.",
+          "Vollständige Entkopplung von Datenaktualisierung und Modelltraining: Normenupdates erfordern kein Nachtraining.",
+          "Verhinderung von Halluzinationen bei exakter Konfiguration des Abrufschwellenwerts (Cosine-Threshold ≥ 0,82).",
+          "Granulare Zugriffsbeschränkungen (Role-Based Access Control) für vertrauliche Projektdokumente."
+        ],
+        "examples": [
+          {
+            "title": "Deterministische Normenabfrage nach DIN EN 1992-1-1 (Eurocode 2 inkl. NA Deutschland)",
+            "category": "Tragwerksplanung & Dauerhaftigkeitsnachweise",
+            "scenario": "Festlegung des Mindestbetondeckungsmaßes für eine Parkhausstütze unter chloridinduzierter Korrosion.",
+            "input": "Ingenieuranfrage: \"Mindestbetondeckung c_min,dur und Vorhaltemaß Δc_dev für Expositionsklasse XD3 bei 50 Jahren Nutzungsdauer nach deutschem Nationalen Anhang?\"",
+            "process": "Vektorsuche ruft Tabelle 4.4DE (Absatz 4.4.1.2) und Absatz 4.4.1.3 des Nationalen Anhangs zu DIN EN 1992-1-1:2011-01 ab.",
+            "output": "Präzise Bemessungswerte: c_min,dur = 40 mm, Δc_dev = 15 mm -> c_nom = 55 mm unter Nennung von Tabelle 4.4DE und NA 4.4.1.3.",
+            "benefit": "Höhere Rechtssicherheit; Ausschluss schwerwiegender Planungsfehler bei Korrosionsschutzmaßnahmen.",
+            "normRef": "DIN EN 1992-1-1/NA:2013-04, Tab. 4.4DE und 4.4.1.3"
+          },
+          {
+            "title": "Semantische Volltextindizierung historischer Bauwerks- & Instandsetzungsakten",
+            "category": "Bestandssanierung & Erhaltungsmanagement",
+            "scenario": "Ursachenermittlung und Materialrecherche bei wiederkehrenden Feuchteschäden in einer Tiefgarage.",
+            "input": "Abfrage: \"Welches Injektionsharzsystem und welcher Packerabstand wurden bei der Rissverpressung im Bauabschnitt 2 (Jahr 2017) eingesetzt?\"",
+            "process": "RAG durchsucht 40.000 Seiten gescannter Bautagesberichte, Lieferscheine und ZfP-Prüfprotokolle.",
+            "output": "Exakter Beleg: \"2K-Polyurethanharz MC-Injekt 2300 NV gemäß DIN EN 1504-5, Packerabstand 15 cm im 45°-Winkel, dokumentiert im Abnahmeprotokoll vom 12.06.2017.\"",
+            "benefit": "Erhaltung von firmenspezifischem Erfahrungswissen; Vermeidung chemischer Materialunverträglichkeiten bei Nachinjektionen.",
+            "normRef": "DIN EN 1504-5 (Instandsetzung von Betonbauwerken - Injektion von Rissen)"
+          },
+          {
+            "title": "Vertragliche Nachtragsprüfung nach VOB/B & Leistungsbeschreibungsabgleich",
+            "category": "Projektsteuerung & Bauvertragsrecht",
+            "scenario": "Prüfung eines Nachtrags über 48.000 € für behaupteten bodenmechanischen Mehraufwand bei Rammkernbohrungen.",
+            "input": "Nachtragsbegründung des Auftragnehmers im Abgleich mit Hauptbauvertrag, Baubeschreibung und Baugrundgutachten.",
+            "process": "RAG führt einen semantischen Abgleich mit den Vertragsklauseln durch und identifiziert explizite Vergütungsregelungen.",
+            "output": "Nachweisdokumentation: \"Bodenklasse 5 war gemäß Pos. 01.02.0018 der Leistungsbeschreibung ausdrücklich mit dem Einheitspreis abgegolten; die Forderung widerspricht VOB/B § 2 Abs. 1.\"",
+            "benefit": "Rechtlich belastbare Zurückweisung unberechtigter Nachträge; erhebliche Entlastung der Bauleitung.",
+            "normRef": "VOB/B § 2 (Vergütung) & § 4 (Ausführung)"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Händisches Wälzen mehrbändiger Normenordner und Rundschreiben des Bundesministeriums.",
+            "Gefahr des Übersehens nationaler Fußnoten oder herstellerspezifischer Zulassungseinschränkungen.",
+            "Historisches Projektwissen verbleibt unstrukturiert in Papierarchiven."
+          ],
+          "classicDisadvantage": "Hohe Recherchezeiten, Wissensverlust bei Personalabgängen, latente Haftungsrisiken.",
+          "aiTitle": "RAG-gestützter Workflow",
+          "aiSteps": [
+            "Semantische Suche über Millionen Normenseiten und Bauakten in unter 50 Millisekunden.",
+            "Direkte Zitation der Primärquelle mit Verknüpfung zum Originaldokument und Markierung der Fundstelle.",
+            "Unternehmenseigenes Wissensmanagement wird zu einer strukturierten, abfragbaren Wissensbasis."
+          ],
+          "aiAdvantage": "Weniger Halluzinationen durch Quellenbindung, verifizierbare Zitate, nachvollziehbare Belege (Prüfung durch den Ingenieur bleibt erforderlich).",
+          "roiSummary": "90 % Zeitersparnis bei Normen- und Aktenrecherchen im Büro."
+        },
+        "math": {
+          "formula": "\\text{sim}(\\mathbf{q}, \\mathbf{d}) = \\cos(\\theta) = \\frac{\\mathbf{q} \\cdot \\mathbf{d}}{\\|\\mathbf{q}\\| \\|\\mathbf{d}\\|} = \\frac{\\sum_{i=1}^n q_i d_i}{\\sqrt{\\sum_{i=1}^n q_i^2} \\sqrt{\\sum_{i=1}^n d_i^2}}",
+          "formulaName": "Cosinus-Ähnlichkeit im hochdimensionalen Einbettungsraum",
+          "formulaText": "Semantischer Bedeutungsabgleich zwischen Fragevektor und Text-Chunk.",
+          "explanation": "Die Cosinus-Ähnlichkeit misst den Winkel theta zwischen dem Vektor der Ingenieurfrage q und dem Vektor des Normabsatzes d im Einbettungsraum, unabhängig von der Textlänge.",
+          "variables": [
+            {
+              "sym": "\\mathbf{q}",
+              "name": "Query-Embedding",
+              "desc": "Vektor der Suchanfrage des Ingenieurs (z. B. Dimension 1536)."
+            },
+            {
+              "sym": "\\mathbf{d}",
+              "name": "Document-Chunk-Embedding",
+              "desc": "Vektor des extrahierten Normen- oder Berichtsabsatzes."
+            },
+            {
+              "sym": "\\cos(\\theta)",
+              "name": "Cosinus-Wert (-1 bis +1)",
+              "desc": "1 bedeutet maximale semantische Übereinstimmung, 0 bedeutet kein Zusammenhang."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Index-Kontamination: Befinden sich zurückgezogene Normenausgaben oder ungültige Baustoffzulassungen im Vektorindex, zitiert das System veraltete Bemessungswerte.",
+          "engineerDuty": "Implementierung strikter Revisionsfilter (Status: Gültig, Gültigkeitsdatum) und versionskontrollierter Metadatenstrukturen.",
+          "standards": "ISO 19650 (Informationsmanagement mit BIM), DIN EN 1990 ff."
+        }
+      },
+      "vision": {
+        "title": "6. Computer Vision & Photogrammetrische Sensorik",
+        "badge": "Visuelle Merkmalsextraktion",
+        "analogy": "Optische Detektions- & Rekonstruktionssysteme",
+        "summary": "Rechnergestützte Erfassung, geometrische Vermessung und semantische Interpretation optischer, multispektraler und radiometrischer Bilddaten zur Zustandserfassung von Bauwerken.",
+        "simpleExpl": "Computer Vision kombiniert digitale Bildverarbeitung, Photogrammetrie und Convolutional Neural Networks zur automatisierten Schadenserkennung, Maßhaltigkeitskontrolle und Baustellenüberwachung. Aus zweidimensionalen Pixelfeldern werden dreidimensionale, metrisch kalibrierte Geometriedaten generiert.",
+        "constructionExample": "Fotodokumentation auf der Baustelle: Erkennung, ob alle Arbeiter Helme und Warnwesten tragen oder ob Schalungen maßhaltig stehen.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Radiometrische & Geometrische Kalibrierung",
+            "desc": "Objektivverzerrungskorrektur (Kameramatrix K), Entzerrung und Weißabgleich optischer Sensoren."
+          },
+          {
+            "step": "02",
+            "title": "Feature Matching & Epipolargeometrie",
+            "desc": "Structure-from-Motion (SfM) detektiert homologe Punkte (SIFT / ORB) zur Bestimmung der äußeren Orientierung."
+          },
+          {
+            "step": "03",
+            "title": "Echtzeit-Objektdetektion (YOLO-Architektur)",
+            "desc": "Einstufige Grid-basierte Regression von Bounding Boxes und Klassenwahrscheinlichkeiten."
+          },
+          {
+            "step": "04",
+            "title": "Radiometrische Thermografie-Kopplung",
+            "desc": "Überlagerung von IR- und RGB-Matrizen zur Berechnung bauphysikalischer Oberflächentemperaturen."
+          }
+        ],
+        "keyCharacteristics": [
+          "Objektive, millimetergenaue Dokumentation ohne subjektive Schätzfehler des menschlichen Auges.",
+          "Echtzeitverarbeitung bis zu 60 FPS für autonome Sicherheits- und Kranführungssysteme.",
+          "Fusionierung multispektraler Datenströme (RGB, Thermografie, LiDAR).",
+          "Vollständige Integration in den digitalen Bauwerkszwilling (Digital Twin)."
+        ],
+        "examples": [
+          {
+            "title": "Photogrammetrische Soll-Ist-Deformationsanalyse und 4D-Baufortschrittsquantifizierung",
+            "category": "Bauoberleitung & Toleranzprüfung (LPH 8)",
+            "scenario": "Metrische Erfassung des Rohbauzustands und Volumenabgleich von Erdbewegungen auf Großbaustellen.",
+            "input": "UAV-Befliegung (500 Luftbilder mit RTK-GNSS-Georeferenzierung) + IFC-Ausführungsmodell.",
+            "process": "Dense Matching generiert eine dichte 3D-Punktwolke; Algorithmen berechnen Soll-Ist-Abweichungen und Massendifferenzen zur Abrechnung.",
+            "output": "Metrischer Differenzbericht: \"Deckendurchbiegung im Feld 3 beträgt 14 mm (L/430); Aushubvolumen Baugrube: 14.250 m³ (98 % Soll)\".",
+            "benefit": "Rechtlich belastbare Dokumentation für Abschlagsrechnungen nach VOB/B § 16; lückenlose Beweissicherung vor Folgegewerken.",
+            "normRef": "DIN 18202 & VOB/B § 16 (Zahlungen)"
+          },
+          {
+            "title": "Optische Überwachung der Arbeitssicherheit & PSA-Konformität in Echtzeit",
+            "category": "Sicherheits- und Gesundheitsschutzkoordination (SiGeKo)",
+            "scenario": "Prävention von Unfällen in Gefahrenbereichen (z. B. Kran-Schwenkbereiche, ungesicherte Deckenabsturzkanten).",
+            "input": "Live-RTSP-Videoströme von Baustellen- und Gerüstkameras.",
+            "process": "YOLOv10-Modell lokalisiert Personen in 25 ms und prüft die Präsenz von Schutzhelm, Warnweste und Anseilschutz.",
+            "output": "Automatische Schaltung optischer/akustischer Warnsignale bei Betreten von Sperrbereichen ohne PSA; revisionssichere Statistiken.",
+            "benefit": "Reduktion meldepflichtiger Arbeitsunfälle; Erfüllung der Kontroll- und Sorgfaltspflichten nach BaustellV.",
+            "normRef": "Baustellenverordnung (BaustellV) & DGUV Vorschrift 38 (Bauarbeiten)"
+          },
+          {
+            "title": "Multispektrale & thermografische Erfassung von Hüllflächen-Wärmebrücken",
+            "category": "Bauphysik & Energetische Sanierung",
+            "scenario": "Identifikation energetischer Schwachstellen und Schimmelpilz-Risikobereiche an Bestandsfassaden.",
+            "input": "Kalibrierte radiometrische Infrarot- und RGB-Aufnahmen unter stationären Temperaturrandbedingungen (ΔT ≥ 15 K).",
+            "process": "Rechnerische Bestimmung des Temperaturfaktors f_Rsi = (θ_si - θ_e) / (θ_i - θ_e) über pixelweise Thermogramm-Auswertung.",
+            "output": "Isothermenkarte mit quantitativer Markierung von Zonen mit f_Rsi < 0,70 (Schimmelpilzkriterium nach DIN 4108-2) und Flächenbilanz.",
+            "benefit": "Präzise energetische Schadensursachenanalyse; Vermeidung von Sanierungsfehlinvestitionen.",
+            "normRef": "DIN 4108-2 (Mindestwärmeschutz) & DIN EN 13187 (Wärmetechnisches Verhalten von Gebäuden)"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Punktuelle Begehungen der Baustelle mit handschriftlichen Notizen und unkalibrierten Smartphone-Fotos.",
+            "Keine systematische georeferenzierte Zuordnung der Aufnahmen zu Bauteilachsen im Plan.",
+            "Fortschrittsbewertungen basieren auf subjektiven Schätzungen der Bauleitung."
+          ],
+          "classicDisadvantage": "Hoher Erfassungsaufwand, lückenhafte Dokumentation, Beweisnotstände bei Abnahme- und Vergütungsstreitigkeiten.",
+          "aiTitle": "Vision-gestützter Ablauf",
+          "aiSteps": [
+            "Autonome UAV- oder Helmkamerasysteme erfassen den Bauzustand in Bruchteilen der Zeit millimetergenau.",
+            "Computer-Vision-Pipelines verknüpfen jeden Pixel mit dem digitalen 4D-BIM-Bauwerksmodell.",
+            "Objektive, automatisierte Toleranzprüfungen und Massenermittlungen auf Knopfdruck."
+          ],
+          "aiAdvantage": "Vollständige Transparenz, objektive Beweissicherung, 0 unbemerkte Ausführungsfehler.",
+          "roiSummary": "4 Stunden Bauleiterzeit pro Woche eingespart, 90 % weniger Abnahmestreitigkeiten."
+        },
+        "math": {
+          "formula": "\\text{IoU} = \\frac{\\text{Area}(B_p \\cap B_{gt})}{\\text{Area}(B_p \\cup B_{gt})} \\quad \\text{und} \\quad \\text{mAP} = \\frac{1}{|C|} \\sum_{c \\in C} \\int_0^1 p_c(r) \\, dr",
+          "formulaName": "Intersection over Union (IoU) & mean Average Precision (mAP)",
+          "formulaText": "Mathematische Gütekriterien für Lokalisierung und Schadenserkennung.",
+          "explanation": "IoU quantifiziert den Überlappungsgrad zwischen der von der KI vorhergesagten Schadensbox Bp und der realen Prüfmarkierung Bgt. mAP integriert Genauigkeit und Vollständigkeit über alle Schadensklassen.",
+          "variables": [
+            {
+              "sym": "B_p",
+              "name": "Predicted Bounding Box",
+              "desc": "Von der KI vorgeschlagene Schadens- oder Bauteilbegrenzung."
+            },
+            {
+              "sym": "B_{gt}",
+              "name": "Ground Truth Box",
+              "desc": "Die reale, vom Prüfingenieur verifizierte Schadensposition."
+            },
+            {
+              "sym": "\\text{IoU}",
+              "name": "Schnitt-über-Vereinigung",
+              "desc": "1,0 bedeutet perfekte Überdeckung, Werte >= 0,7 gelten im Bauwesen als zuverlässig."
+            },
+            {
+              "sym": "p_c(r)",
+              "name": "Precision-Recall-Kurve",
+              "desc": "Genauigkeit in Abhängigkeit von der Vollständigkeit der erkannten Schäden."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Witterungseinflüsse: Starker Schattenwurf, blendendes Sonnenlicht, Regen oder Baustellenstaub können Risse verdecken oder optische Täuschungen erzeugen.",
+          "engineerDuty": "Plausibilitätsprüfung der Bildqualität und Vor-Ort-Verifizierung sicherheitsrelevanter Risse vor statischen Entscheidungen.",
+          "standards": "DIN 18202 (Toleranzen im Hochbau), BaustellV, DIN 1076"
+        }
+      },
+      "agenten": {
+        "title": "7. KI-Agenten & Werkzeugkopplung (Tool-Use / MCP)",
+        "badge": "Autonome Steuerungsarchitekturen",
+        "analogy": "Reaktive Multi-Agenten-Systeme & Solver-Kopplung",
+        "summary": "Softwareagenten, die über Sprachmodelle als Entscheidungsinstanz verfügen und über standardisierte Protokolle (z. B. MCP) externe Ingenieursoftware (FEM-Solver, AVA, CAD, Datenbanken) autonom ausführen, evaluieren und iterativ optimieren.",
+        "simpleExpl": "Im Gegensatz zu statischen Chatbots implementieren KI-Agenten das ReAct-Paradigma (Reasoning + Acting). Sie zerlegen komplexe bautechnische Problemstellungen in sequenzielle Arbeitsschritte, rufen externe APIs auf, interpretieren die numerischen Ergebnisse und führen bei Nichterreichen normativer Grenzwerte eigenständige Parameterkorrekturen durch.",
+        "constructionExample": "Ein Agent liest CAD-Dateien aus, berechnet die Betonmengen in Excel, holt aktuelle Preise per API ein und erstellt einen fertigen Ausschreibungstext.",
+        "technicalMechanism": [
+          {
+            "step": "01",
+            "title": "Task-Dekomposition & Planung",
+            "desc": "Strukturierung der Ingenieuraufgabe in gerichtete azyklische Graphen (DAGs) von Teilaufgaben."
+          },
+          {
+            "step": "02",
+            "title": "Model Context Protocol (MCP) & Tool-Invocation",
+            "desc": "Aufruf deterministischer Berechnungsschnittstellen (z. B. Python, Dlubal RFEM API, GAEB-Parser)."
+          },
+          {
+            "step": "03",
+            "title": "Evaluation & Feedback-Schleife",
+            "desc": "Mathematischer Abgleich der Softwareergebnisse mit normativen Grenzzuständen (E_d ≤ R_d nach Eurocode)."
+          },
+          {
+            "step": "04",
+            "title": "Iterative Parameteranpassung",
+            "desc": "Autonome Querschnitts- oder Systemmodifikation bei Grenzwertverletzung bis zur stabilen Konvergenz."
+          }
+        ],
+        "keyCharacteristics": [
+          "Schließt die Lücke zwischen generativer KI und deterministischer Ingenieur-Fachsoftware.",
+          "Autonome Ausführung repetitiver Berechnungs- und Nachweisroutinen ohne Medienbrüche.",
+          "Persistentes Projektgedächtnis und vollständige Protokollierung des Entscheidungspfades (Audit Trail).",
+          "Sicherheitskonzept: Zwingende Human-in-the-Loop-Freigabe für irreversible oder haftungsrelevante Entscheidungen."
+        ],
+        "examples": [
+          {
+            "title": "Autonome Bemessung & Querschnittsoptimierung im Grenzzustand der Tragfähigkeit",
+            "category": "Tragwerksplanung (LPH 3–4)",
+            "scenario": "Optimierung von Walzprofilen eines mehrfeldrigen Stahl-Dachträgers (L = 3 x 8 m) unter Biegung und Stabilität.",
+            "input": "Tragwerkstopologie, Einwirkungen nach DIN EN 1991, Stahlgüte S355, Zielvorgabe: minimales Profilgewicht bei Ausnutzung η ≤ 0,90.",
+            "process": "Agent startet FEM-Solver via API, stellt bei Profil IPE 300 Biegedrillknicken fest (χ_LT = 0,62 -> η = 1,12), wechselt auf HEA 280, rechnet erneut und verifiziert GZT und GZG (w ≤ L/250).",
+            "output": "Prüffähiger statischer Berechnungsnachweis mit vollständiger Nachweisführung nach Eurocode 3 inklusive Materialauszug.",
+            "benefit": "Reduktion der Vorbemessungszeit von 2 Stunden auf 45 Sekunden; optimale Materialausnutzung.",
+            "normRef": "DIN EN 1993-1-1 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)"
+          },
+          {
+            "title": "Automatisierte Mängeldokumentation, Fristenüberwachung und Rügeerstellung nach VOB/B",
+            "category": "Bauoberleitung & Baurecht (LPH 8)",
+            "scenario": "Rechtlich belastbare Rüge fehlerhaft verlegter Bewehrung vor dem Betoniertermin.",
+            "input": "Bauleiter-Audionotiz (\"Abstandhalter Decke 2. OG Feld B fehlen, Betondeckung unzureichend, Unternehmer Meier\") + Fotobeleg.",
+            "process": "Agent ordnet Mangel dem Nachunternehmervertrag zu, ermittelt die relevante Normenforderung, berechnet eine angemessene Frist nach VOB/B § 4 Abs. 7 (4 Werktage vor Betonage) und generiert das formale Mahnschreiben.",
+            "output": "Vollständiges, rechtlich belastbares Mängelrüge-Dokument mit Planverortung zur 1-Klick-Signatur durch den verantwortlichen Bauleiter.",
+            "benefit": "Lückenlose Beweissicherung; Vermeidung von Fristversäumnissen und Erhalt von Gewährleistungsansprüchen.",
+            "normRef": "VOB/B § 4 Abs. 7 & BGB § 634"
+          },
+          {
+            "title": "Automatisierte Ökobilanzierung (LCA) und Lebenszyklus-Treibhauspotenzialberechnung",
+            "category": "Nachhaltigkeit & Green Building (QNG / DGNB)",
+            "scenario": "Erstellung des Treibhauspotenzial-Nachweises (GWP) für ein Bürogebäude im Rahmen der KfW-Förderung.",
+            "input": "IFC-Fachmodell mit Mengenermittlung für 4.800 Bauteilobjekte.",
+            "process": "Agent fragt die ÖKOBAUDAT-API des Bundesministeriums ab, ordnet EPD-Datensätze (Environmental Product Declarations) zu, bilanziert Module A1–A3, B, C und D und testet alternative Klinkerersatz-Zemente (CEM III/A).",
+            "output": "Prüffähiger LCA-Nachweisbericht mit Ausweis von kg CO2-Äq./(m² · a) und Nachweis der QNG-Grenzwerteinhaltung.",
+            "benefit": "Reduktion der Zertifizierungsdauer von 3 Wochen auf 10 Minuten; sichere Erlangung zinsgünstiger Förderkredite.",
+            "normRef": "DIN EN 15978 (Nachhaltigkeit von Bauwerken) & QNG-Kriterienkatalog"
+          }
+        ],
+        "classicVsAi": {
+          "classicTitle": "Konventionelle Ingenieurmethodik (Deterministisch / Manuell)",
+          "classicSteps": [
+            "Ingenieur bedient sequenziell heterogene Softwareinseln (CAD, FE-Statik, Excel, AVA).",
+            "Zahlenwerte und Schnittgrößen werden händisch von Berechnungs- in Nachweisprogramme übertragen.",
+            "Iterative Querschnittsvariationen erfordern wiederholte händische Modellierungszyklen."
+          ],
+          "classicDisadvantage": "Medienbrüche zwischen Fachprogrammen, hohe Redundanz, Fehlerquellen bei Datenübertragungen.",
+          "aiTitle": "Agenten-Workflow",
+          "aiSteps": [
+            "Der Agent steuert und verknüpft spezialisierte Berechnungssolver über offene Programmierschnittstellen (APIs).",
+            "Vollständige Automation iterativer Optimierungsschleifen bis zur Konvergenz der Grenzzustände.",
+            "Der Bauingenieur fungiert als leitender Systemarchitekt, definiert Randbedingungen und verifiziert Endresultate."
+          ],
+          "aiAdvantage": "Vollständige Automation repetitiver Programmier- und Berechnungsroutinen.",
+          "roiSummary": "Faktor 10 schnellere Bemessungs- und Nachweiszyklen."
+        },
+        "math": {
+          "formula": "\\tau = (o_0, a_0, r_0, o_1, a_1, r_1, \\dots) \\quad \\text{mit} \\quad a_t = \\arg\\max_a P(a \\mid h_t, \\text{Tool-Feedback})",
+          "formulaName": "ReAct-Trajektorie (Reasoning + Acting + Tool Execution)",
+          "formulaText": "Zustandsfolge eines KI-Agenten mit iterativer Umwelt-Rückkopplung.",
+          "explanation": "In jedem Zeitschritt t beobachtet der Agent den Zustand ot (z. B. FE-Ergebnis), wählt die nächste Werkzeugaktion at (z. B. Profil vergrößern) und verarbeitet die Rückmeldung rt des Berechnungswerkzeugs.",
+          "variables": [
+            {
+              "sym": "\\tau",
+              "name": "Agenten-Trajektorie",
+              "desc": "Die vollständige Kette von Denkschritten, Programmaufrufen und Ergebnissen."
+            },
+            {
+              "sym": "o_t",
+              "name": "Observation (Beobachtung)",
+              "desc": "Ergebnis der Software-Ausführung (z. B. maximale Spannung sigma_max = 285 N/mm²)."
+            },
+            {
+              "sym": "a_t",
+              "name": "Action (Werkzeugaufruf)",
+              "desc": "Ausgeführter API-Befehl (z. B. \"run_fea_simulation\" oder \"update_section\")."
+            },
+            {
+              "sym": "h_t",
+              "name": "Historie",
+              "desc": "Der bisherige Projekt- und Berechnungsverlauf im Kontextgedächtnis des Agenten."
+            }
+          ]
+        },
+        "pitfalls": {
+          "mainRisk": "Autonome Fehlerausbreitung (Cascading Errors): Ein unbeabsichtigter Parameterfehler in einem vorgeschalteten Werkzeugaufruf kann von nachgelagerten Agenten unbemerkt zu fehlerhaften Tragwerksauslegungen führen.",
+          "engineerDuty": "\"Human-in-the-Loop\"-Prinzip: Sicherheitsrelevante Schnittstellen (z. B. Freigabe von Bewehrungsplänen, Genehmigungsstatiken oder vertraglichen Fristsetzungen) erfordern ausnahmslos die persönliche Freigabe durch den verantwortlichen Ingenieur.",
+          "standards": "KI-VO (EU) 2024/1689 (Art. 14 Menschliche Aufsicht), VDI-Statusreport KI im Bauwesen, BGB § 634, HOAI"
+        }
+      }
+    },
+    "ragDemonstrations": {
+      "xc4": {
+        "question": "Welche Mindestbetondeckung c_min,dur gilt nach DIN EN 1992-1-1 für Expositionsklasse XC4 bei 50 Jahren Nutzungsdauer?",
+        "llmPur": {
+          "text": "Für XC4 wird in der Regel eine Betondeckung von etwa 30 bis 35 mm empfohlen. Es könnte aber je nach nationalem Anhang auch 20 mm sein. Bitte prüfen Sie die DIN 1045.",
+          "verdict": "Unsicher & ungenau",
+          "critique": "Das Modell schätzt vage aus dem Gedächtnis. Das Vorhaltemaß Δc_dev wird nicht klar von c_min getrennt. Für eine prüffähige Statik unbrauchbar."
+        },
+        "rag": {
+          "text": "Nach DIN EN 1992-1-1:2011 (Eurocode 2), i. V. m. deutschem Nationalen Anhang (NA), Tabelle 4.4DE, gilt für XC4 bei Betonstahl (50 Jahre Nutzungsdauer):\n• Mindestbetondeckung c_min,dur = 25 mm\n• Vorhaltemaß Δc_dev = 15 mm (NA 4.4.1.3; nur bei XC1 10 mm)\n• Nennmaß c_nom = c_min + Δc_dev = 40 mm.",
+          "source": "DIN EN 1992-1-1/NA, Abs. 4.4.1.2 (Tab. 4.4DE) & 4.4.1.3",
+          "verdict": "100% präzise & normgerecht",
+          "benefit": "RAG liefert die exakte Normtabelle als Quellennachweis mit. Null Halluzination!"
+        }
+      },
+      "xf4": {
+        "question": "Welcher maximale äquivalente Wasserzementwert (w/z)_eq ist für die Expositionsklasse XF4 nach DIN 1045-2 gefordert?",
+        "llmPur": {
+          "text": "Für Taumittelangriff XF4 liegt der w/z-Wert meistens bei rund 0,55; Luftporen sind nur bei Bedarf nötig. Eventuell muss Zement CEM I verwendet werden.",
+          "verdict": "Gefährlich falsch!",
+          "critique": "0,55 ist zu hoch, und ohne Luftporenbildner fehlt der eigentliche Frost-Tausalz-Schutz! Ein solches Bauteil würde unter XF4-Taumittelangriff innerhalb weniger Winter abplatzen."
+        },
+        "rag": {
+          "text": "Gemäß DIN 1045-2 i. V. m. DIN EN 206, Anhang F, Tabelle F.2.1 gilt für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel):\n• Maximaler (w/z)_eq = 0,50 – nur als Luftporenbeton (LP) zulässig\n• Mindestdruckfestigkeitsklasse: C30/37\n• Mindestzementgehalt: 320 kg/m³\n• mittlerer Luftgehalt: ≥ 4,0 % (Größtkorn 32 mm), ≥ 4,5 % (16 mm), ≥ 5,5 % (8 mm).",
+          "source": "DIN 1045-2, Anhang F, Tabelle F.2.1",
+          "verdict": "Technisch einwandfrei",
+          "benefit": "Verhindert verheerende Bauschäden durch fehlerhafte Mischungsbemessung."
+        }
+      },
+      "rc_beton": {
+        "question": "Darf rezyklierte Gesteinskörnung Typ 1 nach DIN EN 206 / DIN 1045-2 in Spannbeton verwendet werden?",
+        "llmPur": {
+          "text": "Ja, Rezyklate können heutzutage problemlos in allen Betonarten eingesetzt werden, da das Bauministerium Nachhaltigkeit fördert.",
+          "verdict": "Normativ unzulässig!",
+          "critique": "Grober Fehler: Nach deutschem Regelwerk ist RC-Gesteinskörnung für Spannbeton und Leichtbeton aus Sicherheitsgründen strikt ausgeschlossen!"
+        },
+        "rag": {
+          "text": "Nein! Nach DIN 1045-2 (Abschnitt 5.1.3) und der DAfStb-Richtlinie \"Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen\" gilt:\n• Rezyklierte Gesteinskörnungen (Typ 1 und Typ 2) dürfen NICHT für Spannbeton verwendet werden.\n• Der Einsatz ist beschränkt auf unbewehrten und schlaff bewehrten Beton bis maximal Festigkeitsklasse C30/37.",
+          "source": "DIN 1045-2:2023, Abs. 5.1.3 & DAfStb-RC-Richtlinie",
+          "verdict": "Rechtlich belastbar belegt",
+          "benefit": "Schützt das Ingenieurbüro vor schweren Haftungs- und Gewährleistungsansprüchen."
+        }
+      }
+    }
+  }
+}

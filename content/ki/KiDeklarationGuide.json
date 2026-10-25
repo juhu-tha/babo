@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "leitfadenFormularKiDeklaration": "Leitfaden & Formular: KI-Deklaration für Abschlussarbeiten",
+    "dfgKonformeUndHochschulsichere": "DFG-konforme und hochschulsichere Offenlegung von KI-Werkzeugen (Prompts, Tools, Verifikation) für Bachelor-, Master- und Seminararbeiten.",
+    "t1IndividuelleArbeitsparameterEingeben": "1. Individuelle Arbeitsparameter eingeben:",
+    "nameDerDesStudierenden": "Name der/des Studierenden:",
+    "themaTitelDerAbschlussarbeit": "Thema / Titel der Abschlussarbeit:",
+    "erstprüferProfessor": "Erstprüfer / Professor:",
+    "eingesetzteKiToolsAuswählen": "Eingesetzte KI-Tools auswählen:",
+    "druckreifeDeklarationsvorlageAlsAnhang": "Druckreife Deklarationsvorlage (als Anhang zur These binden):",
+    "dinA4Konform": "DIN A4 konform",
+    "t1ErlaubtGefördert": "1. Erlaubt & Gefördert",
+    "recherchehilfeKorrekturlesenProgrammiere": "Recherchehilfe, Korrekturlesen, Programmieren von Auswerte-Skripten und Brainstorming von Gliederungen.",
+    "t2Deklarationspflichtig": "2. Deklarationspflichtig",
+    "jedeKiGestützteTextüberarbeitung": "Jede KI-gestützte Textüberarbeitung, Bildgenerierung und automatisierte Synthese muss im Anhang benannt werden.",
+    "t3Täuschungsversuch0Punkte": "3. Täuschungsversuch (0 Punkte)",
+    "vollständigesGenerierenGanzerKapitel": "Vollständiges Generieren ganzer Kapitel ohne Eigenleistung, Erfinden von Quellen (Halluzinationen) oder Verschweigen der KI."
+  },
+  "werte": {
+    "maxMustermann": "Max Mustermann",
+    "ökobilanzierungUndFestigkeitsentwicklung": "Ökobilanzierung und Festigkeitsentwicklung klinkereffizienter Betone mit calcinierten Tonen",
+    "bauingenieurwesenBEngM": "Bauingenieurwesen (B.Eng. / M.Eng.)",
+    "profDrIngJürgen": "Prof. Dr.-Ing. Jürgen Huber",
+    "pythonCursor": "Python / Cursor",
+    "vorlageKopieren": "Vorlage kopieren",
+    "nameDerDesStudierenden": "Name der/des Studierenden",
+    "themaTitelDerAbschlussarbeit": "Thema / Titel der Abschlussarbeit",
+    "erstprüferProfessor": "Erstprüfer / Professor",
+    "elicitConsensus": "Elicit / Consensus",
+    "pythonCursor2": "Python / Cursor",
+    "lmStudioLokal": "LM Studio (lokal)"
+  }
+}

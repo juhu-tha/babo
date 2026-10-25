@@ -1,0 +1,38 @@
+{
+  "texte": {
+    "werkstoffAuswählen": "Werkstoff auswählen:",
+    "kriechenSchwinden0": "Kriechen/Schwinden ≈ 0",
+    "zugspannung": "Zugspannung (+σ)",
+    "druckspannung": "Druckspannung (-σ)",
+    "eulerKnicklastFk1": "Euler-Knicklast FK (β=1,0):",
+    "kreisstab": "Kreisstab (Ø)",
+    "rechteckBH": "Rechteck (b × h)",
+    "langzeiteffekteKriechenSchwinden": " Langzeiteffekte (Kriechen & Schwinden):",
+    "dehnungEl": "Dehnung ε_el",
+    "stabverformungQuerdehnung": " Stabverformung & Querdehnung",
+    "mmEinschnürungD": " mm | Einschnürung Δd = ",
+    "dehnsteifigkeitEa": "Dehnsteifigkeit EA",
+    "biegesteifigkeitEi": "Biegesteifigkeit EI",
+    "langzeitLKriechen": "Langzeit ΔL (Kriechen)",
+    "gesamtverformungNachKriechenSchwinden": "Gesamtverformung nach Kriechen & Schwinden:",
+    "lGesLEl": "ΔL_ges = ΔL_el (",
+    "mmLKriech": " mm) + ΔL_kriech (",
+    "mmLSchwind": " mm) + ΔL_schwind ("
+  },
+  "werte": {
+    "normalkraftF": "Normalkraft |F|",
+    "aufDenStabAxial": "Auf den Stab axial wirkende Normalzug- oder Druckkraft.",
+    "stablängeL0": "Stablänge L_0",
+    "durchmesserD0": "Durchmesser d_0",
+    "kriechzahl": "Kriechzahl φ",
+    "verhältnisDerKriechverformungZur": "Verhältnis der Kriechverformung zur elastischen Anfangsverformung.",
+    "endschwindmaßCs": "Endschwindmaß |ε_cs|",
+    "lastfreieVerkürzungDurchAustrocknung": "Lastfreie Verkürzung durch Austrocknung und Zementsteinreaktion.",
+    "druckNegativ": "Druck negativ",
+    "elastischeDehnungHooke": "Elastische Dehnung (Hooke)",
+    "elastischeLängenänderung": "Elastische Längenänderung",
+    "kriechenUndSchwinden": "Kriechen und Schwinden",
+    "linearElastischesModellAußerhalb": "Linear-elastisches Modell; außerhalb des elastischen Bereichs (Fließen, Bruch, Knicken) gilt das Hookesche Gesetz nicht mehr.",
+    "technischeMechanikKriechenSchwinden": "Technische Mechanik; Kriechen/Schwinden vereinfacht nach DIN EN 1992-1-1, 3.1.4"
+  }
+}

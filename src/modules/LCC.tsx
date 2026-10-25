@@ -19,6 +19,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 const texSumme = (werte: number[], n = 0) =>
   werte.map((w, k) => (k === 0 ? formatDeTeX(w, n) : w < 0 ? ` - ${formatDeTeX(-w, n)}` : ` + ${formatDeTeX(w, n)}`)).join('');
 import { exportToPDF } from '../lib/pdfExport';
+import inhalt from '@/content/lcc/LCC.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Define the scenario profiles for LCC calculation
 interface OptionConfig {
@@ -46,137 +48,7 @@ interface ScenarioConfig {
   optionB: OptionConfig;
 }
 
-const SCENARIOS: ScenarioConfig[] = [
-  {
-    id: 'daemmung',
-    title: 'Außenwand-Dämmsystem (Bezugsfläche: 150 m²)',
-    subtitle: 'Konventionelles EPS vs. Kreislauffähige Öko-Holzfaser',
-    description: 'Vergleich eines kostengünstigen Erdöl-basierten Wärmedämmverbundsystems mit einer hochwertigen, diffusionsoffenen und kreislauffähigen Naturfaserdämmung.',
-    unit: '€/150m²',
-    optionA: {
-      name: 'Option A: EPS-WDVS (Polystyrol)',
-      className: 'Fokus auf minimale Errichtungskosten (CapEx)',
-      capex: 18000,
-      opex0: 1400, // 1.400 € / Jahr Heizkostenanteil
-      maintenanceInterval: 15,
-      maintenanceCost: 2500, // Algenreinigung & biozider Anstrich
-      lifespan: 30,
-      replacementCost: 16000, // Kompletter Austausch nach 30 Jahren inkl. Gerüst
-      eolCost: 4500, // Sondermülldeponie EPS-Platten (HBCD-Belastung)
-      embodiedCO2: 12500, // 12.5 t CO2-eq
-      operatingCO2: 1800, // 1.8 t CO2-eq / year
-      details: [
-        'Kunststoffbasiertes System mit geringer dynamischer Wärmespeicherung',
-        'Turnusmäßige biozide Anstriche gegen Veralgung notwendig',
-        'Sehr teure Entsorgung als gefährlicher Abfall am Lebensende'
-      ]
-    },
-    optionB: {
-      name: 'Option B: Holzfaser-WDVS (Natur)',
-      className: 'Fokus auf minimale Betriebs- & Kreislaufkosten (OpEx/EOL)',
-      capex: 31500,
-      opex0: 1050, // 1.050 € / Jahr Heizkostenanteil (bessere Dämmleistung & Sommerkühllast)
-      maintenanceInterval: 20,
-      maintenanceCost: 1800, // Mechanische Reinigung & rein mineralischer Silikatanstrich
-      lifespan: 60, // Hält über den gesamten 50-jährigen Gebäudezeitraum ohne Gesamttausch
-      replacementCost: 0,
-      eolCost: -1500, // Thermische Verwertung oder Holzfaser-Recycling (Gegenbuchung/Gutschrift)
-      embodiedCO2: 1500, // 1.5 t CO2-eq
-      operatingCO2: 950, // 0.95 t CO2-eq / year
-      details: [
-        'Nachwachsendes, diffusionsoffenes Material mit hoher Phasenverschiebung',
-        'Hervorragender sommerlicher Hitzeschutz mindert Energieaufwand für Kühlung',
-        'Stoffliche Rückführbarkeit sichert Restwertgutschrift beim Rückbau'
-      ]
-    }
-  },
-  {
-    id: 'fenster',
-    title: 'Austausch von Fensteranlagen (Glastragwerke, 35 m²)',
-    subtitle: 'Basis-Kunststofffenster (2-fach) vs. Premium Holz-Aluminium (3-fach)',
-    description: 'Vergleich herkömmlicher Kurzläufer-Verglasung auf Kunststoffrahmen mit einer langlebigen Witterungsschutz-Verbundkonstruktion mit Hochleistungsisolierglas.',
-    unit: 'Gesamtprojekt',
-    optionA: {
-      name: 'Option A: Kunststofffenster (2-fach)',
-      className: 'Günstiges Standardprodukt',
-      capex: 11500,
-      opex0: 800, // Jährlicher Energieverlastanteil durch U_w = 1.3
-      maintenanceInterval: 10,
-      maintenanceCost: 600, // Beschlagwartung & Profilpolitur
-      lifespan: 25,
-      replacementCost: 11500, // Voller Austausch nach 25 Jahren
-      eolCost: 1200, // Entsorgungskosten (PVC-Verbundmüll)
-      embodiedCO2: 4500,
-      operatingCO2: 1050,
-      details: [
-        'Verformt sich über Jahrzehnte leicht unter Temperatureinfluss',
-        'Geringere solare Gewinne und verringertes Schalldämmmaß',
-        'Eingeschränkte Wiederverwertbarkeit durch Co-extrudiertes Altplastik'
-      ]
-    },
-    optionB: {
-      name: 'Option B: Holz-Aluminium-Fenster (3-fach)',
-      className: 'Premium Energie- & Langlebigkeitsschutz',
-      capex: 22000,
-      opex0: 450, // Sehr hohe Energieeffizienz bei U_w = 0.8
-      maintenanceInterval: 15,
-      maintenanceCost: 400, // Wartungsfreie Alu-Deckschale, nur Dichtungspflege
-      lifespan: 45, // Nahezu wartungsfreier Holz-Alu-Verbund
-      replacementCost: 22000,
-      eolCost: -2500, // Hoher Metallschrott-Restwert (Sortenreine Trennung Aluminium)
-      embodiedCO2: 1800,
-      operatingCO2: 550,
-      details: [
-        'Perfekte Witterungsbeständigkeit durch außenliegendes eloxiertes Aluminium',
-        'Hohe energetische Einsparung und maximaler Wohnkomfort',
-        'Sehr gute Trennbarkeit von Altglas, Holzsteg und Alu-Profilen'
-      ]
-    }
-  },
-  {
-    id: 'flachdach',
-    title: 'Flachdach-Abdichtungskonstruktion (Fläche: 120 m²)',
-    subtitle: 'Standard-Bitumenerneuerung vs. EPDM-Kautschukdeckbahn mit Gründach',
-    description: 'Die Abdichtungsklassiker. Bitumen verwittert relativ rasch durch UV-Strahlung und muss abgeschält werden. EPDM mit Extensivbegrünung ist extrem alterungsbeständig.',
-    unit: 'Gesamtdach',
-    optionA: {
-      name: 'Option A: Bitumen-Schweißbahnen (2-lagig)',
-      className: 'Kostengünstiger Klassiker',
-      capex: 14000,
-      opex0: 450, // Dachreinigung & laufende Reparaturrückstellungen
-      maintenanceInterval: 12,
-      maintenanceCost: 1200, // Nahtfestsetzung & Nachbesandung
-      lifespan: 20,
-      replacementCost: 14000, // Kompletter Abtrag und zweilagiger Neuaufbau
-      eolCost: 3500, // Teure Entsorgung bitumenhaltiger Gefahrstoffe
-      embodiedCO2: 8500,
-      operatingCO2: 600,
-      details: [
-        'UV-Abbau führt zu Versprödung der Bitumenketten nach wenigen Jahrzehnten',
-        'Wärmeeintrag im Sommer erhöht Raumkühllast im Dachgeschoss',
-        'Komplett thermische Sonderabfallentsorgung erforderlich'
-      ]
-    },
-    optionB: {
-      name: 'Option B: EPDM-Folie & Extensivbegrünung',
-      className: 'Nachhaltiges "Kühles Dach" (Cool Roof)',
-      capex: 26500,
-      opex0: 100, // Gründach-Düngung, aber spart massiv Kühl- & Heizenergie durch mikroklimatische Verdunstung
-      maintenanceInterval: 15,
-      maintenanceCost: 400, // Visuelle Nahtkontrolle & Unkrautentfernung
-      lifespan: 40,
-      replacementCost: 18000, // Austausch EPDM-Bahn, Substrat verbleibt
-      eolCost: 800, // Geringe Trennungskosten durch ungebundenes System
-      embodiedCO2: 2500,
-      operatingCO2: 150,
-      details: [
-        'Hervorragende Dehnfähigkeit (&gt; 300%) und brutto UV-Resistenz',
-        'Kühleffekt schützt Abdichtung vor thermischen Spannungsrissen',
-        'Gründach speichert bis zu 70% des jährlichen Niederschlags (Abwassergebühr-Spartat)'
-      ]
-    }
-  }
-];
+const SCENARIOS: ScenarioConfig[] = inhalt.daten.SCENARIOS;
 
 export default function LCC() {
   const [activeTab, setActiveTab ] = useState<'rechner' | 'theorie'>('rechner');
@@ -369,12 +241,9 @@ export default function LCC() {
       {/* Introduction Banner aligned with styleguide */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Coins className="text-shiraz" /> Lebenszykluskosten-Rechnung (LCC)
-        </h2>
+          <Coins className="text-shiraz" /><MdText text={inhalt.texte.lebenszykluskostenRechnungLcc} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4">
-          <p>
-            Die Lebenszykluskostenrechnung (Life Cycle Costing - LCC) ist das betriebswirtschaftliche Spiegelbild zur ökologischen Ökobilanzierung (LCA). Sie ermöglicht eine rationale Wirtschaftlichkeitsentscheidung, indem sie nicht nur die unmittelbaren Anschaffungskosten (CapEx) bewertet, sondern alle anfallenden Nutzungs-, Instandsetzungs-, und Entsorgungskosten (OpEx &amp; End-of-Life) über standardisierte Gebäudezeiträume (z.B. 50 Jahre nach DGNB) finanzmathematisch auf den heutigen Tag abzinst.
-          </p>
+          <p><MdText text={inhalt.texte.dieLebenszykluskostenrechnungLifeCycle} /></p>
         </div>
 
         {/* Flat horizontal buttons for subtabs inside the main view to keep single screen clean */}
@@ -387,8 +256,7 @@ export default function LCC() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-slate-50'
             }`}
           >
-            <Coins size={14} /> 1. Interaktiver Kostenrechner &amp; Szenarien
-          </button>
+            <Coins size={14} /><MdText text={inhalt.texte.t1InteraktiverKostenrechnerSzenarien} /></button>
           <button aria-pressed={activeTab === 'theorie'}
             onClick={() => setActiveTab('theorie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -397,8 +265,7 @@ export default function LCC() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-slate-50'
             }`}
           >
-            <Layers size={14} /> 2. Fachgrundlagen &amp; Normen (DIN 18960)
-          </button>
+            <Layers size={14} /><MdText text={inhalt.texte.t2FachgrundlagenNormenDin} /></button>
 
           {activeTab === 'rechner' && (
             <button
@@ -407,7 +274,7 @@ export default function LCC() {
               className="ml-auto px-4 py-2.5 rounded-xl font-bold text-xs bg-emerald-600 text-white border border-emerald-600 shadow-sm hover:bg-emerald-700 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-55"
             >
               {isExporting ? <RefreshCw size={14} className="animate-spin" /> : <Download size={14} />}
-              {isExporting ? 'Generiere...' : 'Bericht exportieren (PDF)'}
+              {isExporting ? 'Generiere...' : inhalt.werte.berichtExportierenPdf}
             </button>
           )}
         </div>
@@ -418,29 +285,25 @@ export default function LCC() {
           {/* PDF Export Title header: only visible during PDF generation */}
           <div className="pdf-header hidden bg-white p-6 rounded-2xl border border-home-grau/30 mb-4 text-center">
             <div className="flex justify-between items-center text-xs text-slate-500 font-mono pb-3 border-b border-home-grau/20">
-              <span>TECHNISCHE HOCHSCHULE AUGSBURG</span>
-              <span>Fakultät für Architektur und Bauwesen</span>
+              <span><MdText text={inhalt.texte.technischeHochschuleAugsburg} /></span>
+              <span><MdText text={inhalt.texte.fakultätFürArchitekturUnd} /></span>
             </div>
-            <h2 className="text-base font-bold text-slate-900 mt-4 uppercase tracking-wide">
-              Lebenszyklusanalyse (LCC-Gutachten) nach DIN 18960
-            </h2>
-            <p className="text-[11px] text-slate-500 mt-1 font-mono">
-              Wirtschaftlichkeitsprüfung • Prof. Dr.-Ing. Jürgen Huber • Baustoffkunde &amp; Bauchemie
-            </p>
+            <h2 className="text-base font-bold text-slate-900 mt-4 uppercase tracking-wide"><MdText text={inhalt.texte.lebenszyklusanalyseLccGutachtenNach} /></h2>
+            <p className="text-[11px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.wirtschaftlichkeitsprüfungProfDrIng} /></p>
             <div className="grid grid-cols-2 gap-4 mt-6 p-4 bg-slate-50 rounded-xl text-left text-xs border border-home-grau/25">
               <div>
-                <span className="font-bold text-slate-950 block mb-1">Untersuchtes Bauteilszenario:</span>
+                <span className="font-bold text-slate-950 block mb-1"><MdText text={inhalt.texte.untersuchtesBauteilszenario} /></span>
                 <span className="text-shiraz font-bold">{activeScenario.title}</span>
                 <p className="text-stone-500 text-[11px] mt-1">{activeScenario.subtitle}</p>
               </div>
               <div>
                 <span className="font-bold text-slate-950 block mb-1">Berechnungsparameter:</span>
                 <ul className="space-y-0.5 font-mono text-[11px]">
-                  <li>• Betrachtungszeitraum: <span className="font-bold text-shiraz">{formatDeWert(analysisPeriod)} Jahre</span></li>
-                  <li>• Kalkulationszinssatz (<InlineMath math="r" />): <span className="font-bold text-shiraz">{formatDeZahl(discountRate, 1)} % / a</span></li>
-                  <li>• Energiepreis-Inflation (<InlineMath math="e" />): <span className="font-bold text-shiraz">{formatDeZahl(energyInflation, 1)} % / a</span></li>
-                  <li>• CO₂-Schattenpreis: <span className="font-bold text-shiraz">{co2PricingEnabled ? `Aktiv (${co2BasePrice} €/t, +${co2Escalation}%)` : 'Inaktiv'}</span></li>
-                  <li>• KfW-Fördermodus: <span className="font-bold text-shiraz">{subsidyEnabled ? `Aktiv (${formatDeWert(subsidyPercent)}%)` : 'Inaktiv'}</span></li>
+                  <li><MdText text={inhalt.texte.betrachtungszeitraum} /><span className="font-bold text-shiraz">{formatDeWert(analysisPeriod)} Jahre</span></li>
+                  <li><MdText text={inhalt.texte.kalkulationszinssatzR} /><span className="font-bold text-shiraz">{formatDeZahl(discountRate, 1)} % / a</span></li>
+                  <li><MdText text={inhalt.texte.energiepreisInflationE} /><span className="font-bold text-shiraz">{formatDeZahl(energyInflation, 1)} % / a</span></li>
+                  <li><MdText text={inhalt.texte.coSchattenpreis} /><span className="font-bold text-shiraz">{co2PricingEnabled ? `Aktiv (${co2BasePrice} €/t, +${co2Escalation}%)` : 'Inaktiv'}</span></li>
+                  <li><MdText text={inhalt.texte.kfwFördermodus} /><span className="font-bold text-shiraz">{subsidyEnabled ? `Aktiv (${formatDeWert(subsidyPercent)}%)` : 'Inaktiv'}</span></li>
                 </ul>
               </div>
             </div>
@@ -448,8 +311,8 @@ export default function LCC() {
           
           {/* Main Scenario Selector */}
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-            <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block font-mono mb-2">Didaktisches Praxis-Szenario</span>
-            <h3 className="text-base font-bold text-slate-950 mb-4">Wählen Sie das bauliche Bauteilszenario für den Lebenszyklus-Vergleich:</h3>
+            <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.didaktischesPraxisSzenario} /></span>
+            <h3 className="text-base font-bold text-slate-950 mb-4"><MdText text={inhalt.texte.wählenSieDasBauliche} /></h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {SCENARIOS.map((scen) => (
@@ -478,13 +341,12 @@ export default function LCC() {
             {/* Economic Parameters Control panel (Left) */}
             <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-5">
               <h3 className="font-bold text-slate-900 border-b border-home-grau/20 pb-3 flex items-center gap-2 text-sm leading-snug">
-                <Scale size={16} className="text-shiraz" /> Volkswirtschaftliche &amp; Mathematische Parameter
-              </h3>
+                <Scale size={16} className="text-shiraz" /><MdText text={inhalt.texte.volkswirtschaftlicheMathematischeParamet} /></h3>
               
               {/* Parameter 1: Analysis period N */}
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label htmlFor="period-slider" className="text-xs font-bold text-slate-700">Betrachtungszeitraum (N)</label>
+                  <label htmlFor="period-slider" className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.betrachtungszeitraumN} /></label>
                   <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(analysisPeriod)} Jahre</span>
                 </div>
                 <input
@@ -497,13 +359,13 @@ export default function LCC() {
                   onChange={(e) => setAnalysisPeriod(parseInt(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
-                <span className="text-[9px] text-slate-400 block font-mono">DGNB-Standardwert für Gebäude: 50 Jahre.</span>
+                <span className="text-[9px] text-slate-400 block font-mono"><MdText text={inhalt.texte.dgnbStandardwertFürGebäude} /></span>
               </div>
 
               {/* Parameter 2: Discount Rate r */}
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label htmlFor="discount-slider" className="text-xs font-bold text-slate-700">Abzinsungssatz (Kalkulationszins <InlineMath math="r" />)</label>
+                  <label htmlFor="discount-slider" className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.abzinsungssatzKalkulationszinsR} /></label>
                   <span className="text-xs font-mono font-bold text-shiraz">{formatDeZahl(discountRate, 1)} % / a</span>
                 </div>
                 <input
@@ -516,13 +378,13 @@ export default function LCC() {
                   onChange={(e) => setDiscountRate(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
-                <span className="text-[9px] text-slate-400 block font-mono">Stellt den Zinseffekt dar. Ein höherer Satz wertet ferne Kosten extrem ab.</span>
+                <span className="text-[9px] text-slate-400 block font-mono"><MdText text={inhalt.texte.stelltDenZinseffektDar} /></span>
               </div>
 
               {/* Parameter 3: Energy Price escalation e */}
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label htmlFor="inflation-slider" className="text-xs font-bold text-slate-700">Sektor-Energiepreissteigerung (<InlineMath math="e" />)</label>
+                  <label htmlFor="inflation-slider" className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.sektorEnergiepreissteigerungE} /></label>
                   <span className="text-xs font-mono font-bold text-shiraz">{formatDeZahl(energyInflation, 1)} % / a</span>
                 </div>
                 <input
@@ -535,13 +397,13 @@ export default function LCC() {
                   onChange={(e) => setEnergyInflation(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
-                <span className="text-[9px] text-slate-400 block font-mono">Wachstumskoeffizient für betriebliche Heiz- &amp; Kühlkosten.</span>
+                <span className="text-[9px] text-slate-400 block font-mono"><MdText text={inhalt.texte.wachstumskoeffizientFürBetrieblicheHeiz} /></span>
               </div>
 
               {/* Parameter 4: General Inflation i */}
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label htmlFor="geninflation-slider" className="text-xs font-bold text-slate-700">Allgemeine Inflation (<InlineMath math="i" />)</label>
+                  <label htmlFor="geninflation-slider" className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.allgemeineInflationI} /></label>
                   <span className="text-xs font-mono font-bold text-shiraz">{formatDeZahl(generalInflation, 1)} % / a</span>
                 </div>
                 <input
@@ -554,20 +416,18 @@ export default function LCC() {
                   onChange={(e) => setGeneralInflation(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
-                <span className="text-[9px] text-slate-400 block font-mono">Jährliche Teuerungsrate für Lohnarbeiten, Austausch und Deponiekosten.</span>
+                <span className="text-[9px] text-slate-400 block font-mono"><MdText text={inhalt.texte.jährlicheTeuerungsrateFürLohnarbeiten} /></span>
               </div>
 
               {/* Professor Huber Enhancements: CO2 & Subsidy */}
               <div className="border-t border-slate-150 pt-4 mt-2 space-y-4">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-mono">Wissenschaftliche Parameter</span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-mono"><MdText text={inhalt.texte.wissenschaftlicheParameter} /></span>
 
                 {/* CO2 Shadow Pricing */}
                 <div className="bg-[#fcf8f2] p-3 rounded-xl border border-orange-200/50 space-y-3">
                   <div className="flex items-center justify-between">
                     <label htmlFor="co2-toggle" className="text-xs font-bold text-slate-800 flex items-center gap-1.5 cursor-pointer select-none">
-                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      CO₂-Schattenpreis (<InlineMath math="\text{CO}_2" />)
-                    </label>
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><MdText text={inhalt.texte.coSchattenpreisTextCo} /></label>
                     <button
                       id="co2-toggle"
                       onClick={() => setCo2PricingEnabled(!co2PricingEnabled)}
@@ -587,7 +447,7 @@ export default function LCC() {
                     <div className="space-y-3 pt-2 border-t border-orange-100/50 animate-in fade-in duration-200">
                       <div>
                         <div className="flex justify-between items-center mb-0.5">
-                          <span className="text-[10px] font-medium text-slate-600">CO₂-Basispreis (Start):</span>
+                          <span className="text-[10px] font-medium text-slate-600"><MdText text={inhalt.texte.coBasispreisStart} /></span>
                           <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(co2BasePrice)} € / t</span>
                         </div>
                         <input
@@ -599,11 +459,11 @@ export default function LCC() {
                           onChange={(e) => setCo2BasePrice(parseInt(e.target.value))}
                           className="w-full text-shiraz accent-shiraz cursor-pointer"
                         />
-                        <span className="text-[8px] text-slate-400 block font-mono">UBA-Kostenansatz: ca. 180-200 €/t Schadensäquivalent.</span>
+                        <span className="text-[8px] text-slate-400 block font-mono"><MdText text={inhalt.texte.ubaKostenansatzCa180} /></span>
                       </div>
                       <div>
                         <div className="flex justify-between items-center mb-0.5">
-                          <span className="text-[10px] font-medium text-slate-600">Jährliche CO₂-Teuerung:</span>
+                          <span className="text-[10px] font-medium text-slate-600"><MdText text={inhalt.texte.jährlicheCoTeuerung} /></span>
                           <span className="text-xs font-mono font-bold text-shiraz">{formatDeZahl(co2Escalation, 1)} % / a</span>
                         </div>
                         <input
@@ -624,9 +484,7 @@ export default function LCC() {
                 <div className="bg-[#fcf8f2] p-3 rounded-xl border border-orange-200/50 space-y-3">
                   <div className="flex items-center justify-between">
                     <label htmlFor="subsidy-toggle" className="text-xs font-bold text-slate-800 flex items-center gap-1.5 cursor-pointer select-none">
-                      <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                      Staatl. KfW-Förderung
-                    </label>
+                      <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span><MdText text={inhalt.texte.staatlKfwFörderung} /></label>
                     <button
                       id="subsidy-toggle"
                       onClick={() => setSubsidyEnabled(!subsidyEnabled)}
@@ -645,7 +503,7 @@ export default function LCC() {
                   {subsidyEnabled && (
                     <div className="pt-2 border-t border-orange-100/50 animate-in fade-in duration-200">
                       <div className="flex justify-between items-center mb-0.5">
-                        <span className="text-[10px] font-medium text-slate-600">Zuschuss auf Option B:</span>
+                        <span className="text-[10px] font-medium text-slate-600"><MdText text={inhalt.texte.zuschussAufOptionB} /></span>
                         <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(subsidyPercent)} %</span>
                       </div>
                       <input
@@ -657,7 +515,7 @@ export default function LCC() {
                         onChange={(e) => setSubsidyPercent(parseInt(e.target.value))}
                         className="w-full text-shiraz accent-shiraz cursor-pointer"
                       />
-                      <span className="text-[8px] text-slate-400 block font-mono">Reduziert Investitionskosten (CapEx) der ökologischen Baustoffe.</span>
+                      <span className="text-[8px] text-slate-400 block font-mono"><MdText text={inhalt.texte.reduziertInvestitionskostenCapexDer} /></span>
                     </div>
                   )}
                 </div>
@@ -665,14 +523,12 @@ export default function LCC() {
 
               {/* Math context hint */}
               <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mt-2">
-                <span className="font-bold text-[10px] text-slate-700 block mb-1 uppercase font-mono">Diskontierung ( NPV )</span>
-                <p className="text-[11px] text-slate-600 leading-normal">
-                  Kosten in Nutzungsjahr <InlineMath math="t" /> werden durch den Abzinsungsfaktor vermindert:
-                </p>
+                <span className="font-bold text-[10px] text-slate-700 block mb-1 uppercase font-mono"><MdText text={inhalt.texte.diskontierungNpv} /></span>
+                <p className="text-[11px] text-slate-600 leading-normal"><MdText text={inhalt.texte.kostenInNutzungsjahrT} /></p>
                 <div className="py-2 flex justify-center text-xs">
                   <InlineMath math="F_{diskont} = \frac{(1+Inflation)^t}{(1+r)^t}" />
                 </div>
-                <span className="text-[9px] text-slate-400 block leading-tight">Da <InlineMath math="r" /> in der Regel größer als die Inflation <InlineMath math="i" /> ist, gewinnen niedrige Errichtungskosten an Attraktivität, je höher Sie <InlineMath math="r" /> ansetzen.</span>
+                <span className="text-[9px] text-slate-400 block leading-tight"><MdText text={inhalt.texte.daRInDer} /></span>
               </div>
             </div>
 
@@ -698,7 +554,7 @@ export default function LCC() {
                   <p className="text-xs leading-relaxed mt-1">
                     {calcData.saving >= 0 
                       ? `Trotz einer höheren Initialinvestition an Tag Null (CapEx-Aufpreis von ${(activeScenario.optionB.capex - activeScenario.optionA.capex).toLocaleString('de-DE')} €) amortisiert sich Option B über die Lebensdauer von ${formatDeWert(analysisPeriod)} Jahren durch immense OpEx-Vorteile und das Ausbleiben teurer Austauschzyklen. Ein klarer Beleg für nachhaltiges Investment!`
-                      : `Unter den gewählten Finanzrandbedingungen (insb. hohem Zinssatz oder kurzem Nutzungszeitraum) kann der Mehrpreis für die kreislauffähige Option B auf Grund der Abzinsung nicht vollständig kompensiert werden.`
+                      : inhalt.werte.unterDenGewähltenFinanzrandbedingungen
                     }
                   </p>
                 </div>
@@ -711,49 +567,48 @@ export default function LCC() {
                 zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}}}{(1+r)^N}"
                 schritte={[
                   {
-                    titel: 'Ihre Finanzparameter',
-                    erklaerung: 'Kalkulationszins r, Energiepreissteigerung e (Betriebskosten), allgemeine Teuerung i (Wartung, Ersatz, Rückbau) und Betrachtungszeitraum N:',
+                    titel: inhalt.werte.ihreFinanzparameter,
+                    erklaerung: inhalt.werte.kalkulationszinsREnergiepreissteigerungE,
                     formel: `r = ${formatDeTeXWert(discountRate / 100)},\\; e = ${formatDeTeXWert(energyInflation / 100)},\\; i = ${formatDeTeXWert(generalInflation / 100)},\\; N = ${formatDeTeX(analysisPeriod, 0)}\\,\\text{a}`
                   },
                   {
-                    titel: 'Betriebskosten Option A abzinsen',
+                    titel: inhalt.werte.betriebskostenOptionAAbzinsen,
                     erklaerung: `Die jährlichen Betriebskosten von ${formatDeZahl(activeScenario.optionA.opex0, 0)} € steigen mit e und werden mit r auf heute abgezinst:`,
                     formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^t}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{€}`
                   },
                   {
-                    titel: 'Barwert Option A',
-                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau, jeweils als Barwert${co2PricingEnabled ? '' : ' (CO₂-Preis inaktiv)'}:`,
+                    titel: inhalt.werte.barwertOptionA,
+                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
                     formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{€}`
                   },
                   {
-                    titel: 'Investition Option B',
+                    titel: inhalt.werte.investitionOptionB,
                     erklaerung: subsidyEnabled
                       ? `Die KfW-Förderung von ${formatDeZahl(subsidyPercent, 0)} % mindert die Investitionskosten der Option B:`
-                      : 'Ohne Förderung gehen die vollen Investitionskosten der Option B ein:',
+                      : inhalt.werte.ohneFörderungGehenDie,
                     formel: subsidyEnabled
                       ? `C_{0,B} = ${formatDeTeX(activeScenario.optionB.capex, 0)} \\cdot (1 - ${formatDeTeX(subsidyPercent / 100, 2)}) = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
                       : `C_{0,B} = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
                   },
                   {
-                    titel: 'Barwert Option B',
-                    erklaerung: 'Gleiche Gliederung wie bei Option A (ein negativer Rückbauwert ist eine Restwertgutschrift):',
+                    titel: inhalt.werte.barwertOptionB,
+                    erklaerung: inhalt.werte.gleicheGliederungWieBei,
                     formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{€}`
                   },
                   {
-                    titel: 'Differenz der Barwerte',
-                    erklaerung: calcData.saving >= 0 ? 'Ein positiver Wert bedeutet: Option B ist über den Lebenszyklus günstiger.' : 'Ein negativer Wert bedeutet: Option A bleibt wirtschaftlicher.',
+                    titel: inhalt.werte.differenzDerBarwerte,
+                    erklaerung: calcData.saving >= 0 ? inhalt.werte.einPositiverWertBedeutet : inhalt.werte.einNegativerWertBedeutet,
                     formel: `\\Delta LCC = LCC_A - LCC_B = ${formatDeTeX(calcData.saving, 0)}\\,\\text{€}`
                   }
                 ]}
-                ergebnisHinweis="Rundungsdifferenzen in der letzten Stelle entstehen durch die Darstellung auf volle Euro."
-                normQuelle="ISO 15686-5:2017; DIN EN 16627:2015-09"
+                ergebnisHinweis={inhalt.werte.rundungsdifferenzenInDerLetzten}
+                normQuelle={inhalt.werte.iso1568652017}
               />
 
               {/* Graphical representation: Visual Stacked Cost meters */}
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
                 <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
-                  <BarChart3 size={15} className="text-shiraz" /> Strukturierte Barwert-Zusammensetzung (LCC-Vergleich)
-                </h4>
+                  <BarChart3 size={15} className="text-shiraz" /><MdText text={inhalt.texte.strukturierteBarwertZusammensetzungLcc} /></h4>
 
                 {/* Option A Horizontal bar */}
                 <div className="space-y-1.5">
@@ -889,8 +744,8 @@ export default function LCC() {
 
                 {/* Legend and description for bar */}
                 <div className="flex flex-wrap gap-2 justify-between pt-2 border-t border-slate-150 text-[11px] text-slate-500">
-                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-red-500 rounded-xs block"></span> Anschaffung (CapEx)</div>
-                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-amber-500 rounded-xs block"></span> Betrieb/Heizung (OpEx)</div>
+                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-red-500 rounded-xs block"></span><MdText text={inhalt.texte.anschaffungCapex} /></div>
+                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-amber-500 rounded-xs block"></span><MdText text={inhalt.texte.betriebHeizungOpex} /></div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-[#059669] rounded-xs block"></span> CO₂-Zertifikatsteuer</div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-indigo-500 rounded-xs block"></span> Wartung</div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-violet-600 rounded-xs block"></span> Bauteiltausch</div>
@@ -900,23 +755,21 @@ export default function LCC() {
 
               {/* Side-by-side exact table breakdown */}
               <div className="bg-white rounded-2xl border border-home-grau/30 shadow-sm overflow-hidden">
-                <div className="p-4 bg-slate-50 font-bold text-xs uppercase tracking-wider text-slate-700 border-b border-home-grau/25">
-                  Detaillierte Bilanz nach Barwertmethode (Net Present Value)
-                </div>
+                <div className="p-4 bg-slate-50 font-bold text-xs uppercase tracking-wider text-slate-700 border-b border-home-grau/25"><MdText text={inhalt.texte.detaillierteBilanzNachBarwertmethode} /></div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
                       <tr className="bg-slate-50/50 border-b border-home-grau/20 text-[10px] text-slate-500 uppercase">
                         <th className="p-3">Kostenart</th>
-                        <th className="p-3 text-right">Option A (Nominal)</th>
-                        <th className="p-3 text-right font-bold bg-slate-100/60">Option A (Barwert)</th>
-                        <th className="p-3 text-right">Option B (Nominal)</th>
-                        <th className="p-3 text-right font-bold bg-indigo-50/60 text-indigo-950">Option B (Barwert)</th>
+                        <th className="p-3 text-right"><MdText text={inhalt.texte.optionANominal} /></th>
+                        <th className="p-3 text-right font-bold bg-slate-100/60"><MdText text={inhalt.texte.optionABarwert} /></th>
+                        <th className="p-3 text-right"><MdText text={inhalt.texte.optionBNominal} /></th>
+                        <th className="p-3 text-right font-bold bg-indigo-50/60 text-indigo-950"><MdText text={inhalt.texte.optionBBarwert} /></th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       <tr>
-                        <td className="p-3 font-medium">1. Errichtungskosten (CapEx)</td>
+                        <td className="p-3 font-medium"><MdText text={inhalt.texte.t1ErrichtungskostenCapex} /></td>
                         <td className="p-3 text-right text-slate-500">{(activeScenario.optionA.capex).toLocaleString('de-DE')} €</td>
                         <td className="p-3 text-right font-bold bg-slate-100/30">{(activeScenario.optionA.capex).toLocaleString('de-DE')} €</td>
                         <td className="p-3 text-right text-slate-500">{(activeScenario.optionB.capex).toLocaleString('de-DE')} €</td>
@@ -924,7 +777,7 @@ export default function LCC() {
                       </tr>
                       {subsidyEnabled && (
                         <tr className="bg-blue-50/40 text-blue-900 border-b border-blue-100/30">
-                          <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1">↳ Staatl. KfW-Zuschuss ({formatDeWert(subsidyPercent)}%)</td>
+                          <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1"><MdText text={inhalt.texte.staatlKfwZuschuss} />{formatDeWert(subsidyPercent)}%)</td>
                           <td className="p-2.5 text-right text-slate-400 font-mono">- 0 €</td>
                           <td className="p-2.5 text-right font-mono bg-slate-100/20 text-slate-400">- 0 €</td>
                           <td className="p-2.5 text-right font-mono text-blue-700">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
@@ -932,28 +785,28 @@ export default function LCC() {
                         </tr>
                       )}
                       <tr>
-                        <td className="p-3 font-medium text-slate-750">2. Betriebskosten (Netto OpEx)</td>
+                        <td className="p-3 font-medium text-slate-750"><MdText text={inhalt.texte.t2BetriebskostenNettoOpex} /></td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeOpExNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeOpExDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeOpExNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeOpExDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium">3. Laufende Instandhaltung</td>
+                        <td className="p-3 font-medium"><MdText text={inhalt.texte.t3LaufendeInstandhaltung} /></td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeMaintenanceNominal).toLocaleString('de-DE')} €</td>
                         <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeMaintenanceDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeMaintenanceNominal).toLocaleString('de-DE')} €</td>
                         <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeMaintenanceDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium">4. Erneuerung &amp; Bauteiltausch</td>
+                        <td className="p-3 font-medium"><MdText text={inhalt.texte.t4ErneuerungBauteiltausch} /></td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeReplacementNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeReplacementDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeReplacementNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeReplacementDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium">5. Rückbau / Restwert (EOL)</td>
+                        <td className="p-3 font-medium"><MdText text={inhalt.texte.t5RückbauRestwertEol} /></td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultA.eolNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.eolDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td className="p-3 text-right text-slate-500">{(calcData.resultB.eolNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
@@ -961,7 +814,7 @@ export default function LCC() {
                       </tr>
                       {co2PricingEnabled && (
                         <tr className="bg-emerald-50/45 text-emerald-950 border-t border-emerald-100">
-                          <td className="p-3 font-medium text-emerald-900">6. CO₂-Schattenpreis (Klima)</td>
+                          <td className="p-3 font-medium text-emerald-900"><MdText text={inhalt.texte.t6CoSchattenpreisKlima} /></td>
                           <td className="p-3 text-right text-slate-500 font-mono">{(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Nominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                           <td className="p-3 text-right font-bold font-mono bg-[#fcf8f2]/30 text-emerald-800">{(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                           <td className="p-3 text-right text-slate-500 font-mono">{(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Nominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
@@ -969,7 +822,7 @@ export default function LCC() {
                         </tr>
                       )}
                       <tr className="bg-slate-100 font-bold text-slate-900 border-t-2 border-slate-350">
-                        <td className="p-3 uppercase tracking-wide text-[10px]">LCC-Gesamtsumme (Barwert)</td>
+                        <td className="p-3 uppercase tracking-wide text-[10px]"><MdText text={inhalt.texte.lccGesamtsummeBarwert} /></td>
                         <td colSpan={2} className="p-3 text-right text-sm">{(calcData.resultA.totalLCCDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         <td colSpan={2} className="p-3 text-right text-sm text-indigo-850">{(calcData.resultB.totalLCCDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                       </tr>
@@ -1015,51 +868,42 @@ export default function LCC() {
       {activeTab === 'theorie' && (
         <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-305">
           <h3 className="text-lg font-bold text-slate-950 flex items-center gap-2 border-b border-home-grau/20 pb-3">
-            <Layers size={18} className="text-shiraz" /> Theorie, Normung &amp; Strukturierung nach DIN 18960
-          </h3>
+            <Layers size={18} className="text-shiraz" /><MdText text={inhalt.texte.theorieNormungStrukturierungNach} /></h3>
 
           <div className="space-y-4 text-sm text-slate-800 leading-relaxed">
-            <h4 className="font-bold text-slate-900 text-base">1. Die Kostenstruktur nach DIN 18960</h4>
-            <p>
-              Für Hochbauten regelt die <strong>DIN 18960 (Nutzungskosten im Hochbau)</strong> die standardisierte Berücksichtigung aller Kostenarten über die Betriebsphase eines Bauwerks. Sie gliedert sich im Wesentlichen in folgende baulich relevante Kostengruppen (KG):
-            </p>
+            <h4 className="font-bold text-slate-900 text-base"><MdText text={inhalt.texte.t1DieKostenstrukturNach} /></h4>
+            <p><MdText text={inhalt.texte.fürHochbautenRegeltDie} /></p>
             <ul className="list-disc pl-5 space-y-2 text-xs">
-              <li><strong>KG 100 (Kapitalkosten):</strong> Verzinsung des eingesetzten Kapitals, Abschreibungen, Kredite.</li>
-              <li><strong>KG 200 (Objektmanagementkosten):</strong> Personal- und Sachkosten für Verwaltung, Steuerung und Kontrolle des Objekts.</li>
-              <li><strong>KG 300 (Betriebskosten):</strong> Versorgung (Strom, Fernwärme, Gas, Wasser), Entsorgung (Abwasser, Abfall), Reinigung und Pflege, Bedienung, Inspektion und Wartung, Sicherheitsdienste sowie Abgaben und Beiträge (Steuern, Versicherungen).</li>
-              <li><strong>KG 400 (Instandsetzungskosten):</strong> Wiederherstellung des Soll-Zustands von Baukonstruktion, technischen Anlagen und Außenanlagen, einschließlich des zyklischen baustoffspezifischen Austauschs von Bauteilen (z. B. Fensterflügel nach 30 Jahren).</li>
+              <li><MdText text={inhalt.texte.kg100KapitalkostenVerzinsung} /></li>
+              <li><MdText text={inhalt.texte.kg200ObjektmanagementkostenPersonal} /></li>
+              <li><MdText text={inhalt.texte.kg300BetriebskostenVersorgung} /></li>
+              <li><MdText text={inhalt.texte.kg400InstandsetzungskostenWiederherstell} /></li>
             </ul>
 
-            <h4 className="font-bold text-slate-900 text-base pt-2">2. Die mathematische Barwertmethode (Net Present Value - NPV)</h4>
-            <p>
-              Finanzmathematisch wird der Umstand modelliert, dass zukünftiges Geld auf Grund von Opportunitätszinsen und Liquiditätspräferenz heute einen geringeren Sachwert besitzt. LCC nutzt zur Zusammenführung zeitlich unterschiedlich verteilter Kosten die <strong>Barwertmethode</strong>:
-            </p>
+            <h4 className="font-bold text-slate-900 text-base pt-2"><MdText text={inhalt.texte.t2DieMathematischeBarwertmethode} /></h4>
+            <p><MdText text={inhalt.texte.finanzmathematischWirdDerUmstand} /></p>
             
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 font-mono text-xs my-3">
-              <span className="font-bold text-slate-900 block mb-1">Volle mathematische LCC-Zusammenführung:</span>
+              <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.volleMathematischeLccZusammenführung} /></span>
               <BlockMath math="LCC = C_{CapEx} + \sum_{t=1}^{N} \frac{C_{OpEx, t} \cdot (1+e)^t}{(1+r)^t} + \sum \frac{C_{Maint, t} \cdot (1+i)^t}{(1+r)^t} \pm \frac{C_{End-of-Life}}{(1+r)^N}" />
               <div className="mt-4 text-[10px] text-slate-500 font-sans space-y-1">
-                <p>• <strong>C<sub>CapEx</sub></strong>: Initial-Investitionskosten an Tag 0</p>
-                <p>• <strong>C<sub>OpEx, t</sub></strong>: Betriebskosten im Jahr t, erhöht unter der Sektor-Energiepreissteigerungsrate e</p>
-                <p>• <strong>C<sub>Maint, t</sub></strong>: Wartungs- und Austauschkosten in den jeweiligen Erneuerungsjahren, erhöht um die allgemeine Inflation i</p>
-                <p>• <strong>C<sub>End-of-Life</sub></strong>: Abtragungs- oder Rückbaukosten am Berechnungsende im Jahr N</p>
-                <p>• <strong>r</strong>: Abzinsungssatz (Kalkulationszinssatz)</p>
+                <p><MdText text={inhalt.texte.cSubCapexSub} /></p>
+                <p><MdText text={inhalt.texte.cSubOpexT} /></p>
+                <p><MdText text={inhalt.texte.cSubMaintT} /></p>
+                <p><MdText text={inhalt.texte.cSubEndOf} /></p>
+                <p><MdText text={inhalt.texte.rAbzinsungssatzKalkulationszinssatz} /></p>
               </div>
             </div>
 
-            <h4 className="font-bold text-slate-900 text-base pt-2">3. Ökologischer &amp; ökonomischer Zielkonflikt</h4>
+            <h4 className="font-bold text-slate-900 text-base pt-2"><MdText text={inhalt.texte.t3ÖkologischerÖkonomischerZielkonflikt} /></h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-[#f2f6fc] p-4 rounded-xl border border-blue-150">
               <div>
-                <span className="font-bold text-slate-900 block mb-1">Nationale DGNB-/BNB-Nutzung</span>
-                <p className="text-slate-700">
-                  Um für das staatliche QNG-Qualitätssiegel bezuschussungsfähig zu sein, fordert das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB) die Durchführung beider Bilanzen. LCC-Szenarien werden regulär mit einem normativ fixierten Kalkulationszins von <strong>1,5% oder 2,0%</strong> über genau 50 Jahre modelliert.
-                </p>
+                <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.nationaleDgnbBnbNutzung} /></span>
+                <p className="text-slate-700"><MdText text={inhalt.texte.umFürDasStaatliche} /></p>
               </div>
               <div>
-                <span className="font-bold text-slate-900 block mb-1">Wirtschaftliche Triebfeder</span>
-                <p className="text-slate-700">
-                  Während eine günstige Investition an Tag Null den schnellen Rendite-Fokus des Immobilienentwicklers befriedigt, ist sie für den langfristigen Betreiber (Eigennutzer, Wohnungsgesellschaften) oft unvorteilhaft. LCC macht diesen "Trittbrettfahrer-Effekt" transparent und schützt Planer und Bauherren vor unerwarteten Betriebskostenexplosionen.
-                </p>
+                <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.wirtschaftlicheTriebfeder} /></span>
+                <p className="text-slate-700"><MdText text={inhalt.texte.währendEineGünstigeInvestition} /></p>
               </div>
             </div>
           </div>
@@ -1072,28 +916,9 @@ export default function LCC() {
           { title: 'Barwert', url: 'https://de.wikipedia.org/wiki/Barwert' },
           { title: 'Kapitalwertmethode', url: 'https://de.wikipedia.org/wiki/Kapitalwertmethode' }
         ]}
-        regelwerke={[
-          { title: 'DIN 18960 (Nutzungskosten im Hochbau)' },
-          { title: 'ISO 15686-5:2017 (Buildings and constructed assets — Service-life planning — Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
-          { title: 'GEFMA 220 (Lebenszykluskostenrechnung im Facility Management)', url: 'https://www.gefma.de/' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Pelzeter, A. (2006): Lebenszykluskosten von Immobilien (Fraunhofer IRB Verlag)',
-          'DGNB Handbuch: Kriterium ENV2.1 / ECO1.1 Lebenszykluskosten'
-        ]}
-        formeln={[
-          {
-            formel: 'LCC = C_0 + \\sum_{t=1}^N \\frac{C_t}{(1 + r)^t} - \\frac{R_N}{(1 + r)^N}',
-            erklaerung: 'Lebenszykluskosten (Kapitalwert/Net Present Value): Summe aus Anfangsinvestition C_0, diskontierten Betriebskosten/Instandhaltungskosten C_t und abgezinstem Restwert R_N bei Diskontierungsrate r.',
-            quelle: 'ISO 15686-5 / DIN 18960'
-          },
-          {
-            formel: 'q = 1 + \\frac{p}{100} \\implies \\text{RBF}(n, r) = \\frac{(1 + r)^n - 1}{r \\cdot (1 + r)^n}',
-            erklaerung: 'Rentenbarwertfaktor (RBF) zur Abzinsung gleichförmig wiederkehrender jährlicher Instandhaltungs- und Energiekosten über n Nutzungsjahre.',
-            quelle: 'DIN 18960'
-          }
-        ]}
+        regelwerke={inhalt.daten["LCC.regelwerke"]}
+        literatur={inhalt.daten["LCC.literatur"]}
+        formeln={inhalt.daten["LCC.formeln"]}
       />
     </div>
   );

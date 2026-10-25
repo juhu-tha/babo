@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "dieFrischbetontemperaturErgibtSich": "Die Frischbetontemperatur ergibt sich aus der Mischung der Ausgangsstoffe unter Berücksichtigung ihrer Massen, Temperaturen und spezifischen Wärmekapazitäten. Besonders im Sommer ist die Steuerung der Frischbetontemperatur wichtig. Die Zugabe von Scherbeneis ist dabei extrem effektiv, da die Schmelzenthalpie des Eises dem Gemisch massiv Wärmeenergie entzieht.",
+    "wasserEis": "Wasser & Eis",
+    "gesamtwasserZugabeEisEigenfeuchte": "Gesamtwasser (Zugabe + Eis + Eigenfeuchte):",
+    "eiskühlungAktiv": "Eiskühlung aktiv (-",
+    "erwarteteFrischbetontemperatur": "Erwartete Frischbetontemperatur",
+    "einflussDerAusgangsstoffeAuf": "Einfluss der Ausgangsstoffe auf die Temperatur",
+    "dieserBalkenZeigtWie": "Dieser Balken zeigt, wie stark die einzelnen Stoffe die thermische Masse dominieren (Produkt aus Masse und Wärmekapazität).",
+    "cZ084": "c_z = 0,84 kJ/(kg·K)",
+    "cW418": "c_w = 4,18 kJ/(kg·K)",
+    "cG084": "c_g = 0,84 kJ/(kg·K)",
+    "schematischeEnergiebilanz": "Schematische Energiebilanz"
+  },
+  "werte": {
+    "masseDesZements": "Masse des Zements.",
+    "temperaturTZ": "Temperatur (T_z)",
+    "zementKannDurchDen": "Zement kann durch den Mahlprozess im Silo sehr warm sein (oft 50-70°C).",
+    "zugabewasserFlüssigMW": "Zugabewasser flüssig (m_w)",
+    "masseDesFlüssigZugegebenen": "Masse des flüssig zugegebenen Wassers.",
+    "temperaturWasserTW": "Temperatur Wasser (T_w)",
+    "masseDesZugegebenenEises": "Masse des zugegebenen Eises zur Kühlung.",
+    "scherbeneisMEis": "Scherbeneis (m_eis)",
+    "masseTrockenMG": "Masse trocken (m_g)",
+    "masseDerTrockenenGesteinskörnung": "Masse der trockenen Gesteinskörnung.",
+    "wassergehaltDerGesteinskörnungDieses": "Wassergehalt der Gesteinskörnung. Dieses Wasser hat die gleiche Temperatur wie das Gestein.",
+    "temperaturTG": "Temperatur (T_g)",
+    "entsprichtMeistDerUmgebungstemperatur": "Entspricht meist der Umgebungstemperatur bei Außenlagerung.",
+    "achtungTemperatur30C": "Achtung: Temperatur > 30°C. Gefahr von zu schnellem Ansteifen und Festigkeitseinbußen.",
+    "achtungTemperatur5C": "Achtung: Temperatur < 5°C. Hydratation kommt nahezu zum Erliegen. Frostgefahr!",
+    "temperaturImNormalenVerarbeitungsbereich": "Temperatur im normalen Verarbeitungsbereich (optimal 15-25°C)."
+  }
+}

@@ -9,6 +9,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/dauerhaftigkeitchecklisten/DauerhaftigkeitChecklisten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ChecklistItem {
   id: string;
@@ -29,101 +31,101 @@ interface ChecklistSection {
 const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
   expositionsklassen: {
     id: 'expositionsklassen',
-    title: '1. Expositionsgruppen & Rezepturvorgaben',
-    description: 'Korrekte Ermittlung der Expositionsklassen nach DIN 1045-2 zur Sicherung der Mindestbetondeckung und Zementanpassung.',
+    title: inhalt.werte.t1ExpositionsgruppenRezepturvorgaben,
+    description: inhalt.werte.korrekteErmittlungDerExpositionsklassen,
     icon: Layers,
     items: [
       {
         id: 'exp-1',
-        task: 'Klassifizierung aller Bauteile nach Witterungskontakt',
-        description: 'Vollständige Zuordnung zu XC (Carbonatisierung), XD (Chloride außer Meerwasser), XS (Meerwasser), XF (Frost/Tausalz), XM (Verschleiß) und XA (chemischer Angriff).',
-        ref: 'DIN 1045-2 / DIN EN 206',
+        task: inhalt.werte.klassifizierungAllerBauteileNach,
+        description: inhalt.werte.vollständigeZuordnungZuXc,
+        ref: inhalt.werte.din10452Din,
         status: 'critical'
       },
       {
         id: 'exp-2',
-        task: 'Abgleich des höchstzulässigen Wasserzementwerts (max. w/z)',
-        description: 'Prüfung, ob der maximale w/z-Wert gemäß Expositionsklasse eingehalten wird (z. B. max. 0,45 bei XD3 / XS3, max. 0,50 bei XF4 mit Luftporen), um kapillare Transportporenpfade zu minimieren.',
-        ref: 'DIN 1045-2:2023-08, Tab. F.2.1/F.2.2',
+        task: inhalt.werte.abgleichDesHöchstzulässigenWasserzementw,
+        description: inhalt.werte.prüfungObDerMaximale,
+        ref: inhalt.werte.din104522023,
         status: 'critical'
       },
       {
         id: 'exp-3',
-        task: 'Prüfung des Mindestzementgehalts und Zementsorte',
-        description: 'Sicherstellung der Mindestzementmenge im Frischbeton sowie Berücksichtigung von Sulfatwiderstand (SR-Zement) bei chemischem Schadensrisiko (XA).',
-        ref: 'DIN 1045-2 Tab. F.2.1',
+        task: inhalt.werte.prüfungDesMindestzementgehaltsUnd,
+        description: inhalt.werte.sicherstellungDerMindestzementmengeIm,
+        ref: inhalt.werte.din10452Tab,
         status: 'mandatory'
       },
       {
         id: 'exp-4',
-        task: 'Anforderung an den Luftporengehalt verifizieren',
-        description: 'Bei hochgradiger Frost-/Tausalzbeanspruchung (XF3/XF4) ist ein künstlicher Mikroluftporengehalt im Frischbeton vor Ort messtechnisch nachzuweisen.',
-        ref: 'DIN EN 12350-7 (Druckausgleichsverfahren)',
+        task: inhalt.werte.anforderungAnDenLuftporengehalt,
+        description: inhalt.werte.beiHochgradigerFrostTausalzbeanspruchung,
+        ref: inhalt.werte.dinEn123507,
         status: 'mandatory'
       }
     ]
   },
   betondeckung: {
     id: 'betondeckung',
-    title: '2. Bewehrungskorrosion & Betondeckung',
-    description: 'Qualitätssicherung der Soll-Betondeckung zur dauerhaften Sicherstellung des alkalischen Passivierungsschutzes.',
+    title: inhalt.werte.t2BewehrungskorrosionBetondeckung,
+    description: inhalt.werte.qualitätssicherungDerSollBetondeckung,
     icon: ShieldAlert,
     items: [
       {
         id: 'cov-1',
-        task: 'Ermittlung des Nennmaßes der Betondeckung (c_nom)',
-        description: 'Berechnung aus Mindestbetondeckung c_min plus Vorhaltemaß (Verlegertoleranz) Delta-c_dev (Standard: 10 bis 15 mm).',
-        ref: 'DIN EN 1992-1-1 / Nationaler Anhang (NA)',
+        task: inhalt.werte.ermittlungDesNennmaßesDer,
+        description: inhalt.werte.berechnungAusMindestbetondeckungC,
+        ref: inhalt.werte.dinEn19921,
         status: 'critical'
       },
       {
         id: 'cov-2',
-        task: 'Auswahl der Abstandshalter nach DBV-Merkblatt',
-        description: 'Festlegung geeigneter, formstabiler Abstandshalter aus Faserbeton oder Kunststoff, um Verkippungen der Bewehrung während des Betonierens zu verhindern.',
-        ref: 'DBV-Merkblatt "Abstandshalter"',
+        task: inhalt.werte.auswahlDerAbstandshalterNach,
+        description: inhalt.werte.festlegungGeeigneterFormstabilerAbstands,
+        ref: inhalt.werte.dbvMerkblattAbstandshalter,
         status: 'mandatory'
       },
       {
         id: 'cov-3',
-        task: 'Nachbehandlungsdauer des Frischbetons bemessen',
-        description: 'Festlegung der Nachbehandlungsfrist (Befeuchtung mit Wasser, Folienabdeckung) in Abhängigkeit von Festigkeitsentwicklung und Umweltbedingungen zur Absicherung der Randzonendichte.',
-        ref: 'DIN 1045-3 / DIN EN 13670',
+        task: inhalt.werte.nachbehandlungsdauerDesFrischbetonsBemes,
+        description: inhalt.werte.festlegungDerNachbehandlungsfristBefeuch,
+        ref: inhalt.werte.din10453Din,
         status: 'critical'
       },
       {
         id: 'cov-4',
-        task: 'Betonstahl-Zustand vor dem Einbau auditieren',
-        description: 'Sicherstellung, dass der Bewehrungsstahl frei von losen Rostschuppen, Schalölrückständen oder Eisbefall ist, um optimalen Verbund zu sichern.',
-        ref: 'DIN EN 10080',
+        task: inhalt.werte.betonstahlZustandVorDem,
+        description: inhalt.werte.sicherstellungDassDerBewehrungsstahl,
+        ref: inhalt.werte.dinEn10080,
         status: 'recommended'
       }
     ]
   },
   rissbreiten: {
     id: 'rissbreiten',
-    title: '3. Rissbreitenbegrenzung & Risssteuerung',
-    description: 'Berechnung und konstruktive Maßnahmen zur Einhaltung der zulässigen Rissbreiten (w_max).',
+    title: inhalt.werte.t3RissbreitenbegrenzungRisssteuerung,
+    description: inhalt.werte.berechnungUndKonstruktiveMaßnahmen,
     icon: Search,
     items: [
       {
         id: 'ris-1',
-        task: 'Grenzwert w_max festlegen',
-        description: 'Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Stahlbeton nach NA Tab. 7.1DE: 0,4 mm bei XC1, 0,3 mm bei XC2–XC4, 0,2 mm bei XD/XS; WU-Bauteile nach WU-Richtlinie).',
-        ref: 'DIN EN 1992-1-1 + NA, 7.3 / DAfStb-WU-Richtlinie',
+        task: inhalt.werte.grenzwertWMaxFestlegen,
+        description: inhalt.werte.definitionDerMaximalZulässigen,
+        ref: inhalt.werte.dinEn199212,
         status: 'critical'
       },
       {
         id: 'ris-2',
-        task: 'Zweckmäßige Mindestbewehrung für Zwangskräfte berechnen',
-        description: 'Auslegung der Rissbreitenbewehrung zur Aufnahme innerer Zwangskräfte infolge von Hydratationswärmeabfluss im frühen Stadium oder Schwindvorgängen.',
-        ref: 'DIN EN 1992-1-1 Abs. 7.3.2',
+        task: inhalt.werte.zweckmäßigeMindestbewehrungFürZwangskräf,
+        description: inhalt.werte.auslegungDerRissbreitenbewehrungZur,
+        ref: inhalt.werte.dinEn199213,
         status: 'mandatory'
       },
       {
         id: 'ris-3',
-        task: 'Einsatz betontechnologischer Maßnahmen zur Wärmeminderung',
-        description: 'Verwendung von Zementen mit geringer Hydratationswärmeentwicklung (LH-Zemente) sowie niedrigen Bauteilbetonierungstemperaturen zur Verhinderung von Thermo-Rissen.',
-        ref: 'DIN 1045-2 / DAfStb-Richtlinie Massige Bauteile aus Beton',
+        task: inhalt.werte.einsatzBetontechnologischerMaßnahmenZur,
+        description: inhalt.werte.verwendungVonZementenMit,
+        ref: inhalt.werte.din10452Dafstb,
         status: 'recommended'
       }
     ]
@@ -140,12 +142,9 @@ export default function DauerhaftigkeitChecklisten() {
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
         <h2 className="text-xl font-bold tracking-tight text-text-main flex items-center gap-2">
-          <ShieldAlert className="text-shiraz" /> Checklisten: Dauerhaftigkeit von Betontragwerken
-        </h2>
+          <ShieldAlert className="text-shiraz" /><MdText text={inhalt.texte.checklistenDauerhaftigkeitVonBetontragwe} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-          <p>
-            Sicherung der geforderten 50- oder 100-jährigen Nutzungsdauer von Tragkonstruktionen durch vorausschauende Expositionsklassen-, Betondeckungs- und Rissbreitenplanung nach DIN EN 1992, DIN EN 206 und DAfStb WU-Richtlinie.
-          </p>
+          <p><MdText text={inhalt.texte.sicherungDerGeforderten50} /></p>
         </div>
       </div>
 
@@ -207,15 +206,15 @@ export default function DauerhaftigkeitChecklisten() {
               if (item.status === 'critical') {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-rose-500/80';
                 badgeStyle = 'bg-rose-50/50 text-rose-700 border-rose-100/40';
-                badgeLabel = 'Kritisch / Haftungsrelevant';
+                badgeLabel = inhalt.werte.kritischHaftungsrelevant;
               } else if (item.status === 'mandatory') {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-amber-500/80';
                 badgeStyle = 'bg-amber-50/50 text-amber-700 border-amber-100/40';
-                badgeLabel = 'Gesetzlich verpflichtend';
+                badgeLabel = inhalt.werte.gesetzlichVerpflichtend;
               } else {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-emerald-500/80';
                 badgeStyle = 'bg-emerald-50/50 text-emerald-700 border-emerald-100/40';
-                badgeLabel = 'Stand der Technik';
+                badgeLabel = inhalt.werte.standDerTechnik;
               }
 
               return (
@@ -261,9 +260,7 @@ export default function DauerhaftigkeitChecklisten() {
           <div className="flex flex-col md:flex-row gap-2.5 justify-between items-center text-xs text-home-grau">
             <div className="flex items-center gap-1.5">
               <ShieldAlert className="w-3.5 h-3.5 text-home-grau/60 shrink-0" />
-              <p className="font-normal text-home-grau/80">
-                <strong>Untertemperatur beim Betonieren?</strong> Bei Bauteiltemperaturen unter +5°C verzögert sich der Festigkeitsaufbau drastisch, was die Nachbehandlungsfristen massiv erhöht.
-              </p>
+              <p className="font-normal text-home-grau/80"><MdText text={inhalt.texte.untertemperaturBeimBetonierenBei} /></p>
             </div>
             <div className="flex gap-1">
               <a 
@@ -283,59 +280,33 @@ export default function DauerhaftigkeitChecklisten() {
       {/* Module Footer Links */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Maßgebende Betonanforderungen bei mehreren Expositionsklassen"
+        title={inhalt.werte.beispiel1MaßgebendeBetonanforderungen}
         zielGleichung="(w/z)_{max} = \min_i (w/z)_i, \quad f_{ck} = \max_i f_{ck,i}, \quad z_{min} = \max_i z_i"
-        schritte={[
-          { titel: 'Klassen', erklaerung: 'Stützwand an einer gestreuten Straße: XC4, XD1 (Sprühnebel) und XF2 (mit Luftporen).', formel: '\\text{XC4: } 0{,}60 / \\text{C25/30} / 280 \\quad \\text{XD1: } 0{,}55 / \\text{C30/37} / 300' },
-          { titel: 'Frostklasse', erklaerung: 'XF2 mit Luftporenbildner nach DIN 1045-2:', formel: '\\text{XF2 (LP): } 0{,}55 / \\text{C25/30} / 300' },
-          { titel: 'Maßgebend', erklaerung: 'Jeweils die strengste Anforderung:', formel: 'w/z \\le 0{,}55, \\; \\text{C30/37}, \\; z \\ge 300\\,\\text{kg/m}^3, \\; \\text{LP-Beton}' }
-        ]}
-        ergebnisHinweis="Die Betondeckung richtet sich nach der Klasse mit der größten Anforderung (hier XD1: c_min,dur = 40 mm, c_nom = 55 mm). Werte nach DIN 1045-2, Tabellen F.2.1/F.2.2 – am Normtext der Ausgabe 2023-08 prüfen."
-        normQuelle="DIN 1045-2:2023-08; DIN EN 206:2021-06"
+        schritte={inhalt.daten["DauerhaftigkeitChecklisten.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieBetondeckungRichtetSich}
+        normQuelle={inhalt.werte.din1045220232}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Auswertung einer Betondeckungsmessung"
+        title={inhalt.werte.beispiel2AuswertungEiner}
         zielGleichung="c_{0{,}05} = \bar{c} - 1{,}645 \cdot s"
-        schritte={[
-          { titel: 'Messung', erklaerung: 'Bewehrungsortung an 60 Messpunkten einer Außenwand (XD1): Mittelwert 47 mm, Standardabweichung 4,5 mm.', formel: '\\bar{c} = 47\\,\\text{mm}, \\quad s = 4{,}5\\,\\text{mm}' },
-          { titel: '5-%-Quantil', erklaerung: 'Normalverteilung angenommen:', formel: 'c_{0{,}05} = 47 - 1{,}645 \\cdot 4{,}5 = 39{,}6\\,\\text{mm}' },
-          { titel: 'Bewertung', erklaerung: 'Vergleich mit dem Mindestmaß c_min = 40 mm:', formel: '39{,}6 < 40 \\Rightarrow \\text{knapp unterschritten}' }
-        ]}
-        ergebnisHinweis="Eine knappe Unterschreitung des Mindestmaßes im 5-%-Quantil ist mit dem Tragwerksplaner zu bewerten (z. B. Oberflächenschutz, Instandhaltungsplanung). Das DBV-Merkblatt Betondeckung und Bewehrung beschreibt Mess- und Auswerteverfahren."
-        normQuelle="DBV-Merkblatt Betondeckung und Bewehrung; DIN EN 1992-1-1 + NA, 4.4.1"
+        schritte={inhalt.daten["DauerhaftigkeitChecklisten.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.eineKnappeUnterschreitungDes}
+        normQuelle={inhalt.werte.dbvMerkblattBetondeckungUnd}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="dauerhaftigkeit_checklisten" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Expositionsanforderungen, Rissbreiten, WU-Richtlinie und Referenzen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap10} 
         wikipedia={[
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' },
           { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
-          { title: 'Carbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' }
+          { title: inhalt.werte.carbonatisierungBeton, url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)' },
-          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'DBV-Merkblatt Betondeckung und Bewehrung. Berlin: Deutscher Beton- und Bautechnik-Verein (aktuelle Fassung)'
-        ]} 
-        formeln={[
-          {
-            formel: 'c_{\\text{nom}} = \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}} + \\Delta c_{\\text{dur},\\gamma} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}}; 10\\,\\text{mm}\\} + \\Delta c_{\\text{dev}}',
-            erklaerung: 'Vollständige Bemessungsformel für das Nennmaß der Betondeckung cnom unter Berücksichtigung von Zusatzmaßnahmen und Vorhaltemaß.',
-            quelle: 'DIN EN 1992-1-1 + NA, 4.4.1.2'
-          },
-          {
-            formel: 'w_k \\le w_{k,\\text{zul}}(h_w / h)',
-            erklaerung: 'Entwurfsgrundsatz Selbstheilung: Trennrisse sind zulässig, wenn die rechnerische Rissbreite den vom Druckgefälle h_w/h (Wasserdruckhöhe zu Bauteildicke) abhängigen Grenzwert der WU-Richtlinie einhält; Tabellenwerte am Originaltext prüfen.',
-            quelle: 'DAfStb WU-Richtlinie'
-          }
-        ]}
+        regelwerke={inhalt.daten["DauerhaftigkeitChecklisten.regelwerke"]}
+        literatur={inhalt.daten["DauerhaftigkeitChecklisten.literatur"]} 
+        formeln={inhalt.daten["DauerhaftigkeitChecklisten.formeln"]}
       />
 
     </div>

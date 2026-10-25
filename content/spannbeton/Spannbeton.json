@@ -1,0 +1,315 @@
+{
+  "texte": {
+    "spannbetonBemessungBaustoffkennwerteVors": "Spannbeton: Bemessung, Baustoffkennwerte & Vorspannungsverluste",
+    "dieVorspannungBeaufschlagtDen": "Die Vorspannung beaufschlagt den Betonquerschnitt mit einer künstlichen Druckkraft. Dadurch werden die materialspezifisch schwachen **Beton-Zugspannungen** aus äußeren Einwirkungen gezielt überdrückt. Dieses Modul verbindet mechanische Schnittgrößen-Überlagerungen mit normkonformen Materialkennwerten von hochfestem Beton und hochelastischem Spannstahl inklusive zeitabhängiger Vorspannungsverluste (Kriechen, Schwinden und Stahlrelaxation).",
+    "baustoffkennwerteKriechenSchwindenRelaxa": " Baustoffkennwerte (Kriechen, Schwinden, Relaxation)",
+    "querschnittsRechnerSpannungsverlauf": " Querschnitts-Rechner & Spannungsverlauf",
+    "dauerhaftigkeitKorrosionsschutz": " Dauerhaftigkeit & Korrosionsschutz",
+    "t1QuerschnittEinwirkung": "1. Querschnitt & Einwirkung",
+    "pressenkraftBeiPMax": "Pressenkraft bei σ_p,max = ",
+    "nMmAP": " N/mm² → A_p = ",
+    "litzen06150": " Litzen 0,6″ (150 mm²)",
+    "einwirkungenNachBemessungssituationEc2": "Einwirkungen nach Bemessungssituation (EC2):",
+    "t2BaustoffklassenKennwerte": "2. Baustoffklassen & Kennwerte",
+    "betonfestigkeitsklasseDinEn206": "Betonfestigkeitsklasse (DIN EN 206)",
+    "betonreifeBeimSpannenT": "Betonreife beim Spannen (t₀)",
+    "ec2Kap31": "EC2 Kap. 3.1.2",
+    "minderungsfaktorCcT": "Minderungsfaktor β_cc(t₀):",
+    "druckfestigkeitFCkT": "Druckfestigkeit f_ck(t₀):",
+    "moduliertesECmT": "Moduliertes E_cm(t₀):",
+    "spannstahlGüteAbzDes": "Spannstahl-Güte (abZ des DIBt)",
+    "aktiveMaterialkoeffizienten": "Aktive Materialkoeffizienten:",
+    "betonzugfestigkeitFCtm": "Betonzugfestigkeit f_ctm:",
+    "betonEModulE": "Beton E-Modul E_cm:",
+    "t01GrenzeSpannstahl": "0,1%-Grenze Spannstahl f_p0.1k:",
+    "zugehörigerEModulE": "Zugehöriger E-Modul E_p:",
+    "t3ZeitstandUmweltVerluste": "3. Zeitstand & Umwelt (Verluste)",
+    "betrachteterBetriebszeitpunkt": "Betrachteter Betriebszeitpunkt",
+    "transferKurzzeitT0": "Transfer (Kurzzeit t=0)",
+    "gebrauchsphaseLangzeitT": "Gebrauchsphase (Langzeit t=∞)",
+    "umfeldSzenarioLuftfeuchteRh": "Umfeld-Szenario / Luftfeuchte (RH)",
+    "rh50": "RH = 50 % → φ = ",
+    "trockenesInnenraumUmfeld": "Trockenes Innenraum-Umfeld",
+    "rh80": "RH = 80 % → φ = ",
+    "feuchtesAußenUmfeld": "Feuchtes Außen-Umfeld",
+    "t4SpanngliedReibungsverluste": "4. Spannglied- & Reibungsverluste",
+    "trägerstützweiteL": "Trägerstützweite (L):",
+    "reibungsbeiwertEc2Tab5": "Reibungsbeiwert (µ) [EC2 Tab. 5.1]:",
+    "anzahlNacheinanderGespannterSpannglieder": "Anzahl nacheinander gespannter Spannglieder (n):",
+    "elastischeVerkürzungMitJ": "Elastische Verkürzung mit j = (n−1)/(2n); n = 1 → kein Verlust, da der Beton vor dem Verkeilen verkürzt ist.",
+    "verankerungsschlupfWKeilschlupf": "Verankerungsschlupf (w) [Keilschlupf]:",
+    "druckUndZugspannungsverlaufÜber": "Druck- und Zugspannungsverlauf über die Höhe",
+    "obererRandH2": "Oberer Rand (h/2 = Oben)",
+    "untererRandH2": "Unterer Rand (h/2 = Unten)",
+    "gebrauchstauglichkeitGzgSpannungsbegrenz": "Gebrauchstauglichkeit (GZG): Spannungsbegrenzungen (DIN EN 1992-1-1 Abs. 7.2)",
+    "dinEn19921": "DIN EN 1992-1-1, 7.2",
+    "t1TransferT0": "1. Transfer t₀ (0,60 fck(t₀))",
+    "t2SelteneLast0": "2. Seltene Last (0,60 fck)",
+    "t3QuasiStändig0": "3. Quasi-ständig (0,45 fck)",
+    "t4DekompressionMax100": "4. Dekompression (± max(100 mm; h/10))",
+    "nachweiskriteriumGzg": "Nachweiskriterium (GZG)",
+    "zulässigeSpannungsgrenze": "Zulässige Spannungsgrenze",
+    "relevanteEinwirkungskombination": "Relevante Einwirkungskombination",
+    "aktuellerWertNachweis": "Aktueller Wert & Nachweis",
+    "spannzeitpunktTTransfer": "Spannzeitpunkt t₀ (Transfer)",
+    "überschritten": "✗ Überschritten",
+    "betondruckspannungLängsrisse": "Betondruckspannung (Längsrisse)",
+    "charakteristischPMinftyM": "Charakteristisch: $P_{m\\infty} + M_{char}$ (",
+    "überschritten2": "✗ Überschritten",
+    "betondruckspannungKriechen": "Betondruckspannung (Kriechen)",
+    "quasiStändigPMinfty": "Quasi-ständig: $P_{m\\infty} + M_{perm}$ (",
+    "nichtlinear": "⚠ Nichtlinear",
+    "dekompressionSpanngliedhöheMax100": "Dekompression (Spanngliedhöhe ± max(100 mm; h/10), NA DE)",
+    "sigmaCLe0": "$\\sigma_c \\le 0$ (Druckzone um Kabel)",
+    "okÜberdrückt": "✓ OK (überdrückt)",
+    "zugspannungen": "✗ Zugspannungen!",
+    "betonstahlspannungZustand": "Betonstahlspannung (Zustand)",
+    "zustandIiNachweisIm": "Zustand II – Nachweis im gerissenen Zustand erforderlich (hier nicht abgedeckt)",
+    "zustandIElastischSigma": "✓ Zustand I (elastisch, $\\sigma_u \\le f_{ctm}$)",
+    "spannstahlspannungEndzustandTInfty": "Spannstahlspannung (Endzustand $t=\\infty$)",
+    "überschritten3": "✗ Überschritten",
+    "spezifischeVorspannungsverlusteLossCalcu": "Spezifische Vorspannungsverluste (Loss Calculations)",
+    "rechengangEc2": "Rechengang (EC2)",
+    "nominaleSpannkraftP0": "Nominale Spannkraft P_0 (Vollwert):",
+    "nachSofortverlustenT0": "Nach Sofortverlusten (t = 0):",
+    "endzustandT": "Endzustand (t = ∞):",
+    "effektiverNutzgradImEndzustand": "Effektiver Nutzgrad im Endzustand: ",
+    "betondruckInSpanngliedhöheBeim": "Betondruck in Spanngliedhöhe beim Spannen (P + g₁): ",
+    "itemisierteVerlusttreiber": "Itemisierte Verlusttreiber:",
+    "reibungSpanngliedHüllrohr": "Reibung (Spannglied/Hüllrohr):",
+    "verankerungsschlupfKeileinzug": "Verankerungsschlupf (Keileinzug):",
+    "elastischeSofortverkürzungT0": "Elastische Sofortverkürzung (t=0):",
+    "schwindenBetonKriechen": "Schwinden & Beton-Kriechen:",
+    "stahlrelaxation500000H": "Stahlrelaxation (500 000 h):",
+    "gesamterVerlustanteil": "Gesamter Verlustanteil:",
+    "t1GrundparameterInputs": "1. Grundparameter (Inputs)",
+    "spannungAnDerPresse": "Spannung an der Presse: ",
+    "nachSofortverlusten": "Nach Sofortverlusten: ",
+    "h2aCU": "h₀ = 2A_c/u = ",
+    "wirksameDicke": "Wirksame Dicke: ",
+    "verhältnisEModuln": "Verhältnis E-Moduln: ",
+    "berechneteStahlquerschnittsfläche": "Berechnete Stahlquerschnittsfläche: ",
+    "zCpEP": "z_cp = e_p = ",
+    "exzentrizitätBruttoquerschnitt": "Exzentrizität (Bruttoquerschnitt): ",
+    "t15MechanischeSofortverluste": "1.5 Mechanische Sofortverluste im Spannglied (Reibung & Schlupf)",
+    "reibungNachEc25": "Reibung nach EC2 5.10.5.2 und Keilschlupf nach 5.10.5.3, jeweils im Nachweisschnitt x = L/2 bei einseitigem Spannen.",
+    "t1EXL": "(1 − e^(−μ·(θ·x/L + k·x)), μ = ",
+    "einflusslängeLSetW": "(Einflusslänge l_set = √(w·E_p/p) = ",
+    "summeMechanischeVerluste": "Summe mechanische Verluste: ",
+    "t2ElastischerSofortverlustKurzzeit": "2. Elastischer Sofortverlust (Kurzzeit t=0)",
+    "verkürzungDesBetonsBeim": "Verkürzung des Betons beim Spannen. Spannbett: alle Litzen gleichzeitig (j = 1). Nachträglicher Verbund: n Spannglieder nacheinander, j = (n−1)/(2n) (EC2 5.10.5.1).",
+    "pElJE": "Δσ_p,el = j · E_p · σ_c / E_cm(t₀)",
+    "knKraftverlust": " kN Kraftverlust)",
+    "t3StahlrelaxationFürT": "3. Stahlrelaxation für t = 500 000 h (DIN EN 1992-1-1, 3.3.2)",
+    "reinerViskoelastischerSpannungsabfallDes": "Reiner viskoelastischer Spannungsabfall des Stahldrahtes bei konstanter Dehnung.",
+    "pm0FPk": ", μ = σ_pm0/f_pk = ",
+    "gl3283": "Gl. (3.28)–(3.30): ",
+    "vonPm0": " % von σ_pm0)",
+    "t4LangzeitGesamtverlusteC": "4. Langzeit-Gesamtverluste (c + s + r) nach Eurocode 2",
+    "interaktiveÜberlagerungVonBeton": "Interaktive Überlagerung von Beton-Schwinden, Dauer-Kriechen unter Last und der stahlbezogenen Relaxation.",
+    "pM0MPerm": " (P_m0 + M_perm, Anhang B)",
+    "csEP0": "ε_cs·E_p + 0,8·Δσ_pr + α_p·φ·σ_c,QP",
+    "t1PAP": "1 + α_p·(A_p / A_c) · [1 + (A_c · z_cp²) / I_c] · (1 + 0,8·φ)",
+    "zeitabhängigerSummenverlustCS": "Zeitabhängiger Summenverlust (c+s+r): ",
+    "achtungBetondruckBeimTransfer": "Achtung: Betondruck beim Transfer überschritten!",
+    "inAbwesenheitDesÄußeren": "In Abwesenheit des äußeren Biegemoments (z.B. im unbelasteten Zustand direkt nach dem Spannen) beträgt der Druck am unteren Rand ",
+    "mpaDasÜberschreitetDie": " MPa. Das überschreitet die zulässige Druckspannung von ",
+    "mpa060F": " MPa (0,60·f_ck(t₀)) für ",
+    "imAlterT": " im Alter t₀ = ",
+    "dGefahrVonDruckversagen": " d. Gefahr von Druckversagen, Absplitterung oder massiven unzulässigen Kriechverformungen!",
+    "didaktischeErklärungDerKenngrößen": "Didaktische Erklärung der Kenngrößen:",
+    "physikalischeWirkmechanismenMikrostruktu": "Physikalische Wirkmechanismen, Mikrostrukturen und Formeln von Kriechen, Schwinden und Relaxation.",
+    "zuDenBaustoffkennwerten": " Zu den Baustoffkennwerten ",
+    "schnittprinzipDesVorgespanntenTragwerks": "Schnittprinzip des vorgespannten Tragwerks",
+    "stahlbetonSchlaffBewehrt": "Stahlbeton (schlaff bewehrt)",
+    "unterÄußerenMomentenReißt": "Unter äußeren Momenten reißt die Zugzone (Zustand II). Nur der Bewehrungsstahl übernimmt Zug. Große Verformungen.",
+    "spannbetonVorgespanntÜberdrückt": "Spannbeton (vorgespannt / überdrückt)",
+    "dieExzentrischeVorspannungErzeugt": "Die exzentrische Vorspannung erzeugt eine entgegengesetzte Überhöhung. Der Querschnitt bleibt rissfrei bzw. die Rissbreiten bleiben begrenzt (Zustand I)."
+  },
+  "werte": {
+    "untenH2": "Unten (+h/2)",
+    "vorspannungNAnteil": "Vorspannung (N-Anteil)",
+    "vorspannmomentMPAnteil": "Vorspannmoment (M_p-Anteil)",
+    "eigengewichtMG1Anteil": "Eigengewicht (M_g1-Anteil)",
+    "charakteristischeLastMChar": "Charakteristische Last (M_char-Anteil)",
+    "gesamtspannungTotal": "Gesamtspannung (Total)",
+    "querschnittshöheH": "Querschnittshöhe (h)",
+    "querschnittsbreiteB": "Querschnittsbreite (b)",
+    "pressenkraftP0": "Pressenkraft (P_0)",
+    "exzentrizitätEPNach": "Exzentrizität (e_p) nach unten",
+    "mG1EigengewichtAb": "M_{g1} (Eigengewicht ab t_0)",
+    "mCharCharakteristischSelten": "M_{char} (charakteristisch / selten: g+q)",
+    "spannbettDerKeilschlupfTritt": "Spannbett: Der Keilschlupf tritt an den Widerlagern vor dem Betonieren auf und wird durch Überspannen ausgeglichen – im Bauteil wird er daher nicht angesetzt.",
+    "nachträglicherVerbundErleidetBeim": "Nachträglicher Verbund erleidet beim Loslassen der Presse ca. 4–6 mm Schlupf vor dem mechanischen Verkeilen. Maßgebend ist der Wert der Zulassung/ETA des Spannverfahrens.",
+    "dauerT0Transfer": "Dauer: t = 0 (Transfer)",
+    "dauerTEndzustand": "Dauer: t = ∞ (Endzustand)",
+    "relativeFaserH2": "Relative Faser (h/2)",
+    "beschränkteZugspannungFCtm": "Beschränkte Zugspannung (f_ctm ungerissen).",
+    "komplettÜberdrücktZustandI": "Komplett überdrückt (Zustand I).",
+    "beschränkteZugspannung": "Beschränkte Zugspannung.",
+    "komplettÜberdrücktZustandI2": "Komplett überdrückt (Zustand I).",
+    "ihrRechenwegRandspannungenBeim": "Ihr Rechenweg: Randspannungen beim Spannen (t = 0)",
+    "ihrRechenwegRandspannungenIm": "Ihr Rechenweg: Randspannungen im Endzustand (t = ∞)",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 5.10 und 7.2",
+    "ungerissenerRechteckquerschnittZustandI": "Ungerissener Rechteckquerschnitt (Zustand I), Bruttowerte ohne Spannstahl.",
+    "wirksameVorspannkraft": "Wirksame Vorspannkraft",
+    "spannungenAusDerVorspannung": "Spannungen aus der Vorspannung",
+    "zentrischerAnteilPA": "Zentrischer Anteil −P/A_c und Anteil aus dem Vorspannmoment P · e_p (Zug oben, Druck unten bei Ausmitte nach unten).",
+    "spannungenAusDemEigengewicht": "Spannungen aus dem Eigengewicht",
+    "spannungenAusDerCharakteristischen": "Spannungen aus der charakteristischen Last",
+    "beimSpannenWirktNur": "Beim Spannen wirkt nur das Eigengewicht M_g1.",
+    "imEndzustandWirdDas": "Im Endzustand wird das Moment der charakteristischen (seltenen) Kombination angesetzt.",
+    "randspannungenDruckNegativ": "Randspannungen (Druck negativ)",
+    "eingehalten": "✓ Eingehalten",
+    "längsrissgefahrBeimSpannen": "✗ Längsrissgefahr beim Spannen!",
+    "eingehalten2": "✓ Eingehalten",
+    "längsrissgefahr": "✗ Längsrissgefahr!",
+    "linearesKriechen": "✓ Lineares Kriechen",
+    "nichtlinearesKriechen": "⚠ Nichtlineares Kriechen!",
+    "rissfreiÜberdrückt": "✓ Rissfrei überdrückt",
+    "zugspannungAmKabel": "✗ Zugspannung am Kabel!",
+    "xFeldmitteVomSchlupf": " < x → Feldmitte vom Schlupf nicht betroffen",
+    "verwandteFachmoduleZuSpannbeton": "Verwandte Fachmodule zu Spannbeton & Materialverhalten",
+    "didaktischAbgestimmteModuleZu": "Didaktisch abgestimmte Module zu Betontechnologie, Festigkeitsnachweisen und Tragwerksinstandhaltung",
+    "eModulDruckfestigkeitZugfestigkeit": "E-Modul, Druckfestigkeit, Zugfestigkeit und Spannungs-Dehnungs-Linien nach EC2.",
+    "stahlbetonbauEc2": "Stahlbetonbau (EC2)",
+    "biegebemessungQuerkraftRissbreitenbegren": "Biegebemessung, Querkraft, Rissbreitenbegrenzung und Mindestbewehrung.",
+    "spannstahlHochfesteStähle": "Spannstahl & Hochfeste Stähle",
+    "drahtUndLitzenstähleY1860s7": "Draht- und Litzenstähle (Y1860S7), Spannungs-Dehnungs-Linie, Streckgrenze und Relaxation.",
+    "spannungsrisskorrosionSpanngliedbrüche": "Spannungsrisskorrosion & Spanngliedbrüche",
+    "gefahrenDurchWasserstoffversprödungUnd": "Gefahren durch Wasserstoffversprödung und Depassivierung hochfester Spannstähle.",
+    "stahlbetonSpannbetoninstandsetzung": "Stahlbeton- & Spannbetoninstandsetzung",
+    "zustandsanalyseRissinjektionKathodischer": "Zustandsanalyse, Rissinjektion, kathodischer Korrosionsschutz und Nachverankerung.",
+    "musterrechnungStahlbeton": "Musterrechnung Stahlbeton",
+    "schrittFürSchrittBiegebemessung": "Schritt-für-Schritt-Biegebemessung nach Eurocode 2 mit interaktiven Zahlenbeispielen.",
+    "oktober2026KorrekturpaketSpannbeton": "Oktober 2026 (Korrekturpaket Spannbeton eingearbeitet; fachliche Freigabe durch den Autor ausstehend)",
+    "betonWikiSpannbetonbau": "Beton.wiki: Spannbetonbau",
+    "zementMerkblattH9Spannbeton": "Zement-Merkblatt H9: Spannbeton"
+  },
+  "daten": {
+    "Spannbeton.options.scales.x.title": {
+      "display": true,
+      "text": "Querschnittsspannung [MPa] (Druck -, Zug +)"
+    },
+    "Spannbeton.wikipedia.1": {
+      "title": "Kriechen und Schwinden von Beton"
+    },
+    "Spannbeton.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 + NA/A1:2015-12 (Eurocode 2, bauaufsichtlich eingeführt über MVV TB)"
+      },
+      {
+        "title": "DIN EN 1992-2:2010-12 mit DIN EN 1992-2/NA:2013-04 (Betonbrücken) sowie ZTV-ING Teil 3"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023, 2. Generation; ersetzt formal DIN EN 1992-1-1:2011-01, DIN EN 1992-2 und DIN EN 1992-3 – bauaufsichtlich noch nicht eingeführt)"
+      },
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "Spannstahl: allgemeine bauaufsichtliche Zulassungen (abZ) des DIBt; EN 10138 nur als Entwurf (prEN 10138-1 bis -4), nicht harmonisiert",
+        "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "DIN EN 445:2008-01 / DIN EN 446:2008-01 / DIN EN 447:2017-09 (Einpressmörtel für Spannglieder: Prüfverfahren, Einpressverfahren, Allgemeine Anforderungen)"
+      },
+      {
+        "title": "DIN EN 523:2003-11 (Hüllrohre aus Bandstahl für Spannglieder – Begriffe, Anforderungen und Konformität)"
+      },
+      {
+        "title": "fib Bulletin 75 (2014): Polymer-duct systems for internal bonded post-tensioning",
+        "url": "https://www.fib-international.org/"
+      },
+      {
+        "title": "Spannverfahren: Europäische Technische Bewertungen (ETA) bzw. abZ des jeweiligen Systems",
+        "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "BMVI: Handlungsanweisung Spannungsrisskorrosion (Ankündigungsverhalten) und Nachrechnungsrichtlinie für Straßenbrücken im Bestand",
+        "url": "https://www.bast.de/"
+      },
+      {
+        "title": "DGZfP-Merkblätter B 04 (Ultraschallverfahren, 2018-08) und B 10 (Radarverfahren, 2024-12); DGZfP-Positionspapier Spannstahlbruchortung – Magnetische Verfahren (2017-08)",
+        "url": "https://www.dgzfp.de/"
+      }
+    ],
+    "Spannbeton.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010",
+      "Mehlhorn, G.; Curbach, M. (Hrsg.): Handbuch Brücken. Wiesbaden: Springer Vieweg 2014",
+      "Leonhardt, F. (1980): Vorlesungen über Massivbau - Teil 5: Spannbeton (Springer Verlag)"
+    ],
+    "Spannbeton.formeln": [
+      {
+        "erklaerung": "Zeitliche Entwicklung der Zylinderdruckfestigkeit f_cm(t): s = Zementbeiwert (0,20 für R, 0,25 für N, 0,38 für S), t = Betonalter in Tagen.",
+        "formel": "f_{cm}(t) = \\beta_{cc}(t) \\cdot f_{cm} = \\exp\\left\\{ s \\cdot \\left[1 - \\left(\\frac{28}{t}\\right)^{1/2}\\right] \\right\\} \\cdot f_{cm}",
+        "quelle": "DIN EN 1992-1-1 Gl. (3.1) & (3.2)"
+      },
+      {
+        "erklaerung": "Zeitliche Entwicklung des Elastizitätsmoduls E_cm(t) in Abhängigkeit der erreichten Druckfestigkeit f_cm(t).",
+        "formel": "E_{cm}(t) = \\left(\\frac{f_{cm}(t)}{f_{cm}}\\right)^{0{,}3} \\cdot E_{cm}",
+        "quelle": "DIN EN 1992-1-1 Gl. (3.5)"
+      },
+      {
+        "erklaerung": "Nichtlineare Spannungs-Dehnungs-Linie des Betons unter Druck: η = ε_c / ε_c1, k = 1.05 · E_cm · |ε_c1| / f_cm.",
+        "formel": "\\frac{\\sigma_c}{f_{cm}} = \\frac{k \\cdot \\eta - \\eta^2}{1 + (k - 2) \\cdot \\eta}",
+        "quelle": "DIN EN 1992-1-1 Gl. (3.14)"
+      },
+      {
+        "erklaerung": "Mehraxiale Teilflächenbelastung in der Verankerungszone: A_c0 = Belastungsfläche unter der Ankerplatte, A_c1 = rechnerische Verteilungsfläche.",
+        "formel": "F_{Rdu} = A_{c0} \\cdot f_{cd} \\cdot \\sqrt{\\frac{A_{c1}}{A_{c0}}} \\le 3{,}0 \\cdot f_{cd} \\cdot A_{c0}",
+        "quelle": "DIN EN 1992-1-1 Gl. (6.63)"
+      },
+      {
+        "erklaerung": "Spannung aus zentrischer Vorspannung (Normalkraft): P_eff = Effektive Vorspannkraft [N], A_c = Betonquerschnittsfläche [mm²].",
+        "formel": "\\sigma_{P,N} = \\frac{-P_{eff}}{A_c}",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "erklaerung": "Spannung aus exzentrischer Vorspannung (Biegemoment): e_p = Exzentrizität [mm], I_c = Flächenträgheitsmoment [mm⁴], z = Faserabstand [mm].",
+        "formel": "\\sigma_{P,M}(z) = \\frac{-P_{eff} \\cdot e_p}{I_c} \\cdot z",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "erklaerung": "Elastischer Stauchungsverlust des Betons beim Spannen: Ep = E-Modul Spannstahl, Ecm(t0) = E-Modul des Betons zum Vorspannzeitpunkt t0, σ_cp0 = Betondruckspannung in Spanngliedhöhe.",
+        "formel": "\\Delta\\sigma_{p,el} = \\frac{E_p}{E_{cm}(t_0)} \\cdot \\sigma_{c,p0}",
+        "quelle": "DIN EN 1992-1-1 Gl. (5.44)"
+      },
+      {
+        "erklaerung": "Autogenes Schwinden bei t=∞ als Funktion der charakteristischen Zylinderdruckfestigkeit fck.",
+        "formel": "\\varepsilon_{ca}(\\infty) = 2{,}5 \\cdot (f_{ck} - 10) \\cdot 10^{-6}",
+        "quelle": "DIN EN 1992-1-1 Gl. (3.12)"
+      },
+      {
+        "erklaerung": "Stahlrelaxation nach 1000 Stunden bei 20 °C für Low-Relaxation Litzen (Klasse 2): ρ1000 ≈ 2,5 %, μ = σ_pi / f_pk.",
+        "formel": "\\frac{\\Delta\\sigma_{pr}}{\\sigma_{pi}} = 0{,}66 \\cdot \\rho_{1000} \\cdot e^{9{,}1 \\cdot \\mu} \\cdot \\left(\\frac{t}{1000}\\right)^{0{,}75 \\cdot (1 - \\mu)} \\cdot 10^{-5}",
+        "quelle": "DIN EN 1992-1-1 Gl. (3.29)"
+      },
+      {
+        "erklaerung": "Zeitabhängige Verluste infolge Kriechen (φ), Schwinden (ε_cs) und Relaxation (Δσ_pr); σ_c,QP = Betonspannung in Spanngliedhöhe unter quasi-ständiger Last inkl. Vorspannung, z_cp = Abstand Spannglied–Schwerachse.",
+        "formel": "\\Delta\\sigma_{p,c+s+r} = \\frac{\\varepsilon_{cs} \\cdot E_p + 0{,}8 \\cdot \\Delta\\sigma_{pr} + \\alpha_p \\cdot \\varphi(t,t_0) \\cdot \\sigma_{c,QP}}{1 + \\alpha_p \\cdot \\frac{A_p}{A_c} \\cdot \\left(1 + \\frac{A_c}{I_c} z_{cp}^2\\right) \\cdot \\left[1 + 0{,}8 \\cdot \\varphi(t,t_0)\\right]}",
+        "quelle": "DIN EN 1992-1-1 Gl. (5.46)"
+      },
+      {
+        "erklaerung": "Reibungsverluste im Hüllrohr: μ = Reibungsbeiwert (dimensionslos), θ = Summe der planmäßigen Umlenkwinkel bis x, k = ungewollter Umlenkwinkel je Länge.",
+        "formel": "\\Delta P(x) = P_0 \\cdot \\left(1 - e^{-\\mu \\cdot (\\theta + k \\cdot x)}\\right)",
+        "quelle": "DIN EN 1992-1-1 Gl. (5.45)"
+      },
+      {
+        "erklaerung": "Umlenkkraft einer parabelförmigen Spanngliedführung: P = Vorspannkraft, f = Parabelstich, L = Stützweite.",
+        "formel": "u(x) = \\frac{8 \\cdot P \\cdot f}{L^2}",
+        "quelle": "F. Leonhardt (Spannbeton)"
+      },
+      {
+        "erklaerung": "Maximal zulässige Vorspannkraft beim Spannen an der Presse: f_pk = Zugfestigkeit, f_p0.1k = 0,1%-Dehngrenze.",
+        "formel": "\\sigma_{p,max} = \\min\\left(0{,}80 \\cdot f_{pk}; \\; 0{,}90 \\cdot f_{p0{,}1k}\\right)",
+        "quelle": "DIN EN 1992-1-1 Gl. (5.41)"
+      },
+      {
+        "erklaerung": "Maximal zulässige Spannung im Spannstahl unmittelbar nach dem Verankern (Transfer t0).",
+        "formel": "\\sigma_{p,m0} = \\min\\left(0{,}75 \\cdot f_{pk}; \\; 0{,}85 \\cdot f_{p0{,}1k}\\right)",
+        "quelle": "DIN EN 1992-1-1 Gl. (5.43)"
+      }
+    ]
+  }
+}

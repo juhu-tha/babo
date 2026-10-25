@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/stahlbetoninstandhaltung/ChloridrechnerTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ChloridrechnerTabProps {
   bauteilAlter: number;
@@ -30,17 +32,10 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
       <div className="bg-white border-y border-r border-l-4 border-amber-600 border-home-grau/20 p-5 rounded-xl shadow-xs">
         <div className="flex items-center justify-between pb-2 border-b border-home-grau/20">
           <h3 className="font-bold text-amber-800 flex items-center gap-2 text-base">
-            <Calculator size={20} />
-            Chloriddiffusion (Fick II) &amp; Kathodischer Korrosionsschutz (DIN EN ISO 12696)
-          </h3>
-          <span className="text-xs font-mono font-bold text-slate-500 bg-off-white px-2.5 py-1 rounded-lg border border-home-grau/20">
-            Prinzip R vs. Prinzip K (KKS)
-          </span>
+            <Calculator size={20} /><MdText text={inhalt.texte.chloriddiffusionFickIiKathodischer} /></h3>
+          <span className="text-xs font-mono font-bold text-slate-500 bg-off-white px-2.5 py-1 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.prinzipRVsPrinzip} /></span>
         </div>
-        <p className="text-text-main/80 text-xs mt-3 leading-relaxed">
-          Tausalze und Meerwasser transportieren Chloridionen (<FormulaText text="Cl^-" />) diffusiv durch die Betondeckung. 
-          Erreicht die Chloridfront die Bewehrungsebene mit einer Konzentration <FormulaText text="C \ge 0.40 - 0.50\,\text{M.-\%}" /> (bezogen auf Zementmasse), wird die Passivschicht lokal zerstört &ndash; es droht <strong>rapider Lochfraß ohne vorherige Risswarnung</strong>.
-        </p>
+        <p className="text-text-main/80 text-xs mt-3 leading-relaxed"><MdText text={inhalt.texte.tausalzeUndMeerwasserTransportieren} /><FormulaText text="Cl^-" /><MdText text={inhalt.texte.diffusivDurchDieBetondeckung} /><FormulaText text="C \ge 0.40 - 0.50\,\text{M.-\%}" /><MdText text={inhalt.texte.bezogenAufZementmasseWird} /></p>
       </div>
 
       {/* Simulator Grid */}
@@ -52,16 +47,15 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
             <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
               <Sliders size={14} className="text-amber-700" /> Diffusions-Parameter
             </span>
-            <span className="text-[10px] text-slate-500 font-mono">Ficksches Gesetz</span>
+            <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.fickschesGesetz} /></span>
           </div>
 
           {/* Cs Input */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">Oberflächenchlorid (<FormulaText text="C_s" />):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.oberflächenchlorid} /><FormulaText text="C_s" />):</label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                {formatDeZahl(chloridCs, 2)} M.-% / Zement
-              </span>
+                {formatDeZahl(chloridCs, 2)}<MdText text={inhalt.texte.mZement} /></span>
             </div>
             <input
               type="range"
@@ -72,16 +66,15 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               onChange={(e) => setChloridCs(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
-            <span className="text-[10px] text-slate-400 block">Tausalz-Sprühnebel in Parkhaus oder Kappe</span>
+            <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.tausalzSprühnebelInParkhaus} /></span>
           </div>
 
           {/* D_app Input */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">Diffusionskoeffizient (<FormulaText text="D_{\text{app}}" />):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.diffusionskoeffizient} /><FormulaText text="D_{\text{app}}" />):</label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                {formatDeZahl(diffD, 1)} · 10⁻¹² m²/s
-              </span>
+                {formatDeZahl(diffD, 1)}<MdText text={inhalt.texte.t10MS} /></span>
             </div>
             <input
               type="range"
@@ -92,13 +85,13 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               onChange={(e) => setDiffD(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
-            <span className="text-[10px] text-slate-400 block">Dichter Beton w/z ≤ 0,45: ~1,0; poröser Beton: &gt; 3,0</span>
+            <span className="text-[10px] text-slate-400 block"><MdText text={inhalt.texte.dichterBetonWZ} /></span>
           </div>
 
           {/* Alter t Input */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">Bauteilalter / Expositionsdauer (<FormulaText text="t" />):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.bauteilalterExpositionsdauer} /><FormulaText text="t" />):</label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
                 {formatDeWert(bauteilAlter)} Jahre
               </span>
@@ -117,7 +110,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
           {/* Betondeckung c Input */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">Betondeckung (<FormulaText text="c_{\text{nom}}" />):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.betondeckung} /><FormulaText text="c_{\text{nom}}" />):</label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
                 {formatDeWert(betondeckung)} mm
               </span>
@@ -149,15 +142,13 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               )}
               <span>
                 {chloridStats.rebarStatus === 'critical' 
-                  ? 'Bewehrungsebene depassiviert!' 
+                  ? inhalt.werte.bewehrungsebeneDepassiviert 
                   : chloridStats.rebarStatus === 'warning'
-                    ? 'Kritischer Schwellenbereich!'
-                    : 'Bewehrung noch passiv geschützt'}
+                    ? inhalt.werte.kritischerSchwellenbereich
+                    : inhalt.werte.bewehrungNochPassivGeschützt}
               </span>
             </div>
-            <p className="text-[11px]">
-              Chloridgehalt bei x = {formatDeWert(betondeckung)} mm: <strong>{formatDeZahl(chloridStats.cAtRebar, 2)} M.-%</strong> (Grenzwert: 0,50 M.-%).
-            </p>
+            <p className="text-[11px]"><MdText text={inhalt.texte.chloridgehaltBeiX} />{formatDeWert(betondeckung)} mm: <strong>{formatDeZahl(chloridStats.cAtRebar, 2)} M.-%</strong><MdText text={inhalt.texte.grenzwert050M} /></p>
           </div>
         </div>
 
@@ -168,11 +159,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-xs flex flex-col gap-3">
             <div className="flex items-center justify-between pb-2 border-b border-home-grau/20">
               <h4 className="font-bold text-slate-900 text-xs flex items-center gap-1.5 font-sans">
-                <TrendingUp size={15} className="text-amber-600" /> Berechnetes Chlorid-Tiefenprofil C(x)
-              </h4>
-              <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                Fick II Diffusion
-              </span>
+                <TrendingUp size={15} className="text-amber-600" /><MdText text={inhalt.texte.berechnetesChloridTiefenprofilC} /></h4>
+              <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded"><MdText text={inhalt.texte.fickIiDiffusion} /></span>
             </div>
 
             <div className="w-full bg-slate-50 border border-home-grau/25 rounded-xl p-3 flex flex-col items-center justify-center">
@@ -253,44 +241,33 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
             <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/30 space-y-2">
               <div className="flex items-center gap-1.5 font-bold text-slate-900 border-b border-home-grau/20 pb-1.5">
                 <Wrench size={16} className="text-amber-700" />
-                <span>Option A: Prinzip R (HDW-Betonabtrag)</span>
+                <span><MdText text={inhalt.texte.optionAPrinzipR} /></span>
               </div>
-              <p className="text-slate-700 leading-relaxed text-[11px]">
-                Konventioneller vollständiger Abtrag des Betons mit <FormulaText text="C \ge 0.50\,\text{M.-\%}" />.
+              <p className="text-slate-700 leading-relaxed text-[11px]"><MdText text={inhalt.texte.konventionellerVollständigerAbtragDes} /><FormulaText text="C \ge 0.50\,\text{M.-\%}" />.
               </p>
               <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] space-y-1">
-                <div>
-                  Erforderliche Abtragstiefe: <strong className="text-slate-900 font-mono">{formatDeWert(chloridStats.erfAbtrag)} mm</strong>
+                <div><MdText text={inhalt.texte.erforderlicheAbtragstiefe} /><strong className="text-slate-900 font-mono">{formatDeWert(chloridStats.erfAbtrag)} mm</strong>
                 </div>
                 <div className="text-[10px] text-slate-500">
-                  (Depassivierungstiefe {formatDeZahl(chloridStats.depassivatedDepth, 0)} mm + 15 mm Hinterstemmung Bewehrung).
-                </div>
+                  (Depassivierungstiefe {formatDeZahl(chloridStats.depassivatedDepth, 0)}<MdText text={inhalt.texte.mm15MmHinterstemmung} /></div>
               </div>
-              <span className="text-[10px] text-rose-700 block font-medium">
-                &bull; Hoher Substanzverlust, Sprießungsaufwand, Baulärm &amp; Erschütterung.
-              </span>
+              <span className="text-[10px] text-rose-700 block font-medium"><MdText text={inhalt.texte.hoherSubstanzverlustSprießungsaufwandBau} /></span>
             </div>
 
             {/* Option B: Prinzip K (KKS) */}
             <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-300 space-y-2">
               <div className="flex items-center gap-1.5 font-bold text-emerald-900 border-b border-emerald-200 pb-1.5">
                 <Zap size={16} className="text-emerald-700" />
-                <span>Option B: Prinzip K (KKS nach ISO 12696)</span>
+                <span><MdText text={inhalt.texte.optionBPrinzipK} /></span>
               </div>
-              <p className="text-emerald-900 leading-relaxed text-[11px]">
-                Kathodischer Korrosionsschutz mittels Fremdstrom-Titananoden (MMO-Bänder).
-              </p>
+              <p className="text-emerald-900 leading-relaxed text-[11px]"><MdText text={inhalt.texte.kathodischerKorrosionsschutzMittelsFremd} /></p>
               <div className="p-2.5 bg-white rounded-lg border border-emerald-200 text-[11px] space-y-1">
                 <div>
                   100-mV-Depolarisationskriterium: <strong className="text-emerald-800 font-mono">&Delta;E ≥ 100 mV</strong>
                 </div>
-                <div className="text-[10px] text-slate-500">
-                  Chloridbelasteter Beton verbleibt im Bauteil; Schutzstrom unterbindet Lochfraß.
-                </div>
+                <div className="text-[10px] text-slate-500"><MdText text={inhalt.texte.chloridbelasteterBetonVerbleibtIm} /></div>
               </div>
-              <span className="text-[10px] text-emerald-800 block font-bold">
-                &bull; Ca. 70 % weniger Baustellenlärm &amp; CO₂; kein statischer Festigkeitsverlust.
-              </span>
+              <span className="text-[10px] text-emerald-800 block font-bold"><MdText text={inhalt.texte.ca70WenigerBaustellenlärm} /></span>
             </div>
 
           </div>

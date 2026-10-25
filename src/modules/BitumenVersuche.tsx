@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Thermometer, ArrowDownToLine, BookOpen, Activity, Box } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import inhalt from '@/content/bitumenversuche/BitumenVersuche.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type BitumenSorte = '160/220' | '70/100' | '50/70' | '30/45' | '20/30' | 'PmB 25/55-55';
 
@@ -76,15 +78,10 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Box className="text-shiraz" /> Bitumen &amp; Bitumenprüfung
-        </h2>
+          <Box className="text-shiraz" /><MdText text={inhalt.texte.bitumenBitumenprüfung} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Standardisierte Prüfverfahren zur Bestimmung der Konsistenz von Bitumen nach DIN EN 12591 und DIN EN 14023. 
-            Die Nadelpenetration beschreibt die Härte bei mittleren Gebrauchstemperaturen (25 °C), 
-            während der Erweichungspunkt Ring und Kugel (EP RuK) das Verhalten bei hohen Sommertemperaturen charakterisiert.
-          </p>
+          <p><MdText text={inhalt.texte.standardisiertePrüfverfahrenZurBestimmun} /></p>
         </div>
 
         {/* Tab-Navigation */}
@@ -107,8 +104,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             }`}
             onClick={() => setActiveTab('versuche')}
           >
-            <Activity size={16} /> Virtuelle Versuche (Penetration &amp; EP RuK)
-          </button>
+            <Activity size={16} /><MdText text={inhalt.texte.virtuelleVersuchePenetrationEp} /></button>
         </div>
 
         {activeTab === 'steckbrief' && (
@@ -122,11 +118,11 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-              <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">1. Konfiguration</h3>
+              <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.t1Konfiguration} /></h3>
             
             <div className="space-y-3">
-              <label className="text-sm font-bold text-text-main">Bitumensorte wählen</label>
-              <select aria-label="Bitumensorte wählen" 
+              <label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.bitumensorteWählen} /></label>
+              <select aria-label={inhalt.werte.bitumensorteWählen} 
                 className="w-full p-2 border border-home-grau rounded-md bg-off-white text-sm focus:outline-none focus:border-shiraz"
                 value={sorte}
                 onChange={(e) => setSorte(e.target.value as BitumenSorte)}
@@ -193,7 +189,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-full min-h-[400px]">
              <div className="flex justify-between items-center mb-6 border-b border-home-grau/30 pb-4">
-               <h3 className="text-lg font-bold text-text-main">2. Durchführung ({activeTest === 'penetration' ? 'DIN EN 1426' : 'DIN EN 1427'})</h3>
+               <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.t2Durchführung} />{activeTest === 'penetration' ? 'DIN EN 1426' : 'DIN EN 1427'})</h3>
                <div className="flex items-center gap-2">
                  <span className="text-sm font-medium text-home-grau">Status:</span>
                  <span className={`text-sm font-bold px-2 py-1 rounded ${
@@ -303,29 +299,27 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                        {activeTest === 'penetration' ? (
                          <div>
                            <div className="text-3xl font-bold text-emerald-700">{formatDeWert(currentProps.pen)} <span className="text-sm font-normal text-emerald-800">1/10 mm</span></div>
-                           <p className="text-sm text-emerald-800 mt-2">Die Nadel ist standardgemäß {formatDeWert(currentProps.pen / 10)} mm in die Bitumenprobe eingedrungen.</p>
+                           <p className="text-sm text-emerald-800 mt-2"><MdText text={inhalt.texte.dieNadelIstStandardgemäß} />{formatDeWert(currentProps.pen / 10)}<MdText text={inhalt.texte.mmInDieBitumenprobe} /></p>
                          </div>
                        ) : (
                          <div>
                            <div className="text-3xl font-bold text-emerald-700">{formatDeZahl(currentProps.ruk, 1)} <span className="text-sm font-normal text-emerald-800">°C</span></div>
-                           <p className="text-sm text-emerald-800 mt-2">Bei dieser Badtemperatur ist die Kugel mit dem erweichten Bitumen um 25,0 mm bis zur Bodenplatte durchgesunken.</p>
+                           <p className="text-sm text-emerald-800 mt-2"><MdText text={inhalt.texte.beiDieserBadtemperaturIst} /></p>
                          </div>
                        )}
                      </div>
                      <div className="bg-off-white border border-home-grau/30 p-4 rounded-xl">
-                       <h4 className="font-bold text-sm text-text-main mb-1">Bedeutung für die Praxis</h4>
+                       <h4 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.bedeutungFürDiePraxis} /></h4>
                        <p className="text-sm text-text-main/80">
                          {activeTest === 'penetration' 
-                           ? `Geringe Penetrationswerte (z.B. 20/30) deuten auf ein hartes Bitumen hin (hoher Verformungswiderstand). Hohe Werte (z.B. 160/220) deuten auf ein weiches Bitumen hin (besser für kalte Regionen zur Vermeidung von Kälterissen).`
-                           : `Ein hoher Erweichungspunkt (z.B. bei PmB oder harten Bitumen) bedeutet eine hohe Standfestigkeit bei sommerlichen Temperaturen, was die Gefahr von Spurrinnenbildung reduziert.`
+                           ? inhalt.werte.geringePenetrationswerteZB
+                           : inhalt.werte.einHoherErweichungspunktZ
                          }
                        </p>
                      </div>
                    </div>
                  ) : (
-                   <div className="text-sm text-home-grau text-center p-8">
-                     Starten Sie den Versuch mit „Start“.
-                   </div>
+                   <div className="text-sm text-home-grau text-center p-8"><MdText text={inhalt.texte.startenSieDenVersuch} /></div>
                  )}
                </div>
              </div>
@@ -340,40 +334,11 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
           wikipedia={[
             { title: 'Bitumen', url: 'https://de.wikipedia.org/wiki/Bitumen' },
             { title: 'Nadelpenetration', url: 'https://de.wikipedia.org/wiki/Nadelpenetration' },
-            { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_RuK' }
+            { title: inhalt.werte.erweichungspunktRuk, url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_RuK' }
           ]}
-          regelwerke={[
-            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)' },
-            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)' },
-            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)' },
-            { title: 'DIN EN 14023 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifizierung von polymermodifizierten Bitumen)' }
-          ]}
-          literatur={[
-            'FGSV (Hrsg.): Technische Prüfvorschriften für Asphalt (TP Asphalt-StB). Köln: FGSV Verlag (Teile in jeweils gültiger Fassung)',
-            'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-          ]}
-          formeln={[
-            {
-              formel: 'I_P = \\frac{20 \\cdot T_{\\text{R\\&K}} + 500 \\cdot \\lg(\\text{Pen}) - 1952}{T_{\\text{R\\&K}} - 50 \\cdot \\lg(\\text{Pen}) + 120}',
-              erklaerung: 'Pfeiffer-van-Doormaal-Penetrationsindex (Ip): Kennzeichnet die Temperaturempfindlichkeit von Bitumen (Straßenbaubitumen etwa −1,5 bis +1; polymermodifizierte Bitumen meist höher).',
-              quelle: 'DIN EN 12591 Anhang A'
-            },
-            {
-              formel: '\\text{Pen} = \\frac{s}{0{,}1\\,\\text{mm}}',
-              erklaerung: 'Nadelpenetration nach DIN EN 1426: Eindringtiefe einer genormten Prüfnadel (100 g Belastung, 5 s Prüfdauer, 25 °C Prüftemperatur) in Zehntelmillimetern.',
-              quelle: 'DIN EN 1426'
-            },
-            {
-              formel: 'T_{\\text{R\\&K}} = T \\quad \\text{bei} \\quad \\Delta h = 25{,}0\\,\\text{mm}',
-              erklaerung: 'Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur (Aufheizrate 5 K/min), bei der die Stahlkugel mit dem erweichten Bitumen aus dem Ring 25,0 mm bis zur Bodenplatte durchgesunken ist.',
-              quelle: 'DIN EN 1427'
-            },
-            {
-              formel: '\\lg(a_T) = \\frac{-C_1 \\cdot (T - T_s)}{C_2 + (T - T_s)}',
-              erklaerung: 'Williams-Landel-Ferry-Gleichung (WLF): Beschreibt die Temperatur-Zeit-Verschiebung (Verschiebungsfaktor a_T) viskoelastischer Stoffe wie Bitumen (Annahme thermorheologisch einfachen Verhaltens).',
-              quelle: 'Williams, Landel, Ferry (1955)'
-            }
-          ]}
+          regelwerke={inhalt.daten["BitumenVersuche.regelwerke"]}
+          literatur={inhalt.daten["BitumenVersuche.literatur"]}
+          formeln={inhalt.daten["BitumenVersuche.formeln"]}
         />
       )}
     </div>

@@ -19,7 +19,11 @@ const dateien = (fs.readdirSync('src', { recursive: true }) as string[])
   .filter(f => /\.(tsx?|json)$/.test(f))
   .filter(f => !f.includes(`${path.sep}ki${path.sep}`) && !f.endsWith('digitalesTasks.ts'));
 
-for (const rel of dateien) {
+// ausgelagerte Fachtexte (AP 5.3) unter content/ zählen mit
+const inhalte = (fs.existsSync('content') ? fs.readdirSync('content', { recursive: true }) as string[] : [])
+  .filter(f => f.endsWith('.json') && !f.startsWith(`ki${path.sep}`))
+  .map(f => path.join('..', 'content', f));
+for (const rel of [...dateien, ...inhalte]) {
   const zeilen = fs.readFileSync(path.join('src', rel), 'utf8').split('\n');
   zeilen.forEach((zeile, i) => {
     if (/^\s*\/\//.test(zeile)) return;
@@ -47,4 +51,4 @@ if (fehler.length) {
   for (const f of fehler) console.error(`FAIL: ${f}`);
   process.exit(1);
 }
-console.log(`OK: ${dateien.length} Dateien, ${quiz.length} Quizfragen ohne Befund`);
+console.log(`OK: ${dateien.length + inhalte.length} Dateien, ${quiz.length} Quizfragen ohne Befund`);

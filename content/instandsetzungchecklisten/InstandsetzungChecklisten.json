@@ -1,0 +1,243 @@
+{
+  "texte": {
+    "interaktiveInstandsetzungsChecklistenQua": "Interaktive Instandsetzungs-Checklisten & Qualitätssicherung",
+    "baustellenprotokollNachTrInstandhaltung": "Baustellenprotokoll nach TR Instandhaltung (DIBt), DIN EN 1504-10, ZTV-ING und SIVV-Richtlinien",
+    "druckenPdf": " Drucken / PDF",
+    "allesLeeren": " Alles leeren",
+    "gesamtfortschrittInstandsetzung": "Gesamtfortschritt Instandsetzung:",
+    "prüfpunkten": " Prüfpunkten (",
+    "kritischePunkte": "Kritische Punkte: ",
+    "nurZwingend": "Nur Zwingend",
+    "phaseAbhaken": " Phase abhaken",
+    "punktenErfüllt": " Punkten erfüllt",
+    "keinePrüfpunkteFürDie": "Keine Prüfpunkte für die gewählten Filterkriterien gefunden.",
+    "toleranzSollwert": "**Toleranz / Sollwert:** "
+  },
+  "werte": {
+    "t1VoruntersuchungSkpPlanungskonzept": "1. Voruntersuchung & SKP-Planungskonzept",
+    "diagnostikNachweisDerStandsicherheit": "Diagnostik, Nachweis der Standsicherheit und Festlegung der Instandsetzungsprinzipien.",
+    "zertifiziertenSachkundigenPlanerSkp": "Zertifizierten Sachkundigen Planer (SKP) bestellen",
+    "beiStandsicherheitsrelevantenBetoninstan": "Bei standsicherheitsrelevanten Betoninstandsetzungen schreibt die TR Instandhaltung (DIBt / MVV TB) die Beauftragung eines nachgewiesen fachkundigen Planers zwingend vor.",
+    "trInstandhaltungTeil1": "TR Instandhaltung Teil 1 / MVV TB",
+    "zertifikatNachAusbildungsbeiratSkp": "Zertifikat nach Ausbildungsbeirat SKP / GUEP",
+    "karbonatisierungstiefeMitPhenolphthalein": "Karbonatisierungstiefe mit Phenolphthalein messen",
+    "bruchflächeAmBohrkernOder": "Bruchfläche am Bohrkern oder Meißelausbruch mit 1%iger alkoholischer Phenolphthalein-Lösung besprühen. Farbwechsel zu Violett zeigt unkarbonatisierten Beton (pH > 9,0).",
+    "dinEn14630": "DIN EN 14630",
+    "cNomDK": "c_nom - d_k >= 10 mm Restdeckung",
+    "chloridTiefenstufenprofilImLabor": "Chlorid-Tiefenstufenprofil im Labor ermitteln",
+    "trockenbohrmehlentnahmeInTiefenstufen0": "Trockenbohrmehlentnahme in Tiefenstufen (0-10 mm, 10-20 mm, 20-30 mm etc.) und potentiometrische Titration des säurelöslichen Chlorids im Labor.",
+    "dinEn14629Dafstb": "DIN EN 14629 / DAfStb-Heft 510",
+    "cKrit050": "C_krit <= 0,50 M.-% / Zement (Normalbeton) bzw. 0,20 M.-% (Spannbeton)",
+    "abreißfestigkeitDesAltbetonsPrüfen": "Abreißfestigkeit des Altbetons prüfen",
+    "haftzugprüfungAnRepräsentativenVorbereit": "Haftzugprüfung an repräsentativen, vorbereiteten Stellen durchführen (Kernbohrung 50 mm Durchmesser).",
+    "mittelwert15N": "Mittelwert >= 1,5 N/mm²; kleinster Einzelwert >= 1,0 N/mm²",
+    "statischeZwischenzuständeAbstützungNachw": "Statische Zwischenzustände & Abstützung nachweisen",
+    "tragwerksplanerischeFreigabeFürDen": "Tragwerksplanerische Freigabe für den Bauteilquerschnitt unter Berücksichtigung des temporären Betonabtrags (HDW). Ggf. Einbau hydraulischer Schwerlastsprieße.",
+    "dinEn19921": "DIN EN 1992-1-1 / DIN EN 1504-10",
+    "volleLastabtragungImZwischenzustand": "Volle Lastabtragung im Zwischenzustand gesichert",
+    "instandsetzungsprinzipFestlegenDinEn": "Instandsetzungsprinzip festlegen (DIN EN 1504-9; früher Rili-SIB W, C, R, K)",
+    "eindeutigeZuordnungDesKonzepts": "Eindeutige Zuordnung des Konzepts zu den Prinzipien der DIN EN 1504-9 bzw. TR Instandhaltung (z.B. Prinzip R bei Carbonatisierung, Prinzip K/KKS bei Chloriden).",
+    "dinEn15049": "DIN EN 1504-9 / TR Instandhaltung",
+    "eindeutigeDokumentationImInstandsetzungs": "Eindeutige Dokumentation im Instandsetzungsplan",
+    "t2UntergrundvorbereitungBewehrungsentrost": "2. Untergrundvorbereitung & Bewehrungsentrostung",
+    "vollständigerSchadensabtragFreilegungDer": "Vollständiger Schadensabtrag, Freilegung der Bewehrung und Verbundsicherung.",
+    "geschädigtenBetonMitHdw": "Geschädigten Beton mit HDW abtragen",
+    "hochdruckwasserstrahlenMit1000": "Hochdruckwasserstrahlen mit 1.000 bis 2.000 bar bis zum gesunden Kernbeton. Keine Mikrorissbildung durch Meißelschläge im Restgefüge.",
+    "ztvIngTeil3": "ZTV-ING Teil 3 / TR Instandhaltung",
+    "vollständigeEntfernungDesKarbonatisierte": "Vollständige Entfernung des karbonatisierten/chloridbelasteten Betons",
+    "bewehrungRundumFreilegenHinterstemmung": "Bewehrung rundum freilegen (Hinterstemmung)",
+    "korrodiertenBewehrungsstahlSoweitFreileg": "Korrodierten Bewehrungsstahl soweit freilegen, dass der Reprofilierungsmörtel die Stäbe vollflächig umschließen kann.",
+    "trInstandhaltungDinEn": "TR Instandhaltung / DIN EN 1504-10",
+    "mindestens15MmLichter": "Mindestens 15 mm lichter Abstand hinter dem Bewehrungsstab",
+    "bewehrungsstahlMetallischBlankEntrosten": "Bewehrungsstahl metallisch blank entrosten",
+    "strahlenMitFestenStrahlmitteln": "Strahlen mit festen Strahlmitteln auf den normativen Reinheitsgrad. Zunder, Rostnarben und Chloridnester restlos entfernen.",
+    "dinEnIso8501": "DIN EN ISO 8501-1 / ISO 12944-4",
+    "reinheitsgradSa2Sauber": "Reinheitsgrad Sa 2 ½ (sauber, schattenfrei)",
+    "aktivenKorrosionsschutzAufBewehrung": "Aktiven Korrosionsschutz auf Bewehrung applizieren",
+    "unmittelbarNachDemStrahlen": "Unmittelbar nach dem Strahlen (max. 2–4 Stunden, vor Einsetzen von Flugrost!) zementgebundene oder epoxidharzmodifizierte Schutzschicht in 2 Lagen auftragen.",
+    "dinEn15047": "DIN EN 1504-7",
+    "lückenloseSchichtOhneFehlstellen": "Lückenlose Schicht ohne Fehlstellen (min. 2x Auftrag)",
+    "betonuntergrundVornässenMattfeuchte": "Betonuntergrund vornässen (Mattfeuchte)",
+    "mindestens2Bis4": "Mindestens 2 bis 4 Stunden vor dem Mörtelauftrag intensiv wässern. Unmittelbar vor der Applikation darf die Oberfläche mattfeucht sein, jedoch kein stehendes Wasser aufweisen.",
+    "dinEn150410": "DIN EN 1504-10 / ZTV-ING",
+    "mattfeuchtKeineGlanzstellenOder": "Mattfeucht, keine Glanzstellen oder Wasserfilme",
+    "t3MörtelapplikationReprofilierungPcc": "3. Mörtelapplikation & Reprofilierung (PCC/SPCC)",
+    "fachgerechtesMischenNassIn": "Fachgerechtes Mischen, Nass-in-Nass-Verarbeitung und Schwindriss-Vermeidung.",
+    "klimatischeEinbaubedingungenPrüfen": "Klimatische Einbaubedingungen prüfen",
+    "luftUndBauteiltemperaturSowie": "Luft- und Bauteiltemperatur sowie relative Feuchte messen. Keine Verarbeitung bei Frost, drohendem Regen oder starker direkter Sonneneinstrahlung.",
+    "dinEn1504102": "DIN EN 1504-10 / Herstellerdatenblatt",
+    "bauteiltemperatur5CBis": "Bauteiltemperatur >= +5 °C bis +30 °C; Taupunktabstand >= 3 K",
+    "haftbrückeFrischInFrisch": "Haftbrücke frisch-in-frisch einarbeiten",
+    "mineralischeOderKunststoffmodifizierteHa": "Mineralische oder kunststoffmodifizierte Haftbrücke mit harter Bürste intensiv in den mattfeuchten Betonuntergrund einmassieren. Nicht antrocknen lassen!",
+    "trInstandhaltungDinEn2": "TR Instandhaltung / DIN EN 1504-3",
+    "nassInNassAuftrag": "Nass-in-Nass-Auftrag des Reparaturmörtels (vor Filmverfilmung)",
+    "exaktesWasserMörtelVerhältnis": "Exaktes Wasser-Mörtel-Verhältnis & Zwangsmischer",
+    "mischwasserMitGeeichtemMessbecher": "Mischwasser mit geeichtem Messbecher dosieren. Verwendung von Zwangsmischern oder Doppelquirlen; Mischzeit mind. 3 Minuten einhalten.",
+    "dinEn15043": "DIN EN 1504-3 / DBV-Merkblatt",
+    "wasserzugabeExaktImHerstellergrenzbereic": "Wasserzugabe exakt im Herstellergrenzbereich (+- 2 %)",
+    "schichtdickenbegrenzungJeArbeitsgangEinh": "Schichtdickenbegrenzung je Arbeitsgang einhalten",
+    "maximaleSchichtdickeJeMörtellage": "Maximale Schichtdicke je Mörtellage beachten, um Eigenspannungen und Absacken zu verhindern. Bei Mehlagenauftrag vorherige Lage aufrauen.",
+    "dinEn150432": "DIN EN 1504-3 / ZTV-ING",
+    "pccMeistMax20": "PCC meist max. 20-40 mm je Lage; SPCC bis 60 mm",
+    "nachbehandlungSofortBeginnenSchwindschut": "Nachbehandlung sofort beginnen (Schwindschutz)",
+    "unmittelbarNachDemGlätten": "Unmittelbar nach dem Glätten/Abreiben vor Wind und Sonne schützen. Abdecken mit PE-Folien oder feuchten Jutetüchern für mindestens 5 bis 7 Tage.",
+    "dinEn13670Din": "DIN EN 13670 / DIN EN 1504-10",
+    "mindestens5TageFeuchte": "Mindestens 5 Tage feuchte Nachbehandlung (7 Tage bei Kälte)",
+    "t4OberflächenschutzOsRissinjektion": "4. Oberflächenschutz (OS) & Rissinjektion",
+    "abdichtendeSchutzschichtenRissüberbrücku": "Abdichtende Schutzschichten, Rissüberbrückung und Füllgüter nach DIN EN 1504-5.",
+    "restfeuchteDesBetonuntergrundsMessen": "Restfeuchte des Betonuntergrunds messen",
+    "vorDemAuftragVon": "Vor dem Auftrag von Reaktionsharzbeschichtungen (OS 8, OS 11): Restfeuchte mit CM-Gerät (Calciumcarbid-Methode) oder Darrprobe bestimmen.",
+    "din185604Din": "DIN 18560-4 / DIN EN 1504-2",
+    "restfeuchte40Cm": "Restfeuchte <= 4,0 CM-% (epoxidharztauglicher Untergrund)",
+    "taupunktabstandFürBeschichtungenKontroll": "Taupunktabstand für Beschichtungen kontrollieren",
+    "oberflächentemperaturMitInfrarotthermome": "Oberflächentemperatur mit Infrarotthermometer und Luftklima mit Hygrometer messen. Die Stahloberfläche/Betonoberfläche muss wärmer als der Taupunkt sein.",
+    "dinEnIso12944": "DIN EN ISO 12944-7 / DIN EN 1504-10",
+    "tOberflaecheTTaupunkt": "T_oberflaeche >= T_taupunkt + 3 Kelvin; rel. Feuchte <= 85 %",
+    "trockenschichtdickeDftDerOs": "Trockenschichtdicke (DFT) der OS-Schicht prüfen",
+    "schichtdickenmessungKeilförmigerSchnittO": "Schichtdickenmessung (keilförmiger Schnitt oder Ultraschallmessung). Anwendung des 80/20-Kriteriums nach ISO 12944 bzw. DIN EN 1504-2.",
+    "dinEnIso2808": "DIN EN ISO 2808 / DIN V 18026",
+    "keinEinzelwert80Der": "Kein Einzelwert < 80 % der Nenndicke; Mittelwert >= Sollwert",
+    "rissinjektionRissursacheFüllgutAbstimmen": "Rissinjektion: Rissursache & Füllgut abstimmen",
+    "ruhendeTrennrisseMitEpoxidharz": "Ruhende Trennrisse mit Epoxidharz (Klasse F, kraftschlüssig), dynamische Risse mit Polyurethan (Klasse D, dehnfähig) verpressen.",
+    "dinEn15045": "DIN EN 1504-5 / ZTV-ING",
+    "fH30": "f_h >= 3,0 MPa bei Kraftschluss; Bruchdehnung > 10 % bei Dehnfähigkeit",
+    "injektionsdruckBegrenzenSchutzVor": "Injektionsdruck begrenzen (Schutz vor Hydrofraktur)",
+    "druckAmManometerDer": "Druck am Manometer der Injektionspumpe streng kontrollieren, um unkontrollierte Betonabplatzungen und neue Rissbildung zu verhindern.",
+    "ztvIngTeil32": "ZTV-ING Teil 3 / DIN EN 1504-5",
+    "druckbegrenzungNachVorgabeDes": "Druckbegrenzung nach Vorgabe des SKP (i. d. R. max. 10–20 bar bei Niederdruck, bauteilabhängig)",
+    "packerabstandNachBauteildickeAnordnen": "Packerabstand nach Bauteildicke anordnen",
+    "bohrpackerWechselseitigIm45": "Bohrpacker wechselseitig im 45°-Winkel setzen. Der Packerabstand richtet sich nach der Bauteildicke h.",
+    "dinEn150452": "DIN EN 1504-5",
+    "packerabstandDeltaLBauteildicke": "Packerabstand Delta_l = Bauteildicke h / 2 (+- 5 cm)",
+    "t5KathodischerKorrosionsschutzKks": "5. Kathodischer Korrosionsschutz (KKS) & Spezialverfahren",
+    "elektrochemischerSchutzCfkLamellen": "Elektrochemischer Schutz, CFK-Lamellen und Rissüberbrückungsnachweise.",
+    "elektrischeDurchgängigkeitDerBewehrung": "Elektrische Durchgängigkeit der Bewehrung nachweisen",
+    "widerstandsmessungZwischenAllenFreigeleg": "Widerstandsmessung zwischen allen freigelegten Bewehrungselementen vor Montage des KKS-Systems.",
+    "dinEnIso12696": "DIN EN ISO 12696",
+    "durchgangswiderstandR10": "Durchgangswiderstand R < 1,0 Ohm zwischen beliebigen Stäben",
+    "referenzelektrodenAnKorrosionsHotspots": "Referenzelektroden an Korrosions-Hotspots platzieren",
+    "einbauLanglebigerReferenzelektrodenManga": "Einbau langlebiger Referenzelektroden (Mangandioxid MnO2 oder Ag/AgCl) im Bereich der höchsten Chloridkonzentrationen zur Dauerüberwachung.",
+    "dinEnIso126962": "DIN EN ISO 12696 / DBV-Merkblatt KKS",
+    "mindestens2ReferenzelektrodenJe": "Mindestens 2 Referenzelektroden je Schutzbereich/Zone",
+    "t100MvDepolarisationskriteriumNachweisen": "100-mV-Depolarisationskriterium nachweisen",
+    "nachAbschaltenDesFremdstroms": "Nach Abschalten des Fremdstroms muss die Potentialverschiebung über einen Zeitraum von 24 bis 72 Stunden gemessen werden.",
+    "dinEnIso126963": "DIN EN ISO 12696",
+    "deltaEDepol100": "Delta E_depol >= 100 mV nach 24 bis 72 Stunden",
+    "cfkLamellenverklebungBetonoberflächenzug": "CFK-Lamellenverklebung: Betonoberflächenzugfestigkeit",
+    "vorDemAufklebenStatisch": "Vor dem Aufkleben statisch tragender Carbonfaserlamellen muss der Betonuntergrund kugelgestrahlt und auf Haftzugfestigkeit geprüft werden.",
+    "dibtZulassungCfkDafstb": "DIBt Zulassung CFK / DAfStb-Richtlinie",
+    "mittelwertFCtm1": "Mittelwert f_ctm >= 1,5 N/mm²; kein Einzelwert < 1,2 N/mm²",
+    "t6QualitätssicherungSivvDokumentation": "6. Qualitätssicherung, SIVV-Dokumentation & Abnahme",
+    "bautagebuchAbreißversucheGewährleistungU": "Bautagebuch, Abreißversuche, Gewährleistung und Instandhaltungsverträge.",
+    "bauüberwachungDurchFachkundigesPersonal": "Bauüberwachung durch fachkundiges Personal (z. B. SIVV-Schein) & lückenloses Bautagebuch",
+    "kontinuierlicheDokumentationAllerChargen": "Kontinuierliche Dokumentation aller Chargennummern, Mischungsverhältnisse, Wetterdaten, Taupunktdifferenzen und Schichtdicken im Instandsetzungsprotokoll.",
+    "trInstandhaltungTeil12": "TR Instandhaltung Teil 1 & 2 / DBV-SIVV",
+    "täglicheLückenloseSignaturDurch": "Tägliche lückenlose Signatur durch fachkundiges Personal (z. B. SIVV-Fachkraft)",
+    "haftzugprüfungAmAusgehärtetenInstandsetz": "Haftzugprüfung am ausgehärteten Instandsetzungssystem",
+    "bohrkerneBis5Mm": "Bohrkerne bis 5 mm in den Altbeton einbohren und Prüfstempel aufkleben. Bruchbild analysieren (Bruch muss im Altbeton liegen, nicht in der Fuge!).",
+    "dinEn1542Tr": "DIN EN 1542 / TR Instandhaltung",
+    "betaHz15": "beta_hz >= 1,5 N/mm²; mindestens 80 % Betonbruch im Grundkörper",
+    "ebenheitUndRutschhemmungsklassePrüfen": "Ebenheit und Rutschhemmungsklasse prüfen",
+    "beiBefahrbarenParkhausbeschichtungenOs": "Bei befahrbaren Parkhausbeschichtungen (OS 8 / OS 11): Prüfung der Rutschhemmung (z.B. R11/R12 nach DIN 51130) und Verdrängungsraum (V4).",
+    "din51130AsrA1": "DIN 51130 / ASR A1.5",
+    "einhaltungDerGefordertenR": "Einhaltung der geforderten R-Klasse (R11 / V4)",
+    "inspektionsWartungsvertragDin31051": "Inspektions- & Wartungsvertrag (DIN 31051) übergeben",
+    "insbesondereBeiRissüberbrückendenBeschic": "Insbesondere bei rissüberbrückenden Beschichtungen und KKS-Systemen: Übergabe eines verbindlichen Wartungs- und Inspektionsplanes an den Bauherrn zur Absicherung der Gewährleistung.",
+    "din31051TrInstandhaltung": "DIN 31051 / TR Instandhaltung",
+    "schriftlicherWartungsplanMitJährlichem": "Schriftlicher Wartungsplan mit jährlichem Inspektionsintervall",
+    "aktuelleChecklisteDruckenOder": "Aktuelle Checkliste drucken oder als PDF speichern",
+    "alleMarkierungenZurücksetzen": "Alle Markierungen zurücksetzen",
+    "prüfpunktNormOderGrenzwert": "Prüfpunkt, Norm oder Grenzwert durchsuchen...",
+    "zwingendStandsicherheit": "Zwingend / Standsicherheit",
+    "beispiel1TaupunktprüfungVor": "Beispiel 1: Taupunktprüfung vor Beschichtungsarbeiten",
+    "messungUndDokumentationVon": "Messung und Dokumentation von Luft-, Oberflächentemperatur und Feuchte gehören in das Bautagebuch; bei Unterschreitung ist zu temperieren oder die Arbeit zu verschieben.",
+    "dinEnIso129442": "DIN EN ISO 12944-7; TR Instandhaltung",
+    "beispiel2AuswertungVon": "Beispiel 2: Auswertung von Haftzugprüfungen am Untergrund",
+    "dieErforderlichenWerteHängen": "Die erforderlichen Werte hängen vom Instandsetzungsprodukt und dessen Anwendungsbereich ab (Instandhaltungsplan des sachkundigen Planers, TR Instandhaltung Teil 2) – die Werte 1,5/1,0 N/mm² sind übliche Anhaltswerte.",
+    "dinEn1542Tr2": "DIN EN 1542; TR Instandhaltung (DIBt)",
+    "oktober2026Ap12": "Oktober 2026 (AP 12 Schutz & Instandsetzung: Ausführungs- und Prüfkriterien, Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "InstandsetzungChecklisten.schritte": [
+      {
+        "titel": "Klima",
+        "erklaerung": "Lufttemperatur 15 °C, relative Luftfeuchte 80 %; Magnus-Konstanten a = 17,62, b = 243,12 °C:",
+        "formel": "\\gamma = \\ln 0{,}80 + \\frac{17{,}62 \\cdot 15}{258{,}12} = 0{,}801"
+      },
+      {
+        "titel": "Taupunkt",
+        "erklaerung": "Einsetzen:",
+        "formel": "\\theta_d = \\frac{243{,}12 \\cdot 0{,}801}{17{,}62 - 0{,}801} = 11{,}6\\,\\text{°C}"
+      },
+      {
+        "titel": "Freigabe",
+        "erklaerung": "Oberflächentemperatur 13 °C; gefordert mindestens Taupunkt + 3 K:",
+        "formel": "13 < 11{,}6 + 3 = 14{,}6 \\Rightarrow \\text{nicht beschichten}"
+      }
+    ],
+    "InstandsetzungChecklisten.schritte_2": [
+      {
+        "titel": "Messwerte",
+        "erklaerung": "Fünf Abreißversuche nach DIN EN 1542 in N/mm²: 1,8; 1,6; 1,2; 1,9; 1,7.",
+        "formel": "\\sum f_i = 8{,}2"
+      },
+      {
+        "titel": "Mittelwert",
+        "erklaerung": "Einsetzen:",
+        "formel": "\\bar{f} = 8{,}2 / 5 = 1{,}64\\,\\text{N/mm}^2 \\ge 1{,}5"
+      },
+      {
+        "titel": "Kleinstwert",
+        "erklaerung": "Vergleich mit dem Einzelwert:",
+        "formel": "f_{min} = 1{,}2\\,\\text{N/mm}^2 \\ge 1{,}0 \\Rightarrow \\text{Untergrund geeignet}"
+      }
+    ],
+    "InstandsetzungChecklisten.weblinks": [
+      {
+        "title": "DIBt - Technische Regel Instandhaltung von Betonbauwerken",
+        "url": "https://www.dibt.de"
+      },
+      {
+        "title": "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (BÜV)",
+        "url": "https://www.buev.de"
+      },
+      {
+        "title": "Deutscher Beton- und Bautechnik-Verein (DBV) - SIVV-Schein",
+        "url": "https://www.betonverein.de"
+      }
+    ],
+    "InstandsetzungChecklisten.literatur": [
+      "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau (Springer Vieweg)"
+    ],
+    "InstandsetzungChecklisten.regelwerke": [
+      {
+        "title": "TR Instandhaltung (DIBt Technische Regel Instandhaltung von Betonbauwerken Teil 1 und 2)",
+        "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "DIN EN 1504-10 (Anwendung von Produkten und Systemen auf der Baustelle und Qualitätsüberwachung)"
+      },
+      {
+        "title": "ZTV-ING Teil 3: Massivbau, Betoninstandsetzung (BASt)",
+        "url": "https://www.bast.de/"
+      },
+      {
+        "title": "DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)"
+      }
+    ],
+    "InstandsetzungChecklisten.formeln": [
+      {
+        "formel": "\\beta_{hz} \\ge 1{,}5\\,\\text{N/mm}^2 \\quad (\\text{Einzelwert} \\ge 1{,}0\\,\\text{N/mm}^2)",
+        "erklaerung": "Übliche Anhaltswerte der Abreißfestigkeit des Betonuntergrundes (Prüfung nach DIN EN 1542) vor dem Auftrag von Mörteln bzw. Beschichtungen; maßgebend sind die Anforderungen im Instandhaltungsplan nach TR Instandhaltung.",
+        "quelle": "DIN EN 1542 / TR Instandhaltung"
+      },
+      {
+        "formel": "T_{\\text{Oberfläche}} \\ge T_{\\text{Taupunkt}} + 3\\,\\text{K}",
+        "erklaerung": "Sicherheitsabstand zur Taupunkttemperatur zur Vermeidung von Betauung und Haftungsversagen bei Beschichtungsarbeiten.",
+        "quelle": "DIN EN ISO 12944-7"
+      }
+    ]
+  }
+}

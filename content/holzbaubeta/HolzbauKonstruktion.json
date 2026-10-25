@@ -1,0 +1,23 @@
+{
+  "texte": {
+    "holzrahmenHolztafelbau": "Holzrahmen- & Holztafelbau",
+    "stabförmigesTragwerkAusKonstruktionsvoll": "Stabförmiges Tragwerk aus Konstruktionsvollholz (KVH, e = 62,5 cm Raster), das durch aussteifende Holzwerkstoffplatten (OSB, Gipsfaser) die statische Scheiben- und Trageigenschaft erhält. Dazwischen liegt die Kern-Wärmedämmung.",
+    "einsatzEinfamilienhäuserHocheffizientePa": "**Einsatz:** Einfamilienhäuser, hocheffiziente Passivhauswände, Aufstockungen.",
+    "massivholzbauBspClt": "Massivholzbau (BSP / CLT)",
+    "flächigeMehrschichtigeTragwerkeAus": "Flächige, mehrschichtige Tragwerke aus kreuzweise verklebten Brettlagen (Brettsperrholz). Trägt zweiachsig als Platte oder Scheibe (Rollschub in den Querlagen beachten) und hat eine höhere Masse als Rahmenbauteile.",
+    "einsatzMehrgeschossigerWohnungsbauGebäud": "**Einsatz:** Mehrgeschossiger Wohnungsbau (Gebäudeklasse 4 & 5), Schachtwände, monolithische Deckenplatten.",
+    "holzskelettbauPfostenRiegelBauweise": "Holzskelettbau (Pfosten-Riegel-Bauweise)",
+    "pfostenRiegelSystemUnter": "Pfosten-Riegel-System unter Verwendung von Brettschichtholz (BSH/Leimholz) für weitspannende Riegelträger und schwere Druckstützen. Die Fassadenausfachung erfolgt getrennt (großflächige Glasflächen oder eingehängte Tafelsysteme).",
+    "einsatzGewerbeUndIndustriebauten": "**Einsatz:** Gewerbe- und Industriebauten, Messehallen, moderne großflächige Bürogebäude.",
+    "detailaufbauMassivholzGeschossdeckeDatah": " Detailaufbau: Massivholz-Geschossdecke (dataholz.eu)",
+    "eineGebundeneSplittschüttung60": "Eine gebundene Splittschüttung (60 mm) erhöht die flächenbezogene Masse der Decke deutlich. Das verringert die im Holzbau typische tieffrequente Trittschallübertragung (< 100 Hz).",
+    "anhydritHeizestrich65Mm": " Anhydrit-Heizestrich (65 mm)",
+    "trittschalldämmungTdpt30Mm": " Trittschalldämmung TDPT (30 mm)",
+    "gebundeneSchwereTragschüttung60": " Gebundene schwere Tragschüttung (60 mm, Masse-Lage)",
+    "brettsperrholzKernClt140": " Brettsperrholz-Kern CLT (140 mm)",
+    "estrich65Mm": "Estrich (65 mm)",
+    "trittschallminderung30Mm": "Trittschallminderung (30 mm)",
+    "schüttungsmasseZurTrittschallDämpfung": "Schüttungsmasse zur Trittschall-Dämpfung (60 mm, gebunden)",
+    "bspCltBrettsperrholzTragscheibe": "BSP / CLT Brettsperrholz-Tragscheibe (140 mm 5-lagig)"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "texte": {
+    "grundlagenDerTragwerksplanungEc": " Grundlagen der Tragwerksplanung (EC 0)",
+    "dasSemiprobabilistischeSicherheitskonzep": "Das semiprobabilistische Sicherheitskonzept der Eurocodes stellt sicher, dass Tragwerke während ihrer geplanten Nutzungsdauer eine ausreichende Zuverlässigkeit aufweisen. Es basiert auf der Trennung von Einwirkungen (Lasten) und Widerständen (Tragfähigkeit) durch Teilsicherheitsbeiwerte sowie der Definition von Grenzzuständen.",
+    "dieEurocodesÜbersicht": " Die Eurocodes (Übersicht)",
+    "prinzipTeilsicherheitsbeiwerte": " Prinzip & Teilsicherheitsbeiwerte",
+    "interaktiveLastermittlungGl6": " Interaktive Lastermittlung (Gl. 6.10)",
+    "dieTeileDerEurocodes": "Die Teile der Eurocodes",
+    "eurocode0DinEn": "Eurocode 0 (DIN EN 1990)",
+    "grundlagenDerTragwerksplanungSicherheits": "Grundlagen der Tragwerksplanung (Sicherheitskonzept, Grenzzustände)",
+    "eurocode1DinEn": "Eurocode 1 (DIN EN 1991)",
+    "einwirkungenAufTragwerkeEigengewicht": "Einwirkungen auf Tragwerke (Eigengewicht, Nutzlast, Schneelast, Windlast, etc.)",
+    "eurocode2DinEn": "Eurocode 2 (DIN EN 1992)",
+    "bemessungUndKonstruktionVon": "Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken",
+    "eurocode3DinEn": "Eurocode 3 (DIN EN 1993)",
+    "bemessungUndKonstruktionVon2": "Bemessung und Konstruktion von Stahlbauten",
+    "eurocode4DinEn": "Eurocode 4 (DIN EN 1994)",
+    "bemessungUndKonstruktionVon3": "Bemessung und Konstruktion von Verbundtragwerken aus Stahl und Beton",
+    "eurocode5DinEn": "Eurocode 5 (DIN EN 1995)",
+    "bemessungUndKonstruktionVon4": "Bemessung und Konstruktion von Holzbauten",
+    "eurocode6DinEn": "Eurocode 6 (DIN EN 1996)",
+    "bemessungUndKonstruktionVon5": "Bemessung und Konstruktion von Mauerwerksbauten",
+    "eurocode7DinEn": "Eurocode 7 (DIN EN 1997)",
+    "entwurfBerechnungUndBemessung": "Entwurf, Berechnung und Bemessung in der Geotechnik (Bodenmechanik, Grundbau)",
+    "eurocode8DinEn": "Eurocode 8 (DIN EN 1998)",
+    "auslegungVonBauwerkenGegen": "Auslegung von Bauwerken gegen Erdbeben",
+    "eurocode9DinEn": "Eurocode 9 (DIN EN 1999)",
+    "bemessungUndKonstruktionVon6": "Bemessung und Konstruktion von Aluminiumtragwerken",
+    "geltendeFassungInDeutschland": "**Geltende Fassung in Deutschland:** DIN EN 1990:2021-10 (berichtigte Neuausgabe von DIN EN 1990:2010-12) mit Nationalem Anhang DIN EN 1990/NA:2010-12 und Änderung /NA/A1:2012-08. Jeder Eurocode-Teil gilt nur zusammen mit seinem Nationalen Anhang (NA), der die national festzulegenden Parameter (NDP) – etwa Teilsicherheits- und Kombinationsbeiwerte – bestimmt. Bauaufsichtlich verbindlich werden die Normen über die Verwaltungsvorschrift Technische Baubestimmungen (MVV TB / VV TB der Länder).",
+    "zweiteEurocodeGenerationCen": "**Zweite Eurocode-Generation:** CEN hat die überarbeiteten Eurocodes (u. a. EN 1990:2023, EN 1992-1-1:2023) veröffentlicht; die ersten deutschen Fassungen sind erschienen (z. B. DIN EN 1993-1-1:2025-04, DIN EN 1992-1-1:2025-09). Bauaufsichtlich anwendbar werden sie erst mit Nationalem Anhang und Einführung in die MVV TB bzw. VV TB der Länder – bis dahin bleiben die oben genannten Fassungen maßgebend. Neu hinzu kommen Regeln für Glas (CEN/TS 19100) und Faserverbundkunststoffe (CEN/TS 19101).",
+    "sicherheitskonzeptEc0": "Sicherheitskonzept (EC 0)",
+    "einwirkungenE": " Einwirkungen (E)",
+    "kräfteOderVerformungenDie": "Kräfte oder Verformungen, die auf das Tragwerk einwirken (z.B. Eigengewicht, Nutzlast, Wind).",
+    "charakteristischerWert": "Charakteristischer Wert (",
+    "ständigeEinwirkungenInDer": "Ständige Einwirkungen: in der Regel Mittelwert (z. B. Eigengewicht aus Wichte × Volumen). Veränderliche Einwirkungen: Wert mit 2 % Überschreitungswahrscheinlichkeit je Jahr (≈ 50 Jahre Wiederkehrperiode, z. B. Schnee, Wind).",
+    "bemessungswert": "Bemessungswert (",
+    "vereinfachtTeilsicherheitsbeiwert": " (vereinfacht; Teilsicherheitsbeiwert ",
+    "beiBegleiteinwirkungenKombinationsbeiwer": ", bei Begleiteinwirkungen Kombinationsbeiwert ",
+    "widerstandR": " Widerstand (R)",
+    "fähigkeitDesBauteilsDen": "Fähigkeit des Bauteils, den Einwirkungen standzuhalten (Materialfestigkeit, Querschnitt).",
+    "charakteristischerWert2": "Charakteristischer Wert (",
+    "t5FraktilwertDerGrundgesamtheit": "5%-Fraktilwert der Grundgesamtheit der Festigkeit (z.B. ",
+    "bemessungswert2": "Bemessungswert (",
+    "fürMaterialUndModellunsicherheiten": " für Material- und Modellunsicherheiten)",
+    "fundamentaleNachweisbedingung": "Fundamentale Nachweisbedingung",
+    "derBemessungswertDerEinwirkungen": "Der Bemessungswert der Einwirkungen muss stets kleiner oder gleich dem Bemessungswert des Widerstands sein.",
+    "teilsicherheitsbeiwerteImÜberblickStändi": "Teilsicherheitsbeiwerte im Überblick (ständige und vorübergehende Bemessungssituation, Deutschland)",
+    "ständigUngünstigGünstig": "ständig, ungünstig / günstig",
+    "dinEn1990Na": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
+    "veränderlichUngünstigGünstig": "veränderlich, ungünstig / günstig",
+    "dinEn1990Na2": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
+    "betonBetonstahl": "Beton / Betonstahl",
+    "dinEn19921": "DIN EN 1992-1-1/NA, Tab. 2.1DE",
+    "baustahlQuerschnitt": "Baustahl (Querschnitt)",
+    "dinEn19931": "DIN EN 1993-1-1/NA",
+    "vollholzBrettschichtholz": "Vollholz, Brettschichtholz",
+    "dinEn19951": "DIN EN 1995-1-1/NA",
+    "nachDinEn1990": " nach DIN EN 1990/NA, Tab. NA.A.1.1: Nutzlasten Kategorie A–D 0,7, Lagerflächen (E) 1,0; Schnee bis NN + 1000 m 0,5, darüber 0,7; Wind 0,6; Temperatur (nicht Brand) 0,6.",
+    "grenzzuständeLimitStates": "Grenzzustände (Limit States)",
+    "tragfähigkeitUlsEquLagesicherheit": "**Tragfähigkeit (ULS):** EQU (Lagesicherheit), STR (Bauteilversagen), GEO (Bodenversagen), FAT (Ermüdung); in der Geotechnik zusätzlich UPL (Aufschwimmen) und HYD (hydraulischer Grundbruch). Versagen führt zum Einsturz oder gefährdet Personen.",
+    "gebrauchstauglichkeitSlsBegrenzungVon": "**Gebrauchstauglichkeit (SLS):** Begrenzung von Verformungen, Rissbreiten und Schwingungen. Versagen beeinträchtigt die normale Nutzung oder Ästhetik.",
+    "ständigNormalerNutzungszustandÜber": "**Ständig:** Normaler Nutzungszustand über die geplante Nutzungsdauer (Hochbau: 50 Jahre, Brücken und Ingenieurbauwerke: 100 Jahre).",
+    "vorübergehendBefristeteUmständeZ": "**Vorübergehend:** Befristete Umstände (z.B. Bauzustände, Montage, Umbau).",
+    "außergewöhnlichSelteneGefährdungsbedingu": "**Außergewöhnlich:** Seltene Gefährdungsbedingungen (z.B. Brand, Anprall, Explosion).",
+    "erdbebenSeismischeExtrembeanspruchung": "**Erdbeben:** Seismische Extrembeanspruchung.",
+    "interaktiveLastermittlungGl62": "Interaktive Lastermittlung (Gl. 6.10, ULS STR/GEO)",
+    "berechnungDesBemessungswertesDer": "Berechnung des Bemessungswertes der Einwirkungen ",
+    "fürEineStändigeSituation": " für eine ständige Situation nach der Grundkombination (ohne ",
+    "dieLeitEinwirkungWird": "). Die Leit-Einwirkung wird voll angesetzt (",
+    "weitereVeränderlicheEinwirkungenWerden": "), weitere veränderliche Einwirkungen werden mit ",
+    "gStändigeEinwirkung": "γ_G (ständige Einwirkung)",
+    "beiwertFürQK": "ψ₀ Beiwert (für Q_k,2)",
+    "gleichung610": "Gleichung 6.10:",
+    "anwendungVollständigerNachweisE": "Anwendung: Vollständiger Nachweis E<sub>d</sub> ≤ R<sub>d</sub>"
+  },
+  "werte": {
+    "ständigeEinwirkungGK": "Ständige Einwirkung (G_k)",
+    "veränderlicheLeitEinwQ": "Veränderliche Leit-Einw. (Q_k,1)",
+    "weitereVeränderlicheEinwQ": "Weitere veränderliche Einw. (Q_k,2)",
+    "gStändigeEinwirkung": "γ_G (ständige Einwirkung)",
+    "beiwertFürQK": "ψ₀ Beiwert (für Q_k,2)",
+    "beispiel1InnenstützeIm": "Beispiel 1: Innenstütze im Bürogebäude (Druck, ungünstige Einwirkungen)",
+    "vereinfachtesLehrbeispielOhneBewehrung": "Vereinfachtes Lehrbeispiel ohne Bewehrung, Mindestausmitte und Knicken – für einen vollständigen Stützennachweis siehe Modul Stahlbeton.",
+    "dinEn1990Na": "DIN EN 1990/NA (Gl. 6.10), DIN EN 1992-1-1/NA (3.1.6, Tab. 2.1DE)",
+    "beispiel2LeichtdachUnter": "Beispiel 2: Leichtdach unter Windsog – wann das Eigengewicht günstig wirkt",
+    "dieBefestigungMuss1": "Die Befestigung muss 1,50 kN/m² Abhebekraft aufnehmen. Stellen Sie im Rechner oben γ_G = 1,00 ein, um den Effekt nachzuvollziehen.",
+    "dinEn1990Na2": "DIN EN 1990/NA, Tab. NA.A.1.2(B); DIN EN 1991-1-4 (Wind)",
+    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: DIN EN 1990/NA Tab. NA.A.1.1 und NA.A.1.2(B) geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Sicherheitskonzept.schritte": [
+      {
+        "titel": "Einwirkungen",
+        "erklaerung": "Charakteristische Normalkräfte aus Eigengewicht G_k = 800 kN und Nutzlast Büro (Kategorie B) Q_k = 300 kN; die Nutzlast ist Leiteinwirkung.",
+        "formel": "G_k = 800\\,\\text{kN},\\quad Q_{k,1} = 300\\,\\text{kN}"
+      },
+      {
+        "titel": "Bemessungswert der Einwirkung (Gl. 6.10)",
+        "erklaerung": "Beide Einwirkungen wirken ungünstig:",
+        "formel": "N_{Ed} = 1{,}35 \\cdot 800 + 1{,}50 \\cdot 300 = 1080 + 450 = 1530\\,\\text{kN}"
+      },
+      {
+        "titel": "Widerstand (vereinfacht, nur Beton)",
+        "erklaerung": "Stütze 35 × 35 cm aus C30/37; Bemessungswert der Betondruckfestigkeit nach DIN EN 1992-1-1/NA mit α_cc = 0,85 und γ_C = 1,5:",
+        "formel": "f_{cd} = \\frac{0{,}85 \\cdot 30}{1{,}5} = 17{,}0\\,\\tfrac{\\text{N}}{\\text{mm}^2},\\quad N_{Rd} = 350^2 \\cdot 17{,}0 = 2\\,082\\,500\\,\\text{N} \\approx 2083\\,\\text{kN}"
+      },
+      {
+        "titel": "Nachweis",
+        "erklaerung": "Ausnutzungsgrad η = N_Ed / N_Rd:",
+        "formel": "\\eta = \\frac{1530}{2083} = 0{,}73 \\le 1{,}0 \\quad \\checkmark"
+      }
+    ],
+    "Sicherheitskonzept.schritte_2": [
+      {
+        "titel": "Einwirkungen",
+        "erklaerung": "Trapezblechdach: Eigengewicht g_k = 0,30 kN/m² (nach unten), Windsog w_k = −1,20 kN/m² (nach oben).",
+        "formel": "g_k = +0{,}30\\,\\tfrac{\\text{kN}}{\\text{m}^2},\\quad w_k = -1{,}20\\,\\tfrac{\\text{kN}}{\\text{m}^2}"
+      },
+      {
+        "titel": "Falsch: γ_G = 1,35",
+        "erklaerung": "Mit dem ungünstigen Beiwert würde das Eigengewicht die Abhebekraft künstlich verkleinern – das liegt auf der unsicheren Seite.",
+        "formel": "1{,}35 \\cdot 0{,}30 - 1{,}50 \\cdot 1{,}20 = -1{,}40\\,\\tfrac{\\text{kN}}{\\text{m}^2}"
+      },
+      {
+        "titel": "Richtig: γ_G,inf = 1,00",
+        "erklaerung": "Das Eigengewicht wirkt der maßgebenden Einwirkung entgegen, also günstig:",
+        "formel": "e_d = 1{,}00 \\cdot 0{,}30 - 1{,}50 \\cdot 1{,}20 = -1{,}50\\,\\tfrac{\\text{kN}}{\\text{m}^2}"
+      }
+    ],
+    "Sicherheitskonzept.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin: Springer 2010",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+    ],
+    "Sicherheitskonzept.regelwerke": [
+      {
+        "title": "DIN EN 1990:2021-10 mit NA (Eurocode 0: Grundlagen der Tragwerksplanung; ersetzt DIN EN 1990:2010-12); Nachfolger DIN EN 1990 (EN 1990:2023) vorbestellbar, noch nicht eingeführt"
+      },
+      {
+        "title": "DIN EN 1990/NA:2010-12 und DIN EN 1990/NA/A1:2012-08 (Nationaler Anhang)"
+      },
+      {
+        "title": "DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke) mit Nationalen Anhängen"
+      }
+    ],
+    "Sicherheitskonzept.formeln": [
+      {
+        "formel": "E_d \\le R_d \\quad \\text{z. B.} \\quad \\gamma_G \\cdot G_k + \\gamma_Q \\cdot Q_k \\le \\frac{R_k}{\\gamma_M}",
+        "erklaerung": "Grundlegende Bemessungsbedingung im Grenzzustand der Tragfähigkeit (GZT / ULS) nach dem semi-probabilistischen Teilsicherheitskonzept des Eurocode 0.",
+        "quelle": "DIN EN 1990, Gl. (6.8)"
+      },
+      {
+        "formel": "E_d = \\sum_{j \\ge 1} \\gamma_{G,j} G_{k,j} + \\gamma_{Q,1} Q_{k,1} + \\sum_{i > 1} \\gamma_{Q,i} \\psi_{0,i} Q_{k,i}",
+        "erklaerung": "Kombinationsregel nach Gl. (6.10) für ständige und veränderliche Einwirkungen mit Leiteinwirkung Q_k,1 und Kombinationsbeiwert psi_0.",
+        "quelle": "DIN EN 1990, Gl. (6.10)"
+      }
+    ]
+  }
+}

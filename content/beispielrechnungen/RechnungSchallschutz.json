@@ -1,0 +1,34 @@
+{
+  "texte": {
+    "bauakustikLuftschalldämmungMassiverBaute": "Bauakustik: Luftschalldämmung massiver Bauteile nach DIN 4109:2018",
+    "wasBerechnetWirdDie": "**Was?** Berechnet wird die flächenbezogene Masse $m'$ in $\\text{kg/m}^2$, das Direktschalldämm-Maß $R_w$ und das resultierende Bauschalldämm-Maß $R'_w$ unter Berücksichtigung von Flankenübertragungen. <br>**Warum?** Schutz von Menschen in Wohn- und Arbeitsräumen vor unzumutbarer Schallübertragung aus fremden Wohnbereichen oder Treppenräumen gemäß **DIN 4109-1:2018** und Landesbauordnungen (LBO). <br>**Wie?** Bei einschaligen biegesteifen Massivbauteilen dominiert das **Massegesetz**: Je schwerer das Bauteil pro Quadratmeter, desto höher ist sein Schalldämmmaß. Über Flankenkorrekturwerte $K_F$ wird die reale Übertragung im Gebäude abgebildet.",
+    "wandparameterFlankensituation": "Wandparameter & Flankensituation",
+    "wanddickeRohbauteilD": "Wanddicke Rohbauteil (d):",
+    "t175CmStandard": "17,5 cm (Standard KS)",
+    "trockenrohdichte": "Trockenrohdichte (ρ):",
+    "beidseitigerPutzauftrag": "Beidseitiger Putzauftrag",
+    "t215MmGips": "2 × 15 mm Gips-/Kalkgipsputz (+40 kg/m²)",
+    "flankenübertragungKF": "Flankenübertragung (K_F):",
+    "gefordertesSchutzzielDin4109": "Gefordertes Schutzziel (DIN 4109-1):",
+    "schrittweiseAkustischeBerechnungDin": "Schrittweise akustische Berechnung (DIN 4109)",
+    "produktAusWanddickeD": "Produkt aus Wanddicke $d$ und Rohdichte $\\rho$ zuzüglich Putzmasse:",
+    "schritt1FlächenbezogeneBauteilmasse": "**Schritt 1: Flächenbezogene Bauteilmasse m'**",
+    "fürMassiveBiegesteifeSchalen": "Für massive biegesteife Schalen ($m' \\ge 150 \\, \\text{kg/m}^2$) nach DIN 4109 Beiblatt 1:",
+    "hinweisZurGültigkeitDie": "Hinweis zur Gültigkeit: Die Massekurve gilt ab ca. $m' \\approx 65 \\, \\text{kg/m}^2$; für leichtere Bauteile ist das Ergebnis nicht belastbar.",
+    "schritt2DirektesSchalldämm": "**Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109)**",
+    "schritt3BauschalldämmMaß": "**Schritt 3: Bauschalldämm-Maß R'_w mit Flankenabzug K_F**",
+    "vorhandenesBauschalldämmMaß": "Vorhandenes Bauschalldämm-Maß ",
+    "vsNormativeMindestanforderung": " vs. normative Mindestanforderung ",
+    "empfohleneGegenmaßnahmenWanddickeVergröß": "Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2,0) oder flankierende Bauteile durch elastische Entkopplung optimieren."
+  },
+  "werte": {
+    "kalksandsteinKs": "Kalksandstein (KS)",
+    "stahlbetonC2530": "Stahlbeton (C25/30)",
+    "hochlochziegelHlz": "Hochlochziegel (HLz)",
+    "porenbetonPb": "Porenbeton (PB)",
+    "flankenübertragungKF": "Flankenübertragung (K_F)",
+    "gefordertesSchutzzielDin4109": "Gefordertes Schutzziel (DIN 4109-1)",
+    "normnachweisErfüllt": "Normnachweis ERFÜLLT",
+    "normnachweisNichtErfüllt": "Normnachweis NICHT ERFÜLLT"
+  }
+}

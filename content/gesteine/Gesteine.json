@@ -1,0 +1,150 @@
+{
+  "texte": {
+    "gesteinskörnungenBildenDasTragende": "Gesteinskörnungen bilden das tragende Gerüst von Beton und Asphalt. Dieses Modul vermittelt Grundlagen über Entstehung, Gewinnung, Sieblinien und bautechnische Prüfungen.",
+    "gesteinsartenEntstehung": " Gesteinsarten & Entstehung",
+    "eigenschaftenAnwendung": " Eigenschaften & Anwendung",
+    "technischeKennwertePrüfung": " Technische Kennwerte & Prüfung",
+    "gesteineWerdenNachIhrer": "Gesteine werden nach ihrer Entstehung (Genese) in drei Hauptgruppen unterteilt: Magmatite, Sedimentite und Metamorphite. Dieser Kreislauf der Gesteine ist ein ständiger geologischer Prozess.",
+    "magmatiteErstarrungsgesteine": "Magmatite (Erstarrungsgesteine)",
+    "entstehenDurchAbkühlungUnd": "Entstehen durch Abkühlung und Erstarrung von Magma (unterirdisch) oder Lava (oberirdisch).",
+    "tiefengesteinePlutoniteLangsameAbkühlung": "**Tiefengesteine (Plutonite):** Langsame Abkühlung, große Kristalle. Bsp: Granit, Diorit.",
+    "ergussgesteineVulkaniteSchnelleAbkühlung": "**Ergussgesteine (Vulkanite):** Schnelle Abkühlung an der Oberfläche, feinkörnig. Bsp: Basalt, Bims.",
+    "sedimentiteAblagerungsgesteine": "Sedimentite (Ablagerungsgesteine)",
+    "entstehenDurchVerwitterungTransport": "Entstehen durch Verwitterung, Transport, Ablagerung und anschließende Verfestigung (Diagenese).",
+    "klastischAusGesteinstrümmernSandstein": "**Klastisch:** Aus Gesteinstrümmern (Sandstein, Konglomerat).",
+    "chemischDurchAusfällungKalkstein": "**Chemisch:** Durch Ausfällung (Kalkstein, Gips, Steinsalz).",
+    "biogenAusOrganischenResten": "**Biogen:** Aus organischen Resten (Kreide, Kohle).",
+    "metamorphiteUmwandlungsgesteine": "Metamorphite (Umwandlungsgesteine)",
+    "entstehenAusÄlterenGesteinen": "Entstehen aus älteren Gesteinen durch hohen Druck und/oder hohe Temperaturen tief in der Erdkruste, ohne aufzuschmelzen.",
+    "ausKalksteinMarmor": "**Aus Kalkstein:** Marmor.",
+    "ausSandsteinQuarzit": "**Aus Sandstein:** Quarzit.",
+    "ausTonsteinTonschieferBei": "**Aus Tonstein:** Tonschiefer, bei stärkerer Metamorphose Glimmerschiefer bzw. Paragneis.",
+    "ausGranitOrthogneis": "**Aus Granit:** Orthogneis.",
+    "diePhysikalischenUndMechanischen": "Die physikalischen und mechanischen Eigenschaften von Gesteinen bestimmen deren Eignung als Baustoff, sei es als Naturwerkstein (Fassaden, Böden) oder als Gesteinskörnung für Beton und Asphalt.",
+    "wichtigeEigenschaften": "Wichtige Eigenschaften",
+    "druckfestigkeitSehrHochBei": "**Druckfestigkeit:** Sehr hoch bei Granit und Basalt, geringer bei weichen Kalksteinen oder Tuffen.",
+    "rohdichtePorositätBestimmtDas": "**Rohdichte / Porosität:** Bestimmt das Gewicht und die Wasseraufnahme. Hohe Porosität (z.B. Sandstein) bedeutet oft geringere Frostbeständigkeit.",
+    "verschleißwiderstandWichtigFürBodenbeläg": "**Verschleißwiderstand:** Wichtig für Bodenbeläge und Straßenbau (z.B. Polierwiderstand bei Asphalt).",
+    "witterungsbeständigkeitWiderstandGegenFr": "**Witterungsbeständigkeit:** Widerstand gegen Frost-Tau-Wechsel, UV-Strahlung und chemische Angriffe (z.B. saurer Regen greift Kalkstein an).",
+    "granitPflastersteineBordsteineHochbelast": "**Granit:** Pflastersteine, Bordsteine, hochbelastete Bodenbeläge, Fassaden (sehr witterungsbeständig).",
+    "basaltSchotterFürGleisbau": "**Basalt:** Schotter für Gleisbau, Edelsplitt für Asphaltdeckschichten (hoher Verschleißwiderstand).",
+    "kalksteinMarmorInnenraumgestaltungBöden": "**Kalkstein / Marmor:** Innenraumgestaltung (Böden, Treppen), Fassaden (nicht säurebeständig!). Rohstoff für Zementherstellung.",
+    "sandsteinHistorischeBautenFassaden": "**Sandstein:** Historische Bauten, Fassaden, Bildhauerarbeiten (gut bearbeitbar, aber oft porös).",
+    "schieferDacheindeckungenFassadenbekleidu": "**Schiefer:** Dacheindeckungen, Fassadenbekleidungen (gute Spaltbarkeit).",
+    "fürDieVerwendungVon": "Für die Verwendung von Gesteinskörnungen in Beton oder Asphalt müssen spezifische technische Kennwerte durch genormte Prüfverfahren nachgewiesen werden.",
+    "korngrößeKornform": "Korngröße & Kornform",
+    "korngrößenverteilungSieblinieBestimmtDur": "**Korngrößenverteilung (Sieblinie):** Bestimmt durch Siebversuch (DIN EN 933-1). Wichtig für die Packungsdichte und den Hohlraumgehalt des Baustoffs.",
+    "kornformkennzahlSiMassenanteilDer": "**Kornformkennzahl (SI):** Massenanteil der Körner mit einem Verhältnis Länge/Dicke > 3 (DIN EN 933-4). Kubische Körner sind bevorzugt, da plattige Körner (hoher SI-Wert) die Verarbeitbarkeit verschlechtern und leichter brechen.",
+    "plattigkeitskennzahlFiAlternativerKennwe": "**Plattigkeitskennzahl (FI):** Alternativer Kennwert für den Anteil flacher Körner, bestimmt mit Stabsieben (DIN EN 933-3).",
+    "festigkeitVerschleiß": "Festigkeit & Verschleiß",
+    "losAngelesKoeffizientLa": "**Los-Angeles-Koeffizient (LA):** Maß für den Widerstand gegen Zertrümmerung (DIN EN 1097-2). Gestein wird mit Stahlkugeln in einer Trommel rotiert; der Abrieb wird gemessen.",
+    "microDevalWertMde": "**Micro-Deval-Wert (MDE):** Maß für den Verschleißwiderstand unter Zugabe von Wasser (DIN EN 1097-1). Simuliert die Beanspruchung im feuchten Zustand.",
+    "polierwiderstandPsvPolishedStone": "**Polierwiderstand (PSV):** Polished Stone Value (DIN EN 1097-8). Wichtig für Deckschichten im Straßenbau, um dauerhafte Griffigkeit zu gewährleisten.",
+    "frostwiderstandPrüfungDurchFrost": "**Frostwiderstand:** Prüfung durch Frost-Tau-Wechsel an wassergesättigten Körnern (DIN EN 1367-1). Gemessen wird der Masseverlust durch Absplitterungen.",
+    "frostTausalzWiderstandVerschärfte": "**Frost-Tausalz-Widerstand:** Verschärfte Prüfung unter Zugabe von Tausalzlösung (z.B. NaCl), da Salze den osmotischen Druck in den Poren erhöhen.",
+    "alkaliKieselsäureReaktivitätAkr": "**Alkali-Kieselsäure-Reaktivität (AKR):** Prüfung, ob amorphe Kieselsäure im Gestein mit den Alkalien des Zements reagiert und ein quellfähiges Gel bildet (Betontreiben).",
+    "dichteWasseraufnahme": "Dichte & Wasseraufnahme",
+    "rohdichteScheinbareDichteDichte": "**Rohdichte (Scheinbare Dichte):** Dichte des Gesteinskorns inklusive der geschlossenen und offenen Poren (DIN EN 1097-6).",
+    "wasseraufnahmeWaMasseDes": "**Wasseraufnahme (WA):** Masse des aufgenommenen Wassers im Verhältnis zur Trockenmasse (DIN EN 1097-6). Ein Indikator für die offene Porosität und oft korrelierend mit dem Frostwiderstand.",
+    "gesteinskörnungenFrüherZuschlagBilden": "Gesteinskörnungen (früher Zuschlag) bilden das Gerüst in Baustoffen wie Beton, Mörtel und Asphalt. Ihre Eigenschaften wie Kornzusammensetzung, Festigkeit und Dauerhaftigkeit sind maßgeblich für die Qualität des Endprodukts.",
+    "kornklassenBezeichnungen": "Kornklassen & Bezeichnungen",
+    "gesteinsmehlFüllerKorngrößeD": "**Gesteinsmehl (Füller):** Korngröße d ≤ 0,063 mm. Dient zum Verschließen von Hohlräumen, besonders wichtig bei Asphalt.",
+    "feineGesteinskörnungSandObere": "**Feine Gesteinskörnung (Sand):** Obere Siebgröße D ≤ 4 mm (DIN EN 12620). Unterteilt in Fein-, Mittel- und Grobsand.",
+    "kiesSplittGrobeGesteinskörnung": "**Kies / Splitt (grobe Gesteinskörnung):** Obere Siebgröße D ≥ 4 mm, untere d ≥ 2 mm (DIN EN 12620). Kies (rund) entsteht natürlich, Splitt (kantig) durch Brechen.",
+    "korngemischEineMischungVerschiedener": "**Korngemisch:** Eine Mischung verschiedener Kornklassen, angegeben als untere (d) und obere (D) Siebgröße, z.B. 0/32 für Beton.",
+    "sieblinienKornzusammensetzung": "Sieblinien (Kornzusammensetzung)",
+    "idealsieblinienFullerEmpaMathematische": "**Idealsieblinien (Fuller, EMPA):** Mathematische Kurven für das theoretische Dichteste Gefüge (minimaler Hohlraumgehalt).",
+    "regelsieblinienDin10452": "**Regelsieblinien (DIN 1045-2):** Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Anhang manuell prüfen.<br>- **A-Linie:** gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.<br>- **B-Linie:** mittleres Gemisch (Standard).<br>- **C-Linie:** feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.",
+    "ausfallkörnungFehlenBestimmterMittlerer": "**Ausfallkörnung:** Fehlen bestimmter mittlerer Kornklassen zur gezielten Verbesserung der Verarbeitbarkeit (Gap-Grading).",
+    "natürlicheGesteinskörnungKiesSand": "**Natürliche Gesteinskörnung (Kies/Sand):** Rundkorn, gefördert aus Gruben oder Flussbetten. Bessere Verarbeitbarkeit im Beton.",
+    "gebrocheneGesteinskörnungSplittBrechsand": "**Gebrochene Gesteinskörnung (Splitt/Brechsand):** Durch Zerkleinern im Brecher (z.B. aus Granit, Basalt, Kalkstein). Hohe innere Reibung, wichtig für den Straßen- und Asphaltbau.",
+    "rezyklierteGesteinskörnungRcAus": "**Rezyklierte Gesteinskörnung (RC):** Aus aufbereitetem Bauschutt (Beton, Mauerwerk).",
+    "künstlicheGesteinskörnungZB": "**Künstliche Gesteinskörnung:** Z.B. Blähton, Blähglas (für Leichtbeton) oder industrielle Nebenprodukte (Hochofenschlacke).",
+    "spezifischeAnforderungen": "Spezifische Anforderungen",
+    "betonGeringerHohlraumgehaltGute": "**Beton:** Geringer Hohlraumgehalt (gute Sieblinie), keine abschlämmbaren oder organischen Bestandteile (behindern Hydratation), frostbeständig, keine reaktive Kieselsäure (AKR).",
+    "asphaltHoherPsvWert": "**Asphalt:** Hoher PSV-Wert (Polierwiderstand) in Deckschichten für Griffigkeit, kantige Form (Splitt) für stabile Hohlraumstruktur und Standfestigkeit, Affinität zu Bitumen.",
+    "eisenbahnschotterHöchsteZähigkeitLa": "**Eisenbahnschotter:** Höchste Zähigkeit (LA-Wert) und kantige Form (Korngemisch 31,5/63)."
+  },
+  "werte": {
+    "anwendungsbeispielKörnungszifferDerRegel": "Anwendungsbeispiel: Körnungsziffer der Regelsieblinie B16",
+    "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Werte manuell prüfen); Siebsatz 0,25 bis 63 mm",
+    "kB16366": "k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner)."
+  },
+  "daten": {
+    "Gesteine.schritte": [
+      {
+        "titel": "1. Durchgänge B16",
+        "formel": "0{,}25: 8\\,\\%;\\; 0{,}5: 20\\,\\%;\\; 1: 32\\,\\%;\\; 2: 42\\,\\%;\\; 4: 56\\,\\%;\\; 8: 76\\,\\%;\\; 16: 100\\,\\%",
+        "erklaerung": "Siebdurchgänge in M.-%."
+      },
+      {
+        "titel": "2. Rückstände",
+        "formel": "R_i = 100 - D_i:\\; 92 + 80 + 68 + 58 + 44 + 24 + 0 + 0 + 0 = 366",
+        "erklaerung": "Neun Prüfsiebe von 0,25 bis 63 mm."
+      },
+      {
+        "titel": "3. Körnungsziffer",
+        "formel": "k = 366/100 = 3{,}66",
+        "erklaerung": "Je kleiner k, desto feiner das Gemisch und desto höher der Wasseranspruch."
+      }
+    ],
+    "Gesteine.literatur": [
+      "Deutscher Naturwerkstein-Verband (DNV): Bautechnische Informationen Naturwerkstein (BTI), Einzelhefte in der jeweils aktuellen Ausgabe (Bezug: dnv.online/shop)",
+      "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
+      "Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016"
+    ],
+    "Gesteine.regelwerke": [
+      {
+        "title": "DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)"
+      },
+      {
+        "title": "DIN EN 13139:2002-08 (Gesteinskörnungen für Mörtel)"
+      },
+      {
+        "title": "DIN EN 13043:2002-12 (Gesteinskörnungen für Asphalt und Oberflächenbehandlungen)"
+      },
+      {
+        "title": "DIN EN 1097-2:2020-09 (Prüfverfahren für mechanische und physikalische Eigenschaften von Gesteinskörnungen - Teil 2: Widerstand gegen Zertrümmerung / Los-Angeles-Prüfung)"
+      },
+      {
+        "title": "DIN EN 933-1:2012-03 (Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen - Teil 1: Korngrößenverteilung - Siebverfahren)"
+      },
+      {
+        "title": "DIN 4226-101:2017-08 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620)"
+      },
+      {
+        "title": "DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)"
+      },
+      {
+        "title": "DIN EN 12440 (Naturstein – Kriterien für die Bezeichnung)"
+      }
+    ],
+    "Gesteine.formeln": [
+      {
+        "formel": "W_a = \\frac{m_{\\text{ges}} - m_d}{m_d} \\cdot 100\\%",
+        "erklaerung": "Wasseraufnahme in Massenprozent. Spiegelt die Kapillarität und Offenporigkeit des Natursteins wider, was direkt mit seiner Frost-Tau-Beständigkeit korreliert.",
+        "quelle": "DIN EN 13755:2008-08"
+      },
+      {
+        "formel": "P = \\left(1 - \\frac{\\rho_d}{\\rho_s}\\right) \\cdot 100\\%",
+        "erklaerung": "Gesamtporosität P in Vol.-%: Verhältnis der Rohdichte ρ_d (trockenes Probenvolumen inkl. Poren) zur Reindichte ρ_s (reines Feststoffvolumen ohne Poren).",
+        "quelle": "DIN EN 1936:2007-02"
+      },
+      {
+        "formel": "LA = \\frac{m_0 - m_1}{m_0} \\cdot 100\\%",
+        "erklaerung": "Los-Angeles-Koeffizient (Widerstand gegen Zertrümmerung): m0 = Einwaage (5.000 g), m1 = Rückstand auf dem 1,6-mm-Sieb nach der Trommelprüfung.",
+        "quelle": "DIN EN 1097-2:2020-09"
+      },
+      {
+        "formel": "P(d) = 100 \\cdot \\left(\\frac{d}{D}\\right)^n",
+        "erklaerung": "Fuller-Kurve bzw. modifizierte Körnungsformel nach Fuller-Thompson (ideale Packungsdichte mit minimalem Zementleimbedarf bei n ≈ 0,45 bis 0,50).",
+        "quelle": "Fuller und Thompson (1907); Regelsieblinien nach DIN 1045-2:2023-08"
+      },
+      {
+        "formel": "k = \\frac{1}{100} \\sum_{i=1}^{m} R_i",
+        "erklaerung": "Körnungsziffer / Feinheitsmodul k nach Hummel bzw. Abrams: Summe der Siebrückstände Ri auf den Prüfsieben geteilt durch 100.",
+        "quelle": "Hummel: Das Beton-ABC"
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "texte": {
+    "feuchteschutzWasserdampfTaupunkt": "Feuchteschutz & Wasserdampf-Taupunkt",
+    "berechnungsverfahrenNachDin4108": "Berechnungsverfahren nach DIN 4108-3 & Sättigungsdampfdruck nach der Magnus-Formel",
+    "feuchtigkeitImBauwerkFührt": "Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der **Taupunkt (Kondensation)**sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem **Periodenbilanzverfahren (Glaser-Verfahren)** analysieren.",
+    "raumklimaBauteiloberfläche": " Raumklima & Bauteiloberfläche",
+    "innenLufttemperaturTI": "Innen-Lufttemperatur (T_i):",
+    "relRaumluftfeuchteI": "Rel. Raumluftfeuchte (φ_i):",
+    "bauteilOberflächeTSi": "Bauteil-Oberfläche (T_si):",
+    "temperaturDerWandinnenseiteSimuliert": "Temperatur der Wandinnenseite (simuliert eine ungedämmte Wärmebrücke / Ecke).",
+    "berechneteWerteInnenklima": "Berechnete Werte (Innenklima)",
+    "sättigungsdruckPSat": "Sättigungsdruck p_sat:",
+    "istTeildruckP": "Ist-Teildruck p:",
+    "absoluteLuftfeuchte": "Absolute Luftfeuchte:",
+    "taupunktTDp100": "Taupunkt T_dp (100%):",
+    "schimmelgrenzeTSchimmel80": "Schimmelgrenze T_schimmel (80% r.f.):",
+    "fälltDieWandoberflächeUnter": "Fällt die Wandoberfläche unter diesen Wert, herrscht direkt auf der Wand eine Feuchte von > 80%. Hält dieser Zustand mehrere Tage an, können Schimmelpilze wachsen.",
+    "relOberflächenfeuchte": "Rel. Oberflächenfeuchte:",
+    "magnusSättigungskurveDampfdruck": "Magnus-Sättigungskurve & Dampfdruck",
+    "zustandVsSättigungsdruck": "Zustand vs. Sättigungsdruck",
+    "wasZeigtDieseKurve": " Was zeigt diese Kurve?",
+    "dieBlaueBegrenzungslinieStellt": "Die blaue Begrenzungslinie stellt den **Sättigungsdampfdruck p_sat(T)** dar. Luft kann bei hohen Temperaturen exponentiell mehr Wasserdampf tragen als bei Kälte.",
+    "wasIstDerTaupunkt": " Was ist der Taupunkt?",
+    "dieGrüneGestrichelteLinie": "Die grüne gestrichelte Linie ist der aktuelle Dampfdruck (p) im Raum. Fällt die Temperatur unter den Schnittpunkt mit der blauen Linie (**Taupunkt T_dp**), kondensiert überschüssiger Dampf zu flüssigem Bautauwasser.",
+    "sDWertSandbox": " s_d-Wert Sandbox: Schichtenfeuchte-Prüfer",
+    "testenSieIhreKonstruktion": "Testen Sie Ihre Konstruktion im Hinblick auf den Diffusionswiderstand und die goldene Bauphysikregel.",
+    "neueSchichtHinzufügen": " Neue Schicht hinzufügen",
+    "zuständigerBaustoff": "Zuständiger Baustoff",
+    "laufrichtungDerSchichten": "Laufrichtung der Schichten:",
+    "diffusionstechnischeAuswertung": "DIFFUSIONSTECHNISCHE AUSWERTUNG",
+    "äquivalenteGesamtluftdickeSD": "Äquivalente Gesamtluftdicke (s_d,ges):",
+    "regelCheckInnenDichter": "Regel-Check \"Innen dichter als außen\"",
+    "diePhysikalischenGrundlagen": "Die physikalischen Grundlagen",
+    "t1ÄquivalenteLuftschichtdicke": "1. Äquivalente Luftschichtdicke:",
+    "beschreibtWieVielDicker": "Beschreibt, wie viel dicker eine ruhende Luftschicht sein müsste, um denselben Dampfdiffusionswiderstand wie die Bauteilschicht zu erzeugen.",
+    "t2DampfdruckMagnusgleichungÜber": "2. Dampfdruck-Magnusgleichung (über Wasser, DIN 4108-3 / DIN EN ISO 13788):",
+    "glaserDiagrammTauwasserbilanzDin": " Glaser-Diagramm & Tauwasserbilanz (DIN 4108-3)",
+    "schichtaufbauAusDerS": "Schichtaufbau aus der s_d-Sandbox, Klima aus den Reglern oben (Wand: R_si = 0,13, R_se = 0,04 m²K/W). Aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf und Partialdampfdruck p. Berührt p die Sättigungslinie, fällt in dieser Ebene Tauwasser aus.",
+    "dauerDerTauperiode": "Dauer der Tauperiode:",
+    "klassischesGlaserKlima90": "Klassisches Glaser-Klima: 90 Tage Tauperiode, 90 Tage Verdunstungsperiode (12 °C / 70 % r. F.).",
+    "keinTauwasserInDer": "Kein Tauwasser in der Tauperiode",
+    "anKeinerSchichtgrenzeErreicht": "An keiner Schichtgrenze erreicht p den Sättigungsdampfdruck (",
+    "rechnerischeTauwassermasse0G": "). Rechnerische Tauwassermasse 0 g/m².",
+    "tauwasserAnGrenzfläche": "Tauwasser an Grenzfläche ",
+    "tauwasserebeneHinterDerSchicht": "Tauwasserebene hinter der Schicht ",
+    "dortIstPGleich": ": Dort ist p gleich p_sat; der Dampf, der innen zuströmt, kann außen nicht vollständig abgeführt werden.",
+    "tauwasserMC": "Tauwasser m_c",
+    "verdunstungMEv": "Verdunstung m_ev",
+    "wMKS": " W/(m²K) · s_d,ges = ",
+    "vereinfachtesLehrmodellMitEiner": "Vereinfachtes Lehrmodell mit einer Tauwasserebene; die Verdunstungsrandbedingungen der DIN 4108-3:2024-03 weichen vom klassischen Glaser-Klima ab. Ersetzt keinen normgerechten Nachweis bzw. keine hygrothermische Simulation nach DIN EN 15026."
+  },
+  "werte": {
+    "gipskartonplatteGkb": "Gipskartonplatte (GKB)",
+    "mineralwolleMwDämmung": "Mineralwolle (MW) Dämmung",
+    "nadelholzQuer": "Nadelholz (quer)",
+    "feuchtevariableDampfbremsbahn": "Feuchtevariable Dampfbremsbahn",
+    "dampfsperrePeFolie": "Dampfsperre PE-Folie",
+    "hygienischEinwandfreierBereichKeine": "Hygienisch einwandfreier Bereich. Keine Gefahr für Kondensat oder biologisches Wachstum.",
+    "sättigungsdampfdruckPsatTPa": "Sättigungsdampfdruck psat(T) [Pa]",
+    "istDampfdruckPInnen": "Ist-Dampfdruck p_innen [Pa]",
+    "kritischerRezessTaukondensat": "KRITISCHER REZESS: TAUKONDENSAT",
+    "vorsichtBiologischesSchimmelrisiko": "VORSICHT: BIOLOGISCHES SCHIMMELRISIKO",
+    "auditOberflächeOptimal": "AUDIT: OBERFLÄCHE OPTIMAL",
+    "ihrRechenwegTaupunktUnd": "Ihr Rechenweg: Taupunkt und Oberflächenfeuchte",
+    "sättigungsdampfdruckDerRaumluft": "Sättigungsdampfdruck der Raumluft",
+    "vorhandenerWasserdampfteildruck": "Vorhandener Wasserdampfteildruck",
+    "umkehrungDerMagnusFormel": "Umkehrung der Magnus-Formel: Bei dieser Temperatur ist die Luft gesättigt (φ = 100 %):",
+    "schimmelgrenze80RF": "Schimmelgrenze (80 % r. F.)",
+    "gesuchtIstDieTemperatur": "Gesucht ist die Temperatur, bei der p genau 80 % des Sättigungsdrucks beträgt:",
+    "relativeFeuchteAnDer": "Relative Feuchte an der Oberfläche",
+    "liegtSiDauerhaftÜber": "Liegt φ_si dauerhaft über 80 %, droht Schimmelpilzwachstum; bei θ_si ≤ θ_s fällt Tauwasser aus.",
+    "din410832024": "DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium)",
+    "temperaturTC": "Temperatur T (°C)",
+    "wasserdampfpartialdruckPPa": "Wasserdampfpartialdruck p (Pa)",
+    "schichtNachObenVerschieben": "Schicht nach oben verschieben",
+    "schichtNachUntenVerschieben": "Schicht nach unten verschieben",
+    "schichtEntfernen": "Schicht entfernen",
+    "konstruktionGünstigDieInnenseitigen": "Konstruktion günstig: Die innenseitigen Schichten bieten einen höheren Wasserdampfwiderstand als die Bauteilaußenseite. Feuchte dringt schwer ein, aber leicht nach außen ab.",
+    "innenDichterAlsAußen": "Innen dichter als außen, aber im Glaser-Klima rechnerisch Tauwasser: Tauwassermasse und Verdunstung nach DIN 4108-3 nachweisen (Grenzwerte u. a. 1,0 kg/m² gesamt, 0,5 kg/m² an nicht kapillar wasseraufnahmefähigen Schichtgrenzen).",
+    "kritischerKonstruktionsfehlerDieÄußeren": "Kritischer Konstruktionsfehler! Die äußeren Bauteilschichten bremsen den Dampf stärker als die inneren Schichten. Feuchte sammelt sich im Inneren an und kann nicht austrocknen.",
+    "außenDiffusionsdichterAlsInnen": "Außen diffusionsdichter als innen – für diesen Aufbau rechnerisch unkritisch. Wärmedämmverbundsysteme auf Mauerwerk sind nach DIN 4108-3 ohne Nachweis zulässig.",
+    "sättigungsdampfdruckPSatPa": "Sättigungsdampfdruck p_sat [Pa]",
+    "partialdampfdruckPPa": "Partialdampfdruck p [Pa]",
+    "diffusionsäquivalenteLuftschichtdickeSD": "Diffusionsäquivalente Luftschichtdicke s_d (kumuliert, innen → außen)",
+    "dampfdruckPa": "Dampfdruck (Pa)",
+    "dauerDerTauperiodeIn": "Dauer der Tauperiode in Tagen",
+    "grundkriterienNachDin4108": "Grundkriterien nach DIN 4108-3 erfüllt: m_c ≤ 1 000 g/m² und m_ev > m_c. Zusätzlich gilt 500 g/m² an Grenzflächen nicht kapillar wasseraufnahmefähiger Schichten; bei Holz und Holzwerkstoffen die zulässige Feuchteerhöhung beachten.",
+    "dasBauteilTrocknetIn": "Das Bauteil trocknet in der Verdunstungsperiode nicht sicher aus oder die Tauwassermasse ist zu groß. Abhilfe: raumseitig diffusionshemmende Schicht (Dampfbremse) oder außen diffusionsoffenere Schichten.",
+    "beispiel1TaupunktUnd": "Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums",
+    "schimmelDrohtDeutlichOberhalb": "Schimmel droht deutlich oberhalb des Taupunkts. Mehr Lüften senkt p und damit beide Grenztemperaturen; Dämmung hebt die Oberflächentemperatur.",
+    "din4108320242": "DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05",
+    "beispiel2SD": "Beispiel 2: s_d-Werte und die Regel „innen dichter als außen“",
+    "dieFaustregelGiltVor": "Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis.",
+    "bemessungswerteNachDin4108": "Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "MAT_LIBRARY.beton_arm": {
+      "id": "beton_arm",
+      "name": "Stahlbeton (tragend, μ 80/130 – hier 80)",
+      "mu": 80,
+      "defaultD": 0.2,
+      "lambda": 2.3
+    },
+    "MAT_LIBRARY.eps": {
+      "id": "eps",
+      "name": "EPS (Polystyrol, WLS 035)",
+      "mu": 50,
+      "defaultD": 0.16,
+      "lambda": 0.035
+    },
+    "Feuchteschutz.schritte": [
+      {
+        "titel": "Dampfdruck",
+        "erklaerung": "Raumklima 20 °C / 50 % r. F.:",
+        "formel": "p_{sat}(20\\,^\\circ\\text{C}) = 2\\,337\\,\\text{Pa}, \\quad p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}"
+      },
+      {
+        "titel": "Taupunkt",
+        "erklaerung": "Umkehrung der Magnus-Formel:",
+        "formel": "\\ln\\frac{1\\,169}{610{,}5} = 0{,}650 \\Rightarrow \\theta_d = \\frac{237{,}3 \\cdot 0{,}650}{17{,}269 - 0{,}650} = 9{,}3\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Schimmelgrenze (80 % r. F.)",
+        "erklaerung": "Sättigungsdampfdruck, bei dem die Oberflächenfeuchte 80 % erreicht:",
+        "formel": "p_{sat} = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Bei höherer Raumfeuchte",
+        "erklaerung": "Bad oder schlecht gelüftetes Schlafzimmer mit 65 % r. F.:",
+        "formel": "p = 1\\,519\\,\\text{Pa} \\Rightarrow \\theta_d = 13{,}2\\,^\\circ\\text{C}, \\quad \\theta_{si,min} = 16{,}7\\,^\\circ\\text{C}"
+      }
+    ],
+    "Feuchteschutz.schritte_2": [
+      {
+        "titel": "Innen",
+        "erklaerung": "Gipsputz 1,5 cm (µ = 10) und Hochlochziegel 24 cm (µ = 5):",
+        "formel": "s_{d,innen} = 10 \\cdot 0{,}015 + 5 \\cdot 0{,}24 = 0{,}15 + 1{,}20 = 1{,}35\\,\\text{m}"
+      },
+      {
+        "titel": "Außen",
+        "erklaerung": "EPS 16 cm (µ = 50) und Kalk-Zement-Putz 2 cm (µ = 25):",
+        "formel": "s_{d,außen} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Das Glaser-Diagramm oben zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.",
+        "formel": "s_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}"
+      }
+    ],
+    "Feuchteschutz.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Hens, H.: Building Physics – Heat, Air and Moisture. 3. Aufl., Berlin: Ernst & Sohn 2017"
+    ],
+    "Feuchteschutz.regelwerke": [
+      {
+        "title": "DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz; ersetzt 2018-10)"
+      },
+      {
+        "title": "DIN EN ISO 13788:2013-05 (Wärme- und feuchtetechnisches Verhalten von Bauteilen – Raumseitige Oberflächentemperatur zur Vermeidung kritischer Oberflächenfeuchte und Tauwasserbildung im Bauteilinneren)"
+      },
+      {
+        "title": "DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)"
+      },
+      {
+        "title": "DIN 4108-4:2020-11 (Bemessungswerte µ und λ)"
+      }
+    ],
+    "Feuchteschutz.formeln": [
+      {
+        "formel": "s_d = \\mu \\cdot d",
+        "erklaerung": "Äquivalente Luftschichtdicke [m] zur Charakterisierung des Dampfdiffusionswiderstandes einer Schicht mit Dicke d und Wasserdampfdiffusionswiderstandszahl µ.",
+        "quelle": "DIN 4108-3"
+      },
+      {
+        "formel": "p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17{,}269 \\cdot T}{237{,}3 + T}} \\; (T \\ge 0), \\quad 610{,}5 \\cdot e^{\\frac{21{,}875 \\cdot T}{265{,}5 + T}} \\; (T < 0)",
+        "erklaerung": "Sättigungsdampfdruck [Pa] von Wasserdampf über Wasser (T ≥ 0 °C) bzw. über Eis (T < 0 °C) in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.",
+        "quelle": "DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05"
+      },
+      {
+        "formel": "m_c = \\delta_0 \\cdot \\Delta t \\cdot \\left( \\frac{p_i - p_{sat}(T_C)}{s_{d,1}} - \\frac{p_{sat}(T_C) - p_e}{s_{d,2}} \\right)",
+        "erklaerung": "Tauwassermasse m_c [g/m²] der Tauperiode an der Tauwasserebene C (Periodenbilanzverfahren); δ_0 = 7,2 · 10⁻⁷ kg/(m·h·Pa), Δt = Dauer der Tauperiode in h, s_d,1 bzw. s_d,2 = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene.",
+        "quelle": "DIN 4108-3:2024-03"
+      }
+    ]
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "texte": {
+    "farbenLackeImBauwesen": "Farben & Lacke im Bauwesen",
+    "umfassendesKompendiumÜberBeschichtungssy": "Umfassendes Kompendium über Beschichtungssysteme, Bindemittel-Chemie, Schichtdicken-Berechnung und VOC-Regularien",
+    "allgemeineÜbersicht": "Allgemeine Übersicht",
+    "die4Hauptbestandteile": "Die 4 Hauptbestandteile",
+    "chemieFilmbildung": " Chemie & Filmbildung",
+    "schichtdickenMengenschätzer": " Schichtdicken- & Mengenschätzer",
+    "schadstoffeVocGrenzwerte": "Schadstoffe & VOC-Grenzwerte",
+    "oberflächenschutzsystemeOs": " Oberflächenschutzsysteme (OS)",
+    "bedeutungVonBeschichtungenIm": "Bedeutung von Beschichtungen im Hoch- und Tiefbau",
+    "farbenLackeUndLasuren": "Farben, Lacke und Lasuren sind im Bauwesen weit mehr als reine Gestaltungselemente. Sie bilden die erste Abwehrschicht eines Bauteils gegen aggressive Umwelteinflüsse, Chloride, Feuchtigkeit, UV-Strahlung und sauren Regen.",
+    "einOptimalGewähltesBeschichtungssystem": "Ein optimal gewähltes Beschichtungssystem entscheidet maßgeblich über die **Instandhaltungszyklen und Nutzungsdauer** von Betonfassaden, Holzkonstruktionen und Stahltragwerken (Korrosionsschutzschichten).",
+    "verhinderungVonFeuchtigkeitseintrittRege": "Verhinderung von Feuchtigkeitseintritt (Regenschutz), Abwehr von gasförmigen Schadstoffen (z.B. CO₂-Bremse zur Vermeidung von Betonkarbonatisierung) und Schutz vor UV-Degradation von organischen Baustoffen (Holz, Kunststoffe).",
+    "hygieneRaumklima": "Hygiene & Raumklima",
+    "einstellungDerRaumfeuchteDurch": "Einstellung der Raumfeuchte durch diffusionsoffene Innenanstriche (Zweiwege-Feuchteregulierung). Mineralische Farben (Kalk- und Silikatfarben) verhindern die Ansiedlung von Schimmelpilzen auf vollkommen natürliche, biozidfreie Weise dank ihres sehr guten pH-Wertes.",
+    "ästhetikLichtausbeute": "Ästhetik & Lichtausbeute",
+    "glanzgradUndHelligkeitskoeffizientenBeei": "Glanzgrad und Helligkeitskoeffizienten beeinflussen die Tageslichtnutzung im Gebäudeinneren und können Wärmeabsorptionen an Außenfassaden steuern (Stichwort: Reflektion von Infrarotlicht zur Vermeidung städtischer Wärmeinseln).",
+    "praktischerBauTipp": "Praktischer Bau-Tipp:",
+    "untergründeMüssenVorDer": " Untergründe müssen vor der Ausführung stets fest, sauber, trocken und tragfähig sein. Die häufigste Fehlerursache bei Abplatzungen ist eine mangelhafte Vorbereitung (Zementleierschichten auf Beton, kriechende Holzfeuchte oder ungeeignete Altanstriche als Trennlagen). Ein einfacher Gitterschnitt-Test nach DIN EN ISO 2409 offenbart die Haftfestigkeit von Bestandsschichten!",
+    "worausBestehtEinBeschichtungsstoff": "Woraus besteht ein Beschichtungsstoff?",
+    "nahezuAlleFarbenUnd": "Nahezu alle Farben und Lacke setzen sich aus vier funktionalen Komponentengruppen zusammen:",
+    "dasBindemittelDieBasis": "Das Bindemittel (Die Basis)",
+    "diePrimäreTrägerkomponenteDes": "Die primäre Trägerkomponente des Beschichtungsstoffs. Sie verbindet die Pigmentpartikel untereinander und verklebt sie dauerhaft mit dem Untergrund. Nach der Trocknung bildet das Bindemittel den eigentlichen Schutzfilm.",
+    "beispieleAcrylharzeAlkydharzeEpoxidharze": "**Beispiele:** Acrylharze, Alkydharze, Epoxidharze, Silikate (Kaliwasserglas), Sumpfkalk, Polyurethane.",
+    "lösemittelWasserTrägermaterial": "Lösemittel / Wasser (Trägermaterial)",
+    "ermöglichtDasFlüssigeAufbringen": "Ermöglicht das flüssige Aufbringen und Einstellen der optimalen Viskosität für Rollen, Streichen oder Spritzen. Nach dem Auftrag verdunstet es vollständig und ist somit an der endgültigen Schutzwirkung nicht direkt beteiligt.",
+    "beispieleWasserBeiDispersions": "**Beispiele:** Wasser (bei Dispersions- und Acrylfarben), Benzine (Kunstharzlacke), Alkohole, Ester.",
+    "pigmenteFüllstoffeFarbaufbau": "Pigmente & Füllstoffe (Farbaufbau)",
+    "pigmenteLiefernDenFarbton": "Pigmente liefern den Farbton und sorgen für Deckkraft und UV-Schutz. Füllstoffe (Kreide, Talkum, Schwerspat) regulieren den Glanzgrad, die Dichte, die Viskosität und erhöhen den mechanischen Festkörperanteil.",
+    "beispieleTitandioxidWeißpigmentEisenoxid": "**Beispiele:** Titandioxid (Weißpigment), Eisenoxide (Rot/Gelb), Kreidemehl, Siliziumdioxid.",
+    "additiveSpezialhelfer": "Additive (Spezialhelfer)",
+    "inKleinstmengen01": "In Kleinstmengen (0,1 – 2 %) zugesetzt, um gezielte Verarbeitungseigenschaften einzustellen. Sie steuern das Fließverhalten, verhindern Schimmelbildung im Gebinde oder beschleunigen die Trocknung.",
+    "beispieleEntschäumerVerlaufshilfsmittelT": "**Beispiele:** Entschäumer, Verlaufshilfsmittel, Topfkonservierer (Biozide), Trockenstoffe (Sikkative für Öle).",
+    "dieBindemittelBibliothek": "Die Bindemittel-Bibliothek",
+    "vergleichendeAnalyseAllerBaurelevanten": "Vergleichende Analyse aller baurelevanten Bindemittelarten und ihrer GISCODE-Einstufungen",
+    "giscodePufCode": "GISCODE / PUF-Code",
+    "dieDecopaintRichtlinie2004": "Die Decopaint-Richtlinie (2004/42/EG) & VOC-Belastung",
+    "vocVolatileOrganicCompounds": "**VOC (Volatile Organic Compounds)** sind flüchtige organische Kohlenwasserstoffe, die beim Trocknen von weichmacher- und lösemittelhaltigen Anstrichen in die Atemluft übergehen. Hohe Konzentrationen führen zu gesundheitlichen Belastungen im Innenraum (Sick-Building-Syndrom) und belasten im Außenbereich die Umwelt.",
+    "dieEuropäischeDecopaintRichtlinie": "Die europäische **Decopaint-Richtlinie** begrenzt den VOC-Höchstgehalt (Gramm VOC je Liter gebrauchsfertiges Produkt) für baurelevante Farben und Lacke.",
+    "grenzwerteFürAusgewählteProduktkategorie": "Grenzwerte für ausgewählte Produktkategorien nach Anhang II A (Phase II):",
+    "wässrigWbGL": "Wässrig (Wb) / [g/l]",
+    "lösemittelbasiertSbGL": "Lösemittelbasiert (Sb) / [g/l]",
+    "umweltzeichenBlauerEngelDe": "Umweltzeichen „Blauer Engel“ (DE-UZ 102)",
+    "dieKriterienDesBlauen": "Die Kriterien des Blauen Engels für emissionsarme Innenwandfarben gehen weit über die gesetzlichen VOC-Mindestanforderungen hinaus:",
+    "maxVocGehalt1": "Max. VOC-Gehalt: ≤ 1 g/Liter (fast lösemittelfrei)",
+    "begrenzungVonWeichmachernUnd": "Begrenzung von Weichmachern und schwerflüchtigen Stoffen (SVOC; Kriterien DE-UZ 102, Ausgabe Januar 2019, Version 7 von 07/2025)",
+    "strengeGrenzwerteFürIsothiazolinone": "Strenge Grenzwerte für Isothiazolinone (übliche Biozide als Topfkonservierer, die Allergien auslösen können)",
+    "giscodeKlassifizierungssystemDerBg": "GISCODE-Klassifizierungssystem der BG BAU",
+    "derGiscodeDientHandwerkern": "Der GISCODE dient Handwerkern und Planern zur schnellen Einstufung des Arbeitsschutzes und der gesundheitlichen Gefährdung bei der Verarbeitung vor Ort:",
+    "bsw10Bsw20WässrigeBeschichtungsstoffe": "**BSW10 / BSW20:** Wässrige Beschichtungsstoffe, weichmacherfrei bzw. lösemittelarm (sehr geringe Gefährdung).",
+    "bsl25LösemittelbasierteBautenschutzlacke": "**BSL25:** Lösemittelbasierte Bautenschutzlacke (erforderliche Schutzmaßnahmen wie Atemschutz).",
+    "re30EpoxidharzprodukteSensibilisierendZw": "**RE30:** Epoxidharzprodukte, sensibilisierend (zwingend Schutzhandschuhe erforderlich).",
+    "oberflächenschutzsystemeOsFürBeton": "Oberflächenschutzsysteme (OS) für Beton nach DIN EN 1504-2",
+    "betonbauwerkeInsbesondereParkhäuserTiefg": "Betonbauwerke, insbesondere Parkhäuser, Tiefgaragen, Brücken und Tunnel, sind im Laufe ihrer Lebensdauer hohen physikalischen und chemischen Beanspruchungen ausgesetzt (Frost-Tausalz-Angriffe, Karbonatisierung, Chlorideindrang, mechanischer Verschleiß).",
+    "oberflächenschutzsystemeOsNachDin": "Oberflächenschutzsysteme (OS) nach **DIN EN 1504-2** und der ergänzenden deutschen **TR Instandhaltung (DAfStb)** verhindern das Eindringen schädlicher Stoffe in das Porensystem des Betons. Damit stoppen sie das Fortschreiten der Karbonatisierung und verhindern die chloridinduzierte Korrosion der Stabbewehrung nachhaltig.",
+    "systemKlassifizierungOs1": " System-Klassifizierung (OS 1 bis OS 11)",
+    "wählenSieEinSystem": "Wählen Sie ein System aus, um eine vollständige Detailkarte mit Schichtaufbau und typischer Applikations-Chemie anzuzeigen:",
+    "aktuellesSystem": "Aktuelles System: ",
+    "typischeSchichtdicke": "Typische Schichtdicke:",
+    "verwendetesBindemittel": "Verwendetes Bindemittel:",
+    "mittlererMaterialbedarf": "Mittlerer Materialbedarf:",
+    "schichtaufbauApplikation": "Schichtaufbau (Applikation)",
+    "bindemittelWirkprinzipienDerBauchemikal": " Bindemittel-Wirkprinzipien (Der Bauchemikal-Link)",
+    "jedesOberflächenschutzsystemBasiertAuf": "Jedes Oberflächenschutzsystem basiert auf spezifischen bauchemischen Molekülgruppen. Hier ist die strukturierte Übersicht nach Wirkungsweise:",
+    "zugeordneteOsSysteme": "Zugeordnete OS-Systeme",
+    "chemischerProzess": "Chemischer Prozess",
+    "vorteileEigenschaften": "Vorteile / Eigenschaften",
+    "silaneSiloxane": "Silane & Siloxane",
+    "os1Hydrophobierung": "OS 1 (Hydrophobierung)",
+    "reagierenMitDenSilanolgruppen": "Reagieren mit den Silanolgruppen der C-S-H-Phasen des Betons unter Abspaltung von Alkohol (Kondensation). Bilden eine polymere, unlösliche Auskleidung der Porenoberflächen, ohne die Poren zu verschließen.",
+    "sehrHoheEindringtiefe1mm": "Sehr hohe Eindringtiefe (> 1mm), absolut wasserdampfdurchlässig (s_d < 0,01 m), verringert Frost-Tausalz-Angriffe drastisch.",
+    "keinSchutzVorKohlendioxid": "Kein Schutz vor Kohlendioxid (Karbonatisierung), keine Rissüberbrückung.",
+    "t2kEpoxidharzeEp": "2K-Epoxidharze (EP)",
+    "polyadditionVonFlüssigenEpoxid": "Polyaddition von flüssigen Epoxid-Prepolymeren (Bisphenol-A) mit Amin-Härtern. Es entsteht ein dicht vernetztes, duroplastisches Polymergitter.",
+    "hoheDruckUndAbriebfestigkeit": "Hohe Druck- und Abriebfestigkeit, gute Alkalibeständigkeit, unempfindlich gegenüber schweren mechanischen Lasten.",
+    "starrKeineRissüberbrückungFrost": "Starr (keine Rissüberbrückung), frost- und vergilbungsempfindlich bei starker UV-Strahlung im Außenbereich.",
+    "t2kPolyurethanePu": "2K-Polyurethane (PU)",
+    "os11aOs11b": "OS 11a, OS 11b",
+    "polyadditionVonPolyisocyanatenMit": "Polyaddition von Polyisocyanaten mit Polyolen. Durch gezielte Auswahl linearer Isocyanate wird ein hochelastischer Schutzfilm (Elastomer) erzielt.",
+    "hochelastischSehrGuteDynamische": "Hochelastisch, sehr gute dynamische Rissüberbrückung bei Minustemperaturen (-20 °C), UV-beständig bei aliphatischer Härter-Basis.",
+    "feuchtigkeitsempfindlichWährendDerHärtun": "Feuchtigkeitsempfindlich während der Härtung (Blasenbildung durch CO₂-Ausgasung bei Feuchtkontakt), geringere Ritzhärte als EP.",
+    "os2Os4": "OS 2, OS 4, OS 5a",
+    "physikalischeFilmbildungDurchVerdunstung": "Physikalische Filmbildung durch Verdunstung des Wassers und anschließende Koaleszenz der Polymer-Nanopartikel. Die polare Molekülstruktur hemmt Gase.",
+    "hoheCoBremswirkungS": "Hohe CO₂-Bremswirkung (s_d,CO₂ ≥ 50 m gefordert), wasserbasiert (sehr umweltfreundlich / geruchlos), optimal für vertikale Sichtbetonflächen.",
+    "nichtBefahrbarMäßigeStatische": "Nicht befahrbar, mäßige statische Rissüberbrückung.",
+    "interaktiverOsSystemKonfigurator": " Interaktiver OS-System-Konfigurator & Materialrechner",
+    "definierenSieIhrenAnwendungsfall": "Definieren Sie Ihren Anwendungsfall, um die ideale Spezifikation (nach TR Instandhaltung) und die exakt kalkulierten Materialmengen (in kg) zu erhalten.",
+    "t1ProjektflächeM": "1. Projektfläche (m²)",
+    "zurBerechnungDerGesamt": "Zur Berechnung der Gesamt-Materialmengen",
+    "t2EinsatzbereichBauteil": "2. Einsatzbereich / Bauteil",
+    "t3BruchBzwRissrisiko": "3. Bruch- bzw. Rissrisiko",
+    "t4MechanischeRollbeanspruchung": "4. Mechanische Rollbeanspruchung",
+    "reaktionsharzBeschichtungenEpPu": "Reaktionsharz-Beschichtungen (EP/PU) dürfen nur verarbeitet werden, wenn die Betonfeuchte **< 4,0 %** (CM-Methode) beträgt und die Substrattemperatur mindestens **3 Kelvin über dem Taupunkt** liegt!",
+    "technischEmpfohleneKonfigurationTr": "Technisch empfohlene Konfiguration (TR Instandhaltung):",
+    "kalkulierterGesamtbedarfFür": "Kalkulierter Gesamtbedarf für ",
+    "komponenteSchichtleistung": "Komponente / Schichtleistung",
+    "zusammenfassungHarzSand": "ZUSAMMENFASSUNG HARZ & SAND:",
+    "ausführungskriterienBetonvorbereitungDin": " Ausführungskriterien & Betonvorbereitung (DIN 1045-3):",
+    "untergrundfestigkeitDieHaftzugfestigkeit": "**Untergrundfestigkeit:** Die Haftzugfestigkeit (Abreißtest) der vorbereiteten Betonrandzone muss im Mittel mindestens **1,5 N/mm²** betragen (kleinster Einzelwert > 1,0 N/mm²).",
+    "rautiefeEgalisierungBeiGrobem": "**Rautiefe (Egalisierung):** Bei grobem Betonprofil muss zwingend eine OS-Ausgleichsspachtelung aus feinkörnigem Reaktionsharzmörtel appliziert werden, da ansonsten Deckungsfehlstellen durch Porenblasen (\"Pinholes\") entstehen.",
+    "taupunktRegelEineKondensatbildung": "**Taupunkt-Regel:** Eine Kondensatbildung auf dem Beton führt bei EP/PU-Harzen zur sofortigen Enthaftung (Ablösen). Die Bauteiloberfläche muss mindestens 3 K wärmer sein als die Taupunkttemperatur.",
+    "witterungRelativeLuftfeuchte80": "**Witterung:** Relative Luftfeuchte < 80 % zur Vermeidung von Carbamatbildung (Klebriger Schleier an der Oberfläche von Epoxidharzen) einhalten."
+  },
+  "werte": {
+    "nichtBefahrbar": "Nicht befahrbar",
+    "t1ProjektflächeM": "1. Projektfläche (m²)",
+    "t2EinsatzbereichBauteil": "2. Einsatzbereich / Bauteil",
+    "t3BruchBzwRissrisiko": "3. Bruch- bzw. Rissrisiko",
+    "t4MechanischeRollbeanspruchung": "4. Mechanische Rollbeanspruchung",
+    "starrBefahrbaresParkhausBeschichtungssys": "Starr befahrbares Parkhaus-Beschichtungssystem",
+    "os11bElastischesBefahrbares": "OS 11b – Elastisches befahrbares System (einschichtig)",
+    "empfohlenFürFeuchtekritischeTiefgaragenb": "Empfohlen für feuchtekritische Tiefgaragenböden mit Gefahr von dynamischen Setzungsrissen. Bei drückendem Grundwasser muss rückseitige Feuchtigkeit ausgeschlossen werden (sonst Osmoseblasengefahr!).",
+    "os8StarreBefahrbare": "OS 8 – Starre befahrbare Beschichtung",
+    "bewährtesStarresSystemFür": "Bewährtes starres System für Garagenböden ohne Rissbewegungen; sehr abriebfest.",
+    "os11aErhöhteDynamische": "OS 11a – Erhöhte dynamische Rissüberbrückung (zweischichtig)",
+    "fürFreiBewitterteParkdecks": "Für frei bewitterte Parkdecks mit Rissbewegungen; schützt den Beton vor eindringenden Tausalzlösungen (Anforderungen nach DAfStb-Richtlinie Schutz und Instandsetzung bzw. TR Instandhaltung).",
+    "os1Hydrophobierung": "OS 1 – Hydrophobierung",
+    "einfachesUndHocheffektivesVerfahren": "Einfaches und hocheffektives Verfahren für mineralische Überbau-Teile zur Erhöhung des Frost-Widerstands und Abperlen des Wassers.",
+    "os5bBeschichtungMit": "OS 5b – Beschichtung mit geringer Rissüberbrückung",
+    "bietetDauerhaftenWitterungsschutzAuch": "Bietet dauerhaften Witterungsschutz auch bei rissanfälligen Betonfertigteil-Fassaden im Außenbereich.",
+    "os5aBeschichtungMit": "OS 5a – Beschichtung mit geringer Rissüberbrückung",
+    "kostengünstigerHaarrissAbdeckerFür": "Kostengünstiger Haarriss-Abdecker für Wände im schattigen Außen- oder Innenbereich.",
+    "os4BeschichtungMit": "OS 4 – Beschichtung mit erhöhter Dichtheit (CO₂-Bremse)",
+    "optimalFürDichteBetonschutzanstriche": "Optimal für dichte Betonschutzanstriche auf Brückenpfeilern, Lärmschutzwänden und Architekturbetonschichten zur Bewahrung des alkalischen Milieus.",
+    "os8StarreEp": "OS 8 – Starre EP-Beschichtung für mechanisch stark beanspruchte Flächen",
+    "inIndustriehallenIstHoher": "In Industriehallen ist hoher Verschleißwiderstand gefordert. Eine Abstreuung mit feuergetrocknetem Quarzsand verhindert Absplitterung durch Staplerverkehr.",
+    "os2DünneBeschichtung": "OS 2 – Dünne Beschichtung für nicht begeh- und befahrbare Flächen",
+    "dünneBeschichtungZurVerringerung": "Dünne Beschichtung zur Verringerung der kapillaren Wasseraufnahme frei bewitterter, nicht erdberührter Sockel- und Wandflächen im Spritzwasserbereich; keine Abdichtung gegen Bodenfeuchte (dafür DIN 18533).",
+    "anwendungsbeispielNassschichtdickeUndVer": "Anwendungsbeispiel: Nassschichtdicke und Verbrauch einer Fassadenfarbe",
+    "dinEnIso2808": "DIN EN ISO 2808 (Schichtdicke); Volumenfestkörper VS als Herstellerangabe",
+    "jeGeringerDerFestkörperanteil": "Je geringer der Festkörperanteil, desto dicker muss nass aufgetragen werden – zwei Anstriche sind meist sicherer als einer.",
+    "flüchtigeOrganischeVerbindungenVoc": "Flüchtige organische Verbindungen (VOC)"
+  },
+  "daten": {
+    "BpFarbenLacke": [
+      {
+        "cat": "a",
+        "name": "Wandfarben für den Innenbereich (matt, Glanz < 25@85°)",
+        "wb": "30 g/l",
+        "sb": "30 g/l (selten)",
+        "desc": "Standarddispersionsfarben"
+      },
+      {
+        "cat": "b",
+        "name": "Wandfarben für den Innenbereich (glänzend)",
+        "wb": "100 g/l",
+        "sb": "100 g/l",
+        "desc": "Latexfarben, Seidenglanz"
+      },
+      {
+        "cat": "c",
+        "name": "Fassadenfarben für Außenwände (mineralisch/organisch)",
+        "wb": "40 g/l",
+        "sb": "430 g/l",
+        "desc": "Silikatfassaden, Siliconharze"
+      },
+      {
+        "cat": "d",
+        "name": "Innen-/Außenlacke für Holz und Metall (Bautenschutz)",
+        "wb": "130 g/l",
+        "sb": "300 g/l",
+        "desc": "Acryllacke, Alkydharzlacke"
+      },
+      {
+        "cat": "i",
+        "name": "Einkomponenten-Speziallacke (z.B. Parkettsiegel)",
+        "wb": "140 g/l",
+        "sb": "500 g/l",
+        "desc": "Besonders schlagfeste Siegel"
+      },
+      {
+        "cat": "j",
+        "name": "Zweikomponenten-Speziallacke (z.B. EP-Estrichbeschichtungen)",
+        "wb": "140 g/l",
+        "sb": "500 g/l",
+        "desc": "Industrielle EP- und PUR-Schutzanstriche"
+      }
+    ],
+    "BpFarbenLacke.materialDefinitions": {
+      "os1": [
+        {
+          "material": "Chemischer Silan-Hydrophobierstoff (lösemittelfrei)",
+          "rate": 0.35,
+          "remark": "Flutend per Airless oder Flutlanze applizieren (nass in nass)"
+        }
+      ],
+      "os2": [
+        {
+          "material": "Grundierung (Acrylat, niedrigviskos)",
+          "rate": 0.1,
+          "remark": "Porenfüllend, ggf. nach Hydrophobierung"
+        },
+        {
+          "material": "Oberflächenschutzschicht Acrylat (1. Anstrich)",
+          "rate": 0.15,
+          "remark": "Roll-Anstrich"
+        },
+        {
+          "material": "Oberflächenschutzschicht Acrylat (2. Anstrich)",
+          "rate": 0.15,
+          "remark": "Roll-Anstrich"
+        }
+      ],
+      "os4": [
+        {
+          "material": "Zementgebundene Porenfeinspachtelung (Mörtel)",
+          "rate": 1.5,
+          "remark": "Schließen von Betonlunkern"
+        },
+        {
+          "material": "Systemgrundierung Acrylat-Basis",
+          "rate": 0.18,
+          "remark": "Tiefenverankerung"
+        },
+        {
+          "material": "Reinacrylat-Schutzfarbe (1. Anstrich)",
+          "rate": 0.22,
+          "remark": "Farbtonaufbau"
+        },
+        {
+          "material": "Reinacrylat-Schutzfarbe (2. Anstrich)",
+          "rate": 0.22,
+          "remark": "Festlegung der endgültigen CO₂-Bremsschicht"
+        }
+      ],
+      "os5a": [
+        {
+          "material": "Cementitious PCC-Feinspachtel",
+          "rate": 1.5,
+          "remark": "Egalisierung"
+        },
+        {
+          "material": "Acrylat-Grundfestiger",
+          "rate": 0.2,
+          "remark": "Haftverbesserung"
+        },
+        {
+          "material": "Elastomer-Zwischenlage (Acrylat)",
+          "rate": 0.35,
+          "remark": "Fugen- und Haarrissabdeckung"
+        },
+        {
+          "material": "Elastomer-Dunkelbeschichtung (Acrylat)",
+          "rate": 0.35,
+          "remark": "Satte, schützende Deckschicht"
+        }
+      ],
+      "os5b": [
+        {
+          "material": "Grundierung bzw. Vornässen (nach Herstellerangabe)",
+          "rate": 0.2,
+          "remark": "Mattfeuchter, tragfähiger Untergrund"
+        },
+        {
+          "material": "Polymer/Zement-Beschichtung (1. Lage)",
+          "rate": 1.7,
+          "remark": "Kunststoffmodifizierte Schlämme, rissüberbrückend"
+        },
+        {
+          "material": "Polymer/Zement-Beschichtung (2. Lage)",
+          "rate": 1.7,
+          "remark": "Gesamtschichtdicke ca. 2 mm"
+        }
+      ],
+      "os8": [
+        {
+          "material": "2K-Epoxidharz-Grundierharz (lösungsmittelfrei)",
+          "rate": 0.45,
+          "remark": "Haftbrücke porentief einreiben"
+        },
+        {
+          "material": "Egalisierungs-Kratzspachtel (2K-EP + 50% Quarzmehl)",
+          "rate": 1.25,
+          "remark": "Schutz vor Porenrückschlag"
+        },
+        {
+          "material": "Zähes Basisharz (2K-Epoxidharz)",
+          "rate": 1.65,
+          "remark": "Satte Bindemittelschicht für Einstreuung"
+        },
+        {
+          "material": "Feuergetrockneter Einstreusand (Quarz, 0,4 - 0,8 mm)",
+          "rate": 4.5,
+          "remark": "Einstreuung im Überschuss (vollständig absanden. Überschuss fegen)"
+        },
+        {
+          "material": "Kopfversiegelung (pigmentierte 2K-EP-Rollversiegelung)",
+          "rate": 0.7,
+          "remark": "Sandeinbindung gegen Reifenabrieb"
+        }
+      ],
+      "os11a": [
+        {
+          "material": "2K-Epoxidharz-Systemgrundierung",
+          "rate": 0.4,
+          "remark": "Füllen der Betonkapillaren"
+        },
+        {
+          "material": "Hochelastische PU-Dichtungsschicht (Membran)",
+          "rate": 2,
+          "remark": "Rissüberbrückungs-Unterbau (unbesandet aufrakeln)"
+        },
+        {
+          "material": "Zähelastische PU-Verschleißschicht",
+          "rate": 1.6,
+          "remark": "Bindeschicht für Quarzsand"
+        },
+        {
+          "material": "Feuergetrockneter Quarzsand (0,4 - 0,8 mm)",
+          "rate": 5,
+          "remark": "Vollabsandung im Überschuss"
+        },
+        {
+          "material": "Chemikalienresistente PU-Kopfversiegelung (lichtecht)",
+          "rate": 0.8,
+          "remark": "Schutz vor Streusalz, Benzin und UV-Licht"
+        }
+      ],
+      "os11b": [
+        {
+          "material": "2K-Epoxidharz-Systemgrundierung",
+          "rate": 0.4,
+          "remark": "Absperrung Wasser"
+        },
+        {
+          "material": "Hochelastische Kombi-PU-Verschleißschicht",
+          "rate": 2.3,
+          "remark": "Einschichtige Dichtung & Verschleiß"
+        },
+        {
+          "material": "Feuergetrockneter Absandsand (0,4 - 0,8 mm)",
+          "rate": 5,
+          "remark": "Rutschfeste Abstreuung"
+        },
+        {
+          "material": "Abrieb- und lichtfeste PU-Kopfversiegelung",
+          "rate": 0.85,
+          "remark": "Witterungsstabile Schutzfarbe"
+        }
+      ]
+    },
+    "BpFarbenLacke.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "d_{dry} = 80\\,\\mu\\text{m},\\; VS = 40\\,\\%",
+        "erklaerung": "Ziel-Trockenschichtdicke einer OS-4-Deckbeschichtung (gesamt, zwei Anstriche)."
+      },
+      {
+        "titel": "2. Nassschichtdicke",
+        "formel": "d_{wet} = 80 / 0{,}40 = 200\\,\\mu\\text{m}",
+        "erklaerung": "Mit dem Nassschichtdickenkamm kontrollieren."
+      },
+      {
+        "titel": "3. Theoretischer Verbrauch",
+        "formel": "V = 200/1000 = 0{,}20\\,\\text{l/m}^2",
+        "erklaerung": "1 µm Nassfilm entspricht 1 ml/m²."
+      },
+      {
+        "titel": "4. Mit Verlusten (Rauheit, Rollen ca. 20 %)",
+        "formel": "V_{prakt} \\approx 0{,}20 \\cdot 1{,}2 = 0{,}24\\,\\text{l/m}^2",
+        "erklaerung": "Verlustfaktor als Lehrwert; Herstellerangaben beachten."
+      }
+    ],
+    "BpFarbenLacke.literatur": [
+      "Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network 2014 (Farbe und Lack – Bibliothek)",
+      "Brock, T.; Groteklaes, M.; Mischke, P.; Strehmel, B.: Lehrbuch der Lacktechnologie. 5., vollst. überarb. Aufl., Hannover: Vincentz Network 2017",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "BpFarbenLacke.regelwerke": [
+      {
+        "title": "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)"
+      },
+      {
+        "title": "Decopaint-Richtlinie 2004/42/EG (Begrenzung der Emissionen flüchtiger organischer Verbindungen)",
+        "url": "https://eur-lex.europa.eu/"
+      },
+      {
+        "title": "DIN EN ISO 2409 (Beschichtungsstoffe - Gitterschnittprüfung)"
+      },
+      {
+        "title": "DIN EN 1062-1 (Beschichtungsstoffe – Beschichtungssysteme für mineralische Untergründe und Beton im Außenbereich)"
+      },
+      {
+        "title": "DIN EN 1504-2 und DAfStb TR Instandhaltung (Oberflächenschutzsysteme OS)"
+      }
+    ],
+    "BpFarbenLacke.formeln": [
+      {
+        "formel": "d_{\\text{dry}} = d_{\\text{wet}} \\cdot \\frac{\\text{Festkörpervolumen}\\,[\\%]}{100}",
+        "erklaerung": "Berechnung der Trockenschichtdicke d_dry [µm] aus Nassschichtdicke d_wet und Festkörpergehalt (VS-Wert) nach DIN EN ISO 2808.",
+        "quelle": "DIN EN ISO 2808"
+      },
+      {
+        "formel": "m_{\\text{VOC}} = \\frac{m_v}{V_{\\text{Produkt}}} \\le \\text{Grenzwert}_{\\text{Decopaint}} \\quad [\\text{g/l}]",
+        "erklaerung": "VOC-Gehalt lösemittel- und wasserbasierter Anstrichstoffe zur Einhaltung der europäischen Grenzwerte (z.B. Innenwandfarben max. 30 g/l).",
+        "quelle": "Richtlinie 2004/42/EG"
+      }
+    ]
+  }
+}

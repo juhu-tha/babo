@@ -21,6 +21,8 @@ import '@/src/lib/chartSetup';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/statistik/Statistik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -270,7 +272,7 @@ export default function Statistik() {
     const cv = mean > 0 ? (stdDev / mean) * 100 : 0;
 
     let isOutlierFn = (v: number) => false;
-    let thresholdDesc = 'Wird nach Generierung berechnet...';
+    let thresholdDesc = inhalt.werte.wirdNachGenerierungBerechnet;
     let lowerBound = 0;
     let upperBound = 0;
     let formula = '';
@@ -281,7 +283,7 @@ export default function Statistik() {
         lowerBound = mean - threshold;
         upperBound = mean + threshold;
         isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `± 2σ (Faustregel)`;
+        thresholdDesc = inhalt.werte.t2Faustregel;
         formula = '\\mu \\pm 2\\sigma';
       } else if (outlierMethod === 'boxplot') {
         const q1 = sorted[Math.floor(n * 0.25)];
@@ -364,7 +366,7 @@ export default function Statistik() {
     return {
       datasets: [
         {
-          label: 'Gültige Werte',
+          label: inhalt.werte.gültigeWerte,
           data: dataPoints.filter(p => !p.isOutlier),
           backgroundColor: '#A3113E',
           pointRadius: 6,
@@ -379,7 +381,7 @@ export default function Statistik() {
           pointStyle: 'circle',
         },
         {
-          label: 'Mittelwert (bereinigt)',
+          label: inhalt.werte.mittelwertBereinigt,
           data: [{x: 0, y: stats.meanClean}, {x: numberOfSamples + 1, y: stats.meanClean}],
           borderColor: '#475569',
           borderWidth: 2,
@@ -387,7 +389,7 @@ export default function Statistik() {
           pointRadius: 0,
         },
         {
-          label: 'Charakt. Wert (X_k)',
+          label: inhalt.werte.charaktWertXK,
           data: [{x: 0, y: stats.xk}, {x: numberOfSamples + 1, y: stats.xk}],
           borderColor: '#64748b',
           borderWidth: 2,
@@ -396,7 +398,7 @@ export default function Statistik() {
           pointRadius: 0,
         },
         {
-          label: 'Bemessungswert (X_d)',
+          label: inhalt.werte.bemessungswertXD,
           data: [{x: 0, y: stats.xd}, {x: numberOfSamples + 1, y: stats.xd}],
           borderColor: '#64748b',
           borderWidth: 2,
@@ -405,7 +407,7 @@ export default function Statistik() {
           pointRadius: 0,
         },
         {
-          label: 'Ausreißer-Grenze (Oben)',
+          label: inhalt.werte.ausreißerGrenzeOben,
           data: testStatus === 'finished' ? [{x: 0, y: stats.upperBound}, {x: numberOfSamples + 1, y: stats.upperBound}] : [],
           borderColor: '#A3113E',
           borderWidth: 1,
@@ -414,7 +416,7 @@ export default function Statistik() {
           pointRadius: 0,
         },
         {
-          label: 'Ausreißer-Grenze (Unten)',
+          label: inhalt.werte.ausreißerGrenzeUnten,
           data: testStatus === 'finished' ? [{x: 0, y: stats.lowerBound}, {x: numberOfSamples + 1, y: stats.lowerBound}] : [],
           borderColor: '#A3113E',
           borderWidth: 1,
@@ -462,7 +464,7 @@ export default function Statistik() {
       datasets: [
         {
           type: 'line' as const,
-          label: 'Normalverteilung (bereinigt)',
+          label: inhalt.werte.normalverteilungBereinigt,
           data: gaussData,
           borderColor: '#64748b',
           backgroundColor: 'transparent',
@@ -488,13 +490,9 @@ export default function Statistik() {
         <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
           <Calculator size={24} />
         </div>
-        <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          Statistik & Auswertung
-        </h2>
+        <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.statistikAuswertung} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Mathematisch-statistische Auswertung von Baustoffuntersuchungen zur Ermittlung charakteristischer Festigkeitswerte nach DIN EN 1990, Anhang D.
-          </p>
+          <p><MdText text={inhalt.texte.mathematischStatistischeAuswertungVon} /></p>
         </div>
       </div>
 
@@ -507,8 +505,7 @@ export default function Statistik() {
           }`}
           onClick={() => setActiveTab('grundlagen')}
         >
-          <Calculator size={16} /> Grundlagen &amp; Begriffserklärer
-        </button>
+          <Calculator size={16} /><MdText text={inhalt.texte.grundlagenBegriffserklärer} /></button>
         <button aria-pressed={activeTab === 'probengenerator'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'probengenerator' 
@@ -527,18 +524,14 @@ export default function Statistik() {
           }`}
           onClick={() => setActiveTab('doe')}
         >
-          <Network size={16} /> Statistische Versuchsplanung (DoE)
-        </button>
+          <Network size={16} /><MdText text={inhalt.texte.statistischeVersuchsplanungDoe} /></button>
       </div>
 
       {activeTab === 'grundlagen' && (
       <div className="flex flex-col gap-8 animate-in fade-in duration-300">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 font-medium">
-            <p>
-              <strong>Statistische Auswertung von Materialkennwerten:</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. 
-              Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.
-            </p>
+            <p><MdText text={inhalt.texte.statistischeAuswertungVonMaterialkennwer} /></p>
           </div>
         </div>
 
@@ -546,13 +539,9 @@ export default function Statistik() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
           <div className="border-b border-home-grau/30 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-                <span className="p-1 px-2.5 bg-shiraz/10 text-shiraz rounded text-sm">💡</span>
-                Interaktiver Statistik-Begriffserklärer (Baustoff-Prüfsandbox)
-              </h3>
+                <span className="p-1 px-2.5 bg-shiraz/10 text-shiraz rounded text-sm">💡</span><MdText text={inhalt.texte.interaktiverStatistikBegriffserklärerBau} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            <strong>Anleitung:</strong> Ziehen Sie die kreisförmigen Proben (P1 bis P6) <strong>direkt im Diagramm</strong> nach links/rechts, nutzen Sie die Zylinderschieberegler darunter oder schalten Sie zwischen der <strong>Dichte-</strong> und <strong>Verteilungsfunktion</strong> um!
-          </p>
+          <p><MdText text={inhalt.texte.anleitungZiehenSieDie} /></p>
         </div>
             
             {/* Chart Mode Toggle Buttons */}
@@ -566,9 +555,7 @@ export default function Statistik() {
                     : 'text-stone-600 hover:text-stone-900'
                 }`}
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Dichtefunktion (PDF / Glocke)
-              </button>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><MdText text={inhalt.texte.dichtefunktionPdfGlocke} /></button>
               <button aria-pressed={interactiveChartMode === 'cdf'}
                 type="button"
                 onClick={() => setInteractiveChartMode('cdf')}
@@ -578,21 +565,15 @@ export default function Statistik() {
                     : 'text-stone-600 hover:text-stone-900'
                 }`}
               >
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                Verteilungsfunktion (CDF / S-Kurve)
-              </button>
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span><MdText text={inhalt.texte.verteilungsfunktionCdfSKurve} /></button>
             </div>
           </div>
 
           {/* Visual SVG Timeline Diagram */}
           <div className="bg-stone-50 border border-home-grau/15 rounded-xl p-4 flex flex-col items-center">
             <div className="w-full flex justify-between items-center mb-2 px-1">
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest select-none">
-                Glocken- &amp; Verteilungsfunktionen der Normalverteilung (MPa)
-              </span>
-              <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none">
-                Klicken &amp; Ziehen Sie die Messpunkte
-              </span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest select-none"><MdText text={inhalt.texte.glockenVerteilungsfunktionenDerNormalver} /></span>
+              <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none"><MdText text={inhalt.texte.klickenZiehenSieDie} /></span>
             </div>
             <div className="w-full max-w-[500px] aspect-[500/145] relative">
               <svg
@@ -849,9 +830,7 @@ export default function Statistik() {
 
           {/* Interactive Core Cylinder Specimens */}
           <div className="flex flex-col gap-2.5">
-            <span className="text-[10.5px] font-bold text-text-main/60 uppercase tracking-wider">
-              Zerstörende Prüfung simulieren (Zylinder-Bohrkerne feineinstellen):
-            </span>
+            <span className="text-[10.5px] font-bold text-text-main/60 uppercase tracking-wider"><MdText text={inhalt.texte.zerstörendePrüfungSimulierenZylinder} /></span>
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
               {interactiveSamples.map((v, idx) => (
                 <div key={idx} className="bg-stone-50 border border-home-grau/15 rounded-xl p-3 flex flex-col items-center gap-2 shadow-sm">
@@ -911,13 +890,11 @@ export default function Statistik() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]">μ</div>
-                <h4 className="font-bold text-xs text-emerald-950">Mittelwert (Arithmetisches Mittel)</h4>
+                <h4 className="font-bold text-xs text-emerald-950"><MdText text={inhalt.texte.mittelwertArithmetischesMittel} /></h4>
                 <span className="font-mono text-xs font-bold text-emerald-600 ml-auto">{formatDeZahl(intStats.mean, 2)} MPa</span>
               </div>
               <FormulaText text="\mu = \frac{1}{n} \sum_{i=1}^{n} x_i" />
-              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
-                Der <strong>Schwerpunkt</strong> der Werte – wie bei einem Waagebalken. Jeder Wert zieht an der Waage. Ein extremer Ausreißer verschiebt den Mittelwert stark mit.
-                <span className="text-emerald-700 block mt-1 font-semibold">📈 Tipp: Schieben Sie Probe 6 ganz nach rechts (80) und beobachten Sie den Mittelwert!</span>
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5"><MdText text={inhalt.texte.derSchwerpunktDerWerte} /><span className="text-emerald-700 block mt-1 font-semibold"><MdText text={inhalt.texte.tippSchiebenSieProbe} /></span>
               </p>
             </div>
 
@@ -933,15 +910,12 @@ export default function Statistik() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-[10px]">M</div>
-                <h4 className="font-bold text-xs text-blue-950">Median (Zentralwert)</h4>
+                <h4 className="font-bold text-xs text-blue-950"><MdText text={inhalt.texte.medianZentralwert} /></h4>
                 <span className="font-mono text-xs font-bold text-blue-600 ml-auto">{formatDeZahl(intStats.median, 1)} MPa</span>
               </div>
-              <div className="text-[9.5px] text-stone-500 font-mono mb-1 bg-stone-100 px-1.5 py-0.5 rounded inline-block">
-                Sortierte Messreihe: {intStats.sorted.map(x => formatDeZahl(x, 1)).join('; ')}
+              <div className="text-[9.5px] text-stone-500 font-mono mb-1 bg-stone-100 px-1.5 py-0.5 rounded inline-block"><MdText text={inhalt.texte.sortierteMessreihe} />{intStats.sorted.map(x => formatDeZahl(x, 1)).join('; ')}
               </div>
-              <p className="text-[11px] text-slate-600 leading-relaxed mt-1">
-                Teilt die sortierte Stichprobe exakt in <strong>zwei Hälften</strong> (50% kleiner, 50% größer). Der Median ist <strong>robust gegen Ausreißer</strong>: Egal wie hoch der Maximalwert ist – der Median bleibt in der Mitte der sortierten Reihe.
-              </p>
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1"><MdText text={inhalt.texte.teiltDieSortierteStichprobe} /></p>
             </div>
 
             {/* Standardabweichung Card */}
@@ -956,13 +930,11 @@ export default function Statistik() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-amber-600 text-white flex items-center justify-center font-bold text-[10px]">s</div>
-                <h4 className="font-bold text-xs text-amber-950">Standardabweichung (Streuungsbreite)</h4>
+                <h4 className="font-bold text-xs text-amber-950"><MdText text={inhalt.texte.standardabweichungStreuungsbreite} /></h4>
                 <span className="font-mono text-xs font-bold text-amber-600 ml-auto">s = {formatDeZahl(intStats.stdDev, 2)} MPa</span>
               </div>
               <FormulaText text="s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2}" />
-              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
-                Ein Maß für die typische Abweichung der Einzelwerte vom Mittelwert (Wurzel aus der Varianz). Sie spannt das <strong>gestreifte orange Band</strong> im Diagramm auf. Je homogener die Werte (enger beieinander), desto geringer ist die Standardabweichung und desto schmaler das Band.
-              </p>
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5"><MdText text={inhalt.texte.einMaßFürDie} /></p>
             </div>
 
             {/* Variationskoeffizient Card */}
@@ -977,13 +949,11 @@ export default function Statistik() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-indigo-650 text-white flex items-center justify-center font-bold text-[10px]">V</div>
-                <h4 className="font-bold text-xs text-indigo-950">Variationskoeffizient (Var.Koeff.)</h4>
+                <h4 className="font-bold text-xs text-indigo-950"><MdText text={inhalt.texte.variationskoeffizientVarKoeff} /></h4>
                 <span className="font-mono text-xs font-bold text-indigo-600 ml-auto">V = {formatDeZahl(intStats.cv, 1)} %</span>
               </div>
               <FormulaText text="V = \frac{s}{\mu} \cdot 100\,\%" />
-              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
-                Das relative Maß für die Streuung, normiert auf den Mittelwert. Macht die Streuung verschiedener Baustoffgüten direkt vergleichbar. Richtwerte: Transportbeton bei guter Produktionskontrolle etwa 8–12 %, Betonstahl meist unter 5 %, Bauholz 15–25 % (Orientierungswerte).
-              </p>
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5"><MdText text={inhalt.texte.dasRelativeMaßFür} /></p>
             </div>
 
           </div>
@@ -997,59 +967,50 @@ export default function Statistik() {
           schritte={[
             {
               titel: 'Mittelwert',
-              erklaerung: 'Summe aller Einzelwerte geteilt durch die Anzahl n:',
+              erklaerung: inhalt.werte.summeAllerEinzelwerteGeteilt,
               formel: `\\bar{x} = \\frac{${interactiveSamples.map(v => formatDeTeXWert(v)).join(' + ')}}{${formatDeTeX(intStats.n, 0)}} = \\frac{${formatDeTeXWert(interactiveSamples.reduce((a, v) => a + v, 0))}}{${formatDeTeX(intStats.n, 0)}} = ${formatDeTeX(intStats.mean, 2)}\\,\\text{MPa}`
             },
             {
               titel: 'Median',
               erklaerung: intStats.n % 2 === 0
-                ? 'Bei gerader Anzahl ist der Median der Mittelwert der beiden mittleren Werte der sortierten Reihe:'
-                : 'Bei ungerader Anzahl ist der Median der mittlere Wert der sortierten Reihe:',
+                ? inhalt.werte.beiGeraderAnzahlIst
+                : inhalt.werte.beiUngeraderAnzahlIst,
               formel: `${intStats.sorted.map(v => formatDeTeX(v, 1)).join(';\\; ')} \\;\\Rightarrow\\; \\tilde{x} = ${formatDeTeX(intStats.median, 1)}\\,\\text{MPa}`
             },
             {
-              titel: 'Quadratsumme der Abweichungen',
-              erklaerung: 'Jede Abweichung vom Mittelwert wird quadriert und aufsummiert:',
+              titel: inhalt.werte.quadratsummeDerAbweichungen,
+              erklaerung: inhalt.werte.jedeAbweichungVomMittelwert,
               formel: `\\sum (x_i - \\bar{x})^2 = ${formatDeTeX(intStats.stdDev * intStats.stdDev * (intStats.n - 1), 2)}\\,\\text{MPa}^2`
             },
             {
-              titel: 'Standardabweichung der Stichprobe',
-              erklaerung: 'Geteilt durch n − 1 (Freiheitsgrade), dann die Wurzel gezogen:',
+              titel: inhalt.werte.standardabweichungDerStichprobe,
+              erklaerung: inhalt.werte.geteiltDurchN1,
               formel: `s = \\sqrt{\\frac{${formatDeTeX(intStats.stdDev * intStats.stdDev * (intStats.n - 1), 2)}}{${formatDeTeX(intStats.n - 1, 0)}}} = ${formatDeTeX(intStats.stdDev, 2)}\\,\\text{MPa}`
             },
             {
               titel: 'Variationskoeffizient',
-              erklaerung: 'Streuung relativ zum Mittelwert:',
+              erklaerung: inhalt.werte.streuungRelativZumMittelwert,
               formel: `V = \\frac{${formatDeTeX(intStats.stdDev, 2)}}{${formatDeTeX(intStats.mean, 2)}} \\cdot 100\\,\\% = ${formatDeTeX(intStats.cv, 1)}\\,\\%`
             }
           ]}
-          ergebnisHinweis="Verschieben Sie einen Messwert im Diagramm oder per Regler – der Rechenweg rechnet sofort mit."
-          normQuelle="DIN EN 1990:2021-10, Anhang D"
+          ergebnisHinweis={inhalt.werte.verschiebenSieEinenMesswert}
+          normQuelle={inhalt.werte.dinEn19902021}
         />
 
         {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
         <FormulaDerivationBox
-          title="Beispiel 1: Charakteristischer Wert aus 10 Bohrkernen"
+          title={inhalt.werte.beispiel1CharakteristischerWert}
           zielGleichung="X_k = \bar{x} - k_n \cdot s,\qquad X_d = \frac{X_k}{\gamma_M}"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'Zehn Bohrkerne aus einer Bestandsdecke, Mittelwert 38,2 N/mm², Standardabweichung 3,1 N/mm²; Variationskoeffizient vorab unbekannt.', formel: 'n = 10,\\quad \\bar{x} = 38{,}2,\\quad s = 3{,}1\\,\\text{N/mm}^2' },
-            { titel: 'Fraktilfaktor', erklaerung: 'DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt) für n = 10:', formel: 'k_n = 1{,}92' },
-            { titel: 'Charakteristischer Wert', erklaerung: '5-%-Quantil mit Aussagewahrscheinlichkeit nach Anhang D:', formel: 'X_k = 38{,}2 - 1{,}92 \\cdot 3{,}1 = 32{,}2\\,\\text{N/mm}^2' },
-            { titel: 'Bemessungswert (vereinfacht)', erklaerung: 'Mit γ_M = 1,5 (Beton) ohne weitere Beiwerte:', formel: 'X_d = \\frac{32{,}2}{1{,}5} = 21{,}5\\,\\text{N/mm}^2' }
-          ]}
-          ergebnisHinweis="Mit nur n = 3 Kernen wäre k_n = 3,37 und X_k = 27,8 N/mm² – mehr Proben lohnen sich, weil der Sicherheitsabschlag für die unsichere Streuung sinkt."
-          normQuelle="DIN EN 1990:2021-10, Anhang D, Tab. D1"
+          schritte={inhalt.daten["Statistik.schritte"]}
+          ergebnisHinweis={inhalt.werte.mitNurN3}
+          normQuelle={inhalt.werte.dinEn199020212}
         />
         <FormulaDerivationBox
-          title="Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)"
+          title={inhalt.werte.beispiel2IstDer}
           zielGleichung="G = \frac{|x_{ext} - \bar{x}|}{s} \;>\; G_{krit}(n,\alpha)"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'n = 10 Würfelergebnisse, Mittelwert 37,6 N/mm², s = 3,4 N/mm², verdächtiger Höchstwert 46,9 N/mm².', formel: 'x_{ext} = 46{,}9\\,\\text{N/mm}^2' },
-            { titel: 'Prüfgröße', erklaerung: 'Abstand des Extremwerts in Vielfachen der Standardabweichung:', formel: 'G = \\frac{46{,}9 - 37{,}6}{3{,}4} = 2{,}74' },
-            { titel: 'Vergleich', erklaerung: 'Kritischer Wert (einseitig, α = 5 %) für n = 10:', formel: 'G = 2{,}74 > G_{krit} = 2{,}18 \\;\\Rightarrow\\; \\text{auffällig}' }
-          ]}
-          ergebnisHinweis="Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten."
-          normQuelle="Grubbs-Test, kritische Werte z. B. nach ISO 5725-2"
+          schritte={inhalt.daten["Statistik.schritte_2"]}
+          ergebnisHinweis={inhalt.werte.derTestZeigtNur}
+          normQuelle={inhalt.werte.grubbsTestKritischeWerte}
         />
 
         {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -1057,32 +1018,13 @@ export default function Statistik() {
 
         <CalculatorDisclaimerBanner className="my-2" />
       <ModuleFooter 
-          lastReviewed="Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft; fachliche Freigabe durch den Autor ausstehend)"
+          lastReviewed={inhalt.werte.oktober2026Ap4}
           wikipedia={[
             { title: 'Statistik', url: 'https://de.wikipedia.org/wiki/Statistik' }
           ]}
-          literatur={[
-            'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
-            'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-            'DIN EN 1990:2021-10: Eurocode – Grundlagen der Tragwerksplanung, Anhang D: Versuchsgestützte Bemessung'
-          ]}
-          regelwerke={[
-            { title: 'DIN EN 1990:2021-10 mit NA, Anhang D (Versuchsgestützte Bemessung); Nachfolger DIN EN 1990 (EN 1990:2023) angekündigt' },
-            { title: 'ISO 2394:2015 (General principles on reliability for structures)', url: 'https://www.iso.org/' },
-            { title: 'ISO 12491:1997-05 (Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen)' }
-          ]}
-          formeln={[
-            {
-              formel: 's = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\mu)^2}',
-              erklaerung: 'Empirische Standardabweichung:\ns: Standardabweichung\nn: Anzahl der Proben\nx_i: Einzelmesswert\nμ: Mittelwert',
-              quelle: 'Allgemeine Fachliteratur'
-            },
-            {
-              formel: 'v = \\frac{s}{\\mu}',
-              erklaerung: 'Variationskoeffizient:\nv: Variationskoeffizient (oft in %)\ns: Standardabweichung\nμ: Mittelwert',
-              quelle: 'Allgemeine Fachliteratur'
-            }
-          ]}
+          literatur={inhalt.daten["Statistik.literatur"]}
+          regelwerke={inhalt.daten["Statistik.regelwerke"]}
+          formeln={inhalt.daten["Statistik.formeln"]}
         />
       </div>
       )}
@@ -1091,10 +1033,7 @@ export default function Statistik() {
       <div className="flex flex-col gap-8 animate-in fade-in duration-300">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 font-medium font-sans">
-            <p>
-              <strong>Statistische Auswertung von Materialkennwerten (Probengenerator):</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. 
-              Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.
-            </p>
+            <p><MdText text={inhalt.texte.statistischeAuswertungVonMaterialkennwer2} /></p>
           </div>
         </div>
 
@@ -1106,7 +1045,7 @@ export default function Statistik() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-3">
-                <label className="text-sm font-bold text-text-main">Material wählen</label>
+                <label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.materialWählen} /></label>
                 <div className="grid grid-cols-3 gap-2">
                   {(['beton', 'stahl', 'holz'] as MaterialType[]).map((m) => (
                     <button
@@ -1126,8 +1065,8 @@ export default function Statistik() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-bold text-text-main">Anzahl der Prüfwerte (n)</label>
-                <select aria-label="Anzahl der Prüfwerte (n)"
+                <label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.anzahlDerPrüfwerteN} /></label>
+                <select aria-label={inhalt.werte.anzahlDerPrüfwerteN}
                   value={numberOfSamples}
                   onChange={(e) => setNumberOfSamples(Number(e.target.value))}
                   disabled={testStatus === 'running'}
@@ -1163,8 +1102,7 @@ export default function Statistik() {
                 disabled={testStatus === 'running'}
                 className="w-full py-3 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer disabled:opacity-50"
               >
-                {numberOfSamples} Proben generieren
-              </button>
+                {numberOfSamples}<MdText text={inhalt.texte.probenGenerieren} /></button>
             </div>
           </div>
         </div>
@@ -1196,15 +1134,15 @@ export default function Statistik() {
               {testStatus === 'idle' ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-home-grau">
                   <Calculator size={64} className="mb-4 opacity-20" />
-                  <p className="text-lg font-medium">Bereit für die Auswertung.</p>
-                  <p className="text-sm mt-2">Klicken Sie links auf "15 Proben generieren".</p>
+                  <p className="text-lg font-medium"><MdText text={inhalt.texte.bereitFürDieAuswertung} /></p>
+                  <p className="text-sm mt-2"><MdText text={inhalt.texte.klickenSieLinksAuf} /></p>
                 </div>
               ) : (
                 <div className="flex-1 flex flex-col gap-6 overflow-y-auto">
                   {testStatus === 'running' ? (
                     <div className="flex-1 flex flex-col items-center justify-center gap-4">
                       <Calculator size={48} className="text-shiraz animate-bounce" />
-                      <p className="text-sm font-medium text-shiraz animate-pulse">Generiere und analysiere 15 Proben...</p>
+                      <p className="text-sm font-medium text-shiraz animate-pulse"><MdText text={inhalt.texte.generiereUndAnalysiere15} /></p>
                       <div className="grid grid-cols-5 gap-2 mt-4">
                         {statValues.map((val, idx) => (
                           <div key={idx} className="p-2 text-center rounded-md border bg-off-white border-home-grau/30 text-text-main text-xs">
@@ -1217,7 +1155,7 @@ export default function Statistik() {
                     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4">
                       <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
                         <div className="flex justify-between items-start mb-3">
-                          <h4 className="text-sm font-bold text-text-main">Rohdaten & Ausreißertest ({stats.thresholdDesc})</h4>
+                          <h4 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.rohdatenAusreißertest} />{stats.thresholdDesc})</h4>
                           {testStatus === 'finished' && (
                             <div className="text-right bg-white p-2 rounded border border-home-grau/30">
                               <div className="text-xs text-home-grau font-medium mb-1 flex items-center justify-end gap-2">
@@ -1241,14 +1179,13 @@ export default function Statistik() {
                         </div>
                         {stats.outliers.length > 0 && (
                           <div className="mt-3 text-sm text-torch-red font-medium">
-                            {formatDeWert(stats.outliers.length)} Wert(e) als Ausreißer markiert und von der Auswertung ausgeschlossen. In der Praxis nur mit technischer Begründung (z. B. Prüffehler) zulässig.
-                          </div>
+                            {formatDeWert(stats.outliers.length)}<MdText text={inhalt.texte.wertEAlsAusreißer} /></div>
                         )}
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
-                          <div className="text-xs text-home-grau font-bold uppercase">Mittelwert (μ)</div>
+                          <div className="text-xs text-home-grau font-bold uppercase"><MdText text={inhalt.texte.mittelwert} /></div>
                           <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.mean, 1)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
@@ -1256,11 +1193,11 @@ export default function Statistik() {
                           <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.median, 1)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
-                          <div className="text-xs text-home-grau font-bold uppercase">Std.Abw. (σ)</div>
+                          <div className="text-xs text-home-grau font-bold uppercase"><MdText text={inhalt.texte.stdAbw} /></div>
                           <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.stdDev, 2)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
-                          <div className="text-xs text-home-grau font-bold uppercase">Var.Koeff. (V)</div>
+                          <div className="text-xs text-home-grau font-bold uppercase"><MdText text={inhalt.texte.varKoeffV} /></div>
                           <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.cv, 1)} %</div>
                         </div>
                       </div>
@@ -1297,22 +1234,22 @@ export default function Statistik() {
                       </div>
 
                       <div className="bg-off-white p-4 rounded-xl border border-shiraz/20">
-                        <h4 className="text-sm font-bold text-shiraz mb-3">Bemessungswerte nach DIN EN 1990</h4>
+                        <h4 className="text-sm font-bold text-shiraz mb-3"><MdText text={inhalt.texte.bemessungswerteNachDinEn} /></h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div>
-                            <div className="text-xs text-black font-bold uppercase">Bereinigter Mittelwert</div>
+                            <div className="text-xs text-black font-bold uppercase"><MdText text={inhalt.texte.bereinigterMittelwert} /></div>
                             <div className="text-xl font-bold text-text-main">{formatDeZahl(stats.meanClean, 1)}</div>
                             <div className="text-xs text-black mt-1">n = {formatDeWert(stats.nClean)}</div>
                           </div>
                           <div>
-                            <div className="text-xs text-black font-bold uppercase">Charakt. Wert (X_k)</div>
+                            <div className="text-xs text-black font-bold uppercase"><MdText text={inhalt.texte.charaktWertXK} /></div>
                             <div className="text-xl font-bold text-fuchsia-600">{formatDeZahl(stats.xk, 1)}</div>
-                            <div className="text-xs text-black mt-1">5-%-Quantil, DIN EN 1990 Tab. D1 (k_n = {formatDeZahl(stats.kn, 2)})</div>
+                            <div className="text-xs text-black mt-1"><MdText text={inhalt.texte.t5QuantilDinEn} />{formatDeZahl(stats.kn, 2)})</div>
                           </div>
                           <div>
-                            <div className="text-xs text-black font-bold uppercase">Bemessungswert (X_d)</div>
+                            <div className="text-xs text-black font-bold uppercase"><MdText text={inhalt.texte.bemessungswertXD} /></div>
                             <div className="text-xl font-bold text-torch-red">{formatDeZahl(stats.xd, 1)}</div>
-                            <div className="text-xs text-black mt-1">γ_M = {formatDeZahl(stats.gammaM, 2)}{material === 'holz' ? ' (vereinfacht ohne k_mod nach DIN EN 1995-1-1)' : material === 'beton' ? ' (ohne α_cc)' : ''}</div>
+                            <div className="text-xs text-black mt-1">γ_M = {formatDeZahl(stats.gammaM, 2)}{material === 'holz' ? inhalt.werte.vereinfachtOhneKMod : material === 'beton' ? ' (ohne α_cc)' : ''}</div>
                           </div>
                         </div>
                       </div>
@@ -1326,41 +1263,14 @@ export default function Statistik() {
       </div>
       
       <ModuleFooter 
-        lastReviewed="Oktober 2026 (AP 4 Labor: Probengenerator, Ausreißertests und Fraktilwerte geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap42}
         wikipedia={[
         { title: 'Statistik', url: 'https://de.wikipedia.org/wiki/Statistik' },
-        { title: 'Statistische Versuchsplanung', url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' }
+        { title: inhalt.werte.statistischeVersuchsplanung, url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' }
       ]}
-        literatur={[
-          'Montgomery, D. C.: Design and Analysis of Experiments. 9th ed., Hoboken: Wiley 2017',
-          'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)' },
-          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)' }
-        ]}
-        formeln={[
-          {
-            formel: 's = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}',
-            erklaerung: 'Empirische Standardabweichung s zur quantitativen Erfassung der Messwertstreuung einer Stichprobe vom Umfang n um den arithmetischen Mittelwert.',
-            quelle: 'DIN ISO 3534-1'
-          },
-          {
-            formel: 'v = \\frac{s}{\\bar{x}} \\cdot 100\\,\\%',
-            erklaerung: 'Variationskoeffizient v als dimensionsloses relatives Streumaß (Standardabweichung bezogen auf den Mittelwert).',
-            quelle: 'DIN ISO 3534-1'
-          },
-          {
-            formel: 'X_k = \\bar{x} - k_n \\cdot s',
-            erklaerung: 'Charakteristischer Kennwert (5 %-Fraktil) nach DIN EN 1990 Anhang D unter Berücksichtigung des Stichprobenfaktors k_n für unbekannte Varianz.',
-            quelle: 'DIN EN 1990 Anhang D'
-          },
-          {
-            formel: 'X_d = \\frac{X_k}{\\gamma_M}',
-            erklaerung: 'Bemessungswert X_d für den Grenzzustand der Tragfähigkeit (GZT) unter Abminderung durch den materialspezifischen Teilsicherheitsbeiwert γ_M.',
-            quelle: 'DIN EN 1990'
-          }
-        ]}
+        literatur={inhalt.daten["Statistik.literatur_2"]}
+        regelwerke={inhalt.daten["Statistik.regelwerke_2"]}
+        formeln={inhalt.daten["Statistik.formeln_2"]}
       />
       </div>
       )}

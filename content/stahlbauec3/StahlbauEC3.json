@@ -1,0 +1,216 @@
+{
+  "texte": {
+    "stahlbauNachEurocode3": " Stahlbau nach Eurocode 3 – Grundlagen",
+    "dinEn19931": "DIN EN 1993-1-1 mit Nationalem Anhang (DE): Werkstoff, Querschnittsklassen, Zug, Biegung, Biegeknicken",
+    "stahltragwerkeWerdenInDeutschland": "Stahltragwerke werden in Deutschland nach **DIN EN 1993-1-1 (Eurocode 3)** in Verbindung mit dem Nationalen Anhang bemessen. Das Modul behandelt die Grundnachweise im Grenzzustand der Tragfähigkeit für gewalzte I- und H-Profile: die Einstufung in **Querschnittsklassen**, den Zugstab, die Biegung um die starke Achse und den Stabilitätsnachweis gegen **Biegeknicken**.",
+    "alleNachweiseFolgenDem": "Alle Nachweise folgen dem semiprobabilistischen Sicherheitskonzept der DIN EN 1990: Die Bemessungswerte der Einwirkungen dürfen die Bemessungswerte der Widerstände nicht überschreiten.",
+    "beanspruchbarkeitVonQuerschnittenFließen": " – Beanspruchbarkeit von Querschnitten (Fließen im Bruttoquerschnitt)",
+    "stabilitätsversagenBiegeknickenBiegedril": " – Stabilitätsversagen (Biegeknicken, Biegedrillknicken); die EN empfiehlt 1,0, der deutsche NA legt 1,1 fest",
+    "bruchDesNettoquerschnittsUnter": " – Bruch des Nettoquerschnitts unter Zug (Lochschwächung)",
+    "derGrößereBeiwertBeim": "Der größere Beiwert beim Bruch berücksichtigt, dass das Zerreißen im Lochquerschnitt ohne Vorankündigung eintritt, während Fließen im Bruttoquerschnitt mit großen, sichtbaren Verformungen verbunden ist.",
+    "stahlgüteFestlegenStreckgrenze": "Stahlgüte festlegen: Streckgrenze ",
+    "undZugfestigkeit": " und Zugfestigkeit ",
+    "nachTab31": " nach Tab. 3.1.",
+    "querschnittKlassifizierenTab5": "Querschnitt klassifizieren (Tab. 5.2): Klasse 1 bis 4 aus den c/t-Verhältnissen von Flansch und Steg.",
+    "querschnittsnachweiseZug62": "Querschnittsnachweise: Zug (6.2.3), Druck (6.2.4), Biegung (6.2.5).",
+    "stabilitätsnachweisBiegeknicken63": "Stabilitätsnachweis Biegeknicken (6.3.1) mit dem Abminderungsbeiwert χ.",
+    "dieZweiteEurocodeGeneration": "Die zweite Eurocode-Generation (DIN EN 1993-1-1:2025-04) ist erschienen, aber noch nicht bauaufsichtlich eingeführt; maßgebend bleiben DIN EN 1993-1-1:2010-12 mit A1:2014-07 und NA.",
+    "dieEulerFälleUnd": "Die Euler-Fälle und die Knicklänge L_cr = β · l werden im Modul Knicken hergeleitet. Hier wird daraus der Bemessungswert N_b,Rd des Eurocode 3.",
+    "baustahlWirdFürDie": "Baustahl wird für die Bemessung linear-elastisch, ideal-plastisch idealisiert. Maßgebend sind die Nennwerte der Streckgrenze ",
+    "undDerZugfestigkeit": " und der Zugfestigkeit ",
+    "nachTab312": " nach Tab. 3.1 (abhängig von der Erzeugnisdicke t). Für alle Baustähle gelten nach 3.2.6:",
+    "dieStahlgüteGehtIn": "Die Stahlgüte geht in alle Schlankheitsgrenzen über den Beiwert ε ein:",
+    "dünnwandigeDruckbeanspruchteQuerschnitts": "Dünnwandige, druckbeanspruchte Querschnittsteile können örtlich ausbeulen, bevor der Querschnitt seine volle Tragfähigkeit erreicht. Die Querschnittsklasse beschreibt, wie weit ein Querschnitt plastiziert werden darf:",
+    "klasse1PlastischesMoment": "**Klasse 1:** plastisches Moment erreichbar, ausreichende Rotationskapazität für Fließgelenke (plastische Tragwerksberechnung).",
+    "klasse2PlastischesMoment": "**Klasse 2:** plastisches Moment erreichbar, aber nur begrenzte Rotationskapazität.",
+    "klasse3FließenNur": "**Klasse 3:** Fließen nur in der Randfaser; elastische Querschnittswerte.",
+    "klasse4ÖrtlichesBeulen": "**Klasse 4:** örtliches Beulen vor Erreichen von f_y; wirksame Querschnittswerte nach DIN EN 1993-1-5.",
+    "eingestuftWirdJedesDruckbeanspruchte": "Eingestuft wird jedes druckbeanspruchte Teil über sein Verhältnis Breite zu Dicke c/t; die ungünstigste Einstufung ergibt die Klasse des Querschnitts. Für gewalzte I-Profile gilt:",
+    "derBemessungswertDerZugbeanspruchbarkeit": "Der Bemessungswert der Zugbeanspruchbarkeit ist der kleinere Wert aus Fließen im Bruttoquerschnitt und Bruch im Nettoquerschnitt:",
+    "aNetIstDie": "A_net ist die Nettoquerschnittsfläche nach Abzug der Lochflächen (bei versetzten Löchern nach 6.2.2.2).",
+    "derBiegewiderstandHängtVon": "Der Biegewiderstand hängt von der Querschnittsklasse ab:",
+    "beiWalzprofilenIstW": "Bei Walzprofilen ist W_pl,y etwa 12 bis 15 % größer als W_el,y; diese plastische Reserve darf nur in den Klassen 1 und 2 genutzt werden.",
+    "realeDruckstäbeSindNie": "Reale Druckstäbe sind nie ideal gerade und enthalten Walzeigenspannungen. Sie versagen deshalb unterhalb der idealen Verzweigungslast N_cr. Der Eurocode erfasst das mit dem Abminderungsbeiwert χ, der aus dem bezogenen Schlankheitsgrad und einer von fünf Knicklinien folgt:",
+    "derImperfektionsbeiwertTab6": "Der Imperfektionsbeiwert α (Tab. 6.1) bildet ab, wie empfindlich ein Querschnitt auf Vorkrümmung und Eigenspannungen reagiert; die Zuordnung zur Knicklinie regelt Tab. 6.2. Ist λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04, darf der Biegeknicknachweis entfallen (6.3.1.2(4)).",
+    "für40MmT": "Für 40 mm < t ≤ 80 mm sind die Werte abgemindert (z. B. S235: f_y = 215 N/mm²; S355: f_y = 335 N/mm²). E = 210 000 N/mm²; γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25 (NA DE).",
+    "stegBeidseitigGestützt": "Steg (beidseitig gestützt)",
+    "stegBeidseitigGestützt2": "Steg (beidseitig gestützt)",
+    "flanschEinseitigGestützt": "Flansch (einseitig gestützt)",
+    "wirdDerGrenzwertDer": "Wird der Grenzwert der Klasse 3 überschritten, liegt Klasse 4 vor. Für Stege unter Biegung und Druck gelten von der Lage der Nulllinie abhängige Grenzen (hier nicht dargestellt).",
+    "bei10": "χ bei λ̄ = 1,0",
+    "gewalzteIQuerschnitte": "Gewalzte I-Querschnitte",
+    "s235BisS420": "S235 bis S420",
+    "hB12": "h/b > 1,2; t_f ≤ 40 mm",
+    "hB122": "h/b > 1,2; 40 < t_f ≤ 100 mm",
+    "hB123": "h/b ≤ 1,2; t_f ≤ 100 mm",
+    "hB124": "h/b ≤ 1,2; t_f > 100 mm",
+    "tWTF": "t_w / t_f / r [mm]",
+    "wElYW": "W_el,y / W_pl,y [cm³]",
+    "querschnittswerteNachHerstellerprofiltab": "Querschnittswerte nach Herstellerprofiltabelle (stad.fr), A gerundet wie in den Bautabellen. Für Ausführungsplanungen gelten die Werte des Lieferwerks.",
+    "knicklinienNachTab6": "Knicklinien nach Tab. 6.2 zuordnen (y: ",
+    "flanschCT": "Flansch c/t = ",
+    "querschnittsklasseUnterDruck": "Querschnittsklasse unter Druck: ",
+    "nCRdA": "). N_c,Rd = A · f_y/γ_M0 = ",
+    "biegungUmYKlasse": "Biegung um y: Klasse ",
+    "knmMElRd": " kNm, M_el,Rd = ",
+    "ergebnisBiegeknicken": "Ergebnis Biegeknicken",
+    "nEdNB": " N_Ed/N_b,Rd = ",
+    "ausnutzungMaßgebendAchse": " % Ausnutzung, maßgebend Achse ",
+    "europäischeKnicklinien": "Europäische Knicklinien χ(λ̄)"
+  },
+  "werte": {
+    "kennwerteTabellen": "Kennwerte & Tabellen",
+    "rechnerBiegeknicken": "Rechner Biegeknicken",
+    "ihrStabYUnd": "Ihr Stab (y- und z-Achse)",
+    "stahlbauNachEurocode3": "Stahlbau nach Eurocode 3: Bereiche",
+    "worumEsGeht": "Worum es geht",
+    "teilsicherheitsbeiwerteNachNaDe": "Teilsicherheitsbeiwerte nach NA (DE)",
+    "nachweisablaufInDiesemModul": "Nachweisablauf in diesem Modul",
+    "idealeKnicklastNachEuler": "Ideale Knicklast nach Euler",
+    "zumModulKnickenEuler": "Zum Modul Knicken (Euler)",
+    "t2Querschnittsklassen": "2 Querschnittsklassen",
+    "t4BiegungUmDie": "4 Biegung um die starke Achse",
+    "t5Biegeknicken": "5 Biegeknicken",
+    "stahlgütenTab31": "Stahlgüten (Tab. 3.1, Erzeugnisdicke t ≤ 40 mm)",
+    "grenzwerteCTFür": "Grenzwerte c/t für Querschnittsklassen (Tab. 5.2, Auszug)",
+    "knicklinienUndImperfektionsbeiwerteTab": "Knicklinien und Imperfektionsbeiwerte (Tab. 6.1, Tab. 6.2)",
+    "querschnittswerteDerWalzprofileIm": "Querschnittswerte der Walzprofile im Rechner",
+    "knicklängeLCrY": "Knicklänge L_cr,y (starke Achse)",
+    "knicklängeLCrZ": "Knicklänge L_cr,z (schwache Achse)",
+    "druckkraftNEd": "Druckkraft N_Ed",
+    "nachweisErfüllt": "Nachweis erfüllt",
+    "nachweisNichtErfüllt": "Nachweis nicht erfüllt",
+    "diagrammDerKnicklinienA0": "Diagramm der Knicklinien a0 bis d mit den Punkten des gewählten Stabs",
+    "bezogenerSchlankheitsgrad": "bezogener Schlankheitsgrad λ̄",
+    "abminderungsbeiwert": "Abminderungsbeiwert χ",
+    "idealeVerzweigungslast": "Ideale Verzweigungslast",
+    "bezogenerSchlankheitsgrad2": "Bezogener Schlankheitsgrad",
+    "verhältnisVonPlastischerNormalkraft": "Verhältnis von plastischer Normalkraft zu Verzweigungslast:",
+    "abminderungsbeiwert2": "Abminderungsbeiwert χ",
+    "gl649Höchstens": "Gl. (6.49), höchstens 1,0:",
+    "knickwiderstandUndNachweis": "Knickwiderstand und Nachweis",
+    "querschnittsklasse4ErfordertA": "Querschnittsklasse 4 erfordert A_eff nach DIN EN 1993-1-5; Biegedrillknicken und Biegung mit Normalkraft (6.3.2, 6.3.3) sind nicht enthalten.",
+    "dinEn19931": "DIN EN 1993-1-1, 6.3.1 mit NA (DE)",
+    "beispiel1ZugstabMit": "Beispiel 1: Zugstab mit Schraubenloch – Brutto- oder Nettoquerschnitt?",
+    "schonEinLochMacht": "Schon ein Loch macht hier den Nettoquerschnitt maßgebend, obwohl nur 18 % der Fläche fehlen: f_u/γ_M2 und der Faktor 0,9 wirken zusammen.",
+    "dinEn199312": "DIN EN 1993-1-1, 6.2.3 mit NA (DE)",
+    "beispiel2BiegewiderstandEines": "Beispiel 2: Biegewiderstand eines IPE 300 aus S235",
+    "unterReinemDruckWäre": "Unter reinem Druck wäre derselbe Steg (c/t = 35,0) in S235 Klasse 2, in S355 dagegen Klasse 4 (42ε = 34,2): Die Klasse hängt von Beanspruchung und Stahlgüte ab.",
+    "dinEn199313": "DIN EN 1993-1-1, 5.5 und 6.2.5",
+    "beispiel3BiegeknickenEiner": "Beispiel 3: Biegeknicken einer Stütze HEB 200, S235, L_cr = 4,0 m",
+    "derQuerschnittswiderstandNC": "Der Querschnittswiderstand N_c,Rd = 1 835 kN wird durch das Knicken um die schwache Achse auf 58 % abgemindert.",
+    "dinEn199314": "DIN EN 1993-1-1, 6.3.1 mit NA (DE)",
+    "oktober2026Ap3": "Oktober 2026 (AP 3.13: neues Modul; fachliche Freigabe durch den Autor ausstehend)",
+    "stadTechnischeDatenIpe": "stad: Technische Daten IPE-Profile",
+    "stadTechnischeDatenHe": "stad: Technische Daten HE-Profile"
+  },
+  "daten": {
+    "StahlbauEC3.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Flachstahl 120 × 10 mm, S235 (f_y = 235, f_u = 360 N/mm²), ein Loch d₀ = 22 mm im Querschnitt:",
+        "formel": "A = 120 \\cdot 10 = 1\\,200\\,\\text{mm}^2, \\quad A_{net} = 1\\,200 - 22 \\cdot 10 = 980\\,\\text{mm}^2"
+      },
+      {
+        "titel": "Fließen im Bruttoquerschnitt",
+        "erklaerung": "Gl. (6.6) mit γ_M0 = 1,0:",
+        "formel": "N_{pl,Rd} = \\frac{1\\,200 \\cdot 235}{1{,}0} = 282{,}0\\,\\text{kN}"
+      },
+      {
+        "titel": "Bruch im Nettoquerschnitt",
+        "erklaerung": "Gl. (6.7) mit γ_M2 = 1,25:",
+        "formel": "N_{u,Rd} = \\frac{0{,}9 \\cdot 980 \\cdot 360}{1{,}25} = 254{,}0\\,\\text{kN}"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Der kleinere Wert ist maßgebend:",
+        "formel": "N_{t,Rd} = 254{,}0\\,\\text{kN} \\quad (N_{Ed} = 200\\,\\text{kN}: \\ 200/254{,}0 = 0{,}79)"
+      }
+    ],
+    "StahlbauEC3.schritte_2": [
+      {
+        "titel": "Flansch klassifizieren",
+        "erklaerung": "b = 150, t_w = 7,1, t_f = 10,7, r = 15 mm; ε = 1,0:",
+        "formel": "c = \\frac{150 - 7{,}1 - 2 \\cdot 15}{2} = 56{,}5\\,\\text{mm}, \\quad \\frac{c}{t_f} = 5{,}3 \\le 9\\varepsilon \\Rightarrow \\text{Klasse 1}"
+      },
+      {
+        "titel": "Steg klassifizieren (Biegung)",
+        "erklaerung": "h = 300 mm:",
+        "formel": "c = 300 - 2 \\cdot 10{,}7 - 2 \\cdot 15 = 248{,}6\\,\\text{mm}, \\quad \\frac{c}{t_w} = 35{,}0 \\le 72\\varepsilon \\Rightarrow \\text{Klasse 1}"
+      },
+      {
+        "titel": "Plastischer Biegewiderstand",
+        "erklaerung": "Klasse 1, W_pl,y = 628,4 cm³:",
+        "formel": "M_{pl,Rd} = \\frac{628{,}4 \\cdot 10^3 \\cdot 235}{1{,}0} = 147{,}7\\,\\text{kNm}"
+      },
+      {
+        "titel": "Vergleich elastisch",
+        "erklaerung": "W_el,y = 557,1 cm³:",
+        "formel": "M_{el,Rd} = 130{,}9\\,\\text{kNm}, \\quad \\frac{W_{pl,y}}{W_{el,y}} = 1{,}13"
+      }
+    ],
+    "StahlbauEC3.schritte_3": [
+      {
+        "titel": "Knicklinien nach Tab. 6.2",
+        "erklaerung": "h/b = 1,0 ≤ 1,2 und t_f = 15 mm ≤ 100 mm:",
+        "formel": "y\\text{–}y: \\ \\text{Linie b}\\ (\\alpha = 0{,}34), \\quad z\\text{–}z: \\ \\text{Linie c}\\ (\\alpha = 0{,}49)"
+      },
+      {
+        "titel": "Schlankheit um z",
+        "erklaerung": "i_z = 5,07 cm, λ₁ = 93,9:",
+        "formel": "\\bar\\lambda_z = \\frac{4\\,000/50{,}7}{93{,}9} = \\frac{78{,}9}{93{,}9} = 0{,}840"
+      },
+      {
+        "titel": "Abminderungsbeiwert",
+        "erklaerung": "Gl. (6.49):",
+        "formel": "\\Phi = 0{,}5\\,[1 + 0{,}49 \\cdot 0{,}640 + 0{,}840^2] = 1{,}010, \\quad \\chi_z = \\frac{1}{1{,}010 + \\sqrt{1{,}010^2 - 0{,}840^2}} = 0{,}637"
+      },
+      {
+        "titel": "Knickwiderstand",
+        "erklaerung": "A = 78,1 cm², γ_M1 = 1,1:",
+        "formel": "N_{b,z,Rd} = \\frac{0{,}637 \\cdot 7\\,810 \\cdot 235}{1{,}1} = 1\\,063\\,\\text{kN}"
+      },
+      {
+        "titel": "Vergleich y-Achse und Nachweis",
+        "erklaerung": "λ̄_y = 0,499 und χ_y = 0,885 ergeben 1 476 kN; maßgebend ist z. Mit N_Ed = 800 kN:",
+        "formel": "\\frac{N_{Ed}}{N_{b,Rd}} = \\frac{800}{1\\,063} = 0{,}75 \\le 1{,}0"
+      }
+    ],
+    "StahlbauEC3.regelwerke": [
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; bauaufsichtlich eingeführt; 3.2, 5.5, 6.2, 6.3.1); neue Generation DIN EN 1993-1-1:2025-04"
+      },
+      {
+        "title": "DIN EN 1990:2021-10 mit NA (Eurocode 0: Grundlagen der Tragwerksplanung)"
+      },
+      {
+        "title": "DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus Baustählen – Teil 2: Unlegierte Baustähle)"
+      },
+      {
+        "title": "DIN EN 10025-3:2019-10 (Warmgewalzte Erzeugnisse aus Baustählen – Teil 3: Normalgeglühte/normalisierend gewalzte schweißgeeignete Feinkornbaustähle)"
+      }
+    ],
+    "StahlbauEC3.literatur": [
+      "Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen – Hallen-, Geschoss- und Brückenbau. 3., vollst. überarb. u. aktual. Aufl., Wiesbaden: Springer Vieweg 2016",
+      "Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Band 1: Tragwerksplanung, Grundlagen, 6., überarb. u. erw. Aufl.; Band 2: Verbindungen und Konstruktionen, 5., überarb. u. erw. Aufl.; Band 3: Komponentenmethode, 2. Aufl. Berlin: Beuth 2021",
+      "Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+    ],
+    "StahlbauEC3.formeln": [
+      {
+        "formel": "N_{t,Rd} = \\min\\left(\\frac{A f_y}{\\gamma_{M0}};\\ \\frac{0{,}9\\,A_{net} f_u}{\\gamma_{M2}}\\right)",
+        "erklaerung": "Zugbeanspruchbarkeit: Fließen im Brutto- bzw. Bruch im Nettoquerschnitt; γ_M0 = 1,0, γ_M2 = 1,25.",
+        "quelle": "DIN EN 1993-1-1, Gl. (6.6), (6.7)"
+      },
+      {
+        "formel": "M_{c,Rd} = \\frac{W_{pl} f_y}{\\gamma_{M0}}\\ (\\text{Kl. 1, 2}); \\quad \\frac{W_{el,min} f_y}{\\gamma_{M0}}\\ (\\text{Kl. 3})",
+        "erklaerung": "Biegewiderstand des Querschnitts in Abhängigkeit von der Querschnittsklasse.",
+        "quelle": "DIN EN 1993-1-1, Gl. (6.13), (6.14)"
+      },
+      {
+        "formel": "\\bar\\lambda = \\sqrt{\\frac{A f_y}{N_{cr}}}, \\quad \\chi = \\frac{1}{\\Phi + \\sqrt{\\Phi^2 - \\bar\\lambda^2}}, \\quad N_{b,Rd} = \\frac{\\chi A f_y}{\\gamma_{M1}}",
+        "erklaerung": "Biegeknicken mit Φ = 0,5·[1 + α(λ̄ − 0,2) + λ̄²], α nach Tab. 6.1, γ_M1 = 1,1 nach NA (DE).",
+        "quelle": "DIN EN 1993-1-1, Gl. (6.47)–(6.50)"
+      }
+    ]
+  }
+}

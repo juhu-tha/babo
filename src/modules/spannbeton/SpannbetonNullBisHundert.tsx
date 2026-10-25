@@ -23,6 +23,8 @@ import { Station6Nachweise } from './nullbishundert/Station6Nachweise';
 import { Station4LoadBalancing } from './nullbishundert/Station4LoadBalancing';
 import { Station3Verfahren } from './nullbishundert/Station3Verfahren';
 import { Station2Dilemma } from './nullbishundert/Station2Dilemma';
+import inhalt from '@/content/spannbeton/SpannbetonNullBisHundert.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface Props {
   onNavigateTab?: (tab: 'grundprinzipien' | 'kennwerte' | 'rechner' | 'dauerhaftigkeit') => void;
@@ -52,50 +54,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
     q8: null,
   });
 
-  const steps = [
-    {
-      id: 0,
-      title: '1. Das Grundprinzip der Vorspannung',
-      progress: '0% – 20%',
-      subtitle: 'Mechanische Grenzen des Stahlbetons und Wirkungsweise künstlicher Drucküberlagerung',
-      badge: 'Grundlagen & Motivation',
-    },
-    {
-      id: 1,
-      title: '2. Rheologische Baustoffphysik & Spannstahl',
-      progress: '20% – 40%',
-      subtitle: 'Kriechen, Schwinden und die Notwendigkeit hochfester Spannstähle (Y1860)',
-      badge: 'Materialphysik',
-    },
-    {
-      id: 2,
-      title: '3. Die 4 Vorspannverfahren nach DIN EN 1992-1-1',
-      progress: '40% – 60%',
-      subtitle: 'Sofortiger Verbund, nachträglicher Verbund, ohne Verbund & externe Vorspannung',
-      badge: 'Bauverfahren',
-    },
-    {
-      id: 3,
-      title: '4. Tragwerksmechanik & Load Balancing',
-      progress: '60% – 80%',
-      subtitle: 'Umlenkkräfte parabelförmiger Spannglieder zur Kompensation der Eigenlast',
-      badge: 'Tragwerksmechanik',
-    },
-    {
-      id: 4,
-      title: '5. Statisch unbestimmte Systeme & Zwang',
-      progress: '80% – 95%',
-      subtitle: 'Durchlaufträger, sekundäre Zwangsmomente und das Konzept der Konkordanz',
-      badge: 'Höhere Baustatik',
-    },
-    {
-      id: 5,
-      title: '6. Nachweiskonzept & Bemessungsregeln',
-      progress: '95% – 100%',
-      subtitle: 'Grenzzustände nach Eurocode 2 (GZT / GZG) und Orientierung im Modul',
-      badge: 'Normen & Praxis',
-    },
-  ];
+  const steps = inhalt.daten["SpannbetonNullBisHundert.steps"];
 
   // Calculations for Demonstrator 1:
   // B500: fyd = 435 N/mm2, Es = 200000 N/mm2, eps_el = 2.175 Promille
@@ -121,35 +80,23 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-md font-mono">
-              Didaktischer Leitfaden • Von 0 auf 100
-            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-md font-mono"><MdText text={inhalt.texte.didaktischerLeitfadenVon0} /></span>
             <h2 className="text-xl md:text-2xl font-bold text-text-main flex items-center gap-2.5 mt-1.5">
-              <GraduationCap className="text-shiraz" size={24} />
-              Spannbetonbau: Systematische Einführung von den Grundlagen bis zur Bemessung
-            </h2>
+              <GraduationCap className="text-shiraz" size={24} /><MdText text={inhalt.texte.spannbetonbauSystematischeEinführungVon} /></h2>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg border border-home-grau/20">
-              Eurocode 2 • DIN EN 1992-1-1
-            </span>
+            <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.eurocode2DinEn} /></span>
           </div>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Dieser Leitfaden vermittelt die baustatischen, werkstofflichen und konstruktiven Gesetzmäßigkeiten 
-            des Spannbetonbaus. Anhand von sechs logisch aufeinander aufbauenden Lektionen werden die mechanischen 
-            Wirkungsweisen der künstlichen Druckvorspannung, die rheologischen Verluste (Kriechen, Schwinden, Relaxation), 
-            die Herstellungsverfahren sowie die Schnittgrößenüberlagerung und Nachweisführung nach Eurocode 2 
-            präzise und nachvollziehbar erläutert.
-          </p>
+          <p><MdText text={inhalt.texte.dieserLeitfadenVermitteltDie} /></p>
         </div>
 
         {/* Fortschritts-Indikator */}
         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-text-main/70">Aktueller Themenbereich:</span>
+            <span className="font-semibold text-text-main/70"><MdText text={inhalt.texte.aktuellerThemenbereich} /></span>
             <span className="font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-1 rounded">
               {steps[activeStep].progress}
             </span>
@@ -164,7 +111,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
       {/* Interaktive Kapitel-Navigation */}
       <div className="bg-white p-4 rounded-2xl border border-home-grau/30 shadow-sm">
         <div className="text-xs font-bold text-text-main/70 uppercase tracking-wider mb-3 flex items-center justify-between">
-          <span>Themenübersicht (Kapitelauswahl)</span>
+          <span><MdText text={inhalt.texte.themenübersichtKapitelauswahl} /></span>
           <span className="text-shiraz font-mono font-bold">{steps[activeStep].progress}</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
@@ -214,15 +161,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 0 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 1 von 6 • 0% bis 20%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Das Grundprinzip der Vorspannung & Mechanische Ausgangslage
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Wirkungsweise künstlich eingeprägter Drucküberlagerungen zur Rissvermeidung bei Biegebeanspruchung.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion1Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.dasGrundprinzipDerVorspannung} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.wirkungsweiseKünstlichEingeprägterDruckü} /></p>
             </div>
 
             {/* Sachliche Problemstellung */}
@@ -232,20 +173,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Mechanische Ausgangslage & Baustoffgrenzen:
-                  </p>
-                  <p>
-                    Beton besitzt eine hohe Druckfestigkeit (z. B. <InlineMath math="f_{ck} = 35\,\text{N/mm}^2" /> bei einem C35/45), 
-                    seine mittlere zentrische Zugfestigkeit <InlineMath math="f_{ctm}" /> liegt jedoch lediglich bei 
-                    2,2 bis 4,1 N/mm² – etwa <strong>7–10 %</strong> der Druckfestigkeit (z. B. C35/45: 3,2/35 = 9 %; C50/60: 4,1/50 = 8 %).
-                  </p>
-                  <p>
-                    Im schlaff bewehrten Stahlbeton (B500) ist das Aufreißen des Betons im Zugbereich (Zustand II) 
-                    statisch einkalkuliert: Erst nach Rissbildung übernimmt der Bewehrungsstahl die anfallenden Zugkräfte. 
-                    Bei weitgespannten Bauteilen (wie Brückenüberbauten oder Hallenbindern) führt dieser Steifigkeitsabfall 
-                    jedoch zu unzulässig großen Durchbiegungen, breiten Rissen und damit einhergehenden Korrosionsrisiken.
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.mechanischeAusgangslageBaustoffgrenzen} /></p>
+                  <p><MdText text={inhalt.texte.betonBesitztEineHohe} /></p>
+                  <p><MdText text={inhalt.texte.imSchlaffBewehrtenStahlbeton} /></p>
                 </div>
               </div>
             </div>
@@ -254,19 +184,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-2 gap-6 items-center">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 space-y-3">
                 <h4 className="font-bold text-sm text-shiraz flex items-center gap-2">
-                  <Lightbulb size={16} /> Das physikalische Prinzip nach Eugène Freyssinet (1928)
-                </h4>
-                <p className="text-xs text-text-main/85 leading-relaxed">
-                  Das Grundprinzip des Spannbetons lässt sich an einer Reihe frei aneinandergestellter Bücher 
-                  ohne gegenseitigen Zugverbund veranschaulichen: Versucht man, die Reihe ohne Einspannung anzuheben, 
-                  versagt das System schlagartig durch Klaffen der Kontaktfugen.
-                </p>
-                <p className="text-xs text-text-main/85 leading-relaxed">
-                  Wird jedoch von beiden Enden eine ausreichend große <strong>künstliche Druckkraft <InlineMath math="P" /></strong> eingeleitet, 
-                  überlagert die resultierende Druckspannung die aus dem Eigengewicht resultierenden Zugspannungen. 
-                  Solange die resultierende Randspannung eine reine Druckspannung bleibt, bleibt der Querschnitt geschlossen 
-                  und besitzt die volle Biegesteifigkeit des ungerissenen Zustands I.
-                </p>
+                  <Lightbulb size={16} /><MdText text={inhalt.texte.dasPhysikalischePrinzipNach} /></h4>
+                <p className="text-xs text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.dasGrundprinzipDesSpannbetons} /></p>
+                <p className="text-xs text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.wirdJedochVonBeiden} /></p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs font-mono text-center text-slate-800">
                   <InlineMath math="\sigma_u = -\frac{P}{A} - \frac{P \cdot e_p}{W_u} + \frac{M}{W_u} \le 0 \quad (\text{Vollständige Drucküberdeckung am Unterrand})" />
                 </div>
@@ -275,26 +195,19 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="space-y-4">
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                   <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-2">
-                    <Scale size={15} className="text-shiraz" /> Systemvergleich im Querschnitt
-                  </h5>
+                    <Scale size={15} className="text-shiraz" /><MdText text={inhalt.texte.systemvergleichImQuerschnitt} /></h5>
                   <div className="space-y-2 text-xs">
                     <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-                      <div className="font-bold text-slate-900">1. Unbewehrter Beton (Zustand I):</div>
-                      <div className="text-slate-600 mt-0.5">
-                        Versagt spröde und ohne Vorankündigung, sobald die Randzugspannung die Zugfestigkeit überschreitet (<InlineMath math="\sigma > f_{ctm}" />).
-                      </div>
+                      <div className="font-bold text-slate-900"><MdText text={inhalt.texte.t1UnbewehrterBetonZustand} /></div>
+                      <div className="text-slate-600 mt-0.5"><MdText text={inhalt.texte.versagtSprödeUndOhne} /></div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-slate-200">
-                      <div className="font-bold text-slate-900">2. Normaler Stahlbeton (Zustand II):</div>
-                      <div className="text-slate-600 mt-0.5">
-                        Tragfähig, erfordert jedoch planmäßige Rissbildung. Der Beton in der Zugzone trägt rechnerisch nicht mehr zur Biegesteifigkeit bei.
-                      </div>
+                      <div className="font-bold text-slate-900"><MdText text={inhalt.texte.t2NormalerStahlbetonZustand} /></div>
+                      <div className="text-slate-600 mt-0.5"><MdText text={inhalt.texte.tragfähigErfordertJedochPlanmäßige} /></div>
                     </div>
                     <div className="p-2.5 bg-emerald-50 border border-emerald-300 rounded-lg">
-                      <div className="font-bold text-emerald-900">3. Spannbeton (Drucküberlagerung):</div>
-                      <div className="text-emerald-800 mt-0.5">
-                        Der Querschnitt bleibt durch die eingeprägte Kraft voll oder weitgehend überdrückt. Maximale Steifigkeit, geringe Durchbiegung und hoher Schutz vor Risskorrosion.
-                      </div>
+                      <div className="font-bold text-emerald-900"><MdText text={inhalt.texte.t3SpannbetonDrucküberlagerung} /></div>
+                      <div className="text-emerald-800 mt-0.5"><MdText text={inhalt.texte.derQuerschnittBleibtDurch} /></div>
                     </div>
                   </div>
                 </div>
@@ -307,16 +220,13 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <span className="font-bold text-xs text-text-main flex items-center gap-1.5">
                   <Zap size={14} className="text-shiraz" /> Kernaussage:
                 </span>
-                <p className="text-xs text-text-main/80 mt-0.5">
-                  Vorspannung ist die planmäßige Vorwegnahme von inneren Druckspannungen zur Kompensation späterer lastbedingter Zugbeanspruchungen.
-                </p>
+                <p className="text-xs text-text-main/80 mt-0.5"><MdText text={inhalt.texte.vorspannungIstDiePlanmäßige} /></p>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveStep(1)}
                 className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 shrink-0 transition-all shadow-sm cursor-pointer"
-              >
-                Weiter zu Kapitel 2 <ArrowRight size={14} />
+              ><MdText text={inhalt.texte.weiterZuKapitel2} /><ArrowRight size={14} />
               </button>
             </div>
           </div>
@@ -349,15 +259,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 4 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 5 von 6 • 80% bis 95%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Statisch unbestimmte Systeme & Zwangsmomente (Sekundärmomente)
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Schnittgrößenüberlagerung beim Durchlaufträger: Primärmomente, Sekundärmomente und das Konzept der Konkordanz.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion5Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.statischUnbestimmteSystemeZwangsmomente} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.schnittgrößenüberlagerungBeimDurchlauftr} /></p>
             </div>
 
             {/* Sachliche Einführung */}
@@ -367,20 +271,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Schnittgrößenüberlagerung bei statisch unbestimmten Durchlaufträgern:
-                  </p>
-                  <p>
-                    Während sich ein Einfeldträger infolge Vorspannung ungehindert nach oben durchbiegen kann, 
-                    behindern Zwischenauflager bei Durchlaufträgern die freie Formänderung. 
-                    Diese Behinderung erzeugt Zwangslagerkräfte und zusätzliche Biegemomente.
-                  </p>
-                  <p>
-                    Das aus der Vorspannung resultierende Gesamtmoment setzt sich aus zwei Komponenten zusammen:
-                    dem isostatischen <strong>Primärmoment</strong> (<InlineMath math="M_{P,1} = -P \cdot e_p" />) und 
-                    dem hyperstatischen <strong>Sekundärmoment</strong> (<InlineMath math="M_{P,2}" />), das 
-                    zwischen den Stützenachsen streng linear verläuft.
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.schnittgrößenüberlagerungBeiStatischUnbe} /></p>
+                  <p><MdText text={inhalt.texte.währendSichEinEinfeldträger} /></p>
+                  <p><MdText text={inhalt.texte.dasAusDerVorspannung} /></p>
                 </div>
               </div>
             </div>
@@ -389,42 +282,28 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-shiraz flex items-center gap-2">
-                  <Zap size={16} /> Aufspaltung der Vorspannmomente
-                </h4>
+                  <Zap size={16} /><MdText text={inhalt.texte.aufspaltungDerVorspannmomente} /></h4>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/25 font-mono text-center">
                   <BlockMath math="M_P = M_{P,1} + M_{P,2}" />
                 </div>
                 <div className="space-y-2 text-xs text-text-main/85 leading-relaxed">
-                  <p>
-                    <strong>1. Isostatisches Primärmoment (<InlineMath math="M_{P,1}" />):</strong><br />
-                    Entsteht unmittelbar aus der lokalen Exzentrizität des Spannglieds bezüglich des Querschnittsschwerpunkts:
-                    <span className="font-mono block text-center py-1 text-slate-800">
+                  <p><MdText text={inhalt.texte.t1IsostatischesPrimärmomentM} /><span className="font-mono block text-center py-1 text-slate-800">
                       <InlineMath math="M_{P,1} = -P \cdot e_p" />
                     </span>
                   </p>
-                  <p>
-                    <strong>2. Hyperstatisches Sekundärmoment (<InlineMath math="M_{P,2}" />):</strong><br />
-                    Es entsteht aus den Zwangsauflagerkräften, die die Vorspannung an den Zwischenstützen hervorruft.
-                  </p>
+                  <p><MdText text={inhalt.texte.t2HyperstatischesSekundärmomentM} /></p>
                 </div>
               </div>
 
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
                 <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600" /> Das Konzept der Konkordanz
-                </h4>
+                  <CheckCircle2 size={16} className="text-emerald-600" /><MdText text={inhalt.texte.dasKonzeptDerKonkordanz} /></h4>
                 <div className="text-xs text-slate-700 space-y-2.5 leading-relaxed">
-                  <p>
-                    Ein Spanngliedverlauf wird als <strong>konkordant</strong> bezeichnet, wenn die durch 
-                    die Vorspannung hervorgerufenen Verformungen an allen Zwischenauflagern identisch null sind.
-                  </p>
+                  <p><MdText text={inhalt.texte.einSpanngliedverlaufWirdAls} /></p>
                   <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-900 font-mono text-center font-bold">
                     <InlineMath math="M_{P,2} = 0 \iff M_P \equiv M_{P,1}" />
                   </div>
-                  <p>
-                    Bei konkordanter Spanngliedführung entstehen keine Zwangskräfte an den Auflagern. 
-                    Nach dem Satz der linearen Transformation (Guyon) ändert eine lineare Verschiebung der Spanngliedlage über den Innenstützen (bei unveränderten Endlagen und gleicher Krümmung im Feld) die Aufteilung in Primär- und Sekundärmoment, nicht aber das Gesamtmoment M_P aus Vorspannung. Im GZT sind die statisch unbestimmten Anteile der Vorspannung (M_P,2) als Einwirkung zu berücksichtigen (EC2 5.10.8).
-                  </p>
+                  <p><MdText text={inhalt.texte.beiKonkordanterSpanngliedführungEntstehe} /></p>
                 </div>
               </div>
             </div>
@@ -436,14 +315,12 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 onClick={() => setActiveStep(3)}
                 className="px-3.5 py-2 bg-white text-text-main hover:bg-slate-100 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all border border-home-grau/30 cursor-pointer"
               >
-                <ArrowLeft size={14} /> Zurück zu Kapitel 4
-              </button>
+                <ArrowLeft size={14} /><MdText text={inhalt.texte.zurückZuKapitel4} /></button>
               <button
                 type="button"
                 onClick={() => setActiveStep(5)}
                 className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-              >
-                Weiter zu Kapitel 6 <ArrowRight size={14} />
+              ><MdText text={inhalt.texte.weiterZuKapitel6} /><ArrowRight size={14} />
               </button>
             </div>
           </div>

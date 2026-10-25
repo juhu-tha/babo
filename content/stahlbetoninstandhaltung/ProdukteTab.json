@@ -1,0 +1,115 @@
+{
+  "texte": {
+    "systematikDerInstandsetzungsprodukteBeto": "Systematik der Instandsetzungsprodukte & Betonersatzsysteme",
+    "jeNachSchadensbildStatischer": "Je nach Schadensbild, statischer Beanspruchung und Umgebungsfeuchte kommen verschiedene Mörtelsysteme nach DIN EN 1504-3 und der TR Instandhaltung (DIBt / ehemals DAfStb) zum Einsatz: CC, PCC, SPCC oder PC.",
+    "interaktiverSystemFinder": "Interaktiver System-Finder",
+    "ermittelnSieDasPassende": "Ermitteln Sie das passende Instandsetzungsprodukt für Ihren Anwendungsfall",
+    "t1BauteiltypBelastungsszenario": "1. Bauteiltyp / Belastungsszenario:",
+    "t2StatischeMitwirkungErforderlich": "2. Statische Mitwirkung erforderlich? (Lastfortleitung)",
+    "jaTragend": "Ja (Tragend)",
+    "neinNichtTragend": "Nein (Nicht tragend)",
+    "empfohleneSystematik": "Empfohlene Systematik:",
+    "prüfnachweiseMindestAnforderungen": "Prüfnachweise & Mindest-Anforderungen",
+    "technischeLeistungskriterienNachDin": "Technische Leistungskriterien nach DIN EN 1504-3 (Tragfähigkeit)",
+    "druckfestigkeitMpa": "Druckfestigkeit (MPa)",
+    "chloridgehalt": "Chloridgehalt (%)",
+    "adhäsionsHaftzugMpa": "Adhäsions-Haftzug (MPa)",
+    "modulElastizitätGpa": "Modul Elastizität (GPa)",
+    "dieKlassenR3Und": "Die Klassen **R3** und **R4** stellen statisch relevante Mörtelsysteme dar. Nach der Instandhaltungsrichtlinie (IhR) der DAfStb müssen Mörtelsysteme nicht nur Druckkräfte, sondern auch den Verbundnachweis under dynamischen Einflüssen fehlerfrei bestehen."
+  },
+  "werte": {
+    "pccIiSpcc": "PCC II / SPCC",
+    "r4StatischRelevant": "R4 (statisch relevant)",
+    "verwendungVonSpritzbaremOder": "Verwendung von spritzbarem oder zweikomponentigem kunststoffmodifiziertem Zementmörtel (PCC/SPCC). Gewährleistet sehr guten Verankerungsverbund und Karbonatisierungsschutz.",
+    "t20MpaNach": "≥ 2,0 MPa (nach Frost-Tausalz-Wechsel)",
+    "osSystemZB": "OS-System (z.B. OS 4 oder OS 2/3)",
+    "ccMörtelOderPcc": "CC-Mörtel oder PCC I",
+    "r3StatischRelevantOder": "R3 (statisch relevant oder nicht-statisch)",
+    "händischerEinbauEinesCc": "Händischer Einbau eines CC-Reparaturmörtels (Klasse R3) möglich. Geringe Zugkräfte zu erwarten.",
+    "standardAcrylatbeschichtungPrinzipC": "Standard-Acrylatbeschichtung (Prinzip C)",
+    "pccIFließmörtelPc": "PCC I (Fließmörtel) / PC (Epoxid)",
+    "r4ExtremVerschleißfest": "R4 (Extrem verschleißfest)",
+    "hoheAnforderungenAnDynamische": "Hohe Anforderungen an dynamische Raddrucklasten und Tausalzbeständigkeit. Ein herkömmlicher CC-Mörtel bricht hier auf.",
+    "zwingendOs8Oder": "Zwingend OS 8 oder OS 11 (befahrbarer Oberflächenschutz)",
+    "pcMörtelEpoxidharzmörtel": "PC-Mörtel (Epoxidharzmörtel)",
+    "r4ChemischBeständigPh": "R4 (Chemisch beständig, pH-Wert < 4)",
+    "säurenImAbwasserZerstören": "Säuren im Abwasser zerstören das zementöse Zementstein-Gefüge (Säureangriff/Entkalkung). Harzbindung ist absolut resistent.",
+    "t20MpaHaftuntergrund": "≥ 2,0 MPa (Haftuntergrund meist staub- und ölfrei)",
+    "chemischeBeschichtungOderGfk": "Chemische Beschichtung oder GFK-Systemausmauerung",
+    "pccHändischerRmMörtel": "PCC / Händischer RM-Mörtel",
+    "r2R3NichtStatisch": "R2 / R3 (nicht statisch)",
+    "kosmetischeAusbrücheImAußenbereich": "Kosmetische Ausbrüche im Außenbereich können gut händisch mit gebrauchsfertigem PCC-Reparaturmörtel ausgebessert werden.",
+    "t08Bis1": "≥ 0,8 bis 1,5 MPa",
+    "dünnerCarbonatisierungsbremsenderSchutza": "Dünner carbonatisierungsbremsender Schutzanstrich (OS 1/4)"
+  },
+  "daten": {
+    "ProdukteTab": [
+      {
+        "title": "CC-Mörtel (RM)",
+        "sub": "Cementitious Mortar / Reparaturmörtel",
+        "desc": "Reine zementgebundene Mörtelsysteme ohne nennenswerten Polymerzusatz. Nur für statisch ruhende Bauteile geeignet.",
+        "binder": "Zement (starr)",
+        "density": "Sehr hoch (~2,2 kg/dm³)",
+        "thickness": "10 - 50 mm (einlagig)",
+        "eMod": "Hoch (~25-35 GPa)",
+        "shrink": "Mittel bis hoch",
+        "color": "border-home-grau/30"
+      },
+      {
+        "title": "PCC-Mörtel",
+        "sub": "Polymer Cement Concrete",
+        "desc": "Kunststoffmodifizierter zementgebundener Mörtel (zweikomponentig). Standard bei dymamisch / thermisch belasteten Bauwerken.",
+        "binder": "Zement + Dispersionspulver/Acrylat",
+        "density": "Mittel (~2,0 kg/dm³)",
+        "thickness": "5 - 40 mm (mehrlagig)",
+        "eMod": "Reduziert (~18-25 GPa)",
+        "shrink": "Sehr gering (durch Polymere)",
+        "color": "border-shiraz/50"
+      },
+      {
+        "title": "SPCC-Mörtel",
+        "sub": "Sprayed Polymer Cement Concrete",
+        "desc": "Spritzbarer, polymer-zementgebundener Mörtel. Ideal für großflächige Schichtdicken und maschinellen Einbau (z.B. Tunnel, Brücken).",
+        "binder": "Zement + spritzbare polymere Additive",
+        "density": "Hoch (durch Verdichtung)",
+        "thickness": "20 - 80 mm (spritztechnisch)",
+        "eMod": "Mittel (~22-28 GPa)",
+        "shrink": "Gering",
+        "color": "border-home-grau/30"
+      },
+      {
+        "title": "PC-Mörtel",
+        "sub": "Polymer Concrete / Harzmörtel",
+        "desc": "Vollständig reaktionsharzgebundener Mörtel ohne Zementanteil. Extrem widerstandsfähig, chemisch hochresistent und wasserdicht.",
+        "binder": "Epoxidharz (EP) oder PUR + Sand",
+        "density": "Gering (~1,8 kg/dm³)",
+        "thickness": "5 - 30 mm",
+        "eMod": "Sehr hoch / variabel (~15-40 GPa)",
+        "shrink": "Extrem gering",
+        "color": "border-amber-500"
+      }
+    ],
+    "ProdukteTab_2": [
+      {
+        "id": "wall",
+        "label": "Feuchte Vertikalflächen (Wände, Pfeiler)",
+        "desc": "Statischer Lastabtrag, vertikal oder Überkopf"
+      },
+      {
+        "id": "deck",
+        "label": "Befahrbare Horizontalflächen",
+        "desc": "Parkdecks, Rampen, mechanische Abnutzung"
+      },
+      {
+        "id": "balcony",
+        "label": "Kosmetische Bauteile (Balkone, Brüstungen)",
+        "desc": "Geringe statische Einwirkung, Witterung"
+      },
+      {
+        "id": "sewage",
+        "label": "Chemischer Angriff (Kläranlagen, Kanäle)",
+        "desc": "Säuren, Laugen, starke Zersetzungsgefahr"
+      }
+    ]
+  }
+}

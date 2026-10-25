@@ -24,6 +24,8 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { BlockMath } from 'react-katex';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/holz/Holz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -48,9 +50,9 @@ const holzArten = {
 };
 
 const crossSections = [
-  { id: 'brett', name: 'Brett (flach)' },
-  { id: 'kantholz', name: 'Kantholz (quadratisch)' },
-  { id: 'bohle', name: 'Bohle (dick)' },
+  { id: 'brett', name: inhalt.werte.brettFlach },
+  { id: 'kantholz', name: inhalt.werte.kantholzQuadratisch },
+  { id: 'bohle', name: inhalt.werte.bohleDick },
   { id: 'rund', name: 'Rundholz' },
 ];
 
@@ -74,12 +76,8 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Holz im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechsle nahtlos zwischen den drei Säulen der Holz-Baustofflehre:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadHolzIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechsleNahtlosZwischenDen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -94,11 +92,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Anisotropes Quellen/Schwinden (3D-Modell), Holzfestigkeiten (EC5) & Kennwerte.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.anisotropesQuellenSchwinden3d} /></span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -118,11 +114,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Holzprodukte & Praxis</span>
+            <span><MdText text={inhalt.texte.t2HolzproduktePraxis} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Konstruktionsvollholz, CLT, Vor- und Nachteile & Vorbemessungsrechner.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.konstruktionsvollholzCltVorUnd} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -142,11 +136,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Holzzerstörende Pilze/Insekten, Witterung & baulicher Holzschutz nach DIN 68800.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.holzzerstörendePilzeInsektenWitterung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -277,7 +269,7 @@ export default function Holz() {
       labels,
       datasets: [
         {
-          label: 'Druckfestigkeit f_c,α,d [MPa]',
+          label: inhalt.werte.druckfestigkeitFCD,
           data: data,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -286,7 +278,7 @@ export default function Holz() {
           tension: 0.4,
         },
         {
-          label: 'Aktueller Winkel',
+          label: inhalt.werte.aktuellerWinkel,
           data: currentPoint,
           borderColor: '#A3113E',
           backgroundColor: '#A3113E',
@@ -306,10 +298,10 @@ export default function Holz() {
     },
     scales: {
       x: {
-        title: { display: true, text: 'Faserwinkel α [°]', font: { weight: 'bold' as const } }
+        title: { display: true, text: inhalt.werte.faserwinkel, font: { weight: 'bold' as const } }
       },
       y: {
-        title: { display: true, text: 'Druckfestigkeit [MPa]', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.druckfestigkeitMpa, font: { weight: 'bold' as const } },
         min: 0,
       }
     }
@@ -319,13 +311,10 @@ export default function Holz() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Holzbau &amp; Holztechnologie
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.holzbauHolztechnologie} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Holz ist ein natürlicher, nachwachsender und biologisch abbaubarer Baustoff mit ausgeprägter Anisotropie. Sein mechanisches und physikalisches Verhalten wird maßgeblich von der Faserrichtung, der Feuchtigkeit und der Beanspruchungsdauer (Kriechen, kmod) bestimmt.
-          </p>
+          <p><MdText text={inhalt.texte.holzIstEinNatürlicher} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -347,8 +336,7 @@ export default function Holz() {
             }`}
             onClick={() => setActiveTab('grundlagen')}
           >
-            <Info size={16} /> Grundlagen &amp; Theorie
-          </button>
+            <Info size={16} /><MdText text={inhalt.texte.grundlagenTheorie} /></button>
           <button aria-pressed={activeTab === 'schwinden'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'schwinden' 
@@ -357,8 +345,7 @@ export default function Holz() {
             }`}
             onClick={() => setActiveTab('schwinden')}
           >
-            <Droplets size={16} /> Schwinden &amp; Quellen
-          </button>
+            <Droplets size={16} /><MdText text={inhalt.texte.schwindenQuellen} /></button>
           <button aria-pressed={activeTab === 'festigkeit'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'festigkeit' 
@@ -367,8 +354,7 @@ export default function Holz() {
             }`}
             onClick={() => setActiveTab('festigkeit')}
           >
-            <Activity size={16} /> Festigkeit (EC5)
-          </button>
+            <Activity size={16} /><MdText text={inhalt.texte.festigkeitEc5} /></button>
           <button aria-pressed={activeTab === 'kriechen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kriechen' 
@@ -377,17 +363,16 @@ export default function Holz() {
             }`}
             onClick={() => setActiveTab('kriechen')}
           >
-            <Timer size={16} /> Kriechen &amp; Verformung
-          </button>
+            <Timer size={16} /><MdText text={inhalt.texte.kriechenVerformung} /></button>
         </div>
 
         {activeTab !== 'steckbrief' && (
         <div className="animate-in fade-in duration-300 flex flex-col gap-6">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-text-main">Holzart / Werkstoff</label>
-            <InfoTooltip text="Auswahl der Holzart oder des Holzwerkstoffs. Dies beeinflusst Rohdichte, Schwindmaße und Festigkeiten." />
+            <label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.holzartWerkstoff} /></label>
+            <InfoTooltip text={inhalt.werte.auswahlDerHolzartOder} />
           </div>
-          <select aria-label="Holzart / Werkstoff" 
+          <select aria-label={inhalt.werte.holzartWerkstoff} 
             className="w-full p-3 border border-home-grau/30 rounded-xl focus:outline-none focus:border-shiraz bg-off-white"
             value={holz} 
           onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -402,97 +387,84 @@ export default function Holz() {
           {/* Dynamischer Theorie-Bezug zur ausgewählten Holzart */}
           <div className="bg-shiraz/5 p-6 rounded-2xl border border-shiraz/35 space-y-4">
             <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-shiraz animate-pulse"></span>
-              Spezifische Quell- &amp; Schwindtheorie für {holz}
+              <span className="w-2.5 h-2.5 rounded-full bg-shiraz animate-pulse"></span><MdText text={inhalt.texte.spezifischeQuellSchwindtheorieFür} />{holz}
             </h3>
-            <p className="text-sm text-slate-700 leading-relaxed">
-              Für die gewählte Holzart bzw. den Holzwerkstoff <strong>{holz}</strong> gelten im Fasersättigungsbereich folgende differentielle Schwindmaße (Maßänderung in % je 1% Feuchtigkeitsänderung unterhalb FSP):
-            </p>
+            <p className="text-sm text-slate-700 leading-relaxed"><MdText text={inhalt.texte.fürDieGewählteHolzart} /><strong>{holz}</strong><MdText text={inhalt.texte.geltenImFasersättigungsbereichFolgende} /></p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
-                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Tangential (Ringrichtung | q_t)</span>
+                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider"><MdText text={inhalt.texte.tangentialRingrichtungQT} /></span>
                 <span className="text-xl font-mono font-black text-shiraz mt-1">{formatDeZahl(holzArten[holz].qt, 2)} %</span>
-                <p className="text-[10px] text-slate-500 mt-1">Breitenänderung senkrecht zur radialen Schichtebene.</p>
+                <p className="text-[10px] text-slate-500 mt-1"><MdText text={inhalt.texte.breitenänderungSenkrechtZurRadialen} /></p>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
-                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Radial (Strahlenrichtung | q_r)</span>
+                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider"><MdText text={inhalt.texte.radialStrahlenrichtungQR} /></span>
                 <span className="text-xl font-mono font-black text-slate-800 mt-1">{formatDeZahl(holzArten[holz].qr, 2)} %</span>
-                <p className="text-[10px] text-slate-500 mt-1">Dickenänderung parallel zu den Markstrahlen.</p>
+                <p className="text-[10px] text-slate-500 mt-1"><MdText text={inhalt.texte.dickenänderungParallelZuDen} /></p>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
-                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Longitudinal (Faserrichtung | q_l)</span>
+                <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider"><MdText text={inhalt.texte.longitudinalFaserrichtungQL} /></span>
                 <span className="text-xl font-mono font-black text-slate-800 mt-1">{formatDeZahl(holzArten[holz].ql, 2)} %</span>
-                <p className="text-[10px] text-slate-500 mt-1">Äußerst geringe Maßänderung längs der Faserrichtung.</p>
+                <p className="text-[10px] text-slate-500 mt-1"><MdText text={inhalt.texte.äußerstGeringeMaßänderungLängs} /></p>
               </div>
             </div>
             
             <div className="p-4 bg-white rounded-lg border border-home-grau/25 text-xs text-slate-700 space-y-2">
-              <div className="font-bold text-slate-800">Schwind-Szenario für {holz}:</div>
-              <p className="leading-relaxed">
-                Wird das Material von Fasersättigung (~30% Holzfeuchte) auf eine Ausgleichsfeuchte von 12 % (Obergrenze NKL 1) getrocknet (<FormulaText text="\Delta u = 18\%" />), verringern sich die Abmessungen rechnerisch um:
-              </p>
+              <div className="font-bold text-slate-800"><MdText text={inhalt.texte.schwindSzenarioFür} />{holz}:</div>
+              <p className="leading-relaxed"><MdText text={inhalt.texte.wirdDasMaterialVon} /><FormulaText text="\Delta u = 18\%" /><MdText text={inhalt.texte.verringernSichDieAbmessungen} /></p>
               <ul className="list-disc pl-5 space-y-1 text-slate-650">
-                <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl((18 * holzArten[holz].qt), 2)}%</strong> (Spürbare Breitenreduktion)</li>
-                <li>Radial: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].qr), 2)}%</strong> (Moderate Dickenreduktion)</li>
-                <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].ql), 2)}%</strong> (Längenänderung vernachlässigbar)</li>
+                <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl((18 * holzArten[holz].qt), 2)}%</strong><MdText text={inhalt.texte.spürbareBreitenreduktion} /></li>
+                <li>Radial: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].qr), 2)}%</strong><MdText text={inhalt.texte.moderateDickenreduktion} /></li>
+                <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].ql), 2)}%</strong><MdText text={inhalt.texte.längenänderungVernachlässigbar} /></li>
               </ul>
               <div className="text-[10px] text-slate-550 border-t border-home-grau/10 pt-1.5 mt-1.5 italic">
                 {holz.includes('Brettschichtholz')
-                  ? 'BSH: Die Lamellen sind parallel verklebt, es gibt keine Absperrung. Im Querschnitt schwindet BSH daher wie Vollholz. Vorteil: Die Lamellen werden vor dem Verkleben technisch getrocknet (ca. 12 %), Schwindrisse nach dem Einbau fallen deshalb geringer aus.'
+                  ? inhalt.werte.bshDieLamellenSind
                   : holz.includes('OSB') || holz.includes('Furnier')
-                  ? 'Holzwerkstoff-Effekt: Absperrung (OSB) bzw. Homogenisierung durch Furniere (FSH) reduziert die Maßänderung in Plattenebene deutlich. Die Kennwerte sind Richtwerte – maßgebend sind Leistungserklärung und Zulassung.'
-                  : 'Naturwerkstoff-Verhalten: Das hohe Anisotropieverhältnis (qt / qr ≈ 2) führt bei ungleichmäßiger Trocknung zu typischen Schüssellungen, Verdrehungen oder Rissbildungen.'}
+                  ? inhalt.werte.holzwerkstoffEffektAbsperrungOsb
+                  : inhalt.werte.naturwerkstoffVerhaltenDasHohe}
               </div>
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Quellen und Schwinden anhand der Fasersättigung
-            </h2>
+            <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.quellenUndSchwindenAnhand} /></h2>
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Holz ist ein hygroskopisches Material, das Feuchtigkeit aus der Umgebungsluft aufnimmt oder dorthin abgibt. 
-                Dieser Feuchtigkeitsaustausch findet statt, bis sich ein Gleichgewicht mit dem Umgebungsklima einstellt (Holzausgleichsfeuchte). 
-                Entscheidend für das Maßänderungsverhalten (Quellen und Schwinden) ist der sogenannte <strong>Fasersättigungsbereich</strong>.
-              </p>
+              <p><MdText text={inhalt.texte.holzIstEinHygroskopisches} /></p>
             </div>
             <ul className="list-disc pl-5 space-y-2 text-sm text-text-main/80">
-              <li><strong>Freies Wasser (Kapillarwasser):</strong> Befindet sich in den Zellhohlräumen. Wird dieses Wasser bei der Trocknung abgegeben, sinkt zwar das Gewicht des Holzes, aber es findet <em>kein</em> Schwinden statt.</li>
-              <li><strong>Gebundenes Wasser:</strong> Befindet sich in den Zellwänden.</li>
-              <li><strong>Fasersättigungspunkt (FSP):</strong> Ein Zustand (bei den meisten heimischen Holzarten ca. 28 - 32 % Holzfeuchte), bei dem die Zellhohlräume wasserfrei sind, aber die Zellwände noch maximal mit Wasser gesättigt sind.</li>
-              <li><strong>Quellen und Schwinden:</strong> Eine Volumenänderung (Quellen oder Schwinden) des Holzes tritt <em>ausschließlich unterhalb des Fasersättigungspunktes</em> auf. Gibt das Holz Feuchtigkeit aus den Zellwänden ab (unterhalb ~30%), ziehen sich die Zellwände zusammen (das Holz schwindet). Nimmt es Feuchtigkeit auf, weiten sich die Zellwände (das Holz quillt). Oberhalb des FSP passiert maßlich nichts.</li>
+              <li><MdText text={inhalt.texte.freiesWasserKapillarwasserBefindet} /></li>
+              <li><MdText text={inhalt.texte.gebundenesWasserBefindetSich} /></li>
+              <li><MdText text={inhalt.texte.fasersättigungspunktFspEinZustand} /></li>
+              <li><MdText text={inhalt.texte.quellenUndSchwindenEine} /></li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h2 className="text-xl font-bold text-text-main mb-4">Holz vs. Holzwerkstoffe</h2>
+            <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.holzVsHolzwerkstoffe} /></h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-slate-400"></div> Vollholz (Massivholz)</h3>
+                <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-slate-400"></div><MdText text={inhalt.texte.vollholzMassivholz} /></h3>
                 <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-                  <p className="mb-3 font-medium">
-                    Natürlich gewachsenes Holz, das durch Sägen aus dem Stammquerschnitt geschnitten wird (z. B. Bohlen, Kanthölzer, Bretter).
-                  </p>
+                  <p className="mb-3 font-medium"><MdText text={inhalt.texte.natürlichGewachsenesHolzDas} /></p>
                   <div className="text-sm grid grid-cols-1 gap-2">
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Hohe natürliche Festigkeit parallel zur Faserrichtung</div>
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Geringer Energieaufwand in der Herstellung, ressourcenschonend</div>
-                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Starkes anisotropes Quellen und Schwinden (verzieht sich stark, verdreht sich, reißt)</div>
-                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Inhomogen: Fehlstellen (z.B. Äste, Risse, Faserabweichungen) mindern die Tragfähigkeit lokal</div>
-                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Abmessungen sind strikt durch die Baumgröße (Stammdurchmesser und Baumlänge) limitiert</div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200"><MdText text={inhalt.texte.hoheNatürlicheFestigkeitParallel} /></div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200"><MdText text={inhalt.texte.geringerEnergieaufwandInDer} /></div>
+                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200"><MdText text={inhalt.texte.starkesAnisotropesQuellenUnd} /></div>
+                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200"><MdText text={inhalt.texte.inhomogenFehlstellenZB} /></div>
+                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200"><MdText text={inhalt.texte.abmessungenSindStriktDurch} /></div>
                   </div>
                 </div>
               </div>
               <div className="space-y-3">
-                <h3 className="font-bold text-shiraz text-xl mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></div> Holzwerkstoffe (z.B. BSH, FSH, OSB, Spanplatte)</h3>
+                <h3 className="font-bold text-shiraz text-xl mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></div><MdText text={inhalt.texte.holzwerkstoffeZBBsh} /></h3>
                 <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-                  <p className="mb-3 font-medium">Aus zerkleinertem Holz (Bretter, Furniere, Späne, Fasern) durch Verpressen und zumeist synthetisches Verleimen hergestellte Bauteile.</p>
+                  <p className="mb-3 font-medium"><MdText text={inhalt.texte.ausZerkleinertemHolzBretter} /></p>
                   <div className="text-sm grid grid-cols-1 gap-2">
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Deutlich reduziertes und homogeneres Quellen/Schwinden (Sperreffekt durch kreuzweise Verleimung oder Klebstoffanteil)</div>
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Höhere und verlässlichere Festigkeiten durch Homogenisierung (Fehlstellen werden verteilt, herausgeschnitten oder kaschiert)</div>
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Große Querschnitte, Längen und gekrümmte Formen möglich (begrenzt durch Presse und Transport) (z. B. gebogene Brettschichtholz-Träger)</div>
-                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Höherer Primärenergieeinsatz bei der Produktion (Trocknen, Pressen, Leimen)</div>
-                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Verwendung von synthetischen Klebstoffen (Ausgasungspotenzial (VOCs), Verwertung am Lebensende oft problematisch)</div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200"><MdText text={inhalt.texte.deutlichReduziertesUndHomogeneres} /></div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200"><MdText text={inhalt.texte.höhereUndVerlässlichereFestigkeiten} /></div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200"><MdText text={inhalt.texte.großeQuerschnitteLängenUnd} /></div>
+                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200"><MdText text={inhalt.texte.höhererPrimärenergieeinsatzBeiDer} /></div>
+                    <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200"><MdText text={inhalt.texte.verwendungVonSynthetischenKlebstoffen} /></div>
                   </div>
                 </div>
               </div>
@@ -504,17 +476,15 @@ export default function Holz() {
       {activeTab === 'schwinden' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">Anisotropes Schwinden (3D)</h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.anisotropesSchwinden3d} /></h2>
           
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <p>
-              Holz ist ein stark anisotropes Material. Es schwindet und quillt in tangentialer, radialer und longitudinaler Richtung unterschiedlich stark. Zudem sind die Festigkeiten stark abhängig von der Faserrichtung, der Holzfeuchte und der Dauer der Lasteinwirkung (Berechnung nach DIN EN 1995-1-1 / Eurocode 5).
-          </p>
+            <p><MdText text={inhalt.texte.holzIstEinStark} /></p>
         </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Holzprodukt / Holzart</label><InfoTooltip text="Art des verwendeten Holzes oder Holzwerkstoffs." /></div>
-            <select aria-label="Holzprodukt / Holzart" 
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.holzproduktHolzart} /></label><InfoTooltip text={inhalt.werte.artDesVerwendetenHolzes} /></div>
+            <select aria-label={inhalt.werte.holzproduktHolzart} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={holz}
               onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -533,7 +503,7 @@ export default function Holz() {
                   <span className="font-bold">{formatDeWert(holzArten[holz].lambda)} W/(mK)</span>
                 </div>
                 <div className="flex justify-between col-span-2">
-                  <span className="text-text-main/60">{holz === 'OSB' ? <>Abbrandrate <FormulaText text="\beta_0" /> (Platte, DIN EN 1995-1-2 Tab. 3.1):</> : <>Ideelle Abbrandrate <FormulaText text="\beta_n" /> (DIN EN 1995-1-2 Tab. 3.1):</>}</span>
+                  <span className="text-text-main/60">{holz === 'OSB' ? <>Abbrandrate <FormulaText text="\beta_0" /><MdText text={inhalt.texte.platteDinEn1995} /></> : <><MdText text={inhalt.texte.ideelleAbbrandrate} /><FormulaText text="\beta_n" /><MdText text={inhalt.texte.dinEn19951} /></>}</span>
                   <span className="font-bold">{formatDeWert(holzArten[holz].beta0)} mm/min</span>
                 </div>
               </div>
@@ -541,7 +511,7 @@ export default function Holz() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Querschnitt</label><InfoTooltip text="Abmessungen des Bauteilquerschnitts." /></div>
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Querschnitt</label><InfoTooltip text={inhalt.werte.abmessungenDesBauteilquerschnitts} /></div>
             <select aria-label="Querschnitt" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={querschnitt}
@@ -552,14 +522,14 @@ export default function Holz() {
           </div>
 
           <Slider
-            label="Einbaufeuchte (u_start)" info="Holzfeuchte zum Zeitpunkt des Einbaus."
+            label={inhalt.werte.einbaufeuchteUStart} info={inhalt.werte.holzfeuchteZumZeitpunktDes}
             min={5} max={40} step={1}
             value={uStart} unit="%"
             onChange={(e) => setUStart(Number(e.target.value))}
           />
           
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-sm font-bold text-text-main">Lagerung & Umgebung</h3>
+            <h3 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.lagerungUmgebung} /></h3>
             <Slider
               label="Temperatur" 
               min={-10} max={40} step={1}
@@ -567,7 +537,7 @@ export default function Holz() {
               onChange={(e) => setTemp(Number(e.target.value))}
             />
             <Slider
-              label="Relative Luftfeuchte" info="Relative Feuchtigkeit der Umgebungsluft."
+              label={inhalt.werte.relativeLuftfeuchte} info={inhalt.werte.relativeFeuchtigkeitDerUmgebungsluft}
               min={20} max={100} step={1}
               value={rh} unit="%"
               onChange={(e) => setRh(Number(e.target.value))}
@@ -583,29 +553,29 @@ export default function Holz() {
               <span className="font-bold text-shiraz">{formatDeZahl(uGleichgewicht, 1)} %</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-text-main/70">Erreichte Endfeuchte:</span>
+              <span className="text-text-main/70"><MdText text={inhalt.texte.erreichteEndfeuchte} /></span>
               <span className="font-bold text-shiraz">{formatDeZahl(uEnde, 1)} %</span>
             </div>
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-sm font-bold text-text-main">Abmessungen & Lage</h3>
+            <h3 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.abmessungenLage} /></h3>
             <Slider
-              label={querschnitt === 'rund' ? 'Durchmesser (T/R)' : 'Breite (T)'} info="Breite des Querschnitts in tangentialer Richtung bzw. Durchmesser."
+              label={querschnitt === 'rund' ? inhalt.werte.durchmesserTR : 'Breite (T)'} info={inhalt.werte.breiteDesQuerschnittsIn}
               min={10} max={500} step={1}
               value={breite} unit=" mm"
               onChange={(e) => setBreite(Number(e.target.value))}
             />
             {querschnitt !== 'rund' && (
               <Slider
-                label="Dicke (R)" info="Dicke des Querschnitts in radialer Richtung."
+                label="Dicke (R)" info={inhalt.werte.dickeDesQuerschnittsIn}
                 min={10} max={300} step={1}
                 value={dicke} unit=" mm"
                 onChange={(e) => setDicke(Number(e.target.value))}
               />
             )}
             <Slider
-              label="Länge (L)" info="Länge des Bauteils."
+              label="Länge (L)" info={inhalt.werte.längeDesBauteils}
               min={100} max={5000} step={10}
               value={laenge} unit=" mm"
               onChange={(e) => setLaenge(Number(e.target.value))}
@@ -613,13 +583,13 @@ export default function Holz() {
             {querschnitt !== 'rund' && (
               <div className="flex flex-col gap-4">
                 <Slider
-                  label="Exzentrizität X (Abstand Markröhre)" 
+                  label={inhalt.werte.exzentrizitätXAbstandMarkröhre} 
                   min={0} max={200} step={5}
                   value={exzentrizitaetX} unit=" mm"
                   onChange={(e) => setExzentrizitaetX(Number(e.target.value))}
                 />
                 <Slider
-                  label="Exzentrizität Y (Abstand Markröhre)" 
+                  label={inhalt.werte.exzentrizitätYAbstandMarkröhre} 
                   min={0} max={200} step={5}
                   value={exzentrizitaetY} unit=" mm"
                   onChange={(e) => setExzentrizitaetY(Number(e.target.value))}
@@ -627,20 +597,20 @@ export default function Holz() {
               </div>
             )}
             <Slider
-              label="Skalierungsfaktor (Darstellung)"
+              label={inhalt.werte.skalierungsfaktorDarstellung}
               min={1} max={50} step={1}
               value={skalierungsfaktor} unit="x"
-              info="Überhöhung der Verformung für eine bessere Sichtbarkeit im 3D-Modell."
+              info={inhalt.werte.überhöhungDerVerformungFür}
               onChange={(e) => setSkalierungsfaktor(Number(e.target.value))}
             />
           </div>
         </div>
 
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[700px]">
-          <h2 className="text-xl font-bold text-text-main mb-4">3D Verformung</h2>
+          <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.t3dVerformung} /></h2>
           
           <div className="flex-1 relative w-full h-full bg-off-white rounded-xl overflow-hidden border border-home-grau/30">
-            <React.Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-sm text-text-main/60">3D-Ansicht wird geladen …</div>}>
+            <React.Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-sm text-text-main/60"><MdText text={inhalt.texte.t3dAnsichtWirdGeladen} /></div>}>
               <HolzSchwinden3D
                 querschnitt={querschnitt} breite={breite} dicke={dicke} laenge={laenge}
                 exzentrizitaetX={exzentrizitaetX} exzentrizitaetY={exzentrizitaetY}
@@ -650,25 +620,25 @@ export default function Holz() {
             </React.Suspense>
             
             <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-sm text-xs border border-home-grau/30">
-              <div className="font-bold text-text-main mb-1">Achsen & Legende:</div>
-              <div className="text-red-500">X (Rot): Tangential (Breite)</div>
-              <div className="text-green-500">Y (Grün): Radial (Dicke)</div>
-              <div className="text-blue-500">Z (Blau): Longitudinal (Länge)</div>
-              <div className="text-[#A3113E] mt-2 font-bold">Rotes Gitter: Ausgangszustand</div>
+              <div className="font-bold text-text-main mb-1"><MdText text={inhalt.texte.achsenLegende} /></div>
+              <div className="text-red-500"><MdText text={inhalt.texte.xRotTangentialBreite} /></div>
+              <div className="text-green-500"><MdText text={inhalt.texte.yGrünRadialDicke} /></div>
+              <div className="text-blue-500"><MdText text={inhalt.texte.zBlauLongitudinalLänge} /></div>
+              <div className="text-[#A3113E] mt-2 font-bold"><MdText text={inhalt.texte.rotesGitterAusgangszustand} /></div>
             </div>
           </div>
 
           <div className="mt-6 grid grid-cols-5 gap-4 text-center">
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">
-                {querschnitt === 'rund' ? 'Durchmesser (T)' : 'Breite (T)'}
+                {querschnitt === 'rund' ? inhalt.werte.durchmesserT : 'Breite (T)'}
               </div>
               <div className="text-lg font-bold text-shiraz">{formatDeZahl(newBreite, 1)} mm</div>
               <div className="text-xs text-torch-red">Δ {formatDeZahl((newBreite - breite), 1)} mm</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">
-                {querschnitt === 'rund' ? 'Durchmesser (R)' : 'Dicke (R)'}
+                {querschnitt === 'rund' ? inhalt.werte.durchmesserR : 'Dicke (R)'}
               </div>
               <div className="text-lg font-bold text-shiraz">
                 {querschnitt === 'rund' ? formatDeZahl((breite * scaleY), 1) : formatDeZahl(newDicke, 1)} mm
@@ -688,7 +658,7 @@ export default function Holz() {
               <div className="text-xs text-text-main/60">ΔV / V</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
-              <div className="text-xs text-text-main/60 uppercase tracking-wider">Verhältnis T/R</div>
+              <div className="text-xs text-text-main/60 uppercase tracking-wider"><MdText text={inhalt.texte.verhältnisTR} /></div>
               <div className="text-lg font-bold text-shiraz">{formatDeZahl((shrinkT / shrinkR || 0), 2)}</div>
               <div className="text-xs text-text-main/60">Anisotropie</div>
             </div>
@@ -700,11 +670,11 @@ export default function Holz() {
       {activeTab === 'festigkeit' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">Holzfestigkeit (EC5)</h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.holzfestigkeitEc5} /></h2>
           
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Sortierklasse / Festigkeitsklasse</label><InfoTooltip text="Klassifizierung des Holzes nach seiner Tragfähigkeit." /></div>
-            <select aria-label="Sortierklasse / Festigkeitsklasse" 
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.sortierklasseFestigkeitsklasse} /></label><InfoTooltip text={inhalt.werte.klassifizierungDesHolzesNach} /></div>
+            <select aria-label={inhalt.werte.sortierklasseFestigkeitsklasse} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={festigkeitsklasse}
               onChange={(e) => setFestigkeitsklasse(e.target.value as keyof typeof festigkeitsklassen)}
@@ -714,8 +684,8 @@ export default function Holz() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Nutzungsklasse (NKL)</label><InfoTooltip text="Einteilung nach den klimatischen Umgebungsbedingungen." /></div>
-            <select aria-label="Nutzungsklasse (NKL)" 
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.nutzungsklasseNkl} /></label><InfoTooltip text={inhalt.werte.einteilungNachDenKlimatischen} /></div>
+            <select aria-label={inhalt.werte.nutzungsklasseNkl} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={nkl}
               onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}
@@ -727,8 +697,8 @@ export default function Holz() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Klasse der Lasteinwirkungsdauer (KLED)</label><InfoTooltip text="Einteilung der Lasten nach ihrer Einwirkungsdauer." /></div>
-            <select aria-label="Klasse der Lasteinwirkungsdauer (KLED)" 
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.klasseDerLasteinwirkungsdauerKled} /></label><InfoTooltip text={inhalt.werte.einteilungDerLastenNach} /></div>
+            <select aria-label={inhalt.werte.klasseDerLasteinwirkungsdauerKled} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={kled}
               onChange={(e) => setKled(e.target.value)}
@@ -742,8 +712,8 @@ export default function Holz() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Auflagerbedingung (k_c,90)</label><InfoTooltip text="Beiwert zur Berücksichtigung der Auflagerart bei Querdruck." /></div>
-            <select aria-label="Auflagerbedingung (k_c,90)" 
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.auflagerbedingungKC90} /></label><InfoTooltip text={inhalt.werte.beiwertZurBerücksichtigungDer} /></div>
+            <select aria-label={inhalt.werte.auflagerbedingungKC90} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={kc90}
               onChange={(e) => setKc90(Number(e.target.value))}
@@ -756,7 +726,7 @@ export default function Holz() {
           </div>
 
           <Slider
-            label="Faserwinkel α (Druck)"
+            label={inhalt.werte.faserwinkelDruck}
             min={0} max={90} step={1}
             value={winkel} unit="°"
             
@@ -765,23 +735,23 @@ export default function Holz() {
         </div>
 
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-          <h2 className="text-xl font-bold text-text-main mb-4">Bemessungswerte der Festigkeit (f_d)</h2>
+          <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.bemessungswerteDerFestigkeitF} /></h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <h3 className="text-xs font-bold text-home-grau mb-1">Modifikationsbeiwert k_mod</h3>
+              <h3 className="text-xs font-bold text-home-grau mb-1"><MdText text={inhalt.texte.modifikationsbeiwertKMod} /></h3>
               <div className="text-2xl font-bold text-text-main">{formatDeZahl(kmod, 2)}</div>
             </div>
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <h3 className="text-xs font-bold text-home-grau mb-1">Teilsicherheitsbeiwert γ_M</h3>
+              <h3 className="text-xs font-bold text-home-grau mb-1"><MdText text={inhalt.texte.teilsicherheitsbeiwertM} /></h3>
               <div className="text-2xl font-bold text-text-main">{formatDeZahl(gammaM, 2)}</div>
             </div>
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <h3 className="text-xs font-bold text-home-grau mb-1">E-Modul E_0,mean</h3>
+              <h3 className="text-xs font-bold text-home-grau mb-1"><MdText text={inhalt.texte.eModulE0} /></h3>
               <div className="text-2xl font-bold text-text-main">{formatDeWert(E0mean)} <span className="text-sm font-normal">MPa</span></div>
             </div>
             <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20">
-              <h3 className="text-xs font-bold text-shiraz mb-1">Druckfestigkeit f_c,α,d ({formatDeWert(winkel)}°)</h3>
+              <h3 className="text-xs font-bold text-shiraz mb-1"><MdText text={inhalt.texte.druckfestigkeitFCD} />{formatDeWert(winkel)}°)</h3>
               <div className="text-2xl font-bold text-shiraz">{formatDeZahl(fcad, 2)} <span className="text-sm font-normal">MPa</span></div>
             </div>
           </div>
@@ -791,73 +761,64 @@ export default function Holz() {
               <thead>
                 <tr className="border-b-2 border-home-grau/30">
                   <th className="py-3 px-4 font-bold text-text-main">Beanspruchung</th>
-                  <th className="py-3 px-4 font-bold text-text-main">Charakteristisch (f_k)</th>
-                  <th className="py-3 px-4 font-bold text-shiraz">Bemessungswert (f_d)</th>
+                  <th className="py-3 px-4 font-bold text-text-main"><MdText text={inhalt.texte.charakteristischFK} /></th>
+                  <th className="py-3 px-4 font-bold text-shiraz"><MdText text={inhalt.texte.bemessungswertFD} /></th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-3 px-4 font-medium text-text-main">Biegung (f_m)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.biegungFM} /></td>
                   <td className="py-3 px-4">{formatDeZahl(fm, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fmd, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
-                  <td className="py-3 px-4 font-medium text-text-main">Zug parallel (f_t,0)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.zugParallelFT} /></td>
                   <td className="py-3 px-4">{formatDeZahl(ft0, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(ft0d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-3 px-4 font-medium text-text-main">Zug rechtwinklig (f_t,90)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.zugRechtwinkligFT} /></td>
                   <td className="py-3 px-4">{formatDeZahl(ft90, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(ft90d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
-                  <td className="py-3 px-4 font-medium text-text-main">Druck parallel (f_c,0)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.druckParallelFC} /></td>
                   <td className="py-3 px-4">{formatDeZahl(fc0, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fc0d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-3 px-4 font-medium text-text-main">Druck rechtwinklig (f_c,90)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.druckRechtwinkligFC} /></td>
                   <td className="py-3 px-4">{formatDeZahl(fc90, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fc90d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
-                  <td className="py-3 px-4 font-medium text-text-main">Schub/Scherung (f_v)</td>
+                  <td className="py-3 px-4 font-medium text-text-main"><MdText text={inhalt.texte.schubScherungFV} /></td>
                   <td className="py-3 px-4">{formatDeZahl(fv, 1)} MPa</td>
                   <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fvd, 2)} MPa</td>
                 </tr>
               </tbody>
             </table>
-            <p className="text-xs text-text-main/70 mt-2">
-              Kennwerte nach DIN EN 338 (Vollholz) und DIN EN 14080 (BSH); <FormulaText text="\gamma_M = 1{,}3" /> nach DIN EN 1995-1-1/NA. Beim Schubnachweis ist zusätzlich der Rissbeiwert <FormulaText text="k_{cr}" /> anzusetzen (NA: <FormulaText text="2{,}0/f_{v,k}" /> für Vollholz, <FormulaText text="2{,}5/f_{v,k}" /> für BSH). Der Höhenbeiwert <FormulaText text="k_h" /> ist hier nicht berücksichtigt.
-            </p>
+            <p className="text-xs text-text-main/70 mt-2"><MdText text={inhalt.texte.kennwerteNachDinEn} /><FormulaText text="\gamma_M = 1{,}3" /><MdText text={inhalt.texte.nachDinEn1995} /><FormulaText text="k_{cr}" /><MdText text={inhalt.texte.anzusetzenNa} /><FormulaText text="2{,}0/f_{v,k}" /><MdText text={inhalt.texte.fürVollholz} /><FormulaText text="2{,}5/f_{v,k}" /><MdText text={inhalt.texte.fürBshDerHöhenbeiwert} /><FormulaText text="k_h" /><MdText text={inhalt.texte.istHierNichtBerücksichtigt} /></p>
           </div>
 
           <div className="mt-6">
             <FormulaDerivationBox
-              title="Anwendungsbeispiel: Biegetragfähigkeit eines Balkens C24"
+              title={inhalt.werte.anwendungsbeispielBiegetragfähigkeitEine}
               zielGleichung="M_{Rd} = k_{mod} \cdot \frac{f_{m,k}}{\gamma_M} \cdot W"
-              normQuelle="DIN EN 1995-1-1 mit NA, 6.1.6 (NKL 1, KLED mittel)"
-              schritte={[
-                { titel: '1. Gegeben', formel: 'b/h = 100/200\\,\\text{mm},\\; f_{m,k} = 24\\,\\text{N/mm}^2,\\; M_{Ed} = 7{,}0\\,\\text{kNm}', erklaerung: 'Nutzlast als maßgebende Einwirkung (KLED mittel), Innenraum (NKL 1).' },
-                { titel: '2. Bemessungsfestigkeit', formel: 'f_{m,d} = 0{,}8 \\cdot 24 / 1{,}3 = 14{,}77\\,\\text{N/mm}^2', erklaerung: 'k_mod = 0,8; k_h = 1,0 für h ≥ 150 mm.' },
-                { titel: '3. Widerstandsmoment', formel: 'W = \\frac{b \\cdot h^2}{6} = \\frac{100 \\cdot 200^2}{6} = 666\\,667\\,\\text{mm}^3', erklaerung: 'Rechteckquerschnitt.' },
-                { titel: '4. Widerstand und Ausnutzung', formel: 'M_{Rd} = 14{,}77 \\cdot 666\\,667 = 9{,}85\\,\\text{kNm},\\; \\eta = 7{,}0/9{,}85 = 0{,}71', erklaerung: 'η ≤ 1 – Nachweis erfüllt.' },
-              ]}
-              ergebnisHinweis="Ausnutzung 71 % – Kippen, Schub und Durchbiegung (mit k_def) sind gesondert nachzuweisen."
+              normQuelle={inhalt.werte.dinEn19951}
+              schritte={inhalt.daten["Holz.schritte"]}
+              ergebnisHinweis={inhalt.werte.ausnutzung71KippenSchub}
             />
           </div>
 
           <div className="mt-6 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <h3 className="text-sm font-bold text-text-main mb-2">Hankinson-Gleichung (Druck unter Winkel)</h3>
-            <p className="text-sm text-home-grau mb-4">
-              Die Druckfestigkeit von Holz ist stark richtungsabhängig. Bei Krafteinleitung unter einem Winkel α zur Faserrichtung wird die Festigkeit nach Hankinson abgemindert (DIN EN 1995-1-1, Gl. 6.16).
-            </p>
+            <h3 className="text-sm font-bold text-text-main mb-2"><MdText text={inhalt.texte.hankinsonGleichungDruckUnter} /></h3>
+            <p className="text-sm text-home-grau mb-4"><MdText text={inhalt.texte.dieDruckfestigkeitVonHolz} /></p>
             <div className="bg-white p-3 rounded border border-home-grau/30 mb-4 overflow-x-auto">
               <BlockMath math={String.raw`f_{c,\alpha,d} = \frac{f_{c,0,d}}{\dfrac{f_{c,0,d}}{k_{c,90}\cdot f_{c,90,d}}\,\sin^2\alpha + \cos^2\alpha}`} />
             </div>
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
-              <h4 className="text-sm font-bold text-center mb-2">Druckfestigkeit vs. Faserwinkel</h4>
+              <h4 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.druckfestigkeitVsFaserwinkel} /></h4>
               <div className="flex-1 relative">
                 <Line data={hankinsonData} options={hankinsonOptions} />
               </div>
@@ -866,7 +827,7 @@ export default function Holz() {
 
           {/* Schematische Darstellung */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
-            <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Faserrichtung und Festigkeit</h3>
+            <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungFaserrichtungUnd} /></h3>
             <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
               <svg width="100%" height="160" viewBox="0 0 350 160">
                 {/* Holzbalken */}
@@ -917,9 +878,7 @@ export default function Holz() {
                   </marker>
                 </defs>
               </svg>
-              <div className="text-xs text-text-main/70 text-center mt-2">
-                Holz ist ein anisotropes Material. Die Festigkeit parallel zur Faser (f_c,0, rot) ist deutlich höher als rechtwinklig dazu (f_c,90, blau). Bei Kraftangriff unter einem Winkel α (orange) wird die Festigkeit interpoliert (Hankinson-Formel).
-              </div>
+              <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.holzIstEinAnisotropes} /></div>
             </div>
           </div>
         </div>
@@ -929,20 +888,18 @@ export default function Holz() {
       {activeTab === 'kriechen' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">Kriechen &amp; Verformung (EC5)</h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.kriechenVerformungEc5} /></h2>
           
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <p>
-              Die Kriechverformung von Holz wird durch den Verformungsbeiwert <FormulaText text="k_{def}" /> berücksichtigt. Dieser hängt von der Holzart und der Nutzungsklasse ab.
-            </p>
+            <p><MdText text={inhalt.texte.dieKriechverformungVonHolz} /><FormulaText text="k_{def}" /><MdText text={inhalt.texte.berücksichtigtDieserHängtVon} /></p>
           </div>
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-semibold text-text-main">Holzart / Werkstoff</label>
-              <InfoTooltip text="Auswahl der Holzart oder des Holzwerkstoffs. Dies beeinflusst k_def sowie die Quell- und Schwindbeiwerte." />
+              <label className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.holzartWerkstoff2} /></label>
+              <InfoTooltip text={inhalt.werte.auswahlDerHolzartOder2} />
             </div>
-            <select aria-label="Holzart / Werkstoff" 
+            <select aria-label={inhalt.werte.holzartWerkstoff2} 
               className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-text-main focus:outline-none focus:border-shiraz"
               value={holz} 
               onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -953,10 +910,10 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-semibold text-text-main">Nutzungsklasse (NKL)</label>
-              <InfoTooltip text="Einfluss der Dauerfeuchte der Umgebung auf das Kriechen." />
+              <label className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.nutzungsklasseNkl2} /></label>
+              <InfoTooltip text={inhalt.werte.einflussDerDauerfeuchteDer} />
             </div>
-            <select aria-label="Nutzungsklasse (NKL)" 
+            <select aria-label={inhalt.werte.nutzungsklasseNkl2} 
               className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-text-main focus:outline-none focus:border-shiraz"
               value={nkl} 
               onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}
@@ -971,14 +928,14 @@ export default function Holz() {
             <h3 className="text-xs font-bold text-home-grau uppercase tracking-wider">Feuchtesimulation</h3>
             
             <Slider
-              label="Einbaufeuchte (u_start)" info="Feuchtegehalt beim Einbau."
+              label={inhalt.werte.einbaufeuchteUStart2} info={inhalt.werte.feuchtegehaltBeimEinbau}
               min={5} max={40} step={1}
               value={uStart} unit="%"
               onChange={(e) => setUStart(Number(e.target.value))}
             />
             
             <Slider
-              label="Rel. Luftfeuchte (Umgebung)" info="Beeinflusst die Ausgleichsfeuchte."
+              label={inhalt.werte.relLuftfeuchteUmgebung} info={inhalt.werte.beeinflusstDieAusgleichsfeuchte}
               min={20} max={100} step={1}
               value={rh} unit="%"
               onChange={(e) => setRh(Number(e.target.value))}
@@ -989,7 +946,7 @@ export default function Holz() {
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-center items-center text-center">
-              <h3 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Verformungsbeiwert k_{def}" /></h3>
+              <h3 className="text-lg font-bold text-text-main mb-2"><FormulaText text={inhalt.werte.verformungsbeiwertKDef} /></h3>
               <div className="text-5xl font-bold text-shiraz my-4">
                 {(() => {
                   const kdefMap: Record<string, Record<string, number>> = {
@@ -1019,17 +976,17 @@ export default function Holz() {
                   else if (holz.includes('OSB')) holzType = 'OSB';
                   else if (holz.includes('FSH')) holzType = 'FSH';
                   const kdef = kdefMap[holzType]?.[nkl] || 0;
-                  return kdef === 0 ? 'Für diese Kombination nicht zulässig/definiert.' : 'Berücksichtigt die Kriechverformung über die Lebensdauer.';
+                  return kdef === 0 ? inhalt.werte.fürDieseKombinationNicht : inhalt.werte.berücksichtigtDieKriechverformungÜber;
                 })()}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
-              <h3 className="text-lg font-bold text-text-main text-center mb-1">Differentielles Quell-/Schwindmaß</h3>
+              <h3 className="text-lg font-bold text-text-main text-center mb-1"><MdText text={inhalt.texte.differentiellesQuellSchwindmaß} /></h3>
               
               <div className="space-y-4 my-2">
                 <div className="flex justify-between items-center pb-2 border-b border-home-grau/10">
-                  <span className="text-xs font-semibold text-slate-500">Tangential (quer zur Faser):</span>
+                  <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.tangentialQuerZurFaser} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
                       {formatDeZahl(Math.abs(deltaU * qt * 10000), 0)}
@@ -1038,7 +995,7 @@ export default function Holz() {
                   </div>
                 </div>
                 <div className="flex justify-between items-center pb-2 border-b border-home-grau/10">
-                  <span className="text-xs font-semibold text-slate-500">Radial (quer zur Faser):</span>
+                  <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.radialQuerZurFaser} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
                       {formatDeZahl(Math.abs(deltaU * qr * 10000), 0)}
@@ -1047,7 +1004,7 @@ export default function Holz() {
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-semibold text-slate-500">Longitudinal (faserparallel):</span>
+                  <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.longitudinalFaserparallel} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-slate-400">
                       {formatDeZahl(Math.abs(deltaU * ql * 10000), 0)}
@@ -1057,21 +1014,14 @@ export default function Holz() {
                 </div>
               </div>
 
-              <p className="text-[11px] text-text-main/70 text-center leading-relaxed">
-                Rechnerische Hübe bei Feuchteänderung um <span className="font-bold text-shiraz">{formatDeZahl(deltaU, 1)}%</span> (Einbau {formatDeWert(uStart)}% vs. Endfeuchte {formatDeZahl(uEnde, 1)}%) basierend auf den materialspezifischen Parametern für <strong>{holz}</strong>.
+              <p className="text-[11px] text-text-main/70 text-center leading-relaxed"><MdText text={inhalt.texte.rechnerischeHübeBeiFeuchteänderung} /><span className="font-bold text-shiraz">{formatDeZahl(deltaU, 1)}%</span> (Einbau {formatDeWert(uStart)}<MdText text={inhalt.texte.vsEndfeuchte} />{formatDeZahl(uEnde, 1)}<MdText text={inhalt.texte.basierendAufDenMaterialspezifischen} /><strong>{holz}</strong>.
               </p>
             </div>
           </div>
           
           <div className="bg-off-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="text-lg font-bold text-text-main mb-2">Relaxation bei Holz</h3>
-            <p className="text-sm text-text-main/80">
-              Bei Holz wird die Relaxation (Spannungsabbau bei konstanter Dehnung) in der Praxis meist über einen reduzierten Elastizitätsmodul berücksichtigt:
-              <br/><br/>
-              <code className="bg-white px-2 py-1 rounded border border-home-grau/50"><FormulaText text="E_{mean,fin} = E_{mean} / (1 + k_{def})" /></code>
-              <br/><br/>
-              Dies ist analog zur Kriechzahl beim Beton.
-            </p>
+            <h3 className="text-lg font-bold text-text-main mb-2"><MdText text={inhalt.texte.relaxationBeiHolz} /></h3>
+            <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.beiHolzWirdDie} /><code className="bg-white px-2 py-1 rounded border border-home-grau/50"><FormulaText text={inhalt.werte.eMeanFinE} /></code><MdText text={inhalt.texte.brBrDiesIst} /></p>
           </div>
         </div>
       </div>
@@ -1092,48 +1042,13 @@ export default function Holz() {
         wikipedia={[
           { title: 'Holz', url: 'https://de.wikipedia.org/wiki/Holz' },
           { title: 'Holzfeuchte', url: 'https://de.wikipedia.org/wiki/Holzfeuchte' },
-          { title: 'Schwindmaß (Holz)', url: 'https://de.wikipedia.org/wiki/Schwindma%C3%9F_(Holz)' },
-          { title: 'dataholz.eu (Baustoff- und Bauteildaten)', url: 'https://www.dataholz.eu/' }
+          { title: inhalt.werte.schwindmaßHolz, url: 'https://de.wikipedia.org/wiki/Schwindma%C3%9F_(Holz)' },
+          inhalt.daten["Holz.wikipedia.3"]
         ]}
-        literatur={[
-          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016 (Open Access)',
-          'Niemz, P.; Sonderegger, W.: Holzphysik – Eigenschaften, Prüfung und Kennwerte. 2. Aufl., München: Hanser 2021',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1; bauaufsichtlich eingeführt); 2. Generation DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025, NA noch ausstehend, nicht eingeführt)' },
-          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Tragwerksbemessung für den Brandfall)' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)' },
-          { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)' },
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)' },
-          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)' }
-        ]}
-        weblinks={[
-          { title: 'dataholz.eu – Akkreditierte Holzbauteil- & EPD-Datenbank', url: 'https://www.dataholz.eu/' },
-          { title: 'Informationsdienst Holz – Fachwissen & Handbücher', url: 'https://informationsdienst-holz.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'f_d = k_{\\text{mod}} \\cdot \\frac{f_k}{\\gamma_M}',
-            erklaerung: 'Bemessungswert einer Festigkeitseigenschaft nach Eurocode 5: k_{mod} berücksichtigt die Lasteinwirkungsdauer (LED) und die Nutzungsklasse (NKL 1-3), \\gamma_M = 1,30 (DIN EN 1995-1-1/NA für Vollholz und BSH; EC-Grundwert für BSH: 1,25).',
-            quelle: 'DIN EN 1995-1-1'
-          },
-          {
-            formel: 'f_{c,\\alpha,d} = \\frac{f_{c,0,d}}{\\frac{f_{c,0,d}}{k_{c,90} \\cdot f_{c,90,d}} \\cdot \\sin^2\\alpha + \\cos^2\\alpha}',
-            erklaerung: 'Hankinson-Formel nach Eurocode 5: Bemessungsdruckfestigkeit unter dem Neigungswinkel \\alpha zur Faserrichtung.',
-            quelle: 'DIN EN 1995-1-1 Abs. 6.2.2'
-          },
-          {
-            formel: '\\Delta l = l_0 \\cdot \\frac{q}{100} \\cdot \\Delta u \\quad (u \\le u_{\\text{FSP}} \\approx 30\\,\\%)',
-            erklaerung: 'Differentielles Schwind- und Quellmaß q in % je 1 % Feuchteänderung (Fichte: radial ca. 0,16 %, tangential ca. 0,33 %, längs ca. 0,01 %). Nur unterhalb des Fasersättigungspunkts (FSP).',
-            quelle: 'Niemz/Sonderegger: Holzphysik'
-          },
-          {
-            formel: 'u_{\\text{fin}} = u_{\\text{inst}} \\cdot (1 + k_{\\text{def}})',
-            erklaerung: 'Endverformung unter Kriecheinfluss: u_{inst} = elastische Anfangsverformung, k_{def} = Verformungsbeiwert in Abhängigkeit von Material und Nutzungsklasse (z. B. Vollholz NKL 1: k_{def} = 0,60).',
-            quelle: 'DIN EN 1995-1-1 Tab. 3.2'
-          }
-        ]}
+        literatur={inhalt.daten["Holz.literatur"]}
+        regelwerke={inhalt.daten["Holz.regelwerke"]}
+        weblinks={inhalt.daten["Holz.weblinks"]}
+        formeln={inhalt.daten["Holz.formeln"]}
       />
     </div>
   );

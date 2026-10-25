@@ -1,0 +1,501 @@
+{
+  "texte": {
+    "bodenMaterialaufbereitung": "Boden- & Materialaufbereitung",
+    "diesesDedizierteModulFokussiert": "Dieses dedizierte Modul fokussiert sich tiefgehend auf die mechanischen, biologischen und thermischen Aufbereitungsverfahren kontaminierter Böden und mineralischer Baustoffe. Sie erfahren mehr über den simulatorischen Bau-Stoffkreislauf, Richtlinien und die gesetzliche Qualitätssicherungsschleife.",
+    "vorschriftenRahmen": "Vorschriften & Rahmen",
+    "qualitätssicherungQs": "Qualitätssicherung / QS",
+    "lagaPn98Rechner": "LAGA PN 98 & Rechner",
+    "vorschriftenDerMaterialaufbereitung": "Vorschriften der Materialaufbereitung",
+    "rechtlicherRahmenFürBöden": "Rechtlicher Rahmen für Böden und mineralische Ersatzbaustoffe",
+    "dieAufbereitungKontaminierterBöden": "Die Aufbereitung kontaminierter Böden und mineralischer Rückbaumaterialien ist die zentrale Säule der Bau-Kreislaufwirtschaft. Deutschland reguliert die Verwertung und Qualitätssicherung über ein engmaschiges Netz gesetzlicher bundeseinheitlicher Vorschriften, das am 1. August 2023 reformiert wurde (Mantelverordnung).",
+    "regeltBundeseinheitlichDieHerstellung": "Regelt bundeseinheitlich die **Herstellung, Güteüberwachung und den Einbau** mineralischer Ersatzbaustoffe (MEB) in technischen Bauwerken (Straßen, Dämme, Rohrgruben). Bestimmt Grenzwerte im Eluat und weist Materialklassen (z. B. RC-1, BM-0, BM-F3); zulässige Einbauweisen ergeben sich aus den Einbautabellen der EBV zu. Verpflichtet zur Erfassung im Ersatzbaustoffregister.",
+    "greiftBeimAufUnd": "Greift beim Auf- und Einbringen von Materialien **außerhalb technischer Bauwerke** (z. B. Wiederverfüllung von Abgrabungen, Landschaftsbau, landwirtschaftliche Rekultivierung). Setzt strenge Vorsorgerahmenwerte am Feststoff und ordnet boden- und grundwasserspezifische Eluatwerte an.",
+    "verordnetDieStrikteStoffliche": "Verordnet die **strikte stoffliche Getrenntsammlung** an der Baustelle für mineralische Gemische, Ziegel, Beton, Fliesen, Holz, Glas, Metalle und Kunststoffe. Schreibt Vorbehandlungsquoten sowie eine lückenlose abfallrechtliche Dokumentation (z. B. Fotobeweise und Wiegescheine) vor.",
+    "interaktiverBodenMaterialaufbereitungssi": "Interaktiver Boden- & Materialaufbereitungssimulator",
+    "kombiniereBodenmatrixUndKontaminationsqu": "Kombiniere Bodenmatrix und Kontaminationsquelle, um das optimale Behandlungsverfahren zu ermitteln",
+    "t1DasAusgangsSubstrat": "1. Das Ausgangs-Substrat (Boden / Material)",
+    "t2DieHauptbelastungLeitkontaminante": "2. Die Hauptbelastung (Leitkontaminante)",
+    "optimalesBehandlungsverfahren": "Optimales Behandlungsverfahren",
+    "rechtlicheVorgabenEbvBbodschv": "Rechtliche Vorgaben & EBV / BBodSchV",
+    "chronologischerVerfahrensablauf": "Chronologischer Verfahrensablauf",
+    "hinweisZuAsbestFasern": "Hinweis zu Asbest/Fasern: Das Zerkleinern und Wiederaufbereiten asbesthaltiger Boden- und Demontagematerialien stellt in Deutschland gem. TRGS 519 eine schwerwiegende Ordnungswidrigkeit bzw. Umweltstraftat dar. Solche Vorkommen müssen strikt separat deponiert werden.",
+    "qualitätssicherungGüteüberwachungProdukt": "Qualitätssicherung & Güteüberwachung (Produktkreislauf)",
+    "dieGesetzlicheQualitätssicherungsschleif": "Die gesetzliche Qualitätssicherungsschleife zur Freigabe mineralischer Sekundärbaustoffe",
+    "damitMineralischeErsatzbaustoffeMeb": "Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtlich belastbar verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.",
+    "prüfungVonHerkunftsDeklaration": "Prüfung von Herkunfts-Deklaration und Wiegeschein. Sensorische Begutachtung (Sicht, Geruch, Fehlfarben). Unabhängige Probenahme nach LAGA PN 98 für chargenweise Laborfreigabe. Einlagerung einer Rückstellprobe.",
+    "werkseigeneKontrolle": " Werkseigene Kontrolle",
+    "täglicheMesstechnischeÜberwachungDes": "Tägliche messtechnische Überwachung des Aufbereitungswerkes. Bestimmung der Sieblinie (Kornzusammensetzung), Feuchtigkeitswerte, Schuttdichte, Störstoffanteile und Durchführung von photometrischen Nitrat/Sulfat-Schnelltests im Eluat.",
+    "unabhängigeUnangekündigteAuditierungDer": "Unabhängige, unangekündigte Auditierung der Aufbereitungsanlage (meist 2- bis 4-mal jährlich) durch staatlich akkreditierte Prüfanstalten. Eigene Beprobungen, Überprüfung aller Laborprotokolle und Validierung der Analysengeräte.",
+    "güteschutzRegister": " Güteschutz & Register",
+    "zertifizierungDurchGütekonsortienZ": "Zertifizierung durch Gütekonsortien (z. B. **QRB - Qualitätssicherungs-System Recycelte Baustoffe**, **bvse** oder Landesgüteschutzverbände). Erledigt die CE-Kennzeichnung und deklarierte Produktklasse gem. EBV. Registerführung (§ 22 EBV).",
+    "probenahmeNachLagaPn": "Probenahme nach LAGA PN 98 & LfU Bayern",
+    "berechnungDerProbenmengenNach": "Berechnung der Probenmengen nach dem bayerischen LfU-Infoblatt ",
+    "bayerischeLandesreglementierungZurHaufwe": "Bayerische Landesreglementierung zur Haufwerksbeprobung",
+    "inBayernRegeltDas": "In Bayern regelt das Landesamt für Umwelt (LfU) im Einvernehmen mit der Ersatzbaustoffverordnung (EBV) und der BBodSchV die Probenahme von Haufwerken extrem strikt. Die Probenahme ist die **Fehlerquelle Nr. 1** bei der abfallrechtlichen Deklaration. Ein Verstoß gegen das akkreditierte Probenahmeprotokoll führt zum Verlust der rechtlichen Verwertungssicherheit und kann Behörden-Sanktionen nach sich ziehen.",
+    "haufwerksvolumenV": "Haufwerksvolumen ($V$):",
+    "dichteSchüttgewichtRho": "Dichte / Schüttgewicht ($\\rho$):",
+    "größtkornDesMaterialsD": "Größtkorn des Materials (d_max):",
+    "brBestimmtDasBenötigte": ".<br>Bestimmt das benötigte Mindestvolumen je Einzelprobe.",
+    "probennehmerMitSachkundenachweis": "Probennehmer mit Sachkundenachweis",
+    "besitztZertifizierungsnachweisGemäßLaga": "Besitzt Zertifizierungsnachweis gemäß LAGA PN 98",
+    "flüchtigeSchadstoffeImFokus": "Flüchtige Schadstoffe im Fokus",
+    "analytikSuchtNachBtex": "Analytik sucht nach BTEX, LCKW oder flüchtigen KW",
+    "schichtungUngleichmäßigkeit": "Schichtung / Ungleichmäßigkeit",
+    "haufwerkIstVisuellInhomogen": "Haufwerk ist visuell inhomogen oder ungeschichtet",
+    "berechnetesProbenahmeSollLaga": "Berechnetes Probenahme-Soll (LAGA PN 98)",
+    "tonnageDesHaufwerks": "Tonnage des Haufwerks",
+    "untersuchungseinheitenUe": "Untersuchungseinheiten (UE)",
+    "mindestanzahlMischproben": "Mindestanzahl Mischproben:",
+    "lagaPn98Tabelle": "LAGA PN 98 Tabelle 2",
+    "mindestanzahlEinzelprobenIncrements": "Mindestanzahl Einzelproben (Increments):",
+    "insgesamtAusVerschiedenenTiefenstufen": "Insgesamt aus verschiedenen Tiefenstufen",
+    "mengeJeEinzelprobeVolumen": "Menge je Einzelprobe (Volumen / Gewicht):",
+    "orientiertNachDMax": "Orientiert nach d_max (",
+    "laborMindestmengeRückstellprobenPraxisem": "Labor-Mindestmenge & Rückstellproben (Praxisempfehlung):",
+    "analysenprobeBehördenprobeBeweissicherun": "Analysenprobe + Behördenprobe + Beweissicherung",
+    "lagaPn98Verlangt": "LAGA PN 98 verlangt fachkundiges Probenahmepersonal; ohne nachgewiesene Fachkunde riskieren Sie, dass Behörde oder Annahmestelle die Ergebnisse nicht anerkennen.",
+    "spezialvorgabeLfuBayernFür": "Spezialvorgabe LfU Bayern für flüchtige Schadstoffe:",
+    "fürLeichtflüchtigeStoffeDürfen": "Für leichtflüchtige Stoffe dürfen **keine** ausgedehnten Mischproben hergestellt werden, da die Schadstoffe sonst evaporieren (ausgasen). Die Probenahme hat zwingend als ungestörte Probe mittels Stechzylinder direkt in gasdichte Gläser mit Septumdeckel zu erfolgen!",
+    "hinweisZurProbenahmestrategie": "Hinweis zur Probenahmestrategie:",
+    "inhomogeneOderGeschichteteHaufwerke": "Inhomogene oder geschichtete Haufwerke sind nicht zur Verdünnung zu vermischen; erkennbar unterschiedliche Teilmengen sind getrennt zu beproben (separate Untersuchungseinheiten).",
+    "erforderlicheAufteilungIn": "Erforderliche Aufteilung in ",
+    "dasHaufwerkÜbersteigt3": "Das Haufwerk übersteigt 3.000 m³. Nach der LfU-Arbeitshilfe „Umgang mit Bodenmaterial“ (Stand 10/2025) darf Material aus Zwischenlägern auf Grundlage einer Untersuchung bis höchstens 3.000 m³ in Verkehr gebracht werden – daher ",
+    "getrennteUntersuchungseinheitenUeBilden": " getrennte Untersuchungseinheiten (UE) bilden.",
+    "formelZurProbenanzahlLaga": "Formel zur Probenanzahl (LAGA PN 98 Tabelle 2): bis 600 m³ tabelliert (2 bis 10 Mischproben); darüber ",
+    "mitInDerRegel": " mit in der Regel ",
+    "einzelprobenJeMischprobe": " Einzelproben je Mischprobe.",
+    "interaktiverProbenahmeprotokollGenerator": "Interaktiver Probenahmeprotokoll-Generator",
+    "nutzenSieDiesesInteraktive": "Nutzen Sie dieses interaktive Formular, um ein normgerechtes Probenahmeprotokoll nach PN 98 zur Vorlage beim Chemielabor und der Abfallbehörde zu entwerfen. Ergänzen Sie die Projektmetadaten.",
+    "zertifizierterProbennehmerName": "Zertifizierter Probennehmer Name:",
+    "datumDerProbenahme": "Datum der Probenahme:",
+    "entnahmeortGpsKoordinaten": "Entnahmeort / GPS-Koordinaten:",
+    "behördenzeugeVertretungBauherr": "Behördenzeuge / Vertretung Bauherr:",
+    "besondereBemerkungenVorOrt": "Besondere Bemerkungen & Vor-Ort-Sensorik (Geruch, Färbung):",
+    "akkreditierungsnummerByPn982026": "Akkreditierungsnummer: BY-PN98-2026",
+    "probenahmeprotokollGemäßLagaPn": "Probenahmeprotokoll gemäß LAGA PN 98",
+    "güttigkeitsnachweisUnterAnerkennungDes": "Güttigkeitsnachweis unter Anerkennung des bayerischen Landesamtes für Umwelt (LfU Bayern)",
+    "probennehmerSachkunde": "PROBENNEHMER / SACHKUNDE:",
+    "haufwerksmetadatenSollAnforderungen": "HAUFWERKSMETADATEN & SOLL-ANFORDERUNGEN:",
+    "sollVorgabeLagaPn": "Soll-Vorgabe (LAGA PN 98)",
+    "istWertProbenahme": "Ist-Wert (Probenahme)",
+    "haufwerksvolumenMasse": "Haufwerksvolumen / Masse",
+    "lautVermessungErfüllt": "Laut Vermessung erfüllt",
+    "untersuchungseinheitenUe2": "Untersuchungseinheiten (UE)",
+    "ueMax3000": " UE (max. 3.000 m³)",
+    "anzahlMischprobenMp": "Anzahl Mischproben (MP)",
+    "mpEntnommen": " MP entnommen",
+    "anzahlEinzelprobenEp": "Anzahl Einzelproben (EP)",
+    "epVerteilt": " EP (verteilt)",
+    "epHomogenVermischt": " EP homogen vermischt",
+    "maximalesKornDMax": "Maximales Korn d_max",
+    "inkrementmengeJeEp": "Inkrementmenge je EP",
+    "eingehaltenSchaufelbeprobung": "Eingehalten (Schaufelbeprobung)",
+    "probenkonservierungRückhaltLfu": "Probenkonservierung & Rückhalt (LfU)",
+    "kgReplikate": " kg Replikate",
+    "inVerplombtenPeEimern": "In verplombten PE-Eimern verpackt",
+    "sensorikBesondereBemerkungen": "SENSORIK & BESONDERE BEMERKUNGEN:",
+    "sachkundenummerByPn982026": "Sachkundenummer: BY-PN98-2026/092",
+    "unterschriftDesProbennehmers": "**Unterschrift des Probennehmers**",
+    "verantwortlicheÜberwachungsstelle": "Verantwortliche Überwachungsstelle",
+    "unterschriftBauzeugeBehörde": "**Unterschrift Bauzeuge/Behörde**",
+    "alsOffiziellesPdfDrucken": "Als offizielles PDF drucken"
+  },
+  "werte": {
+    "erweiterungThaCampusBaufeld": "Erweiterung THA Campus - Baufeld B2",
+    "thomasWagnerZertifizierterProbennehmer": "Thomas Wagner (Zertifizierter Probennehmer nach LAGA)",
+    "augsburgAnDerHochschule": "Augsburg, An der Hochschule 1",
+    "trockenLeichtBewölktCa": "Trocken, leicht bewölkt, ca. 18°C",
+    "frDrMeierUntergeordnete": "Fr. Dr. Meier (Untergeordnete Bodenschutzbehörde / Umweltamt)",
+    "aushubhaufwerkNr4Vorsortierter": "Aushubhaufwerk Nr. 4 (vorsortierter sandiger Erdaushub)",
+    "sandigerKiesigerBodenErdaushub": "Sandiger / kiesiger Boden (Erdaushub)",
+    "gutWaschbaresGekörntesMaterial": "Gut waschbares, gekörntes Material",
+    "bindigerTonschlammSchluff": "Bindiger Tonschlamm / Schluff",
+    "klebrigFeinkörnigNassSchwer": "Klebrig, feinkörnig, nass schwer trennbar",
+    "mineralischerBauschuttBetonZiegel": "Mineralischer Bauschutt (Beton, Ziegel)",
+    "klassischeAbbruchMischfraktion": "Klassische Abbruch-Mischfraktion",
+    "altablagerungenDeponiekörper": "Altablagerungen / Deponiekörper",
+    "extremeHeterogenitätOftOrganikbeimischun": "Extreme Heterogenität, oft Organikbeimischung",
+    "asPbCdCu": "As, Pb, Cd, Cu, Zn",
+    "öleTeerrückstände": "Öle, Teerrückstände",
+    "asbestKmf": "Asbest / KMF",
+    "gefährlicheFasern": "Gefährliche Fasern",
+    "gipsSulfat": "Gips & Sulfat",
+    "gefahrVGipstreiben": "Gefahr v. Gipstreiben",
+    "haufwerksvolumen": "Haufwerksvolumen ()",
+    "haufwerksvolumenM": "Haufwerksvolumen (): m³",
+    "zertifizierterProbennehmerName": "Zertifizierter Probennehmer Name",
+    "datumDerProbenahme": "Datum der Probenahme",
+    "entnahmeortGpsKoordinaten": "Entnahmeort / GPS-Koordinaten",
+    "behördenzeugeVertretungBauherr": "Behördenzeuge / Vertretung Bauherr",
+    "besondereBemerkungenVorOrt": "Besondere Bemerkungen & Vor-Ort-Sensorik (Geruch, Färbung)",
+    "geregeltUnterzeichnet": "GEREGELT / UNTERZEICHNET",
+    "entwurfDraft": "ENTWURF / DRAFT",
+    "zertifikatPn98LiegtVor": "✔️ Zertifikat PN98 liegt vor &amp; eingetragen",
+    "achtungKlärenSieMangelnde": "❌ Achtung: Klären Sie mangelnde Zertifizierung",
+    "keineSensorischenAuffälligkeiten": "Keine sensorischen Auffälligkeiten.",
+    "protokollEntsperrenKorrektur": "Protokoll entsperren / Korrektur",
+    "protokollFinalisierenAmpDigital": "Protokoll finalisieren &amp; digital siegeln",
+    "beispiel1BeprobungEines": "Beispiel 1: Beprobung eines Bodenaushub-Haufwerks von 120 m³",
+    "dieMischprobenWerdenVor": "Die Mischproben werden vor Ort homogenisiert und durch Vierteln auf das Laborprobenvolumen (mindestens 4 l) reduziert. Bei leichtflüchtigen Stoffen keine Mischproben bilden.",
+    "lagaPn98Tabellen": "LAGA PN 98, Tabellen 2 und 3; DIN 19698-1:2014-05",
+    "beispiel2WassergehaltUnd": "Beispiel 2: Wassergehalt und Trockenmasse einer Bodenprobe",
+    "einFalscherBezugOriginalsubstanz": "Ein falscher Bezug (Originalsubstanz statt Trockenmasse) unterschätzt die Belastung und kann zu einer falschen Materialklasse führen.",
+    "dinEnIso17892": "DIN EN ISO 17892-1; BBodSchV Anlage 3",
+    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: Probenahmerechner auf LAGA PN 98 Tabellen 2/3 umgestellt, LfU-Arbeitshilfe 10/2025 eingearbeitet; fachliche Freigabe durch den Autor ausstehend)",
+    "lfuBayernUmgangMit": "LfU Bayern: Umgang mit Bodenmaterial, Stand 10/2025 (PDF-Download)"
+  },
+  "daten": {
+    "TREATMENT_OPTIONS": {
+      "erdaushub_sand": {
+        "label": "Sandiger / kiesiger Erdaushub",
+        "heavy_metals": {
+          "method": "Bodenwaschanlage (Nassmechanische Klassierung)",
+          "efficiency": "Sehr hoch (85% - 95%)",
+          "co2": "Niedrig (~10-15 kg CO₂/t)",
+          "cost": "Mittel (45 - 75 €/t)",
+          "principles": "Physisch-mechanische Trennung. Durch Waschen im Attritionsreaktor werden Schadstoffe, die sich bevorzugt an feinen Bodenpartikeln (Silt, Ton) anlagern, von den sandigen/kiesigen Fraktionen abgetrennt. Die Feinfraktion wird entwässert und als Filterkuchen entsorgt, während Sand und Kies gereinigt recyclingfähig sind.",
+          "steps": [
+            "Annahme und Vorabsiebung von holzigen/groben Störstoffen.",
+            "Schwertwäsche & Attrition: Intensives Reiben der Partikel löst die schadstoffbelastete Feinstaubschicht.",
+            "Zyklonierung & Dichtetrennung: Hydrozyklone separieren den sauberen Sand von belastetem Schluff.",
+            "Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).",
+            "Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*)."
+          ],
+          "rules": "EBV § 15 & BBodSchV Anh. 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten."
+        },
+        "mkw_pak": {
+          "method": "Mikrobiologische Mietenbehandlung (Bioremediation)",
+          "efficiency": "Hoch (80% - 90% für kurzkettige MKW / PAK)",
+          "co2": "Sehr niedrig (~5-8 kg CO₂/t)",
+          "cost": "Günstig (25 - 40 €/t)",
+          "principles": "Biologischer Abbau von organischen Schadstoffen durch hochaktive, körpereigene oder angelegte Mikroorganismen (Bakterien und Pilze). Das Material wird in Mieten aufgesetzt, belüftet und durch Feuchte- und Nährstoffzugabe (Flüssigdünger) im optimalen Abbau-Milieu gehalten.",
+          "steps": [
+            "Mechanische Homogenisierung und Absiebung grober Störstoffe.",
+            "Mietenaufbau: Lockeres Aufschütten mit perforiertem Belüftungssystem (Unterdruck- oder Überdruckbelüftung).",
+            "Konditionierung: Zugabe von Wasser, Stickstoff, Phosphor und strukturverbessernden Zuschlagstoffen (z. B. Rinde/Hackschnitzel).",
+            "Regelmäßiges Umsetzen (Mietenpflege) zur Sauerstoffeintragung und Temperaturkontrolle (optimal 30°C - 45°C).",
+            "Analytische Erfolgskontrolle: Feststoffanalytik auf KW-Index und PAK16."
+          ],
+          "rules": "Bundes-Bodenschutzverordnung (BBodSchV): Biologisch behandelte Böden können uneingeschränkt wieder aufgebracht werden, sofern die bodenspezifischen Vorsorgewerte eingehalten werden. Extrem strenge Überwachung der Sickerwasserwerte im Verlauf."
+        },
+        "asbest_faser": {
+          "method": "Einkapselung / Thermische Zerstörung (Deponierung Pflicht)",
+          "efficiency": "Keine stoffliche Aufbereitung möglich",
+          "co2": "Extrem hoch",
+          "cost": "Sehr teuer (120 - 250 €/t)",
+          "principles": "Asbestfasern sind mineralisch stabil und nicht biologisch abbaubar. Eine nassmechanische Reinigung ist technisch unmöglich, da Fasern das Abwasser kontaminieren würden. Einzige materialschonende Sanierung ist die Verfestigung mit Zement oder der direkte staubdichte Transport zur Deponierung (DK I/II/III).",
+          "steps": [
+            "Befeuchtung der Kontaminationsstelle zur Staubbindung.",
+            "Staubdichte doppelwandige Big-Bag-Verpackung direkt an der Anfallstelle.",
+            "Kennzeichnung als asbesthaltiger gefährlicher Abfall (AVV 17 06 05*).",
+            "Transport unter lückenloser eANV-Nachweisüberwachung.",
+            "Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung."
+          ],
+          "rules": "TRGS 519 / DepV: Ein Recycling von asbesthaltigen Böden oder Bauschuttgemischen ist ausnahmslos ILLEGAL. Es gilt ein striktes Wiederverwendungsverbot für asbesthaltige Materialien in ganz Europa."
+        },
+        "gips_sulfat": {
+          "method": "Nassklassierung & Flotation",
+          "efficiency": "Mittel (60% - 75%)",
+          "co2": "Mittel (~20-30 kg CO₂/t)",
+          "cost": "Mittel-Spezifisch (50 - 80 €/t)",
+          "principles": "Dichtetrennung basierend auf der geringen Dichte und Löslichkeit von Gips (Calciumsulfat) gegenüber Quarzkies. Gips wird mechanisch abgesiebt, während feinere Gipsbeimengungen im nassen Separationsverfahren gelöst oder aufgeschwemmt werden, um Ettringittreiben im Beton-Recycling zu verhindern.",
+          "steps": [
+            "Zerkleinerung auf optimale Korngröße unter Vermeidung von Feinststaub.",
+            "Fraktionierte Siebung zur Abscheidung gipsreicher Feinfraktionen.",
+            "Schwimm-Sink-Scheidung zur Trennung von Leichtstoffen (Gipsdichte ~2,3 g/cm³, Quarz ~2,65 g/cm³).",
+            "Sedimentations- und Waschwasserbehandlung mit Fällungsmitteln zur Sulfat-Abreicherung.",
+            "Analytischer Nachweis des Restsulfatgehalts im Feststoff."
+          ],
+          "rules": "Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1 000 mg/l, RC-3 ≤ 3 500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen."
+        }
+      },
+      "boden_ton": {
+        "label": "Toniger / schluffiger Bindiger Boden",
+        "heavy_metals": {
+          "method": "Immobilisierung (Chemische Verfestigung)",
+          "efficiency": "Sehr hoch (Dauerhafte Fixierung > 98%)",
+          "co2": "Mittel (~35-50 kg CO₂/t)",
+          "cost": "Mittel (40 - 70 €/t)",
+          "principles": "Da tonige Böden aufgrund ihrer Feinkörnigkeit und Klebrigkeit nicht waschbar sind (Schlammanteil zu hoch), wird der Schadstoff chemisch immobilisiert. Durch Zugabe von hydraulischen Bindemitteln (Zement, Kalk, Hochofenschlacke) und speziellen Additiven (z.B. Zeolithe) werden Schwermetalle unlöslich in der Bodenmatrix eingebunden.",
+          "steps": [
+            "Bodenkonditionierung durch Fräsen und Trocknungsunterstützung.",
+            "Dosierte Zugabe von hydraulischen Bindemitteln und reaktiven Sorptionsmitteln.",
+            "Intensives Einmischen im Zwangsmischer oder in-situ mittels Spezialfräsen.",
+            "Verdichtung und kontrollierte Aushärtung (Carbonatisierung/Hydratation).",
+            "Eluatprüfungen (z. B. DIN 19528) zur Bestätigung der dauerhaften Auslaugungsresistenz."
+          ],
+          "rules": "Ersatzbaustoffverordnung (EBV) / BBodSchV: Immobilisierte Werkstoffe dürfen als technisches Sicherungsbauwerk (z. B. Basisabdichtungen von Deponien) verwertet werden. Für offenes Aufbringen gelten die Grenzwerte der BBodSchV, welche Immobilisate meist kritisch bewerten."
+        },
+        "mkw_pak": {
+          "method": "Thermische Desorption (Drehrohrofen)",
+          "efficiency": "Extrem hoch (> 99,9% Abbauquote)",
+          "co2": "Sehr hoch (~60-90 kg CO₂/t)",
+          "cost": "Sehr teuer (70 - 110 €/t)",
+          "principles": "Da bindige Böden mikrobiell nur sehr langsam abgebaut werden können, ist die Thermik das einzig sichere Verfahren für hohe Belastungen. Der Boden wird in einem indirekt beheizten Drehrohrofen auf 350°C bis 550°C erwärmt. Organische Schadstoffe verdampfen (Desorption) und werden in einer thermischen Nachverbrennungsanlage bei > 850°C vollständig in CO₂ und Wasser zertrümmert.",
+          "steps": [
+            "Vorzerkleinerung von Tonklumpen in Walzenbrechern.",
+            "Zuführung in das Drehrohr und kontinuierliche Beheizung der Bodenmatrix.",
+            "Absaugung der schadstoffbelasteten Ofengase unter Vakuum.",
+            "Thermische Nachverbrennung der Gase bei mind. 850°C (Verweilzeit > 2 Sek) mit Rauchgaswäsche.",
+            "Rückkühlung und Befeuchtung des gereinigten Bodens (staubfreie Aushändigung)."
+          ],
+          "rules": "KrWG / EBV: Thermisch behandelte Tonböden sind vollkommen schadstofffrei und organisch inert. Sie können nach Wiederbefeuchtung und Strukturverbesserung (z.B. Kompostbeimischung) als Bodenersatzstoff oder Füllmaterial gem. BM-0 eingesetzt werden."
+        },
+        "asbest_faser": {
+          "method": "Deponierung / Thermische Faserzerstörung (Spezialanlagen)",
+          "efficiency": "Nur thermische Zerstörung bei extremen Temperaturen (>1000°C) wirksam",
+          "co2": "Extrem hoch",
+          "cost": "Extrem teuer (>300 €/t)",
+          "principles": "Asbestfasern können in Tonböden nur durch echtes Aufschmelzen (Sinterung/Verglasung) zerstört werden, da sich die Kristallgitterstruktur erst ab ca. 900°C bis 1000°C in unschädlichen Olivin umwandelt. Aufgrund der enormen Energiekosten wird dieses Verfahren in Deutschland kaum noch angewendet. Regelfall ist die DK-Deponierung.",
+          "steps": [
+            "Ausgrabung unter Staubschutz-Sicherheitsauflagen (Bagger mit Kabinenüberdruck).",
+            "Direkte staubfreie Verladung in Gewebecontainer.",
+            "Transport unter gefährlicher Abfalldeklaration.",
+            "Einbau in DK-Sicherheitsdeponie mit sofortiger Überdeckung.",
+            "Katastermäßige Erfassung der Einbaukoordinaten."
+          ],
+          "rules": "DepV / TRGS 519: Jede Art von mechanischer Mischung oder Siebung asbesthaltiger Tonböden ist verboten, um Faserfreisetzung zu unterbinden."
+        },
+        "gips_sulfat": {
+          "method": "Immobilisierung & kontrollierter Monoeinbau",
+          "efficiency": "Hoch (Fixierung des Sulfats)",
+          "co2": "Mittel (~25-40 kg CO₂/t)",
+          "cost": "Mittel (35 - 55 €/t)",
+          "principles": "Aufgrund der Feinkörnigkeit von Tonschluff ist Gips nicht trocken- oder nassmechanisch abzuscheiden. Die einzige technische Option ist die chemische Bindung von Sulfat durch zementäre Bindemittel zu schwerlöslichen Ettringit-Phasen vor dem Einbau, um nachfolgende Schädigung benachbarter Schichten im Erdbau zu verhindern.",
+          "steps": [
+            "Homogenes Einmischen von sulfatresistentem Zement (SR-Zement) oder Flugaschen.",
+            "Konditionierung des Feuchtigkeitsgehalts zur optimalen Hydratation.",
+            "Einbau im technischen Erdbau unter wasserdichten Deckschichten.",
+            "Kontinuierliche Setzungsmessungen.",
+            "Güteüberwachung mittels Eluattests über min. 28 Tage."
+          ],
+          "rules": "EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F2 oder BM-F3 (erheblich eingeschränkter Einbau) zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter."
+        }
+      },
+      "bauschutt_gemisch": {
+        "label": "Mineralisches Bauschutt-Gemisch (Beton, Ziegel, Fliesen)",
+        "heavy_metals": {
+          "method": "Nassmechanische Dichtetrennung (Setzmaschinen / Jigs)",
+          "efficiency": "Hoch (75% - 90%)",
+          "co2": "Mittel (~15-25 kg CO₂/t)",
+          "cost": "Mittel (35 - 60 €/t)",
+          "principles": "Schwermetallkontaminationen in Bauschutt rühren meist von Anstrichen, Schlackenbestandteilen oder Industrieablagerungen her. In nassmechanischen Bauschuttaufbereitungsanlagen werden die Bauschuttfraktionen gewaschen. Schwere, belastete Partikel werden über Setzmaschinen selektiv abgetrennt.",
+          "steps": [
+            "Vorzerkleinerung und Magnetscheidung (Eisen/Bewehrungsstahl abziehen).",
+            "Nassklassierung in Hydro-Jigs (Setzmaschinen) zur Trennung nach Dichte.",
+            "Windsichtung der Leichtstoffe (Holz, Kunststoffe, Folien) im Wasserstrom.",
+            "Feinstaubabscheidung über Zyklon-Waschanlagen.",
+            "Entwässerung der RC-Gesteinskörnung zur direkten Wiederverwendung."
+          ],
+          "rules": "EBV Anlage 1 / DIN 4226-101: Für die Verwertung als RC-1 muss das gereinigte Material die Materialwerte der EBV einhalten (z. B. Cu ≤ 110 µg/l, Cr ges. ≤ 150 µg/l im Eluat); als Gesteinskörnung im R-Beton gelten zusätzlich DIN 4226-101 und die DAfStb-Richtlinie."
+        },
+        "mkw_pak": {
+          "method": "Selektiver Rückbau & Thermische Reinigung",
+          "efficiency": "Sehr hoch (> 95%)",
+          "co2": "Hoch (~40-65 kg CO₂/t)",
+          "cost": "Teuer (60 - 95 €/t)",
+          "principles": "PAK (z. B. Steinkohlenteer-Flüssigkleber) haftet oft massiv an Beton und Ziegeln. Ist eine getrennte Erfassung gescheitert, kann das zerkleinerte Gemisch in stationären thermischen Desorptionsanlagen gereinigt werden, oder es muss auf Deponien (DK-I/II) entsorgt werden.",
+          "steps": [
+            "Grobbruch und Aussortierung nicht-mineralischer Störstoffe.",
+            "Mechanische Oberflächenreinigung (z.B. Kugelstrahlen/Fräsen) falls kontaminierte Flächen lokalisiert sind.",
+            "Thermische Behandlung des Feinkorns im Drehrohr zur PAK-Vergasung.",
+            "Rauchgasreinigung und Abgaswäsche zur sicheren Dioxin- und furanfreien Verbrennung.",
+            "Gütemäßige Abschlussprüfung auf PAK16 (Materialwert RC-1: ≤ 10 mg/kg im Feststoff, EBV Anlage 1)."
+          ],
+          "rules": "Gewerbeabfallverordnung (GewAbfV) / Ersatzbaustoffverordnung: Teer- und PAK-belastete Bauschutt-Gemische dürfen unter keinen Umständen unaufbereitet verwertet werden. Grenzwertüberschreitungen führen zur Einstufung als gefährlicher Abfall."
+        },
+        "asbest_faser": {
+          "method": "Wiederverwendungsverbot / Strikte Deponierung (DK I / II)",
+          "efficiency": "Keine Aufbereitung zulässig",
+          "co2": "Niedrig (reiner Transport)",
+          "cost": "Teuer (100 - 180 €/t)",
+          "principles": "Wandspachtelungen und Fliesenkleber enthalten oft feinste, asbestöse Beimengungen. Ein zerkleinertes asbesthaltiges Bauschuttgemisch verliert jegliche Recyclingfähigkeit. Es muss deponiert werden, um Faserverwehungen bei Aufbereitungsanlagen zu unterbinden.",
+          "steps": [
+            "Einstellung des maschinellen Abbruchs bei Asbestfund.",
+            "Manuelle Separierung unter Vollschutz und Schleusen-Technik.",
+            "Befeuchtung des Materials zur Faserbindung mit Restfaserbindemittel.",
+            "Doppelte Verpackung in zertifizierte Asbest-Big-Bags.",
+            "Direkter Transport zur zugelassenen Deponie."
+          ],
+          "rules": "GefStoffV / TRGS 519: Verstöße gegen das Wiederverwendungsverbot für asbesthaltigen Bauschutt stellen einen Straftatbestand dar. Aufbereitungsanlagen weisen Lkw mit Asbestverdacht strikt ab."
+        },
+        "gips_sulfat": {
+          "method": "Trockenmechanische Sortierung (NIR-Sensorik)",
+          "efficiency": "Sehr hoch (85% - 95%)",
+          "co2": "Sehr niedrig (~3-5 kg CO₂/t)",
+          "cost": "Günstig (15 - 30 €/t)",
+          "principles": "Im modernen Betonrecycling ist Gips der Hauptstörstoff. Durch Nahinfrarot-Sensorik (NIR) an Sortierbändern können gipshaltige Steine und Putzbrocken opto-elektronisch erkannt und in Millisekunden per Druckluftdüsen aus dem zerkleinerten Bauschuttstrom ausgeschossen werden.",
+          "steps": [
+            "Zerkleinerung auf einheitliche Korngröße (meist 10/45 mm).",
+            "Vorsiebung und Auswaschen von Anhaftungen.",
+            "Einlagiger Materialtransport auf dem Band zur Sensorschleife.",
+            "Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.",
+            "Pneumatischer Auswurf der Gipsfraktion."
+          ],
+          "rules": "DIN 4226-101 (rezyklierte Gesteinskörnungen, keine EBV-Regel): Typ 1 darf höchstens 0,8 M.-% säurelösliches Sulfat aufweisen (Kategorie AS0,8). Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen."
+        }
+      },
+      "altablagerung": {
+        "label": "Heterogene Altablagerungen / Deponiekörper",
+        "heavy_metals": {
+          "method": "Nassklassierung, Dichtetrennung & Immobilisierung",
+          "efficiency": "Mittel (60% - 80%)",
+          "co2": "Hoch (~30-45 kg CO₂/t)",
+          "cost": "Sehr teuer (75 - 120 €/t)",
+          "principles": "Altablagerungen sind extrem heterogen und enthalten organische Abfälle gepaart mit Bauschutt und Erden. Ein nassmechanisches Trennverfahren separiert den mineralisch-schweren Anteil, während Schwermetalle in den Feinfraktionen verbleiben und dort immobilisiert werden müssen.",
+          "steps": [
+            "Ausgrabung unter Geruchs- und Emissionsschutzschutz (ggf. Absaugung).",
+            "Mechanische Grobsortierung von Hausmüll- und Metallfraktionen.",
+            "Nassklassierung zur Separation von Sanden und RC-Gesteinen.",
+            "Spezifische Schwefelwasserstoff-Neutralisierung des Kreislaufwassers.",
+            "Verfestigung des belasteten Feinschlammes zu inerten Monolithen."
+          ],
+          "rules": "BBodSchV / DepV: Ein Wiedereinbau ist aufgrund des organischen Anteils (Glühverlust > 5%) meist unzulässig, sofern das Material nicht thermisch vorbehandelt wurde. Verpflichtender Einbau auf Deponiekörpern der Klasse DK-0/I."
+        },
+        "mkw_pak": {
+          "method": "Thermisch-Biologische Kombi-Behandlung",
+          "efficiency": "Hoch (85% - 95%)",
+          "co2": "Sehr hoch (~50-80 kg CO₂/t)",
+          "cost": "Sehr teuer (80 - 130 €/t)",
+          "principles": "Für organisch belastete Altablagerungen wird eine Kombination angewandt: Zunächst mechanische Separierung der biologisch abbaubaren Treibstoffe, gefolgt von thermischer Reinigung des hochbelasteten Feinkorns oder einer langfristigen biologischen Mietenbehandlung für geringere Frachten.",
+          "steps": [
+            "Aushub und luftdichte Zwischenlagerung zur VOC-Eindämmung.",
+            "Siebwellen-Separation zum Abzug organischer Leichtstoffe.",
+            "Mietenbiologie zur Abreicherung instabiler Kohlenwasserstoffe.",
+            "Thermische Restzersetzung persistenter Teer- und PAK-Zonen im Drehrohr.",
+            "Sicherheitsbewertung und Eluattests."
+          ],
+          "rules": "BBodSchV / EBV: Strengste Auflagen bezüglich Kohlenwasserstoffgrenzwerten. Bei Kohlenwasserstoff-Index > 1000 mg/kg gelten enge Verwertungsschranken im Bodenbereich."
+        },
+        "asbest_faser": {
+          "method": "Direktdeponierung unter Schleierberegnung (DK II / III)",
+          "efficiency": "Keine Aufbereitung möglich",
+          "co2": "Niedrig",
+          "cost": "Sehr teuer (130 - 220 €/t)",
+          "principles": "Historische Deponiekörper und Altablagerungen enthalten unkontrollierte Asbestnester. Jede mechanische Aufbereitung würde Fasern großflächig freisetzen. Deshalb erfolgt ausschließlich der direkte Aushub unter kontinuierlicher Wasservernebelung und die DK-Deponierung.",
+          "steps": [
+            "Erstellung eines Arbeits- und Sicherheitsplans gem. TRGS 524 / DGUV Regel 101-004.",
+            "Einsatz von Staubbindemitteln (Schleierberegnung am Baggerlöffel).",
+            "Berührungsloser Aushub und Direktabtransport in staubbeständigen Spezialkippmulden.",
+            "Sicherheitsverpackung im Deponieeinbaubereich.",
+            "Sofortige Verdichtung und dichte Abdeckung auf der Deponieklasse DK-II."
+          ],
+          "rules": "TRGS 524 / TRGS 519: Arbeiten in asbestbelasteten Altlastbereichen unterliegen der Anzeigepflicht bei den Arbeitsschutzbehörden und erfordern speziell ausgebildete Fachbauleiter."
+        },
+        "gips_sulfat": {
+          "method": "Auslaugungsverhinderung & kontrollierter Deponiebau (DK I)",
+          "efficiency": "Mittel-Gering (Immobilisierung)",
+          "co2": "Mittel (~20-30 kg CO₂/t)",
+          "cost": "Mittel-Teuer (50 - 85 €/t)",
+          "principles": "Da Altablagerungen hohe Sulfat- und Gipsanteile aufweisen, führt Wasserzutritt zu Gipsreaktionen und extremen Sulfatfrachten im Sickerwasser. Die Aufbereitung beschränkt sich auf Entwässerung und Mischung mit hydrophoben Bindemitteln, um den Schadstofftransport ins Grundwasser wirksam zu unterbinden.",
+          "steps": [
+            "Sondierung auf gips- und sulfatreiche Einlagerungszonen.",
+            "Mechanische Entwässerung des heterogenen Materials.",
+            "Zugabe von Flugaschen/Kalk zur Dichteverbesserung.",
+            "Sicherheitsverfüllung in abgedichteten Deponiekörpern.",
+            "Langzeitanalytik des Sickerwassers."
+          ],
+          "rules": "DepV / BBodSchV: Bei Überschreitung des Sulfat-Eluatgrenzwerts ist der Einbau ohne technische Schutzmaßnahmen unzulässig. Die BBodSchV regelt das Eindringen in das Grundwasser extrem restriktiv."
+        }
+      }
+    },
+    "getIncrementSpecs": {
+      "vol": 0.5,
+      "mass": 0.8,
+      "name": "Feinsand / Schluff (d_max ≤ 2 mm)"
+    },
+    "getIncrementSpecs_2": {
+      "vol": 1,
+      "mass": 1.6,
+      "name": "Sande / Feinkies (d_max ≤ 8 mm)"
+    },
+    "getIncrementSpecs_3": {
+      "vol": 1,
+      "mass": 1.6,
+      "name": "Mittelkies / Grobsand (d_max ≤ 16 mm)"
+    },
+    "getIncrementSpecs_4": {
+      "vol": 2,
+      "mass": 3.2,
+      "name": "Grobe Kiese / Splitt (d_max ≤ 32 mm)"
+    },
+    "getIncrementSpecs_5": {
+      "vol": 5,
+      "mass": 8,
+      "name": "Grobsteinchen / Schroppen (d_max ≤ 63 mm)"
+    },
+    "getIncrementSpecs_6": {
+      "vol": 5,
+      "mass": 8,
+      "name": "Grober Bauschutt (d_max ≤ 120 mm; größere Stücke einzeln)"
+    },
+    "getIncrementSpecs_7": {
+      "vol": 5,
+      "mass": 8,
+      "name": "Blockschutt (d_max > 120 mm: jedes Stück als Einzelprobe)"
+    },
+    "BodenMaterialAufbereitung.schritte": [
+      {
+        "titel": "Masse",
+        "erklaerung": "Volumen 120 m³, Schüttdichte 1,6 t/m³:",
+        "formel": "m = 120 \\cdot 1{,}6 = 192\\,\\text{t}"
+      },
+      {
+        "titel": "Probenanzahl",
+        "erklaerung": "LAGA PN 98 Tabelle 2, Stufe „bis 150 m³“:",
+        "formel": "n_{MP} = 5, \\; n_{EP} = 20, \\; n_{LP} = 5"
+      },
+      {
+        "titel": "Probenmenge",
+        "erklaerung": "Größtkorn 32 mm (Stufe 20 bis 50 mm): Einzelprobe mindestens 2 l:",
+        "formel": "V_{EP,ges} = 20 \\cdot 2 = 40\\,\\text{l}, \\; V_{MP} = 4 \\cdot 2 = 8\\,\\text{l}"
+      }
+    ],
+    "BodenMaterialAufbereitung.schritte_2": [
+      {
+        "titel": "Wägung",
+        "erklaerung": "Feuchte Probe 2 450 g, nach Trocknung bei 105 °C 2 130 g:",
+        "formel": "w = \\frac{2\\,450 - 2\\,130}{2\\,130} = 0{,}150 = 15{,}0\\,\\%"
+      },
+      {
+        "titel": "Trockenmassebezug",
+        "erklaerung": "Ein im Labor gemessener Gehalt von 18 mg/kg Originalsubstanz wird auf TM umgerechnet:",
+        "formel": "c_{TM} = \\frac{18}{m_d / m_f} = \\frac{18}{0{,}869} = 20{,}7\\,\\text{mg/kg TM}"
+      },
+      {
+        "titel": "Bedeutung",
+        "erklaerung": "Feststoffwerte der EBV und BBodSchV beziehen sich auf die Trockenmasse.",
+        "formel": "c_{TM} > c_{OS}"
+      }
+    ],
+    "BodenMaterialAufbereitung.literatur": [
+      "Bayerisches Landesamt für Umwelt (LfU): Umgang mit Bodenmaterial (lfu_abfall_00266), Stand Oktober 2025"
+    ],
+    "BodenMaterialAufbereitung.regelwerke": [
+      {
+        "title": "Ersatzbaustoffverordnung (EBV), in Kraft seit 01.08.2023",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
+      },
+      {
+        "title": "Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV 2021, in Kraft seit 01.08.2023)",
+        "url": "https://www.gesetze-im-internet.de/bbodschv_2023/"
+      },
+      {
+        "title": "LAGA PN 98 - Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen",
+        "url": "https://www.laga-online.de/"
+      }
+    ],
+    "BodenMaterialAufbereitung.formeln": [
+      {
+        "formel": "n_{MP} = 10 + \\lceil \\frac{V_{Haufwerk} - 600}{100} \\rceil \\quad \\text{mit} \\quad n_{EP} = 4 \\cdot n_{MP}",
+        "erklaerung": "Mischprobenanzahl nach LAGA PN 98 Tabelle 2 für Haufwerke über 600 m³",
+        "quelle": "LAGA PN 98"
+      },
+      {
+        "formel": "V_{EP, min} = f(d_{max}) \\in [0{,}5;\\ 5{,}0]\\ \\text{Liter}",
+        "erklaerung": "Mindestvolumen der Einzelprobe nach Größtkorn (≤ 2 mm: 0,5 l; ≤ 20 mm: 1 l; ≤ 50 mm: 2 l; ≤ 120 mm: 5 l)",
+        "quelle": "LAGA PN 98 Tabelle 3"
+      }
+    ]
+  }
+}

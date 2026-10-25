@@ -1,0 +1,72 @@
+{
+  "texte": {
+    "schrittFürSchrittAnleitung": " Schritt-für-Schritt Anleitung zur Mischungsberechnung",
+    "dieBerechnungEinerBetonmischung": "Die Berechnung einer Betonmischung erfolgt iterativ und basiert auf der absoluten Volumenmethode (Stoffraumrechnung). Ziel ist es, 1 m³ (1000 Liter) verdichteten Frischbeton so zusammenzusetzen, dass alle normativen und technologischen Anforderungen erfüllt werden.",
+    "anforderungenFestlegen": "Anforderungen festlegen",
+    "zunächstMüssenDieAnforderungen": "Zunächst müssen die Anforderungen an den Beton aus dem Tragwerksentwurf und den Umgebungsbedingungen abgeleitet werden:",
+    "expositionsklassenZBXc4": "**Expositionsklassen (z.B. XC4, XF1):** Bestimmen den maximal zulässigen Wasserzementwert (w/z)eq, den Mindestzementgehalt und die Mindestdruckfestigkeitsklasse.",
+    "druckfestigkeitsklasseZBC25": "**Druckfestigkeitsklasse (z.B. C25/30):** Geforderte Festigkeit für die Statik.",
+    "konsistenzklasseZBF3": "**Konsistenzklasse (z.B. F3):** Erforderliche Verarbeitbarkeit für den Einbau.",
+    "größtkornZB16": "**Größtkorn (z.B. 16 mm oder 32 mm):** Abhängig von Bauteilabmessungen und Bewehrungsabstand.",
+    "wasseranspruchAbschätzen": "Wasseranspruch abschätzen",
+    "derWasseranspruchHängtMaßgeblich": "Der Wasseranspruch hängt maßgeblich vom Größtkorn, der Kornform (rund/gebrochen) und der gewünschten Konsistenz ab.",
+    "faustwerteFürKonsistenzF3": "**Faustwerte (für Konsistenz F3, rundes Korn):**",
+    "größtkorn8MmCa": "Größtkorn 8 mm: ca. 210 Liter/m³",
+    "größtkorn16MmCa": "Größtkorn 16 mm: ca. 190 Liter/m³",
+    "größtkorn32MmCa": "Größtkorn 32 mm: ca. 175 Liter/m³",
+    "zusatzmittelZBFließmittel": "Zusatzmittel (z.B. Fließmittel) können den Wasseranspruch deutlich reduzieren.",
+    "zementgehaltBerechnen": "Zementgehalt berechnen",
+    "derZementgehaltZWird": "Der Zementgehalt (z) wird aus dem abgeschätzten Wasseranspruch (w) und dem normativ geforderten maximalen Wasserzementwert (w/z) berechnet.",
+    "wichtigDerBerechneteWert": "**Wichtig:** Der berechnete Wert muss mit dem normativen Mindestzementgehalt verglichen werden. Der größere der beiden Werte ist maßgebend.",
+    "stoffraumrechnungVolumenbilanz": "Stoffraumrechnung (Volumenbilanz)",
+    "dieSummeDerVolumina": "Die Summe der Volumina aller Ausgangsstoffe muss exakt 1000 Liter (1 m³) ergeben. Das Volumen berechnet sich aus Masse geteilt durch Dichte.",
+    "daZementWasserUnd": "Da Zement, Wasser und Luft (ca. 1,5 - 2,0 % bei Normalbeton) nun bekannt sind, kann das Volumen der Gesteinskörnung als Restgröße berechnet werden:",
+    "masseDerGesteinskörnungBerechnen": "Masse der Gesteinskörnung berechnen",
+    "ausDemBerechnetenVolumen": "Aus dem berechneten Volumen der Gesteinskörnung wird mit der Rohdichte des Gesteins (meist ca. 2,65 kg/dm³) die trockene Masse berechnet.",
+    "dieseGesamtmasseWirdDann": "Diese Gesamtmasse wird dann anhand einer gewählten Sieblinie (z.B. A/B 16) auf die einzelnen Kornfraktionen (z.B. 0/4, 4/8, 8/16) aufgeteilt.",
+    "inDerPraxisIst": "In der Praxis ist die Gesteinskörnung (besonders der Sand) feucht. Das darin enthaltene Wasser muss vom Zugabewasser abgezogen werden, und die Einwaage des Gesteins muss um das Wassergewicht erhöht werden.",
+    "einwaageGesteinFeucht": "**Einwaage Gestein (feucht):** ",
+    "mehlkorngehaltÜberprüfen": "Mehlkorngehalt überprüfen",
+    "derMehlkorngehaltAlleStoffe": "Der Mehlkorngehalt (Alle Stoffe ≤ 0,125 mm, also Zement, Zusatzstoffe und der Feinanteil im Sand) ist wichtig für das Wasserhaltevermögen, die Verarbeitbarkeit (Pumpfähigkeit) und die Gefügedichtigkeit.",
+    "einZuNiedrigerMehlkorngehalt": "Ein zu niedriger Mehlkorngehalt (< 300 kg/m³) führt zu Entmischen und Bluten.",
+    "einZuHoherMehlkorngehalt": "Ein zu hoher Mehlkorngehalt erhöht den Schwind- und Kriechprozess sowie die Rissneigung. Nach DIN 1045-2 (Tab. F.4.1/F.4.2) ist er bei XF/XM und bei hochfestem Beton abhängig vom Zementgehalt begrenzt (z. B. 400–450 kg/m³ bis C50/60)."
+  },
+  "werte": {
+    "vGestein1000V": "V_{Gestein} = 1000 - (V_{Zement} + V_{Wasser} + V_{Luft})"
+  },
+  "daten": {
+    "MischungsberechnungAnleitung.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Deutscher Beton- und Bautechnik-Verein (DBV): Merkblatt Betontechnische Daten",
+      "Grübl, P., Weigler, H., Karl, S.: Beton – Arten, Herstellung und Eigenschaften (Ernst & Sohn)"
+    ],
+    "MischungsberechnungAnleitung.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)"
+      },
+      {
+        "title": "DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)"
+      }
+    ],
+    "MischungsberechnungAnleitung.formeln": [
+      {
+        "formel": "V_{\\text{Zement}} + V_{\\text{Wasser}} + V_{\\text{Zusatz}} + V_{\\text{Luft}} + V_{\\text{Gestein}} = 1000\\,\\text{dm}^3",
+        "erklaerung": "Stoffraumgleichung (Volumenbilanz) zur Zusammensetzung von genau 1 m³ (1000 Liter) verdichtetem Frischbeton.",
+        "quelle": "DIN 1045-2:2023-08 / DIN EN 206:2021-06"
+      },
+      {
+        "formel": "m_G = V_G \\cdot \\rho_{rd,G} = \\left(1000 - \\frac{z}{\\rho_z} - \\frac{w}{\\rho_w} - \\frac{f}{\\rho_f} - 10 \\cdot L\\right) \\cdot \\rho_{rd,G}",
+        "erklaerung": "Berechnung der trockenen Gesteinskörnungsmasse m_G aus dem Reststoffraum V_G unter Abzug von Zement, Wasser, Zusatzstoffen und Porenluftgehalt L (in Vol.-%).",
+        "quelle": "DBV-Merkblatt Beton"
+      },
+      {
+        "formel": "w_{\\text{Zugabe}} = w_{\\text{soll}} - \\sum \\left( m_{G,i} \\cdot \\frac{h_i}{100} \\right)",
+        "erklaerung": "Feuchtekorrektur des Zugabewassers unter Anrechnung der Eigenfeuchte h_i (in M.-%) der gelagerten Gesteinskörnungen.",
+        "quelle": "DIN EN 206"
+      }
+    ]
+  }
+}

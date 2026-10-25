@@ -6,13 +6,15 @@ import { Clock, Coins, TrendingUp } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/lebenszykluskosten/LebenszyklusKosten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function LebenszyklusKosten() {
   const [activeTab, setActiveTab ] = useState<'Lebensdauern' | 'LCC' | 'Preisentwicklung'>('Lebensdauern');
 
   const tabs = [
     { id: 'Lebensdauern' as const, label: 'Bauteillebensdauern', icon: Clock },
-    { id: 'LCC' as const, label: 'Lebenszykluskosten (LCC)', icon: Coins },
+    { id: 'LCC' as const, label: inhalt.werte.lebenszykluskostenLcc, icon: Coins },
     { id: 'Preisentwicklung' as const, label: 'Baukostenentwicklung', icon: TrendingUp }
   ];
 
@@ -21,13 +23,9 @@ export default function LebenszyklusKosten() {
       <div className="bg-white rounded-2xl shadow-sm border border-home-grau/30 overflow-hidden">
         <div className="border-b border-home-grau/30 p-6 bg-slate-50/50">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Coins className="w-5 h-5 text-shiraz" />
-            Lebenszykluskosten (LCC) &amp; Bauteillebensdauern
-          </h2>
+            <Coins className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.lebenszykluskostenLccBauteillebensdauern} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4">
-            <p>
-              Berechnung nach Barwertmethode (Kapitalwert), Lebensdauerprognosen über BNB-Referenzen und historische/aktuelle Entwicklung der Realbaupreise in Deutschland.
-            </p>
+            <p><MdText text={inhalt.texte.berechnungNachBarwertmethodeKapitalwert} /></p>
           </div>
         </div>
 
@@ -65,60 +63,33 @@ export default function LebenszyklusKosten() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Barwert jährlicher Energiekosten über 30 Jahre"
+        title={inhalt.werte.beispiel1BarwertJährlicher}
         zielGleichung="BW = C \cdot \frac{1 - (1 + r)^{-T}}{r}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Heizkosten 2 000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.', formel: 'C = 2\\,000\\,\\text{€/a},\\; r = 0{,}02,\\; T = 30' },
-          { titel: 'Rentenbarwertfaktor', erklaerung: 'Summe der abgezinsten Jahre:', formel: '\\frac{1 - 1{,}02^{-30}}{0{,}02} = \\frac{1 - 0{,}552}{0{,}02} = 22{,}40' },
-          { titel: 'Barwert', erklaerung: 'Heutiger Wert aller künftigen Zahlungen:', formel: 'BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{€}' }
-        ]}
-        ergebnisHinweis="Ohne Abzinsung wären es 60 000 €. Je höher der Zins, desto weniger zählen Betriebskosten gegenüber der Investition – die Zinswahl beeinflusst den Variantenvergleich erheblich."
-        normQuelle="ISO 15686-5:2017; DIN EN 16627:2015-09"
+        schritte={inhalt.daten["LebenszyklusKosten.schritte"]}
+        ergebnisHinweis={inhalt.werte.ohneAbzinsungWärenEs}
+        normQuelle={inhalt.werte.iso1568652017}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Ersatzinvestition für Fenster nach 30 Jahren"
+        title={inhalt.werte.beispiel2ErsatzinvestitionFür}
         zielGleichung="BW = \frac{C_t}{(1 + r)^t}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.', formel: 'C_{30} = 20\\,000\\,\\text{€}' },
-          { titel: 'Abzinsungsfaktor', erklaerung: 'Einmalzahlung im Jahr 30:', formel: '(1{,}03)^{30} = 2{,}427' },
-          { titel: 'Barwert', erklaerung: 'In der LCC-Bilanz anzusetzender Wert:', formel: 'BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{€}' }
-        ]}
-        ergebnisHinweis="Langlebige Bauteile mit späten Ersatzzeitpunkten erscheinen im Barwert günstig; die Nutzungsdauern nach BNB bzw. VDI 2067 bestimmen daher maßgeblich das Ergebnis."
-        normQuelle="ISO 15686-5:2017; BNB-Nutzungsdauern von Bauteilen"
+        schritte={inhalt.daten["LebenszyklusKosten.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.langlebigeBauteileMitSpäten}
+        normQuelle={inhalt.werte.iso15686520172}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="lebenszyklus_kosten" />
 
       <ModuleFooter 
-        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: Barwertmethode, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap7} 
         wikipedia={[
           { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Lebenszykluskostenrechnung' },
           { title: 'Barwert', url: 'https://de.wikipedia.org/wiki/Barwert' },
           { title: 'Baupreisindex', url: 'https://de.wikipedia.org/wiki/Baupreisindex' }
         ]}
-        literatur={[
-          'Pelzeter, A.: Lebenszykluskosten von Immobilien – Einfluss von Lage, Gestaltung und Umwelt. Köln: Rudolf Müller 2006 (Schriften zur Immobilienökonomie, Bd. 36)',
-          'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen)' },
-          { title: 'ISO 15686-5:2017 (Buildings and constructed assets – Service life planning – Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden)' },
-          { title: 'BNB Leitfaden Nachhaltiges Bauen (Anlage 1: Nutzungsdauern von Bauteilen)', url: 'https://www.nachhaltigesbauen.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'BW = \\sum_{t=0}^{T} \\frac{C_t}{(1 + r)^t} \\quad [\\text{€}]',
-            erklaerung: 'Barwertmethode (Net Present Value NPV) der kumulierten Lebenszykluskosten über Betrachtungszeitraum T bei Diskontierungszinssatz r und periodischen Kosten Ct.',
-            quelle: 'ISO 15686-5 / DIN EN 16627'
-          },
-          {
-            formel: 'K_{\\text{LCC}} = C_{\\text{Herstellung}} + \\sum_{t=1}^T \\frac{C_{\\text{Betrieb},t} + C_{\\text{Instand},t}}{(1 + r)^t} + \\frac{C_{\\text{Rückbau}} - R_{\\text{Rest}}}{(1 + r)^T}',
-            erklaerung: 'Ganzheitliche Lebenszykluskostenstruktur unter Berücksichtigung von Errichtung, Nutzung, periodischer Instandhaltung sowie Restwerten am Lebensdauerende.',
-            quelle: 'BNB Modul LCC'
-          }
-        ]}
+        literatur={inhalt.daten["LebenszyklusKosten.literatur"]}
+        regelwerke={inhalt.daten["LebenszyklusKosten.regelwerke"]}
+        formeln={inhalt.daten["LebenszyklusKosten.formeln"]}
       />
     </div>
   );

@@ -14,6 +14,7 @@ Stand: Phase 5 (Oktober 2026). Kurzüberblick für Pflege und Weiterentwicklung.
 | Navigation | `src/components/navigation/ModulNavigation.tsx` | Menü der Seitenleiste (Start/Favoriten, Cluster, Gruppen, Volltexttreffer) |
 | Zustand | `src/contexts/TabContext.tsx` | aktives Modul ↔ URL-Hash (`#modul_id`), Theme, Anzeigeoptionen |
 | Module | `src/modules/*.tsx` | Fachmodule (Darstellung); große Teilansichten in Unterordnern (z. B. `modules/holz/HolzSchwinden3D.tsx`) |
+| Fachtexte | `content/<modul>/<Datei>.json` | Fließtexte, Tabellen, Listen, Glossare der Module – ohne TSX bearbeitbar (siehe „Inhalte bearbeiten“) |
 | Rechenkerne | `src/calc/*.ts` | reine, getestete Rechenfunktionen ohne React (Tests in `tests/`) |
 | Daten | `src/data/*` | Inhalte und Kennwerte (Quiz `quiz.json`, Lernziele, Erkundung, Rechnergrenzen, Versionen …) |
 | Fragenpool | `src/data/quiz.json` → `scripts/quizPool.ts` (Vite-Plugin) → `src/data/quizLader.ts` | Fragen im Browser je Modul bzw. in Teilpaketen nachladen (siehe unten); Typen/Kategorien in `quizModell.ts` |
@@ -58,6 +59,38 @@ Zugriff im Frontend nur über `src/data/quizLader.ts`: `useModulFragen(id)`, `us
 
 Verworfene Alternativen: per Skript erzeugte `src/data/quiz/<cluster>.json` (doppelter Datenbestand im Repository, Aktualitätstest nötig) und ein dynamischer Import der ganzen JSON (bliebe ein 382-kB-Chunk). Teilpakete je Cluster bräuchten im Plugin die Modul-Registry (React-Icons); die Aufteilung nach Modul (Selbsttest) bzw. nach Größe (Gesamtpool) kommt ohne aus.
 
+## Inhalte bearbeiten (AP 5.3)
+
+Die Fachtexte der Module liegen nicht mehr im TSX, sondern in `content/` – **eine Datei je Quelldatei**, ein Ordner je Modul:
+`src/modules/Bauchemie.tsx` → `content/bauchemie/Bauchemie.json`, `src/modules/spannbeton/SpannbetonPrinzipien.tsx` → `content/spannbeton/SpannbetonPrinzipien.json`. Das TSX enthält nur noch Aufbau, Klassen, Logik und Verweise. Jede Datei hat bis zu drei Gruppen:
+
+| Gruppe | Inhalt | im TSX | Format |
+|---|---|---|---|
+| `texte` | Fließtext aus JSX (Absätze, Listenpunkte, Überschriften, Zellen) | `<p className="…"><MdText text={inhalt.texte.einleitung} /></p>` | Inline-Markdown (unten) |
+| `werte` | einzelne Zeichenketten: Props (`title`, `label`, `beschreibung` …), Meldungen im Code, Kinder eigener Komponenten | `title={inhalt.werte.beispiel1}` | reiner Text, wird unverändert eingesetzt |
+| `daten` | ganze Tabellen, Listen, Glossare, Fußzeilen (`regelwerke`, `literatur`) als JSON-Arrays/-Objekte | `const DATEN = inhalt.daten.SCHADSTOFFE_DATA;` | JSON wie im Code; Schlüssel = Pfad (`Komponente.prop`, `KONSTANTE.id.feld`) |
+
+**Text ändern:** in der JSON-Datei den Wert ändern – Schlüssel nicht umbenennen (sie sind die Verweise aus dem TSX; der Schlüsselname ist nur eine Lesehilfe aus den ersten Wörtern und muss nach einer Textänderung nicht passen). Neue Absätze, Listenpunkte oder Tabellenzeilen: bei `daten` einfach Einträge im Array ergänzen (gleiche Felder wie die Nachbarn); bei `texte` entsteht ein neuer Absatz im TSX (neuer Schlüssel + `<MdText text={inhalt.texte.neu} />`). Reihenfolge der Einträge in `daten`-Arrays = Anzeigereihenfolge.
+
+**Inline-Markdown in `texte`** (`src/lib/inhaltMd.ts`, gerendert von `src/components/inhalt/MdText.tsx`, ohne eigenes Hüllelement):
+
+| Schreibweise | Ergebnis |
+|---|---|
+| `**fett**`, `*kursiv*` | `<strong>`, `<em>` |
+| `$CaSO_4$` | KaTeX-Formel (InlineMath); TeX wie in `math="…"`, in JSON Backslash doppelt: `"$\\frac{a}{b}$"` |
+| `CO<sub>2</sub>`, `m<sup>3</sup>`, `<br>` | Index, Exponent, Zeilenumbruch |
+| `` `code` `` | `<code>` |
+| `[Text](https://…)` | Link (neues Fenster, `text-shiraz hover:underline`) |
+| `\*`, `\$`, `` \` ``, `\[`, `\<`, `\\` | Zeichen ohne Sonderbedeutung (in JSON: `\\*` usw.) |
+
+Ein `*` mit Leerzeichen dahinter (z. B. AVV `17 06 05* (…)`) bleibt ohne Maskierung ein Sternchen. Blockstruktur (Absätze, Listen, Tabellen, Tailwind-Klassen) bleibt bewusst im TSX: So bleibt die Darstellung zeichengleich, und Listen/Tabellen mit Daten liegen strukturiert unter `daten`. `werte` und `daten` sind reiner Text – dort wirkt kein Markdown.
+
+**Laden:** Die Werte werden beim Build vom Vite-Plugin `scripts/inhaltEinbetten.ts` direkt an den Verweisstellen eingesetzt (sonst kämen Schlüssel und Verweise zusätzlich in jeden Chunk: +15 % gzip im Median). Die Texte bleiben damit im lazy geladenen Modul-Chunk (nie im Einstieg); `tsc` und die Tests lesen die JSON-Dateien direkt. Verweise nur in der Form `inhalt.<gruppe>.<schlüssel>` bzw. `inhalt.<gruppe>["schlüssel"]` schreiben (andere Zugriffe funktionieren, laden dann aber die ganze JSON). Unbekannte Schlüssel brechen den Build ab.
+
+**Prüfungen:** `tests/inhalt.test.ts` (gültige Dateien, nur die drei Gruppen, jeder Verweis vorhanden, jede Datei genau einmal importiert, keine verwaisten Einträge, Markdown eindeutig); `check:formeln` prüft `$…$` in `texte` und Formel-Felder (`formel`, `math`, `latex` …) in `daten`; `check:zahlen` (Dezimalkomma), `check:quellen` (Normlinks, Du-Imperative, Normenstand der `regelwerke`) und `tests/begriffe.test.ts` lesen `content/` mit (`scripts/qa/inhaltDateien.mjs`). Literaltypen (`kategorie: 'Mineralisch' | …`) bleiben im TSX, damit `tsc` sie weiter prüft.
+
+**Weitere Module auslagern:** `npx tsx scripts/inhalt-auslagern.ts src/modules/<Datei>.tsx` (Codemod; ersetzt nur Literale durch Verweise auf denselben Wert, JSX-Leerraum und Entities wie esbuild). Danach `npx tsc --noEmit`; Stellen mit Literaltypen per `--ausschluss` im Code lassen. Zeichengleichheit belegen mit `scripts/qa/inhalt-vergleich.mjs` (Playwright: innerText und `.katex`-Anzahl je Route und Reiter, Desktop + Mobil, alter gegen neuen Build). Anteil: `node scripts/qa/inhalt-anteil.mjs`. Nicht ausgelagert (Rechtstexte/Verwaltung bzw. von Tests im TSX gelesen): `Admin`, `Datenschutz`, `Impressum`, `Festbeton`.
+
 ## QA-Skripte
 
 | Befehl | Prüfung |
@@ -68,8 +101,10 @@ Verworfene Alternativen: per Skript erzeugte `src/data/quiz/<cluster>.json` (dop
 | `npm run check:zahlen` | deutsches Zahlenformat |
 | `npm run check:quellen` | Quellenangaben |
 | `npm run build` + `node scripts/qa/check-bundle.mjs` | Build und Bundle-Budget |
+| `node scripts/qa/inhalt-anteil.mjs` | Anteil der Fachtexte in `content/` (AP 5.3) |
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow) |
+| `scripts/qa/inhalt-vergleich.mjs` | Zeichengleichheit zweier Builds (innerText, Formeln, Seitenfehler je Route/Reiter; Playwright) |
 | `node scripts/qa/e2e-smoke.mjs [--basis URL]` | E2E-Smoke: je Meta-Cluster I–VI eine Route – eine h1 mit Modultitel, keine Seitenfehler, Lernziele und Selbsttest vorhanden (Playwright, siehe unten) |
 
 | `scripts/qa/perf-messung.mjs` | LCP/CLS/TBT/Klick-Latenz mobil gedrosselt → `docs/performance.md` (Playwright, nicht in der CI) |

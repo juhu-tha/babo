@@ -1,0 +1,16 @@
+{
+  "texte": {
+    "relevanzDerBetonkennwerteIn": "Relevanz der Betonkennwerte in der Tragwerksplanung",
+    "dieNormativenKennwerteNach": "Die normativen Kennwerte nach EC2 steuern nicht nur die Querschnittstragfähigkeit im GZT, sondern maßgeblich die Gebrauchstauglichkeitsnachweise (GZG) sowie baupraktische Bauzustände:",
+    "t1DurchbiegungsnachweisGzg": "1. Durchbiegungsnachweis (GZG)",
+    "langzeitverformungenVonDeckenUnd": "Langzeitverformungen von Decken und Trägern werden durch das Kriechen um den Faktor $(1 + \\varphi)$ vergrößert. Die Berechnung erfolgt über den effektiven Kriechmodul:",
+    "beiSchwindzwangEC": "Bei Schwindzwang: $E_{c,\\text{eff,Zwang}} = \\frac{E_{cm}}{1 + 0{,}8 \\cdot \\varphi}$",
+    "dinEn19921": "DIN EN 1992-1-1 Abs. 7.4.3 (Gl. 7.20)",
+    "t2MindestbewehrungFürRissbreite": "2. Mindestbewehrung für Rissbreite",
+    "zurBegrenzungDerRissbreite": "Zur Begrenzung der Rissbreite infolge abfließender Hydratationswärme oder Schwindzwang muss die Mindestbewehrung die Zugkraft bei Erstrissbildung aufnehmen:",
+    "dinEn199212": "DIN EN 1992-1-1 Abs. 7.3.2",
+    "t3BauwerksdiagnoseNachDin": "3. Bauwerksdiagnose nach DIN EN 13791",
+    "dieInSituDruckfestigkeit": "Die In-situ-Druckfestigkeit $f_{ck,\\text{is}}$ aus Bohrkernen ist bauartbedingt ca. 15 % geringer als die Standard-Zylinderfestigkeit aus dem Labor (Probekörperlagerung unter Wasser):",
+    "dinEn137912020": "DIN EN 13791:2020-02"
+  }
+}

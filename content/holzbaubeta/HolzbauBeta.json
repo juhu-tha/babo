@@ -1,0 +1,119 @@
+{
+  "texte": {
+    "holzbauIngenieurholzbau": "Holzbau (Ingenieurholzbau)",
+    "referenzhandbuchTragwerksnachweiseNachEu": "Referenzhandbuch & Tragwerksnachweise nach Eurocode 5 (DIN EN 1995-1-1)",
+    "refInformationsdienstHolzDe": "Ref: informationsdienst-holz.de & dataholz.eu",
+    "dasModulFasstKennwerte": "Das Modul fasst Kennwerte der Holzwerkstoffe, Konstruktionsweisen, Bauphysik und Brandschutz zusammen und enthält vereinfachte Rechner nach Eurocode 5. Die Rechner dienen der Lehre und ersetzen keine Tragwerksplanung."
+  },
+  "werte": {
+    "anwendungsbeispielKnicknachweisEinerStüt": "Anwendungsbeispiel: Knicknachweis einer Stütze C24 120/160 mm",
+    "dinEn19951": "DIN EN 1995-1-1 mit NA, 6.3.2 (Ersatzstabverfahren)",
+    "dieStützeIstAusreichend": "Die Stütze ist ausreichend; ohne Knicken (k_c = 1) läge die Tragfähigkeit bei rund 248 kN – durch die Schlankheit sinkt sie auf rund 40 %."
+  },
+  "daten": {
+    "HolzbauBeta.shrinkageCoeffs": {
+      "fichte": {
+        "radial": 0.19,
+        "tangential": 0.33,
+        "longitudinal": 0.01,
+        "label": "Fichte / Tanne (Nadelholz)"
+      },
+      "kiefer": {
+        "radial": 0.19,
+        "tangential": 0.36,
+        "longitudinal": 0.01,
+        "label": "Kiefer (Nadelholz)"
+      },
+      "laerche": {
+        "radial": 0.18,
+        "tangential": 0.38,
+        "longitudinal": 0.01,
+        "label": "Lärche (Nadelholz)"
+      },
+      "buche": {
+        "radial": 0.2,
+        "tangential": 0.4,
+        "longitudinal": 0.01,
+        "label": "Buche (Laubholz)"
+      },
+      "eiche": {
+        "radial": 0.15,
+        "tangential": 0.28,
+        "longitudinal": 0.01,
+        "label": "Eiche (Laubholz)"
+      }
+    },
+    "HolzbauBeta.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "b/h = 120/160\\,\\text{mm},\\; l_{ef} = 3{,}0\\,\\text{m},\\; N_{Ed} = 50\\,\\text{kN},\\; \\text{NKL 1, mittel: } k_{mod} = 0{,}8",
+        "erklaerung": "Beidseitig gelenkig; Ausweichen um die schwache Achse."
+      },
+      {
+        "titel": "2. Schlankheit",
+        "formel": "i_z = \\frac{120}{\\sqrt{12}} = 34{,}6\\,\\text{mm};\\; \\lambda_z = \\frac{3000}{34{,}6} = 86{,}6",
+        "erklaerung": "Maßgebend ist der kleinere Trägheitsradius."
+      },
+      {
+        "titel": "3. Bezogene Schlankheit",
+        "formel": "\\lambda_{rel} = \\frac{\\lambda}{\\pi}\\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{86{,}6}{\\pi}\\sqrt{\\frac{21}{7400}} = 1{,}47",
+        "erklaerung": "E_0,05 = 7400 N/mm² für C24."
+      },
+      {
+        "titel": "4. Knickbeiwert",
+        "formel": "k = 0{,}5\\,[1 + 0{,}2\\,(1{,}47 - 0{,}3) + 1{,}47^2] = 1{,}70;\\; k_c = \\frac{1}{1{,}70 + \\sqrt{1{,}70^2 - 1{,}47^2}} = 0{,}39",
+        "erklaerung": "β_c = 0,2 für Vollholz."
+      },
+      {
+        "titel": "5. Nachweis",
+        "formel": "N_{Rd} = 0{,}39 \\cdot 19\\,200 \\cdot \\frac{0{,}8 \\cdot 21}{1{,}3} \\approx 97{,}6\\,\\text{kN} \\ge 50\\,\\text{kN}",
+        "erklaerung": "Ausnutzung rund 51 %."
+      }
+    ],
+    "HolzbauBeta.regelwerke": [
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1)"
+      },
+      {
+        "title": "DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)"
+      },
+      {
+        "title": "DIN EN 338:2016-07 (Festigkeitsklassen Bauholz) und DIN EN 14080:2013-09 (Brettschichtholz)"
+      },
+      {
+        "title": "Muster-Holzbaurichtlinie (MHolzBauRL), Fassung September 2024 (MVV TB 2025/1, lfd. Nr. A 2.2.1.4); Landesfassung gemäß jeweiliger VV TB"
+      },
+      {
+        "title": "DIN EN 16351:2025-07 (Brettsperrholz – Anforderungen)"
+      }
+    ],
+    "HolzbauBeta.literatur": [
+      "Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5 (einzelne Hefte)",
+      "Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016",
+      "Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "HolzbauBeta.weblinks": [
+      {
+        "title": "dataholz.eu – Bauteilkatalog (Holzforschung Austria)",
+        "url": "https://www.dataholz.eu"
+      },
+      {
+        "title": "Informationsdienst Holz",
+        "url": "https://informationsdienst-holz.de/"
+      }
+    ],
+    "HolzbauBeta.formeln": [
+      {
+        "formel": "f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} > 8\\,\\text{Hz}",
+        "erklaerung": "Erste Eigenfrequenz eines gelenkig gelagerten Deckenstreifens; f₁ > 8 Hz ist Anwendungsgrenze des Nachweises nach EC5 7.3.3.",
+        "quelle": "DIN EN 1995-1-1 Abs. 7.3"
+      },
+      {
+        "formel": "d_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0",
+        "erklaerung": "Ideelle Abbrandtiefe d_ef der Methode mit reduziertem Querschnitt (β_n = 0,8 Vollholz / 0,7 BSH, d₀ = 7 mm, k₀ = 1 ab 20 min).",
+        "quelle": "DIN EN 1995-1-2"
+      }
+    ]
+  }
+}

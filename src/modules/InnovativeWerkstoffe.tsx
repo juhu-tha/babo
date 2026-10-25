@@ -5,6 +5,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, Coins, Leaf, Scale, Settings, Activity, ChevronRight, AlertCircle, Info, HelpCircle, Wrench, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
+import inhalt from '@/content/innovativewerkstoffe/InnovativeWerkstoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialProfile {
   id: string;
@@ -23,141 +25,141 @@ interface MaterialProfile {
 const FUTURE_MATERIALS: MaterialProfile[] = [
   {
     id: '3dcp',
-    name: '3D-Betondruck (3DCP - 3D Concrete Printing)',
-    category: 'Digitale Fertigungsverfahren',
-    shortDesc: 'Schichtweiser, Schichtweiser, schalungsfreier Auftrag eines pumpbaren, thixotropen Feinkornbetons mit hoher Fließgrenze direkt aus dem Druckkopf. direkt aus dem Druckkopf ohne jegliche Holzschalungen.',
+    name: inhalt.werte.t3dBetondruck3dcp3d,
+    category: inhalt.werte.digitaleFertigungsverfahren,
+    shortDesc: inhalt.werte.schichtweiserSchichtweiserSchalungsfreie,
     co2Index: 65, // Saves CO2 because material is only printed where statically required (topology optimization)
     costIndex: 140, // High equipment cost, but saves human labor, scaffolding, and wood waste
-    strength: 'Hohe Druckfestigkeit im Schichtverbund (oft 40-70 MPa); Zugkapazität gering und richtungsabhängig.',
+    strength: inhalt.werte.hoheDruckfestigkeitImSchichtverbund,
     advantages: [
-      'Kompletter Wegfall konventioneller Schalarbeiten (spart viel Zeit, Holzmüll und Lohnkosten)',
-      'Unbegrenzte geometrische Gestaltungsfreiheit für Architekten (doppelt gekrümmte Freiformflächen)',
-      'Topologieoptimierung: Material wird nur gedruckt, wo Kräfte fließen (bis zu 40% Betonmassen-Ersparnis)',
-      'Digitaler Prozess: Direktes Drucken aus dem CAD/BIM-Modell verkürzt die Bauplanungskette im Rohbau'
+      inhalt.werte.kompletterWegfallKonventionellerSchalarb,
+      inhalt.werte.unbegrenzteGeometrischeGestaltungsfreihe,
+      inhalt.werte.topologieoptimierungMaterialWirdNur,
+      inhalt.werte.digitalerProzessDirektesDrucken
     ],
     disadvantages: [
-      'Ausgeprägte Festigkeitsanisotropie: Die Haftung zwischen den gedruckten Einzelschichten ist eine statische Schwachstelle',
-      'Integration von Bewehrungen (Schub-/Biegezugkraft) bisher verfahrenstechnisch anspruchsvoll',
-      'Sehr stringente Feuchtigkeits- und Temperaturregelung auf der Baustelle nötig (Zugluft führt zu Frühschwindrissen)'
+      inhalt.werte.ausgeprägteFestigkeitsanisotropieDieHaft,
+      inhalt.werte.integrationVonBewehrungenSchub,
+      inhalt.werte.sehrStringenteFeuchtigkeitsUnd
     ],
     specs: {
-      'Druckgeschwindigkeit': '10 bis 30 cm/Sekunde',
-      'Größtkorn des Mörtels': '2 bis 4 mm (Feinstkornmischung)',
-      'Pumpendruck': 'bis zu 120 bar',
-      'Typische Schichtstärke': '10 bis 30 mm pro Bahn',
-      'Statischer Nachweis': 'Bislang oft Einzelfallprüfungen (ZiE) oder verlorene Schalung notwendig'
+      'Druckgeschwindigkeit': inhalt.werte.t10Bis30Cm,
+      'Größtkorn des Mörtels': inhalt.werte.t2Bis4Mm,
+      'Pumpendruck': inhalt.werte.bisZu120Bar,
+      'Typische Schichtstärke': inhalt.werte.t10Bis30Mm,
+      'Statischer Nachweis': inhalt.werte.bislangOftEinzelfallprüfungenZie
     },
-    details: 'Der 3D-Concrete-Printing-Prozess erfordert hochentwickelte, thixotrope Baustoffmischungen. Der Frischbeton muss im Schlauch pumpbar sein (geringe Viskosität), doch unmittelbar nach dem Verlassen der Düse standfest werden (hohe Fließgrenze im Stillstand), um das Eigengewicht der folgenden Schichten ohne Schalung zu tragen. Als innovative Bewehrungsmethoden werden heute endlose Carbonfäden im Druckkopf mitextrudiert, Mikrostahlfasern eingedüst, oder nachträglich Spannkabel durch verbleibende Hohlkammern gezogen.'
+    details: inhalt.werte.der3dConcretePrinting
   },
   {
     id: 'carbon',
-    name: 'Carbonbeton & Textilbeton (C³)',
-    category: 'Innovative Bewehrungssysteme',
-    shortDesc: 'Ersatz von korrosionsanfälligem Baustahl durch hochfeste, korrosionsfreie Gitterstrukturen aus Carbonfasern oder Glasfasern.',
+    name: inhalt.werte.carbonbetonTextilbetonC,
+    category: inhalt.werte.innovativeBewehrungssysteme,
+    shortDesc: inhalt.werte.ersatzVonKorrosionsanfälligemBaustahl,
     co2Index: 35, // Thick steel covers aren't needed. Saved concrete saves massive CO2.
     costIndex: 250, // Carbon is expensive but requires a fraction of concrete weight
-    strength: 'Sehr hohe Zugfestigkeit der Carbonfasern (Einzelfaser etwa 3.000–5.000 N/mm², im Textil bzw. Stab geringer) – ein Vielfaches von Betonstahl B500 (500 N/mm²).',
+    strength: inhalt.werte.sehrHoheZugfestigkeitDer,
     advantages: [
-      'Vollkommene Korrosionsfreiheit: Die dünne Beton-Erhaltungsschicht von 3-4 cm (zum Rostschutz von Stahl) entfällt komplett',
-      'Filigrane Bauteilgeometrien: Bauteildicken können von 20 cm auf unter 5 cm reduziert werden (Gewichtsersparnis bis zu 75%)',
-      'Instandsetzungs-Meilenstein: Perfekt zur flächigen Tragwerksverstärkung im Denkmalschutz oder bei Brückensanierungen',
-      'Hohe erwartete Dauerhaftigkeit: keine Korrosion der Bewehrung (Langzeiterfahrungen über 100 Jahre liegen noch nicht vor)'
+      inhalt.werte.vollkommeneKorrosionsfreiheitDieDünne,
+      inhalt.werte.filigraneBauteilgeometrienBauteildickenK,
+      inhalt.werte.instandsetzungsMeilensteinPerfektZur,
+      inhalt.werte.hoheErwarteteDauerhaftigkeitKeine
     ],
     disadvantages: [
-      'Hohe Materialkosten bei der Anschaffung des Carbongeleges im Vergleich zu standardmäßigem Baustahl',
-      'Derzeit hoher Energieaufwand bei der Herstellung von Carbonfasern (sukzessiver Ersatz durch Bio-Carbon geplant)',
-      'Kein ausgeprägtes Fließverhalten (sprödes Versagen ohne Vorwarnung), weshalb Überdimensionierungen nötig sind'
+      inhalt.werte.hoheMaterialkostenBeiDer,
+      inhalt.werte.derzeitHoherEnergieaufwandBei,
+      inhalt.werte.keinAusgeprägtesFließverhaltenSprödes
     ],
     specs: {
-      'Zugfestigkeit Faser': 'ca. 3.000 bis 4.500 MPa',
-      'Elastizitätsmodul': 'ca. 230.000 bis 260.000 MPa (Carbon)',
-      'Notwendige Betondeckung': 'nur 10 bis 15 mm (reiner Verbundschutz, kein Rostschutz)',
-      'Betonmatrix': 'Feinkornbeton mit optimiertem Fließverhalten',
-      'CO₂-Reduktionspotenzial': 'bis zu 50% Einsparung auf Gesamtbauteilebene'
+      'Zugfestigkeit Faser': inhalt.werte.ca3000Bis,
+      'Elastizitätsmodul': inhalt.werte.ca230000Bis,
+      'Notwendige Betondeckung': inhalt.werte.nur10Bis15,
+      'Betonmatrix': inhalt.werte.feinkornbetonMitOptimiertemFließverhalte,
+      'CO₂-Reduktionspotenzial': inhalt.werte.bisZu50Einsparung
     },
-    details: 'Da Carbon nicht rostet, benötigt man keine dicke alkalische Betondeckung, um die Bewehrung vor Luft und Wasser zu schützen. Es reicht eine dünne Matrix aus hochfließfähigem Feinkornbeton. Carbonbeton ermöglicht so extrem leichte, filigrane Architekturen (Hängedächer, dünne Fassadenschalen) und bietet neue Potenziale für das ressourceneffiziente Bauen. Die Verarbeitbarkeit erfolgt entweder als Fertigteil oder im Spritzbetonverfahren.'
+    details: inhalt.werte.daCarbonNichtRostet
   },
   {
     id: 'uhpc',
-    name: 'Ultra-High Performance Concrete (UHPC)',
-    category: 'Gefügeoptimierte Betone',
-    shortDesc: 'Ultrahochfester Beton mit extrem dichtem, porenarmem Gefüge und Druckfestigkeiten von etwa 150–250 N/mm² (Literaturwerte; keine genormten Klassen).',
+    name: inhalt.werte.ultraHighPerformanceConcrete,
+    category: inhalt.werte.gefügeoptimierteBetone,
+    shortDesc: inhalt.werte.ultrahochfesterBetonMitExtrem,
     co2Index: 50, // Very strong, so you need much less volume. Net CO2 is low.
     costIndex: 280, // Requires dense packing additives and high amount of binders
-    strength: 'Extreme Druckfestigkeit von 150 bis über 250 MPa. Enorme Abriebs- und Verschleißresistenz.',
+    strength: inhalt.werte.extremeDruckfestigkeitVon150,
     advantages: [
-      'Tragfähigkeit im Bereich von konstruktivem Stahl bei dämpfenden Eigenschaften des mineralischen Betons',
-      'Extrem dichte Packung verwehrt Schadstoffen (Chloriden, Frost) jegliches Eindringen in das Gefüge',
-      'Schnittbegrenzung: Filigranste Brückentragwerke, Fahrbahnübergänge und schlanke Stützen mit enormen Traglasten'
+      inhalt.werte.tragfähigkeitImBereichVon,
+      inhalt.werte.extremDichtePackungVerwehrt,
+      inhalt.werte.schnittbegrenzungFiligransteBrückentragw
     ],
     disadvantages: [
-      'Erhöhter Zementleimgehalt und Feinstfüller führen zu erhöhtem Schwindpotenzial',
-      'Sehr sprödes Bruchverhalten: Muss zwingend hochdosiert mit Stahl- oder Polymerfasern duktilisiert werden',
-      'Strengste Qualitätskontrollen beim Mischprozess im Transportbetonwerk notwendig (Temperatur/Fließmittel)'
+      inhalt.werte.erhöhterZementleimgehaltUndFeinstfüller,
+      inhalt.werte.sehrSprödesBruchverhaltenMuss,
+      inhalt.werte.strengsteQualitätskontrollenBeimMischpro
     ],
     specs: {
-      'Druckfestigkeit (28d)': '150 bis 230 N/mm² (MPa)',
-      'w/z-Wert (Wasser-Zement)': 'extrem niedrig (0.15 bis 0.18)',
-      'Zusatzstoffe': 'Silikastaub (Mikrosilika), Quarzmehl als Mikrogrenzfüller',
-      'Stahlfaser-Bewehrung': '1 bis 3 Vol.-% hochfeste Mikrostahlfasern',
-      'Frost-Tausalz-Resistenz': 'Absolut unempfindlich, kein nennenswerter Abtrag'
+      'Druckfestigkeit (28d)': inhalt.werte.t150Bis230N,
+      'w/z-Wert (Wasser-Zement)': inhalt.werte.extremNiedrig015,
+      'Zusatzstoffe': inhalt.werte.silikastaubMikrosilikaQuarzmehlAls,
+      'Stahlfaser-Bewehrung': inhalt.werte.t1Bis3Vol,
+      'Frost-Tausalz-Resistenz': inhalt.werte.absolutUnempfindlichKeinNennenswerter
     },
-    details: 'Die sehr hohen Festigkeiten von UHPC beruhen auf einer strengen Optimierung der Packungsdichte. Durch ultrafeinen Silikastaub, der puzzolanisch mit Calciumhydroxid reagiert (selbst nicht hydraulisch), werden alle mikro- und makroskopischen Zwischenräume zwischen den Sandkörnern gefüllt. Das Resultat ist ein sehr geringer Kapillarporenanteil. UHPC wird im Verbund mit Stahlfasern duktil und kann extreme Kräfte aufnehmen.'
+    details: inhalt.werte.dieSehrHohenFestigkeiten
   },
   {
     id: 'ilb',
-    name: 'Infraleichtbeton (ILB)',
-    category: 'Gefügeoptimierte Betone',
-    shortDesc: 'Hochwärmedämmender Konstruktionsbeton mit extrem geringer Rohdichte zur Realisierung einschichtiger, monolithischer Sichtbetonbauten.',
+    name: inhalt.werte.infraleichtbetonIlb,
+    category: inhalt.werte.gefügeoptimierteBetone2,
+    shortDesc: inhalt.werte.hochwärmedämmenderKonstruktionsbetonMitE,
     co2Index: 60, // Monolithic, replaces multi-layered walls and synthetic insulation boards (WDVS)
     costIndex: 125, // Slightly more expensive than aggregate concrete but saves insulation layer installer labor
-    strength: 'Geringe bis mittlere Tragfähigkeit (Druckfestigkeit 8 bis 15 MPa). Ausreichend für mehrgeschossigen Wohnungsbau.',
+    strength: inhalt.werte.geringeBisMittlereTragfähigkeit,
     advantages: [
-      'Vollständig monolithisches Bauen: Wand übernimmt statischen Lastabtrag UND bauphysikalische Wärmedämmung',
-      'Keine synthetischen Wärmedämmverbundsysteme (WDVS, Polystyrol) nötig, dadurch 100% recyclingfähig',
-      'Sehr guter physikalischer Brandschutz (reiner mineralischer Brandschutz-Baustoff)',
-      'Glatte visuelle Sichtbetonoberfläche außen und innen in einem Arbeitsschritt gegossen'
+      inhalt.werte.vollständigMonolithischesBauenWand,
+      inhalt.werte.keineSynthetischenWärmedämmverbundsystem,
+      inhalt.werte.sehrGuterPhysikalischerBrandschutz,
+      inhalt.werte.glatteVisuelleSichtbetonoberflächeAußen
     ],
     disadvantages: [
-      'Statisch begrenzt: Aufgrund der vielen Luftporen nicht für hochbelastete Pfeiler oder extreme Spannweiten geeignet',
-      'Erhöhte Wasseraufnahme durch poröse Gesteinskörnungen (Blähton/Blähglas), erfordert hydrophobierende Hydrophobierung',
-      'Besondere Sorgfalt bei Verdichtung auf der Baustelle nötig (Gefahr des Aufschwimmens der leichten Gesteinskörnung)'
+      inhalt.werte.statischBegrenztAufgrundDer,
+      inhalt.werte.erhöhteWasseraufnahmeDurchPoröse,
+      inhalt.werte.besondereSorgfaltBeiVerdichtung
     ],
     specs: {
-      'Trockenrohdichte': '650 bis 800 kg/m³ (Normalbeton = 2.400 kg/m³)',
-      'Wärmeleitfähigkeit (λ)': '0,15 bis 0,18 W/(m·K)',
-      'Druckfestigkeitsklasse': 'unterhalb der Rohdichten nach DIN EN 206 – Verwendung nur mit Zulassung/Bauartgenehmigung oder Zustimmung im Einzelfall (Klassen manuell prüfen)',
-      'Zuschläge': 'Blähmaterialien, Blähglas (recyceltes Altglas), Blähton',
-      'Bewehrung': 'Stahlbewehrung mit Korrosionsschutzbeschichtung oder GFK-Bewehrung'
+      'Trockenrohdichte': inhalt.werte.t650Bis800Kg,
+      'Wärmeleitfähigkeit (λ)': inhalt.werte.t015Bis0,
+      'Druckfestigkeitsklasse': inhalt.werte.unterhalbDerRohdichtenNach,
+      'Zuschläge': inhalt.werte.blähmaterialienBlähglasRecyceltesAltglas,
+      'Bewehrung': inhalt.werte.stahlbewehrungMitKorrosionsschutzbeschic
     },
-    details: 'Infraleichtbeton löst das Dilemma des mehrschichtigen Bauens. Anstatt tragenden Beton mit brennbarem und schwer recyclebarem Styropor zu verkleben, wird ein poröser gefügeoptimierter Beton gegossen, dessen Luftporen im Blähglasaggregat die Wärme im Gebäude halten. Die statischen Mindestanforderungen für Gebäude bis zu 3-4 Stockwerken werden trotz des geringen Eigengewichts eingehalten.'
+    details: inhalt.werte.infraleichtbetonLöstDasDilemma
   },
   {
     id: 'bio_lc3',
-    name: 'Ökologische Bindemittel (LC³ & Geopolymere)',
-    category: 'Nachhaltige Bindemittel & Kreislauf',
-    shortDesc: 'Zukunftsweisende Klinker-Alternativen: CO₂-reduziertes LC³-Zementkonzept und vollständig zementfreie, alkalisch aktivierte Geopolymer-Betone.',
+    name: inhalt.werte.ökologischeBindemittelLcGeopolymere,
+    category: inhalt.werte.nachhaltigeBindemittelKreislauf,
+    shortDesc: inhalt.werte.zukunftsweisendeKlinkerAlternativenCo,
     co2Index: 20, // Huge carbon reduction of 40-80%
     costIndex: 115, // Cost-competitive once factories are optimized, currently slight premium
-    strength: 'Sehr gute Festigkeitseigenschaften (30-65 MPa), vergleichbar mit klassischen Portlandzementen.',
+    strength: inhalt.werte.sehrGuteFestigkeitseigenschaften30,
     advantages: [
-      'Erhebliche Verbesserung der Ökobilanz: CO₂-Emissionen der Bindemittelherstellung sinken um bis zu 80%',
-      'Verwendung von regionalen Abfallstoffen (Hüttensand, Flugasche, calcinierten Tonen) schont Kies- und Tonvorkommen',
-      'Hervorragende Widerstandskraft gegen Säurebeanspruchungen und aggressive Abwässer'
+      inhalt.werte.erheblicheVerbesserungDerÖkobilanz,
+      inhalt.werte.verwendungVonRegionalenAbfallstoffen,
+      inhalt.werte.hervorragendeWiderstandskraftGegenSäureb
     ],
     disadvantages: [
-      'Teilweise schnelle Erstarrungszeiten bei Geopolymeren erfordern präzise Dosierung von Verzögerern',
-      'Aktivatorlösungen (wie Wasserglas) sind ätzende Gefahrstoffe in der Handhabung im Transportbetonwerk',
-      'Langzeitverhalten im Hinblick auf Carbonatisierung und Schutz des Bewehrungsstahls noch unter intensiver Erforschung'
+      inhalt.werte.teilweiseSchnelleErstarrungszeitenBei,
+      inhalt.werte.aktivatorlösungenWieWasserglasSind,
+      inhalt.werte.langzeitverhaltenImHinblickAuf
     ],
     specs: {
-      'CO₂-Einsparung (LC³)': '30 bis 45% im Vergleich zu reinem CEM I',
-      'Zusammensetzung LC³': 'Klinkeranteil halbiert, Rest: Calcinierter Ton (Tonmergel) & Kalksteinmehl',
-      'Zementfreier Geopolymer': 'Alkalisch aktivierte Flugasche (Fly ash) oder Hüttensand (Slag)',
-      'Hydratationswärme': 'Sehr gering, sehr gut geeignet für massige Bauteile',
-      'Normung': 'LC³-artige Zemente als CEM II/C-M (Q-LL) nach DIN EN 197-5:2021-07; Geopolymere nicht in DIN EN 197 genormt (Zulassung/Bauartgenehmigung erforderlich)'
+      'CO₂-Einsparung (LC³)': inhalt.werte.t30Bis45Im,
+      'Zusammensetzung LC³': inhalt.werte.klinkeranteilHalbiertRestCalcinierter,
+      'Zementfreier Geopolymer': inhalt.werte.alkalischAktivierteFlugascheFly,
+      'Hydratationswärme': inhalt.werte.sehrGeringSehrGut,
+      'Normung': inhalt.werte.lcArtigeZementeAls
     },
-    details: 'Der LC³-Zement (Limestone Calcined Clay Cement) nutzt einen synergistischen Effekt: Durch das gemeinsame Vermahlen von calciniertem (bei ca. 800°C erhitztem) Ton mit feinem Kalksteinmehl entsteht ein hochreaktives Bindemittel, das den Zementklinkerbedarf drastisch senkt. Geopolymere verzichten kpl. auf Portlandklinker; hier formen kovalente Alumosilicat-Netzwerke den künstlichen Stein.'
+    details: inhalt.werte.derLcZementLimestone
   }
 ];
 
@@ -252,15 +254,15 @@ export default function InnovativeWerkstoffe() {
     // Custom reasons
     let reason = '';
     if (bestId === '3dcp') {
-      reason = 'Aufgrund Ihrer Anforderung an maximale geometrische Freiheit und Automatisierung ist der 3D-Betondruck Ihr idealer Werkstoff. Er druckt topologisch optimierte Bauteile direkt aus dem BIM-Modell ohne Holzabfall.';
+      reason = inhalt.werte.aufgrundIhrerAnforderungAn;
     } else if (bestId === 'carbon') {
-      reason = 'Für schlanke, filigrane Strukturen unter Bewitterung oder agressiven Medien (Rostgefahr!) ist Carbonbeton unschlagbar. Die vollkommene Auslöschung der Rostgefahr spart bis zu 75% der Betonmasse ein und senkt den CO₂-Ausstoß drastisch.';
+      reason = inhalt.werte.fürSchlankeFiligraneStrukturen;
     } else if (bestId === 'uhpc') {
-      reason = 'Extreme Lasten und dichte Barriereanforderungen rufen nach Ultra-High Performance Concrete (UHPC). Seine stahlähnliche Druckfestigkeit gepaart mit lückenloser Gefügedichte trotzt härtesten Umgebungen.';
+      reason = inhalt.werte.extremeLastenUndDichte;
     } else if (bestId === 'ilb') {
-      reason = 'Wenn monolithische Sichtbetonwand und maximale Dämmleistung ohne zusätzliche künstliche Styropordämmungen gesucht werden, ist Infraleichtbeton die erste Wahl für Tragwerke mittlerer Bauhöhe.';
+      reason = inhalt.werte.wennMonolithischeSichtbetonwandUnd;
     } else {
-      reason = 'Da Ihre Priorität absolut auf Umweltschutz und CO₂-Fußabdruck liegt, sind ökologische Bindemittel (comme LC³ oder Geopolymere) die Antwort. Mit bis zu 80% Einsparpotential passen sie in jeden Betonmischprozess.';
+      reason = inhalt.werte.daIhrePrioritätAbsolut;
     }
 
     // Normalize out of 5 stars
@@ -277,12 +279,9 @@ export default function InnovativeWerkstoffe() {
     <div className="space-y-8 animate-in fade-in duration-300">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Sparkles className="text-shiraz" /> Innovative Werkstoffe &amp; Zukunftstechnologien
-        </h2>
+          <Sparkles className="text-shiraz" /><MdText text={inhalt.texte.innovativeWerkstoffeZukunftstechnologien} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4">
-          <p>
-            Die Transformation des Bauwesens. Erforsche digitale Fertigungsprozesse, CO₂-optimierte Bindemittelkonzepte, hochfeste Carbonverbundsysteme sowie intelligente Werkstoffgefüge zur Einsparung von Primärrohstoffen.
-          </p>
+          <p><MdText text={inhalt.texte.dieTransformationDesBauwesens} /></p>
         </div>
       </div>
 
@@ -306,8 +305,7 @@ export default function InnovativeWerkstoffe() {
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
-          <Cpu size={14} /> 3D-Betondruck (3DCP)
-        </button>
+          <Cpu size={14} /><MdText text={inhalt.texte.t3dBetondruck3dcp} /></button>
         <button aria-pressed={activeSubTab === 'finder'}
           onClick={() => setActiveSubTab('finder')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
@@ -326,8 +324,7 @@ export default function InnovativeWerkstoffe() {
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
-          <Scale size={14} /> CO₂/Kosten Trade-off
-        </button>
+          <Scale size={14} /><MdText text={inhalt.texte.coKostenTradeOff} /></button>
         <button aria-pressed={activeSubTab === 'trends'}
           onClick={() => setActiveSubTab('trends')}
           className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
@@ -336,8 +333,7 @@ export default function InnovativeWerkstoffe() {
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
-          <Sparkles size={14} /> Smart Materials &amp; Trends
-        </button>
+          <Sparkles size={14} /><MdText text={inhalt.texte.smartMaterialsTrends} /></button>
       </div>
 
       {/* Main Content Areas */}
@@ -354,8 +350,7 @@ export default function InnovativeWerkstoffe() {
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
                 }`}
               >
-                <Layers size={12} /> 1. Druckverfahren
-              </button>
+                <Layers size={12} /><MdText text={inhalt.texte.t1Druckverfahren} /></button>
               <button aria-pressed={druckSubTab === 'rheologie'}
                 onClick={() => setDruckSubTab('rheologie')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -364,8 +359,7 @@ export default function InnovativeWerkstoffe() {
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
                 }`}
               >
-                <Activity size={12} /> 2. Rheologie &amp; Eigenschaften
-              </button>
+                <Activity size={12} /><MdText text={inhalt.texte.t2RheologieEigenschaften} /></button>
               <button aria-pressed={druckSubTab === 'bemessung'}
                 onClick={() => setDruckSubTab('bemessung')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -374,8 +368,7 @@ export default function InnovativeWerkstoffe() {
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
                 }`}
               >
-                <Scale size={12} /> 3. Standsicherheit &amp; Nachweise
-              </button>
+                <Scale size={12} /><MdText text={inhalt.texte.t3StandsicherheitNachweise} /></button>
               <button aria-pressed={druckSubTab === 'bewehrung'}
                 onClick={() => setDruckSubTab('bewehrung')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -384,8 +377,7 @@ export default function InnovativeWerkstoffe() {
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
                 }`}
               >
-                <Wrench size={12} /> 4. Bewehrungstechniken
-              </button>
+                <Wrench size={12} /><MdText text={inhalt.texte.t4Bewehrungstechniken} /></button>
               <button aria-pressed={druckSubTab === 'simulator'}
                 onClick={() => setDruckSubTab('simulator')}
                 className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -394,8 +386,7 @@ export default function InnovativeWerkstoffe() {
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
                 }`}
               >
-                <Cpu size={12} /> 5. Interaktiver Simulator
-              </button>
+                <Cpu size={12} /><MdText text={inhalt.texte.t5InteraktiverSimulator} /></button>
             </div>
 
             {/* Chapter 1: Druckverfahren */}
@@ -404,61 +395,51 @@ export default function InnovativeWerkstoffe() {
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-2 font-mono">
-                      <span className="bg-indigo-50 p-1.5 rounded-lg">01</span> Strangextrusionsverfahren (3DCP)
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-3">Kontinuierliche Betonextrusion</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                      Das am weitesten verbreitete Verfahren in der Praxis (Gantry- oder Knickarmroboter). Ein hoch thixotroper Feinmörtel wird durch einen Schlauch an den Druckkopf gepumpt und über eine Düse schichtweise abgelegt.
-                    </p>
+                      <span className="bg-indigo-50 p-1.5 rounded-lg">01</span><MdText text={inhalt.texte.strangextrusionsverfahren3dcp} /></div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-3"><MdText text={inhalt.texte.kontinuierlicheBetonextrusion} /></h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.dasAmWeitestenVerbreitete} /></p>
                     <div className="space-y-2.5">
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <Check className="text-emerald-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Konstruktionsgeschwindigkeit:</strong> Sehr hohe Aufbauraten im Freiraum möglich.</div>
+                        <div><MdText text={inhalt.texte.konstruktionsgeschwindigkeitSehrHoheAufb} /></div>
                       </div>
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <Check className="text-emerald-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Skalierbarkeit:</strong> Ganze Hauswände werden nahtlos vor Ort im "Field Factory"-Prinzip gedruckt.</div>
+                        <div><MdText text={inhalt.texte.skalierbarkeitGanzeHauswändeWerden} /></div>
                       </div>
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <AlertCircle className="text-amber-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Limitierung:</strong> Sichtbare Lagenstruktur ("Lagenoptik"). Keine Überhänge ohne Hilfsstrukturen druckbar.</div>
+                        <div><MdText text={inhalt.texte.limitierungSichtbareLagenstrukturLagenop} /></div>
                       </div>
                     </div>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-6 font-mono text-xs text-slate-600">
-                    <span className="font-bold text-slate-800 block mb-1">Typische Parameter:</span>
-                    Düsengröße: 20-50 mm | Lagenhöhe: 10-25 mm | Druckgeschwindigkeit: 50-250 mm/s
-                  </div>
+                    <span className="font-bold text-slate-800 block mb-1"><MdText text={inhalt.texte.typischeParameter} /></span><MdText text={inhalt.texte.düsengröße2050Mm} /></div>
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-2 font-mono">
-                      <span className="bg-indigo-50 p-1.5 rounded-lg">02</span> Partikelbettverfahren (Binder Jetting)
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-3">Selektives Binden / Sand-Binder-Verfahren</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                      Hierbei wird eine dünne Trockensubstanzschicht (z. B. Sand, Kies und Zementpulver) vollflächig aufgetragen. Ein Druckkopf spritzt anschließend an den festen Bauteilbereichen Wasser oder ein Flüssigkeitsaktivierungsmittel ein.
-                    </p>
+                      <span className="bg-indigo-50 p-1.5 rounded-lg">02</span><MdText text={inhalt.texte.partikelbettverfahrenBinderJetting} /></div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-3"><MdText text={inhalt.texte.selektivesBindenSandBinder} /></h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.hierbeiWirdEineDünne} /></p>
                     <div className="space-y-2.5">
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <Check className="text-emerald-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Filigrane Formen:</strong> Überhänge, komplexe Bögen, und Hohlräume lassen sich herstellen, da das lose Sandbett als Stützmaterial dient.</div>
+                        <div><MdText text={inhalt.texte.filigraneFormenÜberhängeKomplexe} /></div>
                       </div>
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <Check className="text-emerald-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Oberflächenqualität:</strong> Nahezu stufenlose, steinartige Reliefflächen von herausragender Präzision.</div>
+                        <div><MdText text={inhalt.texte.oberflächenqualitätNahezuStufenloseStein} /></div>
                       </div>
                       <div className="flex items-start gap-2 text-xs text-slate-700">
                         <AlertCircle className="text-amber-500 mt-0.5 shrink-0" size={14} />
-                        <div><strong>Limitierung:</strong> Nur in speziellen Druckkammern (Fertigteilwerke) anwendbar. Das ungebundene Material muss mühsam abgesaugt werden.</div>
+                        <div><MdText text={inhalt.texte.limitierungNurInSpeziellen} /></div>
                       </div>
                     </div>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-6 font-mono text-xs text-slate-600">
-                    <span className="font-bold text-slate-800 block mb-1">Typische Parameter:</span>
-                    Auflösung: &lt; 1,0 mm | Bauteilvolumen: begrenzt durch Kammergröße | Hoher Zement-Aktivierungsbedarf
-                  </div>
+                    <span className="font-bold text-slate-800 block mb-1"><MdText text={inhalt.texte.typischeParameter2} /></span><MdText text={inhalt.texte.auflösung10Mm} /></div>
                 </div>
               </div>
             )}
@@ -468,26 +449,21 @@ export default function InnovativeWerkstoffe() {
               <div className="space-y-6 animate-in fade-in duration-350">
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
                   <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                    <Activity size={18} className="text-indigo-600" /> Frischbeton-Rheologie: Das 3DCP-Widerspruchsdilemma
-                  </h3>
+                    <Activity size={18} className="text-indigo-600" /><MdText text={inhalt.texte.frischbetonRheologieDas3dcp} /></h3>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div className="bg-emerald-50/50 p-5 rounded-xl border border-emerald-150">
-                      <span className="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-mono uppercase block w-max mb-2">Anforderung 1</span>
-                      <h4 className="font-bold text-slate-900 text-sm mb-1">Pumpbarkeit &amp; Extrudierbarkeit</h4>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Das Material muss unter hoher Scherung fließen und leicht durch den Zuführschlauch gleiten. Das bedeutet eine geringe Viskosität im Fließzustand bei hohem Schergefälle:
-                      </p>
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-mono uppercase block w-max mb-2"><MdText text={inhalt.texte.anforderung1} /></span>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1"><MdText text={inhalt.texte.pumpbarkeitExtrudierbarkeit} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.dasMaterialMussUnter} /></p>
                       <div className="py-2">
                         <InlineMath math="\eta_{dynamisch} \ll 50\text{ Pa}\cdot\text{s}" />
                       </div>
                     </div>
 
                     <div className="bg-orange-50/50 p-5 rounded-xl border border-orange-150">
-                      <span className="text-[10px] font-extrabold px-2 py-0.5 bg-orange-100 text-orange-850 rounded font-mono uppercase block w-max mb-2">Anforderung 2</span>
-                      <h4 className="font-bold text-slate-900 text-sm mb-1">Standfestigkeit (Buildability)</h4>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Unmittelbar nach dem Austreten aus der Düse muss das Material eine steife Konsistenz annehmen, um die nachfolgenden Lagen mechanisch ohne Setzung zu tragen:
-                      </p>
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 bg-orange-100 text-orange-850 rounded font-mono uppercase block w-max mb-2"><MdText text={inhalt.texte.anforderung2} /></span>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1"><MdText text={inhalt.texte.standfestigkeitBuildability} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.unmittelbarNachDemAustreten} /></p>
                       <div className="py-2">
                         <InlineMath math="\tau_{base} \ge \tau_{statisch,0}" />
                       </div>
@@ -495,10 +471,8 @@ export default function InnovativeWerkstoffe() {
 
                     <div className="bg-indigo-50/50 p-5 rounded-xl border border-indigo-150">
                       <span className="text-[10px] font-extrabold px-2 py-0.5 bg-indigo-100 text-indigo-850 rounded font-mono uppercase block w-max mb-2">Lösung</span>
-                      <h4 className="font-bold text-slate-900 text-sm mb-1">Smarte Thixotropie (Zeit-Viskosität)</h4>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Einsatz strukturviskoser Bindemittel. Im Ruhezustand steigt die Fließgrenze linear durch thixotropen Strukturaufbau an, wodurch der Beton in Sekunden standfest wird:
-                      </p>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1"><MdText text={inhalt.texte.smarteThixotropieZeitViskosität} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.einsatzStrukturviskoserBindemittelIm} /></p>
                       <div className="py-2">
                         <InlineMath math="\tau_0(t) = \tau_{0{,}0} + A_{thix} \cdot t" />
                       </div>
@@ -508,23 +482,18 @@ export default function InnovativeWerkstoffe() {
 
                 <div className="bg-[#fcf8f2] p-6 rounded-2xl border border-amber-200">
                   <h4 className="font-bold text-amber-900 text-sm mb-3 flex items-center gap-1.5">
-                    <AlertCircle className="text-amber-700 shrink-0" size={16} /> Fugenanisotropie &amp; Kaltfugen-Problem (Interlayer Bond Strength)
-                  </h4>
+                    <AlertCircle className="text-amber-700 shrink-0" size={16} /><MdText text={inhalt.texte.fugenanisotropieKaltfugenProblemInterlay} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-700 leading-relaxed">
                     <div>
-                      <p className="mb-2">
-                        Im Gegensatz zu gegossenem Beton besitzt im 3D-Druck hergestellter Beton <strong>anisotrope Festigkeitseigenschaften</strong>. Der kritische Schwachpunkt liegt an der Schnittstelle zwischen den gedruckten Bahnen:
-                      </p>
+                      <p className="mb-2"><MdText text={inhalt.texte.imGegensatzZuGegossenem} /></p>
                       <ul className="list-disc pl-4 space-y-1 mb-2">
-                        <li><strong>Oberflächenverdunstung:</strong> Liegt die Zeitspanne zwischen zwei Schichten (<InlineMath math="t_{gap}" />) über der Offenzeit des Mörtels, verdampft Oberflächenwasser. Eine feste Verbundwirkung wird verhindert.</li>
-                        <li><strong>Mikro-Kaltfugen:</strong> Staub oder angetrocknete Porenmörtelhaut bilden Gleitfugen, die die Querkrafttragfähigkeit um bis zu <strong>40% bis 60%</strong> mindern.</li>
+                        <li><MdText text={inhalt.texte.oberflächenverdunstungLiegtDieZeitspanne} /></li>
+                        <li><MdText text={inhalt.texte.mikroKaltfugenStaubOder} /></li>
                       </ul>
                     </div>
                     <div className="bg-white p-4 rounded-xl border border-amber-100">
-                      <span className="font-bold text-slate-900 block mb-1">Phänomenologische Verbundprüfung:</span>
-                      <p className="text-xs text-slate-600 mb-2">
-                        Laborprüfungen zeigen, wie das Versagen bei Biegezug- oder Scherbeanspruchung fast ausnahmslos an der horizontalen Schichtgrenze stattfindet:
-                      </p>
+                      <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.phänomenologischeVerbundprüfung} /></span>
+                      <p className="text-xs text-slate-600 mb-2"><MdText text={inhalt.texte.laborprüfungenZeigenWieDas} /></p>
                       <BlockMath math="f_{t,interlayer} = \beta_{fugenfactor} \cdot f_{t,bulk} \quad (\beta_{fugen} \approx 0{,}4\text{ bis }0{,}85)" />
                     </div>
                   </div>
@@ -537,53 +506,38 @@ export default function InnovativeWerkstoffe() {
               <div className="space-y-6 animate-in fade-in duration-350">
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
                   <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <Scale size={18} className="text-indigo-600" /> Mechanische Versagensarten während des Druckprozesses
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Solange der Beton im frischen bis jungen Zustand gedruckt wird, besitzt er noch keine nennenswerte zementäre Eigenfestigkeit. Die Tragkonstruktion muss während der Fertigung zwei grundlegende Standsicherheitskriterien erfüllen:
-                  </p>
+                    <Scale size={18} className="text-indigo-600" /><MdText text={inhalt.texte.mechanischeVersagensartenWährendDes} /></h3>
+                  <p className="text-sm text-slate-600 leading-relaxed"><MdText text={inhalt.texte.solangeDerBetonIm} /></p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                     <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-1.5">
-                        <CheckCircle2 size={16} className="text-indigo-600" /> 1. Plastisches Fließversagen (Plastic Collapse)
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                        Die am Bauteilfuß wirkende vertikale Druckspannung durch das Eigengewicht der darüber liegenden Schichten überschreitet den mechanischen Fließwiderstand des jungen Zementsteins. Dies führt zu plastischem Breitquetschen der Fundamentbahnen.
-                      </p>
+                        <CheckCircle2 size={16} className="text-indigo-600" /><MdText text={inhalt.texte.t1PlastischesFließversagenPlastic} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.dieAmBauteilfußWirkende} /></p>
                       <div className="bg-white p-3 rounded-lg border border-slate-200 mt-2 font-mono text-xs">
-                        <div className="font-bold text-slate-800 mb-1">Grenzbedingung nach Tresca:</div>
+                        <div className="font-bold text-slate-800 mb-1"><MdText text={inhalt.texte.grenzbedingungNachTresca} /></div>
                         <BlockMath math="\tau_{0,base}(t) \ge \tau_{req} = \frac{\rho \cdot g \cdot H}{\sqrt{3}}" />
-                        <span className="text-[10px] text-slate-500 block mt-1">
-                          Hierbei ist <InlineMath math="\rho" /> die Dichte, <InlineMath math="g" /> die Gravitation und <InlineMath math="H" /> die aktuelle Bauwerkshöhe.
-                        </span>
+                        <span className="text-[10px] text-slate-500 block mt-1"><MdText text={inhalt.texte.hierbeiIstRhoDie} /></span>
                       </div>
                     </div>
 
                     <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-1.5">
-                        <CheckCircle2 size={16} className="text-indigo-600" /> 2. Elastisches Knicken (Elastic Buckling)
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                        Durch geometrische Schlankheit, Krümmungsschwankungen und asymmetrisches Eigengewicht verliert das Bauteil seine elastische Standsicherheit und knickt seitlich aus. Dies ist meist der maßgebliche Versagensfall bei dünnen Wänden.
-                      </p>
+                        <CheckCircle2 size={16} className="text-indigo-600" /><MdText text={inhalt.texte.t2ElastischesKnickenElastic} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.durchGeometrischeSchlankheitKrümmungssch} /></p>
                       <div className="bg-white p-3 rounded-lg border border-slate-200 mt-2 font-mono text-xs">
-                        <div className="font-bold text-slate-800 mb-1">Kritische Höhe nach Greenhill (Self-weight buckling):</div>
+                        <div className="font-bold text-slate-800 mb-1"><MdText text={inhalt.texte.kritischeHöheNachGreenhill} /></div>
                         <BlockMath math="H_{cr} = \left( \frac{7{,}837 \cdot E(t) \cdot I(b)}{\rho \cdot g \cdot A} \right)^{1/3}" />
-                        <span className="text-[10px] text-slate-500 block mt-1">
-                          Die geometrische Trägheit wird optimiert durch Krümmungen, Faltungen oder kreisförmige Querschnittspfaden, welche das Gesamthebelarmlager verbreitern.
-                        </span>
+                        <span className="text-[10px] text-slate-500 block mt-1"><MdText text={inhalt.texte.dieGeometrischeTrägheitWird} /></span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-slate-900 p-6 rounded-2xl text-white">
-                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block font-mono mb-2">Ingenieurpraxis &amp; Regelwerk</span>
-                  <h4 className="text-base font-bold mb-2">Normative Situation &amp; Teilsicherheitskonzept</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    Da für den 3D-Druck im Hochbau derzeit <strong>keine harmonisierte europäische Bemessungsnorm</strong> (wie der Eurocode 2) existiert, muss der Tragwerksplaner auf **Zulassungen im Einzelfall (ZiE)** oder **Allgemeine Bauaufsichtliche Zulassungen (abZ)** des DIBt zurückgreifen. Die Erstellung einer Tragstruktur stützt sich auf rigorose experimentelle Vorprüfungen zur Ermittlung des zeitabhängigen Sicherheitsbeiwerts <InlineMath math="\gamma_M \approx 1{,}5\text{ bis }2{,}0" /> auf die Scherfestigkeit.
-                  </p>
+                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.ingenieurpraxisRegelwerk} /></span>
+                  <h4 className="text-base font-bold mb-2"><MdText text={inhalt.texte.normativeSituationTeilsicherheitskonzept} /></h4>
+                  <p className="text-xs text-slate-300 leading-relaxed"><MdText text={inhalt.texte.daFürDen3d} /></p>
                 </div>
               </div>
             )}
@@ -596,84 +550,60 @@ export default function InnovativeWerkstoffe() {
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option A</span>
-                        Ausgießen von gedruckten Schalungskernen
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Das am häufigsten praktizierte Verfahren im realen Hausdruck. Der 3D-Drucker druckt eine hohle doppelwandige Schale, die geometrisch als **verlorene Schalung** dient. In den inneren Hohlkamerkern werden konventionelle Stabstähle, Gitterträger oder Bügel per Hand eingebracht und anschließend mit klassischem Fließ- oder Transportbeton verfüllt.
-                      </p>
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option A</span><MdText text={inhalt.texte.ausgießenVonGedrucktenSchalungskernen} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.dasAmHäufigstenPraktizierte} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                        <li>Kompatibel mit standardmäßigem Bauordnungsrecht</li>
-                        <li>Verwendung von klassischem kostengünstigem Betonstahl</li>
-                        <li>Statischer Verbundnachweis erfolgt nach Standard EC2</li>
+                        <li><MdText text={inhalt.texte.kompatibelMitStandardmäßigemBauordnungsr} /></li>
+                        <li><MdText text={inhalt.texte.verwendungVonKlassischemKostengünstigem} /></li>
+                        <li><MdText text={inhalt.texte.statischerVerbundnachweisErfolgtNach} /></li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850">
-                      <strong>Anwendung:</strong> Tragende Wandscheiben, schlanke Stützenkerne und Stürze.
-                    </div>
+                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850"><MdText text={inhalt.texte.anwendungTragendeWandscheibenSchlanke} /></div>
                   </div>
 
                   {/* Option 2: Nozzle Fiber Feed */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option B</span>
-                        Draht- &amp; Fasermitextrusion (In-Nozzle Co-Extrusion)
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Ein hochautomatisierter High-Tech-Ansatz: Zusammen mit der Mörtelpaste wird über die Umlenkrolle des Druckkopfs kontinuierlich ein hochfester Endlosdraht, Stahldrahtkabel oder ein Carbon/Glasfaser-Roving direkt im Kern der Extrusionsbahn abgelegt.
-                      </p>
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option B</span><MdText text={inhalt.texte.drahtFasermitextrusionInNozzle} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.einHochautomatisierterHighTech} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                        <li>100% automatisierter Gesamtprozess</li>
-                        <li>Direkter Eintrag von Zugfestigkeit in Bahnrichtung</li>
-                        <li>Schwierig bei sehr engen Kurvenradien und Kreuzungspunkten</li>
+                        <li><MdText text={inhalt.texte.t100AutomatisierterGesamtprozess} /></li>
+                        <li><MdText text={inhalt.texte.direkterEintragVonZugfestigkeit} /></li>
+                        <li><MdText text={inhalt.texte.schwierigBeiSehrEngen} /></li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850">
-                      <strong>Anwendung:</strong> Freitragende Brückenbögen, Schalentragwerke im anspruchsvollen Form-Design.
-                    </div>
+                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850"><MdText text={inhalt.texte.anwendungFreitragendeBrückenbögenSchalen} /></div>
                   </div>
 
                   {/* Option 3: Textile mesh */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option C</span>
-                        Manuelle Einbettung von Textilgittern (Interlayer Mesh)
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Der Druckprozess hält in vordefinierten Höhenschritten kurz an. Ein Handwerker oder ein Roboterarm legt ein ebenes, flexibles Carbon- oder Glasfasergittergewebe flächig auf die nasse Betonschicht auf. Bei der nachfolgenden Überfahrt dringt der Mörtel durch das offene Gitter und stellt die Lagenhaftung her.
-                      </p>
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option C</span><MdText text={inhalt.texte.manuelleEinbettungVonTextilgittern} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.derDruckprozessHältIn} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                        <li>Hervorragende Zugkraftverteilung im Plattenbereich</li>
-                        <li>Korrosionsunanfällig und extrem schlank</li>
-                        <li>Vollflächiger Verbund unter Beachtung von Schlupf</li>
+                        <li><MdText text={inhalt.texte.hervorragendeZugkraftverteilungImPlatten} /></li>
+                        <li><MdText text={inhalt.texte.korrosionsunanfälligUndExtremSchlank} /></li>
+                        <li><MdText text={inhalt.texte.vollflächigerVerbundUnterBeachtung} /></li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850">
-                      <strong>Anwendung:</strong> Modulare Balkonplatten, dekorative Fassadenelemente.
-                    </div>
+                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850"><MdText text={inhalt.texte.anwendungModulareBalkonplattenDekorative} /></div>
                   </div>
 
                   {/* Option 4: Post Tensioning */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option D</span>
-                        Nachträgliche externe Vorspannung (Post-Tensioning)
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        In das Bauteil werden kleine senkrechte Durchgangskanäle integriert. Nach dem vollständigen Erhärten des Zementsteins werden hochfeste Spannstahlkabel oder Carbon-Hohlstäbe durchgezogen und über hydraulische Zugpressen an den Außenflanschen vorgespannt.
-                      </p>
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option D</span><MdText text={inhalt.texte.nachträglicheExterneVorspannungPost} /></h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.inDasBauteilWerden} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                        <li>Führt das gesamte Bauteil unter permanente Druckvorspannung</li>
-                        <li>Verhindert das Auftreten von Rissen bei Biege- oder Windlasten</li>
-                        <li>Exzellent für zerlegbare und modulare Bauteile geeignet</li>
+                        <li><MdText text={inhalt.texte.führtDasGesamteBauteil} /></li>
+                        <li><MdText text={inhalt.texte.verhindertDasAuftretenVon} /></li>
+                        <li><MdText text={inhalt.texte.exzellentFürZerlegbareUnd} /></li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850">
-                      <strong>Anwendung:</strong> Segmentbrücken, schlank vorgespannte Deckenkonsolen.
-                    </div>
+                    <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100 mt-4 text-[11px] text-violet-850"><MdText text={inhalt.texte.anwendungSegmentbrückenSchlankVorgespann} /></div>
                   </div>
                 </div>
               </div>
@@ -715,11 +645,8 @@ export default function InnovativeWerkstoffe() {
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-8 animate-in duration-300">
                   <div className="border-b border-home-grau/20 pb-4">
                     <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                      <Cpu size={18} className="text-indigo-600 animate-spin" /> Standsicherheits- und Frischbetonversagens-Simulator
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Simulieren Sie mathematisch exakt das elastische Knicken und das plastische Fließversagen während des Druckvorgangs eines realen Bauteils am Fußpunkt.
-                    </p>
+                      <Cpu size={18} className="text-indigo-600 animate-spin" /><MdText text={inhalt.texte.standsicherheitsUndFrischbetonversagensS} /></h3>
+                    <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.simulierenSieMathematischExakt} /></p>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -739,12 +666,12 @@ export default function InnovativeWerkstoffe() {
                           onChange={(e) => setTargetHeight(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
-                        <span className="text-[9px] text-slate-400 font-mono">Bereich: 0,5 bis 4,0 m</span>
+                        <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.bereich05Bis} /></span>
                       </div>
 
                       {/* Sub-block 2: Print rate */}
                       <div>
-                        <label className="text-xs font-bold text-slate-700 block mb-1">Steigrate (Print Speed): {formatDeZahl(printSpeed, 1)} m/h</label>
+                        <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.steigratePrintSpeed} />{formatDeZahl(printSpeed, 1)} m/h</label>
                         <input
                           type="range"
                           min="0.2"
@@ -754,7 +681,7 @@ export default function InnovativeWerkstoffe() {
                           onChange={(e) => setPrintSpeed(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
-                        <span className="text-[9px] text-slate-400 font-mono">Vertikale Steigrate pro Stunde. Langsamer = Mehr Festigkeitsaufbauzeit an der Basis.</span>
+                        <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.vertikaleSteigrateProStunde} /></span>
                       </div>
 
                       {/* Sub-block 3: Thixotropy */}
@@ -769,7 +696,7 @@ export default function InnovativeWerkstoffe() {
                           onChange={(e) => setThixotropy(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
-                        <span className="text-[9px] text-slate-400 font-mono">Gefüge-Ruheaufbaurate (Standardmörtel ohne Additive).</span>
+                        <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.gefügeRuheaufbaurateStandardmörtelOhne} /></span>
                       </div>
 
                       {/* Sub-block 4: Layer Dimensions */}
@@ -801,7 +728,7 @@ export default function InnovativeWerkstoffe() {
 
                       {/* Sub-block 5: Shape */}
                       <div className="pt-2">
-                        <label className="text-xs font-bold text-slate-700 block mb-1.5">Bauteilverlauf (Stabilitätsform)</label>
+                        <label className="text-xs font-bold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.bauteilverlaufStabilitätsform} /></label>
                         <div className="grid grid-cols-3 gap-2">
                           <button aria-pressed={structuralShape === 'straight'}
                             onClick={() => setStructuralShape('straight')}
@@ -830,9 +757,7 @@ export default function InnovativeWerkstoffe() {
                                 ? 'bg-indigo-650 text-white shadow-sm ring-1 ring-indigo-500'
                                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
                             }`}
-                          >
-                            Gewellt (Folded)
-                          </button>
+                          ><MdText text={inhalt.texte.gewelltFolded} /></button>
                         </div>
                       </div>
 
@@ -847,7 +772,7 @@ export default function InnovativeWerkstoffe() {
                           />
                           <div className="text-xs">
                             <span className="font-bold text-slate-800 block">Düsentechnik-Schnellbeschleuniger</span>
-                            <span className="text-[10px] text-slate-500">Injektion von Alkalisilikaten (Wasserglas/Bentonit) am Druckkopf (+120 Pa/min &amp; +1.2 kPa Initialfestigkeit).</span>
+                            <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.injektionVonAlkalisilikatenWasserglas} /></span>
                           </div>
                         </label>
                       </div>
@@ -866,16 +791,16 @@ export default function InnovativeWerkstoffe() {
                         </div>
                         <div>
                           <h4 className="font-bold text-sm">
-                            {isStable ? 'Druckvorgang stabil & safe' :
-                             isCritical ? 'Achtung: Grenzwertig standsicher' :
-                             'EINSTURZ / STATISCHES VERSAGEN'}
+                            {isStable ? inhalt.werte.druckvorgangStabilSafe :
+                             isCritical ? inhalt.werte.achtungGrenzwertigStandsicher :
+                             inhalt.werte.einsturzStatischesVersagen}
                           </h4>
                           <p className="text-xs leading-relaxed mt-1">
-                            {isStable ? 'Die Festigkeit wächst schneller als das Bauteilgewicht belastet. Kein Fließen an der Sohle, elastische Knickgeometrie gewährleistet.' :
-                             isCritical ? 'Sehr geringer Sicherheitspuffer. Es können plastische Wulstquellungen durch Kriechen am Bauteilfuß oder Risse durch Schwingungen entstehen.' :
+                            {isStable ? inhalt.werte.dieFestigkeitWächstSchneller :
+                             isCritical ? inhalt.werte.sehrGeringerSicherheitspufferEs :
                              sfPlasticVal < 1.0 
-                               ? 'Das Mörtelgewicht drückt den Sohlzementstein vollständig platt. Fließversagen am Fußpunkt (Sohlmörtel verhält sich wie Brei).'
-                               : 'Bauteil versagt schlagartig durch elastisches Seitenaußknicken. Die Wand ist geometrisch zu weich und schlank für dieses Eigengewicht.'}
+                               ? inhalt.werte.dasMörtelgewichtDrücktDen
+                               : inhalt.werte.bauteilVersagtSchlagartigDurch}
                           </p>
                         </div>
                       </div>
@@ -883,15 +808,15 @@ export default function InnovativeWerkstoffe() {
                       {/* Numerical Details Grid */}
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                          <span className="text-[10px] text-slate-500 font-mono block">Dauer Druckprozess</span>
+                          <span className="text-[10px] text-slate-500 font-mono block"><MdText text={inhalt.texte.dauerDruckprozess} /></span>
                           <span className="text-lg font-extrabold text-slate-800 font-mono">
                             {formatDeWert(Math.floor(baseTimeMins / 60))} h {formatDeWert(Math.round(baseTimeMins % 60))} min
                           </span>
-                          <span className="text-[9px] text-slate-400 block mt-1 font-mono">Alter der 1. Schicht</span>
+                          <span className="text-[9px] text-slate-400 block mt-1 font-mono"><MdText text={inhalt.texte.alterDer1Schicht} /></span>
                         </div>
 
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                          <span className="text-[10px] text-slate-500 font-mono block">Fuß-Fließgrenze erreicht</span>
+                          <span className="text-[10px] text-slate-500 font-mono block"><MdText text={inhalt.texte.fußFließgrenzeErreicht} /></span>
                           <span className="text-lg font-extrabold text-slate-800 font-mono">
                             {formatDeZahl(developedYieldBaseKPa, 2)} kPa
                           </span>
@@ -904,7 +829,7 @@ export default function InnovativeWerkstoffe() {
                         {/* SF Plastic */}
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
-                            <span className="font-bold text-slate-700">Plastische Fließ-Standsicherheit (Tragfähigkeit)</span>
+                            <span className="font-bold text-slate-700"><MdText text={inhalt.texte.plastischeFließStandsicherheitTragfähigk} /></span>
                             <span className={`font-mono font-bold ${sfPlasticVal >= 1.3 ? 'text-emerald-600' : sfPlasticVal >= 1.0 ? 'text-amber-600' : 'text-rose-600'}`}>
                               SF_p = {formatDeZahl(sfPlasticVal, 2)} {sfPlasticVal >= 1.3 ? '(Sicher)' : sfPlasticVal >= 1.0 ? '(Grenzwertig)' : '(Versagen)'}
                             </span>
@@ -915,13 +840,13 @@ export default function InnovativeWerkstoffe() {
                               style={{ width: `${Math.min(100, (sfPlasticVal / 2.0) * 100)}%` }}
                             />
                           </div>
-                          <span className="text-[9px] text-slate-400 font-mono block">Minimale bautechnische Sicherheit: 1.3</span>
+                          <span className="text-[9px] text-slate-400 font-mono block"><MdText text={inhalt.texte.minimaleBautechnischeSicherheit1} /></span>
                         </div>
 
                         {/* SF Elastic */}
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
-                            <span className="font-bold text-slate-700">Elastische Knickstabilität (Biegesteifigkeit)</span>
+                            <span className="font-bold text-slate-700"><MdText text={inhalt.texte.elastischeKnickstabilitätBiegesteifigkei} /></span>
                             <span className={`font-mono font-bold ${sfBucklingVal >= 1.3 ? 'text-emerald-600' : sfBucklingVal >= 1.0 ? 'text-amber-600' : 'text-rose-600'}`}>
                               SF_k = {formatDeZahl(sfBucklingVal, 2)} {sfBucklingVal >= 1.3 ? '(Sicher)' : sfBucklingVal >= 1.0 ? '(Mäßig)' : '(Knicken)'}
                             </span>
@@ -932,27 +857,26 @@ export default function InnovativeWerkstoffe() {
                               style={{ width: `${Math.min(100, (sfBucklingVal / 2.0) * 100)}%` }}
                             />
                           </div>
-                          <span className="text-[9px] text-slate-400 font-mono block">Kritische Knickhöhe: {formatDeZahl(H_critical_buckling, 2)} m</span>
+                          <span className="text-[9px] text-slate-400 font-mono block"><MdText text={inhalt.texte.kritischeKnickhöhe} />{formatDeZahl(H_critical_buckling, 2)} m</span>
                         </div>
                       </div>
 
                       {/* Educational Recommendations Context */}
                       <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-150">
                         <h5 className="font-bold text-indigo-900 text-xs mb-1.5 flex items-center gap-1">
-                          <Lightbulb size={13} className="text-indigo-600" /> Didaktische Handlungsempfehlungen
-                        </h5>
+                          <Lightbulb size={13} className="text-indigo-600" /><MdText text={inhalt.texte.didaktischeHandlungsempfehlungen} /></h5>
                         <ul className="text-[11px] text-indigo-950 space-y-1 leading-relaxed list-inside list-disc">
                           {isFailed && (
                             <>
-                              <li>Aktivieren Sie den <strong>Schnellbeschleuniger</strong> oder verringern Sie die <strong>Baugeschwindigkeit (<InlineMath math="v" />)</strong>, um dem Bauteilfuß Zeit zu geben, mechanische Steifigkeit aufzubauen.</li>
-                              <li>Ändern Sie den Bauteilverlauf auf <strong>Gewellt (Folded)</strong> oder <strong>Kreisförmig</strong>. Dadurch vervielfachen Sie das Trägheitsmoment <InlineMath math="I" /> ohne Zusatzmaterial!</li>
+                              <li><MdText text={inhalt.texte.aktivierenSieDenSchnellbeschleuniger} /></li>
+                              <li><MdText text={inhalt.texte.ändernSieDenBauteilverlauf} /></li>
                             </>
                           )}
                           {isCritical && (
-                            <li>Um den knappen Sicherheitsspielraum zu erhöhen, empfiehlt sich eine Erhöhung der <strong>Thixotropierate</strong> oder eine geringere geplante <strong>Druckhöhe</strong>.</li>
+                            <li><MdText text={inhalt.texte.umDenKnappenSicherheitsspielraum} /></li>
                           )}
                           {isStable && (
-                            <li>Sehr gutes Design! Sie können versuchen, die <strong>Steiggeschwindigkeit am Drucker zu erhöhen</strong> (Zeitvorteil), solange Sie den Standsicherheitsfaktor <InlineMath math="SF \ge 1{,}3" /> halten.</li>
+                            <li><MdText text={inhalt.texte.sehrGutesDesignSie} /></li>
                           )}
                         </ul>
                       </div>
@@ -968,7 +892,7 @@ export default function InnovativeWerkstoffe() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in fade-in duration-300">
             {/* Left selector col */}
             <div className="space-y-2 lg:col-span-1">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono mb-2">Werkstoff auswählen</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.werkstoffAuswählen} /></span>
               
               <div className="space-y-2.5">
                 {FUTURE_MATERIALS.map((mat) => (
@@ -1025,32 +949,31 @@ export default function InnovativeWerkstoffe() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-bold text-slate-700 flex items-center gap-1"><Leaf className="w-4 h-4 text-emerald-600" /> CO₂-Minderung (Lehrindex)</span>
-                      <span className="font-bold font-mono text-emerald-800">-{formatDeWert(100 - selectedMaterialData.co2Index)}% (Schätzung)</span>
+                      <span className="font-bold text-slate-700 flex items-center gap-1"><Leaf className="w-4 h-4 text-emerald-600" /><MdText text={inhalt.texte.coMinderungLehrindex} /></span>
+                      <span className="font-bold font-mono text-emerald-800">-{formatDeWert(100 - selectedMaterialData.co2Index)}<MdText text={inhalt.texte.schätzung} /></span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div className="bg-emerald-500 h-2 rounded-full" style={{ width: `${100 - selectedMaterialData.co2Index}%` }}></div>
                     </div>
-                    <span className="text-[10px] text-slate-400 block mt-1 leading-tight font-semibold">CO₂-Einsparpotenzial gegenüber Standardbeton (C30/37).</span>
+                    <span className="text-[10px] text-slate-400 block mt-1 leading-tight font-semibold"><MdText text={inhalt.texte.coEinsparpotenzialGegenüberStandardbeton} /></span>
                   </div>
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-bold text-slate-700 flex items-center gap-1"><Coins className="w-4 h-4 text-slate-500" /> Relativer Kostenindex</span>
-                      <span className="font-bold font-mono text-slate-800">{formatDeWert(selectedMaterialData.costIndex)}% (Referenz: 100%)</span>
+                      <span className="font-bold text-slate-700 flex items-center gap-1"><Coins className="w-4 h-4 text-slate-500" /><MdText text={inhalt.texte.relativerKostenindex} /></span>
+                      <span className="font-bold font-mono text-slate-800">{formatDeWert(selectedMaterialData.costIndex)}<MdText text={inhalt.texte.referenz100} /></span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div className="bg-indigo-600 h-2 rounded-full" style={{ width: `${Math.min(100, (selectedMaterialData.costIndex / 300) * 100)}%` }}></div>
                     </div>
-                    <span className="text-[10px] text-slate-400 block mt-1 leading-tight font-semibold">Anschaffungskosten exkl. verringerte Folgeaufwände / Lohnkostenersparnis.</span>
+                    <span className="text-[10px] text-slate-400 block mt-1 leading-tight font-semibold"><MdText text={inhalt.texte.anschaffungskostenExklVerringerteFolgeau} /></span>
                   </div>
                 </div>
 
                 {/* Technical detailed description */}
                 <div>
                   <h5 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2 flex items-center gap-1.5">
-                    <Activity className="w-4 h-4 text-indigo-500" /> Funktionsweise &amp; Technologie
-                  </h5>
+                    <Activity className="w-4 h-4 text-indigo-500" /><MdText text={inhalt.texte.funktionsweiseTechnologie} /></h5>
                   <p className="text-xs text-slate-600 leading-relaxed bg-indigo-50/40 p-3.5 rounded-xl border border-indigo-100 font-semibold">
                     {selectedMaterialData.details}
                   </p>
@@ -1071,7 +994,7 @@ export default function InnovativeWerkstoffe() {
                   </div>
 
                   <div className="bg-red-50/30 p-4 rounded-2xl border border-red-100">
-                    <h5 className="font-bold text-red-950 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1">⚠ Limitierungen &amp; Risiken</h5>
+                    <h5 className="font-bold text-red-950 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1"><MdText text={inhalt.texte.limitierungenRisiken} /></h5>
                     <ul className="space-y-2">
                       {selectedMaterialData.disadvantages.map((dis, idx) => (
                         <li key={idx} className="text-xs text-red-800 leading-snug flex items-start gap-1 font-semibold">
@@ -1085,13 +1008,13 @@ export default function InnovativeWerkstoffe() {
 
                 {/* Technical specification table */}
                 <div>
-                  <h5 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1"><Box size={14} className="text-slate-500" /> Technische Kennwerte &amp; Kennzahlen</h5>
+                  <h5 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1"><Box size={14} className="text-slate-500" /><MdText text={inhalt.texte.technischeKennwerteKennzahlen} /></h5>
                   <div className="border border-home-grau/30 rounded-xl overflow-hidden shadow-xs">
                     <table className="w-full text-xs text-left">
                       <thead>
                         <tr className="bg-slate-50 border-b border-home-grau/30">
                           <th className="p-2.5 font-bold text-slate-700">Parameter</th>
-                          <th className="p-2.5 font-bold text-slate-700">Kennzahl / Richtwert</th>
+                          <th className="p-2.5 font-bold text-slate-700"><MdText text={inhalt.texte.kennzahlRichtwert} /></th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
@@ -1114,18 +1037,16 @@ export default function InnovativeWerkstoffe() {
         {activeSubTab === 'finder' && (
           <div className="bg-white p-6 rounded-3xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-300">
             <div className="border-b border-home-grau/30 pb-3">
-              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-1.5"><HelpCircle className="text-indigo-600" /> Interaktiver Baustoff-Wegweiser</h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed font-medium">
-                Suchen Sie ein passendes Material für ein statisches oder thermisches Vorhaben? Geben Sie die Parameter Ihres Tragwerkes ein und lass Ihnen die optimale innovative Lösung ableiten.
-              </p>
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-1.5"><HelpCircle className="text-indigo-600" /><MdText text={inhalt.texte.interaktiverBaustoffWegweiser} /></h3>
+              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed font-medium"><MdText text={inhalt.texte.suchenSieEinPassendes} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Controls Column */}
               <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">1. Haupt-Bauziel / Anforderung</label>
-                  <select aria-label="1. Haupt-Bauziel / Anforderung"
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5"><MdText text={inhalt.texte.t1HauptBauzielAnforderung} /></label>
+                  <select aria-label={inhalt.werte.t1HauptBauzielAnforderung}
                     value={reqProperty}
                     onChange={(e) => setReqProperty(e.target.value)}
                     className="w-full text-xs bg-white border border-home-grau/30 p-2.5 rounded-lg font-semibold text-slate-700 outline-none focus:border-indigo-500"
@@ -1138,12 +1059,12 @@ export default function InnovativeWerkstoffe() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">2. Dimension &amp; Spannweite</label>
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5"><MdText text={inhalt.texte.t2DimensionSpannweite} /></label>
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { id: 'gering', label: 'Gering', note: 'z.B. Wände, Stützen' },
-                      { id: 'mittel', label: 'Mittel', note: 'Standarddecken (<8m)' },
-                      { id: 'gross', label: 'Groß', note: 'Großspannbrücken, Hallen' }
+                      { id: 'gering', label: 'Gering', note: inhalt.werte.zBWändeStützen },
+                      { id: 'mittel', label: 'Mittel', note: inhalt.werte.standarddecken8m },
+                      { id: 'gross', label: 'Groß', note: inhalt.werte.großspannbrückenHallen }
                     ].map((s) => (
                       <button aria-pressed={spanLength === s.id}
                         key={s.id}
@@ -1163,8 +1084,8 @@ export default function InnovativeWerkstoffe() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">3. Exposition / Chemische Beanspruchung</label>
-                  <select aria-label="3. Exposition / Chemische Beanspruchung"
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5"><MdText text={inhalt.texte.t3ExpositionChemischeBeanspruchung} /></label>
+                  <select aria-label={inhalt.werte.t3ExpositionChemischeBeanspruchung}
                     value={exposure}
                     onChange={(e) => setExposure(e.target.value)}
                     className="w-full text-xs bg-white border border-home-grau/30 p-2.5 rounded-lg font-semibold text-slate-700 outline-none focus:border-indigo-500"
@@ -1176,7 +1097,7 @@ export default function InnovativeWerkstoffe() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">4. Geometrische Komplexität</label>
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5"><MdText text={inhalt.texte.t4GeometrischeKomplexität} /></label>
                   <div className="flex gap-4 text-xs font-semibold">
                     <label className="flex items-center gap-1.5 cursor-pointer">
                       <input
@@ -1186,7 +1107,7 @@ export default function InnovativeWerkstoffe() {
                         onChange={() => setFormFreedom('mittel')}
                         className="accent-indigo-600"
                       />
-                      <span>Klassisch orthogonal (Flachwand, Balken)</span>
+                      <span><MdText text={inhalt.texte.klassischOrthogonalFlachwandBalken} /></span>
                     </label>
                     <label className="flex items-center gap-1.5 cursor-pointer">
                       <input
@@ -1196,7 +1117,7 @@ export default function InnovativeWerkstoffe() {
                         onChange={() => setFormFreedom('hoch')}
                         className="accent-indigo-600"
                       />
-                      <span>Organische Freiformen (Skulpturen, Wellen)</span>
+                      <span><MdText text={inhalt.texte.organischeFreiformenSkulpturenWellen} /></span>
                     </label>
                   </div>
                 </div>
@@ -1205,8 +1126,7 @@ export default function InnovativeWerkstoffe() {
                   onClick={calculateBestMaterial}
                   className="w-full py-3 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-xl text-xs font-bold hover:shadow-md active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Activity size={14} className="animate-pulse" /> Eignung berechnen &amp; Material vorschlagen
-                </button>
+                  <Activity size={14} className="animate-pulse" /><MdText text={inhalt.texte.eignungBerechnenMaterialVorschlagen} /></button>
               </div>
 
               {/* Recommendation column */}
@@ -1223,7 +1143,7 @@ export default function InnovativeWerkstoffe() {
                     </p>
 
                     <div>
-                      <h5 className="font-bold text-xs text-slate-500 uppercase tracking-widest font-mono mb-2">Gesamtes Eignungsprofil (Szenario-Einstufung)</h5>
+                      <h5 className="font-bold text-xs text-slate-500 uppercase tracking-widest font-mono mb-2"><MdText text={inhalt.texte.gesamtesEignungsprofilSzenarioEinstufung} /></h5>
                       <div className="space-y-2">
                         {FUTURE_MATERIALS.map((m) => {
                           const stars = calcResult.rating[m.id] || 1;
@@ -1250,14 +1170,12 @@ export default function InnovativeWerkstoffe() {
                 ) : (
                   <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-400">
                     <Info size={40} className="text-indigo-200 mb-3" />
-                    <h4 className="font-bold text-sm text-slate-800 mb-1">Kein Eignungsergebnis berechnet</h4>
-                    <p className="text-xs max-w-xs leading-normal">Klicken Sie links auf "Eignung berechnen &amp; Material vorschlagen", um die statischen und ökologischen Parameter auszuwerten.</p>
+                    <h4 className="font-bold text-sm text-slate-800 mb-1"><MdText text={inhalt.texte.keinEignungsergebnisBerechnet} /></h4>
+                    <p className="text-xs max-w-xs leading-normal"><MdText text={inhalt.texte.klickenSieLinksAuf} /></p>
                   </div>
                 )}
 
-                <div className="mt-4 pt-3 border-t border-home-grau/30 text-[10px] text-slate-400 leading-normal font-semibold font-medium">
-                  💡 <strong>Statischer Hinweis:</strong> Diese Empfehlung basiert auf verallgemeinerten Grenzwertprofilen des Tragwerksdesigns nach Eurocode 2 und darf nicht direkt als statischer oder wärmeschutztechnischer Nachweis gewertet werden.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/30 text-[10px] text-slate-400 leading-normal font-semibold font-medium"><MdText text={inhalt.texte.statischerHinweisDieseEmpfehlung} /></div>
               </div>
             </div>
           </div>
@@ -1266,11 +1184,8 @@ export default function InnovativeWerkstoffe() {
         {activeSubTab === 'vergleich' && (
           <div className="bg-white p-6 rounded-3xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-300">
             <div className="border-b border-home-grau/30 pb-3">
-              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-1.5"><Scale className="text-indigo-600" /> CO₂ &amp; Kosten-Abwägung (Trade-off Matrix)</h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed font-semibold">
-                Die Auswahl innovativer Werkstoffe erfordert stets das Balancieren ökologischer Vorteile (Carbon footprint Reduktion) gegen ökonomische Einflüsse (Kostenindex bei Errichtung). 
-                Diese detaillierte Matrix vergleicht die Profile im statischen Querschnitts-Vergleich mit einem klassischen Stahlbetonquerschnitt (Referenz = 100%).
-              </p>
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-1.5"><Scale className="text-indigo-600" /><MdText text={inhalt.texte.coKostenAbwägungTrade} /></h3>
+              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed font-semibold"><MdText text={inhalt.texte.dieAuswahlInnovativerWerkstoffe} /></p>
             </div>
 
             <div className="overflow-x-auto border border-home-grau/30 rounded-2xl shadow-xs">
@@ -1278,26 +1193,26 @@ export default function InnovativeWerkstoffe() {
                 <thead className="bg-slate-50">
                   <tr className="divide-x divide-slate-200 text-slate-700 font-bold uppercase tracking-wider text-[10px]">
                     <th className="p-3">Werkstoff</th>
-                    <th className="p-3 text-center">Relative CO₂-Belastung</th>
-                    <th className="p-3 text-center">Relative Errichtungskosten</th>
-                    <th className="p-3">Typische Mindestdicke</th>
-                    <th className="p-3">Primärer Tragmechanismus</th>
-                    <th className="p-3">Biegesteifigkeit / Duktilität</th>
+                    <th className="p-3 text-center"><MdText text={inhalt.texte.relativeCoBelastung} /></th>
+                    <th className="p-3 text-center"><MdText text={inhalt.texte.relativeErrichtungskosten} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.typischeMindestdicke} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.primärerTragmechanismus} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.biegesteifigkeitDuktilität} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 bg-white">
                   {/* Standard concrete reference */}
                   <tr className="bg-slate-50/70 border-b border-home-grau/30 font-semibold font-medium text-slate-500">
-                    <td className="p-3 font-bold text-slate-700">Stahlbeton (Standard C30/37 + B500A)</td>
+                    <td className="p-3 font-bold text-slate-700"><MdText text={inhalt.texte.stahlbetonStandardC3037} /></td>
                     <td className="p-3 text-center">
-                      <span className="inline-block px-2 py-0.5 rounded font-mono bg-slate-200 text-slate-700 font-bold text-[10px]">100% (Referenz)</span>
+                      <span className="inline-block px-2 py-0.5 rounded font-mono bg-slate-200 text-slate-700 font-bold text-[10px]"><MdText text={inhalt.texte.t100Referenz} /></span>
                     </td>
                     <td className="p-3 text-center">
-                      <span className="inline-block px-2 py-0.5 rounded font-mono bg-slate-200 text-slate-700 font-bold text-[10px]">100% (Referenz)</span>
+                      <span className="inline-block px-2 py-0.5 rounded font-mono bg-slate-200 text-slate-700 font-bold text-[10px]"><MdText text={inhalt.texte.t100Referenz2} /></span>
                     </td>
                     <td className="p-3 font-mono">200 - 300 mm</td>
-                    <td className="p-3">Verbundwirkung (Beton fängt Druck, Stahl fängt Biegezug)</td>
-                    <td className="p-3">Sehr duktil durch Stahlfließen (ausreichender Ankündigungseffekt)</td>
+                    <td className="p-3"><MdText text={inhalt.texte.verbundwirkungBetonFängtDruck} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.sehrDuktilDurchStahlfließen} /></td>
                   </tr>
 
                   {FUTURE_MATERIALS.map((mat) => (
@@ -1328,9 +1243,9 @@ export default function InnovativeWerkstoffe() {
                           </span>
                         </div>
                       </td>
-                      <td className="p-3 font-semibold font-mono text-slate-800">{mat.specs['Notwendige Betondeckung'] || mat.specs['Typische Schichtstärke'] || 'Bauteilabhängig (ca. 40-100mm)'}</td>
+                      <td className="p-3 font-semibold font-mono text-slate-800">{mat.specs['Notwendige Betondeckung'] || mat.specs['Typische Schichtstärke'] || inhalt.werte.bauteilabhängigCa40100mm}</td>
                       <td className="p-3 text-slate-600 font-semibold leading-tight">{mat.strength.split('.')[0]}</td>
-                      <td className="p-3 text-red-900/90 font-semibold font-medium leading-tight">{mat.disadvantages.find(d => d.includes('Versagen') || d.includes('spröd')) || 'Gut kontrollierbar mit angepasster statischer Bemessung'}</td>
+                      <td className="p-3 text-red-900/90 font-semibold font-medium leading-tight">{mat.disadvantages.find(d => d.includes('Versagen') || d.includes('spröd')) || inhalt.werte.gutKontrollierbarMitAngepasster}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1339,9 +1254,7 @@ export default function InnovativeWerkstoffe() {
             
             <div className="p-4 bg-indigo-50 border border-indigo-150 rounded-2xl text-[11px] text-indigo-950 font-semibold flex items-start gap-2 leading-relaxed">
               <Sparkles className="w-4 h-4 text-indigo-700 shrink-0 mt-0.5" />
-              <div>
-                <strong>Instandsetzungs-Tipp:</strong> Während die Errichtungskosten von Carbonbeton hoch sind, rechnet sich die Investition über die Lebenszykluskosten (LCC), da periodische Betonsanierungen (Rostschutzinstandhaltungen) vollständig entfallen. Dies senkt Lebenszyklus-Kosten von Parkhäusern und Brücken erheblich.
-              </div>
+              <div><MdText text={inhalt.texte.instandsetzungsTippWährendDie} /></div>
             </div>
           </div>
         )}
@@ -1355,39 +1268,27 @@ export default function InnovativeWerkstoffe() {
                 <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-150 text-orange-600 w-fit">
                   <Cpu size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">Formgedächtnislegierungen (SMA)</h4>
-                <p className="text-xs text-slate-600 leading-normal font-semibold">
-                  Metalle (Metalle (z. B. Nickel-Titan, im Betonbau eisenbasierte Fe-Mn-Si-Legierungen), die nach Erwärmung in ihre vordefinierte Form zurückkehren; bei behinderter Rückverformung entsteht eine Vorspannkraft.), die nach einer Formänderung durch Temperaturerwärmung in ihre vordefinierte Geometrie zurückkehren.
-                </p>
-                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-500 font-semibold font-medium leading-relaxed">
-                  🔧 <strong>Anwendung:</strong> Vorspannen von Betonbauteilen ohne klassische hydraulische Spannpressen. Die Bewehrungsstäbe werden elektrisch beheizt, ziehen sich zusammen und spannen das Gefüge autonom vor.
-                </div>
+                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.formgedächtnislegierungenSma} /></h4>
+                <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.metalleMetalleZB} /></p>
+                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-500 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.anwendungVorspannenVonBetonbauteilen} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-3xl border border-home-grau/30 shadow-sm space-y-3 relative overflow-hidden">
                 <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-150 text-emerald-600 w-fit">
                   <Leaf size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">Selbstheilender Beton (Self-Healing)</h4>
-                <p className="text-xs text-slate-600 leading-normal font-semibold">
-                  Einmischen von Bakteriensporen (z.B. Bacillus pseudofirmus) oder Epoxid-Mikrokapseln direkt in die Betonmischung im Transportbetonwerk.
-                </p>
-                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed">
-                  💧 <strong>Heilungs-Effekt:</strong> Dringt durch Mikrorisse Wasser ein, erwachen die Bakterien, verstoffwechseln Nährsalze und kristallisieren Kalkstein (Calcit) aus, der den Riss bis 0,8 mm Breite autonom abdichtet.
-                </div>
+                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.selbstheilenderBetonSelfHealing} /></h4>
+                <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.einmischenVonBakteriensporenZ} /></p>
+                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.heilungsEffektDringtDurch} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-3xl border border-home-grau/30 shadow-sm space-y-3 relative overflow-hidden">
                 <div className="p-2.5 rounded-xl bg-sky-50 border border-sky-150 text-sky-600 w-fit">
                   <Zap size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">Photokatalytischer Beton</h4>
-                <p className="text-xs text-slate-600 leading-normal font-semibold">
-                  Fotokatalytische Veredelung der Sichtbetonmatrix durch Nanopartikel aus Titandioxid (TiO2), die als Katalysator wirken.
-                </p>
-                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed">
-                  ☀️ <strong>Abgasreinigung:</strong> Unter Einfluss von ultravioletter Sonnenbestrahlung zersetzen die beschichteten Wandflächen schädliche Luftschadstoffe (speziell NO und NO₂-Verbindungen des Straßenverkehrs) in unbedenkliche Nitrate.
-                </div>
+                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.photokatalytischerBeton} /></h4>
+                <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.fotokatalytischeVeredelungDerSichtbetonm} /></p>
+                <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.abgasreinigungUnterEinflussVon} /></div>
               </div>
 
             </div>
@@ -1396,23 +1297,19 @@ export default function InnovativeWerkstoffe() {
             <div className="bg-white p-6 rounded-3xl border border-home-grau/30 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
               <div className="md:col-span-2 space-y-3">
                 <div className="flex items-center gap-1.5 text-indigo-650 font-bold text-xs uppercase tracking-wider font-mono">
-                  <Sparkles className="w-4 h-4 text-indigo-500" /> Biologische Werkstoffe der Zukunft
-                </div>
-                <h4 className="text-xl font-bold text-slate-900">Pilzmyzel &amp; Bio-Komposite im Bauwesen</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-semibold">
-                  Forschende nutzen das fadenförmige Wurzelnetzwerk von Pilzen (Myzel), um landwirtschaftliche Reststoffe (Stroh, Sägespäne) in feste, formstabile Dämm- und Wandplatten zu verwandeln. 
-                  Myzel-Verbundwerkstoffe wachsen geräuschlos innerhalb von 5 bis 10 Tagen vollständig natürlich im dunklen Wachstumsklima heran und werden danach schonend getrocknet.
-                </p>
+                  <Sparkles className="w-4 h-4 text-indigo-500" /><MdText text={inhalt.texte.biologischeWerkstoffeDerZukunft} /></div>
+                <h4 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.pilzmyzelBioKompositeIm} /></h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-semibold"><MdText text={inhalt.texte.forschendeNutzenDasFadenförmige} /></p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10px] text-slate-500 pt-1.5 font-semibold leading-relaxed">
-                  <div>🌱 <strong>Vorteil:</strong> 100% kompostierbar, Vorteil: kompostierbar, gute Schallabsorption (Akustikpaneele), CO₂-bindend. Wärmeleitfähigkeit ca. 0,040 W/(m·K)., CO₂-bindend (Kohlenstofferhalt).</div>
-                  <div>🔬 <strong>Fokus:</strong> Akkreditierte Forschungen für Akustikpaneele und leichte nicht-tragende Brandschutzwände.</div>
+                  <div><MdText text={inhalt.texte.vorteil100KompostierbarVorteil} /></div>
+                  <div><MdText text={inhalt.texte.fokusAkkreditierteForschungenFür} /></div>
                 </div>
               </div>
               <div className="bg-slate-50 p-4 rounded-2xl border border-home-grau/30 text-slate-700 text-xs text-center space-y-2">
                 <span className="font-mono text-[9px] uppercase font-bold text-slate-400">Kreislaufökologie</span>
                 <div className="text-4xl">🍄</div>
                 <div className="font-bold text-slate-900">Pilzmyzel-Dämmung</div>
-                <div className="text-[10px] text-slate-500 font-medium">Beste Wärmeleitfähigkeit (λ) ca. 0,040 W/(m·K) und vollständig giftfreie Entsorgung.</div>
+                <div className="text-[10px] text-slate-500 font-medium"><MdText text={inhalt.texte.besteWärmeleitfähigkeitCa0} /></div>
               </div>
             </div>
           </div>
@@ -1421,15 +1318,11 @@ export default function InnovativeWerkstoffe() {
 
       {/* Module Footer */}
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Erforderliche Fließgrenze beim 3D-Betondruck"
+        title={inhalt.werte.anwendungsbeispielErforderlicheFließgren}
         zielGleichung="\tau_{req} = \frac{\rho \cdot g \cdot H}{\sqrt{3}}"
-        normQuelle="Roussel (2018), Fließkriterium nach von Mises"
-        schritte={[
-          { titel: '1. Gegeben', formel: '\\rho = 2\\,100\\,\\text{kg/m}^3,\\; H = 2{,}0\\,\\text{m}', erklaerung: 'Gedruckte Wand, Endhöhe 2 m (Standardwerte des Simulators).' },
-          { titel: '2. Spannung in der untersten Schicht', formel: '\\rho g H = 2\\,100 \\cdot 9{,}81 \\cdot 2{,}0 = 41\\,202\\,\\text{Pa}', erklaerung: 'Eigengewicht aller darüberliegenden Schichten.' },
-          { titel: '3. Erforderliche Fließgrenze', formel: '\\tau_{req} = 41\\,202 / \\sqrt{3} = 23\\,788\\,\\text{Pa} \\approx 23{,}8\\,\\text{kPa}', erklaerung: 'Die unterste Schicht muss bis zum Ende des Drucks durch Thixotropie und Erstarren diese Fließgrenze erreichen.' },
-        ]}
-        ergebnisHinweis="τ_req ≈ 23,8 kPa – sonst fließt die unterste Schicht plastisch weg."
+        normQuelle={inhalt.werte.roussel2018FließkriteriumNach}
+        schritte={inhalt.daten["InnovativeWerkstoffe.schritte"]}
+        ergebnisHinweis={inhalt.werte.req238Kpa}
       />
 
       <ModulTest moduleId="innovative_werkstoffe" />
@@ -1438,34 +1331,11 @@ export default function InnovativeWerkstoffe() {
         wikipedia={[
           { title: "3D-Betondruck" },
           { title: "Carbonbeton", url: "https://de.wikipedia.org/wiki/Carbonbeton" },
-          { title: "Ultrahochfester Beton", url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
+          { title: inhalt.werte.ultrahochfesterBeton, url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
         ]}
-        literatur={[
-          'Mechtcherine, V.; Nerella, V. N.: 3-D-Druck mit Beton: Sachstand, Entwicklungstendenzen, Herausforderungen. Bautechnik 95 (2018) H. 4, S. 275–287',
-          'Fehling, E.; Schmidt, M.; Walraven, J. u. a.: Ultra-High Performance Concrete UHPC. Berlin: Ernst & Sohn 2014',
-          'Roussel, N.: Rheological requirements for printable concretes. Cement and Concrete Research 112 (2018)',
-          'Suiker, A. S. J.: Mechanical performance of wall structures in 3D printing processes. International Journal of Mechanical Sciences 137 (2018)',
-          'C³ - Carbon Concrete Composite e.V.: Carbonbeton im Neubau und Instandsetzung'
-        ]}
-        regelwerke={[
-          { title: "DAfStb-Richtlinie Ultrahochfester Beton – in Vorbereitung (Sachstand: DAfStb-Heft 561, 2008)" },
-          { title: "DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (2024-01)", url: "https://www.dinmedia.de/en/technical-rule/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845" },
-          { title: "DIN EN 197-5:2021-07 (Portlandkompositzement CEM II/C-M und Kompositzement CEM VI)" },
-          { title: "Allgemeine Bauartgenehmigungen (aBG) für Carbonbetonsysteme – DIBt" },
-          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)" }
-        ]}
-        formeln={[
-          {
-            formel: '\\tau_{0,\\text{base}}(t) \\ge \\tau_{\\text{req}} = \\frac{\\rho \\cdot g \\cdot H}{\\sqrt{3}}',
-            erklaerung: 'Standsicherheitskriterium gegen plastisches Fließversagen (von-Mises-Kriterium) beim 3D-Betondruck in Abhängigkeit von Rohdichte, Erdbeschleunigung und Bauwerkshöhe.',
-            quelle: 'Roussel, N.: Rheological requirements for printable concretes. Cement and Concrete Research 112 (2018)'
-          },
-          {
-            formel: 'H_{\\text{cr}} = \\left( \\frac{7{,}837 \\cdot E(t) \\cdot I}{\\rho \\cdot g \\cdot A} \\right)^{1/3}',
-            erklaerung: 'Kritische Knickhöhe Hcr beim additiven Betondruck unter Eigengewicht (Greenhill-Kriterium) mit zeitabhängigem Elastizitätsmodul E(t).',
-            quelle: 'Suiker, A. S. J.: Mechanical performance of wall structures in 3D printing processes. International Journal of Mechanical Sciences 137 (2018)'
-          }
-        ]}
+        literatur={inhalt.daten["InnovativeWerkstoffe.literatur"]}
+        regelwerke={inhalt.daten["InnovativeWerkstoffe.regelwerke"]}
+        formeln={inhalt.daten["InnovativeWerkstoffe.formeln"]}
       />
     </div>
   );

@@ -8,6 +8,8 @@ import { EC2_NA_DE } from '@/src/data/normParams';
 import { bemesseVerankerung } from '@/src/calc/verankerung';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Layers } from 'lucide-react';
+import inhalt from '@/content/verankerungslaenge/Verankerungslaenge.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Verankerungslaenge() {
   const [fck, setFck] = useState(30); // MPa
@@ -37,21 +39,15 @@ export default function Verankerungslaenge() {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/20">
         <div className="flex items-center justify-between gap-2 flex-wrap mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Verankerungslänge &amp; Übergreifungslänge
-          </h2>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
-          </span>
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.verankerungslängeÜbergreifungslänge} /></h2>
+          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300"><MdText text={inhalt.texte.berechnetNachDinEn} /></span>
         </div>
-        <p className="text-text-main/80 mb-6">
-          Die Verankerungslänge ist die Länge, die benötigt wird, um die Zug- oder Druckkräfte eines Bewehrungsstabes 
-          sicher in den umgebenden Beton einzuleiten. Die Berechnung erfolgt nach DIN EN 1992-1-1 mit dem Nationalen Anhang (NA DE).
-        </p>
+        <p className="text-text-main/80 mb-6"><MdText text={inhalt.texte.dieVerankerungslängeIstDie} /></p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/20">
-              <h3 className="font-semibold mb-4 text-text-main">Material & Geometrie</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.materialGeometrie} /></h3>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="text-sm font-medium text-text-main mb-1 block">Betonfestigkeit</label>
@@ -103,8 +99,8 @@ export default function Verankerungslaenge() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-text-main mb-1 block">Art der Berechnung</label>
-                  <select aria-label="Art der Berechnung" 
+                  <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.artDerBerechnung} /></label>
+                  <select aria-label={inhalt.werte.artDerBerechnung} 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={berechnungsArt}
                     onChange={(e) => setBerechnungsArt(e.target.value as 'verankerung' | 'uebergreifung')}
@@ -132,13 +128,13 @@ export default function Verankerungslaenge() {
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/20">
               <div className="flex items-center gap-2 mb-4">
-                <h3 className="font-semibold text-text-main">Einflussfaktoren (<FormulaText text="\alpha" />)</h3>
-                <InfoTooltip text="Ausgewählte Faktoren zur Reduktion der Länge. Bei Druckbeanspruchung sind alle Formbeiwerte = 1.0." />
+                <h3 className="font-semibold text-text-main"><MdText text={inhalt.texte.einflussfaktoren} /><FormulaText text="\alpha" />)</h3>
+                <InfoTooltip text={inhalt.werte.ausgewählteFaktorenZurReduktion} />
               </div>
               
               <div className="mb-4">
-                <label className="text-sm font-medium text-text-main mb-1 block">Formgebung (<FormulaText text="\alpha_1" />)</label>
-                <select aria-label="Formgebung ()" 
+                <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.formgebung} /><FormulaText text="\alpha_1" />)</label>
+                <select aria-label={inhalt.werte.formgebung} 
                   className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz disabled:bg-gray-100 disabled:text-gray-500"
                   value={verankerungsArt}
                   onChange={(e) => setVerankerungsArt(e.target.value as 'gerade' | 'haken' | 'winkel')}
@@ -152,24 +148,24 @@ export default function Verankerungslaenge() {
               {beanspruchung === 'zug' && (
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   <div>
-                    <label className="text-xs font-medium text-text-main mb-1 block">Betondeckung (<FormulaText text="\alpha_2" />)</label>
-                    <input aria-label="Betondeckung ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha2} onChange={e => setAlpha2(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <label className="text-xs font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.betondeckung} /><FormulaText text="\alpha_2" />)</label>
+                    <input aria-label={inhalt.werte.betondeckung} type="number" step="0.05" min="0.7" max="1.0" value={alpha2} onChange={e => setAlpha2(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-text-main mb-1 block">Querbewehrung (<FormulaText text="\alpha_3" />)</label>
-                    <input aria-label="Querbewehrung ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha3} onChange={e => setAlpha3(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <label className="text-xs font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.querbewehrung} /><FormulaText text="\alpha_3" />)</label>
+                    <input aria-label={inhalt.werte.querbewehrung} type="number" step="0.05" min="0.7" max="1.0" value={alpha3} onChange={e => setAlpha3(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                   <div>
                     <label className="text-xs font-medium text-text-main mb-1 block">Querdruck (<FormulaText text="\alpha_5" />)</label>
-                    <input aria-label="Querdruck ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha5} onChange={e => setAlpha5(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <input aria-label={inhalt.werte.querdruck} type="number" step="0.05" min="0.7" max="1.0" value={alpha5} onChange={e => setAlpha5(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                 </div>
               )}
 
               {berechnungsArt === 'uebergreifung' && (
                 <div className="mb-4">
-                  <label className="text-sm font-medium text-text-main mb-1 block">Stoßanteil / Abstand (<FormulaText text="\alpha_6" />)</label>
-                  <select aria-label="Stoßanteil / Abstand ()" 
+                  <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.stoßanteilAbstand} /><FormulaText text="\alpha_6" />)</label>
+                  <select aria-label={inhalt.werte.stoßanteilAbstand} 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={alpha6}
                     onChange={(e) => setAlpha6(Number(e.target.value))}
@@ -201,9 +197,7 @@ export default function Verankerungslaenge() {
                   unit="cm²"
                 />
               </div>
-              <p className="text-xs text-home-grau">
-                Das Verhältnis <FormulaText text="A_{s,erf} / A_{s,vorh}" /> darf zur Reduzierung der Verankerungslänge angesetzt werden.
-              </p>
+              <p className="text-xs text-home-grau"><MdText text={inhalt.texte.dasVerhältnis} /><FormulaText text={inhalt.werte.aSErfA} /><MdText text={inhalt.texte.darfZurReduzierungDer} /></p>
             </div>
           </div>
 
@@ -214,7 +208,7 @@ export default function Verankerungslaenge() {
               
               <div className="p-6 bg-shiraz/5 border border-shiraz/20 rounded-xl mb-6 text-center">
                 <div className="text-sm text-shiraz font-bold uppercase tracking-wider mb-2">
-                  {berechnungsArt === 'verankerung' ? 'Bemessungswert Verankerungslänge' : 'Bemessungswert Übergreifungslänge'} <FormulaText text={berechnungsArt === 'verankerung' ? "l_{bd}" : "l_0"} />
+                  {berechnungsArt === 'verankerung' ? inhalt.werte.bemessungswertVerankerungslänge : inhalt.werte.bemessungswertÜbergreifungslänge} <FormulaText text={berechnungsArt === 'verankerung' ? "l_{bd}" : "l_0"} />
                 </div>
                 <div className="text-5xl font-bold text-shiraz">
                   {formatDeZahl(results.lbd, 0)} <span className="text-xl font-normal">mm</span>
@@ -226,11 +220,11 @@ export default function Verankerungslaenge() {
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Zugfestigkeit Beton <FormulaText text="f_{ctk;0,05}" /></span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.zugfestigkeitBeton} /><FormulaText text="f_{ctk;0,05}" /></span>
                   <span className="font-mono font-bold">{formatDeZahl(results.fctk005, 2)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Bemessungswert Verbund <FormulaText text="f_{bd}" /></span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.bemessungswertVerbund} /><FormulaText text="f_{bd}" /></span>
                   <span className="font-mono font-bold">{formatDeZahl(results.fbd, 2)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
@@ -248,7 +242,7 @@ export default function Verankerungslaenge() {
                   </div>
                 )}
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Ausnutzungsgrad <FormulaText text="A_{s,erf} / A_{s,vorh}" /></span>
+                  <span className="text-text-main/70">Ausnutzungsgrad <FormulaText text={inhalt.werte.aSErfA2} /></span>
                   <span className="font-mono font-bold">{formatDeZahl(results.asRatio, 2)}</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
@@ -260,23 +254,23 @@ export default function Verankerungslaenge() {
 
             <FormulaDerivationBox
               live
-              title={berechnungsArt === 'verankerung' ? 'Ihr Rechenweg: Verankerungslänge mit den aktuellen Eingaben' : 'Ihr Rechenweg: Übergreifungslänge mit den aktuellen Eingaben'}
+              title={berechnungsArt === 'verankerung' ? inhalt.werte.ihrRechenwegVerankerungslängeMit : inhalt.werte.ihrRechenwegÜbergreifungslängeMit}
               zielGleichung={`${berechnungsArt === 'verankerung' ? 'l_{bd}' : 'l_0'} = \\prod \\alpha_i \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} = ${formatDeTeX(results.lbd, 0)}\\,\\text{mm}`}
-              normQuelle="DIN EN 1992-1-1 mit NA (DE), 8.4 und 8.7"
+              normQuelle={inhalt.werte.dinEn19921}
               schritte={[
                 {
-                  titel: 'Bemessungswert der Betonzugfestigkeit',
-                  erklaerung: 'f_ctk;0,05 aus Tabelle 3.1 (höchstens C60/75), α_ct = 1,0.',
+                  titel: inhalt.werte.bemessungswertDerBetonzugfestigkeit,
+                  erklaerung: inhalt.werte.fCtk005,
                   formel: `f_{ctd} = \\frac{f_{ctk;0{,}05}}{\\gamma_c} = \\frac{${formatDeTeX(results.fctk005, 2)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fctd, 2)}\\,\\text{N/mm}^2`,
                 },
                 {
-                  titel: 'Bemessungswert der Verbundspannung',
-                  erklaerung: `${verbundBedingung === 'gut' ? 'Gute Verbundbedingungen (η₁ = 1,0)' : 'Mäßige Verbundbedingungen (η₁ = 0,7)'}; ${phi <= 32 ? 'Ø ≤ 32 mm (η₂ = 1,0)' : 'Ø > 32 mm: η₂ = (132 − Ø)/100'}.`,
+                  titel: inhalt.werte.bemessungswertDerVerbundspannung,
+                  erklaerung: `${verbundBedingung === 'gut' ? inhalt.werte.guteVerbundbedingungen10 : inhalt.werte.mäßigeVerbundbedingungen07}; ${phi <= 32 ? inhalt.werte.t32Mm10 : inhalt.werte.t32Mm132100}.`,
                   formel: `f_{bd} = 2{,}25 \\cdot ${formatDeTeX(verbundBedingung === 'gut' ? 1.0 : 0.7, 1)} \\cdot ${formatDeTeX(phi <= 32 ? 1.0 : (132 - phi) / 100, 2)} \\cdot ${formatDeTeX(results.fctd, 2)} = ${formatDeTeX(results.fbd, 2)}\\,\\text{N/mm}^2`,
                 },
                 {
-                  titel: 'Grundwert der Verankerungslänge',
-                  erklaerung: 'Volle Ausnutzung des Stabes mit σ_sd = f_yd = f_yk/1,15.',
+                  titel: inhalt.werte.grundwertDerVerankerungslänge,
+                  erklaerung: inhalt.werte.volleAusnutzungDesStabes,
                   formel: `l_{b,rqd} = \\frac{\\varnothing}{4} \\cdot \\frac{f_{yd}}{f_{bd}} = \\frac{${formatDeTeX(phi, 0)}}{4} \\cdot \\frac{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}}{${formatDeTeX(results.fbd, 2)}} = ${formatDeTeX(results.lbRqd, 0)}\\,\\text{mm}`,
                 },
                 {
@@ -301,7 +295,7 @@ export default function Verankerungslaenge() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellung} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/20 p-4">
                 <svg width="300" height="150" viewBox="0 0 300 150">
                   {/* Betonblock */}
@@ -335,8 +329,7 @@ export default function Verankerungslaenge() {
                   </defs>
                 </svg>
                 <div className="text-xs text-text-main/70 text-center mt-2">
-                  Die Kraft <FormulaText text="F_s" /> wird über Verbundspannungen entlang der Länge <FormulaText text={berechnungsArt === 'verankerung' ? "l_{bd}" : "l_0"} /> in den Beton eingeleitet.
-                </div>
+                  Die Kraft <FormulaText text="F_s" /><MdText text={inhalt.texte.wirdÜberVerbundspannungenEntlang} /><FormulaText text={berechnungsArt === 'verankerung' ? "l_{bd}" : "l_0"} /><MdText text={inhalt.texte.inDenBetonEingeleitet} /></div>
               </div>
             </div>
           </div>
@@ -344,15 +337,11 @@ export default function Verankerungslaenge() {
       </div>
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Grundwert der Verankerungslänge (Ø 16, C30/37, guter Verbund)"
+        title={inhalt.werte.anwendungsbeispielGrundwertDerVerankerun}
         zielGleichung="l_{b,rqd} = \frac{\varnothing}{4} \cdot \frac{\sigma_{sd}}{f_{bd}}"
-        normQuelle="DIN EN 1992-1-1 mit NA, 8.4.2 und 8.4.3"
-        schritte={[
-          { titel: '1. Betonzugfestigkeit', formel: 'f_{ctk;0{,}05} = 0{,}7 \\cdot 0{,}30 \\cdot 30^{2/3} = 2{,}03\\,\\text{N/mm}^2;\\; f_{ctd} = 2{,}03/1{,}5 = 1{,}35\\,\\text{N/mm}^2', erklaerung: 'α_ct = 1,0 für die Verbundspannung.' },
-          { titel: '2. Verbundspannung', formel: 'f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}35 = 3{,}04\\,\\text{N/mm}^2', erklaerung: 'Guter Verbund (η₁ = 1,0), Ø ≤ 32 mm (η₂ = 1,0).' },
-          { titel: '3. Grundwert', formel: 'l_{b,rqd} = \\frac{16}{4} \\cdot \\frac{435}{3{,}04} = 572\\,\\text{mm}', erklaerung: 'Volle Ausnutzung σ_sd = f_yd.' },
-        ]}
-        ergebnisHinweis="l_b,rqd ≈ 570 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ und A_s,erf/A_s,vorh."
+        normQuelle={inhalt.werte.dinEn199212}
+        schritte={inhalt.daten["Verankerungslaenge.schritte"]}
+        ergebnisHinweis={inhalt.werte.lBRqd570}
       />
     </div>
   );

@@ -1,0 +1,30 @@
+{
+  "texte": {
+    "t2SchwindenDesBetons": "2. Schwinden des Betons ($\\varepsilon_{cs}$ / Autogen & Trocknung)",
+    "verlustanteilCa48": "Verlustanteil: ca. 4–8 % von P₀",
+    "wasIstSchwindenSchwinden": "**Was ist Schwinden?** Schwinden ist die **vollkommen lastunabhängige Volumenverringerung** des Betons infolge von inneren chemischen Reaktionen und Feuchtigkeitsabgabe an die ungesättigte Umwelt. Im Gegensatz zum Kriechen tritt Schwinden auch an völlig unbelasteten Bauteilen auf! Nach Eurocode 2 setzt sich das Gesamtschwindmaß$\\varepsilon_{cs}$ aus zwei physikalisch völlig unterschiedlichen Komponenten zusammen:",
+    "aAutogenesSchwindenVarepsilon": "A. Autogenes Schwinden ($\\varepsilon_{ca}$)",
+    "mechanismusBeiDerHydratation": "**Mechanismus:** Bei der Hydratation von Zement nehmen die entstehenden Hydratationsprodukte (C-S-H, Portlandit) ein geringeres Volumen ein als die Ausgangsstoffe Zement und Wasser (",
+    "daImKernKein": "). Da im Kern kein Wasser von außen nachströmen kann, trocknet sich der Beton selbst aus („chemische Selbstaustrocknung“).",
+    "endwertNachEc2": "Endwert nach EC2:",
+    "c5060VarepsilonCa": "C50/60: $\\varepsilon_{ca} \\approx -0{,}10\\text{ mm/m}$ | C90/105: $\\varepsilon_{ca} \\approx -0{,}20\\text{ mm/m}$",
+    "besonderheitBeiSpannbetonSpannbeton": "**Besonderheit bei Spannbeton:** Spannbeton wird meist mit C35/45–C50/60 (w/z ≈ 0,40–0,50) hergestellt; bei hochfesten Betonen mit niedrigem w/z ist das autogene Schwinden ausgeprägt und läuft bereits in den ersten Tagen ab.",
+    "bTrocknungsschwindenVarepsilonCd": "B. Trocknungsschwinden ($\\varepsilon_{cd}$)",
+    "dieserUnterdruckZiehtDas": "Dieser Unterdruck zieht das elastische C-S-H-Gefüge zusammen wie einen trocknenden Schwamm.",
+    "einflussDerBauteilabmessungDas": "**Einfluss der Bauteilabmessung:** Das Trocknungsschwinden hängt massiv von der wirksamen Bauteildicke $h_0 = 2 A_c / u$ ab. Dicke Brückenkästen trocknen über Jahrzehnte hinweg aus, während dünne Stege bereits nach wenigen Monaten geschwunden sind.",
+    "auswirkungAufDenSpannstahl": "Auswirkung auf den Spannstahl im Tragwerk (Zahlenbeispiel):",
+    "beträgtDasGesamtschwindmaßVarepsilon": "Beträgt das Gesamtschwindmaß $\\varepsilon_{cs} = -0{,}35\\text{ mm/m} = -0{,}00035$ und der Spannstahl-E-Modul $E_p = 195.000\\text{ N/mm}^2$, so verkürzt sich das Bauteil lastfrei. Da das Spannglied starr im Bauteil verankert ist, wird der Stahl um genau dieses Maß zusammengestaucht:",
+    "beiEinerTypischenAnfangsspannung": "Bei einer typischen Anfangsspannung von $\\sigma_{p0} = 1400\\text{ N/mm}^2$ entspricht allein der Schwindverlust einem dauerhaften Spannungsverlust von rund **5 %**.",
+    "größenordnungenDerSchwindbeiwerteSchätzw": "Größenordnungen der Schwindbeiwerte: Schätzwerte vs. Rechenwerte nach EC2",
+    "dinEn19921": "DIN EN 1992-1-1 Abs. 3.1.4 & Anhang B.2",
+    "praxisSchätzwerteVordimensionierung": "Praxis-Schätzwerte (Vordimensionierung):",
+    "gesamtschwindmaßVarepsilonCsApprox": "**Gesamtschwindmaß:** $\\varepsilon_{cs} \\approx -0{,}35 \\text{ bis } -0{,}40\\,\\text{mm/m}$ (bzw. ‰).",
+    "feuchterAußenbereichRh80": "**Feuchter Außenbereich (RH 80 %):** $\\varepsilon_{cs} \\approx -0{,}25 \\text{ bis } -0{,}32\\,\\text{mm/m}$ (‰).",
+    "trockenerInnenbereichRh50": "**Trockener Innenbereich (RH 50 %):** $\\varepsilon_{cs} \\approx -0{,}45 \\text{ bis } -0{,}55\\,\\text{mm/m}$ (‰).",
+    "faustregelFürSchwindverlusteCa": "**Faustregel für Schwindverluste:** Ca. 4 % bis 8 % der Anfangsspannkraft P₀ (entspricht ~60–100 MPa Spannungsabfall im Spannstahl).",
+    "normativerRechenwertEurocode2": "Normativer Rechenwert (Eurocode 2 Ausführungsstatik):",
+    "kHGeometriefaktor1": "$k_h$ (Geometriefaktor): 1,00 bei $h_0 \\le 100\\,\\text{mm}$ bis 0,70 bei massigen Querschnitten ($h_0 \\ge 500\\,\\text{mm}$).",
+    "varepsilonCd0Grundwert": "$\\varepsilon_{cd,0}$ (Grundwert Trocknung): für C30/37 und RH = 50 %: Zement N ≈ 0,48 ‰, R ≈ 0,67 ‰, S ≈ 0,39 ‰ (Gl. B.11/B.12).",
+    "varepsilonCaAutogenesSchwinden": "$\\varepsilon_{ca}$ (Autogenes Schwinden): C30/37 ~ -0,05 ‰; C60/75 ~ -0,125 ‰ (setzt sofort ein!)."
+  }
+}

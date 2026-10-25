@@ -3,6 +3,8 @@ import {
   GraduationCap, ExternalLink, Globe, Sparkles, Link2
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/studiumtha/StudiumTHA.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface Portal {
   tag: string;
@@ -13,64 +15,7 @@ interface Portal {
   badgeBg: string;
 }
 
-const THA_PORTALS: Portal[] = [
-  {
-    tag: 'app.tha.de',
-    name: 'Campus App & Studentenportal',
-    desc: 'Offizielle Campus-Webapp der THA: Bündelt Ihren Vorlesungsplan (Stundenplan), Mensamenüs der Woche, Moodle-Shortcuts sowie aktuelle Campus-News an einer Stelle.',
-    url: 'https://app.tha.de/',
-    colorClass: 'text-shiraz',
-    badgeBg: 'bg-shiraz/10 text-shiraz'
-  },
-  {
-    tag: 'Moodle',
-    name: 'E-Learning & Kursunterlagen',
-    desc: 'Das offizielle Lernmanagementsystem. Dozenten hinterlegen hier Skripte, Vorlesungsfolien, Aufgabenblätter sowie Upload-Schnittstellen für Hausarbeiten.',
-    url: 'https://moodle.tha.de/',
-    colorClass: 'text-amber-600',
-    badgeBg: 'bg-amber-50 text-amber-700'
-  },
-  {
-    tag: 'WebUntis',
-    name: 'Stundenpläne & Raumbelegung',
-    desc: 'Bietet tagesaktuelle, stundengenaue Stundenpläne. Zeigt Raumänderungen, Verschiebungen oder Ausfälle für alle Lehrveranstaltungen der Fakultät A+B.',
-    url: 'https://hektor.webuntis.com/WebUntis/?school=hs-augsburg',
-    colorClass: 'text-green-600',
-    badgeBg: 'bg-green-50 text-green-700'
-  },
-  {
-    tag: 'OPAC / InfoGuide',
-    name: 'Bibliothek & Literaturrecherche',
-    desc: 'Onlinekatalog (InfoGuide) der THA-Bibliothek: Suchen Sie nach Fachbüchern, Zeitschriften, E-Books und Normen (wie DIN-Vorschriften) sowie Bibliothekskonto-Verwaltung.',
-    url: 'https://infoguide.hs-augsburg.de/opacTHA.html',
-    colorClass: 'text-indigo-600',
-    badgeBg: 'bg-indigo-50 text-indigo-700'
-  },
-  {
-    tag: 'RZ-Portal',
-    name: 'Zentrale IT & Rechenzentrum',
-    desc: 'Anlaufstelle für Ihre IT-Infrastruktur: Studentische E-Mail-Adresse, WLAN-Einrichtung (eduroam), VPN-Zugänge für Zuhause und Druckkonten-Verwaltung.',
-    url: 'https://www.tha.de/hochschule/organisation/einrichtungen/zentrale-it/',
-    colorClass: 'text-teal-600',
-    badgeBg: 'bg-teal-50 text-teal-700'
-  },
-  {
-    tag: 'Career Service',
-    name: 'Karriere, Praktika & Jobs',
-    desc: 'Der Career Service der THA: Unterstützung bei Praktika, Werkstudierendentätigkeiten, Einstiegsjobs und Firmenkontaktmessen.',
-    url: 'https://www.tha.de/studium/berufseinstieg-und-alumni/studium-beruf/career-service/',
-    colorClass: 'text-rose-600',
-    badgeBg: 'bg-rose-50 text-rose-700'
-  },
-  {
-    tag: 'Mensa-Plan',
-    name: 'Speiseplan Campus Augsburg',
-    desc: 'Tagesaktuelle Menüs, Preise und Angebote der Mensen und Cafeterien des Studierendenwerks Augsburg am Campus Brunnenlech und Campus Rotes Tor.',
-    url: 'https://studierendenwerk-augsburg.de/speiseplaene/',
-    colorClass: 'text-emerald-600',
-    badgeBg: 'bg-emerald-50 text-emerald-700'
-  }
-];
+const THA_PORTALS: Portal[] = inhalt.daten.THA_PORTALS;
 
 export default function StudiumTHA() {
   return (
@@ -83,15 +28,10 @@ export default function StudiumTHA() {
         </div>
         <div className="relative z-10 flex flex-col gap-4 max-w-2xl">
           <span className="bg-shiraz/5 text-shiraz border border-shiraz/15 font-semibold text-xs tracking-wider uppercase px-2.5 py-1 rounded-full self-start font-mono flex items-center gap-1.5">
-            <Sparkles size={12} className="text-shiraz animate-pulse" /> Studium @ Fakultät A+B
-          </span>
-          <h2 id="studium-tha-title" className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-main">
-            Studierendenportal THA (Augsburg)
-          </h2>
+            <Sparkles size={12} className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.studiumFakultätAB} /></span>
+          <h2 id="studium-tha-title" className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-main"><MdText text={inhalt.texte.studierendenportalThaAugsburg} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed font-light">
-            <p>
-              Willkommen im akademischen Portal für das Bauwesen- &amp; Architekturstudium an der <strong>Technischen Hochschule Augsburg (THA)</strong>. Hier finden Sie einen schnellen Zugang zur wichtigsten digitalen Infrastruktur und Direktlinks zum Studierendenportal <strong>app.tha.de</strong>.
-            </p>
+            <p><MdText text={inhalt.texte.willkommenImAkademischenPortal} /></p>
           </div>
           <div className="flex flex-wrap gap-3 pt-1">
             <a 
@@ -101,7 +41,7 @@ export default function StudiumTHA() {
               className="bg-shiraz hover:bg-shiraz/90 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-sm hover:shadow flex items-center gap-2 cursor-pointer w-fit"
             >
               <Globe size={14} />
-              <span>Campus-App app.tha.de direkt öffnen</span>
+              <span><MdText text={inhalt.texte.campusAppAppTha} /></span>
               <ExternalLink size={13} />
             </a>
           </div>
@@ -113,11 +53,8 @@ export default function StudiumTHA() {
         
         <div className="bg-slate-50 border border-slate-150 p-4 rounded-2xl">
           <h3 className="font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
-            <Globe className="text-shiraz" size={16} /> Digitale THA-Infrastruktur auf einen Blick
-          </h3>
-          <p className="text-xs text-slate-600 leading-relaxed">
-            Der Studienalltag an der THA wird über verschiedene Systeme verwaltet. Die wichtigste Anlaufstelle ist das personalisierte Portal <strong className="text-shiraz">app.tha.de</strong>, welches viele dieser Services komfortabel aggregiert. Nutzen Sie Ihren zentralen RZ-Account (Single-Sign-On) für den Zugriff.
-          </p>
+            <Globe className="text-shiraz" size={16} /><MdText text={inhalt.texte.digitaleThaInfrastrukturAuf} /></h3>
+          <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.derStudienalltagAnDer} /><strong className="text-shiraz">app.tha.de</strong><MdText text={inhalt.texte.welchesVieleDieserServices} /></p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -149,8 +86,7 @@ export default function StudiumTHA() {
                   target="_blank" 
                   referrerPolicy="no-referrer"
                   className="text-shiraz hover:underline flex items-center gap-1 font-semibold cursor-pointer"
-                >
-                  Portal öffnen <ExternalLink size={12} />
+                ><MdText text={inhalt.texte.portalÖffnen} /><ExternalLink size={12} />
                 </a>
               </div>
             </div>
@@ -161,11 +97,9 @@ export default function StudiumTHA() {
         <div className="bg-[#fcf8f2] border border-amber-200 p-4 rounded-2xl flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
           <div className="space-y-1">
             <h4 className="font-bold text-amber-950 text-sm flex items-center gap-1.5">
-              <Sparkles className="text-amber-700" size={16} /> app.tha.de als native Web-App installieren
-            </h4>
+              <Sparkles className="text-amber-700" size={16} /><MdText text={inhalt.texte.appThaDeAls} /></h4>
             <p className="text-xs text-amber-900/80 leading-relaxed max-w-2xl">
-              Das Portal <strong className="text-shiraz">app.tha.de</strong> ist als Progressive Web App (PWA) optimiert. Sie können es direkt über die Browserleiste auf Ihrem Smartphone oder Desktop als eigenständige App installieren, um noch schnelleren Zugriff auf Ihren Stundenplan und Mensaspeiseplan zu erhalten.
-            </p>
+              Das Portal <strong className="text-shiraz">app.tha.de</strong><MdText text={inhalt.texte.istAlsProgressiveWeb} /></p>
           </div>
           <a 
             href="https://app.tha.de" 
@@ -182,25 +116,19 @@ export default function StudiumTHA() {
       {/* Module Standard Footer */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Technische Hochschule Augsburg', url: 'https://de.wikipedia.org/wiki/Technische_Hochschule_Augsburg' }
+          { title: inhalt.werte.technischeHochschuleAugsburg, url: 'https://de.wikipedia.org/wiki/Technische_Hochschule_Augsburg' }
         ]}
         weblinks={[
-          { title: 'Zentrales Studentenportal app.tha.de', url: 'https://app.tha.de/' },
-          { title: 'Onlinekatalog OPAC / InfoGuide Bibliothek THA', url: 'https://infoguide.hs-augsburg.de/opacTHA.html' },
-          { title: 'E-Learning Moodle THA', url: 'https://moodle.tha.de/' },
-          { title: 'Stundenpläne (WebUntis) THA', url: 'https://hektor.webuntis.com/WebUntis/?school=hs-augsburg' },
-          { title: 'Career Service THA (Praktika & Jobs)', url: 'https://www.tha.de/studium/berufseinstieg-und-alumni/studium-beruf/career-service/' },
-          { title: 'Mensa-Speisepläne Studierendenwerk Augsburg', url: 'https://studierendenwerk-augsburg.de/speiseplaene/' },
-          { title: 'Fakultät für Architektur und Bauwesen', url: 'https://www.tha.de/hochschule/fakultaet/ab/' }
+          { title: inhalt.werte.zentralesStudentenportalAppTha, url: 'https://app.tha.de/' },
+          inhalt.daten["StudiumTHA.weblinks.1"],
+          { title: inhalt.werte.eLearningMoodleTha, url: 'https://moodle.tha.de/' },
+          { title: inhalt.werte.stundenpläneWebuntisTha, url: 'https://hektor.webuntis.com/WebUntis/?school=hs-augsburg' },
+          { title: inhalt.werte.careerServiceThaPraktika, url: 'https://www.tha.de/studium/berufseinstieg-und-alumni/studium-beruf/career-service/' },
+          { title: inhalt.werte.mensaSpeisepläneStudierendenwerkAugsburg, url: 'https://studierendenwerk-augsburg.de/speiseplaene/' },
+          { title: inhalt.werte.fakultätFürArchitekturUnd, url: 'https://www.tha.de/hochschule/fakultaet/ab/' }
         ]}
-        literatur={[
-          'Modulhandbuch Bachelor Bauingenieurwesen (Fakultät für Architektur und Bauwesen, THA)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'Allgemeine Prüfungsordnung (APO) der Technischen Hochschule Augsburg (THA)', url: 'https://www.tha.de/' },
-          { title: 'Studien- und Prüfungsordnung (SPO) Bauingenieurwesen B.Eng.', url: 'https://www.tha.de/' }
-        ]}
+        literatur={inhalt.daten["StudiumTHA.literatur"]}
+        regelwerke={inhalt.daten["StudiumTHA.regelwerke"]}
         hideFormeln={true}
       />
     </div>

@@ -1,0 +1,273 @@
+{
+  "texte": {
+    "derEnergieausweisNachGmodg": " Der Energieausweis (nach GModG/GEG & DIN V 18599)",
+    "derEnergiebedarfsausweisBewertetDie": "Der **Energiebedarfsausweis** bewertet die energetische Beschaffenheit eines Gebäudes anhand einer ingenieurmäßigen Bilanzierung von Hüllfläche und Anlagentechnik nach **DIN V 18599**. Im Gegensatz zum verbrauchsbasierten Ausweis ist er **vollständig nutzerunabhängig** und erlaubt die objektive energetische Vergleichbarkeit von Gebäuden unabhängig vom individuellen Heizverhalten der Bewohner.",
+    "rechtsstandBeschlussVonBundestag": "**Rechtsstand:** Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
+    "übersichtSkala": " Übersicht & Skala",
+    "annahmen3StufenRechnung": " Annahmen & 3-Stufen-Rechnung",
+    "interaktiverBedarfsRechner": " Interaktiver Bedarfs-Rechner",
+    "praxisReboundGmodgRecht": " Praxis, Rebound & GModG-Recht",
+    "bedarfsVsVerbrauchsausweisWann": "Bedarfs- vs. Verbrauchsausweis: Wann gilt welcher Ausweis?",
+    "bedarfsausweisObjektivBerechnet": " Bedarfsausweis (Objektiv & Berechnet)",
+    "wirdDurchEinePhysikalisch": "Wird durch eine **physikalisch-technische Berechnung** der Gebäudehülle (U-Werte von Wänden, Dach, Fenster) und der Anlagentechnik nach DIN V 18599 ermittelt.",
+    "vollständigNutzerunabhängigSimuliertStan": "**Vollständig nutzerunabhängig:** Simuliert standardisierte Raumtemperaturen (19–20 °C) und Norm-Luftwechselraten.",
+    "gesetzlichePflichtFürAlle": "**Gesetzliche Pflicht** für alle Neubauten sowie Bestandsgebäude mit weniger als 5 Wohneinheiten, deren Bauantrag vor dem 1. November 1977 gestellt wurde und die nicht die 1. WSVO 1977 erfüllen.",
+    "ermöglichtEnergetischeSanierungsfahrplän": "Ermöglicht energetische Sanierungsfahrpläne (iSFP) und deckt bauliche Schwachstellen zuverlässig auf.",
+    "verbrauchsausweisAbrechnungsbasiert": " Verbrauchsausweis (Abrechnungsbasiert)",
+    "eingeschränktZulässig": "Eingeschränkt zulässig",
+    "basiertAufDenRealen": "Basiert auf den **realen Heizkostenabrechnungen** von drei zusammenhängenden, aktuellen Jahren unter rechnerischer Klimabereinigung.",
+    "starkNutzerabhängigSparsamesHeizen": "**Stark nutzerabhängig:** Sparsames Heizen oder Leerstand verfälscht die Kennwerte scheinbar ins Positive; hohes Komfortheizen (23 °C) bestraft das Gebäude.",
+    "günstigerInDerErstellung": "Günstiger in der Erstellung, gibt aber **keine verlässliche Auskunft** über die tatsächliche bauliche Dämmqualität.",
+    "nurZulässigBeiMehrfamilienhäusern": "Nur zulässig bei Mehrfamilienhäusern (≥ 5 Wohneinheiten) oder Bestandsgebäuden, die bereits das Niveau der WSVO 1977 erfüllen.",
+    "interaktiveEnergieeffizienzskalaKlassenA": "Interaktive Energieeffizienzskala (Klassen A+ bis H nach GModG/GEG Anlage 10)",
+    "effizienzhaus40A": "Effizienzhaus 40 (A+)",
+    "gegNeubauStandardB": "GEG-Neubau Standard (B)",
+    "altbauSaniertC": "Altbau saniert (C)",
+    "altbauUnsaniertVor1977": "Altbau unsaniert vor 1977 (H)",
+    "endenergiebedarfInKwhM": "Endenergiebedarf in **kWh / (m² · a)**",
+    "typischeEinstufung": "**Typische Einstufung:** ",
+    "historischerStufenplanVonDer": "Historischer Stufenplan: Von der 1. WSVO 1977 zum GModG 2026",
+    "t19771WärmeschutzverordnungWsvo": "1977 – 1. Wärmeschutzverordnung (WSVO):",
+    "reaktionAufDieErste": "Reaktion auf die erste Ölkrise von 1973. Erstmals verbindliche Obergrenzen für Wärmedurchgangskoeffizienten (k-Werte, heute U-Werte) für Außenwände, Fenster und Dächer.",
+    "t1984199523": "1984 & 1995 – 2. & 3. WSVO:",
+    "verschärfungDerDämmstandardsDie": "Verschärfung der Dämmstandards; die 3. WSVO führte 1995 erstmals den Jahresheizwärmebedarf (Q_h) als zusammenhängende Bilanzgröße ein.",
+    "t20021EnergieeinsparverordnungEnev": "2002 – 1. Energieeinsparverordnung (EnEV):",
+    "ganzheitlicherSprungZusammenführungVon": "Ganzheitlicher Sprung: Zusammenführung von baulichem Wärmeschutz und Heizungsanlagen-Verordnung (HeizAnlV). Erstmals Bilanzierung des Primärenergiebedarfs (Q_P) inklusive Anlagenverlusten und Hilfsenergie.",
+    "t2020GebäudeenergiegesetzGeg": "2020 – Gebäudeenergiegesetz (GEG):",
+    "zusammenfassungVonEnegEnev": "Zusammenfassung von EnEG, EnEV und EEWärmeG in ein einheitliches Gesetzeswerk.",
+    "t2024GegNovelleHeizungsgesetz": "2024 – GEG-Novelle („Heizungsgesetz“) [historisch]:",
+    "pflichtZurNutzungVon": "Pflicht zur Nutzung von mindestens 65 % erneuerbaren Energien bei neu eingebauten Heizungen in Neubaugebieten bzw. nach Verabschiedung kommunaler Wärmepläne.",
+    "t2026GebäudemodernisierungsgesetzGmodg": "2026 – Gebäudemodernisierungsgesetz (GModG):",
+    "beschlussVonBundestagUnd": "Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
+    "dieNormiertenStandardAnnahmen": "Die normierten Standard-Annahmen (Randbedingungen)",
+    "umEineBundesweitObjektive": "Um eine bundesweit objektive Bewertung zu gewährleisten, schließt der Bedarfsausweis das individuelle Verhalten der Bewohner (wie Dauerlüften oder Raumtemperaturen von 24 °C) vollständig aus. Die Bilanzierung erfolgt auf Basis verbindlicher Normparameter nach **DIN V 18599-10**:",
+    "referenzklimaStandort": " Referenzklima (Standort)",
+    "einheitlichesTestreferenzjahrTryDes": "Einheitliches Testreferenzjahr (TRY) des Deutschen Wetterdienstes (DWD), repräsentiert durch die Klimastation **Potsdam**. Damit wird vermieden, dass ein Haus in den Alpen schlechter abschneidet als ein identisches Haus an der milden Nordseeküste.",
+    "fürWohngebäudeGiltIm": "Für Wohngebäude gilt im Heizfall eine Raum-Solltemperatur von **$\\theta_{i} = 20^\\circ\\text{C}$** (DIN V 18599-10); Nachtabsenkung und eingeschränkter Heizbetrieb werden rechnerisch berücksichtigt, sodass die wirksame Mitteltemperatur darunter liegt (im früheren Monatsbilanzverfahren nach DIN V 4108-6 pauschal 19 °C).",
+    "standardmäßigWirdEinLuftwechsel": "Standardmäßig wird ein Luftwechsel von **$n = 0{,}5\\,\\text{h}^{-1}$** unterstellt (alle zwei Stunden wird das Raumvolumen einmal komplett gegen kalte Außenluft ausgetauscht). Mit geprüfter Lüftungsanlage und WRG sinkt dieser Verlustfaktor rechnerisch beträchtlich.",
+    "interneWärmegewinneQI": " Interne Wärmegewinne ($q_i$)",
+    "körperwärmeAnwesenderPersonenLampen": "Körperwärme anwesender Personen, Lampen und Elektrogeräte heizen das Gebäude mit. Pauschaler Ansatz im vereinfachten Verfahren nach DIN V 4108-6: **$q_i = 5\\,\\text{W/m}^2$** Gebäudenutzfläche (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte an (Wohnen: EFH 45 Wh/(m²·d), MFH 90 Wh/(m²·d)).",
+    "warmwasserbedarfQW": " Warmwasserbedarf ($q_w$)",
+    "imVereinfachtenVerfahrenDin": "Im vereinfachten Verfahren (DIN V 4108-6 / DIN V 4701-10) wird der Nutzenergiebedarf für Trinkwarmwasser pauschal mit**$q_w = 12{,}5\\,\\text{kWh}/(\\text{m}^2\\cdot\\text{a})$** bezogen auf die Gebäudenutzfläche $A_N$ angesetzt; DIN V 18599-10 verwendet nutzungsabhängige Werte.",
+    "gebäudenutzflächeAN": " Gebäudenutzfläche ($A_N$)",
+    "wirdVereinfachtAusDem": "Wird vereinfacht aus dem beheizten Brutto-Gebäudevolumen $V_e$ ermittelt:**$A_N = 0{,}32 \\cdot V_e$** (für mittlere Geschosshöhen von 2,5 bis 3,0 m; sonst $A_N = (1/h_G - 0{,}04\\,\\text{m}^{-1}) \\cdot V_e$). Sie ist ca. 20–30 % größer als die reine Wohnfläche nach WoFlV!",
+    "der3StufenBerechnungsgang": "Der 3-Stufen-Berechnungsgang nach DIN V 18599",
+    "nutzwärmebedarfHeizwärmebedarfQH": "Nutzwärmebedarf / Heizwärmebedarf ($Q_h$)",
+    "gebäudehülleLüftung": "Gebäudehülle & Lüftung",
+    "beziffertDieNettoWärmemenge": "Beziffert die Netto-Wärmemenge, die den Räumen über Heizkörper oder Fußbodenheizung aktiv zugeführt werden muss, um trotz Verlusten die Solltemperatur von 19–20 °C aufrechtzuerhalten:",
+    "transmissionsverlustQT": "Transmissionsverlust ($Q_T$):",
+    "wärmeabflussDurchBauteileF": "Wärmeabfluss durch Bauteile. $F_{xi}$ ist der Korrekturfaktor (1,0 Außenluft, 0,6 Erdreich/Keller).$\\Delta U_{WB}$ berücksichtigt Wärmebrücken (0,05 W/m²K bei Beiblatt 2, sonst 0,10).",
+    "lüftungsverlustQV": "Lüftungsverlust ($Q_V$):",
+    "wärmeabflussDurchLufterneuerungSpezifisc": "Wärmeabfluss durch Lufterneuerung. Spezifische Wärmekapazität der Luft $\\rho \\cdot c_p \\approx 0{,}34\\,\\text{Wh}/(\\text{m}^3\\text{K})$.",
+    "derFaktorEtaIst": "* Der Faktor $\\eta$ ist der monatliche Ausnutzungsgrad der Gewinne (an sonnigen Frühlingstagen kann nicht 100 % der Sonnenwärme genutzt werden).",
+    "endenergiebedarfQE": "Endenergiebedarf ($Q_E$)",
+    "anlagentechnikHilfsstrom": "Anlagentechnik & Hilfsstrom",
+    "dieEnergiemengeDieAn": "Die Energiemenge, die an der Grundstücksgrenze (am Gaszähler, Stromzähler oder Pellettank) eingekauft werden muss. Hier schlagen alle **technischen Ineffizienzen** der Heizungsanlage zu Buche:",
+    "heizkörperErzeugenHöhereDeckentemperatur": "Heizkörper erzeugen höhere Deckentemperaturen als Flächenheizungen; Thermostat-Hysterese führt zu Verlusten.",
+    "übergabeRegelung": "**Übergabe & Regelung:**",
+    "wärmeverlusteUngedämmterRohrleitungenIm": "Wärmeverluste ungedämmter Rohrleitungen im Kriechkeller und Standby-Verluste des Warmwasserspeichers.",
+    "verteilungSpeicher": "**Verteilung & Speicher:**",
+    "brennwertkesselEtaApprox0": "Brennwertkessel $\\eta \\approx 0{,}95$; Wärmepumpen nutzen Umweltwärme (JAZ 3,0 bis 4,5), wodurch $Q_E$ drastisch sinkt.",
+    "erzeugerwirkungsgradJaz": "**Erzeugerwirkungsgrad / JAZ:**",
+    "derEndenergiebedarfQE": "👉 Der Endenergiebedarf $Q_E$ bestimmt die Einstufung auf dem Bandtacho (Klassen A+ bis H) und korreliert mit den Heizkosten.",
+    "primärenergiebedarfQP": "Primärenergiebedarf ($Q_P$)",
+    "ökologischeGesamtbilanz": "Ökologische Gesamtbilanz",
+    "derPrimärenergiebedarfBewertetDie": "Der Primärenergiebedarf bewertet die ökologische Umweltbelastung inklusive der gesamten Vorkette (Förderung, Raffination, Ferntransport, Leitungsverluste im Stromnetz):",
+    "primärenergiefaktorenFPNicht": "Primärenergiefaktoren ($f_P$, nicht erneuerbarer Anteil) nach GModG/GEG Anlage 4:",
+    "erdgasHeizöl": "Erdgas & Heizöl",
+    "holzpelletsScheitholz": "Holzpellets / Scheitholz",
+    "stromMixNetzbezug": "Strom-Mix (Netzbezug)",
+    "fernwärmeKwk": "Fernwärme (KWK)",
+    "wichtigeBesonderheitBeiWärmepumpen": "**Wichtige Besonderheit bei Wärmepumpen:** Obwohl der Strom-Primärenergiefaktor mit 1,8 höher als bei Gas (1,1) liegt, ist der Gesamt-Primärenergiebedarf einer Wärmepumpe wegen der Jahresarbeitszahl von ca. 3,5 viel geringer:<br>$Q_P \\approx \\frac{Q_h}{3{,}5} \\cdot 1{,}8 = Q_h \\cdot 0{,}51$ (mehr als 50 % Primärenergie-Einsparung gegenüber Gasbrennwert!).",
+    "derGesetzlicheNachweisDas": "Der gesetzliche Nachweis: Das Referenzgebäude-Verfahren",
+    "imNeubauSchreibtDas": "Im Neubau schreibt das GModG (vormals GEG) keine starre absolute Zahl vor, sondern arbeitet mit einem virtuellen **Referenzgebäude** (Anlage 1, §§ 15 und 16):",
+    "t1PrimärenergieAnforderung": "1. Primärenergie-Anforderung:",
+    "seit2023GiltFür": "Seit 2023 gilt für neue Wohngebäude das EH-55-Niveau als gesetzlicher Mindeststandard (§ 15: 55 % des Referenzgebäudes).",
+    "t2BaulicherWärmeschutzHülle": "2. Baulicher Wärmeschutz (Hülle):",
+    "t16HöchstensDas1": "§ 16: höchstens das 1,0-Fache des Referenzwerts. Verhindert, dass schlechte Dämmung durch effiziente Haustechnik ausgeglichen wird.",
+    "liveSimulatorBedarfsausweisNach": "Live-Simulator: Bedarfsausweis nach DIN V 18599 berechnen",
+    "verändernSieGebäudeparameterDämmstandard": "Verändern Sie Gebäudeparameter, Dämmstandards und Heiztechnik, um in Echtzeit die Auswirkung auf Nutzwärme ($Q_h$), Endenergie ($Q_E$), Primärenergie ($Q_P$) und die Energieeffizienzklasse zu sehen.",
+    "t1GebäudegrößeTyp": " 1. Gebäudegröße & Typ",
+    "einfamilienhausFreistehend": "Einfamilienhaus (freistehend)",
+    "mehrfamilienhausKompakt": "Mehrfamilienhaus (kompakt)",
+    "gebäudenutzflächeAN2": "Gebäudenutzfläche ($A_N$):",
+    "t2ThermischeGebäudehülleU": " 2. Thermische Gebäudehülle (U-Werte)",
+    "vor1977Unsaniert": "Vor 1977 (unsaniert)",
+    "wandU14": "Wand U≈1.4, Fenster U≈3.0",
+    "teilsaniertWsvo95": "Teilsaniert (WSVO 95)",
+    "wandU045": "Wand U≈0.45, Fenster U≈1.6",
+    "neubauGegStandard": "Neubau GEG-Standard",
+    "wandU024": "Wand U≈0.24, Fenster U≈1.1",
+    "effizienzhaus40": "Effizienzhaus 40",
+    "wandU014": "Wand U≈0.14, 3-fach Glas U≈0.75",
+    "berechneterSpezifischerTransmissionsverl": "Berechneter spezifischer Transmissionsverlust der Hülle: ",
+    "t3Lüftungskonzept": " 3. Lüftungskonzept",
+    "n050H": "n = 0,50 h⁻¹",
+    "n045H": "n = 0,45 h⁻¹",
+    "t80Rückgewinnung": "80 % Rückgewinnung",
+    "t4HeizsystemEnergieträger": " 4. Heizsystem & Energieträger",
+    "jaz33Fp": "JAZ ≈ 3,3 | fp = 1,8",
+    "jaz43Fp": "JAZ ≈ 4,3 | fp = 1,8",
+    "t096Fp1": "η ≈ 0,96 | fp = 1,1",
+    "t088Fp0": "η ≈ 0,88 | fp = 0,2",
+    "fernwärmeKwk2": "Fernwärme (KWK)",
+    "t098Fp0": "η ≈ 0,98 | fp = 0,4",
+    "t084Fp1": "η ≈ 0,84 | fp = 1,1",
+    "ergebnisEnergieausweis": "Ergebnis Energieausweis",
+    "endenergiebedarfQe": "Endenergiebedarf (QE)",
+    "basisFürBandtachoKosten": "Basis für Bandtacho & Kosten",
+    "primärenergiebedarfQp": "Primärenergiebedarf (QP)",
+    "nachweisgrößeNach15Fp": "Nachweisgröße nach § 15 (fp = ",
+    "transmissionsverlustQT2": "Transmissionsverlust ($Q_T$):",
+    "lüftungsverlustQV2": "Lüftungsverlust ($Q_V$):",
+    "solarInterneGewinneEta": "Solar- & Interne Gewinne ($\\eta \\cdot Q_g$):",
+    "nutzwärmebedarfQH": "Nutzwärmebedarf ($Q_h$):",
+    "geschätzteCoEmissionen": "Geschätzte CO₂-Emissionen:",
+    "kgCoMA": " kg CO₂ / (m² · a)",
+    "hervorragenderPassivhausBzwEffizienzhaus": "Hervorragender Passivhaus- bzw. Effizienzhausstandard. Die Wärmeverluste sind minimal, die Haustechnik arbeitet hocheffizient.",
+    "guterZeitgemäßerStandardErfüllt": "Guter zeitgemäßer Standard. Erfüllt die Neubaustandards bzw. entspricht einem vorbildlich modernisierten Altbau.",
+    "dringenderSanierungsbedarfHoheTransmissi": "Dringender Sanierungsbedarf. Hohe Transmissionsverluste führen zu enormen Heizkosten und CO₂-Abgaben.",
+    "ingenieurmäßigeEinordnung": "**Ingenieurmäßige Einordnung:**",
+    "dieDiskrepanzZwischenBedarf": "Die Diskrepanz zwischen Bedarf und Realität: Prebound- & Rebound-Effekt",
+    "inDerPraxisWeichen": "In der Praxis weichen die realen Verbrauchsabrechnungen häufig gravierend vom rechnerischen Bedarfsausweis ab. Ursache ist die menschliche Verhaltensanpassung:",
+    "derPreboundEffektIm": " Der Prebound-Effekt (im unsanierten Altbau)",
+    "beiUnsaniertenAltbautenKlassen": "Bei unsanierten Altbauten (Klassen F–H) liegt der **reale Verbrauch oft 30 % bis 50 % unter** dem theoretischen Bedarfswert!",
+    "bewohnerHeizenAusKostengründen": "Bewohner heizen aus Kostengründen nicht die gesamte Wohnung auf 20 °C.",
+    "schlafzimmerFlureOderGästezimmer": "Schlafzimmer, Flure oder Gästezimmer bleiben völlig ungeheizt.",
+    "nachtsUndBeiAbwesenheit": "Nachts und bei Abwesenheit wird die Temperatur drastisch abgesenkt.",
+    "derReboundEffektNach": " Der Rebound-Effekt (nach Sanierung / im Neubau)",
+    "nachEinerTeurenSanierung": "Nach einer teuren Sanierung oder im Passivhaus wird oft **deutlich mehr geheizt** als berechnet:",
+    "weilHeizenKaumNoch": "Weil Heizen kaum noch Geld kostet, stellen Bewohner 22–24 °C Wohlfühltemperatur ein (+1 °C Raumtemperatur steigert den Heizwärmebedarf um ca. 6 %).",
+    "fensterWerdenImWinter": "Fenster werden im Winter unbedarft gekippt statt stoßgelüftet.",
+    "rechnerischErhoffteEinsparungenWerden": "Rechnerisch erhoffte Einsparungen werden zu 10–30 % durch Komfortansprüche kompensiert.",
+    "gesetzlichePflichtenNachGmodg": " Gesetzliche Pflichten nach GModG, vormals GEG (§§ 79–88)",
+    "vorlageUndÜbergabepflichtBei": "Vorlage- und Übergabepflicht bei Besichtigung (§ 80 Abs. 4 und 5):",
+    "beimVerkaufOderDer": "Beim Verkauf oder der Neuvermietung eines Gebäudes oder einer Wohnung muss der Energieausweis potenziellen Interessenten bereits bei der ersten Besichtigung unaufgefordert vorgelegt und bei Vertragsabschluss unverzüglich als Kopie übergeben werden.",
+    "pflichtangabenInImmobilienanzeigen87": "Pflichtangaben in Immobilienanzeigen (§ 87):",
+    "inKommerziellenAnzeigenZ": "In kommerziellen Anzeigen (z. B. ImmoScout, Zeitungen) müssen Pflichtangaben zwingend genannt werden: Art des Ausweises (Bedarfs- oder Verbrauchsausweis), Endenergie-Kennwert, wesentlicher Energieträger der Heizung, Baujahr des Gebäudes und die Energieeffizienzklasse (A+ bis H).",
+    "gültigkeitModernisierungsempfehlungen79A": "Gültigkeit & Modernisierungsempfehlungen (§ 79 Abs. 3, § 84):",
+    "energieausweiseSindGenau10": "Energieausweise sind genau **10 Jahre gültig**. Ein wesentlicher Bestandteil jedes Energieausweises für Bestandsgebäude sind fachlich fundierte und wirtschaftlich zumutbare **Modernisierungsempfehlungen** (z. B. Dämmung der obersten Geschossdecke, Fenstertausch, hydraulischer Abgleich, Heizungstausch).",
+    "aushangpflichtInÖffentlichenGebäuden": "Aushangpflicht in öffentlichen Gebäuden (§ 80 Abs. 6 und 7):",
+    "inBehördlichenGebäudenMit": "In behördlichen Gebäuden mit starkem Publikumsverkehr über 250 m² Nutzfläche sowie gewerblichen Bauten über 500 m² Nutzfläche muss der Energieausweis an gut sichtbarer Stelle ausgehängt werden. Ab 01.01.2027 werden Nichtwohngebäude im Energieausweis erstmals in Effizienzklassen A bis G eingestuft (Anlage 10a GModG; Bezug: Primärenergiebedarf im Verhältnis zum Referenzgebäude); es ist dann nur noch der Bedarfsausweis zulässig."
+  },
+  "werte": {
+    "nutzbareWärmegewinne": "Nutzbare Wärmegewinne",
+    "solareUndInterneGewinne": "Solare und interne Gewinne, gewichtet mit dem Ausnutzungsgrad η:",
+    "verlusteMinusGewinneAuf": "Verluste minus Gewinne, auf ganze kWh gerundet (mindestens 10 kWh/(m²a)):",
+    "dinV18599Gmodg": "DIN V 18599; GModG/GEG Anlage 10",
+    "beispiel1EndUnd": "Beispiel 1: End- und Primärenergie – Gas-Brennwertkessel gegen Wärmepumpe",
+    "beiGleicherGebäudehülleHalbiert": "Bei gleicher Gebäudehülle halbiert die Wärmepumpe den Primärenergiebedarf und landet drei Klassen besser, weil die Effizienzklasse die Endenergie bewertet.",
+    "gmodgGegAnlage4": "GModG/GEG Anlage 4 (Primärenergiefaktoren) und Anlage 10 (Effizienzklassen), Lesefassung Stand 29.07.2026",
+    "beispiel2GebäudenutzflächeUnd": "Beispiel 2: Gebäudenutzfläche und Gültigkeit des Energieausweises",
+    "derBezugAufA": "Der Bezug auf A_N statt Wohnfläche ist eine häufige Ursache für Missverständnisse beim Vergleich von Energieausweis und Heizkostenabrechnung.",
+    "gmodgGebäudenutzflächeAN": "GModG: Gebäudenutzfläche A_N § 3 Abs. 1 Nr. 10 und § 25 Abs. 10 (DIN V 18599-1, Gl. 30); § 79 Abs. 3 (Gültigkeit 10 Jahre)",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: GEG → GModG, Paragrafen, Primärenergiefaktoren und Effizienzklassen gegen die Lesefassung geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "getScaleValue": {
+      "val": 260,
+      "class": "H",
+      "desc": "Typischer unsanierter Altbau (vor der 1. WSVO 1977)"
+    },
+    "getScaleValue_2": {
+      "val": 85,
+      "class": "C",
+      "desc": "Umfassend energetisch modernisierter Altbau"
+    },
+    "getScaleValue_3": {
+      "val": 55,
+      "class": "B",
+      "desc": "Standard-Neubau nach Mindestanforderung GModG/GEG (55 % des Referenzgebäudes)"
+    },
+    "getScaleValue_4": {
+      "val": 25,
+      "class": "A+",
+      "desc": "KfW/BEG Effizienzhaus 40 (höchster Dämmstandard)"
+    },
+    "Energieausweis.schritte": [
+      {
+        "titel": "Wärmebedarf",
+        "erklaerung": "Nutzwärme Heizung und Trinkwarmwasser einschließlich Verteilverlusten:",
+        "formel": "q_h + q_w + q_{Verl} = 60 + 12{,}5 + 7{,}5 = 80\\,\\text{kWh/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Gas-Brennwert",
+        "erklaerung": "Erzeugernutzungsgrad 0,96, f_P = 1,1 (Gas) bzw. 1,8 (Hilfsstrom 3,5 kWh/(m²a)):",
+        "formel": "q_E = \\frac{80}{0{,}96} + 3{,}5 = 86{,}8, \\quad q_P = 83{,}3 \\cdot 1{,}1 + 3{,}5 \\cdot 1{,}8 = 98{,}0\\,\\text{kWh/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Luft-Wasser-Wärmepumpe",
+        "erklaerung": "Jahresarbeitszahl 3,3, Strom f_P = 1,8, Hilfsstrom 2,5 kWh/(m²a):",
+        "formel": "q_E = \\frac{80}{3{,}3} + 2{,}5 = 26{,}7, \\quad q_P = 26{,}7 \\cdot 1{,}8 = 48{,}1\\,\\text{kWh/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Effizienzklasse",
+        "erklaerung": "Die Klasse richtet sich bei Wohngebäuden nach der Endenergie (Anlage 10):",
+        "formel": "86{,}8 \\Rightarrow \\text{C}, \\qquad 26{,}7 \\Rightarrow \\text{A+}"
+      }
+    ],
+    "Energieausweis.schritte_2": [
+      {
+        "titel": "Beheiztes Volumen",
+        "erklaerung": "Einfamilienhaus 10 m × 9 m Grundfläche, beheizte Höhe 6,0 m (zwei Geschosse, h_G = 2,75 m):",
+        "formel": "V_e = 10 \\cdot 9 \\cdot 6{,}0 = 540\\,\\text{m}^3"
+      },
+      {
+        "titel": "Gebäudenutzfläche",
+        "erklaerung": "Geschosshöhe zwischen 2,5 und 3,0 m, daher Pauschalfaktor 0,32:",
+        "formel": "A_N = 0{,}32 \\cdot 540 = 172{,}8\\,\\text{m}^2"
+      },
+      {
+        "titel": "Vergleich Wohnfläche",
+        "erklaerung": "Bei rund 140 m² Wohnfläche ist A_N etwa 23 % größer – Kennwerte je m² A_N wirken daher günstiger als je m² Wohnfläche.",
+        "formel": "\\frac{172{,}8}{140} = 1{,}23"
+      },
+      {
+        "titel": "Gültigkeit",
+        "erklaerung": "Ausgestellt am 1. Oktober 2026 (§ 79 Abs. 3):",
+        "formel": "\\text{gültig bis 30. September 2036}"
+      }
+    ],
+    "Energieausweis.literatur": [
+      "Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017",
+      "Pistohl, W. et al.: Handbuch der Gebäudetechnik, Band 1 und 2. Köln: Reguvis (aktuelle Auflage)",
+      "Hegger, M.; Fuchs, M.; Stark, T.; Zeumer, M.: Energie Atlas – Nachhaltige Architektur. München: Edition Detail 2007"
+    ],
+    "Energieausweis.regelwerke": [
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, in Kraft gestaffelt ab 29.07.2026; vormals Gebäudeenergiegesetz GEG; Neubau §§ 15/16 und Energieausweis §§ 79–88 unverändert nummeriert; Bestand teils neu: Nachrüstung § 35, Änderung § 36 statt §§ 47/48)",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      },
+      {
+        "title": "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG § 20 referenziert); Nachfolgereihe DIN/TS 18599 seit 2025-10"
+      },
+      {
+        "title": "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)"
+      }
+    ],
+    "Energieausweis": [
+      {
+        "formel": "Q_h = (Q_T + Q_V) - \\eta \\cdot (Q_s + Q_i) \\quad [\\text{kWh/a}]",
+        "erklaerung": "Nutzwärmebedarf / Heizwärmebedarf nach DIN V 18599 als Differenz aus Transmissions- und Lüftungsverlusten abzüglich nutzbarer solarer und interner Wärmegewinne.",
+        "quelle": "DIN V 18599-2"
+      },
+      {
+        "formel": "Q_P = \\sum_i \\left( Q_{E,i} \\cdot f_{P,i} \\right) \\le Q_{P,\\text{zul}} \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]",
+        "erklaerung": "Berechnung des Jahres-Primärenergiebedarfs QP aus den Endenergiemengen QE je Energieträger und den zugehörigen Primärenergiefaktoren fP nach GModG/GEG Anlage 4.",
+        "quelle": "GModG § 20 i. V. m. DIN V 18599:2018-09"
+      },
+      {
+        "formel": "H'_T = \\frac{\\sum_k \\left(A_k \\cdot U_k \\cdot F_{x,k}\\right) + \\Delta U_{WB} \\cdot A}{A} \\le H'_{T,\\text{zul}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]",
+        "erklaerung": "Spezifischer transmissionsbedingter Wärmeverlust H'T der wärmeübertragenden Hüllfläche A.",
+        "quelle": "GModG Anlage 1 / DIN V 18599-2:2018-09"
+      }
+    ],
+    "Energieausweis_2": [
+      {
+        "formel": "Q_P = \\sum_i \\left(Q_{E,i} \\cdot f_{P,i}\\right) \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]",
+        "erklaerung": "Verknüpfung von Endenergie und ökologischer Primärenergie über den Primärenergiefaktor fP.",
+        "quelle": "GModG § 22, Anlage 4"
+      }
+    ]
+  }
+}

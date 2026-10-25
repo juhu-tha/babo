@@ -1,0 +1,32 @@
+{
+  "texte": {
+    "lektion2Von6": "Lektion 2 von 6 • 20% bis 40%",
+    "rheologischeBaustoffphysikDieNotwendigke": "Rheologische Baustoffphysik & Die Notwendigkeit hochfester Spannstähle",
+    "kriechenUndSchwindenDes": "Kriechen und Schwinden des Betons als physikalische Ursache für die Notwendigkeit von Spannstahl Y1860.",
+    "werkstoffphysikalischeRandbedingungen": "Werkstoffphysikalische Randbedingungen:",
+    "früheVersucheZurEinführung": "Frühe Versuche zur Einführung von Vorspannungen (u. a. P. H. Jackson 1886, C. W. Doehring 1888) mit gewöhnlichem Baustahl führten nach kurzer Standzeit zum vollständigen Verlust der Vorspannkraft.",
+    "dieUrsacheLiegtIm": "Die Ursache liegt im rheologischen Verhalten des Betons: Beton schwindet infolge Wasserabgabe an die Umgebung ($\\varepsilon_{cs}$) und kriecht zeitabhängig unter Dauerlast ($\\varepsilon_{cc}$). Die Gesamtverkürzung des Betons über die Nutzungsdauer erreicht typische Werte von$\\Delta \\varepsilon_c \\approx 1{,}0\\text{ bis }1{,}2\\,\\text{‰}$.",
+    "verhaltenVonNormalemBetonstahl": " Verhalten von normalem Betonstahl B500",
+    "untauglichFürVorspannung": "Untauglich für Vorspannung",
+    "betonstahlB500BesitztEine": "Betonstahl B500 besitzt eine Bemessungsstreckgrenze von $f_{yd} = 435\\,\\text{N/mm}^2$. Seine elastische Grenzdehnung beträgt:",
+    "verkürztSichDerBeton": "Verkürzt sich der Beton durch Kriechen und Schwinden um $\\Delta \\varepsilon \\approx 1{,}0\\,\\text{‰}$, sinkt die Stahlspannung um:",
+    "diesEntsprichtEinemVerlust": "Dies entspricht einem Verlust von rund 46 % (bei 1,0 ‰) bis über 80 % (bei 1,8 ‰) der zulässigen Spannung. Nach Abzug von Einbautoleranzen und Reibung verbleibt nahezu keine dauerhafte Spannkraft im System.",
+    "verhaltenVonHochfestemSpannstahl": " Verhalten von hochfestem Spannstahl Y1860",
+    "normkonformerStandard": "Normkonformer Standard",
+    "spannstahlY1860ZB": "Spannstahl Y1860 (z. B. 7-drähtige Spannstahllitzen) besitzt eine Zugfestigkeit von $f_{pk} = 1860\\,\\text{N/mm}^2$. Die zulässige Anfangsspannung beträgt nach EC2 $\\sigma_{pm0} = \\min(0{,}75 \\cdot f_{pk};\\, 0{,}85 \\cdot f_{p0{,}1k}) = 1360\\,\\text{N/mm}^2$:",
+    "beiTypischerBetonverkürzungVon": "Bei typischer Betonverkürzung von $1{,}0\\,\\text{‰}$ beträgt der Spannungsverlust:",
+    "über8085Der": "Über 80–85 % der eingeprägten Vorspannkraft bleiben dauerhaft wirksam. Erst hochfeste, kaltgezogene Stähle machten den Spannbetonbau baupraktisch realisierbar (Freyssinet, ab 1928 mit hochfesten Drähten).",
+    "interaktiveSimulationEinflussDer": " Interaktive Simulation: Einfluss der Betonstauchung",
+    "verkürzungDeltaVarepsilonC": "Verkürzung $\\Delta \\varepsilon_c$: ",
+    "gesamteZeitabhängigeBetonverkürzungKriec": "Gesamte zeitabhängige Betonverkürzung (Kriechen $\\varepsilon_{cc}$ + Schwinden $\\varepsilon_{cs}$):",
+    "t020GeringeDauerlast": "0,20 ‰ (Geringe Dauerlast)",
+    "typisch081": "typisch 0,8–1,5 ‰ (ε_cs + φ·σ_c/E_cm)",
+    "t200SehrUngünstiges": "2,00 ‰ (Sehr ungünstiges Klima & hohe Dauerlast)",
+    "betonstahlB500": "Betonstahl B500",
+    "spannstahlY1860": "Spannstahl Y1860",
+    "detaillierteBeiwerteNachEurocode": "Detaillierte Beiwerte nach Eurocode 2:",
+    "dieExaktenZeitfunktionenFür": "Die exakten Zeitfunktionen für Relaxation, Kriechzahl $\\varphi(t,t_0)$ und Endschwindmaß finden Sie im Reiter **\"Baustoffkennwerte\"**.",
+    "zuDenBaustoffkennwerten": " Zu den Baustoffkennwerten",
+    "weiterZuKapitel3": "Weiter zu Kapitel 3 "
+  }
+}

@@ -18,6 +18,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/nawaro/Nawaro.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Define FNR Product Type
 interface FnrProduct {
@@ -48,220 +50,7 @@ export default function Nawaro() {
   const [navWallType, setNavWallType] = useState<'dach' | 'innen' | 'fassade'>('dach');
 
   // FNR Product Database
-  const fnrProducts: FnrProduct[] = [
-    {
-      id: 'holzfaser',
-      name: 'Holzfaserdämmstoffe (HFD)',
-      category: 'daemmung',
-      rho: '50 - 270',
-      lambda: '0,038 - 0,050',
-      c: '2.100',
-      mu: '3 - 5',
-      fireClass: 'E (normalentflammbar, vgl. B2)',
-      advantages: [
-        'Guter sommerlicher Wärmeschutz bei Platten durch hohe Wärmespeicherfähigkeit ρ·c',
-        'Gute Schallschutzwirkung im Bauteil durch Masse und hohen Strömungswiderstand',
-        'Diffusionsoffen (μ ≈ 3–5) und sorptionsfähig',
-        'Speichert biogenen Kohlenstoff'
-      ],
-      disadvantages: [
-        'Höheres Eigengewicht beansprucht die Tragstruktur stärker',
-        'Teurer im Vergleich zu konventionellem EPS'
-      ],
-      description: 'Hergestellt aus Sägeresten und Nadelholz-Hackschnitzeln im Nass- oder Trockenverfahren (flexible Matten ca. 50 kg/m³, Platten bis ca. 270 kg/m³). Die Fasern verfilzen unter Druck und Hitze, teils unter Ausnutzung holzeigener Bindekräfte (Lignin).',
-      fnrUsage: 'Aufsparrendämmung, Zwischensparrendämmung, Putzträgerplatten im Holzrahmenbau (WDVS).'
-    },
-    {
-      id: 'zellulose',
-      name: 'Zellulosedämmstoff',
-      category: 'daemmung',
-      rho: '30 - 65',
-      lambda: '0,037 - 0,043',
-      c: '2.150',
-      mu: '1 - 2',
-      fireClass: 'B-s2, d0 oder E – produktabhängig (ETA/Leistungserklärung)',
-      advantages: [
-        'Günstiges Preis-Leistungs-Verhältnis',
-        'Fugenfreier Einbau als Einblasdämmung (vermeidet Wärmebrücken)',
-        'Hohe spezifische Wärmekapazität',
-        'Ressourcenschonend, da aus Altpapier hergestellt'
-      ],
-      disadvantages: [
-        'Setzungsverhalten bei unsachgemäßem Einblasen möglich',
-        'Nicht geeignet für direkte Beanspruchung durch flüssiges Wasser'
-      ],
-      description: 'Hergestellt durch trockene Zerfaserung von sortiertem Altpapier (überwiegend Tageszeitungen). Zum Schutz vor Brand und Schimmelpilzen werden Zusätze beigegeben (z. B. Borsalze, zunehmend ersetzt durch Ammoniumphosphat oder -sulfat).',
-      fnrUsage: 'Einblasdämmung in belüfteten Flachdächern, Holzrahmenwänden und Deckenhohlräumen.'
-    },
-    {
-      id: 'hanf',
-      name: 'Hanffaserdämmung',
-      category: 'daemmung',
-      rho: '30 - 45',
-      lambda: '0,038 - 0,042',
-      c: '1.700',
-      mu: '1 - 2',
-      fireClass: 'E (normalentflammbar) / B2',
-      advantages: [
-        'Geringe Anfälligkeit für Schimmel und Schädlinge (Herstellerangabe; Feuchteschutz bleibt erforderlich)',
-        'Gute Elastizität vereinfacht den Klemm-Einbau zwischen den Sparren',
-        'Anbau mit geringem Pflanzenschutzmitteleinsatz (schnellwüchsig, unterdrückt Beikraut)'
-      ],
-      disadvantages: [
-        'Zusatz von Bindefasern (z.B. Biopolymere oder Stützkunststoffe) für Formstabilität nötig',
-        'Zuschnitt erfordert geeignetes Werkzeug (Dämmstoffmesser oder -säge)'
-      ],
-      description: 'Nutzung der robusten Bastfasern des Hanfstängels. Die Fasern werden mit thermoplastischen Stützfasern (meist Polyester-Bikomponentenfasern, seltener biobasiertes PLA) thermisch zu Matten verfestigt.',
-      fnrUsage: 'Zwischensparrendämmung, Gefachdämmung im Innenausbau und Holzbau.'
-    },
-    {
-      id: 'stroh',
-      name: 'Baustroh / Baustrohballen',
-      category: 'daemmung',
-      rho: '85 - 115',
-      lambda: '0,043 - 0,048',
-      c: '2.000',
-      mu: '1 - 2',
-      fireClass: 'E (normalentflammbar); verputzte Strohballenwand nach FASBA F30-B (8 mm Lehmputz) bzw. F90-B (10 mm Kalkputz)',
-      advantages: [
-        'Sehr geringer Herstellungsaufwand (Nebenprodukt der Getreideernte)',
-        'Kostengünstiger, regional verfügbarer Rohstoff',
-        'Unterstützt regionale landwirtschaftliche Kreisläufe'
-      ],
-      disadvantages: [
-        'Hohe Wandstärken (~35-50 cm) für guten Dämmwert erforderlich',
-        'Erfordert konsequenten Feuchteschutz während Lagerung und Bauphase'
-      ],
-      description: 'Weizen-, Roggen- oder Dinkelstroh, das zu formstabilen Ballen gepresst wird. Der Verwendbarkeitsnachweis erfolgt über die ETA-17/0247 („Baustroh“); andere Ballen oder lasttragender Strohbau erfordern eine Zustimmung im Einzelfall.',
-      fnrUsage: 'Ausfachung von Holzständerkonstruktionen, beidseitig mit Lehm- oder Kalkputz.'
-    },
-    {
-      id: 'paludikultur',
-      name: 'Rohrkolben- und Schilfdämmplatten (Typha)',
-      category: 'daemmung',
-      rho: '120 - 240',
-      lambda: '0,050 - 0,065',
-      c: '1.800',
-      mu: '5 - 10',
-      fireClass: 'E / B2',
-      advantages: [
-        'Geringe Feuchteempfindlichkeit (Herstellerangabe)',
-        'Paludikultur ermöglicht die Wiedervernässung von Mooren und senkt deren CO₂-Emissionen',
-        'Geeignet als Putzträger bei Innendämmung'
-      ],
-      disadvantages: [
-        'Höhere Wärmeleitfähigkeit als Holzfaser (mehr Dicke für gleichen U-Wert)',
-        'Bisher geringe Marktverfügbarkeit'
-      ],
-      description: 'Biomasse aus Paludikulturen (Anbau auf wiedervernässten Moorböden). Die Pflanzenteile werden zu Platten gepresst und gebunden (je nach Produkt mineralisch oder mit Draht). Kennwerte sind Richtwerte – maßgebend ist der Verwendbarkeitsnachweis.',
-      fnrUsage: 'Innendämmung von Fachwerkbauten, feuchtebelastete Deckenbereiche, Putzträger.'
-    },
-    {
-      id: 'seegras',
-      name: 'Seegras (Zostera / Neptungras)',
-      category: 'daemmung',
-      rho: '65 - 85',
-      lambda: '0,039 - 0,045',
-      c: '2.000',
-      mu: '1 - 2',
-      fireClass: 'laut Hersteller schwerentflammbar ohne Flammschutzmittel (Euroklasse manuell prüfen)',
-      advantages: [
-        'Hoher Mineral- und Salzgehalt erschwert Entflammung und Schimmelbefall (Herstellerangabe)',
-        'Geringe Anfälligkeit für Schädlinge (Herstellerangabe)',
-        'Je nach Produkt ohne Zusatz- und Bindemittel'
-      ],
-      disadvantages: [
-        'Wird meist als loses Schüttmaterial eingebaut (Verarbeitungsaufwand)',
-        'Verfügbarkeit hängt stark von Meeresanschwemmungen ab'
-      ],
-      description: 'Strandgut des Neptungrases (Posidonia oceanica, Mittelmeer) oder des Echten Seegrases (Zostera, Ostsee). Beides sind Seegräser (Blütenpflanzen), keine Algen.',
-      fnrUsage: 'Dämmschüttung für Holzbalkendecken und Dächer, Einblasdämmung.'
-    },
-    {
-      id: 'clt',
-      name: 'Brettsperrholz (CLT / Cross-Laminated Timber)',
-      category: 'tragwerk',
-      rho: '450 - 500',
-      lambda: '0,13',
-      c: '1.600',
-      mu: '20 - 50',
-      fireClass: 'D-s2, d0 / normalentflammbar',
-      advantages: [
-        'Ermöglicht schnellen, trockenen und großflächigen Rohbau',
-        'Lastabtrag in zwei Richtungen (Plattenwirkung durch kreuzweise Lagen)',
-        'Speichert biogenen Kohlenstoff für die Nutzungsdauer'
-      ],
-      disadvantages: [
-        'Schallschutz im mehrgeschossigen Holzbau erfordert Entkopplung und Zusatzmasse',
-        'Verklebung erschwert die sortenreine stoffliche Verwertung'
-      ],
-      description: 'Massivholztafeln, die aus mindestens drei kreuzweise verklebten Einschichtplatten aus Nadelholz bestehen. Das Kreuzlagenprinzip minimiert Quellen und Schwinden.',
-      fnrUsage: 'Tragende Wand-, Decken- und Dachplatten für mehrgeschossigen Wohnungsbau.'
-    },
-    {
-      id: 'hempcrete',
-      name: 'Hanfkalk (Hempcrete)',
-      category: 'lehm_putz',
-      rho: '250 - 450',
-      lambda: '0,060 - 0,090',
-      c: '1.600',
-      mu: '4 - 8',
-      fireClass: 'produktabhängig, häufig B-s1, d0 (Leistungserklärung prüfen)',
-      advantages: [
-        'Kombination aus Dämmwirkung und Wärmespeicherfähigkeit',
-        'Günstige Treibhausgasbilanz: biogener Kohlenstoff im Hanf, Kalk nimmt beim Erhärten CO₂ wieder auf (Karbonatisierung)',
-        'Alkalisches Milieu hemmt Schimmelbildung; feuchtepuffernd'
-      ],
-      disadvantages: [
-        'Nicht als lasttragendes Strukturbauteil für mehrgeschossige Gebäude geeignet (Traggerippe nötig)',
-        'Sehr lange Trocknungszeit auf der Baustelle (bei Nass-Gusstechnik)'
-      ],
-      description: 'Eine plastische Mischung aus holzigen Hanfschäben (dem zerkleinerten Pflanzenstängel des Nutzhanfs) und kalkbasierten Bindemitteln (Luftkalk, hydraulischer Kalk).',
-      fnrUsage: 'Monolithische Ausmauerung von Gefachen, dicke Innendämmschalen, Bodenunterbauten.'
-    },
-    {
-      id: 'linoleum',
-      name: 'Linoleum',
-      category: 'boden',
-      rho: '1.150 - 1.250',
-      lambda: '0,17',
-      c: '1.400',
-      mu: '1.000 - 5.000 (Richtwert)',
-      fireClass: 'Cfl-s1 (schwerentflammbar, vgl. B1)',
-      advantages: [
-        'Überwiegend aus nachwachsenden und mineralischen Rohstoffen (Herstellerangabe bis ca. 98 %)',
-        'Abriebfest und langlebig (Nutzungsdauer mehrere Jahrzehnte, Richtwert)',
-        'Bakteriostatische Wirkung laut Hersteller (Einsatz in Schulen und Kliniken)'
-      ],
-      disadvantages: [
-        'Geruchsentwicklung (Leinölgeruch) in den ersten Wochen nach Verlegung',
-        'Erfordert ebenen Untergrund und fachgerechtes Verschweißen der Bahnen'
-      ],
-      description: 'Zusammensetzung aus oxidiertem Leinöl (Linoleumzement), Naturharzen (Kolophonium), Holzmehl, Kalksteinmehl und organischen Pigmenten auf einem Juteträgergewebe.',
-      fnrUsage: 'Hochbelastbarer, elastischer Bodenbelag in öffentlichen und privaten Räumen.'
-    },
-    {
-      id: 'kork',
-      name: 'Expanderkork / Korkschrot',
-      category: 'daemmung',
-      rho: '110 - 180',
-      lambda: '0,040 - 0,045',
-      c: '1.900',
-      mu: '5 - 10',
-      fireClass: 'E / B2',
-      advantages: [
-        'Hohe Dimensionsstabilität und verrottungsbeständig',
-        'Gute Trittschallminderung und Druckfestigkeit',
-        'Kann ohne chemische Flammschutzmittel verbaut werden'
-      ],
-      disadvantages: [
-        'Lange Transportwege (primär aus Portugal/Mittelmeerraum)',
-        'Begrenzte Verfügbarkeit (dieselbe Korkeiche wird nur etwa alle 9 Jahre geschält)'
-      ],
-      description: 'Gewonnen aus der Rinde der Korkeiche. Zur Plattenherstellung wird Korkgranulat unter Wasserdampfeinwirkung erhitzt. Das Granulat expandiert, korkeigene Harze treten aus und binden die Partikel ohne Zusatzbindemittel.',
-      fnrUsage: 'Perimeterdämmung, Flachdachdämmung, Trittschallminderung.'
-    }
-  ];
+  const fnrProducts: FnrProduct[] = inhalt.daten["Nawaro.fnrProducts"];
 
   // Filters calculation
   const filteredProducts = fnrProducts.filter(p => {
@@ -287,45 +76,45 @@ export default function Nawaro() {
           const rhoVal = parseFloat(p.rho.split('-')[1] || p.rho);
           const cVal = parseFloat(p.c.replace('.', ''));
           const inertia = (rhoVal * cVal) / 1000;
-          if (inertia > 300) { score += 45; reason = 'Hohe Wärmespeicherfähigkeit (ρ·c > 300 kJ/(m³K)) – günstig für die Phasenverschiebung.'; }
-          else if (inertia > 120) { score += 30; reason = 'Mittlere Wärmespeicherfähigkeit (120–300 kJ/(m³K)).'; }
-          else { score += 10; reason = 'Geringe Wärmespeicherfähigkeit (< 120 kJ/(m³K)) – wenig Beitrag zum sommerlichen Wärmeschutz.'; }
+          if (inertia > 300) { score += 45; reason = inhalt.werte.hoheWärmespeicherfähigkeitC300; }
+          else if (inertia > 120) { score += 30; reason = inhalt.werte.mittlereWärmespeicherfähigkeit120300; }
+          else { score += 10; reason = inhalt.werte.geringeWärmespeicherfähigkeit120Kj; }
         }
 
         if (navGoal === 'heat') {
           // Score based on low lambda
           const lambdaMin = parseFloat(p.lambda.split(' ')[0].replace(',', '.'));
-          if (lambdaMin < 0.040) { score += 45; reason = 'Niedrige Wärmeleitfähigkeit (λ < 0,040) erlaubt geringere Dämmdicken.'; }
-          else if (lambdaMin <= 0.045) { score += 30; reason = 'Marktübliche Wärmeleitfähigkeit (λ ≤ 0,045).'; }
-          else { score += 15; reason = 'Höhere Wärmeleitfähigkeit erfordert dickere Dämmschichten für den gleichen U-Wert.'; }
+          if (lambdaMin < 0.040) { score += 45; reason = inhalt.werte.niedrigeWärmeleitfähigkeit0040; }
+          else if (lambdaMin <= 0.045) { score += 30; reason = inhalt.werte.marktüblicheWärmeleitfähigkeit0045; }
+          else { score += 15; reason = inhalt.werte.höhereWärmeleitfähigkeitErfordertDickere; }
         }
 
         if (navGoal === 'sound') {
           // Score based on density
           const maxRho = parseFloat(p.rho.split('-')[1] || p.rho);
-          if (maxRho > 150) { score += 45; reason = 'Hohe Rohdichte – günstig für die Luftschalldämmung des Bauteils.'; }
-          else if (maxRho > 60) { score += 30; reason = 'Mittlere Rohdichte – gute Hohlraumbedämpfung in leichten Bauteilen.'; }
-          else { score += 10; reason = 'Geringe Rohdichte – wirkt v. a. als Hohlraumdämpfung.'; }
+          if (maxRho > 150) { score += 45; reason = inhalt.werte.hoheRohdichteGünstigFür; }
+          else if (maxRho > 60) { score += 30; reason = inhalt.werte.mittlereRohdichteGuteHohlraumbedämpfung; }
+          else { score += 10; reason = inhalt.werte.geringeRohdichteWirktV; }
         }
 
         if (navGoal === 'moisture') {
           // Score based on moisture protection / vapor permeability
           const muVal = parseFloat(p.mu.split('-')[1] || p.mu);
           if (p.id === 'hempcrete' || p.id === 'paludikultur') {
-            score += 48; reason = 'Kapillaraktiv und sorptionsfähig – geeignet für Innendämmung im Bestand (hygrothermischer Nachweis erforderlich).';
+            score += 48; reason = inhalt.werte.kapillaraktivUndSorptionsfähigGeeignet;
           } else if (muVal < 5) {
-            score += 35; reason = 'Diffusionsoffen (niedriger μ-Wert) – erleichtert die Rücktrocknung.';
+            score += 35; reason = inhalt.werte.diffusionsoffenNiedrigerWertErleichtert;
           } else {
-            score += 20; reason = 'Sorptionsfähig, aber höherer Diffusionswiderstand.';
+            score += 20; reason = inhalt.werte.sorptionsfähigAberHöhererDiffusionswider;
           }
         }
 
         if (navGoal === 'eco') {
           // Eco score (stroh, zellulose and paludikultur excel)
-          if (p.id === 'stroh') { score += 49; reason = 'Sehr geringer Herstellungsaufwand (landwirtschaftliches Nebenprodukt).'; }
-          else if (p.id === 'zellulose') { score += 42; reason = 'Überwiegend aus Altpapier – Sekundärrohstoff.'; }
-          else if (p.id === 'paludikultur') { score += 45; reason = 'Paludikultur auf wiedervernässten Mooren mindert Emissionen aus entwässerten Moorböden.'; }
-          else { score += 25; reason = 'Speichert biogenen Kohlenstoff; Herstellungsaufwand produktabhängig.'; }
+          if (p.id === 'stroh') { score += 49; reason = inhalt.werte.sehrGeringerHerstellungsaufwandLandwirts; }
+          else if (p.id === 'zellulose') { score += 42; reason = inhalt.werte.überwiegendAusAltpapierSekundärrohstoff; }
+          else if (p.id === 'paludikultur') { score += 45; reason = inhalt.werte.paludikulturAufWiedervernässtenMooren; }
+          else { score += 25; reason = inhalt.werte.speichertBiogenenKohlenstoffHerstellungs; }
         }
 
         // Adjust score based on wall type matching
@@ -358,15 +147,14 @@ export default function Nawaro() {
             </div>
             <div>
               <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
-                NaWaRo <span className="text-shiraz font-medium text-lg">| Biobasierte Baustoffe</span>
+                NaWaRo <span className="text-shiraz font-medium text-lg"><MdText text={inhalt.texte.biobasierteBaustoffe} /></span>
               </h2>
-              <p className="text-xs text-text-main/60 font-medium">Überblick mit Bezug auf Informationsangebote der FNR – Kennwerte sind Richtwerte</p>
+              <p className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.überblickMitBezugAuf} /></p>
             </div>
           </div>
           
           <div className="flex items-center gap-1.5 self-start md:self-auto bg-slate-100 text-slate-800 border border-slate-200 py-1.5 px-3 rounded-full text-xs font-semibold">
-            <Leaf size={14} className="text-shiraz" /> Richtwerte, keine Produktdaten
-          </div>
+            <Leaf size={14} className="text-shiraz" /><MdText text={inhalt.texte.richtwerteKeineProduktdaten} /></div>
         </div>
 
         {/* Outer Navigation Tabs */}
@@ -380,8 +168,7 @@ export default function Nawaro() {
             }`}
             onClick={() => setActiveTab('overview')}
           >
-            <Layers size={16} /> Übersicht &amp; C-Kreislauf
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.übersichtCKreislauf} /></button>
           
           <button aria-pressed={activeTab === 'fnr_db'}
             id="tab_fnr_db"
@@ -392,8 +179,7 @@ export default function Nawaro() {
             }`}
             onClick={() => setActiveTab('fnr_db')}
           >
-            <BookOpen size={16} /> FNR Baustoff-Datenbank
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.fnrBaustoffDatenbank} /></button>
           
           <button aria-pressed={activeTab === 'navigator'}
             id="tab_navigator"
@@ -404,8 +190,7 @@ export default function Nawaro() {
             }`}
             onClick={() => setActiveTab('navigator')}
           >
-            <Calculator size={16} /> Interaktiver Dämm-Navigator
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.interaktiverDämmNavigator} /></button>
 
           <button aria-pressed={activeTab === 'comparison'}
             id="tab_comparison"
@@ -416,8 +201,7 @@ export default function Nawaro() {
             }`}
             onClick={() => setActiveTab('comparison')}
           >
-            <Scale size={16} /> Technische Vergleiche
-          </button>
+            <Scale size={16} /><MdText text={inhalt.texte.technischeVergleiche} /></button>
         </div>
 
         {/* Tab content 1: OVERVIEW */}
@@ -427,24 +211,22 @@ export default function Nawaro() {
               
               <div className="lg:col-span-2 flex flex-col gap-4">
                 <div className="text-base text-text-main/80 bg-off-white p-5 rounded-2xl border border-home-grau/30 leading-relaxed">
-                  <span className="font-bold text-emerald-800 uppercase text-xs tracking-wider block mb-1">Über die FNR e.V.</span>
-                  Die <strong>Fachagentur Nachwachsende Rohstoffe e. V. (FNR)</strong> ist Projektträger des Bundesministeriums für Landwirtschaft, Ernährung und Heimat (BMLEH) für nachwachsende Rohstoffe. Ein Schwerpunkt ist das Bauen mit nachwachsenden Rohstoffen: Das Themenportal <strong>baustoffe.fnr.de</strong> informiert herstellerneutral über Materialien und Bauphysik, die FNR-Marktübersicht stellt Dämmstoffe aus nachwachsenden Rohstoffen zusammen.
-                </div>
+                  <span className="font-bold text-emerald-800 uppercase text-xs tracking-wider block mb-1"><MdText text={inhalt.texte.überDieFnrE} /></span><MdText text={inhalt.texte.dieFachagenturNachwachsendeRohstoffe} /></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="border border-home-grau/20 p-4 rounded-xl bg-emerald-50/30 flex gap-3">
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
-                      <h4 className="font-bold text-sm text-text-main mb-1">CO₂-Speicher-Effekt (Carbon Sequestration)</h4>
-                      <p className="text-xs text-text-main/70">Pflanzen entziehen der Luft beim Wachstum CO₂. Der Kohlenstoff bleibt für die Nutzungsdauer im Bauteil gespeichert und wird bei Verbrennung oder Verrottung wieder frei (temporärer Speicher).</p>
+                      <h4 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.coSpeicherEffektCarbon} /></h4>
+                      <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.pflanzenEntziehenDerLuft} /></p>
                     </div>
                   </div>
 
                   <div className="border border-home-grau/20 p-4 rounded-xl bg-emerald-50/30 flex gap-3">
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
-                      <h4 className="font-bold text-sm text-text-main mb-1">Ressourceneffizienz &amp; Zirkularität</h4>
-                      <p className="text-xs text-text-main/70">Wiederverwendung (Re-Use) und – bei zusatzstofffreien Produkten – biologische Abbaubarkeit können Bauabfälle und Deponiekosten reduzieren.</p>
+                      <h4 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.ressourceneffizienzZirkularität} /></h4>
+                      <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wiederverwendungReUseUnd} /></p>
                     </div>
                   </div>
                 </div>
@@ -483,42 +265,38 @@ export default function Nawaro() {
                     </defs>
                   </svg>
                 </div>
-                <p className="text-[11px] text-text-main/60 leading-normal">
-                  Pflanzliche Baustoffe speichern den aus CO₂ aufgenommenen Kohlenstoff über die Nutzungsdauer. In der Ökobilanz wird dieser biogene Kohlenstoff nach DIN EN 16449 bzw. DIN EN 15804 getrennt ausgewiesen.
-                </p>
+                <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.pflanzlicheBaustoffeSpeichernDen} /></p>
               </div>
             </div>
 
             {/* FNR Focus Areas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
-                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 1</span>
+                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase"><MdText text={inhalt.texte.produktgruppe1} /></span>
                 <h4 className="font-bold text-sm text-text-main">Wärmedämmstoffe</h4>
-                <p className="text-xs text-text-main/70">Biobasierte Zwischen-, Unter- &amp; Aufsparrendämmplatten aus Holzfasern, Naturfasern und Recyclingstoffen.</p>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.biobasierteZwischenUnterAufsparrendämmpl} /></p>
               </div>
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
-                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 2</span>
-                <h4 className="font-bold text-sm text-text-main">Massiv- &amp; Konstruktionsholz</h4>
-                <p className="text-xs text-text-main/70">Massivholzbau wie CLT (Brettsperrholz) und LVL (Furnierschichtholz) für Tragwerke mit geringem Herstellungs-Treibhauspotenzial und temporärer Kohlenstoffspeicherung.</p>
+                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase"><MdText text={inhalt.texte.produktgruppe2} /></span>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.massivKonstruktionsholz} /></h4>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.massivholzbauWieCltBrettsperrholz} /></p>
               </div>
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
-                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 3</span>
+                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase"><MdText text={inhalt.texte.produktgruppe3} /></span>
                 <h4 className="font-bold text-sm text-text-main">Verbundmaterialien</h4>
-                <p className="text-xs text-text-main/70">Verbundbaustoffe wie Hanfkalk (Hempcrete) oder Wood-Plastic-Composites (WPC; Kunststoffanteil erschwert die Verwertung).</p>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.verbundbaustoffeWieHanfkalkHempcrete} /></p>
               </div>
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
-                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 4</span>
-                <h4 className="font-bold text-sm text-text-main">Oberflächen, Farben &amp; Böden</h4>
-                <p className="text-xs text-text-main/70">Ressourcenschonender Innenausbau unter Verwendung von Linoleum, Naturharzlacken und organischen Putzträgern.</p>
+                <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase"><MdText text={inhalt.texte.produktgruppe4} /></span>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.oberflächenFarbenBöden} /></h4>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.ressourcenschonenderInnenausbauUnterVerw} /></p>
               </div>
             </div>
 
             {/* Technical boundaries banner */}
             <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl flex gap-3 text-xs text-amber-950/80 leading-relaxed">
               <AlertCircle size={18} className="text-amber-600 flex-shrink-0" />
-              <div>
-                <strong>Konstruktive Beachtung:</strong> Biobasierte Baustoffe erfordern konsequenten Schutz vor dauerhafter Feuchtebelastung (baulicher Holzschutz und Gebrauchsklassen nach DIN 68800). Der Einbau muss stets schlagregen- und erdberührungsdicht geplant werden, um Schimmelbildung und fäulnisbedingten Verlust tragender Eigenschaften zu verhindern.
-              </div>
+              <div><MdText text={inhalt.texte.konstruktiveBeachtungBiobasierteBaustoff} /></div>
             </div>
           </div>
         )}
@@ -537,9 +315,7 @@ export default function Nawaro() {
                       ? 'bg-text-main text-white border-text-main' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
-                >
-                  Alle Produkte
-                </button>
+                ><MdText text={inhalt.texte.alleProdukte} /></button>
                 <button aria-pressed={dbCategory === 'daemmung'}
                   onClick={() => setDbCategory('daemmung')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
@@ -567,9 +343,7 @@ export default function Nawaro() {
                       ? 'bg-amber-700 text-white border-amber-700' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
-                >
-                  Lehm &amp; Putze
-                </button>
+                ><MdText text={inhalt.texte.lehmPutze} /></button>
                 <button aria-pressed={dbCategory === 'boden'}
                   onClick={() => setDbCategory('boden')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
@@ -577,9 +351,7 @@ export default function Nawaro() {
                       ? 'bg-rose-700 text-white border-rose-700' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
-                >
-                  Böden &amp; Lacke
-                </button>
+                ><MdText text={inhalt.texte.bödenLacke} /></button>
               </div>
 
               {/* Search input */}
@@ -587,7 +359,7 @@ export default function Nawaro() {
                 <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-home-grau" />
                 <input
                   type="text"
-                  placeholder="Material suchen..."
+                  placeholder={inhalt.werte.materialSuchen}
                   value={dbSearch}
                   onChange={(e) => setDbSearch(e.target.value)}
                   className="w-full pl-9 pr-4 py-1.5 border border-home-grau/30 rounded-lg text-xs focus:ring-1 focus:ring-emerald-500 bg-white text-text-main font-medium placeholder:text-home-grau"
@@ -630,9 +402,7 @@ export default function Nawaro() {
                     </button>
                   ))
                 ) : (
-                  <div className="text-center py-12 text-xs text-text-main/50 border border-dashed border-home-grau/20 rounded-xl">
-                    Keine Materialien für diese Filtereinstellungen gefunden.
-                  </div>
+                  <div className="text-center py-12 text-xs text-text-main/50 border border-dashed border-home-grau/20 rounded-xl"><MdText text={inhalt.texte.keineMaterialienFürDiese} /></div>
                 )}
               </div>
 
@@ -649,23 +419,23 @@ export default function Nawaro() {
                 {/* Technical Parameters Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20">
-                    <span className="text-[10px] text-text-main/40 font-bold block">Rohdichte (ρ)</span>
+                    <span className="text-[10px] text-text-main/40 font-bold block"><MdText text={inhalt.texte.rohdichte} /></span>
                     <span className="font-mono text-sm font-bold text-text-main">{selectedProductData.rho} kg/m³</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20">
-                    <span className="text-[10px] text-text-main/40 font-bold block">Wärmeleitfähigkeit (λ)</span>
+                    <span className="text-[10px] text-text-main/40 font-bold block"><MdText text={inhalt.texte.wärmeleitfähigkeit} /></span>
                     <span className="font-mono text-sm font-bold text-emerald-700">{selectedProductData.lambda} W/(mK)</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20">
-                    <span className="text-[10px] text-text-main/40 font-bold block">Spez. Wärme (c)</span>
+                    <span className="text-[10px] text-text-main/40 font-bold block"><MdText text={inhalt.texte.spezWärmeC} /></span>
                     <span className="font-mono text-sm font-bold text-text-main">{selectedProductData.c} J/(kgK)</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20">
-                    <span className="text-[10px] text-text-main/40 font-bold block">Diffusionswiderst. (μ)</span>
+                    <span className="text-[10px] text-text-main/40 font-bold block"><MdText text={inhalt.texte.diffusionswiderst} /></span>
                     <span className="font-mono text-sm font-bold text-text-main">{selectedProductData.mu}</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 col-span-2">
-                    <span className="text-[10px] text-text-main/40 font-bold block">Brand- / Baustoffklasse</span>
+                    <span className="text-[10px] text-text-main/40 font-bold block"><MdText text={inhalt.texte.brandBaustoffklasse} /></span>
                     <span className="text-xs font-bold text-text-main block mt-0.5">{selectedProductData.fireClass}</span>
                   </div>
                 </div>
@@ -674,8 +444,7 @@ export default function Nawaro() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-emerald-50/50 border border-emerald-100 p-3 rounded-lg">
                     <h4 className="text-xs font-black text-emerald-800 mb-2 flex items-center gap-1">
-                      <CheckCircle2 size={13} /> Vorteile &amp; Potenziale
-                    </h4>
+                      <CheckCircle2 size={13} /><MdText text={inhalt.texte.vorteilePotenziale} /></h4>
                     <ul className="text-xs text-emerald-950/80 space-y-1.5 list-disc list-inside">
                       {selectedProductData.advantages.map((adv, i) => (
                         <li key={i} className="leading-tight">{adv}</li>
@@ -685,8 +454,7 @@ export default function Nawaro() {
 
                   <div className="bg-torch-red/5 border border-torch-red/10 p-3 rounded-lg">
                     <h4 className="text-xs font-black text-danger mb-2 flex items-center gap-1">
-                      <AlertCircle size={13} /> Grenzen &amp; Risiken
-                    </h4>
+                      <AlertCircle size={13} /><MdText text={inhalt.texte.grenzenRisiken} /></h4>
                     <ul className="text-xs text-text-main/80 space-y-1.5 list-disc list-inside">
                       {selectedProductData.disadvantages.map((dis, i) => (
                         <li key={i} className="leading-tight">{dis}</li>
@@ -713,11 +481,8 @@ export default function Nawaro() {
             
             <div className="bg-emerald-50 text-emerald-950 p-4 rounded-xl border border-emerald-200">
               <h3 className="font-bold text-sm text-emerald-900 mb-1 flex items-center gap-2">
-                <Calculator size={18} /> Dämmstoff-Navigator (Lehrmodell)
-              </h3>
-              <p className="text-xs text-emerald-900/80">
-                Wählen Sie Ihre primären konstruktiven Zielstellungen und das Bauteil aus. Der Navigator ordnet die Dämmstoffgruppen nach einer vereinfachten Punktebewertung aus den Richtwerten (λ, ρ, c, μ). Er ersetzt keine Planung und keinen Nachweis.
-              </p>
+                <Calculator size={18} /><MdText text={inhalt.texte.dämmstoffNavigatorLehrmodell} /></h3>
+              <p className="text-xs text-emerald-900/80"><MdText text={inhalt.texte.wählenSieIhrePrimären} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -727,7 +492,7 @@ export default function Nawaro() {
                 
                 {/* Rule-1: Prioritized Target (Interaktives Steuerelement) */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-text-main uppercase tracking-wider">Planerischer Ziel-Fokus</label>
+                  <label className="text-xs font-bold text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.planerischerZielFokus} /></label>
                   <div className="flex flex-col gap-2">
                     <button aria-pressed={navGoal === 'summer'}
                       onClick={() => setNavGoal('summer')}
@@ -739,8 +504,8 @@ export default function Nawaro() {
                     >
                       <Zap size={16} className="text-amber-500" />
                       <div>
-                        <span className="text-xs block">Sommerlicher Wärmeschutz</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Verzögerung von Hitzeeinträgen (Phasenverschiebung)</span>
+                        <span className="text-xs block"><MdText text={inhalt.texte.sommerlicherWärmeschutz} /></span>
+                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.verzögerungVonHitzeeinträgenPhasenversch} /></span>
                       </div>
                     </button>
 
@@ -754,8 +519,8 @@ export default function Nawaro() {
                     >
                       <Layers size={16} className="text-blue-500" />
                       <div>
-                        <span className="text-xs block">Maximaler Kälteschutz (Wärmeschutz)</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Niedrige Wärmeleitfähigkeit λ für dünne Wände</span>
+                        <span className="text-xs block"><MdText text={inhalt.texte.maximalerKälteschutzWärmeschutz} /></span>
+                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.niedrigeWärmeleitfähigkeitFürDünne} /></span>
                       </div>
                     </button>
 
@@ -769,8 +534,8 @@ export default function Nawaro() {
                     >
                       <Activity size={16} className="text-purple-500" />
                       <div>
-                        <span className="text-xs block">Akustische Dämpfung (Schallschutz)</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Höhere Rohdichte ρ verbessert die Luftschalldämmung</span>
+                        <span className="text-xs block"><MdText text={inhalt.texte.akustischeDämpfungSchallschutz} /></span>
+                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.höhereRohdichteVerbessertDie} /></span>
                       </div>
                     </button>
 
@@ -784,8 +549,8 @@ export default function Nawaro() {
                     >
                       <Droplets size={16} className="text-sky-500" />
                       <div>
-                        <span className="text-xs block">Feuchtesicherheit &amp; Diffusion</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Diffusionsoffene und kapillaraktive Rücktrocknung</span>
+                        <span className="text-xs block"><MdText text={inhalt.texte.feuchtesicherheitDiffusion} /></span>
+                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.diffusionsoffeneUndKapillaraktiveRücktro} /></span>
                       </div>
                     </button>
 
@@ -799,8 +564,8 @@ export default function Nawaro() {
                     >
                       <Leaf size={16} className="text-emerald-500" />
                       <div>
-                        <span className="text-xs block">Minimierte graue Energie (Öko-Fokus)</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Niedrigster Herstellungsaufwand &amp; Recycling</span>
+                        <span className="text-xs block"><MdText text={inhalt.texte.minimierteGraueEnergieÖko} /></span>
+                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.niedrigsterHerstellungsaufwandRecycling} /></span>
                       </div>
                     </button>
                   </div>
@@ -808,8 +573,8 @@ export default function Nawaro() {
 
                 {/* Wall/Building Component */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-text-main uppercase tracking-wider">Dämmendes Bauteil</label>
-                  <select aria-label="Dämmendes Bauteil"
+                  <label className="text-xs font-bold text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.dämmendesBauteil} /></label>
+                  <select aria-label={inhalt.werte.dämmendesBauteil}
                     value={navWallType}
                     onChange={(e) => setNavWallType(e.target.value as typeof navWallType)}
                     className="w-full border border-home-grau/30 rounded-lg p-2 text-xs text-text-main font-semibold bg-white"
@@ -824,7 +589,7 @@ export default function Nawaro() {
 
               {/* Dynamic results display (col span 8) */}
               <div className="lg:col-span-8 flex flex-col gap-4">
-                <h3 className="font-bold text-sm text-text-main uppercase tracking-wider">Dämmstoff-Dynamik Ranking</h3>
+                <h3 className="font-bold text-sm text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.dämmstoffDynamikRanking} /></h3>
                 
                 <div className="flex flex-col gap-4">
                   {scoredMaterials.slice(0, 4).map((m, idx) => (
@@ -878,55 +643,52 @@ export default function Nawaro() {
         {activeTab === 'comparison' && (
           <div className="animate-in fade-in duration-300 flex flex-col gap-8" id="nawaro_comparison_content">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Technischer Detailvergleich zwischen konventionellen Baustoffen und NaWaRo-Alternativen (Richtwerte; Kennwerte BSH nach DIN EN 14080, Beton nach DIN EN 1992-1-1) bezüglich baustoffphysikalischer sowie mechanischer Parameter.
-              </p>
+              <p><MdText text={inhalt.texte.technischerDetailvergleichZwischenKonven} /></p>
             </div>
 
             {/* Dämmstoffe Vergleich */}
             <div>
               <h3 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                <Scale size={18} className="text-shiraz" /> Wärmedämmstoffe: Erdöl-EPS vs. Holzfaserplatte
-              </h3>
+                <Scale size={18} className="text-shiraz" /><MdText text={inhalt.texte.wärmedämmstoffeErdölEpsVs} /></h3>
               <div className="overflow-x-auto bg-white rounded-xl border border-home-grau/30">
                 <table className="w-full text-left text-sm">
                   <thead className="bg-home-grau/5">
                     <tr>
                       <th className="py-3 px-4 font-bold text-text-main">Eigenschaft</th>
-                      <th className="py-3 px-4 font-bold text-text-main border-l border-home-grau/10">EPS (Styropor)</th>
+                      <th className="py-3 px-4 font-bold text-text-main border-l border-home-grau/10"><MdText text={inhalt.texte.epsStyropor} /></th>
                       <th className="py-3 px-4 font-bold text-emerald-700 border-l border-home-grau/10">Holzfaserdämmplatte</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t border-home-grau/10">
-                      <td className="py-3 px-4 font-medium">Wärmeleitfähigkeit (λ)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">0,032 - 0,040 W/(m·K)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">0,038 - 0,050 W/(m·K)</td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.wärmeleitfähigkeit2} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.t00320040} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.t00380050} /></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Spezifische Wärmekapazität (c)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">~1.500 J/(kg·K)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~2.100 J/(kg·K) <span className="text-xs block text-emerald-600">(Besserer sommerlicher Wärmeschutz)</span></td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.spezifischeWärmekapazitätC} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.t1500JKg} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.t2100JKg} /><span className="text-xs block text-emerald-600"><MdText text={inhalt.texte.bessererSommerlicherWärmeschutz} /></span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10">
-                      <td className="py-3 px-4 font-medium">Rohdichte (ρ)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">15 - 30 kg/m³</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">110 - 200 kg/m³ <span className="text-xs block text-emerald-600">(Mehr Schallschutzmasse)</span></td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.rohdichte2} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.t1530KgM} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.t110200KgM} /><span className="text-xs block text-emerald-600"><MdText text={inhalt.texte.mehrSchallschutzmasse} /></span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Diffusionswiderstand (μ)</td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.diffusionswiderstand} /></td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono">20 - 100</td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">3 - 5 <span className="text-xs block text-emerald-600">(diffusionsoffen)</span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10">
                       <td className="py-3 px-4 font-medium">Brandschutz-Klassifizierung</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">Brandverhalten: Euroklasse E (Platte); im zugelassenen WDVS mit Brandriegeln schwerentflammbar</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">B2 (normalentflammbar) / E</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.brandverhaltenEuroklasseEPlatte} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.b2NormalentflammbarE} /></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Primärenergie nicht erneuerbar (PENRT, Richtwert)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red">~100 MJ/kg (nicht erneuerbar)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~15 MJ/kg (biogen)</td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.primärenergieNichtErneuerbarPenrt} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red"><MdText text={inhalt.texte.t100MjKgNicht} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.t15MjKgBiogen} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -936,37 +698,36 @@ export default function Nawaro() {
             {/* Tragende Konstruktionen */}
             <div>
               <h3 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                <Scale size={18} className="text-shiraz" /> Tragwerk: Normalbeton vs. Brettschichtholz (GL24h)
-              </h3>
+                <Scale size={18} className="text-shiraz" /><MdText text={inhalt.texte.tragwerkNormalbetonVsBrettschichtholz} /></h3>
               <div className="overflow-x-auto bg-white rounded-xl border border-home-grau/30">
                 <table className="w-full text-left text-sm">
                   <thead className="bg-home-grau/5">
                     <tr>
                       <th className="py-3 px-4 font-bold text-text-main">Eigenschaft</th>
-                      <th className="py-3 px-4 font-bold text-text-main border-l border-home-grau/10">Normalbeton (C25/30)</th>
-                      <th className="py-3 px-4 font-bold text-emerald-700 border-l border-home-grau/10">Brettschichtholz (BSH)</th>
+                      <th className="py-3 px-4 font-bold text-text-main border-l border-home-grau/10"><MdText text={inhalt.texte.normalbetonC2530} /></th>
+                      <th className="py-3 px-4 font-bold text-emerald-700 border-l border-home-grau/10"><MdText text={inhalt.texte.brettschichtholzBsh} /></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t border-home-grau/10">
-                      <td className="py-3 px-4 font-medium">Rohdichte (ρ)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">~2.400 kg/m³</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~420 kg/m³ <span className="text-xs block text-emerald-600">(geringere Eigenlast)</span></td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.rohdichte3} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.t2400KgM} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~420 kg/m³ <span className="text-xs block text-emerald-600"><MdText text={inhalt.texte.geringereEigenlast} /></span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Zug- bzw. Biegefestigkeit</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">f_ctm ≈ 2,6 N/mm² (Zug, unbewehrt)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">24 N/mm² <span className="text-xs block text-emerald-600">(char. Biegefestigkeit f_m,k)</span></td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.zugBzwBiegefestigkeit} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.fCtm26} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">24 N/mm² <span className="text-xs block text-emerald-600"><MdText text={inhalt.texte.charBiegefestigkeitFM} /></span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10">
-                      <td className="py-3 px-4 font-medium">Elastizitätsmodul (E)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">31.000 N/mm²</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">11.500 N/mm²</td>
+                      <td className="py-3 px-4 font-medium"><MdText text={inhalt.texte.elastizitätsmodulE} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono"><MdText text={inhalt.texte.t31000NMm} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.t11500NMm} /></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
                       <td className="py-3 px-4 font-medium">CO₂-Bilanz</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red">Klinkerentsäuerung emittiert CO₂</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">Biogener Kohlenstoffspeicher (ca. −0,7 t CO₂-Äq./m³ nach DIN EN 16449)</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red"><MdText text={inhalt.texte.klinkerentsäuerungEmittiertCo} /></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700"><MdText text={inhalt.texte.biogenerKohlenstoffspeicherCa0} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -974,16 +735,11 @@ export default function Nawaro() {
             </div>
 
             <FormulaDerivationBox
-              title="Anwendungsbeispiel: Biogener Kohlenstoff in 1 m³ BSH"
+              title={inhalt.werte.anwendungsbeispielBiogenerKohlenstoffIn}
               zielGleichung="P_{CO_2} = \frac{44}{12} \cdot cf \cdot \frac{\rho_\omega \cdot V_\omega}{1 + \omega/100}"
-              normQuelle="DIN EN 16449:2014-06"
-              schritte={[
-                { titel: '1. Gegeben', formel: '\\rho_{12} = 420\\,\\text{kg/m}^3,\\; \\omega = 12\\,\\%,\\; cf = 0{,}5,\\; V = 1\\,\\text{m}^3', erklaerung: 'Rohdichte bei 12 % Holzfeuchte, Kohlenstoffanteil der Trockenmasse 50 %.' },
-                { titel: '2. Darrmasse', formel: 'm_0 = 420 / 1{,}12 = 375\\,\\text{kg}', erklaerung: 'Wasseranteil herausrechnen.' },
-                { titel: '3. Kohlenstoff', formel: 'm_C = 0{,}5 \\cdot 375 = 187{,}5\\,\\text{kg}', erklaerung: 'Gespeicherter biogener Kohlenstoff.' },
-                { titel: '4. CO₂-Äquivalent', formel: 'P_{CO_2} = 44/12 \\cdot 187{,}5 = 688\\,\\text{kg}', erklaerung: 'Molmassenverhältnis CO₂ zu C.' },
-              ]}
-              ergebnisHinweis="Rund 0,69 t CO₂ je m³ – ein temporärer Speicher, der am Lebensende wieder frei wird, sofern das Holz nicht weiter genutzt wird."
+              normQuelle={inhalt.werte.dinEn164492014}
+              schritte={inhalt.daten["Nawaro.schritte"]}
+              ergebnisHinweis={inhalt.werte.rund069T}
             />
 
           </div>
@@ -996,44 +752,17 @@ export default function Nawaro() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Nachwachsender Rohstoff', url: 'https://de.wikipedia.org/wiki/Nachwachsender_Rohstoff' },
-          { title: 'Fachagentur Nachwachsende Rohstoffe', url: 'https://de.wikipedia.org/wiki/Fachagentur_Nachwachsende_Rohstoffe' },
+          { title: inhalt.werte.nachwachsenderRohstoff, url: 'https://de.wikipedia.org/wiki/Nachwachsender_Rohstoff' },
+          { title: inhalt.werte.fachagenturNachwachsendeRohstoffe, url: 'https://de.wikipedia.org/wiki/Fachagentur_Nachwachsende_Rohstoffe' },
           { title: 'Dämmstoff', url: 'https://de.wikipedia.org/wiki/D%C3%A4mmstoff' },
           { title: 'Holzfaserwerkstoff', url: 'https://de.wikipedia.org/wiki/Holzfaserwerkstoff' }
         ]}
-        literatur={[
-          'Fachagentur Nachwachsende Rohstoffe e. V. (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. 13., überarb. Aufl., Gülzow-Prüzen: FNR 2024',
-          'Niemz, P.; Sonderegger, W.: Holzphysik – Eigenschaften, Prüfung und Kennwerte. 2. Aufl., München: Hanser 2021'
-        ]}
+        literatur={inhalt.daten["Nawaro.literatur"]}
         weblinks={[
-          { title: 'FNR-Themenportal Bauen', url: 'https://baustoffe.fnr.de/' }
+          { title: inhalt.werte.fnrThemenportalBauen, url: 'https://baustoffe.fnr.de/' }
         ]}
-        regelwerke={[
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)' },
-          { title: 'DIN 4108-10:2021-11 (Wärmeschutz und Energie-Einsparung in Gebäuden - Anwendungsbezogene Anforderungen an Dämmstoffe)' },
-          { title: 'DIN 68800 Teile 1 bis 4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)' },
-          { title: 'DIN EN 13171:2015-04 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Holzfasern (WF))' },
-          { title: 'DIN EN 16449:2014-06 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)' },
-          { title: 'DIN EN 15101-1:2019-07 (Wärmedämmstoffe für Gebäude – An der Verwendungsstelle hergestellte Wärmedämmung aus Zellulosefüllstoff (LFCI))' },
-          { title: 'GModG (Gebäudemodernisierungsgesetz, seit 29.07.2026; vormals GEG) / EPBD (EU) 2024/1275', url: 'https://www.gesetze-im-internet.de/geg/' }
-        ]}
-        formeln={[
-          {
-            formel: 's = \\rho \\cdot c',
-            erklaerung: 'Volumenbezogene Wärmespeicherfähigkeit in kJ/(m³·K) (ρ in kg/m³, c in kJ/(kg·K)). Hohe Werte verzögern sommerliche Wärmeeinträge.',
-            quelle: 'Bauphysik-Grundlagen'
-          },
-          {
-            formel: 'a = \\frac{\\lambda}{\\rho \\cdot c}',
-            erklaerung: 'Temperaturleitfähigkeit in m²/s: Je kleiner a, desto langsamer dringt eine Temperaturwelle ein (größere Phasenverschiebung).',
-            quelle: 'Bauphysik-Grundlagen'
-          },
-          {
-            formel: 'P_{CO_2} = \\frac{44}{12} \\cdot cf \\cdot \\frac{\\rho_\\omega \\cdot V_\\omega}{1 + \\omega/100}',
-            erklaerung: 'Im Holz gespeichertes CO₂ mit cf = 0,5 (Kohlenstoffanteil der Darrmasse).',
-            quelle: 'DIN EN 16449'
-          }
-        ]}
+        regelwerke={inhalt.daten["Nawaro.regelwerke"]}
+        formeln={inhalt.daten["Nawaro.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,341 @@
+{
+  "texte": {
+    "altbauBestandEnergetischeSanierung": " Altbau-Bestand & energetische Sanierung",
+    "wissenschaftlicheUWertAbschätzungen": "Wissenschaftliche U-Wert-Abschätzungen nach Baualtersklassen entsprechend den Basisdaten der Fachinfoplattform **Altbau-Atlas**. Analysieren Sie historische Baustoffgefüge von 1880 bis heute, simulieren Sie energetische Modernisierungsmaßnahmen nach den gesetzlichen Grenzwerten des **Gebäudemodernisierungsgesetzes (GModG / GEG)** und bilanzieren Sie Amortisationszeiten mit normgerechter deutscher Zahlenformatierung.",
+    "baualtersklassenEpochen": " Baualtersklassen & Epochen",
+    "sanierungsSimulatorGmodg": " Sanierungs-Simulator (GModG)",
+    "epochenVergleichUWerte": " Epochen-Vergleich & U-Werte",
+    "konstruktiveTypologieFeuchteschutz": " Konstruktive Typologie & Feuchteschutz",
+    "baualtersklasseAuswählen": "Baualtersklasse auswählen",
+    "standardwerteNachAltbauAtlas": "Standardwerte nach Altbau-Atlas",
+    "typischeKonstruktionsmerkmale": " Typische Konstruktionsmerkmale:",
+    "charakteristischeBaustoffeKomponenten": " Charakteristische Baustoffe & Komponenten:",
+    "historischeVerglasungFenster": "Historische Verglasung & Fenster:",
+    "typischeUngedämmteBauteilKennwerte": "Typische ungedämmte Bauteil-Kennwerte (U-Werte nach Altbau-Atlas)",
+    "sanierungsparameterKonfigurieren": "Sanierungsparameter konfigurieren",
+    "bauteilFürDieSanierungsmaßnahme": "Bauteil für die Sanierungsmaßnahme:",
+    "wärmeleitfähigkeitDWMk": "Wärmeleitfähigkeit λ_D [W/(mK)]:",
+    "bestehendesHeizsystem": "Bestehendes Heizsystem:",
+    "energetischeÖkonomischeSanierungsbilanz": "Energetische & Ökonomische Sanierungsbilanz",
+    "uWertAltbau": "U-Wert Altbau",
+    "uWertSaniert": "U-Wert Saniert",
+    "gmodgGrenzwert": "GModG Grenzwert",
+    "statischeAmortisationszeit": "Statische Amortisationszeit:",
+    "investitionGeteiltDurchJährliche": "Investition geteilt durch jährliche Energiekosteneinsparung",
+    "schrittweiseHerleitungDesSanierungsbedin": "Schrittweise Herleitung des sanierungsbedingten Wärmedurchgangs:",
+    "t1WärmedurchgangswiderstandDesUngedämmten": "1. Wärmedurchgangswiderstand des ungedämmten Bestandsbauteils:",
+    "t2ZusätzlicherWärmedurchlasswiderstandDer": "2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = ",
+    "t3GesamtwiderstandUndNeuer": "3. Gesamtwiderstand und neuer Wärmedurchgangskoeffizient:",
+    "t4JährlicheHeizwärmeeinsparungMit": "4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3 500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):",
+    "historischerTrendDerBauteil": "Historischer Trend der Bauteil-U-Werte von 1880 bis heute",
+    "entwicklungDesThermischenStandards": "Entwicklung des thermischen Standards über 10 Baualtersklassen im Vergleich zu den heutigen Sanierungsanforderungen des GModG / GEG.",
+    "bauphysikalischeEpochensprünge": "Bauphysikalische Epochensprünge:",
+    "bisInDie1970er": "Bis in die 1970er Jahre lagen die U-Werte von Außenwänden meist über 1,1 W/(m²K). WDVS gibt es seit den 1960er Jahren; die Wärmeschutzverordnung 1977 brachte erstmals verbindliche Wärmeschutzanforderungen. Das GModG verlangt heute bei Sanierungen Höchstwerte von 0,24 W/(m²K) für Außenwände und Steildächer/oberste Geschossdecken sowie 0,20 W/(m²K) für Flachdächer.",
+    "grenzwerteNachGebäudemodernisierungsgese": "Grenzwerte nach Gebäudemodernisierungsgesetz (GModG, vormals GEG):",
+    "nach36GmodgVormals": "Nach § 36 GModG (vormals § 48 GEG / Anlage 7) dürfen bei Änderungen an Außenbauteilen bestehender Gebäude die Höchstwerte des Wärmedurchgangskoeffizienten nicht überschritten werden, sofern mehr als 10 % der jeweiligen Bauteilfläche saniert oder erneuert werden (Bagatellgrenze). Außenwände und Steildächer/oberste Geschossdecken müssen höchstens 0,24 W/(m²K), Flachdächer 0,20 W/(m²K), Kellerdecken 0,30 W/(m²K) und Fenster U_w = 1,30 W/(m²K) einhalten (Anlage 7 GModG).",
+    "schadenspotenzialeImAltbaubestand": "Schadenspotenziale im Altbaubestand",
+    "holzbalkenköpfeInAußenwändenDurch": "**Holzbalkenköpfe in Außenwänden:** Durch nachträgliche Innendämmung kühlt das Mauerwerk im Winter stärker aus. Die Verdunstungskapazität sinkt, was bei unzureichendem Schlagregenschutz zu Pilzbefall und Fäulnis der Balkenauflager führen kann.",
+    "preußischeKappendeckenKorrosionDer": "**Preußische Kappendecken:** Korrosion der freiliegenden I-Träger-Unterflansche durch aufsteigende Feuchte in Altbaukellern oder hygroskopische Salze.",
+    "schadstoffeDerNachkriegsepochenAsbestzem": "**Schadstoffe der Nachkriegsepochen:** Asbestzement (etwa 1930–1993, Verbot 1993), teerhaltige Kleber und Bitumenpappen (PAK), sowie künstliche Mineralfasern (alte KMF: vor 1996 hergestellt, Einbau bis 06/2000 möglich).",
+    "innendämmungNachWtaMerkblatt": "Innendämmung nach WTA-Merkblatt 6-5",
+    "beiDenkmalgeschütztenFassadenIst": "Bei denkmalgeschützten Fassaden ist eine Außendämmung meist unzulässig. Die Sanierung muss raumseitig erfolgen. Hierbei unterscheidet man zwei wesentliche bauphysikalische Systeme:",
+    "t1KapillaraktiveDiffusionsoffeneSysteme": "1. Kapillaraktive, diffusionsoffene Systeme (z. B. Calciumsilikat, Holzfaser):",
+    "anfallendesKondensatWirdDurch": "Anfallendes Kondensat wird durch kapillare Saugspannung aufgenommen und im Sommer schadlos in den Raum zurückverdunstet. Funktioniert ohne feuchteblockierende Dampfsperren.",
+    "t2DiffusionsdichteSystemeMit": "2. Diffusionsdichte Systeme mit Dampfbremse:",
+    "erfordernAbsoluteLuftdichtheitDer": "Erfordern absolute Luftdichtheit der raumseitigen Membran. Kleinste Fehlstellen führen durch Konvektion zu massivem Schimmelschaden."
+  },
+  "werte": {
+    "fernwärmeMix": "Fernwärme (Mix)",
+    "wärmepumpeJaz35": "Wärmepumpe (JAZ 3.5)",
+    "außenwandUWertW": "Außenwand U-Wert [W/(m²K)]",
+    "dachUWertW": "Dach U-Wert [W/(m²K)]",
+    "gmodgGrenzwertAußenwand0": "GModG Grenzwert Außenwand (0,24 W/(m²K))",
+    "gmodgGrenzwertSteildachOberste": "GModG Grenzwert Steildach / oberste Geschossdecke (0,24 W/(m²K))",
+    "uWertWM": "U-Wert [W/(m²K)]",
+    "steildachOgd": "Steildach / oGD",
+    "bauteilflächeAM": "Bauteilfläche A [m²]",
+    "zusätzlicheDämmstoffdickeDMm": "Zusätzliche Dämmstoffdicke d [mm]",
+    "wärmeleitfähigkeitDWMk": "Wärmeleitfähigkeit λ_D [W/(mK)]",
+    "spezifischeSanierungskostenM": "Spezifische Sanierungskosten [€/m²]",
+    "bestehendesHeizsystem": "Bestehendes Heizsystem",
+    "gmodgKonformAnlage7": "✓ GModG-konform (Anlage 7)",
+    "keineAmortisation": "Keine Amortisation",
+    "rechenwegFormelnAusblenden": "Rechenweg & Formeln ausblenden",
+    "ausführlichenRechenwegDinEn": "Ausführlichen Rechenweg (DIN EN ISO 6946) anzeigen",
+    "beispiel1InnendämmungEiner": "Beispiel 1: Innendämmung einer Gründerzeitwand mit Calciumsilikat",
+    "moderateInnendämmungVerbessertBehaglichk": "Moderate Innendämmung verbessert Behaglichkeit und Schimmelschutz deutlich; die Grenzschicht wird aber kälter. Feuchtenachweis nach WTA-Merkblatt 6-5 bzw. DIN 4108-3 und Schlagregenschutz der Fassade sind Voraussetzung.",
+    "dinEnIso6946": "DIN EN ISO 6946:2018-03; WTA-Merkblätter 6-4/6-5",
+    "beispiel2TransmissionswärmeverlustVor": "Beispiel 2: Transmissionswärmeverlust vor und nach der Innendämmung",
+    "wärmebrückenAnEinbindendenInnenwänden": "Wärmebrücken an einbindenden Innenwänden und Decken mindern die Einsparung; bei Holzbalkendecken ist die Balkenkopfzone besonders zu prüfen.",
+    "vdi2067Vdi4710": "VDI 2067 / VDI 4710 (Gradtagzahlverfahren)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: GModG-Bestandsanforderungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "innendämmungNachWta": "Innendämmung nach WTA"
+  },
+  "daten": {
+    "BAUALTERSKLASSEN": [
+      {
+        "id": "vor-1919",
+        "vintage": "Vor 1919",
+        "label": "Gründerzeit & Kaiserreich",
+        "description": "Bauten aus der Vorkriegszeit. Typisch sind massive, oft ungedämmte Vollziegelmauerwerk-Konstruktionen, repräsentative Putz- oder Klinkerfassaden, Holzbalkendecken mit Einschub-Fehlböden sowie historische Fachwerkbauten.",
+        "typicalConstruction": "Massives Ziegelmauerwerk (38-51 cm), Fachwerk, Holzbalkendecken mit Lehm/Sand-Verfüllung, preußische Kappen über Kellern, einfache Kastenfenster.",
+        "characteristicMaterials": [
+          "Lehm- & Kalkmörtel",
+          "Vollziegel (Ziegelstein)",
+          "Nadelholz (historisch)",
+          "Natursteine",
+          "Gusseisen"
+        ],
+        "windows": "Einfachfenster oder historische Kastenfenster (ungedämmt)",
+        "uValueWall": 1.6,
+        "uValueRoof": 1.8,
+        "uValueFloor": 1.4,
+        "uValueWindow": 4.5
+      },
+      {
+        "id": "1919-1948",
+        "vintage": "1919 - 1948",
+        "label": "Weimarer Republik & Weltkriegsära",
+        "description": "Geprägt durch den genossenschaftlichen Wohnungsbau der 20er Jahre und den späteren kriegsbedingten Mangelbau. Vermehrt zweischalige Mauerwerkswelt (Ziegel mit Luftschicht) und erste einfache Betonfertigung oder Hohlsteindecken.",
+        "typicalConstruction": "Hohlmauerwerk, zweischaliges Mauerwerk (Schlitzmauerwerk), Holzbalkendecken, Steineisendecken (Kleine Decke), Verbundfenster.",
+        "characteristicMaterials": [
+          "Zementmörtel (frühe Formen)",
+          "Kalksandstein",
+          "Hüttensandziegel",
+          "Bimsbetonsteine"
+        ],
+        "windows": "Holzverbundfenster mit Einfachverglasung",
+        "uValueWall": 1.4,
+        "uValueRoof": 1.6,
+        "uValueFloor": 1.2,
+        "uValueWindow": 3.2
+      },
+      {
+        "id": "1949-1957",
+        "vintage": "1949 - 1957",
+        "label": "Nachkriegszeit & Wiederaufbau",
+        "description": "Konstruktionen der unmittelbaren Nachkriegszeit. Baustoffe waren Mangelware, weshalb häufig Trümmerschuttbeton (Trümmerziegel-Zuschläge) und Schlackenbetonblöcke verwendet wurden. Extrem minimierte Bauteildicken.",
+        "typicalConstruction": "Mauerwerk aus Trümmerbetonsteinen, dünne einschalige Außenwände (oft 24-30 cm), Rippendecken, Holzbalkendecken, einfache Verbundfenster.",
+        "characteristicMaterials": [
+          "Trümmerbeton",
+          "Schlackenbeton",
+          "Heraklith (Holzwolle-Platten)",
+          "Schlackendämmstoffe"
+        ],
+        "windows": "Holzrahmen-Verbundfenster oder Einfachfenster",
+        "uValueWall": 1.7,
+        "uValueRoof": 1.5,
+        "uValueFloor": 1.3,
+        "uValueWindow": 3
+      },
+      {
+        "id": "1958-1968",
+        "vintage": "1958 - 1968",
+        "label": "Frühes Wirtschaftswunder",
+        "description": "Industrialisierung des Bauens. Erste Hohlblocksteine aus Bims oder Leichtbeton verbesserten die Wärmedämmung leicht, allerdings bei nach wie vor dünnen Bauteilquerschnitten. Erste Isolierglasfenster kommen auf.",
+        "typicalConstruction": "Porenbetonmauerwerk, Leichtbetonhohlblöcke, Einblasdämmung in zweischaligem Mauerwerk, Stahlbeton-Rippendecken, frühe Isolierglasfenster.",
+        "characteristicMaterials": [
+          "Porenbeton (Ytong)",
+          "Gitterziegel",
+          "Asbestzement (Eternit-Platten)",
+          "Künstliche Mineralfasern (KMF)"
+        ],
+        "windows": "Isolierfenster der 1. Generation ohne Metallbeschichtung",
+        "uValueWall": 1.2,
+        "uValueRoof": 1.1,
+        "uValueFloor": 1,
+        "uValueWindow": 2.8
+      },
+      {
+        "id": "1969-1978",
+        "vintage": "1969 - 1978",
+        "label": "System- & Großtafelbauten",
+        "description": "Die Ära des Massenwohnungsbaus in West und Ost (Plattenbauten). Standardisierte Betonelemente, oft ungedämmt oder mit sehr geringer Kerndämmung. Erarbeitung der ersten Wärmeschutzverordnung (WSchV 1977) gegen Ende dieser Epoche.",
+        "typicalConstruction": "Großtafelbauweise (Plattenbau), Ziegelgitterstein-Mauerwerk, ungedämmte Flachdächer (Kaltdach/Warmdach), Stahlbeton-Massivdecken.",
+        "characteristicMaterials": [
+          "Stahlbetonfertigteile",
+          "Kerndämmung (Styropor/KMF)",
+          "Fugenabdichtungen (Thiokol)",
+          "PU-Schäume"
+        ],
+        "windows": "Isolierglasfenster in Holz- oder Metallrahmen",
+        "uValueWall": 1.1,
+        "uValueRoof": 0.9,
+        "uValueFloor": 0.9,
+        "uValueWindow": 2.7
+      },
+      {
+        "id": "1979-1994",
+        "vintage": "1979 - 1994",
+        "label": "Früher Wärmeschutz (WSchV '77/'82)",
+        "description": "Unter dem Eindruck der Ölkrisen traten die Wärmeschutzverordnungen von 1977 und 1982 in Kraft. Erste gezielte Dämmschichten an Außenwänden (WDVS) und Dächern sowie beschichtete Fenstersysteme.",
+        "typicalConstruction": "Mauerwerk mit zusätzlichem Wärmedämmverbundsystem (WDVS), mehrschichtige Wandkonstruktionen, Zwischensparrendämmung im Dachgerüst.",
+        "characteristicMaterials": [
+          "Polystyrol (EPS/Styropor)",
+          "Mineralwolle (Steinwolle)",
+          "Putzsysteme auf Dämmung",
+          "Zweischeiben-Isolierglas"
+        ],
+        "windows": "Zwei-Scheiben-Isolierverglasung, erste Kunststofffenster",
+        "uValueWall": 0.6,
+        "uValueRoof": 0.45,
+        "uValueFloor": 0.6,
+        "uValueWindow": 2
+      },
+      {
+        "id": "1995-2001",
+        "vintage": "1995 - 2001",
+        "label": "Niedrigenergie-Standard (WSchV '95)",
+        "description": "Einführung des rechnerischen Heizwärmebedarfs. Fokus verlagert sich auf verbesserte Luftdichtheit (erste Blower-Door-Tests) und gezielte Vermeidung von Wärmebrücken im Übergangsbereich.",
+        "typicalConstruction": "Kerndämmung 8-10 cm, verbesserte Außenwanddämmung, Mineralwolledämmung der Dachsparren (12-16 cm), optimierte Bauteilanschlüsse.",
+        "characteristicMaterials": [
+          "Calcium-Silikat-Platten",
+          "Dampfsperrfolien/Dichtbänder",
+          "Edelgasmischungen (Argon)",
+          "Mineralwolle WLG 035"
+        ],
+        "windows": "Zwei-Scheiben-Wärmeschutzverglasung mit selektiver Beschichtung & Gasfüllung",
+        "uValueWall": 0.35,
+        "uValueRoof": 0.3,
+        "uValueFloor": 0.4,
+        "uValueWindow": 1.4
+      },
+      {
+        "id": "2002-2013",
+        "vintage": "2002 - 2013",
+        "label": "EnEV-Ära (EnEV 2002 - 2009)",
+        "description": "Einführung der Energieeinsparverordnung (EnEV). Ganzheitliche energetische Bilanzierung von Gebäudehülle und Heizungsanlagentechnik sowie Einführung des gesetzlichen Energieausweises.",
+        "typicalConstruction": "WDVS (12-16 cm) mit EPS/Steinwolle, hochgedämmtes Hintermauerwerk (Planziegel oder Porenbeton), Dreifachverglasung setzt sich am Markt langsam durch.",
+        "characteristicMaterials": [
+          "Poroton Planziegelsysteme",
+          "Holzfaserdämmstoffe",
+          "Klimamembranen",
+          "PUR/PIR Aufsparrendämmung"
+        ],
+        "windows": "Hochwertiges 2-Scheiben-Wärmeschutzglas oder frühe 3-Scheiben-Dämmgläser",
+        "uValueWall": 0.28,
+        "uValueRoof": 0.22,
+        "uValueFloor": 0.32,
+        "uValueWindow": 1.2
+      },
+      {
+        "id": "2014-2020",
+        "vintage": "2014 - 2020",
+        "label": "Verschärfter EnEV-Standard (EnEV 2014/2016)",
+        "description": "Verschärfung der primärenergetischen Grenzwerte um 25 % und des baulichen Wärmeschutzes um 20 %. Massive Zunahme von Dreifachverglasung, kontrollierter Wohnraumlüftung mit Wärmerückgewinnung und PV-Integration.",
+        "typicalConstruction": "WDVS (16-20 cm), monolitische Ziegel- oder Porenbetonwände mit Dämmfüllung (Perlit, Mineralwolle), hochgedämmte Dächer (20-26 cm).",
+        "characteristicMaterials": [
+          "Perlit-gefüllte Ziegel",
+          "Vakuum-Isolations-Paneele (VIP)",
+          "Extrudierter Polystyrol-Hartschaum (XPS)",
+          "Aerogel-Dämmputze"
+        ],
+        "windows": "3-Scheiben-Wärmeschutzverglasung mit thermisch getrenntem Randverbund („Warme Kante“)",
+        "uValueWall": 0.22,
+        "uValueRoof": 0.18,
+        "uValueFloor": 0.25,
+        "uValueWindow": 0.9
+      },
+      {
+        "id": "ab-2020",
+        "vintage": "Ab 2020",
+        "label": "GEG / Niedrigstenergiegebäude",
+        "description": "Zusammenführung von EnEV, EnEG und EEWärmeG im Gebäudeenergiegesetz (GEG) und dem novellierten GModG. Gesetzlicher Niedrigstenergie-Gebäudestandard mit Fokus auf Lebenszyklusemissionen und 65-%-EE-Heizungsvorgaben.",
+        "typicalConstruction": "Hochgedämmte Hülle (Passivhaus- oder KfW-40-Niveau), Holz-Massivbauweise mit Zellulose-/Holzfaserdämmung, thermisch entkoppelte Fundamente.",
+        "characteristicMaterials": [
+          "Zellulose-Einblasdämmung",
+          "Holzweichfaserplatten",
+          "Recycling-Betone",
+          "Vakuum-Dämmung"
+        ],
+        "windows": "Hocheffiziente 3-Scheiben-Isolierverglasung (Ug ≤ 0,5 W/(m²K), Uw ≤ 0,8 W/(m²K))",
+        "uValueWall": 0.18,
+        "uValueRoof": 0.14,
+        "uValueFloor": 0.2,
+        "uValueWindow": 0.8
+      }
+    ],
+    "Bestand.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Vollziegelwand U_alt = 1,50 W/(m²K); 6 cm Calciumsilikatplatte (λ = 0,060 W/(mK)), kapillaraktiv.",
+        "formel": "R_{D} = \\frac{0{,}06}{0{,}060} = 1{,}00\\,\\text{m}^2\\text{K/W}"
+      },
+      {
+        "titel": "Neuer U-Wert",
+        "erklaerung": "Gesamtwiderstand alt plus Dämmschicht:",
+        "formel": "U_{neu} = \\frac{1}{0{,}667 + 1{,}00} = 0{,}60\\,\\text{W/(m}^2\\text{K)}"
+      },
+      {
+        "titel": "Oberflächentemperatur",
+        "erklaerung": "θ_i = 20 °C, θ_e = −5 °C, R_si = 0,13:",
+        "formel": "\\theta_{si,alt} = 20 - 0{,}13 \\cdot 1{,}50 \\cdot 25 = 15{,}1\\,^\\circ\\text{C}, \\quad \\theta_{si,neu} = 20 - 0{,}13 \\cdot 0{,}60 \\cdot 25 = 18{,}1\\,^\\circ\\text{C}"
+      }
+    ],
+    "Bestand.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "100 m² Außenwand, Heizgradtage 3 500 Kd/a:",
+        "formel": "\\Delta U = 1{,}50 - 0{,}60 = 0{,}90\\,\\text{W/(m}^2\\text{K)}"
+      },
+      {
+        "titel": "Einsparung Nutzwärme",
+        "erklaerung": "Umrechnung von Kd in kWh:",
+        "formel": "\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3\\,500 \\cdot 24 / 1\\,000 = 7\\,560\\,\\text{kWh/a}"
+      },
+      {
+        "titel": "Einordnung",
+        "erklaerung": "Bei Gas (≈ 0,24 kg CO₂-Äq./kWh) entspricht das rund 1,8 t CO₂-Äq. pro Jahr.",
+        "formel": "7\\,560 \\cdot 0{,}24 = 1\\,814\\,\\text{kg CO}_2\\text{-Äq./a}"
+      }
+    ],
+    "Bestand.literatur": [
+      "BMWi/BMI (2020): Bekanntmachung der Regeln zur Datenaufnahme und Datenverwendung im Wohngebäudebestand (pauschale U-Werte nach Baualtersklassen).",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Klopfer, H.: Wassertransport durch Diffusion in Feststoffen. Wiesbaden: Bauverlag 1974"
+    ],
+    "Bestand.regelwerke": [
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – §§ 35–37 und Anlage 7 (bestehende Gebäude)",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      },
+      {
+        "title": "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz; ersetzt 2018-10)"
+      },
+      {
+        "title": "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      },
+      {
+        "title": "WTA-Merkblatt 6-4-16/D: Innendämmung nach WTA I – Planungsleitfaden (Ausgabe 10.2016)",
+        "url": "https://www.wta-gmbh.de"
+      },
+      {
+        "title": "WTA-Merkblatt 6-5-14/D: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren (Ausgabe 2014)",
+        "url": "https://www.wta-gmbh.de"
+      }
+    ],
+    "Bestand.formeln": [
+      {
+        "formel": "R_{\\text{Dämm}} = \\frac{d_{\\text{Dämm}}}{\\lambda_{\\text{Dämm}}} \\quad [\\text{m}^2\\text{K/W}]",
+        "erklaerung": "Wärmedurchlasswiderstand einer Dämmschicht mit Schichtdicke d und Bemessungswert der Wärmeleitfähigkeit lambda.",
+        "quelle": "DIN EN ISO 6946"
+      },
+      {
+        "formel": "U_{\\text{neu}} = \\frac{1}{\\frac{1}{U_{\\text{alt}}} + R_{\\text{Dämm}}} \\quad [\\text{W/(m}^2\\text{K)}]",
+        "erklaerung": "Berechnung des reduzierten Wärmedurchgangskoeffizienten nach Aufbringung einer zusätzlichen Dämmschicht auf ein Bestandsbauteil.",
+        "quelle": "DIN EN ISO 6946"
+      },
+      {
+        "formel": "\\Delta Q = \\Delta U \\cdot A \\cdot HGT \\cdot 24 \\div 1000 \\quad [\\text{kWh/a}]",
+        "erklaerung": "Berechnung der jährlichen Transmissionswärmeverlust-Reduktion basierend auf der U-Wert-Differenz und Heizgradtagen.",
+        "quelle": "VDI 2067"
+      }
+    ],
+    "Bestand.weblinks": [
+      {
+        "title": "Bundesarbeitskreis Altbauerneuerung e.V. (BAKA)",
+        "url": "https://www.bakaberlin.de"
+      }
+    ]
+  }
+}

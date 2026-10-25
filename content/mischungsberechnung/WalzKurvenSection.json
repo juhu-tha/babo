@@ -1,0 +1,18 @@
+{
+  "texte": {
+    "dieWalzKurvenBeschreiben": "Die Walz-Kurven beschreiben den empirischen Zusammenhang zwischen dem Wasserzementwert (w/z) und der zu erwartenden Druckfestigkeit des Betons für verschiedene Zementfestigkeitsklassen. Ein niedrigerer w/z-Wert führt zu einer höheren Festigkeit.",
+    "erwarteteMittlereDruckfestigkeit": "Erwartete mittlere Druckfestigkeit",
+    "abhängigkeitDerFestigkeitVom": "Abhängigkeit der Festigkeit vom w/z-Wert",
+    "näherungNachDemAbrams": "Näherung nach dem Abrams-Ansatz f = A / 5<sup>w/z</sup> (A = 100/120/140 N/mm² für 32,5/42,5/52,5; Lehrwerte). Maßgebend sind Erstprüfungen."
+  },
+  "werte": {
+    "mittlereWürfeldruckfestigkeit28D": "Mittlere Würfeldruckfestigkeit 28 d (N/mm², Näherung)",
+    "wasserzementwertWZ": "Wasserzementwert (w/z)",
+    "wasserzementwertWZ2": "Wasserzementwert (w/z)",
+    "massenverhältnisVonWirksamemWasser": "Massenverhältnis von wirksamem Wasser zu Zement. Maßgeblich für die Porosität und damit die Festigkeit des Zementsteins.",
+    "normfestigkeitDesZementsNach": "Normfestigkeit des Zements nach 28 Tagen.",
+    "normdruckfestigkeitDesZementsNach": "Normdruckfestigkeit des Zements nach 28 Tagen (z.B. 32.5, 42.5, 52,5 MPa).",
+    "fCmBei28": "f_{cm} bei 28 Tagen",
+    "darstellungNachDemGesetz": "Darstellung nach dem Gesetz von Abrams: f_c = A / B^{w/z}. Die hervorgehobene Kurve entspricht der gewählten Zementklasse."
+  }
+}

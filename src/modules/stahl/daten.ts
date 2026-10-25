@@ -1,4 +1,5 @@
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
+import inhalt from '@/content/stahl/daten.json';
 
 export const steelGrades = {
   'S235': { fy: 235, fu: 360 },
@@ -11,14 +12,7 @@ export const steelGrades = {
   'SAS670': { fy: 670, fu: 800 },
 };
 
-export const corrosionClasses = {
-  'C1': 'Sehr gering (Beheizte Gebäude mit sauberer Atmosphäre)',
-  'C2': 'Gering (Unbeheizte Gebäude, ländliche Bereiche)',
-  'C3': 'Mäßig (Produktionsräume mit hoher Feuchte, Stadt- und Industrieatmosphäre)',
-  'C4': 'Stark (Chemieanlagen, Küstenbereiche mit mäßiger Salzbelastung)',
-  'C5': 'Sehr stark (Industriebereiche mit hoher Feuchte, Küstenbereiche mit hoher Salzbelastung)',
-  'CX': 'Extrem (Offshore, extreme Industrieatmosphäre) – nach DIN EN ISO 12944-2',
-};
+export const corrosionClasses = inhalt.daten.corrosionClasses;
 
 export const steelProperties = {
   rho: 7850, // kg/m³
@@ -90,373 +84,373 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
   {
     id: 'S235',
     name: 'S235JR',
-    sub: 'Kostengünstiger Allrounder (Klassischer Baustahl)',
+    sub: inhalt.werte.kostengünstigerAllrounderKlassischerBaus,
     werkstoffnummer: '1.0038',
     category: 'baustahl',
-    categoryLabel: 'Konventioneller Baustahl',
-    norm: 'DIN EN 10025-2',
+    categoryLabel: inhalt.werte.konventionellerBaustahl,
+    norm: inhalt.werte.dinEn100252,
     fy: 235,
     fu: 360,
-    description: 'Der meistgenutzte Allround-Stahl für untergeordnete Tragwerke. Extrem gut formbar, hervorragend schweißbar und sehr preiswert. Besitzt im Vergleich zu höherfesten Güten eine sehr breite plastische Reserve.',
+    description: inhalt.werte.derMeistgenutzteAllroundStahl,
     applications: [
-      'Gewerbliche Standardhallen und landwirtschaftliche Schuppen',
-      'Treppenkonstruktionen, Geländer, Abdeckbleche, Handläufe',
-      'Untergeordnete Tragwerksteile, Versteifungslaschen und Ankerplatten',
-      'Dachpfetten, leichte Fassadenriegel und Koppelpfetten'
+      inhalt.werte.gewerblicheStandardhallenUndLandwirtscha,
+      inhalt.werte.treppenkonstruktionenGeländerAbdeckblech,
+      inhalt.werte.untergeordneteTragwerksteileVersteifungs,
+      inhalt.werte.dachpfettenLeichteFassadenriegelUnd
     ],
     advantages: [
-      'Überall sofort ab Lager verfügbar',
-      'Sehr kostengünstiges Vormaterial',
-      'Fehlertolerante und unkomplizierte Schweißbarkeit (kein Vorwärmen)',
-      'Hervorragende Kaltumformbarkeit und Zerspanbarkeit'
+      inhalt.werte.überallSofortAbLager,
+      inhalt.werte.sehrKostengünstigesVormaterial,
+      inhalt.werte.fehlertoleranteUndUnkomplizierteSchweißb,
+      inhalt.werte.hervorragendeKaltumformbarkeitUndZerspan
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Hallen- und Hochbau',
-      description: 'Zweigelenkrahmen und Pfetten gering belasteter Hallen; die Bemessung wird oft von Steifigkeit und Stabilität bestimmt, nicht von der Festigkeit.',
+      name: inhalt.werte.typischeAnwendungHallenUnd,
+      description: inhalt.werte.zweigelenkrahmenUndPfettenGering,
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,17 %',
     density: '7.850 kg/m³',
-    ductility: 'Sehr hoch (Bruchdehnung A ≥ 26 %)',
-    weldability: 'Hervorragend, ohne Sondermaßnahmen'
+    ductility: inhalt.werte.sehrHochBruchdehnungA,
+    weldability: inhalt.werte.hervorragendOhneSondermaßnahmen
   },
   {
     id: 'S355',
     name: 'S355J2+N',
-    sub: 'Die universelle Standardgüte im modernen Ingenieurbau',
+    sub: inhalt.werte.dieUniverselleStandardgüteIm,
     werkstoffnummer: '1.0577',
     category: 'baustahl',
-    categoryLabel: 'Konventioneller Baustahl',
-    norm: 'DIN EN 10025-2',
+    categoryLabel: inhalt.werte.konventionellerBaustahl2,
+    norm: inhalt.werte.dinEn1002522,
     fy: 355,
     fu: 470,
-    description: 'Das unangefochtene Standardarbeitstier im modernen europäischen Stahl- und Verbundbau. Kombiniert eine um über 50 % höhere Streckgrenze gegenüber S235 mit ausgezeichneter Schweißbarkeit und Zähigkeit bei niedrigen Temperaturen (J2 = mind. 27 J Schlagenergie bei -20 °C).',
+    description: inhalt.werte.dasUnangefochteneStandardarbeitstierIm,
     applications: [
-      'Hochbelastete Rahmentragwerke im Geschoss- und Industriebau',
-      'Straßen- und Eisenbahnbrückenbau (standardisierte Verbundträger)',
-      'Weitgespannte Hallenoberlichter und Fachwerkbinder',
-      'Fundament- und Gründungsstrukturen von Windenergieanlagen'
+      inhalt.werte.hochbelasteteRahmentragwerkeImGeschoss,
+      inhalt.werte.straßenUndEisenbahnbrückenbauStandardisi,
+      inhalt.werte.weitgespannteHallenoberlichterUndFachwer,
+      inhalt.werte.fundamentUndGründungsstrukturenVon
     ],
     advantages: [
-      'Höchste Wirtschaftlichkeit im normalen Tragwerksentwurf',
-      'Reduziert Querschnittshöhen und Profilgewichte um bis zu 30% gegenüber S235',
-      'Sehr gute Eignung zur vollautomatisierten NC-Schweißfertigung',
-      'Ausgewogenes Verhältnis aus hoher Festigkeit und Duktilität'
+      inhalt.werte.höchsteWirtschaftlichkeitImNormalen,
+      inhalt.werte.reduziertQuerschnittshöhenUndProfilgewic,
+      inhalt.werte.sehrGuteEignungZur,
+      inhalt.werte.ausgewogenesVerhältnisAusHoher
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Brücken- und Industriebau',
-      description: 'Geschweißte Hohlkasten- und I-Träger mit Ermüdungsbeanspruchung; Standardgüte im Brücken- und Kranbahnbau.',
+      name: inhalt.werte.typischeAnwendungBrückenUnd,
+      description: inhalt.werte.geschweißteHohlkastenUndI,
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,20 %',
     density: '7.850 kg/m³',
-    ductility: 'Ausgezeichnet (Bruchdehnung A ≥ 22 %)',
-    weldability: 'Gut (bei dicken Blechen wird mäßiges Vorwärmen empfohlen)'
+    ductility: inhalt.werte.ausgezeichnetBruchdehnungA22,
+    weldability: inhalt.werte.gutBeiDickenBlechen
   },
   {
     id: 'S460',
     name: 'S460N / M',
-    sub: 'Hochfester Feinkornbaustahl für schlanke Konstruktionen',
+    sub: inhalt.werte.hochfesterFeinkornbaustahlFürSchlanke,
     werkstoffnummer: '1.8901 / 1.8827',
     category: 'baustahl',
-    categoryLabel: 'Hochfester Feinkornbaustahl',
-    norm: 'DIN EN 10025-3/4',
+    categoryLabel: inhalt.werte.hochfesterFeinkornbaustahl,
+    norm: inhalt.werte.dinEn100253,
     fy: 460,
     fu: 540,
-    description: 'Ein thermo-mechanisch gewalzter (M) oder normalisierter (N) Feinkornbaustahl. Durch das mikrolegierte Gefüge (Zusatz von Niob/Vanadium) wird eine gesteigerte Streckgrenze bei gleichzeitig feinstem, zähem Korngefüge erreicht. Hervorragend gegen Sprödbruch gefeit.',
+    description: inhalt.werte.einThermoMechanischGewalzter,
     applications: [
-      'Hochhaus-Verbundstützen zur Minimierung des architektonischen Fußabdrucks',
-      'Großbrückenbauten mit extremen Stützweiten',
-      'Offshore-Gründungskonstruktionen (Monopiles und Jackets)',
-      'Schlanke Zugglieder und hoch beanspruchte Knotenbleche'
+      inhalt.werte.hochhausVerbundstützenZurMinimierung,
+      inhalt.werte.großbrückenbautenMitExtremenStützweiten,
+      inhalt.werte.offshoreGründungskonstruktionenMonopiles,
+      inhalt.werte.schlankeZuggliederUndHoch
     ],
     advantages: [
-      'Enormer Gewichtsvorteil bei reinen Zug- oder Druckglieder',
-      'Sehr hohe Tieftemperaturzähigkeit (bis zu -50 °C im Lieferzustand \'+ML\')',
-      'Erlaubt verringerte Schweißnahtdicken (reduziert Montagezeiten und Nahtvolumen)',
-      'Spezielle metallische Reinheit minimiert d. Gefahr von Terrassenbrüchen'
+      inhalt.werte.enormerGewichtsvorteilBeiReinen,
+      inhalt.werte.sehrHoheTieftemperaturzähigkeitBis,
+      inhalt.werte.erlaubtVerringerteSchweißnahtdickenReduz,
+      inhalt.werte.spezielleMetallischeReinheitMinimiert
     ],
     exampleObject: {
-      name: 'Typische Anwendung: hoch belastete Stützen',
-      description: 'Stützen in Hochhäusern und Fachwerkstäbe: Die höhere Streckgrenze verringert Querschnitt und Eigengewicht.',
+      name: inhalt.werte.typischeAnwendungHochBelastete,
+      description: inhalt.werte.stützenInHochhäusernUnd,
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
-    ductility: 'Gut (Bruchdehnung A ≥ 17 %)',
-    weldability: 'Gut; verlangt qualifizierte Schweißverfahren und kontrollierte Abkühlung (t_8/5-Zeit)'
+    ductility: inhalt.werte.gutBruchdehnungA17,
+    weldability: inhalt.werte.gutVerlangtQualifizierteSchweißverfahren
   },
   {
     id: 'S690',
     name: 'S690QL',
-    sub: 'Höchstfester, wasservergüteter Feinkornbaustahl',
+    sub: inhalt.werte.höchstfesterWasservergüteterFeinkornbaus,
     werkstoffnummer: '1.8928',
     category: 'baustahl',
-    categoryLabel: 'Hochfester Vergütungsstahl',
-    norm: 'DIN EN 10025-6',
+    categoryLabel: inhalt.werte.hochfesterVergütungsstahl,
+    norm: inhalt.werte.dinEn100256,
     fy: 690,
     fu: 770,
-    description: 'Hochfester Stahl, der nach dem Walzen intensiv wasserabgeschreckt und anschließend angelassen wird (Vergüten). Ermöglicht Konstruktionen mit extremsten Traglasten bei minimalen Abmessungen. Erfordert höchste Schweißkompetenz im verarbeitenden Betrieb.',
+    description: inhalt.werte.hochfesterStahlDerNach,
     applications: [
-      'Höchstbelastete Hauptträger von Mobilkranen und Schwertransportern',
-      'Hochbeanspruchte Brückengelenke und hochfeste Fachwerkbögen',
-      'Tunnelvortriebsmaschinen und hochbelaster Bergbau-Ausrüstung',
-      'Extreme Hochhauskonstruktionen im seismisch aktiven asiatischen Raum'
+      inhalt.werte.höchstbelasteteHauptträgerVonMobilkranen,
+      inhalt.werte.hochbeanspruchteBrückengelenkeUndHochfes,
+      inhalt.werte.tunnelvortriebsmaschinenUndHochbelasterB,
+      inhalt.werte.extremeHochhauskonstruktionenImSeismisch
     ],
     advantages: [
-      'Maximale Gewichtseinsparung bei schweren Maschinen- oder Tragstrukturen',
-      'Hervorragend geeignet für dynamisch höchstbelastete, schwingende Sonderteile',
-      'Reduziert Fundamentlasten und Transportgewichte bei Fertigteilen im Brückenbau',
-      'Enormes Energieeinsparpotenzial durch Materialmassen-Reduktion beim Transport'
+      inhalt.werte.maximaleGewichtseinsparungBeiSchweren,
+      inhalt.werte.hervorragendGeeignetFürDynamisch,
+      inhalt.werte.reduziertFundamentlastenUndTransportgewi,
+      inhalt.werte.enormesEnergieeinsparpotenzialDurchMater
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Gewichtsoptimierte Tragglieder',
-      description: 'Hochbelastete Gurte, Mobilkrane und Sonderbauteile; Schweißen erfordert kontrollierte Wärmeführung.',
+      name: inhalt.werte.typischeAnwendungGewichtsoptimierteTragg,
+      description: inhalt.werte.hochbelasteteGurteMobilkraneUnd,
       location: 'Lehrbeispiel'
     },
-    carbonContent: '≤ 0,20 % (Zusatz von Cr, Mo, B)',
+    carbonContent: inhalt.werte.t020ZusatzVon,
     density: '7.850 kg/m³',
-    ductility: 'Mäßig bis Gut (Bruchdehnung A ≥ 14 %)',
-    weldability: 'Anspruchsvoll; strikte Einhaltung von Vorwärmtemperaturen zur Vermeidung von Kaltrissen zwingend erforderlich'
+    ductility: inhalt.werte.mäßigBisGutBruchdehnung,
+    weldability: inhalt.werte.anspruchsvollStrikteEinhaltungVon
   },
   {
     id: 'Corten',
-    name: 'S355J2W (Cortenst.)',
-    sub: 'Wetterfester Baustahl mit selbstschützender Edelrostschicht',
+    name: inhalt.werte.s355j2wCortenst,
+    sub: inhalt.werte.wetterfesterBaustahlMitSelbstschützender,
     werkstoffnummer: '1.8965',
     category: 'baustahl',
-    categoryLabel: 'Wetterfester Baustahl',
-    norm: 'DIN EN 10025-5',
+    categoryLabel: inhalt.werte.wetterfesterBaustahl,
+    norm: inhalt.werte.dinEn100255,
     fy: 355,
     fu: 470,
-    description: 'Wetterfester Baustahl, der Kupfer, Chrom und Nickel als dünne Legierungskomponenten enthält. Durch die Witterung bildet sich an der Oberfläche eine festhaftende, dichte Sperrschicht aus Phosphaten und Sulfaten. Diese verlässig aufgeschüttete Schicht verlangsamt den weiteren Korrosionsfortschritt um den Faktor 10.',
+    description: inhalt.werte.wetterfesterBaustahlDerKupfer,
     applications: [
-      'Wartungsfreie Fassadenbekleidungen im repräsentativen Hochbau',
-      'Stahlbrückenbauwerke im Schienennetz (vollständiger Verzicht auf Schutzanstrich)',
-      'Lärmschutzwände, dekorative Tore und Landschaftsarchitektur',
-      'Großskulpturen und Denkmäler im öffentlichen Raum'
+      inhalt.werte.wartungsfreieFassadenbekleidungenImReprä,
+      inhalt.werte.stahlbrückenbauwerkeImSchienennetzVollst,
+      inhalt.werte.lärmschutzwändeDekorativeToreUnd,
+      inhalt.werte.großskulpturenUndDenkmälerIm
     ],
     advantages: [
-      'Kompletter Wegfall von Lackierungs- und regelmäßigen Wartungskosten',
-      'Sehr hohe Umweltfreundlichkeit durch Verzicht auf VOC-haltige Farbsysteme',
-      'Charakteristische, lebendige rotbraun-orangefarbene Patina',
-      'Statisch äquivalent zu standardmäßigem S355J2 Baustahl einzurechnen'
+      inhalt.werte.kompletterWegfallVonLackierungs,
+      inhalt.werte.sehrHoheUmweltfreundlichkeitDurch,
+      inhalt.werte.charakteristischeLebendigeRotbraunOrange,
+      inhalt.werte.statischÄquivalentZuStandardmäßigem
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Fassaden und Brücken ohne Beschichtung',
-      description: 'Wetterfester Stahl bildet eine schützende Patina; Abtragsrate und Zuschläge für die Wanddicke beachten, nicht für Chlorid- oder Dauerfeuchtebelastung.',
+      name: inhalt.werte.typischeAnwendungFassadenUnd,
+      description: inhalt.werte.wetterfesterStahlBildetEine,
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
-    ductility: 'Ausgezeichnet (Bruchdehnung A ≥ 22 %)',
-    weldability: 'Gut; Schweißzusatzstoffe müssen ebenfalls witterungsbeständig sein (z.B. kupferlegiert)'
+    ductility: inhalt.werte.ausgezeichnetBruchdehnungA222,
+    weldability: inhalt.werte.gutSchweißzusatzstoffeMüssenEbenfalls
   },
   {
     id: 'Edelstahl',
-    name: '1.4404 (A4 / 316L)',
-    sub: 'Nichtrostender, säure- und lochfraßbeständiger Edelstahl',
+    name: inhalt.werte.t14404A4316l,
+    sub: inhalt.werte.nichtrostenderSäureUndLochfraßbeständige,
     werkstoffnummer: '1.4404',
     category: 'edelstahl',
-    categoryLabel: 'Nichtrostender Edelstahl',
-    norm: 'DIN EN 10088-4',
+    categoryLabel: inhalt.werte.nichtrostenderEdelstahl,
+    norm: inhalt.werte.dinEn100884,
     fy: 240,
     fu: 530,
-    description: 'Nichtrostender austenitischer Chrom-Nickel-Molybdän-Stahl. Durch ca. 2 - 2,5 % Molybdängehalt besitzt dieses Metall eine extrem hohe Beständigkeit gegen Lochfraß (Pitting) bei Beaufschlagung durch chloridhaltige Lösungen wie Tausalze, See- oder Badewasser. Extrem korrosionsgeschützt.',
+    description: inhalt.werte.nichtrostenderAustenitischerChromNickel,
     applications: [
-      'Fassadenbefestigungen, Klinkertraganker und Sanierungsanker',
-      'Tragende Deckenhänger und Schraubbolzen im Chloriddampfbereich von Hallenbädern',
-      'Abwasserbehandlungsanlagen, Küstennahe Infrastrukturbauten',
-      'Chemischer Laborbau, Lebensmittelindustrie und Pharmazie'
+      inhalt.werte.fassadenbefestigungenKlinkertragankerUnd,
+      inhalt.werte.tragendeDeckenhängerUndSchraubbolzen,
+      inhalt.werte.abwasserbehandlungsanlagenKüstennaheInfr,
+      inhalt.werte.chemischerLaborbauLebensmittelindustrieU
     ],
     advantages: [
-      'Absoluter und dauerhafter Korrosionsschutz ohne jegliche metallische Schutzbeschichtung',
-      'Sehr gute Tieftemperatureigenschaften (auch bei -200 °C zäh, kein Sprödbruch)',
-      'Magnetisch extrem schwach (völlig unmagnetischer Austenit)',
-      'Keine Zersetzung oder Verfärbung angrenzender Mauerwerksteile durch Rostwasser'
+      inhalt.werte.absoluterUndDauerhafterKorrosionsschutz,
+      inhalt.werte.sehrGuteTieftemperatureigenschaftenAuch,
+      inhalt.werte.magnetischExtremSchwachVöllig,
+      inhalt.werte.keineZersetzungOderVerfärbung
     ],
     exampleObject: {
-      name: 'Schadensfall: Hallenbad Uster (1985)',
-      description: 'Versagen von Deckenabhängungen aus nichtrostendem Stahl durch chloridinduzierte Spannungsrisskorrosion in Hallenbadatmosphäre. Seitdem gelten für Schwimmhallen besondere Werkstoffanforderungen.',
-      location: 'Uster, Schweiz'
+      name: inhalt.werte.schadensfallHallenbadUster1985,
+      description: inhalt.werte.versagenVonDeckenabhängungenAus,
+      location: inhalt.werte.usterSchweiz
     },
-    carbonContent: '≤ 0,03 % (Extrem aschearm)',
+    carbonContent: inhalt.werte.t003ExtremAschearm,
     density: '7.980 kg/m³',
-    ductility: 'Herausragend (Bruchdehnung A ≥ 40 %)',
-    weldability: 'Sehr gut schweißbar; benötigt jedoch präzises Formieren (Schutzgasflutung)'
+    ductility: inhalt.werte.herausragendBruchdehnungA40,
+    weldability: inhalt.werte.sehrGutSchweißbarBenötigt
   },
   {
     id: 'B500B',
-    name: 'B500B (Betonstabstahl)',
-    sub: 'Hochduktiler Bewehrungsstahl für den Stahlbetonbau (DIN 488 / EC2)',
+    name: inhalt.werte.b500bBetonstabstahl,
+    sub: inhalt.werte.hochduktilerBewehrungsstahlFürDen,
     werkstoffnummer: '1.0439',
     category: 'bewehrung',
-    categoryLabel: 'Bewehrungsstahl (Hochduktil B)',
-    norm: 'DIN 488 / EC2',
+    categoryLabel: inhalt.werte.bewehrungsstahlHochduktilB,
+    norm: inhalt.werte.din488Ec2,
     fy: 500,
     fu: 540, // f_tk = k · f_yk mit k ≥ 1,08
-    description: 'Warmgewalzter und aus der Walzhitze angelassener Betonstabstahl mit gerippter Oberfläche (Thermex-Verfahren). Ausgelegt für formschlüssige Riss- und Zugkraftaufnahme im Stahlbetonverbund. Erfüllt die strenge europäische Duktilitätsklasse B mit einem Zug-Streckgrenzenverhältnis ft/fy ≥ 1.08.',
+    description: inhalt.werte.warmgewalzterUndAusDer,
     applications: [
-      'Biege- und Schubbewehrung in Fundamenten, Bodenplatten und Kellerwänden',
-      'Hochbelastete Hochhausstützen und Rahmenknoten',
-      'Brückenüberbauten, Kappen und Widerlager',
-      'Tunnelinnenschalen und Schutzbauwerke'
+      inhalt.werte.biegeUndSchubbewehrungIn,
+      inhalt.werte.hochbelasteteHochhausstützenUndRahmenkno,
+      inhalt.werte.brückenüberbautenKappenUndWiderlager,
+      inhalt.werte.tunnelinnenschalenUndSchutzbauwerke
     ],
     advantages: [
-      'Garantierte Hochduktilität: Dehnung bei Höchstlast ε_uk ≥ 5,0 % sichert rechnerische Fließgelenke',
-      'Hervorragender Verbundbeiwert durch 2- oder 4-reihige Rippenstruktur',
-      'Ausgezeichnete Kaltbiegbarkeit um genormte Biegerollendurchmesser',
-      'Problemlose Eignung für Schweißstöße (Abbrennstumpf-, Gaspress- und Schutzgasschweißen nach DIN EN ISO 17660)'
+      inhalt.werte.garantierteHochduktilitätDehnungBei,
+      inhalt.werte.hervorragenderVerbundbeiwertDurch2,
+      inhalt.werte.ausgezeichneteKaltbiegbarkeitUmGenormte,
+      inhalt.werte.problemloseEignungFürSchweißstöße
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Stabstahl im Stahlbetonbau',
-      description: 'Längs- und Bügelbewehrung von Balken, Stützen und Gründungen; hohe Duktilität für Umlagerung.',
+      name: inhalt.werte.typischeAnwendungStabstahlIm,
+      description: inhalt.werte.längsUndBügelbewehrungVon,
       location: 'Lehrbeispiel'
     },
-    carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
+    carbonContent: inhalt.werte.t022Cev0,
     density: '7.850 kg/m³',
-    ductility: 'Hochduktil (Klasse B: Agt ≥ 5,0 %, A ≥ 12 %)',
-    weldability: 'Sehr gut schweißbar nach DIN EN ISO 17660'
+    ductility: inhalt.werte.hochduktilKlasseBAgt,
+    weldability: inhalt.werte.sehrGutSchweißbarNach
   },
   {
     id: 'B500A',
-    name: 'B500A (Betonstahlmatten)',
-    sub: 'Normalduktiler Bewehrungsstahl für ebene Flächenbauteile (DIN 488)',
+    name: inhalt.werte.b500aBetonstahlmatten,
+    sub: inhalt.werte.normalduktilerBewehrungsstahlFürEbene,
     werkstoffnummer: '1.0438',
     category: 'bewehrung',
-    categoryLabel: 'Bewehrungsstahl (Normalduktil A)',
+    categoryLabel: inhalt.werte.bewehrungsstahlNormalduktilA,
     norm: 'DIN 488-4',
     fy: 500,
     fu: 525,
-    description: 'Kaltgezogener oder kaltgerippter Betonstahl zur automatisierten Fertigung punktgeschweißter Bewehrungsmatten (Lagermatten z.B. Q- und R-Matten) sowie Gitterträgern. Besitzt eine normalduktile Verformungsklasse A mit ft/fy ≥ 1.05.',
+    description: inhalt.werte.kaltgezogenerOderKaltgerippterBetonstahl,
     applications: [
-      'Geschossdeckenplatten und Elementdecken (Filigrandecken)',
-      'Nicht drückendes Wasser abdichtende Kellerwände und Sohlplatten',
-      'Bewehrung von Industrieestrichen und Fahrbahnplatten',
-      'Fertigteilwerke für Wand- und Deckenelemente'
+      inhalt.werte.geschossdeckenplattenUndElementdeckenFil,
+      inhalt.werte.nichtDrückendesWasserAbdichtende,
+      inhalt.werte.bewehrungVonIndustrieestrichenUnd,
+      inhalt.werte.fertigteilwerkeFürWandUnd
     ],
     advantages: [
-      'Enorme Verlegegeschwindigkeit auf der Baustelle durch großformatige Matten (bis 6.0 x 2,3 m)',
-      'Hohe Maßgenauigkeit der Maschenweiten und Stababstände',
-      'Geringerer Verlegeaufwand und minimierte Personalkosten gegenüber Einzelstabbewehrung',
-      'Wirtschaftliche Mindestbewehrung zur Rissbreitenbegrenzung'
+      inhalt.werte.enormeVerlegegeschwindigkeitAufDer,
+      inhalt.werte.hoheMaßgenauigkeitDerMaschenweiten,
+      inhalt.werte.geringererVerlegeaufwandUndMinimierte,
+      inhalt.werte.wirtschaftlicheMindestbewehrungZurRissbr
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Betonstahlmatten',
-      description: 'Flächenbewehrung von Decken und Bodenplatten; kaltverformt mit normaler Duktilität.',
+      name: inhalt.werte.typischeAnwendungBetonstahlmatten,
+      description: inhalt.werte.flächenbewehrungVonDeckenUnd,
       location: 'Lehrbeispiel'
     },
-    carbonContent: '≤ 0,22 % (Kaltverfestigt)',
+    carbonContent: inhalt.werte.t022Kaltverfestigt,
     density: '7.850 kg/m³',
-    ductility: 'Normalduktil (Klasse A: Agt ≥ 2,5 %)',
-    weldability: 'Werkseitig punktgeschweißt; Baustellenschweißen nach DIN EN ISO 17660 zulässig'
+    ductility: inhalt.werte.normalduktilKlasseAAgt,
+    weldability: inhalt.werte.werkseitigPunktgeschweißtBaustellenschwe
   },
   {
     id: 'B500C',
-    name: 'B500C (Erdbebenstahl)',
-    sub: 'Seismisch hochduktiler Bewehrungsstabstahl (DIN EN 1992-1-1 Anh. C)',
+    name: inhalt.werte.b500cErdbebenstahl,
+    sub: inhalt.werte.seismischHochduktilerBewehrungsstabstahl,
     werkstoffnummer: '1.0440',
     category: 'bewehrung',
-    categoryLabel: 'Bewehrungsstahl (Hochduktil C)',
-    norm: 'DIN EN 1992-1-1 Anh. C',
+    categoryLabel: inhalt.werte.bewehrungsstahlHochduktilC,
+    norm: inhalt.werte.dinEn19921,
     fy: 500,
     fu: 575, // k ≥ 1,15 (EN 1992-1-1, Anhang C)
-    description: 'Spezieller mikrolegierter oder thermomechanisch behandelter Bewehrungsstahl mit höchster plastischer Dehnfähigkeit für Erdbebengebiete und dynamische Beanspruchungen. Erfüllt die strengste europäische Duktilitätsklasse C mit einem Zug-Streckgrenzenverhältnis 1.15 ≤ ft/fy ≤ 1.35 und einer Dehnung bei Höchstlast ε_uk ≥ 7,5 %.',
+    description: inhalt.werte.speziellerMikrolegierterOderThermomechan,
     applications: [
-      'Erdbebensichere Rahmenknoten, Stützen- und Riegelanschlüsse in seismischen Zonen',
-      'Schutzbauwerke, Bunker und kerntechnische Anlagen mit Explosionslastannahmen',
-      'Hochbelastete Brückenpfeiler mit zyklischer plastischer Energiedissipation',
-      'Tunnelbauten im Gebirgsdruck- und Bergsenkungsbereich'
+      inhalt.werte.erdbebensichereRahmenknotenStützenUnd,
+      inhalt.werte.schutzbauwerkeBunkerUndKerntechnische,
+      inhalt.werte.hochbelasteteBrückenpfeilerMitZyklischer,
+      inhalt.werte.tunnelbautenImGebirgsdruckUnd
     ],
     advantages: [
-      'Höchste garantierte plastische Rotationskapazität zur Ausbildung dissipativer Fließgelenke',
-      'Verhindert sprödes Abreißen der Bewehrung bei zyklischer Überlastung im Katastrophenfall',
-      'Oberes Streckgrenzenverhältnis begrenzt (ft/fy ≤ 1.35), um unkontrollierte Betonabplatzungen vor dem Stahlfließen zu vermeiden',
-      'Hervorragende Kaltbiegeeigenschaften bei engen Biegeradien'
+      inhalt.werte.höchsteGarantiertePlastischeRotationskap,
+      inhalt.werte.verhindertSprödesAbreißenDer,
+      inhalt.werte.oberesStreckgrenzenverhältnisBegrenztFt,
+      inhalt.werte.hervorragendeKaltbiegeeigenschaftenBeiEn
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Erdbebengebiete',
-      description: 'Bauteile mit planmäßiger plastischer Verformung (Duktilitätsklasse C nach EN 1992-1-1, Anhang C); in Deutschland unüblich.',
+      name: inhalt.werte.typischeAnwendungErdbebengebiete,
+      description: inhalt.werte.bauteileMitPlanmäßigerPlastischer,
       location: 'Lehrbeispiel'
     },
-    carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
+    carbonContent: inhalt.werte.t022Cev02,
     density: '7.850 kg/m³',
-    ductility: 'Extrem hoch (Klasse C: Agt ≥ 7,5 %, ft/fy ≥ 1.15)',
-    weldability: 'Sehr gut schweißbar nach DIN EN ISO 17660'
+    ductility: inhalt.werte.extremHochKlasseC,
+    weldability: inhalt.werte.sehrGutSchweißbarNach2
   },
   {
     id: 'Y1860',
-    name: 'Y1860 S7 (Spannlitze)',
-    sub: 'Ultrahochfester Spannstahl für den Spannbetonbau (abZ des DIBt; prEN 10138-3 nur Entwurf)',
+    name: inhalt.werte.y1860S7Spannlitze,
+    sub: inhalt.werte.ultrahochfesterSpannstahlFürDen,
     werkstoffnummer: '1.8105',
     category: 'spannstahl',
-    categoryLabel: 'Spannstahl (Litze)',
-    norm: 'abZ (DIBt); prEN 10138-3 (Entwurf)',
+    categoryLabel: inhalt.werte.spannstahlLitze,
+    norm: inhalt.werte.abzDibtPren10138,
     fy: 1660, // Rp0.2 (fp0.1k = 1600 MPa)
     fu: 1860, // fpk
-    description: 'Patentierter, mehrfach kaltgezogener Eutektoid-Kohlenstoffstahl (ca. 0,82 % C), verseilt zu einer 7-drähtigen Litze mit thermomechanischer Reck- und Stabilisierungsglühung. Bietet die höchste Festigkeit aller Bauwerkstoffe bei extrem niedriger Spannungsrelaxation.',
+    description: inhalt.werte.patentierterMehrfachKaltgezogenerEutekto,
     applications: [
-      'Interne und externe Längsvorspannung von Großbrücken (Freivorbau, Taktschiebeverfahren)',
-      'Vorgespannte Fertigteil-Dachbinder und TT-Deckenplatten mit großen Spannweiten (> 30 m)',
-      'Spannbeton-Windkrafttürme (Hybridtürme) zur Vermeidung klaffender Fugen',
-      'Vorgespannte Fels- und Dauererdanker für Baugruben und Talsperren'
+      inhalt.werte.interneUndExterneLängsvorspannung,
+      inhalt.werte.vorgespannteFertigteilDachbinderUnd,
+      inhalt.werte.spannbetonWindkrafttürmeHybridtürmeZur,
+      inhalt.werte.vorgespannteFelsUndDauererdanker
     ],
     advantages: [
-      'Nahezu 5-fache statische Zugtragfähigkeit gegenüber Normalbaustahl S355',
-      'Verhindert Betonrissbildung und eliminiert Durchbiegungen durch gezielten inneren Druckspannungszustand',
-      'Extrem niedrige Relaxation: Spannkraftverlust unter Dauerlast < 2,5 % nach 1000 h bei 20 °C',
-      'Kompakter Hüllrohr-Querschnitt bei Bündelspanngliedern (z.B. 19- oder 31-Litzen-Anker)'
+      inhalt.werte.nahezu5FacheStatische,
+      inhalt.werte.verhindertBetonrissbildungUndEliminiert,
+      inhalt.werte.extremNiedrigeRelaxationSpannkraftverlus,
+      inhalt.werte.kompakterHüllrohrQuerschnittBei
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Litzenspannglieder',
-      description: 'Interne und externe Spannglieder im Brücken- und Hochbau.',
+      name: inhalt.werte.typischeAnwendungLitzenspannglieder,
+      description: inhalt.werte.interneUndExterneSpannglieder,
       location: 'Lehrbeispiel'
     },
-    carbonContent: '0,80 - 0,85 % (Feinstlamellarer Perlit)',
+    carbonContent: inhalt.werte.t080085,
     density: '7.850 kg/m³',
-    ductility: 'Begrenzt elastoplastisch (Agt ≥ 3,5 %)',
-    weldability: 'Streng verboten! Jeder Lichtbogenkontakt oder Schweißwärmeeintrag zerstört das Kaltziehgefüge (Versprödung/Bruchgefahr)'
+    ductility: inhalt.werte.begrenztElastoplastischAgt3,
+    weldability: inhalt.werte.strengVerbotenJederLichtbogenkontakt
   },
   {
     id: 'SAS670',
-    name: 'SAS 670 / Y1050 (Spannstab)',
-    sub: 'Warmgewalzter Gewindespannstahl für Geotechnik & Quervorspannung',
+    name: inhalt.werte.sas670Y1050Spannstab,
+    sub: inhalt.werte.warmgewalzterGewindespannstahlFürGeotech,
     werkstoffnummer: '1.8010',
     category: 'spannstahl',
-    categoryLabel: 'Spannstahl (Gewindestab)',
-    norm: 'abZ (DIBt); prEN 10138-4 (Entwurf)',
+    categoryLabel: inhalt.werte.spannstahlGewindestab,
+    norm: inhalt.werte.abzDibtPren101382,
     fy: 670,
     fu: 800,
-    description: 'Warmgewalzter, mikrolegierter Rundstahl mit beidseitig aufgewalzten Gewinderippen. Das durchgehende Grobgewinde erlaubt das bauseitige Ablängen an beliebiger Stelle und die kraftschlüssige Verbindung mittels Schraubmuffen und Verankerungsmuttern.',
+    description: inhalt.werte.warmgewalzterMikrolegierterRundstahlMit,
     applications: [
-      'Quervorspannung von Brückenfahrbahnplatten und Koppelanker',
-      'Temporäre und permanente Baugrubenaussteifungen, Rückverankerungen und Mikropfähle',
-      'Zuganker im Wasserbau, Spundwandverankerungen und Schwergewichtsmauern',
-      'Turm-Segmentverspannung von Beton-Windkraftanlagen'
+      inhalt.werte.quervorspannungVonBrückenfahrbahnplatten,
+      inhalt.werte.temporäreUndPermanenteBaugrubenaussteifu,
+      inhalt.werte.zugankerImWasserbauSpundwandverankerunge,
+      inhalt.werte.turmSegmentverspannungVonBeton
     ],
     advantages: [
-      'Durchgehendes, schmutzunempfindliches Grobgewinde: Koppelung an jedem Punkt ohne Schweißen',
-      'Hohe Robustheit gegen Baustellenbeschädigungen und rauen Baustellenbetrieb',
-      'Einfaches Nachspannen oder Entspannen bei temporären Bauzuständen möglich',
-      'Hervorragende dynamische Dauerschwingfestigkeit mit passenden Kugelbundmuttern'
+      inhalt.werte.durchgehendesSchmutzunempfindlichesGrobg,
+      inhalt.werte.hoheRobustheitGegenBaustellenbeschädigun,
+      inhalt.werte.einfachesNachspannenOderEntspannen,
+      inhalt.werte.hervorragendeDynamischeDauerschwingfesti
     ],
     exampleObject: {
-      name: 'Typische Anwendung: Verpressanker und Zugglieder',
-      description: 'Rückverankerung von Baugrubenwänden, Felsanker und Zugstäbe.',
+      name: inhalt.werte.typischeAnwendungVerpressankerUnd,
+      description: inhalt.werte.rückverankerungVonBaugrubenwändenFelsank,
       location: 'Lehrbeispiel'
     },
     carbonContent: '0,40 - 0,55 %',
     density: '7.850 kg/m³',
-    ductility: 'Gut (Agt ≥ 5,0 %, A ≥ 10 %)',
-    weldability: 'Bedingt schweißbar (Sonderverfahren erforderlich); Koppelung erfolgt rein mechanisch über Gewindemuffen'
+    ductility: inhalt.werte.gutAgt50,
+    weldability: inhalt.werte.bedingtSchweißbarSonderverfahrenErforder
   }
 ];
 
 export const structuralProfiles: StructuralProfile[] = [
-  { id: 'IPE200', name: 'IPE 200', type: 'Schmaler I-Träger', Wpl_y: 220.6, Area: 28.48, weight: 22.4, height: 200, width: 100 },
-  { id: 'IPE300', name: 'IPE 300', type: 'Schmaler I-Träger', Wpl_y: 628.4, Area: 53.81, weight: 42.2, height: 300, width: 150 },
-  { id: 'HEB200', name: 'HEB 200', type: 'Breitflanschträger (Schwer)', Wpl_y: 642.5, Area: 78.08, weight: 61.3, height: 200, width: 200 },
-  { id: 'HEB300', name: 'HEB 300', type: 'Breitflanschträger (Schwer)', Wpl_y: 1869.0, Area: 149.12, weight: 117.0, height: 300, width: 300 }
+  { id: 'IPE200', name: 'IPE 200', type: inhalt.werte.schmalerITräger, Wpl_y: 220.6, Area: 28.48, weight: 22.4, height: 200, width: 100 },
+  { id: 'IPE300', name: 'IPE 300', type: inhalt.werte.schmalerITräger2, Wpl_y: 628.4, Area: 53.81, weight: 42.2, height: 300, width: 150 },
+  { id: 'HEB200', name: 'HEB 200', type: inhalt.werte.breitflanschträgerSchwer, Wpl_y: 642.5, Area: 78.08, weight: 61.3, height: 200, width: 200 },
+  { id: 'HEB300', name: 'HEB 300', type: inhalt.werte.breitflanschträgerSchwer2, Wpl_y: 1869.0, Area: 149.12, weight: 117.0, height: 300, width: 300 }
 ];
 
 export interface SteelCurveDefinition {
@@ -484,12 +478,12 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
   {
     id: 'S235',
     name: 'S235JR',
-    sub: 'Klassischer unlegierter Baustahl',
+    sub: inhalt.werte.klassischerUnlegierterBaustahl,
     werkstoffnummer: '1.0038',
-    norm: 'DIN EN 10025-2',
+    norm: inhalt.werte.dinEn1002523,
     color: '#2563eb', // Blau
     category: 'baustahl',
-    categoryLabel: 'Konventioneller Baustahl',
+    categoryLabel: inhalt.werte.konventionellerBaustahl3,
     E: 210000,
     fy: 235,
     fu: 360,
@@ -498,18 +492,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 15.0,
     frac_stress: 260,
     yieldType: 'ausgeprägt',
-    description: 'Sehr breites Lüders-Fließplateau (bis 2,2 %), extrem gutmütig, hohe plastische Verformungsreserven.',
-    mechanism: 'Cottrell-Atmosphären blockieren Versetzungen bis ReH; danach freies Fließen bei ReL.'
+    description: inhalt.werte.sehrBreitesLüdersFließplateau,
+    mechanism: inhalt.werte.cottrellAtmosphärenBlockierenVersetzunge
   },
   {
     id: 'S355',
     name: 'S355J2+N',
-    sub: 'Europäischer Standard-Ingenieurbaustahl',
+    sub: inhalt.werte.europäischerStandardIngenieurbaustahl,
     werkstoffnummer: '1.0577',
-    norm: 'DIN EN 10025-2',
+    norm: inhalt.werte.dinEn1002524,
     color: '#A3113E', // Shiraz
     category: 'baustahl',
-    categoryLabel: 'Konventioneller Baustahl',
+    categoryLabel: inhalt.werte.konventionellerBaustahl4,
     E: 210000,
     fy: 355,
     fu: 510,
@@ -518,18 +512,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 13.0,
     frac_stress: 370,
     yieldType: 'ausgeprägt',
-    description: 'Das unangefochtene Arbeitstier: 51 % höhere Streckgrenze als S235 bei hoher Duktilität und Kerbschlagarbeit.',
-    mechanism: 'Normalisierendes Glühen erzeugt feines Ferrit-Perlit-Gefüge mit ausgeprägter Streckgrenze.'
+    description: inhalt.werte.dasUnangefochteneArbeitstier51,
+    mechanism: inhalt.werte.normalisierendesGlühenErzeugtFeines
   },
   {
     id: 'S460',
     name: 'S460N/M',
-    sub: 'Feinkornbaustahl für schlanke Tragwerke',
+    sub: inhalt.werte.feinkornbaustahlFürSchlankeTragwerke,
     werkstoffnummer: '1.8901',
-    norm: 'DIN EN 10025-3/4',
+    norm: inhalt.werte.dinEn1002532,
     color: '#d97706', // Bernstein
     category: 'baustahl',
-    categoryLabel: 'Konventioneller Baustahl',
+    categoryLabel: inhalt.werte.konventionellerBaustahl5,
     E: 210000,
     fy: 460,
     fu: 600,
@@ -538,18 +532,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 10.0,
     frac_stress: 460,
     yieldType: 'ausgeprägt',
-    description: 'Kürzeres Fließplateau, mikrolegiert mit Niob und Vanadium zur maximalen Kornfeinung.',
-    mechanism: 'Feinkornhärtung (Hall-Petch-Beziehung) steigert Streckgrenze ohne Sprödbruchgefahr.'
+    description: inhalt.werte.kürzeresFließplateauMikrolegiertMit,
+    mechanism: inhalt.werte.feinkornhärtungHallPetchBeziehung
   },
   {
     id: 'S690',
     name: 'S690QL',
-    sub: 'Wasservergüteter hochfester Baustahl',
+    sub: inhalt.werte.wasservergüteterHochfesterBaustahl,
     werkstoffnummer: '1.8928',
-    norm: 'DIN EN 10025-6',
+    norm: inhalt.werte.dinEn1002562,
     color: '#7c3aed', // Violett
     category: 'hochfest',
-    categoryLabel: 'Hochfester Feinkornbaustahl',
+    categoryLabel: inhalt.werte.hochfesterFeinkornbaustahl2,
     E: 210000,
     fy: 690,
     fu: 820,
@@ -558,18 +552,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 7.5,
     frac_stress: 660,
     yieldType: 'stetig',
-    description: 'Kein ausgeprägtes Fließplateau mehr. Fließbeginn wird über die 0,2 %-Dehngrenze Rp0.2 definiert.',
-    mechanism: 'Wasserabschrecken und Anlassen erzeugen angelassenen Martensit mit sehr hoher Versetzungsdichte.'
+    description: inhalt.werte.keinAusgeprägtesFließplateauMehr,
+    mechanism: inhalt.werte.wasserabschreckenUndAnlassenErzeugen
   },
   {
     id: 'S960',
     name: 'S960QL',
-    sub: 'Ultrahochfester Vergütungsstahl',
+    sub: inhalt.werte.ultrahochfesterVergütungsstahl,
     werkstoffnummer: '1.8933',
-    norm: 'DIN EN 10025-6',
+    norm: inhalt.werte.dinEn1002563,
     color: '#b91c1c', // Dunkelrot
     category: 'hochfest',
-    categoryLabel: 'Hochfester Feinkornbaustahl',
+    categoryLabel: inhalt.werte.hochfesterFeinkornbaustahl3,
     E: 210000,
     fy: 960,
     fu: 1050,
@@ -578,18 +572,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 5.0,
     frac_stress: 880,
     yieldType: 'stetig',
-    description: 'Extrem steiler elastischer Anstieg, minimale Gleichmaßdehnung, kaum Verformungsvorwarnung.',
-    mechanism: 'Ultrafeines Martensit-Bainit-Gefüge. Empfindlich gegen Wasserstoffeintrag und unkontrollierte Abkühlung.'
+    description: inhalt.werte.extremSteilerElastischerAnstieg,
+    mechanism: inhalt.werte.ultrafeinesMartensitBainitGefüge
   },
   {
     id: 'B500B',
-    name: 'Betonstahl B500B',
-    sub: 'Hochduktiler Bewehrungsstabstahl',
+    name: inhalt.werte.betonstahlB500b,
+    sub: inhalt.werte.hochduktilerBewehrungsstabstahl,
     werkstoffnummer: '1.0439',
-    norm: 'DIN 488 / EC2',
+    norm: inhalt.werte.din488Ec22,
     color: '#059669', // Smaragdgrün
     category: 'sonder',
-    categoryLabel: 'Bewehrungs- & Spannstahl',
+    categoryLabel: inhalt.werte.bewehrungsSpannstahl,
     E: 205000,
     fy: 500,
     fu: 560,
@@ -598,18 +592,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 5.0,
     frac_stress: 480,
     yieldType: 'ausgeprägt',
-    description: 'Norm-Bewehrungsstahl (Duktilitätsklasse B) mit ft/fy ≥ 1.08 und Dehnung bei Höchstlast eps_uk ≥ 5,0 %.',
-    mechanism: 'Thermex-Verfahren: Randschichtvergütung aus der Walzhitze mit duktilem Ferrit-Perlit-Kern.'
+    description: inhalt.werte.normBewehrungsstahlDuktilitätsklasseB,
+    mechanism: inhalt.werte.thermexVerfahrenRandschichtvergütungAus
   },
   {
     id: 'Y1860',
-    name: 'Spannstahl Y1860',
-    sub: 'Kaltgezogene 7-drähtige Spannlitze',
+    name: inhalt.werte.spannstahlY1860,
+    sub: inhalt.werte.kaltgezogene7DrähtigeSpannlitze,
     werkstoffnummer: '1.8105',
-    norm: 'abZ (DIBt); prEN 10138-3 (Entwurf)',
+    norm: inhalt.werte.abzDibtPren101383,
     color: '#0284c7', // Helles Blau
     category: 'sonder',
-    categoryLabel: 'Bewehrungs- & Spannstahl',
+    categoryLabel: inhalt.werte.bewehrungsSpannstahl2,
     E: 195000,
     fy: 1660, // Rp0.2 (fp0.1k = 1600 MPa)
     fu: 1860, // fpk
@@ -618,18 +612,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 3.5,
     frac_stress: 1650,
     yieldType: 'stetig',
-    description: 'Höchste statische Zugfestigkeit im Ingenieurbau. Kein Fließplateau, rein auf Dauerspannung optimiert.',
-    mechanism: 'Patentierter, mehrfach kaltgezogener Eutektoid-Perlitstahl (ca. 0,8 % C) mit faseriger Gefügetextur.'
+    description: inhalt.werte.höchsteStatischeZugfestigkeitIm,
+    mechanism: inhalt.werte.patentierterMehrfachKaltgezogenerEutekto2
   },
   {
     id: 'B500A',
-    name: 'Betonstahl B500A (Matten)',
-    sub: 'Normalduktiler Mattenstahl (DIN 488)',
+    name: inhalt.werte.betonstahlB500aMatten,
+    sub: inhalt.werte.normalduktilerMattenstahlDin488,
     werkstoffnummer: '1.0438',
     norm: 'DIN 488-4',
     color: '#10b981', // Helles Grün
     category: 'sonder',
-    categoryLabel: 'Bewehrungs- & Spannstahl',
+    categoryLabel: inhalt.werte.bewehrungsSpannstahl3,
     E: 205000,
     fy: 500,
     fu: 525,
@@ -638,18 +632,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 2.5,
     frac_stress: 470,
     yieldType: 'stetig',
-    description: 'Kaltgezogener Betonstahl für Lagermatten. Geringeres Verfestigungsverhältnis ft/fy ≥ 1.05 und reduzierte Gleichmaßdehnung Agt ≥ 2,5 %.',
-    mechanism: 'Kaltverformung durch Ziehen und Recken erzeugt hohe Versetzungsdichte ohne Fließplateau.'
+    description: inhalt.werte.kaltgezogenerBetonstahlFürLagermatten,
+    mechanism: inhalt.werte.kaltverformungDurchZiehenUnd
   },
   {
     id: 'SAS670',
-    name: 'Spannstab SAS 670',
-    sub: 'Warmgewalzter Gewindespannstahl (Y1050)',
+    name: inhalt.werte.spannstabSas670,
+    sub: inhalt.werte.warmgewalzterGewindespannstahlY1050,
     werkstoffnummer: '1.8010',
-    norm: 'abZ (DIBt); prEN 10138-4 (Entwurf)',
+    norm: inhalt.werte.abzDibtPren101384,
     color: '#0ea5e9', // Sky Blue
     category: 'sonder',
-    categoryLabel: 'Bewehrungs- & Spannstahl',
+    categoryLabel: inhalt.werte.bewehrungsSpannstahl4,
     E: 205000,
     fy: 670,
     fu: 800,
@@ -658,18 +652,18 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 5.0,
     frac_stress: 720,
     yieldType: 'stetig',
-    description: 'Mikrolegierter warmgewalzter Gewindestab für Geotechnik und Quervorspannung mit kontinuierlicher Koppelbarkeit.',
-    mechanism: 'Feinkörniges Ferrit-Perlit-Gefüge mit warm aufgewalzten Gewinderippen für mechanische Schraubverankerungen.'
+    description: inhalt.werte.mikrolegierterWarmgewalzterGewindestabFü,
+    mechanism: inhalt.werte.feinkörnigesFerritPerlitGefüge
   },
   {
     id: 'Edelstahl',
-    name: 'Edelstahl 1.4404',
-    sub: 'Austenitischer Chrom-Nickel-Molybdän-Stahl (V4A)',
-    werkstoffnummer: '1.4404 / 316L',
-    norm: 'DIN EN 10088-4',
+    name: inhalt.werte.edelstahl14404,
+    sub: inhalt.werte.austenitischerChromNickelMolybdän,
+    werkstoffnummer: inhalt.werte.t14404316l,
+    norm: inhalt.werte.dinEn1008842,
     color: '#ec4899', // Pink
     category: 'sonder',
-    categoryLabel: 'Nichtrostender Edelstahl',
+    categoryLabel: inhalt.werte.nichtrostenderEdelstahl2,
     E: 200000,
     fy: 240, // Rp0.2
     fu: 580,
@@ -678,8 +672,8 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 30.0,
     frac_stress: 420,
     yieldType: 'stetig',
-    description: 'Typisches Ramberg-Osgood-Verhalten: Enorme Kaltverfestigung und unübertroffene Bruchdehnung (45 %).',
-    mechanism: 'Kubisch-flächenzentriertes (kfz) Austenitgitter mit 12 dichten Gleitsystemen erlaubt maximale plastische Gleitung.'
+    description: inhalt.werte.typischesRambergOsgoodVerhalten,
+    mechanism: inhalt.werte.kubischFlächenzentriertesKfzAustenitgitt
   }
 ];
 
@@ -736,21 +730,21 @@ export const calculateSteelStressAtStrain = (steel: SteelCurveDefinition, eps: n
 
 // Liefert den qualitativen Zustand der Verformung
 export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: number) => {
-  if (eps <= 0) return { phase: 'Ruhezustand', text: 'Unbelastet (σ = 0 MPa)', color: 'text-slate-500 bg-slate-100' };
-  if (eps > steel.A) return { phase: 'Bruch (Versagen)', text: 'Bauteil getrennt / duktiler Scherbruch', color: 'text-red-700 bg-red-100' };
+  if (eps <= 0) return { phase: 'Ruhezustand', text: inhalt.werte.unbelastet0Mpa, color: 'text-slate-500 bg-slate-100' };
+  if (eps > steel.A) return inhalt.daten.getSteelDeformationPhase;
 
   if (steel.yieldType === 'ausgeprägt') {
     const eps_el = (steel.fy / steel.E) * 100;
     if (eps <= eps_el) {
       return { 
-        phase: '1. Elastischer Bereich', 
+        phase: inhalt.werte.t1ElastischerBereich, 
         text: `Reversibel nach Hooke (E = ${formatDeWert(steel.E)} MPa)`, 
         color: 'text-blue-700 bg-blue-100' 
       };
     }
     if (eps <= steel.sh_strain) {
       return { 
-        phase: '2. Fließplateau (Lüdersbänder)', 
+        phase: inhalt.werte.t2FließplateauLüdersbänder, 
         text: `Spannung verharrt konstant bei fy = ${formatDeWert(steel.fy)} MPa`, 
         color: 'text-amber-700 bg-amber-100' 
       };
@@ -762,14 +756,14 @@ export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: numbe
 
     if (eps <= eps_prop) {
       return { 
-        phase: '1. Elastischer Bereich', 
+        phase: inhalt.werte.t1ElastischerBereich2, 
         text: `Reversibel nach Hooke bis Proportionalitätsgrenze (~${formatDeZahl(s_prop, 0)} MPa)`, 
         color: 'text-blue-700 bg-blue-100' 
       };
     }
     if (eps <= eps_p02) {
       return { 
-        phase: '2. Fließübergang (Dehngrenze)', 
+        phase: inhalt.werte.t2FließübergangDehngrenze, 
         text: `Elastisch-plastischer Übergang bis Rp0,2 = ${formatDeWert(steel.fy)} MPa`, 
         color: 'text-purple-700 bg-purple-100' 
       };
@@ -778,14 +772,14 @@ export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: numbe
 
   if (eps <= steel.fu_strain) {
     return { 
-      phase: '3. Kaltverfestigung (Plastisch)', 
+      phase: inhalt.werte.t3KaltverfestigungPlastisch, 
       text: `Plastische Reserve durch Versetzungsaufstau bis fu = ${formatDeWert(steel.fu)} MPa`, 
       color: 'text-emerald-700 bg-emerald-100' 
     };
   }
 
   return { 
-    phase: '4. Einschnürung (Lokale Verengung)', 
+    phase: inhalt.werte.t4EinschnürungLokaleVerengung, 
     text: `Lokale Querschnittsreduktion bis zur Bruchdehnung A = ${formatDeWert(steel.A)} %`, 
     color: 'text-rose-700 bg-rose-100' 
   };

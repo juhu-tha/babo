@@ -20,6 +20,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import inhalt from '@/content/schallschutz/Schallschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -32,24 +34,24 @@ ChartJS.register(
 );
 
 const materialLibrary = [
-  { id: 'innenputz_gips', name: 'Gipsputz (Innen)', density: 1000 },
-  { id: 'innenputz_kalk', name: 'Kalkputz (Innen)', density: 1400 },
-  { id: 'aussenputz_zement', name: 'Zementputz (Außen)', density: 1800 },
-  { id: 'mauerwerk_ziegel_hochloch', name: 'Hochlochziegel (HLZ)', density: 800 },
-  { id: 'mauerwerk_ziegel_voll', name: 'Vollziegel (MZ)', density: 1800 },
-  { id: 'mauerwerk_kalksandstein', name: 'Kalksandstein (KS)', density: 2000 },
-  { id: 'mauerwerk_porenbeton', name: 'Porenbeton (PB)', density: 400 },
-  { id: 'beton_normal', name: 'Normalbeton (Stahlbeton)', density: 2400 },
+  { id: 'innenputz_gips', name: inhalt.werte.gipsputzInnen, density: 1000 },
+  { id: 'innenputz_kalk', name: inhalt.werte.kalkputzInnen, density: 1400 },
+  { id: 'aussenputz_zement', name: inhalt.werte.zementputzAußen, density: 1800 },
+  { id: 'mauerwerk_ziegel_hochloch', name: inhalt.werte.hochlochziegelHlz, density: 800 },
+  { id: 'mauerwerk_ziegel_voll', name: inhalt.werte.vollziegelMz, density: 1800 },
+  { id: 'mauerwerk_kalksandstein', name: inhalt.werte.kalksandsteinKs, density: 2000 },
+  { id: 'mauerwerk_porenbeton', name: inhalt.werte.porenbetonPb, density: 400 },
+  { id: 'beton_normal', name: inhalt.werte.normalbetonStahlbeton, density: 2400 },
   { id: 'beton_leicht', name: 'Leichtbeton', density: 1200 },
-  { id: 'daemmung_eps', name: 'EPS (Polystyrol-Partikelschaum)', density: 20 },
-  { id: 'daemmung_xps', name: 'XPS (Polystyrol-Extruderschaum)', density: 35 },
-  { id: 'daemmung_miwo', name: 'Mineralwolle (MiWo)', density: 50 },
+  { id: 'daemmung_eps', name: inhalt.werte.epsPolystyrolPartikelschaum, density: 20 },
+  { id: 'daemmung_xps', name: inhalt.werte.xpsPolystyrolExtruderschaum, density: 35 },
+  { id: 'daemmung_miwo', name: inhalt.werte.mineralwolleMiwo, density: 50 },
   { id: 'daemmung_holzfaser', name: 'Holzfaserplatte', density: 160 },
-  { id: 'daemmung_pur', name: 'PUR/PIR Hartschaum', density: 30 },
-  { id: 'holz_fichte', name: 'Fichte / Tanne (Vollholz)', density: 450 },
-  { id: 'holz_eiche', name: 'Eiche (Vollholz)', density: 700 },
+  { id: 'daemmung_pur', name: inhalt.werte.purPirHartschaum, density: 30 },
+  inhalt.daten["materialLibrary.holz_fichte"],
+  { id: 'holz_eiche', name: inhalt.werte.eicheVollholz, density: 700 },
   { id: 'platte_osb', name: 'OSB-Platte', density: 600 },
-  { id: 'platte_gipskarton', name: 'Gipskartonplatte (GKB)', density: 800 },
+  { id: 'platte_gipskarton', name: inhalt.werte.gipskartonplatteGkb, density: 800 },
   { id: 'stahl', name: 'Stahl', density: 7850 },
   { id: 'aluminium', name: 'Aluminium', density: 2700 },
   { id: 'glas', name: 'Glas', density: 2500 },
@@ -91,7 +93,7 @@ export default function Schallschutz() {
       chartData: {
         datasets: [
           {
-            label: 'Schalldämm-Maß R_w (dB) nach DIN 4109-32',
+            label: inhalt.werte.schalldämmMaßRW,
             data: chartData,
             borderColor: '#64748b',
             backgroundColor: 'rgba(56, 189, 248, 0.1)',
@@ -99,7 +101,7 @@ export default function Schallschutz() {
             pointRadius: 0,
           },
           {
-            label: 'Aktuelles Bauteil',
+            label: inhalt.werte.aktuellesBauteil,
             data: [{ x: m_prime, y: Math.max(10, Rw) }],
             backgroundColor: '#A3113E',
             borderColor: '#A3113E',
@@ -142,14 +144,11 @@ export default function Schallschutz() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-          <Volume2 className="text-shiraz" /> Bauphysik (Schallschutz)
-          <InfoTooltip text="Berechnung des bewerteten Schalldämm-Maßes einschaliger massiver Bauteile über die empirische Massekurve nach DIN 4109-32 (physikalischer Hintergrund: Bergersches Massegesetz)." />
+          <Volume2 className="text-shiraz" /><MdText text={inhalt.texte.bauphysikSchallschutz} /><InfoTooltip text={inhalt.werte.berechnungDesBewertetenSchalldämm} />
         </h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Der Schallschutz von einschaligen, biegesteifen Bauteilen hängt maßgeblich von ihrer flächenbezogenen Masse (<FormulaText text="m'" />) ab. Je schwerer das Bauteil, desto besser die Schalldämmung (Massegesetz). Bei mehrschaligen Bauteilen (z.B. mit Dämmung) treten komplexe Resonanzeffekte (Masse-Feder-Masse) auf, die hier vereinfacht vernachlässigt werden.
-          </p>
+          <p><MdText text={inhalt.texte.derSchallschutzVonEinschaligen} /><FormulaText text="m'" /><MdText text={inhalt.texte.abJeSchwererDas} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -179,7 +178,7 @@ export default function Schallschutz() {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Material</label><InfoTooltip text="Auswahl des zu untersuchenden Werkstoffs." /></div>
+                        <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Material</label><InfoTooltip text={inhalt.werte.auswahlDesZuUntersuchenden} /></div>
                         <select aria-label="Material" 
                           value={layer.matId}
                           onChange={(e) => updateLayer(layer.id, 'matId', e.target.value)}
@@ -191,7 +190,7 @@ export default function Schallschutz() {
                         </select>
                       </div>
                       <div>
-                        <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Dicke d (m)</label><InfoTooltip text="Dicke der Bauteilschicht in Metern." /></div>
+                        <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Dicke d (m)</label><InfoTooltip text={inhalt.werte.dickeDerBauteilschichtIn} /></div>
                         <input aria-label="Dicke d (m)" 
                           type="number" 
                           min="0.001" max="2.0" step="0.005"
@@ -212,14 +211,14 @@ export default function Schallschutz() {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
-                    <FormulaText text="Flächenbezogene Masse m'" />
+                    <FormulaText text={inhalt.werte.flächenbezogeneMasseM} />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(schallData.m_prime, 1)} <span className="text-lg font-normal">kg/m²</span></div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
-                    <FormulaText text="Schalldämm-Maß R_w" />
-                    <InfoTooltip text="Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30,9 · lg(m'/1 kg/m²) − 22,2 dB. Ältere Näherung (DIN EN 12354-1, informativer Anhang): Rw ≈ 37,5 · lg(m') − 42 dB für m' ≥ 150 kg/m²." />
+                    <FormulaText text={inhalt.werte.schalldämmMaßRW2} />
+                    <InfoTooltip text={inhalt.werte.berechnetNachDin4109} />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(schallData.Rw, 1)} <span className="text-lg font-normal">dB</span></div>
                 </div>
@@ -227,58 +226,53 @@ export default function Schallschutz() {
 
               <EingabeHinweise hinweise={schallData.hinweise} />
               {!schallData.isValidRange && (
-                <div className="mt-3 p-3 bg-amber-500/20 border border-amber-300/40 rounded-lg text-amber-200 text-xs">
-                  ⚠️ <strong>Gültigkeitsbereich beachten:</strong> Die Formel nach DIN 4109-32 gilt für 65 ≤ m' ≤ 720 kg/m². Der aktuelle Wert liegt außerhalb dieses Bereichs ({formatDeZahl(schallData.m_prime, 1)} kg/m²).
+                <div className="mt-3 p-3 bg-amber-500/20 border border-amber-300/40 rounded-lg text-amber-200 text-xs"><MdText text={inhalt.texte.gültigkeitsbereichBeachtenDieFormel} />{formatDeZahl(schallData.m_prime, 1)} kg/m²).
                 </div>
               )}
 
               <div className="mt-4 bg-white/10 p-3 rounded-lg border border-white/20 text-xs space-y-1.5 leading-relaxed">
-                <p>
-                  <strong>Berechnungsgrundlage DIN 4109-32:</strong> <FormulaText text="R_w = 30{,}9 \cdot \log_{10}(m'/1) - 22{,}2 \text{ dB}" /> für einschalige massive Bauteile (Gültigkeit: 65 ≤ m' ≤ 720 kg/m²).
-                </p>
-                <p className="text-white/80">
-                  <strong>Hinweis zu Dämmschichten:</strong> Dämmschichten (z. B. EPS, WDVS) dürfen bei der Ermittlung des Schalldämm-Maßes der Grundwand nicht einfach als Masse addiert werden; der akustische Einfluss von WDVS ist gesondert nach DIN 4109-34 nachzuweisen.
-                </p>
+                <p><MdText text={inhalt.texte.berechnungsgrundlageDin410932} /><FormulaText text="R_w = 30{,}9 \cdot \log_{10}(m'/1) - 22{,}2 \text{ dB}" /><MdText text={inhalt.texte.fürEinschaligeMassiveBauteile} /></p>
+                <p className="text-white/80"><MdText text={inhalt.texte.hinweisZuDämmschichtenDämmschichten} /></p>
               </div>
             </div>
 
             {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Schichtaufbau */}
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Schalldämm-Maß Ihres Aufbaus"
+              title={inhalt.werte.ihrRechenwegSchalldämmMaß}
               zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
               schritte={[
                 {
-                  titel: 'Flächenbezogene Masse je Schicht',
-                  erklaerung: 'Dicke d (in m) mal Rohdichte ρ (in kg/m³) ergibt die Masse je Quadratmeter Wandfläche:',
+                  titel: inhalt.werte.flächenbezogeneMasseJeSchicht,
+                  erklaerung: inhalt.werte.dickeDInM,
                   formel: `m' = \\sum d_i \\cdot \\rho_i = ${resolvedLayers.map(l => `${formatDeTeXWert(l.d)} \\cdot ${formatDeTeX(l.density, 0)}`).join(' + ') || '0'}`
                 },
                 {
                   titel: 'Summe',
                   erklaerung: schallData.isValidRange
-                    ? 'Der Wert liegt im Gültigkeitsbereich 65 ≤ m′ ≤ 720 kg/m² der Gleichung.'
-                    : 'Achtung: Der Wert liegt außerhalb des Gültigkeitsbereichs 65 ≤ m′ ≤ 720 kg/m² – das Ergebnis ist nur eine Orientierung.',
+                    ? inhalt.werte.derWertLiegtIm
+                    : inhalt.werte.achtungDerWertLiegt,
                   formel: `m' = ${formatDeTeX(schallData.m_prime, 1)}\\,\\text{kg/m}^2`
                 },
                 {
-                  titel: 'Logarithmus der Masse',
-                  erklaerung: 'Bezogen auf m′₀ = 1 kg/m²:',
+                  titel: inhalt.werte.logarithmusDerMasse,
+                  erklaerung: inhalt.werte.bezogenAufM1,
                   formel: `\\lg(${formatDeTeX(schallData.m_prime, 1)}) = ${formatDeTeX(schallData.m_prime > 0 ? Math.log10(schallData.m_prime) : NaN, 3)}`
                 },
                 {
-                  titel: 'Bewertetes Schalldämm-Maß',
-                  erklaerung: 'Einsetzen in die Massekurve nach DIN 4109-32 (negative Werte werden auf 0 dB begrenzt):',
+                  titel: inhalt.werte.bewertetesSchalldämmMaß,
+                  erklaerung: inhalt.werte.einsetzenInDieMassekurve,
                   formel: `R_w = 30{,}9 \\cdot ${formatDeTeX(schallData.m_prime > 0 ? Math.log10(schallData.m_prime) : NaN, 3)} - 22{,}2 = ${formatDeTeX(schallData.Rw, 1)}\\,\\text{dB}`
                 }
               ]}
-              ergebnisHinweis="Leichte Dämm- und Holzschichten verändern R_w über Resonanzeffekte; die Massekurve gilt nur für einschalige, biegesteife Bauteile."
-              normQuelle="DIN 4109-32:2016-07, Gl. (2)"
+              ergebnisHinweis={inhalt.werte.leichteDämmUndHolzschichten}
+              normQuelle={inhalt.werte.din4109322016}
             />
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[400px]">
-              <h3 className="text-lg font-bold text-text-main mb-4">Schalldämm-Maß nach Massegesetz</h3>
+              <h3 className="text-lg font-bold text-text-main mb-4"><MdText text={inhalt.texte.schalldämmMaßNachMassegesetz} /></h3>
               <div className="flex-1 relative w-full h-full">
                 <Line 
                   data={schallData.chartData} 
@@ -286,7 +280,7 @@ export default function Schallschutz() {
                     responsive: true, 
                     maintainAspectRatio: false,
                     scales: {
-                      x: { type: 'linear', title: { display: true, text: "Flächenbezogene Masse m' (kg/m²)" } },
+                      x: { type: 'linear', title: { display: true, text: inhalt.werte.flächenbezogeneMasseMKg } },
                       y: { title: { display: true, text: 'R_w (dB)' } }
                     }
                   }} 
@@ -296,7 +290,7 @@ export default function Schallschutz() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Schalldämmung</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSchalldämmung} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="160" viewBox="0 0 350 160">
                   {/* Senderaum */}
@@ -332,9 +326,7 @@ export default function Schallschutz() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Auftreffender Schall (L_1) versetzt die Wand in Schwingung. Ein Teil wird reflektiert, ein Teil absorbiert und ein Teil transmittiert (L_2). Je schwerer die Wand (m'), desto geringer die Schwingung und Transmission.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.auftreffenderSchallL1} /></div>
               </div>
             </div>
             
@@ -369,58 +361,31 @@ export default function Schallschutz() {
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Wohnungstrennwand aus Kalksandstein"
+        title={inhalt.werte.beispiel1WohnungstrennwandAus}
         zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
-        schritte={[
-          { titel: 'Flächenbezogene Masse', erklaerung: 'KS 17,5 cm (ρ = 2000 kg/m³) mit beidseitig 1,5 cm Gipsputz (ρ = 1000 kg/m³):', formel: "m' = 0{,}175 \\cdot 2\\,000 + 2 \\cdot 0{,}015 \\cdot 1\\,000 = 350 + 30 = 380\\,\\text{kg/m}^2" },
-          { titel: 'Schalldämm-Maß', erklaerung: 'Massekurve (gültig 65 bis 720 kg/m²):', formel: 'R_w = 30{,}9 \\cdot \\lg 380 - 22{,}2 = 30{,}9 \\cdot 2{,}580 - 22{,}2 = 57{,}5\\,\\text{dB}' },
-          { titel: 'Anforderung', erklaerung: 'Wohnungstrennwand nach DIN 4109-1: R′w ≥ 53 dB im eingebauten Zustand. Die Flankenübertragung (DIN 4109-2) mindert R_w um einige dB.', formel: "R_w = 57{,}5\\,\\text{dB} \\;\\to\\; R'_w \\approx 54\\ \\text{bis}\\ 55\\,\\text{dB} \\ge 53\\,\\text{dB}" }
-        ]}
-        ergebnisHinweis="Die Abschätzung von R′w ist nur ein Richtwert; der Nachweis erfolgt mit den flankierenden Bauteilen und Stoßstellen nach DIN 4109-2."
-        normQuelle="DIN 4109-1:2018-01; DIN 4109-32:2016-07"
+        schritte={inhalt.daten["Schallschutz.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieAbschätzungVonR}
+        normQuelle={inhalt.werte.din410912018}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Leichtes Mauerwerk und die Wirkung der Masseverdopplung"
+        title={inhalt.werte.beispiel2LeichtesMauerwerk}
         zielGleichung="\Delta R_w = 30{,}9 \cdot \lg 2 = 9{,}3\,\text{dB}"
-        schritte={[
-          { titel: 'Hochlochziegel', erklaerung: 'HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen:', formel: "m' = 192 + 15 + 36 = 243\\,\\text{kg/m}^2 \\Rightarrow R_w = 30{,}9 \\cdot \\lg 243 - 22{,}2 = 51{,}5\\,\\text{dB}" },
-          { titel: 'Erforderliche Masse', erklaerung: 'Für R_w = 57 dB (Reserve für Flankenwege):', formel: "\\lg m' = \\frac{57 + 22{,}2}{30{,}9} = 2{,}563 \\Rightarrow m' = 366\\,\\text{kg/m}^2" },
-          { titel: 'Masseverdopplung', erklaerung: 'Nach der Massekurve bringt jede Verdopplung der Masse etwa 9 dB; das theoretische Bergersche Massegesetz liefert 6 dB.', formel: '\\Delta R_w = 30{,}9 \\cdot \\lg 2 = 9{,}3\\,\\text{dB}' }
-        ]}
-        ergebnisHinweis="Leichte Lochsteine eignen sich für Außenwände (Wärmeschutz), für Wohnungstrennwände braucht es schwere Steine, verfüllte Steine oder zweischalige Konstruktionen."
-        normQuelle="DIN 4109-32:2016-07"
+        schritte={inhalt.daten["Schallschutz.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.leichteLochsteineEignenSich}
+        normQuelle={inhalt.werte.din41093220162}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="schallschutz" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]}
-        regelwerke={[
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau – Mindestanforderungen; z. B. Wohnungstrennwände R′w ≥ 53 dB, Wohnungstrenndecken R′w ≥ 54 dB, L′n,w ≤ 50 dB)' },
-          { title: 'DIN 4109-2:2018-01 (Rechnerische Nachweise einschließlich Flankenübertragung)' },
-          { title: 'DIN 4109-32:2016-07 (Daten für die rechnerischen Nachweise – Bauteilkatalog Massivbau)' },
-          { title: 'DIN 4109-34:2016-07 (Bauteilkatalog – Vorsatzkonstruktionen vor massiven Bauteilen, u. a. WDVS)' }
-        ]}
-        literatur={[
-          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
-          'Möser, M.: Technische Akustik. 10. Aufl., Berlin: Springer Vieweg 2015'
-        ]}
-        formeln={[
-          {
-            formel: "R_w = 30{,}9 \\cdot \\log_{10}(m'/1) - 22{,}2",
-            erklaerung: "Berechnung des bewerteten Schalldämm-Maßes R_w in dB für einschalige massive Bauteile nach DIN 4109-32 (gültig für 65 ≤ m' ≤ 720 kg/m²).\nR_w: bewertetes Schalldämm-Maß [dB]\nm': flächenbezogene Masse [kg/m²]",
-            quelle: 'DIN 4109-32:2016-07'
-          },
-          {
-            formel: "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
-            erklaerung: "Ältere empirische Näherung für einschalige Bauteile mit m' ≥ 150 kg/m² aus dem informativen Anhang der DIN EN 12354-1 (heute DIN EN ISO 12354-1); für Nachweise in Deutschland gilt DIN 4109-32.\nm': flächenbezogene Masse [kg/m²]",
-            quelle: 'DIN EN 12354-1, informativer Anhang (Zuordnung manuell prüfen)'
-          }
-        ]}
+        regelwerke={inhalt.daten["Schallschutz.regelwerke"]}
+        literatur={inhalt.daten["Schallschutz.literatur"]}
+        formeln={inhalt.daten["Schallschutz.formeln"]}
       />
     </div>
   );

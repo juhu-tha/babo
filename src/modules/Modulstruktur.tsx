@@ -30,6 +30,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { formatDeWert } from '@/src/utils/numberFormat';
 
 import type { TabId } from '@/src/contexts/TabContext';
+import inhalt from '@/content/modulstruktur/Modulstruktur.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 export type NodeType = 'calculator' | 'database' | 'quiz' | 'standard' | 'info' | 'norm';
 
 export interface TreeNode {
@@ -67,8 +69,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'allgemein',
     number: '0',
-    name: 'Allgemein & System',
-    subtitle: 'Campus-Portal, Navigation, Handbuch & Dokumentation',
+    name: inhalt.werte.allgemeinSystem,
+    subtitle: inhalt.werte.campusPortalNavigationHandbuch,
     accentBg: 'bg-slate-100 dark:bg-slate-800',
     accentBorder: 'border-slate-300 dark:border-slate-600',
     accentText: 'text-slate-800 dark:text-slate-200',
@@ -77,8 +79,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_1',
     number: 'I',
-    name: 'Grundlagen & Labor',
-    subtitle: 'Stoffphysik, Bauchemie, Werkstoffmechanik, Bauphysik & Prüftechnik',
+    name: inhalt.werte.grundlagenLabor,
+    subtitle: inhalt.werte.stoffphysikBauchemieWerkstoffmechanikBau,
     accentBg: 'bg-rose-50 dark:bg-rose-950/30',
     accentBorder: 'border-shiraz/30 dark:border-rose-900/50',
     accentText: 'text-shiraz dark:text-rose-400',
@@ -87,8 +89,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_2',
     number: 'II',
-    name: 'Materialien & Produkte',
-    subtitle: 'Werkstoffkunde, Schichtenverbunde, Faserverbund, Schutzschichten & Bauproduktenrecht',
+    name: inhalt.werte.materialienProdukte,
+    subtitle: inhalt.werte.werkstoffkundeSchichtenverbundeFaserverb,
     accentBg: 'bg-amber-50 dark:bg-amber-950/30',
     accentBorder: 'border-amber-300 dark:border-amber-800',
     accentText: 'text-amber-900 dark:text-amber-400',
@@ -97,8 +99,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_3',
     number: 'III',
-    name: 'Entwurf & Bemessung',
-    subtitle: 'Betontechnologie, Stahlbetonbau (EC 2), Ingenieurholzbau (EC 5) & Innenausbau',
+    name: inhalt.werte.entwurfBemessung,
+    subtitle: inhalt.werte.betontechnologieStahlbetonbauEc2,
     accentBg: 'bg-blue-50 dark:bg-blue-950/30',
     accentBorder: 'border-blue-300 dark:border-blue-800',
     accentText: 'text-blue-900 dark:text-blue-400',
@@ -107,8 +109,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_4',
     number: 'IV',
-    name: 'Bestand & Nachhaltigkeit',
-    subtitle: 'Bauwerksdiagnose (ZfP), Schadensatlas, Dauerhaftigkeit, Instandsetzung, Rückbau & LCA',
+    name: inhalt.werte.bestandNachhaltigkeit,
+    subtitle: inhalt.werte.bauwerksdiagnoseZfpSchadensatlasDauerhaf,
     accentBg: 'bg-emerald-50 dark:bg-emerald-950/30',
     accentBorder: 'border-emerald-300 dark:border-emerald-800',
     accentText: 'text-emerald-900 dark:text-emerald-400',
@@ -117,8 +119,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_5',
     number: 'V',
-    name: 'Digitales & Praxis',
-    subtitle: 'BIM, Künstliche Intelligenz, AVA, Bauleitung, Bautagebuch, Software & Kuriositäten',
+    name: inhalt.werte.digitalesPraxis,
+    subtitle: inhalt.werte.bimKünstlicheIntelligenzAva,
     accentBg: 'bg-purple-50 dark:bg-purple-950/30',
     accentBorder: 'border-purple-300 dark:border-purple-800',
     accentText: 'text-purple-900 dark:text-purple-400',
@@ -127,8 +129,8 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
   {
     id: 'cluster_6',
     number: 'VI',
-    name: 'Studium & Lehre',
-    subtitle: 'Vorlesungsportal THA, Baustofflabor, Übungsaufgaben, Beispielrechnungen, Weiterbildung & Thesen',
+    name: inhalt.werte.studiumLehre,
+    subtitle: inhalt.werte.vorlesungsportalThaBaustofflaborÜbungsau,
     accentBg: 'bg-teal-50 dark:bg-teal-950/30',
     accentBorder: 'border-teal-300 dark:border-teal-800',
     accentText: 'text-teal-900 dark:text-teal-400',
@@ -307,23 +309,17 @@ export default function Modulstruktur() {
             <h1 className="text-2xl font-bold text-text-main flex items-center gap-2.5">
               <Network className="text-shiraz" size={26} /> Modulübersicht
             </h1>
-            <p className="text-xs text-text-main/70 mt-1">
-              Vollständiger akademischer Wissensbaum des BaustoffBoards TH Augsburg · Gleichzeitige Anzeige aller Fachmodule, Rechner und Normen
-            </p>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.vollständigerAkademischerWissensbaumDes} /></p>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={expandAll}
               className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-off-white hover:bg-home-grau/20 text-text-main border border-home-grau/30 transition-all cursor-pointer"
-            >
-              Alle aufklappen
-            </button>
+            ><MdText text={inhalt.texte.alleAufklappen} /></button>
             <button
               onClick={collapseAll}
               className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-off-white hover:bg-home-grau/20 text-text-main border border-home-grau/30 transition-all cursor-pointer"
-            >
-              Alle einklappen
-            </button>
+            ><MdText text={inhalt.texte.alleEinklappen} /></button>
           </div>
         </div>
 
@@ -331,11 +327,11 @@ export default function Modulstruktur() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-4">
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
             <span className="text-xl font-bold text-shiraz block">{formatDeWert(metrics.totalModules)}</span>
-            <span className="text-[11px] text-text-main/70 font-medium">Module gesamt</span>
+            <span className="text-[11px] text-text-main/70 font-medium"><MdText text={inhalt.texte.moduleGesamt} /></span>
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
             <span className="text-xl font-bold text-amber-700 block">{formatDeWert(metrics.totalCalculators)}</span>
-            <span className="text-[11px] text-text-main/70 font-medium">Interaktive Rechner</span>
+            <span className="text-[11px] text-text-main/70 font-medium"><MdText text={inhalt.texte.interaktiveRechner} /></span>
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
             <span className="text-xl font-bold text-blue-700 block">{formatDeWert(metrics.totalDatabases)}</span>
@@ -347,7 +343,7 @@ export default function Modulstruktur() {
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
             <span className="text-xl font-bold text-purple-700 block">{formatDeWert(metrics.totalNorms)}</span>
-            <span className="text-[11px] text-text-main/70 font-medium">Normbezüge (DIN/EN)</span>
+            <span className="text-[11px] text-text-main/70 font-medium"><MdText text={inhalt.texte.normbezügeDinEn} /></span>
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
             <span className="text-xl font-bold text-text-main block">{formatDeWert(metrics.totalClusters)} Cluster</span>
@@ -364,7 +360,7 @@ export default function Modulstruktur() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Module, Rechner, Normen oder Stichwörter im Wissensbaum suchen..."
+              placeholder={inhalt.werte.moduleRechnerNormenOder}
               className="w-full pl-9 pr-8 py-2 bg-off-white rounded-xl border border-home-grau/30 text-xs font-medium text-text-main focus:outline-none focus:ring-2 focus:ring-shiraz"
             />
             {searchQuery && (
@@ -435,7 +431,7 @@ export default function Modulstruktur() {
           <div className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20">
             <button aria-pressed={viewStyle === 'tree_full'}
               onClick={() => setViewStyle('tree_full')}
-              title="Vollständiger Baum mit Verbindungslinien (Standard)"
+              title={inhalt.werte.vollständigerBaumMitVerbindungslinien}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 viewStyle === 'tree_full'
                   ? 'bg-white text-shiraz shadow-xs border border-home-grau/30'
@@ -446,7 +442,7 @@ export default function Modulstruktur() {
             </button>
             <button aria-pressed={viewStyle === 'tree_columns'}
               onClick={() => setViewStyle('tree_columns')}
-              title="Spalten-Baum (Multi-Column Grid)"
+              title={inhalt.werte.spaltenBaumMultiColumn}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 viewStyle === 'tree_columns'
                   ? 'bg-white text-shiraz shadow-xs border border-home-grau/30'
@@ -480,14 +476,11 @@ export default function Modulstruktur() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-black uppercase tracking-wider text-shiraz">Root Directory</span>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-off-white border border-home-grau/30 text-text-main/70 font-semibold">
-                  THA BaustoffBoard · {formatDeWert(metrics.totalModules)} Module
+                <span className="text-xs font-black uppercase tracking-wider text-shiraz"><MdText text={inhalt.texte.rootDirectory} /></span>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-off-white border border-home-grau/30 text-text-main/70 font-semibold"><MdText text={inhalt.texte.thaBaustoffboard} />{formatDeWert(metrics.totalModules)} Module
                 </span>
               </div>
-              <h2 className="text-lg font-bold text-text-main leading-tight">
-                Gesamter akademischer Lehr- &amp; Werkstoffbaum
-              </h2>
+              <h2 className="text-lg font-bold text-text-main leading-tight"><MdText text={inhalt.texte.gesamterAkademischerLehrWerkstoffbaum} /></h2>
             </div>
           </div>
 
@@ -733,51 +726,27 @@ export default function Modulstruktur() {
             <GraduationCap size={22} />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-text-main">
-              Didaktischer Leitfaden &amp; 6 Prüfdimensionen der Qualitätssicherung
-            </h4>
-            <p className="text-[11px] text-text-main/70 mt-0.5">
-              Erfahren Sie mehr über die curriculare Gliederung, den 4-Stufen-Lehrpfad und die akkreditierungskonforme Ausrichtung im Modul <strong>Anleitung</strong>.
-            </p>
+            <h4 className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.didaktischerLeitfaden6Prüfdimensionen} /></h4>
+            <p className="text-[11px] text-text-main/70 mt-0.5"><MdText text={inhalt.texte.erfahrenSieMehrÜber} /></p>
           </div>
         </div>
         <button
           onClick={() => setActiveTab('anleitung')}
           className="px-4 py-2 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0 shadow-xs"
-        >
-          Zur Anleitung <ArrowRight size={13} />
+        ><MdText text={inhalt.texte.zurAnleitung} /><ArrowRight size={13} />
         </button>
       </div>
 
       {/* 4. Standardisierter Footer nach RULE[GEMINI_md] */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Curriculum (Pädagogik)', url: 'https://de.wikipedia.org/wiki/Curriculum_(P%C3%A4dagogik)' },
+          { title: inhalt.werte.curriculumPädagogik, url: 'https://de.wikipedia.org/wiki/Curriculum_(P%C3%A4dagogik)' },
           { title: 'Bauingenieurwesen', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' },
-          { title: 'Blended Learning', url: 'https://de.wikipedia.org/wiki/Blended_Learning' }
+          { title: inhalt.werte.blendedLearning, url: 'https://de.wikipedia.org/wiki/Blended_Learning' }
         ]}
-        literatur={[
-          'Modulhandbuch Bachelor Bauingenieurwesen (Fakultät für Architektur und Bauwesen, TH Augsburg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
-        ]}
-        regelwerke={[
-          { title: 'Allgemeine Prüfungsordnung (APO THA)', url: 'https://www.tha.de/' },
-          { title: 'ASIIN-Fachkriterien für die Akkreditierung von Bauingenieurstudiengängen (Fachausschuss 02)', url: 'https://www.asiin.de/' },
-          { title: 'Bayerisches Hochschulinnovationsgesetz (BayHIG)', url: 'https://www.gesetze-bayern.de/' }
-        ]}
-        formeln={[
-          {
-            formel: '\\sum \\text{ECTS}_{\\text{Bachelor}} = 210\\,\\text{CP} \\quad \\Longleftrightarrow \\quad \\text{Workload} = 210 \\cdot 30\\,\\text{h} = 6300\\,\\text{h}',
-            erklaerung: 'ECTS-Workload-Bilanzierung nach dem European Credit Transfer and Accumulation System (ECTS): 1 Credit Point entspricht 25 bis 30 Arbeitsstunden für Präsenzstudium, Selbststudium und Prüfungsvorbereitung.',
-            quelle: 'Bayerisches Hochschulinnovationsgesetz / ECTS User’s Guide'
-          },
-          {
-            formel: '\\text{Semester-Workload} = 30\\,\\text{ECTS} \\cdot 30\\,\\frac{\\text{h}}{\\text{ECTS}} = 900\\,\\text{h} \\approx 40\\,\\frac{\\text{h}}{\\text{Woche}}',
-            erklaerung: 'Konzeptioneller Vollzeit-Arbeitsaufwand je Studiensemester bei 30 ECTS und einer rechnerischen Vorlesungs- und Prüfungszeit von ca. 22-23 Wochen.',
-            quelle: 'ASIIN-Akkreditierungsrichtlinie'
-          }
-        ]}
+        literatur={inhalt.daten["Modulstruktur.literatur"]}
+        regelwerke={inhalt.daten["Modulstruktur.regelwerke"]}
+        formeln={inhalt.daten["Modulstruktur.formeln"]}
       />
     </div>
   );

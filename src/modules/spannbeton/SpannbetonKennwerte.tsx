@@ -24,6 +24,8 @@ import KennwerteSchwinden from './kennwerte/KennwerteSchwinden';
 import KennwerteRelaxation from './kennwerte/KennwerteRelaxation';
 import KennwerteBeispielrechnung from './kennwerte/KennwerteBeispielrechnung';
 import KennwerteRechner from './kennwerte/KennwerteRechner';
+import inhalt from '@/content/spannbeton/SpannbetonKennwerte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function SpannbetonKennwerte() {
   const [activeSubTab, setActiveSubTab] = useState<KennwertReiter>('beton_r');
@@ -40,7 +42,7 @@ export default function SpannbetonKennwerte() {
   // Einpressmörtel & Systembaustoffe States (DIN EN 447, Hüllrohre, Fette, Keile)
   const [groutWz, setGroutWz] = useState<number>(0.36); // Wasserzementwert
   const [groutAdmixturePct, setGroutAdmixturePct] = useState<number>(1.0); // % Quell-/Fließmittel
-  const [groutCementType, setGroutCementType] = useState<string>('CEM I 52.5 R (C3A-arm)');
+  const [groutCementType, setGroutCementType] = useState<string>(inhalt.werte.cemI525);
   const [groutDuctType, setGroutDuctType] = useState<'plastic_fib' | 'steel_en523' | 'unbonded_grease'>('plastic_fib');
   const [groutDuctDia, setGroutDuctDia] = useState<number>(85); // mm Innendurchmesser
   const [groutStrandCount, setGroutStrandCount] = useState<number>(12); // z.B. 12 oder 19 Litzen à 150mm²
@@ -125,16 +127,16 @@ export default function SpannbetonKennwerte() {
       prestressSuitability: string;
     }
   > = {
-    'C30/37': { fck: CONCRETE['C30/37'].fck, fck_cube: CONCRETE['C30/37'].fck_cube, fcm: CONCRETE['C30/37'].fcm, fctm: CONCRETE['C30/37'].fctm, fctk005: CONCRETE['C30/37'].fctk_005, fctk095: CONCRETE['C30/37'].fctk_095, Ecm: CONCRETE['C30/37'].Ecm, eps_c1: CONCRETE['C30/37'].eps_c1, eps_cu1: CONCRETE['C30/37'].eps_cu1, eps_c2: CONCRETE['C30/37'].eps_c2, eps_cu2: CONCRETE['C30/37'].eps_cu2, typicalUse: 'Übliche Untergrenze nachträglicher Verbund (Zulassung/ETA maßgebend)', prestressSuitability: 'Zulässig für moderate Vorspannung, nicht empfohlen im Brückenbau' },
-    'C35/45': { fck: CONCRETE['C35/45'].fck, fck_cube: CONCRETE['C35/45'].fck_cube, fcm: CONCRETE['C35/45'].fcm, fctm: CONCRETE['C35/45'].fctm, fctk005: CONCRETE['C35/45'].fctk_005, fctk095: CONCRETE['C35/45'].fctk_095, Ecm: CONCRETE['C35/45'].Ecm, eps_c1: CONCRETE['C35/45'].eps_c1, eps_cu1: CONCRETE['C35/45'].eps_cu1, eps_c2: CONCRETE['C35/45'].eps_c2, eps_cu2: CONCRETE['C35/45'].eps_cu2, typicalUse: 'Hallenbau, Standard-Spannbeton', prestressSuitability: 'Häufiger Standard im Hochbau' },
-    'C40/50': { fck: CONCRETE['C40/50'].fck, fck_cube: CONCRETE['C40/50'].fck_cube, fcm: CONCRETE['C40/50'].fcm, fctm: CONCRETE['C40/50'].fctm, fctk005: CONCRETE['C40/50'].fctk_005, fctk095: CONCRETE['C40/50'].fctk_095, Ecm: CONCRETE['C40/50'].Ecm, eps_c1: CONCRETE['C40/50'].eps_c1, eps_cu1: CONCRETE['C40/50'].eps_cu1, eps_c2: CONCRETE['C40/50'].eps_c2, eps_cu2: CONCRETE['C40/50'].eps_cu2, typicalUse: 'Fertigteile, Brückenüberbauten', prestressSuitability: 'Sehr gut geeignet für Spannglieder und Litzen' },
-    'C45/55': { fck: CONCRETE['C45/55'].fck, fck_cube: CONCRETE['C45/55'].fck_cube, fcm: CONCRETE['C45/55'].fcm, fctm: CONCRETE['C45/55'].fctm, fctk005: CONCRETE['C45/55'].fctk_005, fctk095: CONCRETE['C45/55'].fctk_095, Ecm: CONCRETE['C45/55'].Ecm, eps_c1: CONCRETE['C45/55'].eps_c1, eps_cu1: CONCRETE['C45/55'].eps_cu1, eps_c2: CONCRETE['C45/55'].eps_c2, eps_cu2: CONCRETE['C45/55'].eps_cu2, typicalUse: 'Üblich im Brückenbau (ZTV-ING prüfen)', prestressSuitability: 'Deutscher Standard für Spannbetonbrücken' },
-    'C50/60': { fck: CONCRETE['C50/60'].fck, fck_cube: CONCRETE['C50/60'].fck_cube, fcm: CONCRETE['C50/60'].fcm, fctm: CONCRETE['C50/60'].fctm, fctk005: CONCRETE['C50/60'].fctk_005, fctk095: CONCRETE['C50/60'].fctk_095, Ecm: CONCRETE['C50/60'].Ecm, eps_c1: CONCRETE['C50/60'].eps_c1, eps_cu1: CONCRETE['C50/60'].eps_cu1, eps_c2: CONCRETE['C50/60'].eps_c2, eps_cu2: CONCRETE['C50/60'].eps_cu2, typicalUse: 'Hochbeanspruchte Hohlkastenbrücken, Eisenbahnschwellen', prestressSuitability: 'Hervorragend, sehr geringes Kriechen' },
-    'C55/67': { fck: CONCRETE['C55/67'].fck, fck_cube: CONCRETE['C55/67'].fck_cube, fcm: CONCRETE['C55/67'].fcm, fctm: CONCRETE['C55/67'].fctm, fctk005: CONCRETE['C55/67'].fctk_005, fctk095: CONCRETE['C55/67'].fctk_095, Ecm: CONCRETE['C55/67'].Ecm, eps_c1: CONCRETE['C55/67'].eps_c1, eps_cu1: CONCRETE['C55/67'].eps_cu1, eps_c2: CONCRETE['C55/67'].eps_c2, eps_cu2: CONCRETE['C55/67'].eps_cu2, typicalUse: 'Hochfester Beton ab C55/67 (DIN 1045-2)', prestressSuitability: 'Sehr hohe Steifigkeit, geringe Kriechneigung' },
-    'C60/75': { fck: CONCRETE['C60/75'].fck, fck_cube: CONCRETE['C60/75'].fck_cube, fcm: CONCRETE['C60/75'].fcm, fctm: CONCRETE['C60/75'].fctm, fctk005: CONCRETE['C60/75'].fctk_005, fctk095: CONCRETE['C60/75'].fctk_095, Ecm: CONCRETE['C60/75'].Ecm, eps_c1: CONCRETE['C60/75'].eps_c1, eps_cu1: CONCRETE['C60/75'].eps_cu1, eps_c2: CONCRETE['C60/75'].eps_c2, eps_cu2: CONCRETE['C60/75'].eps_cu2, typicalUse: 'Weitgespannte Brücken, Taktschiebeverfahren', prestressSuitability: 'Sehr hohe Frühfestigkeit' },
-    'C70/85': { fck: CONCRETE['C70/85'].fck, fck_cube: CONCRETE['C70/85'].fck_cube, fcm: CONCRETE['C70/85'].fcm, fctm: CONCRETE['C70/85'].fctm, fctk005: CONCRETE['C70/85'].fctk_005, fctk095: CONCRETE['C70/85'].fctk_095, Ecm: CONCRETE['C70/85'].Ecm, eps_c1: CONCRETE['C70/85'].eps_c1, eps_cu1: CONCRETE['C70/85'].eps_cu1, eps_c2: CONCRETE['C70/85'].eps_c2, eps_cu2: CONCRETE['C70/85'].eps_cu2, typicalUse: 'Hochleistungsbeton (HPC), schlanke Pylone', prestressSuitability: 'Extrem steif, Kriechzahl unter 1.5' },
-    'C80/95': { fck: CONCRETE['C80/95'].fck, fck_cube: CONCRETE['C80/95'].fck_cube, fcm: CONCRETE['C80/95'].fcm, fctm: CONCRETE['C80/95'].fctm, fctk005: CONCRETE['C80/95'].fctk_005, fctk095: CONCRETE['C80/95'].fctk_095, Ecm: CONCRETE['C80/95'].Ecm, eps_c1: CONCRETE['C80/95'].eps_c1, eps_cu1: CONCRETE['C80/95'].eps_cu1, eps_c2: CONCRETE['C80/95'].eps_c2, eps_cu2: CONCRETE['C80/95'].eps_cu2, typicalUse: 'Höchstleistungsbauteile, Großbrücken', prestressSuitability: 'Sehr geringe Relaxation & Kriechverformung' },
-    'C90/105': { fck: CONCRETE['C90/105'].fck, fck_cube: CONCRETE['C90/105'].fck_cube, fcm: CONCRETE['C90/105'].fcm, fctm: CONCRETE['C90/105'].fctm, fctk005: CONCRETE['C90/105'].fctk_005, fctk095: CONCRETE['C90/105'].fctk_095, Ecm: CONCRETE['C90/105'].Ecm, eps_c1: CONCRETE['C90/105'].eps_c1, eps_cu1: CONCRETE['C90/105'].eps_cu1, eps_c2: CONCRETE['C90/105'].eps_c2, eps_cu2: CONCRETE['C90/105'].eps_cu2, typicalUse: 'Ultrahochfester Beton für Extrembauten', prestressSuitability: 'Sonderzulassung erforderlich, sehr sprödes Bruchverhalten' }
+    'C30/37': { fck: CONCRETE['C30/37'].fck, fck_cube: CONCRETE['C30/37'].fck_cube, fcm: CONCRETE['C30/37'].fcm, fctm: CONCRETE['C30/37'].fctm, fctk005: CONCRETE['C30/37'].fctk_005, fctk095: CONCRETE['C30/37'].fctk_095, Ecm: CONCRETE['C30/37'].Ecm, eps_c1: CONCRETE['C30/37'].eps_c1, eps_cu1: CONCRETE['C30/37'].eps_cu1, eps_c2: CONCRETE['C30/37'].eps_c2, eps_cu2: CONCRETE['C30/37'].eps_cu2, typicalUse: inhalt.werte.üblicheUntergrenzeNachträglicherVerbund, prestressSuitability: inhalt.werte.zulässigFürModerateVorspannung },
+    'C35/45': { fck: CONCRETE['C35/45'].fck, fck_cube: CONCRETE['C35/45'].fck_cube, fcm: CONCRETE['C35/45'].fcm, fctm: CONCRETE['C35/45'].fctm, fctk005: CONCRETE['C35/45'].fctk_005, fctk095: CONCRETE['C35/45'].fctk_095, Ecm: CONCRETE['C35/45'].Ecm, eps_c1: CONCRETE['C35/45'].eps_c1, eps_cu1: CONCRETE['C35/45'].eps_cu1, eps_c2: CONCRETE['C35/45'].eps_c2, eps_cu2: CONCRETE['C35/45'].eps_cu2, typicalUse: inhalt.werte.hallenbauStandardSpannbeton, prestressSuitability: inhalt.werte.häufigerStandardImHochbau },
+    'C40/50': { fck: CONCRETE['C40/50'].fck, fck_cube: CONCRETE['C40/50'].fck_cube, fcm: CONCRETE['C40/50'].fcm, fctm: CONCRETE['C40/50'].fctm, fctk005: CONCRETE['C40/50'].fctk_005, fctk095: CONCRETE['C40/50'].fctk_095, Ecm: CONCRETE['C40/50'].Ecm, eps_c1: CONCRETE['C40/50'].eps_c1, eps_cu1: CONCRETE['C40/50'].eps_cu1, eps_c2: CONCRETE['C40/50'].eps_c2, eps_cu2: CONCRETE['C40/50'].eps_cu2, typicalUse: inhalt.werte.fertigteileBrückenüberbauten, prestressSuitability: inhalt.werte.sehrGutGeeignetFür },
+    'C45/55': { fck: CONCRETE['C45/55'].fck, fck_cube: CONCRETE['C45/55'].fck_cube, fcm: CONCRETE['C45/55'].fcm, fctm: CONCRETE['C45/55'].fctm, fctk005: CONCRETE['C45/55'].fctk_005, fctk095: CONCRETE['C45/55'].fctk_095, Ecm: CONCRETE['C45/55'].Ecm, eps_c1: CONCRETE['C45/55'].eps_c1, eps_cu1: CONCRETE['C45/55'].eps_cu1, eps_c2: CONCRETE['C45/55'].eps_c2, eps_cu2: CONCRETE['C45/55'].eps_cu2, typicalUse: inhalt.werte.üblichImBrückenbauZtv, prestressSuitability: inhalt.werte.deutscherStandardFürSpannbetonbrücken },
+    'C50/60': { fck: CONCRETE['C50/60'].fck, fck_cube: CONCRETE['C50/60'].fck_cube, fcm: CONCRETE['C50/60'].fcm, fctm: CONCRETE['C50/60'].fctm, fctk005: CONCRETE['C50/60'].fctk_005, fctk095: CONCRETE['C50/60'].fctk_095, Ecm: CONCRETE['C50/60'].Ecm, eps_c1: CONCRETE['C50/60'].eps_c1, eps_cu1: CONCRETE['C50/60'].eps_cu1, eps_c2: CONCRETE['C50/60'].eps_c2, eps_cu2: CONCRETE['C50/60'].eps_cu2, typicalUse: inhalt.werte.hochbeanspruchteHohlkastenbrückenEisenba, prestressSuitability: inhalt.werte.hervorragendSehrGeringesKriechen },
+    'C55/67': { fck: CONCRETE['C55/67'].fck, fck_cube: CONCRETE['C55/67'].fck_cube, fcm: CONCRETE['C55/67'].fcm, fctm: CONCRETE['C55/67'].fctm, fctk005: CONCRETE['C55/67'].fctk_005, fctk095: CONCRETE['C55/67'].fctk_095, Ecm: CONCRETE['C55/67'].Ecm, eps_c1: CONCRETE['C55/67'].eps_c1, eps_cu1: CONCRETE['C55/67'].eps_cu1, eps_c2: CONCRETE['C55/67'].eps_c2, eps_cu2: CONCRETE['C55/67'].eps_cu2, typicalUse: inhalt.werte.hochfesterBetonAbC55, prestressSuitability: inhalt.werte.sehrHoheSteifigkeitGeringe },
+    'C60/75': { fck: CONCRETE['C60/75'].fck, fck_cube: CONCRETE['C60/75'].fck_cube, fcm: CONCRETE['C60/75'].fcm, fctm: CONCRETE['C60/75'].fctm, fctk005: CONCRETE['C60/75'].fctk_005, fctk095: CONCRETE['C60/75'].fctk_095, Ecm: CONCRETE['C60/75'].Ecm, eps_c1: CONCRETE['C60/75'].eps_c1, eps_cu1: CONCRETE['C60/75'].eps_cu1, eps_c2: CONCRETE['C60/75'].eps_c2, eps_cu2: CONCRETE['C60/75'].eps_cu2, typicalUse: inhalt.werte.weitgespannteBrückenTaktschiebeverfahren, prestressSuitability: inhalt.werte.sehrHoheFrühfestigkeit },
+    'C70/85': { fck: CONCRETE['C70/85'].fck, fck_cube: CONCRETE['C70/85'].fck_cube, fcm: CONCRETE['C70/85'].fcm, fctm: CONCRETE['C70/85'].fctm, fctk005: CONCRETE['C70/85'].fctk_005, fctk095: CONCRETE['C70/85'].fctk_095, Ecm: CONCRETE['C70/85'].Ecm, eps_c1: CONCRETE['C70/85'].eps_c1, eps_cu1: CONCRETE['C70/85'].eps_cu1, eps_c2: CONCRETE['C70/85'].eps_c2, eps_cu2: CONCRETE['C70/85'].eps_cu2, typicalUse: inhalt.werte.hochleistungsbetonHpcSchlankePylone, prestressSuitability: inhalt.werte.extremSteifKriechzahlUnter },
+    'C80/95': { fck: CONCRETE['C80/95'].fck, fck_cube: CONCRETE['C80/95'].fck_cube, fcm: CONCRETE['C80/95'].fcm, fctm: CONCRETE['C80/95'].fctm, fctk005: CONCRETE['C80/95'].fctk_005, fctk095: CONCRETE['C80/95'].fctk_095, Ecm: CONCRETE['C80/95'].Ecm, eps_c1: CONCRETE['C80/95'].eps_c1, eps_cu1: CONCRETE['C80/95'].eps_cu1, eps_c2: CONCRETE['C80/95'].eps_c2, eps_cu2: CONCRETE['C80/95'].eps_cu2, typicalUse: inhalt.werte.höchstleistungsbauteileGroßbrücken, prestressSuitability: inhalt.werte.sehrGeringeRelaxationKriechverformung },
+    'C90/105': { fck: CONCRETE['C90/105'].fck, fck_cube: CONCRETE['C90/105'].fck_cube, fcm: CONCRETE['C90/105'].fcm, fctm: CONCRETE['C90/105'].fctm, fctk005: CONCRETE['C90/105'].fctk_005, fctk095: CONCRETE['C90/105'].fctk_095, Ecm: CONCRETE['C90/105'].Ecm, eps_c1: CONCRETE['C90/105'].eps_c1, eps_cu1: CONCRETE['C90/105'].eps_cu1, eps_c2: CONCRETE['C90/105'].eps_c2, eps_cu2: CONCRETE['C90/105'].eps_cu2, typicalUse: inhalt.werte.ultrahochfesterBetonFürExtrembauten, prestressSuitability: inhalt.werte.sonderzulassungErforderlichSehrSprödes }
   };
 
   const activeMatData = concDatabase[matGrade] || concDatabase['C45/55'];
@@ -366,16 +368,10 @@ export default function SpannbetonKennwerte() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4 mb-4">
           <div>
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <BookOpen className="text-shiraz h-5 w-5" />
-              Baustoffkennwerte &amp; Phänomene im Spannbetonbau
-            </h3>
-            <p className="text-xs text-text-main/70 mt-1">
-              Physikalische Wirkmechanismen, mikrostrukturelle Prozesse und normative Bemessungsansätze nach DIN EN 1992-1-1 (Eurocode 2) &amp; DIN EN 10138
-            </p>
+              <BookOpen className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.baustoffkennwertePhänomeneImSpannbetonba} /></h3>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.physikalischeWirkmechanismenMikrostruktu} /></p>
           </div>
-          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-            Eurocode 2 Kap. 3 &amp; 5.10
-          </span>
+          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.eurocode2Kap3} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
@@ -383,9 +379,9 @@ export default function SpannbetonKennwerte() {
             Im konventionellen Stahlbetonbau werden Risse in der Zugzone bewusst toleriert (Zustand II). Im 
             <strong> Spannbetonbau</strong> hingegen wird das Tragwerk durch künstlich aufgebrachte Druckspannungen so überdrückt, 
             dass Zugspannungen unter Betriebsbelastung vermieden oder strikt begrenzt werden (Zustand I). Das Gelingen 
-            dieses Prinzips hängt vollständig von der <strong>dauerhaften Beherrschung der Baustoffverformungen</strong> ab: 
+            dieses Prinzips hängt vollständig von der <strong><MdText text={inhalt.texte.dauerhaftenBeherrschungDerBaustoffverfor} /></strong> ab: 
             Kriechen und Schwinden des Betons sowie die molekulare Relaxation des Spannstahls führen über die Lebensdauer 
-            zu unvermeidlichen Spannkraftverlusten: zeitabhängig typisch <strong>10 % bis 20 % von P<sub>m0</sub></strong>, insgesamt inkl. Reibung und Schlupf <strong>20 % bis 30 % der Pressenkraft</strong>.
+            zu unvermeidlichen Spannkraftverlusten: zeitabhängig typisch <strong><MdText text={inhalt.texte.t10Bis20Von} /></strong>, insgesamt inkl. Reibung und Schlupf <strong><MdText text={inhalt.texte.t20Bis30Der} /></strong>.
           </p>
         </div>
 
@@ -393,7 +389,7 @@ export default function SpannbetonKennwerte() {
 
       {/* Reiter: 7 Bereiche (AP 3.8) */}
       <ModuleTabs
-        label="Baustoffkennwerte im Spannbetonbau: Bereiche"
+        label={inhalt.werte.baustoffkennwerteImSpannbetonbauBereiche}
         tabs={KENNWERT_REITER}
         aktiv={activeSubTab}
         onWechsel={setActiveSubTab}
@@ -426,45 +422,25 @@ export default function SpannbetonKennwerte() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Layers className="text-shiraz h-5 w-5" />
-                4. Elastische Stauchung des Betons &amp; E-Modul-Entwicklung
-              </h4>
-              <span className="text-xs font-mono font-bold bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-md">
-                Sofortverlust beim Spannen (t = 0)
-              </span>
+                <Layers className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.t4ElastischeStauchungDes} /></h4>
+              <span className="text-xs font-mono font-bold bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.sofortverlustBeimSpannenT} /></span>
             </div>
 
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-              <p>
-                Wenn die Spannpresse die hohe Zugkraft an das Bauteil übergibt, wird der Beton schlagartig komprimiert. 
-                Er verkürzt sich elastisch um die Dehnung <InlineMath math="\varepsilon_{c,el} = \sigma_{cp} / E_{cm}(t_0)" />. 
-                Da der Spannstahl mit dem Beton in Verbindung steht, staucht sich auch der Stahl um exakt dasselbe Maß ein 
-                und verliert unmittelbar einen Teil seiner Zugspannung.
-              </p>
+              <p><MdText text={inhalt.texte.wennDieSpannpresseDie} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Bauweisen-Vergleich */}
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800">
-                  Vergleich nach Vorspannverfahren
-                </h5>
+                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800"><MdText text={inhalt.texte.vergleichNachVorspannverfahren} /></h5>
                 <div className="space-y-3 text-xs">
                   <div className="p-3 bg-white rounded-lg border border-slate-200">
-                    <strong className="text-slate-900 block mb-1">A. Spannbettverfahren (sofortiger Verbund):</strong>
-                    Spannstähle werden im Widerlager gespannt, Beton gegossen. Nach dem Erhärten wird das Spannglied durchtrennt. 
-                    Der gesamte Betonquerschnitt wird <strong>schlagartig auf einmal gestaucht</strong>:
-                    <div className="mt-1 font-mono text-blue-700 font-bold">
-                      <InlineMath math="\Delta\sigma_{p,el} = \frac{E_p}{E_{cm}(t_0)} \cdot \sigma_{c,p0}" /> (100 % Stauchungsverlust)
-                    </div>
+                    <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.aSpannbettverfahrenSofortigerVerbund} /></strong><MdText text={inhalt.texte.spannstähleWerdenImWiderlager} /><div className="mt-1 font-mono text-blue-700 font-bold"><MdText text={inhalt.texte.deltasigmaPElFrac} /></div>
                   </div>
 
                   <div className="p-3 bg-white rounded-lg border border-slate-200">
-                    <strong className="text-slate-900 block mb-1">B. Nachträglicher Verbund (mehrere Spannglieder):</strong>
-                    Die Spannglieder werden sukzessive nacheinander gespannt. Das 1. Spannglied erleidet den vollen Stauchungsverlust 
-                    durch alle folgenden Spannglieder; das letzte Spannglied erleidet fast keinen Stauchungsverlust mehr. 
-                    Im Mittel setzt man nach Eurocode 2 an:
-                    <div className="mt-1 font-mono text-blue-700 font-bold">
+                    <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.bNachträglicherVerbundMehrere} /></strong><MdText text={inhalt.texte.dieSpanngliederWerdenSukzessive} /><div className="mt-1 font-mono text-blue-700 font-bold">
                       <InlineMath math="\Delta\sigma_{p,el} = j \cdot \frac{E_p}{E_{cm}(t_0)} \cdot \sigma_{c},\quad j = \frac{n-1}{2n}\;(\text{EC2 Gl. 5.44; } n = \text{Anzahl nacheinander gespannter, gleicher Spannglieder})" />
                     </div>
                   </div>
@@ -473,27 +449,19 @@ export default function SpannbetonKennwerte() {
 
               {/* Reife & E-Modul Entwicklung */}
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800">
-                  Einfluss der Betonreife beim Spannen (<InlineMath math="t_0" />)
-                </h5>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Weil der Beton zum Zeitpunkt des Vorspannens (<InlineMath math="t_0 = 3 - 7\text{ d}" />) noch nicht seine volle 
-                  28-Tage-Festigkeit besitzt, ist auch sein Elastizitätsmodul <InlineMath math="E_{cm}(t_0)" /> signifikant niedriger:
-                </p>
+                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800"><MdText text={inhalt.texte.einflussDerBetonreifeBeim} /></h5>
+                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.weilDerBetonZum} /></p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-xs space-y-1.5">
-                  <div className="text-slate-500 text-[10px]">Festigkeitsverlauf nach EC2 Kap. 3.1.2:</div>
+                  <div className="text-slate-500 text-[10px]"><MdText text={inhalt.texte.festigkeitsverlaufNachEc2Kap} /></div>
                   <div className="text-shiraz font-bold">
                     <InlineMath math="f_{cm}(t) = \beta_{cc}(t) \cdot f_{cm},\; f_{ck}(t) = f_{cm}(t) - 8\,\text{MPa}" />
                   </div>
-                  <div className="text-slate-500 text-[10px] pt-1 border-t border-slate-100">Zugehöriger E-Modul:</div>
+                  <div className="text-slate-500 text-[10px] pt-1 border-t border-slate-100"><MdText text={inhalt.texte.zugehörigerEModul} /></div>
                   <div className="text-blue-700 font-bold">
                     <InlineMath math="E_{cm}(t) = E_{cm} \cdot \left(\frac{f_{cm}(t)}{f_{cm}}\right)^{0{,}3}" />
                   </div>
                 </div>
-                <div className="p-2.5 bg-amber-50 rounded border border-amber-200 text-[11px] text-amber-900">
-                  <strong>Planer-Tipp:</strong> Ein junger Beton mit niedrigem E-Modul verformt sich beim Vorspannen viel stärker elastisch. 
-                  Dadurch steigen sowohl der Sofortverlust als auch das spätere Kriechen drastisch an!
-                </div>
+                <div className="p-2.5 bg-amber-50 rounded border border-amber-200 text-[11px] text-amber-900"><MdText text={inhalt.texte.planerTippEinJunger} /></div>
               </div>
             </div>
           </div>
@@ -506,22 +474,16 @@ export default function SpannbetonKennwerte() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Scale className="text-shiraz h-5 w-5" />
-                5. Die Eurocode 2 Kopplungsformel (Kriechen + Schwinden + Relaxation)
-              </h4>
-              <span className="text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-md">
-                DIN EN 1992-1-1 Gl. (5.46)
-              </span>
+                <Scale className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.t5DieEurocode2} /></h4>
+              <span className="text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.dinEn19921} /></span>
             </div>
 
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
-              <p>
-                <strong>Warum darf man die Verluste nicht einfach linear addieren?</strong>
-              </p>
+              <p><MdText text={inhalt.texte.warumDarfManDie} /></p>
               <p className="text-xs">
                 In der Realität beeinflussen sich Kriechen, Schwinden und Relaxation wechselseitig: 
                 Das Kriechen und Schwinden des Betons verkürzt den Träger und entspannt dadurch das Spannglied. Durch die 
-                <strong> sinkende Stahlspannung</strong> nimmt jedoch die treibende Triebkraft für die molekulare Stahlrelaxation massiv ab. 
+                <strong><MdText text={inhalt.texte.sinkendeStahlspannung} /></strong> nimmt jedoch die treibende Triebkraft für die molekulare Stahlrelaxation massiv ab. 
                 Umgekehrt führt der Relaxationsabfall zu einer Verringerung der Druckspannung im Beton, was wiederum das Kriechen dämpft.
               </p>
             </div>
@@ -529,8 +491,8 @@ export default function SpannbetonKennwerte() {
             {/* Große Formel-Box */}
             <div className="bg-white text-text-main p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
               <div className="text-xs font-mono text-text-main/70 uppercase tracking-wider flex justify-between items-center">
-                <span className="font-semibold">Normative Formel für zeitabhängige Gesamtverluste:</span>
-                <span className="text-shiraz font-bold bg-shiraz/5 border border-shiraz/20 px-2 py-0.5 rounded">DIN EN 1992-1-1 Gl. (5.46)</span>
+                <span className="font-semibold"><MdText text={inhalt.texte.normativeFormelFürZeitabhängige} /></span>
+                <span className="text-shiraz font-bold bg-shiraz/5 border border-shiraz/20 px-2 py-0.5 rounded"><MdText text={inhalt.texte.dinEn199212} /></span>
               </div>
               <div className="py-4 px-4 bg-white rounded-xl border border-home-grau/20 text-center overflow-x-auto text-text-main">
                 <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + 0{,}8 \cdot \Delta\sigma_{pr} + \frac{E_p}{E_{cm}} \cdot \varphi(t, t_0) \cdot \sigma_{c,QP}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0{,}8 \cdot \varphi(t, t_0)\right)}" />
@@ -541,42 +503,27 @@ export default function SpannbetonKennwerte() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                  Der Zähler: Die antreibenden Primärverluste
-                </h5>
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" /><MdText text={inhalt.texte.derZählerDieAntreibenden} /></h5>
                 <div className="space-y-2 text-xs">
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-blue-700 block">1. Schwind-Anteil: <InlineMath math="\varepsilon_{cs} \cdot E_p" /></strong>
-                    Direkte Spannungsabnahme durch Betonverkürzung (typisch ca. 40–80 N/mm²).
-                  </div>
+                    <strong className="text-blue-700 block"><MdText text={inhalt.texte.t1SchwindAnteilVarepsilon} /></strong><MdText text={inhalt.texte.direkteSpannungsabnahmeDurchBetonverkürz} /></div>
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-amber-700 block">2. Kriech-Anteil: <InlineMath math="\varphi \cdot \alpha_p \cdot \sigma_{c,QP}" /></strong>
-                    Spannungsabnahme durch das Dauerlast-Kriechen am Spanngliedschwerpunkt (oft der größte Einzelposten, ca. 80–180 N/mm²).
-                  </div>
+                    <strong className="text-amber-700 block"><MdText text={inhalt.texte.t2KriechAnteilVarphi} /></strong><MdText text={inhalt.texte.spannungsabnahmeDurchDasDauerlast} /></div>
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-purple-700 block">3. Gedämpfte Relaxation: <InlineMath math="0{,}8 \cdot \Delta\sigma_{pr}" /></strong>
-                    Faktor 0.8 berücksichtigt, dass die tatsächliche Relaxation geringer ausfällt, weil der Stahl durch Betonverkürzung entlastet wird!
-                  </div>
+                    <strong className="text-purple-700 block"><MdText text={inhalt.texte.t3GedämpfteRelaxation0} /></strong><MdText text={inhalt.texte.faktor08Berücksichtigt} /></div>
                 </div>
               </div>
 
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                  <ShieldAlert className="h-4 w-4 text-amber-600" />
-                  Der Nenner: Der dämpfende Rückkopplungsfaktor
-                </h5>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Der Nenner ist <strong>stets größer als 1.0</strong> (typischerweise zwischen <strong>1,15 und 1.35</strong>). 
-                  Er drückt mathematisch aus, dass:
-                </p>
+                  <ShieldAlert className="h-4 w-4 text-amber-600" /><MdText text={inhalt.texte.derNennerDerDämpfende} /></h5>
+                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.derNennerIstStets} /></p>
                 <ul className="list-disc pl-5 text-xs text-slate-600 space-y-1.5">
-                  <li>der Querschnitt durch die Bewehrung <InlineMath math="A_p / A_c" /> versteift wird,</li>
-                  <li>die Exzentrizität <InlineMath math="e_p^2 / I_c" /> elastische Schnittkraftumlagerungen erzeugt,</li>
-                  <li>das Kriechen <InlineMath math="(1 + 0{,}8 \cdot \varphi)" /> die Spannungsabnahme dämpft.</li>
+                  <li><MdText text={inhalt.texte.derQuerschnittDurchDie} /></li>
+                  <li><MdText text={inhalt.texte.dieExzentrizitätEP} /></li>
+                  <li><MdText text={inhalt.texte.dasKriechen10} /></li>
                 </ul>
-                <div className="p-2 bg-emerald-50 rounded border border-emerald-200 text-[11px] text-emerald-900 font-medium">
-                  Ohne diesen Nenner würde man den zeitabhängigen Spannkraftverlust um 15–35 % überschätzen!
-                </div>
+                <div className="p-2 bg-emerald-50 rounded border border-emerald-200 text-[11px] text-emerald-900 font-medium"><MdText text={inhalt.texte.ohneDiesenNennerWürde} /></div>
               </div>
             </div>
           </div>
@@ -589,54 +536,39 @@ export default function SpannbetonKennwerte() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Compass className="text-shiraz h-5 w-5" />
-                6. Mechanische Sofortverluste: Reibung im Hüllrohr &amp; Keilschlupf
-              </h4>
-              <span className="text-xs font-mono font-bold bg-zinc-100 text-zinc-800 border border-zinc-300 px-2.5 py-1 rounded-md">
-                Nur bei nachträglichem Verbund
-              </span>
+                <Compass className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.t6MechanischeSofortverlusteReibung} /></h4>
+              <span className="text-xs font-mono font-bold bg-zinc-100 text-zinc-800 border border-zinc-300 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.nurBeiNachträglichemVerbund} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Reibung */}
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                  <h5 className="font-bold text-sm text-slate-900">Reibungsverluste im Hüllrohr</h5>
-                  <span className="text-[10px] font-mono bg-zinc-200 px-2 py-0.5 rounded">EC2 Gl. 5.45</span>
+                  <h5 className="font-bold text-sm text-slate-900"><MdText text={inhalt.texte.reibungsverlusteImHüllrohr} /></h5>
+                  <span className="text-[10px] font-mono bg-zinc-200 px-2 py-0.5 rounded"><MdText text={inhalt.texte.ec2Gl545} /></span>
                 </div>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Beim Spannen reibt der Spannstahl an der Innenwand des Hüllkanals. Nach der Seilreibungsformel von Euler-Eytelwein 
-                  fällt die Spannkraft mit zunehmender Entfernung <InlineMath math="x" /> von der Spannpresse exponentiell ab:
-                </p>
+                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.beimSpannenReibtDer} /></p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-xs">
                   <BlockMath math="\Delta P_\mu(x) = P_0 \cdot \left(1 - e^{-\mu \cdot (\theta + k \cdot x)}\right)" />
                 </div>
                 <div className="text-xs space-y-1 text-slate-600">
-                  <div><strong>µ (Reibungsbeiwert):</strong> dimensionslos; Litze im Stahlhüllrohr 0,19 (EC2 Tab. 5.1), Kunststoffhüllrohre nach ETA, Monolitze ≈ 0,05–0,07.</div>
-                  <div><strong>θ (Umlenkwinkel):</strong> Summe der planmäßigen Umlenkwinkel zwischen Spannanker und Stelle x in rad (unabhängig von Richtung und Vorzeichen).</div>
-                  <div><strong>k (Wobble-Beiwert):</strong> Ungewollte Wellung des Rohres durch Montageungenauigkeiten (typ. 0.005–0.010 rad/m).</div>
+                  <div><MdText text={inhalt.texte.reibungsbeiwertDimensionslosLitzeIm} /></div>
+                  <div><MdText text={inhalt.texte.umlenkwinkelSummeDerPlanmäßigen} /></div>
+                  <div><MdText text={inhalt.texte.kWobbleBeiwertUngewollte} /></div>
                 </div>
               </div>
 
               {/* Keilschlupf */}
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                  <h5 className="font-bold text-sm text-slate-900">Verankerungsschlupf (Keileinzug)</h5>
+                  <h5 className="font-bold text-sm text-slate-900"><MdText text={inhalt.texte.verankerungsschlupfKeileinzug} /></h5>
                   <span className="text-[10px] font-mono bg-zinc-200 px-2 py-0.5 rounded">w ≈ 4–8 mm</span>
                 </div>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Wird die hydraulische Spannpresse nach Erreichen der Soll-Kraft gelöst, zieht die gewaltige Zugkraft die mehrteiligen 
-                  konischen Verankerungskeile in den Ankerkörper hinein, bis die mechanische Klemmwirkung voll greift.
-                </p>
+                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.wirdDieHydraulischeSpannpresse} /></p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-xs">
                   <BlockMath math="l_{set} = \sqrt{\frac{w \cdot E_p \cdot A_p}{p}}, \qquad \Delta P_{Anker} = 2 \cdot p \cdot l_{set}" />
                 </div>
-                <p className="text-xs text-slate-600">
-                  Dieser <strong>Keilschlupf <InlineMath math="w" /></strong> führt im Nahbereich der Verankerung (über die 
-                  Schlupfeintragungslänge <InlineMath math="L_{set}" />) zu einem signifikanten Kraftabfall. Bei kurzen Trägern 
-                  (<InlineMath math="L < 15\text{ m}" />) kann der Keilschlupf über 10 % der Gesamtvorspannkraft vernichten, 
-                  weshalb häufig überspannt wird – zulässig nur im Rahmen von σ_p,max (EC2 5.10.2.1(2): bis 0,95·f_p0,1k bei Kraftmessung mit ±5 % Genauigkeit).
-                </p>
+                <p className="text-xs text-slate-600"><MdText text={inhalt.texte.dieserKeilschlupfWFührt} /></p>
               </div>
             </div>
 
@@ -644,38 +576,28 @@ export default function SpannbetonKennwerte() {
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-300 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-2">
                 <h5 className="font-bold text-xs text-slate-900 flex items-center gap-2 uppercase tracking-wide">
-                  <Scale className="h-4 w-4 text-shiraz" />
-                  Größenordnungen der Reibungs- &amp; Schlupfbeiwerte: Schätzwerte vs. Rechenwerte nach EC2
-                </h5>
-                <span className="text-[11px] font-mono font-bold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-300">
-                  DIN EN 1992-1-1 Abs. 5.10.5 &amp; Zulassungen (ETA)
-                </span>
+                  <Scale className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.größenordnungenDerReibungsSchlupfbeiwert} /></h5>
+                <span className="text-[11px] font-mono font-bold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-300"><MdText text={inhalt.texte.dinEn199213} /></span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-800 leading-relaxed">
                 <div className="space-y-2">
                   <div className="font-semibold text-amber-900 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-amber-600"></span>
-                    Praxis-Schätzwerte (Vordimensionierung):
-                  </div>
+                    <span className="w-2 h-2 rounded-full bg-amber-600"></span><MdText text={inhalt.texte.praxisSchätzwerteVordimensionierung} /></div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px]">
-                    <li><strong>Reibungsbeiwert μ:</strong> Standard-Stahlblechhüllrohr <InlineMath math="\mu \approx 0{,}19\,\text{rad}^{-1}" />; Kunststoffhüllrohr (PE/PP) <InlineMath math="\mu \approx 0{,}12 \dots 0{,}14\,\text{rad}^{-1}" />.</li>
-                    <li><strong>Ungewollter Knickbeiwert k:</strong> <InlineMath math="k \approx 0{,}007\,\text{rad/m} \approx 0{,}4^\circ/\text{m}" /> (erfasst Rohrwellung/Durchhang beim Betonieren).</li>
-                    <li><strong>Keilschlupf (Setzmaß w bzw. Δl_s):</strong> <InlineMath math="w \approx 5 \dots 7\,\text{mm}" /> bei Litzenkeilverankerungen; <InlineMath math="w \approx 1 \dots 2\,\text{mm}" /> bei Gewindestangen.</li>
-                    <li><strong>Faustregel für mechanische Verluste:</strong> Ca. 5 % bis 15 % Spannkraftabfall in Feldmitte infolge Reibung; bei kurzen Bauteilen (&lt; 15 m) bis zu 20 % durch Keilschlupf!</li>
+                    <li><MdText text={inhalt.texte.reibungsbeiwertStandardStahlblechhüllroh} /></li>
+                    <li><MdText text={inhalt.texte.ungewollterKnickbeiwertKK} /></li>
+                    <li><MdText text={inhalt.texte.keilschlupfSetzmaßWBzw} /></li>
+                    <li><MdText text={inhalt.texte.faustregelFürMechanischeVerluste} /></li>
                   </ul>
                 </div>
                 <div className="space-y-2">
                   <div className="font-semibold text-blue-900 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                    Normative Rechenwerte &amp; Verlegekriterien (EC2 Gl. 5.43 &amp; Zulassung):
-                  </div>
-                  <div className="bg-white/80 p-2 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center">
-                    <InlineMath math="P(x) = P_0 \cdot e^{-\mu (\theta + k \cdot x)}" /> (EC2 Gl. 5.45; θ = Summe der planmäßigen Umlenkwinkel bis x)
-                  </div>
+                    <span className="w-2 h-2 rounded-full bg-blue-600"></span><MdText text={inhalt.texte.normativeRechenwerteVerlegekriterienEc2} /></div>
+                  <div className="bg-white/80 p-2 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center"><MdText text={inhalt.texte.pXP0} /></div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px] text-blue-950/90">
-                    <li><InlineMath math="\mu = 0{,}19\,\text{rad}^{-1}" /> (Norm-Rechenwert nach EC2 Tabelle 5.1 für gewellte Stahlrohre).</li>
-                    <li><InlineMath math="k = 0{,}005 \dots 0{,}010\,\text{rad/m}" /> (Zulassungswert; bei starren dicken Hüllrohren kleiner als bei flexiblen).</li>
-                    <li><strong>Schlupfeinflusslänge:</strong> <InlineMath math="l_{set} = \sqrt{\frac{w \cdot E_p A_p}{p}}" /> (p = Reibungsabfall je Längeneinheit) – innerhalb von l_set kehrt sich die Reibungsrichtung um.</li>
+                    <li><MdText text={inhalt.texte.mu019Text} /></li>
+                    <li><MdText text={inhalt.texte.k0005Dots} /></li>
+                    <li><MdText text={inhalt.texte.schlupfeinflusslängeLSetSqrt} /></li>
                   </ul>
                 </div>
               </div>

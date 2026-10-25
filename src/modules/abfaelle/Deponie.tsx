@@ -1,6 +1,8 @@
 import { Database, Layers, ShieldCheck, Droplets, Scale, HelpCircle } from 'lucide-react';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
+import inhalt from '@/content/abfaelle/Deponie.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface DeponieProps {
   activeBarrier: number;
@@ -17,17 +19,17 @@ interface DeponieProps {
 
 export default function Deponie({ activeBarrier, depVInputValue, depVSelectedParam, deponieSection, selectedLayerIndex, setActiveBarrier, setDepVInputValue, setDepVSelectedParam, setDeponieSection, setSelectedLayerIndex }: DeponieProps) {
     const deponieParams: Record<string, { name: string; unit: string; limits: number[]; isEluat: boolean }> = {
-      toc: { name: 'TOC (Gesamter organisch gebundener Kohlenstoff)', unit: 'Masse-% TM', limits: [1.0, 1.0, 3.0, 6.0], isEluat: false },
-      loi: { name: 'Glühverlust (Anteil an brennbaren organischen Stoffen)', unit: 'Masse-%', limits: [3.0, 3.0, 5.0, 10.0], isEluat: false },
-      sulfat: { name: 'Sulfat (SO4 im Sickerwasser/Eluat)', unit: 'mg/l im Eluat', limits: [100, 2000, 2000, 5000], isEluat: true },
-      chlorid: { name: 'Chlorid (Cl im Eluat)', unit: 'mg/l im Eluat', limits: [80, 1500, 1500, 2500], isEluat: true },
-      pb: { name: 'Blei (Pb im Eluat)', unit: 'mg/l im Eluat', limits: [0.05, 0.2, 1.0, 5.0], isEluat: true },
-      as: { name: 'Arsen (As im Eluat)', unit: 'mg/l im Eluat', limits: [0.05, 0.2, 0.2, 2.5], isEluat: true },
-      cd: { name: 'Cadmium (Cd im Eluat)', unit: 'mg/l im Eluat', limits: [0.004, 0.05, 0.1, 0.5], isEluat: true },
-      cu: { name: 'Kupfer (Cu im Eluat)', unit: 'mg/l im Eluat', limits: [0.2, 1.0, 5.0, 10.0], isEluat: true },
-      ni: { name: 'Nickel (Ni im Eluat)', unit: 'mg/l im Eluat', limits: [0.04, 0.2, 1.0, 4.0], isEluat: true },
-      zn: { name: 'Zink (Zn im Eluat)', unit: 'mg/l im Eluat', limits: [0.4, 2.0, 5.0, 20.0], isEluat: true },
-      kw: { name: 'Mineralölkohlenwasserstoffe C10–C40 (nur DK 0 begrenzt)', unit: 'mg/kg TM (Feststoff)', limits: [500, Infinity, Infinity, Infinity], isEluat: false }
+      toc: inhalt.daten["Deponie.deponieParams.toc"],
+      loi: inhalt.daten["Deponie.deponieParams.loi"],
+      sulfat: inhalt.daten["Deponie.deponieParams.sulfat"],
+      chlorid: { name: inhalt.werte.chloridClImEluat, unit: inhalt.werte.mgLImEluat, limits: [80, 1500, 1500, 2500], isEluat: true },
+      pb: { name: inhalt.werte.bleiPbImEluat, unit: inhalt.werte.mgLImEluat2, limits: [0.05, 0.2, 1.0, 5.0], isEluat: true },
+      as: { name: inhalt.werte.arsenAsImEluat, unit: inhalt.werte.mgLImEluat3, limits: [0.05, 0.2, 0.2, 2.5], isEluat: true },
+      cd: { name: inhalt.werte.cadmiumCdImEluat, unit: inhalt.werte.mgLImEluat4, limits: [0.004, 0.05, 0.1, 0.5], isEluat: true },
+      cu: { name: inhalt.werte.kupferCuImEluat, unit: inhalt.werte.mgLImEluat5, limits: [0.2, 1.0, 5.0, 10.0], isEluat: true },
+      ni: { name: inhalt.werte.nickelNiImEluat, unit: inhalt.werte.mgLImEluat6, limits: [0.04, 0.2, 1.0, 4.0], isEluat: true },
+      zn: { name: inhalt.werte.zinkZnImEluat, unit: inhalt.werte.mgLImEluat7, limits: [0.4, 2.0, 5.0, 20.0], isEluat: true },
+      kw: { name: inhalt.werte.mineralölkohlenwasserstoffeC10C40Nur, unit: inhalt.werte.mgKgTmFeststoff, limits: [500, Infinity, Infinity, Infinity], isEluat: false }
     };
 
     const paramInfo = deponieParams[depVSelectedParam] || deponieParams.toc;
@@ -39,19 +41,19 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
     const dkIIAllowed = isLte(depVInputValue, paramInfo.limits[2]);
     const dkIIIAllowed = isLte(depVInputValue, paramInfo.limits[3]);
 
-    let finalClassVerdict = '⛔ Überschreitung DK III Grenzwert: DK IV (Untertägige Einlagerung) oder Sondermüllvorbehandlung erforderlich!';
+    let finalClassVerdict = inhalt.werte.überschreitungDkIiiGrenzwert;
     let classColor = 'bg-shiraz/5 text-slate-900 border-shiraz/20';
     if (dk0Allowed) {
-      finalClassVerdict = '💚 Unbedenklich: Geeignet für DK 0 (sowie DK I, DK II, DK III)';
+      finalClassVerdict = inhalt.werte.unbedenklichGeeignetFürDk;
       classColor = 'bg-slate-50 text-slate-800 border-home-grau/30';
     } else if (dkIAllowed) {
-      finalClassVerdict = '✓ Zulässig ab Deponieklasse DK I (sowie DK II, DK III)';
+      finalClassVerdict = inhalt.werte.zulässigAbDeponieklasseDk;
       classColor = 'bg-slate-50 text-slate-800 border-home-grau/30';
     } else if (dkIIAllowed) {
-      finalClassVerdict = '⚠️ Erhöht: Zulässig ab Deponieklasse DK II (sowie DK III)';
+      finalClassVerdict = inhalt.werte.erhöhtZulässigAbDeponieklasse;
       classColor = 'bg-slate-50 text-slate-800 border-home-grau/30';
     } else if (dkIIIAllowed) {
-      finalClassVerdict = '🚨 Gefährlich / Stark Belastet: Zulässig erst ab Deponieklasse DK III (Sondermüll)';
+      finalClassVerdict = inhalt.werte.gefährlichStarkBelastetZulässig;
       classColor = 'bg-slate-50 text-slate-800 border-home-grau/30';
     }
 
@@ -59,12 +61,8 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2">
         <div className="border-b border-home-grau/30 pb-4">
           <h3 className="text-2xl font-bold text-slate-850 flex items-center gap-2">
-            <Database className="w-6 h-6 text-shiraz" />
-            Deponieverordnung (DepV) &amp; Zuordnungsanalyse
-          </h3>
-          <p className="text-slate-500 text-sm mt-1">
-            Mineralische Abfälle, die nicht verwertet werden können (z.B. fehlendes Recycling-Potential, Überschreitung der EBV-Werte), müssen deponiert werden. Die DepV teilt Deponien in 5 Klassen ein, basierend auf Schadstoffpotential und Auslaugverhalten.
-          </p>
+            <Database className="w-6 h-6 text-shiraz" /><MdText text={inhalt.texte.deponieverordnungDepvZuordnungsanalyse} /></h3>
+          <p className="text-slate-500 text-sm mt-1"><MdText text={inhalt.texte.mineralischeAbfälleDieNicht} /></p>
         </div>
 
         {/* Deponieklassen Übersicht */}
@@ -73,45 +71,45 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
             <div>
               <span className="font-extrabold text-slate-600 uppercase text-xs tracking-wider">DK 0</span>
               <h4 className="font-bold text-slate-800 mb-2 mt-0.5">Inertabfalldeponie</h4>
-              <p className="text-slate-600 leading-relaxed">Für unbelastete, inerte Bauabfälle, die sich chemisch, biologisch und physikalisch nicht verändern.</p>
+              <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.fürUnbelasteteInerteBauabfälle} /></p>
             </div>
-            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700">Beispiel: Reiner Boden, Kiese.</div>
+            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700"><MdText text={inhalt.texte.beispielReinerBodenKiese} /></div>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="font-extrabold text-slate-550 uppercase text-xs tracking-wider font-semibold">DK I</span>
-              <h4 className="font-bold text-slate-800 mb-2 mt-0.5">Nicht-gefährlich (Gering)</h4>
-              <p className="text-slate-600 leading-relaxed">Gering belastete mineralische Baustoffe mit sehr moderaten Abdichtungsbarrieren.</p>
+              <h4 className="font-bold text-slate-800 mb-2 mt-0.5"><MdText text={inhalt.texte.nichtGefährlichGering} /></h4>
+              <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.geringBelasteteMineralischeBaustoffe} /></p>
             </div>
-            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700">Beispiel: Leicht kontaminierter Schutt.</div>
+            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700"><MdText text={inhalt.texte.beispielLeichtKontaminierterSchutt} /></div>
           </div>
 
           <div className="bg-slate-50/70 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="font-extrabold text-slate-550 uppercase text-xs tracking-wider font-semibold">DK II</span>
-              <h4 className="font-bold text-slate-800 mb-2 mt-0.5">Hausmüllähnlich (Mäßig)</h4>
-              <p className="text-slate-600 leading-relaxed">Klassische Siedlungs- und Bauabfälle. Höhere Anforderungen an Sickerwassererfassung und Basisabdichtungen.</p>
+              <h4 className="font-bold text-slate-800 mb-2 mt-0.5"><MdText text={inhalt.texte.hausmüllähnlichMäßig} /></h4>
+              <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.klassischeSiedlungsUndBauabfälle} /></p>
             </div>
-            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700">Beispiel: Belastete Schlacken, Gipsbauteile.</div>
+            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700"><MdText text={inhalt.texte.beispielBelasteteSchlackenGipsbauteile} /></div>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="font-extrabold text-slate-600 uppercase text-xs tracking-wider font-semibold">DK III</span>
               <h4 className="font-bold text-slate-800 mb-2 mt-0.5">Sondermülldeponie</h4>
-              <p className="text-slate-650 leading-relaxed font-semibold">Überwachungspflichtige, gefährliche Abfälle. Extreme Sicherheitsstandards und doppelte Barrieren.</p>
+              <p className="text-slate-650 leading-relaxed font-semibold"><MdText text={inhalt.texte.überwachungspflichtigeGefährlicheAbfälle} /></p>
             </div>
-            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700">Beispiel: Asbestplatten, teerige Bahnen.</div>
+            <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700"><MdText text={inhalt.texte.beispielAsbestplattenTeerigeBahnen} /></div>
           </div>
 
           <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20 flex flex-col justify-between">
             <div>
               <span className="font-extrabold text-shiraz uppercase text-xs tracking-wider font-semibold">DK IV</span>
               <h4 className="font-bold text-slate-900 mb-2 mt-0.5">Untertagedeponie</h4>
-              <p className="text-slate-700 leading-relaxed">Dauerhafte Kapselung in tiefen geologischen Steinsalz-Formationen, isoliert von Biosphäre.</p>
+              <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.dauerhafteKapselungInTiefen} /></p>
             </div>
-            <div className="mt-2 pt-2 border-t border-shiraz/10 font-medium text-xs text-shiraz font-bold">Beispiel: Filtrieraschen, hochtoxische Schluffe.</div>
+            <div className="mt-2 pt-2 border-t border-shiraz/10 font-medium text-xs text-shiraz font-bold"><MdText text={inhalt.texte.beispielFiltrieraschenHochtoxischeSchluf} /></div>
           </div>
         </div>
 
@@ -119,16 +117,14 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
         <div className="p-5 rounded-2xl bg-white border border-home-grau/30 shadow-md grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-4">
             <div>
-              <h4 className="font-bold text-slate-900 text-sm mb-1">Interactive DepV Grenzwert-Prüfer</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Wählen Sie einen Analysenwert aus dem Laborprüfbericht (Eluat oder Feststoff), um die Mindest-Deponieklasse (nach DepV Anhang 3) sofort zu bestimmen.
-              </p>
+              <h4 className="font-bold text-slate-900 text-sm mb-1"><MdText text={inhalt.texte.interactiveDepvGrenzwertPrüfer} /></h4>
+              <p className="text-xs text-slate-500 leading-relaxed"><MdText text={inhalt.texte.wählenSieEinenAnalysenwert} /></p>
             </div>
 
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Parameter / Schadstoff:</label>
-                <select aria-label="Parameter / Schadstoff"
+                <label className="block text-xs font-semibold text-slate-700 mb-1"><MdText text={inhalt.texte.parameterSchadstoff} /></label>
+                <select aria-label={inhalt.werte.parameterSchadstoff}
                   className="w-full text-xs font-mono bg-slate-50 border border-home-grau/30 rounded-lg p-2 outline-none focus:border-home-grau/30"
                   value={depVSelectedParam}
                   onChange={(e) => {
@@ -166,16 +162,11 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
           </div>
 
           <div className="md:col-span-2 space-y-4">
-            <h5 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-2">Gesetzliche Grenzwerte im Vergleich ({paramInfo.unit})</h5>
+            <h5 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-2"><MdText text={inhalt.texte.gesetzlicheGrenzwerteImVergleich} />{paramInfo.unit})</h5>
 
             <div className="space-y-3.5">
               {paramInfo.limits.map((lim, idx) => {
-                const classes = [
-                  { label: 'DK 0 (Inert)', desc: 'Unbelastete Boden- und Bauschuttfraktionen', color: 'bg-slate-100', text: 'text-slate-800' },
-                  { label: 'DK I (Gering)', desc: 'Gering belastete mineralische Abfälle', color: 'bg-slate-100', text: 'text-slate-700' },
-                  { label: 'DK II (Mäßig)', desc: 'Höher belastete mineralische und vorbehandelte Siedlungsabfälle', color: 'bg-slate-100', text: 'text-slate-700 font-medium' },
-                  { label: 'DK III (Gefährlich)', desc: 'Gefährliche Abfälle, oberirdische Deponie', color: 'bg-slate-150', text: 'text-slate-800 font-bold' }
-                ];
+                const classes = inhalt.daten["Deponie.classes"];
                 const cls = classes[idx];
                 const isOk = depVInputValue <= lim;
 
@@ -184,15 +175,15 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
                     <div>
                       <div className="flex items-center gap-2">
                         <span className={`inline-block px-2 py-0.5 text-xs font-bold rounded ${cls.color} ${cls.text} border border-home-grau/30`}>{cls.label}</span>
-                        <span className="font-bold text-slate-800">{Number.isFinite(lim) ? `C ≤ ${formatDeWert(lim)} ${paramInfo.unit}` : 'kein Zuordnungswert'}</span>
+                        <span className="font-bold text-slate-800">{Number.isFinite(lim) ? `C ≤ ${formatDeWert(lim)} ${paramInfo.unit}` : inhalt.werte.keinZuordnungswert}</span>
                       </div>
                       <p className="text-xs text-slate-500 mt-0.5">{cls.desc}</p>
                     </div>
                     <div>
                       {isOk ? (
-                        <span className="px-2 py-1 text-xs font-bold rounded bg-slate-100 text-slate-800 border border-home-grau/30">✓ Einhaltbar</span>
+                        <span className="px-2 py-1 text-xs font-bold rounded bg-slate-100 text-slate-800 border border-home-grau/30"><MdText text={inhalt.texte.einhaltbar} /></span>
                       ) : (
-                        <span className="px-2 py-1 text-xs font-bold rounded bg-shiraz/15 text-shiraz border border-shiraz/35">❌ Überschritten</span>
+                        <span className="px-2 py-1 text-xs font-bold rounded bg-shiraz/15 text-shiraz border border-shiraz/35"><MdText text={inhalt.texte.überschritten} /></span>
                       )}
                     </div>
                   </div>
@@ -200,45 +191,33 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
               })}
             </div>
 
-            <p className="text-xs text-slate-400 italic">
-              ℹ️ <strong>Wichtiger Hinweis:</strong> In der Praxis werden nach DepV Anhang 3 über 40 Parameter zeitgleich analysiert. Überschreitet auch nur ein einziger Parameter den Grenzwert (z.B. hohe TOC-Werte durch Holzspäne oder hoher Sulfatwert durch Gips), stuft dies den gesamten Abfallkörper unweigerlich in die nächsthöhere Klasse ein!
-            </p>
+            <p className="text-xs text-slate-400 italic"><MdText text={inhalt.texte.wichtigerHinweisInDer} /></p>
           </div>
         </div>
 
         {/* Analytical and biological background */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-slate-900 mb-2">Analytische Nachweisverfahren &amp; Eluatherstellung</h4>
+            <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.analytischeNachweisverfahrenEluatherstel} /></h4>
             <ul className="space-y-3 text-slate-650 leading-relaxed font-medium">
               <li>
-                <strong className="text-slate-800">Schüttelversuch (DIN EN 12457-4):</strong>
-                <p className="text-xs mt-0.5 text-slate-500">Das Standard-Laborverfahren zur Bestimmung wasserlöslicher Stoffe. Der mechanisch zerkleinerte Feststoff wird im Gewichtsverhältnis 1:10 (1 kg Probe auf 10 Liter entionisiertes Wasser) über 24 Stunden rotatorisch geschüttelt. Die anschließende Membranfiltration liefert das "Eluat", das chemisch analysiert wird.</p>
+                <strong className="text-slate-800"><MdText text={inhalt.texte.schüttelversuchDinEn12457} /></strong>
+                <p className="text-xs mt-0.5 text-slate-500"><MdText text={inhalt.texte.dasStandardLaborverfahrenZur} /></p>
               </li>
               <li>
-                <strong className="text-slate-850">Säulenperkolationsprüfung (DIN 19528):</strong>
-                <p className="text-xs mt-0.5 text-slate-500">
-                  Im Zuge der Mantelverordnung 2023 massiv aufgewertet. Repräsentiert die realistische Freisetzungsdynamik besser als das statische Schütteln. Wasser sickert kontinuierlich von unten nach oben durch eine vertikal präparierte Materialsäule. Die Auswertung erfolgt fraktioniert nach dem Flüssigkeits-Feststoff-Verhältnis (L/S 2 bis L/S 4).
-                </p>
+                <strong className="text-slate-850"><MdText text={inhalt.texte.säulenperkolationsprüfungDin19528} /></strong>
+                <p className="text-xs mt-0.5 text-slate-500"><MdText text={inhalt.texte.imZugeDerMantelverordnung} /></p>
               </li>
             </ul>
           </div>
 
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-slate-900 mb-2">Gips, Sulfat &amp; die biologische Gefahrenkette</h4>
-            <p className="text-slate-700 leading-relaxed mb-3">
-              Der hohe Sulfatgehalt in Gipsplatten und Gipsfaserplatten stellt den Erd- und Deponiebau vor erhebliche chemisch-biologische Probleme:
-            </p>
+            <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.gipsSulfatDieBiologische} /></h4>
+            <p className="text-slate-700 leading-relaxed mb-3"><MdText text={inhalt.texte.derHoheSulfatgehaltIn} /></p>
             <ul className="list-decimal pl-4 space-y-2 text-slate-600 font-medium">
-              <li>
-                <strong>Gipsdeponierungsverbot auf DK 0:</strong> Da DK 0 Deponien keine dichten geotechnischen Barrieren oder Sickerwasserreinigungen haben, führt die freie Auswaschung von Gips zu extrem hohen Sulfatkonzentrationen im Grundwasser.
-              </li>
-              <li>
-                <strong>Anaerobe Fäulnisgasbildung (H2S):</strong> Werden Gipsrückstände unkontrolliert mit organischen Abfallbestandteilen (z.B. Holzresten) vermischt, wandeln sulfatreduzierende Bakterien unter Luftabschluss im feuchten Deponiekörper das Sulfat in hochgiftigen, metallkorrosiven und stark riechenden <strong>Schwefelwasserstoff (H2S)</strong> um.
-              </li>
-              <li>
-                <strong>Ausschließliche Entsorgung als Monofraktion:</strong> Gips muss am Abbruchort strikt getrennt gesammelt werden. Größere Bauteilmengen werden zur Kreislauf-Verwertung in Gipsrecyclingwerke transportiert oder sortenrein in abgeschotteten Monokompartimenten auf DK II / DK III Deponien abgelagert.
-              </li>
+              <li><MdText text={inhalt.texte.gipsdeponierungsverbotAufDk0} /></li>
+              <li><MdText text={inhalt.texte.anaerobeFäulnisgasbildungH2sWerden} /></li>
+              <li><MdText text={inhalt.texte.ausschließlicheEntsorgungAlsMonofraktion} /></li>
             </ul>
           </div>
         </div>
@@ -247,59 +226,51 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
         <div className="border-t border-home-grau/20 pt-6 mt-8 space-y-8">
           <div>
             <h3 className="text-xl font-bold text-slate-850 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-shiraz" />
-              Aufbau- und Barriereprinzip von Deponien (§ 3-14 DepV)
-            </h3>
-            <p className="text-slate-500 text-sm mt-1">
-              Das Schutzkonzept moderner deponietechnischer Anlagen in Deutschland basiert auf dem <strong>Multibarrierenkonzept</strong> (Sicherheitsbarrieren) sowie einem hochpräzisen, regelkonformen <strong>Schichtenaufbau</strong> an Basis und Oberfläche.
-            </p>
+              <Layers className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.aufbauUndBarriereprinzipVon} /></h3>
+            <p className="text-slate-500 text-sm mt-1"><MdText text={inhalt.texte.dasSchutzkonzeptModernerDeponietechnisch} /></p>
           </div>
 
           {/* 1. Multibarrierenkonzept */}
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-md">
             <h4 className="font-bold text-slate-900 text-sm mb-4 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              Das Multibarrierenkonzept (Die 5 Sicherheitsbarrieren)
-            </h4>
-            <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-              Durch das Ineinandergreifen von fünf voneinander unabhängigen Sicherheitsbarrieren wird gewährleistet, dass selbst bei Ausfall einzelner Komponenten (z. B. einer Dichtungsbahn) keine Schadstoffe in die Biosphäre oder das Grundwasser gelangen können.
-            </p>
+              <ShieldCheck className="w-4 h-4 text-emerald-600" /><MdText text={inhalt.texte.dasMultibarrierenkonzeptDie5} /></h4>
+            <p className="text-xs text-slate-600 mb-4 leading-relaxed"><MdText text={inhalt.texte.durchDasIneinandergreifenVon} /></p>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
               {[
                 {
                   num: 1,
-                  label: "Barriere 1: Geologie",
-                  sub: "Standort & Untergrund",
-                  desc: "Der geologische Untergrund fungiert als natürlicher Schadstofffänger. Er muss homogen und gering durchlässig sein (DepV Anhang 1 Tab. 1: kf ≤ 1 · 10⁻⁹ m/s bei DK I–III, kf ≤ 1 · 10⁻⁷ m/s bei DK 0) und mind. 1 m (DK III: 5 m) mächtig sein, um einen hydrogeologischen Sicherheitsabstand zum nutzbaren Grundwasserleiter zu wahren.",
+                  label: inhalt.werte.barriere1Geologie,
+                  sub: inhalt.werte.standortUntergrund,
+                  desc: inhalt.werte.derGeologischeUntergrundFungiert,
                   icon: ShieldCheck,
                 },
                 {
                   num: 2,
-                  label: "Barriere 2: Abfallkörper",
-                  sub: "TOC- & Reaktivitätssperre",
-                  desc: "Verbot der Ablagerung von organischen, biologisch abbaubaren Altabfällen (TOC ≤ 3% auf DK II). Dies stoppt mikrobielle Gärungen, saure Sickerwasserphasen sowie explosive Gaskonzentrationen im Kern.",
+                  label: inhalt.werte.barriere2Abfallkörper,
+                  sub: inhalt.werte.tocReaktivitätssperre,
+                  desc: inhalt.werte.verbotDerAblagerungVon,
                   icon: Database,
                 },
                 {
                   num: 3,
-                  label: "Barriere 3: Basisabdichtung",
-                  sub: "Doppelte Sperre & Dränung",
-                  desc: "Kombinationsabdichtung am Deponieboden: Eine mindestens 50 cm dicke, mehrlagig eingebaute mineralische Dichtung (kf ≤ 5 · 10⁻¹⁰ m/s) wirkt direkt unter einer 2,5 mm starken HDPE-Kunststoffdichtungsbahn (KDB). Kiesdräns (16/32) leiten Eluate aktiv ab.",
+                  label: inhalt.werte.barriere3Basisabdichtung,
+                  sub: inhalt.werte.doppelteSperreDränung,
+                  desc: inhalt.werte.kombinationsabdichtungAmDeponiebodenEine,
                   icon: Layers,
                 },
                 {
                   num: 4,
-                  label: "Barriere 4: Oberflächenabdichtung",
-                  sub: "Kapselung & Rekultivierung",
-                  desc: "Nach Verfüllung erfolgt der hermetische Verschluss von oben. Ein mehrteiliges System aus Tonschicht, KDB, Entwässerungsdrän und 1m Mutterboden leitet Regenwasser ab und stoppt das Einsickern vollständig.",
+                  label: inhalt.werte.barriere4Oberflächenabdichtung,
+                  sub: inhalt.werte.kapselungRekultivierung,
+                  desc: inhalt.werte.nachVerfüllungErfolgtDer,
                   icon: Droplets,
                 },
                 {
                   num: 5,
-                  label: "Barriere 5: Überwachung",
-                  sub: "Monitoring & Nachsorge",
-                  desc: "Kontrollierter Messstellenbetrieb im An- und Abstrom des Grundwassers, Sickerwasserreinigung und Gasverbrennung/Verwertung. Die Nachsorgephase läuft jahrzehntelang bis zur behördlichen Entlassung.",
+                  label: inhalt.werte.barriere5Überwachung,
+                  sub: inhalt.werte.monitoringNachsorge,
+                  desc: inhalt.werte.kontrollierterMessstellenbetriebImAn,
                   icon: Scale,
                 }
               ].map((bar) => {
@@ -334,38 +305,7 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
 
             {/* Detaillierte Beschreibung der ausgewählten Barriere */}
             {(() => {
-              const selectedBar = [
-                {
-                  num: 1,
-                  label: "Barriere 1: Geologische Barriere (Standortwahllogik)",
-                  desc: "Die erste Linie der Verteidigung ist der gewählte Bodenstandort selbst. Ein erstklassiger Deponiestandort befindet sich auf natürlichen Sedimentationsbecken (z.B. dicke Ton- oder Mergeldecken). Nach DepV Anhang 1 muss diese Schicht eine hohe Adsorptionskapazität aufweisen, um Kationen (z.B. Schwermetalle) durch Ionenaustausch an die Tonminerale (z.B. Montmorillonit) zu binden, falls es im Extremfall zu einer Sickerwasser-Migration kommen sollte.",
-                  norm: "§ 5 DepV sowie DepV Anhang 1 i.V.m. TA Abfall.",
-                },
-                {
-                  num: 2,
-                  label: "Barriere 2: Reaktivitätsminderung im Deponiekörper (Abfallbeschaffenheit)",
-                  desc: "Bevor Müll deponiert wird, muss sein biologisches und chemisches Reaktionspotenzial kontrolliert werden. Durch das strikte Verbot unvorbehandelter organischer Siedlungsabfälle wird der Deponiekörper biologisch inert gehalten. Geringe TOC-Grenzwerte (DK 0: ≤ 1%, DK II: ≤ 3%) verhindern die Bildung hochpathogener organischer Säuren, die ansonsten mineralische Bauteile und Tonschichten angreifen und dichte Barrieren chemisch zersetzen würden.",
-                  norm: "§ 6 DepV (Annahmekriterien) und Anhang 3 Grenzwerttabellen.",
-                },
-                {
-                  num: 3,
-                  label: "Barriere 3: Das deponietechnische Basisabdichtungssystem",
-                  desc: "Diese Barriere trennt den kontaminierten Abfall physisch vom darunterliegenden Boden. Sie besteht aus einer Kombinationsdichtung: Auf einer extrem dichten, mehrlagig feucht gewalzten mineralischen Dichtung (Ton, Dicke d ≥ 50 cm, kf ≤ 5 · 10⁻¹⁰ m/s) liegt direkt eine hochdichte Kunststoffdichtungsbahn (KDB, d ≥ 2,5 mm, HDPE). Eine mindestens 50 cm dicke mineralische Entwässerungsschicht (DK 0: 30 cm) fängt Sickerwässer ab, bevor diese hydrostatischen Druck auf die KDB ausüben können.",
-                  norm: "Anhang 1 Nr. 2 DepV (Anforderungen an die Kombinationsabdichtung).",
-                },
-                {
-                  num: 4,
-                  label: "Barriere 4: Das mehrschichtige Oberflächenabdichtungssystem",
-                  desc: "Nach vollständiger Verfüllung einer Deponiezelle wird diese 'gedeckelt', um das Eindringen von Regenwasser dauerhaft zu verhindern. Ohne Regenwasser entsteht kein nennenswertes Schadstoffeluat mehr im Abfallkörper. Die Oberfläche besteht von oben nach unten aus: mind. 1 Meter Rekultivierungsboden (Mutterboden + Bepflanzung), einer Entwässerungsschicht (Geodrän/Kies) zur schnellen Zuleitung fließenden Hangwassers nach außen, einem Dichtungselement (KDB oder Bentonitmatte) und einer Gasdränschicht zur sicheren Fassung von Diffusionsgasen.",
-                  norm: "Anhang 1 Nr. 2, Tab. 2 DepV (Anforderungen an das Oberflächenabdichtungssystem).",
-                },
-                {
-                  num: 5,
-                  label: "Barriere 5: Systematisches Sickerwasser- & Grundwassermonitoring (Nachsorge)",
-                  desc: "Regelmäßige Beprobungen an eigens dafür errichteten Grundwassermessstellen im direkten Anstrom (Referenzwert) und im Abstrom (Leckage-Detektion) der Deponie werden vierteljährlich durchgeführt. Das Sickerwasser wird über das Basisgefälle erfasst, in Schächten gesammelt und in speziellen physikalisch-chemischen und biologischen Reinigungsanlagen aufbereitet, bevor es in Vorfluter geleitet werden darf.",
-                  norm: "§ 12 - 14 DepV (Abschluss, Nachsorge und Monitoring).",
-                }
-              ].find(b => b.num === activeBarrier);
+              const selectedBar = inhalt.daten.Deponie.find(b => b.num === activeBarrier);
 
               if (!selectedBar) return null;
 
@@ -377,7 +317,7 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
                   </h5>
                   <p className="text-slate-650 leading-relaxed font-semibold mb-2">{selectedBar.desc}</p>
                   <div className="text-xs text-slate-550 font-mono">
-                    <strong className="text-slate-600">Gesetzliche Norm:</strong> {selectedBar.norm}
+                    <strong className="text-slate-600"><MdText text={inhalt.texte.gesetzlicheNorm} /></strong> {selectedBar.norm}
                   </div>
                 </div>
               );
@@ -389,12 +329,8 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/25 pb-3 mb-4">
               <div>
                 <h4 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-shiraz" />
-                  Geotechnischer Schichtenaufbau nach DepV Anhang 1
-                </h4>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Vergleichen Sie den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.
-                </p>
+                  <Layers className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.geotechnischerSchichtenaufbauNachDepv} /></h4>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.vergleichenSieDenNormativen} /></p>
               </div>
 
               <div className="flex p-0.5 bg-slate-100 rounded-lg border border-home-grau/30 self-start md:self-center">
@@ -421,81 +357,39 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
               {/* Visual Layer Stack Container */}
               <div className="md:col-span-5 flex flex-col space-y-1">
                 <div className="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-1">
-                  {deponieSection === 'basis' ? "➔ INNEN (ABFALLKÖRPER)" : "➔ AUSSEN (ATMOSPHÄRE)"}
+                  {deponieSection === 'basis' ? inhalt.werte.innenAbfallkörper : inhalt.werte.aussenAtmosphäre}
                 </div>
 
                 {/* Hier loopen wir über die Layer rückwärts oder vorwärts um von dem echten Stapel zu rendern */}
-                {(deponieSection === 'basis' ? [
+                {(deponieSection === 'basis' ? inhalt.daten.Deponie_2 : [
                   {
                     index: 0,
-                    name: "Abfallkörper (Deponiegut, verdichtet)",
-                    thickness: "variabel",
-                    color: "bg-stone-400 hover:bg-stone-500 border-stone-500 text-stone-900",
-                    previewText: "Abfallkörper (DK II / DK III)"
-                  },
-                  {
-                    index: 1,
-                    name: "Sickerwasserdränschicht (Kies-Leitschicht)",
-                    thickness: "≥ 50 cm",
-                    color: "bg-sky-200 hover:bg-sky-300 border-sky-400 text-sky-950",
-                    previewText: "Kies-Filterträgdrän (16/32, kf ≥ 1e-3)"
-                  },
-                  {
-                    index: 2,
-                    name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                    thickness: "≥ 2,5 mm",
-                    color: "bg-slate-950 hover:bg-slate-900 border-slate-900 text-slate-100",
-                    previewText: "Kunststoffdichtungsbahn (KDB - HDPE)"
-                  },
-                  {
-                    index: 3,
-                    name: "Mineralische Tonsperre (Mehrlagig)",
-                    thickness: "≥ 50 cm",
-                    color: "bg-amber-100 hover:bg-amber-200 border-amber-300 text-amber-800",
-                    previewText: "Mineralische Dichtung (mehrlagig)"
-                  },
-                  {
-                    index: 4,
-                    name: "Geologischer Barriereuntergrund (Tonmergel)",
-                    thickness: "≥ 1,0 m (DK III: ≥ 5 m)",
-                    color: "bg-amber-200/50 hover:bg-amber-200/70 border-amber-300/50 text-amber-900",
-                    previewText: "Natürlicher Baugrund (kf ≤ 1 · 10⁻⁹ m/s)"
-                  }
-                ] : [
-                  {
-                    index: 0,
-                    name: "Rekultivierungsschicht (Mutterboden)",
+                    name: inhalt.werte.rekultivierungsschichtMutterboden,
                     thickness: "≥ 1,0 m",
                     color: "bg-emerald-700/80 hover:bg-emerald-700/90 border-emerald-800 text-white",
-                    previewText: "Mutterboden + Bepflanzung (Frostschutz)"
+                    previewText: inhalt.werte.mutterbodenBepflanzungFrostschutz
                   },
-                  {
-                    index: 1,
-                    name: "Leitdränschicht (Dränmatte / Kies)",
-                    thickness: "≥ 30 cm",
-                    color: "bg-sky-150 hover:bg-sky-200 border-sky-300 text-sky-900",
-                    previewText: "Sicker- & Hangwasserdrän (kf ≥ 1e-3)"
-                  },
+                  inhalt.daten["Deponie.1"],
                   {
                     index: 2,
-                    name: "Dichtungskomponente (KDB / Ton)",
+                    name: inhalt.werte.dichtungskomponenteKdbTon,
                     thickness: "KDB ≥ 2,5mm",
                     color: "bg-slate-800 hover:bg-slate-700 border-slate-900 text-slate-200",
-                    previewText: "Verbunddichtung (Polymer/Bentonit)"
+                    previewText: inhalt.werte.verbunddichtungPolymerBentonit
                   },
                   {
                     index: 3,
-                    name: "Gasdränschicht (Gasschliff)",
+                    name: inhalt.werte.gasdränschichtGasschliff,
                     thickness: "≥ 30 cm",
                     color: "bg-stone-300 hover:bg-stone-350 border-stone-400 text-stone-800",
-                    previewText: "Gasleitung (Entgasungs-Sandschicht)"
+                    previewText: inhalt.werte.gasleitungEntgasungsSandschicht
                   },
                   {
                     index: 4,
-                    name: "Ausgleichsschicht (Planum)",
+                    name: inhalt.werte.ausgleichsschichtPlanum,
                     thickness: "≥ 20 cm",
                     color: "bg-stone-200 hover:bg-stone-250 border-stone-300 text-stone-600",
-                    previewText: "Planierte Profil-Ausgleichsschicht"
+                    previewText: inhalt.werte.planierteProfilAusgleichsschicht
                   }
                 ]).map((lay) => {
                   const isSelected = selectedLayerIndex === lay.index;
@@ -521,88 +415,16 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
                 })}
 
                 <div className="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mt-1">
-                  {deponieSection === 'basis' ? "➔ AUSSEN (GRUNDWASSERPFAD)" : "➔ INNEN (ABFALLKERN)"}
+                  {deponieSection === 'basis' ? inhalt.werte.aussenGrundwasserpfad : inhalt.werte.innenAbfallkern}
                 </div>
               </div>
 
               {/* Detailbeschreibung der selektierten Schicht */}
               <div className="md:col-span-7 bg-slate-50 p-5 rounded-2xl border border-home-grau/30 h-full flex flex-col justify-between">
                 {(() => {
-                  const basisLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = {
-                    0: {
-                      name: "Abfallkörper (Deponiegut, verdichtet)",
-                      thickness: "Variabel (Betriebsphase)",
-                      material: "Mineralischer Bauschutt, Schluffe, Asche etc. der DK II / III",
-                      requirement: "Einhaltung der Zuordnungswerte Anhang 3 DepV",
-                      function: "Einbau und kontrollierte biologisch-physikalische Verdichtung des Abfalls zur Vermeidung von späteren großflächigen Sackungen."
-                    },
-                    1: {
-                      name: "Sickerwasserdränschicht (Kiesfilter)",
-                      thickness: "≥ 50 cm (DK I–III; DK 0: ≥ 30 cm)",
-                      material: "Grobkies (Körnung 16/32), karbonatarm (< 10% CaCO3)",
-                      requirement: "Durchlässigkeit kf ≥ 1 · 10⁻³ m/s nach DepV",
-                      function: "Rasche Erfassung und schadlose Ableitung von Sickerwasser zur Vermeidung von hydrostatischem Druck auf das empfindliche Abdichtungssystem."
-                    },
-                    2: {
-                      name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                      thickness: "≥ 2,5 mm",
-                      material: "PE-HD (Polyethylen hoher Dichte) mit BAM-Zulassung",
-                      requirement: "Heißluft- oder Extruderschweißung, vollständige geoelektrische Lecksuchprüfung, Schutz durch schwere Geotextil-Schutzvliese (GRK 5)",
-                      function: "Die primäre, absolut wasserdichte stoffliche Barriere gegen den Durchstrom und die Diffusion schadstoffbelasteter Wässer."
-                    },
-                    3: {
-                      name: "Mineralische Tonsperre (Kombinationsdichtung)",
-                      thickness: "≥ 50 cm (mehrlagig eingebaut)",
-                      material: "Spezialtone (Silt / Ton im Verbund)",
-                      requirement: "kf ≤ 5 · 10⁻¹⁰ m/s nach Einbau und Walzenverdichtung (Proctor-Dichte ≥ 95%)",
-                      function: "Kombinationsdichtung im hohlraumfreien Direktverbund mit der darüberliegenden KDB zur geotechnischen Selbstdichtung durch Quellung bei eventuellen Mikrorissen der Bahn."
-                    },
-                    4: {
-                      name: "Geologischer Barriereuntergrund (Natürliche Barriere)",
-                      thickness: "≥ 1,0 m (DK III: ≥ 5 m)",
-                      material: "Homogener Fest- oder Lockergesteinskörper (z.B. Tonmergel, feiner Ton)",
-                      requirement: "kf ≤ 1 · 10⁻⁹ m/s bei DK I–III (DK 0: ≤ 1 · 10⁻⁷ m/s); fehlende Mächtigkeit darf durch technische Maßnahmen ergänzt werden (DepV Anhang 1 Tab. 1)",
-                      function: "Letzter massiver Schutz des lokalen Wasserspiegels durch hohes chemisch-physikalisches Schadstoff-Rückhalte- und Absorptionsvermögen geologischer Massivschichten."
-                    }
-                  };
+                  const basisLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = inhalt.daten["Deponie.basisLayers"];
 
-                  const oberflaecheLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = {
-                    0: {
-                      name: "Rekultivierungsschicht (Mutterboden)",
-                      thickness: "≥ 1,0 m",
-                      material: "Humusreicher Bodenaushub, wurzelfähiges Substrat",
-                      requirement: "Vermeidung tiefwurzelnder Gehölze nach Bepflanzungsordnung (Dichtungsschutz)",
-                      function: "Sichert ein stabiles Pflanzenwachstum als Erosionsschutz, schützt das Dichtungssystem vor winterlichem Frost/Dürre und speichert Regenwasser zur Verdunstung."
-                    },
-                    1: {
-                      name: "Leitdränschicht (Oberflächendränung)",
-                      thickness: "≥ 30 cm",
-                      material: "Grobkies oder geosynthetische Dränmatte / Dränelemente",
-                      requirement: "Durchlässigkeit kf ≥ 1 · 10⁻³ m/s",
-                      function: "Zügiges horizontales Ableiten des durch den Oberboden sickernden Niederschlagswassers, damit kein Stauwasser über der Dichtungsschicht entsteht."
-                    },
-                    2: {
-                      name: "Dichtungselement (KDB & Tonverbund)",
-                      thickness: "KDB ≥ 2,5 mm und/oder Tonschicht",
-                      material: "PE-HD Folie o. geosynthetische Tonsubstratbahn (Bento)",
-                      requirement: "Zulassung nach Bundesanstalt für Materialforschung (BAM)",
-                      function: "Verhindert verlässlich und dauerhaft das Einsickern von Oberflächen- bzw. Regenwasser in den darunterliegenden Deponiekörper, um so die Sickerwasserbildung im Kern zu stoppen."
-                    },
-                    3: {
-                      name: "Gasdränschicht (Gasschliff)",
-                      thickness: "≥ 30 cm",
-                      material: "Sand oder feinkörniger Kies (kf ≥ 1 · 10⁻⁴ m/s)",
-                      requirement: "Erhalt der Porenstruktur zur unbeeinträchtigten Gasströmung zur Absaugung",
-                      function: "Sammelt aufsteigendes Deponiegas (Methan, Kohlendioxid) flächig unter der Dichtung ab und leitet es kontrolliert zu den Gasbrunnen für die BHKW-Verwertung."
-                    },
-                    4: {
-                      name: "Ausgleichsschicht (Planum)",
-                      thickness: "≥ 20 cm",
-                      material: "Mineralstoffe (z.B. schluffarmer Sand, aufbereitetes RC-Material)",
-                      requirement: "Lagestabilität und Verformungsausgleich",
-                      function: "Gleicht lokale Verformungen des Abfallkörpers aus, schützt das Gassystem vor Müllkantendurchbrüchen und stellt ein geordnetes Mindestgefälle von 5% her."
-                    }
-                  };
+                  const oberflaecheLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = inhalt.daten["Deponie.oberflaecheLayers"];
 
                   const activeLayer = deponieSection === 'basis' ? basisLayers[selectedLayerIndex] : oberflaecheLayers[selectedLayerIndex];
                   if (!activeLayer) return null;
@@ -629,12 +451,12 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
 
                       <div className="space-y-3">
                         <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xs">
-                          <strong className="text-slate-800 block mb-1">🔍 Geotechnische Hauptfunktion:</strong>
+                          <strong className="text-slate-800 block mb-1"><MdText text={inhalt.texte.geotechnischeHauptfunktion} /></strong>
                           <span className="text-slate-600 leading-relaxed font-semibold">{activeLayer.function}</span>
                         </div>
 
                         <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xs">
-                          <strong className="text-slate-800 block mb-1">⚖️ Gesetzliche Mindestanforderung (DepV Anhang 1):</strong>
+                          <strong className="text-slate-800 block mb-1"><MdText text={inhalt.texte.gesetzlicheMindestanforderungDepvAnhang} /></strong>
                           <span className="text-slate-550 font-mono leading-relaxed font-semibold">{activeLayer.requirement}</span>
                         </div>
                       </div>
@@ -644,7 +466,7 @@ export default function Deponie({ activeBarrier, depVInputValue, depVSelectedPar
 
                 <div className="mt-5 pt-3 border-t border-home-grau/20 flex items-center gap-1.5 text-xs text-slate-400">
                   <HelpCircle className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-                  <span>Klicken Sie auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen.</span>
+                  <span><MdText text={inhalt.texte.klickenSieAufEine} /></span>
                 </div>
               </div>
             </div>

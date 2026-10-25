@@ -1,0 +1,179 @@
+{
+  "texte": {
+    "fehlerAnwendungsgrenzenRechtEthik": " Fehler, Anwendungsgrenzen, Recht & Ethik",
+    "verantwortungsvolleIngenieurpraxisVermei": "Verantwortungsvolle Ingenieurpraxis: Vermeidung von Halluzinationen, BGB-Werkvertragsrecht, Urheberrecht, DSGVO und EU AI Act im Bauwesen.",
+    "kritischeSicherheitszone": " Kritische Sicherheitszone",
+    "t1TechnischeGrenzenHalluzinationen": " 1. Technische Grenzen & Halluzinationen",
+    "t2BgbHaftungEu": " 2. BGB-Haftung & EU AI Act",
+    "t3DatenschutzGeschäftsgeheimnis": " 3. Datenschutz & Geschäftsgeheimnis",
+    "t4EthikÖkologieBias": " 4. Ethik, Ökologie & Bias",
+    "t5InteraktiverRisikoCheck": " 5. Interaktiver Risiko-Check",
+    "t6KiDeklarationThesen": " 6. KI-Deklaration & Thesen",
+    "dieGrundfalleStatistischeWahrscheinlichk": "Die Grundfalle: Statistische Wahrscheinlichkeit ist kein physikalischer Beweis",
+    "großeSprachmodelleLlmsWie": "Große Sprachmodelle (LLMs wie ChatGPT, Claude, Gemini) besitzen kein inhärentes Verständnis von Statik, Baustoffmechanik oder Schwerkraft. Sie generieren Tokens (Wort- und Zahlenbausteine) ausschließlich nach **statistischer Plausibilität**. Eine falsche Gleichung, die wie eine Normenformel aussieht, wird mit derselben sprachlichen Überzeugungskraft ausgegeben wie ein physikalisches Naturgesetz.",
+    "realitätsCheckKonkreteBauingenieur": " Realitäts-Check: Konkrete Bauingenieur-Fehler der KI",
+    "wählenSieEinenPraxisfall": "Wählen Sie einen Praxisfall:",
+    "wasDieKiBehauptete": " Was die KI behauptete (Halluzination)",
+    "wasDieNormPhysik": " Was die Norm/Physik vorschreibt (Realität)",
+    "fundstelleNormenbezug": "Fundstelle & Normenbezug:",
+    "keineRechensicherheitBeiGleitkommazahlen": "Keine Rechensicherheit bei Gleitkommazahlen",
+    "sprachmodelleVerwechselnPotenzenUnd": "Sprachmodelle verwechseln Potenzen und Einheiten (z. B. Umrechnung von $\\text{MN/m}^2$ in $\\text{kN/cm}^2$). **Regel:** Berechnungen immer in Python-Code oder Formelblättern ausführen, niemals im Chat-Fließtext.",
+    "keinRäumliches3dVorstellungsvermögen": "Kein räumliches 3D-Vorstellungsvermögen",
+    "llmsKönnenBewehrungsführungenVerankerung": "LLMs können Bewehrungsführungen, Verankerungslängen bei räumlichen Knoten oder Kollisionen von Leitungen im BIM-Modell nicht zuverlässig durch reinen Text beurteilen. Die geometrische Integrität muss immer im CAD visualisiert werden.",
+    "stichtagsBlindheitCutOff": "Stichtags-Blindheit (Cut-off Date)",
+    "modelleKennenBaurechtlicheNovellierungen": "Modelle kennen baurechtliche Novellierungen (z. B. neue Landesbauordnungen, GEG-Aktualisierungen oder Ersatzbaustoffverordnung EBV) erst nach dem Nachtrainieren. Ohne RAG (Sucherweiterung) werden veraltete Vorschriften zitiert.",
+    "bestätigungsVerzerrungSycophancy": "Bestätigungs-Verzerrung (Sycophancy)",
+    "fragtEinIngenieurReicht": "Fragt ein Ingenieur: *\"Reicht ein C20/25 für eine frostbeanspruchte Tiefgaragenrampe XF4?\"*, neigt das Modell dazu, dem Nutzer zuzustimmen, statt ihn vor dem massiven Bauschaden zu warnen. **Gegenmittel:** Immer neutral und ergebnisoffen prompten!",
+    "pseudowissenschaftlicheQuellenangaben": "Pseudowissenschaftliche Quellenangaben",
+    "sprachmodelleErfindenBeiBedarf": "Sprachmodelle erfinden bei Bedarf Autorennamen, Zeitschriftentitel, Bandnummern und DOIs, die täuschend echt klingen. Jede zitierte Quelle muss in CrossRef, Google Scholar oder Zotero auf physische Existenz geprüft werden.",
+    "keineIntuitionFürVersagensmechanismen": "Keine Intuition für Versagensmechanismen",
+    "einErfahrenerTragwerksplanerSieht": "Ein erfahrener Tragwerksplaner \"sieht\", wenn eine Verformung unplausibel ist oder ein Sprödbruch droht. Der KI fehlt die haptische Erfahrung von Prüfkörpern im Druckversuch. Die Plausibilitätsprüfung bleibt unersetzbar menschlich.",
+    "bgbWerkvertragsrechtHoaiSorgfaltspflicht": "BGB-Werkvertragsrecht & HOAI-Sorgfaltspflichten",
+    "imDeutschenZivilrechtGilt": "Im deutschen Zivilrecht gilt ein unumstößlicher Grundsatz: **Der Planer schuldet den Werkerfolg (§ 631 BGB)**.",
+    "t1KeineExkulpationDurch": "1. Keine Exkulpation durch Software oder KI",
+    "derBundesgerichtshofBghHat": "Der Bundesgerichtshof (BGH) hat in ständiger Rechtsprechung klargestellt: Verlässt sich der Architekt oder Tragwerksplaner blind auf Computerberechnungen oder Softwareprogramme (wie FE-Software oder KI), entlastet ihn das im Schadensfall zu 0 %. Fehler der Software werden ihm als **eigenes Verschulden** zugerechnet.",
+    "t2VerstoßGegenDie": "2. Verstoß gegen die anerkannten Regeln der Technik (a.R.d.T.)",
+    "wirdEinBauwerkBasierend": "Wird ein Bauwerk basierend auf einer fehlerhaften KI-Statik mangelhaft errichtet, liegt ein Sachmangel nach § 633 BGB vor. Der Bauherr hat Anspruch auf Nacherfüllung, Minderung oder Schadensersatz – im schlimmsten Fall bis zur Bausumme.",
+    "t3BerufshaftpflichtversicherungInGefahr": "3. Berufshaftpflichtversicherung in Gefahr",
+    "übernimmtEinIngenieurUngeprüft": "Übernimmt ein Ingenieur ungeprüft KI-Ergebnisse ohne ingenieurmäßige Plausibilitätskontrolle, werten Versicherer dies als **grobe Fahrlässigkeit**. Die Berufshaftpflichtversicherung kann Regressansprüche geltend machen oder die Deckung verweigern.",
+    "derEuAiAct": "Der EU AI Act (Verordnung (EU) 2024/1689)",
+    "dieAm1August": "Die am 1. August 2024 in Kraft getretene europäische KI-Verordnung (KI-VO) verfolgt einen risikobasierten Ansatz (verbotene Praktiken, Hochrisiko-Systeme, Transparenzpflichten, minimales Risiko). Sie gilt gestaffelt: Verbote und KI-Kompetenz (Art. 4) seit 02.02.2025, Pflichten für KI-Modelle mit allgemeinem Verwendungszweck seit 02.08.2025, Art. 50 ab 02.08.2026. Mit dem Digital Omnibus zur KI-VO (Verordnung (EU) 2026/1744 vom 08.07.2026, ABl. L vom 24.07.2026, in Kraft seit 27.07.2026) gelten die Hochrisiko-Pflichten für Anhang III ab 02.12.2027 und für Anhang I ab 02.08.2028. In der nationalen Aufsicht ist die Bundesnetzagentur vorgesehen. Für das Bauwesen heißt das:",
+    "hochrisikoKiSystemeHigh": "Hochrisiko-KI-Systeme (High-Risk)",
+    "nachAnhangIiiNr": "Nach Anhang III Nr. 2 sind KI-Systeme hochriskant, die als **Sicherheitsbauteile im Management und Betrieb kritischer Infrastruktur** (u. a. Straßenverkehr, Wasser-, Gas-, Wärme- und Stromversorgung) bestimmt sind – z. B. eine KI, die eine Tunnelsperrung oder Verkehrsführung selbsttätig steuert. Ein Assistenzwerkzeug, das Rissfotos für den Brückenprüfer vorsortiert, fällt nicht automatisch darunter; die Einstufung hängt von der Zweckbestimmung ab (Art. 6). Für Hochrisiko-Systeme gelten Risikomanagement, Datenqualität, technische Dokumentation, Konformitätsbewertung und CE-Kennzeichnung – nach Digital Omnibus ab 02.12.2027.",
+    "transparenzpflichtenArt50": "Transparenzpflichten (Art. 50)",
+    "ab02082026": "Ab 02.08.2026: Anbieter müssen KI-generierte Inhalte maschinenlesbar kennzeichnen (Abs. 2; für vor dem 02.08.2026 in Verkehr gebrachte Systeme Übergangsfrist bis 02.12.2026 nach VO (EU) 2026/1744), Betreiber müssen Deepfakes sowie KI-Texte offenlegen, die zur Information der Öffentlichkeit veröffentlicht werden – außer bei menschlicher Prüfung und redaktioneller Verantwortung (Abs. 4). Eine allgemeine KI-Kennzeichnungspflicht für Pläne oder Gutachten folgt daraus nicht; sie kann sich aber aus Vertrag, Berufsrecht oder – bei Bachelor- und Masterarbeiten – aus der Prüfungsordnung ergeben.",
+    "menschlicheAufsichtHumanIn": "Menschliche Aufsicht (Human-in-the-Loop)",
+    "art14VerlangtFür": "Art. 14 verlangt für Hochrisiko-Systeme eine wirksame menschliche Aufsicht: Die beaufsichtigende Person muss Ausgaben verstehen, kritisch bewerten, übersteuern und das System anhalten können; Betreiber müssen dafür kompetentes Personal einsetzen (Art. 26). Unabhängig davon ist ein vollständig automatisierter Verwaltungsakt – etwa eine Baugenehmigung – nach § 35a VwVfG bzw. Landesrecht nur zulässig, wenn eine Rechtsvorschrift dies erlaubt und weder Ermessen noch Beurteilungsspielraum besteht.",
+    "musterklauselTransparenzhinweisFürPlanun": " Musterklausel: Transparenzhinweis für Planungsbüros",
+    "klauselKopieren": " Klausel kopieren",
+    "dieInDiesemBericht": "\"Die in diesem Bericht enthaltenen Vorrecherchen wurden teilweise unter Heranziehung von Softwarewerkzeugen mit künstlicher Intelligenz erarbeitet. Sämtliche ingenieurtechnische Berechnungen, Normprüfungen nach DIN/Eurocode und gutachterliche Schlussfolgerungen wurden durch den unterzeichnenden Ingenieur persönlich plausibilisiert, fachtechnisch verifiziert und eigenverantwortlich freigegeben.\"",
+    "t1DsgvoPersonenbezogeneDaten": "1. DSGVO & Personenbezogene Daten",
+    "bauherrennamenAdressenGrundbuchauszügeOd": "Bauherrennamen, Adressen, Grundbuchauszüge oder private Grundrisse von Einfamilienhäusern sind personenbezogene Daten nach Art. 4 DSGVO.",
+    "verstoßWerPläneMit": "**Verstoß:** Wer Pläne mit Namen der Bauherren ohne Rechtsgrundlage (Art. 6 DSGVO), ohne Auftragsverarbeitungsvertrag (Art. 28) oder mit unzulässiger Drittlandübermittlung (Art. 44 ff.) in Public-Cloud-LLMs hochlädt, verarbeitet Daten rechtswidrig. Liegt eine Verletzung des Schutzes personenbezogener Daten vor, ist sie ggf. binnen 72 Stunden zu melden (Art. 33). Bußgelder bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes (Art. 83 Abs. 5).",
+    "t2Betriebsgeheimnisse2Geschgehg": "2. Betriebsgeheimnisse (§ 2 GeschGehG)",
+    "eigeneUhpcMischungsrezepturenGeheime": "Eigene UHPC-Mischungsrezepturen, geheime Zusatzmittelkombinationen, firmeninterne Einheitspreise und Kalkulationszuschläge sind geschützte Geschäftsgeheimnisse.",
+    "gefahrJeNachTarif": "**Gefahr:** Je nach Tarif und Einstellungen können Eingaben in Cloud-Tools gespeichert und zum Training genutzt werden. Wer Rezepturen ungeschützt eingibt, gefährdet die nach § 2 Nr. 1 b GeschGehG erforderlichen angemessenen Geheimhaltungsmaßnahmen – und damit den rechtlichen Schutz als Geschäftsgeheimnis.",
+    "t3UrheberrechtAnKi": "3. Urheberrecht an KI-Ergebnissen",
+    "nachDeutschemUrheberrecht2": "Nach deutschem Urheberrecht (§ 2 Abs. 2 UrhG) sind nur *persönliche geistige Schöpfungen eines Menschen* urheberrechtlich geschützt.",
+    "rechtsfolgeReinVonEiner": "**Rechtsfolge:** Rein von einer KI generierte CAD-Skizzen, Texte oder Statik-Reports genießen grundsätzlich keinen Urheberrechtsschutz. Schutz entsteht erst durch eine eigene schöpferische Bearbeitung oder Auswahl; daneben können Vertrags-, Wettbewerbs- oder Geschäftsgeheimnisschutz greifen.",
+    "datenschutzChecklisteFürDen": " Datenschutz-Checkliste für den Büroalltag",
+    "trainingOptOutAktivieren": "Training Opt-Out aktivieren:",
+    "inDenEinstellungenVon": "In den Einstellungen von ChatGPT (\"Data Controls > Improve the model for everyone: OFF\") oder Claude / API-Nutzung sicherstellen, dass Kundenprojekte nicht für das Modelltraining verwendet werden.",
+    "anonymisierungVorUpload": "Anonymisierung vor Upload:",
+    "inLeistungsverzeichnissenUndBaugrundberi": "In Leistungsverzeichnissen und Baugrundberichten Flurstücksnummern, Kundennamen, Bauherrenanschriften und Firmenlogos vor dem Upload mit PDF-Schwärzungstools unkenntlich machen.",
+    "enterpriseOderTeamVerträge": "Enterprise- oder Team-Verträge mit DPA (AVV):",
+    "niemalsKostenfreiePrivatAccounts": "Niemals kostenfreie Privat-Accounts für vertrauliche Mandantendaten nutzen. Bei Cloud-Nutzung zwingend einen Auftragsverarbeitungsvertrag (Data Processing Agreement) nach Art. 28 DSGVO mit dem Anbieter abschließen.",
+    "lokaleLlmsAlsGoldstandard": "Lokale LLMs als Goldstandard:",
+    "fürStrengVertraulicheGroßprojekte": "Für streng vertrauliche Großprojekte, Sabotage-relevante Bauten (KRITIS) oder patentierte Baustoffentwicklungen ausschließlich lokale Modelle (via LM Studio / Ollama) auf büroeigener Hardware betreiben.",
+    "ökobilanzVonKiVs": "Ökobilanz von KI vs. Baustoff-Einsparung",
+    "imZeitalterDesNachhaltigen": "Im Zeitalter des nachhaltigen Bauens muss der Energie- und Ressourcenhunger von KI-Rechenzentren kritisch mit dem bautechnischen Nutzen abgewogen werden:",
+    "ressourcenverbrauchVonCloudLlms": " Ressourcenverbrauch von Cloud-LLMs",
+    "eineEinzigeKomplexeFrontier": "Eine einzige komplexe Frontier-Reasoning-Anfrage (Reasoning-Modi aktueller Cloud-Modelle) verbraucht schätzungsweise das 10- bis 30-fache an elektrischer Energie im Vergleich zu einer Standard-Suche, zuzüglich Hunderten Millilitern Kühlwasser in Hyperscale-Rechenzentren. Unüberlegtes \"Dauerspammen\" von Prompts hat messbare CO₂-Folgen.",
+    "derPositiveHebelKi": " Der positive Hebel: KI-Baustoffoptimierung",
+    "wennKiEingesetztWird": "Wenn KI eingesetzt wird, um die Klinker-Ersatzstoffe (calcined clays, Hochofenschlacke) in einer Betonrezeptur zu maximieren oder durch Topologieoptimierung 30 % Betonvolumen in einer Decke einzusparen, spart das Gigawattstunden an grauer Energie ein. Der Netto-Nutzen im Bauwesen ist gigantisch – sofern KI zielgerichtet eingesetzt wird.",
+    "normativerBiasAngloAmerikanische": "Normativer Bias & Anglo-Amerikanische Dominanz",
+    "fastAlleFührendenFrontier": "Fast alle führenden Frontier-Modelle wurden überwiegend auf englischsprachigen Internetquellen trainiert:",
+    "t1AciAstmStatt": "1. ACI / ASTM statt DIN EN / Eurocode:",
+    "modelleSchlagenStandardmäßigUs": "Modelle schlagen standardmäßig US-Konzepte vor (z. B. psi statt MPa, US-Bewehrungsnummern #4 statt Ø12, oder ACI 318 Nachweise), wenn im Prompt nicht explizit \"gemäß DIN EN 1992-1-1 und deutschem Nationalen Anhang\" gefordert wird.",
+    "t2VerantwortungsdiffusionAufDer": "2. Verantwortungsdiffusion auf der Baustelle:",
+    "dieKiHatGesagt": "\"Die KI hat gesagt, das hält!\" – Drohende Entmündigung junger Bauleiter. Wenn Berechnungen als unfehlbare \"Black Box\" wahrgenommen werden, schwindet das Gespür für Baurisiken und handwerkliche Fehler.",
+    "t3UrheberrechtlicheAusbeutungVon": "3. Urheberrechtliche Ausbeutung von Fachliteratur:",
+    "trainingsdatenKönnenUrheberrechtlichGesc": "Trainingsdaten können urheberrechtlich geschützte Fachliteratur enthalten. Text und Data Mining ist nach § 44b UrhG erlaubt, solange der Rechteinhaber keinen maschinenlesbaren Nutzungsvorbehalt erklärt hat; für die Forschung gilt § 60d UrhG (vgl. OLG Hamburg, Urt. v. 10.12.2025 – 5 U 104/24, Revision zugelassen). KI-Antworten ersetzen nicht die Arbeit mit Originalnormen und Fachbüchern – nur diese sind zitier- und prüffähig.",
+    "interaktiverHaftungsRisikoCheck": " Interaktiver Haftungs- & Risiko-Check",
+    "konfigurierenSieIhrGeplantes": "Konfigurieren Sie Ihr geplantes Vorhaben und ermitteln Sie sofort den rechtlichen Gefährdungsgrad sowie empfohlene Schutzmaßnahmen.",
+    "t1AnwendungsbereichImBauprojekt": "1. Anwendungsbereich im Bauprojekt",
+    "t2VertraulichkeitDerEingabedaten": "2. Vertraulichkeit der Eingabedaten",
+    "t3IngenieurmäßigePrüfungHuman": "3. Ingenieurmäßige Prüfung (Human-in-the-Loop)",
+    "akutesHaftungsUndCompliance": " AKUTES HAFTUNGS- UND COMPLIANCE-RISIKO",
+    "erhöhteAufmerksamkeitPrüfpflichtErforder": " ERHÖHTE AUFMERKSAMKEIT & PRÜFPFLICHT ERFORDERLICH",
+    "unkritischerKonformerEinsatzbereich": " UNKRITISCHER, KONFORMER EINSATZBEREICH"
+  },
+  "werte": {
+    "erfundeneTeilsicherheitsbeiwerteImBetonb": "Erfundene Teilsicherheitsbeiwerte im Betonbau",
+    "llmsNeigenDazuSicherheitsbeiwerte": "LLMs neigen dazu, Sicherheitsbeiwerte aus alten Vornormen, US-amerikanischen ACI-Codes oder frei assoziierten Zahlwerten zusammenzusetzen.",
+    "fürDieBemessungIm": "\"Für die Bemessung im Grenzzustand der Tragfähigkeit (ULS) nach DIN EN 1992-1-1 beträgt der Teilsicherheitsbeiwert für Beton γ_c = 1,35 und für Betonstahl γ_s = 1,10.\"",
+    "falschUndLebensgefährlichNach": "FALSCH und lebensgefährlich! Nach DIN EN 1992-1-1 (EC2) i. V. m. dem deutschen Nationalen Anhang (NA) gilt für die ständige und vorübergehende Bemessungssituation ausnahmslos: γ_c = 1,50 (Beton) und γ_s = 1,15 (Betonstahl). Ein Beiwert von 1,35 unterschätzt das Einsturzrisiko massiv!",
+    "dinEn19921": "DIN EN 1992-1-1:2011-01, Abs. 2.4.2.4 & NA Tabelle 2.1N",
+    "niemalsZahlenwerteVonSicherheitsbeiwerte": "Niemals Zahlenwerte von Sicherheitsbeiwerten oder Abminderungsfaktoren (wie α_cc = 0,85 nach deutschem NA statt 1,0 nach EC2 Basisnorm) ungeprüft aus LLM-Antworten übernehmen.",
+    "einheitenKonfusionsfalleNMm": "Einheiten-Konfusionsfalle (N/mm² vs. kN/cm² vs. MN/m²)",
+    "großeSprachmodelleBerechnenNicht": "Große Sprachmodelle berechnen nicht deterministisch symbolisch, sondern sagen Zeichenfolgen wahrscheinlichkeitsbasiert voraus. Bei physikalischen Einheitenpotenzen treten häufig Fehler im Faktor 10, 1.000 oder 10.000 auf.",
+    "beiEinerNormalspannungVon": "\"Bei einer Normalspannung von σ = 25 N/mm² auf eine Fläche von A = 0,15 m² beträgt die resultierende Druckkraft N = 25 × 0,15 = 3,75 kN.\"",
+    "fatalerRechenfehler25N": "FATALER RECHENFEHLER! 25 N/mm² = 25.000 kN/m². Multipliziert mit A = 0,15 m² ergibt sich eine Druckkraft von N = 3.750 kN (also das 1.000-fache!). Ein Bauteil, das auf 3,75 kN ausgelegt wird, versagt sofort.",
+    "mechanischeGrundgleichungNA": "Mechanische Grundgleichung: N = σ · A",
+    "physikalischeBerechnungenZwingendÜber": "Physikalische Berechnungen zwingend über symbolische Software (Python, Mathcad, Excel) oder durch LLMs erstellte, aber separat ausgeführte Skripte berechnen lassen.",
+    "zitierenVeralteterZurückgezogenerNormen": "Zitieren veralteter / zurückgezogener Normen",
+    "trainingsdatensätzeEnthaltenHistorischeB": "Trainingsdatensätze enthalten historische Baufachbücher, alte Foreneinträge und veraltete DIN-Normen. Das LLM \"weiß\" ohne Retrieval nicht, welche Normausgabe heute gilt.",
+    "dieAbdichtungErdberührterBauteile": "\"Die Abdichtung erdberührter Bauteile gegen Bodenfeuchte erfolgt gemäß DIN 18195-4.\"",
+    "veraltetDieDin18195": "VERALTET! Die DIN 18195 wurde bereits im Juli 2017 grundlegend umstrukturiert. Erdberührte Bauwerksabdichtungen werden heute verbindlich nach der Normenreihe DIN 18533 (Teile 1 bis 3) geregelt. Die alte DIN 18195 fungiert nur noch als Bezeichnungs- und Begriffsnorm.",
+    "din1853312017": "DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)",
+    "jedeZitierteNormIn": "Jede zitierte Norm in der aktuellen Baunormen-Datenbank (z. B. DIN Media / Beuth, Perinorm) auf Gültigkeitsstatus und Ausgabedatum gegenprüfen.",
+    "lostInTheMiddle": "Lost-in-the-Middle bei 120-seitigen Baugrundgutachten",
+    "wirdEinKomplettesBaugrund": "Wird ein komplettes Baugrund- oder Schadensgutachten als PDF in ein LLM geladen, werden kritische Fußnoten oder geotechnische Sondierungsanomalien in der Mitte des Dokuments systematisch \"überlesen\".",
+    "dasBaugrundgutachtenBescheinigtDurchgehe": "\"Das Baugrundgutachten bescheinigt durchgehend gut tragfähigen Kies mit einem zulässigen Sohlwiderstand von σ_zul = 350 kN/m².\"",
+    "gefährlicheAuslassungAufSeite": "GEFÄHRLICHE AUSLASSUNG! Auf Seite 67, Absatz 4.3.2 stand im Kleingedruckten: \"Im Bereich der Aufschlüsse BK 3 und BK 4 wurde in 2,5 m Tiefe eine organische Schluff- und Torflinse (Mächtigkeit 1,2 m) angetroffen, die zwingend einen Bodenaustausch erfordert.\"",
+    "din4020DinEn": "DIN 4020 / DIN EN 1997-2 (Geotechnische Untersuchungen)",
+    "dokumenteInLogischeAbschnitte": "Dokumente in logische Abschnitte zerlegen, gezieltes RAG (Retrieval Augmented Generation) mit genauer Quellenfundstelle einfordern und Gutachten-Fazite immer manuell lesen.",
+    "hinweisZumEinsatzComputergestützter": "Hinweis zum Einsatz computergestützter KI-Systeme:\nDie in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurden teilweise unter Heranziehung von Softwarewerkzeugen mit künstlicher Intelligenz erarbeitet. Sämtliche ingenieurtechnische Berechnungen, Normprüfungen nach DIN/Eurocode und gutachterliche Schlussfolgerungen wurden durch den unterzeichnenden Ingenieur persönlich plausibilisiert, fachtechnisch verifiziert und eigenverantwortlich freigegeben.",
+    "derEinsatzVonCloud": "Der Einsatz von Cloud-LLMs in diesem Modus birgt massive rechtliche und sicherheitsrelevante Gefahren. Empfehlung: Sofortige Umstellung auf ein lokales LLM (LM Studio), vollständige Schwärzung aller Klarnamen und zwingende 100%-Vollprüfung aller Berechnungen durch einen bauvorlageberechtigten Ingenieur!",
+    "dieserEinsatzIstZulässig": "Dieser Einsatz ist zulässig, erfordert jedoch klare bürointerne Schutzmaßnahmen: Training-Opt-Out in der KI-Plattform aktivieren, Mandantendaten anonymisieren und alle Normen- und Tabellenwerte manuell im Originalregelwerk gegenprüfen.",
+    "sehrGutesRisikoprofilDer": "Sehr gutes Risikoprofil. Der KI-Einsatz dient als reine Assistenz für sprachliche oder explorative Aufgaben. Die persönliche Schöpfung und ingenieurmäßige Fachkontrolle bleiben gewahrt."
+  },
+  "daten": {
+    "FehlerRechtEthik": [
+      {
+        "id": "ausfuehrung",
+        "label": "Ausführungsstatik / Bewehrung",
+        "desc": "Sicherheitsrelevant für Leib und Leben"
+      },
+      {
+        "id": "vorbemessung",
+        "label": "Vorbemessung / Grobkalkulation",
+        "desc": "Wirtschaftliches Risiko bei Fehlern"
+      },
+      {
+        "id": "recherche",
+        "label": "Literatur- & Normrecherche",
+        "desc": "Wissenssuche & Ideenfindung"
+      },
+      {
+        "id": "text",
+        "label": "Textformatierung / Rechtschreibung",
+        "desc": "Reine Sprache ohne Fachgehalt"
+      }
+    ],
+    "FehlerRechtEthik_2": [
+      {
+        "id": "geheim",
+        "label": "Streng geheim / Mandantendaten",
+        "desc": "Bauherren-Namen, Grundrisse, Kosten, Mischrezepturen"
+      },
+      {
+        "id": "intern",
+        "label": "Bürointern ohne Personenbezug",
+        "desc": "Allgemeine Planungsunterlagen ohne Klarnamen"
+      },
+      {
+        "id": "oeffentlich",
+        "label": "Öffentliche Forschungsdaten",
+        "desc": "Frei publizierte Papers, Vorlesungsfolien"
+      }
+    ],
+    "FehlerRechtEthik_3": [
+      {
+        "id": "vollpruefung",
+        "label": "100% Zeile-für-Zeile Vollprüfung",
+        "desc": "Nachrechnung mit Taschenrechner/Statiksoftware"
+      },
+      {
+        "id": "stichprobe",
+        "label": "Plausibilitäts-Stichprobe",
+        "desc": "Schneller Blick auf Größenordnungen"
+      },
+      {
+        "id": "keine",
+        "label": "Keine manuelle Nachprüfung",
+        "desc": "Direkte Übernahme in den Plan / Bericht"
+      }
+    ]
+  }
+}

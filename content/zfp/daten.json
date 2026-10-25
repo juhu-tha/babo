@@ -1,0 +1,396 @@
+{
+  "daten": {
+    "geraeteList": [
+      {
+        "id": "georadar",
+        "name": "Georadar (GPR)",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Zerstörungsfreie elektromagnetische Ortung von Bauteilen, Spanngliedern und Hohlräumen.",
+        "norm": "RI-ZFP-GB / DGZfP Richtlinien",
+        "useCase": "Orten von Spannkanälen, Rohrleitungen, Fundamentplattenstärken und Hohlraumdetektion.",
+        "details": [
+          "Frequenzbereich von 500 MHz bis zu 4 GHz für maximale Auflösung im Betonbereich.",
+          "Sichtbarmachung von Übergängen im Dielektrikum (z.B. Beton-Stahl, Beton-Luft, Beton-Wasser).",
+          "Ermittlung von Bauteildicken und verdeckten historischen Bauteilschichten.",
+          "Erstellung von 2D- und 3D-Schnittbildern (B-Scan und C-Scan)."
+        ]
+      },
+      {
+        "id": "ultraschall",
+        "name": "Ultraschallmessungen",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Zerstörungsfreie Detektion von Bauteilschichtungen, Fehlstellen und Vorspannkräften.",
+        "norm": "DIN EN 12504-4 / DIN EN 13791",
+        "useCase": "Nachweis der inneren Homogenität, Fehlstellenortung in dicken Bauteilen und zerstörungsfreie Bestimmung von Ankerkräften.",
+        "details": [
+          "Messung der Ultraschalllaufzeit von longitudinalen Kompressionswellen.",
+          "Berechnung des dynamischen Elastizitätsmoduls (E_dyn) in-situ.",
+          "Auffinden innerer Entmischungen, Kiesnester, Risse und Ablösungen.",
+          "Bestimmung von Vorspann- und Verankerungszuständen (Ankerkräfte)."
+        ]
+      },
+      {
+        "id": "betondeckung",
+        "name": "Elektromagnetisches Betondeckungsmessgerät",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Elektromagnetische Detektion der Bewehrungslage und Messung der nominalen Betondeckungstiefe.",
+        "norm": "DIN EN 1992-1-1 (Eurocode 2) / DBV-Merkblatt 'Betondeckung'",
+        "useCase": "Erfassung der Bewehrungsüberdeckung zur Bewertung des Korrosionsschutzes (Karbonatisierungsfront).",
+        "details": [
+          "Nutzt elektromagnetische Induktion (Wirbelstromverfahren).",
+          "Ermittlung von Stabdurchmessern und deren genauer Lage.",
+          "Präzise Bestimmung der Betondeckungstiefe c zur dauerhaftigkeitstechnischen Bewertung.",
+          "Erstellung von großflächigen 2D-Karten der Bewehrungsverteilung."
+        ]
+      },
+      {
+        "id": "potentialfeld",
+        "name": "Potentialfeldmessung",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Elektrochemische Detektion und Lokalisierung aktiver (rostender) Bewehrungskorrosion.",
+        "norm": "DGZfP-Richtlinie B3 / SIA 2006",
+        "useCase": "Zerstörungsfreies Aufspüren von Korrosions-Hotspots in chloridbelasteten Brückenkappen oder Parkdecks.",
+        "details": [
+          "Messung der Potentialdifferenz zwischen der Stahlbewehrung und einer Referenzelektrode (Cu/CuSO4-Elektrode oder Ag/AgCl).",
+          "Identifikation von Anodenbereichen (aktive Korrosion) vor sichtbarem Rissbild.",
+          "Wichtiger Indikator bei chloridinduzierter Lochfraßkorrosion.",
+          "Rastermessung mit Rad- oder Stabelektrode für großflächige Farbkartendarstellung."
+        ]
+      },
+      {
+        "id": "laserscanner",
+        "name": "3D-Laserscanner",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Hochpräzise berührungslose Geometrie- und Raumerfassung von Bauwerksoberflächen.",
+        "norm": "Allg. Vermessungsstandard / BIM-Schnittstellen",
+        "useCase": "Erstellung exakter digitaler Zwillinge (BIM), Ebenheitskontrollen, Verbiegungsdokumentationen.",
+        "details": [
+          "Erzeugung dichter 3D-Punktwolken im Millimeterbereich.",
+          "Erfassung von Bauteilverformungen, Neigungen und Risskartierungen grossflächig.",
+          "Präzise Verformungs- und Setzungsmessungen über zeitlich zeitversetzte Scans.",
+          "Schnittstelle zur Erstellung von geometrisch exakten Tragmodellen."
+        ]
+      },
+      {
+        "id": "bohrmehl",
+        "name": "Bohrmehlentnahme",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Tiefengestaffelte Probenahme zur präzisen rechnerischen Chloridanalytik im Beton.",
+        "norm": "DafStb-Heft 401 / DIN EN 14629",
+        "useCase": "Bestimmung des Chloridgehalts zur Beurteilung der Lochfraßkorrosionsgefahr von Brücken oder Parkhäusern.",
+        "details": [
+          "Tiefengestaffelte Bohrungen in 10-mm- oder 20-mm-Schritten (z.B. 0-10, 10-20, 20-30 mm).",
+          "Chemischer Aufschluss im Labor zur Bestimmung des Chloridgehalts bezogen auf die Zementmasse.",
+          "Erstellung von Chlorid-Eindringprofilen zur Restlebensdauerprognose.",
+          "Ermittlung der kritischen chloridinitiierenden Tiefe."
+        ]
+      },
+      {
+        "id": "bohrkern",
+        "name": "Bohrkernentnahme & Begutachtung",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Mechanische Probenentnahme zur Bestimmung realer mechanischer und chemischer Materialkennwerte.",
+        "norm": "DIN EN 12504-1 / DIN EN 13791",
+        "useCase": "Bestimmung der Druckfestigkeitsklasse am Bestandsbeton, Karbonatisierungstiefe und Zementgehalt.",
+        "details": [
+          "Nassbohrentnahme mit diamantbestückten Bohrkronen (Durchmesser typischerweise 50 - 150 mm).",
+          "Bestimmung der Zylinder- und Würfeldruckfestigkeiten im Labor.",
+          "Visualisierung von Gefügestörungen, Rissen und Porositätszonen.",
+          "Besprühen der Bruchfläche mit Phenolphthalein-Indikator zur Messung der Karbonatisierungstiefe."
+        ]
+      },
+      {
+        "id": "labor",
+        "name": "Laboruntersuchungen (Akkreditiertes Prüflabor)",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Akkreditiertes Baustofflabor zur Analyse mechanischer, bauphysikalischer und chemischer Proben.",
+        "norm": "DIN EN 206 / DIN 1045",
+        "useCase": "Auswertung entnommener Bohrkerne, Dichteanalytik, Druckprüfungen, Darrverfahren, E-Modul-Bestimmung.",
+        "details": [
+          "Hydraulische Druckprüfmaschinen mit rechnergestützter Auswertung für f_c und E-Modul.",
+          "Materialanalysen mittels REM (Rasterelektronenmikroskop) bei AKR-Verdacht oder Carbonatbildung.",
+          "Auswertung von Festbeton-Porenstrukturen und Dichten.",
+          "Chemische Bestimmung von Bindemittelgehalten und Sulfatkonzentrationen."
+        ]
+      },
+      {
+        "id": "ausziehpruefung",
+        "name": "Ausziehprüfung & Ankerbelastung",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Ermittlung von realen maximalen Auszugslasten von Befestigungssystemen und Dübeln vor Ort.",
+        "norm": "EOTA TR 048 / DIN EN 1881",
+        "useCase": "Sicherung der Tragfähigkeit von Brückengeländern, Lärmschutzwänden und nachträglichen Bewehrungsanschlüssen.",
+        "details": [
+          "Hydraulisches Ausziehgerät mit digitaler Kraftmessdose zur Erfassung der Zuglast.",
+          "Unterscheidung zwischen Stahlversagen, Betonausbruch oder Verbundversagen.",
+          "Genaue Qualitätssicherung bei chemischen Verbundankern und Spreizdübeln.",
+          "Ermittlung des Last-Verschiebungs-Verhaltens vor Ort."
+        ]
+      },
+      {
+        "id": "haftzug",
+        "name": "Haftzugprüfung (Abreißprüfung)",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Prüfung der Oberflächenzugfestigkeit von Betonuntergründen und Verbundfestigkeit von Beschichtungen.",
+        "norm": "DIN EN 1542 / Richtlinie SIB / ZTV-ING",
+        "useCase": "Qualitätsnachweis vor und nach Betoninstandsetzungsmassnahmen und dem Aufkleben von CFK-Lamellen.",
+        "details": [
+          "Aufkleben von standardisierten Prüfstempeln (Ø 50 mm) mittels Epoxidharzklebstoff.",
+          "Kernbohrung der Beschichtung bis in den tragenden Betonuntergrund.",
+          "Zentrischer Zugversuch bis zum Bruch mit mobiler Zugvorrichtung.",
+          "Sollwerte: Meist mind. 1,5 N/mm² für Oberflächenfestigkeit bei Instandsetzungen."
+        ]
+      },
+      {
+        "id": "rautiefe",
+        "name": "Rautiefenbestimmung (Lasertriangulation)",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Laserbasierte präzise Oberflächenprofilanalyse zur Qualitätssicherung bei Beschichtungen.",
+        "norm": "DIN EN 1766 / DBV-Merkblatt 'Betoninstandsetzung'",
+        "useCase": "Detektion der Rautiefe (z.B. Sandstrahlen) vor Applikation von Schutzsystemen (PCC, OS 8, OS 11).",
+        "details": [
+          "Einsatz von hochpräzisen Lasertriangulations-Distanzsensoren.",
+          "Kontinuierliche Ermittlung des Mittenrauwerts R_a und der Rautiefe.",
+          "Präziser Ersatz für das ungenaue Sandflächenverfahren nach Kaufmann.",
+          "Minimierung des Materialverbrauchs für Primer und Ausgleichsschichten."
+        ]
+      },
+      {
+        "id": "gleitmessung",
+        "name": "Mobiles Gleitmessgerät",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Prüfung und Bestimmung der Rutschanfälligkeit und Griffigkeit von Fußböden im verbauten Zustand.",
+        "norm": "DIN 51131 / DGUV Information 208-041",
+        "useCase": "Erfassung der Arbeitssicherheit und Verkehrssicherheit auf Industrieböden, Rampen und öffentlichen Treppen.",
+        "details": [
+          "Mobiles, selbstfahrendes Messgerät mit genormten Gleitkörpern.",
+          "Ermittlung des dynamischen Gleitreibungskoeffizienten µ im trockenen und nassen Zustand.",
+          "Direkte Gutachtenerstellung für Rutschunbarkeiten und Haftungssicherung.",
+          "Wichtige Kenngröße bei der Bauabnahme von Industrieböden."
+        ]
+      },
+      {
+        "id": "porensuchgeraet",
+        "name": "Porensuchgerät (Hochspannungsprüfung)",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Detektion feinster Poren, Haarrisse und Fehlstellen in nicht-leitenden Beschichtungen auf Metall/Beton.",
+        "norm": "DIN EN 14430 / ISO 8289",
+        "useCase": "Porenprüfung von Abdichtungssystemen bei Behältern, Verbundbeschichtungen und Korrosionsschutzlagen.",
+        "details": [
+          "Nutzt elektrische Hochspannung (Gleich- oder Pulsspannung von 0,5 kV bis 35 kV).",
+          "Ein elektrischer Funke bildet sich sofort bei Vorhandensein von Poren oder Schwachstellen.",
+          "Ermöglicht eine 100% lückenlose Überprüfung dünner Schutzfilme.",
+          "Sicherung gegen zukünftige Korrosionsschäden durch aggressive Medien."
+        ]
+      },
+      {
+        "id": "bte",
+        "name": "Bauteiltemperaturgesteuerte Erhärtung (BTE)",
+        "category": "destructive",
+        "categoryLabel": "Zerstörend & Laborchemie",
+        "desc": "Laborgeführter Festigkeitsnachweis von jungem Beton unter realen Bauteiltemperaturen.",
+        "norm": "DIN 1045-3 / ZTV-ING",
+        "useCase": "Überwachung der realen Hydratationsentwicklung zur präzisen Bestimmung des Ausschalzeitpunkts.",
+        "details": [
+          "Einlagerung von Betonprüfkörpern in eine thermisch isolierte BTE-Klimakiste.",
+          "Permanente Online-Temperaturerfassung am realen Grossbauteil des Bauwerks.",
+          "Automatische Anpassung der Laborkistentemperatur an den gemessenen Verlauf im Bauteil.",
+          "Ermittlung der tatsächlichen Druckfestigkeitsentwicklung unter Einbezug der Hydratationswärme."
+        ]
+      },
+      {
+        "id": "rueckprall",
+        "name": "Rückprallhammer",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Zerstörungsfreie Prüfung der Oberflächenhärte zur Schätzung der Bauteildruckfestigkeit.",
+        "norm": "DIN EN 12504-2 / DIN EN 13791",
+        "useCase": "Schnelle Orientierungsmessungen zur Qualitätssicherung und Gleichmäßigkeit des Betons in-situ.",
+        "details": [
+          "Messen des Rückprallwerts R einer federgetriebenen Schlagmasse.",
+          "Kalibrierungskurven berücksichtigen die Prüfrichtung (Schwerkraftwirkung).",
+          "Abhängig von Oberflächenbeschaffenheit, Carbonatisierungsgrad und Korngröße.",
+          "Kombination mit Ultraschall liefert höchste Genauigkeit (SONREB-Methode)."
+        ]
+      },
+      {
+        "id": "setzdehnung",
+        "name": "Setzdehnungsmessung",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Mechanische Präzisionsmessung kleinster Längenänderungen zur präzisen Rissüberwachung.",
+        "norm": "Kein Normverfahren (Herstellerangaben); DMS-Messtechnik: VDI/VDE 2635",
+        "useCase": "Kurz- und Langzeitrissmonitoring an Brücken, Stützwänden, historischen Mauerwerken bei Lastwechsel.",
+        "details": [
+          "Präzisionstaster mit mechanischer Messuhr (Auflösung bis zu 1 µm).",
+          "Anbringen von definierten Passpunkten (Setzbolzen) beidseits der Rissfuge.",
+          "Erfassung von witterungs-, last- oder absetzbedingten Rissbewegungen.",
+          "Bereitstellung verlässlicher Bemessungsgrundlagen für Instandsetzer."
+        ]
+      },
+      {
+        "id": "messverstaerker",
+        "name": "Universal Messverstärker",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Zentraler multi-analoger Datenlogger zur digitalen Aufnahme zahlreicher Sensoren im Bauwerksmonitoring.",
+        "norm": "DIN EN ISO 9001 / Monitoringstandards",
+        "useCase": "In-situ Erfassung von Tragwerksverformungen, Spannungen und Temperaturen im Langzeitmonitoring.",
+        "details": [
+          "Unterstützung von Dehnungsmesstreifen (DMS), LVDTs, PT100, Thermoelementen und Beschleunigungsaufnehmern.",
+          "Hochfrequente Echtzeit-Abtastung für dynamische Tragwerksanalysen (z.B. Eisenbahnbrücken).",
+          "Webbasierte Datenübertragung mit automatischen Grenzwert-Alarmierungen via SMS/E-Mail.",
+          "Robustes, baustellentaugliches IP67-Gehäuse für den exponierten Außeneinsatz."
+        ]
+      },
+      {
+        "id": "wegaufnehmer",
+        "name": "Induktiver Wegaufnehmer (LVDT)",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Elektronischer Weggeber zur hochauflösenden kontinuierlichen Rissbreitenüberwachung.",
+        "norm": "VDI / VDE 2624",
+        "useCase": "Online-Monitoring bewegungsaktiver Risse unter laufendem Verkehr oder Temperaturgang.",
+        "details": [
+          "Nutzt induktive Differentialtransformator-Technik (LVDT).",
+          "Verschleißfreie und berührungslose Erfassung von Wegänderungen im Submikrometer-Bereich.",
+          "Kombinationsfähig mit digitalen Messverstärkern zur kontinuierlichen Zeitreihendatenerfassung.",
+          "Erlaubt den Abgleich zwischen Außentemperatur und Rissöffnungsverhalten."
+        ]
+      },
+      {
+        "id": "lanze",
+        "name": "Temperaturlanze",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Sensorlanze mit mehreren verteilten Temperaturfühlern zur Erfassung raumtiefenaufgelöster Profile.",
+        "norm": "DIN 1045-3 / Richtlinie 'Massige Bauteile'",
+        "useCase": "Überwachung von Hydratationswärme-Entwicklungen in Fundamenten und dicken massiven Betonbauteilen.",
+        "details": [
+          "Integrierte Messpunkte in festen Abständen (z.B. alle 100 mm oder 500 mm) entlang der Lanze.",
+          "Erfassung der Temperatur im Kern und an der Bauteiloberfläche.",
+          "Bestimmung des Temperaturgradienten zur aktiven Vermeidung von Thermorissen.",
+          "Sehr wichtig für die baupraktische Steuerung von Reifegraden und Nachbehandlungen."
+        ]
+      },
+      {
+        "id": "thermografie",
+        "name": "IR-Thermografie",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Infrarot-Wärmebildaufnahmen zur Visualisierung von Delaminationen, Wärmebrücken und Feuchtstellen.",
+        "norm": "DIN EN 13187",
+        "useCase": "Auffinden von Wärmebrücken im Hochbau, Feuchtezonen sowie Hohlräumen und Putzablösungen unter der Oberfläche.",
+        "details": [
+          "Ausnutzung der unterschiedlichen Wärmekapazität und Leitfähigkeit von Beton, Hohlräumen und EPS.",
+          "Detektion von Leckagen in verdeckten wasserführenden Leitungen (z.B. Fußbodenheizungen).",
+          "Passive Thermografie (Sonneneinstrahlung nutzt natürliche Temperaturerwärmung) vs. aktive Anregung.",
+          "Zerstörungsfreie Rasterung ganzer Fassaden oder Tunnelinnenwände (Scannerverfahren)."
+        ]
+      },
+      {
+        "id": "blowerdoor",
+        "name": "Blower-Door (Differenzdruckmessung)",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Prüfung der allgemeinen Luftdichtheit eines Gebäudes und Lokalisierung von Leckagen in der Hülle.",
+        "norm": "DIN EN ISO 9972",
+        "useCase": "Qualitätssicherung bei Neubauten, Passivhäusern und energetischen Gebäudesanierungen.",
+        "details": [
+          "Einbau eines regelbaren Ventilators in eine Außentür oder ein Fenster.",
+          "Erzeugung einer konstanten Druckdifferenz von z.B. 50 Pascal (Überdruck und Unterdruck).",
+          "Ermittlung des Luftwechselvolumens n_50 als Indikator für Undichtigkeiten.",
+          "Lokalisierung von strömenden Leckagen mittels Nebelgenerator oder Thermo-Anemometer."
+        ]
+      },
+      {
+        "id": "endoskopie",
+        "name": "Endoskopie & Boroskopie",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Optische in-situ Inspektion von baupraktisch unzugänglichen Bohrkanälen, Fugen und Hohlräumen.",
+        "norm": "DGZfP Richtlinie EO / optische Prüfungsnormen",
+        "useCase": "Inspektion von Spannbetonkanälen, Mauerwerkshohlräumen, Deckenaufbauten und Trägerauflagern.",
+        "details": [
+          "Verwendung von hochauflösenden starren Boroskopen oder flexiblen Videoskopen.",
+          "Helle integrierte faseroptische LED-Lichtquellen zur optimalen Ausleuchtung.",
+          "Bedarf nur eines minmalen Bohrloches (Ø 6 - 8 mm).",
+          "Fotodokumentation von verdecktem Rost, Verpressmängeln oder Holzkäferbefall."
+        ]
+      },
+      {
+        "id": "elektrolyt",
+        "name": "Betonwiderstandsmessung (Wenner-Sonde)",
+        "category": "monitoring",
+        "categoryLabel": "Echtzeit-Monitoring & Sensorik",
+        "desc": "Elektrochemische Bestimmung des spezifischen Betonwiderstandes (4-Punkt Wenner-Sonden-Verfahren).",
+        "norm": "RILEM TC 154-EMC / AASHTO T 358",
+        "useCase": "Zerstörungsfreie Abschätzung der Porosität, Bauwerksfeuchte und der potenziellen Korrosionsgeschwindigkeit des Bewehrungsstahls.",
+        "details": [
+          "Nutzung von 4 äquidistanten Elektroden zur Eliminierung von Übergangswiderständen an den Kontaktflächen.",
+          "Der spezifische elektrische Widerstand (R_ho) korreliert direkt mit dem Eindringwiderstand von Chloriden.",
+          "Grenzwert: Widerstände > 1000 Ohm*m (100 kOhm*cm) stehen für extrem vernachlässigbares Korrosionsrisiko.",
+          "Unentbehrlich für die quantitative Zustandserfassung von Brückenpfeilern, Kühltürmen und Tunnelwänden."
+        ]
+      },
+      {
+        "id": "torrent",
+        "name": "Torrent Gaspermeabilitätsmesser",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Prüfung der Luftdurchlässigkeit der oberflächennahen Überdeckungsschicht nach dem Torrent-Verfahren.",
+        "norm": "SIA 262/1 Anhang E / Richtlinien des Bundesamtes für Strassen (ASTRA)",
+        "useCase": "Qualitätssicherung der ausgebildeten Betonrandzone nach dem Ausschalen und Bestimmung des Karbonatisierungsschutzes.",
+        "details": [
+          "Vakuumgestütztes, zerstörungsfreies Doppelkammer-Messprinzip eliminiert Randlecks und Querströmungen.",
+          "Liefert den Luftpermeabilitätsbeiwert kT (10^-16 m²) der Betondeckung innerhalb weniger Minuten.",
+          "Direkter Indikator für den Widerstand gegen Karbonatisierung und Chlorideindringung.",
+          "Klassifizierung von Klasse I (hervorragend dicht, kT < 0.01) bis Klasse V (sehr offen, kT > 10)."
+        ]
+      },
+      {
+        "id": "karsten",
+        "name": "Karsten'sches Prüfröhrchen",
+        "category": "zfp",
+        "categoryLabel": "Zerstörungsfreie ZfP",
+        "desc": "Wasseraufnahme-Messverfahren für mineralische Baustoffe und Oberflächenbeschichtungen unter hydrostatischem Druck.",
+        "norm": "DIN 52617 / RILEM No. II.4",
+        "useCase": "Bestimmung des kapillaren Aufsauglast-Verhaltens von Betonoberflächen, Mauerwerk, Ziegelstoffen und Fassadenputzen.",
+        "details": [
+          "Einfache Baustellenmontage mittels dichte-elastischem Plastilin-Klebepads auf trockenen Untergründen.",
+          "Simulation starker Schlagregenereignisse durch eine 10-cm-Wassersäule (entspricht ca. 140 km/h Sturmwind).",
+          "Ermittlung des Wasseraufnahmekoeffizienten w in kg/(m² * h^0.5) über den zeitlichen Volumenverlust (ml).",
+          "Sehr gut geeignet zur schnellen Überprüfung von Hydrophobierungserfolgen vor Ort."
+        ]
+      },
+      {
+        "id": "stahlhaerte",
+        "name": "Mobiler Härteprüfer für Stahl",
+        "category": "spezial",
+        "categoryLabel": "Spezialdiagnostik",
+        "desc": "Zerstörungsfreie Härteprüfung von metallischen Bauteilen im eingebauten Zustand.",
+        "norm": "DIN EN ISO 6507 / DIN 50159-1 (UCI-Verfahren)",
+        "useCase": "Bestimmung der Stahlgüte von historischen Brückenlagern, Nieten, Stahlskeletten vor Ort.",
+        "details": [
+          "Nutzt das Ultrasonic Contact Impedance (UCI)-Härteprüfverfahren.",
+          "Ein Vickers-Diamant wird mit definierter Prüfkraft schwingend auf die Stahloberfläche gepresst.",
+          "Die Frequenzverschiebung der Schwingung korreliert direkt mit der Härte (Vickers, Brinell, Rockwell).",
+          "Erlaubt verlässliche Rückschlüsse auf die Streckgrenze f_y und Zugfestigkeit des Stahls."
+        ]
+      }
+    ]
+  }
+}

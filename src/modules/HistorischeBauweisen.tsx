@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/historischebauweisen/HistorischeBauweisen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function HistorischeBauweisen() {
   const [activeTab, setActiveTab] = useState<'massivbau' | 'fachwerk' | 'decken' | 'dachwerke'>('massivbau');
@@ -151,24 +153,19 @@ export default function HistorischeBauweisen() {
         {/* Header Section */}
         <div className="flex flex-col gap-4 mb-6 border-b border-home-grau/30 pb-6">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Landmark className="text-shiraz" size={24} /> Hist. Bauweisen
-          </h2>
+            <Landmark className="text-shiraz" size={24} /><MdText text={inhalt.texte.histBauweisen} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <p>
-              Fachliche Systematik historischer Tragwerke und Bauteile. Das Erkennen und Verstehen historischer 
-              Lastabtragungsmechanismen, traditioneller Holzverbindungen und Fügungstechniken bildet das unabdingbare 
-              Fundament für Standsicherheitsnachweise und substanzschonende Sanierungsplanungen im Bestand.
-            </p>
+            <p><MdText text={inhalt.texte.fachlicheSystematikHistorischerTragwerke} /></p>
           </div>
         </div>
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
           {[
-            { id: 'massivbau' as const, label: 'Massivbau & Mauerwerk', icon: Building2 },
-            { id: 'fachwerk' as const, label: 'Fachwerk & Holzskelett', icon: Hammer },
-            { id: 'decken' as const, label: 'Historische Decken', icon: Layers },
-            { id: 'dachwerke' as const, label: 'Historische Dachwerke', icon: Landmark }
+            { id: 'massivbau' as const, label: inhalt.werte.massivbauMauerwerk, icon: Building2 },
+            { id: 'fachwerk' as const, label: inhalt.werte.fachwerkHolzskelett, icon: Hammer },
+            { id: 'decken' as const, label: inhalt.werte.historischeDecken, icon: Layers },
+            { id: 'dachwerke' as const, label: inhalt.werte.historischeDachwerke, icon: Landmark }
           ].map((tab) => {
             const Icon = tab.icon;
             return (
@@ -198,52 +195,40 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-7 space-y-6">
                 <div className="space-y-4">
                   <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                    <Building2 className="text-shiraz" size={18} /> Historische Mauerwerks- &amp; Steinkonstruktionen
-                  </h3>
-                  <p className="text-text-main/80 text-sm leading-relaxed">
-                    Der historische Massivbau stützt sich statisch primär auf das Prinzip des reinen Druckabtrags. Da herkömmliche Kalk- und Luftmörtel keine nennenswerte Zugfestigkeit besitzen, durften in Decken- und Wandöffnungen keine nennenswerten Biegespannungen auftreten. Öffnungen wurden konsequent mittels gemauerter Bögen und Gewölbe überspannt.
-                  </p>
+                    <Building2 className="text-shiraz" size={18} /><MdText text={inhalt.texte.historischeMauerwerksSteinkonstruktionen} /></h3>
+                  <p className="text-text-main/80 text-sm leading-relaxed"><MdText text={inhalt.texte.derHistorischeMassivbauStützt} /></p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20">
-                    <h4 className="font-bold text-slate-900 text-sm mb-2">Vollziegel &amp; Reichsformat</h4>
-                    <p className="text-xs text-slate-700 leading-relaxed">
-                      Ziegelmauerwerk wurde vor 1950 im Regelfall im <strong>Reichsformat RF (250 × 120 × 65 mm)</strong> (zum Vergleich heute: Normalformat NF 240 × 115 × 71 mm, Dünnformat DF 240 × 115 × 52 mm) und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch (<InlineMath math="f_b \ge 10 - 20\text{ N/mm}^2" />), wohingegen die historische Mörtelfestigkeit (<InlineMath math="f_m" />) mangels Zementanteil oft unter <InlineMath math="1{,}0 - 2{,}5\text{ N/mm}^2" /> liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.
-                    </p>
+                    <h4 className="font-bold text-slate-900 text-sm mb-2"><MdText text={inhalt.texte.vollziegelReichsformat} /></h4>
+                    <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.ziegelmauerwerkWurdeVor1950} /></p>
                   </div>
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20">
                     <h4 className="font-bold text-slate-900 text-sm mb-2">Stampfbeton</h4>
-                    <p className="text-xs text-slate-700 leading-relaxed">
-                      Im späten 19. und frühen 20. Jahrhundert weit verbreitet für Fundamente, Kellerwände und schwere Stützwände. Ohne oder mit nur minimaler Bewehrung eingebracht, erfordert dieser Baustoff die konsequente Vermeidung exzentrischer Belastungen und klaffender Fugen, da sonst schlagartig Zugrisse auftreten.
-                    </p>
+                    <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.imSpäten19Und} /></p>
                   </div>
                 </div>
 
                 <div className="bg-[#fcf8f2] p-4 rounded-xl border border-amber-200">
                   <h4 className="font-bold text-amber-950 text-sm flex items-center gap-1.5 mb-2">
-                    <AlertTriangle className="text-amber-700" size={16} /> Statische Besonderheiten &amp; Schwachstellen
-                  </h4>
+                    <AlertTriangle className="text-amber-700" size={16} /><MdText text={inhalt.texte.statischeBesonderheitenSchwachstellen} /></h4>
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
-                    <li><strong>Zweischaliges Mauerwerk ohne Luftschichtanker:</strong> Bei historischen Vorsatzschalen (z.B. Sichtmauerwerk der Gründerzeit) fehlen oft korrosionsbeständige Drahtanker. Unter Windsog können Vorsatzschalen dann abgelöst werden; Verankerung prüfen.</li>
-                    <li><strong>Spreizdruck von Gewölben:</strong> Jeder gemauerte Bogen leitet beträchtliche horizontale Schubkräfte in die Auflagerwände ein. Setzen sich diese Wände seitlich ab, stürzt das Gewölbe ein.</li>
-                    <li><strong>Sulfattreiben im Mörtel:</strong> Ettringit- bzw. Thaumasittreiben entsteht, wenn gipshaltige Mörtel oder Steine mit zementhaltigen (aluminathaltigen) Reparaturmörteln in Kontakt kommen und durchfeuchtet werden; das Gefüge kann dabei vollständig zerstört werden.</li>
+                    <li><MdText text={inhalt.texte.zweischaligesMauerwerkOhneLuftschichtank} /></li>
+                    <li><MdText text={inhalt.texte.spreizdruckVonGewölbenJeder} /></li>
+                    <li><MdText text={inhalt.texte.sulfattreibenImMörtelEttringit} /></li>
                   </ul>
                 </div>
 
                 {/* Formeln im Massivbau */}
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-2">Gewölbeschub (statisches Grundmodell)</h4>
-                  <p className="text-xs text-slate-600 mb-3">
-                    Der statisch wirksame Horizontalschub <InlineMath math="H" /> eines Bogens unter Gleichlast <InlineMath math="w" /> und Kronenpunktlast <InlineMath math="P" /> berechnet sich näherungsweise zu:
-                  </p>
+                  <h4 className="font-semibold text-slate-900 text-sm mb-2"><MdText text={inhalt.texte.gewölbeschubStatischesGrundmodell} /></h4>
+                  <p className="text-xs text-slate-600 mb-3"><MdText text={inhalt.texte.derStatischWirksameHorizontalschub} /></p>
                   <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center my-2">
                     <BlockMath math="H = \frac{w \cdot L^2}{8 \cdot f} + \frac{P \cdot L}{4 \cdot f}" />
                   </div>
-                  <span className="text-[11px] text-slate-500 block mt-2">
-                    Wobei <InlineMath math="L" /> die lichte Spannweite und <InlineMath math="f" /> die Stichhöhe (Bogenaufstieg) darstellen.
-                  </span>
+                  <span className="text-[11px] text-slate-500 block mt-2"><MdText text={inhalt.texte.wobeiLDieLichte} /></span>
                 </div>
               </div>
 
@@ -251,18 +236,15 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-home-grau/30 h-fit space-y-5">
                 <div>
                   <h3 className="font-bold text-slate-950 text-sm flex items-center gap-1.5">
-                    <PenTool className="text-shiraz" size={16} /> Bogen- &amp; Gewölbeschubrechner
-                  </h3>
-                  <p className="text-xs text-slate-600">
-                    Berechnen Sie die resultierenden Lagerkräfte eines historischen Tonnengewölbes oder Segmentbogens pro Meter Gewölbebreite.
-                  </p>
+                    <PenTool className="text-shiraz" size={16} /><MdText text={inhalt.texte.bogenGewölbeschubrechner} /></h3>
+                  <p className="text-xs text-slate-600"><MdText text={inhalt.texte.berechnenSieDieResultierenden} /></p>
                 </div>
 
                 {/* Interactive Inputs */}
                 <div className="space-y-3.5">
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Lichte Spannweite L:</span>
+                      <span><MdText text={inhalt.texte.lichteSpannweiteL} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(archSpan, 2)} m</span>
                     </label>
                     <input 
@@ -274,7 +256,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Bogenstichhöhe f:</span>
+                      <span><MdText text={inhalt.texte.bogenstichhöheF} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(archRise, 2)} m</span>
                     </label>
                     <input 
@@ -286,7 +268,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Bogenstärke / Dicke d:</span>
+                      <span><MdText text={inhalt.texte.bogenstärkeDickeD} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(archThickness, 2)} m</span>
                     </label>
                     <input 
@@ -298,7 +280,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Wichte Mauerwerk:</span>
+                      <span><MdText text={inhalt.texte.wichteMauerwerk} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(masonryDensity, 1)} kN/m³</span>
                     </label>
                     <input 
@@ -310,7 +292,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Gleichmäßige Auflast q (Auffüllung + Nutzlast):</span>
+                      <span><MdText text={inhalt.texte.gleichmäßigeAuflastQAuffüllung} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(surchargeLoad, 1)} kN/m²</span>
                     </label>
                     <input 
@@ -322,7 +304,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Einzellast im Bogenscheitel P:</span>
+                      <span><MdText text={inhalt.texte.einzellastImBogenscheitelP} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(pointLoad, 1)} kN</span>
                     </label>
                     <input 
@@ -335,7 +317,7 @@ export default function HistorischeBauweisen() {
 
                 {/* Live SVG Visualization */}
                 <div className="bg-white p-3 rounded-xl border border-home-grau/20 flex flex-col items-center">
-                  <span className="text-[10px] text-slate-400 font-mono mb-2">Vektormodell der Bogenstatik</span>
+                  <span className="text-[10px] text-slate-400 font-mono mb-2"><MdText text={inhalt.texte.vektormodellDerBogenstatik} /></span>
                   <svg width="220" height="110" viewBox="-10 -10 240 120" className="overflow-visible">
                     {/* Abutments (Widerlager) */}
                     <rect x="0" y="80" width="30" height="20" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1" />
@@ -381,13 +363,13 @@ export default function HistorischeBauweisen() {
                   </svg>
                   <div className="flex justify-between w-full text-[10px] px-2 text-slate-500 mt-1">
                     <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> V-Kraft</span>
-                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-600 inline-block"></span> H-Schub (Spreizdruck)</span>
+                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-600 inline-block"></span><MdText text={inhalt.texte.hSchubSpreizdruck} /></span>
                   </div>
                 </div>
 
                 {/* Calculation Results */}
                 <div className="bg-white p-4 rounded-xl border border-home-grau/20 space-y-2.5">
-                  <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider">Ergebnisse (pro lfd. Meter):</h4>
+                  <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider"><MdText text={inhalt.texte.ergebnisseProLfdMeter} /></h4>
                   
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-150">
@@ -396,28 +378,24 @@ export default function HistorischeBauweisen() {
                     </div>
 
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-150">
-                      <span className="text-slate-500 block">Vertikalkraft V:</span>
+                      <span className="text-slate-500 block"><MdText text={inhalt.texte.vertikalkraftV} /></span>
                       <strong className="text-blue-600 text-sm">{formatDeZahl(archCalculations.V, 1)} kN</strong>
                     </div>
 
                     <div className="bg-red-50 p-2.5 rounded-lg border border-red-100 col-span-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-red-800 font-medium">Horizontalschub H:</span>
+                        <span className="text-red-800 font-medium"><MdText text={inhalt.texte.horizontalschubH} /></span>
                         <strong className="text-red-600 text-base">{formatDeZahl(archCalculations.H, 1)} kN</strong>
                       </div>
-                      <span className="text-[10px] text-red-600/80 block mt-1 leading-tight">
-                        Dieser Schub muss über Zugbänder oder ausreichend dimensionierte Strebepfeiler (Widerlager) abgetragen werden!
-                      </span>
+                      <span className="text-[10px] text-red-600/80 block mt-1 leading-tight"><MdText text={inhalt.texte.dieserSchubMussÜber} /></span>
                     </div>
 
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-150 col-span-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-slate-700">Resultierende Kraft R:</span>
+                        <span className="text-slate-700"><MdText text={inhalt.texte.resultierendeKraftR} /></span>
                         <strong className="text-slate-900 font-bold">{formatDeZahl(archCalculations.R, 1)} kN</strong>
                       </div>
-                      <span className="text-[10px] text-slate-500 block mt-0.5">
-                        Eintragswinkel des Druckvektors: <strong>{formatDeZahl(archCalculations.angle, 1)}°</strong> zur Horizontalen
-                      </span>
+                      <span className="text-[10px] text-slate-500 block mt-0.5"><MdText text={inhalt.texte.eintragswinkelDesDruckvektors} /><strong>{formatDeZahl(archCalculations.angle, 1)}°</strong><MdText text={inhalt.texte.zurHorizontalen} /></span>
                     </div>
                   </div>
                 </div>
@@ -434,61 +412,43 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-7 space-y-6">
                 <div className="space-y-4">
                   <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                    <Hammer className="text-shiraz" size={18} /> Fachwerkbauweise &amp; historische Holzskelette
-                  </h3>
-                  <p className="text-text-main/80 text-sm leading-relaxed">
-                    Der Fachwerkbau ist ein hocheffizientes, dreidimensionales Stabtragwerk. Horizontalkräfte (Wind, Auslenkung) werden primär durch schräge Streben, Kopf- und Fußbänder in die massiven Fundamentschwellen geleitet. Die Verbindungen beruhen ausschließlich auf passgenauen, formschlüssigen Holzverbindungen, gesichert mit Holznägeln aus Eiche.
-                  </p>
+                    <Hammer className="text-shiraz" size={18} /><MdText text={inhalt.texte.fachwerkbauweiseHistorischeHolzskelette} /></h3>
+                  <p className="text-text-main/80 text-sm leading-relaxed"><MdText text={inhalt.texte.derFachwerkbauIstEin} /></p>
                 </div>
 
                 {/* Anatomy of Fachwerk */}
                 <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/20 space-y-3">
-                  <h4 className="font-bold text-slate-900 text-sm">Die Hauptkomponenten eines Fachwerks:</h4>
+                  <h4 className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.dieHauptkomponentenEinesFachwerks} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-700">
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
-                      <strong className="text-slate-900 block mb-1">1. Schwelle (Grundschwelle):</strong>
-                      Liegt meist auf einem flachen Steinsockel auf. Verteilt alle Vertikal- und Horizontalkräfte auf das Fundament. Extrem gefährdet durch aufsteigende Feuchtigkeit.
-                    </div>
+                      <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t1SchwelleGrundschwelle} /></strong><MdText text={inhalt.texte.liegtMeistAufEinem} /></div>
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
-                      <strong className="text-slate-900 block mb-1">2. Ständer (Säulen/Pfosten):</strong>
-                      Die vertikalen, tragenden Hölzer, die Druckkräfte aufnehmen. Ständerbau: Ständer laufen geschossübergreifend durch; Rähmbau (Stockwerkbau): Ständer werden je Geschoss abgezimmert und auf Rähm bzw. Schwelle gestellt.
-                    </div>
+                      <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t2StänderSäulenPfosten} /></strong><MdText text={inhalt.texte.dieVertikalenTragendenHölzer} /></div>
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
-                      <strong className="text-slate-900 block mb-1">3. Riegel (Brust-/Sturzriegel):</strong>
-                      Die horizontalen Querhölzer, welche die Gefache begrenzen und Fenster- und Türöffnungen ausbilden.
-                    </div>
+                      <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t3RiegelBrustSturzriegel} /></strong><MdText text={inhalt.texte.dieHorizontalenQuerhölzerWelche} /></div>
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
-                      <strong className="text-slate-900 block mb-1">4. Streben &amp; Bänder:</strong>
-                      Die schräg gestellten Hölzer zur Aussteifung. Sichern das Fachwerk gegen parallelogrammartige Verschiebung unter seitlicher Einwirkung.
-                    </div>
+                      <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t4StrebenBänder} /></strong><MdText text={inhalt.texte.dieSchrägGestelltenHölzer} /></div>
                   </div>
                 </div>
 
                 <div className="bg-[#fcf8f2] p-4 rounded-xl border border-amber-200">
                   <h4 className="font-bold text-amber-950 text-sm flex items-center gap-1.5 mb-2">
-                    <AlertTriangle className="text-amber-700" size={16} /> Bauschäden, Fäulnis &amp; Ausfachungsprobleme
-                  </h4>
-                  <p className="text-xs text-slate-700 leading-relaxed mb-3">
-                    Ein Fachwerk atmet und arbeitet. Historische Gefache wurden traditionell mit einer elastischen, weichen Ausfachung (Flechtwerk mit Stroh-Lehm-Bewurf) versehen. Ein häufiger, folgenschwerer Sanierungsfehler der Nachkriegszeit ist das Ausmauern der Gefache mit harten, zementhaltigen Steinen und Mörteln:
-                  </p>
+                    <AlertTriangle className="text-amber-700" size={16} /><MdText text={inhalt.texte.bauschädenFäulnisAusfachungsprobleme} /></h4>
+                  <p className="text-xs text-slate-700 leading-relaxed mb-3"><MdText text={inhalt.texte.einFachwerkAtmetUnd} /></p>
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
-                    <li><strong>Flankenabrisse:</strong> Zementmörtel verbindet sich nicht elastisch mit Holz. Regen dringt in die Haarrisse zwischen Holz und Gefach ein.</li>
-                    <li><strong>Feuchtestau:</strong> Zement und Dispersionsfarben behindern die Austrocknung. Das eingedrungene Wasser staut sich am Holzgefüge, was zu rasanter <strong>Schwellenfäule</strong> durch Echten Hausschwamm oder den Braunen Kellerschwamm führt.</li>
-                    <li><strong>Insektenbefall:</strong> Feuchtes Holz zieht Schadinsekten wie den Hausbock (Hylotrupes bajulus) oder den Gewöhnlichen Nagekäfer (Anobium punctatum, „Holzwurm“) an, welche die statischen Restquerschnitte aushöhlen.</li>
+                    <li><MdText text={inhalt.texte.flankenabrisseZementmörtelVerbindetSich} /></li>
+                    <li><MdText text={inhalt.texte.feuchtestauZementUndDispersionsfarben} /></li>
+                    <li><MdText text={inhalt.texte.insektenbefallFeuchtesHolzZieht} /></li>
                   </ul>
                 </div>
 
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                   <h4 className="font-semibold text-slate-900 text-sm mb-2">Holzfeuchtemechanik</h4>
-                  <p className="text-xs text-slate-600 mb-2">
-                    Holz schwindet und quillt hygroskopisch unterhalb des Fasersättigungsbereichs (<InlineMath math="u \approx 30\%" />). Das differentielle Schwindmaß <InlineMath math="\Delta d" /> einer Holzdimension <InlineMath math="d_0" /> berechnet sich über:
-                  </p>
+                  <p className="text-xs text-slate-600 mb-2"><MdText text={inhalt.texte.holzSchwindetUndQuillt} /></p>
                   <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center my-2">
                     <BlockMath math="\Delta d = d_0 \cdot \alpha \cdot (u_1 - u_2) / 100" />
                   </div>
-                  <span className="text-[11px] text-slate-500 block mt-1">
-                    Wobei <InlineMath math="\alpha" /> der Schwindbeiwert (% Maßänderung pro 1% Feuchteänderung) und <InlineMath math="u_1, u_2" /> die Holzfeuchten (<InlineMath math="u \le 30\%" />) sind.
-                  </span>
+                  <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.wobeiAlphaDerSchwindbeiwert} /></span>
                 </div>
               </div>
 
@@ -496,11 +456,8 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-home-grau/30 h-fit space-y-5">
                 <div>
                   <h3 className="font-bold text-slate-950 text-sm flex items-center gap-1.5">
-                    <PenTool className="text-shiraz" size={16} /> Holzfeuchte &amp; Schwindungs-Rechner
-                  </h3>
-                  <p className="text-xs text-slate-600">
-                    Berechnen Sie das hygrische Arbeiten und Maßänderungen historischer Holzbauteile beim Austrocknen oder Wiederbefeuchten.
-                  </p>
+                    <PenTool className="text-shiraz" size={16} /><MdText text={inhalt.texte.holzfeuchteSchwindungsRechner} /></h3>
+                  <p className="text-xs text-slate-600"><MdText text={inhalt.texte.berechnenSieDasHygrische} /></p>
                 </div>
 
                 {/* Interactive Inputs */}
@@ -519,8 +476,8 @@ export default function HistorischeBauweisen() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-semibold text-slate-800 block mb-1">Ausrichtungsrichtung des Holzquerschnitts:</label>
-                    <select aria-label="Ausrichtungsrichtung des Holzquerschnitts" 
+                    <label className="text-xs font-semibold text-slate-800 block mb-1"><MdText text={inhalt.texte.ausrichtungsrichtungDesHolzquerschnitts} /></label>
+                    <select aria-label={inhalt.werte.ausrichtungsrichtungDesHolzquerschnitts} 
                       value={grainDirection} 
                       onChange={(e) => setGrainDirection(e.target.value as typeof grainDirection)}
                       className="w-full text-xs p-2 rounded-lg border border-home-grau/30 bg-white"
@@ -533,7 +490,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Anfangs-Holzfeuchte u₁:</span>
+                      <span><MdText text={inhalt.texte.anfangsHolzfeuchteU} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(moistureInitial, 1)} %</span>
                     </label>
                     <input 
@@ -541,12 +498,12 @@ export default function HistorischeBauweisen() {
                       value={moistureInitial} onChange={(e) => setMoistureInitial(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
-                    <span className="text-[10px] text-slate-400">Frisches/feuchtes Holz liegt oft bei &gt; 25-30%</span>
+                    <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.frischesFeuchtesHolzLiegt} /></span>
                   </div>
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Ziel-Holzfeuchte (z.B. Innenraumklima) u₂:</span>
+                      <span><MdText text={inhalt.texte.zielHolzfeuchteZB} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(moistureFinal, 1)} %</span>
                     </label>
                     <input 
@@ -554,12 +511,12 @@ export default function HistorischeBauweisen() {
                       value={moistureFinal} onChange={(e) => setMoistureFinal(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
-                    <span className="text-[10px] text-slate-400">Ausgleichsfeuchte im beheizten Wohnraum liegt bei ~ 8-12%</span>
+                    <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.ausgleichsfeuchteImBeheiztenWohnraum} /></span>
                   </div>
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Bauteil-Nennmaß d₀ (Dicke/Höhe):</span>
+                      <span><MdText text={inhalt.texte.bauteilNennmaßDDicke} /></span>
                       <span className="text-shiraz font-bold">{formatDeWert(dimensionInitial)} mm</span>
                     </label>
                     <input 
@@ -576,28 +533,26 @@ export default function HistorischeBauweisen() {
                   
                   <div className="space-y-2 text-xs">
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Effektives Δu unterhalb Sättigung:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.effektivesUUnterhalbSättigung} /></span>
                       <span className="font-semibold text-slate-800">{formatDeZahl(shrinkageCalculations.deltaU, 1)} %-Punkte</span>
                     </div>
 
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Spezifischer Schwindbeiwert α:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.spezifischerSchwindbeiwert} /></span>
                       <span className="font-mono font-semibold text-slate-800">{formatDeZahl(shrinkageCalculations.alpha, 3)} % per 1% u</span>
                     </div>
 
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Erwartete relative Maßänderung:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.erwarteteRelativeMaßänderung} /></span>
                       <span className="font-semibold text-amber-700">{formatDeZahl(shrinkageCalculations.percent, 2)} %</span>
                     </div>
 
                     <div className="bg-amber-50 p-3 rounded-lg border border-amber-100">
                       <div className="flex justify-between items-center text-sm font-bold text-amber-950">
-                        <span>Maßänderung (Schwund):</span>
+                        <span><MdText text={inhalt.texte.maßänderungSchwund} /></span>
                         <span>{formatDeZahl(shrinkageCalculations.change, 2)} mm</span>
                       </div>
-                      <p className="text-[10px] text-amber-800 mt-1 leading-relaxed">
-                        Das Bauteil verringert seine Abmessung von ehemals {formatDeWert(dimensionInitial)} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong>. Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrissen an Ausfachungen!
-                      </p>
+                      <p className="text-[10px] text-amber-800 mt-1 leading-relaxed"><MdText text={inhalt.texte.dasBauteilVerringertSeine} />{formatDeWert(dimensionInitial)} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong><MdText text={inhalt.texte.imFachwerkFührtDieser} /></p>
                     </div>
                   </div>
                 </div>
@@ -614,57 +569,43 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-7 space-y-6">
                 <div className="space-y-4">
                   <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                    <Layers className="text-shiraz" size={18} /> Historische Deckenkonstruktionen
-                  </h3>
-                  <p className="text-text-main/80 text-sm leading-relaxed">
-                    Decken in Altbauten variieren stark je nach Bauzeitklasse und regionalen Ressourcen. Die statische Ertüchtigung erfordert genaue Materialkenntnisse und das Wissen über den Schichtenaufbau zur Beurteilung des Eigenklimas sowie der Schall- und Brandschutzeigenschaften.
-                  </p>
+                    <Layers className="text-shiraz" size={18} /><MdText text={inhalt.texte.historischeDeckenkonstruktionen} /></h3>
+                  <p className="text-text-main/80 text-sm leading-relaxed"><MdText text={inhalt.texte.deckenInAltbautenVariieren} /></p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-xs">
-                    <strong className="text-slate-950 font-bold block mb-1">Holzbalkendecken mit Einschub</strong>
-                    <p className="text-slate-700 leading-relaxed">
-                      Klassische Decke der Gründerzeit. Tragende Deckenbalken im Abstand von ca. 70-100 cm. Dazwischen liegt auf Fehlboden-Leisten der hölzerne Einschub (Fehlboden), gedeckt mit Lehm-Stroh-Füllung oder trockenem Bauschutt/Sand zur Beschwerung (Luftschalldämpfung).
-                    </p>
+                    <strong className="text-slate-950 font-bold block mb-1"><MdText text={inhalt.texte.holzbalkendeckenMitEinschub} /></strong>
+                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.klassischeDeckeDerGründerzeit} /></p>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-xs">
-                    <strong className="text-slate-950 font-bold block mb-1">Dippelbalkendecken (Dübelbalken)</strong>
-                    <p className="text-slate-700 leading-relaxed">
-                      Ganzholzdecken aus dicht an dicht nebeneinander liegenden, zweiseitig abgeflachten Balken, die durch Holzdübel miteinander verbunden sind. Finden sich häufig in barocken Altbauten oder historischen Kornspeichern. Enorm massiv, schwer und hochbelastbar.
-                    </p>
+                    <strong className="text-slate-950 font-bold block mb-1"><MdText text={inhalt.texte.dippelbalkendeckenDübelbalken} /></strong>
+                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.ganzholzdeckenAusDichtAn} /></p>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-xs">
-                    <strong className="text-slate-950 font-bold block mb-1">Preußische Kappen (Kappendecke)</strong>
-                    <p className="text-slate-700 leading-relaxed">
-                      Flach gewölbte Ziegelschalen zwischen stählernen oder gusseisernen I-Trägern. Sie kamen ab ca. 1870 vor allem in feuchtegefährdeten Kellern oder Gewerbebauten zum Einsatz. Erfordern statisch zwingend ein stabiles Randwiderlager oder Zugbänder (Zugbänder).
-                    </p>
+                    <strong className="text-slate-950 font-bold block mb-1"><MdText text={inhalt.texte.preußischeKappenKappendecke} /></strong>
+                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.flachGewölbteZiegelschalenZwischen} /></p>
                   </div>
                 </div>
 
                 <div className="bg-[#fcf8f2] p-4 rounded-xl border border-amber-200">
                   <h4 className="font-bold text-amber-950 text-sm flex items-center gap-1.5 mb-2">
-                    <AlertTriangle className="text-amber-700" size={16} /> Tragfähigkeitsschwund &amp; Verfallsgefahren
-                  </h4>
+                    <AlertTriangle className="text-amber-700" size={16} /><MdText text={inhalt.texte.tragfähigkeitsschwundVerfallsgefahren} /></h4>
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
-                    <li><strong>Erlöschen des Auflagerbereichs (Balkenköpfe):</strong> Holzbalkenköpfe liegen oft direkt in kalten Außenmauern. Durch Kondensation der Raumluft fault das Hirnholz unbemerkt ab (Fäulnis im Mauerauflager).</li>
-                    <li><strong>Korrosion an I-Trägern bei Kappendecken:</strong> Feuchtigkeit in Kellern lässt die Flansche der Stahlträger rosten. Rost nimmt je nach Oxid das 2- bis 6-fache Volumen des Stahls ein, sprengt die Ziegelkappe ab und destabilisiert das Gewölbe.</li>
-                    <li><strong>Durchhang historischer Decken:</strong> Durch jahrzehntelanges Kriechen des Holzes verformen sich Holzbalkendecken massiv plastisch. Das führt zu unebenen Fußböden und Rissen in den Deckenputzen darunter.</li>
+                    <li><MdText text={inhalt.texte.erlöschenDesAuflagerbereichsBalkenköpfe} /></li>
+                    <li><MdText text={inhalt.texte.korrosionAnITrägern} /></li>
+                    <li><MdText text={inhalt.texte.durchhangHistorischerDeckenDurch} /></li>
                   </ul>
                 </div>
 
                 {/* Preussische Kappe Formel */}
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-1.5">Gewölbeschub einer Preußischen Kappe</h4>
-                  <p className="text-xs text-slate-600 mb-2">
-                    Der statische Horizontalschub <InlineMath math="H" /> einer flach gewölbten Kappendecke unter Vollbelastung <InlineMath math="q" /> (kN/m²) je Meter Trägerlänge beträgt:
-                  </p>
+                  <h4 className="font-semibold text-slate-900 text-sm mb-1.5"><MdText text={inhalt.texte.gewölbeschubEinerPreußischenKappe} /></h4>
+                  <p className="text-xs text-slate-600 mb-2"><MdText text={inhalt.texte.derStatischeHorizontalschubH} /></p>
                   <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center my-2">
                     <BlockMath math="H = \frac{q \cdot a^2}{8 \cdot f}" />
                   </div>
-                  <span className="text-[11px] text-slate-500 block mt-1">
-                    Wobei <InlineMath math="a" /> der Abstand der Stahlträger (Kappen-Spannweite) und <InlineMath math="f" /> die Stichhöhe des Gewölbes ist.
-                  </span>
+                  <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.wobeiADerAbstand} /></span>
                 </div>
               </div>
 
@@ -672,18 +613,15 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-home-grau/30 h-fit space-y-5">
                 <div>
                   <h3 className="font-bold text-slate-950 text-sm flex items-center gap-1.5">
-                    <PenTool className="text-shiraz" size={16} /> Kappendecken-Schub &amp; Zugband-Rechner
-                  </h3>
-                  <p className="text-xs text-slate-600">
-                    Ermitteln Sie den horizontalen Spreizdruck einer Preußischen Kappe auf die Randträger und berechnen Sie den erforderlichen Querschnitt der stählernen Zugbänder.
-                  </p>
+                    <PenTool className="text-shiraz" size={16} /><MdText text={inhalt.texte.kappendeckenSchubZugbandRechner} /></h3>
+                  <p className="text-xs text-slate-600"><MdText text={inhalt.texte.ermittelnSieDenHorizontalen} /></p>
                 </div>
 
                 {/* Interactive Inputs */}
                 <div className="space-y-3.5">
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Abstand der Stahlträger a:</span>
+                      <span><MdText text={inhalt.texte.abstandDerStahlträgerA} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(kappeSpacing, 2)} m</span>
                     </label>
                     <input 
@@ -695,7 +633,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Spannweite des Trägers s:</span>
+                      <span><MdText text={inhalt.texte.spannweiteDesTrägersS} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(kappeSpan, 1)} m</span>
                     </label>
                     <input 
@@ -707,7 +645,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Stichhöhe des Gewölbes f:</span>
+                      <span><MdText text={inhalt.texte.stichhöheDesGewölbesF} /></span>
                       <span className="text-shiraz font-bold">{formatDeWert(kappeRise)} cm</span>
                     </label>
                     <input 
@@ -719,7 +657,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Gesamtlast q (Eigenlast + Füllung + Verkehrslast):</span>
+                      <span><MdText text={inhalt.texte.gesamtlastQEigenlastFüllung} /></span>
                       <span className="text-shiraz font-bold">{formatDeZahl(kappeLoad, 1)} kN/m²</span>
                     </label>
                     <input 
@@ -731,7 +669,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
-                      <span>Durchmesser der runden Zugstangen d_rod:</span>
+                      <span><MdText text={inhalt.texte.durchmesserDerRundenZugstangen} /></span>
                       <span className="text-shiraz font-bold">Ø {formatDeWert(tieRodDiameter)} mm</span>
                     </label>
                     <input 
@@ -744,37 +682,35 @@ export default function HistorischeBauweisen() {
 
                 {/* Calculation Results */}
                 <div className="bg-white p-4 rounded-xl border border-home-grau/20 space-y-2.5">
-                  <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider">Lagerkräfte &amp; Zugband-Bemessung:</h4>
+                  <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider"><MdText text={inhalt.texte.lagerkräfteZugbandBemessung} /></h4>
                   
                   <div className="space-y-2 text-xs">
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Gleichlast auf Träger w:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.gleichlastAufTrägerW} /></span>
                       <span className="font-semibold text-slate-800">{formatDeZahl(kappeCalculations.w, 2)} kN/m</span>
                     </div>
 
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Horizontalschub je Meter Träger:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.horizontalschubJeMeterTräger} /></span>
                       <span className="font-semibold text-red-600">{formatDeZahl(kappeCalculations.thrustPerMeter, 2)} kN/m</span>
                     </div>
 
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Gesamte Spreizkraft je Feldträger:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.gesamteSpreizkraftJeFeldträger} /></span>
                       <span className="font-bold text-red-700">{formatDeZahl(kappeCalculations.totalThrust, 1)} kN</span>
                     </div>
 
                     <div className="flex justify-between border-b border-slate-100 pb-1.5">
-                      <span className="text-slate-500">Tragfähigkeit je Zugstange:</span>
+                      <span className="text-slate-500"><MdText text={inhalt.texte.tragfähigkeitJeZugstange} /></span>
                       <span className="font-semibold text-blue-600">{formatDeZahl(kappeCalculations.capacity, 1)} kN</span>
                     </div>
 
                     <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
                       <div className="flex justify-between items-center text-xs font-bold text-blue-950">
-                        <span>Erforderliche Anzahl Zugbänder:</span>
+                        <span><MdText text={inhalt.texte.erforderlicheAnzahlZugbänder} /></span>
                         <span className="text-sm text-blue-700">{formatDeWert(Math.ceil(kappeCalculations.requiredRods))} Stk.</span>
                       </div>
-                      <p className="text-[10px] text-blue-800 mt-1 leading-normal">
-                        Für die Trägergesamtlänge von {formatDeZahl(kappeSpan, 1)} m sind mindestens <strong>{formatDeWert(Math.ceil(kappeCalculations.requiredRods))} Zugstangen</strong> Ø {formatDeWert(tieRodDiameter)} mm anzuordnen (historischer Vergleich mit zulässiger Spannung <InlineMath math="\sigma_{zul} = 120\text{ N/mm}^2" /> für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und <InlineMath math="f_y/\gamma_{M0}" />, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.
-                      </p>
+                      <p className="text-[10px] text-blue-800 mt-1 leading-normal"><MdText text={inhalt.texte.fürDieTrägergesamtlängeVon} />{formatDeZahl(kappeSpan, 1)}<MdText text={inhalt.texte.mSindMindestens} /><strong>{formatDeWert(Math.ceil(kappeCalculations.requiredRods))} Zugstangen</strong> Ø {formatDeWert(tieRodDiameter)}<MdText text={inhalt.texte.mmAnzuordnenHistorischerVergleich} /></p>
                     </div>
                   </div>
                 </div>
@@ -791,11 +727,8 @@ export default function HistorischeBauweisen() {
               <div className="lg:col-span-12 space-y-6">
                 <div className="space-y-4">
                   <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                    <Landmark className="text-shiraz" size={18} /> Historische Holzdachwerke: Typologie und Tragverhalten
-                  </h3>
-                  <p className="text-text-main/80 text-sm leading-relaxed">
-                    Der historische Zimmermann entwickelte hochkomplexe Systeme zur schadfreien Überbrückung weiter Spannweiten. Grundsätzlich unterscheidet man zwischen zwei statischen Grundsystemen, die bis heute den Großteil des Altbaubestands ausmachen.
-                  </p>
+                    <Landmark className="text-shiraz" size={18} /><MdText text={inhalt.texte.historischeHolzdachwerkeTypologieUnd} /></h3>
+                  <p className="text-text-main/80 text-sm leading-relaxed"><MdText text={inhalt.texte.derHistorischeZimmermannEntwickelte} /></p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -805,17 +738,14 @@ export default function HistorischeBauweisen() {
                       <div className="p-1.5 bg-rose-50 text-shiraz rounded-lg">
                         <Layers size={18} />
                       </div>
-                      <h4 className="font-bold text-slate-900 text-sm">Das Sparren- &amp; Kehlbalkendach</h4>
+                      <h4 className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.dasSparrenKehlbalkendach} /></h4>
                     </div>
-                    <p className="text-xs text-slate-700 leading-relaxed">
-                      Besteht aus dreiecksförmigen Sparrenpaaren (Gebinden), die sich gegenseitig stützen. 
-                      Es gibt keine tragenden Pfetten oder Zwischenstützen im Dachraum. Die Sparren leiten neben Vertikallasten auch erhebliche <strong>Spreizkräfte (horizontale Schubkräfte)</strong> am Fußpunkt ein.
-                    </p>
+                    <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.bestehtAusDreiecksförmigenSparrenpaaren} /></p>
                     <div className="bg-white p-3 rounded-lg border border-slate-200 space-y-1.5 text-xs text-slate-600">
-                      <strong className="text-slate-800 text-xs block">Tragwirkung &amp; Details:</strong>
+                      <strong className="text-slate-800 text-xs block"><MdText text={inhalt.texte.tragwirkungDetails} /></strong>
                       <ul className="list-disc pl-4 space-y-1">
-                        <li><strong>Fußpunktanschluss:</strong> Muss zwingend über einen Deckenbalken geschlossen werden (Zugbandwirkung). Fehlt oder verrottet der Deckenbalkenkopf, drückt das Dach die Traufwände nach außen weg.</li>
-                        <li><strong>Kehlbalken:</strong> Verkürzen die Knicklänge der Sparren bei Schnee- und Windlasten und dienen als mittiges Lager.</li>
+                        <li><MdText text={inhalt.texte.fußpunktanschlussMussZwingendÜber} /></li>
+                        <li><MdText text={inhalt.texte.kehlbalkenVerkürzenDieKnicklänge} /></li>
                       </ul>
                     </div>
                   </div>
@@ -826,16 +756,14 @@ export default function HistorischeBauweisen() {
                       <div className="p-1.5 bg-rose-50 text-shiraz rounded-lg">
                         <Building2 size={18} />
                       </div>
-                      <h4 className="font-bold text-slate-900 text-sm">Das Pfettendach mit Stuhlkonstruktion</h4>
+                      <h4 className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.dasPfettendachMitStuhlkonstruktion} /></h4>
                     </div>
-                    <p className="text-xs text-slate-700 leading-relaxed">
-                      Die Sparren liegen auf horizontal verlaufenden Längshölzern, den <strong>Pfetten</strong> (First-, Mittel-, Fußpfetten), auf. Die Pfetten leiten die Lasten vertikal nach unten ab. Das System ist weitgehend frei von horizontalen Spreizkräften am Traufpunkt.
-                    </p>
+                    <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.dieSparrenLiegenAuf} /></p>
                     <div className="bg-white p-3 rounded-lg border border-slate-200 space-y-1.5 text-xs text-slate-600">
-                      <strong className="text-slate-800 text-xs block">Stuhlkonstruktionen (Stehend &amp; Liegend):</strong>
+                      <strong className="text-slate-800 text-xs block"><MdText text={inhalt.texte.stuhlkonstruktionenStehendLiegend} /></strong>
                       <ul className="list-disc pl-4 space-y-1">
-                        <li><strong>Stehender Dachstuhl:</strong> Die Pfetten ruhen auf vertikalen Stuhlsäulen. Diese übertragen erhebliche Einzellasten direkt vertikal in die darunter liegenden tragenden Wände.</li>
-                        <li><strong>Liegender Dachstuhl:</strong> Die Stuhlsäulen sind schräg gestellt. Dadurch wird der Dachinnenraum weitgehend stützenfrei gehalten, die Lasten werden an die Außenwände geleitet.</li>
+                        <li><MdText text={inhalt.texte.stehenderDachstuhlDiePfetten} /></li>
+                        <li><MdText text={inhalt.texte.liegenderDachstuhlDieStuhlsäulen} /></li>
                       </ul>
                     </div>
                   </div>
@@ -843,29 +771,20 @@ export default function HistorischeBauweisen() {
 
                 <div className="bg-[#fcf8f2] p-5 rounded-xl border border-amber-200 space-y-3">
                   <h4 className="font-bold text-amber-950 text-sm flex items-center gap-1.5">
-                    <AlertTriangle className="text-amber-700" size={16} /> Bauforschung &amp; Substanzschonende Sanierungsplanung
-                  </h4>
-                  <p className="text-xs text-slate-700 leading-relaxed">
-                    Bei der Beurteilung historischer Holzdachwerke sind folgende handwerkliche Eingriffe von hoher Bedeutung für Tragfähigkeit und Denkmalwert:
-                  </p>
+                    <AlertTriangle className="text-amber-700" size={16} /><MdText text={inhalt.texte.bauforschungSubstanzschonendeSanierungsp} /></h4>
+                  <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.beiDerBeurteilungHistorischer} /></p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                     <div className="bg-white p-3 rounded-lg border border-amber-100">
-                      <strong className="text-slate-950 block mb-1">Abbundzeichen entziffern</strong>
-                      <p className="text-slate-600 leading-relaxed">
-                        Die eingehauenen römischen Ziffern, Reiß- oder Ritzzeichen dienten dem Zimmermann zum lagegenauen Zusammenbau am Boden. Sie erlauben Rückschlüsse auf Umbauten oder nachträgliche Veränderungen im Tragwerk.
-                      </p>
+                      <strong className="text-slate-950 block mb-1"><MdText text={inhalt.texte.abbundzeichenEntziffern} /></strong>
+                      <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.dieEingehauenenRömischenZiffern} /></p>
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-amber-100">
-                      <strong className="text-slate-950 block mb-1">Passgenaue Schäftungen</strong>
-                      <p className="text-slate-600 leading-relaxed">
-                        Verrottete Balkenabschnitte müssen nicht komplett getauscht werden. Durch zimmermannsmäßige Schäftungen (z. B. schräges Hakenblatt, Jupiterstoß) wird das Holz formschlüssig unter minimalem Materialverlust repariert.
-                      </p>
+                      <strong className="text-slate-950 block mb-1"><MdText text={inhalt.texte.passgenaueSchäftungen} /></strong>
+                      <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.verrotteteBalkenabschnitteMüssenNicht} /></p>
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-amber-100">
                       <strong className="text-slate-950 block mb-1">Dendrochronologie</strong>
-                      <p className="text-slate-600 leading-relaxed">
-                        Das Entnehmen kleiner Bohrkerne zur Analyse der Jahrringbreiten ermöglicht eine jahrgenaue Datierung der Fällung des Bauholzes und liefert wertvolle Nachweise über historische Bauphasen.
-                      </p>
+                      <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.dasEntnehmenKleinerBohrkerne} /></p>
                     </div>
                   </div>
                 </div>
@@ -880,32 +799,25 @@ export default function HistorischeBauweisen() {
       {/* Standardized Module Footer */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Biegespannung in einer Holzbalkendecke um 1900"
+        title={inhalt.werte.beispiel1BiegespannungIn}
         zielGleichung="\sigma_m = \frac{q \cdot l^2 / 8}{b \cdot h^2 / 6}"
-        schritte={[
-          { titel: 'System', erklaerung: 'Balken 16/22 cm im Abstand 0,80 m, Spannweite 4,50 m; Eigenlast 1,5 kN/m² (mit Schüttung), Nutzlast 2,0 kN/m² (charakteristisch):', formel: 'q = (1{,}5 + 2{,}0) \\cdot 0{,}80 = 2{,}8\\,\\text{kN/m}' },
-          { titel: 'Moment und Widerstandsmoment', erklaerung: 'Einfeldträger:', formel: 'M = \\frac{2{,}8 \\cdot 4{,}5^2}{8} = 7{,}09\\,\\text{kNm}, \\quad W = \\frac{160 \\cdot 220^2}{6} = 1{,}29 \\cdot 10^6\\,\\text{mm}^3' },
-          { titel: 'Spannung', erklaerung: 'Charakteristische Biegespannung:', formel: '\\sigma_m = \\frac{7{,}09 \\cdot 10^6}{1{,}29 \\cdot 10^6} = 5{,}5\\,\\text{N/mm}^2' }
-        ]}
-        ergebnisHinweis="Die Biegung ist bei historischen Decken selten maßgebend; kritisch sind Durchbiegung, Schwingungen und Balkenkopffäule im Mauerwerksauflager."
-        normQuelle="Technische Mechanik; Nachweis nach DIN EN 1995-1-1 mit NA"
+        schritte={inhalt.daten["HistorischeBauweisen.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieBiegungIstBei}
+        normQuelle={inhalt.werte.technischeMechanikNachweisNach}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Schwindmaß eines Deckenbalkens nach dem Austrocknen"
+        title={inhalt.werte.beispiel2SchwindmaßEines}
         zielGleichung="\Delta b = b \cdot \alpha_t \cdot \Delta u"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,27 % je % Holzfeuchte (Richtwert, wie im Rechner).', formel: '\\Delta u = 30 - 12 = 18\\,\\%' },
-          { titel: 'Schwindmaß', erklaerung: 'Lineare Näherung unterhalb des Fasersättigungsbereichs:', formel: '\\Delta b = 220 \\cdot 0{,}0027 \\cdot 18 = 10{,}7\\,\\text{mm}' }
-        ]}
-        ergebnisHinweis="Rund 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen."
-        normQuelle="DIN 68100:2010-07 (Schwind- und Quellmaße)"
+        schritte={inhalt.daten["HistorischeBauweisen.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.rund1CmSchwinden}
+        normQuelle={inhalt.werte.din68100201007}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="historische_bauweisen" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 8 Bestand: Konstruktionsbeispiele und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: "Mauerwerk", url: "https://de.wikipedia.org/wiki/Mauerwerk" },
           { title: "Fachwerkhaus", url: "https://de.wikipedia.org/wiki/Fachwerkhaus" },
@@ -913,28 +825,9 @@ export default function HistorischeBauweisen() {
           { title: "Kappendecke", url: "https://de.wikipedia.org/wiki/Kappendecke" },
           { title: "Dachwerk", url: "https://de.wikipedia.org/wiki/Dachwerk" }
         ]}
-        literatur={[
-          "Breymann, G. A.: Allgemeine Bau-Constructions-Lehre, mehrere Bände (ab 1849; Nachdrucke verfügbar).",
-          "WTA-Merkblatt 8-1-14/D: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe 09.2014)"
-        ]}
-        regelwerke={[
-          { title: "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)" },
-          { title: "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)" },
-          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)" }
-        ]}
-        formeln={[
-          {
-            formel: "H_G = \\frac{w \\cdot L^2}{8 \\cdot f}",
-            erklaerung: "Grundhorizontalschub eines gleichmäßig belasteten dreigelenkigen Gewölbes oder Segmentbogens zur Bemessung der Widerlager.",
-            quelle: "Breymann: Baukonstruktionslehre"
-          },
-          {
-            formel: "\\epsilon_{hyg} = \\alpha \\cdot \\Delta u",
-            erklaerung: "Hygrische Quell- und Schwindverformung von Holz quer zur Faserrichtung bei Feuchteänderungen unterhalb des Fasersättigungsbereichs.",
-            quelle: "DIN 68100 / Holzkunde-Literatur"
-          }
-        ]}
+        literatur={inhalt.daten["HistorischeBauweisen.literatur"]}
+        regelwerke={inhalt.daten["HistorischeBauweisen.regelwerke"]}
+        formeln={inhalt.daten["HistorischeBauweisen.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,424 @@
+{
+  "texte": {
+    "trockenbauBauprodukte": " Trockenbau (Bauprodukte)",
+    "imModernenTrockenbauWerden": "Im modernen Trockenbau werden raumbegrenzende, nicht-tragende Bauteile in trockener Montageweise für Decke, Wand und Boden erstellt.",
+    "spachtelklassenAkustik": " Spachtelklassen & Akustik",
+    "derModerneTrockenbauIst": "Der moderne **Trockenbau** ist ein hochentwickeltes Montageverfahren des raumbegrenzenden Ausbaus. Er verzichtet vollständig auf nasse Bindemittel und verkürzt dadurch Bauzeiten drastisch. Entscheidend für den Erfolg ist das exakte Zusammenspiel von genormten Plattenbaustoffen und aufeinander abgestimmten System-Profilen nach anerkannten Regeln der Technik (aRdT).",
+    "t1BauprodukteSpezialplattenDin": " 1. Bauprodukte & Spezialplatten (DIN EN 520 / 18948)",
+    "t2SystemaufbautenMontagestandardsDin": " 2. Systemaufbauten & Montagestandards (DIN / EN)",
+    "verfügbareAusbauproduktePlatten": "Verfügbare Ausbauprodukte & Platten",
+    "stärkeD125mm": "(Stärke d=12,5mm)",
+    "wasserdampf": "Wasserdampf µ",
+    "thermischeLeitf": "Thermische Leitf. λ",
+    "brandschutzklasseEn13501": "Brandschutzklasse (EN 13501)",
+    "bauphysikalischeWirkungsweise": " Bauphysikalische Wirkungsweise",
+    "vorteileEigenschaftenImAusbau": " Vorteile & Eigenschaften im Ausbau",
+    "typischeEinbindungInSysteme": " Typische Einbindung in Systeme",
+    "ausgewählteTrockenbauMontagesysteme": "Ausgewählte Trockenbau-Montagesysteme",
+    "gesamtdickeCa": "Gesamtdicke ca.",
+    "schalldämmMassRW": " Schalldämm-Mass R_w",
+    "profilabstandStandard": "Profilabstand Standard",
+    "primäresEinsatzgebiet": " Primäres Einsatzgebiet",
+    "systemkomponentenMetallProfiltechnikDin": " Systemkomponenten & Metall-Profiltechnik (DIN EN 14195)",
+    "wandStänderwerkeStahlstärke0": "Wand-Ständerwerke (Stahlstärke 0,6 mm verzinkt)",
+    "uwRahmenprofilHorizontaleBefestigung": "**UW-Rahmenprofil:** Horizontale Befestigung an Boden und Decke zur formschlüssigen Fixierung des Wandverlaufs. Unterlegt mit elastischem Anschlussdichtband zur akustischen Trennung.",
+    "cwStänderprofilVertikaleSteh": "**CW-Ständerprofil:** Vertikale Steh-Profile, werden lose eingestellt zur Aufnahme von Temperaturänderungen und Kriechbewegungen des Baukörpers. Ausstanzungen für Kabeldurchführungen.",
+    "uaAussteifungsprofil20": "**UA-Aussteifungsprofil:** 2,0 mm starke massive Spezial-Profile zur Lastaufnahme von schweren Türen und Sanitäreinbaugestellen.",
+    "deckenrasterKorrosionsschutz": "Deckenraster & Korrosionsschutz",
+    "udWandprofilCdTragprofil": "**UD-Wandprofil & CD-Tragprofil:** Horizontale Wandrahmen (UD) gekoppelt mit flächig justierbaren Tragprofilen (CD 60/27) an Schwingungshängern zur hocheffektiven Körperschallminderung.",
+    "schnellbauschraubenDin18182Phosphatbesch": "**Schnellbauschrauben (DIN 18182):** Phosphatbeschichtet (mattschwarz) gegen aggressive Säurekorrosion im feuchten Gipsbett. Feingewinde für Stahlbleche, Grobgewinde für Holzständerwerke.",
+    "oberflächenqualitätenNachBundesverbandDe": "Oberflächenqualitäten nach Bundesverband der Gipsindustrie",
+    "dieSpachtelklassenRegelnDie": "Die Spachtelklassen regeln die optischen und ebenheitstechnischen Abnahmekriterien für Gipsplatten-Oberflächen vor Maler- oder Tapezierarbeiten. Bei fehlender Vereinbarung gilt stets die Standardspachtelung Q2 als vereinbart.",
+    "grundverspachtelungNurStoßfugenFüllen": "**Grundverspachtelung:** Nur Stoßfugen füllen und sichtbare Teile der Schnellbauschrauben überspachteln.",
+    "eignungUnterFliesenPlatten": "**Eignung:** Unter Fliesen, Platten, Bekleidungen, Putzen sowie dicken Bahnenwaren.",
+    "standardspachtelungQ1MitNachspachteln": "**Standardspachtelung:** Q1 mit Nachspachteln/Anspachteln für einen stufenlosen Übergang zur Plattenoberfläche.",
+    "eignungRaufasertapetenMatteFüllende": "**Eignung:** Raufasertapeten, matte füllende Wandfarben (mit Walze appliziert), gröbere Oberputze.",
+    "sonderverspachtelungQ2MitEiner": "**Sonderverspachtelung:** Q2 mit einer breiteren Spachtelung der Fugen sowie einem vollflächigen Porenverschluss.",
+    "eignungFeinstrukturierteTapetenMatte": "**Eignung:** Feinstrukturierte Tapeten, matte Anstriche, feine Oberputze. Abzeichnung bei Streiflicht möglich.",
+    "vollflächigeSpachtelungVollflächigeÜberz": "**Vollflächige Spachtelung:** Vollflächige Überzugsschicht (Schichtdicke > 1 mm) und feinstes Schleifen der Oberfläche.",
+    "eignungGlänzendeBeschichtungenMetall": "**Eignung:** Glänzende Beschichtungen, Metall- oder Lacktapeten, Spachtel-/Glätttechniken. Minimale Schattenfreiheit bei Streiflicht.",
+    "bauphysikalischeKennwerteVonMetallstände": "Bauphysikalische Kennwerte von Metallständerwänden",
+    "profilbreiteMm": "Profilbreite (mm)",
+    "wanddickeMm": "Wanddicke (mm)",
+    "beplankungJeSeite": "Beplankung (je Seite)",
+    "schallschutzRWDb": "Schallschutz $R_w$ (dB)",
+    "cw50EinfachBeplankt": "CW 50 - einfach beplankt",
+    "t1x125Mm": "1x 12,5 mm GKB",
+    "f30AMit": "F 30-A (mit GKF)",
+    "cw75EinfachBeplankt": "CW 75 - einfach beplankt",
+    "t1x125Mm2": "1x 12,5 mm GKB",
+    "cw50DoppeltBeplankt": "CW 50 - doppelt beplankt (Standard)",
+    "t2x125Mm": "2x 12,5 mm GKB",
+    "f90AMit": "F 90-A (mit GKF)",
+    "cw75DoppeltBeplankt": "CW 75 - doppelt beplankt",
+    "t2x125Mm2": "2x 12,5 mm GKB",
+    "doppelständerwerkCw5050": "Doppelständerwerk CW 50+50",
+    "t2x50Entkoppelt": "2x 50 (entkoppelt)",
+    "t2x125Mm3": "2x 12,5 mm GKB",
+    "ca62DbHervorragend": "ca. 62 dB (hervorragend)",
+    "dieAngegebenenSchalldämmMaße": "* Die angegebenen Schalldämm-Maße $R_w$ setzen eine lückenlose Mineralfaserdämmung der Hohlräume von mindestens 80% Dicke und ein beidseitig elastisch angeschlossenes Dichtungsband unter allen Randprofilen voraus.",
+    "trockenbauMaterialbedarfsRechnerWände": "Trockenbau Materialbedarfs-Rechner (Wände)",
+    "errechnenSieDenMaterialtechnischen": "Errechnen Sie den materialtechnischen Richtbedarf für die Erstellung einer einfachen Metallständerwand auf der Baustelle basierend auf standardisierten Kalkulationsrichtwerten (Herstellerneutral). Einberechnet sind Verschnitte und branchenübliche Sicherheitsaufschläge (ca. 5%).",
+    "wandflächeM": "Wandfläche (m²):",
+    "beplankungJeWandseite": "Beplankung (je Wandseite):",
+    "ständerachsabstandCm": "Ständerachsabstand (cm):",
+    "inklusiveHohlraumdämmung": "Inklusive Hohlraumdämmung",
+    "errechneteMaterialmengen": " Errechnete Materialmengen",
+    "beidseitigBeplanktInkl5": "Beidseitig beplankt (inkl. 5% Puffer)",
+    "vertikalesStänderwerkSchnittgrößenZ": "Vertikales Ständerwerk (Schnittgrößen z.B. CW 50 / CW 75)",
+    "obererUndUntererWandanschluss": "Oberer und unterer Wandanschluss",
+    "schnellbauschrauben253545": "Schnellbauschrauben (25 / 35 / 45 mm)",
+    "phosphatiertMitFeingewindeFür": "Phosphatiert mit Feingewinde für Ständerwerk",
+    "fugenUndSpachtelmasseKunststoff": "Fugen- und Spachtelmasse (Kunststoff- o. Gips-Fugenspachtel)",
+    "fürFugenUndSchraubenköpfe": "Für Fugen und Schraubenköpfe",
+    "elastischesSchaumstoffbandFürEntkopplung": "Elastisches Schaumstoffband für Entkopplung zur aRdT",
+    "trennwandDämmungMineralwolle": "Trennwand-Dämmung (Mineralwolle)",
+    "dickeAngepasstAnCw": "Dicke angepasst an CW-Profil (40 / 60 / 80 mm)",
+    "t1ZweitlagigeVerschraubungBei": "**1. Zweitlagige Verschraubung:** Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).",
+    "t2FugenversatzVermeidenSie": "**2. Fugenversatz:** Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Rissvermeidung um mindestens **400 mm** zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.",
+    "t3SchallentkopplungOhneDas": "**3. Schallentkopplung:** Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!)."
+  },
+  "werte": {
+    "beplankungJeWandseite": "Beplankung (je Wandseite)",
+    "ständerachsabstandCm": "Ständerachsabstand (cm)",
+    "anwendungsbeispielResonanzfrequenzEinerM": "Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand",
+    "masseFederMasseModell": "Masse-Feder-Masse-Modell mit Faserdämmung im Hohlraum (Lehrnäherung, d in m, m′ in kg/m²)",
+    "doppelbeplankungSenktF0": "Doppelbeplankung senkt f_0 um den Faktor √2 und verbessert die Schalldämmung deutlich – zusätzlich zur höheren Masse."
+  },
+  "daten": {
+    "DRY_PRODUCTS_DB": [
+      {
+        "id": "standard_gkb",
+        "name": "Standard-Gipsplatte (GKB)",
+        "category": "Gipsplatten nach DIN EN 520",
+        "dinNorm": "DIN EN 520 / Typ A",
+        "colorCodeName": "Graue Papierkartonage, blaue Kennzeichnung",
+        "colorCodeBg": "bg-slate-100",
+        "colorBorder": "border-slate-300",
+        "density": 680,
+        "lambda": 0.25,
+        "muValue": 10,
+        "fireClass": "A2-s1, d0 (nicht brennbar)",
+        "weightPerM2": 8.5,
+        "advantages": [
+          "Äußerst materialsparend & kostengünstig",
+          "Leicht zuschneidbar (Anritzen und Brechen)",
+          "Einfaches Verschrauben auf Holz und Metall",
+          "Reguliert das Raumklima geringfügig durch Gips-Porosität"
+        ],
+        "description": "Das bewährte Standard-Ausbauelement für raumbegrenzende Baustrukturen. Die Platte besteht aus einem Gipskern, der fest mit dem Karton verbunden ist (Karton nimmt Zug, Gips Druck auf). Ideal für Wände und Decken ohne Brandschutz- oder Feuchtigkeitsauflagen.",
+        "systemIntegration": "Standard-Wandsysteme (einfach oder doppelt beplankt), abgehängte Innendecken und gerade Trockenputzflächen."
+      },
+      {
+        "id": "impregnated_gkbi",
+        "name": "Imprägnierte Feuchtraumplatte (GKBI)",
+        "category": "Gipsplatten nach DIN EN 520",
+        "dinNorm": "DIN EN 520 / Typ H2",
+        "colorCodeName": "Grüne Papierkartonage, blaue Kennzeichnung",
+        "colorCodeBg": "bg-emerald-50",
+        "colorBorder": "border-emerald-300",
+        "density": 720,
+        "lambda": 0.25,
+        "muValue": 10,
+        "fireClass": "A2-s1, d0 (nicht brennbar)",
+        "weightPerM2": 9.3,
+        "advantages": [
+          "Stark hydrophobierter Kern & Karton (Wasseraufnahme < 10%)",
+          "Zusatz pilzhemmender Wirkstoffe zur Schimmelphobie",
+          "Optimaler Untergrund für Fliesenkleber und Spachtelschichten",
+          "Ausgezeichnete Formstabilität auch bei Dampfspitzen"
+        ],
+        "description": "Speziell hydrophobierte Gipsplatte für häusliche Feuchtgebiete. Sowohl der Gipskern als auch die Kartonage sind durch den gezielten Zusatz von flüssigen Silikonen wasserabweisend eingestellt. Dadurch wird das kapillare Saugen von Feuchtigkeit effektiv unterbunden.",
+        "systemIntegration": "Unterkonstruktion für Wandfliesen in Bädern, Gäste-WCs, Küchendecken und Duschbereichen."
+      },
+      {
+        "id": "fire_gkf",
+        "name": "Feuerschutz-Gipsplatte (GKF)",
+        "category": "Gipsplatten nach DIN EN 520",
+        "dinNorm": "DIN EN 520 / Typ DF",
+        "colorCodeName": "Graue/Rosa Papierkartonage, rote Kennzeichnung",
+        "colorCodeBg": "bg-red-50",
+        "colorBorder": "border-red-300",
+        "density": 820,
+        "lambda": 0.25,
+        "muValue": 10,
+        "fireClass": "A2-s1, d0 (Systeme F30 bis F180)",
+        "weightPerM2": 10.5,
+        "advantages": [
+          "Erhöhter Zusammenhalt durch eingebettete Glasfaserrovings",
+          "Chemisch gebundenes Kristallwasser kühlt im Brandfall aktiv",
+          "Besonders verformungsstabil unter Temperatureinfluss",
+          "Erhöhte Festigkeit allgemein"
+        ],
+        "description": "Spezialplatte für den baulichen Brandschutz. Bei Brandeinwirkung setzt der Gips sein zweifach chemisch gebundenes Kristallwasser (ca. 2 Liter pro m²) frei, welches verdampft und so das Bauteil aktiv vor Überhitzung schützt. Glasfasern im Kern stützen das Bauteil, wenn die Kartonage verbrannt ist.",
+        "systemIntegration": "Tragende Brandschutzwände, Fluchtwegschächte (F90), Deckenkonstruktionen unter Massivdecken."
+      },
+      {
+        "id": "premium_dfir",
+        "name": "Spezial-Hartgipsplatte (Typ DFIR)",
+        "category": "Gipsplatten nach DIN EN 520",
+        "dinNorm": "DIN EN 520 / Typ DFIR",
+        "colorCodeName": "Blaue Papierkartonage, rote Kennzeichnung",
+        "colorCodeBg": "bg-blue-50",
+        "colorBorder": "border-blue-300",
+        "density": 1020,
+        "lambda": 0.25,
+        "muValue": 10,
+        "fireClass": "A2-s1, d0 (Schnittbester Schall- & Brandschutz)",
+        "weightPerM2": 12.8,
+        "advantages": [
+          "Besserer Schallschutz durch höhere flächenbezogene Masse",
+          "Hohe Oberflächenhärte gegen Stöße und Kratzer",
+          "Sehr hohe Dübelbelastbarkeit (bis zu 45 kg je Hohlraumdübel)",
+          "Werksseitig imprägniert für universelle Einsetzbarkeit"
+        ],
+        "description": "Platte mit hoher Rohdichte, Glasfaserzusatz und Hydrophobierung. Für Bereiche mit hohen Anforderungen an Robustheit, Schallschutz und Befestigung von Lasten wie Hängeschränken.",
+        "systemIntegration": "Hochleistungsschallschutzwände, Krankenhäuser, Schulgänge, Sporthallen, Einbruchschutz-Systeme."
+      },
+      {
+        "id": "gipsfaser_gf",
+        "name": "Gipsfaser-Zelluloseplatte (GF)",
+        "category": "Gipsfaserplatten nach DIN EN 15283-2",
+        "dinNorm": "DIN EN 15283-2 / Typ GF",
+        "colorCodeName": "Hellgraue homogene Optik, keine Kartonumhüllung",
+        "colorCodeBg": "bg-stone-100",
+        "colorBorder": "border-stone-400",
+        "density": 1150,
+        "lambda": 0.32,
+        "muValue": 13,
+        "fireClass": "A2-s1, d0 (nicht brennbar)",
+        "weightPerM2": 15,
+        "advantages": [
+          "Vollkommen homogene Struktur (Gips + Zellulose)",
+          "Sehr schlagfest; im Holzbau aussteifend einsetzbar",
+          "Lasten direkt in die Platte schraubbar (zulässige Lasten nach Herstellerangabe)",
+          "Diffusionsfähig und Feuchte regulierend"
+        ],
+        "description": "Ein hochfester Faserverbundwerkstoff aus Gips und Papierfasern (Zellulose aus Altpapier), die ohne Klebstoffe unter starkem Pressdruck innig verzahnt werden. Die Fasern bewehren die Platte durchgehend; sie ist sehr stabil und kann im Holzbau aussteifend eingesetzt werden (nach Zulassung).",
+        "systemIntegration": "Holzrahmenbau / Fertighäuser (aussteifende Beplankung), Trockenestrich-Elemente, öffentliche Fluchtbereiche."
+      },
+      {
+        "id": "clay_board",
+        "name": "Ökologische Lehmbauplatte",
+        "category": "Lehmbauplatten nach DIN 18948",
+        "dinNorm": "DIN 18948 / Klasse WS III",
+        "colorCodeName": "Erdig braun, Schilf- oder Glasgittergewebe",
+        "colorCodeBg": "bg-amber-100/50",
+        "colorBorder": "border-amber-300",
+        "density": 1250,
+        "lambda": 0.44,
+        "muValue": 7,
+        "fireClass": "B-s1, d0 (schwer entflammbar)",
+        "weightPerM2": 18,
+        "advantages": [
+          "Unschlagbare Feuchtigkeitsabsorption (> 15g/m² in 24h)",
+          "Kann Gerüche teilweise binden (Herstellerangabe)",
+          "Große thermische Masse speichert Heizungswärme exzellent",
+          "Schnittstelle für baubiologisch reine Wohnräume"
+        ],
+        "description": "Ausbauplatte aus Lehm, Sand und Fasern (z. B. Schilfrohr, Stroh). Lehm puffert Raumluftfeuchte gut. Geeignet besonders für den Innenausbau im Holzbau (DIN 18948).",
+        "systemIntegration": "Verkleidung von Innenwänden auf Holzständern, Deckenbekleidungen unter Wandheizungssystemen."
+      },
+      {
+        "id": "acoustic_perforated",
+        "name": "Helmholtz-Akustiklochplatte",
+        "category": "Spezialgipsplatten nach DIN EN 14190",
+        "dinNorm": "DIN EN 14190 (Spezialgipsprodukte)",
+        "colorCodeName": "Lochungsaufbau, rückseitiges Vlies (Schwarz/Weiß)",
+        "colorCodeBg": "bg-teal-50",
+        "colorBorder": "border-teal-300",
+        "density": 760,
+        "lambda": 0.23,
+        "muValue": 8,
+        "fireClass": "A2-s1, d0 (Schallabsorbierend)",
+        "weightPerM2": 9.2,
+        "advantages": [
+          "Sehr gute Absorptionsklasse (Schallabsorptionsgrad α_w bis 0.90)",
+          "Präzises Lochraster (z.B. 8/18R oder Streulochung)",
+          "Hinterlegtes Akustik-Vlies mindert Flatterechos",
+          "Teils mit Zusätzen zur Schadstoffbindung (Herstellerangabe)"
+        ],
+        "description": "Platte für die Raumakustik. Durch kreisrunde, quadratische oder gestreute Perforationen wirken die Löcher im Zusammenspiel mit dem rückseitigen Spezialvlies als Helmholtz-Resonatoren. Sie \"schlucken\" Schallwellen und verkürzen die störende Nachhallzeit.",
+        "systemIntegration": "Akustikdecken in Foyers, Konferenzräumen, Klassenzimmern, Kinos und schallschluckenden Wandpaneelen."
+      },
+      {
+        "id": "cement_bound",
+        "name": "Zementgebundene Bauplatte",
+        "category": "Zementgebundene Bauplatten nach DIN EN 12467",
+        "dinNorm": "DIN EN 12467 / Typ NT",
+        "colorCodeName": "Zementgrauer Kern, Gittervliesumhüllung",
+        "colorCodeBg": "bg-cyan-50/75",
+        "colorBorder": "border-cyan-300",
+        "density": 1080,
+        "lambda": 0.35,
+        "muValue": 50,
+        "fireClass": "A1 (nicht brennbar, brandsichernd)",
+        "weightPerM2": 15,
+        "advantages": [
+          "Wasserbeständig, quillt nicht",
+          "Absolut schimmel- und fäulnisresistent",
+          "Hohe mechanische Bruch- und Knickfestigkeit",
+          "Für Außenanwendungen geeignet (nach Zulassung/ETA)"
+        ],
+        "description": "Hochfeste Bauplatte auf Portlandzementbasis, die beidseitig mit einem alkaliresistenten Glasgittergewebe armiert ist. Im Gegensatz zu Gipswerkstoffen zersetzt sich Zement auch unter andauernder Nässeeinwirkung nicht und bietet Sporen keinen organischen Nährboden.",
+        "systemIntegration": "Dauernassbereiche (Schwimmbäder, Wellnesslandschaften, Wellnessduschen), Großküchen und Außenfassaden."
+      },
+      {
+        "id": "calcium_silicate",
+        "name": "Calciumsilikat-Klimaplatte",
+        "category": "Dämm- und Sickerplatten",
+        "dinNorm": "DIN EN 14306",
+        "colorCodeName": "Schneeweiß, offenporig kreidig",
+        "colorCodeBg": "bg-amber-50/30",
+        "colorBorder": "border-amber-200",
+        "density": 230,
+        "lambda": 0.057,
+        "muValue": 5,
+        "fireClass": "A1 (vollkommen brandsicher)",
+        "weightPerM2": 5.8,
+        "advantages": [
+          "Diffusionsoffen und kapillaraktiv",
+          "Sehr hoher pH-Wert (&gt; 10) entzieht Schimmel pilzbiologische Grundlagen",
+          "Wärmedämmende Wirkungsweise zur behaglichen Innensanierung",
+          "Einfache Sanierungsverarbeitung ohne Dampfsperrfolie"
+        ],
+        "description": "Eine mineralische Spezialplatte aus Siliziumdioxid, Kalk und Zellulosefasern. Sie hat ein sehr hohes Porenvolumen. Feuchte wird kapillar verteilt, gepuffert und wieder abgegeben – Grundlage für kapillaraktive Innendämmung.",
+        "systemIntegration": "Innendämmung von Altbaufassaden ohne Dampfbremse, aktive Sanierung schimmelbehafteter Wärmebrücken."
+      }
+    ],
+    "DRY_SYSTEMS_DB": [
+      {
+        "id": "w111",
+        "code": "Standard-Wandsystem M50A (Typ W111)",
+        "name": "Einfachständerwerk, 1-lagig beplankt",
+        "structure": "1x 12,5 mm Gipsplatte + CW 50 Stehprofile + 1x 12,5 mm Gipsplatte",
+        "thickness": "75 mm",
+        "fireRating": "Kein Brandschutz (bzw. max. F30 bei GKF-Ausführung)",
+        "soundRating": "ca. 42 - 45 dB",
+        "description": "Das einfachste Metallständerwandsystem. Besteht aus einer Unterkonstruktion aus verzinkten Stahlblechprofilen, die beidseitig einfach beplankt wird. Gut geeignet als kosteneffizientes Raumtrennelement ohne nennenswerte Brandschutz- oder Schallschutzanforderungen.",
+        "application": "Abstellkammern, einfache Flurgestaltungen, Raumaufteilungen ohne Schallschutz.",
+        "profileType": "CW 50 / UW 50",
+        "spacing": "62,5 cm"
+      },
+      {
+        "id": "w112",
+        "code": "Standard-Wandsystem M50B (Typ W112)",
+        "name": "Einfachständerwerk, 2-lagig beplankt",
+        "structure": "2x 12,5 mm Gipsplatte + CW 50/75 Stehprofile + 2x 12,5 mm Gipsplatte",
+        "thickness": "100 mm",
+        "fireRating": "F 90-A (bei Feuerschutzplatten-Beplankung)",
+        "soundRating": "ca. 52 - 56 dB",
+        "description": "Das klassische Standard-Trennwandsystem des modernen Innenausbaus. Die zweilagige Beplankung erhöht Steifigkeit und Schallschutz und verringert Fugenrisse. Mit GKF-Platten lassen sich Feuerwiderstandsklassen nach DIN 4102-4 erreichen.",
+        "application": "Zimmertrennwände im Wohnungsbau, Bürobereiche, Brandschutzwände.",
+        "profileType": "CW 75 / UW 75",
+        "spacing": "62,5 cm"
+      },
+      {
+        "id": "w115",
+        "code": "Akustik-Doppelständerwand (Typ W115)",
+        "name": "Doppelständerwerk, entkoppelt, 2-lagig",
+        "structure": "2x 12,5 mm High-Schall-Gipsplatte + doppeltes, entkoppeltes Metallständerwerk + 2x 12,5 mm",
+        "thickness": "155 mm",
+        "fireRating": "F 90-A",
+        "soundRating": "ca. 62 - 68 dB",
+        "description": "Hochleistungsschallschutzwand. Zwei von sich getrennt stehende Metallständerwerke werden nebeneinander aufgestellt. Zwischen den Profilen wird ein Entkopplungs-Dichtstreifen verlegt. Die Schalen sind mechanisch entkoppelt; der Schall wird nur über die Luftschicht (Masse-Feder-Masse) übertragen.",
+        "application": "Wohnungstrennwände, Hotelzimmer-Trennwände, Aufnahmeräume, Arztpraxen.",
+        "profileType": "2x CW 50, getrennt mit Schaumstofftape",
+        "spacing": "62,5 cm"
+      },
+      {
+        "id": "d112",
+        "code": "Decken-Hängesystem (Typ D112)",
+        "name": "Abgehängte Deckenunterkonstruktion",
+        "structure": "Trag- und Grundprofilraster (CD 60/27) an Direktabhängern oder Noniusabhängern",
+        "thickness": "Abhänghöhe flexibel (ab 40 mm)",
+        "fireRating": "F 30 bis F 90 (von unten oder oben)",
+        "soundRating": "Minderung übertragener Deckenwellen um ΔR_w ≥ 10 dB",
+        "description": "Klassisches abgehängtes Deckensystem mit Doppelschiene. Ein Grundraster wird mit der tragenden Rohdecke verdübelt, darunter kreuzweise die Tragprofile gekoppelt. Anschließend erfolgt das plane Beplanken mit Gips- oder Akustikelementen. Ideal für Installationen im Hohlraum.",
+        "application": "Kabelrinnen-Führungen in Bürogebäuden, Wohnraum-Deckenabhängung, Akustikdecken.",
+        "profileType": "CD 60/27 und UD 28",
+        "spacing": "Grundprofil ≤ 100 cm, Tragprofil ≤ 50 cm"
+      },
+      {
+        "id": "d131",
+        "code": "Freitragende Flurdecke (Typ D131)",
+        "name": "Freitragendes Deckensystem (Wand-zu-Wand)",
+        "structure": "Verstärkte Doppel-CW- oder UA-Träger quer gespannt, Wandanschlüsse tragend verschraubt",
+        "thickness": "Profilhöhe je nach Spannweite (75 bis 150 mm)",
+        "fireRating": "F 30-A bis F 90-A",
+        "soundRating": "Dämpft Flur-Körperschallbrücken effektiv",
+        "description": "Deckensystem ohne Abhänger: Es spannt von Wand zu Wand. Gut geeignet für Flure, in denen viele Leitungen unter der Rohdecke liegen.",
+        "application": "Sanierungsflure, Hotel-Kabelleitkanäle, Fluchtwege ohne Deckenanker-Zulassung.",
+        "profileType": "UA-Profile oder Doppel-CW-Profile wandgebunden",
+        "spacing": "Spannweite systemabhängig (Herstellerangaben)"
+      },
+      {
+        "id": "f141",
+        "code": "Trockenunterboden (Typ F141-Trockenestrich)",
+        "name": "Trockenunterboden mit Falzplatten",
+        "structure": "20 mm oder 25 mm massive, schubfest geklebte Falz-Gipsfaserplatten",
+        "thickness": "20 - 50 mm (zzgl. Schüttung)",
+        "fireRating": "F 30 bis F 60 (Fußböden)",
+        "soundRating": "Trittschallminderung um ca. 18 - 24 dB",
+        "description": "Rationeller Fußbodenaufbau aus Gipsfaser-Estrichelementen. Die Platten verfügen über einen umlaufenden Stufenfalz, der verklebt und verschraubt/geklammert wird. Bietet sofortige Begehbarkeit, keine Baufeuchte und ist mit geeigneten Systemen für Fußbodenheizungen nutzbar.",
+        "application": "Dachgeschoss-Ausbau, Altbausanierung auf Holzbalkendecken, schnelle Estrichreparaturen.",
+        "profileType": "Verlegung auf Trittschalldämmung oder Ausgleichsschüttung",
+        "spacing": "Umlaufender Klebefalz"
+      }
+    ],
+    "BpTrockenbau.schritte": [
+      {
+        "titel": "1. Einfach beplankt",
+        "formel": "m' = 10\\,\\text{kg/m}^2,\\; d = 0{,}075\\,\\text{m}: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}2}{0{,}075}} = 82\\,\\text{Hz}",
+        "erklaerung": "Je Seite eine Lage 12,5 mm (ca. 10 kg/m²)."
+      },
+      {
+        "titel": "2. Doppelt beplankt",
+        "formel": "m' = 20\\,\\text{kg/m}^2: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}1}{0{,}075}} = 58\\,\\text{Hz}",
+        "erklaerung": "Doppelte Masse je Schale."
+      },
+      {
+        "titel": "3. Bewertung",
+        "formel": "58\\,\\text{Hz} < 80\\,\\text{Hz} \\le 82\\,\\text{Hz}",
+        "erklaerung": "Die Resonanz rutscht unter den bauakustischen Bereich ab 100 Hz."
+      }
+    ],
+    "BpTrockenbau.literatur": [
+      "Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014",
+      "Bundesverband der Gipsindustrie e. V., Industriegruppe Gipsplatten (IGG): Merkblatt 2 – Verspachtelung von Gipsplatten, Oberflächengüten Q1 bis Q4 (Stand 2017)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "BpTrockenbau.regelwerke": [
+      {
+        "title": "DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)"
+      },
+      {
+        "title": "DIN 18180 (Gipsplatten - Arten und Anforderungen)"
+      },
+      {
+        "title": "DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)"
+      },
+      {
+        "title": "DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)"
+      },
+      {
+        "title": "DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)"
+      },
+      {
+        "title": "DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)"
+      }
+    ],
+    "BpTrockenbau.formeln": [
+      {
+        "formel": "f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s' \\cdot \\left(\\frac{1}{m'_1} + \\frac{1}{m'_2}\\right)} \\approx 60 \\cdot \\sqrt{\\frac{1}{d} \\cdot \\left(\\frac{1}{m'_1} + \\frac{1}{m'_2}\\right)}",
+        "erklaerung": "Resonanzfrequenz f_0 des Masse-Feder-Masse-Systems einer zweischaligen Trockenbauwand: Je niedriger f_0 (f₀ < 100 Hz, möglichst ≤ 80 Hz), desto besser die Schalldämmung im bauakustisch relevanten Bereich (100–3150 Hz). Näherung mit d in m und m′ in kg/m² für eine Luftschicht; mit Faserdämmung liegt der Vorfaktor bei ca. 50.",
+        "quelle": "DIN 4109-2 / Gösele"
+      },
+      {
+        "formel": "\\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O} \\xrightarrow{\\approx 100-140^{\\circ}\\text{C}} \\text{CaSO}_4 \\cdot \\frac{1}{2}\\,\\text{H}_2\\text{O} + 1{,}5\\,\\text{H}_2\\text{O} \\uparrow",
+        "erklaerung": "Endotherme Dehydratationsreaktion im Brandfall: Kristallwasser (~21 Gew.-%) verdampft und kühlt den Raum hinter der Platte wirksam ab (Brandschutzwirkung F30 bis F120).",
+        "quelle": "DIN EN 520 / DIN 4102"
+      }
+    ]
+  }
+}

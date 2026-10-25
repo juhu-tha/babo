@@ -18,6 +18,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import inhalt from '@/content/emodul/EModul.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -120,7 +122,7 @@ export default function EModul() {
     labels: results.chartLabels,
     datasets: [
       {
-        label: 'Voigt (Obere Schranke)',
+        label: inhalt.werte.voigtObereSchranke,
         data: results.voigtData,
         borderColor: '#A3113E',
         borderDash: [5, 5],
@@ -128,7 +130,7 @@ export default function EModul() {
         tension: 0.1
       },
       {
-        label: 'Reuss (Untere Schranke)',
+        label: inhalt.werte.reussUntereSchranke,
         data: results.reussData,
         borderColor: '#475569',
         borderDash: [5, 5],
@@ -136,14 +138,14 @@ export default function EModul() {
         tension: 0.1
       },
       {
-        label: 'Hashin-Shtrikman (Oben)',
+        label: inhalt.werte.hashinShtrikmanOben,
         data: results.hsPlusData,
         borderColor: '#64748b',
         fill: false,
         tension: 0.1
       },
       {
-        label: 'Hashin-Shtrikman (Unten)',
+        label: inhalt.werte.hashinShtrikmanUnten,
         data: results.hsMinusData,
         borderColor: '#475569',
         fill: false,
@@ -156,22 +158,17 @@ export default function EModul() {
     <div className="space-y-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Activity className="text-shiraz" /> E-Modul &amp; Mehrphasenmodelle
-        </h2>
+          <Activity className="text-shiraz" /><MdText text={inhalt.texte.eModulMehrphasenmodelle} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Der Elastizitätsmodul (E-Modul) beschreibt die Steifigkeit eines Materials. Bei Verbundwerkstoffen wie Beton 
-          setzt sich der E-Modul aus den Eigenschaften der Einzelkomponenten (Gesteinskörnung und Zementstein) zusammen. 
-          Hier werden verschiedene theoretische Modelle zur Abschätzung des resultierenden E-Moduls vorgestellt.
-          </p>
+          <p><MdText text={inhalt.texte.derElastizitätsmodulEModul} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Normativer E-Modul (DIN EN 1992-1-1, 3.1.3)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.normativerEModulDin} /></h3>
               <Slider
-                label="Charakt. Druckfestigkeit (fck)" info="Charakteristische Zylinderdruckfestigkeit des Betons nach 28 Tagen."
+                label={inhalt.werte.charaktDruckfestigkeitFck} info={inhalt.werte.charakteristischeZylinderdruckfestigkeit}
                 value={fck}
                 min={12}
                 max={90}
@@ -180,10 +177,9 @@ export default function EModul() {
                 unit="MPa"
               />
               <div className="mt-4">
-                <label className="block text-sm font-medium text-text-main mb-1">
-                  Gesteinsart (Beiwert <FormulaText text="\alpha_E" />)
+                <label className="block text-sm font-medium text-text-main mb-1"><MdText text={inhalt.texte.gesteinsartBeiwert} /><FormulaText text="\alpha_E" />)
                 </label>
-                <select aria-label="Gesteinsart (Beiwert )"
+                <select aria-label={inhalt.werte.gesteinsartBeiwert}
                   value={alphaE}
                   onChange={(e) => setAlphaE(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white text-text-main focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -195,15 +191,15 @@ export default function EModul() {
                 </select>
               </div>
               <div className="mt-4 p-3 bg-white rounded-lg border border-home-grau/30">
-                <div className="text-sm text-text-main/70">Mittlerer E-Modul (E_cm)</div>
+                <div className="text-sm text-text-main/70"><MdText text={inhalt.texte.mittlererEModulE} /></div>
                 <div className="text-2xl font-bold text-text-main">{formatDeZahl(results.ecm, 1)} GPa</div>
               </div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Mehrphasenmodelle (Mikromechanik)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.mehrphasenmodelleMikromechanik} /></h3>
               <Slider
-                label="E-Modul Gesteinskörnung (E_G)" 
+                label={inhalt.werte.eModulGesteinskörnungE} 
                 value={eModulGestein}
                 min={20}
                 max={100}
@@ -212,7 +208,7 @@ export default function EModul() {
                 unit="GPa"
               />
               <Slider
-                label="E-Modul Zementstein (E_M)" info="Elastizitätsmodul der Zementsteinmatrix."
+                label={inhalt.werte.eModulZementsteinE} info={inhalt.werte.elastizitätsmodulDerZementsteinmatrix}
                 value={eModulMatrix}
                 min={5}
                 max={40}
@@ -221,7 +217,7 @@ export default function EModul() {
                 unit="GPa"
               />
               <Slider
-                label="Volumenanteil Gestein (v_G)" 
+                label={inhalt.werte.volumenanteilGesteinVG} 
                 value={volGestein}
                 min={0}
                 max={100}
@@ -234,68 +230,66 @@ export default function EModul() {
 
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Ergebnisse der Modelle</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.ergebnisseDerModelle} /></h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
-                  <div className="text-xs text-text-main/70 mb-1">Voigt (Parallelschaltung)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.voigtParallelschaltung} /></div>
                   <div className="text-lg font-bold text-shiraz">{formatDeZahl(results.eVoigt, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
-                  <div className="text-xs text-text-main/70 mb-1">Reuss (Reihenschaltung)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.reussReihenschaltung} /></div>
                   <div className="text-lg font-bold text-blue-600">{formatDeZahl(results.eReuss, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
-                  <div className="text-xs text-text-main/70 mb-1">Hashin-Shtrikman (Oben)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.hashinShtrikmanOben} /></div>
                   <div className="text-lg font-bold text-amber-500">{formatDeZahl(results.eHSPlus, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
-                  <div className="text-xs text-text-main/70 mb-1">Hashin-Shtrikman (Unten)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.hashinShtrikmanUnten} /></div>
                   <div className="text-lg font-bold text-emerald-500">{formatDeZahl(results.eHSMinus, 1)} GPa</div>
                 </div>
               </div>
-              <div className="mt-4 text-sm text-text-main/80">
-                Bei Normalbeton (Gestein steifer als Zementstein, Matrix umschließt die Körner) liegt der gemessene E-Modul meist nahe der unteren Hashin-Shtrikman-Schranke; die weichere Übergangszone (ITZ) kann ihn noch darunter drücken.
-              </div>
+              <div className="mt-4 text-sm text-text-main/80"><MdText text={inhalt.texte.beiNormalbetonGesteinSteifer} /></div>
             </div>
 
             {/* Live-Rechenweg (AP 3.7) mit den aktuellen Eingaben */}
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: E-Modul nach EC2 und Mischungsregeln"
+              title={inhalt.werte.ihrRechenwegEModul}
               zielGleichung="E_{cm} = \alpha_E \cdot 22 \cdot (f_{cm}/10)^{0{,}3};\quad E_{\text{Voigt}} = v_G E_G + v_M E_M"
               schritte={[
                 {
-                  titel: 'Mittlere Druckfestigkeit',
-                  erklaerung: 'Nach DIN EN 1992-1-1, Tab. 3.1 liegt der Mittelwert 8 MPa über der charakteristischen Festigkeit:',
+                  titel: inhalt.werte.mittlereDruckfestigkeit,
+                  erklaerung: inhalt.werte.nachDinEn1992,
                   formel: `f_{cm} = f_{ck} + 8 = ${formatDeTeX(fck, 0)} + 8 = ${formatDeTeX(fck + 8, 0)}\\,\\text{MPa}`
                 },
                 {
-                  titel: 'Normativer E-Modul',
+                  titel: inhalt.werte.normativerEModul,
                   erklaerung: `Mit dem Gesteinsbeiwert α_E = ${formatDeZahl(alphaE, 2)} ergibt sich der Sekantenmodul:`,
                   formel: `E_{cm} = ${formatDeTeX(alphaE, 2)} \\cdot 22 \\cdot \\left(\\frac{${formatDeTeX(fck + 8, 0)}}{10}\\right)^{0{,}3} = ${formatDeTeX(results.ecm, 1)}\\,\\text{GPa}`
                 },
                 {
                   titel: 'Volumenanteile',
-                  erklaerung: 'Gestein und Zementstein füllen zusammen das gesamte Volumen:',
+                  erklaerung: inhalt.werte.gesteinUndZementsteinFüllen,
                   formel: `v_G = ${formatDeTeX(volGestein / 100, 2)},\\quad v_M = 1 - v_G = ${formatDeTeX(1 - volGestein / 100, 2)}`
                 },
                 {
-                  titel: 'Obere Schranke (Voigt, Parallelschaltung)',
-                  erklaerung: 'Beide Phasen erfahren dieselbe Dehnung:',
+                  titel: inhalt.werte.obereSchrankeVoigtParallelschaltung,
+                  erklaerung: inhalt.werte.beidePhasenErfahrenDieselbe,
                   formel: `E_{\\text{Voigt}} = ${formatDeTeX(volGestein / 100, 2)} \\cdot ${formatDeTeX(eModulGestein, 0)} + ${formatDeTeX(1 - volGestein / 100, 2)} \\cdot ${formatDeTeX(eModulMatrix, 0)} = ${formatDeTeX(results.eVoigt, 1)}\\,\\text{GPa}`
                 },
                 {
-                  titel: 'Untere Schranke (Reuss, Reihenschaltung)',
-                  erklaerung: 'Beide Phasen erfahren dieselbe Spannung:',
+                  titel: inhalt.werte.untereSchrankeReussReihenschaltung,
+                  erklaerung: inhalt.werte.beidePhasenErfahrenDieselbe2,
                   formel: `E_{\\text{Reuss}} = \\frac{1}{\\frac{${formatDeTeX(volGestein / 100, 2)}}{${formatDeTeX(eModulGestein, 0)}} + \\frac{${formatDeTeX(1 - volGestein / 100, 2)}}{${formatDeTeX(eModulMatrix, 0)}}} = ${formatDeTeX(results.eReuss, 1)}\\,\\text{GPa}`
                 }
               ]}
               ergebnisHinweis={`Der tatsächliche E-Modul des Zweiphasenmaterials liegt zwischen ${formatDeZahl(results.eReuss, 1)} und ${formatDeZahl(results.eVoigt, 1)} GPa; die Hashin-Shtrikman-Schranken (${formatDeZahl(results.eHSMinus, 1)} bis ${formatDeZahl(results.eHSPlus, 1)} GPa) engen diesen Bereich ein.`}
-              normQuelle="DIN EN 1992-1-1:2011-01, 3.1.3"
+              normQuelle={inhalt.werte.dinEn19921}
             />
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">E-Modul in Abhängigkeit vom Gesteinsanteil</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.eModulInAbhängigkeit} /></h3>
               <div className="h-64">
                 <Line 
                   data={chartData} 
@@ -304,10 +298,10 @@ export default function EModul() {
                     maintainAspectRatio: false,
                     scales: {
                       y: {
-                        title: { display: true, text: 'E-Modul (GPa)' }
+                        title: { display: true, text: inhalt.werte.eModulGpa }
                       },
                       x: {
-                        title: { display: true, text: 'Volumenanteil Gestein (%)' }
+                        title: { display: true, text: inhalt.werte.volumenanteilGestein }
                       }
                     }
                   }} 
@@ -317,7 +311,7 @@ export default function EModul() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Modelle</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeModelle} /></h3>
               <div className="flex justify-between items-center h-40 bg-off-white rounded-lg border border-home-grau/30 p-4">
                 
                 {/* SVG Defs for Arrows */}
@@ -334,7 +328,7 @@ export default function EModul() {
 
                 {/* Voigt */}
                 <div className="flex flex-col items-center w-1/3">
-                  <div className="text-xs font-bold mb-2">Voigt (Parallel)</div>
+                  <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.voigtParallel} /></div>
                   <div className="text-[10px] text-text-main/70 mb-2">Dehnung <FormulaText text="\varepsilon" /> gleich</div>
                   <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
                     <rect x="10" y="15" width="20" height="40" fill="#cbd5e1" stroke="#94a3b8" />
@@ -346,7 +340,7 @@ export default function EModul() {
                 
                 {/* Reuss */}
                 <div className="flex flex-col items-center w-1/3 border-l border-r border-home-grau/30">
-                  <div className="text-xs font-bold mb-2">Reuss (Reihe)</div>
+                  <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.reussReihe} /></div>
                   <div className="text-[10px] text-text-main/70 mb-2">Spannung <FormulaText text="\sigma" /> gleich</div>
                   <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
                     <rect x="10" y="15" width="40" height="20" fill="#cbd5e1" stroke="#94a3b8" />
@@ -358,8 +352,8 @@ export default function EModul() {
 
                 {/* Hashin-Shtrikman */}
                 <div className="flex flex-col items-center w-1/3">
-                  <div className="text-xs font-bold mb-2">HS (Einschluss)</div>
-                  <div className="text-[10px] text-text-main/70 mb-2">Exaktere Schranke</div>
+                  <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.hsEinschluss} /></div>
+                  <div className="text-[10px] text-text-main/70 mb-2"><MdText text={inhalt.texte.exaktereSchranke} /></div>
                   <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
                     <rect x="10" y="15" width="40" height="40" fill="#cbd5e1" stroke="#94a3b8" />
                     <circle cx="30" cy="35" r="12" fill="#94a3b8" stroke="#64748b" />
@@ -375,67 +369,31 @@ export default function EModul() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: E-Modul eines C30/37 mit Kalkstein-Gesteinskörnung"
+        title={inhalt.werte.beispiel1EModul}
         zielGleichung="E_{cm} = \alpha_E \cdot 22 \cdot \left(\frac{f_{cm}}{10}\right)^{0{,}3}"
-        schritte={[
-          { titel: 'Mittlere Festigkeit', erklaerung: 'Nach DIN EN 1992-1-1, Tab. 3.1:', formel: 'f_{cm} = f_{ck} + 8 = 30 + 8 = 38\\,\\text{N/mm}^2' },
-          { titel: 'Quarzitische Gesteinskörnung', erklaerung: 'Bezugswert der Norm:', formel: 'E_{cm} = 22 \\cdot 3{,}8^{0{,}3} = 32{,}8\\,\\text{GPa} \\approx 33\\,\\text{GPa}' },
-          { titel: 'Kalkstein', erklaerung: 'Abminderung um 10 % nach 3.1.3(2):', formel: 'E_{cm} = 0{,}9 \\cdot 32{,}8 = 29{,}5\\,\\text{GPa}' }
-        ]}
-        ergebnisHinweis="Bei Sandstein (−30 %) wären es nur rund 23 GPa – die Gesteinskörnung beeinflusst Durchbiegungen und Spannungsumlagerungen deutlich."
-        normQuelle="DIN EN 1992-1-1, 3.1.3(2) und Tab. 3.1"
+        schritte={inhalt.daten["EModul.schritte"]}
+        ergebnisHinweis={inhalt.werte.beiSandstein30Wären}
+        normQuelle={inhalt.werte.dinEn199212}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Schranken für den E-Modul aus Gestein und Zementstein"
+        title={inhalt.werte.beispiel2SchrankenFür}
         zielGleichung="E_{Reuss} \le E \le E_{Voigt}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Gestein E_G = 60 GPa mit 70 Vol.-%, Zementstein E_M = 20 GPa mit 30 Vol.-%.', formel: 'v_G = 0{,}70,\\quad v_M = 0{,}30' },
-          { titel: 'Voigt (gleiche Dehnung)', erklaerung: 'Obere Schranke:', formel: 'E_{Voigt} = 0{,}7 \\cdot 60 + 0{,}3 \\cdot 20 = 48{,}0\\,\\text{GPa}' },
-          { titel: 'Reuss (gleiche Spannung)', erklaerung: 'Untere Schranke:', formel: 'E_{Reuss} = \\left(\\frac{0{,}7}{60} + \\frac{0{,}3}{20}\\right)^{-1} = 37{,}5\\,\\text{GPa}' }
-        ]}
-        ergebnisHinweis="Der wahre Wert liegt dazwischen, nach Hashin-Shtrikman enger eingegrenzt. Gemessene Betonwerte (≈ 33 GPa) liegen oft sogar darunter – Ursache sind Poren und die weichere Kontaktzone zwischen Korn und Zementstein."
-        normQuelle="Mikromechanik (Voigt 1889, Reuss 1929, Hashin & Shtrikman 1963)"
+        schritte={inhalt.daten["EModul.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.derWahreWertLiegt}
+        normQuelle={inhalt.werte.mikromechanikVoigt1889Reuss}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="emodul" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: E-Modul nach DIN EN 1992-1-1 und Mehrphasenmodelle geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2, Abschn. 3.1.3 und Tab. 3.1)' },
-          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton – Bestimmung des Elastizitätsmoduls unter Druckbelastung (Sekantenmodul))' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Hashin, Z.; Shtrikman, S.: A variational approach to the theory of the elastic behaviour of multiphase materials. Journal of the Mechanics and Physics of Solids 11 (1963), S. 127–140',
-          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)'
-        ]}
-        formeln={[
-          {
-            formel: 'E_{cm} = \\alpha_E \\cdot 22 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0{,}3} \\quad [\\text{GPa}]',
-            erklaerung: 'Mittlerer Elastizitätsmodul (Sekantenmodul) von Normalbeton mit quarzitischer Gesteinskörnung nach Tab. 3.1 (f_cm in N/mm²); für andere Gesteinsarten Faktor α_E nach 3.1.3(2).',
-            quelle: 'DIN EN 1992-1-1, 3.1.3 und Tab. 3.1'
-          },
-          {
-            formel: 'E_{\\text{Voigt}} = v_G \\cdot E_G + v_M \\cdot E_M',
-            erklaerung: 'Voigt-Modell (obere Schranke / Parallelschaltung / Isostrain): Annahme einheitlicher Dehnung in allen Phasen des Zweiphasen-Verbundwerkstoffs.',
-            quelle: 'Mikromechanik'
-          },
-          {
-            formel: 'E_{\\text{Reuss}} = \\left(\\frac{v_G}{E_G} + \\frac{v_M}{E_M}\\right)^{-1}',
-            erklaerung: 'Reuss-Modell (untere Schranke / Reihenschaltung / Isostress): Annahme einheitlicher Spannung in allen Phasen.',
-            quelle: 'Mikromechanik'
-          },
-          {
-            formel: 'K_{\\text{HS}-} = K_M + \\frac{v_G}{\\frac{1}{K_G - K_M} + \\frac{3v_M}{3K_M + 4G_M}}',
-            erklaerung: 'Untere Hashin-Shtrikman-Schranke für sphärische Gesteinsinklusionen in zementärer Matrix: liefert realitätsnahe Steifigkeitsabschätzungen für Beton.',
-            quelle: 'Hashin & Shtrikman (1963)'
-          }
-        ]}
+        regelwerke={inhalt.daten["EModul.regelwerke"]}
+        literatur={inhalt.daten["EModul.literatur"]}
+        formeln={inhalt.daten["EModul.formeln"]}
       />
     </div>
   );

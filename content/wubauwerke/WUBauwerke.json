@@ -1,0 +1,224 @@
+{
+  "texte": {
+    "wasserundurchlässigeBauwerkeWuRichtlinie": " Wasserundurchlässige Bauwerke (WU-Richtlinie & Weiße Wanne)",
+    "bemessungEntwurfsgrundsätzeAB": "Bemessung, Entwurfsgrundsätze (a/b/c), Fugenabdichtungen, Betontechnologie und autogene Rissheilung nach DAfStb-Richtlinie (2017-12) & DIN EN 1992-1-1",
+    "dinEn19921": " DIN EN 1992-1-1 / DAfStb WU",
+    "wasserundurchlässigeBaukörperAusBeton": "Wasserundurchlässige Baukörper aus Beton (**Weiße Wanne**) übernehmen in einem Arbeitsgang sowohl die **tragende statische Funktion** als auch die **wasserundurchlässige Barrierefunktion** ohne zusätzliche Außenhautabdichtung. Die Dichtigkeit wird durch einen Verbund aus rissminimierendem Tragwerksentwurf, normativer Mindestbauteildicke, Begrenzung der Trennrissbreiten ($w_k$), hochdichtem Beton ($w/z \\le 0{,}55$) und lückenlosen Fugenabdichtungssystemen garantiert.",
+    "t1RechnerNachweise": " 1. Rechner & Nachweise",
+    "t2EntwurfsgrundsätzeAB": " 2. Entwurfsgrundsätze (a, b, c)",
+    "t3FugenplanungDichtsysteme": " 3. Fugenplanung & Dichtsysteme",
+    "t4BetontechnologieSelbstheilung": " 4. Betontechnologie & Selbstheilung",
+    "t5WannenTypenIm": " 5. Wannen-Typen im Vergleich",
+    "t1KlassifizierungDafstbWu": " 1. Klassifizierung (DAfStb WU-Richtlinie)",
+    "beanspruchungsklasseBk": "Beanspruchungsklasse (BK)",
+    "nutzungsklasseNk": "Nutzungsklasse (NK)",
+    "t2BauteilgeometrieWasserdruck": " 2. Bauteilgeometrie & Wasserdruck",
+    "nachweisergebnisDafstbWuRichtlinie": "Nachweisergebnis (DAfStb WU-Richtlinie)",
+    "druckgefälleIHW": "Druckgefälle $I = h_w / h$:",
+    "mindestbauteildickeHMin": "Mindestbauteildicke $h_{\\min}$:",
+    "zulässigeRissbreiteWK": "Zulässige Rissbreite $w_k$:",
+    "fürDruckgefälle": "Für Druckgefälle ",
+    "alleMindestanforderungenAnDichtigkeit": "Alle Mindestanforderungen an Dichtigkeit und Querschnittsabmessungen sind rechnerisch erfüllt.",
+    "achtungBauteildickeErhöhenOder": "Achtung: Bauteildicke erhöhen oder rechnerische Rissbreite durch verstärkte Zwangsbewehrung reduzieren!",
+    "schnittmodellWasserdruckUngerissenerDich": "Schnittmodell: Wasserdruck & Ungerissener Dichtkern",
+    "druckgefälleIHW2": "Druckgefälle $I = h_w / h$ in Abhängigkeit von der Wanddicke",
+    "nachDafstbWuRichtlinie": "Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle $I$ maßgeblich die Anforderung an die Rissbreitenbegrenzung. Für die Selbstheilung (Entwurfsgrundsatz b) gilt: $I \\le 10$ → $w_k \\le 0{,}20\\,\\text{mm}$, $I \\le 15$ → 0,15 mm, $I \\le 25$ → 0,10 mm (WU-Richtlinie 2017-12). Darüber ist Selbstheilung nicht planbar – Entwurfsgrundsatz a oder c wählen.",
+    "die3GrundlegendenEntwurfskonzepte": " Die 3 grundlegenden Entwurfskonzepte nach DAfStb-Richtlinie",
+    "derTragwerksplanerMussVor": "Der Tragwerksplaner muss vor Beginn der Detailplanung in Abstimmung mit dem Bauherrn und dem Betonhersteller eines der drei normierten Entwurfskonzepte für wasserundurchlässige Baukörper festlegen:",
+    "vermeidungVonTrennrissen": "Vermeidung von Trennrissen",
+    "durchKonstruktiveUndBetontechnologische": "Durch konstruktive und betontechnologische Maßnahmen wird das Entstehen von Trennrissen von vornherein vollständig verhindert.",
+    "kurzeBlocklängenWandabschnitteEtwa": "**Kurze Blocklängen:** Wandabschnitte etwa 6 bis 8 m zwischen Scheinfugen / Dehnfugen (Faustwert).",
+    "niedrigwärmezementZementeCemIii": "**Niedrigwärmezement:** Zemente CEM III mit LH/VLH zur Senkung der Hydratationswärme ($\\Delta T \\le 15\\,\\text{K}$).",
+    "gleitlagerungEntkopplungDerBodenplatte": "**Gleitlagerung:** Entkopplung der Bodenplatte durch doppellagige PE-Folien auf Sauberkeitsschicht.",
+    "bewertungExtremHoheAusführungsdisziplin": "**Bewertung:** Extrem hohe Ausführungsdisziplin erforderlich; Rissfreiheit auf der Baustelle nie 100%ig garantierbar.",
+    "praxisStandardRegelfall": "Praxis-Standard (Regelfall)",
+    "planmäßigeRisse": "Planmäßige Risse",
+    "begrenzungDerRissbreite": "Begrenzung der Rissbreite",
+    "trennrisseWerdenPlanmäßigZugelassen": "Trennrisse werden planmäßig zugelassen, jedoch durch gezielte Mindestbewehrung auf Breiten beschränkt (je nach Druckgefälle $w_k \\le 0{,}10 \\dots 0{,}20\\,\\text{mm}$), die eine **autogene Selbstheilung** ermöglichen.",
+    "mindestbewehrungAuslegungAufFrühen": "**Mindestbewehrung:** Auslegung auf frühen Zwang (Hydratationswärme) nach DIN EN 1992-1-1.",
+    "engeStababständeVieleDünne": "**Enge Stababstände:** Viele dünne Stäbe (z. B. $\\varnothing 10$ oder $\\varnothing 12$) statt weniger dicker Stäbe.",
+    "selbstheilungRisseDichtenSich": "**Selbstheilung:** Risse dichten sich durch Calciumcarbonat-Ausfällung bei Wasserdruck $I \\le 10$ eigenständig ab.",
+    "bewertungRobusterUndHäufig": "**Bewertung:** Robuster und häufig gewählter Ansatz. Erfordert genaue Bemessung.",
+    "planmäßigeRissinjektion": "Planmäßige Rissinjektion",
+    "breitereTrennrisseWerdenBewusst": "Breitere Trennrisse werden bewusst in Kauf genommen (geringere Zwangsbewehrung), um Baukosten zu senken. Alle auftretenden Risse werden planmäßig nachträglich injiziert.",
+    "geringereBewehrungBemessungNur": "**Geringere Bewehrung:** Bemessung nur auf Tragfähigkeit, Rissbreiten bis $0{,}30\\,\\text{mm}$ akzeptiert.",
+    "freieZugänglichkeitWändeMüssen": "**Freie Zugänglichkeit:** Wände müssen beidseitig inspizierbar und frei von Vorwandinstallationen bleiben.",
+    "dichtinjektionVerpressungMitPolyurethanh": "**Dichtinjektion:** Verpressung mit Polyurethanharzen (PU) oder Epoxidharzen nach DIN EN 1504-5.",
+    "bewertungSanierungsUndPrüfplan": "**Bewertung:** Sanierungs- und Prüfplan vertraglich zwingend festzulegen; Nachfolgekosten für Injektionen einplanen.",
+    "vergleichsmatrixDerEntwurfsgrundsätze": "Vergleichsmatrix der Entwurfsgrundsätze",
+    "konzeptARissvermeidung": "Konzept a (Rissvermeidung)",
+    "konzeptBBegrenzungWk": "Konzept b (Begrenzung wk)",
+    "konzeptCInjektion": "Konzept c (Injektion)",
+    "geringBisMittel": "Gering bis mittel",
+    "hochEngeStababstände": "Hoch (enge Stababstände)",
+    "bauablaufSchalung": "Bauablauf & Schalung",
+    "aufwendigPilgerschrittVieleFugen": "Aufwendig (Pilgerschritt, viele Fugen)",
+    "sehrZügigGroßeTaktabschnitte": "Sehr zügig (große Taktabschnitte)",
+    "monolithischerUngerissenerBeton": "Monolithischer ungerissener Beton",
+    "autogeneSelbstheilung": "Autogene Selbstheilung",
+    "kunstharzInjektionDinEn": "Kunstharz-Injektion (DIN EN 1504-5)",
+    "kostenrisikoNacharbeit": "Kostenrisiko / Nacharbeit",
+    "hochFallsDochRisse": "Hoch (falls doch Risse entstehen)",
+    "sehrGeringKalkulierbar": "Sehr gering (kalkulierbar)",
+    "mittelInjektionskostenSicher": "Mittel (Injektionskosten sicher)",
+    "fugenUndAbdichtungssystemeIm": " Fugen- und Abdichtungssysteme im WU-Bauwerk",
+    "undichtigkeitenBeiWeißenWannen": "Undichtigkeiten bei Weißen Wannen entstehen überwiegend an **Fugen und Durchdringungen**, nicht im ungestörten Betonquerschnitt. Ein lückenloses, in sich geschlossenes Fugenkonzept nach **DIN 18197** und der DAfStb-Richtlinie ist für den Dichtigkeitserfolg unerlässlich.",
+    "t1ArbeitsfugenBodenWand": " 1. Arbeitsfugen (Boden-Wand / Wand-Wand)",
+    "entstehenUnvermeidbarZwischenZwei": "Entstehen unvermeidbar zwischen zwei Betonierabschnitten. Der Verbund muss mechanisch rau ausgeführt und druckwasserdicht abgedichtet werden.",
+    "beschichteteFugenblecheKombibleche": "Beschichtete Fugenbleche (Kombibleche)",
+    "verzinkteOderBlankeStahlbleche": "Verzinkte oder blanke Stahlbleche mit mineralischer, quellfähiger oder bitumenfreier Polymer-Spezialbeschichtung. Verbinden sich chemisch und mikromechanisch mit dem Frischbeton. Prüfdruck bis zu 5 bar (50 m Wassersäule).",
+    "injektionsschläucheSekundärsicherung": "Injektionsschläuche (Sekundärsicherung)",
+    "perforierteOderGeschlitzteSchläuche": "Perforierte oder geschlitzte Schläuche im Fugenbereich. Ermöglichen bei eventuellen Hohlstellen ein nachträgliches Verpressen mit PU-Harzen oder Polyacrylatgel ohne Bohrarbeiten.",
+    "quellbänderBentonitPolymer": "Quellbänder (Bentonit / Polymer)",
+    "quellenBeiWasserkontaktStark": "Quellen bei Wasserkontakt stark auf (Herstellerangaben beachten). Nur bei allseitiger Betonüberdeckung von mind. 80–100 mm zulässig, um Abplatzungen durch Quelldruck zu verhindern.",
+    "t2DehnfugenSollrisseDurchdringungen": " 2. Dehnfugen, Sollrisse & Durchdringungen",
+    "konstruktiveTrennungenZurAufnahme": "Konstruktive Trennungen zur Aufnahme thermischer Dehnungen und Setzungsdifferenzen sowie gezielte Risslenkung.",
+    "dehnfugenbänderNachDin7865": "Dehnfugenbänder nach DIN 7865 / DIN 18197",
+    "innenOderAußenliegendeElastomer": "Innen- oder außenliegende Elastomer- bzw. PVC-P-Bänder mit mittigem Dehnschlauch (Hohlkörper). Nehmen 3D-Verformungen (Scherung, Dehnung, Stauchung) schadlos auf.",
+    "sollrisselementeScheinfugen": "Sollrisselemente (Scheinfugen)",
+    "fugenelementeMitQuerschnittsschwächungMi": "Fugenelemente mit Querschnittsschwächung (mind. 1/3 der Bauteildicke) und integriertem Abdichtungsblech. Lenken unvermeidliche Zwangrisse an definierte, abgedichtete Stellen.",
+    "druckwasserdichteRohrdurchführungen": "Druckwasserdichte Rohrdurchführungen",
+    "futterrohreMitFlanschOder": "Futterrohre mit Flansch oder integrierter Außenabdichtung; medienführende Leitungen werden über elastomere Ringraumdichtungen (Pressringdichtungen) gas- und wasserdicht eingebunden.",
+    "betontechnologieUndAutogeneSelbstheilung": " Betontechnologie und autogene Selbstheilung von Trennrissen",
+    "derBetonFürWu": "Der Beton für WU-Bauwerke muss nach **DIN EN 206 / DIN 1045-2** ein dichtes Zementsteingefüge mit minimalem Kapillarporenvolumen aufweisen. Die Begrenzung der Hydratationswärmeentwicklung steht dabei im Zentrum, um thermische Frühzwangspannungen zu minimieren.",
+    "betontechnologischeKennwerteDinEn": " Betontechnologische Kennwerte (DIN EN 206 / DIN 1045-2)",
+    "maximalerWZWert": "Maximaler w/z-Wert:",
+    "wZLe0": "$w/z \\le 0{,}55$ (BK 1) bzw. $0{,}60$ (BK 2)",
+    "c2530OftC30": "C25/30 (oft C30/37)",
+    "wassereindringtiefeDinEn12390": "Wassereindringtiefe (DIN EN 12390-8):",
+    "zementartHydratationswärme": "Zementart & Hydratationswärme:",
+    "zBCemIii": "z. B. CEM III/A LH (niedrige Hydratationswärme)",
+    "konsistenzklasseEinbau": "Konsistenzklasse / Einbau:",
+    "f3BisF4Weich": "F3 bis F4 (weich bis fließfähig)",
+    "autogeneSelbstheilungChemischerMechanism": " Autogene Selbstheilung (Chemischer Mechanismus)",
+    "unterDauerhaftemWasserkontaktUnd": "Unter dauerhaftem Wasserkontakt und bei begrenzter Rissbreite (je nach Druckgefälle $w_k \\le 0{,}10 \\dots 0{,}20\\,\\text{mm}$) verschließen sich wasserführende Trennrisse durch chemische Reaktionen und physikalische Prozesse selbsttätig.",
+    "hauptreaktionCalciumcarbonatAusfällung": "Hauptreaktion: Calciumcarbonat-Ausfällung",
+    "imPorenwasserGelöstesCalciumhydroxid": "Im Porenwasser gelöstes Calciumhydroxid ($Ca(OH)_2$ aus dem Zementstein) reagiert mit im Wasser gelöstem Kohlendioxid ($CO_2$) zu schwerlöslichem Calcit ($CaCO_3$), der den Rissquerschnitt von innen heraus auskristallisiert und abdichtet.",
+    "sekundäreffekteWeiterschreitendeHydratat": "• **Sekundäreffekte:** Weiterschreitende Hydratation unhydratisierter Zementklinker an den Rissufern.",
+    "filterwirkungMechanischesFestsetzenFeins": "• **Filterwirkung:** Mechanisches Festsetzen feinster Schwebstoffe im Risskanal.",
+    "grenzenDerSelbstheilungRisse": "**Grenzen der Selbstheilung:** Risse breiter als der zulässige Wert (0,10–0,20 mm je nach Druckgefälle), zu hohes Fließgefälle (Auswaschung statt Kristallisation) oder aggressives, kalklösendes Wasser verhindern die Selbstheilung.",
+    "bauweisenImTiefbauWeiße": " Bauweisen im Tiefbau: Weiße, Schwarze, Braune & Gelbe Wanne",
+    "jeNachBaugrundverhältnissenWasserbeanspr": "Je nach Baugrundverhältnissen, Wasserbeanspruchung, Radon-Schutzanforderungen und geplanter Nutzung stehen im modernen Tief- und Ingenieurbau verschiedene Wannen-Bauarten zur Verfügung:",
+    "wuBetonMonolithisch": "WU-Beton (Monolithisch)",
+    "betonÜbernimmtTragwerkUnd": "Beton übernimmt Tragwerk und Abdichtung gleichzeitig. Keine außenliegende Abdichtungshaut nötig.",
+    "vorteilGeringerWartungsaufwandSchnelle": "**Vorteil:** Geringer Wartungsaufwand, schnelle Bauzeit, Schäden von innen ortbar und sanierbar.",
+    "schwarzeWanne": "Schwarze Wanne",
+    "bitumenPmbcDin18533": "Bitumen / PMBC (DIN 18533)",
+    "außenliegendeNahtloseDichtungshautAus": "Außenliegende, nahtlose Dichtungshaut aus Bitumenbahnen oder kunststoffmodifizierten Bitumendickbeschichtungen.",
+    "vorteilHöchsteSicherheitGegen": "**Vorteil:** Höchste Sicherheit gegen Dampfdiffusion; **Nachteil:** Mechanisch verletzlich bei Verfüllung.",
+    "brauneWanne": "Braune Wanne",
+    "außenliegendeMattenAusQuellfähigem": "Außenliegende Matten aus quellfähigem Natriumbentonit, eingebettet in reißfeste Geotextilvliese.",
+    "vorteilSelbstquellendBeiBeschädigung": "**Vorteil:** Selbstquellend bei Beschädigung; **Voraussetzung:** Kontinuierlicher Auflagedruck.",
+    "frischbetonverbundfolienFbvDieVor": "Frischbetonverbundfolien (FBV), die vor dem Betonieren in die Schalung eingelegt werden und sich vollflächig mit dem Beton verzahnen.",
+    "vorteilHinterlaufschutzVerhindertUnterwa": "**Vorteil:** Hinterlaufschutz verhindert Unterwanderung von Wasser bei Punktperforationen; radonresistent."
+  },
+  "werte": {
+    "bauteildickeHMm": "Bauteildicke h (mm)",
+    "druckgefälleIHW": "Druckgefälle I = h_w / h [-]",
+    "bk1DrückendesUnd": "BK 1: Drückendes und aufstauendes Sickerwasser (Grundwasser, Hochwasser). BK 2: Bodenfeuchte und nichtstauendes Sickerwasser.",
+    "beanspruchungsklasseBk": "Beanspruchungsklasse (BK)",
+    "nkAStandardWohnräume": "NK A: Standard (Wohnräume, Archive, Technikzentralen). Feuchtetransport über den Querschnitt nicht zulässig. NK B: Tiefgaragen, Lagerräume einfacher Art. Feuchtstellen an Fugen/Rissen zulässig.",
+    "nutzungsklasseNk": "Nutzungsklasse (NK)",
+    "wasserdruckhöheHW": "Wasserdruckhöhe h_w",
+    "höheDesBemessungswasserstandsAb": "Höhe des Bemessungswasserstands ab Unterkante Bauteil (aus dem Bodengutachten; Sicherheitszuschlag als Lehrannahme).",
+    "vorhandeneBauteildickeH": "Vorhandene Bauteildicke h",
+    "gesamtbauteildickeElementwändeKernbetonM": "Gesamtbauteildicke. Elementwände: Kernbeton mindestens 120 mm (Empfehlung WU-Richtlinie 2017-12).",
+    "rechnerischeRissbreiteWCal": "Rechnerische Rissbreite w_cal",
+    "ausDemNachweisDer": "Aus dem Nachweis der Rissbreitenbegrenzung nach DIN EN 1992-1-1 ermittelte Rissbreite w_k.",
+    "anpassungErforderlich": "Anpassung erforderlich",
+    "bk2OrientierungswertNach": "BK 2: Orientierungswert nach EC2/NA",
+    "selbstheilungGrundsatzB": "Selbstheilung (Grundsatz b)",
+    "i25GrundsatzA": "I > 25: Grundsatz a oder c wählen",
+    "keinFeuchtedurchtritt": "Kein Feuchtedurchtritt",
+    "feuchtefleckenToleriert": "Feuchteflecken toleriert",
+    "anwendungsbeispielKellerwandInBeanspruch": "Anwendungsbeispiel: Kellerwand in Beanspruchungsklasse 1 (Standardwerte)",
+    "dafstbWuRichtlinie2017": "DAfStb-WU-Richtlinie 2017-12 (Selbstheilung: Rechenwerte w_k je Druckgefälle)",
+    "mitH300Mm": "Mit h = 300 mm und w_k ≤ 0,20 mm ist die Selbstheilung nach Entwurfsgrundsatz b planbar.",
+    "schwarzeWanne": "Schwarze Wanne"
+  },
+  "daten": {
+    "WUBauwerke.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "h_w = 3{,}0\\,\\text{m},\\; h = 300\\,\\text{mm},\\; \\text{BK 1, Ortbetonwand}",
+        "erklaerung": "Drückendes Wasser."
+      },
+      {
+        "titel": "2. Mindestdicke",
+        "formel": "h = 300\\,\\text{mm} \\ge 240\\,\\text{mm}",
+        "erklaerung": "Tab. 1 der WU-Richtlinie eingehalten."
+      },
+      {
+        "titel": "3. Druckgefälle",
+        "formel": "I = 3{,}0 / 0{,}30 = 10",
+        "erklaerung": "Grenze der ersten Stufe."
+      },
+      {
+        "titel": "4. Zulässige Rissbreite",
+        "formel": "w_k \\le 0{,}20\\,\\text{mm}",
+        "erklaerung": "Selbstheilung planbar (Entwurfsgrundsatz b)."
+      }
+    ],
+    "WUBauwerke.weblinks": [
+      {
+        "title": "Zement-Merkblatt H10: Wasserundurchlässige Betonbauwerke (beton.org)",
+        "url": "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/"
+      },
+      {
+        "title": "Deutscher Ausschuss für Stahlbeton e.V. (DAfStb)",
+        "url": "https://www.dafstb.de/"
+      }
+    ],
+    "WUBauwerke.regelwerke": [
+      {
+        "title": "DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie:2017-12)",
+        "url": "https://www.dafstb.de/"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Abschnitt 7.3 Rissbreitenbegrenzung)"
+      },
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)"
+      },
+      {
+        "title": "DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)"
+      },
+      {
+        "title": "DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)"
+      }
+    ],
+    "WUBauwerke.literatur": [
+      "Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. Düsseldorf: Verlag Bau+Technik 2018",
+      "DAfStb-Heft 555: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton. Berlin: Beuth 2006 (bezogen auf die Richtlinie 2003; keine Neuauflage zur Ausgabe 2017)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+    ],
+    "WUBauwerke": [
+      {
+        "formel": "I = \\frac{h_w}{h}",
+        "erklaerung": "Druckgefälle I [-]: Wassersäule h_w [m] bezogen auf die Bauteildicke h [m]. Für die Selbstheilung: I ≤ 10 → w_k ≤ 0,20 mm; I ≤ 15 → 0,15 mm; I ≤ 25 → 0,10 mm (WU-Richtlinie 2017-12).",
+        "quelle": "DAfStb-WU-Richtlinie 2017-12"
+      },
+      {
+        "formel": "h_{\\min} \\ge 240\\,\\text{mm} \\; (\\text{Wand, BK 1}) \\quad \\text{bzw.} \\quad h_{\\min} \\ge 250\\,\\text{mm} \\; (\\text{Bodenplatte, BK 1})",
+        "erklaerung": "Mindestbauteildicken in Beanspruchungsklasse 1 (Ortbeton und Elementwand 240 mm, Fertigteilwand 200 mm). In BK 2: Wand 200 mm (Ortbeton), Bodenplatte 150 mm.",
+        "quelle": "DAfStb-WU-Richtlinie 2017-12, Tabelle 1"
+      }
+    ],
+    "WUBauwerke_2": [
+      {
+        "formel": "Ca(OH)_2 + CO_2 \\xrightarrow{H_2O} CaCO_3 \\downarrow + H_2O",
+        "erklaerung": "Kristalline Carbonatisierungsreaktion der autogenen Selbstheilung: Im Porenwasser gelöstes Portlandit reagiert mit Kohlensäure zu schwerlöslichem Calcit, wodurch Trennrisse bis wk ≤ 0,15-0,20 mm dauerhaft zuwachsen.",
+        "quelle": "DAfStb Heft 555"
+      },
+      {
+        "formel": "\\Delta T = T_{\\max} - T_{\\text{Rand}} \\le 15\\,\\text{K} \\dots 20\\,\\text{K}",
+        "erklaerung": "Zulässige Temperaturdifferenz im abfließenden Hydratationswärme-Zustand zur Vermeidung von oberflächennahen und durchgehenden Zwangs-Frührissen bei massigen WU-Querschnitten.",
+        "quelle": "Lehrwert (Praxis)"
+      }
+    ]
+  }
+}

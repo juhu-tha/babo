@@ -32,6 +32,8 @@ import {
   Server,
   Video
 } from 'lucide-react';
+import inhalt from '@/content/kibaustoffe/KiBaustoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface PromptTemplate {
   title: string;
@@ -41,29 +43,13 @@ interface PromptTemplate {
   explanation: string;
 }
 
-const promptPresetMaterials = [
-  { id: 'beton', name: 'RC-Beton (Recycling-Beton)', description: 'Gesteinskörnungen und Klinkerreduktion' },
-  { id: 'fliesenkleber', name: 'Zementärer Flexmörtel S1', description: 'Kunststoffmodifiziert nach DIN EN 12004' },
-  { id: 'bsh', name: 'Brettschichtholz (BSH)', description: 'Anisotropie-Ausgleich im Holzbau' }
-];
+const promptPresetMaterials = inhalt.daten.promptPresetMaterials;
 
-const promptObjectives = [
-  { id: 'norm', name: 'Regelwerksprüfung & Konformität', desc: 'Übereinstimmung mit DIN / EN / Eurocode' },
-  { id: 'schaden', name: 'Schadensanalyse & Prävention', desc: 'Mikromechanische Ursachenforschung' },
-  { id: 'nachhaltig', name: 'LCA & CO₂-Optimierung', desc: 'Verminderung des Treibhauspotenzials' }
-];
+const promptObjectives = inhalt.daten.promptObjectives;
 
-const promptFormats = [
-  { id: 'report', name: 'Technisches Gutachten / Prosa', desc: 'Formeller Fließtext mit klaren Fachüberschriften' },
-  { id: 'bullets', name: 'Kondensierte Checkliste / Stichpunkte', desc: 'Ideal zur schnellen Qualitätskontrolle' },
-  { id: 'code', name: 'Interaktiver Python-Rechner', desc: 'Nutzung von Streamlit oder Matplotlib zur Simulation' }
-];
+const promptFormats = inhalt.daten.promptFormats;
 
-const promptTonalities = [
-  { id: 'scientific', name: 'Akademisch / Wissenschaftlich', desc: 'Exakte mikrostrukturelle & physikalische Terme' },
-  { id: 'pragmatic', name: 'Baustellen-Pragmatisch', desc: 'Lösungsorientierte Einbau-Anweisungen' },
-  { id: 'didactic', name: 'Didaktisch / Sokratischer Tutor', desc: 'Zwischenfragen & Eselsbrücken zum Lernen' }
-];
+const promptTonalities = inhalt.daten.promptTonalities;
 
 // Generates dynamic prompt based on selection of 4 categories
 function generateCustomPrompt(materialId: string, objectiveId: string, formatId: string, toneId: string): { promptText: string; explanation: string } {
@@ -71,20 +57,20 @@ function generateCustomPrompt(materialId: string, objectiveId: string, formatId:
   let matSubject = "";
   switch (materialId) {
     case 'beton':
-      materialName = "Recycling-Beton (RC-Beton mit Typ-1-Gesteinskörnung nach DIN EN 206 / DIN 1045-2)";
-      matSubject = "Einsatz im Hochbau, Expositionsklassen XC1 bis XC4, Klinkerreduktion durch Hüttensandmehl.";
+      materialName = inhalt.werte.recyclingBetonRcBeton;
+      matSubject = inhalt.werte.einsatzImHochbauExpositionsklassen;
       break;
     case 'fliesenkleber':
-      materialName = "Kunststoffmodifizierter zementärer Dünnbettmörtel (DIN EN 12004 Klasse C2 TE S1)";
-      matSubject = "Verlegung von Großformatfliesen auf Heizestrich (thermodynamische Längenänderungen).";
+      materialName = inhalt.werte.kunststoffmodifizierterZementärerDünnbet;
+      matSubject = inhalt.werte.verlegungVonGroßformatfliesenAuf;
       break;
     case 'bsh':
-      materialName = "Brettschichtholz (BSH GL24h DIN EN 14080)";
-      matSubject = "Einsatz in chemisch aggressiver Atmosphäre (Schwimmbaddach), Holzfeuchte-Steuerung.";
+      materialName = inhalt.werte.brettschichtholzBshGl24hDin;
+      matSubject = inhalt.werte.einsatzInChemischAggressiver;
       break;
     default:
       materialName = "Standardbaustoff";
-      matSubject = "Reguläre Bauanwendung.";
+      matSubject = inhalt.werte.reguläreBauanwendung;
   }
 
   // 2. Objective / Role / Task instructions
@@ -92,7 +78,7 @@ function generateCustomPrompt(materialId: string, objectiveId: string, formatId:
   let task = "";
   switch (objectiveId) {
     case 'norm':
-      role = "Prüfsachverständiger für Baustoffe im Hoch- und Ingenieurbau";
+      role = inhalt.werte.prüfsachverständigerFürBaustoffeIm;
       task = `Überprüfen Sie die baurechtliche Konformität des folgenden Materials:
 Baustoff: ${materialName} (${matSubject})
 - Führen Sie alle harmonisierten Prüf- und Anforderungsnormen an (z. B. DIN, EN, ISO).
@@ -100,21 +86,21 @@ Baustoff: ${materialName} (${matSubject})
 - Heben Sie kritische Kennwerte (Festigkeitsklassen, Schwindmaß etc.) hervor.`;
       break;
     case 'schaden':
-      role = "Unabhängiger Schadengutachter im Bauwesen mit Schwerpunkt Werkstoffmikromechanik";
+      role = inhalt.werte.unabhängigerSchadengutachterImBauwesen;
       task = `Führen Sie eine präventive Schadensanalyse und mikromechanische Ursachenforschung durch für:
 Baustoff/Einsatzszenario: ${materialName} (${matSubject})
 - Untersuchen Sie chemische Alterung (z.B. Carbonatisierung, Weichmacherverlust, Alkalitreiben) und physikalische Risiken.
 - Definieren Sie zerstörungsfreie oder laboratoriumstechnische Prüfverfahren (z.B. Dünnschliffmikroskopie, REM, FTIR-Spektroskopie) zum klaren Nachweis.`;
       break;
     case 'nachhaltig':
-      role = "DGNB-Auditor und Fachexperte für Ökobilanzierung (LCA/EPD) nach DIN EN 15804";
+      role = inhalt.werte.dgnbAuditorUndFachexperte;
       task = `Erstellen Sie ein Optimierungskonzept zur CO2-Reduktion bzw. Ressourceneinsparung für:
 Baustoff/Einsatzszenario: ${materialName} (${matSubject})
 - Optimieren Sie die Lebenszyklus-Module A1-A3 (Rohstoffe/Herstellung), C3 (Rückbau) und D (Recyclingpotenzial).
 - Schätzen Sie das Treibhauspotenzial (GWP in kg CO2-eq) ab und schlagen Sie konkrete Ersatzstoffe vor.`;
       break;
     default:
-      role = "Bautechnischer Berater";
+      role = inhalt.werte.bautechnischerBerater;
       task = `Analysieren Sie den Baustoff ${materialName} im Kontext von ${matSubject}.`;
   }
 
@@ -122,32 +108,32 @@ Baustoff/Einsatzszenario: ${materialName} (${matSubject})
   let formatDesc = "";
   switch (formatId) {
     case 'report':
-      formatDesc = "Präsentieren Sie die Antwort als strukturierten technischen Bericht in Fließtext mit prägnanten ingenieurwissenschaftlichen Zwischenüberschriften (Einleitung, Untersuchung, Befund, Fazit).";
+      formatDesc = inhalt.werte.präsentierenSieDieAntwort;
       break;
     case 'bullets':
-      formatDesc = "Geben Sie die Ergebnisse als extrem kondensierte, tabelle-ähnliche oder listenbasierte Checkliste im Telegrammstil aus. Perfekt zur schnellen Qualitätskontrolle direkt am Bau.";
+      formatDesc = inhalt.werte.gebenSieDieErgebnisse;
       break;
     case 'code':
-      formatDesc = "Ergänzen Sie das Ergebnis um ein sauberes Python-Grafikskript (z.B. Streamlit- oder Matplotlib-Code), welches die numerischen Beziehungen, Festigkeitskurven oder CO₂-Einsparungen dieses Baustoffs visualisiert.";
+      formatDesc = inhalt.werte.ergänzenSieDasErgebnis;
       break;
     default:
-      formatDesc = "Formatieren Sie die Antwort strukturiert.";
+      formatDesc = inhalt.werte.formatierenSieDieAntwort;
   }
 
   // 4. Tone / Target Audience instructions
   let toneDesc = "";
   switch (toneId) {
     case 'scientific':
-      toneDesc = "Wählen Sie einen hochgradig sachlichen, präzisen, akademischen Schreibstil. Verwenden Sie exakte physikalische und mikrostrukturelle Fachbegriffe (z.B. Adhäsionsversagen, Hydratationswärme, Porengrößenverteilung).";
+      toneDesc = inhalt.werte.wählenSieEinenHochgradig;
       break;
     case 'pragmatic':
-      toneDesc = "Formulieren Sie die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichten Sie auf unnötige akademische Schnörkel und konzentrieren Sie sich auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.";
+      toneDesc = inhalt.werte.formulierenSieDieAntwort;
       break;
     case 'didactic':
-      toneDesc = "Wählen Sie die Perspektive eines didaktischen Hochschul-Dozenten (sokratische Methode). Erklären Sie die Hintergründe schrittweise, formulieren Sie 3 nützliche Zwischenfragen zum Selbststudium und schließen Sie mit einer eingängigen Eselsbrücke (Mnemonic) ab.";
+      toneDesc = inhalt.werte.wählenSieDiePerspektive;
       break;
     default:
-      toneDesc = "Schreiben Sie sachbezogen.";
+      toneDesc = inhalt.werte.schreibenSieSachbezogen;
   }
 
   const promptText = `Rolle: Sie agieren als ${role}.
@@ -179,15 +165,15 @@ type KiReiter = 'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' |
 // teilen sich einen Reiter mit zweiter Ebene. Bereiche mit eigener Reiterleiste (Systemarchitektur,
 // LLM-Praxis, Thesen, Recht & Ethik, Lokale KI) bleiben Hauptreiter, damit höchstens 2 Ebenen entstehen.
 const KI_GRUPPEN: readonly ModulTabGruppe<KiReiter>[] = [
-  { id: 'system_g', label: 'a) Systemarchitektur', icon: Cpu, mitglieder: [{ id: 'system', label: 'a) Systemarchitektur' }] },
-  { id: 'prompting_g', label: 'b) Prompting-Praxis', icon: MessageSquare, mitglieder: [{ id: 'prompting', label: 'b) Prompting-Praxis' }] },
-  { id: 'llmpraxis_g', label: 'c) LLM-Praxis (Claude & ChatGPT)', icon: Terminal, mitglieder: [{ id: 'llmpraxis', label: 'c) LLM-Praxis (Claude & ChatGPT)' }] },
-  { id: 'thesen_g', label: 'd) Tools für Thesen', icon: BookOpen, mitglieder: [{ id: 'thesen', label: 'd) Tools für Thesen' }] },
-  { id: 'recht_g', label: 'e) Fehler, Recht & Ethik', icon: ShieldAlert, mitglieder: [{ id: 'recht_ethik', label: 'e) Fehler, Recht & Ethik' }] },
-  { id: 'lokal_g', label: 'f) Lokale KI (LM Studio)', icon: Server, mitglieder: [{ id: 'lokal', label: 'f) Lokale KI (LM Studio)' }] },
-  { id: 'ressourcen_g', label: 'g)–h) KI-Seiten & Onlinekurse', icon: Compass, mitglieder: [
-    { id: 'ressourcen', label: 'g) Unabhängige KI-Seiten', icon: Compass },
-    { id: 'onlinekurse', label: 'h) Onlinekurse', icon: Video },
+  { id: 'system_g', label: inhalt.werte.aSystemarchitektur, icon: Cpu, mitglieder: [{ id: 'system', label: inhalt.werte.aSystemarchitektur2 }] },
+  { id: 'prompting_g', label: inhalt.werte.bPromptingPraxis, icon: MessageSquare, mitglieder: [{ id: 'prompting', label: inhalt.werte.bPromptingPraxis2 }] },
+  { id: 'llmpraxis_g', label: inhalt.werte.cLlmPraxisClaude, icon: Terminal, mitglieder: [{ id: 'llmpraxis', label: inhalt.werte.cLlmPraxisClaude2 }] },
+  { id: 'thesen_g', label: inhalt.werte.dToolsFürThesen, icon: BookOpen, mitglieder: [{ id: 'thesen', label: inhalt.werte.dToolsFürThesen2 }] },
+  { id: 'recht_g', label: inhalt.werte.eFehlerRechtEthik, icon: ShieldAlert, mitglieder: [{ id: 'recht_ethik', label: inhalt.werte.eFehlerRechtEthik2 }] },
+  { id: 'lokal_g', label: inhalt.werte.fLokaleKiLm, icon: Server, mitglieder: [{ id: 'lokal', label: inhalt.werte.fLokaleKiLm2 }] },
+  { id: 'ressourcen_g', label: inhalt.werte.gHKiSeiten, icon: Compass, mitglieder: [
+    { id: 'ressourcen', label: inhalt.werte.gUnabhängigeKiSeiten, icon: Compass },
+    { id: 'onlinekurse', label: inhalt.werte.hOnlinekurse, icon: Video },
   ] },
 ];
 
@@ -196,7 +182,7 @@ function KiReiterRahmen({ zeigen, aktiv, onWechsel, children }: { zeigen: boolea
   if (!zeigen) return <>{children}</>;
   return (
     <GruppierteModuleTabs
-      label="KI in der Baustoffkunde: Bereiche"
+      label={inhalt.werte.kiInDerBaustoffkunde}
       gruppen={KI_GRUPPEN}
       aktiv={aktiv}
       onWechsel={onWechsel}
@@ -302,79 +288,36 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
   };
 
   // Useful AI sites list
-  const aiResources = [
-    {
-      name: "GitHub",
-      url: "https://github.com",
-      description: "Die weltweit größte Entwicklungs- und Open-Source-Plattform. Ein unschätzbarer Pool an gebrauchsfertigen KI-Repositories, bautechnischen Python-Skripten, CAD-Automatisierungen und ML-Modellen.",
-      baucase: "Auffinden von Machine-Learning-Skripten zur videobasierten Risserkennung und automatisierten Auswertung von Druckversuchen.",
-      iconCircle: "bg-slate-100 text-slate-800"
-    },
-    {
-      name: "Futurepedia",
-      url: "https://www.futurepedia.io",
-      description: "Das führende Verzeichnis für künstliche Intelligenz. Aggregiert täglich die neuesten spezialisierten AI-Werkzeuge, geordnet nach praktischen Anwendungskategorien und Nutzerbewertungen.",
-      baucase: "Schnelle Suche nach spezialisierten PDF-Analysetools zur Auslesung von mehrhundertseitigen Ausschreibungs- und Prüffertigungsdokumenten.",
-      iconCircle: "bg-indigo-100 text-indigo-800"
-    },
-    {
-      name: "THE DECODER",
-      url: "https://the-decoder.de",
-      description: "Hervorragendes deutsches Online-Fachmagazin und Info-Portal für Künstliche Intelligenz. Bietet fundierten, unabhängigen Journalismus, News-Analysen sowie tiefe Berichte über den Stand der Forschung.",
-      baucase: "Verfolgen des aktuellen Forschungsstands bezüglich physikgestützter neuronaler Netze (PINNs) in Strömungs- und Festkörpersimulationen.",
-      iconCircle: "bg-red-100 text-red-800"
-    },
-    {
-      name: "Hugging Face",
-      url: "https://huggingface.co",
-      description: "Die universelle Open-Source-Plattform der weltweiten AI-Forschungscommunity. Hostet Millionen fertige, direkt nutzbare Machine-Learning-Modelle, Datensätze und Demos (Spaces).",
-      baucase: "Lokales Herunterladen von quelloffenen Bildklassifizierungs-Modellen zur automatischen Klassifikation von Betonoberflächen-Schäden per Smartphone-Foto.",
-      iconCircle: "bg-amber-100 text-amber-800"
-    },
-    {
-      name: "AI Valley",
-      url: "https://aivalley.ai",
-      description: "Eine umfangreiche, kuratierte Plattform für Produktivitätswerkzeuge, modernste KI-Anwendungen und AI-Automatisierungslinks mit anwendernahem Praxisbezug.",
-      baucase: "Recherche nach lokalen, datenschutzkonformen AI-Werkzeugen zur Zusammenfassung von Protokollen bei Baustellen-Jour-Fixes.",
-      iconCircle: "bg-blue-100 text-blue-800"
-    },
-    {
-      name: "There's An AI For That",
-      url: "https://theresanaiforthat.com",
-      description: "Die größte, chronologische Suchdatenbank für KI-Systeme weltweit. Listet tausende Tools für extrem spezifische Problemstellungen auf und lässt sich filtern.",
-      baucase: "Spezifische Stichwortsuche für Nischenkomponenten wie automatische GIS-Geländemuster-Analysatoren oder Betonporen-Bildauswerter.",
-      iconCircle: "bg-purple-100 text-purple-800"
-    }
-  ];
+  const aiResources = inhalt.daten["KiBaustoffeInhalt.aiResources"];
 
   // Dynamic header based on tab
-  let title = "Künstliche Intelligenz (KI) in der Baustoffkunde";
-  let description = "Werkzeuge wie LLMs, Maschinelles Lernen, Vibe Coding und KI-Agenten verändern die Art, wie Baustoffe entwickelt, geprüft und verplant werden. Dieses Modul vermittelt Grundlagen, Prompt-Konzepte, Live-Agenten-Simulationen und hilfreiche Ressourcen speziell für Bauingenieure.";
+  let title = inhalt.werte.künstlicheIntelligenzKiIn;
+  let description = inhalt.werte.werkzeugeWieLlmsMaschinelles;
 
   if (activeTab === 'system') {
     title = "Systemarchitektur";
-    description = "Schrittweise Erklärung aller Schlüsseltechnologien der Künstlichen Intelligenz (ML, Deep Learning, LLM, RAG, Computer Vision, Agenten und Edge-KI), ihrer mathematischen Mechanismen und praktischen bautechnischen Einsatzzwecke.";
+    description = inhalt.werte.schrittweiseErklärungAllerSchlüsseltechn;
   } else if (activeTab === 'prompting') {
-    title = "Prompting-Praxis für Ingenieure";
-    description = "Nutzen Sie den interaktiven Prompt-Optimierer, um präzise, ingenieurgerechte Arbeitsanweisungen mit klarer Tonalität und strukturiertem Output zu generieren.";
+    title = inhalt.werte.promptingPraxisFürIngenieure;
+    description = inhalt.werte.nutzenSieDenInteraktiven;
   } else if (activeTab === 'llmpraxis') {
-    title = "LLM-Praxis: Effiziente Anwendung von Claude & ChatGPT";
-    description = "Master-Workflows für Bauingenieure: Skills, MCP-Konnektoren, verlustfreie Markdown-Hierarchien, kuratierte Projektordner (CLAUDE.md) und quellenbasiertes Browser-Grounding.";
+    title = inhalt.werte.llmPraxisEffizienteAnwendung;
+    description = inhalt.werte.masterWorkflowsFürBauingenieure;
   } else if (activeTab === 'thesen') {
-    title = "Tools für Thesen (Bachelor- & Masterarbeiten)";
-    description = "Wissenschaftliches Arbeiten im Bauingenieurwesen: Von Literatur-Mapping (Elicit, Connected Papers) über quellentreue Synthese (NotebookLM, Overleaf) bis zur Prüfmaschinen-Datenauswertung (Python, Cursor) und KI-Deklarationsvorlagen.";
+    title = inhalt.werte.toolsFürThesenBachelor;
+    description = inhalt.werte.wissenschaftlichesArbeitenImBauingenieur;
   } else if (activeTab === 'recht_ethik') {
-    title = "Fehler, Anwendungsgrenzen, Recht & Ethik";
-    description = "Sicherheits- und Haftungsrisiken von KI im Bauwesen: BGB-Werkvertragsrecht, HOAI-Sorgfaltspflichten, EU AI Act, Vermeidung von Normen-Halluzinationen und Rechenfehlern.";
+    title = inhalt.werte.fehlerAnwendungsgrenzenRechtEthik;
+    description = inhalt.werte.sicherheitsUndHaftungsrisikenVon;
   } else if (activeTab === 'lokal') {
-    title = "Lokale KI & LM Studio (Datensouveränität)";
-    description = "Betreiben Sie leistungsstarke Open-Source-LLMs (z. B. Qwen, Llama, DeepSeek) offline auf Ihrer büroeigenen Hardware – ohne Cloud-Übermittlung (DSGVO-Pflichten bleiben bestehen).";
+    title = inhalt.werte.lokaleKiLmStudio;
+    description = inhalt.werte.betreibenSieLeistungsstarkeOpen;
   } else if (activeTab === 'ressourcen') {
-    title = "Unabhängige KI-Ressourcen & Verzeichnisse";
-    description = "Eine kuratierte Sammlung unabhängiger Suchdatenbanken, Forschungsplattformen und Repositories für weitreichende Recherchen im Bauwesen.";
+    title = inhalt.werte.unabhängigeKiRessourcenVerzeichnisse;
+    description = inhalt.werte.eineKuratierteSammlungUnabhängiger;
   } else if (activeTab === 'onlinekurse') {
-    title = "Onlinekurse & Video-Lernpfade für Bauingenieure";
-    description = "Kuratierte deutschsprachige Tutorials, YouTube-Kanäle und Hochschul-MOOCs für Python, Data Science, Machine Learning, RAG-Pipelines und lokale KI im Ingenieurwesen.";
+    title = inhalt.werte.onlinekurseVideoLernpfadeFür;
+    description = inhalt.werte.kuratierteDeutschsprachigeTutorialsYoutu;
   }
 
   return (
@@ -392,12 +335,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         </div>
 
         {/* Hands-on-Übungen zur Master-Vorlesung (AP 6.5) */}
-        <Querverweis ziel="ki_uebungen" titel="Hands-on-Übungen zum Master-Modul" linkText="Zu den sechs Übungen" className="mt-4">
-          <p>
-            Zu jedem Themenblock – LLM-Grundlagen, Prompting im Ingenieurbüro, Agenten, RAG mit Regelwerken,
-            „sich programmieren lassen“ sowie Fehlerbilder und Verifikation – gibt es eine code-freie Selbstlernübung
-            für den Microsoft Copilot der Hochschule, mit Prompt-Vorlagen und Verifikations-Checkliste.
-          </p>
+        <Querverweis ziel="ki_uebungen" titel={inhalt.werte.handsOnÜbungenZum} linkText={inhalt.werte.zuDenSechsÜbungen} className="mt-4">
+          <p><MdText text={inhalt.texte.zuJedemThemenblockLlm} /></p>
         </Querverweis>
 
         {/* INTERAKTIVES EINSTEIGER-GLOSSAR */}
@@ -416,23 +355,20 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         {activeTab === 'prompting' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="space-y-2">
-              <h3 className="font-extrabold text-base text-slate-800">Professionelles Prompt Engineering im Bauwesen</h3>
-              <p className="text-xs text-text-main/70 leading-relaxed font-normal">
-                Künstliche Intelligenz ist nur so scharf wie der eingegebene Text. Reines Chatten führt oft zu verallgemeinerndem "Schwafeln". Für prägnante Antworten nutzen Ingenieure strukturierte Templates, die dem Modell eine **Rolle**, klare **Aufgabenstellungen**, relevante **Randbedingungen** und das **Soll-Format** vorgeben.
-              </p>
+              <h3 className="font-extrabold text-base text-slate-800"><MdText text={inhalt.texte.professionellesPromptEngineeringIm} /></h3>
+              <p className="text-xs text-text-main/70 leading-relaxed font-normal"><MdText text={inhalt.texte.künstlicheIntelligenzIstNur} /></p>
             </div>
 
             {/* INTERACTIVE BUILDER ZONE */}
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <h4 className="text-xs font-black text-slate-700 uppercase tracking-widest mb-4 flex items-center gap-1.5">
-                <Target size={14} className="text-shiraz" /> Interaktiver Baustoff-Prompt-Generator
-              </h4>
+                <Target size={14} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverBaustoffPromptGenerator} /></h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 
                 {/* Selector 1: Material */}
                 <div className="space-y-1.5">
-                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">1. Baustoff / Bauprodukt:</label>
+                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t1BaustoffBauprodukt} /></label>
                   <div className="space-y-2">
                     {promptPresetMaterials.map((mat) => (
                       <button aria-pressed={selectedMaterial === mat.id}
@@ -456,7 +392,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
 
                 {/* Selector 2: Objective */}
                 <div className="space-y-1.5">
-                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">2. Zielsetzung / Aufgabe:</label>
+                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t2ZielsetzungAufgabe} /></label>
                   <div className="space-y-2">
                     {promptObjectives.map((obj) => (
                       <button aria-pressed={selectedObjective === obj.id}
@@ -480,7 +416,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
 
                 {/* Selector 3: Format */}
                 <div className="space-y-1.5">
-                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">3. Format / Ausgabeformat:</label>
+                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t3FormatAusgabeformat} /></label>
                   <div className="space-y-2">
                     {promptFormats.map((fmt) => (
                       <button aria-pressed={selectedFormat === fmt.id}
@@ -504,7 +440,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
 
                 {/* Selector 4: Tonality */}
                 <div className="space-y-1.5">
-                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block">4. Tonalität / Zielgruppe:</label>
+                  <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t4TonalitätZielgruppe} /></label>
                   <div className="space-y-2">
                     {promptTonalities.map((tone) => (
                       <button aria-pressed={selectedTonality === tone.id}
@@ -534,23 +470,22 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   {/* Header */}
                   <div className="bg-slate-100 px-4 py-2.5 border-b border-slate-200 flex justify-between items-center">
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                      <Terminal size={12} className="text-slate-500" /> Modell-Input (Direkt im Browser edtierbar)
-                    </span>
+                      <Terminal size={12} className="text-slate-500" /><MdText text={inhalt.texte.modellInputDirektIm} /></span>
                     <button
                       onClick={handleCopyPrompt}
                       className="bg-white hover:bg-slate-50 text-slate-700 hover:text-shiraz px-3 py-1.5 rounded-lg border border-slate-200 transition-all text-xxs font-bold flex items-center gap-1 cursor-pointer"
                     >
                       <Copy size={12} />
-                      {copySuccess ? "Kopiert!" : "In die Zwischenablage"}
+                      {copySuccess ? "Kopiert!" : inhalt.werte.inDieZwischenablage}
                     </button>
                   </div>
                   
                   {pendingPresetPrompt !== null && (
                     <div className="px-4 py-2.5 bg-amber-50 border-b border-amber-200 text-xs text-amber-900 flex flex-col sm:flex-row sm:items-center justify-between gap-2" role="status">
-                      <span>Sie haben den Prompt bearbeitet. Soll er durch die neue Vorlage ersetzt werden?</span>
+                      <span><MdText text={inhalt.texte.sieHabenDenPrompt} /></span>
                       <span className="flex gap-2">
-                        <button type="button" onClick={uebernehmeVorlage} className="px-2.5 py-1 rounded-lg bg-shiraz text-white font-bold">Vorlage übernehmen</button>
-                        <button type="button" onClick={() => setPendingPresetPrompt(null)} className="px-2.5 py-1 rounded-lg border border-amber-300 bg-white font-bold">Eigenen Text behalten</button>
+                        <button type="button" onClick={uebernehmeVorlage} className="px-2.5 py-1 rounded-lg bg-shiraz text-white font-bold"><MdText text={inhalt.texte.vorlageÜbernehmen} /></button>
+                        <button type="button" onClick={() => setPendingPresetPrompt(null)} className="px-2.5 py-1 rounded-lg border border-amber-300 bg-white font-bold"><MdText text={inhalt.texte.eigenenTextBehalten} /></button>
                       </span>
                     </div>
                   )}
@@ -560,7 +495,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                     rows={8}
                     value={customPromptText}
                     maxLength={4000}
-                    aria-label="Prompt (höchstens 4 000 Zeichen)"
+                    aria-label={inhalt.werte.promptHöchstens4000}
                     onChange={(e) => setCustomPromptText(e.target.value)}
                     className="p-5 font-mono text-xs leading-relaxed bg-slate-950 text-emerald-400 overflow-y-auto whitespace-pre-wrap outline-none border-none focus:ring-0 resize-y max-h-80 select-all"
                   />
@@ -574,9 +509,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         onChange={(e) => setHinweisBestaetigt(e.target.checked)}
                         className="mt-0.5 accent-shiraz"
                       />
-                      <span>
-                        Der Prompt wird zur Beantwortung an Google (Gemini) übermittelt. Ich gebe keine personenbezogenen
-                        oder vertraulichen Daten ein. Details in der <button type="button" onClick={() => oeffneModul('datenschutz')} className="underline text-shiraz">Datenschutzerklärung</button>.
+                      <span><MdText text={inhalt.texte.derPromptWirdZur} /><button type="button" onClick={() => oeffneModul('datenschutz')} className="underline text-shiraz">Datenschutzerklärung</button>.
                       </span>
                     </label>
                     <button
@@ -587,12 +520,12 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                       {isLoadingAi ? (
                         <>
                           <Loader2 size={14} className="animate-spin text-white" />
-                          <span>Gemini generiert...</span>
+                          <span><MdText text={inhalt.texte.geminiGeneriert} /></span>
                         </>
                       ) : (
                         <>
                           <Sparkles size={14} className="text-amber-300" />
-                          <span>Analyse live ausführen</span>
+                          <span><MdText text={inhalt.texte.analyseLiveAusführen} /></span>
                         </>
                       )}
                     </button>
@@ -601,7 +534,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <div className="p-4 bg-amber-50/50 border-t border-slate-200 text-xxs text-amber-950 font-normal">
                     <div className="flex gap-1.5 items-center font-bold text-amber-900 mb-1">
                       <Lightbulb size={12} />
-                      <span>Didaktischer Hintergrund:</span>
+                      <span><MdText text={inhalt.texte.didaktischerHintergrund} /></span>
                     </div>
                     {currentCustomPrompt.explanation}
                   </div>
@@ -621,13 +554,9 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                             <Loader2 size={10} className="animate-spin" /> Verarbeite...
                           </span>
                         ) : apiMode === 'live' ? (
-                          <span className="bg-emerald-950 text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-800">
-                            ● KI-generiert (Google Gemini)
-                          </span>
+                          <span className="bg-emerald-950 text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-800"><MdText text={inhalt.texte.kiGeneriertGoogleGemini} /></span>
                         ) : (
-                          <span className="bg-amber-950 text-amber-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-800">
-                            ● Demo-Modus
-                          </span>
+                          <span className="bg-amber-950 text-amber-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-800"><MdText text={inhalt.texte.demoModus} /></span>
                         )}
                       </div>
                     </div>
@@ -636,16 +565,12 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                       {isLoadingAi ? (
                         <div className="flex flex-col items-center justify-center p-8 gap-3 text-slate-400">
                           <Loader2 size={32} className="animate-spin text-shiraz" />
-                          <p className="text-xs font-medium animate-pulse text-slate-500">
-                            Die KI (Google Gemini) erzeugt eine Antwort …
-                          </p>
+                          <p className="text-xs font-medium animate-pulse text-slate-500"><MdText text={inhalt.texte.dieKiGoogleGemini} /></p>
                         </div>
                       ) : (
                         <div className="space-y-4">
                           {apiMode === 'live' && (
-                            <p role="note" className="text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
-                              KI-generierte Antwort (Google Gemini), nicht vom Autor geprüft. Inhalte können fehlerhaft sein und ersetzen keinen Nachweis und keine Normprüfung.
-                            </p>
+                            <p role="note" className="text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2"><MdText text={inhalt.texte.kiGenerierteAntwortGoogle} /></p>
                           )}
                           <div className="prose prose-slate max-w-none text-xs text-text-main/90 font-normal space-y-4 markdown-body">
                             <ReactMarkdown>{aiOutput || ''}</ReactMarkdown>
@@ -660,63 +585,44 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
               {/* ADVANCED PROMPTING TIPS */}
               <div className="mt-8 space-y-4">
                 <h4 className="text-sm font-extrabold text-slate-800 flex items-center gap-2">
-                  <Lightbulb size={16} className="text-amber-500" /> Goldene Regeln &amp; Prompt-Hacks für Ingenieure
-                </h4>
-                <p className="text-xs text-text-main/70 leading-relaxed font-normal">
-                  Ergänzend zum Prompt-Generator können Sie diese bewährten Taktiken direkt in Ihren Entwurfsprozess integrieren, um Halluzinationen zu verhindern und exakte Regelwerksprüfungen zu forcieren.
-                </p>
+                  <Lightbulb size={16} className="text-amber-500" /><MdText text={inhalt.texte.goldeneRegelnPromptHacks} /></h4>
+                <p className="text-xs text-text-main/70 leading-relaxed font-normal"><MdText text={inhalt.texte.ergänzendZumPromptGenerator} /></p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-amber-50/[0.22] border border-amber-200/55 rounded-2xl space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold text-amber-950 bg-amber-50/70 p-1.5 rounded-lg border border-amber-100">
                       <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 text-[10px] flex items-center justify-center font-black">1</span>
-                      <span>Stelle Rückfragen vor der Bearbeitung</span>
+                      <span><MdText text={inhalt.texte.stelleRückfragenVorDer} /></span>
                     </div>
-                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                      Verhindern Sie falsche Annahmen der KI. Zwingen Sie das System dazu, Unbeziffertes proaktiv zu klären, bevor wertvolle Arbeitszeit mit ungenauen Antworten verloren geht.
-                    </p>
-                    <div className="p-2.5 bg-white rounded-xl border border-amber-100 font-mono text-[9.5px] text-slate-700 select-all">
-                      &quot;Bevor du mit der Rezeptur-Berechnung beginnst: Stelle mir 3 gezielte Verständnisfragen zu den Expositionsklassen oder Baugrundverhältnissen, um Fehler zu minimieren.&quot;
-                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.verhindernSieFalscheAnnahmen} /></p>
+                    <div className="p-2.5 bg-white rounded-xl border border-amber-100 font-mono text-[9.5px] text-slate-700 select-all"><MdText text={inhalt.texte.bevorDuMitDer} /></div>
                   </div>
 
                   <div className="p-4 bg-emerald-50/[0.18] border border-emerald-200/40 rounded-2xl space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold text-emerald-950 bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100">
                       <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] flex items-center justify-center font-black">2</span>
-                      <span>Regelwerke &amp; Absätze kritisch verifizieren</span>
+                      <span><MdText text={inhalt.texte.regelwerkeAbsätzeKritischVerifizieren} /></span>
                     </div>
-                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                      LLMs halluzinieren gelegentlich Normnummern. Fordern Sie einen expliziten, zweitstufigen Prüfdurchlauf ein, der die Ergebnisse gegen deutsches/europäisches Recht abgleicht.
-                    </p>
-                    <div className="p-2.5 bg-white rounded-xl border border-emerald-100/80 font-mono text-[9.5px] text-slate-700 select-all">
-                      &quot;Erstelle den Entwurf. Gehe das Dokument danach nochmals Schritt für Schritt durch und prüfe es kritisch auf Vereinbarkeit mit den Grenzwerten der DIN EN 206.&quot;
-                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.llmsHalluzinierenGelegentlichNormnummern} /></p>
+                    <div className="p-2.5 bg-white rounded-xl border border-emerald-100/80 font-mono text-[9.5px] text-slate-700 select-all"><MdText text={inhalt.texte.erstelleDenEntwurfGehe} /></div>
                   </div>
 
                   <div className="p-4 bg-indigo-50/[0.2] border border-indigo-200/40 rounded-2xl space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold text-indigo-950 bg-indigo-50/70 p-1.5 rounded-lg border border-indigo-100">
                       <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-800 text-[10px] flex items-center justify-center font-black">3</span>
-                      <span>Chain of Thought (Herleitungsschritte fordern)</span>
+                      <span><MdText text={inhalt.texte.chainOfThoughtHerleitungsschritte} /></span>
                     </div>
-                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                      Fehler bei mathematischen Berechnungen verringern sich drastisch, wenn die KI gezwungen wird, Zwischenrechnungen und Annahmen zuerst auszuschreiben.
-                    </p>
-                    <div className="p-2.5 bg-white rounded-xl border border-indigo-100/80 font-mono text-[9.5px] text-slate-700 select-all">
-                      &quot;Berechne mir die Packungsdichte der Gesteinskörnung. Leite jeden mathematischen Schritt nach dem Modell von Funk &amp; Dinger einzeln her, bevor du die Gesamtsumme nennst.&quot;
-                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.fehlerBeiMathematischenBerechnungen} /></p>
+                    <div className="p-2.5 bg-white rounded-xl border border-indigo-100/80 font-mono text-[9.5px] text-slate-700 select-all"><MdText text={inhalt.texte.berechneMirDiePackungsdichte} /></div>
                   </div>
 
                   <div className="p-4 bg-rose-50/[0.18] border border-rose-200/40 rounded-2xl space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold text-rose-950 bg-rose-50/70 p-1.5 rounded-lg border border-rose-100">
                       <span className="w-5 h-5 rounded-full bg-rose-100 text-rose-800 text-[10px] flex items-center justify-center font-black">4</span>
-                      <span>Referenzvorgaben bestimmen (Few-Shot Prompts)</span>
+                      <span><MdText text={inhalt.texte.referenzvorgabenBestimmenFewShot} /></span>
                     </div>
-                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                      Füttern Sie die KI mit einem kurzen Textmuster oder einer Tabellenstruktur, um das Design und die fachliche Tiefe der Antwort exakt abzustimmen.
-                    </p>
-                    <div className="p-2.5 bg-white rounded-xl border border-rose-100/80 font-mono text-[9.5px] text-slate-700 select-all">
-                      &quot;Schreibe ein technisches Gutachten. Nutzen Sie exakt folgenden Aufbau: [Dauerhaftigkeitsklasse] / [Mikroskopischer Befund] / [Normbezug DIN 1045] / [Sanierungsempfehlung].&quot;
-                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.fütternSieDieKi} /></p>
+                    <div className="p-2.5 bg-white rounded-xl border border-rose-100/80 font-mono text-[9.5px] text-slate-700 select-all"><MdText text={inhalt.texte.schreibeEinTechnischesGutachten} /></div>
                   </div>
                 </div>
               </div>
@@ -748,10 +654,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         {activeTab === 'ressourcen' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="space-y-2">
-              <h3 className="font-extrabold text-base text-slate-800">Unabhängige KI-Anwendungen im Überblick</h3>
-              <p className="text-xs text-text-main/70 leading-relaxed font-normal">
-                Verwenden Sie für Ihre Studienprojekte, Laborberechnungen oder wissenschaftlichen Arbeiten stets das am besten geeignete Werkzeug. Nachfolgend finden Sie eine sorgfältig kuratierte Zusammenstellung mächtiger KI-Seiten mit direktem Best-Practice-Bezug für das Bauwesen.
-              </p>
+              <h3 className="font-extrabold text-base text-slate-800"><MdText text={inhalt.texte.unabhängigeKiAnwendungenIm} /></h3>
+              <p className="text-xs text-text-main/70 leading-relaxed font-normal"><MdText text={inhalt.texte.verwendenSieFürIhre} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -767,7 +671,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         target="_blank" 
                         rel="noreferrer" 
                         className="text-slate-400 hover:text-shiraz transition-colors cursor-pointer"
-                        title="Website öffnen"
+                        title={inhalt.werte.websiteÖffnen}
                       >
                         <ExternalLink size={16} />
                       </a>
@@ -777,7 +681,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                     <p className="text-xs text-text-main/70 leading-relaxed font-normal">{res.description}</p>
                     
                     <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xxs font-normal text-slate-800 leading-normal">
-                      <span className="font-bold text-shiraz uppercase tracking-wider text-[9px] block mb-0.5">Praxis-Nutzen im Bauwesen:</span>
+                      <span className="font-bold text-shiraz uppercase tracking-wider text-[9px] block mb-0.5"><MdText text={inhalt.texte.praxisNutzenImBauwesen} /></span>
                       {res.baucase}
                     </div>
                   </div>
@@ -797,55 +701,55 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
 
       {/* Vernetzte Fachmodule & Querverweise */}
       <RelatedModules
-        title="Verwandte Digitalisierungs- &amp; Planungsmodule"
-        subtitle="Didaktisch vernetzte Querverweise zu BIM, Datenanalyse, Automatisierung und wissenschaftlicher Abschlussarbeit"
+        title={inhalt.werte.verwandteDigitalisierungsPlanungsmodule}
+        subtitle={inhalt.werte.didaktischVernetzteQuerverweiseZu}
         modules={[
           {
             tab: 'ki_uebungen',
-            title: 'Hands-on-Übungen (Master)',
-            description: 'Sechs code-freie Selbstlernübungen mit Prompt-Vorlagen, Erwartungshorizont und Verifikations-Checkliste für den Hochschul-Copilot.',
+            title: inhalt.werte.handsOnÜbungenMaster,
+            description: inhalt.werte.sechsCodeFreieSelbstlernübungen,
             tag: 'Übung',
             badgeColor: 'bg-rose-50 text-rose-700 border-rose-200'
           },
           {
             tab: 'bim_baustoffe',
-            title: 'BIM & Materialdaten (IFC)',
-            description: 'IFC4/IFC4.3-Klassifikation, benutzerdefinierte Property Sets (Pset) und Baustoffdatenübergabe.',
+            title: inhalt.werte.bimMaterialdatenIfc,
+            description: inhalt.werte.ifc4Ifc43Klassifikation,
             tag: 'Digitales',
             badgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200'
           },
           {
             tab: 'statistik',
-            title: 'Datenanalyse & Statistik',
-            description: 'Gauß-Normalverteilung, Konfidenzintervalle und Regressionsanalyse zur Validierung von ML-Modellen.',
+            title: inhalt.werte.datenanalyseStatistik,
+            description: inhalt.werte.gaußNormalverteilungKonfidenzintervalleU,
             tag: 'Methodik',
             badgeColor: 'bg-sky-50 text-sky-700 border-sky-200'
           },
           {
             tab: 'thesen_projekte',
-            title: 'Thesen & Semesterprojekte',
-            description: 'Themenkatalog für Bachelor- und Masterarbeiten an der TH Augsburg mit KI- und Werkstofffokus.',
+            title: inhalt.werte.thesenSemesterprojekte,
+            description: inhalt.werte.themenkatalogFürBachelorUnd,
             tag: 'Forschung',
             badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
           },
           {
             tab: 'oekobilanz_lca',
-            title: 'Ökobilanzierung (LCA/EPD)',
-            description: 'GWP-Berechnung nach DIN EN 15804 zur KI-gestützten Optimierung von CO₂-neutralen Bindemitteln.',
+            title: inhalt.werte.ökobilanzierungLcaEpd,
+            description: inhalt.werte.gwpBerechnungNachDin,
             tag: 'Nachhaltigkeit',
             badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200'
           },
           {
             tab: 'messen_pruefen',
-            title: 'Messen & Prüfen (Sensorik)',
-            description: 'Sensoren, DMS und digitale Messdatenerfassung zur Speisung automatisierter Auswertungspipelines.',
+            title: inhalt.werte.messenPrüfenSensorik,
+            description: inhalt.werte.sensorenDmsUndDigitale,
             tag: 'Labor',
             badgeColor: 'bg-blue-50 text-blue-700 border-blue-200'
           },
           {
             tab: 'software',
-            title: 'Engineering Software & Tools',
-            description: 'Übersicht über FE-Software, BIM-Viewer, Python-Umgebungen und bauphysikalische Rechner.',
+            title: inhalt.werte.engineeringSoftwareTools,
+            description: inhalt.werte.übersichtÜberFeSoftware,
             tag: 'Werkzeuge',
             badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
           }
@@ -856,26 +760,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'system' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Kosinus-Ähnlichkeit im RAG-Retrieval"
+        title={inhalt.werte.beispiel1KosinusÄhnlichkeit}
         zielGleichung="\cos\theta = \frac{\vec a \cdot \vec b}{|\vec a|\,|\vec b|}"
-        schritte={[
-          { titel: 'Vektoren', erklaerung: 'Frage-Embedding a und zwei Textabschnitte b (Expositionsklassen) und c (Schalung), vereinfacht dreidimensional:', formel: '\\vec a = (0{,}8;\\ 0{,}6;\\ 0),\\ \\vec b = (0{,}6;\\ 0{,}8;\\ 0),\\ \\vec c = (0;\\ 0{,}6;\\ 0{,}8)' },
-          { titel: 'Skalarprodukte', erklaerung: 'Alle Vektoren haben die Länge 1, daher entspricht das Skalarprodukt direkt dem Kosinus:', formel: '\\vec a\\cdot\\vec b = 0{,}48 + 0{,}48 = 0{,}96;\\quad \\vec a\\cdot\\vec c = 0 + 0{,}36 + 0 = 0{,}36' },
-          { titel: 'Ranking', erklaerung: 'Der Retriever übergibt Abschnitt b an das Sprachmodell:', formel: '\\cos\\theta_{ab} = 0{,}96 > \\cos\\theta_{ac} = 0{,}36' }
-        ]}
-        ergebnisHinweis="Hohe Ähnlichkeit heißt nur thematische Nähe, nicht fachliche Richtigkeit: Der gefundene Abschnitt muss aus der aktuellen Normausgabe stammen, sonst zitiert das System veraltete Werte."
-        normQuelle="Grundlagen Information Retrieval; ISO/IEC 22989:2022"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte"]}
+        ergebnisHinweis={inhalt.werte.hoheÄhnlichkeitHeißtNur}
+        normQuelle={inhalt.werte.grundlagenInformationRetrievalIso}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Ausgabe eines einzelnen Neurons"
+        title={inhalt.werte.beispiel2AusgabeEines}
         zielGleichung="y = \sigma(z) = \frac{1}{1 + e^{-z}},\quad z = \sum w_i x_i + b"
-        schritte={[
-          { titel: 'Gewichtete Summe', erklaerung: 'Zwei normierte Eingänge x = (1,2; 0,4), Gewichte w = (0,8; −0,5), Bias b = 0,1:', formel: 'z = 0{,}8 \\cdot 1{,}2 - 0{,}5 \\cdot 0{,}4 + 0{,}1 = 0{,}86' },
-          { titel: 'Aktivierung', erklaerung: 'Sigmoid-Funktion:', formel: 'y = \\frac{1}{1 + e^{-0{,}86}} = \\frac{1}{1 + 0{,}423} = 0{,}70' },
-          { titel: 'Deutung', erklaerung: 'Bei einem Klassifikator für Riss ja/nein entspricht y einem Score, nicht einer kalibrierten Wahrscheinlichkeit:', formel: 'y = 0{,}70 > 0{,}5 \\Rightarrow \\text{Klasse Riss}' }
-        ]}
-        ergebnisHinweis="Ein Netz besteht aus Millionen bis Milliarden solcher Gewichte; die Schwelle 0,5 ist eine Festlegung und muss an Fehlerkosten (übersehener Riss vs. Fehlalarm) angepasst werden."
-        normQuelle="Goodfellow/Bengio/Courville: Deep Learning (2016)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.einNetzBestehtAus}
+        normQuelle={inhalt.werte.goodfellowBengioCourvilleDeep}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_system" />
@@ -884,25 +780,17 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'prompting' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Token- und Kostenabschätzung für eine Normenanalyse"
+        title={inhalt.werte.beispiel1TokenUnd}
         zielGleichung="K = \frac{n_{in}}{10^6} \cdot p_{in} + \frac{n_{out}}{10^6} \cdot p_{out}"
-        schritte={[
-          { titel: 'Eingabe', erklaerung: '40 Seiten mit je 500 Wörtern; für deutsche Fachtexte etwa 1,5 Token pro Wort (Lehrannahme):', formel: 'n_{in} = 40 \\cdot 500 \\cdot 1{,}5 = 30\\,000\\ \\text{Token}' },
-          { titel: 'Preise', erklaerung: 'Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2 000 Token:', formel: 'K = 0{,}03 \\cdot 3 + 0{,}002 \\cdot 15 = 0{,}09 + 0{,}03' },
-          { titel: 'Ergebnis', erklaerung: 'Kosten je Anfrage:', formel: 'K = 0{,}12\\ \\text{€}' }
-        ]}
-        ergebnisHinweis="Tarife ändern sich häufig (Stand 10/2026; vor Nutzung beim Anbieter prüfen). Bei wiederholten Rückfragen wird der gesamte Verlauf erneut als Eingabe berechnet – die Kosten wachsen mit jeder Runde."
-        normQuelle="Anbieter-Preislisten (Stand 10/2026)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_3"]}
+        ergebnisHinweis={inhalt.werte.tarifeÄndernSichHäufig}
+        normQuelle={inhalt.werte.anbieterPreislistenStand10}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Kontextfenster-Budget"
+        title={inhalt.werte.beispiel2KontextfensterBudget}
         zielGleichung="n_{frei} = n_{ctx} - n_{sys} - n_{res}"
-        schritte={[
-          { titel: 'Bilanz', erklaerung: 'Kontext 128 000 Token, Systemprompt 2 000, Reserve für die Antwort 8 000:', formel: 'n_{frei} = 128\\,000 - 2\\,000 - 8\\,000 = 118\\,000' },
-          { titel: 'Seiten', erklaerung: 'Mit 750 Token pro Seite (500 Wörter × 1,5):', formel: 'n_S = \\frac{118\\,000}{750} = 157\\ \\text{Seiten}' },
-          { titel: 'Konsequenz', erklaerung: 'Ein 300-seitiges Baugrundgutachten passt nicht vollständig hinein:', formel: '300 > 157 \\Rightarrow \\text{RAG oder Kapitelweise}' }
-        ]}
-        ergebnisHinweis="Auch wenn ein Dokument formal hineinpasst, sinkt die Trefferquote für Details in der Mitte langer Kontexte – wichtige Abschnitte gezielt zitieren lassen."
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_4"]}
+        ergebnisHinweis={inhalt.werte.auchWennEinDokument}
         normQuelle="Lehrbeispiel"
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -912,26 +800,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'llmpraxis' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Fehlerquote aus einer Stichprobenprüfung"
+        title={inhalt.werte.beispiel1FehlerquoteAus}
         zielGleichung="\hat p = \frac{k}{n}"
-        schritte={[
-          { titel: 'Stichprobe', erklaerung: 'Von 50 KI-gelieferten Normzitaten erweisen sich 6 als falsch oder veraltet:', formel: '\\hat p = \\frac{6}{50} = 0{,}12' },
-          { titel: 'Hochrechnung', erklaerung: 'Erwartete Fehler in einem Bericht mit 200 Zitaten:', formel: 'E = 200 \\cdot 0{,}12 = 24' },
-          { titel: 'Konsequenz', erklaerung: 'Jedes Zitat ist gegen die Originalquelle zu prüfen:', formel: 'E > 0 \\Rightarrow \\text{Vollprüfung}' }
-        ]}
-        ergebnisHinweis="Schon eine kleine Fehlerquote ist bei sicherheitsrelevanten Dokumenten nicht hinnehmbar. Die Stichprobe zeigt nur die Größenordnung, sie ersetzt keine Einzelprüfung."
-        normQuelle="Lehrbeispiel; Prüfpflicht nach BGB § 633"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_5"]}
+        ergebnisHinweis={inhalt.werte.schonEineKleineFehlerquote}
+        normQuelle={inhalt.werte.lehrbeispielPrüfpflichtNachBgb}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Mehrheitsentscheid aus drei Abfragen"
+        title={inhalt.werte.beispiel2MehrheitsentscheidAus}
         zielGleichung="P_{Mehrheit} = p^3 + 3p^2(1-p)"
-        schritte={[
-          { titel: 'Annahme', erklaerung: 'Jede Abfrage liefert mit p = 0,8 das richtige Ergebnis, die Abfragen seien unabhängig:', formel: 'p = 0{,}8' },
-          { titel: 'Rechnung', erklaerung: 'Mindestens zwei von drei richtig:', formel: 'P = 0{,}512 + 3 \\cdot 0{,}64 \\cdot 0{,}2 = 0{,}512 + 0{,}384 = 0{,}896' },
-          { titel: 'Grenze', erklaerung: 'Bei systematischen Fehlern (gleiche falsche Trainingsquelle) sind die Abfragen nicht unabhängig:', formel: 'P \\to p = 0{,}8' }
-        ]}
-        ergebnisHinweis="Mehrfachabfragen erhöhen die Zuverlässigkeit nur bei zufälligen Fehlern. Gegen systematische Fehler hilft nur ein unabhängiger Rechenweg, z. B. Handrechnung oder geprüfte Software."
-        normQuelle="Lehrbeispiel (Binomialverteilung)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_6"]}
+        ergebnisHinweis={inhalt.werte.mehrfachabfragenErhöhenDieZuverlässigkei}
+        normQuelle={inhalt.werte.lehrbeispielBinomialverteilung}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_llmpraxis" />
@@ -940,26 +820,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'thesen' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Precision und Recall einer KI-Literatursuche"
+        title={inhalt.werte.beispiel1PrecisionUnd}
         zielGleichung="P = \frac{TP}{TP + FP},\quad R = \frac{TP}{TP + FN}"
-        schritte={[
-          { titel: 'Treffer', erklaerung: 'Das Tool liefert 40 Artikel, davon 22 relevant; bekannt sind 30 relevante Artikel:', formel: 'TP = 22,\\ FP = 18,\\ FN = 8' },
-          { titel: 'Precision', erklaerung: 'Anteil relevanter Treffer:', formel: 'P = \\frac{22}{40} = 0{,}55' },
-          { titel: 'Recall', erklaerung: 'Anteil gefundener relevanter Artikel:', formel: 'R = \\frac{22}{30} = 0{,}73' }
-        ]}
-        ergebnisHinweis="Ein Viertel der relevanten Literatur fehlt. KI-Recherche ergänzt die systematische Suche in Fachdatenbanken und Bibliothekskatalogen, ersetzt sie aber nicht."
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_7"]}
+        ergebnisHinweis={inhalt.werte.einViertelDerRelevanten}
         normQuelle="Lehrbeispiel"
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Bestimmtheitsmaß eines KI-generierten Auswerteskripts nachrechnen"
+        title={inhalt.werte.beispiel2BestimmtheitsmaßEines}
         zielGleichung="R^2 = 1 - \frac{SS_{res}}{SS_{tot}}"
-        schritte={[
-          { titel: 'Kennwerte', erklaerung: 'Das Skript gibt für eine Regression Festigkeit über w/z-Wert an:', formel: 'SS_{res} = 12,\\quad SS_{tot} = 150' },
-          { titel: 'Rechnung', erklaerung: 'Handkontrolle:', formel: 'R^2 = 1 - \\frac{12}{150} = 1 - 0{,}08 = 0{,}92' },
-          { titel: 'Abgleich', erklaerung: 'Weicht der vom Skript ausgegebene Wert ab, liegt ein Fehler im Code oder in den Daten vor:', formel: 'R^2_{Skript} \\overset{!}{=} 0{,}92' }
-        ]}
-        ergebnisHinweis="In der Abschlussarbeit sind Werkzeug, Version und Zweck des KI-Einsatzes zu deklarieren; die Verantwortung für die Auswertung liegt bei der Verfasserin oder dem Verfasser."
-        normQuelle="Prüfungsordnung der Hochschule; Lehrbeispiel"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_8"]}
+        ergebnisHinweis={inhalt.werte.inDerAbschlussarbeitSind}
+        normQuelle={inhalt.werte.prüfungsordnungDerHochschuleLehrbeispiel}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_thesen" />
@@ -968,26 +840,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'recht_ethik' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Fristen der KI-Verordnung"
+        title={inhalt.werte.beispiel1FristenDer}
         zielGleichung="\Delta t = t_{Anwendung} - t_{heute}"
-        schritte={[
-          { titel: 'Gestaffelte Anwendung', erklaerung: 'In Kraft 1. August 2024; Verbote und KI-Kompetenz seit 2. Februar 2025; Modelle mit allgemeinem Verwendungszweck seit 2. August 2025; Art. 50 ab 2. August 2026:', formel: 't_0 = \\text{1. August 2024}' },
-          { titel: 'Hochrisiko nach Digital Omnibus', erklaerung: 'Anhang III ab 2. Dezember 2027, Anhang I ab 2. August 2028:', formel: 't_{III} = \\text{2. Dezember 2027}' },
-          { titel: 'Restzeit', erklaerung: 'Vom 20. Oktober 2026 bis zum 2. Dezember 2027:', formel: '\\Delta t = 365 + 31 + 12 = 408\\ \\text{Tage} \\approx 13{,}4\\ \\text{Monate}' }
-        ]}
-        ergebnisHinweis="Die Verschiebung betrifft die Hochrisiko-Pflichten; sie gilt seit Inkrafttreten der Verordnung (EU) 2026/1744 (ABl. L vom 24.07.2026) am 27.07.2026. Der Omnibus führt zudem ab 02.12.2026 zusätzliche Verbote ein."
-        normQuelle="Verordnung (EU) 2024/1689 Art. 113; Digital Omnibus zur KI-VO"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_9"]}
+        ergebnisHinweis={inhalt.werte.dieVerschiebungBetrifftDie}
+        normQuelle={inhalt.werte.verordnungEu20241689}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Bußgeldrahmen nach DSGVO"
+        title={inhalt.werte.beispiel2BußgeldrahmenNach}
         zielGleichung="B_{max} = \max\left(20\ \text{Mio. €};\ 0{,}04 \cdot U\right)"
-        schritte={[
-          { titel: 'Großunternehmen', erklaerung: 'Weltweiter Jahresumsatz U = 800 Mio. €:', formel: '0{,}04 \\cdot 800 = 32\\ \\text{Mio. €} > 20\\ \\text{Mio. €}' },
-          { titel: 'Ingenieurbüro', erklaerung: 'Jahresumsatz U = 5 Mio. €:', formel: '0{,}04 \\cdot 5 = 0{,}2\\ \\text{Mio. €} < 20\\ \\text{Mio. €}' },
-          { titel: 'Obergrenzen', erklaerung: 'Es gilt jeweils der höhere Betrag:', formel: 'B_{max} = 32\\ \\text{Mio. €}\\ \\text{bzw.}\\ 20\\ \\text{Mio. €}' }
-        ]}
-        ergebnisHinweis="Das sind Obergrenzen für schwere Verstöße (Art. 83 Abs. 5). Die tatsächliche Höhe richtet sich nach Art, Schwere, Dauer, Vorsatz und Mitwirkung (Art. 83 Abs. 2)."
-        normQuelle="Verordnung (EU) 2016/679 Art. 83"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_10"]}
+        ergebnisHinweis={inhalt.werte.dasSindObergrenzenFür}
+        normQuelle={inhalt.werte.verordnungEu2016679}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_recht_ethik" />
@@ -996,25 +860,17 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'lokal' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Speicherbedarf eines quantisierten 14B-Modells"
+        title={inhalt.werte.beispiel1SpeicherbedarfEines}
         zielGleichung="M \approx \frac{N \cdot b}{8} + M_{KV}"
-        schritte={[
-          { titel: 'Gewichte', erklaerung: 'N = 14 · 10⁹ Parameter, Q4_K_M mit rund 4,85 bit je Gewicht:', formel: '\\frac{14 \\cdot 10^9 \\cdot 4{,}85}{8} = 8{,}5 \\cdot 10^9\\ \\text{Byte} \\approx 8{,}5\\ \\text{GB}' },
-          { titel: 'Kontext-Cache', erklaerung: 'Für mittlere Kontextlängen rund 1,5 GB (Lehrannahme):', formel: 'M \\approx 8{,}5 + 1{,}5 = 10\\ \\text{GB}' },
-          { titel: 'Hardware', erklaerung: 'Passt auf eine Grafikkarte mit 12 GB:', formel: '10\\ \\text{GB} < 12\\ \\text{GB}' }
-        ]}
-        ergebnisHinweis="Der Kontext-Cache wächst mit der Kontextlänge; sehr lange Dokumente benötigen deutlich mehr Speicher oder werden auf CPU/RAM ausgelagert und dann langsam."
-        normQuelle="GGUF/llama.cpp-Dokumentation (github.com/ggml-org/llama.cpp)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_11"]}
+        ergebnisHinweis={inhalt.werte.derKontextCacheWächst}
+        normQuelle={inhalt.werte.ggufLlamaCppDokumentation}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Wirkung der Quantisierung bei einem 70B-Modell"
+        title={inhalt.werte.beispiel2WirkungDer}
         zielGleichung="\frac{M_{Q4}}{M_{FP16}} = \frac{4{,}85}{16}"
-        schritte={[
-          { titel: 'FP16', erklaerung: '16 bit je Gewicht:', formel: 'M_{FP16} = \\frac{70 \\cdot 10^9 \\cdot 16}{8} = 140\\ \\text{GB}' },
-          { titel: 'Q4_K_M', erklaerung: 'Rund 4,85 bit je Gewicht:', formel: 'M_{Q4} = \\frac{70 \\cdot 10^9 \\cdot 4{,}85}{8} = 42\\ \\text{GB}' },
-          { titel: 'Verhältnis', erklaerung: 'Speichereinsparung:', formel: '\\frac{42}{140} = 0{,}30 \\Rightarrow -70\\ \\%' }
-        ]}
-        ergebnisHinweis="Quantisierung kostet etwas Genauigkeit, besonders bei Rechenaufgaben. 42 GB Gewichte erfordern 48 GB Grafikspeicher oder einen Rechner mit 64 GB gemeinsamem Speicher."
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_12"]}
+        ergebnisHinweis={inhalt.werte.quantisierungKostetEtwasGenauigkeit}
         normQuelle="Lehrbeispiel"
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -1024,26 +880,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'ressourcen' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Unsicherheit eines Benchmark-Ergebnisses"
+        title={inhalt.werte.beispiel1UnsicherheitEines}
         zielGleichung="u = 1{,}96 \cdot \sqrt{\frac{p(1-p)}{n}}"
-        schritte={[
-          { titel: 'Messung', erklaerung: 'Modell A löst 78 % von n = 200 Aufgaben, Modell B 74 %:', formel: 'p_A = 0{,}78,\\quad p_B = 0{,}74' },
-          { titel: '95-%-Intervall A', erklaerung: 'Normalapproximation:', formel: 'u = 1{,}96 \\cdot \\sqrt{\\frac{0{,}78 \\cdot 0{,}22}{200}} = 1{,}96 \\cdot 0{,}029 = 0{,}057' },
-          { titel: 'Vergleich', erklaerung: 'Der Unterschied von 4 Prozentpunkten liegt innerhalb der Unsicherheit:', formel: '0{,}04 < 0{,}057' }
-        ]}
-        ergebnisHinweis="Ranglisten unabhängiger KI-Seiten sind Momentaufnahmen. Kleine Abstände sind statistisch oft nicht belastbar; maßgeblich ist ein eigener Test mit fachtypischen Aufgaben."
-        normQuelle="Lehrbeispiel (Binomialverteilung)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_13"]}
+        ergebnisHinweis={inhalt.werte.ranglistenUnabhängigerKiSeiten}
+        normQuelle={inhalt.werte.lehrbeispielBinomialverteilung2}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Strombedarf und Emissionen einer lokalen Auswertung"
+        title={inhalt.werte.beispiel2StrombedarfUnd}
         zielGleichung="E = P \cdot t,\quad CO_2 = E \cdot f"
-        schritte={[
-          { titel: 'Energie', erklaerung: 'Grafikkarte 350 W, Rechenzeit 30 min:', formel: 'E = 0{,}35\\ \\text{kW} \\cdot 0{,}5\\ \\text{h} = 0{,}175\\ \\text{kWh}' },
-          { titel: 'Emissionen', erklaerung: 'Emissionsfaktor des Strommixes als Lehrwert 0,36 kg CO₂/kWh (aktuellen UBA-Wert prüfen):', formel: 'CO_2 = 0{,}175 \\cdot 0{,}36 = 0{,}063\\ \\text{kg}' },
-          { titel: 'Kosten', erklaerung: 'Strompreis 0,35 €/kWh (Lehrwert):', formel: 'K = 0{,}175 \\cdot 0{,}35 = 0{,}061\\ \\text{€}' }
-        ]}
-        ergebnisHinweis="Die Rechnung erfasst nur den Betrieb. Herstellung der Hardware und – bei Cloud-Diensten – Rechenzentrum und Kühlung kommen hinzu und sind schwer zu beziffern."
-        normQuelle="Umweltbundesamt: CO₂-Emissionsfaktoren für den Strommix (manuell prüfen)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_14"]}
+        ergebnisHinweis={inhalt.werte.dieRechnungErfasstNur}
+        normQuelle={inhalt.werte.umweltbundesamtCoEmissionsfaktorenFür}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_ressourcen" />
@@ -1052,26 +900,18 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'onlinekurse' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Ein Schritt des Gradientenabstiegs"
+        title={inhalt.werte.beispiel1EinSchritt}
         zielGleichung="w_{neu} = w - \eta \cdot \frac{\partial L}{\partial w}"
-        schritte={[
-          { titel: 'Verlustfunktion', erklaerung: 'L(w) = (w − 1)², Startwert w = 2,0:', formel: 'L(2{,}0) = 1{,}0,\\quad \\frac{\\partial L}{\\partial w} = 2(w-1) = 2{,}0' },
-          { titel: 'Schritt', erklaerung: 'Lernrate η = 0,1:', formel: 'w_{neu} = 2{,}0 - 0{,}1 \\cdot 2{,}0 = 1{,}8' },
-          { titel: 'Kontrolle', erklaerung: 'Der Verlust sinkt:', formel: 'L(1{,}8) = 0{,}8^2 = 0{,}64 < 1{,}0' }
-        ]}
-        ergebnisHinweis="Zu große Lernraten lassen das Verfahren über das Minimum hinausspringen, zu kleine machen es langsam – ein Kernthema fast aller Einführungskurse in maschinelles Lernen."
-        normQuelle="Goodfellow/Bengio/Courville: Deep Learning (2016), Kap. 4"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_15"]}
+        ergebnisHinweis={inhalt.werte.zuGroßeLernratenLassen}
+        normQuelle={inhalt.werte.goodfellowBengioCourvilleDeep2}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Lernzeit für einen Onlinekurs planen"
+        title={inhalt.werte.beispiel2LernzeitFür}
         zielGleichung="t_{ges} = t_{Video} \cdot f_{\text{Ü}}"
-        schritte={[
-          { titel: 'Aufwand', erklaerung: '24 h Videomaterial, Faktor 1,5 für Übungen und Nacharbeit (Erfahrungswert):', formel: 't_{ges} = 24 \\cdot 1{,}5 = 36\\ \\text{h}' },
-          { titel: 'Wochenplan', erklaerung: '6 h je Woche verfügbar:', formel: 'n = \\frac{36}{6} = 6\\ \\text{Wochen}' },
-          { titel: 'Leistungspunkte', erklaerung: 'Bei 30 h je ECTS-Punkt entspricht das etwa:', formel: '\\frac{36}{30} = 1{,}2\\ \\text{ECTS}' }
-        ]}
-        ergebnisHinweis="Ohne eigene Programmierübungen bleibt Videowissen oberflächlich; Lernziele vorab festlegen und mit einem kleinen eigenen Projekt abschließen."
-        normQuelle="Lehrbeispiel; ECTS-Leitfaden"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_16"]}
+        ergebnisHinweis={inhalt.werte.ohneEigeneProgrammierübungenBleibt}
+        normQuelle={inhalt.werte.lehrbeispielEctsLeitfaden}
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="ki_onlinekurse" />
@@ -1080,25 +920,17 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       {activeTab === 'anwendungen' && (
         <>
       <FormulaDerivationBox
-        title="Beispiel 1: Festigkeitsprognose mit einem linearen Lehrmodell"
+        title={inhalt.werte.beispiel1FestigkeitsprognoseMit}
         zielGleichung="f_{c,pred} = a - b \cdot (w/z)"
-        schritte={[
-          { titel: 'Modell', erklaerung: 'Aus Laborreihen angepasst (Lehrwerte): a = 105 N/mm², b = 110 N/mm²:', formel: 'f_{c,pred} = 105 - 110 \\cdot (w/z)' },
-          { titel: 'Prognose', erklaerung: 'Rezeptur mit w/z = 0,50:', formel: 'f_{c,pred} = 105 - 55 = 50\\ \\text{N/mm}^2' },
-          { titel: 'Gültigkeit', erklaerung: 'Nur innerhalb des Trainingsbereichs (hier w/z 0,40 bis 0,65) belastbar:', formel: '0{,}40 \\le w/z \\le 0{,}65' }
-        ]}
-        ergebnisHinweis="Ein Prognosemodell ersetzt keine Erstprüfung und keinen Konformitätsnachweis. Außerhalb des Datenbereichs (andere Zemente, Zusatzstoffe) kann es grob falsch liegen."
-        normQuelle="DIN EN 206 / DIN 1045-2:2023-08 (Erstprüfung)"
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_17"]}
+        ergebnisHinweis={inhalt.werte.einPrognosemodellErsetztKeine}
+        normQuelle={inhalt.werte.dinEn206Din}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Modellgüte mit MAE und RMSE"
+        title={inhalt.werte.beispiel2ModellgüteMit}
         zielGleichung="MAE = \frac{1}{n}\sum |e_i|,\quad RMSE = \sqrt{\frac{1}{n}\sum e_i^2}"
-        schritte={[
-          { titel: 'Fehler', erklaerung: 'Vier Validierungswürfel, Abweichung Prognose minus Messung in N/mm²:', formel: 'e = (3;\\ -2;\\ 4;\\ -1)' },
-          { titel: 'MAE', erklaerung: 'Mittlerer absoluter Fehler:', formel: 'MAE = \\frac{3 + 2 + 4 + 1}{4} = 2{,}5\\ \\text{N/mm}^2' },
-          { titel: 'RMSE', erklaerung: 'Wurzel des mittleren quadratischen Fehlers:', formel: 'RMSE = \\sqrt{\\frac{9 + 4 + 16 + 1}{4}} = \\sqrt{7{,}5} = 2{,}74\\ \\text{N/mm}^2' }
-        ]}
-        ergebnisHinweis="Der RMSE gewichtet große Ausreißer stärker. Validierungsdaten dürfen nicht zum Training verwendet worden sein, sonst wird die Güte überschätzt."
+        schritte={inhalt.daten["KiBaustoffeInhalt.schritte_18"]}
+        ergebnisHinweis={inhalt.werte.derRmseGewichtetGroße}
         normQuelle="Lehrbeispiel"
       />
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -1107,25 +939,14 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       )}
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 14 KI: KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap14} 
         wikipedia={[
-          { title: 'Künstliche Intelligenz', url: 'https://de.wikipedia.org/wiki/K%C3%BCnstliche_Intelligenz' },
-          { title: 'Maschinelles Lernen', url: 'https://de.wikipedia.org/wiki/Maschinelles_Lernen' }
+          { title: inhalt.werte.künstlicheIntelligenz, url: 'https://de.wikipedia.org/wiki/K%C3%BCnstliche_Intelligenz' },
+          { title: inhalt.werte.maschinellesLernen, url: 'https://de.wikipedia.org/wiki/Maschinelles_Lernen' }
         ]} 
-        literatur={[ 
-          'Russell, S.; Norvig, P.: Artificial Intelligence – A Modern Approach. 4. Aufl., Hoboken: Pearson 2021',
-          'Goodfellow, I.; Bengio, Y.; Courville, A.: Deep Learning. Cambridge (MA): MIT Press 2016' 
-        ]} 
-        regelwerke={[ 
-          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Verordnung (EU) 2026/1744 (Digital Omnibus, ABl. L vom 24.07.2026)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
-          { title: 'Verordnung (EU) 2016/679 (DSGVO)', url: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
-          { title: 'UrhG § 44b (Text und Data Mining) und § 60d (wissenschaftliche Forschung)', url: 'https://www.gesetze-im-internet.de/urhg/__44b.html' },
-          { title: 'ISO/IEC 42001:2023 (KI-Managementsysteme)' }
-        ]} 
-        formeln={[
-          { formel: 'f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}', erklaerung: 'Prädiktive Druckfestigkeitsschätzung im KI-Modell' },
-          { formel: 'GWP_{total} = \\sum_{i=1}^{n} m_i \\cdot GWP_i \\quad \\text{[kg CO₂-Eq]}', erklaerung: 'Optimierte Treibhauspotenzials-Zielfunktion des Agenten' }
-        ]} 
+        literatur={inhalt.daten["KiBaustoffeInhalt.literatur"]} 
+        regelwerke={inhalt.daten["KiBaustoffeInhalt.regelwerke"]} 
+        formeln={inhalt.daten["KiBaustoffeInhalt.formeln"]} 
       />
     </div>
   );

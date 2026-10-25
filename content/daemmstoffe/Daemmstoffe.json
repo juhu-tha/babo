@@ -1,0 +1,119 @@
+{
+  "texte": {
+    "materialienZurWärmedämmungDeren": "Materialien zur Wärmedämmung, deren Wärmeleitfähigkeiten und bauphysikalische Eigenschaften.",
+    "materialienDämmung": " Materialien & Dämmung",
+    "anorganischMineralischeDämmstoffe": "Anorganisch-Mineralische Dämmstoffe",
+    "mineralwolleGlaswolleSteinwolle": "Mineralwolle (Glaswolle & Steinwolle)",
+    "rohstoffeAltglasGlaswolleBzw": "**Rohstoffe:** Altglas (Glaswolle) bzw. Basalt/Diabas (Steinwolle), gebunden mit Kunstharzen.",
+    "wärmeleitfähigkeit00320": "**Wärmeleitfähigkeit (λ):** 0,032 - 0,040 W/(m·K)",
+    "brandschutzNichtBrennbarA1": "**Brandschutz:** Nicht brennbar (A1 oder A2-s1, d0). Ideal für Brandschutzbarrieren im WDVS.",
+    "eigenschaftenHochDampfdiffusionsoffen1": "**Eigenschaften:** Hoch dampfdiffusionsoffen (μ ≈ 1). Neigt zur Wasseraufnahme, daher vor Feuchtigkeit zu schützen.",
+    "schaumglasCellularGlass": "Schaumglas (Cellular Glass)",
+    "rohstoffeAufgeschäumtesAltglasMit": "**Rohstoffe:** Aufgeschäumtes Altglas (mit Kohlenstoff versetzt).",
+    "wärmeleitfähigkeit00360": "**Wärmeleitfähigkeit (λ):** 0,036 - 0,050 W/(m·K)",
+    "brandschutzNichtBrennbarA12": "**Brandschutz:** Nicht brennbar (A1).",
+    "eigenschaftenAbsolutWasserUnd": "**Eigenschaften:** Absolut wasser- und dampfdicht (μ = ∞). Extrem druckfest und unverrottbar.",
+    "einsatzPerimeterdämmungUnterLastabtragen": "**Einsatz:** Perimeterdämmung unter lastabtragenden Bodenplatten, Flachdächer.",
+    "organischSynthetischeDämmstoffe": "Organisch-Synthetische Dämmstoffe",
+    "epsExpandiertesPolystyrolStyropor": "EPS (Expandiertes Polystyrol / \"Styropor\")",
+    "strukturAufgeschäumtesGranulatBesteht": "**Struktur:** Aufgeschäumtes Granulat, besteht zu 98% aus Luft.",
+    "wärmeleitfähigkeit00310": "**Wärmeleitfähigkeit (λ):** 0,031 - 0,040 W/(m·K)",
+    "brandschutzMitFlammschutzmittelnEuroklas": "**Brandschutz:** Mit Flammschutzmitteln Euroklasse E nach DIN EN 13501-1 (früher B1 nach DIN 4102-1). Im Brandfall schmelzend/tropfend.",
+    "einsatzStandardImWdvs": "**Einsatz:** Standard im WDVS, günstige Trittschalldämmung.",
+    "xpsExtrudiertesPolystyrolStyrodur": "XPS (Extrudiertes Polystyrol / \"Styrodur\")",
+    "strukturGeschlossenzelligeSchaumstruktur": "**Struktur:** Geschlossenzellige Schaumstruktur durch Extrusion.",
+    "wärmeleitfähigkeit003202": "**Wärmeleitfähigkeit (λ):** 0,032 - 0,039 W/(m·K)",
+    "eigenschaftenHoheDruckfestigkeitWasserab": "**Eigenschaften:** Hohe Druckfestigkeit, wasserabweisend, feuchtigkeitsunempfindlich.",
+    "einsatzPerimeterdämmungUmkehrdächerFrost": "**Einsatz:** Perimeterdämmung, Umkehrdächer, Frostschürzen.",
+    "purPirPolyurethanHartschaum": "PUR / PIR (Polyurethan-Hartschaum)",
+    "wärmeleitfähigkeit00220": "**Wärmeleitfähigkeit (λ):** 0,022 - 0,028 W/(m·K) (Sehr hohe Dämmwirkung!)",
+    "brandschutzBrennbarAberNicht": "**Brandschutz:** Brennbar, aber nicht schmelzend (Duroplast).",
+    "vorteilSehrSchlankeAufbauten": "**Vorteil:** Sehr schlanke Aufbauten möglich, wird oft mit Alubeplankung (Dampfsperre) kaschiert.",
+    "einsatzAufsparrendämmungFlachdach": "**Einsatz:** Aufsparrendämmung, Flachdach.",
+    "vakuumisolationspaneeleVip": "Vakuumisolationspaneele (VIP)",
+    "prinzipEvakuierterKernAus": "**Prinzip:** Evakuierter Kern aus Kieselsäure in luftdichter Hochbarrierefolie.",
+    "wärmeleitfähigkeit00040": "**Wärmeleitfähigkeit (λ):** 0,004 - 0,007 W/(m·K) (Die höchste Dämmwirkung).",
+    "nachteilDarfNichtBeschädigt": "**Nachteil:** Darf nicht beschädigt (angebohrt) werden, sonst steigt λ durch Belüftung auf ca. 0,020 W/(m·K), also etwa um den Faktor 3–5. Teuer.",
+    "einsatzWennExtremWenig": "**Einsatz:** Wenn extrem wenig Platz vorhanden ist (z.B. Terrassentüren, Gauben).",
+    "nachwachsendeNaturdämmstoffe": "Nachwachsende Naturdämmstoffe",
+    "holzfaserZellulose": "Holzfaser & Zellulose",
+    "wärmeleitfähigkeit00380": "**Wärmeleitfähigkeit (λ):** 0,038 - 0,050 W/(m·K)",
+    "sommerlicherWärmeschutzSehrGut": "**Sommerlicher Wärmeschutz:** Sehr gut! Hohe Wärmespeicherkapazität (c ≈ 2100 J/kgK) verzögert die Aufheizung von Dachräumen (hohe Phasenverschiebung).",
+    "verarbeitungAlsPlattenOder": "**Verarbeitung:** Als Platten oder Einblasdämmung (Zelluloseflocken aus Altpapier).",
+    "hanfJuteSchafwolle": "Hanf, Jute & Schafwolle",
+    "besonderheitSchafwolleKannViel": "**Besonderheit Schafwolle:** Kann viel Feuchtigkeit sorbieren (bis ca. 1/3 des Eigengewichts), ohne sich nass anzufühlen; die Wärmeleitfähigkeit steigt dabei moderat an. Sie kann Formaldehyd aus der Raumluft binden (Herstellerangabe).",
+    "umweltSehrGuteCo": "**Umwelt:** Sehr gute CO₂-Bilanz. Brandschutz oft durch Zusätze (z.B. Soda oder Borsalz) erreicht."
+  },
+  "werte": {
+    "anwendungsbeispielErforderlicheDämmstoff": "Anwendungsbeispiel: Erforderliche Dämmstoffdicke für einen Ziel-U-Wert",
+    "dinEnIso6946": "DIN EN ISO 6946; Bemessungswerte λ nach DIN 4108-4 bzw. Produktangabe",
+    "dieWärmeleitfähigkeitBestimmtDie": "Die Wärmeleitfähigkeit bestimmt die Dicke direkt: 20 % höheres λ bedeutet 20 % mehr Dämmstoffdicke. Dübel und Befestigungen (ΔU) sind hier nicht berücksichtigt."
+  },
+  "daten": {
+    "Daemmstoffe.schritte": [
+      {
+        "titel": "1. Bestandswand",
+        "formel": "15\\,\\text{mm Innenputz } (\\lambda = 0{,}70) + 240\\,\\text{mm KS } (\\lambda = 0{,}99)",
+        "erklaerung": "Kalksandstein-Mauerwerk, Lehrwerte."
+      },
+      {
+        "titel": "2. Widerstände ohne Dämmung",
+        "formel": "R = 0{,}13 + 0{,}04 + \\frac{0{,}015}{0{,}70} + \\frac{0{,}24}{0{,}99} = 0{,}43\\,\\text{m}^2\\text{K/W}",
+        "erklaerung": "R_si = 0,13 und R_se = 0,04 m²K/W."
+      },
+      {
+        "titel": "3. Erforderlicher Dämmwiderstand",
+        "formel": "R_D = \\frac{1}{0{,}20} - 0{,}43 = 4{,}57\\,\\text{m}^2\\text{K/W}",
+        "erklaerung": "Ziel U = 0,20 W/(m²K)."
+      },
+      {
+        "titel": "4. Dicken je Dämmstoff",
+        "formel": "\\text{EPS 035: } 160\\,\\text{mm};\\; \\text{MW 032: } 146\\,\\text{mm};\\; \\text{Holzfaser 040: } 183\\,\\text{mm}",
+        "erklaerung": "d = λ · R_D; gewählt wird die nächste lieferbare Dicke."
+      }
+    ],
+    "Daemmstoffe.literatur": [
+      "Willems, W. M. (2018): Lehrbuch der Bauphysik - Schall, Wärme, Feuchte, Brand (8. Auflage, Springer Vieweg)",
+      "FNR (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen (Fachagentur Nachwachsende Rohstoffe, aktuelle Ausgabe)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Daemmstoffe.regelwerke": [
+      {
+        "title": "DIN 4108-10 (Wärmeschutz und Energie-Einsparung in Gebäuden - Teil 10: Anwendungsbezogene Anforderungen an Wärmedämmstoffe)"
+      },
+      {
+        "title": "GModG (Gebäudemodernisierungsgesetz (GModG), bis 28.07.2026 Gebäudeenergiegesetz (GEG) - Anforderungen an den Wärmeschutz von Bauteilen)",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      },
+      {
+        "title": "DIN EN 13162 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Mineralwolle (MW))"
+      }
+    ],
+    "Daemmstoffe.weblinks": [
+      {
+        "title": "Ubakus.de – U-Wert- & Glaser-Tauwassernachweis",
+        "url": "https://www.ubakus.de/"
+      },
+      {
+        "title": "ÖKOBAUDAT – EPD-Datenbank für Dämmstoffe",
+        "url": "https://www.oekobaudat.de/"
+      },
+      {
+        "title": "WECOBIS – Ökologisches Baustoffinformationssystem des Bundes",
+        "url": "https://www.wecobis.de/"
+      }
+    ],
+    "Daemmstoffe.formeln": [
+      {
+        "formel": "R = \\frac{d}{\\lambda}",
+        "erklaerung": "Wärmedurchlasswiderstand R in (m²·K)/W. Bestimmt den Widerstand eines homogenen Bauteils der Dicke d (in m) mit der Wärmeleitfähigkeit \\lambda (in W/(m·K)) gegenüber einem Wärmestrom.",
+        "quelle": "DIN 4108 / DIN EN ISO 6946"
+      },
+      {
+        "formel": "U = \\frac{1}{R_{si} + \\sum_{i=1}^{n} \\frac{d_i}{\\lambda_i} + R_{se}}",
+        "erklaerung": "Wärmedurchgangskoeffizient (U-Wert) in W/(m²·K). Beschreibt den transmittierenden Wärmestrom durch ein mehrschichtiges Bauteil unter Berücksichtigung der inneren (R_{si}) und äußeren (R_{se}) Wärmeübergangswiderstände.",
+        "quelle": "DIN EN ISO 6946"
+      }
+    ]
+  }
+}

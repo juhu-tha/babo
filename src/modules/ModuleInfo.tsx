@@ -20,6 +20,8 @@ import { MODULES_DATA } from './moduleinfo/daten';
 import { COMPREHENSIVE_RESOURCES } from './moduleinfo/ressourcen';
 
 import type { TabId } from '@/src/contexts/TabContext';
+import inhalt from '@/content/moduleinfo/ModuleInfo.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 interface ModuleInfoProps {
   group: string;
 }
@@ -38,8 +40,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
     return (
       <div className="bg-white dark:bg-slate-900 text-text-main dark:text-slate-100 rounded-2xl shadow-sm border border-home-grau/30 dark:border-slate-800 p-12 text-center">
         <Info className="w-12 h-12 text-shiraz mx-auto mb-4" />
-        <h3 className="text-lg font-bold text-text-main dark:text-slate-100 mb-2">Modulinfos für dieses Thema</h3>
-        <p className="text-sm text-text-main/60 dark:text-slate-400">Aktuell ist dieses Informationsmodul leer oder befindet sich in Vorbereitung.</p>
+        <h3 className="text-lg font-bold text-text-main dark:text-slate-100 mb-2"><MdText text={inhalt.texte.modulinfosFürDiesesThema} /></h3>
+        <p className="text-sm text-text-main/60 dark:text-slate-400"><MdText text={inhalt.texte.aktuellIstDiesesInformationsmodul} /></p>
       </div>
     );
   }
@@ -159,23 +161,13 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                   <div className="border-b border-home-grau/25 pb-3">
                     <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block mb-0.5">Praxis-Fahrplan</span>
                     <h4 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
-                      <Compass size={18} className="text-shiraz" />
-                      Interaktiver Schritt-für-Schritt Prüfungsleitfaden (Workflow)
-                    </h4>
-                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                      Dieser chronologische Leitfaden führt Sie Schritt für Schritt durch das Zusammenwirken aller Einzelmodule und Werkstoffdisziplinen der Baubetreuung – von der Baustelle bis zur schlussendlichen Freigabeentscheidung. Jedes Modul ist so eigenständig und ohne Vorwissen anwendbar.
-                    </p>
+                      <Compass size={18} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverSchrittFürSchritt} /></h4>
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed"><MdText text={inhalt.texte.dieserChronologischeLeitfadenFührt} /></p>
                   </div>
 
                   {/* Flow Steps Buttons Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
-                    {[
-                      { num: "01", label: "Probenahme", title: "Probenahme", desc: "Entnahme & Logistik" },
-                      { num: "02", label: "Sensorik & Messen", title: "Sensorik", desc: "Applikation & Justierung" },
-                      { num: "03", label: "Laborprüfung", title: "Mechanische Prüfung", desc: "Druck, Biegezug & E-Modul" },
-                      { num: "04", label: "Materialanalytik", title: "Mikroanalytik", desc: "XRD, GC-MS & RFA" },
-                      { num: "05", label: "Statistik", title: "Statistische Absicherung", desc: "Konformität & Ausschuss" },
-                    ].map((step, idx) => (
+                    {inhalt.daten.ModuleInfo.map((step, idx) => (
                       <button
                         key={idx}
                         onClick={() => setLaborStep(idx)}
@@ -200,33 +192,25 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-home-grau/15 pb-2">
                           <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">1</span>
-                            Schritt 1: Normgerechte Probenahme &amp; Feld-Erkundung (Probenahme-Modul)
-                          </h5>
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 12504-1 / LAGA PN 98</span>
+                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">1</span><MdText text={inhalt.texte.schritt1NormgerechteProbenahme} /></h5>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded"><MdText text={inhalt.texte.dinEn125041} /></span>
                         </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          Keine Laborprüfung ist besser als ihre Probenahme. Eine unsachgemäße oder willkürliche Materialentnahme (z. B. nur von der Oberfläche eines Haufwerks oder aus nur einem Bauteilbereich) führt zu Entmischungseffekten und nicht repräsentativen Kennwerten.
-                        </p>
+                        <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.keineLaborprüfungIstBesser} /></p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
-                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Praxistipp für Bohrkernentnahme:</span>
+                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide"><MdText text={inhalt.texte.praxistippFürBohrkernentnahme} /></span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Bewehrung orten:</strong> Vor der Kernbohrung ist ein zerstörungsfreies Scannen der Bewehrungsstähle zwingend erforderlich, um ein Durchtrennen tragender Eisen zu vermeiden.</li>
-                              <li><strong>Mindestmaß beachten:</strong> Der Kerndurchmesser sollte mindestens das Dreifache des Größtkorns betragen (d_K ≥ 3 · d_max). Bei 32 mm Größtkorn ist daher eine Bohrkrone von mindestens 100 mm erforderlich.</li>
-                              <li><strong>Kernanzahl planen:</strong> Je Prüfbereich mehrere Kerne entnehmen (Mindestanzahl je Bewertungsverfahren nach DIN EN 13791).</li>
+                              <li><MdText text={inhalt.texte.bewehrungOrtenVorDer} /></li>
+                              <li><MdText text={inhalt.texte.mindestmaßBeachtenDerKerndurchmesser} /></li>
+                              <li><MdText text={inhalt.texte.kernanzahlPlanenJePrüfbereich} /></li>
                             </ul>
                           </div>
                           <div className="p-3 bg-stone-50 border border-home-grau/15 rounded-md flex flex-col justify-between">
                             <div>
-                              <span className="font-bold text-shiraz block text-[10.5px]">LAGA PN 98 (Abfallbeprobung)</span>
-                              <p className="text-[10.5px] text-slate-600 leading-normal mt-1">
-                                Um z. B. PAK-haltige Asphaltschichten, HBCD-haltige Dämmstoffe (EPS/XPS) oder auslaugbare Salze im Bauschutt nachvollziehbar zu erfassen, verlangt die LAGA PN 98 eine planmäßige Beprobung des gesamten Haufwerks (nach § 8 EBV verbindlich für mineralische Ersatzbaustoffe).
-                              </p>
+                              <span className="font-bold text-shiraz block text-[10.5px]"><MdText text={inhalt.texte.lagaPn98Abfallbeprobung} /></span>
+                              <p className="text-[10.5px] text-slate-600 leading-normal mt-1"><MdText text={inhalt.texte.umZBPak} /></p>
                             </div>
-                            <div className="bg-white p-1.5 border border-home-grau/10 rounded text-[9.5px] font-mono text-slate-500 mt-2 text-center">
-                              Mindestvolumen der Proben: abhängig vom Größtkorn (Tabelle der LAGA PN 98)
-                            </div>
+                            <div className="bg-white p-1.5 border border-home-grau/10 rounded text-[9.5px] font-mono text-slate-500 mt-2 text-center"><MdText text={inhalt.texte.mindestvolumenDerProbenAbhängig} /></div>
                           </div>
                         </div>
                       </div>
@@ -236,33 +220,25 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-home-grau/15 pb-2">
                           <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">2</span>
-                            Schritt 2: Sensor-Applikation, Justierung &amp; Unsicherheit (Messen &amp; Prüfen-Modul)
-                          </h5>
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">VDI/VDE 2635 / GUM-Standard</span>
+                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">2</span><MdText text={inhalt.texte.schritt2SensorApplikation} /></h5>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded"><MdText text={inhalt.texte.vdiVde2635Gum} /></span>
                         </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          Für verlässliche Messdaten (z. B. Verformungen im E-Modul-Versuch oder Spannungsaufzeichnungen an Trägern) müssen Sensoren kalibriert, thermische Störungen kompensiert und mechanisch starr angebunden sein.
-                        </p>
+                        <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.fürVerlässlicheMessdatenZ} /></p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
-                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Dehnungsaufzeichnung (DMS):</span>
+                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide"><MdText text={inhalt.texte.dehnungsaufzeichnungDms} /></span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Oberflächenvorbereitung:</strong> Die Baustoffkontaktfläche muss planparallel angeschliffen, absolut staubbefreit und chemisch entfettet (z. B. mit Isopropanol) werden.</li>
-                              <li><strong>Brückenschaltung konfigurieren:</strong> Verwenden Sie Wheatstone-Voll- oder Halbbrücken, um parasitäre Biegespannungen oder witterungsbedingte Temperatureffekte (&Delta;T) automatisch zu kompensieren.</li>
-                              <li><strong>Kalibrierfaktor (k-Wert):</strong> Exakt im Verstärker einstellen. Dehnung entspricht &epsilon; = (1/k) · (&Delta;R/R).</li>
+                              <li><MdText text={inhalt.texte.oberflächenvorbereitungDieBaustoffkontak} /></li>
+                              <li><MdText text={inhalt.texte.brückenschaltungKonfigurierenVerwendenSi} /></li>
+                              <li><MdText text={inhalt.texte.kalibrierfaktorKWertExakt} /></li>
                             </ul>
                           </div>
                           <div className="p-3 bg-indigo-50/50 border border-indigo-100 rounded-md flex flex-col justify-between">
                             <div>
-                              <span className="font-bold text-indigo-900 block text-[10.5px]">Messunsicherheit nach GUM (BIPM)</span>
-                              <p className="text-[10.5px] text-indigo-950/80 leading-normal mt-1">
-                                Messwerte ohne Angabe der Unsicherheit sind wissenschaftlich unbrauchbar. Im Modul &quot;Messen &amp; Prüfen&quot; berechnen Sie die kombinierte Standardunsicherheit u_c aus Typ-A-Beiträgen (Statistik der Messreihe) und Typ-B-Beiträgen (Geräteauflösung, Kalibrierschein).
-                              </p>
+                              <span className="font-bold text-indigo-900 block text-[10.5px]"><MdText text={inhalt.texte.messunsicherheitNachGumBipm} /></span>
+                              <p className="text-[10.5px] text-indigo-950/80 leading-normal mt-1"><MdText text={inhalt.texte.messwerteOhneAngabeDer} /></p>
                             </div>
-                            <div className="bg-white p-1.5 border border-indigo-100 rounded text-[9.5px] font-mono text-indigo-700 mt-2 text-center">
-                              GUM: Erweiterte Unsicherheit U = k · u_c mit k = 2 (≈ 95 % Überdeckung)
-                            </div>
+                            <div className="bg-white p-1.5 border border-indigo-100 rounded text-[9.5px] font-mono text-indigo-700 mt-2 text-center"><MdText text={inhalt.texte.gumErweiterteUnsicherheitU} /></div>
                           </div>
                         </div>
                       </div>
@@ -272,33 +248,25 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-home-grau/15 pb-2">
                           <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
-                            Schritt 3: Zerstörende mechanische Laborprüfungen (Prüfstandsversuche)
-                          </h5>
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 12390-3 / -13</span>
+                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">3</span><MdText text={inhalt.texte.schritt3ZerstörendeMechanische} /></h5>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded"><MdText text={inhalt.texte.dinEn123903} /></span>
                         </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          Die Bestimmung der Festigkeiten (Druckfestigkeit, Spaltzug- und Biegezugfestigkeit) erfolgt in hydraulischen Prüfmaschinen unter exakt definierten Belastungsraten und Probenbedingungen.
-                        </p>
+                        <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.dieBestimmungDerFestigkeiten} /></p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
-                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Prüfungsdurchführung &amp; Fehlerminimierung:</span>
+                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide"><MdText text={inhalt.texte.prüfungsdurchführungFehlerminimierung} /></span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Ebenheit sichern:</strong> Die Lastflächen von Würfeln und Zylindern müssen die Ebenheitstoleranz nach DIN EN 12390-1 (0,0006 · d) einhalten, sonst führen Kantenpressungen zu deutlich zu niedrigen Werten. Andernfalls planschleifen oder abgleichen.</li>
-                              <li><strong>Lasteinleitungsrate steuern:</strong> Beton verhält sich viskoelastisch. Zu schnelle Lasteinleitung verfälscht die Kennwerte nach oben. Für die Druckprüfung gilt nach DIN EN 12390-3 0,6 ± 0,2 MPa/s.</li>
-                              <li><strong>E-Modul-Zyklen:</strong> Der Elastizitätsmodul wird nicht beim Erstbruch, sondern durch wiederholte Be- und Entlastungszyklen (Hystereseeffekte) im elastischen Kernspannungsbereich ermittelt.</li>
+                              <li><MdText text={inhalt.texte.ebenheitSichernDieLastflächen} /></li>
+                              <li><MdText text={inhalt.texte.lasteinleitungsrateSteuernBetonVerhält} /></li>
+                              <li><MdText text={inhalt.texte.eModulZyklenDer} /></li>
                             </ul>
                           </div>
                           <div className="p-3 bg-red-50/50 border border-red-100 rounded-md flex flex-col justify-between">
                             <div>
                               <span className="font-bold text-red-900 block text-[10.5px]">Spannungs-Dehnungs-Visualisierung</span>
-                              <p className="text-[10.5px] text-red-950/80 leading-normal mt-1">
-                                Im Modul &quot;Virtuelle Versuche&quot; simulieren Sie Spannungs-Dehnungs-Kurven für verschiedene Werkstoffe und Prüfarten. Vergleichen Sie sprödes Versagen (Beton, Glas) mit zähelastischem Fließverhalten (B500B Betonstahl).
-                              </p>
+                              <p className="text-[10.5px] text-red-950/80 leading-normal mt-1"><MdText text={inhalt.texte.imModulVirtuelleVersuche} /></p>
                             </div>
-                            <div className="bg-white p-1.5 border border-red-100 rounded text-[9.5px] font-mono text-red-700 mt-2 text-center">
-                              Bruchspannung: σ_B = F_max / A_0 [MPa]
-                            </div>
+                            <div className="bg-white p-1.5 border border-red-100 rounded text-[9.5px] font-mono text-red-700 mt-2 text-center"><MdText text={inhalt.texte.bruchspannungBFMax} /></div>
                           </div>
                         </div>
                       </div>
@@ -308,34 +276,26 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-home-grau/15 pb-2">
                           <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">4</span>
-                            Schritt 4: Materialanalytik &amp; Chemophysikalische Gefügediagnose (Analytik &amp; Diagnostik)
-                          </h5>
+                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">4</span><MdText text={inhalt.texte.schritt4MaterialanalytikChemophysikalisc} /></h5>
                           <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">Methodenspektrum</span>
                         </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          Makroskopisches Materialverhalten (Tragfähigkeit, Festigkeit) wurzelt in der Nano- und Mikrostruktur. Weisen Sie schädliche Reaktionsphasen, Hydratation und Chemikalien zerstörungsfrei oder mikroskopisch nach.
-                        </p>
+                        <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.makroskopischesMaterialverhaltenTragfähi} /></p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Analysen-Entscheidungsmatrix:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>XRD &amp; FTIR (Mineralogie / Molekülbindungen):</strong> XRD weist an Pulverproben kristalline Treibphasen (Ettringit, Thaumasit) nach; FTIR identifiziert organische Polymeradditive.</li>
-                              <li><strong>TGA (Thermogravimetrie):</strong> Bestimmt den Portlanditgehalt Ca(OH)₂ (Wasserabgabe bei ca. 400–500&nbsp;&deg;C) und den Calcitgehalt (CO₂-Abgabe bei ca. 600–800&nbsp;&deg;C).</li>
-                              <li><strong>RFA &amp; LIPS (Elemente):</strong> RFA liefert makroskopische Elementoxide, während LIBS (laserbasiert, auch mobil) ortsaufgelöste Tiefenprofile (z. B. Chlorid an Bohrkernen aus Tunnelsockeln) liefert.</li>
-                              <li><strong>GC-MS (organische Schadstoffe):</strong> Standardverfahren für Holzschutzmittel (PCP/Lindan), Teerbestandteile (PAK) oder Flammschutzmittel.</li>
+                              <li><MdText text={inhalt.texte.xrdFtirMineralogieMolekülbindungen} /></li>
+                              <li><MdText text={inhalt.texte.tgaThermogravimetrieBestimmtDen} /></li>
+                              <li><MdText text={inhalt.texte.rfaLipsElementeRfa} /></li>
+                              <li><MdText text={inhalt.texte.gcMsOrganischeSchadstoffe} /></li>
                             </ul>
                           </div>
                           <div className="p-3 bg-emerald-50/50 border border-emerald-100 rounded-md flex flex-col justify-between">
                             <div>
-                              <span className="font-bold text-emerald-950 block text-[10.5px]">Interaktive Diagnostik-Schnittstelle</span>
-                              <p className="text-[10.5px] text-emerald-800 leading-normal mt-1">
-                                Nutzen Sie das Modul &quot;Analytik &amp; Diagnostik&quot;, um XRD-Beugung oder REM/EDX-Punktsonden live zu bedienen und Minerale durch reale physikochemische Kriterien zuzuordnen.
-                              </p>
+                              <span className="font-bold text-emerald-950 block text-[10.5px]"><MdText text={inhalt.texte.interaktiveDiagnostikSchnittstelle} /></span>
+                              <p className="text-[10.5px] text-emerald-800 leading-normal mt-1"><MdText text={inhalt.texte.nutzenSieDasModul} /></p>
                             </div>
-                            <div className="bg-white p-1.5 border border-emerald-100 rounded text-[9.5px] font-mono text-emerald-700 mt-2 text-center">
-                              Chloridgrenze: ≤ 0,40% (Stahlbeton); ≤ 0,20% (Spannbeton)
-                            </div>
+                            <div className="bg-white p-1.5 border border-emerald-100 rounded text-[9.5px] font-mono text-emerald-700 mt-2 text-center"><MdText text={inhalt.texte.chloridgrenze040Stahlbeton} /></div>
                           </div>
                         </div>
                       </div>
@@ -345,33 +305,25 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       <div className="space-y-3 animate-in fade-in duration-200">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-home-grau/15 pb-2">
                           <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">5</span>
-                            Schritt 5: Statistische Absicherung &amp; Konformitätsnachweis (Statistik-Untermodule)
-                          </h5>
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 206 / DIN EN 1990 / ISO 12491</span>
+                            <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">5</span><MdText text={inhalt.texte.schritt5StatistischeAbsicherung} /></h5>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded"><MdText text={inhalt.texte.dinEn206Din} /></span>
                         </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          Keine Einzelfestigkeit entscheidet allein über die Freigabe eines Bauwerks oder einer Betoncharge. Prüfstreuungen und mögliche Ausreißer werden statistisch bewertet und – nur mit technischer Begründung – ausgeschlossen.
-                        </p>
+                        <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.keineEinzelfestigkeitEntscheidetAllein} /></p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
-                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Statistisches Handwerkszeug für Konstrukteure:</span>
+                            <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide"><MdText text={inhalt.texte.statistischesHandwerkszeugFürKonstrukteu} /></span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Ausreißertest nach Grubbs:</strong> Zeigt, ob ein extremer Einzelwert statistisch auffällig ist; ob er ein Prüffehler ist (z. B. Hohlraum im Würfel), muss technisch geklärt werden.</li>
-                              <li><strong>Das 5%-Quantil (f_ck):</strong> Festigkeit, die mit 95 % Wahrscheinlichkeit überschritten wird: f_ck = f_m − 1,645 · σ bei bekannter Streuung; bei aus der Stichprobe geschätztem s mit k_n nach DIN EN 1990, Anhang D.</li>
-                              <li><strong>Konformität nach EN 206:</strong> Regelt die Konformität der Produktion (stetige Herstellung: f_cm ≥ f_ck + 1,48 · σ und f_ci ≥ f_ck − 4 N/mm²).</li>
+                              <li><MdText text={inhalt.texte.ausreißertestNachGrubbsZeigt} /></li>
+                              <li><MdText text={inhalt.texte.das5QuantilF} /></li>
+                              <li><MdText text={inhalt.texte.konformitätNachEn206} /></li>
                             </ul>
                           </div>
                           <div className="p-3 bg-purple-50/50 border border-purple-100 rounded-md flex flex-col justify-between">
                             <div>
-                              <span className="font-bold text-purple-950 block text-[10.5px]">Statistik &amp; Festbeton-Module</span>
-                              <p className="text-[10.5px] text-purple-800 leading-normal mt-1">
-                                Nutzen Sie die Module &quot;Statistik&quot; und &quot;Festbeton (Statistik)&quot;, um Stichproben zu erzeugen, Histogramme mit der Normalverteilung zu vergleichen und Konformitätskriterien nachzuvollziehen.
-                              </p>
+                              <span className="font-bold text-purple-950 block text-[10.5px]"><MdText text={inhalt.texte.statistikFestbetonModule} /></span>
+                              <p className="text-[10.5px] text-purple-800 leading-normal mt-1"><MdText text={inhalt.texte.nutzenSieDieModule} /></p>
                             </div>
-                            <div className="bg-white p-1.5 border border-purple-100 rounded text-[9.5px] font-mono text-purple-700 mt-2 text-center">
-                              Statistik-Ziel: Ausschaltquoten ≤ 5%
-                            </div>
+                            <div className="bg-white p-1.5 border border-purple-100 rounded text-[9.5px] font-mono text-purple-700 mt-2 text-center"><MdText text={inhalt.texte.statistikZielAusschaltquoten5} /></div>
                           </div>
                         </div>
                       </div>
@@ -395,8 +347,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               {data.didacticCards && data.didacticCards.length > 0 && (
                 <div className="space-y-3 pt-4 border-t border-home-grau/15">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/60 flex items-center gap-1.5">
-                    <CheckCircle className="text-emerald-600 w-4 h-4" /> Didaktische Leitgedanken &amp; Schlüsselkonzepte
-                  </h4>
+                    <CheckCircle className="text-emerald-600 w-4 h-4" /><MdText text={inhalt.texte.didaktischeLeitgedankenSchlüsselkonzepte} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {data.didacticCards.map((dc, idx) => (
                       <div key={idx} className="p-4 bg-emerald-50/40 border border-emerald-100 rounded-xl space-y-1">
@@ -413,14 +364,11 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               {(data.appStudents || data.appProfessionals) && (
                 <div className="space-y-3 pt-4 border-t border-home-grau/15">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/60 flex items-center gap-1.5">
-                    <GraduationCap className="text-indigo-600 w-4 h-4" /> Zielgruppen &amp; Praxis-Eignung
-                  </h4>
+                    <GraduationCap className="text-indigo-600 w-4 h-4" /><MdText text={inhalt.texte.zielgruppenPraxisEignung} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {data.appStudents && (
                       <div className="p-4 bg-indigo-50/35 border border-indigo-100/60 rounded-xl space-y-1.5">
-                        <h5 className="font-bold text-xs text-indigo-900 flex items-center gap-1">
-                          Für Studierende &amp; Lehre
-                        </h5>
+                        <h5 className="font-bold text-xs text-indigo-900 flex items-center gap-1"><MdText text={inhalt.texte.fürStudierendeLehre} /></h5>
                         <p className="text-[11px] text-indigo-950/80 leading-relaxed">
                           {data.appStudents}
                         </p>
@@ -428,9 +376,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                     )}
                     {data.appProfessionals && (
                       <div className="p-4 bg-slate-50 border border-home-grau/25 rounded-xl space-y-1.5">
-                        <h5 className="font-bold text-xs text-slate-900 flex items-center gap-1">
-                          Für Planer &amp; Bauingenieure
-                        </h5>
+                        <h5 className="font-bold text-xs text-slate-900 flex items-center gap-1"><MdText text={inhalt.texte.fürPlanerBauingenieure} /></h5>
                         <p className="text-[11px] text-slate-800 leading-relaxed">
                           {data.appProfessionals}
                         </p>
@@ -450,12 +396,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
             <div className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                  <BookOpen className="text-shiraz w-5 h-5" />
-                  Gliederung der Lehrthemen &amp; Inhalte
-                </h3>
-                <p className="text-sm text-text-main/80">
-                  Die Strukturierung dieses Fachbereichs deckt die folgenden relevanten mathematischen, normativen oder physikalisch-chemischen Ausprägungen ab:
-                </p>
+                  <BookOpen className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.gliederungDerLehrthemenInhalte} /></h3>
+                <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.dieStrukturierungDiesesFachbereichs} /></p>
               </div>
 
               {/* ITERATING SUBMODULE DESCRIPTIONS */}
@@ -492,9 +434,9 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
               {/* Standardisierter Druck-Fußzeilen-Bereich */}
               <div className="hidden print-footer">
-                <span className="font-bold">Quelle: BaustoffBoard (TH Augsburg)</span>
-                <span className="font-semibold">Version: 2.11.0</span>
-                <span>Gedruckt am: {new Date().toLocaleString('de-DE', {
+                <span className="font-bold"><MdText text={inhalt.texte.quelleBaustoffboardThAugsburg} /></span>
+                <span className="font-semibold"><MdText text={inhalt.texte.version2110} /></span>
+                <span><MdText text={inhalt.texte.gedrucktAm} />{new Date().toLocaleString('de-DE', {
                   day: '2-digit',
                   month: '2-digit',
                   year: 'numeric',
@@ -511,12 +453,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
             <div className="space-y-8 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                  <Compass className="text-shiraz w-5 h-5" />
-                  Umfangreiche wissenschaftliche Ressourcen &amp; Fachpublikationen
-                </h3>
-                <p className="text-sm text-text-main/80 leading-relaxed">
-                  Dieses Fachmodul greift auf anerkannte, unabhängige Quellen zurück. Nachfolgend finden Sie verifizierte Portale, wissenschaftliche Fachliteratur, referenzierte Aufsätze sowie akademische Dissertationen der Baustoffwissenschaften.
-                </p>
+                  <Compass className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.umfangreicheWissenschaftlicheRessourcenF} /></h3>
+                <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.diesesFachmodulGreiftAuf} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -524,12 +462,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 <div className="bg-slate-50/50 rounded-xl p-5 border border-home-grau/25 space-y-3 flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-sm text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-                      <Globe className="text-rose-600 w-4 h-4 shrink-0" />
-                      Unabhängige Verbände &amp; Fachportale
-                    </h4>
-                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3">
-                      Direkt zugängliche, neutrale Fachinhalte und Schriftenreihen für Lehre und Ingenieurpraxis.
-                    </p>
+                      <Globe className="text-rose-600 w-4 h-4 shrink-0" /><MdText text={inhalt.texte.unabhängigeVerbändeFachportale} /></h4>
+                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3"><MdText text={inhalt.texte.direktZugänglicheNeutraleFachinhalte} /></p>
                     <ul className="space-y-2.5">
                       {resources.websites.map((web, idx) => (
                         <li key={idx} className="text-xs">
@@ -546,7 +480,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         </li>
                       ))}
                       {resources.websites.length === 0 && (
-                        <li className="text-xs text-text-main/50 italic">Keine Fachportale direkt gelistet.</li>
+                        <li className="text-xs text-text-main/50 italic"><MdText text={inhalt.texte.keineFachportaleDirektGelistet} /></li>
                       )}
                     </ul>
                   </div>
@@ -556,12 +490,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 <div className="bg-slate-50/50 rounded-xl p-5 border border-home-grau/25 space-y-3 flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-sm text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-                      <BookOpen className="text-indigo-600 w-4 h-4 shrink-0" />
-                      Wissenschaftliche Monografien &amp; Lehrbücher
-                    </h4>
-                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3">
-                      In Bibliotheken etablierte Standardwerke zur vertiefenden wissenschaftlichen Einarbeitung.
-                    </p>
+                      <BookOpen className="text-indigo-600 w-4 h-4 shrink-0" /><MdText text={inhalt.texte.wissenschaftlicheMonografienLehrbücher} /></h4>
+                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3"><MdText text={inhalt.texte.inBibliothekenEtablierteStandardwerke} /></p>
                     <ul className="space-y-3 text-xs leading-relaxed text-text-main/80">
                       {resources.books.map((book, idx) => (
                         <li key={idx}>
@@ -570,7 +500,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         </li>
                       ))}
                       {resources.books.length === 0 && (
-                        <li className="text-xs text-text-main/50 italic">Keine Lehrbücher gelistet.</li>
+                        <li className="text-xs text-text-main/50 italic"><MdText text={inhalt.texte.keineLehrbücherGelistet} /></li>
                       )}
                     </ul>
                   </div>
@@ -580,12 +510,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 <div className="bg-slate-50/50 rounded-xl p-5 border border-home-grau/25 space-y-3 flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-sm text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-                      <FileText className="text-emerald-600 w-4 h-4 shrink-0" />
-                      Wissenschaftliche Fachaufsätze (Peer-Reviewed)
-                    </h4>
-                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3">
-                      Internationale wissenschaftliche Publikationen in namhaften Forschungsjournals.
-                    </p>
+                      <FileText className="text-emerald-600 w-4 h-4 shrink-0" /><MdText text={inhalt.texte.wissenschaftlicheFachaufsätzePeerReviewe} /></h4>
+                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3"><MdText text={inhalt.texte.internationaleWissenschaftlichePublikati} /></p>
                     <ul className="space-y-3 text-xs">
                       {resources.publications.map((pub, idx) => (
                         <li key={idx}>
@@ -594,7 +520,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         </li>
                       ))}
                       {resources.publications.length === 0 && (
-                        <li className="text-xs text-text-main/50 italic">Keine Publikationsarbeiten aufgezeichnet.</li>
+                        <li className="text-xs text-text-main/50 italic"><MdText text={inhalt.texte.keinePublikationsarbeitenAufgezeichnet} /></li>
                       )}
                     </ul>
                   </div>
@@ -604,12 +530,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 <div className="bg-slate-50/50 rounded-xl p-5 border border-home-grau/25 space-y-3 flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-sm text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-                      <GraduationCap className="text-amber-600 w-4 h-4 shrink-0" />
-                      Dissertationen &amp; Forschungsberichte
-                    </h4>
-                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3">
-                      Über deutsche Universitätsbibliotheken offen zugängliche Promotionsschriften und Berichte.
-                    </p>
+                      <GraduationCap className="text-amber-600 w-4 h-4 shrink-0" /><MdText text={inhalt.texte.dissertationenForschungsberichte} /></h4>
+                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3"><MdText text={inhalt.texte.überDeutscheUniversitätsbibliothekenOffe} /></p>
                     <ul className="space-y-3 text-xs leading-relaxed text-text-main/80">
                       {resources.dissertations.map((diss, idx) => (
                         <li key={idx}>
@@ -618,7 +540,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                         </li>
                       ))}
                       {resources.dissertations.length === 0 && (
-                        <li className="text-xs text-text-main/50 italic">Keine Dissertationen gelistet.</li>
+                        <li className="text-xs text-text-main/50 italic"><MdText text={inhalt.texte.keineDissertationenGelistet} /></li>
                       )}
                     </ul>
                   </div>
@@ -633,33 +555,29 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <div className="bg-slate-50 border border-slate-300/80 p-6 rounded-xl text-left">
                 <div className="flex items-center gap-2 mb-4">
                   <BookOpen className="text-shiraz" size={22} />
-                  <h3 className="text-lg font-bold text-slate-800">Baustoff-Klassifizierung (Wikipedia-Recherche)</h3>
+                  <h3 className="text-lg font-bold text-slate-800"><MdText text={inhalt.texte.baustoffKlassifizierungWikipediaRecherch} /></h3>
                 </div>
-                <p className="text-xs text-slate-600 mb-5 leading-relaxed">
-                  Basierend auf der Wikipedia-Enzyklopädie für <strong>Baustoffe</strong> haben wir alle dort klassifizierten Materialarten analysiert und im BaustoffBoard zwecks interaktiver Lehre integriert. Klicken Sie auf einen Baustoff, um direkt in das entsprechende Fachbereichsmodul zu springen:
-                </p>
+                <p className="text-xs text-slate-600 mb-5 leading-relaxed"><MdText text={inhalt.texte.basierendAufDerWikipedia} /></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {/* Kolonne 1: Anorganische Baustoffe */}
                   <div className="space-y-4">
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-1.5">
-                      1. Anorganische Baustoffe
-                    </h4>
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-1.5"><MdText text={inhalt.texte.t1AnorganischeBaustoffe} /></h4>
                     
                     {/* Mineralisch */}
                     <div className="bg-white p-3.5 rounded-lg border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-800 block mb-2">A. Mineralische Baustoffe & Bindemittel</span>
+                      <span className="text-xs font-bold text-slate-800 block mb-2"><MdText text={inhalt.texte.aMineralischeBaustoffeBindemittel} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {[
                           { name: "Natursteine", tab: "gesteine" },
                           { name: "Lehm & Tone", tab: "lehm" },
-                          { name: "Ziegel & Klinker", tab: "mauerwerk" },
-                          { name: "KS / Porenbeton", tab: "mauerwerk" },
-                          { name: "Zement & Kalk", tab: "bindemittel" },
-                          { name: "Gips & Anhydrit", tab: "gips" },
-                          { name: "Mörtel & Putze", tab: "putzemoertel" },
+                          { name: inhalt.werte.ziegelKlinker, tab: "mauerwerk" },
+                          { name: inhalt.werte.ksPorenbeton, tab: "mauerwerk" },
+                          { name: inhalt.werte.zementKalk, tab: "bindemittel" },
+                          { name: inhalt.werte.gipsAnhydrit, tab: "gips" },
+                          { name: inhalt.werte.mörtelPutze, tab: "putzemoertel" },
                           { name: "Betonprodukte", tab: "betonpraxis" },
-                          { name: "Flachglas & ESG", tab: "glas" }
+                          { name: inhalt.werte.flachglasEsg, tab: "glas" }
                         ].map((m) => (
                           <button
                             key={m.name}
@@ -674,15 +592,15 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
                     {/* Metallisch */}
                     <div className="bg-white p-3.5 rounded-lg border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-800 block mb-2">B. Metallische Baustoffe</span>
+                      <span className="text-xs font-bold text-slate-800 block mb-2"><MdText text={inhalt.texte.bMetallischeBaustoffe} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {[
                           { name: "Baustahl", tab: "stahl" },
                           { name: "Bewehrungsstahl", tab: "korrosion" },
                           { name: "Gusseisen", tab: "metalle" },
                           { name: "Aluminium", tab: "metalle" },
-                          { name: "Zink & Kupfer", tab: "metalle" },
-                          { name: "Blei & Titan", tab: "metalle" }
+                          { name: inhalt.werte.zinkKupfer, tab: "metalle" },
+                          { name: inhalt.werte.bleiTitan, tab: "metalle" }
                         ].map((m) => (
                           <button
                             key={m.name}
@@ -698,21 +616,19 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
                   {/* Kolonne 2: Organische, Verbundstoffe & Biologisch-Lebendig */}
                   <div className="space-y-4">
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-1.5">
-                      2. Organische, Verbundwerkstoffe & Myzel
-                    </h4>
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-200 pb-1.5"><MdText text={inhalt.texte.t2OrganischeVerbundwerkstoffeMyzel} /></h4>
 
                     {/* Organische */}
                     <div className="bg-white p-3.5 rounded-lg border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-800 block mb-2">A. Organische Baustoffe</span>
+                      <span className="text-xs font-bold text-slate-800 block mb-2"><MdText text={inhalt.texte.aOrganischeBaustoffe} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {[
                           { name: "Bauschnittholz", tab: "holz" },
-                          { name: "BSH & CLT Werkstoffe", tab: "holzwerkstoffe" },
-                          { name: "Bitumen & Asphalt", tab: "asphalt" },
-                          { name: "Duro- & Thermoplaste", tab: "kunststoffe" },
-                          { name: "Stroh & Hanf dämmung", tab: "daemmstoffe" },
-                          { name: "Kork & Naturfasern", tab: "weitere_organik" }
+                          { name: inhalt.werte.bshCltWerkstoffe, tab: "holzwerkstoffe" },
+                          { name: inhalt.werte.bitumenAsphalt, tab: "asphalt" },
+                          { name: inhalt.werte.duroThermoplaste, tab: "kunststoffe" },
+                          { name: inhalt.werte.strohHanfDämmung, tab: "daemmstoffe" },
+                          { name: inhalt.werte.korkNaturfasern, tab: "weitere_organik" }
                         ].map((m) => (
                           <button
                             key={m.name}
@@ -727,12 +643,12 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
                     {/* Verbundwerkstoffe */}
                     <div className="bg-white p-3.5 rounded-lg border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-800 block mb-2">B. Verbundwerkstoffe (Composites)</span>
+                      <span className="text-xs font-bold text-slate-800 block mb-2"><MdText text={inhalt.texte.bVerbundwerkstoffeComposites} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {[
                           { name: "Stahlbeton", tab: "labor" },
                           { name: "Carbonbeton", tab: "carbonbeton" },
-                          { name: "Faserverbund (FVK)", tab: "faserverbund" },
+                          { name: inhalt.werte.faserverbundFvk, tab: "faserverbund" },
                           { name: "Spannbeton", tab: "spannbeton" },
                           { name: "Gipskartonplatten", tab: "bp_trockenbau" }
                         ].map((m) => (
@@ -749,12 +665,12 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
                     {/* Living / Innovativ */}
                     <div className="bg-white p-3.5 rounded-lg border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-800 block mb-2">C. „Lebende“ &amp; Bio-Baustoffe</span>
+                      <span className="text-xs font-bold text-slate-800 block mb-2"><MdText text={inhalt.texte.cLebendeBioBaustoffe} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {[
-                          { name: "Weidenrute Baubotanik", tab: "weitere_organik" },
-                          { name: "Pilzmyzel Dämmplatten", tab: "weitere_organik" },
-                          { name: "Bakterieller Bio-Beton", tab: "innovative_werkstoffe" }
+                          { name: inhalt.werte.weidenruteBaubotanik, tab: "weitere_organik" },
+                          { name: inhalt.werte.pilzmyzelDämmplatten, tab: "weitere_organik" },
+                          { name: inhalt.werte.bakteriellerBioBeton, tab: "innovative_werkstoffe" }
                         ].map((m) => (
                           <button
                             key={m.name}
@@ -778,9 +694,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               {historyData ? (
                 <ModuleHistoryView history={historyData} />
               ) : (
-                <div className="bg-white p-6 rounded-2xl border border-home-grau/30 text-center text-sm text-text-main/70">
-                  Keine historische Chronik für diesen Bereich hinterlegt.
-                </div>
+                <div className="bg-white p-6 rounded-2xl border border-home-grau/30 text-center text-sm text-text-main/70"><MdText text={inhalt.texte.keineHistorischeChronikFür} /></div>
               )}
             </div>
           )}

@@ -21,6 +21,8 @@ import {
   Filler,
   type ScriptableContext
 } from 'chart.js';
+import inhalt from '@/content/eigenspannungen/Eigenspannungen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -128,7 +130,7 @@ export default function Eigenspannungen() {
         labels,
         datasets: [
           {
-            label: 'Eigenspannung σ_V (MPa)',
+            label: inhalt.werte.eigenspannungVMpa,
             data: stressVData,
             borderColor: '#475569',
             backgroundColor: (context: ScriptableContext<'line'>) => {
@@ -144,7 +146,7 @@ export default function Eigenspannungen() {
             borderWidth: 3
           },
           {
-            label: 'Zwangsnormalkraft σ_N (MPa)',
+            label: inhalt.werte.zwangsnormalkraftNMpa,
             data: stressNData,
             borderColor: '#64748b',
             borderDash: [5, 5],
@@ -153,7 +155,7 @@ export default function Eigenspannungen() {
             fill: false
           },
           {
-            label: 'Zwangsbiegemoment σ_M (MPa)',
+            label: inhalt.werte.zwangsbiegemomentMMpa,
             data: stressMData,
             borderColor: '#64748b',
             borderDash: [5, 5],
@@ -162,7 +164,7 @@ export default function Eigenspannungen() {
             fill: false
           },
           {
-            label: 'Zugfestigkeit f_ctm(t)',
+            label: inhalt.werte.zugfestigkeitFCtmT,
             data: labels.map(() => fCtmEarly),
             borderColor: '#A3113E',
             borderDash: [2, 2],
@@ -188,48 +190,42 @@ export default function Eigenspannungen() {
           }`}
           onClick={() => setActiveTab('beton')}
         >
-          <Box size={16} /> Beton (Hydratation)
-        </button>
+          <Box size={16} /><MdText text={inhalt.texte.betonHydratation} /></button>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-          <Box className="text-shiraz" /> Eigenspannungen (Beton)
-        </h2>
+          <Box className="text-shiraz" /><MdText text={inhalt.texte.eigenspannungenBeton} /></h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
-            <p>
-              Bei massigen Betonbauteilen entsteht durch die Hydratation des Zements Wärme. Der Kern dehnt sich aus, während die Ränder kühler bleiben. In der <strong>Aufheizphase</strong> entstehen dadurch <strong>Zugeigenspannungen an den Rändern</strong> (Gefahr von Oberflächenrissen) und Druckspannungen im Kern. In der Abkühlphase kehrt sich das Bild um; bei äußerer Behinderung drohen dann Trennrisse (siehe Reiter „Zwang &amp; Risse“).
-            </p>
+            <p><MdText text={inhalt.texte.beiMassigenBetonbauteilenEntsteht} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
           {/* Inputs */}
           <div className="lg:col-span-1 flex flex-col gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Betonparameter (Aufheizphase)</h3>
+                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.betonparameterAufheizphase} /></h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider info="Temperatur an der Innenseite." label={<FormulaText text="Temperatur Innen T_{innen}" />} min={10} max={80} step={1} value={tInnen} unit="°C" onChange={(e) => setTInnen(Number(e.target.value))} />
-                  <Slider  label={<FormulaText text="Temperatur Mitte T_{mitte}" />} min={10} max={90} step={1} value={tMitte} unit="°C" onChange={(e) => setTMitte(Number(e.target.value))} />
-                  <Slider info="Temperatur an der Außenseite." label={<FormulaText text="Temperatur Außen T_{aussen}" />} min={-10} max={50} step={1} value={tAussen} unit="°C" onChange={(e) => setTAussen(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.temperaturAnDerInnenseite} label={<FormulaText text={inhalt.werte.temperaturInnenTInnen} />} min={10} max={80} step={1} value={tInnen} unit="°C" onChange={(e) => setTInnen(Number(e.target.value))} />
+                  <Slider  label={<FormulaText text={inhalt.werte.temperaturMitteTMitte} />} min={10} max={90} step={1} value={tMitte} unit="°C" onChange={(e) => setTMitte(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.temperaturAnDerAußenseite} label={<FormulaText text={inhalt.werte.temperaturAußenTAussen} />} min={-10} max={50} step={1} value={tAussen} unit="°C" onChange={(e) => setTAussen(Number(e.target.value))} />
                 </div>
                 <div className="mt-4 pt-4 border-t border-home-grau/30">
-                  <Slider  label={<FormulaText text="Effektiver E-Modul E_{c,eff}(t)" />} min={1000} max={35000} step={1000} value={eModulBeton} unit="MPa" onChange={(e) => setEModulBeton(Number(e.target.value))} />
-                  <p className="text-[10px] text-home-grau mt-1 leading-tight">Im frühen Alter (Aufheizphase) ist der E-Modul noch gering und wird durch Relaxation weiter abgemindert. Annahme: <FormulaText text="E_{c,eff} = E_c(t) / (1 + \varphi)" />.</p>
+                  <Slider  label={<FormulaText text={inhalt.werte.effektiverEModulE} />} min={1000} max={35000} step={1000} value={eModulBeton} unit="MPa" onChange={(e) => setEModulBeton(Number(e.target.value))} />
+                  <p className="text-[10px] text-home-grau mt-1 leading-tight"><MdText text={inhalt.texte.imFrühenAlterAufheizphase} /><FormulaText text="E_{c,eff} = E_c(t) / (1 + \varphi)" />.</p>
                 </div>
                 <div className="mt-4">
-                  <Slider info="Mittlere Zugfestigkeit zum Zeitpunkt t." label={<FormulaText text="Zugfestigkeit f_{ctm}(t)" />} min={0.5} max={4.0} step={0.1} value={fCtmEarly} unit="MPa" onChange={(e) => setFCtmEarly(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.mittlereZugfestigkeitZumZeitpunkt} label={<FormulaText text={inhalt.werte.zugfestigkeitFCtmT2} />} min={0.5} max={4.0} step={0.1} value={fCtmEarly} unit="MPa" onChange={(e) => setFCtmEarly(Number(e.target.value))} />
                 </div>
                 <div className="mt-4">
                   <Slider  label={<FormulaText text="Schwinddehnung (Rand) \varepsilon_{cs}" />} min={0} max={1.0} step={0.1} value={epsilonCs} unit="‰" onChange={(e) => setEpsilonCs(Number(e.target.value))} />
-                  <p className="text-[10px] text-home-grau mt-1 leading-tight">Zusätzliche Eigenspannungen durch ungleichmäßiges Austrocknen (außen trockener als innen).</p>
+                  <p className="text-[10px] text-home-grau mt-1 leading-tight"><MdText text={inhalt.texte.zusätzlicheEigenspannungenDurchUngleichm} /></p>
                 </div>
                 <div className="mt-4">
-                  <Slider label="Bauteildicke d" info="Dicke des Bauteils." min={0.5} max={3.0} step={0.1} value={thicknessBeton} unit="m" onChange={(e) => setThicknessBeton(Number(e.target.value))} />
+                  <Slider label={inhalt.werte.bauteildickeD} info={inhalt.werte.dickeDesBauteils} min={0.5} max={3.0} step={0.1} value={thicknessBeton} unit="m" onChange={(e) => setThicknessBeton(Number(e.target.value))} />
                 </div>
-                <p className="text-xs text-home-grau mt-3">
-                  Die Temperaturverteilung wird in einen konstanten Anteil (N), einen linearen Anteil (M) und einen nichtlinearen Anteil (V = Eigenspannungen) zerlegt.
-                </p>
+                <p className="text-xs text-home-grau mt-3"><MdText text={inhalt.texte.dieTemperaturverteilungWirdIn} /></p>
               </div>
           </div>
 
@@ -237,27 +233,25 @@ export default function Eigenspannungen() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zugeigenspannung (Rand)</div>
+                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxZugeigenspannungRand} /></div>
                     <div className={`text-2xl font-bold ${betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{formatDeZahl(betonResults.maxTensile, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1">
                       {betonResults.crackRisk ? (
-                        <span className="text-red-600 font-medium">Gefahr von Oberflächenrissen! (σ &gt; f_ctm)</span>
+                        <span className="text-red-600 font-medium"><MdText text={inhalt.texte.gefahrVonOberflächenrissenF} /></span>
                       ) : (
-                        <span className="text-emerald-600 font-medium">Keine Oberflächenrisse (σ &lt; f_ctm)</span>
+                        <span className="text-emerald-600 font-medium"><MdText text={inhalt.texte.keineOberflächenrisseFCtm} /></span>
                       )}
                     </div>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Druckeigenspannung (Kern)</div>
+                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxDruckeigenspannungKern} /></div>
                     <div className="text-2xl font-bold text-blue-600">{formatDeZahl(betonResults.maxCompressive, 1)} MPa</div>
-                    <div className="text-xs text-text-main/60 mt-1">Ausgleichsspannung im Querschnitt</div>
+                    <div className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.ausgleichsspannungImQuerschnitt} /></div>
                   </div>
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm h-[350px]">
-              <h3 className="text-sm font-bold text-text-main mb-4">
-                Eigenspannungsverteilung über die Bauteildicke
-              </h3>
+              <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.eigenspannungsverteilungÜberDieBauteildi} /></h3>
               <div className="relative w-full h-[260px]">
                 <Line 
                   data={betonResults.chartData} 
@@ -265,11 +259,11 @@ export default function Eigenspannungen() {
                     responsive: true, maintainAspectRatio: false,
                     scales: {
                       x: { 
-                        title: { display: true, text: 'Position im Querschnitt' },
+                        title: { display: true, text: inhalt.werte.positionImQuerschnitt },
                         ticks: { maxTicksLimit: 11 }
                       },
                       y: { 
-                        title: { display: true, text: 'Eigenspannung (MPa)' },
+                        title: { display: true, text: inhalt.werte.eigenspannungMpa },
                         suggestedMin: Math.min(betonResults.maxCompressive * 1.2, -fCtmEarly * 1.2),
                         suggestedMax: Math.max(betonResults.maxTensile * 1.2, fCtmEarly * 1.2)
                       }
@@ -294,88 +288,58 @@ export default function Eigenspannungen() {
       {/* New section for Gleichgewicht der Eigenspannungen */}
       <div className="bg-blue-50 p-6 rounded-2xl border border-blue-200">
         <h3 className="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
-          <Info size={20} /> Gleichgewicht der Eigenspannungen (N = 0, M = 0)
-        </h3>
-        <p className="text-sm text-blue-800 mb-6">
-          Eigenspannungen sind innere Spannungen, die <strong>ohne das Einwirken äußerer Kräfte</strong> im Bauteil bestehen. Daher müssen sie sich selbst im Gleichgewicht befinden. Das bedeutet für die resultierenden Schnittgrößen:
-        </p>
+          <Info size={20} /><MdText text={inhalt.texte.gleichgewichtDerEigenspannungenN} /></h3>
+        <p className="text-sm text-blue-800 mb-6"><MdText text={inhalt.texte.eigenspannungenSindInnereSpannungen} /></p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm text-center">
-            <div className="font-bold text-blue-900 mb-2">Normalkraft (N) = 0</div>
+            <div className="font-bold text-blue-900 mb-2"><MdText text={inhalt.texte.normalkraftN0} /></div>
             <div className="text-sm text-blue-700 mb-2"><FormulaText text="N = \int \sigma_{res} dA = 0" /></div>
-            <div className="text-xs text-blue-600">Zug- und Druckspannungen heben sich über den Querschnitt exakt auf.</div>
+            <div className="text-xs text-blue-600"><MdText text={inhalt.texte.zugUndDruckspannungenHeben} /></div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm text-center">
-            <div className="font-bold text-blue-900 mb-2">Biegemoment (M) = 0</div>
+            <div className="font-bold text-blue-900 mb-2"><MdText text={inhalt.texte.biegemomentM0} /></div>
             <div className="text-sm text-blue-700 mb-2"><FormulaText text="M = \int \sigma_{res} \cdot z dA = 0" /></div>
-            <div className="text-xs text-blue-600">Die Spannungen erzeugen kein resultierendes Moment um die Schwerachse.</div>
+            <div className="text-xs text-blue-600"><MdText text={inhalt.texte.dieSpannungenErzeugenKein} /></div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm text-center">
-            <div className="font-bold text-blue-900 mb-2">Bezeichnung „V“</div>
-            <div className="text-sm text-blue-700 mb-2"><FormulaText text="T_V = T - T_N - T_M" /></div>
-            <div className="text-xs text-blue-600">„V“ steht hier für den verbleibenden, nichtlinearen Temperaturanteil – nicht für die Querkraft. Er erzeugt die Eigenspannungen.</div>
+            <div className="font-bold text-blue-900 mb-2"><MdText text={inhalt.texte.bezeichnungV} /></div>
+            <div className="text-sm text-blue-700 mb-2"><FormulaText text={inhalt.werte.tVTT} /></div>
+            <div className="text-xs text-blue-600"><MdText text={inhalt.texte.vStehtHierFür} /></div>
           </div>
         </div>
 
           <div className="mt-6 bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-            <h4 className="font-bold text-blue-900 mb-2">Zerlegung der Temperatur (Zwang vs. Eigenspannung)</h4>
-            <p className="text-xs text-blue-800 mb-3">
-              In der Massivbau-Praxis wird eine beliebige (z.B. parabolische) Temperaturverteilung <FormulaText text="T(z)" /> in drei Anteile zerlegt:
-            </p>
+            <h4 className="font-bold text-blue-900 mb-2"><MdText text={inhalt.texte.zerlegungDerTemperaturZwang} /></h4>
+            <p className="text-xs text-blue-800 mb-3"><MdText text={inhalt.texte.inDerMassivbauPraxis} /><FormulaText text="T(z)" /><MdText text={inhalt.texte.inDreiAnteileZerlegt} /></p>
             <ul className="list-disc list-inside text-xs text-blue-800 space-y-2 ml-2">
-              <li><strong>Konstanter Anteil (<FormulaText text="T_N" />):</strong> Führt zu Längsdehnung. Ist das Bauteil an den Enden eingespannt, entsteht hieraus die <strong>Zwangsnormalkraft N</strong>.</li>
-              <li><strong>Linearer Anteil (<FormulaText text="T_M" />):</strong> Führt zu Krümmung. Ist das Bauteil an den Enden eingespannt, entsteht hieraus das <strong>Zwangsbiegemoment M</strong>.</li>
-              <li><strong>Nicht-linearer Anteil (<FormulaText text="T_V" />):</strong> Der verbleibende Rest führt <strong>immer</strong> zu den hier gezeigten Eigenspannungen (V), selbst wenn das Bauteil völlig frei beweglich ist!</li>
+              <li><strong><MdText text={inhalt.texte.konstanterAnteil} /><FormulaText text="T_N" />):</strong><MdText text={inhalt.texte.führtZuLängsdehnungIst} /></li>
+              <li><strong><MdText text={inhalt.texte.linearerAnteil} /><FormulaText text="T_M" />):</strong><MdText text={inhalt.texte.führtZuKrümmungIst} /></li>
+              <li><strong><MdText text={inhalt.texte.nichtLinearerAnteil} /><FormulaText text="T_V" />):</strong><MdText text={inhalt.texte.derVerbleibendeRestFührt} /></li>
             </ul>
           </div>
       </div>
       
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Randzugspannung in der Aufheizphase einer 1 m dicken Wand"
+          title={inhalt.werte.anwendungsbeispielRandzugspannungInDer}
           zielGleichung="\sigma_{V,Rand} = \tfrac{2}{3} \cdot E_{c,eff} \cdot \alpha_T \cdot \Delta T_{par}, \quad \Delta T_{par} = T_{mitte} - \tfrac{T_{innen} + T_{aussen}}{2}"
-          normQuelle="Lehrmodell: parabolische Temperaturverteilung, Zerlegung in T_N, T_M, T_V"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'T_{innen} = 20,\\; T_{mitte} = 45,\\; T_{aussen} = 15\\,^\\circ\\text{C};\\; E_{c,eff} = 15\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 10^{-5}\\,\\text{K}^{-1}', erklaerung: 'Werte der Voreinstellung des Rechners.' },
-            { titel: '2. Parabelanteil', formel: '\\Delta T_{par} = 45 - \\frac{20 + 15}{2} = 27{,}5\\,\\text{K}', erklaerung: 'Nur die Krümmung der Temperaturkurve erzeugt Eigenspannungen.' },
-            { titel: '3. Nichtlinearer Anteil', formel: 'T_{V,Rand} = -\\tfrac{2}{3} \\cdot 27{,}5 = -18{,}3\\,\\text{K};\\; T_{V,Kern} = +\\tfrac{1}{3} \\cdot 27{,}5 = +9{,}2\\,\\text{K}', erklaerung: 'Mittelwert und linearer Anteil sind abgezogen.' },
-            { titel: '4. Spannungen', formel: '\\sigma_{V,Rand} = 15\\,000 \\cdot 10^{-5} \\cdot 18{,}3 = +2{,}75\\,\\text{N/mm}^2;\\; \\sigma_{V,Kern} = -1{,}38\\,\\text{N/mm}^2', erklaerung: 'Zug am Rand, Druck im Kern; N = 0 und M = 0 sind erfüllt.' },
-            { titel: '5. Vergleich mit der Zugfestigkeit', formel: '2{,}75 > f_{ctm}(t) = 1{,}5\\,\\text{N/mm}^2', erklaerung: 'Oberflächenrisse wahrscheinlich.' },
-          ]}
-          ergebnisHinweis="Abhilfe: Temperaturdifferenz zwischen Kern und Rand begrenzen (wärmedämmende Schalung, späteres Ausschalen, wärmearme Rezeptur); Faustwert ΔT ≤ 20 K (Lehrannahme)."
+          normQuelle={inhalt.werte.lehrmodellParabolischeTemperaturverteilu}
+          schritte={inhalt.daten["Eigenspannungen.schritte"]}
+          ergebnisHinweis={inhalt.werte.abhilfeTemperaturdifferenzZwischenKern}
         />
       </div>
 
       <ModulTest moduleId="eigenspannungen" />
 
       {!eingebettet && (
-<ModuleFooter weblinks={[{ title: "Beton.wiki: Eigenspannungen", url: "https://beton.wiki/index.php?title=Eigenspannungen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }]} 
+<ModuleFooter weblinks={[{ title: inhalt.werte.betonWikiEigenspannungen, url: "https://beton.wiki/index.php?title=Eigenspannungen" }, { title: inhalt.werte.zementMerkblätterÜbersicht, url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }]} 
         wikipedia={[
         { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' }
       ]}
-        literatur={[
-          'Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen. Deutscher Ausschuss für Stahlbeton, Heft 520. Berlin: Beuth 2001',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Breitenbücher, R.: Zwangsspannungen und Rißbildung infolge Hydratationswärme. Dissertation, TU München 1989'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 7.3 Rissbreitenbegrenzung' },
-          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton (2010-04)' },
-          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12' }
-        ]}
-        formeln={[
-          {
-            formel: '\\sigma_{\\text{res,cs}}(x) = E_{c,\\text{eff}} \\cdot \\varepsilon_{cs} \\cdot \\left(\\left(\\frac{2x}{d}\\right)^2 - \\frac{1}{3}\\right)',
-            erklaerung: 'Eigenspannungsverteilung infolge ungleichmäßigen Schwindens (Bauteilränder trocknen schneller aus als der feuchte Kern): Randbereiche stehen unter Zugspannung, der Kern unter Druckspannung.',
-            quelle: 'Lehrmodell (Zerlegung T_N, T_M, T_V)'
-          },
-          {
-            formel: '\\sigma_t(t) = R_{\\text{ax}} \\cdot E_{c,\\text{eff}}(t) \\cdot \\alpha_T \\cdot \\Delta T(t) \\le f_{\\text{ct,eff}}(t)',
-            erklaerung: 'Thermisch induzierte Zwangsspannung bei Abkühlung massiger Betonbauteile mit Festhaltungsgrad R_ax (Restraint). Übersteigt sigma_t die wirksame Betonzugfestigkeit f_ct,eff, entstehen Trennrisse.',
-            quelle: 'Lehrmodell (Zerlegung T_N, T_M, T_V)'
-          }
-        ]}
+        literatur={inhalt.daten["Eigenspannungen.literatur"]}
+        regelwerke={inhalt.daten["Eigenspannungen.regelwerke"]}
+        formeln={inhalt.daten["Eigenspannungen.formeln"]}
       />
 )}
     </div>

@@ -26,6 +26,8 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
+import inhalt from '@/content/materialmodelle/Materialmodelle.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -69,7 +71,7 @@ const ZenerShape = ({x, y}: {x:number, y:number}) => (
     <path d="M 0 35 L 20 35 M 20 15 L 20 55 M 180 15 L 180 55 M 180 35 L 200 35" strokeWidth="2" />
     {/* Upper branch: Hooke E1 */}
     <line x1="20" y1="15" x2="50" y2="15" strokeWidth="1.5" />
-    <HookeShape x={50} y={-5} label="E₁ (Parallel)" />
+    <HookeShape x={50} y={-5} label={inhalt.werte.eParallel} />
     <line x1="150" y1="15" x2="180" y2="15" strokeWidth="1.5" />
     {/* Lower branch: Maxwell (E2 + eta) */}
     <line x1="20" y1="55" x2="30" y2="55" strokeWidth="1.5" />
@@ -85,7 +87,7 @@ const ElastoPlasticShape = ({x, y}: {x:number, y:number}) => (
   <g transform={`translate(${x},${y})`} className="stroke-middle-blue fill-none">
     {/* Feder E in Reihe mit (Reibelement fy parallel zu Verfestigungsfeder Et) */}
     <path d="M 0 35 L 20 35" strokeWidth="2" />
-    <HookeShape x={20} y={15} label="E (Elastisch)" />
+    <HookeShape x={20} y={15} label={inhalt.werte.eElastisch} />
     <path d="M 120 35 L 135 35 M 135 15 L 135 55 M 215 15 L 215 55 M 215 35 L 230 35" strokeWidth="2" />
     {/* Oberer Zweig: Reibelement fy */}
     <StVenantShape x={125} y={-5} label="f_y" />
@@ -120,13 +122,9 @@ function RheologySection() {
       <div className="px-4 md:px-8 flex flex-col gap-8 pb-8">
         <div>
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Activity className="text-shiraz" /> Simulation Rheologischer Modelle
-          </h2>
+            <Activity className="text-shiraz" /><MdText text={inhalt.texte.simulationRheologischerModelle} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
-            <p>
-              Interaktives Prüflabor für rheologische Ersatzmodelle der Baustoffkunde. Stellen Sie Einwirkungen (Kriechen, Relaxation, zyklische Lasten)
-              und Materialparameter ein, um Spannungs- und Dehnungsantworten sowie Formänderungsarbeit und Hysterese zu analysieren.
-            </p>
+            <p><MdText text={inhalt.texte.interaktivesPrüflaborFürRheologische} /></p>
           </div>
         </div>
 
@@ -172,12 +170,8 @@ function RheologySection() {
             <div className="mt-8 pt-6 border-t border-home-grau/25 space-y-5">
               <div>
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <Activity className="text-shiraz" size={18} /> Praxisbeispiele aus dem Baustoff- &amp; Werkstoffbereich für jedes Modell
-                </h3>
-                <p className="text-xs text-text-main/70 mt-1">
-                  In der Bauwerkstoffkunde repräsentiert jedes rheologische Ersatzmodell das charakteristische mechanische Antwortverhalten 
-                  konkreter Baustoffe unter Kurzzeit-, Dauer- oder Zwangbeanspruchung.
-                </p>
+                  <Activity className="text-shiraz" size={18} /><MdText text={inhalt.texte.praxisbeispieleAusDemBaustoff} /></h3>
+                <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.inDerBauwerkstoffkundeRepräsentiert} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
@@ -186,197 +180,179 @@ function RheologySection() {
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-shiraz text-sm">1. Hooke-Körper</span>
+                      <span className="font-bold text-shiraz text-sm"><MdText text={inhalt.texte.t1HookeKörper} /></span>
                       <span className="font-mono text-[10px] bg-red-100 text-red-800 px-2 py-0.5 rounded font-bold">Reinelastisch</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">σ = E · ε | Feder</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.eFeder} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Bauglas (Kalk-Natron-Floatglas):</strong> Ideal sprödelastisch bis zum Bruch (DIN 18008). Keinerlei Fließzone oder Raumtemperaturkriechen.</li>
-                        <li><strong>Keramik &amp; Klinker:</strong> Kristallines und amorphes Gefüge federt verzögerungsfrei ein.</li>
-                        <li><strong>Baustahl (S235/S355):</strong> Unterhalb der Streckgrenze (<InlineMath math="\sigma < f_y" />) streng linear-elastisch.</li>
-                        <li><strong>CFK-Lamellen:</strong> Carbonfasern besitzen rein elastische Dehnkennlinien bis zum Faserbruch.</li>
+                        <li><MdText text={inhalt.texte.bauglasKalkNatronFloatglas} /></li>
+                        <li><MdText text={inhalt.texte.keramikKlinkerKristallinesUnd} /></li>
+                        <li><MdText text={inhalt.texte.baustahlS235S355Unterhalb} /></li>
+                        <li><MdText text={inhalt.texte.cfkLamellenCarbonfasernBesitzen} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Reversible elastische Auslenkung der Atomgitterbindungen ohne Dämpfungsverluste.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusReversibleElastischeAuslenkun} /></div>
                 </div>
 
                 {/* 2. Newton */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-blue-700 text-sm">2. Newton-Körper</span>
+                      <span className="font-bold text-blue-700 text-sm"><MdText text={inhalt.texte.t2NewtonKörper} /></span>
                       <span className="font-mono text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Rein viskos</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">σ = η · (dε/dt) | Dämpfer</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.dDtDämpfer} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe2} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Heißbitumen (T &gt; 140 °C):</strong> Beim Mischen näherungsweise newtonsch-viskos zur vollflächigen Gesteinsbenetzung. Gussasphalt als Bitumen-Gesteinskörnungs-Gemisch ist dagegen kein Newton-Fluid (Fließgrenze, strukturviskos).</li>
-                        <li><strong>Wasser und stark verdünnte Feinstsuspensionen:</strong> näherungsweise newtonsch. Zementleim üblicher w/z-Werte verhält sich dagegen wie ein Bingham-Fluid.</li>
-                        <li><strong>Niedrigviskose Epoxidharze:</strong> Zur drucklosen Rissverpressung vor dem Gelieren.</li>
+                        <li><MdText text={inhalt.texte.heißbitumenT140C} /></li>
+                        <li><MdText text={inhalt.texte.wasserUndStarkVerdünnte} /></li>
+                        <li><MdText text={inhalt.texte.niedrigviskoseEpoxidharzeZurDrucklosen} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Reines laminares Gleiten von Fluidmolekülen. Keine Energiespeicherung, 100 % Dissipation in Wärme.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusReinesLaminaresGleiten} /></div>
                 </div>
 
                 {/* 3. St. Venant */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-amber-700 text-sm">3. St.-Venant-Körper</span>
+                      <span className="font-bold text-amber-700 text-sm"><MdText text={inhalt.texte.t3StVenantKörper} /></span>
                       <span className="font-mono text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Ideal-plastisch</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">|σ| ≤ f_y | Reibelement</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.fYReibelement} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe3} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Trockener Baugrund (Sand &amp; Kies):</strong> Coulomb'sches Gesetz <InlineMath math="\tau = c + \sigma \cdot \tan\varphi" /> (trockener Sand: c ≈ 0). Unterhalb der Scherfestigkeit starr, bei Überschreiten Gleiten. Die Grenzschubspannung hängt hier von der Normalspannung ab – das St.-Venant-Element bildet nur eine konstante Grenze ab.</li>
-                        <li><strong>PTFE-Gleitplatten in Brückenlagern:</strong> Feste Reibungsgrenze zur Verschiebungskompensation.</li>
-                        <li><strong>Reines Fließplateau von Weichstahl:</strong> Plastisches Gleiten bei konstanter Streckgrenzenspannung.</li>
+                        <li><MdText text={inhalt.texte.trockenerBaugrundSandKies} /></li>
+                        <li><MdText text={inhalt.texte.ptfeGleitplattenInBrückenlagern} /></li>
+                        <li><MdText text={inhalt.texte.reinesFließplateauVonWeichstahl} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Coulombsche Festkörperreibung / Aktivierung von Kristallgleitsystemen bei Grenzschubspannung.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusCoulombscheFestkörperreibungA} /></div>
                 </div>
 
                 {/* 4. Prandtl */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-slate-800 text-sm">4. Prandtl-Modell</span>
+                      <span className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.t4PrandtlModell} /></span>
                       <span className="font-mono text-[10px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-bold">Elastisch-Idealplastisch</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder + Reibelement (Reihe)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.federReibelementReihe} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe4} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Warmgewalzter Baustahl (S235, S355):</strong> Elastische Dehnung bis zur Streckgrenze <InlineMath math="f_y" />, danach Fließplateau ohne Spannungsanstieg (Lüdersband-Bereich, ca. 1–2 % Dehnung); anschließend folgt Verfestigung.</li>
-                        <li><strong>Fließgelenke im Stahl- &amp; Stahlbetonbau:</strong> Basis der Fließgelenktheorie nach DIN EN 1993-1-1 (plastische Tragwerksberechnung nur mit Querschnittsklasse 1; Klasse 2 erreicht die plastische Querschnittstragfähigkeit, aber ohne ausreichende Rotationskapazität).</li>
+                        <li><MdText text={inhalt.texte.warmgewalzterBaustahlS235S355} /></li>
+                        <li><MdText text={inhalt.texte.fließgelenkeImStahlStahlbetonbau} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Elastische Gitterdehnung gekoppelt mit athermischer Versetzungsbewegung ab <InlineMath math="f_y" />.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusElastischeGitterdehnungGekopp} /></div>
                 </div>
 
                 {/* 5. Elasto-Plastisch mit Verfestigung */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between border-l-4 border-l-shiraz">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-shiraz text-sm">5. Elasto-Plastisch mit Verfestigung</span>
+                      <span className="font-bold text-shiraz text-sm"><MdText text={inhalt.texte.t5ElastoPlastischMit} /></span>
                       <span className="font-mono text-[10px] bg-red-100 text-shiraz px-2 py-0.5 rounded font-bold">Hardening</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder E in Reihe mit (Reibelement f_y ∥ Feder H), E_t = E·H/(E+H)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.federEInReihe} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe &amp; Normbezug:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffeNormbezug} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Betonstabstahl (B500B nach EC2):</strong> Ausgeprägter Verfestigungsast mit <InlineMath math="k = (f_t/f_y)_k \ge 1{,}08" /> und <InlineMath math="\varepsilon_{uk} \ge 5{,}0\,\%" /> zur Sicherung hoher Rotationsfähigkeit im Bruchzustand (GZT).</li>
-                        <li><strong>Kaltverformter Betonstahl B500A (Duktilitätsklasse A: k ≥ 1,05, ε<sub>uk</sub> ≥ 2,5 %):</strong> Kaltverfestigt mit kontinuierlichem Spannungsanstieg ohne Fließplateau.</li>
-                        <li><strong>Aluminiumlegierungen (EN AW-6060 / 6082):</strong> Ausgeprägte Dehnungsverfestigung ab Dehngrenze <InlineMath math="R_{p0{,}2}" />.</li>
+                        <li><MdText text={inhalt.texte.betonstabstahlB500bNachEc2} /></li>
+                        <li><MdText text={inhalt.texte.kaltverformterBetonstahlB500aDuktilitäts} /></li>
+                        <li><MdText text={inhalt.texte.aluminiumlegierungenEnAw6060} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Versetzungsaufstau an Korngrenzen (Kaltverfestigung); Bauschinger-Hysterese bei zyklischer Umkehr.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusVersetzungsaufstauAnKorngrenz} /></div>
                 </div>
 
                 {/* 6. Maxwell */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-purple-700 text-sm">6. Maxwell-Modell</span>
+                      <span className="font-bold text-purple-700 text-sm"><MdText text={inhalt.texte.t6MaxwellModell} /></span>
                       <span className="font-mono text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">Spannungsrelaxation</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder + Dämpfer (Reihe)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.federDämpferReihe} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe5} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Bitumen und bitumenhaltige Fugenvergussmassen bei Dauerdehnung:</strong> Zwangspannungen aus Temperatur bauen sich viskos ab.</li>
-                        <li><strong>Thermoplaste oberhalb der Glasübergangstemperatur:</strong> Spannungen unter konstanter Dehnung relaxieren nahezu vollständig.</li>
+                        <li><MdText text={inhalt.texte.bitumenUndBitumenhaltigeFugenvergussmass} /></li>
+                        <li><MdText text={inhalt.texte.thermoplasteOberhalbDerGlasübergangstemp} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Der serielle Dämpfer fließt stetig und entlastet die elastische Feder (<InlineMath math="\sigma(t) \to 0" />). Spannstahl relaxiert dagegen nur um wenige Prozent (Relaxationsklasse 2: ρ<sub>1000</sub> = 2,5 %) → Zener-Modell.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusDerSerielleDämpfer} /></div>
                 </div>
 
                 {/* 7. Kelvin-Voigt */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-emerald-700 text-sm">7. Kelvin-Voigt-Modell</span>
-                      <span className="font-mono text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Kriechen / Retardation</span>
+                      <span className="font-bold text-emerald-700 text-sm"><MdText text={inhalt.texte.t7KelvinVoigtModell} /></span>
+                      <span className="font-mono text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold"><MdText text={inhalt.texte.kriechenRetardation} /></span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder + Dämpfer (Parallel)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.federDämpferParallel} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe6} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Normalbeton &amp; Zementstein (DIN EN 1992-1-1):</strong> Langzeitdurchbiegung von Decken unter Dauerlastspannung. Die Verformung ist durch das elastische Gesteinsgerüst asymptotisch begrenzt (<InlineMath math="\varphi \approx 1{,}5 - 3{,}0" />).</li>
-                        <li><strong>Konstruktionsvollholz (C24 nach EC5):</strong> Langzeitkriechen der Zellwand (Hemicellulose-Lignin-Matrix); k<sub>def</sub> nach DIN EN 1995-1-1, Tab. 3.2: Vollholz NKL 1 = 0,6; NKL 2 = 0,8; NKL 3 = 2,0.</li>
+                        <li><MdText text={inhalt.texte.normalbetonZementsteinDinEn} /></li>
+                        <li><MdText text={inhalt.texte.konstruktionsvollholzC24NachEc5} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Dämpfer bremst Verformungsgeschwindigkeit; parallele Feder garantiert endlichen Gleichgewichtsendwert. Kelvin-Voigt allein hat keine elastische Sofortverformung und keinen irreversiblen Kriechanteil – für Beton und Holz wird daher die Reihenschaltung Feder + Kelvin (= Zener/SLS) oder das Burgers-Modell verwendet.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.mechanismusDämpferBremstVerformungsgesch} /></div>
                 </div>
 
                 {/* 8. Zener / Standard Linear Solid */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-indigo-700 text-sm">8. Zener-Modell (SLS)</span>
-                      <span className="font-mono text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold">Viskoelastischer Festkörper</span>
+                      <span className="font-bold text-indigo-700 text-sm"><MdText text={inhalt.texte.t8ZenerModellSls} /></span>
+                      <span className="font-mono text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold"><MdText text={inhalt.texte.viskoelastischerFestkörper} /></span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder E₁ parallel zu Maxwell (E₂ + η)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.federEParallelZu} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe7} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Spannstahl (EC2):</strong> Relaxation unter konstanter Vordehnung auf einen Endwert σ<sub>∞</sub> &gt; 0 (Spannkraftverlust <InlineMath math="\Delta \sigma_{pr}" />).</li>
-                        <li><strong>Beton unter Dauerlast:</strong> Die Kriechzahl φ entspricht im Zener-Modell E₂/E₁.</li>
-                        <li><strong>Asphaltbeton im Straßenbau (DIN EN 13108):</strong> Das Mineralgerüst federt elastisch (<InlineMath math="E_1" />), während der Bitumenfilm viskose Relaxationen steuert; für bleibende Verformung (Spurrinnen) → Burgers-Modell.</li>
-                        <li><strong>Elastomer-Brückenlager (Neopren nach DIN EN 1337-3):</strong> Sofortige elastische Stauchung, gefolgt von Relaxation auf Restspannung <InlineMath math="\sigma_\infty > 0" />.</li>
+                        <li><MdText text={inhalt.texte.spannstahlEc2RelaxationUnter} /></li>
+                        <li><MdText text={inhalt.texte.betonUnterDauerlastDie} /></li>
+                        <li><MdText text={inhalt.texte.asphaltbetonImStraßenbauDin} /></li>
+                        <li><MdText text={inhalt.texte.elastomerBrückenlagerNeoprenNach} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Kombiniert elastische Sofortantwort, asymptotisch begrenztes Kriechen und unvollständige Relaxation.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.kombiniertElastischeSofortantwortAsympto} /></div>
                 </div>
 
                 {/* 9. Bingham */}
                 <div className="p-4 bg-off-white rounded-2xl border border-home-grau/25 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-bold text-teal-800 text-sm">9. Bingham-Körper</span>
-                      <span className="font-mono text-[10px] bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-bold">Viskoplastisches Fluid</span>
+                      <span className="font-bold text-teal-800 text-sm"><MdText text={inhalt.texte.t9BinghamKörper} /></span>
+                      <span className="font-mono text-[10px] bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-bold"><MdText text={inhalt.texte.viskoplastischesFluid} /></span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Reibelement parallel zu Dämpfer (τ = τ₀ + μ_p · γ̇)</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2"><MdText text={inhalt.texte.reibelementParallelZuDämpfer} /></div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
-                      <div><strong>Typische Baustoffe:</strong></div>
+                      <div><MdText text={inhalt.texte.typischeBaustoffe8} /></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Frischbeton (Transportbeton nach DIN EN 206):</strong> Besitzt eine Fließgrenze <InlineMath math="\tau_0" /> (steht auf dem Förderband) und fließt erst bei Rüttelenergie mit plastischer Viskosität <InlineMath math="\mu_p" />.</li>
-                        <li><strong>Selbstverdichtender Beton (SVB / SCC):</strong> Fließgrenze wird minimiert (<InlineMath math="\tau_0 \approx 0" />), hohe Viskosität verhindert Entmischung.</li>
-                        <li><strong>Putzmörtel &amp; Fliesenkleber:</strong> Bleiben standfest an senkrechten Wänden haften.</li>
+                        <li><MdText text={inhalt.texte.frischbetonTransportbetonNachDin} /></li>
+                        <li><MdText text={inhalt.texte.selbstverdichtenderBetonSvbScc} /></li>
+                        <li><MdText text={inhalt.texte.putzmörtelFliesenkleberBleibenStandfest} /></li>
                       </ul>
                     </div>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Fließt erst nach Überwinden der inneren Haft- und Fließgrenze; Standardmodell der Frischbeton-Rheologie. Größenordnungen (stark rezepturabhängig): Normalbeton F3 τ₀ ≈ 0,5–2 kPa, μ<sub>p</sub> ≈ 20–100 Pa·s; SVB τ₀ ≈ 0–60 Pa. Der Bingham-Körper wird in Scherung (τ, γ̇) beschrieben, nicht in Normalspannung σ/ε.
-                  </div>
+                  <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500"><MdText text={inhalt.texte.fließtErstNachÜberwinden} /></div>
                 </div>
 
               </div>
@@ -478,7 +454,7 @@ export default function Materialmodelle() {
         labels: times,
         datasets: [
           {
-            label: 'Thixotropie η (Pa·s) - Abbau bei konstanter Scherrate',
+            label: inhalt.werte.thixotropiePaSAbbau,
             data: thixo_eta,
             borderColor: '#991b1b',
             backgroundColor: 'rgba(153, 27, 27, 0.1)',
@@ -487,7 +463,7 @@ export default function Materialmodelle() {
             pointRadius: 0
           },
           {
-            label: 'Rheopexie η (Pa·s) - Aufbau bei konstanter Scherrate',
+            label: inhalt.werte.rheopexiePaSAufbau,
             data: rheo_eta,
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37, 99, 235, 0.1)',
@@ -540,7 +516,7 @@ export default function Materialmodelle() {
         labels: epsLabels,
         datasets: [
           {
-            label: 'Belastungsast (mit Verfestigung Et)',
+            label: inhalt.werte.belastungsastMitVerfestigungEt,
             data: sigLoading,
             borderColor: '#A3113E',
             backgroundColor: 'rgba(163, 17, 62, 0.08)',
@@ -549,7 +525,7 @@ export default function Materialmodelle() {
             pointRadius: 0
           },
           {
-            label: 'Entlastungspfad (elastischer Rücksprung mit Steigung E)',
+            label: inhalt.werte.entlastungspfadElastischerRücksprungMit,
             data: sigUnloading,
             borderColor: '#2563eb',
             borderDash: [5, 4],
@@ -558,7 +534,7 @@ export default function Materialmodelle() {
             pointRadius: 0
           },
           {
-            label: 'Vergleich: Elastisch-Idealplastisch (ohne Verfestigung)',
+            label: inhalt.werte.vergleichElastischIdealplastischOhne,
             data: sigIdealPlastic,
             borderColor: '#94a3b8',
             borderDash: [3, 3],
@@ -596,7 +572,7 @@ export default function Materialmodelle() {
       labels: eps,
       datasets: [
         {
-          label: 'Spannung σ (MPa)',
+          label: inhalt.werte.spannungMpa,
           data: sig,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -612,14 +588,10 @@ export default function Materialmodelle() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Activity className="text-shiraz" /> Materialmodelle &amp; Rheologie
-        </h2>
+          <Activity className="text-shiraz" /><MdText text={inhalt.texte.materialmodelleRheologie} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Materialmodelle (Stoffgesetze) beschreiben den mathematischen Zusammenhang zwischen Spannung und Dehnung (bzw. Kraft und Verformung) eines Baustoffs.
-            Sie sind die zwingende Grundlage für reale statisch-konstruktive Nachweise und nichtlineare Finite-Elemente-Berechnungen (FEM).
-          </p>
+          <p><MdText text={inhalt.texte.materialmodelleStoffgesetzeBeschreibenDe} /></p>
         </div>
 
         {/* Tab-Navigation für die Grundmodelle */}
@@ -658,8 +630,7 @@ export default function Materialmodelle() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveModel('elasto-plastic')}>
-            <GitCommit size={16} /> Elasto-Plastisch mit Verfestigung
-          </button>
+            <GitCommit size={16} /><MdText text={inhalt.texte.elastoPlastischMitVerfestigung} /></button>
           <button aria-pressed={activeModel === 'visco-elastic'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'visco-elastic' 
@@ -667,8 +638,7 @@ export default function Materialmodelle() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveModel('visco-elastic')}>
-            <Timer size={16} /> Rheologisch (Zeitabh.)
-          </button>
+            <Timer size={16} /><MdText text={inhalt.texte.rheologischZeitabh} /></button>
           <button aria-pressed={activeModel === 'thixotropy-rheopexy'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'thixotropy-rheopexy' 
@@ -676,8 +646,7 @@ export default function Materialmodelle() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveModel('thixotropy-rheopexy')}>
-            <RotateCw size={16} /> Thixotropie &amp; Rheopexie
-          </button>
+            <RotateCw size={16} /><MdText text={inhalt.texte.thixotropieRheopexie} /></button>
         </div>
       </div>
 
@@ -686,42 +655,42 @@ export default function Materialmodelle() {
         {/* Linke Spalte: Theorie & Parametersteuerung */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">
-            {activeModel === 'linear' && 'Linear-Elastisches Materialmodell'}
-            {activeModel === 'non-linear' && 'Nichtlinear-Elastisches Modell'}
-            {activeModel === 'ideal-plastic' && 'Elastisch-Idealplastisches Modell (ohne Verfestigung)'}
-            {activeModel === 'elasto-plastic' && 'Elasto-Plastisch mit Verfestigung (Bilineares Stoffgesetz)'}
-            {activeModel === 'visco-elastic' && 'Rheologisches Modell (z.B. Maxwell)'}
-            {activeModel === 'thixotropy-rheopexy' && 'Thixotropie & Rheopexie (Zeitabhängige Viskosität)'}
+            {activeModel === 'linear' && inhalt.werte.linearElastischesMaterialmodell}
+            {activeModel === 'non-linear' && inhalt.werte.nichtlinearElastischesModell}
+            {activeModel === 'ideal-plastic' && inhalt.werte.elastischIdealplastischesModellOhne}
+            {activeModel === 'elasto-plastic' && inhalt.werte.elastoPlastischMitVerfestigung}
+            {activeModel === 'visco-elastic' && inhalt.werte.rheologischesModellZB}
+            {activeModel === 'thixotropy-rheopexy' && inhalt.werte.thixotropieRheopexieZeitabhängigeViskosi}
           </h3>
           
           <div className="text-sm text-text-main/80 space-y-4">
             {activeModel === 'linear' && (
               <>
-                <p><strong>Hookesches Gesetz:</strong> Spannung und Dehnung sind streng proportional. Es gilt <FormulaText text="\sigma = E \cdot \varepsilon" />.</p>
+                <p><MdText text={inhalt.texte.hookeschesGesetzSpannungUnd} /><FormulaText text="\sigma = E \cdot \varepsilon" />.</p>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Keine bleibenden Verformungen nach Entlastung (vollständige Reversibilität).</li>
-                  <li>Gilt näherungsweise für viele Baustoffe (Stahl, Glas, Holz parallel zur Faser) bei kleinen Dehnungen.</li>
-                  <li>Mathematisch am einfachsten zu handhaben, da es auf lineare Gleichungssysteme führt.</li>
+                  <li><MdText text={inhalt.texte.keineBleibendenVerformungenNach} /></li>
+                  <li><MdText text={inhalt.texte.giltNäherungsweiseFürViele} /></li>
+                  <li><MdText text={inhalt.texte.mathematischAmEinfachstenZu} /></li>
                 </ul>
               </>
             )}
             {activeModel === 'non-linear' && (
               <>
-                <p><strong>Krümmung des Verlaufs:</strong> Spannung und Dehnung sind nicht proportional, jedoch gibt es keine bleibenden Verformungen (elastisch).</p>
+                <p><MdText text={inhalt.texte.krümmungDesVerlaufsSpannung} /></p>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Der Zusammenhang zwischen Spannung und Dehnung ändert sich kontinuierlich.</li>
-                  <li>Typisch für Elastomere. Beton unter Druck zeigt ebenfalls eine gekrümmte Arbeitslinie, jedoch mit bleibenden Anteilen aus Mikrorissbildung – streng genommen also nicht rein elastisch.</li>
-                  <li>Rechnerisch für Beton über die Arbeitslinie nach DIN EN 1992-1-1, 3.1.5 (Schnittgrößenermittlung) bzw. das Parabel-Rechteck-Diagramm nach 3.1.7 (Querschnittsbemessung); für Metalle ohne ausgeprägte Streckgrenze über den Ramberg-Osgood-Ansatz.</li>
+                  <li><MdText text={inhalt.texte.derZusammenhangZwischenSpannung} /></li>
+                  <li><MdText text={inhalt.texte.typischFürElastomereBeton} /></li>
+                  <li><MdText text={inhalt.texte.rechnerischFürBetonÜber} /></li>
                 </ul>
               </>
             )}
             {activeModel === 'ideal-plastic' && (
               <>
-                <p><strong>Fließplateau (ohne Verfestigung):</strong> Nach Erreichen der Fließgrenze (<FormulaText text="f_y" />) nimmt die Dehnung zu, ohne dass sich die Spannung weiter erhöht.</p>
+                <p><MdText text={inhalt.texte.fließplateauOhneVerfestigungNach} /><FormulaText text="f_y" /><MdText text={inhalt.texte.nimmtDieDehnungZu} /></p>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Typisch für klassischen Baustahl (z.B. S235, S355) mit ausgeprägter Streckgrenze.</li>
-                  <li>Ermöglicht statische Schnittgrößenumlagerungen in Tragwerken (Fließgelenktheorie / Traglastverfahren nach Eurocode).</li>
-                  <li>Nach Entlastung bleiben irreversible plastische Verformungen zurück.</li>
+                  <li><MdText text={inhalt.texte.typischFürKlassischenBaustahl} /></li>
+                  <li><MdText text={inhalt.texte.ermöglichtStatischeSchnittgrößenumlageru} /></li>
+                  <li><MdText text={inhalt.texte.nachEntlastungBleibenIrreversible} /></li>
                 </ul>
               </>
             )}
@@ -729,10 +698,7 @@ export default function Materialmodelle() {
             {/* FOKUS: ELASTO-PLASTISCH MIT VERFESTIGUNG */}
             {activeModel === 'elasto-plastic' && (
               <div className="space-y-4">
-                <p>
-                  <strong>Bilineares Verfestigungsmodell:</strong> Nach Überschreiten der Fließgrenze (<InlineMath math="f_y" />) steigt die Spannung 
-                  bei weiterer Dehnung linear entlang des Tangentenmoduls <InlineMath math="E_t" /> (Verfestigungsmodul) an.
-                </p>
+                <p><MdText text={inhalt.texte.bilinearesVerfestigungsmodellNachÜbersch} /></p>
                 
                 {/* Werkstoff-Presets */}
                 <div className="space-y-2 pt-1">
@@ -742,37 +708,29 @@ export default function Materialmodelle() {
                       type="button"
                       onClick={() => handleSelectEpPreset('b500b')}
                       className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${epPreset === 'b500b' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'}`}
-                    >
-                      B500B (Betonstahl)
-                    </button>
+                    ><MdText text={inhalt.texte.b500bBetonstahl} /></button>
                     <button
                       type="button"
                       onClick={() => handleSelectEpPreset('s355')}
                       className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${epPreset === 's355' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'}`}
-                    >
-                      S355 (Baustahl)
-                    </button>
+                    ><MdText text={inhalt.texte.s355Baustahl} /></button>
                     <button
                       type="button"
                       onClick={() => handleSelectEpPreset('s235')}
                       className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${epPreset === 's235' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'}`}
-                    >
-                      S235 (Weichstahl)
-                    </button>
+                    ><MdText text={inhalt.texte.s235Weichstahl} /></button>
                     <button
                       type="button"
                       onClick={() => handleSelectEpPreset('alu')}
                       className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${epPreset === 'alu' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'}`}
-                    >
-                      EN AW-6060 (Alu)
-                    </button>
+                    ><MdText text={inhalt.texte.enAw6060Alu} /></button>
                   </div>
                 </div>
 
                 {/* Interaktive Parameter-Slider */}
                 <div className="space-y-3 bg-off-white p-4 rounded-xl border border-home-grau/30">
                   <Slider 
-                    label={<FormulaText text="Fließgrenze f_y" />} 
+                    label={<FormulaText text={inhalt.werte.fließgrenzeFY} />} 
                     min={100} 
                     max={700} 
                     step={10} 
@@ -781,7 +739,7 @@ export default function Materialmodelle() {
                     onChange={e => { setFyVal(Number(e.target.value)); setEpPreset('custom'); }} 
                   />
                   <Slider 
-                    label={<FormulaText text="Elastizitätsmodul E" />} 
+                    label={<FormulaText text={inhalt.werte.elastizitätsmodulE} />} 
                     min={50000} 
                     max={220000} 
                     step={5000} 
@@ -790,7 +748,7 @@ export default function Materialmodelle() {
                     onChange={e => { setEModVal(Number(e.target.value)); setEpPreset('custom'); }} 
                   />
                   <Slider 
-                    label={<FormulaText text="Verfestigungsmodul E_t (Tangentenmodul)" />} 
+                    label={<FormulaText text={inhalt.werte.verfestigungsmodulETTangentenmodul} />} 
                     min={500} 
                     max={10000} 
                     step={250} 
@@ -812,80 +770,74 @@ export default function Materialmodelle() {
                 {/* Live-Berechnungs-Badges */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Fließdehnung ε_y</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold"><MdText text={inhalt.texte.fließdehnungY} /></span>
                     <span className="font-mono font-bold text-sm text-text-main mt-0.5 block">
                       {formatDeZahl(epAnalytics.epsYPromille, 2)} ‰
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">ε_y = f_y / E</span>
+                    <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.yFYE} /></span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Höchstspannung σ_max</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold"><MdText text={inhalt.texte.höchstspannungMax} /></span>
                     <span className="font-mono font-bold text-sm text-shiraz mt-0.5 block">
                       {formatDeZahl(epAnalytics.peakStress, 1)} MPa
                     </span>
                     <span className="text-[9px] text-slate-400 font-mono">bei ε = {formatDeWert(appliedMaxEpsPromille)} ‰</span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Spannungsverhältnis σ_max / f_y bei ε_max</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold"><MdText text={inhalt.texte.spannungsverhältnisMaxFY} /></span>
                     <span className={`font-mono font-bold text-sm mt-0.5 block ${epAnalytics.kVerhaeltnis >= 1.08 ? 'text-emerald-700' : 'text-amber-700'}`}>
                       {formatDeZahl(epAnalytics.kVerhaeltnis, 3)}
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">k = f_t/f_y wird bei ε_uk bestimmt (B500B: k ≥ 1,08 bei ε_uk ≥ 5 %)</span>
+                    <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.kFTF} /></span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Rückfederung Δε_e</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold"><MdText text={inhalt.texte.rückfederungE} /></span>
                     <span className="font-mono font-bold text-sm text-blue-700 mt-0.5 block">
                       {formatDeZahl(epAnalytics.epsElasticRecoveryPromille, 2)} ‰
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">Δε_e = σ_max / E</span>
+                    <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.eMaxE} /></span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25 col-span-2">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Bleibende Dehnung ε_p</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold"><MdText text={inhalt.texte.bleibendeDehnungP} /></span>
                     <span className="font-mono font-bold text-sm text-purple-900 mt-0.5 block">
                       {formatDeZahl(epAnalytics.epsPlasticResidualPromille, 2)} ‰
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">ε_p = ε_max - Δε_e (plastische Deformation)</span>
+                    <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.pMaxEPlastische} /></span>
                   </div>
                 </div>
 
                 <ul className="list-disc list-inside space-y-1 text-xs text-text-main/70">
-                  <li><strong>Entlastungsast:</strong> Bei Lastrücknahme entspannt das Material rein linear-elastisch mit voller elastischer Steifigkeit <InlineMath math="E" /> parallel zur Hookeschen Geraden.</li>
-                  <li><strong>Kaltverfestigung:</strong> Durch Aufstau von Kristallbaufehlern (Versetzungen) steigt die Scherspannungsgrenze der Gleitebenen.</li>
-                  <li><strong>Duktilität nach EC2:</strong> Hochduktiler Betonstahl B500B garantiert durch seinen Verfestigungsast ein großes Sicherheitsvermögen vor dem spröden Versagen.</li>
+                  <li><MdText text={inhalt.texte.entlastungsastBeiLastrücknahmeEntspannt} /></li>
+                  <li><MdText text={inhalt.texte.kaltverfestigungDurchAufstauVon} /></li>
+                  <li><MdText text={inhalt.texte.duktilitätNachEc2Hochduktiler} /></li>
                 </ul>
               </div>
             )}
 
             {activeModel === 'visco-elastic' && (
               <>
-                <p><strong>Zeitabhängigkeit:</strong> Die Beziehung zwischen Spannung und Dehnung hängt von der Zeit bzw. der Belastungsgeschwindigkeit ab.</p>
+                <p><MdText text={inhalt.texte.zeitabhängigkeitDieBeziehungZwischen} /></p>
                 <ul className="list-disc list-inside space-y-1">
-                  <li><strong>Kriechen (Retardation):</strong> Zunahme der Dehnung unter konstanter Spannung. Relevant für Beton, Holz und Kunststoffe.</li>
-                  <li><strong>Relaxation:</strong> Abnahme der Spannung unter konstanter Dehnung. Maßgebend bei hochfestem Spannstahl (Vorspannungsverluste).</li>
-                  <li>Abgebildet durch Kombinationen von elastischen Federn (Hooke) und viskosen Dämpfern (Newton) – z.B. Maxwell- oder Kelvin-Voigt-Modelle.</li>
-                  <li>Das Diagramm zeigt qualitativ eine σ-ε-Kurve bei konstanter Dehnrate: Je schneller belastet wird, desto steiler verläuft sie. Quantitative Verläufe liefert der Rheologie-Simulator unten.</li>
+                  <li><MdText text={inhalt.texte.kriechenRetardationZunahmeDer} /></li>
+                  <li><MdText text={inhalt.texte.relaxationAbnahmeDerSpannung} /></li>
+                  <li><MdText text={inhalt.texte.abgebildetDurchKombinationenVon} /></li>
+                  <li><MdText text={inhalt.texte.dasDiagrammZeigtQualitativ} /></li>
                 </ul>
               </>
             )}
 
             {activeModel === 'thixotropy-rheopexy' && (
               <div className="flex flex-col gap-4">
-                <p><strong>Zeitabhängige Fluid-Eigenschaften (Rheologie):</strong> Bei thixotropen und rheopexen Systemen ändert sich die Viskosität unter konstanter mechanischer Beanspruchungsgeschwindigkeit (Scherung) mit der Zeit.</p>
+                <p><MdText text={inhalt.texte.zeitabhängigeFluidEigenschaftenRheologie} /></p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
                   <div className="p-3 bg-red-50 border border-red-200 rounded-xl">
-                    <h4 className="font-bold text-xs text-red-900 mb-1">Thixotropie (Verflüssigung)</h4>
-                    <p className="text-[11px] text-red-800 leading-normal">
-                      <strong>Prinzip:</strong> Viskositätsabnahme bei konstanter Scherbeanspruchung. Nach Entlastung baut sich das Netzwerk vollständig wieder auf (Gelkonsistenz).
-                      <br /><strong>Bedeutung:</strong> Sichert hervorragende Verarbeitbarkeit beim Pumpen, verhindert danach sofort das Abrutschen (Fliesenkleber, Putze, Betone).
-                    </p>
+                    <h4 className="font-bold text-xs text-red-900 mb-1"><MdText text={inhalt.texte.thixotropieVerflüssigung} /></h4>
+                    <p className="text-[11px] text-red-800 leading-normal"><MdText text={inhalt.texte.prinzipViskositätsabnahmeBeiKonstanter} /></p>
                   </div>
                   <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl border-dashed">
-                    <h4 className="font-bold text-xs text-blue-900 mb-1">Rheopexie (Verdickung)</h4>
-                    <p className="text-[11px] text-blue-800 leading-normal">
-                      <strong>Prinzip:</strong> Viskositätserhöhung bei fortwährender mechanischer Scherung über die Zeit.
-                      <br /><strong>Vorkommen:</strong> Extrem selten im Bauwesen; vereinzelt bei hochkonzentrierten feinsten mineralischen Bindemittelsuspensionen.
-                    </p>
+                    <h4 className="font-bold text-xs text-blue-900 mb-1"><MdText text={inhalt.texte.rheopexieVerdickung} /></h4>
+                    <p className="text-[11px] text-blue-800 leading-normal"><MdText text={inhalt.texte.prinzipViskositätserhöhungBeiFortwährend} /></p>
                   </div>
                 </div>
               </div>
@@ -897,12 +849,10 @@ export default function Materialmodelle() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-home-grau/30 pb-2">
             <h3 className="text-lg font-bold text-text-main">
-              {activeModel === 'thixotropy-rheopexy' ? 'Rheologischer Zeitverlauf (Viskosität η / Zeit t)' : 'Spannungs-Dehnungs-Diagramm σ / ε'}
+              {activeModel === 'thixotropy-rheopexy' ? inhalt.werte.rheologischerZeitverlaufViskositätZeit : inhalt.werte.spannungsDehnungsDiagramm}
             </h3>
             {activeModel === 'elasto-plastic' && (
-              <span className="text-xs font-mono bg-shiraz/10 text-shiraz border border-shiraz/30 px-2 py-0.5 rounded-full font-bold">
-                Bilineare Verfestigung
-              </span>
+              <span className="text-xs font-mono bg-shiraz/10 text-shiraz border border-shiraz/30 px-2 py-0.5 rounded-full font-bold"><MdText text={inhalt.texte.bilineareVerfestigung} /></span>
             )}
           </div>
 
@@ -916,7 +866,7 @@ export default function Materialmodelle() {
                   y: { 
                     title: { 
                       display: true, 
-                      text: activeModel === 'thixotropy-rheopexy' ? 'Viskosität η (Pa·s)' : 'Spannung σ (MPa)',
+                      text: activeModel === 'thixotropy-rheopexy' ? inhalt.werte.viskositätPaS : inhalt.werte.spannungMpa2,
                       color: '#1e293b',
                       font: { size: 12, weight: 'bold' }
                     },
@@ -927,7 +877,7 @@ export default function Materialmodelle() {
                   x: { 
                     title: { 
                       display: true, 
-                      text: activeModel === 'thixotropy-rheopexy' ? 'Scherdauer t (s) bei konstanter Scherrate' : 'Dehnung ε (‰)',
+                      text: activeModel === 'thixotropy-rheopexy' ? inhalt.werte.scherdauerTSBei : inhalt.werte.dehnung,
                       color: '#1e293b',
                       font: { size: 12, weight: 'bold' }
                     },
@@ -965,28 +915,18 @@ export default function Materialmodelle() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Bleibende Dehnung eines Betonstahls B500B nach Überlastung"
+        title={inhalt.werte.beispiel1BleibendeDehnung}
         zielGleichung="\varepsilon_p = \varepsilon_{max} - \frac{\sigma_{max}}{E}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2 000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.', formel: 'f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2\\,000\\,\\text{MPa}' },
-          { titel: 'Fließdehnung', erklaerung: 'Ende des elastischen Bereichs:', formel: '\\varepsilon_y = \\frac{500}{200\\,000} = 2{,}5\\,\\text{‰}' },
-          { titel: 'Höchstspannung', erklaerung: 'Verfestigungsast bis ε_max:', formel: '\\sigma_{max} = 500 + 2\\,000 \\cdot (0{,}020 - 0{,}0025) = 535\\,\\text{MPa}' },
-          { titel: 'Entlastung', erklaerung: 'Rückfederung parallel zur Hookeschen Geraden:', formel: '\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\text{‰}' }
-        ]}
-        ergebnisHinweis="Fast die gesamte Dehnung bleibt erhalten; die erneute Belastung verläuft elastisch bis 535 MPa (Kaltverfestigung). Das Verhältnis 535/500 = 1,07 bei 20 ‰ zeigt, warum k = f_t/f_y ≥ 1,08 erst bei ε_uk ≥ 5 % nachgewiesen wird."
-        normQuelle="DIN EN 1992-1-1, 3.2.7 und Anhang C (Duktilitätsklasse B)"
+        schritte={inhalt.daten["Materialmodelle.schritte"]}
+        ergebnisHinweis={inhalt.werte.fastDieGesamteDehnung}
+        normQuelle={inhalt.werte.dinEn19921}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Relaxation (Maxwell) und Bingham-Fließen von Frischbeton"
+        title={inhalt.werte.beispiel2RelaxationMaxwell}
         zielGleichung="\sigma(t) = \sigma_0 \cdot e^{-t/\tau}"
-        schritte={[
-          { titel: 'Maxwell-Relaxation', erklaerung: 'Aufgezwungene Dehnung mit σ₀ = 10 MPa, Relaxationszeit τ = η/E = 2 s. Spannung nach t = 3 s:', formel: '\\sigma(3\\,\\text{s}) = 10 \\cdot e^{-3/2} = 2{,}23\\,\\text{MPa}' },
-          { titel: 'Halbwertszeit', erklaerung: 'Zeit bis zum Abbau auf 50 %:', formel: 't_{1/2} = \\tau \\cdot \\ln 2 = 2 \\cdot 0{,}693 = 1{,}39\\,\\text{s}' },
-          { titel: 'Bingham-Fluid', erklaerung: 'Frischbeton mit τ₀ = 500 Pa und μ_p = 50 Pa·s unter einer Scherspannung von 800 Pa:', formel: '\\dot{\\gamma} = \\frac{800 - 500}{50} = 6\\,\\text{s}^{-1}' },
-          { titel: 'Unterhalb der Fließgrenze', erklaerung: 'Bei τ = 400 Pa < τ₀ fließt der Beton nicht:', formel: '\\dot{\\gamma} = 0' }
-        ]}
-        ergebnisHinweis="Rüttelenergie senkt die wirksame Fließgrenze; selbstverdichtender Beton erreicht durch Fließmittel eine sehr niedrige Fließgrenze (rund 10 bis 50 Pa) und entlüftet allein unter Eigengewicht."
-        normQuelle="Rheologische Grundmodelle (Maxwell, Bingham); Begriffe nach DIN 1342"
+        schritte={inhalt.daten["Materialmodelle.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.rüttelenergieSenktDieWirksame}
+        normQuelle={inhalt.werte.rheologischeGrundmodelleMaxwellBingham}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -994,55 +934,17 @@ export default function Materialmodelle() {
 
       {/* FOOTER MIT FORMELN, WIKIPEDIA, NORMEN & LITERATUR */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links geprüft (Oktober 2026); fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
-          { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
+          { title: inhalt.werte.hookeschesGesetz, url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
           { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' },
           { title: 'Viskoelastizität', url: 'https://de.wikipedia.org/wiki/Viskoelastizit%C3%A4t' },
           { title: 'Fließkurve', url: 'https://de.wikipedia.org/wiki/Flie%C3%9Fkurve' },
           { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschingereffekt' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.5 / 3.1.7 / 3.2.7 Arbeitslinien); neue Generation DIN EN 1992-1-1:2025-09' },
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 5.4.3 plastische Tragwerksberechnung); neue Generation DIN EN 1993-1-1:2025-04' },
-          { title: 'DIN 1342-1 bis -3:2003-11 (Viskosität – Rheologische Begriffe, Newtonsche und nicht-newtonsche Flüssigkeiten)' }
-        ]}
-        literatur={[
-          'Mang, H.; Hofstetter, G.: Festigkeitslehre. 4. Aufl., Berlin: Springer Vieweg 2013',
-          'Gross, D., Hauger, W. et al.: Technische Mechanik 4: Hydromechanik, Elemente der Höheren Mechanik (Springer, 2018)',
-          'Wriggers, P.: Nichtlineare Finite-Element-Methoden (Springer, 2001)'
-        ]}
-        formeln={[
-          {
-            erklaerung: "Hookesches Gesetz (Linear-Elastisch)\n\\sigma: Normalspannung\nE: Elastizitätsmodul\n\\varepsilon: Dehnung",
-            formel: "\\sigma = E \\cdot \\varepsilon"
-          },
-          {
-            erklaerung: "Elasto-Plastisch mit bilinearer Verfestigung (Betonstahl-Arbeitslinie nach DIN EN 1992-1-1, Bild 3.8)\nf_y: Fließgrenze\nE_t: Tangentenmodul (Verfestigungsmodul)\n\\varepsilon_y: Fließdehnung (\\varepsilon_y = f_y / E)\n\\varepsilon_p: bleibende plastische Dehnung nach Entlastung (\\varepsilon_p = \\varepsilon - \\sigma / E)",
-            formel: "\\sigma(\\varepsilon) = \\begin{cases} E \\cdot \\varepsilon & \\text{für } \\varepsilon \\le \\varepsilon_y \\\\ f_y + E_t \\cdot (\\varepsilon - \\varepsilon_y) & \\text{für } \\varepsilon > \\varepsilon_y \\end{cases}"
-          },
-          {
-            erklaerung: "Verfestigungsverhältnis k (Duktilitätskriterium nach Eurocode 2)\nf_t: Zugfestigkeit bei Höchstlast\nf_y: Streckgrenze des Betonstahls (B500B erfordert k ≥ 1,08 und ε_uk ≥ 5 % nach DIN EN 1992-1-1, Anhang C)",
-            formel: "k = \\frac{f_t}{f_y} = 1 + \\frac{E_t}{f_y} \\cdot (\\varepsilon_{uk} - \\varepsilon_y)"
-          },
-          {
-            erklaerung: "Maxwell-Modell (Viskoelastische Relaxation)\nKombination aus Feder und Dämpfer in Reihe.\n\\dot{\\varepsilon}: Dehnrate\n\\eta: Viskosität des Dämpfers\n\\tau = \\eta / E: Relaxationszeit (Abbau auf 1/e = 36,8 %)",
-            formel: "\\dot{\\varepsilon} = \\frac{\\dot{\\sigma}}{E} + \\frac{\\sigma}{\\eta} \\implies \\sigma(t) = \\sigma_0 \\cdot e^{-t / \\tau}"
-          },
-          {
-            erklaerung: "Kelvin-Voigt-Modell (Verzögerte Elastizität / Retardation / Kriechen)\nFeder und Dämpfer parallel geschaltet.\n\\tau = \\eta / E: Retardationszeit",
-            formel: "\\sigma = E \\cdot \\varepsilon + \\eta \\cdot \\dot{\\varepsilon} \\implies \\varepsilon(t) = \\frac{\\sigma_0}{E} \\cdot \\left(1 - e^{-t / \\tau}\\right)"
-          },
-          {
-            erklaerung: "Bingham-Modell (Viskoplastisches Fluid für Frischbeton und Mörtel)\n\\tau_0: Fließgrenze (Haftspannung)\n\\mu_p: plastische Viskosität\n\\dot{\\gamma}: Scherrate",
-            formel: "\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma} \\quad \\text{für } |\\tau| > \\tau_0"
-          },
-          {
-            erklaerung: "Dissipationsarbeit / Hysteresefläche pro Zyklus\nW_{diss}: mechanische Dissipationsenergie (in kJ/m³ bzw. N/mm²)\n\\sigma: Spannung, \\varepsilon: Dehnung",
-            formel: "W_{\\text{diss}} = \\oint \\sigma \\, d\\varepsilon"
-          }
-        ]}
+        regelwerke={inhalt.daten["Materialmodelle.regelwerke"]}
+        literatur={inhalt.daten["Materialmodelle.literatur"]}
+        formeln={inhalt.daten["Materialmodelle.formeln"]}
       />
     </div>
   );

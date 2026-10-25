@@ -1,0 +1,77 @@
+{
+  "texte": {
+    "typischeMusterbautenPresets": "Typische Musterbauten-Presets",
+    "gebäudevolumenBri": "Gebäudevolumen (BRI)",
+    "briBruttoRauminhaltDes": "BRI = Brutto-Rauminhalt des Abbruchobjekts",
+    "skelettFertigteile": "Skelett / Fertigteile",
+    "ziegelKalksandstein": "Ziegel / Kalksandstein",
+    "leichtbauGefache": "Leichtbau / Gefache",
+    "gängigerWohnungsbau": "Gängiger Wohnungsbau",
+    "geschätzteGesamtmasse": "Geschätzte Gesamtmasse:",
+    "mineralischerAnteil": "Mineralischer Anteil:",
+    "abschätzungDerWertstoffMassenströme": "Abschätzung der Wertstoff-Massenströme (Selektiver Rückbau)",
+    "detailsNachGewabfvLfu": "Details nach GewAbfV & LfU",
+    "schritt1ErmittlungDes": "Schritt 1: Ermittlung des Brutto-Rauminhalts (BRI) und Konstruktionstyp",
+    "ausgangspunktIstDerBrutto": "Ausgangspunkt ist der Brutto-Rauminhalt des Abbruchobjekts (",
+    "mSowieDerTragende": " m³) sowie der tragende Konstruktionstyp (",
+    "schritt2SpezifischeMassendichten": "Schritt 2: Spezifische Massendichten (",
+    "fürDieGewählteBauart": "Für die gewählte Bauart ergeben sich folgende statistische Massenkonzentrationen (in Tonnen pro Kubikmeter umbauter Raum) nach Aufmaßwerten typischer Rückbaustrukturen:",
+    "schritt3BerechnungDer": "Schritt 3: Berechnung der Einzelmassen (",
+    "diePrognostiziertenMassenströmeErgeben": "Die prognostizierten Massenströme ergeben sich direkt aus dem Produkt des Raumvolumens mit der jeweiligen Dichte. Beispiel für Betonbruch:",
+    "schritt4BestimmungDer": "Schritt 4: Bestimmung der Gesamtmasse (",
+    "dieSummeAllerFraktionen": "Die Summe aller Fraktionen ergibt das geschätzte Abbruchgewicht auf der Baustelle:",
+    "schritt5MineralischerAnteil": "Schritt 5: Mineralischer Anteil (",
+    "undGetrennthalteQuote": ") und Getrennthalte-Quote",
+    "nachDerGewerbeabfallverordnungGewabfv": "Nach der Gewerbeabfallverordnung (GewAbfV) müssen Bauschuttfraktionen getrennt erfasst werden. Der mineralische Haupt-Massenstrom (Beton- und Mauerwerksbruch) beträgt:",
+    "kreislauffähigkeitLfuKonformität": "✓ Kreislauffähigkeit & LfU-Konformität:",
+    "daDerMineralischeAnteil": "Da der mineralische Anteil über 85% liegt (",
+    "istDiesesBauwerkBaustofflich": "%), ist dieses Bauwerk baustofflich prädestiniert für ein hochwertiges RC-Recycling nach der neuen Ersatzbaustoffverordnung (EBV) von 2023. Das sortenreine Rückbaukonzept ist zwingend umzusetzen, um eine unzulässige Vermischung zu verhindern.",
+    "hinweisZurMassenermittlungDie": "*Hinweis zur Massenermittlung: Die berechneten Massen basieren auf statistischen Kennwerten für Brutto-Rauminhalte im Hochbau. Bei realitätsnahen Projekten ist das Vorlegen eines bauteilspezifischen Aufmaßes / Schadstoffgutachtens zwingend erforderlich."
+  },
+  "werte": {
+    "betonbruchBetonStahlbeton": "Betonbruch (Beton / Stahlbeton)",
+    "mauerwerkbruchZiegelKalksandstein": "Mauerwerkbruch (Ziegel, Kalksandstein)",
+    "altholzAIBis": "Altholz (A I bis A IV)",
+    "altmetalleEisenBaustahlAlu": "Altmetalle (Eisen, Baustahl, Alu, Kupfer)",
+    "gipskartonBaustoffeAufGipsbasis": "Gipskarton / Baustoffe auf Gipsbasis",
+    "baustellenspezifischeKunststoffe": "Baustellenspezifische Kunststoffe",
+    "gefährlicheHolzschutzSchadstoffe": "Gefährliche Holzschutz-/Schadstoffe",
+    "gemischteBauUndAbbruchabfälle": "Gemischte Bau- und Abbruchabfälle",
+    "berechnungswegFormelnAusblenden": "▲ Berechnungsweg & Formeln ausblenden",
+    "wissenschaftlichenBerechnungswegFormelnE": "▼ Wissenschaftlichen Berechnungsweg & Formeln einblenden"
+  },
+  "daten": {
+    "RechnerTab": [
+      {
+        "name": "🏠 Einfamilienhaus (EFH)",
+        "vol": 800,
+        "type": "masonry",
+        "label": "800 m³ • Mauerwerk (Ziegel)"
+      },
+      {
+        "name": "🏡 Doppelhaushälfte (DHH)",
+        "vol": 600,
+        "type": "composite",
+        "label": "600 m³ • Mischbauweise"
+      },
+      {
+        "name": "🏢 Mehrfamilienhaus (MFH)",
+        "vol": 3500,
+        "type": "concrete",
+        "label": "3.500 m³ • Stahlbeton"
+      },
+      {
+        "name": "🪵 Holzhaus (EFH-Leichtbau)",
+        "vol": 900,
+        "type": "timber",
+        "label": "900 m³ • Holzständer"
+      },
+      {
+        "name": "🏭 Gewerbehalle (Mittel)",
+        "vol": 12000,
+        "type": "concrete",
+        "label": "12.000 m³ • Skelettbau"
+      }
+    ]
+  }
+}

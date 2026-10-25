@@ -1,0 +1,34 @@
+{
+  "texte": {
+    "gumRechnerKombinierteErweiterte": " GUM-Rechner: Kombinierte & Erweiterte Messunsicherheit",
+    "gemäßDemInternationalenLeitfaden": "Gemäß dem internationalen Leitfaden **GUM (Guide to the Expression of Uncertainty in Measurement)** gilt es, die Unsicherheitsbeiträge (Typ A: statistische Auswertung von Messreihen, Typ B: andere Informationen wie Auflösung oder Kalibrierschein) zu einer kombinierten Standardunsicherheit (",
+    "quadratischZuAddierenWurzel": ") quadratisch zu addieren (Wurzel aus der Quadratsumme, bei unkorrelierten Größen).",
+    "gumEingangsdaten": "GUM Eingangsdaten",
+    "messwerteInMpaDurch": "Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma):",
+    "aktuellErkannt": "Aktuell erkannt: ",
+    "gültigeMesswerte": " gültige Messwerte.",
+    "auflösungDZiffernschrittBzw": "Auflösung d (Ziffernschritt bzw. Skalenteilungswert):",
+    "führtNachGumZu": "Führt nach GUM zu einem Typ-B-Beitrag (Rechteckverteilung): ",
+    "kalibrierscheinUnsicherheitUCal": "Kalibrierschein-Unsicherheit U_cal (k=2):",
+    "erweiterteUnsicherheitLautDakks": "Erweiterte Unsicherheit laut (DAkkS-)Kalibrierschein. Typ B (Normalverteilung): ",
+    "standardwerteWiederherstellen": " Standardwerte wiederherstellen",
+    "unsicherheitsbudgetNachGum": "Unsicherheitsbudget nach GUM",
+    "k295Überdeckung": "k = 2 (≈ 95 % Überdeckung)",
+    "arithmMittelX": "arithm. Mittel x̄",
+    "standardabweichS": "Standardabweich. s",
+    "probenanzahlN": "Probenanzahl n",
+    "unsicherheitsbeiträgeUI": "Unsicherheitsbeiträge (u_i)",
+    "uaTypAStatistisch": "uA (Typ A, statistisch: s / √n)",
+    "ub1TypB": "uB,1 (Typ B, Auflösung: d / √12)",
+    "ub2TypB": "uB,2 (Typ B, Kalibrierung: U_cal / 2)",
+    "quadratischeAddition": "Quadratische Addition: ",
+    "bitteGebenSieMindestens": "Bitte geben Sie mindestens zwei gültige Messwerte (durch Semikolon getrennt) an, um die statistische Auswertung (Typ A) zu aktivieren.",
+    "vollständigesMessergebnis": "Vollständiges Messergebnis",
+    "derWertDerMessgröße": "Der Wert der Messgröße liegt mit einer Überdeckungswahrscheinlichkeit von etwa 95 % (k = 2) zwischen ",
+    "kombUnsicherheitUC": "Komb. Unsicherheit u_c"
+  },
+  "werte": {
+    "messwerteInMpaDurch": "Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma)",
+    "uB2U": "u_{B,2} = U / 2"
+  }
+}

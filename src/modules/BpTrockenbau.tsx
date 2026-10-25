@@ -10,6 +10,8 @@ import {
   Compass, ChevronRight, Wrench, Info
 } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bptrockenbau/BpTrockenbau.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ProductSpec {
   id: string;
@@ -43,287 +45,9 @@ interface SystemSpec {
   spacing: string;
 }
 
-const DRY_PRODUCTS_DB: ProductSpec[] = [
-  {
-    id: 'standard_gkb',
-    name: 'Standard-Gipsplatte (GKB)',
-    category: 'Gipsplatten nach DIN EN 520',
-    dinNorm: 'DIN EN 520 / Typ A',
-    colorCodeName: 'Graue Papierkartonage, blaue Kennzeichnung',
-    colorCodeBg: 'bg-slate-100',
-    colorBorder: 'border-slate-300',
-    density: 680,
-    lambda: 0.25,
-    muValue: 10,
-    fireClass: 'A2-s1, d0 (nicht brennbar)',
-    weightPerM2: 8.5,
-    advantages: [
-      'Äußerst materialsparend & kostengünstig',
-      'Leicht zuschneidbar (Anritzen und Brechen)',
-      'Einfaches Verschrauben auf Holz und Metall',
-      'Reguliert das Raumklima geringfügig durch Gips-Porosität'
-    ],
-    description: 'Das bewährte Standard-Ausbauelement für raumbegrenzende Baustrukturen. Die Platte besteht aus einem Gipskern, der fest mit dem Karton verbunden ist (Karton nimmt Zug, Gips Druck auf). Ideal für Wände und Decken ohne Brandschutz- oder Feuchtigkeitsauflagen.',
-    systemIntegration: 'Standard-Wandsysteme (einfach oder doppelt beplankt), abgehängte Innendecken und gerade Trockenputzflächen.'
-  },
-  {
-    id: 'impregnated_gkbi',
-    name: 'Imprägnierte Feuchtraumplatte (GKBI)',
-    category: 'Gipsplatten nach DIN EN 520',
-    dinNorm: 'DIN EN 520 / Typ H2',
-    colorCodeName: 'Grüne Papierkartonage, blaue Kennzeichnung',
-    colorCodeBg: 'bg-emerald-50',
-    colorBorder: 'border-emerald-300',
-    density: 720,
-    lambda: 0.25,
-    muValue: 10,
-    fireClass: 'A2-s1, d0 (nicht brennbar)',
-    weightPerM2: 9.3,
-    advantages: [
-      'Stark hydrophobierter Kern & Karton (Wasseraufnahme < 10%)',
-      'Zusatz pilzhemmender Wirkstoffe zur Schimmelphobie',
-      'Optimaler Untergrund für Fliesenkleber und Spachtelschichten',
-      'Ausgezeichnete Formstabilität auch bei Dampfspitzen'
-    ],
-    description: 'Speziell hydrophobierte Gipsplatte für häusliche Feuchtgebiete. Sowohl der Gipskern als auch die Kartonage sind durch den gezielten Zusatz von flüssigen Silikonen wasserabweisend eingestellt. Dadurch wird das kapillare Saugen von Feuchtigkeit effektiv unterbunden.',
-    systemIntegration: 'Unterkonstruktion für Wandfliesen in Bädern, Gäste-WCs, Küchendecken und Duschbereichen.'
-  },
-  {
-    id: 'fire_gkf',
-    name: 'Feuerschutz-Gipsplatte (GKF)',
-    category: 'Gipsplatten nach DIN EN 520',
-    dinNorm: 'DIN EN 520 / Typ DF',
-    colorCodeName: 'Graue/Rosa Papierkartonage, rote Kennzeichnung',
-    colorCodeBg: 'bg-red-50',
-    colorBorder: 'border-red-300',
-    density: 820,
-    lambda: 0.25,
-    muValue: 10,
-    fireClass: 'A2-s1, d0 (Systeme F30 bis F180)',
-    weightPerM2: 10.5,
-    advantages: [
-      'Erhöhter Zusammenhalt durch eingebettete Glasfaserrovings',
-      'Chemisch gebundenes Kristallwasser kühlt im Brandfall aktiv',
-      'Besonders verformungsstabil unter Temperatureinfluss',
-      'Erhöhte Festigkeit allgemein'
-    ],
-    description: 'Spezialplatte für den baulichen Brandschutz. Bei Brandeinwirkung setzt der Gips sein zweifach chemisch gebundenes Kristallwasser (ca. 2 Liter pro m²) frei, welches verdampft und so das Bauteil aktiv vor Überhitzung schützt. Glasfasern im Kern stützen das Bauteil, wenn die Kartonage verbrannt ist.',
-    systemIntegration: 'Tragende Brandschutzwände, Fluchtwegschächte (F90), Deckenkonstruktionen unter Massivdecken.'
-  },
-  {
-    id: 'premium_dfir',
-    name: 'Spezial-Hartgipsplatte (Typ DFIR)',
-    category: 'Gipsplatten nach DIN EN 520',
-    dinNorm: 'DIN EN 520 / Typ DFIR',
-    colorCodeName: 'Blaue Papierkartonage, rote Kennzeichnung',
-    colorCodeBg: 'bg-blue-50',
-    colorBorder: 'border-blue-300',
-    density: 1020,
-    lambda: 0.25,
-    muValue: 10,
-    fireClass: 'A2-s1, d0 (Schnittbester Schall- & Brandschutz)',
-    weightPerM2: 12.8,
-    advantages: [
-      'Besserer Schallschutz durch höhere flächenbezogene Masse',
-      'Hohe Oberflächenhärte gegen Stöße und Kratzer',
-      'Sehr hohe Dübelbelastbarkeit (bis zu 45 kg je Hohlraumdübel)',
-      'Werksseitig imprägniert für universelle Einsetzbarkeit'
-    ],
-    description: 'Platte mit hoher Rohdichte, Glasfaserzusatz und Hydrophobierung. Für Bereiche mit hohen Anforderungen an Robustheit, Schallschutz und Befestigung von Lasten wie Hängeschränken.',
-    systemIntegration: 'Hochleistungsschallschutzwände, Krankenhäuser, Schulgänge, Sporthallen, Einbruchschutz-Systeme.'
-  },
-  {
-    id: 'gipsfaser_gf',
-    name: 'Gipsfaser-Zelluloseplatte (GF)',
-    category: 'Gipsfaserplatten nach DIN EN 15283-2',
-    dinNorm: 'DIN EN 15283-2 / Typ GF',
-    colorCodeName: 'Hellgraue homogene Optik, keine Kartonumhüllung',
-    colorCodeBg: 'bg-stone-100',
-    colorBorder: 'border-stone-400',
-    density: 1150,
-    lambda: 0.32,
-    muValue: 13,
-    fireClass: 'A2-s1, d0 (nicht brennbar)',
-    weightPerM2: 15.0,
-    advantages: [
-      'Vollkommen homogene Struktur (Gips + Zellulose)',
-      'Sehr schlagfest; im Holzbau aussteifend einsetzbar',
-      'Lasten direkt in die Platte schraubbar (zulässige Lasten nach Herstellerangabe)',
-      'Diffusionsfähig und Feuchte regulierend'
-    ],
-    description: 'Ein hochfester Faserverbundwerkstoff aus Gips und Papierfasern (Zellulose aus Altpapier), die ohne Klebstoffe unter starkem Pressdruck innig verzahnt werden. Die Fasern bewehren die Platte durchgehend; sie ist sehr stabil und kann im Holzbau aussteifend eingesetzt werden (nach Zulassung).',
-    systemIntegration: 'Holzrahmenbau / Fertighäuser (aussteifende Beplankung), Trockenestrich-Elemente, öffentliche Fluchtbereiche.'
-  },
-  {
-    id: 'clay_board',
-    name: 'Ökologische Lehmbauplatte',
-    category: 'Lehmbauplatten nach DIN 18948',
-    dinNorm: 'DIN 18948 / Klasse WS III',
-    colorCodeName: 'Erdig braun, Schilf- oder Glasgittergewebe',
-    colorCodeBg: 'bg-amber-100/50',
-    colorBorder: 'border-amber-300',
-    density: 1250,
-    lambda: 0.44,
-    muValue: 7,
-    fireClass: 'B-s1, d0 (schwer entflammbar)',
-    weightPerM2: 18.0,
-    advantages: [
-      'Unschlagbare Feuchtigkeitsabsorption (> 15g/m² in 24h)',
-      'Kann Gerüche teilweise binden (Herstellerangabe)',
-      'Große thermische Masse speichert Heizungswärme exzellent',
-      'Schnittstelle für baubiologisch reine Wohnräume'
-    ],
-    description: 'Ausbauplatte aus Lehm, Sand und Fasern (z. B. Schilfrohr, Stroh). Lehm puffert Raumluftfeuchte gut. Geeignet besonders für den Innenausbau im Holzbau (DIN 18948).',
-    systemIntegration: 'Verkleidung von Innenwänden auf Holzständern, Deckenbekleidungen unter Wandheizungssystemen.'
-  },
-  {
-    id: 'acoustic_perforated',
-    name: 'Helmholtz-Akustiklochplatte',
-    category: 'Spezialgipsplatten nach DIN EN 14190',
-    dinNorm: 'DIN EN 14190 (Spezialgipsprodukte)',
-    colorCodeName: 'Lochungsaufbau, rückseitiges Vlies (Schwarz/Weiß)',
-    colorCodeBg: 'bg-teal-50',
-    colorBorder: 'border-teal-300',
-    density: 760,
-    lambda: 0.23,
-    muValue: 8,
-    fireClass: 'A2-s1, d0 (Schallabsorbierend)',
-    weightPerM2: 9.2,
-    advantages: [
-      'Sehr gute Absorptionsklasse (Schallabsorptionsgrad α_w bis 0.90)',
-      'Präzises Lochraster (z.B. 8/18R oder Streulochung)',
-      'Hinterlegtes Akustik-Vlies mindert Flatterechos',
-      'Teils mit Zusätzen zur Schadstoffbindung (Herstellerangabe)'
-    ],
-    description: 'Platte für die Raumakustik. Durch kreisrunde, quadratische oder gestreute Perforationen wirken die Löcher im Zusammenspiel mit dem rückseitigen Spezialvlies als Helmholtz-Resonatoren. Sie "schlucken" Schallwellen und verkürzen die störende Nachhallzeit.',
-    systemIntegration: 'Akustikdecken in Foyers, Konferenzräumen, Klassenzimmern, Kinos und schallschluckenden Wandpaneelen.'
-  },
-  {
-    id: 'cement_bound',
-    name: 'Zementgebundene Bauplatte',
-    category: 'Zementgebundene Bauplatten nach DIN EN 12467',
-    dinNorm: 'DIN EN 12467 / Typ NT',
-    colorCodeName: 'Zementgrauer Kern, Gittervliesumhüllung',
-    colorCodeBg: 'bg-cyan-50/75',
-    colorBorder: 'border-cyan-300',
-    density: 1080,
-    lambda: 0.35,
-    muValue: 50,
-    fireClass: 'A1 (nicht brennbar, brandsichernd)',
-    weightPerM2: 15.0,
-    advantages: [
-      'Wasserbeständig, quillt nicht',
-      'Absolut schimmel- und fäulnisresistent',
-      'Hohe mechanische Bruch- und Knickfestigkeit',
-      'Für Außenanwendungen geeignet (nach Zulassung/ETA)'
-    ],
-    description: 'Hochfeste Bauplatte auf Portlandzementbasis, die beidseitig mit einem alkaliresistenten Glasgittergewebe armiert ist. Im Gegensatz zu Gipswerkstoffen zersetzt sich Zement auch unter andauernder Nässeeinwirkung nicht und bietet Sporen keinen organischen Nährboden.',
-    systemIntegration: 'Dauernassbereiche (Schwimmbäder, Wellnesslandschaften, Wellnessduschen), Großküchen und Außenfassaden.'
-  },
-  {
-    id: 'calcium_silicate',
-    name: 'Calciumsilikat-Klimaplatte',
-    category: 'Dämm- und Sickerplatten',
-    dinNorm: 'DIN EN 14306',
-    colorCodeName: 'Schneeweiß, offenporig kreidig',
-    colorCodeBg: 'bg-amber-50/30',
-    colorBorder: 'border-amber-200',
-    density: 230,
-    lambda: 0.057,
-    muValue: 5,
-    fireClass: 'A1 (vollkommen brandsicher)',
-    weightPerM2: 5.8,
-    advantages: [
-      'Diffusionsoffen und kapillaraktiv',
-      'Sehr hoher pH-Wert (&gt; 10) entzieht Schimmel pilzbiologische Grundlagen',
-      'Wärmedämmende Wirkungsweise zur behaglichen Innensanierung',
-      'Einfache Sanierungsverarbeitung ohne Dampfsperrfolie'
-    ],
-    description: 'Eine mineralische Spezialplatte aus Siliziumdioxid, Kalk und Zellulosefasern. Sie hat ein sehr hohes Porenvolumen. Feuchte wird kapillar verteilt, gepuffert und wieder abgegeben – Grundlage für kapillaraktive Innendämmung.',
-    systemIntegration: 'Innendämmung von Altbaufassaden ohne Dampfbremse, aktive Sanierung schimmelbehafteter Wärmebrücken.'
-  }
-];
+const DRY_PRODUCTS_DB: ProductSpec[] = inhalt.daten.DRY_PRODUCTS_DB;
 
-const DRY_SYSTEMS_DB: SystemSpec[] = [
-  {
-    id: 'w111',
-    code: 'Standard-Wandsystem M50A (Typ W111)',
-    name: 'Einfachständerwerk, 1-lagig beplankt',
-    structure: '1x 12,5 mm Gipsplatte + CW 50 Stehprofile + 1x 12,5 mm Gipsplatte',
-    thickness: '75 mm',
-    fireRating: 'Kein Brandschutz (bzw. max. F30 bei GKF-Ausführung)',
-    soundRating: 'ca. 42 - 45 dB',
-    description: 'Das einfachste Metallständerwandsystem. Besteht aus einer Unterkonstruktion aus verzinkten Stahlblechprofilen, die beidseitig einfach beplankt wird. Gut geeignet als kosteneffizientes Raumtrennelement ohne nennenswerte Brandschutz- oder Schallschutzanforderungen.',
-    application: 'Abstellkammern, einfache Flurgestaltungen, Raumaufteilungen ohne Schallschutz.',
-    profileType: 'CW 50 / UW 50',
-    spacing: '62,5 cm'
-  },
-  {
-    id: 'w112',
-    code: 'Standard-Wandsystem M50B (Typ W112)',
-    name: 'Einfachständerwerk, 2-lagig beplankt',
-    structure: '2x 12,5 mm Gipsplatte + CW 50/75 Stehprofile + 2x 12,5 mm Gipsplatte',
-    thickness: '100 mm',
-    fireRating: 'F 90-A (bei Feuerschutzplatten-Beplankung)',
-    soundRating: 'ca. 52 - 56 dB',
-    description: 'Das klassische Standard-Trennwandsystem des modernen Innenausbaus. Die zweilagige Beplankung erhöht Steifigkeit und Schallschutz und verringert Fugenrisse. Mit GKF-Platten lassen sich Feuerwiderstandsklassen nach DIN 4102-4 erreichen.',
-    application: 'Zimmertrennwände im Wohnungsbau, Bürobereiche, Brandschutzwände.',
-    profileType: 'CW 75 / UW 75',
-    spacing: '62,5 cm'
-  },
-  {
-    id: 'w115',
-    code: 'Akustik-Doppelständerwand (Typ W115)',
-    name: 'Doppelständerwerk, entkoppelt, 2-lagig',
-    structure: '2x 12,5 mm High-Schall-Gipsplatte + doppeltes, entkoppeltes Metallständerwerk + 2x 12,5 mm',
-    thickness: '155 mm',
-    fireRating: 'F 90-A',
-    soundRating: 'ca. 62 - 68 dB',
-    description: 'Hochleistungsschallschutzwand. Zwei von sich getrennt stehende Metallständerwerke werden nebeneinander aufgestellt. Zwischen den Profilen wird ein Entkopplungs-Dichtstreifen verlegt. Die Schalen sind mechanisch entkoppelt; der Schall wird nur über die Luftschicht (Masse-Feder-Masse) übertragen.',
-    application: 'Wohnungstrennwände, Hotelzimmer-Trennwände, Aufnahmeräume, Arztpraxen.',
-    profileType: '2x CW 50, getrennt mit Schaumstofftape',
-    spacing: '62,5 cm'
-  },
-  {
-    id: 'd112',
-    code: 'Decken-Hängesystem (Typ D112)',
-    name: 'Abgehängte Deckenunterkonstruktion',
-    structure: 'Trag- und Grundprofilraster (CD 60/27) an Direktabhängern oder Noniusabhängern',
-    thickness: 'Abhänghöhe flexibel (ab 40 mm)',
-    fireRating: 'F 30 bis F 90 (von unten oder oben)',
-    soundRating: 'Minderung übertragener Deckenwellen um ΔR_w ≥ 10 dB',
-    description: 'Klassisches abgehängtes Deckensystem mit Doppelschiene. Ein Grundraster wird mit der tragenden Rohdecke verdübelt, darunter kreuzweise die Tragprofile gekoppelt. Anschließend erfolgt das plane Beplanken mit Gips- oder Akustikelementen. Ideal für Installationen im Hohlraum.',
-    application: 'Kabelrinnen-Führungen in Bürogebäuden, Wohnraum-Deckenabhängung, Akustikdecken.',
-    profileType: 'CD 60/27 und UD 28',
-    spacing: 'Grundprofil ≤ 100 cm, Tragprofil ≤ 50 cm'
-  },
-  {
-    id: 'd131',
-    code: 'Freitragende Flurdecke (Typ D131)',
-    name: 'Freitragendes Deckensystem (Wand-zu-Wand)',
-    structure: 'Verstärkte Doppel-CW- oder UA-Träger quer gespannt, Wandanschlüsse tragend verschraubt',
-    thickness: 'Profilhöhe je nach Spannweite (75 bis 150 mm)',
-    fireRating: 'F 30-A bis F 90-A',
-    soundRating: 'Dämpft Flur-Körperschallbrücken effektiv',
-    description: 'Deckensystem ohne Abhänger: Es spannt von Wand zu Wand. Gut geeignet für Flure, in denen viele Leitungen unter der Rohdecke liegen.',
-    application: 'Sanierungsflure, Hotel-Kabelleitkanäle, Fluchtwege ohne Deckenanker-Zulassung.',
-    profileType: 'UA-Profile oder Doppel-CW-Profile wandgebunden',
-    spacing: 'Spannweite systemabhängig (Herstellerangaben)'
-  },
-  {
-    id: 'f141',
-    code: 'Trockenunterboden (Typ F141-Trockenestrich)',
-    name: 'Trockenunterboden mit Falzplatten',
-    structure: '20 mm oder 25 mm massive, schubfest geklebte Falz-Gipsfaserplatten',
-    thickness: '20 - 50 mm (zzgl. Schüttung)',
-    fireRating: 'F 30 bis F 60 (Fußböden)',
-    soundRating: 'Trittschallminderung um ca. 18 - 24 dB',
-    description: 'Rationeller Fußbodenaufbau aus Gipsfaser-Estrichelementen. Die Platten verfügen über einen umlaufenden Stufenfalz, der verklebt und verschraubt/geklammert wird. Bietet sofortige Begehbarkeit, keine Baufeuchte und ist mit geeigneten Systemen für Fußbodenheizungen nutzbar.',
-    application: 'Dachgeschoss-Ausbau, Altbausanierung auf Holzbalkendecken, schnelle Estrichreparaturen.',
-    profileType: 'Verlegung auf Trittschalldämmung oder Ausgleichsschüttung',
-    spacing: 'Umlaufender Klebefalz'
-  }
-];
+const DRY_SYSTEMS_DB: SystemSpec[] = inhalt.daten.DRY_SYSTEMS_DB;
 
 export default function BpTrockenbau() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'klassen' | 'rechner' | 'praxis' | 'innovation'>('allgemein');
@@ -354,12 +78,9 @@ export default function BpTrockenbau() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Trockenbau (Bauprodukte)
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.trockenbauBauprodukte} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Im modernen Trockenbau werden raumbegrenzende, nicht-tragende Bauteile in trockener Montageweise für Decke, Wand und Boden erstellt.
-          </p>
+          <p><MdText text={inhalt.texte.imModernenTrockenbauWerden} /></p>
         </div>
 
         {/* Dynamic sub navigation tabs */}
@@ -378,8 +99,7 @@ export default function BpTrockenbau() {
             }`}
             onClick={() => setActiveTab('klassen')}
           >
-            <Percent size={16} /> Spachtelklassen &amp; Akustik
-          </button>
+            <Percent size={16} /><MdText text={inhalt.texte.spachtelklassenAkustik} /></button>
           <button aria-pressed={activeTab === 'rechner'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'rechner' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
@@ -410,9 +130,7 @@ export default function BpTrockenbau() {
         {activeTab === 'allgemein' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Der moderne <strong>Trockenbau</strong> ist ein hochentwickeltes Montageverfahren des raumbegrenzenden Ausbaus. Er verzichtet vollständig auf nasse Bindemittel und verkürzt dadurch Bauzeiten drastisch. Entscheidend für den Erfolg ist das exakte Zusammenspiel von genormten Plattenbaustoffen und aufeinander abgestimmten System-Profilen nach anerkannten Regeln der Technik (aRdT).
-              </p>
+              <p><MdText text={inhalt.texte.derModerneTrockenbauIst} /></p>
             </div>
 
             {/* Toggle Subcategory switcher */}
@@ -425,8 +143,7 @@ export default function BpTrockenbau() {
                     : 'bg-transparent border-transparent text-slate-500 hover:text-slate-800'
                 }`}
               >
-                <FileText size={14} /> 1. Bauprodukte &amp; Spezialplatten (DIN EN 520 / 18948)
-              </button>
+                <FileText size={14} /><MdText text={inhalt.texte.t1BauprodukteSpezialplattenDin} /></button>
               <button aria-pressed={selectedSubCategory === 'systeme'}
                 onClick={() => setSelectedSubCategory('systeme')}
                 className={`flex-1 py-2 text-center text-xs font-extrabold flex items-center justify-center gap-2 rounded-lg transition-all border cursor-pointer ${
@@ -435,8 +152,7 @@ export default function BpTrockenbau() {
                     : 'bg-transparent border-transparent text-slate-500 hover:text-slate-800'
                 }`}
               >
-                <Layers size={14} /> 2. Systemaufbauten &amp; Montagestandards (DIN / EN)
-              </button>
+                <Layers size={14} /><MdText text={inhalt.texte.t2SystemaufbautenMontagestandardsDin} /></button>
             </div>
 
             {/* Sub-Tab 1.1: Interactive Products Database */}
@@ -444,9 +160,7 @@ export default function BpTrockenbau() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Product List Sidebar */}
                 <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
-                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none">
-                    Verfügbare Ausbauprodukte &amp; Platten
-                  </h4>
+                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h4>
                   {DRY_PRODUCTS_DB.map((prod) => (
                     <button aria-pressed={selectedProductId === prod.id}
                       key={prod.id}
@@ -490,7 +204,7 @@ export default function BpTrockenbau() {
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Flächengewicht</span>
                       <span className="text-sm font-mono font-black text-slate-800">{formatDeZahl(activeProduct.weightPerM2, 1)} kg/m²</span>
-                      <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Stärke d=12,5mm)</span>
+                      <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5"><MdText text={inhalt.texte.stärkeD125mm} /></span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
@@ -500,19 +214,19 @@ export default function BpTrockenbau() {
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Wasserdampf µ</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase"><MdText text={inhalt.texte.wasserdampf} /></span>
                       <span className="text-sm font-mono font-black text-slate-800">µ = {formatDeWert(activeProduct.muValue)}</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Diffusionswiderstand)</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Thermische Leitf. λ</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase"><MdText text={inhalt.texte.thermischeLeitf} /></span>
                       <span className="text-sm font-mono font-black text-slate-800">{formatDeZahl(activeProduct.lambda, 3)} W/mK</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Wärmeübertrag)</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl col-span-2">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Brandschutzklasse (EN 13501)</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase"><MdText text={inhalt.texte.brandschutzklasseEn13501} /></span>
                       <span className="text-xs font-mono font-black text-slate-800 flex items-center gap-1 mt-0.5 uppercase tracking-tight">
                         <Flame size={12} className="text-red-500 shrink-0" /> {activeProduct.fireClass}
                       </span>
@@ -523,16 +237,14 @@ export default function BpTrockenbau() {
                   <div className="p-5 space-y-4 text-xs">
                     <div>
                       <h4 className="font-bold text-slate-800 mb-1 flex items-center gap-1.5 uppercase tracking-wide text-[10px]">
-                        <Info size={12} className="text-slate-400" /> Bauphysikalische Wirkungsweise
-                      </h4>
+                        <Info size={12} className="text-slate-400" /><MdText text={inhalt.texte.bauphysikalischeWirkungsweise} /></h4>
                       <p className="text-slate-600 leading-relaxed">{activeProduct.description}</p>
                     </div>
 
                     {/* Checkbox list of advantages */}
                     <div>
                       <h4 className="font-bold text-slate-800 mb-1.5 flex items-center gap-1.5 uppercase tracking-wide text-[10px]">
-                        <CheckCircle2 size={12} className="text-shiraz" /> Vorteile &amp; Eigenschaften im Ausbau
-                      </h4>
+                        <CheckCircle2 size={12} className="text-shiraz" /><MdText text={inhalt.texte.vorteileEigenschaftenImAusbau} /></h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-650">
                         {activeProduct.advantages.map((adv, idx) => (
                           <div key={idx} className="flex items-start gap-1.5">
@@ -545,8 +257,7 @@ export default function BpTrockenbau() {
 
                     <div className="pt-3 border-t border-slate-100 bg-slate-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
                       <h4 className="font-bold text-slate-800 text-[10px] uppercase tracking-wide mb-1 flex items-center gap-1.5">
-                        <Wrench size={12} className="text-shiraz" /> Typische Einbindung in Systeme
-                      </h4>
+                        <Wrench size={12} className="text-shiraz" /><MdText text={inhalt.texte.typischeEinbindungInSysteme} /></h4>
                       <p className="text-slate-600 text-[11px] font-medium leading-relaxed">{activeProduct.systemIntegration}</p>
                     </div>
                   </div>
@@ -559,9 +270,7 @@ export default function BpTrockenbau() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* System List Sidebar */}
                 <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
-                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none">
-                    Ausgewählte Trockenbau-Montagesysteme
-                  </h4>
+                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.ausgewählteTrockenbauMontagesysteme} /></h4>
                   {DRY_SYSTEMS_DB.map((sys) => (
                     <button aria-pressed={selectedSystemId === sys.id}
                       key={sys.id}
@@ -597,7 +306,7 @@ export default function BpTrockenbau() {
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Gesamtdicke ca.</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase"><MdText text={inhalt.texte.gesamtdickeCa} /></span>
                       <span className="text-sm font-mono font-black text-slate-800 block mt-1">{activeSystem.thickness}</span>
                     </div>
 
@@ -610,8 +319,7 @@ export default function BpTrockenbau() {
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase flex items-center gap-1">
-                        <Volume2 size={10} className="text-blue-500" /> Schalldämm-Mass R_w
-                      </span>
+                        <Volume2 size={10} className="text-blue-500" /><MdText text={inhalt.texte.schalldämmMassRW} /></span>
                       <span className="text-xs font-bold text-slate-800 block mt-1">{activeSystem.soundRating}</span>
                     </div>
 
@@ -621,7 +329,7 @@ export default function BpTrockenbau() {
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Profilabstand Standard</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase"><MdText text={inhalt.texte.profilabstandStandard} /></span>
                       <span className="text-xs font-mono font-bold text-slate-800 block mt-1">{activeSystem.spacing}</span>
                     </div>
                   </div>
@@ -637,8 +345,7 @@ export default function BpTrockenbau() {
 
                     <div className="pt-3 border-t border-slate-100 bg-slate-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
                       <h4 className="font-bold text-slate-800 text-[10px] uppercase tracking-wide mb-1 flex items-center gap-1.5">
-                        <CheckCircle2 size={12} className="text-shiraz" /> Primäres Einsatzgebiet
-                      </h4>
+                        <CheckCircle2 size={12} className="text-shiraz" /><MdText text={inhalt.texte.primäresEinsatzgebiet} /></h4>
                       <p className="text-slate-600 text-[11px] font-medium leading-relaxed">{activeSystem.application}</p>
                     </div>
                   </div>
@@ -649,22 +356,21 @@ export default function BpTrockenbau() {
             {/* General Profile Specs Banner (Metal Profiles DIN EN 14195) */}
             <div className="bg-white p-5 rounded-2xl border border-slate-200">
               <h3 className="font-bold text-slate-800 text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
-                <Layers size={14} className="text-shiraz" /> Systemkomponenten &amp; Metall-Profiltechnik (DIN EN 14195)
-              </h3>
+                <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.systemkomponentenMetallProfiltechnikDin} /></h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5">Wand-Ständerwerke (Stahlstärke 0,6 mm verzinkt)</p>
+                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5"><MdText text={inhalt.texte.wandStänderwerkeStahlstärke0} /></p>
                   <ul className="list-inside list-disc space-y-1 leading-relaxed">
-                    <li><strong>UW-Rahmenprofil:</strong> Horizontale Befestigung an Boden und Decke zur formschlüssigen Fixierung des Wandverlaufs. Unterlegt mit elastischem Anschlussdichtband zur akustischen Trennung.</li>
-                    <li><strong>CW-Ständerprofil:</strong> Vertikale Steh-Profile, werden lose eingestellt zur Aufnahme von Temperaturänderungen und Kriechbewegungen des Baukörpers. Ausstanzungen für Kabeldurchführungen.</li>
-                    <li><strong>UA-Aussteifungsprofil:</strong> 2,0 mm starke massive Spezial-Profile zur Lastaufnahme von schweren Türen und Sanitäreinbaugestellen.</li>
+                    <li><MdText text={inhalt.texte.uwRahmenprofilHorizontaleBefestigung} /></li>
+                    <li><MdText text={inhalt.texte.cwStänderprofilVertikaleSteh} /></li>
+                    <li><MdText text={inhalt.texte.uaAussteifungsprofil20} /></li>
                   </ul>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5">Deckenraster &amp; Korrosionsschutz</p>
+                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5"><MdText text={inhalt.texte.deckenrasterKorrosionsschutz} /></p>
                   <ul className="list-inside list-disc space-y-1 leading-relaxed">
-                    <li><strong>UD-Wandprofil &amp; CD-Tragprofil:</strong> Horizontale Wandrahmen (UD) gekoppelt mit flächig justierbaren Tragprofilen (CD 60/27) an Schwingungshängern zur hocheffektiven Körperschallminderung.</li>
-                    <li><strong>Schnellbauschrauben (DIN 18182):</strong> Phosphatbeschichtet (mattschwarz) gegen aggressive Säurekorrosion im feuchten Gipsbett. Feingewinde für Stahlbleche, Grobgewinde für Holzständerwerke.</li>
+                    <li><MdText text={inhalt.texte.udWandprofilCdTragprofil} /></li>
+                    <li><MdText text={inhalt.texte.schnellbauschraubenDin18182Phosphatbesch} /></li>
                   </ul>
                 </div>
               </div>
@@ -676,111 +382,99 @@ export default function BpTrockenbau() {
         {activeTab === 'klassen' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-sm">
-              <h3 className="font-bold text-text-main mb-2">Oberflächenqualitäten nach Bundesverband der Gipsindustrie</h3>
-              <p className="text-text-main/80 text-xs">
-                Die Spachtelklassen regeln die optischen und ebenheitstechnischen Abnahmekriterien für Gipsplatten-Oberflächen vor Maler- oder Tapezierarbeiten. Bei fehlender Vereinbarung gilt stets die Standardspachtelung Q2 als vereinbart.
-              </p>
+              <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.oberflächenqualitätenNachBundesverbandDe} /></h3>
+              <p className="text-text-main/80 text-xs"><MdText text={inhalt.texte.dieSpachtelklassenRegelnDie} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
                 <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 1</span>
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q1</h4>
-                <p className="text-xs text-text-main/70 mb-3"><strong>Grundverspachtelung:</strong> Nur Stoßfugen füllen und sichtbare Teile der Schnellbauschrauben überspachteln.</p>
-                <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium">
-                  <strong>Eignung:</strong> Unter Fliesen, Platten, Bekleidungen, Putzen sowie dicken Bahnenwaren.
-                </div>
+                <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.grundverspachtelungNurStoßfugenFüllen} /></p>
+                <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium"><MdText text={inhalt.texte.eignungUnterFliesenPlatten} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
                 <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 2</span>
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q2</h4>
-                <p className="text-xs text-text-main/70 mb-3"><strong>Standardspachtelung:</strong> Q1 mit Nachspachteln/Anspachteln für einen stufenlosen Übergang zur Plattenoberfläche.</p>
-                <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium">
-                  <strong>Eignung:</strong> Raufasertapeten, matte füllende Wandfarben (mit Walze appliziert), gröbere Oberputze.
-                </div>
+                <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.standardspachtelungQ1MitNachspachteln} /></p>
+                <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium"><MdText text={inhalt.texte.eignungRaufasertapetenMatteFüllende} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
                 <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 3</span>
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q3</h4>
-                <p className="text-xs text-text-main/70 mb-3"><strong>Sonderverspachtelung:</strong> Q2 mit einer breiteren Spachtelung der Fugen sowie einem vollflächigen Porenverschluss.</p>
-                <div className="bg-amber-50 text-amber-900 p-2 rounded text-xxs font-medium">
-                  <strong>Eignung:</strong> Feinstrukturierte Tapeten, matte Anstriche, feine Oberputze. Abzeichnung bei Streiflicht möglich.
-                </div>
+                <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.sonderverspachtelungQ2MitEiner} /></p>
+                <div className="bg-amber-50 text-amber-900 p-2 rounded text-xxs font-medium"><MdText text={inhalt.texte.eignungFeinstrukturierteTapetenMatte} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
                 <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 4</span>
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q4</h4>
-                <p className="text-xs text-text-main/70 mb-3"><strong>Vollflächige Spachtelung:</strong> Vollflächige Überzugsschicht (Schichtdicke &gt; 1 mm) und feinstes Schleifen der Oberfläche.</p>
-                <div className="bg-emerald-50 text-emerald-900 p-2 rounded text-xxs font-medium">
-                  <strong>Eignung:</strong> Glänzende Beschichtungen, Metall- oder Lacktapeten, Spachtel-/Glätttechniken. Minimale Schattenfreiheit bei Streiflicht.
-                </div>
+                <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.vollflächigeSpachtelungVollflächigeÜberz} /></p>
+                <div className="bg-emerald-50 text-emerald-900 p-2 rounded text-xxs font-medium"><MdText text={inhalt.texte.eignungGlänzendeBeschichtungenMetall} /></div>
               </div>
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-bold text-home-prim text-lg mb-3">Bauphysikalische Kennwerte von Metallständerwänden</h3>
+              <h3 className="font-bold text-home-prim text-lg mb-3"><MdText text={inhalt.texte.bauphysikalischeKennwerteVonMetallstände} /></h3>
               <div className="overflow-x-auto text-sm">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-off-white border-b border-home-grau/30">
                       <th className="p-3 font-bold">Wandaufbau</th>
-                      <th className="p-3 font-bold">Profilbreite (mm)</th>
-                      <th className="p-3 font-bold">Wanddicke (mm)</th>
-                      <th className="p-3 font-bold">Beplankung (je Seite)</th>
-                      <th className="p-3 font-bold">Schallschutz <InlineMath math="R_w" /> (dB)</th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.profilbreiteMm} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.wanddickeMm} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.beplankungJeSeite} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.schallschutzRWDb} /></th>
                       <th className="p-3 font-bold">Brandschutzklasse</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/10">
                     <tr>
-                      <td className="p-3">CW 50 - einfach beplankt</td>
+                      <td className="p-3"><MdText text={inhalt.texte.cw50EinfachBeplankt} /></td>
                       <td className="p-3">50</td>
                       <td className="p-3">75</td>
-                      <td className="p-3">1x 12,5 mm GKB</td>
+                      <td className="p-3"><MdText text={inhalt.texte.t1x125Mm} /></td>
                       <td className="p-3">ca. 45 dB</td>
-                      <td className="p-3">F 30-A (mit GKF)</td>
+                      <td className="p-3"><MdText text={inhalt.texte.f30AMit} /></td>
                     </tr>
                     <tr>
-                      <td className="p-3">CW 75 - einfach beplankt</td>
+                      <td className="p-3"><MdText text={inhalt.texte.cw75EinfachBeplankt} /></td>
                       <td className="p-3">75</td>
                       <td className="p-3">100</td>
-                      <td className="p-3">1x 12,5 mm GKB</td>
+                      <td className="p-3"><MdText text={inhalt.texte.t1x125Mm2} /></td>
                       <td className="p-3">ca. 48 dB</td>
                       <td className="p-3">F 30-A</td>
                     </tr>
                     <tr className="bg-emerald-50/20">
-                      <td className="p-3 font-semibold">CW 50 - doppelt beplankt (Standard)</td>
+                      <td className="p-3 font-semibold"><MdText text={inhalt.texte.cw50DoppeltBeplankt} /></td>
                       <td className="p-3">50</td>
                       <td className="p-3">100</td>
-                      <td className="p-3">2x 12,5 mm GKB</td>
+                      <td className="p-3"><MdText text={inhalt.texte.t2x125Mm} /></td>
                       <td className="p-3">ca. 52 dB</td>
-                      <td className="p-3">F 90-A (mit GKF)</td>
+                      <td className="p-3"><MdText text={inhalt.texte.f90AMit} /></td>
                     </tr>
                     <tr className="bg-emerald-50/20">
-                      <td className="p-3 font-semibold">CW 75 - doppelt beplankt</td>
+                      <td className="p-3 font-semibold"><MdText text={inhalt.texte.cw75DoppeltBeplankt} /></td>
                       <td className="p-3">75</td>
                       <td className="p-3">125</td>
-                      <td className="p-3">2x 12,5 mm GKB</td>
+                      <td className="p-3"><MdText text={inhalt.texte.t2x125Mm2} /></td>
                       <td className="p-3">ca. 56 dB</td>
                       <td className="p-3">F 90-A</td>
                     </tr>
                     <tr>
-                      <td className="p-3">Doppelständerwerk CW 50+50</td>
-                      <td className="p-3">2x 50 (entkoppelt)</td>
+                      <td className="p-3"><MdText text={inhalt.texte.doppelständerwerkCw5050} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.t2x50Entkoppelt} /></td>
                       <td className="p-3">155</td>
-                      <td className="p-3">2x 12,5 mm GKB</td>
-                      <td className="p-3">ca. 62 dB (hervorragend)</td>
+                      <td className="p-3"><MdText text={inhalt.texte.t2x125Mm3} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.ca62DbHervorragend} /></td>
                       <td className="p-3">F 90-A</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs text-text-main/60 mt-3 italic">
-                * Die angegebenen Schalldämm-Maße <InlineMath math="R_w" /> setzen eine lückenlose Mineralfaserdämmung der Hohlräume von mindestens 80% Dicke und ein beidseitig elastisch angeschlossenes Dichtungsband unter allen Randprofilen voraus.
-              </p>
+              <p className="text-xs text-text-main/60 mt-3 italic"><MdText text={inhalt.texte.dieAngegebenenSchalldämmMaße} /></p>
             </div>
           </div>
         )}
@@ -790,19 +484,13 @@ export default function BpTrockenbau() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-text-main text-lg mb-2 flex items-center gap-2">
-                <Calculator className="text-shiraz" size={20} />
-                Trockenbau Materialbedarfs-Rechner (Wände)
-              </h3>
-              <p className="text-xs text-text-main/80 mb-4">
-                Errechnen Sie den materialtechnischen Richtbedarf für die Erstellung einer einfachen Metallständerwand auf der Baustelle basierend auf standardisierten Kalkulationsrichtwerten (Herstellerneutral). Einberechnet sind Verschnitte und branchenübliche Sicherheitsaufschläge (ca. 5%).
-              </p>
+                <Calculator className="text-shiraz" size={20} /><MdText text={inhalt.texte.trockenbauMaterialbedarfsRechnerWände} /></h3>
+              <p className="text-xs text-text-main/80 mb-4"><MdText text={inhalt.texte.errechnenSieDenMaterialtechnischen} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end mt-4">
                 {/* Wall area */}
                 <div>
-                  <label className="block text-xs font-bold text-text-main mb-1">
-                    Wandfläche (m²):
-                  </label>
+                  <label className="block text-xs font-bold text-text-main mb-1"><MdText text={inhalt.texte.wandflächeM} /></label>
                   <input
                     type="number"
                     min="1"
@@ -816,10 +504,8 @@ export default function BpTrockenbau() {
 
                 {/* Beplankung */}
                 <div>
-                  <label className="block text-xs font-bold text-text-main mb-1">
-                    Beplankung (je Wandseite):
-                  </label>
-                  <select aria-label="Beplankung (je Wandseite)"
+                  <label className="block text-xs font-bold text-text-main mb-1"><MdText text={inhalt.texte.beplankungJeWandseite} /></label>
+                  <select aria-label={inhalt.werte.beplankungJeWandseite}
                     value={layerCount}
                     onChange={(e) => setLayerCount(parseInt(e.target.value) as 1 | 2)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"
@@ -831,10 +517,8 @@ export default function BpTrockenbau() {
 
                 {/* Profilabstand */}
                 <div>
-                  <label className="block text-xs font-bold text-text-main mb-1">
-                    Ständerachsabstand (cm):
-                  </label>
-                  <select aria-label="Ständerachsabstand (cm)"
+                  <label className="block text-xs font-bold text-text-main mb-1"><MdText text={inhalt.texte.ständerachsabstandCm} /></label>
+                  <select aria-label={inhalt.werte.ständerachsabstandCm}
                     value={profileSpacing}
                     onChange={(e) => setProfileSpacing(parseFloat(e.target.value) as 62.5 | 31.25)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"
@@ -852,9 +536,7 @@ export default function BpTrockenbau() {
                       checked={includeInsulation}
                       onChange={(e) => setIncludeInsulation(e.target.checked)}
                       className="accent-shiraz size-4"
-                    />
-                    Inklusive Hohlraumdämmung
-                  </label>
+                    /><MdText text={inhalt.texte.inklusiveHohlraumdämmung} /></label>
                 </div>
               </div>
             </div>
@@ -863,13 +545,12 @@ export default function BpTrockenbau() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="md:col-span-2 border border-home-grau/30 rounded-xl p-5 bg-white">
                 <h4 className="font-bold text-home-prim text-md mb-4 flex items-center gap-2">
-                  <Sparkles size={16} className="text-shiraz" /> Errechnete Materialmengen
-                </h4>
+                  <Sparkles size={16} className="text-shiraz" /><MdText text={inhalt.texte.errechneteMaterialmengen} /></h4>
                 <div className="space-y-4 divide-y divide-home-grau/10">
                   <div className="flex items-center justify-between pb-2">
                     <div>
                       <p className="text-sm font-semibold text-text-main">Gipsbauplatten</p>
-                      <p className="text-xs text-text-main/50">Beidseitig beplankt (inkl. 5% Puffer)</p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.beidseitigBeplanktInkl5} /></p>
                     </div>
                     <p className="text-base font-bold text-shiraz">{formatDeWert(plasterboardArea)} m²</p>
                   </div>
@@ -877,7 +558,7 @@ export default function BpTrockenbau() {
                   <div className="flex items-center justify-between pt-2 pb-2">
                     <div>
                       <p className="text-sm font-semibold text-text-main">CW-Ständerprofile</p>
-                      <p className="text-xs text-text-main/50">Vertikales Ständerwerk (Schnittgrößen z.B. CW 50 / CW 75)</p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.vertikalesStänderwerkSchnittgrößenZ} /></p>
                     </div>
                     <p className="text-base font-bold text-text-main">{formatDeWert(cwProfilesMeter)} lfm</p>
                   </div>
@@ -885,23 +566,23 @@ export default function BpTrockenbau() {
                   <div className="flex items-center justify-between pt-2 pb-2">
                     <div>
                       <p className="text-sm font-semibold text-text-main">UW-Boden/Deckenprofile</p>
-                      <p className="text-xs text-text-main/50">Oberer und unterer Wandanschluss</p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.obererUndUntererWandanschluss} /></p>
                     </div>
                     <p className="text-base font-bold text-text-main">{formatDeWert(uwProfilesMeter)} lfm</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
                     <div>
-                      <p className="text-sm font-semibold text-text-main">Schnellbauschrauben (25 / 35 / 45 mm)</p>
-                      <p className="text-xs text-text-main/50">Phosphatiert mit Feingewinde für Ständerwerk</p>
+                      <p className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.schnellbauschrauben253545} /></p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.phosphatiertMitFeingewindeFür} /></p>
                     </div>
                     <p className="text-base font-bold text-text-main">{screwsCount} Stk</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
                     <div>
-                      <p className="text-sm font-semibold text-text-main">Fugen- und Spachtelmasse (Kunststoff- o. Gips-Fugenspachtel)</p>
-                      <p className="text-xs text-text-main/50">Für Fugen und Schraubenköpfe</p>
+                      <p className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.fugenUndSpachtelmasseKunststoff} /></p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.fürFugenUndSchraubenköpfe} /></p>
                     </div>
                     <p className="text-base font-bold text-text-main">{formatDeWert(jointFillerKg)} kg</p>
                   </div>
@@ -909,7 +590,7 @@ export default function BpTrockenbau() {
                   <div className="flex items-center justify-between pt-2 pb-2">
                     <div>
                       <p className="text-sm font-semibold text-text-main">Anschluss-Dichtungsband</p>
-                      <p className="text-xs text-text-main/50">Elastisches Schaumstoffband für Entkopplung zur aRdT</p>
+                      <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.elastischesSchaumstoffbandFürEntkopplung} /></p>
                     </div>
                     <p className="text-base font-bold text-text-main">{formatDeWert(sealTapeMeter)} lfm</p>
                   </div>
@@ -917,8 +598,8 @@ export default function BpTrockenbau() {
                   {includeInsulation && (
                     <div className="flex items-center justify-between pt-2 pb-2 text-emerald-800 bg-emerald-50/40 p-1.5 rounded">
                       <div>
-                        <p className="text-sm font-semibold">Trennwand-Dämmung (Mineralwolle)</p>
-                        <p className="text-xs text-emerald-700">Dicke angepasst an CW-Profil (40 / 60 / 80 mm)</p>
+                        <p className="text-sm font-semibold"><MdText text={inhalt.texte.trennwandDämmungMineralwolle} /></p>
+                        <p className="text-xs text-emerald-700"><MdText text={inhalt.texte.dickeAngepasstAnCw} /></p>
                       </div>
                       <p className="text-base font-bold">{formatDeWert(insulationArea)} m²</p>
                     </div>
@@ -933,15 +614,9 @@ export default function BpTrockenbau() {
                   Kalkulations-Insidertips
                 </h4>
                 <div className="text-xs text-text-main/80 space-y-3">
-                  <p>
-                    <strong>1. Zweitlagige Verschraubung:</strong> Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).
-                  </p>
-                  <p>
-                    <strong>2. Fugenversatz:</strong> Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
-                  </p>
-                  <p>
-                    <strong>3. Schallentkopplung:</strong> Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!).
-                  </p>
+                  <p><MdText text={inhalt.texte.t1ZweitlagigeVerschraubungBei} /></p>
+                  <p><MdText text={inhalt.texte.t2FugenversatzVermeidenSie} /></p>
+                  <p><MdText text={inhalt.texte.t3SchallentkopplungOhneDas} /></p>
                 </div>
               </div>
             </div>
@@ -957,15 +632,11 @@ export default function BpTrockenbau() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand"
+          title={inhalt.werte.anwendungsbeispielResonanzfrequenzEinerM}
           zielGleichung="f_0 \approx 50 \cdot \sqrt{\frac{1}{d}\left(\frac{1}{m'_1} + \frac{1}{m'_2}\right)}"
-          normQuelle="Masse-Feder-Masse-Modell mit Faserdämmung im Hohlraum (Lehrnäherung, d in m, m′ in kg/m²)"
-          schritte={[
-            { titel: '1. Einfach beplankt', formel: 'm\' = 10\\,\\text{kg/m}^2,\\; d = 0{,}075\\,\\text{m}: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}2}{0{,}075}} = 82\\,\\text{Hz}', erklaerung: 'Je Seite eine Lage 12,5 mm (ca. 10 kg/m²).' },
-            { titel: '2. Doppelt beplankt', formel: 'm\' = 20\\,\\text{kg/m}^2: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}1}{0{,}075}} = 58\\,\\text{Hz}', erklaerung: 'Doppelte Masse je Schale.' },
-            { titel: '3. Bewertung', formel: '58\\,\\text{Hz} < 80\\,\\text{Hz} \\le 82\\,\\text{Hz}', erklaerung: 'Die Resonanz rutscht unter den bauakustischen Bereich ab 100 Hz.' },
-          ]}
-          ergebnisHinweis="Doppelbeplankung senkt f_0 um den Faktor √2 und verbessert die Schalldämmung deutlich – zusätzlich zur höheren Masse."
+          normQuelle={inhalt.werte.masseFederMasseModell}
+          schritte={inhalt.daten["BpTrockenbau.schritte"]}
+          ergebnisHinweis={inhalt.werte.doppelbeplankungSenktF0}
         />
       </div>
 
@@ -977,31 +648,9 @@ export default function BpTrockenbau() {
           { title: 'Gipskarton', url: 'https://de.wikipedia.org/wiki/Gipskarton' },
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]} 
-        literatur={[ 
-          'Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014',
-          'Bundesverband der Gipsindustrie e. V., Industriegruppe Gipsplatten (IGG): Merkblatt 2 – Verspachtelung von Gipsplatten, Oberflächengüten Q1 bis Q4 (Stand 2017)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)' }, 
-          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)' },
-          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)' },
-          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)' },
-          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)' },
-          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)' }
-        ]} 
-        formeln={[
-          {
-            formel: 'f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s\' \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)} \\approx 60 \\cdot \\sqrt{\\frac{1}{d} \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)}',
-            erklaerung: 'Resonanzfrequenz f_0 des Masse-Feder-Masse-Systems einer zweischaligen Trockenbauwand: Je niedriger f_0 (f₀ < 100 Hz, möglichst ≤ 80 Hz), desto besser die Schalldämmung im bauakustisch relevanten Bereich (100–3150 Hz). Näherung mit d in m und m′ in kg/m² für eine Luftschicht; mit Faserdämmung liegt der Vorfaktor bei ca. 50.',
-            quelle: 'DIN 4109-2 / Gösele'
-          },
-          {
-            formel: '\\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O} \\xrightarrow{\\approx 100-140^{\\circ}\\text{C}} \\text{CaSO}_4 \\cdot \\frac{1}{2}\\,\\text{H}_2\\text{O} + 1{,}5\\,\\text{H}_2\\text{O} \\uparrow',
-            erklaerung: 'Endotherme Dehydratationsreaktion im Brandfall: Kristallwasser (~21 Gew.-%) verdampft und kühlt den Raum hinter der Platte wirksam ab (Brandschutzwirkung F30 bis F120).',
-            quelle: 'DIN EN 520 / DIN 4102'
-          }
-        ]} 
+        literatur={inhalt.daten["BpTrockenbau.literatur"]} 
+        regelwerke={inhalt.daten["BpTrockenbau.regelwerke"]} 
+        formeln={inhalt.daten["BpTrockenbau.formeln"]} 
       />
     </div>
   );

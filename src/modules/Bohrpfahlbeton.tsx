@@ -1,5 +1,7 @@
 import React from 'react';
 import { Layers, Settings, Activity, Map, Drill } from 'lucide-react';
+import inhalt from '@/content/bohrpfahlbeton/Bohrpfahlbeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Bohrpfahlbeton() {
   return (
@@ -10,9 +12,7 @@ export default function Bohrpfahlbeton() {
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>
-            Bohrpfahlbeton ist ein spezieller Transportbeton für den Spezialtiefbau, der zur Herstellung von Bohrpfählen (oft im Bereich von Grundwasser) eingesetzt wird. Er muss über einen längeren Zeitraum sehr gut fließfähig bleiben, ohne sich zu entmischen.
-          </p>
+          <p><MdText text={inhalt.texte.bohrpfahlbetonIstEinSpezieller} /></p>
         </div>
       </div>
 
@@ -22,40 +22,30 @@ export default function Bohrpfahlbeton() {
             <Layers className="text-shiraz" size={20} />
             Anforderungen
           </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Bohrpfahlbeton muss über extrem gute Frischbetoneigenschaften verfügen. Die Rezeptur wird speziell auf längere Verarbeitbarkeitszeiten eingestellt:
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.bohrpfahlbetonMussÜberExtrem} /></p>
           <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-            <li>Hoher Mehlkorngehalt für optimales Zusammenhaltungsvermögen (Kohäsion).</li>
-            <li>Sicheres und vollständiges Umschließen der Bewehrungskörbe.</li>
-            <li>Kein Entmischen oder Blockieren (Stopfer) während des Einbaus.</li>
-              <li>Mindestzementgehalt ≥ 325 kg/m³ (trocken) bzw. ≥ 375 kg/m³ (unter Wasser/Stützflüssigkeit), Mehlkorn ≥ 400 kg/m³ (D &gt; 8 mm) bzw. ≥ 450 kg/m³ (D ≤ 8 mm), w/z(eq) ≤ 0,60 (DIN EN 1536 i. V. m. DIN 1045-2:2023-08).</li>
+            <li><MdText text={inhalt.texte.hoherMehlkorngehaltFürOptimales} /></li>
+            <li><MdText text={inhalt.texte.sicheresUndVollständigesUmschließen} /></li>
+            <li><MdText text={inhalt.texte.keinEntmischenOderBlockieren} /></li>
+              <li><MdText text={inhalt.texte.mindestzementgehalt325KgM} /></li>
           </ul>
         </div>
 
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
-            <Settings className="text-shiraz" size={20} />
-            Herstellung & Einbau
-          </h3>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Beim Einbau unter Wasser oder unter stützender Bentonit-Suspension erfolgt dieser in der Regel mit dem Contractor-Verfahren:
-          </p>
+            <Settings className="text-shiraz" size={20} /><MdText text={inhalt.texte.herstellungEinbau} /></h3>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.beimEinbauUnterWasser} /></p>
           <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-            <li>Das Betonierrohr reicht bis auf den Grund der Bohrung.</li>
-            <li>Der Beton drückt das Grundwasser bzw. die Stützflüssigkeit von unten nach oben aus dem Bohrloch (kein freies Fallen, kein Auswaschen).</li>
-            <li>Eine gleichmäßige Zufuhr ohne Unterbrechungen ist kritisch.</li>
+            <li><MdText text={inhalt.texte.dasBetonierrohrReichtBis} /></li>
+            <li><MdText text={inhalt.texte.derBetonDrücktDas} /></li>
+            <li><MdText text={inhalt.texte.eineGleichmäßigeZufuhrOhne} /></li>
           </ul>
         </div>
 
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
           <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
-            <Activity className="text-shiraz" size={20} />
-            Eigenschaften (Frischbeton)
-          </h3>
-          <p className="text-sm text-text-main/80 leading-relaxed">
-            Es werden stark fließfähige (Konsistenz oft F5 oder F6), weiche bis flüssige Gemische gefordert. Typische Größtkörnungen liegen bei 16 oder 32 mm, angepasst an die engen Maschenweiten der Bewehrungskörbe und die Überdeckung.
-          </p>
+            <Activity className="text-shiraz" size={20} /><MdText text={inhalt.texte.eigenschaftenFrischbeton} /></h3>
+          <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.esWerdenStarkFließfähige} /></p>
         </div>
 
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
@@ -63,14 +53,12 @@ export default function Bohrpfahlbeton() {
             <Map className="text-shiraz" size={20} />
             Anwendungsgebiete
           </h3>
-          <p className="text-sm text-text-main/80 leading-relaxed">
-            Tiefgründungen aller Art: Stützen von Hochhausfundamenten, Brückenpfeiler, Lärmschutzwände, Hangsicherungen, sowie überschnittene Bohrpfahlwände als wasserundurchlässige Baugrubenumschließung.
-          </p>
+          <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.tiefgründungenAllerArtStützen} /></p>
         </div>
       </div>
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
+        <h3 className="font-bold text-text-main mb-4"><MdText text={inhalt.texte.typischeMischungszusammensetzungProM} /></h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -82,18 +70,18 @@ export default function Bohrpfahlbeton() {
             <tbody>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
                   <td className="py-2 px-3 text-sm text-text-main font-medium">Zement</td>
-                  <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 350 - 380 kg</td>
+                  <td className="py-2 px-3 text-sm text-text-main/70 text-right"><MdText text={inhalt.texte.t350380Kg} /></td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/z ~0,50)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium"><MdText text={inhalt.texte.wasserWZ0} /></td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 180 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Gesteinskörnung (Größtkorn max. 16 mm oder 32 mm)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium"><MdText text={inhalt.texte.gesteinskörnungGrößtkornMax16} /></td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 1750 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Zusatzmittel (Verzögerer für lange Verarbeitbarkeit, oft &gt; 4h)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium"><MdText text={inhalt.texte.zusatzmittelVerzögererFürLange} /></td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">nach Bedarf</td>
                 </tr>
             </tbody>

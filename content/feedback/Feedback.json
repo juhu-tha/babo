@@ -1,0 +1,63 @@
+{
+  "texte": {
+    "ihreMeinungIstUns": "Ihre Meinung ist uns wichtig! Bitte bewerten Sie die folgenden Aspekte des Dashboards (1 Stern = sehr schlecht, 5 Sterne = sehr gut). Die Ergebnisse werden per E-Mail an juergen.huber@tha.de gesendet.",
+    "qualitätDerInhalte": "Qualität der Inhalte",
+    "nutzenPraxisrelevanz": "Nutzen & Praxisrelevanz",
+    "bedienbarkeitDesign": "Bedienbarkeit & Design",
+    "interaktiveElemente": "Interaktive Elemente",
+    "konsistenzStruktur": "Konsistenz & Struktur",
+    "lernmotivationSpaß": "Lernmotivation & Spaß",
+    "weiteresFeedbackOptional": "Weiteres Feedback (optional)",
+    "ergebnisseAbsenden": "Ergebnisse absenden",
+    "habenSieEinenFehler": "Haben Sie einen Fehler gefunden oder eine Idee, wie das Dashboard verbessert werden kann? Nutzen Sie dieses Formular, um direkt eine E-Mail an Jürgen Huber (juergen.huber@tha.de) zu generieren.",
+    "artDesFeedbacks": "Art des Feedbacks",
+    "fehlerMelden": "Fehler melden",
+    "ergänzungVorschlagen": "Ergänzung vorschlagen",
+    "betroffenesModulOptional": "Betroffenes Modul (optional)",
+    "ihreNachricht": "Ihre Nachricht",
+    "eMailVorbereiten": "E-Mail vorbereiten",
+    "feedbackEvaluierung": "Feedback & Evaluierung",
+    "evaluierungTool": "Evaluierung Tool"
+  },
+  "werte": {
+    "evaluierungBaustoffDashboard": "Evaluierung Baustoff-Dashboard",
+    "wieBewertenSieDie": "Wie bewerten Sie die fachliche Korrektheit und Tiefe?",
+    "istDasThemaDes": "Ist das Thema des Moduls fachlich vollständig abgebildet?",
+    "istDieBedienungIntuitiv": "Ist die Bedienung intuitiv und sind die Erklärungen klar und verständlich?",
+    "hilftIhnenDiesesTool": "Hilft Ihnen dieses Tool beim Lernen und Verstehen für Studium und Baupraxis?",
+    "wieAnsprechendUndIntuitiv": "Wie ansprechend und intuitiv ist das Dashboard gestaltet?",
+    "wieHilfreichSindDie": "Wie hilfreich sind die Rechner, Slider, Simulatoren und Diagramme?",
+    "istDasModulIn": "Ist das Modul in sich logisch aufgebaut? Sind alle notwendigen Informationen zum Verständnis in anderen Modulen vorhanden?",
+    "motiviertDasDashboardSich": "Motiviert das Dashboard, sich mit den Inhalten zu beschäftigen?",
+    "wasGefälltIhnenBesonders": "Was gefällt Ihnen besonders gut? Was könnte verbessert werden?",
+    "fehlerGefunden": "Fehler gefunden",
+    "ganzGroßartigesToolVielen": "Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)",
+    "parameterZurAnpassungDer": "Parameter zur Anpassung der Berechnung.",
+    "parameterZurAnpassungDer2": "Parameter zur Anpassung der Berechnung.",
+    "zBZementchemieEpd": "z.B. Zementchemie, EPD, ...",
+    "parameterZurAnpassungDer3": "Parameter zur Anpassung der Berechnung.",
+    "beschreibenSieDenFehler": "Beschreiben Sie den Fehler möglichst genau...",
+    "ganzGroßartigesToolVielen2": "Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)",
+    "welchesThemaOderWelche": "Welches Thema oder welche Funktion fehlt Ihnen?",
+    "empirischeSozialforschung": "Empirische Sozialforschung"
+  },
+  "daten": {
+    "Feedback.literatur": [
+      "Kromrey, H.; Roose, J.; Strübing, J. (2016): Empirische Sozialforschung (13. Auflage, UTB / UVK)",
+      "Wissenschaftsrat: Empfehlungen zur Qualitätsverbesserung von Lehre und Studium an deutschen Hochschulen",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Feedback.regelwerke": [
+      {
+        "title": "Bayerisches Hochschulinnovationsgesetz (BayHIG - Art. 18 Evaluation und Qualitätssicherung)",
+        "url": "https://www.gesetze-bayern.de/"
+      },
+      {
+        "title": "DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)"
+      },
+      {
+        "title": "DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)"
+      }
+    ]
+  }
+}

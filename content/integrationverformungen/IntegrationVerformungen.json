@@ -1,0 +1,24 @@
+{
+  "texte": {
+    "ganzheitlichesModellFrühesBetonalter": " Ganzheitliches Modell: Frühes Betonalter & Rissbildung",
+    "dieModuleHydratationEigenspannungen": "Die Module **Hydratation**, **Eigenspannungen**, **Zwang** und **Kriechen/Schwinden** betrachten jeweils Teilaspekte desselben komplexen Vorgangs. In der Realität laufen diese Prozesse im *frühen Betonalter* (den ersten Tagen und Wochen nach dem Betonieren) gleichzeitig ab und beeinflussen sich gegenseitig.",
+    "dasPhysikalischeNetzwerk": "Das physikalische Netzwerk",
+    "t1Hydratation": "1. Hydratation",
+    "zementWasserReagiertEs": "Zement + Wasser reagiert. Es entsteht Wärme (Aufheizphase) und chemisches Schwinden.",
+    "t2VolumenänderungZwang": "2. Volumenänderung & Zwang",
+    "betonDehntSichAus": "Beton dehnt sich aus (Wärme) und zieht sich zusammen (Abkühlung, Schwinden). Bauteilgeometrie oder Untergrund behindern (Zwang) diese freie Bewegung.",
+    "t3SpannungsaufbauEigenspannungen": "3. Spannungsaufbau (Eigenspannungen)",
+    "durchDenZwangUnd": "Durch den Zwang und ungleichmäßige Temperaturverteilung (außen kalt, innen heiß) entstehen Zug- und Druckspannungen im Querschnitt.",
+    "t4KriechenRelaxation": "4. Kriechen & Relaxation",
+    "derJungeBetonReagiert": "Der junge Beton reagiert auf die Spannungen viskoelastisch. Er kriecht, wodurch sich die aufgebauten Zugspannungen abbauen (Relaxation wirkt entspannend!).",
+    "t5RissrisikoBewertung": "5. Rissrisiko-Bewertung",
+    "spannungTZugfestigkeitF": "Spannung σ(t) > Zugfestigkeit f_ct(t) = Riss! Die Rissbreitensteuerung erfolgt über die Bewehrung.",
+    "wieDieModuleBesser": "Wie die Module besser genutzt werden:",
+    "isolierteBetrachtungNutzenSie": "**Isolierte Betrachtung:** Nutzen Sie die Einzelmodule (z.B. Kriechen), um die rein physikalischen Formeln und Abhängigkeiten (z.B. von der Luftfeuchte) zu berechnen (nach Eurocode).",
+    "vernetzteBetrachtungNutzenSie": "**Vernetzte Betrachtung:** Nutzen Sie das Modul *Zwang & Risse*. Dort sind die Formeln aus Hydratation, Festigkeitsentwicklung und Relaxation bereits zu einer integrativen Zeitsimulation zusammengeführt.",
+    "ansätzeZurOptimierungIm": "Ansätze zur Optimierung im Projekt:",
+    "zementMitNiedrigenHydratationswärmen": "Zement mit niedrigen Hydratationswärmen verwenden, um Ursprung 1 zu dämpfen.",
+    "gleitfolienUnterBodenplattenVerringert": "Gleitfolien unter Bodenplatten (verringert Zwang), um Schritt 2 zu entschärfen.",
+    "betonageImSommerGgf": "Betonage im Sommer ggf. nachts (geringere Bauteil-Temperaturgradienten)."
+  }
+}

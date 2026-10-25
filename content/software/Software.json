@@ -1,0 +1,65 @@
+{
+  "texte": {
+    "softwareToolsFürStudierende": " Software & Tools für Studierende",
+    "eineÜbersichtÜberKostenlose": "Eine Übersicht über kostenlose und Open-Source-Software (FOSS) sowie für Studierende frei verfügbare Werkzeuge im Bauingenieurwesen. Diese Tools eignen sich hervorragend für das Studium, Projektarbeiten und erste berufliche Schritte.",
+    "leistungsstarkesParametrisches3dCad": "Leistungsstarkes parametrisches 3D-CAD-System (Open Source). Eignet sich für Konstruktion und Architektur.",
+    "bonsaiEhemBlenderbim": "Bonsai (ehem. BlenderBIM)",
+    "addOnFürBlender": "Add-on für Blender zur Erstellung, Bearbeitung und Analyse von IFC-Modellen (OpenBIM).",
+    "kostenlose2dCadAnwendungen": "Kostenlose 2D-CAD-Anwendungen, ideal für einfache Grundrisse und Detailzeichnungen.",
+    "autodeskAllplanArchicadEdu": "Autodesk / Allplan / Archicad (Edu)",
+    "dieMeistenKommerziellenAnbieter": "Die meisten kommerziellen Anbieter bieten kostenlose Studentenversionen ihrer Flaggschiff-Produkte an.",
+    "statikFem": "Statik & FEM",
+    "sehrEinfachesUndIntuitives": "Sehr einfaches und intuitives 2D-Rahmenanalyse-Programm. Perfekt für die Baustatik-Grundlagen.",
+    "kostenlosesFemProgrammDer": "Kostenloses FEM-Programm der Uni Bayreuth für lineare und nichtlineare Berechnungen.",
+    "leistungsstarkesOpenSource3d": "Leistungsstarkes Open-Source 3D-FEM-Paket (ähnlich Abaqus).",
+    "dlubalRfemRstabEdu": "Dlubal RFEM / RSTAB (Edu)",
+    "kostenloseStudentenversionenFürProfessio": "Kostenlose Studentenversionen für professionelle 3D-Stabwerks- und Flächenberechnungen.",
+    "mathematikNumerik": "Mathematik & Numerik",
+    "kostenloseAlternativenZuMatlab": "Kostenlose Alternativen zu MATLAB für numerische Berechnungen und Matrizenoperationen.",
+    "pythonJupyterNumpyPandas": "Python (Jupyter, NumPy, Pandas)",
+    "derStandardFürDatenanalyse": "Der Standard für Datenanalyse und Automatisierung. Sehr nützlich für parametrisches Design und Auswertungen.",
+    "smathStudio": "SMath Studio",
+    "kostenloseAlternativeZuMathcad": "Kostenlose Alternative zu Mathcad. Ermöglicht Berechnungen auf einem \"virtuellen Blatt Papier\" inkl. Einheitenprüfung.",
+    "lcaNachhaltigkeit": "LCA & Nachhaltigkeit",
+    "professionelleOpenSourceSoftware": "Professionelle Open-Source-Software für Ökobilanzierung (LCA) und Nachhaltigkeitsbewertung.",
+    "keineSoftwareAberDie": "Keine Software, aber die zentrale (kostenlose) Datenbank des Bundes für Ökobilanzdaten von Bauprodukten.",
+    "kostenlosesOnlineToolDes": "Kostenloses Online-Tool des BBSR zur Erstellung von Gebäudeökobilanzen.",
+    "thermLbnl": "Therm (LBNL)",
+    "kostenloses2dWärmeübertragungsprogrammZu": "Kostenloses 2D-Wärmeübertragungsprogramm zur Berechnung von Wärmebrücken.",
+    "wufiLightEdu": "WUFI (Light/Edu)",
+    "softwareZurBerechnungDes": "Software zur Berechnung des gekoppelten Wärme- und Feuchtetransports (Fraunhofer IBP).",
+    "ubakusEhemUWert": "Ubakus (ehem. U-Wert-Rechner)",
+    "onlineToolZurBerechnung": "Online-Tool zur Berechnung von U-Werten und Feuchteschutz (für private/studentische Nutzung oft ausreichend).",
+    "programmierungTools": "Programmierung & Tools",
+    "visualStudioCode": "Visual Studio Code",
+    "derStandardEditorFür": "Der Standard-Editor für Programmierung (Python, C++, Web).",
+    "visuelleProgrammierungFürRevit": "Visuelle Programmierung für Revit bzw. Rhino. Essenziell für parametrisches Design (oft in Edu-Lizenzen enthalten).",
+    "githubStudentPack": "GitHub (Student Pack)",
+    "versionskontrolleFürCodeUnd": "Versionskontrolle für Code und Textdokumente (LaTeX). GitHub bietet ein kostenloses Student Developer Pack."
+  },
+  "werte": {
+    "computerAidedDesign": "Computer-aided design"
+  },
+  "daten": {
+    "Software.literatur": [
+      "Borrmann, A. et al.: Handbuch Building Information Modeling: Digitales Planen, Bauen und Betreiben (Springer Vieweg)",
+      "Barth, C.; Rustler, W.: Praxis der Finite-Elemente-Methode im Bauwesen (Bauwerk Verlag)"
+    ],
+    "Software.regelwerke": [
+      {
+        "title": "DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen zu Bauwerken)"
+      },
+      {
+        "title": "VDI 2552 Blatt 1 (Building Information Modeling – Grundlagen)",
+        "url": "https://www.vdi.de/richtlinien"
+      }
+    ],
+    "Software.formeln": [
+      {
+        "formel": "\\mathbf{K} \\cdot \\mathbf{u} = \\mathbf{F}",
+        "erklaerung": "Grundgleichung linear-elastischer Finite-Elemente-Berechnungen (FEM) in baustatischen Softwaresystemen mit Gesamtsteifigkeitsmatrix K, Knotenverschiebungsvektor u und Belastungsvektor F.",
+        "quelle": "Numerische Strukturmechanik"
+      }
+    ]
+  }
+}

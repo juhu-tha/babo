@@ -5,6 +5,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
+import inhalt from '@/content/mischungsberechnung/WalzKurvenSection.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export function WalzKurvenSection() {
   const [wzWert, setWzWert] = useState(0.50);
@@ -64,7 +66,7 @@ export function WalzKurvenSection() {
       y: {
         title: {
           display: true,
-          text: 'Mittlere Würfeldruckfestigkeit 28 d (N/mm², Näherung)',
+          text: inhalt.werte.mittlereWürfeldruckfestigkeit28D,
           font: { family: 'Work Sans', weight: 'bold' as const }
         },
         min: 10,
@@ -73,7 +75,7 @@ export function WalzKurvenSection() {
       x: {
         title: {
           display: true,
-          text: 'Wasserzementwert (w/z)',
+          text: inhalt.werte.wasserzementwertWZ,
           font: { family: 'Work Sans', weight: 'bold' as const }
         }
       }
@@ -101,23 +103,21 @@ export function WalzKurvenSection() {
         <h2 className="text-xl font-bold text-text-main">Walz-Kurven</h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Walz-Kurven beschreiben den empirischen Zusammenhang zwischen dem Wasserzementwert (w/z) und der zu erwartenden Druckfestigkeit des Betons für verschiedene Zementfestigkeitsklassen. Ein niedrigerer w/z-Wert führt zu einer höheren Festigkeit.
-          </p>
+          <p><MdText text={inhalt.texte.dieWalzKurvenBeschreiben} /></p>
         </div>
 
         <Slider
-          label="Wasserzementwert (w/z)"
+          label={inhalt.werte.wasserzementwertWZ2}
           min={0.35} max={0.80} step={0.01}
           value={wzWert} unit=""
-          info="Massenverhältnis von wirksamem Wasser zu Zement. Maßgeblich für die Porosität und damit die Festigkeit des Zementsteins."
+          info={inhalt.werte.massenverhältnisVonWirksamemWasser}
           onChange={(e) => setWzWert(Number(e.target.value))}
         />
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2"><label htmlFor="walzkurve-festigkeit" className="text-sm font-medium text-text-main">Zementfestigkeitsklasse</label><InfoTooltip text="Normfestigkeit des Zements nach 28 Tagen." /></div>
-            <InfoTooltip text="Normdruckfestigkeit des Zements nach 28 Tagen (z.B. 32.5, 42.5, 52,5 MPa)." />
+            <div className="flex items-center gap-2"><label htmlFor="walzkurve-festigkeit" className="text-sm font-medium text-text-main">Zementfestigkeitsklasse</label><InfoTooltip text={inhalt.werte.normfestigkeitDesZementsNach} /></div>
+            <InfoTooltip text={inhalt.werte.normdruckfestigkeitDesZementsNach} />
           </div>
           <select 
             id="walzkurve-festigkeit"
@@ -133,18 +133,18 @@ export function WalzKurvenSection() {
         </div>
 
         <div className="mt-4 p-4 bg-off-white rounded-xl border border-shiraz/20">
-          <h3 className="text-sm font-bold text-shiraz mb-2">Erwartete mittlere Druckfestigkeit</h3>
+          <h3 className="text-sm font-bold text-shiraz mb-2"><MdText text={inhalt.texte.erwarteteMittlereDruckfestigkeit} /></h3>
           <div className="text-3xl font-bold text-shiraz">{formatDeZahl(currentStrength, 1)} <span className="text-lg font-normal">MPa</span></div>
-          <div className="text-sm text-shiraz/80 mt-1"><FormulaText text="f_{cm} bei 28 Tagen" /></div>
+          <div className="text-sm text-shiraz/80 mt-1"><FormulaText text={inhalt.werte.fCmBei28} /></div>
         </div>
       </div>
 
       <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">
-        <h2 className="text-xl font-bold text-text-main mb-2">Abhängigkeit der Festigkeit vom w/z-Wert</h2>
-        <p className="text-xs text-text-main/60 mb-2">Näherung nach dem Abrams-Ansatz f = A / 5<sup>w/z</sup> (A = 100/120/140 N/mm² für 32,5/42,5/52,5; Lehrwerte). Maßgebend sind Erstprüfungen.</p>
+        <h2 className="text-xl font-bold text-text-main mb-2"><MdText text={inhalt.texte.abhängigkeitDerFestigkeitVom} /></h2>
+        <p className="text-xs text-text-main/60 mb-2"><MdText text={inhalt.texte.näherungNachDemAbrams} /></p>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            <FormulaText text="Darstellung nach dem Gesetz von Abrams: f_c = A / B^{w/z}. Die hervorgehobene Kurve entspricht der gewählten Zementklasse." />
+            <FormulaText text={inhalt.werte.darstellungNachDemGesetz} />
           </p>
         </div>
         

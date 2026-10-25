@@ -1,0 +1,68 @@
+{
+  "texte": {
+    "verankerungslängeÜbergreifungslänge": " Verankerungslänge & Übergreifungslänge",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
+    "dieVerankerungslängeIstDie": "Die Verankerungslänge ist die Länge, die benötigt wird, um die Zug- oder Druckkräfte eines Bewehrungsstabes sicher in den umgebenden Beton einzuleiten. Die Berechnung erfolgt nach DIN EN 1992-1-1 mit dem Nationalen Anhang (NA DE).",
+    "materialGeometrie": "Material & Geometrie",
+    "artDerBerechnung": "Art der Berechnung",
+    "einflussfaktoren": "Einflussfaktoren (",
+    "formgebung": "Formgebung (",
+    "betondeckung": "Betondeckung (",
+    "querbewehrung": "Querbewehrung (",
+    "stoßanteilAbstand": "Stoßanteil / Abstand (",
+    "dasVerhältnis": "Das Verhältnis ",
+    "darfZurReduzierungDer": " darf zur Reduzierung der Verankerungslänge angesetzt werden.",
+    "zugfestigkeitBeton": "Zugfestigkeit Beton ",
+    "bemessungswertVerbund": "Bemessungswert Verbund ",
+    "schematischeDarstellung": "Schematische Darstellung",
+    "wirdÜberVerbundspannungenEntlang": " wird über Verbundspannungen entlang der Länge ",
+    "inDenBetonEingeleitet": " in den Beton eingeleitet."
+  },
+  "werte": {
+    "artDerBerechnung": "Art der Berechnung",
+    "ausgewählteFaktorenZurReduktion": "Ausgewählte Faktoren zur Reduktion der Länge. Bei Druckbeanspruchung sind alle Formbeiwerte = 1.0.",
+    "formgebung": "Formgebung ()",
+    "betondeckung": "Betondeckung ()",
+    "querbewehrung": "Querbewehrung ()",
+    "querdruck": "Querdruck ()",
+    "stoßanteilAbstand": "Stoßanteil / Abstand ()",
+    "aSErfA": "A_{s,erf} / A_{s,vorh}",
+    "bemessungswertVerankerungslänge": "Bemessungswert Verankerungslänge",
+    "bemessungswertÜbergreifungslänge": "Bemessungswert Übergreifungslänge",
+    "aSErfA2": "A_{s,erf} / A_{s,vorh}",
+    "ihrRechenwegVerankerungslängeMit": "Ihr Rechenweg: Verankerungslänge mit den aktuellen Eingaben",
+    "ihrRechenwegÜbergreifungslängeMit": "Ihr Rechenweg: Übergreifungslänge mit den aktuellen Eingaben",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 8.4 und 8.7",
+    "bemessungswertDerBetonzugfestigkeit": "Bemessungswert der Betonzugfestigkeit",
+    "fCtk005": "f_ctk;0,05 aus Tabelle 3.1 (höchstens C60/75), α_ct = 1,0.",
+    "bemessungswertDerVerbundspannung": "Bemessungswert der Verbundspannung",
+    "guteVerbundbedingungen10": "Gute Verbundbedingungen (η₁ = 1,0)",
+    "mäßigeVerbundbedingungen07": "Mäßige Verbundbedingungen (η₁ = 0,7)",
+    "t32Mm10": "Ø ≤ 32 mm (η₂ = 1,0)",
+    "t32Mm132100": "Ø > 32 mm: η₂ = (132 − Ø)/100",
+    "grundwertDerVerankerungslänge": "Grundwert der Verankerungslänge",
+    "volleAusnutzungDesStabes": "Volle Ausnutzung des Stabes mit σ_sd = f_yd = f_yk/1,15.",
+    "anwendungsbeispielGrundwertDerVerankerun": "Anwendungsbeispiel: Grundwert der Verankerungslänge (Ø 16, C30/37, guter Verbund)",
+    "dinEn199212": "DIN EN 1992-1-1 mit NA, 8.4.2 und 8.4.3",
+    "lBRqd570": "l_b,rqd ≈ 570 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ und A_s,erf/A_s,vorh."
+  },
+  "daten": {
+    "Verankerungslaenge.schritte": [
+      {
+        "titel": "1. Betonzugfestigkeit",
+        "formel": "f_{ctk;0{,}05} = 0{,}7 \\cdot 0{,}30 \\cdot 30^{2/3} = 2{,}03\\,\\text{N/mm}^2;\\; f_{ctd} = 2{,}03/1{,}5 = 1{,}35\\,\\text{N/mm}^2",
+        "erklaerung": "α_ct = 1,0 für die Verbundspannung."
+      },
+      {
+        "titel": "2. Verbundspannung",
+        "formel": "f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}35 = 3{,}04\\,\\text{N/mm}^2",
+        "erklaerung": "Guter Verbund (η₁ = 1,0), Ø ≤ 32 mm (η₂ = 1,0)."
+      },
+      {
+        "titel": "3. Grundwert",
+        "formel": "l_{b,rqd} = \\frac{16}{4} \\cdot \\frac{435}{3{,}04} = 572\\,\\text{mm}",
+        "erklaerung": "Volle Ausnutzung σ_sd = f_yd."
+      }
+    ]
+  }
+}

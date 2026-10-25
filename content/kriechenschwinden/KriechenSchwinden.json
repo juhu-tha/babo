@@ -1,0 +1,210 @@
+{
+  "texte": {
+    "eingabeparameterBeton": "Eingabeparameter (Beton)",
+    "t10000DT": "φ(10 000 d, t₀)",
+    "cd10000D": "ε_cd (10 000 d)",
+    "kHCd0": "k_h · ε_cd,0",
+    "fürVerformungenUnterDauerlast": "Für Verformungen unter Dauerlast wird nach DIN EN 1992-1-1, Gl. (7.20) der wirksame E-Modul ",
+    "angesetztFürZwangsspannungenRelaxation": " angesetzt. Für Zwangsspannungen (Relaxation) ist das eine grobe Näherung; genauer ist ",
+    "mitDemRelaxationsbeiwert0": " mit dem Relaxationsbeiwert ρ ≈ 0,8 (Trost).",
+    "schematischeDarstellungKriechenSchwinden": "Schematische Darstellung: Kriechen & Schwinden",
+    "kriechenUnterLast": "Kriechen (unter Last)",
+    "zusätzlicheVerformungBeiKonstanter": "Zusätzliche Verformung bei konstanter Spannung.",
+    "schwindenOhneLast": "Schwinden (ohne Last)",
+    "volumenverringerungDurchFeuchtigkeitsabg": "Volumenverringerung durch Feuchtigkeitsabgabe.",
+    "die5ArtenDes": " Die 5 Arten des Schwindens im Detail",
+    "unterSchwindenVerstehtMan": "Unter Schwinden versteht man die volumenmindernde zeitabhängige Verformung von unbelastetem Beton. Die Fachliteratur unterscheidet meist fünf Schwindarten; DIN EN 1992-1-1 erfasst rechnerisch das Trocknungs- und das autogene Schwinden:",
+    "t1PlastischesSchwindenKapillarschwinden": "1. Plastisches Schwinden (Kapillarschwinden)",
+    "stadiumFrischbeton": "Stadium: Frischbeton",
+    "ursacheTrittInDen": "**Ursache:** Tritt in den ersten Stunden auf, wenn an der freien Oberfläche mehr Wasser verdunstet, als durch Bluten nachgeliefert wird. Der kapillare Unterdruck in den Menisken zieht den noch plastischen Beton zusammen (Gefahr von Frühschwindrissen).",
+    "gegenmaßnahmeFrühzeitigeNachbehandlungAb": "**Gegenmaßnahme:** Frühzeitige Nachbehandlung: Abdecken mit Folie oder feuchten Vliesen, Nachbehandlungsmittel unmittelbar nach dem Abziehen, Schutz vor Wind und Sonne.",
+    "t2AutogenesSchwindenSelbstaustrocknung": "2. Autogenes Schwinden (Selbstaustrocknung)",
+    "stadiumErsteTageWochen": "Stadium: Erste Tage/Wochen",
+    "ursacheSelbstaustrocknungDieHydratation": "**Ursache:** Selbstaustrocknung: Die Hydratation verbraucht Wasser; bei niedrigen w/z-Werten (etwa < 0,40) entleeren sich die feinen Poren, ohne dass Wasser von außen nachkommt. Der Kapillarunterdruck verkürzt den Zementstein. Nach DIN EN 1992-1-1 gilt ε_ca,∞ = 2,5 · (f_ck − 10) · 10⁻⁶.",
+    "gegenmaßnahmeInnereNachbehandlungMit": "**Gegenmaßnahme:** Innere Nachbehandlung mit wassergesättigter leichter Gesteinskörnung oder Superabsorbern (SAP); schwindreduzierende Zusatzmittel (SRA).",
+    "t3TrocknungsschwindenDryingShrinkage": "3. Trocknungsschwinden (Drying Shrinkage)",
+    "stadiumLangzeitJahre": "Stadium: Langzeit (Jahre)",
+    "ursacheLangsameAbgabeVon": "**Ursache:** Langsame Abgabe von Kapillar- und Gelwasser an die Umgebung. Bei Normalbeton meist der größte Schwindanteil; maßgebend sind die relative Luftfeuchte (RH), die wirksame Bauteildicke h<sub>0</sub> und der Zementsteingehalt.",
+    "gegenmaßnahmeGeringerZementleimUnd": "**Gegenmaßnahme:** Geringer Zementleim- und Wassergehalt (hoher Gesteinskörnungsanteil), ausreichende Nachbehandlung, Bewehrung bzw. Fugen zur Rissverteilung.",
+    "t4ChemischesSchwindenSchrumpfen": "4. Chemisches Schwinden (Schrumpfen)",
+    "stadiumPermanentAktiv": "Stadium: Permanent aktiv",
+    "ursacheDieHydratationsprodukteNehmen": "**Ursache:** Die Hydratationsprodukte nehmen weniger Volumen ein als Zement und Wasser vor der Reaktion (Le-Chatelier-Kontraktion, rund 25 % des chemisch gebundenen Wassers – Größenordnung). Nach dem Erstarren äußert sich die Kontraktion vor allem als zusätzlicher Porenraum; die äußere Verkürzung zeigt sich als autogenes Schwinden.",
+    "gegenmaßnahmeNichtVermeidbarDie": "**Gegenmaßnahme:** Nicht vermeidbar; die äußere Auswirkung wird über die Maßnahmen gegen autogenes Schwinden begrenzt.",
+    "t5Karbonatisierungsschwinden": "5. Karbonatisierungsschwinden",
+    "stadiumLangzeitJahrzehnte": "Stadium: Langzeit (Jahrzehnte)",
+    "ursacheChemischeUmwandlungDes": "**Ursache:** Chemische Umwandlung des alkalischen Calciumhydroxids Ca(OH)<sub>2</sub> durch eindiffundierendes Kohlenstoffdioxid CO<sub>2</sub> aus der Luft zu Calciumcarbonat CaCO<sub>3</sub>; dabei wird Wasser frei. Der Umbau der Hydratphasen verursacht eine geringe zusätzliche Verkürzung in der karbonatisierten Randzone.",
+    "gegenmaßnahmeDichterBetonNiedriger": "**Gegenmaßnahme:** Dichter Beton (niedriger w/z-Wert, gute Nachbehandlung) verlangsamt die Karbonatisierung.",
+    "eingabeparameterSpannstahl": "Eingabeparameter (Spannstahl)",
+    "kriechenUndSchwindenSpielen": "Kriechen und Schwinden spielen bei Betonstahl und Baustahl bei Raumtemperatur praktisch keine Rolle. Bei **Spannstahl** ist jedoch die **Relaxation** (Spannungsverlust bei konstanter Dehnung) von großer Bedeutung.",
+    "spannstahlklasseRelaxationsverhalten": "Spannstahlklasse (Relaxationsverhalten)",
+    "rheologischerMechanismusStützenverformun": "**Rheologischer Mechanismus & Stützenverformung (DIN EN 1992-1-1):** Das zeitabhängige Kriechen von Beton lässt sich physikalisch als Kombination aus einer rein elastischen Hooke’schen Feder ($E_1$) und einem viskoelastischen Kelvin-Voigt-Körper (Feder $E_2$ parallel zu einem viskosen Newton-Dämpfer $\\eta$) beschreiben. Unter konstanter Last verlagert sich die Spannung allmählich vom Dämpfer auf die Feder. Gleichzeitig bewirkt das lastunabhängige Schwinden eine zusätzliche Stauchung. Das Federmodell veranschaulicht das Verhalten qualitativ; gerechnet wird mit den Ansätzen nach DIN EN 1992-1-1, Anhang B. Linearität des Kriechens setzt σ_c ≤ 0,45 · f_ck voraus – bei f_ck < 19 MPa ist das mit 8,5 MPa nicht mehr erfüllt.",
+    "t1BetrachtungszeitraumT": " 1. Betrachtungszeitraum (t)",
+    "standzeitDesTragwerks": "Standzeit des Tragwerks:",
+    "randbedingungenDerStütze": "Randbedingungen der Stütze:",
+    "stützenhöheL": "Stützenhöhe L₀:",
+    "t3000Mm3": "3.000 mm (3 m)",
+    "dauerlastC": "Dauerlast σc:",
+    "t85MpaLehrannahme": "8,5 MPa (Lehrannahme)",
+    "eModulEcm": "E-Modul Ecm:",
+    "luftfeuchteRh": "Luftfeuchte RH:",
+    "elastischLEl": "Elastisch ΔL_el",
+    "spontanBeiLastbeginn": "Spontan bei Lastbeginn",
+    "kriechenLCr": "Kriechen ΔL_cr",
+    "schwindenLCs": "Schwinden ΔL_cs",
+    "t2PhysischerSäulenvergleichRheologisches": " 2. Physischer Säulenvergleich & Rheologisches Modell",
+    "belasteteStützeKriechenSchwinden": "Belastete Stütze (Kriechen + Schwinden) vs. unbelastetes Schwindprisma",
+    "maßstabVerformung25Überhöht": "Maßstab Verformung: 25× überhöht",
+    "überlagerungDerVerformungsanteileDin": "Überlagerung der Verformungsanteile (DIN EN 1992-1-1, 3.1.4):",
+    "kriechenSchwindenRelaxation": " Kriechen, Schwinden & Relaxation",
+    "verformungsverhaltenVonBetonKriechen": "Verformungsverhalten von Beton (Kriechen und Schwinden) nach Eurocode 2 (DIN EN 1992-1-1) sowie zeitabhängige Relaxationsverluste von Spannstählen unter hoher Dauerlast.",
+    "rheologieSäulenverformung": " Rheologie & Säulenverformung"
+  },
+  "werte": {
+    "charakteristischeZylinderdruckfestigkeit": "Charakteristische Zylinderdruckfestigkeit des Betons in MPa, bestimmt den E-Modul und die Kriech- und Schwindbeiwerte.",
+    "betondruckfestigkeitFCk": "Betondruckfestigkeit (f_{ck})",
+    "umgebungsfeuchteImJahresmittelBspw": "Umgebungsfeuchte im Jahresmittel (bspw. 50% für trockene Innenräume, 80% für Außenbauteile).",
+    "relativeLuftfeuchtigkeitRh": "Relative Luftfeuchtigkeit (RH)",
+    "wirksameQuerschnittsdickeH0": "Wirksame Querschnittsdicke h_0 = 2 * A_c / u (A_c: Betonquerschnittsfläche, u: dem Schwinden ausgesetzter Umfang).",
+    "wirksameBauteildickeH0": "Wirksame Bauteildicke (h_0)",
+    "betonalterZumZeitpunktDer": "Betonalter zum Zeitpunkt der ersten Belastungsübernahme.",
+    "belastungsalterT0": "Belastungsalter (t_0)",
+    "endeDerNachbehandlungBeginn": "Ende der Nachbehandlung = Beginn des Trocknungsschwindens t_s (DIN EN 1992-1-1, 3.1.4).",
+    "trocknungsbeginnTS": "Trocknungsbeginn (t_s)",
+    "sLangsamNNormal": "S: langsam, N: normal, R: schnell erhärtend. Wirkt beim Kriechen über das wirksame Belastungsalter (Gl. B.9) und beim Trocknungsschwinden über α_ds1/α_ds2.",
+    "kriechzahl": "Kriechzahl φ",
+    "betonalterTTage": "Betonalter t (Tage)",
+    "kriechzahl2": "Kriechzahl φ",
+    "schwindenCsCdCa": "Schwinden ε_{cs} = ε_{cd} + ε_{ca}",
+    "trocknungsschwindenCd": "Trocknungsschwinden εcd",
+    "autogenesSchwindenCa": "Autogenes Schwinden εca",
+    "gesamtschwindenCs": "Gesamtschwinden εcs",
+    "betonalterTTage2": "Betonalter t (Tage)",
+    "schwinddehnungMM": "Schwinddehnung (μm/m)",
+    "wirksamerEModulE": "Wirksamer E-Modul E_{c,eff}(t, t_0)",
+    "wirksamerEModulEc": "Wirksamer E-Modul Ec,eff",
+    "betonalterTTage3": "Betonalter t (Tage)",
+    "modulRMpa": "Modul R (MPa)",
+    "anwendungsbeispielEndkriechzahlUndEndsch": "Anwendungsbeispiel: Endkriechzahl und Endschwindmaß einer Innenwand C30/37",
+    "dinEn19921": "DIN EN 1992-1-1, 3.1.4 und Anhang B",
+    "eineStützeUnterC": "Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ) + ε_cs ≈ 0,26 · 3,37 + 0,46 ≈ 1,3 ‰ – rund das Fünffache der elastischen Stauchung.",
+    "betonWikiKriechen": "Beton.wiki: Kriechen",
+    "zementMerkblätterÜbersicht": "Zement-Merkblätter Übersicht",
+    "betonWikiSchwinden": "Beton.wiki: Schwinden",
+    "kriechenWerkstoffe": "Kriechen (Werkstoffe)",
+    "schwindenBeton": "Schwinden (Beton)",
+    "klassifizierungDesSpannstahlsNach": "Klassifizierung des Spannstahls nach seinem Spannungsverlust.",
+    "spannstahlklasseRelaxationsverhalten": "Spannstahlklasse (Relaxationsverhalten)",
+    "verhältnisDerEingetragenenVorspannung": "Verhältnis der eingetragenen Vorspannung im Spannstahl zur charakteristischen Zugfestigkeit f_pk des Spannstahls.",
+    "spannungsverlust": "Spannungsverlust (%)",
+    "zeitTStunden": "Zeit t (Stunden)",
+    "spannungsverlust2": "Spannungsverlust (%)",
+    "kriechenWerkstoffe2": "Kriechen (Werkstoffe)",
+    "schwindenBeton2": "Schwinden (Beton)",
+    "tStartLast": "t₀ (Start Last)",
+    "t1Jahr365D": "1 Jahr (365 d)",
+    "t5Jahre1825D": "5 Jahre (1825 d)",
+    "t30Jahre10950D": "30 Jahre (10950 d)",
+    "t50Jahre18250D": "50 Jahre (18250 d)",
+    "kriechenWerkstoffe3": "Kriechen (Werkstoffe)",
+    "schwindenBeton3": "Schwinden (Beton)"
+  },
+  "daten": {
+    "renderBeton.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "f_{ck} = 30,\\; f_{cm} = 38\\,\\text{N/mm}^2,\\; RH = 50\\,\\%,\\; h_0 = 200\\,\\text{mm},\\; t_0 = 28\\,\\text{d, Zement N}",
+        "erklaerung": "Innenbauteil, Belastung nach 28 Tagen."
+      },
+      {
+        "titel": "2. Feuchte und Dicke",
+        "formel": "\\varphi_{RH} = \\left[1 + \\frac{1 - 0{,}50}{0{,}1 \\cdot \\sqrt[3]{200}} \\cdot 0{,}944\\right] \\cdot 0{,}984 = 1{,}78",
+        "erklaerung": "Wegen f_cm > 35 N/mm² mit α₁ = (35/38)^0,7 und α₂ = (35/38)^0,2."
+      },
+      {
+        "titel": "3. Festigkeit und Belastungsalter",
+        "formel": "\\beta(f_{cm}) = \\frac{16{,}8}{\\sqrt{38}} = 2{,}73;\\; \\beta(t_0) = \\frac{1}{0{,}1 + 28^{0{,}2}} = 0{,}49",
+        "erklaerung": "Spätere Belastung verringert das Kriechen deutlich."
+      },
+      {
+        "titel": "4. Endkriechzahl",
+        "formel": "\\varphi_0 = 1{,}78 \\cdot 2{,}73 \\cdot 0{,}49 \\approx 2{,}37",
+        "erklaerung": "Stimmt mit dem Nomogramm in DIN EN 1992-1-1, Bild 3.1 überein (≈ 2,3)."
+      },
+      {
+        "titel": "5. Endschwindmaß",
+        "formel": "\\varepsilon_{cd,0} = 482\\,\\mu\\text{m/m};\\; k_h = 0{,}85 \\Rightarrow 410 + \\underbrace{2{,}5 \\cdot 20}_{\\varepsilon_{ca,\\infty}} = 460\\,\\mu\\text{m/m}",
+        "erklaerung": "Trocknungsschwinden überwiegt; autogenes Schwinden rund 50 µm/m."
+      }
+    ],
+    "renderBeton.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B"
+      },
+      {
+        "title": "fib Model Code for Concrete Structures 2010",
+        "url": "https://www.fib-international.org/"
+      }
+    ],
+    "renderBeton.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010",
+      "DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020"
+    ],
+    "renderBeton.formeln": [
+      {
+        "formel": "\\varphi (t, t_0) = \\varphi _0 \\cdot  \\beta _c(t, t_0)",
+        "erklaerung": "Kriechzahl\n\\varphi (t, t_0): Kriechzahl zum Zeitpunkt t bei Belastungsalter t_0 [-]\n\\beta _c(t, t_0): Beiwert für den zeitlichen Verlauf des Kriechens [-]\n\\varphi _0: Nennkriechzahl [-]",
+        "quelle": "DIN EN 1992-1-1, 3.1.4 / Anhang B"
+      },
+      {
+        "formel": "\\varepsilon _{cs} = \\varepsilon _{cd} + \\varepsilon _{ca}",
+        "erklaerung": "Gesamtschwinddehnung\n\\varepsilon _{cs}: Gesamtschwinddehnung [-]\n\\varepsilon _{cd}: Trocknungsschwinddehnung [-]\n\\varepsilon _{ca}: Autogene Schwinddehnung [-]",
+        "quelle": "DIN EN 1992-1-1, 3.1.4 / Anhang B"
+      },
+      {
+        "formel": "E_{c,eff} = \\frac{E_{cm}}{1 + \\varphi (t, t_0)}",
+        "erklaerung": "Wirksamer E-Modul unter Dauerlast (Gl. 7.20)\nE_{c,eff}: wirksamer E-Modul [MPa]\nE_{cm}: Sekantenmodul der Elastizität des Betons [MPa]\n\\varphi (t, t_0): Kriechzahl [-]",
+        "quelle": "DIN EN 1992-1-1, 3.1.4 / Anhang B"
+      }
+    ],
+    "renderStahl.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B"
+      },
+      {
+        "title": "fib Model Code for Concrete Structures 2010",
+        "url": "https://www.fib-international.org/"
+      }
+    ],
+    "renderStahl.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010",
+      "DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020"
+    ],
+    "renderStahl.formeln": [
+      {
+        "formel": "\\frac{\\Delta \\sigma _{pr}}{\\sigma _{pi}} = k_1 \\cdot  \\rho _{1000} \\cdot  e^{k_2 \\cdot  \\mu } \\cdot  \\left(\\frac{t}{1000}\\right)^{0{,}75 \\cdot  (1-\\mu )} \\cdot  10^{-5}",
+        "erklaerung": "Spannungsverlust durch Relaxation\n\\Delta\\sigma_{pr}: Spannungsverlust durch Relaxation [MPa]\n\\sigma_{pi}: Anfängliche Vorspannung [MPa]\n\\rho_{1000}: Relaxationsverlust nach 1000h in % (Klasse 1: 8,0; Klasse 2: 2,5; Klasse 3: 4,0)\n\\mu: Spannungsniveau (\\sigma_{pi} / f_{pk}) [-]\nt: Zeit [Stunden]\nk_1, k_2: Beiwerte nach Klasse (Kl. 1: 5,39 / 6,7; Kl. 2: 0,66 / 9,1; Kl. 3: 1,98 / 8,0)\nQuelle: DIN EN 1992-1-1 (EC2)",
+        "quelle": "DIN EN 1992-1-1, 3.3.2, Gl. (3.28)–(3.30)"
+      }
+    ],
+    "renderRheologieSimulator.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B"
+      },
+      {
+        "title": "fib Model Code for Concrete Structures 2010",
+        "url": "https://www.fib-international.org/"
+      }
+    ],
+    "renderRheologieSimulator.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010",
+      "DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020"
+    ],
+    "renderRheologieSimulator.formeln": [
+      {
+        "formel": "\\varepsilon_{\\text{tot}}(t) = \\frac{\\sigma_c}{E_{\\text{cm}}} \\cdot [1 + \\varphi(t, t_0)] + \\varepsilon_{\\text{cs}}(t)",
+        "erklaerung": "Gesamtdehnung eines druckbeanspruchten Bauteils aus elastischer Dehnung, Kriechen und Schwinden (vereinfachend mit E_cm statt E_c = 1,05 E_cm).",
+        "quelle": "DIN EN 1992-1-1 Abs. 3.1.4"
+      }
+    ]
+  }
+}

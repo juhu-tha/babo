@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Timer } from 'lucide-react';
 import { InlineMath } from 'react-katex';
+import inhalt from '@/content/mechanischekenngroessen/KriechModellDiagramm.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface KriechModellDiagrammProps {
   rheoModus: "relaxieren" | "kriechen";
@@ -62,11 +64,8 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
           <div className="relative bg-white rounded-2xl border border-home-grau/30 shadow-sm p-4 overflow-hidden">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-purple-900 flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
-                Spannungsverlauf σ(t) bei vorgegebener Dehnung ε(t) = ε₀ = konst.
-              </span>
-              <span className="text-[11px] font-mono text-slate-500">
-                Halbwertszeit t½ = {formatDeZahl(halfLife, 2)} s
+                <span className="w-2.5 h-2.5 rounded-full bg-purple-600"></span><MdText text={inhalt.texte.spannungsverlaufTBeiVorgegebener} /></span>
+              <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.halbwertszeitT} />{formatDeZahl(halfLife, 2)} s
               </span>
             </div>
 
@@ -156,17 +155,17 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
               <div className="flex items-center gap-1.5">
                 <span className="w-4 h-0.5 bg-blue-600 inline-block border-t-2 border-blue-600"></span>
                 <span className="font-bold text-blue-700">Maxwell-Element:</span>
-                <span className="text-slate-600 font-mono">σ(t) = σ₀ · e^(-t/τ) → 0</span>
+                <span className="text-slate-600 font-mono"><MdText text={inhalt.texte.tET0} /></span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-4 h-0.5 bg-purple-600 inline-block border-t-2 border-purple-600"></span>
-                <span className="font-bold text-purple-700">Zener (SLS):</span>
-                <span className="text-slate-600 font-mono">σ(t) → σ_∞ &gt; 0</span>
+                <span className="font-bold text-purple-700"><MdText text={inhalt.texte.zenerSls} /></span>
+                <span className="text-slate-600 font-mono"><MdText text={inhalt.texte.t0} /></span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-4 h-0.5 border-t-2 border-green-600 border-dashed inline-block"></span>
                 <span className="font-bold text-green-700">Kelvin-Voigt:</span>
-                <span className="text-slate-600 font-mono">Keine Relaxation (starr)</span>
+                <span className="text-slate-600 font-mono"><MdText text={inhalt.texte.keineRelaxationStarr} /></span>
               </div>
             </div>
           </div>
@@ -174,24 +173,24 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
           {/* Live Cockpit Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Anfangsspannung σ₀</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.anfangsspannung} /></span>
               <span className="font-mono font-bold text-base text-text-main block mt-0.5">{formatDeZahl(rheoWert0, 1)} MPa</span>
-              <span className="text-[10px] text-slate-500 font-mono">aufgeprägt bei t = 0</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.aufgeprägtBeiT0} /></span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Relaxationszeit τ</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.relaxationszeit} /></span>
               <span className="font-mono font-bold text-base text-blue-700 block mt-0.5">{formatDeZahl(rheoTauSec, 1)} s</span>
               <span className="text-[10px] text-slate-500 font-mono">t½ = {formatDeZahl(halfLife, 2)} s</span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Maxwell σ(10 s)</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.maxwell10S} /></span>
               <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{formatDeZahl(sigEndMaxwell, 2)} MPa</span>
               <span className="text-[10px] text-slate-500 font-mono">Abbau: -{formatDeZahl(relaxRateMaxwell, 0)} %</span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Zener σ(10 s)</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.zener10S} /></span>
               <span className="font-mono font-bold text-base text-purple-800 block mt-0.5">{formatDeZahl(sigEndZener, 2)} MPa</span>
-              <span className="text-[10px] text-slate-500 font-mono">Restgrenze: 40 %</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.restgrenze40} /></span>
             </div>
           </div>
 
@@ -199,30 +198,17 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
           <div className="p-4 bg-purple-50/60 rounded-xl border border-purple-200 text-xs text-text-main/80 space-y-2 leading-relaxed">
             <div className="font-bold text-purple-950 flex items-center gap-1.5">
               <Timer size={15} className="text-purple-700" />
-              <span>Warum relaxiert das Maxwell-Modell, während Kelvin-Voigt starr bleibt?</span>
+              <span><MdText text={inhalt.texte.warumRelaxiertDasMaxwell} /></span>
             </div>
-            <p>
-              Bei der <strong>Spannungsrelaxation</strong> wird dem Körper eine konstante Gesamtdehnung 
-              <InlineMath math="\varepsilon(t) = \varepsilon_0 = \text{konst.}" /> aufgeprägt (daher <InlineMath math="\dot{\varepsilon} = 0" />):
-            </p>
+            <p><MdText text={inhalt.texte.beiDerSpannungsrelaxationWird} /></p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] pt-1">
               <div className="p-2.5 bg-white rounded-lg border border-purple-150 space-y-1">
-                <span className="font-bold text-blue-700 block">Maxwell-Element (Reihe):</span>
-                <span>
-                  Feder und Dämpfer teilen sich die Gesamtdehnung (<InlineMath math="\varepsilon = \varepsilon_F + \varepsilon_D" />), 
-                  übertragen aber dieselbe Spannung. Unter konstanter Dehnung fließt der serielle Dämpfer weiter: 
-                  <InlineMath math="\dot{\varepsilon}_D = \sigma / \eta" />. Dies entlastet die Hooke-Feder (<InlineMath math="\dot{\varepsilon}_F = - \dot{\varepsilon}_D" />). 
-                  Die Spannung baut sich nach <InlineMath math="\sigma(t) = \sigma_0 \cdot \exp(-t/\tau)" /> vollständig ab!
-                </span>
+                <span className="font-bold text-blue-700 block"><MdText text={inhalt.texte.maxwellElementReihe} /></span>
+                <span><MdText text={inhalt.texte.federUndDämpferTeilen} /></span>
               </div>
               <div className="p-2.5 bg-white rounded-lg border border-purple-150 space-y-1">
-                <span className="font-bold text-green-700 block">Kelvin-Voigt-Element (Parallel):</span>
-                <span>
-                  Feder und Dämpfer erfahren zwingend dieselbe Dehnung (<InlineMath math="\varepsilon_F = \varepsilon_D = \varepsilon_0" />). 
-                  Bei konstanter Dehnung ist die Dehngeschwindigkeit im Dämpfer <InlineMath math="\dot{\varepsilon}_D = 0" />. 
-                  Damit ist der Dämpfer vollkommen kraftlos (<InlineMath math="\sigma_D = \eta \cdot 0 = 0" />). 
-                  Die Hooke-Feder hält die volle Anfangsspannung unendlich aufrecht – <strong>Kelvin-Voigt kann nicht relaxieren!</strong>
-                </span>
+                <span className="font-bold text-green-700 block"><MdText text={inhalt.texte.kelvinVoigtElementParallel} /></span>
+                <span><MdText text={inhalt.texte.federUndDämpferErfahren} /></span>
               </div>
             </div>
           </div>
@@ -264,11 +250,8 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
           <div className="relative bg-white rounded-2xl border border-home-grau/30 shadow-sm p-4 overflow-hidden">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-shiraz flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
-                Dehnungsverlauf ε(t) bei konstanter Lastspannung σ(t) = σ₀ = konst.
-              </span>
-              <span className="text-[11px] font-mono text-slate-500">
-                Retardationszeit τ = {formatDeZahl(rheoTauSec, 1)} s
+                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.dehnungsverlaufTBeiKonstanter} /></span>
+              <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.retardationszeit} />{formatDeZahl(rheoTauSec, 1)} s
               </span>
             </div>
 
@@ -324,13 +307,13 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
             <div className="flex flex-wrap items-center justify-center gap-4 mt-2 pt-2 border-t border-home-grau/20 text-[11px]">
               <div className="flex items-center gap-1.5">
                 <span className="w-4 h-0.5 bg-green-600 inline-block border-t-2 border-green-600"></span>
-                <span className="font-bold text-green-700">Kelvin-Voigt (Kriechen):</span>
-                <span className="text-slate-600 font-mono">Asymptotisch begrenzt</span>
+                <span className="font-bold text-green-700"><MdText text={inhalt.texte.kelvinVoigtKriechen} /></span>
+                <span className="text-slate-600 font-mono"><MdText text={inhalt.texte.asymptotischBegrenzt} /></span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-4 h-0.5 border-t-2 border-blue-600 border-dashed inline-block"></span>
                 <span className="font-bold text-blue-700">Maxwell-Fluid:</span>
-                <span className="text-slate-600 font-mono">Unbegrenztes Fließen</span>
+                <span className="text-slate-600 font-mono"><MdText text={inhalt.texte.unbegrenztesFließen} /></span>
               </div>
             </div>
           </div>
@@ -338,24 +321,24 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
           {/* Live Cockpit Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Elast. Anfangsdehnung</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.elastAnfangsdehnung} /></span>
               <span className="font-mono font-bold text-base text-text-main block mt-0.5">{formatDeZahl(epsEl, 2)} ‰</span>
-              <span className="text-[10px] text-slate-500 font-mono">ε_el = σ₀ / E</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.elE} /></span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Retardationszeit τ</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.retardationszeit2} /></span>
               <span className="font-mono font-bold text-base text-green-700 block mt-0.5">{formatDeZahl(rheoTauSec, 1)} s</span>
-              <span className="text-[10px] text-slate-500 font-mono">63,2 % Erreichen</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.t632Erreichen} /></span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Kelvin-Voigt ε(10 s)</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.kelvinVoigt10S} /></span>
               <span className="font-mono font-bold text-base text-green-800 block mt-0.5">{formatDeZahl(epsEndKelvin, 2)} ‰</span>
-              <span className="text-[10px] text-slate-500 font-mono">Kriechzahl φ ≈ 1,5</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.kriechzahl15} /></span>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
-              <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Maxwell ε(10 s)</span>
+              <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.maxwell10S2} /></span>
               <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{formatDeZahl(epsEndMaxwell, 2)} ‰</span>
-              <span className="text-[10px] text-slate-500 font-mono">lineares Fließen</span>
+              <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.linearesFließen} /></span>
             </div>
           </div>
         </div>

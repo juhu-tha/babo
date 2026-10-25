@@ -1,0 +1,378 @@
+{
+  "texte": {
+    "typischeBauschädenSchadensbilder": " Typische Bauschäden & Schadensbilder",
+    "detailliertesFachwissenZuPhysikalisch": "Detailliertes Fachwissen zu physikalisch-chemischen Mechanismen, Diagnostik und Schadensgruppen am Bau.",
+    "feuchtigkeitseintrittMechanismen": " Feuchtigkeitseintritt & Mechanismen",
+    "t1AufsteigendeFeuchtigkeitKapillartranspo": "1. Aufsteigende Feuchtigkeit & Kapillartransport:",
+    "mangelhafteOderFehlendeHorizontale": "Mangelhafte oder fehlende horizontale Querschnittsabdichtung (DIN 18533). Durch das Kapillarporensystem saugt poröses Mauerwerk Grund- und Schichtenwasser entgegen der Schwerkraft nach oben:",
+    "kapillareSteighöheNachJurin": "Kapillare Steighöhe nach Jurin:",
+    "mitOberflächenspannungSigmaKontaktwinkel": "Mit Oberflächenspannung $\\sigma$, Kontaktwinkel $\\theta$, Dichte $\\rho$, Erdbeschleunigung $g$ und Kapillarradius $r$. Je feiner die Poren (z.B. Ziegel- und Mörtelporen), desto höher die theoretische kapillare Steighöhe (mehrere Meter); in der Praxis begrenzt die Verdunstung sie meist auf 0,5–1,5 m über Gelände.",
+    "t2QuerdurchfeuchtungHydrostatischerDruck": "2. Querdurchfeuchtung & hydrostatischer Druck:",
+    "versagenDerVertikalenBauwerksabdichtung": "Versagen der vertikalen Bauwerksabdichtung (DIN 18533: W2.1-E mäßige Einwirkung ≤ 3 m Eintauchtiefe, W2.2-E hohe Einwirkung > 3 m; W1-E = Bodenfeuchte und nicht drückendes Wasser). Bei anstehendem drückendem Wasser wirkt hydrostatischer Druck $p = \\rho \\cdot g \\cdot h$, der ungesicherte Fugen, Kiesnester und Risse penetriert.",
+    "t3HygroskopischeFeuchteSalzsprengung": "3. Hygroskopische Feuchte & Salzsprengung:",
+    "mitDemWasserTransportierte": "Mit dem Wasser transportierte bauschädliche Salze (Chloride, Nitrate, Sulfate) reichern sich an der Verdunstungszone an. Bei Kristallisation (z.B. Mirabilit $\\text{Na}_2\\text{SO}_4 \\cdot 10\\,\\text{H}_2\\text{O}$) entsteht ein Kristallisationsdruck $\\sigma_k > 10\\,\\text{MPa}$, der Putz und Ziegel sprengt.",
+    "tauwasserKältebrückenSchimmel": " Tauwasser, Kältebrücken & Schimmel",
+    "temperaturfaktorFRsiDin": "Temperaturfaktor $f_{Rsi}$ (DIN 4108-2):",
+    "geometrischeOderKonstruktiveWärmebrücken": "Geometrische oder konstruktive Wärmebrücken senken die raumseitige Wandoberflächentemperatur $\\theta_{si}$ ab. Der Mindestwärmeschutz verlangt zwingend:",
+    "beiNormrandbedingungenThetaI": "Bei Normrandbedingungen ($\\theta_i = 20\\,^{\\circ}\\text{C}$, $\\theta_e = -5\\,^{\\circ}\\text{C}$) muss $\\theta_{si} \\ge 12{,}6\\,^{\\circ}\\text{C}$ betragen, um das 80%-Schimmelkriterium zu verhindern.",
+    "dampfdiffusionNachGlaserDin": "Dampfdiffusion nach Glaser (DIN 4108-3):",
+    "wasserdampfteildruckPVVs": "Wasserdampfteildruck $p_v$ vs. Sättigungsdampfdruck $p_{sat}$. Trifft der Teildruck auf die Sättigungslinie im Bauteilinneren, fällt schädliches Tauwasser aus ($m_w$). Nach DIN 4108-3 darf die Tauwassermasse maximal $1{,}0\\,\\text{kg/m}^2$ betragen und muss in der sommerlichen Verdunstungsperiode vollständig austrocknen.",
+    "schimmelpilzkriteriumSchimmelpilzmyzelie": "⚠️ **Schimmelpilzkriterium:** Schimmelpilzmyzelien keimen bereits ab einer relativen Grenzflächenfeuchte von $\\varphi_{si} \\ge 80\\,\\%$ (Wasseraktivität $a_w \\ge 0{,}80$) – lange vor sichtbarem Kondensatausfall!",
+    "messtechnikSensorikSchadensdiagnostikIn": " Messtechnik, Sensorik & Schadensdiagnostik in der Praxis",
+    "darrMethodeGravimetrieNach": "Darr-Methode (Gravimetrie nach DIN EN ISO 12570)",
+    "zerstörendesJustitiablesReferenzverfahre": "Zerstörendes, justitiables Referenzverfahren: Materialprobe entnehmen, gravimetrisch wägen ($m_{\\text{feucht}}$), bei 105 °C dörren bis zur Gewichtskonstanz ($m_{\\text{trocken}}$). Feuchtegehalt $u = (m_f - m_t)/m_t \\cdot 100\\,\\%$.",
+    "cmVerfahrenCalciumcarbidMethode": "CM-Verfahren (Calciumcarbid-Methode)",
+    "chemischeUmsetzungVonPorenwasser": "Chemische Umsetzung von Porenwasser mit Calciumcarbid: $\\text{CaC}_2 + 2\\,\\text{H}_2\\text{O} \\rightarrow \\text{Ca(OH)}_2 + \\text{C}_2\\text{H}_2 \\uparrow$. Der Manometerdruck des Acetylengases bestimmt die Verlegereife von Estrichen (z.B. Zementestrich ≤ 2,0 CM-%).",
+    "dielektrischeMikrowellenSensorik": "Dielektrische / Mikrowellen-Sensorik",
+    "zerstörungsfreieHochfrequenzMessungDer": "Zerstörungsfreie Hochfrequenz-Messung der Permittivität ($\\varepsilon_r$ von Wasser ≈ 80 vs. Baustoffmatrix ≈ 3–5). Ermöglicht flächige Feuchtekartierungen in Schichten bis 30 cm Tiefe.",
+    "ursachenVonRisserscheinungenBruchmechani": " Ursachen von Risserscheinungen & Bruchmechanik",
+    "baustoffeVerändernIhrVolumen": "Baustoffe verändern ihr Volumen durch Hydratationswärme, Feuchtigkeitsabgabe, Temperatur und Lastspannungen. Wird diese freie Verformung behindert (Zwangsspannungen), entstehen Zugspannungen $\\sigma_{ct}$. Überschreiten diese die Zugfestigkeit $f_{ct}$, reißt das Bauteil.",
+    "t1SchwindenDinEn": "1. Schwinden (DIN EN 1992-1-1)",
+    "gesamtschwinddehnungVarepsilonCsVarepsil": "Gesamtschwinddehnung $\\varepsilon_{cs} = \\varepsilon_{cd} + \\varepsilon_{ca}$: Austrocknungsschwinden ($\\varepsilon_{cd}$) und autogenes Schwinden ($\\varepsilon_{ca}$) im jungen Beton. Zwangskraft $N_{zw} = \\varepsilon_{cs} \\cdot E_c \\cdot A_c$ erzeugt Trennrisse.",
+    "t2QuellenTreibreaktionen": "2. Quellen & Treibreaktionen",
+    "volumenzunahmeDurchChemischeKristallisat": "Volumenzunahme durch chemische Kristallisation (z.B. Ettringit- oder Thaumasittreiben, Freikalklöschen). Sprengdrücke überwinden die Matrixfestigkeit und führen zu netzartiger Zerrüttung.",
+    "t3Baugrundsetzung": "3. Baugrundsetzung",
+    "differenzielleSetzungenDeltaS": "Differenzielle Setzungen $\\Delta s$ erzeugen Schub- und Biegemomente. Typisches Schadensmerkmal: 45°-Schrägrisse im Mauerwerk an Fensteröffnungen und Pfeilern.",
+    "t4Temperaturzwang": "4. Temperaturzwang",
+    "dehnungDeltaLAlpha": "Dehnung $\\Delta L = \\alpha_T \\cdot L \\cdot \\Delta T$. Bei behinderter Dehnung entstehen thermische Zwangspannungen $\\sigma = E \\cdot \\alpha_T \\cdot \\Delta T$. Typisch bei Massenbeton und langen Brüstungen.",
+    "bruchmechanischeRissfortschrittsbedingun": "🔬 Bruchmechanische Rissfortschrittsbedingung (Griffith / Irwin)",
+    "beiVorhandenenMikrorissenOder": "Bei vorhandenen Mikrorissen oder Kerben (wie beim Einsturz der Silver Bridge) entscheidet die Spannungsintensität $K_I$ an der Rissspitze über Stabilität oder katastrophalen Sprödbruch:",
+    "nennspannungImQuerschnitt": " Nennspannung im Querschnitt.",
+    "tiefeDesAnrissesKerbe": " Tiefe des Anrisses / Kerbe.",
+    "bruchzähigkeitKIc": "Bruchzähigkeit $K_{Ic}$:",
+    "werkstoffkennwertTemperaturabhängig": " Werkstoffkennwert (Temperaturabhängig!).",
+    "einteilungNachRissbreitePraxisübliche": "Einteilung nach Rissbreite (praxisübliche Orientierungswerte, vgl. DBV-Merkblatt Begrenzung der Rissbildung / TR Instandhaltung des DIBt)",
+    "meistUnkritischKosmetischWasserunwirksam": "Meist unkritisch / kosmetisch. Wasserunwirksam im Beton.",
+    "t0103": ">= 0,1 - 0,3 mm",
+    "imAußenbereichWegenFrostgefahr": "Im Außenbereich wegen Frostgefahr und Bewehrungskorrosion zu beobachten.",
+    "statischKonstruktiveUrsachenprüfungZwing": "Statisch-konstruktive Ursachenprüfung zwingend erforderlich. Abdichtung gefährdet.",
+    "gefügerisseKlaffendeRisse": "Gefügerisse / Klaffende Risse",
+    "ursacheUndTragwirkungUmgehend": "Ursache und Tragwirkung umgehend durch Fachplaner klären (keine automatische Gefahr im Verzug).",
+    "überwachungSanierungsbündnisse": "Überwachung & Sanierungsbündnisse",
+    "rissgipsmarkeKlassikerÜberDem": "**Rissgipsmarke (Klassiker):** Über dem Riss wird eine dünne Gipsplakette aufgetragen. Zerreißt der Gips, ist der Riss dynamisch aktiv (\"lebendig\"). Bleibt er ganz, ist die Bewegung abgeklungen (\"tot\").",
+    "rissbreitenlinealTransparenteKarteMit": "**Rissbreitenlineal:** Transparente Karte mit Strichstärken zum präzisen Abgleich der Oberflächenbreite.",
+    "sanierungsmethodikBeiRuhendemRiss": "**💡 Sanierungsmethodik bei ruhendem Riss:** Kraftschlüssiges Verbinden ruhender, trockener oder feuchter Risse mit EP (Tränkung/Injektion); begrenzt dehnfähiges Verbinden oder Abdichten wasserführender Risse mit PUR bzw. Acrylatgel; Zementleim/-suspension (ZL/ZS) bei breiteren Rissen (TR Instandhaltung / DIN EN 1504-5).",
+    "bauphysikalischeErtüchtigungRissverpress": "🛠️ Bauphysikalische Ertüchtigung: Rissverpressung & Carbonlamellen (CFK)",
+    "t1RissinjektionRissverpressungDin": "💧 1. Rissinjektion & Rissverpressung (DIN EN 1504-5)",
+    "dieRissinjektionHatZum": "Die Rissinjektion hat zum Ziel, die Barrierewirkung des Betons gegenüber Schadstoffen wiederherzustellen (Füllen/Abdichten) oder das Bauteil wieder kraftschlüssig zu verbinden (Zusammenhalt).",
+    "durchflussImRissLaminare": "Durchfluss im Riss (laminare Spaltströmung):",
+    "derVolumenstromQDes": "Der Volumenstrom $Q$ des Injektionsstoffs im Risskanal hängt stark von der Rissbreite $w$, der Risslänge $b$, der dynamischen Viskosität $\\eta$, dem Druckunterschied $\\Delta p$ und dem Fließweg $L$ ab:",
+    "dasBedeutetBeiEiner": "Das bedeutet: Bei einer Halbierung der Rissbreite $w$ sinkt der Zufluss bei gleichem Druck auf $1/8$. Feine Risse benötigen daher extrem niedrigviskose Epoxidharze.",
+    "füllstoffKürzel": "Füllstoff (Kürzel)",
+    "zweckAnwendung": "Zweck / Anwendung",
+    "epoxidharzEp": "Epoxidharz (EP)",
+    "sehrHoheZugDruckfestigkeit": "Sehr hohe Zug-/Druckfestigkeit, starr",
+    "kraftschlüssigesVerbindenRuhenderTrocken": "Kraftschlüssiges Verbinden ruhender, trockener oder feuchter Risse.",
+    "polyurethanPur": "Polyurethan (PUR)",
+    "elastischSchäumtBeiWasserkontakt": "Elastisch, schäumt bei Wasserkontakt",
+    "begrenztDehnfähigesVerbindenBzw": "Begrenzt dehnfähiges Verbinden bzw. Abdichten wasserführender Risse.",
+    "zementsuspensZs": "Zementsuspens. (ZS)",
+    "mineralischStarrFüllstark": "Mineralisch, starr, füllstark",
+    "füllenBreiterRisse0": "Füllen breiter Risse (> 0,8 mm) & Hohlräume.",
+    "acrylatgelGel": "Acrylatgel (GEL)",
+    "extremDünnflüssigQuellfähig": "Extrem dünnflüssig, quellfähig",
+    "schleierinjektionHintergelfüllung": "Schleierinjektion & Hintergelfüllung.",
+    "verfahrensschritteDerRissinjektionHochdr": "⚙️ Verfahrensschritte der Rissinjektion (Hochdruck)",
+    "reinigungVorbereitungRissflankenMechanis": "**Reinigung & Vorbereitung:** Rissflanken mechanisch säubern, Rissoberfläche staubfrei abblasen.",
+    "packerbohrungBohrenVonBohrkanälen": "**Packerbohrung:** Bohren von Bohrkanälen versetzt im 45°-Winkel zum Riss (Abstand ca. halbe Bauteildicke), so dass der Riss mittig geschnitten wird.",
+    "setzenDerPackerEinschrauben": "**Setzen der Packer:** Einschrauben von Metall-Hochdruckpackern (Injektionsventilen).",
+    "verdämmungRissspaltAnDer": "**Verdämmung:** Rissspalt an der Oberfläche mit zementärem oder Harz-Spachtel versiegeln, damit das Injektionsgut nicht unkontrolliert austritt.",
+    "injektionEinspritzenVonUnten": "**Injektion:** Einspritzen von unten nach oben (bzw. von einer Seite zur anderen), bis der Füllstoff aus dem nächsten, noch offenen Packer quillt. Nachdruck-Phase zur Sättigung halten.",
+    "nachbereitungNachAushärtungPacker": "**Nachbereitung:** Nach Aushärtung Packer abschlagen, Bohrlöcher mineralisch reprofilieren.",
+    "t2TragwerksverstärkungMitCfk": "📐 2. Tragwerksverstärkung mit CFK-Carbonlamellen",
+    "wennDieBiegeOder": "Wenn die Biege- oder Querkraftbeanspruchung eines Bauteils nachträglich steigt (z. B. durch Umnutzung, höhere Verkehrslasten oder korrosionsbedingter Querschnittsschwächung), können extrem zugfeste Kohlenstofffaser-Laminate (Carbonlamellen) aufgeklebt werden.",
+    "verbundnachweisAmLamellenendeEndveranker": "Verbundnachweis am Lamellenende (Endverankerung):",
+    "umEinSchlagartigesAbplatzen": "Um ein schlagartiges Abplatzen der Lamellenenden vor dem Erreichen der CFK-Zugfestigkeit zu verhindern, ist die Verbundkraft am Lamellenende zu begrenzen. Die maßgebenden Gleichungen (Endverankerung, Zwischenrisselemente) enthält die DAfStb-Richtlinie „Verstärken von Betonbauteilen mit geklebter Bewehrung“ (2012); vereinfachte Grundform:",
+    "hierbeiIstKB": "Hierbei ist $k_b$ ein Beiwert zur Lamellenbreite, $f_{ck}$ die Zylinderdruckfestigkeit des Betons und $f_{ctm}$ die mittlere Betonzugfestigkeit, welche die eigentliche Schwachstelle darstellt.",
+    "sehrGuteMaterialeigenschaftenVorteile": "Sehr gute Materialeigenschaften (Vorteile):",
+    "t165000210000": "165.000 - 210.000 N/mm²",
+    "t25003000": "> 2.500 - 3.000 N/mm²",
+    "extremGering16": "Extrem gering (~1,6 g/cm³)",
+    "t100Korrosionsbeständig": "100% korrosionsbeständig",
+    "arbeitsverfahrenZurCfkLamellenverstärkun": "⚙️ Arbeitsverfahren zur CFK-Lamellenverstärkung",
+    "untergrundprüfungZwingendPrüfungDer": "**Untergrundprüfung (Zwingend):** Prüfung der Beton-Abreißfestigkeit (mind. $1{,}5 \\text{ N/mm}^2$). Zu schwacher Beton reißt flächig ab!",
+    "vorbereitungKugelstrahlenSchleifenDie": "**Vorbereitung (Kugelstrahlen/Schleifen):** Die Betonoberfläche wird gefräst, kugelgestrahlt oder geschliffen, um die Zementhaut zu entfernen und Gesteinskörnungen freizulegen.",
+    "applikationEpoxidkleberAuftragEines": "**Applikation Epoxidkleber:** Auftrag eines thixotropen (pastösen) Epoxidharzklebstoffes auf den Beton und auf die Carbonlamelle (dachprofilartig aufgespachtelt, um Lufteinschlüsse zu vermeiden).",
+    "andrückenDerLamelleLamelle": "**Andrücken der Lamelle:** Lamelle von Hand positionieren und mit einer Gummirolle gleichmäßig andrücken, bis der überschüssige Kleber an den Seiten gleichmäßig herausquillt.",
+    "sicherungBrandschutzBeiBrandbeanspruchun": "**Sicherung & Brandschutz:** Bei Brandbeanspruchung Schutzverkleidungen (z.B. Brandschutzplatten) anbringen, da der Epoxidharzkleber ab ca. 55-80°C seine Festigkeit verliert (Glasübergangstemperatur).",
+    "ingenieurtechnischerVergleichRissinjekti": "💡 Ingenieurtechnischer Vergleich: Rissinjektion vs. Klebearmierung",
+    "währendDieRissverpressungDie": "Während die **Rissverpressung** die innere Integrität des Querschnitts und den Korrosionsschutz wiederherstellt, fungiert die **Carbonfaserverstärkung** als äußere mechanische Zuggurt-Ertüchtigung. Beide Verfahren ergänzen sich hervorragend bei der Althaus- und Infrastruktursanierung (z.B. Brückenpfeiler, Hallenbinder).",
+    "karbonatisierungPassivierungsverlust": "🛡️ Karbonatisierung & Passivierungsverlust",
+    "stahlImUnbeschädigtenBeton": "Stahl im unbeschädigten Beton ist durch das hochalkalische Porenwasser ($\\text{pH} \\ge 12{,}6$ durch gelöstes Calciumhydroxid $\\text{Ca(OH)}_2$) thermodynamisch passiviert. Es bildet sich eine nur wenige Nanometer dicke Passivschicht aus Eisenoxiden bzw. -hydroxiden (u. a. Fe₃O₄ und $\\gamma\\text{-Fe}_2\\text{O}_3$).",
+    "karbonatisierungsfrontWurzelTGesetz": "**Karbonatisierungsfront & Wurzel-t-Gesetz:** Diffundierendes atmosphärisches $\\text{CO}_2$ neutralisiert das Alkali:",
+    "fortschrittNachDemT": "Fortschritt nach dem √t-Gesetz (aus dem Fick’schen Gesetz mit wandernder Reaktionsfront abgeleitet):",
+    "dabeiIstKText": "Dabei ist $k_{\\text{carb}}$ der Karbonatisierungsbeiwert (abhängig von w/z-Wert, Porosität und Umgebungsfeuchte 50–70% r.F.). Sobald $x_c \\ge c_{\\text{nom}}$ (Betondeckung), beginnt Muldenkorrosion.",
+    "rostexpansionDieEisenoxidhydrateText": "**Rostexpansion:** Die Eisenoxidhydrate ($\\text{Fe(OH)}_3, \\text{FeOOH}$) besitzen je nach Oxid/Hydroxid das 2- bis 6-fache Volumen des Ausgangsstahls. Der entstehende Sprengdruck übersteigt die Betonzugfestigkeit um ein Vielfaches und sprengt die Betondeckung ab.",
+    "chlorideintragLochfraßkorrosionPitting": "🧪 Chlorideintrag & Lochfraßkorrosion (Pitting)",
+    "ausgelöstDurchDeIcing": "Ausgelöst durch de-icing Tausalze ($\\text{NaCl, CaCl}_2$) an Brückenkappen, Parkdecks oder mariner Gischt (Expositionsklassen XD1–XD3 / XS1–XS3).",
+    "katalytischeAutokatalyseFreieChlorid": "**Katalytische Autokatalyse:** Freie Chlorid-Ionen ($\\text{Cl}^-$) wandern durch das Porenwasser und durchstoßen die Passivschicht lokal selbst bei $\\text{pH} > 12{,}5$:",
+    "wederEc2NochDin": "Weder EC2 noch DIN EN 206 nennen einen „kritischen Chloridgehalt“; DIN EN 206 / DIN 1045-2 begrenzen nur den Chloridgehalt bei der Herstellung (Stahlbeton Cl 0,40, Spannbeton Cl 0,20 M.-% bez. Zement). Im Bestand bewertet ein sachkundiger Planer im Einzelfall (Feuchte, Karbonatisierung, Potentialfeld). Für Spannstahl gibt es keinen gesicherten Grenzwert – Chloride an Spanngliedern sind immer kritisch.",
+    "korrosionsauslösenderChloridgehaltAnhalt": "**Korrosionsauslösender Chloridgehalt (Anhaltswert, kein Normwert):**",
+    "wasserstoffinduzierteSpannungsrisskorros": "⚡ Wasserstoffinduzierte Spannungsrisskorrosion (SpRK)",
+    "gefürchtetsterSchadensmechanismusImSpann": "Gefürchtetster Schadensmechanismus im Spannbetonbau (wasserstoffinduziert, Chloride sind keine Voraussetzung; maßgebliche Ursache beim Teileinsturz der **Carolabrücke Dresden** 2024. Der Teileinsturz der Kongresshalle Berlin 1980 war dagegen Korrosion bei mangelhafter Verpressung, keine SpRK).",
+    "voraussetzungenSchadensTrias": "**Voraussetzungen (Schadens-Trias):**",
+    "werkstoffHöchstzugfesterSpannungsempfind": "**Werkstoff:** Höchstzugfester, spannungsempfindlicher Stahl (insb. vergütete Stähle wie Hennigsdorfer Spannstahl St 140/160 (DDR), Neptun N 40 und Sigma oval; gefährdete Stähle und Herstellzeiträume nach der Handlungsanweisung SpRK, BMVBS 2011).",
+    "mechanischeSpannungHoheStatische": "**Mechanische Spannung:** Hohe statische Vorspannung ($\\sigma \\ge 0{,}6 \\cdot f_{pk}$).",
+    "elektrochemischesMilieuUnvollständigeHül": "**Elektrochemisches Milieu:** Unvollständige Hüllrohrverpressung, Feuchtezutritt, Chloride und kathodische Wasserstoffentwicklung.",
+    "atomarerWasserstoffSammeltSich": "Atomarer Wasserstoff sammelt sich an Korngrenzen und Rissspitzen im Gitter, blockiert Versetzungen und senkt die Kohäsionsenergie drastisch ab → **Makroskopischer Sprödbruch ohne jede Vorwarnung!**",
+    "alkaliKieselsäureReaktionAkr": " Alkali-Kieselsäure-Reaktion (AKR) - \"Betonkrebs\"",
+    "chemischerZerstörungsmechanismusInMassiv": "Chemischer Zerstörungsmechanismus in massiven, feuchtigkeitsbeanspruchten Außenbauteilen (Autobahndecken, Betonschwellen wie beim **Eisenbahnunfall von Burgrain**).",
+    "reaktionsablaufAlkalihydroxideTextNa": "**Reaktionsablauf:** Alkalihydroxide ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zementstein lösen amorphe Kieselsäure ($\\text{SiO}_2$) aus reaktiven Gesteinskörnungen (Flint, Opalsandstein):",
+    "dasEntstehendeAlkaliSilikat": "Das entstehende Alkali-Silikat-Gel bindet hygroskopisch Wasser und expandiert massiv. Der innere Quelldruck übersteigt die Betonzugfestigkeit ($p_{\\text{quell}} > f_{ctm} \\approx 3\\text{--}5\\,\\text{MPa}$), erzeugt netzartige Landkartenrisse und zerstört die Tragsicherheit.",
+    "präventionDafstbAlkaliRichtlinie": "**Prävention (DAfStb Alkali-Richtlinie):** Verwendung von NA-Zementen (Low-Alkali, $\\text{Na}_2\\text{O}_{\\text{äq}} \\le 0{,}60\\,\\%$) und Eignungsprüfung der Gesteinskörnung (Klassen E I bis E III-S).",
+    "definitionChemischeOderElektrochemische": "**Definition:** Chemische oder elektrochemische Triebreaktionen und Korrosionserscheinungen, die entstehen, wenn verschiedene eigentlich gängige Baustoffe unüberlegt kombiniert werden und sich gegenseitig schädigen oder zerstören.",
+    "gipshaltigeStoffeInZement": "💥 Gipshaltige Stoffe in Zement/Beton (Sulfattreiben / Thaumasit)",
+    "wirdGipsCalciumsulfatDihydrat": "Wird Gips (Calciumsulfat-Dihydrat $\\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O}$) feuchtem Zementmörtel, Beton oder mineralischem Putz ausgesetzt, läuft die gefürchtete mineralische Triebreaktion ab:",
+    "sekundäreEttringitbildungVolumenzunahme1": "Sekundäre Ettringitbildung (Volumenzunahme ≈ +130 bis +168 %):",
+    "nadelförmigeEttringitkristalleTextAft": "Nadelförmige Ettringitkristalle ($\\text{AFt-Phase}$) wachsen im erstarrten Zementsteingefüge und bauen Expansionsdrücke von > 15 MPa auf. Bei tiefen Temperaturen (< 10 °C) und Karbonatzutritt droht zudem **Thaumasittreiben**, das die C-S-H-Phasen komplett zerstört.",
+    "praxisRegelPutzDin": "📍 **Praxis-Regel (Putz: DIN EN 13914-1 / DIN 18550-1; Sulfatangriff auf Beton: DIN EN 206 / DIN 1045-2, XA):** Verwenden Sie niemals Elektrikergips als Schnellfixierer für Installationen im Außenbereich oder unter Zement-/Kalkzementputzen. Gips und Zement sind in Feuchtbereichen strikt unverträglich!",
+    "galvanischeKontaktkorrosionDinEn": "🧫 Galvanische Kontaktkorrosion (DIN EN ISO 8044) & Fließregel",
+    "kommenZweiMetalleMit": "Kommen zwei Metalle mit unterschiedlichem Normalpotential ($E^0$) in Berührung und werden durch einen Feuchtefilm (Elektrolyt) verbunden, entsteht ein kurzgeschlossenes Lokalelement:",
+    "spannungsreiheImBauwesenStandardpotentia": "Spannungsreihe im Bauwesen (Standardpotentiale gegen SHE):",
+    "baustahlFeE0": "Baustahl (Fe): $E^0 = -0{,}44\\,\\text{V}$",
+    "zellspannungDeltaEE": "Zellspannung $\\Delta E = E_{\\text{Kathode}} - E_{\\text{Anode}} > 0{,}2\\,\\text{V}$ gilt als grobe Orientierung für eine relevante Kontaktkorrosion des unedleren Partners ($\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2e^-$). Maßgeblich sind die praktische Spannungsreihe im jeweiligen Elektrolyten und das Flächenverhältnis Kathode/Anode (kleine Anode an großer Kathode ist besonders ungünstig).",
+    "dieFließregelAmBau": "**Die Fließregel am Bau (Fachregeln des Klempnerhandwerks, ZVSHK; DIN 18339)::** Regenwasser darf niemals von edleren Metallen (z.B. Kupfer-Dachrinnen) auf nachfolgende unedlere Bauteile (z.B. Titanzink-Verblechungen, verzinkte Geländer) ablaufen. Gelöste $\\text{Cu}^{2+}$-Ionen zementieren auf der Zinkoberfläche und fressen binnen Monaten Löcher ins Blech.",
+    "praxisRegelMetalleElektrisch": "📍 **Praxis-Regel:** Metalle elektrisch isolieren (EPDM-Zulagen, Kunststoffunterlegscheiben) oder Befestigungen durchgängig in Edelstahl A4 (V4A) ausführen.",
+    "holzinhaltsstoffeGerbsäurenTannineIm": "🪵 Holzinhaltsstoffe (Gerbsäuren / Tannine) im Holzbau",
+    "eichenEdelkastanienRobinienUnd": "Eichen-, Edelkastanien-, Robinien- und Lärchenhölzer weisen hohe Gehalte an hydrolysierbaren Gallotanninen und Ellagitanninen auf ($\\text{pH} \\approx 3{,}0\\text{--}4{,}5$).",
+    "chemischeReaktionGelösteEisenionen": "**Chemische Reaktion:** Gelöste Eisenionen ($\\text{Fe}^{2+}/\\text{Fe}^{3+}$) reagieren mit Phenolgruppen der Gerbstoffe zu tiefschwarzen Eisen(III)-Tannat-Komplexen (bekannt als Eisengallustinte).",
+    "konstruktiveSchädenNebenBleibenden": "**Konstruktive Schäden:** Neben bleibenden Schwarzverfärbungen der Fassade wird die Zinkschicht von Standard-Verzinkungen durch die Säure im Feuchtemilieu rasch abgebeizt, gefolgt von schwerem Querschnittsverlust der Nägel und Holzschrauben.",
+    "praxisRegelDinEn": "📍 **Praxis-Regel (DIN EN 1995-1-1 / Eurocode 5):** Für gerbsäurereiche Hölzer im Außenbereich (Nutzungsklasse 2 und 3) werden bei Feuchte Verbindungsmittel aus nichtrostendem Stahl (z. B. 1.4401/1.4571) empfohlen; die Korrosionsschutzanforderungen ergeben sich aus DIN EN 1995-1-1, Tab. 4.1, und den Zulassungen der Verbindungsmittel.",
+    "weichmacherMigrationKunststoffVs": "🧪 Weichmacher-Migration (Kunststoff vs. Bitumen / EPS)",
+    "phänomenDesStofftransportsNiedermolekula": "Phänomen des Stofftransports niedermolekularer Ester-Weichmacher (z.B. Phthalate wie DEHP/DINP) aus Weich-PVC in lipophile, unpolare Kontaktschichten wie Bitumenbahnen oder Polystyrol (EPS/XPS):",
+    "versprödungDerDichtungsbahnDurch": "**Versprödung der Dichtungsbahn:** Durch die Diffusion verarmt die PVC-P-Dachbahn an Weichmacher. Die Glasübergangstemperatur steigt, die Bahn schrumpft unter hoher Zugspannung und reißt bei Frostbelastung spröde auf.",
+    "lösungseffektImGegenzugQuillt": "**Lösungseffekt:** Im Gegenzug quillt und erweicht das Bitumen oder die Polystyroldämmung schmilzt an den Kontaktstellen ein.",
+    "praxisRegelDin18531": "📍 **Praxis-Regel (DIN 18531 / Flachdachrichtlinie):** Direkten Kontakt strikt vermeiden! Trennlagen aus Glasvlies ($\\ge 120\\,\\text{g/m}^2$) oder synthetischem Schutzvlies ($\\ge 300\\,\\text{g/m}^2$) als Diffusionsbarriere zwischenlegen.",
+    "ingenieurbauBrückenTunnelDin": "🌉 Ingenieurbau: Brücken & Tunnel (DIN EN 1992-2 / ZTV-ING)",
+    "t1ChloridInduzierteLochfraßkorrosion": "1. Chlorid-induzierte Lochfraßkorrosion & Schollenabplatzung (XD3 / XF4):",
+    "infolgeUndichterFahrbahnübergängeOder": "Infolge undichter Fahrbahnübergänge oder verstopfter Brückenabläufe dringt tausalzreiches Schmelzwasser direkt zu Koppelfugen, Brückenlagern und Spanngliedern vor. Ohne Deckschichtschutz bilden sich Makroelemente mit Korrosionsstromdichten von $i_{\\text{corr}} > 10\\,\\mu\\text{A/cm}^2$ (über 0,1 mm Querschnittsverlust pro Jahr!).",
+    "t2KappenAbplatzungenFrost": "2. Kappen-Abplatzungen & Frost-Tausalz-Widerstand (DIN EN 12390-9 / CDF-Test):",
+    "brückenkappenUnterliegenFrostTau": "Brückenkappen unterliegen Frost-Tau-Wechseln mit Tausalzeinwirkung (XF4). Gefrierendes Wasser expandiert um ≈ +9 Vol.-%. Ohne Mikroluftporen (LP-Beton mit Abstandsfaktor $L \\le 0{,}20\\,\\text{mm}$ nach Powers) entsteht ein hydrostatischer Abpressdruck im Zementstein:",
+    "t3SinterbildungBiogeneSchwefelsäurekorros": "3. Sinterbildung & Biogene Schwefelsäurekorrosion (BSK) im Tunnel:",
+    "kalklösendesBergwasserReagiertMit": "Kalklösendes Bergwasser reagiert mit Calciumhydroxid im Spritzbeton ($\\text{Ca(OH)}_2 + \\text{CO}_2 \\rightarrow \\text{CaCO}_3$) und verstopft Drainagerohre mit harten Calcit-Sintern. Im Abwasser- und Tunnelsumpfbereich oxidieren *Thiobacillus*-Bakterien Schwefelwasserstoff ($\\text{H}_2\\text{S}$) zu reiner Schwefelsäure ($\\text{H}_2\\text{SO}_4$), was Zementstein im Säureangriff ($\\text{pH} < 2$) auflöst.",
+    "geotechnikBaugrubenGründungen": "🏗️ Geotechnik: Baugruben & Gründungen",
+    "t1HydrologischerHydraulischerGrundbruch": "1. Hydrologischer / Hydraulischer Grundbruch (Heaving):",
+    "wennDieNachOben": "Wenn die nach oben gerichtete Strömungskraft des zuströmenden Grundwassers am Fuß einer unvollständig abgeriegelten Baugrube das Eigengewicht des anstehenden Bodens übersteigt.",
+    "nachweisHydNachDin": "Nachweis HYD nach DIN EN 1997-1 (Eurocode 7) mit NA:",
+    "strömungskraftSAusDem": "Strömungskraft $S$ (aus dem hydraulischen Gefälle $i$) gegen das Gewicht des Bodens unter Auftrieb $G'$, jeweils mit Teilsicherheitsbeiwerten nach DIN EN 1997-1/NA bzw. DIN 1054.",
+    "t2PfahlkopfBohrpfahlerstellungsfehler": "2. Pfahlkopf- & Bohrpfahlerstellungsfehler:",
+    "beimBetonierenVonTiefgründungen": "Beim Betonieren von Tiefgründungen (Bohrpfählen) unter Wasser wird die oberste Betonschicht mit Bohrschlamm und Stützflüssigkeit verunreinigt und ist minderfest (Kopfbeton). Wird diese \"Sperrschicht\" nach dem Aushärten nicht fachgerecht mechanisch abgestemmt (bis auf gesunden, tragfähigen Betonquerschnitt), entstehen folgenschwere Schwachstellen in der Lastübertragung.",
+    "grenzzustandDerTragfähigkeitBohrpfahl": "Grenzzustand der Tragfähigkeit (Bohrpfahl):",
+    "dabeiRepräsentiertRB": "Dabei repräsentiert $R_{b,k}$ den charakteristischen Spitzenwiderstand, $R_{s,k}$ die Mantelreibung und $\\gamma$ die Teilsicherheitsbeiwerte nach Eurocode.",
+    "diagnostikZerstörungsfreiePrüfverfahrenZ": "🔍 Diagnostik & zerstörungsfreie Prüfverfahren (ZfP)",
+    "potenzialfeldmessungHalfCell": "Potenzialfeldmessung (Half-Cell)",
+    "misstDieElektrochemischeSpannung": "Misst die elektrochemische Spannung einer Kupferelektrode auf der Betonoberfläche. Dadurch können von Lochfraßkorrosion befallene oder de-passivierte Bewehrungsstähle großflächig, zerstörungsfrei und punktgenau im Fahrbahnbereich lokalisiert werden.",
+    "schallwellenWerdenEingeleitetUnd": "Schallwellen werden eingeleitet und empfangen. Durch Laufzeitunterschiede lassen sich Fehlstellen, Kiesnester im tiefen Betonquerschnitt, Hohlräume in Hüllrohren von Vorspannungen oder die genaue Bauteildicke zerstörungsfrei ermitteln.",
+    "brückenmonitoringNachDin1076": "Brückenmonitoring nach DIN 1076",
+    "überwachungDerIngenieurbauwerkeIm": "Überwachung der Ingenieurbauwerke im Zuge von Straßen und Wegen nach DIN 1076 (Ausgabe 2026-01, ersetzt 1999-11): Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre nach der Hauptprüfung, Besichtigung jährlich (sofern keine H/E), laufende Beobachtung in der Regel zweimal jährlich, Sonderprüfung anlassbezogen.",
+    "interaktiverBauSzenarienAnalysator": "Interaktiver Bau-Szenarien-Analysator",
+    "entdeckenSieTypischeBauschäden": "Entdecken Sie typische Bauschäden und bauchemische Unverträglichkeiten aus der Sachverständigenpraxis.",
+    "wählenSieEinenFall": "Wählen Sie einen Fall aus:",
+    "juristischerStatusRelevanz": "📄 Juristischer Status / Relevanz",
+    "verantwortlicherBauakteur": "👤 Verantwortlicher Bauakteur",
+    "zuständigeBauVersicherungsdeckung": "🛡️ Zuständige Bau-Versicherungsdeckung",
+    "technischeSanierungsmethode": "🛠️ Technische Sanierungsmethode",
+    "keinSchadenSzenarioAusgewählt": "Kein Schaden-Szenario ausgewählt",
+    "wählenSieLinksEines": "Wählen Sie links eines der realitätsnahen Schadensbilder oder materialchemischen Verträglichkeitskonflikte aus, um den bauchemischen Teufelskreis aufzudecken."
+  },
+  "werte": {
+    "feuchtigkeitSchimmel": "Feuchtigkeit & Schimmel",
+    "feuchtigkeitseintritteKapillareEffekteAb": "Feuchtigkeitseintritte, kapillare Effekte, Abdichtungsversagen & Schimmel",
+    "risseVerformungen": "Risse & Verformungen",
+    "schwindrisseSetzungsrisseThermischeSpann": "Schwindrisse, Setzungsrisse, thermische Spannungen & Fugenabrisse",
+    "korrosionBetonschäden": "Korrosion & Betonschäden",
+    "karbonatisierungChlorideintragFrostTau": "Karbonatisierung, Chlorideintrag, Frost-Tau-Wechsel & \"Betonkrebs\" (AKR)",
+    "unverträglichkeitenNeu": "Unverträglichkeiten (Neu)",
+    "gipstreibenKontakkorrosionFließregelVerl": "Gipstreiben, Kontakkorrosion, Fließregel-Verletzungen, Gerbstoffe & Weichmacher",
+    "tiefIngenieurbau": "Tief- & Ingenieurbau",
+    "schädenAnBrückenTunneln": "Schäden an Brücken, Tunneln, Baugruben, Stützwänden & Tiefgründungen",
+    "interaktiverBauSzenarienAnalysator": "Interaktiver Bau-Szenarien-Analysator mit Haftungsberechnung",
+    "beispiel1RechnerischeRissbreite": "Beispiel 1: Rechnerische Rissbreite einer Stahlbetonwand",
+    "gemesseneRisseImBestand": "Gemessene Risse im Bestand sind mit dem Rechenwert nur bedingt vergleichbar; entscheidend ist die Ursache (Last, Zwang, Schwinden) und ob der Riss sich bewegt.",
+    "dinEn19921": "DIN EN 1992-1-1 + NA, 7.3.4",
+    "beispiel2KritischeRisslänge": "Beispiel 2: Kritische Risslänge bei sprödem Versagen",
+    "beiTiefenTemperaturenSinkt": "Bei tiefen Temperaturen sinkt K_Ic vieler Stähle stark – dann reichen schon Risse von wenigen Millimetern (vgl. Silver Bridge 1967).",
+    "irwin1957Iso12135": "Irwin (1957); ISO 12135",
+    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "TypischeBauschaeden.scenarios": [
+      {
+        "id": "feuchter_keller",
+        "title": "Feuchtigkeit im Keller (2 Jahre alter Neubau)",
+        "category": "Feuchtigkeit & Schimmel",
+        "description": "An der erdberührten Kellerwand eines jungen Wohngebäudes treten nasse Flecken und abplatzender Putz auf. Ein Gutachten zeigt: Es wurde keine ausreichende Abdichtung nach DIN 18533 eingeplant und der Lastfall \"Drückendes Wasser\" fälschlicherweise ignoriert.",
+        "status": "Mangel mit folgendem Sachschaden (Baumangel & Bauschaden)",
+        "responsibility": "Planungsfehler: Primär haftet der Planer für fehlerhafte Grundlagenermittlung; bei erkennbaren Planungsfehlern besteht ggf. eine Mithaftung des Unternehmers (Verletzung der Prüf- und Hinweispflicht), Quote im Einzelfall.",
+        "insurance": "Planer-Berufshaftpflichtversicherung für den Architekten. Das ausführende Bauunternehmen haftet im Rahmen des Werkvertragsrechts für die Nachbesserung (dies ist vertragliche Hauptleistung und wird NICHT von der Handwerkerhaftpflicht gedeckt).",
+        "remedy": "Nachträgliche Schleierinjektion (WTA 4-6) oder Außenaufgrabung zur Erneuerung der Vertikalabdichtung. Kosten: massiv."
+      },
+      {
+        "id": "rissiger_putz",
+        "title": "Putzrisse über Porenbetonmauerwerk",
+        "category": "Risse im Mauerwerk/Putz",
+        "description": "Im Außenputz zeichnen sich stufenförmige Risse entlang der Blocksteinfugen ab. Ursache ist das Schwindverhalten des sehr feucht gelieferten Porenbetons und das Weglassen eines dringend nötigen Armierungsgewebes im Außenputz.",
+        "status": "Baumangel (Verstoß gegen anerkannte Regeln der Technik / Herstellerspezifikationen)",
+        "responsibility": "Ausführungsfehler des Gipserbetriebs (Verputzen auf unzureichend ausgetrocknetem Untergrund ohne Gewebeeinlage) und Bauleitungsfehler des Architekten (ungenügende Detailüberwachung).",
+        "insurance": "Selbstzahler oder Gewährleistungsbürgschaft. Die Unternehmer-Haftpflicht deckt den Mangel selbst nicht ab. Falls der Riss zu Feuchteschäden führt, träfe das die Haftpflicht für den Folgeschaden.",
+        "remedy": "Rissüberbrückendes Gewebe spachteln, elastische Rissarmierung und Neuaufbau der Endbeschichtung."
+      },
+      {
+        "id": "frost_balkon",
+        "title": "Frostabplatzungen an einer Balkonkante",
+        "category": "Korrosion & Betonabplatzungen",
+        "description": "An einer freien Balkonkante bröckelt Beton ab; brauner Rost schimmert durch. Der Beton besaß einen w/z-Wert von 0,65 (statt höchstens 0,55 mit Luftporen bzw. 0,50 ohne Luftporen für XF3 – hohe Wassersättigung ohne Taumittel – nach DIN 1045-2, Tab. F.2.1). Ohne Tropfkante drang dauerhaft Wasser ein.",
+        "status": "Schwerwiegender Mangel mit akuter Beeinträchtigung der Dauerhaftigkeit (Rostsprengung)",
+        "responsibility": "Ausführungsfehler des Betonwerks (falsche Betongüte geliefert) und des Unternehmers (falsch verbaut + Tropfprofil weggelassen).",
+        "insurance": "Eigensanierung durch das Bauunternehmen während der Verjährungsfrist (5 Jahre nach BGB).",
+        "remedy": "Mechanische Betonreprofilierung, Sandstrahlen der Bewehrungseisen, Korrosionsschutzbeschichtung und Ausbildung einer wirksamen Tropfkante."
+      },
+      {
+        "id": "estrich_abriss",
+        "title": "Dehnfugenabriss im Industrie-Fließestrich",
+        "category": "Risse & Bewegungsfugen",
+        "description": "In einer Logistikhalle bricht der Fließestrich an den Feldgrenzen aus. Es wurde versäumt, die nach Estrichart, Beheizung und Feldgeometrie erforderlichen Bewegungsfugen anzuordnen … Sanierung: Scheinfugen nachschneiden, Wildrisse mit Epoxidharz und Wellenverbindern (Estrichklammern) verharzen. Schwere Gabelstapler tragen zusätzlich hohe dynamische Horizontallasten ein.",
+        "status": "Planungsmangel (Klassischer Koordinationsfehler im Fugenplan)",
+        "responsibility": "Planer für fehlenden Fugenplan und Estrichleger, falls dieser nicht schriftlich Bedenken angemeldet hat (Prüf- und Hinweispflicht verfehlt).",
+        "insurance": "Berufshaftpflicht des planenden Ingenieurbüros (Tragwerksplanung/Objektplanung).",
+        "remedy": "Nachträgliches Einschneiden von Scheinfugen, Verharzen der Wildrisse mit Epoxidharz und gewellten Wellenverbindern (Estrichklammern)."
+      },
+      {
+        "id": "gips_estrich_ausblühung",
+        "title": "Gipstreiben durch Calciumsulfat auf nasser Betondecke",
+        "category": "Materialunverträglichkeiten",
+        "description": "In einem Bad wurde gipshaltiger Estrich / Spachtelmasse direkt auf eine junge, feuchte Betondecke ohne trennende Grundierung aufgebracht. Durch langanhaltende Restfeuchte bildeten sich massive, treibende Minerale (Ettringit- und Thaumasitbildung) mit pustelartigen Wölbungen und Gefügezerfall.",
+        "status": "Ausführungsmangel (Schwere Missachtung baustofflicher Unverträglichkeiten)",
+        "responsibility": "Bodenleger/Estrichleger wegen fehlender Feuchtigkeitsmessung (CM-Messung) der Betondecke und mangelhafter Untergrundvorbereitung (Sperrgrundierung weggelassen).",
+        "insurance": "Betriebshaftpflicht des ausführenden Estrichlegerbetriebs greift für Folgeschäden an den Fliesen; die reine Mängelbeseitigung am Estrich ist Selbstzahlerleistung.",
+        "remedy": "Vollständiger Abtrag des befallenen Sulfatestrichs, Abschleifen und intensives Trocknen des Betonuntergrundes, Aufbringen einer zementbeständigen Epoxidharz-Grundierung mit Quarzsand-Abstreuung, Neuaufbau mit zementärer Ausgleichsmasse."
+      },
+      {
+        "id": "regenrinne_kontaktkorrosion",
+        "title": "Lochfraß durch Kontaktkorrosion im Flachdach",
+        "category": "Materialunverträglichkeiten",
+        "description": "Es wurde eine neue Kupferdachrinne installiert. Unmittelbar oberhalb befinden sich verzinkte Stahlblech-Abdeckungen. Bei Regen fließen kupferionenhaltige Wassertropfen auf das Basismetall (Zink). Innerhalb eines Jahres kam es zu rasantem Lochfraß (Bimetallkorrosion/Fließregelverletzung).",
+        "status": "Planungs- und Ausführungsfehler (Verstoß gegen DIN 18339 / Fachregeln des Klempnerhandwerks)",
+        "responsibility": "Klempner bzw. Dachdecker (gemeinschaftliche Haftung mit dem Planer für fehlende Werkstattplanung und bauphysikalische Koordinationsfehler).",
+        "insurance": "Unternehmer-Haftpflicht für Sachschäden (Durchfeuchtung infolge der zerstörten Rinne). Der Rinnenaustausch selbst muss die Firma eigenständig finanzieren.",
+        "remedy": "Austausch des unedleren Bauteils, strikte Trennung der Metalle durch Kunststoffzwischenlagen oder Verwendung von Edelstahl/Aluminium ohne Werkstoffübergänge."
+      },
+      {
+        "id": "bruecke_chloridschaden",
+        "title": "Pfeiler- und Lagerfugenkorrosion einer Autobahnbrücke (XF4/XD3)",
+        "category": "Tief- & Ingenieurbau",
+        "description": "Bei einer Brückenprüfung nach DIN 1076 werden an Pfeilerköpfen gravierende Betonabplatzungen und völlig durchgerostete Spannglieder entdeckt. Die Brückenentwässerung war verstopft, wodurch chloridbelastetes Tausalzwasser jahrzehntelang ungehindert auf den Beton und die Lagerkonstruktion einwirken konnte.",
+        "status": "Kritischer Bauschaden – Standsicherheit umgehend durch Fachplaner beurteilen lassen",
+        "responsibility": "Wartungs- und Unterhaltspflichtverletzung des Baulastträgers (Kommune oder Autobahngesellschaft) sowie Ausführungsfehler bei der Fugenabdichtung.",
+        "insurance": "Keine klassische private Versicherungsdeckung. Die Sanierung erfolgt vollumfänglich aus öffentlichen Haushaltsmitteln des Baulastträgers.",
+        "remedy": "Sofortige Teilsperrung oder Tonnagebeschränkung. Hydrodynamischer Betonabtrag (HDW), Reprofilierung mit Spritzbeton und Erneuerung der Fahrbahnübergänge."
+      },
+      {
+        "id": "baugrube_ankerversagen",
+        "title": "Versagen einer Ankerlage im Spundwandverbau einer tiefen Baugrube",
+        "category": "Tief- & Ingenieurbau",
+        "description": "Während des Aushubs einer tiefen innerstädtischen Baugrube verformt sich der Spundwandkopf unzulässig um 15 cm. Ein Verpressanker im bindigen Tonboden ist aus dem Verpresskörper gezogen worden, da die geotechnische Baugrundanalyse unvollständig war und die freie Ankerstrecke falsch ausgelegt wurde.",
+        "status": "Planungsmangel mit katastrophalem Havarierisiko für Nachbarbebauungen",
+        "responsibility": "Planungsfehler des Geotechnikers/Fachplaners sowie mangelhafte Qualitätsüberwachung der Ankerprüfung (Abnahmeprüfung nach DIN EN 1537 nicht korrekt dokumentiert).",
+        "insurance": "Berufshaftpflichtversicherung des planenden Ingenieurbüros bzw. des Fachgeologen.",
+        "remedy": "Sofortiger Aushubstopp und Rückverfüllung/Böschungsankopplung. Einbringen von Notsteifen oder einer zusätzlichen Ankerlage unter engmaschigem geodätischem Monitoring."
+      }
+    ],
+    "TypischeBauschaeden.schritte": [
+      {
+        "titel": "Rissabstand",
+        "erklaerung": "Maximaler Rissabstand aus der Bemessung:",
+        "formel": "s_{r,max} = 200\\,\\text{mm}"
+      },
+      {
+        "titel": "Dehnungsdifferenz",
+        "erklaerung": "Mittlere Dehnungsdifferenz zwischen Stahl und Beton:",
+        "formel": "\\varepsilon_{sm} - \\varepsilon_{cm} = 0{,}60\\,\\text{‰}"
+      },
+      {
+        "titel": "Rissbreite",
+        "erklaerung": "Einsetzen und Vergleich mit w_max = 0,3 mm (XC4):",
+        "formel": "w_k = 200 \\cdot 0{,}0006 = 0{,}12\\,\\text{mm} \\le 0{,}3\\,\\text{mm}"
+      }
+    ],
+    "TypischeBauschaeden.schritte_2": [
+      {
+        "titel": "Spannungsintensität",
+        "erklaerung": "Randriss a = 10 mm, σ = 150 MPa, Y = 1,12:",
+        "formel": "K_I = 1{,}12 \\cdot 150 \\cdot \\sqrt{\\pi \\cdot 0{,}010} = 29{,}8\\,\\text{MPa}\\sqrt{\\text{m}}"
+      },
+      {
+        "titel": "Vergleich",
+        "erklaerung": "Bruchzähigkeit K_Ic = 50 MPa√m:",
+        "formel": "29{,}8 < 50 \\Rightarrow \\text{stabil}"
+      },
+      {
+        "titel": "Kritische Risslänge",
+        "erklaerung": "Umstellen nach a:",
+        "formel": "a_c = \\frac{1}{\\pi}\\left(\\frac{50}{168}\\right)^2 = 0{,}028\\,\\text{m} = 28\\,\\text{mm}"
+      }
+    ],
+    "TypischeBauschaeden.weblinks": [
+      {
+        "title": "WTA e.V. (Wissenschaftlich-Technische Arbeitsgemeinschaft)",
+        "url": "https://www.wta-gmbh.de/"
+      },
+      {
+        "title": "DIN 18533 - Bauwerksabdichtungen",
+        "url": "https://www.din.de/"
+      },
+      {
+        "title": "BASt - Bundesanstalt für Straßenwesen (Brückenprüfung)",
+        "url": "https://www.bast.de/"
+      }
+    ],
+    "TypischeBauschaeden.literatur": [
+      "Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag",
+      "Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner (aktuelle Auflage)",
+      "Aachener Bausachverständigentage (Tagungsbände, AIBau). Wiesbaden: Springer Vieweg (jährlich)"
+    ],
+    "TypischeBauschaeden.regelwerke": [
+      {
+        "title": "DIN 18533 (Abdichtung von erdberührten Bauteilen)"
+      },
+      {
+        "title": "DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)"
+      },
+      {
+        "title": "DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)"
+      },
+      {
+        "title": "Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10",
+        "url": "https://www.dafstb.de/"
+      },
+      {
+        "title": "WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile",
+        "url": "https://www.wta-gmbh.de/"
+      }
+    ],
+    "TypischeBauschaeden.formeln": [
+      {
+        "formel": "3\\,\\text{CaO}\\cdot\\text{Al}_2\\text{O}_3\\cdot\\text{CaSO}_4\\cdot 12\\,\\text{H}_2\\text{O} + 2\\,\\text{Ca}^{2+} + 2\\,\\text{SO}_4^{2-} + 20\\,\\text{H}_2\\text{O} \\longrightarrow 3\\,\\text{CaO}\\cdot\\text{Al}_2\\text{O}_3\\cdot 3\\,\\text{CaSO}_4\\cdot 32\\,\\text{H}_2\\text{O}",
+        "erklaerung": "Sulfattreiben (sekundäre Ettringitbildung): Umwandlung von Monosulfat in Trisulfat (Ettringit) unter massiver Volumenvergrößerung (ca. +130 bis +168 %), die zu Gefügesprengung führt.",
+        "quelle": "Wendehorst Baustoffkunde"
+      },
+      {
+        "formel": "K_I = Y \\cdot \\sigma \\cdot \\sqrt{\\pi \\cdot a} \\ge K_{Ic}",
+        "erklaerung": "Bruchmechanisches Bruchkriterium nach Irwin: Überschreitet der Spannungsintensitätsfaktor KI den kritischen Werkstoffwert KIc (Bruchzähigkeit), kommt es zum instabilen, schlagartigen Sprödbruch.",
+        "quelle": "Irwin (1957); Bruchmechanik-Grundlagen / ISO 12135"
+      },
+      {
+        "formel": "\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 \\downarrow + \\text{H}_2\\text{O} \\quad \\implies x_c(t) = k_{\\text{carb}} \\cdot \\sqrt{t}",
+        "erklaerung": "Depassivierung durch Karbonatisierung: Wurzel-t-Diffusionsgesetz der Karbonatisierungsfront und Absinken des Porenwasser-pH-Werts von über 12,5 auf unter 9.",
+        "quelle": "DIN EN 1992-1-1 / DAfStb"
+      },
+      {
+        "formel": "\\Delta V_{\\text{ASR}} \\propto c_{(\\text{Na}^+, \\text{K}^+)} \\cdot c_{(\\text{reaktive Kieselsäure})} \\implies \\sigma_{\\text{Spren}} > f_{\\text{ctm}}",
+        "erklaerung": "Alkali-Kieselsäure-Reaktion (AKR / Betonkrebs): Quellfähiges Alkali-Kieselsäure-Gel erzeugt Sprengdrücke oberhalb der Betonzugfestigkeit, was zur Netzrissbildung und Ausblühungen führt.",
+        "quelle": "DAfStb Alkali-Richtlinie"
+      }
+    ]
+  }
+}

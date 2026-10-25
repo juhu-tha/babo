@@ -4,6 +4,8 @@ import { ShieldCheck, Check, Building2, Compass, Eye } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { BUILDING_ZONES } from './daten';
+import inhalt from '@/content/expositionsklassen/ExpositionsklassenSkizze.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ExpositionsklassenSkizzeProps {
   selectedClasses: string[];
@@ -25,12 +27,7 @@ export function ExpositionsklassenSkizze({
   const currentZone = BUILDING_ZONES.find(z => z.id === activeZoneId) || BUILDING_ZONES[0];
 
   // Betondeckungswerte für Detailzoom
-  const coverDetails = {
-    XC1: { cMinDur: 10, deltaC: 10, cNom: 20, desc: 'Trockene Innenbauteile: Minimaler Bewehrungsschutz', color: '#0284c7' },
-    XC4: { cMinDur: 25, deltaC: 15, cNom: 40, desc: 'Außenbauteile mit Beregnung: Standard-Bewehrungsschutz', color: '#b91c1c' },
-    XD3: { cMinDur: 40, deltaC: 15, cNom: 55, desc: 'Tausalzbeaufschlagte Parkdecks & Rampen: Hoher Schutz', color: '#c2410c' },
-    XS3: { cMinDur: 40, deltaC: 15, cNom: 55, desc: 'Meerwasser-Gezeitenzone: Maximaler Schutz gegen Chloride', color: '#0f766e' }
-  }[selectedCoverClass];
+  const coverDetails = inhalt.daten.ExpositionsklassenSkizze[selectedCoverClass];
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
@@ -42,12 +39,8 @@ export function ExpositionsklassenSkizze({
             <Building2 size={22} />
           </div>
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2">
-              Interaktive Bauteil- &amp; Expositionszonierung
-            </h3>
-            <p className="text-xs text-text-main/70">
-              Verortung der Expositionsklassen im Bauwerk (DIN EN 206 / DIN 1045-2) &amp; Betondeckung nach EC2
-            </p>
+            <h3 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.interaktiveBauteilExpositionszonierung} /></h3>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.verortungDerExpositionsklassenIm} /></p>
           </div>
         </div>
 
@@ -62,8 +55,7 @@ export function ExpositionsklassenSkizze({
                 : 'text-text-main/70 hover:text-text-main hover:bg-white'
             }`}
           >
-            <Compass size={14} /> 1. Bauwerks-Zonierung
-          </button>
+            <Compass size={14} /><MdText text={inhalt.texte.t1BauwerksZonierung} /></button>
           <button aria-pressed={activeMode === 'cover'}
             type="button"
             onClick={() => setActiveMode('cover')}
@@ -73,16 +65,13 @@ export function ExpositionsklassenSkizze({
                 : 'text-text-main/70 hover:text-text-main hover:bg-white'
             }`}
           >
-            <Eye size={14} /> 2. Detailzoom Betondeckung (EC2)
-          </button>
+            <Eye size={14} /><MdText text={inhalt.texte.t2DetailzoomBetondeckungEc2} /></button>
         </div>
       </div>
 
       {/* QUICK PRESET PILLS */}
       <div className="space-y-2">
-        <span className="text-xs font-bold text-text-main/70 block">
-          Schnellauswahl typischer Ingenieurbauteile (Klicken zum Inspizieren &amp; Aktivieren):
-        </span>
+        <span className="text-xs font-bold text-text-main/70 block"><MdText text={inhalt.texte.schnellauswahlTypischerIngenieurbauteile} /></span>
         <div className="flex flex-wrap gap-2">
           {BUILDING_ZONES.map(z => {
             const isActive = activeZoneId === z.id && activeMode === 'building';
@@ -411,38 +400,38 @@ export function ExpositionsklassenSkizze({
                 onClick={() => onApplyClasses(currentZone.classes)}
                 className="px-4 py-2 rounded-xl bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer self-start sm:self-auto shrink-0"
               >
-                <Check size={14} /> Im Rechner übernehmen ({currentZone.classes.join('+')})
+                <Check size={14} /><MdText text={inhalt.texte.imRechnerÜbernehmen} />{currentZone.classes.join('+')})
               </button>
             </div>
 
             {/* Normative Grenzwerte-Gitter nach DIN 1045-2 */}
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-[11px] text-text-main/60 block">Max. (w/z)eq</span>
+                <span className="text-[11px] text-text-main/60 block"><MdText text={inhalt.texte.maxWZEq} /></span>
                 <span className="text-sm font-bold font-mono text-shiraz">
                   &le; {formatDeZahl(currentZone.maxWz, 2)}
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-[11px] text-text-main/60 block">Min. Festigkeit</span>
+                <span className="text-[11px] text-text-main/60 block"><MdText text={inhalt.texte.minFestigkeit} /></span>
                 <span className="text-sm font-bold font-mono text-text-main">
                   {currentZone.minStrength}
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-[11px] text-text-main/60 block">Min. Zement (d16)</span>
+                <span className="text-[11px] text-text-main/60 block"><MdText text={inhalt.texte.minZementD16} /></span>
                 <span className="text-sm font-bold font-mono text-text-main">
                   &ge; {formatDeWert(currentZone.minCement)} kg/m&sup3;
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-[11px] text-text-main/60 block">c_min,dur (EC2)</span>
+                <span className="text-[11px] text-text-main/60 block"><MdText text={inhalt.texte.cMinDurEc2} /></span>
                 <span className="text-sm font-bold font-mono text-text-main">
                   {formatDeWert(currentZone.cMinDur)} mm
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center col-span-2 sm:col-span-1">
-                <span className="text-[11px] text-text-main/60 block">Nennmaß c_nom</span>
+                <span className="text-[11px] text-text-main/60 block"><MdText text={inhalt.texte.nennmaßCNom} /></span>
                 <span className="text-sm font-bold font-mono text-emerald-800">
                   {formatDeWert(currentZone.cNom)} mm
                 </span>
@@ -452,11 +441,11 @@ export function ExpositionsklassenSkizze({
             {/* Schädigungsmechanismus & Baustellenpraxis */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
-                <span className="font-bold text-amber-800 block">Kritischer Schädigungsmechanismus:</span>
+                <span className="font-bold text-amber-800 block"><MdText text={inhalt.texte.kritischerSchädigungsmechanismus} /></span>
                 <p className="text-text-main/80 leading-relaxed">{currentZone.mechanism}</p>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
-                <span className="font-bold text-emerald-800 block">Praxisempfehlung &amp; Zusatzvorgaben:</span>
+                <span className="font-bold text-emerald-800 block"><MdText text={inhalt.texte.praxisempfehlungZusatzvorgaben} /></span>
                 <p className="text-text-main/80 leading-relaxed">{currentZone.practicalTips}</p>
               </div>
             </div>
@@ -471,7 +460,7 @@ export function ExpositionsklassenSkizze({
         <div className="space-y-5">
           {/* Klassen-Umschalter für Betondeckungs-Visualisierung */}
           <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-off-white rounded-xl border border-home-grau/20 text-xs">
-            <span className="font-bold text-text-main">Expositionsklasse zur Betondeckung wählen:</span>
+            <span className="font-bold text-text-main"><MdText text={inhalt.texte.expositionsklasseZurBetondeckungWählen} /></span>
             <div className="flex flex-wrap gap-1.5">
               {(['XC1', 'XC4', 'XD3', 'XS3'] as const).map(cKey => (
                 <button
@@ -672,39 +661,25 @@ export function ExpositionsklassenSkizze({
           {/* FORMEL- & BEMESSUNGSLEITFADEN BETONDECKUNG */}
           <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-3">
             <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-              <ShieldCheck className="text-shiraz" size={18} />
-              Normative Bemessung der Betondeckung nach DIN EN 1992-1-1 (EC2) &amp; DIN 1045-2:
-            </h4>
+              <ShieldCheck className="text-shiraz" size={18} /><MdText text={inhalt.texte.normativeBemessungDerBetondeckung} /></h4>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
-                <span className="font-bold text-text-main block">1. Nennmaß-Gleichung:</span>
-                <div className="text-center py-1 font-mono text-shiraz font-bold">
-                  cnom = cmin + &Delta;cdev
-                </div>
-                <p className="text-text-main/70">
-                  <InlineMath math="c_{\min} = \max\{c_{\min,b};\, c_{\min,\text{dur}};\; 10\text{ mm}\}" />. Für Ortbeton gilt normativ <InlineMath math="\Delta c_{\text{dev}} = 10\text{ mm}" />.
-                </p>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t1NennmaßGleichung} /></span>
+                <div className="text-center py-1 font-mono text-shiraz font-bold"><MdText text={inhalt.texte.cnomCminCdev} /></div>
+                <p className="text-text-main/70"><MdText text={inhalt.texte.cMinMaxC} /></p>
               </div>
 
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
-                <span className="font-bold text-text-main block">2. Karbonatisierungsfortschritt:</span>
-                <div className="text-center py-1 font-mono text-amber-800 font-bold">
-                  dk(t) = kcarb &middot; &radic;t
-                </div>
-                <p className="text-text-main/70">
-                  Erreicht die Karbonatisierungsfront den Bewehrungsstahl (<InlineMath math="d_k \ge c" />), wird die Passivschicht durch pH-Absenkung zerstört.
-                </p>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t2Karbonatisierungsfortschritt} /></span>
+                <div className="text-center py-1 font-mono text-amber-800 font-bold"><MdText text={inhalt.texte.dkTKcarbT} /></div>
+                <p className="text-text-main/70"><MdText text={inhalt.texte.erreichtDieKarbonatisierungsfrontDen} /></p>
               </div>
 
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
-                <span className="font-bold text-text-main block">3. Chlorid-Lochfraß:</span>
-                <div className="text-center py-1 font-mono text-cyan-800 font-bold">
-                  Ccrit &approx; 0,40 &ndash; 0,50 M.-%
-                </div>
-                <p className="text-text-main/70">
-                  Chloride initiieren Lochfraßkorrosion lokal auch bei intaktem alkalischem Milieu ohne vorherige Karbonatisierung.
-                </p>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t3ChloridLochfraß} /></span>
+                <div className="text-center py-1 font-mono text-cyan-800 font-bold"><MdText text={inhalt.texte.ccrit0400} /></div>
+                <p className="text-text-main/70"><MdText text={inhalt.texte.chlorideInitiierenLochfraßkorrosionLokal} /></p>
               </div>
             </div>
           </div>

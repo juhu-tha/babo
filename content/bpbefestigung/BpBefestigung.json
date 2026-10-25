@@ -1,0 +1,166 @@
+{
+  "texte": {
+    "befestigungstechnikVerankerungBauprodukt": " Befestigungstechnik & Verankerung (Bauprodukte)",
+    "anforderungenNachDinEn": "Anforderungen nach DIN EN 1992-4 (Eurocode 2 - Teil 4). Lastübertragung in feste Untergründe mittels mechanischer Spreizwirkung, formschlüssigem Hinterschnitt und stoffschlüssigem Polyester- oder Epoxidharzverbund.",
+    "basiswissenVerankerungsKatalog": " Basiswissen & Verankerungs-Katalog",
+    "befestigungssystemeHerstellerneutral": "Befestigungssysteme herstellerneutral:",
+    "kritischDrehmomentÜberprüfung": "KRITISCH: Drehmoment-Überprüfung",
+    "mechanischeBolzenankerMüssenZwingend": "Mechanische Bolzenanker müssen zwingend mit einem kalibrierten **Drehmomentschlüssel** geschraubt werden (T_inst). Ein zu geringes Moment verringert die Vorspannung und Tragfähigkeit; ein zu hohes kann den Bolzen überlasten oder den Beton spalten.",
+    "normativesBefestigungsdatenblatt": "Normatives Befestigungsdatenblatt",
+    "randabstandMin": "Randabstand min.",
+    "zulässigeTemperaturbeständigkeit": "Zulässige Temperaturbeständigkeit:",
+    "versagensmodiVonBetonverankerungenNach": " Versagensmodi von Betonverankerungen nach DIN EN 1992-4",
+    "beiDerBemessungEiner": "Bei der Bemessung einer Befestigung in Beton müssen fünf physische Versagensgrenzen unter Zuglast rechnerisch überprüft werden:",
+    "t1Stahlversagen": "1. Stahlversagen",
+    "derZugbolzenReißtMechanisch": "Der Zugbolzen reißt mechanisch ab, weil seine Zugstreckgrenze überschritten wurde (N_Rk,s = A_s * f_uk).",
+    "t2Herausziehen": "2. Herausziehen",
+    "derAnkerRutschtMitsamt": "Der Anker rutscht mitsamt dem Spreizkeil schlupfartig aus dem Bohrloch (Herausziehwiderstand N_Rk,p).",
+    "t3Betonausbruch": "3. Betonausbruch",
+    "unterZuglastPlatztEin": "Unter Zuglast platzt ein trichterförmiger Betonkegel aus (35° Winkel). Begrenzt durch Verankerungstiefe h_ef.",
+    "t4GespaltenesBeton": "4. Gespaltenes Beton",
+    "spreizkräfteOderDieLast": "Spreizkräfte oder die Last spalten das Bauteil, besonders bei geringer Bauteildicke oder Randnähe (Spalten).",
+    "t5PryOutVersagen": "5. Pry-out Versagen",
+    "beiQuerkraftpressungenBrichtDie": "Bei Querkraftpressungen bricht die dem Vektor entgegengesetzte Betonkante mitsamt dem Dübelfuß aus.",
+    "marktübersichtTypischerSystemlösungenHer": "Marktübersicht typischer Systemlösungen (Herstellerneutral)",
+    "hinweisZurHerstellerneutralitätDie": "Hinweis zur Herstellerneutralität: Die nachfolgende Auflistung dient als unverbindliche Übersicht marktrelevanter Befestigungs- und Verbindungssysteme zur Erleichterung der baupraktischen Orientierung und Normenrecherche im Rahmen der akademischen Lehre.",
+    "zweikomponentenInjektionsmörtelVerbunddü": " Zweikomponenten-Injektionsmörtel (Verbunddübel) mit Europäischer Technischer Bewertung (ETA) für gerissenen Beton.",
+    "bolzenankerVerbundanker": "Bolzenanker & Verbundanker:",
+    "schwereMechanischeBolzenankersystemeUnd": " Schwere mechanische Bolzenankersysteme und Epoxidharz-Injektionsklebstoffe zur Brückensanierung und Verankerung schwerer Stahlkonstruktionen.",
+    "vollgewindeHolzbauschraubenZurStatisch": " Vollgewinde-Holzbauschrauben zur statisch wirksamen Bemessung und Lastabtragung von Holzständerwerken nach Eurocode 5.",
+    "systemAnkerschienenZumRüttelfreien": " System-Ankerschienen zum rüttelfreien Einbetonieren in die Bewehrungslage vor dem Einbringen von Frischbeton."
+  },
+  "werte": {
+    "anwendungsbeispielBetonausbruchEinesEinz": "Anwendungsbeispiel: Betonausbruch eines Einzeldübels",
+    "dinEn19924": "DIN EN 1992-4, 7.2.1.4 (gerissener Beton k_1 = 7,7; Lehrbeispiel ohne Rand- und Gruppeneinfluss)",
+    "dieTragfähigkeitWächstMit": "Die Tragfähigkeit wächst mit h_ef^1,5 – eine um 50 % tiefere Verankerung bringt rund 84 % mehr Betonausbruchlast."
+  },
+  "daten": {
+    "anchorProducts": [
+      {
+        "name": "M4 - M16 Nylon-Spreizdübel",
+        "category": "Einfacher Kunststoffdübel",
+        "standard": "DIN EN 1992-4 / ETA",
+        "loadCapacity": "0,1 kN - 1,5 kN (Gering bis mittel)",
+        "edgeDistance": "Große Randabstände erforderlich",
+        "installTemp": "-40 °C bis +80 °C (Nutzung)",
+        "substrate": "Vollmauerwerk, Kalksandstein, Standard-Beton",
+        "failureMode": "Herausziehen (Schlupf), Kunststoffschandlung",
+        "description": "Universeller Spreizdübel aus Polyamid (Nylon). Dehnt sich beim Eindrehen der Schraube kraftschlüssig an die Flanken der Bohrlochwandung aus. In Hochlochziegeln nur bedingt mit Siebhülsen einsetzbar.",
+        "advantages": [
+          "Sehr kostengünstiges Bauteil",
+          "Einfache visuelle Kontrolle",
+          "Unempfindlich gegen leichte Bohrlochtoleranzen"
+        ],
+        "disadvantages": [
+          "Tragende Anwendungen nur mit ETA (z. B. Mehrfachbefestigung nichttragender Systeme)",
+          "Hohe Alterungssensibilität",
+          "Kriecht unter dauerhafter Zuglast"
+        ]
+      },
+      {
+        "name": "M8 - M24 Bolzenanker (Spreizanker)",
+        "category": "Mechanischer Lastanker",
+        "standard": "DIN EN 1992-4 (ehem. ETAG 001)",
+        "loadCapacity": "5,0 kN - 45,0 kN (Sehr hoch)",
+        "edgeDistance": "Mäßig (hohe Spreizkräfte im Untergrund)",
+        "installTemp": "Temperaturunabhängig",
+        "substrate": "Gerissener & ungerissener Beton (min. C20/25)",
+        "failureMode": "Betonausbruch (Konus), Stahlversagen des Bolzens",
+        "description": "Mechanisches Befestigungssystem mit Kraftkontrolle. Beim Anziehen der Mutter wird der Konusbolzen in den Spreizclip gezogen, der sich gegen das Bohrloch verpresst.",
+        "advantages": [
+          "Sofort voll belastbar nach fachgerechtem Drehmomentanzug",
+          "Je nach ETA für gerissenen Beton und seismische Kategorien C1/C2",
+          "Hohe Querlastübertragung"
+        ],
+        "disadvantages": [
+          "Große Spreizdrücke erfordern hohe Rand-/Achsabstände",
+          "Kein Spielraum für Bohrtiefenunterschreitungen",
+          "Nicht im Mauerwerk einsetzbar"
+        ]
+      },
+      {
+        "name": "M8 - M30 Verbundmörtel (Injektionskleber)",
+        "category": "Chemischer Verbunddübel",
+        "standard": "DIN EN 1992-4 / EAD 330499",
+        "loadCapacity": "10,0 kN - 120,0 kN (Extrem hoch)",
+        "edgeDistance": "Minimal (vollständig spreizdruckfrei)",
+        "installTemp": "Min. +5 °C bis +40 °C (beim Verarbeiten)",
+        "substrate": "Beton, hochporöses Mauerwerk, Naturwerkstein",
+        "failureMode": "Verbundversagen (Herausziehen zwischen Mörtel/Beton)",
+        "description": "Hocheffektives Befestigungssystem auf duroplastischer Reaktionsharzbasis (Epoxidharz EP, Vinylester VES oder Polyester). Bohrloch wird mit Mörtel befüllt und die Ankerstange eingedreht. Klebt fugenlos.",
+        "advantages": [
+          "Absolut spreizdruckfreie Lastverteilung",
+          "Minimalster Rand- und Achsabstand möglich",
+          "Wasser- und dampfdichter Bohrlochverschluss"
+        ],
+        "disadvantages": [
+          "Chemische Aushärtezeit muss strikt beachtet werden",
+          "Penible Bohrlochreinigung (Ausblasen/Bürsten) zwingend erforderlich",
+          "Temperaturabhängiger Einbau"
+        ]
+      },
+      {
+        "name": "Hinterschnittanker (z. B. Zykon-System als Beispiel)",
+        "category": "Dauerwechsel-Schwerlastanker",
+        "standard": "DIN EN 1992-4 (Zulassung)",
+        "loadCapacity": "15,0 kN - 80,0 kN (Extrem sicher)",
+        "edgeDistance": "Gering",
+        "installTemp": "Temperaturunabhängig",
+        "substrate": "Gerissener Beton (auch in kerntechnischen Anlagen qualifizierte Systeme)",
+        "failureMode": "Reiner Stahlbruch (höchste Formschlusswirkung)",
+        "description": "Formgeschlossener Anker. Erfordert einen Spezialbohrer, der am Bohrlochgrund einen konischen Hinterschnitt fräst. Die Ankerhülse wird formschlüssig aufgeweitet.",
+        "advantages": [
+          "Formschluss mit sehr geringem Schlupf",
+          "Geeignet für dynamisch beanspruchte Befestigungen (nach ETA)",
+          "Geringe Spreizkräfte"
+        ],
+        "disadvantages": [
+          "Sehr teure Spezialwerkzeuge erforderlich",
+          "Hoher Arbeits- und Kontrollaufwand beim Bohren"
+        ]
+      }
+    ],
+    "BpBefestigung.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "f_{ck} = 25\\,\\text{N/mm}^2,\\; h_{ef} = 80\\,\\text{mm},\\; k_1 = 7{,}7",
+        "erklaerung": "Einzeldübel im gerissenen Beton C25/30."
+      },
+      {
+        "titel": "2. Grundwert",
+        "formel": "N^0_{Rk,c} = 7{,}7 \\cdot \\sqrt{25} \\cdot 80^{1{,}5} = 7{,}7 \\cdot 5 \\cdot 715{,}5 = 27{,}5\\,\\text{kN}",
+        "erklaerung": "h_ef^1,5 = 715,5 mm^1,5."
+      },
+      {
+        "titel": "3. Bemessungswert",
+        "formel": "N_{Rd,c} = 27{,}5 / 1{,}5 = 18{,}4\\,\\text{kN}",
+        "erklaerung": "γ_Mc = 1,5 (Teilsicherheitsbeiwert Beton bei Befestigungen)."
+      }
+    ],
+    "BpBefestigung.literatur": [
+      "Eligehausen, R.; Mallée, R.; Silva, J. F.: Anchorage in Concrete Construction. Berlin: Ernst & Sohn 2006",
+      "Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)"
+    ],
+    "BpBefestigung.regelwerke": [
+      {
+        "title": "DIN EN 1992-4 (Eurocode 2 - Bemessung der Verankerung von Befestigungen in Beton)"
+      },
+      {
+        "title": "EAD 330232 (mechanische Dübel) und EAD 330499 (Verbunddübel) – Europäische Bewertungsdokumente der EOTA",
+        "url": "https://www.eota.eu/"
+      }
+    ],
+    "BpBefestigung.formeln": [
+      {
+        "formel": "N_{Rk,c} = N_{Rk,c}^0 \\cdot \\frac{A_{c,N}}{A_{c,N}^0} \\cdot \\psi_{s,N} \\cdot \\psi_{re,N} \\cdot \\psi_{ec,N} \\cdot \\psi_{M,N}",
+        "erklaerung": "Charakteristischer Widerstand gegen Betonausbruch (Betonkonus) nach Eurocode 2 (DIN EN 1992-4) unter Berücksichtigung von Randabständen und Gruppenwirkungen.",
+        "quelle": "DIN EN 1992-4 Abs. 7.2.1.4"
+      },
+      {
+        "formel": "\\beta_N = \\frac{N_{Ed}}{N_{Rd}} \\le 1{,}0",
+        "erklaerung": "Auslastungsgrad des Befestigungsmittels unter einwirkender Zugbeanspruchung NEd gegenüber dem Bemessungswiderstand NRd.",
+        "quelle": "DIN EN 1992-4"
+      }
+    ]
+  }
+}

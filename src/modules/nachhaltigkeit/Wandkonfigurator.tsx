@@ -6,6 +6,8 @@ import type { ChartData, ChartOptions } from 'chart.js';
 import type { ConfiguredLayer } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
+import inhalt from '@/content/nachhaltigkeit/Wandkonfigurator.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface WandkonfiguratorProps {
   addLayer: () => void;
@@ -36,9 +38,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
           {/* Presets block */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-3">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider flex items-center gap-1">
-              <Sparkles size={11} className="text-shiraz" />
-              Vorkonfigurierte Wand-Presets laden
-            </span>
+              <Sparkles size={11} className="text-shiraz" /><MdText text={inhalt.texte.vorkonfigurierteWandPresetsLaden} /></span>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
               {Object.entries(PRESET_WALLS).map(([key, item]) => (
                 <button
@@ -57,12 +57,10 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
           <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
             <AlertTriangle className="text-amber-600 shrink-0 mt-0.5" size={18} />
             <div className="text-xs text-amber-950 leading-relaxed">
-              <strong className="font-bold text-amber-900 block mb-0.5">
-                Falle der Ökobilanzierung: Massebezug (kg CO₂e/kg) vs. Bauteilbezug (kg CO₂e/m²)
-              </strong>
+              <strong className="font-bold text-amber-900 block mb-0.5"><MdText text={inhalt.texte.falleDerÖkobilanzierungMassebezug} /></strong>
               <p>
-                In EPDs werden Materialwerte häufig auf 1 kg Masse bezogen. Hier wirkt Normalbeton (CEM I) mit ca. <strong>0,10 kg CO₂e/kg</strong> scheinbar harmlos. 
-                Aufgrund der hohen Rohdichte (2.400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong>49 kg CO₂e/m²</strong>! 
+                In EPDs werden Materialwerte häufig auf 1 kg Masse bezogen. Hier wirkt Normalbeton (CEM I) mit ca. <strong><MdText text={inhalt.texte.t010KgCo} /></strong> scheinbar harmlos. 
+                Aufgrund der hohen Rohdichte (2.400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
                 Konstruktionsvollholz (KVH) speichert hingegen biogenes CO₂ (-1,47 kg CO₂e/kg), und ein Lehmstein (DIN 18940) benötigt überhaupt keine klinkerspezifische Brennenergie (nur 0,022 kg CO₂e/kg). 
                 <strong> Grundsatz:</strong> Bauteile müssen immer auf die funktionelle Einheit (1 m² Bauteil mit gefordertem U-Wert und Tragfähigkeit) bezogen verglichen werden.
               </p>
@@ -73,9 +71,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
             <div className="flex justify-between items-center border-b border-home-grau/30 pb-2">
               <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <Settings size={16} className="text-shiraz" />
-                Schichtenaufbau konfigurieren (von Innen nach Außen)
-              </h3>
+                <Settings size={16} className="text-shiraz" /><MdText text={inhalt.texte.schichtenaufbauKonfigurierenVonInnen} /></h3>
               <span className="text-xs font-mono font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded">
                 Layers: {wallLayers.length}
               </span>
@@ -85,17 +81,11 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             <div className="bg-slate-50 p-4 border border-home-grau/30 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[9px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                    Design for Deconstruction
-                  </span>
+                  <span className="text-[9px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-bold uppercase tracking-wider"><MdText text={inhalt.texte.designForDeconstruction} /></span>
                   <span className="text-[9px] text-shiraz font-mono font-bold">Lerneffekt</span>
                 </div>
-                <label className="block text-xs font-bold text-slate-800 mt-1.5 leading-tight">
-                  Fügungsmethode der Wandschichten
-                </label>
-                <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">
-                  Nassputze und vollflächige Verklebungen verhindern sortenreine Trennung (Zirkularitäts-Abzug). Mechanisch gefügtes Trockenbauen maximiert die Recycelbarkeit.
-                </p>
+                <label className="block text-xs font-bold text-slate-800 mt-1.5 leading-tight"><MdText text={inhalt.texte.fügungsmethodeDerWandschichten} /></label>
+                <p className="text-[10px] text-slate-500 mt-0.5 leading-normal"><MdText text={inhalt.texte.nassputzeUndVollflächigeVerklebungen} /></p>
               </div>
               <div className="w-full md:w-56 shrink-0">
                 <div className="grid grid-cols-2 bg-slate-100 p-1 rounded-lg text-center text-xs">
@@ -106,9 +96,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                           ? 'bg-shiraz text-white shadow-xs font-bold'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
-                  >
-                    🔗 Verklebt / Mörtel
-                  </button>
+                  ><MdText text={inhalt.texte.verklebtMörtel} /></button>
                   <button aria-pressed={connectionType === 'screwed'}
                     onClick={() => setConnectionType('screwed')}
                     className={`py-1.5 rounded-md cursor-pointer transition-all font-semibold ${
@@ -116,9 +104,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                           ? 'bg-shiraz text-white shadow-xs font-bold'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
-                  >
-                    🔩 Geschraubt (Trocken)
-                  </button>
+                  ><MdText text={inhalt.texte.geschraubtTrocken} /></button>
                 </div>
               </div>
             </div>
@@ -137,7 +123,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                         disabled={index === 0}
                         onClick={() => moveLayer(index, 'up')}
                         className="p-0.5 rounded hover:bg-slate-200 disabled:opacity-30 text-slate-500"
-                        title="Nach links / innen schieben"
+                        title={inhalt.werte.nachLinksInnenSchieben}
                       >
                         <ArrowUp size={12} />
                       </button>
@@ -145,7 +131,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                         disabled={index === wallLayers.length - 1}
                         onClick={() => moveLayer(index, 'down')}
                         className="p-0.5 rounded hover:bg-slate-200 disabled:opacity-30 text-slate-500"
-                        title="Nach rechts / außen schieben"
+                        title={inhalt.werte.nachRechtsAußenSchieben}
                       >
                         <ArrowDown size={12} />
                       </button>
@@ -182,7 +168,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                       onClick={() => removeLayer(index)}
                       disabled={wallLayers.length <= 1}
                       className="text-stone-400 hover:text-red-600 disabled:opacity-35 p-1.5 rounded-lg hover:bg-slate-100 transition-colors self-end md:self-auto shrink-0"
-                      title="Schicht löschen"
+                      title={inhalt.werte.schichtLöschen}
                     >
                       <Trash2 size={14} />
                     </button>
@@ -194,8 +180,8 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             {/* Add Layer Controller */}
             <div className="mt-4 pt-4 border-t border-home-grau/30 flex flex-col md:flex-row items-end gap-3 bg-slate-50/50 p-4 rounded-xl border border-home-grau/30">
               <div className="w-full md:flex-1">
-                <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider">Werkstoff auswählen</label>
-                <select aria-label="Werkstoff auswählen"
+                <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider"><MdText text={inhalt.texte.werkstoffAuswählen} /></label>
+                <select aria-label={inhalt.werte.werkstoffAuswählen}
                   value={selectedAddMaterial}
                   onChange={(e) => setSelectedAddMaterial(e.target.value)}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-xs bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -222,8 +208,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                 onClick={addLayer}
                 className="bg-shiraz hover:bg-shiraz/90 text-white font-bold text-xs px-4 py-2.5 rounded-lg flex items-center gap-1.5 shrink-0 transition-all select-none w-full md:w-auto justify-center"
               >
-                <Plus size={14} /> Schicht hinzufügen
-              </button>
+                <Plus size={14} /><MdText text={inhalt.texte.schichtHinzufügen} /></button>
             </div>
 
           </div>
@@ -234,9 +219,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
 
           {/* Physics outputs card */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider border-b border-home-grau/30 pb-1">
-              Bauphysikalische Kennwerte
-            </h3>
+            <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider border-b border-home-grau/30 pb-1"><MdText text={inhalt.texte.bauphysikalischeKennwerte} /></h3>
 
             <div className="grid grid-cols-2 gap-3 text-center">
               <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30">
@@ -251,7 +234,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
 
             {/* Thermal conductivity indicator */}
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col items-center">
-              <span className="text-[11px] text-slate-400 font-bold uppercase tracking-widest leading-none mb-1">Berechneter U-Wert</span>
+              <span className="text-[11px] text-slate-400 font-bold uppercase tracking-widest leading-none mb-1"><MdText text={inhalt.texte.berechneterUWert} /></span>
               <strong className="text-2xl font-mono text-shiraz font-bold">{formatDeZahl(computedWall.uValue, 3)} W/m²K</strong>
 
               {/* GEG limits validation badge */}
@@ -264,9 +247,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col gap-3">
               <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                 <span className="text-[10px] text-slate-800 uppercase font-bold tracking-wider flex items-center gap-1.5 font-sans">
-                  <Recycle size={13} className="text-shiraz" />
-                  Zirkularitäts-Index (MCI)
-                </span>
+                  <Recycle size={13} className="text-shiraz" /><MdText text={inhalt.texte.zirkularitätsIndexMci} /></span>
                 <span className="text-[10px] bg-shiraz/10 text-shiraz border border-shiraz/20 px-1.5 py-0.5 rounded font-bold font-mono">
                   {formatDeWert(Math.round(computedWall.effectiveCircularity))} / 100
                 </span>
@@ -286,22 +267,22 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
 
                 <div className="grid grid-cols-2 gap-2 text-[10px]">
                   <div className="bg-white p-2 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 block font-normal">Material-Zyklus (Inhärent):</span>
+                    <span className="text-slate-400 block font-normal"><MdText text={inhalt.texte.materialZyklusInhärent} /></span>
                     <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{formatDeWert(Math.round(computedWall.inherentCircularity))}%</strong>
                   </div>
                   <div className="bg-white p-2 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 block font-normal">Trennungs-Weiche (Fügung):</span>
+                    <span className="text-slate-400 block font-normal"><MdText text={inhalt.texte.trennungsWeicheFügung} /></span>
                     <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{formatDeWert(Math.round(computedWall.jointSeparabilityFactor * 100))}%</strong>
                   </div>
                 </div>
 
                 <p className="text-[10px] text-slate-600 leading-normal">
                   {computedWall.effectiveCircularity >= 70 ? (
-                    <span className="text-slate-800 font-medium">✓ Sehr gutes Design! Erleichtert das Cradle-to-Cradle Kreislaufverfahren vollends.</span>
+                    <span className="text-slate-800 font-medium"><MdText text={inhalt.texte.sehrGutesDesignErleichtert} /></span>
                   ) : computedWall.effectiveCircularity >= 40 ? (
-                    <span className="text-slate-600 font-medium font-normal">⚠ Teilweise kreislauffähig. Verbessern Sie die Fügung auf "Geschraubt" oder nutzen Sie naturnah rückbaubare Rohstoffe.</span>
+                    <span className="text-slate-600 font-medium font-normal"><MdText text={inhalt.texte.teilweiseKreislauffähigVerbessernSie} /></span>
                   ) : (
-                    <span className="text-shiraz font-medium font-normal">❌ Hohes Downcycling- oder Deponierisiko! Inseparable Verklebungen sabotieren künftige Erdnischen oder Recyclingkörper.</span>
+                    <span className="text-shiraz font-medium font-normal"><MdText text={inhalt.texte.hohesDowncyclingOderDeponierisiko} /></span>
                   )}
                 </p>
               </div>
@@ -311,10 +292,8 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
           {/* Footprint visualization card */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
             <div className="flex justify-between items-baseline border-b border-home-grau/30 pb-1">
-              <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">
-                Ökobilanzierung (Netto)
-              </h3>
-              <span className="text-xs text-slate-400 font-mono">1 m² Wandfläche</span>
+              <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider"><MdText text={inhalt.texte.ökobilanzierungNetto} /></h3>
+              <span className="text-xs text-slate-400 font-mono"><MdText text={inhalt.texte.t1MWandfläche} /></span>
             </div>
 
             <div className="h-56 relative w-full pt-1">
@@ -324,14 +303,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             {/* Dynamic explanations */}
             <div className="bg-slate-50 text-slate-800 p-3.5 rounded-xl border border-slate-200 text-[11px] leading-relaxed">
               <strong className="text-xs text-slate-900 block font-bold mb-1 flex items-center gap-1.5 uppercase">
-                <Percent size={13} className="text-shiraz" /> GWP-Biogenic Nachweisbericht
-              </strong>
-              Mit diesem Schichtenaufbau binden die nachwachsenden Anteile rechnerisch{' '}
-              <span className="font-bold text-slate-900">{formatDeZahl(computedWall.gwpBiogenicA1A3, 1)} kg CO₂-eq/m²</span> biogenen Kohlenstoff in der Herstellungsphase. 
-              Die herstellungsbedingten fossilen Emissionen belaufen sich auf{' '}
-              <span className="font-bold text-shiraz">+{formatDeZahl(computedWall.gwpFossilA1A3, 1)} kg CO₂-eq</span>. 
-              Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet.
-            </div>
+                <Percent size={13} className="text-shiraz" /><MdText text={inhalt.texte.gwpBiogenicNachweisbericht} /></strong><MdText text={inhalt.texte.mitDiesemSchichtenaufbauBinden} /><span className="font-bold text-slate-900">{formatDeZahl(computedWall.gwpBiogenicA1A3, 1)}<MdText text={inhalt.texte.kgCoEqM} /></span><MdText text={inhalt.texte.biogenenKohlenstoffInDer} /><span className="font-bold text-shiraz">+{formatDeZahl(computedWall.gwpFossilA1A3, 1)} kg CO₂-eq</span><MdText text={inhalt.texte.derNettoWertEnthält} /></div>
           </div>
 
         </div>

@@ -6,6 +6,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, Calculator, Info, Trees, ArrowRight, CheckCircle2, AlertTriangle, Star, BookOpen, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpholzprodukte/BpHolzprodukte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface WoodProductType {
   id: string;
@@ -21,116 +23,7 @@ interface WoodProductType {
   dimensions: string;
 }
 
-const woodProducts: WoodProductType[] = [
-  {
-    id: 'kvh',
-    name: 'Konstruktionsvollholz (KVH)',
-    short: 'KVH C24',
-    density: 420,
-    eModulus: 11000,
-    f_mk: 24,
-    f_vk: 4.0,
-    advantages: [
-      'Geringe Holzfeuchte (15% ± 3%), dadurch formstabil & rissminimiert',
-      'In großen Längen durch Keilzinkung lieferbar (bis zu 16m)',
-      'Technisch getrocknet (u ≤ 15 %); in Gebrauchsklasse 0 nach DIN 68800 ohne chemischen Holzschutz',
-      'Definierte Oberflächenqualitäten (NSi für nicht-sichtbar, Si für sichtbar)'
-    ],
-    disadvantages: [
-      'Begrenzte Bauteildicken (meist max. 14 cm)',
-      'Geringere Tragfähigkeit im Vergleich zu BSH',
-      'Keilzinkungsstellen im Sichtbereich sichtbar'
-    ],
-    usecases: [
-      'Holzrahmenbau / Holztafelbau',
-      'Dachstühle & Sparrenkonstruktionen',
-      'Unterkonstruktionen im Innenausbau',
-      'Garten- und Carportbau'
-    ],
-    dimensions: 'Breiten 40-140 mm, Höhen 60-240 mm, Längen bis 16m'
-  },
-  {
-    id: 'bsh',
-    name: 'Brettschichtholz (BSH / Leimbinder)',
-    short: 'BSH GL24h',
-    density: 450,
-    eModulus: 11500,
-    f_mk: 24,
-    f_vk: 3.5,
-    advantages: [
-      'Höhere Tragfähigkeit und größere Querschnitte als Vollholz',
-      'Sehr formstabil und rissminimiert durch Schicht-Verklebung',
-      'Große Spannweiten für Hallenbau (Träger bis >30m)',
-      'Sehr hohe Feuerwiderstandsdauer (berechenbarer Abbrand)',
-      'Hervorragend gestaltbar (auch gebogene oder gekrümmte Formen)'
-    ],
-    disadvantages: [
-      'Spürbar teurer als KVH',
-      'Nur mit geeigneten Klebstoffen (z. B. MUF, PRF, PUR nach DIN EN 301/DIN EN 15425)'
-    ],
-    usecases: [
-      'Weitgespannte Hallentragwerke und Deckenunterzüge',
-      'Hochbelastete Stützen und Hauptträger',
-      'Ingenieurholzbau & Skelettbauten',
-      'Brückenbau (mit witterungsschützenden Bekleidungen)'
-    ],
-    dimensions: 'Breiten 80-280 mm, Höhen 120-2000 mm, Längen bis 30m+'
-  },
-  {
-    id: 'clt',
-    name: 'Brettsperrholz (BSP / CLT)',
-    short: 'CLT - Cross Laminated Timber',
-    density: 480,
-    eModulus: 11000,
-    f_mk: 21, // typisch für Lamellen
-    f_vk: 2.5,
-    advantages: [
-      'Flächige Lastabtragung (Schnittgrößen in zwei Richtungen)',
-      'Hohe Formstabilität in Plattenebene durch kreuzweise Lagen',
-      'Hoher Vorfertigungsgrad (CNC-Abbund von Fensterausschnitten im Werk)',
-      'Sofort tragfähig, trockene Bauweise (keine Einbaufeuchte)'
-    ],
-    disadvantages: [
-      'Hohes Eigengewicht (erfordert Mobilkräne auf Baustelle)',
-      'Wandstärken nehmen viel Grundfläche ein bei mehrgeschossigen Bauten',
-      'Aufwendige Schallschutz-Detailpunkte an Plattenstößen'
-    ],
-    usecases: [
-      'Massivholz-Wände und Massivholz-Decken',
-      'Mehrgeschossiger Holzwohnbau (Gebäudeklasse 1 bis 5)',
-      'Kragarme und aussteifende Deckenscheiben',
-      'Aufstockungen im urbanen Raum (geringeres Gewicht als Beton)'
-    ],
-    dimensions: 'Plattenbreiten bis 3,5 m, Längen bis 16 m, Stärken 60-350 mm'
-  },
-  {
-    id: 'lvl',
-    name: 'Furnierschichtholz (FSH / LVL)',
-    short: 'LVL (eg. Kerto)',
-    density: 500,
-    eModulus: 13800,
-    f_mk: 44, // Lehrwert; maßgebend ist die ETA des Produkts
-    f_vk: 4.6,
-    advantages: [
-      'Homogenes Gefüge (Äste und Fehlstellen sind verteilt)',
-      'Höchste mechanische Tragfähigkeiten aller Holzwerkstoffe',
-      'Sehr dünne, schlanke Querschnitte möglich',
-      'Hohe Plattenstabilität bei Scheibenbeanspruchung'
-    ],
-    disadvantages: [
-      'Verlegeaufwand an Kanten (Kopplung)',
-      'Hoher Klebstoffanteil',
-      'Aufwendigerer Zuschnitt (harte Leimfugen)'
-    ],
-    usecases: [
-      'Hochbelastete Unterzüge und Verstärkungen',
-      'Sparren und Pfetten bei großen Spannweiten',
-      'Schalungsplatten und Gerüstbohlen',
-      'Gurtmaterial für I-Beams (Stegträger)'
-    ],
-    dimensions: 'Dicken 21-75 mm, Breiten bis 1,8 m, Längen bis 20m+'
-  }
-];
+const woodProducts: WoodProductType[] = inhalt.daten.woodProducts;
 
 function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -138,12 +31,8 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Holz im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Weiter zu den anderen Teilen des Lehrpfads Holz:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadHolzIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.weiterZuDenAnderen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -158,11 +47,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Anisotropes Quellen/Schwinden (3D-Modell), Holzfestigkeiten (EC5) & Kennwerte.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.anisotropesQuellenSchwinden3d} /></span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -182,11 +69,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Holzprodukte & Praxis</span>
+            <span><MdText text={inhalt.texte.t2HolzproduktePraxis} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Konstruktionsvollholz, CLT, Vor- und Nachteile & Vorbemessungsrechner.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.konstruktionsvollholzCltVorUnd} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -206,11 +91,9 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Holzzerstörende Pilze/Insekten, Witterung & baulicher Holzschutz nach DIN 68800.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.holzzerstörendePilzeInsektenWitterung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -309,25 +192,19 @@ export default function BpHolzprodukte() {
           <div className="p-2.5 bg-shiraz/10 text-shiraz rounded-xl">
             <Trees className="w-6 h-6 animate-pulse" />
           </div>
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Holzprodukte im konstruktiven Holzbau
-            </h2>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.holzprodukteImKonstruktivenHolzbau} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Technische Kenngrößen, bauaufsichtliche Verlässlichkeit und vereinfachte Vordimensionierung nach Eurocode 5 (DIN EN 1995-1-1)
-          </p>
+          <p><MdText text={inhalt.texte.technischeKenngrößenBauaufsichtlicheVerl} /></p>
         </div>
         </div>
-        <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Holzwerkstoffe haben sich von rein handwerklichen Balkenhölzern zu hochentwickelten, industriellen Verbundbaustoffen gewandelt. Sie weisen durch gezielte Homogenisierung, Trocknung und schichtweise Verklebung weit kalkulierbarere mechanische Gütestufen und geringere Schwind- und Quellverformungen auf als klassisches Bauholz.
-        </p>
+        <p className="text-sm text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.holzwerkstoffeHabenSichVon} /></p>
       </div>
 
       {/* Main Material Database & Selector */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left selector */}
         <div className="lg:col-span-4 space-y-3">
-          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block">Verfügbare Holzwerkstoff-Klassen:</span>
+          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.verfügbareHolzwerkstoffKlassen} /></span>
           <div className="flex flex-col gap-2.5">
             {woodProducts.map((p) => (
               <button
@@ -353,13 +230,9 @@ export default function BpHolzprodukte() {
           <div className="bg-off-white/40 p-4 border border-home-grau/30 rounded-xl space-y-2 mt-4 text-xs text-slate-800 leading-relaxed">
             <div className="flex gap-1.5 items-center font-bold">
               <Info size={14} className="text-shiraz" />
-              <span>Nutzungsklassen (NKL) nach EC 5</span>
+              <span><MdText text={inhalt.texte.nutzungsklassenNklNachEc} /></span>
             </div>
-            <p className="font-normal text-[11px] text-slate-900/80">
-              • <strong>NKL 1:</strong> Holzfeuchte entspricht max 12% (z.B. allseitig geschlossene beheizte Räume).<br />
-              • <strong>NKL 2:</strong> Holzfeuchte entspricht max 20% (z.B. überdachte offene Bauwerke, Carports).<br />
-              • <strong>NKL 3:</strong> Größere Feuchten (z.B. freie Bewitterung unter freiem Himmel). Hier sind die k_mod-Werte kleiner (stärkere Abminderung).
-            </p>
+            <p className="font-normal text-[11px] text-slate-900/80"><MdText text={inhalt.texte.nkl1HolzfeuchteEntspricht} /></p>
           </div>
         </div>
 
@@ -367,11 +240,11 @@ export default function BpHolzprodukte() {
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
           <div className="border-b border-home-grau/15 pb-4 flex justify-between items-start flex-wrap gap-2">
             <div>
-              <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">TECHNISCHES DATENBLATT</span>
+              <span className="text-xs font-bold text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.technischesDatenblatt} /></span>
               <h3 className="text-xl font-bold text-text-main mt-0.5">{selectedWood.name}</h3>
             </div>
             <div className="bg-slate-50 px-3 py-1.5 rounded-lg border border-home-grau/10 text-right">
-              <span className="text-[10px] text-text-main/40 block leading-tight">Typisches Biege-f_m,k</span>
+              <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.typischesBiegeFM} /></span>
               <span className="text-sm font-bold text-slate-800 font-mono">{formatDeWert(selectedWood.f_mk)} N/mm²</span>
             </div>
           </div>
@@ -379,11 +252,11 @@ export default function BpHolzprodukte() {
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
-              <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Dichte (ρ_k)</span>
+              <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.dichteK} /></span>
               <span className="text-base font-bold font-mono text-slate-800">~{formatDeWert(selectedWood.density)} kg/m³</span>
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
-              <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">E-Modul (E_mean)</span>
+              <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.eModulEMean} /></span>
               <span className="text-base font-bold font-mono text-slate-800">{formatDeWert(selectedWood.eModulus)} MPa</span>
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
@@ -401,7 +274,7 @@ export default function BpHolzprodukte() {
           {/* Advantages & Disadvantages */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-home-grau/10">
             <div className="space-y-2">
-              <span className="text-xs font-bold text-emerald-800 uppercase block tracking-wider">Vorteile & Stärken:</span>
+              <span className="text-xs font-bold text-emerald-800 uppercase block tracking-wider"><MdText text={inhalt.texte.vorteileStärken} /></span>
               <ul className="space-y-1.5">
                 {selectedWood.advantages.map((adv, i) => (
                   <li key={i} className="text-xs text-text-main/80 flex gap-2 items-start font-normal">
@@ -412,7 +285,7 @@ export default function BpHolzprodukte() {
               </ul>
             </div>
             <div className="space-y-2">
-              <span className="text-xs font-bold text-red-800 uppercase block tracking-wider">Einschränkungen & Risiken:</span>
+              <span className="text-xs font-bold text-red-800 uppercase block tracking-wider"><MdText text={inhalt.texte.einschränkungenRisiken} /></span>
               <ul className="space-y-1.5">
                 {selectedWood.disadvantages.map((dis, i) => (
                   <li key={i} className="text-xs text-text-main/80 flex gap-2 items-start font-normal">
@@ -426,7 +299,7 @@ export default function BpHolzprodukte() {
 
           {/* Practical Applications */}
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/10 mt-4 space-y-2">
-            <span className="text-xs font-bold text-text-main/60 uppercase block">Häufige Anwendungsbereiche (Baupraxis):</span>
+            <span className="text-xs font-bold text-text-main/60 uppercase block"><MdText text={inhalt.texte.häufigeAnwendungsbereicheBaupraxis} /></span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-800">
               {selectedWood.usecases.map((uc, i) => (
                 <div key={i} className="flex items-center gap-1.5 bg-white p-2 border border-home-grau/30 rounded-md">
@@ -443,13 +316,9 @@ export default function BpHolzprodukte() {
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
         <div className="flex items-center gap-2 border-b border-home-grau/15 pb-4">
           <Calculator className="text-shiraz" />
-          <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-              EC 5 Holzbalken-Pre-Dimensionierung
-            </h3>
+          <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.ec5HolzbalkenPre} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Einfache Abschätzung für Einfeldträger unter Gleichlast (ULS & SLS Nachweis der Durchbiegung/Spannung)
-          </p>
+          <p><MdText text={inhalt.texte.einfacheAbschätzungFürEinfeldträger} /></p>
         </div>
         </div>
 
@@ -460,7 +329,7 @@ export default function BpHolzprodukte() {
             
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Spannweite L:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.spannweiteL} /></label>
                 <span className="text-shiraz font-mono">{formatDeZahl(span, 2)} m</span>
               </div>
               <input 
@@ -476,7 +345,7 @@ export default function BpHolzprodukte() {
 
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Achsabstand der Balken s:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.achsabstandDerBalkenS} /></label>
                 <span className="text-shiraz font-mono">{formatDeZahl((spacing * 100), 1)} cm</span>
               </div>
               <input 
@@ -492,7 +361,7 @@ export default function BpHolzprodukte() {
 
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Einfluss-Flächenlast q_k:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.einflussFlächenlastQK} /></label>
                 <span className="text-shiraz font-mono">{formatDeZahl(loadk, 1)} kN/m²</span>
               </div>
               <input 
@@ -504,17 +373,17 @@ export default function BpHolzprodukte() {
                 onChange={(e) => setLoadk(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
-              <span className="text-[10px] text-text-main/40 block leading-tight">Inkl. verkehrliche Nutzlasten &amp; raumbildende Fußbodenaufbauten.</span>
+              <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.inklVerkehrlicheNutzlastenRaumbildende} /></span>
             </div>
           </div>
 
           {/* Input column 2 */}
           <div className="space-y-4">
-            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider">Querschnitt & Holzgüte</span>
+            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider"><MdText text={inhalt.texte.querschnittHolzgüte} /></span>
             
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-text-main">Verwendete Holzgüte:</label>
-              <select aria-label="Verwendete Holzgüte"
+              <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.verwendeteHolzgüte} /></label>
+              <select aria-label={inhalt.werte.verwendeteHolzgüte}
                 value={woodClass}
                 onChange={(e) => setWoodClass(e.target.value)}
                 className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -528,7 +397,7 @@ export default function BpHolzprodukte() {
 
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Balkenbreite b:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.balkenbreiteB} /></label>
                 <span className="text-shiraz font-mono">{formatDeWert(beamWidth)} mm</span>
               </div>
               <input 
@@ -544,7 +413,7 @@ export default function BpHolzprodukte() {
 
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Balkenhöhe h:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.balkenhöheH} /></label>
                 <span className="text-shiraz font-mono">{formatDeWert(beamHeight)} mm</span>
               </div>
               <input 
@@ -567,7 +436,7 @@ export default function BpHolzprodukte() {
                 <span className={`text-xs font-extrabold px-2.5 py-0.5 rounded-full ${
                   isSafe ? 'bg-emerald-150 text-emerald-800 border border-emerald-300' : 'bg-red-150 text-red-800 border border-red-300'
                 }`}>
-                  {isSafe ? 'Tragfähig (OK)' : 'Überlastet (Nicht OK)'}
+                  {isSafe ? inhalt.werte.tragfähigOk : inhalt.werte.überlastetNichtOk}
                 </span>
               </div>
 
@@ -575,7 +444,7 @@ export default function BpHolzprodukte() {
               <div className="space-y-3 font-mono text-xs">
                 <div>
                   <div className="flex justify-between mb-0.5">
-                    <span className="font-sans font-semibold text-text-main/80">1. Biegespannung (ULS):</span>
+                    <span className="font-sans font-semibold text-text-main/80"><MdText text={inhalt.texte.t1BiegespannungUls} /></span>
                     <span className={`font-bold ${bendingUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
                       {formatDeZahl(bendingUtilization, 0)}%
                     </span>
@@ -587,13 +456,13 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    σ_md = {formatDeZahl(sigma_md, 2)} N/mm² vs. f_md = {formatDeZahl(f_md, 2)} N/mm²
+                    σ_md = {formatDeZahl(sigma_md, 2)}<MdText text={inhalt.texte.nMmVsF} />{formatDeZahl(f_md, 2)} N/mm²
                   </span>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-0.5">
-                    <span className="font-sans font-semibold text-text-main/80">2. Schubspannung (ULS):</span>
+                    <span className="font-sans font-semibold text-text-main/80"><MdText text={inhalt.texte.t2SchubspannungUls} /></span>
                     <span className={`font-bold ${shearUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
                       {formatDeZahl(shearUtilization, 0)}%
                     </span>
@@ -605,13 +474,13 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    τ_d = {formatDeZahl(tau_d, 2)} N/mm² (b_ef = k_cr · b, k_cr = {formatDeZahl(k_cr, 2)}) vs. f_vd = {formatDeZahl(f_vd, 2)} N/mm²
+                    τ_d = {formatDeZahl(tau_d, 2)}<MdText text={inhalt.texte.nMmBEf} />{formatDeZahl(k_cr, 2)}<MdText text={inhalt.texte.vsFVd} />{formatDeZahl(f_vd, 2)} N/mm²
                   </span>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-0.5">
-                    <span className="font-sans font-semibold text-text-main/80">3. Durchbiegung (SLS comfort):</span>
+                    <span className="font-sans font-semibold text-text-main/80"><MdText text={inhalt.texte.t3DurchbiegungSlsComfort} /></span>
                     <span className={`font-bold ${deflectionUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
                       {formatDeZahl(deflectionUtilization, 0)}%
                     </span>
@@ -623,16 +492,16 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    w_inst = {formatDeZahl(w_inst, 1)} mm vs. Max (L/300) = {formatDeZahl(w_limit, 1)} mm
+                    w_inst = {formatDeZahl(w_inst, 1)}<MdText text={inhalt.texte.mmVsMaxL} />{formatDeZahl(w_limit, 1)} mm
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-3 border-t border-home-grau/10 text-[10px] space-y-1 text-text-main/60 font-sans leading-relaxed">
-              <div>• Eigengewicht: <strong>{formatDeZahl((selfWeightKN_m * 100), 0)} kg/m</strong> (~{formatDeWert(activeMat.density)} kg/m³ density)</div>
-              <div>• Teilsicherheitsbeiwerte: γ_G = 1,35, γ_Q = 1,50</div>
-              <div>• k_mod Beiwert = 0,8 / Material-γ_M = {formatDeWert(activeMat.gammaM)}</div>
+              <div><MdText text={inhalt.texte.eigengewicht} /><strong>{formatDeZahl((selfWeightKN_m * 100), 0)} kg/m</strong> (~{formatDeWert(activeMat.density)}<MdText text={inhalt.texte.kgMDensity} /></div>
+              <div><MdText text={inhalt.texte.teilsicherheitsbeiwerteG135} /></div>
+              <div><MdText text={inhalt.texte.kModBeiwert0} />{formatDeWert(activeMat.gammaM)}</div>
             </div>
           </div>
         </div>
@@ -641,48 +510,43 @@ export default function BpHolzprodukte() {
       {/* Industrial Wood Suppliers Table */}
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm mt-2 bg-slate-50/50">
         <h3 className="font-bold text-home-prim text-lg mb-2 flex items-center gap-2">
-          <Star className="text-shiraz" size={18} /> Produktgruppen &amp; Systemtechniken des Holzbaus (Herstellerneutral)
-        </h3>
-        <p className="text-xs text-text-main/60 mb-4 italic">
-          Hinweis zur Herstellerneutralität: Zur Wahrung vollständiger Produkt- und herstellerneutralität im Rahmen der akademischen Lehre und VOB-gerechten Ausschreibung werden nachfolgend standardisierte Systemklassen deklariert.
-        </p>
-        <p className="text-xs text-text-main/70 mb-4 font-normal">
-          Holzbauprodukte erfordern eine CE-Konformitätskennzeichnung bzw. eine ETA (European Technical Assessment) und werden nach harmonisierten europäischen Standards klassifiziert:
-        </p>
+          <Star className="text-shiraz" size={18} /><MdText text={inhalt.texte.produktgruppenSystemtechnikenDesHolzbaus} /></h3>
+        <p className="text-xs text-text-main/60 mb-4 italic"><MdText text={inhalt.texte.hinweisZurHerstellerneutralitätZur} /></p>
+        <p className="text-xs text-text-main/70 mb-4 font-normal"><MdText text={inhalt.texte.holzbauprodukteErfordernEineCe} /></p>
         <div className="overflow-x-auto rounded-xl border border-home-grau/15 bg-white">
           <table className="w-full text-xs text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-home-grau/15 text-text-main/80 font-bold font-sans">
-                <th className="p-3">Systemwerkstoff / Produktgruppe</th>
-                <th className="p-3">Kernkompetenzen &amp; Anwendungsbereiche</th>
-                <th className="p-3">Zertifikate, Normen &amp; Holzarten</th>
-                <th className="p-3">Rolle im modernen Ingenieurholzbau</th>
+                <th className="p-3"><MdText text={inhalt.texte.systemwerkstoffProduktgruppe} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.kernkompetenzenAnwendungsbereiche} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.zertifikateNormenHolzarten} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.rolleImModernenIngenieurholzbau} /></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-text-main/80">
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Brettsperrholz (CLT / BSP)</td>
-                <td className="p-3">Flächige Tragelemente aus kreuzweise verklebten Nadelholzbrettern für Decken, Wände und Dachscheiben.</td>
-                <td className="p-3 font-mono">PEFC, FSC, DIN EN 16351 (ETA-Zulassungen, meist Fichte / Kiefer)</td>
-                <td className="p-3">Hochbelastbarer Massivholzbau für mehrgeschossige urbane Wohn- und Zweckgebäude.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.brettsperrholzCltBsp} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.flächigeTragelementeAusKreuzweise} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.pefcFscDinEn} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.hochbelastbarerMassivholzbauFürMehrgesch} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Holzwerkstoffplatten (OSB, Spanplatten, MDF)</td>
-                <td className="p-3">Ausgerichtete Flachpressplatten und Spanplatten für aussteifende Wandbeplankungen, Schalungen und Baubretter.</td>
-                <td className="p-3 font-mono">FSC, CE nach DIN EN 13986 / EN 300 (Güteüberwachung)</td>
-                <td className="p-3">Standard-Plattenwerkstoffe für den trockenen Innenausbau und konstruktive Scheibenwirkung bei Ständerwerken.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.holzwerkstoffplattenOsbSpanplattenMdf} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.ausgerichteteFlachpressplattenUndSpanpla} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.fscCeNachDin} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.standardPlattenwerkstoffeFürDen} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Ökologische Holzfaser-Dämmsysteme</td>
-                <td className="p-3">Flexible und druckfeste Dämmplatten aus verfilzten Holzfasern (Nass- oder Trockenverfahren), Putzträgerplatten.</td>
-                <td className="p-3 font-mono">FSC, DIN EN 13171, ETA-Zulassungen für WDVS</td>
-                <td className="p-3">Guter sommerlicher Wärmeschutz und diffusionsoffene Aufbauten im Holzrahmenbau.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.ökologischeHolzfaserDämmsysteme} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.flexibleUndDruckfesteDämmplatten} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.fscDinEn13171} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.guterSommerlicherWärmeschutzUnd} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Brettschichtholz (BSH) &amp; Stegträger</td>
-                <td className="p-3">Faserparallel verklebte Holzlamellen für Träger mit großen Spannweiten, schlanke I-Träger (Stegträger) mit Furnierschichtgurt.</td>
-                <td className="p-3 font-mono">PEFC, DIN EN 14080 (ETA-Zulassungen für Sonderformen)</td>
-                <td className="p-3">Ingenieurholzbaulösungen für weitgespannte Skeletttragwerke, Hallenbauten und hochgedämmte Dachsparrenstücke.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.brettschichtholzBshStegträger} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.faserparallelVerklebteHolzlamellenFür} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.pefcDinEn14080} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.ingenieurholzbaulösungenFürWeitgespannte} /></td>
               </tr>
             </tbody>
           </table>
@@ -695,16 +559,11 @@ export default function BpHolzprodukte() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Deckenbalken C24 vordimensionieren"
+          title={inhalt.werte.anwendungsbeispielDeckenbalkenC24Vordime}
           zielGleichung="M_{Ed} = \frac{q_d L^2}{8}, \quad \sigma_{m,d} = \frac{M_{Ed}}{W} \le k_{mod} \frac{f_{m,k}}{\gamma_M}"
-          normQuelle="DIN EN 1995-1-1 mit NA (NKL 1, KLED mittel, k_mod = 0,8); Eigenlast vereinfacht"
-          schritte={[
-            { titel: '1. Last je Balken', formel: 'q_k = 2{,}5 \\cdot 0{,}625 = 1{,}56\\,\\text{kN/m},\\; g_k \\approx 0{,}08\\,\\text{kN/m}', erklaerung: 'Rasterabstand 62,5 cm, Balken 10/20 cm.' },
-            { titel: '2. Bemessungslast und Moment', formel: 'q_d = 1{,}35 \\cdot 0{,}08 + 1{,}5 \\cdot 1{,}56 = 2{,}45\\,\\text{kN/m};\\; M_{Ed} = 2{,}45 \\cdot 4{,}5^2/8 = 6{,}2\\,\\text{kNm}', erklaerung: 'Spannweite 4,5 m.' },
-            { titel: '3. Spannung', formel: '\\sigma_{m,d} = 6{,}2 \\cdot 10^6 / 666\\,667 = 9{,}3\\,\\text{N/mm}^2', erklaerung: 'W = 100 · 200² / 6.' },
-            { titel: '4. Nachweis', formel: 'f_{m,d} = 0{,}8 \\cdot 24/1{,}3 = 14{,}8\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}63', erklaerung: 'Tragfähigkeit erfüllt; Durchbiegung gesondert prüfen.' },
-          ]}
-          ergebnisHinweis="Bei Holzbalkendecken wird oft die Durchbiegung oder das Schwingungsverhalten maßgebend, nicht die Biegespannung."
+          normQuelle={inhalt.werte.dinEn19951}
+          schritte={inhalt.daten["BpHolzprodukte.schritte"]}
+          ergebnisHinweis={inhalt.werte.beiHolzbalkendeckenWirdOft}
         />
       </div>
 
@@ -716,38 +575,9 @@ export default function BpHolzprodukte() {
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' },
           { title: 'Brettsperrholz', url: 'https://de.wikipedia.org/wiki/Brettsperrholz' }
         ]} 
-        literatur={[ 
-          'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Edition Detail 2017',
-          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016' 
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5; bauaufsichtlich eingeführt); 2. Generation DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025, NA noch ausstehend, nicht eingeführt)' }, 
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)' },
-          { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)' },
-          { title: 'DIN EN 16351:2025-07 (Holzbauwerke - Brettsperrholz - Anforderungen)' }
-        ]} 
-        formeln={[
-          { 
-            formel: 'M_{Ed} = \\frac{q_d \\cdot L^2}{8}', 
-            erklaerung: 'Maximales Biegemoment Med eines statisch bestimmt gelagerten Einfeldträgers unter Gleichstreckenlast qd.',
-            quelle: 'Statik / Technische Mechanik'
-          },
-          { 
-            formel: '\\sigma_{m,y,d} = \\frac{M_{y,Ed}}{W_y} \\le f_{m,y,d} = k_{\\text{mod}} \\cdot \\frac{f_{m,y,k}}{\\gamma_M}', 
-            erklaerung: 'Biegespannungsnachweis (ULS) nach EC 5 unter Berücksichtigung von Modifikationsbeiwert kmod und Teilsicherheitsbeiwert gamma_M (γ_M = 1,3 für Vollholz und BSH nach DIN EN 1995-1-1/NA).',
-            quelle: 'DIN EN 1995-1-1 Abs. 6.1.6'
-          },
-          { 
-            formel: '\\tau_d = \\frac{1{,}5 \\cdot V_{Ed}}{k_{cr} \\cdot b \\cdot h} \\le f_{v,d}', 
-            erklaerung: 'Schubnachweis mit Rissbeiwert k_cr (wirksame Breite b_ef = k_cr · b); nach NA: k_cr = 2,0/f_v,k für Nadelvollholz, 2,5/f_v,k für BSH.',
-            quelle: 'DIN EN 1995-1-1 Abs. 6.1.7 mit NA'
-          },
-          { 
-            formel: 'w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}', 
-            erklaerung: 'Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte L/300 bis L/500 als Empfehlungen (NA).',
-            quelle: 'DIN EN 1995-1-1 Abs. 7.2'
-          }
-        ]} 
+        literatur={inhalt.daten["BpHolzprodukte.literatur"]} 
+        regelwerke={inhalt.daten["BpHolzprodukte.regelwerke"]} 
+        formeln={inhalt.daten["BpHolzprodukte.formeln"]} 
       />
     </div>
   );

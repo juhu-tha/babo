@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Network, Calculator, FlaskConical, Table as TableIcon } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/statistischeversuchsplanung/StatistischeVersuchsplanung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RunData {
   run: number;
@@ -91,27 +93,17 @@ export default function StatistischeVersuchsplanung() {
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Network className="text-shiraz" /> Statistische Versuchsplanung (DoE)
-        </h2>
+          <Network className="text-shiraz" /><MdText text={inhalt.texte.statistischeVersuchsplanungDoe} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die <strong>Statistische Versuchsplanung (Design of Experiments, DoE)</strong> ist eine Methodik, 
-            um mit möglichst wenigen Versuchen den maximalen Informationsgewinn über ein System zu erzielen. 
-            Anstatt einen Faktor nach dem anderen zu variieren (One-Factor-At-A-Time, OFAT), werden mehrere 
-            Faktoren gleichzeitig variiert. Dies ermöglicht nicht nur die Berechnung von Haupteffekten, sondern 
-            auch das Erkennen von Wechselwirkungen (Interaktionen) zwischen den Faktoren. <strong>Ändern Sie die Zielgrößen in der Tabelle, um die Auswirkungen in Echtzeit zu sehen!</strong>
-          </p>
+          <p><MdText text={inhalt.texte.dieStatistischeVersuchsplanungDesign} /></p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2 flex items-center gap-2">
-            <FlaskConical size={20} className="text-shiraz" /> Versuchsmatrix konfigurieren
-          </h3>
-          <p className="text-sm text-text-main/80">
-            Wählen Sie die Anzahl der Faktoren für ein vollfaktorielles Versuchsdesign auf zwei Stufen (2^k).
-          </p>
+            <FlaskConical size={20} className="text-shiraz" /><MdText text={inhalt.texte.versuchsmatrixKonfigurieren} /></h3>
+          <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.wählenSieDieAnzahl} /></p>
           
           <div className="flex gap-4 mt-2">
             <button
@@ -119,34 +111,29 @@ export default function StatistischeVersuchsplanung() {
               className={`flex-1 py-3 px-4 rounded-xl border transition-all text-sm font-bold ${
                 factors === 2 ? 'bg-shiraz text-white border-shiraz' : 'bg-off-white text-text-main border-home-grau/30 hover:border-shiraz/50'
               }`}
-            >
-              2 Faktoren (2^2 = 4 Versuche)
-            </button>
+            ><MdText text={inhalt.texte.t2Faktoren22} /></button>
             <button
               onClick={() => setFactors(3)}
               className={`flex-1 py-3 px-4 rounded-xl border transition-all text-sm font-bold ${
                 factors === 3 ? 'bg-shiraz text-white border-shiraz' : 'bg-off-white text-text-main border-home-grau/30 hover:border-shiraz/50'
               }`}
-            >
-              3 Faktoren (2^3 = 8 Versuche)
-            </button>
+            ><MdText text={inhalt.texte.t3Faktoren23} /></button>
           </div>
 
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-200 mt-4 text-sm text-blue-900/80">
             <strong>Faktoren:</strong>
             <ul className="list-disc list-inside mt-2 space-y-1">
-              <li><strong>Faktor A:</strong> w/z-Wert (-1 = 0,40, +1 = 0,50)</li>
-              <li><strong>Faktor B:</strong> Zementgehalt (-1 = 300 kg/m³, +1 = 350 kg/m³)</li>
-              {factors === 3 && <li><strong>Faktor C:</strong> Fließmittel (-1 = 0%, +1 = 1%)</li>}
+              <li><MdText text={inhalt.texte.faktorAWZ} /></li>
+              <li><MdText text={inhalt.texte.faktorBZementgehalt1} /></li>
+              {factors === 3 && <li><MdText text={inhalt.texte.faktorCFließmittel1} /></li>}
             </ul>
-            <p className="mt-2"><strong>Zielgröße (Response):</strong> Druckfestigkeit [MPa]</p>
+            <p className="mt-2"><MdText text={inhalt.texte.zielgrößeResponseDruckfestigkeitMpa} /></p>
           </div>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2 flex items-center gap-2">
-            <TableIcon size={20} className="text-shiraz" /> Versuchsplan & Ergebnisse
-          </h3>
+            <TableIcon size={20} className="text-shiraz" /><MdText text={inhalt.texte.versuchsplanErgebnisse} /></h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
               <thead className="bg-off-white text-text-main">
@@ -155,7 +142,7 @@ export default function StatistischeVersuchsplanung() {
                   <th className="px-4 py-2">A</th>
                   <th className="px-4 py-2">B</th>
                   {factors === 3 && <th className="px-4 py-2">C</th>}
-                  <th className="px-4 py-2 rounded-tr-lg font-bold text-shiraz">Festigkeit (editierbar)</th>
+                  <th className="px-4 py-2 rounded-tr-lg font-bold text-shiraz"><MdText text={inhalt.texte.festigkeitEditierbar} /></th>
                 </tr>
               </thead>
               <tbody>
@@ -186,20 +173,18 @@ export default function StatistischeVersuchsplanung() {
         <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2 flex items-center gap-2">
           <Calculator size={20} className="text-shiraz" /> Effektauswertung
         </h3>
-        <p className="text-sm text-text-main/80 mb-2">
-          Der Haupteffekt eines Faktors ist die durchschnittliche Änderung der Zielgröße, wenn der Faktor von der unteren (-1) auf die obere (+1) Stufe geändert wird.
-        </p>
+        <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.derHaupteffektEinesFaktors} /></p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
-            <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt A (w/z)</span>
+            <span className="text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.effektAWZ} /></span>
             <span className={`text-2xl font-bold ${Number(computeEffect('A')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
               {formatDeZahl(Number(computeEffect('A')), 2)}
             </span>
             <span className="text-xs text-text-main/60 mt-1">MPa</span>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
-            <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt B (Zement)</span>
+            <span className="text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.effektBZement} /></span>
             <span className={`text-2xl font-bold ${Number(computeEffect('B')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
               {formatDeZahl(Number(computeEffect('B')), 2)}
             </span>
@@ -207,7 +192,7 @@ export default function StatistischeVersuchsplanung() {
           </div>
           {factors === 3 && (
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
-              <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt C (Fließm.)</span>
+              <span className="text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.effektCFließm} /></span>
               <span className={`text-2xl font-bold ${Number(computeEffect('C')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
                 {formatDeZahl(Number(computeEffect('C')), 2)}
               </span>
@@ -215,7 +200,7 @@ export default function StatistischeVersuchsplanung() {
             </div>
           )}
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
-            <span className="text-xs font-bold text-home-grau uppercase mb-1">Interaktion AB</span>
+            <span className="text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.interaktionAb} /></span>
             <span className={`text-2xl font-bold ${Number(computeInteraction('A', 'B')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
               {formatDeZahl(Number(computeInteraction('A', 'B')), 2)}
             </span>
@@ -225,44 +210,22 @@ export default function StatistischeVersuchsplanung() {
 
         <div className="mt-4 text-sm text-text-main/80 space-y-3">
           <p>
-            <strong className="text-text-main">Interpretation der Haupteffekte:</strong>
-            <br />Ein negativer Effekt bei A (w/z-Wert) bedeutet, dass eine Erhöhung des w/z-Wertes von 0,40 auf 0,50 die Druckfestigkeit im Durchschnitt um {formatDeZahl(Math.abs(Number(computeEffect('A'))), 2)} MPa senkt. Ein positiver Effekt bei B (Zementgehalt) zeigt, dass mehr Zement die Festigkeit erhöht.
-          </p>
+            <strong className="text-text-main"><MdText text={inhalt.texte.interpretationDerHaupteffekte} /></strong><MdText text={inhalt.texte.brEinNegativerEffekt} />{formatDeZahl(Math.abs(Number(computeEffect('A'))), 2)}<MdText text={inhalt.texte.mpaSenktEinPositiver} /></p>
           <p>
-            <strong className="text-text-main">Interaktion AB:</strong>
-            <br />Wenn der Interaktionseffekt AB ungleich 0 ist (oder signifikant groß), bedeutet dies, dass die Auswirkung der Erhöhung des Zementgehalts (B) nicht unabhängig vom w/z-Wert (A) ist. In der Baupraxis ist dies essenziell: Mehr Zement bringt bei einem hohen w/z-Wert eventuell einen geringeren Festigkeitszuwachs als bei einem niedrigen w/z-Wert.
-          </p>
+            <strong className="text-text-main"><MdText text={inhalt.texte.interaktionAb2} /></strong><MdText text={inhalt.texte.brWennDerInteraktionseffekt} /></p>
         </div>
       </div>
     
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 4 Labor: 2^k-Versuchspläne, Haupt- und Wechselwirkungseffekte geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap4} 
         wikipedia={[
-          { title: 'Statistische Versuchsplanung', url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' },
+          { title: inhalt.werte.statistischeVersuchsplanung, url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' },
           { title: 'Varianzanalyse', url: 'https://de.wikipedia.org/wiki/Varianzanalyse' },
           { title: 'Regressionsanalyse', url: 'https://de.wikipedia.org/wiki/Regressionsanalyse' }
         ]}
-        literatur={[
-          'Montgomery, D. C. (2017): Design and Analysis of Experiments (9th Edition, Wiley)',
-          'Siebertz, K.; van Bebber, D.; Hochkirchen, T. (2017): Statistische Versuchsplanung: Design of Experiments (DoE) (2. Auflage, Springer Vieweg)',
-          'Kleppmann, W. (2020): Taschenbuch Versuchsplanung (10. Auflage, Hanser Verlag)'
-        ]}
-        regelwerke={[
-          { title: 'DIN ISO 3534-3 (Statistik - Begriffe und Formelzeichen - Teil 3: Versuchsplanung)' },
-          { title: 'ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen; DIN ISO 5725 zurückgezogen)' }
-        ]}
-        formeln={[
-          {
-            formel: 'E_A = \\bar{y}_{A^+} - \\bar{y}_{A^-} = \\frac{1}{2^{k-1}} \\sum_{i=1}^{2^k} c_i \\cdot y_i',
-            erklaerung: 'Haupteffekt eines Faktors A in einem 2^k-Faktorplan (vollfaktoriell): Differenz der Mittelwerte aller Versuchsläufe auf oberer (+) und unterer (-) Stufe.',
-            quelle: 'DoE / Montgomery'
-          },
-          {
-            formel: 'y = \\beta_0 + \\sum_{i=1}^k \\beta_i x_i + \\sum_{i < j} \\beta_{ij} x_i x_j + \\varepsilon',
-            erklaerung: 'Lineares statistisches Regressionsmodell mit Interaktionseffekten beta_ij zweier Faktoren (z.B. w/z-Wert und Zementgehalt auf Betonfestigkeit).',
-            quelle: 'DIN ISO 3534-3'
-          }
-        ]}
+        literatur={inhalt.daten["StatistischeVersuchsplanung.literatur"]}
+        regelwerke={inhalt.daten["StatistischeVersuchsplanung.regelwerke"]}
+        formeln={inhalt.daten["StatistischeVersuchsplanung.formeln"]}
       />
 </div>
   );

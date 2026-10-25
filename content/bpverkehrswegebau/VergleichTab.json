@@ -1,0 +1,25 @@
+{
+  "texte": {
+    "asphaltmischgutBetonoberbauImVergleich": "Asphaltmischgut & Betonoberbau im Vergleich",
+    "asphaltImStraßenbauIst": "Asphalt im Straßenbau ist ein heiß gemischtes Verbundmaterial aus **Füller** (Gesteinsmehl < 0,063 mm), **Feiner/Grober Gesteinskörnung** und **Bitumen**. Die Struktur unterscheidet sich fundamental nach Traggerüst und Beanspruchung:",
+    "asphaltbetonAc": "Asphaltbeton (AC)",
+    "gestuftesKorngerüstMitKontinuierlicher": "Gestuftes Korngerüst mit kontinuierlicher Sieblinie. Die Hohlräume sind fast komplett mit Bitumen gefüllt. Universell einsetzbar in allen Schichten (Deck-, Binder-, Tragschicht). Hoher Verformungswiderstand durch Korn-Scherfestigkeit.",
+    "ca56M": "ca. 5 - 6 M.-%",
+    "splittmastixSma": "Splittmastix (SMA)",
+    "ausfallkörnungMitSplittgerüstSplitt": "Ausfallkörnung mit Splittgerüst (Splitt-an-Splitt-Abstützung). Der Hohlraum ist mit reichlich Mastix (Füller + Bitumen + **Zellulosefasern als Stabilisator** gegen Ablaufen von Bitumen) gefüllt. Sehr widerstandsfähig gegen Verformung unter Schwerverkehr.",
+    "ca657": "ca. 6,5 - 7,5 M.-%",
+    "gussasphaltMa": "Gussasphalt (MA)",
+    "hohlraumfreiesMischgutBitumenmengenSind": "Hohlraumfreies Mischgut. Bitumenmengen sind so ausgelegt, dass sie alle Hohlräume vollkommen überfüllen. Heiß fließbar einbaubar und **benötigt kein Walzen**. Nach dem Gießen wird Splitt zur Erreichung der Griffigkeit aufgestreut.",
+    "völligDicht0": "völlig dicht (~0%)",
+    "ca758": "ca. 7,5 - 8,5 M.-%",
+    "flüsterasphaltPa": "Flüsterasphalt (PA)",
+    "sehrHoherZusammenhängenderHohlraumgehalt": "Sehr hoher, zusammenhängender Hohlraumgehalt. Wasser läuft durch die Struktur direkt nach unten ab (kein Aquaplaning). Das schallabsorbierende System verringert Reifen-Fahrbahn-Geräusche um bis zu 5 dB(A). Neigt jedoch zu schnellerer Alterung.",
+    "t220Vol": "≥ 22,0 Vol.-%",
+    "ca556": "ca. 5,5 - 6,5 M.-%",
+    "untereTragschichtenUngebundeneBauweisen": " Untere Tragschichten & Ungebundene Bauweisen",
+    "schottertragschichtStsFrostschutzFss": "🪨 Schottertragschicht (STS) / Frostschutz (FSS)",
+    "trägtLastenReinÜber": "Trägt Lasten rein über granulare Verzahnung ab. Wichtigste Kriterien nach TL Gestein-StB: **Widerstand gegen Zertrümmerung / Schlagfestigkeit** (SZ/LA-Index) und Frostbeständigkeit. Korngrößengemische meist 0/32 oder 0/45 mm. Einbau muss optimal feucht erfolgen, um Entmischung zu vermeiden.",
+    "zementstabilisierungHgtVerfestigung": "🧱 Zementstabilisierung / HGT & Verfestigung",
+    "hydraulischGebundeneTragschichtenHgt": "**Hydraulisch gebundene Tragschichten (HGT)**: Gemisch aus Gesteinskörnungen, Zement und Wasser. Geringe Zugfestigkeit, Neigung zu Schwind- und Temperaturrissen. Unter Asphalt wird die HGT gekerbt, damit sich Risse nicht unkontrolliert in den Asphalt durchpausen."
+  }
+}

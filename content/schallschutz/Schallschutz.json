@@ -1,0 +1,128 @@
+{
+  "texte": {
+    "bauphysikSchallschutz": " Bauphysik (Schallschutz)",
+    "derSchallschutzVonEinschaligen": "Der Schallschutz von einschaligen, biegesteifen Bauteilen hängt maßgeblich von ihrer flächenbezogenen Masse (",
+    "abJeSchwererDas": ") ab. Je schwerer das Bauteil, desto besser die Schalldämmung (Massegesetz). Bei mehrschaligen Bauteilen (z.B. mit Dämmung) treten komplexe Resonanzeffekte (Masse-Feder-Masse) auf, die hier vereinfacht vernachlässigt werden.",
+    "gültigkeitsbereichBeachtenDieFormel": "⚠️ **Gültigkeitsbereich beachten:** Die Formel nach DIN 4109-32 gilt für 65 ≤ m' ≤ 720 kg/m². Der aktuelle Wert liegt außerhalb dieses Bereichs (",
+    "berechnungsgrundlageDin410932": "**Berechnungsgrundlage DIN 4109-32:** ",
+    "fürEinschaligeMassiveBauteile": " für einschalige massive Bauteile (Gültigkeit: 65 ≤ m' ≤ 720 kg/m²).",
+    "hinweisZuDämmschichtenDämmschichten": "**Hinweis zu Dämmschichten:** Dämmschichten (z. B. EPS, WDVS) dürfen bei der Ermittlung des Schalldämm-Maßes der Grundwand nicht einfach als Masse addiert werden; der akustische Einfluss von WDVS ist gesondert nach DIN 4109-34 nachzuweisen.",
+    "schalldämmMaßNachMassegesetz": "Schalldämm-Maß nach Massegesetz",
+    "schematischeDarstellungSchalldämmung": "Schematische Darstellung: Schalldämmung",
+    "auftreffenderSchallL1": "Auftreffender Schall (L_1) versetzt die Wand in Schwingung. Ein Teil wird reflektiert, ein Teil absorbiert und ein Teil transmittiert (L_2). Je schwerer die Wand (m'), desto geringer die Schwingung und Transmission."
+  },
+  "werte": {
+    "gipsputzInnen": "Gipsputz (Innen)",
+    "kalkputzInnen": "Kalkputz (Innen)",
+    "zementputzAußen": "Zementputz (Außen)",
+    "hochlochziegelHlz": "Hochlochziegel (HLZ)",
+    "vollziegelMz": "Vollziegel (MZ)",
+    "kalksandsteinKs": "Kalksandstein (KS)",
+    "porenbetonPb": "Porenbeton (PB)",
+    "normalbetonStahlbeton": "Normalbeton (Stahlbeton)",
+    "epsPolystyrolPartikelschaum": "EPS (Polystyrol-Partikelschaum)",
+    "xpsPolystyrolExtruderschaum": "XPS (Polystyrol-Extruderschaum)",
+    "mineralwolleMiwo": "Mineralwolle (MiWo)",
+    "purPirHartschaum": "PUR/PIR Hartschaum",
+    "eicheVollholz": "Eiche (Vollholz)",
+    "gipskartonplatteGkb": "Gipskartonplatte (GKB)",
+    "schalldämmMaßRW": "Schalldämm-Maß R_w (dB) nach DIN 4109-32",
+    "aktuellesBauteil": "Aktuelles Bauteil",
+    "berechnungDesBewertetenSchalldämm": "Berechnung des bewerteten Schalldämm-Maßes einschaliger massiver Bauteile über die empirische Massekurve nach DIN 4109-32 (physikalischer Hintergrund: Bergersches Massegesetz).",
+    "auswahlDesZuUntersuchenden": "Auswahl des zu untersuchenden Werkstoffs.",
+    "dickeDerBauteilschichtIn": "Dicke der Bauteilschicht in Metern.",
+    "flächenbezogeneMasseM": "Flächenbezogene Masse m'",
+    "schalldämmMaßRW2": "Schalldämm-Maß R_w",
+    "berechnetNachDin4109": "Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30,9 · lg(m'/1 kg/m²) − 22,2 dB. Ältere Näherung (DIN EN 12354-1, informativer Anhang): Rw ≈ 37,5 · lg(m') − 42 dB für m' ≥ 150 kg/m².",
+    "ihrRechenwegSchalldämmMaß": "Ihr Rechenweg: Schalldämm-Maß Ihres Aufbaus",
+    "flächenbezogeneMasseJeSchicht": "Flächenbezogene Masse je Schicht",
+    "dickeDInM": "Dicke d (in m) mal Rohdichte ρ (in kg/m³) ergibt die Masse je Quadratmeter Wandfläche:",
+    "derWertLiegtIm": "Der Wert liegt im Gültigkeitsbereich 65 ≤ m′ ≤ 720 kg/m² der Gleichung.",
+    "achtungDerWertLiegt": "Achtung: Der Wert liegt außerhalb des Gültigkeitsbereichs 65 ≤ m′ ≤ 720 kg/m² – das Ergebnis ist nur eine Orientierung.",
+    "logarithmusDerMasse": "Logarithmus der Masse",
+    "bezogenAufM1": "Bezogen auf m′₀ = 1 kg/m²:",
+    "bewertetesSchalldämmMaß": "Bewertetes Schalldämm-Maß",
+    "einsetzenInDieMassekurve": "Einsetzen in die Massekurve nach DIN 4109-32 (negative Werte werden auf 0 dB begrenzt):",
+    "leichteDämmUndHolzschichten": "Leichte Dämm- und Holzschichten verändern R_w über Resonanzeffekte; die Massekurve gilt nur für einschalige, biegesteife Bauteile.",
+    "din4109322016": "DIN 4109-32:2016-07, Gl. (2)",
+    "flächenbezogeneMasseMKg": "Flächenbezogene Masse m' (kg/m²)",
+    "beispiel1WohnungstrennwandAus": "Beispiel 1: Wohnungstrennwand aus Kalksandstein",
+    "dieAbschätzungVonR": "Die Abschätzung von R′w ist nur ein Richtwert; der Nachweis erfolgt mit den flankierenden Bauteilen und Stoßstellen nach DIN 4109-2.",
+    "din410912018": "DIN 4109-1:2018-01; DIN 4109-32:2016-07",
+    "beispiel2LeichtesMauerwerk": "Beispiel 2: Leichtes Mauerwerk und die Wirkung der Masseverdopplung",
+    "leichteLochsteineEignenSich": "Leichte Lochsteine eignen sich für Außenwände (Wärmeschutz), für Wohnungstrennwände braucht es schwere Steine, verfüllte Steine oder zweischalige Konstruktionen.",
+    "din41093220162": "DIN 4109-32:2016-07",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "materialLibrary.holz_fichte": {
+      "id": "holz_fichte",
+      "name": "Fichte / Tanne (Vollholz)",
+      "density": 450
+    },
+    "Schallschutz.schritte": [
+      {
+        "titel": "Flächenbezogene Masse",
+        "erklaerung": "KS 17,5 cm (ρ = 2000 kg/m³) mit beidseitig 1,5 cm Gipsputz (ρ = 1000 kg/m³):",
+        "formel": "m' = 0{,}175 \\cdot 2\\,000 + 2 \\cdot 0{,}015 \\cdot 1\\,000 = 350 + 30 = 380\\,\\text{kg/m}^2"
+      },
+      {
+        "titel": "Schalldämm-Maß",
+        "erklaerung": "Massekurve (gültig 65 bis 720 kg/m²):",
+        "formel": "R_w = 30{,}9 \\cdot \\lg 380 - 22{,}2 = 30{,}9 \\cdot 2{,}580 - 22{,}2 = 57{,}5\\,\\text{dB}"
+      },
+      {
+        "titel": "Anforderung",
+        "erklaerung": "Wohnungstrennwand nach DIN 4109-1: R′w ≥ 53 dB im eingebauten Zustand. Die Flankenübertragung (DIN 4109-2) mindert R_w um einige dB.",
+        "formel": "R_w = 57{,}5\\,\\text{dB} \\;\\to\\; R'_w \\approx 54\\ \\text{bis}\\ 55\\,\\text{dB} \\ge 53\\,\\text{dB}"
+      }
+    ],
+    "Schallschutz.schritte_2": [
+      {
+        "titel": "Hochlochziegel",
+        "erklaerung": "HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen:",
+        "formel": "m' = 192 + 15 + 36 = 243\\,\\text{kg/m}^2 \\Rightarrow R_w = 30{,}9 \\cdot \\lg 243 - 22{,}2 = 51{,}5\\,\\text{dB}"
+      },
+      {
+        "titel": "Erforderliche Masse",
+        "erklaerung": "Für R_w = 57 dB (Reserve für Flankenwege):",
+        "formel": "\\lg m' = \\frac{57 + 22{,}2}{30{,}9} = 2{,}563 \\Rightarrow m' = 366\\,\\text{kg/m}^2"
+      },
+      {
+        "titel": "Masseverdopplung",
+        "erklaerung": "Nach der Massekurve bringt jede Verdopplung der Masse etwa 9 dB; das theoretische Bergersche Massegesetz liefert 6 dB.",
+        "formel": "\\Delta R_w = 30{,}9 \\cdot \\lg 2 = 9{,}3\\,\\text{dB}"
+      }
+    ],
+    "Schallschutz.regelwerke": [
+      {
+        "title": "DIN 4109-1:2018-01 (Schallschutz im Hochbau – Mindestanforderungen; z. B. Wohnungstrennwände R′w ≥ 53 dB, Wohnungstrenndecken R′w ≥ 54 dB, L′n,w ≤ 50 dB)"
+      },
+      {
+        "title": "DIN 4109-2:2018-01 (Rechnerische Nachweise einschließlich Flankenübertragung)"
+      },
+      {
+        "title": "DIN 4109-32:2016-07 (Daten für die rechnerischen Nachweise – Bauteilkatalog Massivbau)"
+      },
+      {
+        "title": "DIN 4109-34:2016-07 (Bauteilkatalog – Vorsatzkonstruktionen vor massiven Bauteilen, u. a. WDVS)"
+      }
+    ],
+    "Schallschutz.literatur": [
+      "Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017",
+      "Möser, M.: Technische Akustik. 10. Aufl., Berlin: Springer Vieweg 2015"
+    ],
+    "Schallschutz.formeln": [
+      {
+        "formel": "R_w = 30{,}9 \\cdot \\log_{10}(m'/1) - 22{,}2",
+        "erklaerung": "Berechnung des bewerteten Schalldämm-Maßes R_w in dB für einschalige massive Bauteile nach DIN 4109-32 (gültig für 65 ≤ m' ≤ 720 kg/m²).\nR_w: bewertetes Schalldämm-Maß [dB]\nm': flächenbezogene Masse [kg/m²]",
+        "quelle": "DIN 4109-32:2016-07"
+      },
+      {
+        "formel": "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
+        "erklaerung": "Ältere empirische Näherung für einschalige Bauteile mit m' ≥ 150 kg/m² aus dem informativen Anhang der DIN EN 12354-1 (heute DIN EN ISO 12354-1); für Nachweise in Deutschland gilt DIN 4109-32.\nm': flächenbezogene Masse [kg/m²]",
+        "quelle": "DIN EN 12354-1, informativer Anhang (Zuordnung manuell prüfen)"
+      }
+    ]
+  }
+}

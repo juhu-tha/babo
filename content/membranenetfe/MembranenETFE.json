@@ -1,0 +1,254 @@
+{
+  "texte": {
+    "membranenUndEtfeFolien": " Membranen und ETFE-Folien",
+    "textileMembranenUndEtfe": "Textile Membranen und ETFE-Folien sind biegeweiche Flächentragwerke: Sie tragen Lasten ausschließlich über Zugkräfte in ihrer Ebene. Tragfähig werden sie erst durch Vorspannung und Krümmung – mechanisch über Ränder und Seile oder pneumatisch über Luftdruck. Das Modul führt von den Werkstoffen über das Tragverhalten und die Kennwerte zur Kesselformel, mit der Sie Membrankräfte gewölbter Kissen und Streifen abschätzen.",
+    "wasIstMembranbau": "Was ist Membranbau?",
+    "biegeweichEineMembranHat": "**Biegeweich:** Eine Membran hat praktisch keine Biege- und keine Drucksteifigkeit. Druckspannungen führen zu Falten, nicht zu Tragwirkung.",
+    "leichtBeschichteteGewebeWiegen": "**Leicht:** Beschichtete Gewebe wiegen rund 0,5 bis 1,7 kg/m², ein dreilagiges ETFE-Kissen meist unter 1 kg/m². Das Eigengewicht spielt gegenüber Wind und Schnee kaum eine Rolle.",
+    "formFolgtKraftDie": "**Form folgt Kraft:** Die Geometrie ist nicht frei wählbar, sondern ergibt sich aus Vorspannung, Rändern und Lasten (Formfindung).",
+    "lichtGewebeSindTransluzent": "**Licht:** Gewebe sind transluzent (Tageslicht, diffuses Licht), ETFE-Folien sind nahezu klar und auch für UV-A-Strahlung durchlässig.",
+    "zweiBauweisen": "Zwei Bauweisen",
+    "mechanischVorgespanntDieMembran": "**Mechanisch vorgespannt:** Die Membran wird über Masten, Bögen, Rand- und Gratseile in eine Sattelform gezogen. Typisch sind Hoch- und Tiefpunktflächen, Sattelflächen und Bogenhallen aus PVC/PES- oder PTFE/Glas-Gewebe.",
+    "pneumatischVorgespanntEinÜberdruck": "**Pneumatisch vorgespannt:** Ein Überdruck spannt die Membran. Bei *Traglufthallen* steht der ganze Innenraum unter leichtem Überdruck, bei *Luftkissen* nur der Raum zwischen den Lagen. ETFE-Kissen sind die bekannteste Form.",
+    "beschichteteTechnischeGewebe": "Beschichtete technische Gewebe",
+    "einGrundgewebeAusKett": "Ein Grundgewebe aus Kett- und Schussfäden übernimmt die Zugkräfte, die Beschichtung dichtet, schützt das Gewebe vor UV-Strahlung und Feuchte und macht die Bahnen fügbar (Schweißen, Kleben).",
+    "pvcBeschichtetesPolyestergewebePvc": "**PVC-beschichtetes Polyestergewebe (PVC/PES):** wirtschaftlich, gut faltbar und hochfrequenzschweißbar; für temporäre und dauerhafte Bauten. Ein Decklack (Acryl, PVDF) schützt den Weichmacher-haltigen PVC-Strich und bestimmt maßgeblich die Lebensdauer. Polyester kriecht merklich – Nachspannmöglichkeiten sind vorzusehen.",
+    "ptfeBeschichtetesGlasfasergewebePtfe": "**PTFE-beschichtetes Glasfasergewebe (PTFE/Glas):** sehr dauerhaft, schmutzabweisend, chemisch beständig und nach Datenblatt bis nichtbrennbar (A2 nach DIN 4102). Glasfasern sind knick- und faltempfindlich; Transport und Montage erfordern Sorgfalt. Das Glasgewebe kriecht kaum.",
+    "silikonbeschichtetesGlasfasergewebeSilik": "**Silikonbeschichtetes Glasfasergewebe (Silikon/Glas):** Glasgewebe mit einer Silikonelastomer-Beschichtung als Alternative zu PTFE/Glas, mit hoher Transluzenz möglich.",
+    "gewebeSindAnisotropKette": "Gewebe sind **anisotrop**: Kette und Schuss haben unterschiedliche Festigkeit und vor allem unterschiedliche Dehnsteifigkeit. Die Fäden der Kette liegen gestreckter, die Schussfäden sind stärker onduliert (Fadenwelligkeit) und dehnen sich zunächst mehr. Die Steifigkeiten werden im biaxialen Zugversuch ermittelt.",
+    "etfeEthylenTetrafluorethylenIst": "ETFE (Ethylen-Tetrafluorethylen) ist ein teilfluorierter Thermoplast. Er wird zu Folien extrudiert, die im Bauwesen meist 100 bis 300 µm dick sind. Folien sind – anders als Gewebe – nahezu isotrop und hoch dehnfähig.",
+    "einlagigMechanischVorgespannteFolien": "**Einlagig:** mechanisch vorgespannte Folien, meist mit Seilunterstützung, für Überdachungen ohne Wärmeschutzanforderung.",
+    "mehrlagigePneumatischeKissenZwei": "**Mehrlagige pneumatische Kissen:** zwei bis fünf Lagen werden am Rand in Klemmprofilen gefasst; ein Gebläse hält einen kleinen Überdruck. Im Normalbetrieb liegt er bei rund 250 bis 300 Pa; bei Schnee oder Sturm wird er angehoben (Beispiel Tropical Islands: 300 Pa dauerhaft, bis 800 Pa bei Schnee).",
+    "bedruckungPunktOderLinienraster": "**Bedruckung:** Punkt- oder Linienraster (z. B. silbern oder weiß) verringern den Gesamtenergiedurchlassgrad. Sind zwei Lagen gegeneinander versetzt bedruckt, lässt sich die Verschattung schalten, indem die bewegliche Mittellage pneumatisch an die obere oder die untere Lage gelegt wird.",
+    "lichtUndUvEine": "**Licht und UV:** Eine klare Folie lässt rund 90 bis 95 % des sichtbaren Lichts durch und ist – anders als Floatglas – in hohem Maß UV-A-durchlässig. Das ist für Pflanzenhäuser ein Vorteil, für UV-empfindliche Nutzungen ein Planungspunkt.",
+    "brandEtfeSchmilztUm": "**Brand:** ETFE schmilzt um 265 °C; im Brandfall öffnen sich die Kissen und wirken als Rauchabzug. Das Material tropft nach Herstellerangaben nicht brennend ab.",
+    "vorspannungUndKrümmung": "Vorspannung und Krümmung",
+    "eineEbeneMembranKann": "Eine ebene Membran kann eine Last senkrecht zu ihrer Fläche nur mit großer Durchbiegung abtragen. Erst eine Krümmung lenkt die Zugkräfte so um, dass sie der Flächenlast das Gleichgewicht halten. Für ein Flächenelement mit den Hauptkrümmungsradien ",
+    "giltDieMembrangleichung": " gilt die Membrangleichung:",
+    "mechanischVorgespanntP0": "**Mechanisch vorgespannt (p = 0):** Es folgt ",
+    "dieFlächeMussAntiklastisch": ". Die Fläche muss *antiklastisch* (gegensinnig, sattelförmig) gekrümmt sein: Eine Fadenschar trägt nach oben, die andere hält nach unten.",
+    "pneumatischVorgespanntP0": "**Pneumatisch vorgespannt (p > 0):** Beide Krümmungen sind gleichsinnig – die Fläche ist *synklastisch* (Kissen, Kuppel).",
+    "sonderfälleZylinder": "**Sonderfälle:** Zylinder (",
+    "liefertDieKesselformel": ") liefert die Kesselformel ",
+    "dieKugel": ", die Kugel (",
+    "gegenUndGleichsinnigeKrümmung": "Gegen- und gleichsinnige Krümmung",
+    "formfindungUndZuschnitt": "Formfindung und Zuschnitt",
+    "formfindungGesuchtIstDie": "**Formfindung:** Gesucht ist die Gleichgewichtsform für eine vorgegebene Vorspannung und Randgeometrie. Bei gleicher Vorspannung in alle Richtungen entsteht eine Minimalfläche (mittlere Krümmung null) – das Prinzip der Seifenhautmodelle von Frei Otto. Numerisch dienen die Kraftdichtemethode oder die dynamische Relaxation.",
+    "statischeAnalyseDieBerechnung": "**Statische Analyse:** Die Berechnung ist geometrisch nichtlinear (große Verformungen). Faltenbildung zeigt an, dass eine Richtung spannungslos geworden ist.",
+    "zuschnittDieDoppeltGekrümmte": "**Zuschnitt:** Die doppelt gekrümmte Fläche wird in ebene Bahnen zerlegt. Die Bahnen werden um die Vorspanndehnung kleiner zugeschnitten (Kompensation), damit sich nach dem Einbau die geplante Vorspannung einstellt.",
+    "kriechenUnterDauerlastUnd": "**Kriechen:** Unter Dauerlast und erhöhter Temperatur lässt die Vorspannung nach. Bei PVC/PES und ETFE ist das ausgeprägter als bei Glasgewebe; Nachspannen oder Druckregelung gleichen das aus.",
+    "werkstoffkennwerteImVergleich": "Werkstoffkennwerte im Vergleich",
+    "größenordnungenAusHerstellerdatenblätter": "Größenordnungen aus Herstellerdatenblättern (Lehrwerte, Nennwerte ohne Toleranz). Maßgebend sind die Werte der jeweiligen Zulassung bzw. Leistungserklärung.",
+    "zugfestigkeitKetteSchussStreifenzugversu": "Zugfestigkeit Kette/Schuss (Streifenzugversuch)",
+    "rund3000Bis": "rund 3.000 bis 10.000 N/5 cm je nach Typ; z. B. 4.400/4.000 N/5 cm bei 900 g/m²",
+    "rund2000Bis": "rund 2.000 bis 5.000 N/5 cm; z. B. 5.000/4.500 N/5 cm bei 700 g/m²",
+    "bruchspannungUm50N": "Bruchspannung um 50 N/mm², Spannung bei 10 % Dehnung um 23 N/mm² (nahezu isotrop)",
+    "zB580520": "z. B. 580/520 N (900 g/m²)",
+    "zB450N": "z. B. 450 N (700 g/m²)",
+    "hochDatenblattangabeJeFoliendicke": "hoch; Datenblattangabe je Foliendicke",
+    "geringBisMäßigGewebe": "gering bis mäßig (Gewebe)",
+    "sehrGeringGlasfaser": "sehr gering (Glasfaser)",
+    "sehrHochBisRund": "sehr hoch, bis rund 500 %",
+    "merklichPolyester": "merklich (Polyester)",
+    "merklichStarkTemperaturabhängig": "merklich, stark temperaturabhängig",
+    "geringZB5": "gering, z. B. 5 % (weiß, 900 g/m²); Netzgewebe höher",
+    "rund15Bis50": "rund 15 bis 50 % je nach Sorte (gebleicht)",
+    "rund90Bis95": "rund 90 bis 95 % (klar); UV-A weitgehend durchlässig",
+    "brandverhaltenTypischeAngabe": "Brandverhalten (typische Angabe)",
+    "bS2D0Nach": "B-s2,d0 nach DIN EN 13501-1 bzw. B1 nach DIN 4102",
+    "a2NachDin4102": "A2 nach DIN 4102 in Datenblättern; Euroklasse produktabhängig (z. B. B-s1,d0)",
+    "bS1D0Nach": "B-s1,d0 nach DIN EN 13501-1",
+    "lebensdauerGrößenordnung": "Lebensdauer (Größenordnung)",
+    "rund10Bis30": "rund 10 bis 30 Jahre, je nach Decklack (Acryl kürzer, PVDF länger)",
+    "rund25Bis35": "rund 25 bis 35 Jahre und mehr",
+    "über30Jahre": "über 30 Jahre",
+    "dieZugfestigkeitVonGeweben": "Die Zugfestigkeit von Geweben wird in N/5 cm (Streifenbreite 50 mm) angegeben: 4.000 N/5 cm entsprechen 80 kN/m. ETFE: Dichte 1,75 g/cm³, Schmelzbereich um 265 °C.",
+    "wärmeschutzMehrlagigerEtfeKissen": " Wärmeschutz mehrlagiger ETFE-Kissen",
+    "herstellerangabenRichtwerteOhneRandverbu": "Herstellerangaben (Richtwerte, ohne Randverbund); jede zusätzliche Luftschicht senkt den U-Wert, aber mit abnehmender Wirkung.",
+    "uWertInW": "U-Wert in W/(m²K)",
+    "einlagigeFolie": "einlagige Folie",
+    "t2LagigesKissen1": "2-lagiges Kissen (1 Luftkammer)",
+    "t3LagigesKissen2": "3-lagiges Kissen (2 Luftkammern)",
+    "rund18Bis": "rund 1,8 bis 2,0",
+    "t4LagigesKissen3": "4-lagiges Kissen (3 Luftkammern)",
+    "rund14Bis": "rund 1,4 bis 1,5",
+    "t5LagigesKissen4": "5-lagiges Kissen (4 Luftkammern)",
+    "bauphysikalischeBesonderheiten": "Bauphysikalische Besonderheiten",
+    "geringeSpeichermasseMembranhüllenReagier": "**Geringe Speichermasse:** Membranhüllen reagieren schnell auf Sonne und Außentemperatur; sommerlicher Wärmeschutz über Bedruckung, Lüftung und Verschattung.",
+    "tauwasserAnDerKalten": "**Tauwasser:** An der kalten Innenseite kann Tauwasser ausfallen; Rinnen und Tropfkanten sind einzuplanen. Die Stützluft wird getrocknet, damit die Kissenkammern beschlagfrei bleiben.",
+    "schallLeichteHüllenDämmen": "**Schall:** Leichte Hüllen dämmen Luftschall wenig, Regen auf ETFE-Kissen ist hörbar; dagegen helfen z. B. Regendämpfungsnetze.",
+    "energieDieGebläseDer": "**Energie:** Die Gebläse der Kissen und Traglufthallen benötigen dauerhaft Strom und eine Notversorgung.",
+    "geometrieUndDruck": "Geometrie und Druck",
+    "werkstoffLehrwerte": "Werkstoff (Lehrwerte)",
+    "schnittDurchDieMembran": "Schnitt durch die Membran",
+    "membrankraftN": "Membrankraft n",
+    "folienspannung": "Folienspannung σ",
+    "zulässigNZulLehrwert": "zulässig n_zul (Lehrwert)",
+    "ausnutzungNNZul": " Ausnutzung η = n / n_zul",
+    "keineBerechnungMöglich": "Keine Berechnung möglich.",
+    "regelwerkeInDeutschland": "Regelwerke in Deutschland",
+    "verwendbarkeitFürMembranwerkstoffeUnd": "**Verwendbarkeit:** Für Membranwerkstoffe und ihre Fügungen gibt es keine harmonisierte Produktnorm mit vollständiger Tragwerksbemessung. Der Nachweis erfolgt daher über eine allgemeine bauaufsichtliche Zulassung bzw. allgemeine Bauartgenehmigung (abZ/aBG) oder im Einzelfall über eine vorhabenbezogene Bauartgenehmigung (vBG) bzw. Zustimmung im Einzelfall.",
+    "traglufthallenDin41341": "**Traglufthallen:** DIN 4134-1:2026-03 regelt Berechnung, Ausführung und Betrieb von Tragluftbauten (ersetzt DIN 4134:1983-02); DIN 4134-101 regelt den Konformitätsnachweis. Hüllen aus Luftkissen sind ausdrücklich nicht erfasst.",
+    "bemessungCenTs19102": "**Bemessung:** CEN/TS 19102:2023 (deutsch DIN CEN/TS 19102:2024-08) beschreibt die Bemessung vorgespannter Membrantragwerke nach dem Teilsicherheitskonzept der EN 1990, für mechanisch und pneumatisch vorgespannte Membranen. Sie soll von der Eurocode-Norm EN 19102 („Eurocode 12“) abgelöst werden, die als Entwurf prEN 19102-1-1 vorliegt.",
+    "zelteFliegendeBautenAus": "**Zelte:** Fliegende Bauten aus Zeltkonstruktionen behandelt DIN EN 13782:2015-06.",
+    "brandverhaltenKlassifizierungNachDin": "**Brandverhalten:** Klassifizierung nach DIN EN 13501-1:2019-05; die Anforderungen ergeben sich aus Bauordnung und Sonderbauvorschriften.",
+    "allianzArenaMünchen2005": "Allianz Arena, München (2005)",
+    "entwurfHerzogDeMeuron": "Entwurf Herzog & de Meuron. Fassade und Dach bestehen aus rund 2.800 rautenförmigen ETFE-Luftkissen. Die Kissen der Fassade lassen sich farbig hinterleuchten – das Stadion leuchtet je nach Anlass rot, blau oder weiß. Das Projekt zeigt, wie ETFE eine Gebäudehülle zugleich leicht, transluzent und gestaltbar macht.",
+    "edenProjectCornwall2001": "Eden Project, Cornwall (2001)",
+    "entwurfNicholasGrimshawPartners": "Entwurf Nicholas Grimshaw & Partners. Die Gewächshäuser („Biome“) sind geodätische Kuppeln, deren Felder mit sechseckigen, mehrlagigen ETFE-Kissen geschlossen sind. Ausschlaggebend waren das geringe Gewicht gegenüber Glas und die hohe Durchlässigkeit für Licht und UV-Strahlung, die den Pflanzen zugutekommt."
+  },
+  "werte": {
+    "gewebeEtfe": "Gewebe & ETFE",
+    "kennwerteBauphysik": "Kennwerte & Bauphysik",
+    "rechnerKesselformel": "Rechner Kesselformel",
+    "regelwerkeBauten": "Regelwerke & Bauten",
+    "etfeFolie200M": "ETFE-Folie 200 µm",
+    "etfeFolie250M": "ETFE-Folie 250 µm",
+    "pvcPesTypIi": "PVC/PES Typ II (4.000 N/5 cm)",
+    "ptfeGlas4500": "PTFE/Glas (4.500 N/5 cm)",
+    "schnittDurchEinenGewölbten": "Schnitt durch einen gewölbten Membranstreifen mit Innendruck",
+    "sattelflächeMitGegensinnigerKrümmung": "Sattelfläche mit gegensinniger Krümmung und Kissen mit gleichsinniger Krümmung",
+    "krümmungsradiusAusSpannweiteUnd": "Krümmungsradius aus Spannweite und Stich",
+    "derRadiusWirdDirekt": "Der Radius wird direkt vorgegeben:",
+    "membrankraftZylinder": "Membrankraft (Zylinder)",
+    "membrankraftKugel": "Membrankraft (Kugel)",
+    "einfachGekrümmterStreifenGleichgewicht": "Einfach gekrümmter Streifen: Gleichgewicht am Halbzylinder, die Kraft wirkt quer zur Zylinderachse.",
+    "gleichsinnigDoppeltGekrümmtMit": "Gleichsinnig doppelt gekrümmt mit gleichen Radien: Der Druck verteilt sich auf zwei Richtungen.",
+    "spannungInDerFolie": "Spannung in der Folie",
+    "zulässigeMembrankraftLehrwert": "Zulässige Membrankraft (Lehrwert)",
+    "zulässigeMembrankraftLehrwert2": "Zulässige Membrankraft (Lehrwert)",
+    "dieVorhandeneMembrankraftLiegt": "Die vorhandene Membrankraft liegt unter dem Lehrwert der zulässigen Membrankraft.",
+    "dieVorhandeneMembrankraftÜberschreitet": "Die vorhandene Membrankraft überschreitet den Lehrwert: Stich vergrößern, Spannweite verkleinern, Druck begrenzen oder festeren Werkstoff wählen.",
+    "bereicheDesModulsMembranen": "Bereiche des Moduls Membranen und ETFE-Folien",
+    "polymereAlsGrundlage": "Polymere als Grundlage",
+    "zumModulKunststoffe": "Zum Modul Kunststoffe",
+    "aufbauUndEigenschaftenDer": "Aufbau und Eigenschaften der Polymere PVC, PTFE, Polyester und ETFE werden im Modul Kunststoffe behandelt.",
+    "n1R1": "$n_1/R_1 = -n_2/R_2$",
+    "lehrrechnerFestigkeitenUndSicherheitsbei": "Lehrrechner: Festigkeiten und Sicherheitsbeiwerte sind Lehrwerte. Die Bemessung erfolgt nach Zulassung bzw. Bauartgenehmigung (abZ/aBG, vBG) und künftig nach EN 19102.",
+    "zylinderNPR": "Zylinder: n = p · r",
+    "kugelNPR": "Kugel: n = p · r/2",
+    "eingabeDerKrümmung": "Eingabe der Krümmung",
+    "spannweiteUndStich": "Spannweite und Stich",
+    "radiusDirekt": "Radius direkt",
+    "innendruckP": "Innendruck p",
+    "überdruckBzwDruckdifferenzAn": "Überdruck bzw. Druckdifferenz an der betrachteten Lage.",
+    "spannweiteL": "Spannweite L",
+    "höheDerWölbungIn": "Höhe der Wölbung in Feldmitte; höchstens L/2.",
+    "krümmungsradiusR": "Krümmungsradius r",
+    "foliendickeT": "Foliendicke t",
+    "bezugsfestigkeitF": "Bezugsfestigkeit f",
+    "lehrwertSpannungBei10": "Lehrwert: Spannung bei 10 % Dehnung nach Datenblatt (um 23 N/mm²); Bruchspannung um 50 N/mm².",
+    "kurzzeitzugfestigkeitFT": "Kurzzeitzugfestigkeit f_t",
+    "streifenzugfestigkeitDerMaßgebendenRicht": "Streifenzugfestigkeit der maßgebenden Richtung (Kette oder Schuss).",
+    "gesamtsicherheitsbeiwert": "Gesamtsicherheitsbeiwert γ",
+    "lehrwertDecktLangzeitTemperatur": "Lehrwert; deckt Langzeit-, Temperatur-, Alterungs- und Fügungseinflüsse pauschal ab.",
+    "lehrwertEingehalten": "Lehrwert eingehalten",
+    "lehrwertÜberschritten": "Lehrwert überschritten",
+    "großerRadiusBedeutetGroße": "Großer Radius bedeutet große Membrankraft: Flache Wölbungen und große Spannweiten sind ungünstig.",
+    "gleichgewichtAmKreiszylinderBzw": "Gleichgewicht am Kreiszylinder bzw. an der Kugel (Kesselformel); Festigkeit und γ als Lehrwerte",
+    "beispiel1MembrankraftEiner": "Beispiel 1: Membrankraft einer Traglufthalle aus PVC/PES",
+    "dieMembrankraftWächstLinear": "Die Membrankraft wächst linear mit Druck und Radius. Große Hallen brauchen daher Seilnetze, die den wirksamen Radius verkleinern.",
+    "kesselformelBemessungNachDin": "Kesselformel; Bemessung nach DIN 4134-1:2026-03 und Zulassung (Festigkeit und γ hier Lehrwerte)",
+    "beispiel2EtfeKissenlage": "Beispiel 2: ETFE-Kissenlage unter erhöhtem Innendruck",
+    "beiSchneeWirdDie": "Bei Schnee wird die Folie hoch ausgenutzt. Abhilfe: größerer Stich (kleinerer Radius), kleinere Kissen oder Seilverstärkungen.",
+    "kesselformelBezugsfestigkeitSpannungBei": "Kesselformel; Bezugsfestigkeit (Spannung bei 10 % Dehnung) und γ als Lehrwerte nach Datenblatt",
+    "oktober2026NeuErstellt": "Oktober 2026 (neu erstellt, AP 3.13; fachliche Freigabe durch den Autor ausstehend)",
+    "allianzArena": "Allianz Arena",
+    "edenProject": "Eden Project"
+  },
+  "daten": {
+    "MembranenETFE": [
+      {
+        "titel": "Keine Berechnung",
+        "erklaerung": "Die Eingaben sind unzulässig – siehe Hinweise im Rechner."
+      }
+    ],
+    "MembranenETFE.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Tonnenförmige Traglufthalle (Querschnitt näherungsweise Halbkreis), Radius 18 m, Betriebsdruck 300 Pa (angenommen). Gewebe PVC/PES Typ II mit 4.000 N/5 cm in Schussrichtung.",
+        "formel": "r = 18\\,\\text{m}, \\quad p = 300\\,\\text{Pa}, \\quad f_t = 4\\,000\\,\\text{N/5 cm}"
+      },
+      {
+        "titel": "Membrankraft im Betrieb",
+        "erklaerung": "Zylinder, Kraft in Umfangsrichtung:",
+        "formel": "n = 300 \\cdot 18 = 5\\,400\\,\\text{N/m} = 5{,}4\\,\\text{kN/m}"
+      },
+      {
+        "titel": "Zulässige Membrankraft (Lehrwert)",
+        "erklaerung": "Kurzzeitfestigkeit auf 1 m umgerechnet, Gesamtsicherheitsbeiwert 5 (Lehrwert):",
+        "formel": "n_{zul} = \\frac{4\\,000 / 0{,}05}{5} = \\frac{80\\,000}{5} = 16\\,000\\,\\text{N/m} = 16\\,\\text{kN/m}"
+      },
+      {
+        "titel": "Ausnutzung und Sturmbetrieb",
+        "erklaerung": "Bei Sturm wird der Innendruck erhöht, z. B. auf 550 Pa:",
+        "formel": "\\eta = \\frac{5{,}4}{16} = 0{,}34; \\quad n_{Sturm} = 550 \\cdot 18 = 9\\,900\\,\\text{N/m} \\Rightarrow \\eta = 0{,}62"
+      }
+    ],
+    "MembranenETFE.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Langes Kissen (näherungsweise zylindrisch) mit 3,5 m Spannweite, Stich der Lage 0,35 m (10 % der Spannweite), Folie 250 µm. Betriebsdruck 300 Pa, bei Schnee 600 Pa.",
+        "formel": "L = 3{,}5\\,\\text{m}, \\quad f = 0{,}35\\,\\text{m}, \\quad t = 0{,}25\\,\\text{mm}"
+      },
+      {
+        "titel": "Krümmungsradius",
+        "erklaerung": "Kreisbogen aus Spannweite und Stich:",
+        "formel": "r = \\frac{3{,}5^2}{8 \\cdot 0{,}35} + \\frac{0{,}35}{2} = 4{,}375 + 0{,}175 = 4{,}55\\,\\text{m}"
+      },
+      {
+        "titel": "Betrieb (300 Pa)",
+        "erklaerung": "Membrankraft und Folienspannung:",
+        "formel": "n = 300 \\cdot 4{,}55 = 1\\,365\\,\\text{N/m}; \\quad \\sigma = \\frac{1{,}365\\,\\text{N/mm}}{0{,}25\\,\\text{mm}} = 5{,}46\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Schnee (600 Pa)",
+        "erklaerung": "Doppelter Druck, doppelte Spannung – Vergleich mit dem Lehrwert 23 N/mm² / 2 = 11,5 N/mm²:",
+        "formel": "\\sigma = 10{,}92\\,\\text{N/mm}^2 \\Rightarrow \\eta = \\frac{10{,}92}{11{,}5} = 0{,}95"
+      }
+    ],
+    "MembranenETFE.literatur": [
+      "Knippers, J.; Cremers, J.; Gabler, M.; Lienhard, J.: Atlas Kunststoffe + Membranen. München: Institut für internationale Architektur-Dokumentation (Edition Detail) 2010",
+      "Seidel, M.: Textile Hüllen – Bauen mit biegeweichen Tragelementen. Berlin: Ernst & Sohn 2008",
+      "Forster, B.; Mollaert, M. (Hrsg.): European Design Guide for Tensile Surface Structures. Brüssel: TensiNet 2004",
+      "LeCuyer, A.: ETFE – Technology and Design. Basel: Birkhäuser 2008"
+    ],
+    "MembranenETFE.regelwerke": [
+      {
+        "title": "DIN CEN/TS 19102:2024-08 (Bemessung von vorgespannten Membrantragwerken; Deutsche Fassung CEN/TS 19102:2023)"
+      },
+      {
+        "title": "prEN 19102-1-1 (Entwurf: Eurocode 12 – Design of tensioned membrane structures – Part 1-1: General rules; soll CEN/TS 19102 ablösen)"
+      },
+      {
+        "title": "DIN 4134-1:2026-03 (Tragluftbauten – Teil 1: Berechnung, Ausführung und Betrieb; ersetzt DIN 4134:1983-02)"
+      },
+      {
+        "title": "DIN 4134-101:2026-03 (Tragluftbauten – Teil 101: Konformitätsnachweis für Tragluftbauten nach DIN 4134-1)"
+      },
+      {
+        "title": "DIN EN 13782:2015-06 (Fliegende Bauten – Zelte – Sicherheit)"
+      },
+      {
+        "title": "DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Teil 1)"
+      }
+    ],
+    "MembranenETFE.formeln": [
+      {
+        "formel": "\\frac{n_1}{R_1} + \\frac{n_2}{R_2} = p",
+        "erklaerung": "Gleichgewicht eines gekrümmten Membranelements mit den Membrankräften n_1, n_2 [N/m], den Hauptkrümmungsradien R_1, R_2 [m] und der Flächenlast p [N/m²]. Für p = 0 folgt die antiklastische Form.",
+        "quelle": "Membrantheorie"
+      },
+      {
+        "formel": "n = p \\cdot r \\;(\\text{Zylinder}), \\quad n = \\frac{p \\cdot r}{2} \\;(\\text{Kugel})",
+        "erklaerung": "Kesselformel für unter Innendruck stehende, einfach bzw. gleichsinnig doppelt gekrümmte Membranen.",
+        "quelle": "Membrantheorie"
+      },
+      {
+        "formel": "r = \\frac{L^2}{8 f} + \\frac{f}{2}",
+        "erklaerung": "Radius eines Kreisbogens mit Spannweite L und Stich f.",
+        "quelle": "Geometrie"
+      }
+    ]
+  }
+}

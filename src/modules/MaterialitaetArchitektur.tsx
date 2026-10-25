@@ -16,6 +16,8 @@ import { ARCHITEKTUR_MATERIALITAET } from '@/src/data/architekturMaterialitaet';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/materialitaetarchitektur/MaterialitaetArchitektur.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialVisualSpec {
   id: string;
@@ -34,159 +36,159 @@ interface MaterialVisualSpec {
 const MATERIAL_CATALOG: MaterialVisualSpec[] = [
   {
     id: 'beton',
-    name: 'Sichtbeton & Architekturbeton',
+    name: inhalt.werte.sichtbetonArchitekturbeton,
     category: 'Mineralisch',
     swatchBg: 'bg-slate-300 text-slate-800',
     accentBorder: 'border-slate-400',
     tactileScale: 'samtig-fein',
     thermalPerception: 'kühl',
     reflectionType: 'Halbmatt',
-    iconicWork: 'Kirche des Lichts (Osaka) & Bruder-Klaus-Feldkapelle (Wachendorf)',
-    famousArchitect: 'Tadao Ando / Peter Zumthor',
-    keyDetail: 'Abdrücke von Holzschalungshaut, Ankerloch-Konusmuster und Faseleisten als Fassadenrhythmus.'
+    iconicWork: inhalt.werte.kircheDesLichtsOsaka,
+    famousArchitect: inhalt.werte.tadaoAndoPeterZumthor,
+    keyDetail: inhalt.werte.abdrückeVonHolzschalungshautAnkerloch
   },
   {
     id: 'mauerziegel',
-    name: 'Mauerziegel & Klinker',
+    name: inhalt.werte.mauerziegelKlinker,
     category: 'Mineralisch',
     swatchBg: 'bg-amber-800 text-amber-100',
     accentBorder: 'border-amber-900',
     tactileScale: 'körnig-rau',
     thermalPerception: 'temperiert',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Chilehaus (Hamburg) & Bauakademie (Berlin)',
-    famousArchitect: 'Fritz Höger / Karl Friedrich Schinkel',
-    keyDetail: 'Plastische Schattenspiele durch zurückliegende Lagerfugen und Zierverbände (Kreuz- & Gotischer Verband).'
+    iconicWork: inhalt.werte.chilehausHamburgBauakademieBerlin,
+    famousArchitect: inhalt.werte.fritzHögerKarlFriedrich,
+    keyDetail: inhalt.werte.plastischeSchattenspieleDurchZurückliege
   },
   {
     id: 'gesteine',
-    name: 'Naturstein (Gneis, Granit, Kalkstein)',
+    name: inhalt.werte.natursteinGneisGranitKalkstein,
     category: 'Mineralisch',
     swatchBg: 'bg-stone-400 text-stone-900',
     accentBorder: 'border-stone-500',
     tactileScale: 'grob-reliefiert',
     thermalPerception: 'kalt',
     reflectionType: 'Halbmatt',
-    iconicWork: 'Therme Vals (Graubünden) & Neue Nationalgalerie (Berlin, Granitterrasse; Sanierung Chipperfield)',
-    famousArchitect: 'Peter Zumthor / David Chipperfield',
-    keyDetail: 'Geschichtete Platten aus Valser Quarzit (Gneis) mit feinen Fugen, die das Licht des Thermalwassers aufnehmen.'
+    iconicWork: inhalt.werte.thermeValsGraubündenNeue,
+    famousArchitect: inhalt.werte.peterZumthorDavidChipperfield,
+    keyDetail: inhalt.werte.geschichtetePlattenAusValser
   },
   {
     id: 'kalk',
-    name: 'Baukalk, Sumpfkalk & Tadelakt',
+    name: inhalt.werte.baukalkSumpfkalkTadelakt,
     category: 'Mineralisch',
     swatchBg: 'bg-amber-50 text-amber-900',
     accentBorder: 'border-amber-200',
     tactileScale: 'samtig-fein',
     thermalPerception: 'temperiert',
     reflectionType: 'Halbmatt',
-    iconicWork: 'Venezianische Palazzi & Römische Bauten',
-    famousArchitect: 'Andrea Palladio / Carlo Scarpa',
-    keyDetail: 'Transparenter Tiefenglanz durch Calcit-Kristallisation (Fresko- und Marmorino-Technik).'
+    iconicWork: inhalt.werte.venezianischePalazziRömischeBauten,
+    famousArchitect: inhalt.werte.andreaPalladioCarloScarpa,
+    keyDetail: inhalt.werte.transparenterTiefenglanzDurchCalcit
   },
   {
     id: 'lehmbau',
-    name: 'Stampflehm & Lehmputze',
+    name: inhalt.werte.stampflehmLehmputze,
     category: 'Mineralisch',
     swatchBg: 'bg-amber-700/80 text-white',
     accentBorder: 'border-amber-800',
     tactileScale: 'körnig-rau',
     thermalPerception: 'warm',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Kapelle der Versöhnung (Berlin) & Alnatura Campus (Darmstadt)',
-    famousArchitect: 'Martin Rauch / Anna Heringer',
-    keyDetail: 'Schichtweise gestampfte Sedimentstreifen mit natürlichem Farbübergang und offener Porigkeit.'
+    iconicWork: inhalt.werte.kapelleDerVersöhnungBerlin,
+    famousArchitect: inhalt.werte.martinRauchAnnaHeringer,
+    keyDetail: inhalt.werte.schichtweiseGestampfteSedimentstreifenMi
   },
   {
     id: 'glas',
-    name: 'Architekturglas & Glashüllen',
+    name: inhalt.werte.architekturglasGlashüllen,
     category: 'Mineralisch',
     swatchBg: 'bg-cyan-100 text-cyan-900',
     accentBorder: 'border-cyan-300',
     tactileScale: 'sehr glatt',
     thermalPerception: 'kalt',
     reflectionType: 'Hochglanz (spiegelnd)',
-    iconicWork: 'Bauhaus Dessau & Louvre-Pyramide (Paris)',
-    famousArchitect: 'Walter Gropius / I. M. Pei',
-    keyDetail: 'Entmaterialisierung der Wand; Wechselwirkung zwischen Innenbeleuchtung bei Nacht und Spiegelung bei Tag.'
+    iconicWork: inhalt.werte.bauhausDessauLouvrePyramide,
+    famousArchitect: inhalt.werte.walterGropiusIM,
+    keyDetail: inhalt.werte.entmaterialisierungDerWandWechselwirkung
   },
   {
     id: 'stahl',
-    name: 'Baustahl & Cortenstahl (Wetterfest)',
+    name: inhalt.werte.baustahlCortenstahlWetterfest,
     category: 'Metallisch',
     swatchBg: 'bg-amber-900 text-amber-200',
     accentBorder: 'border-amber-950',
     tactileScale: 'körnig-rau',
     thermalPerception: 'kühl',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Neue Nationalgalerie (Berlin) & John Deere World Headquarters (Moline, Cortenstahl)',
-    famousArchitect: 'Mies van der Rohe / Eero Saarinen',
-    keyDetail: 'Konstruktive Ehrlichkeit: Sichtbare Schweißnähte, I-Träger-Schlankheit oder samtige Rostpatina.'
+    iconicWork: inhalt.werte.neueNationalgalerieBerlinJohn,
+    famousArchitect: inhalt.werte.miesVanDerRohe,
+    keyDetail: inhalt.werte.konstruktiveEhrlichkeitSichtbareSchweißn
   },
   {
     id: 'aluminium',
-    name: 'Aluminium (Eloxiert & Pulverbeschichtet)',
+    name: inhalt.werte.aluminiumEloxiertPulverbeschichtet,
     category: 'Metallisch',
     swatchBg: 'bg-slate-200 text-slate-700',
     accentBorder: 'border-slate-300',
     tactileScale: 'glatt',
     thermalPerception: 'kühl',
     reflectionType: 'Seidenglanz',
-    iconicWork: 'Hong Kong and Shanghai Bank (Hongkong) & Willis Tower',
-    famousArchitect: 'Norman Foster / SOM',
-    keyDetail: 'Schlanke Pfosten-Riegel-Raster, aerodynamische Lamellenprofile mit reflexionsarmer Eloxalfärbung.'
+    iconicWork: inhalt.werte.hongKongAndShanghai,
+    famousArchitect: inhalt.werte.normanFosterSom,
+    keyDetail: inhalt.werte.schlankePfostenRiegelRaster
   },
   {
     id: 'kupfer',
-    name: 'Kupfer & Titanzink',
+    name: inhalt.werte.kupferTitanzink,
     category: 'Metallisch',
     swatchBg: 'bg-emerald-700 text-emerald-100',
     accentBorder: 'border-emerald-800',
     tactileScale: 'samtig-fein',
     thermalPerception: 'temperiert',
     reflectionType: 'Halbmatt',
-    iconicWork: 'Jüdisches Museum (Berlin) & Stellwerk Basel',
-    famousArchitect: 'Daniel Libeskind / Herzog & de Meuron',
-    keyDetail: 'Alterung: Kupfer von metallischem Glanz über Braun zur grünen Patina, Titanzink zur blaugrauen Patina.'
+    iconicWork: inhalt.werte.jüdischesMuseumBerlinStellwerk,
+    famousArchitect: inhalt.werte.danielLibeskindHerzogDe,
+    keyDetail: inhalt.werte.alterungKupferVonMetallischem
   },
   {
     id: 'holz',
-    name: 'Massivholz & Brettsperrholz (CLT)',
+    name: inhalt.werte.massivholzBrettsperrholzClt,
     category: 'Organisch',
     swatchBg: 'bg-amber-100 text-amber-900',
     accentBorder: 'border-amber-300',
     tactileScale: 'samtig-fein',
     thermalPerception: 'warm',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Mjøstårnet (Norwegen), Roots (Hamburg) & Tamedia (Zürich)',
-    famousArchitect: 'Shigeru Ban / Voll Arkitekter',
-    keyDetail: 'Sichtbare Jahrringe, Astbilder und natürliche Witterungsvergrauung als bewusster Entwurfsbestandteil.'
+    iconicWork: inhalt.werte.mjStRnetNorwegen,
+    famousArchitect: inhalt.werte.shigeruBanVollArkitekter,
+    keyDetail: inhalt.werte.sichtbareJahrringeAstbilderUnd
   },
   {
     id: 'holzwerkstoffe',
-    name: 'Holzwerkstoffe (OSB, Furnierschichtholz, BSH)',
+    name: inhalt.werte.holzwerkstoffeOsbFurnierschichtholzBsh,
     category: 'Organisch',
     swatchBg: 'bg-amber-200/70 text-amber-900',
     accentBorder: 'border-amber-400',
     tactileScale: 'glatt',
     thermalPerception: 'warm',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Centre Pompidou-Metz & Golfclub Haesley Nine Bridges',
-    famousArchitect: 'Shigeru Ban / Frei Otto',
-    keyDetail: 'Geometrisch präzise Holzgitter und filigrane Freiformschalen mit industrieller Holztextur.'
+    iconicWork: inhalt.werte.centrePompidouMetzGolfclub,
+    famousArchitect: inhalt.werte.shigeruBanFreiOtto,
+    keyDetail: inhalt.werte.geometrischPräziseHolzgitterUnd
   },
   {
     id: 'kunststoffe',
-    name: 'Membranen (ETFE, PTFE) & Polymere',
+    name: inhalt.werte.membranenEtfePtfePolymere,
     category: 'Synthetisch & Verbund',
     swatchBg: 'bg-sky-100 text-sky-800',
     accentBorder: 'border-sky-300',
     tactileScale: 'sehr glatt',
     thermalPerception: 'temperiert',
     reflectionType: 'Hochglanz (spiegelnd)',
-    iconicWork: 'Allianz Arena (München) & Eden Project (Cornwall)',
-    famousArchitect: 'Herzog & de Meuron / Nicholas Grimshaw',
-    keyDetail: 'Pneumatisch aufgeblasene Luftkissenkuben mit variierbarer Lichtdurchlässigkeit und Farbillumination.'
+    iconicWork: inhalt.werte.allianzArenaMünchenEden,
+    famousArchitect: inhalt.werte.herzogDeMeuronNicholas,
+    keyDetail: inhalt.werte.pneumatischAufgeblaseneLuftkissenkubenMi
   }
 ];
 
@@ -207,13 +209,7 @@ export default function MaterialitaetArchitektur() {
   });
 
   const activeSpec = MATERIAL_CATALOG.find(m => m.id === selectedMaterialId) || MATERIAL_CATALOG[0];
-  const activeDetail = ARCHITEKTUR_MATERIALITAET[activeSpec.id] || {
-    optikTextur: "Texturierte Oberflächenbeschaffenheit mit charakteristischem Relief.",
-    haptikOberflaeche: "Taktile Wahrnehmung je nach handwerklicher oder industrieller Vorbehandlung.",
-    lichtReflexion: "Spezifisches Streu- und Reflexionsverhalten unter natürlichem Tageslicht.",
-    alterungPatina: "Entwicklung von materialspezifischen Altersspuren und Oberflächenschutzschichten.",
-    architekturBezug: "Zahlreiche Meilensteine moderner und historischer Baukunst."
-  };
+  const activeDetail = ARCHITEKTUR_MATERIALITAET[activeSpec.id] || inhalt.daten.MaterialitaetArchitektur;
 
   return (
     <div className="flex flex-col gap-6 w-full">
@@ -222,63 +218,45 @@ export default function MaterialitaetArchitektur() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-6 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-shiraz/10 text-shiraz border border-shiraz/20">
-                Architektur &amp; Entwurf
-              </span>
-              <span className="text-xs text-text-main/50 font-mono">Fachbereich II</span>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-shiraz/10 text-shiraz border border-shiraz/20"><MdText text={inhalt.texte.architekturEntwurf} /></span>
+              <span className="text-xs text-text-main/50 font-mono"><MdText text={inhalt.texte.fachbereichIi} /></span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-text-main flex items-center gap-3">
-              <Palette className="text-shiraz" size={28} /> Materialität &amp; Architektonische Ästhetik
-            </h2>
-            <p className="text-sm text-text-main/80 mt-1 max-w-3xl leading-relaxed">
-              Die sinnliche Dimension der Baustoffe: Haptik, Lichtwirkung, Oberflächentextur, Schalungsstrukturen, Fugenrhythmen und die würdevolle Alterung (Patina) im architektonischen Entwurf.
-            </p>
+              <Palette className="text-shiraz" size={28} /><MdText text={inhalt.texte.materialitätArchitektonischeÄsthetik} /></h2>
+            <p className="text-sm text-text-main/80 mt-1 max-w-3xl leading-relaxed"><MdText text={inhalt.texte.dieSinnlicheDimensionDer} /></p>
           </div>
 
           <button
             onClick={() => setActiveTab('sichtbeton')}
             className="px-4 py-2 rounded-xl bg-shiraz text-white hover:bg-shiraz/90 font-medium text-xs flex items-center gap-2 shadow-sm transition-all self-start md:self-center shrink-0 cursor-pointer"
           >
-            <Building2 size={15} /> Zu Sichtbeton-Klassen (SB 1–4)
-          </button>
+            <Building2 size={15} /><MdText text={inhalt.texte.zuSichtbetonKlassenSb} /></button>
         </div>
 
         {/* 4 Dimensionen der Materialität Info-Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
           <div className="p-3.5 rounded-xl bg-off-white/80 border border-home-grau/20 flex flex-col gap-1">
             <div className="flex items-center gap-1.5 font-bold text-text-main">
-              <Eye size={15} className="text-shiraz" /> 1. Optik &amp; Textur
-            </div>
-            <p className="text-text-main/70 leading-normal">
-              Korngefüge, Fugenmuster, Farbnuancen, Porigkeit und Schalungsabdrücke.
-            </p>
+              <Eye size={15} className="text-shiraz" /><MdText text={inhalt.texte.t1OptikTextur} /></div>
+            <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.korngefügeFugenmusterFarbnuancenPorigkei} /></p>
           </div>
 
           <div className="p-3.5 rounded-xl bg-off-white/80 border border-home-grau/20 flex flex-col gap-1">
             <div className="flex items-center gap-1.5 font-bold text-text-main">
-              <Sliders size={15} className="text-amber-700" /> 2. Taktilität &amp; Haptik
-            </div>
-            <p className="text-text-main/70 leading-normal">
-              Wärmeeindringzahl (warm vs. kühl), Rauheit, Schärfe, Samtigkeit und Griffgefühl.
-            </p>
+              <Sliders size={15} className="text-amber-700" /><MdText text={inhalt.texte.t2TaktilitätHaptik} /></div>
+            <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.wärmeeindringzahlWarmVsKühl} /></p>
           </div>
 
           <div className="p-3.5 rounded-xl bg-off-white/80 border border-home-grau/20 flex flex-col gap-1">
             <div className="flex items-center gap-1.5 font-bold text-text-main">
-              <Sun size={15} className="text-amber-500" /> 3. Licht &amp; Reflexion
-            </div>
-            <p className="text-text-main/70 leading-normal">
-              Spiegelung, diffuse Streuung, Transluzenz, Streiflicht-Schattentiefe im Tagesverlauf.
-            </p>
+              <Sun size={15} className="text-amber-500" /><MdText text={inhalt.texte.t3LichtReflexion} /></div>
+            <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.spiegelungDiffuseStreuungTransluzenz} /></p>
           </div>
 
           <div className="p-3.5 rounded-xl bg-off-white/80 border border-home-grau/20 flex flex-col gap-1">
             <div className="flex items-center gap-1.5 font-bold text-text-main">
-              <Clock size={15} className="text-emerald-700" /> 4. Würde des Alterns
-            </div>
-            <p className="text-text-main/70 leading-normal">
-              Patina, Auswitterung, Vergrauung, Verharzung und konstruktiver Witterungsschutz.
-            </p>
+              <Clock size={15} className="text-emerald-700" /><MdText text={inhalt.texte.t4WürdeDesAlterns} /></div>
+            <p className="text-text-main/70 leading-normal"><MdText text={inhalt.texte.patinaAuswitterungVergrauungVerharzung} /></p>
           </div>
         </div>
       </div>
@@ -286,7 +264,7 @@ export default function MaterialitaetArchitektur() {
       {/* Filter & Search Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-home-grau/30 shadow-2xs">
         <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
-          {['Alle', 'Mineralisch', 'Metallisch', 'Organisch', 'Synthetisch & Verbund'].map(cat => (
+          {['Alle', 'Mineralisch', 'Metallisch', 'Organisch', inhalt.werte.synthetischVerbund].map(cat => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
@@ -307,7 +285,7 @@ export default function MaterialitaetArchitektur() {
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Baustoff, Architekt, Bauwerk suchen..."
+            placeholder={inhalt.werte.baustoffArchitektBauwerkSuchen}
             className="w-full pl-8 pr-3 py-1.5 rounded-lg text-xs bg-off-white border border-home-grau/30 focus:outline-none focus:ring-2 focus:ring-shiraz/40"
           />
         </div>
@@ -369,7 +347,7 @@ export default function MaterialitaetArchitektur() {
                 <span className="text-[10px] font-bold uppercase tracking-widest text-shiraz">Materialitäts-Analyse</span>
                 <h3 className="text-xl font-bold text-text-main">{activeSpec.name}</h3>
                 <p className="text-xs text-text-main/70 mt-0.5">
-                  Kategorie: <strong>{activeSpec.category}</strong> | Typische Haptik: <strong>{activeSpec.tactileScale}</strong>
+                  Kategorie: <strong>{activeSpec.category}</strong><MdText text={inhalt.texte.typischeHaptik} /><strong>{activeSpec.tactileScale}</strong>
                 </p>
               </div>
 
@@ -380,7 +358,7 @@ export default function MaterialitaetArchitektur() {
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'sonne' ? 'bg-white shadow-xs text-amber-600 font-bold' : 'text-text-main/60 hover:text-text-main'
                   }`}
-                  title="Streiflicht / Direkte Sonne simulieren"
+                  title={inhalt.werte.streiflichtDirekteSonneSimulieren}
                 >
                   <Sun size={13} /> Sonne
                 </button>
@@ -389,7 +367,7 @@ export default function MaterialitaetArchitektur() {
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'diffus' ? 'bg-white shadow-xs text-slate-700 font-bold' : 'text-text-main/60 hover:text-text-main'
                   }`}
-                  title="Diffuses Himmelslicht"
+                  title={inhalt.werte.diffusesHimmelslicht}
                 >
                   <Eye size={13} /> Diffus
                 </button>
@@ -398,7 +376,7 @@ export default function MaterialitaetArchitektur() {
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'nacht' ? 'bg-slate-900 text-amber-300 shadow-xs font-bold' : 'text-text-main/60 hover:text-text-main'
                   }`}
-                  title="Kunstlicht / Nachtbeleuchtung"
+                  title={inhalt.werte.kunstlichtNachtbeleuchtung}
                 >
                   <Sparkles size={13} /> Nacht
                 </button>
@@ -415,8 +393,7 @@ export default function MaterialitaetArchitektur() {
             }`}>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative z-10">
                 <div>
-                  <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${lightModePreview === 'nacht' ? 'text-amber-400' : 'text-shiraz'}`}>
-                    Sinnliche Oberflächenwirkung ({lightModePreview.toUpperCase()}-BELEUCHTUNG)
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${lightModePreview === 'nacht' ? 'text-amber-400' : 'text-shiraz'}`}><MdText text={inhalt.texte.sinnlicheOberflächenwirkung} />{lightModePreview.toUpperCase()}-BELEUCHTUNG)
                   </span>
                   <div className="text-sm font-bold flex items-center gap-2">
                     <span className={`w-3 h-3 rounded-full ${activeSpec.swatchBg} border ${activeSpec.accentBorder}`} />
@@ -432,7 +409,7 @@ export default function MaterialitaetArchitektur() {
                 }`}>
                   <div className="font-semibold text-shiraz">Reflexionsverhalten:</div>
                   <div className="font-mono text-[11px]">{activeSpec.reflectionType}</div>
-                  <div className="text-[10px] text-text-main/60 mt-1">Thermischer Kontakt: <strong>{activeSpec.thermalPerception}</strong></div>
+                  <div className="text-[10px] text-text-main/60 mt-1"><MdText text={inhalt.texte.thermischerKontakt} /><strong>{activeSpec.thermalPerception}</strong></div>
                 </div>
               </div>
             </div>
@@ -441,8 +418,7 @@ export default function MaterialitaetArchitektur() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="p-4 rounded-xl bg-off-white/70 border border-home-grau/20 space-y-1.5">
                 <div className="flex items-center gap-1.5 font-bold text-text-main">
-                  <Eye size={15} className="text-shiraz" /> Optik, Textur &amp; Fügung
-                </div>
+                  <Eye size={15} className="text-shiraz" /><MdText text={inhalt.texte.optikTexturFügung} /></div>
                 <p className="text-text-main/80 leading-relaxed">
                   {activeDetail.optikTextur}
                 </p>
@@ -450,8 +426,7 @@ export default function MaterialitaetArchitektur() {
 
               <div className="p-4 rounded-xl bg-off-white/70 border border-home-grau/20 space-y-1.5">
                 <div className="flex items-center gap-1.5 font-bold text-text-main">
-                  <Sliders size={15} className="text-amber-700" /> Taktilität, Haptik &amp; Berührung
-                </div>
+                  <Sliders size={15} className="text-amber-700" /><MdText text={inhalt.texte.taktilitätHaptikBerührung} /></div>
                 <p className="text-text-main/80 leading-relaxed">
                   {activeDetail.haptikOberflaeche}
                 </p>
@@ -459,8 +434,7 @@ export default function MaterialitaetArchitektur() {
 
               <div className="p-4 rounded-xl bg-off-white/70 border border-home-grau/20 space-y-1.5">
                 <div className="flex items-center gap-1.5 font-bold text-text-main">
-                  <Sun size={15} className="text-amber-500" /> Lichtwirkung &amp; Schattenzeichnung
-                </div>
+                  <Sun size={15} className="text-amber-500" /><MdText text={inhalt.texte.lichtwirkungSchattenzeichnung} /></div>
                 <p className="text-text-main/80 leading-relaxed">
                   {activeDetail.lichtReflexion}
                 </p>
@@ -468,8 +442,7 @@ export default function MaterialitaetArchitektur() {
 
               <div className="p-4 rounded-xl bg-off-white/70 border border-home-grau/20 space-y-1.5">
                 <div className="flex items-center gap-1.5 font-bold text-text-main">
-                  <Clock size={15} className="text-emerald-700" /> Alterung, Patina &amp; Verwitterung
-                </div>
+                  <Clock size={15} className="text-emerald-700" /><MdText text={inhalt.texte.alterungPatinaVerwitterung} /></div>
                 <p className="text-text-main/80 leading-relaxed">
                   {activeDetail.alterungPatina}
                 </p>
@@ -480,7 +453,7 @@ export default function MaterialitaetArchitektur() {
             <div className="p-4 rounded-xl bg-shiraz/5 border border-shiraz/20 flex items-start gap-3 text-xs">
               <Building2 size={20} className="text-shiraz shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-bold text-shiraz mb-1">Architekturikonen &amp; Baukunst-Referenzen:</h5>
+                <h5 className="font-bold text-shiraz mb-1"><MdText text={inhalt.texte.architekturikonenBaukunstReferenzen} /></h5>
                 <p className="text-text-main/80 leading-relaxed mb-2">
                   {activeDetail.architekturBezug}
                 </p>
@@ -497,9 +470,7 @@ export default function MaterialitaetArchitektur() {
 
             {/* Action Bar */}
             <div className="pt-2 border-t border-home-grau/20 flex flex-wrap items-center justify-between gap-3 text-xs">
-              <span className="text-text-main/60">
-                Detailliertes Steckbrief-Profil aufrufen:
-              </span>
+              <span className="text-text-main/60"><MdText text={inhalt.texte.detailliertesSteckbriefProfilAufrufen} /></span>
               <button
                 onClick={() => {
                   // Direct navigation to specific module if exists
@@ -521,7 +492,7 @@ export default function MaterialitaetArchitektur() {
                 }}
                 className="px-3 py-1.5 bg-off-white hover:bg-white text-text-main font-semibold border border-home-grau/30 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
               >
-                <span>Zum Fachmodul "{activeSpec.name.split(' ')[0]}"</span>
+                <span><MdText text={inhalt.texte.zumFachmodul} />{activeSpec.name.split(' ')[0]}"</span>
                 <Compass size={14} className="text-shiraz" />
               </button>
             </div>
@@ -532,16 +503,11 @@ export default function MaterialitaetArchitektur() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Warum fühlt sich Holz wärmer an als Stahl?"
+          title={inhalt.werte.anwendungsbeispielWarumFühltSich}
           zielGleichung="\vartheta_K = \frac{b_H \cdot \vartheta_H + b_M \cdot \vartheta_M}{b_H + b_M}, \quad b = \sqrt{\lambda \rho c}"
-          normQuelle="Kontakttemperatur zweier halbunendlicher Körper (Bauphysik); b_Haut ≈ 1000 als Lehrwert"
-          schritte={[
-            { titel: '1. Wärmeeindringkoeffizienten', formel: 'b_{Holz} \\approx 306,\\; b_{Beton} \\approx 2\\,191,\\; b_{Stahl} \\approx 13\\,290\\;\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})', erklaerung: 'Holz: λ = 0,13, ρ = 450, c = 1600; Beton: 2,0 / 2400 / 1000; Stahl: 50 / 7850 / 450.' },
-            { titel: '2. Holz', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 306 \\cdot 20}{1306} = 30{,}0\\,^\\circ\\text{C}', erklaerung: 'Hand 33 °C, Material 20 °C.' },
-            { titel: '3. Beton', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 2191 \\cdot 20}{3191} = 24{,}1\\,^\\circ\\text{C}', erklaerung: 'Deutlich kühlerer Eindruck.' },
-            { titel: '4. Stahl', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 13\\,290 \\cdot 20}{14\\,290} = 20{,}9\\,^\\circ\\text{C}', erklaerung: 'Die Haut nimmt fast die Materialtemperatur an.' },
-          ]}
-          ergebnisHinweis="Bei gleicher Raumtemperatur fühlt sich Holz rund 9 K wärmer an als Stahl – die Haptik folgt aus b, nicht aus der Temperatur."
+          normQuelle={inhalt.werte.kontakttemperaturZweierHalbunendlicherKö}
+          schritte={inhalt.daten["MaterialitaetArchitektur.schritte"]}
+          ergebnisHinweis={inhalt.werte.beiGleicherRaumtemperaturFühlt}
         />
       </div>
 
@@ -553,29 +519,9 @@ export default function MaterialitaetArchitektur() {
           { title: 'Patina', url: 'https://de.wikipedia.org/wiki/Patina' },
           { title: 'Klinker', url: 'https://de.wikipedia.org/wiki/Klinker' }
         ]}
-        literatur={[
-          'Zumthor, Peter: Atmosphären. Basel: Birkhäuser 2006',
-          'Pallasmaa, Juhani: Die Augen der Haut – Architektur und die Sinne. Los Angeles: Atara Press 2012',
-          'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005',
-          'Deplazes, A. (Hrsg.): Architektur konstruieren – Vom Rohmaterial zum Bauwerk. Basel: Birkhäuser 2018 (Neuauflage 2022)'
-        ]}
-        regelwerke={[
-          { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)', url: 'https://www.beton.org/' },
-          { title: 'DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)' },
-          { title: 'DIN 18330 (VOB/C: Mauerarbeiten)' }
-        ]}
-        formeln={[
-          {
-            formel: 'b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J} / (\\text{m}^2 \\text{K} \\sqrt{\\text{s}})]',
-            erklaerung: 'Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Nadelholz b ≈ 300–400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14.000 oder Beton b ≈ 2.000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.',
-            quelle: 'Bauphysik & Thermodynamik'
-          },
-          {
-            formel: '\\rho_d + \\rho_s = 1 - \\alpha \\quad (\\tau = 0)',
-            erklaerung: 'Optische Strahlungsbilanz der Baustoffoberfläche: Bei lichtundurchlässigen Oberflächen (Transmission τ = 0) entspricht die Summe aus diffuser Reflexion ρ_d und gerichteter Spiegelung ρ_s der nicht absorbierten Strahlung (1 − α).',
-            quelle: 'Lichttechnik & Optik'
-          }
-        ]}
+        literatur={inhalt.daten["MaterialitaetArchitektur.literatur"]}
+        regelwerke={inhalt.daten["MaterialitaetArchitektur.regelwerke"]}
+        formeln={inhalt.daten["MaterialitaetArchitektur.formeln"]}
       />
     </div>
   );

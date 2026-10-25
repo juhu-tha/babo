@@ -11,6 +11,8 @@ import HolzbauKonstruktion from './holzbaubeta/HolzbauKonstruktion';
 import HolzbauBemessung from './holzbaubeta/HolzbauBemessung';
 import HolzbauVerbindung from './holzbaubeta/HolzbauVerbindung';
 import HolzbauBauphysik from './holzbaubeta/HolzbauBauphysik';
+import inhalt from '@/content/holzbaubeta/HolzbauBeta.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface SubTabProps {
   activeSubTab: string;
@@ -46,13 +48,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [shreHDir, setShreHDir] = useState<string>('tangential');
 
   // Swelling/Shrinking coefficients database (per 1% moisture change below FSP ~ 30%)
-  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = {
-    fichte: { radial: 0.19, tangential: 0.33, longitudinal: 0.01, label: 'Fichte / Tanne (Nadelholz)' },
-    kiefer: { radial: 0.19, tangential: 0.36, longitudinal: 0.01, label: 'Kiefer (Nadelholz)' },
-    laerche: { radial: 0.18, tangential: 0.38, longitudinal: 0.01, label: 'Lärche (Nadelholz)' },
-    buche: { radial: 0.20, tangential: 0.40, longitudinal: 0.01, label: 'Buche (Laubholz)' },
-    eiche: { radial: 0.15, tangential: 0.28, longitudinal: 0.01, label: 'Eiche (Laubholz)' }
-  };
+  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = inhalt.daten["HolzbauBeta.shrinkageCoeffs"];
 
   const shrinkResults = useMemo(() => {
     const coeffs = shrinkageCoeffs[shreWoodType] || shrinkageCoeffs.fichte;
@@ -290,23 +286,15 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <Trees size={28} />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
-                Holzbau (Ingenieurholzbau)
-              </h2>
-              <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider">
-                Referenzhandbuch &amp; Tragwerksnachweise nach Eurocode 5 (DIN EN 1995-1-1)
-              </p>
+              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight"><MdText text={inhalt.texte.holzbauIngenieurholzbau} /></h2>
+              <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.referenzhandbuchTragwerksnachweiseNachEu} /></p>
             </div>
           </div>
           
-          <div className="bg-slate-100 text-slate-800 border border-slate-200 py-1 px-3 rounded-full text-xs font-bold leading-none self-start md:self-auto shadow-xs">
-            Ref: informationsdienst-holz.de &amp; dataholz.eu
-          </div>
+          <div className="bg-slate-100 text-slate-800 border border-slate-200 py-1 px-3 rounded-full text-xs font-bold leading-none self-start md:self-auto shadow-xs"><MdText text={inhalt.texte.refInformationsdienstHolzDe} /></div>
         </div>
 
-        <p className="text-sm text-text-main/75 max-w-4xl leading-relaxed">
-          Das Modul fasst Kennwerte der Holzwerkstoffe, Konstruktionsweisen, Bauphysik und Brandschutz zusammen und enthält vereinfachte Rechner nach Eurocode 5. Die Rechner dienen der Lehre und ersetzen keine Tragwerksplanung.
-        </p>
+        <p className="text-sm text-text-main/75 max-w-4xl leading-relaxed"><MdText text={inhalt.texte.dasModulFasstKennwerte} /></p>
       </div>
 
       {/* RENDER DYNAMIC SUB-TABS BASED ON MAIN MENU SWITCH */}
@@ -325,17 +313,11 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
       {activeSubTab === 'bemessung' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Knicknachweis einer Stütze C24 120/160 mm"
+          title={inhalt.werte.anwendungsbeispielKnicknachweisEinerStüt}
           zielGleichung="N_{Ed} \le k_c \cdot A \cdot f_{c,0,d}, \quad f_{c,0,d} = k_{mod} \cdot \frac{f_{c,0,k}}{\gamma_M}"
-          normQuelle="DIN EN 1995-1-1 mit NA, 6.3.2 (Ersatzstabverfahren)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'b/h = 120/160\\,\\text{mm},\\; l_{ef} = 3{,}0\\,\\text{m},\\; N_{Ed} = 50\\,\\text{kN},\\; \\text{NKL 1, mittel: } k_{mod} = 0{,}8', erklaerung: 'Beidseitig gelenkig; Ausweichen um die schwache Achse.' },
-            { titel: '2. Schlankheit', formel: 'i_z = \\frac{120}{\\sqrt{12}} = 34{,}6\\,\\text{mm};\\; \\lambda_z = \\frac{3000}{34{,}6} = 86{,}6', erklaerung: 'Maßgebend ist der kleinere Trägheitsradius.' },
-            { titel: '3. Bezogene Schlankheit', formel: '\\lambda_{rel} = \\frac{\\lambda}{\\pi}\\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{86{,}6}{\\pi}\\sqrt{\\frac{21}{7400}} = 1{,}47', erklaerung: 'E_0,05 = 7400 N/mm² für C24.' },
-            { titel: '4. Knickbeiwert', formel: 'k = 0{,}5\\,[1 + 0{,}2\\,(1{,}47 - 0{,}3) + 1{,}47^2] = 1{,}70;\\; k_c = \\frac{1}{1{,}70 + \\sqrt{1{,}70^2 - 1{,}47^2}} = 0{,}39', erklaerung: 'β_c = 0,2 für Vollholz.' },
-            { titel: '5. Nachweis', formel: 'N_{Rd} = 0{,}39 \\cdot 19\\,200 \\cdot \\frac{0{,}8 \\cdot 21}{1{,}3} \\approx 97{,}6\\,\\text{kN} \\ge 50\\,\\text{kN}', erklaerung: 'Ausnutzung rund 51 %.' },
-          ]}
-          ergebnisHinweis="Die Stütze ist ausreichend; ohne Knicken (k_c = 1) läge die Tragfähigkeit bei rund 248 kN – durch die Schlankheit sinkt sie auf rund 40 %."
+          normQuelle={inhalt.werte.dinEn19951}
+          schritte={inhalt.daten["HolzbauBeta.schritte"]}
+          ergebnisHinweis={inhalt.werte.dieStützeIstAusreichend}
         />
       </div>
       )}
@@ -349,35 +331,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           { title: 'Brettsperrholz', url: 'https://de.wikipedia.org/wiki/Brettsperrholz' },
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1)' },
-          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)' },
-          { title: 'DIN EN 338:2016-07 (Festigkeitsklassen Bauholz) und DIN EN 14080:2013-09 (Brettschichtholz)' },
-          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), Fassung September 2024 (MVV TB 2025/1, lfd. Nr. A 2.2.1.4); Landesfassung gemäß jeweiliger VV TB' },
-          { title: 'DIN EN 16351:2025-07 (Brettsperrholz – Anforderungen)' }
-        ]}
-        literatur={[
-          'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5 (einzelne Hefte)',
-          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016',
-          'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        weblinks={[
-          { title: 'dataholz.eu – Bauteilkatalog (Holzforschung Austria)', url: 'https://www.dataholz.eu' },
-          { title: 'Informationsdienst Holz', url: 'https://informationsdienst-holz.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} > 8\\,\\text{Hz}',
-            erklaerung: 'Erste Eigenfrequenz eines gelenkig gelagerten Deckenstreifens; f₁ > 8 Hz ist Anwendungsgrenze des Nachweises nach EC5 7.3.3.',
-            quelle: 'DIN EN 1995-1-1 Abs. 7.3'
-          },
-          {
-            formel: 'd_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0',
-            erklaerung: 'Ideelle Abbrandtiefe d_ef der Methode mit reduziertem Querschnitt (β_n = 0,8 Vollholz / 0,7 BSH, d₀ = 7 mm, k₀ = 1 ab 20 min).',
-            quelle: 'DIN EN 1995-1-2'
-          }
-        ]}
+        regelwerke={inhalt.daten["HolzbauBeta.regelwerke"]}
+        literatur={inhalt.daten["HolzbauBeta.literatur"]}
+        weblinks={inhalt.daten["HolzbauBeta.weblinks"]}
+        formeln={inhalt.daten["HolzbauBeta.formeln"]}
       />
 
     </div>

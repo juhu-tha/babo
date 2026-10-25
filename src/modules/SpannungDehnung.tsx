@@ -17,6 +17,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
+import inhalt from '@/content/spannungdehnung/SpannungDehnung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -192,12 +194,7 @@ export default function SpannungDehnung() {
         <h2 className="text-xl font-bold text-text-main">Spannungs-Dehnungs-Diagramme</h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Das Spannungs-Dehnungs-Diagramm (<FormulaText text="\sigma-\varepsilon" />-Diagramm) beschreibt das mechanische Verhalten von Baustoffen unter Last. 
-            Hier können Sie interaktiv erforschen, wie sich Materialparameter auf das Tragverhalten auswirken.
-            Beim Beton wird der Unterschied zwischen dem <strong>Mittelwert-Realverhalten</strong> (für Verformungen) und der abgesicherten <strong>Bemessungskurve</strong> (Parabel-Rechteck) deutlich. 
-            Stahl verhält sich zunächst linear-elastisch, beginnt dann zu fließen und verfestigt sich bis zur Bruchdehnung.
-          </p>
+          <p><MdText text={inhalt.texte.dasSpannungsDehnungsDiagramm} /><FormulaText text="\sigma-\varepsilon" /><MdText text={inhalt.texte.diagrammBeschreibtDasMechanische} /></p>
         </div>
       </div>
 
@@ -205,33 +202,31 @@ export default function SpannungDehnung() {
         {/* BETON SECTION */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <h3 className="text-lg font-bold text-shiraz flex items-center gap-2">
-            <FormulaText text="Beton (Druck)" />
-            <InfoTooltip text="Vergleich zwischen der Bemessung nach EC2 (Parabel-Rechteck) und dem physikalischen Realverhalten (Nichtlinear)." />
+            <FormulaText text={inhalt.werte.betonDruck} />
+            <InfoTooltip text={inhalt.werte.vergleichZwischenDerBemessung} />
           </h3>
           
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
             <Slider 
-              label={<FormulaText text="Charakt. Druckfestigkeit (f_{ck})" />}
-              info="Zylinderdruckfestigkeit nach 28 Tagen. Höhere Festigkeit führt zu spröderem Versagen."
+              label={<FormulaText text={inhalt.werte.charaktDruckfestigkeitFCk} />}
+              info={inhalt.werte.zylinderdruckfestigkeitNach28Tagen}
               min={12} max={90} step={1} 
               value={fck} unit="MPa" 
               onChange={(e) => setFck(Number(e.target.value))} 
             />
-            <p className="text-[11px] text-slate-500 mt-2">
-              Hinweis: Die Formeln der Spannungs-Dehnungs-Linie nach DIN EN 1992-1-1, 3.1 gelten nur bis C90/105 (f_ck ≤ 90 MPa); der Regler ist deshalb auf 90 MPa begrenzt.
-            </p>
+            <p className="text-[11px] text-slate-500 mt-2"><MdText text={inhalt.texte.hinweisDieFormelnDer} /></p>
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Bemessungswert f_{cd}" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text={inhalt.werte.bemessungswertFCd} /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(betonProps.fcd, 1)} MPa</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Mittlere Festigkeit f_{cm}" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text={inhalt.werte.mittlereFestigkeitFCm} /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(betonProps.fcm, 1)} MPa</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="E-Modul E_{cm}" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text={inhalt.werte.eModulECm} /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl((betonProps.Ecm / 1000), 1)} GPa</div>
               </div>
               <div>
@@ -247,8 +242,8 @@ export default function SpannungDehnung() {
               options={{
                 ...commonOptions, 
                 scales: { 
-                  x: { title: { display: true, text: 'Dehnung ε (‰)' }, min: 0, max: 5 },
-                  y: { title: { display: true, text: 'Spannung σ_c (MPa)' }, min: 0, max: 120 } 
+                  x: { title: { display: true, text: inhalt.werte.dehnung }, min: 0, max: 5 },
+                  y: { title: { display: true, text: inhalt.werte.spannungCMpa }, min: 0, max: 120 } 
                 } 
               }} 
             />
@@ -259,7 +254,7 @@ export default function SpannungDehnung() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <h3 className="text-lg font-bold text-middle-blue flex items-center gap-2">
             <FormulaText text="Stahl (Zug)" />
-            <InfoTooltip text="Betonstahl B500 nach DIN 488-1, idealisiert nach EC2 Bild 3.8." />
+            <InfoTooltip text={inhalt.werte.betonstahlB500NachDin} />
           </h3>
           
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -271,18 +266,18 @@ export default function SpannungDehnung() {
                   onClick={() => setStahlSorte(st)}
                   className={`flex-1 py-2 rounded-lg text-sm font-bold border cursor-pointer ${stahlSorte === st ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
                 >
-                  {st} {st === 'B500A' ? '(normale Duktilität)' : '(hohe Duktilität)'}
+                  {st} {st === 'B500A' ? inhalt.werte.normaleDuktilität : inhalt.werte.hoheDuktilität}
                 </button>
               ))}
             </div>
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Streckgrenze f_{yk}" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text={inhalt.werte.streckgrenzeFYk} /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fy, 0)} MPa</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Zugfestigkeit f_{tk}" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text={inhalt.werte.zugfestigkeitFTk} /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fu, 0)} MPa</div>
               </div>
               <div>
@@ -302,8 +297,8 @@ export default function SpannungDehnung() {
               options={{
                 ...commonOptions, 
                 scales: { 
-                  x: { title: { display: true, text: 'Dehnung ε (‰)' } },
-                  y: { title: { display: true, text: 'Spannung σ_s (MPa)' }, min: 0, max: 600 } 
+                  x: { title: { display: true, text: inhalt.werte.dehnung2 } },
+                  y: { title: { display: true, text: inhalt.werte.spannungSMpa }, min: 0, max: 600 } 
                 } 
               }} 
             />

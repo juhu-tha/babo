@@ -1,0 +1,88 @@
+{
+  "texte": {
+    "didaktischerLeitfadenVon0": "Didaktischer Leitfaden • Von 0 auf 100",
+    "spannbetonbauSystematischeEinführungVon": "Spannbetonbau: Systematische Einführung von den Grundlagen bis zur Bemessung",
+    "eurocode2DinEn": "Eurocode 2 • DIN EN 1992-1-1",
+    "dieserLeitfadenVermitteltDie": "Dieser Leitfaden vermittelt die baustatischen, werkstofflichen und konstruktiven Gesetzmäßigkeiten des Spannbetonbaus. Anhand von sechs logisch aufeinander aufbauenden Lektionen werden die mechanischen Wirkungsweisen der künstlichen Druckvorspannung, die rheologischen Verluste (Kriechen, Schwinden, Relaxation), die Herstellungsverfahren sowie die Schnittgrößenüberlagerung und Nachweisführung nach Eurocode 2 präzise und nachvollziehbar erläutert.",
+    "aktuellerThemenbereich": "Aktueller Themenbereich:",
+    "themenübersichtKapitelauswahl": "Themenübersicht (Kapitelauswahl)",
+    "lektion1Von6": "Lektion 1 von 6 • 0% bis 20%",
+    "dasGrundprinzipDerVorspannung": "Das Grundprinzip der Vorspannung & Mechanische Ausgangslage",
+    "wirkungsweiseKünstlichEingeprägterDruckü": "Wirkungsweise künstlich eingeprägter Drucküberlagerungen zur Rissvermeidung bei Biegebeanspruchung.",
+    "mechanischeAusgangslageBaustoffgrenzen": "Mechanische Ausgangslage & Baustoffgrenzen:",
+    "betonBesitztEineHohe": "Beton besitzt eine hohe Druckfestigkeit (z. B. $f_{ck} = 35\\,\\text{N/mm}^2$ bei einem C35/45), seine mittlere zentrische Zugfestigkeit $f_{ctm}$ liegt jedoch lediglich bei 2,2 bis 4,1 N/mm² – etwa **7–10 %** der Druckfestigkeit (z. B. C35/45: 3,2/35 = 9 %; C50/60: 4,1/50 = 8 %).",
+    "imSchlaffBewehrtenStahlbeton": "Im schlaff bewehrten Stahlbeton (B500) ist das Aufreißen des Betons im Zugbereich (Zustand II) statisch einkalkuliert: Erst nach Rissbildung übernimmt der Bewehrungsstahl die anfallenden Zugkräfte. Bei weitgespannten Bauteilen (wie Brückenüberbauten oder Hallenbindern) führt dieser Steifigkeitsabfall jedoch zu unzulässig großen Durchbiegungen, breiten Rissen und damit einhergehenden Korrosionsrisiken.",
+    "dasPhysikalischePrinzipNach": " Das physikalische Prinzip nach Eugène Freyssinet (1928)",
+    "dasGrundprinzipDesSpannbetons": "Das Grundprinzip des Spannbetons lässt sich an einer Reihe frei aneinandergestellter Bücher ohne gegenseitigen Zugverbund veranschaulichen: Versucht man, die Reihe ohne Einspannung anzuheben, versagt das System schlagartig durch Klaffen der Kontaktfugen.",
+    "wirdJedochVonBeiden": "Wird jedoch von beiden Enden eine ausreichend große **künstliche Druckkraft $P$** eingeleitet, überlagert die resultierende Druckspannung die aus dem Eigengewicht resultierenden Zugspannungen. Solange die resultierende Randspannung eine reine Druckspannung bleibt, bleibt der Querschnitt geschlossen und besitzt die volle Biegesteifigkeit des ungerissenen Zustands I.",
+    "systemvergleichImQuerschnitt": " Systemvergleich im Querschnitt",
+    "t1UnbewehrterBetonZustand": "1. Unbewehrter Beton (Zustand I):",
+    "versagtSprödeUndOhne": "Versagt spröde und ohne Vorankündigung, sobald die Randzugspannung die Zugfestigkeit überschreitet ($\\sigma > f_{ctm}$).",
+    "t2NormalerStahlbetonZustand": "2. Normaler Stahlbeton (Zustand II):",
+    "tragfähigErfordertJedochPlanmäßige": "Tragfähig, erfordert jedoch planmäßige Rissbildung. Der Beton in der Zugzone trägt rechnerisch nicht mehr zur Biegesteifigkeit bei.",
+    "t3SpannbetonDrucküberlagerung": "3. Spannbeton (Drucküberlagerung):",
+    "derQuerschnittBleibtDurch": "Der Querschnitt bleibt durch die eingeprägte Kraft voll oder weitgehend überdrückt. Maximale Steifigkeit, geringe Durchbiegung und hoher Schutz vor Risskorrosion.",
+    "vorspannungIstDiePlanmäßige": "Vorspannung ist die planmäßige Vorwegnahme von inneren Druckspannungen zur Kompensation späterer lastbedingter Zugbeanspruchungen.",
+    "weiterZuKapitel2": "Weiter zu Kapitel 2 ",
+    "lektion5Von6": "Lektion 5 von 6 • 80% bis 95%",
+    "statischUnbestimmteSystemeZwangsmomente": "Statisch unbestimmte Systeme & Zwangsmomente (Sekundärmomente)",
+    "schnittgrößenüberlagerungBeimDurchlauftr": "Schnittgrößenüberlagerung beim Durchlaufträger: Primärmomente, Sekundärmomente und das Konzept der Konkordanz.",
+    "schnittgrößenüberlagerungBeiStatischUnbe": "Schnittgrößenüberlagerung bei statisch unbestimmten Durchlaufträgern:",
+    "währendSichEinEinfeldträger": "Während sich ein Einfeldträger infolge Vorspannung ungehindert nach oben durchbiegen kann, behindern Zwischenauflager bei Durchlaufträgern die freie Formänderung. Diese Behinderung erzeugt Zwangslagerkräfte und zusätzliche Biegemomente.",
+    "dasAusDerVorspannung": "Das aus der Vorspannung resultierende Gesamtmoment setzt sich aus zwei Komponenten zusammen: dem isostatischen **Primärmoment** ($M_{P,1} = -P \\cdot e_p$) und dem hyperstatischen **Sekundärmoment** ($M_{P,2}$), das zwischen den Stützenachsen streng linear verläuft.",
+    "aufspaltungDerVorspannmomente": " Aufspaltung der Vorspannmomente",
+    "t1IsostatischesPrimärmomentM": "**1. Isostatisches Primärmoment ($M_{P,1}$):**<br>Entsteht unmittelbar aus der lokalen Exzentrizität des Spannglieds bezüglich des Querschnittsschwerpunkts:",
+    "t2HyperstatischesSekundärmomentM": "**2. Hyperstatisches Sekundärmoment ($M_{P,2}$):**<br>Es entsteht aus den Zwangsauflagerkräften, die die Vorspannung an den Zwischenstützen hervorruft.",
+    "dasKonzeptDerKonkordanz": " Das Konzept der Konkordanz",
+    "einSpanngliedverlaufWirdAls": "Ein Spanngliedverlauf wird als **konkordant** bezeichnet, wenn die durch die Vorspannung hervorgerufenen Verformungen an allen Zwischenauflagern identisch null sind.",
+    "beiKonkordanterSpanngliedführungEntstehe": "Bei konkordanter Spanngliedführung entstehen keine Zwangskräfte an den Auflagern. Nach dem Satz der linearen Transformation (Guyon) ändert eine lineare Verschiebung der Spanngliedlage über den Innenstützen (bei unveränderten Endlagen und gleicher Krümmung im Feld) die Aufteilung in Primär- und Sekundärmoment, nicht aber das Gesamtmoment M_P aus Vorspannung. Im GZT sind die statisch unbestimmten Anteile der Vorspannung (M_P,2) als Einwirkung zu berücksichtigen (EC2 5.10.8).",
+    "zurückZuKapitel4": " Zurück zu Kapitel 4",
+    "weiterZuKapitel6": "Weiter zu Kapitel 6 "
+  },
+  "daten": {
+    "SpannbetonNullBisHundert.steps": [
+      {
+        "id": 0,
+        "title": "1. Das Grundprinzip der Vorspannung",
+        "progress": "0% – 20%",
+        "subtitle": "Mechanische Grenzen des Stahlbetons und Wirkungsweise künstlicher Drucküberlagerung",
+        "badge": "Grundlagen & Motivation"
+      },
+      {
+        "id": 1,
+        "title": "2. Rheologische Baustoffphysik & Spannstahl",
+        "progress": "20% – 40%",
+        "subtitle": "Kriechen, Schwinden und die Notwendigkeit hochfester Spannstähle (Y1860)",
+        "badge": "Materialphysik"
+      },
+      {
+        "id": 2,
+        "title": "3. Die 4 Vorspannverfahren nach DIN EN 1992-1-1",
+        "progress": "40% – 60%",
+        "subtitle": "Sofortiger Verbund, nachträglicher Verbund, ohne Verbund & externe Vorspannung",
+        "badge": "Bauverfahren"
+      },
+      {
+        "id": 3,
+        "title": "4. Tragwerksmechanik & Load Balancing",
+        "progress": "60% – 80%",
+        "subtitle": "Umlenkkräfte parabelförmiger Spannglieder zur Kompensation der Eigenlast",
+        "badge": "Tragwerksmechanik"
+      },
+      {
+        "id": 4,
+        "title": "5. Statisch unbestimmte Systeme & Zwang",
+        "progress": "80% – 95%",
+        "subtitle": "Durchlaufträger, sekundäre Zwangsmomente und das Konzept der Konkordanz",
+        "badge": "Höhere Baustatik"
+      },
+      {
+        "id": 5,
+        "title": "6. Nachweiskonzept & Bemessungsregeln",
+        "progress": "95% – 100%",
+        "subtitle": "Grenzzustände nach Eurocode 2 (GZT / GZG) und Orientierung im Modul",
+        "badge": "Normen & Praxis"
+      }
+    ]
+  }
+}

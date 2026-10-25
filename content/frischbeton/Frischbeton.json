@@ -1,0 +1,236 @@
+{
+  "texte": {
+    "frischbetonBaustellenprüfungen": " Frischbeton & Baustellenprüfungen",
+    "vollständigePrüfungKonsistenzklassifizie": "Vollständige Prüfung, Konsistenzklassifizierung, Toleranzabgleich nach **DIN EN 206:2021-06** und **DIN 1045-2:2023-08**, Luftporen- und Rohdichtebestimmung nach **DIN EN 12350-7/-6** sowie Schalungsdruckberechnung (DIN 18218) und Frischbetontemperaturprognosen.",
+    "konsistenzklassenGrenzabmaße": " Konsistenzklassen & Grenzabmaße",
+    "ausbreitversuchRheologie": " Ausbreitversuch & Rheologie",
+    "luftporenRohdichte": " Luftporen & Rohdichte",
+    "frischbetondruckDin18218": " Frischbetondruck (DIN 18218)",
+    "konsistenzbereicheNachDinEn": " Konsistenzbereiche nach DIN EN 206 / DIN 1045-2:2023-08",
+    "gegenüberstellungDerFünfGenormten": "Gegenüberstellung der fünf genormten Prüfverfahren zur Konsistenzbestimmung auf der Baustelle und im Fertigteilwerk.",
+    "fDinEn12350": "F (DIN EN 12350-5)",
+    "cDinEn12350": "C (DIN EN 12350-4)",
+    "sDinEn12350": "S (DIN EN 12350-2)",
+    "sfDinEn12350": "SF (DIN EN 12350-8)",
+    "f1340Mm": "F1 (≤ 340 mm)",
+    "c11451": "C1 (1,45 – 1,26)",
+    "s11040Mm": "S1 (10 – 40 mm)",
+    "f2350410Mm": "F2 (350 – 410 mm)",
+    "c21251": "C2 (1,25 – 1,11)",
+    "s25090Mm": "S2 (50 – 90 mm)",
+    "weichRegelkonsistenz": "weich (Regelkonsistenz)",
+    "f3420480Mm": "F3 (420 – 480 mm)",
+    "c31101": "C3 (1,10 – 1,04)",
+    "s3100150Mm": "S3 (100 – 150 mm)",
+    "f4490550Mm": "F4 (490 – 550 mm)",
+    "c4104": "C4 (< 1,04)*",
+    "s4160210Mm": "S4 (160 – 210 mm)",
+    "f5560620Mm": "F5 (560 – 620 mm)",
+    "s5220Mm": "S5 (≥ 220 mm)",
+    "sehrFließfähig": "sehr fließfähig",
+    "f6630700Mm": "F6 (630 – 700 mm)",
+    "selbstverdichtendSvb": "Selbstverdichtend (SVB)",
+    "nichtAnwendbar": "nicht anwendbar",
+    "nichtAnwendbar2": "nicht anwendbar",
+    "nichtAnwendbar3": "nicht anwendbar",
+    "sf1550650Mm": "SF1: 550–650 mm<br>SF2: 660–750 mm<br>SF3: 760–850 mm",
+    "c4GiltNachDin": "* C4 gilt nach DIN EN 206 ausschließlich für Leichtbeton. Im üblichen Hochbau gilt **F3** (bzw. **C2/C3**) als praxiserprobte Regelkonsistenz für Kran- und Pumpbeton.",
+    "zulässigeGrenzabmaßeFürZielwerte": "Zulässige Grenzabmaße für Zielwerte (DIN EN 206 / DIN 1045-2:2023-08)",
+    "werteFürAusbreitUnd": "Werte für Ausbreit- und Setzmaß manuell am Normtext prüfen.",
+    "zielwert400Mm20": "Zielwert ≤ 400 mm: ± 20 mm",
+    "zielwert410540Mm": "Zielwert 410 – 540 mm: ± 30 mm",
+    "zielwert550Mm40": "Zielwert ≥ 550 mm: ± 40 mm",
+    "zielwert1260": "Zielwert ≥ 1,26: ± 0,10",
+    "zielwert1251": "Zielwert 1,25 – 1,11: ± 0,08",
+    "zielwert1100": "Zielwert ≤ 1,10: ± 0,05",
+    "setzmaßSlump": "Setzmaß (Slump):",
+    "zielwert40Mm10": "Zielwert ≤ 40 mm: ± 10 mm",
+    "zielwert5090Mm": "Zielwert 50 – 90 mm: ± 20 mm",
+    "zielwert100150Mm": "Zielwert 100 – 150 mm: ± 30 mm",
+    "zielwert160Mm40": "Zielwert ≥ 160 mm: ± 40 mm",
+    "setzfließmaßSvb": "Setzfließmaß (SVB):",
+    "alleZielwerteSf1Sf3": "Alle Zielwerte (SF1–SF3): ± 50 mm",
+    "interaktiverBaustellenToleranzprüfer": " Interaktiver Baustellen-Toleranzprüfer",
+    "prüfverfahrenWählen": "Prüfverfahren wählen",
+    "vereinbarterZielwert": "Vereinbarter Zielwert ",
+    "zulässigeToleranz": "Zulässige Toleranz:",
+    "zulässigesIntervall": "Zulässiges Intervall:",
+    "tatsächlicheAbweichung": "Tatsächliche Abweichung:",
+    "handlungsempfehlungAufDerBaustelle": "**Handlungsempfehlung auf der Baustelle:** ",
+    "normativerHinweisZurProbenahme": "Normativer Hinweis zur Probenahme (DIN EN 12350-1)",
+    "dieProbenahmeAusDem": "Die Probenahme aus dem Fahrmischer darf erst nach Entladen des ersten Drittels (mindestens 0,2 m³) und vor Entladen des letzten Drittels erfolgen, um repräsentative Messwerte sicherzustellen. (Werte manuell am Normtext prüfen.)",
+    "frischbetonLuftgehaltDinEn": " Frischbeton-Luftgehalt (DIN EN 12350-7)",
+    "größtkornDMaxMm": "Größtkorn D_max [mm]",
+    "ablesungManometerLAbg": "Ablesung Manometer L_abg [%]",
+    "gesteinskorrekturG": "Gesteinskorrektur G [%]",
+    "tatsächlicherLuftgehalt": "Tatsächlicher Luftgehalt: ",
+    "berechnetL": "(Berechnet: L = ",
+    "geforderterMindestwert": "Geforderter Mindestwert:",
+    "zulässigerEinzelwertDin1045": "Zulässiger Einzelwert (DIN 1045-2):",
+    "frischbetonrohdichteDinEn12350": " Frischbetonrohdichte (DIN EN 12350-6)",
+    "m1TopfLeerKg": "m1 Topf leer [kg]",
+    "m2TopfVollKg": "m2 Topf voll [kg]",
+    "volumenLiter": "Volumen [Liter]",
+    "frischbetonrohdichteD": "Frischbetonrohdichte D:",
+    "dM2M1V": "D = (m2 - m1) / V",
+    "mindestluftgehalteNachDin1045": "Mindestluftgehalte nach DIN 1045-2:2023-08 Tab. F.2.2",
+    "beiBetonenMitHohem": "Bei Betonen mit hohem Frost-Tausalz-Widerstand (Expositionsklassen **XF2** und **XF4**) muss durch Zusatz von Luftporenbildnern (LP) ein künstliches System fein verteilter Mikroluftporen erzeugt werden:",
+    "größtkornDMax": "Größtkorn D_max",
+    "mindestluftgehaltMittelwert": "Mindestluftgehalt (Mittelwert)",
+    "zulMindesteinzelwert": "Zul. Mindesteinzelwert",
+    "t55Vol": "≥ 5,5 Vol.-%",
+    "t50Vol": "≥ 5,0 Vol.-%",
+    "t45Vol": "≥ 4,5 Vol.-%",
+    "t40Vol": "≥ 4,0 Vol.-%",
+    "t40Vol2": "≥ 4,0 Vol.-%",
+    "t35Vol": "≥ 3,5 Vol.-%",
+    "t35Vol2": "≥ 3,5 Vol.-%",
+    "t30Vol": "≥ 3,0 Vol.-%",
+    "einflussAufDieDruckfestigkeit": "Einfluss auf die Druckfestigkeit (Faustregel)",
+    "jedesZusätzlicheProzentLuftgehalt": "Jedes zusätzliche Prozent Luftgehalt verringert die Druckfestigkeit des erhärteten Betons um ca. **3 bis 5 N/mm²** (entspricht ca. 5 bis 10 %). Daher darf der Luftgehalt auf der Baustelle auch nach oben hin nicht unbegrenzt streuen (Richtwert: max. 4 Vol.-% über Sollwert).",
+    "abstandsfaktorLPrüfungNach": "Abstandsfaktor L (Prüfung nach DIN EN 480-11)",
+    "fürDieFrostbeständigkeitIst": "Für die Frostbeständigkeit ist nicht der Gesamtluftgehalt allein entscheidend, sondern die Verteilung im Zementstein. Der am Festbeton mikroskopisch bestimmte **Abstandsfaktor L** sollte als Richtwert **≤ 0,20 mm** betragen (z. B. bei der Prüfung von LP-Bildnern nach DIN EN 934-2); ein Abnahmekriterium nach DIN 1045-2 ist er nicht."
+  },
+  "werte": {
+    "konsistenzToleranzen": "Konsistenz & Toleranzen",
+    "luftgehaltRohdichte": "Luftgehalt & Rohdichte",
+    "prüfverfahrenWählen": "Prüfverfahren wählen",
+    "konformInnerhalbDerZulässigen": "Konform: Innerhalb der zulässigen Normtoleranz",
+    "nichtKonformGrenzabmaßÜberschritten": "Nicht konform: Grenzabmaß überschritten",
+    "betonKannZumEinbau": "Beton kann zum Einbau freigegeben werden. Einbaudauer und Witterungseinflüsse beachten.",
+    "betonIstZuSteif": "Beton ist zu steif: Nachdosierung von Fließmittel (FM) im Fahrmischer ausschließlich unter genauer Dokumentation nach DIN EN 206 Abs. 7.5 zulässig (Mischzeit mind. 1 min/m³, mind. 5 Minuten). Niemals eigenmächtig Wasser zugeben (w/z-Erhöhung führt zu Festigkeitsabfall und Verlust des Frost-Tausalz-Widerstands!).",
+    "betonIstZuWeich": "Beton ist zu weich / überflüssig: Entmischungsgefahr! Lieferschein und Dosierprotokoll prüfen. Bei unerlaubter Wasserzugabe muss die Fuhre zwingend abgewiesen werden.",
+    "größtkornDMaxMm": "Größtkorn D_max [mm]",
+    "ablesungManometerLAbg": "Ablesung Manometer L_abg [%]",
+    "gesteinskorrekturG": "Gesteinskorrektur G [%]",
+    "keineBauaufsichtlicheMindestluftporenanf": "Keine bauaufsichtliche Mindestluftporenanforderung für diese Expositionsklasse.",
+    "anforderungNachDin1045": "Anforderung nach DIN 1045-2:2023-08 Tab. F.2.2 erfüllt. Frost-Tausalz-Widerstand gewährleistet.",
+    "achtungMindestluftporengehaltUnterschrit": "Achtung: Mindestluftporengehalt unterschritten! Hohes Risiko für Frost-Tausalz-Schäden (Abplatzungen). Beton darf nicht in XF2/XF4 eingebaut werden.",
+    "m1TopfLeerKg": "m1 Topf leer [kg]",
+    "m2TopfVollKg": "m2 Topf voll [kg]",
+    "volumenLiter": "Volumen [Liter]",
+    "anwendungsbeispielLuftgehaltBeiXf4": "Anwendungsbeispiel: Luftgehalt bei XF4 prüfen",
+    "dinEn123507": "DIN EN 12350-7; DIN 1045-2 (Mindestluftgehalt, Einzelwert)",
+    "t46LuftgehaltAnforderung": "4,6 % Luftgehalt – Anforderung für XF4 erfüllt.",
+    "anwendungsbeispielFrischbetondruckAufEin": "Anwendungsbeispiel: Frischbetondruck auf eine Wandschalung",
+    "din18218201001": "DIN 18218:2010-01 (Konsistenz F3)",
+    "bemessungsdruckFürDieSchalung": "Bemessungsdruck für die Schalung: 46 kN/m² ab 1,84 m Tiefe.",
+    "betonWikiFrischbetondruck": "Beton.wiki: Frischbetondruck",
+    "betonWikiFrischbetontemperatur": "Beton.wiki: Frischbetontemperatur",
+    "konsistenzBeton": "Konsistenz (Beton)",
+    "richmannscheMischungsregel": "Richmannsche Mischungsregel",
+    "schalungBeton": "Schalung (Beton)"
+  },
+  "daten": {
+    "Frischbeton.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "L_{abg} = 4{,}8\\,\\%,\\; G = 0{,}2\\,\\%,\\; D_{max} = 32\\,\\text{mm}",
+        "erklaerung": "Messung mit dem Luftgehaltsprüfer (8-l-Topf)."
+      },
+      {
+        "titel": "2. Luftgehalt",
+        "formel": "L = 4{,}8 - 0{,}2 = 4{,}6\\,\\%",
+        "erklaerung": "Gesteinskorrektur abziehen."
+      },
+      {
+        "titel": "3. Anforderung",
+        "formel": "L_{min} = 4{,}0\\,\\%;\\; \\text{Einzelwert} \\ge 3{,}5\\,\\%",
+        "erklaerung": "Mittlerer Mindestwert für Größtkorn 32 mm."
+      },
+      {
+        "titel": "4. Nachweis",
+        "formel": "4{,}6\\,\\% \\ge 4{,}0\\,\\% \\;\\text{und}\\; 4{,}6\\,\\% \\le 4{,}0 + 4{,}0 = 8{,}0\\,\\%",
+        "erklaerung": "Mindestwert erfüllt, Obergrenze (Mindestwert + 4 %) eingehalten."
+      }
+    ],
+    "Frischbeton.schritte_2": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "\\text{F3},\\; v = 2\\,\\text{m/h},\\; t_E = 5\\,\\text{h} \\Rightarrow K_1 = 1{,}0,\\; H = 3\\,\\text{m},\\; \\gamma_c = 25\\,\\text{kN/m}^3",
+        "erklaerung": "Wand mit 3 m Höhe, Normalbeton."
+      },
+      {
+        "titel": "2. Maximaldruck",
+        "formel": "\\sigma_{hk,max} = (14 \\cdot 2 + 18) \\cdot 1{,}0 = 46\\,\\text{kN/m}^2",
+        "erklaerung": "Mindestwert 25 kN/m² ist überschritten."
+      },
+      {
+        "titel": "3. Hydrostatische Grenze",
+        "formel": "\\gamma_c \\cdot H = 25 \\cdot 3 = 75\\,\\text{kN/m}^2 > 46",
+        "erklaerung": "Der Druck wird durch σ_hk,max begrenzt."
+      },
+      {
+        "titel": "4. Übergangstiefe",
+        "formel": "h_s = 46 / 25 = 1{,}84\\,\\text{m}",
+        "erklaerung": "Bis 1,84 m Tiefe hydrostatisch, darunter konstant 46 kN/m²."
+      }
+    ],
+    "Frischbeton.literatur": [
+      "Heidelberg Materials / InformationsZentrum Beton: Betontechnische Daten (Stand 2022 / aktualisiert nach DIN 1045-2:2023-08)",
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Tattersall, G. H.; Banfill, P. F. G.: The Rheology of Fresh Concrete. London: Pitman 1983",
+      "Schmitt, R.: Die Schalungstechnik – Systeme, Einsatz und Logistik. Berlin: Ernst & Sohn 2001",
+      "Graubner, C.-A.; Proske, T.: Frischbetondruck bei Verwendung von Selbstverdichtendem Beton. Beton- und Stahlbetonbau 104 (2009) H. 2, S. 88–96"
+    ],
+    "Frischbeton.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Teil 2: Beton)"
+      },
+      {
+        "title": "DIN 1045-3 / DIN EN 13670 (Bauausführung; Betonieren bei kühler und heißer Witterung)"
+      },
+      {
+        "title": "DIN EN 12350-1 bis -8 (Prüfung von Frischbeton)"
+      },
+      {
+        "title": "DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)"
+      },
+      {
+        "title": "DIN 18216 (Schalungsanker für Betonschalungen)"
+      },
+      {
+        "title": "DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie)"
+      },
+      {
+        "title": "ZTV-ING (Grenztemperaturen für Ingenieurbauwerke)"
+      }
+    ],
+    "Frischbeton.formeln": [
+      {
+        "formel": "L = L_{\\text{abg}} - G \\quad [\\%]",
+        "erklaerung": "Luftgehalt L im Frischbeton nach dem Druckausgleichsverfahren (DIN EN 12350-7): Manometerablesung L_abg abzüglich Gesteinskorrekturfaktor G.",
+        "quelle": "DIN EN 12350-7"
+      },
+      {
+        "formel": "D = \\frac{m_2 - m_1}{V} \\quad [\\text{kg/m}^3]",
+        "erklaerung": "Frischbetonrohdichte D nach DIN EN 12350-6: m1 = Leermasse Behälter, m2 = Masse mit verdichtetem Beton, V = Behältervolumen (z. B. 8 l).",
+        "quelle": "DIN EN 12350-6"
+      },
+      {
+        "formel": "f = \\frac{d_1 + d_2}{2} \\quad [\\text{mm}]",
+        "erklaerung": "Ausbreitmaß f nach DIN EN 12350-5: Mittelwert zweier rechtwinklig gemessener Durchmesser nach 15 Hubschlägen.",
+        "quelle": "DIN EN 12350-5"
+      },
+      {
+        "formel": "\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma}",
+        "erklaerung": "Bingham-Modell: Fließgrenze τ0 (bestimmt Ausbreit- und Setzmaß) und plastische Viskosität μp (bestimmt Fließgeschwindigkeit und Pumpbarkeit).",
+        "quelle": "Tattersall/Banfill (1983)"
+      },
+      {
+        "formel": "T_{FB} = \\frac{\\sum m_i \\, c_i \\, T_i - m_{eis} \\, L_{eis}}{\\sum m_i \\, c_i}",
+        "erklaerung": "Frischbetontemperatur nach der Mischungsregel (Richmann), ggf. mit Scherbeneis (L_eis = 334 kJ/kg). Grenzen: mindestens +5 °C, höchstens +30 °C ohne besondere Maßnahmen.",
+        "quelle": "Mischungsregel; Grenzwerte DIN 1045-3 / DIN EN 206"
+      },
+      {
+        "formel": "\\sigma_{hk,max} = (C_1 \\cdot v + C_2) \\cdot K_1 \\cdot \\frac{\\gamma_c}{25}, \\quad h_s = \\frac{\\sigma_{hk,max}}{\\gamma_c}",
+        "erklaerung": "Maximaler horizontaler Frischbetondruck für F1–F4 nach DIN 18218 (z. B. F3: C1 = 14, C2 = 18; v in m/h, Mindestwert 25 kN/m²); bis zur Tiefe h_s hydrostatisch.",
+        "quelle": "DIN 18218:2010-01"
+      }
+    ]
+  }
+}

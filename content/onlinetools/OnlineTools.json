@@ -1,0 +1,379 @@
+{
+  "texte": {
+    "empfohleneOnlineToolsWebrechner": "Empfohlene Online-Tools & Webrechner",
+    "kuratiertePraxiserprobteUndKostenlose": "Kuratierte, praxiserprobte und kostenlose Weblösungen für Bauingenieure und Architekten (DT & ENG)",
+    "t100GeprüfteFachquellenNormbezug": "100 % Geprüfte Fachquellen & Normbezug",
+    "dieseFachübersichtBündeltNützliche": "Diese Fachübersicht bündelt nützliche Online-Rechner, numerische Simulationen, behördliche Geoportale und parametrische Skripte. Alle aufgeführten Tools sind entweder **vollständig kostenlos im Web nutzbar**, stehen als **geprüfte Open-Source-Software** bereit oder bieten unkomplizierte **Freemium- und Studentenmodelle** für Studium, Masterthesen und den täglichen Ingenieurbüro-Einsatz.",
+    "kuratierteWebrechnerMatrix": "Kuratierte Webrechner-Matrix (",
+    "apiSchnittstellenLabPython": "API- & Schnittstellen-Lab (Python & REST)",
+    "statikTragwerk": "Statik & Tragwerk",
+    "lcaÖkobilanz": "LCA & Ökobilanz",
+    "bimGeodaten": "BIM & Geodaten",
+    "geotechnikLabor": "Geotechnik & Labor",
+    "kernfunktionenStärken": "Kernfunktionen & Stärken:",
+    "fachinformationOffline": "Fachinformation / Offline",
+    "keineWerkzeugeFürDie": "Keine Werkzeuge für die gewählten Filterkriterien gefunden.",
+    "setzenSieDenSuchbegriff": "Setzen Sie den Suchbegriff oder die Kategorie zurück.",
+    "apiSchnittstellenLabPython2": "API- & Schnittstellen-Lab (Python & REST)",
+    "moderneBauingenieureUndArchitekten": "Moderne Bauingenieure und Architekten automatisieren Routineabfragen. Hier finden Sie praxisnahe, direkt kopierbare Code-Snippets, mit denen Sie offizielle REST-APIs (wie ÖKOBAUDAT) und BIM-Schnittstellen (IFC) eigenständig anbinden können.",
+    "codeKopiert": "Code kopiert!",
+    "codeKopieren": "Code kopieren",
+    "didaktischeFunktionsweise": " Didaktische Funktionsweise:",
+    "praxisnutzenFürStudiumBüro": " Praxisnutzen für Studium & Büro:",
+    "bestPracticeWorkflowKombination": "Best-Practice-Workflow: Kombination von Online-Tools mit BaustoffBoard",
+    "t1VorbemessungPlausibilität": " 1. Vorbemessung & Plausibilität",
+    "nutzenSieOnlineRechner": "Nutzen Sie Online-Rechner (z. B. SkyCiv oder Calcpad) für die schnelle Ersteinschätzung von Momenten und Querkräften. Vergleichen Sie die Werte stets mit den Bemessungsmodulen in BaustoffBoard (z. B. Biegebemessung, Querkraft).",
+    "t2ÖkobilanzBaustoffwahl": " 2. Ökobilanz & Baustoffwahl",
+    "verknüpfenSieDasBaustoffboard": "Verknüpfen Sie das BaustoffBoard-Modul *LCA Lebenszyklussimulator* mit den exakten EPD-Stammdaten aus der ÖKOBAUDAT, WECOBIS und dem EC3-Tool, um Primärenergiebedarfe (PENRT) und GWP-Kennwerte für Förderanträge (QNG, KfW) nachzuweisen.",
+    "t3BauphysikDetailausbildung": " 3. Bauphysik & Detailausbildung",
+    "schichtaufbautenAusDemBaustoffboard": "Schichtaufbauten aus dem BaustoffBoard-Modul *Bauphysik / U-Wert* können bei komplexen geometrischen Anschlüssen direkt mit THERM auf 2D-Wärmebrücken und mit Ubakus auf Kondensatausfall überprüft werden."
+  },
+  "werte": {
+    "mastan2WebMastan": "Mastan2 / Web-Mastan",
+    "statikTragwerk": "Statik & Tragwerk",
+    "interaktive1d2d3d": "Interaktive 1D/2D/3D-Rahmentragwerksanalyse mit geometrischer und materieller Nichtlinearität (Theorie II. Ordnung, Plastizität, Knicken).",
+    "lineareUndGeometrischNichtlineare": "Lineare und geometrisch nichtlineare Berechnung nach Theorie II. Ordnung",
+    "elastoPlastischeGelenkbildungUnd": "Elasto-plastische Gelenkbildung und Grenzlastspielräume",
+    "modaleEigenwertanalyseUndStabilitätsnach": "Modale Eigenwertanalyse und Stabilitätsnachweise (Biegedrillknicken)",
+    "lehrstuhlerprobtDurchProfMcguire": "Lehrstuhlerprobt durch Prof. McGuire und Prof. Ziemian",
+    "aiscEurocode3Konform": "AISC / Eurocode 3 konform",
+    "bucknellUniversityProfR": "Bucknell University / Prof. R. Ziemian",
+    "skycivFreeBeamTruss": "SkyCiv Free Beam & Truss Calculator",
+    "statikTragwerk2": "Statik & Tragwerk",
+    "schnelleEinfeldUndMehrfeldträgerberechnu": "Schnelle Einfeld- und Mehrfeldträgerberechnung direkt im Browser mit Schnittgrößenlinien (M, V, N) und Verformungen.",
+    "visualisierungVonBiegemomentenQuerkraft": "Visualisierung von Biegemomenten-, Querkraft- und Durchbiegungslinien in Echtzeit",
+    "punktDreiecksUndStreckenlasten": "Punkt-, Dreiecks- und Streckenlasten sowie Momentenbelastungen",
+    "spannungsnachweisFürStandardStahl": "Spannungsnachweis für Standard-Stahl- und Holzquerschnitte",
+    "keineInstallationNötigLäuft": "Keine Installation nötig, läuft auf jedem Tablet und Desktop",
+    "eurocodeAiscAs": "Eurocode / AISC / AS",
+    "skycivCloudStructuralEngineering": "SkyCiv Cloud Structural Engineering",
+    "dlubalOnlineQuerschnittswerte": "Dlubal Online-Querschnittswerte",
+    "statikTragwerk3": "Statik & Tragwerk",
+    "querschnittsUndProfilwertdatenbankFür": "Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).",
+    "exakteQuerschnittswerteAIy": "Exakte Querschnittswerte: A, Iy, Iz, Wy, Wz, Wpl, IT, Iw",
+    "klassifizierungNachEurocode3": "Klassifizierung nach Eurocode 3 (Querschnittsklassen 1 bis 4)",
+    "interaktiveSpannungsermittlungBeiKombini": "Interaktive Spannungsermittlung bei kombinierter Biegung und Normalkraft",
+    "kostenloseNutzungOhneRegistrierung": "Kostenlose Nutzung ohne Registrierung",
+    "dinEn19931": "DIN EN 1993-1-1 (EC3)",
+    "dlubalSoftwareGmbh": "Dlubal Software GmbH",
+    "dlubalGeoZoneTool": "Dlubal Geo-Zone Tool (Schnee, Wind, Erdbeben)",
+    "statikTragwerk4": "Statik & Tragwerk",
+    "standortbezogeneDigitaleAbfrageVon": "Standortbezogene digitale Abfrage von Schneelast-, Windlast- und Erdbebenzonen nach Eurocode 1 (DIN EN 1991) via Adress- und Kartensuche.",
+    "genaueErmittlungDerCharakteristischen": "Genaue Ermittlung der charakteristischen Schneelast s_k und Windzonen 1 bis 4 nach DIN EN 1991-1-3 / DIN EN 1991-1-4",
+    "inklusiveGeländehöheÜberNormalnull": "Inklusive Geländehöhe über Normalnull (A) und Norddeutsches Tiefland-Kriterium",
+    "erdbebenzonenUndUntergrundklassenNach": "Erdbebenzonen und Untergrundklassen nach DIN EN 1998-1 / DIN 4149",
+    "direkteKartenverortungPerPostleitzahl": "Direkte Kartenverortung per Postleitzahl oder GPS-Koordinaten",
+    "dinEn19911": "DIN EN 1991-1-3, DIN EN 1991-1-4, DIN EN 1998-1",
+    "dlubalSoftwareGmbh2": "Dlubal Software GmbH",
+    "calcpadParametrischeStatikMath": "Calcpad (Parametrische Statik & Math)",
+    "statikTragwerk5": "Statik & Tragwerk",
+    "openSourcePlattformFür": "Open-Source-Plattform für prüffähige, parametrische Statikberechnungen nach Eurocode mit automatischer Formeldarstellung und HTML/PDF-Export.",
+    "parametrischeEingabeMathematischerText": "Parametrische Eingabe: Mathematischer Text wird während des Tippens in lesbare Gleichungen formatiert",
+    "umfangreicheModellbibliothekFürEurocode": "Umfangreiche Modellbibliothek für Eurocode 2 (Beton), Eurocode 3 (Stahl) und Eurocode 5 (Holz)",
+    "erzeugungProfessionellerPrüffähigerStati": "Erzeugung professioneller, prüffähiger statischer Berechnungsberichte",
+    "desktopAnwendungSowieKostenlose": "Desktop-Anwendung sowie kostenlose Web-Cloud-Version verfügbar",
+    "eurocodes0Bis8": "Eurocodes 0 bis 8 konform",
+    "calcpadCommunityOpenSource": "Calcpad Community / Open Source",
+    "statikTragwerk6": "Statik & Tragwerk",
+    "kostenloseWebApplikationenZur": "Kostenlose Web-Applikationen zur schnellen Ermittlung von Lastkombinationen nach EC0/EC1 sowie Vorbemessungen für Beton und Stahl.",
+    "ec0LastkombinationsgeneratorFürStändige": "EC0 Lastkombinationsgenerator für ständige und veränderliche Einwirkungen",
+    "ec1WindUndSchneelastzonenermittlung": "EC1 Wind- und Schneelastzonenermittlung mit Geländekategorien",
+    "ec2BiegungMitLängskraft": "EC2 Biegung mit Längskraft für Rechteck- und Plattenbalkenquerschnitte",
+    "transparenteRechenwegeMitGleichungsrefer": "Transparente Rechenwege mit Gleichungsreferenzen",
+    "dinEn1990Din": "DIN EN 1990, DIN EN 1991, DIN EN 1992",
+    "eurocodeappliedPlatform": "EurocodeApplied Platform",
+    "ubakusEhemalsUWert": "Ubakus (ehemals U-Wert.net)",
+    "bauphysikFeuchteschutz": "Bauphysik & Feuchteschutz",
+    "verbreiteterOnlineRechnerFür": "Verbreiteter Online-Rechner für U-Werte, Tauwasser (Glaser), sommerlichen Wärmeschutz und Trocknungsreserven.",
+    "berechnungDesWärmedurchgangskoeffiziente": "Berechnung des Wärmedurchgangskoeffizienten (U-Wert) mehrschichtiger Bauteile",
+    "periodischesFeuchteschutzverfahrenNachDi": "Periodisches Feuchteschutzverfahren nach DIN 4108-3 (Glaser-Diagramm)",
+    "sommerlicherHitzeschutzPhasenverschiebun": "Sommerlicher Hitzeschutz: Phasenverschiebung und Dämpfung der Temperaturwelle",
+    "riesigeBaustoffdatenbankMitHerstellerspe": "Riesige Baustoffdatenbank mit herstellerspezifischen Dämmstoffen",
+    "dinEnIso6946": "DIN EN ISO 6946, DIN 4108-3, GModG (vormals GEG)",
+    "ubakusRalfPlag": "Ubakus / Ralf Plag",
+    "lbnlTherm2dHeat": "LBNL THERM (2D Heat Transfer)",
+    "bauphysikFeuchteschutz2": "Bauphysik & Feuchteschutz",
+    "t2dWärmestromFiniteElemente": "2D-Wärmestrom-Finite-Elemente-Programm zur numerischen Bestimmung zweidimensionaler Wärmebrückenverlustkoeffizienten (Psi-Werte).",
+    "exakteFiniteElementeSimulation": "Exakte Finite-Elemente-Simulation thermischer Schwachstellen und Anschlüsse",
+    "berechnungDesLängenbezogenenWärmedurchga": "Berechnung des längenbezogenen Wärmedurchgangskoeffizienten (Psi / ψ)",
+    "ermittlungDesMinimalenTemperaturfaktors": "Ermittlung des minimalen Temperaturfaktors f_Rsi zur Schimmelpilzvermeidung",
+    "wissenschaftlichValidiertUndWeltweit": "Wissenschaftlich validiert und weltweit als Referenztool anerkannt",
+    "dinEnIso10211": "DIN EN ISO 10211, DIN 4108 Beiblatt 2",
+    "lawrenceBerkeleyNationalLaboratory": "Lawrence Berkeley National Laboratory (USA)",
+    "climateOnebuildingEpwWeather": "Climate.OneBuilding (EPW Weather)",
+    "bauphysikFeuchteschutz3": "Bauphysik & Feuchteschutz",
+    "globaleStündlicheWetterdatensätzeEpw": "Globale stündliche Wetterdatensätze (EPW, TRY) für instationäre thermisch-hygroskopische Gebäudesimulationen (EnergyPlus, IDA ICE).",
+    "kostenloseBereitstellungWeltweiterTestre": "Kostenlose Bereitstellung weltweiter Testreferenzjahre (TRY / TMYx)",
+    "stündlicheWerteFürAußentemperatur": "Stündliche Werte für Außentemperatur, Globalstrahlung, relative Luftfeuchte und Wind",
+    "essentiellFürInstationäreGeg": "Essentiell für instationäre GEG-Nachweise und sommerliche Raumklimasimulationen",
+    "openSourceUndFrei": "Open-Source und frei zugänglich ohne Bezahlschranke",
+    "ashraeIso159274": "ASHRAE / ISO 15927-4",
+    "onebuildingConsortium": "OneBuilding Consortium",
+    "fraunhoferIbpWufiWärme": "Fraunhofer IBP WUFI (Wärme und Feuchte instationär)",
+    "bauphysikFeuchteschutz4": "Bauphysik & Feuchteschutz",
+    "verbreitetesSimulationsprogrammFürDen": "Verbreitetes Simulationsprogramm für den gekoppelten Wärme- und Feuchtetransport in Bauteilen (1D/2D).",
+    "berechnungInstationärerFeuchteprofileUnt": "Berechnung instationärer Feuchteprofile unter natürlichen Klimabedingungen mit Schlagregen und Solarstrahlung",
+    "exakterNachweisVonTrocknungsverhalten": "Exakter Nachweis von Trocknungsverhalten und kritischem Feuchtegehalt nach DIN EN 15026 / WTA-Merkblatt 6-2",
+    "umfassendeBaustoffdatenbankMitGemessenen": "Umfassende Baustoffdatenbank mit gemessenen Feuchtespeicherfunktionen und Sorptionsisothermen",
+    "kostenloseEinstiegsversionenWufiLight": "Kostenlose Einstiegsversionen (WUFI Light) für Lehre, Studium und Weiterbildung",
+    "dinEn15026Wta": "DIN EN 15026, WTA-Merkblatt 6-2, DIN 4108-3",
+    "fraunhoferInstitutFürBauphysik": "Fraunhofer-Institut für Bauphysik (IBP)",
+    "dataholzEuBauteilkatalogHolzbau": "dataholz.eu (Bauteilkatalog Holzbau)",
+    "onlineBauteilkatalogDerHolzforschung": "Online-Bauteilkatalog der Holzforschung Austria mit bauphysikalischen, brandschutztechnischen und ökologischen Kennwerten von Holzbaukonstruktionen.",
+    "wandDeckenUndDachaufbauten": "Wand-, Decken- und Dachaufbauten mit U-Wert, Feuerwiderstand und Schallschutz",
+    "ökologischeKennwerteJeAufbau": "Ökologische Kennwerte je Aufbau (Umfang je Eintrag)",
+    "herstellerneutralAnerkennungInDeutschen": "Herstellerneutral; Anerkennung in deutschen Nachweisverfahren im Einzelfall prüfen",
+    "schichtaufbautenDirektAlsPdf": "Schichtaufbauten direkt als PDF und Datenblatt exportierbar",
+    "dinEn19951": "DIN EN 1995-1-2, DIN 4108, DIN 4109, EN 15804",
+    "holzforschungAustriaHfa": "Holzforschung Austria (HFA)",
+    "ökobaudatPlattform": "ÖKOBAUDAT Plattform",
+    "lcaÖkobilanz": "LCA & Ökobilanz",
+    "offizielleBundesdatenbankFürStandardisie": "Offizielle Bundesdatenbank für standardisierte Ökobilanzdaten von Bauprodukten und EPDs gemäß DIN EN 15804.",
+    "über1500Geprüfte": "Über 1.500 geprüfte Datensätze mit GWP-Fossil, GWP-Biogen, PENRT und Abfallkategorien",
+    "lebenszyklusphasenA1A3Herstellung": "Lebenszyklusphasen A1-A3 (Herstellung), C3-C4 (Entsorgung) und Modul D (Gutschriften)",
+    "öffentlicheRestApiFür": "Öffentliche REST-API für nahtlose Software- und BIM-Anbindung",
+    "verpflichtendeGrundlageFürQng": "Verpflichtende Grundlage für QNG-Zertifizierungen und BNB-Nachweise",
+    "dinEn15804A2": "DIN EN 15804+A2, BNB, QNG",
+    "bundesministeriumFürWohnenStadtentwicklu": "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)",
+    "wecobisÖkologischesBaustoffportal": "WECOBIS (Ökologisches Baustoffportal)",
+    "lcaÖkobilanz2": "LCA & Ökobilanz",
+    "offiziellesBaustoffinformationssystemDes": "Offizielles Baustoffinformationssystem des Bundes zu Umwelt-, Schadstoff- und Gesundheitsaspekten in allen Lebenszyklusphasen.",
+    "fundierteInformationenZuEmissionen": "Fundierte Informationen zu Emissionen (VOC, Formaldehyd) und Innenraumhygiene",
+    "baustoffgruppenVonRohbauBis": "Baustoffgruppen von Rohbau bis Ausbau mit Umweltproduktdeklarationen und Entsorgungswegen",
+    "verknüpfungMitDemBewertungssystem": "Verknüpfung mit dem Bewertungssystem Nachhaltiges Bauen (BNB) und DGNB",
+    "fundierteLeitfädenZurSchadstoffvermeidun": "Fundierte Leitfäden zur Schadstoffvermeidung und zirkulären Baustoffwahl",
+    "bnbKriterienAgbbBewertungsschema": "BNB Kriterien, AgBB-Bewertungsschema, REACH",
+    "bmwsbBundesinstitutFürBau": "BMWSB / Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR)",
+    "ec3ToolEmbodiedCarbon": "EC3 Tool (Embodied Carbon in Construction)",
+    "lcaÖkobilanz3": "LCA & Ökobilanz",
+    "cloudPlattformZurQuantifizierung": "Cloud-Plattform zur Quantifizierung und Reduktion grauer CO₂-Emissionen (Embodied Carbon) von Betonrezepturen, Stahl und Holz.",
+    "umfangreicheDatenbankDigitalisierterEpds": "Umfangreiche Datenbank digitalisierter EPDs mit Varianzanalysen",
+    "vergleichVonAlternativenBetonrezepturen": "Vergleich von alternativen Betonrezepturen hinsichtlich ihrer CO₂-Intensität",
+    "exportVonBauteilEmissionswerten": "Export von Bauteil-Emissionswerten für ESG-Berichterstattungen",
+    "kostenlosFürPlanerBauherren": "Kostenlos für Planer, Bauherren und Studierende nach Registrierung",
+    "iso14025En15804": "ISO 14025, EN 15804",
+    "buildingTransparency": "Building Transparency",
+    "openlcaSoftwareDaten": "openLCA Software & Daten",
+    "lcaÖkobilanz4": "LCA & Ökobilanz",
+    "openSourceSoftwareFür": "Open-Source-Software für Ökobilanzen (LCA) von Baustoffen und Prozessen.",
+    "vollständigeModellierungVonStoff": "Vollständige Modellierung von Stoff- und Energieströmen über den Lebenszyklus",
+    "kompatibelMitEcoinventGabi": "Kompatibel mit ecoinvent, GaBi und ÖKOBAUDAT-Datenbanken",
+    "detaillierteSensitivitätsanalysenUndPara": "Detaillierte Sensitivitätsanalysen und Parameterberechnungen",
+    "t100OpenSourceOhne": "100 % Open Source ohne Lizenzgebühren",
+    "iso14040Iso14044": "ISO 14040 / ISO 14044",
+    "greendeltaBerlin": "GreenDelta Berlin",
+    "madasterMaterialPassportPlatform": "Madaster Material Passport Platform",
+    "lcaÖkobilanz5": "LCA & Ökobilanz",
+    "kommerziellePlattformFürMaterialpässe": "Kommerzielle Plattform für Materialpässe von Gebäuden mit Zirkularitätsindikator und CO₂-Bilanz.",
+    "automatisierteGenerierungDigitalerMateri": "Automatisierte Generierung digitaler Materialpässe für Neubau und Bestand",
+    "berechnungDesMadasterCircularity": "Berechnung des Madaster Circularity Indicator (MCI) zur Messung der Kreislauffähigkeit",
+    "toxizitätsbewertungUndNachweisRückbaubar": "Toxizitätsbewertung und Nachweis rückbaubarer Konstruktionen",
+    "bimIntegrationFürIfc": "BIM-Integration für IFC-Modelle zur automatischen Mengenerfassung",
+    "dinEn15978Ellen": "DIN EN 15978, Ellen MacArthur Foundation Circularity Framework",
+    "madasterGermanyServicesGmbh": "Madaster Germany Services GmbH",
+    "concularZirkulärerMarktplatzBaustoffpass": "Concular Zirkulärer Marktplatz & Baustoffpass",
+    "lcaÖkobilanz6": "LCA & Ökobilanz",
+    "anbieterFürZirkuläresBauen": "Anbieter für zirkuläres Bauen: Materialerfassung vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.",
+    "preDemolitionAuditZur": "Pre-Demolition Audit zur Identifikation wiederverwendbarer Bauteile und Rohstoffe",
+    "marktplatzFürSekundärbaustoffeMit": "Marktplatz für Sekundärbaustoffe mit verifizierten Zustands- und Prüfberichten",
+    "einsparungsrechnerFürCoEmissionen": "Einsparungsrechner für CO₂-Emissionen und Rohstoffabbau durch Wiederverwendung",
+    "unterstützungBeiDerErfüllung": "Unterstützung bei der Erfüllung von ESG- und Taxonomie-Kriterien",
+    "vdi6210DinSpec": "VDI 6210, DIN SPEC 91484 (Zirkuläres Bauen)",
+    "concularGmbh": "Concular GmbH",
+    "openbimIfcWebViewer": "OpenBIM IFC Web Viewer (thatOpen)",
+    "bimGeodaten": "BIM & Geodaten",
+    "webglBasierterOpenbimViewer": "WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.",
+    "direktesLadenUndRendern": "Direktes Laden und Rendern großer IFC-Bauwerksmodelle im Browser",
+    "hierarchischeInspektionVonIfcproject": "Hierarchische Inspektion von IfcProject, IfcBuildingStorey bis IfcWall / IfcBeam",
+    "prüfungVonEigenschaftssätzenProperty": "Prüfung von Eigenschaftssätzen (Property Sets, Pset) und Baustoffattributen",
+    "integrierteMesswerkzeugeFürAbstände": "Integrierte Messwerkzeuge für Abstände, Raumvolumen und Flächen",
+    "buildingsmartIfc4Ifc2x3": "buildingSMART IFC4 / IFC2x3",
+    "thatOpenCompanyOpen": "That Open Company / Open Source",
+    "bimPortalDesBundes": "BIM-Portal des Bundes",
+    "bimGeodaten2": "BIM & Geodaten",
+    "zentralePlattformDerBundesrepublik": "Zentrale Plattform der Bundesrepublik Deutschland für standardisierte Bauteil-Merkmalskataloge und AIA/BAP-Leitfäden.",
+    "einheitlicheMerkmalskatalogeZurAttribuie": "Einheitliche Merkmalskataloge zur Attribuierung digitaler Baustoffe und Bauteile",
+    "musterAuftraggeberInformationsanforderun": "Muster-Auftraggeber-Informationsanforderungen (AIA) und BIM-Abwicklungspläne (BAP)",
+    "schnittstellenFürDieAutomatisierte": "Schnittstellen für die automatisierte Übernahme in Planungssoftware",
+    "kostenlosBereitgestelltFürDie": "Kostenlos bereitgestellt für die gesamte deutsche Bauwirtschaft",
+    "bimDeutschlandDinEn": "BIM Deutschland, DIN EN ISO 19650",
+    "bundesministeriumFürDigitalesUnd": "Bundesministerium für Digitales und Verkehr (BMV) / BMWSB",
+    "geoportalDeOpenGeodata": "Geoportal.de & Open Geodata",
+    "bimGeodaten3": "BIM & Geodaten",
+    "offiziellerZugangZuAmtlichen": "Offizieller Zugang zu amtlichen Geobasis- und Geofachdaten (Digitale Geländemodelle DGM, Schutzgebiete, Bodenkarten, Flurkarten).",
+    "amtlicheLuftbilderOrthofotosUnd": "Amtliche Luftbilder (Orthofotos) und Höhenmodelle für Trassen- und Lagepläne",
+    "hochwasserrisikoUndÜberschwemmungsgebiet": "Hochwasserrisiko- und Überschwemmungsgebietskarten der Bundesländer",
+    "wmsWfsGeodiensteZur": "WMS/WFS-Geodienste zur direkten Einbindung in QGIS, Civil 3D und Allplan",
+    "fundamentaleGrundlageFürBaugrunderkundun": "Fundamentale Grundlage für Baugrunderkundungen und Baustellenlogistik",
+    "inspireRichtlinieOpenData": "INSPIRE-Richtlinie, Open Data Bund",
+    "bundesamtFürKartographieUnd": "Bundesamt für Kartographie und Geodäsie (BKG)",
+    "nistVirtualCementAnd": "NIST Virtual Cement and Concrete Testing Lab (VCCTL)",
+    "geotechnikBaustofflabore": "Geotechnik & Baustofflabore",
+    "simulationssoftwareDesUsAmerikanischen": "Simulationssoftware des US-amerikanischen NIST zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.",
+    "simulationDerHydratationskinetikVon": "Simulation der Hydratationskinetik von Klinkerphasen (C₃S, C₂S, C₃A, C₄AF)",
+    "mikrostrukturmodellierungUndPorenraumver": "Mikrostrukturmodellierung und Porenraumverteilung im Zementstein",
+    "berechnungVonFestigkeitsentwicklungUnd": "Berechnung von Festigkeitsentwicklung und Chloriddiffusionskoeffizienten",
+    "wissenschaftlichesReferenzmodellFürBinde": "Wissenschaftliches Referenzmodell für Bindemitteloptimierung",
+    "astmAciStandards": "ASTM / ACI Standards",
+    "nationalInstituteOfStandards": "National Institute of Standards and Technology (NIST)",
+    "nachToolStichwortNorm": "Nach Tool, Stichwort, Norm oder Herausgeber suchen...",
+    "beispiel1KontrollrechnungFür": "Beispiel 1: Kontrollrechnung für ein Online-Stabwerkprogramm",
+    "liefertDasProgrammStark": "Liefert das Programm stark abweichende Werte, liegen oft Einheitenfehler (kN/m gegenüber N/mm) oder falsche Lagerbedingungen vor. Die Kriechverformung (k_def) ist für den Endzustand zusätzlich zu berücksichtigen.",
+    "dinEn199512": "DIN EN 1995-1-1:2010-12 mit NA; DIN EN 1990",
+    "beispiel2BemessungslastEiner": "Beispiel 2: Bemessungslast einer Decke als Eingabe für Online-Tools",
+    "onlineRechnerVerlangenOft": "Online-Rechner verlangen oft charakteristische Lasten und bilden die Kombination selbst – vorher klären, sonst werden Teilsicherheitsbeiwerte doppelt angesetzt.",
+    "dinEn1990Mit": "DIN EN 1990 mit NA; DIN EN 1991-1-1 mit NA",
+    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: Literatur, Normausgaben und Kontrollrechnungen geprüft; externe Links ohne Gewähr auf Erreichbarkeit; fachliche Freigabe durch den Autor ausstehend)",
+    "buildingInformationModeling": "Building Information Modeling"
+  },
+  "daten": {
+    "API_SNIPPETS": [
+      {
+        "id": "oekobaudat_api",
+        "title": "1. ÖKOBAUDAT REST-API: EPD-Daten automatisiert abfragen",
+        "subtitle": "Direkte Abfrage von GWP- und Primärenergie-Faktoren ohne manuelle Recherche",
+        "category": "Ökobilanz & LCA",
+        "prerequisites": "pip install requests",
+        "code": "import requests\nimport json\n\n# Offizielle REST-Schnittstelle der ÖKOBAUDAT (Bundesministerium BMWSB)\nBASE_URL = \"https://oekobaudat.de/OEKOBAU.DAT/resource/datastocks/cdb39638-1e16-4100-b086-632f002282e4\"\n\ndef search_oekobaudat_material(query=\"Beton\"):\n    \"\"\"\n    Sucht in der ÖKOBAUDAT nach Baustoffen und listet EPD-Kennwerte (GWP, PENRT) auf.\n    \"\"\"\n    url = f\"{BASE_URL}/processes?search=true&query={query}&format=json\"\n    headers = {\"Accept\": \"application/json\"}\n\n    print(f\"Suchen Sie nach '{query}' in ÖKOBAUDAT...\")\n    res = requests.get(url, headers=headers, timeout=10)\n    \n    if res.status_code == 200:\n        data = res.json()\n        items = data.get(\"data\", [])\n        print(f\"Gefundene EPD-Datensätze: {len(items)}\\n\")\n        \n        for idx, item in enumerate(items[:5], 1):\n            name = item.get(\"name\", {}).get(\"value\", \"Ohne Bezeichnung\")\n            uuid = item.get(\"uuid\")\n            category = item.get(\"classification\", {}).get(\"value\", \"Allgemein\")\n            print(f\"[{idx}] {name}\")\n            print(f\"    UUID: {uuid}\")\n            print(f\"    Kategorie: {category}\\n\")\n        return items\n    else:\n        print(f\"Fehler: HTTP {res.status_code}\")\n        return []\n\nif __name__ == \"__main__\":\n    # Beispiel: Transportbeton C25/30 oder Holz suchen\n    search_oekobaudat_material(\"Transportbeton\")",
+        "explanation": "Die offizielle REST-API der ÖKOBAUDAT ermöglicht es Planern, verifizierte EPD-Datensätze direkt in eigene Berechnungs-Skripte, Excel-Vorlagen oder BIM-Pipelines einzubinden, anstatt Werte manuell abzutippen.",
+        "benefit": "Verhindert Übertragungsfehler bei QNG-Nachweisen und DGNB-Zertifizierungen und erlaubt die automatisierte Bilanzierung tausender Bauteile in Sekunden."
+      },
+      {
+        "id": "ifc_quantities",
+        "title": "2. IFC-Bauteilmengen & Materialextraktion (IfcOpenShell)",
+        "subtitle": "Automatisierte Mengenermittlung (Qto) und Massenberechnung aus digitalen Modellen",
+        "category": "OpenBIM & Bauinformatik",
+        "prerequisites": "pip install ifcopenshell",
+        "code": "import ifcopenshell\nimport ifcopenshell.util.element\n\ndef extract_concrete_volumes(ifc_filepath):\n    \"\"\"\n    Liest ein OpenBIM IFC-Modell (IFC4) ein und summiert das Netto-Volumen aller\n    tragenden Wände und Decken für die Ökobilanzierung.\n    \"\"\"\n    model = ifcopenshell.open(ifc_filepath)\n    walls = model.by_type(\"IfcWall\")\n    slabs = model.by_type(\"IfcSlab\")\n\n    total_wall_volume = 0.0\n    total_slab_volume = 0.0\n    RHO_BETON = 2400.0  # Rohdichte Normalbeton [kg/m³]\n\n    # Wände durchlaufen\n    for wall in walls:\n        psets = ifcopenshell.util.element.get_psets(wall)\n        net_vol = psets.get(\"Qto_WallBaseQuantities\", {}).get(\"NetVolume\")\n        if net_vol:\n            total_wall_volume += float(net_vol)\n\n    # Decken durchlaufen\n    for slab in slabs:\n        psets = ifcopenshell.util.element.get_psets(slab)\n        net_vol = psets.get(\"Qto_SlabBaseQuantities\", {}).get(\"NetVolume\")\n        if net_vol:\n            total_slab_volume += float(net_vol)\n\n    total_vol = total_wall_volume + total_slab_volume\n    total_mass_t = (total_vol * RHO_BETON) / 1000.0\n\n    print(\"=== IFC MENGEN-TAKEOFF ERGEBNIS ===\")\n    print(f\"Wand-Volumen (IfcWall):     {total_wall_volume:8.2f} m³\")\n    print(f\"Decken-Volumen (IfcSlab):   {total_slab_volume:8.2f} m³\")\n    print(f\"Gesamtvolumen Beton:        {total_vol:8.2f} m³\")\n    print(f\"Gesamtmasse (ρ=2400 kg/m³): {total_mass_t:8.2f} Tonnen\")\n    return total_vol, total_mass_t\n\n# Ausführen mit beliebiger IFC-Datei:\n# extract_concrete_volumes(\"MeinGebaeude_Architektur.ifc\")",
+        "explanation": "Mit der freien Python-Bibliothek IfcOpenShell können IFC-Gebäudemodelle vollständig zerlegt werden. Das Skript greift auf die genormten BaseQuantities zu und extrahiert exakte Netto-Volumina.",
+        "benefit": "Verbindet CAD-CAD-Software (Revit, ArchiCAD, Allplan) über standardisiertes OpenBIM nahtlos mit den CO₂-Berechnungen von BaustoffBoard."
+      },
+      {
+        "id": "ubakus_calc",
+        "title": "3. Bauphysik-Algorithmus: U-Wert mehrschichtiger Bauteile berechnen",
+        "subtitle": "Algorithmus zur Berechnung mehrschichtiger Bauteile nach DIN EN ISO 6946",
+        "category": "Bauphysik & Feuchteschutz",
+        "prerequisites": "Standard Python (keine externen Pakete erforderlich)",
+        "code": "def calculate_u_value(layers, r_si=0.13, r_se=0.04):\n    \"\"\"\n    Berechnet den Wärmedurchgangskoeffizienten U [W/(m²K)] eines mehrschichtigen\n    Bauteils nach DIN EN ISO 6946 (analog zur Ubakus-Berechnungslogik).\n    \n    layers: Liste von Dicts mit 'name', Dicke 'd' [m] und Leitfähigkeit 'lambda_val' [W/(mK)]\n    r_si: Wärmeübergangswiderstand innen (horizontale Strömung = 0,13 m²K/W)\n    r_se: Wärmeübergangswiderstand außen (0,04 m²K/W)\n    \"\"\"\n    r_t = r_si + r_se\n    print(f\"{'Schicht-Bezeichnung':<28} | {'Dicke [m]':<10} | {'λ [W/mK]':<10} | {'R [m²K/W]':<10}\")\n    print(\"-\" * 68)\n\n    for lyr in layers:\n        r_layer = lyr[\"d\"] / lyr[\"lambda_val\"]\n        r_t += r_layer\n        print(f\"{lyr['name']:<28} | {lyr['d']:<10.4f} | {lyr['lambda_val']:<10.3f} | {r_layer:<10.3f}\")\n\n    u_value = 1.0 / r_t\n    print(\"-\" * 68)\n    print(f\"R_gesamt (inkl. R_si={r_si}, R_se={r_se}): {r_t:.3f} m²K/W\")\n    print(f\"Resultierender U-Wert:                    {u_value:.3f} W/(m²K)\")\n    return u_value, r_t\n\n# Beispiel: Gedämmte Holzrahmen-Außenwand\nbeispiel_aufbau = [\n    {\"name\": \"1. Gipskartonplatte\", \"d\": 0.0125, \"lambda_val\": 0.250},\n    {\"name\": \"2. Installationsebene / Luft\", \"d\": 0.0400, \"lambda_val\": 0.160},\n    {\"name\": \"3. OSB-Platte (Dampfbremse)\", \"d\": 0.0180, \"lambda_val\": 0.130},\n    {\"name\": \"4. Holzfaser-Dämmung 038\", \"d\": 0.2000, \"lambda_val\": 0.038},\n    {\"name\": \"5. Holzfaser-Putzträger\", \"d\": 0.0600, \"lambda_val\": 0.043},\n    {\"name\": \"6. Mineralischer Außenputz\", \"d\": 0.0100, \"lambda_val\": 0.800}\n]\n\nif __name__ == \"__main__\":\n    calculate_u_value(beispiel_aufbau)",
+        "explanation": "Dieser Python-Algorithmus setzt die Berechnungslogik von Ubakus nach DIN EN ISO 6946 transparent um. Er iteriert über die Schichten und ermittelt den Gesamtwärmedurchgangskoeffizienten.",
+        "benefit": "Ermöglicht automatisierte Parameterstudien und Optimierungsschleifen zur minimalen Dämmstärke für KfW-40- und Passivhausstandards."
+      },
+      {
+        "id": "statik_beam_calc",
+        "title": "4. Tragwerks-Vorbemessung: Einfeldträger GZT & GZG (Eurocode 2/3/5)",
+        "subtitle": "Automatisierte Biegemomente, Querkräfte und Durchbiegungen nach Eurocode",
+        "category": "Statik & Tragwerk",
+        "prerequisites": "Standard Python (optional: pip install matplotlib)",
+        "code": "def vorbemessung_traeger(l_span=6.0, q_gk=4.5, q_qk=3.0, e_modul=33000e6, b=0.25, h=0.45):\n    \"\"\"\n    Einfeldträger-Vorbemessung nach DIN EN 1990 / DIN EN 1992-1-1.\n    l_span:   Stützweite [m]\n    q_gk:     Ständige Gleichlast [kN/m]\n    q_qk:     Veränderliche Gleichlast [kN/m]\n    e_modul:  Elastizitätsmodul [N/m²] (z.B. C25/30 = 33.000 MPa)\n    b, h:     Querschnittsbreite und -höhe [m]\n    \"\"\"\n    gamma_g = 1.35\n    gamma_q = 1.50\n\n    # 1. Grenzzustand der Tragfähigkeit (GZT)\n    q_ed = gamma_g * q_gk + gamma_q * q_qk\n    m_ed = (q_ed * (l_span ** 2)) / 8.0  # Biegemoment kNm\n    v_ed = (q_ed * l_span) / 2.0         # Querkraft am Auflager kN\n\n    # 2. Grenzzustand der Gebrauchstauglichkeit (GZG)\n    # Flächenträgheitsmoment Rechteckquerschnitt I_y = b * h³ / 12\n    i_y = (b * (h ** 3)) / 12.0\n    \n    # Quasi-ständige Lastkombination: q_sls = gk + psi_2 * qk (psi_2 = 0.3 für Wohnbauten)\n    q_sls_nm = (q_gk + 0.3 * q_qk) * 1000.0  # N/m\n    w_sls_m = (5.0 * q_sls_nm * (l_span ** 4)) / (384.0 * e_modul * i_y)\n    w_sls_mm = w_sls_m * 1000.0\n    w_zul_mm = (l_span / 250.0) * 1000.0\n\n    print(\"=== VORBEMESSUNG EINFELDTRÄGER (EUROCODE) ===\")\n    print(f\"Spannweite:             L = {l_span:.2f} m\")\n    print(f\"Bemessungslast GZT:    q_Ed = {q_ed:.2f} kN/m\")\n    print(f\"Max. Biegemoment:      M_Ed = {m_ed:.2f} kNm\")\n    print(f\"Max. Auflagerquerkraft:V_Ed = {v_ed:.2f} kN\")\n    print(f\"Durchbiegung w_SLS:    {w_sls_mm:.2f} mm (Grenzwert L/250 = {w_zul_mm:.2f} mm)\")\n    print(f\"Nachweis GZG erfüllt:  {'JA (Ausnutzung ' + str(round(w_sls_mm/w_zul_mm*100, 1)) + '%)' if w_sls_mm <= w_zul_mm else 'NEIN (Querschnitt vergrößern!)'}\")\n    return m_ed, v_ed, w_sls_mm\n\nif __name__ == \"__main__\":\n    vorbemessung_traeger(l_span=5.5, q_gk=5.0, q_qk=2.5)",
+        "explanation": "Dieses Skript bildet die mathematischen Grundlagen von Calcpad und SkyCiv ab. Es ermittelt deterministisch Schnittgrößen im GZT sowie die elastische Verformung im GZG unter quasi-ständiger Einwirkungskombination.",
+        "benefit": "Schnelle Verifikation von Vorlesungsaufgaben und Plausibilitätsprüfungen vor der FE-Modellierung in großen Statikprogrammen."
+      }
+    ],
+    "OnlineTools.schritte": [
+      {
+        "titel": "Moment",
+        "erklaerung": "Holzbalken C24, b/h = 120/240 mm, L = 5,0 m, q_Ed = 5,0 kN/m:",
+        "formel": "M_{Ed} = \\frac{5{,}0 \\cdot 5{,}0^2}{8} = 15{,}6\\,\\text{kNm}"
+      },
+      {
+        "titel": "Steifigkeit",
+        "erklaerung": "E_0,mean = 11 000 N/mm², I = 120 · 240³/12:",
+        "formel": "I = 1{,}382 \\cdot 10^8\\,\\text{mm}^4"
+      },
+      {
+        "titel": "Durchbiegung",
+        "erklaerung": "Quasi-ständige Last 3,0 kN/m (ohne Kriechen):",
+        "formel": "w = \\frac{5 \\cdot 3{,}0 \\cdot 5\\,000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}"
+      }
+    ],
+    "OnlineTools.schritte_2": [
+      {
+        "titel": "Ständige Lasten",
+        "erklaerung": "Stahlbetondecke 20 cm (25 kN/m³) plus Ausbau 1,5 kN/m²:",
+        "formel": "g_k = 0{,}20 \\cdot 25 + 1{,}5 = 6{,}5\\,\\text{kN/m}^2"
+      },
+      {
+        "titel": "Nutzlast",
+        "erklaerung": "Wohnräume (Kategorie A2):",
+        "formel": "q_k = 1{,}5\\,\\text{kN/m}^2 \\text{ (ggf. Trennwandzuschlag)}"
+      },
+      {
+        "titel": "Bemessungswert",
+        "erklaerung": "Grundkombination:",
+        "formel": "q_{Ed} = 1{,}35 \\cdot 6{,}5 + 1{,}5 \\cdot 1{,}5 = 11{,}0\\,\\text{kN/m}^2"
+      }
+    ],
+    "OnlineTools.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021",
+      "Barth, C.; Rustler, W.: Finite Elemente in der Baustatik-Praxis. Berlin: Beuth/Bauwerk (aktuelle Auflage)"
+    ],
+    "OnlineTools.regelwerke": [
+      {
+        "title": "DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)"
+      },
+      {
+        "title": "DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)"
+      },
+      {
+        "title": "DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      },
+      {
+        "title": "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)"
+      },
+      {
+        "title": "DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)"
+      }
+    ],
+    "OnlineTools.weblinks": [
+      {
+        "title": "Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner",
+        "url": "https://www.ubakus.de/"
+      },
+      {
+        "title": "Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen",
+        "url": "https://www.dlubal.com/en/support-and-learning/service/geo-zone-tool-snow-wind-and-seismic-zone-maps"
+      },
+      {
+        "title": "Fraunhofer IBP WUFI – Instationäre Feuchte- und Wärmesimulation",
+        "url": "https://wufi.de/"
+      },
+      {
+        "title": "ÖKOBAUDAT – Ökobilanz-Datenbank des BMWSB (BBSR)",
+        "url": "https://www.oekobaudat.de/"
+      },
+      {
+        "title": "WECOBIS – Ökologisches Baustoffportal des Bundes",
+        "url": "https://www.wecobis.de/"
+      },
+      {
+        "title": "Madaster Germany – Material- und Zirkularitätskataster",
+        "url": "https://madaster.de/"
+      },
+      {
+        "title": "Concular – Zirkulärer Marktplatz für Sekundärbaustoffe",
+        "url": "https://concular.de/"
+      },
+      {
+        "title": "Calcpad – Parametrische Ingenieurberechnungen",
+        "url": "https://calcpad.eu/"
+      },
+      {
+        "title": "thatOpen Company – Open-Source WebGL IFC Viewer",
+        "url": "https://thatopen.com/"
+      }
+    ],
+    "OnlineTools.formeln": [
+      {
+        "formel": "U = \\frac{1}{R_{si} + \\sum_{i=1}^n \\frac{d_i}{\\lambda_i} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]",
+        "erklaerung": "Wärmedurchgangskoeffizient eines mehrschichtigen homogenen Bauteils mit innerem/äußerem Wärmeübergangswiderstand und Schichtdicken d_i sowie Wärmeleitfähigkeiten lambda_i.",
+        "quelle": "DIN EN ISO 6946"
+      },
+      {
+        "formel": "M_{Ed} = \\frac{q_{Ed} \\cdot L^2}{8}, \\quad w_{\\text{SLS}} = \\frac{5 \\cdot q_{\\text{quasi}} \\cdot L^4}{384 \\cdot E \\cdot I_y} \\le \\frac{L}{250}",
+        "erklaerung": "Klassische Schnittgrößen- und Durchbiegungsformel für Einfeldträger im GZT und GZG unter Gleichstreckenlast.",
+        "quelle": "DIN EN 1990 / DIN EN 1992-1-1"
+      }
+    ]
+  }
+}

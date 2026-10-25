@@ -1,0 +1,127 @@
+{
+  "texte": {
+    "normenLebenszyklusphasenABis": "Normen, Lebenszyklusphasen A bis D und Umweltindikatoren nach **DIN EN 15978** und **DIN EN 15804+A2**, EPD-Musterdatenbank und Studierenden-Leitfaden.",
+    "coBilanzVonGebäudevarianten": "CO₂-Bilanz von Gebäudevarianten einschließlich Transport (A4) und Modul D, Wandaufbau-Konfigurator, QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen und Excel-Übung Transportbeton.",
+    "ökobilanzVonIngenieurbauwerkenUnd": "Ökobilanz von Ingenieurbauwerken und Infrastruktur nach **DIN EN 17472**: lange Betrachtungszeiträume, Austauschzyklen (B2 bis B5) und verkehrsbedingte Emissionen (B8).",
+    "hierarchischesRechtsrahmenKompendiumBaup": "Hierarchisches Rechtsrahmen-Kompendium (BauPVO, Green Deal, EPBD, ESPR, CBAM, EU-ETS), CRREM-Dekarbonisierungspfade sowie Praxisbeispiele zu Gebäudetyp E, Urban Mining, Lehmbau und Holz-Hybrid."
+  },
+  "werte": {
+    "ökobilanzierungLcaGrundlagen": "Ökobilanzierung (LCA): Grundlagen",
+    "ökobilanzierungLcaGrundlagen2": "Ökobilanzierung (LCA) Grundlagen",
+    "lcaRechnerQngNachweis": "LCA-Rechner & QNG-Nachweis",
+    "interaktiverCoRechnerModul": "Interaktiver CO₂-Rechner & Modul D",
+    "wandaufbauQngNachweisLeitfaden": "Wandaufbau, QNG-Nachweis & Leitfaden",
+    "excelÜbungTransportbetonDownload": "Excel-Übung: Transportbeton (Download)",
+    "lcaImIngenieurbauDin": "LCA im Ingenieurbau (DIN EN 17472)",
+    "dinEn17472Ingenieurbau": "DIN EN 17472 (Ingenieurbau & Infrastruktur)",
+    "rechtsrahmenCrremPraxis": "Rechtsrahmen, CRREM & Praxis",
+    "crremRechtsrahmenPraxis": "CRREM, Rechtsrahmen & Praxis",
+    "bereicheDerÖkobilanzierung": "Bereiche der Ökobilanzierung",
+    "beispielZementanteilAmGwp": "Beispiel: Zementanteil am GWP von 1 m³ Transportbeton",
+    "derZementVerursacht80": "Der Zement verursacht 80 bis 90 % des Beton-GWP. Hüttensand ist jedoch begrenzt verfügbar; die Wahl muss Expositionsklasse, Frühfestigkeit und Nachbehandlung (DIN 1045-2) berücksichtigen.",
+    "dinEn15804A2": "DIN EN 15804+A2 (EPD-Module A1–A3); Lehrwerte, keine Produktdaten",
+    "beispielQngNachweisDer": "Beispiel: QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen eines Wohngebäudes",
+    "gutschriftenAusModulD": "Gutschriften aus Modul D dürfen nicht verrechnet werden. Neben dem GWP sind PENRT (≤ 96 bzw. 64 kWh/(m²a)) und die übrigen QNG-Anforderungen (Schadstoffe, Barrierefreiheit u. a.) nachzuweisen.",
+    "qngHandbuchAnlage3": "QNG-Handbuch Anlage 3, v1.4 (WG23); DIN EN 15978",
+    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: QNG-Anforderungswerte vereinheitlicht (WG23: 24/20 kg CO₂-Äq./(m² NRF·a)), DIN EN 15978:2026-09 ergänzt, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)",
+    "graueEnergie": "Graue Energie"
+  },
+  "daten": {
+    "OekobilanzLCA.schritte": [
+      {
+        "titel": "Annahmen (Lehrwerte)",
+        "erklaerung": "C30/37 mit 320 kg Zement je m³; GWP CEM I ≈ 0,80, CEM III/A ≈ 0,45 kg CO₂-Äq./kg; Gesteinskörnung, Wasser, Zusatzmittel und Werkstransport pauschal 30 kg CO₂-Äq./m³. Projektwerte stets aus EPD bzw. ÖKOBAUDAT.",
+        "formel": "m_Z = 320\\,\\text{kg/m}^3"
+      },
+      {
+        "titel": "CEM I",
+        "erklaerung": "Portlandzement:",
+        "formel": "\\text{GWP} = 320 \\cdot 0{,}80 + 30 = 286\\,\\text{kg CO}_2\\text{-Äq./m}^3"
+      },
+      {
+        "titel": "CEM III/A",
+        "erklaerung": "Hochofenzement mit etwa 50 % Hüttensand:",
+        "formel": "\\text{GWP} = 320 \\cdot 0{,}45 + 30 = 174\\,\\text{kg CO}_2\\text{-Äq./m}^3"
+      },
+      {
+        "titel": "Einsparung",
+        "erklaerung": "Relative Minderung durch die Zementwahl:",
+        "formel": "\\frac{286 - 174}{286} = 39\\,\\%"
+      }
+    ],
+    "OekobilanzLCA.schritte_2": [
+      {
+        "titel": "Konstruktion",
+        "erklaerung": "Module A1–A3, B4 (Austausch), C3–C4 für ein Mehrfamilienhaus mit 1 200 m² NRF:",
+        "formel": "\\text{GWP}_{\\text{Konstruktion}} = 1\\,050\\,000\\,\\text{kg CO}_2\\text{-Äq.}"
+      },
+      {
+        "titel": "Betrieb",
+        "erklaerung": "Modul B6 mit 8 000 kg CO₂-Äq. je Jahr über 50 Jahre:",
+        "formel": "\\text{GWP}_{\\text{Betrieb}} = 8\\,000 \\cdot 50 = 400\\,000\\,\\text{kg CO}_2\\text{-Äq.}"
+      },
+      {
+        "titel": "Kennwert",
+        "erklaerung": "Bezug auf NRF und Betrachtungszeitraum:",
+        "formel": "\\frac{1\\,450\\,000}{1\\,200 \\cdot 50} = 24{,}2\\,\\text{kg CO}_2\\text{-Äq./(m}^2\\text{a)} > 24 \\;(\\text{QNG-PLUS knapp verfehlt})"
+      },
+      {
+        "titel": "Holzhybrid-Variante",
+        "erklaerung": "Konstruktion 15 % geringer:",
+        "formel": "\\frac{892\\,500 + 400\\,000}{60\\,000} = 21{,}5 \\le 24 \\;(\\text{PLUS}), \\quad > 20 \\;(\\text{PREMIUM nicht erreicht})"
+      }
+    ],
+    "OekobilanzLCA.literatur": [
+      "Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009",
+      "Hauschild, M. Z.; Rosenbaum, R. K.; Olsen, S. I. (Hrsg.): Life Cycle Assessment – Theory and Practice. Cham: Springer 2018"
+    ],
+    "OekobilanzLCA.regelwerke": [
+      {
+        "title": "DIN EN ISO 14040:2021-02 / 14044:2021-02 (Umweltmanagement - Ökobilanz)"
+      },
+      {
+        "title": "DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen – Grundregeln)"
+      },
+      {
+        "title": "DIN EN 15978:2026-09 (EN 15978:2026; Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10, Übergangsregeln in QNG/DGNB manuell prüfen)"
+      },
+      {
+        "title": "DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)"
+      },
+      {
+        "title": "DGNB System Kriterium ENV1.1 'Klimaschutz und Energie' (Version 2023.2; in Version 2018: 'Ökobilanz des Gebäudes')",
+        "url": "https://www.dgnb.de/"
+      },
+      {
+        "title": "QNG-Handbuch, Anlage 3 (Version 1.4 vom 19.07.2024): Anforderungswerte Lebenszyklus-THG und PENRT",
+        "url": "https://www.qng.info/"
+      }
+    ],
+    "OekobilanzLCA.weblinks": [
+      {
+        "title": "ÖKOBAUDAT Plattform – BMWSB EPD-Datenbank",
+        "url": "https://www.oekobaudat.de/"
+      },
+      {
+        "title": "WECOBIS – Ökologisches Baustoffinformationssystem",
+        "url": "https://www.wecobis.de/"
+      },
+      {
+        "title": "EC3 Tool – Building Transparency",
+        "url": "https://www.buildingtransparency.org/"
+      }
+    ],
+    "OekobilanzLCA.formeln": [
+      {
+        "formel": "GWP_{\\text{Bauwerk}} = \\sum_{i} m_i \\cdot \\text{GWP}_i + \\sum_{a=1}^{50} E_a \\cdot f_{\\text{PE,CO2}} \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung über einen Betrachtungszeitraum von 50 Jahren (QNG, BNB, DGNB) unter Berücksichtigung von grauer Energie (Herstellung A1-A3, Rückbau C3/C4) und Betriebsenergie (Modul B6).",
+        "quelle": "DIN EN 15978; QNG; DGNB ENV1.1"
+      },
+      {
+        "formel": "GWP_{\\text{Ing}} = \\frac{\\text{GWP}_{\\text{A1-A5}} + \\sum_{k} \\text{GWP}_{\\text{B2-B5},k} + \\text{GWP}_{\\text{B8}} + \\text{GWP}_{\\text{C1-C4}}}{A_{\\text{Deck}} \\cdot t_{\\text{ref}}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]",
+        "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken über 80 bis 100 Jahre (DIN EN 1990 Auslegungskategorie 5) unter Berücksichtigung von periodischen Austauschzyklen (Lager, Übergänge, Beläge B2-B5) und verkehrsbedingten Stauemissionen während Baustellen (Modul B8).",
+        "quelle": "DIN EN 17472:2022-09"
+      }
+    ]
+  }
+}

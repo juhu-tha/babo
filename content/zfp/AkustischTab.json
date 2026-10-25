@@ -1,0 +1,15 @@
+{
+  "texte": {
+    "dieUltraschallgeschwindigkeitHängtVon": "Die Ultraschallgeschwindigkeit hängt von der Dichte und dem E-Modul ab. Risse und Hohlräume verringern die Geschwindigkeit.",
+    "einMechanischerImpulsErzeugt": "Ein mechanischer Impuls erzeugt Spannungswellen. Die Reflexion an Rückwänden oder Fehlstellen wird als Resonanzfrequenz gemessen.",
+    "berechneteTiefeBauteildickeFehlstelle": "Berechnete Tiefe (Bauteildicke / Fehlstelle)",
+    "dVP2": "d = β · v_p / (2 · f), β = 0,96 (ASTM C1383)"
+  },
+  "werte": {
+    "ultraschallgeschwindigkeitV": "Ultraschallgeschwindigkeit (v)",
+    "dynElastizitätsmodulEDyn": "Dyn. Elastizitätsmodul (E_{dyn})",
+    "resonanzfrequenzF": "Resonanzfrequenz (f)",
+    "gemesseneDominanteFrequenzIm": "Gemessene dominante Frequenz im Frequenzspektrum.",
+    "wellengeschwindigkeitV": "Wellengeschwindigkeit (v)"
+  }
+}

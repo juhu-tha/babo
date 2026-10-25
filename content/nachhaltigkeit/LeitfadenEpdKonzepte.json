@@ -1,0 +1,49 @@
+{
+  "texte": {
+    "schritt1Von5": "Schritt 1 von 5",
+    "grundkonzeptEpdWahlGenerische": "Grundkonzept & EPD-Wahl (Generische vs. Spezifische Deklarationen)",
+    "derEinstiegInJede": "Der Einstieg in jede Ökobilanzierung (LCA) verlangt den Zugriff auf validierte Umweltproduktdeklarationen (**EPD - Environmental Product Declarations**) gemäß DIN EN 15804. EPDs bündeln alle quantifizierten Umweltwirkungen eines Baustoffs über dessen Lebenszyklus. Für Studierende ist das Verständnis der zwei EPD-Haupttypen von eminentem Wert:",
+    "generischeEpdZB": "Generische EPD (z.B. ÖKOBAUDAT)",
+    "spezifischeHerstellerEpd": "Spezifische hersteller-EPD",
+    "exkursWasSindPcr": "Exkurs: Was sind PCR (Product Category Rules)?",
+    "eineEpdDarfNicht": "Eine **EPD** darf nicht willkürlich berechnet werden. Hier kommen die **PCR (Produktkategorieregeln)** ins Spiel. PCR sind standardisierte Regelwerke (meist basierend auf **DIN EN 15804**), die definieren, wie Ökobilanzen für bestimmte Baustoffklassen berechnet werden müssen, um deren EPDs überhaupt vergleichbar zu machen.",
+    "partAAllgemeineRechenregeln": "Part A: Allgemeine Rechenregeln",
+    "giltÜbergreifendFürAlle": "Gilt übergreifend für alle Bauprodukte. Definiert Ökobilanz-Grundregeln, anzuwendende Lebenszyklusmodule (A1-D), Gutschriftverfahren und Datenqualität.",
+    "partBSpezifischeBaustoffklasse": "Part B: Spezifische Baustoffklasse",
+    "giltFürEineKonkrete": "Gilt für eine konkrete Produktgruppe (z. B. mineralische Dämmstoffe, Betonbauteile, Bauhölzer). Regelt die exakte deklarierte Einheit und stoffspezifische Szenarien.",
+    "dinEn15804A2": "DIN EN 15804+A2 Pflicht-Kernindikatoren",
+    "ökobaudatStandard": "ÖKOBAUDAT Standard",
+    "gesamtesErderwärmungspotenzialFossilBiog": "Gesamtes Erderwärmungspotenzial (fossil + biogen + LULUC)",
+    "fossileTreibhausgasemissionenAusBrennsto": "Fossile Treibhausgasemissionen aus Brennstoffen/Prozessen",
+    "biogenerKohlenstoffTemporäreCo": "Biogener Kohlenstoff (temporäre CO₂-Speicherung in Holz/Nawaro)",
+    "totalNichtErneuerbarePrimärenergie": "Total nicht-erneuerbare Primärenergie [MJ]",
+    "totalErneuerbarePrimärenergieMj": "Total erneuerbare Primärenergie [MJ]",
+    "verbindlicheBundesplattformDesBmwsb": "Verbindliche Bundesplattform des BMWSB für QNG-Berechnungen",
+    "akademischerPraxistippFürDie": "Akademischer Praxistipp für die Thesis:",
+    "beginnenSieImVorentwurf": "Beginnen Sie im Vorentwurf mit generischen EPDs der nationalen **ÖKOBAUDAT**-Datenbank (gemäß DIN EN 15804+A2). Demonstrieren Sie Optimierungskompetenz, indem Sie im Hauptentwurf gezielt emissionsarme Hersteller-EPDs (z.B. für CO₂-reduzierten Beton oder zertifizierten Holzbau) substituieren und die GWP-Senkung quantifizieren!"
+  },
+  "daten": {
+    "LeitfadenEpdKonzepte": [
+      {
+        "krit": "Datengrundlage",
+        "gen": "Branchenmittelschnitte & theoretische Mittelwerte eines Wirtschaftszweiges.",
+        "spec": "Gemessene, auditierte Primärdaten eines konkreten Zement-, Ziegel- oder Sägewerks."
+      },
+      {
+        "krit": "Sicherheitsbeiwert (QNG/DGNB)",
+        "gen": "⚠️ Unvorteilhafter Aufschlag (+10% auf GWP etc.) zum Ausgleich von Qualitätsschwankungen.",
+        "spec": "✅ 0% Zuschlag (reale Werte). Führt rechnerisch zu deutlich besseren Gebäude-Ökobilanzen."
+      },
+      {
+        "krit": "Nutzen für Planer",
+        "gen": "Hervorragend in der frühen Entwurfsphase (LPH 1-3), falls Hersteller noch unklar sind.",
+        "spec": "Unerlässlich für die detaillierte Ausführungsplanung und das schlussendliche QNG-Audit."
+      },
+      {
+        "krit": "Innovationswirkung",
+        "gen": "Trägt keine marktverändernde Wirkung, zementiert den Ist-Mittelzustand.",
+        "spec": "Belohnt CO₂-effiziente Werke (z.B. CO2-arme Klinker, regenerative Werksenergie)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "texte": {
+    "lebenszykluskostenRechnungLcc": " Lebenszykluskosten-Rechnung (LCC)",
+    "dieLebenszykluskostenrechnungLifeCycle": "Die Lebenszykluskostenrechnung (Life Cycle Costing - LCC) ist das betriebswirtschaftliche Spiegelbild zur ökologischen Ökobilanzierung (LCA). Sie ermöglicht eine rationale Wirtschaftlichkeitsentscheidung, indem sie nicht nur die unmittelbaren Anschaffungskosten (CapEx) bewertet, sondern alle anfallenden Nutzungs-, Instandsetzungs-, und Entsorgungskosten (OpEx & End-of-Life) über standardisierte Gebäudezeiträume (z.B. 50 Jahre nach DGNB) finanzmathematisch auf den heutigen Tag abzinst.",
+    "t1InteraktiverKostenrechnerSzenarien": " 1. Interaktiver Kostenrechner & Szenarien",
+    "t2FachgrundlagenNormenDin": " 2. Fachgrundlagen & Normen (DIN 18960)",
+    "technischeHochschuleAugsburg": "TECHNISCHE HOCHSCHULE AUGSBURG",
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen",
+    "lebenszyklusanalyseLccGutachtenNach": "Lebenszyklusanalyse (LCC-Gutachten) nach DIN 18960",
+    "wirtschaftlichkeitsprüfungProfDrIng": "Wirtschaftlichkeitsprüfung • Prof. Dr.-Ing. Jürgen Huber • Baustoffkunde & Bauchemie",
+    "untersuchtesBauteilszenario": "Untersuchtes Bauteilszenario:",
+    "betrachtungszeitraum": "• Betrachtungszeitraum: ",
+    "kalkulationszinssatzR": "• Kalkulationszinssatz ($r$): ",
+    "energiepreisInflationE": "• Energiepreis-Inflation ($e$): ",
+    "coSchattenpreis": "• CO₂-Schattenpreis: ",
+    "kfwFördermodus": "• KfW-Fördermodus: ",
+    "didaktischesPraxisSzenario": "Didaktisches Praxis-Szenario",
+    "wählenSieDasBauliche": "Wählen Sie das bauliche Bauteilszenario für den Lebenszyklus-Vergleich:",
+    "volkswirtschaftlicheMathematischeParamet": " Volkswirtschaftliche & Mathematische Parameter",
+    "betrachtungszeitraumN": "Betrachtungszeitraum (N)",
+    "dgnbStandardwertFürGebäude": "DGNB-Standardwert für Gebäude: 50 Jahre.",
+    "abzinsungssatzKalkulationszinsR": "Abzinsungssatz (Kalkulationszins $r$)",
+    "stelltDenZinseffektDar": "Stellt den Zinseffekt dar. Ein höherer Satz wertet ferne Kosten extrem ab.",
+    "sektorEnergiepreissteigerungE": "Sektor-Energiepreissteigerung ($e$)",
+    "wachstumskoeffizientFürBetrieblicheHeiz": "Wachstumskoeffizient für betriebliche Heiz- & Kühlkosten.",
+    "allgemeineInflationI": "Allgemeine Inflation ($i$)",
+    "jährlicheTeuerungsrateFürLohnarbeiten": "Jährliche Teuerungsrate für Lohnarbeiten, Austausch und Deponiekosten.",
+    "wissenschaftlicheParameter": "Wissenschaftliche Parameter",
+    "coSchattenpreisTextCo": "CO₂-Schattenpreis ($\\text{CO}_2$)",
+    "coBasispreisStart": "CO₂-Basispreis (Start):",
+    "ubaKostenansatzCa180": "UBA-Kostenansatz: ca. 180-200 €/t Schadensäquivalent.",
+    "jährlicheCoTeuerung": "Jährliche CO₂-Teuerung:",
+    "staatlKfwFörderung": "Staatl. KfW-Förderung",
+    "zuschussAufOptionB": "Zuschuss auf Option B:",
+    "reduziertInvestitionskostenCapexDer": "Reduziert Investitionskosten (CapEx) der ökologischen Baustoffe.",
+    "diskontierungNpv": "Diskontierung ( NPV )",
+    "kostenInNutzungsjahrT": "Kosten in Nutzungsjahr $t$ werden durch den Abzinsungsfaktor vermindert:",
+    "daRInDer": "Da $r$ in der Regel größer als die Inflation $i$ ist, gewinnen niedrige Errichtungskosten an Attraktivität, je höher Sie $r$ ansetzen.",
+    "strukturierteBarwertZusammensetzungLcc": " Strukturierte Barwert-Zusammensetzung (LCC-Vergleich)",
+    "anschaffungCapex": " Anschaffung (CapEx)",
+    "betriebHeizungOpex": " Betrieb/Heizung (OpEx)",
+    "detaillierteBilanzNachBarwertmethode": "Detaillierte Bilanz nach Barwertmethode (Net Present Value)",
+    "optionANominal": "Option A (Nominal)",
+    "optionABarwert": "Option A (Barwert)",
+    "optionBNominal": "Option B (Nominal)",
+    "optionBBarwert": "Option B (Barwert)",
+    "t1ErrichtungskostenCapex": "1. Errichtungskosten (CapEx)",
+    "staatlKfwZuschuss": "↳ Staatl. KfW-Zuschuss (",
+    "t2BetriebskostenNettoOpex": "2. Betriebskosten (Netto OpEx)",
+    "t3LaufendeInstandhaltung": "3. Laufende Instandhaltung",
+    "t4ErneuerungBauteiltausch": "4. Erneuerung & Bauteiltausch",
+    "t5RückbauRestwertEol": "5. Rückbau / Restwert (EOL)",
+    "t6CoSchattenpreisKlima": "6. CO₂-Schattenpreis (Klima)",
+    "lccGesamtsummeBarwert": "LCC-Gesamtsumme (Barwert)",
+    "theorieNormungStrukturierungNach": " Theorie, Normung & Strukturierung nach DIN 18960",
+    "t1DieKostenstrukturNach": "1. Die Kostenstruktur nach DIN 18960",
+    "fürHochbautenRegeltDie": "Für Hochbauten regelt die **DIN 18960 (Nutzungskosten im Hochbau)** die standardisierte Berücksichtigung aller Kostenarten über die Betriebsphase eines Bauwerks. Sie gliedert sich im Wesentlichen in folgende baulich relevante Kostengruppen (KG):",
+    "kg100KapitalkostenVerzinsung": "**KG 100 (Kapitalkosten):** Verzinsung des eingesetzten Kapitals, Abschreibungen, Kredite.",
+    "kg200ObjektmanagementkostenPersonal": "**KG 200 (Objektmanagementkosten):** Personal- und Sachkosten für Verwaltung, Steuerung und Kontrolle des Objekts.",
+    "kg300BetriebskostenVersorgung": "**KG 300 (Betriebskosten):** Versorgung (Strom, Fernwärme, Gas, Wasser), Entsorgung (Abwasser, Abfall), Reinigung und Pflege, Bedienung, Inspektion und Wartung, Sicherheitsdienste sowie Abgaben und Beiträge (Steuern, Versicherungen).",
+    "kg400InstandsetzungskostenWiederherstell": "**KG 400 (Instandsetzungskosten):** Wiederherstellung des Soll-Zustands von Baukonstruktion, technischen Anlagen und Außenanlagen, einschließlich des zyklischen baustoffspezifischen Austauschs von Bauteilen (z. B. Fensterflügel nach 30 Jahren).",
+    "t2DieMathematischeBarwertmethode": "2. Die mathematische Barwertmethode (Net Present Value - NPV)",
+    "finanzmathematischWirdDerUmstand": "Finanzmathematisch wird der Umstand modelliert, dass zukünftiges Geld auf Grund von Opportunitätszinsen und Liquiditätspräferenz heute einen geringeren Sachwert besitzt. LCC nutzt zur Zusammenführung zeitlich unterschiedlich verteilter Kosten die **Barwertmethode**:",
+    "volleMathematischeLccZusammenführung": "Volle mathematische LCC-Zusammenführung:",
+    "cSubCapexSub": "• **C<sub>CapEx</sub>**: Initial-Investitionskosten an Tag 0",
+    "cSubOpexT": "• **C<sub>OpEx, t</sub>**: Betriebskosten im Jahr t, erhöht unter der Sektor-Energiepreissteigerungsrate e",
+    "cSubMaintT": "• **C<sub>Maint, t</sub>**: Wartungs- und Austauschkosten in den jeweiligen Erneuerungsjahren, erhöht um die allgemeine Inflation i",
+    "cSubEndOf": "• **C<sub>End-of-Life</sub>**: Abtragungs- oder Rückbaukosten am Berechnungsende im Jahr N",
+    "rAbzinsungssatzKalkulationszinssatz": "• **r**: Abzinsungssatz (Kalkulationszinssatz)",
+    "t3ÖkologischerÖkonomischerZielkonflikt": "3. Ökologischer & ökonomischer Zielkonflikt",
+    "nationaleDgnbBnbNutzung": "Nationale DGNB-/BNB-Nutzung",
+    "umFürDasStaatliche": "Um für das staatliche QNG-Qualitätssiegel bezuschussungsfähig zu sein, fordert das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB) die Durchführung beider Bilanzen. LCC-Szenarien werden regulär mit einem normativ fixierten Kalkulationszins von **1,5% oder 2,0%** über genau 50 Jahre modelliert.",
+    "wirtschaftlicheTriebfeder": "Wirtschaftliche Triebfeder",
+    "währendEineGünstigeInvestition": "Während eine günstige Investition an Tag Null den schnellen Rendite-Fokus des Immobilienentwicklers befriedigt, ist sie für den langfristigen Betreiber (Eigennutzer, Wohnungsgesellschaften) oft unvorteilhaft. LCC macht diesen \"Trittbrettfahrer-Effekt\" transparent und schützt Planer und Bauherren vor unerwarteten Betriebskostenexplosionen."
+  },
+  "werte": {
+    "berichtExportierenPdf": "Bericht exportieren (PDF)",
+    "unterDenGewähltenFinanzrandbedingungen": "Unter den gewählten Finanzrandbedingungen (insb. hohem Zinssatz oder kurzem Nutzungszeitraum) kann der Mehrpreis für die kreislauffähige Option B auf Grund der Abzinsung nicht vollständig kompensiert werden.",
+    "ihreFinanzparameter": "Ihre Finanzparameter",
+    "kalkulationszinsREnergiepreissteigerungE": "Kalkulationszins r, Energiepreissteigerung e (Betriebskosten), allgemeine Teuerung i (Wartung, Ersatz, Rückbau) und Betrachtungszeitraum N:",
+    "betriebskostenOptionAAbzinsen": "Betriebskosten Option A abzinsen",
+    "barwertOptionA": "Barwert Option A",
+    "coPreisInaktiv": " (CO₂-Preis inaktiv)",
+    "investitionOptionB": "Investition Option B",
+    "ohneFörderungGehenDie": "Ohne Förderung gehen die vollen Investitionskosten der Option B ein:",
+    "barwertOptionB": "Barwert Option B",
+    "gleicheGliederungWieBei": "Gleiche Gliederung wie bei Option A (ein negativer Rückbauwert ist eine Restwertgutschrift):",
+    "differenzDerBarwerte": "Differenz der Barwerte",
+    "einPositiverWertBedeutet": "Ein positiver Wert bedeutet: Option B ist über den Lebenszyklus günstiger.",
+    "einNegativerWertBedeutet": "Ein negativer Wert bedeutet: Option A bleibt wirtschaftlicher.",
+    "rundungsdifferenzenInDerLetzten": "Rundungsdifferenzen in der letzten Stelle entstehen durch die Darstellung auf volle Euro.",
+    "iso1568652017": "ISO 15686-5:2017; DIN EN 16627:2015-09"
+  },
+  "daten": {
+    "SCENARIOS": [
+      {
+        "id": "daemmung",
+        "title": "Außenwand-Dämmsystem (Bezugsfläche: 150 m²)",
+        "subtitle": "Konventionelles EPS vs. Kreislauffähige Öko-Holzfaser",
+        "description": "Vergleich eines kostengünstigen Erdöl-basierten Wärmedämmverbundsystems mit einer hochwertigen, diffusionsoffenen und kreislauffähigen Naturfaserdämmung.",
+        "unit": "€/150m²",
+        "optionA": {
+          "name": "Option A: EPS-WDVS (Polystyrol)",
+          "className": "Fokus auf minimale Errichtungskosten (CapEx)",
+          "capex": 18000,
+          "opex0": 1400,
+          "maintenanceInterval": 15,
+          "maintenanceCost": 2500,
+          "lifespan": 30,
+          "replacementCost": 16000,
+          "eolCost": 4500,
+          "embodiedCO2": 12500,
+          "operatingCO2": 1800,
+          "details": [
+            "Kunststoffbasiertes System mit geringer dynamischer Wärmespeicherung",
+            "Turnusmäßige biozide Anstriche gegen Veralgung notwendig",
+            "Sehr teure Entsorgung als gefährlicher Abfall am Lebensende"
+          ]
+        },
+        "optionB": {
+          "name": "Option B: Holzfaser-WDVS (Natur)",
+          "className": "Fokus auf minimale Betriebs- & Kreislaufkosten (OpEx/EOL)",
+          "capex": 31500,
+          "opex0": 1050,
+          "maintenanceInterval": 20,
+          "maintenanceCost": 1800,
+          "lifespan": 60,
+          "replacementCost": 0,
+          "eolCost": -1500,
+          "embodiedCO2": 1500,
+          "operatingCO2": 950,
+          "details": [
+            "Nachwachsendes, diffusionsoffenes Material mit hoher Phasenverschiebung",
+            "Hervorragender sommerlicher Hitzeschutz mindert Energieaufwand für Kühlung",
+            "Stoffliche Rückführbarkeit sichert Restwertgutschrift beim Rückbau"
+          ]
+        }
+      },
+      {
+        "id": "fenster",
+        "title": "Austausch von Fensteranlagen (Glastragwerke, 35 m²)",
+        "subtitle": "Basis-Kunststofffenster (2-fach) vs. Premium Holz-Aluminium (3-fach)",
+        "description": "Vergleich herkömmlicher Kurzläufer-Verglasung auf Kunststoffrahmen mit einer langlebigen Witterungsschutz-Verbundkonstruktion mit Hochleistungsisolierglas.",
+        "unit": "Gesamtprojekt",
+        "optionA": {
+          "name": "Option A: Kunststofffenster (2-fach)",
+          "className": "Günstiges Standardprodukt",
+          "capex": 11500,
+          "opex0": 800,
+          "maintenanceInterval": 10,
+          "maintenanceCost": 600,
+          "lifespan": 25,
+          "replacementCost": 11500,
+          "eolCost": 1200,
+          "embodiedCO2": 4500,
+          "operatingCO2": 1050,
+          "details": [
+            "Verformt sich über Jahrzehnte leicht unter Temperatureinfluss",
+            "Geringere solare Gewinne und verringertes Schalldämmmaß",
+            "Eingeschränkte Wiederverwertbarkeit durch Co-extrudiertes Altplastik"
+          ]
+        },
+        "optionB": {
+          "name": "Option B: Holz-Aluminium-Fenster (3-fach)",
+          "className": "Premium Energie- & Langlebigkeitsschutz",
+          "capex": 22000,
+          "opex0": 450,
+          "maintenanceInterval": 15,
+          "maintenanceCost": 400,
+          "lifespan": 45,
+          "replacementCost": 22000,
+          "eolCost": -2500,
+          "embodiedCO2": 1800,
+          "operatingCO2": 550,
+          "details": [
+            "Perfekte Witterungsbeständigkeit durch außenliegendes eloxiertes Aluminium",
+            "Hohe energetische Einsparung und maximaler Wohnkomfort",
+            "Sehr gute Trennbarkeit von Altglas, Holzsteg und Alu-Profilen"
+          ]
+        }
+      },
+      {
+        "id": "flachdach",
+        "title": "Flachdach-Abdichtungskonstruktion (Fläche: 120 m²)",
+        "subtitle": "Standard-Bitumenerneuerung vs. EPDM-Kautschukdeckbahn mit Gründach",
+        "description": "Die Abdichtungsklassiker. Bitumen verwittert relativ rasch durch UV-Strahlung und muss abgeschält werden. EPDM mit Extensivbegrünung ist extrem alterungsbeständig.",
+        "unit": "Gesamtdach",
+        "optionA": {
+          "name": "Option A: Bitumen-Schweißbahnen (2-lagig)",
+          "className": "Kostengünstiger Klassiker",
+          "capex": 14000,
+          "opex0": 450,
+          "maintenanceInterval": 12,
+          "maintenanceCost": 1200,
+          "lifespan": 20,
+          "replacementCost": 14000,
+          "eolCost": 3500,
+          "embodiedCO2": 8500,
+          "operatingCO2": 600,
+          "details": [
+            "UV-Abbau führt zu Versprödung der Bitumenketten nach wenigen Jahrzehnten",
+            "Wärmeeintrag im Sommer erhöht Raumkühllast im Dachgeschoss",
+            "Komplett thermische Sonderabfallentsorgung erforderlich"
+          ]
+        },
+        "optionB": {
+          "name": "Option B: EPDM-Folie & Extensivbegrünung",
+          "className": "Nachhaltiges \"Kühles Dach\" (Cool Roof)",
+          "capex": 26500,
+          "opex0": 100,
+          "maintenanceInterval": 15,
+          "maintenanceCost": 400,
+          "lifespan": 40,
+          "replacementCost": 18000,
+          "eolCost": 800,
+          "embodiedCO2": 2500,
+          "operatingCO2": 150,
+          "details": [
+            "Hervorragende Dehnfähigkeit (&gt; 300%) und brutto UV-Resistenz",
+            "Kühleffekt schützt Abdichtung vor thermischen Spannungsrissen",
+            "Gründach speichert bis zu 70% des jährlichen Niederschlags (Abwassergebühr-Spartat)"
+          ]
+        }
+      }
+    ],
+    "LCC.regelwerke": [
+      {
+        "title": "DIN 18960 (Nutzungskosten im Hochbau)"
+      },
+      {
+        "title": "ISO 15686-5:2017 (Buildings and constructed assets — Service-life planning — Part 5: Life-cycle costing)",
+        "url": "https://www.iso.org/"
+      },
+      {
+        "title": "GEFMA 220 (Lebenszykluskostenrechnung im Facility Management)",
+        "url": "https://www.gefma.de/"
+      }
+    ],
+    "LCC.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Pelzeter, A. (2006): Lebenszykluskosten von Immobilien (Fraunhofer IRB Verlag)",
+      "DGNB Handbuch: Kriterium ENV2.1 / ECO1.1 Lebenszykluskosten"
+    ],
+    "LCC.formeln": [
+      {
+        "formel": "LCC = C_0 + \\sum_{t=1}^N \\frac{C_t}{(1 + r)^t} - \\frac{R_N}{(1 + r)^N}",
+        "erklaerung": "Lebenszykluskosten (Kapitalwert/Net Present Value): Summe aus Anfangsinvestition C_0, diskontierten Betriebskosten/Instandhaltungskosten C_t und abgezinstem Restwert R_N bei Diskontierungsrate r.",
+        "quelle": "ISO 15686-5 / DIN 18960"
+      },
+      {
+        "formel": "q = 1 + \\frac{p}{100} \\implies \\text{RBF}(n, r) = \\frac{(1 + r)^n - 1}{r \\cdot (1 + r)^n}",
+        "erklaerung": "Rentenbarwertfaktor (RBF) zur Abzinsung gleichförmig wiederkehrender jährlicher Instandhaltungs- und Energiekosten über n Nutzungsjahre.",
+        "quelle": "DIN 18960"
+      }
+    ]
+  }
+}

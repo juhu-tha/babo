@@ -1,0 +1,177 @@
+{
+  "texte": {
+    "materialpässeZBMadaster": "Materialpässe (z.B. Madaster) & Urban Mining",
+    "umDenRohstoffverbrauchIm": "Um den Rohstoffverbrauch im Bauwesen zu bremsen, deklarieren **Gebäuderessourcenpässe** (wie der offizielle **DGNB Gebäuderessourcenpass** oder die Madaster-Plattform) alle verbauten Materialien quantitativ und qualitativ. Ein Gebäude wird so nicht länger als Einwegstruktur, sondern als wertvolles **Rohstoffdepot für die Zukunft (Urban Mining Depot)** bewertet.",
+    "zweckEinesMaterialpasses": "Zweck eines Materialpasses",
+    "ressourcentransparenzLückenloseDokumenta": "**Ressourcentransparenz:** Lückenlose Dokumentation der Bauteile (Bill of Material, BOM).",
+    "zirkuläresPotenzialGenaueAngabe": "**Zirkuläres Potenzial:** Genaue Angabe, ob Werkstoffe geklebt oder zerstörungsfrei demontierbar sind.",
+    "gebäudeRestwertErmittlungDes": "**Gebäude-Restwert:** Ermittlung des ökonomischen Werts der Rohstoffe für den Tag des Rückbaus.",
+    "klimaschutznachweisBasisFürDgnb": "**Klimaschutznachweis:** Basis für DGNB-Zertifizierungen und den im Koalitionsvertrag 2021 angekündigten digitalen Gebäuderessourcenpass (bislang nicht gesetzlich eingeführt; Stand 10/2026, manuell prüfen).",
+    "dieMadasterPlattform": "Die Madaster-Plattform",
+    "einGebäudeWirdAls": "Ein Gebäude wird als 3D-BIM-Datensatz (meist offene IFC-Dateien) hochgeladen.",
+    "dasPortalBerechnetDen": "Das Portal berechnet den herstellerübergreifenden **Circularity Indicator (CI)** der Rohstoffe.",
+    "derFinaleMaterialpassWeiß": "Der finale Materialpass weiß genau, wie viel % der Masse wiederverwendet, recycelt, verbrannt oder deponiert wird.",
+    "bauherrenKönnenRestwertSzenarien": "Bauherren können Restwert-Szenarien entwerfen und mit Rohstoffbörsen koppeln.",
+    "dgnbGebäuderessourcenpass": "DGNB Gebäuderessourcenpass",
+    "steckbriefVorgabenOrientiertAm": "**Steckbrief-Vorgaben:** Orientiert am standardisierten Berichtsformat des DGNB-Ressourcenpasses.",
+    "massenBilanzierungGenaueAufteilung": "**Massen-Bilanzierung:** Genaue Aufteilung nach Stoffgruppen, nachwachsenden (biogenen) & mineralischen Massen.",
+    "rückbauklassenDetailliertesTrackingDer": "**Rückbauklassen:** Detailliertes Tracking der Kreislauffähigkeit und Recycling-Quoten (Modul D).",
+    "anrechnungFörderungErfülltKriterien": "**Anrechnung Förderung:** Erfüllt Kriterien für das Qualitätssiegel Nachhaltiges Gebäude (QNG/KFN).",
+    "interaktiverKreislaufRestwertrechnerUrba": "Interaktiver Kreislauf- & Restwertrechner (Urban Mining Lab)",
+    "entwerfenUndOptimierenSie": "Entwerfen und optimieren Sie die Circularity und Entsorgungsbilanz Ihres Gebäudes in Echtzeit.",
+    "madasterApiSim": " Madaster API-Sim",
+    "t1GebäudeSzenarioWählen": "1. Gebäude-Szenario wählen:",
+    "bruttogrundflächeBgf": "Bruttogrundfläche (BGF):",
+    "skaliertDieGesamteVerbaute": "Skaliert die gesamte verbaute Rohstoffmasse proportional hoch.",
+    "recyceltesMaterialInput": "Recyceltes Material (Input %):",
+    "anteilAnRecyclatenOder": "Anteil an Recyclaten oder wiederverwendeten Bauteilen beim Baubeginn.",
+    "t2KonstruktiveVerbindungsmethodeFügung": "2. Konstruktive Verbindungsmethode (Fügung):",
+    "ergebnisMetrik1": "Ergebnis-Metrik 1",
+    "circularityIndicatorCi": "Circularity Indicator (CI)",
+    "ergebnisMetrik2": "Ergebnis-Metrik 2",
+    "urbanMiningRestwert": "Urban Mining Restwert",
+    "dgnbTec16": "DGNB TEC 1.6 Zirkuläres Bauen Score",
+    "automatisierteEinstufungFürDen": "Automatisierte Einstufung für den DGNB Gebäuderessourcenpass.",
+    "dgnbStatus": "DGNB STATUS:",
+    "passAnsehen": "Pass ansehen",
+    "massenbilanzMaterialinventar": "Massenbilanz & Materialinventar:",
+    "coSpeicher": "🌳 CO₂-Speicher: -",
+    "nutzholzBshBiogen": "Nutzholz / BSH (Biogen):",
+    "kupferleitungenMetalle": "Kupferleitungen & Metalle:",
+    "umsetzungshinweisHebelZurOptimierung": "Umsetzungshinweis & Hebel zur Optimierung:",
+    "problemStarrerVerbundwerkstoffeVerklebun": "⚠️ **Problem starrer Verbundwerkstoffe (Verklebung):** Zement und Dämmungen sind untrennbar verschmolzen. Beim Abbruch führt dies zu hohem Deponiemüll (Bauschuttklasse 17 01 07), was erhebliche **Deponiekosten** nach sich zieht, statt wertvolle Zirculate zu liefern.",
+    "primärrohstoffDominanzSieNutzen": "💡 **Primärrohstoff-Dominanz:** Sie nutzen extrem viele Jungfräuliche (Virgin) Baustoffe. Versuchen Sie, den **Recycling-Beton-Anteil** (RC-Zuschläge) zu erhöhen oder das Tragwerk in Holzbauweise zu planen, um wertvolle CO₂-Gegenbuchungen im Cradle-to-Grave Lebenszyklus (Modul D) zu verbuchen.",
+    "echterDesignForDisassembly": "✅ **Echter Design-for-Disassembly Ansatz:** Durch zerstörungsfreie, schraubbare Fugenverbindungen können die Bauelemente am Ende der Nutzungsdauer einfach wie Legobausteine demontiert und an anderen Objekten verbaut werden (Urban Mining Quotient maximiert!).",
+    "praxisbezugFürDieLehre": "Praxisbezug für die Lehre:",
+    "dieErstellteMassenbilanzBildet": " Die erstellte Massenbilanz bildet das Kernstück für die automatisierte Übertragung in Madaster via IFC. Jedes Kilo Material erhält einen RFID-/QR-Zulassungscode, um Diebstahl und unkontrollierten Verlust im Urban Mining Kreislauf auszuschließen.",
+    "gebäuderessourcenpassGrp": "Gebäuderessourcenpass (GRP)",
+    "offiziellesDgnbBerichtsformatEntwurf": "OFFIZIELLES DGNB-BERICHTSFORMAT (ENTWURF)",
+    "grpDeutschland": "GRP DEUTSCHLAND",
+    "registrierIdGrp2026": "Registrier-ID: GRP-2026-",
+    "dgnbTec162": "DGNB TEC 1.6",
+    "ressourcenpassFürGebäude": "Ressourcenpass für Gebäude",
+    "t1Gebäudestammdaten": "1. Gebäudestammdaten",
+    "bomMassenTakeOff": "BOM (Massen-Take-Off)",
+    "bruttogrundflächeBgf2": "Bruttogrundfläche (BGF): ",
+    "konstruktiveFügung": "Konstruktive Fügung: ",
+    "t2ZirkuläreQualitätsbewertung": "2. Zirkuläre Qualitätsbewertung",
+    "circularityCi": "Circularity (CI)",
+    "urbanMiningWert": "Urban Mining Wert",
+    "inHolzMasse": "In Holz-Masse",
+    "t3VerbauteRohstoffmassen": "3. Verbaute Rohstoffmassen",
+    "stoffgruppeHauptgruppe": "Stoffgruppe (Hauptgruppe)",
+    "rückbaubarkeitOutput": "Rückbaubarkeit (Output)",
+    "normalbetonC3037": "Normalbeton C30/37",
+    "tragwerksstahlHebB500": "Tragwerksstahl (HEB/B500)",
+    "brettschichtholzNadelholz": "Brettschichtholz (Nadelholz)",
+    "kupferHaustechnikmetalle": "Kupfer & Haustechnikmetalle",
+    "dieBerechnungenDiesesRessourcenpasses": "Die Berechnungen dieses Ressourcenpasses stützen sich auf die standardisierte Kriterienmatrix **DGNB Kriterium TEC 1.6** sowie auf den Material Circularity Indicator (Ellen MacArthur Foundation, z. B. in Madaster). Eine gesetzliche Pflicht zu Material- oder Gebäuderessourcenpässen besteht derzeit nicht; das Gebäudemodernisierungsgesetz (GModG) regelt energetische Anforderungen, keine Materialpässe.",
+    "grpDruckenPdf": "GRP Drucken / PDF"
+  },
+  "werte": {
+    "szenarioAMassivbauBeton": "Szenario A: Massivbau (Beton/Stahl)",
+    "konventionellesBürogebäudeAusOrtbeton": "Konventionelles Bürogebäude aus Ortbeton C30/37 mit hohem Stahlanteil. Tragende Bauteile sind nass vergossen und starr miteinander verbunden.",
+    "szenarioBHolzHybridbauweise": "Szenario B: Holz-Hybridbauweise",
+    "tragwerkAusBrettschichtholzStützen": "Tragwerk aus Brettschichtholz-Stützen und -Trägern. Decken als Holz-Beton-Verbundelemente (HBV) ausgeführt. Verbindungsmittel sind trennbar geklemmt/geschraubt.",
+    "szenarioCCradleTo": "Szenario C: Cradle-to-Cradle Vision",
+    "konsequenteKreislaufarchitekturFundament": "Konsequente Kreislaufarchitektur: Fundamente aus Geopolymer-Recyclingbeton, Holzstützen aus regionaler Forstwirtschaft, zerlegbare Trockenbau-Klimaschallwände, wiederverwendbare Stahlträger.",
+    "starrVerklebt": "Starr verklebt",
+    "nassvergussKleber": "Nassverguss / Kleber",
+    "trockenGeschraubt": "Trocken geschraubt",
+    "zerstörungsfreiDemontierbar": "Zerstörungsfrei demontierbar",
+    "mittelwertAusRezyklierterHerkunft": "Mittelwert aus rezyklierter Herkunft (Input) und der dekonstruktiven Rückbau-Zerlegbarkeit (Output).",
+    "sehrGuterZirkulärerEntwurf": "Sehr guter zirkulärer Entwurf! Voll konform mit Cradle-to-Cradle Grundsätzen.",
+    "guterBranchenstandardAberMaterialbedingt": "Guter Branchenstandard, aber materialbedingt noch Optimierungsreserven.",
+    "klassischesLinearwirtschaftGebäudeSchwer": "Klassisches Linearwirtschaft-Gebäude. Schwer trennbarer Baubestaub (\"Grauer Müll\").",
+    "geschätzteÖkonomischeWertschöpfungDer": "Geschätzte ökonomische Wertschöpfung der Sekundärrohstoffe beim kontrollierten Rückbau abzüglich Entsorgungs- und Deponiekosten.",
+    "deponiegebührenÜbersteigenDenRohstofferl": "Deponiegebühren übersteigen den Rohstofferlös! Aufgrund starrer Nassverklebung.",
+    "positiverRohstoffwertDasGebäude": "Positiver Rohstoffwert! Das Gebäude fungiert als werthaltige Rohstoffbank.",
+    "geringeKreislaufEffizienz": "Geringe Kreislauf-Effizienz",
+    "zerstörungsfreiTrocken": "Zerstörungsfrei trocken",
+    "klassischNassStarr": "Klassisch nass starr",
+    "beispiel1MassenbezogeneRecyclingquote": "Beispiel 1: Massenbezogene Recyclingquote eines Gebäudes",
+    "dieHoheQuoteWird": "Die hohe Quote wird vom Beton dominiert, der meist zu Gesteinskörnung recycelt wird (Downcycling). Für die Bewertung der Kreislauffähigkeit zählen deshalb auch Wiederverwendbarkeit und Lösbarkeit der Verbindungen.",
+    "dgnbKriteriumTec1": "DGNB-Kriterium TEC 1.6; ISO 20887",
+    "beispiel2MaterialCircularity": "Beispiel 2: Material Circularity Indicator für ein Bauteil",
+    "derMciIstEin": "Der MCI ist ein Indikator der Ellen MacArthur Foundation, den Plattformen wie Madaster verwenden; er ist keine gesetzliche Kenngröße.",
+    "ellenMacarthurFoundationCircularity": "Ellen MacArthur Foundation: Circularity Indicators (2015/2019)",
+    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: falsche GModG-Pflichtaussage und Platzhaltertext entfernt, MCI/UMI-Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "urbanMining": "Urban Mining"
+  },
+  "daten": {
+    "Materialpaesse.schritte": [
+      {
+        "titel": "Massen und Quoten",
+        "erklaerung": "Beton 300 t (r = 0,90), Stahl 20 t (0,95), Gips 5 t (0,60), Verbundbauteile 2 t (0):",
+        "formel": "\\sum m_i r_i = 270 + 19 + 3 + 0 = 292\\,\\text{t}"
+      },
+      {
+        "titel": "Gesamtmasse",
+        "erklaerung": "Summe:",
+        "formel": "\\sum m_i = 327\\,\\text{t}"
+      },
+      {
+        "titel": "Quote",
+        "erklaerung": "Einsetzen:",
+        "formel": "R_{rec} = \\frac{292}{327} = 0{,}893 = 89{,}3\\,\\%"
+      }
+    ],
+    "Materialpaesse.schritte_2": [
+      {
+        "titel": "Linearer Fluss",
+        "erklaerung": "Rezyklatanteil 30 %, Verwertung am Lebensende 70 %:",
+        "formel": "LFI = \\frac{0{,}70 + 0{,}30}{2} = 0{,}50"
+      },
+      {
+        "titel": "Nutzungsfaktor",
+        "erklaerung": "Nutzungsdauer gleich Branchendurchschnitt:",
+        "formel": "F(X) = \\frac{0{,}9}{1} = 0{,}9"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Einsetzen:",
+        "formel": "MCI = 1 - 0{,}50 \\cdot 0{,}9 = 0{,}55"
+      }
+    ],
+    "Materialpaesse.regelwerke": [
+      {
+        "title": "DGNB Kriterium TEC 1.6 (Rückbaufreundlichkeit und Kreislaufwirtschaft)",
+        "url": "https://www.dgnb.de/"
+      },
+      {
+        "title": "DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)"
+      },
+      {
+        "title": "ISO 20887:2020 (Design for disassembly and adaptability)",
+        "url": "https://www.iso.org/"
+      },
+      {
+        "title": "EU-Taxonomie, Delegierte Verordnung (EU) 2021/2139, Tätigkeit 7.1/7.2 (Kreislaufkriterien bei Neubau und Renovierung)",
+        "url": "https://finance.ec.europa.eu/"
+      }
+    ],
+    "Materialpaesse.literatur": [
+      "DGNB e.V.: Gebäuderessourcenpass – Leitfaden zur Erstellung und Kriterienkatalog (2023)",
+      "Ellen MacArthur Foundation; Granta Design: Circularity Indicators – Methodology (2015, aktualisiert 2019)",
+      "Hillebrandt, A.; Riegler-Floors, P.; Rosen, A.; Seggewies, J.-K.: Atlas Recycling – Gebäude als Materialressource. München: Detail 2018",
+      "Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR): Zirkuläres Bauen im Bestand"
+    ],
+    "Materialpaesse.formeln": [
+      {
+        "formel": "\\text{MCI} = 1 - \\text{LFI} \\cdot F(X)",
+        "erklaerung": "Material Circularity Indicator (MCI) nach Ellen MacArthur Foundation / Madaster zur Quantifizierung des Zirkularitätsgrads (0 = linear, 1 = vollständig zirkulär).",
+        "quelle": "Ellen MacArthur Foundation / Madaster"
+      },
+      {
+        "formel": "R_{\\text{rec}} = \\frac{\\sum (m_i \\cdot r_i)}{\\sum m_i} \\cdot 100\\,\\%",
+        "erklaerung": "Massenbezogene Recyclierbarkeitsquote der Primärkonstruktion bei Gebäudeabbruch unter Berücksichtigung der Trennbarkeit.",
+        "quelle": "DGNB Kriterium TEC 1.6"
+      },
+      {
+        "formel": "\\text{UMI} = \\frac{\\sum (m_{i,\\text{rück}} \\cdot c_{\\text{lös},i})}{\\sum m_{i,\\text{gesamt}}} \\cdot 100\\,\\%",
+        "erklaerung": "Urban Mining Index (UMI): Prozentualer Anteil der qualitativ kreislauffähig rückgewinnbaren Baustoffe unter Bewertung des Lösbarkeitskoeffizienten.",
+        "quelle": "Rosen, A.: Urban Mining Index (Dissertation, Bergische Universität Wuppertal 2020)"
+      }
+    ]
+  }
+}

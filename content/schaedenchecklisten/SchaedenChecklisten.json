@@ -1,0 +1,147 @@
+{
+  "texte": {
+    "checklistenBauschadensdiagnostikBauaufna": " Checklisten: Bauschadensdiagnostik & Bauaufnahme",
+    "systematischePrüflistenFürSachverständig": "Systematische Prüflisten für Sachverständige, Gutachter und Bauleiter: Von der optischen Riss- und Hohlstellenkartierung über moderne zerstörungsfreie Prüfverfahren (ZfP) bis hin zur beweissichernden Dokumentation und VDI-6200-Standsicherheitsprüfung."
+  },
+  "werte": {
+    "t1SchadensdiagnoseBauaufnahme": "1. Schadensdiagnose & Bauaufnahme",
+    "vorbereitungDokumentationDesSchadensausm": "Vorbereitung, Dokumentation des Schadensausmaßes und Feststellung der Schadensursachen vor Ort.",
+    "unterlagenVorabSichten": "Unterlagen vorab sichten",
+    "bauwerksbuchBestandspläneStatikFrühere": "Bauwerksbuch, Bestandspläne, Statik, frühere Prüfberichte und Nutzungsänderungen beschaffen und auswerten.",
+    "vdi6200Bauwerksbuch": "VDI 6200 (Bauwerksbuch)",
+    "arbeitsschutzUndSchadstoffverdachtVor": "Arbeitsschutz und Schadstoffverdacht vor Bauteilöffnung",
+    "beiBaujahrVor1993": "Bei Baujahr vor 1993 Asbest, PCB und PAK als Verdacht prüfen; Schutzmaßnahmen vor dem Öffnen von Bauteilen festlegen.",
+    "gefstoffvTrgs519524": "GefStoffV / TRGS 519, 524",
+    "verkehrssicherungBeiHerabfallendenTeilen": "Verkehrssicherung bei herabfallenden Teilen, Absperrungen und Notabstützungen prüfen, bevor die eigentliche Aufnahme beginnt.",
+    "t823BgbLbo": "§ 823 BGB / LBO",
+    "risskartierungRissbreitenmessung": "Risskartierung & Rissbreitenmessung",
+    "vollständigeGrafischeAufzeichnungAller": "Vollständige grafische Aufzeichnung aller Risse, Unterscheidung von oberflächennahen Schwindrissen zu strukturprägenden Trennrissen mittels Risslupe bzw. Rissbreitenmaßstab.",
+    "trInstandhaltungDibt": "TR Instandhaltung (DIBt)",
+    "fotodokumentationMitRandbedingungen": "Fotodokumentation mit Randbedingungen",
+    "fotosMitMaßstabDatum": "Fotos mit Maßstab, Datum und Planbezug; Witterung, Bauteiltemperatur und relative Luftfeuchte bei der Aufnahme protokollieren.",
+    "hohlstellenUndAbplatzungsortung": "Hohlstellen- und Abplatzungsortung",
+    "abklopfenDerBetonoberflächeMit": "Abklopfen der Betonoberfläche mit einem leichten Hammer zur Identifizierung verdeckter Delaminationen infolge korrodierender Bewehrung.",
+    "trInstandhaltungDin1076": "TR Instandhaltung / DIN 1076:2026-01",
+    "karbonatisierungstiefeMesstechnischBeurt": "Karbonatisierungstiefe messtechnisch beurteilen",
+    "auftragenEinerPhenolphthaleinLösung": "Auftragen einer Phenolphthalein-Lösung auf frische Bruch- oder Bohrkernflächen zur Sichtbarmachung des pH-Wert-Abfalls.",
+    "dinEn14630": "DIN EN 14630",
+    "schichtenweisesAbbohrenVonBetonmehl": "Schichtenweises Abbohren von Betonmehl (z. B. 0–15, 15–30, 30–50 mm) und Bestimmung des Chloridgehalts bezogen auf Zement. Orientierung: < 0,2 unkritisch, 0,2–0,5 Beobachtung, ≥ 0,5 M.-% Korrosion wahrscheinlich – Einzelfallbewertung.",
+    "dinEn14629Tr": "DIN EN 14629 / TR Instandhaltung",
+    "zerstörungsfreieMessungAlsVorscan": "Zerstörungsfreie Messung als Vorscan, Darr- bzw. CM-Methode als Referenz.",
+    "dinEnIso12570": "DIN EN ISO 12570",
+    "verformungsUndDurchbiegungsmessung": "Verformungs- und Durchbiegungsmessung",
+    "nivellementOderTachymetrieAn": "Nivellement oder Tachymetrie an maßgebenden Bauteilen, Vergleich mit Soll-Geometrie und Vorwerten.",
+    "vermessungVdi6200": "Vermessung / VDI 6200",
+    "probenahmeMitProtokoll": "Probenahme mit Protokoll",
+    "probenahmeprotokollOrtTiefeVerfahren": "Probenahmeprotokoll (Ort, Tiefe, Verfahren, Lagerung) führen und Rückstellproben aufbewahren.",
+    "dinEn125041": "DIN EN 12504-1 / Laborpraxis",
+    "t2ZerstörungsfreiePrüfungSensorik": "2. Zerstörungsfreie Prüfung & Sensorik",
+    "messtechnischeTiefenanalyseUndRissüberwa": "Messtechnische Tiefenanalyse und Rissüberwachung an geschädigten Bauteilen.",
+    "potentialfeldmessungZurKorrosionsortung": "Potentialfeldmessung zur Korrosionsortung",
+    "zerstörungsfreieLokalisierungAktiverBewe": "Zerstörungsfreie Lokalisierung aktiver Bewehrungskorrosionsherde auf der Bauteiloberfläche mittels Kupfersulfat-Halbzelle (CSE).",
+    "dgzfpMerkblattB03": "DGZfP-Merkblatt B 03 (2025)",
+    "rissmarkenQualitativ": "Rissmarken (qualitativ)",
+    "gipsmarkenOderGlasplättchenZeigen": "Gipsmarken oder Glasplättchen zeigen nur, ob sich ein Riss bewegt – keine Messwerte.",
+    "rissmonitoreLvdtMitTemperaturmessung": "Rissmonitore / LVDT mit Temperaturmessung (quantitativ)",
+    "induktiveWegaufnehmerOderRissmonitore": "Induktive Wegaufnehmer oder Rissmonitore mit gleichzeitiger Bauteiltemperaturmessung, um thermische von lastbedingten bzw. fortschreitenden Rissbewegungen zu trennen.",
+    "vdi6200Bauwerksmonitoring": "VDI 6200 / Bauwerksmonitoring",
+    "bohrwiderstandsmessungResistographBeiHol": "Bohrwiderstandsmessung (Resistograph) bei Holz",
+    "prüfungVerdeckterHolzfäuleIn": "Prüfung verdeckter Holzfäule in Balkenauflagern und Stützenfüßen mittels feiner Bohrnadel (Ø ca. 1,5–3 mm); Auswertung relativ (Profilvergleich), Pilzart nur über Laboranalyse.",
+    "din688004Verfahren": "DIN 68800-4 (Verfahren nicht genormt)",
+    "endoskopischeHohlrauminspektion": "Endoskopische Hohlrauminspektion",
+    "minimalinvasiveOptischeUntersuchungVon": "Minimalinvasive optische Untersuchung von Hohlschichten, Spannkanälen und Deckenhohlräumen über 8–10 mm Bohrungen.",
+    "dgzfpMerkblattB06": "DGZfP-Merkblatt B 06",
+    "t3BeweissicherungSchadenskataster": "3. Beweissicherung & Schadenskataster",
+    "beweissicherndeDokumentationNachVob": "Beweissichernde Dokumentation nach VOB/B, BGB und Sachverständigenstandard.",
+    "strukturiertesSchadenskatasterAnlegen": "Strukturiertes Schadenskataster anlegen",
+    "tabellarischeErfassungAllerMängel": "Tabellarische Erfassung aller Mängel & Schäden mit eindeutiger Bauteil-ID, Planverortung, Fotoreferenz und Abmessungen; Zustandsfeststellung nach § 650g BGB nutzen.",
+    "vobB4Abs": "VOB/B § 4 Abs. 7, § 13 / BGB § 650g",
+    "beweissicherungVorNachbarbebauung": "Beweissicherung vor Nachbarbebauung",
+    "vollständigeVisuelleUndMesstechnische": "Vollständige visuelle und messtechnische Zustandserfassung von Nachbargebäuden vor Ramm-, Bohr- oder Wasserhaltungsarbeiten; ggf. selbstständiges Beweisverfahren (§§ 485 ff. ZPO).",
+    "din4123Din4150": "DIN 4123 / DIN 4150-2, -3",
+    "abgrenzungPlanungsVsAusführungsfehler": "Abgrenzung Planungs- vs. Ausführungsfehler",
+    "fachlichePrüfungObDer": "Fachliche Prüfung, ob der Schaden auf unzureichende Planung (z. B. fehlende Dehnfugen) oder einen Ausführungsfehler zurückzuführen ist.",
+    "bgb633VobB": "BGB § 633 / VOB/B § 13",
+    "ursachenhypothesenUndAbgrenzung": "Ursachenhypothesen und Abgrenzung",
+    "ursachenhypothesenDokumentierenUndMangel": "Ursachenhypothesen dokumentieren und Mangel, Schaden und hinzunehmende Unregelmäßigkeit voneinander abgrenzen.",
+    "t4StandsicherheitsbewertungVdi6200": "4. Standsicherheitsbewertung (VDI 6200)",
+    "bewertungDesBauwerkszustandsUnd": "Bewertung des Bauwerkszustands und Sofortmaßnahmen zur Gefahrenabwehr.",
+    "bewertungUndZustandsnoteDokumentieren": "Bewertung und Zustandsnote dokumentieren",
+    "bewertungUndZustandsnoteNach": "Bewertung und Zustandsnote nach VDI 6200 Blatt 1.1:2026-06 (Musterprüfbericht) dokumentieren, mit Maßnahmenempfehlung und Frist.",
+    "vdi6200Blatt1": "VDI 6200 Blatt 1.1",
+    "sofortigeNotsicherungVeranlassen": "Sofortige Notsicherung veranlassen",
+    "beiGefahrFürLeib": "Bei Gefahr für Leib und Leben (schlechteste Bewertungsstufe): Nutzungsbeschränkung bzw. Absperrung, Information des Eigentümers und ggf. der Bauaufsicht (Art. 54 BayBO / § 58 MBO), Notabstützung.",
+    "lboGefahrenabwehr": "LBO (Gefahrenabwehr)",
+    "verkehrssicherheitsprüfungProtokollieren": "Verkehrssicherheitsprüfung protokollieren",
+    "prüfberichtMitFristsetzungFür": "Prüfbericht mit Fristsetzung für vertiefte statische Nachrechnungen und Gutachten erstellen. RÜV: Richtlinie für die Überwachung der Verkehrssicherheit von baulichen Anlagen des Bundes (BMVBS 2008, nur Bundesbauten); ARGEBAU-Hinweise 09/2006.",
+    "vdi6200RüvArgebau": "VDI 6200 / RÜV / ARGEBAU",
+    "kritischZwingend": "Kritisch / Zwingend",
+    "beispiel1IstDer": "Beispiel 1: Ist der Riss aktiv? Auswertung einer Rissmarke",
+    "messungenÜberMindestensEinen": "Messungen über mindestens einen Jahreszyklus mit Temperaturaufzeichnung auswerten; nur ruhende Risse dürfen kraftschlüssig verpresst werden (TR Instandhaltung).",
+    "trInstandhaltungDibtDbv": "TR Instandhaltung (DIBt); DBV-Merkblatt Begrenzung der Rissbildung",
+    "beispiel2FeuchtegehaltEiner": "Beispiel 2: Feuchtegehalt einer Mauerwerksprobe (Darrmethode)",
+    "erstDerDurchfeuchtungsgradErlaubt": "Erst der Durchfeuchtungsgrad erlaubt den Vergleich verschiedener Baustoffe. Gips- oder salzhaltige Proben können bei 105 °C Kristallwasser verlieren – dann bei 40 °C trocknen.",
+    "wtaMerkblatt411": "WTA-Merkblatt 4-11",
+    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: Referenzen VOB/B 2016, BGB, DIN 1076:2026-01, VDI 6200 geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "zerstörungsfreiePrüfungImBauwesen": "Zerstörungsfreie Prüfung im Bauwesen"
+  },
+  "daten": {
+    "SchaedenChecklisten.schritte": [
+      {
+        "titel": "Messung",
+        "erklaerung": "Rissbreite bei Setzen der Marke 0,20 mm, nach sechs Monaten 0,26 mm:",
+        "formel": "\\Delta w = 0{,}06\\,\\text{mm}"
+      },
+      {
+        "titel": "Rate",
+        "erklaerung": "Bezogen auf ein Jahr:",
+        "formel": "\\dot{w} = \\frac{0{,}06}{0{,}5} = 0{,}12\\,\\text{mm/a}"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Bewegung über die jahreszeitliche Schwankung hinaus deutet auf eine aktive Ursache:",
+        "formel": "\\dot{w} > 0 \\Rightarrow \\text{Ursache klären, vor Verpressen}"
+      }
+    ],
+    "SchaedenChecklisten.schritte_2": [
+      {
+        "titel": "Wägung",
+        "erklaerung": "Bohrmehlprobe feucht 85,0 g, nach Trocknung bei 105 °C 80,2 g:",
+        "formel": "m_f = 85{,}0\\,\\text{g}, \\; m_d = 80{,}2\\,\\text{g}"
+      },
+      {
+        "titel": "Feuchtegehalt",
+        "erklaerung": "Massebezogen:",
+        "formel": "u_m = \\frac{85{,}0 - 80{,}2}{80{,}2} \\cdot 100 = 6{,}0\\,\\%"
+      },
+      {
+        "titel": "Durchfeuchtungsgrad",
+        "erklaerung": "Bei einer maximalen Wasseraufnahme von 15,0 M.-%:",
+        "formel": "DFG = \\frac{6{,}0}{15{,}0} = 40\\,\\%"
+      }
+    ],
+    "SchaedenChecklisten.literatur": [
+      "Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag",
+      "Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg",
+      "Lohmeyer, G.; Ebeling, K.: Weiße Wannen einfach und sicher. Verlag Bau+Technik"
+    ],
+    "SchaedenChecklisten.regelwerke": [
+      {
+        "title": "VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06",
+        "url": "https://www.vdi.de/"
+      },
+      {
+        "title": "DGZfP-Merkblätter (Zerstörungsfreie Prüfungen im Bauwesen)",
+        "url": "https://www.dgzfp.de/"
+      },
+      {
+        "title": "VOB/B (Fassung 2016, weiterhin gültig) § 13 Mängelansprüche",
+        "url": "https://www.bauprofessor.de/vob/"
+      },
+      {
+        "title": "BGB §§ 633–634a (Mängelrechte und Verjährung beim Werkvertrag)",
+        "url": "https://www.gesetze-im-internet.de/bgb/__634a.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "texte": {
+    "potentialmessungHalfCell": "Potentialmessung (Half-cell)",
+    "betonwiderstandWennerSonde": "Betonwiderstand (Wenner-Sonde)",
+    "das4PunktWenner": "Das 4-Punkt Wenner-Sonden-Verfahren misst den spezifischen elektrischen Widerstand $\\rho$. Dies korreliert mit der Durchfeuchtung und der Korrosionsgeschwindigkeit im Beton.",
+    "spezifischerElektrischerWiderstand": "Spezifischer elektrischer Widerstand"
+  },
+  "werte": {
+    "gemessenesPotential": "Gemessenes Potential",
+    "elektrodenabstandA": "Elektrodenabstand (a)",
+    "gleichmäßigerAbstandZwischenDen": "Gleichmäßiger Abstand zwischen den 4 Messnadeln.",
+    "elektrolytwiderstandR": "Elektrolytwiderstand (R)",
+    "gemessenerWiderstandswertZwischenDen": "Gemessener Widerstandswert zwischen den Innenelektroden."
+  }
+}

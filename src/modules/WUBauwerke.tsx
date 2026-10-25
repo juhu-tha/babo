@@ -20,6 +20,8 @@ import {
   Legend,
   type TooltipItem
 } from 'chart.js';
+import inhalt from '@/content/wubauwerke/WUBauwerke.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -121,11 +123,11 @@ export default function WUBauwerke() {
     },
     scales: {
       x: {
-        title: { display: true, text: 'Bauteildicke h (mm)', font: { size: 11, weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.bauteildickeHMm, font: { size: 11, weight: 'bold' as const } },
         grid: { color: 'rgba(0,0,0,0.05)' }
       },
       y: {
-        title: { display: true, text: 'Druckgefälle I = h_w / h [-]', font: { size: 11, weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.druckgefälleIHW, font: { size: 11, weight: 'bold' as const } },
         grid: { color: 'rgba(0,0,0,0.05)' },
         beginAtZero: true
       },
@@ -139,22 +141,16 @@ export default function WUBauwerke() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Droplets className="text-shiraz" /> Wasserundurchlässige Bauwerke (WU-Richtlinie &amp; Weiße Wanne)
-            </h2>
-            <p className="text-xs text-text-main/70 mt-1">
-              Bemessung, Entwurfsgrundsätze (a/b/c), Fugenabdichtungen, Betontechnologie und autogene Rissheilung nach DAfStb-Richtlinie (2017-12) &amp; DIN EN 1992-1-1
-            </p>
+              <Droplets className="text-shiraz" /><MdText text={inhalt.texte.wasserundurchlässigeBauwerkeWuRichtlinie} /></h2>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.bemessungEntwurfsgrundsätzeAB} /></p>
           </div>
           <div className="flex items-center gap-2 bg-rose-50 border border-shiraz/20 px-3 py-1.5 rounded-xl text-xs font-semibold text-shiraz shrink-0">
-            <ShieldCheck size={16} /> DIN EN 1992-1-1 / DAfStb WU
-          </div>
+            <ShieldCheck size={16} /><MdText text={inhalt.texte.dinEn19921} /></div>
         </div>
 
         {/* Kurzbeschreibung */}
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
-          <p>
-            Wasserundurchlässige Baukörper aus Beton (<strong>Weiße Wanne</strong>) übernehmen in einem Arbeitsgang sowohl die <strong>tragende statische Funktion</strong> als auch die <strong>wasserundurchlässige Barrierefunktion</strong> ohne zusätzliche Außenhautabdichtung. Die Dichtigkeit wird durch einen Verbund aus rissminimierendem Tragwerksentwurf, normativer Mindestbauteildicke, Begrenzung der Trennrissbreiten (<InlineMath math="w_k" />), hochdichtem Beton (<InlineMath math="w/z \le 0{,}55" />) und lückenlosen Fugenabdichtungssystemen garantiert.
-          </p>
+          <p><MdText text={inhalt.texte.wasserundurchlässigeBaukörperAusBeton} /></p>
         </div>
 
         {/* Tab-Navigation */}
@@ -167,8 +163,7 @@ export default function WUBauwerke() {
             }`}
             onClick={() => setActiveTab('rechner')}
           >
-            <Gauge size={16} /> 1. Rechner &amp; Nachweise
-          </button>
+            <Gauge size={16} /><MdText text={inhalt.texte.t1RechnerNachweise} /></button>
           <button aria-pressed={activeTab === 'entwurf'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'entwurf'
@@ -177,8 +172,7 @@ export default function WUBauwerke() {
             }`}
             onClick={() => setActiveTab('entwurf')}
           >
-            <Compass size={16} /> 2. Entwurfsgrundsätze (a, b, c)
-          </button>
+            <Compass size={16} /><MdText text={inhalt.texte.t2EntwurfsgrundsätzeAB} /></button>
           <button aria-pressed={activeTab === 'fugen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'fugen'
@@ -187,8 +181,7 @@ export default function WUBauwerke() {
             }`}
             onClick={() => setActiveTab('fugen')}
           >
-            <Layers size={16} /> 3. Fugenplanung &amp; Dichtsysteme
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.t3FugenplanungDichtsysteme} /></button>
           <button aria-pressed={activeTab === 'beton'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'beton'
@@ -197,8 +190,7 @@ export default function WUBauwerke() {
             }`}
             onClick={() => setActiveTab('beton')}
           >
-            <Cpu size={16} /> 4. Betontechnologie &amp; Selbstheilung
-          </button>
+            <Cpu size={16} /><MdText text={inhalt.texte.t4BetontechnologieSelbstheilung} /></button>
           <button aria-pressed={activeTab === 'typen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'typen'
@@ -207,8 +199,7 @@ export default function WUBauwerke() {
             }`}
             onClick={() => setActiveTab('typen')}
           >
-            <BookOpen size={16} /> 5. Wannen-Typen im Vergleich
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.t5WannenTypenIm} /></button>
         </div>
 
         {/* TAB 1: RECHNER & NACHWEISE */}
@@ -219,16 +210,15 @@ export default function WUBauwerke() {
               <div className="flex flex-col gap-6">
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                   <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-shiraz"></span> 1. Klassifizierung (DAfStb WU-Richtlinie)
-                  </h3>
+                    <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1KlassifizierungDafstbWu} /></h3>
 
                   <div className="grid grid-cols-1 gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <label className="text-sm font-semibold text-text-main">Beanspruchungsklasse (BK)</label>
-                        <InfoTooltip text="BK 1: Drückendes und aufstauendes Sickerwasser (Grundwasser, Hochwasser). BK 2: Bodenfeuchte und nichtstauendes Sickerwasser." />
+                        <label className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.beanspruchungsklasseBk} /></label>
+                        <InfoTooltip text={inhalt.werte.bk1DrückendesUnd} />
                       </div>
-                      <select aria-label="Beanspruchungsklasse (BK)"
+                      <select aria-label={inhalt.werte.beanspruchungsklasseBk}
                         className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                         value={bk}
                         onChange={(e) => setBk(e.target.value as '1' | '2')}
@@ -240,10 +230,10 @@ export default function WUBauwerke() {
 
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <label className="text-sm font-semibold text-text-main">Nutzungsklasse (NK)</label>
-                        <InfoTooltip text="NK A: Standard (Wohnräume, Archive, Technikzentralen). Feuchtetransport über den Querschnitt nicht zulässig. NK B: Tiefgaragen, Lagerräume einfacher Art. Feuchtstellen an Fugen/Rissen zulässig." />
+                        <label className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.nutzungsklasseNk} /></label>
+                        <InfoTooltip text={inhalt.werte.nkAStandardWohnräume} />
                       </div>
-                      <select aria-label="Nutzungsklasse (NK)"
+                      <select aria-label={inhalt.werte.nutzungsklasseNk}
                         className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                         value={nk}
                         onChange={(e) => setNk(e.target.value as 'A' | 'B')}
@@ -284,13 +274,12 @@ export default function WUBauwerke() {
 
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                   <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-shiraz"></span> 2. Bauteilgeometrie &amp; Wasserdruck
-                  </h3>
+                    <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2BauteilgeometrieWasserdruck} /></h3>
 
                   <div className="space-y-4">
                     <Slider
-                      label="Wasserdruckhöhe h_w"
-                      info="Höhe des Bemessungswasserstands ab Unterkante Bauteil (aus dem Bodengutachten; Sicherheitszuschlag als Lehrannahme)."
+                      label={inhalt.werte.wasserdruckhöheHW}
+                      info={inhalt.werte.höheDesBemessungswasserstandsAb}
                       min={0}
                       max={12}
                       step={0.5}
@@ -300,8 +289,8 @@ export default function WUBauwerke() {
                     />
 
                     <Slider
-                      label="Vorhandene Bauteildicke h"
-                      info="Gesamtbauteildicke. Elementwände: Kernbeton mindestens 120 mm (Empfehlung WU-Richtlinie 2017-12)."
+                      label={inhalt.werte.vorhandeneBauteildickeH}
+                      info={inhalt.werte.gesamtbauteildickeElementwändeKernbetonM}
                       min={180}
                       max={600}
                       step={10}
@@ -311,8 +300,8 @@ export default function WUBauwerke() {
                     />
 
                     <Slider
-                      label="Rechnerische Rissbreite w_cal"
-                      info="Aus dem Nachweis der Rissbreitenbegrenzung nach DIN EN 1992-1-1 ermittelte Rissbreite w_k."
+                      label={inhalt.werte.rechnerischeRissbreiteWCal}
+                      info={inhalt.werte.ausDemNachweisDer}
                       min={0.05}
                       max={0.35}
                       step={0.01}
@@ -329,25 +318,23 @@ export default function WUBauwerke() {
                 <div className="bg-gradient-to-br from-[#800020] to-[#5a0016] text-white p-6 rounded-2xl shadow-md flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between pb-3 border-b border-white/20 mb-4">
-                      <span className="text-xs font-bold uppercase tracking-wider text-rose-200">
-                        Nachweisergebnis (DAfStb WU-Richtlinie)
-                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-rose-200"><MdText text={inhalt.texte.nachweisergebnisDafstbWuRichtlinie} /></span>
                       <span className={`text-xs px-2.5 py-1 rounded-full font-bold ${
                         results.dickeOk && results.rissbreiteOk ? 'bg-emerald-500 text-white' : 'bg-amber-400 text-slate-900'
                       }`}>
-                        {results.dickeOk && results.rissbreiteOk ? 'Konform' : 'Anpassung erforderlich'}
+                        {results.dickeOk && results.rissbreiteOk ? 'Konform' : inhalt.werte.anpassungErforderlich}
                       </span>
                     </div>
 
                     <div className="space-y-3.5 text-sm">
                       <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                        <span className="text-white/80">Druckgefälle <InlineMath math="I = h_w / h" />:</span>
+                        <span className="text-white/80"><MdText text={inhalt.texte.druckgefälleIHW} /></span>
                         <span className="font-extrabold text-base">{formatDeZahl(results.druckgefaelle, 2)} [-]</span>
                       </div>
 
                       <div className="flex justify-between items-center border-b border-white/10 pb-2">
                         <div>
-                          <span className="text-white/80 block">Mindestbauteildicke <InlineMath math="h_{\min}" />:</span>
+                          <span className="text-white/80 block"><MdText text={inhalt.texte.mindestbauteildickeHMin} /></span>
                           <span className="text-xs text-rose-200">
                             {bauteil} ({bk === '1' ? 'BK 1' : 'BK 2'}, {bauart === 'ortbeton' ? 'Ortbeton' : 'Elementwand'})
                           </span>
@@ -362,9 +349,8 @@ export default function WUBauwerke() {
 
                       <div className="flex justify-between items-center border-b border-white/10 pb-2">
                         <div>
-                          <span className="text-white/80 block">Zulässige Rissbreite <InlineMath math="w_k" />:</span>
-                          <span className="text-xs text-rose-200">
-                            Für Druckgefälle <InlineMath math={`I = ${formatDeZahl(results.druckgefaelle, 1)}`} />
+                          <span className="text-white/80 block"><MdText text={inhalt.texte.zulässigeRissbreiteWK} /></span>
+                          <span className="text-xs text-rose-200"><MdText text={inhalt.texte.fürDruckgefälle} /><InlineMath math={`I = ${formatDeZahl(results.druckgefaelle, 1)}`} />
                           </span>
                         </div>
                         <div className="text-right">
@@ -373,7 +359,7 @@ export default function WUBauwerke() {
                           </span>
                           <span className="text-xs block text-white/70">Zul ≤ {formatDeZahl(results.zulRissbreite, 2)} mm</span>
                           <span className="text-[10px] block text-white/60">
-                            {bk === '2' ? 'BK 2: Orientierungswert nach EC2/NA' : results.selbstheilungMoeglich ? 'Selbstheilung (Grundsatz b)' : 'I > 25: Grundsatz a oder c wählen'}
+                            {bk === '2' ? inhalt.werte.bk2OrientierungswertNach : results.selbstheilungMoeglich ? inhalt.werte.selbstheilungGrundsatzB : inhalt.werte.i25GrundsatzA}
                           </span>
                         </div>
                       </div>
@@ -384,12 +370,12 @@ export default function WUBauwerke() {
                     {results.dickeOk && results.rissbreiteOk ? (
                       <>
                         <CheckCircle2 size={16} className="text-emerald-300 shrink-0" />
-                        <span>Alle Mindestanforderungen an Dichtigkeit und Querschnittsabmessungen sind rechnerisch erfüllt.</span>
+                        <span><MdText text={inhalt.texte.alleMindestanforderungenAnDichtigkeit} /></span>
                       </>
                     ) : (
                       <>
                         <AlertCircle size={16} className="text-amber-300 shrink-0" />
-                        <span>Achtung: Bauteildicke erhöhen oder rechnerische Rissbreite durch verstärkte Zwangsbewehrung reduzieren!</span>
+                        <span><MdText text={inhalt.texte.achtungBauteildickeErhöhenOder} /></span>
                       </>
                     )}
                   </div>
@@ -398,9 +384,7 @@ export default function WUBauwerke() {
                 {/* Grafische Schnittansicht */}
                 <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-2xs">
                   <h3 className="font-bold text-xs uppercase tracking-wider mb-3 text-text-main flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                    Schnittmodell: Wasserdruck &amp; Ungerissener Dichtkern
-                  </h3>
+                    <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.schnittmodellWasserdruckUngerissenerDich} /></h3>
                   <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                     <svg width="100%" height="170" viewBox="0 0 320 170">
                       {/* Wasserstand links */}
@@ -435,7 +419,7 @@ export default function WUBauwerke() {
                       <text x="245" y="75" fontSize="11" fill="#1e293b" fontWeight="bold" textAnchor="middle">Nutzungsbereich</text>
                       <text x="245" y="90" fontSize="10" fill="#64748b" textAnchor="middle">Nutzungsklasse {nk}</text>
                       <text x="245" y="105" fontSize="9" fill={nk === 'A' ? '#15803d' : '#d97706'} textAnchor="middle">
-                        {nk === 'A' ? 'Kein Feuchtedurchtritt' : 'Feuchteflecken toleriert'}
+                        {nk === 'A' ? inhalt.werte.keinFeuchtedurchtritt : inhalt.werte.feuchtefleckenToleriert}
                       </text>
 
                       <defs>
@@ -455,12 +439,8 @@ export default function WUBauwerke() {
             {/* Diagramm über gesamte Breite */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-2xs">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                Druckgefälle <InlineMath math="I = h_w / h" /> in Abhängigkeit von der Wanddicke
-              </h3>
-              <p className="text-xs text-text-main/70 mb-4">
-                Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle <InlineMath math="I" /> maßgeblich die Anforderung an die Rissbreitenbegrenzung. Für die Selbstheilung (Entwurfsgrundsatz b) gilt: <InlineMath math="I \le 10" /> → <InlineMath math="w_k \le 0{,}20\,\text{mm}" />, <InlineMath math="I \le 15" /> → 0,15 mm, <InlineMath math="I \le 25" /> → 0,10 mm (WU-Richtlinie 2017-12). Darüber ist Selbstheilung nicht planbar – Entwurfsgrundsatz a oder c wählen.
-              </p>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.druckgefälleIHW2} /></h3>
+              <p className="text-xs text-text-main/70 mb-4"><MdText text={inhalt.texte.nachDafstbWuRichtlinie} /></p>
               <div className="h-[260px] w-full">
                 <Line data={chartData} options={chartOptions} />
               </div>
@@ -473,11 +453,8 @@ export default function WUBauwerke() {
           <div className="animate-in fade-in duration-300 flex flex-col gap-6">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
               <h3 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                <Compass className="text-shiraz" /> Die 3 grundlegenden Entwurfskonzepte nach DAfStb-Richtlinie
-              </h3>
-              <p>
-                Der Tragwerksplaner muss vor Beginn der Detailplanung in Abstimmung mit dem Bauherrn und dem Betonhersteller eines der drei normierten Entwurfskonzepte für wasserundurchlässige Baukörper festlegen:
-              </p>
+                <Compass className="text-shiraz" /><MdText text={inhalt.texte.die3GrundlegendenEntwurfskonzepte} /></h3>
+              <p><MdText text={inhalt.texte.derTragwerksplanerMussVor} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -490,64 +467,54 @@ export default function WUBauwerke() {
                     </span>
                     <span className="text-xs font-semibold text-slate-500">Rissfrei</span>
                   </div>
-                  <h4 className="text-base font-bold text-text-main mb-2">Vermeidung von Trennrissen</h4>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-4">
-                    Durch konstruktive und betontechnologische Maßnahmen wird das Entstehen von Trennrissen von vornherein vollständig verhindert.
-                  </p>
+                  <h4 className="text-base font-bold text-text-main mb-2"><MdText text={inhalt.texte.vermeidungVonTrennrissen} /></h4>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.durchKonstruktiveUndBetontechnologische} /></p>
                   <ul className="text-xs space-y-2 text-text-main/70">
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Kurze Blocklängen:</strong> Wandabschnitte etwa 6 bis 8 m zwischen Scheinfugen / Dehnfugen (Faustwert).</span>
+                      <span><MdText text={inhalt.texte.kurzeBlocklängenWandabschnitteEtwa} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Niedrigwärmezement:</strong> Zemente CEM III mit LH/VLH zur Senkung der Hydratationswärme (<InlineMath math="\Delta T \le 15\,\text{K}" />).</span>
+                      <span><MdText text={inhalt.texte.niedrigwärmezementZementeCemIii} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Gleitlagerung:</strong> Entkopplung der Bodenplatte durch doppellagige PE-Folien auf Sauberkeitsschicht.</span>
+                      <span><MdText text={inhalt.texte.gleitlagerungEntkopplungDerBodenplatte} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Bewertung:</strong> Extrem hohe Ausführungsdisziplin erforderlich; Rissfreiheit auf der Baustelle nie 100%ig garantierbar.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.bewertungExtremHoheAusführungsdisziplin} /></div>
               </div>
 
               {/* Entwurfsgrundsatz b */}
               <div className="bg-white p-5 rounded-2xl border-2 border-shiraz shadow-xs flex flex-col justify-between relative">
-                <div className="absolute -top-3 right-4 px-2 py-0.5 bg-shiraz text-white text-[10px] font-bold rounded-full uppercase">
-                  Praxis-Standard (Regelfall)
-                </div>
+                <div className="absolute -top-3 right-4 px-2 py-0.5 bg-shiraz text-white text-[10px] font-bold rounded-full uppercase"><MdText text={inhalt.texte.praxisStandardRegelfall} /></div>
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2.5 py-1 rounded-lg bg-shiraz/10 text-shiraz text-xs font-black uppercase">
                       Konzept b
                     </span>
-                    <span className="text-xs font-semibold text-slate-500">Planmäßige Risse</span>
+                    <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.planmäßigeRisse} /></span>
                   </div>
-                  <h4 className="text-base font-bold text-text-main mb-2">Begrenzung der Rissbreite</h4>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-4">
-                    Trennrisse werden planmäßig zugelassen, jedoch durch gezielte Mindestbewehrung auf Breiten beschränkt (je nach Druckgefälle <InlineMath math="w_k \le 0{,}10 \dots 0{,}20\,\text{mm}" />), die eine <strong>autogene Selbstheilung</strong> ermöglichen.
-                  </p>
+                  <h4 className="text-base font-bold text-text-main mb-2"><MdText text={inhalt.texte.begrenzungDerRissbreite} /></h4>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.trennrisseWerdenPlanmäßigZugelassen} /></p>
                   <ul className="text-xs space-y-2 text-text-main/70">
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Mindestbewehrung:</strong> Auslegung auf frühen Zwang (Hydratationswärme) nach DIN EN 1992-1-1.</span>
+                      <span><MdText text={inhalt.texte.mindestbewehrungAuslegungAufFrühen} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Enge Stababstände:</strong> Viele dünne Stäbe (z. B. <InlineMath math="\varnothing 10" /> oder <InlineMath math="\varnothing 12" />) statt weniger dicker Stäbe.</span>
+                      <span><MdText text={inhalt.texte.engeStababständeVieleDünne} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Selbstheilung:</strong> Risse dichten sich durch Calciumcarbonat-Ausfällung bei Wasserdruck <InlineMath math="I \le 10" /> eigenständig ab.</span>
+                      <span><MdText text={inhalt.texte.selbstheilungRisseDichtenSich} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Bewertung:</strong> Robuster und häufig gewählter Ansatz. Erfordert genaue Bemessung.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.bewertungRobusterUndHäufig} /></div>
               </div>
 
               {/* Entwurfsgrundsatz c */}
@@ -559,69 +526,63 @@ export default function WUBauwerke() {
                     </span>
                     <span className="text-xs font-semibold text-slate-500">Injektion</span>
                   </div>
-                  <h4 className="text-base font-bold text-text-main mb-2">Planmäßige Rissinjektion</h4>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-4">
-                    Breitere Trennrisse werden bewusst in Kauf genommen (geringere Zwangsbewehrung), um Baukosten zu senken. Alle auftretenden Risse werden planmäßig nachträglich injiziert.
-                  </p>
+                  <h4 className="text-base font-bold text-text-main mb-2"><MdText text={inhalt.texte.planmäßigeRissinjektion} /></h4>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.breitereTrennrisseWerdenBewusst} /></p>
                   <ul className="text-xs space-y-2 text-text-main/70">
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Geringere Bewehrung:</strong> Bemessung nur auf Tragfähigkeit, Rissbreiten bis <InlineMath math="0{,}30\,\text{mm}" /> akzeptiert.</span>
+                      <span><MdText text={inhalt.texte.geringereBewehrungBemessungNur} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Freie Zugänglichkeit:</strong> Wände müssen beidseitig inspizierbar und frei von Vorwandinstallationen bleiben.</span>
+                      <span><MdText text={inhalt.texte.freieZugänglichkeitWändeMüssen} /></span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Dichtinjektion:</strong> Verpressung mit Polyurethanharzen (PU) oder Epoxidharzen nach DIN EN 1504-5.</span>
+                      <span><MdText text={inhalt.texte.dichtinjektionVerpressungMitPolyurethanh} /></span>
                     </li>
                   </ul>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Bewertung:</strong> Sanierungs- und Prüfplan vertraglich zwingend festzulegen; Nachfolgekosten für Injektionen einplanen.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.bewertungSanierungsUndPrüfplan} /></div>
               </div>
             </div>
 
             {/* Matrix-Tabelle */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-2xs overflow-x-auto">
-              <h4 className="font-bold text-sm text-text-main mb-3 uppercase tracking-wider">
-                Vergleichsmatrix der Entwurfsgrundsätze
-              </h4>
+              <h4 className="font-bold text-sm text-text-main mb-3 uppercase tracking-wider"><MdText text={inhalt.texte.vergleichsmatrixDerEntwurfsgrundsätze} /></h4>
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="border-b border-home-grau/30 bg-off-white text-text-main font-bold">
                     <th className="p-2.5">Kriterium</th>
-                    <th className="p-2.5">Konzept a (Rissvermeidung)</th>
-                    <th className="p-2.5 text-shiraz font-black">Konzept b (Begrenzung wk)</th>
-                    <th className="p-2.5">Konzept c (Injektion)</th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.konzeptARissvermeidung} /></th>
+                    <th className="p-2.5 text-shiraz font-black"><MdText text={inhalt.texte.konzeptBBegrenzungWk} /></th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.konzeptCInjektion} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                   <tr>
                     <td className="p-2.5 font-bold">Bewehrungsaufwand</td>
-                    <td className="p-2.5 text-emerald-700 font-semibold">Gering bis mittel</td>
-                    <td className="p-2.5 text-amber-700 font-semibold">Hoch (enge Stababstände)</td>
+                    <td className="p-2.5 text-emerald-700 font-semibold"><MdText text={inhalt.texte.geringBisMittel} /></td>
+                    <td className="p-2.5 text-amber-700 font-semibold"><MdText text={inhalt.texte.hochEngeStababstände} /></td>
                     <td className="p-2.5 text-emerald-700 font-semibold">Sehr gering</td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-bold">Bauablauf &amp; Schalung</td>
-                    <td className="p-2.5">Aufwendig (Pilgerschritt, viele Fugen)</td>
-                    <td className="p-2.5">Sehr zügig (große Taktabschnitte)</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.bauablaufSchalung} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.aufwendigPilgerschrittVieleFugen} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.sehrZügigGroßeTaktabschnitte} /></td>
                     <td className="p-2.5">Zügig</td>
                   </tr>
                   <tr>
                     <td className="p-2.5 font-bold">Abdichtungsmechanismus</td>
-                    <td className="p-2.5">Monolithischer ungerissener Beton</td>
-                    <td className="p-2.5 font-semibold text-shiraz">Autogene Selbstheilung</td>
-                    <td className="p-2.5">Kunstharz-Injektion (DIN EN 1504-5)</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.monolithischerUngerissenerBeton} /></td>
+                    <td className="p-2.5 font-semibold text-shiraz"><MdText text={inhalt.texte.autogeneSelbstheilung} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.kunstharzInjektionDinEn} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-bold">Kostenrisiko / Nacharbeit</td>
-                    <td className="p-2.5 text-amber-700">Hoch (falls doch Risse entstehen)</td>
-                    <td className="p-2.5 text-emerald-700">Sehr gering (kalkulierbar)</td>
-                    <td className="p-2.5 text-amber-700">Mittel (Injektionskosten sicher)</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.kostenrisikoNacharbeit} /></td>
+                    <td className="p-2.5 text-amber-700"><MdText text={inhalt.texte.hochFallsDochRisse} /></td>
+                    <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.sehrGeringKalkulierbar} /></td>
+                    <td className="p-2.5 text-amber-700"><MdText text={inhalt.texte.mittelInjektionskostenSicher} /></td>
                   </tr>
                 </tbody>
               </table>
@@ -634,40 +595,28 @@ export default function WUBauwerke() {
           <div className="animate-in fade-in duration-300 flex flex-col gap-6">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
               <h3 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                <Layers className="text-shiraz" /> Fugen- und Abdichtungssysteme im WU-Bauwerk
-              </h3>
-              <p>
-                Undichtigkeiten bei Weißen Wannen entstehen überwiegend an <strong>Fugen und Durchdringungen</strong>, nicht im ungestörten Betonquerschnitt. Ein lückenloses, in sich geschlossenes Fugenkonzept nach <strong>DIN 18197</strong> und der DAfStb-Richtlinie ist für den Dichtigkeitserfolg unerlässlich.
-              </p>
+                <Layers className="text-shiraz" /><MdText text={inhalt.texte.fugenUndAbdichtungssystemeIm} /></h3>
+              <p><MdText text={inhalt.texte.undichtigkeitenBeiWeißenWannen} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Arbeitsfugen */}
               <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-2xs">
                 <h4 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span> 1. Arbeitsfugen (Boden-Wand / Wand-Wand)
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                  Entstehen unvermeidbar zwischen zwei Betonierabschnitten. Der Verbund muss mechanisch rau ausgeführt und druckwasserdicht abgedichtet werden.
-                </p>
+                  <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1ArbeitsfugenBodenWand} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.entstehenUnvermeidbarZwischenZwei} /></p>
                 <div className="space-y-3 text-xs">
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Beschichtete Fugenbleche (Kombibleche)</span>
-                    <span className="text-text-main/70">
-                      Verzinkte oder blanke Stahlbleche mit mineralischer, quellfähiger oder bitumenfreier Polymer-Spezialbeschichtung. Verbinden sich chemisch und mikromechanisch mit dem Frischbeton. Prüfdruck bis zu 5 bar (50 m Wassersäule).
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.beschichteteFugenblecheKombibleche} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.verzinkteOderBlankeStahlbleche} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Injektionsschläuche (Sekundärsicherung)</span>
-                    <span className="text-text-main/70">
-                      Perforierte oder geschlitzte Schläuche im Fugenbereich. Ermöglichen bei eventuellen Hohlstellen ein nachträgliches Verpressen mit PU-Harzen oder Polyacrylatgel ohne Bohrarbeiten.
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.injektionsschläucheSekundärsicherung} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.perforierteOderGeschlitzteSchläuche} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Quellbänder (Bentonit / Polymer)</span>
-                    <span className="text-text-main/70">
-                      Quellen bei Wasserkontakt stark auf (Herstellerangaben beachten). Nur bei allseitiger Betonüberdeckung von mind. 80–100 mm zulässig, um Abplatzungen durch Quelldruck zu verhindern.
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.quellbänderBentonitPolymer} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.quellenBeiWasserkontaktStark} /></span>
                   </div>
                 </div>
               </div>
@@ -675,29 +624,20 @@ export default function WUBauwerke() {
               {/* Bewegungsfugen & Sollrisse */}
               <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-2xs">
                 <h4 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span> 2. Dehnfugen, Sollrisse &amp; Durchdringungen
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                  Konstruktive Trennungen zur Aufnahme thermischer Dehnungen und Setzungsdifferenzen sowie gezielte Risslenkung.
-                </p>
+                  <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2DehnfugenSollrisseDurchdringungen} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.konstruktiveTrennungenZurAufnahme} /></p>
                 <div className="space-y-3 text-xs">
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Dehnfugenbänder nach DIN 7865 / DIN 18197</span>
-                    <span className="text-text-main/70">
-                      Innen- oder außenliegende Elastomer- bzw. PVC-P-Bänder mit mittigem Dehnschlauch (Hohlkörper). Nehmen 3D-Verformungen (Scherung, Dehnung, Stauchung) schadlos auf.
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.dehnfugenbänderNachDin7865} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.innenOderAußenliegendeElastomer} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Sollrisselemente (Scheinfugen)</span>
-                    <span className="text-text-main/70">
-                      Fugenelemente mit Querschnittsschwächung (mind. 1/3 der Bauteildicke) und integriertem Abdichtungsblech. Lenken unvermeidliche Zwangrisse an definierte, abgedichtete Stellen.
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.sollrisselementeScheinfugen} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.fugenelementeMitQuerschnittsschwächungMi} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
-                    <span className="font-bold text-text-main block mb-1">Druckwasserdichte Rohrdurchführungen</span>
-                    <span className="text-text-main/70">
-                      Futterrohre mit Flansch oder integrierter Außenabdichtung; medienführende Leitungen werden über elastomere Ringraumdichtungen (Pressringdichtungen) gas- und wasserdicht eingebunden.
-                    </span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.druckwasserdichteRohrdurchführungen} /></span>
+                    <span className="text-text-main/70"><MdText text={inhalt.texte.futterrohreMitFlanschOder} /></span>
                   </div>
                 </div>
               </div>
@@ -710,43 +650,37 @@ export default function WUBauwerke() {
           <div className="animate-in fade-in duration-300 flex flex-col gap-6">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
               <h3 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                <Cpu className="text-shiraz" /> Betontechnologie und autogene Selbstheilung von Trennrissen
-              </h3>
-              <p>
-                Der Beton für WU-Bauwerke muss nach <strong>DIN EN 206 / DIN 1045-2</strong> ein dichtes Zementsteingefüge mit minimalem Kapillarporenvolumen aufweisen. Die Begrenzung der Hydratationswärmeentwicklung steht dabei im Zentrum, um thermische Frühzwangspannungen zu minimieren.
-              </p>
+                <Cpu className="text-shiraz" /><MdText text={inhalt.texte.betontechnologieUndAutogeneSelbstheilung} /></h3>
+              <p><MdText text={inhalt.texte.derBetonFürWu} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Betonrezeptur */}
               <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-2xs">
                 <h4 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-shiraz"></span> Betontechnologische Kennwerte (DIN EN 206 / DIN 1045-2)
-                </h4>
+                  <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.betontechnologischeKennwerteDinEn} /></h4>
                 <div className="space-y-3 text-xs text-text-main/80">
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
-                    <span className="font-bold text-text-main">Maximaler w/z-Wert:</span>
-                    <span className="font-mono font-bold text-shiraz">
-                      <InlineMath math="w/z \le 0{,}55" /> (BK 1) bzw. <InlineMath math="0{,}60" /> (BK 2)
-                    </span>
+                    <span className="font-bold text-text-main"><MdText text={inhalt.texte.maximalerWZWert} /></span>
+                    <span className="font-mono font-bold text-shiraz"><MdText text={inhalt.texte.wZLe0} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
                     <span className="font-bold text-text-main">Mindestdruckfestigkeitsklasse:</span>
-                    <span className="font-mono font-bold text-text-main">C25/30 (oft C30/37)</span>
+                    <span className="font-mono font-bold text-text-main"><MdText text={inhalt.texte.c2530OftC30} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
-                    <span className="font-bold text-text-main">Wassereindringtiefe (DIN EN 12390-8):</span>
+                    <span className="font-bold text-text-main"><MdText text={inhalt.texte.wassereindringtiefeDinEn12390} /></span>
                     <span className="font-mono font-bold text-text-main">
                       <InlineMath math="e_{\max} \le 50\,\text{mm}" /> (Soll: <InlineMath math="\le 30\,\text{mm}" />)
                     </span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
-                    <span className="font-bold text-text-main">Zementart &amp; Hydratationswärme:</span>
-                    <span className="font-bold text-emerald-800">z. B. CEM III/A LH (niedrige Hydratationswärme)</span>
+                    <span className="font-bold text-text-main"><MdText text={inhalt.texte.zementartHydratationswärme} /></span>
+                    <span className="font-bold text-emerald-800"><MdText text={inhalt.texte.zBCemIii} /></span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
-                    <span className="font-bold text-text-main">Konsistenzklasse / Einbau:</span>
-                    <span className="font-mono font-bold text-text-main">F3 bis F4 (weich bis fließfähig)</span>
+                    <span className="font-bold text-text-main"><MdText text={inhalt.texte.konsistenzklasseEinbau} /></span>
+                    <span className="font-mono font-bold text-text-main"><MdText text={inhalt.texte.f3BisF4Weich} /></span>
                   </div>
                 </div>
               </div>
@@ -755,29 +689,22 @@ export default function WUBauwerke() {
               <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-2xs flex flex-col justify-between">
                 <div>
                   <h4 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600"></span> Autogene Selbstheilung (Chemischer Mechanismus)
-                  </h4>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                    Unter dauerhaftem Wasserkontakt und bei begrenzter Rissbreite (je nach Druckgefälle <InlineMath math="w_k \le 0{,}10 \dots 0{,}20\,\text{mm}" />) verschließen sich wasserführende Trennrisse durch chemische Reaktionen und physikalische Prozesse selbsttätig.
-                  </p>
+                    <span className="w-2 h-2 rounded-full bg-emerald-600"></span><MdText text={inhalt.texte.autogeneSelbstheilungChemischerMechanism} /></h4>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.unterDauerhaftemWasserkontaktUnd} /></p>
 
                   <div className="bg-off-white p-3 rounded-xl border border-home-grau/30 mb-3">
-                    <span className="text-xs font-bold text-text-main block mb-1">Hauptreaktion: Calciumcarbonat-Ausfällung</span>
+                    <span className="text-xs font-bold text-text-main block mb-1"><MdText text={inhalt.texte.hauptreaktionCalciumcarbonatAusfällung} /></span>
                     <BlockMath math="Ca(OH)_2 + CO_2 \longrightarrow CaCO_3 \downarrow + H_2O" />
-                    <p className="text-[11px] text-text-main/70 mt-1">
-                      Im Porenwasser gelöstes Calciumhydroxid (<InlineMath math="Ca(OH)_2" /> aus dem Zementstein) reagiert mit im Wasser gelöstem Kohlendioxid (<InlineMath math="CO_2" />) zu schwerlöslichem Calcit (<InlineMath math="CaCO_3" />), der den Rissquerschnitt von innen heraus auskristallisiert und abdichtet.
-                    </p>
+                    <p className="text-[11px] text-text-main/70 mt-1"><MdText text={inhalt.texte.imPorenwasserGelöstesCalciumhydroxid} /></p>
                   </div>
 
                   <ul className="text-xs space-y-1.5 text-text-main/70">
-                    <li>• <strong>Sekundäreffekte:</strong> Weiterschreitende Hydratation unhydratisierter Zementklinker an den Rissufern.</li>
-                    <li>• <strong>Filterwirkung:</strong> Mechanisches Festsetzen feinster Schwebstoffe im Risskanal.</li>
+                    <li><MdText text={inhalt.texte.sekundäreffekteWeiterschreitendeHydratat} /></li>
+                    <li><MdText text={inhalt.texte.filterwirkungMechanischesFestsetzenFeins} /></li>
                   </ul>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-xs text-text-main/70 bg-amber-50/50 p-2.5 rounded-lg border border-amber-200/60">
-                  <strong>Grenzen der Selbstheilung:</strong> Risse breiter als der zulässige Wert (0,10–0,20 mm je nach Druckgefälle), zu hohes Fließgefälle (Auswaschung statt Kristallisation) oder aggressives, kalklösendes Wasser verhindern die Selbstheilung.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-xs text-text-main/70 bg-amber-50/50 p-2.5 rounded-lg border border-amber-200/60"><MdText text={inhalt.texte.grenzenDerSelbstheilungRisse} /></div>
               </div>
             </div>
           </div>
@@ -788,11 +715,8 @@ export default function WUBauwerke() {
           <div className="animate-in fade-in duration-300 flex flex-col gap-6">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
               <h3 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                <BookOpen className="text-shiraz" /> Bauweisen im Tiefbau: Weiße, Schwarze, Braune &amp; Gelbe Wanne
-              </h3>
-              <p>
-                Je nach Baugrundverhältnissen, Wasserbeanspruchung, Radon-Schutzanforderungen und geplanter Nutzung stehen im modernen Tief- und Ingenieurbau verschiedene Wannen-Bauarten zur Verfügung:
-              </p>
+                <BookOpen className="text-shiraz" /><MdText text={inhalt.texte.bauweisenImTiefbauWeiße} /></h3>
+              <p><MdText text={inhalt.texte.jeNachBaugrundverhältnissenWasserbeanspr} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -803,16 +727,10 @@ export default function WUBauwerke() {
                     <span className="w-3.5 h-3.5 rounded-full bg-slate-200 border border-slate-400"></span>
                     <h4 className="font-bold text-sm text-text-main">Weiße Wanne</h4>
                   </div>
-                  <span className="text-[11px] font-semibold text-shiraz uppercase tracking-wider block mb-2">
-                    WU-Beton (Monolithisch)
-                  </span>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    Beton übernimmt Tragwerk und Abdichtung gleichzeitig. Keine außenliegende Abdichtungshaut nötig.
-                  </p>
+                  <span className="text-[11px] font-semibold text-shiraz uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.wuBetonMonolithisch} /></span>
+                  <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.betonÜbernimmtTragwerkUnd} /></p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Vorteil:</strong> Geringer Wartungsaufwand, schnelle Bauzeit, Schäden von innen ortbar und sanierbar.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.vorteilGeringerWartungsaufwandSchnelle} /></div>
               </div>
 
               {/* Schwarze Wanne */}
@@ -820,18 +738,12 @@ export default function WUBauwerke() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-3.5 h-3.5 rounded-full bg-slate-800"></span>
-                    <h4 className="font-bold text-sm text-text-main">Schwarze Wanne</h4>
+                    <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.schwarzeWanne} /></h4>
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-700 uppercase tracking-wider block mb-2">
-                    Bitumen / PMBC (DIN 18533)
-                  </span>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    Außenliegende, nahtlose Dichtungshaut aus Bitumenbahnen oder kunststoffmodifizierten Bitumendickbeschichtungen.
-                  </p>
+                  <span className="text-[11px] font-semibold text-slate-700 uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.bitumenPmbcDin18533} /></span>
+                  <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.außenliegendeNahtloseDichtungshautAus} /></p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Vorteil:</strong> Höchste Sicherheit gegen Dampfdiffusion; <strong>Nachteil:</strong> Mechanisch verletzlich bei Verfüllung.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.vorteilHöchsteSicherheitGegen} /></div>
               </div>
 
               {/* Braune Wanne */}
@@ -839,18 +751,14 @@ export default function WUBauwerke() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-3.5 h-3.5 rounded-full bg-amber-800"></span>
-                    <h4 className="font-bold text-sm text-text-main">Braune Wanne</h4>
+                    <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.brauneWanne} /></h4>
                   </div>
                   <span className="text-[11px] font-semibold text-amber-800 uppercase tracking-wider block mb-2">
                     Bentonit-Geotextil
                   </span>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    Außenliegende Matten aus quellfähigem Natriumbentonit, eingebettet in reißfeste Geotextilvliese.
-                  </p>
+                  <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.außenliegendeMattenAusQuellfähigem} /></p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Vorteil:</strong> Selbstquellend bei Beschädigung; <strong>Voraussetzung:</strong> Kontinuierlicher Auflagedruck.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.vorteilSelbstquellendBeiBeschädigung} /></div>
               </div>
 
               {/* Gelbe Wanne */}
@@ -863,13 +771,9 @@ export default function WUBauwerke() {
                   <span className="text-[11px] font-semibold text-amber-600 uppercase tracking-wider block mb-2">
                     FBV-Verbundbahnen
                   </span>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    Frischbetonverbundfolien (FBV), die vor dem Betonieren in die Schalung eingelegt werden und sich vollflächig mit dem Beton verzahnen.
-                  </p>
+                  <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.frischbetonverbundfolienFbvDieVor} /></p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Vorteil:</strong> Hinterlaufschutz verhindert Unterwanderung von Wasser bei Punktperforationen; radonresistent.
-                </div>
+                <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60"><MdText text={inhalt.texte.vorteilHinterlaufschutzVerhindertUnterwa} /></div>
               </div>
             </div>
           </div>
@@ -877,71 +781,29 @@ export default function WUBauwerke() {
       </div>
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Kellerwand in Beanspruchungsklasse 1 (Standardwerte)"
+        title={inhalt.werte.anwendungsbeispielKellerwandInBeanspruch}
         zielGleichung="I = \frac{h_w}{h}"
-        normQuelle="DAfStb-WU-Richtlinie 2017-12 (Selbstheilung: Rechenwerte w_k je Druckgefälle)"
-        schritte={[
-          { titel: '1. Gegeben', formel: 'h_w = 3{,}0\\,\\text{m},\\; h = 300\\,\\text{mm},\\; \\text{BK 1, Ortbetonwand}', erklaerung: 'Drückendes Wasser.' },
-          { titel: '2. Mindestdicke', formel: 'h = 300\\,\\text{mm} \\ge 240\\,\\text{mm}', erklaerung: 'Tab. 1 der WU-Richtlinie eingehalten.' },
-          { titel: '3. Druckgefälle', formel: 'I = 3{,}0 / 0{,}30 = 10', erklaerung: 'Grenze der ersten Stufe.' },
-          { titel: '4. Zulässige Rissbreite', formel: 'w_k \\le 0{,}20\\,\\text{mm}', erklaerung: 'Selbstheilung planbar (Entwurfsgrundsatz b).' },
-        ]}
-        ergebnisHinweis="Mit h = 300 mm und w_k ≤ 0,20 mm ist die Selbstheilung nach Entwurfsgrundsatz b planbar."
+        normQuelle={inhalt.werte.dafstbWuRichtlinie2017}
+        schritte={inhalt.daten["WUBauwerke.schritte"]}
+        ergebnisHinweis={inhalt.werte.mitH300Mm}
       />
 
       <ModulTest moduleId="wu-bauwerke" />
 
       {/* Standardisierter Footer */}
       <ModuleFooter
-        weblinks={[
-          { title: 'Zement-Merkblatt H10: Wasserundurchlässige Betonbauwerke (beton.org)', url: 'https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/' },
-          { title: 'Deutscher Ausschuss für Stahlbeton e.V. (DAfStb)', url: 'https://www.dafstb.de/' }
-        ]}
+        weblinks={inhalt.daten["WUBauwerke.weblinks"]}
         wikipedia={[
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
-          { title: 'Schwarze Wanne', url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' }
+          { title: inhalt.werte.schwarzeWanne, url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' }
         ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie:2017-12)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Abschnitt 7.3 Rissbreitenbegrenzung)' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)' },
-          { title: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)' },
-          { title: 'DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)' }
-        ]}
-        literatur={[
-          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. Düsseldorf: Verlag Bau+Technik 2018',
-          'DAfStb-Heft 555: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton. Berlin: Beuth 2006 (bezogen auf die Richtlinie 2003; keine Neuauflage zur Ausgabe 2017)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
-        ]}
+        regelwerke={inhalt.daten["WUBauwerke.regelwerke"]}
+        literatur={inhalt.daten["WUBauwerke.literatur"]}
         formeln={
           activeTab === 'rechner'
-            ? [
-                {
-                  formel: 'I = \\frac{h_w}{h}',
-                  erklaerung: 'Druckgefälle I [-]: Wassersäule h_w [m] bezogen auf die Bauteildicke h [m]. Für die Selbstheilung: I ≤ 10 → w_k ≤ 0,20 mm; I ≤ 15 → 0,15 mm; I ≤ 25 → 0,10 mm (WU-Richtlinie 2017-12).',
-                  quelle: 'DAfStb-WU-Richtlinie 2017-12'
-                },
-                {
-                  formel: 'h_{\\min} \\ge 240\\,\\text{mm} \\; (\\text{Wand, BK 1}) \\quad \\text{bzw.} \\quad h_{\\min} \\ge 250\\,\\text{mm} \\; (\\text{Bodenplatte, BK 1})',
-                  erklaerung: 'Mindestbauteildicken in Beanspruchungsklasse 1 (Ortbeton und Elementwand 240 mm, Fertigteilwand 200 mm). In BK 2: Wand 200 mm (Ortbeton), Bodenplatte 150 mm.',
-                  quelle: 'DAfStb-WU-Richtlinie 2017-12, Tabelle 1'
-                }
-              ]
+            ? inhalt.daten.WUBauwerke
             : activeTab === 'beton'
-            ? [
-                {
-                  formel: 'Ca(OH)_2 + CO_2 \\xrightarrow{H_2O} CaCO_3 \\downarrow + H_2O',
-                  erklaerung: 'Kristalline Carbonatisierungsreaktion der autogenen Selbstheilung: Im Porenwasser gelöstes Portlandit reagiert mit Kohlensäure zu schwerlöslichem Calcit, wodurch Trennrisse bis wk ≤ 0,15-0,20 mm dauerhaft zuwachsen.',
-                  quelle: 'DAfStb Heft 555'
-                },
-                {
-                  formel: '\\Delta T = T_{\\max} - T_{\\text{Rand}} \\le 15\\,\\text{K} \\dots 20\\,\\text{K}',
-                  erklaerung: 'Zulässige Temperaturdifferenz im abfließenden Hydratationswärme-Zustand zur Vermeidung von oberflächennahen und durchgehenden Zwangs-Frührissen bei massigen WU-Querschnitten.',
-                  quelle: 'Lehrwert (Praxis)'
-                }
-              ]
+            ? inhalt.daten.WUBauwerke_2
             : []
         }
       />

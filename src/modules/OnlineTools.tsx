@@ -19,6 +19,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import inhalt from '@/content/onlinetools/OnlineTools.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ToolItem {
   id: string;
@@ -39,412 +41,412 @@ const ONLINE_TOOLS: ToolItem[] = [
   // 1. Statik & Strukturmechanik
   {
     id: 'mastan2',
-    name: 'Mastan2 / Web-Mastan',
+    name: inhalt.werte.mastan2WebMastan,
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk,
     language: 'ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Didaktisch wertvoll',
     url: 'https://www.mastan2.com/',
-    shortDesc: 'Interaktive 1D/2D/3D-Rahmentragwerksanalyse mit geometrischer und materieller Nichtlinearität (Theorie II. Ordnung, Plastizität, Knicken).',
+    shortDesc: inhalt.werte.interaktive1d2d3d,
     detailedFeatures: [
-      'Lineare und geometrisch nichtlineare Berechnung nach Theorie II. Ordnung',
-      'Elasto-plastische Gelenkbildung und Grenzlastspielräume',
-      'Modale Eigenwertanalyse und Stabilitätsnachweise (Biegedrillknicken)',
-      'Lehrstuhlerprobt durch Prof. McGuire und Prof. Ziemian'
+      inhalt.werte.lineareUndGeometrischNichtlineare,
+      inhalt.werte.elastoPlastischeGelenkbildungUnd,
+      inhalt.werte.modaleEigenwertanalyseUndStabilitätsnach,
+      inhalt.werte.lehrstuhlerprobtDurchProfMcguire
     ],
-    standards: 'AISC / Eurocode 3 konform',
-    institutionOrAuthor: 'Bucknell University / Prof. R. Ziemian'
+    standards: inhalt.werte.aiscEurocode3Konform,
+    institutionOrAuthor: inhalt.werte.bucknellUniversityProfR
   },
   {
     id: 'skyciv_beam',
-    name: 'SkyCiv Free Beam & Truss Calculator',
+    name: inhalt.werte.skycivFreeBeamTruss,
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk2,
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://skyciv.com/free-beam-calculator/',
-    shortDesc: 'Schnelle Einfeld- und Mehrfeldträgerberechnung direkt im Browser mit Schnittgrößenlinien (M, V, N) und Verformungen.',
+    shortDesc: inhalt.werte.schnelleEinfeldUndMehrfeldträgerberechnu,
     detailedFeatures: [
-      'Visualisierung von Biegemomenten-, Querkraft- und Durchbiegungslinien in Echtzeit',
-      'Punkt-, Dreiecks- und Streckenlasten sowie Momentenbelastungen',
-      'Spannungsnachweis für Standard-Stahl- und Holzquerschnitte',
-      'Keine Installation nötig, läuft auf jedem Tablet und Desktop'
+      inhalt.werte.visualisierungVonBiegemomentenQuerkraft,
+      inhalt.werte.punktDreiecksUndStreckenlasten,
+      inhalt.werte.spannungsnachweisFürStandardStahl,
+      inhalt.werte.keineInstallationNötigLäuft
     ],
-    standards: 'Eurocode / AISC / AS',
-    institutionOrAuthor: 'SkyCiv Cloud Structural Engineering'
+    standards: inhalt.werte.eurocodeAiscAs,
+    institutionOrAuthor: inhalt.werte.skycivCloudStructuralEngineering
   },
   {
     id: 'dlubal_cross_section',
-    name: 'Dlubal Online-Querschnittswerte',
+    name: inhalt.werte.dlubalOnlineQuerschnittswerte,
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk3,
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.dlubal.com/de/querschnittswerte/',
-    shortDesc: 'Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).',
+    shortDesc: inhalt.werte.querschnittsUndProfilwertdatenbankFür,
     detailedFeatures: [
-      'Exakte Querschnittswerte: A, Iy, Iz, Wy, Wz, Wpl, IT, Iw',
-      'Klassifizierung nach Eurocode 3 (Querschnittsklassen 1 bis 4)',
-      'Interaktive Spannungsermittlung bei kombinierter Biegung und Normalkraft',
-      'Kostenlose Nutzung ohne Registrierung'
+      inhalt.werte.exakteQuerschnittswerteAIy,
+      inhalt.werte.klassifizierungNachEurocode3,
+      inhalt.werte.interaktiveSpannungsermittlungBeiKombini,
+      inhalt.werte.kostenloseNutzungOhneRegistrierung
     ],
-    standards: 'DIN EN 1993-1-1 (EC3)',
-    institutionOrAuthor: 'Dlubal Software GmbH'
+    standards: inhalt.werte.dinEn19931,
+    institutionOrAuthor: inhalt.werte.dlubalSoftwareGmbh
   },
   {
     id: 'dlubal_geozones',
-    name: 'Dlubal Geo-Zone Tool (Schnee, Wind, Erdbeben)',
+    name: inhalt.werte.dlubalGeoZoneTool,
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk4,
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
     url: 'https://www.dlubal.com/en/support-and-learning/service/geo-zone-tool-snow-wind-and-seismic-zone-maps',
     recommendationBadge: 'Standard im Büro',
-    shortDesc: 'Standortbezogene digitale Abfrage von Schneelast-, Windlast- und Erdbebenzonen nach Eurocode 1 (DIN EN 1991) via Adress- und Kartensuche.',
+    shortDesc: inhalt.werte.standortbezogeneDigitaleAbfrageVon,
     detailedFeatures: [
-      'Genaue Ermittlung der charakteristischen Schneelast s_k und Windzonen 1 bis 4 nach DIN EN 1991-1-3 / DIN EN 1991-1-4',
-      'Inklusive Geländehöhe über Normalnull (A) und Norddeutsches Tiefland-Kriterium',
-      'Erdbebenzonen und Untergrundklassen nach DIN EN 1998-1 / DIN 4149',
-      'Direkte Kartenverortung per Postleitzahl oder GPS-Koordinaten'
+      inhalt.werte.genaueErmittlungDerCharakteristischen,
+      inhalt.werte.inklusiveGeländehöheÜberNormalnull,
+      inhalt.werte.erdbebenzonenUndUntergrundklassenNach,
+      inhalt.werte.direkteKartenverortungPerPostleitzahl
     ],
-    standards: 'DIN EN 1991-1-3, DIN EN 1991-1-4, DIN EN 1998-1',
-    institutionOrAuthor: 'Dlubal Software GmbH'
+    standards: inhalt.werte.dinEn19911,
+    institutionOrAuthor: inhalt.werte.dlubalSoftwareGmbh2
   },
   {
     id: 'calcpad',
-    name: 'Calcpad (Parametrische Statik & Math)',
+    name: inhalt.werte.calcpadParametrischeStatikMath,
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk5,
     language: 'ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Standard im Büro',
     url: 'https://calcpad.eu/',
-    shortDesc: 'Open-Source-Plattform für prüffähige, parametrische Statikberechnungen nach Eurocode mit automatischer Formeldarstellung und HTML/PDF-Export.',
+    shortDesc: inhalt.werte.openSourcePlattformFür,
     detailedFeatures: [
-      'Parametrische Eingabe: Mathematischer Text wird während des Tippens in lesbare Gleichungen formatiert',
-      'Umfangreiche Modellbibliothek für Eurocode 2 (Beton), Eurocode 3 (Stahl) und Eurocode 5 (Holz)',
-      'Erzeugung professioneller, prüffähiger statischer Berechnungsberichte',
-      'Desktop-Anwendung sowie kostenlose Web-Cloud-Version verfügbar'
+      inhalt.werte.parametrischeEingabeMathematischerText,
+      inhalt.werte.umfangreicheModellbibliothekFürEurocode,
+      inhalt.werte.erzeugungProfessionellerPrüffähigerStati,
+      inhalt.werte.desktopAnwendungSowieKostenlose
     ],
-    standards: 'Eurocodes 0 bis 8 konform',
-    institutionOrAuthor: 'Calcpad Community / Open Source'
+    standards: inhalt.werte.eurocodes0Bis8,
+    institutionOrAuthor: inhalt.werte.calcpadCommunityOpenSource
   },
   {
     id: 'eurocode_applied',
     name: 'EurocodeApplied.com',
     category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
+    categoryLabel: inhalt.werte.statikTragwerk6,
     language: 'ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Didaktisch wertvoll',
     url: 'https://eurocodeapplied.com/',
-    shortDesc: 'Kostenlose Web-Applikationen zur schnellen Ermittlung von Lastkombinationen nach EC0/EC1 sowie Vorbemessungen für Beton und Stahl.',
+    shortDesc: inhalt.werte.kostenloseWebApplikationenZur,
     detailedFeatures: [
-      'EC0 Lastkombinationsgenerator für ständige und veränderliche Einwirkungen',
-      'EC1 Wind- und Schneelastzonenermittlung mit Geländekategorien',
-      'EC2 Biegung mit Längskraft für Rechteck- und Plattenbalkenquerschnitte',
-      'Transparente Rechenwege mit Gleichungsreferenzen'
+      inhalt.werte.ec0LastkombinationsgeneratorFürStändige,
+      inhalt.werte.ec1WindUndSchneelastzonenermittlung,
+      inhalt.werte.ec2BiegungMitLängskraft,
+      inhalt.werte.transparenteRechenwegeMitGleichungsrefer
     ],
-    standards: 'DIN EN 1990, DIN EN 1991, DIN EN 1992',
-    institutionOrAuthor: 'EurocodeApplied Platform'
+    standards: inhalt.werte.dinEn1990Din,
+    institutionOrAuthor: inhalt.werte.eurocodeappliedPlatform
   },
 
   // 2. Bauphysik & Feuchteschutz
   {
     id: 'ubakus',
-    name: 'Ubakus (ehemals U-Wert.net)',
+    name: inhalt.werte.ubakusEhemalsUWert,
     category: 'bauphysik',
-    categoryLabel: 'Bauphysik & Feuchteschutz',
+    categoryLabel: inhalt.werte.bauphysikFeuchteschutz,
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.ubakus.de/',
-    shortDesc: 'Verbreiteter Online-Rechner für U-Werte, Tauwasser (Glaser), sommerlichen Wärmeschutz und Trocknungsreserven.',
+    shortDesc: inhalt.werte.verbreiteterOnlineRechnerFür,
     detailedFeatures: [
-      'Berechnung des Wärmedurchgangskoeffizienten (U-Wert) mehrschichtiger Bauteile',
-      'Periodisches Feuchteschutzverfahren nach DIN 4108-3 (Glaser-Diagramm)',
-      'Sommerlicher Hitzeschutz: Phasenverschiebung und Dämpfung der Temperaturwelle',
-      'Riesige Baustoffdatenbank mit herstellerspezifischen Dämmstoffen'
+      inhalt.werte.berechnungDesWärmedurchgangskoeffiziente,
+      inhalt.werte.periodischesFeuchteschutzverfahrenNachDi,
+      inhalt.werte.sommerlicherHitzeschutzPhasenverschiebun,
+      inhalt.werte.riesigeBaustoffdatenbankMitHerstellerspe
     ],
-    standards: 'DIN EN ISO 6946, DIN 4108-3, GModG (vormals GEG)',
-    institutionOrAuthor: 'Ubakus / Ralf Plag'
+    standards: inhalt.werte.dinEnIso6946,
+    institutionOrAuthor: inhalt.werte.ubakusRalfPlag
   },
   {
     id: 'lbnl_therm',
-    name: 'LBNL THERM (2D Heat Transfer)',
+    name: inhalt.werte.lbnlTherm2dHeat,
     category: 'bauphysik',
-    categoryLabel: 'Bauphysik & Feuchteschutz',
+    categoryLabel: inhalt.werte.bauphysikFeuchteschutz2,
     language: 'ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://windows.lbl.gov/software/therm',
-    shortDesc: '2D-Wärmestrom-Finite-Elemente-Programm zur numerischen Bestimmung zweidimensionaler Wärmebrückenverlustkoeffizienten (Psi-Werte).',
+    shortDesc: inhalt.werte.t2dWärmestromFiniteElemente,
     detailedFeatures: [
-      'Exakte Finite-Elemente-Simulation thermischer Schwachstellen und Anschlüsse',
-      'Berechnung des längenbezogenen Wärmedurchgangskoeffizienten (Psi / ψ)',
-      'Ermittlung des minimalen Temperaturfaktors f_Rsi zur Schimmelpilzvermeidung',
-      'Wissenschaftlich validiert und weltweit als Referenztool anerkannt'
+      inhalt.werte.exakteFiniteElementeSimulation,
+      inhalt.werte.berechnungDesLängenbezogenenWärmedurchga,
+      inhalt.werte.ermittlungDesMinimalenTemperaturfaktors,
+      inhalt.werte.wissenschaftlichValidiertUndWeltweit
     ],
-    standards: 'DIN EN ISO 10211, DIN 4108 Beiblatt 2',
-    institutionOrAuthor: 'Lawrence Berkeley National Laboratory (USA)'
+    standards: inhalt.werte.dinEnIso10211,
+    institutionOrAuthor: inhalt.werte.lawrenceBerkeleyNationalLaboratory
   },
   {
     id: 'onebuilding_weather',
-    name: 'Climate.OneBuilding (EPW Weather)',
+    name: inhalt.werte.climateOnebuildingEpwWeather,
     category: 'bauphysik',
-    categoryLabel: 'Bauphysik & Feuchteschutz',
+    categoryLabel: inhalt.werte.bauphysikFeuchteschutz3,
     language: 'ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Forschung & Master',
     url: 'https://climate.onebuilding.org/',
-    shortDesc: 'Globale stündliche Wetterdatensätze (EPW, TRY) für instationäre thermisch-hygroskopische Gebäudesimulationen (EnergyPlus, IDA ICE).',
+    shortDesc: inhalt.werte.globaleStündlicheWetterdatensätzeEpw,
     detailedFeatures: [
-      'Kostenlose Bereitstellung weltweiter Testreferenzjahre (TRY / TMYx)',
-      'Stündliche Werte für Außentemperatur, Globalstrahlung, relative Luftfeuchte und Wind',
-      'Essentiell für instationäre GEG-Nachweise und sommerliche Raumklimasimulationen',
-      'Open-Source und frei zugänglich ohne Bezahlschranke'
+      inhalt.werte.kostenloseBereitstellungWeltweiterTestre,
+      inhalt.werte.stündlicheWerteFürAußentemperatur,
+      inhalt.werte.essentiellFürInstationäreGeg,
+      inhalt.werte.openSourceUndFrei
     ],
-    standards: 'ASHRAE / ISO 15927-4',
-    institutionOrAuthor: 'OneBuilding Consortium'
+    standards: inhalt.werte.ashraeIso159274,
+    institutionOrAuthor: inhalt.werte.onebuildingConsortium
   },
   {
     id: 'wufi_light',
-    name: 'Fraunhofer IBP WUFI (Wärme und Feuchte instationär)',
+    name: inhalt.werte.fraunhoferIbpWufiWärme,
     category: 'bauphysik',
-    categoryLabel: 'Bauphysik & Feuchteschutz',
+    categoryLabel: inhalt.werte.bauphysikFeuchteschutz4,
     language: 'DT / ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://wufi.de/',
-    shortDesc: 'Verbreitetes Simulationsprogramm für den gekoppelten Wärme- und Feuchtetransport in Bauteilen (1D/2D).',
+    shortDesc: inhalt.werte.verbreitetesSimulationsprogrammFürDen,
     detailedFeatures: [
-      'Berechnung instationärer Feuchteprofile unter natürlichen Klimabedingungen mit Schlagregen und Solarstrahlung',
-      'Exakter Nachweis von Trocknungsverhalten und kritischem Feuchtegehalt nach DIN EN 15026 / WTA-Merkblatt 6-2',
-      'Umfassende Baustoffdatenbank mit gemessenen Feuchtespeicherfunktionen und Sorptionsisothermen',
-      'Kostenlose Einstiegsversionen (WUFI Light) für Lehre, Studium und Weiterbildung'
+      inhalt.werte.berechnungInstationärerFeuchteprofileUnt,
+      inhalt.werte.exakterNachweisVonTrocknungsverhalten,
+      inhalt.werte.umfassendeBaustoffdatenbankMitGemessenen,
+      inhalt.werte.kostenloseEinstiegsversionenWufiLight
     ],
-    standards: 'DIN EN 15026, WTA-Merkblatt 6-2, DIN 4108-3',
-    institutionOrAuthor: 'Fraunhofer-Institut für Bauphysik (IBP)'
+    standards: inhalt.werte.dinEn15026Wta,
+    institutionOrAuthor: inhalt.werte.fraunhoferInstitutFürBauphysik
   },
 
   // 3. Holzbau & Holzwerkstoffe
   {
     id: 'dataholz',
-    name: 'dataholz.eu (Bauteilkatalog Holzbau)',
+    name: inhalt.werte.dataholzEuBauteilkatalogHolzbau,
     category: 'holzbau',
     categoryLabel: 'Holzbau',
     language: 'DT',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.dataholz.eu/',
-    shortDesc: 'Online-Bauteilkatalog der Holzforschung Austria mit bauphysikalischen, brandschutztechnischen und ökologischen Kennwerten von Holzbaukonstruktionen.',
+    shortDesc: inhalt.werte.onlineBauteilkatalogDerHolzforschung,
     detailedFeatures: [
-      'Wand-, Decken- und Dachaufbauten mit U-Wert, Feuerwiderstand und Schallschutz',
-      'Ökologische Kennwerte je Aufbau (Umfang je Eintrag)',
-      'Herstellerneutral; Anerkennung in deutschen Nachweisverfahren im Einzelfall prüfen',
-      'Schichtaufbauten direkt als PDF und Datenblatt exportierbar'
+      inhalt.werte.wandDeckenUndDachaufbauten,
+      inhalt.werte.ökologischeKennwerteJeAufbau,
+      inhalt.werte.herstellerneutralAnerkennungInDeutschen,
+      inhalt.werte.schichtaufbautenDirektAlsPdf
     ],
-    standards: 'DIN EN 1995-1-2, DIN 4108, DIN 4109, EN 15804',
-    institutionOrAuthor: 'Holzforschung Austria (HFA)'
+    standards: inhalt.werte.dinEn19951,
+    institutionOrAuthor: inhalt.werte.holzforschungAustriaHfa
   },
 
   // 4. LCA & Ökobilanzierung
   {
     id: 'oekobaudat',
-    name: 'ÖKOBAUDAT Plattform',
+    name: inhalt.werte.ökobaudatPlattform,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz,
     language: 'DT / ENG',
     accessType: 'Offizielle Behörde / API',
     recommendationBadge: 'Offizieller Standard',
     url: 'https://www.oekobaudat.de/',
-    shortDesc: 'Offizielle Bundesdatenbank für standardisierte Ökobilanzdaten von Bauprodukten und EPDs gemäß DIN EN 15804.',
+    shortDesc: inhalt.werte.offizielleBundesdatenbankFürStandardisie,
     detailedFeatures: [
-      'Über 1.500 geprüfte Datensätze mit GWP-Fossil, GWP-Biogen, PENRT und Abfallkategorien',
-      'Lebenszyklusphasen A1-A3 (Herstellung), C3-C4 (Entsorgung) und Modul D (Gutschriften)',
-      'Öffentliche REST-API für nahtlose Software- und BIM-Anbindung',
-      'Verpflichtende Grundlage für QNG-Zertifizierungen und BNB-Nachweise'
+      inhalt.werte.über1500Geprüfte,
+      inhalt.werte.lebenszyklusphasenA1A3Herstellung,
+      inhalt.werte.öffentlicheRestApiFür,
+      inhalt.werte.verpflichtendeGrundlageFürQng
     ],
-    standards: 'DIN EN 15804+A2, BNB, QNG',
-    institutionOrAuthor: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)'
+    standards: inhalt.werte.dinEn15804A2,
+    institutionOrAuthor: inhalt.werte.bundesministeriumFürWohnenStadtentwicklu
   },
   {
     id: 'wecobis',
-    name: 'WECOBIS (Ökologisches Baustoffportal)',
+    name: inhalt.werte.wecobisÖkologischesBaustoffportal,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz2,
     language: 'DT',
     accessType: 'Offizielle Behörde / API',
     recommendationBadge: 'Offizieller Standard',
     url: 'https://www.wecobis.de/',
-    shortDesc: 'Offizielles Baustoffinformationssystem des Bundes zu Umwelt-, Schadstoff- und Gesundheitsaspekten in allen Lebenszyklusphasen.',
+    shortDesc: inhalt.werte.offiziellesBaustoffinformationssystemDes,
     detailedFeatures: [
-      'Fundierte Informationen zu Emissionen (VOC, Formaldehyd) und Innenraumhygiene',
-      'Baustoffgruppen von Rohbau bis Ausbau mit Umweltproduktdeklarationen und Entsorgungswegen',
-      'Verknüpfung mit dem Bewertungssystem Nachhaltiges Bauen (BNB) und DGNB',
-      'Fundierte Leitfäden zur Schadstoffvermeidung und zirkulären Baustoffwahl'
+      inhalt.werte.fundierteInformationenZuEmissionen,
+      inhalt.werte.baustoffgruppenVonRohbauBis,
+      inhalt.werte.verknüpfungMitDemBewertungssystem,
+      inhalt.werte.fundierteLeitfädenZurSchadstoffvermeidun
     ],
-    standards: 'BNB Kriterien, AgBB-Bewertungsschema, REACH',
-    institutionOrAuthor: 'BMWSB / Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR)'
+    standards: inhalt.werte.bnbKriterienAgbbBewertungsschema,
+    institutionOrAuthor: inhalt.werte.bmwsbBundesinstitutFürBau
   },
   {
     id: 'ec3_tool',
-    name: 'EC3 Tool (Embodied Carbon in Construction)',
+    name: inhalt.werte.ec3ToolEmbodiedCarbon,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz3,
     language: 'ENG',
     accessType: 'Kostenlose Cloud',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.buildingtransparency.org/',
-    shortDesc: 'Cloud-Plattform zur Quantifizierung und Reduktion grauer CO₂-Emissionen (Embodied Carbon) von Betonrezepturen, Stahl und Holz.',
+    shortDesc: inhalt.werte.cloudPlattformZurQuantifizierung,
     detailedFeatures: [
-      'Umfangreiche Datenbank digitalisierter EPDs mit Varianzanalysen',
-      'Vergleich von alternativen Betonrezepturen hinsichtlich ihrer CO₂-Intensität',
-      'Export von Bauteil-Emissionswerten für ESG-Berichterstattungen',
-      'Kostenlos für Planer, Bauherren und Studierende nach Registrierung'
+      inhalt.werte.umfangreicheDatenbankDigitalisierterEpds,
+      inhalt.werte.vergleichVonAlternativenBetonrezepturen,
+      inhalt.werte.exportVonBauteilEmissionswerten,
+      inhalt.werte.kostenlosFürPlanerBauherren
     ],
-    standards: 'ISO 14025, EN 15804',
-    institutionOrAuthor: 'Building Transparency'
+    standards: inhalt.werte.iso14025En15804,
+    institutionOrAuthor: inhalt.werte.buildingTransparency
   },
   {
     id: 'openlca',
-    name: 'openLCA Software & Daten',
+    name: inhalt.werte.openlcaSoftwareDaten,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz4,
     language: 'DT / ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.openlca.org/',
-    shortDesc: 'Open-Source-Software für Ökobilanzen (LCA) von Baustoffen und Prozessen.',
+    shortDesc: inhalt.werte.openSourceSoftwareFür,
     detailedFeatures: [
-      'Vollständige Modellierung von Stoff- und Energieströmen über den Lebenszyklus',
-      'Kompatibel mit ecoinvent, GaBi und ÖKOBAUDAT-Datenbanken',
-      'Detaillierte Sensitivitätsanalysen und Parameterberechnungen',
-      '100 % Open Source ohne Lizenzgebühren'
+      inhalt.werte.vollständigeModellierungVonStoff,
+      inhalt.werte.kompatibelMitEcoinventGabi,
+      inhalt.werte.detaillierteSensitivitätsanalysenUndPara,
+      inhalt.werte.t100OpenSourceOhne
     ],
-    standards: 'ISO 14040 / ISO 14044',
-    institutionOrAuthor: 'GreenDelta Berlin'
+    standards: inhalt.werte.iso14040Iso14044,
+    institutionOrAuthor: inhalt.werte.greendeltaBerlin
   },
   {
     id: 'madaster_platform',
-    name: 'Madaster Material Passport Platform',
+    name: inhalt.werte.madasterMaterialPassportPlatform,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz5,
     language: 'DT / ENG',
     accessType: 'Kostenlose Cloud',
     recommendationBadge: 'Standard im Büro',
     url: 'https://madaster.de/',
-    shortDesc: 'Kommerzielle Plattform für Materialpässe von Gebäuden mit Zirkularitätsindikator und CO₂-Bilanz.',
+    shortDesc: inhalt.werte.kommerziellePlattformFürMaterialpässe,
     detailedFeatures: [
-      'Automatisierte Generierung digitaler Materialpässe für Neubau und Bestand',
-      'Berechnung des Madaster Circularity Indicator (MCI) zur Messung der Kreislauffähigkeit',
-      'Toxizitätsbewertung und Nachweis rückbaubarer Konstruktionen',
-      'BIM-Integration für IFC-Modelle zur automatischen Mengenerfassung'
+      inhalt.werte.automatisierteGenerierungDigitalerMateri,
+      inhalt.werte.berechnungDesMadasterCircularity,
+      inhalt.werte.toxizitätsbewertungUndNachweisRückbaubar,
+      inhalt.werte.bimIntegrationFürIfc
     ],
-    standards: 'DIN EN 15978, Ellen MacArthur Foundation Circularity Framework',
-    institutionOrAuthor: 'Madaster Germany Services GmbH'
+    standards: inhalt.werte.dinEn15978Ellen,
+    institutionOrAuthor: inhalt.werte.madasterGermanyServicesGmbh
   },
   {
     id: 'concular_materials',
-    name: 'Concular Zirkulärer Marktplatz & Baustoffpass',
+    name: inhalt.werte.concularZirkulärerMarktplatzBaustoffpass,
     category: 'lca',
-    categoryLabel: 'LCA & Ökobilanz',
+    categoryLabel: inhalt.werte.lcaÖkobilanz6,
     language: 'DT',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://concular.de/',
-    shortDesc: 'Anbieter für zirkuläres Bauen: Materialerfassung vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.',
+    shortDesc: inhalt.werte.anbieterFürZirkuläresBauen,
     detailedFeatures: [
-      'Pre-Demolition Audit zur Identifikation wiederverwendbarer Bauteile und Rohstoffe',
-      'Marktplatz für Sekundärbaustoffe mit verifizierten Zustands- und Prüfberichten',
-      'Einsparungsrechner für CO₂-Emissionen und Rohstoffabbau durch Wiederverwendung',
-      'Unterstützung bei der Erfüllung von ESG- und Taxonomie-Kriterien'
+      inhalt.werte.preDemolitionAuditZur,
+      inhalt.werte.marktplatzFürSekundärbaustoffeMit,
+      inhalt.werte.einsparungsrechnerFürCoEmissionen,
+      inhalt.werte.unterstützungBeiDerErfüllung
     ],
-    standards: 'VDI 6210, DIN SPEC 91484 (Zirkuläres Bauen)',
-    institutionOrAuthor: 'Concular GmbH'
+    standards: inhalt.werte.vdi6210DinSpec,
+    institutionOrAuthor: inhalt.werte.concularGmbh
   },
 
   // 5. BIM & IFC
   {
     id: 'openbim_viewer',
-    name: 'OpenBIM IFC Web Viewer (thatOpen)',
+    name: inhalt.werte.openbimIfcWebViewer,
     category: 'bim',
-    categoryLabel: 'BIM & Geodaten',
+    categoryLabel: inhalt.werte.bimGeodaten,
     language: 'ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://thatopen.com/',
-    shortDesc: 'WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.',
+    shortDesc: inhalt.werte.webglBasierterOpenbimViewer,
     detailedFeatures: [
-      'Direktes Laden und Rendern großer IFC-Bauwerksmodelle im Browser',
-      'Hierarchische Inspektion von IfcProject, IfcBuildingStorey bis IfcWall / IfcBeam',
-      'Prüfung von Eigenschaftssätzen (Property Sets, Pset) und Baustoffattributen',
-      'Integrierte Messwerkzeuge für Abstände, Raumvolumen und Flächen'
+      inhalt.werte.direktesLadenUndRendern,
+      inhalt.werte.hierarchischeInspektionVonIfcproject,
+      inhalt.werte.prüfungVonEigenschaftssätzenProperty,
+      inhalt.werte.integrierteMesswerkzeugeFürAbstände
     ],
-    standards: 'buildingSMART IFC4 / IFC2x3',
-    institutionOrAuthor: 'That Open Company / Open Source'
+    standards: inhalt.werte.buildingsmartIfc4Ifc2x3,
+    institutionOrAuthor: inhalt.werte.thatOpenCompanyOpen
   },
   {
     id: 'bim_portal_bund',
-    name: 'BIM-Portal des Bundes',
+    name: inhalt.werte.bimPortalDesBundes,
     category: 'bim',
-    categoryLabel: 'BIM & Geodaten',
+    categoryLabel: inhalt.werte.bimGeodaten2,
     language: 'DT',
     accessType: 'Offizielle Behörde / API',
     url: 'https://www.bimdeutschland.de/',
     recommendationBadge: 'Offizieller Standard',
-    shortDesc: 'Zentrale Plattform der Bundesrepublik Deutschland für standardisierte Bauteil-Merkmalskataloge und AIA/BAP-Leitfäden.',
+    shortDesc: inhalt.werte.zentralePlattformDerBundesrepublik,
     detailedFeatures: [
-      'Einheitliche Merkmalskataloge zur Attribuierung digitaler Baustoffe und Bauteile',
-      'Muster-Auftraggeber-Informationsanforderungen (AIA) und BIM-Abwicklungspläne (BAP)',
-      'Schnittstellen für die automatisierte Übernahme in Planungssoftware',
-      'Kostenlos bereitgestellt für die gesamte deutsche Bauwirtschaft'
+      inhalt.werte.einheitlicheMerkmalskatalogeZurAttribuie,
+      inhalt.werte.musterAuftraggeberInformationsanforderun,
+      inhalt.werte.schnittstellenFürDieAutomatisierte,
+      inhalt.werte.kostenlosBereitgestelltFürDie
     ],
-    standards: 'BIM Deutschland, DIN EN ISO 19650',
-    institutionOrAuthor: 'Bundesministerium für Digitales und Verkehr (BMV) / BMWSB'
+    standards: inhalt.werte.bimDeutschlandDinEn,
+    institutionOrAuthor: inhalt.werte.bundesministeriumFürDigitalesUnd
   },
   {
     id: 'geoportal_bund',
-    name: 'Geoportal.de & Open Geodata',
+    name: inhalt.werte.geoportalDeOpenGeodata,
     category: 'bim',
-    categoryLabel: 'BIM & Geodaten',
+    categoryLabel: inhalt.werte.bimGeodaten3,
     language: 'DT',
     accessType: 'Offizielle Behörde / API',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.geoportal.de/',
-    shortDesc: 'Offizieller Zugang zu amtlichen Geobasis- und Geofachdaten (Digitale Geländemodelle DGM, Schutzgebiete, Bodenkarten, Flurkarten).',
+    shortDesc: inhalt.werte.offiziellerZugangZuAmtlichen,
     detailedFeatures: [
-      'Amtliche Luftbilder (Orthofotos) und Höhenmodelle für Trassen- und Lagepläne',
-      'Hochwasserrisiko- und Überschwemmungsgebietskarten der Bundesländer',
-      'WMS/WFS-Geodienste zur direkten Einbindung in QGIS, Civil 3D und Allplan',
-      'Fundamentale Grundlage für Baugrunderkundungen und Baustellenlogistik'
+      inhalt.werte.amtlicheLuftbilderOrthofotosUnd,
+      inhalt.werte.hochwasserrisikoUndÜberschwemmungsgebiet,
+      inhalt.werte.wmsWfsGeodiensteZur,
+      inhalt.werte.fundamentaleGrundlageFürBaugrunderkundun
     ],
-    standards: 'INSPIRE-Richtlinie, Open Data Bund',
-    institutionOrAuthor: 'Bundesamt für Kartographie und Geodäsie (BKG)'
+    standards: inhalt.werte.inspireRichtlinieOpenData,
+    institutionOrAuthor: inhalt.werte.bundesamtFürKartographieUnd
   },
 
   // 6. Geotechnik & Baustofflabore
   {
     id: 'nist_vcctl',
-    name: 'NIST Virtual Cement and Concrete Testing Lab (VCCTL)',
+    name: inhalt.werte.nistVirtualCementAnd,
     category: 'geotechnik',
-    categoryLabel: 'Geotechnik & Baustofflabore',
+    categoryLabel: inhalt.werte.geotechnikBaustofflabore,
     language: 'ENG',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.nist.gov/services-resources/software/vcctl-software',
-    shortDesc: 'Simulationssoftware des US-amerikanischen NIST zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.',
+    shortDesc: inhalt.werte.simulationssoftwareDesUsAmerikanischen,
     detailedFeatures: [
-      'Simulation der Hydratationskinetik von Klinkerphasen (C₃S, C₂S, C₃A, C₄AF)',
-      'Mikrostrukturmodellierung und Porenraumverteilung im Zementstein',
-      'Berechnung von Festigkeitsentwicklung und Chloriddiffusionskoeffizienten',
-      'Wissenschaftliches Referenzmodell für Bindemitteloptimierung'
+      inhalt.werte.simulationDerHydratationskinetikVon,
+      inhalt.werte.mikrostrukturmodellierungUndPorenraumver,
+      inhalt.werte.berechnungVonFestigkeitsentwicklungUnd,
+      inhalt.werte.wissenschaftlichesReferenzmodellFürBinde
     ],
-    standards: 'ASTM / ACI Standards',
-    institutionOrAuthor: 'National Institute of Standards and Technology (NIST)'
+    standards: inhalt.werte.astmAciStandards,
+    institutionOrAuthor: inhalt.werte.nationalInstituteOfStandards
   },
 ];
 
@@ -459,196 +461,7 @@ interface ApiCodeSnippet {
   benefit: string;
 }
 
-const API_SNIPPETS: ApiCodeSnippet[] = [
-  {
-    id: 'oekobaudat_api',
-    title: '1. ÖKOBAUDAT REST-API: EPD-Daten automatisiert abfragen',
-    subtitle: 'Direkte Abfrage von GWP- und Primärenergie-Faktoren ohne manuelle Recherche',
-    category: 'Ökobilanz & LCA',
-    prerequisites: 'pip install requests',
-    code: `import requests
-import json
-
-# Offizielle REST-Schnittstelle der ÖKOBAUDAT (Bundesministerium BMWSB)
-BASE_URL = "https://oekobaudat.de/OEKOBAU.DAT/resource/datastocks/cdb39638-1e16-4100-b086-632f002282e4"
-
-def search_oekobaudat_material(query="Beton"):
-    """
-    Sucht in der ÖKOBAUDAT nach Baustoffen und listet EPD-Kennwerte (GWP, PENRT) auf.
-    """
-    url = f"{BASE_URL}/processes?search=true&query={query}&format=json"
-    headers = {"Accept": "application/json"}
-
-    print(f"Suchen Sie nach '{query}' in ÖKOBAUDAT...")
-    res = requests.get(url, headers=headers, timeout=10)
-    
-    if res.status_code == 200:
-        data = res.json()
-        items = data.get("data", [])
-        print(f"Gefundene EPD-Datensätze: {len(items)}\\n")
-        
-        for idx, item in enumerate(items[:5], 1):
-            name = item.get("name", {}).get("value", "Ohne Bezeichnung")
-            uuid = item.get("uuid")
-            category = item.get("classification", {}).get("value", "Allgemein")
-            print(f"[{idx}] {name}")
-            print(f"    UUID: {uuid}")
-            print(f"    Kategorie: {category}\\n")
-        return items
-    else:
-        print(f"Fehler: HTTP {res.status_code}")
-        return []
-
-if __name__ == "__main__":
-    # Beispiel: Transportbeton C25/30 oder Holz suchen
-    search_oekobaudat_material("Transportbeton")`,
-    explanation: 'Die offizielle REST-API der ÖKOBAUDAT ermöglicht es Planern, verifizierte EPD-Datensätze direkt in eigene Berechnungs-Skripte, Excel-Vorlagen oder BIM-Pipelines einzubinden, anstatt Werte manuell abzutippen.',
-    benefit: 'Verhindert Übertragungsfehler bei QNG-Nachweisen und DGNB-Zertifizierungen und erlaubt die automatisierte Bilanzierung tausender Bauteile in Sekunden.'
-  },
-  {
-    id: 'ifc_quantities',
-    title: '2. IFC-Bauteilmengen & Materialextraktion (IfcOpenShell)',
-    subtitle: 'Automatisierte Mengenermittlung (Qto) und Massenberechnung aus digitalen Modellen',
-    category: 'OpenBIM & Bauinformatik',
-    prerequisites: 'pip install ifcopenshell',
-    code: `import ifcopenshell
-import ifcopenshell.util.element
-
-def extract_concrete_volumes(ifc_filepath):
-    """
-    Liest ein OpenBIM IFC-Modell (IFC4) ein und summiert das Netto-Volumen aller
-    tragenden Wände und Decken für die Ökobilanzierung.
-    """
-    model = ifcopenshell.open(ifc_filepath)
-    walls = model.by_type("IfcWall")
-    slabs = model.by_type("IfcSlab")
-
-    total_wall_volume = 0.0
-    total_slab_volume = 0.0
-    RHO_BETON = 2400.0  # Rohdichte Normalbeton [kg/m³]
-
-    # Wände durchlaufen
-    for wall in walls:
-        psets = ifcopenshell.util.element.get_psets(wall)
-        net_vol = psets.get("Qto_WallBaseQuantities", {}).get("NetVolume")
-        if net_vol:
-            total_wall_volume += float(net_vol)
-
-    # Decken durchlaufen
-    for slab in slabs:
-        psets = ifcopenshell.util.element.get_psets(slab)
-        net_vol = psets.get("Qto_SlabBaseQuantities", {}).get("NetVolume")
-        if net_vol:
-            total_slab_volume += float(net_vol)
-
-    total_vol = total_wall_volume + total_slab_volume
-    total_mass_t = (total_vol * RHO_BETON) / 1000.0
-
-    print("=== IFC MENGEN-TAKEOFF ERGEBNIS ===")
-    print(f"Wand-Volumen (IfcWall):     {total_wall_volume:8.2f} m³")
-    print(f"Decken-Volumen (IfcSlab):   {total_slab_volume:8.2f} m³")
-    print(f"Gesamtvolumen Beton:        {total_vol:8.2f} m³")
-    print(f"Gesamtmasse (ρ=2400 kg/m³): {total_mass_t:8.2f} Tonnen")
-    return total_vol, total_mass_t
-
-# Ausführen mit beliebiger IFC-Datei:
-# extract_concrete_volumes("MeinGebaeude_Architektur.ifc")`,
-    explanation: 'Mit der freien Python-Bibliothek IfcOpenShell können IFC-Gebäudemodelle vollständig zerlegt werden. Das Skript greift auf die genormten BaseQuantities zu und extrahiert exakte Netto-Volumina.',
-    benefit: 'Verbindet CAD-CAD-Software (Revit, ArchiCAD, Allplan) über standardisiertes OpenBIM nahtlos mit den CO₂-Berechnungen von BaustoffBoard.'
-  },
-  {
-    id: 'ubakus_calc',
-    title: '3. Bauphysik-Algorithmus: U-Wert mehrschichtiger Bauteile berechnen',
-    subtitle: 'Algorithmus zur Berechnung mehrschichtiger Bauteile nach DIN EN ISO 6946',
-    category: 'Bauphysik & Feuchteschutz',
-    prerequisites: 'Standard Python (keine externen Pakete erforderlich)',
-    code: `def calculate_u_value(layers, r_si=0.13, r_se=0.04):
-    """
-    Berechnet den Wärmedurchgangskoeffizienten U [W/(m²K)] eines mehrschichtigen
-    Bauteils nach DIN EN ISO 6946 (analog zur Ubakus-Berechnungslogik).
-    
-    layers: Liste von Dicts mit 'name', Dicke 'd' [m] und Leitfähigkeit 'lambda_val' [W/(mK)]
-    r_si: Wärmeübergangswiderstand innen (horizontale Strömung = 0,13 m²K/W)
-    r_se: Wärmeübergangswiderstand außen (0,04 m²K/W)
-    """
-    r_t = r_si + r_se
-    print(f"{'Schicht-Bezeichnung':<28} | {'Dicke [m]':<10} | {'λ [W/mK]':<10} | {'R [m²K/W]':<10}")
-    print("-" * 68)
-
-    for lyr in layers:
-        r_layer = lyr["d"] / lyr["lambda_val"]
-        r_t += r_layer
-        print(f"{lyr['name']:<28} | {lyr['d']:<10.4f} | {lyr['lambda_val']:<10.3f} | {r_layer:<10.3f}")
-
-    u_value = 1.0 / r_t
-    print("-" * 68)
-    print(f"R_gesamt (inkl. R_si={r_si}, R_se={r_se}): {r_t:.3f} m²K/W")
-    print(f"Resultierender U-Wert:                    {u_value:.3f} W/(m²K)")
-    return u_value, r_t
-
-# Beispiel: Gedämmte Holzrahmen-Außenwand
-beispiel_aufbau = [
-    {"name": "1. Gipskartonplatte", "d": 0.0125, "lambda_val": 0.250},
-    {"name": "2. Installationsebene / Luft", "d": 0.0400, "lambda_val": 0.160},
-    {"name": "3. OSB-Platte (Dampfbremse)", "d": 0.0180, "lambda_val": 0.130},
-    {"name": "4. Holzfaser-Dämmung 038", "d": 0.2000, "lambda_val": 0.038},
-    {"name": "5. Holzfaser-Putzträger", "d": 0.0600, "lambda_val": 0.043},
-    {"name": "6. Mineralischer Außenputz", "d": 0.0100, "lambda_val": 0.800}
-]
-
-if __name__ == "__main__":
-    calculate_u_value(beispiel_aufbau)`,
-    explanation: 'Dieser Python-Algorithmus setzt die Berechnungslogik von Ubakus nach DIN EN ISO 6946 transparent um. Er iteriert über die Schichten und ermittelt den Gesamtwärmedurchgangskoeffizienten.',
-    benefit: 'Ermöglicht automatisierte Parameterstudien und Optimierungsschleifen zur minimalen Dämmstärke für KfW-40- und Passivhausstandards.'
-  },
-  {
-    id: 'statik_beam_calc',
-    title: '4. Tragwerks-Vorbemessung: Einfeldträger GZT & GZG (Eurocode 2/3/5)',
-    subtitle: 'Automatisierte Biegemomente, Querkräfte und Durchbiegungen nach Eurocode',
-    category: 'Statik & Tragwerk',
-    prerequisites: 'Standard Python (optional: pip install matplotlib)',
-    code: `def vorbemessung_traeger(l_span=6.0, q_gk=4.5, q_qk=3.0, e_modul=33000e6, b=0.25, h=0.45):
-    """
-    Einfeldträger-Vorbemessung nach DIN EN 1990 / DIN EN 1992-1-1.
-    l_span:   Stützweite [m]
-    q_gk:     Ständige Gleichlast [kN/m]
-    q_qk:     Veränderliche Gleichlast [kN/m]
-    e_modul:  Elastizitätsmodul [N/m²] (z.B. C25/30 = 33.000 MPa)
-    b, h:     Querschnittsbreite und -höhe [m]
-    """
-    gamma_g = 1.35
-    gamma_q = 1.50
-
-    # 1. Grenzzustand der Tragfähigkeit (GZT)
-    q_ed = gamma_g * q_gk + gamma_q * q_qk
-    m_ed = (q_ed * (l_span ** 2)) / 8.0  # Biegemoment kNm
-    v_ed = (q_ed * l_span) / 2.0         # Querkraft am Auflager kN
-
-    # 2. Grenzzustand der Gebrauchstauglichkeit (GZG)
-    # Flächenträgheitsmoment Rechteckquerschnitt I_y = b * h³ / 12
-    i_y = (b * (h ** 3)) / 12.0
-    
-    # Quasi-ständige Lastkombination: q_sls = gk + psi_2 * qk (psi_2 = 0.3 für Wohnbauten)
-    q_sls_nm = (q_gk + 0.3 * q_qk) * 1000.0  # N/m
-    w_sls_m = (5.0 * q_sls_nm * (l_span ** 4)) / (384.0 * e_modul * i_y)
-    w_sls_mm = w_sls_m * 1000.0
-    w_zul_mm = (l_span / 250.0) * 1000.0
-
-    print("=== VORBEMESSUNG EINFELDTRÄGER (EUROCODE) ===")
-    print(f"Spannweite:             L = {l_span:.2f} m")
-    print(f"Bemessungslast GZT:    q_Ed = {q_ed:.2f} kN/m")
-    print(f"Max. Biegemoment:      M_Ed = {m_ed:.2f} kNm")
-    print(f"Max. Auflagerquerkraft:V_Ed = {v_ed:.2f} kN")
-    print(f"Durchbiegung w_SLS:    {w_sls_mm:.2f} mm (Grenzwert L/250 = {w_zul_mm:.2f} mm)")
-    print(f"Nachweis GZG erfüllt:  {'JA (Ausnutzung ' + str(round(w_sls_mm/w_zul_mm*100, 1)) + '%)' if w_sls_mm <= w_zul_mm else 'NEIN (Querschnitt vergrößern!)'}")
-    return m_ed, v_ed, w_sls_mm
-
-if __name__ == "__main__":
-    vorbemessung_traeger(l_span=5.5, q_gk=5.0, q_qk=2.5)`,
-    explanation: 'Dieses Skript bildet die mathematischen Grundlagen von Calcpad und SkyCiv ab. Es ermittelt deterministisch Schnittgrößen im GZT sowie die elastische Verformung im GZG unter quasi-ständiger Einwirkungskombination.',
-    benefit: 'Schnelle Verifikation von Vorlesungsaufgaben und Plausibilitätsprüfungen vor der FE-Modellierung in großen Statikprogrammen.'
-  }
-];
+const API_SNIPPETS: ApiCodeSnippet[] = inhalt.daten.API_SNIPPETS;
 
 export default function OnlineTools() {
   const [currentView, setCurrentView] = useState<'matrix' | 'api_lab'>('matrix');
@@ -688,24 +501,17 @@ export default function OnlineTools() {
               <Globe size={24} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-text-main">
-                Empfohlene Online-Tools &amp; Webrechner
-              </h1>
-              <p className="text-sm text-text-main/70">
-                Kuratierte, praxiserprobte und kostenlose Weblösungen für Bauingenieure und Architekten (DT &amp; ENG)
-              </p>
+              <h1 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.empfohleneOnlineToolsWebrechner} /></h1>
+              <p className="text-sm text-text-main/70"><MdText text={inhalt.texte.kuratiertePraxiserprobteUndKostenlose} /></p>
             </div>
           </div>
           <div className="flex items-center gap-2 bg-off-white px-3 py-1.5 rounded-xl border border-home-grau/30 text-xs text-text-main/80 font-medium">
             <ShieldCheck size={16} className="text-emerald-600" />
-            <span>100 % Geprüfte Fachquellen &amp; Normbezug</span>
+            <span><MdText text={inhalt.texte.t100GeprüfteFachquellenNormbezug} /></span>
           </div>
         </div>
 
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          Diese Fachübersicht bündelt nützliche Online-Rechner, numerische Simulationen, behördliche Geoportale und parametrische Skripte.
-          Alle aufgeführten Tools sind entweder <strong>vollständig kostenlos im Web nutzbar</strong>, stehen als <strong>geprüfte Open-Source-Software</strong> bereit oder bieten unkomplizierte <strong>Freemium- und Studentenmodelle</strong> für Studium, Masterthesen und den täglichen Ingenieurbüro-Einsatz.
-        </div>
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed"><MdText text={inhalt.texte.dieseFachübersichtBündeltNützliche} /></div>
 
         {/* View Switcher: Matrix vs. API Lab */}
         <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
@@ -718,7 +524,7 @@ export default function OnlineTools() {
             }`}
           >
             <Layers size={14} />
-            <span>Kuratierte Webrechner-Matrix ({ONLINE_TOOLS.length} Tools)</span>
+            <span><MdText text={inhalt.texte.kuratierteWebrechnerMatrix} />{ONLINE_TOOLS.length} Tools)</span>
           </button>
           <button aria-pressed={currentView === 'api_lab'}
             onClick={() => setCurrentView('api_lab')}
@@ -729,7 +535,7 @@ export default function OnlineTools() {
             }`}
           >
             <Terminal size={14} />
-            <span>API- &amp; Schnittstellen-Lab (Python &amp; REST)</span>
+            <span><MdText text={inhalt.texte.apiSchnittstellenLabPython} /></span>
             <span className="px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold">NEU</span>
           </button>
         </div>
@@ -744,7 +550,7 @@ export default function OnlineTools() {
               <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input 
                 type="text"
-                placeholder="Nach Tool, Stichwort, Norm oder Herausgeber suchen..."
+                placeholder={inhalt.werte.nachToolStichwortNorm}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 text-sm bg-off-white rounded-xl border border-home-grau/30 text-text-main placeholder:text-text-main/40 focus:outline-none focus:border-shiraz transition-all"
@@ -770,9 +576,7 @@ export default function OnlineTools() {
                     ? 'bg-shiraz text-white border-shiraz shadow-sm'
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                Statik &amp; Tragwerk
-              </button>
+              ><MdText text={inhalt.texte.statikTragwerk} /></button>
               <button aria-pressed={selectedCategory === 'bauphysik'}
                 onClick={() => setSelectedCategory('bauphysik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
@@ -800,9 +604,7 @@ export default function OnlineTools() {
                     ? 'bg-shiraz text-white border-shiraz shadow-sm'
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                LCA &amp; Ökobilanz
-              </button>
+              ><MdText text={inhalt.texte.lcaÖkobilanz} /></button>
               <button aria-pressed={selectedCategory === 'bim'}
                 onClick={() => setSelectedCategory('bim')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
@@ -810,9 +612,7 @@ export default function OnlineTools() {
                     ? 'bg-shiraz text-white border-shiraz shadow-sm'
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                BIM &amp; Geodaten
-              </button>
+              ><MdText text={inhalt.texte.bimGeodaten} /></button>
               <button aria-pressed={selectedCategory === 'geotechnik'}
                 onClick={() => setSelectedCategory('geotechnik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
@@ -820,9 +620,7 @@ export default function OnlineTools() {
                     ? 'bg-shiraz text-white border-shiraz shadow-sm'
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                Geotechnik &amp; Labor
-              </button>
+              ><MdText text={inhalt.texte.geotechnikLabor} /></button>
             </div>
           </div>
 
@@ -872,7 +670,7 @@ export default function OnlineTools() {
 
                   {/* Features List */}
                   <div className="bg-off-white/80 p-3.5 rounded-xl border border-home-grau/25 mt-1">
-                    <span className="text-xs font-bold text-slate-700 block mb-2">Kernfunktionen &amp; Stärken:</span>
+                    <span className="text-xs font-bold text-slate-700 block mb-2"><MdText text={inhalt.texte.kernfunktionenStärken} /></span>
                     <ul className="space-y-1.5">
                       {tool.detailedFeatures.map((feat, idx) => (
                         <li key={idx} className="text-xs text-text-main/75 flex items-start gap-2">
@@ -902,9 +700,7 @@ export default function OnlineTools() {
                       <ExternalLink size={13} />
                     </a>
                   ) : (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-600 text-xs font-medium rounded-xl border border-slate-200">
-                      Fachinformation / Offline
-                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-600 text-xs font-medium rounded-xl border border-slate-200"><MdText text={inhalt.texte.fachinformationOffline} /></span>
                   )}
                 </div>
               </div>
@@ -913,8 +709,8 @@ export default function OnlineTools() {
             {filteredTools.length === 0 && (
               <div className="col-span-full bg-white p-12 text-center rounded-2xl border border-home-grau/30 text-text-main/60">
                 <Search size={32} className="mx-auto text-slate-300 mb-3" />
-                <p className="font-medium">Keine Werkzeuge für die gewählten Filterkriterien gefunden.</p>
-                <p className="text-xs mt-1">Setzen Sie den Suchbegriff oder die Kategorie zurück.</p>
+                <p className="font-medium"><MdText text={inhalt.texte.keineWerkzeugeFürDie} /></p>
+                <p className="text-xs mt-1"><MdText text={inhalt.texte.setzenSieDenSuchbegriff} /></p>
               </div>
             )}
           </div>
@@ -925,12 +721,8 @@ export default function OnlineTools() {
         <div className="flex flex-col gap-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Terminal className="text-shiraz" size={20} />
-              API- &amp; Schnittstellen-Lab (Python &amp; REST)
-            </h2>
-            <p className="text-sm text-text-main/75 leading-relaxed">
-              Moderne Bauingenieure und Architekten automatisieren Routineabfragen. Hier finden Sie praxisnahe, direkt kopierbare Code-Snippets, mit denen Sie offizielle REST-APIs (wie ÖKOBAUDAT) und BIM-Schnittstellen (IFC) eigenständig anbinden können.
-            </p>
+              <Terminal className="text-shiraz" size={20} /><MdText text={inhalt.texte.apiSchnittstellenLabPython2} /></h2>
+            <p className="text-sm text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.moderneBauingenieureUndArchitekten} /></p>
           </div>
 
           <div className="space-y-6">
@@ -965,12 +757,12 @@ export default function OnlineTools() {
                     {copiedId === snippet.id ? (
                       <>
                         <Check size={14} className="text-emerald-600" />
-                        <span className="text-emerald-700">Code kopiert!</span>
+                        <span className="text-emerald-700"><MdText text={inhalt.texte.codeKopiert} /></span>
                       </>
                     ) : (
                       <>
                         <Copy size={14} className="text-shiraz" />
-                        <span>Code kopieren</span>
+                        <span><MdText text={inhalt.texte.codeKopieren} /></span>
                       </>
                     )}
                   </button>
@@ -985,16 +777,14 @@ export default function OnlineTools() {
                 <div className="p-5 bg-off-white border-t border-home-grau/20 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   <div>
                     <span className="font-bold text-slate-800 block mb-1 flex items-center gap-1">
-                      <Code size={13} className="text-shiraz" /> Didaktische Funktionsweise:
-                    </span>
+                      <Code size={13} className="text-shiraz" /><MdText text={inhalt.texte.didaktischeFunktionsweise} /></span>
                     <p className="text-text-main/80 leading-relaxed">
                       {snippet.explanation}
                     </p>
                   </div>
                   <div>
                     <span className="font-bold text-emerald-800 block mb-1 flex items-center gap-1">
-                      <Sparkles size={13} className="text-emerald-600" /> Praxisnutzen für Studium &amp; Büro:
-                    </span>
+                      <Sparkles size={13} className="text-emerald-600" /><MdText text={inhalt.texte.praxisnutzenFürStudiumBüro} /></span>
                     <p className="text-text-main/80 leading-relaxed">
                       {snippet.benefit}
                     </p>
@@ -1009,35 +799,24 @@ export default function OnlineTools() {
       {/* Didaktische Tipps für das Studium & Ingenieurbüro */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Sparkles className="text-shiraz" size={18} />
-          Best-Practice-Workflow: Kombination von Online-Tools mit BaustoffBoard
-        </h3>
+          <Sparkles className="text-shiraz" size={18} /><MdText text={inhalt.texte.bestPracticeWorkflowKombination} /></h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-text-main/80">
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <Activity size={14} className="text-shiraz" /> 1. Vorbemessung &amp; Plausibilität
-            </h4>
-            <p className="leading-relaxed">
-              Nutzen Sie Online-Rechner (z. B. SkyCiv oder Calcpad) für die schnelle Ersteinschätzung von Momenten und Querkräften. Vergleichen Sie die Werte stets mit den Bemessungsmodulen in BaustoffBoard (z. B. Biegebemessung, Querkraft).
-            </p>
+              <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.t1VorbemessungPlausibilität} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.nutzenSieOnlineRechner} /></p>
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <Leaf size={14} className="text-shiraz" /> 2. Ökobilanz &amp; Baustoffwahl
-            </h4>
-            <p className="leading-relaxed">
-              Verknüpfen Sie das BaustoffBoard-Modul <em>LCA Lebenszyklussimulator</em> mit den exakten EPD-Stammdaten aus der ÖKOBAUDAT, WECOBIS und dem EC3-Tool, um Primärenergiebedarfe (PENRT) und GWP-Kennwerte für Förderanträge (QNG, KfW) nachzuweisen.
-            </p>
+              <Leaf size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2ÖkobilanzBaustoffwahl} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.verknüpfenSieDasBaustoffboard} /></p>
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <Box size={14} className="text-shiraz" /> 3. Bauphysik &amp; Detailausbildung
-            </h4>
-            <p className="leading-relaxed">
-              Schichtaufbauten aus dem BaustoffBoard-Modul <em>Bauphysik / U-Wert</em> können bei komplexen geometrischen Anschlüssen direkt mit THERM auf 2D-Wärmebrücken und mit Ubakus auf Kondensatausfall überprüft werden.
-            </p>
+              <Box size={14} className="text-shiraz" /><MdText text={inhalt.texte.t3BauphysikDetailausbildung} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.schichtaufbautenAusDemBaustoffboard} /></p>
           </div>
         </div>
       </div>
@@ -1045,73 +824,34 @@ export default function OnlineTools() {
       {/* Standardisierter Footer */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Kontrollrechnung für ein Online-Stabwerkprogramm"
+        title={inhalt.werte.beispiel1KontrollrechnungFür}
         zielGleichung="M_{Ed} = \frac{q_{Ed} L^2}{8}, \quad w = \frac{5 q L^4}{384 E I}"
-        schritte={[
-          { titel: 'Moment', erklaerung: 'Holzbalken C24, b/h = 120/240 mm, L = 5,0 m, q_Ed = 5,0 kN/m:', formel: 'M_{Ed} = \\frac{5{,}0 \\cdot 5{,}0^2}{8} = 15{,}6\\,\\text{kNm}' },
-          { titel: 'Steifigkeit', erklaerung: 'E_0,mean = 11 000 N/mm², I = 120 · 240³/12:', formel: 'I = 1{,}382 \\cdot 10^8\\,\\text{mm}^4' },
-          { titel: 'Durchbiegung', erklaerung: 'Quasi-ständige Last 3,0 kN/m (ohne Kriechen):', formel: 'w = \\frac{5 \\cdot 3{,}0 \\cdot 5\\,000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}' }
-        ]}
-        ergebnisHinweis="Liefert das Programm stark abweichende Werte, liegen oft Einheitenfehler (kN/m gegenüber N/mm) oder falsche Lagerbedingungen vor. Die Kriechverformung (k_def) ist für den Endzustand zusätzlich zu berücksichtigen."
-        normQuelle="DIN EN 1995-1-1:2010-12 mit NA; DIN EN 1990"
+        schritte={inhalt.daten["OnlineTools.schritte"]}
+        ergebnisHinweis={inhalt.werte.liefertDasProgrammStark}
+        normQuelle={inhalt.werte.dinEn199512}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Bemessungslast einer Decke als Eingabe für Online-Tools"
+        title={inhalt.werte.beispiel2BemessungslastEiner}
         zielGleichung="q_{Ed} = 1{,}35 \cdot g_k + 1{,}5 \cdot q_k"
-        schritte={[
-          { titel: 'Ständige Lasten', erklaerung: 'Stahlbetondecke 20 cm (25 kN/m³) plus Ausbau 1,5 kN/m²:', formel: 'g_k = 0{,}20 \\cdot 25 + 1{,}5 = 6{,}5\\,\\text{kN/m}^2' },
-          { titel: 'Nutzlast', erklaerung: 'Wohnräume (Kategorie A2):', formel: 'q_k = 1{,}5\\,\\text{kN/m}^2 \\text{ (ggf. Trennwandzuschlag)}' },
-          { titel: 'Bemessungswert', erklaerung: 'Grundkombination:', formel: 'q_{Ed} = 1{,}35 \\cdot 6{,}5 + 1{,}5 \\cdot 1{,}5 = 11{,}0\\,\\text{kN/m}^2' }
-        ]}
-        ergebnisHinweis="Online-Rechner verlangen oft charakteristische Lasten und bilden die Kombination selbst – vorher klären, sonst werden Teilsicherheitsbeiwerte doppelt angesetzt."
-        normQuelle="DIN EN 1990 mit NA; DIN EN 1991-1-1 mit NA"
+        schritte={inhalt.daten["OnlineTools.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.onlineRechnerVerlangenOft}
+        normQuelle={inhalt.werte.dinEn1990Mit}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="online_tools" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 13 Digitales: Literatur, Normausgaben und Kontrollrechnungen geprüft; externe Links ohne Gewähr auf Erreichbarkeit; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap13}
         wikipedia={[
           { title: 'Bausoftware', url: 'https://de.wikipedia.org/wiki/Bausoftware' },
-          { title: 'Building Information Modeling', url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
+          { title: inhalt.werte.buildingInformationModeling, url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
-          'Barth, C.; Rustler, W.: Finite Elemente in der Baustatik-Praxis. Berlin: Beuth/Bauwerk (aktuelle Auflage)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)' },
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)' },
-          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)' }
-        ]}
-        weblinks={[
-          { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },
-          { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen', url: 'https://www.dlubal.com/en/support-and-learning/service/geo-zone-tool-snow-wind-and-seismic-zone-maps' },
-          { title: 'Fraunhofer IBP WUFI – Instationäre Feuchte- und Wärmesimulation', url: 'https://wufi.de/' },
-          { title: 'ÖKOBAUDAT – Ökobilanz-Datenbank des BMWSB (BBSR)', url: 'https://www.oekobaudat.de/' },
-          { title: 'WECOBIS – Ökologisches Baustoffportal des Bundes', url: 'https://www.wecobis.de/' },
-          { title: 'Madaster Germany – Material- und Zirkularitätskataster', url: 'https://madaster.de/' },
-          { title: 'Concular – Zirkulärer Marktplatz für Sekundärbaustoffe', url: 'https://concular.de/' },
-          { title: 'Calcpad – Parametrische Ingenieurberechnungen', url: 'https://calcpad.eu/' },
-          { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' }
-        ]}
-        formeln={[
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum_{i=1}^n \\frac{d_i}{\\lambda_i} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]',
-            erklaerung: 'Wärmedurchgangskoeffizient eines mehrschichtigen homogenen Bauteils mit innerem/äußerem Wärmeübergangswiderstand und Schichtdicken d_i sowie Wärmeleitfähigkeiten lambda_i.',
-            quelle: 'DIN EN ISO 6946'
-          },
-          {
-            formel: 'M_{Ed} = \\frac{q_{Ed} \\cdot L^2}{8}, \\quad w_{\\text{SLS}} = \\frac{5 \\cdot q_{\\text{quasi}} \\cdot L^4}{384 \\cdot E \\cdot I_y} \\le \\frac{L}{250}',
-            erklaerung: 'Klassische Schnittgrößen- und Durchbiegungsformel für Einfeldträger im GZT und GZG unter Gleichstreckenlast.',
-            quelle: 'DIN EN 1990 / DIN EN 1992-1-1'
-          }
-        ]}
+        literatur={inhalt.daten["OnlineTools.literatur"]}
+        regelwerke={inhalt.daten["OnlineTools.regelwerke"]}
+        weblinks={inhalt.daten["OnlineTools.weblinks"]}
+        formeln={inhalt.daten["OnlineTools.formeln"]}
       />
     </div>
   );

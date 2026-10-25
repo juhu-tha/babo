@@ -1,0 +1,30 @@
+{
+  "texte": {
+    "systematischeAbweichungVsZufällige": " Systematische Abweichung vs. Zufällige Abweichung",
+    "dasMessergebnisBeiFestigkeits": "Das Messergebnis bei Festigkeits- und Verdrängungsversuchen wird durch zwei grundlegende Abweichungsformen beeinflusst. Nach ISO 5725-1 setzt sich die **Genauigkeit** aus **Richtigkeit** (systematische Abweichung des Mittelwerts) und **Präzision** (zufällige Streuung) zusammen. Das Treffbild unten zeigt die vier Kombinationen.",
+    "richtigkeitEnglTrueness": "Richtigkeit (engl. trueness)",
+    "hochZentriert": "Hoch (Zentriert)",
+    "niedrigVerschoben": "Niedrig (verschoben)",
+    "systematischeMessfehlerZB": "Systematische Messfehler (z. B. verbogene Druckplatte, falsch kalibrierter Kraftaufnehmer) verzerren den Mittelwert dauerhaft in eine Richtung.",
+    "präzisionStreuungEnglPrecision": "Präzision / Streuung (engl. precision)",
+    "hochGeringeStreuung": "Hoch (Geringe Streuung)",
+    "niedrigWeitGestreut": "Niedrig (Weit gestreut)",
+    "zufälligeMessfehlerZB": "Zufällige Messfehler (z. B. Schwankungen des Raumklimas, inhomogenes Gestein, Ableseunsicherheit) führen zu unvorhersehbaren Streuungen um den Mittelwert.",
+    "ingenieurtechnischeDiagnose": "Ingenieurtechnische Diagnose:",
+    "schussbildAnzeigeTreffbild": "Schussbild-Anzeige (Treffbild)"
+  },
+  "werte": {
+    "richtigkeitHoch": "Richtigkeit hoch",
+    "systematischeAbweichung": "Systematische Abweichung",
+    "geringeStreuung": "Geringe Streuung",
+    "hohePrüfstreuung": "Hohe Prüfstreuung",
+    "richtigUndPräziseGeringe": "Richtig und präzise: geringe systematische Abweichung und geringe Streuung. Die Ergebnisse sind verlässlich.",
+    "achtungGuteWiederholbarkeitAber": "Achtung: gute Wiederholbarkeit, aber verschobener Mittelpunkt! Alle Werte weichen in dieselbe Richtung ab. Typische Ursache ist ein unentdeckter Kalibrierfehler – Mehrfachmessungen helfen hier nicht.",
+    "imMittelRichtigAber": "Im Mittel richtig, aber die Einzelwerte streuen stark. Ursache kann eine uneinheitliche Probenherstellung oder -vorbereitung sein; mehr Wiederholungen verkleinern die Unsicherheit des Mittelwerts.",
+    "wederRichtigNochPräzise": "Weder richtig noch präzise: systematische und zufällige Abweichungen sind unkontrolliert. Die Prüfeinrichtung ist bis zur Klärung (Kalibrierung, Verfahrensprüfung) außer Betrieb zu nehmen.",
+    "hochZentriert": "Hoch (zentriert)",
+    "niedrigSystemFehler": "Niedrig (system. Fehler)",
+    "hochKompakt": "Hoch (Kompakt)",
+    "niedrigGestreut": "Niedrig (Gestreut)"
+  }
+}

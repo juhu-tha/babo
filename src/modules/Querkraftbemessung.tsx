@@ -23,6 +23,8 @@ import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDiscla
 
 import { bemesseQuerkraft } from '@/src/calc/querkraft';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import inhalt from '@/content/querkraftbemessung/Querkraftbemessung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -74,7 +76,7 @@ export default function Querkraftbemessung() {
       labels: vEd_values,
       datasets: [
         {
-          label: 'Erforderliche Bügelbewehrung asw [cm²/m]',
+          label: inhalt.werte.erforderlicheBügelbewehrungAswCm,
           data: asw_values,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -82,7 +84,7 @@ export default function Querkraftbemessung() {
           tension: 0.1,
         },
         {
-          label: 'Mindestbewehrung asw,min [cm²/m]',
+          label: inhalt.werte.mindestbewehrungAswMinCm,
           data: asw_min_values,
           borderColor: '#64748b',
           borderDash: [5, 5],
@@ -100,13 +102,13 @@ export default function Querkraftbemessung() {
       x: {
         title: {
           display: true,
-          text: 'Querkraft V_Ed [kN]'
+          text: inhalt.werte.querkraftVEdKn
         }
       },
       y: {
         title: {
           display: true,
-          text: 'Bügelbewehrung a_sw [cm²/m]'
+          text: inhalt.werte.bügelbewehrungASwCm
         },
         beginAtZero: true
       }
@@ -136,37 +138,32 @@ export default function Querkraftbemessung() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center justify-between gap-2 flex-wrap mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Querkraftbemessung (Massivbau)
-            <InfoTooltip text="Berechnung der erforderlichen Querkraftbewehrung (Bügel) und Nachweis der Druckstrebe für einen Rechteckquerschnitt nach DIN EN 1992-1-1 mit NA DE." />
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.querkraftbemessungMassivbau} /><InfoTooltip text={inhalt.werte.berechnungDerErforderlichenQuerkraftbewe} />
           </h2>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
-          </span>
+          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300"><MdText text={inhalt.texte.berechnetNachDinEn} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Die Querkraftbemessung basiert auf dem Fachwerkmodell. Der Beton nimmt die Druckkräfte in den geneigten Druckstreben auf (<FormulaText text="V_{Rd,max}" />), während die Bügelbewehrung die Zugkräfte aufnimmt (<FormulaText text="V_{Rd,s}" />). Der Winkel der Druckstrebe (<FormulaText text="\theta" />) kann in Deutschland zwischen 18,4° und 45° gewählt werden (cot <FormulaText text="\theta" /> = 1,0 … 3,0). Ein flacherer Winkel erfordert weniger Bügelbewehrung, erhöht aber die Belastung der Betondruckstrebe.
-          </p>
+          <p><MdText text={inhalt.texte.dieQuerkraftbemessungBasiertAuf} /><FormulaText text="V_{Rd,max}" /><MdText text={inhalt.texte.währendDieBügelbewehrungDie} /><FormulaText text="V_{Rd,s}" /><MdText text={inhalt.texte.derWinkelDerDruckstrebe} /><FormulaText text="\theta" /><MdText text={inhalt.texte.kannInDeutschlandZwischen} /><FormulaText text="\theta" /><MdText text={inhalt.texte.t1030} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Querschnitt &amp; Material</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.querschnittMaterial} /></h3>
               <div className="grid grid-cols-1 gap-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <Slider info="Breite des Bauteils." label={<FormulaText text="Breite b" />} min={15} max={100} step={5} value={b} unit="cm" onChange={(e) => setB(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.breiteDesBauteils} label={<FormulaText text="Breite b" />} min={15} max={100} step={5} value={b} unit="cm" onChange={(e) => setB(Number(e.target.value))} />
                   <Slider label={<FormulaText text="Höhe h" />} min={20} max={150} step={5} value={h} unit="cm" onChange={(e) => setH(Number(e.target.value))} />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <Slider info="Abstand vom Rand zur Bewehrung." label={<FormulaText text="Randabstand d_1" />} min={2} max={10} step={0.5} value={d1} unit="cm" onChange={(e) => setD1(Number(e.target.value))} />
-                  <Slider info="Vorhandene Längsbewehrungsfläche (für VRd,c)." label={<FormulaText text="Längsbew. A_{sl}" />} min={0} max={50} step={0.5} value={asl} unit="cm²" onChange={(e) => setAsl(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.abstandVomRandZur} label={<FormulaText text={inhalt.werte.randabstandD1} />} min={2} max={10} step={0.5} value={d1} unit="cm" onChange={(e) => setD1(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.vorhandeneLängsbewehrungsflächeFürVrd} label={<FormulaText text={inhalt.werte.längsbewASl} />} min={0} max={50} step={0.5} value={asl} unit="cm²" onChange={(e) => setAsl(Number(e.target.value))} />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4 mt-2">
                   <div>
-                    <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main"><FormulaText text="Betonklasse f_{ck}" /></label><InfoTooltip text="Charakteristische Druckfestigkeit des Betons." /></div>
+                    <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main"><FormulaText text={inhalt.werte.betonklasseFCk} /></label><InfoTooltip text={inhalt.werte.charakteristischeDruckfestigkeitDesBeton} /></div>
                     <select 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={fck}
@@ -182,7 +179,7 @@ export default function Querkraftbemessung() {
                     </select>
                   </div>
                   <div>
-                    <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main">Bewehrungsart</label><InfoTooltip text="Wahl zwischen herkömmlichem Betonstahl oder Faserverbundwerkstoffen." /></div>
+                    <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main">Bewehrungsart</label><InfoTooltip text={inhalt.werte.wahlZwischenHerkömmlichemBetonstahl} /></div>
                     <select aria-label="Bewehrungsart" 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={bewehrungsArt}
@@ -198,8 +195,8 @@ export default function Querkraftbemessung() {
 
                 {bewehrungsArt === 'Stahl' ? (
                   <div className="mt-2">
-                    <label className="block text-xs font-bold text-text-main mb-2">Streckgrenze Stahl <FormulaText text="f_{yk}" /></label>
-                    <select aria-label="Streckgrenze Stahl" 
+                    <label className="block text-xs font-bold text-text-main mb-2"><MdText text={inhalt.texte.streckgrenzeStahl} /><FormulaText text="f_{yk}" /></label>
+                    <select aria-label={inhalt.werte.streckgrenzeStahl} 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={fyk}
                       onChange={(e) => setFyk(Number(e.target.value))}
@@ -209,20 +206,20 @@ export default function Querkraftbemessung() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-4 mt-2">
-                    <Slider label="Zugfestigkeit ftk" info="Charakteristische Zugfestigkeit des Faserverbundstabs." min={500} max={4000} step={100} value={ftk} unit="MPa" onChange={(e) => setFtk(Number(e.target.value))} />
-                    <Slider label="Teilsicherheitsbeiwert γFRP" info="Teilsicherheitsbeiwert für den Faserverbundwerkstoff." min={1.0} max={2.0} step={0.05} value={gammaFRP} unit="-" onChange={(e) => setGammaFRP(Number(e.target.value))} />
+                    <Slider label={inhalt.werte.zugfestigkeitFtk} info={inhalt.werte.charakteristischeZugfestigkeitDesFaserve} min={500} max={4000} step={100} value={ftk} unit="MPa" onChange={(e) => setFtk(Number(e.target.value))} />
+                    <Slider label={inhalt.werte.teilsicherheitsbeiwertFrp} info={inhalt.werte.teilsicherheitsbeiwertFürDenFaserverbund} min={1.0} max={2.0} step={0.05} value={gammaFRP} unit="-" onChange={(e) => setGammaFRP(Number(e.target.value))} />
                   </div>
                 )}
               </div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Einwirkung &amp; Modell</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.einwirkungModell} /></h3>
               <div className="grid grid-cols-1 gap-4">
-                <Slider label={<FormulaText text="Querkraft V_{Ed}" />} info="Bemessungswert der einwirkenden Querkraft aus äußeren Lasten." min={10} max={2000} step={10} value={vEd} unit="kN" onChange={(e) => setVEd(Number(e.target.value))} />
+                <Slider label={<FormulaText text={inhalt.werte.querkraftVEd} />} info={inhalt.werte.bemessungswertDerEinwirkendenQuerkraft} min={10} max={2000} step={10} value={vEd} unit="kN" onChange={(e) => setVEd(Number(e.target.value))} />
                 <div>
                   <Slider 
-                    info="Neigungswinkel der Beton-Druckstrebe des Fachwerkmodells (in Deutschland zwischen 18,4° und 45° bzw. cot θ von 1,0 bis 3,0)." 
+                    info={inhalt.werte.neigungswinkelDerBetonDruckstrebe} 
                     label={<FormulaText text="Druckstrebenneigung \theta" />} 
                     min={18.4} max={45} step={0.1} 
                     value={theta} unit="°" 
@@ -230,14 +227,11 @@ export default function Querkraftbemessung() {
                   />
                   <div className="text-xs text-text-main/70 mt-1 flex justify-between">
                     <span>cot θ = {formatDeZahl(results.cot_theta, 2)}</span>
-                    <span>Max. zulässig (NA DE): cot θ,max = {formatDeZahl(results.cot_theta_max, 2)}</span>
+                    <span><MdText text={inhalt.texte.maxZulässigNaDe} />{formatDeZahl(results.cot_theta_max, 2)}</span>
                   </div>
                   {results.isCotThetaExceeded && (
-                    <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md mt-2">
-                      In DE ist cot θ zusätzlich durch V<sub>Rd,cc</sub> begrenzt (DIN EN 1992-1-1/NA, Gl. 6.7aDE). 
-                      Für V<sub>Ed</sub> = {formatDeWert(vEd)} kN und V<sub>Rd,cc</sub> = {formatDeZahl(results.vRd_cc_kN, 1)} kN gilt cot θ,max = {formatDeZahl(results.cot_theta_max, 2)} (θ ≥ {formatDeZahl(results.theta_min_deg, 1)}°).
-                      {' '}<strong>Der Rechner begrenzt deshalb auf cot θ = {formatDeZahl(results.cot_theta_eff, 2)} (θ = {formatDeZahl(results.theta_eff_deg, 1)}°)</strong> für V<sub>Rd,max</sub> und a<sub>sw</sub>.
-                    </div>
+                    <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md mt-2"><MdText text={inhalt.texte.inDeIstCot} />{formatDeWert(vEd)}<MdText text={inhalt.texte.knUndVSub} />{formatDeZahl(results.vRd_cc_kN, 1)}<MdText text={inhalt.texte.knGiltCotMax} />{formatDeZahl(results.cot_theta_max, 2)} (θ ≥ {formatDeZahl(results.theta_min_deg, 1)}°).
+                      {' '}<strong><MdText text={inhalt.texte.derRechnerBegrenztDeshalb} />{formatDeZahl(results.cot_theta_eff, 2)} (θ = {formatDeZahl(results.theta_eff_deg, 1)}°)</strong><MdText text={inhalt.texte.fürVSubRd} /></div>
                   )}
                 </div>
               </div>
@@ -248,33 +242,28 @@ export default function Querkraftbemessung() {
             <EingabeHinweise hinweise={results.hinweise.filter(x => x.feld !== 'cotTheta' && x.feld !== 'vRdMax')} />
             <div className="p-6 rounded-xl shadow-md text-white bg-shiraz transition-colors">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90 flex items-center gap-2">
-                <Scissors size={18} /> Bemessungsergebnisse (NA DE)
-              </h3>
+                <Scissors size={18} /><MdText text={inhalt.texte.bemessungsergebnisseNaDe} /></h3>
               
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
-                  <div className="text-white/70 text-sm mb-1">Erf. Bügelbewehrung (<FormulaText text="a_{sw}" />)</div>
+                  <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.erfBügelbewehrung} /><FormulaText text="a_{sw}" />)</div>
                   <div className="text-4xl font-bold">{formatDeZahl(results.asw_final, 2)} <span className="text-xl">cm²/m</span></div>
                   {results.asw_final === results.asw_min && (
-                    <div className="text-xs text-white/80 mt-1 bg-white/10 inline-block px-2 py-1 rounded">
-                      Mindestbewehrung maßgebend
-                    </div>
+                    <div className="text-xs text-white/80 mt-1 bg-white/10 inline-block px-2 py-1 rounded"><MdText text={inhalt.texte.mindestbewehrungMaßgebend} /></div>
                   )}
                   {!results.isVRdcExceeded && (
-                    <div className="text-xs text-green-200 mt-1">
-                      V_Ed ≤ V_Rd,c (Rechnerisch nicht erforderlich)
-                    </div>
+                    <div className="text-xs text-green-200 mt-1"><MdText text={inhalt.texte.vEdVRd} /></div>
                   )}
                 </div>
                 <div className="flex flex-col gap-2">
                   <div>
-                    <div className="text-white/70 text-sm mb-1">Tragf. ohne Bügel (<FormulaText text="V_{Rd,c}" />)</div>
+                    <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.tragfOhneBügel} /><FormulaText text="V_{Rd,c}" />)</div>
                     <div className={`text-2xl font-bold ${results.isVRdcExceeded ? 'text-white/80' : 'text-green-300'}`}>
                       {formatDeZahl(results.vRd_c, 0)} <span className="text-base">kN</span>
                     </div>
                   </div>
                   <div>
-                    <div className="text-white/70 text-sm mb-1">Max. Tragfähigkeit (<FormulaText text="V_{Rd,max}" />)</div>
+                    <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.maxTragfähigkeit} /><FormulaText text="V_{Rd,max}" />)</div>
                     <div className={`text-2xl font-bold ${results.isVRdMaxExceeded ? 'text-red-300' : 'text-white'}`}>
                       {formatDeZahl(results.vRd_max, 0)} <span className="text-base">kN</span>
                     </div>
@@ -284,21 +273,19 @@ export default function Querkraftbemessung() {
 
               {results.isVRdMaxExceeded ? (
                 <div className="bg-red-500/20 border border-red-300/50 p-4 rounded-lg">
-                  <div className="font-bold text-red-100 mb-1">Nachweis <FormulaText text="V_{Ed} \le V_{Rd,max}" /> nicht erfüllt!</div>
-                  <div className="text-sm text-red-100/80">
-                    Die Betondruckstrebe versagt. Erhöhen Sie den Querschnitt (<FormulaText text="b" />, <FormulaText text="h" />), die Betonfestigkeit oder den Druckstrebenwinkel <FormulaText text="\theta" />.
+                  <div className="font-bold text-red-100 mb-1">Nachweis <FormulaText text="V_{Ed} \le V_{Rd,max}" /><MdText text={inhalt.texte.nichtErfüllt} /></div>
+                  <div className="text-sm text-red-100/80"><MdText text={inhalt.texte.dieBetondruckstrebeVersagtErhöhen} /><FormulaText text="b" />, <FormulaText text="h" /><MdText text={inhalt.texte.dieBetonfestigkeitOderDen} /><FormulaText text="\theta" />.
                   </div>
                 </div>
               ) : (
                 <div className="bg-green-500/20 border border-green-300/50 p-4 rounded-lg">
                   <div className="font-bold text-green-100 mb-1">Nachweis <FormulaText text="V_{Ed} \le V_{Rd,max}" /> erfüllt.</div>
-                  <div className="text-sm text-green-100/80">
-                    Ausnutzung Druckstrebe: {formatDeZahl(((vEd / results.vRd_max) * 100), 1)} %
+                  <div className="text-sm text-green-100/80"><MdText text={inhalt.texte.ausnutzungDruckstrebe} />{formatDeZahl(((vEd / results.vRd_max) * 100), 1)} %
                     <br />
                     {results.isVRdcExceeded ? (
-                      <span>Querkraftbewehrung erforderlich, da <FormulaText text="V_{Ed} > V_{Rd,c}" />.</span>
+                      <span><MdText text={inhalt.texte.querkraftbewehrungErforderlichDa} /><FormulaText text={inhalt.werte.vEdVRd} />.</span>
                     ) : (
-                      <span className="text-green-200">Keine rechnerische Querkraftbewehrung erforderlich (<FormulaText text="V_{Ed} \le V_{Rd,c}" />). Mindestbewehrung anordnen.</span>
+                      <span className="text-green-200"><MdText text={inhalt.texte.keineRechnerischeQuerkraftbewehrungErfor} /><FormulaText text="V_{Ed} \le V_{Rd,c}" /><MdText text={inhalt.texte.mindestbewehrungAnordnen} /></span>
                     )}
                   </div>
                 </div>
@@ -307,18 +294,18 @@ export default function Querkraftbemessung() {
 
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Querkraftbemessung mit den aktuellen Eingaben"
+              title={inhalt.werte.ihrRechenwegQuerkraftbemessungMit}
               zielGleichung={`a_{sw} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = ${formatDeTeX(results.asw_final, 2)}\\,\\text{cm}^2/\\text{m}`}
-              normQuelle="DIN EN 1992-1-1 mit NA (DE), 6.2.2, 6.2.3 und 9.2.2"
+              normQuelle={inhalt.werte.dinEn19921}
               schritte={[
                 {
-                  titel: 'Nutzhöhe und Hebelarm',
-                  erklaerung: 'Vereinfachter innerer Hebelarm z = 0,9 · d.',
+                  titel: inhalt.werte.nutzhöheUndHebelarm,
+                  erklaerung: inhalt.werte.vereinfachterInnererHebelarmZ,
                   formel: `d = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm};\\quad z = 0{,}9 \\cdot ${formatDeTeX(results.d, 1)} = ${formatDeTeX(results.z, 1)}\\,\\text{cm}`,
                 },
                 {
-                  titel: 'Tragfähigkeit ohne Querkraftbewehrung',
-                  erklaerung: `Maßstabsfaktor k und Längsbewehrungsgrad ρ_l (höchstens 0,02); v_min nach NA (DE) ist als Untergrenze berücksichtigt. V_Ed ${results.isVRdcExceeded ? '>' : '≤'} V_Rd,c: ${results.isVRdcExceeded ? 'Querkraftbewehrung rechnerisch erforderlich' : 'nur Mindestbewehrung erforderlich'}.`,
+                  titel: inhalt.werte.tragfähigkeitOhneQuerkraftbewehrung,
+                  erklaerung: `Maßstabsfaktor k und Längsbewehrungsgrad ρ_l (höchstens 0,02); v_min nach NA (DE) ist als Untergrenze berücksichtigt. V_Ed ${results.isVRdcExceeded ? '>' : '≤'} V_Rd,c: ${results.isVRdcExceeded ? inhalt.werte.querkraftbewehrungRechnerischErforderlic : inhalt.werte.nurMindestbewehrungErforderlich}.`,
                   formel: `k = \\min\\left(1 + \\sqrt{\\tfrac{200}{${formatDeTeX(results.d * 10, 0)}}};\\, 2\\right) = ${formatDeTeX(Math.min(2, 1 + Math.sqrt(200 / (results.d * 10))), 2)};\\; \\rho_l = \\frac{${formatDeTeX(asl, 1)}}{${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(results.d, 1)}} = ${formatDeTeX(Math.min(0.02, asl / (b * results.d)), 4)};\\; V_{Rd,c} = ${formatDeTeX(results.vRd_c, 1)}\\,\\text{kN}`,
                 },
                 {
@@ -327,17 +314,17 @@ export default function Querkraftbemessung() {
                   formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(1 / results.cot_theta_eff, 3)} + ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
                 },
                 {
-                  titel: 'Rechnerisch erforderliche Bügelbewehrung',
+                  titel: inhalt.werte.rechnerischErforderlicheBügelbewehrung,
                   erklaerung: results.isCotThetaExceeded
                     ? `Achtung: Das gewählte cot θ = ${formatDeZahl(results.cot_theta, 2)} überschreitet die Grenze cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)} nach Gl. (6.7aDE); der Rechner begrenzt deshalb auf cot θ = ${formatDeZahl(results.cot_theta_eff, 2)} (θ = ${formatDeZahl(results.theta_eff_deg, 1)}°).`
                     : `Senkrechte Bügel, cot θ = ${formatDeZahl(results.cot_theta, 2)} ≤ cot θ,max = ${formatDeZahl(results.cot_theta_max, 2)}.`,
                   formel: `a_{sw,erf} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot\\theta} = \\frac{${formatDeTeX(vEd / 1000, 3)}}{${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(results.fyd, 1)} \\cdot ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^4 = ${formatDeTeX(results.asw_req, 2)}\\,\\text{cm}^2/\\text{m}`,
                 },
                 {
-                  titel: 'Mindestbewehrung und maßgebender Wert',
+                  titel: inhalt.werte.mindestbewehrungUndMaßgebenderWert,
                   erklaerung: results.isVRdcExceeded
-                    ? 'Maßgebend ist der größere Wert aus rechnerischer Bewehrung und Mindestbewehrung.'
-                    : 'Da V_Ed ≤ V_Rd,c ist, wird nur die Mindestbewehrung angeordnet.',
+                    ? inhalt.werte.maßgebendIstDerGrößere
+                    : inhalt.werte.daVEdV,
                   formel: `a_{sw,min} = 0{,}16 \\cdot \\frac{${formatDeTeX(results.fctm, 1)}}{${formatDeTeX(bewehrungsArt === 'Stahl' ? fyk : ftk, 0)}} \\cdot ${formatDeTeX(b, 0)} \\cdot 100 = ${formatDeTeX(results.asw_min, 2)}\\,\\text{cm}^2/\\text{m} \\;\\Rightarrow\\; a_{sw} = ${formatDeTeX(results.asw_final, 2)}\\,\\text{cm}^2/\\text{m}`,
                 },
               ]}
@@ -348,27 +335,27 @@ export default function Querkraftbemessung() {
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Zwischenwerte</h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Statische Nutzhöhe (<FormulaText text="d" />)</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.statischeNutzhöhe} /><FormulaText text="d" />)</span>
                   <span className="font-mono font-bold">{formatDeZahl(results.d, 1)} cm</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Innerer Hebelarm (<FormulaText text="z" />)</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.innererHebelarm} /><FormulaText text="z" />)</span>
                   <span className="font-mono font-bold">{formatDeZahl(results.z, 1)} cm</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Bemessungsfestigkeit Beton (<FormulaText text="f_{cd}" />)</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.bemessungsfestigkeitBeton} /><FormulaText text="f_{cd}" />)</span>
                   <span className="font-mono font-bold">{formatDeZahl(results.fcd, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Bemessungsfestigkeit Stahl (<FormulaText text="f_{yd}" />)</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.bemessungsfestigkeitStahl} /><FormulaText text="f_{yd}" />)</span>
                   <span className="font-mono font-bold">{formatDeZahl(results.fyd, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Tragf. ohne Bügel (<FormulaText text="V_{Rd,c}" />)</span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.tragfOhneBügel2} /><FormulaText text="V_{Rd,c}" />)</span>
                   <span className="font-mono font-bold">{formatDeZahl(results.vRd_c, 1)} kN</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
-                  <span className="text-text-main/70">Rechnerisch erf. <FormulaText text="a_{sw}" /></span>
+                  <span className="text-text-main/70"><MdText text={inhalt.texte.rechnerischErf} /><FormulaText text="a_{sw}" /></span>
                   <span className="font-mono font-bold">{formatDeZahl(results.asw_req, 2)} cm²/m</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
@@ -384,7 +371,7 @@ export default function Querkraftbemessung() {
 
             {/* Visualisierung Fachwerkmodell */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col items-center">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2">Fachwerkmodell (Seitenansicht)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.fachwerkmodellSeitenansicht} /></h3>
               <svg width={svgWidth} height={svgHeight} className="overflow-visible">
                 <rect x={startX} y={topY} width={drawWidth - 40} height={beamHeight} fill="none" stroke="#94a3b8" strokeWidth="1" strokeDasharray="4,4" />
                 <line x1={startX} y1={zBottomY} x2={startX + drawWidth - 40} y2={zBottomY} stroke="#A3113E" strokeWidth="3" />
@@ -416,7 +403,7 @@ export default function Querkraftbemessung() {
 
             {/* Diagramm: a_sw über V_Ed */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Erforderliche Querkraftbewehrung</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.erforderlicheQuerkraftbewehrung} /></h3>
               <div className="relative w-full" style={{ height: '400px' }}>
                 <Line data={chartData} options={chartOptions} />
               </div>
@@ -425,10 +412,7 @@ export default function Querkraftbemessung() {
         </div>
       </div>
       
-      <p className="text-[11px] text-text-main/60 leading-relaxed">
-        Vereinfachungen: Hebelarm z = 0,9·d (NA: z = max(d − 2c_v,l; d − c_v,l − 30 mm) ≤ 0,9·d). Nichtmetallische Bügel sind eine Lehrannahme;
-        maßgebend ist die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01).
-      </p>
+      <p className="text-[11px] text-text-main/60 leading-relaxed"><MdText text={inhalt.texte.vereinfachungenHebelarmZ0} /></p>
       <CalculatorDisclaimerBanner className="my-2" />
     </div>
   );

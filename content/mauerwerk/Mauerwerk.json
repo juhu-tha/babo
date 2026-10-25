@@ -1,0 +1,311 @@
+{
+  "texte": {
+    "materialLehrpfadMauerwerkStein": "Material-Lehrpfad: Mauerwerk & Stein im Bauwesen",
+    "wechselnSieNahtlosZwischen": "Wechseln Sie nahtlos zwischen den drei Säulen der Mauerwerkskunde:",
+    "t1BaustoffEigenschaften": "1. Baustoff-Eigenschaften",
+    "steinartenZiegelKsPorenbeton": "Steinarten (Ziegel, KS, Porenbeton), Festigkeitsbemessung & Mauerwerksverbände im 3D-Modell.",
+    "t2MauerwerksproduktePraxis": "2. Mauerwerksprodukte & Praxis",
+    "hintermauerUndVormauerziegelPlanblöcke": "Hintermauer- und Vormauerziegel, Planblöcke, Mauermörtelarten, Leistungserklärung und CE-Kennzeichnung nach BauPVO (EU) 2024/3110.",
+    "t3AlterungDenkmalschutz": "3. Alterung & Denkmalschutz",
+    "salzkristallisationFrostsprengungChemisc": "Salzkristallisation, Frostsprengung, chemischer Verwitterungsschutz & Sanierputze.",
+    "mauerwerksbauNaturstein": " Mauerwerksbau & Naturstein",
+    "mauerwerkIstEinExtrem": "Mauerwerk ist ein extrem dauerhafter Verbundwerkstoff aus Mauersteinen und Mauermörtel. Das mechanische Zusammenwirken beider Komponenten bestimmt das komplexe, anisotrope Tragverhalten unter Druck-, Zug- und Scherbeanspruchung.",
+    "steineMörtel": " Steine & Mörtel",
+    "festigkeitBemessung": " Festigkeit & Bemessung",
+    "dieMauerwerksdruckfestigkeit": "Die Mauerwerksdruckfestigkeit ",
+    "setztSichAusDer": " setzt sich aus der Steinfestigkeit (",
+    "undDerMörtelfestigkeit": ") und der Mörtelfestigkeit (",
+    "tonZiegelMzHlz": "🧱 (Ton-)Ziegel (MZ / HLz)",
+    "herstellungTonLehmUnd": "**Herstellung:** Ton, Lehm und Sand geformt und im Tunnelofen bei **900 °C bis 1100 °C gebrannt** (keramische Sinterung).",
+    "sehrGutMz": "Sehr gut (MZ)",
+    "schallschutz": "🔊 Schallschutz: ",
+    "brandschutz": "🔥 Brandschutz: ",
+    "t007045": "0,07-0,45 W/mK",
+    "leitf": "🌡️ Leitf. λ: ",
+    "vorteilExtremeWetterdauerhaftigkeitKlink": "💡 **Vorteil:** Extreme Wetterdauerhaftigkeit (Klinker), monolithisch wärmedämmend (HLz). ",
+    "energieintensivesBrennenHoheCo": " Energieintensives Brennen (hohe CO₂-Emissionen).",
+    "kalksandsteinKs": "🧱 Kalksandstein (KS)",
+    "herstellungQuarzsandKalkUnd": "**Herstellung:** Quarzsand, Kalk und Wasser hydrothermal dampfgehärtet bei circa **200 °C unter 16 bar Druck**.",
+    "exzellentMasse": "Exzellent (Masse)",
+    "schallschutz2": "🔊 Schallschutz: ",
+    "brandschutz2": "🔥 Brandschutz: ",
+    "ca051": "ca. 0,5–1,3 W/mK (je nach Rohdichte, Richtwert)",
+    "leitf2": "🌡️ Leitf. λ: ",
+    "vorteilUnerreichteTragfähigkeitUnd": "💡 **Vorteil:** Unerreichte Tragfähigkeit und Schallschutz, sehr geringe Prozessenergie erforderlich. ",
+    "keinerleiEigeneDämmendeWirkung": " Keinerlei eigene dämmende Wirkung.",
+    "porenbetonPb": "🧱 Porenbeton (PB)",
+    "herstellungQuarzmehlKalkZement": "**Herstellung:** Quarzmehl, Kalk, Zement gepaart mit **Aluminiumpulver** zur H2-Porenbildung, danach dampfgehärtet im Autoklaven.",
+    "schallschutz3": "🔊 Schallschutz: ",
+    "brandschutz3": "🔥 Brandschutz: ",
+    "t007016": "0,07-0,16 W/mK",
+    "leitf3": "🌡️ Leitf. λ: ",
+    "vorteilSpitzenreiterDerEigendämmung": "💡 **Vorteil:** Spitzenreiter der Eigendämmung (WDVS-frei), federleichte Baustelle, unkompliziert trennbar. ",
+    "schallempfindlichGeringereFestigkeit": " Schallempfindlich, geringere Festigkeit.",
+    "lehmbausteineLh": "🧱 Lehmbausteine (LH)",
+    "herstellungAusUngebranntemTon": "**Herstellung:** Aus ungebranntem Ton, Sand und Schluff mechanisch gepresst und **rein solar/luftgetrocknet** (völlig emissionsfrei).",
+    "sehrGutMasse": "Sehr gut (Masse)",
+    "schallschutz4": "🔊 Schallschutz: ",
+    "brandschutz4": "🔥 Brandschutz: ",
+    "t047073": "0,47-0,73 W/mK",
+    "leitf4": "🌡️ Leitf. λ: ",
+    "gering25Mpa": "Gering (2-5 MPa)",
+    "vorteilUnschlagbareRaumklimaRegulierung": "💡 **Vorteil:** Unschlagbare Raumklima-Regulierung (Hygroskopisch), zu 100% zirkulär einsumpf- und wiederverwendbar. ",
+    "nichtWasserbeständigErweichtBei": " nicht wasserbeständig (erweicht bei Durchfeuchtung); Einsatz außen nur mit geeigneter Anwendungsklasse und Witterungsschutz (DIN 18945).",
+    "festigkeitBemessung2": "Festigkeit & Bemessung",
+    "zudemIstUnbewehrtesMauerwerk": "Zudem ist unbewehrtes Mauerwerk stark knickgefährdet, was durch den Abminderungsfaktor ",
+    "berücksichtigtWirdDieSchubfestigkeit": " berücksichtigt wird. Die Schubfestigkeit hängt maßgeblich von der überlagerten Druckspannung ab (Reibung).",
+    "geometrieKnickenDruck": "Geometrie & Knicken (Druck)",
+    "ergebnisseDruckfestigkeit": "Ergebnisse (Druckfestigkeit)",
+    "empfehlungEn": ", Empfehlung EN); ",
+    "tragfähigkeitDruckProLfm": "Tragfähigkeit (Druck pro lfm Wand)",
+    "schubfestigkeitVsDruckspannung": "Schubfestigkeit vs. Druckspannung",
+    "schematischeDarstellungSchubfestigkeitRe": "Schematische Darstellung: Schubfestigkeit (Reibung)",
+    "dieSchubfestigkeitVonMauerwerk": "Die Schubfestigkeit von Mauerwerk basiert auf der Haftscherfestigkeit des Mörtels und der Reibung in den Lagerfugen. Je höher die aufliegende Druckspannung (σ_d, blau), desto größer ist der Reibungswiderstand gegen Abscheren (orange).",
+    "erforderlichMin": "Erforderlich (min):",
+    "vorhandenCa": "Vorhanden (ca.):",
+    "warnungDasÜberbindemaßIst": "Warnung: Das Überbindemaß ist zu gering! Die Tragfähigkeit der Wand ist nicht gewährleistet.",
+    "alleSteineSindAls": "Alle Steine sind als Läufer (Längsseite parallel zur Wandflucht) vermauert. Der Versatz der Stoßfugen zwischen den Schichten beträgt genau die halbe Steinlänge (",
+    "diesIstDerHeutzutage": "). Dies ist der heutzutage wirtschaftlichste Standardverband.",
+    "esWechselnSichEine": "Es wechseln sich eine Läuferschicht und eine Binderschicht (Steine quer vermauert) ab. Die Stoßfugen der Läuferschichten fluchten exakt senkrecht übereinander. Der Versatz zwischen Läufer- und Binderschicht beträgt ein Viertel der Steinlänge (",
+    "ähnlichAufgebautWieDer": "Ähnlich aufgebaut wie der Blockverband aus abwechselnden Läufer- und Binderschichten. Um ein diagonales Kreuzmuster der Fugen zu erzeugen, ist jedoch jede zweite Läuferschicht um eine halbe Steinlänge versetzt gemauert (",
+    "statischSehrRobustUnd": "). Statisch sehr robust und historisch sehr geschätzt.",
+    "t3dVisualisierungVerband": "3D Visualisierung (Verband)",
+    "t3dAnsichtWirdGeladen": "3D-Ansicht wird geladen …",
+    "wissenKompaktZiegelLexikon": "Wissen kompakt: Ziegel-Lexikon",
+    "ziegelGehörenZuDen": "Ziegel gehören zu den ältesten und bewährtesten Baustoffen. Basierend auf dem **Ziegel-Lexikon** (herausgegeben vom Bundesverband der Deutschen Ziegelindustrie e.V.) sind hier die maßgeblichen Kennwerte und Eigenschaften für Ziegelmauerwerk aufgeführt.",
+    "klassifizierungKennwerte": "Klassifizierung & Kennwerte",
+    "festigkeitsklasseSfkGibtDie": "**Festigkeitsklasse (SFK):** Gibt die normative (Druck-)Festigkeit des Steins an. Typische SFK-Werte für porosierte Mauerziegel: 4, 6, 8, 12. Für Klinker oder belastetes Mauerwerk: 20 und höher. Je höher die SFK, desto tragfähiger der Stein.",
+    "rohdichteklasseRdkGibtDas": "**Rohdichteklasse (RDK):** Gibt das Gewicht / die Dichte des Ziegels in kg/dm³ an. Werte liegen oft zwischen 0,6 (sehr leichter Hochlochziegel für gute Wärmedämmung) und 2,4 (schwerer Vollziegel oder Klinker für guten Schallschutz).",
+    "wärmeleitfähigkeitHochwärmedämmendeZiege": "**Wärmeleitfähigkeit (λ):** Hochwärmedämmende Ziegel (teils ungefüllt, teils mit Mineralwolle oder Perlit gefüllt) erreichen λ-Werte von 0,07 bis 0,14 W/(mK) und ermöglichen damit einschaliges Mauerwerk ohne zusätzliche Außendämmung (WDVS).",
+    "ziegelWerdenTraditionellIm": "Ziegel werden traditionell im Oktameter-System geplant (Baurichtmaß = 1/8 Meter = 12,5 cm).",
+    "dünnformatDf": "Dünnformat (DF)",
+    "t24011552Mm": "240 × 115 × 52 mm",
+    "normalformatNf": "Normalformat (NF)",
+    "t24011571Mm": "240 × 115 × 71 mm",
+    "t2FachesDf2": "2-faches DF (2 DF)",
+    "t240115113Mm": "240 × 115 × 113 mm",
+    "großformateBlocks": "Großformate (Blocks)",
+    "zB248365": "z. B. 248 × 365 × 249 mm",
+    "wichtigeZiegelarten": "Wichtige Ziegelarten",
+    "planziegelZiegelDerenLagerflächen": "**Planziegel:** Ziegel, deren Lagerflächen (Ober- und Unterseite) nach dem Brennen planparallel auf einen Millimeterbruchteil geschliffen werden. Sie werden mit *Dünnbettmörtel* (Fugendicke 1 bis 3 mm) vermauert, was die Wärmedämmung deutlich verbessert.",
+    "blockziegelWerdenImKlassischen": "**Blockziegel:** Werden im klassischen Dickbettverfahren (Normalmörtel, Fugendicke ca. 12 mm) verarbeitet.",
+    "hintermauerziegelWerdenVerputztOder": "**Hintermauerziegel:** Werden verputzt oder verkleidet. Optimiert auf Bauphysik (Wärmeschutz / Schallschutz).",
+    "vormauerziegelKlinkerSichtbaresMauerwerk": "**Vormauerziegel / Klinker:** Sichtbares Mauerwerk (Verblender). Sie sind frostbeständig, weisen eine geringe Wasseraufnahme auf und schützen die Fassade vor der Witterung.",
+    "wärmedämmziegelOftMitHohlkammern": "**Wärmedämmziegel:** Oft mit Hohlkammern, die passgenau mit Dämmstoff (z.B. Mineralwolle oder Perlit) gefüllt sind, um U-Werte für Plus-Energie-Häuser zu erfüllen.",
+    "wählenSieDenGewünschten": "Wählen Sie den gewünschten Baustoff-Steckbrief:"
+  },
+  "werte": {
+    "schubfestigkeitFVkMpa": "Schubfestigkeit f_vk [MPa]",
+    "aktuellerWert": "Aktueller Wert",
+    "vorhandeneDruckspannungDN": "Vorhandene Druckspannung σ_d [N/mm²]",
+    "schubfestigkeitFVkMpa2": "Schubfestigkeit f_vk [MPa]",
+    "artDesMauersteins": "Art des Mauersteins.",
+    "artDesVerwendetenMauermörtels": "Art des verwendeten Mauermörtels.",
+    "druckfestigkeitDesMauersteins": "Druckfestigkeit des Mauersteins.",
+    "steinfestigkeitFB": "Steinfestigkeit f_b",
+    "mörtelfestigkeitFM": "Mörtelfestigkeit f_m",
+    "effektiveWandhöhe": "Effektive Wandhöhe.",
+    "wandhöheHEf": "Wandhöhe h_{ef}",
+    "exzentrizitätDerLasteinleitung": "Exzentrizität der Lasteinleitung.",
+    "exzentrizitätE": "Exzentrizität e",
+    "vorhandeneDruckspannungD": "Vorhandene Druckspannung σ_d",
+    "eineHöhereAuflastDruckspannung": "Eine höhere Auflast (Druckspannung) erhöht die Schubfestigkeit durch Reibung in den Lagerfugen.",
+    "charaktFestigkeitFK": "Charakt. Festigkeit f_k",
+    "bemessungswertFD": "Bemessungswert f_d",
+    "schlankheitHEfT": "Schlankheit h_{ef}/t",
+    "knickbeiwert": "Knickbeiwert Φ",
+    "vereinfacht12eT": "Vereinfacht: Φ = 1 − 2e/t (DIN EN 1996-1-1, 6.1.2.2) erfasst nur die Lastausmitte am Wandkopf/-fuß; das vereinfachte Verfahren nach DIN EN 1996-3/NA berücksichtigt die Schlankheit über Φ2 = 0,85·a/t − 0,0011·(h_ef/t)². Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab.",
+    "maxNormalkraftNRd": "Max. Normalkraft N_{Rd}",
+    "haftscherfestigkeitFVk0": "Haftscherfestigkeit f_{vk0}",
+    "charaktSchubfestigkeitFVk": "Charakt. Schubfestigkeit f_{vk}",
+    "bemessungswertFVd": "Bemessungswert f_{vd}",
+    "fVkFVk0": "f_{vk} = f_{vk0} + 0.4 · σ_d",
+    "artDesMauerwerksverbands": "Art des Mauerwerksverbands.",
+    "längeDesMauersteins": "Länge des Mauersteins.",
+    "steinlängeLU": "Steinlänge l_u",
+    "steinhöheHU": "Steinhöhe h_u",
+    "anwendungsbeispielDruckfestigkeitUndTrag": "Anwendungsbeispiel: Druckfestigkeit und Traglast einer Ziegelwand (Standardwerte)",
+    "en199611": "EN 1996-1-1, Gl. (3.1), K als Empfehlungswert; f_d mit ζ = 0,85 nach NA DE",
+    "nRd400Kn": "N_Rd ≈ 400 kN/m (vereinfacht, ohne Knickeinfluss)."
+  },
+  "daten": {
+    "stoneTypes": {
+      "MZ": {
+        "name": "Mauerziegel (Ton-Vollstein)",
+        "K": {
+          "NM": 0.55,
+          "LM": 0.3,
+          "DM": 0.75
+        },
+        "fvk0": {
+          "NM": 0.2,
+          "LM": 0.15,
+          "DM": 0.3
+        },
+        "lambda": 0.81,
+        "rho": 1800,
+        "desc": "Keramisch gebrannter Ton. Sehr hohe Lebensdauer, sehr gute Dauerhaftigkeit (Klinker), hervorragender Witterungswiderstand, hoher Energiewert bei Herstellung."
+      },
+      "KSV": {
+        "name": "Kalksandstein (KS)",
+        "K": {
+          "NM": 0.55,
+          "LM": 0.45,
+          "DM": 0.8
+        },
+        "fvk0": {
+          "NM": 0.2,
+          "LM": 0.15,
+          "DM": 0.4
+        },
+        "lambda": 0.99,
+        "rho": 2000,
+        "desc": "Hydrothermal dampfgehärtetes Kalk-Sand-Gemisch. Sehr hoher Schallschutz, höchste Tragfähigkeit, ökologisch vorteilhafter als massiv gebrannt"
+      },
+      "PB": {
+        "name": "Porenbeton (PB)",
+        "K": {
+          "NM": 0.55,
+          "LM": 0.45,
+          "DM": 0.8
+        },
+        "fvk0": {
+          "NM": 0.15,
+          "LM": 0.15,
+          "DM": 0.3
+        },
+        "lambda": 0.09,
+        "rho": 400,
+        "desc": "Aufgeblähter und dampfgehärteter Quarz-Kalk-Zementstein. Herausragende monolithische Wärmedämmung, sehr geringe Masse, mäßiger Schallschutz"
+      },
+      "HLZ": {
+        "name": "Hochlochziegel (HLz)",
+        "K": {
+          "NM": 0.45,
+          "LM": 0.25,
+          "DM": 0.7
+        },
+        "fvk0": {
+          "NM": 0.15,
+          "LM": 0.1,
+          "DM": 0.2
+        },
+        "lambda": 0.12,
+        "rho": 800,
+        "desc": "Tonziegel mit wärmetechnisch optimiertem Lochbild, teils mit Naturdämmstoff-Verfüllung (Perlit/Mineralwolle) für monolithische Wände"
+      },
+      "LH": {
+        "name": "Lehmbaustein (LH)",
+        "K": {
+          "NM": 0.35,
+          "LM": 0.3,
+          "DM": 0.5
+        },
+        "fvk0": {
+          "NM": 0.1,
+          "LM": 0.08,
+          "DM": 0.15
+        },
+        "lambda": 0.73,
+        "rho": 1600,
+        "desc": "Ungebrannter, solar luftgetrockneter Tonstein nach DIN 18945. Phänomenale Feuchtigkeitsregulierung, extrem CO₂-arm, unstabilisierter Lehm nahezu verlustfrei wiederverwendbar"
+      },
+      "LB": {
+        "name": "Leichtbetonstein",
+        "K": {
+          "NM": 0.55,
+          "LM": 0.45,
+          "DM": 0.8
+        },
+        "fvk0": {
+          "NM": 0.15,
+          "LM": 0.15,
+          "DM": 0.3
+        },
+        "lambda": 0.16,
+        "rho": 800,
+        "desc": "Zementgebundener Bims- oder Blähtonstein. Unempfindlich gegen Baufeuchte, gute Wärmedämmung bei mäßiger Tragfähigkeit"
+      }
+    },
+    "bonds.laeufer": {
+      "id": "laeufer",
+      "name": "Läuferverband (1/2 Stein Versatz)"
+    },
+    "Mauerwerk.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "\\text{Mauerziegel, NM};\\; f_b = 12,\\; f_m = 5\\,\\text{N/mm}^2;\\; t = 0{,}24\\,\\text{m};\\; e = 0{,}05\\,\\text{m}",
+        "erklaerung": "K = 0,55 (Gruppe 1)."
+      },
+      {
+        "titel": "2. Charakteristische Festigkeit",
+        "formel": "f_k = 0{,}55 \\cdot 12^{0{,}7} \\cdot 5^{0{,}3} = 5{,}08\\,\\text{N/mm}^2",
+        "erklaerung": "Empfehlungswert K; NA DE abweichend."
+      },
+      {
+        "titel": "3. Bemessungswert",
+        "formel": "f_d = 0{,}85 \\cdot 5{,}08 / 1{,}5 = 2{,}88\\,\\text{N/mm}^2",
+        "erklaerung": "Dauerstandsfaktor ζ = 0,85."
+      },
+      {
+        "titel": "4. Traglast je Meter",
+        "formel": "\\Phi = 1 - 2 \\cdot 0{,}05/0{,}24 = 0{,}58;\\; N_{Rd} = 0{,}58 \\cdot 0{,}24 \\cdot 2{,}88 \\cdot 10^3 = 403\\,\\text{kN/m}",
+        "erklaerung": "Nur Lastausmitte, ohne Schlankheitseinfluss."
+      }
+    ],
+    "Mauerwerk.wikipedia.3": {
+      "title": "Ziegel-Lexikon (Bundesverband der Deutschen Ziegelindustrie e. V.)"
+    },
+    "Mauerwerk.literatur": [
+      "Schermer, D. C.; Brehm, E. (Hrsg.): Mauerwerk-Kalender 2026 – Schwerpunkt: Nachhaltigkeit und Bestandserhaltung. Berlin: Ernst & Sohn 2026",
+      "Jäger, W. (Hrsg.): Mauerwerk-Kalender (Jährliche Ausgaben, Ernst & Sohn Verlag)",
+      "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011"
+    ],
+    "Mauerwerk.regelwerke": [
+      {
+        "title": "DIN EN 1996-1-1:2013-02 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6, Teil 1-1; 2. Generation bisher nur als Entwurf, DIN-Ausgabe geplant Mitte 2027)"
+      },
+      {
+        "title": "DIN EN 1996-3:2010-12 / DIN EN 1996-3/NA:2019-12 (Eurocode 6, Teil 3: Vereinfachte Berechnungsmethoden; 2. Generation bisher nur als Entwurf, DIN-Ausgabe geplant Mitte 2027)"
+      },
+      {
+        "title": "DIN EN 771-1:2015-11 (Festlegungen für Mauersteine - Teil 1: Mauerziegel)"
+      },
+      {
+        "title": "DIN EN 771-2:2015-11 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)"
+      },
+      {
+        "title": "DIN EN 771-3:2015-11 (Festlegungen für Mauersteine - Teil 3: Betonmauersteine)"
+      },
+      {
+        "title": "DIN EN 771-4:2015-11 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)"
+      },
+      {
+        "title": "DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)"
+      },
+      {
+        "title": "DIN 20000-401:2017-01 (Anwendung von Mauerziegeln nach DIN EN 771-1)"
+      },
+      {
+        "title": "DIN 20000-412:2019-06 (Anwendung von Mauermörtel nach DIN EN 998-2)"
+      }
+    ],
+    "Mauerwerk.formeln": [
+      {
+        "formel": "f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}",
+        "erklaerung": "Charakteristische Druckfestigkeit f_k von Mauerwerk aus Normalmörtel nach Eurocode 6. K ist eine steinartspezifische Konstante, f_b die normierte Steindruckfestigkeit und f_m die Mörteldruckfestigkeit.",
+        "quelle": "DIN EN 1996-1-1, Gl. (3.1)"
+      },
+      {
+        "formel": "f_{vk} = f_{vk0} + 0{,}4 \\cdot \\sigma_d \\quad \\left(\\le f_{vlt}\\right)",
+        "erklaerung": "Charakteristische Haftscherfestigkeit f_{vk}: f_{vk0} = Anfangsscherfestigkeit ohne Auflast, \\sigma_d = planmäßige vertikale Druckspannung, f_{vlt} = oberer Grenzwert.",
+        "quelle": "DIN EN 1996-1-1"
+      },
+      {
+        "formel": "l_{ol} \\ge 0{,}4 \\cdot h_u  \\quad \\land \\quad l_{ol} \\ge 45\\text{ mm}",
+        "erklaerung": "Überbindemaß-Regel zur Gewährleistung eines statischen Kraftverteilungswinkels im Mauerwerksverband: l_{ol} = Überbindemaß, h_u = Steinhöhe.",
+        "quelle": "DIN EN 1996-1-1"
+      }
+    ]
+  }
+}

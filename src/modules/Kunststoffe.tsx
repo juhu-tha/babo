@@ -23,6 +23,8 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
+import inhalt from '@/content/kunststoffe/Kunststoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -46,12 +48,8 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Kunststoffe im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Weiter zu den anderen Teilen des Lehrpfads:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadKunststoffeIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.weiterZuDenAnderen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -66,11 +64,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Eigenschaften</span>
+            <span><MdText text={inhalt.texte.t1BaustoffEigenschaften} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Thermoplasten vs. Duroplasten, E-Modul-Temperatur-Kurven & Arten.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.thermoplastenVsDuroplastenE} /></span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -90,11 +86,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik & Rechner</span>
+            <span><MdText text={inhalt.texte.t2MechanikRechner} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            PE-HD Folien, PVC-U Rohre, Flachdachbahnen (EPDM) & Dehnungsrechner.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.peHdFolienPvc} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -114,11 +108,9 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Alterung & Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3AlterungDauerhaftigkeit} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            UV-Versprödung, Weichmacher-Auswaschung, Spannungsrisse & thermische Alterung.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.uvVersprödungWeichmacherAuswaschung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -226,7 +218,7 @@ export default function Kunststoffe() {
       labels,
       datasets: [
         {
-          label: 'E-Modul [MPa]',
+          label: inhalt.werte.eModulMpa,
           data: data,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -235,7 +227,7 @@ export default function Kunststoffe() {
           pointRadius: 0,
         },
         {
-          label: 'Aktuelle Temperatur',
+          label: inhalt.werte.aktuelleTemperatur,
           data: pointData,
           borderColor: '#0e558c',
           backgroundColor: '#0e558c',
@@ -254,7 +246,7 @@ export default function Kunststoffe() {
     scales: {
       y: {
         type: 'logarithmic' as const,
-        title: { display: true, text: 'E-Modul [MPa] (log)' },
+        title: { display: true, text: inhalt.werte.eModulMpaLog },
         min: 0.1,
         max: 10000,
         ticks: {
@@ -267,7 +259,7 @@ export default function Kunststoffe() {
         }
       },
       x: {
-        title: { display: true, text: 'Temperatur [°C]' },
+        title: { display: true, text: inhalt.werte.temperaturC },
         ticks: {
           callback: function(this: Scale, val: string | number, index: number) {
             return index % 10 === 0 ? this.getLabelForValue(val as number) : '';
@@ -290,13 +282,13 @@ export default function Kunststoffe() {
   const getPlasticDescription = () => {
     switch(plasticType) {
       case 'amorphous':
-        return "Amorphe Thermoplaste (z.B. PVC, PMMA, PC) bestehen aus ungeordneten Polymerketten. Unterhalb der Glasübergangstemperatur (Tg) sind sie hart und spröde (Glaszustand). Bei Überschreiten von Tg fallen Festigkeit und E-Modul drastisch ab, sie werden gummielastisch und gehen schließlich in den schmelzflüssigen Zustand über.";
+        return inhalt.werte.amorpheThermoplasteZB;
       case 'semicrystalline':
-        return "Teilkristalline Thermoplaste (z.B. PE, PP, PA) besitzen neben amorphen auch kristalline Bereiche. Beim Überschreiten von Tg sinkt der E-Modul, aber die kristallinen Bereiche halten das Material noch formstabil (lederartiger Zustand). Erst beim Erreichen der Schmelztemperatur (Tm) der Kristalle wird das Material flüssig.";
+        return inhalt.werte.teilkristallineThermoplasteZB;
       case 'elastomer':
-        return "Elastomere (z.B. Gummi, Silikon) sind weitmaschig vernetzt. Ihre Glasübergangstemperatur liegt meist weit unter Raumtemperatur (z.B. -40°C). Bei Raumtemperatur befinden sie sich im gummielastischen Zustand. Sie schmelzen nicht, sondern zersetzen sich bei sehr hohen Temperaturen.";
+        return inhalt.werte.elastomereZBGummi;
       case 'duroplast':
-        return "Duroplaste (z.B. Epoxidharz, PUR-Gießharz) sind engmaschig vernetzt. Sie haben einen hohen E-Modul; am Glasübergang fällt er wegen der engen Vernetzung weniger stark ab als bei Thermoplasten. Sie schmelzen nicht und sind nicht plastisch verformbar, sondern zersetzen sich bei thermischer Überlastung.";
+        return inhalt.werte.duroplasteZBEpoxidharz;
     }
   };
 
@@ -307,10 +299,10 @@ export default function Kunststoffe() {
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
         {[
           { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
-          { id: 'arten', label: 'Arten & Einsatzbereiche', icon: List },
+          { id: 'arten', label: inhalt.werte.artenEinsatzbereiche, icon: List },
           { id: 'eigenschaften', label: 'Temperaturabhängigkeit', icon: Thermometer },
-          { id: 'geosynthetics', label: '🌱 Geokunststoffe', icon: Layers },
-          { id: 'etfe', label: '🔍 ETFE-Folien', icon: Maximize }
+          { id: 'geosynthetics', label: inhalt.werte.geokunststoffe, icon: Layers },
+          { id: 'etfe', label: inhalt.werte.etfeFolien, icon: Maximize }
         ].map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -345,15 +337,13 @@ export default function Kunststoffe() {
             </div>
             
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Das mechanische Verhalten von Kunststoffen ist stark temperaturabhängig. Der E-Modul ändert sich je nach Struktur (Thermoplast, Duroplast, Elastomer) über die Temperatur um mehrere Zehnerpotenzen.
-              </p>
+              <p><MdText text={inhalt.texte.dasMechanischeVerhaltenVon} /></p>
             </div>
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Kunststoff-Struktur</label><InfoTooltip text="Molekularer Aufbau des Kunststoffs (z.B. amorph, teilkristallin)." /></div>
-                <InfoTooltip text="Wählen Sie die molekulare Struktur des Kunststoffs." />
+                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Kunststoff-Struktur</label><InfoTooltip text={inhalt.werte.molekularerAufbauDesKunststoffs} /></div>
+                <InfoTooltip text={inhalt.werte.wählenSieDieMolekulare} />
               </div>
               <select aria-label="Kunststoff-Struktur" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
@@ -375,12 +365,12 @@ export default function Kunststoffe() {
               label="Temperatur"
               min={-100} max={300} step={1}
               value={temperature} unit="°C"
-              info="Aktuelle Bauteiltemperatur."
+              info={inhalt.werte.aktuelleBauteiltemperatur}
               onChange={(e) => setTemperature(Number(e.target.value))}
             />
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
-              <div className="text-sm opacity-90 mb-1">Aktueller E-Modul</div>
+              <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.aktuellerEModul} /></div>
               <div className="text-3xl font-bold">
                 {chartData.currentE < 1 ? '< 1' : formatDeZahl(chartData.currentE, 0)} MPa
               </div>
@@ -394,11 +384,9 @@ export default function Kunststoffe() {
         {/* Chart Column */}
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">
-            <h2 className="text-xl font-bold text-text-main mb-2">Temperaturabhängigkeit des E-Moduls</h2>
+            <h2 className="text-xl font-bold text-text-main mb-2"><MdText text={inhalt.texte.temperaturabhängigkeitDesEModuls} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Zustandsbereiche: Glaszustand (hart/spröde), Haupterweichungsbereich (Tg), gummielastischer Zustand, Schmelze (Tm/Tf). Die Kurven sind schematisch (Lehrmodell mit typischen Größenordnungen, keine Produktwerte).
-          </p>
+          <p><MdText text={inhalt.texte.zustandsbereicheGlaszustandHartSpröde} /></p>
         </div>
             
             <div className="flex-1 relative w-full h-full">
@@ -408,7 +396,7 @@ export default function Kunststoffe() {
 
           {/* Schematische Darstellung */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-            <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Polymerstrukturen</h3>
+            <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungPolymerstrukturen} /></h3>
             <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
               <svg width="100%" height="160" viewBox="0 0 350 160">
                 {/* Amorph */}
@@ -453,23 +441,17 @@ export default function Kunststoffe() {
                 <text x="290" y="130" fontSize="8" fill="#64748b" textAnchor="middle">Engmaschig</text>
                 <text x="290" y="140" fontSize="8" fill="#64748b" textAnchor="middle">vernetzt</text>
               </svg>
-              <div className="text-xs text-text-main/70 text-center mt-2">
-                Die makromolekulare Struktur bestimmt das thermomechanische Verhalten. Thermoplaste (amorph/teilkristallin) sind schmelzbar. Elastomere und Duroplaste sind durch chemische Bindungen (Punkte) vernetzt und schmelzen nicht.
-              </div>
+              <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.dieMakromolekulareStrukturBestimmt} /></div>
             </div>
           </div>
         </div>
 
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Wärmedehnung einer PVC-U-Rohrleitung"
+          title={inhalt.werte.anwendungsbeispielWärmedehnungEinerPvc}
           zielGleichung="\Delta L = L_0 \cdot \alpha_T \cdot \Delta T"
-          normQuelle="α_T als Richtwert (Produktdatenblatt maßgebend)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'L_0 = 10\\,\\text{m},\\; \\alpha_T \\approx 80 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 40\\,\\text{K}', erklaerung: 'Montage bei 10 °C, Betrieb bis 50 °C.' },
-            { titel: '2. Längenänderung PVC-U', formel: '\\Delta L = 10\\,000 \\cdot 80 \\cdot 10^{-6} \\cdot 40 = 32\\,\\text{mm}', erklaerung: 'Länge in mm einsetzen.' },
-            { titel: '3. Vergleich Stahl', formel: '\\Delta L = 10\\,000 \\cdot 12 \\cdot 10^{-6} \\cdot 40 = 4{,}8\\,\\text{mm}', erklaerung: 'Faktor ca. 7 kleiner.' },
-          ]}
-          ergebnisHinweis="32 mm auf 10 m: Kunststoffleitungen brauchen Dehnungsausgleicher oder Gleitpunkte."
+          normQuelle={inhalt.werte.tAlsRichtwertProduktdatenblatt}
+          schritte={inhalt.daten["Kunststoffe.schritte"]}
+          ergebnisHinweis={inhalt.werte.t32MmAuf10}
         />
 
       </div>
@@ -478,104 +460,92 @@ export default function Kunststoffe() {
       {/* Arten und Einsatzbereiche */}
       {activeTab === 'arten' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in slide-in-from-bottom-2">
-        <h2 className="text-xl font-bold text-text-main mb-6">Wichtige Kunststoffe und ihre Einsatzbereiche im Bauwesen</h2>
+        <h2 className="text-xl font-bold text-text-main mb-6"><MdText text={inhalt.texte.wichtigeKunststoffeUndIhre} /></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">PVC (Polyvinylchlorid)</h3>
-            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Amorpher Thermoplast</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Sehr vielseitig. Hart-PVC (PVC-U) ist steif und witterungsbeständig. Weich-PVC (PVC-P) enthält Weichmacher und ist flexibel.
-            </p>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.pvcPolyvinylchlorid} /></h3>
+            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2"><MdText text={inhalt.texte.amorpherThermoplast} /></div>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.sehrVielseitigHartPvc} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Fensterprofile (Hart-PVC)</li>
-                <li>Rohre für Abwasser (Hart-PVC)</li>
-                <li>Bodenbeläge (Weich-PVC)</li>
-                <li>Dach- und Dichtungsbahnen</li>
+                <li><MdText text={inhalt.texte.fensterprofileHartPvc} /></li>
+                <li><MdText text={inhalt.texte.rohreFürAbwasserHart} /></li>
+                <li><MdText text={inhalt.texte.bodenbelägeWeichPvc} /></li>
+                <li><MdText text={inhalt.texte.dachUndDichtungsbahnen} /></li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">PMMA (Polymethylmethacrylat)</h3>
-            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Amorpher Thermoplast</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Auch bekannt als Acrylglas (Handelsname z. B. Plexiglas). Hohe Lichtdurchlässigkeit (ca. 92 %) und gute Witterungsbeständigkeit.
-            </p>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.pmmaPolymethylmethacrylat} /></h3>
+            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2"><MdText text={inhalt.texte.amorpherThermoplast2} /></div>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.auchBekanntAlsAcrylglas} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Transparente Überdachungen</li>
+                <li><MdText text={inhalt.texte.transparenteÜberdachungen} /></li>
                 <li>Lichtkuppeln</li>
-                <li>Lärmschutzwände (transparent)</li>
-                <li>Sanitärobjekte (Badewannen)</li>
+                <li><MdText text={inhalt.texte.lärmschutzwändeTransparent} /></li>
+                <li><MdText text={inhalt.texte.sanitärobjekteBadewannen} /></li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">PE (Polyethylen)</h3>
-            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Teilkristalliner Thermoplast</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Sehr beständig gegen Säuren und Laugen. Unterscheidung in PE-LD (Low Density, weich) und PE-HD (High Density, steifer).
-            </p>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.pePolyethylen} /></h3>
+            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2"><MdText text={inhalt.texte.teilkristallinerThermoplast} /></div>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.sehrBeständigGegenSäuren} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Trinkwasser- und Gasrohre (PE-HD)</li>
-                <li>Dampfbremsfolien (PE-LD)</li>
+                <li><MdText text={inhalt.texte.trinkwasserUndGasrohrePe} /></li>
+                <li><MdText text={inhalt.texte.dampfbremsfolienPeLd} /></li>
                 <li>Kabelisolierungen</li>
-                <li>Geomembranen (Deponiebau)</li>
+                <li><MdText text={inhalt.texte.geomembranenDeponiebau} /></li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">EPS / XPS (Polystyrol)</h3>
-            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Amorpher Thermoplast (geschäumt)</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Expandiertes (EPS, "Styropor") oder extrudiertes (XPS) Polystyrol. XPS ist druckfester und unempfindlicher gegen Feuchtigkeit.
-            </p>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.epsXpsPolystyrol} /></h3>
+            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2"><MdText text={inhalt.texte.amorpherThermoplastGeschäumt} /></div>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.expandiertesEpsStyroporOder} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Wärmedämmverbundsysteme (EPS)</li>
-                <li>Trittschalldämmung (EPS)</li>
-                <li>Perimeterdämmung im Erdreich (XPS)</li>
-                <li>Umkehrdächer (XPS)</li>
+                <li><MdText text={inhalt.texte.wärmedämmverbundsystemeEps} /></li>
+                <li><MdText text={inhalt.texte.trittschalldämmungEps} /></li>
+                <li><MdText text={inhalt.texte.perimeterdämmungImErdreichXps} /></li>
+                <li><MdText text={inhalt.texte.umkehrdächerXps} /></li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">PUR / PIR (Polyurethan)</h3>
-            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Duroplast / Elastomer</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Je nach Vernetzungsgrad als harter Schaumstoff (Duroplast) oder als elastische Dichtmasse (Elastomer) herstellbar. Sehr gute Dämmwirkung.
-            </p>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.purPirPolyurethan} /></h3>
+            <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2"><MdText text={inhalt.texte.duroplastElastomer} /></div>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.jeNachVernetzungsgradAls} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Hochleistungs-Wärmedämmung (PUR-Hartschaum)</li>
+                <li><MdText text={inhalt.texte.hochleistungsWärmedämmungPurHartschaum} /></li>
                 <li>Montageschäume</li>
-                <li>Dichtstoffe (Fugen)</li>
+                <li><MdText text={inhalt.texte.dichtstoffeFugen} /></li>
                 <li>Flüssigkunststoff-Abdichtungen</li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-off-white rounded-xl border border-home-grau/30">
-            <h3 className="font-bold text-shiraz text-lg mb-2">EPDM (Ethylen-Propylen-Dien-Kautschuk)</h3>
+            <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.epdmEthylenPropylenDien} /></h3>
             <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Elastomer</div>
-            <p className="text-sm text-text-main/80 mb-3">
-              Ein synthetischer Kautschuk. Sehr witterungs-, UV- und ozonbeständig. Bleibt auch bei tiefen Temperaturen elastisch.
-            </p>
+            <p className="text-sm text-text-main/80 mb-3"><MdText text={inhalt.texte.einSynthetischerKautschukSehr} /></p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
               <ul className="list-disc list-inside text-text-main/70 mt-1">
-                <li>Flachdachabdichtungen (Folien)</li>
-                <li>Fassaden- und Fensterdichtungen</li>
+                <li><MdText text={inhalt.texte.flachdachabdichtungenFolien} /></li>
+                <li><MdText text={inhalt.texte.fassadenUndFensterdichtungen} /></li>
                 <li>Teichfolien</li>
                 <li>Fugenbänder</li>
               </ul>
@@ -594,30 +564,28 @@ export default function Kunststoffe() {
       {activeTab === 'geosynthetics' && (
         <div className="flex flex-col gap-6 animate-in fade-in duration-300">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <p>
-              <strong>Geokunststoffe</strong> (Geosynthetics) sind polymere Produkte (Kunststoffe), die im Grundbau, Wasserbau und Verkehrswegebau in Kontakt mit Boden oder Gestein eingesetzt werden.
-            </p>
+            <p><MdText text={inhalt.texte.geokunststoffeGeosyntheticsSindPolymere} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">Arten von Geokunststoffen</h3>
+              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.artenVonGeokunststoffen} /></h3>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
-                <li><strong>Geotextilien:</strong> Durchlässige, flächenhafte Textilien (Vliesstoffe, Gewebe, Maschenwaren).</li>
-                <li><strong>Geogitter (Geogrids):</strong> Gitterartige Strukturen mit großen Öffnungen, primär zur Bewehrung.</li>
-                <li><strong>Geomembranen:</strong> Nahezu wasserundurchlässige Kunststoffbahnen (Dichtungsbahnen).</li>
-                <li><strong>Geoverbundstoffe:</strong> Kombinationen aus verschiedenen Geokunststoffen (z.B. Drainagematten aus Kern und Filtervlies).</li>
+                <li><MdText text={inhalt.texte.geotextilienDurchlässigeFlächenhafteText} /></li>
+                <li><MdText text={inhalt.texte.geogitterGeogridsGitterartigeStrukturen} /></li>
+                <li><MdText text={inhalt.texte.geomembranenNahezuWasserundurchlässigeKu} /></li>
+                <li><MdText text={inhalt.texte.geoverbundstoffeKombinationenAusVerschie} /></li>
               </ul>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-shiraz text-lg mb-2">Hauptfunktionen</h3>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
-                <li><strong>Trennen:</strong> Verhindert die Vermischung von feinkörnigem Untergrund und grobkörniger Tragschicht.</li>
-                <li><strong>Filtern:</strong> Hält Bodenpartikel zurück, lässt aber Wasser passieren (Ersatz für mineralische Filter).</li>
-                <li><strong>Bewehrung:</strong> Aufnahme von Zugkräften zur Stabilisierung von Erdkörpern (z.B. steile Böschungen, Stützwände).</li>
-                <li><strong>Abdichten:</strong> Verhindert den Durchtritt von Flüssigkeiten oder Gasen (z.B. Deponiebau, Tunnelbau).</li>
-                <li><strong>Schützen:</strong> Schützt empfindliche Bauteile (z.B. Geomembranen) vor mechanischer Beschädigung.</li>
+                <li><MdText text={inhalt.texte.trennenVerhindertDieVermischung} /></li>
+                <li><MdText text={inhalt.texte.filternHältBodenpartikelZurück} /></li>
+                <li><MdText text={inhalt.texte.bewehrungAufnahmeVonZugkräften} /></li>
+                <li><MdText text={inhalt.texte.abdichtenVerhindertDenDurchtritt} /></li>
+                <li><MdText text={inhalt.texte.schützenSchütztEmpfindlicheBauteile} /></li>
               </ul>
             </div>
           </div>
@@ -627,28 +595,26 @@ export default function Kunststoffe() {
       {activeTab === 'etfe' && (
         <div className="flex flex-col gap-6 animate-in fade-in duration-300">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-            <p>
-              <strong>ETFE (Ethylen-Tetrafluorethylen)</strong> ist ein fluoriertes Polymer (Spezialkunststoff), das in der modernen Architektur häufig als Folie für leichte, transparente Dach- und Fassadenkonstruktionen (Membranbau) eingesetzt wird.
-            </p>
+            <p><MdText text={inhalt.texte.etfeEthylenTetrafluorethylenIst} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">Herausragende Eigenschaften</h3>
+              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.herausragendeEigenschaften} /></h3>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
-                <li><strong>Geringes Eigengewicht:</strong> Ein Folienkissen wiegt nur einen Bruchteil einer Verglasung – das Tragwerk wird leichter.</li>
-                <li><strong>Hohe Lichtdurchlässigkeit:</strong> Lässt bis zu 95 % des Lichts (einschließlich UV-Strahlung, wichtig für Pflanzen) passieren.</li>
-                <li><strong>Schmutzabweisend:</strong> Die glatte, antiadhäsive Oberfläche lässt Regen Schmutz weitgehend abwaschen.</li>
-                <li><strong>Langlebigkeit:</strong> Reißfest, chemikalienbeständig und alterungsbeständig über mehrere Jahrzehnte.</li>
+                <li><MdText text={inhalt.texte.geringesEigengewichtEinFolienkissen} /></li>
+                <li><MdText text={inhalt.texte.hoheLichtdurchlässigkeitLässtBis} /></li>
+                <li><MdText text={inhalt.texte.schmutzabweisendDieGlatteAntiadhäsive} /></li>
+                <li><MdText text={inhalt.texte.langlebigkeitReißfestChemikalienbeständi} /></li>
               </ul>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">Konstruktion & Kissenaufbau</h3>
+              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.konstruktionKissenaufbau} /></h3>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
-                <li><strong>Pneumatische Kissen:</strong> Zwei bis fünf Lagen ETFE-Folie werden am Rand in Aluminiumprofilen eingespannt und permanent mit Stützluft aufgeblasen. Dies sorgt für Stabilität und Wärmedämmung.</li>
-                <li><strong>Druckluftsteuerung:</strong> Der Druck in den Kissen wird computergesteuert an Wind- und Schneelasten angepasst.</li>
-                <li><strong>Verschattung:</strong> Durch Bedruckung einzelner Lagen und Verschieben über den Kisseninnendruck lässt sich die Lichtdurchlässigkeit aktiv regulieren.</li>
+                <li><MdText text={inhalt.texte.pneumatischeKissenZweiBis} /></li>
+                <li><MdText text={inhalt.texte.druckluftsteuerungDerDruckIn} /></li>
+                <li><MdText text={inhalt.texte.verschattungDurchBedruckungEinzelner} /></li>
               </ul>
             </div>
           </div>
@@ -665,37 +631,11 @@ export default function Kunststoffe() {
           { title: 'Thermoplaste', url: 'https://de.wikipedia.org/wiki/Thermoplaste' },
           { title: 'Duroplaste', url: 'https://de.wikipedia.org/wiki/Duroplaste' },
           { title: 'Elastomere', url: 'https://de.wikipedia.org/wiki/Elastomere' },
-          { title: 'Ethylen-Tetrafluorethylen (ETFE)', url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' }
+          { title: inhalt.werte.ethylenTetrafluorethylenEtfe, url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)' },
-          { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)' },
-          { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)' },
-          { title: 'ISO 11359-2:2021 (Kunststoffe – Thermomechanische Analyse (TMA) – Teil 2: Bestimmung des linearen thermischen Ausdehnungskoeffizienten und der Glasübergangstemperatur; Übernahme als DIN EN ISO 11359-2 im Entwurf 2026-11)' },
-          { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)' }
-        ]}
-        literatur={[
-          'Elsner, P.; Eyerer, P.; Hirth, T. (Hrsg.): Domininghaus – Kunststoffe: Eigenschaften und Anwendungen. 8. Aufl., Berlin: Springer 2012',
-          'Ehrenstein, G. W.: Polymer-Werkstoffe – Struktur, Eigenschaften, Anwendung. 3. Aufl., München: Hanser 2011',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'E(T) \\text{ fällt im Bereich } T_g \\text{ um 1 bis 3 Zehnerpotenzen}',
-            erklaerung: 'Am Glasübergang T_g werden die Kettensegmente beweglich; der E-Modul amorpher Thermoplaste fällt stark ab, bei vernetzten Kunststoffen weniger.',
-            quelle: 'Ehrenstein: Polymer-Werkstoffe'
-          },
-          {
-            formel: '\\varepsilon(t) = \\frac{\\sigma_0}{E_c(t, T)}',
-            erklaerung: 'Kriechen: Unter konstanter Spannung \\sigma_0 wächst die Dehnung, weil der Kriechmodul E_c mit Lastdauer t und Temperatur T sinkt.',
-            quelle: 'Ehrenstein: Polymerwerkstoffe'
-          },
-          {
-            formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T',
-            erklaerung: 'Thermische Längendehnung von Kunststoffen (mit linearem Ausdehnungskoeffizienten \\alpha_T ca. 7-20 mal höher als bei Beton/Stahl).',
-            quelle: 'DIN EN ISO 11359-2'
-          }
-        ]}
+        regelwerke={inhalt.daten["Kunststoffe.regelwerke"]}
+        literatur={inhalt.daten["Kunststoffe.literatur"]}
+        formeln={inhalt.daten["Kunststoffe.formeln"]}
       />
     </div>
   );

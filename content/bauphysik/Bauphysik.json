@@ -1,0 +1,528 @@
+{
+  "texte": {
+    "bauphysikZentrumDTh": "Bauphysik-Zentrum d. TH Augsburg",
+    "simulationsrechnerFürUWert": "Simulationsrechner für U-Wert und Temperaturfaktor, sommerlichen Wärmeschutz und Nachhallzeit (DIN 18041)",
+    "wärmeschutzUWertF": " Wärmeschutz (U-Wert & f_Rsi)",
+    "sommerlicherWärmeschutzTrägheit": " Sommerlicher Wärmeschutz (Trägheit)",
+    "raumakustikNachhallzeitT": " Raumakustik (Nachhallzeit T)",
+    "klimaRandbedingungenBauteil": " Klima-Randbedingungen & Bauteil",
+    "bauteilTypRegeltR": "Bauteil-Typ (Regelt R_si & GModG/GEG Sollwert):",
+    "temperaturTI": "Temperatur (T_i)",
+    "temperaturTE": "Temperatur (T_e)",
+    "bauteilschichtenInnenAußen": " Bauteilschichten (Innen → Außen)",
+    "derHierBerechneteTemperaturverlauf": "Der hier berechnete Temperaturverlauf ist die Grundlage des Tauwassernachweises: Fällt der Wasserdampf-Partialdruck an einer Schichtgrenze bis auf den Sättigungsdampfdruck, entsteht Tauwasser. Das Glaser-Diagramm mit Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 wird an einer Stelle gepflegt – im Modul Feuchteschutz.",
+    "wärmeschutzBewertungGmodgAnlage": " Wärmeschutz-Bewertung (GModG Anlage 7, DIN 4108-2)",
+    "gmodgKonformitätVormalsGeg": "GModG Konformität (vormals GEG)",
+    "oberflächentemperaturSiMitR": "Oberflächentemperatur (θ_si mit R_si = 0,25):",
+    "istWertFRsi": "Ist-Wert f_RSi:",
+    "normSollwertDin4108": "Norm-Sollwert (DIN 4108-2):",
+    "uWertSchichtenAuditdatenbank": "U-Wert & Schichten-Auditdatenbank",
+    "tempGrenzfläche": "Temp. Grenzfläche",
+    "thermischeSpeichermasseDWerkstoffe": " Thermische Speichermasse d. Werkstoffe",
+    "derSommerlicheWärmeschutzSchützt": "Der sommerliche Wärmeschutz schützt Räume vor Überhitzung. Schwere Baustoffe mit hoher Dichte (",
+    "undHohemSpeicherwert": ") und hohem Speicherwert (",
+    "wirkenWieEineThermische": ") wirken wie eine thermische Batterie: Sie schlucken tagsüber Hitze und geben sie erst nachts verzögert (Phasenverschiebung) ab.",
+    "wärmespeichereigenschaftenInDieserBerech": "Wärmespeichereigenschaften in dieser Berechnung:",
+    "holzfaserplatteBio": "Holzfaserplatte (Bio)",
+    "c2100JKg": "c = 2100 J/(kg·K)",
+    "fichtenholzMassivholz": "Fichtenholz / Massivholz",
+    "c1600JKg": "c = 1600 J/(kg·K)",
+    "normalbetonStahlbeton": "Normalbeton (Stahlbeton)",
+    "c1000JKg": "c = 1000 J/(kg·K)",
+    "ziegelmauerwerkHlzMz": "Ziegelmauerwerk (HLZ / MZ)",
+    "c1000JKg2": "c = 1000 J/(kg·K)",
+    "uWertThermischeBilanz": "U-Wert & Thermische Bilanz",
+    "wärmedurchgangUWert": "Wärmedurchgang (U-Wert)",
+    "gesamteWanddicke": "Gesamte Wanddicke",
+    "auswertungsberichtRaumklimatischePhasenv": "Auswertungsbericht: Raumklimatische Phasenverzögerung",
+    "amplitudenverhältnisTav": "Amplitudenverhältnis TAV",
+    "dämpfungsfaktorDerHitzewelle": "Dämpfungsfaktor der Hitzewelle",
+    "phasenverschiebung": "Phasenverschiebung η",
+    "verzögerungDerHitzeIns": "Verzögerung der Hitze ins Innere",
+    "wärmekapazitätCTot": "Wärmekapazität C_tot",
+    "spezifischeBauteilspeicherung": "Spezifische Bauteilspeicherung",
+    "temperaturverlaufSchnitt24Stunden": "Temperaturverlauf-Schnitt (24-Stunden-Welle)",
+    "stundenTav": " Stunden | TAV = ",
+    "dieGrafikSimuliertEine": "Die Grafik simuliert eine typische sommerliche Außenluft-Temperaturwelle (Sinus, Spitze um 14:00 Uhr) und zeigt wie die Innenoberflächentemperatur dank der thermalen Dämmträgheit des Schichtenpakets gedämpft (TAV) und zeitverzögert (η) verhält.",
+    "thermodynamischesDetailverzeichnisDerSch": "Thermodynamisches Detailverzeichnis der Schichten",
+    "masseKgM": "Masse (kg/m²)",
+    "raumDimensionenDin18041": " Raum-Dimensionen (DIN 18041)",
+    "mantelflächeS": "Mantelfläche S = ",
+    "längeDesRaumesL": "Länge des Raumes (L)",
+    "breiteDesRaumesW": "Breite des Raumes (W)",
+    "lichteHöheDesRaumes": "Lichte Höhe des Raumes (H)",
+    "raumtypSollvorgabenNachDin": "Raumtyp & Sollvorgaben nach DIN:",
+    "zuweisungDSchallabsorberOberflächen": "Zuweisung d. Schallabsorber-Oberflächen",
+    "rechteWand": "Rechte Wand:",
+    "raumakustischeVerhaltenskontrolle": " Raumakustische Verhaltenskontrolle",
+    "berechneteHallzeitTD": "Berechnete Hallzeit T d. Raumes",
+    "dinEmpfehlung": " | DIN-Empfehlung: ",
+    "sollKorridorDerNachhallzeit": "Soll-Korridor der Nachhallzeit T(f) (DIN 18041)",
+    "frequenzbereich125Hz4000": "Frequenzbereich: 125 Hz - 4000 Hz",
+    "dieGrafikStelltDen": "Die Grafik stellt den berechneten oktavweisen Verlauf T(f) relativ zur nach DIN 18041 geforderten Toleranzgrenze dar. Für barrierefreie Nutzung darf T(f) die orangefarbenen Korridorlinien nicht durchbrechen.",
+    "äquivalenteAbsorptionsbilanzDerHüllfläch": "Äquivalente Absorptionsbilanz der Hüllflächen",
+    "flächeSM": "Fläche S (m²)",
+    "absorptionsgrad": "Absorptionsgrad α (-)",
+    "kompAbsorptionAM": "Komp. Absorption A (m²)",
+    "summeGesamt": "Summe (Gesamt)"
+  },
+  "werte": {
+    "spezialbaustoffBenutzerdefiniert": "✏️ Spezialbaustoff (Benutzerdefiniert)",
+    "außenluftTemperaturCT": "Außenluft-Temperatur (°C) [T_a]",
+    "innenwandOberflächenTemperaturC": "Innenwand-Oberflächen-Temperatur (°C) [T_si]",
+    "schulUnterrichtsraumNutzungsartA3": "Schul- / Unterrichtsraum (Nutzungsart A3)",
+    "mehrpersonenBüroKantineGruppe": "Mehrpersonen-Büro / Kantine (Gruppe B, Orientierungswert)",
+    "hörsaalVortragssaalNutzungsartA2": "Hörsaal / Vortragssaal (Nutzungsart A2)",
+    "zuVielNachhallDie": "Zu viel Nachhall: Die Sprachverständlichkeit sinkt.",
+    "zuTrockenAkustischÜberdämpft": "Zu trocken (akustisch überdämpft): Sprechende müssen lauter sprechen.",
+    "nachhallzeitImToleranzbereichNach": "Nachhallzeit im Toleranzbereich nach DIN 18041.",
+    "berechneteNachhallzeitTF": "Berechnete Nachhallzeit T(f) [s]",
+    "optimumTSollS": "Optimum T_soll [s]",
+    "din18041ToleranzOberkante": "DIN 18041 Toleranz-Oberkante",
+    "din18041ToleranzUnterkante": "DIN 18041 Toleranz-Unterkante",
+    "innentemperaturTiInC": "Innentemperatur Ti in °C",
+    "außentemperaturTeInC": "Außentemperatur Te in °C",
+    "schichtHinzufügenNeueBauteilschicht": "Schicht hinzufügen (neue Bauteilschicht)",
+    "schichtNachObenVerschieben": "Schicht nach oben verschieben",
+    "schichtNachUntenVerschieben": "Schicht nach unten verschieben",
+    "tauwasserImBauteilGlaser": "Tauwasser im Bauteil? → Glaser-Verfahren im Modul Feuchteschutz",
+    "zumGlaserRechnerFeuchteschutz": "Zum Glaser-Rechner (Feuchteschutz)",
+    "uWertKonform": "U-Wert konform",
+    "uWertUnzureichend": "U-Wert unzureichend",
+    "höchstwertNachGmodgGeg": "Höchstwert nach GModG/GEG Anlage 7 (Änderung bestehender Gebäude) eingehalten. Für Neubauten gilt der Nachweis über das Referenzgebäude (§§ 15, 16).",
+    "derUWertÜberschreitet": "Der U-Wert überschreitet den Höchstwert nach GModG/GEG Anlage 7: Dämmstoffdicke erhöhen oder Dämmstoff mit kleinerem λ wählen.",
+    "vorsichtSchimmelgefahr": "Vorsicht! Schimmelgefahr",
+    "dieInnereOberflächentemperaturIst": "Die innere Oberflächentemperatur ist hoch genug. f_RSi ≥ 0,70 verhindert hohe lokale Oberflächenfeuchte.",
+    "gefahrVonSchimmelpilzbildungWärmeschutz": "Gefahr von Schimmelpilzbildung: Wärmeschutz verbessern (bevorzugt außenseitig) und Wärmebrücken prüfen.",
+    "ihrRechenwegUWert": "Ihr Rechenweg: U-Wert Ihres Bauteils",
+    "nachDinEnIso": "Nach DIN EN ISO 6946, Tab. 7 für die gewählte Bauteilart (Wärmestromrichtung):",
+    "wärmedurchlasswiderständeDerSchichten": "Wärmedurchlasswiderstände der Schichten",
+    "jedeSchichtTrägtMit": "Jede Schicht trägt mit Dicke d (in m) geteilt durch die Wärmeleitfähigkeit λ bei:",
+    "summeAusÜbergangsUnd": "Summe aus Übergangs- und Schichtwiderständen:",
+    "uWertUndAnforderung": "U-Wert und Anforderung",
+    "temperaturfaktorSchimmelnachweis": "Temperaturfaktor (Schimmelnachweis)",
+    "mitDemErhöhtenÜbergangswiderstand": "Mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W nach DIN 4108-2; gefordert ist f_Rsi ≥ 0,70:",
+    "wärmebrückenBefestigungsmittelUndLuftsch": "Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F).",
+    "dinEnIso6946": "DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05; GModG/GEG Anlage 7",
+    "hervorragenderSommerlicherHitzeschutz10h": "Hervorragender sommerlicher Hitzeschutz (η ≥ 10h)",
+    "ausreichenderSommerlicherHitzeschutz6h": "Ausreichender sommerlicher Hitzeschutz (6h ≤ η < 10h)",
+    "mangelhafterSommerlicherHitzeschutz6h": "Mangelhafter sommerlicher Hitzeschutz (η < 6h)",
+    "temperaturC": "Temperatur (°C)",
+    "raumtypSollvorgabenNachDin": "Raumtyp & Sollvorgaben nach DIN",
+    "unterrichtsflussBehindertZuHallig": "UNTERRICHTSFLUSS BEHINDERT - ZU HALLIG",
+    "toterRaumZukleineHallzeit": "TOTER RAUM - ZUKLEINE HALLZEIT",
+    "perfekteAkustischeRaumstimmung": "Perfekte akustische Raumstimmung!",
+    "tippÄndernSieDas": " TIPP: Ändern Sie das Deckenmaterial auf \"Mineralfaser-Lochdecke\" [α=0.70] oder bringe einen Akustik-Schaumstoffabsorber an.",
+    "tippEntfernenSieEinige": " TIPP: Entfernen Sie einige Hochleistungs-Absorberdecken und tauschen sie diese gegen Sichtbeton oder Kalk-Gipskartonglätte aus.",
+    "nachhallzeitTFS": "Nachhallzeit T(f) [s]",
+    "beispiel1UWert": "Beispiel 1: U-Wert und Temperaturfaktor einer gedämmten Kalksandsteinwand",
+    "inDerUngestörtenFläche": "In der ungestörten Fläche ist ein gut gedämmtes Bauteil unkritisch; maßgebend für Schimmel sind Wärmebrücken (Ecken, Laibungen, Sockel).",
+    "dinEnIso69462": "DIN EN ISO 6946:2018-03; GModG Anlage 7; DIN 4108-2",
+    "beispiel2NachhallzeitEines": "Beispiel 2: Nachhallzeit eines Klassenraums nach Sabine",
+    "eineVollflächigeAkustikdeckeSenkt": "Eine vollflächige Akustikdecke senkt die Nachhallzeit auf rund ein Sechstel. Personen und Möblierung bringen zusätzliche Absorption; für tiefe Frequenzen sind oft zusätzliche Absorber an der Rückwand nötig.",
+    "din18041201603": "DIN 18041:2016-03 (Gruppe A, Nutzungsart A3)",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Diffusionsleitkoeffizient korrigiert, Magnus über Eis, f_Rsi mit R_si = 0,25, T_soll nach DIN 18041 volumenabhängig, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "materialLibrary": [
+      {
+        "id": "innenputz_gips",
+        "name": "Gipsputz (Innen)",
+        "lambda": 0.35,
+        "mu": 10,
+        "density": 1000,
+        "c": 1000
+      },
+      {
+        "id": "innenputz_kalk",
+        "name": "Kalkputz (Innen)",
+        "lambda": 0.7,
+        "mu": 15,
+        "density": 1400,
+        "c": 1000
+      },
+      {
+        "id": "aussenputz_zement",
+        "name": "Zementputz (Außen)",
+        "lambda": 1,
+        "mu": 25,
+        "density": 1800,
+        "c": 1000
+      },
+      {
+        "id": "mauerwerk_ziegel_hochloch",
+        "name": "Hochlochziegel (HLZ)",
+        "lambda": 0.42,
+        "mu": 5,
+        "density": 800,
+        "c": 1000
+      },
+      {
+        "id": "mauerwerk_ziegel_voll",
+        "name": "Vollziegel (MZ)",
+        "lambda": 0.81,
+        "mu": 10,
+        "density": 1800,
+        "c": 1000
+      },
+      {
+        "id": "mauerwerk_kalksandstein",
+        "name": "Kalksandstein (KS)",
+        "lambda": 0.99,
+        "mu": 15,
+        "density": 2000,
+        "c": 1000
+      },
+      {
+        "id": "mauerwerk_porenbeton",
+        "name": "Porenbeton (PB)",
+        "lambda": 0.14,
+        "mu": 5,
+        "density": 400,
+        "c": 1000
+      },
+      {
+        "id": "beton_normal",
+        "name": "Normalbeton (Stahlbeton)",
+        "lambda": 2.3,
+        "mu": 80,
+        "density": 2400,
+        "c": 1000
+      },
+      {
+        "id": "beton_leicht",
+        "name": "Leichtbeton",
+        "lambda": 0.4,
+        "mu": 15,
+        "density": 1200,
+        "c": 1000
+      },
+      {
+        "id": "daemmung_eps",
+        "name": "EPS (Polystyrol-Partikelschaum)",
+        "lambda": 0.035,
+        "mu": 50,
+        "density": 20,
+        "c": 1450
+      },
+      {
+        "id": "daemmung_xps",
+        "name": "XPS (Polystyrol-Extruderschaum)",
+        "lambda": 0.035,
+        "mu": 150,
+        "density": 35,
+        "c": 1450
+      },
+      {
+        "id": "daemmung_miwo",
+        "name": "Mineralwolle (MiWo)",
+        "lambda": 0.035,
+        "mu": 1,
+        "density": 50,
+        "c": 1030
+      },
+      {
+        "id": "daemmung_holzfaser",
+        "name": "Holzfaserplatte (Bio)",
+        "lambda": 0.045,
+        "mu": 5,
+        "density": 160,
+        "c": 2100
+      },
+      {
+        "id": "daemmung_pur",
+        "name": "PUR/PIR Hartschaum",
+        "lambda": 0.025,
+        "mu": 100,
+        "density": 30,
+        "c": 1400
+      },
+      {
+        "id": "holz_fichte",
+        "name": "Fichte / Tanne (Vollholz)",
+        "lambda": 0.13,
+        "mu": 40,
+        "density": 450,
+        "c": 1600
+      },
+      {
+        "id": "holz_eiche",
+        "name": "Eiche (Hardwood)",
+        "lambda": 0.2,
+        "mu": 50,
+        "density": 700,
+        "c": 1600
+      },
+      {
+        "id": "platte_osb",
+        "name": "OSB-Platte",
+        "lambda": 0.13,
+        "mu": 200,
+        "density": 600,
+        "c": 1700
+      },
+      {
+        "id": "platte_gipskarton",
+        "name": "Gipskartonplatte (GKB)",
+        "lambda": 0.25,
+        "mu": 10,
+        "density": 800,
+        "c": 1000
+      },
+      {
+        "id": "folie_pe",
+        "name": "PE-Folie (Dampfsperre)",
+        "lambda": 0.5,
+        "mu": 100000,
+        "density": 900,
+        "c": 1500
+      },
+      {
+        "id": "folie_klimamembran",
+        "name": "Klimamembran",
+        "lambda": 0.5,
+        "mu": 2500,
+        "density": 1000,
+        "c": 1500
+      },
+      {
+        "id": "luftschicht_ruhend",
+        "name": "Luftschicht (ruhend, 2cm)",
+        "lambda": 0.13,
+        "mu": 1,
+        "density": 1.2,
+        "c": 1000
+      },
+      {
+        "id": "stahl",
+        "name": "Stahl",
+        "lambda": 50,
+        "mu": 1000000,
+        "density": 7850,
+        "c": 460
+      },
+      {
+        "id": "glass",
+        "name": "Glas",
+        "lambda": 1,
+        "mu": 1000000,
+        "density": 2500,
+        "c": 800
+      },
+      {
+        "id": "custom",
+        "name": "✏️ Benutzerdefiniertes Material...",
+        "lambda": 0.08,
+        "mu": 10,
+        "density": 300,
+        "c": 1200
+      }
+    ],
+    "acousticMaterials": [
+      {
+        "id": "beton_roh",
+        "name": "Sichtbeton / Estrich (hart)",
+        "alpha": 0.02,
+        "alphas": [
+          0.01,
+          0.01,
+          0.02,
+          0.02,
+          0.02,
+          0.02
+        ]
+      },
+      {
+        "id": "putz_gips",
+        "name": "Kalk-Gips-Verputz (glatt)",
+        "alpha": 0.04,
+        "alphas": [
+          0.02,
+          0.03,
+          0.04,
+          0.05,
+          0.04,
+          0.03
+        ]
+      },
+      {
+        "id": "parkett",
+        "name": "Holzparkett auf Balkenlage",
+        "alpha": 0.12,
+        "alphas": [
+          0.15,
+          0.18,
+          0.12,
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      {
+        "id": "teppich",
+        "name": "Velours-Teppichboden (weich)",
+        "alpha": 0.25,
+        "alphas": [
+          0.05,
+          0.1,
+          0.25,
+          0.4,
+          0.5,
+          0.6
+        ]
+      },
+      {
+        "id": "vorhang_schwer",
+        "name": "Schwere Vorhangstoffe (gefaltet)",
+        "alpha": 0.45,
+        "alphas": [
+          0.1,
+          0.25,
+          0.5,
+          0.6,
+          0.7,
+          0.7
+        ]
+      },
+      {
+        "id": "akustik_decke",
+        "name": "Mineralfaser-Lochdecke",
+        "alpha": 0.7,
+        "alphas": [
+          0.35,
+          0.55,
+          0.75,
+          0.8,
+          0.8,
+          0.75
+        ]
+      },
+      {
+        "id": "akustik_schaum",
+        "name": "Melaminharz-Absorber (Basotect)",
+        "alpha": 0.85,
+        "alphas": [
+          0.15,
+          0.45,
+          0.85,
+          0.95,
+          0.98,
+          0.95
+        ]
+      },
+      {
+        "id": "glass_fenster",
+        "name": "Große Fensterflächen",
+        "alpha": 0.03,
+        "alphas": [
+          0.1,
+          0.05,
+          0.04,
+          0.03,
+          0.03,
+          0.02
+        ]
+      },
+      {
+        "id": "fenster_offen",
+        "name": "Offenes Fenster (vollständig)",
+        "alpha": 1,
+        "alphas": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "Bauphysik.schritte": [
+      {
+        "titel": "Schichten",
+        "erklaerung": "Innenputz 1,5 cm (λ = 0,70), KS 17,5 cm (λ = 0,99), Mineralwolle 14 cm (λ = 0,035); Putzträger außen vernachlässigt:",
+        "formel": "R_T = 0{,}13 + \\frac{0{,}015}{0{,}70} + \\frac{0{,}175}{0{,}99} + \\frac{0{,}14}{0{,}035} + 0{,}04 = 4{,}37\\,\\text{m}^2\\text{K/W}"
+      },
+      {
+        "titel": "U-Wert",
+        "erklaerung": "Vergleich mit dem Höchstwert nach Anlage 7 (Außenwand 0,24):",
+        "formel": "U = \\frac{1}{4{,}37} = 0{,}229\\,\\text{W/(m}^2\\text{K)} \\le 0{,}24"
+      },
+      {
+        "titel": "Temperaturfaktor",
+        "erklaerung": "Schimmelnachweis nach DIN 4108-2 mit erhöhtem Übergangswiderstand R*_si = 0,25 m²K/W:",
+        "formel": "f_{Rsi} = 1 - 0{,}25 \\cdot 0{,}229 = 0{,}94 \\ge 0{,}70"
+      }
+    ],
+    "Bauphysik.schritte_2": [
+      {
+        "titel": "Sollwert",
+        "erklaerung": "Klassenraum 9 m × 7 m × 3 m, Nutzungsart A3:",
+        "formel": "V = 189\\,\\text{m}^3, \\quad T_{soll} = 0{,}32 \\cdot \\lg 189 - 0{,}17 = 0{,}56\\,\\text{s}"
+      },
+      {
+        "titel": "Ohne Maßnahmen",
+        "erklaerung": "Alle 222 m² Oberfläche schallhart (α ≈ 0,05):",
+        "formel": "A = 222 \\cdot 0{,}05 = 11{,}1\\,\\text{m}^2 \\Rightarrow T = \\frac{0{,}163 \\cdot 189}{11{,}1} = 2{,}78\\,\\text{s}"
+      },
+      {
+        "titel": "Akustikdecke",
+        "erklaerung": "Deckenfläche 63 m² mit α = 0,90 statt 0,05:",
+        "formel": "A = 11{,}1 + 63 \\cdot 0{,}85 = 64{,}7\\,\\text{m}^2 \\Rightarrow T = \\frac{30{,}8}{64{,}7} = 0{,}48\\,\\text{s}"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Toleranzbereich 0,8 bis 1,2 · T_soll:",
+        "formel": "0{,}45\\,\\text{s} \\le 0{,}48\\,\\text{s} \\le 0{,}67\\,\\text{s}"
+      }
+    ],
+    "Bauphysik.regelwerke": [
+      {
+        "title": "DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)"
+      },
+      {
+        "title": "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Periodenbilanzverfahren; ersetzt 2018-10)"
+      },
+      {
+        "title": "DIN 18041:2016-03 (Hörsamkeit in Räumen – Anforderungen, Empfehlungen und Hinweise für die Planung)"
+      },
+      {
+        "title": "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      },
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG) – Anlage 7",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      }
+    ],
+    "Bauphysik.literatur": [
+      "Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017",
+      "Bauphysik-Kalender. Berlin: Ernst & Sohn (jährlich)"
+    ],
+    "Bauphysik.weblinks": [
+      {
+        "title": "Ubakus.de – Interaktiver U-Wert- & Glaser-Tauwassernachweis",
+        "url": "https://www.ubakus.de/"
+      },
+      {
+        "title": "LBNL THERM – 2D-Wärmebrücken-FE-Simulation",
+        "url": "https://windows.lbl.gov/software/therm"
+      },
+      {
+        "title": "ÖKOBAUDAT Plattform – BMWSB EPD-Datenbank",
+        "url": "https://www.oekobaudat.de/"
+      }
+    ],
+    "Bauphysik.formeln": [
+      {
+        "formel": "U = 1 / R_T = 1 / (R_{si} + \\sum (d_i / \\lambda_i) + R_{se})",
+        "erklaerung": "Wärmedurchgangskoeffizient (U-Wert) in W/(m²K). Berechnet den Transmissionswärmeverlust durch mehrschichtige Bauteile.",
+        "quelle": "DIN EN ISO 6946"
+      },
+      {
+        "formel": "T = 0{,}163 \\cdot \\frac{V}{A} \\quad \\text{mit} \\quad A = \\sum S_i \\cdot \\alpha_i",
+        "erklaerung": "Sabinesche Nachhallzeit-Gleichung zur quantitativen Ermittlung der akustischen Raumantwort T in Sekunden.",
+        "quelle": "Sabine; DIN 18041:2016-03"
+      }
+    ]
+  }
+}

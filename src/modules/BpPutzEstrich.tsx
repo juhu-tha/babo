@@ -6,6 +6,8 @@ import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, Flame, Settin
 import { InlineMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpputzestrich/BpPutzEstrich.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface PutzEstrichProduct {
   name: string;
@@ -21,102 +23,9 @@ interface PutzEstrichProduct {
   applications: string[];
 }
 
-const plasterProducts: PutzEstrichProduct[] = [
-  {
-    name: 'Gipsputzmörtel (Innenputz)',
-    code: 'GP / B1-B7',
-    standard: 'DIN EN 13279-1',
-    strengthClass: 'Druckfestigkeit ≥ 2,0 N/mm²',
-    binder: 'Baugips (Calciumsulfat-Hemihydrat)',
-    density: 'ca. 900 - 1100 kg/m³',
-    shrinkage: 'Sehr gering (quillt minimal)',
-    description: 'Einschichtiger, rationeller Innenputz für Wände und Decken. Ergibt sehr glatte, streichfertige Oberflächen und puffert Raumluftfeuchte.',
-    advantages: ['Sehr glatte Oberflächen erzielbar', 'Hervorragendes Raumklima durch Feuchtespeicherung', 'Schnelle Erhärtung'],
-    disadvantages: ['Nicht feuchtigkeitsbeständig (reiner Trockenbereich)', 'Keine Frostbeständigkeit', 'Geringere Stoßfestigkeit'],
-    applications: ['Wohnräume und Flure (Innen)', 'Untergrund für Tapezierarbeiten', 'Deckenbeschichtungen']
-  },
-  {
-    name: 'Alkalischer Kalkputzmörtel',
-    code: 'GP / CS I',
-    standard: 'DIN EN 998-1',
-    strengthClass: 'CS I (0,4 - 2,5 N/mm²)',
-    binder: 'Luftkalk (Calciumhydroxid) / Hydratkalk',
-    density: 'ca. 1200 - 1400 kg/m³',
-    shrinkage: 'Mäßig (Carbonatisierung erforderlich)',
-    description: 'Diffusionsoffener, historisch bewährter Putzmörtel. Die hohe Alkalität (pH-Wert ca. 12,5) wirkt schimmelhemmend, solange der Putz nicht vollständig karbonatisiert ist.',
-    advantages: ['Schimmelpilzwidrig ohne biozide Chemie', 'Diffusionsoffen (μ ≈ 10, s_d ≈ 0,15 m bei 15 mm)', 'Elastischer als zementgebundene Systeme'],
-    disadvantages: ['Langsame Erhärtung (benötigt CO2-Zufuhr)', 'Geringere mechanische Belastbarkeit'],
-    applications: ['Historischer Altbau & Denkmalpflege', 'Kindergärten & Schlafzimmer (ökologischer Ausbau)', 'Innentrennwände ohne dauerhafte Feuchtebelastung']
-  },
-  {
-    name: 'Universal Kalk-Zement-Putz',
-    code: 'GP / CS II - CS III',
-    standard: 'DIN EN 998-1',
-    strengthClass: 'CS II (1,5 - 5,0 N/mm²)',
-    binder: 'Portlandzement & Hydratkalk',
-    density: 'ca. 1400 - 1700 kg/m³',
-    shrinkage: 'Spürbar (Rissgefahr bei schneller Trocknung)',
-    description: 'Der unentbehrliche, widerstandsfähige Allroundputz für außen und innen. Vereinigt die Verarbeitbarkeit von Kalk mit der Robustheit und Feuchtefestigkeit von Zement.',
-    advantages: ['Wasserabweisend und frostbeständig', 'Ausgezeichnete Stoßfestigkeit', 'Universell überarbeitbar'],
-    disadvantages: ['Rissgefahr durch Schwinden bei Zugluft', 'Höherer mechanischer Widerstand bei Verarbeitung'],
-    applications: ['Außenfassaden (Unter- und Oberputz)', 'Häusliche Bäder, Keller und Feuchträume', 'Tragschicht für Fliesenbeläge']
-  },
-  {
-    name: 'Hydraulischer Sanierputzmörtel',
-    code: 'R',
-    standard: 'DIN EN 998-1 / WTA-Merkblatt 2-9',
-    strengthClass: 'CS II (1,5 - 5,0 N/mm²)',
-    binder: 'Zement unter Beigabe von Porenbildnern',
-    density: 'ca. 1000 - 1300 kg/m³',
-    shrinkage: 'Gering',
-    description: 'Spezialputz mit hohem Luftporengehalt (Frischmörtel > 25 %, WTA-Merkblatt 2-9). Er nimmt auskristallisierende Salze im Porenraum auf, z. B. bei salzbelastetem Kellermauerwerk.',
-    advantages: ['Verhindert Salzausblühungen an der Oberfläche', 'Hält die Oberfläche trocken trotz feuchter Wand', 'Diffusionsoffen'],
-    disadvantages: ['Keine konstruktive Abdichtung (nur Opferputz)', 'Beschränkte Salzaufnahmekapazität (Sättigung nach J.)', 'Nicht im ständigen Spritzwasserbereich einsetzbar'],
-    applications: ['Sanierung feuchter Altbaukeller (erdberührt)', 'Historische Denkmäler', 'Mauerwerke nach Havariefällen / Rohrbrüchen']
-  }
-];
+const plasterProducts: PutzEstrichProduct[] = inhalt.daten.plasterProducts;
 
-const screedProducts: PutzEstrichProduct[] = [
-  {
-    name: 'Zementestrich',
-    code: 'CT',
-    standard: 'DIN EN 13813 / DIN 18560',
-    strengthClass: 'z.B. C25 - F4 / C35 - F5',
-    binder: 'Portlandzement (CEM I bzw. CEM II)',
-    density: 'ca. 2000 - 2200 kg/m³',
-    shrinkage: 'Spürbar hoch (ca. 0,5 mm/m)',
-    description: 'Der bewährte Klassiker für alle Innen- und Außenanwendungen. Feuchteunempfindlich und hoch belastbar; wegen des Schwindens sind Felder und Fugen nach Fugenplan anzuordnen.',
-    advantages: ['Feuchteunempfindlich', 'Sowohl für innen als auch außen geeignet (frostbeständig)', 'Hohe mechanische Festigkeiten'],
-    disadvantages: ['Lange Trocknungszeit bis zur Belegreife (oft mehrere Wochen, CM-Messung)', 'Schwindet beim Erhärten (Riss- und Schüsselgefahr)', 'Bewegungsfugen nach Fugenplan (Richtwert Heizestrich ca. 40 m² je Feld)'],
-    applications: ['Nassbereiche, Balkone und Terrassen', 'Industriehallen und Garagen', 'Unterbau für alle Bodenbeläge']
-  },
-  {
-    name: 'Calciumsulfat-Fließestrich',
-    code: 'CA / CAF',
-    standard: 'DIN EN 13813 / DIN 18560',
-    strengthClass: 'z.B. CA-C25-F5 / CA-C35-F7',
-    binder: 'Calciumsulfat-Anhydrit (Gipsbasis)',
-    density: 'ca. 2000 - 2100 kg/m³',
-    shrinkage: 'Extrem gering (quillt/schwindet kaum)',
-    description: 'Fließfähiger Estrich, der sich selbstnivellierend einbaut. Wegen des geringen Schwindens sind große Felder fugenlos möglich (Feldgrößen nach Herstellerangabe).',
-    advantages: ['Selbstnivellierende, arbeitszeitsparende Einbringung', 'Ideal für Fußbodenheizungen (umschließt Rohrleitungen hohlraumfrei)', 'Belegreif bereits bei geringeren Restfeuchten'],
-    disadvantages: ['Feuchteempfindlich (Festigkeitsverlust bei Durchfeuchtung)', 'Nicht für den Außen- oder Dauernassbereich zugelassen', 'Sinterhaut muss oft angeschliffen werden'],
-    applications: ['Wohnungsbau mit flächiger Fußbodenheizung', 'Fugenlose Ausbauten im Trockenbereich', 'Bürogebäude']
-  },
-  {
-    name: 'Gussasphaltestrich',
-    code: 'AS',
-    standard: 'DIN EN 13813 / DIN 18560',
-    strengthClass: 'z.B. AS-IC 10 / AS-IC 15',
-    binder: 'Bitumen (Straßenbaubitumen)',
-    density: 'ca. 2300 - 2400 kg/m³',
-    shrinkage: 'Null (rein thermische Kontraktion)',
-    description: 'Wird heiß als viskose Masse eingebracht und erhärtet ausschließlich durch Abkühlung. Enthält kein Wasser, wodurch jegliche Baufeuchte entfällt. Sofort begehbar.',
-    advantages: ['Völlig wasserfrei (keine Trocknungszeit, sofort belegbar)', 'Ausgezeichneter Trittschall- und Wärmeschutz', 'Absolut wasser- und dampfdicht'],
-    disadvantages: ['Sehr hoher Einbaupreis', 'Trennlage (z. B. Rohglasvlies) erforderlich', 'Nicht für hohe Dauertemperaturen geeignet'],
-    applications: ['Schnellsanierungen (z.B. Hotelbäder)', 'Industrieböden mit Chemikalien- und mechanischer Belastung', 'Estrich auf Trennschicht über schwingungsempfindlichen Holzbalkendecken']
-  }
-];
+const screedProducts: PutzEstrichProduct[] = inhalt.daten.screedProducts;
 
 export default function BpPutzEstrich() {
   const [activeTab, setActiveTab] = useState<'steckbrief' | 'allgemein' | 'praxis' | 'innovation'>('steckbrief');
@@ -126,12 +35,9 @@ export default function BpPutzEstrich() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 font-sans">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Putz- &amp; Estrichsysteme (Bauprodukte)
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.putzEstrichsystemeBauprodukte} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
-          <p>
-            Anforderungen nach DIN 18550 und DIN 18560. Technische Spezifikation von Werktrockenmörteln, Bindemittelreaktionen sowie die sachgerechte Auswahl von Lastverteilungsschichten.
-          </p>
+          <p><MdText text={inhalt.texte.anforderungenNachDin18550} /></p>
         </div>
 
         {/* Primary Tabs */}
@@ -154,8 +60,7 @@ export default function BpPutzEstrich() {
             }`}
             onClick={() => setActiveTab('allgemein')}
           >
-            <FileText size={16} /> Basiswissen &amp; Mörtelarten
-          </button>
+            <FileText size={16} /><MdText text={inhalt.texte.basiswissenMörtelarten} /></button>
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
@@ -192,13 +97,12 @@ export default function BpPutzEstrich() {
               
               {/* Left Column Component List Selector */}
               <div className="lg:col-span-5 space-y-4">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Verfügbare Putz- und Estricharten:</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.verfügbarePutzUndEstricharten} /></span>
                 
                 {/* Plasters subcategory */}
                 <div className="space-y-1.5">
                   <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                    <ClipboardList size={11} className="text-slate-400" /> 1. Putze (nach DIN EN 998-1)
-                  </div>
+                    <ClipboardList size={11} className="text-slate-400" /><MdText text={inhalt.texte.t1PutzeNachDin} /></div>
                   <div className="flex flex-col gap-1.5">
                     {plasterProducts.map((prod) => (
                       <button
@@ -220,8 +124,7 @@ export default function BpPutzEstrich() {
                 {/* Screeds subcategory */}
                 <div className="space-y-1.5">
                   <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                    <Settings size={11} className="text-slate-400" /> 2. Estriche (nach DIN EN 13813)
-                  </div>
+                    <Settings size={11} className="text-slate-400" /><MdText text={inhalt.texte.t2EstricheNachDin} /></div>
                   <div className="flex flex-col gap-1.5">
                     {screedProducts.map((prod) => (
                       <button
@@ -246,7 +149,7 @@ export default function BpPutzEstrich() {
                 <div>
                   <div className="border-b border-home-grau/20 pb-3 mb-4 flex justify-between items-start flex-wrap gap-2">
                     <div>
-                      <span className="text-[9px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-full uppercase tracking-wider">Normatives Bauproduktdatenblatt</span>
+                      <span className="text-[9px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-full uppercase tracking-wider"><MdText text={inhalt.texte.normativesBauproduktdatenblatt} /></span>
                       <h3 className="text-base font-bold text-slate-800 mt-1">{selectedItem.name}</h3>
                     </div>
                     <div className="bg-white px-2 py-1 rounded border border-slate-200 text-right">
@@ -312,7 +215,7 @@ export default function BpPutzEstrich() {
 
                 {/* Applications block at bottom */}
                 <div className="p-3 bg-white rounded-xl border border-slate-200/80 mt-4">
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Standard-Einsatzgebiete (Regelkonform):</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.standardEinsatzgebieteRegelkonform} /></div>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedItem.applications.map((app, idx) => (
                       <span key={idx} className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold">
@@ -328,42 +231,32 @@ export default function BpPutzEstrich() {
             <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 shadow-sm mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <span className="text-xs font-bold text-shiraz tracking-wider uppercase block flex items-center gap-1">
-                  <Sparkles size={14} /> Gips vs. Anhydrit Abbindechemie
-                </span>
-                <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                  Gipsmörtel und Calciumsulfatestriche binden durch den Wiedereinbau von Kristallwasser ab. Baugips (Halbhydrat, <InlineMath math="\text{CaSO}_4 \cdot 0{,}5\,\text{H}_2\text{O}" />) reagiert mit Wasser zu Gips (Dihydrat, <InlineMath math="\text{CaSO}_4 \cdot 2\,\text{H}_2\text{O}" />). Diese Kristallisation bildet eine ineinander verfilzte Nadelstruktur, die die Festigkeit begründet. Sie schrumpfen dabei kaum und weisen eine hohe Endebenheit auf, bleiben jedoch wasserlöslich (nicht wasserbeständig!).
-                </p>
+                  <Sparkles size={14} /><MdText text={inhalt.texte.gipsVsAnhydritAbbindechemie} /></span>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.gipsmörtelUndCalciumsulfatestricheBinden} /></p>
               </div>
 
               <div className="space-y-2">
                 <span className="text-xs font-bold text-blue-800 tracking-wider uppercase block flex items-center gap-1">
-                  <Flame size={14} /> Karbonatisierung von Kalkputzen
-                </span>
-                <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                  Luftkalkputz erhärtet nicht hydraulisch, sondern durch die chemische Aufnahme von Kohlendioxid (<InlineMath math="\text{CO}_2" />) aus der Umgebungsluft (Karbonatisierung). Calciumhydroxid (<InlineMath math="\text{Ca(OH)}_2" />) reagiert langsam zu Kalkstein (<InlineMath math="\text{CaCO}_3" />) unter Freisetzung von Wasser. Dieser Prozess benötigt Wochen. Zu schnelles Austrocknen (Zugluft, Sonne) unterbricht die Karbonatisierung; die Oberfläche kann absanden.
-                </p>
+                  <Flame size={14} /><MdText text={inhalt.texte.karbonatisierungVonKalkputzen} /></span>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.luftkalkputzErhärtetNichtHydraulisch} /></p>
               </div>
             </div>
 
             {/* WERKSTROMÖRTEL - EXPLAINER */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 md:col-span-2 shadow-sm">
-              <h3 className="font-bold text-shiraz text-base mb-2">Werktrockenmörtel (WTM) im Strukturwandel</h3>
-              <p className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-3">
-                Zement und Kalk wurden historisch roh auf der Baustelle gemischt. Moderne Werktrockenmörtel werden im Werk vollautomatisiert hergestellt und ofengetrocknet geliefert. Das garantiert **Präzision im Bindemittelverhältnis** und schließt weitreichende Handfehler auf der Baustelle aus. Silosysteme in Verbindung mit automatischen Putzmaschinen steigern zudem die Baugeschwindigkeit erheblich.
-              </p>
+              <h3 className="font-bold text-shiraz text-base mb-2"><MdText text={inhalt.texte.werktrockenmörtelWtmImStrukturwandel} /></h3>
+              <p className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-3"><MdText text={inhalt.texte.zementUndKalkWurden} /></p>
             </div>
 
             {/* Quality Standard Classifications (Manufacturer Neutral) */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm bg-slate-50/50">
-              <h3 className="font-bold text-home-prim text-base mb-2 flex items-center gap-2">Standard-Anwendungskriterien für Systemputze</h3>
-              <p className="text-xs text-text-main/60 mb-4 italic font-medium">
-                Hinweis zur Herstellerneutralität: Zur Wahrung vollständiger Produktneutralität und den Richtlinien für öffentliche Ausschreibungen nach VOB/A werden hier ausschließlich genormte Leistungsgruppen aufgeführt.
-              </p>
+              <h3 className="font-bold text-home-prim text-base mb-2 flex items-center gap-2"><MdText text={inhalt.texte.standardAnwendungskriterienFürSystemputz} /></h3>
+              <p className="text-xs text-text-main/60 mb-4 italic font-medium"><MdText text={inhalt.texte.hinweisZurHerstellerneutralitätZur} /></p>
               <ul className="list-disc list-inside text-xs text-text-main/70 space-y-2 pl-2">
-                <li><span className="font-bold text-slate-800">Oberflächenqualität (Innenputze):</span> Unterteilung in Qualitätsstufen Q1 (abgezogen), Q2 (standardgeqvölbt - tapezierfähig), Q3 (feingeglättet) und Q4 (vollflächig gespachtelt - absolut plan).</li>
-                <li><span className="font-bold text-slate-800">Festigkeitsklassen für Estriche:</span> Einteilung nach DIN EN 13813 in Druckfestigkeit (C5 bis C80) und Biegezugfestigkeit (F1 bis F50) zur Dimensionierung von Lastverteilungsschichten.</li>
-                <li><span className="font-bold text-slate-800">Kalk-Zementputze (CR/CS III):</span> Universell beanspruchbares Allwettersystem, ideal für den dauerhaft bewitterten Außenbereich und feuchtebelastete Kellerzonen.</li>
-                <li><span className="font-bold text-slate-800">Reine Silikat-Spachtelmassen:</span> Hochgradig dampfdiffusionsoffene Systeme, welche für historische Fassadensanierungen und bauphysikalisch anspruchsvolle Innendämmungen eingesetzt werden.</li>
+                <li><span className="font-bold text-slate-800"><MdText text={inhalt.texte.oberflächenqualitätInnenputze} /></span><MdText text={inhalt.texte.unterteilungInQualitätsstufenQ1} /></li>
+                <li><span className="font-bold text-slate-800"><MdText text={inhalt.texte.festigkeitsklassenFürEstriche} /></span><MdText text={inhalt.texte.einteilungNachDinEn} /></li>
+                <li><span className="font-bold text-slate-800"><MdText text={inhalt.texte.kalkZementputzeCrCs} /></span><MdText text={inhalt.texte.universellBeanspruchbaresAllwettersystem} /></li>
+                <li><span className="font-bold text-slate-800"><MdText text={inhalt.texte.reineSilikatSpachtelmassen} /></span><MdText text={inhalt.texte.hochgradigDampfdiffusionsoffeneSystemeWe} /></li>
               </ul>
             </div>
           </div>
@@ -380,15 +273,11 @@ export default function BpPutzEstrich() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Wasserbedarf beim Abbinden von Stuckgips"
+          title={inhalt.werte.anwendungsbeispielWasserbedarfBeimAbbind}
           zielGleichung="\text{CaSO}_4 \cdot \tfrac{1}{2}\text{H}_2\text{O} + 1{,}5\,\text{H}_2\text{O} \rightarrow \text{CaSO}_4 \cdot 2\,\text{H}_2\text{O}"
-          normQuelle="Stöchiometrie (Molmassen: Halbhydrat 145,1 g/mol, Wasser 18,0 g/mol)"
-          schritte={[
-            { titel: '1. Chemisch gebundenes Wasser je kg Halbhydrat', formel: '\\frac{1{,}5 \\cdot 18{,}0}{145{,}1} = 0{,}186\\,\\text{kg/kg}', erklaerung: 'Das ist der Wasserbedarf für die Hydratation.' },
-            { titel: '2. Anmachwasser in der Praxis', formel: 'w/g \\approx 0{,}6 \\text{ bis } 0{,}8', erklaerung: 'Lehrwert für Gipsputz; der Überschuss sorgt für Verarbeitbarkeit.' },
-            { titel: '3. Überschusswasser', formel: '0{,}7 - 0{,}19 \\approx 0{,}5\\,\\text{kg/kg}', erklaerung: 'Verdunstet – es hinterlässt Poren und muss vor dem Beschichten austrocknen.' },
-          ]}
-          ergebnisHinweis="Nur gut ein Viertel des Anmachwassers wird chemisch gebunden; der Rest bestimmt Porosität, Festigkeit und Trocknungszeit."
+          normQuelle={inhalt.werte.stöchiometrieMolmassenHalbhydrat145}
+          schritte={inhalt.daten["BpPutzEstrich.schritte"]}
+          ergebnisHinweis={inhalt.werte.nurGutEinViertel}
         />
       </div>
 
@@ -396,40 +285,13 @@ export default function BpPutzEstrich() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Putz (Baustoff)', url: 'https://de.wikipedia.org/wiki/Putz_(Baustoff)' },
+          { title: inhalt.werte.putzBaustoff, url: 'https://de.wikipedia.org/wiki/Putz_(Baustoff)' },
           { title: 'Estrich', url: 'https://de.wikipedia.org/wiki/Estrich' },
           { title: 'Mörtel', url: 'https://de.wikipedia.org/wiki/M%C3%B6rtel' }
         ]} 
-        literatur={[ 
-          'Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'IWM Industrieverband WerkMörtel e.V.: Technische Merkblätter für Werktrockenmörtel.',
-          'Leitlinien für das Verputzen von Mauerwerk und Beton (VDPM mit 17 Fachverbänden, 4. Fassung, November 2022)'
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)' }, 
-          { title: 'DIN 18550-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Bestimmungen)' },
-          { title: 'DIN 18560-1 bis 7 (Estriche im Bauwesen)' },
-          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen - Eigenschaften und Anforderungen)' },
-          { title: 'DIN EN 998-1 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)' }
-        ]} 
-        formeln={[
-          { 
-            formel: '\\text{CaSO}_4 \\cdot 0{,}5\\,\\text{H}_2\\text{O} + 1{,}5\\,\\text{H}_2\\text{O} \\rightarrow \\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O}', 
-            erklaerung: 'Kristalline Abbindereaktion von Calciumsulfat-Halbhydrat zu Dihydrat unter leichter Volumenzunahme (ca. 1%).',
-            quelle: 'DIN EN 13279'
-          },
-          { 
-            formel: '\\text{Ca(OH)}_2 + \\text{CO}_2 \\rightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}', 
-            erklaerung: 'Karbonatisierungsreaktion von Luftkalkmörtel (Kalksteinbildung an Luft unter Freisetzung von Reaktionswasser).',
-            quelle: 'DIN EN 459'
-          },
-          {
-            formel: 's_d = \\mu \\cdot d \\le 0{,}5\\,\\text{m}',
-            erklaerung: 'Diffusionsäquivalente Luftschichtdicke; Schichten mit s_d ≤ 0,5 m gelten nach DIN 4108-3 als diffusionsoffen. Mineralische Putze liegen meist deutlich darunter.',
-            quelle: 'DIN 4108-3'
-          }
-        ]} 
+        literatur={inhalt.daten["BpPutzEstrich.literatur"]} 
+        regelwerke={inhalt.daten["BpPutzEstrich.regelwerke"]} 
+        formeln={inhalt.daten["BpPutzEstrich.formeln"]} 
       />
     </div>
   );

@@ -11,6 +11,8 @@ import { InteractiveQuizSystem } from '@/src/components/quiz/InteractiveQuizSyst
 import { DynamischerAufgabenGenerator } from '@/src/components/trainer/DynamischerAufgabenGenerator';
 import { SchadensforensikSimulator } from '@/src/components/forensik/SchadensforensikSimulator';
 import { taskCategories } from '../data/aufgabenData';
+import inhalt from '@/content/aufgaben/Aufgaben.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
 
@@ -172,19 +174,16 @@ export default function Aufgaben() {
                 <GraduationCap size={20} />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-text-main">
-                  Fach-Quiz &amp; Wissenscheck: {quizConfig.label} (Cluster {clusterDerGruppen(quizConfig.gruppen)})
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.fachQuizWissenscheck} />{quizConfig.label} (Cluster {clusterDerGruppen(quizConfig.gruppen)})
                 </h4>
-                <p className="text-xs text-text-main/70 mt-0.5">
-                  Prüfen Sie Ihr Verständnis mit didaktisch geprüften Multiple-Choice-Fragen und automatischer Wissenslücken-Analyse.
-                </p>
+                <p className="text-xs text-text-main/70 mt-0.5"><MdText text={inhalt.texte.prüfenSieIhrVerständnis} /></p>
               </div>
             </div>
             <button
               onClick={() => setMode('quizzes')}
               className="px-4 py-2.5 bg-shiraz hover:bg-shiraz/90 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0 self-start sm:self-auto"
             >
-              <span>Fach-Quiz starten</span>
+              <span><MdText text={inhalt.texte.fachQuizStarten} /></span>
               <ArrowRight size={14} />
             </button>
           </div>
@@ -192,7 +191,7 @@ export default function Aufgaben() {
           {/* Bloom Learning Objectives */}
           <BloomLernziele 
             moduleId="aufgaben_uebungen" 
-            moduleTitle="Übungsaufgaben, Bemessungsnachweise & Fallstudien" 
+            moduleTitle={inhalt.werte.übungsaufgabenBemessungsnachweiseFallstu} 
             studyLevel="Bachelor Basis (1.-2. Semester)" 
             timeMinutes={60} 
             ects={5} 
@@ -204,9 +203,9 @@ export default function Aufgaben() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-text-main">
-                    {searchTerm ? 'Suchergebnisse: Übungsaufgaben' : (filteredCategories.length === 1 && !searchTerm ? `Übungsaufgaben: ${filteredCategories[0].name}` : 'Übungsaufgaben & Fallstudien')}
+                    {searchTerm ? inhalt.werte.suchergebnisseÜbungsaufgaben : (filteredCategories.length === 1 && !searchTerm ? `Übungsaufgaben: ${filteredCategories[0].name}` : inhalt.werte.übungsaufgabenFallstudien)}
                   </h2>
-                  <p className="text-xs text-text-main/60 pt-0.5">Praxisbezogene Rechenbeispiele, Nachweise und Klausuraufgaben.</p>
+                  <p className="text-xs text-text-main/60 pt-0.5"><MdText text={inhalt.texte.praxisbezogeneRechenbeispieleNachweiseUn} /></p>
                 </div>
               </div>
             </div>
@@ -219,19 +218,15 @@ export default function Aufgaben() {
                   </div>
                   <input
                     type="text"
-                    placeholder="Aufgaben durchsuchen..."
+                    placeholder={inhalt.werte.aufgabenDurchsuchen}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 bg-off-white border border-home-grau/30 rounded-xl focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all text-sm"
                   />
                 </div>
                 <div className="flex gap-2 w-full md:w-auto">
-                  <button onClick={expandAll} className="flex-1 md:flex-none px-4 py-2 text-xs font-bold text-shiraz bg-shiraz/5 hover:bg-shiraz/10 border border-shiraz/10 rounded-lg transition-colors">
-                    Alle aufklappen
-                  </button>
-                  <button onClick={collapseAll} className="flex-1 md:flex-none px-4 py-2 text-xs font-bold text-text-main/60 bg-off-white hover:bg-home-grau/20 border border-home-grau/30 rounded-lg transition-colors">
-                    Alle zuklappen
-                  </button>
+                  <button onClick={expandAll} className="flex-1 md:flex-none px-4 py-2 text-xs font-bold text-shiraz bg-shiraz/5 hover:bg-shiraz/10 border border-shiraz/10 rounded-lg transition-colors"><MdText text={inhalt.texte.alleAufklappen} /></button>
+                  <button onClick={collapseAll} className="flex-1 md:flex-none px-4 py-2 text-xs font-bold text-text-main/60 bg-off-white hover:bg-home-grau/20 border border-home-grau/30 rounded-lg transition-colors"><MdText text={inhalt.texte.alleZuklappen} /></button>
                 </div>
               </div>
 
@@ -259,7 +254,7 @@ export default function Aufgaben() {
             <div className="flex flex-col gap-10 mt-4">
               {filteredCategories.length === 0 ? (
                 <div className="text-center py-10 bg-off-white rounded-2xl border border-home-grau/30">
-                  <p className="text-text-main/60">Keine Aufgaben gefunden für "{searchTerm}"</p>
+                  <p className="text-text-main/60"><MdText text={inhalt.texte.keineAufgabenGefundenFür} />{searchTerm}"</p>
                 </div>
               ) : (
                 filteredCategories.map((category, catIdx) => (
@@ -348,7 +343,7 @@ export default function Aufgaben() {
                                   <Lightbulb size={20} />
                                 </div>
                                 <div className="flex-1 pt-1">
-                                  <h5 className="text-xs font-bold text-shiraz uppercase tracking-widest mb-2">Lösung & Erklärung</h5>
+                                  <h5 className="text-xs font-bold text-shiraz uppercase tracking-widest mb-2"><MdText text={inhalt.texte.lösungErklärung} /></h5>
                                   <div className="text-sm text-text-main/90 leading-relaxed font-medium">
                                     {typeof task.solution === 'string' ? <FormulaText text={task.solution} /> : task.solution}
                                   </div>
@@ -373,22 +368,8 @@ export default function Aufgaben() {
         ]}
         literatur={[
         ]}
-        regelwerke={[
-          { title: 'Rahmenprüfungsordnung für Ingenieurstudiengänge (APO)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau' }
-        ]}
-        formeln={[
-          {
-            formel: '\\text{Note} = 1{,}0 + 3{,}0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)',
-            erklaerung: 'Lineare Notenberechnungsskala für akademische Klausuren und Übungsaufgaben im Bauingenieurwesen mit 50 % Bestehensgrenze.',
-            quelle: 'Allgemeine Prüfungsordnung'
-          },
-          {
-            formel: 'w/z = \\frac{m_w}{m_z} \\quad \\text{und} \\quad \\rho_c = \\frac{m_{\\text{dry}}}{V_{\\text{geom}}}',
-            erklaerung: 'Grundlegende bauchemische und physikalische Berechnungsgleichungen zur Prüfungsvorbereitung.',
-            quelle: 'Wendehorst Baustoffkunde'
-          }
-        ]}
+        regelwerke={inhalt.daten["Aufgaben.regelwerke"]}
+        formeln={inhalt.daten["Aufgaben.formeln"]}
       />
     </div>
   );

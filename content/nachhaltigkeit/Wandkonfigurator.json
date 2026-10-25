@@ -1,0 +1,37 @@
+{
+  "texte": {
+    "vorkonfigurierteWandPresetsLaden": "Vorkonfigurierte Wand-Presets laden",
+    "falleDerÖkobilanzierungMassebezug": "Falle der Ökobilanzierung: Massebezug (kg CO₂e/kg) vs. Bauteilbezug (kg CO₂e/m²)",
+    "t010KgCo": "0,10 kg CO₂e/kg",
+    "t49KgCoE": "49 kg CO₂e/m²",
+    "schichtenaufbauKonfigurierenVonInnen": "Schichtenaufbau konfigurieren (von Innen nach Außen)",
+    "designForDeconstruction": "Design for Deconstruction",
+    "fügungsmethodeDerWandschichten": "Fügungsmethode der Wandschichten",
+    "nassputzeUndVollflächigeVerklebungen": "Nassputze und vollflächige Verklebungen verhindern sortenreine Trennung (Zirkularitäts-Abzug). Mechanisch gefügtes Trockenbauen maximiert die Recycelbarkeit.",
+    "verklebtMörtel": "🔗 Verklebt / Mörtel",
+    "geschraubtTrocken": "🔩 Geschraubt (Trocken)",
+    "werkstoffAuswählen": "Werkstoff auswählen",
+    "schichtHinzufügen": " Schicht hinzufügen",
+    "bauphysikalischeKennwerte": "Bauphysikalische Kennwerte",
+    "berechneterUWert": "Berechneter U-Wert",
+    "zirkularitätsIndexMci": "Zirkularitäts-Index (MCI)",
+    "materialZyklusInhärent": "Material-Zyklus (Inhärent):",
+    "trennungsWeicheFügung": "Trennungs-Weiche (Fügung):",
+    "sehrGutesDesignErleichtert": "✓ Sehr gutes Design! Erleichtert das Cradle-to-Cradle Kreislaufverfahren vollends.",
+    "teilweiseKreislauffähigVerbessernSie": "⚠ Teilweise kreislauffähig. Verbessern Sie die Fügung auf \"Geschraubt\" oder nutzen Sie naturnah rückbaubare Rohstoffe.",
+    "hohesDowncyclingOderDeponierisiko": "❌ Hohes Downcycling- oder Deponierisiko! Inseparable Verklebungen sabotieren künftige Erdnischen oder Recyclingkörper.",
+    "ökobilanzierungNetto": "Ökobilanzierung (Netto)",
+    "t1MWandfläche": "1 m² Wandfläche",
+    "gwpBiogenicNachweisbericht": " GWP-Biogenic Nachweisbericht",
+    "kgCoEqM": " kg CO₂-eq/m²",
+    "mitDiesemSchichtenaufbauBinden": "Mit diesem Schichtenaufbau binden die nachwachsenden Anteile rechnerisch ",
+    "biogenenKohlenstoffInDer": " biogenen Kohlenstoff in der Herstellungsphase. Die herstellungsbedingten fossilen Emissionen belaufen sich auf ",
+    "derNettoWertEnthält": ". Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet."
+  },
+  "werte": {
+    "nachLinksInnenSchieben": "Nach links / innen schieben",
+    "nachRechtsAußenSchieben": "Nach rechts / außen schieben",
+    "schichtLöschen": "Schicht löschen",
+    "werkstoffAuswählen": "Werkstoff auswählen"
+  }
+}

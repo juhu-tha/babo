@@ -17,6 +17,8 @@ import {
   Info,
   Compass
 } from 'lucide-react';
+import inhalt from '@/content/wta/WTA.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Hygrothermal evaluation for combination of WTA horizontal barrier and interior insulation
 const evaluateKombination = (
@@ -32,60 +34,60 @@ const evaluateKombination = (
   // 1. Horizontalsperre check (WTA 4-10)
   if (sperreStatus === 'none') {
     score -= 50;
-    criticalAlarms.push("Mangelhafte Horizontalsperre zwingt kapillares Aufstiegswasser in die Dämmebene. Akutes Schimmel- und Zerstörungsrisiko für jeden Dämmstoff!");
-    recommendations.push("Sanieren Sie zwingend zuerst die Horizontalsperre mittels Silan-Injektion nach WTA-Merkblatt 4-10, bevor Dämmarbeiten beginnen.");
+    criticalAlarms.push(inhalt.werte.mangelhafteHorizontalsperreZwingtKapilla);
+    recommendations.push(inhalt.werte.sanierenSieZwingendZuerst);
   } else if (sperreStatus === 'critical') {
     score -= 20;
-    criticalAlarms.push("Erhöhte Mauerwerks-Restfeuchte im Infiltrationsbereich gefährdet die Kleberhaftung.");
-    recommendations.push("Trocknungsphase des Mauerwerks einplanen oder kapillarbrechenden Porengrundputz WTA 2-9 zur Absicherung auftragen.");
+    criticalAlarms.push(inhalt.werte.erhöhteMauerwerksRestfeuchteIm);
+    recommendations.push(inhalt.werte.trocknungsphaseDesMauerwerksEinplanen);
   }
   
   // 2. Salzklasse check (WTA 2-9)
   if (salzClass === 'high') {
     score -= 30;
-    criticalAlarms.push("Hohe Salzbeladung (Klasse S3) führt zu Sprengkräften hinter der Dämmplatte (Fehlende Dampfdurchlässigkeit).");
-    recommendations.push("Tragen Sie zwingend vor Plattenmontage einen Porengrundputz WTA (d ≥ 10 mm) als weiches mechanisches Salzspeicherdepot auf.");
+    criticalAlarms.push(inhalt.werte.hoheSalzbeladungKlasseS3);
+    recommendations.push(inhalt.werte.tragenSieZwingendVor);
   } else if (salzClass === 'medium' && daemmType !== 'calciumsilicat') {
     score -= 10;
-    recommendations.push("Bei mittlerem Salzgehalt und organischen Dämmplatten ist ein zementfreier WTA-Ausgleichsputz dringend angeraten.");
+    recommendations.push(inhalt.werte.beiMittleremSalzgehaltUnd);
   }
 
   // 3. Schlagregenschutz der Fassadenaußenfläche (DIN 4108-3)
   if (regenClass === 'group3') {
     score -= 25;
-    criticalAlarms.push("Extremer Schlagregeneintrag an der Sichtfassade führt zu permanent feuchtem Mauergefüge. Die Dämmebene kann im Sommer nicht austrocknen.");
-    recommendations.push("Bringen Sie außen eine siliziumorganische Fassaden-Hydrophobierung nach WTA-Merkblatt 3-17-10/D (Hydrophobierende Imprägnierung) auf, um ständigen Regeneintrag wirksam zu sperren.");
+    criticalAlarms.push(inhalt.werte.extremerSchlagregeneintragAnDer);
+    recommendations.push(inhalt.werte.bringenSieAußenEine);
   } else if (regenClass === 'group2') {
-    recommendations.push("Eventuell vorhandene Putzrisse an der Außenwand fachgerecht instandsetzen (Spritzwasserschutz optimieren).");
+    recommendations.push(inhalt.werte.eventuellVorhandenePutzrisseAn);
   }
 
   // 4. Dämmstoff-Eigenschaften & Systemcharakter
   if (daemmType === 'pur_foelie') {
     score -= 40;
-    criticalAlarms.push("Diffusionsdichte PUR-Systeme mit Dampfsperrfolie blockieren jegliche raumseitige Trocknung. Kleinste Risse in der Folie führen zu Kondensationsnestern!");
-    recommendations.push("Wählen Sie bevorzugt kapillaraktive mineralische Dämmstoffe (wie Calciumsilicat oder Mineralschaum) ohne separate Dampfsperrfolie.");
+    criticalAlarms.push(inhalt.werte.diffusionsdichtePurSystemeMit);
+    recommendations.push(inhalt.werte.wählenSieBevorzugtKapillaraktive);
   } else if (daemmType === 'calciumsilicat') {
     score += 15; // calcareous systems are highly robust
-    recommendations.push("Calciumsilicat bietet die höchste Sicherheit. Verkleben Sie die Platten zwingend vollflächig (ohne Hohlräume) mit dem materialspezifischen Systemkleber.");
+    recommendations.push(inhalt.werte.calciumsilicatBietetDieHöchste);
   } else if (daemmType === 'holzfaser') {
     if (sperreStatus !== 'ok') {
       score -= 15;
-      criticalAlarms.push("Organische Holzweichfaserplatten neigen bei andauernder Kondensatbelastung sehr stark zu bioschädlichem Schimmelbefall.");
+      criticalAlarms.push(inhalt.werte.organischeHolzweichfaserplattenNeigenBei);
     }
-    recommendations.push("Holzfaserdämmungen nur an hygrisch vollständig trockenem Mauerwerk montieren. Verklebung mit mineralischem Lehmputz steigert das Feuchtepuffer-Verhalten.");
+    recommendations.push(inhalt.werte.holzfaserdämmungenNurAnHygrisch);
   }
 
   // Border constraints for Score
   score = Math.max(0, Math.min(100, score));
   
   let ampelColor = "text-emerald-700 bg-emerald-50 border-emerald-200";
-  let suitabilityLabel = "Hygrisch unbedenklich";
+  let suitabilityLabel = inhalt.werte.hygrischUnbedenklich;
   if (score < 40) {
     ampelColor = "text-red-700 bg-red-50 border-red-350 animate-pulse";
-    suitabilityLabel = "Sehr hohes Schadensrisiko (Nicht WTA-konform!)";
+    suitabilityLabel = inhalt.werte.sehrHohesSchadensrisikoNicht;
   } else if (score < 75) {
     ampelColor = "text-orange-700 bg-orange-50 border-orange-200";
-    suitabilityLabel = "Bedingt WTA-konformer Aufbau (Zusatzplanung nötig)";
+    suitabilityLabel = inhalt.werte.bedingtWtaKonformerAufbau;
   }
 
   return { score, suitabilityLabel, ampelColor, criticalAlarms, recommendations };
@@ -137,20 +139,20 @@ export default function WTA() {
   let preheatRequired = false;
   
   if (moistureLevel <= 60) {
-    injectionMethod = 'Drucklose kapillare Injektion (Injektionscreme oder Flüssiginjektion)';
-    maxDFAllowed = 'Geeignet bis zu einem kapillaren Füllungsgrad DF ≤ 60%.';
-    angleSpec = masonryType === 'brick' ? 'Horizontal (0° bis 5° Neigung) bei hochviskosen Cremes, 30° bis 45° nach unten geneigt bei flüssigen Silan-Formulierungen.' : 'Horizontal (0°) unmittelbar in die Lagerfuge einbringen.';
-    wtaClassification = 'Zulässiges WTA-Klassifizierungsverfahren: drucklose Schwerkrafttränkung.';
+    injectionMethod = inhalt.werte.druckloseKapillareInjektionInjektionscre;
+    maxDFAllowed = inhalt.werte.geeignetBisZuEinem;
+    angleSpec = masonryType === 'brick' ? inhalt.werte.horizontal0Bis5 : inhalt.werte.horizontal0UnmittelbarIn;
+    wtaClassification = inhalt.werte.zulässigesWtaKlassifizierungsverfahrenDr;
   } else if (moistureLevel > 60 && moistureLevel <= 95) {
-    injectionMethod = 'Druckinjektion (Nieder- oder Mitteldruckverfahren) oder hochdosierte Injektionscremes';
-    maxDFAllowed = 'Grenzbereich des Füllungsgrades 60% < DF ≤ 95% erfordert kontrollierten Anpressdruck (Druckluftpacker bei 2 bis 10 bar).';
-    angleSpec = 'Leicht geneigt (5° bis 15°) zur vertikalen Flankensperrung im Rasterverband.';
-    wtaClassification = 'Zulässiges WTA-Klassifizierungsverfahren: druckunterstützter Verdrängungseintrag.';
+    injectionMethod = inhalt.werte.druckinjektionNiederOderMitteldruckverfa;
+    maxDFAllowed = inhalt.werte.grenzbereichDesFüllungsgrades60;
+    angleSpec = inhalt.werte.leichtGeneigt5Bis;
+    wtaClassification = inhalt.werte.zulässigesWtaKlassifizierungsverfahrenDr2;
   } else {
-    injectionMethod = 'Zweistufiges Verfahren (Thermische/Mechanische Vortrocknung zwingend erforderlich!)';
-    maxDFAllowed = 'Kritischer Füllungsgrad DF > 95%. Die Kapillarporen sind vollends mit Wasser blockiert - Wirkstoffverlust und mangelhafte Ausbreitung unumgänglich.';
-    angleSpec = 'Kein direkter Injektionserfolg! Vortrocknen mittels Heizstäben auf DF < 60% vornehmen. Erst danach reguläre Injektion des Wirkstoffs.';
-    wtaClassification = 'Erfordert flankierende bautechnische Maßnahmen gem. WTA-Richtlinie 4-10 Abs. 5.';
+    injectionMethod = inhalt.werte.zweistufigesVerfahrenThermischeMechanisc;
+    maxDFAllowed = inhalt.werte.kritischerFüllungsgradDf95;
+    angleSpec = inhalt.werte.keinDirekterInjektionserfolgVortrocknen;
+    wtaClassification = inhalt.werte.erfordertFlankierendeBautechnischeMaßnah;
     preheatRequired = true;
   }
 
@@ -158,20 +160,20 @@ export default function WTA() {
   let recommendedPlasterSystem = '';
   let recommendedPlasterSpecs = '';
   let plasterThickness = '';
-  const spritzbewurfCover = 'Warzenförmiger Spritzbewurf (Deckungsgrad max. 50%) zur Gewährleistung der Haftungsbrücke ohne Blockierung der Diffusionswege.';
+  const spritzbewurfCover = inhalt.werte.warzenförmigerSpritzbewurfDeckungsgradMa;
   
   if (saltLoad === 'low') {
-    recommendedPlasterSystem = 'WTA-Sanierputz, einlagig';
-    recommendedPlasterSpecs = 'Sanierputz mit hohem Porenvolumen (> 40% Gesamtporen), der Salzkristallisation schadensfrei im Putzgefüge erlaubt.';
-    plasterThickness = 'Mindestputzdicke d_p ≥ 20 mm.';
+    recommendedPlasterSystem = inhalt.werte.wtaSanierputzEinlagig;
+    recommendedPlasterSpecs = inhalt.werte.sanierputzMitHohemPorenvolumen;
+    plasterThickness = inhalt.werte.mindestputzdickeDP20;
   } else if (saltLoad === 'medium') {
-    recommendedPlasterSystem = 'WTA-Sanierputz, ein- oder zweilagig';
-    recommendedPlasterSpecs = 'Geeignet zur schadensfreien Salzeinlagerung mittlerer Konzentrationen. Es muss sichergestellt werden, dass im Unterputz keine Gipsbestandteile vorhanden sind.';
-    plasterThickness = 'Mindestputzdicke d_p ≥ 20 mm. Bei unebenem Untergrund empfiehlt sich ein ausgleichender, porenschonender Auswurf.';
+    recommendedPlasterSystem = inhalt.werte.wtaSanierputzEinOder;
+    recommendedPlasterSpecs = inhalt.werte.geeignetZurSchadensfreienSalzeinlagerung;
+    plasterThickness = inhalt.werte.mindestputzdickeDP202;
   } else {
-    recommendedPlasterSystem = 'Zweilagiges Putzsystem: WTA-Porengrundputz + WTA-Sanierputz';
-    recommendedPlasterSpecs = 'Zwingender Aufbau bei hoher Chlorid-, Nitrat- und Sulfatbelastung. Die 1. Lage (Porengrundputz mit Porenvolumen > 45%) fungiert als reiner mechanischer Salzspeicherraum (Depot), die 2. Lage (WTA-Sanierputz) hält die Oberfläche salzfrei und trocken.';
-    plasterThickness = '1. Lage: Porengrundputz d ≥ 10 mm. 2. Lage: Sanierputz d ≥ 15 mm. Gesamtsystemdicke d_gesamt ≥ 25 mm.';
+    recommendedPlasterSystem = inhalt.werte.zweilagigesPutzsystemWtaPorengrundputz;
+    recommendedPlasterSpecs = inhalt.werte.zwingenderAufbauBeiHoher;
+    plasterThickness = inhalt.werte.t1LagePorengrundputzD;
   }
 
   return (
@@ -184,77 +186,55 @@ export default function WTA() {
             <FileText size={28} />
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-text-main">
-              WTA-Merkblätter: Bauwerkserhaltung &amp; Denkmalpflege
-            </h2>
-            <p className="text-xs text-home-grau mt-0.5">
-              Anerkannte Regeln der Technik zur Altbausanierung, Feuchtigkeitssperre und historischen Putzanwendungen
-            </p>
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-text-main"><MdText text={inhalt.texte.wtaMerkblätterBauwerkserhaltungDenkmalpf} /></h2>
+            <p className="text-xs text-home-grau mt-0.5"><MdText text={inhalt.texte.anerkannteRegelnDerTechnik} /></p>
           </div>
         </div>
         
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/35 leading-relaxed">
-          Die <strong>Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege (WTA e.V.)</strong> schließt wichtige praxistechnische Regelungslücken, die herkömmliche DIN-Normen (welche primär für den Neubau formuliert sind) bei bestehendem Mauer- und Fachwerk hinterlassen. Merkblätter mit dem Anspruch, allgemein anerkannte Regeln der Technik zu beschreiben (privatrechtlich, nicht bauaufsichtlich eingeführt).
-        </div>
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/35 leading-relaxed"><MdText text={inhalt.texte.dieWissenschaftlichTechnischeArbeitsgeme} /></div>
       </div>
 
       {/* Referat Structure Overview Grid */}
       <section className="space-y-4">
         <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-          <Building className="text-shiraz shrink-0" size={20} />
-          WTA-Referate: Die zentralen Referatsbereiche der Denkmalpflege &amp; Bauwerkserhaltung
-        </h3>
-        <p className="text-xs text-text-main/75 -mt-2">
-          Merkblätter mit dem Anspruch, allgemein anerkannte Regeln der Technik zu beschreiben (privatrechtlich, nicht bauaufsichtlich eingeführt).
-        </p>
+          <Building className="text-shiraz shrink-0" size={20} /><MdText text={inhalt.texte.wtaReferateDieZentralen} /></h3>
+        <p className="text-xs text-text-main/75 -mt-2"><MdText text={inhalt.texte.merkblätterMitDemAnspruch} /></p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 1</div>
-            <h4 className="font-bold text-slate-800 text-sm">Naturstein &amp; Steinkonservierung</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 1-x):</strong> Verfestigung geschädigter Natursteine mit Kieselsäureester (KSE), hydrophobierende Imprägnierungen und Steinergänzungsmaterialien.
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.natursteinSteinkonservierung} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta1} /></p>
           </div>
 
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 2</div>
-            <h4 className="font-bold text-slate-800 text-sm">Oberflächentechnologie &amp; Sanierputzsysteme</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 2-9):</strong> Qualitätsrichtlinien für Sanierputzsysteme auf salzbelastetem feuchtem Mauerwerk. Fremdüberwachung zertifizierter Baustoffe.
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.oberflächentechnologieSanierputzsysteme} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta2} /></p>
           </div>
 
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 3</div>
-            <h4 className="font-bold text-slate-800 text-sm">Beton &amp; Betoninstandsetzung</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 3-x):</strong> Denkmalgerechte Betonsanierung von Sichtbetonflächen des 20. Jahrhunderts. Ausgleich baustatischen Brandschutzes mit Erhalt der optischen Textur.
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.betonBetoninstandsetzung} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta3} /></p>
           </div>
 
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 4</div>
-            <h4 className="font-bold text-slate-800 text-sm">Mauerwerk &amp; Bauwerksabdichtung</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 4-10):</strong> Nachträgliche chemische Injektionssperren gegen aufsteigende Mauerfeuchte. Schleierinjektionen und nachträgliche Bauwerksabdichtungen.
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.mauerwerkBauwerksabdichtung} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta4} /></p>
           </div>
 
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 8</div>
-            <h4 className="font-bold text-slate-800 text-sm">Fachwerk &amp; Holzkonstruktionen</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 8-1):</strong> Ausfachungen mit Lehmziegeln, Holzschutz an Balkenköpfen, Abdichtungen von Gefachfugen gegen Schlagregeneintrag.
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.fachwerkHolzkonstruktionen} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta8} /></p>
           </div>
 
           <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs relative overflow-hidden flex flex-col gap-1.5 hover:shadow-md transition-all">
             <div className="text-xs font-extrabold text-shiraz/60 uppercase tracking-widest">Referat 6</div>
-            <h4 className="font-bold text-slate-800 text-sm">Bauphysik &amp; Innendämmung</h4>
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              <strong>Merkblatt-Fokus (WTA 6-5):</strong> Beurteilung feuchtetechnischer Risiken bei Innendämmsystemen an denkmalgeschützten Ziegelaußenwänden mittels Simulationsverfahren (WUFI).
-            </p>
+            <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.bauphysikInnendämmung} /></h4>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.merkblattFokusWta6} /></p>
           </div>
         </div>
       </section>
@@ -267,32 +247,28 @@ export default function WTA() {
           }`}
           onClick={() => setActiveTab('injektion')}
         >
-          <Droplets size={16} /> WTA 4-10 (Horizontalsperre)
-        </button>
+          <Droplets size={16} /><MdText text={inhalt.texte.wta410Horizontalsperre} /></button>
         <button aria-pressed={activeTab === 'sanierputz'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'sanierputz' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
           onClick={() => setActiveTab('sanierputz')}
         >
-          <Building size={16} /> WTA 2-9 (Sanierputzsysteme 2020)
-        </button>
+          <Building size={16} /><MdText text={inhalt.texte.wta29Sanierputzsysteme} /></button>
         <button aria-pressed={activeTab === 'innendaemmung'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'innendaemmung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
           onClick={() => setActiveTab('innendaemmung')}
         >
-          <Thermometer size={16} /> WTA 6-5 (Innendämmung)
-        </button>
+          <Thermometer size={16} /><MdText text={inhalt.texte.wta65Innendämmung} /></button>
         <button aria-pressed={activeTab === 'pruefung'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'pruefung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
           onClick={() => setActiveTab('pruefung')}
         >
-          <ShieldCheck size={16} /> Qualitätsprüfung &amp; QS
-        </button>
+          <ShieldCheck size={16} /><MdText text={inhalt.texte.qualitätsprüfungQs} /></button>
         <button aria-pressed={activeTab === 'kombination'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'kombination' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
@@ -300,27 +276,23 @@ export default function WTA() {
           onClick={() => setActiveTab('kombination')}
           id="wta-tab-5-btn"
         >
-          <Sliders size={16} /> Kombi-Planer (Tab 5)
-        </button>
+          <Sliders size={16} /><MdText text={inhalt.texte.kombiPlanerTab5} /></button>
         <button aria-pressed={activeTab === 'abdichtung_4_6'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'abdichtung_4_6' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
           onClick={() => setActiveTab('abdichtung_4_6')}
         >
-          <Compass size={16} /> WTA 4-6 &amp; DIN 18533 (Nachtr. Abdichtung)
-        </button>
+          <Compass size={16} /><MdText text={inhalt.texte.wta46Din} /></button>
       </div>
 
       {activeTab === 'injektion' && (
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-home-grau/25 pb-4 gap-2">
             <div className="flex items-center gap-2">
-              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">WTA 4-10 / 2-9</div>
+              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold"><MdText text={inhalt.texte.wta4102} /></div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5">
-                <Calculator className="text-shiraz shrink-0" size={18} />
-                Interaktiver Sanierungskonfigurator &amp; Wirkstoff-Bohrrechner
-              </h3>
+                <Calculator className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.interaktiverSanierungskonfiguratorWirkst} /></h3>
             </div>
           </div>
 
@@ -328,16 +300,12 @@ export default function WTA() {
           
           {/* LEFT COLUMN: User Parameters */}
           <div className="lg:col-span-5 space-y-5 bg-stone-50/50 p-5 rounded-xl border border-home-grau/35">
-            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block border-b pb-1.5 border-home-grau/20">
-              1. Bauwerksdaten &amp; Schadenslast eingeben
-            </span>
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block border-b pb-1.5 border-home-grau/20"><MdText text={inhalt.texte.t1BauwerksdatenSchadenslastEingeben} /></span>
 
             {/* Input 1: Wall Thickness slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-xs">
-                <label className="font-bold text-text-main flex items-center gap-1">
-                  Mauerwerk-Wandstärke (<InlineMath math="d" />):
-                </label>
+                <label className="font-bold text-text-main flex items-center gap-1"><MdText text={inhalt.texte.mauerwerkWandstärkeD} /></label>
                 <span className="font-mono font-bold text-shiraz bg-white border border-home-grau/20 px-2 py-0.5 rounded shadow-3xs">{formatDeWert(wallThicknessInput)} cm</span>
               </div>
               <input 
@@ -350,17 +318,15 @@ export default function WTA() {
                 className="w-full h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <p className="text-xs text-home-grau flex justify-between">
-                <span>Min: 11,5 cm</span>
-                <span>Max: 100 cm (z.B. historisches Fundament)</span>
+                <span><MdText text={inhalt.texte.min115Cm} /></span>
+                <span><MdText text={inhalt.texte.max100CmZ} /></span>
               </p>
             </div>
 
             {/* Input 2: Moisture Level slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-xs">
-                <label className="font-bold text-text-main flex items-center gap-1">
-                  Mauerwerk-Durchfeuchtungsgrad (DF_Soll):
-                </label>
+                <label className="font-bold text-text-main flex items-center gap-1"><MdText text={inhalt.texte.mauerwerkDurchfeuchtungsgradDfSoll} /></label>
                 <span className={`font-mono font-bold bg-white border px-2 py-0.5 rounded shadow-3xs ${moistureLevel > 95 ? 'text-red-600 border-red-200 animate-pulse' : moistureLevel > 60 ? 'text-orange-600 border-orange-200' : 'text-slate-800 border-home-grau/25'}`}>
                   {formatDeWert(moistureLevel)} % DF
                 </span>
@@ -376,14 +342,14 @@ export default function WTA() {
               />
               <p className="text-xs text-home-grau flex justify-between">
                 <span>Gering (5%)</span>
-                <span>Kritisch (95%)</span>
-                <span>Poren gesättigt (100%)</span>
+                <span><MdText text={inhalt.texte.kritisch95} /></span>
+                <span><MdText text={inhalt.texte.porenGesättigt100} /></span>
               </p>
             </div>
 
             {/* Input 3: Masonry Structure Radio */}
             <div className="space-y-1.5 text-xs">
-              <label className="font-bold text-text-main block">Typ des Mauergefüges:</label>
+              <label className="font-bold text-text-main block"><MdText text={inhalt.texte.typDesMauergefüges} /></label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <button aria-pressed={masonryType === 'brick'}
                   type="button"
@@ -393,9 +359,7 @@ export default function WTA() {
                       ? 'bg-shiraz/5 border-shiraz text-shiraz font-extrabold shadow-3xs'
                       : 'bg-white border-home-grau/25 text-slate-700 hover:bg-slate-100'
                   }`}
-                >
-                  Homogener Ziegel
-                </button>
+                ><MdText text={inhalt.texte.homogenerZiegel} /></button>
                 <button aria-pressed={masonryType === 'mixed'}
                   type="button"
                   onClick={() => setMasonryType('mixed')}
@@ -423,7 +387,7 @@ export default function WTA() {
 
             {/* Input 4: Salt level selector */}
             <div className="space-y-1.5 text-xs">
-              <label className="font-bold text-text-main block">Soll-Salzbelastung (Chloride/Nitrate/Sulfate):</label>
+              <label className="font-bold text-text-main block"><MdText text={inhalt.texte.sollSalzbelastungChlorideNitrate} /></label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <button aria-pressed={saltLoad === 'low'}
                   type="button"
@@ -455,18 +419,14 @@ export default function WTA() {
                       ? 'bg-shiraz/5 border-shiraz text-shiraz font-extrabold shadow-3xs'
                       : 'bg-white border-home-grau/30 text-slate-700 hover:bg-slate-100'
                   }`}
-                >
-                  Stark / Kritisch
-                </button>
+                ><MdText text={inhalt.texte.starkKritisch} /></button>
               </div>
             </div>
 
             {/* WTA Infobox on Salt loading */}
             <div className="p-3 bg-white/90 border border-home-grau/25 rounded-lg text-xs leading-relaxed text-slate-700 flex gap-2">
               <Info className="text-shiraz shrink-0 mt-0.5" size={14} />
-              <div>
-                <strong>WTA-Grenzwerte Salz:</strong> Salzkristallisation erzeugt Drücke, die die Zugfestigkeit üblicher Putze deutlich übersteigen. Reiner WTA-Sanierputz ist Pflicht.
-              </div>
+              <div><MdText text={inhalt.texte.wtaGrenzwerteSalzSalzkristallisation} /></div>
             </div>
 
           </div>
@@ -478,9 +438,7 @@ export default function WTA() {
             <div className="bg-[#FCFAF7] border border-home-grau/35 rounded-xl shadow-xs overflow-hidden">
               <div className="bg-stone-100/70 p-3.5 border-b border-home-grau/25 flex justify-between items-center">
                 <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1">
-                  <ShieldCheck size={14} className="text-shiraz" />
-                  2. Injektions-Steckbrief (WTA-Merkblatt 4-10)
-                </span>
+                  <ShieldCheck size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2InjektionsSteckbriefWta} /></span>
                 <span className="text-xs bg-white border border-home-grau/20 px-2 py-0.5 rounded font-mono font-bold text-slate-700">WTA 4-10</span>
               </div>
               
@@ -498,45 +456,41 @@ export default function WTA() {
                 {/* Drilling Parameters Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Errechnete Bohrlochtiefe (t_B)</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight"><MdText text={inhalt.texte.errechneteBohrlochtiefeTB} /></span>
                     <span className="text-xl font-mono font-black text-slate-900 mt-1">{formatDeWert(drillDepth)} cm</span>
-                    <p className="text-xs text-slate-500 mt-1">Formel: t_B = d_wand - 5 cm. Bohrloch darf die Gegenseite des Mauerwerks nicht durchbrechen.</p>
+                    <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.formelTBD} /></p>
                   </div>
 
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Max. Bohrlochabstand (a)</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight"><MdText text={inhalt.texte.maxBohrlochabstandA} /></span>
                     <span className="text-xl font-mono font-black text-slate-900 mt-1">{formatDeWert(drillSpacing)} cm</span>
-                    <p className="text-xs text-slate-500 mt-1">Enge Bohrung sichert eine lückenlose horizontale Überlappung der Wirkstoff-Ausbreitungskeile.</p>
+                    <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.engeBohrungSichertEine} /></p>
                   </div>
 
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Bohrwinkel ({"\u03b1"}) &amp; Durchmesser (D_B)</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight"><MdText text={inhalt.texte.bohrwinkelDurchmesserDB} /></span>
                     <span className="text-sm font-bold text-slate-800 mt-1">Durchmesser: {formatDeWert(drillDiameter * 10)} mm</span>
                     <p className="text-xs text-slate-500 mt-1">{angleSpec}</p>
                   </div>
 
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between relative overflow-hidden">
                     <div className="absolute right-1 bottom-1 bg-shiraz/5 p-2 rounded-tl-lg text-xs font-black text-shiraz/30">Creme</div>
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Wirkstoffbedarf Silan-Creme (V_meter)</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight"><MdText text={inhalt.texte.wirkstoffbedarfSilanCremeV} /></span>
                     <span className="text-xl font-mono font-black text-shiraz mt-1">{formatDeZahl(creamConsumption, 2)} Liter / m</span>
-                    <p className="text-xs text-slate-500 mt-1">Inklusive 1.15er Sicherheitsbeiwert für Hohlraum-Sättigung und Mauerwerksporosität.</p>
+                    <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.inklusive115erSicherheitsbeiwert} /></p>
                   </div>
                 </div>
 
                 {/* Mathematical Equation presentation */}
                 <div className="bg-white/80 p-3 rounded border border-home-grau/20 text-xs leading-relaxed">
-                  <span className="font-bold text-slate-700 block mb-1">🔍 Herleitung der Bedarfsformel nach WTA-Verbrauchsleiter:</span>
+                  <span className="font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.herleitungDerBedarfsformelNach} /></span>
                   <div className="bg-slate-50 p-2 rounded border border-home-grau/15 text-center text-xs text-shiraz leading-normal my-1.5 overflow-x-auto">
                     <BlockMath math="V_{\text{meter}} = \frac{100}{a} \cdot \left[ \frac{\pi \cdot D_B^2}{4} \cdot t_B \right] \cdot F_{\text{Sicherheit}} \cdot 10^{-3} \quad [\text{Liter/m}]" />
                   </div>
-                  <p className="text-xs text-slate-500 text-center leading-normal">
-                    Berechneter Einzelfüllungsinhalt pro Bohrloch (V_bore = {formatDeZahl(singleHoleVolume, 1)} cm³) multipliziert mit n = {formatDeWert(holesPerMeter)} Bohrungen pro Meter.
-                  </p>
+                  <p className="text-xs text-slate-500 text-center leading-normal"><MdText text={inhalt.texte.berechneterEinzelfüllungsinhaltProBohrlo} />{formatDeZahl(singleHoleVolume, 1)}<MdText text={inhalt.texte.cmMultipliziertMitN} />{formatDeWert(holesPerMeter)}<MdText text={inhalt.texte.bohrungenProMeter} /></p>
                 </div>
 
-                <div className="bg-amber-50/50 border border-amber-200/80 p-3 rounded-lg text-xs text-amber-900 leading-normal">
-                  <strong>⚠️ WTA 4-10 Qualitätshinweis zur Ausführung:</strong> Die Bohrlochmündung muss vor Verpressung gründlich mittels <strong>Drucklufteinblasung oder Aussaugung</strong> von Bohrmehlrückständen befreit werden. Verbleibendes Bohrmehl verstopft Porenstämme und mindert die Wirkstoffaufnahme um bis zu 80%!
-                </div>
+                <div className="bg-amber-50/50 border border-amber-200/80 p-3 rounded-lg text-xs text-amber-900 leading-normal"><MdText text={inhalt.texte.wta410Qualitätshinweis} /></div>
 
               </div>
             </div>
@@ -552,20 +506,16 @@ export default function WTA() {
             <div className="flex items-center gap-2">
               <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">WTA 2-9</div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5">
-                <Building className="text-shiraz shrink-0" size={18} />
-                Sanierputze &amp; Salzspeicherung (WTA 2-9)
-              </h3>
+                <Building className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.sanierputzeSalzspeicherungWta2} /></h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: WTA-Merkblatt 2-9 (Ausgabe 2020 - Konsolidierung früherer Merkblätter 2-9-04 und Teile von 2-10)</span>
+            <span className="text-xs text-home-grau font-mono"><MdText text={inhalt.texte.standWtaMerkblatt2} /></span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-4 bg-[#FCFAF7] p-5 rounded-xl border border-home-grau/35 space-y-4">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25">
-                1. Salzlastklasse wählen
-              </span>
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25"><MdText text={inhalt.texte.t1SalzlastklasseWählen} /></span>
               <div className="space-y-2 text-xs">
-                <label className="font-bold text-text-main block">Bauschädliche Salzkonzentration:</label>
+                <label className="font-bold text-text-main block"><MdText text={inhalt.texte.bauschädlicheSalzkonzentration} /></label>
                 <div className="grid grid-cols-1 gap-2">
                   <button aria-pressed={saltLoad === 'low'}
                     type="button"
@@ -576,7 +526,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Gering (&lt; 0,1% M.-%)</span>
+                    <span><MdText text={inhalt.texte.gering01M} /></span>
                   </button>
                   <button aria-pressed={saltLoad === 'medium'}
                     type="button"
@@ -587,7 +537,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Mittel (0,1% - 0,5% M.-%)</span>
+                    <span><MdText text={inhalt.texte.mittel010} /></span>
                   </button>
                   <button aria-pressed={saltLoad === 'high'}
                     type="button"
@@ -598,7 +548,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Hoch (&gt; 0,5% M.-%)</span>
+                    <span><MdText text={inhalt.texte.hoch05M} /></span>
                   </button>
                 </div>
               </div>
@@ -608,35 +558,31 @@ export default function WTA() {
               <div className="bg-[#FCFAF7] border border-home-grau/35 rounded-xl shadow-xs overflow-hidden">
                 <div className="bg-stone-100/70 p-3.5 border-b border-home-grau/25 flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1">
-                    <Building size={14} className="text-shiraz" />
-                    2. Putzsystemempfehlung (WTA-Merkblatt 2-9)
-                  </span>
+                    <Building size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2PutzsystemempfehlungWtaMerkblatt} /></span>
                   <span className="text-xs bg-white border border-home-grau/20 px-2 py-0.5 rounded font-mono font-bold text-slate-700">WTA 2-9</span>
                 </div>
 
               <div className="p-5 space-y-4 text-xs text-slate-900">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight block">Empfohlenes System</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight block"><MdText text={inhalt.texte.empfohlenesSystem} /></span>
                     <span className="font-extrabold text-shiraz text-[13px] block">{recommendedPlasterSystem}</span>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight block">Vorgeschriebene Putzdicke</span>
+                    <span className="text-home-grau text-xs uppercase font-bold tracking-tight block"><MdText text={inhalt.texte.vorgeschriebenePutzdicke} /></span>
                     <span className="font-extrabold text-slate-900 text-[13px] block">{plasterThickness}</span>
                   </div>
                 </div>
 
                 <div className="bg-white p-3.5 rounded border border-home-grau/35 space-y-2 leading-relaxed">
-                  <span className="font-bold text-slate-800 block border-b border-home-grau/20 pb-1">Spezifikation des Systems</span>
+                  <span className="font-bold text-slate-800 block border-b border-home-grau/20 pb-1"><MdText text={inhalt.texte.spezifikationDesSystems} /></span>
                   <p className="text-xs text-slate-700">{recommendedPlasterSpecs}</p>
                 </div>
 
                 <div className="bg-white p-3.5 rounded border border-home-grau/35 space-y-2 leading-relaxed">
-                  <span className="font-bold text-slate-800 block border-b border-home-grau/20 pb-1">Anforderungen an Spritzbewurf &amp; Untergrund</span>
+                  <span className="font-bold text-slate-800 block border-b border-home-grau/20 pb-1"><MdText text={inhalt.texte.anforderungenAnSpritzbewurfUntergrund} /></span>
                   <p className="text-xs text-slate-700">{spritzbewurfCover}</p>
-                  <p className="text-[11.5px] text-slate-600 border-t border-dotted border-home-grau/20 pt-1.5 font-semibold text-shiraz">
-                    📍 Kein kalkhaltiger Glattputz, keine Gipsplatten im direkten Spritzwasserbereich der sanierten Sockelbauteile verwenden!
-                  </p>
+                  <p className="text-[11.5px] text-slate-600 border-t border-dotted border-home-grau/20 pt-1.5 font-semibold text-shiraz"><MdText text={inhalt.texte.keinKalkhaltigerGlattputzKeine} /></p>
                 </div>
               </div>
             </div>
@@ -646,28 +592,18 @@ export default function WTA() {
           {/* Zusatzbereich: Wissenschaftliche Grundlagen zu Sanierputzen & Salzmechanik */}
           <div className="border-t border-home-grau/20 pt-6 space-y-6">
             <h4 className="text-sm font-black text-text-main flex items-center gap-2 uppercase tracking-wider">
-              <Lightbulb className="text-shiraz shrink-0" size={16} />
-              Wissenschaftliche Grundlagen &amp; Wirkprinzipien (WTA 2-9)
-            </h4>
+              <Lightbulb className="text-shiraz shrink-0" size={16} /><MdText text={inhalt.texte.wissenschaftlicheGrundlagenWirkprinzipie} /></h4>
 
             {/* 2-Column Grid: Werkstofftechnik & Kristallisationsdruck */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
               {/* Spalte 1: Hydrophobierung & Phasenübergang */}
               <div className="bg-[#FCFAF7] p-5 rounded-xl border border-home-grau/35 space-y-3 leading-relaxed text-slate-800">
-                <span className="font-bold text-shiraz text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight">
-                  1. Kombinierter Wirkmechanismus (Hydrophobierung + Makroporosität)
-                </span>
-                <p>
-                  Im Gegensatz zu herkömmlichen Putzen ist ein <strong>WTA-Sanierputz</strong> stark hydrophobiert (wasserabweisend eingestellt). Dadurch besitzt er für flüssiges Kapillarwasser einen Benetzungswinkel von <InlineMath math="\theta > 90^{\circ}" />.
-                </p>
-                <p>
-                  Dies führt zu einer gezielten <strong>Verlagerung der Verdunstungszone</strong>: Das flüssige Wasser dringt kapillar nicht bis an die Putzoberfläche vor, sondern verdunstet bereits im Putzgefüge (ca. 2 bis 5 mm hinter der Oberfläche). Die bauschädlichen Salze fallen damit nicht auf der Oberfläche aus (keine Ausblühungen), sondern verbleiben unsichtbar im Putzkörper.
-                </p>
+                <span className="font-bold text-shiraz text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight"><MdText text={inhalt.texte.t1KombinierterWirkmechanismusHydrophobier} /></span>
+                <p><MdText text={inhalt.texte.imGegensatzZuHerkömmlichen} /></p>
+                <p><MdText text={inhalt.texte.diesFührtZuEiner} /></p>
                 <div className="p-3 bg-white rounded border border-home-grau/20 text-[11px] space-y-1">
-                  <span className="font-bold text-slate-700 block">Dampfdurchlässigkeit &amp; Wassereindringtiefe:</span>
-                  <p>
-                    Der Putz bleibt für gasförmigen Wasserdampf extrem durchlässig (<InlineMath math="\mu \le 12" />), während das Eindringen von flüssigem Schlagregen von außen durch die Hydrophobierung blockiert wird. Es gilt gemäß WTA:
-                  </p>
+                  <span className="font-bold text-slate-700 block"><MdText text={inhalt.texte.dampfdurchlässigkeitWassereindringtiefe} /></span>
+                  <p><MdText text={inhalt.texte.derPutzBleibtFür} /></p>
                   <div className="font-mono text-center text-shiraz font-bold mt-1 text-xs">
                     <BlockMath math="w_{24} \le 0{,}2\,\text{kg/(m}^2\cdot\text{h}^{0{,}5}) \quad \text{und} \quad s_d \le 0{,}2\,\text{m}" />
                   </div>
@@ -676,74 +612,62 @@ export default function WTA() {
 
               {/* Spalte 2: Salzchemie & Kristallisationsdruck */}
               <div className="bg-[#FCFAF7] p-5 rounded-xl border border-home-grau/35 space-y-3 leading-relaxed text-slate-800">
-                <span className="font-bold text-shiraz text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight">
-                  2. Salzchemie &amp; Kristallisationsdruck (<InlineMath math="\sigma_k" />)
-                </span>
-                <p>
-                  Wenn Salze (vor allem Sulfate wie Gips <InlineMath math="\text{CaSO}_4 \cdot 2\text{H}_2\text{O}" />, Mirabilit <InlineMath math="\text{Na}_2\text{SO}_4 \cdot 10\text{H}_2\text{O}" />, Nitrate und Chloride) verdunsten, dehnen sie sich beim Phasenübergang stark aus. Findet dies in engen Mikroporen (<InlineMath math="r < 0{,}1\,\mu\text{m}" />) statt, entstehen extreme Sprengkräfte.
-                </p>
-                <p>
-                  Der theoretische Kristallisationsdruck wird über die thermodynamische Beziehung beschrieben:
-                </p>
+                <span className="font-bold text-shiraz text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight"><MdText text={inhalt.texte.t2SalzchemieKristallisationsdruckSigma} /></span>
+                <p><MdText text={inhalt.texte.wennSalzeVorAllem} /></p>
+                <p><MdText text={inhalt.texte.derTheoretischeKristallisationsdruckWird} /></p>
                 <div className="bg-off-white text-text-main p-3.5 rounded-xl border border-home-grau/30 font-mono text-[11px] my-2 text-center shadow-xs">
                   <BlockMath math="\sigma_k = \frac{R \cdot T}{V_m} \cdot \ln\left(\frac{C}{C_0}\right)" />
-                  <span className="text-[10px] text-text-main/70 block mt-1 font-sans">
-                    <InlineMath math="R" />: Gaskonstante | <InlineMath math="T" />: Temp. | <InlineMath math="V_m" />: Molvolumen | <InlineMath math="C/C_0" />: Übersättigung
-                  </span>
+                  <span className="text-[10px] text-text-main/70 block mt-1 font-sans"><MdText text={inhalt.texte.rGaskonstanteTTemp} /></span>
                 </div>
-                <p>
-                  Dieser Druck kann Werte von über <strong>100 MPa</strong> erreichen und übersteigt die geringe Zugfestigkeit mineralischer Matrizen bei weitem. Sanierputze besitzen daher ein künstliches Porensystem mit einem hohen Anteil an schadfreien Makroporen (<InlineMath math="r \ge 0{,}1\,\mu\text{m}" />), in denen Kristalle ohne Druckentwicklung auf das Mörtelskelett wachsen können.
-                </p>
+                <p><MdText text={inhalt.texte.dieserDruckKannWerte} /></p>
               </div>
             </div>
 
             {/* Vergleichstabelle Putztypen */}
             <div className="bg-white rounded-xl border border-home-grau/30 overflow-hidden shadow-xs">
               <div className="bg-stone-100/70 p-3 border-b border-home-grau/25">
-                <span className="text-xs font-bold text-slate-800 uppercase tracking-widest block">
-                  Vergleichstabelle: Putzsysteme im Altbau &amp; Denkmalschutz
-                </span>
+                <span className="text-xs font-bold text-slate-800 uppercase tracking-widest block"><MdText text={inhalt.texte.vergleichstabellePutzsystemeImAltbau} /></span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-stone-50 border-b border-home-grau/25">
                       <th className="p-2.5 font-bold text-slate-700">Kenngröße</th>
-                      <th className="p-2.5 font-bold text-slate-700">Norm-Zementputz (GP / CS IV)</th>
-                      <th className="p-2.5 font-bold text-slate-700">Reiner Luftkalkputz (GP / CS I)</th>
-                      <th className="p-2.5 font-bold text-shiraz">WTA-Sanierputz (Typ R)</th>
+                      <th className="p-2.5 font-bold text-slate-700"><MdText text={inhalt.texte.normZementputzGpCs} /></th>
+                      <th className="p-2.5 font-bold text-slate-700"><MdText text={inhalt.texte.reinerLuftkalkputzGpCs} /></th>
+                      <th className="p-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.wtaSanierputzTypR} /></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/15 text-[11.5px] text-slate-700">
                     <tr>
                       <td className="p-2.5 font-bold text-slate-800">Gesamtporosität</td>
-                      <td className="p-2.5">ca. 15 – 20 Vol.-%</td>
-                      <td className="p-2.5">ca. 30 – 35 Vol.-%</td>
-                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5">&ge; 40 Vol.-% (extrem porös)</td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.ca1520Vol} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.ca3035Vol} /></td>
+                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5"><MdText text={inhalt.texte.t40VolExtremPorös} /></td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold text-slate-800">Porencharakter</td>
-                      <td className="p-2.5">Feine Kapillarporen (saugend)</td>
-                      <td className="p-2.5">Mittelporig, bedingt kapillaraktiv</td>
-                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5">Spezifisches Makroporennetz (&gt; 25% Luftporen)</td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.feineKapillarporenSaugend} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.mittelporigBedingtKapillaraktiv} /></td>
+                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5"><MdText text={inhalt.texte.spezifischesMakroporennetz25Luftporen} /></td>
                     </tr>
                     <tr>
-                      <td className="p-2.5 font-bold text-slate-800">Kapillare Wasseraufnahme</td>
-                      <td className="p-2.5">Sehr hoch (saugt Feuchtigkeit)</td>
-                      <td className="p-2.5">Mittel bis hoch</td>
-                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5">Stark hydrophobiert (wasserabweisend)</td>
+                      <td className="p-2.5 font-bold text-slate-800"><MdText text={inhalt.texte.kapillareWasseraufnahme} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.sehrHochSaugtFeuchtigkeit} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.mittelBisHoch} /></td>
+                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5"><MdText text={inhalt.texte.starkHydrophobiertWasserabweisend} /></td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold text-slate-800">Salzbeständigkeit</td>
-                      <td className="p-2.5 text-red-600 font-medium">Ungenügend (Sprenggefahr)</td>
-                      <td className="p-2.5 text-red-600 font-medium">Gering (Salzauswaschung)</td>
-                      <td className="p-2.5 font-bold text-emerald-700 bg-shiraz/5 font-mono">Exzellent (schadlose Depotaufnahme)</td>
+                      <td className="p-2.5 text-red-600 font-medium"><MdText text={inhalt.texte.ungenügendSprenggefahr} /></td>
+                      <td className="p-2.5 text-red-600 font-medium"><MdText text={inhalt.texte.geringSalzauswaschung} /></td>
+                      <td className="p-2.5 font-bold text-emerald-700 bg-shiraz/5 font-mono"><MdText text={inhalt.texte.exzellentSchadloseDepotaufnahme} /></td>
                     </tr>
                     <tr>
-                      <td className="p-2.5 font-bold text-slate-800">E-Modul [N/mm²]</td>
-                      <td className="p-2.5">ca. 10.000 – 15.000 (hart / spröde)</td>
-                      <td className="p-2.5">ca. 1.000 – 3.000 (weich / elastisch)</td>
-                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5">ca. 2.000 – 4.500 (elastisch abgestimmt)</td>
+                      <td className="p-2.5 font-bold text-slate-800"><MdText text={inhalt.texte.eModulNMm} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.ca1000015} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.ca10003} /></td>
+                      <td className="p-2.5 font-semibold text-slate-900 bg-shiraz/5"><MdText text={inhalt.texte.ca20004} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -752,38 +676,24 @@ export default function WTA() {
 
             {/* Ausführungsschritte nach WTA-Merkblatt 2-9 */}
             <div className="bg-[#FCFAF7] p-5 rounded-xl border border-home-grau/35 space-y-3">
-              <span className="font-bold text-slate-800 text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight">
-                🛠️ Normgerechte handwerkliche Verarbeitungsschritte nach WTA 2-9
-              </span>
+              <span className="font-bold text-slate-800 text-xs block border-b border-home-grau/25 pb-1 uppercase tracking-tight"><MdText text={inhalt.texte.normgerechteHandwerklicheVerarbeitungssc} /></span>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="bg-white p-3.5 rounded border border-home-grau/20 space-y-1">
                   <span className="font-bold text-shiraz flex items-center gap-1.5">
-                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">1</span>
-                    Altputzabtrag &amp; Fugenschnitt
-                  </span>
-                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1">
-                    Schadhafter Altputz ist bis zu einer Höhe von mindestens 1 Meter oberhalb des sichtbaren Feuchtigkeitshorizonts abzutragen. Die Lager- und Stoßfugen des Mauerwerks sind mindestens 20 mm tief staubfrei auszukratzen.
-                  </p>
+                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">1</span><MdText text={inhalt.texte.altputzabtragFugenschnitt} /></span>
+                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1"><MdText text={inhalt.texte.schadhafterAltputzIstBis} /></p>
                 </div>
 
                 <div className="bg-white p-3.5 rounded border border-home-grau/20 space-y-1">
                   <span className="font-bold text-shiraz flex items-center gap-1.5">
-                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">2</span>
-                    WTA-Haftbrücke &amp; Auswurf
-                  </span>
-                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1">
-                    Als Haftvermittler wird ein netzartiger, warzenförmiger Vorspritzmörtel (Deckungsgrad <InlineMath math="\le 50\%" />) angewendet. Größere Löcher oder ausgebrochene Fugen werden flächenbündig mit WTA-Porengrundputz egalisiert.
-                  </p>
+                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">2</span><MdText text={inhalt.texte.wtaHaftbrückeAuswurf} /></span>
+                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1"><MdText text={inhalt.texte.alsHaftvermittlerWirdEin} /></p>
                 </div>
 
                 <div className="bg-white p-3.5 rounded border border-home-grau/20 space-y-1">
                   <span className="font-bold text-shiraz flex items-center gap-1.5">
-                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">3</span>
-                    Mindestputzdicken &amp; Endfinish
-                  </span>
-                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1">
-                    Die Gesamtdicke des Sanierputzes muss zweilagig mindestens 20 mm betragen (Einzellage mindestens 10 mm). Nur diffusionsoffene silikatische oder mineralische Anstriche aufbringen. Keine dichten Dispersionsfarben verwenden.
-                  </p>
+                    <span className="w-4 h-4 bg-shiraz text-white rounded-full font-mono text-[9px] flex items-center justify-center font-bold">3</span><MdText text={inhalt.texte.mindestputzdickenEndfinish} /></span>
+                  <p className="text-slate-650 text-[11px] leading-relaxed pt-1"><MdText text={inhalt.texte.dieGesamtdickeDesSanierputzes} /></p>
                 </div>
               </div>
             </div>
@@ -797,39 +707,27 @@ export default function WTA() {
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-5 animate-in fade-in duration-200">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-home-grau/25 pb-4 gap-2">
             <div className="flex items-center gap-2">
-              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">WTA 6-5 / 6-4</div>
+              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold"><MdText text={inhalt.texte.wta656} /></div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5">
-                <Thermometer className="text-shiraz shrink-0" size={18} />
-                Bauphysikalische Innendämmung (WTA 6-5)
-              </h3>
+                <Thermometer className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.bauphysikalischeInnendämmungWta6} /></h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: WTA-Merkblatt 6-5</span>
+            <span className="text-xs text-home-grau font-mono"><MdText text={inhalt.texte.standWtaMerkblatt6} /></span>
           </div>
 
           <div className="space-y-4">
-            <p className="text-xs text-slate-850 leading-relaxed font-semibold">
-              Eine Außendämmung gefährdet bei denkmalgeschützten Ziegelbauten oder denkmalwürdigen Stuckprofil-Fassaden den Erhaltungscharakter und ist behördlich strikt verboten. Das WTA-Merkblatt regelt daher den schadensfreien Einbau einer **nachträglichen Innendämmung**.
-            </p>
+            <p className="text-xs text-slate-850 leading-relaxed font-semibold"><MdText text={inhalt.texte.eineAußendämmungGefährdetBei} /></p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20 space-y-2 text-xs">
-                <span className="font-bold text-shiraz block">Das kapillaraktiv-diffusionsoffene System:</span>
-                <p className="leading-relaxed">
-                  Dämmstoffe wie <strong>Calciumsilicat-Platten</strong> besitzen ein hervorragendes mineralisches Mikroporennetz. Raumseitige Luftfeuchte, die im Winter an der abgekühlten Mauerinnenseite kondensiert (Taupunkt), wird kapillar vom Plattenkern weggesaugt, temporär gepuffert, und diffundiert im Sommer unschädlich wieder zurück an den Innenraum.
-                </p>
-                <div className="text-xs border-t border-dotted border-home-grau/25 pt-2 mt-2 font-semibold text-text-main">
-                  ➔ KEINE Dampfsperrfolien notwendig, die bei kleinsten Montagefehlern (z.B. Steckdoseneinbau) zu unbemerkten Schimmelschadensherden führen!
-                </div>
+                <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.dasKapillaraktivDiffusionsoffeneSystem} /></span>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.dämmstoffeWieCalciumsilicatPlatten} /></p>
+                <div className="text-xs border-t border-dotted border-home-grau/25 pt-2 mt-2 font-semibold text-text-main"><MdText text={inhalt.texte.keineDampfsperrfolienNotwendigDie} /></div>
               </div>
 
               <div className="bg-stone-50 p-[#faf9f6]/90 p-4 rounded-xl border border-home-grau/20 space-y-2 text-xs">
-                <span className="font-bold text-shiraz block">WTA 6-5 Simulative Nachweise (WUFI):</span>
-                <p className="leading-relaxed">
-                  Laut WTA-Merkblatt 6-5 wird der rechnerische Nachweis nach Glaser-Verfahren (DIN 4108-3) den physikalischen kapillaren Strömungen offener Dämmungen nicht gerecht. Bei feuchtem historischen Mauergefüge ist eine instationäre hygrothermische Simulation der Feuchtebilanz zwingend erforderlich.
-                </p>
-                <div className="text-xs border-t border-dotted border-home-grau/25 pt-2 mt-2 font-semibold text-text-main">
-                  ➔ Simulationen (z. B. WUFI) berechnen Feuchteakkumulation over time und sichern den Planungsingenieur haftungsseitig ab.
-                </div>
+                <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.wta65Simulative} /></span>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.lautWtaMerkblatt6} /></p>
+                <div className="text-xs border-t border-dotted border-home-grau/25 pt-2 mt-2 font-semibold text-text-main"><MdText text={inhalt.texte.simulationenZBWufi} /></div>
               </div>
             </div>
           </div>
@@ -839,60 +737,46 @@ export default function WTA() {
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-5 animate-in fade-in duration-200">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-home-grau/25 pb-4 gap-2">
             <div className="flex items-center gap-2">
-              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">WTA Qualitätsprüfung</div>
+              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold"><MdText text={inhalt.texte.wtaQualitätsprüfung} /></div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5">
-                <ShieldCheck className="text-shiraz shrink-0" size={18} />
-                Prüf- &amp; Überwachungspflichten zur Bauwerkserhaltung
-              </h3>
+                <ShieldCheck className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.prüfÜberwachungspflichtenZurBauwerkserha} /></h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: VOB/B &amp; WTA-Katalog</span>
+            <span className="text-xs text-home-grau font-mono"><MdText text={inhalt.texte.standVobBWta} /></span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4 text-xs">
-              <p className="leading-relaxed text-slate-800 font-semibold">
-                WTA-Sanierungen sind hochgradig haftungsanfällig. Werden die vorgeschriebenen Vorkontrollen und Abnahmeprotokolle vernachlässigt, verliert das bauausführende Unternehmen jegliche Absicherung bei Gutachterstreitigkeiten.
-              </p>
+              <p className="leading-relaxed text-slate-800 font-semibold"><MdText text={inhalt.texte.wtaSanierungenSindHochgradig} /></p>
               
               <ul className="list-disc pl-5 text-slate-700 space-y-2.5 leading-relaxed">
-                <li>
-                  <strong>Befundprüfung des Untergrunds:</strong> Genaue Bestimmung des Untergrundgehalts an bauschädlichen Chloriden, Sulfaten und Nitraten sowie Messung der Nettofeuchte mittels zerstörungsloser oder Darr-Prüfung.
-                </li>
-                <li>
-                  <strong>Amtliche Verpressprotokollierung:</strong> Genaue Angabe des Materials (z. B. Wirkstoffgehalt Silan in %), Injektionszeitpunkts, des tatsächlichen Arbeitsdrucks bei Kompressoren und der Verbrauchsmenge je Bohrkanal.
-                </li>
-                <li>
-                  <strong>Fremdüberwachung (Sicherheits-Siegel):</strong> Nur werkseitig fremdüberwachte Sanierputze mit eingeprägtem runden WTA-Prüfzeichen dürfen vertraglich als solche ausgeschrieben werden.
-                </li>
+                <li><MdText text={inhalt.texte.befundprüfungDesUntergrundsGenaue} /></li>
+                <li><MdText text={inhalt.texte.amtlicheVerpressprotokollierungGenaueAng} /></li>
+                <li><MdText text={inhalt.texte.fremdüberwachungSicherheitsSiegelNur} /></li>
               </ul>
             </div>
 
             {/* Interactive Protocol Formular Mock for educational value */}
             <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/25 space-y-3">
-              <span className="text-xs font-bold text-slate-900 block border-b pb-1.5 border-home-grau/20">
-                📄 Interaktives Verpressprotokoll-Formular (WTA-Richtlinie 4-10)
-              </span>
+              <span className="text-xs font-bold text-slate-900 block border-b pb-1.5 border-home-grau/20"><MdText text={inhalt.texte.interaktivesVerpressprotokollFormularWta} /></span>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
                   <span className="block text-home-grau font-semibold mb-0.5">Prüfobjekt:</span>
-                  <input type="text" placeholder="Historisches Rathaus, Sockel" className="w-full bg-white border border-home-grau/30 rounded p-1" />
+                  <input type="text" placeholder={inhalt.werte.historischesRathausSockel} className="w-full bg-white border border-home-grau/30 rounded p-1" />
                 </div>
                 <div>
-                  <span className="block text-home-grau font-semibold mb-0.5">Ausführende Firma:</span>
-                  <input type="text" placeholder="Bautenschutz &amp; Denkmalbau" className="w-full bg-white border border-home-grau/30 rounded p-1" />
+                  <span className="block text-home-grau font-semibold mb-0.5"><MdText text={inhalt.texte.ausführendeFirma} /></span>
+                  <input type="text" placeholder={inhalt.werte.bautenschutzDenkmalbau} className="w-full bg-white border border-home-grau/30 rounded p-1" />
                 </div>
                 <div>
                   <span className="block text-home-grau font-semibold mb-0.5">Injektions-Wirkstoff:</span>
                   <input aria-label="Injektions-Wirkstoff" type="text" defaultValue="Silan-Creme (80% Wirkstoff)" className="w-full bg-white border border-home-grau/30 rounded p-1 text-shiraz font-semibold" />
                 </div>
                 <div>
-                  <span className="block text-home-grau font-semibold mb-0.5">Packerdruck (Max Bar):</span>
-                  <input aria-label="Packerdruck (Max Bar)" type="number" min="0" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
+                  <span className="block text-home-grau font-semibold mb-0.5"><MdText text={inhalt.texte.packerdruckMaxBar} /></span>
+                  <input aria-label={inhalt.werte.packerdruckMaxBar} type="number" min="0" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
                 </div>
               </div>
-              <p className="text-xs text-home-grau leading-tight italic">
-                Sichere Abnahme: Das geführte Verpressprotokoll schützt Architekten und Bauunternehmer vor Planungs- und Gewährleistungsmängeln.
-              </p>
+              <p className="text-xs text-home-grau leading-tight italic"><MdText text={inhalt.texte.sichereAbnahmeDasGeführte} /></p>
             </div>
           </div>
         </section>
@@ -902,25 +786,19 @@ export default function WTA() {
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-6 animate-in fade-in duration-200">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-home-grau/25 pb-4 gap-2">
             <div className="flex items-center gap-2">
-              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">Kombinatorischer Bauphysik-Rechner</div>
+              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold"><MdText text={inhalt.texte.kombinatorischerBauphysikRechner} /></div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5 font-sans">
-                <Sliders className="text-shiraz shrink-0" size={18} />
-                Kombi-Planer: WTA-Sanierung &amp; Innendämmung
-              </h3>
+                <Sliders className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.kombiPlanerWtaSanierung} /></h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Nach WTA-Richtlinien 6-5 / 4-10 / 2-9</span>
+            <span className="text-xs text-home-grau font-mono"><MdText text={inhalt.texte.nachWtaRichtlinien6} /></span>
           </div>
 
-          <div className="text-xs text-slate-800 bg-[#FAF9F5] p-4 border border-home-grau/25 rounded-xl leading-relaxed font-semibold">
-            <strong>⚠️ Die materialübergreifende Herausforderung:</strong> Der Einbau einer Innendämmung kühlt die Bestandswand im Winter ab, wodurch die Austrocknung nach außen gehemmt wird. Befinden sich noch erhebliche Restfeuchten (aufsteigende Nässe) oder Salze im rohen Mauerwerk, droht ohne wirksame Kombinations-Sanierung ein katastrophaler Frost- und Schimmelschaden hinter den Dämmplatten!
-          </div>
+          <div className="text-xs text-slate-800 bg-[#FAF9F5] p-4 border border-home-grau/25 rounded-xl leading-relaxed font-semibold"><MdText text={inhalt.texte.dieMaterialübergreifendeHerausforderungD} /></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Input Selection Block - 5 columns */}
             <div className="lg:col-span-12 xl:col-span-5 space-y-4 bg-[#FCFAF7] p-5 rounded-xl border border-home-grau/35">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25">
-                System-Parameter abstimmen:
-              </span>
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25"><MdText text={inhalt.texte.systemParameterAbstimmen} /></span>
 
               {/* 1. Innendämmsystem */}
               <div className="space-y-1.5 text-xs">
@@ -939,8 +817,8 @@ export default function WTA() {
 
               {/* 2. Zustand Horizontalsperre */}
               <div className="space-y-1.5 text-xs">
-                <label className="font-bold text-text-main block">Vorschalt-Horizontalsperre (WTA 4-10):</label>
-                <select aria-label="Vorschalt-Horizontalsperre (WTA 4-10)" 
+                <label className="font-bold text-text-main block"><MdText text={inhalt.texte.vorschaltHorizontalsperreWta4} /></label>
+                <select aria-label={inhalt.werte.vorschaltHorizontalsperreWta4} 
                   value={kombiSperre} 
                   onChange={(e) => setKombiSperre(e.target.value as typeof kombiSperre)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -953,8 +831,8 @@ export default function WTA() {
 
               {/* 3. Mauerwerks-Salzbelastung */}
               <div className="space-y-1.5 text-xs">
-                <label className="font-bold text-text-main block">Mauerwerks-Salzbelastung (WTA 2-9):</label>
-                <select aria-label="Mauerwerks-Salzbelastung (WTA 2-9)" 
+                <label className="font-bold text-text-main block"><MdText text={inhalt.texte.mauerwerksSalzbelastungWta2} /></label>
+                <select aria-label={inhalt.werte.mauerwerksSalzbelastungWta2} 
                   value={kombiSalz} 
                   onChange={(e) => setKombiSalz(e.target.value as typeof kombiSalz)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -967,8 +845,8 @@ export default function WTA() {
 
               {/* 4. Schlagregenschutz der Fassade */}
               <div className="space-y-1.5 text-xs">
-                <label className="font-bold text-text-main block">Schlagregenbelastung der Fassade:</label>
-                <select aria-label="Schlagregenbelastung der Fassade" 
+                <label className="font-bold text-text-main block"><MdText text={inhalt.texte.schlagregenbelastungDerFassade} /></label>
+                <select aria-label={inhalt.werte.schlagregenbelastungDerFassade} 
                   value={kombiRegen} 
                   onChange={(e) => setKombiRegen(e.target.value as typeof kombiRegen)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -991,9 +869,7 @@ export default function WTA() {
                     <div className="bg-[#FCFAF7] border border-home-grau/35 rounded-xl p-5 shadow-xs bg-white space-y-3">
                       <div className="flex justify-between items-center flex-wrap gap-2">
                         <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                          <ShieldCheck size={14} className="text-shiraz font-bold" />
-                          Hygrothermisches Kombinations-Siegel:
-                        </span>
+                          <ShieldCheck size={14} className="text-shiraz font-bold" /><MdText text={inhalt.texte.hygrothermischesKombinationsSiegel} /></span>
                         <div className={`px-2.5 py-0.5 rounded-full text-xs font-black border ${evalData.ampelColor}`}>
                           {evalData.suitabilityLabel}
                         </div>
@@ -1003,17 +879,17 @@ export default function WTA() {
                         <div className="bg-[#FAF9F5] p-3 rounded border border-home-grau/20 text-center">
                           <span className="text-home-grau text-xs uppercase font-bold tracking-tight block">Kombi-Score</span>
                           <span className="text-3xl font-mono font-black text-slate-900 mt-1 block">{formatDeWert(evalData.score)} / 100</span>
-                          <span className="text-xs text-home-grau font-semibold">Punkte (Sicherheitsindex)</span>
+                          <span className="text-xs text-home-grau font-semibold"><MdText text={inhalt.texte.punkteSicherheitsindex} /></span>
                         </div>
 
                         <div className="bg-[#FAF9F5] p-3 rounded border border-home-grau/20 text-center col-span-2 relative flex flex-col justify-between">
-                          <span className="text-home-grau text-xs uppercase font-bold tracking-tight block">Hauptrating von WTA Referat 6 / 4</span>
+                          <span className="text-home-grau text-xs uppercase font-bold tracking-tight block"><MdText text={inhalt.texte.hauptratingVonWtaReferat} /></span>
                           <p className="text-xs font-bold text-slate-800 leading-snug mt-1.5">
                             {evalData.score >= 75 
-                              ? "Aufbau gilt bauphysikalisch nach den anerkannten Regeln der Technik als sicher." 
+                              ? inhalt.werte.aufbauGiltBauphysikalischNach 
                               : evalData.score >= 40 
-                                ? "Mauerwerkskonditionen erfordern flächenhafte Zusatzplanung vor Einbau." 
-                                : "Achtung: Exzessives Feuchteschaden-Risiko. Sanierung bricht WTA-Richtlinien!"}
+                                ? inhalt.werte.mauerwerkskonditionenErfordernFlächenhaf 
+                                : inhalt.werte.achtungExzessivesFeuchteschadenRisiko}
                           </p>
                         </div>
                       </div>
@@ -1021,7 +897,7 @@ export default function WTA() {
                       {/* Display alarms if any */}
                       {evalData.criticalAlarms.length > 0 && (
                         <div className="space-y-2 pt-2 border-t border-home-grau/15">
-                          <span className="text-xs font-black text-red-750 uppercase block tracking-wider">⚠️ DRINGENDE GEWÄHRLEISTUNGS-RISIKEN:</span>
+                          <span className="text-xs font-black text-red-750 uppercase block tracking-wider"><MdText text={inhalt.texte.dringendeGewährleistungsRisiken} /></span>
                           <div className="space-y-1.5">
                             {evalData.criticalAlarms.map((alarm, i) => (
                               <div key={i} className="flex gap-2 items-start bg-rose-50 text-rose-950 border border-rose-250 p-2.5 rounded-lg text-xs leading-relaxed">
@@ -1035,7 +911,7 @@ export default function WTA() {
 
                       {/* Display recommendations */}
                       <div className="space-y-2 pt-2 border-t border-home-grau/15">
-                        <span className="text-xs font-bold text-slate-500 uppercase block tracking-wider">📋 Zwingende WTA-Fahrplanmaßnahmen für die Ausführung:</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase block tracking-wider"><MdText text={inhalt.texte.zwingendeWtaFahrplanmaßnahmenFür} /></span>
                         <ul className="space-y-1.5 list-none pl-0 text-xs">
                           {evalData.recommendations.map((rec, i) => (
                             <li key={i} className="flex gap-1.5 items-start text-slate-800 leading-relaxed font-semibold">
@@ -1049,22 +925,20 @@ export default function WTA() {
 
                     {/* Schematic Dew Point / Condensation visualization diagram */}
                     <div className="bg-stone-50 border border-home-grau/25 rounded-xl p-4 space-y-3">
-                      <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block border-b border-home-grau/20 pb-1.5">
-                        📈 Hygrothermischer Baugefüge-Querschnitt &amp; Taupunktverlauf (Wintersituation)
-                      </span>
+                      <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block border-b border-home-grau/20 pb-1.5"><MdText text={inhalt.texte.hygrothermischerBaugefügeQuerschnittTaup} /></span>
                       
                       <div className="relative h-24 bg-white border border-home-grau/15 rounded-lg overflow-hidden flex" id="kombi-diagram-canvas-tab5">
                         {/* Outside section */}
                         <div className="w-2/12 bg-blue-500/5 flex items-center justify-center border-r border-dashed border-blue-300 relative text-xs text-blue-800 font-bold">
-                          <span>AUSSEN (-5°C)</span>
+                          <span><MdText text={inhalt.texte.aussen5C} /></span>
                         </div>
                         {/* Outside render */}
                         <span className="w-[10px] bg-[#979797] block border-r border-stone-400"></span>
                         {/* Brick wall */}
                         <div className="flex-1 bg-amber-50/10 flex items-center justify-center relative font-sans text-xs text-orange-950 border-r border-dotted border-stone-300">
-                          <span className="z-1 w-max font-bold">Ziegelwand (36 cm)</span>
+                          <span className="z-1 w-max font-bold"><MdText text={inhalt.texte.ziegelwand36Cm} /></span>
                           {kombiSperre !== 'ok' && (
-                            <span className="absolute bottom-1 right-2 text-blue-600 animate-pulse font-bold text-[8.5px]">💧 Feuchte aktiv</span>
+                            <span className="absolute bottom-1 right-2 text-blue-600 animate-pulse font-bold text-[8.5px]"><MdText text={inhalt.texte.feuchteAktiv} /></span>
                           )}
                         </div>
                         {/* Bonding adhesive layer */}
@@ -1084,19 +958,19 @@ export default function WTA() {
                         </div>
                         {/* Interior climate */}
                         <div className="w-2/12 bg-orange-500/5 flex items-center justify-center text-xs text-orange-850 font-bold">
-                          <span>INNEN (+20°C)</span>
+                          <span><MdText text={inhalt.texte.innen20C} /></span>
                         </div>
                       </div>
 
                       <div className="text-xs leading-relaxed text-slate-600 italic">
                         {kombiDaemm === 'calciumsilicat' ? (
-                          <p><strong>✓ Calciumsilicat-Verlauf:</strong> Der Taupunkt kondensiert unschädlich im Platten-Mauerwerk-Grenzgefüge. Durch das extrem hohe kapillare Puffervermögen wird die Restfeuchte direkt zurück nach innen gesaugt. Absolut frost- und schimmelsicher.</p>
+                          <p><MdText text={inhalt.texte.calciumsilicatVerlaufDerTaupunkt} /></p>
                         ) : kombiDaemm === 'pur_foelie' ? (
-                          <p className="text-[#a51c1c] text-xs font-semibold"><strong>⚠️ PUR/Folie-Dampfsperren-Verlauf:</strong> Der Taupunkt wird durch die Alufolienbeschichtung diffusionsseitig künstlich zurückgehalten. Treten jedoch kleinste Risse oder nicht abgedichtete Bohrpackerflanken auf, sammelt sich Feuchte unkontrolliert als Fäulnissack hinter der Dämmplatte an.</p>
+                          <p className="text-[#a51c1c] text-xs font-semibold"><MdText text={inhalt.texte.purFolieDampfsperrenVerlauf} /></p>
                         ) : kombiDaemm === 'holzfaser' ? (
-                          <p className="text-orange-900 font-medium"><strong>⚠ Holzfaser-Verlauf:</strong> Kondensatinfiltration an der Platte. Ist die Horizontalsperre undicht (Sperre vorhanden, aber fehlerhaft), lagern sich organische Fasern unter Fäulnisstimmung an. Ein exakter feuchtetechnischer Nachweis nach WTA 6-5 ist zwingend unumgänglich!</p>
+                          <p className="text-orange-900 font-medium"><MdText text={inhalt.texte.holzfaserVerlaufKondensatinfiltrationAn} /></p>
                         ) : (
-                          <p><strong>✓ Mineralschaum-Verlauf:</strong> Diffusionsoffener, mineralischer Aufbau. Der Taupunkt verbleibt im dicken Kleberbett. Wichtig ist die vollflächige Verklebung ohne Lufttaschen, um dort ein übermäßiges Kondensieren im statischen Verband auszuschließen.</p>
+                          <p><MdText text={inhalt.texte.mineralschaumVerlaufDiffusionsoffenerMin} /></p>
                         )}
                       </div>
                     </div>
@@ -1113,59 +987,53 @@ export default function WTA() {
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-6 animate-in fade-in duration-200">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-home-grau/25 pb-4 gap-2">
             <div className="flex items-center gap-2">
-              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold">WTA 4-6 + DIN 18533</div>
+              <div className="p-1 px-2.5 bg-shiraz text-white rounded-lg text-xs font-mono font-bold"><MdText text={inhalt.texte.wta46Din2} /></div>
               <h3 className="text-lg font-bold text-text-main flex items-center gap-1.5">
-                <Compass className="text-shiraz shrink-0" size={18} />
-                Nachträgliche Bauwerksabdichtung erdberührter Bauteile
-              </h3>
+                <Compass className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.nachträglicheBauwerksabdichtungErdberühr} /></h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: WTA 4-6-24/D / DIN 18533:2017-07 + A1:2024</span>
+            <span className="text-xs text-home-grau font-mono"><MdText text={inhalt.texte.standWta46} /></span>
           </div>
 
-          <p className="text-xs text-text-main/80 leading-relaxed">
-            Das <strong>WTA-Merkblatt 4-6</strong> regelt die fachgerechte Planung und Ausführung der nachträglichen Abdichtung von erdberührten 
-            Bestandsbauwerken (Außenabdichtung, Innenabdichtung, Querschnittsabdichtung). Die Einordnung der Beanspruchung 
-            erfolgt zwingend harmonisiert nach den Wassereinwirkungsklassen der <strong>DIN 18533</strong>.
-          </p>
+          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dasWtaMerkblatt4} /></p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-text-main">1. Wassereinwirkung (DIN 18533)</span>
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-shiraz/10 text-shiraz rounded">W1-E bis W4-E</span>
+                <span className="font-bold text-xs text-text-main"><MdText text={inhalt.texte.t1WassereinwirkungDin18533} /></span>
+                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-shiraz/10 text-shiraz rounded"><MdText text={inhalt.texte.w1EBisW4} /></span>
               </div>
               <ul className="text-[11px] text-text-main/70 space-y-1.5 list-disc list-inside">
-                <li><strong>W1.1-E:</strong> Bodenfeuchte &amp; nichtdrückendes Wasser bei drainagefähigem Baugrund (k ≥ 10⁻⁴ m/s).</li>
-                <li><strong>W1.2-E:</strong> Bodenfeuchte &amp; nichtdrückendes Wasser bei Dränung nach DIN 4095.</li>
-                <li><strong>W2.1-E:</strong> Mäßige Einwirkung drückenden Wassers (Eintauchtiefe h_w ≤ 3,0 m).</li>
-                <li><strong>W2.2-E:</strong> Hohe Einwirkung drückenden Wassers (h_w &gt; 3,0 m).</li>
-                <li><strong>W3-E:</strong> Nicht drückendes Wasser auf erdüberschütteten Decken.</li>
-                <li><strong>W4-E:</strong> Spritzwasser und Bodenfeuchte am Wandsockel.</li>
+                <li><MdText text={inhalt.texte.w11EBodenfeuchte} /></li>
+                <li><MdText text={inhalt.texte.w12EBodenfeuchte} /></li>
+                <li><MdText text={inhalt.texte.w21EMäßige} /></li>
+                <li><MdText text={inhalt.texte.w22EHohe} /></li>
+                <li><MdText text={inhalt.texte.w3ENichtDrückendes} /></li>
+                <li><MdText text={inhalt.texte.w4ESpritzwasserUnd} /></li>
               </ul>
             </div>
 
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-text-main">2. Sanierungsansätze nach WTA 4-6</span>
+                <span className="font-bold text-xs text-text-main"><MdText text={inhalt.texte.t2SanierungsansätzeNachWta} /></span>
                 <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-indigo-50 text-indigo-700 rounded">Systemwahl</span>
               </div>
               <ul className="text-[11px] text-text-main/70 space-y-1.5 list-disc list-inside">
-                <li><strong>Freilegen &amp; Außenabdichtung:</strong> Bevorzugte Lösung; PMBC (KMB), MDS oder bahnenförmige Abdichtung auf Bestandsmauerwerk.</li>
-                <li><strong>Nachträgliche Innenabdichtung (Negativabdichtung):</strong> Wenn Aufgraben technisch oder wirtschaftlich unmöglich ist (Grenzbebauung). Erfordert mineralische Dichtungsschlämmen (MDS) mit Haftbrücke und WTA-Sanierputz als Schutzschicht.</li>
-                <li><strong>Kombination mit Horizontalsperren:</strong> Drucklose oder Niederdruck-Injektion (WTA 4-10) zur Unterbindung kapillaren Aufsteigens.</li>
+                <li><MdText text={inhalt.texte.freilegenAußenabdichtungBevorzugteLösung} /></li>
+                <li><MdText text={inhalt.texte.nachträglicheInnenabdichtungNegativabdic} /></li>
+                <li><MdText text={inhalt.texte.kombinationMitHorizontalsperrenDrucklose} /></li>
               </ul>
             </div>
 
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-text-main">3. Raumnutzung &amp; Rissklassen</span>
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-emerald-50 text-emerald-800 rounded">RN1-E bis RN3-E</span>
+                <span className="font-bold text-xs text-text-main"><MdText text={inhalt.texte.t3RaumnutzungRissklassen} /></span>
+                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-emerald-50 text-emerald-800 rounded"><MdText text={inhalt.texte.rn1EBisRn3} /></span>
               </div>
               <ul className="text-[11px] text-text-main/70 space-y-1.5 list-disc list-inside">
-                <li><strong>RN1-E (Gering):</strong> Tiefgaragen, Lagerräume für feuchteunempfindliche Güter (Feuchteflecken tolerierbar).</li>
-                <li><strong>RN2-E (Üblich):</strong> Kellerräume, Haustechnikräume, Garagen (kein Wasserdurchtritt, trockene Wandoberfläche).</li>
-                <li><strong>RN3-E (Hoch):</strong> Wohnräume im Untergeschoss, Archive, Aufenthaltsräume (erfordert dampfdiffusionsdichte Zusatzmaßnahmen &amp; Raumlüftung).</li>
-                <li><strong>Rissüberbrückungsklassen:</strong> RÜ1-E (ohne Rissüberbrückung) bis RÜ4-E (hohe Rissüberbrückung).</li>
+                <li><MdText text={inhalt.texte.rn1EGeringTiefgaragen} /></li>
+                <li><MdText text={inhalt.texte.rn2EÜblichKellerräume} /></li>
+                <li><MdText text={inhalt.texte.rn3EHochWohnräume} /></li>
+                <li><MdText text={inhalt.texte.rissüberbrückungsklassenRü1EOhne} /></li>
               </ul>
             </div>
           </div>
@@ -1175,56 +1043,34 @@ export default function WTA() {
       {/* Module Footer (Wikipedia, Regelwerke, Literatur) aligned with WTA */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Durchfeuchtungsgrad vor einer Horizontalsperre"
+        title={inhalt.werte.beispiel1DurchfeuchtungsgradVor}
         zielGleichung="DFG = \frac{u_m}{u_{max}}"
-        schritte={[
-          { titel: 'Feuchtegehalt', erklaerung: 'Bohrmehlprobe aus 40 cm Höhe, Darrmethode:', formel: 'u_m = 9{,}0\\,\\text{M.-\\%}' },
-          { titel: 'Maximale Wasseraufnahme', erklaerung: 'Unter Vakuum bzw. Druck bestimmt:', formel: 'u_{max} = 18{,}0\\,\\text{M.-\\%}' },
-          { titel: 'Durchfeuchtungsgrad', erklaerung: 'Verhältnis:', formel: 'DFG = \\frac{9{,}0}{18{,}0} = 50\\,\\%' }
-        ]}
-        ergebnisHinweis="Injektionsstoffe sind nach WTA-Merkblatt 4-10 für bestimmte Durchfeuchtungsgrade zertifiziert; das Produkt muss für den gemessenen DFG geprüft sein. Bei hohem DFG ist ggf. vorab zu trocknen."
-        normQuelle="WTA-Merkblatt 4-10; WTA-Merkblatt 4-11"
+        schritte={inhalt.daten["WTA.schritte"]}
+        ergebnisHinweis={inhalt.werte.injektionsstoffeSindNachWta}
+        normQuelle={inhalt.werte.wtaMerkblatt410}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Injektionsmittelbedarf je laufendem Meter Wand"
+        title={inhalt.werte.beispiel2InjektionsmittelbedarfJe}
         zielGleichung="V_{m} = \frac{100}{a} \cdot V_{Bohr} \cdot F_S"
-        schritte={[
-          { titel: 'Bohrraster', erklaerung: 'Bohrlochabstand a = 12,5 cm:', formel: 'n = \\frac{100}{12{,}5} = 8\\,\\text{Bohrlöcher je m}' },
-          { titel: 'Füllmenge', erklaerung: 'Füllmenge je Bohrloch laut Produktzulassung für 51 cm Wanddicke (Lehrwert):', formel: 'V_{Bohr} = 1{,}0\\,\\text{l}' },
-          { titel: 'Bedarf', erklaerung: 'Zuschlagfaktor für Hohlräume F_S = 1,1:', formel: 'V_m = 8 \\cdot 1{,}0 \\cdot 1{,}1 = 8{,}8\\,\\text{l/m}' }
-        ]}
-        ergebnisHinweis="Bohrlochabstand, Neigung und Füllmenge richten sich nach dem Prüfzeugnis des Injektionsstoffs; die Werte im Beispiel sind nur zur Veranschaulichung."
-        normQuelle="WTA-Merkblatt 4-10"
+        schritte={inhalt.daten["WTA.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.bohrlochabstandNeigungUndFüllmenge}
+        normQuelle={inhalt.werte.wtaMerkblatt4102}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="wta" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: WTA-Ausgaben 2-9-20/D, 4-6-24/D, 6-5-14/D geprüft; fachliche Freigabe durch den Autor ausstehend)" 
-        weblinks={[
-          { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.", url: "https://www.wta-gmbh.de/" },
-          { title: "WTA – Merkblätter", url: "https://www.wta-gmbh.de" }
-        ]} 
+        lastReviewed={inhalt.werte.oktober2026Ap12} 
+        weblinks={inhalt.daten["WTA.weblinks"]} 
         wikipedia={[
-          { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege", url: "https://de.wikipedia.org/wiki/Wissenschaftlich-Technische_Arbeitsgemeinschaft_f%C3%BCr_Bauwerkserhaltung_und_Denkmalpflege" },
+          { title: inhalt.werte.wissenschaftlichTechnischeArbeitsgemeins, url: "https://de.wikipedia.org/wiki/Wissenschaftlich-Technische_Arbeitsgemeinschaft_f%C3%BCr_Bauwerkserhaltung_und_Denkmalpflege" },
           { title: "Sanierputz", url: "https://de.wikipedia.org/wiki/Sanierputz" },
-          { title: "Tränken (Bauwesen)" }
+          { title: inhalt.werte.tränkenBauwesen }
         ]} 
-        literatur={[
-          'WTA (Hrsg.): WTA-Merkblätter und Schriftenreihe. Stuttgart: Fraunhofer IRB / WTA Publications',
-          'Frössel, F.: Mauerwerkstrockenlegung und Kellersanierung. Stuttgart: Fraunhofer IRB (aktuelle Auflage)'
-        ]} 
-        regelwerke={[
-          { title: "WTA-Merkblatt 2-9-20/D (Ausgabe 2020-03): Sanierputzsysteme", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 4-6-24/D (Ausgabe 2024-12): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)" },
-          { title: "WTA-Merkblatt 4-10-24/D: Injektionsverfahren mit zertifizierten Injektionsstoffen gegen kapillaren Feuchtetransport (Ausgabe 03.2024)", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 6-5-14/D (Ausgabe 2014-04): Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
-        ]} 
-        formeln={[
-          { formel: "V_{meter} = \\frac{100}{a} \\cdot V_{bore} \\cdot F_S", erklaerung: "Mathematische Wirkstoffbedarfsschätzung für chemische Mauerwerkinjektionen.", quelle: "WTA-Merkblatt 4-10" }
-        ]} 
+        literatur={inhalt.daten["WTA.literatur"]} 
+        regelwerke={inhalt.daten["WTA.regelwerke"]} 
+        formeln={inhalt.daten["WTA.formeln"]} 
       />
 
     </div>

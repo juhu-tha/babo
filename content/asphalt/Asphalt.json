@@ -1,0 +1,241 @@
+{
+  "texte": {
+    "asphaltBitumen": " Asphalt & Bitumen",
+    "asphaltIstEinViskoelastisches": "Asphalt ist ein viskoelastisches Mehrphasengemisch aus dem Bindemittel Bitumen und Gesteinskörnungen. Dieses Modul behandelt die Klassifizierung, thermo-mechanischen Eigenschaften und normative Prüfungen im Straßenbau.",
+    "grundlagenZusammensetzung": " Grundlagen & Zusammensetzung",
+    "materialProdukteigenschaften": " Material- & Produkteigenschaften",
+    "niedrigtemperaturasphalteNta": " Niedrigtemperaturasphalte (NTA)",
+    "asphaltIstEinGemisch": "Asphalt ist ein Gemisch aus Bitumen und Gesteinskörnungen. Das viskoelastische Verhalten von Bitumen macht Asphalt stark temperatur- und belastungszeitabhängig.",
+    "marshallStabilitätLehrmodell": "Marshall-Stabilität (Lehrmodell)",
+    "marshallStabilitätVsBitumengehalt": "Marshall-Stabilität vs. Bitumengehalt",
+    "schematischeDarstellungAsphaltzusammense": "Schematische Darstellung: Asphaltzusammensetzung",
+    "asphaltIstEin3": "Asphalt ist ein 3-Phasen-System: Gesteinskörnung (Stützgerüst), Bitumen (Bindemittel) und luftgefüllte Hohlräume. Das Verhältnis dieser Phasen bestimmt maßgeblich die Eigenschaften (z.B. Marshall-Stabilität).",
+    "asphaltartenAsphaltmischgüterImStraßenba": "**Asphaltarten (Asphaltmischgüter):** Im Straßenbau werden verschiedene Asphalte für unterschiedliche Schichten und Belastungen eingesetzt. Sie unterscheiden sich primär durch die Gesteinskörnungskurve, den Bindemittelgehalt und den Hohlraumgehalt. Typische Schichten eines Straßenoberbaus sind Tragschicht, Binderschicht und Deckschicht.",
+    "asphaltbetonAc": "Asphaltbeton (AC)",
+    "asphaltConcrete": "Asphalt Concrete",
+    "derStandardAsphaltEr": "Der Standard-Asphalt. Er hat eine stetige Sieblinie, d. h. alle Korngrößen sind vertreten. Das führt zu einem dichten Gefüge.",
+    "einsatzFürTragBinder": "**Einsatz:** Für Trag-, Binder- und Deckschichten bei normaler bis mittlerer Verkehrsbelastung. Einbau erfolgt durch Walzverdichtung.",
+    "splittmastixasphaltSma": "Splittmastixasphalt (SMA)",
+    "stoneMasticAsphalt": "Stone Mastic Asphalt",
+    "besitztEinGrobesHohlraumreiches": "Besitzt ein grobes, hohlraumreiches Splittgerüst (Ausfallkörnung), dessen Hohlräume fast vollständig mit einem stützenden Mörtel (Mastix: aus Bitumen, Gesteinsmehl und stabilisierenden Zusätzen wie Zellulosefasern) gefüllt sind.",
+    "einsatzDeckschichtenBeiHoher": "**Einsatz:** Deckschichten bei hoher bis sehr hoher Verkehrsbeanspruchung (z.B. Autobahnen). Sehr standfest und verformungsresistent (Spurrinnen).",
+    "gussasphaltMa": "Gussasphalt (MA)",
+    "masticAsphalt": "Mastic Asphalt",
+    "einHohlraumfreierUndWasserdichter": "Ein hohlraumfreier und wasserdichter Asphalt, der so viel Bitumen und Füller enthält, dass das Gemisch bei Verarbeitungstemperatur (ca. 210–230 °C, mit viskositätsveränderten Bindemitteln niedriger) gieß- und streichbar ist. Er wird nicht verdichtet (gewalzt), sondern nur glattgestrichen.",
+    "einsatzBrückenbelägeParkdecksHochbelaste": "**Einsatz:** Brückenbeläge, Parkdecks, hochbelastete innerstädtische Bereiche und als Estrich im Hochbau. Sehr langlebig.",
+    "offenporigerAsphaltOpa": "Offenporiger Asphalt (OPA)",
+    "einAsphaltMitSehr": "Ein Asphalt mit sehr hohem zusammenhängenden Hohlraumgehalt (über 20%). Das Splittgerüst wird oft durch polymermodifiziertes Bitumen verklebt. Das Wasser kann abfließen (Drainage) und Schallwellen werden absorbiert.",
+    "einsatzLärmminderungAufSchnell": "**Einsatz:** Lärmminderung auf schnell befahrenen Strecken (Autobahnen). Reduziert Reifengeräusche und Gischt, hat aber eine geringere Lebensdauer.",
+    "schichtaufbauKlassisch": "Schichtaufbau (Klassisch)",
+    "deckschichtZBSma": "Deckschicht (z.B. SMA oder AC D)",
+    "ca25Cm": "ca. 2-5 cm. Nimmt die direkten Verkehrslasten auf, sorgt für Griffigkeit und Lärmminderung.",
+    "binderschichtZBAc": "Binderschicht (z.B. AC B)",
+    "ca410Cm": "ca. 4-10 cm. Aufnahme und Verteilung der Scherkräfte, Ausgleich von Unebenheiten. In der Regel erst bei höheren Belastungsklassen vorhanden.",
+    "tragschichtZBAc": "Tragschicht (z.B. AC T)",
+    "ca820Cm": "ca. 8-20+ cm. Größte Dicke, verteilt die Lasten auf die ungebundenen Schichten (Frostschutzschicht).",
+    "materialUndProdukteigenschaftenAsphalt": "**Material- und Produkteigenschaften:** Asphalt ist ein viskoelastisches Material, dessen Eigenschaften stark von der Temperatur und der Belastungsdauer abhängen.",
+    "dasVerformungsverhaltenVonAsphalt": "Das Verformungsverhalten von Asphalt setzt sich aus elastischen (reversiblen) und viskosen (irreversiblen) Anteilen zusammen.",
+    "hoheTemperaturenLangeBelastung": "**Hohe Temperaturen / lange Belastung:** Viskoses Verhalten dominiert (Gefahr von Spurrinnen).",
+    "tiefeTemperaturenKurzeBelastung": "**Tiefe Temperaturen / kurze Belastung:** Elastisches Verhalten dominiert (Gefahr von Kälterissen).",
+    "unterWiederholterVerkehrsbelastungEntste": "Unter wiederholter Verkehrsbelastung entstehen Mikrorisse im Bitumen, die sich zu Makrorissen verbinden können (Ermüdungsrisse).",
+    "abhängigVomBindemittelgehaltUnd": "Abhängig vom Bindemittelgehalt und der Hohlraumstruktur.",
+    "polymermodifizierteBitumenPmbVerbessern": "Polymermodifizierte Bitumen (PmB) verbessern den Ermüdungswiderstand deutlich.",
+    "derWiderstandGegenBleibende": "Der Widerstand gegen bleibende Verformungen (Spurrinnenbildung) bei hohen sommerlichen Temperaturen.",
+    "wirdDurchEineStandfeste": "Wird durch eine standfeste Gesteinsstruktur (Korngerüst) erreicht.",
+    "harteBitumensortenOderPmb": "Harte Bitumensorten oder PmB erhöhen den Verformungswiderstand.",
+    "griffigkeitLärmminderung": "Griffigkeit & Lärmminderung",
+    "oberflächeneigenschaftenDerDeckschichtDi": "Oberflächeneigenschaften der Deckschicht, die für die Verkehrssicherheit und den Lärmschutz entscheidend sind.",
+    "griffigkeitHängtVonDer": "**Griffigkeit:** Hängt von der Rauheit der Gesteinskörnung ab (Polierwiderstand).",
+    "lärmminderungOffenporigeAsphalteOpa": "**Lärmminderung:** Offenporige Asphalte (OPA) absorbieren Schall durch ihren hohen Hohlraumgehalt (ca. 20-25%).",
+    "nachhaltigerVerkehrswegebauNiedrigtemper": "Nachhaltiger Verkehrswegebau: Niedrigtemperaturasphalt (NTA)",
+    "niedrigtemperaturasphaltAuchTemperaturab": "Niedrigtemperaturasphalt (auch temperaturabgesenkter Asphalt, vgl. FGSV-Merkblatt M TA) wird mit einer um etwa 20–40 K abgesenkten Temperatur hergestellt und eingebaut. Das senkt Energiebedarf und CO₂-Emissionen und hilft, den Arbeitsplatzgrenzwert nach TRGS 900 (1,5 mg/m³ für Dämpfe und Aerosole aus Bitumen) einzuhalten.",
+    "arbeitsplatzgrenzwertAgw": "Arbeitsplatzgrenzwert (AGW)",
+    "t1ParameterSteuerung": " 1. Parameter-Steuerung",
+    "wählenSieVerfahrenUnd": "Wählen Sie Verfahren und Temperatur",
+    "absenkungsVerfahrenZusatzmittel": "Absenkungs-Verfahren / Zusatzmittel",
+    "aStandardHeißmix": "A. Standard Heißmix",
+    "ohneAdditive145180": "Ohne Additive (145-180°C)",
+    "bOrganischeWachse": "B. Organische Wachse ",
+    "fischerTropschMontan": "Fischer-Tropsch / Montan",
+    "cMineralischeZeolithe": "C. Mineralische Zeolithe",
+    "dSchaumbitumen": "D. Schaumbitumen",
+    "wasserinjektionImWerk": "Wasserinjektion im Werk",
+    "t110CNtaUntergrenze": "110°C: NTA-Untergrenze",
+    "t140CNtaObergrenze": "140°C: NTA-Obergrenze",
+    "t160CStandardHeißmix": "160°C: Standard Heißmix",
+    "ressourcenEinsparungPro1": " Ressourcen-Einsparung (pro 1.000 t Asphalt)",
+    "durchDieAbsenkungDer": "Durch die Absenkung der Massetemperatur und des Primärbitumeneinsatzes (via Recycling) werden folgende Umweltentlastungen simuliert:",
+    "coVermieden": "CO₂ vermieden",
+    "t2ModellauswertungLehrmodell": " 2. Modellauswertung (Lehrmodell)",
+    "vereinfachteModelleMitLehrannahmen": "Vereinfachte Modelle mit Lehrannahmen – zeigen Tendenzen, keine Mess- oder Planungswerte",
+    "viskositätDesBindemittelsRheologie": "Viskosität des Bindemittels (Rheologie)",
+    "aerosolDampfkonzentrationArbeitsplatzluf": "Aerosol- & Dampfkonzentration (Arbeitsplatzluft)",
+    "minimaleFreisetzung": "Minimale Freisetzung",
+    "agwLimit15": " AGW-Limit: 1,5 mg/m³",
+    "modellwertÜberAgwSchutzmaßnahmen": "Modellwert über AGW: Schutzmaßnahmen (z. B. Absaugung am Fertiger) erforderlich.",
+    "modellwertUnterAgwReale": "Modellwert unter AGW – reale Exposition nur durch Messung feststellbar.",
+    "standard880Kwh": "Standard: 88,0 kWh/t",
+    "wenigerEnergieModell": "% weniger Energie (Modell)",
+    "standard220Kg": "Standard: 22,0 kg/t",
+    "wenigerCoModell": "% weniger CO₂ (Modell)",
+    "berechnetesZeitfensterFürWalzverdichtung": "Berechnetes Zeitfenster für Walzverdichtung",
+    "dauerAbAbkippenAuf": "Dauer ab Abkippen auf dem Planum bis zum Erreichen der Grenztemperatur",
+    "verdichtungsfensterModell": "Verdichtungsfenster (Modell)",
+    "systemanalyseVertiefungswissen": " Systemanalyse & Vertiefungswissen",
+    "t1MischanlagentechnikHerstellungIm": "1. Mischanlagentechnik & Herstellung im Werk",
+    "werksprozessDosierung": "Werksprozess & Dosierung",
+    "dieAbsenkungDerMassetemperatur": "Die Absenkung der Massetemperatur im Asphaltmischwerk erfordert verfahrenstechnische Anpassungen, da die Gesteinskörnungen im konventionellen Prozess als Hauptwärmeträger dienen (Erhitzung auf ca. 170–190 °C).",
+    "brennersteuerungTrockentrommelDaDie": "**Brennersteuerung & Trockentrommel:** Da die Trommeltemperatur reduziert wird, besteht die Gefahr, dass die unvollständige Verbrennung von Schwer- oder Leichtölen zu Rußbildung und Rückständen führt. Der Brenner muss auf den geringeren Wärmebedarf eingestellt werden.",
+    "wachseZBSasobit": "*Wachse (z.B. Sasobit):* Werden gravimetrisch als Granulat direkt in den Heißmischbehälter dosiert, schmelzen augenblicklich im Heißbitumen und verteilen sich hocheffizient.",
+    "eindüsungVonSchaumbitumenWasser": "*Eindüsung von Schaumbitumen:* Wasser wird dosiert mit Druckluft (5–8 bar) über Spezial-Injektordüsen in den strömenden Heißbitumenstrom eingespritzt (0,5–2.0 Gew.-% Wasseranteil). Dies führt zu schlagartiger Expansion (Faktor 15–20) und erzeugt hochporösen Feinschaum.",
+    "dosierungVonAdditiven": "**Dosierung von Additiven:**",
+    "kreislaufmaterialAsphaltgranulatZugabeBe": "**Kreislaufmaterial (Asphaltgranulat-Zugabe):** Bei hohen RC-Zugabequoten (z.B. 40–60 %) verhindert die Temperaturabsenkung im Werk eine schädliche Überhitzung (Verkrustung) und thermische Alterung (Verschiebung des Asphalten-Malten-Verhältnisses) des Altbitumens, wodurch die Dehnungsfähigkeit im eingebauten Zustand geschont wird.",
+    "t2EinbauverfahrenWalzverdichtung": "2. Einbauverfahren & Walzverdichtung",
+    "baustellenpraxisKinetik": "Baustellenpraxis & Kinetik",
+    "aufDerBaustelleVerhält": "Auf der Baustelle verhält sich temperaturabgesenkter Asphalt rheologisch anders. Durch die verminderte Ausgangswärme ist das Risiko von Temperatur-Entmischungen (Cold Spots) während des Transports erhöht.",
+    "transportlogistikThermomuldenUndAbdeckpl": "**Transportlogistik:** Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben: thermoisolierte Transportmulden mit Abdeckung nach ARS 13/2025; seit ARS 08/2026 in ZTV Asphalt-StB 26 Teil 1 geregelt).",
+    "kritischesVerdichtungszeitfensterWachsmo": "**Kritisches Verdichtungszeitfenster:** Wachsmodifizierte Bindemittel besitzen einen scharf abgegrenzten Erstarrungspunkt. Oberhalb dieses Punktes (ca. 100 °C) ist der Verdichtungswiderstand gering. Fällt die Temperatur darunter, steigt der Verdichtungswiderstand deutlich an; weiteres Walzen bringt kaum Verdichtung und kann das Gefüge schädigen.",
+    "walzenstrategieDerSchwerpunktDer": "**Walzenstrategie:** Der Schwerpunkt der Verdichtung (Vorwalzen) muss unmittelbar hinter dem Fertigerbohlen-Austritt erfolgen (statisch schwere Glattradwalzen). Vibrationswalzen sollten ausschließlich im Heißbereich eingesetzt werden, um Kornzertrümmerungen auszuschließen.",
+    "t3ArbeitsschutzGesundheitMak": "3. Arbeitsschutz, Gesundheit & MAK/AGW Gesetzgebung",
+    "trgs900GrenzwertToxikologie": "TRGS 900 Grenzwert & Toxikologie",
+    "bitumenSetztBeiErhitzung": "Bitumen setzt bei Erhitzung über 150 °C an der Baustelle Aerosole und Dämpfe frei, die kondensierbare polyzyklische aromatische Kohlenwasserstoffe (PAK) und flüchtige organische Verbindungen (VOC) enthalten.",
+    "derNeueAgwWert": "**Der neue AGW-Wert (Arbeitsplatzgrenzwert):** Gemäß TRGS 900 (Technische Regeln für Gefahrstoffe) gilt ein Arbeitsplatzgrenzwert von **1,5 mg/m³** für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung; die Übergangsfrist für den Straßenbau endete Ende 2024. Bei konventionellen Einbautemperaturen ist der Wert ohne Maßnahmen schwer einzuhalten (vgl. Branchenlösung Walzasphalt der BG BAU).",
+    "exponentielleAbsenkungDieDampf": "**Exponentielle Absenkung:** Die Dampf- und Aerosolfreisetzung von Bitumen unterliegt einer thermodynamischen Arrhenius-Abhängigkeit. Eine Absenkung der Mischguttemperatur um 20–30 K verringert die Emissionen deutlich (Richtwert aus der Literatur: mehr als die Hälfte).",
+    "arbeitsplatzvorteileGeringereHitzeUnd": "**Arbeitsplatzvorteile:** Geringere Hitze- und Dampfbelastung für die Einbaukolonne; weniger Dampfschwaden verbessern die Sicht am Fertiger.",
+    "t4TechnischeHerausforderungenSchadensbild": "4. Technische Herausforderungen & Schadensbilder",
+    "schadensbilderRisikominderung": "Schadensbilder & Risikominderung",
+    "trotzAllerÖkologischenUnd": "Trotz aller ökologischen und gesundheitlichen Vorzüge hat LTA technologische Hürden, die bei falschem Anlagendesign zu Frühschäden führen können:",
+    "restfeuchteUndStrippingHaftungsverlust": "**Restfeuchte und Stripping (Haftungsverlust):** Da die Gesteinskörnung im Trockner nur auf ca. 120–130 °C erhitzt wird, verdampft das in den Gesteinsporen tief sitzende Haftwasser möglicherweise nicht vollständig. Aufsteigender Restwasserdampf kondensiert im heißen Bitumenfilm und stört die Adhäsion zwischen Bitumen und Gestein (Stripping-Anfälligkeit). Mögliche Folge sind Kornausbrüche nach Frost-Tau-Wechseln; Abhilfe schaffen gute Trocknung und Haftvermittler.",
+    "verzögerteAnfangsstärkeRuttingGefahr": "**Verzögerte Anfangsstärke (Rutting-Gefahr):** Verkehrsfreigabe: Auch LTA darf erst nach ausreichender Abkühlung des Belags freigegeben werden. Wachsmodifizierte Bindemittel erstarren bereits bei ca. 90–105 °C und erhöhen danach den Verformungswiderstand; bei chemischen Additiven und Schaumbitumen ist das Verformungsverhalten dagegen mit dem von Standardasphalt vergleichbar. Bei zu früher Verkehrsfreigabe drohen Spurrinnen.",
+    "zusatzkostenAmortisationAdditiveVerteuer": "**Zusatzkosten & Amortisation:** Additive verteuern das Mischgut (marktabhängig, wenige Euro je Tonne). Dem steht die Brennstoffeinsparung im Mischwerk gegenüber. Treiber sind der Arbeitsplatzgrenzwert für Dämpfe und Aerosole aus Bitumen (1,5 mg/m³, TRGS 900) sowie Vorgaben öffentlicher Auftraggeber nach M TA.",
+    "vergleichStandardUndTemperaturabgesenkte": " Vergleich Standard- und temperaturabgesenkter Asphalt (Richtwerte; maßgebend ZTV Asphalt-StB / M TA)",
+    "standardAsphaltAcDeck": "Standard Asphalt (AC Deck)",
+    "niedrigtemperaturasphaltNta": "Niedrigtemperaturasphalt (NTA)",
+    "verfahrenstechnischerVorteil": "Verfahrenstechnischer Vorteil",
+    "t160CBis180": "160 °C bis 180 °C",
+    "t115CBis135": "115 °C bis 135 °C",
+    "sparsamererBrennerbetriebVerringertesTre": "Sparsamerer Brennerbetrieb, verringertes Treibhauspotenzial",
+    "viskositätBeiEinbau": "Viskosität bei Einbau",
+    "t0408": "0,4 – 0,8 Pa·s (Lehrwert)",
+    "vergleichbarDurchAdditiveLehrwert": "vergleichbar durch Additive (Lehrwert)",
+    "gleichwertigeVerarbeitbarkeitTrotzVerrin": "Gleichwertige Verarbeitbarkeit trotz verringerter Hitze",
+    "mindestLufttemperaturBeimEinbau": "Mindest-Lufttemperatur beim Einbau",
+    "deckschicht3Cm5": "Deckschicht ≥ 3 cm: +5 °C, < 3 cm: +10 °C; Binder- und Tragdeckschicht: 0 °C; Tragschicht: −3 °C (ZTV Asphalt-StB 07/13, Tab. 6)",
+    "eherHöherWählenSchnellere": "eher höher wählen – schnellere Auskühlung (DAV: volles Absenkpotenzial erst ab ca. 20 °C Lufttemperatur und trockener Unterlage)",
+    "ltaIstWindUnd": "LTA ist wind- und kälteempfindlicher während des Einbaus",
+    "haftverhaltenZumGestein": "Haftverhalten zum Gestein",
+    "gutGesteinVollständigGetrocknet": "Gut (Gestein vollständig getrocknet)",
+    "adhäsionsrisikenDurchRestfeuchte": "Adhäsionsrisiken durch Restfeuchte",
+    "haftmittelSpezialSilaneAmine": "Haftmittel (Spezial-Silane/Amine) mindern Ablösungen ab",
+    "bitumenalterungOxidation": "Bitumenalterung (Oxidation)",
+    "hochStarkeKurzzeitAlterung": "Hoch (starke Kurzzeit-Alterung)",
+    "geringerWenigerKurzzeitalterung": "Geringer (weniger Kurzzeitalterung)",
+    "günstigFürErmüdungsUnd": "Günstig für Ermüdungs- und Kälteverhalten"
+  },
+  "werte": {
+    "marshallStabilitätKnLehrmodell": "Marshall-Stabilität [kN] (Lehrmodell)",
+    "aktuellerWert": "Aktueller Wert",
+    "bitumengehaltM": "Bitumengehalt [M.-%]",
+    "marshallStabilitätKn": "Marshall-Stabilität [kN]",
+    "massenanteilDesBitumensIm": "Massenanteil des Bitumens im Asphaltgemisch.",
+    "dichteGestein": "Dichte Gestein",
+    "rohdichteDerVerwendetenGesteinskörnung": "Rohdichte der verwendeten Gesteinskörnung.",
+    "dichteBitumen": "Dichte Bitumen",
+    "anwendungsbeispielRaumdichteAusZusammens": "Anwendungsbeispiel: Raumdichte aus Zusammensetzung und Hohlraumgehalt",
+    "vglDinEn12697": "vgl. DIN EN 12697-5/-8 (Lehrbeispiel mit den Voreinstellungen)",
+    "b238G": "ρ_b ≈ 2,38 g/cm³ – entspricht dem Wert des Rechners bei den Voreinstellungen.",
+    "optimalVerarbeitbar": "Optimal verarbeitbar",
+    "viskositätImIdealenBereich": "Viskosität im idealen Bereich (0,2–1,8 Pa·s). Standard-Baurichtlinien für Walzverdichtung problemlos einhaltbar.",
+    "ungenügendKritischerGrenzstopp": "Ungenügend / Kritischer Grenzstopp",
+    "bindemittelIstVielZu": "Bindemittel ist viel zu zäh (> 4,5 Pa·s). Rascher Temperatursturz, mangelhafter Schichtenverbund, hohes Risiko von Frostschäden und Hohlstellen.",
+    "erschwertVerdichtbarGrenzbereich": "Erschwert verdichtbar (Grenzbereich)",
+    "erhöhterScherwiderstandErfordertSofortig": "Erhöhter Scherwiderstand. Erfordert sofortigen Einsatz schwerer Walzen (statisch prallebend), dichte Abschnitte oder angepasste Einbaugeschwindigkeiten.",
+    "verarbeitungstemperaturC": "Verarbeitungstemperatur (°C)",
+    "dieIstMischguttemperaturBeim": "Die Ist-Mischguttemperatur beim Austritt aus der Mischtrommel bzw. beim Beginn des Walzens auf der Baustelle.",
+    "asphaltgranulatAnteilRc": "Asphaltgranulat-Anteil (RC)",
+    "prozentualerGewichtsanteilVonRecyceltem": "Prozentualer Gewichtsanteil von recyceltem Fräsasphalt im Kreislaufmischgut. Höhere Anteile erfordern materialspezifische Vorheizung zur Vermeidung von Bindemittelalterung.",
+    "hoherRecyclinganteilDieNiedrigere": "Hoher Recyclinganteil: Die niedrigere Temperatur verringert die weitere Alterung des Altbitumens.",
+    "mittelgroßerRecyclinganteilImRegelkreis": "Mittelgroßer Recyclinganteil im Regelkreis.",
+    "niedrigviskos02Pa": "Niedrigviskos (> 0,2 Pa.s)",
+    "idealbereich021": "Idealbereich (0,2–1,8 Pa.s)",
+    "erschwertVerdichtbar18": "Erschwert verdichtbar (1,8–4,5 Pa.s)",
+    "verarbeitbarkeitBlockiert45": "Verarbeitbarkeit blockiert (> 4,5 Pa.s)"
+  },
+  "daten": {
+    "Asphalt.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "B = 5{,}0\\,\\text{M.-\\%},\\; V_m = 3{,}0\\,\\text{Vol.-\\%},\\; \\rho_G = 2{,}65,\\; \\rho_B = 1{,}03\\,\\text{g/cm}^3",
+        "erklaerung": "Bezug: 100 g Mischgut."
+      },
+      {
+        "titel": "2. Feststoffvolumen",
+        "formel": "V = 95/2{,}65 + 5/1{,}03 = 35{,}85 + 4{,}85 = 40{,}70\\,\\text{cm}^3",
+        "erklaerung": "Gestein und Bitumen ohne Hohlräume."
+      },
+      {
+        "titel": "3. Rohdichte",
+        "formel": "\\rho_m = 100 / 40{,}70 = 2{,}457\\,\\text{g/cm}^3",
+        "erklaerung": "Dichte des hohlraumfreien Mischguts."
+      },
+      {
+        "titel": "4. Raumdichte",
+        "formel": "\\rho_b = 2{,}457 \\cdot (1 - 0{,}03) = 2{,}383\\,\\text{g/cm}^3",
+        "erklaerung": "Mit 3 Vol.-% Hohlraum."
+      }
+    ],
+    "Asphalt.literatur": [
+      "Mentlein, H.; Lorenzl, H.: Straßenbau, Straßenbautechnik. 8., aktual. Aufl., Köln: Reguvis 2021",
+      "Hutschenreuther, J.; Wörner, T.: Asphalt im Straßenbau. Bonn: Kirschbaum 2017",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Asphalt.regelwerke": [
+      {
+        "title": "ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)"
+      },
+      {
+        "title": "DIN EN 12591:2009-08 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen)"
+      },
+      {
+        "title": "DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)"
+      },
+      {
+        "title": "DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)"
+      },
+      {
+        "title": "DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)"
+      },
+      {
+        "title": "RStO 12/24 (FGSV: Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "FGSV: Merkblatt für Temperaturabsenkung von Asphalt (M TA), FGSV 766, Ausgabe 2021"
+      },
+      {
+        "title": "TRGS 900 (Arbeitsplatzgrenzwerte; AGW Dämpfe und Aerosole aus Bitumen 1,5 mg/m³)"
+      }
+    ],
+    "Asphalt.formeln": [
+      {
+        "formel": "V_m = \\frac{\\rho_m - \\rho_b}{\\rho_m} \\cdot 100\\,\\%",
+        "erklaerung": "Hohlraumgehalt des Asphaltprobekörpers in Vol.-%: \\rho_m = Rohdichte des Mischguts (hohlraumfrei, DIN EN 12697-5), \\rho_b = Raumdichte des verdichteten Probekörpers (DIN EN 12697-6).",
+        "quelle": "DIN EN 12697-8:2019-04"
+      },
+      {
+        "formel": "MQ = \\frac{S}{F}",
+        "erklaerung": "Marshall-Quotient in kN/mm. Quotient aus der maximalen Marshall-Stabilität S (Bruchlast bei 60°C Warmwasserlagerung) und dem zugehörigen Fließweg F. Ist ein Indikator für den Verformungswiderstand des Asphalts unter Reifenlasten.",
+        "quelle": "DIN EN 12697-34:2020-07"
+      },
+      {
+        "formel": "VFB = \\frac{V_B}{V_B + V_{\\text{void}}} \\cdot 100\\%",
+        "erklaerung": "Hohlraumfüllungsgrad (VFB - Voids Filled with Binder) in Prozent. Gibt das prozentuale Verhältnis des Bindemittelvolumens V_B zum Gesamtporenvolumen des Mineralstoffgerüsts an und beschreibt die Dauerhaftigkeit und Flexibilität.",
+        "quelle": "DIN EN 12697-8"
+      }
+    ]
+  }
+}
