@@ -181,6 +181,8 @@ const OnlineTools = React.lazy(() => import('../modules/OnlineTools'));
 const Formaenderungen = React.lazy(() => import('../modules/Formaenderungen'));
 const DaemmungVergleich = React.lazy(() => import('../modules/DaemmungVergleich'));
 const InnovativeWerkstoffe = React.lazy(() => import('../modules/InnovativeWerkstoffe'));
+const Biokohlebeton = React.lazy(() => import('../modules/Biokohlebeton'));
+const Schnellkarbonatisierung = React.lazy(() => import('../modules/Schnellkarbonatisierung'));
 const Praxiswissen = React.lazy(() => import('../modules/Praxiswissen'));
 const Bautagebuch = React.lazy(() => import('../modules/Bautagebuch'));
 const WeiterTHA = React.lazy(() => import('../modules/WeiterTHA'));
@@ -285,10 +287,12 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
     {activeTab === 'sonderbetone' && <Sonderbetone />}
     {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
+    {activeTab === 'biokohlebeton' && <Biokohlebeton />}
     {activeTab === 'qualitaetssicherung' && <Qualitaetssicherung />}
     {activeTab === 'betonpraxis' && <Betonpraxis />}
     {activeTab === 'expositionsklassen' && <Expositionsklassen />}
     {activeTab === 'korrosion' && <Korrosion />}
+    {activeTab === 'schnellkarbonatisierung' && <Schnellkarbonatisierung />}
     {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
     {activeTab === 'zwang' && <ZwangCalculator />}
     {activeTab === 'eigenspannungen' && <Eigenspannungen />}
