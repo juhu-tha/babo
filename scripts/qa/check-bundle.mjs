@@ -18,9 +18,10 @@ const KB = 1024;
 // AP 5.4 je Modul (≤ 5 kB) bzw. in 4 Teilpaketen (≤ 100 kB) geladen (Vite-Plugin scripts/quizPool.ts).
 // AP 5.5: Einstieg (Chunk „app“) 138,7 kB; Modulkopf-Daten je Modul (virtual:modul-kopf), KaTeX (77 kB) und
 // Chart.js (70 kB) nur bei Bedarf, gemeinsame Modulbausteine in „modul-basis“ (~38 kB), Icons in „icons“ (~14 kB).
-// AP 5.5 Nachtrag: Einstieg 139,9 → 102,9 kB – Registry nur als Auszug (scripts/registryKern.ts), Meta-Beschreibungen,
-// Suchbegriffe und englische Übersetzungen bei Bedarf.
-const GRENZE_EINSTIEG = 104;
+// AP 5.5 Nachtrag: Einstieg 135,8 → 103,2 kB (Stand main nach #138) – Registry nur als Auszug
+// (scripts/registryKern.ts), Meta-Beschreibungen und Suchbegriffe bei Bedarf. Grenze mit ~5 kB Puffer für
+// anstehende Registry-Einträge (je Modul ≈ 20 Byte gzip im Auszug).
+const GRENZE_EINSTIEG = 108;
 const GRENZE_CHUNK = 300;
 // Ausnahmen mit eigener Ratsche (Basisname des Chunks → kB); derzeit keine.
 const AUSNAHMEN = {};
