@@ -1,0 +1,425 @@
+export interface BinderType {
+  name: string;
+  category: string;
+  advantages: string[];
+  disadvantages: string[];
+  sdValue: string; // Wasserdampfdurchlässigkeit (sd-Wert)
+  typicalUse: string;
+  pufCode?: string; // GISCODE
+}
+
+export const BINDERS: BinderType[] = [
+  {
+    name: 'Dispersionsfarbe (Kunststoffdispersion)',
+    category: 'Wassermischbar / Physikalisch trocknend',
+    advantages: [
+      'Sehr leicht zu verarbeiten',
+      'Schnelltrocknend und geruchsarm',
+      'In fast allen Farbtönen mischbar',
+      'Gute Reinigungseigenschaften'
+    ],
+    disadvantages: [
+      'Bildet oft dampfdichten Kunststofffilm (höherer sd-Wert)',
+      'Kann Konservierungsstoffe enthalten (Allergiepotenzial)',
+      'Nicht rein mineralisch'
+    ],
+    sdValue: 'Mittel bis hoch (ca. 0,1 - 0,5 m)',
+    typicalUse: 'Standard-Wandfarbe im Innenbereich, Gipsfaserplatten, Raufasertapeten.',
+    pufCode: 'BSW10 (Konservierungsmittelfrei)'
+  },
+  {
+    name: 'Silikatfarbe (Reine Silikatfarbe / Dispersions-Silikat)',
+    category: 'Mineralisch / Chemisch härtend (Verkieselung)',
+    advantages: [
+      'Extrem diffusionsoffen (atmungsaktiv)',
+      'Verkieselt unlösbar mit mineralischem Untergrund (kein Abblättern)',
+      'Natürlich schimmelpilzhemmend durch hohe Alkalität (pH ~ 11)',
+      'Frei von Konservierungsstoffen und Weichmachern'
+    ],
+    disadvantages: [
+      'Erfordert mineralischen Untergrund (nicht auf Gips oder Altkunststoff)',
+      'Ätzend bei ungeschütztem Haut-/Augenkontakt während der Verarbeitung',
+      'Begrenzte Farbtonvielfalt'
+    ],
+    sdValue: 'Sehr gering (sd < 0,01 m - exzellent)',
+    typicalUse: 'Kalk- oder Zementputze, historische Fassaden, feuchtebelastete Innenräume mit Schimmelrisiko.',
+    pufCode: 'BSW40 (Silikatfarben)'
+  },
+  {
+    name: 'Kalkfarbe (Sumpfkalkfarbe)',
+    category: 'Mineralisch / Karbonatisierung (Lufthärtend)',
+    advantages: [
+      'Höchste biologische Verträglichkeit',
+      'Sehr hoch schimmelhemmend (hygienisierend, pH ~ 12)',
+      'Hervorragend feuchtigkeitsregulierend',
+      'Vollkommen frei von synthetischen Stoffen'
+    ],
+    disadvantages: [
+      'Geringe Abriebfestigkeit (kreidet leicht beim Wischen)',
+      'Deckt oft erst nach 2–3 Anstrichen vollständig',
+      'Nur auf saugfähigen rein mineralischen Untergründen einsetzbar'
+    ],
+    sdValue: 'Extrem gering (sd < 0,01 m - hervorragend)',
+    typicalUse: 'Ökologischer Lehm- oder Kalkputz, Denkmalschutz, Kellerbereiche.',
+    pufCode: 'BSW60 (Kalkfarben)'
+  },
+  {
+    name: 'Acryllack (Alkyd-Acryl / Dispersion)',
+    category: 'Wassermischbar / Physikalisch & chemisch antrocknend',
+    advantages: [
+      'Geringe VOC-Emissionen (wasserbasiert)',
+      'Sehr gute UV- und Vergilbungsbeständigkeit',
+      'Dauerelastisch, reißt seltener',
+      'Werkzeugreinigung unkompliziert mit Wasser'
+    ],
+    disadvantages: [
+      'Etwas geringerer Verlauf ("Pinselstriche sichtbar") als Kunstharz',
+      'Geringere Anfangshärte als Alkydharzlacke'
+    ],
+    sdValue: 'Hoch (Sperrschicht)',
+    typicalUse: 'Holzbauteile im Innen- und Außenbereich (Fenster, Türen), Kinderspielzeug, Heizkörper.',
+    pufCode: 'BSW20 (Wasserlacke)'
+  },
+  {
+    name: 'Alkydharzlack (Kunstharzlack)',
+    category: 'Lösemittelbasiert / Oxidativ trocknend',
+    advantages: [
+      'Hervorragender, glatter Oberflächenverlauf',
+      'Sehr hohe mechanische Belastbarkeit & Abriebfestigkeit',
+      'Ausgezeichneter Feuchtigkeitsschutz'
+    ],
+    disadvantages: [
+      'Hoher Lösemittelgehalt (VOC)',
+      'Geruchsbelästigung beim Trocknen (Trocknungsdauer 12-24h)',
+      'Neigt bei UV-Mangel im Innenbereich zur Vergilbung'
+    ],
+    sdValue: 'Sehr hoch (Dampfsperrend)',
+    typicalUse: 'Metallbeschichtungen, stark beanspruchter Holzschutz im Außenbereich, Maschinenbau.',
+    pufCode: 'BSL20 (Lösemittellacke)'
+  },
+  {
+    name: 'Epoxidharzlack (2-Komponenten-EP)',
+    category: 'Reaktionsharz / Chemisch vernetzend',
+    advantages: [
+      'Extreme Verschleiß- und Stoßfestigkeit',
+      'Hervorragende Chemikalien- und Ölbeständigkeit',
+      'Flüssigkeitsdicht und nahtlos aufzutragen'
+    ],
+    disadvantages: [
+      'Muss exakt im Mischungsverhältnis (A+B) angerührt werden',
+      'Kurze Verarbeitungszeit (Topfzeit, meist 30-90 min)',
+      'Neigt unter starker UV-Strahlung im Außenbereich zum Kreiden'
+    ],
+    sdValue: 'Absolut dampfdicht',
+    typicalUse: 'Industrieböden, Garagenbeschichtungen, Tankinnenwände, hochbeanspruchte Schutzanstriche.',
+    pufCode: 'RE30 (Epoxidharzprodukte, lösungsmittelfrei)'
+  }
+];
+
+export interface OSSystem {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  flexible: boolean;
+  thickness: string;
+  bridging: string;
+  trafficable: boolean;
+  layers: string[];
+  mainBinders: string;
+  consumption: string;
+}
+
+export const OS_SYSTEMS: OSSystem[] = [
+  {
+    id: 'os1',
+    name: 'OS 1',
+    title: 'Hydrophobierung',
+    description: 'Wasserabweisende Imprägnierung der Betonoberfläche ohne Filmbildung. Die Kapillarporen werden chemisch ausgekleidet, bleiben aber offen für Wasserdampf-Diffusion.',
+    flexible: false,
+    thickness: 'Eindringtiefe meist > 1 mm (keine Schichtdicke)',
+    bridging: 'Keine Rissüberbrückung',
+    trafficable: false,
+    mainBinders: 'Silane, Siloxane (lösemittelbasiert oder wässrig/cremeförmig)',
+    consumption: '0,15 - 0,40 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Sandelstrahlen, HDW-Strahlen)',
+      '1 bis 2 flutende, herstellerneutrale Applikationen mit Silan/Siloxan-Wirkstoff'
+    ]
+  },
+  {
+    id: 'os2',
+    name: 'OS 2',
+    title: 'Dünne Beschichtung / Imprägnierung (nicht begeh- und befahrbar)',
+    description: 'Dünner, porenfüllender Schutz für nicht begeh- und befahrbare Flächen; verringert die kapillare Wasseraufnahme. Systemaufbau nach TR Instandhaltung (OS 2 = OS B): ggf. Hydrophobierung, ggf. Grundierung, mindestens zwei Oberflächenschutzschichten ohne Kratz- und Ausgleichsspachtelung; Schichtdicke und Bindemittel hier als Herstellerangaben.',
+    flexible: false,
+    thickness: '10 - 50 µm Schichtstärke',
+    bridging: 'Keine Rissüberbrückung',
+    trafficable: false,
+    mainBinders: 'Polymerdispersionen bzw. Acrylat-Mischpolymere (herstellerabhängig)',
+    consumption: '0,10 - 0,25 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Feinstrahlen)',
+      'Ggf. Hydrophobierung bzw. Grundierung',
+      'Mindestens zwei Oberflächenschutzschichten (ohne Kratz- und Ausgleichsspachtelung)'
+    ]
+  },
+  {
+    id: 'os4',
+    name: 'OS 4',
+    title: 'Beschichtung für vertikale Betonflächen',
+    description: 'Standardbeschichtung für vertikale Betonbauteile wie Brückenpfeiler, Tunnelwände, Stützmauern und Fassaden. Wirkt als CO₂-Bremse und verlangsamt die Karbonatisierung, bleibt aber diffusionsoffen für Wasserdampf.',
+    flexible: false,
+    thickness: 'Mindesttrockenschichtdicke ≥ 80 µm',
+    bridging: 'Keine Rissüberbrückung (starr)',
+    trafficable: false,
+    mainBinders: 'Acrylat-Mischpolymere, Polymerdispersionen (wasserbasiert)',
+    consumption: '0,35 - 0,50 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Schnitt / Porenschluss)',
+      'Feinspachtelung (Porenfüller) mit PCC-Mörtel oder Epoxid-Zement-Spachtel',
+      'Grundierung (Haftbrücke, meist verdünntes Systemmaterial)',
+      '1. und 2. Deckbeschichtung mit elastischem Reinacrylat'
+    ]
+  },
+  {
+    id: 'os5a',
+    name: 'OS 5a',
+    title: 'Beschichtung mit geringer Rissüberbrückung',
+    description: 'Beschichtung mit geringer Rissüberbrückungsfähigkeit für nicht begeh- und befahrbare Flächen. OS 5a (OS DII) basiert auf Polymerdispersion, OS 5b (OS DI) auf einem Polymer/Zement-Gemisch mit hoher Schichtdicke; Rissüberbrückung nach DIN EN 1062-7, Verfahren B, Klasse B2 bei –20 °C.',
+    flexible: true,
+    thickness: 'Trockenschichtdicke ≥ 150 µm',
+    bridging: 'Geringe Rissüberbrückung (DIN EN 1062-7, Klasse B2 bei –20 °C)',
+    trafficable: false,
+    mainBinders: 'Modifizierte Acrylat-Kopolymer-Dispersionen',
+    consumption: '0,50 - 0,80 kg/m²',
+    layers: [
+      'Untergrundvorbereitung & Egalisierungsspachtel',
+      'Systemgrundierung',
+      '2-facher, satter Schichtaufbau mit elastischem Acrylat-Überzug'
+    ]
+  },
+  {
+    id: 'os5b',
+    name: 'OS 5b',
+    title: 'Beschichtung mit geringer Rissüberbrückung (Polymer/Zement)',
+    description: 'Wie OS 5a für nicht begeh- und befahrbare Flächen, jedoch als Polymer/Zement-Gemisch mit hoher Schichtdicke; Rissüberbrückung nach DIN EN 1062-7 Klasse B2 bei –20 °C.',
+    flexible: true,
+    thickness: 'ca. 2 mm (herstellerabhängig)',
+    bridging: 'Geringe Rissüberbrückung (DIN EN 1062-7, Klasse B2 bei –20 °C)',
+    trafficable: false,
+    mainBinders: 'Polymer/Zement-Gemisch (kunststoffmodifizierte mineralische Schlämme)',
+    consumption: 'ca. 3 - 4 kg/m² (bei ca. 2 mm Schichtdicke, herstellerabhängig)',
+    layers: [
+      'Untergrundprüfung & Vornässen bzw. Grundierung nach Herstellerangabe',
+      '1. Lage Polymer/Zement-Beschichtung (Schlämme)',
+      '2. Lage Polymer/Zement-Beschichtung bis zur Gesamtschichtdicke'
+    ]
+  },
+  {
+    id: 'os8',
+    name: 'OS 8',
+    title: 'Starr befahrbares Parkhaussystem',
+    description: 'Starres System für mechanisch stark beanspruchte Verkehrsflächen ohne Rissüberbrückung. Optimal für Tiefgaragen-Bodenplatten, geschützte Zwischendecks, Rampen und Spindeln sowie Industrie- und Werkstattböden. Sehr verschleißfest, raue Oberfläche für hohen Rutschwiderstand (R11/R12).',
+    flexible: false,
+    thickness: 'Ca. 1,5 - 3,0 mm Systemdicke',
+    bridging: 'Keine Rissüberbrückung (starr)',
+    trafficable: true,
+    mainBinders: '2K-Epoxidharz (EP), lösungsmittelfrei',
+    consumption: 'Primer: 0,4 kg/m² | Basisschicht: 1,6 kg/m² | Quarzsand (0,4-0,8mm): 4,0 kg/m² | Kopfversiegelung: 0,7 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Kugelstrahlen verpflichtend, Haftzugfestigkeit ≥ 1,5 N/mm²)',
+      'Porenfüllende Grundierung mit lösungsmittelfreiem 2K-Epoxidharz (EP)',
+      'Ausgleichs- und Kratzspachtelung (Reaktionsharzmischung)',
+      'Einstreuschicht aus Epoxidharz, im Überschuss mit Quarzsand (0,4-0,8 mm) abgestreut',
+      'Fegen und Absaugen des ungebundenen Überschuss-Sandes',
+      'Pigmentierte Kopfversiegelung mit Epoxidharz zur Festlegung des Sands'
+    ]
+  },
+  {
+    id: 'os11a',
+    name: 'OS 11a',
+    title: 'Hochelastisches, befahrbares System (2-schichtig)',
+    description: 'Elastisches Beschichtungssystem mit erhöhter dynamischer Rissüberbrückung für freibewitterte Parkdeck-Flächen (Oberdecks, Brückenkappen, Parkdächer im Freien) mit thermischen Dehnungen und aktiven Rissbewegungen. Verwendet getrennte Dichtungsmembranen und Verschleißschichten.',
+    flexible: true,
+    thickness: 'Systemstärke ≥ 4,5 mm',
+    bridging: 'Erhöhte dynamische Rissüberbrückung (Klasse B3.2 bei −20 °C)',
+    trafficable: true,
+    mainBinders: '2K-Polyurethan (PU) oder PU-Polyurea-Hybride',
+    consumption: 'Grundierung: 0,4 kg/m² | Dichtungsschicht (Membran): 2,0 kg/m² | Verschleißschicht: 1,6 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Kugelstrahlen, Haftzugfestigkeit ≥ 1,5 N/mm²)',
+      'Systemgrundierung mit EP-Harz, leicht abgesandet',
+      'Hochelastische 2K-Polyurethan-Dichtungsschicht (Membran) unbesandet',
+      'Abplatzungssichere Verschleißschicht aus zähelastischem 2K-PU, im Überschuss mit Quarzsand (0,4-0,8 mm) abgestreut',
+      'Absaugen des losen Sandes',
+      'UV- und tausalzbeständige PU-Kopfversiegelung'
+    ]
+  },
+  {
+    id: 'os11b',
+    name: 'OS 11b',
+    title: 'Elastisches, befahrbares System (1-schichtig/kombiniert)',
+    description: 'Günstigere Alternative zu OS 11a für Parkgaragen-Zwischendecks. Die elastische Dichtungsmembran und die mechanische Verschleißschicht sind in einer einzigen, elastischen Kombischicht vereint.',
+    flexible: true,
+    thickness: 'Systemstärke ≥ 3,5 mm',
+    bridging: 'Mäßige dynamische Rissüberbrückung (Klasse B3.1 bei -20 °C)',
+    trafficable: true,
+    mainBinders: 'Hochelastisch eingestelltes 2K-Polyurethan (PU)',
+    consumption: 'Grundierung: 0,4 kg/m² | Kombi-Verschleißschicht: 2,2 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²',
+    layers: [
+      'Untergrundvorbereitung (Kugelstrahlen)',
+      'EP-Grundierung mit Haftbrücke',
+      'Dicke Kombinationsschicht aus robustem PU-Verschleißharz, im Überschuss mit Quarzsand (0,4-0,8 mm) abgesandet',
+      'Fegen und gründliches Absaugen',
+      'Robuste PU-Kopfversiegelung'
+    ]
+  }
+];
+
+export interface ReactionMechanism {
+  name: string;
+  type: string;
+  reactants: string;
+  catalysts: string;
+  molecularReaction: string;
+  description: string;
+  processingRules: string[];
+  neutralProducts: { title: string; desc: string; norms: string }[];
+}
+
+export const REACTION_MECHANISMS: Record<string, ReactionMechanism> = {
+  oxidative: {
+    name: 'Oxidative Härtung (Autoxidation)',
+    type: 'Chemisch vernetzend (Sauerstoff-Reaktion)',
+    reactants: 'Ungesättigte Fettsäuren (Triglyceride mit Linol- / Linolensäureketten)',
+    catalysts: 'Sikkative (herstellerneutral: Cobalt-, Mangan-, Calcium-, Zirkonium-Octoate)',
+    molecularReaction: `R-CH=CH-CH2-CH=CH-R'  +  O2   --[Cobalt-Sikkativ]-->   R-CH=CH-CH(OOH)-CH=CH-R'  (Hydroperoxid)
+Zerfall: R-CH=CH-CH(O·)-CH=CH-R'   --->   Direkte unlösliche Vernetzung über Ether- (-O-) oder Peroxid-Brücken (-O-O-)`,
+    description: 'Der Luftsauerstoff dringt in den nassen Film ein und reagiert chemisch mit den Doppelbindungen der Fettsäuren. Es bilden sich Hydroperoxidaddukte, die mittels metallorganischer Beschleuniger (Sikkative) in Radikale zerfallen. Diese Radikale leiten eine Kettenreaktion ein, die zu einer dreidimensionalen elastischen Verklebung führt. Typisch für Alkydharze und Naturöle.',
+    processingRules: [
+      'Erfordert ausreichende Luftzirkulation (Sauerstoffzufuhr). In geschlossenen Behältern oder dicken Schichten bleibt der Lack unbegrenzt flüssig.',
+      'Maximale Schichtdicken strikt einhalten. Zu dicke Schichten führen zu "Runzelbildung" (Hautbildung oben blockiert Sauerstoffdiffusion nach unten).',
+      'UV-Anteile im Tageslicht beschleunigen den Radikalstart signifikant.'
+    ],
+    neutralProducts: [
+      {
+        title: 'Alkydharz-Bautenlack (Lösemittelbasiert)',
+        desc: 'Hochwertiger Decklack für Holzbauteile und herstellerneutrale Metallfassaden im Außenbereich.',
+        norms: 'DIN EN ISO 12944 (Korrosionsschutz), VOB/C ATV DIN 18363'
+      },
+      {
+        title: 'Leinölfirnis / Naturöllasuren',
+        desc: 'Tiefenwirksamer, vollkommen diffusionsoffener Holzschutz für Nadel- und Harthölzer im ökologischen Bauen.',
+        norms: 'DIN EN 927 Typ F'
+      }
+    ]
+  },
+  epoxy: {
+    name: 'Polyaddition (2K-Epoxidharze)',
+    type: 'Chemisch vernetzend (Duromer-Reaktionsharz)',
+    reactants: 'Komponente A (Epoxidharz-Prepolymer, z. B. Bisphenol-A-Diglycidylether) + Komponente B (Amin-Härter, z. B. Polyamine oder Polyamidoamine)',
+    catalysts: 'Säurehaltige Härtungsbeschleuniger (herstellerneutral: tertiäre Amine, Salicylsäure)',
+    molecularReaction: `          O
+         / \\
+R - CH - CH2   +   H2N - R' (Amin)   ---->   R - CH(OH) - CH2 - NH - R' (Alkohol + sekundäres Amin)
+(Freie Aminogruppen greifen nucleophil an den polarisierten Sauerstoffring unter Ringöffnung an. Keine Spaltprodukte!)`,
+    description: 'Die reaktiven Oxiranringe (Epoxidgruppen) der Stammkomponente reagieren ohne Abspaltung von Nebenprodukten mit den aktiven Wasserstoffatomen der Aminogruppen. Durch progressive Polyaddition entsteht ein hochfestes, chemikalienbeständiges und steifes, duroplastisches Epoxidnetzwerk.',
+    processingRules: [
+      'Stöchiometrisches Mischungsverhältnis (A+B) exakt auswiegen. Abweichungen führen zu unvollständiger Härtung, Klebrigkeit und dramatischem Festigkeitsverlust.',
+      'Sorgfältig mechanisch anmischen (mindestens 3 Minuten rühren), danach zwingend in ein neues Mischgefäß umtopfen und erneut kurz rühren, um ungemischte Randzonen auszuschließen.',
+      'Die Härtungsreaktion ist stark temperaturabhängig. Unter +8°C bis +10°C friert die chemische Reaktion fast vollständig ein.',
+      'Die Topfzeit (Potlife) begrenzt das Zeitfenster der Verarbeitung. Achtung: Exotherme Reaktion (Mischung im Eimer wird sehr heiß und geliert schnell).'
+    ],
+    neutralProducts: [
+      {
+        title: '2K-Epoxidharz-Bodenbeschichtung (Lösemittelfrei)',
+        desc: 'Hochextrem belastbarer, flüssigkeitsdichter Schutzbelag für Lagerhallen, Industrieböden und Parkdecks.',
+        norms: 'DIN EN 1504-2 (Oberflächenschutz für Beton)'
+      },
+      {
+        title: '2K-Zinkstaub-Grundierung / EP-Grundbeschichtung',
+        desc: 'Kathodisch wirksamer, ununterbrechbarer Epoxidharz-Rostschutzprimer für Stahlkonstruktionen im schweren Korrosionsschutz.',
+        norms: 'DIN EN ISO 12944-5'
+      }
+    ]
+  },
+  polyurethane: {
+    name: 'Polyaddition (2K-Polyurethane)',
+    type: 'Chemisch vernetzend (Hydrophobe Polyisocyanat-Reaktion)',
+    reactants: 'Komponente A (Polyol, z. B. verzweigte Polyester, Acrylate oder Polyether) + Komponente B (Polyisocyanate, z. B. ungeladene cycloaliphatische Diisocyanate wie HDI oder IPDI)',
+    catalysts: 'Metallorganische Katalysatoren (herstellerneutral: Dibutylzinndilaurat - DBTDL) oder tertiäre Aminverbindungen',
+    molecularReaction: `R - N=C=O (Isocyanatgruppe)   +   HO - R' (Hydroxylgruppe, Polyol)   ---->   R - NH - CO - O - R' (Urethangruppe)
+Gravotrope Störreaktion (Gefahr!):
+R - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2↑ (Kohlendioxid-Blasengas!)`,
+    description: 'Die Hydroxylgruppen der Bindemittelmatrix addieren sich an die hochreaktiven Isocyanatgruppen der Härterkomponente. Es entstehen hochfeste, zäh-elastische Urethanverknüpfungen. 2K-Polyurethan-Verbindungen auf aliphatischer Isocyanatbasis (HDI/IPDI) bieten die weltweit beste Licht-, UV- und Kreidungsbeständigkeit im Bautenschutz.',
+    processingRules: [
+      'Vorzeitiger Kontakt mit Wasser oder Substratfeuchtigkeit führt zur Zersetzung des Härters unter Freisetzung von CO2-Gasen. Die Folge sind sichtbare Mikroporen, Krater und Bläschen im gehärteten Lackfilm.',
+      'Aerosole und Isocyanatdämpfe sind stark atemwegssensibilisierend. Bei Spritz-Applikationen sind Atemschutzmasken (A2P3-Aktivkohlefilter) und dichte Schutzmasken zwingend vorgeschrieben.'
+    ],
+    neutralProducts: [
+      {
+        title: '2K-Acryl-Polyurethan-Decklack (Lösemittel- oder wasserbasiert)',
+        desc: 'Hochglänzender, extrem witterungsstabiler Anti-Graffiti- und Farbton-Schutzdecklack für Fassaden und Brückenbauwerke.',
+        norms: 'DIN EN ISO 12944-5, Klasse C5'
+      },
+      {
+        title: 'Flüssig aufzubringende PUR-Dachabdichtung',
+        desc: 'Hochelastische, nahtlose, rissüberbrückende elastomere Beschichtung für Flachdächer und Logistikbauten.',
+        norms: 'ETAG 005 bzw. Nachfolge-EAD (flüssig aufzubringende Dachabdichtungen)'
+      }
+    ]
+  },
+  silicate: {
+    name: 'Reine Silikat-Verkieselung',
+    type: 'Mineralisch / Chemisch vernetzend',
+    reactants: 'Wasserlösliches Kaliwasserglas (Kaliumsilikat, K2O · n SiO2) + Reaktionspartner (saures Kohlendioxid CO2 und freies Calciumhydroxid Ca(OH)2 des Zement-/Kalkputzes)',
+    catalysts: 'Keine (Selbsttätige hydrothermale Reaktion im Carbonatpuffer)',
+    molecularReaction: `K2O·n SiO2   +   CO2   +   Ca(OH)2   ---->   CaSiO3·x H2O (Calcium-Silikat-Hydrat-Kristalle)  +  K2CO3
+(Chemische Verschmelzung und Verankerung im kristallinen Molekülgitter des Putzuntergrundes)`,
+    description: 'Im Gegensatz zu Kunstharzlacken bilden reine Silikatfarben keinen geschlossenen Kunststofffilm. Das Wasserglas dringt in die Poren des Untergrunds ein und reagiert mit dessen Calciumverbindungen und dem CO₂ der Luft. Dabei entstehen wasserunlösliche, gesteinsähnliche Calciumsilikate. Dieser mineralische Prozess wird als "Verkieselung" bezeichnet.',
+    processingRules: [
+      'Ausschließlich auf karbonatisch oder mineralisch gebundenen, tragfähigen Untergründen (Kalkputz, Zementputz, Beton) anwendbar. Absolut ungeeignet auf Gips, Holz, Metall oder Altkunststoffen.',
+      'Kaliwasserglas ist hochalkalisch (pH-Wert ~11-12) und reagiert stark ätzend! Alle Glasflächen, Aluminium-Fassadenelemente, Fliesen und Natursteine müssen hermetisch abgeklebt werden, da Spritzer Glas und empfindliche Oberflächen anätzen und dauerhaft trüben können.',
+      'Die relative Feuchtigkeit während der Erstverkieselung darf nicht zu hoch sein, da sonst Löseeffekte auftreten.'
+    ],
+    neutralProducts: [
+      {
+        title: 'Zwei-Komponenten-Reinsilikatfarbe (Wasserglas + Pigmentpulver)',
+        desc: 'Mineralisch-matte, in der Regel biozidfreie Fassadenbeschichtung mit langer Standzeit; bewährt an historischen Fassaden.',
+        norms: 'DIN 18363 (VOB/C): reine Silikatfarbe ohne, Dispersionssilikatfarbe mit begrenztem organischem Anteil (≤ 5 %)'
+      },
+      {
+        title: 'Kieselsäureester-Steinfestiger',
+        desc: 'Steinfestiger auf Kieselsäureesterbasis zur Festigung von mürbem, porösem Sandstein (Denkmalpflege).',
+        norms: 'DIN EN 1504-2 Oberflächenschutz'
+      }
+    ]
+  },
+  radiation: {
+    name: 'UV / Strahlenhärtung (Radikalische Polymerisation)',
+    type: 'Chemisch vernetzend (Strahleninitiiert)',
+    reactants: 'Ungesättigte Polyester- oder Polyacrylat-Oligomere und herstellerneutrale Reaktivverdünner (Monomere)',
+    catalysts: 'Photoinitiatoren (z. B. Benzophenone oder Acylphosphinoxide), die unter UV-Strahlung homolytisch spalten',
+    molecularReaction: `Photoinitiator   --[h·ν (UV-Licht, λ = 365-405 nm)]-->   2 R· (Starter-Radikale)
+R·  +  CH2 = CH - COOR' (Acrylatester)   ---->   R - CH2 - C·H - COOR' (Kettenstart)
+(Ultra-schneller Schichtaufbau durch radikalische Additions-Kettenpolymerisation der Doppelbindungen)`,
+    description: 'Die flüssig applizierte Formulierung wird einer intensiven UV-Dosis (z. B. Quecksilbermitteldruckstrahler, ggf. gallium- oder eisendotiert, oder UV-LEDs) ausgesetzt. Die Photoinitiatoren zerfallen in Millisekunden in hochreaktive Radikale, welche die Polymerbildung der Acrylat-Oligomere starten. Der Lack härtet in Sekunden zu einer harten, kratzfesten Schicht.',
+    processingRules: [
+      'Härtung setzt direkten Sichtkontakt des Bauteils zur UV-Quelle voraus. In "Schattenzonen" komplexer 3D-Baukörper härtet der Lack nicht aus (Hierfür sind Hybrid- oder Dual-Cure-Lacke mit zusätzlicher thermischer Vernetzung erforderlich).',
+      'Die Sauerstoffinhibierung blockiert die oberste Molekülschicht vor vollständiger Kettenverknüpfung (Abhilfe: Inertgas-Flutung mit Stickstoff oder dickere Sperrschichten).'
+    ],
+    neutralProducts: [
+      {
+        title: 'UV-Härtender Acryllack / UV-Siegellack (Flüssig)',
+        desc: 'Kratzfester Kratzschutzüberzug für herstellerneutrales Fertigparkett, Paneele, Arbeitsplatten und industrielle Holzfußböden.',
+        norms: 'DIN 68861 (Verhalten von Möbeloberflächen), DIN EN 14342 (Holzböden)'
+      },
+      {
+        title: 'UV-beschleunigtes Rohrsanierungs-Inlinerharz',
+        desc: 'Synthetische, nahtlose Schlauchliner-Methode zur strukturellen Innensanierung erdverlegter Abwasserleitungen mittels mobiler UV-Lichtzüge.',
+        norms: 'DIN EN ISO 11296-4'
+      }
+    ]
+  }
+};
