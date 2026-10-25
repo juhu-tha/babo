@@ -16,7 +16,7 @@ Stand: Phase 5 (Oktober 2026). Kurzüberblick für Pflege und Weiterentwicklung.
 | Module | `src/modules/*.tsx` | Fachmodule (Darstellung); große Teilansichten in Unterordnern (z. B. `modules/holz/HolzSchwinden3D.tsx`) |
 | Rechenkerne | `src/calc/*.ts` | reine, getestete Rechenfunktionen ohne React (Tests in `tests/`) |
 | Daten | `src/data/*` | Inhalte und Kennwerte (Quiz `quiz.json`, Lernziele, Erkundung, Rechnergrenzen, Versionen …) |
-| Server | `server.ts` | Express: statische Auslieferung, Gemini-Proxy, Abstimmungen, Admin, `GET /api/health` |
+| Server | `server.ts`, `server/` | Express: statische Auslieferung, Gemini-Proxy, Abstimmungen, Admin, Kurzfragebogen (`POST /api/feedback`, `GET /api/feedback/stats` nur Admin), `GET /api/health` |
 
 Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulInhalt.tsx` (lazy import und `activeTab === '<id>'`). `tests/registry.test.ts` prüft, dass jede ID dort verdrahtet ist, und dass `App.tsx` ≤ 800 Zeilen bleibt.
 
@@ -49,4 +49,5 @@ Alle Prüfungen laufen in `.github/workflows/qa.yml` bei Push auf `main` und bei
 - **GitHub ist die einzige Quelle** (single source of truth). Änderungen nur über Branches/Pull Requests mit grüner QA.
 - **Google AI Studio nur zum Pull** von `main` und zum Veröffentlichen (Cloud Run) – dort keine Änderungen am Code.
 - Abhängigkeiten: `renovate.json` (wöchentlich, Minor/Patch gebündelt, Label `dependencies`, kein Automerge); wirksam, sobald die Renovate-App für das Repository aktiviert ist.
+- Laufzeitdaten: Besuchszähler `analytics.json` und Kurzfragebogen `laufzeitdaten/kurzfragebogen.json` (änderbar per `FEEDBACK_DATEI`) liegen als Dateien im Container und sind per `.gitignore` vom Repository ausgeschlossen. Auf Cloud Run sind sie flüchtig (Neustart/neue Revision) und gelten je Instanz; für dauerhafte Auswertung wäre ein externer Speicher nötig. Der Kurzfragebogen speichert nur Zählwerte je Semester und Aussage sowie Freitexte ohne Metadaten (`server/kurzfragebogen.ts`, Definitionen und Prüfung in `src/data/kurzfragebogen.ts`).
 - Betrieb: `GET /api/health` liefert `{ status, version, uptime }` ohne personenbezogene Daten. Client-IPs werden nur im Arbeitsspeicher der Anfragebegrenzung gehalten (abgelaufene Einträge werden regelmäßig entfernt), nicht geloggt oder gespeichert.

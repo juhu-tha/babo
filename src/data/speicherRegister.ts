@@ -25,6 +25,7 @@ export const SPEICHER_REGISTER: SpeicherEintrag[] = [
   { schluessel: 'baustoffboard_derivation_mode', ort: 'localStorage', zweck: 'Rechenwege ein/aus', dauer: BIS_LOESCHUNG },
   { schluessel: 'baustoffboard_favorites', ort: 'localStorage', zweck: 'als Favorit markierte Module', dauer: BIS_LOESCHUNG },
   { schluessel: 'baustoffboard_recent', ort: 'localStorage', zweck: 'zuletzt besuchte Module', dauer: BIS_LOESCHUNG },
+  { schluessel: 'bb_kurzfragebogen', ort: 'localStorage', zweck: 'Semester, in dem der anonyme Kurzfragebogen angezeigt wurde, damit er höchstens einmal je Semester erscheint (keine Antworten)', dauer: BIS_LOESCHUNG },
   { schluessel: 'dauerhaftigkeit_subtab', ort: 'localStorage', zweck: 'zuletzt geöffneter Reiter im Modul Dauerhaftigkeit', dauer: BIS_LOESCHUNG },
   // Lernen
   { schluessel: 'tha_study_phase', ort: 'localStorage', zweck: 'gewählte Lernphase', dauer: BIS_LOESCHUNG },

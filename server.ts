@@ -4,6 +4,8 @@ import compression from "compression";
 import crypto from "crypto";
 import path from "path";
 import fs from "fs";
+import { pruefeAntwort, semesterSchluessel } from "./src/data/kurzfragebogen";
+import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/kurzfragebogen";
 
 // ---------------------------------------------------------------------------
 // Konfiguration über Umgebungsvariablen (in AI Studio: Settings → Secrets)
@@ -11,7 +13,8 @@ import fs from "fs";
 //   ADMIN_PASSWORD        Kennwort für Admin-Bereich und Zurücksetzen der Live-Abstimmung
 //   POLL_ADMIN_PASSWORD   optional eigenes Kennwort nur für die Live-Abstimmung
 //   GEMINI_DAILY_LIMIT    optional, KI-Anfragen pro Tag insgesamt (Standard 300)
-//   ALLOWED_ORIGINS       optional, weitere erlaubte Herkunft(en) für KI-Anfragen, kommagetrennt
+//   ALLOWED_ORIGINS       optional, weitere erlaubte Herkunft(en) für KI-Anfragen und Kurzfragebogen, kommagetrennt
+//   FEEDBACK_DATEI        optional, Datei für den Kurzfragebogen (Standard laufzeitdaten/kurzfragebogen.json)
 // Ist kein Kennwort gesetzt, bleiben Admin-Bereich und Zurücksetzen gesperrt.
 // ---------------------------------------------------------------------------
 
@@ -478,6 +481,41 @@ ${prompt}
       pollStore.delete(lectureId);
     }
     res.json({ success: true, votes: serialize(lectureId) });
+  });
+
+  // --- Anonymer Kurzfragebogen (Phase 6, AP 6.9) -------------------------------
+  // Gespeichert werden nur Zählwerte je Semester und Aussage sowie Freitexte ohne Metadaten
+  // (keine IP, kein User-Agent, kein Zeitpunkt, keine Cookies). Die Anfragebegrenzung hält die IP
+  // nur kurzzeitig im Arbeitsspeicher. Datei wie beim Besuchszähler im Container (nicht im Repository).
+  const kfDatei = process.env.FEEDBACK_DATEI || path.join(process.cwd(), "laufzeitdaten", "kurzfragebogen.json");
+  const kfSpeicher = ladeSpeicher(kfDatei);
+
+  app.post("/api/feedback", rateLimit({ name: "feedback", windowMs: 60 * 60 * 1000, max: 5 }), (req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    if (!gleicheHerkunft(req)) {
+      return res.status(403).json({ error: "Anfragen sind nur aus dem BaustoffBoard möglich." });
+    }
+    const pruefung = pruefeAntwort(req.body);
+    if (!pruefung.ok) return res.status(400).json({ error: pruefung.fehler });
+    if (!nimmAuf(kfSpeicher, pruefung.antwort, semesterSchluessel())) {
+      return res.status(507).json({ error: "Speichergrenze des Fragebogens erreicht." });
+    }
+    try {
+      speichereSpeicher(kfDatei, kfSpeicher);
+    } catch {
+      // Inhalt bewusst nicht protokollieren; Zählwerte bleiben bis zum Neustart im Arbeitsspeicher
+      console.error("Kurzfragebogen: Speichern fehlgeschlagen.");
+    }
+    res.json({ success: true });
+  });
+
+  // Auswertung – nur für Admins
+  app.get("/api/feedback/stats", (req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    if (!verifyToken(bearer(req), adminPassword())) {
+      return res.status(401).json({ error: "Nicht angemeldet." });
+    }
+    res.json({ aktuell: semesterSchluessel(), ...statistik(kfSpeicher) });
   });
 
   // Betriebs-Check für Cloud Run / Monitoring (Phase 5, AP 5.8): keine personenbezogenen Daten,

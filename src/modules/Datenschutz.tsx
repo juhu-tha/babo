@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck, Sparkles, BarChart3 } from 'lucide-react';
+import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck, Sparkles, BarChart3, MessageSquareHeart } from 'lucide-react';
 import { SPEICHER_REGISTER } from '@/src/data/speicherRegister';
 
 // Stand und Inhalt mit dem Datenschutzbeauftragten der THA abstimmen (Umsetzungsplan Phase 1, AP 1.3).
@@ -106,7 +106,33 @@ export default function Datenschutz() {
             </p>
           </Abschnitt>
 
-          <Abschnitt icon={Cookie} titel="5. Cookies und Übersetzung">
+          <Abschnitt icon={MessageSquareHeart} titel="5. Anonymer Kurzfragebogen">
+            <p>
+              Höchstens einmal je Semester bittet die Anwendung um eine freiwillige Rückmeldung: fünf Aussagen mit
+              fünfstufiger Skala und ein optionaler Kommentar mit höchstens 500 Zeichen. Sie können den Fragebogen
+              ohne Nachteile schließen. Übermittelt werden nur Ihre Bewertungen und – falls Sie ihn schreiben – der
+              Kommentar, und zwar nur, wenn Sie auf „Absenden“ klicken.
+            </p>
+            <p>
+              Der Server speichert die Bewertungen nicht als Einzelantworten, sondern zählt nur, wie oft jeder Wert je
+              Aussage und Semester gewählt wurde. Kommentare werden ohne Zeitpunkt, ohne IP-Adresse, ohne
+              Browserangaben und ohne Verbindung zu den Bewertungen abgelegt; ihre Reihenfolge wird zufällig gemischt.
+              Es werden keine Cookies gesetzt. Zum Schutz vor Missbrauch zählt der Server die Anfragen je IP-Adresse
+              höchstens eine Stunde lang im Arbeitsspeicher (siehe 2.); diese Zählung wird nicht gespeichert.
+              Schreiben Sie bitte keine Namen oder anderen personenbezogenen Angaben in den Kommentar.
+            </p>
+            <p className="text-xs text-text-main/70">
+              Im Browser wird unter <code className="font-mono text-xs">bb_kurzfragebogen</code> nur das Semester
+              vermerkt, in dem der Fragebogen angezeigt wurde, damit er nicht erneut erscheint (siehe 8.).
+              Zweck ist die Qualitätssicherung der Lehre; soweit dabei überhaupt personenbezogene Daten anfallen, ist
+              Rechtsgrundlage Art. 6 Abs. 1 lit. e DSGVO i. V. m. Art. 2 BayHIG. Die Ergebnisse sehen nur die
+              Lehrenden im Administrationsbereich. Sie liegen in einer Datei auf dem Server, werden gelöscht, sobald sie
+              für die Auswertung nicht mehr benötigt werden, und gehen technisch bedingt auch bei einem Neustart des
+              Servers verloren.
+            </p>
+          </Abschnitt>
+
+          <Abschnitt icon={Cookie} titel="6. Cookies und Übersetzung">
             <p>
               Die Anwendung verwendet <strong>keine Tracking-, Marketing- oder Analyse-Cookies</strong> und bindet
               keine Analysedienste ein. Die Plattform setzt ein technisches Cookie für die Lastverteilung
@@ -121,15 +147,15 @@ export default function Datenschutz() {
             </p>
           </Abschnitt>
 
-          <Abschnitt icon={Lock} titel="6. Berechnungen im Browser">
+          <Abschnitt icon={Lock} titel="7. Berechnungen im Browser">
             <p>
               Alle Berechnungen, zum Beispiel Mischungsberechnungen, U-Wert- und Glaser-Nachweise oder
               Bemessungen, laufen ausschließlich in Ihrem Browser. Eingaben in Rechnern werden nicht an den
-              Server übertragen. Ausnahmen sind nur die unter 3. und 4. beschriebenen Funktionen.
+              Server übertragen. Ausnahmen sind nur die unter 3. bis 5. beschriebenen Funktionen.
             </p>
           </Abschnitt>
 
-          <Abschnitt icon={Database} titel="7. Speicherung im Browser und Cookies">
+          <Abschnitt icon={Database} titel="8. Speicherung im Browser und Cookies">
             <p>
               Einstellungen und Lernstände speichert die Anwendung nur in Ihrem Browser. Sie werden nicht an den
               Server übertragen. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG, weil die Speicherung für die von Ihnen
@@ -160,7 +186,7 @@ export default function Datenschutz() {
             </div>
           </Abschnitt>
 
-          <Abschnitt icon={Mail} titel="8. Kontakt per E-Mail">
+          <Abschnitt icon={Mail} titel="9. Kontakt per E-Mail">
             <p>
               Feedback und Fehlermeldungen senden Sie über Ihr eigenes E-Mail-Programm. Wir verarbeiten Ihre
               Angaben nur zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. e DSGVO i. V. m. Art. 4 BayDSG) und
@@ -168,7 +194,7 @@ export default function Datenschutz() {
             </p>
           </Abschnitt>
 
-          <Abschnitt icon={Lock} titel="9. Ihre Rechte">
+          <Abschnitt icon={Lock} titel="10. Ihre Rechte">
             <p>Sie haben nach Art. 15 bis 21 DSGVO das Recht auf</p>
             <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm pl-2">
               <li>Auskunft über die zu Ihnen verarbeiteten Daten,</li>
@@ -180,7 +206,7 @@ export default function Datenschutz() {
             <p>Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO).</p>
           </Abschnitt>
 
-          <Abschnitt icon={ShieldCheck} titel="10. Beschwerderecht">
+          <Abschnitt icon={ShieldCheck} titel="11. Beschwerderecht">
             <p>
               Sie können sich bei der zuständigen Aufsichtsbehörde für bayerische öffentliche Stellen beschweren:
             </p>
