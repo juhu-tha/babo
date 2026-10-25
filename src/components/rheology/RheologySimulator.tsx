@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Activity, AlertTriangle, Sliders, Timer, FlaskConical } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
+import type { ChartData, ChartOptions, LegendItem, Point } from 'chart.js';
 import '@/src/lib/chartSetup';
 import { simulate, T_RAMP, type Control, type LoadKey, type ModelKey } from '@/src/utils/rheologySim';
 
@@ -184,18 +185,18 @@ export function RheologySimulator({ renderCircuit }: { renderCircuit?: (model: M
     return { minX: minX - 0.05 * sx, maxX: maxX + 0.05 * sx, minY: minY - 0.05 * sy, maxY: maxY + 0.05 * sy, peakX: maxX, peakY: maxY };
   }, [sePts, hystScaleMode, sigAxis]);
 
-  const tick = (v: any) => (typeof v === 'number' ? de(v) : v);
-  const baseOptions: any = {
+  const tick = (v: string | number) => (typeof v === 'number' ? de(v) : v);
+  const baseOptions: ChartOptions<'line'> = {
     responsive: true, maintainAspectRatio: false, animation: false, locale: 'de-DE', spanGaps: false,
     elements: { line: { borderWidth: 2.5, tension: 0 }, point: { radius: 0 } },
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: (c: any) => `${c.dataset.label || ''}: ${de(c.parsed.y)} (x = ${de(c.parsed.x)})` } },
+      tooltip: { callbacks: { label: (c) => `${c.dataset.label || ''}: ${de(c.parsed.y as number)} (x = ${de(c.parsed.x as number)})` } },
     },
   };
   const timeAxis = {
-    type: 'linear', min: 0, max: 10,
-    title: { display: true, text: 'Zeit t (s)', color: '#1e293b', font: { size: 12, weight: 'bold' } },
+    type: 'linear' as const, min: 0, max: 10,
+    title: { display: true, text: 'Zeit t (s)', color: '#1e293b', font: { size: 12, weight: 'bold' as const } },
     ticks: { stepSize: 1, color: '#475569', font: { size: 11 }, callback: tick },
     grid: { color: 'rgba(0,0,0,0.06)' },
   };
@@ -391,7 +392,7 @@ export function RheologySimulator({ renderCircuit }: { renderCircuit?: (model: M
               </div>
             )}
             <div className="grow w-full relative">
-              <Line data={{ datasets: [{ label: `${sigName} (${sigUnit})`, data: sigPts, borderColor: '#A3113E', backgroundColor: 'rgba(163,17,62,0.12)', fill: true }] } as any}
+              <Line data={{ datasets: [{ label: `${sigName} (${sigUnit})`, data: sigPts, borderColor: '#A3113E', backgroundColor: 'rgba(163,17,62,0.12)', fill: true }] } as ChartData<'line', (Point | { x: number; y: number | null })[]>}
                 options={{ ...baseOptions, scales: { x: timeAxis, y: {
                   title: { display: true, text: `${sigName} (${sigUnit})`, color: '#A3113E', font: { size: 12, weight: 'bold' } },
                   ticks: { color: '#64748b', font: { size: 11 }, callback: tick }, grid: { color: 'rgba(0,0,0,0.06)' },
@@ -405,7 +406,7 @@ export function RheologySimulator({ renderCircuit }: { renderCircuit?: (model: M
             </div>
             {result.failed && <div className="text-[10px] text-red-700 mb-1">{isBingham ? 'γ' : 'ε'} → ∞ (unbegrenztes Fließen) ab t = {de(result.tFail ?? 0, 2)} s</div>}
             <div className="grow w-full relative">
-              <Line data={{ datasets: [{ label: `${epsName} (${epsUnit})`, data: epsPts, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.12)', fill: true }, ...failLine] } as any}
+              <Line data={{ datasets: [{ label: `${epsName} (${epsUnit})`, data: epsPts, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.12)', fill: true }, ...failLine] } as ChartData<'line', (Point | { x: number; y: number | null })[]>}
                 options={{ ...baseOptions, scales: { x: timeAxis, y: {
                   title: { display: true, text: `${epsName} (${epsUnit})`, color: '#059669', font: { size: 12, weight: 'bold' } },
                   ticks: { color: '#64748b', font: { size: 11 }, callback: tick }, grid: { color: 'rgba(0,0,0,0.06)' },
@@ -441,8 +442,8 @@ export function RheologySimulator({ renderCircuit }: { renderCircuit?: (model: M
                   { label: 'Start', data: [sePts[0]], pointRadius: 6, pointBackgroundColor: '#16a34a', borderColor: '#16a34a', showLine: false },
                   { label: 'Ende', data: [sePts[sePts.length - 1]], pointRadius: 6, pointBackgroundColor: '#dc2626', borderColor: '#dc2626', showLine: false },
                 ] : []),
-              ] } as any}
-              options={{ ...baseOptions, plugins: { ...baseOptions.plugins, legend: { display: true, labels: { filter: (i: any) => i.text === 'Start' || i.text === 'Ende', boxWidth: 10 } } },
+              ] } as ChartData<'line', (Point | { x: number; y: number | null })[]>}
+              options={{ ...baseOptions, plugins: { ...baseOptions.plugins, legend: { display: true, labels: { filter: (i: LegendItem) => i.text === 'Start' || i.text === 'Ende', boxWidth: 10 } } },
                 scales: {
                   x: { type: 'linear', min: hyst?.minX, max: hyst?.maxX,
                     title: { display: true, text: `${epsName} (${epsUnit})`, color: '#1e293b', font: { size: 12, weight: 'bold' } },

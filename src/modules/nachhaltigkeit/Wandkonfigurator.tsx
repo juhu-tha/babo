@@ -2,6 +2,7 @@ import { Sparkles, AlertTriangle, Settings, ArrowUp, ArrowDown, Trash2, Plus, Re
 import { PRESET_WALLS, EPD_DATABASE } from './daten';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Bar } from 'react-chartjs-2';
+import type { ChartData, ChartOptions } from 'chart.js';
 import type { ConfiguredLayer } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
@@ -10,8 +11,8 @@ interface WandkonfiguratorProps {
   addLayer: () => void;
   addThickness: number;
   applyPreset: (presetKey: string) => void;
-  chartData: { labels: string[]; datasets: { label: string; data: number[]; backgroundColor: (context: any) => "#475569" | "#A3113E"; borderRadius: number; borderWidth: number; }[]; };
-  chartOptions: { responsive: boolean; maintainAspectRatio: boolean; plugins: { legend: { display: boolean; }; tooltip: { callbacks: { label: (context: any) => string; }; }; }; scales: { y: { grid: { color: string; }; title: { display: boolean; text: string; }; }; }; };
+  chartData: ChartData<'bar'>;
+  chartOptions: ChartOptions<'bar'>;
   computedWall: { layers: { mat: MaterialData; massKg: number; r_i: number; gwpTotalA1A3: number; materialKey: string; thicknessCm: number; }[]; thicknessCm: number; totalWeightKg: number; rVal: number; uValue: number; gwpFossilA1A3: number; gwpBiogenicA1A3: number; gwpTotalA1A3: number; gwpC3C4: number; gwpD: number; gwpNetTotal: number; penrtTotal: number; inherentCircularity: number; jointSeparabilityFactor: number; effectiveCircularity: number; };
   connectionType: "glued" | "screwed";
   gegRating: { label: string; color: string; rating: string; };
@@ -317,7 +318,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             </div>
 
             <div className="h-56 relative w-full pt-1">
-              <Bar data={chartData} options={chartOptions as any} />
+              <Bar data={chartData} options={chartOptions} />
             </div>
 
             {/* Dynamic explanations */}

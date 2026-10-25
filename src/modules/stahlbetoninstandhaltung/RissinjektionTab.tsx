@@ -60,7 +60,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                 <button
                   key={target.id}
                   type="button"
-                  onClick={() => setInjektionsZiel(target.id as any)}
+                  onClick={() => setInjektionsZiel(target.id as "kraftschluessig" | "dehnfaehig" | "abdichtend")}
                   className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
                     injektionsZiel === target.id 
                       ? 'bg-shiraz text-white border-shiraz font-bold shadow-xs' 
@@ -115,7 +115,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                 <button
                   key={m.id}
                   type="button"
-                  onClick={() => setCrackMoisture(m.id as any)}
+                  onClick={() => setCrackMoisture(m.id as "feucht" | "trocken" | "drueckend")}
                   className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
                     crackMoisture === m.id 
                       ? 'bg-blue-600 text-white border-blue-600 font-bold' 

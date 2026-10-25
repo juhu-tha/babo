@@ -122,7 +122,7 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => setProductApp(item.id as any)}
+                    onClick={() => setProductApp(item.id as "wall" | "deck" | "balcony" | "sewage")}
                     className={`w-full text-left p-2.5 rounded-lg border transition-all ${productApp === item.id ? 'bg-shiraz/5 border-shiraz font-bold' : 'bg-slate-50 border-home-grau/30 text-slate-700 hover:bg-slate-100'}`}
                   >
                     <div className="font-bold text-xs">{item.label}</div>

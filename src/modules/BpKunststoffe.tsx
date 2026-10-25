@@ -783,7 +783,7 @@ export default function BpKunststoffe() {
                   </label>
                   <select
                     value={burgersPolymer}
-                    onChange={(e) => setBurgersPolymer(e.target.value as any)}
+                    onChange={(e) => setBurgersPolymer(e.target.value as typeof burgersPolymer)}
                     className="w-full p-2.5 border border-home-grau/30 rounded-lg bg-white text-xs font-medium text-slate-800 focus:outline-none focus:border-shiraz"
                   >
                     <option value="pe">PE-HD (Polyethylen) - Weich, hohe kriech-viskose Trägheit</option>

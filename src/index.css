@@ -1,9 +1,12 @@
+/* Inter als WOFF2-Teilmenge (AP 5.4): Latin, Latin-1, Latin Extended-A, Griechisch, Satzzeichen,
+   Hoch-/Tiefzahlen, Pfeile, Mathematik (≤ ≥ ≈ ‰ ° ² ³ ₀–₉ …) – erzeugt mit pyftsubset (docs/performance.md).
+   Nicht enthaltene Zeichen (Emoji, Kastenlinien) kommen aus den System-Fallbacks. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400 500;
   font-display: swap;
-  src: url('/fonts/inter-regular.ttf') format('truetype');
+  src: url('/fonts/inter-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -11,7 +14,7 @@
   font-style: normal;
   font-weight: 600 700;
   font-display: swap;
-  src: url('/fonts/inter-bold.ttf') format('truetype');
+  src: url('/fonts/inter-bold.woff2') format('woff2');
 }
 
 @import "tailwindcss";

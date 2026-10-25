@@ -259,7 +259,7 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
               <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Dynamisches Materialpreset:</span>
               <select aria-label="Dynamisches Materialpreset" 
                 value={thermischPreset}
-                onChange={(e) => handleThermischPresetChange(e.target.value as any)}
+                onChange={(e) => handleThermischPresetChange(e.target.value as "ziegel" | "porenbeton" | "stahl" | "holz" | "eps" | "beton" | "custom")}
                 className="p-1.5 border border-home-grau/30 rounded bg-white text-xs font-bold focus:outline-none focus:border-shiraz"
               >
                 <option value="ziegel">Hochlochziegel (Mauerstein)</option>

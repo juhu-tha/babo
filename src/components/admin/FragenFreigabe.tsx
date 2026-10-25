@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { CheckCircle2, Download, MessageSquare, RotateCcw } from 'lucide-react';
-import { QUIZ_QUESTIONS, type QuizQuestion } from '@/src/data/quizData';
+import type { QuizQuestion } from '@/src/data/quizModell';
+import { useAlleFragen } from '@/src/data/quizLader';
 import { META_CLUSTERS } from '@/src/data/metaClusters';
 import { formatDeWert } from '@/src/utils/numberFormat';
 
@@ -27,7 +28,10 @@ export function FragenFreigabe() {
   const [nurOffene, setNurOffene] = useState(true);
   const [entwurf, setEntwurf] = useState<Record<string, string>>({});
 
-  const fragen = useMemo(() => QUIZ_QUESTIONS.filter(q => q.clusterId === cluster), [cluster]);
+  // Gesamtpool in Teilpaketen nachgeladen (quizLader); bis dahin leer
+  const pool = useAlleFragen();
+  const QUIZ_QUESTIONS = pool ?? [];
+  const fragen = useMemo(() => (pool ?? []).filter(q => q.clusterId === cluster), [pool, cluster]);
   const sichtbar = fragen.filter(q => !nurOffene || (!q.verified && !entscheidungen[q.id]));
   const stand = (q: QuizQuestion) => (q.verified ? 'bereits freigegeben' : entscheidungen[q.id]?.status);
 

@@ -186,7 +186,7 @@ export default function Querkraftbemessung() {
                     <select aria-label="Bewehrungsart" 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={bewehrungsArt}
-                      onChange={(e) => setBewehrungsArt(e.target.value as any)}
+                      onChange={(e) => setBewehrungsArt(e.target.value as typeof bewehrungsArt)}
                     >
                       <option value="Stahl">Betonstahl (B500)</option>
                       <option value="Carbon">Carbon (CFK)</option>

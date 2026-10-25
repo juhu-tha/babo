@@ -9,7 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -121,7 +122,7 @@ export default function Frischbetondruck() {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 1)} kN/m² bei Tiefe ${formatDeZahl(context.label, 2)} m`
+          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${formatDeZahl(context.raw as number, 1)} kN/m² bei Tiefe ${formatDeZahl(context.label, 2)} m`
         }
       }
     }

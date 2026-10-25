@@ -102,7 +102,7 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
               <label className="block text-xs font-semibold text-text-main">Oberbaubettung & Querverschiebewiderstand (Q_vw):</label>
               <select aria-label="Oberbaubettung & Querverschiebewiderstand (Q_vw)" 
                 value={bettungstyp}
-                onChange={(e) => setBettungstyp(e.target.value as any)}
+                onChange={(e) => setBettungstyp(e.target.value as "schotter_mager" | "schotter_gut" | "feste_fahrbahn")}
                 className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white"
               >
                 <option value="schotter_mager">Schotterbett (mangelhaft verdichtet / kein Schotterkopf): Knickgrenze σ = 90 MPa</option>

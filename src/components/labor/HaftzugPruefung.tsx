@@ -21,6 +21,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -387,8 +388,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Abhebung ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
-          label: (ctx: any) => chartMode === 'stress'
+          title: (items: TooltipItem<'line'>[]) => `Abhebung ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
+          label: (ctx: TooltipItem<'line'>) => chartMode === 'stress'
             ? `Haftzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
             : `Zugkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
         }

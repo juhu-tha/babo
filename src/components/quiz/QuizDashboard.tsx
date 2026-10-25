@@ -25,7 +25,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { QuizSessionResult, QuizGapItem } from '@/src/utils/studyStorage';
-import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { useAlleFragen } from '@/src/data/quizLader';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 
 interface QuizDashboardProps {
@@ -67,6 +67,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
   const { setActiveTab } = useTabContext();
   const [selectedClusterFilter, setSelectedClusterFilter] = useState<'all' | ClusterNummer>('all');
   const [metricView, setMetricView] = useState<'both' | 'line' | 'heatmap'>('both');
+  const pool = useAlleFragen();
 
   const handleTabClick = (tab: string) => {
     if (onNavigateToTab) {
@@ -108,8 +109,8 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
   const moduleCompetenceMap = useMemo(() => {
     const map = new Map<string, ModuleCompetenceStat>();
 
-    // Seed from all available questions in QUIZ_QUESTIONS
-    QUIZ_QUESTIONS.forEach(q => {
+    // Seed from all available questions in the pool
+    (pool ?? []).forEach(q => {
       if (!map.has(q.moduleId)) {
         map.set(q.moduleId, {
           moduleId: q.moduleId,
@@ -172,7 +173,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
       if (a.clusterId !== b.clusterId) return a.clusterId.localeCompare(b.clusterId);
       return a.moduleTitle.localeCompare(b.moduleTitle);
     });
-  }, [activeGaps, history]);
+  }, [pool, activeGaps, history]);
 
   // Filtered modules by cluster
   const filteredModules = useMemo(() => {

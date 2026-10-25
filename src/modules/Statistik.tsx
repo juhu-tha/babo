@@ -1,3 +1,4 @@
+import type { ChartData } from 'chart.js';
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -1267,7 +1268,7 @@ export default function Statistik() {
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div className="h-[250px] relative border border-home-grau/30 rounded-xl p-2">
                           <Scatter 
-                            data={statChartData as any} 
+                            data={statChartData} 
                             options={{
                               responsive: true,
                               maintainAspectRatio: false,
@@ -1281,7 +1282,7 @@ export default function Statistik() {
                         </div>
                         <div className="h-[250px] relative border border-home-grau/30 rounded-xl p-2">
                           <Bar 
-                            data={histogramData as any} 
+                            data={histogramData as ChartData<'bar'>} 
                             options={{
                               responsive: true,
                               maintainAspectRatio: false,

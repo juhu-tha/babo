@@ -6,6 +6,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext } from '@/src/contexts/TabContext';
 
+import type { TabId } from '@/src/contexts/TabContext';
 interface Program {
   id: 'bauing' | 'pm' | 'ausbau' | 'fassade' | 'holzbau' | 'ttz' | 'mapr';
   title: string;
@@ -296,7 +297,7 @@ export default function WeiterTHA() {
     if (programId === 'all') {
       setActiveTab('weiter_tha');
     } else {
-      setActiveTab(`weiter_${programId}` as any);
+      setActiveTab(`weiter_${programId}` as TabId);
     }
   };
 
@@ -371,7 +372,7 @@ export default function WeiterTHA() {
           </button>
 
           {PROGRAMS.map((program) => {
-            const Icon = program.icon as any;
+            const Icon = program.icon;
             const isActive = activeProgram === program.id;
             return (
               <button
@@ -398,7 +399,7 @@ export default function WeiterTHA() {
       {/* Program Grids */}
       <div className="grid grid-cols-1 gap-8">
         {filteredPrograms.map((program) => {
-          const Icon = program.icon as any;
+          const Icon = program.icon;
           return (
             <div 
               key={program.id}

@@ -150,7 +150,7 @@ function AkrGefuegeSimulator() {
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setAggregateSensitivity(item.id as any)}
+                    onClick={() => setAggregateSensitivity(item.id as typeof aggregateSensitivity)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       aggregateSensitivity === item.id
                         ? 'bg-shiraz/10 text-shiraz border-shiraz font-bold shadow-xs'
@@ -175,7 +175,7 @@ function AkrGefuegeSimulator() {
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setExposureEnv(item.id as any)}
+                    onClick={() => setExposureEnv(item.id as typeof exposureEnv)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       exposureEnv === item.id
                         ? 'bg-shiraz text-white border-shiraz font-bold shadow-xs'

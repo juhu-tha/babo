@@ -1,3 +1,4 @@
+import type { Scale } from 'chart.js';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
@@ -10,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -256,7 +258,7 @@ export default function Kunststoffe() {
         min: 0.1,
         max: 10000,
         ticks: {
-          callback: function(value: any) {
+          callback: function(value: string | number) {
             if (value === 0.1 || value === 1 || value === 10 || value === 100 || value === 1000 || value === 10000) {
               return value;
             }
@@ -267,8 +269,8 @@ export default function Kunststoffe() {
       x: {
         title: { display: true, text: 'Temperatur [°C]' },
         ticks: {
-          callback: function(this: any, val: any, index: number) {
-            return index % 10 === 0 ? this.getLabelForValue(val) : '';
+          callback: function(this: Scale, val: string | number, index: number) {
+            return index % 10 === 0 ? this.getLabelForValue(val as number) : '';
           }
         }
       }
@@ -276,7 +278,7 @@ export default function Kunststoffe() {
     plugins: {
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'line'>) => {
             if (context.raw === null) return '';
             return `E-Modul: ${formatDeZahl(Number(context.raw), 1)} MPa`;
           }
@@ -315,7 +317,7 @@ export default function Kunststoffe() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as typeof activeTab)}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 isActive 
                   ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -356,7 +358,7 @@ export default function Kunststoffe() {
               <select aria-label="Kunststoff-Struktur" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={plasticType}
-                onChange={(e) => setPlasticType(e.target.value as any)}
+                onChange={(e) => setPlasticType(e.target.value as typeof plasticType)}
               >
                 <option value="amorphous">Amorpher Thermoplast (z.B. PVC, PMMA)</option>
                 <option value="semicrystalline">Teilkristalliner Thermoplast (z.B. PE, PP)</option>

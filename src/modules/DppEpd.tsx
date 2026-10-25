@@ -111,7 +111,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
   const playBeep = (type: 'success' | 'scan') => {
     if (!soundEnabled) return;
     try {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!AudioContextClass) return;
       const ctx = new AudioContextClass();
       const osc = ctx.createOscillator();
@@ -164,7 +164,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
         videoRef.current.srcObject = stream;
         videoRef.current.play().catch(e => console.log("Video playback exception", e));
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn("Camera hardware access rejected or restricted in iframe:", err);
       setCameraError("Zugriff blockiert (oder iFrame Sandbox Einschränkung)");
       setWebcamActive(false);

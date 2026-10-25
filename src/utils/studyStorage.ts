@@ -1,3 +1,4 @@
+import type { LabProtocolRecord } from '@/src/utils/labExportUtils';
 // Local storage helper for student learning progress, exam results and bookmarks
 
 export interface KlausurResult {
@@ -133,7 +134,7 @@ export const saveKlausurResult = (result: KlausurResult): void => {
   }
 };
 
-export const getStoredLabProtocols = (): any[] => {
+export const getStoredLabProtocols = (): LabProtocolRecord[] => {
   try {
     const raw = localStorage.getItem(STORAGE_KEYS.LAB_PROTOCOLS);
     return raw ? JSON.parse(raw) : [];
@@ -142,10 +143,10 @@ export const getStoredLabProtocols = (): any[] => {
   }
 };
 
-export const saveStoredLabProtocol = (protocol: any): void => {
+export const saveStoredLabProtocol = (protocol: LabProtocolRecord): void => {
   try {
     const history = getStoredLabProtocols();
-    const updated = [protocol, ...history.filter((p: any) => p.id !== protocol.id)].slice(0, 30);
+    const updated = [protocol, ...history.filter((p) => p.id !== protocol.id)].slice(0, 30);
     localStorage.setItem(STORAGE_KEYS.LAB_PROTOCOLS, JSON.stringify(updated));
   } catch (e) {
     console.warn('Could not save lab protocol', e);

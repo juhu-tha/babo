@@ -116,7 +116,7 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
             ].map((item) => (
               <button
                 key={item.id}
-                onClick={() => setCrremRetrofit(item.id as any)}
+                onClick={() => setCrremRetrofit(item.id as "none" | "opex" | "capex_huelle" | "capex_deep")}
                 className={`p-3 rounded-xl border text-left flex items-start gap-2.5 transition-all cursor-pointer ${
                         crremRetrofit === item.id
                           ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-xs'

@@ -287,7 +287,7 @@ export default function Erdbau() {
                 <div className="space-y-4">
                   <div>
                     <label className="text-sm font-bold block mb-1">Belastungsklasse (RStO)</label>
-                    <select aria-label="Belastungsklasse (RStO)" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bauklasse} onChange={(e) => setBauklasse(e.target.value as any)}>
+                    <select aria-label="Belastungsklasse (RStO)" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bauklasse} onChange={(e) => setBauklasse(e.target.value as typeof bauklasse)}>
                       <option value="Bk100">Bk100 (z.B. hochbelastete Autobahn)</option>
                       <option value="Bk32">Bk32 (z.B. Bundesstraße, sehr viel Schwerverkehr)</option>
                       <option value="Bk10">Bk10 (z.B. Hauptverkehrsstraße städtisch)</option>
@@ -308,7 +308,7 @@ export default function Erdbau() {
 
                   <div>
                     <label className="text-sm font-bold block mb-1">Bodenklasse des anstehenden Planums</label>
-                    <select aria-label="Bodenklasse des anstehenden Planums" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bodengruppe} onChange={(e) => setBodengruppe(e.target.value as any)}>
+                    <select aria-label="Bodenklasse des anstehenden Planums" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bodengruppe} onChange={(e) => setBodengruppe(e.target.value as typeof bodengruppe)}>
                       <option value="F2">F2 (Gering bis mittel frostempfindlich)</option>
                       <option value="F3">F3 (Sehr frostempfindlich, Schluff/Ton)</option>
                     </select>
@@ -317,7 +317,7 @@ export default function Erdbau() {
 
                   <div>
                     <label className="text-sm font-bold block mb-1">Gestaltung / Wasserverhältnisse</label>
-                    <select aria-label="Gestaltung / Wasserverhältnisse" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={wasserverhaeltnisse} onChange={(e) => setWasserverhaeltnisse(e.target.value as any)}>
+                    <select aria-label="Gestaltung / Wasserverhältnisse" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={wasserverhaeltnisse} onChange={(e) => setWasserverhaeltnisse(e.target.value as typeof wasserverhaeltnisse)}>
                       <option value="guenstig">Günstig (Gute Entwässerung, tiefer Grundwasserstand)</option>
                       <option value="unguenstig">Ungünstig (Hoher Grundwasserstand, muldenförmig)</option>
                     </select>

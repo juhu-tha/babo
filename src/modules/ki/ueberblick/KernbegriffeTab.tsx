@@ -109,7 +109,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
           ].map((term) => (
             <button
               key={term.id}
-              onClick={() => setSelectedTerm(term.id as any)}
+              onClick={() => setSelectedTerm(term.id as "ml" | "rag" | "llm" | "vision" | "agenten" | "ki" | "dl")}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                 selectedTerm === term.id
                   ? 'bg-shiraz text-white border-shiraz shadow-sm'
@@ -161,7 +161,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                 ].map((st) => (
                   <button
                     key={st.id}
-                    onClick={() => setDetailSubTab(st.id as any)}
+                    onClick={() => setDetailSubTab(st.id as "funktionsweise" | "beispiele" | "vergleich" | "formel" | "risiken")}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
                       detailSubTab === st.id
                         ? 'bg-shiraz text-white border-shiraz shadow-sm'

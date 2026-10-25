@@ -13,6 +13,7 @@ import { TAB_KEYWORDS } from '../../registry/modules';
 import { tabGroups } from '../../routing/tabGroups';
 import { VolltextTreffer } from './VolltextTreffer';
 
+import type { TabId } from '@/src/contexts/TabContext';
 const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   'Allgemein': Compass,
   'Grundlagen': Scale,
@@ -77,7 +78,7 @@ export function ModulNavigation({
         ? true 
         : (!isAnyClusterOpen && (openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive)));
 
-      const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t: any) => {
+      const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t) => {
         if (!searchQuery) return true;
         const query = searchQuery.toLowerCase();
         const translatedLabel = getTabLabel(t.id, t.label);
@@ -143,8 +144,8 @@ export function ModulNavigation({
           {isAllgemeinOpen && (
             <div className="flex flex-col gap-0.5 border-l-2 border-shiraz/40 dark:border-rose-500/40 ml-4 pl-2 my-1">
               {matchingAllgemeinTabs
-                .filter((t: any) => searchQuery ? true : t.id !== 'start')
-                .map((tab: any) => {
+                .filter((t) => searchQuery ? true : t.id !== 'start')
+                .map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
                   const isFav = favorites.includes(tab.id);
@@ -153,7 +154,7 @@ export function ModulNavigation({
                   return (
                     <div key={tab.id} className="group/item flex items-center gap-1">
                       <button 
-                        onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
+                        onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
                         className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                           (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                       >
@@ -182,14 +183,14 @@ export function ModulNavigation({
               </div>
               <div className="flex flex-wrap gap-1">
                 {favorites.slice(0, 4).map(favId => {
-                  const foundTab = tabGroups.flatMap(g => g.tabs as readonly any[]).find(t => t.id === favId);
+                  const foundTab = tabGroups.flatMap(g => g.tabs).find(t => t.id === favId);
                   if (!foundTab) return null;
                   const isFavActive = activeTab === favId;
                   const displayFavLabel = getTabLabel(foundTab.id, foundTab.label);
                   return (
                     <button
                       key={favId}
-                      onClick={() => { setActiveTab(favId as any); setMobileMenuOpen(false); }}
+                      onClick={() => { setActiveTab(favId as TabId); setMobileMenuOpen(false); }}
                       className={"text-xs px-2 py-1 rounded-lg border font-medium transition-colors truncate max-w-[130px] " +
                         (isFavActive ? "bg-shiraz text-white border-shiraz" : "bg-white dark:bg-slate-800 text-text-main/80 dark:text-slate-300 border-home-grau/30 dark:border-slate-700 hover:border-shiraz")}
                       title={displayFavLabel}
@@ -222,7 +223,7 @@ export function ModulNavigation({
         return clusterNameMatches ||
                group.name.toLowerCase().includes(query) || 
                groupNameTranslated.toLowerCase().includes(query) ||
-               group.tabs.some((t: any) => {
+               group.tabs.some((t) => {
                  const translatedLabel = getTabLabel(t.id, t.label);
                  const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
                  const keywords = TAB_KEYWORDS[t.id] || [];
@@ -235,7 +236,7 @@ export function ModulNavigation({
 
       const ClusterIcon = cluster.icon;
       const isClusterOpen = openClusters[cluster.id] || searchQuery !== "";
-      const hasActiveChild = clusterGroups.some(g => (g.tabs as readonly any[]).some(t => t.id === activeTab));
+      const hasActiveChild = clusterGroups.some(g => g.tabs.some(t => t.id === activeTab));
 
       return (
         <div 
@@ -276,7 +277,7 @@ export function ModulNavigation({
             <div className="px-2 pb-2 pt-0.5 flex flex-col gap-1 border-t border-home-grau/15 dark:border-slate-800">
               {cluster.id === 'vorlesungen' ? (
                 <div className="flex flex-col gap-0.5 my-0.5">
-                  {(matchingGroups as any[]).flatMap((g: any) => g.tabs).filter((tab: any) => {
+                  {matchingGroups.flatMap((g) => g.tabs).filter((tab) => {
                     if (!searchQuery) return true;
                     const query = searchQuery.toLowerCase();
                     const translatedLabel = getTabLabel(tab.id, tab.label);
@@ -284,7 +285,7 @@ export function ModulNavigation({
                     const keywords = TAB_KEYWORDS[tab.id] || [];
                     const keywordsInclude = keywords.some(k => k.includes(query));
                     return labelIncludes || keywordsInclude;
-                  }).map((tab: any) => {
+                  }).map((tab) => {
                     const Icon = tab.icon;
                     const isActive = activeTab === tab.id;
                     const isFav = favorites.includes(tab.id);
@@ -293,7 +294,7 @@ export function ModulNavigation({
                     return (
                       <div key={tab.id} className="group/item flex items-center gap-1">
                         <button 
-                          onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
+                          onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
                           className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                             (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                         >
@@ -314,7 +315,7 @@ export function ModulNavigation({
               ) : (
                 matchingGroups.map((group) => {
                 const isGroupOpen = openDropdown === group.name || searchQuery !== "";
-                const isGroupActive = (group.tabs as readonly any[]).some(t => t.id === activeTab || (t.id === 'stahlbeton_bemessung' && ['spannung', 'biegebemessung', 'querkraftbemessung', 'stuetzenbemessung', 'durchstanzen', 'verankerungslaenge', 'rissbreite'].includes(activeTab)));
+                const isGroupActive = group.tabs.some(t => t.id === activeTab || (t.id === 'stahlbeton_bemessung' && ['spannung', 'biegebemessung', 'querkraftbemessung', 'stuetzenbemessung', 'durchstanzen', 'verankerungslaenge', 'rissbreite'].includes(activeTab)));
                 const groupDisplayName = getGroupName(group.name);
 
                 return (
@@ -336,7 +337,7 @@ export function ModulNavigation({
                     
                     {isGroupOpen && (
                       <div className="flex flex-col gap-0.5 border-l-2 border-home-grau/30 dark:border-slate-700 ml-2.5 pl-2 my-0.5">
-                        {group.tabs.filter((tab: any) => {
+                        {group.tabs.filter((tab) => {
                           if (!searchQuery) return true;
                           const query = searchQuery.toLowerCase();
                           const translatedLabel = getTabLabel(tab.id, tab.label);
@@ -344,7 +345,7 @@ export function ModulNavigation({
                           const keywords = TAB_KEYWORDS[tab.id] || [];
                           const keywordsInclude = keywords.some(k => k.includes(query));
                           return labelIncludes || keywordsInclude;
-                        }).map((tab: any) => {
+                        }).map((tab) => {
                           if (tab.id.startsWith("divider")) {
                             const dividerText = getTabLabel(tab.id, tab.label.replace(/-/g, "").trim());
                             return (
@@ -361,7 +362,7 @@ export function ModulNavigation({
                           return (
                             <div key={tab.id} className="group/item flex items-center gap-1">
                               <button 
-                                onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
+                                onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
                                 className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                                   (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                               >

@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
+import type { MetaCluster } from '@/src/data/metaClusters';
 import { 
   Search, 
   X, 
@@ -30,9 +31,9 @@ export interface MetadataAuditItem {
 interface MetadataAuditModalProps {
   isOpen: boolean;
   onClose: () => void;
-  tabGroups: readonly any[] | any[];
+  tabGroups: readonly { name: string; tabs: readonly { id: string; label: string }[] }[];
   tabDescriptions: Record<string, string>;
-  groupToCluster: Record<string, any>;
+  groupToCluster: Record<string, Pick<MetaCluster, 'id' | 'number' | 'name'>>;
   onSelectTab: (tabId: string) => void;
 }
 
@@ -53,12 +54,12 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
   const allItems: MetadataAuditItem[] = useMemo(() => {
     const list: MetadataAuditItem[] = [];
 
-    tabGroups.forEach((group: any) => {
+    tabGroups.forEach((group) => {
       const cluster = groupToCluster[group.name];
       const clusterId = cluster ? cluster.id : 'allgemein';
       const clusterName = cluster ? `${cluster.number}: ${cluster.name}` : (group.name === 'Allgemein' ? 'Allgemein' : group.name);
 
-      group.tabs.forEach((tab: any) => {
+      group.tabs.forEach((tab) => {
         // Skip visual divider items
         if (tab.id.startsWith('divider_')) return;
 
@@ -286,7 +287,7 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
               ].map(f => (
                 <button
                   key={f.id}
-                  onClick={() => setStatusFilter(f.id as any)}
+                  onClick={() => setStatusFilter(f.id as typeof statusFilter)}
                   className={`px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer ${
                     statusFilter === f.id
                       ? 'bg-shiraz text-white font-bold shadow-2xs'

@@ -3,6 +3,7 @@ import { InlineMath } from 'react-katex';
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { steelCurveDefinitions } from './daten';
 import { Line } from 'react-chartjs-2';
+import type { ChartData, ChartOptions, Point } from 'chart.js';
 import { Slider } from '@/src/components/ui/Slider';
 import type { SteelCurveDefinition } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
@@ -18,8 +19,8 @@ interface SpannungsDehnungProps {
   simPhase: { phase: string; text: string; color: string; };
   simStress: number;
   strainZoom: "auto" | "detail" | "work" | "full";
-  stressStrainChartOptions: { responsive: boolean; maintainAspectRatio: boolean; animation: { duration: number; }; scales: { x: { type: "linear"; min: number; max: number; title: { display: boolean; text: string; font: { family: string; weight: "bold"; size: number; }; color: string; }; ticks: { stepSize: number; callback: (v: any) => string; font: { size: number; weight: "bold"; }; color: string; }; grid: { color: string; }; }; y: { min: number; max: number; title: { display: boolean; text: string; font: { family: string; weight: "bold"; size: number; }; color: string; }; ticks: { stepSize: number; callback: (v: any) => string; font: { size: number; }; color: string; }; grid: { color: string; }; }; }; plugins: { legend: { position: "top"; labels: { boxWidth: number; usePointStyle: boolean; font: { family: string; size: number; weight: "bold"; }; }; }; tooltip: { callbacks: { title: (items: any) => string; label: (context: any) => string; }; }; }; };
-  stressStrainMultiData: { datasets: any[]; };
+  stressStrainChartOptions: ChartOptions<'line'> & { scales: { x: { max: number }; y: { max: number } } };
+  stressStrainMultiData: ChartData<'line', Point[]>;
   testStrain: number;
 }
 

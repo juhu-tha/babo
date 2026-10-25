@@ -249,7 +249,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
     };
   }, [layers, rsi, rse]);
 
-  const updateLayer = (id: string, field: keyof WallLayer, value: any) => {
+  const updateLayer = (id: string, field: keyof WallLayer, value: WallLayer[keyof WallLayer]) => {
     setLayers(prev => prev.map(l => l.id === id ? { ...l, [field]: value } : l));
   };
 
@@ -686,7 +686,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[260px] flex flex-col">
                   <h3 className="text-xs font-bold text-center mb-1 text-text-main">E-Modul vs. Faservolumengehalt</h3>
                   <div className="flex-1 relative">
-                    <Line data={fvkResults.chartData} options={chartOptions as any} />
+                    <Line data={fvkResults.chartData} options={chartOptions} />
                   </div>
                 </div>
               </div>

@@ -284,8 +284,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         setAiOutput(data.text);
         setApiMode(data.status); // 'live' or 'simulated'
       }
-    } catch (err: any) {
-      setAiOutput(`### ❌ Fehler\n\nVerbindung zum lokalen Server fehlgeschlagen: ${err.message}`);
+    } catch (err) {
+      setAiOutput(`### ❌ Fehler\n\nVerbindung zum lokalen Server fehlgeschlagen: ${err instanceof Error ? err.message : String(err)}`);
       setApiMode('simulated');
     } finally {
       setIsLoadingAi(false);
