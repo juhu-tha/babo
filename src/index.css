@@ -792,6 +792,15 @@ input[type=range]:focus {
     display: none !important;
   }
   
+  /* App-Rahmen öffnen: Der Modulinhalt scrollt in <main> (overflow-y-auto) innerhalb eines h-screen-Rahmens
+     mit overflow-hidden. Ohne diese Regel druckt der Browser nur den ersten Bildschirm (eine Seite). */
+  main,
+  div:has(> main) {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
   /* Adjust main container to full screen space for printing */
   .lg\:pl-64 {
     padding-left: 0 !important;
