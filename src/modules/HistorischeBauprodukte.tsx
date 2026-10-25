@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import 'katex/dist/katex.min.css';
 import { 
   Layers, 
   BookOpen, 

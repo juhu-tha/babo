@@ -10,6 +10,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -449,6 +450,7 @@ export default function Feuchteschutz() {
         </div>
 
         {/* Right Side: Visual Graph & Physics (7 Cols) */}
+        <NachErstemBild minHoehe="30rem">
         <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-full">
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-800 border-b border-slate-100 pb-2.5 mb-4 flex items-center justify-between">
@@ -505,9 +507,12 @@ export default function Feuchteschutz() {
             </div>
           </div>
         </div>
+        </NachErstemBild>
       </div>
 
       {/* Chapter 2: s_d-Value Multi-Layer Sandbox ("Innen dichter als außen") */}
+      {/* Abschnitte unterhalb des Bildausschnitts erst nach dem ersten Bild (Ladezeit, AP 5.5) */}
+      <NachErstemBild minHoehe="50rem">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-150 pb-4 mb-5 gap-3">
           <div>
@@ -700,8 +705,10 @@ export default function Feuchteschutz() {
           </div>
         </div>
       </div>
+      </NachErstemBild>
       
       {/* GLASER-DIAGRAMM & TAUWASSERBILANZ – einzige Glaser-Implementierung (AP 3.9) */}
+      <NachErstemBild minHoehe="40rem">
       {(() => {
         const g = layerCalculations.glaser;
         const namen = layerCalculations.computed.map(l => l.name);
@@ -805,8 +812,10 @@ export default function Feuchteschutz() {
           </div>
         );
       })()}
+      </NachErstemBild>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <NachErstemBild minHoehe="20rem">
       <FormulaDerivationBox
         title="Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums"
         zielGleichung="\theta_{d} = \frac{237{,}3 \cdot \ln(p/610{,}5)}{17{,}269 - \ln(p/610{,}5)}"
@@ -830,6 +839,7 @@ export default function Feuchteschutz() {
         ergebnisHinweis="Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis."
         normQuelle="Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03"
       />
+      </NachErstemBild>
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="feuchteschutz" />

@@ -16,6 +16,7 @@ import MischungsberechnungAnleitung from './MischungsberechnungAnleitung';
 import Packungsdichte from './Packungsdichte';
 import GepruefteBeispieleSection, { BenchmarkData } from '@/src/components/mischung/GepruefteBeispieleSection';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import { zementData, KONSISTENZ_DATA, KORN_WATER_BASE, BAUTEILE, EXPOSITIONSKLASSEN, rezepturen } from './mischungsberechnung/daten';
 import { GrenzwerteSection } from './mischungsberechnung/GrenzwerteSection';
 import { WalzKurvenSection } from './mischungsberechnung/WalzKurvenSection';
@@ -571,6 +572,7 @@ export default function Mischungsberechnung() {
           <MischungErgebnisse betonMengeL={betonMengeL} biochar={biochar} dmax={dmax} expClasses={expClasses} fa={fa} feuchte04={feuchte04} feuchte1632={feuchte1632} feuchte48={feuchte48} feuchte816={feuchte816} feuchteBiochar={feuchteBiochar} hues={hues} lineChartData={lineChartData} luft={luft} pieChartData={pieChartData} ppFaser={ppFaser} results={results} rhoGestein={rhoGestein} setBetonMengeL={setBetonMengeL} sf={sf} stahlfaser={stahlfaser} zement={zement} zementArt={zementArt} zementFestigkeit={zementFestigkeit} zusatzmittel={zusatzmittel} />
         </div>
 
+        <NachErstemBild minHoehe="12rem">
         <FormulaDerivationBox
           title="Rechenweg: Nachweis der Grenzwerte für die gewählte Mischung"
           zielGleichung="(w/z)_{eq} = \frac{w}{z + k_{FA} \cdot f + k_{SF} \cdot s + k_{HS} \cdot h + k_{PK} \cdot b} \le (w/z)_{max}"
@@ -586,6 +588,7 @@ export default function Mischungsberechnung() {
           })()}
           ergebnisHinweis="Der Rechenweg folgt den aktuellen Eingaben des Rechners."
         />
+        </NachErstemBild>
       </div>
       )}
 
