@@ -89,10 +89,28 @@ function isAuthorized(req: Request, secret: string | null): boolean {
   return pw.length > 0 && safeEqual(pw, secret);
 }
 
+// --- Version für /api/health (package.json liegt im Container neben dist/) -------
+
+const APP_VERSION: string = (() => {
+  try {
+    const v = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf-8")).version;
+    return typeof v === "string" ? v : "unbekannt";
+  } catch {
+    return "unbekannt";
+  }
+})();
+
 // --- Einfache Anfragebegrenzung im Arbeitsspeicher ---------------------------
 
 function rateLimit(opts: { windowMs: number; max: number; name: string }) {
+  // Schlüssel enthält die Client-IP; nur im Arbeitsspeicher, nie geloggt oder gespeichert.
+  // Abgelaufene Einträge werden regelmäßig entfernt, damit IPs nicht über das Zeitfenster hinaus verbleiben.
   const hits = new Map<string, { count: number; reset: number }>();
+  const aufraeumen = setInterval(() => {
+    const now = Date.now();
+    for (const [k, v] of hits) if (v.reset < now) hits.delete(k);
+  }, Math.max(opts.windowMs, 60_000));
+  aufraeumen.unref();
   return (req: Request, res: Response, next: NextFunction) => {
     const now = Date.now();
     const key = `${opts.name}:${req.ip}`;
@@ -460,6 +478,13 @@ ${prompt}
       pollStore.delete(lectureId);
     }
     res.json({ success: true, votes: serialize(lectureId) });
+  });
+
+  // Betriebs-Check für Cloud Run / Monitoring (Phase 5, AP 5.8): keine personenbezogenen Daten,
+  // keine Anfragebegrenzung (kein IP-Bezug), nicht cachen
+  app.get("/api/health", (_req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    res.json({ status: "ok", version: APP_VERSION, uptime: Math.round(process.uptime()) });
   });
 
   // Unbekannte API-Pfade

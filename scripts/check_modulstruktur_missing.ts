@@ -5,7 +5,8 @@ function checkModulstrukturNodes() {
   const modulPath = path.join(process.cwd(), 'src/modules/Modulstruktur.tsx');
   const modulContent = fs.readFileSync(modulPath, 'utf8');
   const appPath = path.join(process.cwd(), 'src/App.tsx');
-  const appContent = fs.readFileSync(appPath, 'utf8');
+  // Routen liegen seit Phase 5 (AP 5.2) in src/routing/ModulInhalt.tsx
+  const appContent = fs.readFileSync(appPath, 'utf8') + '\n' + fs.readFileSync(path.join(process.cwd(), 'src/routing/ModulInhalt.tsx'), 'utf8');
 
   // get all rendered tabs in App.tsx
   const matches = [...appContent.matchAll(/activeTab === '([a-zA-Z0-9_\-]+)'/g)].map(m => m[1]);
