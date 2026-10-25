@@ -103,6 +103,8 @@ const Holzkorrosion = React.lazy(() => import('../modules/Holzkorrosion'));
 const Metallkorrosion = React.lazy(() => import('../modules/Metallkorrosion'));
 const WeitereOrganik = React.lazy(() => import('../modules/WeitereOrganik'));
 const Schadstoffe = React.lazy(() => import('../modules/Schadstoffe'));
+const AltholzUrbanMining = React.lazy(() => import('../modules/AltholzUrbanMining'));
+const PfasBaustoffe = React.lazy(() => import('../modules/PfasBaustoffe'));
 const Ressourceneffizienz = React.lazy(() => import('../modules/Ressourceneffizienz'));
 const BodenMaterialAufbereitung = React.lazy(() => import('../modules/BodenMaterialAufbereitung'));
 const Abfaelle = React.lazy(() => import('../modules/Abfaelle'));
@@ -422,6 +424,8 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'historische_bauweisen' && <HistorischeBauweisen />}
     {activeTab === 'historische_bauprodukte' && <HistorischeBauprodukte />}
     {activeTab === 'schadstoffe' && <Schadstoffe />}
+    {activeTab === 'altholz_urban_mining' && <AltholzUrbanMining />}
+    {activeTab === 'pfas_baustoffe' && <PfasBaustoffe />}
     {activeTab === 'ressourceneffizienz' && <Ressourceneffizienz />}
     {activeTab === 'vdi6200' && <Zustandsbewertung />}
     {activeTab === 'abfaelle' && <Abfaelle />}
