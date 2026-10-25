@@ -2,7 +2,9 @@
 import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
+import os from 'os';
 import {
+  parseTdmRep, tdmVorbehalt, tdmAusAntwort, TDMREP_PFAD,
   leseRegistry, normZiele, vergleicheAusgabe, slugVon, normZitate, fundstellen,
   parseRobots, robotsErlaubt, parseSitemapLocs, indexiereDinMedia, parseDinMediaSeite, bewerteNorm,
   deDaten, parseGiiSeite, bewerteGesetz, Abrufer, fuehreCheckAus, berichtMarkdown, aktualisierePruefliste,
@@ -178,7 +180,8 @@ const srcDateien = [
   gleich(e.manuell.map((m: { code: string }) => m.code), ['DBV-Merkblatt Nachbehandlung:2020', 'BauPVO – VO (EU) 2024/3110'], 'Gesamtlauf: manuelle Punkte');
   gleich(e.zusammenfassung.handlungsbedarf, 2, 'Gesamtlauf: Handlungsbedarf');
   pruefe(e.zusammenfassung.quelleErreicht === true, 'Gesamtlauf: Quelle erreicht');
-  pruefe(abgerufen.every(u => u in netz || u.includes('gibtsnicht')), `Gesamtlauf: unerwartete Abrufe ${abgerufen.filter(u => !(u in netz)).join(', ')}`);
+  pruefe(abgerufen.every(u => u in netz || u.includes('gibtsnicht') || u.endsWith(TDMREP_PFAD)), `Gesamtlauf: unerwartete Abrufe ${abgerufen.filter(u => !(u in netz)).join(', ')}`);
+  pruefe(abgerufen.filter(u => u.endsWith(TDMREP_PFAD)).length === 2, 'tdmrep.json je Host genau einmal');
   pruefe(abgerufen.filter(u => u.endsWith('/robots.txt')).length === 2, 'robots.txt je Host genau einmal');
 
   const md = berichtMarkdown(e);
@@ -205,9 +208,66 @@ const srcDateien = [
   pruefe(gesperrt.every(u => u.endsWith('/robots.txt')), `ohne robots.txt: trotzdem abgerufen ${gesperrt.join(', ')}`);
   pruefe(e2.zusammenfassung.quelleErreicht === false, 'ohne robots.txt: quelleErreicht false');
 
+  // 7. TDM-Vorbehalt (§ 44b UrhG): tdmrep.json, Header, Meta
+  const regeln = parseTdmRep(fixture('tdmrep-vorbehalt.json'));
+  gleich(regeln?.length, 3, 'tdmrep.json gelesen');
+  gleich(tdmVorbehalt(regeln, '/de/norm/din-1045-3/1')?.location, '/de/norm/*', 'Vorbehalt für Produktseite');
+  gleich(tdmVorbehalt(regeln, '/de/norm/frei/x'), null, 'spezifischere Regel ohne Vorbehalt gewinnt');
+  gleich(tdmVorbehalt(regeln, '/service-sitemap-dinmedia-de-sitemap_index.xml'), null, 'Sitemap ohne Vorbehalt');
+  gleich(tdmVorbehalt(parseTdmRep('[{"location":"/","tdm-reservation":1}]'), '/gefstoffv_2010/index.html')?.location, '/', '„/“ gilt für alles');
+  gleich([parseTdmRep('kein json'), parseTdmRep('{"location":"/"}')], [null, null], 'ungültige tdmrep.json');
+  gleich(tdmAusAntwort({ 'TDM-Reservation': '1' }, ''), 'HTTP-Header tdm-reservation: 1', 'Header (Groß-/Kleinschreibung egal)');
+  gleich(tdmAusAntwort({ 'tdm-reservation': '0' }, '<meta name="tdm-reservation" content="0">'), null, 'Wert 0 = kein Vorbehalt');
+  gleich(tdmAusAntwort({}, fixture('gii-tdm-meta.html')), '<meta name="tdm-reservation" content="1">', 'Meta, Attribute vertauscht');
+  gleich(tdmAusAntwort({}, fixture('dinmedia-aktuell.html')), null, 'Seite ohne Vorbehalt');
+
+  const lauf = async (extra: Record<string, { status: number; body: Buffer; headers?: Record<string, string> }>) => {
+    const urls: string[] = [];
+    const logs: string[] = [];
+    const ab = new Abrufer({ holen: async (u: string) => { urls.push(u); return extra[u] ?? netz[u] ?? { status: 404, body: Buffer.from('') }; }, verzoegerungMs: 0, log: (m: string) => logs.push(m) });
+    const erg = await fuehreCheckAus({ registryText, gesetze, pruefliste, srcDateien, abrufer: ab, datum: '2027-03-01' });
+    return { erg, urls, logs };
+  };
+  type N = { befund: string; grund?: string; aktuell?: unknown; kette: unknown[] };
+  type Gz = { kurz: string; befund: string; standDatum?: string };
+
+  // a) tdmrep.json behält Produktseiten vor → keine Produktseite abgerufen, alles manuell
+  const a = await lauf({ [`${D}${TDMREP_PFAD}`]: { status: 200, body: Buffer.from(fixture('tdmrep-vorbehalt.json')) } });
+  pruefe(a.erg.normen.every((n: N) => n.befund === 'tdm_vorbehalt' && !n.aktuell && !n.kette.length), `tdmrep.json: Befunde ${a.erg.normen.map((n: N) => n.befund).join(',')}`);
+  pruefe(!a.urls.some(u => u.includes('/de/norm/')), 'tdmrep.json: Produktseite trotz Vorbehalt abgerufen');
+  pruefe(a.logs.some(l => l.includes('TDM-Vorbehalt laut /.well-known/tdmrep.json')), 'tdmrep.json: Grund protokolliert');
+  pruefe(a.erg.gesetze[0].befund === 'basis_erfasst', 'tdmrep.json: andere Quelle unberührt');
+  pruefe(berichtMarkdown(a.erg).includes('Nutzungsvorbehalt für Text und Data Mining'), 'tdmrep.json: Bericht nennt Vorbehalt');
+  pruefe(a.erg.quellen.dinMedia.startsWith('nicht ausgewertet: TDM-Vorbehalt'), 'tdmrep.json: Quellenangabe');
+
+  // b) Header auf einer Produktseite → ganze Quelle manuell, auch bereits ausgewertete Normen
+  const b = await lauf({ [`${D}/de/norm/din-4108-2/2`]: { status: 200, body: Buffer.from(fixture('dinmedia-ersetzt.html')), headers: { 'tdm-reservation': '1' } } });
+  pruefe(b.erg.normen.every((n: N) => n.befund === 'tdm_vorbehalt'), `Header: Befunde ${b.erg.normen.map((n: N) => n.befund).join(',')}`);
+  pruefe(!b.urls.includes(`${D}/de/norm/din-1052/3`), 'Header: nach Vorbehalt weiter abgerufen');
+  pruefe(b.erg.normen.every((n: N) => (n.grund ?? '').includes('HTTP-Header tdm-reservation: 1')), 'Header: Grund je Norm');
+
+  // c) Meta-Angabe bei gesetze-im-internet.de → Gesetze manuell, Normen unberührt
+  const c = await lauf({ [`${G}/gefstoffv_2010/index.html`]: { status: 200, body: Buffer.from(fixture('gii-tdm-meta.html')) } });
+  gleich(c.erg.gesetze.map((g: Gz) => `${g.kurz}:${g.befund}:${g.standDatum ?? '-'}`), ['GefStoffV:tdm_vorbehalt:-', 'XYZV:tdm_vorbehalt:-'], 'Meta: Gesetze manuell, kein Stand übernommen');
+  gleich(c.erg.normen.find((n: { nummer: string }) => n.nummer === 'DIN 1045-3').befund, 'aktuell', 'Meta: DIN Media unberührt');
+  pruefe(c.erg.zusammenfassung.gesetzeManuell === 2, 'Meta: Zählung manuell');
+
+  // d) tdmrep.json nicht abrufbar (5xx) → vorsorglich keine automatische Prüfung
+  const d = await lauf({ [`${D}${TDMREP_PFAD}`]: { status: 503, body: Buffer.from('') } });
+  pruefe(d.erg.normen.every((n: N) => n.befund === 'tdm_vorbehalt' || n.befund === 'uebersprungen'), 'tdmrep.json 503: Normen manuell');
+  pruefe(!d.urls.some(u => u.includes('/de/norm/') || u.includes('sitemap')), 'tdmrep.json 503: trotzdem abgerufen');
+
+  // e) kein Seiteninhalt im Cache: nur Sitemaps werden gespeichert
+  const cacheDir = fs.mkdtempSync(path.join(os.tmpdir(), 'normen-cache-'));
+  const abC = new Abrufer({ holen: async (u: string) => netz[u] ?? { status: 404, body: Buffer.from('') }, verzoegerungMs: 0, cacheDir });
+  await fuehreCheckAus({ registryText, gesetze, srcDateien, abrufer: abC, datum: '2027-03-01' });
+  const gespeichert = fs.readdirSync(cacheDir).map(f => fs.readFileSync(path.join(cacheDir, f), 'utf8'));
+  pruefe(gespeichert.length === 2 && gespeichert.every(t => /<(urlset|sitemapindex)/.test(t)), `Cache enthält ${gespeichert.length} Dateien, nicht nur Sitemaps`);
+  fs.rmSync(cacheDir, { recursive: true, force: true });
+
   if (fehler.length) {
     for (const f of fehler) console.error(`FAIL: ${f}`);
     process.exit(1);
   }
-  console.log('OK: Normen-Check-Parser, robots.txt, Abgleich und Berichte');
+  console.log('OK: Normen-Check-Parser, robots.txt, TDM-Vorbehalt, Abgleich und Berichte');
 })();

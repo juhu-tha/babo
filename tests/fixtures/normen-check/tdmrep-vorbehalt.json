@@ -1,0 +1,5 @@
+[
+  { "location": "/de/norm/*", "tdm-reservation": 1, "tdm-policy": "https://example.org/tdm-policy.json" },
+  { "location": "/de/norm/frei/*", "tdm-reservation": 0 },
+  { "location": "/service-sitemap*", "tdm-reservation": 0 }
+]

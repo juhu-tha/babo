@@ -17,8 +17,13 @@
  * Regeln für den Abruf (Details: docs/normen-check/README.md):
  * - robots.txt jeder Quelle wird vor dem ersten Abruf gelesen und befolgt (inkl. Crawl-delay);
  *   ist robots.txt nicht abrufbar, wird die Quelle NICHT abgefragt (→ manuelle Prüfliste).
+ * - TDM-Vorbehalt (§ 44b Abs. 3 UrhG, Art. 4 DSM-RL): /.well-known/tdmrep.json, Header
+ *   „tdm-reservation“ und <meta name="tdm-reservation"> werden geprüft; bei Vorbehalt (oder nicht
+ *   abrufbarer tdmrep.json) entfällt die automatische Prüfung der ganzen Quelle (→ manuelle Prüfliste).
  * - DIN Media: nur Produktseiten, die DIN Media selbst in der Sitemap veröffentlicht; keine Suche.
- * - eindeutiger User-Agent, höchstens ein Abruf je Host alle 3 s, Datei-Cache.
+ * - ausgewertet und gespeichert werden nur Ausgabe-Metadaten (Nummer, Ausgabe, Ersatzvermerk, Stand);
+ *   Seiten werden nicht zwischengespeichert, der Datei-Cache enthält nur Sitemaps.
+ * - eindeutiger User-Agent, höchstens ein Abruf je Host alle 3 s.
  * - keine Zusatzpakete (global fetch, Node ≥ 18).
  * Exit-Code 2, wenn keine einzige Quelle erreichbar war (Workflow legt dann ein Issue an).
  */
@@ -362,7 +367,51 @@ export async function standardHolen(url) {
     redirect: 'follow',
     signal: AbortSignal.timeout(45_000),
   });
-  return { status: r.status, body: Buffer.from(await r.arrayBuffer()) };
+  return { status: r.status, headers: Object.fromEntries(r.headers), body: Buffer.from(await r.arrayBuffer()) };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Nutzungsvorbehalt für Text und Data Mining (§ 44b Abs. 3 UrhG, Art. 4 Abs. 3 RL (EU) 2019/790)
+// Maschinenlesbar nach TDMRep (W3C Community Group): /.well-known/tdmrep.json,
+// HTTP-Header „tdm-reservation: 1“, <meta name="tdm-reservation" content="1">.
+// ---------------------------------------------------------------------------------------------
+
+export const TDMREP_PFAD = '/.well-known/tdmrep.json';
+
+/** tdmrep.json → [{location, reserviert, policy}]; null bei ungültigem Inhalt */
+export function parseTdmRep(text) {
+  let daten;
+  try { daten = JSON.parse(text); } catch { return null; }
+  if (!Array.isArray(daten)) return null;
+  return daten.filter(r => r && typeof r.location === 'string').map(r => ({
+    location: r.location,
+    reserviert: String(r['tdm-reservation']) === '1',
+    policy: r['tdm-policy'] ?? null,
+  }));
+}
+
+/** Spezifischste passende Regel (längste location) entscheidet; Vorbehalt → Regel, sonst null */
+export function tdmVorbehalt(regeln, pfad) {
+  let best = null;
+  for (const r of regeln) {
+    const loc = r.location.startsWith('/') ? r.location : '/' + r.location;
+    // Präfixvergleich mit Platzhalter „*“ (vorsichtige Auslegung: „/de/norm“ gilt auch für Unterpfade)
+    if (!robotsMuster(loc).test(pfad)) continue;
+    if (!best || loc.length > best.location.length) best = { ...r, location: loc };
+  }
+  return best?.reserviert ? best : null;
+}
+
+/** Vorbehalt aus Antwort-Header oder HTML-Meta-Angabe; liefert Fundort oder null */
+export function tdmAusAntwort(headers = {}, text = '') {
+  const h = Object.fromEntries(Object.entries(headers || {}).map(([k, v]) => [k.toLowerCase(), String(v)]));
+  if (h['tdm-reservation']?.trim() === '1') return 'HTTP-Header tdm-reservation: 1';
+  for (const m of text.slice(0, 200_000).matchAll(/<meta\b[^>]*>/gi)) {
+    const tag = m[0];
+    if (!/\bname\s*=\s*["']?tdm-reservation["']?/i.test(tag)) continue;
+    if (/\bcontent\s*=\s*["']?\s*1\b/i.test(tag)) return '<meta name="tdm-reservation" content="1">';
+  }
+  return null;
 }
 
 const schlafen = ms => new Promise(r => setTimeout(r, ms));
@@ -372,6 +421,8 @@ export class Abrufer {
     Object.assign(this, { holen, verzoegerungMs, cacheDir, ttlTage, log });
     this.robots = new Map(); // host → Promise<robots|null>
     this.letzter = new Map(); // host → ms
+    this.tdm = new Map(); // origin → Promise<TDMRep-Regeln|null>
+    this.vorbehalt = new Map(); // origin → Grund (TDM-Vorbehalt erkannt)
     this.statistik = { abrufe: 0, cache: 0, fehler: 0, gesperrt: 0 };
   }
 
@@ -416,13 +467,50 @@ export class Abrufer {
     return this.cacheDir ? path.join(this.cacheDir, crypto.createHash('sha1').update(url).digest('hex')) : null;
   }
 
-  /** {ok, status, text, grund} */
-  async text(url) {
+  /**
+   * TDMRep-Regeln der Quelle (/.well-known/tdmrep.json); [] = keine Datei (4xx),
+   * null = nicht abrufbar oder ungültig (Quelle wird dann vorsorglich nicht abgefragt).
+   */
+  tdmFuer(origin, robots) {
+    if (!this.tdm.has(origin)) {
+      this.tdm.set(origin, (async () => {
+        if (!robotsErlaubt(robots, TDMREP_PFAD)) return []; // nicht abrufbar, aber kein maschinenlesbarer Vorbehalt
+        const r = await this.roh(`${origin}${TDMREP_PFAD}`, robots.crawlDelay);
+        if (r.status === 200) {
+          const regeln = parseTdmRep(r.body.toString('utf8'));
+          if (!regeln) this.log(`${TDMREP_PFAD} von ${origin} ungültig – Quelle wird übersprungen`);
+          return regeln;
+        }
+        if (r.status >= 400 && r.status < 500) return [];
+        this.log(`${TDMREP_PFAD} von ${origin} nicht abrufbar (${r.status || r.fehler}) – Quelle wird übersprungen`);
+        return null;
+      })());
+    }
+    return this.tdm.get(origin);
+  }
+
+  /** TDM-Vorbehalt für die ganze Quelle festhalten (alle weiteren Abrufe unterbleiben) */
+  vorbehaltSetzen(origin, grund) {
+    if (!this.vorbehalt.has(origin)) {
+      this.vorbehalt.set(origin, grund);
+      this.log(`${origin}: ${grund} – automatische Prüfung entfällt, Punkte auf die manuelle Liste`);
+    }
+  }
+
+  /** {ok, status, text, grund}; cache=false: Inhalt wird nicht gespeichert (Produkt-/Gesetzesseiten) */
+  async text(url, { cache = false } = {}) {
     const u = new URL(url);
+    const pfad = u.pathname + u.search;
+    const nein = grund => { this.statistik.gesperrt++; return { ok: false, status: 0, text: '', grund }; };
     const robots = await this.robotsFuer(u.origin);
-    if (!robots) { this.statistik.gesperrt++; return { ok: false, status: 0, text: '', grund: 'robots.txt nicht abrufbar' }; }
-    if (!robotsErlaubt(robots, u.pathname + u.search)) { this.statistik.gesperrt++; return { ok: false, status: 0, text: '', grund: 'durch robots.txt ausgeschlossen' }; }
-    const cp = this.cachePfad(url);
+    if (!robots) return nein('robots.txt nicht abrufbar');
+    if (!robotsErlaubt(robots, pfad)) return nein('durch robots.txt ausgeschlossen');
+    if (this.vorbehalt.has(u.origin)) return nein(this.vorbehalt.get(u.origin));
+    const tdm = await this.tdmFuer(u.origin, robots);
+    if (!tdm) { this.vorbehaltSetzen(u.origin, `${TDMREP_PFAD} nicht abrufbar oder ungültig`); return nein(this.vorbehalt.get(u.origin)); }
+    const regel = tdmVorbehalt(tdm, u.pathname);
+    if (regel) { this.vorbehaltSetzen(u.origin, `TDM-Vorbehalt laut ${TDMREP_PFAD} (location „${regel.location}“)`); return nein(this.vorbehalt.get(u.origin)); }
+    const cp = cache ? this.cachePfad(url) : null;
     if (cp && fs.existsSync(cp) && Date.now() - fs.statSync(cp).mtimeMs < this.ttlTage * 864e5) {
       this.statistik.cache++;
       return { ok: true, status: 200, text: fs.readFileSync(cp, 'utf8'), grund: 'cache' };
@@ -432,6 +520,8 @@ export class Abrufer {
     let body = r.body;
     if (body[0] === 0x1f && body[1] === 0x8b) body = zlib.gunzipSync(body);
     const text = body.toString('utf8');
+    const tdmAntwort = tdmAusAntwort(r.headers, text);
+    if (tdmAntwort) { this.vorbehaltSetzen(u.origin, `TDM-Vorbehalt (${tdmAntwort}) auf ${u.pathname}`); return nein(this.vorbehalt.get(u.origin)); }
     if (cp) { fs.mkdirSync(path.dirname(cp), { recursive: true }); fs.writeFileSync(cp, text); }
     return { ok: true, status: 200, text, grund: 'abgerufen' };
   }
@@ -442,7 +532,8 @@ export class Abrufer {
 // ---------------------------------------------------------------------------------------------
 
 const HANDLUNG_NORM = new Set(['neuere_ausgabe', 'zurueckgezogen', 'ersetzt_durch_andere', 'registry_neuer']);
-const MANUELL_NORM = new Set(['nicht_gefunden', 'nicht_abrufbar', 'nicht_lesbar', 'teilweise_ersetzt', 'ohne_registry_ausgabe', 'uebersprungen']);
+const MANUELL_NORM = new Set(['nicht_gefunden', 'nicht_abrufbar', 'nicht_lesbar', 'teilweise_ersetzt', 'ohne_registry_ausgabe', 'uebersprungen', 'tdm_vorbehalt']);
+const MANUELL_GESETZ = new Set(['nicht_abrufbar', 'nicht_lesbar', 'uebersprungen', 'tdm_vorbehalt']);
 
 export const BEFUND_TEXT = {
   aktuell: 'aktuell',
@@ -456,6 +547,7 @@ export const BEFUND_TEXT = {
   nicht_abrufbar: 'nicht abrufbar – manuell prüfen',
   nicht_lesbar: 'Seite nicht auswertbar – manuell prüfen',
   uebersprungen: 'nicht abgefragt – manuell prüfen',
+  tdm_vorbehalt: 'Nutzungsvorbehalt für Text und Data Mining – manuell prüfen',
   basis_erfasst: 'Stand erstmals erfasst',
   geaendert: 'geändert seit letztem Lauf',
   unveraendert: 'unverändert',
@@ -466,11 +558,11 @@ async function dinMediaIndex(abrufer, log) {
   const robots = await abrufer.robotsFuer(DINMEDIA);
   if (!robots) return { index: null, grund: 'robots.txt nicht abrufbar' };
   const start = robots.sitemaps.find(s => /-de-sitemap_index\.xml$/.test(s)) || DINMEDIA_SITEMAP_FALLBACK;
-  const idx = await abrufer.text(start);
+  const idx = await abrufer.text(start, { cache: true });
   if (!idx.ok) return { index: null, grund: `Sitemap: ${idx.grund}` };
   const locs = [];
   for (const sm of parseSitemapLocs(idx.text)) {
-    const r = await abrufer.text(sm);
+    const r = await abrufer.text(sm, { cache: true });
     if (r.ok) locs.push(...parseSitemapLocs(r.text));
     else log(`Sitemap ${sm}: ${r.grund}`);
   }
@@ -606,6 +698,23 @@ export async function fuehreCheckAus({ registryText, gesetze, pruefliste = '', s
   }
   for (const e of gesetze.eu ?? []) manuell.push({ art: 'EU-Rechtsakt', code: `${e.kurz} – ${e.fundstelle}`, url: e.url, grund: 'konsolidierte Fassung auf EUR-Lex manuell prüfen' });
 
+  // TDM-Vorbehalt erkannt: keine automatisch gewonnenen Angaben dieser Quelle verwenden
+  const dinVb = abrufer.vorbehalt.get(DINMEDIA);
+  if (dinVb) {
+    for (const n of normen) {
+      if (n.befund === 'uebersprungen' && !mitDinMedia) continue;
+      Object.assign(n, { befund: 'tdm_vorbehalt', grund: dinVb, kette: [] });
+      delete n.aktuell;
+    }
+  }
+  const giiVb = abrufer.vorbehalt.get(GII);
+  if (giiVb) {
+    for (const [i, g] of gesetzErg.entries()) {
+      if (g.befund === 'uebersprungen') continue;
+      gesetzErg[i] = { kurz: g.kurz, titel: g.titel, gii: g.gii, befund: 'tdm_vorbehalt', grund: giiVb, basis: g.basis, dateien: g.dateien, bgblSuche: g.bgblSuche };
+    }
+  }
+
   const zaehle = (liste, f) => liste.filter(f).length;
   const zusammenfassung = {
     normenGeprueft: normen.length,
@@ -614,7 +723,7 @@ export async function fuehreCheckAus({ registryText, gesetze, pruefliste = '', s
     normenManuell: zaehle(normen, n => MANUELL_NORM.has(n.befund)),
     gesetzeGeprueft: gesetzErg.length,
     gesetzeGeaendert: zaehle(gesetzErg, g => g.befund === 'geaendert' || g.befund === 'aelter_als_basis'),
-    gesetzeManuell: zaehle(gesetzErg, g => ['nicht_abrufbar', 'nicht_lesbar', 'uebersprungen'].includes(g.befund)),
+    gesetzeManuell: zaehle(gesetzErg, g => MANUELL_GESETZ.has(g.befund)),
     weitereManuell: manuell.length,
   };
   zusammenfassung.handlungsbedarf = zusammenfassung.normenHandlungsbedarf + zusammenfassung.gesetzeGeaendert;
@@ -623,7 +732,10 @@ export async function fuehreCheckAus({ registryText, gesetze, pruefliste = '', s
   return {
     version: 1,
     datum,
-    quellen: { dinMedia: mitDinMedia ? dinGrund : 'nicht abgefragt', gii: mitGii ? 'gesetze-im-internet.de' : 'nicht abgefragt' },
+    quellen: {
+      dinMedia: !mitDinMedia ? 'nicht abgefragt' : dinVb ? `nicht ausgewertet: ${dinVb}` : dinGrund,
+      gii: !mitGii ? 'nicht abgefragt' : giiVb ? `nicht ausgewertet: ${giiVb}` : 'gesetze-im-internet.de',
+    },
     abrufe: { ...abrufer.statistik },
     zusammenfassung,
     normen,
@@ -684,7 +796,7 @@ export function berichtMarkdown(e) {
   }
 
   const man = e.normen.filter(n => MANUELL_NORM.has(n.befund));
-  const gMan = e.gesetze.filter(g => ['nicht_abrufbar', 'nicht_lesbar', 'uebersprungen'].includes(g.befund));
+  const gMan = e.gesetze.filter(g => MANUELL_GESETZ.has(g.befund));
   L.push('## 3. Manuell zu prüfen', '');
   if (!man.length && !gMan.length && !e.manuell.length) L.push('Keine.', '');
   for (const n of man) {
@@ -727,7 +839,7 @@ export function aktualisierePruefliste(text, e, berichtLink) {
     L.push(`- [ ] **${g.kurz}**: ${BEFUND_TEXT[g.befund]} (${deDatum(g.basis)} → ${deDatum(g.standDatum)}) – ${g.dateien.length} Dateien mit Bezug, siehe Bericht`);
   }
   const nMan = e.normen.filter(n => MANUELL_NORM.has(n.befund)).length;
-  const gMan = e.gesetze.filter(g => ['nicht_abrufbar', 'nicht_lesbar', 'uebersprungen'].includes(g.befund)).length;
+  const gMan = e.gesetze.filter(g => MANUELL_GESETZ.has(g.befund)).length;
   if (nMan + gMan + e.manuell.length) L.push(`- [ ] Manuelle Prüfung laut Bericht, Abschnitt 3: ${nMan} Normen, ${gMan} Gesetze/Verordnungen, ${e.manuell.length} weitere Regelwerke/EU-Rechtsakte`);
   if (!handlung.length && L.length === 4 && !(nMan + gMan + e.manuell.length)) L.push('- Kein Handlungsbedarf festgestellt.');
   // Abgleich der Normzitate in den Prüfhinweisen oben
