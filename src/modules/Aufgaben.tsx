@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { clusterDerGruppen as clusterIds } from '@/src/data/quizLader';
 import { AUFGABEN_QUIZ_GRUPPEN } from '@/src/data/aufgabenQuizGruppen';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, Trophy, ClipboardCheck, ArrowRight, Calculator } from 'lucide-react';
@@ -16,8 +16,7 @@ const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
 
 function clusterDerGruppen(gruppen?: string[]): string {
   if (!gruppen) return 'I–V';
-  const ids = [...new Set(QUIZ_QUESTIONS.filter(q => q.gruppe && gruppen.includes(q.gruppe)).map(q => q.clusterId))];
-  return ids.join(', ') || '–';
+  return clusterIds(gruppen).join(', ') || '–';
 }
 
 export default function Aufgaben() {
@@ -327,11 +326,11 @@ export default function Aufgaben() {
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      setActiveTab((task.moduleHint as any).id);
+                                      if (!Array.isArray(task.moduleHint)) setActiveTab(task.moduleHint.id);
                                     }}
                                     className="text-[11px] font-bold text-shiraz bg-shiraz/5 hover:bg-shiraz/10 px-3 py-1.5 rounded-lg border border-shiraz/10 transition-colors inline-flex items-center gap-1.5"
                                   >
-                                    <BookOpen size={12} /> Modul: {(task.moduleHint as any).name}
+                                    <BookOpen size={12} /> Modul: {task.moduleHint.name}
                                   </button>
                                 )}
                               </div>

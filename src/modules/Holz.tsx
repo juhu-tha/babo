@@ -859,7 +859,7 @@ export default function Holz() {
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
               <h4 className="text-sm font-bold text-center mb-2">Druckfestigkeit vs. Faserwinkel</h4>
               <div className="flex-1 relative">
-                <Line data={hankinsonData} options={hankinsonOptions as any} />
+                <Line data={hankinsonData} options={hankinsonOptions} />
               </div>
             </div>
           </div>

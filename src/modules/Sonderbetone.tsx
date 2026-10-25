@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { Layers, Droplets, Droplet, Recycle, ShieldAlert, Waves, Box, Target, Zap, Circle, Weight, Package, Construction, MoveDown } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -22,7 +23,7 @@ import Bohrpfahlbeton from './Bohrpfahlbeton';
 export default function Sonderbetone() {
   const [activeTab, setActiveTab] = useState<'Leichtbeton' | 'Sichtbeton' | 'Spritzbeton' | 'Recyclingbeton' | 'UHPC' | 'Draenbeton' | 'Faserbeton' | 'Schleuderbeton' | 'UwBeton' | 'Infraleichtbeton' | 'SVB' | 'Schwerbeton' | 'Massenbeton' | 'Pumpbeton' | 'Bohrpfahlbeton'>('Leichtbeton');
 
-  const options = [
+  const options: { value: typeof activeTab; label: string; icon: LucideIcon }[] = [
     { value: 'Leichtbeton', label: 'Leichtbeton', icon: Box },
     { value: 'Infraleichtbeton', label: 'Infraleichtbeton', icon: Package },
     { value: 'Sichtbeton', label: 'Sichtbeton', icon: Layers },
@@ -68,12 +69,12 @@ export default function Sonderbetone() {
             <p className="text-[11px] font-bold uppercase tracking-wider text-text-main/60 mb-1.5">{g.titel}</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {options.filter(o => g.werte.includes(o.value)).map((opt) => {
-            const Icon = (opt as any).icon;
+            const Icon = opt.icon;
             const isActive = activeTab === opt.value;
             return (
               <button
                 key={opt.value}
-                onClick={() => setActiveTab(opt.value as any)}
+                onClick={() => setActiveTab(opt.value as typeof activeTab)}
                 className={"flex flex-col items-center justify-center p-3 rounded-xl border transition-all text-xs text-center gap-2 cursor-pointer " + (
                   isActive 
                     ? "border-shiraz bg-shiraz text-white shadow-md scale-[1.02]" 

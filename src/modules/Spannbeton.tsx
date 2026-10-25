@@ -578,7 +578,7 @@ export default function Spannbeton() {
                   <label className="block text-[10px] font-semibold text-text-main/70 mb-1">Zementklasse</label>
                   <select aria-label="Zementklasse"
                     value={cementType}
-                    onChange={(e) => setCementType(e.target.value as any)}
+                    onChange={(e) => setCementType(e.target.value as typeof cementType)}
                     className="w-full text-xs bg-white border border-home-grau/30 rounded p-1 outline-none text-text-main font-medium focus:ring-1 focus:ring-shiraz"
                   >
                     <option value="R">Klasse R (Schnell)</option>
@@ -737,7 +737,7 @@ export default function Spannbeton() {
               </label>
               <select aria-label="Spannglied-Verbundart"
                 value={tendonSystem}
-                onChange={(e) => setTendonSystem(e.target.value as any)}
+                onChange={(e) => setTendonSystem(e.target.value as typeof tendonSystem)}
                 className="w-full text-xs bg-off-white border border-home-grau/30 rounded-lg p-2.5 outline-none font-medium text-text-main"
               >
                 <option value="bonded">Nachträglicher Verbund (bonded post-tensioned)</option>

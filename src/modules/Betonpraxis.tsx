@@ -893,7 +893,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <label className="text-xs font-bold text-text-main block">2. Festigkeitsentwicklung (r-Wert)</label>
                     <select aria-label="2. Festigkeitsentwicklung (r-Wert)"
                       value={curingStrength}
-                      onChange={(e) => setCuringStrength(e.target.value as any)}
+                      onChange={(e) => setCuringStrength(e.target.value as typeof curingStrength)}
                       className="w-full text-xs p-2 border border-home-grau/30 rounded"
                     >
                       <option value="schnell">Schnell (r ≥ 0,50)</option>
@@ -909,7 +909,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <label className="text-xs font-bold text-text-main block">3. Bauteiloberflächentemperaturen</label>
                     <select aria-label="3. Bauteiloberflächentemperaturen"
                       value={curingTemp}
-                      onChange={(e) => setCuringTemp(e.target.value as any)}
+                      onChange={(e) => setCuringTemp(e.target.value as typeof curingTemp)}
                       className="w-full text-xs p-2 border border-home-grau/30 rounded"
                     >
                       <option value="5_9">5 °C bis 9 °C (Winterlich kühl)</option>
@@ -970,7 +970,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <button
                       key={size}
                       type="button"
-                      onClick={() => setGroesstkorn(size as any)}
+                      onClick={() => setGroesstkorn(size as typeof groesstkorn)}
                       className={`py-2 px-3 text-xs font-mono font-bold rounded-lg border transition-all ${
                         groesstkorn === size
                           ? 'bg-shiraz text-white border-shiraz'
@@ -1074,7 +1074,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <button
                         key={item.id}
                         type="button"
-                        onClick={() => setWuBauteil(item.id as any)}
+                        onClick={() => setWuBauteil(item.id as typeof wuBauteil)}
                         className={`flex-1 py-1.5 px-2 font-semibold text-center text-xs rounded transition-all ${
                           wuBauteil === item.id
                             ? 'bg-shiraz text-white'
@@ -1098,7 +1098,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <button
                         key={item.id}
                         type="button"
-                        onClick={() => setWuBk(item.id as any)}
+                        onClick={() => setWuBk(item.id as typeof wuBk)}
                         className={`flex-1 py-1.5 px-2 font-semibold text-center text-xs rounded transition-all ${
                           wuBk === item.id
                             ? 'bg-shiraz text-white'
@@ -1124,7 +1124,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <button
                         key={item.id}
                         type="button"
-                        onClick={() => setWuBauweise(item.id as any)}
+                        onClick={() => setWuBauweise(item.id as typeof wuBauweise)}
                         className={`flex-1 py-1.5 px-1 font-semibold text-center text-xs rounded transition-all ${
                           wuBauweise === item.id
                             ? 'bg-shiraz text-white'

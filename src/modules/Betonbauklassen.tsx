@@ -515,7 +515,7 @@ export default function Betonbauklassen() {
                   return (
                     <button
                       key={phase.id}
-                      onClick={() => setActivePhase(phase.id as any)}
+                      onClick={() => setActivePhase(phase.id as typeof activePhase)}
                       className={`w-full p-3 rounded-lg border text-left flex gap-3.5 transition-all cursor-pointer ${
                         isActive 
                           ? 'bg-shiraz text-white border-shiraz shadow-sm' 

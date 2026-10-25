@@ -9,6 +9,7 @@ import ProbenahmePlaner from './bauwerksuntersuchung/ProbenahmePlaner';
 import InterpretationNavigator from './bauwerksuntersuchung/InterpretationNavigator';
 import { Scale } from 'lucide-react';
 
+import type { TabId } from '@/src/contexts/TabContext';
 const ZfP = React.lazy(() => import('./ZfP'));
 
 export default function Bauwerksuntersuchung() {
@@ -304,7 +305,7 @@ export default function Bauwerksuntersuchung() {
                             setSubTab('zfp');
                             setActiveTab('zfp');
                           } else {
-                            setActiveTab(current.linkTab as any);
+                            setActiveTab(current.linkTab as TabId);
                           }
                         }}
                         className="w-full py-2.5 px-4 bg-shiraz hover:bg-shiraz/90 text-white rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 group cursor-pointer shadow-xs"

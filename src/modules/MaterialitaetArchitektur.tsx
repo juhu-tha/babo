@@ -1,3 +1,4 @@
+import type { TabId } from '@/src/contexts/TabContext';
 import React, { useState } from 'react';
 import { 
   Palette, 
@@ -502,7 +503,7 @@ export default function MaterialitaetArchitektur() {
               <button
                 onClick={() => {
                   // Direct navigation to specific module if exists
-                  const targetMap: Record<string, any> = {
+                  const targetMap: Record<string, TabId> = {
                     beton: 'beton_a_z',
                     mauerziegel: 'mauerwerk',
                     gesteine: 'gesteine',

@@ -11,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -428,8 +429,8 @@ export default function BiegezugPruefung() {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Durchbiegung δ = ${formatDeZahl(Number(items[0].parsed.x), 2)} mm`,
-          label: (ctx: any) => chartMode === 'force'
+          title: (items: TooltipItem<'line'>[]) => `Durchbiegung δ = ${formatDeZahl(Number(items[0].parsed.x), 2)} mm`,
+          label: (ctx: TooltipItem<'line'>) => chartMode === 'force'
             ? `Prüfkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
             : `Biegezugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
         }

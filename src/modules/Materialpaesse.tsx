@@ -280,7 +280,7 @@ export default function Materialpaesse() {
                 ].map((type) => (
                   <button
                     key={type.id}
-                    onClick={() => setJoiningMethod(type.id as any)}
+                    onClick={() => setJoiningMethod(type.id as typeof joiningMethod)}
                     className={`p-2.5 rounded-lg border text-center flex flex-col items-center justify-between h-20 transition-all ${
                       joiningMethod === type.id 
                         ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm' 

@@ -41,7 +41,7 @@ export default function PraxisInnovationen({ praxisCategory, setPraxisCategory }
             return (
               <button
                 key={tab.id}
-                onClick={() => setPraxisCategory(tab.id as any)}
+                onClick={() => setPraxisCategory(tab.id as "lehmbau" | "gebaeudetyp_e" | "urban_mining" | "holz_hybrid")}
                 className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
                     isActive
                       ? 'bg-shiraz text-white border-shiraz shadow-sm'

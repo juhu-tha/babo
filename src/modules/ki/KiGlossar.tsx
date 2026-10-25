@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { 
   BookOpen, 
@@ -22,7 +23,7 @@ export interface GlossarEntry {
   shortName: string;
   badge: string;
   category: 'core' | 'architecture' | 'practice';
-  icon: any;
+  icon: LucideIcon;
   oneLiner: string;
   analogy: string;
   constructionUse: string;

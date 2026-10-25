@@ -682,7 +682,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setUseCaseType(item.id as any)}
+                    onClick={() => setUseCaseType(item.id as typeof useCaseType)}
                     className={`w-full p-2.5 rounded-lg text-left text-xxs transition-all border cursor-pointer ${
                       useCaseType === item.id
                         ? 'bg-shiraz text-white border-shiraz font-bold'
@@ -707,7 +707,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setDataConfidentiality(item.id as any)}
+                    onClick={() => setDataConfidentiality(item.id as typeof dataConfidentiality)}
                     className={`w-full p-2.5 rounded-lg text-left text-xxs transition-all border cursor-pointer ${
                       dataConfidentiality === item.id
                         ? 'bg-shiraz text-white border-shiraz font-bold'
@@ -732,7 +732,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setHumanReviewLevel(item.id as any)}
+                    onClick={() => setHumanReviewLevel(item.id as typeof humanReviewLevel)}
                     className={`w-full p-2.5 rounded-lg text-left text-xxs transition-all border cursor-pointer ${
                       humanReviewLevel === item.id
                         ? 'bg-shiraz text-white border-shiraz font-bold'

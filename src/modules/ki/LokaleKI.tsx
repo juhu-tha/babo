@@ -626,7 +626,7 @@ print(response.choices[0].message.content)`}</pre>
             ].map((hw) => (
               <button
                 key={hw.id}
-                onClick={() => setSelectedHardware(hw.id as any)}
+                onClick={() => setSelectedHardware(hw.id as typeof selectedHardware)}
                 className={`p-4 rounded-xl text-left border transition-all cursor-pointer ${
                   selectedHardware === hw.id
                     ? 'bg-shiraz/10 text-shiraz border-shiraz font-bold shadow-xs'

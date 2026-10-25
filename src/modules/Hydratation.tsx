@@ -1,3 +1,4 @@
+import type { ChartDataset, ChartOptions } from 'chart.js';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Flame, Activity, Info } from 'lucide-react';
@@ -12,7 +13,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -285,7 +287,7 @@ export default function Hydratation() {
     const E_2d_rel = EActRel[idx2d] || 0;
 
     // Dynamischer Aufbau des Datasets je nach gewähltem Festigkeitsmodus
-    let strengthDatasets: any[] = [];
+    let strengthDatasets: ChartDataset<'line'>[] = [];
     if (festigkeitsModus === 'relativ') {
       strengthDatasets = [
         {
@@ -500,19 +502,19 @@ export default function Hydratation() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${formatDeZahl((context.raw as number), 1)}`
+          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${formatDeZahl((context.raw as number), 1)}`
         }
       }
     }
   };
 
   const strengthOptions = useMemo(() => {
-    let yScales: any = {
+    let yScales: NonNullable<ChartOptions<'line'>['scales']> = {
       y: {
         min: 0,
         max: 120,
         title: { display: true, text: 'Relativer Kennwert (%)', font: { family: 'Work Sans', weight: 'bold' as const } },
-        ticks: { callback: (val: any) => `${val} %` }
+        ticks: { callback: (val: string | number) => `${val} %` }
       }
     };
 
@@ -522,7 +524,7 @@ export default function Hydratation() {
           min: 0,
           suggestedMax: Math.ceil(fcm28 * 1.15),
           title: { display: true, text: 'Druckfestigkeit f_cm (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
-          ticks: { callback: (val: any) => `${val} MPa` }
+          ticks: { callback: (val: string | number) => `${val} MPa` }
         }
       };
     } else if (festigkeitsModus === 'zug') {
@@ -531,7 +533,7 @@ export default function Hydratation() {
           min: 0,
           suggestedMax: Number((fctm28 * 1.25).toFixed(1)),
           title: { display: true, text: 'Zugfestigkeit f_ctm (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
-          ticks: { callback: (val: any) => `${val} MPa` }
+          ticks: { callback: (val: string | number) => `${val} MPa` }
         }
       };
     } else if (festigkeitsModus === 'emodul') {
@@ -540,7 +542,7 @@ export default function Hydratation() {
           min: 0,
           suggestedMax: Math.ceil(Ecm28 * 1.15),
           title: { display: true, text: 'Elastizitätsmodul E_cm (GPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
-          ticks: { callback: (val: any) => `${val} GPa` }
+          ticks: { callback: (val: string | number) => `${val} GPa` }
         }
       };
     } else if (festigkeitsModus === 'alle_absolut') {
@@ -552,7 +554,7 @@ export default function Hydratation() {
           min: 0,
           suggestedMax: Math.ceil(fcm28 * 1.15),
           title: { display: true, text: 'Druck- & Zugfestigkeit (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
-          ticks: { callback: (val: any) => `${val} MPa` }
+          ticks: { callback: (val: string | number) => `${val} MPa` }
         },
         yE: {
           type: 'linear',
@@ -562,7 +564,7 @@ export default function Hydratation() {
           suggestedMax: Math.ceil(Ecm28 * 1.15),
           title: { display: true, text: 'E-Modul (GPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
           grid: { drawOnChartArea: false },
-          ticks: { callback: (val: any) => `${val} GPa` }
+          ticks: { callback: (val: string | number) => `${val} GPa` }
         }
       };
     }
@@ -581,7 +583,7 @@ export default function Hydratation() {
         legend: { position: 'top' as const },
         tooltip: {
           callbacks: {
-            label: (context: any) => {
+            label: (context: TooltipItem<'line'>) => {
               const val = context.raw as number;
               const lbl = context.dataset.label || '';
               if (lbl.includes('(%)')) {

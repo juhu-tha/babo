@@ -173,7 +173,7 @@ export default function Kreislaufwirtschaft() {
     setAuditComponents(auditComponents.filter(c => c.id !== id));
   };
 
-  const updateAuditComponent = (id: string, field: keyof DeconstructionComponent, value: any) => {
+  const updateAuditComponent = (id: string, field: keyof DeconstructionComponent, value: DeconstructionComponent[keyof DeconstructionComponent]) => {
     setAuditComponents(auditComponents.map(c => {
       if (c.id === id) {
         const updated = { ...c, [field]: value };
@@ -846,7 +846,7 @@ export default function Kreislaufwirtschaft() {
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Kategorie</label>
                         <select aria-label="Kategorie"
                           value={newCompCat}
-                          onChange={(e) => setNewCompCat(e.target.value as any)}
+                          onChange={(e) => setNewCompCat(e.target.value as typeof newCompCat)}
                           className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
                         >
                           <option value="Metall">Metall (Aluminium/Stahl)</option>
@@ -861,7 +861,7 @@ export default function Kreislaufwirtschaft() {
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Fügungsart</label>
                         <select aria-label="Fügungsart"
                           value={newCompConn}
-                          onChange={(e) => setNewCompConn(e.target.value as any)}
+                          onChange={(e) => setNewCompConn(e.target.value as typeof newCompConn)}
                           className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
                         >
                           <option value="geschraubt">Geschraubt (demontabel)</option>
@@ -886,7 +886,7 @@ export default function Kreislaufwirtschaft() {
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Einheit</label>
                         <select aria-label="Einheit"
                           value={newCompUnit}
-                          onChange={(e) => setNewCompUnit(e.target.value as any)}
+                          onChange={(e) => setNewCompUnit(e.target.value as typeof newCompUnit)}
                           className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none"
                         >
                           <option value="Stk">Stk</option>

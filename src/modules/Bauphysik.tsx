@@ -434,7 +434,7 @@ export default function Bauphysik() {
     }
   };
 
-  const updateLayer = (index: number, field: string, value: any) => {
+  const updateLayer = (index: number, field: keyof (typeof layers)[number], value: string | number) => {
     const newLayers = [...layers];
     newLayers[index] = { ...newLayers[index], [field]: value };
     setLayers(newLayers);
@@ -520,7 +520,7 @@ export default function Bauphysik() {
                   id="building-part-select"
                   aria-label="Bauteil-Typ"
                   value={buildingPart}
-                  onChange={(e) => setBuildingPart(e.target.value as any)}
+                  onChange={(e) => setBuildingPart(e.target.value as typeof buildingPart)}
                   className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-bold text-slate-800 cursor-pointer focus:ring-1 focus:ring-shiraz"
                 >
                   <option value="wall">Außenwand (Soll: U ≤ 0,24 W/(m²K), Rsi = 0,13 m²K/W)</option>
@@ -1134,7 +1134,7 @@ export default function Bauphysik() {
                   <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-2">Raumtyp &amp; Sollvorgaben nach DIN:</label>
                   <select aria-label="Raumtyp &amp; Sollvorgaben nach DIN" 
                     value={roomType}
-                    onChange={(e) => setRoomType(e.target.value as any)}
+                    onChange={(e) => setRoomType(e.target.value as typeof roomType)}
                     className="w-full text-xs p-2 border border-slate-200 bg-white rounded-lg font-bold text-slate-800"
                   >
                     <option value="classroom">Schulraum / Unterricht (A3: T_soll = 0,32 · lg V − 0,17)</option>

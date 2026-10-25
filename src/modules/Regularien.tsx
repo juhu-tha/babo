@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
@@ -251,7 +252,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
   }
 ];
 
-const levelIcons: Record<string, React.ComponentType<any>> = {
+const levelIcons: Record<string, LucideIcon> = {
   globe: Globe,
   scale: Scale,
   building: Building,

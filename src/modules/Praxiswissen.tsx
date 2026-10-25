@@ -653,7 +653,7 @@ export default function Praxiswissen() {
           ].map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as "planung" | "bauleitung" | "produktion" | "karriere")}
               className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 flex items-center gap-2 ${
                 activeTab === tab.id
                   ? 'border-shiraz text-shiraz bg-shiraz/5'

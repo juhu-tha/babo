@@ -238,7 +238,7 @@ export default function Probenahme() {
                         <button
                           key={b.id}
                           type="button"
-                          onClick={() => setElemType(b.id as any)}
+                          onClick={() => setElemType(b.id as typeof elemType)}
                           className={`p-2 rounded-lg border text-left transition-all ${
                             elemType === b.id 
                               ? 'bg-shiraz/10 border-shiraz font-bold' 

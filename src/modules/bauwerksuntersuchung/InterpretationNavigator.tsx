@@ -387,7 +387,7 @@ export default function InterpretationNavigator() {
                 />
                 <select
                   value={bruchTyp}
-                  onChange={(e) => setBruchTyp(e.target.value as any)}
+                  onChange={(e) => setBruchTyp(e.target.value as typeof bruchTyp)}
                   className="text-xs p-1 bg-white border border-slate-300 rounded font-bold"
                 >
                   <option value="A">Typ A (Beton)</option>

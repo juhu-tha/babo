@@ -509,7 +509,7 @@ export default function HistorischeBauweisen() {
                     <label className="text-xs font-semibold text-slate-800 block mb-1">Holzart:</label>
                     <select aria-label="Holzart" 
                       value={woodType} 
-                      onChange={(e) => setWoodType(e.target.value as any)}
+                      onChange={(e) => setWoodType(e.target.value as typeof woodType)}
                       className="w-full text-xs p-2 rounded-lg border border-home-grau/30 bg-white"
                     >
                       <option value="fichte">Fichte / Tanne (Standard-Nadelholz)</option>
@@ -522,7 +522,7 @@ export default function HistorischeBauweisen() {
                     <label className="text-xs font-semibold text-slate-800 block mb-1">Ausrichtungsrichtung des Holzquerschnitts:</label>
                     <select aria-label="Ausrichtungsrichtung des Holzquerschnitts" 
                       value={grainDirection} 
-                      onChange={(e) => setGrainDirection(e.target.value as any)}
+                      onChange={(e) => setGrainDirection(e.target.value as typeof grainDirection)}
                       className="w-full text-xs p-2 rounded-lg border border-home-grau/30 bg-white"
                     >
                       <option value="radial">Radial (stehende Jahresringe - stabiler)</option>

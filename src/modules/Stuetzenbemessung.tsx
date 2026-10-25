@@ -49,7 +49,7 @@ export default function Stuetzenbemessung() {
 
   const chartData = {
     datasets: [
-      ...results.interactionCurves.map((curve: any, index: number) => ({
+      ...results.interactionCurves.map((curve, index) => ({
         label: `ω = ${formatDeZahl(curve.omega, 2)}${curve.isRequired ? ' (erf.)' : ''}`,
         data: curve.points,
         borderColor: curve.isRequired ? '#A3113E' : `rgba(71, 85, 105, ${0.3 + (index % 8) * 0.1})`,
@@ -272,7 +272,7 @@ export default function Stuetzenbemessung() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm h-[400px]">
               <h3 className="text-sm font-bold text-text-main mb-4">Interaktionsdiagramm (Dehnungsiteration)</h3>
               <div className="relative w-full h-[300px]">
-                <Line data={chartData as any} options={chartOptions as any} />
+                <Line data={chartData} options={chartOptions} />
               </div>
             </div>
           </div>

@@ -811,7 +811,7 @@ export default function Nawaro() {
                   <label className="text-xs font-bold text-text-main uppercase tracking-wider">Dämmendes Bauteil</label>
                   <select aria-label="Dämmendes Bauteil"
                     value={navWallType}
-                    onChange={(e) => setNavWallType(e.target.value as any)}
+                    onChange={(e) => setNavWallType(e.target.value as typeof navWallType)}
                     className="w-full border border-home-grau/30 rounded-lg p-2 text-xs text-text-main font-semibold bg-white"
                   >
                     <option value="dach">Steildach / Zwischensparrendämmung</option>

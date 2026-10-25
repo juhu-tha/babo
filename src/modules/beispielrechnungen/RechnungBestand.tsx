@@ -70,7 +70,7 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                   <label className="font-bold text-slate-700 block">Historische Festigkeitsklasse (DIN 1045:1972):</label>
                   <select aria-label="Historische Festigkeitsklasse (DIN 1045:1972)" 
                     value={histBetonKlasse} 
-                    onChange={(e) => setHistBetonKlasse(e.target.value as any)}
+                    onChange={(e) => setHistBetonKlasse(e.target.value as "B100" | "B150" | "B225" | "B300" | "B450" | "B600")}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
                     <option value="B100">B 100 (Nominalfestigkeit 10,0 N/mm²)</option>
@@ -205,7 +205,7 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                   <label className="font-bold text-slate-700 block">Historische Betonstahl-Art:</label>
                   <select aria-label="Historische Betonstahl-Art" 
                     value={histStahlKlasse} 
-                    onChange={(e) => setHistStahlKlasse(e.target.value as any)}
+                    onChange={(e) => setHistStahlKlasse(e.target.value as "BSt220" | "BSt420" | "BSt500")}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
                     <option value="BSt220">Betonstahl I (BSt 220/340 RU) - Glatt, warmgewalzt, unberuhigt</option>

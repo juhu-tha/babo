@@ -2,7 +2,7 @@ import React, { useId, useState } from 'react';
 import { ChevronDown, Clock, Target } from 'lucide-react';
 import type { ModulLernziele as Daten } from '@/src/data/lernziele';
 import { MODUL_BY_ID } from '@/src/registry/modules';
-import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { anzahlFragenRoute } from '@/src/data/quizLader';
 import { formatDeWert } from '@/src/utils/numberFormat';
 
 const NIVEAU = { B: 'Bachelor', M: 'Master', 'B/M': 'Bachelor und Master' } as const;
@@ -11,7 +11,7 @@ const NIVEAU = { B: 'Bachelor', M: 'Master', 'B/M': 'Bachelor und Master' } as c
 export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: string; daten: Daten; oeffneModul: (id: string) => void }) {
   const [offen, setOffen] = useState(false);
   const id = useId();
-  const fragen = QUIZ_QUESTIONS.filter(q => q.route === moduleId).length;
+  const fragen = anzahlFragenRoute(moduleId);
   return (
     <section aria-label="Lernziele" className="mb-4 rounded-xl border border-home-grau/30 bg-white text-sm">
       <button type="button" aria-expanded={offen} aria-controls={id} onClick={() => setOffen(!offen)}

@@ -495,7 +495,7 @@ export default function Bodenmechanik() {
               <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[500px] flex flex-col">
                 <h3 className="text-sm font-bold text-center mb-4">Mohr-Coulomb Bruchkriterium</h3>
                 <div className="flex-1 relative">
-                  <Line data={shearResults.chartData} options={scherfestigkeitChartOptions as any} />
+                  <Line data={shearResults.chartData} options={scherfestigkeitChartOptions} />
                 </div>
               </div>
             </div>
@@ -571,7 +571,7 @@ export default function Bodenmechanik() {
               <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[500px] flex flex-col">
                 <h3 className="text-sm font-bold text-center mb-4">Erddruckverteilung über die Tiefe</h3>
                 <div className="flex-1 relative">
-                  <Line data={erddruckResults.chartData} options={erddruckChartOptions as any} />
+                  <Line data={erddruckResults.chartData} options={erddruckChartOptions} />
                 </div>
               </div>
             </div>
@@ -641,7 +641,7 @@ export default function Bodenmechanik() {
               <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[400px] flex flex-col">
                 <h3 className="text-sm font-bold text-center mb-4">Zeit-Setzungs-Verlauf</h3>
                 <div className="flex-1 relative">
-                  <Line data={konsolidierungResults.chartData} options={konsolidierungChartOptions as any} />
+                  <Line data={konsolidierungResults.chartData} options={konsolidierungChartOptions} />
                 </div>
               </div>
             </div>

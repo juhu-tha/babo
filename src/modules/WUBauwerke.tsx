@@ -18,6 +18,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 
 ChartJS.register(
@@ -114,7 +115,7 @@ export default function WUBauwerke() {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => `Druckgefälle: ${formatDeZahl(context.parsed.y, 2)} [-]`
+          label: (context: TooltipItem<'line'>) => `Druckgefälle: ${formatDeZahl(context.parsed.y, 2)} [-]`
         }
       }
     },

@@ -581,7 +581,7 @@ export function OerEncyclopedia() {
                         <select aria-label="Beton-Festigkeitsklasse" 
                           disabled={compressionForce > 0}
                           value={concreteClass} 
-                          onChange={(e) => setConcreteClass(e.target.value as any)}
+                          onChange={(e) => setConcreteClass(e.target.value as typeof concreteClass)}
                           className="w-full text-xs p-1.5 border border-slate-200 rounded bg-white text-slate-700 focus:outline-none"
                         >
                           <option value="C25/30">C25/30 (Normalbeton)</option>
@@ -593,7 +593,7 @@ export function OerEncyclopedia() {
                         <select aria-label="Geometrie des Körpers" 
                           disabled={compressionForce > 0}
                           value={probeType} 
-                          onChange={(e) => setProbeType(e.target.value as any)}
+                          onChange={(e) => setProbeType(e.target.value as typeof probeType)}
                           className="w-full text-xs p-1.5 border border-slate-200 rounded bg-white text-slate-700 focus:outline-none"
                         >
                           <option value="Wuerfel">Würfel (150 mm)</option>

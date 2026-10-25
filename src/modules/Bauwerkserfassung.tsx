@@ -514,7 +514,7 @@ export default function Bauwerkserfassung() {
                     <select aria-label="Holzkennwertklasse (NH)"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono font-bold"
                       value={woodClass}
-                      onChange={(e) => setWoodClass(e.target.value as any)}
+                      onChange={(e) => setWoodClass(e.target.value as typeof woodClass)}
                     >
                       <option value="C16">C16 (Standard-Nadelholz, f_m_k=16 MPa)</option>
                       <option value="C24">C24 (Konstruktionsvollholz, f_m_k=24 MPa)</option>

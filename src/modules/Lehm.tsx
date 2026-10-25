@@ -1,3 +1,4 @@
+import type { TooltipItem } from 'chart.js';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -7,7 +8,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
-function Pie({ data, options }: any) {
+function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unknown }) {
   return (
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
       Zusammensetzungsdiagramm
@@ -82,7 +83,7 @@ export default function Lehm() {
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function(context: TooltipItem<'pie'>) {
             return `${context.label}: ${formatDeZahl(context.parsed, 1)}%`;
           }
         }

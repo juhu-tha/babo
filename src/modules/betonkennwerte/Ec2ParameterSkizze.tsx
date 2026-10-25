@@ -2,10 +2,11 @@
 import { Compass } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { EC2_CONCRETE_CLASSES } from './daten';
+import type { RechnerTabProps } from './RechnerTab';
 
 export interface Ec2ParameterSkizzeProps {
   baseConcrete: typeof EC2_CONCRETE_CLASSES[0];
-  calcResults: any;
+  calcResults: RechnerTabProps['calcResults'];
   cementClass: 'S' | 'N' | 'R';
   aggregateType: 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
   relativeHumidity: number;

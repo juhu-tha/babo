@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import 'katex/dist/katex.min.css';
 import { 
   Layers, 
   BookOpen, 
@@ -740,7 +739,7 @@ export default function HistorischeBauprodukte() {
               ].map((epoch) => (
                 <button
                   key={epoch.id}
-                  onClick={() => setSelectedEpoch(epoch.id as any)}
+                  onClick={() => setSelectedEpoch(epoch.id as typeof selectedEpoch)}
                   className={`px-4 py-3 rounded-xl font-bold text-xs transition-all border flex flex-col gap-0.5 items-start cursor-pointer w-full sm:w-auto min-w-[140px] text-left ${
                     selectedEpoch === epoch.id
                       ? 'bg-shiraz text-white border-shiraz shadow-md'

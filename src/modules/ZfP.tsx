@@ -1,3 +1,4 @@
+import type { ChartOptions } from 'chart.js';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { useState, useMemo } from 'react';
 import {
@@ -375,7 +376,7 @@ export default function ZfP() {
     };
   }, []);
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -391,7 +392,7 @@ export default function ZfP() {
     plugins: {
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 1)} N/mm²`
+          label: (context) => `${context.dataset.label}: ${formatDeZahl(context.raw as number, 1)} N/mm²`
         }
       }
     }
