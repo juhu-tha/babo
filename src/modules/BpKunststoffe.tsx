@@ -1257,7 +1257,7 @@ export default function BpKunststoffe() {
         ]} 
         regelwerke={[ 
           { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)' },
-          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)' },
+          { title: 'DIN 18531-1 bis -5 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen; Teil 1:2025-08)' },
           { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)' }
         ]} 
         formeln={[
