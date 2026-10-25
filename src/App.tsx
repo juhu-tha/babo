@@ -43,6 +43,7 @@ const ModulInhalt = React.lazy(() => import('./routing/ModulInhalt'));
 const ModulKopf = React.lazy(() => import('./routing/ModulKopf'));
 const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m => ({ default: m.ModulTest })));
 const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
+const Kurzfragebogen = React.lazy(() => import('./components/feedback/Kurzfragebogen'));
 const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
 
@@ -720,6 +721,9 @@ function AppContent() {
         </div>
       </main>
     </div>
+
+    {/* Anonymer Kurzfragebogen, höchstens einmal je Semester (Phase 6, AP 6.9) */}
+    <React.Suspense fallback={null}><Kurzfragebogen /></React.Suspense>
 
     {/* SEO-Metadaten Audit-Modal */}
     {showMetadataModal && <React.Suspense fallback={null}><MetadataAuditModal

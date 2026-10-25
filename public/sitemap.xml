@@ -590,6 +590,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://baustoffboard.de/#biokohlebeton</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://baustoffboard.de/#qualitaetssicherung</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -972,6 +978,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://baustoffboard.de/#altholz_urban_mining</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#pfas_baustoffe</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://baustoffboard.de/#ressourceneffizienz</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -999,6 +1017,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#korrosion</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#schnellkarbonatisierung</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1211,6 +1235,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#ki_onlinekurse</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#ki_uebungen</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

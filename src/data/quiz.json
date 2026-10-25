@@ -5369,6 +5369,502 @@
     "verified": false
   },
   {
+    "id": "qn_altholz_urban_mining_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "AltholzV & Kategorien",
+    "difficulty": "Basis",
+    "question": "Welcher Altholzkategorie nach AltholzV ist ein lackiertes Möbelteil aus Spanplatte ohne PVC-Beschichtung und ohne Holzschutzmittel zuzuordnen?",
+    "options": [
+      "A I",
+      "A III",
+      "A II",
+      "A IV"
+    ],
+    "correctIdx": 2,
+    "explanation": "A II umfasst verleimtes, gestrichenes, beschichtetes oder lackiertes Altholz ohne halogenorganische Verbindungen in der Beschichtung und ohne Holzschutzmittel (§ 2 AltholzV).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "A I ist nur naturbelassenes oder lediglich mechanisch bearbeitetes Holz; Leim und Lack schließen A I aus.",
+      "A III setzt halogenorganische Verbindungen in der Beschichtung voraus, z. B. PVC – hier liegt keine PVC-Beschichtung vor.",
+      "",
+      "A IV betrifft mit Holzschutzmitteln behandeltes oder sonst schadstoffbelastetes Holz; das ist hier nicht der Fall."
+    ],
+    "gapAnalysis": {
+      "topic": "AltholzV & Kategorien",
+      "misconception": "Jede Beschichtung führe automatisch zu A III oder A IV.",
+      "coreRule": "Behandelt ohne Halogenorganik und ohne Holzschutzmittel = A II; Halogenorganik (PVC) = A III; Holzschutzmittel = A IV.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „AltholzV & Kategorien“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "AltholzV § 2"
+  },
+  {
+    "id": "qn_altholz_urban_mining_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "AltholzV & Kategorien",
+    "difficulty": "Vertiefung",
+    "question": "Welche Altholzkategorien dürfen nach AltholzV ohne besondere Vorbehandlung zu Holzhackschnitzeln für die Herstellung von Holzwerkstoffen aufbereitet werden?",
+    "options": [
+      "nur A I",
+      "A I und A II",
+      "A I bis A III",
+      "A I bis A IV bei Einhaltung von Anhang II"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach § 3 und Anhang I AltholzV ist die Aufbereitung zu Holzwerkstoffen für A I und A II zulässig. A III nur, wenn Lacke und Beschichtungen weitgehend entfernt werden; A IV ist ausgeschlossen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Auch A II (z. B. lackierte oder verleimte Hölzer ohne Halogenorganik) ist für Holzwerkstoffe zugelassen.",
+      "",
+      "A III ist nur zulässig, wenn die Beschichtungen vorher oder bei der Aufbereitung weitgehend entfernt werden.",
+      "A IV ist von der Holzwerkstoffherstellung ausgeschlossen – die Grenzwerte ersetzen diese Regel nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "AltholzV & Kategorien",
+      "misconception": "Die Einhaltung der Grenzwerte allein genüge, damit jede Kategorie stofflich verwertet werden darf.",
+      "coreRule": "Holzwerkstoffe: A I und A II zulässig, A III nur nach Entfernen der Beschichtung, A IV nicht.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „AltholzV & Kategorien“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "AltholzV § 3, Anhang I"
+  },
+  {
+    "id": "qn_altholz_urban_mining_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "NIR-Sortierung",
+    "difficulty": "Basis",
+    "question": "Worauf beruht die Unterscheidung von Holz, Holzwerkstoffen und Beschichtungen mit der NIR-Spektroskopie?",
+    "options": [
+      "auf der elektrischen Leitfähigkeit der Holzoberfläche und ihrer Beschichtung",
+      "auf der Röntgenfluoreszenz schwerer Elemente wie Kupfer, Chrom und Arsen",
+      "auf der Rohdichte, gemessen über die Durchstrahlung der einzelnen Stücke",
+      "auf Schwingungsbanden von C–H-, O–H- und N–H-Bindungen"
+    ],
+    "correctIdx": 3,
+    "explanation": "Im nahen Infrarot (ab etwa 780 nm) absorbieren Ober- und Kombinationsschwingungen von C–H-, O–H- und N–H-Bindungen. Das reflektierte Spektrum ist daher ein Abbild der organischen Zusammensetzung der Oberfläche.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Leitfähigkeit wird z. B. bei der Metallabscheidung (Wirbelstrom) genutzt, nicht bei NIR.",
+      "Röntgenfluoreszenz ist ein eigenes Verfahren für Elemente wie Kupfer, Chrom oder Arsen.",
+      "Durchstrahlungsverfahren (z. B. Röntgentransmission) messen die Dichte; NIR misst reflektiertes Licht.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "NIR-Sortierung",
+      "misconception": "NIR messe Elemente oder die Dichte des Materials.",
+      "coreRule": "NIR = molekulare Schwingungen (C–H, O–H, N–H) an der Oberfläche; Elemente misst die RFA.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „NIR-Sortierung“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false,
+    "quelle": "Siesler et al. 2002"
+  },
+  {
+    "id": "qn_altholz_urban_mining_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Grenzen der Sensorik",
+    "difficulty": "Vertiefung",
+    "question": "Warum reicht eine NIR-Sortierung allein nicht aus, um mit Kupfer-Chrom-Salzen imprägniertes Altholz sicher auszuschleusen?",
+    "options": [
+      "weil anorganische Salze kaum NIR-Banden zeigen",
+      "weil NIR nur an feuchtem Holz zuverlässige Spektren liefert",
+      "weil NIR lediglich Nadelholz von Laubholz unterscheiden kann",
+      "weil Kupfer die Hyperspektralkamera des Sortierers stört"
+    ],
+    "correctIdx": 0,
+    "explanation": "Anorganische Holzschutzmittel zeigen kaum eigene NIR-Banden, und NIR erfasst nur wenige Millimeter der Oberfläche. Elementanalytische Sensoren (RFA, LIBS) und Herkunftsinformationen ergänzen die Sortierung.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Feuchte stört die NIR-Messung eher, als dass sie sie ermöglicht.",
+      "NIR unterscheidet deutlich mehr – etwa Holzwerkstoffe, Lacke und PVC-Beschichtungen.",
+      "Kupfer stört die Kamera nicht; das Problem ist das fehlende NIR-Signal der Salze."
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzen der Sensorik",
+      "misconception": "NIR erkenne jedes Holzschutzmittel zuverlässig.",
+      "coreRule": "NIR ist ein Oberflächenverfahren für organische Stoffe; anorganische Holzschutzmittel brauchen Elementanalytik.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Grenzen der Sensorik“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Rechner Sortierbilanz",
+    "difficulty": "Vertiefung",
+    "question": "Eine Anlage erhält 100 t Altholz: 60 t A I/A II und 40 t A III/A IV. 54 t A I/A II gelangen in die stoffliche Linie, außerdem 2 t A IV. Wie groß ist die stoffliche Verwertungsquote nach dem Modell des Rechners?",
+    "options": [
+      "54 %",
+      "56 %",
+      "60 %",
+      "90 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gezählt wird nur richtig sortiertes A I/A II: q_st = 54 t / 100 t = 54 %. Die 2 t A IV erhöhen die Masse der stofflichen Linie auf 56 t, sind aber Fehlsortierung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "56 % entspricht der Masse der stofflichen Linie einschließlich der fehlsortierten 2 t A IV.",
+      "60 % wäre der Höchstwert bei idealer Sortierung (Anteil A I + A II im Eingang).",
+      "90 % ist das Ausbringen von A I/A II (54/60), nicht die Verwertungsquote bezogen auf den Eingang."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Sortierbilanz",
+      "misconception": "Alles, was in der stofflichen Linie landet, zähle zur Verwertungsquote.",
+      "coreRule": "q_st = richtig sortiertes A I/A II / Eingangsmasse; Fremdanteile zählen nicht.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Sortierbilanz“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Rechner Sortierbilanz",
+    "difficulty": "Vertiefung",
+    "question": "In einer Sortierbilanz werden von 25 t A IV 1,25 t in die stoffliche Linie fehlgelenkt, die insgesamt 58,25 t umfasst. Wie groß ist der A-IV-Anteil im stofflichen Strom?",
+    "options": [
+      "rund 1,3 %",
+      "rund 5,0 %",
+      "rund 2,1 %",
+      "rund 8,8 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "w = 1,25 t / 58,25 t = 0,0215 = rund 2,1 %. Schon dieser Anteil kann die Grenzwerte nach Anhang II AltholzV gefährden.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "1,3 % entsteht, wenn man 1,25 t auf 100 t Eingang statt auf die stoffliche Linie bezieht.",
+      "5,0 % ist der Anteil fehlgelenkten A IV bezogen auf die A-IV-Eingangsmasse (1,25/25).",
+      "",
+      "8,8 % entspricht der Fehlsortierquote des gesamten Beispiels, nicht dem A-IV-Anteil."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner Sortierbilanz",
+      "misconception": "Der Fremdanteil werde auf den Eingang oder auf die Kategorie bezogen.",
+      "coreRule": "Anteil im Strom = fehlgelenkte Masse / Masse des Zielstroms.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner Sortierbilanz“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_altholz_urban_mining_7",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "altholz_urban_mining",
+    "moduleTitle": "Altholz-NIR-Sortierung und Urban Mining",
+    "topic": "Urban Mining & Kataster",
+    "difficulty": "Basis",
+    "question": "Was beschreibt ein Materialkataster im Sinne des Urban Mining?",
+    "options": [
+      "ein Verzeichnis der zugelassenen Bauprodukte eines Herstellers",
+      "eine Liste der Deponien mit freier Kapazität in einer Region",
+      "den Nachweis der CO₂-Emissionen bei der Herstellung von Baustoffen",
+      "die Erfassung von Art, Menge und Ort verbauter Materialien"
+    ],
+    "correctIdx": 3,
+    "explanation": "Ein Materialkataster erfasst, welche Materialien in welcher Menge und Qualität wo verbaut sind – bottom-up über Materialpässe einzelner Gebäude oder top-down über Gebäudebestand und Materialintensitäten. Es macht das anthropogene Lager planbar.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Produktverzeichnisse beschreiben lieferbare Produkte, nicht das verbaute Lager.",
+      "Deponiekapazitäten sind ein Thema der Entsorgungsplanung, nicht des Materialkatasters.",
+      "Herstellungsemissionen werden in Ökobilanzen bzw. EPDs ausgewiesen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Urban Mining & Kataster",
+      "misconception": "Urban Mining betreffe nur die Entsorgung, nicht die Bestandserfassung.",
+      "coreRule": "Materialkataster = Art, Menge, Qualität und Ort verbauter Materialien (bottom-up oder top-down).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Urban Mining & Kataster“ im Modul Altholz-NIR-Sortierung und Urban Mining noch einmal durch.",
+      "targetModuleTab": "altholz_urban_mining",
+      "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Was sind PFAS?",
+    "difficulty": "Basis",
+    "question": "Warum werden PFAS als „Ewigkeitschemikalien“ bezeichnet?",
+    "options": [
+      "weil die C–F-Bindung in der Umwelt kaum gespalten wird",
+      "weil sie radioaktiv sind und nur sehr langsam zerfallen",
+      "weil sie nur in Gebäuden aus der Zeit vor 1950 verbaut wurden",
+      "weil sie in Wasser rasch zu ungiftigem Fluorid zerfallen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Kohlenstoff-Fluor-Bindung gehört zu den stärksten Einfachbindungen der organischen Chemie. Perfluoralkylsäuren werden in der Umwelt praktisch nicht abgebaut und reichern sich an.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "PFAS sind nicht radioaktiv; „Ewigkeit“ bezieht sich auf die fehlende Abbaubarkeit.",
+      "PFAS werden seit den 1950er-Jahren hergestellt und bis heute verwendet.",
+      "Gerade das Gegenteil: PFAS sind in Wasser beständig und werden dort nicht abgebaut."
+    ],
+    "gapAnalysis": {
+      "topic": "Was sind PFAS?",
+      "misconception": "PFAS zerfielen mit der Zeit von selbst.",
+      "coreRule": "Starke C–F-Bindung → Perfluoralkylsäuren sind in der Umwelt praktisch nicht abbaubar.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Was sind PFAS?“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "OECD 2021"
+  },
+  {
+    "id": "qn_pfas_baustoffe_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "PFAS in Baustoffen",
+    "difficulty": "Basis",
+    "question": "Welche Anwendung im Bauwesen hat besonders häufig zu PFAS-Altlasten in Boden, Grundwasser und Beton geführt?",
+    "options": [
+      "Gipsputze und Spachtelmassen im Innenausbau von Wohnungen",
+      "Mineralwolle-Dämmung im Dach von Einfamilienhäusern",
+      "Löschschäume (AFFF) auf Feuerwehrübungsflächen",
+      "Kalksandsteinmauerwerk mit Dünnbettmörtel im Keller"
+    ],
+    "correctIdx": 2,
+    "explanation": "AFFF-Löschschäume enthielten Fluortenside (früher PFOS). Auf Feuerwehrübungsflächen, Flughäfen und Brandorten gelangten sie direkt in Boden, Grundwasser und Betonflächen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Gipsputze enthalten üblicherweise keine PFAS.",
+      "Mineralwolle ist ein Thema bei KMF, nicht bei PFAS-Altlasten.",
+      "",
+      "Kalksandstein enthält keine PFAS-haltigen Zusätze."
+    ],
+    "gapAnalysis": {
+      "topic": "PFAS in Baustoffen",
+      "misconception": "PFAS seien vor allem in mineralischen Massenbaustoffen enthalten.",
+      "coreRule": "Größte Eintragsquelle im Bau- und Liegenschaftsbereich: AFFF-Löschschäume.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „PFAS in Baustoffen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Regulierung",
+    "difficulty": "Vertiefung",
+    "question": "Welche Grenzwerte gelten nach der Trinkwasserverordnung für die Summen PFAS-20 und PFAS-4?",
+    "options": [
+      "PFAS-20: 0,5 µg/l; PFAS-4: 0,1 µg/l",
+      "PFAS-20: 0,02 µg/l; PFAS-4: 0,1 µg/l",
+      "PFAS-20: 1,0 µg/l; PFAS-4: 0,2 µg/l",
+      "PFAS-20: 0,1 µg/l; PFAS-4: 0,02 µg/l"
+    ],
+    "correctIdx": 3,
+    "explanation": "TrinkwV Anlage 2 Teil I: Summe PFAS-20 höchstens 0,1 µg/l ab 12.01.2026, Summe PFAS-4 (PFOA, PFNA, PFHxS, PFOS) höchstens 0,02 µg/l ab 12.01.2028.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,5 µg/l ist der EU-Parameter „PFAS gesamt“, den die TrinkwV nicht übernommen hat.",
+      "Die Werte sind vertauscht: Der strengere Grenzwert gilt für die kleinere Summe PFAS-4.",
+      "Diese Werte sind um eine Größenordnung zu hoch.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Regulierung",
+      "misconception": "Die Grenzwerte seien gleich oder die größere Summe habe den strengeren Wert.",
+      "coreRule": "PFAS-20 ≤ 0,1 µg/l (ab 2026), PFAS-4 ≤ 0,02 µg/l (ab 2028).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Regulierung“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+  },
+  {
+    "id": "qn_pfas_baustoffe_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Regulierung",
+    "difficulty": "Vertiefung",
+    "question": "Welchen Stand hat der universelle PFAS-Beschränkungsvorschlag unter REACH im Herbst 2026?",
+    "options": [
+      "Er gilt seit 2025 verbindlich für alle Bauprodukte in der EU.",
+      "Er ist im Verfahren; SEAC und Kommission entscheiden noch.",
+      "Er wurde 2024 von der ECHA zurückgezogen und nicht weiterverfolgt.",
+      "Er betrifft nur Feuerlöschschäume und ist bereits abgeschlossen."
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Vorschlag von fünf Staaten (2023, überarbeitet 2025) wurde vom RAC im März 2026 bewertet; die SEAC-Konsultation lief bis Mai 2026, die SEAC-Stellungnahme wird Ende 2026 erwartet. Danach entscheiden Kommission und Mitgliedstaaten.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Vorschlag ist noch nicht in Kraft; Ausnahmen und Fristen für Bauprodukte sind offen.",
+      "",
+      "Der Vorschlag wurde nicht zurückgezogen, sondern 2025 überarbeitet.",
+      "Feuerlöschschäume sind in einer eigenen, bereits erlassenen Beschränkung (EU) 2025/1988 geregelt."
+    ],
+    "gapAnalysis": {
+      "topic": "Regulierung",
+      "misconception": "Die umfassende PFAS-Beschränkung sei bereits geltendes Recht.",
+      "coreRule": "Universelle Beschränkung: im Verfahren (RAC 2026 erledigt, SEAC und Kommission offen); Löschschäume separat geregelt.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Regulierung“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Rechner PFAS-Summen",
+    "difficulty": "Vertiefung",
+    "question": "In einer Trinkwasserprobe werden PFOA 6 ng/l, PFNA 1 ng/l, PFHxS 4 ng/l und PFOS 7 ng/l gemessen. Wie ist die Summe PFAS-4 gegenüber dem Grenzwert ab 2028 zu bewerten?",
+    "options": [
+      "14 ng/l, eingehalten",
+      "18 ng/l, überschritten",
+      "18 ng/l, eingehalten",
+      "22 ng/l, überschritten"
+    ],
+    "correctIdx": 2,
+    "explanation": "Σ PFAS-4 = 6 + 1 + 4 + 7 = 18 ng/l = 0,018 µg/l. Der Grenzwert von 0,02 µg/l = 20 ng/l wird eingehalten (Ausschöpfung 90 %).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "14 ng/l ergibt sich, wenn ein Stoff (PFHxS) vergessen wird.",
+      "Die Summe ist richtig, aber 18 ng/l liegen unter dem Grenzwert von 20 ng/l.",
+      "",
+      "22 ng/l ist falsch addiert; die Summe beträgt 18 ng/l."
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner PFAS-Summen",
+      "misconception": "Der Grenzwert 0,02 µg/l entspreche 2 ng/l oder einzelne Stoffe würden nicht summiert.",
+      "coreRule": "PFAS-4 = PFOA + PFNA + PFHxS + PFOS; 0,02 µg/l = 20 ng/l.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner PFAS-Summen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false,
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+  },
+  {
+    "id": "qn_pfas_baustoffe_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Rechner PFAS-Summen",
+    "difficulty": "Transfer",
+    "question": "Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?",
+    "options": [
+      "eindeutig eingehalten, da 92 ng/l < 100 ng/l",
+      "eindeutig überschritten, da 92 + 20 = 112 ng/l",
+      "nicht bewertbar, da Werte unter der BG fehlen",
+      "nicht eindeutig: Spanne 92 bis 112 ng/l"
+    ],
+    "correctIdx": 3,
+    "explanation": "Untere Schranke 92 ng/l (< BG = 0), obere Schranke 92 + 10 · 2 = 112 ng/l (< BG = BG). Der Grenzwert 100 ng/l liegt dazwischen – die Bewertung hängt vom Ansatz ab; eine empfindlichere Analytik schafft Klarheit.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das gilt nur, wenn alle Werte unter der BG null wären; sie können aber bis 2 ng/l betragen.",
+      "Der Ansatz „< BG = BG“ ist die ungünstigste Annahme, keine sichere Überschreitung.",
+      "Die Probe ist bewertbar; die Werte unter der BG ergeben eine Spanne.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rechner PFAS-Summen",
+      "misconception": "Werte unter der Bestimmungsgrenze seien gleich null.",
+      "coreRule": "Spanne: Σ mit < BG = 0 bis Σ mit < BG = BG; liegt der Grenzwert dazwischen, ist die Bewertung nicht eindeutig.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Rechner PFAS-Summen“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_pfas_baustoffe_7",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "pfas_baustoffe",
+    "moduleTitle": "PFAS in Baustoffen",
+    "topic": "Analytik",
+    "difficulty": "Vertiefung",
+    "question": "Wozu dient der TOP-Assay in der PFAS-Analytik?",
+    "options": [
+      "zur Erfassung oxidierbarer Vorläufer",
+      "zur Messung von gelöstem Fluorid im Trinkwasser",
+      "zur Bestimmung des Wassergehalts von Bauschutt",
+      "zur Bestimmung des Brandverhaltens von Fluorpolymeren"
+    ],
+    "correctIdx": 0,
+    "explanation": "Beim Total Oxidizable Precursor Assay wird die Probe oxidiert. Vorläufer wandeln sich in Perfluorcarbonsäuren um; die Zunahme gegenüber der Ausgangsmessung zeigt das Vorläuferpotenzial, das die Target-Analytik nicht erfasst.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Fluorid wird z. B. ionenchromatographisch bestimmt; der TOP-Assay zielt auf organische Vorläufer.",
+      "Der Wassergehalt wird durch Trocknung bestimmt, nicht durch Oxidation.",
+      "Das Brandverhalten wird nach DIN EN 13501-1 klassifiziert."
+    ],
+    "gapAnalysis": {
+      "topic": "Analytik",
+      "misconception": "Die Target-Analytik erfasse alle PFAS einer Probe.",
+      "coreRule": "TOP-Assay: Vorläufer → PFCA durch Oxidation; Differenz = Vorläuferpotenzial.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Analytik“ im Modul PFAS in Baustoffen noch einmal durch.",
+      "targetModuleTab": "pfas_baustoffe",
+      "targetModuleLabel": "PFAS in Baustoffen"
+    },
+    "verified": false
+  },
+  {
     "id": "q_re_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
@@ -34061,6 +34557,222 @@
     "verified": false
   },
   {
+    "id": "qn_ki_ueb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Nichtdeterminismus",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Sie stellen dem Copilot dieselbe Fachfrage in drei neuen Chats und erhalten drei unterschiedlich formulierte Antworten. Was ist die zutreffende Erklärung?",
+    "options": [
+      "Das Modell wählt jedes Token nach Wahrscheinlichkeit, mit einem Zufallsanteil",
+      "Das Modell lernt aus jeder Frage dazu und verbessert dadurch die nächste Antwort",
+      "Der Copilot leitet jede Anfrage an ein anderes, zufällig gewähltes Modell",
+      "Unterschiede entstehen nur durch Tippfehler in der wiederholten Eingabe"
+    ],
+    "correctIdx": 0,
+    "explanation": "Sprachmodelle erzeugen Text Token für Token aus einer Wahrscheinlichkeitsverteilung; bei Temperatur > 0 wird mit Zufallsanteil ausgewählt. Deshalb schwanken Formulierungen und mitunter auch Details.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Das Modell verändert seine Gewichte im Chat nicht; jede neue Unterhaltung beginnt ohne Erinnerung an die vorige.",
+      "Die Schwankung entsteht schon in einem einzigen Modell durch die zufällige Auswahl der Token.",
+      "Auch bei identischer Eingabe unterscheiden sich die Antworten, weil die Auswahl der Token zufällig gewichtet ist."
+    ],
+    "gapAnalysis": {
+      "topic": "Nichtdeterminismus",
+      "misconception": "Unterschiedliche Antworten seien ein Zeichen für Lernen oder Fehler in der Eingabe.",
+      "coreRule": "Token werden nach Wahrscheinlichkeit gewählt – gleiche Frage, unterschiedliche Antwort.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 1 · LLM-Grundlagen“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Strukturierte Prompts",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Welche Vorgabe im strukturierten Prompt der Übung „Bedenkenanzeige“ verhindert am wirksamsten erfundene Grenzwerte im Entwurf?",
+    "options": [
+      "Die Rolle „Bauleiter eines Bodenlegerbetriebs“ am Anfang des Prompts",
+      "Fehlende Grenzwerte mit [PRÜFEN] markieren statt sie einzusetzen",
+      "Das Format „Geschäftsbrief, höchstens eine Seite“ mit Betreffzeile",
+      "Die Bitte, den Brief möglichst überzeugend und verbindlich zu formulieren"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Regel, unbelegte Grenzwerte mit [PRÜFEN] zu kennzeichnen, gibt dem Modell eine erlaubte Alternative zum Erfinden. Rolle und Format verbessern Ton und Aufbau, nicht die Richtigkeit von Zahlen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Rolle steuert Fachsprache und Perspektive, schützt aber nicht vor erfundenen Zahlen.",
+      "",
+      "Das Format bestimmt den Aufbau; über die Herkunft der Grenzwerte sagt es nichts.",
+      "Eine überzeugende Formulierung verstärkt eher die Neigung, Lücken mit plausiblen Zahlen zu füllen."
+    ],
+    "gapAnalysis": {
+      "topic": "Strukturierte Prompts",
+      "misconception": "Eine gute Rollenbeschreibung mache Zahlenangaben verlässlich.",
+      "coreRule": "Unsichere Werte ausdrücklich markieren lassen, statt sie erfinden zu lassen.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 2 · Prompting im Ingenieurbüro“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Freigaben für Agenten",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Im Agentenlauf „Recyclingbeton“ schlägt das Modell als nächste Aktion vor, beim Hersteller per E-Mail ein Datenblatt anzufordern. Wie gehen Sie nach der Übung vor?",
+    "options": [
+      "Aktion ausführen, weil der Agent das Ziel sonst nicht erreichen kann",
+      "Lauf abbrechen und die Stelle als freigabepflichtige Aktion notieren",
+      "Die E-Mail vom Copilot formulieren lassen und sofort selbst versenden",
+      "Die Aktion überspringen und eine plausible Beobachtung selbst erfinden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Aktionen, die Dritte kontaktieren oder Geld kosten, sind im Agentenauftrag ausgeschlossen und bräuchten in der Praxis eine menschliche Freigabe. Die Übung verlangt, den Lauf an dieser Stelle zu beenden und sie zu dokumentieren.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das Ziel rechtfertigt keine Aktion außerhalb der vereinbarten Grenzen; Kontakt zu Dritten braucht eine Freigabe.",
+      "",
+      "Damit würde die Grenze nur umgangen; die Entscheidung über Kontakt zu Dritten gehört zur Freigabe.",
+      "Erfundene Beobachtungen verfälschen den Lauf; jede Beobachtung braucht eine echte Quelle."
+    ],
+    "gapAnalysis": {
+      "topic": "Freigaben für Agenten",
+      "misconception": "Ein Agent dürfe alles tun, was dem Ziel dient.",
+      "coreRule": "Aktionen mit Außenwirkung nur nach menschlicher Freigabe.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 3 · Agenten“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "RAG-Grenztest",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Beim Grenztest der RAG-Übung beantwortet das Modell eine Frage, die der bereitgestellte Text nicht abdeckt, mit einem korrekt klingenden Wert ohne Fundstelle. Wie ist das zu bewerten?",
+    "options": [
+      "Als Erfolg, weil der Wert vermutlich aus einer anderen Vorschrift stimmt",
+      "Als RAG-Fehler: Trainingswissen wurde ohne Beleg aus dem Text beigemischt",
+      "Als unkritisch, solange der Wert in derselben Größenordnung wie üblich liegt",
+      "Als Zeichen, dass der bereitgestellte Text zu kurz gewählt war und fehlt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Spielregel lautet: nur aus dem Text antworten, sonst „Nicht im bereitgestellten Text enthalten“. Ein Wert ohne Fundstelle ist nicht überprüfbar und verletzt das RAG-Prinzip, auch wenn er zufällig stimmt.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Ob der Wert stimmt, ist ohne Fundstelle nicht überprüfbar; genau das soll RAG verhindern.",
+      "",
+      "Die Größenordnung ersetzt keinen Beleg; im Nachweis zählt die exakte Fundstelle.",
+      "Der Grenztest fragt absichtlich nach Inhalten außerhalb des Textes; die richtige Reaktion wäre der vereinbarte Hinweis."
+    ],
+    "gapAnalysis": {
+      "topic": "RAG-Grenztest",
+      "misconception": "Eine plausible Antwort sei auch ohne Beleg aus der Wissensbasis in Ordnung.",
+      "coreRule": "RAG-Antworten nur mit Fundstelle aus der bereitgestellten Quelle.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 4 · RAG mit Normtexten“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Testfall U-Wert",
+    "difficulty": "Transfer",
+    "normRef": "Lehrbeispiel",
+    "question": "Das vom Copilot entworfene Excel-Blatt liefert für den Testfall (1,5 cm Putz, 17,5 cm Kalksandstein, 16 cm Dämmung) U = 0,002 W/(m²·K) statt etwa 0,20 W/(m²·K). Welcher Fehler ist am wahrscheinlichsten?",
+    "options": [
+      "Die Wärmeübergangswiderstände R_si und R_se wurden vertauscht",
+      "Die Dicken wurden in cm statt in m in die Formel d/λ eingesetzt",
+      "Die Wärmeleitfähigkeit der Dämmung wurde mit 0,35 statt 0,035 erfasst",
+      "Excel rundet die Zwischenergebnisse auf zwei Nachkommastellen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit Dicken in cm wird jeder Schichtwiderstand rund hundertfach zu groß, R_T ≈ 478 statt 4,95 m²·K/W, also U ≈ 0,002 W/(m²·K). Vertauschte R_si/R_se ändern R_T nicht, ein zehnfach zu großes λ der Dämmung würde U erhöhen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "R_si + R_se ergibt in beliebiger Reihenfolge dieselbe Summe; das Ergebnis bliebe unverändert.",
+      "",
+      "Ein zu großes λ verkleinert den Dämmwiderstand und würde U erhöhen, nicht um den Faktor 100 senken.",
+      "Rundung auf zwei Stellen verschiebt das Ergebnis nur geringfügig, nicht um zwei Zehnerpotenzen."
+    ],
+    "gapAnalysis": {
+      "topic": "Testfall U-Wert",
+      "misconception": "Ein grob falsches Ergebnis liege an Rundung oder Kennwerten statt an Einheiten.",
+      "coreRule": "R = d/λ mit d in m; Ergebnis immer mit einem Testfall gegenprüfen.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 5 · „sich programmieren lassen““ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Gefälligkeitsfehler",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Sie behaupten gegenüber dem Copilot bewusst falsch, ein höherer w/z-Wert erhöhe die Druckfestigkeit, und das Modell stimmt zu. Welches Fehlerbild liegt vor?",
+    "options": [
+      "Eine erfundene Quelle, weil kein Literaturbeleg genannt wurde",
+      "Ein Gefälligkeitsfehler: Das Modell übernimmt Ihre falsche Annahme",
+      "Ein Rechenfehler, weil die Festigkeit nicht nachgerechnet wurde",
+      "Eine veraltete Normausgabe, weil der w/z-Wert früher anders bewertet wurde"
+    ],
+    "correctIdx": 1,
+    "explanation": "Sprachmodelle neigen dazu, der Nutzerin oder dem Nutzer zuzustimmen. Fachlich gilt: Mehr Wasser bei gleichem Zement erhöht die Kapillarporosität und senkt die Festigkeit. Rückfragen deshalb neutral formulieren.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Es wurde gar keine Quelle genannt; das Problem ist die übernommene falsche Annahme.",
+      "",
+      "Es wurde nichts gerechnet; der Fehler liegt in der fachlichen Aussage, die das Modell bestätigt.",
+      "Der Zusammenhang zwischen w/z-Wert und Festigkeit hat sich nicht geändert; er ist unabhängig von der Normausgabe."
+    ],
+    "gapAnalysis": {
+      "topic": "Gefälligkeitsfehler",
+      "misconception": "Zustimmung des Modells bestätige eine fachliche Aussage.",
+      "coreRule": "Neutral fragen; Zustimmung des Modells ist kein Beleg.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 6 · Fehlerbilder und Verifikation“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
     "id": "qn_px_bauleitung_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
@@ -36132,6 +36844,504 @@
       "actionableAdvice": "Arbeiten Sie den Reiter zu „Kennwerte & Tabellen“ im Modul Sommerlicher Wärmeschutz noch einmal durch.",
       "targetModuleTab": "sommerlicher_waermeschutz",
       "targetModuleLabel": "Sommerlicher Wärmeschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "CO₂-Speicher je kg Kohlenstoff",
+    "difficulty": "Basis",
+    "question": "Warum wird der Kohlenstoffgehalt der Pflanzenkohle bei der CO₂-Bilanz mit dem Faktor 44/12 multipliziert?",
+    "options": [
+      "Der Faktor rechnet die Masse Kohlenstoff in die Masse CO₂ um, aus der er stammt (molare Massen 44 und 12 g/mol).",
+      "Der Faktor berücksichtigt den Anteil des Kohlenstoffs, der im Zementstein über einen Zeitraum von 100 Jahren dauerhaft gebunden bleibt.",
+      "Der Faktor rechnet die Trockenmasse der Kohle auf die feuchte Anlieferungsmasse einschließlich des Porenwassers um.",
+      "Der Faktor ist ein Sicherheitsbeiwert, der die Streuung der Kohlenstoffanalyse im Labor abdeckt."
+    ],
+    "correctIdx": 0,
+    "explanation": "Ein Molekül CO₂ (44 g/mol) enthält ein Atom C (12 g/mol). 1 kg gebundener Kohlenstoff entspricht daher 44/12 = 3,67 kg CO₂, das die Pflanze der Atmosphäre entzogen hat. Die Beständigkeit wird getrennt über den Permanenzfaktor erfasst.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Das beschreibt den Permanenzfaktor F_perm, der zusätzlich zum Faktor 44/12 angesetzt wird.",
+      "Der Bezug auf die Trockenmasse erfolgt über den Kohlenstoffgehalt, nicht über 44/12.",
+      "44/12 ist ein stöchiometrisches Verhältnis und kein Sicherheitsbeiwert."
+    ],
+    "gapAnalysis": {
+      "topic": "Stöchiometrie der CO₂-Bindung",
+      "misconception": "Der Faktor 44/12 wird mit Permanenz oder Feuchte verwechselt.",
+      "coreRule": "m_CO2 = m_C · 44/12; Permanenz wird getrennt über F_perm berücksichtigt.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Pflanzenkohle: Herstellung & Kennwerte“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "CO₂-Bilanz je m³",
+    "difficulty": "Vertiefung",
+    "question": "Ein Beton enthält 12 kg/m³ Pflanzenkohle mit 75 M.-% Kohlenstoff. Angesetzt werden F_perm = 0,80 und eine Herstellungsemission von 0,4 kg CO₂e je kg Kohle. Wie groß ist die Netto-Senke der Pflanzenkohle?",
+    "options": [
+      "etwa 21,6 kg CO₂/m³",
+      "etwa 26,4 kg CO₂/m³",
+      "etwa 33,0 kg CO₂/m³",
+      "etwa 2,4 kg CO₂/m³"
+    ],
+    "correctIdx": 0,
+    "explanation": "12 · 0,75 · 44/12 = 33,0 kg CO₂; mit F_perm = 0,80 bleiben 26,4 kg; abzüglich 12 · 0,4 = 4,8 kg Herstellungsemission ergibt sich eine Netto-Senke von 21,6 kg CO₂/m³.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "26,4 kg berücksichtigen den Permanenzabschlag, aber nicht die Herstellungsemission von 4,8 kg.",
+      "33,0 kg ist der Kohlenstoff als CO₂ ohne Permanenzabschlag und ohne Herstellungsemission.",
+      "2,4 kg entstehen, wenn der Faktor 44/12 vergessen wird (12 · 0,75 · 0,8 − 4,8)."
+    ],
+    "gapAnalysis": {
+      "topic": "CO₂-Bilanz der Pflanzenkohle",
+      "misconception": "Permanenzabschlag oder Herstellungsemission werden vergessen.",
+      "coreRule": "Netto-Senke = m_PK · w_C · 44/12 · F_perm − m_PK · e_PK.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Rechner CO₂-Bilanz“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Vergleich mit Zementreduktion",
+    "difficulty": "Transfer",
+    "question": "Die Netto-Senke von 1 kg Pflanzenkohle beträgt 2,0 kg CO₂. Wie viel Zement mit einem Treibhauspotenzial von 0,80 kg CO₂e/kg müsste man einsparen, um dieselbe Bilanzwirkung zu erzielen?",
+    "options": [
+      "etwa 1,6 kg Zement",
+      "etwa 2,5 kg Zement",
+      "etwa 2,0 kg Zement",
+      "etwa 0,4 kg Zement"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gleichwertige Zementmenge = Netto-Senke / GWP_Z = 2,0 / 0,80 = 2,5 kg. Anders als eine Zementreduktion berührt die Kohlezugabe weder den Mindestzementgehalt noch den w/z-Wert.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "1,6 kg ergibt sich, wenn mit dem GWP multipliziert statt dividiert wird (2,0 · 0,80).",
+      "",
+      "Gleiche Massen setzen voraus, dass Zement 1,0 kg CO₂e/kg verursacht.",
+      "0,4 kg entspricht der Differenz 2,0 − 0,8 und hat keine physikalische Bedeutung."
+    ],
+    "gapAnalysis": {
+      "topic": "Äquivalente Zementmenge",
+      "misconception": "Senke und Zementeinsparung werden ohne Bezug auf das GWP des Zements verglichen.",
+      "coreRule": "z_äq = (C_PK − E_PK) / GWP_Z.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Rechner CO₂-Bilanz“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Wasseranspruch",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2",
+    "question": "Warum wird Pflanzenkohle vor dem Mischen häufig vorgenässt oder das von ihr aufgesaugte Wasser zusätzlich zugegeben?",
+    "options": [
+      "Die poröse Kohle saugt sonst Anmachwasser auf; Konsistenz und wirksamer w/z-Wert ändern sich unkontrolliert.",
+      "Trockene Pflanzenkohle reagiert mit Calciumhydroxid und würde sonst den Abbindebeginn deutlich beschleunigen.",
+      "Das Vornässen wäscht lösliche Salze aus, die sonst die Bewehrung angreifen.",
+      "Nur nasse Pflanzenkohle lässt sich nach DIN 1045-2 als Zusatzstoff mit k-Wert anrechnen."
+    ],
+    "correctIdx": 0,
+    "explanation": "Pflanzenkohle hat eine große offene Porosität und nimmt häufig mehr als ihre eigene Masse an Wasser auf. Ungesättigt entzieht sie dem Frischbeton Wasser. Vorgenässt kann das gespeicherte Wasser später als innere Nachbehandlung wirken.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Pflanzenkohle ist nicht reaktiv; eine Reaktion mit Calciumhydroxid findet praktisch nicht statt.",
+      "Ziel des Vornässens ist die Wassersättigung der Poren, nicht das Auswaschen von Salzen.",
+      "Pflanzenkohle ist auch vorgenässt kein genormter Zusatzstoff und wird nicht mit k-Wert angerechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "Wasseranspruch poröser Zusätze",
+      "misconception": "Die Wasseraufnahme der Kohle wird übersehen oder als chemische Reaktion gedeutet.",
+      "coreRule": "Vornässwasser = m_PK · W_PK; es zählt nicht zum wirksamen Wasser.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Karbonatisierung und pH-Wert",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-12",
+    "question": "Ein Teil des Zements wird durch Pflanzenkohle ersetzt. Welche Wirkung auf die Karbonatisierung ist aus den Mechanismen heraus am ehesten zu erwarten?",
+    "options": [
+      "Eine langsamere Karbonatisierung, weil die alkalische Kohle den pH-Wert der Porenlösung zusätzlich anhebt und so die Passivschicht stabilisiert.",
+      "Tendenziell schnellere Karbonatisierung durch weniger Calciumhydroxid und mehr Poren; der Effekt ist je Rezeptur zu prüfen.",
+      "Keine messbare Wirkung, weil die Karbonatisierungsgeschwindigkeit im Wesentlichen von der Betondeckung abhängt.",
+      "Eine deutlich verlangsamte Karbonatisierung, weil der Kohlenstoff der Pflanzenkohle das eindringende CO₂ chemisch bindet."
+    ],
+    "correctIdx": 1,
+    "explanation": "Weniger Klinker bedeutet weniger karbonatisierbares Calciumhydroxid (geringere Pufferkapazität); zusätzliche Poren erleichtern die Diffusion. Gegenläufig kann die innere Nachbehandlung das Gefüge verdichten. Der Karbonatisierungswiderstand ist daher je Rezeptur zu prüfen, z. B. nach DIN EN 12390-12.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Pflanzenkohle liegt mit pH 8 bis 10 unter dem pH-Wert der Porenlösung und kann ihn nicht anheben.",
+      "",
+      "Die Deckung bestimmt, wann die Front die Bewehrung erreicht – die Geschwindigkeit hängt vom Beton ab.",
+      "Kohlenstoff bindet kein CO₂; gebunden wird es durch Calciumhydroxid zu Calciumcarbonat."
+    ],
+    "gapAnalysis": {
+      "topic": "Karbonatisierung bei geändertem Bindemittel",
+      "misconception": "Die Alkalität der Kohle wird mit der Pufferkapazität des Zementsteins gleichgesetzt.",
+      "coreRule": "Karbonatisierungswiderstand = Bindekapazität (Ca(OH)₂) und Dichtheit; je Rezeptur prüfen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Dunkle Matrix",
+    "difficulty": "Basis",
+    "question": "Welche Folge der dunklen Färbung durch Pflanzenkohle ist bei besonnten Sichtbetonbauteilen zu beachten?",
+    "options": [
+      "Höhere Oberflächentemperaturen durch stärkere Absorption der Sonnenstrahlung und auffälligere Kalkausblühungen.",
+      "Die Färbung verschwindet nach wenigen Jahren, weil der Kohlenstoff an der Oberfläche durch UV-Strahlung abgebaut wird.",
+      "Die Wärmeleitfähigkeit des Betons halbiert sich, sodass keine Wärmedämmung mehr erforderlich ist.",
+      "Die dunkle Oberfläche reflektiert die Wärmestrahlung und bleibt kühler als heller Beton."
+    ],
+    "correctIdx": 0,
+    "explanation": "Dunkle Oberflächen absorbieren mehr Strahlung; das erhöht Oberflächentemperaturen und Temperaturspannungen. Helle Ausblühungen und Wolken fallen auf dunklem Grund stärker auf. Da die Kohle den ganzen Querschnitt färbt, bleibt der Farbton auch bei Abrieb erhalten.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Färbung durchzieht den Querschnitt; ein schneller UV-Abbau des Kohlenstoffs ist nicht zu erwarten.",
+      "Die geringe Dosierung ändert die Wärmeleitfähigkeit nur wenig; Wärmedämmung bleibt erforderlich.",
+      "Dunkle Flächen absorbieren mehr Sonnenstrahlung und werden wärmer, nicht kühler."
+    ],
+    "gapAnalysis": {
+      "topic": "Pigmentwirkung der Pflanzenkohle",
+      "misconception": "Die gestalterische Wirkung wird ohne bauphysikalische Folgen betrachtet.",
+      "coreRule": "Dunkle Matrix: mehr Absorption, sichtbarere Ausblühungen, konstante Dosierung für gleichmäßigen Farbton.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Wirkung im Beton“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_biokohlebeton_7",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "biokohlebeton",
+    "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
+    "topic": "Normative Einordnung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 206",
+    "question": "Eine Planerin möchte 30 kg/m³ Zement durch Pflanzenkohle ersetzen und dabei den w/z-Wert mit k-Wert-Ansatz unverändert lassen. Wie ist das zu beurteilen?",
+    "options": [
+      "Zulässig, wenn die Pflanzenkohle mindestens 50 M.-% Kohlenstoff enthält und nach den EBC-Richtlinien zertifiziert ist; ein weiterer Nachweis entfällt.",
+      "Zulässig, weil Pflanzenkohle nach DIN EN 206 als inerter Zusatzstoff Typ I gilt und mit k = 0,4 angerechnet werden darf.",
+      "Nicht ohne Weiteres: Pflanzenkohle ist kein Zusatzstoff mit k-Wert; der w/z-Wert steigt, ggf. ist eine abZ oder ZiE nötig.",
+      "Zulässig, sofern die geforderte Druckfestigkeitsklasse durch eine einzelne Würfelprüfung nach 28 Tagen bestätigt wird."
+    ],
+    "correctIdx": 2,
+    "explanation": "DIN EN 206 und DIN 1045-2 kennen keinen k-Wert für Pflanzenkohle. Der Zement der Variante bestimmt w/z-Wert und Mindestzementgehalt. Für nicht genormte Ausgangsstoffe kann bei bauaufsichtlich relevanter Verwendung eine abZ oder ZiE erforderlich sein.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Kohlenstoffgehalt und EBC-Zertifikat beschreiben die Kohlequalität, ersetzen aber keinen bauaufsichtlichen Verwendbarkeitsnachweis.",
+      "Typ-I-Zusatzstoffe werden nicht mit k-Wert angerechnet; k = 0,4 gilt für Flugasche (Typ II).",
+      "",
+      "Eine Festigkeitsprüfung ersetzt weder w/z-Grenzwerte noch den Verwendbarkeitsnachweis."
+    ],
+    "gapAnalysis": {
+      "topic": "Pflanzenkohle im Regelwerk",
+      "misconception": "Pflanzenkohle wird wie ein genormter Zusatzstoff behandelt.",
+      "coreRule": "Kein k-Wert; w/z und z_min aus dem Zement der Variante; nicht genormte Stoffe ggf. abZ/ZiE.",
+      "actionableAdvice": "Wiederholen Sie im Modul Biokohlebeton (Pflanzenkohle im Beton) den Reiter „Grenzen & Regelwerk“.",
+      "targetModuleTab": "biokohlebeton",
+      "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Prüfbedingungen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-12",
+    "question": "Bei welcher CO₂-Konzentration werden die Probekörper nach DIN EN 12390-12 gelagert?",
+    "options": [
+      "(3,0 ± 0,5) Vol.-% CO₂",
+      "(0,04 ± 0,01) Vol.-% CO₂",
+      "(50 ± 5) Vol.-% CO₂",
+      "(10 ± 1) Vol.-% CO₂"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN EN 12390-12 lagert bei (3,0 ± 0,5) Vol.-% CO₂, etwa 57 % relativer Luftfeuchte und 20 °C. Die Konzentration beschleunigt die Karbonatisierung, ohne die Reaktionsprodukte so stark zu verändern wie sehr hohe Konzentrationen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "0,04 % entspricht der Außenluft; dafür gilt die natürliche Prüfung nach DIN EN 12390-10.",
+      "Bei 50 % entstünden andere Reaktionsprodukte und Gefüge als unter natürlichen Bedingungen.",
+      "10 % ist deutlich höher als in der Norm; die Übertragbarkeit wäre schlechter."
+    ],
+    "gapAnalysis": {
+      "topic": "Prüfbedingungen der Schnellkarbonatisierung",
+      "misconception": "Prüf- und Umgebungskonzentration werden verwechselt.",
+      "coreRule": "DIN EN 12390-12: 3 % CO₂, 57 % r. F., 20 °C nach 28 d Wasser- und 14 d Laborlagerung.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Prüfverfahren“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Wurzel-t-Gesetz",
+    "difficulty": "Basis",
+    "question": "Nach dem Wurzel-t-Gesetz beträgt die Karbonatisierungstiefe nach 25 Jahren 10 mm. Welche Tiefe ist nach 100 Jahren zu erwarten?",
+    "options": [
+      "40 mm",
+      "20 mm",
+      "14 mm",
+      "100 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "x = K · √t: Die vierfache Zeit ergibt die √4 = 2-fache Tiefe, also 20 mm. Umgekehrt verlängert eine doppelte Deckung die Zeit bis zur Depassivierung auf das Vierfache.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "40 mm entspräche einem linearen Zeitgesetz.",
+      "",
+      "14 mm ergibt sich mit √2 statt √4 – die Zeit hat sich aber vervierfacht.",
+      "100 mm folgt aus einer Verzehnfachung, die kein Zeitgesetz begründet."
+    ],
+    "gapAnalysis": {
+      "topic": "Wurzel-t-Gesetz",
+      "misconception": "Die Karbonatisierung wird als linear in der Zeit angenommen.",
+      "coreRule": "x_c = K · √t; t_c = (c/K)².",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Grundlagen“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Regression K_AC",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-12",
+    "question": "Nach 7, 28 und 70 Tagen bei 3 % CO₂ werden 2,0 / 4,0 / 6,3 mm gemessen. Wie groß ist K_AC bei einer Regression durch den Ursprung (K = Σ√t·d / Σt)?",
+    "options": [
+      "etwa 4,86 mm/√d",
+      "etwa 0,75 mm/√d",
+      "etwa 0,09 mm/√d",
+      "etwa 14,4 mm/√d"
+    ],
+    "correctIdx": 1,
+    "explanation": "Σ√t·d = 2,646 · 2,0 + 5,292 · 4,0 + 8,367 · 6,3 = 5,29 + 21,17 + 52,71 = 79,17; Σt = 7 + 28 + 70 = 105. K_AC = 79,17 / 105 = 0,754 mm/√d.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "4,86 entsteht, wenn durch Σ√t statt durch Σt geteilt wird – das ist eine gewichtete mittlere Tiefe in mm.",
+      "",
+      "0,09 mm/√d entsteht, wenn statt √t die Zeit t selbst verwendet wird (d/t).",
+      "14,4 ist K_AC mit √365 multipliziert – also bereits in mm/√a umgerechnet, ohne Konzentrationsfaktor."
+    ],
+    "gapAnalysis": {
+      "topic": "Regression über √t",
+      "misconception": "K wird aus einem Einzelwert oder über t statt √t bestimmt.",
+      "coreRule": "K_AC = Σ s_i d_i / Σ s_i² mit s_i = √t_i (durch den Ursprung).",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Auswertung & Umrechnung“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Umrechnung auf natürliche Bedingungen",
+    "difficulty": "Vertiefung",
+    "question": "Ein Beton hat K_AC = 1,0 mm/√d bei 3 % CO₂. Welcher Koeffizient ergibt sich näherungsweise für 0,04 % CO₂ in mm/√a, wenn nur die Konzentration berücksichtigt wird?",
+    "options": [
+      "etwa 0,12 mm/√a",
+      "etwa 19,1 mm/√a",
+      "etwa 2,2 mm/√a",
+      "etwa 0,25 mm/√a"
+    ],
+    "correctIdx": 2,
+    "explanation": "K_nat = K_AC · √(0,04/3) · √365 = 1,0 · 0,1155 · 19,1 = 2,2 mm/√a. Das ist nur eine Größenordnung: Feuchte, Beregnung und Temperatur sind nicht erfasst.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,12 mm/√a enthält nur den Konzentrationsfaktor, die Umrechnung von Tagen auf Jahre fehlt.",
+      "19,1 mm/√a enthält nur die Zeitumrechnung, der Konzentrationsfaktor fehlt.",
+      "",
+      "0,25 mm/√a folgt aus einem linearen Konzentrationsverhältnis (0,04/3 · 19,1) statt der Wurzel."
+    ],
+    "gapAnalysis": {
+      "topic": "Umrechnung K_AC → K_nat",
+      "misconception": "Wurzelgesetz oder Zeiteinheit werden bei der Umrechnung vergessen.",
+      "coreRule": "K_nat ≈ K_AC · √(c_nat/c_acc) · √365 (Näherung).",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Auswertung & Umrechnung“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Prognose gegenüber der Deckung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1992-1-1",
+    "question": "Für einen Beton gilt näherungsweise K_nat = 3,0 mm/√a. Nach wie vielen Jahren erreicht die Karbonatisierungsfront eine Betondeckung von 30 mm?",
+    "options": [
+      "nach etwa 10 Jahren",
+      "nach etwa 33,3 Jahren",
+      "nach etwa 90 Jahren",
+      "nach etwa 100 Jahren"
+    ],
+    "correctIdx": 3,
+    "explanation": "t_c = (c/K)² = (30/3,0)² = 10² = 100 Jahre. Bei 20 mm Deckung wären es nur (20/3)² = 44 Jahre.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "10 Jahre ist der Quotient c/K ohne Quadrieren.",
+      "33,3 Jahre entstehen, wenn (c/K)² = 100 nochmals durch K = 3,0 geteilt wird.",
+      "90 Jahre entstehen, wenn mit c · K = 30 · 3,0 statt mit (c/K)² gerechnet wird.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Zeit bis zur Depassivierung",
+      "misconception": "Das Wurzel-t-Gesetz wird beim Umstellen nach t nicht quadriert.",
+      "coreRule": "t_c = (c/K_nat)².",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Rechner K_AC & Prognose“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Phenolphthalein-Test",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14630",
+    "question": "Was zeigt der farblose Saum nach dem Besprühen einer frischen Bruchfläche mit Phenolphthalein an?",
+    "options": [
+      "Den Bereich mit pH-Werten unter etwa 9, also den karbonatisierten Randbereich des Betons.",
+      "Den Bereich, in den Chloride aus Tausalz bis zum kritischen, korrosionsauslösenden Gehalt eingedrungen sind.",
+      "Den Bereich, in dem der Zement wegen fehlender Nachbehandlung noch nicht vollständig hydratisiert ist.",
+      "Den Bereich mit dem höchsten Gehalt an Calciumhydroxid und damit den größten Alkalitätsvorrat."
+    ],
+    "correctIdx": 0,
+    "explanation": "Phenolphthalein färbt sich oberhalb von etwa pH 9 rotviolett. Der farblose Saum ist karbonatisiert. Teilkarbonatisierte Bereiche können über die sichtbare Front hinausreichen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Für Chloride sind andere Verfahren nötig, etwa Silbernitrat-Sprühtest oder chemische Analyse.",
+      "Der Indikator zeigt den pH-Wert, nicht den Hydratationsgrad.",
+      "Dort, wo viel Calciumhydroxid vorliegt, ist der pH hoch – dieser Bereich färbt sich rotviolett."
+    ],
+    "gapAnalysis": {
+      "topic": "Phenolphthalein-Test",
+      "misconception": "Der Indikator wird mit Chlorid- oder Hydratationsnachweisen verwechselt.",
+      "coreRule": "Farblos = pH < 9 = karbonatisiert; Messung an frischen Bruchflächen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Prüfverfahren“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_schnellkarbonatisierung_7",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schnellkarbonatisierung",
+    "moduleTitle": "Schnellkarbonatisierung (DIN EN 12390-12)",
+    "topic": "Aussagekraft der Prüfung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 12390-12",
+    "question": "Ein Gutachter will aus K_AC eines Prüfbetons die Karbonatisierungstiefe eines 40 Jahre alten Parkhauses genau vorhersagen. Wie ist das zu bewerten?",
+    "options": [
+      "Gut geeignet, weil die Prüfung bei 57 % Luftfeuchte die Bedingungen in Parkhäusern exakt abbildet.",
+      "Gut geeignet, sofern K_AC vorher mit dem Faktor 365 von Tagen auf Jahre umgerechnet und dann mit √40 multipliziert wird.",
+      "Ungeeignet, weil Phenolphthalein an Betonen, die älter als etwa 20 Jahre sind, keinen deutlichen Farbumschlag mehr zeigt.",
+      "Nur als Größenordnung: Die Prüfung vergleicht Betone; Feuchte, Ausführung und Deckungsstreuung im Bauwerk fehlen."
+    ],
+    "correctIdx": 3,
+    "explanation": "DIN EN 12390-12 ist kein Verfahren für bestehende Bauwerke. Für das Parkhaus sind Bohrkerne oder Bruchflächen vor Ort zu untersuchen. Die Umrechnung aus der Laborprüfung liefert nur eine Größenordnung.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Prüfbedingungen sind Laborbedingungen; Feuchte und CO₂-Gehalt im Parkhaus weichen ab und schwanken.",
+      "Die Zeiteinheit wird mit √365 umgerechnet – und auch dann fehlen Umwelt- und Ausführungseinflüsse.",
+      "Der Phenolphthalein-Test ist auch an alten Betonen anwendbar (DIN EN 14630).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzen der Schnellprüfung",
+      "misconception": "Ein Laborkennwert wird als Bauwerksprognose verwendet.",
+      "coreRule": "K_AC = Vergleichswert; Bauwerk: Messung vor Ort, Umrechnung nur als Näherung.",
+      "actionableAdvice": "Wiederholen Sie im Modul Schnellkarbonatisierung (DIN EN 12390-12) den Reiter „Grenzen“.",
+      "targetModuleTab": "schnellkarbonatisierung",
+      "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
     "verified": false
   }

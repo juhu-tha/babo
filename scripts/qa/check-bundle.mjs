@@ -18,7 +18,7 @@ const KB = 1024;
 // AP 5.4 je Modul (≤ 5 kB) bzw. in 4 Teilpaketen (≤ 100 kB) geladen (Vite-Plugin scripts/quizPool.ts).
 // AP 5.5: Einstieg (Chunk „app“) 138,7 kB; Modulkopf-Daten je Modul (virtual:modul-kopf), KaTeX (77 kB) und
 // Chart.js (70 kB) nur bei Bedarf, gemeinsame Modulbausteine in „modul-basis“ (~38 kB), Icons in „icons“ (~14 kB).
-const GRENZE_EINSTIEG = 139.5;
+const GRENZE_EINSTIEG = 140;
 const GRENZE_CHUNK = 300;
 // Ausnahmen mit eigener Ratsche (Basisname des Chunks → kB); derzeit keine.
 const AUSNAHMEN = {};

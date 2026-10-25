@@ -22,6 +22,7 @@ const Materialdatenbanken = React.lazy(() => import('../modules/Materialdatenban
 const Materialpaesse = React.lazy(() => import('../modules/Materialpaesse'));
 const DppEpd = React.lazy(() => import('../modules/DppEpd'));
 const KiBaustoffe = React.lazy(() => import('../modules/KiBaustoffe'));
+const KiUebungen = React.lazy(() => import('../modules/KiUebungen'));
 const Beispielrechnungen = React.lazy(() => import('../modules/Beispielrechnungen'));
 const Startseite = React.lazy(() => import('../modules/Startseite'));
 const Admin = React.lazy(() => import('../modules/Admin'));
@@ -103,6 +104,8 @@ const Holzkorrosion = React.lazy(() => import('../modules/Holzkorrosion'));
 const Metallkorrosion = React.lazy(() => import('../modules/Metallkorrosion'));
 const WeitereOrganik = React.lazy(() => import('../modules/WeitereOrganik'));
 const Schadstoffe = React.lazy(() => import('../modules/Schadstoffe'));
+const AltholzUrbanMining = React.lazy(() => import('../modules/AltholzUrbanMining'));
+const PfasBaustoffe = React.lazy(() => import('../modules/PfasBaustoffe'));
 const Ressourceneffizienz = React.lazy(() => import('../modules/Ressourceneffizienz'));
 const BodenMaterialAufbereitung = React.lazy(() => import('../modules/BodenMaterialAufbereitung'));
 const Abfaelle = React.lazy(() => import('../modules/Abfaelle'));
@@ -180,6 +183,8 @@ const OnlineTools = React.lazy(() => import('../modules/OnlineTools'));
 const Formaenderungen = React.lazy(() => import('../modules/Formaenderungen'));
 const DaemmungVergleich = React.lazy(() => import('../modules/DaemmungVergleich'));
 const InnovativeWerkstoffe = React.lazy(() => import('../modules/InnovativeWerkstoffe'));
+const Biokohlebeton = React.lazy(() => import('../modules/Biokohlebeton'));
+const Schnellkarbonatisierung = React.lazy(() => import('../modules/Schnellkarbonatisierung'));
 const Praxiswissen = React.lazy(() => import('../modules/Praxiswissen'));
 const Bautagebuch = React.lazy(() => import('../modules/Bautagebuch'));
 const WeiterTHA = React.lazy(() => import('../modules/WeiterTHA'));
@@ -222,6 +227,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'ki_lokal' && <KiBaustoffe forceTab="lokal" />}
     {activeTab === 'ki_ressourcen' && <KiBaustoffe forceTab="ressourcen" />}
     {activeTab === 'ki_onlinekurse' && <KiBaustoffe forceTab="onlinekurse" />}
+    {activeTab === 'ki_uebungen' && <KiUebungen />}
     {activeTab === 'rechnung_u_wert' && <Beispielrechnungen forceTab="u_wert" />}
     {activeTab === 'rechnung_beton' && <Beispielrechnungen forceTab="beton" />}
     {activeTab === 'rechnung_stahlbeton' && <Beispielrechnungen forceTab="stahlbeton" />}
@@ -283,10 +289,12 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
     {activeTab === 'sonderbetone' && <Sonderbetone />}
     {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
+    {activeTab === 'biokohlebeton' && <Biokohlebeton />}
     {activeTab === 'qualitaetssicherung' && <Qualitaetssicherung />}
     {activeTab === 'betonpraxis' && <Betonpraxis />}
     {activeTab === 'expositionsklassen' && <Expositionsklassen />}
     {activeTab === 'korrosion' && <Korrosion />}
+    {activeTab === 'schnellkarbonatisierung' && <Schnellkarbonatisierung />}
     {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
     {activeTab === 'zwang' && <ZwangCalculator />}
     {activeTab === 'eigenspannungen' && <Eigenspannungen />}
@@ -422,6 +430,8 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'historische_bauweisen' && <HistorischeBauweisen />}
     {activeTab === 'historische_bauprodukte' && <HistorischeBauprodukte />}
     {activeTab === 'schadstoffe' && <Schadstoffe />}
+    {activeTab === 'altholz_urban_mining' && <AltholzUrbanMining />}
+    {activeTab === 'pfas_baustoffe' && <PfasBaustoffe />}
     {activeTab === 'ressourceneffizienz' && <Ressourceneffizienz />}
     {activeTab === 'vdi6200' && <Zustandsbewertung />}
     {activeTab === 'abfaelle' && <Abfaelle />}
