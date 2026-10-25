@@ -52,12 +52,14 @@ const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className
 // Suchbegriffe stehen in der vollständigen Registry: erst bei der ersten Suche laden (Phase 5, AP 5.5 Nachtrag).
 // Bis zum Eintreffen (ein Abruf) wird nur über die Beschriftungen gefiltert.
 let suchbegriffe: Record<string, string[]> | undefined;
+/** Suchbegriffe vorab laden (z. B. beim Fokus auf das Suchfeld) */
+export const suchbegriffeLaden = (): Promise<Record<string, string[]>> => ladeSuchbegriffe().then(w => (suchbegriffe = w));
 function useSuchbegriffe(benoetigt: boolean): Record<string, string[]> {
   const [werte, setWerte] = React.useState(suchbegriffe);
   React.useEffect(() => {
     if (!benoetigt || werte) return;
     let aktiv = true;
-    ladeSuchbegriffe().then(w => { suchbegriffe = w; if (aktiv) setWerte(w); }).catch(() => {});
+    suchbegriffeLaden().then(w => { if (aktiv) setWerte(w); }).catch(() => {});
     return () => { aktiv = false; };
   }, [benoetigt, werte]);
   return werte ?? {};

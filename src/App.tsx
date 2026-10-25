@@ -32,7 +32,7 @@ import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
 // mit VERSION_HISTORY[0] – so bleibt die Änderungshistorie aus dem Einstiegs-Chunk (Phase 5, AP 5.4)
 import { version as PAKET_VERSION } from '../package.json';
 import { tabGroups } from './routing/tabGroups';
-import { ModulNavigation } from './components/navigation/ModulNavigation';
+import { ModulNavigation, suchbegriffeLaden } from './components/navigation/ModulNavigation';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 import type { TabId } from '@/src/contexts/TabContext';
@@ -422,6 +422,7 @@ function AppContent() {
             className="w-full pl-9 pr-8 py-2 border border-home-grau/30 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-shiraz focus:border-transparent bg-white dark:bg-slate-800 dark:text-white" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
+            onFocus={() => { void suchbegriffeLaden().catch(() => {}); }}
             aria-label={language === 'en' ? 'Search modules and content' : 'Module und Inhalte durchsuchen'}
           />
           {searchQuery && (

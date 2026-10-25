@@ -2,7 +2,7 @@
 // entfernt sie in allen Fällen, in denen das erste Bild von React anders aussähe.
 import fs from 'fs';
 import vm from 'vm';
-import { erzeugeSchale } from '../scripts/startSchale';
+import { erzeugeSchale, KOPF_ANKER, SCHALE_STIL } from '../scripts/startSchale';
 import { CURRENT_VERSION } from '../src/data/versionData';
 
 const fehler: string[] = [];
@@ -34,19 +34,21 @@ for (const k of ['min-h-screen bg-off-white dark:bg-slate-950 text-text-main dar
   pruefe(roh.includes(`class="${k}`) && quellen.includes(k), `Rahmenklasse weicht ab: ${k}`);
 
 // 3. eingesetzte Version und Boot-Skript
-const html = await erzeugeSchale();
+const { kopf, root: html } = await erzeugeSchale();
 pruefe(html.includes(`Version ${CURRENT_VERSION.version} (${CURRENT_VERSION.date})`), 'Version nicht eingesetzt');
-pruefe(!html.includes('<script src') && html.startsWith('<div id="root">'), 'Aufbau der Schale');
+pruefe(html.startsWith('<div id="root"><div data-schale inert>') && !html.includes('<script'), 'Aufbau der Schale (Wurzel)');
+pruefe(kopf.includes('<script>') && !kopf.includes('<script src') && kopf.includes(`<style>${SCHALE_STIL}</style>`), 'Aufbau der Schale (Kopf)');
+// Kopfteil steht im Build vor jedem Stylesheet (sonst würde das Skript erst nach dem CSS laufen)
+const index = fs.readFileSync('index.html', 'utf8');
+pruefe(index.includes(KOPF_ANKER) && !/<link[^>]*stylesheet|<style/.test(index.slice(0, index.indexOf(KOPF_ANKER))), 'Kopfanker fehlt oder Stylesheet davor in index.html');
 
-// 4. Boot-Skript: behält die Schale nur auf der Startseite mit Standardeinstellungen
+// 4. Boot-Skript: Schale nur auf der Startseite mit Standardeinstellungen
 const boot = fs.readFileSync('scripts/startschale-boot.js', 'utf8');
 function laufe(hash: string, search: string, speicher: Record<string, string>): 'behalten' | 'entfernt' {
-  const kind = { attr: {} as Record<string, string>, setAttribute(n: string, w: string) { this.attr[n] = w; } };
-  const root = { firstElementChild: kind as typeof kind | null, set textContent(_v: string) { this.firstElementChild = null; } };
+  const klassen = new Set<string>();
   const ls = { getItem: (k: string) => (k in speicher ? speicher[k] : null) };
-  vm.runInNewContext(boot, { document: { getElementById: () => root }, location: { hash, search }, window: { localStorage: ls }, decodeURIComponent });
-  if (root.firstElementChild) pruefe(kind.attr.inert === '', 'Schale nicht inert');
-  return root.firstElementChild ? 'behalten' : 'entfernt';
+  vm.runInNewContext(boot, { document: { documentElement: { classList: { add: (k: string) => klassen.add(k) } } }, location: { hash, search }, window: { localStorage: ls }, decodeURIComponent });
+  return klassen.has('bb-schale') ? 'behalten' : 'entfernt';
 }
 pruefe(laufe('', '', {}) === 'behalten', 'Startseite ohne Hash: Schale fehlt');
 pruefe(laufe('#start', '', { baustoffboard_screen_width: 'wide' }) === 'behalten', '#start: Schale fehlt');

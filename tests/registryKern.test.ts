@@ -37,7 +37,7 @@ for (const m of alle) {
 pruefe(gleich(KERN_ALIASE, TAB_ALIASES), 'TAB_ALIASES weichen ab');
 pruefe(gleich(KERN_NAV, NAV_TAB_GRUPPEN), 'NAV_TAB_GRUPPEN weichen ab');
 
-// 3. Statischer Importgraph ab src/main.tsx ohne modules.ts (sonst wäre die volle Registry wieder im Einstieg)
+// 3. Statischer Importgraph ab src/main.tsx und ModulKopf ohne modules.ts (sonst wäre die volle Registry wieder im Einstieg)
 const aufloesen = (von: string, spez: string): string | undefined => {
   const basis = spez.startsWith('@/') ? path.resolve(spez.slice(2)) : spez.startsWith('.') ? path.resolve(path.dirname(von), spez) : undefined;
   if (!basis) return undefined;
@@ -45,7 +45,8 @@ const aufloesen = (von: string, spez: string): string | undefined => {
   return undefined;
 };
 const gesehen = new Set<string>();
-const offen = [path.resolve('src/main.tsx')];
+// Einstieg und Modulkopf (lädt auf jeder Modulseite vor dem Inhalt)
+const offen = [path.resolve('src/main.tsx'), path.resolve('src/routing/ModulKopf.tsx')];
 const weg = new Map<string, string>();
 const reg = path.resolve('src/registry/modules.ts');
 const regImporteure: string[] = [];
