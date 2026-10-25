@@ -25,17 +25,23 @@ interface Props<T extends string> {
   className?: string;
 }
 
+/** Zielreiter für eine Taste (←/→/↑/↓ zyklisch, Pos1/Ende); −1 = Taste nicht belegt. Exportiert für Tests. */
+export function reiterZiel(taste: string, index: number, anzahl: number): number {
+  if (anzahl <= 0) return -1;
+  if (taste === 'ArrowRight' || taste === 'ArrowDown') return (index + 1) % anzahl;
+  if (taste === 'ArrowLeft' || taste === 'ArrowUp') return (index - 1 + anzahl) % anzahl;
+  if (taste === 'Home') return 0;
+  if (taste === 'End') return anzahl - 1;
+  return -1;
+}
+
 export function ModuleTabs<T extends string>({ label, tabs, aktiv, onWechsel, variante = 'pill', children, className = '' }: Props<T>) {
   const basis = useId();
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const index = Math.max(0, tabs.findIndex(t => t.id === aktiv));
 
   const taste = (e: React.KeyboardEvent) => {
-    let ziel = -1;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') ziel = (index + 1) % tabs.length;
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ziel = (index - 1 + tabs.length) % tabs.length;
-    else if (e.key === 'Home') ziel = 0;
-    else if (e.key === 'End') ziel = tabs.length - 1;
+    const ziel = reiterZiel(e.key, index, tabs.length);
     if (ziel < 0) return;
     e.preventDefault();
     onWechsel(tabs[ziel].id);
