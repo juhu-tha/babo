@@ -198,6 +198,11 @@ const Kuriositaeten = React.lazy(() => import('../modules/Kuriositaeten'));
 const Datenschutz = React.lazy(() => import('../modules/Datenschutz'));
 const Barrierefreiheit = React.lazy(() => import('../modules/Barrierefreiheit'));
 const LaborSicherheit = React.lazy(() => import('../modules/LaborSicherheit'));
+const LaborPotentialmessung = React.lazy(() => import('../modules/laborhandouts/Potentialmessung'));
+const LaborAuslagerung = React.lazy(() => import('../modules/laborhandouts/Auslagerung'));
+const LaborFrischbeton = React.lazy(() => import('../modules/laborhandouts/FrischbetonHandout'));
+const LaborDruckfestigkeit = React.lazy(() => import('../modules/laborhandouts/DruckfestigkeitWuerfel'));
+const LaborMoertelprismen = React.lazy(() => import('../modules/laborhandouts/Moertelprismen'));
 
 
 export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
@@ -289,6 +294,11 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'betonkennwerte' && <Betonkennwerte />}
     {activeTab === 'sichtbeton' && <Sichtbeton />}
     {activeTab === 'festbeton_statistik' && <FestbetonStatistik />}
+    {activeTab === 'labor_potentialmessung' && <LaborPotentialmessung />}
+    {activeTab === 'labor_auslagerung' && <LaborAuslagerung />}
+    {activeTab === 'labor_frischbeton' && <LaborFrischbeton />}
+    {activeTab === 'labor_druckfestigkeit' && <LaborDruckfestigkeit />}
+    {activeTab === 'labor_moertelprismen' && <LaborMoertelprismen />}
     {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
     {activeTab === 'sonderbetone' && <Sonderbetone />}
     {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
