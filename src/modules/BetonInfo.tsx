@@ -47,11 +47,11 @@ export default function BetonInfo() {
       useCase: 'Schnelles Klären von Begriffsdefinitionen wie "rechnerischer Zementleimgehalt" oder "Mehlkorngehalt".'
     },
     {
-      title: 'Grundlagen',
+      title: 'Ausgangsstoffe',
       icon: Layers,
-      purpose: 'Tabellarische Übersichten aller normativen Grenzwerte nach DIN EN 206 / DIN 1045-2.',
-      standards: 'DIN EN 206, DIN 1045-2',
-      useCase: 'Bestimmung der maximal zulässigen w/z-Werte, Mindestdruckfestigkeitsklassen und Mindestzementgehalte für bestimmte Expositionsklassen.'
+      purpose: 'Ausgangsstoffe des Betons: Zementarten, Zugabewasser, Gesteinskörnung, Zusatzstoffe und -mittel sowie Mehlkorngehalt.',
+      standards: 'DIN EN 197-1, DIN EN 1008, DIN EN 12620, DIN 1045-2',
+      useCase: 'Auswahl der Ausgangsstoffe für den Mischungsentwurf, z. B. Anrechnung von Flugasche über den k-Wert-Ansatz oder Prüfung des Mehlkorngehalts.'
     },
     {
       title: 'Bindemittel',

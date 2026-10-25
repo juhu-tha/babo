@@ -12,6 +12,7 @@ import {
   ArrowUpFromLine
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import UniversalPruefstand from '@/src/components/labor/UniversalPruefstand';
@@ -38,16 +39,18 @@ export type LabMode =
 export default function Labor() {
   const [labMode, setLabMode] = useState<LabMode>('universal_pruefstand');
 
-  const tabs: { id: LabMode; label: string; icon: React.ReactNode; badge?: string }[] = [
-    { id: 'universal_pruefstand', label: 'Universalprüfmaschine', icon: <Activity size={15} />, badge: 'UTM' },
-    { id: 'spaltzug', label: 'Spaltzugversuch', icon: <Split size={15} />, badge: 'DIN EN 12390-6' },
-    { id: 'biegezug', label: 'Biegezugprüfung', icon: <Layers size={15} />, badge: 'DIN EN 12390-5' },
-    { id: 'haftzug', label: 'Haftzugprüfung', icon: <ArrowUpFromLine size={15} />, badge: 'DIN EN 1542' },
-    { id: 'schmidt_hammer', label: 'Rückprallhammer', icon: <Target size={15} />, badge: 'ZfP' },
-    { id: 'frischbeton', label: 'Frischbeton & Rheologie', icon: <Waves size={15} />, badge: 'DIN EN 12350' },
-    { id: 'bitumen_versuche', label: 'Bitumen-Prüfungen', icon: <Flame size={15} />, badge: 'DIN EN 1426' },
-    { id: 'labor_auswertung', label: 'Schadensdiagnostik', icon: <Microscope size={15} />, badge: 'Forensik' },
-    { id: 'protokolle', label: 'Prüfprotokolle', icon: <FileText size={15} />, badge: 'Archiv' },
+  const gruppen: readonly ModulTabGruppe<LabMode>[] = [
+    { id: 'festigkeit_g', label: 'Festigkeitsprüfungen', icon: Activity, mitglieder: [
+      { id: 'universal_pruefstand', label: 'Universalprüfmaschine (UTM)', icon: Activity },
+      { id: 'spaltzug', label: 'Spaltzugversuch (DIN EN 12390-6)', icon: Split },
+      { id: 'biegezug', label: 'Biegezugprüfung (DIN EN 12390-5)', icon: Layers },
+      { id: 'haftzug', label: 'Haftzugprüfung (DIN EN 1542)', icon: ArrowUpFromLine },
+    ] },
+    { id: 'zfp_g', label: 'Rückprallhammer (ZfP)', icon: Target, mitglieder: [{ id: 'schmidt_hammer', label: 'Rückprallhammer (ZfP)' }] },
+    { id: 'frisch_g', label: 'Frischbeton & Rheologie', icon: Waves, mitglieder: [{ id: 'frischbeton', label: 'Frischbeton & Rheologie' }] },
+    { id: 'bitumen_g', label: 'Bitumen-Prüfungen (DIN EN 1426)', icon: Flame, mitglieder: [{ id: 'bitumen_versuche', label: 'Bitumen-Prüfungen (DIN EN 1426)' }] },
+    { id: 'diagnose_g', label: 'Schadensdiagnostik', icon: Microscope, mitglieder: [{ id: 'labor_auswertung', label: 'Schadensdiagnostik' }] },
+    { id: 'protokolle_g', label: 'Prüfprotokolle', icon: FileText, mitglieder: [{ id: 'protokolle', label: 'Prüfprotokolle' }] },
   ];
 
   return (
@@ -71,36 +74,18 @@ export default function Labor() {
           </p>
         </div>
 
-        {/* Navigation Tabs Bar */}
-        <div className="flex flex-wrap gap-2 pt-4 mt-2 border-t border-home-grau/20">
-          {tabs.map(tab => (
-            <button aria-pressed={labMode === tab.id}
-              key={tab.id}
-              onClick={() => setLabMode(tab.id)}
-              className={`px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-                labMode === tab.id
-                  ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            >
-              {tab.icon}
-              <span>{tab.label}</span>
-              {tab.badge && (
-                <span
-                  className={`text-[9px] font-mono px-1.5 py-0.5 rounded-md ${
-                    labMode === tab.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                  }`}
-                >
-                  {tab.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
       </div>
 
+      {/* Reiter: 6 Hauptbereiche, mechanische Festigkeitsprüfungen mit zweiter Ebene (AP 3.8) */}
+      <GruppierteModuleTabs
+        label="Versuche im Baustoffprüflabor"
+        gruppen={gruppen}
+        aktiv={labMode}
+        onWechsel={setLabMode}
+        className="[&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+      >
       {/* Main Experiment View Area */}
-      <div>
+      <div className="mt-6">
         {labMode === 'universal_pruefstand' && (
           <UniversalPruefstand onNavigateToProtocols={() => setLabMode('protokolle')} />
         )}
@@ -141,6 +126,7 @@ export default function Labor() {
           </div>
         )}
       </div>
+      </GruppierteModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <div className="flex flex-col gap-6">

@@ -175,7 +175,7 @@ export const TAB_EN: Record<string, string> = {
   "bp_stahlbauprofile": "Structural Steel Profiles",
   "beton_info": "Module Overview",
   "beton_a_z": "Concrete Glossary A–Z",
-  "grundlagen": "Concrete Fundamentals",
+  "grundlagen": "Concrete Constituents",
   "bindemittel": "Binders & Blended Cements",
   "mischungsberechnung": "Mix Design Calculation",
   "herstellung_einbau": "Batching, Transport & Placing",

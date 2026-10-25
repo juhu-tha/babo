@@ -558,7 +558,7 @@ def extract_concrete_volumes(ifc_filepath):
   },
   {
     id: 'ubakus_calc',
-    title: '3. Bauphysik-Algorithmus: U-Wert & Glaser-Schichten berechnen',
+    title: '3. Bauphysik-Algorithmus: U-Wert mehrschichtiger Bauteile berechnen',
     subtitle: 'Algorithmus zur Berechnung mehrschichtiger Bauteile nach DIN EN ISO 6946',
     category: 'Bauphysik & Feuchteschutz',
     prerequisites: 'Standard Python (keine externen Pakete erforderlich)',

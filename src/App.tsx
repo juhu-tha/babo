@@ -1218,7 +1218,8 @@ function AppContent() {
           {activeTab === 'putzemoertel' && <PutzeMoertel />}
           {activeTab === 'gesteine' && <Gesteine />}
           {activeTab === 'bauchemie' && <Bauchemie />}
-          {(activeTab === 'kombinationen' || activeTab === 'faserverbund' || activeTab === 'materialitaet_architektur') && (
+          {activeTab === 'materialitaet_architektur' && <MaterialitaetArchitektur />}
+          {(activeTab === 'kombinationen' || activeTab === 'faserverbund') && (
             <Kombinationen initialTab={activeTab === 'faserverbund' ? 'faserverbund' : undefined} />
           )}
           {activeTab === 'kunststoffe' && <Kunststoffe />}
@@ -1503,7 +1504,7 @@ const HistorischeBauweisen = React.lazy(() => import('./modules/HistorischeBauwe
 const HistorischeBauprodukte = React.lazy(() => import('./modules/HistorischeBauprodukte'));
 const Stahlbetoninstandhaltung = React.lazy(() => import('./modules/Stahlbetoninstandhaltung').then(module => ({ default: module.Stahlbetoninstandhaltung })));
 const Asphalt = React.lazy(() => import('./modules/Asphalt'));
-const Faserverbund = React.lazy(() => import('./modules/Faserverbund'));
+const MaterialitaetArchitektur = React.lazy(() => import('./modules/MaterialitaetArchitektur'));
 const Kombinationen = React.lazy(() => import('./modules/Kombinationen'));
 const Lehm = React.lazy(() => import('./modules/Lehm'));
 const BpLehmbauprodukte = React.lazy(() => import('./modules/BpLehmbauprodukte'));

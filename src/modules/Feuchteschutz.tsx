@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
-import { psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
+import { glaser, psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { 
   Droplets, Thermometer, Wind, Beaker, Plus, Trash2, 
@@ -60,6 +61,7 @@ export default function Feuchteschutz() {
   // Outdoor climate values (for comparison)
   const [Te, setTe] = useState<number>(-5.0); // Outside Temp (°C)
   const [phiE, setPhiE] = useState<number>(80.0); // Outside rel. humidity (%)
+  const [tauperiodeTage, setTauperiodeTage] = useState<number>(90); // Dauer der Tauperiode (klassisch 90 d)
 
   // Layers state for the s_d sandbox
   const [layers, setLayers] = useState([
@@ -196,36 +198,18 @@ export default function Feuchteschutz() {
       }
     }
 
-    // Glaser Condensation Check across layers
-    const Rsi = 0.13;
-    const Rse = 0.04;
-    const R_layers = computed.map(l => {
-      const mat = MAT_LIBRARY.find(m => m.id === l.matId) || MAT_LIBRARY[0];
-      return l.d / (mat.lambda || 0.1);
-    });
-    const R_tot = Rsi + R_layers.reduce((a, b) => a + b, 0) + Rse;
+    // Glaser-Verfahren (Periodenbilanz) aus dem Rechenkern – die einzige Implementierung der Plattform (AP 3.9)
+    const g = glaser(
+      computed.map(l => {
+        const mat = MAT_LIBRARY.find(m => m.id === l.matId) || MAT_LIBRARY[0];
+        return { name: mat.name, d: l.d, lambda: mat.lambda || 0.1, mu: mat.mu };
+      }),
+      { thetaI: Ti, phiI, thetaE: Te, phiE, Rsi: 0.13, Rse: 0.04, tauperiodeTage }
+    );
+    const hasGlaserTauwasser = g.tauwasser;
 
-    const p_i = calcPsat(Ti) * (phiI / 100);
-    const p_e = calcPsat(Te) * (phiE / 100);
-
-    let hasGlaserTauwasser = false;
-    let accumR = Rsi;
-    let accumSd = 0;
-
-    for (let i = 0; i < computed.length; i++) {
-      accumR += R_layers[i];
-      accumSd += computed[i].sd;
-      const T_boundary = Ti - (accumR / R_tot) * (Ti - Te);
-      const psat_boundary = calcPsat(T_boundary);
-      const p_boundary = totalSd > 0 ? p_i - (accumSd / totalSd) * (p_i - p_e) : p_e;
-      if (p_boundary > psat_boundary + 1.0) {
-        hasGlaserTauwasser = true;
-        break;
-      }
-    }
-
-    return { computed, totalSd, isInnerTighter, hasGlaserTauwasser };
-  }, [layers, Ti, Te, phiI, phiE]);
+    return { computed, totalSd, isInnerTighter, hasGlaserTauwasser, glaser: g };
+  }, [layers, Ti, Te, phiI, phiE, tauperiodeTage]);
 
   // Methods for layers sandbox
   const addLayer = () => {
@@ -717,6 +701,111 @@ export default function Feuchteschutz() {
         </div>
       </div>
       
+      {/* GLASER-DIAGRAMM & TAUWASSERBILANZ – einzige Glaser-Implementierung (AP 3.9) */}
+      {(() => {
+        const g = layerCalculations.glaser;
+        const namen = layerCalculations.computed.map(l => l.name);
+        const ok = g.bestanden;
+        return (
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5" id="glaser-diagramm">
+            <div>
+              <h4 className="text-md font-extrabold text-slate-800 flex items-center gap-2">
+                <Droplets className="text-shiraz" size={18} /> Glaser-Diagramm &amp; Tauwasserbilanz (DIN 4108-3)
+              </h4>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Schichtaufbau aus der s_d-Sandbox, Klima aus den Reglern oben (Wand: R_si = 0,13, R_se = 0,04 m²K/W). Aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf und Partialdampfdruck p. Berührt p die Sättigungslinie, fällt in dieser Ebene Tauwasser aus.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-7">
+                <div className="h-[280px] w-full relative">
+                  <Line
+                    data={{
+                      labels: g.sd.map(x => `${formatDeZahl(x, 2)} m`),
+                      datasets: [
+                        { label: 'Sättigungsdampfdruck p_sat [Pa]', data: g.psat, borderColor: '#A3113E', borderDash: [4, 4], borderWidth: 2, pointRadius: 4, fill: false, tension: 0.1 },
+                        { label: 'Partialdampfdruck p [Pa]', data: g.p, borderColor: '#475569', backgroundColor: 'rgba(59, 130, 246, 0.07)', fill: true, borderWidth: 3, pointRadius: 4, tension: 0 },
+                      ],
+                    }}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      scales: {
+                        x: { title: { display: true, text: 'Diffusionsäquivalente Luftschichtdicke s_d (kumuliert, innen → außen)', font: { size: 10, weight: 'bold' } } },
+                        y: { title: { display: true, text: 'Dampfdruck (Pa)', font: { size: 10, weight: 'bold' } } },
+                      },
+                      plugins: { legend: { labels: { font: { size: 11, weight: 'bold' } } } },
+                    }}
+                  />
+                </div>
+                <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                  <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
+                    <span>Dauer der Tauperiode:</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(tauperiodeTage)} Tage ({formatDeWert(tauperiodeTage * 24)} h)</span>
+                  </div>
+                  <input
+                    type="range" min="30" max="150" step="5" value={tauperiodeTage}
+                    aria-label="Dauer der Tauperiode in Tagen"
+                    onChange={(e) => setTauperiodeTage(Number(e.target.value))}
+                    className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+                  <p className="text-[10px] text-slate-400 mt-1">Klassisches Glaser-Klima: 90 Tage Tauperiode, 90 Tage Verdunstungsperiode (12 °C / 70 % r. F.).</p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 space-y-3">
+                {!g.tauwasser ? (
+                  <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+                    <CheckCircle className="text-emerald-600 shrink-0 mt-0.5" size={18} />
+                    <div className="text-xs text-emerald-900 leading-relaxed">
+                      <h5 className="font-extrabold text-sm text-emerald-800">Kein Tauwasser in der Tauperiode</h5>
+                      An keiner Schichtgrenze erreicht p den Sättigungsdampfdruck (<FormulaText text="p < p_{sat}" />). Rechnerische Tauwassermasse 0 g/m².
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="p-4 bg-red-50/60 border border-red-200 rounded-xl flex items-start gap-3">
+                      <AlertTriangle className="text-red-600 shrink-0 mt-0.5" size={18} />
+                      <div className="text-xs text-red-950 leading-relaxed">
+                        <h5 className="font-extrabold text-sm text-red-800">Tauwasser an Grenzfläche {formatDeWert(g.ebene)}</h5>
+                        Tauwasserebene hinter der Schicht <strong>„{namen[g.ebene - 1]}“</strong>: Dort ist p gleich p_sat; der Dampf, der innen zuströmt, kann außen nicht vollständig abgeführt werden.
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Tauwasser m_c</div>
+                        <div className="text-base font-black text-red-700 font-mono mt-0.5">{formatDeZahl(g.mc, 1)} <span className="text-[10px]">g/m²</span></div>
+                      </div>
+                      <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Verdunstung m_ev</div>
+                        <div className="text-base font-black text-emerald-700 font-mono mt-0.5">{formatDeZahl(g.mev, 1)} <span className="text-[10px]">g/m²</span></div>
+                      </div>
+                      <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Bilanz</div>
+                        <div className={`text-base font-black font-mono mt-0.5 ${ok ? 'text-emerald-700' : 'text-red-700'}`}>{ok ? 'erfüllt' : 'kritisch'}</div>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed">
+                      {ok
+                        ? 'Grundkriterien nach DIN 4108-3 erfüllt: m_c ≤ 1 000 g/m² und m_ev > m_c. Zusätzlich gilt 500 g/m² an Grenzflächen nicht kapillar wasseraufnahmefähiger Schichten; bei Holz und Holzwerkstoffen die zulässige Feuchteerhöhung beachten.'
+                        : 'Das Bauteil trocknet in der Verdunstungsperiode nicht sicher aus oder die Tauwassermasse ist zu groß. Abhilfe: raumseitig diffusionshemmende Schicht (Dampfbremse) oder außen diffusionsoffenere Schichten.'}
+                    </p>
+                  </>
+                )}
+                <div className="text-[11px] text-slate-500 bg-off-white border border-home-grau/30 rounded-xl p-3 leading-relaxed">
+                  U = {formatDeZahl(g.U, 3)} W/(m²K) · s_d,ges = {formatDeZahl(g.sdGes, 2)} m · p_i = {formatDeZahl(g.pi, 0)} Pa · p_e = {formatDeZahl(g.pe, 0)} Pa
+                </div>
+                <EingabeHinweise hinweise={g.hinweise} />
+              </div>
+            </div>
+            <p className="text-[10px] text-slate-400 leading-relaxed">
+              Vereinfachtes Lehrmodell mit einer Tauwasserebene; die Verdunstungsrandbedingungen der DIN 4108-3:2024-03 weichen vom klassischen Glaser-Klima ab. Ersetzt keinen normgerechten Nachweis bzw. keine hygrothermische Simulation nach DIN EN 15026.
+            </p>
+          </div>
+        );
+      })()}
+
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
         title="Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums"
@@ -736,7 +825,7 @@ export default function Feuchteschutz() {
         schritte={[
           { titel: 'Innen', erklaerung: 'Gipsputz 1,5 cm (µ = 10) und Hochlochziegel 24 cm (µ = 5):', formel: 's_{d,innen} = 10 \\cdot 0{,}015 + 5 \\cdot 0{,}24 = 0{,}15 + 1{,}20 = 1{,}35\\,\\text{m}' },
           { titel: 'Außen', erklaerung: 'EPS 16 cm (µ = 50) und Kalk-Zement-Putz 2 cm (µ = 25):', formel: 's_{d,außen} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}' },
-          { titel: 'Bewertung', erklaerung: 'Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Der Glaser-Nachweis im Rechner zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.', formel: 's_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}' }
+          { titel: 'Bewertung', erklaerung: 'Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Das Glaser-Diagramm oben zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.', formel: 's_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}' }
         ]}
         ergebnisHinweis="Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis."
         normQuelle="Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03"
@@ -773,6 +862,11 @@ export default function Feuchteschutz() {
             formel: 'p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17{,}269 \\cdot T}{237{,}3 + T}} \\; (T \\ge 0), \\quad 610{,}5 \\cdot e^{\\frac{21{,}875 \\cdot T}{265{,}5 + T}} \\; (T < 0)',
             erklaerung: 'Sättigungsdampfdruck [Pa] von Wasserdampf über Wasser (T ≥ 0 °C) bzw. über Eis (T < 0 °C) in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.',
             quelle: 'DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05'
+          },
+          {
+            formel: 'm_c = \\delta_0 \\cdot \\Delta t \\cdot \\left( \\frac{p_i - p_{sat}(T_C)}{s_{d,1}} - \\frac{p_{sat}(T_C) - p_e}{s_{d,2}} \\right)',
+            erklaerung: 'Tauwassermasse m_c [g/m²] der Tauperiode an der Tauwasserebene C (Periodenbilanzverfahren); δ_0 = 7,2 · 10⁻⁷ kg/(m·h·Pa), Δt = Dauer der Tauperiode in h, s_d,1 bzw. s_d,2 = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene.',
+            quelle: 'DIN 4108-3:2024-03'
           }
         ]}
       />

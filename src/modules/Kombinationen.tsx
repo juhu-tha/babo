@@ -7,6 +7,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -569,7 +570,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               </div>
             </div>
 
-            {/* Glaser-Diffusionsregel */}
+            {/* Diffusionsregel (Faustregel); Glaser-Nachweis im Modul Feuchteschutz */}
             <div className="p-4 bg-amber-50/70 border border-amber-200/80 rounded-xl text-amber-950 text-xs leading-relaxed">
               <div className="flex items-start gap-2.5">
                 <AlertTriangle size={18} className="text-amber-700 shrink-0 mt-0.5" />
@@ -1132,6 +1133,12 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 </p>
               </div>
             </div>
+
+            <Querverweis ziel="feuchteschutz" titel="Tauwassernachweis nach Glaser" linkText="Zum Glaser-Rechner (Feuchteschutz)">
+              <p>
+                Die s_d-Ampel ist eine Lehrheuristik. Ob und wie viel Tauwasser im Bauteil ausfällt, zeigt erst das Glaser-Verfahren mit Temperatur- und Dampfdruckverlauf, Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 – es ist zentral im Modul Feuchteschutz umgesetzt.
+              </p>
+            </Querverweis>
           </div>
         )}
 

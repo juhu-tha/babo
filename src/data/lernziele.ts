@@ -31,8 +31,8 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     niveau: 'B', minuten: 90, vorwissen: ['baustoffkenngroessen'],
     ziele: [
       { stufe: 'Anwenden', text: 'den U-Wert eines mehrschichtigen Bauteils nach DIN EN ISO 6946 berechnen und mit dem GEG-Höchstwert vergleichen.' },
-      { stufe: 'Anwenden', text: 'Temperatur- und Dampfdruckverlauf in einem Bauteil ermitteln und eine Tauwasserebene bestimmen.' },
-      { stufe: 'Analysieren', text: 'die Wirkung von Dämmlage und Dampfbremse auf das Tauwasserrisiko vergleichen.' },
+      { stufe: 'Anwenden', text: 'den Temperaturverlauf in einem Bauteil ermitteln und mit dem Temperaturfaktor f_Rsi das Schimmelrisiko nach DIN 4108-2 prüfen.' },
+      { stufe: 'Analysieren', text: 'die Wirkung von Speichermasse und Schichtfolge auf Phasenverschiebung und Amplitudendämpfung im sommerlichen Wärmeschutz vergleichen.' },
     ],
   },
   bodenmechanik: {
@@ -575,7 +575,8 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "den Sättigungsdampfdruck, Teildruck, absolute Luftfeuchte und Taupunkt eines Raumklimas berechnen." },
       { stufe: "Anwenden", text: "die relative Oberflächenfeuchte bestimmen und das Schimmelrisiko anhand der 80-%-Grenze nach DIN 4108-2 prüfen." },
       { stufe: "Anwenden", text: "die s_d-Werte der Schichten eines Bauteils und den Gesamtwert s_d,ges ermitteln." },
-      { stufe: "Bewerten", text: "einen Schichtaufbau mit der Regel „innen dichter als außen“ und dem Glaser-Verfahren auf Tauwasserausfall prüfen." },
+      { stufe: "Anwenden", text: "mit dem Glaser-Verfahren die Tauwasserebene sowie Tauwasser- und Verdunstungsmasse eines Schichtaufbaus nach DIN 4108-3 ermitteln." },
+      { stufe: "Bewerten", text: "einen Schichtaufbau mit der Regel „innen dichter als außen“ und der Tauwasserbilanz beurteilen und Abhilfen wie eine Dampfbremse begründen." },
     ],
   },
   formaenderungen: {
@@ -629,8 +630,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   grundlagen: {
     niveau: "B", minuten: 90, vorwissen: ["beton_info"],
     ziele: [
-      { stufe: "Erinnern", text: "die Druckfestigkeits-, Konsistenz- und Expositionsklassen von Beton benennen und ihren Bezeichnungen die maßgebenden Kennwerte zuordnen." },
-      { stufe: "Verstehen", text: "die Herstellung von Zementklinker vom Rohstoffabbau über Vorwärmer und Drehrohrofen bis zur Mahlung erläutern." },
+      { stufe: "Erinnern", text: "die Eignung von Trinkwasser, Restwasser, Grundwasser und Meerwasser als Zugabewasser nach DIN EN 1008 wiedergeben." },
       { stufe: "Verstehen", text: "die Zementarten nach DIN EN 197-1 sowie Betonzusatzstoffe vom Typ I und Typ II und Betonzusatzmittel voneinander unterscheiden." },
       { stufe: "Anwenden", text: "den höchstzulässigen Mehlkorngehalt durch lineare Interpolation ermitteln und den Ist-Wert einer Rezeptur damit prüfen." },
       { stufe: "Anwenden", text: "den äquivalenten w/z-Wert mit dem k-Wert-Ansatz für Flugasche berechnen und mit dem Grenzwert der Expositionsklasse vergleichen." },
@@ -852,6 +852,15 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Analysieren", text: "die Schichtfolge eines Wandaufbaus auf diffusionstechnisch günstige Anordnung prüfen." },
       { stufe: "Anwenden", text: "den E-Modul eines Faserverbunds längs und quer zur Faser mit den Mischungsregeln nach Voigt und Reuss in Abhängigkeit vom Faservolumengehalt berechnen." },
       { stufe: "Bewerten", text: "die Faserverbundanwendungen wie CFK-Lamellen, GFK-Bewehrung und pultrudierte Profile sowie Schutzschichten für eine Bauaufgabe beurteilen." },
+    ],
+  },
+  materialitaet_architektur: {
+    niveau: "B", minuten: 60, vorwissen: ["baustoffkunde", "sichtbeton"],
+    ziele: [
+      { stufe: "Verstehen", text: "die vier Dimensionen der Materialität – Optik, Haptik, Licht und Alterung – an Beispielbauten erläutern." },
+      { stufe: "Verstehen", text: "das warme oder kalte Griffgefühl eines Werkstoffs mit dem Wärmeeindringkoeffizienten begründen." },
+      { stufe: "Analysieren", text: "die Alterung von Holz, Kupfer, Titanzink und wetterfestem Stahl hinsichtlich Mechanismus und konstruktiver Voraussetzungen vergleichen." },
+      { stufe: "Bewerten", text: "für eine Entwurfsaufgabe einen Fassaden- oder Oberflächenwerkstoff nach Wirkung, Alterungsverhalten und Pflegeaufwand auswählen und begründen." },
     ],
   },
   korrosion: {

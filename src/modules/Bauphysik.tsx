@@ -21,11 +21,11 @@ import {
   Volume2, 
   Sun, 
   Thermometer, 
-  CloudRain,
   Sparkles,
   Award
 } from 'lucide-react';
-import { GEG_U_MAX, psat, uebergang, uWert } from '@/src/calc/waermeschutz';
+import { GEG_U_MAX, temperaturverlauf, uebergang, uWert } from '@/src/calc/waermeschutz';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
@@ -77,12 +77,10 @@ export default function Bauphysik() {
   // Bauteil-Auswahl nach GEG (Außenwand, Steildach, Flachdach, Kellerdecke)
   const [buildingPart, setBuildingPart] = useState<'wall' | 'pitched_roof' | 'flat_roof' | 'basement'>('wall');
 
-  // Wärme & Feuchte State (Standard Winter-Klima nach DIN 4108-3)
+  // Wärmeschutz-Klima (Winter-Randbedingungen nach DIN 4108-3)
   const [Ti, setTi] = useState(20); // Innen-Temperatur
   const [Te, setTe] = useState(-5); // Außen-Temperatur (-5 °C nach DIN 4108-3)
-  const [RHi, setRHi] = useState(50); // Innen-Luftfeuchte (50 % nach DIN 4108-3)
-  const [RHe, setRHe] = useState(80); // Außen-Luftfeuchte (80 % nach DIN 4108-3)
-  const [tauperiodeDauer, setTauperiodeDauer] = useState(90); // Dauer Tauperiode in Tagen (DIN 4108-3)
+  // Feuchteschutz (Glaser-Verfahren) liegt ausschließlich im Modul Feuchteschutz (AP 3.9)
 
   // Wall Layer structures
   const [layers, setLayers] = useState([
@@ -114,157 +112,13 @@ export default function Bauphysik() {
     });
   }, [layers]);
 
-  // Master Thermodynamic and Glaser calculation
-  const glaserData = useMemo(() => {
-    // 1. U-Wert (DIN EN ISO 6946) mit Plausibilitätsprüfung der Schichten
+  // U-Wert und Temperaturverlauf (Rechenkern src/calc/waermeschutz.ts); der Tauwassernachweis nach Glaser
+  // ist bewusst nur im Modul Feuchteschutz implementiert (AP 3.9 „Eine Quelle je Thema“).
+  const waerme = useMemo(() => {
     const uErgebnis = uWert(resolvedLayers, Rsi, Rse);
-    const U = uErgebnis.U;
-
-    // 2. Temperature profile through boundaries
-    const q = U * (Ti - Te);
-    let currentT = Ti - q * Rsi;
-    const T_profile = [currentT];
-    
-    resolvedLayers.forEach(l => {
-      currentT -= q * (l.d / l.lambda);
-      T_profile.push(currentT);
-    });
-
-    // 3. Saturation vapor pressure psat (Magnus Formula)
-    const calcPsat = psat; // DIN 4108-3 (Magnus, über Eis unter 0 °C)
-    const psat_profile = T_profile.map(calcPsat);
-
-    // 4. Pure linear vapor pressure p (assuming no condensation limit initially)
-    const pi = calcPsat(Ti) * (RHi / 100);
-    const pe = calcPsat(Te) * (RHe / 100);
-    
-    let sd_total = 0;
-    resolvedLayers.forEach(l => sd_total += l.d * l.mu);
-    
-    const g_diff = (pi - pe) / sd_total;
-    let currentP = pi;
-    const p_profile_raw = [currentP];
-    
-    resolvedLayers.forEach(l => {
-      currentP -= g_diff * (l.d * l.mu);
-      p_profile_raw.push(currentP);
-    });
-
-    // 5. Correct Glaser physical vapor pressure (caps at psat boundary)
-    // We check if at any layer interface, raw vapor pressure exceeds saturation vapor pressure
-    let maxViolation = 0;
-    let condensationIndex = -1;
-    for (let i = 0; i < p_profile_raw.length; i++) {
-      const violation = p_profile_raw[i] - psat_profile[i];
-      if (violation > maxViolation) {
-        maxViolation = violation;
-        condensationIndex = i;
-      }
-    }
-
-    let p_profile = [...p_profile_raw];
-    const isCondensing = maxViolation > 0.05 && condensationIndex > 0 && condensationIndex < p_profile_raw.length - 1;
-    let condMassFlowWinter = 0; // g/(m²·h)
-    let evapMassFlowSummer = 0; // g/(m²·h)
-
-    if (isCondensing) {
-      // Condensation boundary coordinate plane (C)
-      const sd_C = resolvedLayers.slice(0, condensationIndex).reduce((acc, l) => acc + l.d * l.mu, 0);
-      const psat_C = psat_profile[condensationIndex];
-
-      // Re-profile vapor pressure taking saturation at boundary into account (Glaser double-straight-line curve)
-      p_profile = p_profile_raw.map((_, i) => {
-        if (i <= condensationIndex) {
-          const sd_curr = resolvedLayers.slice(0, i).reduce((acc, l) => acc + l.d * l.mu, 0);
-          return pi - (pi - psat_C) * (sd_C > 0 ? sd_curr / sd_C : 0);
-        } else {
-          const sd_curr = resolvedLayers.slice(0, i).reduce((acc, l) => acc + l.d * l.mu, 0);
-          const sd_dist = sd_total - sd_C;
-          return psat_C - (psat_C - pe) * (sd_dist > 0 ? (sd_curr - sd_C) / sd_dist : 0);
-        }
-      });
-
-      // Calculate Winter Condensation flux according to DIN 4108-3 Glaser algorithm
-      // Wasserdampf-Diffusionsleitkoeffizient ruhender Luft nach DIN 4108-3:
-      // delta_0 = 2,0 · 10^-10 kg/(m·s·Pa) = 7,2 · 10^-7 kg/(m·h·Pa)
-      const delta_a = 7.2e-7; // kg/(m·h·Pa)
-      const sd_before = sd_C;
-      const sd_after = sd_total - sd_C;
-
-      const flow_in = (pi - psat_C) / (sd_before > 0 ? sd_before : 0.01);
-      const flow_out = (psat_C - pe) / (sd_after > 0 ? sd_after : 0.01);
-      
-      condMassFlowWinter = Math.max(0, delta_a * (flow_in - flow_out) * 1000); // g/(m²·h)
-
-      // Verdunstungsperiode vereinfacht: innen und außen 12 °C / 70 % r. F., Tauwasserebene 12 °C
-      // (klassisches Glaser-Klima; Randbedingungen der DIN 4108-3:2024-03 abweichend – manuell prüfen)
-      const T_summer = 12;
-      const psat_summer_total = calcPsat(T_summer); // 1402 Pa
-      const p_ambient_summer = psat_summer_total * 0.70; // 981 Pa
-      
-      // Condensation plane is saturated at T_summer
-      const flow_summer_interior = (psat_summer_total - p_ambient_summer) / (sd_before > 0 ? sd_before : 0.01);
-      const flow_summer_exterior = (psat_summer_total - p_ambient_summer) / (sd_after > 0 ? sd_after : 0.01);
-      
-      evapMassFlowSummer = delta_a * (flow_summer_interior + flow_summer_exterior) * 1000; // g/(m²·h)
-    }
-
-    // Winter period is typically 90 days (2160 hours)
-    // Summer drying period is typically 90 days (2160 hours)
-    const winter_hours = tauperiodeDauer * 24;
-    const summer_hours = 2160;
-    const totalCondensation = condMassFlowWinter * winter_hours; // g/m²
-    const totalPotentialEvaporation = evapMassFlowSummer * summer_hours; // g/m²
-
-    const sd_profile = [0];
-    let currentSd = 0;
-    resolvedLayers.forEach(l => {
-      currentSd += l.d * l.mu;
-      sd_profile.push(currentSd);
-    });
-
-    return {
-      U,
-      R_T: uErgebnis.R_T,
-      hinweise: uErgebnis.hinweise,
-      labels: sd_profile.map(sd => formatDeZahl(sd, 2) + 'm'),
-      T_labels: T_profile.map((_, i) => i === 0 ? 'Innen' : i === T_profile.length - 1 ? 'Außen' : `Grenzfl. ${i}`),
-      T_profile,
-      sd_total,
-      isCondensing,
-      condensationIndex,
-      condMassFlowWinter,
-      evapMassFlowSummer,
-      totalCondensation,
-      totalPotentialEvaporation,
-      p_profile,
-      psat_profile,
-      datasets: [
-        {
-          label: 'Sättigungsdampfdruck p_sat (Pa)',
-          data: psat_profile,
-          borderColor: '#A3113E',
-          borderDash: [4, 4],
-          borderWidth: 2,
-          pointRadius: 5,
-          pointBackgroundColor: '#A3113E',
-          fill: false,
-          tension: 0.1
-        },
-        {
-          label: 'Glaser Partialdampfdruck p (Pa)',
-          data: p_profile,
-          borderColor: '#475569',
-          backgroundColor: 'rgba(59, 130, 246, 0.07)',
-          fill: true,
-          borderWidth: 3,
-          pointRadius: 5,
-          pointBackgroundColor: '#334155',
-          tension: 0
-        }
-      ]
-    };
-  }, [Ti, Te, RHi, RHe, resolvedLayers, tauperiodeDauer, Rsi, Rse]);
+    const T_profile = uErgebnis.gueltig ? temperaturverlauf(resolvedLayers, Rsi, Rse, Ti, Te) : resolvedLayers.map(() => NaN).concat(NaN);
+    return { U: uErgebnis.U, R_T: uErgebnis.R_T, hinweise: uErgebnis.hinweise, T_profile };
+  }, [Ti, Te, resolvedLayers, Rsi, Rse]);
 
   // Sommerlicher Wärmeschutz - Phase shift & Damping calculations
   const summerHeatAnalysis = useMemo(() => {
@@ -601,7 +455,7 @@ export default function Bauphysik() {
                 Bauphysik-Zentrum d. TH Augsburg
               </h2>
               <p className="text-sm text-text-main/60 mt-0.5">
-                Simulationsrechner für U-Wert, klimabedingten Feuchteschutz (Glaser) und Hallzeitraum-Tuning (DIN 18041)
+                Simulationsrechner für U-Wert und Temperaturfaktor, sommerlichen Wärmeschutz und Nachhallzeit (DIN 18041)
               </p>
             </div>
           </div>
@@ -617,7 +471,7 @@ export default function Bauphysik() {
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <CloudRain size={14} /> Feuchte- &amp; Wärmeschutz (Glaser)
+            <Thermometer size={14} /> Wärmeschutz (U-Wert &amp; f_Rsi)
           </button>
           
           <button aria-pressed={activeTab === 'summer_heat'}
@@ -644,7 +498,7 @@ export default function Bauphysik() {
         </div>
       </div>
 
-      {/* 2. TAB CONTENT 1: THERMAL HYGRIC (GLASER SIMULATION) */}
+      {/* 2. TAB CONTENT 1: WÄRMESCHUTZ (U-Wert, Temperaturverlauf, f_Rsi) */}
       {activeTab === 'thermal_hygric' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
@@ -691,16 +545,6 @@ export default function Bauphysik() {
                         onChange={(e) => setTi(Number(e.target.value))} 
                         className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                       />
-                      <div className="flex justify-between text-[11px] font-bold text-slate-700 mt-2">
-                        <span>Feuchte (RH_i)</span>
-                        <span className="text-shiraz">{formatDeWert(RHi)}%</span>
-                      </div>
-                      <input 
-                        type="range" min="30" max="80" step="5" value={RHi} 
-                        aria-label="Innenluftfeuchte RHi in %"
-                        onChange={(e) => setRHi(Number(e.target.value))} 
-                        className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                      />
                     </div>
                   </div>
                 </div>
@@ -719,35 +563,7 @@ export default function Bauphysik() {
                         onChange={(e) => setTe(Number(e.target.value))} 
                         className="w-full accent-blue-600 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                       />
-                      <div className="flex justify-between text-[11px] font-bold text-slate-700 mt-2">
-                        <span>Feuchte (RH_e)</span>
-                        <span className="text-blue-600">{formatDeWert(RHe)}%</span>
-                      </div>
-                      <input 
-                        type="range" min="40" max="100" step="5" value={RHe} 
-                        aria-label="Außenluftfeuchte RHe in %"
-                        onChange={(e) => setRHe(Number(e.target.value))} 
-                        className="w-full accent-blue-600 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                      />
                     </div>
-                  </div>
-                </div>
-
-                <div className="col-span-2 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
-                    <span>Dauer Tauperiode (DIN 4108-3):</span>
-                    <span className="text-shiraz font-mono">{formatDeWert(tauperiodeDauer)} Tage ({formatDeWert(tauperiodeDauer * 24)} h)</span>
-                  </div>
-                  <input 
-                    type="range" min="30" max="150" step="5" value={tauperiodeDauer} 
-                    aria-label="Dauer der Tauperiode in Tagen"
-                    onChange={(e) => setTauperiodeDauer(Number(e.target.value))} 
-                    className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[9px] text-slate-400 mt-1">
-                    <span>30 Tage</span>
-                    <span>Standard: 90 Tage (DIN 4108-3)</span>
-                    <span>150 Tage</span>
                   </div>
                 </div>
               </div>
@@ -878,114 +694,26 @@ export default function Bauphysik() {
           {/* Visualization & Evaluation Results - Right spanning 7 columns */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Interactive Glaser Dampfdruck Chart */}
-            <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center justify-between">
-                <span>Glaser-Sättigungsdiagramm (Dampfdrücke)</span>
-                <span className="text-[10px] font-mono bg-slate-100 text-slate-500 px-2 py-0.5 rounded border border-slate-200 font-bold">
-                  S_d gesamt = {formatDeZahl(glaserData.sd_total, 2)} m
-                </span>
-              </h3>
-              
-              <div className="h-[280px] w-full relative">
-                <Line 
-                  data={{ labels: glaserData.labels, datasets: glaserData.datasets }} 
-                  options={{
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                      x: { title: { display: true, text: 'Wasserdampfdiffusionsäquivalente Luftschichtdicke s_d (m)', font: { size: 10, weight: 'bold' } } },
-                      y: { title: { display: true, text: 'Dampfdruck (Pa)', font: { size: 10, weight: 'bold' } } }
-                    },
-                    plugins: {
-                      legend: { labels: { font: { size: 11, weight: 'bold' } } }
-                    }
-                  }} 
-                />
-              </div>
-            </div>
+            {/* Feuchteschutz: eine Quelle (AP 3.9) */}
+            <Querverweis ziel="feuchteschutz" titel="Tauwasser im Bauteil? → Glaser-Verfahren im Modul Feuchteschutz" linkText="Zum Glaser-Rechner (Feuchteschutz)">
+              <p>
+                Der hier berechnete Temperaturverlauf ist die Grundlage des Tauwassernachweises: Fällt der Wasserdampf-Partialdruck an einer Schichtgrenze bis auf den Sättigungsdampfdruck, entsteht Tauwasser. Das Glaser-Diagramm mit Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 wird an einer Stelle gepflegt – im Modul Feuchteschutz.
+              </p>
+            </Querverweis>
 
-            {/* Quantitative Safety Audit DIN 4108-3 Verification */}
+            {/* Wärmeschutz-Bewertung */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4 flex items-center gap-1.5">
-                <Award size={14} className="text-shiraz" /> Feuchtetechnische Bewertung nach DIN 4108-3
+                <Award size={14} className="text-shiraz" /> Wärmeschutz-Bewertung (GModG Anlage 7, DIN 4108-2)
               </h3>
 
-              {!glaserData.isCondensing ? (
-                // SUCCESS NOTIFICATION BOX
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
-                  <CheckCircle2 className="text-emerald-600 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <h4 className="font-extrabold text-sm text-emerald-800">BAUTEIL ABSOLUT KONDENSATIONSFREI</h4>
-                    <p className="text-xs text-emerald-700 mt-1 leading-relaxed">
-                      Unter den gewählten Klimarandbedingungen wird an keiner Grenzfläche die Sättigungsgrenze (<FormulaText text="p < p_{sat}" />) erreicht. Es fällt <strong>kein Tauwasser (0,0 g/m²)</strong> an. Der normative Nachweis nach DIN 4108-3 gilt für diese Periode als rein rechnerisch bestanden!
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                // CONDENSATION WARNING & COMPUTATIONAL AUDIT REPORT
-                <div className="space-y-4">
-                  <div className="p-4 bg-off-white border border-rose-250 rounded-xl flex items-start gap-3">
-                    <CloudRain className="text-rose-600 flex-shrink-0 mt-0.5" size={20} />
-                    <div className="flex-1">
-                      <h4 className="font-extrabold text-sm text-rose-800 uppercase tracking-wide">
-                        Tauwasserausfall an Grenzfläche {formatDeWert(glaserData.condensationIndex)}!
-                      </h4>
-                      <p className="text-xs text-shiraz-900 mt-1 leading-relaxed">
-                        Die rote und blaue Kennlinie berühren sich. Im Bauteilinneren an der Schnittstelle nach dem Werkstoff <strong>"{resolvedLayers[glaserData.condensationIndex - 1]?.name}"</strong> kommt es zur Kondensation infolge ungenügender Dampfsperrwirkung auf der warmen Innenseite.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Quantitative calculation balance card */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                      <div className="text-[10px] text-slate-500 font-bold uppercase">Winter-Kondensat m_c</div>
-                      <div className="text-xl font-black text-rose-600 font-mono mt-1">
-                        {formatDeZahl(glaserData.totalCondensation, 1)} <span className="text-xs">g/m²</span>
-                      </div>
-                      <div className="text-[9px] text-slate-400 mt-0.5">@ 90 Tage Winter</div>
-                    </div>
-
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                      <div className="text-[10px] text-slate-500 font-bold uppercase">Sommer-Trocknung m_evap</div>
-                      <div className="text-xl font-black text-emerald-600 font-mono mt-1">
-                        {formatDeZahl(glaserData.totalPotentialEvaporation, 1)} <span className="text-xs">g/m²</span>
-                      </div>
-                      <div className="text-[9px] text-slate-400 mt-0.5">@ 90 Tage Sommer</div>
-                    </div>
-
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                      <div className="text-[10px] text-slate-500 font-bold uppercase">Bilanzergebnis</div>
-                      <div className="text-xl font-black text-slate-800 font-mono mt-1">
-                        {glaserData.totalPotentialEvaporation > glaserData.totalCondensation && glaserData.totalCondensation <= 1000 ? '+ Bestanden' : '- Kritisch'}
-                      </div>
-                      <div className="text-[9px] text-slate-400 mt-0.5">Vollständige Austrocknung</div>
-                    </div>
-                  </div>
-
-                  {/* Expert Normative Statement */}
-                  <div className="p-3.5 bg-slate-900 text-slate-200 rounded-xl border border-slate-800 flex items-start gap-2.5">
-                    <AlertTriangle className="text-yellow-400 flex-shrink-0 mt-0.5" size={16} />
-                    <div className="text-xs font-normal leading-normal text-slate-300">
-                      <strong>Ingenieur-Empfehlung:</strong> 
-                      {glaserData.totalPotentialEvaporation > glaserData.totalCondensation && glaserData.totalCondensation <= 1000 ? (
-                        <span> Da die Sommerverdunstung die Winter-Kondensatmenge übersteigt (<span className="text-emerald-400 font-semibold font-mono">m_evap &gt; m_c</span>) und <span className="text-slate-100 font-semibold font-mono">m_c &lt; 1000 g/m²</span> liegt, sind die Grundkriterien nach DIN 4108-3 erfüllt (zusätzlich 500 g/m² an nicht kapillar wasseraufnahmefähigen Schichtgrenzen und Holzfeuchte-Grenzen beachten). Eine raumseitig diffusionshemmende Schicht verringert die Tauwassermenge weiter.</span>
-                      ) : (
-                        <span className="text-rose-300 font-bold"> Das Bauteil kann im Sommer nicht vollständig austrocknen! Gefahr der Akkumulation über Jahre hinweg und Holzfäule gefürchtet. Installiere auf der warmen Innenseite zwingend eine Klimamembran oder PE-Dampfsperrfolie!</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <EingabeHinweise hinweise={glaserData.hinweise} />
+              <EingabeHinweise hinweise={waerme.hinweise} />
               {/* GEG 2024 & DIN 4108-2 f_RSi Mold Risk overall Audit Panel */}
-              <div className="mt-4 pt-4 border-t border-slate-150 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* GEG 2024 Compliance Check Card */}
                 {(() => {
-                  const isGegCompliant = glaserData.U <= gegLimit;
+                  const isGegCompliant = waerme.U <= gegLimit;
                   return (
                     <div className={`p-4 rounded-xl border ${isGegCompliant ? 'bg-emerald-50/40 border-emerald-150 text-emerald-950' : 'bg-red-50/40 border-red-150 text-red-950'}`}>
                       <div className="flex items-center justify-between mb-1.5">
@@ -1001,7 +729,7 @@ export default function Bauphysik() {
                         </div>
                         <div className="flex justify-between items-baseline pb-1 select-all">
                           <span className="font-semibold text-slate-800">Ist U-Wert:</span>
-                          <span className="font-mono font-black text-[13px] text-slate-900">{formatDeZahl(glaserData.U, 3)} W/(m²K)</span>
+                          <span className="font-mono font-black text-[13px] text-slate-900">{formatDeZahl(waerme.U, 3)} W/(m²K)</span>
                         </div>
                         <div className="text-[9.5px] leading-relaxed text-slate-500 pt-1 border-t border-slate-200/50">
                           {isGegCompliant 
@@ -1017,7 +745,7 @@ export default function Bauphysik() {
                 {/* DIN 4108-2 Surface factor f_RSi mold-prevention card */}
                 {(() => {
                   // DIN 4108-2: f_Rsi mit R_si = 0,25 m²K/W (erhöhter Übergangswiderstand für Schimmelnachweis)
-                  const f_RSi = 1 - 0.25 * glaserData.U;
+                  const f_RSi = 1 - 0.25 * waerme.U;
                   const t_si = Te + f_RSi * (Ti - Te);
                   const is_f_RSi_compliant = f_RSi >= 0.70;
                   return (
@@ -1068,24 +796,24 @@ export default function Bauphysik() {
                   {
                     titel: 'Wärmedurchlasswiderstände der Schichten',
                     erklaerung: 'Jede Schicht trägt mit Dicke d (in m) geteilt durch die Wärmeleitfähigkeit λ bei:',
-                    formel: `\\sum \\frac{d_i}{\\lambda_i} = ${resolvedLayers.map(l => `\\frac{${formatDeTeXWert(l.d)}}{${formatDeTeXWert(l.lambda)}}`).join(' + ') || '0'} = ${formatDeTeX(glaserData.R_T - Rsi - Rse, 3)}\\,\\text{m}^2\\text{K/W}`
+                    formel: `\\sum \\frac{d_i}{\\lambda_i} = ${resolvedLayers.map(l => `\\frac{${formatDeTeXWert(l.d)}}{${formatDeTeXWert(l.lambda)}}`).join(' + ') || '0'} = ${formatDeTeX(waerme.R_T - Rsi - Rse, 3)}\\,\\text{m}^2\\text{K/W}`
                   },
                   {
                     titel: 'Wärmedurchgangswiderstand',
                     erklaerung: 'Summe aus Übergangs- und Schichtwiderständen:',
-                    formel: `R_T = ${formatDeTeX(Rsi, 2)} + ${formatDeTeX(glaserData.R_T - Rsi - Rse, 3)} + ${formatDeTeX(Rse, 2)} = ${formatDeTeX(glaserData.R_T, 3)}\\,\\text{m}^2\\text{K/W}`
+                    formel: `R_T = ${formatDeTeX(Rsi, 2)} + ${formatDeTeX(waerme.R_T - Rsi - Rse, 3)} + ${formatDeTeX(Rse, 2)} = ${formatDeTeX(waerme.R_T, 3)}\\,\\text{m}^2\\text{K/W}`
                   },
                   {
                     titel: 'U-Wert und Anforderung',
-                    erklaerung: glaserData.U <= gegLimit
+                    erklaerung: waerme.U <= gegLimit
                       ? `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist eingehalten.`
                       : `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist überschritten.`,
-                    formel: `U = \\frac{1}{${formatDeTeX(glaserData.R_T, 3)}} = ${formatDeTeX(glaserData.U, 3)}\\,\\text{W/(m}^2\\text{K)} ${glaserData.U <= gegLimit ? '\\le' : '>'} ${formatDeTeX(gegLimit, 2)}`
+                    formel: `U = \\frac{1}{${formatDeTeX(waerme.R_T, 3)}} = ${formatDeTeX(waerme.U, 3)}\\,\\text{W/(m}^2\\text{K)} ${waerme.U <= gegLimit ? '\\le' : '>'} ${formatDeTeX(gegLimit, 2)}`
                   },
                   {
                     titel: 'Temperaturfaktor (Schimmelnachweis)',
                     erklaerung: 'Mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W nach DIN 4108-2; gefordert ist f_Rsi ≥ 0,70:',
-                    formel: `f_{Rsi} = 1 - 0{,}25 \\cdot ${formatDeTeX(glaserData.U, 3)} = ${formatDeTeX(1 - 0.25 * glaserData.U, 3)}`
+                    formel: `f_{Rsi} = 1 - 0{,}25 \\cdot ${formatDeTeX(waerme.U, 3)} = ${formatDeTeX(1 - 0.25 * waerme.U, 3)}`
                   }
                 ]}
                 ergebnisHinweis="Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F)."
@@ -1114,7 +842,7 @@ export default function Bauphysik() {
                   </thead>
                   <tbody>
                     {resolvedLayers.map((layer, idx) => {
-                      const temp_at_interface = glaserData.T_profile[idx + 1];
+                      const temp_at_interface = waerme.T_profile[idx + 1];
                       return (
                         <tr key={layer.id} className="border-b border-slate-100 text-slate-700 hover:bg-slate-50/50">
                           <td className="py-2 px-1 font-mono text-slate-400 font-bold">{idx + 1}</td>
@@ -1182,7 +910,7 @@ export default function Bauphysik() {
               <div className="space-y-4">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-600">Wärmedurchgang (U-Wert)</span>
-                  <span className="text-sm font-black text-slate-800 font-mono">{formatDeZahl(glaserData.U, 3)} W/(m²K)</span>
+                  <span className="text-sm font-black text-slate-800 font-mono">{formatDeZahl(waerme.U, 3)} W/(m²K)</span>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-600">Gesamte Wanddicke</span>
@@ -1689,7 +1417,7 @@ export default function Bauphysik() {
         lastReviewed="Oktober 2026 (AP 6 Bauphysik: Diffusionsleitkoeffizient korrigiert, Magnus über Eis, f_Rsi mit R_si = 0,25, T_soll nach DIN 18041 volumenabhängig, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)"
 wikipedia={[
           { title: 'Bauphysik', url: 'https://de.wikipedia.org/wiki/Bauphysik' },
-          { title: 'Glaser-Verfahren', url: 'https://de.wikipedia.org/wiki/Glaser-Verfahren' },
+          { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
         regelwerke={[
@@ -1713,11 +1441,6 @@ wikipedia={[
             formel: 'U = 1 / R_T = 1 / (R_{si} + \\sum (d_i / \\lambda_i) + R_{se})',
             erklaerung: 'Wärmedurchgangskoeffizient (U-Wert) in W/(m²K). Berechnet den Transmissionswärmeverlust durch mehrschichtige Bauteile.',
             quelle: 'DIN EN ISO 6946'
-          },
-          {
-            formel: 'm_c = \\delta_a \\cdot \\Delta t \\cdot \\left( \\frac{p_i - p_{sat}(T_C)}{s_{d,1}} - \\frac{p_{sat}(T_C) - p_e}{s_{d,2}} \\right)',
-            erklaerung: 'Tauwassermasse m_c [g/m²] der Tauperiode an der Tauwasserebene C (Periodenbilanzverfahren); δ_a = 7,2 · 10⁻⁷ kg/(m·h·Pa), Δt = Dauer der Tauperiode in h.',
-            quelle: 'DIN 4108-3:2024-03'
           },
           {
             formel: 'T = 0{,}163 \\cdot \\frac{V}{A} \\quad \\text{mit} \\quad A = \\sum S_i \\cdot \\alpha_i',

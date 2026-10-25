@@ -24,17 +24,10 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
-import { DIN1045_2_EXPOSITIONSKLASSEN } from '@/src/data/standards/din1045_2';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ExpositionsKurzkarte } from '@/src/components/ui/ExpositionsKurzkarte';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
-
-interface ExposureDetails {
-  title: string;
-  description: string;
-  subclasses: Array<{ key: string; name: string; maxWz: number | null; minClass: string; cementNote?: string; example: string }>;
-  moistureAssoc: string;
-  rebarRecCover: string;
-}
 
 // Mindestdauer der Nachbehandlung: zentrale Werte nach DIN 1045-3 (normParams)
 const curingTable: Record<string, Record<string, number>> = {
@@ -43,117 +36,6 @@ const curingTable: Record<string, Record<string, number>> = {
   '15_24': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage['15_25'],
   'ge_25': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage.ge25,
 };
-
-// Nennmaß der Betondeckung c_nom = max(Ø; c_min,dur; 10 mm) + Δc_dev, aufgerundet auf 5 mm
-// (DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE; Δc_dev = 15 mm, bei XC1 10 mm)
-const STAB_DM: Record<string, number> = { '6_10': 10, '10_14': 14, '16_20': 20, '25': 25, '28': 28, '32': 32, '40': 40 };
-const COVER_RULES: Record<'XC1' | 'XC2_3' | 'XC4' | 'XD_XS', { cMinDur: number; dev: number }> = {
-  XC1: { cMinDur: 10, dev: 10 },
-  XC2_3: { cMinDur: 20, dev: 15 },
-  XC4: { cMinDur: 25, dev: 15 },
-  XD_XS: { cMinDur: 40, dev: 15 },
-};
-function cNomFor(dm: string, cls: keyof typeof COVER_RULES): number {
-  const r = COVER_RULES[cls];
-  const cMin = Math.max(STAB_DM[dm] ?? 20, r.cMinDur, 10);
-  return Math.ceil((cMin + r.dev) / 5) * 5;
-}
-
-const exposureCategoryData: Record<string, ExposureDetails> = {
-  XC: {
-    title: 'Karbonatisierung (Bewehrungskorrosion)',
-    description: 'Korrosion der Bewehrung, verursacht durch die Reaktion des Betons mit Kohlenstoffdioxid aus der Umluft.',
-    subclasses: [
-      { key: 'XC1', name: 'Trocken oder ständig nass', maxWz: 0.75, minClass: 'C16/20 oder C20/25', example: 'Innenräume (Wohnräume), Beton unter Wasser.' },
-      { key: 'XC2', name: 'Nass, selten trocken', maxWz: 0.65, minClass: 'C25/30', example: 'Gründungskonstruktionen, Fundamente ohne Frost.' },
-      { key: 'XC3', name: 'Mäßige Feuchte', maxWz: 0.65, minClass: 'C25/30', example: 'Vordächer, offene Hallen, feuchte Innenräume.' },
-      { key: 'XC4', name: 'Wechselnd nass und trocken', maxWz: 0.60, minClass: 'C25/30', example: 'Außenbauteile mit direkter Beregnung.' },
-    ],
-    moistureAssoc: 'Feuchtigkeitsklasse unabhängig von der XC-Klasse festlegen: WO z. B. trockene Innenbauteile und überdachte Außenbauteile; WF z. B. ständig nasse, bewitterte oder erdberührte Bauteile und Innenbauteile mit hoher Luftfeuchte. | XC2, XC3, XC4 -> WF',
-    rebarRecCover: 'c_nom bis Ø 20 mm: XC1 20–30 mm | XC2/XC3 35 mm | XC4 40 mm'
-  },
-  XF: {
-    title: 'Frost / Frost-Tausalz-Angriff',
-    description: 'Zerstörung des Zementsteins durch Frostwechsel bei mäßiger oder hoher Wassersättigung, teils verschlimmert durch Tausalze.',
-    subclasses: [
-      { key: 'XF1', name: 'Mäßige Sättigung ohne Taumittel', maxWz: 0.60, minClass: 'C25/30', example: 'Außenbauteile vertikal (Spritzwasserbereich ausgeschlossen).' },
-      { key: 'XF2', name: 'Mäßige Sättigung mit Taumittel', maxWz: 0.50, minClass: 'C35/45 (od. C25/30 LP)', cementNote: 'Bei ZTV-ING gilt w/z ≤ 0.50 + C25/30 mit LP', example: 'Spritzwasserbereich von Straßen, Betonfertigteile an Flugplätzen.' },
-      { key: 'XF3', name: 'Hohe Sättigung ohne Taumittel', maxWz: 0.50, minClass: 'C35/45 (od. C25/30 LP)', example: 'Horizontale Bauteile im Freien (Dächer), Brüstungen, Wasserbehälter im Frostbereich.' },
-      { key: 'XF4', name: 'Hohe Sättigung mit Taumittel', maxWz: 0.50, minClass: 'C35/45 LP (od. C30/37 LP)', cementNote: 'Luftporenbildner (LP) zwingend erforderlich, außer bei sehr langsamer Hydratation.', example: 'Fahrbahnbeton auf Brücken, Parkdecks ohne OS-Beschichtung.' },
-    ],
-    moistureAssoc: 'XF1 -> WF | XF2, XF3, XF4 -> WA (bzw. WS bei Fahrbahnen)',
-    rebarRecCover: 'Keine eigene Anforderung – maßgebend ist die XC- bzw. XD-Klasse'
-  },
-  XD_XS: {
-    title: 'Chloride aus Taumittel (XD) / Meerwasser (XS)',
-    description: 'Bewehrungskorrosion infolge von eingedrungenen Chlorid-Ionen (ohne direkten Meerwasserkontakt bei XD). Extreme Lochfraßgefahr!',
-    subclasses: [
-      { key: 'XD1', name: 'Mäßige Feuchte (Salzsprühnebel)', maxWz: 0.55, minClass: 'C30/37', example: 'Parkhausstützen, Decken über Stellplätzen, Wände im Sprühbereich.' },
-      { key: 'XD2', name: 'Nass, selten trocken (Sole)', maxWz: 0.50, minClass: 'C35/45 (od. C30/37 Anhang F)', example: 'Schwimmbäder mit chloriertem Wasser, Industrieanlagen mit Sole.' },
-      { key: 'XD3', name: 'Wechselnd nass/trocken (Direktbefahrung)', maxWz: 0.50, minClass: 'C35/45 (od. C35/45 LP)', cementNote: 'ZTV-ING verlangt w/z ≤ 0.50 + Luftporenbildner. Parkhaus-Fahrbahnen direkt befahren.', example: 'Parkdecks, hochbelastete Talsperren-Brücken.' },
-      { key: 'XS1', name: 'Salzhaltige Luft', maxWz: 0.55, minClass: 'C30/37', example: 'Bauten in Küstennähe (Außenbereich).' },
-      { key: 'XS2', name: 'Ständig unter Wasser', maxWz: 0.50, minClass: 'C35/45', example: 'Hafenmolen, Gründungsbauteile im Meer.' },
-      { key: 'XS3', name: 'Wechselnd (Tidenhub/Spritzwasser)', maxWz: 0.50, minClass: 'C35/45', example: 'Spritzwasser-Bereich an Hafenanlagen, Tidenzone.' },
-    ],
-    moistureAssoc: 'XD1, XS1 -> WF | XD2, XD3, XS2, XS3 -> WA',
-    rebarRecCover: 'c_nom = 55 mm (c_min,dur 40 mm + Δc_dev 15 mm, Ø ≤ 40 mm)'
-  },
-  XA: {
-    title: 'Chemischer Angriff (Säuren, Sulfate, Kohlensäure)',
-    description: 'Beton- oder Bewehrungsangriff durch gelöste Schadstoffe in Böden, Grundwasser oder Industrieumgebungen.',
-    subclasses: [
-      { key: 'XA1', name: 'Schwach angreifend', maxWz: 0.60, minClass: 'C25/30', example: 'Güllebehälter im Agrarbereich, Kläranlagen (Teilbereiche), mäßig saure Böden.' },
-      { key: 'XA2', name: 'Mäßig angreifend / Sulfate', maxWz: 0.50, minClass: 'C35/45 (od. C30/37 Anhang F)', cementNote: 'Ab 600 mg/l Sulfat im Wasser: Flugasche (30%) oder SR-Zement gefordert. ZTV-ING fordert w/z ≤ 0.50.', example: 'Fundamente in sulfathaltigen Böden (Gipskeuper), Klärbecken.' },
-      { key: 'XA3', name: 'Stark angreifend (PH < 4.5)', maxWz: 0.45, minClass: 'C35/45', cementNote: 'Bei Sulfatangriff SR-Zement; zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).', example: 'Industrieabwasser-Anlagen, Kühltürme mit Rauchgaseinleitung, Futtersilos.' },
-    ],
-    moistureAssoc: 'XA1 -> WF | XA2, XA3 -> WA',
-    rebarRecCover: 'Keine eigene Anforderung – maßgebend ist die XC-Klasse'
-  },
-  XM: {
-    title: 'Mechanischer Verschleiß',
-    description: 'Oberflächenabrieb durch schleifende, rollende oder prallende mechanische Beanspruchungen.',
-    subclasses: [
-      { key: 'XM1', name: 'Mäßige Beanspruchung', maxWz: 0.55, minClass: 'C30/37', cementNote: 'XM1-Betone können durch bauseitiges, pünktliches Flügelglätten mechanisch auf XM2 gehärtet werden.', example: 'Garagenböden, Befahrbare Hallen für PKW.' },
-      { key: 'XM2', name: 'Schwere Beanspruchung', maxWz: 0.50, minClass: 'C35/45 (od. C30/37 + Flügelglätten)', cementNote: 'Bei luft- oder vollgummibereiften Gabelstaplern. Widerstandsfähige Körnung nötig.', example: 'Industrieböden, Lagerhallen mit Staplerverkehr.' },
-      { key: 'XM3', name: 'Extrem schwere Beanspruchung', maxWz: 0.45, minClass: 'C35/45', cementNote: 'Betonstahlrollen-Einsatz, Kettenfahrzeuge, Tosbecken. Empfehlung: Separater Hartstoff-Industriestrich (nach DIN 18560-7)!', example: 'Kettenfahrzeug-Hallen, Schredderanlagen-Böden.' },
-    ],
-    moistureAssoc: 'XM1 -> WF | XM2, XM3 -> WA / WS bei dynamischer Auflast',
-    rebarRecCover: 'XC-Abhängig + Verschleiß-Vorsorgemaßnahme'
-  },
-  AKR: {
-    title: 'Alkali-Kieselsäure-Reaktion FEUCHTEKLASSEN (AKR)',
-    description: 'Gefahr des "Betonkrebses" durch quellfähiges Alkali-Kieselgel bei Wasserzutritt und reaktivem Gesteinskorn.',
-    subclasses: [
-      { key: 'WO', name: 'Trocken / Ohne Feuchtezufuhr', maxWz: null, minClass: '', example: 'Trockene Innenbauteile von Gebäuden (Wohnräume, Büros).' },
-      { key: 'WF', name: 'Feucht / Ständige Feuchtezufuhr', maxWz: null, minClass: '', example: 'Außenbauteile ohne Salzbelastung, Feuchträume, WU-Baukörper.' },
-      { key: 'WA', name: 'Feucht + Tausalz / Meerwasser', maxWz: null, minClass: '', example: 'Brückenpfeiler, Bauteile mit Meerwasserkontakt, Parkdeckauffahrten.' },
-      { key: 'WS', name: 'Feucht + Taumittel + Dyn. Last', maxWz: null, minClass: '', cementNote: 'ZTV-Decke Bestimmungen beachten. Aggregat E1 Klasse nutzen.', example: 'Betonfahrbahnen auf Bundesautobahnen, Rollbahnen auf Flughäfen.' },
-    ],
-    moistureAssoc: 'WO, WF, WA, WS repräsentieren die Feuchtbedingungen der AKR-Gefährdung.',
-    rebarRecCover: 'Bewehrungsüberdeckung durch übergeordnete Expositionsklassen geregelt'
-  },
-  XO: {
-    title: 'Kein Angriffsrisiko (Unbewehrt)',
-    description: 'Beton ohne Bewehrung, der keinerlei chemischem, mechanischem oder Frostangriff ausgesetzt ist.',
-    subclasses: [
-      { key: 'XO', name: 'Kein Risiko', maxWz: 1.0, minClass: 'C8/10 bis C16/20', example: 'Unbewehrte Fundamente (frostfrei gegründet), Magerbetone, Sauberkeitsschichten.' }
-    ],
-    moistureAssoc: 'WO',
-    rebarRecCover: 'Keine Bewehrung vorhanden'
-  }
-};
-
-// Grenzwerte (w/z, Festigkeitsklasse) aus der zentralen DIN-1045-2-Tabelle übernehmen;
-// Krells Praxishinweise (cementNote) bleiben als Erfahrungswerte erhalten.
-for (const cat of Object.values(exposureCategoryData)) {
-  for (const sub of cat.subclasses) {
-    const norm = DIN1045_2_EXPOSITIONSKLASSEN[sub.key === 'XO' ? 'X0' : sub.key];
-    if (norm) {
-      sub.maxWz = norm.maxWz;
-      sub.minClass = norm.minDruckfestigkeit + (norm.minLuftporengehalt ? ' mit LP' : '');
-    }
-  }
-}
 
 function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -289,8 +171,6 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
   const [wuBauweise, setWuBauweise] = useState<'ortbeton' | 'element' | 'fertigteil'>('ortbeton');
 
   // Interactive states for Tab 6: Krell-Tabelle & Footnotes
-  const [krellCategory, setKrellCategory] = useState<'XC' | 'XF' | 'XD_XS' | 'XA' | 'XM' | 'AKR' | 'XO'>('XC');
-  const [rebarDiameter, setRebarDiameter] = useState<string>('16_20');
 
   // --- Calculations for Zusammenhaltevermögen ---
   const kValue = calcMK > 0 ? (calcW - 70) / calcMK : 0;
@@ -409,63 +289,21 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         </div>
       </div>
 
-      {/* Sub tabs navigation */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto whitespace-nowrap scrollbar-none gap-2">
-        <button aria-pressed={activeSubTab === 'diagnostik'}
-          onClick={() => setActiveSubTab('diagnostik')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'diagnostik' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Beaker size={15} />
-          Frischbeton-Diagnostik
-        </button>
-        <button aria-pressed={activeSubTab === 'zusammenhalt'}
-          onClick={() => setActiveSubTab('zusammenhalt')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'zusammenhalt' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Droplets size={15} />
-          Zusammenhalt &amp; Wasser-Sim
-        </button>
-        <button aria-pressed={activeSubTab === 'einbau'}
-          onClick={() => setActiveSubTab('einbau')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'einbau' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Wrench size={15} />
-          Einbau &amp; Industrieboden
-        </button>
-        <button aria-pressed={activeSubTab === 'nachbehandlung'}
-          onClick={() => setActiveSubTab('nachbehandlung')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'nachbehandlung' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Calendar size={15} />
-          Nachbehandlung &amp; Betonierbarkeit
-        </button>
-        <button aria-pressed={activeSubTab === 'krell_tabelle'}
-          onClick={() => setActiveSubTab('krell_tabelle')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'krell_tabelle' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Grid size={15} />
-          Krell-Tabelle &amp; WU
-        </button>
-        <button aria-pressed={activeSubTab === 'festigkeit'}
-          onClick={() => setActiveSubTab('festigkeit')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'festigkeit' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Activity size={15} />
-          ID-Prüfung &amp; Bohrkerne
-        </button>
-      </div>
+      {/* Sub tabs navigation (AP 3.8: ARIA-Reiter, 6 Bereiche) */}
+      <ModuleTabs
+        label="Bereiche Betonpraxis"
+        tabs={[
+          { id: 'diagnostik' as const, label: 'Frischbeton-Diagnostik', icon: Beaker },
+          { id: 'zusammenhalt' as const, label: 'Zusammenhalt & Wasser-Sim', icon: Droplets },
+          { id: 'einbau' as const, label: 'Einbau & Industrieboden', icon: Wrench },
+          { id: 'nachbehandlung' as const, label: 'Nachbehandlung & Betonierbarkeit', icon: Calendar },
+          { id: 'krell_tabelle' as const, label: 'WU-Richtlinie & Expositionen', icon: Grid },
+          { id: 'festigkeit' as const, label: 'ID-Prüfung & Bohrkerne', icon: Activity }
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="[&>[role=tabpanel]]:mt-6"
+      >
 
       {/* SUB-TAB 1: Frischbeton-Diagnostik */}
       {activeSubTab === 'diagnostik' && (
@@ -1195,191 +1033,13 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         </div>
       )}
 
-      {/* SUB-TAB 6: Krell-Tabelle & WU-Richtlinie */}
+      {/* SUB-TAB 6: WU-Richtlinie (Expositionsklassen nur als Kurzkarte, AP 3.9) */}
       {activeSubTab === 'krell_tabelle' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-300">
           
-          {/* Expositionsklassen Matrix */}
-          <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4 lg:col-span-12">
-            <h3 className="font-bold text-lg text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/10">
-              <Grid size={18} className="text-shiraz" />
-              Krell-Tabelle: Interaktives Expositions- &amp; Feuchtigkeitsregelwerk
-            </h3>
-            
-            {/* Category selection */}
-            <div className="flex flex-wrap gap-1 p-1 bg-off-white border border-home-grau/15 rounded-xl">
-              {[
-                { id: 'XC', label: 'Karbonatisierung (XC)' },
-                { id: 'XF', label: 'Frost-Angriff (XF)' },
-                { id: 'XD_XS', label: 'Chloride/See (XD/XS)' },
-                { id: 'XA', label: 'Chem. Angriff (XA)' },
-                { id: 'XM', label: 'Verschleiß (XM)' },
-                { id: 'AKR', label: 'AKR-Feucht (W...)' },
-                { id: 'XO', label: 'Kein Risiko (X0)' }
-              ].map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setKrellCategory(cat.id as any)}
-                  className={`flex-1 py-1 px-2.5 text-xs font-semibold rounded-lg transition-all ${
-                    krellCategory === cat.id
-                      ? 'bg-shiraz text-white shadow-sm'
-                      : 'text-text-main/70 hover:text-text-main hover:bg-white/50'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Main Category Display Card */}
-            {(() => {
-              const details = exposureCategoryData[krellCategory];
-              if (!details) return null;
-              return (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-gradient-to-b from-white to-off-white p-4 rounded-xl border border-home-grau/15">
-                  
-                  {/* Left Specs & Subclasses */}
-                  <div className="lg:col-span-2 space-y-4">
-                    <div>
-                      <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Katalog-Grenzdaten</span>
-                      <h4 className="font-bold text-base text-text-main mt-0.5 flex items-center gap-1.5">
-                        <ConceptTooltip 
-                          termKey={krellCategory === 'XC' ? 'karbonatisierung' : krellCategory === 'AKR' ? 'akr' : 'krell_tabelle'} 
-                          fallbackText={details.title}
-                        >
-                          {details.title}
-                        </ConceptTooltip>
-                      </h4>
-                      <p className="text-xs text-text-main/70 mt-1 leading-relaxed">{details.description}</p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <span className="text-xs font-bold text-text-main/50 uppercase block">Regel-Angriffsstufen im Detail</span>
-                      <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                        {details.subclasses.map((cls) => (
-                          <div key={cls.key} className="p-3 bg-white border border-home-grau/10 rounded-lg text-xs space-y-1 hover:border-shiraz/35 transition-colors">
-                            <div className="flex items-center justify-between flex-wrap gap-2">
-                              <span className="font-bold text-shiraz text-sm px-1.5 py-0.5 bg-shiraz/5 border border-shiraz/15 rounded font-mono">{cls.key}</span>
-                              {cls.minClass && (
-                                <span className="font-bold text-text-main font-mono text-xs bg-slate-50 px-2 py-0.5 rounded border border-home-grau/10">Mind.: {cls.minClass}</span>
-                              )}
-                              {cls.maxWz !== null && (
-                                <span className="font-bold text-red-700 font-mono text-xs bg-red-50/50 px-2 py-0.5 rounded border border-red-100">max w/z: {formatDeZahl(cls.maxWz, 2)}</span>
-                              )}
-                            </div>
-                            <p className="font-semibold text-text-main mt-1">{cls.name}</p>
-                            <p className="text-xs text-text-main/60 italic mt-0.5">Praxis-Beispiel: {cls.example}</p>
-                            {cls.cementNote && (
-                              <p className="text-xs text-amber-800 font-medium bg-amber-50/40 p-1.5 border border-amber-200 rounded mt-1.5 flex gap-1 items-start">
-                                <Info size={11} className="flex-shrink-0 mt-0.5" />
-                                <span><strong>Praxishinweis (Krell):</strong> {cls.cementNote}</span>
-                              </p>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Concrete Cover (Bewehrungsüberdeckung) Finder */}
-                  <div className="bg-white p-4 rounded-xl border border-home-grau/15 flex flex-col justify-between">
-                    <div className="space-y-4">
-                      <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Bewehrungs-Überdeckung</span>
-                      <p className="text-xs text-text-main/70 leading-relaxed">
-                        Berechnet das nach DIN EN 1992-1-1/NA geforderte Nennmaß der Betonüberdeckung <span className="font-mono bg-slate-50 border border-home-grau/30 rounded px-1 text-shiraz">c_nom [mm]</span> basierend auf dem gewählten Stabdurchmesser und der Expositions-Belastung:
-                      </p>
-
-                      <div className="space-y-3 bg-off-white p-3 rounded-lg border border-home-grau/15">
-                        <div className="space-y-1">
-                          <label className="text-xs font-bold text-text-main/80 block">Stabdurchmesser (Eisen):</label>
-                          <select aria-label="Stabdurchmesser (Eisen)"
-                            value={rebarDiameter}
-                            onChange={(e) => setRebarDiameter(e.target.value)}
-                            className="w-full text-xs p-1.5 bg-white border border-home-grau/30 rounded"
-                          >
-                            <option value="6_10">Ø 6 bis 10 mm (Leichte Matten)</option>
-                            <option value="10_14">Ø 10 bis 14 mm</option>
-                            <option value="16_20">Ø 16 bis 20 mm</option>
-                            <option value="25">Ø 25 mm</option>
-                            <option value="28">Ø 28 mm</option>
-                            <option value="32">Ø 32 mm</option>
-                            <option value="40">Ø 40 mm (Rundstahl)</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="text-xs font-bold text-text-main/80 block">Gegenüberstellung c_nom:</label>
-                          <div className="grid grid-cols-2 gap-1 text-xs font-mono font-bold text-center">
-                            <span className="bg-white p-1 rounded border border-home-grau/10">XC1 (Trocken)</span>
-                            <span className="bg-white p-1 rounded border border-home-grau/10">XC2/3 (Feucht)</span>
-                            <span className="bg-white p-1 rounded border border-home-grau/10">XC4 (Beregnung)</span>
-                            <span className="bg-white p-1 rounded border border-home-grau/10">XD/XS (Chloride)</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Display covers */}
-                      <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-lg">
-                        <span className="text-xs font-bold text-text-main/50 uppercase block">Ermittelte Überdeckung c_nom:</span>
-                        <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-center">
-                          <div className="bg-white p-2 rounded border border-home-grau/10">
-                            <div className="text-xs font-sans text-text-main/60">XC1</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC1'))} mm</div>
-                          </div>
-                          <div className="bg-white p-2 rounded border border-home-grau/10">
-                            <div className="text-xs font-sans text-text-main/60">XC2/3</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC2_3'))} mm</div>
-                          </div>
-                          <div className="bg-white p-2 rounded border border-home-grau/10">
-                            <div className="text-xs font-sans text-text-main/60">XC4</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC4'))} mm</div>
-                          </div>
-                          <div className="bg-white p-2 rounded border border-home-grau/10">
-                            <div className="text-xs font-sans text-text-main/60">XD / XS</div>
-                            <div className="text-sm font-bold text-shiraz font-mono">{formatDeWert(cNomFor(rebarDiameter, 'XD_XS'))} mm</div>
-                          </div>
-                        </div>
-                        <span className="text-xs text-text-main/50 mt-1.5 block text-center italic leading-normal">
-                          Grenzmaß c_nom = Mindestüberdeckung c_min + Vorhaltemaß Δc_dev (10 mm)
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="pt-3 border-t border-home-grau/10 text-xs space-y-1 text-text-main/70 font-medium">
-                      <div><strong>Zugeordnete Feuchtigkeitsklasse:</strong> {details.moistureAssoc}</div>
-                      <div><strong>Gütebereich (c_min):</strong> {details.rebarRecCover}</div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Footnotes of Krell table */}
-            <div className="p-4 bg-amber-50/40 border border-amber-200/50 rounded-xl space-y-3">
-              <span className="text-xs font-bold text-amber-800 uppercase block tracking-wider">Ausgewählte Erleichterungen &amp; Sonderregelungen:</span>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-text-main/80 leading-relaxed">
-                <div className="space-y-1 bg-white/40 p-2.5 rounded-lg border border-amber-200/20">
-                  <strong className="block mb-1">① DAfStb Massenbeton &amp; z-Grenze:</strong>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    XA1: z ≤ 240 kg/m³ und f_c ≤ 40 N/mm² zur Minderung der Wärmeentwicklung. Erleichterung: Erleichterung nach DIN 1045-2 für langsam und sehr langsam erhärtende Betone (r &lt; 0,30): Mindestdruckfestigkeitsklasse eine Klasse niedriger, der höchstzulässige w/z-Wert bleibt unverändert – XD2/XS2, XF2/XF3 ohne LP und XA2: w/z ≤ 0,50 und C30/37 statt C35/45; XD3/XS3: w/z ≤ 0,45 und C30/37 statt C35/45. Die Festigkeit wird dabei weiterhin nach 28 Tagen nachgewiesen und XA2.
-                  </p>
-                </div>
-                <div className="space-y-1 bg-white/40 p-2.5 rounded-lg border border-amber-200/20">
-                  <strong className="block mb-1">② DIN 1045-2 Anhang F Regel:</strong>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    Spezielle Erleichterungen für Chloride (XD2, XS2, XA2 sowie XF2/3) ohne Luftporen (LP): Mit langsamerer/sehr langsamer Hydratation sind (w/z)_eq ≤ 0,50 und Güte C30/37 zulässig.
-                  </p>
-                </div>
-                <div className="space-y-1 bg-white/40 p-2.5 rounded-lg border border-amber-200/20">
-                  <strong className="block mb-1">③/⑥ WU-Richtlinie &amp; SR-Cemente:</strong>
-                  <p className="text-xs text-text-main/75 leading-relaxed">
-                    • WU nach DIN 1045 erlaubt (w/z)_eq ≤ 0,60 – aber nach schärferer WU-Richtlinie bei BK1 zwingend ≤ 0,55.<br />
-                    • Sulfate: bis 600 mg/l (Standardzement), &gt; 600 mg/l (Zusatz von Flugasche oder SR-Zement), &gt; 1500 mg/l (zwingend SR-Zement vorgeschrieben).
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Expositionsklassen: eine Quelle (AP 3.9) – hier nur die Kurzkarte */}
+          <div className="lg:col-span-12">
+            <ExpositionsKurzkarte hinweis="Die Grenzwerte je Expositionsklasse (max. w/z, Mindestfestigkeit, Mindestzementgehalt, Luftporen), die zugehörige Betondeckung und die Erleichterungen nach DIN 1045-2 werden ausschließlich im Modul Expositionsklassen gepflegt. Für die WU-Planung unten ist vor allem der Zusammenhang mit dem w/z-Wert wichtig." />
           </div>
 
           {/* WU-Richtlinie section */}
@@ -1654,6 +1314,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
 
         </div>
       )}
+      </ModuleTabs>
 
       <ConcreteThematicLinks current="baustoff" />
 

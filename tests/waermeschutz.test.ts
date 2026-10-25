@@ -1,5 +1,5 @@
 // Rechenkern Wärmeschutz (Umsetzungsplan Phase 4, AP 4.3)
-import { psat, taupunkt, temperaturBeiPsat, temperaturverlauf, uebergang, uWert, type Schicht } from '../src/calc/waermeschutz';
+import { glaser, psat, taupunkt, temperaturBeiPsat, temperaturverlauf, uebergang, uWert, type Schicht } from '../src/calc/waermeschutz';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -39,6 +39,20 @@ for (let i = 0; i < 1000; i++) {
   const r = uWert(s, Rsi, Rse);
   if (r.gueltig && !(Number.isFinite(r.U) && r.U > 0)) { pruefe(false, `Fuzz ${JSON.stringify(s)}`); break; }
 }
+
+// 4. Glaser-Verfahren (AP 3.9): WDVS-Wand ohne Tauwasser; Innendämmung ohne Dampfbremse mit Tauwasser
+const kl = { thetaI: 20, phiI: 50, thetaE: -5, phiE: 80, Rsi, Rse };
+const wdvs = glaser([{ d: 0.015, lambda: 0.35, mu: 10 }, { d: 0.24, lambda: 0.42, mu: 5 }, { d: 0.16, lambda: 0.035, mu: 50 }, { d: 0.02, lambda: 1.0, mu: 25 }], kl);
+pruefe(!wdvs.tauwasser && wdvs.mc === 0 && wdvs.bestanden && nahe(wdvs.U, 0.18602, 1e-4), `Glaser WDVS ${wdvs.tauwasser}`);
+pruefe(nahe(wdvs.sdGes, 0.15 + 1.2 + 8 + 0.5, 1e-9) && nahe(wdvs.p[0], psat(20) * 0.5, 1e-12), 'Glaser s_d/p_i');
+const innen = glaser([{ d: 0.0125, lambda: 0.25, mu: 10 }, { d: 0.08, lambda: 0.035, mu: 1 }, { d: 0.24, lambda: 0.99, mu: 15 }], kl);
+pruefe(innen.tauwasser && innen.ebene === 2 && innen.mc > 0 && innen.gev > 0, `Glaser Innendämmung ${innen.ebene} ${innen.mc}`);
+// Tauwasserebene gesättigt; Massenbilanz: m_c = g_c · 2160 h
+pruefe(Math.abs(innen.p[innen.ebene] - innen.psat[innen.ebene]) < 1e-9 && nahe(innen.mc, innen.gc * 2160, 1e-12), 'Glaser Ebene/Bilanz');
+// Handrechnung g_c = δ0·((p_i − p_sC)/s_dC − (p_sC − p_e)/s_dA)
+const psC = innen.psat[2];
+const gcHand = 7.2e-7 * ((innen.pi - psC) / (0.125 + 0.08) - (psC - innen.pe) / 3.6) * 1000;
+pruefe(nahe(innen.gc, gcHand, 1e-12), `g_c ${innen.gc} vs ${gcHand}`);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Wärmeschutz');
