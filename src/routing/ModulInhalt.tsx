@@ -22,6 +22,7 @@ const Materialdatenbanken = React.lazy(() => import('../modules/Materialdatenban
 const Materialpaesse = React.lazy(() => import('../modules/Materialpaesse'));
 const DppEpd = React.lazy(() => import('../modules/DppEpd'));
 const KiBaustoffe = React.lazy(() => import('../modules/KiBaustoffe'));
+const KiUebungen = React.lazy(() => import('../modules/KiUebungen'));
 const Beispielrechnungen = React.lazy(() => import('../modules/Beispielrechnungen'));
 const Startseite = React.lazy(() => import('../modules/Startseite'));
 const Admin = React.lazy(() => import('../modules/Admin'));
@@ -222,6 +223,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'ki_lokal' && <KiBaustoffe forceTab="lokal" />}
     {activeTab === 'ki_ressourcen' && <KiBaustoffe forceTab="ressourcen" />}
     {activeTab === 'ki_onlinekurse' && <KiBaustoffe forceTab="onlinekurse" />}
+    {activeTab === 'ki_uebungen' && <KiUebungen />}
     {activeTab === 'rechnung_u_wert' && <Beispielrechnungen forceTab="u_wert" />}
     {activeTab === 'rechnung_beton' && <Beispielrechnungen forceTab="beton" />}
     {activeTab === 'rechnung_stahlbeton' && <Beispielrechnungen forceTab="stahlbeton" />}

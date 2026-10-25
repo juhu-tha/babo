@@ -34061,6 +34061,222 @@
     "verified": false
   },
   {
+    "id": "qn_ki_ueb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Nichtdeterminismus",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Sie stellen dem Copilot dieselbe Fachfrage in drei neuen Chats und erhalten drei unterschiedlich formulierte Antworten. Was ist die zutreffende Erklärung?",
+    "options": [
+      "Das Modell wählt jedes Token nach Wahrscheinlichkeit, mit einem Zufallsanteil",
+      "Das Modell lernt aus jeder Frage dazu und verbessert dadurch die nächste Antwort",
+      "Der Copilot leitet jede Anfrage an ein anderes, zufällig gewähltes Modell",
+      "Unterschiede entstehen nur durch Tippfehler in der wiederholten Eingabe"
+    ],
+    "correctIdx": 0,
+    "explanation": "Sprachmodelle erzeugen Text Token für Token aus einer Wahrscheinlichkeitsverteilung; bei Temperatur > 0 wird mit Zufallsanteil ausgewählt. Deshalb schwanken Formulierungen und mitunter auch Details.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Das Modell verändert seine Gewichte im Chat nicht; jede neue Unterhaltung beginnt ohne Erinnerung an die vorige.",
+      "Die Schwankung entsteht schon in einem einzigen Modell durch die zufällige Auswahl der Token.",
+      "Auch bei identischer Eingabe unterscheiden sich die Antworten, weil die Auswahl der Token zufällig gewichtet ist."
+    ],
+    "gapAnalysis": {
+      "topic": "Nichtdeterminismus",
+      "misconception": "Unterschiedliche Antworten seien ein Zeichen für Lernen oder Fehler in der Eingabe.",
+      "coreRule": "Token werden nach Wahrscheinlichkeit gewählt – gleiche Frage, unterschiedliche Antwort.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 1 · LLM-Grundlagen“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Strukturierte Prompts",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Welche Vorgabe im strukturierten Prompt der Übung „Bedenkenanzeige“ verhindert am wirksamsten erfundene Grenzwerte im Entwurf?",
+    "options": [
+      "Die Rolle „Bauleiter eines Bodenlegerbetriebs“ am Anfang des Prompts",
+      "Fehlende Grenzwerte mit [PRÜFEN] markieren statt sie einzusetzen",
+      "Das Format „Geschäftsbrief, höchstens eine Seite“ mit Betreffzeile",
+      "Die Bitte, den Brief möglichst überzeugend und verbindlich zu formulieren"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Regel, unbelegte Grenzwerte mit [PRÜFEN] zu kennzeichnen, gibt dem Modell eine erlaubte Alternative zum Erfinden. Rolle und Format verbessern Ton und Aufbau, nicht die Richtigkeit von Zahlen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Rolle steuert Fachsprache und Perspektive, schützt aber nicht vor erfundenen Zahlen.",
+      "",
+      "Das Format bestimmt den Aufbau; über die Herkunft der Grenzwerte sagt es nichts.",
+      "Eine überzeugende Formulierung verstärkt eher die Neigung, Lücken mit plausiblen Zahlen zu füllen."
+    ],
+    "gapAnalysis": {
+      "topic": "Strukturierte Prompts",
+      "misconception": "Eine gute Rollenbeschreibung mache Zahlenangaben verlässlich.",
+      "coreRule": "Unsichere Werte ausdrücklich markieren lassen, statt sie erfinden zu lassen.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 2 · Prompting im Ingenieurbüro“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Freigaben für Agenten",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Im Agentenlauf „Recyclingbeton“ schlägt das Modell als nächste Aktion vor, beim Hersteller per E-Mail ein Datenblatt anzufordern. Wie gehen Sie nach der Übung vor?",
+    "options": [
+      "Aktion ausführen, weil der Agent das Ziel sonst nicht erreichen kann",
+      "Lauf abbrechen und die Stelle als freigabepflichtige Aktion notieren",
+      "Die E-Mail vom Copilot formulieren lassen und sofort selbst versenden",
+      "Die Aktion überspringen und eine plausible Beobachtung selbst erfinden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Aktionen, die Dritte kontaktieren oder Geld kosten, sind im Agentenauftrag ausgeschlossen und bräuchten in der Praxis eine menschliche Freigabe. Die Übung verlangt, den Lauf an dieser Stelle zu beenden und sie zu dokumentieren.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das Ziel rechtfertigt keine Aktion außerhalb der vereinbarten Grenzen; Kontakt zu Dritten braucht eine Freigabe.",
+      "",
+      "Damit würde die Grenze nur umgangen; die Entscheidung über Kontakt zu Dritten gehört zur Freigabe.",
+      "Erfundene Beobachtungen verfälschen den Lauf; jede Beobachtung braucht eine echte Quelle."
+    ],
+    "gapAnalysis": {
+      "topic": "Freigaben für Agenten",
+      "misconception": "Ein Agent dürfe alles tun, was dem Ziel dient.",
+      "coreRule": "Aktionen mit Außenwirkung nur nach menschlicher Freigabe.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 3 · Agenten“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "RAG-Grenztest",
+    "difficulty": "Vertiefung",
+    "normRef": "Lehrbeispiel",
+    "question": "Beim Grenztest der RAG-Übung beantwortet das Modell eine Frage, die der bereitgestellte Text nicht abdeckt, mit einem korrekt klingenden Wert ohne Fundstelle. Wie ist das zu bewerten?",
+    "options": [
+      "Als Erfolg, weil der Wert vermutlich aus einer anderen Vorschrift stimmt",
+      "Als RAG-Fehler: Trainingswissen wurde ohne Beleg aus dem Text beigemischt",
+      "Als unkritisch, solange der Wert in derselben Größenordnung wie üblich liegt",
+      "Als Zeichen, dass der bereitgestellte Text zu kurz gewählt war und fehlt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Spielregel lautet: nur aus dem Text antworten, sonst „Nicht im bereitgestellten Text enthalten“. Ein Wert ohne Fundstelle ist nicht überprüfbar und verletzt das RAG-Prinzip, auch wenn er zufällig stimmt.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Ob der Wert stimmt, ist ohne Fundstelle nicht überprüfbar; genau das soll RAG verhindern.",
+      "",
+      "Die Größenordnung ersetzt keinen Beleg; im Nachweis zählt die exakte Fundstelle.",
+      "Der Grenztest fragt absichtlich nach Inhalten außerhalb des Textes; die richtige Reaktion wäre der vereinbarte Hinweis."
+    ],
+    "gapAnalysis": {
+      "topic": "RAG-Grenztest",
+      "misconception": "Eine plausible Antwort sei auch ohne Beleg aus der Wissensbasis in Ordnung.",
+      "coreRule": "RAG-Antworten nur mit Fundstelle aus der bereitgestellten Quelle.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 4 · RAG mit Normtexten“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Testfall U-Wert",
+    "difficulty": "Transfer",
+    "normRef": "Lehrbeispiel",
+    "question": "Das vom Copilot entworfene Excel-Blatt liefert für den Testfall (1,5 cm Putz, 17,5 cm Kalksandstein, 16 cm Dämmung) U = 0,002 W/(m²·K) statt etwa 0,20 W/(m²·K). Welcher Fehler ist am wahrscheinlichsten?",
+    "options": [
+      "Die Wärmeübergangswiderstände R_si und R_se wurden vertauscht",
+      "Die Dicken wurden in cm statt in m in die Formel d/λ eingesetzt",
+      "Die Wärmeleitfähigkeit der Dämmung wurde mit 0,35 statt 0,035 erfasst",
+      "Excel rundet die Zwischenergebnisse auf zwei Nachkommastellen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit Dicken in cm wird jeder Schichtwiderstand rund hundertfach zu groß, R_T ≈ 478 statt 4,95 m²·K/W, also U ≈ 0,002 W/(m²·K). Vertauschte R_si/R_se ändern R_T nicht, ein zehnfach zu großes λ der Dämmung würde U erhöhen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "R_si + R_se ergibt in beliebiger Reihenfolge dieselbe Summe; das Ergebnis bliebe unverändert.",
+      "",
+      "Ein zu großes λ verkleinert den Dämmwiderstand und würde U erhöhen, nicht um den Faktor 100 senken.",
+      "Rundung auf zwei Stellen verschiebt das Ergebnis nur geringfügig, nicht um zwei Zehnerpotenzen."
+    ],
+    "gapAnalysis": {
+      "topic": "Testfall U-Wert",
+      "misconception": "Ein grob falsches Ergebnis liege an Rundung oder Kennwerten statt an Einheiten.",
+      "coreRule": "R = d/λ mit d in m; Ergebnis immer mit einem Testfall gegenprüfen.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 5 · „sich programmieren lassen““ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_ki_ueb_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_uebungen",
+    "moduleTitle": "KI: Hands-on-Übungen (Master)",
+    "topic": "Gefälligkeitsfehler",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Sie behaupten gegenüber dem Copilot bewusst falsch, ein höherer w/z-Wert erhöhe die Druckfestigkeit, und das Modell stimmt zu. Welches Fehlerbild liegt vor?",
+    "options": [
+      "Eine erfundene Quelle, weil kein Literaturbeleg genannt wurde",
+      "Ein Gefälligkeitsfehler: Das Modell übernimmt Ihre falsche Annahme",
+      "Ein Rechenfehler, weil die Festigkeit nicht nachgerechnet wurde",
+      "Eine veraltete Normausgabe, weil der w/z-Wert früher anders bewertet wurde"
+    ],
+    "correctIdx": 1,
+    "explanation": "Sprachmodelle neigen dazu, der Nutzerin oder dem Nutzer zuzustimmen. Fachlich gilt: Mehr Wasser bei gleichem Zement erhöht die Kapillarporosität und senkt die Festigkeit. Rückfragen deshalb neutral formulieren.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Es wurde gar keine Quelle genannt; das Problem ist die übernommene falsche Annahme.",
+      "",
+      "Es wurde nichts gerechnet; der Fehler liegt in der fachlichen Aussage, die das Modell bestätigt.",
+      "Der Zusammenhang zwischen w/z-Wert und Festigkeit hat sich nicht geändert; er ist unabhängig von der Normausgabe."
+    ],
+    "gapAnalysis": {
+      "topic": "Gefälligkeitsfehler",
+      "misconception": "Zustimmung des Modells bestätige eine fachliche Aussage.",
+      "coreRule": "Neutral fragen; Zustimmung des Modells ist kein Beleg.",
+      "actionableAdvice": "Bearbeiten Sie die Übung „Block 6 · Fehlerbilder und Verifikation“ im Modul Hands-on-Übungen (Master) noch einmal.",
+      "targetModuleTab": "ki_uebungen",
+      "targetModuleLabel": "Hands-on-Übungen (Master)"
+    },
+    "verified": false
+  },
+  {
     "id": "qn_px_bauleitung_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",

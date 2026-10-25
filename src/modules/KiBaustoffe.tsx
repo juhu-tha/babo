@@ -4,6 +4,7 @@ import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/G
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import ReactMarkdown from 'react-markdown';
 import { useTabContext } from '@/src/contexts/TabContext';
 import ToolsFuerThesen from '@/src/modules/ki/ToolsFuerThesen';
@@ -389,6 +390,15 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
             {description}
           </p>
         </div>
+
+        {/* Hands-on-Übungen zur Master-Vorlesung (AP 6.5) */}
+        <Querverweis ziel="ki_uebungen" titel="Hands-on-Übungen zum Master-Modul" linkText="Zu den sechs Übungen" className="mt-4">
+          <p>
+            Zu jedem Themenblock – LLM-Grundlagen, Prompting im Ingenieurbüro, Agenten, RAG mit Regelwerken,
+            „sich programmieren lassen“ sowie Fehlerbilder und Verifikation – gibt es eine code-freie Selbstlernübung
+            für den Microsoft Copilot der Hochschule, mit Prompt-Vorlagen und Verifikations-Checkliste.
+          </p>
+        </Querverweis>
 
         {/* INTERAKTIVES EINSTEIGER-GLOSSAR */}
         <div className="mt-5">
@@ -790,6 +800,13 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         title="Verwandte Digitalisierungs- &amp; Planungsmodule"
         subtitle="Didaktisch vernetzte Querverweise zu BIM, Datenanalyse, Automatisierung und wissenschaftlicher Abschlussarbeit"
         modules={[
+          {
+            tab: 'ki_uebungen',
+            title: 'Hands-on-Übungen (Master)',
+            description: 'Sechs code-freie Selbstlernübungen mit Prompt-Vorlagen, Erwartungshorizont und Verifikations-Checkliste für den Hochschul-Copilot.',
+            tag: 'Übung',
+            badgeColor: 'bg-rose-50 text-rose-700 border-rose-200'
+          },
           {
             tab: 'bim_baustoffe',
             title: 'BIM & Materialdaten (IFC)',
