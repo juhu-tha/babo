@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { 
   Info, 
@@ -29,7 +30,7 @@ import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 
 interface SubmoduleCard {
   title: string;
-  icon: any;
+  icon: LucideIcon;
   purpose: string;
   standards: string;
   useCase: string;

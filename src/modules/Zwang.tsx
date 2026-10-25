@@ -1,6 +1,6 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, type TooltipItem } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 
@@ -189,7 +189,7 @@ export function ZwangCalculator() {
                     plugins: {
                       tooltip: {
                         callbacks: {
-                          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 2)} MPa`
+                          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${formatDeZahl(context.raw as number, 2)} MPa`
                         }
                       }
                     }

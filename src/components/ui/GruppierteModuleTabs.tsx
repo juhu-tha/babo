@@ -28,16 +28,27 @@ interface Props<T extends string> {
   className?: string;
 }
 
+/** Gruppe, die den aktiven Bereich enthält (sonst die erste). Exportiert für Tests. */
+export function aktiveGruppe<T extends string>(gruppen: readonly ModulTabGruppe<T>[], aktiv: T): ModulTabGruppe<T> {
+  return gruppen.find(g => g.mitglieder.some(m => m.id === aktiv)) ?? gruppen[0];
+}
+
+/** Bereich beim Wechsel auf Gruppe gid: zuletzt dort gewählter Bereich, sonst der erste. Exportiert für Tests. */
+export function zielBeiGruppenwechsel<T extends string>(gruppen: readonly ModulTabGruppe<T>[], gid: string, zuletzt: Readonly<Record<string, T>>): T | undefined {
+  const g = gruppen.find(x => x.id === gid);
+  if (!g) return undefined;
+  return zuletzt[gid] ?? g.mitglieder[0]?.id;
+}
+
 export function GruppierteModuleTabs<T extends string>({ label, gruppen, aktiv, onWechsel, children, className = '' }: Props<T>) {
-  const gruppe = gruppen.find(g => g.mitglieder.some(m => m.id === aktiv)) ?? gruppen[0];
+  const gruppe = aktiveGruppe(gruppen, aktiv);
   const zuletzt = useRef<Record<string, T>>({});
   zuletzt.current[gruppe.id] = aktiv;
 
   const hauptReiter = gruppen.map(g => ({ id: g.id, label: g.label, icon: g.icon }));
   const wechsleGruppe = (gid: string) => {
-    const g = gruppen.find(x => x.id === gid);
-    if (!g) return;
-    onWechsel(zuletzt.current[gid] ?? g.mitglieder[0].id);
+    const ziel = zielBeiGruppenwechsel(gruppen, gid, zuletzt.current);
+    if (ziel !== undefined) onWechsel(ziel);
   };
 
   return (

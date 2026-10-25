@@ -195,7 +195,7 @@ export default function ProbenahmePlaner() {
               <label className="text-xs font-bold text-slate-700 block mb-1">Bauteilart / Struktur</label>
               <select aria-label="Bauteilart / Struktur"
                 value={customBauteil}
-                onChange={(e) => setCustomBauteil(e.target.value as any)}
+                onChange={(e) => setCustomBauteil(e.target.value as typeof customBauteil)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"
               >
                 <option value="decke">Stahlbetondecke / Bodenplatte (m²)</option>
@@ -230,7 +230,7 @@ export default function ProbenahmePlaner() {
               <label className="text-xs font-bold text-slate-700 block mb-1">Primäres Diagnoseziel</label>
               <select aria-label="Primäres Diagnoseziel"
                 value={primaryGoal}
-                onChange={(e) => setPrimaryGoal(e.target.value as any)}
+                onChange={(e) => setPrimaryGoal(e.target.value as typeof primaryGoal)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"
               >
                 <option value="chlorid">Chlorid-Tausalzbelastung &amp; Lochfraß (XD3)</option>

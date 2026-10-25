@@ -7,6 +7,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { Droplets, AlertTriangle, Wind, Scale, CheckCircle2 } from 'lucide-react';
 import { DIN1045_2 } from '@/src/data/normParams';
 import React from 'react';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 
 interface MischungEingabenProps {
   applyWalzSandReduction: () => void;
@@ -219,6 +220,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         )}
       </div>
 
+      <NachErstemBild minHoehe="40rem">
       {/* Zement & Wasser */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main">Zement & Wasser</h3>
@@ -377,7 +379,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           </div>
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="30rem">
       {/* Zusatzstoffe */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main">Betonzusatzstoffe (k-Wert-Ansatz)</h3>
@@ -508,7 +512,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         )}
 
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="40rem">
       {/* Zusatzmittel & Luft (inkl. LP-Beton Automatik) */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main">Zusatzmittel &amp; Luft (LP-Beton)</h3>
@@ -683,7 +689,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           )}
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="40rem">
       {/* Faserbewehrung (Metall & Kunststoff) */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <div className="flex items-center justify-between mb-4">
@@ -865,6 +873,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           )}
         </div>
       </div>
+      </NachErstemBild>
 
     </div>
   );

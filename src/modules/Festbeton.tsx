@@ -17,7 +17,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -186,7 +187,7 @@ export default function Festbeton() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          title: (context: any) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
+          title: (context: TooltipItem<'line'>[]) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
           label: () => ''
         }
       }
@@ -507,7 +508,7 @@ export default function Festbeton() {
                       <label className="font-bold text-text-main block mb-1">Prüfgeometrie:</label>
                       <select aria-label="Prüfgeometrie" 
                         value={geometrie}
-                        onChange={(e) => setGeometrie(e.target.value as any)}
+                        onChange={(e) => setGeometrie(e.target.value as typeof geometrie)}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
                       >
                         <option value="zyl_150">Zylinder 150/300 (Ref. 1,00)</option>
@@ -522,7 +523,7 @@ export default function Festbeton() {
                     <label className="font-bold text-text-main block mb-1">Lagerungsbedingung:</label>
                     <select aria-label="Lagerungsbedingung" 
                       value={lagerung}
-                      onChange={(e) => setLagerung(e.target.value as any)}
+                      onChange={(e) => setLagerung(e.target.value as typeof lagerung)}
                       className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
                     >
                       <option value="norm">Normlagerung Wasser 20 °C (Faktor 1,00)</option>

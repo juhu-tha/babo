@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -105,7 +106,7 @@ export default function Lebensdauern() {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'bar'>) => {
             const data = context.raw as [number, number];
             return `Lebensdauer: ${formatDeWert(data[0])} - ${formatDeWert(data[1])} Jahre`;
           }

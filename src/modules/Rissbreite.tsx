@@ -1,3 +1,4 @@
+import type { TooltipItem } from 'chart.js';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Layers } from 'lucide-react';
@@ -128,7 +129,7 @@ export default function Rissbreite() {
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function(context: TooltipItem<'line'>) {
             let label = context.dataset.label || '';
             if (label) {
               label += ': ';

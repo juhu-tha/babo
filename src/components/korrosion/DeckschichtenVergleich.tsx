@@ -642,7 +642,7 @@ export function DeckschichtenVergleich() {
           ].map((btn) => (
             <button
               key={btn.id}
-              onClick={() => handleSelectCalcPreset(btn.id as any)}
+              onClick={() => handleSelectCalcPreset(btn.id as "stahl" | "kupfer" | "custom" | "alu" | "corten" | "magnesium" | "chrom")}
               className={`px-3 py-1 rounded-lg border font-bold transition-all cursor-pointer ${
                 calcMetal === btn.id
                   ? 'bg-shiraz border-shiraz text-white shadow-xs'

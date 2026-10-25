@@ -371,7 +371,7 @@ export default function Mauerwerk() {
                   <select aria-label="Mörtelart" 
                     className="p-2 border border-home-grau rounded-md bg-white"
                     value={mortar}
-                    onChange={(e) => setMortar(e.target.value as any)}
+                    onChange={(e) => setMortar(e.target.value as typeof mortar)}
                   >
                     <option value="NM">Normalmörtel (NM)</option>
                     <option value="LM">Leichtmörtel (LM)</option>
@@ -599,7 +599,7 @@ export default function Mauerwerk() {
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[250px] flex flex-col">
                 <h4 className="text-sm font-bold text-center mb-2">Schubfestigkeit vs. Druckspannung</h4>
                 <div className="flex-1 relative">
-                  <Line data={results.chartData} options={chartOptions as any} />
+                  <Line data={results.chartData} options={chartOptions} />
                 </div>
               </div>
             </div>
@@ -812,7 +812,7 @@ export default function Mauerwerk() {
                 return (
                   <button
                     key={item.id}
-                    onClick={() => setSteckbriefMaterial(item.id as any)}
+                    onClick={() => setSteckbriefMaterial(item.id as typeof steckbriefMaterial)}
                     className={`py-3 px-2 rounded-xl border text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1 cursor-pointer min-h-[50px] ${
                       isActive
                         ? 'bg-shiraz border-shiraz text-white shadow-md font-extrabold translate-y-[-1px]'

@@ -161,7 +161,7 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                 <label className="text-xs font-bold block mb-1">Glasrandverbund (Abstandhalter):</label>
                 <select aria-label="Glasrandverbund (Abstandhalter)"
                   value={abstandhalterTyp}
-                  onChange={(e) => setAbstandhalterTyp(e.target.value as any)}
+                  onChange={(e) => setAbstandhalterTyp(e.target.value as "edelstahl" | "alu" | "warm_edge_kunststoff")}
                   className="w-full p-2 bg-white border border-home-grau/30 rounded-xl text-xs font-medium focus:ring-1 focus:ring-shiraz outline-none"
                 >
                   <option value="warm_edge_kunststoff">Warme Kante Kunststoff (Ψ = 0,038 W/mK)</option>

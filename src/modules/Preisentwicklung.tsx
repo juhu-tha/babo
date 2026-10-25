@@ -11,6 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  type TooltipItem
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -125,7 +126,7 @@ const getChartOptions = (baseYear: string) => ({
       mode: 'index' as const,
       intersect: false,
       callbacks: {
-        label: function(context: any) {
+        label: function(context: TooltipItem<'line'>) {
           return `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} (Index)`;
         }
       }

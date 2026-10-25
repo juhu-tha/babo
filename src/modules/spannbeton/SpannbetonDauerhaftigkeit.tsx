@@ -350,7 +350,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <label className="font-bold text-slate-700 block">Bauwerksart &amp; Regelwerk:</label>
                   <select aria-label="Bauwerksart &amp; Regelwerk"
                     value={structureType}
-                    onChange={(e) => setStructureType(e.target.value as any)}
+                    onChange={(e) => setStructureType(e.target.value as typeof structureType)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
                   >
                     <option value="bruecke">Brückenbau (DIN EN 1992-2 / ZTV-ING, 100 a)</option>
@@ -363,7 +363,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <label className="font-bold text-slate-700 block">Vorspannsystem:</label>
                   <select aria-label="Vorspannsystem"
                     value={prestressSystem}
-                    onChange={(e) => setPrestressSystem(e.target.value as any)}
+                    onChange={(e) => setPrestressSystem(e.target.value as typeof prestressSystem)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
                   >
                     <option value="post_tensioned">Nachträglicher Verbund (im Hüllrohr)</option>
@@ -425,7 +425,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <label className="font-bold text-slate-700 block">Karbonatisierung (XC):</label>
                   <select aria-label="Karbonatisierung (XC)"
                     value={carbonationClass}
-                    onChange={(e) => setCarbonationClass(e.target.value as any)}
+                    onChange={(e) => setCarbonationClass(e.target.value as typeof carbonationClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
                   >
                     <option value="XC1">XC1: Trocken / ständige Feuchte (Innen)</option>
@@ -439,7 +439,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <label className="font-bold text-slate-700 block">Chloride aus Taumitteln (XD):</label>
                   <select aria-label="Chloride aus Taumitteln (XD)"
                     value={chlorideClass}
-                    onChange={(e) => setChlorideClass(e.target.value as any)}
+                    onChange={(e) => setChlorideClass(e.target.value as typeof chlorideClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
                   >
                     <option value="XD0">XD0: Keine Chloride</option>
@@ -453,7 +453,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <label className="font-bold text-slate-700 block">Frost-Tau-Angriff (XF):</label>
                   <select aria-label="Frost-Tau-Angriff (XF)"
                     value={frostClass}
-                    onChange={(e) => setFrostClass(e.target.value as any)}
+                    onChange={(e) => setFrostClass(e.target.value as typeof frostClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
                   >
                     <option value="XF0">XF0: Kein Frostangriff</option>
@@ -768,7 +768,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <button
                     key={task.id}
                     type="button"
-                    onClick={() => setSelectedZfpTask(task.id as any)}
+                    onClick={() => setSelectedZfpTask(task.id as typeof selectedZfpTask)}
                     className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center ${
                       selectedZfpTask === task.id
                         ? 'bg-shiraz text-white border-shiraz shadow-sm ring-2 ring-shiraz/30'
@@ -882,7 +882,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     <button
                       key={cond.id}
                       type="button"
-                      onClick={() => setSelectedDuctCondition(cond.id as any)}
+                      onClick={() => setSelectedDuctCondition(cond.id as typeof selectedDuctCondition)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         selectedDuctCondition === cond.id
                           ? 'bg-shiraz text-white shadow-xs'
