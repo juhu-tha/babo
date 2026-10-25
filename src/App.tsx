@@ -2,41 +2,16 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import {
   MoreHorizontal,
-  Calculator,
-  Globe,
   GraduationCap,
-  Activity,
-  Trees,
   Download,
-  Layers,
-  Droplets,
-  Scale,
   LayoutGrid,
   Maximize2,
-  Thermometer,
-  Leaf,
-  Mountain,
-  FileText,
-  Recycle,
-  Wrench,
-  AlertTriangle,
   Columns,
   Home,
-  Monitor,
-  ClipboardCheck,
-  Building2,
-  Landmark,
   Search,
   Compass,
-  Factory,
   Menu,
   X,
-  Microscope,
-  FileWarning,
-  Shield,
-  ShieldCheck,
-  Info,
-  Sparkles,
   Sun,
   Moon,
   ChevronRight,
@@ -49,65 +24,26 @@ import { LanguageSwitcher } from './components/navigation/LanguageSwitcher';
 import { LanguageBanner } from './components/navigation/LanguageBanner';
 import { TAB_DESCRIPTIONS } from './metaDescriptions';
 import { AccessibilityToolbar } from './components/a11y/AccessibilityToolbar';
-import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
-import { NAV_TAB_GRUPPEN, TAB_KEYWORDS, MODUL_BY_ID } from './registry/modules';
-import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimerBanner';
-import { grenzenFuer } from './data/rechnerGrenzen';
-import { LERNZIELE } from './data/lernziele';
-import { ModulLernziele } from './components/ui/ModulLernziele';
-import { ErkundungsAuftrag } from './components/ui/ErkundungsAuftrag';
-import { ModulKurzfassung } from './components/ui/ModulKurzfassung';
-import { KURZFASSUNG } from './data/kurzfassung';
-import { ERKUNDUNG } from './data/erkundung';
-import { ModulTest } from './components/quiz/ModulTest';
+import { MODUL_BY_ID } from './registry/modules';
 import { MODULTEST_IN_APP } from './data/quizZuordnung';
-import { iconFor } from './registry/icons';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
-import { VolltextTreffer } from './components/navigation/VolltextTreffer';
-import StudentPollVoteView from './components/polls/StudentPollVoteView';
-import { CURRENT_VERSION } from './data/versionData';
+// Nur die Versionsnummer aus package.json (tree-shakebar); tests/versionData.test.ts sichert den Gleichstand
+// mit VERSION_HISTORY[0] – so bleibt die Änderungshistorie aus dem Einstiegs-Chunk (Phase 5, AP 5.4)
+import { version as PAKET_VERSION } from '../package.json';
+import { tabGroups } from './routing/tabGroups';
+import { ModulNavigation } from './components/navigation/ModulNavigation';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
-// Menü wird aus der zentralen Modul-Registry erzeugt (src/registry/modules.ts)
-const tabGroups = NAV_TAB_GRUPPEN.map(g => ({
-  name: g.name,
-  tabs: g.tabs.map(t => ({ id: t.id, label: t.label, icon: iconFor(t.icon) })),
-}));
+// Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
+// Modul-Selbsttest (zieht quiz.json), Abstimmungsansicht (?poll=…) und SEO-Audit-Modal
+const AKTUELLE_VERSION = `v${PAKET_VERSION}`;
+const ModulInhalt = React.lazy(() => import('./routing/ModulInhalt'));
+const ModulKopf = React.lazy(() => import('./routing/ModulKopf'));
+const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m => ({ default: m.ModulTest })));
+const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
+const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
-const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  'Allgemein': Compass,
-  'Grundlagen': Scale,
-  'Labor & Auswertung': Microscope,
-  'Baustoffe': Mountain,
-  'Bauprodukte': Factory,
-  'Betontechnologie': Droplets,
-  'Massivbau': Layers,
-  'Holzbau': Trees,
-  'Mechanik': Activity,
-  'Bauphysik': Thermometer,
-  'Nachhaltigkeit': Leaf,
-  'Digitales': Monitor,
-  'Bauen im Bestand': Landmark,
-  'Rückbau & Schadstoffe': Recycle,
-  'Dauerhaftigkeit': ShieldCheck,
-  'Mängel & Schäden': FileWarning,
-  'Schutz & Instandsetzung': Shield,
-  'Praxiswissen': Wrench,
-  'Infos & Quellen': Info,
-  'Beispielrechnungen': Calculator,
-  'Übungsaufgaben': ClipboardCheck,
-  'Vorlesungen': GraduationCap,
-  'Übersicht & Zugang': GraduationCap,
-  'Bauen im Bestand (VL)': Building2,
-  'Nachhaltiges Bauen (VL)': Leaf,
-  'Bauschäden (VL)': AlertTriangle,
-  'Baustoffkunde (VL)': Layers,
-  'Instandhaltung (VL)': Wrench,
-  'Studium THA': Globe,
-  'Weiter@THA': GraduationCap,
-  'Thesen & Projekte': FileText,
-  'Kuriositäten': Sparkles
-};
 
 function AppContent() {
   const { activeTab, setActiveTab, theme, toggleTheme } = useTabContext();
@@ -404,6 +340,7 @@ function AppContent() {
 
   if (activePollParam) {
     return (
+      <React.Suspense fallback={null}>
       <StudentPollVoteView 
         initialLectureId={activePollParam.poll}
         initialQuestionId={activePollParam.qid}
@@ -414,6 +351,7 @@ function AppContent() {
           setActivePollParam(null);
         }}
       />
+      </React.Suspense>
     );
   }
 
@@ -487,328 +425,11 @@ function AppContent() {
         </div>
       </div>
       <nav className="flex-1 overflow-y-auto p-3 flex flex-col gap-1.5 custom-scrollbar pb-12">
-        {/* Schnellzugriff: Dashboard / Start & Allgemein */}
-        {(() => {
-          const allgemeinGroup = tabGroups[0]; // Allgemein
-          const isAllgemeinChildActive = ['admin', 'anleitung', 'modulstruktur', 'feedback', 'versionen', 'impressum', 'datenschutz'].includes(activeTab);
-          const isAnyClusterOpen = Object.values(openClusters).some(Boolean);
-          const isAllgemeinOpen = searchQuery !== '' 
-            ? true 
-            : (!isAnyClusterOpen && (openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive)));
-
-          const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t: any) => {
-            if (!searchQuery) return true;
-            const query = searchQuery.toLowerCase();
-            const translatedLabel = getTabLabel(t.id, t.label);
-            const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-            const keywords = TAB_KEYWORDS[t.id] || [];
-            const keywordsInclude = keywords.some(k => k.includes(query));
-            return labelIncludes || keywordsInclude;
-          });
-
-          // In search mode, only render if matching items exist
-          if (searchQuery && matchingAllgemeinTabs.length === 0) return null;
-
-          return (
-            <div className="mb-2 pb-2 border-b border-home-grau/20 dark:border-slate-800 flex flex-col gap-1">
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => {
-                    setActiveTab('start');
-                    setMobileMenuOpen(false);
-                    const nextState: Record<string, boolean> = {};
-                    META_CLUSTERS.forEach(c => {
-                      nextState[c.id] = false;
-                    });
-                    setOpenClusters(nextState);
-                    setOpenDropdown('CLOSED_ALLGEMEIN');
-                  }}
-                  className={"flex-1 flex items-center gap-2.5 px-3 py-2 text-sm font-semibold rounded-xl transition-all cursor-pointer " + 
-                    (activeTab === 'start' 
-                      ? "bg-slate-100 dark:bg-slate-800 border border-shiraz dark:border-rose-500 text-shiraz dark:text-rose-400 font-bold shadow-xs" 
-                      : "text-text-main dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent")}
-                >
-                  <Compass size={16} className="text-shiraz" />
-                  <span className="flex-1 text-left font-bold">{language === 'en' ? 'Home' : 'Start'}</span>
-                </button>
-                <button
-                  onClick={() => {
-                    if (isAllgemeinOpen) {
-                      setOpenDropdown('CLOSED_ALLGEMEIN');
-                    } else {
-                      // Beim Aufklappen von Start alle Cluster (I-VI/VII) einklappen
-                      const nextState: Record<string, boolean> = {};
-                      META_CLUSTERS.forEach(c => {
-                        nextState[c.id] = false;
-                      });
-                      setOpenClusters(nextState);
-                      setOpenDropdown('Allgemein');
-                    }
-                  }}
-                  className={`p-2 rounded-xl border transition-colors cursor-pointer ${
-                    isAllgemeinOpen
-                      ? "bg-slate-100 dark:bg-slate-800 border-shiraz dark:border-rose-500 text-shiraz dark:text-rose-400"
-                      : "bg-white/40 dark:bg-slate-800 border-home-grau/20 dark:border-slate-700 text-slate-500 hover:text-shiraz"
-                  }`}
-                  title={isAllgemeinOpen ? (language === 'en' ? "Collapse menu" : "Start-Menü einklappen") : (language === 'en' ? "Expand menu" : "Start-Menü ausklappen")}
-                  aria-label={language === 'en' ? 'General pages' : 'Allgemeine Seiten'}
-                  aria-expanded={isAllgemeinOpen}
-                >
-                  <ChevronRight size={14} className={`transition-transform duration-200 ${isAllgemeinOpen ? "rotate-90" : ""}`} />
-                </button>
-              </div>
-
-              {/* Allgemein Untermodule */}
-              {isAllgemeinOpen && (
-                <div className="flex flex-col gap-0.5 border-l-2 border-shiraz/40 dark:border-rose-500/40 ml-4 pl-2 my-1">
-                  {matchingAllgemeinTabs
-                    .filter((t: any) => searchQuery ? true : t.id !== 'start')
-                    .map((tab: any) => {
-                      const Icon = tab.icon;
-                      const isActive = activeTab === tab.id;
-                      const isFav = favorites.includes(tab.id);
-                      const displayLabel = getTabLabel(tab.id, tab.label);
-
-                      return (
-                        <div key={tab.id} className="group/item flex items-center gap-1">
-                          <button 
-                            onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
-                            className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
-                              (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
-                          >
-                            <Icon size={13} className={isActive ? "text-white" : "text-text-main/50 dark:text-slate-400 shrink-0"} />
-                            <span className="truncate flex-1 text-left">{displayLabel}</span>
-                          </button>
-                          <button
-                            onClick={(e) => toggleFavorite(tab.id, e)}
-                            className={`p-1 rounded opacity-0 group-hover/item:opacity-100 transition-opacity hover:bg-home-grau/20 dark:hover:bg-slate-700 ${isFav ? "!opacity-100 text-amber-500" : "text-slate-400"}`}
-                            title={isFav ? (language === 'en' ? "Remove from favorites" : "Aus Favoriten entfernen") : (language === 'en' ? "Add to favorites" : "Zu Favoriten hinzufügen")}
-                          >
-                            <Star size={11} className={isFav ? "fill-amber-500" : ""} />
-                          </button>
-                        </div>
-                      );
-                    })}
-                </div>
-              )}
-
-              {/* Favoriten Leiste wenn vorhanden */}
-              {!searchQuery && favorites.length > 0 && (
-                <div className="mt-1 px-1">
-                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-home-grau dark:text-slate-400 mb-1">
-                    <span className="flex items-center gap-1"><Star size={10} className="text-amber-500 fill-amber-500" /> {t('favorites')}</span>
-                    <span className="text-[9px] opacity-75">{favorites.length}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {favorites.slice(0, 4).map(favId => {
-                      const foundTab = tabGroups.flatMap(g => g.tabs as readonly any[]).find(t => t.id === favId);
-                      if (!foundTab) return null;
-                      const isFavActive = activeTab === favId;
-                      const displayFavLabel = getTabLabel(foundTab.id, foundTab.label);
-                      return (
-                        <button
-                          key={favId}
-                          onClick={() => { setActiveTab(favId as any); setMobileMenuOpen(false); }}
-                          className={"text-xs px-2 py-1 rounded-lg border font-medium transition-colors truncate max-w-[130px] " +
-                            (isFavActive ? "bg-shiraz text-white border-shiraz" : "bg-white dark:bg-slate-800 text-text-main/80 dark:text-slate-300 border-home-grau/30 dark:border-slate-700 hover:border-shiraz")}
-                          title={displayFavLabel}
-                        >
-                          {displayFavLabel}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })()}
-
-
-
-        {/* 7 Meta-Cluster Navigation */}
-        {META_CLUSTERS.map((cluster) => {
-          // Find matching groups in this cluster
-          const clusterGroups = tabGroups.filter(g => cluster.groupNames.includes(g.name));
-          const translatedClusterName = getClusterName(cluster.id, cluster.name);
-          
-          // Filter groups and tabs if search is active
-          const matchingGroups = clusterGroups.filter(group => {
-            if (!searchQuery) return true;
-            const query = searchQuery.toLowerCase();
-            const groupNameTranslated = getGroupName(group.name);
-            const clusterNameMatches = cluster.name.toLowerCase().includes(query) || translatedClusterName.toLowerCase().includes(query);
-            return clusterNameMatches ||
-                   group.name.toLowerCase().includes(query) || 
-                   groupNameTranslated.toLowerCase().includes(query) ||
-                   group.tabs.some((t: any) => {
-                     const translatedLabel = getTabLabel(t.id, t.label);
-                     const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                     const keywords = TAB_KEYWORDS[t.id] || [];
-                     const keywordsInclude = keywords.some(k => k.includes(query));
-                     return labelIncludes || keywordsInclude;
-                   });
-          });
-
-          if (matchingGroups.length === 0) return null;
-
-          const ClusterIcon = cluster.icon;
-          const isClusterOpen = openClusters[cluster.id] || searchQuery !== "";
-          const hasActiveChild = clusterGroups.some(g => (g.tabs as readonly any[]).some(t => t.id === activeTab));
-
-          return (
-            <div 
-              key={cluster.id} 
-              className={"rounded-xl transition-all border mb-1 " + 
-                (hasActiveChild 
-                  ? "bg-white/80 dark:bg-slate-900/90 border-home-grau/40 dark:border-slate-700 shadow-xs" 
-                  : "bg-white/40 dark:bg-slate-900/40 border-home-grau/20 dark:border-slate-800/80")}
-            >
-              {/* Cluster Header */}
-              <button
-                onClick={() => toggleCluster(cluster.id)}
-                aria-expanded={isClusterOpen}
-                className="w-full px-2.5 py-2 flex items-center justify-between gap-2 text-left rounded-xl transition-colors hover:bg-home-grau/5 dark:hover:bg-slate-800/60"
-              >
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className={`p-1.5 rounded-lg border shrink-0 ${cluster.badgeBg}`}>
-                    <ClusterIcon size={14} className={cluster.accentColor} />
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded border uppercase tracking-wider ${cluster.badgeBg} ${cluster.badgeText}`}>
-                        {cluster.number}
-                      </span>
-                      <span className={"text-xs font-bold truncate " + (hasActiveChild ? "text-text-main dark:text-white" : "text-text-main/90 dark:text-slate-200")}>
-                        {translatedClusterName}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="shrink-0 text-home-grau dark:text-slate-400">
-                  <ChevronRight size={14} className={`transition-transform duration-200 ${isClusterOpen ? "rotate-90" : ""}`} />
-                </div>
-              </button>
-
-              {/* Sub-Groups inside Cluster */}
-              {isClusterOpen && (
-                <div className="px-2 pb-2 pt-0.5 flex flex-col gap-1 border-t border-home-grau/15 dark:border-slate-800">
-                  {cluster.id === 'vorlesungen' ? (
-                    <div className="flex flex-col gap-0.5 my-0.5">
-                      {(matchingGroups as any[]).flatMap((g: any) => g.tabs).filter((tab: any) => {
-                        if (!searchQuery) return true;
-                        const query = searchQuery.toLowerCase();
-                        const translatedLabel = getTabLabel(tab.id, tab.label);
-                        const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                        const keywords = TAB_KEYWORDS[tab.id] || [];
-                        const keywordsInclude = keywords.some(k => k.includes(query));
-                        return labelIncludes || keywordsInclude;
-                      }).map((tab: any) => {
-                        const Icon = tab.icon;
-                        const isActive = activeTab === tab.id;
-                        const isFav = favorites.includes(tab.id);
-                        const tabDisplayName = getTabLabel(tab.id, tab.label);
-
-                        return (
-                          <div key={tab.id} className="group/item flex items-center gap-1">
-                            <button 
-                              onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
-                              className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
-                                (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
-                            >
-                              <Icon size={13} className={isActive ? "text-white" : "text-text-main/50 dark:text-slate-400 shrink-0"} />
-                              <span className="truncate flex-1 text-left">{tabDisplayName}</span>
-                            </button>
-                            <button
-                              onClick={(e) => toggleFavorite(tab.id, e)}
-                              className={`p-1 rounded opacity-0 group-hover/item:opacity-100 transition-opacity hover:bg-home-grau/20 dark:hover:bg-slate-700 ${isFav ? "!opacity-100 text-amber-500" : "text-slate-400"}`}
-                              title={isFav ? (language === 'en' ? "Remove from favorites" : "Aus Favoriten entfernen") : (language === 'en' ? "Add to favorites" : "Zu Favoriten hinzufügen")}
-                            >
-                              <Star size={11} className={isFav ? "fill-amber-500" : ""} />
-                            </button>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    matchingGroups.map((group) => {
-                    const isGroupOpen = openDropdown === group.name || searchQuery !== "";
-                    const isGroupActive = (group.tabs as readonly any[]).some(t => t.id === activeTab || (t.id === 'stahlbeton_bemessung' && ['spannung', 'biegebemessung', 'querkraftbemessung', 'stuetzenbemessung', 'durchstanzen', 'verankerungslaenge', 'rissbreite'].includes(activeTab)));
-                    const groupDisplayName = getGroupName(group.name);
-
-                    return (
-                      <div key={group.name} className="flex flex-col rounded-lg">
-                        <button 
-                          onClick={() => setOpenDropdown(isGroupOpen ? null : group.name)} 
-                          aria-expanded={isGroupOpen}
-                          className={"text-xs tracking-wide px-2 py-1.5 flex justify-between items-center rounded-lg transition-colors text-left w-full " + 
-                            (isGroupActive ? "font-bold text-shiraz dark:text-rose-400 bg-shiraz/5 dark:bg-rose-950/20" : "font-medium text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800/60")}
-                        >
-                          <div className="flex items-center gap-1.5 min-w-0">
-                            {React.createElement(GROUP_ICONS[group.name] || Layers, { size: 12, className: "shrink-0 opacity-70" })}
-                            <span className="truncate text-left">{groupDisplayName}</span>
-                          </div>
-                          <span aria-hidden="true" className="text-[10px] text-home-grau dark:text-slate-400 shrink-0 ml-1">
-                            {isGroupOpen ? "▲" : "▼"}
-                          </span>
-                        </button>
-                        
-                        {isGroupOpen && (
-                          <div className="flex flex-col gap-0.5 border-l-2 border-home-grau/30 dark:border-slate-700 ml-2.5 pl-2 my-0.5">
-                            {group.tabs.filter((tab: any) => {
-                              if (!searchQuery) return true;
-                              const query = searchQuery.toLowerCase();
-                              const translatedLabel = getTabLabel(tab.id, tab.label);
-                              const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                              const keywords = TAB_KEYWORDS[tab.id] || [];
-                              const keywordsInclude = keywords.some(k => k.includes(query));
-                              return labelIncludes || keywordsInclude;
-                            }).map((tab: any) => {
-                              if (tab.id.startsWith("divider")) {
-                                const dividerText = getTabLabel(tab.id, tab.label.replace(/-/g, "").trim());
-                                return (
-                                  <div key={tab.id} className="my-1 pt-1 pointer-events-none">
-                                    <span className="text-[9px] font-bold text-home-grau dark:text-slate-400 uppercase tracking-wider">{dividerText}</span>
-                                  </div>
-                                );
-                              }
-                              const Icon = tab.icon;
-                              const isActive = activeTab === tab.id || (tab.id === 'stahlbeton_bemessung' && ['spannung', 'biegebemessung', 'querkraftbemessung', 'stuetzenbemessung', 'durchstanzen', 'verankerungslaenge', 'rissbreite'].includes(activeTab));
-                              const isFav = favorites.includes(tab.id);
-                              const tabDisplayName = getTabLabel(tab.id, tab.label);
-
-                              return (
-                                <div key={tab.id} className="group/item flex items-center gap-1">
-                                  <button 
-                                    onClick={() => { setActiveTab(tab.id as any); setMobileMenuOpen(false); }} 
-                                    className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
-                                      (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
-                                  >
-                                    <Icon size={13} className={isActive ? "text-white" : "text-text-main/50 dark:text-slate-400 shrink-0"} />
-                                    <span className="truncate flex-1 text-left">{tabDisplayName}</span>
-                                  </button>
-                                  <button
-                                    onClick={(e) => toggleFavorite(tab.id, e)}
-                                    className={`p-1 rounded opacity-0 group-hover/item:opacity-100 transition-opacity hover:bg-home-grau/20 dark:hover:bg-slate-700 ${isFav ? "!opacity-100 text-amber-500" : "text-slate-400"}`}
-                                    title={isFav ? (language === 'en' ? "Remove from favorites" : "Aus Favoriten entfernen") : (language === 'en' ? "Add to favorites" : "Zu Favoriten hinzufügen")}
-                                  >
-                                    <Star size={11} className={isFav ? "fill-amber-500" : ""} />
-                                  </button>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
-        <VolltextTreffer anfrage={searchQuery} oeffne={(id) => { setActiveTab(id); setMobileMenuOpen(false); }} />
+        <ModulNavigation
+          searchQuery={searchQuery} openClusters={openClusters} setOpenClusters={setOpenClusters}
+          openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} favorites={favorites}
+          toggleFavorite={toggleFavorite} toggleCluster={toggleCluster} setMobileMenuOpen={setMobileMenuOpen}
+        />
       </nav>
       <div className="p-4 border-t border-home-grau/20 dark:border-slate-800 text-xs text-home-grau dark:text-slate-400 text-center relative">
           <div className="flex items-center justify-center gap-1.5">
@@ -1057,7 +678,7 @@ function AppContent() {
                 const d = String(now.getDate()).padStart(2, '0');
                 const m = String(now.getMonth() + 1).padStart(2, '0');
                 return `${d}.${m}.${now.getFullYear()}`;
-              })()} · {CURRENT_VERSION.version}
+              })()} · {AKTUELLE_VERSION}
             </div>
 
             <div className="hidden pdf-header mb-8 pb-4 border-b-2 border-shiraz">
@@ -1073,327 +694,9 @@ function AppContent() {
               </div>
             </div>
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
-          {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
-          {LERNZIELE[activeTab] && <ModulLernziele moduleId={activeTab} daten={LERNZIELE[activeTab]} oeffneModul={(id) => setActiveTab(id as Parameters<typeof setActiveTab>[0])} />}
-          {/* „Das Wichtigste in 5 Punkten“ vor langen Modulen (Phase 3, AP 3.8) */}
-          {KURZFASSUNG[activeTab] && <ModulKurzfassung key={activeTab} punkte={KURZFASSUNG[activeTab]} />}
-          {/* Erkundungsauftrag „Ausprobieren“ für Rechner (Phase 3, AP 3.7) */}
-          {ERKUNDUNG[activeTab] && <ErkundungsAuftrag key={activeTab} daten={ERKUNDUNG[activeTab]} />}
-          {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
-          {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzenFuer(activeTab)) && (
-            <CalculatorDisclaimerBanner
-              className="mb-4"
-              grenzen={grenzenFuer(activeTab)}
-              customText="Lehr- und Vorbemessungswerkzeug: Die Ergebnisse sind vereinfachte Berechnungen zu Lernzwecken und ersetzen keinen bauaufsichtlichen Nachweis (MVV TB / LBO) und keine Prüfung durch fachkundige Personen. Maßgebende Normausgaben stehen in den Quellen am Modulende."
-            />
-          )}
-          {activeTab === 'start' && <Startseite />}
-          {activeTab === 'nachhaltigkeit_daten_regeln' && <NachhaltigkeitDatenRegeln />}
-          {activeTab === 'materialoptimierung' && <Materialoptimierung />}
-          {activeTab === 'nachhaltigkeit_checklisten' && <NachhaltigkeitChecklisten />}
-          {activeTab === 'oekobilanz_lca' && <OekobilanzLCA teil="grundlagen" />}
-          {activeTab === 'lca_rechner' && <OekobilanzLCA teil="rechner" />}
-          {activeTab === 'lca_ingenieurbau' && <OekobilanzLCA teil="ingenieurbau" />}
-          {activeTab === 'lca_regulatorik' && <OekobilanzLCA teil="regulatorik" />}
-          {activeTab === 'zertifizierung_siegel' && <ZertifizierungSiegel />}
-          {activeTab === 'lebenszyklus_kosten' && <LebenszyklusKosten />}
-          {activeTab === 'ressourcen_umwelt' && <RessourcenUmwelt />}
-          {activeTab === 'kreislauf_dpp' && <Kreislaufwirtschaft />}
-          {activeTab === 'bim_baustoffe' && <BimBaustoffe />}
-          {activeTab === 'materialdatenbanken' && <Materialdatenbanken />}
-          {activeTab === 'materialpaesse' && <Materialpaesse />}
-          {activeTab === 'dpp' && <DppEpd view="dpp" />}
-          {activeTab === 'ki_baustoffe' && <KiBaustoffe />}
-          {activeTab === 'ki_ueberblick' && <KiBaustoffe forceTab="ueberblick" />}
-          {activeTab === 'ki_system' && <KiBaustoffe forceTab="system" />}
-          {activeTab === 'ki_prompting' && <KiBaustoffe forceTab="prompting" />}
-          {activeTab === 'ki_llmpraxis' && <KiBaustoffe forceTab="llmpraxis" />}
-          {activeTab === 'ki_thesen' && <KiBaustoffe forceTab="thesen" />}
-          {activeTab === 'ki_recht_ethik' && <KiBaustoffe forceTab="recht_ethik" />}
-          {activeTab === 'ki_lokal' && <KiBaustoffe forceTab="lokal" />}
-          {activeTab === 'ki_ressourcen' && <KiBaustoffe forceTab="ressourcen" />}
-          {activeTab === 'ki_onlinekurse' && <KiBaustoffe forceTab="onlinekurse" />}
-          {activeTab === 'rechnung_u_wert' && <Beispielrechnungen forceTab="u_wert" />}
-          {activeTab === 'rechnung_beton' && <Beispielrechnungen forceTab="beton" />}
-          {activeTab === 'rechnung_stahlbeton' && <Beispielrechnungen forceTab="stahlbeton" />}
-          {activeTab === 'rechnung_holzbau' && <Beispielrechnungen forceTab="holzbau" />}
-          {activeTab === 'rechnung_mauerwerk' && <Beispielrechnungen forceTab="mauerwerk" />}
-          {activeTab === 'rechnung_nachhaltigkeit' && <Beispielrechnungen forceTab="nachhaltigkeit" />}
-          {activeTab === 'rechnung_bestand' && <Beispielrechnungen forceTab="bestand" />}
-          {activeTab === 'rechnung_schallschutz' && <Beispielrechnungen forceTab="schallschutz" />}
-          {activeTab === 'rechnung_brandschutz' && <Beispielrechnungen forceTab="brandschutz" />}
-          {activeTab === 'impressum' && <Impressum />}
-          {activeTab === 'datenschutz' && <Datenschutz />}
-          {activeTab === 'barrierefreiheit' && <Barrierefreiheit />}
-          {activeTab === 'versionen' && <Versionen />}
-          {activeTab === 'einheiten' && <Einheiten />}
-          {activeTab === 'baustoffkunde' && <Baustoffkunde />}
-          {activeTab === 'baustoffkenngroessen' && <Baustoffkenngroessen />}
-          {activeTab === 'formaenderungen' && <Formaenderungen />}
-          {activeTab === 'analytik' && <Analytik />}
-          {activeTab === 'labor' && <Labor />}
-          {activeTab === 'mechanische_pruefungen' && <MechanischePruefungen />}
-          {activeTab === 'messen_pruefen' && <MessenPruefen />}
-          {activeTab === 'probenahme' && <Probenahme />}
-          {activeTab === 'statistik' && <Statistik />}
-          {activeTab === 'admin' && <Admin />}
-          {activeTab === 'anleitung' && <Anleitung />}
-          {(activeTab === 'modulstruktur' || (activeTab as string) === 'moduluebersicht') && <Modulstruktur />}
-          {activeTab === 'software' && <Software />}
-          {activeTab === 'online_tools' && <OnlineTools />}
-          {activeTab.startsWith('aufgaben') && <Aufgaben />}
-          {activeTab === 'feedback' && <Feedback />}
-          {activeTab === 'beton_info' && <BetonInfo />}
-          {activeTab === 'grundlagen_info' && <ModuleInfo group="grundlagen" />}
-          {activeTab === 'labor_info' && <ModuleInfo group="labor" />}
-          {activeTab === 'baustoffe_info' && <ModuleInfo group="baustoffe" />}
-          {activeTab === 'bauprodukte_info' && <ModuleInfo group="bauprodukte" />}
-          {activeTab === 'stahlbeton_info' && <ModuleInfo group="stahlbeton" />}
-          {activeTab === 'mechanik_info' && <ModuleInfo group="mechanik" />}
-          {activeTab === 'bauphysik_info' && <ModuleInfo group="bauphysik" />}
-          {activeTab === 'nachhaltigkeit_info' && <ModuleInfo group="nachhaltigkeit" />}
-          {activeTab === 'digitales_info' && <ModuleInfo group="digitales" />}
-          {activeTab === 'bestand_info' && <ModuleInfo group="bestand" />}
-          {activeTab === 'rueckbau_info' && <ModuleInfo group="rueckbau" />}
-          {activeTab === 'dauerhaftigkeit_info' && <ModuleInfo group="dauerhaftigkeit" />}
-          {activeTab === 'schaeden_info' && <ModuleInfo group="schaeden" />}
-          {activeTab === 'instandsetzung_info' && <ModuleInfo group="instandsetzung" />}
-          {activeTab === 'praxiswissen_info' && <ModuleInfo group="praxiswissen" />}
-          {activeTab === 'beton_a_z' && <BetonAZ />}
-          {activeTab === 'grundlagen' && <Grundlagen />}
-          {activeTab === 'bindemittel' && <Bindemittel />}
-          {activeTab === 'mischungsberechnung' && <Mischungsberechnung />}
-          {activeTab === 'frischbeton' && <Frischbeton />}
-          {activeTab === 'herstellung_einbau' && <HerstellungEinbau />}
-          {activeTab === 'hydratation_folgen' && <HydratationFolgen />}
-          {activeTab === 'nachbehandlung' && <Nachbehandlung />}
-          {activeTab === 'festbeton' && <Festbeton />}
-          {activeTab === 'betonkennwerte' && <Betonkennwerte />}
-          {activeTab === 'sichtbeton' && <Sichtbeton />}
-          {activeTab === 'festbeton_statistik' && <FestbetonStatistik />}
-          {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
-          {activeTab === 'sonderbetone' && <Sonderbetone />}
-          {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
-          {activeTab === 'qualitaetssicherung' && <Qualitaetssicherung />}
-          {activeTab === 'betonpraxis' && <Betonpraxis />}
-          {activeTab === 'expositionsklassen' && <Expositionsklassen />}
-          {activeTab === 'korrosion' && <Korrosion />}
-          {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
-          {activeTab === 'zwang' && <ZwangCalculator />}
-          {activeTab === 'eigenspannungen' && <Eigenspannungen />}
-          {activeTab === 'kriechen' && <KriechenSchwinden />}
-          {activeTab === 'wu-bauwerke' && <WUBauwerke />}
-          
-          {activeTab === 'materialkennwerte' && <Materialkennwerte />}
-          {activeTab === 'holz' && <Holz />}
-          {activeTab === 'holzwerkstoffe' && <Holzwerkstoffe />}
-          {activeTab === 'festigkeit' && <Festigkeitsberechnungen />}
-          {(activeTab === 'stahlbeton_bemessung' || activeTab === 'spannung' || activeTab === 'biegebemessung' || activeTab === 'querkraftbemessung' || activeTab === 'stuetzenbemessung' || activeTab === 'durchstanzen' || activeTab === 'verankerungslaenge' || activeTab === 'rissbreite') && (
-            <Stahlbetonbemessung
-              initialTab={
-                activeTab === 'spannung'
-                  ? 'spannung'
-                  : activeTab === 'querkraftbemessung'
-                  ? 'querkraftbemessung'
-                  : activeTab === 'stuetzenbemessung'
-                  ? 'stuetzenbemessung'
-                  : activeTab === 'durchstanzen'
-                  ? 'durchstanzen'
-                  : activeTab === 'verankerungslaenge'
-                  ? 'verankerungslaenge'
-                  : activeTab === 'rissbreite'
-                  ? 'rissbreite'
-                  : activeTab === 'biegebemessung'
-                  ? 'biegebemessung'
-                  : 'spannung'
-              }
-            />
-          )}
-          {activeTab === 'erdbau' && <Erdbau />}
-          {activeTab === 'stahl' && <Stahl />}
-          {activeTab === 'bp_stahlbauprofile' && <BpStahlbauprofile />}
-          {activeTab === 'mauerwerk' && <Mauerwerk />}
-          {activeTab === 'keramik_ziegel' && <KeramikZiegel />}
-          {activeTab === 'glas' && <Glas />}
-          {activeTab === 'asphalt' && <Asphalt />}
-          {activeTab === 'putzemoertel' && <PutzeMoertel />}
-          {activeTab === 'gesteine' && <Gesteine />}
-          {activeTab === 'bauchemie' && <Bauchemie />}
-          {activeTab === 'materialitaet_architektur' && <MaterialitaetArchitektur />}
-          {(activeTab === 'kombinationen' || activeTab === 'faserverbund') && (
-            <Kombinationen initialTab={activeTab === 'faserverbund' ? 'faserverbund' : undefined} />
-          )}
-          {activeTab === 'kunststoffe' && <Kunststoffe />}
-          {activeTab === 'membranen_etfe' && <MembranenETFE />}
-          {activeTab === 'nawaro' && <Nawaro />}
-          {activeTab === 'lehm' && <Lehm />}
-          {activeTab === 'bp_lehmbauprodukte' && <BpLehmbauprodukte />}
-          {activeTab === 'bp_baustoffindustrie' && <BpBaustoffindustrie />}
-          {activeTab === 'bp_innovationen' && <BpInnovationen />}
-          {activeTab === 'metalle' && <Metalle />}
-          {activeTab === 'innenausbau' && <Innenausbau />}
-          {activeTab === 'ausbau' && <Ausbau />}
-          {activeTab === 'gips' && <Gips />}
-          {activeTab === 'kalk' && <Kalk />}
-          {activeTab === 'daemmstoffe' && <Daemmstoffe />}
-          {activeTab === 'bp_rechtliches' && <BpRechtliches />}
-          {activeTab === 'bp_recht_grundlagen' && <BpRechtliches isEmbedded={false} activeSubTab="grundlagen" />}
-          {activeTab === 'bp_recht_avcp' && <BpRechtliches isEmbedded={false} activeSubTab="avcp" />}
-          {activeTab === 'bp_recht_konformitaet' && <BpRechtliches isEmbedded={false} activeSubTab="begriffe" />}
-          {activeTab === 'bp_recht_normen' && <BpRechtliches isEmbedded={false} activeSubTab="normenarbeit" />}
-          {activeTab === 'bp_trockenbau' && <BpTrockenbau />}
-          {activeTab === 'bp_beton' && <BpBeton />}
-          {activeTab === 'bp_betonfertigteile' && <BpBetonfertigteile />}
-          {activeTab === 'bp_betonwaren' && <BpBetonwaren />}
-          {activeTab === 'bp_mauerwerk' && <BpMauerwerk />}
-          {activeTab === 'bp_verkehrswegebau' && <BpVerkehrswegebau />}
-          {activeTab === 'bp_verkehr_rsto' && <BpVerkehrswegebau initialTab="rsto_rechner" />}
-          {activeTab === 'bp_verkehr_asphalt' && <BpVerkehrswegebau initialTab="vergleich" />}
-          {activeTab === 'bp_verkehr_bitumen' && <BpVerkehrswegebau initialTab="bindemittel" />}
-          {activeTab === 'bp_verkehr_pruefung' && <BpVerkehrswegebau initialTab="prueftechnik" />}
-          {activeTab === 'bp_verkehr_betondecken' && <BpVerkehrswegebau initialTab="betondecken" />}
-          {activeTab === 'bp_verkehr_tiefbau' && <BpVerkehrswegebau initialTab="tiefbau" />}
-          {activeTab === 'bp_verkehr_bahn' && <BpVerkehrswegebau initialTab="bahnbau" />}
-          {activeTab === 'bp_verkehr_tunnel' && <BpVerkehrswegebau initialTab="tunnelbau" />}
-          {activeTab === 'bp_abdichtung' && <BpAbdichtung />}
-          {activeTab === 'bp_daemmung' && <BpDaemmung />}
-          {activeTab === 'bp_putz_estrich' && <BpPutzEstrich />}
-          {activeTab === 'bp_holzprodukte' && <BpHolzprodukte />}
-          {activeTab === 'bp_dach_fassade' && <BpDachFassade />}
-          {activeTab === 'bp_befestigung' && <BpBefestigung />}
-          {activeTab === 'bp_kunststoffe' && <BpKunststoffe />}
-          {activeTab === 'bp_klebstoffe' && <BpKlebstoffe />}
-          {activeTab === 'bp_farben_lacke' && <BpFarbenLacke />}
-          {activeTab === 'bp_mineralisch' && <BpMineralisch />}
-          {activeTab === 'bp_glaeser' && <BpGlaeser />}
-          {activeTab === 'bp_metallisch' && <BpMetallisch />}
-          {activeTab === 'bp_betonzusatzmittel' && <BpBetonzusatzmittel />}
-          {activeTab === 'sonstiges' && <Sonstiges />}
-          {activeTab === 'mechanische_kenngroessen' && <MechanischeKenngroessen />}
-          {activeTab === 'materialmodelle' && <Materialmodelle />}
-          {activeTab === 'bruchmechanik' && <Bruchmechanik />}
-          {activeTab === 'knicken' && <Knicken />}
-          {activeTab === 'stahlbau_ec3' && <StahlbauEC3 />}
-          {activeTab === 'baustatik' && <Baustatik />}
-          {activeTab === 'bodenmechanik' && <Bodenmechanik />}
-          {activeTab === 'bauphysik' && <Bauphysik />}
-          {activeTab === 'feuchteschutz' && <Feuchteschutz />}
-          {activeTab === 'sommerlicher_waermeschutz' && <SommerlicherWaermeschutz />}
-          {activeTab === 'schallschutz' && <Schallschutz />}
-          {activeTab === 'brandschutz' && <Brandschutz />}
-          {activeTab === 'energieausweis' && <Energieausweis />}
-          {activeTab === 'emodul' && <EModul />}
-          {activeTab === 'carbonbeton' && <Carbonbeton />}
-          
-          {/* Holzbau */}
-          {activeTab === 'holzbau_info' && <HolzbauBeta activeSubTab="info" />}
-          {activeTab === 'holzbau_werkstoffe' && <HolzbauBeta activeSubTab="werkstoffe" />}
-          {activeTab === 'holzbau_konstruktion' && <HolzbauBeta activeSubTab="konstruktion" />}
-          {activeTab === 'holzbau_bemessung' && <HolzbauBeta activeSubTab="bemessung" />}
-          {activeTab === 'holzbau_verbindung' && <HolzbauBeta activeSubTab="verbindung" />}
-          {activeTab === 'holzbau_bauphysik' && <HolzbauBeta activeSubTab="bauphysik" />}
-
-          {activeTab === 'waermeeigenschaften' && <Waermeeigenschaften />}
-          {activeTab === 'daemmung_vergleich' && <DaemmungVergleich />}
-          {activeTab === 'spannbeton' && <Spannbeton />}
-          {/* Info */}
-          {activeTab === 'glossar' && <Glossar />}
-          {activeTab === 'regularien' && <Regularien />}
-          {activeTab === 'fortbildungen' && <Fortbildungen />}
-          {activeTab === 'informationsquellen' && <Informationsquellen />}
-          {activeTab === 'literatur' && <Literatur />}
-          
-          {/* Bauen im Bestand */}
-          {activeTab === 'bestand' && <Bestand />}
-
-          {activeTab === 'bauwerkserfassung' && <Bauwerkserfassung />}
-          {activeTab === 'zfp' && <Bauwerksuntersuchung />}
-          {activeTab === 'bauwerksuntersuchung' && <Bauwerksuntersuchung />}
-          {activeTab === 'historisch' && <HistorischeMaterialkennwerte />}
-          {activeTab === 'historische_bauweisen' && <HistorischeBauweisen />}
-          {activeTab === 'historische_bauprodukte' && <HistorischeBauprodukte />}
-          {activeTab === 'schadstoffe' && <Schadstoffe />}
-          {activeTab === 'ressourceneffizienz' && <Ressourceneffizienz />}
-          {activeTab === 'vdi6200' && <Zustandsbewertung />}
-          {activeTab === 'abfaelle' && <Abfaelle />}
-          {activeTab === 'rueckbau' && <Rueckbau />}
-          {activeTab === 'boden_materialaufbereitung' && <BodenMaterialAufbereitung />}
-          {activeTab === 'rueckbau_checklisten' && <RueckbauChecklisten />}
-          {activeTab === 'bestand_checklisten' && <BestandChecklisten />}
-          {activeTab === 'wta' && <WTA />}
-          {activeTab === 'denkmalpflege' && <Denkmalpflege />}
-          {activeTab === 'modernisierung' && <Modernisierung />}
-          
-          {/* Nachhaltigkeit & Digitales */}
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          {/* Lebenszyklus */}
-          {activeTab === 'dauerhaftigkeit' && <Dauerhaftigkeit />}
-          {activeTab === 'dauerhaftigkeit_checklisten' && <DauerhaftigkeitChecklisten />}
-          {activeTab === 'holzkorrosion' && <Holzkorrosion />}
-          {activeTab === 'metallkorrosion' && <Metallkorrosion />}
-          {activeTab === 'korrosionsschutz_beschichtungen' && <KorrosionsschutzBeschichtungen />}
-          {activeTab === 'weitere_organik' && <WeitereOrganik />}
-          {/* Schäden */}
-          {activeTab === 'bauschaeden' && <Bauschaeden />}
-          {activeTab === 'schadensbilder' && <TypischeBauschaeden />}
-          {activeTab === 'material_schaeden_gross' && <MaterialSchaedenGross />}
-          {activeTab === 'bauwerksunters_monitoring' && <Bauwerksunters_Monitoring />}
-          {activeTab === 'schaeden_checklisten' && <SchaedenChecklisten />}
-          
-          {/* Schutz & Instandsetzung */}
-          {activeTab === 'schutz_grundlagen' && <SchutzGrundlagen />}
-          {activeTab === 'instandhaltung' && <Stahlbetoninstandhaltung />}
-          {(activeTab === 'instandsetzung_materialien' || activeTab === 'instandsetzung_holz' || activeTab === 'instandsetzung_metalle' || activeTab === 'instandsetzung_kunststoffe' || activeTab === 'instandsetzung_asphalt' || activeTab === 'instandsetzung_mauerwerk') && (
-            <InstandsetzungMaterialien
-              initialMaterial={
-                activeTab === 'instandsetzung_holz' ? 'holz' :
-                activeTab === 'instandsetzung_metalle' ? 'metalle' :
-                activeTab === 'instandsetzung_kunststoffe' ? 'kunststoffe' :
-                activeTab === 'instandsetzung_asphalt' ? 'asphalt' :
-                activeTab === 'instandsetzung_mauerwerk' ? 'mauerwerk' : undefined
-              }
-            />
-          )}
-          {activeTab === 'instandsetzung_checklisten' && <InstandsetzungChecklisten />}
-          
-          {/* Praxiswissen */}
-          {activeTab === 'px_planung' && <Praxiswissen />}
-          {activeTab === 'px_bauleitung' && <Praxiswissen />}
-          {activeTab === 'px_bautagebuch' && <Bautagebuch />}
-          {activeTab === 'px_produktion' && <Praxiswissen />}
-          {activeTab === 'px_karriere' && <Praxiswissen />}
-          {(activeTab === 'weiter_tha' || activeTab === 'weiter_bauing' || activeTab === 'weiter_pm' || activeTab === 'weiter_ausbau' || activeTab === 'weiter_fassade' || activeTab === 'weiter_holzbau' || activeTab === 'weiter_ttz' || activeTab === 'weiter_mapr') && <WeiterTHA />}
-          {(activeTab === 'vl_ueberblick' || activeTab === 'vl_bauen_im_bestand' || activeTab === 'vl_nachhaltiges_bauen' || activeTab === 'vl_bauschaeden' || activeTab === 'vl_baustoffkunde' || activeTab === 'vl_instandhaltung') && (
-            <Vorlesungen
-              forceTab={
-                activeTab === 'vl_nachhaltiges_bauen'
-                  ? 'nachhaltiges_bauen'
-                  : activeTab === 'vl_bauschaeden'
-                  ? 'bauschaeden'
-                  : activeTab === 'vl_baustoffkunde'
-                  ? 'baustoffkunde'
-                  : activeTab === 'vl_instandhaltung'
-                  ? 'instandhaltung'
-                  : 'bauen_im_bestand'
-              }
-            />
-          )}
-          {activeTab === 'studium_tha' && <StudiumTHA />}
-          {activeTab === 'thesen_projekte' && <ThesenProjekte />}
-          {activeTab === 'kuriositaeten' && <Kuriositaeten />}
-          {activeTab === 'labor_sicherheit' && <LaborSicherheit />}
+          {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
+          {activeTab !== 'start' && <ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} />}
+          <ModulInhalt activeTab={activeTab} />
           {/* Selbsttest für Module ohne eigenen Test in der Komponente (Phase 3, AP 3.4) */}
           {MODULTEST_IN_APP.has(activeTab) && <div className="mt-8"><ModulTest moduleId={activeTab} /></div>}
           </React.Suspense>
@@ -1401,14 +704,14 @@ function AppContent() {
 
           {/* Global Footer */}
           <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
-            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {CURRENT_VERSION.version}</span>
+            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {AKTUELLE_VERSION}</span>
           </footer>
         </div>
       </main>
     </div>
 
     {/* SEO-Metadaten Audit-Modal */}
-    <MetadataAuditModal
+    {showMetadataModal && <React.Suspense fallback={null}><MetadataAuditModal
       isOpen={showMetadataModal}
       onClose={() => setShowMetadataModal(false)}
       tabGroups={tabGroups}
@@ -1418,229 +721,11 @@ function AppContent() {
         setActiveTab(tabId as any);
         setShowMetadataModal(false);
       }}
-    />
+    /></React.Suspense>}
   </div>
 );
 }
 
-class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {
-  constructor(props: {children: React.ReactNode}) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("React ErrorBoundary caught an error:", error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ padding: '20px', backgroundColor: '#fdf2f4', color: '#881235', fontFamily: 'sans-serif' }}>
-          <h2>Etwas ist schiefgelaufen. (React Error)</h2>
-          <pre style={{ whiteSpace: 'pre-wrap', fontSize: '12px' }}>{this.state.error?.toString()}</pre>
-          <pre style={{ whiteSpace: 'pre-wrap', fontSize: '10px', marginTop: '10px' }}>{this.state.error?.stack}</pre>
-          <button onClick={() => { this.setState({hasError: false}); window.localStorage.clear(); window.location.reload(); }} style={{ marginTop: '20px', padding: '10px', background: '#881235', color: 'white', border: 'none', borderRadius: '4px' }}>
-            App neu laden (Local Storage leeren)
-          </button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
-// Lazy loaded modules
-const SommerlicherWaermeschutz = React.lazy(() => import('./modules/SommerlicherWaermeschutz'));
-const MembranenETFE = React.lazy(() => import('./modules/MembranenETFE'));
-const KorrosionsschutzBeschichtungen = React.lazy(() => import('./modules/KorrosionsschutzBeschichtungen'));
-const KeramikZiegel = React.lazy(() => import('./modules/KeramikZiegel'));
-const StahlbauEC3 = React.lazy(() => import('./modules/StahlbauEC3'));
-const Vorlesungen = React.lazy(() => import('./modules/Vorlesungen'));
-const NachhaltigkeitDatenRegeln = React.lazy(() => import('./modules/NachhaltigkeitDatenRegeln'));
-const OekobilanzLCA = React.lazy(() => import('./modules/OekobilanzLCA'));
-const ZertifizierungSiegel = React.lazy(() => import('./modules/ZertifizierungSiegel'));
-const LebenszyklusKosten = React.lazy(() => import('./modules/LebenszyklusKosten'));
-const RessourcenUmwelt = React.lazy(() => import('./modules/RessourcenUmwelt'));
-const Kreislaufwirtschaft = React.lazy(() => import('./modules/Kreislaufwirtschaft'));
-const BimBaustoffe = React.lazy(() => import('./modules/BimBaustoffe'));
-const Materialdatenbanken = React.lazy(() => import('./modules/Materialdatenbanken'));
-const Materialpaesse = React.lazy(() => import('./modules/Materialpaesse'));
-const DppEpd = React.lazy(() => import('./modules/DppEpd'));
-const KiBaustoffe = React.lazy(() => import('./modules/KiBaustoffe'));
-const Beispielrechnungen = React.lazy(() => import('./modules/Beispielrechnungen'));
-const Startseite = React.lazy(() => import('./modules/Startseite'));
-const Admin = React.lazy(() => import('./modules/Admin'));
-const Anleitung = React.lazy(() => import('./modules/Anleitung'));
-const Modulstruktur = React.lazy(() => import('./modules/Modulstruktur'));
-const Feedback = React.lazy(() => import('./modules/Feedback'));
-const Frischbeton = React.lazy(() => import('./modules/Frischbeton'));
-const FestbetonStatistik = React.lazy(() => import('./modules/FestbetonStatistik'));
-const Sicherheitskonzept = React.lazy(() => import('./modules/Sicherheitskonzept'));
-const Qualitaetssicherung = React.lazy(() => import('./modules/Qualitaetssicherung'));
-const Betonpraxis = React.lazy(() => import('./modules/Betonpraxis'));
-const Expositionsklassen = React.lazy(() => import('./modules/Expositionsklassen'));
-const Korrosion = React.lazy(() => import('./modules/Korrosion'));
-const SpannungDehnung = React.lazy(() => import('./modules/SpannungDehnung'));
-const Holz = React.lazy(() => import('./modules/Holz'));
-const Hydratation = React.lazy(() => import('./modules/Hydratation'));
-const IntegrationVerformungen = React.lazy(() => import('./modules/IntegrationVerformungen'));
-const KriechenSchwinden = React.lazy(() => import('./modules/KriechenSchwinden'));
-const Rissbreite = React.lazy(() => import('./modules/Rissbreite'));
-const Nachbehandlung = React.lazy(() => import('./modules/Nachbehandlung'));
-const Festbeton = React.lazy(() => import('./modules/Festbeton'));
-const Betonkennwerte = React.lazy(() => import('./modules/Betonkennwerte'));
-const Materialkennwerte = React.lazy(() => import('./modules/Materialkennwerte'));
-const Regularien = React.lazy(() => import('./modules/Regularien'));
-const Festigkeitsberechnungen = React.lazy(() => import('./modules/Festigkeitsberechnungen'));
-const Mauerwerk = React.lazy(() => import('./modules/Mauerwerk'));
-const Erdbau = React.lazy(() => import('./modules/Erdbau'));
-const Glas = React.lazy(() => import('./modules/Glas'));
-const Bauphysik = React.lazy(() => import('./modules/Bauphysik'));
-const Schallschutz = React.lazy(() => import('./modules/Schallschutz'));
-const Grundlagen = React.lazy(() => import('./modules/Grundlagen'));
-const BetonInfo = React.lazy(() => import('./modules/BetonInfo'));
-const ModuleInfo = React.lazy(() => import('./modules/ModuleInfo'));
-const BetonAZ = React.lazy(() => import('./modules/BetonAZ'));
-const Bindemittel = React.lazy(() => import('./modules/Bindemittel'));
-const Mischungsberechnung = React.lazy(() => import('./modules/Mischungsberechnung'));
-const ZfP = React.lazy(() => import('./modules/ZfP'));
-const HistorischeMaterialkennwerte = React.lazy(() => import('./modules/HistorischeMaterialkennwerte'));
-const HistorischeBauweisen = React.lazy(() => import('./modules/HistorischeBauweisen'));
-const HistorischeBauprodukte = React.lazy(() => import('./modules/HistorischeBauprodukte'));
-const Stahlbetoninstandhaltung = React.lazy(() => import('./modules/Stahlbetoninstandhaltung').then(module => ({ default: module.Stahlbetoninstandhaltung })));
-const Asphalt = React.lazy(() => import('./modules/Asphalt'));
-const MaterialitaetArchitektur = React.lazy(() => import('./modules/MaterialitaetArchitektur'));
-const Kombinationen = React.lazy(() => import('./modules/Kombinationen'));
-const Lehm = React.lazy(() => import('./modules/Lehm'));
-const BpLehmbauprodukte = React.lazy(() => import('./modules/BpLehmbauprodukte'));
-const BpBaustoffindustrie = React.lazy(() => import('./modules/BpBaustoffindustrie'));
-const BpInnovationen = React.lazy(() => import('./modules/BpInnovationen'));
-const Kunststoffe = React.lazy(() => import('./modules/Kunststoffe'));
-const Brandschutz = React.lazy(() => import('./modules/Brandschutz'));
-const Energieausweis = React.lazy(() => import('./modules/Energieausweis'));
-const Bruchmechanik = React.lazy(() => import('./modules/Bruchmechanik'));
-const SchadreaktionenBeton = React.lazy(() => import('./modules/SchadreaktionenBeton'));
-const ZwangCalculator = React.lazy(() => import('./modules/Zwang').then(module => ({ default: module.ZwangCalculator })));
-const Eigenspannungen = React.lazy(() => import('./modules/Eigenspannungen'));
-const Recyclingbeton = React.lazy(() => import('./modules/Recyclingbeton'));
-const Bodenmechanik = React.lazy(() => import('./modules/Bodenmechanik'));
-const WUBauwerke = React.lazy(() => import('./modules/WUBauwerke'));
-const Baustatik = React.lazy(() => import('./modules/Baustatik'));
-const Knicken = React.lazy(() => import('./modules/Knicken'));
-const MechanischeKenngroessen = React.lazy(() => import('./modules/MechanischeKenngroessen'));
-const HydratationFolgen = React.lazy(() => import('./modules/HydratationFolgen'));
-const Sonderbetone = React.lazy(() => import('./modules/Sonderbetone'));
-const Stahlbetonbemessung = React.lazy(() => import('./modules/Stahlbetonbemessung'));
-const Impressum = React.lazy(() => import('./modules/Impressum'));
-const Versionen = React.lazy(() => import('./modules/Versionen'));
-const Bauchemie = React.lazy(() => import('./modules/Bauchemie').then(module => ({ default: module.Bauchemie })));
-const Aufgaben = React.lazy(() => import('./modules/Aufgaben'));
-const Praxisbeispiele = React.lazy(() => import('./modules/Praxisbeispiele'));
-const EModul = React.lazy(() => import('./modules/EModul'));
-const Carbonbeton = React.lazy(() => import('./modules/Carbonbeton'));
-const Waermeeigenschaften = React.lazy(() => import('./modules/Waermeeigenschaften'));
-const Spannbeton = React.lazy(() => import('./modules/Spannbeton'));
-const Stahl = React.lazy(() => import('./modules/Stahl'));
-const BpStahlbauprofile = React.lazy(() => import('./modules/BpStahlbauprofile'));
-const Glossar = React.lazy(() => import('./modules/Glossar'));
-const Dauerhaftigkeit = React.lazy(() => import('./modules/Dauerhaftigkeit'));
-const Holzkorrosion = React.lazy(() => import('./modules/Holzkorrosion'));
-const Metallkorrosion = React.lazy(() => import('./modules/Metallkorrosion'));
-const WeitereOrganik = React.lazy(() => import('./modules/WeitereOrganik'));
-const Schadstoffe = React.lazy(() => import('./modules/Schadstoffe'));
-const Ressourceneffizienz = React.lazy(() => import('./modules/Ressourceneffizienz'));
-const BodenMaterialAufbereitung = React.lazy(() => import('./modules/BodenMaterialAufbereitung'));
-const Abfaelle = React.lazy(() => import('./modules/Abfaelle'));
-const Materialoptimierung = React.lazy(() => import('./modules/Materialoptimierung'));
-const NachhaltigkeitChecklisten = React.lazy(() => import('./modules/NachhaltigkeitChecklisten'));
-const Rueckbau = React.lazy(() => import('./modules/Rueckbau'));
-const RueckbauChecklisten = React.lazy(() => import('./modules/RueckbauChecklisten'));
-const BestandChecklisten = React.lazy(() => import('./modules/BestandChecklisten'));
-const DauerhaftigkeitChecklisten = React.lazy(() => import('./modules/DauerhaftigkeitChecklisten'));
-const SchaedenChecklisten = React.lazy(() => import('./modules/SchaedenChecklisten'));
-const SchutzGrundlagen = React.lazy(() => import('./modules/SchutzGrundlagen'));
-const InstandsetzungMaterialien = React.lazy(() => import('./modules/InstandsetzungMaterialien'));
-const InstandsetzungChecklisten = React.lazy(() => import('./modules/InstandsetzungChecklisten'));
-const Zustandsbewertung = React.lazy(() => import('./modules/Zustandsbewertung'));
-const WTA = React.lazy(() => import('./modules/WTA'));
-const Denkmalpflege = React.lazy(() => import('./modules/Denkmalpflege'));
-const Modernisierung = React.lazy(() => import('./modules/Modernisierung'));
-const Bestand = React.lazy(() => import('./modules/Bestand'));
-const Bauwerkserfassung = React.lazy(() => import('./modules/Bauwerkserfassung'));
-const Informationsquellen = React.lazy(() => import('./modules/Informationsquellen'));
-const Fortbildungen = React.lazy(() => import('./modules/Fortbildungen'));
-const Feuchteschutz = React.lazy(() => import('./modules/Feuchteschutz'));
-const Bauwerksuntersuchung = React.lazy(() => import('./modules/Bauwerksuntersuchung'));
-const Bauwerksunters_Monitoring = React.lazy(() => import('./modules/Bauwerksunters_Monitoring'));
-const Metalle = React.lazy(() => import('./modules/Metalle'));
-const Ausbau = React.lazy(() => import('./modules/Ausbau'));
-const Innenausbau = React.lazy(() => import('./modules/Innenausbau'));
-const BpTrockenbau = React.lazy(() => import('./modules/BpTrockenbau'));
-const BpMauerwerk = React.lazy(() => import('./modules/BpMauerwerk'));
-const BpVerkehrswegebau = React.lazy(() => import('./modules/BpVerkehrswegebau'));
-const BpBeton = React.lazy(() => import('./modules/BpBeton'));
-const BpBetonfertigteile = React.lazy(() => import('./modules/BpBetonfertigteile'));
-const BpBetonwaren = React.lazy(() => import('./modules/BpBetonwaren'));
-const BpAbdichtung = React.lazy(() => import('./modules/BpAbdichtung'));
-const BpDaemmung = React.lazy(() => import('./modules/BpDaemmung'));
-const BpPutzEstrich = React.lazy(() => import('./modules/BpPutzEstrich'));
-const BpHolzprodukte = React.lazy(() => import('./modules/BpHolzprodukte'));
-const BpDachFassade = React.lazy(() => import('./modules/BpDachFassade'));
-const BpBefestigung = React.lazy(() => import('./modules/BpBefestigung'));
-const BpKunststoffe = React.lazy(() => import('./modules/BpKunststoffe'));
-const BpKlebstoffe = React.lazy(() => import('./modules/BpKlebstoffe'));
-const BpFarbenLacke = React.lazy(() => import('./modules/BpFarbenLacke'));
-const BpMineralisch = React.lazy(() => import('./modules/BpMineralisch'));
-const BpGlaeser = React.lazy(() => import('./modules/BpGlaeser'));
-const BpMetallisch = React.lazy(() => import('./modules/BpMetallisch'));
-const BpBetonzusatzmittel = React.lazy(() => import('./modules/BpBetonzusatzmittel'));
-const BpRechtliches = React.lazy(() => import('./modules/BpRechtliches'));
-const HerstellungEinbau = React.lazy(() => import('./modules/HerstellungEinbau'));
-const Sichtbeton = React.lazy(() => import('./modules/Sichtbeton'));
-const Labor = React.lazy(() => import('./modules/Labor'));
-const MechanischePruefungen = React.lazy(() => import('./modules/MechanischePruefungen'));
-const MessenPruefen = React.lazy(() => import('./modules/MessenPruefen'));
-const Analytik = React.lazy(() => import('./modules/Analytik'));
-const Probenahme = React.lazy(() => import('./modules/Probenahme'));
-const Bauschaeden = React.lazy(() => import('./modules/Bauschaeden'));
-const TypischeBauschaeden = React.lazy(() => import('./modules/TypischeBauschaeden'));
-const MaterialSchaedenGross = React.lazy(() => import('./modules/MaterialSchaedenGross'));
-const Statistik = React.lazy(() => import('./modules/Statistik'));
-const Literatur = React.lazy(() => import('./modules/Literatur'));
-const Baustoffkunde = React.lazy(() => import('./modules/Baustoffkunde'));
-const Baustoffkenngroessen = React.lazy(() => import('./modules/Baustoffkenngroessen'));
-const Leichtbeton = React.lazy(() => import('./modules/Leichtbeton'));
-const Spritzbeton = React.lazy(() => import('./modules/Spritzbeton'));
-const Einheiten = React.lazy(() => import('./modules/Einheiten'));
-const Holzwerkstoffe = React.lazy(() => import('./modules/Holzwerkstoffe'));
-const Materialmodelle = React.lazy(() => import('./modules/Materialmodelle'));
-const PutzeMoertel = React.lazy(() => import('./modules/PutzeMoertel'));
-const Gesteine = React.lazy(() => import('./modules/Gesteine'));
-const Sonstiges = React.lazy(() => import('./modules/Sonstiges'));
-const Gips = React.lazy(() => import('./modules/Gips'));
-const Kalk = React.lazy(() => import('./modules/Kalk'));
-const Daemmstoffe = React.lazy(() => import('./modules/Daemmstoffe'));
-const Software = React.lazy(() => import('./modules/Software'));
-const OnlineTools = React.lazy(() => import('./modules/OnlineTools'));
-const Formaenderungen = React.lazy(() => import('./modules/Formaenderungen'));
-const DaemmungVergleich = React.lazy(() => import('./modules/DaemmungVergleich'));
-const InnovativeWerkstoffe = React.lazy(() => import('./modules/InnovativeWerkstoffe'));
-const Praxiswissen = React.lazy(() => import('./modules/Praxiswissen'));
-const Bautagebuch = React.lazy(() => import('./modules/Bautagebuch'));
-const WeiterTHA = React.lazy(() => import('./modules/WeiterTHA'));
-const StudiumTHA = React.lazy(() => import('./modules/StudiumTHA'));
-const Nawaro = React.lazy(() => import('./modules/Nawaro'));
-const HolzbauBeta = React.lazy(() => import('./modules/HolzbauBeta'));
-const ThesenProjekte = React.lazy(() => import('./modules/ThesenProjekte'));
-const Kuriositaeten = React.lazy(() => import('./modules/Kuriositaeten'));
-const Datenschutz = React.lazy(() => import('./modules/Datenschutz'));
-const Barrierefreiheit = React.lazy(() => import('./modules/Barrierefreiheit'));
-const LaborSicherheit = React.lazy(() => import('./modules/LaborSicherheit'));
 
 export default function App() {
   return (

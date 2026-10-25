@@ -28,3 +28,7 @@ jobs:
         run: npm run -s check:zahlen
       - name: Build
         run: npx vite build
+      - name: Bundle-Budget
+        run: node scripts/qa/check-bundle.mjs
+      - name: Verwaiste Dateien
+        run: node scripts/qa/check-verwaist.mjs --strict
