@@ -3,6 +3,10 @@ import fs from 'fs';
 import { MODULE, NAV_GRUPPEN, TAB_ALIASES, BAUM_GRUPPEN, MODUL_BY_ID, type ModulEintrag } from '../src/registry/modules';
 import { ICONS } from '../src/registry/icons';
 import { erzeugeSitemap } from '../scripts/gen-sitemap';
+import { LERNZIELE } from '../src/data/lernziele';
+import { KURZFASSUNG } from '../src/data/kurzfassung';
+import { ERKUNDUNG } from '../src/data/erkundung';
+import { grenzenFuer } from '../src/data/rechnerGrenzen';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -41,18 +45,25 @@ for (const m of alle) if (m.baum) pruefe(imBaum.includes(m.id), `${m.id}: hat ba
 const cluster = new Set([...fs.readFileSync('src/modules/Modulstruktur.tsx', 'utf8').matchAll(/^\s{4}id: '([a-z0-9_]+)',$/gm)].map(x => x[1]));
 for (const g of BAUM_GRUPPEN) pruefe(cluster.has(g.cluster), `Baumgruppe ${g.id}: Cluster ${g.cluster} fehlt in Modulstruktur.tsx`);
 
-// 5. Darstellung: jedes Modul (außer Trenner) ist in App.tsx verdrahtet
+// 5. Darstellung: jedes Modul (außer Trenner) ist verdrahtet – Routen liegen seit Phase 5 (AP 5.2)
+//    in src/routing/ModulInhalt.tsx, Layout/Navigation in App.tsx
 const app = fs.readFileSync('src/App.tsx', 'utf8');
+const routing = fs.readFileSync('src/routing/ModulInhalt.tsx', 'utf8');
+const darstellung = app + '\n' + routing;
 for (const m of alle) {
   if (m.id.startsWith('divider_')) continue;
-  const verdrahtet = app.includes(`'${m.id}'`) || (m.id.startsWith('aufgaben') && app.includes("activeTab.startsWith('aufgaben')"));
-  pruefe(verdrahtet, `${m.id}: keine Darstellung in App.tsx`);
+  const verdrahtet = darstellung.includes(`'${m.id}'`) || (m.id.startsWith('aufgaben') && darstellung.includes("activeTab.startsWith('aufgaben')"));
+  pruefe(verdrahtet, `${m.id}: keine Darstellung in App.tsx/ModulInhalt.tsx`);
 }
 
 // 6. Keine zweite ID-Liste mehr außerhalb der Registry
 const tabCtx = fs.readFileSync('src/contexts/TabContext.tsx', 'utf8');
 pruefe(!/export type TabId =\s*\n?\s*\|/.test(tabCtx), 'TabContext.tsx enthält wieder eine eigene ID-Liste');
 pruefe(!/const tabGroups = \[/.test(app), 'App.tsx enthält wieder eine eigene Menüliste');
+pruefe(app.split('\n').length <= 800, `App.tsx hat ${app.split('\n').length} Zeilen (Ziel ≤ 800, Routen gehören nach src/routing/)`);
+// App.tsx lädt den Modulkopf (src/routing/ModulKopf.tsx) auf der Startseite nicht (Bundle-Budget, AP 5.4)
+pruefe(!LERNZIELE.start && !KURZFASSUNG.start && !ERKUNDUNG.start && !grenzenFuer('start') && MODUL_BY_ID.get('start')?.baum?.typ !== 'calculator',
+  'Startseite hat Modulkopf-Daten – App.tsx rendert ModulKopf dort nicht');
 pruefe(!fs.existsSync('src/components/routing/ClusterContentRouter.tsx'), 'Ungenutzter ClusterContentRouter wieder vorhanden');
 
 // 7. Sitemap ist aktuell

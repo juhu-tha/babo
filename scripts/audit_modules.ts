@@ -18,7 +18,8 @@ function runDetailedAudit() {
   }
 
   const appPath = path.join(process.cwd(), 'src/App.tsx');
-  const appContent = fs.readFileSync(appPath, 'utf8');
+  // Routen liegen seit Phase 5 (AP 5.2) in src/routing/ModulInhalt.tsx
+  const appContent = fs.readFileSync(appPath, 'utf8') + '\n' + fs.readFileSync(path.join(process.cwd(), 'src/routing/ModulInhalt.tsx'), 'utf8');
 
   const metaDescPath = path.join(process.cwd(), 'src/metaDescriptions.ts');
   const metaDescContent = fs.readFileSync(metaDescPath, 'utf8');

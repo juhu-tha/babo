@@ -38,6 +38,12 @@ Das Portal gliedert sich in folgende zentrale Themencluster:
 * **Zahlenformatierung:** Konsequenter Einsatz deutscher Formatierungsstandards (`formatDeZahl` für Komma-Dezimaltrennzeichen und Tausenderpunkte).
 * **Hosting:** Cloud-Infrastruktur über Google Cloud Run.
 
+### Entwicklung & Qualitätssicherung
+
+* **Struktur:** zentrale Modul-Registry (`src/registry/`), Routing (`src/routing/ModulInhalt.tsx`), Rechenkerne (`src/calc/`), Daten (`src/data/`), Fachmodule (`src/modules/`). Details: [`docs/architektur.md`](docs/architektur.md).
+* **QA:** `npx tsc --noEmit`, `npm test`, `npm run check:formeln`, `npm run check:zahlen`, `npm run check:quellen`, `npm run build`, `node scripts/qa/check-bundle.mjs` (Bundle-Budget), `node scripts/qa/check-verwaist.mjs` (verwaiste Dateien) – alle in `.github/workflows/qa.yml`.
+* **Workflow:** GitHub ist die einzige Quelle; Google AI Studio wird nur zum Pull von `main` und zum Veröffentlichen genutzt. Abhängigkeits-Updates über Renovate (`renovate.json`). Betriebs-Check: `GET /api/health`.
+
 ---
 
 ## 👥 Urheberrecht & Kontext
