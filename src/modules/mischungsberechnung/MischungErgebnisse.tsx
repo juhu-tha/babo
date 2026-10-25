@@ -8,6 +8,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { zementData } from './daten';
 import { Pie, Line } from 'react-chartjs-2';
 import React from 'react';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 
 interface MischungErgebnisseProps {
   betonMengeL: number;
@@ -179,6 +180,7 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
         </div>
       </div>
 
+      <NachErstemBild minHoehe="30rem">
       {/* Live-Rechenweg (AP 3.7): Stoffraumrechnung mit den aktuellen Eingaben */}
       <FormulaDerivationBox
         live
@@ -248,7 +250,9 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
           </div>
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="30rem">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main"><FormulaText text="Volumenanteile (\text{dm}^3/\text{m}^3)" /></h3>
         <div className="h-[250px] mb-6">
@@ -334,7 +338,9 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
           />
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="30rem">
       {/* Detail-Tabelle Rezeptur */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 overflow-x-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
@@ -492,6 +498,7 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
           </tbody>
         </table>
       </div>
+      </NachErstemBild>
     </div>
   );
 }

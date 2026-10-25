@@ -26,9 +26,21 @@ Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulI
 - Einstiegs-Chunk enthält nur Layout, Navigation, Registry und React. Module, Modulkopf, Modul-Selbsttest, Abstimmungsansicht und SEO-Audit werden nachgeladen.
 - three.js / @react-three nur in den 3D-Teilansichten von Holz und Mauerwerk (`React.lazy` innerhalb des Moduls).
 - Große Teilansichten neuer Module ebenso per `React.lazy` + `<React.Suspense>` auslagern.
-- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg ≤ 140 kB, jeder Chunk ≤ 300 kB, keine Ausnahmen).
+- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg ≤ 139,5 kB, jeder Chunk ≤ 300 kB, keine Ausnahmen).
 - Schriften: Inter Regular/Bold als WOFF2-Teilmenge in `public/fonts/` (`font-display: swap`, Regular per Preload). Neue Sonderzeichen außerhalb der Teilmenge erscheinen in der Fallback-Schrift – dann Teilmenge neu erzeugen (Befehl in `docs/performance.md`).
 - Messung (LCP, CLS, TBT-Näherung, Klick-Latenz): `scripts/qa/perf-messung.mjs`, Ergebnisse in `docs/performance.md`.
+
+### Ladezeit (AP 5.5)
+
+| Baustein | Wirkung |
+|---|---|
+| `scripts/modulKopf.ts` (Vite-Plugin, `virtual:modul-kopf`) → `src/routing/modulKopfDaten.ts` | Lernziele, Kurzfassung, Erkundung, Rechner-Grenzen je Modul als eigener Chunk (≈ 1–2 kB) statt eines 87-kB-Chunks; Quelle bleiben `src/data/{lernziele,kurzfassung,erkundung,rechnerGrenzen}.ts` (Tests lesen sie direkt, `tests/ladezeit.test.ts` vergleicht) |
+| `scripts/modulVorladen.ts` + `scripts/vorladen-boot.js` | Karte „Modul-ID → Chunks“ als JSON in `dist/index.html`, Inline-Skript setzt anhand des URL-Hashes sofort `modulepreload` (ModulInhalt, Modulkopf, Kopfdaten, Modul-Chunk samt Importen). Zuordnung aus `ModulInhalt.tsx` gelesen; CSP-Hash berechnet `server.ts` aus `dist/index.html` |
+| `modulBasisChunks()` (manualChunks) | gemeinsame Modulbausteine → `modul-basis`, Icons außerhalb des Einstiegs → `icons`, statischer Einstiegsgraph → `app`; eine Modulseite lädt ~7–14 statt 20–35 Dateien |
+| `scripts/bedarfsLaden.ts` | lenkt `react-katex`, `react-chartjs-2`, `chart.js` aus `src/` auf `src/lib/katexBedarf.tsx`, `chartBedarf.tsx`, `chartJsBedarf.ts` um: KaTeX/Chart.js laden erst, wenn ein Chunk mit Formeln/Diagrammen läuft; Diagramme werden erst bei Sichtbarkeit gezeichnet (eins je Task, vor Druck/PDF-Export alle). Module bleiben unverändert; Tests (tsx) nutzen die echten Pakete. KaTeX-CSS bleibt im Haupt-CSS |
+| `src/components/ui/NachErstemBild.tsx` | rendert Abschnitte unterhalb des Bildausschnitts nach dem ersten Bild, je Abschnitt eine Task (Mischungsberechnung, Biegebemessung, Feuchteschutz); im Bild sofort, beim Drucken alles |
+
+Neue große Rechnerseite: Abschnitte unterhalb der ersten Bildschirmhöhe in `<NachErstemBild minHoehe="…">` fassen, wenn `perf-messung.mjs` TBT > 200 ms meldet. Neue Diagramm-/Formelbibliotheken nicht direkt in den Einstieg ziehen.
 
 ### Fragenpool (AP 5.4)
 

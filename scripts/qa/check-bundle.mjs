@@ -16,7 +16,9 @@ const KB = 1024;
 // Ratsche (gzip -9, kB) – Stand Phase 5: Einstieg 138,9 kB (vorher 638,6), größter Chunk
 // 247,7 kB (three.js/drei, nur Holz/Mauerwerk 3D). Der Fragenpool (früher quizData 382 kB) wird seit
 // AP 5.4 je Modul (≤ 5 kB) bzw. in 4 Teilpaketen (≤ 100 kB) geladen (Vite-Plugin scripts/quizPool.ts).
-const GRENZE_EINSTIEG = 140;
+// AP 5.5: Einstieg (Chunk „app“) 138,7 kB; Modulkopf-Daten je Modul (virtual:modul-kopf), KaTeX (77 kB) und
+// Chart.js (70 kB) nur bei Bedarf, gemeinsame Modulbausteine in „modul-basis“ (~38 kB), Icons in „icons“ (~14 kB).
+const GRENZE_EINSTIEG = 139.5;
 const GRENZE_CHUNK = 300;
 // Ausnahmen mit eigener Ratsche (Basisname des Chunks → kB); derzeit keine.
 const AUSNAHMEN = {};
@@ -59,7 +61,7 @@ const groesster = chunks[0];
 const groessterOhneAusnahme = chunks.find(c => !(basis(c.f) in AUSNAHMEN));
 
 console.log(`Bundle (${chunks.length} JS-Chunks, gesamt ${kb(chunks.reduce((s, c) => s + c.gz, 0))} kB gzip)`);
-console.log(`  Einstieg ${einstieg}${statisch.size > 1 ? ` + ${statisch.size - 1} statische Importe` : ''}: ${kb(einstiegGz)} kB gzip (Grenze ${GRENZE_EINSTIEG} kB)`);
+console.log(`  Einstieg ${einstieg}${statisch.size > 1 ? ` + ${statisch.size - 1} statische Importe` : ''}: ${kb(einstiegGz)} kB gzip (Grenze ${String(GRENZE_EINSTIEG).replace(".", ",")} kB)`);
 for (const c of css) console.log(`  CSS ${c.f}: ${kb(c.gz)} kB gzip`);
 console.log(`  größter Chunk: ${groesster.f} ${kb(groesster.gz)} kB gzip; ohne Ausnahmen: ${groessterOhneAusnahme?.f} ${kb(groessterOhneAusnahme?.gz ?? 0)} kB (Grenze ${GRENZE_CHUNK} kB)`);
 console.log(`  Top ${TOP}:`);
@@ -72,7 +74,7 @@ sammle(DIST);
 if (schriften.length) console.log(`  Schriften: ${schriften.length} Dateien, ${kb(schriften.reduce((s, x) => s + x.n, 0))} kB`);
 
 const fehler = [];
-if (einstiegGz > GRENZE_EINSTIEG * KB) fehler.push(`Einstieg ${kb(einstiegGz)} kB > ${GRENZE_EINSTIEG} kB`);
+if (einstiegGz > GRENZE_EINSTIEG * KB) fehler.push(`Einstieg ${kb(einstiegGz)} kB > ${String(GRENZE_EINSTIEG).replace(".", ",")} kB`);
 for (const c of chunks) {
   const grenze = AUSNAHMEN[basis(c.f)] ?? GRENZE_CHUNK;
   if (c.gz > grenze * KB) fehler.push(`${c.f} ${kb(c.gz)} kB > ${grenze} kB`);
