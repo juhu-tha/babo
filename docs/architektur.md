@@ -32,15 +32,31 @@ Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulI
 | Befehl | Prüfung |
 |---|---|
 | `npx tsc --noEmit` (`npm run lint`) | Typen |
-| `npm test` | alle `tests/*.test.ts` (Registry, Rechenkerne, Daten, Sitemap …) |
+| `npm test` | alle `tests/*.test.ts` (Registry, Rechenkerne, Daten, Sitemap, Komponenten …) |
 | `npm run check:formeln` | KaTeX-Formeln |
 | `npm run check:zahlen` | deutsches Zahlenformat |
 | `npm run check:quellen` | Quellenangaben |
 | `npm run build` + `node scripts/qa/check-bundle.mjs` | Build und Bundle-Budget |
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow) |
+| `node scripts/qa/e2e-smoke.mjs [--basis URL]` | E2E-Smoke: je Meta-Cluster I–VI eine Route – eine h1 mit Modultitel, keine Seitenfehler, Lernziele und Selbsttest vorhanden (Playwright, siehe unten) |
 
-Alle Prüfungen laufen in `.github/workflows/qa.yml` bei Push auf `main` und bei Pull Requests.
+### Komponententests
+
+`tests/komponenten-*.test.ts` rendern zentrale Bausteine (Modulkopf, Selbsttest, Reiter, Formeln, Hinweise, Suche) mit `react-dom/server` (`renderToStaticMarkup`) und prüfen das HTML – ohne Testing Library/Vitest und ohne DOM. `tests/hilfen/komponenten.ts` stellt `rendere()` (mit `LanguageProvider` › `TabProvider` wie in der App), einen kleinen Testläufer und einen Lade-Hook für `react-katex` bereit (das Paket ist ein UMD-Bundle ohne ESM-Exporte); Komponenten werden deshalb erst danach per `await import(...)` geladen. Interaktionslogik, die sich ohne DOM nicht auslösen lässt, liegt als reine Funktion neben der Komponente (z. B. `reiterZiel` in `ModuleTabs`, `zielBeiGruppenwechsel` in `GruppierteModuleTabs`).
+
+### E2E-Smoke (Playwright, nicht in package.json)
+
+```bash
+npm i -g playwright            # einmalig, oder: npm i --no-save playwright
+npx vite build                 # Frontend nach dist/
+npx vite preview --port 4207 --strictPort &
+node scripts/qa/e2e-smoke.mjs  # Chromium: $CHROMIUM_PATH, sonst /opt/pw-browsers/chromium, sonst Playwright-Browser
+```
+
+Das Skript nutzt ein lokales, sonst das globale Playwright (`npm root -g`). `/api/*`-Antworten werden ignoriert, weil `vite preview` kein Express-Backend hat. Exit-Code 1 bei einer fehlgeschlagenen Route.
+
+Alle Prüfungen außer den Playwright-Skripten laufen in `.github/workflows/qa.yml` bei Push auf `main` und bei Pull Requests.
 
 ## Arbeitsablauf
 
