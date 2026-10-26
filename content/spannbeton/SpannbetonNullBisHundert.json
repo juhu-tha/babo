@@ -37,7 +37,9 @@
     "einSpanngliedverlaufWirdAls": "Ein Spanngliedverlauf wird als **konkordant** bezeichnet, wenn die durch die Vorspannung hervorgerufenen Verformungen an allen Zwischenauflagern identisch null sind.",
     "beiKonkordanterSpanngliedführungEntstehe": "Bei konkordanter Spanngliedführung entstehen keine Zwangskräfte an den Auflagern. Nach dem Satz der linearen Transformation (Guyon) ändert eine lineare Verschiebung der Spanngliedlage über den Innenstützen (bei unveränderten Endlagen und gleicher Krümmung im Feld) die Aufteilung in Primär- und Sekundärmoment, nicht aber das Gesamtmoment M_P aus Vorspannung. Im GZT sind die statisch unbestimmten Anteile der Vorspannung (M_P,2) als Einwirkung zu berücksichtigen (EC2 5.10.8).",
     "zurückZuKapitel4": " Zurück zu Kapitel 4",
-    "weiterZuKapitel6": "Weiter zu Kapitel 6 "
+    "weiterZuKapitel6": "Weiter zu Kapitel 6 ",
+    "freyssinetLegendeTitel": "Was bedeuten die Größen?",
+    "freyssinetLegendeHinweis": "Vorzeichen: Druck negativ, Zug positiv. Am Oberrand gilt sinngemäß $\\sigma_o = -\\frac{P}{A} + \\frac{P \\cdot e_p}{W_o} - \\frac{M}{W_o}$; dort darf der Druck die zulässige Betondruckspannung nicht überschreiten."
   },
   "daten": {
     "SpannbetonNullBisHundert.steps": [
@@ -82,6 +84,48 @@
         "progress": "95% – 100%",
         "subtitle": "Grenzzustände nach Eurocode 2 (GZT / GZG) und Orientierung im Modul",
         "badge": "Normen & Praxis"
+      }
+    ],
+    "SpannbetonNullBisHundert.freyssinetLegende": [
+      {
+        "symbol": "$\\sigma_u$",
+        "text": "Betonspannung am **Unterrand** des Querschnitts – hier entstehen unter Last die Biegezugspannungen."
+      },
+      {
+        "symbol": "$P$",
+        "text": "**Vorspannkraft** im Spannglied, die als Druckkraft auf den Beton wirkt; für den Gebrauchszustand der wirksame Wert nach Verlusten (z. B. $P_{m,\\infty}$)."
+      },
+      {
+        "symbol": "$A$",
+        "text": "**Querschnittsfläche** des Betons (genauer: ideelle Fläche $A_i$ einschließlich Spannstahl)."
+      },
+      {
+        "symbol": "$-\\frac{P}{A}$",
+        "text": "**zentrischer Anteil:** gleichmäßiger Druck über den ganzen Querschnitt."
+      },
+      {
+        "symbol": "$e_p$",
+        "text": "**Exzentrizität** – Abstand der Spanngliedachse von der Schwerachse, unterhalb der Schwerachse positiv."
+      },
+      {
+        "symbol": "$W_u$",
+        "text": "**Widerstandsmoment für den Unterrand**, $W_u = I / z_u$ mit Flächenträgheitsmoment $I$ und Abstand $z_u$ der Schwerachse vom Unterrand."
+      },
+      {
+        "symbol": "$-\\frac{P \\cdot e_p}{W_u}$",
+        "text": "**Anteil aus exzentrischer Vorspannung:** Das Moment $P \\cdot e_p$ drückt den Unterrand zusätzlich zusammen (und entlastet bzw. zieht den Oberrand)."
+      },
+      {
+        "symbol": "$M$",
+        "text": "**Biegemoment aus äußeren Lasten** (Eigengewicht, Ausbau, Verkehr) an der betrachteten Stelle, Feldmoment positiv."
+      },
+      {
+        "symbol": "$+\\frac{M}{W_u}$",
+        "text": "**Anteil aus Last:** erzeugt Zug am Unterrand."
+      },
+      {
+        "symbol": "$\\le 0$",
+        "text": "**Bedingung:** Die Summe bleibt Druck oder höchstens null – der Unterrand erhält keinen Zug, der Querschnitt bleibt ungerissen (volle Vorspannung, Dekompression)."
       }
     ]
   }
