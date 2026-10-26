@@ -1,0 +1,29 @@
+// Fixture für tests/linkCheck.test.ts (Linkprüfung Z16) – kein echtes Modul
+import React from 'react';
+
+const QUELLEN = [
+  { titel: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
+  { titel: 'Karbonatisierung', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+  { titel: 'Gibt es nicht', url: 'https://de.wikipedia.org/wiki/Gibtsnicht_Artikel_XYZ' },
+  { titel: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement#Geschichte' },
+];
+
+export default function Modul() {
+  return (
+    <div>
+      <a href="https://www.beispiel-verband.de/alt">Verband</a>
+      <a href="https://www.beispiel-verband.de/alt.html">Verband (andere Seite)</a>
+      <a href="http://www.beispiel-verband.de/">Startseite</a>
+      <a href={`https://api.beispiel-verband.de/${'x'}/daten`}>Vorlage</a>
+      <p>Siehe https://tot.beispiel-domain.de/seite. Oder (https://www.beispiel-verband.de/geschuetzt) im Text.</p>
+      <a href="https://www.youtube.com/results?search_query=beton+pruefung">Videos</a>
+      <a href="https://shop.beispiel-verband.de/norm/123">Shop</a>
+      <a href="https://www.beispiel-verband.de/umzug">verschoben</a>
+      <a href="https://www.beispiel-verband.de/tief/unterseite">nach Startseite</a>
+      <svg xmlns="http://www.w3.org/2000/svg" />
+      <a href="http://localhost:8080/chat">lokal</a>
+      <a href="https://www.example.com/x">Beispiel</a>
+      <a href="https://intern.beispiel-verband.de/privat">intern</a> {/* linkcheck-ignore */}
+    </div>
+  );
+}
