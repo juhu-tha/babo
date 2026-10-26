@@ -122,7 +122,94 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Der E-Modul steigt nicht mit der Festigkeit; bei schlanken Tragwerken aus S460 oder S690 entscheiden daher meist Durchbiegung, Biegedrillknicken oder Beulen statt der Streckgrenze.",
     "Mehr Kohlenstoff steigert die Festigkeit, mindert aber Zähigkeit und Schweißbarkeit; an Spannstahl mit 0,80 bis 0,85 % C ist Schweißen wegen Martensitbildung streng verboten.",
   ],
+  // Weitere lange Fachmodule (Fließtext über der Schwelle in tests/kurzfassung.test.ts, Oktober 2026)
+  bauchemie: [
+    "Die Bauchemie erklärt Baustoffeigenschaften aus Ionen-, Atom- und metallischer Bindung sowie zwischenmolekularen Kräften und behandelt Zusatzmittel, chemische Angriffe, Salze sowie Oberflächen- und Korrosionsschutz.",
+    "Die Porenlösung des Betons ist hochalkalisch und passiviert den Stahl; sinkt der pH-Wert durch Karbonatisierung von über 12,5 auf unter etwa 9, löst sich die Passivschicht und der Stahl kann rosten.",
+    "Betonverflüssiger wirken elektrostatisch, PCE-Fließmittel durch sterische Hinderung; Luftporenbildner erzeugen Mikroporen mit Abstandsfaktor unter 0,2 mm als Expansionsraum für gefrierendes Wasser.",
+    "Sulfate bilden mit Aluminatphasen sekundären Ettringit, Alkalien reagieren mit reaktiver Kieselsäure der Gesteinskörnung zu quellfähigem Gel; Salze schädigen über Kristallisations- und Hydratationsdruck.",
+    "Der Oberflächenschutz reicht von der Hydrophobierung mit Randwinkel über 90° über die Imprägnierung bis zur Beschichtung; bei Metallen dürfen edlere nie in Fließrichtung vor unedleren verbaut werden.",
+  ],
+  bauschaeden: [
+    "Ein Baumangel ist die Abweichung der Ist- von der vereinbarten Soll-Beschaffenheit (§ 633 BGB), der Bauschaden dessen Folge; ein Beseitigungsanspruch besteht schon beim reinen Mangel.",
+    "Mängelansprüche verjähren ab Abnahme nach BGB in 5 Jahren, nach VOB/B in 4 Jahren; eine schriftliche Mängelrüge setzt nach § 13 Abs. 5 VOB/B eine neue Frist von 2 Jahren in Gang.",
+    "Geschuldet sind mangels abweichender Vereinbarung die anerkannten Regeln der Technik zum Zeitpunkt der Abnahme; eine eingehaltene, aber veraltete DIN-Norm schützt nicht vor Haftung.",
+    "Schriftliche Anzeigen sichern Rechte: Bedenkenanmeldung (§ 4 Abs. 3 VOB/B), Behinderungsanzeige (§ 6 Abs. 1), Mängelrüge (§ 13) und Nachtragsanzeige (§ 2), stets auch direkt an den Bauherrn.",
+    "Typischer Fugenfehler ist die Dreiflankenhaftung ohne Hinterfüllung; die Mindestfugenbreite folgt aus ΔL/ZGV, im Beispiel ergeben 4,8 mm bei 25 % zulässiger Gesamtverformung rund 20 mm.",
+  ],
+  baustoffkenngroessen: [
+    "Baustoffkenngrößen beschreiben physikalische, mechanische, hygrische, thermische und zeitabhängige Eigenschaften und sind Grundlage jeder statischen und bauphysikalischen Bemessung.",
+    "Rein-, Roh- und Schüttdichte unterscheiden sich darin, ob Poren und Haufwerkshohlräume mitzählen; Granit hat nahezu gleiche Rein- und Rohdichte, Blähton eine Kornrohdichte von etwa 650 kg/m³.",
+    "Im linear-elastischen Bereich gilt das Hookesche Gesetz σ = E · ε mit σ = F/A und ε = Δl/l₀; je höher der E-Modul, desto geringer die Verformung unter gleicher Spannung.",
+    "Der Feuchtegehalt wird nach DIN EN ISO 12570 durch Darren bis zur Massenkonstanz bestimmt, der sd-Wert folgt aus μ · d, der Wasseraufnahmekoeffizient w nach DIN EN ISO 15148 über die Wurzel der Zeit.",
+    "Wasserabweisend sind Putze nach DIN 4108-3 mit w ≤ 0,5 kg/(m²·h^0,5), sd ≤ 2,0 m und w · sd ≤ 0,2; der Wärmedurchlasswiderstand einer Schicht ergibt sich aus R = d/λ.",
+  ],
+  bauwerksunters_monitoring: [
+    "Structural Health Monitoring nutzt dauerhaft installierte Sensoren: induktive Wegaufnehmer für Rissbewegungen, DMS für Dehnungen, Beschleunigungsgeber für Eigenfrequenzen und TDR-Sonden für die Feuchte.",
+    "Rissbewegungen folgen meist dem Temperaturgang: Bei Frost zieht sich das Bauteil zusammen und Risse öffnen sich maximal; Monitoring ergänzt die Prüfungen nach DIN 1076, ersetzt deren Intervalle aber nicht.",
+    "Die Bohrwiderstandsmessung zeigt Fäulnis, Insektenfraß oder Hohlräume im Holz als Dichteeinbrüche; ausgewertet wird relativ, da die Absolutwerte gerätespezifisch sind.",
+    "Für die Belegreife von Estrichen ist die CM-Messung das in der Praxis vereinbarte Prüfverfahren; kapazitive Hochfrequenzmessungen dienen nur der zerstörungsfreien Eingrenzung feuchter Zonen.",
+    "Karbonatisierte Randzonen erhöhen die Rückprallzahl; in Festigkeiten wird sie nur über Bohrkerne desselben Bauteils nach DIN EN 13791 umgerechnet, geringe Schallgeschwindigkeit weist auf Fehlstellen hin.",
+  ],
+  bauwerksuntersuchung: [
+    "Die Bauwerksuntersuchung läuft in Phasen: Studium der Bestandsunterlagen, handnahe Sichtprüfung mit Rissaufnahme und Klopfprüfung, zerstörungsfreie Prüfung sowie Probenahme mit Laboranalyse.",
+    "Bewehrungsortung, Rückprallhammer und Potentialfeldmessung scannen das Tragwerk zerstörungsfrei; Bohrkerne und Bohrmehlproben kalibrieren diese Verfahren und liefern Festigkeiten und Chloridprofile.",
+    "Die Zeit bis zur Depassivierung folgt aus t_krit = (c/k)²; im Beispiel ergeben 25 mm Deckung und k = 2,5 mm/√a rund 100 Jahre, bei 36 Jahren Bauwerksalter also etwa 64 Jahre Reserve.",
+    "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791 ist der kleinere Wert aus f_m,is − 1,48 · s und kleinstem Einzelwert plus 4; im Beispiel mit 8 Bohrkernen ergeben sich 27,3 N/mm².",
+    "Rückprallwerte sind nur über eine Kalibrierung an Bohrkernen in Festigkeiten umzurechnen; die Bohrwiderstandsmessung an Holz ist nicht genormt und verlangt fundierte Holzartenkenntnis bei der Auswertung.",
+  ],
+  hydratation_folgen: [
+    "Hydratation, Eigenspannungen, Zwang sowie Kriechen und Schwinden laufen im jungen Beton gleichzeitig ab; übersteigt die Zwangspannung die aktuelle Zugfestigkeit, entsteht ein Trennriss.",
+    "Der Reifegrad nach Saul summiert (T − T₀) · Δt mit T₀ = −10 °C; im Beispiel entsprechen 48 h bei 10 °C rund 32 h bei 20 °C, das Äquivalentalter nach Arrhenius nutzt Ea von 30 bis 50 kJ/mol.",
+    "Ohne Wärmeabfuhr steigt die Temperatur um ΔT_ad = z · Q/(c · ρ); 320 kg/m³ Zement mit 350 kJ/kg ergeben rund 45 K, und über 15 K Kern-Rand-Differenz drohen Risse aus Eigenspannungen.",
+    "Nach Eurocode 2 eilt der E-Modul der Festigkeit voraus: Wegen der Potenz 0,3 auf β_cc(t) erreicht er nach 2 Tagen bereits etwa 70 bis 80 %, während die Druckfestigkeit noch deutlich geringer ist.",
+    "Gegen frühe Risse helfen Zement mit niedriger Wärmeentwicklung wie CEM III, Gleitfolien unter Bodenplatten zur Zwangminderung, nächtliches Betonieren im Sommer und eine Mindestbewehrung nach Eurocode 2.",
+  ],
+  ki_thesen: [
+    "Das Modul ordnet KI-Werkzeuge den Phasen einer Abschlussarbeit zu: Literatur-Mapping, Literaturverwaltung, quellengebundene Synthese, Schreiben und Sprachprüfung sowie Datenauswertung.",
+    "Zitationsgraphen zeigen Vorarbeiten und Ableger eines Schlüsselpapers; Klassifizierer ordnen Zitate als bestätigend, widersprechend oder erwähnend ein und helfen so, Literaturwerte zu verifizieren.",
+    "Quellengebundene Werkzeuge wie NotebookLM arbeiten nur auf hochgeladenen Dokumenten mit Zitatstellen; vertrauliche Industriedaten oder unveröffentlichte Laborergebnisse gehören nicht ohne Rücksprache hinein.",
+    "Extrahierte Zahlen, KI-Zusammenfassungen und normative Grenzwerte sind stets im Original zu prüfen; Rechercheagenten sollen für jede Aussage die Fundstelle oder den DOI angeben.",
+    "Für die Datenauswertung eignen sich Python mit Jupyter, Streamlit und Wolfram Alpha; generierte Berechnungen sind an zwei bis drei Handrechnungen gegenzuprüfen, Grafiken als SVG oder PDF zu exportieren.",
+  ],
+  mischungsberechnung: [
+    "Die Stoffraumrechnung setzt die Volumina von Zement, wirksamem Wasser, Zusatzstoffen, Luft und Gesteinskörnung so zusammen, dass genau 1 000 dm³ verdichteter Frischbeton entstehen.",
+    "Expositionsklassen bestimmen höchstzulässigen (w/z)eq, Mindestzementgehalt und Mindestfestigkeitsklasse; der Zementgehalt folgt aus Wasseranspruch und w/z, maßgebend ist der größere Wert gegenüber dem Mindestgehalt.",
+    "Zusatzstoffe werden über k-Werte angerechnet, etwa Flugasche mit k = 0,4 bis f/z ≤ 0,33 und Silikastaub mit k = 1,0; der Eurocode-Wert k = 2,0 ist in Deutschland nicht zulässig.",
+    "Die Masse der Gesteinskörnung ergibt sich aus dem Reststoffraum mal Rohdichte; ihre Eigenfeuchte ist vom Zugabewasser abzuziehen und der Einwaage der Gesteinskörnung hinzuzurechnen.",
+    "Ein Mehlkorngehalt unter 300 kg/m³ führt zu Entmischen und Bluten, ein zu hoher steigert Schwinden und Kriechen; die Packungsdichte lässt sich über Sieblinien wie Fuller (n = 0,5) oder Andreasen optimieren.",
+  ],
+  oekobilanz_lca: [
+    "Die Ökobilanz nach DIN EN ISO 14040 und 14044 gliedert sich in Ziel- und Rahmenfestlegung mit funktioneller Einheit, Sachbilanz, Wirkungsabschätzung und Auswertung.",
+    "CEN/TC 350 regelt unter der Dachnorm DIN EN 15643 Bauprodukte nach DIN EN 15804+A2 (EPD), Gebäude nach DIN EN 15978 über 50 Jahre und Ingenieurbauwerke nach DIN EN 17472.",
+    "Der Lebenszyklus gliedert sich in Herstellung A1–A3, Errichtung A4–A5, Nutzung B1–B7 und Entsorgung C1–C4; Gutschriften aus Modul D sind gesondert auszuweisen und nicht mit A bis C zu verrechnen.",
+    "Holz bucht in A1–A3 ein negatives GWP-biogenic; nach DIN EN 15804 wird diese Menge am Lebensende in C3/C4 wieder angesetzt, sodass die Bilanz über den Lebensweg aufgeht.",
+    "Neben dem GWP werden Ozonabbau, Versauerung, Eutrophierung, Sommersmog sowie erneuerbare und nicht erneuerbare Primärenergie bewertet; Bezugsgröße im QNG ist die Netto-Raumfläche NRF nach DIN 277.",
+  ],
+  qualitaetssicherung: [
+    "Die Gütesicherung im Betonbau umfasst werkseigene Produktionskontrolle, Konformitätskriterien nach DIN EN 206 / DIN 1045-2, Betonbauqualitätsklassen nach DIN 1045-1000 und die CSC-Zertifizierung.",
+    "Konform ist die Druckfestigkeit bei Erstherstellung (mindestens 3 Ergebnisse) mit f_cm ≥ f_ck + 4, bei stetiger Herstellung (mindestens 15) mit f_cm ≥ f_ck + 1,48 · σ; jeder Einzelwert muss f_ck − 4 erreichen.",
+    "Auf der Baustelle sind Lieferschein mit Festigkeits-, Expositions- und Konsistenzklasse sowie Größtkorn und die Entladung spätestens 90 Minuten nach erster Wasserzugabe zu prüfen; Zusatzwasser ist unzulässig.",
+    "DIN 1045-1000 kennt BBQ-N, BBQ-E und BBQ-S; BBQ-E und BBQ-S erfordern ein Betonbaukonzept, die Einstufung trifft der Planer und sie steuert die Aufgaben von Planer, Hersteller und Ausführenden.",
+    "Neben der Eigenüberwachung fordert DIN 1045-3 je nach Überwachungsklasse eine Fremdüberwachung; ÜK 1 braucht keine externe Prüfstelle, ein Beton C55/67 fällt in ÜK 3.",
+  ],
+  regularien: [
+    "Die Regelungen im Bauwesen bilden sechs Stufen: EU-Recht, Bundesrecht, Landesrecht, kommunales Satzungsrecht, vertragliches Privatrecht und private technische Regeln wie DIN-Normen.",
+    "Höherrangiges Recht geht vor: EU-Recht hat Anwendungsvorrang, Bundesrecht bricht Landesrecht; das Bauplanungsrecht regelt das „Ob“ und „Wo“, die Landesbauordnung das „Wie“ eines Vorhabens.",
+    "Nach der seit 8. Januar 2026 geltenden BauPVO (EU) 2024/3110 setzt die CE-Kennzeichnung eine Leistungserklärung voraus; über die Verwendung im Bauwerk entscheidet das nationale Bauordnungsrecht.",
+    "DIN-Normen sind kein Gesetz, gelten aber widerlegbar als anerkannte Regeln der Technik; verbindlich werden sie als Technische Baubestimmung über die MVV TB oder durch Vertrag.",
+    "Ohne Technische Baubestimmung braucht ein Produkt eine abZ bzw. aBG des DIBt, ein abP oder eine objektbezogene ZiE bzw. vBG; Mängelansprüche verjähren nach BGB in 5, nach VOB/B in 4 Jahren.",
+  ],
+  sonderbetone: [
+    "Das Modul ordnet 15 Sonderbetone, von Leicht-, Schwer- und Infraleichtbeton über Spritz-, Faser- und Recyclingbeton bis zu UHPC, SVB und Bohrpfahlbeton; Sichtbeton ist kein eigener Betontyp.",
+    "Konstruktionsleichtbeton mit 800 bis 2 000 kg/m³ bricht meist durch das weiche Korn und ist bei gleicher Festigkeitsklasse nur rund halb so steif wie Normalbeton; E-Modul und Zugfestigkeit werden über η_E und η_1 abgemindert.",
+    "Spritzbeton wird durch die Aufprallenergie verdichtet; der Rückprall liegt beim Trockenspritzen bei etwa 15 bis 30 %, beim Nassspritzen bei 5 bis 15 % und macht die verbleibende Schicht zementreicher.",
+    "Bei Beton mit rezyklierter Gesteinskörnung ist das Zugabewasser um die 24-Stunden-Wasseraufnahme der porösen Altmörtelanteile zu korrigieren; mit steigendem RC-Anteil sinkt der E-Modul.",
+    "SVB wird über das Setzfließmaß nach DIN EN 12350-8 in SF1 bis SF3 und über t500 in VS1 und VS2 eingestuft; Schwerbeton mit Trockenrohdichte über 2 600 kg/m³ dient etwa dem Strahlenschutz.",
+  ],
 };
 
-/** Module mit mehr als ca. 4 000 Wörtern Fließtext – brauchen eine Kurzfassung */
-export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'dauerhaftigkeit', 'historische_bauprodukte', 'instandhaltung', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'nachhaltigkeit_daten_regeln', 'rueckbau', 'schadensbilder', 'schadstoffe', 'spannbeton', 'stahl'];
+/** Module mit langem Fließtext – brauchen eine Kurzfassung. Ursprünglich „mehr als ca. 4 000 Wörter“ (AP 3.8);
+ *  seit Oktober 2026 prüft tests/kurzfassung.test.ts zusätzlich jedes Fachmodul mit eigener Komponente über
+ *  FLIESSTEXT_SCHWELLE (Wörter laut tests/hilfen/fliesstext.ts). Reitermodule mit gemeinsamer Komponente stehen hier explizit. */
+export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'bauchemie', 'bauschaeden', 'baustoffkenngroessen', 'bauwerksunters_monitoring', 'bauwerksuntersuchung', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'dauerhaftigkeit', 'historische_bauprodukte', 'hydratation_folgen', 'instandhaltung', 'ki_thesen', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'mischungsberechnung', 'nachhaltigkeit_daten_regeln', 'oekobilanz_lca', 'qualitaetssicherung', 'regularien', 'rueckbau', 'schadensbilder', 'schadstoffe', 'sonderbetone', 'spannbeton', 'stahl'];

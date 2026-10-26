@@ -1394,4 +1394,291 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Analysieren", text: "die Weiße, Schwarze, Braune und Gelbe Wanne nach Wirkprinzip und Einsatzgrenzen unterscheiden." },
     ],
   },
+  // Restliche Fachmodule (Typ norm/database, Reitermodule) – aus den Modulinhalten abgeleitet (Oktober 2026)
+  materialkennwerte: {
+    niveau: "B", minuten: 30, vorwissen: ["baustoffkenngroessen"],
+    ziele: [
+      { stufe: "Verstehen", text: "charakteristische Festigkeiten, Mittelwerte der Steifigkeit und typische Herstellerwerte in der Kennwerte-Tabelle unterscheiden und ihre Herkunft aus Produkt- und Bemessungsnormen erläutern." },
+      { stufe: "Anwenden", text: "die thermische Längenänderung eines Bauteils mit ΔL = α_T · L₀ · ΔT berechnen und die Relativbewegung zwischen Aluminium und Stahlbeton bestimmen." },
+      { stufe: "Anwenden", text: "die spezifische Steifigkeit E/ρ von Baustahl, Nadelholz und Beton berechnen und vergleichen." },
+      { stufe: "Analysieren", text: "das Netzdiagramm mehrerer Baustoffe auswerten und Unterschiede in Zug- und Druckfestigkeit, Steifigkeit und Wärmeleitung für die Baustoffwahl herausarbeiten." },
+    ],
+  },
+  sicherheitskonzept: {
+    niveau: "B", minuten: 60, vorwissen: ["statistik", "baustatik"],
+    ziele: [
+      { stufe: "Erinnern", text: "die Teile der Eurocodes 0 bis 9 sowie die Grenzzustände der Tragfähigkeit und der Gebrauchstauglichkeit benennen." },
+      { stufe: "Verstehen", text: "das semiprobabilistische Teilsicherheitskonzept mit charakteristischen Werten, Bemessungswerten und der Nachweisbedingung E_d ≤ R_d erläutern." },
+      { stufe: "Anwenden", text: "den Bemessungswert der Einwirkungen nach Gl. 6.10 mit γ_G, γ_Q und ψ₀ für Leit- und Begleiteinwirkungen berechnen." },
+      { stufe: "Analysieren", text: "entscheiden, ob eine ständige Einwirkung günstig oder ungünstig wirkt, und am Beispiel Windsog den Beiwert γ_G,inf = 1,00 begründen." },
+      { stufe: "Bewerten", text: "die Ausnutzung einer Innenstütze aus N_Ed und N_Rd ermitteln und die Grenzen des vereinfachten Lehrbeispiels beurteilen." },
+    ],
+  },
+  regularien: {
+    niveau: "B", minuten: 60, vorwissen: [],
+    ziele: [
+      { stufe: "Erinnern", text: "die sechs Stufen der Regelungshierarchie vom EU-Recht über Bundes-, Landes- und Kommunalrecht bis zu Privatrecht und technischen Regeln benennen." },
+      { stufe: "Verstehen", text: "den Unterschied zwischen Bauplanungsrecht (BauGB, BauNVO) für das „Ob“ und „Wo“ und Bauordnungsrecht (LBO) für das „Wie“ eines Vorhabens erläutern." },
+      { stufe: "Verstehen", text: "erläutern, wie DIN-Normen als private Regeln durch Einführung als Technische Baubestimmung oder durch Vertrag verbindlich werden." },
+      { stufe: "Anwenden", text: "einem Bauprodukt den erforderlichen Verwendbarkeitsnachweis (CE-Kennzeichnung mit Leistungserklärung, abZ/aBG, abP, ZiE/vBG) zuordnen." },
+      { stufe: "Analysieren", text: "die Verjährung von Mängelansprüchen nach BGB (5 Jahre) und VOB/B (4 Jahre) gegenüberstellen und die Wirkung einer schriftlichen Mängelrüge einordnen." },
+    ],
+  },
+  analytik: {
+    niveau: "B/M", minuten: 75, vorwissen: ["bauchemie", "messen_pruefen"],
+    ziele: [
+      { stufe: "Verstehen", text: "die Messprinzipien von XRD, FTIR, RFA, ICP-OES, REM/EDX und GC-MS erläutern und angeben, ob sie Phasen, Elemente oder funktionelle Gruppen erfassen." },
+      { stufe: "Anwenden", text: "den Portlanditgehalt aus der TGA-Massenstufe bei 400 bis 500 °C mit dem stöchiometrischen Faktor 74,1/18,0 berechnen." },
+      { stufe: "Anwenden", text: "mit der Washburn-Gleichung den bei einem Einpressdruck gefüllten Porenradius und mit der Bragg-Gleichung einen Netzebenenabstand berechnen." },
+      { stufe: "Analysieren", text: "einen nasschemisch bestimmten Chloridgehalt auf die Zementmasse umrechnen und mit den Höchstwerten der Klassen Cl 0,40 und Cl 0,20 für Neubeton vergleichen." },
+      { stufe: "Bewerten", text: "für Sulfatangriff, Schwermetallnachweis, Chloridprofil oder Kunststoffidentifikation ein geeignetes Analyseverfahren auswählen und begründen." },
+    ],
+  },
+  daemmstoffe: {
+    niveau: "B", minuten: 45, vorwissen: ["bauphysik"],
+    ziele: [
+      { stufe: "Verstehen", text: "mineralische, synthetische und nachwachsende Dämmstoffe nach Rohstoff, Wärmeleitfähigkeit, Brandverhalten und Feuchteverhalten unterscheiden." },
+      { stufe: "Anwenden", text: "die erforderliche Dämmstoffdicke für einen Ziel-U-Wert nach DIN EN ISO 6946 aus den Widerständen der Bestandswand berechnen." },
+      { stufe: "Analysieren", text: "den Einfluss der Wärmeleitfähigkeit auf die Dämmstoffdicke am Vergleich von EPS 035, MW 032 und Holzfaser 040 aufzeigen." },
+      { stufe: "Bewerten", text: "für Perimeterdämmung, Brandschutzbarrieren im WDVS, sommerlich belastete Dachräume oder beengte Einbausituationen einen geeigneten Dämmstoff auswählen." },
+    ],
+  },
+  bp_beton: {
+    niveau: "B", minuten: 30, vorwissen: ["festbeton_statistik"],
+    ziele: [
+      { stufe: "Verstehen", text: "Transportbeton und Baustellenbeton nach Herstellung, werkseigener Produktionskontrolle und Aufwand der Qualitätssicherung unterscheiden." },
+      { stufe: "Verstehen", text: "die Festlegung von Beton nach DIN EN 206 / DIN 1045-2 über Druckfestigkeits-, Expositions-, Konsistenz- und Chloridklasse sowie Größtkorn erläutern." },
+      { stufe: "Analysieren", text: "Beton nach Eigenschaften und Beton nach Zusammensetzung hinsichtlich der Verantwortung für die Rezeptur abgrenzen." },
+      { stufe: "Anwenden", text: "die charakteristische Festigkeit einer Prüfserie mit f_ck = f_cm − 1,645 · s berechnen und prüfen, ob eine Festigkeitsklasse erreicht wird." },
+    ],
+  },
+  bp_stahlbauprofile: {
+    niveau: "B", minuten: 45, vorwissen: ["stahl", "baustatik"],
+    ziele: [
+      { stufe: "Verstehen", text: "die Profilreihen IPE, HEA, HEB, HEM und UPN nach Querschnittsform und typischem Einsatz als Träger, Stütze oder Abfangträger unterscheiden." },
+      { stufe: "Anwenden", text: "die elastische Randspannung aus Normalkraft und Biegung mit σ_Ed = N_Ed/A ± M_Ed/W_y berechnen und die Querschnittsausnutzung bestimmen." },
+      { stufe: "Anwenden", text: "für einen Einfeldträger unter Gleichlast Biegespannung und Mittendurchbiegung mit den Profilwerten aus der Tabelle nachweisen." },
+      { stufe: "Analysieren", text: "die Trägheitsmomente verschiedener Profile um die starke und die schwache Achse vergleichen und ihre Bedeutung für Biegung und Knicken ableiten." },
+    ],
+  },
+  beton_a_z: {
+    niveau: "B", minuten: 45, vorwissen: ["bindemittel", "frischbeton", "festbeton"],
+    ziele: [
+      { stufe: "Erinnern", text: "die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung benennen." },
+      { stufe: "Verstehen", text: "den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit erläutern und die Dichtheitsgrenze bei etwa 0,50 begründen." },
+      { stufe: "Anwenden", text: "eine Betonrezeptur über die Stoffraumgleichung auf 1 000 dm³ prüfen und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche berechnen." },
+      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD ermitteln." },
+    ],
+  },
+  qualitaetssicherung: {
+    niveau: "B", minuten: 75, vorwissen: ["festbeton_statistik", "frischbeton"],
+    ziele: [
+      { stufe: "Verstehen", text: "Eigenüberwachung, werkseigene Produktionskontrolle und Fremdüberwachung nach DIN 1045-3 mit ihren Aufgaben im Betonbau unterscheiden." },
+      { stufe: "Anwenden", text: "die Konformität der Druckfestigkeit bei Erstherstellung, stetiger Herstellung und Identitätsprüfung nach DIN EN 206 / DIN 1045-2 nachweisen." },
+      { stufe: "Anwenden", text: "einen Lieferschein bei Ankunft des Fahrmischers prüfen und die Frischbetonprüfungen auf der Baustelle festlegen." },
+      { stufe: "Analysieren", text: "für ein Bauteil die Betonbauqualitätsklasse BBQ-N, BBQ-E oder BBQ-S nach DIN 1045-1000 ableiten und die Folgen für Planer, Hersteller und Ausführende darstellen." },
+      { stufe: "Bewerten", text: "Mängel wie Zusatzwasser auf der Baustelle oder fehlende Nachbehandlung hinsichtlich ihrer Folgen für Konformität und Dauerhaftigkeit beurteilen." },
+    ],
+  },
+  waermeeigenschaften: {
+    niveau: "B", minuten: 45, vorwissen: ["bauphysik"],
+    ziele: [
+      { stufe: "Verstehen", text: "Wärmeleitfähigkeit, Rohdichte und spezifische Wärmekapazität als Grundgrößen von Wärmespeicherfähigkeit, Temperaturleitfähigkeit und Wärmeeindringfähigkeit erläutern." },
+      { stufe: "Anwenden", text: "Wärmespeicherfähigkeit C = ρ · c, Temperaturleitfähigkeit a und Wärmeeindringfähigkeit b eines Baustoffs berechnen." },
+      { stufe: "Anwenden", text: "die Kontakttemperatur zwischen Haut und Oberfläche berechnen und damit begründen, warum sich Beton kälter anfühlt als Holz." },
+      { stufe: "Anwenden", text: "die erforderliche Dämmdicke für die nachträgliche Außendämmung einer Bestandswand für verschiedene Bemessungswerte λ ermitteln." },
+      { stufe: "Bewerten", text: "Dämmstoffe nach Wärmeleitfähigkeit und Wärmespeicherung für den winterlichen und den sommerlichen Wärmeschutz vergleichend beurteilen." },
+    ],
+  },
+  brandschutz: {
+    niveau: "B", minuten: 60, vorwissen: ["holz", "bauphysik"],
+    ziele: [
+      { stufe: "Anwenden", text: "Baustoffklassen nach DIN 4102-1 den Euroklassen A1 bis F nach DIN EN 13501-1 einschließlich der Zusatzklassen s und d zuordnen." },
+      { stufe: "Verstehen", text: "die Leistungskriterien R, E und I nach DIN EN 13501-2 erläutern und nationale Bezeichnungen wie F 90 europäischen Klassen wie REI 90 gegenüberstellen." },
+      { stufe: "Anwenden", text: "die Brandraumtemperatur nach der Einheitstemperaturzeitkurve für eine gegebene Branddauer berechnen." },
+      { stufe: "Anwenden", text: "die effektive Abbrandtiefe und den Restquerschnitt eines dreiseitig beflammten BSH-Balkens nach DIN EN 1995-1-2 berechnen." },
+      { stufe: "Bewerten", text: "den Verlust an Widerstandsmoment eines Holzbalkens nach 30 und 60 Minuten Brand beurteilen und begründen, warum der Brandnachweis gesondert zu führen ist." },
+    ],
+  },
+  nachhaltigkeit_daten_regeln: {
+    niveau: "B/M", minuten: 90, vorwissen: ["regularien", "oekobilanz_lca"],
+    ziele: [
+      { stufe: "Erinnern", text: "Kennzahlen des Bauwesens zu energiebedingten CO₂-Emissionen, Rohstoffverbrauch, Bauabfällen und Flächenverbrauch in Deutschland benennen." },
+      { stufe: "Verstehen", text: "die Anforderungen der EU-Taxonomie mit wesentlichem Beitrag und DNSH-Prinzip sowie die Stufen der EPBD 2024/1275 bis 2050 erläutern." },
+      { stufe: "Anwenden", text: "das Primärenergie-Kriterium der EU-Taxonomie für einen Neubau prüfen und bestimmen, wann ein Bürogebäude nach einem linearen CRREM-Pfad stranded ist." },
+      { stufe: "Analysieren", text: "die GWP-Indikatoren einer EPD nach DIN EN 15804+A2 unterscheiden und generische ÖKOBAUDAT-Daten von herstellerspezifischen EPDs abgrenzen." },
+      { stufe: "Bewerten", text: "die Instrumente des deutschen Nachhaltigkeits-Baurechts (GModG, QNG, EBV, KrWG, Gebäudetyp E) nach Verbindlichkeit und Wirkung einordnen." },
+    ],
+  },
+  bestand: {
+    niveau: "B", minuten: 75, vorwissen: ["bauphysik", "historische_bauweisen"],
+    ziele: [
+      { stufe: "Verstehen", text: "typische Konstruktionen, Baustoffe und Fenster der Baualtersklassen von der Gründerzeit bis zum GEG-Standard beschreiben und ihnen U-Wert-Größenordnungen zuordnen." },
+      { stufe: "Anwenden", text: "den U-Wert eines Bestandsbauteils nach zusätzlicher Dämmung mit U_neu = 1/(1/U_alt + d/λ) berechnen und mit dem Höchstwert nach GModG Anlage 7 vergleichen." },
+      { stufe: "Anwenden", text: "die jährliche Einsparung an Transmissionswärme aus U-Wert-Differenz, Fläche und Heizgradtagen sowie die zugehörige CO₂-Minderung berechnen." },
+      { stufe: "Analysieren", text: "kapillaraktive und diffusionsdichte Innendämmsysteme nach WTA-Merkblatt 6-5 unterscheiden und Schadensrisiken wie feuchte Holzbalkenköpfe ableiten." },
+      { stufe: "Bewerten", text: "eine energetische Sanierungsmaßnahme nach GModG-Konformität, statischer Amortisationszeit und Feuchterisiko beurteilen." },
+    ],
+  },
+  historisch: {
+    niveau: "B/M", minuten: 90, vorwissen: ["sicherheitskonzept", "festbeton_statistik", "bestand"],
+    ziele: [
+      { stufe: "Anwenden", text: "historische Betonklassen wie Bn 250 über die Würfel- in die Zylinderdruckfestigkeit umrechnen und einer heutigen Festigkeitsklasse nach Eurocode 2 zuordnen." },
+      { stufe: "Anwenden", text: "aus Bohrkernen, Mauersteinprüfungen und Zugversuchen an Stahlproben Kennwerte nach DIN EN 13791, Eurocode 6 und DIN EN ISO 6892-1 ermitteln." },
+      { stufe: "Anwenden", text: "den lognormalen Bemessungswert einer Bestandsfestigkeit aus Mittelwert, Variationskoeffizient, α_R und β berechnen." },
+      { stufe: "Analysieren", text: "die konventionelle Neubaubemessung, modifizierte Teilsicherheitsbeiwerte nach DBV-Merkblatt und die versuchsgestützte Bemessung nach EN 1990-2:2026 vergleichen." },
+      { stufe: "Bewerten", text: "beurteilen, wann Stichprobenumfang und Streuung eine Tragreserve im Bestand belegen und warum aus einem einzelnen Kern keine Festigkeitsklasse folgt." },
+    ],
+  },
+  abfaelle: {
+    niveau: "B/M", minuten: 90, vorwissen: ["rueckbau", "schadstoffe"],
+    ziele: [
+      { stufe: "Verstehen", text: "die fünfstufige Abfallhierarchie des KrWG sowie Getrennthaltungs- und Nachweispflichten für Bau- und Abbruchabfälle erläutern." },
+      { stufe: "Anwenden", text: "Bauabfälle nach AVV Kapitel 17 einem sechsstelligen Abfallschlüssel zuordnen und Spiegeleinträge als gefährlich oder nicht gefährlich einstufen." },
+      { stufe: "Analysieren", text: "aus Eluat- und Feststoffwerten die Mindest-Deponieklasse nach DepV Anhang 3 bestimmen und den maßgebenden Parameter herausarbeiten." },
+      { stufe: "Anwenden", text: "für den Einbau von RC-3 die Einbaumenge berechnen und die Anzeigepflicht nach § 22 EBV prüfen." },
+      { stufe: "Anwenden", text: "den Beprobungsumfang eines Haufwerks nach LAGA PN 98 aus Volumen, Homogenität und Größtkorn festlegen." },
+    ],
+  },
+  schadstoffe: {
+    niveau: "B/M", minuten: 90, vorwissen: ["bestand", "rueckbau"],
+    ziele: [
+      { stufe: "Erinnern", text: "Gebäudeschadstoffe wie Asbest, PAK, PCB, alte KMF, PFAS und Chlorparaffine mit ihren typischen Vorkommen im Bestand benennen." },
+      { stufe: "Verstehen", text: "die Informationspflichten des Veranlassers nach § 5a GefStoffV und die Bedeutung des Baujahrs für den Asbestverdacht erläutern." },
+      { stufe: "Anwenden", text: "den Kanzerogenitätsindex einer Mineralwolle nach TRGS 521 aus den Oxidanteilen berechnen und die Faser einstufen." },
+      { stufe: "Analysieren", text: "eine Asbesttätigkeit über Akzeptanz- und Toleranzkonzentration dem niedrigen, mittleren oder hohen Risiko zuordnen und Schutzmaßnahmen nach dem STOP-Prinzip ableiten." },
+      { stufe: "Bewerten", text: "für Putze, Spachtelmassen, Fliesenkleber und Haufwerke ein sachgerechtes Beprobungsvorgehen nach VDI 6202 Blatt 3 und LAGA PN 98 auswählen und begründen." },
+    ],
+  },
+  bauschaeden: {
+    niveau: "B", minuten: 75, vorwissen: ["regularien"],
+    ziele: [
+      { stufe: "Verstehen", text: "den Baumangel als Abweichung der Ist- von der Soll-Beschaffenheit nach § 633 BGB vom Bauschaden als Folge abgrenzen und Gewährleistung von Garantie unterscheiden." },
+      { stufe: "Anwenden", text: "das Ende der Verjährungsfrist von Mängelansprüchen nach BGB und VOB/B ab Abnahme einschließlich der Wirkung einer schriftlichen Mängelrüge berechnen." },
+      { stufe: "Anwenden", text: "die Mindestbreite einer elastischen Fassadenfuge aus thermischer Längenänderung und zulässiger Gesamtverformung des Dichtstoffs berechnen." },
+      { stufe: "Analysieren", text: "Fugenschäden wie Flankenabriss, Kohäsionsbruch, Blasenbildung und Randzonenverschmutzung auf Planungs- oder Verarbeitungsfehler zurückführen." },
+      { stufe: "Bewerten", text: "für eine Störung im Bauablauf die passende Anzeige nach VOB/B (Bedenken, Behinderung, Mängelrüge, Nachtrag) auswählen und Form und Adressat begründen." },
+    ],
+  },
+  schadensbilder: {
+    niveau: "B", minuten: 75, vorwissen: ["bauschaeden", "bauphysik"],
+    ziele: [
+      { stufe: "Verstehen", text: "Schadensbilder aus Feuchte und Schimmel, Rissen, Korrosion, stofflichen Unverträglichkeiten sowie Tief- und Ingenieurbau ihren Ursachen zuordnen." },
+      { stufe: "Anwenden", text: "die rechnerische Rissbreite w_k einer Stahlbetonwand nach DIN EN 1992-1-1 berechnen und mit dem Grenzwert der Expositionsklasse vergleichen." },
+      { stufe: "Anwenden", text: "mit der linear-elastischen Bruchmechanik die Spannungsintensität eines Randrisses und die kritische Risslänge bei sprödem Versagen berechnen." },
+      { stufe: "Analysieren", text: "an einem Schadensszenario juristischen Status, verantwortlichen Bauakteur, zuständige Versicherung und Sanierungsmethode herausarbeiten." },
+      { stufe: "Bewerten", text: "für Risse und Feuchteschäden geeignete Diagnose- und Instandsetzungsverfahren wie Potenzialfeldmessung, Ultraschall oder Rissinjektion auswählen." },
+    ],
+  },
+  material_schaeden_gross: {
+    niveau: "B/M", minuten: 75, vorwissen: ["schadensbilder", "bruchmechanik"],
+    ziele: [
+      { stufe: "Erinnern", text: "Großschadensfälle wie Bad Reichenhall, Ponte Morandi, Carolabrücke, Silver Bridge und Hyatt Regency mit ihrem kritischen Werkstoffmechanismus benennen." },
+      { stufe: "Verstehen", text: "Schadensmechanismen wie die hydrolytische Zersetzung von UF-Leim, Spannungsrisskorrosion, AKR und Sprödbruch werkstoffchemisch erläutern." },
+      { stufe: "Anwenden", text: "die kritische Rissgröße eines Stahlbauteils aus Bruchzähigkeit, Nennspannung und Geometriefaktor berechnen." },
+      { stufe: "Analysieren", text: "an einem Fall das Zusammenspiel aus Werkstoffdegradation, Fehlplanung, fehlender Redundanz und Prüflücken herausarbeiten." },
+      { stufe: "Bewerten", text: "die normativen Konsequenzen eines Großschadens für Planung, Prüfung und Überwachung von Tragwerken beurteilen." },
+    ],
+  },
+  schutz_grundlagen: {
+    niveau: "B/M", minuten: 75, vorwissen: ["korrosion", "dauerhaftigkeit"],
+    ziele: [
+      { stufe: "Erinnern", text: "die elf Instandsetzungsprinzipien nach DIN EN 1504-9 benennen und den Gruppen Betonschäden (1 bis 6) und Bewehrungskorrosion (7 bis 11) zuordnen." },
+      { stufe: "Verstehen", text: "passive Barriereschutzmaßnahmen und aktive elektrochemische Verfahren wie KKS, Realkalisierung und Chloridextraktion nach ihrem Wirkprinzip unterscheiden." },
+      { stufe: "Anwenden", text: "mit dem Tuutti-Modell die Initiierungszeit t₀ = (c/k)² berechnen und die Kostenfolge verzögerter Instandhaltung mit der Fünferregel nach de Sitter abschätzen." },
+      { stufe: "Anwenden", text: "die diffusionsäquivalente Luftschichtdicke s_d,CO₂ einer Beschichtung berechnen und mit dem Mindestwert von 50 m vergleichen." },
+      { stufe: "Bewerten", text: "für Karbonatisierung, Chloridbelastung, Durchfeuchtung, Risse oder Verschleiß ein geeignetes Instandsetzungsprinzip und Verfahren auswählen und begründen." },
+    ],
+  },
+  wta: {
+    niveau: "B/M", minuten: 75, vorwissen: ["bestand", "feuchteschutz"],
+    ziele: [
+      { stufe: "Verstehen", text: "die Rolle der WTA-Merkblätter als Beschreibung anerkannter Regeln der Technik für die Bauwerkserhaltung erläutern und ihre Referatsbereiche zuordnen." },
+      { stufe: "Verstehen", text: "den Wirkmechanismus von Sanierputzen aus Hydrophobierung, Makroporosität und Verlagerung der Verdunstungszone erläutern." },
+      { stufe: "Anwenden", text: "für eine nachträgliche Horizontalsperre nach WTA-Merkblatt 4-10 Bohrlochtiefe, Bohrlochabstand und Injektionsmittelbedarf je laufendem Meter berechnen." },
+      { stufe: "Analysieren", text: "aus Durchfeuchtungsgrad und Salzbelastung das geeignete Injektionsverfahren und Sanierputzsystem nach WTA-Merkblatt 2-9 ableiten." },
+      { stufe: "Bewerten", text: "Innendämmsysteme aus Calciumsilicat, Holzfaser, Mineralschaum oder PUR mit Dampfsperre bei Restfeuchte, Salzlast und Schlagregen nach WTA 6-5 beurteilen." },
+    ],
+  },
+  materialdatenbanken: {
+    niveau: "B/M", minuten: 45, vorwissen: ["oekobilanz_lca"],
+    ziele: [
+      { stufe: "Erinnern", text: "Materialdatenbanken wie ÖKOBAUDAT, WECOBIS, GESTIS, DGNB Navigator, ecoinvent und EPD-Programmhalter mit ihrem Einsatzzweck benennen." },
+      { stufe: "Verstehen", text: "generische und herstellerspezifische Datensätze nach Herkunft, Verifizierung und Einsatz in den Leistungsphasen unterscheiden." },
+      { stufe: "Anwenden", text: "das flächenbezogene Treibhauspotenzial eines Bauteils aus Schichtdicke, Rohdichte und massebezogenem GWP-Wert der Module A1 bis A3 berechnen." },
+      { stufe: "Analysieren", text: "masse- und volumenbezogene Deklarationen auf eine gemeinsame funktionale Einheit umrechnen und Dämmstoffe bei gleichem Wärmedurchlasswiderstand vergleichen." },
+    ],
+  },
+  labor_sicherheit: {
+    niveau: "B", minuten: 30, vorwissen: [],
+    ziele: [
+      { stufe: "Erinnern", text: "die acht Säulen der Laborsicherheit im Baustofflabor einschließlich Alleinarbeitsverbot und Geräteberechtigung benennen." },
+      { stufe: "Verstehen", text: "die Gefährdungen durch Zement mit pH-Werten über 12, krebserzeugenden Quarzfeinstaub und sensibilisierende Reaktionsharze erläutern." },
+      { stufe: "Anwenden", text: "für Mischen, Sägen, Prüfen und den Umgang mit Zement, Quarzstaub oder Epoxidharzen die erforderliche Schutzausrüstung auswählen." },
+      { stufe: "Anwenden", text: "im Notfall die Sofortmaßnahmen von NOT-HALT über Erste Hilfe und Notruf mit den 5 W-Fragen bis zum Eintrag im Verbandbuch ausführen." },
+    ],
+  },
+  bp_recht_grundlagen: {
+    niveau: "B/M", minuten: 45, vorwissen: ["regularien"],
+    ziele: [
+      { stufe: "Verstehen", text: "das Inverkehrbringen nach BauPVO mit Leistungserklärung und CE-Kennzeichnung von der Verwendbarkeit im Bauwerk nach MBO, LBO und MVV TB abgrenzen." },
+      { stufe: "Anwenden", text: "für ein Bauprodukt entscheiden, ob eine CE-Kennzeichnung über hEN oder ETA oder ein nationaler Nachweis (abZ, abP, ZiE/vBG) mit Ü-Zeichen erforderlich ist." },
+      { stufe: "Anwenden", text: "aus der Leistungserklärung eines Herstellers die deklarierten Werte entnehmen und mit den Bauwerksanforderungen der MVV TB vergleichen." },
+      { stufe: "Analysieren", text: "die Folgen des EuGH-Urteils C-100/13 für die Bauregellisten und den Wechsel zur Regulierung des Bauwerks über die MVV TB herausarbeiten." },
+    ],
+  },
+  bp_recht_avcp: {
+    niveau: "B/M", minuten: 30, vorwissen: ["bp_recht_grundlagen"],
+    ziele: [
+      { stufe: "Erinnern", text: "die AVCP-Systeme 1+, 1, 2+, 3 und 4 sowie das neue System 3+ der BauPVO 2024/3110 mit typischen Bauprodukten benennen." },
+      { stufe: "Verstehen", text: "die Aufgabenteilung zwischen werkseigener Produktionskontrolle des Herstellers und Fremdüberwachung durch die notifizierte Stelle erläutern." },
+      { stufe: "Analysieren", text: "aus dem AVCP-System eines Produkts den Umfang von Erstprüfung, Erstinspektion, laufender Überwachung und Audit-Testing ableiten." },
+    ],
+  },
+  bp_recht_normen: {
+    niveau: "B/M", minuten: 30, vorwissen: ["bp_recht_grundlagen"],
+    ziele: [
+      { stufe: "Erinnern", text: "die Normungsorganisationen DIN, CEN und ISO mit ihren Aufgaben sowie die Wiener Vereinbarung benennen." },
+      { stufe: "Verstehen", text: "den Weg zur Norm vom Projektvorschlag über Entwurf, Stellungnahmeverfahren und Schlichtung bis zum Weißdruck beschreiben." },
+      { stufe: "Analysieren", text: "unterscheiden, wann eine DIN-Norm nur die widerlegbare Vermutung der anerkannten Regeln der Technik begründet und wann sie durch Vertrag oder Technische Baubestimmung verbindlich wird." },
+    ],
+  },
+  holzbau_werkstoffe: {
+    niveau: "B", minuten: 45, vorwissen: ["holz", "holzwerkstoffe"],
+    ziele: [
+      { stufe: "Verstehen", text: "die charakteristischen Festigkeits- und Steifigkeitswerte von Vollholz nach DIN EN 338 und Brettschichtholz nach DIN EN 14080 vergleichen und ihre Verwendung in der Bemessung erläutern." },
+      { stufe: "Verstehen", text: "das Schwind- und Quellverhalten von Holz unterhalb des Fasersättigungspunkts und seine Anisotropie in radialer, tangentialer und longitudinaler Richtung erläutern." },
+      { stufe: "Anwenden", text: "die Maßänderung eines Holzquerschnitts aus Holzart, Feuchteänderung und Jahrringlage berechnen." },
+      { stufe: "Analysieren", text: "Wand-, Decken- und Dachaufbauten im Holzbau nach Schichtenfolge, U-Wert, Brandschutzklasse und Schallschutz vergleichen." },
+    ],
+  },
+  ki_recht_ethik: {
+    niveau: "B/M", minuten: 60, vorwissen: ["ki_ueberblick"],
+    ziele: [
+      { stufe: "Analysieren", text: "typische KI-Fehler wie erfundene Teilsicherheitsbeiwerte, Einheitenfehler, veraltete Normzitate und überlesene Gutachtenpassagen an Beispielen erkennen und richtigstellen." },
+      { stufe: "Verstehen", text: "erläutern, warum der Planer nach BGB-Werkvertragsrecht für KI-gestützte Ergebnisse haftet und sich nicht durch Software entlasten kann." },
+      { stufe: "Verstehen", text: "den risikobasierten Ansatz des EU AI Act mit Hochrisiko-Systemen, Transparenzpflichten nach Art. 50 und menschlicher Aufsicht nach Art. 14 erläutern." },
+      { stufe: "Anwenden", text: "vor dem Einsatz von Cloud-LLMs Maßnahmen zu Datenschutz und Geschäftsgeheimnis wie Anonymisierung, Training-Opt-out und Auftragsverarbeitungsvertrag festlegen." },
+      { stufe: "Bewerten", text: "den Energiebedarf von KI-Anfragen gegen Einsparungen durch KI-Baustoffoptimierung abwägen und den normativen Bias der Modelle beurteilen." },
+    ],
+  },
+  ki_ressourcen: {
+    niveau: "B/M", minuten: 30, vorwissen: ["ki_ueberblick"],
+    ziele: [
+      { stufe: "Erinnern", text: "unabhängige KI-Plattformen und Verzeichnisse wie GitHub, Hugging Face, Futurepedia und THE DECODER mit ihrem Nutzen für das Bauwesen benennen." },
+      { stufe: "Anwenden", text: "das 95-%-Unsicherheitsintervall eines Benchmark-Ergebnisses berechnen und prüfen, ob der Unterschied zwischen zwei Modellen belastbar ist." },
+      { stufe: "Anwenden", text: "Strombedarf, CO₂-Emissionen und Kosten einer lokalen KI-Auswertung aus Leistung, Rechenzeit, Emissionsfaktor und Strompreis berechnen." },
+      { stufe: "Bewerten", text: "Ranglisten unabhängiger KI-Seiten als Momentaufnahmen beurteilen und für eine Studienaufgabe ein geeignetes Werkzeug begründet auswählen." },
+    ],
+  },
+  px_planung: {
+    niveau: "B", minuten: 45, vorwissen: ["expositionsklassen", "regularien"],
+    ziele: [
+      { stufe: "Analysieren", text: "Tragwerks- und Architekturplanung an den HOAI-Schnittstellen der Leistungsphasen 3, 5 und 6 auf Kollisionen bei Durchbrüchen, Schächten und Stützen prüfen." },
+      { stufe: "Anwenden", text: "Expositionsklassen, Nachbehandlungsklassen und Wassereinwirkungsklasse nach DIN 18533 im Leistungsverzeichnis eindeutig festlegen." },
+      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom für ein Außenbauteil der Expositionsklasse XC4 berechnen." },
+      { stufe: "Analysieren", text: "Unverträglichkeiten wie lösemittelhaltigen Bitumenvoranstrich auf XPS oder verzinkten Stahl an Eichenholz im LV erkennen und durch Vorgaben ausschließen." },
+      { stufe: "Bewerten", text: "die Gleichwertigkeit eines Alternativprodukts zum Leitprodukt nach VOB/A an funktionalen Leistungsmerkmalen wie dem Wärmedurchlasswiderstand beurteilen." },
+    ],
+  },
 };
