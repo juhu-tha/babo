@@ -65,6 +65,7 @@ if (arg('--teil')) { const [i, n] = arg('--teil').split('/').map(Number); const 
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);
 const browser = await pw.chromium.launch(exe ? { executablePath: exe } : {});
 const ergebnis = {};
+const MAX_KLICKS = Number(arg('--klicks') ?? 25);
 const GROESSEN = { desktop: { width: 1440, height: 900 }, mobil: { width: 390, height: 844 } };
 
 const zustand = p => p.evaluate(() => {
@@ -73,8 +74,8 @@ const zustand = p => p.evaluate(() => {
 });
 const ruhig = async p => {
   let alt = '';
-  for (let i = 0; i < 20; i++) {
-    await p.waitForTimeout(150);
+  for (let i = 0; i < 15; i++) {
+    await p.waitForTimeout(120);
     const z = await zustand(p);
     const k = z.text.length + ':' + z.katex;
     if (k === alt) return z;
@@ -99,7 +100,7 @@ for (const [gname, vp] of Object.entries(GROESSEN)) {
     if (process.env.ZEIT) console.log('geladen', id, Date.now() - t0);
     const ansichten = [{ name: 'start', ...(await ruhig(p)) }];
     const anzahl = await p.locator('#module-content [role="tab"], #module-content button[aria-pressed]').count();
-    for (let i = 0; i < Math.min(anzahl, 40); i++) {
+    for (let i = 0; i < Math.min(anzahl, MAX_KLICKS); i++) {
       const el = p.locator('#module-content [role="tab"], #module-content button[aria-pressed]').nth(i);
       const name = ((await el.innerText().catch(() => '')) || '').trim().slice(0, 40);
       try { await el.click({ timeout: 2000 }); } catch { continue; }
