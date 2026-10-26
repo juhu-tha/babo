@@ -55,17 +55,8 @@ Bei der Überarbeitung der Antwortoptionen (AP 3.3, PR #113) wurden Fragetexte u
 <!-- normen-check:start -->
 ## Normen- und Rechtsstand (automatischer Normen-Check)
 
-Lauf vom 25.10.2026 · [Bericht](normen-check/2026-10.md) · Dieser Abschnitt wird bei jedem Lauf von `scripts/qa/normen-check.mjs` neu geschrieben. Punkte bitte in Registry bzw. Modul beheben; sie entfallen dann beim nächsten Lauf.
+Lauf vom 26.10.2026 · [Bericht](normen-check/2026-10.md) · Dieser Abschnitt wird bei jedem Lauf von `scripts/qa/normen-check.mjs` neu geschrieben. Punkte bitte in Registry bzw. Modul beheben; sie entfallen dann beim nächsten Lauf.
 
-- [ ] **DIN EN 1995-1-1**: neuere Ausgabe erschienen – soll 2010-12, DIN Media DIN EN 1995-1-1:2026-09 – Module: holz, holzwerkstoffe, holzbau_beta, knicken
-- [ ] **DIN EN 10025-1**: Registry nennt neuere Ausgabe als DIN Media – Angabe prüfen – soll 2019-10, DIN Media DIN EN 10025-1:2005-02 – Module: metalle, stahl, bp_stahlbauprofile
-- [ ] **DIN EN ISO 12944-1**: neuere Ausgabe erschienen – soll 2018-06, DIN Media DIN EN ISO 12944-1:2019-01 – Module: metallkorrosion, korrosion, instandsetzung_materialien
-- [ ] **DIN 18531**: ersetzt durch anderes Dokument – soll 2017-07, DIN Media DIN 18531-1:2025-08 – Module: feuchteschutz, bauphysik, ausbau
-- [ ] **DIN 18533-1**: neuere Ausgabe erschienen – soll 2017-07, DIN Media DIN 18533-1:2026-06 – Module: feuchteschutz, bauphysik, wu_bauwerke, instandsetzung_materialien
-- [ ] **DIN 18534-1**: neuere Ausgabe erschienen – soll 2017-07, DIN Media DIN 18534-1:2025-10 – Module: feuchteschutz, ausbau
-- [ ] **DIN 18535**: ersetzt durch anderes Dokument – soll 2017-07, DIN Media DIN 18535-1:2017-07 – Module: feuchteschutz, wu_bauwerke
-- [ ] **DIN 18195**: neuere Ausgabe erschienen – soll 2017-07, DIN Media DIN 18195:2025-12 – Module: feuchteschutz, bauphysik
-- [ ] **DIN EN 17472**: neuere Ausgabe erschienen – soll 2022-09, DIN Media DIN EN 17472:2024-06 – Module: nachhaltigkeit, lca, interactive_lca
 - [ ] Manuelle Prüfung laut Bericht, Abschnitt 3: 8 Normen, 18 Gesetze/Verordnungen, 7 weitere Regelwerke/EU-Rechtsakte
 
 Abgleich der oben genannten Normausgaben mit DIN Media:
