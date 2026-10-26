@@ -5,6 +5,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/feedback/Feedback.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 function EvaluierungContent() {
   const [ratings, setRatings] = useState({
@@ -270,20 +271,18 @@ export default function Feedback() {
           </div>
         </div>
 
-        <div className="flex gap-4 mb-2">
-          <button aria-pressed={activeTab === 'feedback'}
-            onClick={() => setActiveTab('feedback')}
-            className={`px-4 py-2 font-bold text-sm rounded-lg transition-colors ${activeTab === 'feedback' ? 'bg-shiraz text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-          >
-            Feedback
-          </button>
-          <button aria-pressed={activeTab === 'evaluierung'}
-            onClick={() => setActiveTab('evaluierung')}
-            className={`px-4 py-2 font-bold text-sm rounded-lg transition-colors ${activeTab === 'evaluierung' ? 'bg-shiraz text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-          ><MdText text={inhalt.texte.evaluierungTool} /></button>
-        </div>
-
-        {activeTab === 'feedback' ? <FeedbackContent /> : <EvaluierungContent />}
+        <ModuleTabs
+          label={inhalt.werte.bereicheFeedback}
+          tabs={[
+            { id: 'feedback' as const, label: 'Feedback' },
+            { id: 'evaluierung' as const, label: inhalt.texte.evaluierungTool },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="flex flex-col gap-6"
+        >
+          {activeTab === 'feedback' ? <FeedbackContent /> : <EvaluierungContent />}
+        </ModuleTabs>
       </div>
 
       <ModuleFooter

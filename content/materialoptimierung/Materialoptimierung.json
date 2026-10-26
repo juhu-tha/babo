@@ -41,8 +41,6 @@
     "maßgebendBleibenDinEn": "Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen."
   },
   "werte": {
-    "mDeckenfläche": "m² Deckenfläche",
-    "geschossdecke100MFläche": "Geschossdecke (100 m² Fläche)",
     "geschossdecke100MFläche2": "Geschossdecke (100 m² Fläche)",
     "innenstützen4Stützen3": "Innenstützen (4 Stützen à 3,50 m = 14 m Gesamtlänge)",
     "tragwandKernwand60M": "Tragwand / Kernwand (60 m² Ansichtsfläche)",
@@ -60,7 +58,8 @@
     "neueAusgabenErschienenDin": "Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation",
     "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
     "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: Bilanzformeln, k-Wert-Ansatz und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
-    "deutscherAusschussFürStahlbeton": "Deutscher Ausschuss für Stahlbeton"
+    "deutscherAusschussFürStahlbeton": "Deutscher Ausschuss für Stahlbeton",
+    "bereicheMaterialoptimierung": "Bereiche Materialoptimierung"
   },
   "daten": {
     "Materialoptimierung.schritte": [

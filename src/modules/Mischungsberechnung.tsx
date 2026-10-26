@@ -24,6 +24,16 @@ import MischungEingaben from './mischungsberechnung/MischungEingaben';
 import MischungErgebnisse from './mischungsberechnung/MischungErgebnisse';
 import inhalt from '@/content/mischungsberechnung/Mischungsberechnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+
+const REITER = [
+  { id: 'grenzwerte', label: inhalt.texte.grenzwerteKlassen, icon: ShieldAlert },
+  { id: 'berechnung', label: 'Berechnung', icon: Calculator },
+  { id: 'beispiele', label: inhalt.texte.geprüfteBeispielrechnungen, icon: BookOpen },
+  { id: 'walzkurven', label: 'Walz-Kurven', icon: Activity },
+  { id: 'packungsdichte', label: 'Packungsdichte', icon: Layers },
+  { id: 'anleitung', label: 'Anleitung', icon: BookOpen },
+] as const;
 
 export default function Mischungsberechnung() {
   const [activeTab, setActiveTab] = useState<'berechnung' | 'anleitung' | 'walzkurven' | 'grenzwerte' | 'packungsdichte' | 'beispiele'>('berechnung');
@@ -475,66 +485,7 @@ export default function Mischungsberechnung() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'grenzwerte'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'grenzwerte' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('grenzwerte')}
-        >
-          <ShieldAlert size={16} /><MdText text={inhalt.texte.grenzwerteKlassen} /></button>
-        <button aria-pressed={activeTab === 'berechnung'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'berechnung' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('berechnung')}
-        >
-          <Calculator size={16} /> Berechnung
-        </button>
-        <button aria-pressed={activeTab === 'beispiele'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'beispiele' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('beispiele')}
-        >
-          <BookOpen size={16} /><MdText text={inhalt.texte.geprüfteBeispielrechnungen} /></button>
-        <button aria-pressed={activeTab === 'walzkurven'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'walzkurven' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('walzkurven')}
-        >
-          <Activity size={16} /> Walz-Kurven
-        </button>
-        <button aria-pressed={activeTab === 'packungsdichte'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'packungsdichte' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('packungsdichte')}
-        >
-          <Layers size={16} /> Packungsdichte
-        </button>
-        <button aria-pressed={activeTab === 'anleitung'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'anleitung' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('anleitung')}
-        >
-          <BookOpen size={16} /> Anleitung
-        </button>
-      </div>
+      <ModuleTabs label="Bereiche Mischungsberechnung" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-8">
 
       {activeTab === 'grenzwerte' && (
         <GrenzwerteSection />
@@ -592,6 +543,7 @@ export default function Mischungsberechnung() {
       {activeTab === 'anleitung' && (
         <MischungsberechnungAnleitung />
       )}
+      </ModuleTabs>
     
       <CalculatorDisclaimerBanner className="my-2" />
       <ModulTest moduleId="mischungsberechnung" />

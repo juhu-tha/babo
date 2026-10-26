@@ -20,6 +20,7 @@ import {
   Server
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 
 const FULL_AUDIT_PROMPT = `================================================================================
 VERBINDLICHER GESAMT-AUDITPROMPT DER WISSENSPLATTFORM BAUSTOFFBOARD (THA)
@@ -77,6 +78,25 @@ Jedes einzelne Fachmodul wird zwingend anhand folgender 6 Qualitätsdimensionen 
         Tausendertrennung mit Punkt, Dezimaltrennzeichen mit Komma via formatDeZahl.
       - Mathematisch präzises Formel-Rendering mit LaTeX/KaTeX (InlineMath & BlockMath).`;
 
+type AdminTab = 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module' | 'kurzfragebogen';
+
+const ADMIN_GRUPPEN: readonly ModulTabGruppe<AdminTab>[] = [
+  { id: 'pruefung', label: 'Prüfung & Freigabe', icon: CheckCircle2, mitglieder: [
+    { id: 'pruefraster', label: 'Die 6 Prüfdimensionen', icon: CheckCircle2 },
+    { id: 'prompt', label: 'Auditprompt', icon: FileText },
+    { id: 'fragenfreigabe', label: 'Fragenfreigabe', icon: ShieldCheck },
+  ] },
+  { id: 'app', label: 'App & Code', icon: Cpu, mitglieder: [
+    { id: 'gestaltung', label: 'Gestaltung der App', icon: Palette },
+    { id: 'tech_stack', label: 'Sprachen & Tools', icon: Cpu },
+    { id: 'code_umfang', label: 'Tool-Umfang & Code', icon: Boxes },
+  ] },
+  { id: 'auswertung', label: 'Module & Rückmeldungen', icon: Layers, mitglieder: [
+    { id: 'meine_module', label: 'Meine Module', icon: Layers },
+    { id: 'kurzfragebogen', label: 'Kurzfragebogen', icon: FileText },
+  ] },
+];
+
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isChecking, setIsChecking] = useState(false);
@@ -92,7 +112,7 @@ export default function Admin() {
       active = false;
     };
   }, []);
-  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module' | 'kurzfragebogen'>('pruefraster');
+  const [activeTab, setActiveTab] = useState<AdminTab>('pruefraster');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -203,90 +223,14 @@ export default function Admin() {
           </p>
         </div>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'pruefraster'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'pruefraster'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('pruefraster')}
-          >
-            <CheckCircle2 size={16} /> Die 6 Prüfdimensionen
-          </button>
-          <button aria-pressed={activeTab === 'prompt'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'prompt'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('prompt')}
-          >
-            <FileText size={16} /> Auditprompt
-          </button>
-          <button aria-pressed={activeTab === 'gestaltung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'gestaltung'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('gestaltung')}
-          >
-            <Palette size={16} /> Gestaltung der App
-          </button>
-          <button aria-pressed={activeTab === 'tech_stack'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'tech_stack'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('tech_stack')}
-          >
-            <Cpu size={16} /> Sprachen &amp; Tools
-          </button>
-          <button aria-pressed={activeTab === 'code_umfang'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'code_umfang'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('code_umfang')}
-          >
-            <Boxes size={16} /> Tool-Umfang &amp; Code
-          </button>
-          <button aria-pressed={activeTab === 'fragenfreigabe'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'fragenfreigabe'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('fragenfreigabe')}
-          >
-            <ShieldCheck size={16} /> Fragenfreigabe
-          </button>
-          <button aria-pressed={activeTab === 'meine_module'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'meine_module'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('meine_module')}
-          >
-            <Layers size={16} /> Meine Module
-          </button>
-          <button aria-pressed={activeTab === 'kurzfragebogen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kurzfragebogen'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kurzfragebogen')}
-          >
-            <FileText size={16} /> Kurzfragebogen
-          </button>
-        </div>
-
+        {/* Reiter: 8 Bereiche in 3 Gruppen (AP 3.8: höchstens 7 je Zeile) */}
+        <GruppierteModuleTabs
+          label="Bereiche der Administration"
+          gruppen={ADMIN_GRUPPEN}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&_[role=tablist]]:mb-4"
+        >
         {/* TAB 1: PRÜFRASTER */}
         {activeTab === 'pruefraster' && (
           <div className="space-y-6">
@@ -787,6 +731,7 @@ export default function Beispielfach() {
             </div>
           </div>
         )}
+        </GruppierteModuleTabs>
       </div>
 
       {/* Normativer Footer nach GEMINI_md */}

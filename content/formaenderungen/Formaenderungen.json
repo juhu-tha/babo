@@ -66,12 +66,12 @@
       {
         "titel": "Elastische Dehnung",
         "erklaerung": "Sofortige Stauchung bei Belastung:",
-        "formel": "\\varepsilon_{el} = \\frac{10}{34\\,650} = 0{,}29\\,\\text{‰}"
+        "formel": "\\varepsilon_{el} = \\frac{10}{34\\,650} = 0{,}29\\,\\text{\\char8240}"
       },
       {
         "titel": "Kriechdehnung",
         "erklaerung": "Zeitabhängiger Zuwachs bis t = ∞:",
-        "formel": "\\varepsilon_{cc} = 2{,}0 \\cdot 0{,}29 = 0{,}58\\,\\text{‰}"
+        "formel": "\\varepsilon_{cc} = 2{,}0 \\cdot 0{,}29 = 0{,}58\\,\\text{\\char8240}"
       }
     ],
     "Formaenderungen.literatur": [

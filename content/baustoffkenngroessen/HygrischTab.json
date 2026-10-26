@@ -48,6 +48,33 @@
     "wasserabweisendW05": "Wasserabweisend (w ≤ 0,5; zusätzlich s_d ≤ 2,0 m und w · s_d ≤ 0,2 nach DIN 4108-3)",
     "hervorragenderSchlagregenschutzWasserPer": "Hervorragender Schlagregenschutz. Wasser perlt gut ab, kapillares Saugen ist stark unterbunden (Verwendung für Außenputze, Klinker oder hydrophobiertes Mauerwerk).",
     "wasserhemmend05W": "Wasserhemmend (0,5 < w ≤ 2,0)",
-    "eingeschränkteKapillareLeitfähigkeitEin": "Eingeschränkte kapillare Leitfähigkeit. Ein Kompromiss aus Saugaktivität und Schutz vor Durchnässung. Geeignet in mäßig regenbeanspruchten Schutzbereichen."
+    "eingeschränkteKapillareLeitfähigkeitEin": "Eingeschränkte kapillare Leitfähigkeit. Ein Kompromiss aus Saugaktivität und Schutz vor Durchnässung. Geeignet in mäßig regenbeanspruchten Schutzbereichen.",
+    "herleitungDiffusionsäquivalenteLuftschichtdicke": "Herleitung: diffusionsäquivalente Luftschichtdicke s_d",
+    "normSd": "DIN EN ISO 12572; DIN 4108-3",
+    "hinweisSd": "Bei mehrschichtigen Bauteilen addieren sich die Werte der Schichten: s_d,ges = Σ μᵢ · dᵢ."
+  },
+  "daten": {
+    "HygrischTab.schritte": [
+      {
+        "titel": "1. Diffusion durch ruhende Luft",
+        "formel": "g = \\frac{\\delta_0}{d_L} \\cdot \\Delta p",
+        "erklaerung": "Durch eine Luftschicht der Dicke d_L fließt bei der Partialdruckdifferenz Δp die Wasserdampf-Diffusionsstromdichte g (δ₀: Diffusionsleitkoeffizient der Luft)."
+      },
+      {
+        "titel": "2. Diffusion durch den Baustoff",
+        "formel": "g = \\frac{\\delta_0}{\\mu \\cdot d} \\cdot \\Delta p",
+        "erklaerung": "Der Baustoff leitet Wasserdampf μ-mal schlechter als Luft: δ = δ₀/μ."
+      },
+      {
+        "titel": "3. Gleichen Widerstand ansetzen",
+        "formel": "\\frac{\\delta_0}{d_L} = \\frac{\\delta_0}{\\mu \\cdot d} \\;\\Rightarrow\\; d_L = s_d = \\mu \\cdot d",
+        "erklaerung": "s_d ist die Dicke einer Luftschicht mit demselben Diffusionswiderstand wie die Baustoffschicht."
+      },
+      {
+        "titel": "4. Zahlenbeispiel Beton",
+        "formel": "s_d = 130 \\cdot 0{,}20\\,\\text{m} = 26{,}0\\,\\text{m}",
+        "erklaerung": "Betonbauteil mit μ = 130 und d = 0,20 m (Beispiel oben)."
+      }
+    ]
   }
 }

@@ -1,0 +1,135 @@
+# Monatliche Linkprüfung (Zwischenreview 10/2026, Paket Z16)
+# Vorgehen und Regeln: docs/linkcheck/README.md
+name: Link-Check
+
+on:
+  schedule:
+    # 3. jedes Monats, 04:41 UTC (krumme Minute; nicht am selben Tag wie der Normen-Check am 1.)
+    - cron: '41 4 3 * *'
+  workflow_dispatch:
+    inputs:
+      ersetzen:
+        description: 'Sichere dauerhafte Weiterleitungen ersetzen und als PR vorschlagen'
+        type: boolean
+        default: true
+      ohne_wikipedia_api:
+        description: 'Wikipedia-Artikel einzeln statt über die API prüfen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # Keine npm-Abhängigkeiten nötig (nur Node-Bordmittel). Der Cache enthält nur Prüfergebnisse.
+      - name: Ergebnis-Cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/link-check
+          key: link-check-${{ github.run_id }}
+          restore-keys: link-check-
+
+      - name: Linkprüfung ausführen
+        id: check
+        run: |
+          set +e
+          args=(--issue-body "$RUNNER_TEMP/issue.md" --pr-body "$RUNNER_TEMP/pr-body.md")
+          # Zeitplan: immer ersetzen; manuell: laut Eingabe
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.ersetzen }}" = "true" ]; then args+=(--ersetzen); fi
+          if [ "${{ inputs.ohne_wikipedia_api }}" = "true" ]; then args+=(--ohne-wikipedia-api); fi
+          node scripts/qa/link-check.mjs "${args[@]}"
+          code=$?
+          echo "exitcode=$code" >> "$GITHUB_OUTPUT"
+          # 2 = keine Quelle erreichbar → Issue trotzdem anlegen
+          if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then exit "$code"; fi
+
+      - name: Bericht als Artefakt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkcheck-${{ github.run_id }}
+          path: docs/linkcheck/*-*.*
+          if-no-files-found: ignore
+          retention-days: 90
+
+      # PR nur, wenn sichere Ersetzungen vorgenommen wurden (sonst nur Issue)
+      - name: Branch und Pull Request für sichere Ersetzungen
+        id: pr
+        if: steps.check.outputs.ersetzt != '' && steps.check.outputs.ersetzt != '0'
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- src content)" ]; then
+            echo "Keine Änderungen in src/ oder content/."
+            echo "erstellt=keine_aenderung" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          basis="${GITHUB_REF_NAME}"
+          branch="link-check/$(date -u +%Y-%m-%d)"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then branch="${branch}-${GITHUB_RUN_ID}"; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -A -- src docs/linkcheck/*.md
+          if [ -d content ]; then git add -A -- content; fi
+          git commit -m "Linkprüfung $(date -u +%Y-%m): dauerhafte Weiterleitungen ersetzt" -m "Automatischer Lauf ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          git push origin "$branch"
+          {
+            cat "$RUNNER_TEMP/pr-body.md"
+            echo
+            echo "Workflow-Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > "$RUNNER_TEMP/pr-body-voll.md"
+          titel="Linkprüfung $(date -u +%Y-%m): ${{ steps.check.outputs.ersetzt }} dauerhafte Weiterleitungen ersetzen"
+          if url=$(gh pr create --base "$basis" --head "$branch" --title "$titel" --body-file "$RUNNER_TEMP/pr-body-voll.md"); then
+            echo "PR: $url"
+            echo "erstellt=pr" >> "$GITHUB_OUTPUT"
+            echo "url=$url" >> "$GITHUB_OUTPUT"
+          else
+            # z. B. wenn „Allow GitHub Actions to create and approve pull requests“ deaktiviert ist
+            echo "PR konnte nicht angelegt werden – Hinweis im Issue."
+            echo "erstellt=branch" >> "$GITHUB_OUTPUT"
+            echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Issue mit dem Bericht: bei jedem Lauf; ein erneuter Lauf im selben Monat kommentiert das offene Issue
+      - name: Issue mit Bericht
+        if: always()
+        run: |
+          set -euo pipefail
+          titel="Linkprüfung $(date -u +%Y-%m)"
+          {
+            if [ -f "$RUNNER_TEMP/issue.md" ]; then cat "$RUNNER_TEMP/issue.md"; else
+              echo "Die Linkprüfung ist fehlgeschlagen, bevor ein Bericht entstand."
+              echo
+              echo "- Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            fi
+            echo
+            echo "---"
+            echo "- Exit-Code Skript: ${{ steps.check.outputs.exitcode || 'nicht erreicht' }} (2 = keine Quelle erreichbar)"
+            if [ -n "${{ steps.pr.outputs.url }}" ]; then echo "- PR mit sicheren Ersetzungen: ${{ steps.pr.outputs.url }}"; fi
+            if [ -n "${{ steps.pr.outputs.branch }}" ]; then echo "- Ersetzungen liegen auf Branch \`${{ steps.pr.outputs.branch }}\` – PR bitte manuell anlegen."; fi
+            echo "- Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} (vollständiger Bericht als Artefakt)"
+          } > "$RUNNER_TEMP/issue-voll.md"
+          nr=$(gh issue list --state open --search "\"$titel\" in:title" --json number,title --jq "map(select(.title == \"$titel\")) | .[0].number // empty")
+          if [ -n "$nr" ]; then
+            gh issue comment "$nr" --body-file "$RUNNER_TEMP/issue-voll.md"
+          else
+            gh issue create --title "$titel" --body-file "$RUNNER_TEMP/issue-voll.md"
+          fi

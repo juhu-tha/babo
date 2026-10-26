@@ -51,6 +51,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/spannbeton/Spannbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -86,6 +87,14 @@ const STEEL_GRADES: Record<string, SteelData> = {
   'Y1770': { fpk: 1770, fp01k: 1520, Ep: 195000 },
   'Y1860': { fpk: 1860, fp01k: 1600, Ep: 195000 },
 };
+
+const REITER = [
+  { id: 'null_bis_hundert', label: '0-100', icon: GraduationCap },
+  { id: 'grundprinzipien', label: 'Grundprinzipien', icon: Compass },
+  { id: 'kennwerte', label: inhalt.texte.baustoffkennwerteKriechenSchwindenRelaxa, icon: BookOpen },
+  { id: 'rechner', label: inhalt.texte.querschnittsRechnerSpannungsverlauf, icon: Activity },
+  { id: 'dauerhaftigkeit', label: inhalt.texte.dauerhaftigkeitKorrosionsschutz, icon: ShieldCheck },
+] as const;
 
 export default function Spannbeton() {
   // Geometric & Force States
@@ -382,63 +391,11 @@ export default function Spannbeton() {
           <p><MdText text={inhalt.texte.dieVorspannungBeaufschlagtDen} /></p>
         </div>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20 mt-6" onPointerEnter={ladeReiter} onFocus={ladeReiter} onTouchStart={ladeReiter}>
-          <button aria-pressed={mainTab === 'null_bis_hundert'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'null_bis_hundert' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('null_bis_hundert')}
-          >
-            <GraduationCap size={16} /> 0-100
-          </button>
-          <button aria-pressed={mainTab === 'grundprinzipien'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'grundprinzipien' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('grundprinzipien')}
-          >
-            <Compass size={16} /> Grundprinzipien
-          </button>
-          <button aria-pressed={mainTab === 'kennwerte'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'kennwerte' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('kennwerte')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.baustoffkennwerteKriechenSchwindenRelaxa} /></button>
-          <button aria-pressed={mainTab === 'rechner'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('rechner')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.querschnittsRechnerSpannungsverlauf} /></button>
-          <button aria-pressed={mainTab === 'dauerhaftigkeit'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'dauerhaftigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('dauerhaftigkeit')}
-          >
-            <ShieldCheck size={16} /><MdText text={inhalt.texte.dauerhaftigkeitKorrosionsschutz} /></button>
-        </div>
       </div>
 
+      {/* Reiter-Chunks beim Überfahren/Fokussieren vorladen (wie bisher an der Reiterleiste) */}
+      <div onPointerEnter={ladeReiter} onFocus={ladeReiter} onTouchStart={ladeReiter}>
+      <ModuleTabs label="Bereiche Spannbeton" tabs={REITER} aktiv={mainTab} onWechsel={setMainTab} className="[&>[role=tablist]]:mb-6">
       {/* 0. TAB: 0-100 VORLESUNGS-LEITFADEN */}
       {mainTab === 'null_bis_hundert' && (
         <div className="animate-in fade-in duration-300">
@@ -1298,6 +1255,8 @@ export default function Spannbeton() {
           <React.Suspense fallback={<Reiterplatz />}><SpannbetonDauerhaftigkeit /></React.Suspense>
         </div>
       )}
+      </ModuleTabs>
+      </div>
 
       {/* unterhalb des Bildausschnitts: erst nach dem ersten Bild rendern (AP 5.5 Nachtrag) */}
       <NachErstemBild minHoehe="40rem">

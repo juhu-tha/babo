@@ -158,7 +158,7 @@ export default function HerstellungEinbau() {
           { title: inhalt.werte.betonWikiBetonherstellung, url: "https://beton.wiki/index.php?title=Betonherstellung" }, 
           { title: inhalt.werte.zementMerkblattB7, url: "https://www.baunetzwissen.de/beton/tipps/planungshilfen/b--7--bereiten-und-verarbeiten-von-beton-151304" }, 
           { title: inhalt.werte.betonWikiBetonieren, url: "https://beton.wiki/index.php?title=Betonieren" },
-          { title: inhalt.werte.vereinDeutscherZementwerkeVdz, url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
+          { title: inhalt.werte.vereinDeutscherZementwerkeVdz, url: "https://www.vdz-online.de/wissensportal/publikationen/zement-taschenbuch-2008" }
         ]} 
         wikipedia={[
           { title: 'Transportbeton', url: 'https://de.wikipedia.org/wiki/Transportbeton' },

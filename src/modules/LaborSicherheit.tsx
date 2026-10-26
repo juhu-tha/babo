@@ -21,6 +21,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/laborsicherheit/LaborSicherheit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export type LaborTab = 'uebersicht' | 'regeln' | 'psa' | 'maschinen' | 'gefahrstoffe' | 'notfall';
 
@@ -81,42 +82,23 @@ export default function LaborSicherheit() {
           </div>
         </div>
 
-        {/* Navigation Tabs Bar */}
-        <div className="flex flex-wrap gap-2 pt-4 mt-4 border-t border-home-grau/20">
-          {[
-            { id: 'uebersicht', label: inhalt.werte.übersichtLaborordnung, icon: FileText },
-            { id: 'regeln', label: inhalt.werte.die8Sicherheitsregeln, icon: ShieldAlert },
-            { id: 'psa', label: inhalt.werte.psaEinzugsgefahr, icon: HardHat },
-            { id: 'maschinen', label: inhalt.werte.sperrgeräteMaschinen, icon: Zap },
-            { id: 'gefahrstoffe', label: inhalt.werte.gefahrstoffeZementStaub, icon: Flame },
-            { id: 'notfall', label: inhalt.werte.notfallmaßnahmenGebäudeG2, icon: AlertTriangle, badge: '112' }
-          ].map(tab => {
-            const Icon = tab.icon;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as LaborTab)}
-                className={`px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-                  activeTab === tab.id
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-                }`}
-              >
-                <Icon size={14} className={activeTab === tab.id ? 'text-white' : 'text-shiraz'} />
-                <span>{tab.label}</span>
-                {tab.badge && (
-                  <span className={`text-[9px] px-1.5 py-0.5 rounded-md font-mono ${
-                    activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-rose-100 text-rose-800 font-bold'
-                  }`}>
-                    {tab.badge}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
       </div>
 
+      <ModuleTabs
+        label={inhalt.werte.bereicheLaborsicherheit}
+        tabs={[
+          { id: 'uebersicht' as const, label: inhalt.werte.übersichtLaborordnung, icon: FileText },
+          { id: 'regeln' as const, label: inhalt.werte.die8Sicherheitsregeln, icon: ShieldAlert },
+          { id: 'psa' as const, label: inhalt.werte.psaEinzugsgefahr, icon: HardHat },
+          { id: 'maschinen' as const, label: inhalt.werte.sperrgeräteMaschinen, icon: Zap },
+          { id: 'gefahrstoffe' as const, label: inhalt.werte.gefahrstoffeZementStaub, icon: Flame },
+          // Notruf 112 bisher als Plakette neben dem Reitertext
+          { id: 'notfall' as const, label: `${inhalt.werte.notfallmaßnahmenGebäudeG2} 112`, icon: AlertTriangle }
+        ]}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="flex flex-col gap-6"
+      >
       {/* TAB 1: ÜBERSICHT */}
       {activeTab === 'uebersicht' && (
         <div className="flex flex-col gap-6 animate-in fade-in duration-200">
@@ -677,6 +659,7 @@ export default function LaborSicherheit() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       {/* Module Footer with standard DIN/DGUV references */}
       <ModuleFooter

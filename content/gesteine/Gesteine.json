@@ -68,7 +68,8 @@
   "werte": {
     "anwendungsbeispielKörnungszifferDerRegel": "Anwendungsbeispiel: Körnungsziffer der Regelsieblinie B16",
     "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Werte manuell prüfen); Siebsatz 0,25 bis 63 mm",
-    "kB16366": "k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner)."
+    "kB16366": "k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner).",
+    "reiterBereiche": "Bereiche Gesteine"
   },
   "daten": {
     "Gesteine.schritte": [

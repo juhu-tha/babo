@@ -7,6 +7,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/gips/Gips.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function Gips() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'festigkeit' | 'bestaendigkeit' | 'steckbrief'>('steckbrief');
@@ -21,46 +22,18 @@ export default function Gips() {
           <p><MdText text={inhalt.texte.gipsCalciumsulfatIstEin} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.grundlagenHydratation} /></button>
-          <button aria-pressed={activeTab === 'festigkeit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'festigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('festigkeit')}
-          >
-            <Activity size={16} /> Festigkeitsbildung
-          </button>
-          <button aria-pressed={activeTab === 'bestaendigkeit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bestaendigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bestaendigkeit')}
-          >
-            <Box size={16} /><MdText text={inhalt.texte.beständigkeitNormen} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: 'Baustoff-Steckbrief', icon: BookOpen },
+            { id: 'grundlagen' as const, label: inhalt.texte.grundlagenHydratation, icon: Layers },
+            { id: 'festigkeit' as const, label: 'Festigkeitsbildung', icon: Activity },
+            { id: 'bestaendigkeit' as const, label: inhalt.texte.beständigkeitNormen, icon: Box },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
 
         {activeTab === 'grundlagen' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -218,6 +191,7 @@ export default function Gips() {
             <BaustoffProfil materialKey="gips" />
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

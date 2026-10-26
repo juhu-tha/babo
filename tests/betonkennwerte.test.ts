@@ -54,7 +54,8 @@ function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Ge
   const epsC1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
   let epsCu1 = 3.5;
   if (fck > 50) epsCu1 = 2.8 + 27 * Math.pow((98 - fcm) / 100, 4);
-  const kPlastizitaet = (1.05 * Ecm * (epsC1 / 1000)) / (fcm / 1000);
+  // Z11: Formelfehler korrigiert – im Modul stand (fcm / 1000) im Nenner (k 1000-fach zu groß)
+  const kPlastizitaet = (1.05 * Ecm * (epsC1 / 1000)) / fcm;
   let epsC2 = 2.0, epsCu2 = 3.5, exponentN = 2.0;
   if (fck > 50) {
     epsC2 = 2.0 + 0.085 * Math.pow(fck - 50, 0.53);
@@ -157,6 +158,8 @@ pruefe(nahe(b.epsCa, 50.0e-6, 1e-9) && nahe(b.epsCd0, 399.78e-6, 1e-8) && nahe(b
 pruefe(nahe(b.phi0, 2.02452, 1e-5) && nahe(b.phiFinal, 2.00567, 1e-5) && !b.isNonlinearCreep && nahe(b.kSigma, 0.26675, 1e-5), `Kriechen ${b.phi0} ${b.phiFinal} ${b.kSigma}`);
 pruefe(nahe(b.epsCc, 465.37e-6, 1e-8) && nahe(b.deltaLCreepMm, 5.5845, 1e-4) && nahe(b.EcEff, 10924.9, 0.1) && nahe(b.EcEffZwang, 12607.5, 0.1), `Kriechdehnung ${b.epsCc} ${b.EcEff}`);
 pruefe(nahe(b.Ecm2025, 31938.8, 0.1) && nahe(b.etaFc2025, 1.0, 1e-12) && nahe(b.fckT0, 29.991, 1e-3), `2025/fck(t0) ${b.Ecm2025} ${b.etaFc2025} ${b.fckT0}`);
+//    Plastizitätszahl k = 1,05·E_cm·ε_c1/f_cm = 1,05·32 836,6·0,0021619/38 = 1,9616 (Gl. 3.14, früher 1000-fach zu groß)
+pruefe(nahe(b.kPlastizitaet, 1.9616, 1e-3), `k (Gl. 3.14) ${b.kPlastizitaet}`);
 gleichModul(STANDARD, 'Standardfall');
 
 // 2. Zweige: hochfest (C55/67, f_ck > 50), f_cm ≤ 35 (C25/30), Zement S/R, Gesteine, nichtlineares Kriechen

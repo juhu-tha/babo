@@ -4,6 +4,7 @@ import React from 'react';
 import { Calculator, HardHat } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/TunnelbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { spritzbetonRing } from '@/src/calc/verkehrswegebau';
 
 export interface TunnelbauTabProps {
   betonKlasse: 'C20/25' | 'C25/30' | 'C30/37';
@@ -125,25 +126,22 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
 
             {/* Ergebnisse Statik */}
             {(() => {
-              const d_meters = spritzbetonDicke / 100; // cm -> m
-              const sigma_ring = (gebirgsdruck * tunnelRadius) / d_meters; // in MPa
-              
               let f_ck = 25;
               if (betonKlasse === 'C20/25') f_ck = 20;
               else if (betonKlasse === 'C30/37') f_ck = 30;
 
-              // Temporärer Bemessungswert f_cd nach EC2 (vereinfacht für Bauzustand): f_cd = α_cc * f_ck / γ_c
-              const gamma_c = 1.3; // Temporärer Zustand im Tunnelbau
-              const alpha_cc = 0.85; 
-              const f_cd = (alpha_cc * f_ck) / gamma_c; // in MPa
-              const utilization = (sigma_ring / f_cd) * 100;
-              const isSafe = utilization <= 100;
+              // Rechenkern src/calc/verkehrswegebau.ts: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c (γ_c = 1,3, α_cc = 0,85)
+              const ring = spritzbetonRing(tunnelRadius, gebirgsdruck, spritzbetonDicke, f_ck);
+              const sigma_ring = ring.sigmaRing; // in MPa
+              const f_cd = ring.fcd; // in MPa
+              const utilization = ring.ausnutzung;
+              const isSafe = ring.ok;
 
               return (
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs font-sans">
                   <div className="grid grid-cols-2 font-mono gap-y-1">
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.ringdruckkraftNRing} /></div>
-                    <div className="text-right font-bold text-zinc-950">{formatDeZahl((gebirgsdruck * tunnelRadius * 1000), 1)} kN/m</div>
+                    <div className="text-right font-bold text-zinc-950">{formatDeZahl(ring.ringKraftKnM, 1)} kN/m</div>
 
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.ringdruckspannungRing} /></div>
                     <div className="text-right font-extrabold text-shiraz">{formatDeZahl(sigma_ring, 2)} MPa</div>

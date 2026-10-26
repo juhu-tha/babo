@@ -118,7 +118,7 @@ const COURSES: OnlineCourse[] = [
     category: 'rag_nlp',
     categoryLabel: inhalt.werte.ragVektordatenbanken,
     badgeColor: 'bg-amber-50 text-amber-800 border-amber-200',
-    url: 'https://www.youtube.com/results?search_query=florian+dahlitz+langchain+rag+deutsch',
+    url: 'https://docs.langchain.com/oss/python/langchain/rag',
     duration: inhalt.werte.tutorialReiheCa2,
     level: 'Praxis & Projekt',
     summary: inhalt.werte.schrittFürSchrittAnleitung,
@@ -134,13 +134,13 @@ const COURSES: OnlineCourse[] = [
     category: 'rag_nlp',
     categoryLabel: inhalt.werte.nlpTokenisierung,
     badgeColor: 'bg-amber-50 text-amber-800 border-amber-200',
-    url: 'https://www.youtube.com/results?search_query=heise+online+ct+wie+funktionieren+llm+embeddings',
+    url: 'https://developers.google.com/machine-learning/crash-course/llm/transformers?hl=de',
     duration: inhalt.werte.fokussierteSendungenJe30,
     level: 'Einsteiger (0 Vorwissen)',
     summary: inhalt.werte.technischFundierteJournalistischNeutrale,
     justification: inhalt.werte.idealZurVorbereitungAuf,
     constructionTransfer: inhalt.werte.grundlageFürDieRechtlich,
-    highlightTopics: [inhalt.werte.tokenÖkonomieKontextfenster, inhalt.werte.halluzinationsursachenEntropie, inhalt.werte.datensicherheitBeiCloudApis, 'Embedding-Visualisierung'],
+    highlightTopics: [inhalt.werte.tokenÖkonomieKontextfenster, inhalt.werte.datensicherheitBeiCloudApis, inhalt.werte.halluzinationsursachenEntropie, 'Training & Instruction-Tuning'],
     recommendedStart: inhalt.werte.cTUplinkGroße
   },
 
@@ -152,7 +152,7 @@ const COURSES: OnlineCourse[] = [
     category: 'lokal_mcp',
     categoryLabel: inhalt.werte.lokaleKiDatenschutz,
     badgeColor: 'bg-purple-50 text-purple-800 border-purple-200',
-    url: 'https://www.youtube.com/results?search_query=jens+polomski+ollama+lm+studio+deutsch',
+    url: 'https://lmstudio.ai/docs/app',
     duration: inhalt.werte.praxisTutorialsJe15,
     level: 'Einsteiger (0 Vorwissen)',
     summary: inhalt.werte.kompakteSchrittFürSchritt,
@@ -168,7 +168,7 @@ const COURSES: OnlineCourse[] = [
     category: 'lokal_mcp',
     categoryLabel: inhalt.werte.mcpAgentenSchnittstellen,
     badgeColor: 'bg-purple-50 text-purple-800 border-purple-200',
-    url: 'https://www.youtube.com/results?search_query=model+context+protocol+deutsch+tutorial+mcp',
+    url: 'https://modelcontextprotocol.io/docs/learn/architecture',
     duration: inhalt.werte.überblickWalkthroughCa45,
     level: 'Praxis & Projekt',
     summary: inhalt.werte.einführungInDasOffene,
@@ -194,22 +194,6 @@ const COURSES: OnlineCourse[] = [
     constructionTransfer: inhalt.werte.idealZurVorbereitungAuf2,
     highlightTopics: [inhalt.werte.einführungInDieKi, inhalt.werte.verantwortungsvollerUmgangMitDaten, inhalt.werte.mathematischeFundamente, inhalt.werte.zertifikatEctsAnerkennung],
     recommendedStart: inhalt.werte.kursDrMedKi
-  },
-  {
-    id: 'tum_machine_learning',
-    title: inhalt.werte.angewandtesMaschinellesLernenIm,
-    channel: inhalt.werte.tuMünchenUniversitätsVorlesungen,
-    category: 'hochschule',
-    categoryLabel: 'Universitätsvorlesung',
-    badgeColor: 'bg-rose-50 text-rose-800 border-rose-200',
-    url: 'https://www.youtube.com/results?search_query=machine+learning+civil+engineering+deutsch+vorlesung',
-    duration: inhalt.werte.semesterbegleitendeVorlesungsreihe,
-    level: 'Fortgeschrittene Grundlagen',
-    summary: inhalt.werte.akademischeVorlesungenZurAnwendung,
-    justification: inhalt.werte.verbindetDieKlassischeBaumechanik,
-    constructionTransfer: inhalt.werte.zustandsüberwachungVonBrückenStructural,
-    highlightTopics: ['Sensordaten-Fusion', inhalt.werte.anomalieErkennungBeiTragwerken, inhalt.werte.surrogatModelleFürFe, inhalt.werte.validierungNachEurocodeSicherheitsbeiwer],
-    recommendedStart: inhalt.werte.vorlesungseinheitSystemIdentifikationDat
   }
 ];
 

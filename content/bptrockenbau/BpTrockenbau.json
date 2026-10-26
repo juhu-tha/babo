@@ -83,7 +83,8 @@
     "ständerachsabstandCm": "Ständerachsabstand (cm)",
     "anwendungsbeispielResonanzfrequenzEinerM": "Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand",
     "masseFederMasseModell": "Masse-Feder-Masse-Modell mit Faserdämmung im Hohlraum (Lehrnäherung, d in m, m′ in kg/m²)",
-    "doppelbeplankungSenktF0": "Doppelbeplankung senkt f_0 um den Faktor √2 und verbessert die Schalldämmung deutlich – zusätzlich zur höheren Masse."
+    "doppelbeplankungSenktF0": "Doppelbeplankung senkt f_0 um den Faktor √2 und verbessert die Schalldämmung deutlich – zusätzlich zur höheren Masse.",
+    "reiterBereiche": "Bereiche Trockenbau"
   },
   "daten": {
     "DRY_PRODUCTS_DB": [

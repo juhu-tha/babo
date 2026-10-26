@@ -6,6 +6,7 @@ import { Mountain, Layers, Pickaxe, Activity, Grip, BookOpen } from 'lucide-reac
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/gesteine/Gesteine.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function Gesteine() {
   const [activeTab, setActiveTab] = useState<'arten' | 'eigenschaften' | 'kennwerte' | 'koernungen' | 'steckbrief'>('steckbrief');
@@ -20,55 +21,19 @@ export default function Gesteine() {
           <p><MdText text={inhalt.texte.gesteinskörnungenBildenDasTragende} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'arten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'arten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('arten')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.gesteinsartenEntstehung} /></button>
-          <button aria-pressed={activeTab === 'eigenschaften'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'eigenschaften' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('eigenschaften')}
-          >
-            <Pickaxe size={16} /><MdText text={inhalt.texte.eigenschaftenAnwendung} /></button>
-          <button aria-pressed={activeTab === 'kennwerte'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kennwerte' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kennwerte')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.technischeKennwertePrüfung} /></button>
-          <button aria-pressed={activeTab === 'koernungen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'koernungen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('koernungen')}
-          >
-            <Grip size={16} /> Gesteinskörnungen
-          </button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: 'Baustoff-Steckbrief', icon: BookOpen },
+            { id: 'arten' as const, label: inhalt.texte.gesteinsartenEntstehung, icon: Layers },
+            { id: 'eigenschaften' as const, label: inhalt.texte.eigenschaftenAnwendung, icon: Pickaxe },
+            { id: 'kennwerte' as const, label: inhalt.texte.technischeKennwertePrüfung, icon: Activity },
+            { id: 'koernungen' as const, label: 'Gesteinskörnungen', icon: Grip },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+        >
 
         {activeTab === 'arten' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -239,6 +204,7 @@ export default function Gesteine() {
             <BaustoffProfil materialKey="gesteine" />
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <FormulaDerivationBox

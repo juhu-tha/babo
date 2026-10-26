@@ -22,6 +22,7 @@ import {
   type ScriptableContext
 } from 'chart.js';
 import inhalt from '@/content/eigenspannungen/Eigenspannungen.json';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -34,6 +35,10 @@ ChartJS.register(
   Legend,
   Filler
 );
+
+const REITER = [
+  { id: 'beton', label: inhalt.texte.betonHydratation, icon: Box },
+] as const;
 
 export default function Eigenspannungen() {
   // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
@@ -181,18 +186,8 @@ export default function Eigenspannungen() {
     <div className="flex flex-col gap-8">
       
 
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'beton'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'beton' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('beton')}
-        >
-          <Box size={16} /><MdText text={inhalt.texte.betonHydratation} /></button>
-      </div>
-
+      {/* AP 2.8: bisher eine einzelne Umschaltfläche; als Reiterleiste mit einem Reiter (weitere Werkstoffe folgen) */}
+      <ModuleTabs label="Werkstoff" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-8 [&>[role=tabpanel]]:flex [&>[role=tabpanel]]:flex-col [&>[role=tabpanel]]:gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
           <Box className="text-shiraz" /><MdText text={inhalt.texte.eigenspannungenBeton} /></h2>
@@ -329,6 +324,8 @@ export default function Eigenspannungen() {
           ergebnisHinweis={inhalt.werte.abhilfeTemperaturdifferenzZwischenKern}
         />
       </div>
+
+      </ModuleTabs>
 
       <ModulTest moduleId="eigenspannungen" />
 

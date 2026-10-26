@@ -7,6 +7,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
 import inhalt from '@/content/baustoffkenngroessen/ZeitlichTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 export interface ZeitlichTabProps {
   currentTimed: { eps_el: number; phi_t: number; eps_cr: number; eps_cs: number; eps_total: number; sigma_t: number; };
@@ -232,6 +233,16 @@ export default function ZeitlichTab({ currentTimed, dehnungenChartData, relaxati
             </div>
           </div>
         </div>
+      </div>
+      {/* Z12: Rechenweg zur Formel */}
+      <div className="lg:col-span-2">
+        <FormulaDerivationBox
+          title={inhalt.werte.herleitungGesamtverformungUnterDauerlast}
+          zielGleichung="|\varepsilon_{\text{ges}}| = \varepsilon_{el} \cdot (1 + \phi) + |\varepsilon_{cs}|"
+          normQuelle={inhalt.werte.normGesamtverformung}
+          schritte={inhalt.daten["ZeitlichTab.schritte"]}
+          ergebnisHinweis={inhalt.werte.hinweisGesamtverformung}
+        />
       </div>
     </div>
   );

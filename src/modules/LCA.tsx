@@ -1013,17 +1013,16 @@ export default function LCA() {
                   <p className="text-emerald-800/80 text-xxs mt-0.5 max-w-xl"><MdText text={inhalt.texte.interaktiveBerechnungsdateiFürStudierend} /></p>
                 </div>
               </div>
-              <a
-                href="#transportbeton-excel"
-                onClick={(e) => {
-                  e.preventDefault();
+              <button
+                type="button"
+                onClick={() => {
                   import('@/src/modules/lca/TransportbetonExcelExport').then(m => m.generateTransportbetonExcel());
                 }}
                 className="shrink-0 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer"
               >
                 <FileText size={15} />
                 <span><MdText text={inhalt.texte.excelÜbungHerunterladen} /></span>
-              </a>
+              </button>
             </div>
 
           </div>

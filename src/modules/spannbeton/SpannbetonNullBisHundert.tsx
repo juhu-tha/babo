@@ -190,6 +190,18 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs font-mono text-center text-slate-800">
                   <InlineMath math="\sigma_u = -\frac{P}{A} - \frac{P \cdot e_p}{W_u} + \frac{M}{W_u} \le 0 \quad (\text{Vollständige Drucküberdeckung am Unterrand})" />
                 </div>
+                <details className="text-xs text-text-main/85">
+                  <summary className="cursor-pointer font-semibold text-shiraz"><MdText text={inhalt.texte.freyssinetLegendeTitel} /></summary>
+                  <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5">
+                    {inhalt.daten["SpannbetonNullBisHundert.freyssinetLegende"].map((z, i) => (
+                      <React.Fragment key={i}>
+                        <dt className="font-mono text-slate-800"><MdText text={z.symbol} /></dt>
+                        <dd className="leading-relaxed"><MdText text={z.text} /></dd>
+                      </React.Fragment>
+                    ))}
+                  </dl>
+                  <p className="mt-2 text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.freyssinetLegendeHinweis} /></p>
+                </details>
               </div>
 
               <div className="space-y-4">

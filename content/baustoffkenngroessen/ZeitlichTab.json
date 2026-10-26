@@ -6,12 +6,12 @@
     "kontinuierlicheZunahmeDerViskosen": "Kontinuierliche Zunahme der viskosen Dehnung unter einer **konstanten langanhaltenden mechanischen Spannung ($\\sigma_0$)**.",
     "einfacheBeispielrechnung": "🔢 Einfache Beispielrechnung:",
     "cr1030000": "ε_cr = (10 / 30.000) · 2,0 = 0,000333 · 2,0 = 0,000667 (0,67 ‰)",
-    "dauerlastspannungSigma010": "Dauerlastspannung $\\sigma_0 = 10 \\text{ MPa}$, E-Modul $E = 30.000 \\text{ MPa}$ (elastische Dehnung $\\varepsilon_{el} = 0{,}33 \\ \\text{‰}$) und Endkriechbeiwert $\\phi = 2{,}0$.",
+    "dauerlastspannungSigma010": "Dauerlastspannung $\\sigma_0 = 10 \\text{ MPa}$, E-Modul $E = 30.000 \\text{ MPa}$ (elastische Dehnung $\\varepsilon_{el} = 0{,}33 \\ \\text{\\char8240}$) und Endkriechbeiwert $\\phi = 2{,}0$.",
     "t2SchwindenShrinkage": "2. Schwinden (Shrinkage)",
     "volumenminderungÜberDieZeit": "Volumenminderung über die Zeit **ohne jegliche äußere Krafteinwirkung** (rein hygrisch durch Wasserabgabe aus Kapillaren und Poren).",
     "einfacheBeispielrechnung2": "🔢 Einfache Beispielrechnung:",
     "cs050": "ε_cs = -0,5 ‰ · 0,6 = -0,30 ‰",
-    "endschwindmaßVarepsilonCsInfty": "Endschwindmaß $\\varepsilon_{cs,\\infty} = -0{,}5 \\ \\text{‰}$ und zeitabhängiger Beiwert $\\beta_{ds}(t) = 0{,}6$ (nach ca. 100 Tagen).",
+    "endschwindmaßVarepsilonCsInfty": "Endschwindmaß $\\varepsilon_{cs,\\infty} = -0{,}5 \\ \\text{\\char8240}$ und zeitabhängiger Beiwert $\\beta_{ds}(t) = 0{,}6$ (nach ca. 100 Tagen).",
     "t3Relaxation": "3. Relaxation",
     "kontinuierlicherSpannungsabfallÜberDie": "Kontinuierlicher **Spannungsabfall** über die Zeit bei einer **erzwungenen, absolut konstanten Dehnung** (ein Teil der elastischen Dehnung wird durch Kriechvorgänge in bleibende Verformung umgewandelt).",
     "einfacheBeispielrechnung3": "🔢 Einfache Beispielrechnung:",
@@ -47,6 +47,33 @@
     "beobachtungszeitpunktT": "Beobachtungszeitpunkt (t)",
     "beobachtungszeitD": "Beobachtungszeit d",
     "restspannungMpa": "Restspannung (MPa)",
-    "beobachtungszeitD2": "Beobachtungszeit d"
+    "beobachtungszeitD2": "Beobachtungszeit d",
+    "herleitungGesamtverformungUnterDauerlast": "Herleitung: Gesamtverformung unter Dauerlast",
+    "normGesamtverformung": "DIN EN 1992-1-1, 3.1.4 und Anhang B",
+    "hinweisGesamtverformung": "Ein 10 m langes Bauteil verkürzt sich damit um rund 15 mm; nur gut ein Fünftel davon ist elastisch."
+  },
+  "daten": {
+    "ZeitlichTab.schritte": [
+      {
+        "titel": "1. Elastische Dehnung",
+        "formel": "\\varepsilon_{el} = \\frac{\\sigma_0}{E} = \\frac{10}{30\\,000} = 0{,}333 \\cdot 10^{-3}",
+        "erklaerung": "Sofortige, reversible Dehnung bei Lastaufbringung (σ₀ = 10 MPa, E = 30 000 MPa)."
+      },
+      {
+        "titel": "2. Kriechdehnung",
+        "formel": "\\varepsilon_{cr} = \\varepsilon_{el} \\cdot \\phi = 0{,}333 \\cdot 10^{-3} \\cdot 2{,}0 = 0{,}667 \\cdot 10^{-3}",
+        "erklaerung": "Die Kriechzahl φ ist das Verhältnis von Kriechdehnung zu elastischer Dehnung (lineares Kriechen bis etwa σ₀ ≤ 0,45 · f_ck)."
+      },
+      {
+        "titel": "3. Schwinddehnung",
+        "formel": "\\varepsilon_{cs,\\infty} = -0{,}50 \\cdot 10^{-3}",
+        "erklaerung": "Lastunabhängige Verkürzung durch Austrocknen; Endwert für t → ∞ wie das Endkriechmaß."
+      },
+      {
+        "titel": "4. Überlagerung",
+        "formel": "|\\varepsilon_{\\text{ges}}| = (0{,}333 + 0{,}667 + 0{,}50) \\cdot 10^{-3} = 1{,}50 \\cdot 10^{-3} = 1{,}50\\,\\text{mm/m}",
+        "erklaerung": "Alle drei Anteile verkürzen das Bauteil und addieren sich."
+      }
+    ]
   }
 }

@@ -24,6 +24,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpkunststoffe/BpKunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface PlasticType {
   id: string;
@@ -312,82 +313,22 @@ export default function BpKunststoffe() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.synthetischeBauprodukteAufPolymerbasis} /></p>
 
-        {/* Tab Navigation Menu */}
-        <div className="flex flex-wrap gap-1.5 pb-2 border-b border-home-grau/20 mt-6 -mx-6 px-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={14} /> Materialdatenbank
-          </button>
-
-          <button aria-pressed={activeTab === 'synthese'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'synthese' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('synthese')}
-          >
-            <Settings size={14} /><MdText text={inhalt.texte.t1SynthesenChemie} /></button>
-
-          <button aria-pressed={activeTab === 'viskoelastizitaet'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'viskoelastizitaet' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('viskoelastizitaet')}
-          >
-            <Activity size={14} /><MdText text={inhalt.texte.t2BurgersKriechmodell} /></button>
-
-          <button aria-pressed={activeTab === 'systeme'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'systeme' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('systeme')}
-          >
-            <Wrench size={14} /><MdText text={inhalt.texte.t3BausystemeProdukte} /></button>
-
-          <button aria-pressed={activeTab === 'rechner'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('rechner')}
-          >
-            <Thermometer size={14} /><MdText text={inhalt.texte.t4Längenrechner} /></button>
-
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={14} /> Praxisbeispiele
-          </button>
-
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
-              activeTab === 'innovation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={14} /> Zukunftstrends
-          </button>
-        </div>
       </div>
+      <ModuleTabs
+        label={inhalt.werte.reiterBereiche}
+        tabs={[
+          { id: 'allgemein' as const, label: 'Materialdatenbank', icon: BookOpen },
+          { id: 'synthese' as const, label: inhalt.texte.t1SynthesenChemie, icon: Settings },
+          { id: 'viskoelastizitaet' as const, label: inhalt.texte.t2BurgersKriechmodell, icon: Activity },
+          { id: 'systeme' as const, label: inhalt.texte.t3BausystemeProdukte, icon: Wrench },
+          { id: 'rechner' as const, label: inhalt.texte.t4Längenrechner, icon: Thermometer },
+          { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+          { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb },
+        ]}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="flex flex-col gap-8 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+      >
 
       {activeTab === 'allgemein' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-200">
@@ -1126,6 +1067,7 @@ export default function BpKunststoffe() {
           <InnovationTabContent moduleKey="bp_kunststoffe" />
         </div>
       )}
+      </ModuleTabs>
 
       <PlasticsThematicLinks current="bauprodukt" />
 

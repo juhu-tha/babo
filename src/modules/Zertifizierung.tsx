@@ -754,7 +754,7 @@ export default function Zertifizierung() {
                         <Building className="text-teal-600" size={22} /><MdText text={inhalt.texte.bnbSystemBewertungssystemNachhaltiges} /></h3>
                       <p className="text-xs text-text-main/60 mt-0.5"><MdText text={inhalt.texte.dasOffizielleNachhaltigeBewertungssystem} /></p>
                     </div>
-                    <a href="https://www.bnb-nachhaltigesbauen.de/de" target="_blank" rel="noreferrer" className="text-xs font-bold text-teal-600 hover:underline flex items-center gap-1 shrink-0">
+                    <a href="https://www.bnb-nachhaltigesbauen.de/" target="_blank" rel="noreferrer" className="text-xs font-bold text-teal-600 hover:underline flex items-center gap-1 shrink-0">
                       bnb-nachhaltigesbauen.de <Award size={12} />
                     </a>
                   </div>

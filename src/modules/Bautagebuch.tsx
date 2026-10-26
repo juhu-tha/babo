@@ -22,6 +22,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/bautagebuch/Bautagebuch.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 // Define the construction projects
 interface ProjectTemplate {
@@ -412,55 +413,20 @@ export default function Bautagebuch() {
               <p className="text-xs text-slate-500 font-mono"><MdText text={inhalt.texte.hoaiLeistungsphase8Objektüberwachung} /></p>
             </div>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => { setActiveTab('guide'); }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
-                activeTab === 'guide' 
-                  ? 'bg-shiraz/10 text-shiraz border-shiraz' 
-                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-              }`}
-              id="tab-btn-guide"
-            ><MdText text={inhalt.texte.leitfadenVobRegeln} /></button>
-            <button
-              onClick={() => { setActiveTab('scenarios'); }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
-                activeTab === 'scenarios' 
-                  ? 'bg-shiraz/10 text-shiraz border-shiraz' 
-                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-              }`}
-              id="tab-btn-scenarios"
-            >
-              Lernszenarien
-            </button>
-            <button
-              onClick={() => { setActiveTab('editor'); }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
-                activeTab === 'editor' 
-                  ? 'bg-shiraz/10 text-shiraz border-shiraz' 
-                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-              }`}
-              id="tab-btn-editor"
-            ><MdText text={inhalt.texte.berichtErstellen} /></button>
-            <button
-              onClick={() => { setActiveTab('saved'); }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border relative ${
-                activeTab === 'saved' 
-                  ? 'bg-shiraz/10 text-shiraz border-shiraz' 
-                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-              }`}
-              id="tab-btn-saved"
-            ><MdText text={inhalt.texte.gespeicherteBerichte} />{savedDiaries.length})
-              {savedDiaries.length > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-shiraz text-xs font-bold text-white">
-                  {savedDiaries.length}
-                </span>
-              )}
-            </button>
-          </div>
         </div>
 
+        <ModuleTabs
+          label={inhalt.werte.bereicheBautagebuch}
+          tabs={[
+            { id: 'guide' as const, label: inhalt.texte.leitfadenVobRegeln },
+            { id: 'scenarios' as const, label: 'Lernszenarien' },
+            { id: 'editor' as const, label: inhalt.texte.berichtErstellen },
+            { id: 'saved' as const, label: `${inhalt.texte.gespeicherteBerichte}${savedDiaries.length})` },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:mb-6"
+        >
         {/* INFO BOX */}
         <div className="bg-slate-50 rounded-xl p-4 border border-home-grau/30 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
@@ -1132,6 +1098,7 @@ export default function Bautagebuch() {
             </div>
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

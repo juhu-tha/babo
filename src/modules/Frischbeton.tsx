@@ -9,9 +9,18 @@ import Frischbetondruck from './Frischbetondruck';
 import Frischbetontemperatur from './Frischbetontemperatur';
 import inhalt from '@/content/frischbeton/Frischbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 type TabKey = 'konsistenz' | 'ausbreitversuch' | 'luftporen' | 'frischbetondruck' | 'frischbetontemperatur';
 type TestVerfahren = 'ausbreitmass' | 'verdichtungsmass' | 'setzmass' | 'setzfliessmass';
+
+const REITER = [
+  { id: 'konsistenz', label: inhalt.texte.konsistenzklassenGrenzabmaße, icon: Layers },
+  { id: 'ausbreitversuch', label: inhalt.texte.ausbreitversuchRheologie, icon: Waves },
+  { id: 'luftporen', label: inhalt.texte.luftporenRohdichte, icon: Wind },
+  { id: 'frischbetondruck', label: inhalt.texte.frischbetondruckDin18218, icon: Gauge },
+  { id: 'frischbetontemperatur', label: 'Frischbetontemperatur', icon: Thermometer },
+] as const;
 
 export default function Frischbeton() {
   const [activeTab, setActiveTab] = useState<TabKey>('konsistenz');
@@ -105,54 +114,7 @@ export default function Frischbeton() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'konsistenz'} 
-            onClick={() => setActiveTab('konsistenz')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'konsistenz' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.konsistenzklassenGrenzabmaße} /></button>
-          <button aria-pressed={activeTab === 'ausbreitversuch'} 
-            onClick={() => setActiveTab('ausbreitversuch')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'ausbreitversuch' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Waves size={16} /><MdText text={inhalt.texte.ausbreitversuchRheologie} /></button>
-          <button aria-pressed={activeTab === 'luftporen'} 
-            onClick={() => setActiveTab('luftporen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'luftporen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Wind size={16} /><MdText text={inhalt.texte.luftporenRohdichte} /></button>
-          <button aria-pressed={activeTab === 'frischbetondruck'} 
-            onClick={() => setActiveTab('frischbetondruck')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'frischbetondruck' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Gauge size={16} /><MdText text={inhalt.texte.frischbetondruckDin18218} /></button>
-          <button aria-pressed={activeTab === 'frischbetontemperatur'} 
-            onClick={() => setActiveTab('frischbetontemperatur')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'frischbetontemperatur' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Thermometer size={16} /> Frischbetontemperatur
-          </button>
-        </div>
+        <ModuleTabs label="Bereiche Frischbeton" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6">
 
         {/* Tab 1: Konsistenzklassen & Grenzabmaße */}
         {activeTab === 'konsistenz' && (
@@ -647,6 +609,7 @@ export default function Frischbeton() {
             <Frischbetontemperatur />
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <FormulaDerivationBox

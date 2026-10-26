@@ -207,7 +207,8 @@
     "rheologischesLehrmodellParameterAls": "Rheologisches Lehrmodell (Parameter als Lehrwerte)",
     "schonNachGutEinem": "Schon nach gut einem Monat ist die Dehnung um 70 % gewachsen – deshalb wird mit dem Kriechmodul statt dem Kurzzeit-E-Modul bemessen.",
     "kunststoffeImBauwesen": "Kunststoffe im Bauwesen",
-    "polymethylmethacrylatPlexiglas": "Polymethylmethacrylat (Plexiglas)"
+    "polymethylmethacrylatPlexiglas": "Polymethylmethacrylat (Plexiglas)",
+    "reiterBereiche": "Bereiche Kunststoffe"
   },
   "daten": {
     "BpKunststoffe.burgersParams": {

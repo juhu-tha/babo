@@ -6,6 +6,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { BUILDING_ZONES } from './daten';
 import inhalt from '@/content/expositionsklassen/ExpositionsklassenSkizze.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export interface ExpositionsklassenSkizzeProps {
   selectedClasses: string[];
@@ -13,6 +14,11 @@ export interface ExpositionsklassenSkizzeProps {
   onToggleClass?: (cls: string) => void;
   compact?: boolean;
 }
+
+const REITER = [
+  { id: 'building', label: inhalt.texte.t1BauwerksZonierung, icon: Compass },
+  { id: 'cover', label: inhalt.texte.t2DetailzoomBetondeckungEc2, icon: Eye },
+] as const;
 
 export function ExpositionsklassenSkizze({
   selectedClasses,
@@ -44,31 +50,9 @@ export function ExpositionsklassenSkizze({
           </div>
         </div>
 
-        {/* Tab Switcher: Gebäudeschnitt vs Betondeckung */}
-        <div className="flex p-1 bg-off-white rounded-xl border border-home-grau/20 self-start sm:self-auto text-xs font-bold">
-          <button aria-pressed={activeMode === 'building'}
-            type="button"
-            onClick={() => setActiveMode('building')}
-            className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-              activeMode === 'building'
-                ? 'bg-shiraz text-white shadow-xs'
-                : 'text-text-main/70 hover:text-text-main hover:bg-white'
-            }`}
-          >
-            <Compass size={14} /><MdText text={inhalt.texte.t1BauwerksZonierung} /></button>
-          <button aria-pressed={activeMode === 'cover'}
-            type="button"
-            onClick={() => setActiveMode('cover')}
-            className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-              activeMode === 'cover'
-                ? 'bg-shiraz text-white shadow-xs'
-                : 'text-text-main/70 hover:text-text-main hover:bg-white'
-            }`}
-          >
-            <Eye size={14} /><MdText text={inhalt.texte.t2DetailzoomBetondeckungEc2} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Ansicht der Expositionsskizze" tabs={REITER} aktiv={activeMode} onWechsel={setActiveMode} className="[&>[role=tablist]]:mb-6 [&>[role=tabpanel]]:space-y-6">
       {/* QUICK PRESET PILLS */}
       <div className="space-y-2">
         <span className="text-xs font-bold text-text-main/70 block"><MdText text={inhalt.texte.schnellauswahlTypischerIngenieurbauteile} /></span>
@@ -544,7 +528,7 @@ export function ExpositionsklassenSkizze({
               <rect x="270" y="30" width="620" height="310" fill="#fdf2f8" fillOpacity="0.9" />
               <rect x="270" y="30" width="620" height="310" fill="url(#concretePores)" />
               <text x="370" y="60" fill="#831843" fontSize="12" fontWeight="bold">
-                Alkalische Schutzmatrix (pH &approx; 12,5 &ndash; 13,5)
+                Alkalische Schutzmatrix (pH ≈ 12,5 &ndash; 13,5)
               </text>
               <text x="370" y="78" fill="#9d174d" fontSize="10">
                 Stabiler Passivierungsfilm (&gamma;-Fe₂O₃) schützt den Bewehrungsstahl
@@ -653,7 +637,7 @@ export function ExpositionsklassenSkizze({
               </text>
               <line x1="160" y1="220" x2="600" y2="220" stroke="#0284c7" strokeWidth="1" strokeDasharray="2,2" />
               <text x="470" y="215" fill="#0284c7" fontSize="9">
-                Kritischer Grenzwert Ccrit &approx; 0,40–0,50 M.-% bez. auf Zement
+                Kritischer Grenzwert Ccrit ≈ 0,40–0,50 M.-% bez. auf Zement
               </text>
             </svg>
           </div>
@@ -679,7 +663,7 @@ export function ExpositionsklassenSkizze({
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t3ChloridLochfraß} /></span>
                 <div className="text-center py-1 font-mono text-cyan-800 font-bold">
-                  Ccrit &approx; 0,40 &ndash; 0,50 M.-%
+                  Ccrit ≈ 0,40 &ndash; 0,50 M.-%
                 </div>
                 <p className="text-text-main/70"><MdText text={inhalt.texte.chlorideInitiierenLochfraßkorrosionLokal} /></p>
               </div>
@@ -687,6 +671,7 @@ export function ExpositionsklassenSkizze({
           </div>
         </div>
       )}
+      </ModuleTabs>
 
     </div>
   );

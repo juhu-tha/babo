@@ -20,6 +20,16 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/spannbeton/SpannbetonDauerhaftigkeit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+
+const REITER = [
+  { id: 'uebersicht', label: inhalt.texte.t1SpannungsrisskorrosionGefahren, icon: ShieldAlert },
+  { id: 'betondeckung', label: inhalt.texte.t2BetondeckungRechnerC, icon: Scale },
+  { id: 'injektion', label: inhalt.texte.t3EinpressmörtelDinEn, icon: Droplets },
+  { id: 'risse_dekompression', label: inhalt.texte.t4DekompressionRissbreiten, icon: Layers },
+  { id: 'zfp', label: inhalt.texte.t5ZfpPrüfverfahrenUltraschall, icon: Search },
+  { id: 'schadensfaelle', label: inhalt.texte.t6HistorischeHavarienLehren, icon: Flame },
+] as const;
 
 export default function SpannbetonDauerhaftigkeit() {
   // Configurator state
@@ -122,76 +132,9 @@ export default function SpannbetonDauerhaftigkeit() {
           <p><MdText text={inhalt.texte.imSpannbetonbauIstDer} /></p>
         </div>
 
-        {/* Sub-Tabs Navigation */}
-        <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'uebersicht'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'uebersicht'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('uebersicht')}
-          >
-            <ShieldAlert size={15} /><MdText text={inhalt.texte.t1SpannungsrisskorrosionGefahren} /></button>
-
-          <button aria-pressed={activeTab === 'betondeckung'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'betondeckung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('betondeckung')}
-          >
-            <Scale size={15} /><MdText text={inhalt.texte.t2BetondeckungRechnerC} /></button>
-
-          <button aria-pressed={activeTab === 'injektion'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'injektion'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('injektion')}
-          >
-            <Droplets size={15} /><MdText text={inhalt.texte.t3EinpressmörtelDinEn} /></button>
-
-          <button aria-pressed={activeTab === 'risse_dekompression'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'risse_dekompression'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('risse_dekompression')}
-          >
-            <Layers size={15} /><MdText text={inhalt.texte.t4DekompressionRissbreiten} /></button>
-
-          <button aria-pressed={activeTab === 'zfp'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'zfp'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('zfp')}
-          >
-            <Search size={15} /><MdText text={inhalt.texte.t5ZfpPrüfverfahrenUltraschall} /></button>
-
-          <button aria-pressed={activeTab === 'schadensfaelle'}
-            type="button"
-            className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-              activeTab === 'schadensfaelle'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('schadensfaelle')}
-          >
-            <Flame size={15} /><MdText text={inhalt.texte.t6HistorischeHavarienLehren} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Bereiche Dauerhaftigkeit" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-6">
       {/* 1. REITER: SPANNUNGSRISSKORROSION & GEFAHREN */}
       {activeTab === 'uebersicht' && (
         <div className="space-y-6 animate-in fade-in duration-300">
@@ -1053,6 +996,7 @@ export default function SpannbetonDauerhaftigkeit() {
           </div>
         </div>
       )}
+      </ModuleTabs>
     </div>
   );
 }

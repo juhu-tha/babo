@@ -5,6 +5,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/HygrischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 export interface HygrischTabProps {
   masseFeucht: number;
@@ -191,6 +192,16 @@ export default function HygrischTab({ masseFeucht, masseTrocken, sdDicke, sdMuWe
             })()}
           </div>
         </div>
+      </div>
+      {/* Z12: Rechenweg zur Formel */}
+      <div className="lg:col-span-2">
+        <FormulaDerivationBox
+          title={inhalt.werte.herleitungDiffusionsäquivalenteLuftschichtdicke}
+          zielGleichung="s_d = \mu \cdot d"
+          normQuelle={inhalt.werte.normSd}
+          schritte={inhalt.daten["HygrischTab.schritte"]}
+          ergebnisHinweis={inhalt.werte.hinweisSd}
+        />
       </div>
     </div>
   );

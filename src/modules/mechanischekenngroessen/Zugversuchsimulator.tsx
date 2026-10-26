@@ -463,7 +463,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
               {
                 titel: inhalt.werte.elastischeDehnungHooke,
                 erklaerung: `Mit dem E-Modul E = ${formatDeZahl(mat.E, 0)} MPa:`,
-                formel: `\\varepsilon = \\frac{${formatDeTeX(sim.sigma, 1)}}{${formatDeTeX(mat.E, 0)}} = ${formatDeTeX(sim.epsilonPromille, 2)}\\,\\text{‰}`
+                formel: `\\varepsilon = \\frac{${formatDeTeX(sim.sigma, 1)}}{${formatDeTeX(mat.E, 0)}} = ${formatDeTeX(sim.epsilonPromille, 2)}\\,\\text{\\char8240}`
               },
               {
                 titel: inhalt.werte.elastischeLängenänderung,

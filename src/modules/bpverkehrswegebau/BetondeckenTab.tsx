@@ -4,6 +4,7 @@ import React from 'react';
 import { Layers, Calculator, AlertTriangle, Milestone, Droplets } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/BetondeckenTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { westergaardRand, betondeckenFugen } from '@/src/calc/verkehrswegebau';
 
 export interface BetondeckenTabProps {
   betonAchslast: number;
@@ -121,28 +122,15 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
               {/* Berechnung output */}
               {(() => {
-                const E_conc = 34000; // MPa or N/mm²
-                const nu_conc = 0.2; // Poisson ratio
-                const h_mm = betonSlabThickness * 10;
-                const P_wheel_N = (betonAchslast / 2) * 1000; // in Newtons
-                const k_N_mm3 = betonBettung * 1e-3; // MN/m³ to N/mm³
-
-                // Radius of relative stiffness l [mm]
-                const l_mm = Math.pow((E_conc * Math.pow(h_mm, 3)) / (12 * (1 - Math.pow(nu_conc, 2)) * k_N_mm3), 0.25);
-                
-                // Equivalent contact radius r [mm] assuming tire pressure of 0.8 MPa
-                const r_mm = Math.sqrt(P_wheel_N / (0.8 * Math.PI));
-
-                // Westergaard Randbiegespannung sigma_e [MPa]
-                // sigma_e = 0.572 * (P / h^2) * [4 * log10(l / r) + 0.359]
-                const log_val = Math.log10(l_mm / r_mm);
-                const sigma_e = (0.572 * P_wheel_N / Math.pow(h_mm, 2)) * (4 * log_val + 0.359);
-
-                // Grenzspannungsprüfung
+                // Rechenkern src/calc/verkehrswegebau.ts (Westergaard-Randspannung, Lehrannahmen E = 34 000 N/mm², ν = 0,2, p = 0,8 N/mm²)
+                const w = westergaardRand({ dickeCm: betonSlabThickness, achslastKn: betonAchslast, bettungMNm3: betonBettung });
+                const l_mm = w.lMm;
+                const r_mm = w.rMm;
+                const sigma_e = w.sigmaE;
                 // C30/37 Biegezug-Charakteristik = 4.5 MPa. Dauerfestigkeitsfaktor unter zyklischer Autobahnbelastung = 2.0 -> zulässig ca. 2.25 MPa
-                const allowed_sigma = 2.25; 
-                const isThicknessOK = sigma_e <= allowed_sigma;
-                const ratio = (sigma_e / allowed_sigma) * 100;
+                const allowed_sigma = 2.25;
+                const isThicknessOK = w.ok;
+                const ratio = w.ausnutzung;
 
                 return (
                   <div className="bg-zinc-50 p-4 border border-zinc-200 rounded-lg space-y-3 mt-3 text-xs">
@@ -289,14 +277,12 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
               {/* Fugen und Beiwert Checks */}
               {(() => {
-                const maxAllowedL = Math.min(25 * (betonSlabThickness / 100), 5.0);
-                const isFugenOK = betonFugenAbstand <= maxAllowedL;
-                
-                // Calculate requirements (Dowels and tie bars) for joint
-                // Transverse Joint (Querfuge): Spacing of dowels ø 25 is 25 cm. For typical 3.75m lanes:
-                const dowelCount = Math.floor(3.75 / 0.25);
-                // Longitudinal Joint (Längsfuge): spacing 1.5m -> Tie bars per slab length
-                const tieBarCount = Math.max(3, Math.floor(betonFugenAbstand / 1.5) + 1);
+                // Rechenkern: Fugenabstand L ≤ min(25·h; 5,0 m), Dübel Ø 25 alle 25 cm je 3,75-m-Fahrstreifen, Anker alle 1,5 m
+                const fugen = betondeckenFugen(betonFugenAbstand, betonSlabThickness);
+                const maxAllowedL = fugen.maxAbstandM;
+                const isFugenOK = fugen.ok;
+                const dowelCount = fugen.duebel;
+                const tieBarCount = fugen.anker;
 
                 return (
                   <div className="bg-zinc-50 p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">

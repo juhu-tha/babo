@@ -13,6 +13,18 @@ import Zugversuchsimulator from './mechanischekenngroessen/Zugversuchsimulator';
 import Beispiele from './mechanischekenngroessen/Beispiele';
 import inhalt from '@/content/mechanischekenngroessen/MechanischeKenngroessen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { stabKenngroessen } from '@/src/calc/mechanischeKenngroessen';
+
+const REITER = [
+  { id: 'grundlagen', label: inhalt.texte.t1SpannungDehnung, icon: Activity },
+  { id: 'hooke_emodul', label: inhalt.texte.t2EModulHooke, icon: Sparkles },
+  { id: 'steifigkeiten', label: inhalt.texte.t3DehnBiegesteifigkeitEa, icon: MoveHorizontal },
+  { id: 'kriechen_schwinden', label: inhalt.texte.t4KriechenSchwindenRelaxation, icon: Clock },
+  { id: 'simulator', label: inhalt.texte.t5InteraktiverSimulator, icon: Sliders },
+  { id: 'matrix', label: inhalt.texte.t6WerkstoffMatrix, icon: Layers },
+  { id: 'beispiele', label: inhalt.texte.t7PraxisBeispiele, icon: BookOpen },
+] as const;
 
 export default function MechanischeKenngroessen() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'hooke_emodul' | 'steifigkeiten' | 'kriechen_schwinden' | 'simulator' | 'matrix' | 'beispiele'>('grundlagen');
@@ -49,163 +61,19 @@ export default function MechanischeKenngroessen() {
   };
 
   // Berechnungen für den Simulator, Steifigkeiten & Stabilität
-  const sim = useMemo(() => {
-    // 1. Querschnittsfläche A0 & Flächenträgheitsmomente I
-    let A0_mm2 = 0;
-    let d0_mm = 0;
-    let I_y_mm4 = 0;
-    let I_z_mm4 = 0;
-    let I_min_mm4 = 0;
-
-    if (querschnittTyp === 'rund') {
-      A0_mm2 = (Math.PI * Math.pow(durchmesserMm, 2)) / 4;
-      d0_mm = durchmesserMm;
-      I_y_mm4 = (Math.PI * Math.pow(durchmesserMm, 4)) / 64;
-      I_z_mm4 = I_y_mm4;
-      I_min_mm4 = I_y_mm4;
-    } else {
-      A0_mm2 = breiteMm * hoeheMm;
-      d0_mm = Math.min(breiteMm, hoeheMm);
-      // I bzgl. starker Achse y: b * h³ / 12, schwache Achse z: h * b³ / 12
-      I_y_mm4 = (breiteMm * Math.pow(hoeheMm, 3)) / 12;
-      I_z_mm4 = (hoeheMm * Math.pow(breiteMm, 3)) / 12;
-      I_min_mm4 = Math.min(I_y_mm4, I_z_mm4);
-    }
-
-    const I_mm4 = I_y_mm4;
-
-    // 2. Dehnsteifigkeit EA & Biegesteifigkeit EI
-    const EA_N = mat.E * A0_mm2; // N
-    const EA_kN = EA_N / 1000; // kN
-    const EA_MN = EA_N / 1e6; // MN
-
-    const EI_Nmm2 = mat.E * I_mm4; // N*mm²
-    const EI_kNm2 = EI_Nmm2 / 1e9; // kNm²
-    const EI_min_kNm2 = (mat.E * I_min_mm4) / 1e9; // kNm²
-
-    // Federsteifigkeit des Längsstabs: c = EA / L
-    const L0_mm = stabLaengeM * 1000;
-    const federsteifigkeit_N_mm = EA_N / L0_mm; // N/mm (oder kN/m)
-    const federsteifigkeit_kN_m = federsteifigkeit_N_mm;
-
-    // Biegung Einfeldträger unter Einzellast F in Feldmitte: w_max = F * L³ / (48 * EI)
-    const F_N = (lastArt === 'zug' ? kraftKn : -kraftKn) * 1000;
-    const absF_N = Math.abs(F_N);
-    const biegedurchbiegung_mm = (absF_N * Math.pow(L0_mm, 3)) / (48 * EI_Nmm2);
-
-    // 3. Normalspannung sigma = F / A (in MPa = N/mm²)
-    const sigma = F_N / A0_mm2;
-    const absSigma = Math.abs(sigma);
-
-    // 4. Differenzierung spröder vs. duktiler Werkstoffe & Grenzfestigkeiten
-    const isSproede = mat.kategorie === 'Mineralisch' || mat.kategorie === 'Glas';
-    let zulSpannung = 0;
-    let fliessGrenze = 0;
-
-    if (lastArt === 'zug') {
-      zulSpannung = mat.fu; // Zugfestigkeit fctm / fu
-      fliessGrenze = isSproede ? mat.fu : mat.fy; // Spröde Stoffe besitzen keine plastische Fließgrenze
-    } else {
-      zulSpannung = mat.fy; // Druckfestigkeit fcm / fc0k / fy
-      fliessGrenze = mat.fy;
-    }
-
-    const auslastungFestigkeit = (absSigma / (zulSpannung || 1)) * 100;
-    const auslastungFliess = (absSigma / (fliessGrenze || 1)) * 100;
-
-    const isPlastisch = !isSproede && absSigma > fliessGrenze && absSigma <= zulSpannung;
-    const isVersagt = absSigma > zulSpannung;
-
-    // 5. Knicknachweis nach Euler (Stabilitätsprüfung bei Druck)
-    // Pendelstab (Euler-Fall 2: beta = 1.0)
-    const betaKnick = 1.0;
-    const F_K_N = (Math.pow(Math.PI, 2) * mat.E * I_min_mm4) / Math.pow(betaKnick * L0_mm, 2);
-    const F_K_kN = F_K_N / 1000;
-    const knickAuslastung = lastArt === 'druck' ? (kraftKn / (F_K_kN || 0.001)) * 100 : 0;
-    const isKnickGefaehrdet = lastArt === 'druck' && kraftKn > F_K_kN;
-
-    // 6. Dehnung epsilon = sigma / E (linear-elastisch nach Hooke)
-    const epsilon = sigma / mat.E; // [-]
-    const epsilonPromille = epsilon * 1000; // ‰
-    const epsilonProzent = epsilon * 100; // %
-
-    // 7. Längenänderung Delta L = epsilon * L0 = (F * L0) / (E * A)
-    const deltaL_mm = (F_N * L0_mm) / EA_N;
-    const endLaenge_mm = L0_mm + deltaL_mm;
-
-    // 8. Querdehnung epsilon_q = -nu * epsilon
-    const epsilonQ = -mat.nu * epsilon;
-    const deltaD_mm = epsilonQ * d0_mm;
-    const endD_mm = d0_mm + deltaD_mm;
-
-    // 9. Elastische Formänderungsenergie (Federarbeit) U = 0.5 * F * Delta L
-    const U_Joule = 0.5 * (absF_N * (Math.abs(deltaL_mm) / 1000));
-
-    // 10. Schubmodul G & Kompressionsmodul K
-    const G_MPa = mat.E / (2 * (1 + mat.nu));
-    const K_MPa = mat.E / (3 * (1 - 2 * mat.nu));
-
-    // 11. Langzeitkriechen (Kriechdehnung & Kriechstauchung)
-    const effEModulKriechen = mat.E / (1 + kriechZahl);
-    const deltaL_kriechen_mm = deltaL_mm * kriechZahl; // zusätzliche Verformung durch Kriechen
-    const deltaL_elastisch_plus_kriechen_mm = deltaL_mm * (1 + kriechZahl);
-
-    // 12. Schwindverkürzung Delta L_s
-    const deltaL_schwinden_mm = -(schwindMassPromille / 1000) * L0_mm;
-
-    // 13. Gesamtverformung nach Kriechen & Schwinden
-    const deltaL_gesamt_mm = deltaL_elastisch_plus_kriechen_mm + deltaL_schwinden_mm;
-    const endLaengeGesamt_mm = L0_mm + deltaL_gesamt_mm;
-
-    // Stabmasse
-    const volumen_m3 = (A0_mm2 / 1e6) * stabLaengeM;
-    const masse_kg = volumen_m3 * mat.dichte;
-
-    return {
-      A0_mm2,
-      d0_mm,
-      I_mm4,
-      I_y_mm4,
-      I_z_mm4,
-      I_min_mm4,
-      EA_kN,
-      EA_MN,
-      EI_kNm2,
-      EI_min_kNm2,
-      federsteifigkeit_kN_m,
-      biegedurchbiegung_mm,
-      sigma,
-      absSigma,
-      zulSpannung,
-      fliessGrenze,
-      auslastungFestigkeit,
-      auslastungFliess,
-      isSproede,
-      isPlastisch,
-      isVersagt,
-      F_K_kN,
-      knickAuslastung,
-      isKnickGefaehrdet,
-      epsilon,
-      epsilonPromille,
-      epsilonProzent,
-      deltaL_mm,
-      endLaenge_mm,
-      epsilonQ,
-      deltaD_mm,
-      endD_mm,
-      U_Joule,
-      G_MPa,
-      K_MPa,
-      effEModulKriechen,
-      deltaL_kriechen_mm,
-      deltaL_elastisch_plus_kriechen_mm,
-      deltaL_schwinden_mm,
-      deltaL_gesamt_mm,
-      endLaengeGesamt_mm,
-      masse_kg
-    };
-  }, [mat, lastArt, kraftKn, stabLaengeM, querschnittTyp, durchmesserMm, breiteMm, hoeheMm, kriechZahl, schwindMassPromille]);
+  // Rechenkern src/calc/mechanischeKenngroessen.ts (Querschnitt, Steifigkeiten, Hooke, Euler-Knicklast, Kriechen/Schwinden)
+  const sim = useMemo(() => stabKenngroessen({
+    werkstoff: mat,
+    lastArt,
+    kraftKn,
+    laengeM: stabLaengeM,
+    querschnitt: querschnittTyp,
+    durchmesserMm,
+    breiteMm,
+    hoeheMm,
+    kriechZahl,
+    schwindPromille: schwindMassPromille,
+  }), [mat, lastArt, kraftKn, stabLaengeM, querschnittTyp, durchmesserMm, breiteMm, hoeheMm, kriechZahl, schwindMassPromille]);
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">
@@ -229,74 +97,9 @@ export default function MechanischeKenngroessen() {
           </p>
         </div>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.t1SpannungDehnung} /></button>
-          <button aria-pressed={activeTab === 'hooke_emodul'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'hooke_emodul'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('hooke_emodul')}
-          >
-            <Sparkles size={16} /><MdText text={inhalt.texte.t2EModulHooke} /></button>
-          <button aria-pressed={activeTab === 'steifigkeiten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steifigkeiten'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steifigkeiten')}
-          >
-            <MoveHorizontal size={16} /><MdText text={inhalt.texte.t3DehnBiegesteifigkeitEa} /></button>
-          <button aria-pressed={activeTab === 'kriechen_schwinden'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kriechen_schwinden'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kriechen_schwinden')}
-          >
-            <Clock size={16} /><MdText text={inhalt.texte.t4KriechenSchwindenRelaxation} /></button>
-          <button aria-pressed={activeTab === 'simulator'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'simulator'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('simulator')}
-          >
-            <Sliders size={16} /><MdText text={inhalt.texte.t5InteraktiverSimulator} /></button>
-          <button aria-pressed={activeTab === 'matrix'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'matrix'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('matrix')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.t6WerkstoffMatrix} /></button>
-          <button aria-pressed={activeTab === 'beispiele'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'beispiele'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('beispiele')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.t7PraxisBeispiele} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Lehrpfad Mechanische Kenngrößen" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {/* TAB 1: GRUNDLAGEN (Spannung & Dehnung) */}
       {activeTab === 'grundlagen' && <Grundlagen />}
 
@@ -432,6 +235,7 @@ export default function MechanischeKenngroessen() {
 
       {/* TAB 7: GERECHNETE BEISPIELE */}
       {activeTab === 'beispiele' && <Beispiele />}
+      </ModuleTabs>
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>

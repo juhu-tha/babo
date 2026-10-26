@@ -15,6 +15,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Layers, Activity, Maximize, BookOpen } from 'lucide-react';
 import inhalt from '@/content/glas/Glas.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 const glassTypes = inhalt.daten.glassTypes;
 
@@ -121,45 +122,19 @@ export default function Glas() {
           <p><MdText text={inhalt.texte.glasIstEinSpröder} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'festigkeit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'festigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('festigkeit')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.festigkeitBruchwahrscheinlichkeit} /></button>
-          <button aria-pressed={activeTab === 'verbundglas'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'verbundglas' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('verbundglas')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.verbundsicherheitsglasVsg} /></button>
-          <button aria-pressed={activeTab === 'isoglas'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'isoglas' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('isoglas')}
-          >
-            <Maximize size={16} /><MdText text={inhalt.texte.mehrscheibenIsolierglasMig} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: 'Baustoff-Steckbrief', icon: BookOpen },
+            { id: 'festigkeit' as const, label: inhalt.texte.festigkeitBruchwahrscheinlichkeit, icon: Activity },
+            { id: 'verbundglas' as const, label: inhalt.texte.verbundsicherheitsglasVsg, icon: Layers },
+            { id: 'isoglas' as const, label: inhalt.texte.mehrscheibenIsolierglasMig, icon: Maximize },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+        >
+        <div className="flex flex-col gap-6">
 
       {activeTab === 'festigkeit' && (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in fade-in duration-300">
@@ -371,6 +346,8 @@ export default function Glas() {
           <BaustoffProfil materialKey="glas" />
         </div>
       )}
+        </div>
+        </ModuleTabs>
       </div>
     
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

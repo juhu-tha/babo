@@ -1,5 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import { 
   Leaf, 
   BookOpen, 
@@ -24,6 +24,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/ressourceneffizienz/Ressourceneffizienz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -57,6 +58,10 @@ export const R_STRATEGIES: RStrategy[] = inhalt.daten.R_STRATEGIES;
 
 export default function Ressourceneffizienz() {
   const [activeTab, setActiveTab] = useState<RezTab>('informieren');
+  // Konzeptkarten als Reiter (AP 2.8): ARIA-Tabs mit Pfeiltasten wie ModuleTabs; die Karten tragen
+  // Untertitel und Beschreibung, deshalb eigenes Markup mit der gemeinsamen Tastenlogik reiterZiel
+  const reiterBasis = useId();
+  const reiterRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [selectedR, setSelectedR] = useState<string>('R0');
 
   // Input states for Tab 2: Handeln (Material-Effizienz-Simulator)
@@ -251,13 +256,31 @@ export default function Ressourceneffizienz() {
       </div>
 
       {/* Grid of the 4 Pillars as big action Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {concepts.map((concept) => {
+      <div
+        role="tablist"
+        aria-label={inhalt.werte.bereicheRessourceneffizienz}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        onKeyDown={(e) => {
+          const ziel = reiterZiel(e.key, Math.max(0, concepts.findIndex(c => c.id === activeTab)), concepts.length);
+          if (ziel < 0) return;
+          e.preventDefault();
+          setActiveTab(concepts[ziel].id);
+          reiterRefs.current[ziel]?.focus();
+        }}
+      >
+        {concepts.map((concept, index) => {
           const IconComponent = concept.icon;
           const isSelected = activeTab === concept.id;
           return (
-            <button aria-pressed={isSelected}
+            <button
               key={concept.id}
+              ref={el => { reiterRefs.current[index] = el; }}
+              type="button"
+              role="tab"
+              id={`${reiterBasis}-tab-${concept.id}`}
+              aria-selected={isSelected}
+              aria-controls={`${reiterBasis}-panel`}
+              tabIndex={isSelected ? 0 : -1}
               onClick={() => setActiveTab(concept.id)}
               className={`text-left p-5 rounded-xl border ${concept.borderColorClass} transition-all duration-200 transform hover:-translate-y-0.5 ${concept.colorClass} ${
                 isSelected 
@@ -292,7 +315,13 @@ export default function Ressourceneffizienz() {
       </div>
 
       {/* Main interactive segment based on chosen pillar */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div
+        role="tabpanel"
+        id={`${reiterBasis}-panel`}
+        aria-labelledby={`${reiterBasis}-tab-${activeTab}`}
+        tabIndex={0}
+        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden focus:outline-none"
+      >
         
         {/* Navigation bar mirroring the selection */}
         <div className="bg-slate-50 dark:bg-slate-900 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">

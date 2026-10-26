@@ -327,7 +327,7 @@
       {
         "titel": "Ergebnis",
         "erklaerung": "Kosten je Anfrage:",
-        "formel": "K = 0{,}12\\ \\text{€}"
+        "formel": "K = 0{,}12\\ \\text{EUR}"
       }
     ],
     "KiBaustoffeInhalt.schritte_4": [
@@ -436,17 +436,17 @@
       {
         "titel": "Großunternehmen",
         "erklaerung": "Weltweiter Jahresumsatz U = 800 Mio. €:",
-        "formel": "0{,}04 \\cdot 800 = 32\\ \\text{Mio. €} > 20\\ \\text{Mio. €}"
+        "formel": "0{,}04 \\cdot 800 = 32\\ \\text{Mio. EUR} > 20\\ \\text{Mio. EUR}"
       },
       {
         "titel": "Ingenieurbüro",
         "erklaerung": "Jahresumsatz U = 5 Mio. €:",
-        "formel": "0{,}04 \\cdot 5 = 0{,}2\\ \\text{Mio. €} < 20\\ \\text{Mio. €}"
+        "formel": "0{,}04 \\cdot 5 = 0{,}2\\ \\text{Mio. EUR} < 20\\ \\text{Mio. EUR}"
       },
       {
         "titel": "Obergrenzen",
         "erklaerung": "Es gilt jeweils der höhere Betrag:",
-        "formel": "B_{max} = 32\\ \\text{Mio. €}\\ \\text{bzw.}\\ 20\\ \\text{Mio. €}"
+        "formel": "B_{max} = 32\\ \\text{Mio. EUR}\\ \\text{bzw.}\\ 20\\ \\text{Mio. EUR}"
       }
     ],
     "KiBaustoffeInhalt.schritte_11": [
@@ -514,7 +514,7 @@
       {
         "titel": "Kosten",
         "erklaerung": "Strompreis 0,35 €/kWh (Lehrwert):",
-        "formel": "K = 0{,}175 \\cdot 0{,}35 = 0{,}061\\ \\text{€}"
+        "formel": "K = 0{,}175 \\cdot 0{,}35 = 0{,}061\\ \\text{EUR}"
       }
     ],
     "KiBaustoffeInhalt.schritte_15": [

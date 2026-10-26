@@ -12,6 +12,7 @@ import { RechnerTab } from './bpfarbenlacke/RechnerTab';
 import { FilmchemieTab } from './bpfarbenlacke/FilmchemieTab';
 import inhalt from '@/content/bpfarbenlacke/BpFarbenLacke.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function BpFarbenLacke() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'komponenten' | 'filmchemie' | 'bindemittel' | 'rechner' | 'voc' | 'oberflaechenschutz'>('allgemein');
@@ -78,77 +79,21 @@ export default function BpFarbenLacke() {
         </div>
         </div>
 
-        {/* Local Tab Navigation */}
-        <div className="flex border-b border-home-grau/30 mb-6 overflow-x-auto pb-px">
-          <button aria-pressed={activeTab === 'allgemein'}
-            onClick={() => setActiveTab('allgemein')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
-              activeTab === 'allgemein'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          ><MdText text={inhalt.texte.allgemeineÜbersicht} /></button>
-          <button aria-pressed={activeTab === 'komponenten'}
-            onClick={() => setActiveTab('komponenten')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
-              activeTab === 'komponenten'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          ><MdText text={inhalt.texte.die4Hauptbestandteile} /></button>
-          <button aria-pressed={activeTab === 'filmchemie'}
-            onClick={() => setActiveTab('filmchemie')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
-              activeTab === 'filmchemie'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          >
-            <span className="flex items-center gap-1">
-              <FlaskConical size={14} /><MdText text={inhalt.texte.chemieFilmbildung} /></span>
-          </button>
-          <button aria-pressed={activeTab === 'bindemittel'}
-            onClick={() => setActiveTab('bindemittel')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
-              activeTab === 'bindemittel'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          >
-            Bindemittel-Matrix
-          </button>
-          <button aria-pressed={activeTab === 'rechner'}
-            onClick={() => setActiveTab('rechner')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
-              activeTab === 'rechner'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          >
-            <span className="flex items-center gap-1">
-              <Calculator size={14} /><MdText text={inhalt.texte.schichtdickenMengenschätzer} /></span>
-          </button>
-          <button aria-pressed={activeTab === 'voc'}
-            onClick={() => setActiveTab('voc')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 whitespace-nowrap ${
-              activeTab === 'voc'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          ><MdText text={inhalt.texte.schadstoffeVocGrenzwerte} /></button>
-          <button aria-pressed={activeTab === 'oberflaechenschutz'}
-            onClick={() => setActiveTab('oberflaechenschutz')}
-            className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 whitespace-nowrap ${
-              activeTab === 'oberflaechenschutz'
-                ? 'border-shiraz text-shiraz'
-                : 'border-transparent text-text-main/60 hover:text-text-main hover:border-home-grau/40'
-            }`}
-          >
-            <span className="flex items-center gap-1">
-              <ShieldCheck size={14} /><MdText text={inhalt.texte.oberflächenschutzsystemeOs} /></span>
-          </button>
-        </div>
-
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'allgemein' as const, label: inhalt.texte.allgemeineÜbersicht },
+            { id: 'komponenten' as const, label: inhalt.texte.die4Hauptbestandteile },
+            { id: 'filmchemie' as const, label: inhalt.texte.chemieFilmbildung, icon: FlaskConical },
+            { id: 'bindemittel' as const, label: 'Bindemittel-Matrix' },
+            { id: 'rechner' as const, label: inhalt.texte.schichtdickenMengenschätzer, icon: Calculator },
+            { id: 'voc' as const, label: inhalt.texte.schadstoffeVocGrenzwerte },
+            { id: 'oberflaechenschutz' as const, label: inhalt.texte.oberflächenschutzsystemeOs, icon: ShieldCheck },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
         {/* TAB CONTENST */}
         <div className="grid grid-cols-1 gap-6 animate-in fade-in duration-300">
           
@@ -718,6 +663,7 @@ export default function BpFarbenLacke() {
           )}
 
         </div>
+        </ModuleTabs>
       </div>
 
       <InnovationPraxisSection moduleKey="bp_farben_lacke" />

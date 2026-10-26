@@ -116,7 +116,8 @@
     "keineKritischenSchranken": "Keine kritischen Schranken",
     "anwendungsbeispielWasseranrechnungEinesF": "Anwendungsbeispiel: Wasseranrechnung eines Fließmittels",
     "dinEn206Din": "DIN EN 206 / DIN 1045-2 (Anrechnung bei > 3 l/m³ flüssiger Zusatzmittel); Werte als Lehrbeispiel",
-    "dieAnrechnungVerschiebtDen": "Die Anrechnung verschiebt den w/z-Wert hier nur um 0,01 – bei knapp bemessenen Rezepturen kann genau das über die Konformität entscheiden."
+    "dieAnrechnungVerschiebtDen": "Die Anrechnung verschiebt den w/z-Wert hier nur um 0,01 – bei knapp bemessenen Rezepturen kann genau das über die Konformität entscheiden.",
+    "reiterBereiche": "Bereiche Betonzusatzmittel"
   },
   "daten": {
     "admixtureProducts": [
@@ -366,7 +367,7 @@
       },
       {
         "title": "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch.",
-        "url": "https://www.vdz-online.de/publikationen/zement-taschenbuch"
+        "url": "https://www.vdz-online.de/wissensportal/publikationen/zement-taschenbuch-2008"
       }
     ],
     "BpBetonzusatzmittel.literatur": [

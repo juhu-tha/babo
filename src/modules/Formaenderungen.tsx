@@ -6,6 +6,12 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/formaenderungen/Formaenderungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+
+const REITER = [
+  { id: 'tabelle', label: inhalt.texte.systematikTabelle, icon: Activity },
+  { id: 'visualisierung', label: inhalt.texte.interaktiveVisualisierung, icon: ArrowRight },
+] as const;
 
 export default function Formaenderungen() {
   const [activeTab, setActiveTab] = useState<'tabelle' | 'visualisierung'>('tabelle');
@@ -21,28 +27,9 @@ export default function Formaenderungen() {
           <p><MdText text={inhalt.texte.formänderungenDeformationenVonBaustoffen} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'tabelle'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'tabelle' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('tabelle')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.systematikTabelle} /></button>
-          <button aria-pressed={activeTab === 'visualisierung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'visualisierung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('visualisierung')}
-          >
-            <ArrowRight size={16} /><MdText text={inhalt.texte.interaktiveVisualisierung} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Darstellung" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {activeTab === 'tabelle' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4 animate-in fade-in duration-300">
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.einteilungDerFormänderungen2} /></h3>
@@ -335,6 +322,7 @@ export default function Formaenderungen() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

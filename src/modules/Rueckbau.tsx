@@ -24,6 +24,7 @@ import { RechnerTab } from './rueckbau/RechnerTab';
 import { BaustoffrecyclingTab } from './rueckbau/BaustoffrecyclingTab';
 import inhalt from '@/content/rueckbau/Rueckbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function Rueckbau() {
   const [activeTab, setActiveTab] = useState<'lfu_leitfaden' | 'schadstoffe' | 'baustoffrecycling' | 'rechner' | 'aktualitaet' | 'praxis'>('lfu_leitfaden');
@@ -199,66 +200,22 @@ export default function Rueckbau() {
           </div>
         </div>
         
-        {/* Module Sub-navigation */}
-        <div className="flex flex-wrap gap-2 mt-6 border-t border-home-grau/30 pt-4">
-          <button aria-pressed={activeTab === 'lfu_leitfaden'}
-            onClick={() => setActiveTab('lfu_leitfaden')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'lfu_leitfaden' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <BookOpen size={14} /><MdText text={inhalt.texte.lfuRückbauLeitfaden} /></button>
-          <button aria-pressed={activeTab === 'schadstoffe'}
-            onClick={() => setActiveTab('schadstoffe')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'schadstoffe' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <AlertTriangle size={14} /><MdText text={inhalt.texte.schadstoffErkundungVdi} /></button>
-          <button aria-pressed={activeTab === 'baustoffrecycling'}
-            onClick={() => setActiveTab('baustoffrecycling')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'baustoffrecycling' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <Recycle size={14} /> Baustoffrecycling
-          </button>
-          <button aria-pressed={activeTab === 'rechner'}
-            onClick={() => setActiveTab('rechner')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'rechner' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <Hammer size={14} /><MdText text={inhalt.texte.masseAbfallrechner} /></button>
-          <button aria-pressed={activeTab === 'aktualitaet'}
-            onClick={() => setActiveTab('aktualitaet')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'aktualitaet' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <Recycle size={14} /><MdText text={inhalt.texte.aktualitätsCheckEbv} /></button>
-          <button aria-pressed={activeTab === 'praxis'}
-            onClick={() => setActiveTab('praxis')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <FileText size={14} /><MdText text={inhalt.texte.praxisSzenarienBehörden} /></button>
-        </div>
       </div>
 
+      <ModuleTabs
+        label={inhalt.werte.bereicheRueckbau}
+        tabs={[
+          { id: 'lfu_leitfaden' as const, label: inhalt.texte.lfuRückbauLeitfaden, icon: BookOpen },
+          { id: 'schadstoffe' as const, label: inhalt.texte.schadstoffErkundungVdi, icon: AlertTriangle },
+          { id: 'baustoffrecycling' as const, label: 'Baustoffrecycling', icon: Recycle },
+          { id: 'rechner' as const, label: inhalt.texte.masseAbfallrechner, icon: Hammer },
+          { id: 'aktualitaet' as const, label: inhalt.texte.aktualitätsCheckEbv, icon: Recycle },
+          { id: 'praxis' as const, label: inhalt.texte.praxisSzenarienBehörden, icon: FileText },
+        ]}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="space-y-8"
+      >
       {/* TAB 1: LfU Rückbau-Leitfaden */}
       {activeTab === 'lfu_leitfaden' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -554,6 +511,8 @@ export default function Rueckbau() {
           </div>
         </div>
       )}
+
+      </ModuleTabs>
 
       {/* Footer references */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
