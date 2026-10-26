@@ -17,6 +17,9 @@ import type { ModulId } from '../registry/modules';
 
 export type LernpfadStatus = 'entwurf' | 'freigegeben';
 
+/** Art des Lernpfads: Lehrveranstaltung (AP 6.1, diese Datei) oder Weiterbildungskurs (AP 6.3, src/data/ttzKurse.ts) */
+export type LernpfadArt = 'lehrveranstaltung' | 'weiterbildung';
+
 /** IDs der Übungen in src/data/kiUebungen.ts (Modul ki_uebungen) */
 export type KiUebungId = 'llm_grundlagen' | 'prompting_buero' | 'agenten' | 'rag_normtexte' | 'programmieren_lassen' | 'fehlerbilder';
 
@@ -38,6 +41,8 @@ export interface LernpfadTermin {
 export interface Lernpfad {
   /** zugleich Modul-ID der Seite in der Registry */
   id: ModulId;
+  /** Art des Lernpfads; fehlt = 'lehrveranstaltung' */
+  kind?: LernpfadArt;
   titel: string;
   kurztitel: string;
   studiengang: string;
