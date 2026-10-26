@@ -180,12 +180,12 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Elastische Anfangsdehnung ε_el',
-            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${formatDeTeXWert(sigma_c)}\\text{ MPa}}{33000\\text{ MPa}} = ${formatDeTeX((eps_el * 1000), 4)}\\text{ ‰}`,
+            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${formatDeTeXWert(sigma_c)}\\text{ MPa}}{33000\\text{ MPa}} = ${formatDeTeX((eps_el * 1000), 4)}\\,\\char8240`,
             explanation: 'Hookesches Gesetz für den elastischen Anteil zum Belastungszeitpunkt t₀.'
           },
           {
             step: '2. Zeitabhängige Kriechdehnung ε_cr',
-            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\text{ ‰} \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\text{ ‰}`,
+            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\,\\char8240 \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\,\\char8240`,
             explanation: 'Multiplikation der elastischen Dehnung mit der Kriechzahl. DIN EN 1992-1-1, 3.1.4(3), bezieht auf E_c = 1,05 · E_cm; hier vereinfachend E_cm (Lehrannahme).'
           }
         ]

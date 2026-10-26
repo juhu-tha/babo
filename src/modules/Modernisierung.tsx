@@ -647,7 +647,7 @@ export default function Modernisierung() {
                     {
                       titel: inhalt.werte.endenergieUndKosten,
                       erklaerung: `Geteilt durch den Anlagennutzungsgrad η = ${formatDeZahl(etaSys, 2)}, multipliziert mit dem Energiepreis:`,
-                      formel: `Q_E = \\frac{${formatDeTeX(simResults.qNutz, 0)}}{${formatDeTeX(etaSys, 2)}} = ${formatDeTeX(simResults.annualKwhSaved, 0)}\\,\\text{kWh/a} \\;\\Rightarrow\\; ${formatDeTeX(simResults.annualKwhSaved, 0)} \\cdot ${formatDeTeX(energyPriceKwh, 2)} = ${formatDeTeX(simResults.annualEuroSaved, 0)}\\,\\text{€/a}`
+                      formel: `Q_E = \\frac{${formatDeTeX(simResults.qNutz, 0)}}{${formatDeTeX(etaSys, 2)}} = ${formatDeTeX(simResults.annualKwhSaved, 0)}\\,\\text{kWh/a} \\;\\Rightarrow\\; ${formatDeTeX(simResults.annualKwhSaved, 0)} \\cdot ${formatDeTeX(energyPriceKwh, 2)} = ${formatDeTeX(simResults.annualEuroSaved, 0)}\\,\\text{EUR/a}`
                     },
                     {
                       titel: inhalt.werte.energiebedingteMehrkosten,
@@ -655,8 +655,8 @@ export default function Modernisierung() {
                         ? inhalt.werte.gerüstPutzUndMontage
                         : inhalt.werte.dämmstoffPlusMontage85,
                       formel: sowiesoAktiv
-                        ? `K_{\\text{Mehr}} = ${formatDeTeX(simResults.totalInvestEuro, 0)} - ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
-                        : `K_{\\text{Mehr}} = ${formatDeTeX(simResults.materialCost, 0)} + ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
+                        ? `K_{\\text{Mehr}} = ${formatDeTeX(simResults.totalInvestEuro, 0)} - ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{EUR}`
+                        : `K_{\\text{Mehr}} = ${formatDeTeX(simResults.materialCost, 0)} + ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{EUR}`
                     },
                     {
                       titel: inhalt.werte.statischeAmortisationszeit,

@@ -66,13 +66,11 @@ function pruefe(text) {
 const findings = [];
 const warnungen = []; // KaTeX-strict-Warnungen (Z18)
 // Ratsche für KaTeX-strict-Warnungen (Z18), gezählt als Formeln je Warnungsart. Mehr als hier eingetragen bricht ab.
-//   unicodeTextInMathMode: Umlaut/ß im Mathe-Modus (T_{Oberfläche}) → in \text{…} setzen. Rest: baustoffkenngroessen (2),
-//     materialschaedengross, spannbeton/SpannbetonDauerhaftigkeit.
-//   unknownSymbol: Zeichen ohne KaTeX-Schriftmetrik, auch in \text{…} (‰, €, ³, ², ß, §, ₂); wird mit Ersatzschrift
-//     gezeichnet. Abhilfe: „EUR“ statt €, ^2/^3 statt ²/³, ‰ ggf. als Makro.
-// Parallel laufende Korrekturen (stahl „²“, mechanische_kenngroessen „‰“) senken die Zahlen – nach deren Merge hier
-// den neuen Stand eintragen und schrittweise auf 0 senken.
-const GRENZE_STRIKT = { unicodeTextInMathMode: 4, unknownSymbol: 77 };
+//   unicodeTextInMathMode: Umlaut/ß im Mathe-Modus (T_{Oberfläche}) → in \text{…} setzen.
+//   unknownSymbol: Zeichen ohne KaTeX-Schriftmetrik, auch in \text{…} (‰, €, ³, ², ß, §, ₂). Abhilfe: „EUR“ statt €,
+//     ^2/^3/_2 statt ²/³/₂ (\text{m}^3), \S statt §, ‰ als \char8240 (im Mathe-Modus, nicht in \text{…}).
+// Stand Folgepaket 10-26: alle Warnungen behoben, Grenze 0 – neue Formeln müssen warnungsfrei sein.
+const GRENZE_STRIKT = { unicodeTextInMathMode: 0, unknownSymbol: 0 };
 let total = 0;
 for (const file of walk(ROOT)) {
   if (filter && !file.includes(filter)) continue;

@@ -57,7 +57,7 @@
       {
         "titel": "Messung",
         "erklaerung": "Im stabilisierten dritten Zyklus beträgt die Dehnungsdifferenz zwischen σ_b und σ_a:",
-        "formel": "\\varepsilon_a - \\varepsilon_b = 0{,}270\\,\\text{‰} = 2{,}70 \\cdot 10^{-4}"
+        "formel": "\\varepsilon_a - \\varepsilon_b = 0{,}270\\,\\char8240 = 2{,}70 \\cdot 10^{-4}"
       },
       {
         "titel": "Ergebnis",

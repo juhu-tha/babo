@@ -19,7 +19,7 @@
       {
         "titel": "Gegeben",
         "erklaerung": "Heizkosten 2 000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.",
-        "formel": "C = 2\\,000\\,\\text{€/a},\\; r = 0{,}02,\\; T = 30"
+        "formel": "C = 2\\,000\\,\\text{EUR/a},\\; r = 0{,}02,\\; T = 30"
       },
       {
         "titel": "Rentenbarwertfaktor",
@@ -29,14 +29,14 @@
       {
         "titel": "Barwert",
         "erklaerung": "Heutiger Wert aller künftigen Zahlungen:",
-        "formel": "BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{€}"
+        "formel": "BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.schritte_2": [
       {
         "titel": "Gegeben",
         "erklaerung": "Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.",
-        "formel": "C_{30} = 20\\,000\\,\\text{€}"
+        "formel": "C_{30} = 20\\,000\\,\\text{EUR}"
       },
       {
         "titel": "Abzinsungsfaktor",
@@ -46,7 +46,7 @@
       {
         "titel": "Barwert",
         "erklaerung": "In der LCC-Bilanz anzusetzender Wert:",
-        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{€}"
+        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.literatur": [
@@ -71,7 +71,7 @@
     ],
     "LebenszyklusKosten.formeln": [
       {
-        "formel": "BW = \\sum_{t=0}^{T} \\frac{C_t}{(1 + r)^t} \\quad [\\text{€}]",
+        "formel": "BW = \\sum_{t=0}^{T} \\frac{C_t}{(1 + r)^t} \\quad [\\text{EUR}]",
         "erklaerung": "Barwertmethode (Net Present Value NPV) der kumulierten Lebenszykluskosten über Betrachtungszeitraum T bei Diskontierungszinssatz r und periodischen Kosten Ct.",
         "quelle": "ISO 15686-5 / DIN EN 16627"
       },

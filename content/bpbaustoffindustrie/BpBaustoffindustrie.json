@@ -72,12 +72,12 @@
     "BpBaustoffindustrie.schritte": [
       {
         "titel": "1. Gegeben",
-        "formel": "P_{Markt} = 30\\,\\text{€/t},\\; K_{prod} = 12\\,\\text{€/t},\\; K_{fix} = 3\\,\\text{€/t},\\; k_{var} = 0{,}30\\,\\text{€/(t·km)}",
+        "formel": "P_{Markt} = 30\\,\\text{EUR/t},\\; K_{prod} = 12\\,\\text{EUR/t},\\; K_{fix} = 3\\,\\text{EUR/t},\\; k_{var} = 0{,}30\\,\\text{EUR/(t·km)}",
         "erklaerung": "Lehrannahmen: Preis frei Baustelle, Gewinnungskosten, Laden/Entladen, Fahrtkosten je km."
       },
       {
         "titel": "2. Verfügbare Marge für Transport",
-        "formel": "30 - 12 - 3 = 15\\,\\text{€/t}",
+        "formel": "30 - 12 - 3 = 15\\,\\text{EUR/t}",
         "erklaerung": "Was für die Fahrt bleibt."
       },
       {
@@ -111,7 +111,7 @@
     ],
     "BpBaustoffindustrie.formeln": [
       {
-        "formel": "K_{\\text{trans}} = K_{\\text{fix}} + d_{\\text{dist}} \\cdot k_{\\text{var}} \\quad [\\text{€/t}], \\quad R_{\\text{max}} = \\frac{P_{\\text{Markt}} - K_{\\text{prod}} - K_{\\text{fix}}}{k_{\\text{var}}}",
+        "formel": "K_{\\text{trans}} = K_{\\text{fix}} + d_{\\text{dist}} \\cdot k_{\\text{var}} \\quad [\\text{EUR/t}], \\quad R_{\\text{max}} = \\frac{P_{\\text{Markt}} - K_{\\text{prod}} - K_{\\text{fix}}}{k_{\\text{var}}}",
         "erklaerung": "Transportkostenmodellierung und maximaler wirtschaftlicher Lieferradius Rmax von mineralischen Massenbaustoffen in Abhängigkeit von Marktpreis, Produktionskosten und entfernungsabhängigen Speditionskosten.",
         "quelle": "Lehrmodell (Transportkosten)"
       }

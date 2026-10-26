@@ -574,12 +574,12 @@ export default function LCC() {
                   {
                     titel: inhalt.werte.betriebskostenOptionAAbzinsen,
                     erklaerung: `Die jährlichen Betriebskosten von ${formatDeZahl(activeScenario.optionA.opex0, 0)} € steigen mit e und werden mit r auf heute abgezinst:`,
-                    formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^t}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{€}`
+                    formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^t}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.barwertOptionA,
                     erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
-                    formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{€}`
+                    formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.investitionOptionB,
@@ -587,18 +587,18 @@ export default function LCC() {
                       ? `Die KfW-Förderung von ${formatDeZahl(subsidyPercent, 0)} % mindert die Investitionskosten der Option B:`
                       : inhalt.werte.ohneFörderungGehenDie,
                     formel: subsidyEnabled
-                      ? `C_{0,B} = ${formatDeTeX(activeScenario.optionB.capex, 0)} \\cdot (1 - ${formatDeTeX(subsidyPercent / 100, 2)}) = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
-                      : `C_{0,B} = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
+                      ? `C_{0,B} = ${formatDeTeX(activeScenario.optionB.capex, 0)} \\cdot (1 - ${formatDeTeX(subsidyPercent / 100, 2)}) = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{EUR}`
+                      : `C_{0,B} = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.barwertOptionB,
                     erklaerung: inhalt.werte.gleicheGliederungWieBei,
-                    formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{€}`
+                    formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.differenzDerBarwerte,
                     erklaerung: calcData.saving >= 0 ? inhalt.werte.einPositiverWertBedeutet : inhalt.werte.einNegativerWertBedeutet,
-                    formel: `\\Delta LCC = LCC_A - LCC_B = ${formatDeTeX(calcData.saving, 0)}\\,\\text{€}`
+                    formel: `\\Delta LCC = LCC_A - LCC_B = ${formatDeTeX(calcData.saving, 0)}\\,\\text{EUR}`
                   }
                 ]}
                 ergebnisHinweis={inhalt.werte.rundungsdifferenzenInDerLetzten}

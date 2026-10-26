@@ -162,7 +162,7 @@
     ],
     "BpKlebstoffe.formeln": [
       {
-        "formel": "\\tau = \\frac{F}{A_G} \\quad \\text{[N/mm²]}",
+        "formel": "\\tau = \\frac{F}{A_G} \\quad \\text{[N/mm}^2\\text{]}",
         "erklaerung": "Mittlere Scherfestigkeit der Klebfuge (Bruchkraft F je Klebfläche A_G).",
         "quelle": "z. B. DIN EN 205 (Holzklebstoffe)"
       },
