@@ -11,6 +11,7 @@ import {
   FileText
 } from 'lucide-react';
 import { SAMPLING_PRESETS } from './diagnoseData';
+import { probenahmeUmfang } from '@/src/calc/bauwerksuntersuchung';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bauwerksuntersuchung/ProbenahmePlaner.json';
@@ -33,54 +34,13 @@ export default function ProbenahmePlaner() {
 
   // Calculations for custom planner
   const calculatedScope = useMemo(() => {
-    // 1. Bohrkerne nach DIN EN 13791
-    let bohrkerne = 0;
-    if (primaryGoal === 'druckfestigkeit') {
-      if (verfahrenType === 'verfahrenA') {
-        bohrkerne = Math.max(8, Math.round(8 + (flaecheM2 > 1000 ? (flaecheM2 - 1000) / 300 : 0)));
-      } else {
-        bohrkerne = Math.min(7, Math.max(3, Math.round(3 + flaecheM2 / 150)));
-      }
-    } else if (primaryGoal === 'chlorid') {
-      bohrkerne = Math.max(2, Math.round(flaecheM2 / 300));
-    } else {
-      bohrkerne = 2; // Kontrollkerne
-    }
-
-    // 2. ZfP-Messpunkte (Covermeter, Schmidt-Hammer)
-    let zfpPunkte = 0;
-    let rasterMass = '20 × 20 cm';
-    if (primaryGoal === 'potentialfeld') {
-      // 1 Messpunkt je 0,04 m² (20x20cm) bis 0,0225 m² (15x15cm)
-      zfpPunkte = Math.min(600, Math.max(60, Math.round(flaecheM2 * 0.4)));
-      rasterMass = inhalt.werte.t1515CmBis;
-    } else if (primaryGoal === 'chlorid') {
-      zfpPunkte = Math.min(300, Math.max(40, Math.round(flaecheM2 * 0.2)));
-      rasterMass = inhalt.werte.t2525CmCovermeter;
-    } else if (primaryGoal === 'druckfestigkeit') {
-      zfpPunkte = bauteilAnzahl * 9; // mind. 9 Rückprallwerte je Bauteil
-      rasterMass = inhalt.werte.t3030CmPrüffelder;
-    } else {
-      zfpPunkte = Math.round(flaecheM2 * 0.1);
-    }
-
-    // 3. Bohrmehl-Tiefenprofilstellen (Chlorid / Salze)
-    let bohrmehlStellen = 0;
-    if (primaryGoal === 'chlorid') {
-      bohrmehlStellen = Math.max(4, Math.round(3 + flaecheM2 / 200));
-    } else if (primaryGoal === 'karbonatisierung') {
-      bohrmehlStellen = 2; // pH/Salzkontrolle
-    } else {
-      bohrmehlStellen = 1;
-    }
-
-    // 4. Haftzugstempel (DIN EN 1542 / ZTV-ING)
-    let haftzugStempel = 0;
-    if (primaryGoal === 'haftzug') {
-      haftzugStempel = Math.max(5, Math.round(5 + flaecheM2 / 100));
-    } else if (primaryGoal === 'chlorid' || primaryGoal === 'druckfestigkeit') {
-      haftzugStempel = Math.max(3, Math.round(3 + flaecheM2 / 250));
-    }
+    // Rechenkern (src/calc/bauwerksuntersuchung.ts): Bohrkerne nach DIN EN 13791 (Verfahren A/B), ZfP-Messpunkte,
+    // Bohrmehl-Tiefenprofile, Haftzugstempel (DIN EN 1542 / ZTV-ING) – Lehransätze
+    const { bohrkerne, zfpPunkte, bohrmehlStellen, haftzugStempel } = probenahmeUmfang({ ziel: primaryGoal, verfahren: verfahrenType, flaecheM2, bauteilAnzahl });
+    const rasterMass = primaryGoal === 'potentialfeld' ? inhalt.werte.t1515CmBis
+      : primaryGoal === 'chlorid' ? inhalt.werte.t2525CmCovermeter
+      : primaryGoal === 'druckfestigkeit' ? inhalt.werte.t3030CmPrüffelder
+      : '20 × 20 cm';
 
     return {
       bohrkerne,

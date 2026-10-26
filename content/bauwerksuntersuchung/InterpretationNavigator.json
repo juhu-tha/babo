@@ -72,7 +72,8 @@
     "statistischeSignifikanzPrüfdimension3": "Statistische Signifikanz (Prüfdimension 3):",
     "wurdenDieMindeststichprobenumfängeNach": "Wurden die Mindeststichprobenumfänge nach DIN EN 13791:2020-02 (Anzahl gemäß geltender Fassung prüfen) oder DBV (mind. 20–30 Covermeter-Punkte für 5 %-Quantil) vollständig eingehalten?",
     "beweissicherndeSchadenskatasterKartierun": "Beweissichernde Schadenskataster-Kartierung:",
-    "sindRisseHohlstellenPotentialfeld": "Sind Risse, Hohlstellen, Potentialfeld-Gradienten und Bohrmehl-Chloridprofile maßstäblich in CAD-Bestandspläne übertragen und mit dem Tragwerksplaner abgestimmt?"
+    "sindRisseHohlstellenPotentialfeld": "Sind Risse, Hohlstellen, Potentialfeld-Gradienten und Bohrmehl-Chloridprofile maßstäblich in CAD-Bestandspläne übertragen und mit dem Tragwerksplaner abgestimmt?",
+    "deckungNichtGemessen": "Nicht gemessen (Betondeckung 0): keine Aussage zur Passivierung möglich."
   },
   "werte": {
     "tiefgarageAkuterChloridLochfraß": "Tiefgarage: Akuter Chlorid-Lochfraß (XD3)",

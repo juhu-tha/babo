@@ -19,8 +19,8 @@ pruefe(rueckprall(60, 'horiz', 0).klasse === 'C50/60' && rueckprall(20, 'horiz',
 const us = ultraschall(0.30, 75, 2400);
 pruefe(nahe(us.vp, 4000, 1e-9) && nahe(us.eDynGPa, 34.56, 1e-9) && us.stufe === 'gut', `Ultraschall ${us.vp} ${us.eDynGPa}`);
 pruefe(ultraschall(0.3, 90, 2400).stufe === 'maessig' && ultraschall(0.3, 120, 2400).stufe === 'kritisch' && !ultraschall(0.3, 0, 2400).gueltig, 'Gefügestufen, t = 0 → Fehler');
-//    Potentialfeld: Simulator < −350 hoch, Navigator ≤ −350 aktiv (Grenzwert −350 mV unterschiedlich, Befund)
-pruefe(potentialStufe(-380) === 'hoch' && potentialStufe(-350) === 'ungewiss' && potentialStufe(-200) === 'ungewiss' && potentialStufe(-199) === 'gering', 'Potentialstufen Simulator');
+//    Potentialfeld: Simulator und Navigator schließen −350 mV ein (≤ −350 hoch/aktiv)
+pruefe(potentialStufe(-380) === 'hoch' && potentialStufe(-350) === 'hoch' && potentialStufe(-349) === 'ungewiss' && potentialStufe(-200) === 'ungewiss' && potentialStufe(-199) === 'gering', 'Potentialstufen Simulator');
 pruefe(potentialStatus(-350) === 'aktiv' && potentialStatus(-200) === 'unsicher' && potentialStatus(-150) === 'passiv', 'Potentialstatus Navigator');
 //    Betondeckung XC4, gemessen 22 mm: c_nom = 25 + 15 = 40 → −18 mm
 const dk = betondeckung('XC4', 22);
@@ -67,6 +67,10 @@ const bal = befundSynthese(SZ[1][1]);
 pruefe(bal.passivierungsReserve === -6 && bal.isCarbDepassivated && bal.potentialStatus === 'unsicher' && nahe(bal.festigkeitsVerhaeltnis, 0.88, 1e-12) && !bal.isStrengthDeficient, 'Balkon Einzelwerte');
 const holz = befundSynthese(SZ[4][1]);
 pruefe(nahe(holz.holzRestWiderstand, 30.25, 1e-9) && holz.festigkeitsVerhaeltnis === 1 && holz.hinweise.some(x => x.feld === 'haftzug'), 'Holz: W-Rest 30,25 %, ungemessene Nullwerte gemeldet');
+//    Befund 12 (#160): 0 = nicht gemessen → weder depassiviert noch Haftzug „nicht bestanden“
+pruefe(!holz.isCarbDepassivated && !holz.deckungGemessen && !holz.haftzugGemessen && !holz.isHaftzugFailed && !holz.isHaftzugOk, 'Holz: Deckung/Haftzug nicht gemessen');
+const ungemessen: BefundEingabe = { chlorid: 0.05, deckung: 0, karbonatisierung: 0, fckIs: 0, fckPlan: 0, potential: 0, haftzug: 0, bruchTyp: 'A', holzRest: 100 };
+pruefe(befundSynthese(ungemessen).overallRisk === 'gering' && befundSynthese({ ...ungemessen, deckung: 20, karbonatisierung: 25 }).isCarbDepassivated && befundSynthese({ ...ungemessen, haftzug: 0.8 }).overallRisk === 'hoch', 'ungemessene Werte heben das Risiko nicht');
 const gut: BefundEingabe = { chlorid: 0.1, deckung: 40, karbonatisierung: 10, fckIs: 35, fckPlan: 35, potential: -100, haftzug: 2.0, bruchTyp: 'A', holzRest: 100 };
 pruefe(befundSynthese(gut).overallRisk === 'gering' && befundSynthese({ ...gut, deckung: 18 }).overallRisk === 'mittel' && befundSynthese({ ...gut, potential: -250 }).overallRisk === 'mittel', 'gering/mittel');
 

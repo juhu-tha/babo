@@ -2,6 +2,9 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Gauge, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { PruefverfahrenDetail } from './pruefverfahrenData';
+import {
+  rueckprall, ultraschall, potentialStufe, betondeckung, chlorid, haftzug, karsten, karbonatisierung, bohrkern, impactEcho,
+} from '@/src/calc/bauwerksuntersuchung';
 import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenSimulatoren.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -62,50 +65,28 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
   // Calculations
   // Schmidt-Hammer
   const schmidtCalc = useMemo(() => {
-    let r_corr = rebound;
-    if (impactAngle === 'down') r_corr -= 3.0;
-    if (impactAngle === 'up') r_corr += 3.5;
-
-    // Karbonatisierungskorrektur nach DIN EN 13791
-    let k_carb = 1.0;
-    if (carbDepth > 5) {
-      k_carb = Math.max(0.75, 1.0 - (carbDepth - 5) * 0.015);
-    }
-    const r_final = r_corr * k_carb;
-
-    // Potenzansatz (Lehr-Näherung) f_c,is ≈ 0,0125 · R^2,22
-    const fc_est = 0.0125 * Math.pow(r_final, 2.22);
-    let grade = 'C16/20';
-    if (fc_est >= 50) grade = 'C50/60';
-    else if (fc_est >= 45) grade = 'C45/55';
-    else if (fc_est >= 35) grade = 'C35/45';
-    else if (fc_est >= 30) grade = 'C30/37';
-    else if (fc_est >= 25) grade = 'C25/30';
-    else if (fc_est >= 20) grade = 'C20/25';
-
+    // Rechenkern: Schlagrichtungs- und Karbonatisierungskorrektur, Potenzansatz f_c,is ≈ 0,0125 · R^2,22 (Lehr-Näherung)
+    const r = rueckprall(rebound, impactAngle, carbDepth);
     return {
-      r_corr: formatDeZahl(r_corr, 1),
-      k_carb: formatDeZahl(k_carb, 2),
-      r_final: formatDeZahl(r_final, 1),
-      fc_est: formatDeZahl(fc_est, 1),
-      grade
+      r_corr: formatDeZahl(r.rKorr, 1),
+      k_carb: formatDeZahl(r.kKarb, 2),
+      r_final: formatDeZahl(r.rFinal, 1),
+      fc_est: formatDeZahl(r.fcSchaetz, 1),
+      grade: r.klasse
     };
   }, [rebound, impactAngle, carbDepth]);
 
   // Ultraschall
   const usCalc = useMemo(() => {
-    const vp = (usDistance / (usTime * 1e-6)); // m/s
-    const nu = 0.20; // Querdehnzahl
-    // E_dyn = rho * vp^2 * ((1+nu)(1-2nu))/(1-nu)
-    const factor = ((1 + nu) * (1 - 2 * nu)) / (1 - nu);
-    const edyn = usDensity * Math.pow(vp, 2) * factor * 1e-9; // GPa
+    // Rechenkern: v_p = s/t, E_dyn = ρ·v_p²·(1+ν)(1−2ν)/(1−ν) mit ν = 0,2
+    const { vp, eDynGPa: edyn, stufe } = ultraschall(usDistance, usTime, usDensity);
 
     let status = inhalt.werte.hervorragendesSehrDichtesBetongefüge;
     let color = 'text-emerald-600 bg-emerald-50 border-emerald-200';
-    if (vp < 3000) {
+    if (stufe === 'kritisch') {
       status = inhalt.werte.kritischerGefügemangelAusgeprägteHohlste;
       color = 'text-rose-600 bg-rose-50 border-rose-200';
-    } else if (vp < 3800) {
+    } else if (stufe === 'maessig') {
       status = inhalt.werte.mäßigeGefügequalitätLokaleMikrorissigkei;
       color = 'text-amber-600 bg-amber-50 border-amber-200';
     }
@@ -119,18 +100,20 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
   }, [usDistance, usTime, usDensity]);
 
   // Potentialfeld
+  const potentialStufeAktuell = potentialStufe(potentialVal);
   const potentialCalc = useMemo(() => {
+    const stufe = potentialStufe(potentialVal);
     let prob = inhalt.werte.sehrGering10;
     let state = inhalt.werte.passiverIntakterBewehrungsstahl;
     let badgeColor = 'bg-emerald-500 text-white';
     let borderColor = 'border-emerald-200 bg-emerald-50/50';
 
-    if (potentialVal < -350) {
+    if (stufe === 'hoch') {
       prob = inhalt.werte.sehrHoch90;
       state = inhalt.werte.akuteFortschreitendeLochfraßkorrosionAno;
       badgeColor = 'bg-rose-600 text-white';
       borderColor = 'border-rose-200 bg-rose-50/50';
-    } else if (potentialVal <= -200) {
+    } else if (stufe === 'ungewiss') {
       prob = inhalt.werte.ungewiss10Bis90;
       state = inhalt.werte.übergangsbereichBeginnendeDepassivierung;
       badgeColor = 'bg-amber-500 text-white';
@@ -143,20 +126,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
   // Covermeter
   const coverCalc = useMemo(() => {
     // c_min,dur nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl); Vorhaltemaß Δc_dev = 15 mm (XC1: 10 mm)
-    const minMap = {
-      XC1: { min: 10, dev: 10, req: 20 },
-      XC3: { min: 20, dev: 15, req: 35 },
-      XC4: { min: 25, dev: 15, req: 40 },
-      XD1: { min: 40, dev: 15, req: 55 },
-      XD3: { min: 40, dev: 15, req: 55 }
-    };
-    const req = minMap[exposureClass];
-    const diff = measuredCover - req.req;
-    const isOk = diff >= 0;
+    const { cMin, cNom, differenz: diff, ok: isOk } = betondeckung(exposureClass, measuredCover);
 
     return {
-      c_min: req.min,
-      c_nom: req.req,
+      c_min: cMin,
+      c_nom: cNom,
       diff: diff > 0 ? `+${formatDeWert(diff)}` : formatDeWert(diff),
       isOk
     };
@@ -165,10 +139,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
   // Bohrmehl / Chlorid
   const chlorideCalc = useMemo(() => {
     // Kein Normwert: Anhaltswert ≈ 0,5 M.-% bez. Zement (Einzelfallbewertung); Spannstahl: kein gesicherter Grenzwert
-    const limit = 0.5;
-    const isExceeded = isPrestressed ? chlorideVal >= 0.2 : chlorideVal >= limit;
-    const stufe = chlorideVal < 0.2 ? 'unkritisch' : chlorideVal < 0.5 ? inhalt.werte.beobachtungPrävention : inhalt.werte.korrosionWahrscheinlich;
-    const ratio = formatDeZahl(chlorideVal / limit, 1) + ' (' + stufe + ')';
+    const c = chlorid(chlorideVal, isPrestressed);
+    const limit = c.grenze;
+    const isExceeded = c.ueberschritten;
+    const stufe = c.stufe === 'unkritisch' ? 'unkritisch' : c.stufe === 'Beobachtung / Prävention' ? inhalt.werte.beobachtungPrävention : inhalt.werte.korrosionWahrscheinlich;
+    const ratio = formatDeZahl(c.verhaeltnis, 1) + ' (' + stufe + ')';
 
     return {
       limit,
@@ -179,9 +154,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Haftabzug
   const haftCalc = useMemo(() => {
-    const area = (Math.PI * Math.pow(50, 2)) / 4; // 1963.5 mm²
-    const fct = (breakForce * 1000) / area; // N/mm²
-    const isNormOk = fct >= 1.5 && failureType === 'beton';
+    // Rechenkern: f_ht = F/A, Stempel Ø 50 mm (A ≈ 1963,5 mm²)
+    const { flaecheMm2: area, fct, ok: isNormOk } = haftzug(breakForce, failureType);
 
     return {
       area: Math.round(area),
@@ -195,14 +169,14 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     // A = 4.5 cm² = 0.00045 m²
     // t = 1 h -> sqrt(t) = 1.0
     // w_kap = (deltaV * 1e-3 kg) / (0.00045 m² * 1) = deltaV * 2.22 kg/(m²*sqrt(h))
-    const w = waterLoss60 * 2.222;
+    const { w, klasse } = karsten(waterLoss60);
     // Einstufung nach DIN 4108-3: w ≤ 0,5 wasserabweisend, w ≤ 2,0 wasserhemmend, darüber wassersaugend
     let evalText = inhalt.werte.wasserabweisendW05;
     let badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-    if (w > 2.0) {
+    if (klasse === 'wassersaugend') {
       evalText = inhalt.werte.wassersaugendW20;
       badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
-    } else if (w > 0.5) {
+    } else if (klasse === 'wasserhemmend') {
       evalText = inhalt.werte.wasserhemmend05W;
       badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
     }
@@ -216,26 +190,20 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Karbonatisierung
   const carbCalc = useMemo(() => {
-    const k_carb = carbMeasured / Math.sqrt(elementAge);
-    // Zeit bis zur Depassivierung: t_depass = (elementCover / k_carb)^2
-    const t_depass = Math.pow(elementCover / Math.max(0.1, k_carb), 2);
-    const restJahre = Math.max(0, Math.round(t_depass - elementAge));
+    // Rechenkern: √t-Gesetz, t_depass = (c/K)²
+    const kb = karbonatisierung(carbMeasured, elementAge, elementCover);
 
     return {
-      k_carb: formatDeZahl(k_carb, 2),
-      t_depass: Math.round(t_depass),
-      restJahre,
-      depassivated: elementCover <= carbMeasured
+      k_carb: formatDeZahl(kb.k, 2),
+      t_depass: Math.round(kb.tDepass),
+      restJahre: kb.restJahre,
+      depassivated: kb.depassiviert
     };
   }, [carbMeasured, elementAge, elementCover]);
 
   // Bohrkern
   const bohrkernCalc = useMemo(() => {
-    const radius = coreDiameter / 2;
-    const area = Math.PI * Math.pow(radius, 2); // mm²
-    const rawStrength = (coreMaxForce * 1000) / area; // N/mm²
-
-    const lambda = coreLength / coreDiameter; // L/D
+    const { flaecheMm2: area, festigkeit: rawStrength, schlankheit: lambda } = bohrkern(coreDiameter, coreLength, coreMaxForce);
     // DIN EN 12504-1 enthält keine Umrechnungsfaktoren. DIN EN 13791:2020-02: Kern L/D = 1 (Ø 100 mm)
     // ≈ 150-mm-Würfel, L/D = 2 ≈ Zylinder 150/300. Andere Schlankheiten werden nicht umgerechnet.
     const f_corr = rawStrength;
@@ -250,13 +218,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Impact-Echo
   const ieCalc = useMemo(() => {
-    // d = (beta * vp) / (2 * f)
-    // f in Hz = ieFreq * 1000
-    // d in m = (0.96 * ieVp) / (2 * ieFreq * 1000)
-    const d_m = (0.96 * ieVp) / (2 * (ieFreq * 1000));
-    const d_cm = d_m * 100;
-    const diff = Math.abs(d_cm - ieNominalThickness);
-    const isDelam = diff > 4.0 && d_cm < ieNominalThickness;
+    // Rechenkern: d = β·v_p/(2·f) mit β = 0,96
+    const { dickeCm: d_cm, delamination: isDelam } = impactEcho(ieFreq, ieVp, ieNominalThickness);
 
     return {
       d_cm: formatDeZahl(d_cm, 1),
@@ -458,9 +421,9 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </h5>
             </div>
             <div className="text-[11px] text-slate-600 pt-3 border-t border-slate-200/60">
-              {potentialVal < -350 
+              {potentialStufeAktuell === 'hoch'
                 ? inhalt.werte.handlungsbedarfBetondeckungPartiellAbtra
-                : potentialVal <= -200
+                : potentialStufeAktuell === 'ungewiss'
                 ? inhalt.werte.kontrollbefundErhöhteFeuchteOder
                 : inhalt.werte.unkritischDiePassivschichtDer}
             </div>
