@@ -23,6 +23,7 @@ import { BegriffeTab } from './messenpruefen/BegriffeTab';
 import { TreffbildTab } from './messenpruefen/TreffbildTab';
 import inhalt from '@/content/messenpruefen/MessenPruefen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -219,53 +220,19 @@ export default function MessenPruefen() {
       </div>
 
       {/* --- Internal Sub-Navigation Tabs --- */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border">
-        <button aria-pressed={activeSubTab === 'begriffe'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'begriffe' 
-              ? 'bg-shiraz text-white shadow-sm' 
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('begriffe')}
-        >
-          <Settings size={14} /><MdText text={inhalt.texte.begriffeDefinitionen} /></button>
-        <button aria-pressed={activeSubTab === 'treffbild'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'treffbild' 
-              ? 'bg-shiraz text-white shadow-sm' 
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('treffbild')}
-        >
-          <Target size={14} /><MdText text={inhalt.texte.richtigkeitVsPräzision} /></button>
-        <button aria-pressed={activeSubTab === 'messunsicherheit'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'messunsicherheit' 
-              ? 'bg-shiraz text-white shadow-sm' 
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('messunsicherheit')}
-        >
-          <Calculator size={14} /><MdText text={inhalt.texte.gumMessunsicherheit} /></button>
-        <button aria-pressed={activeSubTab === 'pruefstreuung'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'pruefstreuung' 
-              ? 'bg-shiraz text-white shadow-sm' 
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('pruefstreuung')}
-        >
-          <Layers size={14} /><MdText text={inhalt.texte.prüfstreuungenRR} /></button>
-        <button aria-pressed={activeSubTab === 'ringversuche'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'ringversuche' 
-              ? 'bg-shiraz text-white shadow-sm' 
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('ringversuche')}
-        >
-          <Award size={14} /><MdText text={inhalt.texte.ringversucheRoundRobin} /></button>
-      </div>
+      <ModuleTabs
+        label={inhalt.werte.bereicheMessenPruefen}
+        tabs={[
+          { id: 'begriffe' as const, label: inhalt.texte.begriffeDefinitionen, icon: Settings },
+          { id: 'treffbild' as const, label: inhalt.texte.richtigkeitVsPräzision, icon: Target },
+          { id: 'messunsicherheit' as const, label: inhalt.texte.gumMessunsicherheit, icon: Calculator },
+          { id: 'pruefstreuung' as const, label: inhalt.texte.prüfstreuungenRR, icon: Layers },
+          { id: 'ringversuche' as const, label: inhalt.texte.ringversucheRoundRobin, icon: Award },
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="flex flex-col gap-6"
+      >
 
       {/* --- Tab 1: Begriffe & Definitionen (Justieren, Kalibrieren, Eichen) --- */}
       {activeSubTab === 'begriffe' && (
@@ -717,6 +684,8 @@ export default function MessenPruefen() {
           </div>
         </div>
       )}
+
+      </ModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <div className="flex flex-col gap-6">

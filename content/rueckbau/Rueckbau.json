@@ -122,7 +122,8 @@
     "regionaleAnnahmepreiseSchwankenStark": "Regionale Annahmepreise schwanken stark; die Rechnung zeigt das Prinzip. Bei Schadstofffunden (z. B. asbesthaltiger Putz) kann die gesamte Charge als gefährlicher Abfall gelten – deshalb Schadstofferkundung vor dem Abbruch.",
     "gewabfv89Vdi": "GewAbfV §§ 8, 9; VDI 6210 Blatt 1:2025-10",
     "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: GewAbfV §§ 8/9, EBV §§ 19/22, GefStoffV § 5a, Normausgaben DIN 18007, VDI 6210, DIN SPEC 91484/91525 geprüft; fachliche Freigabe durch den Autor ausstehend)",
-    "rückbauBauwesen": "Rückbau (Bauwesen)"
+    "rückbauBauwesen": "Rückbau (Bauwesen)",
+    "bereicheRueckbau": "Bereiche Rückbau"
   },
   "daten": {
     "Rueckbau.processPhases": [

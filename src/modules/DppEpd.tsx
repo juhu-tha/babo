@@ -7,6 +7,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/dppepd/DppEpd.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 const DPP_MOCK_DATA = inhalt.daten.DPP_MOCK_DATA;
 
@@ -14,6 +15,25 @@ const EPD_DATA = inhalt.daten.EPD_DATA;
 
 interface DppEpdProps {
   view?: 'dpp' | 'epd';
+}
+
+/** Reiter DPP/EPD; mit vorgegebener Ansicht (Route übergibt view) nur der Inhalt */
+function DppReiter({ view, aktiv, onWechsel, children }: { view?: 'dpp' | 'epd'; aktiv: 'dpp' | 'epd'; onWechsel: (id: 'dpp' | 'epd') => void; children: React.ReactNode }) {
+  if (view) return <>{children}</>;
+  return (
+    <ModuleTabs
+      label={inhalt.werte.bereicheDppEpd}
+      tabs={[
+        { id: 'dpp' as const, label: inhalt.werte.digitalerProduktpassDpp, icon: QrCode },
+        { id: 'epd' as const, label: inhalt.werte.umweltproduktdeklarationEpd, icon: FileText },
+      ]}
+      aktiv={aktiv}
+      onWechsel={onWechsel}
+      className="flex flex-col gap-6"
+    >
+      {children}
+    </ModuleTabs>
+  );
 }
 
 export default function DppEpd({ view }: DppEpdProps = {}) {
@@ -86,7 +106,8 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
       });
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play().catch(e => console.log("Video playback exception", e));
+        // Wiedergabe kann z. B. durch Autoplay-Regeln scheitern: Hinweis im Scanner statt Konsolenausgabe
+        videoRef.current.play().catch(() => setCameraError(inhalt.werte.kamerabildKonnteNichtGestartet));
       }
     } catch (err) {
       console.warn("Camera hardware access rejected or restricted in iframe:", err);
@@ -158,30 +179,8 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
         </div>
         </div>
 
-        {/* Local Tab Fallback Selector - only visible if view is not passed from outer component */}
-        {!view && (
-          <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-            <button aria-pressed={localTab === 'dpp'}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                localTab === 'dpp' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-slate-500 border-home-grau/30 hover:bg-off-white hover:text-slate-900'
-              }`}
-              onClick={() => setLocalTab('dpp')}
-            >
-              <QrCode size={16} /><MdText text={inhalt.texte.digitalerProduktpassDpp} /></button>
-            <button aria-pressed={localTab === 'epd'}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                localTab === 'epd' 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-slate-500 border-home-grau/30 hover:bg-off-white hover:text-slate-900'
-              }`}
-              onClick={() => setLocalTab('epd')}
-            >
-              <FileText size={16} /><MdText text={inhalt.texte.umweltproduktdeklarationEpd} /></button>
-          </div>
-        )}
-
+        {/* Reiter nur ohne vorgegebene Ansicht (view) */}
+        <DppReiter view={view} aktiv={localTab} onWechsel={setLocalTab}>
         {displayTab === 'dpp' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Split screen: Academic Guide vs Interactive Scanner */}
@@ -192,35 +191,19 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                 
                 <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed"><MdText text={inhalt.texte.derDigitaleProduktpassDpp} /></div>
 
-                {/* Subsections Selectors */}
-                <div className="flex border-b border-home-grau/30 overflow-x-auto gap-2 scrollbar-none">
-                  {[
+                <ModuleTabs
+                  label={inhalt.werte.abschnitteDesProduktpasses}
+                  tabs={[
                     { id: 'grundlagen', label: inhalt.werte.t1Grundlagen, icon: BookOpen },
                     { id: 'umsetzung', label: inhalt.werte.t2Umsetzung, icon: Wrench },
                     { id: 'inhalte', label: inhalt.werte.t3InhalteBom, icon: Database },
                     { id: 'zeitschiene', label: inhalt.werte.t4Zeitschiene, icon: Clock },
                     { id: 'verpflichtung', label: inhalt.werte.t5Verpflichtung, icon: Scale },
-                  ].map((sec) => {
-                    const IconComp = sec.icon;
-                    const isSelected = activeDetailSection === sec.id;
-                    return (
-                      <button aria-pressed={isSelected}
-                        key={sec.id}
-                        type="button"
-                        onClick={() => setActiveDetailSection(sec.id)}
-                        className={`px-3 py-2 text-xs font-bold rounded-t-lg transition-all flex items-center gap-1.5 border-t border-x hover:bg-slate-50 ${
-                          isSelected
-                            ? 'bg-shiraz text-white border-shiraz font-bold -mb-[1px]'
-                            : 'bg-white text-slate-500 border-gray-200'
-                        }`}
-                      >
-                        <IconComp size={12} />
-                        <span>{sec.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
+                  ]}
+                  aktiv={activeDetailSection}
+                  onWechsel={setActiveDetailSection}
+                  className="flex flex-col gap-6"
+                >
                 {/* Subsection Panel */}
                 <div className="bg-slate-50/50 p-5 rounded-2xl border border-home-grau/30 shadow-inner min-h-[350px] flex flex-col justify-between">
                   {activeDetailSection === 'grundlagen' && (
@@ -374,6 +357,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                     <span><MdText text={inhalt.texte.expertentippDppDatenFließen} /></span>
                   </div>
                 </div>
+                </ModuleTabs>
 
               </div>
 
@@ -807,6 +791,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
             </div>
           </div>
         )}
+        </DppReiter>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

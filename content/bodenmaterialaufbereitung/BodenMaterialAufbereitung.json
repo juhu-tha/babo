@@ -142,7 +142,8 @@
     "einFalscherBezugOriginalsubstanz": "Ein falscher Bezug (Originalsubstanz statt Trockenmasse) unterschätzt die Belastung und kann zu einer falschen Materialklasse führen.",
     "dinEnIso17892": "DIN EN ISO 17892-1; BBodSchV Anlage 3",
     "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: Probenahmerechner auf LAGA PN 98 Tabellen 2/3 umgestellt, LfU-Arbeitshilfe 10/2025 eingearbeitet; fachliche Freigabe durch den Autor ausstehend)",
-    "lfuBayernUmgangMit": "LfU Bayern: Umgang mit Bodenmaterial, Stand 10/2025 (PDF-Download)"
+    "lfuBayernUmgangMit": "LfU Bayern: Umgang mit Bodenmaterial, Stand 10/2025 (PDF-Download)",
+    "bereicheBodenMaterialaufbereitung": "Bereiche Boden- und Materialaufbereitung"
   },
   "daten": {
     "TREATMENT_OPTIONS": {

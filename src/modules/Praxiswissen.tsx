@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/praxiswissen/Praxiswissen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface ChecklistItem {
   id: string;
@@ -130,29 +131,18 @@ export default function Praxiswissen() {
           </div>
         </div>
 
-        {/* Tab Selection */}
-        <div className="flex border-b border-home-grau/30 mb-6 overflow-x-auto pb-px">
-          {[
-            { id: 'planung', label: inhalt.werte.planungAusschreibung2, icon: <ClipboardCheck size={16} /> },
-            { id: 'bauleitung', label: inhalt.werte.bauleitungBaustelle2, icon: <Wrench size={16} /> },
-            { id: 'produktion', label: inhalt.werte.produktherstellungQs2, icon: <Factory size={16} /> },
-            { id: 'karriere', label: inhalt.werte.karrierestartSoftSkills2, icon: <GraduationCap size={16} /> }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as "planung" | "bauleitung" | "produktion" | "karriere")}
-              className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 flex items-center gap-2 ${
-                activeTab === tab.id
-                  ? 'border-shiraz text-shiraz bg-shiraz/5'
-                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-home-grau/30'
-              }`}
-            >
-              {tab.icon}
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
+        <ModuleTabs
+          label={inhalt.werte.bereichePraxiswissen}
+          tabs={[
+            { id: 'planung' as const, label: inhalt.werte.planungAusschreibung2, icon: ClipboardCheck },
+            { id: 'bauleitung' as const, label: inhalt.werte.bauleitungBaustelle2, icon: Wrench },
+            { id: 'produktion' as const, label: inhalt.werte.produktherstellungQs2, icon: Factory },
+            { id: 'karriere' as const, label: inhalt.werte.karrierestartSoftSkills2, icon: GraduationCap }
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:mb-6 [&>[role=tablist]]:pb-4 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30"
+        >
         {/* MAIN BODY LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
@@ -331,6 +321,7 @@ export default function Praxiswissen() {
             <div />
           )}
         </div>
+        </ModuleTabs>
 
       </div>
 

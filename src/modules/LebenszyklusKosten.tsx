@@ -4,6 +4,7 @@ import LCC from './LCC';
 import Preisentwicklung from './Preisentwicklung';
 import { Clock, Coins, TrendingUp } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/lebenszykluskosten/LebenszyklusKosten.json';
@@ -29,36 +30,18 @@ export default function LebenszyklusKosten() {
           </div>
         </div>
 
-        <div className="p-4 bg-slate-50/50 border-b border-home-grau/30">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button aria-pressed={isActive}
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
-                    isActive 
-                      ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                      : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'
-                  }`}
-                >
-                  <Icon size={20} className={isActive ? 'text-shiraz' : 'text-slate-500'} />
-                  <span className="text-sm font-semibold leading-tight">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="p-6">
+        <ModuleTabs
+          label={inhalt.werte.bereicheLebenszykluskosten}
+          tabs={tabs}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          variante="kachel"
+          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tabpanel]]:p-6"
+        >
           {activeTab === 'Lebensdauern' && <Lebensdauern />}
           {activeTab === 'LCC' && <LCC />}
           {activeTab === 'Preisentwicklung' && <Preisentwicklung />}
-        </div>
+        </ModuleTabs>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

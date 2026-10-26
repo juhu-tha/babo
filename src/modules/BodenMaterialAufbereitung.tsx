@@ -8,6 +8,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 const TREATMENT_OPTIONS = inhalt.daten.TREATMENT_OPTIONS;
 
@@ -106,53 +107,18 @@ export default function BodenMaterialAufbereitung() {
 
         <div className="p-6 space-y-6">
           
-          {/* Tabs / Reiter Navigation */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 bg-slate-50/50 p-2 rounded-2xl border border-home-grau/30 mb-2">
-            <button aria-pressed={activeTab === 'vorschriften'}
-              onClick={() => setActiveTab('vorschriften')}
-              className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
-                activeTab === 'vorschriften'
-                  ? 'bg-shiraz border-shiraz text-white shadow-sm font-bold'
-                  : 'bg-white hover:bg-slate-100/50 border-home-grau/25 text-slate-700 hover:text-slate-950 font-medium'
-              }`}
-            >
-              <BookOpen size={16} />
-              <span><MdText text={inhalt.texte.vorschriftenRahmen} /></span>
-            </button>
-            <button aria-pressed={activeTab === 'simulator'}
-              onClick={() => setActiveTab('simulator')}
-              className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
-                activeTab === 'simulator'
-                  ? 'bg-shiraz border-shiraz text-white shadow-sm font-bold'
-                  : 'bg-white hover:bg-slate-100/50 border-home-grau/25 text-slate-700 hover:text-slate-950 font-medium'
-              }`}
-            >
-              <Sliders size={16} />
-              <span>Aufbereitungssimulator</span>
-            </button>
-            <button aria-pressed={activeTab === 'qualitaet'}
-              onClick={() => setActiveTab('qualitaet')}
-              className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
-                activeTab === 'qualitaet'
-                  ? 'bg-shiraz border-shiraz text-white shadow-sm font-bold'
-                  : 'bg-white hover:bg-slate-100/50 border-home-grau/25 text-slate-700 hover:text-slate-950 font-medium'
-              }`}
-            >
-              <Activity size={16} />
-              <span><MdText text={inhalt.texte.qualitätssicherungQs} /></span>
-            </button>
-            <button aria-pressed={activeTab === 'probenahme'}
-              onClick={() => setActiveTab('probenahme')}
-              className={`flex items-center gap-2.5 justify-center py-3 px-4 rounded-xl border transition-all duration-200 cursor-pointer text-xs font-semibold ${
-                activeTab === 'probenahme'
-                  ? 'bg-shiraz border-shiraz text-white shadow-sm font-bold'
-                  : 'bg-white hover:bg-slate-100/50 border-home-grau/25 text-slate-700 hover:text-slate-950 font-medium'
-              }`}
-            >
-              <ClipboardCheck size={16} />
-              <span><MdText text={inhalt.texte.lagaPn98Rechner} /></span>
-            </button>
-          </div>
+          <ModuleTabs
+            label={inhalt.werte.bereicheBodenMaterialaufbereitung}
+            tabs={[
+              { id: 'vorschriften' as const, label: inhalt.texte.vorschriftenRahmen, icon: BookOpen },
+              { id: 'simulator' as const, label: 'Aufbereitungssimulator', icon: Sliders },
+              { id: 'qualitaet' as const, label: inhalt.texte.qualitätssicherungQs, icon: Activity },
+              { id: 'probenahme' as const, label: inhalt.texte.lagaPn98Rechner, icon: ClipboardCheck },
+            ]}
+            aktiv={activeTab}
+            onWechsel={setActiveTab}
+            className="space-y-6"
+          >
 
           {activeTab === 'vorschriften' && (
             <div className="animate-in fade-in duration-300">
@@ -876,6 +842,7 @@ export default function BodenMaterialAufbereitung() {
           </section>
         </div>
       )}
+          </ModuleTabs>
 
         </div>
       </div>

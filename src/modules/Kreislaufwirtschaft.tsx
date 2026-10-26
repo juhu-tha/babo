@@ -11,6 +11,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/kreislaufwirtschaft/Kreislaufwirtschaft.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export interface DeconstructionComponent {
   id: string;
@@ -277,37 +278,20 @@ export default function Kreislaufwirtschaft() {
           <p><MdText text={inhalt.texte.dieKreislaufwirtschaftImBauwesen} /></p>
         </div>
 
-        <div className="p-4 bg-slate-50/50 rounded-2xl border border-rose-100">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {[
-              { id: 'grundlagen' as const, label: inhalt.werte.rStrategienUrbanMining, icon: RotateCcw },
-              { id: 'abfaelle' as const, label: inhalt.werte.massenAufbereitung, icon: Building2 },
-              { id: 'probleme' as const, label: inhalt.werte.stoffverbündeSchadstoffe, icon: AlertTriangle },
-              { id: 'rueckbauplanung' as const, label: inhalt.werte.rückbauplanungReUse, icon: ClipboardCheck },
-              { id: 'zirkularitaet' as const, label: 'Zirkularitäts-Indizes', icon: Calculator }
-            ].map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button aria-pressed={isActive}
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
-                    isActive 
-                      ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                      : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'
-                  }`}
-                >
-                  <Icon size={20} className={isActive ? 'text-shiraz' : 'text-slate-500'} />
-                  <span className="text-xs font-bold leading-tight">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
+        <ModuleTabs
+          label={inhalt.werte.bereicheKreislaufwirtschaft}
+          tabs={[
+            { id: 'grundlagen' as const, label: inhalt.werte.rStrategienUrbanMining, icon: RotateCcw },
+            { id: 'abfaelle' as const, label: inhalt.werte.massenAufbereitung, icon: Building2 },
+            { id: 'probleme' as const, label: inhalt.werte.stoffverbündeSchadstoffe, icon: AlertTriangle },
+            { id: 'rueckbauplanung' as const, label: inhalt.werte.rückbauplanungReUse, icon: ClipboardCheck },
+            { id: 'zirkularitaet' as const, label: 'Zirkularitäts-Indizes', icon: Calculator }
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          variante="kachel"
+          className="flex flex-col gap-6 [&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-rose-100"
+        >
         {activeTab === 'grundlagen' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
             {/* R-Strategien */}
@@ -1262,6 +1246,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

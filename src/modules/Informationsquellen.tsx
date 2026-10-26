@@ -15,6 +15,7 @@ import { OerEncyclopedia } from '@/src/components/ui/OerEncyclopedia';
 import { NormenLinkMonitor } from '@/src/components/ui/NormenLinkMonitor';
 import inhalt from '@/content/informationsquellen/Informationsquellen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 // Robust, comprehensive evaluation data
 interface DBRecord {
@@ -376,47 +377,20 @@ export default function Informationsquellen() {
         </div>
         <p className="text-text-main/80 text-sm leading-relaxed max-w-4xl"><MdText text={inhalt.texte.dieBewältigungNachhaltigerBau} /></p>
 
-        {/* Level 1 Tabs switcher */}
-        <div className="flex flex-wrap gap-2 mt-6 border-t border-home-grau/30 pt-4">
-          <button aria-pressed={activeSubTab === 'evaluation'}
-            onClick={() => setActiveSubTab('evaluation')}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeSubTab === 'evaluation' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <Database size={14} /><MdText text={inhalt.texte.t1DatenbankEvaluation} /></button>
-          <button aria-pressed={activeSubTab === 'verbaende'}
-            onClick={() => setActiveSubTab('verbaende')}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeSubTab === 'verbaende' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <Building2 size={14} /><MdText text={inhalt.texte.t2ZusätzlicheFachverbändeVerbände} /></button>
-          <button aria-pressed={activeSubTab === 'oer_enzyklopaedie'}
-            onClick={() => setActiveSubTab('oer_enzyklopaedie')}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeSubTab === 'oer_enzyklopaedie' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
-            }`}
-          >
-            <BookOpen size={14} /><MdText text={inhalt.texte.t3OerEnzyklopädie} /></button>
-          <button aria-pressed={activeSubTab === 'monitor'}
-            onClick={() => setActiveSubTab('monitor')}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeSubTab === 'monitor' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100/70'
-            }`}
-          >
-            <ShieldCheck size={14} /><MdText text={inhalt.texte.t4NormenLinkAktualitätsmonitor} /></button>
-        </div>
       </div>
 
+      <ModuleTabs
+        label={inhalt.werte.bereicheInformationsquellen}
+        tabs={[
+          { id: 'evaluation' as const, label: inhalt.texte.t1DatenbankEvaluation, icon: Database },
+          { id: 'verbaende' as const, label: inhalt.texte.t2ZusätzlicheFachverbändeVerbände, icon: Building2 },
+          { id: 'oer_enzyklopaedie' as const, label: inhalt.texte.t3OerEnzyklopädie, icon: BookOpen },
+          { id: 'monitor' as const, label: inhalt.texte.t4NormenLinkAktualitätsmonitor, icon: ShieldCheck },
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="flex flex-col gap-6"
+      >
       {/* VIEW 1: Database Evaluation Directory */}
       {activeSubTab === 'evaluation' && (
         <div className="space-y-6">
@@ -601,6 +575,8 @@ export default function Informationsquellen() {
       {activeSubTab === 'monitor' && (
         <NormenLinkMonitor />
       )}
+
+      </ModuleTabs>
 
       {/* Footer list */}
       <ModuleFooter 

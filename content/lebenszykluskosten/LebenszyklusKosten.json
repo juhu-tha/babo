@@ -11,7 +11,8 @@
     "beispiel2ErsatzinvestitionFür": "Beispiel 2: Ersatzinvestition für Fenster nach 30 Jahren",
     "langlebigeBauteileMitSpäten": "Langlebige Bauteile mit späten Ersatzzeitpunkten erscheinen im Barwert günstig; die Nutzungsdauern nach BNB bzw. VDI 2067 bestimmen daher maßgeblich das Ergebnis.",
     "iso15686520172": "ISO 15686-5:2017; BNB-Nutzungsdauern von Bauteilen",
-    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: Barwertmethode, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: Barwertmethode, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "bereicheLebenszykluskosten": "Bereiche Lebenszykluskosten"
   },
   "daten": {
     "LebenszyklusKosten.schritte": [

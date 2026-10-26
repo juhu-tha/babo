@@ -10,6 +10,8 @@ import { SAEULEN_DATA, BETON_PRINZIPIEN } from './materialoptimierung/daten';
 import { DafstbRichtlinieTab } from './materialoptimierung/DafstbRichtlinieTab';
 import inhalt from '@/content/materialoptimierung/Materialoptimierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { dafstbVergleich, type DafstbBauteil, type DafstbZement } from '@/src/calc/materialoptimierung';
 
 export default function Materialoptimierung() {
   const [activeSubTab, setActiveSubTab] = useState<'saeulen' | 'betonoptimierung' | 'dafstb_richtlinie'>('saeulen');
@@ -18,9 +20,9 @@ export default function Materialoptimierung() {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
 
   // DAfStb-Richtlinie Calculator States
-  const [dafstbBauteil, setDafstbBauteil] = useState<'decke' | 'stuetze' | 'wand' | 'bodenplatte'>('decke');
+  const [dafstbBauteil, setDafstbBauteil] = useState<DafstbBauteil>('decke');
   const [dafstbBauweise, setDafstbBauweise] = useState<string>('hohlkoerper');
-  const [dafstbZement, setDafstbZement] = useState<'cem1' | 'cem2_all' | 'cem2_bs' | 'cem3_a' | 'cem2_cm'>('cem3_a');
+  const [dafstbZement, setDafstbZement] = useState<DafstbZement>('cem3_a');
   const [dafstbPruefalter, setDafstbPruefalter] = useState<28 | 56>(56);
   const [dafstbStahlRoute, setDafstbStahlRoute] = useState<'standard_bof' | 'gruen_eaf'>('gruen_eaf');
 
@@ -28,160 +30,24 @@ export default function Materialoptimierung() {
     return SAEULEN_DATA.find(s => s.id === selectedSaeule)!;
   }, [selectedSaeule]);
 
-  // DAfStb-Richtlinie Tragwerks-Berechnung
+  // DAfStb-Richtlinie Tragwerks-Berechnung: Rechenkern src/calc/materialoptimierung.ts (Z11),
+  // hier nur Bezeichnung des Bauteils und Darstellung der Effizienzklasse
   const dafstbCalc = useMemo(() => {
-    let refBetonVol = 26.0;
-    let refStahlKg = 2860;
-    let refArea = 100;
-    let areaUnit = inhalt.werte.mDeckenfläche;
-    let label = inhalt.werte.geschossdecke100MFläche;
-
-    let optBetonVol = 26.0;
-    let optStahlKg = 2860;
-
-    if (dafstbBauteil === 'decke') {
-      label = inhalt.werte.geschossdecke100MFläche2;
-      refArea = 100;
-      areaUnit = 'm² Decke';
-      refBetonVol = 26.0; // 26 cm Massivplatte
-      refStahlKg = 2860; // 110 kg/m³
-      if (dafstbBauweise === 'massiv') {
-        optBetonVol = 24.0; // 24 cm schlank optimiert
-        optStahlKg = 2520; // 105 kg/m³
-      } else if (dafstbBauweise === 'hohlkoerper') {
-        optBetonVol = 19.5; // -25% durch Hohlkörperverdrängung
-        optStahlKg = 2470; // 95 kg/m³ bezogen auf Bruttomaß
-      } else if (dafstbBauweise === 'vorgespannt') {
-        optBetonVol = 20.0; // 20 cm Flachdecke mit Spannbeton
-        optStahlKg = 1400; // 70 kg/m³ Spann- und Zulagebewehrung
-      }
-    } else if (dafstbBauteil === 'stuetze') {
-      label = inhalt.werte.innenstützen4Stützen3;
-      refArea = 14;
-      areaUnit = 'm Stütze';
-      refBetonVol = 2.835; // 45x45 cm C25/30
-      refStahlKg = 397; // 140 kg/m³
-      if (dafstbBauweise === 'hochfest_c50_schlank') {
-        optBetonVol = 1.26; // 30x30 cm hochfest C50/60 (-55% Betonvolumen)
-        optStahlKg = 202; // 160 kg/m³
-      } else {
-        optBetonVol = 2.835;
-        optStahlKg = 397;
-      }
-    } else if (dafstbBauteil === 'wand') {
-      label = inhalt.werte.tragwandKernwand60M;
-      refArea = 60;
-      areaUnit = 'm² Wand';
-      refBetonVol = 14.4; // 24 cm Dicke
-      refStahlKg = 1152; // 80 kg/m³
-      if (dafstbBauweise === 'optimiert_18') {
-        optBetonVol = 10.8; // 18 cm Dicke (-25% Betonvolumen)
-        optStahlKg = 864;
-      } else {
-        optBetonVol = 14.4;
-        optStahlKg = 1152;
-      }
-    } else if (dafstbBauteil === 'bodenplatte') {
-      label = inhalt.werte.fundamentplatteBodenplatte120M;
-      refArea = 120;
-      areaUnit = 'm² Platte';
-      refBetonVol = 42.0; // 35 cm Dicke
-      refStahlKg = 3780; // 90 kg/m³
-      if (dafstbBauweise === 'optimiert_28') {
-        optBetonVol = 33.6; // 28 cm Dicke (-20% Betonvolumen)
-        optStahlKg = 2856;
-      } else {
-        optBetonVol = 42.0;
-        optStahlKg = 3780;
-      }
-    }
-
-    // Concrete GWP factors [kg CO2e / m³]
-    const zementGwpMap: Record<string, number> = {
-      cem1: 310,
-      cem2_all: 250,
-      cem2_bs: 190,
-      cem3_a: 135,
-      cem2_cm: 105
-    };
-
-    const optZementBaseGwp = zementGwpMap[dafstbZement] || 250;
-    // 56-day testing age allows ~9% cement reduction due to prolonged hydration of slag/pozzolana
-    const ageFactor = dafstbPruefalter === 56 ? 0.91 : 1.0;
-    const optConcreteGwpPerM3 = Math.round(optZementBaseGwp * ageFactor);
-
-    // Steel GWP factors [kg CO2e / kg]
-    const refSteelGwpPerKg = 0.98; // European BOF average
-    const optSteelGwpPerKg = dafstbStahlRoute === 'gruen_eaf' ? 0.42 : 0.98;
-
-    // Totals Reference
-    const refConcreteGwpTotal = Math.round(refBetonVol * 310);
-    const refSteelGwpTotal = Math.round(refStahlKg * refSteelGwpPerKg);
-    const refTotalGwp = refConcreteGwpTotal + refSteelGwpTotal;
-    const refSpecificGwp = refTotalGwp / refArea;
-
-    // Totals Optimized
-    const optConcreteGwpTotal = Math.round(optBetonVol * optConcreteGwpPerM3);
-    const optSteelGwpTotal = Math.round(optStahlKg * optSteelGwpPerKg);
-    const optTotalGwp = optConcreteGwpTotal + optSteelGwpTotal;
-    const optSpecificGwp = optTotalGwp / refArea;
-
-    // Reduction
-    const diffAbs = Math.max(0, refTotalGwp - optTotalGwp);
-    const diffPct = Math.max(0, ((refTotalGwp - optTotalGwp) / refTotalGwp) * 100);
-
-    // DAfStb Efficiency Class
-    let efficiencyClass = 'Referenz';
-    let efficiencyBadge = 'bg-slate-100 text-slate-800 border-slate-300';
-    let classLabel = inhalt.werte.konventionellerStandard;
-    let classStar = 'Basis';
-
-    if (diffPct >= 50) {
-      efficiencyClass = 'Klasse A+';
-      efficiencyBadge = 'bg-emerald-100 text-emerald-900 border-emerald-300';
-      classLabel = inhalt.werte.thgExzellenzUltraLow;
-      classStar = '★★★★★';
-    } else if (diffPct >= 40) {
-      efficiencyClass = 'Klasse A';
-      efficiencyBadge = 'bg-green-100 text-green-900 border-green-300';
-      classLabel = inhalt.werte.ambitionierteDekarbonisierung;
-      classStar = '★★★★☆';
-    } else if (diffPct >= 25) {
-      efficiencyClass = 'Klasse B';
-      efficiencyBadge = 'bg-amber-100 text-amber-900 border-amber-300';
-      classLabel = inhalt.werte.wirtschaftlichesOptimum;
-      classStar = '★★★☆☆';
-    } else if (diffPct >= 10) {
-      efficiencyClass = 'Klasse C';
-      efficiencyBadge = 'bg-blue-100 text-blue-900 border-blue-300';
-      classLabel = 'Einstiegs-Optimierung';
-      classStar = '★★☆☆☆';
-    }
-
-    return {
-      label,
-      areaUnit,
-      refArea,
-      refBetonVol,
-      refStahlKg,
-      optBetonVol,
-      optStahlKg,
-      optConcreteGwpPerM3,
-      refTotalGwp,
-      optTotalGwp,
-      refConcreteGwpTotal,
-      optConcreteGwpTotal,
-      refSteelGwpTotal,
-      optSteelGwpTotal,
-      refSpecificGwp,
-      optSpecificGwp,
-      diffAbs,
-      diffPct,
-      efficiencyClass,
-      efficiencyBadge,
-      classLabel,
-      classStar
-    };
+    const r = dafstbVergleich({ bauteil: dafstbBauteil, bauweise: dafstbBauweise, zement: dafstbZement, pruefalter: dafstbPruefalter, stahlRoute: dafstbStahlRoute });
+    const label = {
+      decke: inhalt.werte.geschossdecke100MFläche2,
+      stuetze: inhalt.werte.innenstützen4Stützen3,
+      wand: inhalt.werte.tragwandKernwand60M,
+      bodenplatte: inhalt.werte.fundamentplatteBodenplatte120M,
+    }[dafstbBauteil];
+    const klasse = {
+      'Referenz': { efficiencyBadge: 'bg-slate-100 text-slate-800 border-slate-300', classLabel: inhalt.werte.konventionellerStandard, classStar: 'Basis' },
+      'Klasse A+': { efficiencyBadge: 'bg-emerald-100 text-emerald-900 border-emerald-300', classLabel: inhalt.werte.thgExzellenzUltraLow, classStar: '★★★★★' },
+      'Klasse A': { efficiencyBadge: 'bg-green-100 text-green-900 border-green-300', classLabel: inhalt.werte.ambitionierteDekarbonisierung, classStar: '★★★★☆' },
+      'Klasse B': { efficiencyBadge: 'bg-amber-100 text-amber-900 border-amber-300', classLabel: inhalt.werte.wirtschaftlichesOptimum, classStar: '★★★☆☆' },
+      'Klasse C': { efficiencyBadge: 'bg-blue-100 text-blue-900 border-blue-300', classLabel: 'Einstiegs-Optimierung', classStar: '★★☆☆☆' },
+    }[r.efficiencyClass];
+    return { ...r, label, ...klasse };
   }, [dafstbBauteil, dafstbBauweise, dafstbZement, dafstbPruefalter, dafstbStahlRoute]);
 
   return (
@@ -197,30 +63,17 @@ export default function Materialoptimierung() {
       </div>
 
       {/* --- Navigation Subtabs --- */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border gap-1">
-        <button aria-pressed={activeSubTab === 'saeulen'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'saeulen' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('saeulen')}
-        >
-          <Layers size={14} /><MdText text={inhalt.texte.die4SäulenDer} /></button>
-        <button aria-pressed={activeSubTab === 'betonoptimierung'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'betonoptimierung' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('betonoptimierung')}
-        >
-          <Beaker size={14} /><MdText text={inhalt.texte.betonoptimierungsLeitfadenPrinzipien} /></button>
-        <button aria-pressed={activeSubTab === 'dafstb_richtlinie'}
-          className={`flex-1 min-w-[180px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'dafstb_richtlinie' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('dafstb_richtlinie')}
-        >
-          <Scale size={14} /><MdText text={inhalt.texte.dafstbRichtlinieTreibhausgasreduzierteTr} /></button>
-      </div>
-
+      <ModuleTabs
+        label={inhalt.werte.bereicheMaterialoptimierung}
+        tabs={[
+          { id: 'saeulen' as const, label: inhalt.texte.die4SäulenDer, icon: Layers },
+          { id: 'betonoptimierung' as const, label: inhalt.texte.betonoptimierungsLeitfadenPrinzipien, icon: Beaker },
+          { id: 'dafstb_richtlinie' as const, label: inhalt.texte.dafstbRichtlinieTreibhausgasreduzierteTr, icon: Scale },
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="flex flex-col gap-6"
+      >
       {/* --- Tab 1: 4 Pillars of Optimization --- */}
       {activeSubTab === 'saeulen' && (
         <div className="space-y-6">
@@ -477,6 +330,8 @@ export default function Materialoptimierung() {
       {activeSubTab === 'dafstb_richtlinie' && (
         <DafstbRichtlinieTab dafstbCalc={dafstbCalc} dafstbBauteil={dafstbBauteil} setDafstbBauteil={setDafstbBauteil} setDafstbBauweise={setDafstbBauweise} dafstbBauweise={dafstbBauweise} dafstbZement={dafstbZement} setDafstbZement={setDafstbZement} dafstbPruefalter={dafstbPruefalter} setDafstbPruefalter={setDafstbPruefalter} dafstbStahlRoute={dafstbStahlRoute} setDafstbStahlRoute={setDafstbStahlRoute} />
       )}
+
+      </ModuleTabs>
 
       {/* --- Detailed Pflanzenkohle Infobox Modal --- */}
       {showPflanzenkohleModal && (
