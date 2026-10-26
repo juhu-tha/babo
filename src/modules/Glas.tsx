@@ -16,6 +16,8 @@ import { Layers, Activity, Maximize, BookOpen } from 'lucide-react';
 import inhalt from '@/content/glas/Glas.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { weibull, vsgEffektiveDicke, sigma0Lehrmodell, VSG_MODUL } from '@/src/calc/glas';
 
 const glassTypes = inhalt.daten.glassTypes;
 
@@ -26,22 +28,16 @@ export default function Glas() {
   const [sigma, setSigma] = useState(45); // Spannung in MPa
   const [area, setArea] = useState(1.0); // Fläche in m²
   const [m, setM] = useState(7); // Weibull-Modul
-  const [sigma0, setSigma0] = useState(60); // Charakteristische Festigkeit
+  const [sigma0, setSigma0] = useState(() => sigma0Lehrmodell(glassTypes.SPG.fgk)); // Lehrmodell σ0 = 1,5 · f_g,k passend zur Startauswahl SPG
 
   const [temp, setTemp] = useState(20); // Temperatur in °C
   const [duration, setDuration] = useState<'short' | 'medium' | 'long'>('short'); // Lasteinwirkungsdauer
 
+  // Rechenkern src/calc/glas.ts
+  const wb = useMemo(() => weibull({ sigma, sigma0, m, A: area }), [sigma, sigma0, m, area]);
   const weibullData = useMemo(() => {
-    const data = [];
-    const A0 = 1.0; // Bezugsfläche
-    
-    for (let s = 0; s <= 120; s += 2) {
-      // Pf = 1 - exp( - (sigma/sigma0)^m * (A/A0) )
-      const Pf = 1 - Math.exp(-Math.pow(s / sigma0, m) * (area / A0));
-      data.push({ x: s, y: Pf * 100 }); // in %
-    }
-
-    const currentPf = 1 - Math.exp(-Math.pow(sigma / sigma0, m) * (area / A0));
+    const data = wb.kurve;
+    const currentPf = wb.pf;
 
     return {
       datasets: [
@@ -65,52 +61,10 @@ export default function Glas() {
         }
       ]
     };
-  }, [area, m, sigma0, sigma]);
+  }, [wb, area, m, sigma]);
 
-  const vsgData = useMemo(() => {
-    // Schubmodul G von PVB (vereinfachte Interpolation)
-    // Kurz (Wind), Mittel (Schnee), Lang (Eigengewicht)
-    // Lehrannahme: Schubmodul-Werte stark vereinfacht (produktabhängig, maßgebend Zulassung/Datenblatt)
-    const G_values = {
-      short: { 0: 400, 20: 10, 40: 0.5, 60: 0.1 },
-      medium: { 0: 100, 20: 1.0, 40: 0.1, 60: 0.01 },
-      long: { 0: 10, 20: 0.1, 40: 0.01, 60: 0.001 }
-    };
-
-    // Interpolate G based on temp
-    const getG = (t: number, dur: 'short' | 'medium' | 'long') => {
-      const vals = G_values[dur] as Record<number, number>;
-      if (t <= 0) return vals[0];
-      if (t >= 60) return vals[60];
-      const keys = [0, 20, 40, 60];
-      for (let i = 0; i < keys.length - 1; i++) {
-        if (t >= keys[i] && t <= keys[i+1]) {
-          const ratio = (t - keys[i]) / (keys[i+1] - keys[i]);
-          return vals[keys[i]] + ratio * (vals[keys[i+1]] - vals[keys[i]]);
-        }
-      }
-      return 0.1;
-    };
-
-    const G = getG(temp, duration);
-    
-    // Schubverbund VSG (2x 8mm Glas, 1.52mm PVB)
-    const h1 = 8;
-    const h2 = 8;
-    const d = 1.52;
-    const E = 70000; // MPa
-    const a = 1000; // Spannweite in mm
-    const hm = (h1 + h2) / 2 + d;
-    const Is = h1 * Math.pow(hm/2, 2) + h2 * Math.pow(hm/2, 2); // vereinfacht
-
-    // DIN EN 16612: Γ = 1 / (1 + 9,6·E·I_s·h_v / (G·h_m²·a²))
-    const Gamma = 1 / (1 + 9.6 * E * Is * d / (G * Math.pow(hm, 2) * Math.pow(a, 2)));
-    
-    // h_ef,w = ∛(h1³ + h2³ + 12·Γ·I_s)
-    const hef_w = Math.cbrt(Math.pow(h1, 3) + Math.pow(h2, 3) + 12 * Gamma * Is);
-
-    return { G, Gamma, hef_w };
-  }, [temp, duration]);
+  // Rechenkern src/calc/glas.ts: Schubverbund VSG 2 × 8 mm, 1,52 mm PVB, Stützweite 1 m
+  const vsgData = useMemo(() => vsgEffektiveDicke({ T: temp, dauer: duration, ...VSG_MODUL }), [temp, duration]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -149,7 +103,7 @@ export default function Glas() {
                   onChange={(e) => {
                     const type = e.target.value as keyof typeof glassTypes;
                     setGlassType(type);
-                    setSigma0(glassTypes[type].fgk * 1.5); // Lehrmodell: σ0 = 1,5 · f_g,k (keine Normgröße)
+                    setSigma0(sigma0Lehrmodell(glassTypes[type].fgk)); // Lehrmodell: σ0 = 1,5 · f_g,k (keine Normgröße)
                   }}
                 >
                   {Object.entries(glassTypes).map(([k, v]) => <option key={k} value={k}>{v.name}</option>)}
@@ -190,6 +144,7 @@ export default function Glas() {
               <div className="mt-4">
                 <Slider label={inhalt.werte.weibullModulM} info={inhalt.werte.parameterFürDieStreuung} min={3} max={15} step={1} value={m} unit="-" onChange={(e) => setM(Number(e.target.value))} />
               </div>
+              <EingabeHinweise hinweise={wb.hinweise} />
             </div>
           </div>
 
@@ -235,6 +190,7 @@ export default function Glas() {
               </div>
 
               <Slider label={<div className="flex items-center gap-2">Temperatur <FormulaText text="T" /></div>} min={-20} max={60} step={5} value={temp} unit="°C" onChange={(e) => setTemp(Number(e.target.value))} />
+              <EingabeHinweise hinweise={vsgData.hinweise} />
               
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/30">
