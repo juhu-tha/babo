@@ -4,7 +4,8 @@ name: Barrierefreiheit und Mobil-Layout
 # Push auf main, wöchentlich, manuell: vollständig (alle Routen × Desktop/Mobil + Dunkel-Stichprobe, ~20 min).
 # Pull Requests: Desktop hell auf allen Routen, auf zwei Jobs verteilt; Mobil auf der Stichprobe und den
 # Routen, deren Module der PR ändert (scripts/qa/a11y-routen.mjs); Dunkel-Stichprobe. Gleiche Baseline-Ratsche.
-# Dazu der geöffnete A11y-Dialog in vier Darstellungen (scripts/qa/a11y-dialog.mjs) sowie PDF-Export und Druck
+# Dazu der geöffnete A11y-Dialog in vier Darstellungen (scripts/qa/a11y-dialog.mjs), die Diagramm-Textalternativen
+# mit geöffneten Datentabellen (scripts/qa/a11y-diagramme.mjs, Paket Z8) sowie PDF-Export und Druck
 # als E2E-Prüfung (scripts/qa/e2e-pdf.mjs).
 on:
   push:
@@ -63,6 +64,9 @@ jobs:
       - name: A11y-Dialog geöffnet (hell/dunkel × normaler/hoher Kontrast)
         if: matrix.teil == '1/1' || matrix.teil == '2/2'
         run: node scripts/qa/a11y-dialog.mjs
+      - name: Diagramm-Textalternativen (Tabellen geöffnet, hell/dunkel/mobil, Druck)
+        if: matrix.teil == '1/1' || matrix.teil == '2/2'
+        run: node scripts/qa/a11y-diagramme.mjs
       - name: Mobil-Layout (390 px)
         if: matrix.teil == '1/1' || matrix.teil == '2/2'
         env:
