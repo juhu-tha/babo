@@ -445,7 +445,7 @@ export default function Feuchteschutz() {
               }
             ]}
             ergebnisHinweis="Liegt φ_si dauerhaft über 80 %, droht Schimmelpilzwachstum; bei θ_si ≤ θ_s fällt Tauwasser aus."
-            normQuelle="DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium)"
+            normQuelle="DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium); § 11 GModG nimmt DIN 4108-2:2013-02 und DIN 4108-3:2018-10 in Bezug"
           />
         </div>
 

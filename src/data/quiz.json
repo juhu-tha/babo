@@ -4892,9 +4892,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "fraglich",
-      "hinweis": "Bestätigt: GModG gilt seit 29.07.2026, 65-%-Regel entfällt, Bio-Treppe (§ 43 GModG), Energieausweis A+ bis H bleibt. Nicht bestätigt: Verkündungsdatum 28.07.2026 und die Aussage „§§ 15, 16 und 79–88 bleiben, Bestandsregeln teils neu nummeriert“ (keine Konkordanz gefunden)."
+      "am": "2026-10-26",
+      "ergebnis": "ok",
+      "hinweis": "Verkündung am 28.07.2026 im BGBl. 2026 I Nr. 226 bestätigt (BIngK, IngKH), Umbenennung GEG → GModG (BMWSB). Inhaltsverzeichnis der nichtamtlichen Fassung (gmodg-info.de): §§ 15, 16 und 79–88 mit unveränderten Überschriften, Bestand als §§ 34–39 (§ 35 Nachrüstung, § 36 Änderung), §§ 47–55 und 71–73 weggefallen. Wortlautvergleich mit dem GEG nicht durchgeführt."
     }
   },
   {
@@ -4951,10 +4951,10 @@
       "Seit 2025 als § 650o BGB in Kraft; einfache Standards sind seither vereinbar",
       "Durch die EU-Bauproduktenverordnung eingeführt und seit 2026 unmittelbar anwendbar",
       "Als Verordnung zum GModG erlassen und seit Oktober 2025 für Neubauten anzuwenden",
-      "Der Entwurf von 2024 ist mit der 20. Wahlperiode erledigt; seit 11/2025 gibt es Eckpunkte"
+      "Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor"
     ],
     "correctIdx": 3,
-    "explanation": "Der Entwurf (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. BMJ und BMWSB haben im November 2025 Eckpunkte vorgelegt; ein neues Gesetz steht aus.",
+    "explanation": "Der Entwurf von 2024 (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. Nach Eckpunkten von BMJV und BMWSB (20.11.2025) haben die Ministerinnen Hubig und Hubertz am 26.10.2026 einen neuen Entwurf zum Bauvertragsrecht vorgelegt, der nun an Länder und Verbände geht. Kabinettsbeschluss sowie Beratung in Bundestag und Bundesrat stehen aus; ein Inkrafttreten wird frühestens Mitte 2027 erwartet.",
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
@@ -4973,9 +4973,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "fraglich",
-      "hinweis": "Eckpunkte BMJV/BMWSB vom 20.11.2025 bestätigt; laut BAK sollte ein Referentenentwurf nach dem Sommer 2026 folgen (Kabinett Ende 2026). Ob er im Oktober 2026 vorliegt, war nicht feststellbar – ggf. richtige Antwort aktualisieren."
+      "am": "2026-10-26",
+      "ergebnis": "korrigiert",
+      "hinweis": "Richtige Antwort und Erklärung auf den Stand 26.10.2026 gebracht: neuer Entwurf von BMJV/BMWSB vorgelegt, Länder- und Verbändeanhörung, noch kein Kabinettsbeschluss (ad-hoc-news.de und leadersnet.de vom 26.10.2026 nach ARD-Hauptstadtstudio; hib 674/2025 zu den Eckpunkten). Paragrafen des neuen Entwurfs nicht öffentlich."
     }
   },
   {
@@ -16597,37 +16597,37 @@
     "moduleTitle": "Holzwerkstoffe",
     "topic": "Emissionen",
     "difficulty": "Vertiefung",
-    "normRef": "ChemVerbotsV / DIN EN 16516",
-    "question": "Nach welchem Prüfverfahren wird die Formaldehydabgabe von Holzwerkstoffen in Deutschland seit 2020 bewertet?",
+    "normRef": "VO (EU) 2023/1464 (REACH Anh. XVII Nr. 77)",
+    "question": "Welcher Grenzwert für die Formaldehydabgabe gilt seit dem 06.08.2026 EU-weit für Holzwerkstoffe (REACH Anhang XVII Nr. 77)?",
     "options": [
-      "DIN EN 120 (Perforator)",
-      "DIN EN 16516",
-      "DIN EN 717-2 (Gasanalyse)",
-      "DIN EN 13501-1"
+      "0,124 mg/m³ in der Prüfkammer",
+      "0,062 mg/m³ in der Prüfkammer",
+      "0,080 mg/m³ in der Prüfkammer",
+      "8 mg je 100 g Platte (Perforator)"
     ],
     "correctIdx": 1,
-    "explanation": "Die ChemVerbotsV verweist auf die Prüfkammermethode nach DIN EN 16516 (umgangssprachlich „E05“).",
+    "explanation": "REACH Anhang XVII Nr. 77 (VO (EU) 2023/1464) begrenzt seit 06.08.2026 die Formaldehydkonzentration in der Prüfkammer auf 0,062 mg/m³ für Holzwerkstoffe und Möbel (0,080 mg/m³ für andere Erzeugnisse, Fahrzeuginnenräume ab 2027). Nachweis nach Anlage 14, bevorzugt nach EN 717-1, EN 16516 zulässig. In Deutschland galt bereits seit 2020 die ChemVerbotsV mit Prüfung nach DIN EN 16516 („E05“).",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
-      "Die Perforatormethode bestimmt den Formaldehydgehalt, nicht die Abgabe in die Raumluft unter Prüfkammerbedingungen.",
+      "0,124 mg/m³ (0,1 ppm) entspricht der bisherigen Klasse E1 nach EN 13986; der EU-Grenzwert ist nur halb so hoch.",
       "",
-      "Die Gasanalyse ist ein Ableitverfahren für die Produktionskontrolle, nicht das Referenzverfahren der ChemVerbotsV.",
-      "DIN EN 13501-1 regelt die Klassifizierung des Brandverhaltens, nicht die Formaldehydabgabe."
+      "0,080 mg/m³ gilt nach Eintrag 77 für andere Erzeugnisse wie Textilien oder Kunststoffe, nicht für Holzwerkstoffe und Möbel.",
+      "Die Perforatormethode (DIN EN 120) bestimmt den Formaldehydgehalt der Platte, nicht die Abgabe in die Raumluft der Prüfkammer."
     ],
     "gapAnalysis": {
       "topic": "Emissionen",
       "misconception": "E1 nach altem Verfahren reiche weiterhin aus.",
-      "coreRule": "Prüfung nach DIN EN 16516.",
+      "coreRule": "Seit 06.08.2026 EU-weit 0,062 mg/m³ in der Prüfkammer (REACH Anh. XVII Nr. 77); national seit 2020 DIN EN 16516.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Emissionen“ im Modul Holzwerkstoffe noch einmal durch.",
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "fraglich",
-      "hinweis": "Seit 06.08.2026 gilt zusätzlich die EU-Beschränkung REACH Anhang XVII Nr. 77 (Formaldehyd 0,062 mg/m³, Kammerverfahren nach Anlage 14; EN 717-1 bevorzugt, EN 16516 zulässig). Frage und Erklärung nennen nur ChemVerbotsV/DIN EN 16516 – bitte entscheiden, ob Frage auf den EU-Stand umgestellt werden soll."
+      "am": "2026-10-26",
+      "ergebnis": "korrigiert",
+      "hinweis": "Frage auf den EU-Stand umgestellt (Grenzwert statt Prüfverfahren): VO (EU) 2023/1464, gültig ab 06.08.2026, 0,062 mg/m³ für Holzwerkstoffe/Möbel, 0,080 mg/m³ sonst (IHK, measurlabs.com); Modultext Holzwerkstoffe nennt den Grenzwert bereits."
     }
   },
   {
@@ -19084,7 +19084,7 @@
     "topic": "Wassereinwirkungsklassen",
     "difficulty": "Basis",
     "normRef": "DIN 18533-1",
-    "question": "Welche Wassereinwirkungsklasse gilt für drückendes Wasser mit einer Eintauchtiefe von 2,5 m?",
+    "question": "Welche Wasserbeanspruchungsklasse gilt für drückendes Wasser mit einer Eintauchtiefe von 2,5 m?",
     "options": [
       "W2.1-E",
       "W1.1-E",
@@ -19111,9 +19111,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Klassenbezeichnungen nach DIN 18533-1:2017-07; die Registry führt DIN 18533-1:2026-06 – Abgleich der Klassen offen (Normen-Check Oktober 2026)."
+      "am": "2026-10-26",
+      "ergebnis": "korrigiert",
+      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen."
     }
   },
   {
@@ -29700,7 +29700,7 @@
     "topic": "Wassereinwirkungsklasse",
     "difficulty": "Vertiefung",
     "normRef": "DIN 18533-1",
-    "question": "Ein Keller steht in wenig durchlässigem Lehmboden; eine funktionsfähige Dränung nach DIN 4095 ist vorhanden. Welche Wassereinwirkungsklasse ergibt der Berater?",
+    "question": "Ein Keller steht in wenig durchlässigem Lehmboden; eine funktionsfähige Dränung nach DIN 4095 ist vorhanden. Welche Wasserbeanspruchungsklasse ergibt der Berater?",
     "options": [
       "W1-E: Bodenfeuchte, die Dränung verhindert den Aufstau",
       "W2-E: drückendes Wasser, da Lehmboden Wasser aufstaut",
@@ -29727,9 +29727,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Klassenbezeichnungen nach DIN 18533-1:2017-07; die Registry führt DIN 18533-1:2026-06 – Abgleich der Klassen offen (Normen-Check Oktober 2026)."
+      "am": "2026-10-26",
+      "ergebnis": "korrigiert",
+      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026)."
     }
   },
   {
@@ -31301,7 +31301,7 @@
     "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Mehlkorngehalt",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 1045-2:2008-08, Tab. F.4.1",
+    "normRef": "DIN 1045-2:2023-08 (Mehlkorngehalt)",
     "question": "C30/37, XF1, D_max = 16 mm, Zementgehalt z = 330 kg/m³. Höchstwerte: 400 kg/m³ bei z ≤ 300 kg/m³ und 450 kg/m³ bei z ≥ 350 kg/m³. Welcher höchstzulässige Mehlkorngehalt ergibt sich?",
     "options": [
       "400 kg/m³",
@@ -31310,7 +31310,7 @@
       "415 kg/m³"
     ],
     "correctIdx": 1,
-    "explanation": "Linear interpoliert: 400 + (330 − 300)/(350 − 300) · 50 = 430 kg/m³. Zwischenwerte der Tabelle werden laut Modul linear interpoliert.",
+    "explanation": "Linear interpoliert: 400 + (330 − 300)/(350 − 300) · 50 = 430 kg/m³. Zwischenwerte der Tabelle sind nach DIN 1045-2 linear zu interpolieren.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -31329,9 +31329,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "fraglich",
-      "hinweis": "normRef nennt DIN 1045-2:2008-08, Tab. F.4.1; Registry: DIN 1045-2:2023-08. Bitte prüfen, ob Mehlkornhöchstwerte (400/450 kg/m³) und Tabellennummer in der Ausgabe 2023-08 unverändert sind – dann normRef umstellen."
+      "am": "2026-10-26",
+      "ergebnis": "korrigiert",
+      "hinweis": "Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1)."
     }
   },
   {

@@ -52,10 +52,10 @@ export const bauprodukteTasks: Task[] = [
   {
     id: 't_abdichtung_din18533',
     difficulty: 'Schwer',
-    title: 'Bauwerksabdichtung: DIN 18533 Wassereinwirkungsklassen',
-    question: 'Welche Wassereinwirkungsklasse nach DIN 18533 liegt bei einer Kelleraußenwand vor, wenn der Bemessungsgrundwasserstand (HGW) 1,5 m über der Kellersohle liegt? Welche Abdichtungsbauarten sind hierfür zulässig?',
+    title: 'Bauwerksabdichtung: DIN 18533 Wasserbeanspruchungsklassen',
+    question: 'Welche Wasserbeanspruchungsklasse nach DIN 18533 liegt bei einer Kelleraußenwand vor, wenn der Bemessungsgrundwasserstand (HGW) 1,5 m über der Kellersohle liegt? Welche Abdichtungsbauarten sind hierfür zulässig?',
     moduleHint: { id: 'bp_abdichtung', name: 'Bauprodukte: Abdichtung' },
-    solution: '1. **Wassereinwirkungsklasse nach DIN 18533-1:**\n   Liegt der höchste Grundwasserstand über der Fundamentunterkante (Sohle), liegt drückendes Wasser von außen vor.\n   Dies entspricht der **Klasse W2.1-E: Drückendes Wasser von außen (Mäßige Einwirkung bei Eintauchtiefe \\le 3 m)**.\n2. **Zulässige Abdichtungsbauarten nach DIN 18533-2 und -3:**\n   - Bahnenförmige Abdichtung: Mindestens zweilagige polymermodifizierte Bitumenbahnen (z.B. PYE-PV 200 S5) oder einlagige Kunststoff- bzw. Elastomerbahnen mit Heißluftverschweißung.\n   - Flüssig zu verarbeitende Abdichtungsstoffe: Kunststoffmodifizierte Bitumendickbeschichtungen (PMBC) mit Gewebeeinlage (Trockenschichtdicke $\\ge 4{,}0\\text{ mm}$) oder mineralische Dichtungsschlämmen (MDS/FPD).\n   - Alternativ: Ausführung des Bauteils als Weiße Wanne (WU-Beton nach DAfStb) ohne zusätzliche bahnenförmige Abdichtung.'
+    solution: '1. **Wasserbeanspruchungsklasse nach DIN 18533-1:**\n   Liegt der höchste Grundwasserstand über der Fundamentunterkante (Sohle), liegt drückendes Wasser von außen vor.\n   Dies entspricht der **Klasse W2.1-E: Drückendes Wasser von außen (Mäßige Einwirkung bei Eintauchtiefe \\le 3 m)**.\n2. **Zulässige Abdichtungsbauarten nach DIN 18533-2 und -3:**\n   - Bahnenförmige Abdichtung: Mindestens zweilagige polymermodifizierte Bitumenbahnen (z.B. PYE-PV 200 S5) oder einlagige Kunststoff- bzw. Elastomerbahnen mit Heißluftverschweißung.\n   - Flüssig zu verarbeitende Abdichtungsstoffe: Kunststoffmodifizierte Bitumendickbeschichtungen (PMBC) mit Gewebeeinlage (Trockenschichtdicke $\\ge 4{,}0\\text{ mm}$) oder mineralische Dichtungsschlämmen (MDS/FPD).\n   - Alternativ: Ausführung des Bauteils als Weiße Wanne (WU-Beton nach DAfStb) ohne zusätzliche bahnenförmige Abdichtung.'
   },
   {
     id: 't_befestigung_anker',

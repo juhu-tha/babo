@@ -395,7 +395,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2025-08',
     status: 'gueltig',
-    beschreibung: 'Regelt Planung, Stoffauswahl, Bemessung und Ausführung von flachen und geneigten Dach- sowie Balkonabdichtungen. Neuausgabe 2025 als Normenreihe DIN 18531-1 bis -5 (Teil 1: nicht genutzte und genutzte Dächer; Teil 5: Balkone, Loggien, Laubengänge); gegenüber 2017-07 entfallen Beanspruchungsstufen, Beanspruchungsklassen und die Anwendungsklassen K1/K2, die Gefälleregeln wurden überarbeitet.',
+    beschreibung: 'Regelt Planung, Stoffauswahl, Bemessung und Ausführung von flachen und geneigten Dach- sowie Balkonabdichtungen. Neuausgabe 2025 als Normenreihe DIN 18531-1 bis -5 (Teile 1 bis 4: nicht genutzte und genutzte Dächer; Teil 5: Balkone, Loggien, Laubengänge); gegenüber 2017-07 entfallen die mechanischen und thermischen Einwirkungsstufen, die Einwirkungsklassen (IA bis IIB), die Anwendungsklassen K1/K2 und in Teil 2 die Eigenschaftsklassen; die Gefälleregeln wurden überarbeitet (Anhang A, Gefälle unter 2 % begründet zulässig), Tür- und Fensteranschlüsse unter 5 cm neu geregelt.',
     relevanteModule: ['feuchteschutz', 'bauphysik', 'ausbau']
   },
   'DIN_18533': {

@@ -1206,7 +1206,7 @@ wikipedia={[
         regelwerke={[
           { title: 'Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, in Kraft gestaffelt ab 29.07.2026; vormals Gebäudeenergiegesetz GEG; Neubau §§ 15/16 und Energieausweis §§ 79–88 unverändert nummeriert; Bestand teils neu: Nachrüstung § 35, Änderung § 36 statt §§ 47/48)', url: 'https://www.gesetze-im-internet.de/geg/' },
           { title: 'DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG § 20 referenziert); Nachfolgereihe DIN/TS 18599 seit 2025-10' },
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)' }
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02; §§ 11 und 14 GModG nehmen weiterhin die Ausgabe 2013-02 in Bezug)' }
         ]}
         formeln={
           activeTab === 'annahmen_berechnung' || activeTab === 'simulator'

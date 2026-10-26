@@ -150,7 +150,7 @@ export default function MischungsberechnungAnleitung() {
               </p>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-1 ml-2">
                 <li>Ein zu niedriger Mehlkorngehalt (&lt; 300 kg/m³) führt zu Entmischen und Bluten.</li>
-                <li>Ein zu hoher Mehlkorngehalt erhöht den Schwind- und Kriechprozess sowie die Rissneigung. Nach DIN 1045-2 (Tab. F.4.1/F.4.2) ist er bei XF/XM und bei hochfestem Beton abhängig vom Zementgehalt begrenzt (z. B. 400–450 kg/m³ bis C50/60).</li>
+                <li>Ein zu hoher Mehlkorngehalt erhöht den Schwind- und Kriechprozess sowie die Rissneigung. Nach DIN 1045-2 (Höchstwerte für den Mehlkorngehalt; in der Ausgabe 2008-08 Tab. F.4.1/F.4.2) ist er bei XF/XM und bei hochfestem Beton abhängig vom Zementgehalt begrenzt (z. B. 400–450 kg/m³ bis C50/60).</li>
               </ul>
             </div>
           </div>

@@ -820,7 +820,7 @@ export default function Bauphysik() {
                   }
                 ]}
                 ergebnisHinweis="Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F)."
-                normQuelle="DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05; GModG/GEG Anlage 7"
+                normQuelle="DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05 (§ 11 GModG nimmt weiterhin die Ausgabe 2013-02 in Bezug); GModG/GEG Anlage 7"
               />
 
             </div>

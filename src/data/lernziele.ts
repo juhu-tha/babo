@@ -198,7 +198,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   bp_abdichtung: {
     niveau: "B", minuten: 75, vorwissen: ["ausbau", "wu-bauwerke"],
     ziele: [
-      { stufe: "Verstehen", text: "die Wassereinwirkungsklassen W1-E bis W4-E nach DIN 18533 anhand von Baugrund und Grundwasserstand unterscheiden." },
+      { stufe: "Verstehen", text: "die Wasserbeanspruchungsklassen W1-E bis W4-E nach DIN 18533 (bis 2017-07: Wassereinwirkungsklassen) anhand von Baugrund und Grundwasserstand unterscheiden." },
       { stufe: "Anwenden", text: "für eine Bauwerksabdichtung die Wassereinwirkungsklasse bestimmen und ein Abdichtungssystem wie PMBC oder FPD auswählen." },
       { stufe: "Anwenden", text: "die erforderliche Nassschichtdicke einer PMBC-Abdichtung aus der Mindesttrockenschichtdicke und dem Feststoffanteil berechnen." },
       { stufe: "Analysieren", text: "die Fugenabdichtungen Fugenblech, Fugenband, Quellband und Injektionsschläuche für Arbeits- und Dehnungsfugen in WU-Bauteilen vergleichen." },

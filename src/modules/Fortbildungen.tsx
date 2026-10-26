@@ -520,7 +520,7 @@ export default function Fortbildungen() {
         'Mindestens 2 Jahre nachgewiesene Berufserfahrung in der Bauphysik oder im Bautenschützergewerbe'
       ],
       modules: [
-        'Wasserbeanspruchungsklassen (W1-E bis W4-E) und Untergrundklassen nach DIN 18533',
+        'Wasserbeanspruchungsklassen (W1-E bis W4-E), Riss- und Raumnutzungsklassen nach DIN 18533',
         'Moderne Abdichtungsstoffe: Kunststoffmodifizierte Bitumendickbeschichtungen (PMBC), polymermodifizierte Dickbeschichtungen (FPD), Dichtungsschlämmen (MDS)',
         'Detailplanung für die Bauausführung: Sockelausbildung, Rohrdurchlässe, Dehnungsfugen und Übergänge',
         'Bauwerksbeurteilungen bei drückendem Wasser, Schichtenwasser und Bodenfeuchtigkeit',
