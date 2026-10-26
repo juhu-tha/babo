@@ -5,6 +5,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/dauerhaftigkeit/BetonDauerhaftigkeitsSimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { karbonatisierungsLebensdauer } from '@/src/calc/korrosion';
 
 export function BetonDauerhaftigkeitsSimulator() {
   const [k, setK] = useState<number>(2.5); // Karbonatisierungsbeiwert in mm/Wurzel(a)
@@ -19,11 +21,12 @@ export function BetonDauerhaftigkeitsSimulator() {
     setCnom(pC);
   };
 
-  const xCarb = k * Math.sqrt(t);
-  const isDepassivated = xCarb >= cnom;
-  
-  const tCrit = k > 0 ? Math.round(Math.pow(cnom / k, 2)) : 999;
-  const safeYearsRemaining = tCrit - t;
+  // Wurzel-t-Gesetz im Rechenkern (src/calc/korrosion.ts)
+  const lebensdauer = karbonatisierungsLebensdauer(k, t, cnom);
+  const xCarb = lebensdauer.xc;
+  const isDepassivated = lebensdauer.depassiviert;
+  const tCrit = lebensdauer.tKrit;
+  const safeYearsRemaining = lebensdauer.restJahre;
 
   return (
     <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm mt-6">
@@ -116,6 +119,7 @@ export function BetonDauerhaftigkeitsSimulator() {
               <span className="bg-slate-100 text-slate-900 px-2 py-0.5 rounded font-mono text-lg font-black">{formatDeWert(xCarb)} mm</span>
             </div>
           </div>
+          <EingabeHinweise hinweise={lebensdauer.hinweise} />
 
           {/* SVG cross-section */}
           <div className="w-full h-32 bg-stone-300 rounded-lg relative overflow-hidden border border-home-grau/30 shadow-inner flex items-center justify-center">

@@ -32,6 +32,8 @@ ChartJS.register(
 import { ZwangCalculator } from './Zwang';
 import inhalt from '@/content/praxisbeispiele/Praxisbeispiele.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { praxisbeispielMassigesBauteil } from '@/src/calc/hydratation';
 
 export default function Praxisbeispiele() {
   const [thickness, setThickness] = useState(1.5);
@@ -42,80 +44,16 @@ export default function Praxisbeispiele() {
   const [restraint, setRestraint] = useState(0.5);
 
   const results = useMemo(() => {
-    const heatFactors: Record<string, number> = {
-      'CEM I 42.5 R': 12,
-      'CEM II/A-LL 32.5 R': 10,
-      'CEM III/B 32.5 N': 7
-    };
-
-    const heatFactor = heatFactors[cementType];
-    const deltaT_ad = (cementContent / 100) * heatFactor;
-    const thicknessFactor = 1 - Math.exp(-thickness);
-    const T_max = tFresh + deltaT_ad * thicknessFactor;
-    const t_p = 1 + thickness; // Peak time in days
-
-    const labels = [];
-    const tempCurve = [];
-    const stressCurve = [];
-    const strengthCurve = [];
-
-    let maxStress = 0;
-    let crackRisk = false;
-
-    for (let t = 0; t <= 28; t += 0.5) {
-      labels.push(t);
-      
-      // Temperature curve
-      let T;
-      if (t === 0) {
-        T = tFresh;
-      } else {
-        const heating = (T_max - tFresh) * (t / t_p) * Math.exp(1 - t / t_p);
-        const cooling = (T_max - tAmbient) * Math.exp(-(t - t_p) / (thickness * 2));
-        
-        if (t <= t_p) {
-          T = tFresh + heating;
-        } else {
-          T = tAmbient + cooling;
-        }
-      }
-      tempCurve.push(T);
-
-      // Strength curve
-      const f_ctm = 2.5; 
-      const s = cementType.includes('CEM I') ? 0.2 : (cementType.includes('CEM III') ? 0.38 : 0.25);
-      const f_ct = t > 0 ? f_ctm * Math.exp(s * (1 - Math.sqrt(28 / t))) : 0;
-      strengthCurve.push(f_ct);
-
-      // E-Modulus curve
-      // DIN EN 1992-1-1, 3.1.3: E_cm(t) = (f_cm(t)/f_cm)^0,3 · E_cm = β_cc(t)^0,3 · E_cm
-      const E_c = t > 0 ? 30000 * Math.pow(Math.exp(s * (1 - Math.sqrt(28 / t))), 0.3) : 0;
-
-      // Stress curve
-      let sigma = 0;
-      if (t > t_p) {
-        const deltaT_cool = T_max - T;
-        sigma = 10e-6 * deltaT_cool * E_c * restraint;
-      }
-      stressCurve.push(sigma);
-
-      if (sigma > maxStress) {
-        maxStress = sigma;
-      }
-      
-      if (sigma > f_ct && t > 0) {
-        crackRisk = true;
-      }
-    }
-
-    // Mindestbewehrung (vereinfacht)
-    // As = kc * k * fct,eff * Act / sigma_s
-    const d_cm = thickness * 100 - 5; // Annahme: 5 cm Randabstand
-    const hc_eff = Math.min(2.5 * (thickness * 100 - d_cm), (thickness * 100) / 2);
-    const Act = 100 * hc_eff; // cm² per face per meter
-    const As_min = (1.0 * 0.8 * 2.5 * Act) / 240; // cm²/m per face
+    // Lehrmodell im Rechenkern (src/calc/hydratation.ts)
+    const r = praxisbeispielMassigesBauteil({ dicke: thickness, zement: cementType, zementgehalt: cementContent, tFrisch: tFresh, tUmgebung: tAmbient, behinderung: restraint });
+    const labels = r.zeit;
+    const tempCurve = r.temperatur;
+    const stressCurve = r.spannung;
+    const strengthCurve = r.zugfestigkeit;
+    const { T_max, maxStress, crackRisk, As_min } = r;
 
     return {
+      hinweise: r.hinweise,
       T_max,
       maxStress,
       crackRisk,
@@ -229,6 +167,7 @@ export default function Praxisbeispiele() {
 
           {/* Results & Charts */}
           <div className="lg:col-span-2 flex flex-col gap-6">
+            <EingabeHinweise hinweise={results.hinweise} />
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                 <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxKerntemperatur} /></div>

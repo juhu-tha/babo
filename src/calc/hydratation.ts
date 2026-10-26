@@ -14,6 +14,7 @@
  *  5. Verdunstungsrate nach ACI 305R (Gleichung nach Uno, metrisch):
  *     E = 5·[(T_c + 18)^2,5 − r·(T_a + 18)^2,5]·(V + 4)·10⁻⁶ in kg/(m²·h), T in °C, V in km/h.
  *  6. Mindestdauer der Nachbehandlung nach DIN 1045-3 (Tabellenwerte in src/data/normParams.ts).
+ *  7. Praxisbeispiel massiges Bauteil aus src/modules/Praxisbeispiele.tsx (Temperatur, Zwang, Mindestbewehrung; Lehrmodell).
  * Abweichungen gegenüber der Moduldatei: Zeitachse ganzzahlig bis 28,0 d (die Gleitkommaschleife endete bei 27,9 d,
  * t_e,28 blieb 0); Abfuhrfaktor der Wärmeabfuhr je Schritt ≤ 1 (vorher Überschwingen bis > 150 °C bei d = 0,1 m); f_ctm für f_ck > 50 N/mm² (Zementklasse 52,5) nach Tab. 3.1 mit
  * 2,12·ln(1 + f_cm/10) statt 0,30·f_ck^(2/3); Kennwerte werden nicht mehr vor der Weiterrechnung gerundet.
@@ -519,4 +520,107 @@ export function nachbehandlungsdauer(entwicklung: Festigkeitsentwicklung, exposi
   if (exposition === 'x0_xc1') return { tage: DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage, sondermassnahmen: false, hinweise };
   const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaeche][entwicklung];
   return { tage: exposition === 'xm' ? tage * 2 : tage, sondermassnahmen: false, hinweise };
+}
+
+// ---------------------------------------------------------------------------------------------
+// 7. Praxisbeispiel „Zwang & Risse bei massigen Bauteilen“ (src/modules/Praxisbeispiele.tsx, AP 4.2 Runde 3)
+//    Qualitatives Lehrmodell, Verhalten 1:1 übernommen; geprüft in tests/demosBeton.test.ts:
+//    ΔT_ad = z/100 · w_Z (w_Z: K je 100 kg Zement), T_max = T_frisch + ΔT_ad · (1 − e^(−h)) mit h in m,
+//    Spitze bei t_p = 1 + h [d]; Erwärmung T_frisch + (T_max − T_frisch)·(t/t_p)·e^(1 − t/t_p),
+//    Abkühlung T_umg + (T_max − T_umg)·e^(−(t − t_p)/(2h)).
+//    f_ct(t) = β_cc(t)·2,5 N/mm², E_c(t) = β_cc(t)^0,3 · 30 000 N/mm² (DIN EN 1992-1-1, 3.1.2 und 3.1.3),
+//    Zwang σ = α_T·(T_max − T)·E_c(t)·R mit α_T = 10⁻⁵ 1/K, nur in der Abkühlphase.
+//    Mindestbewehrung je Seite A_s,min = k_c·k·f_ct,eff·A_ct/σ_s mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm²,
+//    σ_s = 240 N/mm², A_ct = 100 cm · h_c,ef und h_c,ef = min(2,5·(h − d); h/2), Randabstand 5 cm.
+//    Korrektur gegenüber dem Modul: Der Zementbeiwert s wurde dort über cementType.includes('CEM I') bestimmt –
+//    das trifft auch „CEM II…“ und „CEM III…“, alle Zemente erhielten s = 0,20. Jetzt je Zement aus PRAXIS_ZEMENTE
+//    (R → 0,20, N → 0,25, S → 0,38 wie im Modul beabsichtigt).
+// ---------------------------------------------------------------------------------------------
+
+/** Lehrwerte je Zement: adiabatische Erwärmung [K je 100 kg/m³ Zement] und Zementbeiwert s nach DIN EN 1992-1-1, 3.1.2 */
+export const PRAXIS_ZEMENTE: Readonly<Record<string, { waerme: number; s: number }>> = {
+  'CEM I 42.5 R': { waerme: 12, s: 0.2 },
+  'CEM II/A-LL 32.5 R': { waerme: 10, s: 0.25 },
+  'CEM III/B 32.5 N': { waerme: 7, s: 0.38 },
+};
+export const PRAXIS_LEHRWERTE = { fctm: 2.5, Ec: 30000, alphaT: 10e-6, kc: 1.0, k: 0.8, sigmaS: 240, randabstandCm: 5, dt: 0.5, dauer: 28 } as const;
+
+export interface PraxisEingabe {
+  /** Bauteildicke h [m] */
+  dicke: number;
+  /** Schlüssel aus PRAXIS_ZEMENTE */
+  zement: string;
+  /** Zementgehalt [kg/m³] */
+  zementgehalt: number;
+  /** Frischbeton- und Umgebungstemperatur [°C] */
+  tFrisch: number;
+  tUmgebung: number;
+  /** Behinderungsgrad R [-] */
+  behinderung: number;
+}
+
+export interface PraxisErgebnis {
+  T_max: number;
+  maxStress: number;
+  crackRisk: boolean;
+  /** Mindestbewehrung je Seite [cm²/m] */
+  As_min: number;
+  /** Zeitachse 0 … 28 d in Schritten von 0,5 d */
+  zeit: number[];
+  temperatur: number[];
+  spannung: number[];
+  zugfestigkeit: number[];
+  gueltig: boolean;
+  hinweise: Hinweis[];
+}
+
+export function praxisbeispielMassigesBauteil(e: PraxisEingabe): PraxisErgebnis {
+  const hinweise: Hinweis[] = [];
+  muss(hinweise, istEndlich(e.dicke, e.zementgehalt, e.tFrisch, e.tUmgebung, e.behinderung), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  const zem = PRAXIS_ZEMENTE[e.zement];
+  muss(hinweise, zem !== undefined, 'zement', 'Unbekannte Zementart.');
+  if (!hatFehler(hinweise)) {
+    muss(hinweise, e.dicke > 0, 'dicke', 'Die Bauteildicke muss größer als 0 sein.');
+    muss(hinweise, e.zementgehalt >= 0, 'zementgehalt', 'Der Zementgehalt darf nicht negativ sein.');
+    muss(hinweise, e.behinderung >= 0 && e.behinderung <= 1, 'behinderung', 'Der Behinderungsgrad muss zwischen 0 und 1 liegen.');
+  }
+  const L = PRAXIS_LEHRWERTE;
+  const zeit = Array.from({ length: Math.round(L.dauer / L.dt) + 1 }, (_, i) => i * L.dt);
+  if (hatFehler(hinweise)) {
+    const leer = zeit.map(() => NaN);
+    return { T_max: NaN, maxStress: NaN, crackRisk: false, As_min: NaN, zeit, temperatur: leer, spannung: leer, zugfestigkeit: leer, gueltig: false, hinweise };
+  }
+  const deltaT_ad = (e.zementgehalt / 100) * zem.waerme;
+  const thicknessFactor = 1 - Math.exp(-e.dicke);
+  const T_max = e.tFrisch + deltaT_ad * thicknessFactor;
+  const t_p = 1 + e.dicke;
+  if (e.tUmgebung > T_max) hinweise.push({ stufe: 'warnung', feld: 'tUmgebung', text: 'Die Umgebung ist wärmer als die höchste Kerntemperatur – das Lehrmodell liefert dann Druck- statt Zugzwang.' });
+
+  const temperatur: number[] = [], spannung: number[] = [], zugfestigkeit: number[] = [];
+  let maxStress = 0;
+  let crackRisk = false;
+  for (const t of zeit) {
+    let T: number;
+    if (t === 0) T = e.tFrisch;
+    else if (t <= t_p) T = e.tFrisch + (T_max - e.tFrisch) * (t / t_p) * Math.exp(1 - t / t_p);
+    else T = e.tUmgebung + (T_max - e.tUmgebung) * Math.exp(-(t - t_p) / (e.dicke * 2));
+    temperatur.push(T);
+
+    const f_ct = t > 0 ? L.fctm * betaCc(zem.s, t) : 0;
+    zugfestigkeit.push(f_ct);
+    const E_c = t > 0 ? L.Ec * Math.pow(betaCc(zem.s, t), 0.3) : 0;
+
+    const sigma = t > t_p ? L.alphaT * (T_max - T) * E_c * e.behinderung : 0;
+    spannung.push(sigma);
+    if (sigma > maxStress) maxStress = sigma;
+    if (sigma > f_ct && t > 0) crackRisk = true;
+  }
+
+  const hCm = e.dicke * 100;
+  const d_cm = hCm - L.randabstandCm;
+  const hc_eff = Math.min(2.5 * (hCm - d_cm), hCm / 2);
+  const Act = 100 * hc_eff;
+  const As_min = (L.kc * L.k * L.fctm * Act) / L.sigmaS;
+
+  return { T_max, maxStress, crackRisk, As_min, zeit, temperatur, spannung, zugfestigkeit, gueltig: true, hinweise };
 }
