@@ -20,6 +20,7 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { execSync } from 'child_process';
+import { seitenUrl } from './seitenUrl.mjs';
 
 async function ladePlaywright() {
   try { return await import('playwright'); } catch { /* nicht lokal installiert → global versuchen */ }
@@ -58,7 +59,7 @@ for (const r of ROUTEN) {
   seitenfehler = []; konsolenfehler = [];
   const fehler = [];
   await page.goto('about:blank');
-  await page.goto(`${BASIS}#${r.id}`, { waitUntil: 'networkidle' });
+  await page.goto(seitenUrl(BASIS, r.id), { waitUntil: 'networkidle' });
   const h1 = page.locator('h1');
   const h1Text = (await h1.count()) === 1 ? (await h1.first().textContent())?.trim() ?? '' : '';
   if ((await h1.count()) !== 1) fehler.push(`${await h1.count()} h1 statt 1`);

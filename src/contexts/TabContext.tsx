@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import { modulPfad, tabAusPfad, tabAusHash } from '../routing/pfad';
 import { TAB_ALIASES, MODUL_KERN } from '@/src/registry/kern';
 import type { ModulId, AliasId } from '@/src/registry/modules';
 
@@ -44,22 +45,35 @@ export function isKnownTab(tab: string): boolean {
   return clean in TAB_ALIASES || (MODUL_KERN.has(clean) && !clean.startsWith('divider_'));
 }
 
-function getInitialTab(): TabId {
-  // Direktlinks (z. B. baustoffboard.de/#spannbeton) beim ersten Laden berücksichtigen
+/**
+ * Modul-ID der aktuellen Adresse (Z52): Pfad /modul/<id>; auf der Startseite / zählt ein alter Hash-Link #<id>
+ * (Lesezeichen, QR-Codes in Folien). Unbekannter Pfad → null.
+ */
+export function tabAusAdresse(ort: Pick<Location, 'pathname' | 'hash'> = window.location): string | null {
+  const ausPfad = tabAusPfad(ort.pathname);
+  if (ausPfad !== 'start') return ausPfad;
+  const ausHash = tabAusHash(ort.hash);
+  return ausHash && isKnownTab(ausHash) ? ausHash : 'start';
+}
+
+function tabFuerAdresse(): TabId {
   try {
-    if (typeof window !== 'undefined') {
-      const hash = decodeURIComponent(window.location.hash.substring(1)).trim();
-      if (hash && isKnownTab(hash)) return resolveTabId(hash.toLowerCase());
-    }
+    const tab = tabAusAdresse();
+    if (tab && isKnownTab(tab)) return resolveTabId(tab);
   } catch {
-    /* ungültiger Hash → Startseite */
+    /* ungültige Adresse → Startseite */
   }
   return 'start';
 }
 
-export function TabProvider({ children }: { children: ReactNode }) {
-  // P23: Initial state from location.hash if known, else 'start'
-  const [activeTabState, setActiveTabState] = useState<TabId>(getInitialTab);
+function getInitialTab(): TabId {
+  // Direktlinks (baustoffboard.de/modul/spannbeton, alt: /#spannbeton) beim ersten Laden berücksichtigen
+  return typeof window === 'undefined' ? 'start' : tabFuerAdresse();
+}
+
+export function TabProvider({ children, startTab }: { children: ReactNode; /** nur Vorrendern im Build (scripts/vorrendern.ts) */ startTab?: TabId }) {
+  // Startzustand aus der Adresse (/modul/<id> bzw. alter Hash-Link), sonst 'start'
+  const [activeTabState, setActiveTabState] = useState<TabId>(() => startTab ?? getInitialTab());
 
   const setActiveTab = (tab: TabId) => {
     const resolved = resolveTabId(tab);
@@ -126,28 +140,45 @@ export function TabProvider({ children }: { children: ReactNode }) {
     }
   }, [theme]);
 
-  // Sync activeTab to URL hash for SEO & bookmarking
+  // Adresse nachführen (Z52): erster Lauf ersetzt den Eintrag (alter Hash-Link, Groß-/Kleinschreibung, Alias →
+  // kanonischer Pfad), jeder Modulwechsel danach legt einen Verlaufseintrag an (Zurück-Taste)
+  const ersterLauf = useRef(true);
   useEffect(() => {
     try {
-      const currentHash = window.location.hash.substring(1);
-      if (currentHash !== activeTab) {
-        window.location.hash = activeTab;
+      const ziel = modulPfad(activeTab);
+      const erster = ersterLauf.current;
+      ersterLauf.current = false;
+      const h = tabAusHash(window.location.hash);
+      const modulHash = !!h && isKnownTab(h);
+      if (window.location.pathname === ziel && !modulHash) return;
+      if (erster) {
+        // Anker im Modul (#abschnitt) bleiben erhalten, alte Modul-Hashes (#glas) nicht
+        window.history.replaceState(window.history.state, '', ziel + window.location.search + (modulHash ? '' : window.location.hash));
+      } else {
+        window.history.pushState(null, '', ziel + window.location.search);
       }
     } catch (e) {}
   }, [activeTab]);
 
-  // Handle browser back/forward buttons navigating tabs
+  // Zurück/Vor: Modul aus der Adresse übernehmen (ohne neuen Verlaufseintrag, Pfad stimmt dann schon)
   useEffect(() => {
-    const handleHashChange = () => {
+    const beiVerlauf = () => setActiveTabState(tabFuerAdresse());
+    // Alte In-App-Links (href="#id", location.hash = 'id') auf Pfad umschreiben; Anker (#abschnitt) unberührt
+    const beiHash = () => {
       try {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          setActiveTab(hash as TabId);
-        }
+        const h = tabAusHash(window.location.hash);
+        if (!h || !isKnownTab(h)) return;
+        const tab = resolveTabId(h);
+        window.history.replaceState(null, '', modulPfad(tab) + window.location.search);
+        setActiveTabState(tab);
       } catch (e) {}
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', beiVerlauf);
+    window.addEventListener('hashchange', beiHash);
+    return () => {
+      window.removeEventListener('popstate', beiVerlauf);
+      window.removeEventListener('hashchange', beiHash);
+    };
   }, []);
 
   return (

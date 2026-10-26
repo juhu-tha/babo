@@ -21,6 +21,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
+import { seitenUrl } from './seitenUrl.mjs';
 
 // lokal installiert (CI: npm i --no-save) oder über NODE_PATH (createRequire beachtet NODE_PATH, import() nicht)
 const lade = async n => { try { return await import(n); } catch { return createRequire(import.meta.url)(n); } };
@@ -63,7 +64,7 @@ for (const m of modi) {
   const page = await ctx.newPage();
   for (const id of m.routen) {
     await page.goto('about:blank');
-    await page.goto(`${BASIS}#${id}`, { waitUntil: 'networkidle' });
+    await page.goto(seitenUrl(BASIS, id), { waitUntil: 'networkidle' });
     await page.waitForTimeout(300);
     const r = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
     const v = {};

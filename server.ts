@@ -259,6 +259,23 @@ function gleicheHerkunft(req: Request): boolean {
   return eigene.includes(host) || erlaubt.includes(host);
 }
 
+// --- Vorgerenderte Modulseiten (Z52) ---------------------------------------------
+// dist/modul/routen.json: { ids: vorgerenderte Module, bekannt: alle Modul-IDs, aliase: Alias → ID }
+interface VorgerenderteRouten { ids: Set<string>; bekannt: Set<string>; aliase: Record<string, string> }
+let routenCache: VorgerenderteRouten | null | undefined;
+function vorgerenderteRouten(distPath: string): VorgerenderteRouten | null {
+  if (routenCache === undefined) {
+    try {
+      const j = JSON.parse(fs.readFileSync(path.join(distPath, "modul", "routen.json"), "utf8")) as { ids?: string[]; bekannt?: string[]; aliase?: Record<string, string> };
+      const ids = new Set(j.ids ?? []);
+      routenCache = { ids, bekannt: new Set([...(j.bekannt ?? []), ...ids]), aliase: { ...(j.aliase ?? {}) } };
+    } catch {
+      routenCache = null; // ohne Vorrendern gebaut: jede /modul/<id> bekommt index.html
+    }
+  }
+  return routenCache;
+}
+
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
@@ -578,6 +595,19 @@ ${prompt}
         },
       })
     );
+    // Modulseiten /modul/<id> (Z52): vorgerenderte Datei aus dist/modul/ (scripts/vorrendern.ts), sonst index.html.
+    // Alias und Großschreibung → 301 auf die kanonische Adresse; unbekannte ID → 404 mit index.html (App zeigt Start).
+    app.get("/modul/:id", (req, res) => {
+      const roh = String(req.params.id);
+      const id = roh.trim().toLowerCase();
+      const r = vorgerenderteRouten(distPath);
+      const suche = req.originalUrl.includes("?") ? req.originalUrl.slice(req.originalUrl.indexOf("?")) : "";
+      const ziel = id === "start" ? "/" : r?.aliase[id] ? `/modul/${encodeURIComponent(r.aliase[id])}` : id !== roh ? `/modul/${encodeURIComponent(id)}` : undefined;
+      if (ziel) return res.redirect(301, ziel + suche);
+      res.setHeader("Cache-Control", "no-cache");
+      if (r?.ids.has(id)) return res.sendFile(path.join(distPath, "modul", `${id}.html`));
+      res.status(r && !r.bekannt.has(id) ? 404 : 200).sendFile(path.join(distPath, "index.html"));
+    });
     // Fehlende Dateien (z. B. alte Asset-Namen) nicht mit der Startseite beantworten.
     app.get(/\.[a-z0-9]{2,5}$/i, (_req, res) => res.status(404).send("Not found"));
     app.get("*", (_req, res) => {

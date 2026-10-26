@@ -1,7 +1,8 @@
 // Inhaltsbereich: ordnet jeder Modul-ID (src/registry/modules.ts) die darzustellende
 // Komponente zu. Alle Fachmodule werden per React.lazy nachgeladen (Phase 5, AP 5.2/5.4).
 // Die Strings '<modul-id>' müssen hier auffindbar bleiben (tests/registry.test.ts).
-import React from 'react';
+// `React.lazy` hier = lazySofort (Vorladen ohne Platzhalter für vorgerenderte Seiten, Z52)
+import { SofortReact as React } from './sofortLaden';
 import type { TabId } from '../contexts/TabContext';
 
 // Lazy loaded modules
@@ -208,6 +209,7 @@ const LaborMoertelprismen = React.lazy(() => import('../modules/laborhandouts/Mo
 
 
 export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
+  // reine Funktion ohne Hooks: vorladenFuer(ModulInhalt({ activeTab })) lädt die Komponente des Moduls vor
   return (
     <>
     {activeTab === 'start' && <Startseite />}

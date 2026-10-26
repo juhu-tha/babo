@@ -18,6 +18,7 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { execSync } from 'child_process';
+import { seitenUrl } from './seitenUrl.mjs';
 
 async function ladePlaywright() {
   try { return await import('playwright'); } catch { /* lokal nicht installiert → global */ }
@@ -64,7 +65,7 @@ async function messe(route) {
   let bytes = 0;
   cdp.on('Network.loadingFinished', e => { bytes += e.encodedDataLength; });
 
-  const url = route === 'start' ? BASIS : `${BASIS}#${route}`;
+  const url = seitenUrl(BASIS, route);
   await page.goto(url, { waitUntil: 'load', timeout: 120000 });
   await page.waitForLoadState('networkidle', { timeout: 120000 }).catch(() => {});
   await page.waitForTimeout(1500);
