@@ -1,7 +1,9 @@
 import { Flame, Volume2 } from 'lucide-react';
 import { InlineMath } from 'react-katex';
-import { formatDeWert, formatDeTeXWert, formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeWert, formatDeTeXWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
+import { BSP_AUFBAUTEN, type BspSchwingungErgebnis, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/holzbaubeta/HolzbauBauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -17,16 +19,22 @@ interface HolzbauBauphysikProps {
   setFireSides: Dispatch<SetStateAction<number>>;
   setFireTime: Dispatch<SetStateAction<number>>;
   setFireType: Dispatch<SetStateAction<string>>;
-  setVibCltThick: Dispatch<SetStateAction<number>>;
-  setVibExtraMass: Dispatch<SetStateAction<number>>;
-  setVibSpan: Dispatch<SetStateAction<number>>;
-  vibCltThick: number;
-  vibExtraMass: number;
-  vibResults: { cltSelfMass: number; totalMass: number; ei_L: number; inertia_L: number; freq_1: number; isCompliant: boolean; };
-  vibSpan: number;
+  vib: BspSchwingungZustand;
 }
 
-export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides, fireTime, fireType, setFireB, setFireH, setFireSides, setFireTime, setFireType, setVibCltThick, setVibExtraMass, setVibSpan, vibCltThick, vibExtraMass, vibResults, vibSpan }: HolzbauBauphysikProps) {
+/** Eingaben und Ergebnis des BSP-Schwingungsrechners (Zustand in HolzbauBeta.tsx) */
+export interface BspSchwingungZustand {
+  aufbau: string; setAufbau: Dispatch<SetStateAction<string>>;
+  span: number; setSpan: Dispatch<SetStateAction<number>>;
+  extraMass: number; setExtraMass: Dispatch<SetStateAction<number>>;
+  breite: number; setBreite: Dispatch<SetStateAction<number>>;
+  estrichDicke: number; setEstrichDicke: Dispatch<SetStateAction<number>>;
+  estrichArt: Estrichart; setEstrichArt: Dispatch<SetStateAction<Estrichart>>;
+  verfahren: EiVerfahren; setVerfahren: Dispatch<SetStateAction<EiVerfahren>>;
+  ergebnis: BspSchwingungErgebnis;
+}
+
+export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides, fireTime, fireType, setFireB, setFireH, setFireSides, setFireTime, setFireType, vib }: HolzbauBauphysikProps) {
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300" id="holz_tab_physics">
 
@@ -260,7 +268,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
           </div>
         </div>
 
-        {/* NEW INTERACTIVE: DECKEN-SCHWINGUNGSRECHNER (Vibration check) */}
+        {/* DECKEN-SCHWINGUNGSRECHNER Brettsperrholz (Rechenkern src/calc/bspSchwingung.ts) */}
         <div className="bg-white p-6 rounded-xl border border-home-grau/30 flex flex-col gap-5">
           <div>
             <span className="text-xs uppercase font-black text-blue-700 tracking-wider"><MdText text={inhalt.texte.akkustischerKomfortTragsicherheit} /></span>
@@ -278,33 +286,56 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
               <div className="flex flex-col gap-1">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.deckenspannweiteLM} /></label>
-                  <span className="font-mono text-xs font-black text-blue-700">{formatDeZahl(vibSpan, 2)} m</span>
+                  <span className="font-mono text-xs font-black text-blue-700">{formatDeZahl(vib.span, 2)} m</span>
                 </div>
-                <input
+                <input aria-label={inhalt.werte.bspSpannweite}
                   type="range"
                   min="3.0"
                   max="8.0"
                   step="0.1"
-                  value={vibSpan}
-                  onChange={(e) => setVibSpan(parseFloat(e.target.value))}
+                  value={vib.span}
+                  onChange={(e) => vib.setSpan(parseFloat(e.target.value))}
                   className="w-full accent-blue-700 cursor-pointer"
                 />
               </div>
 
-              {/* CLT Thickness */}
+              {/* Aufbau */}
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.brettsperrholzPlattenstärkeTMm} /></label>
                 <select aria-label={inhalt.werte.brettsperrholzPlattenstärkeTMm}
-                  value={vibCltThick}
-                  onChange={(e) => setVibCltThick(parseInt(e.target.value) || 120)}
+                  value={vib.aufbau}
+                  onChange={(e) => vib.setAufbau(e.target.value)}
                   className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
                 >
-                  <option value={100}>t = 100 mm (3-lagig CLT)</option>
-                  <option value={120}>t = 120 mm (5-lagig CLT standard)</option>
-                  <option value={140}>t = 140 mm (5-lagig CLT)</option>
-                  <option value={160}>t = 160 mm (5-lagig tragfähig)</option>
-                  <option value={200}>t = 200 mm (7-lagig weitgespannt)</option>
+                  {Object.entries(BSP_AUFBAUTEN).map(([id, a]) => <option key={id} value={id}>{a.label}</option>)}
                 </select>
+              </div>
+
+              {/* Verfahren EI */}
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspVerfahrenEi} /></label>
+                <select aria-label={inhalt.werte.bspVerfahrenEi}
+                  value={vib.verfahren}
+                  onChange={(e) => vib.setVerfahren(e.target.value as EiVerfahren)}
+                  className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
+                >
+                  <option value="gamma">{inhalt.werte.bspVerfahrenGamma}</option>
+                  <option value="netto">{inhalt.werte.bspVerfahrenNetto}</option>
+                </select>
+              </div>
+
+              {/* Deckenbreite */}
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspDeckenbreite} /></label>
+                <input aria-label={inhalt.werte.bspDeckenbreite}
+                  type="number"
+                  min="1"
+                  max="20"
+                  step="0.1"
+                  value={vib.breite}
+                  onChange={(e) => vib.setBreite(parseFloat(e.target.value))}
+                  className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-bold"
+                />
               </div>
 
               {/* Extra Mass */}
@@ -312,14 +343,42 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                 <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.zusatzmasseEstrichDämmungSchüttung} /></label>
                 <input aria-label={inhalt.werte.zusatzmasseEstrichDämmungSchüttung}
                   type="number"
-                  min="10"
-                  max="300"
-                  value={vibExtraMass}
-                  onChange={(e) => setVibExtraMass(Math.max(10, parseInt(e.target.value) || 10))}
+                  min="0"
+                  max="400"
+                  value={vib.extraMass}
+                  onChange={(e) => vib.setExtraMass(parseFloat(e.target.value))}
                   className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-bold"
                 />
                 <p className="text-[10px] text-stone-500 leading-snug"><MdText text={inhalt.texte.tippEineSchwereZementschüttung} /></p>
               </div>
+
+              {/* Estrich */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspEstrichDicke} /></label>
+                  <input aria-label={inhalt.werte.bspEstrichDicke}
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={vib.estrichDicke}
+                    onChange={(e) => vib.setEstrichDicke(parseFloat(e.target.value))}
+                    className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-bold"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspEstrichArt} /></label>
+                  <select aria-label={inhalt.werte.bspEstrichArt}
+                    value={vib.estrichArt}
+                    onChange={(e) => vib.setEstrichArt(e.target.value as Estrichart)}
+                    className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
+                  >
+                    <option value="zement">{inhalt.werte.bspEstrichZement}</option>
+                    <option value="anhydrit">{inhalt.werte.bspEstrichAnhydrit}</option>
+                    <option value="gussasphalt">{inhalt.werte.bspEstrichGussasphalt}</option>
+                  </select>
+                </div>
+              </div>
+              <p className="text-[10px] text-stone-500 leading-snug"><MdText text={inhalt.texte.bspEstrichHinweis} /></p>
             </div>
 
             {/* Outputs (span 7) */}
@@ -329,49 +388,63 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                 <h4 className="font-extrabold text-sm text-text-main"><MdText text={inhalt.texte.gebrauchstauglichkeitsnachweisEc5} /></h4>
               </div>
 
+              <EingabeHinweise hinweise={vib.ergebnis.hinweise} />
+
               <div className="bg-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-3 shadow-xs text-xs">
                 {/* Mass */}
                 <div className="flex justify-between items-center text-text-main/80">
                   <span><MdText text={inhalt.texte.auswertbareDeckenEigenmasseG} /></span>
-                  <span className="font-mono font-bold text-text-main">{formatDeZahl(vibResults.cltSelfMass, 1)} kg/m²</span>
+                  <span className="font-mono font-bold text-text-main">{formatDeZahl(vib.ergebnis.eigenmasse, 1)} kg/m²</span>
                 </div>
                 <div className="flex justify-between items-center text-text-main/80 border-b border-home-grau/10 pb-2">
                   <span><MdText text={inhalt.texte.gesamtmasseMTotInkl} /></span>
-                  <span className="font-mono font-bold text-text-main">{formatDeZahl(vibResults.totalMass, 1)} kg/m²</span>
+                  <span className="font-mono font-bold text-text-main">{formatDeZahl(vib.ergebnis.masse, 1)} kg/m²</span>
                 </div>
 
                 {/* Stiffness */}
                 <div className="space-y-1 pt-1 text-[11px] leading-relaxed">
                   <span className="font-bold text-text-main block"><MdText text={inhalt.texte.biegesteifigkeitEiLPro} /></span>
-                  <div className="bg-stone-50 p-1.5 rounded text-center border font-mono">
-                    <InlineMath math={`EI_{L} = \\frac{11000 \\times 10^6 \\times 1{,}0 \\times ${formatDeTeXWert(vibCltThick / 1000)}^3}{12} = ${formatDeZahl(vibResults.ei_L / 1000, 0)}\\text{ kNm}^2/\\text{m}`} />
+                  <div className="bg-stone-50 p-1.5 rounded border font-mono flex flex-col gap-1">
+                    <div className="flex justify-between gap-2"><span><MdText text={inhalt.texte.bspEiNetto} /></span><span>{formatDeZahl(vib.ergebnis.EI_l_netto / 1000, 0)} kNm²/m</span></div>
+                    <div className="flex justify-between gap-2"><span><MdText text={inhalt.texte.bspEiGamma} /></span><span>{vib.ergebnis.EI_l_gamma === null ? '–' : `${formatDeZahl(vib.ergebnis.EI_l_gamma / 1000, 0)} kNm²/m (γ₁ = ${formatDeZahl(vib.ergebnis.gamma_aussen, 3)})`}</span></div>
+                    <div className="flex justify-between gap-2"><span><MdText text={inhalt.texte.bspEiEstrich} /></span><span>{formatDeZahl(vib.ergebnis.EI_estrich / 1000, 0)} kNm²/m</span></div>
+                    <div className="flex justify-between gap-2 font-bold"><span><MdText text={inhalt.texte.bspEiAngesetzt} /></span><span>{formatDeZahl(vib.ergebnis.EI_l / 1000, 0)} kNm²/m</span></div>
+                    <div className="flex justify-between gap-2"><span><MdText text={inhalt.texte.bspEiQuer} /></span><span>{formatDeZahl(vib.ergebnis.EI_b_ges / 1000, 0)} kNm²/m</span></div>
                   </div>
                 </div>
 
-                {/* Formula */}
+                {/* Formula f1 */}
                 <div className="space-y-1 pt-1 text-[11px] leading-relaxed">
                   <span className="font-bold text-text-main block"><MdText text={inhalt.texte.grundfrequenzF1Einer} /></span>
                   <div className="bg-stone-50 p-1.5 rounded text-center border font-mono text-blue-900 font-bold text-xs">
-                    <InlineMath math={`f_1 = \\frac{\\pi}{2 \\times L^2} \\times \\sqrt{\\frac{EI_{L}}{m}} = ${formatDeZahl(vibResults.freq_1, 2)}\\text{ Hz}`} />
+                    <InlineMath math={`f_1 = \\frac{\\pi}{2 \\cdot \\ell^2} \\cdot \\sqrt{\\frac{(EI)_{\\ell}}{m}} = ${formatDeTeX(vib.ergebnis.f1, 2)}\\text{ Hz}`} />
+                  </div>
+                </div>
+
+                {/* Steifigkeitskriterium */}
+                <div className="space-y-1 pt-1 text-[11px] leading-relaxed">
+                  <span className="font-bold text-text-main block"><MdText text={inhalt.texte.steifigkeitskriteriumW1kN} /></span>
+                  <div className="bg-stone-50 p-1.5 rounded text-center border font-mono text-blue-900 text-xs flex flex-col gap-1">
+                    <InlineMath math={`b_F = \\frac{\\ell}{1{,}1} \\cdot \\sqrt[4]{\\frac{(EI)_b}{(EI)_{\\ell}}} = ${formatDeTeX(vib.ergebnis.b_F, 2)}\\text{ m}, \\quad b_{ef} = ${formatDeTeX(vib.ergebnis.b_ef, 2)}\\text{ m}`} />
+                    <InlineMath math={`w = \\frac{F \\cdot \\ell^3}{48 \\cdot (EI)_{\\ell} \\cdot b_{ef}} = ${formatDeTeX(vib.ergebnis.w1kN, 3)}\\text{ mm} \\quad (F = 1\\text{ kN})`} />
                   </div>
                 </div>
               </div>
 
-              {/* Status bar & gauge */}
-              <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs text-center flex flex-col gap-1.5">
-                <span className="text-[10px] text-text-main/50 font-black uppercase tracking-wider block"><MdText text={inhalt.texte.schwingungsnachweisKriterium80} /></span>
-                <div className="flex items-center justify-center gap-3">
-                  <span className={`text-[11px] font-black px-3 py-1 rounded-full ${
-                      vibResults.isCompliant ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
-                    }`}>
-                    {vibResults.isCompliant ? inhalt.werte.erfülltKeineKomfortstörung : inhalt.werte.störendeResonanzF18}
-                  </span>
-                  <span className="font-mono text-base font-black text-text-main">{formatDeZahl(vibResults.freq_1, 2)} Hz</span>
+              {/* Neutrale Einordnung */}
+              <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-2 text-xs">
+                <span className="text-[10px] text-text-main/50 font-black uppercase tracking-wider block text-center"><MdText text={inhalt.texte.schwingungsnachweisKriterium80} /></span>
+                <div className="flex justify-between items-center gap-3">
+                  <span className="text-text-main/80">{vib.ergebnis.f1UeberAnwendungsgrenze ? inhalt.werte.bspF1Ueber8 : inhalt.werte.bspF1Bis8}</span>
+                  <span className="font-mono text-base font-black text-text-main">{formatDeZahl(vib.ergebnis.f1, 2)} Hz</span>
                 </div>
-
-                {/* Indicator Warning */}
-                {!vibResults.isCompliant && (
-                  <p className="text-[10px] text-rose-700 bg-rose-50 border border-rose-200 p-2 rounded-lg leading-relaxed mt-1"><MdText text={inhalt.texte.schwingungsgefahrDieFrequenzLiegt} /></p>
+                <div className="flex justify-between items-center gap-3">
+                  <span className="text-text-main/80">{vib.ergebnis.wUnterOrientierungI ? inhalt.werte.bspWBisI : vib.ergebnis.wUnterOrientierungII ? inhalt.werte.bspWBisII : inhalt.werte.bspWUeberII}</span>
+                  <span className="font-mono text-base font-black text-text-main">{formatDeZahl(vib.ergebnis.w1kN, 2)} mm</span>
+                </div>
+                <p className="text-[10px] text-text-main/60 leading-relaxed"><MdText text={inhalt.texte.bspOrientierungNeutral} /></p>
+                {!vib.ergebnis.f1UeberAnwendungsgrenze && (
+                  <p className="text-[10px] text-rose-700 bg-rose-50 border border-rose-200 p-2 rounded-lg leading-relaxed"><MdText text={inhalt.texte.schwingungsgefahrDieFrequenzLiegt} /></p>
                 )}
               </div>
             </div>

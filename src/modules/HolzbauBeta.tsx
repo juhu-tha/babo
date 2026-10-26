@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
 import { bemesseDruckstab, bemesseQuerdruck, KMOD, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
+import { bspSchwingung, BSP_AUFBAUTEN, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -110,8 +111,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
   // 5. Decken-Schwingung nach Eurocode 5 (Gebrauchstauglichkeit)
   const [vibSpan, setVibSpan] = useState<number>(4.8); // Span in m
-  const [vibCltThick, setVibCltThick] = useState<number>(120); // CLT thickness in mm
+  const [vibAufbau, setVibAufbau] = useState<string>('l5_150'); // Lagenaufbau (BSP_AUFBAUTEN)
   const [vibExtraMass, setVibExtraMass] = useState<number>(100); // kg/m² additional loads
+  const [vibBreite, setVibBreite] = useState<number>(5.0); // Deckenbreite b_D in m
+  const [vibEstrichDicke, setVibEstrichDicke] = useState<number>(0); // mm, 0 = Estrichsteifigkeit nicht ansetzen
+  const [vibEstrichArt, setVibEstrichArt] = useState<Estrichart>('zement');
+  const [vibVerfahren, setVibVerfahren] = useState<EiVerfahren>('gamma');
 
   // Derived Materials values
   const currentMaterial = useMemo(() => {
@@ -233,28 +238,11 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     };
   }, [fireTime, fireSides, fireB, fireH, fireType]);
 
-  const vibResults = useMemo(() => {
-    const e_mean = 11000; // N/mm² standard for CLT (C24 laminations) = 1.1e10 N/m²
-    const h_m = vibCltThick / 1000; // m
-    const inertia_L = (1.0 * Math.pow(h_m, 3)) / 12; // m⁴
-    const ei_L = e_mean * 1e6 * inertia_L; // E-Modul (N/m²) * Inertia (m⁴)
-
-    const woodDensity = 450; // kg/m³
-    const cltSelfMass = woodDensity * h_m; // kg/m²
-    const totalMass = cltSelfMass + vibExtraMass; // kg/m²
-
-    const freq_1 = (Math.PI / (2 * Math.pow(vibSpan, 2))) * Math.sqrt(ei_L / totalMass);
-    const isCompliant = freq_1 > 8.0;
-
-    return {
-      cltSelfMass,
-      totalMass,
-      ei_L,
-      inertia_L,
-      freq_1,
-      isCompliant
-    };
-  }, [vibSpan, vibCltThick, vibExtraMass]);
+  // Deckenschwingung Brettsperrholz (Rechenkern src/calc/bspSchwingung.ts)
+  const vibResults = useMemo(() => bspSchwingung({
+    spannweite: vibSpan, lagen: (BSP_AUFBAUTEN[vibAufbau] ?? BSP_AUFBAUTEN.l5_150).lagen, deckenbreite: vibBreite,
+    zusatzmasse: vibExtraMass, estrichDicke: vibEstrichDicke, estrichArt: vibEstrichArt, verfahren: vibVerfahren,
+  }), [vibSpan, vibAufbau, vibBreite, vibExtraMass, vibEstrichDicke, vibEstrichArt, vibVerfahren]);
 
   // Eurocode 5 Knicknachweis (Rechenkern src/calc/holzbau.ts)
   const calculationResults = useMemo(() => bemesseDruckstab({
@@ -309,7 +297,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
       {activeSubTab === 'verbindung' && <HolzbauVerbindung connAngle={connAngle} connCount={connCount} connD={connD} connForce={connForce} connLef={connLef} connLoadDuration={connLoadDuration} connResults={connResults} connServiceClass={connServiceClass} connWoodClass={connWoodClass} setConnAngle={setConnAngle} setConnCount={setConnCount} setConnD={setConnD} setConnForce={setConnForce} setConnLef={setConnLef} setConnLoadDuration={setConnLoadDuration} setConnServiceClass={setConnServiceClass} setConnWoodClass={setConnWoodClass} />}
 
-      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} setVibCltThick={setVibCltThick} setVibExtraMass={setVibExtraMass} setVibSpan={setVibSpan} vibCltThick={vibCltThick} vibExtraMass={vibExtraMass} vibResults={vibResults} vibSpan={vibSpan} />}
+      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} vib={{ aufbau: vibAufbau, setAufbau: setVibAufbau, span: vibSpan, setSpan: setVibSpan, extraMass: vibExtraMass, setExtraMass: setVibExtraMass, breite: vibBreite, setBreite: setVibBreite, estrichDicke: vibEstrichDicke, setEstrichDicke: setVibEstrichDicke, estrichArt: vibEstrichArt, setEstrichArt: setVibEstrichArt, verfahren: vibVerfahren, setVerfahren: setVibVerfahren, ergebnis: vibResults }} />}
 
       {activeSubTab === 'bemessung' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
