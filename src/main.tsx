@@ -4,6 +4,7 @@ import App from './App';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { isKnownTab, resolveTabId } from './contexts/TabContext';
 import './index.css';
+import { ladeSchriften } from './lib/schriften';
 // KaTeX-CSS bleibt im Haupt-CSS (7,7 kB gzip): Ein nachträglich eingefügtes Stylesheet erzwingt eine Neuberechnung
 // von Stil und Layout der ganzen Seite (lange Task). KaTeX-JS und -Schriften werden erst bei Bedarf geladen (AP 5.5).
 import 'katex/dist/katex.min.css';
@@ -28,3 +29,8 @@ createRoot(document.getElementById('root')!).render(
     </LanguageProvider>
   </StrictMode>,
 );
+
+// Schrift Inter nach dem ersten Bild nachladen (Text statt Binärdatei, siehe src/lib/schriftDaten.ts)
+const schriftenSpaeter = () => { void ladeSchriften(); };
+if ('requestIdleCallback' in window) window.requestIdleCallback(schriftenSpaeter, { timeout: 2000 });
+else setTimeout(schriftenSpaeter, 200);
