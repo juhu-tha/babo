@@ -426,6 +426,10 @@ export default function Schnellkarbonatisierung() {
         />
       </div>
 
+      <Querverweis ziel="normen_ausblick" titel="Ausblick: Karbonatisierungswiderstand als Klasse (XRC)" linkText="Zum Modul Ausblick: neue Normengeneration">
+        <p>EN 1992-1-1:2023 ordnet Betone Expositionswiderstandsklassen zu; die XRC-Klassenzahl ist wie K_nat eine Rate in mm/√a. Stand der Einführung und Rolle von DIN EN 12390-12 fasst das Ausblick-Modul zusammen.</p>
+      </Querverweis>
+
       <ModulTest moduleId="schnellkarbonatisierung" />
 
       <ModuleFooter
