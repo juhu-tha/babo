@@ -742,7 +742,7 @@ export default function MessenPruefen() {
       {/* --- Footer Integration --- */}
       <ModuleFooter 
         weblinks={[
-          { title: inhalt.werte.dkdDeutscherKalibrierdienstRichtlinien, url: "https://www.ptb.de/cms/de/metrologische-dienstleistungen/dkd.html" },
+          { title: inhalt.werte.dkdDeutscherKalibrierdienstRichtlinien, url: "https://www.dkd.ptb.de/" },
           { title: inhalt.werte.gumBipmOfficialGuide, url: "https://www.bipm.org/en/committees/jc/jcgm/publications" },
           inhalt.daten["MessenPruefen.weblinks.2"]
         ]}

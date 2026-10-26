@@ -135,7 +135,7 @@ export default function DruckfestigkeitWuerfel() {
         lastReviewed={inhaltJson.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' },
-          { title: inhaltJson.werte.festigkeitsklasseBeton, url: 'https://de.wikipedia.org/wiki/Festigkeitsklasse_(Beton)' },
+          { title: inhaltJson.werte.festigkeitsklasseBeton, url: 'https://de.wikipedia.org/wiki/Beton#Festigkeitsklassen' },
         ]}
         literatur={inhaltJson.daten["DruckfestigkeitWuerfel.literatur"]}
         regelwerke={[

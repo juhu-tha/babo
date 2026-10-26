@@ -126,7 +126,7 @@ export default function Moertelprismen() {
         lastReviewed={inhaltJson.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
-          { title: 'Normsand', url: 'https://de.wikipedia.org/wiki/Normsand' },
+          { title: 'Zement (Festigkeitsklassen)', url: 'https://de.wikipedia.org/wiki/Zement' },
         ]}
         literatur={inhaltJson.daten["Moertelprismen.literatur"]}
         regelwerke={[

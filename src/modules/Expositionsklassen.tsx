@@ -781,7 +781,7 @@ export default function Expositionsklassen() {
       <ModuleFooter
         wikipedia={[
           { title: inhalt.werte.betonAbschnittDauerhaftigkeit, url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: inhalt.werte.karbonatisierungBeton, url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+          { title: inhalt.werte.karbonatisierungBeton, url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' },
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' }
         ]}
         literatur={inhalt.daten["Expositionsklassen.literatur"]}

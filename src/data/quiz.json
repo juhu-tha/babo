@@ -44946,7 +44946,7 @@
     "question": "Ein Python-Skript soll den lokalen Server von LM Studio über die OpenAI-Bibliothek ansprechen. Welche Einstellung ist nach dem Modul richtig?",
     "options": [
       "base_url = \"http://localhost:1234/v1\" mit beliebigem Platzhalter-Key",
-      "base_url = \"https://api.openai.com/v1\" mit kostenpflichtigem API-Key",
+      "base_url = \"api.openai.com/v1\" mit kostenpflichtigem API-Key",
       "base_url = \"http://localhost:8080/chat\" mit Hugging-Face-Token",
       "base_url = \"file://modelle/qwen.gguf\" ohne Server-Start"
     ],

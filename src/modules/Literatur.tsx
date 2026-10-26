@@ -116,7 +116,7 @@ const LITERATURE_DATABASE: LiteratureEntry[] = [
     categoryLabel: inhalt.werte.betonZementBindemittel2,
     badge: 'Standardwerk',
     isbnOrDoi: inhalt.werte.isbn9783642,
-    url: 'https://link.springer.com/book/10.1007/978-3-642-35298-0',
+    url: 'https://doi.org/10.1007/978-3-642-35278-2',
     description: inhalt.werte.tiefgründigeWissenschaftlicheAnalyseAlle,
     coreTopics: ['Karbonatisierung', 'Chloridkorrosion', 'AKR', 'Frost-Tau-Widerstand', 'Instandsetzung']
   },

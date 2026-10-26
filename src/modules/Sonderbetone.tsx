@@ -187,7 +187,7 @@ export default function Sonderbetone() {
         weblinks={[
           { title: inhalt.werte.betonWikiLeichtbeton, url: 'https://beton.wiki/index.php?title=Leichtbeton' },
           { title: inhalt.werte.betonWikiInfraleichtbeton, url: 'https://beton.wiki/index.php?title=Infraleichtbeton' },
-          { title: inhalt.werte.vereinDeutscherZementwerkeVdz, url: 'https://www.vdz-online.de/publikationen/zement-taschenbuch' },
+          { title: inhalt.werte.vereinDeutscherZementwerkeVdz, url: 'https://www.vdz-online.de/wissensportal/publikationen/zement-taschenbuch-2008' },
           { title: inhalt.werte.betonWikiSpritzbeton, url: 'https://beton.wiki/index.php?title=Spritzbeton' },
           { title: inhalt.werte.betonWikiUhpc, url: 'https://beton.wiki/index.php?title=UHPC' },
           { title: inhalt.werte.betonWikiDränbeton, url: 'https://beton.wiki/index.php?title=Dr%C3%A4nbeton' },
