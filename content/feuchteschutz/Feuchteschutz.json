@@ -140,12 +140,12 @@
       {
         "titel": "Außen",
         "erklaerung": "EPS 16 cm (µ = 50) und Kalk-Zement-Putz 2 cm (µ = 25):",
-        "formel": "s_{d,außen} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}"
+        "formel": "s_{d,\\text{außen}} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}"
       },
       {
         "titel": "Bewertung",
         "erklaerung": "Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Das Glaser-Diagramm oben zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.",
-        "formel": "s_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}"
+        "formel": "s_{d,\\text{außen}} > s_{d,\\text{innen}}, \\quad \\text{trotzdem tauwasserfrei}"
       }
     ],
     "Feuchteschutz.literatur": [

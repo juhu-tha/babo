@@ -287,7 +287,7 @@
       {
         "titel": "Dehnungsdifferenz",
         "erklaerung": "Mittlere Dehnungsdifferenz zwischen Stahl und Beton:",
-        "formel": "\\varepsilon_{sm} - \\varepsilon_{cm} = 0{,}60\\,\\text{‰}"
+        "formel": "\\varepsilon_{sm} - \\varepsilon_{cm} = 0{,}60\\,\\char8240"
       },
       {
         "titel": "Rissbreite",

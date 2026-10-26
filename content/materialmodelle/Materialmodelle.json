@@ -159,7 +159,7 @@
       {
         "titel": "Fließdehnung",
         "erklaerung": "Ende des elastischen Bereichs:",
-        "formel": "\\varepsilon_y = \\frac{500}{200\\,000} = 2{,}5\\,\\text{‰}"
+        "formel": "\\varepsilon_y = \\frac{500}{200\\,000} = 2{,}5\\,\\char8240"
       },
       {
         "titel": "Höchstspannung",
@@ -169,7 +169,7 @@
       {
         "titel": "Entlastung",
         "erklaerung": "Rückfederung parallel zur Hookeschen Geraden:",
-        "formel": "\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\text{‰}"
+        "formel": "\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\char8240"
       }
     ],
     "Materialmodelle.schritte_2": [

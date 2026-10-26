@@ -326,7 +326,7 @@ export function DaemmungBerater() {
             <div className="relative flex items-stretch h-[110px] bg-slate-100/50 rounded-xl overflow-hidden border border-slate-200">
               
               {/* Internal transition label */}
-              <div className="absolute left-1 top-1 bg-slate-800/10 text-slate-700 text-[8px] font-mono font-bold px-1 rounded uppercase tracking-wider">
+              <div className="absolute left-1 top-1 bg-slate-800/10 dark:bg-slate-900 text-slate-700 text-[8px] font-mono font-bold px-1 rounded uppercase tracking-wider">
                 R_si
               </div>
 

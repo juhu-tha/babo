@@ -161,7 +161,7 @@ export function ZwangCalculator() {
 
               <div className="text-sm bg-white/10 p-3 rounded-lg">
                 <p><MdText text={inhalt.texte.freieDehnungVerhindert} /><strong>{formatDeZahl((calcData.epsTotal * 1000), 2)} ‰</strong></p>
-                <p className="mt-1 opacity-80 text-xs">
+                <p className="mt-1 opacity-90 text-xs">
                   (ΔT: {formatDeZahl((calcData.epsT * 1000), 2)}<MdText text={inhalt.texte.schwinden} />{formatDeZahl((calcData.epsS * 1000), 2)} ‰)
                 </p>
               </div>

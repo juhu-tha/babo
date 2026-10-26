@@ -177,6 +177,8 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                </button>
                <button
                  onClick={resetTest}
+                 aria-label="Versuch zurücksetzen"
+                 title="Versuch zurücksetzen"
                  disabled={testStatus === 'idle'}
                  className="py-3 px-4 bg-home-grau/20 hover:bg-home-grau/30 text-text-main rounded-lg font-bold flex items-center justify-center transition-colors disabled:opacity-50"
                >

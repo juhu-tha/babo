@@ -277,7 +277,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="space-y-2 text-xs text-text-main/80 leading-relaxed">
                   <p><MdText text={inhalt.texte.fürNormalbetonBisC50} /></p>
                   <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center">
-                    <InlineMath math="\sigma_c = f_{cd} \cdot \left[1 - \left(1 - \frac{|\varepsilon_c|}{2{,}0}\right)^2\right] \quad (0 \le |\varepsilon_c| \le 2{,}0\,\text{‰})" />
+                    <InlineMath math="\sigma_c = f_{cd} \cdot \left[1 - \left(1 - \frac{|\varepsilon_c|}{2{,}0}\right)^2\right] \quad (0 \le |\varepsilon_c| \le 2{,}0\,\char8240)" />
                   </div>
                   <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.fürDieHandberechnungDarf} /></p>
                 </div>
@@ -291,7 +291,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="space-y-2 text-xs text-text-main/80 leading-relaxed">
                   <p><MdText text={inhalt.texte.betonstahlB500WeistEin} /></p>
                   <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center">
-                    <InlineMath math="\varepsilon_{yd} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\text{‰}" />
+                    <InlineMath math="\varepsilon_{yd} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\char8240" />
                   </div>
                   <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.beiDehnungenVarepsilonS} /></p>
                 </div>

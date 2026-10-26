@@ -205,7 +205,7 @@ export default function BpInnovationen() {
                         : `bg-white hover:bg-slate-50 text-text-main border-slate-200 ${phaseColor}`
                     }`}
                   >
-                    <span className="text-xs uppercase font-mono tracking-wider opacity-70">Level</span>
+                    <span className="text-xs uppercase font-mono tracking-wider opacity-90">Level</span>
                     <span className="text-lg font-black">{formatDeWert(lvl)}</span>
                   </button>
                 );

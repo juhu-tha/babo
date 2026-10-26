@@ -346,9 +346,9 @@ export function KlebstoffBerater() {
               <div className="relative flex items-stretch h-[100px] border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
                 
                 {/* Flanke Links */}
-                <div className="w-[28%] bg-slate-300 border-r-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
+                <div className="w-[28%] bg-slate-300 dark:bg-slate-700 border-r-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
                   <span className="text-[10px] font-black text-slate-800 leading-none">{SUBSTRATES[subA].name.split(' (')[0].split(' /')[0]}</span>
-                  <span className="text-[8px] text-slate-500 font-mono mt-1">Grenzfläche A</span>
+                  <span className="text-[8px] text-slate-700 font-mono mt-1">Grenzfläche A</span>
                 </div>
 
                 {/* Fugenraum */}
@@ -361,7 +361,7 @@ export function KlebstoffBerater() {
                   </div>
 
                   {/* Hinterfüllschnur PE */}
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-slate-300 border-2 border-slate-400 shadow-xs flex items-center justify-center z-0">
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-slate-300 dark:bg-slate-700 border-2 border-slate-400 shadow-xs flex items-center justify-center z-0">
                     <span className="text-[8px] font-bold text-slate-600 text-center font-mono leading-none">PE<br />Ø{formatDeWert(calcResults.recommendedRod)}</span>
                   </div>
 
@@ -374,9 +374,9 @@ export function KlebstoffBerater() {
                 </div>
 
                 {/* Flanke Rechts */}
-                <div className="w-[28%] bg-slate-300 border-l-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
+                <div className="w-[28%] bg-slate-300 dark:bg-slate-700 border-l-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
                   <span className="text-[10px] font-black text-slate-800 leading-none">{SUBSTRATES[subB].name.split(' (')[0].split(' /')[0]}</span>
-                  <span className="text-[8px] text-slate-500 font-mono mt-1">Grenzfläche B</span>
+                  <span className="text-[8px] text-slate-700 font-mono mt-1">Grenzfläche B</span>
                 </div>
 
               </div>

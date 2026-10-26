@@ -214,17 +214,17 @@
       {
         "titel": "Ansatz",
         "erklaerung": "Mauerwerks- und Betonabbruch 3 360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):",
-        "formel": "p_{Gemisch} - p_{getrennt} = 23\\,\\text{€/t}"
+        "formel": "p_{Gemisch} - p_{getrennt} = 23\\,\\text{EUR/t}"
       },
       {
         "titel": "Mehrkosten Entkernung",
         "erklaerung": "Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.",
-        "formel": "K_{Sortierung} = 40\\,000\\,\\text{€}"
+        "formel": "K_{Sortierung} = 40\\,000\\,\\text{EUR}"
       },
       {
         "titel": "Ergebnis",
         "erklaerung": "Einsparung durch selektiven Rückbau:",
-        "formel": "\\Delta K = 3\\,360 \\cdot 23 - 40\\,000 = 37\\,280\\,\\text{€}"
+        "formel": "\\Delta K = 3\\,360 \\cdot 23 - 40\\,000 = 37\\,280\\,\\text{EUR}"
       }
     ],
     "Rueckbau.literatur": [

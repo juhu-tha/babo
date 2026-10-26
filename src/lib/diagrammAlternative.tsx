@@ -11,6 +11,7 @@
 //   <DiagrammAngaben zusammenfassung="…" einheiten={{ x: 'mm', y: 'N/mm²' }}><Line … /></DiagrammAngaben>
 // (je Diagramm eine Hülle; die Angaben gelten für alle Diagramme darin).
 import React from 'react';
+import { formatDeWert } from '../utils/numberFormat';
 import { tabellen, zusammenfassung, type DiagrammAngabenWerte, type DiagrammDaten, type DiagrammOptionen, type Tabelle } from './diagrammDaten';
 
 export type { DiagrammAngabenWerte } from './diagrammDaten';
@@ -44,7 +45,7 @@ export function DatenTabelle({ tabelle }: { tabelle: Tabelle }) {
     <table className="w-full border-collapse text-xs text-text-main">
       <caption className="text-left font-bold px-1 py-1">
         {tabelle.beschriftung}
-        {tabelle.schritt > 1 && <span className="font-normal"> (Auszug: jede {tabelle.schritt}. von {tabelle.gesamt} Zeilen)</span>}
+        {tabelle.schritt > 1 && <span className="font-normal"> (Auszug: jede {formatDeWert(tabelle.schritt)}. von {formatDeWert(tabelle.gesamt)} Zeilen)</span>}
       </caption>
       <thead>
         <tr>

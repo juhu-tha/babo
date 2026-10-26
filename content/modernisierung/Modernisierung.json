@@ -237,7 +237,7 @@
       {
         "titel": "Kosten",
         "erklaerung": "Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):",
-        "formel": "17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{€/a}"
+        "formel": "17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{EUR/a}"
       },
       {
         "titel": "Statische Amortisation",
@@ -280,7 +280,7 @@
         "quelle": "VDI 4710 / DWD-Gradtagzahlen; F_x nach DIN V 4108-6"
       },
       {
-        "formel": "t_{\\text{Amort}} = \\frac{\\text{Investitionserstkosten [€]}}{\\text{Jährliche Energiekosteneinsparung [€/a]}}",
+        "formel": "t_{\\text{Amort}} = \\frac{\\text{Investitionserstkosten [EUR]}}{\\text{Jährliche Energiekosteneinsparung [EUR/a]}}",
         "erklaerung": "Statische Amortisationsdauer einer energetischen Modernisierungsmaßnahme.",
         "quelle": "VDI 2067"
       }

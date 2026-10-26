@@ -501,7 +501,7 @@ export default function OnlineTools() {
               <Globe size={24} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.empfohleneOnlineToolsWebrechner} /></h1>
+              <h2 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.empfohleneOnlineToolsWebrechner} /></h2>
               <p className="text-sm text-text-main/70"><MdText text={inhalt.texte.kuratiertePraxiserprobteUndKostenlose} /></p>
             </div>
           </div>

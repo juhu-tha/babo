@@ -111,7 +111,7 @@
     ],
     "MaterialSchaedenGross.formeln": [
       {
-        "formel": "Na_2O_{äq} = \\%Na_2O + 0{,}658 \\cdot \\%K_2O \\le 0{,}60\\% \\quad (\\text{NA-Zement})",
+        "formel": "Na_2O_{\\text{äq}} = \\%Na_2O + 0{,}658 \\cdot \\%K_2O \\le 0{,}60\\% \\quad (\\text{NA-Zement})",
         "erklaerung": "Äquivalenter Natriumoxidgehalt von Zementen nach DIN EN 197 / DAfStb-Alkali-Richtlinie. Niedrigalkalische Zemente (NA-Zemente) begrenzen das Risiko schädigender Alkali-Kieselsäure-Reaktionen. Der Grenzwert 0,60 % gilt allgemein; für hüttensandreiche Zemente nennt DIN 1164-10 höhere Grenzwerte (z. B. CEM II/B-S ≤ 0,70 %, CEM III/A ≤ 0,95 bzw. 1,10 %, CEM III/B und III/C ≤ 2,00 %).",
         "quelle": "DIN 1164-10 & DAfStb-Alkali-Richtlinie"
       },

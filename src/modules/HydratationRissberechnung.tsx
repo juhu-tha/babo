@@ -413,7 +413,7 @@ export default function HydratationRissberechnung() {
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
                     <BlockMath math={`\\varepsilon_{tot} = \\alpha_T \\cdot (\\Delta T_{hyd} + \\Delta T_{cool}) + \\varepsilon_{cs}`} />
-                    <BlockMath math={`\\varepsilon_{tot} = ${formatDeTeX(alphaT, 2)} \\cdot 10^{-5} \\cdot (${formatDeTeXWert(deltaThyd)} + ${formatDeTeXWert(deltaTcool)}) + \\frac{${formatDeTeX(shrinkage, 2)}}{1000} = ${formatDeTeX((calcResults.totalFreeStrain * 1000), 4)}\\,\\text{‰}`} />
+                    <BlockMath math={`\\varepsilon_{tot} = ${formatDeTeX(alphaT, 2)} \\cdot 10^{-5} \\cdot (${formatDeTeXWert(deltaThyd)} + ${formatDeTeXWert(deltaTcool)}) + \\frac{${formatDeTeX(shrinkage, 2)}}{1000} = ${formatDeTeX((calcResults.totalFreeStrain * 1000), 4)}\\,\\char8240`} />
                   </div>
                 )}
               </div>

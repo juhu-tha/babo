@@ -211,17 +211,17 @@
       {
         "titel": "Planung",
         "erklaerung": "Erhöhung der Betondeckung und bessere Nachbehandlung kosten im Entwurf (n = 0):",
-        "formel": "K_0 = 2\\,000\\,\\text{€}"
+        "formel": "K_0 = 2\\,000\\,\\text{EUR}"
       },
       {
         "titel": "Vor Schadensbeginn",
         "erklaerung": "Vorbeugende Oberflächenschutzmaßnahme (n = 1):",
-        "formel": "K_1 = 2\\,000 \\cdot 5 = 10\\,000\\,\\text{€}"
+        "formel": "K_1 = 2\\,000 \\cdot 5 = 10\\,000\\,\\text{EUR}"
       },
       {
         "titel": "Umfassende Instandsetzung",
         "erklaerung": "Nach Schadensausbreitung (n = 3):",
-        "formel": "K_3 = 2\\,000 \\cdot 125 = 250\\,000\\,\\text{€}"
+        "formel": "K_3 = 2\\,000 \\cdot 125 = 250\\,000\\,\\text{EUR}"
       }
     ],
     "SchutzGrundlagen.schritte_2": [

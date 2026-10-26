@@ -100,7 +100,7 @@ const COURSES: OnlineCourse[] = [
     category: 'ml_visual',
     categoryLabel: inhalt.werte.mathematischeÄsthetik,
     badgeColor: 'bg-sky-50 text-sky-800 border-sky-200',
-    url: 'https://www.youtube.com/playlist?list=PL0-LLZsQ2S3Xp_n_J36b_kZ9r2-v79v_B',
+    url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi',
     duration: inhalt.werte.t4TeiligeMeisterserieCa,
     level: 'Fortgeschrittene Grundlagen',
     summary: inhalt.werte.visuellAtemberaubendeMathematischeAnimat,

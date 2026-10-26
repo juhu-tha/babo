@@ -608,11 +608,11 @@
     ],
     "KiBaustoffeInhalt.formeln": [
       {
-        "formel": "f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}",
+        "formel": "f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm}^2\\text{]}",
         "erklaerung": "Prädiktive Druckfestigkeitsschätzung im KI-Modell"
       },
       {
-        "formel": "GWP_{total} = \\sum_{i=1}^{n} m_i \\cdot GWP_i \\quad \\text{[kg CO₂-Eq]}",
+        "formel": "GWP_{total} = \\sum_{i=1}^{n} m_i \\cdot GWP_i \\quad \\text{[kg CO}_2\\text{-Eq]}",
         "erklaerung": "Optimierte Treibhauspotenzials-Zielfunktion des Agenten"
       }
     ]

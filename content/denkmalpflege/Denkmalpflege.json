@@ -136,7 +136,7 @@
       {
         "titel": "Rechtlicher Rahmen",
         "erklaerung": "Der Höchstwert 0,24 W/(m²K) ist ohne Substanzverlust nicht erreichbar; § 105 GModG erlaubt die Abweichung, die Denkmalschutzbehörde ist einzubinden.",
-        "formel": "0{,}58 > 0{,}24 \\Rightarrow \\text{Abweichung nach § 105 GModG}"
+        "formel": "0{,}58 > 0{,}24 \\Rightarrow \\text{Abweichung nach \\S\\ 105 GModG}"
       }
     ],
     "Denkmalpflege.weblinks": [

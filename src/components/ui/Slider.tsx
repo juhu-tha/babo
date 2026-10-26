@@ -14,7 +14,9 @@ interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 
 }
 
 export function Slider({ label, value, unit, info, className, id: propId, ...props }: SliderProps) {
-  const generatedId = propId || (typeof label === 'string' ? 'slider-' + label.toLowerCase().replace(/[^a-z0-9]/g, '-') : undefined);
+  // useId als Rückfall: auch Slider mit Formel-Beschriftung (ReactNode) bekommen ein über <label htmlFor> verknüpftes Eingabefeld (axe „label“)
+  const reactId = React.useId();
+  const generatedId = propId || (typeof label === 'string' ? 'slider-' + label.toLowerCase().replace(/[^a-z0-9]/g, '-') : 'slider-' + reactId.replace(/[^a-zA-Z0-9]/g, ''));
   return (
     <div className={cn("flex flex-col gap-2 pdf-parameter", className)} data-label={typeof label === 'string' ? label : undefined} data-value={value} data-unit={unit || ''}>
       <div className="flex justify-between items-center">

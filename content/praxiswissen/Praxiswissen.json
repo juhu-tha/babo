@@ -694,17 +694,17 @@
       {
         "titel": "Herstellkosten",
         "erklaerung": "Einzelkosten der Teilleistungen und Baustellengemeinkosten:",
-        "formel": "S_{Herstell} = 100\\,000\\ \\text{€}"
+        "formel": "S_{Herstell} = 100\\,000\\ \\text{EUR}"
       },
       {
         "titel": "Allgemeine Geschäftskosten",
         "erklaerung": "Zuschlag 9 %:",
-        "formel": "AGK = 0{,}09 \\cdot 100\\,000 = 9\\,000\\ \\text{€}"
+        "formel": "AGK = 0{,}09 \\cdot 100\\,000 = 9\\,000\\ \\text{EUR}"
       },
       {
         "titel": "Wagnis und Gewinn",
         "erklaerung": "Zuschlag 5 %:",
-        "formel": "K = 109\\,000 \\cdot 1{,}05 = 114\\,450\\ \\text{€}"
+        "formel": "K = 109\\,000 \\cdot 1{,}05 = 114\\,450\\ \\text{EUR}"
       }
     ],
     "Praxiswissen.schritte_8": [
@@ -721,7 +721,7 @@
       {
         "titel": "Mittellohn",
         "erklaerung": "30 €/h (Lehrwert):",
-        "formel": "K_L = 200 \\cdot 30 = 6\\,000\\ \\text{€}"
+        "formel": "K_L = 200 \\cdot 30 = 6\\,000\\ \\text{EUR}"
       }
     ],
     "Praxiswissen.literatur": [

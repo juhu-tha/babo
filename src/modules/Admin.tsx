@@ -351,7 +351,7 @@ export default function Admin() {
                   <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
                     <span className="text-xs font-bold text-shiraz uppercase tracking-wider block font-mono">Ebene A: Zustandsverwaltung (Tabs)</span>
                     <p className="text-xs text-text-main/80 leading-relaxed">
-                      Keine unendlichen Scroll-Pages. Informationen werden über einen Zustandswähler (<code className="font-mono text-[11px]">activeTab</code>) in thematische Blöcke gekapselt:
+                      Keine unendlichen Scroll-Pages. Informationen werden über die gemeinsame Reiterleiste <code className="font-mono text-[11px]">ModuleTabs</code> (role=&quot;tablist&quot;, Pfeiltasten, höchstens 7 Reiter je Zeile, sonst <code className="font-mono text-[11px]">GruppierteModuleTabs</code>) und den Zustand <code className="font-mono text-[11px]">activeTab</code> in thematische Blöcke gekapselt:
                     </p>
                     <ul className="text-xs text-text-main/70 space-y-1 list-disc pl-4">
                       <li><strong className="text-text-main">steckbrief:</strong> Standardisierte Stoffdatenbank (<code className="font-mono text-[11px]">BaustoffProfil</code>).</li>
@@ -513,66 +513,74 @@ export default function Admin() {
                     <Code size={16} className="text-shiraz" />
                     4. Standardkonforme Mustervorlage eines Moduls (<code className="font-mono text-xs">Beispielfach.tsx</code>)
                   </h4>
-                  <span className="text-[11px] text-text-main/60 font-mono">1:1 Vorlage aus GEMINI.md</span>
+                  <span className="text-[11px] text-text-main/60 font-mono">Vorlage wie GEMINI.md, Abschnitt 4 (ModuleTabs, content/-JSON)</span>
                 </div>
                 <pre className="p-4 bg-off-white rounded-xl border border-home-grau/30 text-[11px] font-mono text-text-main overflow-x-auto leading-relaxed">
 {`import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { Box, Layers, Activity, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { MdText } from '@/src/components/inhalt/MdText';
+import { Box, BookOpen, Layers, Calculator } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+// Fachtexte liegen in content/<modul>/<Datei>.json (AP 5.3, docs/architektur.md „Inhalte bearbeiten“):
+// texte = Markdown-Fließtext (<MdText>), werte = kurze Zeichenketten (Labels, aria-label), daten = Listen/Tabellen.
+// Schlüssel nie umbenennen; neue Texte dort ergänzen oder nachträglich scripts/inhalt-auslagern.ts laufen lassen.
+import inhalt from "@/content/beispielfach/Beispielfach.json";
+
+type Reiter = 'steckbrief' | 'grundlagen' | 'praxis';
 
 export default function Beispielfach() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'grundlagen' | 'praxis'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<Reiter>('steckbrief');
 
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Box className="text-shiraz" /> Modulname
+          <Box className="text-shiraz" /> <MdText text={inhalt.texte.modulname} />
         </h2>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={\`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer \${
-              activeTab === 'steckbrief'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }\`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Steckbrief
-          </button>
-        </div>
-
-        {/* Dynamischer Inhalt je nach activeTab */}
-        {activeTab === 'steckbrief' && (
-          <div className="animate-in fade-in duration-300">
-            <BaustoffProfil materialKey="beispiel" />
-          </div>
-        )}
+        {/* Reiter: gemeinsame Komponente (role="tablist", Pfeiltasten, ≤ 7 Reiter je Zeile;
+            mehr Reiter → GruppierteModuleTabs, Muster in Abfaelle.tsx) */}
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: inhalt.werte.steckbrief, icon: BookOpen },
+            { id: 'grundlagen' as const, label: inhalt.werte.grundlagen, icon: Layers },
+            { id: 'praxis' as const, label: inhalt.werte.praxis, icon: Calculator },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6"
+        >
+          {activeTab === 'steckbrief' && (
+            <div className="animate-in fade-in duration-300">
+              <BaustoffProfil materialKey="beispiel" />
+            </div>
+          )}
+          {activeTab === 'grundlagen' && <MdText text={inhalt.texte.grundlagenEinleitung} />}
+          {activeTab === 'praxis' && (
+            /* Stufe 3: Rechnerische Vertiefung */
+            <FormulaDerivationBox
+              title={inhalt.werte.beispielStoffberechnung}
+              zielGleichung="f_c = \\alpha \\cdot \\sigma"
+              eingangsWerte={[...]}
+              herleitung={inhalt.daten['Beispielfach.herleitung']}
+            />
+          )}
+        </ModuleTabs>
       </div>
-
-      {/* Stufe 3: Rechnerische Vertiefung */}
-      <FormulaDerivationBox
-        title="Beispiel: Stoffberechnung"
-        zielGleichung="f_c = \\alpha \\cdot \\sigma"
-        eingangsWerte={[...]}
-        herleitung={[...]}
-      />
 
       {/* Stufe 4: Selbsttest (standardmäßig eingeklappt) */}
       <ModulTest moduleId="beispiel" />
 
-      {/* Standardisierter Footer */}
+      {/* Standardisierter Footer – Listen ebenfalls aus content/ */}
       <ModuleFooter
-        wikipedia={[{ title: 'Fachbereich', url: 'https://de.wikipedia.org/' }]}
-        literatur={['Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)']}
-        regelwerke={[{ title: 'DIN EN 1234' }]}
-        formeln={[]}
+        wikipedia={inhalt.daten['Beispielfach.wikipedia']}
+        literatur={inhalt.daten['Beispielfach.literatur']}
+        regelwerke={inhalt.daten['Beispielfach.regelwerke']}
+        formeln={inhalt.daten['Beispielfach.formeln']}
       />
     </div>
   );
