@@ -229,10 +229,14 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   holzbau_bauphysik: {
-    kurz: "Brand mit reduziertem Querschnitt und Eigenfrequenz einer Brettsperrholzdecke.",
+    kurz: "Brand mit reduziertem Querschnitt; Eigenfrequenz f₁ und Durchbiegung unter 1 kN einer Brettsperrholzdecke als Einfeldträger.",
     grenzen: [
       "Brand: feste Abbrandraten, nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
-      "Schwingung: volle Plattendicke ohne Abminderung der Querlagen, nur Frequenzkriterium f₁ > 8 Hz.",
+      "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
+      "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
+      "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
+      "Steifigkeitskriterium mit mitwirkender Breite b_F nach Hamm/Richter; Orientierungswerte der Deckenklassen nach ÖNORM B 1995-1-1, keine Grenzwerte nach NA (DE).",
+      "Nicht enthalten: Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufträger, vierseitige Lagerung, Auflagernachgiebigkeit; das Ergebnis bestätigt keine Deckenklasse.",
     ],
   },
   mechanische_kenngroessen: {
