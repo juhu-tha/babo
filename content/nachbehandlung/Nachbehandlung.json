@@ -68,7 +68,7 @@
       },
       {
         "titel": "2. Randbedingungen",
-        "formel": "\\text{XC4},\\; T_{Oberfläche} = 12\\,^{\\circ}\\text{C}",
+        "formel": "\\text{XC4},\\; T_{\\text{Oberfläche}} = 12\\,^{\\circ}\\text{C}",
         "erklaerung": "Spalte „andere Expositionsklassen“, Zeile 10 ≤ T < 15 °C."
       },
       {

@@ -1,7 +1,8 @@
 // Prüft alle KaTeX-Formeln im Quelltext.
 // Findet (1) Formeln, die KaTeX nicht rendern kann, und (2) Formeln, deren Backslashes
 // beim Parsen des JS-Strings verloren gegangen sind (z. B. "cdot", "frac", Tab/Formfeed-Zeichen).
-// Aufruf: node scripts/qa/check-katex.mjs [--json] [Pfadfilter]
+// (3) KaTeX-strict-Warnungen (Unicode im Mathe-Modus, Zeichen ohne Schriftmetrik) als Ratsche GRENZE_STRIKT.
+// Aufruf: node scripts/qa/check-katex.mjs [--json] [--strikt] [Pfadfilter]   (--strikt listet alle strict-Warnungen)
 import ts from 'typescript';
 import katex from 'katex';
 import fs from 'fs';
@@ -52,15 +53,26 @@ function pruefe(text) {
   const m = text.match(LOST);
   // "pi"/"circ" als Indexbuchstaben (σ_{pi}, r_{\text{circ}}) sind kein Fehler
   if (m && !(/^(pi|circ|mu|eta|tau|phi|rho)$/.test(m[2]) && /[_{]$/.test(text.slice(0, m.index + m[1].length)))) problems.push(`Befehl ohne Backslash: "${m[2]}"`);
+  const strikt = [];
   try {
-    katex.renderToString(text, { throwOnError: true, strict: 'ignore', displayMode: true, output: 'mathml' });
+    // strict als Funktion: Warnungen (z. B. Umlaute/€ im Mathe-Modus statt in \text{…}) sammeln, Formel trotzdem rendern
+    katex.renderToString(text, { throwOnError: true, strict: (code, msg) => { strikt.push(`${code}: ${msg}`); return 'ignore'; }, displayMode: true, output: 'mathml' });
   } catch (e) {
     problems.push('KaTeX: ' + String(e.message).replace(/^KaTeX parse error: /, '').slice(0, 140));
   }
-  return problems;
+  return { problems, strikt };
 }
 
 const findings = [];
+const warnungen = []; // KaTeX-strict-Warnungen (Z18)
+// Ratsche für KaTeX-strict-Warnungen (Z18), gezählt als Formeln je Warnungsart. Mehr als hier eingetragen bricht ab.
+//   unicodeTextInMathMode: Umlaut/ß im Mathe-Modus (T_{Oberfläche}) → in \text{…} setzen. Rest: baustoffkenngroessen (2),
+//     materialschaedengross, spannbeton/SpannbetonDauerhaftigkeit.
+//   unknownSymbol: Zeichen ohne KaTeX-Schriftmetrik, auch in \text{…} (‰, €, ³, ², ß, §, ₂); wird mit Ersatzschrift
+//     gezeichnet. Abhilfe: „EUR“ statt €, ^2/^3 statt ²/³, ‰ ggf. als Makro.
+// Parallel laufende Korrekturen (stahl „²“, mechanische_kenngroessen „‰“) senken die Zahlen – nach deren Merge hier
+// den neuen Stand eintragen und schrittweise auf 0 senken.
+const GRENZE_STRIKT = { unicodeTextInMathMode: 4, unknownSymbol: 77 };
 let total = 0;
 for (const file of walk(ROOT)) {
   if (filter && !file.includes(filter)) continue;
@@ -82,8 +94,9 @@ for (const file of walk(ROOT)) {
     if (cand && cand.text.trim()) {
       total++;
       const line = sf.getLineAndCharacterOfPosition(node.getStart()).line + 1;
-      const problems = pruefe(cand.text);
+      const { problems, strikt } = pruefe(cand.text);
       if (problems.length) findings.push({ file: path.relative(process.cwd(), file), line, prop: kind, problems, value: cand.text.slice(0, 160) });
+      if (strikt.length) warnungen.push({ file: path.relative(process.cwd(), file), line, prop: kind, problems: strikt, value: cand.text.slice(0, 160) });
     }
     ts.forEachChild(node, visit);
   };
@@ -98,17 +111,25 @@ if (!filter || filter.includes('content')) {
       for (const f of formeln) {
         if (!f.trim()) continue;
         total++;
-        const problems = pruefe(f);
+        const { problems, strikt } = pruefe(f);
         if (problems.length) findings.push({ file: relativ(datei), line: 0, prop: `${t.gruppe}.${t.schluessel}`, problems, value: f.slice(0, 160) });
+        if (strikt.length) warnungen.push({ file: relativ(datei), line: 0, prop: `${t.gruppe}.${t.schluessel}`, problems: strikt, value: f.slice(0, 160) });
       }
     }
   }
 }
 
 if (asJson) {
-  console.log(JSON.stringify({ total, findings }, null, 1));
+  console.log(JSON.stringify({ total, findings, warnungen }, null, 1));
 } else {
   for (const f of findings) console.log(`${f.file}:${f.line} [${f.prop}] ${f.problems.join(' | ')}\n    ${JSON.stringify(f.value)}`);
-  console.log(`\n${total} Formeln geprüft, ${findings.length} fehlerhaft.`);
 }
-process.exit(findings.length && !asJson ? 1 : 0);
+const jeArt = {};
+for (const w of warnungen) for (const art of new Set(w.problems.map(p => p.split(':')[0]))) jeArt[art] = (jeArt[art] ?? 0) + 1;
+const ueber = filter ? [] : Object.entries(jeArt).filter(([art, n]) => n > (GRENZE_STRIKT[art] ?? 0));
+if (!asJson) {
+  if (ueber.length || args.includes('--strikt')) for (const f of warnungen) console.log(`strict ${f.file}:${f.line} [${f.prop}] ${f.problems.join(' | ')}\n    ${JSON.stringify(f.value)}`);
+  console.log(`\n${total} Formeln geprüft, ${findings.length} fehlerhaft; strict-Warnungen: ${Object.entries(jeArt).map(([a, n]) => `${a} ${n} (Grenze ${GRENZE_STRIKT[a] ?? 0})`).join(', ') || 'keine'}.`);
+  for (const [art, n] of ueber) console.error(`Ratsche: ${n} Formeln mit „${art}“, erlaubt sind ${GRENZE_STRIKT[art] ?? 0}.`);
+}
+process.exit((findings.length || ueber.length) && !asJson ? 1 : 0);
