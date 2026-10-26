@@ -95,6 +95,8 @@ export const exportToPDF = async (elementId: string, filename: string) => {
       quality: 0.95,
       backgroundColor: '#F8F9FA',
       pixelRatio: 1.5,
+      // Bedienelemente ohne Inhalt im PDF weglassen (z. B. „Daten als Tabelle anzeigen“ unter Diagrammen, Paket Z8)
+      filter: n => !(n instanceof HTMLElement && n.hasAttribute('data-pdf-ausblenden')),
     });
 
     const pdf = new jsPDF({
