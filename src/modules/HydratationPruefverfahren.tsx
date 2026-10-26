@@ -4,15 +4,10 @@ import { InlineMath } from 'react-katex';
 import { Activity, Thermometer, Layers, AlertOctagon, HelpCircle, CheckCircle, Flame, BarChart2 } from 'lucide-react';
 import inhalt from '@/content/hydratationpruefverfahren/HydratationPruefverfahren.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { reissrahmen, type ZementProfil } from '@/src/calc/hydratation';
 
-interface CementProfile {
-  name: string;
-  baseHeat: number; // J/g
-  hydrationSpeed: number; // 1 = average, 0.5 = CEM III, 1.5 = CEM I R
-  strengthSpeed: number;
-}
-
-const CEMENT_MAP: Record<string, CementProfile> = inhalt.daten.CEMENT_MAP;
+const CEMENT_MAP: Record<string, ZementProfil> = inhalt.daten.CEMENT_MAP;
 
 export default function HydratationPruefverfahren() {
   const [panelTab, setPanelTab] = useState<'reissrahmen' | 'schwindrinne' | 'kalorimetrie'>('reissrahmen');
@@ -24,105 +19,16 @@ export default function HydratationPruefverfahren() {
   const [fiberContent, setFiberContent] = useState<number>(0); // kg/m³ PP- bzw. Stahlfasern
   const [stiffnessFrame, setStiffnessFrame] = useState<number>(100); // Festhaltungsvermögen des Reißrahmens in % (100% = starrer Rahmen)
 
-  // Recalculating curves
-  const reissrahmenSimData = useMemo(() => {
-    const hours = Array.from({ length: 73 }, (_, i) => i); // 0 to 72 hours
-    const cement = CEMENT_MAP[selectedCement] || CEMENT_MAP['CEM I 42.5 N (Standard)'];
-
-    // Fiber benefit multiplier (reduces net tension peak slightly, increases residual strength after cracking)
-    const fiberReduction = Math.min(0.20, (fiberContent / 40) * 0.15); // max 20% stress release / redistribution
-
-    let crackedHour = -1;
-    let maxTemp = freshTemp;
-
-    const dataPoints = hours.map((t) => {
-      // 1. Temperature development (semi-adiabatic curve inside the restrained prism)
-      // T(t) rises and then decays toward ambient
-      const tNorm = t * cement.hydrationSpeed;
-      const heatRelease = cement.baseHeat * (1 - Math.exp(-0.08 * tNorm));
-      
-      // Temperature rise (simplified thermal-mechanical balance of 1m³ block equivalent inside Reißrahmen)
-      const dT = (heatRelease / 15) * Math.exp(-0.06 * Math.max(0, tNorm - 4));
-      const currentTemp = freshTemp + dT * (1 - Math.exp(-0.15 * t)) - (freshTemp - ambientTemp) * (1 - Math.exp(-0.05 * t));
-      if (currentTemp > maxTemp) {
-        maxTemp = currentTemp;
-      }
-
-      // 2. Concrete tensile strength development f_ct(t) over hours
-      // Starts at zero, rises as binder hydrates
-      const strengthFactor = 3.2 * (t > 4 ? (1 - Math.exp(-0.06 * (t - 4) * cement.strengthSpeed)) : 0);
-      const fct = strengthFactor * (1 + (fiberContent * 0.005));
-
-      // 3. Restraint Stress development sigma_z (MPa)
-      // Expansion at first (compression in frame is negative)
-      // Contraction on cooling, shrinkage & thermal contraction (tension in frame is positive)
-      const thermalExpansionStrain = 1.0e-5 * (currentTemp - freshTemp); 
-      // Autogenous shrinkage begins around setting time (~5h)
-      const shrinkageStrain = t > 5 ? 2.5e-5 * ((t - 5) / (t + 10)) : 0;
-      
-      // Net strain trying to happen
-      const netStrain = -thermalExpansionStrain + shrinkageStrain;
-
-      // Effective Youngs modulus of young concrete E_cm(t)
-      const E_young = 31000 * (t > 3 ? (1 - Math.exp(-0.055 * (t - 3) * cement.strengthSpeed)) : 0);
-
-      // Relaxations-Faktor: Kriechen schwächt frühen Zwang ab (~0.4 - 0.75)
-      const k_relax = 0.55 + 0.15 * Math.exp(-0.03 * t);
-
-      // Calculate restraint stress (compression active during heating, tension during cooling)
-      const restraintRatio = stiffnessFrame / 100.0;
-      let stress = E_young * netStrain * k_relax * restraintRatio;
-
-      // Apply fiber contribution (fibers redistribute early stress slightly)
-      if (stress > 0) {
-        stress = stress * (1 - fiberReduction);
-      }
-
-      return {
-        t,
-        temp: currentTemp,
-        fct,
-        stress,
-      };
-    });
-
-    // Detect first intersection point where tension stress > tensile strength fct after thermal peak
-    // Tension stress is > 0, and concrete has set (fct > 0.1)
-    const processedPoints = dataPoints.map((pt, idx) => {
-      let isPointCracked = false;
-      
-      if (crackedHour !== -1) {
-        isPointCracked = true;
-      } else if (pt.t > 6 && pt.stress > pt.fct && pt.fct > 0.2) {
-        crackedHour = pt.t;
-        isPointCracked = true;
-      }
-
-      // If cracked, the stress drops down to residual fiber level or near zero immediately!
-      let displayStress = pt.stress;
-      if (isPointCracked) {
-        if (crackedHour === pt.t) {
-          // peak match
-        } else {
-          // drops to residual capacity
-          const residual = (fiberContent / 30) * 0.55; // MPa residual strength
-          displayStress = Math.max(0, Math.min(pt.fct * 0.15, residual));
-        }
-      }
-
-      return {
-        ...pt,
-        displayStress,
-        isPointCracked,
-      };
-    });
-
-    return {
-      points: processedPoints,
-      crackedHour,
-      maxTemp,
-    };
-  }, [selectedCement, freshTemp, ambientTemp, fiberContent, stiffnessFrame]);
+  // Reißrahmen-Lehrmodell: Rechenkern src/calc/hydratation.ts
+  const reissrahmenErgebnis = useMemo(() => reissrahmen({
+    zement: CEMENT_MAP[selectedCement] || CEMENT_MAP['CEM I 42.5 N (Standard)'],
+    tFrisch: freshTemp, tUmgebung: ambientTemp, fasergehalt: fiberContent, festhaltegrad: stiffnessFrame,
+  }), [selectedCement, freshTemp, ambientTemp, fiberContent, stiffnessFrame]);
+  const reissrahmenSimData = {
+    points: reissrahmenErgebnis.punkte,
+    crackedHour: reissrahmenErgebnis.rissStunde ?? -1,
+    maxTemp: reissrahmenErgebnis.maxTemp,
+  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -288,6 +194,7 @@ export default function HydratationPruefverfahren() {
             {/* Visualizer & Outputs column */}
             <div className="lg:col-span-7 flex flex-col gap-6">
               
+              <EingabeHinweise hinweise={reissrahmenErgebnis.hinweise} />
               {/* Dynamic Status Display */}
               <div className={`p-5 rounded-2xl border transition-all ${
                 reissrahmenSimData.crackedHour !== -1 

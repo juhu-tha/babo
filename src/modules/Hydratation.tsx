@@ -22,6 +22,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/hydratation/Hydratation.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { hydratation, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff, type Reifeverfahren } from '@/src/calc/hydratation';
 
 ChartJS.register(
   CategoryScale,
@@ -50,16 +52,23 @@ export default function Hydratation() {
   const [aktivierungsEnergie, setAktivierungsEnergie] = useState(38); // kJ/mol (for Arrhenius)
   const [festigkeitsModus, setFestigkeitsModus] = useState<'relativ' | 'druck' | 'zug' | 'emodul' | 'alle_absolut'>('relativ');
 
-  const { 
-    strength, 
-    temperature, 
-    te28, 
+  const ergebnis = useMemo(() => hydratation({
+    zement, tempUmgebung: tempC, tempFrischbeton: frischbetonTemp,
+    zementArt: zementArt as Zementart, festigkeitsklasse: festigkeitsklasse as ZementFestigkeitsklasse,
+    erhaertung: erhaertungsgeschwindigkeit as Erhaertung, zusatzstoff: zusatzstoff as Zusatzstoff, zusatzstoffMenge,
+    bauteildicke, ausschalAnteil: ausschalFestigkeit, reifeVerfahren: reifeVerfahren as Reifeverfahren, aktivierungsEnergie,
+  }), [zement, tempC, frischbetonTemp, zementArt, festigkeitsklasse, erhaertungsgeschwindigkeit, zusatzstoff, zusatzstoffMenge, bauteildicke, ausschalFestigkeit, reifeVerfahren, aktivierungsEnergie]);
+
+  const {
+    strength,
+    temperature,
+    te28,
     te2d,
     beta2d,
     sBeiwert,
     fckRechen,
-    maxTempDiff, 
-    rissgefahr, 
+    maxTempDiff,
+    rissgefahr,
     ausschalTage,
     fcm28,
     fctm28,
@@ -71,222 +80,12 @@ export default function Hydratation() {
     fct_2d_rel,
     E_2d_rel
   } = useMemo(() => {
-    // Determine s-value based on strength class and speed
-    let s = 0.25;
-    let fck = 42.5;
-    if (festigkeitsklasse === '32.5') fck = 32.5;
-    if (festigkeitsklasse === '52.5') fck = 52.5;
-
-    if (festigkeitsklasse === '32.5' && erhaertungsgeschwindigkeit === 'N') s = 0.38;
-    else if (festigkeitsklasse === '32.5' && erhaertungsgeschwindigkeit === 'R') s = 0.25;
-    else if (festigkeitsklasse === '42.5' && erhaertungsgeschwindigkeit === 'N') s = 0.25;
-    else if (festigkeitsklasse === '42.5' && erhaertungsgeschwindigkeit === 'R') s = 0.20;
-    else if (festigkeitsklasse === '52.5') s = 0.20;
-
-    // Determine Hmax (J/g) and t50 (days) based on cement type
-    let Hmax = 350;
-    let t50 = 1.5;
-    
-    if (zementArt === 'CEM I') { Hmax = 380; t50 = 1.2; }
-    else if (zementArt === 'CEM II') { Hmax = 320; t50 = 1.8; }
-    else if (zementArt === 'CEM III') { Hmax = 250; t50 = 3.0; }
-    else if (zementArt === 'CEM IV') { Hmax = 280; t50 = 2.5; }
-    else if (zementArt === 'CEM V') { Hmax = 260; t50 = 2.8; }
-
-    // Adjust for Erhärtungsgeschwindigkeit
-    if (erhaertungsgeschwindigkeit === 'R') { Hmax += 20; t50 *= 0.7; }
-    if (erhaertungsgeschwindigkeit === 'L') { Hmax -= 20; t50 *= 1.4; s += 0.05; }
-
-    // Adjust for Zusatzstoffe based on quantity relative to cement
-    const zsRatio = zusatzstoffMenge / zement;
-    if (zusatzstoff === 'FA') { 
-      Hmax -= 100 * zsRatio; 
-      t50 *= (1 + 0.6 * zsRatio); 
-    }
-    if (zusatzstoff === 'SF') { 
-      Hmax += 100 * zsRatio; 
-      t50 *= (1 - 1.0 * zsRatio); 
-    }
-
-    const Q = (aktivierungsEnergie * 1000) / 8.31446; // E_a / R in Kelvin
-    const Tr_K = 293.15; // 20°C in K
-    
-    // Finer time steps for more realistic early age curves
-    const timeSteps: number[] = [];
-    for(let i=0; i<=28; i+=0.1) {
-      timeSteps.push(Number(i.toFixed(1)));
-    }
-    
-    // Kenngrößen nach DIN EN 1992-1-1 (Eurocode 2) Tab. 3.1 & Cl. 3.1.2 / 3.1.3
-    const fcm28 = fck + 8; // Mittlere Zylinderdruckfestigkeit f_cm = f_ck + 8 [MPa]
-    const fctm28 = Number((0.30 * Math.pow(fck, 2/3)).toFixed(2)); // Zentrische Zugfestigkeit f_ctm [MPa]
-    const Ecm28 = Number((22 * Math.pow(fcm28 / 10, 0.3)).toFixed(1)); // E-Modul E_cm [GPa]
-
-    // Arrays für Druckfestigkeit, Zugfestigkeit und E-Modul
-    const fcActMpa: number[] = [];
-    const fcRefMpa: number[] = [];
-    const fcActRel: number[] = [];
-    const fcRefRel: number[] = [];
-
-    const fctActMpa: number[] = [];
-    const fctRefMpa: number[] = [];
-    const fctActRel: number[] = [];
-
-    const EActGpa: number[] = [];
-    const ERefGpa: number[] = [];
-    const EActRel: number[] = [];
-
-    const tempCore: number[] = [];
-    const tempRand: number[] = [];
-    const tempAdiabatic: number[] = [];
-
-    let te28_val = 0;
-    let te2d_val = 0;
-    let beta2d_val = 0;
-    let currentTempCore = frischbetonTemp;
-    let currentTempRand = frischbetonTemp;
-    let currentAdiaTemp = frischbetonTemp;
-    let maxTempDiff = 0;
-    
-    let current_te_act = 0;
-    let prev_t = 0;
-    let H_prev = 0;
-
-    let ausschalTage = -1;
-    const fReq = fck * (ausschalFestigkeit / 100);
-
-    for (const t of timeSteps) {
-      const dt = t - prev_t;
-      
-      if (t === 0) {
-        fcActMpa.push(0);
-        fcRefMpa.push(0);
-        fcActRel.push(0);
-        fcRefRel.push(0);
-
-        fctActMpa.push(0);
-        fctRefMpa.push(0);
-        fctActRel.push(0);
-
-        EActGpa.push(0);
-        ERefGpa.push(0);
-        EActRel.push(0);
-
-        tempCore.push(frischbetonTemp);
-        tempRand.push(frischbetonTemp);
-        tempAdiabatic.push(frischbetonTemp);
-        continue;
-      }
-
-      // Reference (20°C) - Equivalent age at 20°C is just actual time t
-      // EC2 Gl. 3.2: beta_cc(t) = exp(s * (1 - sqrt(28/t)))
-      const beta_ref = Math.min(1.25, Math.exp(s * (1 - Math.sqrt(28/t))));
-      const fc_ref_v = beta_ref * fcm28;
-      // EC2 Gl. 3.4: f_ctm(t) = beta_cc^alpha * f_ctm (alpha=1.0 für t<28d, alpha=2/3 für t>=28d)
-      const fct_ref_v = (t < 28 ? beta_ref : Math.pow(beta_ref, 2/3)) * fctm28;
-      // EC2 Gl. 3.5: E_cm(t) = (f_cm(t)/f_cm)^0.3 * E_cm = beta_cc^0.3 * E_cm
-      const E_ref_v = Math.pow(beta_ref, 0.3) * Ecm28;
-
-      fcRefMpa.push(Number(fc_ref_v.toFixed(2)));
-      fcRefRel.push(Number((beta_ref * 100).toFixed(1)));
-      fctRefMpa.push(Number(fct_ref_v.toFixed(2)));
-      ERefGpa.push(Number(E_ref_v.toFixed(2)));
-
-      // Actual Temperature Multiplier (Reifeverfahren)
-      let kT = 1.0;
-      if (currentTempCore >= -10) {
-        const Tc_K = currentTempCore + 273.15;
-        switch (reifeVerfahren) {
-          case 'Saul':
-            kT = (currentTempCore + 10) / 30.0;
-            break;
-          case 'DIN 1045-3 (Rastrup)':
-            kT = Math.pow(2, (currentTempCore - 20) / 10.0);
-            break;
-          case 'de Vree':
-            kT = Math.pow(10, 0.3 * (currentTempCore - 20) / 10.0);
-            break;
-          case 'fib Model Code 2010':
-            kT = Math.exp(4000 * (1/Tr_K - 1/Tc_K));
-            break;
-          case 'Arrhenius':
-          default:
-            kT = Math.exp(Q * (1/Tr_K - 1/Tc_K));
-            break;
-        }
-      } else {
-        kT = 0; // Kein Erhärten unter -10°C
-      }
-
-      current_te_act += kT * dt; 
-      
-      if (t === 28) te28_val = current_te_act;
-
-      // Reale Reifegrad-Kennwerte unter Bauteil-Kerntemperatur
-      const beta_act = current_te_act > 0 
-        ? Math.min(1.25, Math.exp(s * (1 - Math.sqrt(28/current_te_act))))
-        : 0;
-
-      if (t === 2) { te2d_val = current_te_act; beta2d_val = beta_act; }
-      const fc_act_v = beta_act * fcm28;
-      const fct_act_v = (current_te_act < 28 ? beta_act : Math.pow(beta_act, 2/3)) * fctm28;
-      const E_act_v = Math.pow(beta_act, 0.3) * Ecm28;
-
-      fcActMpa.push(Number(fc_act_v.toFixed(2)));
-      fcActRel.push(Number((beta_act * 100).toFixed(1)));
-
-      fctActMpa.push(Number(fct_act_v.toFixed(2)));
-      fctActRel.push(Number(((fct_act_v / fctm28) * 100).toFixed(1)));
-
-      EActGpa.push(Number(E_act_v.toFixed(2)));
-      EActRel.push(Number((Math.pow(beta_act, 0.3) * 100).toFixed(1)));
-
-      // Ausschalzeit prüfen anhand charakteristischer Festigkeit bzw. fReq
-      if (ausschalTage === -1 && (beta_act * fck) >= fReq) {
-        ausschalTage = t;
-      }
-
-      // Heat generation (simplified derivative of hydration heat curve)
-      const H_t = Hmax * (current_te_act / (current_te_act + t50));
-      const dH = Math.max(0, H_t - H_prev);
-      H_prev = H_t;
-      
-      // Adiabatic Temp Rise
-      // delta T = Q / (m*c). (zement * dH[kJ/kg]) / (1.0 [kJ/kgK] * 2400 [kg/m3])
-      const deltaT_adiabatic = (zement * dH) / 2400.0;
-      currentAdiaTemp += deltaT_adiabatic;
-      tempAdiabatic.push(currentAdiaTemp);
-
-      // Core Temp Rise with dissipation
-      const k_dissipation_core = 0.5; // per day
-      const heatLossCore = k_dissipation_core * (currentTempCore - tempC) / (bauteildicke * bauteildicke) * dt;
-      currentTempCore += deltaT_adiabatic - heatLossCore;
-      currentTempCore = Math.max(tempC, currentTempCore); 
-      tempCore.push(currentTempCore);
-
-      // Edge Temp Rise with higher dissipation
-      const k_dissipation_edge = 3.0; // per day, higher heat loss at edge
-      const heatLossEdge = k_dissipation_edge * (currentTempRand - tempC) / (bauteildicke) * dt;
-      currentTempRand += deltaT_adiabatic * 0.4 - heatLossEdge; // heat from core + internal heat
-      currentTempRand = Math.max(tempC, currentTempRand);
-      tempRand.push(currentTempRand);
-
-      const diff = currentTempCore - currentTempRand;
-      if (diff > maxTempDiff) maxTempDiff = diff;
-      
-      prev_t = t;
-    }
-
-    const rissgefahr = maxTempDiff > 15 ? 'Hoch' : maxTempDiff > 10 ? 'Mittel' : 'Gering';
-
-    // Kennwerte bei 2 Tagen (typischer früher Ausschal-/Zwangzeitpunkt)
-    const idx2d = Math.min(20, timeSteps.length - 1); // 2.0 Tage bei dt=0.1
-    const fc_2d_val = fcActMpa[idx2d] || 0;
-    const fct_2d_val = fctActMpa[idx2d] || 0;
-    const E_2d_val = EActGpa[idx2d] || 0;
-    const fc_2d_rel = fcActRel[idx2d] || 0;
-    const fct_2d_rel = fctActRel[idx2d] || 0;
-    const E_2d_rel = EActRel[idx2d] || 0;
+    const r = ergebnis;
+    const timeSteps = r.zeit;
+    const { fReq, fcm28, fctm28, Ecm28 } = r;
+    const fcActRel = r.fcAktRel, fcRefRel = r.fcRefRel, fctActRel = r.fctAktRel, EActRel = r.EAktRel;
+    const fcActMpa = r.fcAkt, fcRefMpa = r.fcRef, fctActMpa = r.fctAkt, fctRefMpa = r.fctRef, EActGpa = r.EAkt, ERefGpa = r.ERef;
+    const tempCore = r.tempKern, tempRand = r.tempRand, tempAdiabatic = r.tempAdiabat;
 
     // Dynamischer Aufbau des Datasets je nach gewähltem Festigkeitsmodus
     let strengthDatasets: ChartDataset<'line'>[] = [];
@@ -435,23 +234,23 @@ export default function Hydratation() {
     }
 
     return {
-      te28: te28_val,
-      te2d: te2d_val,
-      beta2d: beta2d_val,
-      sBeiwert: s,
-      fckRechen: fck,
-      maxTempDiff,
-      rissgefahr,
-      ausschalTage,
+      te28: r.te28,
+      te2d: r.te2d,
+      beta2d: r.beta2d,
+      sBeiwert: r.s,
+      fckRechen: r.fck,
+      maxTempDiff: r.maxTempDiff,
+      rissgefahr: r.rissgefahr,
+      ausschalTage: r.ausschalTage,
       fcm28,
       fctm28,
       Ecm28,
-      fc_2d_val,
-      fct_2d_val,
-      E_2d_val,
-      fc_2d_rel,
-      fct_2d_rel,
-      E_2d_rel,
+      fc_2d_val: r.fc2d,
+      fct_2d_val: r.fct2d,
+      E_2d_val: r.E2d,
+      fc_2d_rel: r.fc2dRel,
+      fct_2d_rel: r.fct2dRel,
+      E_2d_rel: r.E2dRel,
       strength: {
         labels: timeSteps,
         datasets: strengthDatasets
@@ -489,7 +288,7 @@ export default function Hydratation() {
         ]
       }
     };
-  }, [zement, tempC, frischbetonTemp, zementArt, festigkeitsklasse, erhaertungsgeschwindigkeit, zusatzstoff, zusatzstoffMenge, bauteildicke, ausschalFestigkeit, reifeVerfahren, aktivierungsEnergie, festigkeitsModus]);
+  }, [ergebnis, festigkeitsModus]);
 
   const commonOptions = {
     responsive: true,
@@ -748,6 +547,8 @@ export default function Hydratation() {
           />
         )}
 
+        <EingabeHinweise hinweise={ergebnis.hinweise} />
+
         <div className="mt-4 p-4 bg-off-white rounded-xl border border-home-grau/50 text-sm">
           <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.reifefunktionÄquivalentalter} /></h3>
           <div className="flex justify-between items-center mb-2">
@@ -756,7 +557,7 @@ export default function Hydratation() {
           </div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80"><MdText text={inhalt.texte.ausschalfristCa} /></span>
-            <span className="text-middle-blue font-bold text-lg">{ausschalTage > 0 ? `${formatDeWert(ausschalTage)} Tage` : '> 28 Tage'}</span>
+            <span className="text-middle-blue font-bold text-lg">{ausschalTage !== null ? `${formatDeWert(ausschalTage)} Tage` : '> 28 Tage'}</span>
           </div>
           <p className="text-text-main/80 text-xs mt-2"><MdText text={inhalt.texte.dasÄquivalentalterBeschreibtDie} /></p>
         </div>
@@ -859,7 +660,7 @@ export default function Hydratation() {
                   E_cm,28 = {formatDeZahl(Ecm28, 1)} GPa
                 </span>
                 <span className="bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-md font-semibold" title={inhalt.werte.erreichteAusschalfrist}>
-                  Ausschalzeit: {ausschalTage > 0 ? `${formatDeZahl(ausschalTage, 1)} d` : '> 28 d'}
+                  Ausschalzeit: {ausschalTage !== null ? `${formatDeZahl(ausschalTage, 1)} d` : '> 28 d'}
                 </span>
               </div>
             </div>
@@ -906,7 +707,7 @@ export default function Hydratation() {
                 {
                   titel: 'Ausschalfrist',
                   erklaerung: `Ausgeschalt werden darf, sobald β_cc(t_e) den gewählten Anteil von ${formatDeZahl(ausschalFestigkeit, 0)} % erreicht.`,
-                  formel: ausschalTage > 0
+                  formel: ausschalTage !== null
                     ? `\\beta_{cc}(t_e) \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\Rightarrow\\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
                     : `\\beta_{cc}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\text{bis}\\; t = 28\\,\\text{d}`,
                 },
