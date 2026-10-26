@@ -101,7 +101,7 @@ for (const [tab, cfg] of Object.entries(AUFGABEN_QUIZ_GRUPPEN)) {
 }
 
 // 6. Ratsche: Module mit weniger als 5 Fragen dürfen nicht mehr werden
-const MAX_DUENN = 44;
+const MAX_DUENN = 2; // nur noch die reinen Infoseiten beton_info, stahlbeton_info
 const duenn = [...proModul.values()].filter(n => n < 5).length;
 pruefe(duenn <= MAX_DUENN, `${duenn} Module mit < 5 Fragen (Grenze ${MAX_DUENN})`);
 
