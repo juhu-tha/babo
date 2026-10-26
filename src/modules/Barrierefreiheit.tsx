@@ -66,7 +66,7 @@ export default function Barrierefreiheit() {
               <p><MdText text={inhalt.texte.durchsetzungsUndÜberwachungsstelleFür} /></p>
               <p><MdText text={inhalt.texte.stMartinStraße47} /></p>
               <p>E-Mail: <a href="mailto:bitv@bayern.de" className="text-shiraz hover:underline">bitv@bayern.de</a></p>
-              <p>Web: <a href="https://www.ldbv.bayern.de/digitalisierung/bitv.html" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline">www.ldbv.bayern.de/digitalisierung/bitv.html</a></p>
+              <p>Web: <a href="https://www.ldbv.bayern.de/digitalisierung/bitv/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline">www.ldbv.bayern.de/digitalisierung/bitv/</a></p>
             </div>
           </Abschnitt>
         </div>
