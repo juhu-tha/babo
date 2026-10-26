@@ -87,7 +87,7 @@ export default function BpPutzEstrich() {
                         }`}
                       >
                         <span>{prod.name} (<strong>{prod.code.split(' ')[0]}</strong>)</span>
-                        <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${selectedItem.name === prod.name ? 'bg-white/20 text-white' : 'bg-slate-150 text-slate-600'}`}>{prod.code}</span>
+                        <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${selectedItem.name === prod.name ? 'bg-white/20 text-white' : 'bg-slate-150 dark:bg-slate-800 text-slate-600'}`}>{prod.code}</span>
                       </button>
                     ))}
                   </div>
@@ -109,7 +109,7 @@ export default function BpPutzEstrich() {
                         }`}
                       >
                         <span>{prod.name} (<strong>{prod.code}</strong>)</span>
-                        <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${selectedItem.name === prod.name ? 'bg-white/20 text-white' : 'bg-slate-150 text-slate-600'}`}>{prod.code}</span>
+                        <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${selectedItem.name === prod.name ? 'bg-white/20 text-white' : 'bg-slate-150 dark:bg-slate-800 text-slate-600'}`}>{prod.code}</span>
                       </button>
                     ))}
                   </div>

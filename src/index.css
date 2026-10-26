@@ -490,6 +490,7 @@ body {
 .dark .text-stone-600,
 .dark .text-gray-600,
 .dark .text-slate-500,
+.dark .text-slate-450,
 .dark .text-stone-500,
 .dark .text-gray-500,
 .dark .text-zinc-600,
@@ -1113,6 +1114,11 @@ header button { white-space: nowrap; }
 /* Dunkelmodus: Kontrast-Nachbesserungen (Phase 2, AP 2.4) */
 .dark .bg-shiraz, .dark .hover\:bg-shiraz:hover { background-color: #be185d !important; } /* weißer Text 6:1 */
 .dark .text-text-main\/70, .dark .text-text-main\/75 { color: #cbd5e1 !important; }
+/* Folgepaket 10-26: Zwischentöne und fest kodiertes Magenta im Dunkelmodus (axe color-contrast) */
+.dark .text-slate-750 { color: #e2e8f0 !important; }
+.dark .text-slate-850 { color: #f8fafc !important; }
+.dark :is(.text-shiraz\/40, .text-shiraz\/50, .text-shiraz\/60, .text-shiraz\/70),
+.dark .text-\[\#A3113E\] { color: #ff85aa !important; }
 .dark .bg-slate-50\/40, .dark .bg-slate-50\/50, .dark .bg-slate-50\/60, .dark .bg-slate-50\/80,
 .dark .hover\:bg-slate-50\/80:hover { background-color: rgb(30 41 59 / 0.7) !important; }
 

@@ -189,6 +189,8 @@ export default function Ausbreitversuch() {
                 <Play size={18} /><MdText text={inhalt.texte.testStarten} /></button>
               <button
                 onClick={resetTest}
+                aria-label="Versuch zurücksetzen"
+                title="Versuch zurücksetzen"
                 disabled={testStatus === 'idle'}
                 className="py-3 px-4 bg-home-grau/20 hover:bg-home-grau/30 text-text-main rounded-xl font-bold flex items-center justify-center transition-all disabled:opacity-50 cursor-pointer"
               >

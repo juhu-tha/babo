@@ -361,28 +361,28 @@ export default function BpTrockenbau() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
-                <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 1</span>
+                <span aria-hidden="true" data-wasserzeichen="Q 1" className="absolute top-2 right-2 text-3xl font-black text-home-grau/10 after:content-[attr(data-wasserzeichen)]" />
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q1</h4>
                 <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.grundverspachtelungNurStoßfugenFüllen} /></p>
                 <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium"><MdText text={inhalt.texte.eignungUnterFliesenPlatten} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
-                <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 2</span>
+                <span aria-hidden="true" data-wasserzeichen="Q 2" className="absolute top-2 right-2 text-3xl font-black text-home-grau/10 after:content-[attr(data-wasserzeichen)]" />
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q2</h4>
                 <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.standardspachtelungQ1MitNachspachteln} /></p>
                 <div className="bg-slate-50 p-2 rounded text-xxs text-slate-700 font-medium"><MdText text={inhalt.texte.eignungRaufasertapetenMatteFüllende} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
-                <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 3</span>
+                <span aria-hidden="true" data-wasserzeichen="Q 3" className="absolute top-2 right-2 text-3xl font-black text-home-grau/10 after:content-[attr(data-wasserzeichen)]" />
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q3</h4>
                 <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.sonderverspachtelungQ2MitEiner} /></p>
                 <div className="bg-amber-50 text-amber-900 p-2 rounded text-xxs font-medium"><MdText text={inhalt.texte.eignungFeinstrukturierteTapetenMatte} /></div>
               </div>
 
               <div className="border border-home-grau/30 rounded-xl p-4 bg-white relative overflow-hidden">
-                <span className="absolute top-2 right-2 text-3xl font-black text-home-grau/10">Q 4</span>
+                <span aria-hidden="true" data-wasserzeichen="Q 4" className="absolute top-2 right-2 text-3xl font-black text-home-grau/10 after:content-[attr(data-wasserzeichen)]" />
                 <h4 className="font-bold text-text-main text-lg mb-2">Klasse Q4</h4>
                 <p className="text-xs text-text-main/70 mb-3"><MdText text={inhalt.texte.vollflächigeSpachtelungVollflächigeÜberz} /></p>
                 <div className="bg-emerald-50 text-emerald-900 p-2 rounded text-xxs font-medium"><MdText text={inhalt.texte.eignungGlänzendeBeschichtungenMetall} /></div>

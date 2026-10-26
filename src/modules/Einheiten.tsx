@@ -331,7 +331,7 @@ export default function Einheiten() {
                     onChange={(e) => setInputValue(Number(e.target.value))}
                     className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
                   />
-                  <select 
+                  <select aria-label="Ausgangseinheit"
                     value={fromUnit}
                     onChange={(e) => setFromUnit(e.target.value)}
                     className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
@@ -353,7 +353,7 @@ export default function Einheiten() {
                   <div className="p-3 border border-shiraz/30 rounded-lg bg-shiraz/5 font-mono text-shiraz font-bold break-all">
                     {formatErgebnis(calculateConversion())}
                   </div>
-                  <select 
+                  <select aria-label="Zieleinheit"
                     value={toUnit}
                     onChange={(e) => setToUnit(e.target.value)}
                     className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"

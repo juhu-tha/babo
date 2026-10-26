@@ -329,11 +329,13 @@ export default function InterpretationNavigator() {
                   min="0.30"
                   max="3.00"
                   step="0.05"
+                  aria-label={inhalt.werte.haftzugfestigkeitFCtNMm}
                   value={haftzugVal}
                   onChange={(e) => setHaftzugVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
                 <select
+                  aria-label={inhalt.werte.bruchbildTypNachDinEn}
                   value={bruchTyp}
                   onChange={(e) => setBruchTyp(e.target.value as typeof bruchTyp)}
                   className="text-xs p-1 bg-white border border-slate-300 rounded font-bold"

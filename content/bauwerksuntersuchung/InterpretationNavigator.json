@@ -93,6 +93,8 @@
     "bohrwiderstandsmessungZeigtBraunfäuleDur": "Bohrwiderstandsmessung zeigt Braunfäule durch Echten Hausschwamm. Tragfähiger Restquerschnitt um 45 % reduziert.",
     "betondeckungCMm": "Betondeckung c [mm]",
     "karbonatisierungDKMm": "Karbonatisierung d_k [mm]",
+    "haftzugfestigkeitFCtNMm": "Haftzugfestigkeit f_ct [N/mm²]",
+    "bruchbildTypNachDinEn": "Bruchbild (Bruchtyp)",
     "stufe4SofortigerHandlungsbedarf": "Stufe 4 (sofortiger Handlungsbedarf)",
     "stufe3Erheblich": "Stufe 3 (Erheblich)",
     "stufe2Beobachtung": "Stufe 2 (Beobachtung)",
