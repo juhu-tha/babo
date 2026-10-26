@@ -10,6 +10,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/probenahme/Probenahme.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function Probenahme() {
   const [activeTab, setActiveTab] = useState<'haufwerk' | 'diagnostik'>('haufwerk');
@@ -47,25 +48,16 @@ export default function Probenahme() {
         </div>
         </div>
 
-        {/* Tab Selection */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 px-6">
-          <button aria-pressed={activeTab === 'haufwerk'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-1.5 border shadow-sm cursor-pointer ${
-              activeTab === 'haufwerk' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('haufwerk')}
-          ><MdText text={inhalt.texte.haufwerkeSchüttgüter} /></button>
-          <button aria-pressed={activeTab === 'diagnostik'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-1.5 border shadow-sm cursor-pointer ${
-              activeTab === 'diagnostik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('diagnostik')}
-          ><MdText text={inhalt.texte.bauwerksdiagnostikImBestand} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.bereicheProbenahme}
+          tabs={[
+            { id: 'haufwerk' as const, label: inhalt.texte.haufwerkeSchüttgüter },
+            { id: 'diagnostik' as const, label: inhalt.texte.bauwerksdiagnostikImBestand },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
 
         {activeTab === 'haufwerk' ? (
           <div className="space-y-6 animate-in fade-in duration-300">
@@ -626,6 +618,8 @@ export default function Probenahme() {
             </div>
           </div>
         )}
+        </ModuleTabs>
+
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

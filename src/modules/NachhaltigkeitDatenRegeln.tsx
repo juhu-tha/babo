@@ -24,6 +24,7 @@ import { ALL_17_SDGS } from './nachhaltigkeitdatenregeln/daten';
 import { DefinitionenTab } from './nachhaltigkeitdatenregeln/DefinitionenTab';
 import inhalt from '@/content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export type DatenRegelnTab = 
   | 'definitionen'
@@ -59,80 +60,25 @@ export default function NachhaltigkeitDatenRegeln() {
           <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.stand20252026} /></span>
         </div>
 
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
           <p><MdText text={inhalt.texte.dasBauUndImmobilienwesen} /></p>
-        </div>
-
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'definitionen'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'definitionen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('definitionen')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.t1DefinitionenLeitprinzipien} /></button>
-
-          <button aria-pressed={activeTab === 'kennzahlen'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'kennzahlen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kennzahlen')}
-          >
-            <BarChart3 size={16} /><MdText text={inhalt.texte.t2AnteileStoffströme} /></button>
-
-          <button aria-pressed={activeTab === 'klimapolitik'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'klimapolitik'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('klimapolitik')}
-          >
-            <Globe size={16} /><MdText text={inhalt.texte.t3KlimakonferenzenSdgs} /></button>
-
-          <button aria-pressed={activeTab === 'regulatorik'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'regulatorik'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('regulatorik')}
-          >
-            <Building2 size={16} /><MdText text={inhalt.texte.t4EuTaxonomieEpbd} /></button>
-
-          <button aria-pressed={activeTab === 'deklarationen'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'deklarationen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('deklarationen')}
-          >
-            <QrCode size={16} /><MdText text={inhalt.texte.t5EpdDppMaterialpass} /></button>
-
-          <button aria-pressed={activeTab === 'national'}
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'national'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('national')}
-          >
-            <ShieldCheck size={16} /><MdText text={inhalt.texte.t6DeutschesBaurechtGmodg} /></button>
         </div>
       </div>
 
+      <ModuleTabs
+        label={inhalt.werte.bereicheNachhaltigkeitDatenRegeln}
+        tabs={[
+          { id: 'definitionen' as const, label: inhalt.texte.t1DefinitionenLeitprinzipien, icon: BookOpen },
+          { id: 'kennzahlen' as const, label: inhalt.texte.t2AnteileStoffströme, icon: BarChart3 },
+          { id: 'klimapolitik' as const, label: inhalt.texte.t3KlimakonferenzenSdgs, icon: Globe },
+          { id: 'regulatorik' as const, label: inhalt.texte.t4EuTaxonomieEpbd, icon: Building2 },
+          { id: 'deklarationen' as const, label: inhalt.texte.t5EpdDppMaterialpass, icon: QrCode },
+          { id: 'national' as const, label: inhalt.texte.t6DeutschesBaurechtGmodg, icon: ShieldCheck },
+        ]}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="flex flex-col gap-6"
+      >
       {/* ========================================================================= */}
       {/* TAB 1: DEFINITIONEN: NACHHALTIGKEIT (ALLGEMEIN) & NACHHALTIGES BAUEN      */}
       {/* ========================================================================= */}
@@ -705,6 +651,8 @@ export default function NachhaltigkeitDatenRegeln() {
           </div>
         </div>
       )}
+
+      </ModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

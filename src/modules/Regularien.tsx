@@ -12,6 +12,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { getNormsByCategory } from '@/src/data/centralNormenRegistry';
 import inhalt from '@/content/regularien/Regularien.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 const REGELUNGS_HIERARCHIE_DATA = inhalt.daten.REGELUNGS_HIERARCHIE_DATA;
 
@@ -91,30 +92,17 @@ export default function Regularien() {
           <p><MdText text={inhalt.texte.baustoffeUndBauprodukteUnterliegen} /></p>
         </div>
 
-        {/* Navigation Tabs */}
-        <div className="flex border-b border-home-grau/30 overflow-x-auto w-full">
-          <button aria-pressed={activeTab === 'hierarchie'}
-            className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'hierarchie' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('hierarchie')}
-          >
-            <Scale size={16} /><MdText text={inhalt.texte.hierarchieAllerRegelungen} /></button>
-          <button aria-pressed={activeTab === 'katalog'}
-            className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'katalog' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('katalog')}
-          >
-            <Building size={16} /><MdText text={inhalt.texte.grundbegriffeBauaufsicht} /></button>
-          <button aria-pressed={activeTab === 'normen'}
-            className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'normen' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('normen')}
-          >
-            <ClipboardCheck size={16} /><MdText text={inhalt.texte.technischeNormenKatalog} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.bereicheRegularien}
+          tabs={[
+            { id: 'hierarchie' as const, label: inhalt.texte.hierarchieAllerRegelungen, icon: Scale },
+            { id: 'katalog' as const, label: inhalt.texte.grundbegriffeBauaufsicht, icon: Building },
+            { id: 'normen' as const, label: inhalt.texte.technischeNormenKatalog, icon: ClipboardCheck },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="flex flex-col gap-6"
+        >
 
         {/* Tab 0: Hierarchie der Regelungen */}
         {activeTab === 'hierarchie' && (
@@ -858,6 +846,8 @@ export default function Regularien() {
             )}
           </div>
         )}
+        </ModuleTabs>
+
 
       </div>
 
