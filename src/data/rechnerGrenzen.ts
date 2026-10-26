@@ -391,11 +391,12 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   rechnung_mauerwerk: {
-    kurz: "Vertikale Tragfähigkeit einer Mauerwerkswand mit dem vereinfachten Abminderungsbeiwert Φ.",
+    kurz: "Vertikale Tragfähigkeit einer zweiseitig gehaltenen Mauerwerkswand im vereinfachten Verfahren nach DIN EN 1996-3/NA mit Φ = min(Φ1; Φ2).",
     grenzen: [
-      "h_ef = lichte Höhe, ohne Halterung durch Decken.",
-      "f_k fest für zwei Steinarten, f_d = f_k/1,5 ohne weitere Beiwerte.",
-      "Keine Exzentrizität aus dem Deckenauflager; fachliche Überarbeitung mit AP 4.7.",
+      "Nur zweiseitig gehaltene Wände unter Massivdecken, Normalkraft je Meter; keine Biegung aus Wind, keine Teilflächenpressung, kein Schub.",
+      "f_k aus öffentlich zugänglichen Herstellertafeln (KS, HLz B) oder frei eingegeben; Werte vorläufig bis zur Prüfung am NA-Normtext.",
+      "h_ef = ρ2·h mit ρ2 = 0,75/0,90/1,0 nach Wanddicke (bei a < t: 1,0) – aus Herstellertafeln zurückgerechnet, vorläufig.",
+      "Anwendungsgrenzen nach Tab. NA.2 (Gebäudehöhe, Nutzlast, Wandhöhe, Windzone) nur teilweise geprüft: l_f ≤ 6,0 m, h ≤ 2,75 m, h_ef/t ≤ 27.",
     ],
   },
   rechnung_nachhaltigkeit: {
