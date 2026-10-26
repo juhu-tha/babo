@@ -162,7 +162,7 @@ export default function BpAbdichtung() {
         ];
         techSpecs = [
           { label: 'Mindesttrockenschichtdicke', value: '≥ 4,0 mm (PMBC) bei stauendem Einbau' },
-          { label: 'Rissüberbrückungsklasse', value: 'Rissüberbrückung nach DIN 18533 ≥ 0,4 mm' },
+          { label: 'Rissklasse', value: 'Rissüberbrückung passend zur Rissklasse R1-E bis R4-E (seit DIN 18533:2026-06 ohne eigene RÜ-Klassen)' },
           { label: 'Gewebeschutz', value: 'Gewebe nimmt thermische Kontraktionesbewegungen des Untergrunds rissfrei auf' }
         ];
         guidelines = [
@@ -1068,7 +1068,7 @@ export default function BpAbdichtung() {
               <Calculator size={18} className="text-shiraz mt-0.5 shrink-0" />
               <div>
                 <p className="leading-relaxed">
-                  <strong>Interaktiver DIN 18533 Planungsberater:</strong> Ermitteln Sie die normgerechte Wassereinwirkungsklasse (W-E) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.
+                  <strong>Interaktiver DIN 18533 Planungsberater:</strong> Ermitteln Sie die normgerechte Wasserbeanspruchungsklasse (W-E; bis 2017-07 „Wassereinwirkungsklasse“) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.
                 </p>
               </div>
             </div>
@@ -1180,7 +1180,7 @@ export default function BpAbdichtung() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                     <div>
-                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest">Wassereinwirkungsklasse</span>
+                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest">Wasserbeanspruchungsklasse</span>
                       <span className="text-base font-black text-shiraz mt-1 block">
                         {(() => {
                           const res = getAdvisorRecommendation();

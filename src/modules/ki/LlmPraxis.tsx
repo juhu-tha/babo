@@ -100,7 +100,7 @@ export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
     const normGuidelines = {
       ec2_din1045: 'Grundlage aller Berechnungen sind DIN EN 1992-1-1 mit nationalem Anhang (NA) und DIN 1045-2. Verwende ausschließlich charakteristische Werte f_ck, f_yk und führe Bemessungswerte f_cd, f_yd transparent mit Teilsicherheitsbeiwerten (gamma_C=1,5, gamma_S=1,15) an.',
       vob_b: 'Fokussiere auf VOB/B §§ 4, 13 (Mängelhaftung) und 15 (Bautagebuch & Stundenlohn). Formuliere Mängelrügen und Bedenkenanmeldungen nach VOB/B § 4 Abs. 3 präzise mit konkreter Fristsetzung und Androhung der Kündigung nach § 8 Abs. 3.',
-      din18533: 'Beurteile alle erdberührten Abdichtungen streng nach DIN 18533 (Wassereinwirkungsklassen W1-E bis W4-E, Rissklassen R1-E bis R4-E). Weise stets auf Übergangsdetails und Hohlkehlenausbildungen hin.',
+      din18533: 'Beurteile alle erdberührten Abdichtungen streng nach DIN 18533 (Ausgabe 2026-06: Wasserbeanspruchungsklassen W1-E bis W4-E, Rissklassen R1-E bis R4-E mit integrierter Rissüberbrückung). Weise stets auf Übergangsdetails und Hohlkehlenausbildungen hin.',
       din_en_206: 'Prüfen Sie Konformitätskriterien nach DIN EN 206 Tabellen 17 bis 19. Differenziere exakt zwischen Anfangsherstellung (3 Proben) und stetiger Herstellung (15 Proben).',
       geg_dgnb: 'Berechnen Sie U-Werte und H\'T-Grenzwerte nach dem Gebäudemodernisierungsgesetz (GModG, vormals GEG) und DIN 4108-2 (Mindestwärmeschutz f_Rsi >= 0,70). Berücksichtige EPD-Kennwerte (GWP_total in kg CO2-Äq/m²a).'
     };

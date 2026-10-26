@@ -1130,6 +1130,7 @@ export default function WTA() {
           <p className="text-[11px] text-text-main/70 leading-relaxed">
             <strong>Hinweis zur Neuausgabe:</strong> DIN 18533-1:2026-06 ersetzt die Ausgabe 2017-07 und A1:2018-09. Die Klassen heißen dort
             „Wasserbeanspruchungsklassen“ (Grundstruktur W1-E bis W4-E bleibt), Riss- und Rissüberbrückungsklassen wurden zusammengeführt.
+            Die Wassereinwirkungen aus dem Baugrund (E1, E2-S, E2-G) werden aus DIN 4095-1 übernommen und in Beanspruchungen der Abdichtung umgesetzt.
             Die folgenden Unterklassen geben den Stand 2017-07 wieder, auf den sich das WTA-Merkblatt 4-6-24/D bezieht.
           </p>
 
@@ -1170,7 +1171,7 @@ export default function WTA() {
                 <li><strong>RN1-E (Gering):</strong> Tiefgaragen, Lagerräume für feuchteunempfindliche Güter (Feuchteflecken tolerierbar).</li>
                 <li><strong>RN2-E (Üblich):</strong> Kellerräume, Haustechnikräume, Garagen (kein Wasserdurchtritt, trockene Wandoberfläche).</li>
                 <li><strong>RN3-E (Hoch):</strong> Wohnräume im Untergeschoss, Archive, Aufenthaltsräume (erfordert dampfdiffusionsdichte Zusatzmaßnahmen &amp; Raumlüftung).</li>
-                <li><strong>Rissüberbrückungsklassen:</strong> RÜ1-E (ohne Rissüberbrückung) bis RÜ4-E (hohe Rissüberbrückung).</li>
+                <li><strong>Rissüberbrückungsklassen:</strong> RÜ1-E (ohne Rissüberbrückung) bis RÜ4-E (hohe Rissüberbrückung); seit 2026-06 mit den Rissklassen R1-E bis R4-E zusammengeführt.</li>
               </ul>
             </div>
           </div>
