@@ -206,8 +206,13 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
+      "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
+      "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
+      "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
+      "Reißrahmen: qualitatives Lehrmodell mit festen Kurvenparametern; kein Ersatz für Versuche nach RILEM TC 119-TCE.",
     ],
   },
+
   betonkennwerte: {
     kurz: "EC2-Kennwerte aus der Festigkeitsklasse sowie Zeitentwicklung, Schwinden und Kriechen nach EC2 Anhang B.",
     grenzen: [

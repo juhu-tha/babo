@@ -100,6 +100,16 @@ export function temperaturFaktor(temperatur: number): number {
   return Math.exp(-((4000 / (273 + temperatur)) - 13.65));
 }
 
+/** Zeitbeiwert β_cc(t) = exp[s·(1 − √(28/t))] nach Gl. (3.2); t in d (> 0) */
+export function betaCc(s: number, t: number): number {
+  return Math.exp(s * (1 - Math.sqrt(28 / t)));
+}
+
+/** Mittlerer E-Modul E_cm = 22 000·(f_cm/10)^0,3·α_E in N/mm² (Tab. 3.1, 3.1.3(2)) */
+export function ecmVonFcm(fcm: number, alphaE = 1.0): number {
+  return 22000 * Math.pow(fcm / 10, 0.3) * alphaE;
+}
+
 /** Geometriebeiwert k_h nach Tab. 3.3, linear interpoliert (h_0 in mm) */
 export function beiwertKh(h0: number): number {
   if (h0 <= 100) return 1.0;
@@ -125,10 +135,10 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const tempFactor = temperaturFaktor(temperatur);
   const t0Temp = Math.max(0.1, t0 * tempFactor);
   const tTemp = Math.max(0.1, t * tempFactor);
-  const betaCcT0 = Math.exp(s * (1 - Math.sqrt(28 / t0Temp)));
+  const betaCcT0 = betaCc(s, t0Temp);
   const fcmT0 = betaCcT0 * fcm;
   const fckT0 = Math.max(0, fcmT0 - 8);
-  const betaCcT = Math.exp(s * (1 - Math.sqrt(28 / tTemp)));
+  const betaCcT = betaCc(s, tTemp);
   const fcmT = betaCcT * fcm;
   const fckT = Math.max(0, fcmT - 8);
 
@@ -145,7 +155,7 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
 
   // 3. E-Modul
   const alphaE = ALPHA_E[gestein];
-  const Ecm = 22000 * Math.pow(fcm / 10, 0.3) * alphaE;
+  const Ecm = ecmVonFcm(fcm, alphaE);
   const Ec0 = 1.05 * Ecm;
   const EcmT0 = Math.pow(betaCcT0, 0.3) * Ecm;
   const EcmT = Math.pow(betaCcT, 0.3) * Ecm;
