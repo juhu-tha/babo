@@ -1,4 +1,5 @@
 import inhalt from '@/content/interactivelcacalc/daten.json';
+import type { LcaBaustoff } from '@/src/calc/lca';
 export interface MaterialDefinition {
   id: string;
   name: string;
@@ -316,6 +317,16 @@ export interface CustomRow {
   circularQuota: number; // dynamischer kreislauffähiger Stoffanteil in % (0 - 100%)
   sortingRate: number;   // Sortenreinheit / Rückbautrennbarkeit in % (0 - 100%)
   recoveryType: 'high_grade' | 'downcycling' | 'reuse' | 'thermal';
+  /** Nutzungsdauer [a] für B4; fehlt sie, gilt der BNB-Wert aus src/calc/lca.ts */
+  nutzungsdauer?: number;
+}
+
+/** Baustoff der Lehrdatenbank als Eingabe für den Rechenkern src/calc/lca.ts */
+export function alsLcaBaustoff(m: MaterialDefinition): LcaBaustoff {
+  return {
+    id: m.id, einheit: m.unit, rohdichte: m.densityKg, gwpA1A3: m.gwpA1A3, gwpC: m.gwpC, gwpD: m.gwpD,
+    biogen: m.biogenicContent, penrt: m.penrt, refKreislaufquote: m.defaultCircularQuota,
+  };
 }
 
 export interface ScenarioPreset {

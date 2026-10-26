@@ -17,7 +17,11 @@ import {
   SlidersHorizontal,
   Layers
 } from "lucide-react";
-import { MATERIAL_DATABASE, CustomRow, ScenarioPreset, PRESETS } from './interactivelcacalc/daten';
+import { MATERIAL_DATABASE, CustomRow, ScenarioPreset, PRESETS, alsLcaBaustoff } from './interactivelcacalc/daten';
+import {
+  lcaBilanz, A4_FAKTOR_GEBAEUDE, B6_FAKTOREN, BNB_NUTZUNGSDAUER, QNG_WG, SORTENREINHEIT_REFERENZ, ersatzzyklen,
+  type LcaEingabe, type LcaErgebnis, type LcaZeile, type Energietraeger, type TgaSockel,
+} from '@/src/calc/lca';
 import { CalculationDashboard } from './interactivelcacalc/CalculationDashboard';
 import { ModulDLabor } from './interactivelcacalc/ModulDLabor';
 import inhalt from '@/content/interactivelcacalc/InteractiveLCACalc.json';
@@ -36,14 +40,25 @@ export default function InteractiveLCACalc() {
   const [transportDistance, setTransportDistance] = useState<number>(120);
   const [transportType, setTransportType] = useState<"lkw" | "bahn">("lkw");
   const [buildingArea, setBuildingArea] = useState<number>(140);
-  const [studyPeriod, setStudyPeriod] = useState<number>(50); // 50 Jahre nach DIN EN 15978 / QNG  // QNG-Anforderungswerte: Wohngebäude WG23 (QNG-Handbuch Anlage 3, v1.4, 19.07.2024):
+  const [studyPeriod, setStudyPeriod] = useState<number>(50); // Betrachtungszeitraum 50 Jahre nach QNG
+  // Nutzungsphase: Ersatz B4 und Betrieb B6 (Standard: EH-40-Wohngebäude mit Wärmepumpe und PV-Eigennutzung, Lehrwerte)
+  const [mitB4, setMitB4] = useState(true);
+  const [mitB6, setMitB6] = useState(true);
+  const [stromGeg, setStromGeg] = useState<number>(2400);
+  const [pvEigennutzung, setPvEigennutzung] = useState<number>(900);
+  const [waermeTraeger, setWaermeTraeger] = useState<Energietraeger | 'wp'>('wp');
+  const [waerme, setWaerme] = useState<number>(0);
+  const [nutzerstrom, setNutzerstrom] = useState(true);
+  const [nrfBeheizt, setNrfBeheizt] = useState<number | null>(null);
+  const [tgaSockel, setTgaSockel] = useState<TgaSockel>('ep_bis40');
+  // QNG-Anforderungswerte: Wohngebäude WG23 (QNG-Handbuch Anlage 3, v1.4, 19.07.2024):
   // QNG-PLUS <= 24, QNG-PREMIUM <= 20 kg CO2-Äq./(m² NRF·a) über 50 Jahre.
   // Nichtwohngebäude: projektspezifischer Anforderungswert – hier nur didaktischer Lehrwert.
   const qngThresholds = useMemo(() => {
     if (buildingType === "wohnbau") {
       return {
-        plus: 24.0,
-        premium: 20.0,
+        plus: QNG_WG.plus,
+        premium: QNG_WG.premium,
         label: inhalt.werte.wohngebäudeWg23,
         areaUnit: "m² NRF"
       };
@@ -146,291 +161,115 @@ export default function InteractiveLCACalc() {
     }));
   };
 
-  // Main Calculation Engine with Dynamic Modul D
+  // Rechenkern src/calc/lca.ts: A1–A3, B4 (BNB-Nutzungsdauern), C3/C4, Sockel TGA, B6 (QNG-Rechenwerte), D und A4 getrennt
+  const transportFaktor = A4_FAKTOR_GEBAEUDE[transportType];
+  const eingabeFuer = (zeilen: LcaZeile[]): LcaEingabe => ({
+    zeilen,
+    nrfR: buildingArea,
+    nrfBeheizt: nrfBeheizt ?? undefined,
+    betrachtungszeitraum: studyPeriod,
+    transportDistanz: transportDistance,
+    transportFaktor,
+    mitB4,
+    energie: mitB6 ? { stromGeg, pvEigennutzung, waerme: waermeTraeger === 'wp' ? 0 : waerme, waermeTraeger: waermeTraeger === 'wp' ? 'netzstrom' : waermeTraeger, nutzerstrom } : null,
+    tgaSockel,
+    gebaeudeart: buildingType,
+  });
+  const zeileZuKern = (row: CustomRow): LcaZeile | null => {
+    const mat = MATERIAL_DATABASE.find(m => m.id === row.materialId);
+    if (!mat) return null;
+    return { baustoff: alsLcaBaustoff(mat), menge: row.quantity, kreislaufquote: row.circularQuota, sortenreinheit: row.sortingRate, verwertung: row.recoveryType, nutzungsdauer: row.nutzungsdauer };
+  };
+
+  const ergebnis = useMemo(
+    () => lcaBilanz(eingabeFuer(rows.map(zeileZuKern).filter((z): z is LcaZeile => z !== null))),
+    [rows, transportDistance, transportType, buildingArea, nrfBeheizt, studyPeriod, mitB4, mitB6, stromGeg, pvEigennutzung, waerme, waermeTraeger, nutzerstrom, tgaSockel, buildingType]
+  );
+
+  // Kenngrößen für die Modul-D-Eingabemaske (Anzeige)
   const results = useMemo(() => {
-    let totalWeightTons = 0;
-    let totalCircularWeightTons = 0;
-    let gwpA1A3 = 0;
-    let gwpBioStorageInstalled = 0;
-    let gwpC = 0;
-    let gwpD = 0;
-    let weightedUmiSum = 0;
-    let totalPenrtMj = 0;
-
-    const factorTransport = transportType === "lkw" ? 0.15 : 0.03;
-
-    // Detailed per-row breakdown for Modul D mask
-    const rowModulDDetails: {
-      rowId: string;
-      matName: string;
-      category: string;
-      unit: string;
-      qty: number;
-      weightTons: number;
-      circularQuota: number;
-      sortingRate: number;
-      recoveryType: string;
-      circularMassTons: number;
-      effectiveRecoveredMassTons: number;
-      rowGwpD: number;
-      substitutesPrimary: string;
-    }[] = [];
-
-    rows.forEach(row => {
+    const konstruktion = ergebnis.a1a3 + ergebnis.b4 + ergebnis.c3c4 + ergebnis.sockelTga;
+    const rowModulDDetails = rows.flatMap((row, i) => {
       const mat = MATERIAL_DATABASE.find(m => m.id === row.materialId);
-      if (!mat) return;
-      const qty = row.quantity;
-
-      // Weight calculation
-      let weightTons = 0;
-      if (mat.unit === "m³") {
-        weightTons = (qty * mat.densityKg) / 1000;
-      } else {
-        weightTons = qty;
-      }
-      totalWeightTons += weightTons;
-
-      // Manufacturing (A1-A3)
-      gwpA1A3 += qty * mat.gwpA1A3;
-
-      // Biogenic carbon storage
-      if (mat.biogenicContent > 0) {
-        gwpBioStorageInstalled += qty * mat.biogenicContent;
-      }
-
-      // End of life (C3/C4)
-      gwpC += qty * mat.gwpC;
-
-      // --- DYNAMISCHE MODUL-D-BERECHNUNG ---
-      const circularFraction = (row.circularQuota ?? mat.defaultCircularQuota) / 100;
-      const sortingFraction = (row.sortingRate ?? 85) / 100;
-      const circularMassTons = weightTons * circularFraction;
-      const effectiveRecoveredMassTons = circularMassTons * sortingFraction;
-      totalCircularWeightTons += effectiveRecoveredMassTons;
-
-      // Recovery factor depending on pathway
-      let recoveryFactor = 1.0;
-      if (row.recoveryType === 'reuse') {
-        recoveryFactor = 1.45; // 1:1 Wiederverwendung spart praktisch den gesamten Neubaustoff ein
-      } else if (row.recoveryType === 'high_grade') {
-        recoveryFactor = 1.0; // Hochwertiges Recycling (EPD Standard)
-      } else if (row.recoveryType === 'downcycling') {
-        recoveryFactor = 0.55; // Kaskade / Schotterersatz
-      } else if (row.recoveryType === 'thermal') {
-        recoveryFactor = 0.85; // Energetische Verwertung
-      }
-
-      // Scale reference EPD Modul D by user's circular quota & sorting rate
-      const refQuota = Math.max(10, mat.defaultCircularQuota);
-      const rowGwpD = (qty * mat.gwpD * (row.circularQuota / refQuota) * (row.sortingRate / 85)) * recoveryFactor;
-      gwpD += rowGwpD;
-
-      rowModulDDetails.push({
-        rowId: row.id,
-        matName: mat.name,
-        category: mat.category,
-        unit: mat.unit,
-        qty,
-        weightTons,
-        circularQuota: row.circularQuota,
-        sortingRate: row.sortingRate,
-        recoveryType: row.recoveryType,
-        circularMassTons,
-        effectiveRecoveredMassTons,
-        rowGwpD,
-        substitutesPrimary: mat.substitutesPrimary
-      });
-
-      // Urban Mining Index weighting
-      const dynamicUmi = Math.min(100, Math.round((row.circularQuota * 0.7) + (row.sortingRate * 0.3)));
-      weightedUmiSum += weightTons * dynamicUmi;
-
-      // Primary Energy Non-Renewable (PENRT)
-      totalPenrtMj += qty * mat.penrt;
+      const z = ergebnis.zeilen[i];
+      if (!mat || !z) return [];
+      return [{
+        rowId: row.id, matName: mat.name, category: mat.category, unit: mat.unit, qty: row.quantity, weightTons: z.masse,
+        circularQuota: row.circularQuota, sortingRate: row.sortingRate, recoveryType: row.recoveryType,
+        circularMassTons: z.kreislaufMasse, effectiveRecoveredMassTons: z.rueckgewonnen, rowGwpD: z.d, substitutesPrimary: mat.substitutesPrimary,
+      }];
     });
-
-    // Transport A4
-    const gwpA4 = totalWeightTons * transportDistance * factorTransport;
-
-    // Normative compliance value (Modules A-C according to DIN EN 15978 / QNG)
-    const gwpAC = gwpA1A3 + gwpA4 + gwpC;
-    const gwpPerSqmYearAC = gwpAC / (buildingArea * studyPeriod);
-
-    // Net value including Modul D recycling credits
-    const totalGwpNet = gwpAC + gwpD;
-    const gwpPerSqmYearNet = totalGwpNet / (buildingArea * studyPeriod);
-
-    // Specific Modul D impact per m2*year
-    const gwpPerSqmYearD = gwpD / (buildingArea * studyPeriod);
-
-    // Weighted Urban Mining Index (%)
-    const weightedUmi = totalWeightTons > 0 ? Math.round(weightedUmiSum / totalWeightTons) : 0;
-
-    // Overall circularity rate of the building (%)
-    const overallCircularityRate = totalWeightTons > 0 ? (totalCircularWeightTons / totalWeightTons) * 100 : 0;
-
-    // Primary energy per m2*year in kWh (1 kWh = 3.6 MJ)
-    const penrtKwhPerSqmYear = (totalPenrtMj / (buildingArea * studyPeriod)) / 3.6;
-
     return {
-      totalWeightTons,
-      totalCircularWeightTons,
-      overallCircularityRate,
-      gwpA1A3,
-      gwpBioStorageInstalled,
-      gwpA4,
-      gwpC,
-      gwpD,
-      gwpAC,
-      gwpPerSqmYearAC,
-      totalGwpNet,
-      gwpPerSqmYearNet,
-      gwpPerSqmYearD,
-      weightedUmi,
-      totalPenrtMj,
-      penrtKwhPerSqmYear,
-      rowModulDDetails
+      totalWeightTons: ergebnis.masse,
+      totalCircularWeightTons: ergebnis.rueckgewonnen,
+      overallCircularityRate: ergebnis.kreislaufquoteGebaeude,
+      gwpA1A3: ergebnis.a1a3,
+      gwpBioStorageInstalled: ergebnis.biogenGespeichert,
+      gwpA4: ergebnis.a4,
+      gwpC: ergebnis.c3c4,
+      gwpD: ergebnis.d,
+      gwpAC: konstruktion,
+      gwpPerSqmYearAC: ergebnis.spez.konstruktion,
+      totalGwpNet: konstruktion + ergebnis.d,
+      gwpPerSqmYearNet: ergebnis.spez.netto,
+      gwpPerSqmYearD: ergebnis.spez.d,
+      weightedUmi: ergebnis.umi,
+      totalPenrtMj: ergebnis.penrtMJ,
+      penrtKwhPerSqmYear: ergebnis.penrtKwhJeM2a,
+      rowModulDDetails,
     };
-  }, [rows, transportDistance, transportType, buildingArea, studyPeriod]);
+  }, [ergebnis, rows]);
 
-  // QNG Benchmark Status Evaluation
+  // Ergebnisaussage: „eingehalten“ nur mit B4 und B6 (vollständiger QNG-Bilanzrahmen, vereinfacht), sonst neutral
   const benchmarkStatus = useMemo(() => {
-    const valAC = results.gwpPerSqmYearAC;
-    const { plus, premium } = qngThresholds;
-
-    if (valAC <= premium) {
-      return {
-        label: inhalt.werte.unterQngPremiumAnforderungswert,
-        color: "text-emerald-700 border-emerald-300 bg-emerald-50/70",
-        badge: "bg-emerald-600 text-white",
-        desc: `Orientierend sehr gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Für einen QNG-Nachweis ist eine vollständige Bilanz nach QNG-Bilanzierungsregeln (inkl. B4 und B6) nötig.`
-      };
-    } else if (valAC <= plus) {
-      return {
-        label: inhalt.werte.unterQngPlusAnforderungswert,
-        color: "text-teal-700 border-teal-300 bg-teal-50/70",
-        badge: "bg-teal-600 text-white",
-        desc: `Orientierend gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt unter dem Anforderungswert von ${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a). Eine Förderberechtigung ergibt sich erst aus einem vollständigen QNG-Nachweis.`
-      };
-    } else {
-      return {
-        label: inhalt.werte.standardNeubau,
-        color: "text-amber-700 border-amber-300 bg-amber-50/70",
-        badge: "bg-amber-600 text-white",
-        desc: `Der berechnete Treibhausgaswert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt über dem QNG-PLUS Grenzwert (${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a)). Ersetzen Sie CEM I-Beton und EPS durch CEM III/A, RC-Beton, Lehm oder Holzbau, um Förderniveau zu erreichen.`
-      };
+    const wert = `${formatDeZahl(ergebnis.spez.qng, 2)} kg CO₂-eq/(m²·a)`;
+    if (!ergebnis.gueltig) {
+      return { label: inhalt.werte.ohneVergleich, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-500 text-white', desc: '' };
     }
-  }, [results.gwpPerSqmYearAC, qngThresholds]);
+    if (ergebnis.aussage === 'premium') {
+      return { label: inhalt.werte.unterQngPremiumAnforderungswert, color: 'text-emerald-700 border-emerald-300 bg-emerald-50/70', badge: 'bg-emerald-600 text-white', desc: `${inhalt.werte.descPremium}${wert} ≤ ${formatDeZahl(qngThresholds.premium, 0)}.` };
+    }
+    if (ergebnis.aussage === 'plus') {
+      return { label: inhalt.werte.unterQngPlusAnforderungswert, color: 'text-teal-700 border-teal-300 bg-teal-50/70', badge: 'bg-teal-600 text-white', desc: `${inhalt.werte.descPlus}${wert} ≤ ${formatDeZahl(qngThresholds.plus, 0)}.` };
+    }
+    if (ergebnis.aussage === 'ueberschritten') {
+      return { label: inhalt.werte.standardNeubau, color: 'text-amber-700 border-amber-300 bg-amber-50/70', badge: 'bg-amber-600 text-white', desc: `${inhalt.werte.descUeber}${wert} > ${formatDeZahl(qngThresholds.plus, 0)}.` };
+    }
+    if (buildingType === 'nichtwohnbau' && ergebnis.enthaeltB4 && ergebnis.enthaeltB6) {
+      return { label: inhalt.werte.nwgNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-600 text-white', desc: `${inhalt.werte.descNwg}${wert} (Lehrwert PLUS ${formatDeZahl(qngThresholds.plus, 0)}).` };
+    }
+    return { label: inhalt.werte.teilbilanzNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-600 text-white', desc: `${inhalt.werte.descTeil}${wert}.` };
+  }, [ergebnis, qngThresholds, buildingType]);
 
-  // Dynamic Comparison Variants
+  // Vergleichsvarianten mit denselben Einstellungen für B4, B6, TGA und Fläche (Standardwerte für Kreislauf und Nutzungsdauer)
   const variants = useMemo(() => {
-    const factorTransport = transportType === "lkw" ? 0.15 : 0.03;
-
-    const calcGwpAC = (rowList: { id: string; qty: number }[]) => {
-      let weightTons = 0;
-      let a1a3 = 0;
-      let eol = 0;
-
-      rowList.forEach(r => {
+    const bilanz = (liste: { id: string; qty: number }[]) => {
+      const zeilen = liste.flatMap(r => {
         const m = MATERIAL_DATABASE.find(mat => mat.id === r.id);
-        if (!m) return;
-        const w = m.unit === "m³" ? (r.qty * m.densityKg) / 1000 : r.qty;
-        weightTons += w;
-        a1a3 += r.qty * m.gwpA1A3;
-        eol += r.qty * m.gwpC;
+        return m ? [{ baustoff: alsLcaBaustoff(m), menge: r.qty, kreislaufquote: m.defaultCircularQuota, sortenreinheit: SORTENREINHEIT_REFERENZ, verwertung: m.defaultRecoveryType }] : [];
       });
-
-      const a4 = weightTons * transportDistance * factorTransport;
-      return (a1a3 + a4 + eol) / (buildingArea * studyPeriod);
+      return lcaBilanz(eingabeFuer(zeilen));
     };
-
-    const gwpVar1 = calcGwpAC([
-      { id: "beton-cem1", qty: 36 },
-      { id: "ziegel", qty: 45 },
-      { id: "baustahl", qty: 2.5 },
-      { id: "eps-daemmung", qty: 16 }
-    ]);
-
-    const gwpVar2 = calcGwpAC([
-      { id: "beton-cem3", qty: 22 },
-      { id: "rc-beton", qty: 16 },
-      { id: "ziegel", qty: 40 },
-      { id: "baustahl", qty: 2.2 },
-      { id: "zellulose", qty: 20 }
-    ]);
-
-    const gwpVar3 = calcGwpAC([
-      { id: "beton-cem3", qty: 10 },
-      { id: "hbv-decke", qty: 18 },
-      { id: "clt", qty: 22 },
-      { id: "kvh", qty: 6 },
-      { id: "baustahl", qty: 0.8 },
-      { id: "holzfaser-daemmung", qty: 18 }
-    ]);
-
-    const gwpVar4 = calcGwpAC([
-      { id: "schaumglas", qty: 25 },
-      { id: "kvh", qty: 14 },
-      { id: "lehm-bauplatte", qty: 15 },
-      { id: "hanfkalk", qty: 24 },
-      { id: "strohballen", qty: 20 },
-      { id: "baustahl", qty: 0.3 }
-    ]);
-
-    const rate = (v: number) => {
-      if (v <= qngThresholds.premium) return inhalt.werte.premiumWertOrientierend;
-      if (v <= qngThresholds.plus) return inhalt.werte.plusWertOrientierend;
-      return "Standard ⚙️";
+    const rate = (e: LcaErgebnis) => {
+      if (e.aussage === 'premium') return inhalt.werte.premiumWertOrientierend;
+      if (e.aussage === 'plus') return inhalt.werte.plusWertOrientierend;
+      if (e.aussage === 'ueberschritten') return inhalt.werte.ueberPlus;
+      return inhalt.werte.ohneVergleich;
     };
-
+    const v1 = bilanz([{ id: "beton-cem1", qty: 36 }, { id: "ziegel", qty: 45 }, { id: "baustahl", qty: 2.5 }, { id: "eps-daemmung", qty: 16 }]);
+    const v2 = bilanz([{ id: "beton-cem3", qty: 22 }, { id: "rc-beton", qty: 16 }, { id: "ziegel", qty: 40 }, { id: "baustahl", qty: 2.2 }, { id: "zellulose", qty: 20 }]);
+    const v3 = bilanz([{ id: "beton-cem3", qty: 10 }, { id: "hbv-decke", qty: 18 }, { id: "clt", qty: 22 }, { id: "kvh", qty: 6 }, { id: "baustahl", qty: 0.8 }, { id: "holzfaser-daemmung", qty: 18 }]);
+    const v4 = bilanz([{ id: "schaumglas", qty: 25 }, { id: "kvh", qty: 14 }, { id: "lehm-bauplatte", qty: 15 }, { id: "hanfkalk", qty: 24 }, { id: "strohballen", qty: 20 }, { id: "baustahl", qty: 0.3 }]);
+    const ref = v1.spez.qng;
+    const minderung = (e: LcaErgebnis) => (ref > 0 && e.gueltig ? Math.round(((ref - e.spez.qng) / ref) * 100) : 0);
     return [
-      {
-        id: "var1",
-        name: inhalt.werte.varianteIKonventionellerMassivbau,
-        description: inhalt.werte.cemINormalbetonHintermauerziegel,
-        gwp: gwpVar1,
-        colorClass: "bg-rose-600",
-        rating: rate(gwpVar1),
-        reductionPct: 0
-      },
-      {
-        id: "var2",
-        name: inhalt.werte.varianteIiKlinkeroptimierterMassivbau,
-        description: inhalt.werte.cemIiiAHüttensandzement,
-        gwp: gwpVar2,
-        colorClass: "bg-amber-600",
-        rating: rate(gwpVar2),
-        reductionPct: gwpVar1 > 0 ? Math.round(((gwpVar1 - gwpVar2) / gwpVar1) * 100) : 0
-      },
-      {
-        id: "var3",
-        name: inhalt.werte.varianteIiiModernerHolz,
-        description: inhalt.werte.cltWändeHbvDecken,
-        gwp: gwpVar3,
-        colorClass: "bg-emerald-600",
-        rating: rate(gwpVar3),
-        reductionPct: gwpVar1 > 0 ? Math.round(((gwpVar1 - gwpVar3) / gwpVar1) * 100) : 0
-      },
-      {
-        id: "var4",
-        name: inhalt.werte.varianteIvZirkulärerLehm,
-        description: inhalt.werte.lehmbauplattenHanfkalkStrohUnd,
-        gwp: gwpVar4,
-        colorClass: "bg-teal-600",
-        rating: rate(gwpVar4),
-        reductionPct: gwpVar1 > 0 ? Math.round(((gwpVar1 - gwpVar4) / gwpVar1) * 100) : 0
-      },
-      {
-        id: "active",
-        name: inhalt.werte.ihrAktuellerEntwurfBenutzerdefiniert,
-        description: inhalt.werte.dynamischAusIhrerBaustofftabelle,
-        gwp: results.gwpPerSqmYearAC,
-        colorClass: "bg-shiraz",
-        rating: rate(results.gwpPerSqmYearAC),
-        reductionPct: gwpVar1 > 0 ? Math.round(((gwpVar1 - results.gwpPerSqmYearAC) / gwpVar1) * 100) : 0
-      }
-    ];
-  }, [results.gwpPerSqmYearAC, transportDistance, transportType, buildingArea, studyPeriod, qngThresholds]);
+      { id: "var1", name: inhalt.werte.varianteIKonventionellerMassivbau, description: inhalt.werte.cemINormalbetonHintermauerziegel, e: v1, colorClass: "bg-rose-600" },
+      { id: "var2", name: inhalt.werte.varianteIiKlinkeroptimierterMassivbau, description: inhalt.werte.cemIiiAHüttensandzement, e: v2, colorClass: "bg-amber-600" },
+      { id: "var3", name: inhalt.werte.varianteIiiModernerHolz, description: inhalt.werte.cltWändeHbvDecken, e: v3, colorClass: "bg-emerald-600" },
+      { id: "var4", name: inhalt.werte.varianteIvZirkulärerLehm, description: inhalt.werte.lehmbauplattenHanfkalkStrohUnd, e: v4, colorClass: "bg-teal-600" },
+      { id: "active", name: inhalt.werte.ihrAktuellerEntwurfBenutzerdefiniert, description: inhalt.werte.dynamischAusIhrerBaustofftabelle, e: ergebnis, colorClass: "bg-shiraz" },
+    ].map(v => ({ ...v, gwp: v.e.spez.qng, rating: rate(v.e), reductionPct: v.id === 'var1' ? 0 : minderung(v.e) }));
+  }, [ergebnis]);
 
   return (
     <div className="space-y-6 font-normal">
@@ -457,7 +296,16 @@ export default function InteractiveLCACalc() {
               setTransportType("lkw");
               setBuildingArea(140);
               setStudyPeriod(50);
-            }} 
+              setMitB4(true);
+              setMitB6(true);
+              setStromGeg(2400);
+              setPvEigennutzung(900);
+              setWaermeTraeger('wp');
+              setWaerme(0);
+              setNutzerstrom(true);
+              setNrfBeheizt(null);
+              setTgaSockel('ep_bis40');
+            }}
             className="flex items-center gap-1.5 text-xs bg-white hover:bg-slate-50 border border-home-grau/30 hover:border-slate-400 py-2 px-3.5 rounded-xl text-slate-700 transition cursor-pointer font-bold"
             title={inhalt.werte.werteAufInitialzustandZurücksetzen}
           >
@@ -608,8 +456,8 @@ export default function InteractiveLCACalc() {
                               min="0.1"
                               step="0.5"
                               aria-label={`Menge in ${currentMat?.unit ?? 'Einheiten'}`}
-                              value={row.quantity}
-                              onChange={(e) => updateRow(row.id, { quantity: Math.max(0.1, parseFloat(e.target.value) || 0) })}
+                              value={Number.isFinite(row.quantity) ? row.quantity : ''}
+                              onChange={(e) => updateRow(row.id, { quantity: e.target.valueAsNumber })}
                               className="w-16 text-xs font-bold text-right font-mono focus:outline-none"
                             />
                             <span className="text-xs text-slate-500 font-mono font-semibold">{currentMat?.unit}</span>
@@ -670,6 +518,33 @@ export default function InteractiveLCACalc() {
                           </div>
                         </div>
                       )}
+
+                      {currentMat && mitB4 && (() => {
+                        const bnb = BNB_NUTZUNGSDAUER[currentMat.id];
+                        const nd = row.nutzungsdauer ?? bnb?.nd ?? 50;
+                        const n = ersatzzyklen(nd, studyPeriod);
+                        return (
+                          <div className="flex flex-wrap items-center gap-2 text-[10px] text-slate-600 font-mono">
+                            <label className="flex items-center gap-1.5">
+                              <span className="font-bold">{inhalt.werte.ndLabel}:</span>
+                              <select
+                                value={String(nd)}
+                                onChange={(e) => {
+                                  const wert = Number(e.target.value);
+                                  updateRow(row.id, { nutzungsdauer: bnb && wert === bnb.nd ? undefined : wert });
+                                }}
+                                className="text-[10px] font-bold p-1 bg-white border border-home-grau/30 rounded cursor-pointer"
+                              >
+                                {[10, 15, 20, 25, 30, 40, 50].map(x => (
+                                  <option key={x} value={String(x)}>{x === 50 ? '≥ 50' : String(x)} a{bnb && bnb.nd === x ? ' (BNB)' : ''}</option>
+                                ))}
+                              </select>
+                            </label>
+                            <span>{inhalt.werte.ersatzKurz}: <strong>{formatDeZahl(n, 0)}×</strong></span>
+                            {bnb && <span className="text-slate-400 font-sans" title={bnb.quelle}>{bnb.quelle}{bnb.vorlaeufig ? ` – ${inhalt.werte.ndVorlaeufig}` : ''}</span>}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
                 })}
@@ -760,11 +635,81 @@ export default function InteractiveLCACalc() {
                 </div>
               </div>
             </div>
+
+            {/* Nutzungsphase: Ersatz B4 und Betrieb B6 */}
+            <div className="bg-white border border-home-grau/30 rounded-2xl p-4 md:p-5 shadow-sm space-y-4">
+              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono border-b pb-1"><MdText text={inhalt.texte.t4NutzungB4B6} /></span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 font-bold text-slate-700 cursor-pointer">
+                    <input type="checkbox" checked={mitB4} onChange={(e) => setMitB4(e.target.checked)} className="accent-shiraz" />
+                    {inhalt.werte.mitB4Label}
+                  </label>
+                  <p className="text-[10.5px] text-slate-500 leading-snug"><MdText text={inhalt.texte.ersatzB4Erlaeuterung} /></p>
+                  <label className="block space-y-1 pt-1">
+                    <span className="font-bold text-slate-700 block">{inhalt.werte.tgaLabel}</span>
+                    <select value={tgaSockel} onChange={(e) => setTgaSockel(e.target.value as TgaSockel)} className="w-full p-2 bg-white border border-home-grau/30 rounded-lg cursor-pointer">
+                      <option value="ep_bis40">{inhalt.werte.tgaBis40}</option>
+                      <option value="ep_ueber40">{inhalt.werte.tgaUeber40}</option>
+                      <option value="keiner">{inhalt.werte.tgaKeiner}</option>
+                    </select>
+                  </label>
+                </div>
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 font-bold text-slate-700 cursor-pointer">
+                    <input type="checkbox" checked={mitB6} onChange={(e) => setMitB6(e.target.checked)} className="accent-shiraz" />
+                    {inhalt.werte.mitB6Label}
+                  </label>
+                  <p className="text-[10.5px] text-slate-500 leading-snug"><MdText text={inhalt.texte.betriebB6Erlaeuterung} /></p>
+                  {mitB6 && (
+                    <div className="space-y-2">
+                      {([
+                        { label: inhalt.werte.stromGegLabel, wert: stromGeg, setze: setStromGeg },
+                        { label: inhalt.werte.pvLabel, wert: pvEigennutzung, setze: setPvEigennutzung },
+                      ] as const).map(f => (
+                        <label key={f.label} className="block space-y-0.5">
+                          <span className="text-[10.5px] text-slate-600 block">{f.label}</span>
+                          <input type="number" min="0" step="100" value={Number.isFinite(f.wert) ? f.wert : ''} onChange={(e) => f.setze(e.target.valueAsNumber)} className="w-full p-1.5 font-mono text-right bg-white border border-home-grau/30 rounded-lg" />
+                        </label>
+                      ))}
+                      <label className="block space-y-0.5">
+                        <span className="text-[10.5px] text-slate-600 block">{inhalt.werte.waermeLabel}</span>
+                        <select value={waermeTraeger} onChange={(e) => setWaermeTraeger(e.target.value as Energietraeger | 'wp')} className="w-full p-1.5 bg-white border border-home-grau/30 rounded-lg cursor-pointer">
+                          <option value="wp">{inhalt.werte.waermeWp}</option>
+                          {(Object.keys(B6_FAKTOREN) as Energietraeger[]).filter(k => k !== 'netzstrom').map(k => (
+                            <option key={k} value={k}>{B6_FAKTOREN[k].name} ({formatDeZahl(B6_FAKTOREN[k].gwp, 3)} kg/kWh)</option>
+                          ))}
+                        </select>
+                      </label>
+                      {waermeTraeger !== 'wp' && (
+                        <label className="block space-y-0.5">
+                          <span className="text-[10.5px] text-slate-600 block">{inhalt.werte.waermeMengeLabel}</span>
+                          <input type="number" min="0" step="100" value={Number.isFinite(waerme) ? waerme : ''} onChange={(e) => setWaerme(e.target.valueAsNumber)} className="w-full p-1.5 font-mono text-right bg-white border border-home-grau/30 rounded-lg" />
+                        </label>
+                      )}
+                      <label className="flex items-center gap-2 text-[10.5px] text-slate-700 cursor-pointer">
+                        <input type="checkbox" checked={nutzerstrom} onChange={(e) => setNutzerstrom(e.target.checked)} className="accent-shiraz" />
+                        {inhalt.werte.nutzerstromLabel}
+                      </label>
+                      {nutzerstrom && (
+                        <label className="block space-y-0.5">
+                          <span className="text-[10.5px] text-slate-600 block">{inhalt.werte.nrfBeheiztLabel}</span>
+                          <input type="number" min="0" step="10" value={nrfBeheizt === null ? buildingArea : Number.isFinite(nrfBeheizt) ? nrfBeheizt : ''} onChange={(e) => setNrfBeheizt(e.target.valueAsNumber)} className="w-full p-1.5 font-mono text-right bg-white border border-home-grau/30 rounded-lg" />
+                        </label>
+                      )}
+                      <p className="text-[10px] text-slate-500 font-mono">
+                        Netzstrom {formatDeZahl(B6_FAKTOREN.netzstrom.gwp, 3)} kg/kWh: B6 = {formatDeZahl(ergebnis.spez.b6, 2)} kg/(m²·a)
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Dashboard / Results (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <CalculationDashboard results={results} qngThresholds={qngThresholds} benchmarkStatus={benchmarkStatus} />
+            <CalculationDashboard ergebnis={ergebnis} qngThresholds={qngThresholds} benchmarkStatus={benchmarkStatus} />
           </div>
         </div>
       )}
@@ -790,8 +735,8 @@ export default function InteractiveLCACalc() {
           {/* Visual Chart Bars */}
           <div className="space-y-4 bg-slate-50/50 border border-slate-200 p-5 rounded-2xl">
             {variants.map((v) => {
-              const maxRef = Math.max(45, ...variants.map(x => x.gwp));
-              const barPct = Math.min(100, Math.max(5, (v.gwp / maxRef) * 100));
+              const maxRef = Math.max(45, ...variants.filter(x => Number.isFinite(x.gwp)).map(x => x.gwp));
+              const barPct = Number.isFinite(v.gwp) ? Math.min(100, Math.max(5, (v.gwp / maxRef) * 100)) : 0;
 
               return (
                 <div key={v.id} className="space-y-1.5">
@@ -801,7 +746,7 @@ export default function InteractiveLCACalc() {
                       <span className="text-[10px] text-slate-500 block">{v.description}</span>
                     </div>
                     <div className="flex items-center gap-2 self-end sm:self-auto shrink-0 font-mono">
-                      <span className="font-bold text-sm text-slate-800">{formatDeZahl(v.gwp, 2)} kg/(m²·a)</span>
+                      <span className="font-bold text-sm text-slate-800">{Number.isFinite(v.gwp) ? `${formatDeZahl(v.gwp, 2)} kg/(m²·a)` : '–'}</span>
                       <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-white border border-slate-200 shadow-2xs">
                         {v.rating}
                       </span>

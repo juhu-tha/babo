@@ -295,15 +295,18 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "EPD-Werte sind Lehr- und Mittelwerte, keine Produktdaten; Projektwerte aus EPD bzw. ÖKOBAUDAT.",
       "Transport A4 mit festem Emissionsfaktor je t·km und Verkehrsmittel, ohne Leerfahrten.",
-      "Keine Nutzungs- und Entsorgungsphase.",
+      "Keine Nutzungs- und Entsorgungsphase; die Gebäudebilanz mit B4, B6 und C3/C4 bietet der LCA-Rechner.",
     ],
   },
   lca_rechner: {
-    kurz: "Vereinfachte Gebäude-Ökobilanz A1–A3, A4 und C (optional D) je m² NRF und Jahr mit Kreislaufkennzahlen, Wandaufbau-GWP und QNG-Abschätzung.",
+    kurz: "Vereinfachte Gebäude-Ökobilanz nach QNG-Bilanzregeln je m² NRF(R) und Jahr: A1–A3, B4, C3/C4, Sockel TGA und B6; A4 und Modul D getrennt; dazu Kreislaufkennzahlen, Wandaufbau-GWP und QNG-Abschätzung.",
     grenzen: [
-      "Ohne Ersatz (B4) und Betrieb (B6) im CO₂-Rechner – kein QNG-Nachweis; QNG-Schwellen nur als Lehrwert.",
-      "Transport A4 pauschal je t·km auf die gesamte Masse.",
-      "Modul D und Urban-Mining-Index mit modellinternen Gewichtungen.",
+      "Lehrdatenbank mit 17 Baustoffen (Mittelwerte, keine Produkt-EPD); C3 und C4 zusammengefasst; Mengen sind vom Nutzer anzugeben, keine Mengenermittlung.",
+      "B4 mit n = ⌈50/ND⌉ − 1 und BNB-Nutzungsdauern (Stand 24.02.2017); Zuordnungen für Hanfkalk, Stroh, Lehmplatten, Geopolymer und WDVS vorläufig.",
+      "B6: Endenergie nach GEG ist einzugeben (keine Energiebilanz); Netzstrom 0,532 kg/kWh aus einem öffentlichen QNG-Beispielbericht zurückgerechnet (vorläufig).",
+      "Keine Gas-, Öl- oder Pelletkessel im Gebäude (QNG-Rechenwerte nicht öffentlich abgedruckt); Fernwärme nach QNG-Anhang 3.4; TGA nur als Sockelbetrag (Tab. 6).",
+      "„Eingehalten“ nur mit B4 und B6, 50 a und Wohngebäude; Nichtwohngebäude mit Lehrwert. Kein QNG-Nachweis, kein Ersatz für die Bilanz einer Zertifizierungsstelle.",
+      "Modul D und Urban-Mining-Index mit modellinternen Gewichtungen, D nur für den Ersteinbau; A4 pauschal je t·km auf die gesamte Masse.",
     ],
   },
   lca_ingenieurbau: {
