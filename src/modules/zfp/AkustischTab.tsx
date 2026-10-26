@@ -6,6 +6,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Search, Waves } from 'lucide-react';
 import inhalt from '@/content/zfp/AkustischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 export interface AkustischTabProps {
   frequency: number;
@@ -14,7 +16,7 @@ export interface AkustischTabProps {
   setFrequency: React.Dispatch<React.SetStateAction<number>>;
   setVelocity: React.Dispatch<React.SetStateAction<number>>;
   setWaveVelocity: React.Dispatch<React.SetStateAction<number>>;
-  ultrasonicResults: { eDyn: number; fcEst: number; };
+  ultrasonicResults: { eDyn: number; fcEst: number; hinweise: readonly Hinweis[]; };
   velocity: number;
   waveVelocity: number;
 }
@@ -57,6 +59,7 @@ export default function AkustischTab({ frequency, impactEchoResults, renderEmbed
             ></div>
           </div>
         </div>
+        <EingabeHinweise hinweise={ultrasonicResults.hinweise} />
       </div>
 
       {/* Impact-Echo */}

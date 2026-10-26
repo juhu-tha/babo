@@ -23,6 +23,9 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { bemessungswerteBeton, festigkeitsentwicklung } from '@/src/calc/pruefverfahren';
+import { festbetonStatistik, konformitaetDruck, pruefwerteAusText } from '@/src/calc/festbetonStatistik';
 
 ChartJS.register(
   CategoryScale,
@@ -87,8 +90,8 @@ export default function Festbeton() {
   const [alphaCt, setAlphaCt] = useState<number>(0.85);
 
   const selectedKlasse = NORM_KLASSEN.find(k => k.name === selectedKlasseName) || NORM_KLASSEN[4];
-  const fcd = (alphaCc * selectedKlasse.fck_cyl) / gammaC;
-  const fctd = (alphaCt * selectedKlasse.fctk_005) / gammaC;
+  // Rechenkern src/calc/pruefverfahren.ts
+  const { fcd, fctd } = bemessungswerteBeton(selectedKlasse.fck_cyl, selectedKlasse.fctk_005, alphaCc, alphaCt, gammaC);
 
   // Tab 2: Festigkeitsentwicklung
   const [fckRef, setFckRef] = useState<number>(30); // Zylinder fck
@@ -97,28 +100,18 @@ export default function Festbeton() {
   const [geometrie, setGeometrie] = useState<'zyl_150' | 'cube_150' | 'cube_100' | 'cube_200'>('zyl_150');
   const [lagerung, setLagerung] = useState<'norm' | 'feucht' | 'luft' | 'heiss'>('norm');
 
-  // Erhärtungskoeffizient s nach EC2 (DIN EN 1992-1-1 Gl. 3.2)
-  const sKoeff = zementArt === 'R' ? 0.20 : zementArt === 'N' ? 0.25 : 0.38;
-  const beta_cc = Math.exp(sKoeff * (1 - Math.sqrt(28 / Math.max(1, alter))));
-  const fcmRef = fckRef + 8;
-  const fcm_t = fcmRef * beta_cc;
-
-  // Geometrie- & Lagerungsumrechnungen
-  const geoFaktor = geometrie === 'zyl_150' ? 1.0 : geometrie === 'cube_150' ? 1.25 : geometrie === 'cube_100' ? 1.30 : 1.20;
-  const lagerungsFaktor = lagerung === 'norm' ? 1.0 : lagerung === 'feucht' ? 0.95 : lagerung === 'luft' ? 0.90 : 0.85;
-  const fcm_t_eff = fcm_t * geoFaktor * lagerungsFaktor;
+  // Rechenkern src/calc/pruefverfahren.ts: β_cc(t) nach DIN EN 1992-1-1 Gl. (3.2), Geometrie- und Lagerungsfaktoren
+  const entwicklung = festigkeitsentwicklung({ fck: fckRef, alterTage: alter, zement: zementArt, geometrie, lagerung });
+  const { betaCc: beta_cc, fcmRef, geoFaktor, lagerungsFaktor, fcmTeff: fcm_t_eff } = entwicklung;
 
   // Tab 3: Statistik (Gauß-Verteilung)
   const [statFcm, setStatFcm] = useState<number>(38);
   const [statSigma, setStatSigma] = useState<number>(3.5);
   const [statFormat, setStatFormat] = useState<'zylinder' | 'wuerfel'>('zylinder');
 
-  const statFckCyl = statFcm - 1.645 * statSigma;
-  const statScale = statFormat === 'wuerfel' ? 1.25 : 1.0;
-  const statDisplayFcm = statFcm * statScale;
-  const statDisplaySigma = statSigma * statScale;
-  const statDisplayFck = statFckCyl * statScale;
-  const statFcd = (alphaCc * statFckCyl) / gammaC;
+  // Rechenkern src/calc/festbetonStatistik.ts (gleiche Gleichungen wie Modul Festbeton-Statistik)
+  const statErg = festbetonStatistik({ fcm: statFcm, sigma: statSigma, format: statFormat, alphaCc, gammaC, pruefArt: 'erst' });
+  const { anzeigeFcm: statDisplayFcm, anzeigeSigma: statDisplaySigma, anzeigeFck: statDisplayFck, fcd: statFcd } = statErg;
 
   const chartData = useMemo(() => {
     const minX = Math.floor(Math.max(0, statDisplayFcm - 4 * statDisplaySigma));
@@ -208,26 +201,13 @@ export default function Festbeton() {
   const [konfWerteStr, setKonfWerteStr] = useState<string>('34,5; 33,2; 35,8');
 
   const konfFck = (NORM_KLASSEN.find(k => k.name === konfKlasse) || NORM_KLASSEN[4]).fck_cube;
-  // Trennung an Semikolon oder Leerzeichen; Komma ist Dezimalzeichen
-  const konfWerte = konfWerteStr
-    .split(/[;\s]+/)
-    .map(v => parseFloat(v.replace(',', '.')))
-    .filter(v => !isNaN(v) && v > 0);
-
-  const konfMean = konfWerte.length > 0 ? konfWerte.reduce((a, b) => a + b, 0) / konfWerte.length : 0;
-  const konfMin = konfWerte.length > 0 ? Math.min(...konfWerte) : 0;
-  const konfVariance = konfWerte.length > 1
-    ? konfWerte.reduce((acc, v) => acc + Math.pow(v - konfMean, 2), 0) / (konfWerte.length - 1)
-    : 0;
-  const konfStdDev = Math.sqrt(konfVariance);
-  const konfStdDevUsed = Math.max(konfStdDev, 3.0);
-
-  const konfSollMean = konfModus === 'erst' ? konfFck + 4.0 : konfFck + 1.48 * konfStdDevUsed;
-  const konfSollMin = konfFck - 4.0;
-  const konfMeanOk = konfMean >= konfSollMean;
-  const konfMinOk = konfMin >= konfSollMin;
-  const konfAnzahlOk = konfModus === 'erst' ? konfWerte.length >= 3 : konfWerte.length >= 15;
-  const konfBestanden = konfMeanOk && konfMinOk && konfAnzahlOk;
+  // Rechenkern src/calc/festbetonStatistik.ts: Trennung an Semikolon oder Leerzeichen; Komma ist Dezimalzeichen
+  const konfWerte = pruefwerteAusText(konfWerteStr);
+  const konf = konformitaetDruck({ werte: konfWerte, fckCube: konfFck, pruefArt: konfModus });
+  const {
+    mittelwert: konfMean, minimum: konfMin, s: konfStdDev, sigmaAngesetzt: konfStdDevUsed,
+    sollMittelwert: konfSollMean, sollEinzelwert: konfSollMin, mittelOk: konfMeanOk, einzelOk: konfMinOk, bestanden: konfBestanden,
+  } = konf;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -515,6 +495,7 @@ export default function Festbeton() {
                       Berechnet mit: f_cm,28d = {formatDeWert(fcmRef)} MPa · β_cc = {formatDeZahl(beta_cc, 3)} · Geo = {formatDeZahl(geoFaktor, 2)} · Lagerung = {formatDeZahl(lagerungsFaktor, 2)}
                     </span>
                   </div>
+                  <EingabeHinweise hinweise={entwicklung.hinweise} />
                 </div>
               </div>
 
@@ -677,6 +658,7 @@ export default function Festbeton() {
                       </div>
                       <span className="font-mono font-bold text-emerald-800 text-base">{formatDeZahl(statFcd, 1)} N/mm²</span>
                     </div>
+                    <EingabeHinweise hinweise={statErg.hinweise} />
                   </div>
                 </div>
               </div>
@@ -850,11 +832,12 @@ export default function Festbeton() {
                         <div className="col-span-2">
                           <span className="text-text-main/70 block">Standardabweichung s:</span>
                           <span className="font-mono font-bold">
-                            {formatDeZahl(konfStdDev, 2)} N/mm² (Angewandt: {formatDeZahl(konfStdDevUsed, 2)} N/mm², min 3.0)
+                            {formatDeZahl(konfStdDev, 2)} N/mm² (Angewandt: {formatDeZahl(konfStdDevUsed, 2)} N/mm², mind. 3,0)
                           </span>
                         </div>
                       )}
                     </div>
+                    <EingabeHinweise hinweise={konf.hinweise} />
                   </div>
                 </div>
               </div>

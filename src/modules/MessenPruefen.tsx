@@ -24,6 +24,8 @@ import { TreffbildTab } from './messenpruefen/TreffbildTab';
 import inhalt from '@/content/messenpruefen/MessenPruefen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { messwerteAusText, gumMessunsicherheit, ringversuch } from '@/src/calc/pruefverfahren';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -50,91 +52,17 @@ export default function MessenPruefen() {
   const [rvProbeBOffset, setRvProbeBOffset] = useState<number>(-1.5); // Für den Youden-Plot (Probe B)
 
   // Parse measurements string into numbers
-  const parsedData = useMemo(() => {
-    // Deutsche Eingabe: Semikolon als Trenner, Dezimalkomma. Ohne Semikolon wird (wie bisher)
-    // am Komma getrennt und der Punkt als Dezimaltrenner gelesen.
-    const teile = measurements.includes(';')
-      ? measurements.split(';').map(v => v.trim().replace(',', '.'))
-      : measurements.split(',').map(v => v.trim());
-    return teile
-      .map(v => parseFloat(v))
-      .filter(v => Number.isFinite(v));
-  }, [measurements]);
+  // Rechenkern src/calc/pruefverfahren.ts. Deutsche Eingabe: Semikolon als Trenner, Dezimalkomma.
+  // Ohne Semikolon wird (wie bisher) am Komma getrennt und der Punkt als Dezimaltrenner gelesen.
+  const parsedData = useMemo(() => messwerteAusText(measurements), [measurements]);
 
-  // Calculations according to GUM
-  const {
-    mean,
-    sampleStdDev,
-    uA,          // Type A Standard Uncertainty
-    uB1,         // Type B from Resolution
-    uB2,         // Type B from Certificate
-    uc,          // Combined Standard Uncertainty
-    expandedU,    // Expanded Uncertainty (k=2)
-    minInterval,
-    maxInterval
-  } = useMemo(() => {
-    const n = parsedData.length;
-    if (n < 2) {
-      return {
-        mean: n === 1 ? parsedData[0] : 0,
-        sampleStdDev: 0,
-        uA: 0,
-        uB1: 0,
-        uB2: 0,
-        uc: 0,
-        expandedU: 0,
-        minInterval: 0,
-        maxInterval: 0
-      };
-    }
+  // GUM: u_A = s/√n, u_B,1 = d/(2√3), u_B,2 = U_kal/2, U = 2·u_c
+  const gum = useMemo(() => gumMessunsicherheit(parsedData, resolution, calibrationError), [parsedData, resolution, calibrationError]);
+  const { mean, sampleStdDev, uA, uB1, uB2, uc, expandedU, minInterval, maxInterval } = gum;
 
-    // Mean
-    const sum = parsedData.reduce((acc, curr) => acc + curr, 0);
-    const m = sum / n;
-
-    // Sample Standard Deviation
-    const sqDiffSum = parsedData.reduce((acc, curr) => acc + Math.pow(curr - m, 2), 0);
-    const s = Math.sqrt(sqDiffSum / (n - 1));
-
-    // Type A uncertainty: uA = s / sqrt(n)
-    const stdU_A = s / Math.sqrt(n);
-
-    // Type B1 uncertainty (rectangular distribution from resolution d): uB1 = d / (2 * sqrt(3))
-    const stdU_B1 = resolution / (2 * Math.sqrt(3));
-
-    // Type B2 uncertainty (normal distribution from standard calibration cert k=2): uB2 = U_cal / 2
-    const stdU_B2 = calibrationError / 2;
-
-    // Combined Standard Uncertainty: uc = sqrt(uA^2 + uB1^2 + uB2^2)
-    const combinedU = Math.sqrt(Math.pow(stdU_A, 2) + Math.pow(stdU_B1, 2) + Math.pow(stdU_B2, 2));
-
-    // Expanded Uncertainty with k=2 (95.45% confidence)
-    const expU = 2 * combinedU;
-
-    return {
-      mean: m,
-      sampleStdDev: s,
-      uA: stdU_A,
-      uB1: stdU_B1,
-      uB2: stdU_B2,
-      uc: combinedU,
-      expandedU: expU,
-      minInterval: m - expU,
-      maxInterval: m + expU
-    };
-  }, [parsedData, resolution, calibrationError]);
-
-  // Statistical evaluation of the Round-Robin Ringversuch
+  // Ringversuch: z-Score und E_n-Wert nach DIN EN ISO 13528
   const rvStats = useMemo(() => {
-    const dVal = rvMeasuredValue - rvAssignedValue;
-    const zScore = rvSigmaPT > 0 ? dVal / rvSigmaPT : 0;
-    const absZ = Math.abs(zScore);
-    const zStatus: 'ok' | 'warning' | 'critical' = absZ <= 2.0 ? 'ok' : absZ < 3.0 ? 'warning' : 'critical';
-
-    const denomEn = Math.sqrt(Math.pow(rvULab, 2) + Math.pow(rvURef, 2));
-    const enScore = denomEn > 0 ? dVal / denomEn : 0;
-    const absEn = Math.abs(enScore);
-    const enStatus: 'ok' | 'critical' = absEn <= 1.0 ? 'ok' : 'critical';
+    const rv = ringversuch({ x: rvMeasuredValue, X: rvAssignedValue, sigmaPt: rvSigmaPT, uLab: rvULab, uRef: rvURef, offsetB: rvProbeBOffset });
 
     // Simulated benchmark laboratories for the Youden plot (Pair: Probe A vs Probe B)
     // Reference center is (50, 48)
@@ -159,23 +87,7 @@ export default function MessenPruefen() {
       { id: 18, a: 51.0, b: 47.7 }  // Streuung
     ];
 
-    const currentLab = {
-      a: rvMeasuredValue,
-      b: rvAssignedValue + rvProbeBOffset + (rvMeasuredValue - rvAssignedValue) * 0.95
-    };
-
-    return {
-      dVal,
-      zScore,
-      absZ,
-      zStatus,
-      denomEn,
-      enScore,
-      absEn,
-      enStatus,
-      baseLabs,
-      currentLab
-    };
+    return { ...rv, baseLabs };
   }, [rvMeasuredValue, rvAssignedValue, rvSigmaPT, rvULab, rvURef, rvProbeBOffset]);
 
   // Generate target points based on accuracy and precision selectors
@@ -246,7 +158,7 @@ export default function MessenPruefen() {
 
       {/* --- Tab 3: GUM Messunsicherheit-Rechner (Type A & B Standard) --- */}
       {activeSubTab === 'messunsicherheit' && (
-        <MessunsicherheitTab measurements={measurements} setMeasurements={setMeasurements} parsedData={parsedData} resolution={resolution} setResolution={setResolution} calibrationError={calibrationError} setCalibrationError={setCalibrationError} mean={mean} sampleStdDev={sampleStdDev} uA={uA} uB1={uB1} uB2={uB2} expandedU={expandedU} minInterval={minInterval} maxInterval={maxInterval} uc={uc} />
+        <MessunsicherheitTab measurements={measurements} setMeasurements={setMeasurements} parsedData={parsedData} resolution={resolution} setResolution={setResolution} calibrationError={calibrationError} setCalibrationError={setCalibrationError} mean={mean} sampleStdDev={sampleStdDev} uA={uA} uB1={uB1} uB2={uB2} expandedU={expandedU} minInterval={minInterval} maxInterval={maxInterval} uc={uc} hinweise={gum.hinweise} />
       )}
 
       {/* --- Tab 4: Prüfstreuungen (r/R - Repeatability & Reproducibility) --- */}
@@ -457,6 +369,7 @@ export default function MessenPruefen() {
                     ><MdText text={inhalt.texte.nichtkonformZ30} /></button>
                   </div>
                 </div>
+                <EingabeHinweise hinweise={rvStats.hinweise} />
               </div>
 
               {/* Evaluation Output Column (7 cols) */}

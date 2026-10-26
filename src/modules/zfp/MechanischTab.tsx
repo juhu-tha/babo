@@ -10,16 +10,18 @@ import { Activity, Waves, Hammer, Droplets, AlertTriangle } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/zfp/MechanischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 export interface MechanischTabProps {
   angle: '0' | '90' | '-90';
   chartData: { labels: number[]; datasets: ({ label: string; data: number[]; borderColor: string; backgroundColor: string; borderWidth: number; tension: number; borderDash?: undefined; } | { label: string; data: number[]; borderColor: string; backgroundColor: string; borderWidth: number; borderDash: number[]; tension: number; })[]; };
   karstenAbsorbed: number;
-  karstenResults: { w: number; tHours: number; eingruppierung: string; textClass: string; color: string; detailtext: string; };
+  karstenResults: { w: number; tHours: number; eingruppierung: string; textClass: string; color: string; detailtext: string; hinweise: readonly Hinweis[]; };
   karstenTime: number;
   options: ChartOptions<'line'>;
   rebound: number;
-  reboundResults: { rCorr: number; fc: number; };
+  reboundResults: { rCorr: number; fc: number; hinweise: readonly Hinweis[]; };
   renderEmbeddedGeraete: (tabKey: string, deviceIds: string[]) => React.JSX.Element | null;
   setAngle: React.Dispatch<React.SetStateAction<'0' | '90' | '-90'>>;
   setKarstenAbsorbed: React.Dispatch<React.SetStateAction<number>>;
@@ -87,6 +89,7 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
                 <div className="w-8 h-8 bg-white/40 rounded-full"></div>
               </div>
             </div>
+            <EingabeHinweise hinweise={reboundResults.hinweise} />
           </div>
         </div>
 
@@ -198,6 +201,7 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
               <span className="font-bold">{karstenResults.eingruppierung}</span>
               <p className="text-slate-600 font-normal">{karstenResults.detailtext}</p>
             </div>
+            <EingabeHinweise hinweise={karstenResults.hinweise} />
           </div>
 
           {/* Röhrchen Visualisierung */}

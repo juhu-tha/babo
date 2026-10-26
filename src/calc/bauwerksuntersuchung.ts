@@ -61,12 +61,15 @@ export interface UltraschallErgebnis extends Ergebnis {
   eDynGPa: number;
   stufe: GefuegeStufe;
 }
+/** Dynamischer E-Modul E_dyn = ρ·v_p²·(1 + ν)(1 − 2ν)/(1 − ν) in N/m² (ρ in kg/m³, v_p in m/s) */
+export function dynamischerEModul(dichte: number, vp: number, nu = 0.2): number {
+  return dichte * Math.pow(vp, 2) * ((1 + nu) * (1 - 2 * nu)) / (1 - nu);
+}
 export function ultraschall(abstandM: number, laufzeitUs: number, dichte: number, nu = 0.2): UltraschallErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(abstandM, laufzeitUs, dichte) && laufzeitUs > 0 && abstandM > 0, 'laufzeitUs', 'Messstrecke und Laufzeit müssen größer als 0 sein.');
   const vp = abstandM / (laufzeitUs * 1e-6);
-  const faktor = ((1 + nu) * (1 - 2 * nu)) / (1 - nu);
-  const eDynGPa = dichte * Math.pow(vp, 2) * faktor * 1e-9;
+  const eDynGPa = dynamischerEModul(dichte, vp, nu) * 1e-9;
   const stufe: GefuegeStufe = vp < 3000 ? 'kritisch' : vp < 3800 ? 'maessig' : 'gut';
   if (vp > 5500) h.push({ stufe: 'warnung', feld: 'vp', text: 'v_p > 5500 m/s ist für Beton unplausibel – Messstrecke oder Laufzeit prüfen.' });
   return { vp, eDynGPa, stufe, ...abschluss(h) };

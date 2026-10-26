@@ -4,6 +4,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/messenpruefen/MessunsicherheitTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 export interface MessunsicherheitTabProps {
   measurements: string;
@@ -22,9 +24,11 @@ export interface MessunsicherheitTabProps {
   minInterval: number;
   maxInterval: number;
   uc: number;
+  /** Plausibilitätshinweise des Rechenkerns (src/calc/pruefverfahren.ts) */
+  hinweise?: readonly Hinweis[];
 }
 
-export function MessunsicherheitTab({ measurements, setMeasurements, parsedData, resolution, setResolution, calibrationError, setCalibrationError, mean, sampleStdDev, uA, uB1, uB2, expandedU, minInterval, maxInterval, uc }: MessunsicherheitTabProps) {
+export function MessunsicherheitTab({ measurements, setMeasurements, parsedData, resolution, setResolution, calibrationError, setCalibrationError, mean, sampleStdDev, uA, uB1, uB2, expandedU, minInterval, maxInterval, uc, hinweise = [] }: MessunsicherheitTabProps) {
   return (
     <div className="space-y-6">
       <div className="bg-white border border-home-grau/30 rounded-xl p-6 shadow-sm">
@@ -154,7 +158,8 @@ export function MessunsicherheitTab({ measurements, setMeasurements, parsedData,
                   {/* Quadratic Summation indicator */}
                   <p className="text-[10px] text-slate-500 italic text-right -mt-1 leading-normal font-sans"><MdText text={inhalt.texte.quadratischeAddition} /><FormulaText text="u_c = \sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}" />
                   </p>
-    
+                  <EingabeHinweise hinweise={hinweise} />
+
                 </div>
               ) : (
                 <div className="p-8 text-center text-slate-400 text-xs font-sans"><MdText text={inhalt.texte.bitteGebenSieMindestens} /></div>
