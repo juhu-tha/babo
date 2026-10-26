@@ -8402,8 +8402,8 @@
     "moduleTitle": "Ressourceneffizienz",
     "topic": "KrWG-Zielquote",
     "difficulty": "Basis",
-    "normRef": "KrWG § 14 Abs. 3",
-    "question": "Was besagt § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle?",
+    "normRef": "KrWG § 14 Abs. 2",
+    "question": "Was besagt § 14 Abs. 2 KrWG für nicht gefährliche Bau- und Abbruchabfälle?",
     "options": [
       "Ein nationales Ziel von mind. 70 Gew.-% stofflicher Verwertung inkl. Verfüllung",
       "Eine Pflichtquote von 70 Gew.-% Recycling für jedes einzelne Bauvorhaben",
@@ -8417,13 +8417,13 @@
     "distraktorFeedback": [
       "",
       "Die 70 % sind ein nationales Ziel, keine projektbezogene Pflichtquote; zudem zählt auch Verfüllung mit.",
-      "§ 14 Abs. 3 KrWG formuliert eine Verwertungsquote, kein Deponierungsverbot für Bauschutt.",
-      "Eine Einsatzpflicht für RC-Beton enthält das KrWG nicht; § 14 Abs. 3 betrifft die Verwertung von Abfällen."
+      "§ 14 Abs. 2 KrWG formuliert eine Verwertungsquote, kein Deponierungsverbot für Bauschutt.",
+      "Eine Einsatzpflicht für RC-Beton enthält das KrWG nicht; § 14 Abs. 2 betrifft die Verwertung von Abfällen."
     ],
     "gapAnalysis": {
       "topic": "KrWG-Zielquote",
       "misconception": "Jede Baustelle müsse 70 % Recycling nachweisen.",
-      "coreRule": "KrWG § 14 Abs. 3: nationales Ziel, keine Projektpflicht.",
+      "coreRule": "KrWG § 14 Abs. 2: nationales Ziel, keine Projektpflicht.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „KrWG-Zielquote“ im Modul Ressourceneffizienz noch einmal durch.",
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
