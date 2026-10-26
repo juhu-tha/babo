@@ -20,6 +20,8 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/packungsdichte/Packungsdichte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { sieblinienOptimierung, zweikornMischung } from '@/src/calc/packungsdichte';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 ChartJS.register(
   CategoryScale,
@@ -47,83 +49,15 @@ export default function Packungsdichte() {
   const [kornform, setKornform] = useState<'rund' | 'gebrochen'>('rund');
   const [vFest, setVFest] = useState(750); // l/m³
 
-  const dMax = 16; // Größtkorn
-  const dMin = 0.001; // Kleinstkorn (1 µm)
-
   const results = useMemo(() => {
-    // Sicherstellen, dass Summe <= 100
-    let aZement = pZement;
-    let aZusatz = pZusatz;
-    let aSand = pSand;
-    let aKies1 = pKies1;
-
-    if (aZement > 100) aZement = 100;
-    if (aZement + aZusatz > 100) aZusatz = 100 - aZement;
-    if (aZement + aZusatz + aSand > 100) aSand = 100 - aZement - aZusatz;
-    if (aZement + aZusatz + aSand + aKies1 > 100) aKies1 = 100 - aZement - aZusatz - aSand;
-    
-    const aKies2 = 100 - aZement - aZusatz - aSand - aKies1;
-
-    // Massenberechnung in kg/m³
-    const rhoZement = 3.1;
-    const rhoGestein = 2.65;
-    const mZement = (aZement / 100) * vFest * rhoZement;
-    const mZusatz = (aZusatz / 100) * vFest * rhoGestein;
-    const mSand = (aSand / 100) * vFest * rhoGestein;
-    const mKies1 = (aKies1 / 100) * vFest * rhoGestein;
-    const mKies2 = (aKies2 / 100) * vFest * rhoGestein;
-    const mTotal = mZement + mZusatz + mSand + mKies1 + mKies2;
-
-    // Siebgrößen (mm) - erweitert um Feinteilbereich
-    const sieves = [0.001, 0.01, 0.063, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16];
-
-    // Typische Siebdurchgänge für die Einzelkomponenten (vereinfacht)
-    // Zement (CEM I 42.5)
-    const passZem = [0, 50, 95, 100, 100, 100, 100, 100, 100, 100, 100];
-    // Zusatzstoff (Kalksteinmehl)
-    const passZus = [5, 60, 98, 100, 100, 100, 100, 100, 100, 100, 100];
-    // Sand 0/2
-    const passSand = [0, 0, 2, 5, 15, 40, 75, 100, 100, 100, 100];
-    // Kies 2/8
-    const passKies1 = [0, 0, 0, 0, 0, 0, 0, 5, 40, 100, 100];
-    // Kies 8/16
-    const passKies2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 100];
-
-    // Gemischte Sieblinie (Gesamtfeststoff)
-    const mixedCurve = sieves.map((_, i) => {
-      return (aZement * passZem[i] + aZusatz * passZus[i] + aSand * passSand[i] + aKies1 * passKies1[i] + aKies2 * passKies2[i]) / 100;
-    });
-
-    // Idealsieblinie nach modifiziertem Andreasen & Andersen Modell (A&A)
-    const idealCurveAA = sieves.map(d => {
-      if (d <= dMin) return 0;
-      if (d >= dMax) return 100;
-      const num = Math.pow(d, q) - Math.pow(dMin, q);
-      const den = Math.pow(dMax, q) - Math.pow(dMin, q);
-      return (num / den) * 100;
-    });
-
-    // Fuller-Parabel (Sonderfall A&A mit q=0.5 und dMin=0)
-    const fullerCurve = sieves.map(d => {
-      return Math.sqrt(d / dMax) * 100;
-    });
-
-    // Abweichung berechnen (Summe der Fehlerquadrate)
-    let errorAA = 0;
-    let errorFuller = 0;
-    for (let i = 0; i < sieves.length; i++) {
-      errorAA += Math.pow(mixedCurve[i] - idealCurveAA[i], 2);
-      errorFuller += Math.pow(mixedCurve[i] - fullerCurve[i], 2);
-    }
-    const rmseAA = Math.sqrt(errorAA / sieves.length);
-    const rmseFuller = Math.sqrt(errorFuller / sieves.length);
-
-    // Abschätzung der Packungsdichte (sehr vereinfachtes Modell basierend auf Kornform und Mischungsgüte)
-    // Grundpackungsdichte abhängig von Kornform
-    const basePD = kornform === 'rund' ? 0.65 : 0.58;
-    // Verbesserung durch gute Mischung (niedriger RMSE bei A&A)
-    const mixBonus = Math.max(0, (20 - rmseAA) * 0.005);
-    const estimatedPD = Math.min(0.85, basePD + mixBonus);
+    // Rechenkern src/calc/packungsdichte.ts: Anteile, Massen, Sieblinien (A&A, Fuller), RMSE, Packungsdichte
+    const r = sieblinienOptimierung({ zement: pZement, zusatz: pZusatz, sand: pSand, kies1: pKies1, q, kornform, vFest });
+    const { aZement, aZusatz, aSand, aKies1, aKies2, mZement, mZusatz, mSand, mKies1, mKies2, mTotal, rmseAA, rmseFuller } = r;
+    const estimatedPD = r.packungsdichte;
+    const sieves = r.sieblinie.map(p => p.d);
+    const mixedCurve = r.sieblinie.map(p => p.gemisch);
+    const idealCurveAA = r.sieblinie.map(p => p.andreasen);
+    const fullerCurve = r.sieblinie.map(p => p.fuller);
 
     return {
       aZement,
@@ -140,6 +74,7 @@ export default function Packungsdichte() {
       rmseAA,
       rmseFuller,
       estimatedPD,
+      hinweise: r.hinweise,
       chartData: {
         labels: sieves,
         datasets: [
@@ -170,7 +105,7 @@ export default function Packungsdichte() {
         ]
       }
     };
-  }, [pZement, pZusatz, pSand, pKies1, q, kornform]);
+  }, [pZement, pZusatz, pSand, pKies1, q, kornform, vFest]);
 
   // Handler für Slider, um Kaskadierung zu ermöglichen
   const handleZementChange = (val: number) => setPZement(val);
@@ -185,43 +120,13 @@ export default function Packungsdichte() {
   const [phi2, setPhi2] = useState(0.62); // Eigenpackungsdichte Grob
 
   const zweikornResults = useMemo(() => {
-    const fractions = [];
-    const sizeRatio = d1 / d2;
-    
-    // Einfache Interaktions-Simulation: je größer d1/d2, desto mehr Auflockerung (Loosening Effect)
-    const interaction = Math.min(1, Math.max(0, sizeRatio));
-
-    for (let fineVol = 0; fineVol <= 100; fineVol += 2) {
-      const y1 = fineVol / 100;
-      const y2 = 1 - y1;
-
-      // Ideales Modell (ohne Interaktion - d1/d2 -> 0)
-      const idealCoarseBackbone = phi2 / (1 - y1);
-      const idealFineBackbone = phi1 / (phi1 * y2 + y1);
-      const idealPD = Math.min(idealCoarseBackbone, idealFineBackbone);
-
-      // Reales Modell (vereinfachter Ansatz nach De Larrard / Toufar Art)
-      // Bei interaction = 0 -> idealPD
-      // Bei interaction = 1 -> lineare Mischung der Packungsdichten (keine Hohlraumfüllung)
-      const linearPD = y1 * phi1 + y2 * phi2;
-      
-      // Empirische Abrundung / Verminderung der Packungsdichte durch Interaktion
-      // Formel dient zur anschaulichen Visualisierung der Effekte (Loosening & Wall effect)
-      let realPD = idealPD - interaction * (idealPD - linearPD) * 1.5;
-      
-      // Wandeffekt: Feinkorn um Grobkorn kann nicht perfekt packen
-      const wallEffect = 0.05 * y1 * y2 * (1 - interaction); 
-      realPD -= wallEffect;
-
-      fractions.push({
-        x: fineVol,
-        ideal: idealPD * 100,
-        real: realPD * 100,
-        linear: linearPD * 100
-      });
-    }
+    // Rechenkern src/calc/packungsdichte.ts: ideale Theorie (Furnas/Mooney), linear, Lehrmodell „real“
+    const z = zweikornMischung({ d1, d2, phi1, phi2 });
+    const sizeRatio = z.verhaeltnis;
+    const fractions = z.punkte;
 
     return {
+      hinweise: z.hinweise,
       chartData: {
         labels: fractions.map(f => f.x),
         datasets: [
@@ -341,6 +246,7 @@ export default function Packungsdichte() {
                   </div>
                 </div>
               </div>
+              <EingabeHinweise hinweise={results.hinweise} />
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -584,6 +490,7 @@ export default function Packungsdichte() {
                   <Slider label={inhalt.werte.durchmesserD2} value={d2} min={4} max={32} step={1} onChange={(e) => setD2(Number(e.target.value))} unit=" mm" />
                   <Slider label={inhalt.werte.packungsdichte2} value={phi2} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi2(Number(e.target.value))} unit="" />
                 </div>
+                <EingabeHinweise hinweise={zweikornResults.hinweise} />
               </div>
             </div>
             

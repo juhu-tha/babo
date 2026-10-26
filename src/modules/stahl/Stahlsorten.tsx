@@ -1,3 +1,4 @@
+import { plastischeKapazitaet } from '@/src/calc/stahlbau';
 import { BookOpen, Sparkles, Layers, Flame, Activity, Scale, Check, TrendingDown } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { extendedSteelGrades, structuralProfiles } from './daten';
@@ -561,10 +562,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   {['S235', 'S355', 'S460', 'S690'].map((gradeId) => {
                     const associatedGrade = extendedSteelGrades.find(g => g.id === gradeId)!;
                     const fyValue = associatedGrade.fy;
-                    const m_pl_rd = (activeProfile.Wpl_y * fyValue) / 1000;
-                    const n_pl_rd = (activeProfile.Area * fyValue) / 10;
+                    const { MplRd: m_pl_rd, NplRd: n_pl_rd, steigerungGegenS235: relativeGain } = plastischeKapazitaet(activeProfile.Wpl_y, activeProfile.Area, fyValue);
                     const isSufficient = m_pl_rd >= designMoment;
-                    const relativeGain = ((fyValue - 235) / 235) * 100;
 
                     return (
                       <tr key={gradeId} className={`hover:bg-slate-50/50 transition-colors ${selectedStahlsorteId === gradeId ? 'bg-shiraz/[0.03] font-semibold' : ''}`}>

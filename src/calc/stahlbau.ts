@@ -242,3 +242,20 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   }
   return { p, fy, eps: klasse.eps, lambda1: lambda1(fy), klasse, NcRd, y, z, vorschlagY, vorschlagZ, NbRd, massgebend, ausnutzung, vernachlaessigbar, hinweise };
 }
+
+// ---------------------------------------------------------------------------------------------
+// Plastische Querschnittswerte für den Gütevergleich (Modul Stahl, Reiter Stahlsorten)
+// ---------------------------------------------------------------------------------------------
+export interface PlastischeKapazitaet { MplRd: number; NplRd: number; steigerungGegenS235: number }
+
+/**
+ * M_pl,Rd = W_pl·f_y/γ_M0 [kNm] (Gl. 6.13) und N_pl,Rd = A·f_y/γ_M0 [kN] (Gl. 6.6) mit W_pl [cm³], A [cm²],
+ * f_y [N/mm²]; Querschnittsklasse 1/2 vorausgesetzt. Steigerung der Streckgrenze gegenüber S235 in %.
+ */
+export function plastischeKapazitaet(WplCm3: number, Acm2: number, fy: number, gammaM0: number = EC3_NA_DE.gammaM0): PlastischeKapazitaet {
+  return {
+    MplRd: (WplCm3 * fy) / gammaM0 / 1000,
+    NplRd: (Acm2 * fy) / gammaM0 / 10,
+    steigerungGegenS235: ((fy - 235) / 235) * 100,
+  };
+}

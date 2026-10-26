@@ -9,6 +9,9 @@ import { Sparkles, Info } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/stahl/StahlWerkstoffkunde.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { pren as prenWirksumme, gefuegeklasse } from '@/src/calc/werkstoffmodelle';
 
 interface StahlWerkstoffkundeProps {
   activeTab: "steckbrief" | "spannungsdehnung" | "stahlsorten" | "allgemein" | "walzen" | "schweissen" | "legierungen";
@@ -26,6 +29,8 @@ interface StahlWerkstoffkundeProps {
   ky: number;
   m1: number;
   nR: number;
+  hinweiseErmuedung: readonly Hinweis[];
+  hinweiseSchweissen: readonly Hinweis[];
   plateThickness: number;
   profileType: "h" | "i";
   setAlloyC: Dispatch<SetStateAction<number>>;
@@ -48,7 +53,7 @@ interface StahlWerkstoffkundeProps {
   woehlerData: { labels: number[]; datasets: ({ label: string; data: number[]; borderColor: string; borderWidth: number; pointRadius: number; pointBackgroundColor: string; fill: boolean; backgroundColor?: undefined; pointStyle?: undefined; showLine?: undefined; } | { label: string; data: (number | null)[]; borderColor: string; backgroundColor: string; pointRadius: number; pointStyle: string; borderWidth: number; showLine: boolean; pointBackgroundColor?: undefined; fill?: undefined; })[]; };
 }
 
-export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyMo, alloyNi, corrosion, deltaSigma, detailCategory, fy, grade, heatInput, kE, ky, m1, nR, plateThickness, profileType, setAlloyC, setAlloyCr, setAlloyMo, setAlloyNi, setCorrosion, setDeltaSigma, setDetailCategory, setGrade, setHeatInput, setM1, setPlateThickness, setProfileType, setTemp, stressStrainData, temp, walzResults, weldResults, woehlerData }: StahlWerkstoffkundeProps) {
+export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyMo, alloyNi, corrosion, deltaSigma, detailCategory, fy, grade, heatInput, kE, ky, m1, nR, hinweiseErmuedung, hinweiseSchweissen, plateThickness, profileType, setAlloyC, setAlloyCr, setAlloyMo, setAlloyNi, setCorrosion, setDeltaSigma, setDetailCategory, setGrade, setHeatInput, setM1, setPlateThickness, setProfileType, setTemp, stressStrainData, temp, walzResults, weldResults, woehlerData }: StahlWerkstoffkundeProps) {
   return (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
         <div className="lg:col-span-4 bg-off-white p-5 rounded-2xl border border-home-grau/25 flex flex-col gap-6">
@@ -137,6 +142,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                   <div className="font-bold text-shiraz">{formatDeZahl(kE, 2)}</div>
                 </div>
               </div>
+              <EingabeHinweise hinweise={hinweiseErmuedung} />
             </div>
 
             <div className="border-t border-home-grau/30 pt-4">
@@ -207,6 +213,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
               <Slider label={inhalt.werte.blechdickeT}  min={5} max={50} step={1} value={plateThickness} unit="mm" onChange={(e) => setPlateThickness(Number(e.target.value))} />
             </div>
             <p className="text-xs text-home-grau mt-3"><MdText text={inhalt.texte.eineHoheStreckenenergieBei} /></p>
+            <EingabeHinweise hinweise={hinweiseSchweissen} />
           </div>
         )}
 
@@ -486,47 +493,17 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
             </div>
 
             {(() => {
-              const pren = alloyCr + 3.3 * alloyMo;
-
-              let category = inhalt.werte.ferritischUnlegiert;
-              let designationMatch = inhalt.werte.unlegierterBaustahlZB;
-              let corrosionRating = 'Sehr Gering';
-              let corrosionColor = 'text-red-600 bg-red-50';
-              let microstructureDesc = inhalt.werte.ferritischPerlitischeZusammensetzungKein;
-
-              if (alloyCr >= 10.5) {
-                if (alloyNi >= 8) {
-                  category = inhalt.werte.austenitischRostfreiSäurebeständig;
-                  microstructureDesc = inhalt.werte.dasNickelStabilisiertDas;
-                  if (alloyMo >= 2) {
-                    designationMatch = inhalt.werte.nichtrostenderEdelstahlV4aZ;
-                    corrosionRating = inhalt.werte.hervorragendSäureUndChloridbeständig;
-                    corrosionColor = 'text-emerald-700 bg-emerald-50';
-                  } else {
-                    designationMatch = inhalt.werte.nichtrostenderEdelstahlV2aZ;
-                    corrosionRating = inhalt.werte.hochLebensmittelindustrieHaushaltswaren;
-                    corrosionColor = 'text-sky-700 bg-sky-50';
-                  }
-                } else if (alloyNi > 1 && alloyCr >= 18) {
-                  category = inhalt.werte.duplexAustenitFerritMischgefüge;
-                  designationMatch = inhalt.werte.duplexEdelstahlZB;
-                  corrosionRating = inhalt.werte.hervorragendBisExtremHohe;
-                  corrosionColor = 'text-teal-700 bg-teal-50';
-                  microstructureDesc = inhalt.werte.bestehtAusEtwaGleichen;
-                } else if (alloyC > 0.12 && alloyNi < 2) {
-                  category = inhalt.werte.martensitischerChromstahlHärtbar;
-                  designationMatch = inhalt.werte.martensitischerStahlZB;
-                  corrosionRating = inhalt.werte.mäßigHärtbarDurchAbschrecken;
-                  corrosionColor = 'text-amber-700 bg-amber-50';
-                  microstructureDesc = inhalt.werte.reagiertStarkAufWärmebehandlung;
-                } else {
-                  category = inhalt.werte.ferritischerChromstahlRostfreiMagnetisch;
-                  designationMatch = inhalt.werte.ferritischerEdelstahlZB;
-                  corrosionRating = inhalt.werte.mäßigBisGut;
-                  corrosionColor = 'text-stone-700 bg-stone-50';
-                  microstructureDesc = inhalt.werte.rostfreiAberOhneNennenswerten;
-                }
-              }
+              // Wirksumme und Gefügeeinordnung aus dem Rechenkern, Texte aus dem Inhalt
+              const pren = prenWirksumme(alloyCr, alloyMo);
+              const TEXTE = {
+                unlegiert: { category: inhalt.werte.ferritischUnlegiert, designationMatch: inhalt.werte.unlegierterBaustahlZB, corrosionRating: 'Sehr Gering', corrosionColor: 'text-red-600 bg-red-50', microstructureDesc: inhalt.werte.ferritischPerlitischeZusammensetzungKein },
+                austenitisch_mo: { category: inhalt.werte.austenitischRostfreiSäurebeständig, designationMatch: inhalt.werte.nichtrostenderEdelstahlV4aZ, corrosionRating: inhalt.werte.hervorragendSäureUndChloridbeständig, corrosionColor: 'text-emerald-700 bg-emerald-50', microstructureDesc: inhalt.werte.dasNickelStabilisiertDas },
+                austenitisch: { category: inhalt.werte.austenitischRostfreiSäurebeständig, designationMatch: inhalt.werte.nichtrostenderEdelstahlV2aZ, corrosionRating: inhalt.werte.hochLebensmittelindustrieHaushaltswaren, corrosionColor: 'text-sky-700 bg-sky-50', microstructureDesc: inhalt.werte.dasNickelStabilisiertDas },
+                duplex: { category: inhalt.werte.duplexAustenitFerritMischgefüge, designationMatch: inhalt.werte.duplexEdelstahlZB, corrosionRating: inhalt.werte.hervorragendBisExtremHohe, corrosionColor: 'text-teal-700 bg-teal-50', microstructureDesc: inhalt.werte.bestehtAusEtwaGleichen },
+                martensitisch: { category: inhalt.werte.martensitischerChromstahlHärtbar, designationMatch: inhalt.werte.martensitischerStahlZB, corrosionRating: inhalt.werte.mäßigHärtbarDurchAbschrecken, corrosionColor: 'text-amber-700 bg-amber-50', microstructureDesc: inhalt.werte.reagiertStarkAufWärmebehandlung },
+                ferritisch: { category: inhalt.werte.ferritischerChromstahlRostfreiMagnetisch, designationMatch: inhalt.werte.ferritischerEdelstahlZB, corrosionRating: inhalt.werte.mäßigBisGut, corrosionColor: 'text-stone-700 bg-stone-50', microstructureDesc: inhalt.werte.rostfreiAberOhneNennenswerten },
+              } as const;
+              const { category, designationMatch, corrosionRating, corrosionColor, microstructureDesc } = TEXTE[gefuegeklasse(alloyCr, alloyNi, alloyMo, alloyC)];
 
               return (
                 <div className="space-y-6">

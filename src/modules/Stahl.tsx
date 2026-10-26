@@ -22,7 +22,8 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { Flame, Minimize2, Activity, Sparkles, Layers, BookOpen, Shield } from 'lucide-react';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
-import { steelGrades, corrosionClasses, getReductionFactors, extendedSteelGrades, structuralProfiles, steelCurveDefinitions, calculateSteelStressAtStrain, getSteelDeformationPhase, generateSteelCurveDataPoints } from './stahl/daten';
+import { stahlBrand, woehlerEc3, walzEigenspannung, schweissEigenspannung } from '@/src/calc/werkstoffmodelle';
+import { steelGrades, corrosionClasses, extendedSteelGrades, structuralProfiles, steelCurveDefinitions, calculateSteelStressAtStrain, getSteelDeformationPhase, generateSteelCurveDataPoints } from './stahl/daten';
 import type { ExtendedSteelGrade, StructuralProfile, SteelCurveDefinition } from './stahl/daten';
 import StahlWerkstoffkunde from './stahl/StahlWerkstoffkunde';
 import SpannungsDehnung from './stahl/SpannungsDehnung';
@@ -113,41 +114,18 @@ export default function Stahl() {
   }, [selectedStahlsorteId]);
 
   const { fy, fu } = steelGrades[grade];
-  const E0 = 210000; // MPa
 
-  const { ky, kE } = getReductionFactors(temp);
-  const fy_T = fy * ky;
-  const E_T = E0 * kE;
+  // Brandfall: k_y,θ und k_E,θ nach DIN EN 1993-1-2 und vereinfachte σ-ε-Linie (Rechenkern)
+  const brand = useMemo(() => stahlBrand({ fy, fu, theta: temp }), [fy, fu, temp]);
+  const { ky, kE } = brand;
 
   const walzResults = useMemo(() => {
-    const labels = [];
-    const stressData = [];
-    
-    // Vereinfachtes Eigenspannungsmodell für Flansche von Walzprofilen
-    // Druckspannungen an den Rändern (kühlen schneller ab), Zugspannungen in der Mitte (kühlen langsamer ab)
-    const points = 50;
-    const width = 100; // % der Flanschbreite
-    
-    // Max Druckspannung an den Rändern (typischerweise 0.3 bis 0.5 f_y)
-    const maxCompressiveRatio = profileType === 'h' ? 0.5 : 0.3; 
-    const maxCompressive = -maxCompressiveRatio * fy;
-    
-    // Max Zugspannung in der Mitte (Gleichgewicht)
-    const maxTensile = (maxCompressiveRatio / 2) * fy;
-
-    for (let i = 0; i <= points; i++) {
-      const x = (i / points) * width - width / 2; // -50% to 50%
-      labels.push(`${x.toFixed(0)}%`);
-      
-      // Parabelform für die Eigenspannungsverteilung
-      // sigma(x) = a * x^2 + c
-      // Rand: x = 50 -> sigma = maxCompressive
-      // Mitte: x = 0 -> sigma = maxTensile
-      const a = (maxCompressive - maxTensile) / Math.pow(50, 2);
-      const sigma = a * Math.pow(x, 2) + maxTensile;
-      
-      stressData.push(sigma);
-    }
+    // Parabolische Eigenspannung im Flansch (Rechenkern): Druck am Rand, Zug in der Mitte, Gleichgewicht
+    const w = walzEigenspannung(fy, profileType);
+    const labels = w.verlauf.map(p => `${formatDeZahl(p.x, 0)}%`);
+    const stressData = w.verlauf.map(p => p.sigma);
+    const maxCompressive = w.maxDruck;
+    const maxTensile = w.maxZug;
 
     return {
       maxCompressive,
@@ -194,35 +172,15 @@ export default function Stahl() {
   }, [fy, profileType]);
 
   const weldResults = useMemo(() => {
-    const labels = [];
-    const stressData = [];
-    
-    const points = 200;
-    const distance = 150; // mm von der Schweißnahtmitte
-    
-    // Lehrmodell (Näherung nach Okerblom/Masubuchi), keine Bemessungsgrundlage
-    // Max Zugspannung in der Schweißnaht entspricht meist der Fließgrenze
-    const sigma_max = fy; 
-    
-    // Breite der Zugzone hängt von der Streckenenergie (Heat Input) und Blechdicke ab
-    // Q = Heat Input (J/mm), t = thickness (mm)
-    // Breite b_t proportional zu Q / t
-    const b_t = Math.max(10, (heatInput / plateThickness) * 0.15); 
-
-    for (let i = 0; i <= points; i++) {
-      const x = (i / points) * 2 * distance - distance; 
-      labels.push(x.toFixed(0));
-      
-      // Näherungsfunktion für Längseigenspannungen
-      // sigma(x) = sigma_max * (1 - (x/b_t)^2) * exp(-0.5 * (x/b_t)^2)
-      const ratio = x / b_t;
-      const sigma = sigma_max * (1 - Math.pow(ratio, 2)) * Math.exp(-0.5 * Math.pow(ratio, 2));
-      
-      stressData.push(sigma);
-    }
+    // Lehrmodell (Näherung nach Okerblom/Masubuchi), keine Bemessungsgrundlage – Rechenkern
+    const w = schweissEigenspannung({ fy, streckenenergie: heatInput, blechdicke: plateThickness });
+    const labels = w.verlauf.map(p => formatDeZahl(p.x, 0));
+    const stressData = w.verlauf.map(p => p.sigma);
+    const b_t = w.bt;
 
     return {
       b_t,
+      hinweise: w.hinweise,
       chartData: {
         labels,
         datasets: [
@@ -250,28 +208,12 @@ export default function Stahl() {
   }, [fy, heatInput, plateThickness]);
 
   const stressStrainData = useMemo(() => {
-    const eps = [];
-    const sig20 = [];
-    const sigT = [];
-
-    for (let e = 0; e <= 0.2; e += 0.005) {
-      eps.push(e);
-      
-      // 20°C Curve (Simplified bi-linear with hardening)
-      const eps_y20 = fy / E0;
-      if (e <= eps_y20) sig20.push(e * E0);
-      else if (e <= 0.02) sig20.push(fy);
-      else sig20.push(fy + (fu - fy) * ((e - 0.02) / 0.18));
-
-      // T°C Curve
-      const eps_yT = fy_T / E_T;
-      if (e <= eps_yT) sigT.push(e * E_T);
-      else if (e <= 0.02) sigT.push(fy_T);
-      else sigT.push(fy_T + (fu * ky - fy_T) * ((e - 0.02) / 0.18));
-    }
+    const eps = brand.kurve.map(p => p.eps);
+    const sig20 = brand.kurve.map(p => p.sig20);
+    const sigT = brand.kurve.map(p => p.sigT);
 
     return {
-      labels: eps.map(e => (e * 100).toFixed(1)),
+      labels: eps.map(e => formatDeZahl(e * 100, 1)),
       datasets: [
         {
           label: inhalt.werte.spannungBei20C,
@@ -292,38 +234,14 @@ export default function Stahl() {
         }
       ]
     };
-  }, [fy, fu, E0, fy_T, E_T, ky, temp]);
+  }, [brand, temp]);
 
-  const { nR, woehlerData } = useMemo(() => {
-    const N_values = [1e4, 1e5, 2e6, 5e6, 1e7, 1e8];
-    const delta_sigma = [];
-
-    const nC = 2000000;
-    const deltaSigmaC = detailCategory;
-    
-    const deltaSigmaD = deltaSigmaC * Math.pow(nC / 5e6, 1/m1);
-    const deltaSigmaL = deltaSigmaD * Math.pow(5e6 / 1e8, 1/5);
-
-    let nR = 0;
-    if (deltaSigma > 0) {
-      if (deltaSigma > deltaSigmaD) {
-        nR = nC * Math.pow(deltaSigmaC / deltaSigma, m1);
-      } else if (deltaSigma > deltaSigmaL) {
-        nR = 5e6 * Math.pow(deltaSigmaD / deltaSigma, 5);
-      } else {
-        nR = Infinity;
-      }
-    }
-
-    for (const N of N_values) {
-      if (N <= 5e6) {
-        delta_sigma.push(deltaSigmaC * Math.pow(nC / N, 1/m1));
-      } else if (N <= 1e8) {
-        delta_sigma.push(deltaSigmaD * Math.pow(5e6 / N, 1/5));
-      } else {
-        delta_sigma.push(deltaSigmaL);
-      }
-    }
+  const { nR, woehlerData, woehlerHinweise } = useMemo(() => {
+    // Wöhlerlinie nach DIN EN 1993-1-9, 7.1 (Rechenkern)
+    const w = woehlerEc3({ deltaSigmaC: detailCategory, m: m1, deltaSigma });
+    const N_values = w.kurve.map(p => p.N);
+    const delta_sigma = w.kurve.map(p => p.deltaSigma);
+    const nR = w.nR;
 
     const chartData = {
       labels: N_values,
@@ -349,8 +267,8 @@ export default function Stahl() {
         }
       ]
     };
-    return { nR, woehlerData: chartData };
-  }, [detailCategory, deltaSigma, m1]);
+    return { nR, woehlerData: chartData, woehlerHinweise: [...brand.hinweise, ...w.hinweise] };
+  }, [detailCategory, deltaSigma, m1, brand]);
 
   // Aktive simulierte Stahlsorte für Dehnungsschieber
   const activeSimSteel = useMemo(() => {
@@ -549,7 +467,7 @@ export default function Stahl() {
 
         <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
-        {(activeTab === 'allgemein' || activeTab === 'walzen' || activeTab === 'schweissen' || activeTab === 'legierungen') && <StahlWerkstoffkunde activeTab={activeTab} alloyC={alloyC} alloyCr={alloyCr} alloyMo={alloyMo} alloyNi={alloyNi} corrosion={corrosion} deltaSigma={deltaSigma} detailCategory={detailCategory} fy={fy} grade={grade} heatInput={heatInput} kE={kE} ky={ky} m1={m1} nR={nR} plateThickness={plateThickness} profileType={profileType} setAlloyC={setAlloyC} setAlloyCr={setAlloyCr} setAlloyMo={setAlloyMo} setAlloyNi={setAlloyNi} setCorrosion={setCorrosion} setDeltaSigma={setDeltaSigma} setDetailCategory={setDetailCategory} setGrade={setGrade} setHeatInput={setHeatInput} setM1={setM1} setPlateThickness={setPlateThickness} setProfileType={setProfileType} setTemp={setTemp} stressStrainData={stressStrainData} temp={temp} walzResults={walzResults} weldResults={weldResults} woehlerData={woehlerData} />}
+        {(activeTab === 'allgemein' || activeTab === 'walzen' || activeTab === 'schweissen' || activeTab === 'legierungen') && <StahlWerkstoffkunde activeTab={activeTab} alloyC={alloyC} alloyCr={alloyCr} alloyMo={alloyMo} alloyNi={alloyNi} corrosion={corrosion} deltaSigma={deltaSigma} detailCategory={detailCategory} fy={fy} grade={grade} heatInput={heatInput} kE={kE} ky={ky} m1={m1} nR={nR} hinweiseErmuedung={woehlerHinweise} hinweiseSchweissen={weldResults.hinweise} plateThickness={plateThickness} profileType={profileType} setAlloyC={setAlloyC} setAlloyCr={setAlloyCr} setAlloyMo={setAlloyMo} setAlloyNi={setAlloyNi} setCorrosion={setCorrosion} setDeltaSigma={setDeltaSigma} setDetailCategory={setDetailCategory} setGrade={setGrade} setHeatInput={setHeatInput} setM1={setM1} setPlateThickness={setPlateThickness} setProfileType={setProfileType} setTemp={setTemp} stressStrainData={stressStrainData} temp={temp} walzResults={walzResults} weldResults={weldResults} woehlerData={woehlerData} />}
 
       {/* 2. REITER: SPANNUNGS-DEHNUNGS-LINIEN UNTERSCHIEDLICHER STAHLSORTEN */}
       {activeTab === 'spannungsdehnung' && <SpannungsDehnung activeSimSteel={activeSimSteel} selectedCurves={selectedCurves} setSelectedCurves={setSelectedCurves} setSimGradeId={setSimGradeId} setStrainZoom={setStrainZoom} setTestStrain={setTestStrain} simGradeId={simGradeId} simPhase={simPhase} simStress={simStress} strainZoom={strainZoom} stressStrainChartOptions={stressStrainChartOptions} stressStrainMultiData={stressStrainMultiData} testStrain={testStrain} />}

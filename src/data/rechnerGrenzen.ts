@@ -21,6 +21,7 @@ const STAHLBETON: RechnerGrenzen = {
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
     'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
+    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105; Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
 };
 
@@ -99,6 +100,24 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Rohdichten der Zusatzstoffe, Zusatzmittel und Fasern als feste Lehrwerte.',
       'Anrechenbarkeit von Flugasche vereinfacht nach Zementart; Präzisierung nach DIN 1045-2 offen.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
+      'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
+    ],
+  },
+  stahl: {
+    kurz: 'Lehrmodelle zu Baustahl: Abminderung im Brandfall (DIN EN 1993-1-2), Wöhlerlinie (DIN EN 1993-1-9), Walz- und Schweißeigenspannungen, σ-ε-Linien und M_pl,Rd je Stahlgüte.',
+    grenzen: [
+      'Brandfall: k_y,θ und k_E,θ nach Tab. 3.1 linear interpoliert; die σ-ε-Linie ist trilinear (Plateau bis 2 %, Verfestigung bis 20 %) statt elliptisch und ohne k_p,θ.',
+      'Ermüdung: Wöhlerlinie mit Δσ_D bei 5·10⁶ und Δσ_L bei 10⁸ ohne Teilsicherheitsbeiwerte γ_Ff, γ_Mf und ohne Schadensakkumulation; die Neigung m ist frei wählbar.',
+      'Walz- und Schweißeigenspannungen sowie die σ-ε-Linien der Stahlsorten sind qualitative Lehrkurven (Parabel- bzw. Gauß-Näherung), keine Prüf- oder Bemessungswerte.',
+      'M_pl,Rd = W_pl·f_y/γ_M0 setzt Querschnittsklasse 1 oder 2 voraus; Biegedrillknicken und Interaktion mit Querkraft bleiben unberücksichtigt.',
+    ],
+  },
+  kunststoffe: {
+    kurz: 'E-Modul von Kunststoffen über der Temperatur als Lehrmodell je Strukturtyp (amorph, teilkristallin, Elastomer, Duroplast) und Wärmedehnung ΔL = L₀·α_T·ΔT.',
+    grenzen: [
+      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
+      'Kurzzeitmodul ohne Zeit- und Lasteinfluss: Kriechen, Relaxation, Alterung und Feuchte sind nicht abgebildet.',
+      'Werte unter 0,1 MPa werden für die logarithmische Darstellung auf 0,1 MPa gesetzt (Fließ- bzw. Schmelzbereich ohne Tragfunktion).',
     ],
   },
   bodenmechanik: {
