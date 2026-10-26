@@ -20,20 +20,21 @@
  * sie werden als Warnung gemeldet, wenn sie greifen. Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import {
+  type Zementklasse, ZEMENT_DS, ZEMENT_ALPHA, beiwertKh, phiRH as phiRHBeiwert, betaFcm as betaFcmBeiwert,
+  wirksamesBelastungsalter, betaT0 as betaT0Beiwert, betaH as betaHBeiwert, betaC as betaCBeiwert, epsCd0 as epsCd0Grundwert,
+  betaDs as betaDsBeiwert, epsCaUnendlich, betaAs as betaAsBeiwert,
+} from './kriechenSchwinden';
 
-export type Zementklasse = 'S' | 'N' | 'R';
+// Bausteine für Schwinden und Kriechen (Anhang B, 3.1.4) liegen seit AP 4.2 in src/calc/kriechenSchwinden.ts
+export type { Zementklasse };
+export { ZEMENT_DS, ZEMENT_ALPHA, beiwertKh };
 export type Gesteinskoernung = 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
 
 /** Beiwert α_E für die Gesteinskörnung nach DIN EN 1992-1-1, 3.1.3(2) */
 export const ALPHA_E: Readonly<Record<Gesteinskoernung, number>> = { quarzit: 1.0, kalkstein: 0.9, sandstein: 0.7, basalt: 1.2 };
 /** Zementbeiwert s nach Gl. (3.2) */
 export const ZEMENT_S: Readonly<Record<Zementklasse, number>> = { S: 0.38, N: 0.25, R: 0.20 };
-/** Beiwerte α_ds1, α_ds2 nach Gl. (B.11) */
-export const ZEMENT_DS: Readonly<Record<Zementklasse, { ads1: number; ads2: number }>> = {
-  S: { ads1: 3, ads2: 0.13 }, N: { ads1: 4, ads2: 0.12 }, R: { ads1: 6, ads2: 0.11 },
-};
-/** Exponent α nach Gl. (B.9) */
-export const ZEMENT_ALPHA: Readonly<Record<Zementklasse, number>> = { S: -1, N: 0, R: 1 };
 
 /** Teilsicherheits- und Abminderungsbeiwerte nach DIN EN 1992-1-1/NA (DE) */
 export const EC2_BETON_NA = { alphaCc: 0.85, alphaCt: 0.85, gammaC: 1.5, nu: 0.2, rhoRelax: 0.8 } as const;
@@ -110,15 +111,6 @@ export function ecmVonFcm(fcm: number, alphaE = 1.0): number {
   return 22000 * Math.pow(fcm / 10, 0.3) * alphaE;
 }
 
-/** Geometriebeiwert k_h nach Tab. 3.3, linear interpoliert (h_0 in mm) */
-export function beiwertKh(h0: number): number {
-  if (h0 <= 100) return 1.0;
-  if (h0 <= 200) return 1.0 - ((h0 - 100) / 100) * 0.15;
-  if (h0 <= 300) return 0.85 - ((h0 - 200) / 100) * 0.10;
-  if (h0 <= 500) return 0.75 - ((h0 - 300) / 200) * 0.05;
-  return 0.70;
-}
-
 export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis {
   const hinweise: Hinweis[] = [];
   const { fck, zementklasse, gestein, rh, ac, u, h, ts, t0, t, temperatur, sigmaC, laenge } = e;
@@ -178,39 +170,18 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const uMm = Math.max(0.01, u) * 1e3;
   const h0Roh = (2 * AcMm2) / uMm;
   const h0 = Math.min(1500, Math.max(20, h0Roh));
-  const epsCaInfty = 2.5 * Math.max(0, fck - 10) * 1e-6;
-  const betaAs = 1 - Math.exp(-0.2 * Math.sqrt(Math.max(0, t)));
-  const epsCa = betaAs * epsCaInfty;
-  const { ads1, ads2 } = ZEMENT_DS[zementklasse];
+  const epsCaInfty = epsCaUnendlich(fck);
+  const epsCa = betaAsBeiwert(t) * epsCaInfty;
   const RH = Math.min(100, Math.max(20, rh));
-  const betaRH = 1.55 * (1 - Math.pow(RH / 100, 3));
-  const epsCd0 = 0.85 * ((220 + 110 * ads1) * Math.exp(-ads2 * (fcm / 10))) * 1e-6 * betaRH;
+  const epsCd0 = epsCd0Grundwert(fcm, RH, zementklasse);
   const kh = beiwertKh(h0);
-  const deltaTds = Math.max(0, t - ts);
-  const betaDs = deltaTds / (deltaTds + 0.04 * Math.sqrt(Math.pow(h0, 3)));
-  const epsCd = betaDs * kh * epsCd0;
+  const epsCd = betaDsBeiwert(t, ts, h0) * kh * epsCd0;
   const epsCs = epsCd + epsCa;
   const deltaLShrinkMm = epsCs * (laenge * 1000);
 
   // 6. Kriechen
-  let phiRH: number, alpha3 = 1.0;
-  if (fcm <= 35) {
-    phiRH = 1 + (1 - RH / 100) / (0.10 * Math.cbrt(h0));
-  } else {
-    const alpha1 = Math.pow(35 / fcm, 0.7);
-    const alpha2 = Math.pow(35 / fcm, 0.2);
-    alpha3 = Math.pow(35 / fcm, 0.5);
-    phiRH = (1 + ((1 - RH / 100) / (0.10 * Math.cbrt(h0))) * alpha1) * alpha2;
-  }
-  const betaFcm = 16.8 / Math.sqrt(Math.max(1, fcm));
-  const t0Eff = Math.max(0.5, t0Temp * Math.pow((9 / (2 + Math.pow(t0Temp, 1.2))) + 1, ZEMENT_ALPHA[zementklasse]));
-  const betaT0 = 1 / (0.1 + Math.pow(t0Eff, 0.20));
-  const phi0 = phiRH * betaFcm * betaT0;
-  const betaHRoh = 1.5 * (1 + Math.pow(0.012 * RH, 18)) * h0;
-  const betaH = fcm <= 35 ? Math.min(1500, betaHRoh + 250) : Math.min(1500 * alpha3, betaHRoh + 250 * alpha3);
-  const deltaTcreep = Math.max(0, t - t0);
-  const betaC = Math.pow(deltaTcreep / (betaH + deltaTcreep), 0.3);
-  const phiLinear = phi0 * betaC;
+  const phi0 = phiRHBeiwert(fcm, RH, h0) * betaFcmBeiwert(Math.max(1, fcm)) * betaT0Beiwert(wirksamesBelastungsalter(t0Temp, zementklasse));
+  const phiLinear = phi0 * betaCBeiwert(t, t0, betaHBeiwert(fcm, RH, h0));
   const stressLimitLin = 0.45 * fckT0;
   const stressLimitMax = 0.60 * fckT0;
   const isNonlinearCreep = sigmaC > stressLimitLin;

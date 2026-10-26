@@ -25,6 +25,8 @@ import { InlineMath } from 'react-katex';
 import inhalt from '@/content/kriechenschwinden/KriechenSchwinden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { kriechSchwindModell, kriechSchwindVerlauf, relaxationsVerlauf, stuetzenVerformung, STUETZE_LEHRWERTE, type Zementklasse, type Relaxationsklasse } from '@/src/calc/kriechenSchwinden';
 
 ChartJS.register(
   CategoryScale,
@@ -37,33 +39,7 @@ ChartJS.register(
   Legend
 );
 
-// Kriechen und Schwinden nach DIN EN 1992-1-1, 3.1.4 und Anhang B (gemeinsame Rechenbasis)
-export function ec2KriechenSchwinden(fck: number, rh: number, h0: number, t0T: number, ts: number, zement: string) {
-  const fcm = fck + 8;
-  const Ecm = 22000 * Math.pow(fcm / 10, 0.3);
-  const a1 = Math.pow(35 / fcm, 0.7), a2 = Math.pow(35 / fcm, 0.2), a3 = Math.pow(35 / fcm, 0.5);
-  const rhTerm = (1 - rh / 100) / (0.1 * Math.pow(h0, 1 / 3));
-  const phiRH = fcm <= 35 ? 1 + rhTerm : (1 + rhTerm * a1) * a2; // Gl. (B.3a/b)
-  const betaFcm = 16.8 / Math.sqrt(fcm);
-  // Einfluss der Zementart über das wirksame Belastungsalter, Gl. (B.9)
-  const alphaZ = zement === 'S' ? -1 : zement === 'R' ? 1 : 0;
-  const t0 = Math.max(0.5, t0T * Math.pow(9 / (2 + Math.pow(t0T, 1.2)) + 1, alphaZ));
-  const betaT0 = 1 / (0.1 + Math.pow(t0, 0.2));
-  const phi0 = phiRH * betaFcm * betaT0;
-  const betaH = fcm <= 35
-    ? Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250, 1500)
-    : Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250 * a3, 1500 * a3);
-  // Trocknungsschwinden, Gl. (B.11)/(B.12) und Tab. 3.3 (k_h)
-  const [ads1, ads2] = zement === 'S' ? [3, 0.13] : zement === 'R' ? [6, 0.11] : [4, 0.12];
-  const betaRH = 1.55 * (1 - Math.pow(rh / 100, 3));
-  const epsCd0 = 0.85 * (220 + 110 * ads1) * Math.exp(-ads2 * fcm / 10) * 1e-6 * betaRH;
-  const kh = h0 <= 100 ? 1.0 : h0 <= 200 ? 1.0 - 0.15 * (h0 - 100) / 100 : h0 <= 300 ? 0.85 - 0.10 * (h0 - 200) / 100 : h0 <= 500 ? 0.75 - 0.05 * (h0 - 300) / 200 : 0.70;
-  const epsCaInf = 2.5 * (fck - 10) * 1e-6; // Gl. (3.12)
-  const phi = (t: number) => (t <= t0T ? 0 : phi0 * Math.pow((t - t0T) / (betaH + t - t0T), 0.3));
-  const epsCd = (t: number) => (t <= ts ? 0 : ((t - ts) / ((t - ts) + 0.04 * Math.sqrt(Math.pow(h0, 3)))) * kh * epsCd0);
-  const epsCa = (t: number) => (1 - Math.exp(-0.2 * Math.sqrt(t))) * epsCaInf;
-  return { fcm, Ecm, phi0, betaH, kh, epsCd0, epsCaInf, t0eff: t0, phi, epsCd, epsCa };
-}
+// Rechnung: src/calc/kriechenSchwinden.ts (DIN EN 1992-1-1, 3.1.4, 3.3.2 und Anhang B), geprüft in tests/kriechenSchwinden.test.ts
 
 const REITER = [
   { id: 'beton', label: 'Beton', icon: Activity },
@@ -82,84 +58,26 @@ export default function KriechenSchwinden() {
   const [rh, setRh] = useState(50);
   const [h0, setH0] = useState(200);
   const [t0, setT0] = useState(28);
-  const [zementArt, setZementArt] = useState('N');
+  const [zementArt, setZementArt] = useState<Zementklasse>('N');
   const [ts, setTs] = useState(7);
 
   // Stahl States
   const [sigmaRatio, setSigmaRatio] = useState(0.7);
-  const [stahlKlasse, setStahlKlasse] = useState('2'); // 1: Draht, 2: Litze, 3: Stab
+  const [stahlKlasse, setStahlKlasse] = useState<Relaxationsklasse>('2'); // 1: Draht, 2: Litze, 3: Stab
 
   const calculateBeton = () => {
-    const labels: number[] = [];
-    const creepData: number[] = [];
-    const shrinkageData: number[] = [];
-    const autogenData: number[] = [];
-    const totalShrinkData: number[] = [];
-    const relaxationData: number[] = [];
-    const m = ec2KriechenSchwinden(fck, rh, h0, t0, ts, zementArt);
-
-    const timePoints: number[] = [];
-    let currentT = 1;
-    while (currentT <= 10000) {
-      timePoints.push(currentT);
-      if (currentT < 10) currentT += 1;
-      else if (currentT < 100) currentT += 10;
-      else if (currentT < 1000) currentT += 100;
-      else currentT += 1000;
-    }
-    if (timePoints[timePoints.length - 1] !== 10000) timePoints.push(10000);
-
-    for (const t of timePoints) {
-      labels.push(t);
-      const phiT = m.phi(t);
-      creepData.push(phiT);
-      const cd = m.epsCd(t), ca = m.epsCa(t);
-      shrinkageData.push(cd * 1e6);
-      autogenData.push(ca * 1e6);
-      totalShrinkData.push((cd + ca) * 1e6);
-      // wirksamer E-Modul E_c,eff = E_cm / (1 + phi), DIN EN 1992-1-1 Gl. (7.20)
-      relaxationData.push(t < t0 ? m.Ecm : m.Ecm / (1 + phiT));
-    }
-
-    return { labels, creepData, shrinkageData, autogenData, totalShrinkData, relaxationData, Ecm: m.Ecm, m };
+    const m = kriechSchwindModell({ fck, rh, h0, t0, ts, zement: zementArt });
+    const v = kriechSchwindVerlauf(m);
+    return {
+      labels: v.zeitpunkte, creepData: v.kriechzahl, shrinkageData: v.trocknung, autogenData: v.autogen,
+      totalShrinkData: v.gesamt, relaxationData: v.eModulWirksam, Ecm: m.Ecm, m,
+    };
   };
 
+  // Relaxation von Spannstahl nach DIN EN 1992-1-1, 3.3.2 (Gl. 3.28–3.30), Zeitpunkte in Stunden
   const calculateStahl = () => {
-    const labels = [];
-    const relaxationData = [];
-
-    // Relaxation according to EC2 for prestressing steel
-    // Class 1: Wire/Strand ordinary relaxation
-    // Class 2: Wire/Strand low relaxation
-    // Class 3: Hot rolled and processed bars
-    
-    const rho1000Map: Record<string, number> = {
-      '1': 8.0,
-      '2': 2.5,
-      '3': 4.0
-    };
-    
-    const rho1000 = rho1000Map[stahlKlasse] || 2.5;
-    
-    const mu = sigmaRatio;
-    
-    const timePoints = [1, 10, 100, 1000, 10000, 100000, 500000]; // hours
-    
-    for (const t of timePoints) {
-      labels.push(t);
-      
-      let relLoss = 0;
-      if (mu > 0.5) { // relaxation is negligible below 0.5
-        let k1 = 0.66, k2 = 9.1;
-        if (stahlKlasse === '1') { k1 = 5.39; k2 = 6.7; }
-        else if (stahlKlasse === '3') { k1 = 1.98; k2 = 8.0; }
-        relLoss = k1 * rho1000 * Math.exp(k2 * mu) * Math.pow(t / 1000, 0.75 * (1 - mu)) * 1e-5;
-      }
-      // Convert to percentage
-      relaxationData.push(relLoss * 100);
-    }
-
-    return { labels, relaxationData };
+    const r = relaxationsVerlauf(stahlKlasse, sigmaRatio);
+    return { labels: r.zeitpunkteH, relaxationData: r.verlustProzent, hinweise: r.hinweise };
   };
 
   const renderBeton = () => {
@@ -219,13 +137,14 @@ export default function KriechenSchwinden() {
               <select aria-label="Zementklasse" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={zementArt}
-                onChange={(e) => setZementArt(e.target.value)}
+                onChange={(e) => setZementArt(e.target.value as Zementklasse)}
               >
                 <option value="S">Klasse S (langsam)</option>
                 <option value="N">Klasse N (normal)</option>
                 <option value="R">Klasse R (schnell)</option>
               </select>
             </div>
+            <EingabeHinweise hinweise={m.hinweise} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -470,7 +389,7 @@ export default function KriechenSchwinden() {
   };
 
   const renderStahl = () => {
-    const { labels, relaxationData } = calculateStahl();
+    const { labels, relaxationData, hinweise: stahlHinweise } = calculateStahl();
 
     return (
       <>
@@ -487,7 +406,7 @@ export default function KriechenSchwinden() {
               <select aria-label={inhalt.werte.spannstahlklasseRelaxationsverhalten} 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={stahlKlasse}
-                onChange={(e) => setStahlKlasse(e.target.value)}
+                onChange={(e) => setStahlKlasse(e.target.value as Relaxationsklasse)}
               >
                 <option value="1">Klasse 1: Draht/Litze (normale Relaxation)</option>
                 <option value="2">Klasse 2: Draht/Litze (niedrige Relaxation)</option>
@@ -502,6 +421,7 @@ export default function KriechenSchwinden() {
               
               onChange={(e) => setSigmaRatio(Number(e.target.value))}
             />
+            <EingabeHinweise hinweise={stahlHinweise} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -568,28 +488,11 @@ export default function KriechenSchwinden() {
       { label: inhalt.werte.t50Jahre18250D, days: 18250 },
     ];
 
-    const m = ec2KriechenSchwinden(fck, rh, h0, t0, ts, zementArt);
+    const m = kriechSchwindModell({ fck, rh, h0, t0, ts, zement: zementArt });
     const Ecm = m.Ecm;
-
-    const sigmaC = 8.5; // MPa Dauerlastspannung (Lehrannahme)
-    const L0_mm = 3000; // 3 m Stützenhöhe
-
-    const calcStateAt = (days: number) => {
-      const phiT = m.phi(Math.max(days, t0 + 0.01));
-      const epsCd = m.epsCd(days) + m.epsCa(days);
-
-      const epsEl = (sigmaC / Ecm);
-      const epsCr = phiT * epsEl;
-      const epsCs = epsCd; // Trocknungs- + autogenes Schwinden
-      const epsTot = epsEl + epsCr + epsCs;
-
-      const dL_el = epsEl * L0_mm;
-      const dL_cr = epsCr * L0_mm;
-      const dL_cs = epsCs * L0_mm;
-      const dL_tot = epsTot * L0_mm;
-
-      return { phiT, epsEl, epsCr, epsCs, epsTot, dL_el, dL_cr, dL_cs, dL_tot };
-    };
+    const sigmaC = STUETZE_LEHRWERTE.sigmaC; // MPa Dauerlastspannung (Lehrannahme)
+    const L0_mm = STUETZE_LEHRWERTE.laengeMm; // 3 m Stützenhöhe
+    const calcStateAt = (days: number) => stuetzenVerformung(m, days, sigmaC, L0_mm);
 
     const currentState = calcStateAt(simDays[timeIndex].days);
 
