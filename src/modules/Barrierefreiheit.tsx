@@ -7,7 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 // Erklärung zur Barrierefreiheit nach Art. 13 BayBGG i. V. m. § 11 BayDiV und Richtlinie (EU) 2016/2102
 // (Umsetzungsplan Phase 1, AP 1.4). Liste der Mängel nach jeder Prüfung aktualisieren (Phase 2, AP 2.1).
 
-const STAND = '23.10.2026';
+const STAND = '26.10.2026';
 
 const Abschnitt = ({ icon: Icon, titel, children }: { icon: React.ComponentType<{ size?: number; className?: string }>; titel: string; children: React.ReactNode }) => (
   <section className="space-y-2">
@@ -39,13 +39,9 @@ export default function Barrierefreiheit() {
 
           <Abschnitt icon={AlertTriangle} titel={inhalt.werte.nichtBarrierefreieInhalte}>
             <ul className="list-disc list-outside space-y-1.5 pl-5">
-              <li><MdText text={inhalt.texte.beiEinigenSchaltflächenStimmt} /></li>
-              <li><MdText text={inhalt.texte.einzelneTexteUndErgebnisfelder} /></li>
-              <li><MdText text={inhalt.texte.einLinkZumÜberspringen} /></li>
-              <li><MdText text={inhalt.texte.ausgeklappteUndEingeklappteMenügruppen} /></li>
-              <li><MdText text={inhalt.texte.aufSchmalenBildschirmenUnter} /></li>
+              <li><MdText text={inhalt.texte.reiterleistenOhneTablist} /></li>
               <li><MdText text={inhalt.texte.diagrammeUndInteraktiveGrafiken} /></li>
-              <li><MdText text={inhalt.texte.dieSucheFindetNur} /></li>
+              <li><MdText text={inhalt.texte.hauptueberschriftDoppelt} /></li>
             </ul>
           </Abschnitt>
 
