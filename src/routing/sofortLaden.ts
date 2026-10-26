@@ -3,12 +3,14 @@
 // aber auch bei schon geladenem Chunk mindestens einen Mikrotask und rendert dann den Platzhalter.
 // lazySofort merkt sich das geladene Modul und gibt es beim ersten Rendern synchron zurück, wenn
 // vorladen() vorher abgeschlossen ist. Ohne Vorladen verhält es sich wie React.lazy.
-import React, { type ComponentType, type ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 type Lader<T> = () => Promise<{ default: T }>;
+/** Komponententyp, den React.lazy annimmt (ComponentType<any>, ohne `any` im Quelltext) */
+type LazyKomponente = Awaited<ReturnType<Parameters<typeof React.lazy>[0]>>['default'];
 const VORLADER = new WeakMap<object, () => Promise<unknown>>();
 
-export function lazySofort<T extends ComponentType<never>>(lade: Lader<T>): React.LazyExoticComponent<T> & { vorladen: () => Promise<{ default: T }> } {
+export function lazySofort<T extends LazyKomponente>(lade: Lader<T>): React.LazyExoticComponent<T> & { vorladen: () => Promise<{ default: T }> } {
   let modul: { default: T } | undefined;
   let laufend: Promise<{ default: T }> | undefined;
   const vorladen = () => (laufend ??= lade().then(m => (modul = m), f => { laufend = undefined; throw f; }));
