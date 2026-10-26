@@ -51,7 +51,7 @@ export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
   'beton_info', 'betonkennwerte', 'bp_recht_grundlagen', 'bp_recht_konformitaet',
   'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung',
   'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel',
-  'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung',
+  'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung', 'holzbau_werkstoffe',
   'rechnung_bestand', 'rechnung_beton', 'rechnung_brandschutz', 'rechnung_holzbau', 'rechnung_mauerwerk',
   'rechnung_nachhaltigkeit', 'rechnung_schallschutz', 'rechnung_stahlbeton', 'rechnung_u_wert',
   'spannbeton', 'stahlbeton_info',
