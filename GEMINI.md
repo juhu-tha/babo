@@ -122,9 +122,12 @@ Eine saubere Modul-Schnittstelle, die diesen Styleguide erfüllt, zeichnet sich 
 ```tsx
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Box, Layers, Activity, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { MdText } from '@/src/components/inhalt/MdText';
+import { Box, BookOpen, Layers } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+// Fachtexte in content/<modul>/<Datei>.json (texte/werte/daten), siehe docs/architektur.md „Inhalte bearbeiten (AP 5.3)“
+import inhalt from '@/content/beispielfach/Beispielfach.json';
 
 export default function Beispielfach() {
   const [activeTab, setActiveTab] = useState<'steckbrief' | 'theorie'>('steckbrief');
@@ -133,32 +136,32 @@ export default function Beispielfach() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Box className="text-shiraz" /> Modulname
+          <Box className="text-shiraz" /> <MdText text={inhalt.texte.modulname} />
         </h2>
-        
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Steckbrief
-          </button>
-        </div>
 
-        {/* Dynamic Tab Content rendering ... */}
+        {/* Reiter: immer die gemeinsame Komponente (role="tablist", Pfeiltasten), keine eigenen aria-pressed-Knöpfe;
+            höchstens 7 Reiter je Zeile, sonst GruppierteModuleTabs (Muster: Abfaelle.tsx) */}
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: inhalt.werte.steckbrief, icon: BookOpen },
+            { id: 'theorie' as const, label: inhalt.werte.theorie, icon: Layers },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
+          {activeTab === 'steckbrief' && <BaustoffProfil materialKey="beispiel" />}
+          {activeTab === 'theorie' && <MdText text={inhalt.texte.theorieEinleitung} />}
+        </ModuleTabs>
       </div>
 
-      {/* Footer-Integration */}
-      <ModuleFooter 
-        wikipedia={[{ title: 'Fachbereich', url: 'https://de.wikipedia.org/' }]}
-        literatur={['Fachliteratur-Quelle 1']}
-        regelwerke={[{ title: 'Regelwerk DIN 1234', url: 'https://...' }]}
-        formeln={[]}
+      {/* Footer-Integration (Listen ebenfalls aus content/) */}
+      <ModuleFooter
+        wikipedia={inhalt.daten['Beispielfach.wikipedia']}
+        literatur={inhalt.daten['Beispielfach.literatur']}
+        regelwerke={inhalt.daten['Beispielfach.regelwerke']}
+        formeln={inhalt.daten['Beispielfach.formeln']}
       />
     </div>
   );
