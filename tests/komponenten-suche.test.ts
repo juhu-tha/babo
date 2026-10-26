@@ -1,7 +1,9 @@
 // Komponententests Suche: Menüsuche in ModulNavigation, VolltextTreffer, Volltextindex (AP 5.6)
 import fs from 'node:fs';
 import { h, rendere, text, sicher, testlauf } from './hilfen/komponenten';
-const { ModulNavigation } = await import('../src/components/navigation/ModulNavigation');
+const { ModulNavigation, suchbegriffeLaden } = await import('../src/components/navigation/ModulNavigation');
+// Suchbegriffe lädt die Navigation seit AP 5.5 (Nachtrag) bei Bedarf nach; im statischen Rendern vorab laden
+await suchbegriffeLaden();
 const { VolltextTreffer } = await import('../src/components/navigation/VolltextTreffer');
 const { suche } = await import('../src/utils/volltextsuche');
 const { MODUL_BY_ID, TAB_KEYWORDS } = await import('../src/registry/modules');

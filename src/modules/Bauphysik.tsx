@@ -28,6 +28,7 @@ import { GEG_U_MAX, temperaturverlauf, uebergang, uWert } from '@/src/calc/waerm
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/bauphysik/Bauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -649,6 +650,8 @@ export default function Bauphysik() {
 
           {/* Visualization & Evaluation Results - Right spanning 7 columns */}
           <div className="lg:col-span-7 space-y-6">
+            {/* unterhalb des Bildausschnitts (mobil) erst nach dem ersten Bild rendern (AP 5.5 Nachtrag) */}
+            <NachErstemBild minHoehe="40rem">
             
             {/* Feuchteschutz: eine Quelle (AP 3.9) */}
             <Querverweis ziel="feuchteschutz" titel={inhalt.werte.tauwasserImBauteilGlaser} linkText={inhalt.werte.zumGlaserRechnerFeuchteschutz}>
@@ -810,6 +813,7 @@ export default function Bauphysik() {
                 </table>
               </div>
             </div>
+            </NachErstemBild>
           </div>
         </div>
       )}
@@ -1314,6 +1318,7 @@ export default function Bauphysik() {
           </div>
         </div>
       )}      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <NachErstemBild minHoehe="30rem">
       <FormulaDerivationBox
         title={inhalt.werte.beispiel1UWert}
         zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}, \quad f_{Rsi} = 1 - R_{si}^{*} \cdot U"
@@ -1328,6 +1333,7 @@ export default function Bauphysik() {
         ergebnisHinweis={inhalt.werte.eineVollflächigeAkustikdeckeSenkt}
         normQuelle={inhalt.werte.din18041201603}
       />
+      </NachErstemBild>
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bauphysik" />

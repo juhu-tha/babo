@@ -1,5 +1,5 @@
-import * as XLSX from 'xlsx';
 import inhalt from '@/content/lca/TransportbetonExcelExport.json';
+// xlsx (~145 kB gzip) erst beim Herunterladen laden, nicht mit der Ökobilanz-Seite (Phase 5, AP 5.5 Nachtrag)
 
 export interface TransportbetonMix {
   name: string;
@@ -52,7 +52,8 @@ export const LCA_BENCHMARKS = {
  * 3. "Aufgabe_Studierende": Konkrete Laboraufgabe mit Sollwerten und Selbstkontrolle
  * 4. "EPD_Stammdaten": Referenzdatenbank (ÖKOBAUDAT) für Zemente, Gesteinskörnungen, Transporte
  */
-export function generateTransportbetonExcel(): void {
+export async function generateTransportbetonExcel(): Promise<void> {
+  const XLSX = await import('xlsx');
   const wb = XLSX.utils.book_new();
 
   // -------------------------------------------------------------

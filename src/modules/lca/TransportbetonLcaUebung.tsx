@@ -175,7 +175,7 @@ export default function TransportbetonLcaUebung() {
   const wz_eq = effectiveCem > 0 ? (water / effectiveCem) : 0;
 
   const handleDownload = () => {
-    generateTransportbetonExcel();
+    generateTransportbetonExcel().catch(e => console.error('Excel-Export fehlgeschlagen', e));
     setIsDownloaded(true);
     setTimeout(() => setIsDownloaded(false), 4000);
   };

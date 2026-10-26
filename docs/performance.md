@@ -52,6 +52,17 @@ Ausgangslage: Eine Modulseite lud nacheinander `index.html` → Einstieg → `Mo
 
 Verhaltensprüfung (Playwright, Desktop 1280 × 900 und mobil 390 × 844, alter gegen neuen Build): 20 Routen (10 Referenzseiten, Rechner mit Live-Rechenweg, Quiz, Klausursimulator, formelreiche Seiten) plus 8 Diagrammseiten – keine Seitenfehler, keine `.katex-error`, keine verbliebenen Platzhalter, KaTeX sichtbar (KaTeX-Schrift), gleiche Anzahl Formeln und Diagramme (`canvas`) und gleiche Textlänge wie vorher; Rechner-Interaktion (Schieberegler) ergibt denselben Seitentext wie im alten Build.
 
+## Maßnahmen AP 5.5 Nachtrag (LCP-Ziel)
+
+Diagnose (Zeitleiste der Abrufe unter „Fast 3G“): Bis zum ersten Bild brauchte schon die Startseite `index.html` (0,7 s) + Einstieg, CSS und Schrift im Wettbewerb um 1,44 Mbit/s (bis ≈ 2,7 s) + Ausführen des Einstiegs (0,3 s, CPU 4× gedrosselt). Zusätzlich blockierten zwei synchrone Boot-Skripte im `<head>` den Parser je eine Abrufrunde, sodass das Vorladen der Modul-Chunks erst bei ≈ 1,25 s statt 0,65 s begann.
+
+1. **Einstieg 135,0 → 101,8 kB gzip (−25 %):** Die Modul-Registry (`src/registry/modules.ts`, 135 kB roh) lag vollständig im Einstieg, gebraucht werden beim ersten Rendern nur id, label, icon, gruppe sowie Titel und Typ aus `baum`. `src/registry/kern.ts` liefert diesen Auszug (`MODUL_KERN`, `TAB_ALIASES`, `NAV_TAB_GRUPPEN`); die Daten stehen in `kernDaten.ts`, das das Vite-Plugin `scripts/registryKern.ts` beim Build durch die ausgewerteten Daten (JSON) ersetzt – Quelle bleibt allein `modules.ts`. Meta-Beschreibungen (`metaDaten.ts`, nach dem `load`-Ereignis) und Suchbegriffe (`suchDaten.ts`, beim Fokus auf das Suchfeld bzw. bei der ersten Suche) kommen als eigene kleine Auszüge; `modules.ts` selbst laden nur noch Modulübersicht, Admin, Lernpfade und Forschung & Transfer. `tests/registryKern.test.ts` prüft Gleichheit der Auszüge mit der Registry und dass weder der Einstieg noch `ModulKopf` die Registry statisch importieren (`src/data/pruefvermerke.ts` nutzt deshalb den Auszug; die Cluster-Zuordnung für „Meine Module“ liegt in `src/data/modulCluster.ts`). Die englischen Texte lädt seit #138 `LanguageContext` bei Bedarf.
+2. **Boot-Skripte `async`:** `vite-ws-filter.js` und `jsonld-check.js` blockieren weder den Parser noch – anders als `defer`, das den Einstieg in Dokumentreihenfolge hinter das niedrig priorisierte Skript zwang (gemessen +0,5 s) – die Ausführung des Einstiegs.
+3. **Startseiten-Schale:** `scripts/startSchale.ts` setzt beim Build den sichtbaren Anfang der Startseite (Rahmen ohne Menüeinträge, Kopfzeile, Begrüßungskarte bis zur Versionszeile; `scripts/startschale.html`, Version aus `versionData.ts`) als statisches HTML in `<div id="root">`. Sie erscheint, sobald HTML und CSS da sind; React ersetzt sie beim ersten Rendern vollständig (`createRoot`, neue Knoten → kein CLS). Sichtbar ist sie nur, wenn das Inline-Skript `scripts/startschale-boot.js` am Anfang von `<head>` (vor jedem Stylesheet, damit es vor dem ersten Bild läuft) `html.bb-schale` setzt: kein Modul-Direktlink, keine Umfrage (`?poll=`), Deutsch, heller Modus, Standardbreite. Die Schale ist `inert`. Neu erzeugen nach Änderungen an Rahmen oder Begrüßung: `node scripts/qa/startschale-erzeugen.mjs`; `tests/startSchale.test.ts` prüft Texte und Klassen gegen den Quelltext und die Entscheidung des Boot-Skripts.
+4. **Große Modul-Chunks aufgeteilt:** Ökobilanz 207 → 113 kB (xlsx, 140 kB, erst beim Excel-Download), Aufgaben 204 → 59 kB (Klausur, Quiz, Trainer, Forensik je Modus als Chunk, der Modus des Direktaufrufs wird sofort angefordert; Quiz-Dashboard mit recharts, 116 kB, erst beim Öffnen), Spannbeton 111 → 30 kB (Reiter Grundprinzipien, Kennwerte, Dauerhaftigkeit beim Zeigen auf die Reiterleiste bzw. Wechsel). Bauphysik: Ergebnisspalte und Beispiele, Spannbeton: Querverweise und Fußzeile über `NachErstemBild`.
+
+Verhaltensprüfung (Playwright, Desktop und mobil, Basis gegen Branch, 22 Routen): keine Seitenfehler, keine `.katex-error`, keine Platzhalter, gleiche Anzahl Formeln/Diagramme/`h1`, gleiche Textlänge, gleicher Seitentext nach Reglerbewegung, Druck mit allen Diagrammen. Zusätzlich: Schale ohne JavaScript nur auf `/` und `#start` sichtbar (nicht auf `#glas`, `#bauphysik`, `?poll=`), nach React genau ein Rahmen; Englisch; Menüsuche über Suchbegriffe; Meta-Beschreibung je Modul; Spannbeton-Reiter; alle Aufgaben-Modi und Quiz-Dashboard; Excel-Download (`.xlsx`).
+
 ### Schrift-Teilmenge neu erzeugen
 
 Quelle sind die bis Commit `cc1dd60c` im Repository liegenden TTF-Dateien (`git show cc1dd60c:public/fonts/inter-regular.ttf > inter-regular.ttf`) bzw. Inter 4 von rsms.me/inter. Benötigt `pip install fonttools brotli`:
@@ -69,20 +80,20 @@ Abdeckung geprüft gegen alle Nicht-ASCII-Zeichen in `src/` (268 verschiedene): 
 ## Ergebnisse
 
 <!-- perf-messung:start -->
-Stand 2026-10-25 · 3 Läufe je Seite (Median) · http://localhost:4206/
+Stand 2026-10-26 · 3 Läufe je Seite (Median) · http://localhost:4182/
 
 | Seite | FCP | LCP (Ziel < 2,5 s) | CLS (Ziel < 0,1) | TBT ≈ (Ziel < 200 ms) | Klick-Latenz (Ziel < 200 ms) | Übertragen | LCP-Element | geklickt |
 |---|---:|---:|---:|---:|---:|---:|---|---|
-| start | 3,02 s | 3,35 s ✗ | 0,000 ✓ | 17 ms ✓ | 48 ms ✓ | 384 kB | `P.text-lg` | Version v4.3.0 (25.10.2026) |
-| mischungsberechnung | 3,38 s | 3,80 s ✗ | 0,000 ✓ | 149 ms ✓ | 48 ms ✓ | 621 kB | `SPAN.font-medium` | LernzieleBachelor ca. 150 minSelbsttest: |
-| biegebemessung | 3,19 s | 3,90 s ✗ | 0,000 ✓ | 23 ms ✓ | 56 ms ✓ | 636 kB | `P` | Ausprobieren3 Vorhersagen zum Rechner |
-| bauphysik | 3,14 s | 3,70 s ✗ | 0,000 ✓ | 165 ms ✓ | 48 ms ✓ | 594 kB | `SPAN.font-medium` | LernzieleBachelor ca. 90 minSelbsttest:  |
-| feuchteschutz | 3,16 s | 3,55 s ✗ | 0,000 ✓ | 113 ms ✓ | 64 ms ✓ | 589 kB | `P` | LernzieleBachelor ca. 90 minSelbsttest:  |
-| oekobilanz_lca | 3,68 s | 4,18 s ✗ | 0,000 ✓ | 76 ms ✓ | 56 ms ✓ | 771 kB | `SPAN.font-medium` | LernzieleBachelor und Master ca. 75 minS |
-| abfaelle | 3,33 s | 3,72 s ✗ | 0,000 ✓ | 48 ms ✓ | 48 ms ✓ | 607 kB | `LI` | Das Wichtigste in 5 Punkten |
-| spannbeton | 3,61 s | 4,10 s ✗ | 0,000 ✓ | 182 ms ✓ | 40 ms ✓ | 685 kB | `LI` | LernzieleMaster ca. 180 minSelbsttest: 1 |
-| glas | 3,13 s | 3,48 s ✗ | 0,000 ✓ | 45 ms ✓ | 56 ms ✓ | 626 kB | `P` | LernzieleBachelor ca. 75 minSelbsttest:  |
-| aufgaben_trainer | 3,74 s | 4,30 s ✗ | 0,000 ✓ | 49 ms ✓ | 40 ms ✓ | 723 kB | `SPAN.font-medium` | Ausprobieren3 Vorhersagen zum Rechner |
+| start | 2,06 s | 2,06 s ✓ | 0,000 ✓ | 168 ms ✓ | 72 ms ✓ | 381 kB | `P.text-lg` | Version v4.3.0 (25.10.2026) |
+| mischungsberechnung | 3,05 s | 3,60 s ✗ | 0,000 ✓ | 322 ms ✗ | 72 ms ✓ | 619 kB | `SPAN.font-medium` | LernzieleBachelor ca. 150 minSelbsttest: |
+| biegebemessung | 2,79 s | 3,54 s ✗ | 0,000 ✓ | 152 ms ✓ | 72 ms ✓ | 634 kB | `P` | Ausprobieren3 Vorhersagen zum Rechner |
+| bauphysik | 2,96 s | 3,48 s ✗ | 0,000 ✓ | 304 ms ✗ | 64 ms ✓ | 594 kB | `SPAN.font-medium` | LernzieleBachelor ca. 90 minSelbsttest:  |
+| feuchteschutz | 2,92 s | 3,36 s ✗ | 0,000 ✓ | 371 ms ✗ | 56 ms ✓ | 587 kB | `P` | LernzieleBachelor ca. 90 minSelbsttest:  |
+| oekobilanz_lca | 3,33 s | 3,69 s ✗ | 0,000 ✓ | 178 ms ✓ | 72 ms ✓ | 675 kB | `SPAN.font-medium` | LernzieleBachelor und Master ca. 75 minS |
+| abfaelle | 2,98 s | 3,42 s ✗ | 0,000 ✓ | 197 ms ✓ | 56 ms ✓ | 605 kB | `LI` | Das Wichtigste in 5 Punkten |
+| spannbeton | 3,07 s | 3,75 s ✗ | 0,000 ✓ | 297 ms ✗ | 56 ms ✓ | 607 kB | `LI` | LernzieleMaster ca. 180 minSelbsttest: 1 |
+| glas | 3,08 s | 3,48 s ✗ | 0,000 ✓ | 119 ms ✓ | 64 ms ✓ | 624 kB | `P` | LernzieleBachelor ca. 75 minSelbsttest:  |
+| aufgaben_trainer | 3,15 s | 3,49 s ✗ | 0,000 ✓ | 25 ms ✓ | 64 ms ✓ | 585 kB | `SPAN.font-medium` | Ausprobieren3 Vorhersagen zum Rechner |
 <!-- perf-messung:ende -->
 
 Vor der CLS-Korrektur lag der CLS auf allen Seiten bei 0,101 (Fußzeile, s. o.).
@@ -113,3 +124,28 @@ Gleiche Umgebung und gleiches Skript (3 Läufe, Median), vorher = Stand `origin/
 - **TBT ≈** auf allen Referenzseiten < 200 ms (Mischungsberechnung 408 → 149 ms, Feuchteschutz 372 → 113 ms, Biegebemessung 250 → 23 ms); Spannbeton (182 ms) und Bauphysik (165 ms) liegen am nächsten an der Grenze – bei Bedarf dort ebenfalls `NachErstemBild` einsetzen.
 - **CLS** bleibt 0 (Diagramm-Platzhalter in Diagrammgröße, verzögerte Abschnitte nur unterhalb des Bildausschnitts), **Klick-Latenz** unverändert < 100 ms.
 - Die Werte schwanken je Lauf (TBT ± 50–100 ms, daher Median aus 3 Läufen).
+
+### Vorher/Nachher AP 5.5 Nachtrag
+
+Gleiche Umgebung und gleiches Skript (3 Läufe, Median); vorher = `origin/main` mit #145 (Schriften per FontFace), nachher = dieser Stand. Einstieg 135,0 → 101,8 kB gzip.
+
+| Seite | LCP vorher | LCP nachher | FCP vorher → nachher | TBT ≈ vorher → nachher | Übertragen vorher → nachher |
+|---|---:|---:|---:|---:|---:|
+| start | 3,29 s | **2,06 s** ✓ | 2,93 → 2,06 s | 97 → 168 ms | 392 → 381 kB |
+| mischungsberechnung | 3,95 s | **3,60 s** | 3,40 → 3,05 s | 374 → 322 ms | 629 → 619 kB |
+| biegebemessung | 3,98 s | **3,54 s** | 3,13 → 2,79 s | 129 → 152 ms | 644 → 634 kB |
+| bauphysik | 3,49 s | **3,48 s** | 2,88 → 2,96 s | 362 → 304 ms | 602 → 594 kB |
+| feuchteschutz | 3,56 s | **3,36 s** | 3,06 → 2,92 s | 273 → 371 ms | 597 → 587 kB |
+| oekobilanz_lca | 4,24 s | **3,69 s** | 3,49 → 3,33 s | 273 → 178 ms | 779 → 675 kB |
+| abfaelle | 3,96 s | **3,42 s** | 3,25 → 2,98 s | 298 → 197 ms | 615 → 605 kB |
+| spannbeton | 3,82 s | **3,75 s** | 3,34 → 3,07 s | 224 → 297 ms | 693 → 607 kB |
+| glas | 3,43 s | **3,48 s** | 3,00 → 3,08 s | 130 → 119 ms | 634 → 624 kB |
+| aufgaben_trainer | 4,00 s | **3,49 s** | 3,37 → 3,15 s | 91 → 25 ms | 734 → 585 kB |
+
+### Bewertung Nachtrag
+
+- **Startseite erreicht das Ziel** (LCP 2,06 s): Das LCP-Element (Begrüßungstext) steht in der Schale und erscheint mit dem CSS, ohne auf den Einstieg zu warten.
+- **Fachmodule: Ziel 2,5 s unter „Fast 3G“ mit dieser Architektur nicht erreichbar.** Bis zum LCP müssen `index.html` (23 kB), CSS (48 kB), Einstieg (102 kB), `ModulInhalt` (10 kB), `modul-basis` (38 kB), Icons (14 kB), Kopfdaten (3 kB) und der Modul-Chunk (30–113 kB) übertragen werden, zusammen 270–350 kB. Bei 1,44 Mbit/s (≈ 184 kB/s) sind das 1,5–1,9 s reine Übertragung, dazu zwei Abrufrunden (HTML, dann die Chunks) mit je 0,56 s RTT und 0,4–0,6 s Ausführen/Rendern bei 4× gedrosselter CPU: 3,0–3,6 s, gemessen 3,4–3,75 s. Für 2,5 s dürften es höchstens ≈ 140 kB sein – React 19 (react-dom ≈ 57 kB) und das Haupt-CSS (48 kB) lassen dafür keinen Platz für Modulinhalt. Erreichbar wäre das Ziel nur mit vorgerenderten Modulseiten (statisches HTML je Modul, z. B. per Pfad statt Hash und SSR/Prerender beim Build) – ein Architekturwechsel, kein Feinschliff. Der Hash-Router macht das zusätzlich schwer: Der Server sieht den Modulnamen nicht.
+- **TBT ≈** ist in dieser Messreihe in Basis und Branch gleichermaßen erhöht (bis 370 ms, in AP 5.5 ≤ 185 ms) und streut stark (± 100 ms zwischen Läufen gleicher Builds): Während der Messung liefen Playwright-Jobs anderer Arbeitspakete auf derselben Maschine; schon `main` vor #145 lag hier bei 200–280 ms. Ob das Einsetzen der Schriften per `FontFace` nach dem ersten Bild (#145) zusätzlich beiträgt, ist auf einer ruhigen Maschine nachzumessen. Auf der Startseite zählt das Rendern von React jetzt nach dem (früheren) FCP, daher 97 → 168 ms bei gleicher Arbeit.
+- **CLS** 0 auf allen Seiten, **Klick-Latenz** < 100 ms.
+

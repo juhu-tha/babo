@@ -250,8 +250,8 @@
     "Abfaelle.formeln": [
       {
         "formel": "Q_{\\text{Verwertung}} = \\frac{m_{\\text{Wiederverwendung}} + m_{\\text{Recycling}} + m_{\\text{Verfüllung}}}{m_{\\text{Bau- und Abbruchabfall}}} \\ge 70\\,\\%",
-        "erklaerung": "Nationales Ziel nach § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle ohne natürlich vorkommende Materialien (AVV 17 05 04); Verfüllung zählt mit. Keine projektbezogene Pflichtquote.",
-        "quelle": "KrWG § 14 Abs. 3"
+        "erklaerung": "Nationales Ziel nach § 14 Abs. 2 KrWG für nicht gefährliche Bau- und Abbruchabfälle ohne natürlich vorkommende Materialien (AVV 17 05 04); Verfüllung zählt mit. Keine projektbezogene Pflichtquote.",
+        "quelle": "KrWG § 14 Abs. 2"
       },
       {
         "formel": "n_{MP} = 10 + \\left\\lceil \\frac{V - 600}{100} \\right\\rceil, \\quad n_{EP} = 4 \\cdot n_{MP} \\quad (V > 600\\,\\text{m}^3)",

@@ -147,8 +147,8 @@
     "RueckbauChecklisten.formeln": [
       {
         "formel": "Q_{\\text{Verwertung}} = \\frac{m_{\\text{Recycling}} + m_{\\text{Wiederverwendung}}}{m_{\\text{Abbruch gesamt}}} \\ge 70\\% \\quad (\\text{KrWG-Zielwert})",
-        "erklaerung": "Verwertungsquote = (Vorbereitung zur Wiederverwendung + Recycling + sonstige stoffliche Verwertung) / Abfallmasse gesamt. Orientierung: nationales Ziel nach § 14 Abs. 3 KrWG mindestens 70 Gew.-% für nicht gefährliche Bau- und Abbruchabfälle (ohne Boden und Steine), keine projektbezogene Pflichtquote.",
-        "quelle": "KrWG § 14 Abs. 3"
+        "erklaerung": "Verwertungsquote = (Vorbereitung zur Wiederverwendung + Recycling + sonstige stoffliche Verwertung) / Abfallmasse gesamt. Orientierung: nationales Ziel nach § 14 Abs. 2 KrWG mindestens 70 Gew.-% für nicht gefährliche Bau- und Abbruchabfälle (ohne Boden und Steine), keine projektbezogene Pflichtquote.",
+        "quelle": "KrWG § 14 Abs. 2"
       },
       {
         "formel": "c_{\\text{Misch}} = \\frac{\\sum m_i \\cdot c_i}{\\sum m_i} \\le \\text{MEB (Materialwerte ErsatzbaustoffV)}",

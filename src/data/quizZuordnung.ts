@@ -3,7 +3,8 @@
  * clusterId und clusterName werden NICHT mehr in quiz.json gepflegt, sondern hier aus der
  * Modul-Registry abgeleitet. tests/quiz.test.ts prüft, dass jede Frage zugeordnet werden kann.
  */
-import { MODUL_BY_ID, TAB_ALIASES, type ModulId } from '../registry/modules';
+import { MODUL_KERN, TAB_ALIASES } from '../registry/kern';
+import type { ModulId } from '../registry/modules';
 import { META_CLUSTERS } from './metaClusters';
 
 /** Quiz-moduleIds, die keine eigene Route sind → Route, in der die Inhalte stehen */
@@ -27,12 +28,12 @@ export type ClusterNummer = 'I' | 'II' | 'III' | 'IV' | 'V' | 'VI';
 export function quizRoute(moduleId: string): ModulId | undefined {
   const aliase: Readonly<Record<string, ModulId>> = TAB_ALIASES;
   const id = QUIZ_MODUL_ROUTE[moduleId] ?? aliase[moduleId] ?? moduleId;
-  return MODUL_BY_ID.has(id) ? (id as ModulId) : undefined;
+  return MODUL_KERN.has(id) ? (id as ModulId) : undefined;
 }
 
 export function quizGruppe(moduleId: string): string | undefined {
   const r = quizRoute(moduleId);
-  return r ? MODUL_BY_ID.get(r)?.gruppe : undefined;
+  return r ? MODUL_KERN.get(r)?.gruppe : undefined;
 }
 
 export function quizCluster(moduleId: string): { id: ClusterNummer; name: string } | undefined {
@@ -50,7 +51,7 @@ export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
   'beton_info', 'betonkennwerte', 'bp_recht_grundlagen', 'bp_recht_konformitaet',
   'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung',
   'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel',
-  'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung',
+  'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung', 'holzbau_werkstoffe',
   'rechnung_bestand', 'rechnung_beton', 'rechnung_brandschutz', 'rechnung_holzbau', 'rechnung_mauerwerk',
   'rechnung_nachhaltigkeit', 'rechnung_schallschutz', 'rechnung_stahlbeton', 'rechnung_u_wert',
   'spannbeton', 'stahlbeton_info',
