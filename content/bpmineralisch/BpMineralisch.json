@@ -96,7 +96,8 @@
     "verlegterWerkstoff": "Verlegter Werkstoff",
     "anwendungsbeispielNasslastEinesSteingut": "Anwendungsbeispiel: Nasslast eines Steingut- und eines Feinsteinzeugbelags",
     "lehrbeispielRohdichtenUndWasseraufnahme": "Lehrbeispiel (Rohdichten und Wasseraufnahme als Lehrwerte)",
-    "steingutNimmtRund46": "Steingut nimmt rund 46 kg Wasser auf, Feinsteinzeug nur etwa 2 kg – das Wasser im Porenraum ist auch die Ursache für Frostschäden bei Steingut im Freien."
+    "steingutNimmtRund46": "Steingut nimmt rund 46 kg Wasser auf, Feinsteinzeug nur etwa 2 kg – das Wasser im Porenraum ist auch die Ursache für Frostschäden bei Steingut im Freien.",
+    "reiterBereiche": "Kategorien mineralischer Werkstoffe"
   },
   "daten": {
     "BpMineralisch.schritte": [

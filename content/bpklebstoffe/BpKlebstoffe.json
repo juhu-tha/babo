@@ -27,7 +27,8 @@
   "werte": {
     "anwendungsbeispielMindestfugenbreiteEine": "Anwendungsbeispiel: Mindestfugenbreite einer Außenwandfuge",
     "din18540FugenIm": "DIN 18540 (Fugen im Außenwandbereich); α_T und ZGV als Lehrwerte",
-    "istDieFugeZu": "Ist die Fuge zu schmal, wird der Dichtstoff überdehnt und reißt – Fugenbreiten werden aus der Bewegung, nicht nach Gefühl festgelegt."
+    "istDieFugeZu": "Ist die Fuge zu schmal, wird der Dichtstoff überdehnt und reißt – Fugenbreiten werden aus der Bewegung, nicht nach Gefühl festgelegt.",
+    "reiterBereiche": "Bereiche Klebstoffe"
   },
   "daten": {
     "adhesiveProducts": [

@@ -4,6 +4,7 @@ import React from 'react';
 import { Calculator, Train } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/BahnbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { schienenTemperatur, type GleisStatus } from '@/src/calc/verkehrswegebau';
 
 export interface BahnbauTabProps {
   bettungstyp: 'schotter_mager' | 'schotter_gut' | 'feste_fahrbahn';
@@ -104,39 +105,22 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
 
             {/* Berechnungsausgabe */}
             {(() => {
-              const deltaT = schieneTemp - neutralTemp;
-              const E_steel = 210000; // MPa
-              const alpha_T = 1.2e-5; // 1/K
-              const sigma_T = E_steel * alpha_T * deltaT; // in MPa
-              const area_uic60 = 7686; // mm²
-              const force_per_rail_kN = (sigma_T * area_uic60) / 1000; // in kN
-              const force_total_track_kN = force_per_rail_kN * 2; // Gelasierte Gleislängskraft (2 Schienen)
+              // Rechenkern src/calc/verkehrswegebau.ts: σ_T = E·α_T·ΔT (E = 210 000 N/mm², α_T = 1,2·10⁻⁵ 1/K), F = σ_T·A (60E1: 7686 mm²)
+              const gleis = schienenTemperatur(schieneTemp, neutralTemp, bettungstyp);
+              const deltaT = gleis.deltaT;
+              const sigma_T = gleis.sigmaT; // in MPa
+              const force_per_rail_kN = gleis.kraftSchieneKn; // in kN
+              const force_total_track_kN = gleis.kraftGleisKn; // Gleislängskraft (2 Schienen)
 
-              let statusMsg = "";
-              let statusColorClass = "";
-              let knickLimit = 135;
-              if (bettungstyp === 'schotter_mager') knickLimit = 90;
-              else if (bettungstyp === 'feste_fahrbahn') knickLimit = 999;
-
-              if (sigma_T < -120) {
-                statusMsg = inhalt.werte.kritischeZugspannungErhöhteGefahr;
-                statusColorClass = "text-rose-700 bg-rose-50 border-rose-200";
-              } else if (sigma_T < 0) {
-                statusMsg = inhalt.werte.zugspannungsbereichWinterbetriebSchienen;
-                statusColorClass = "text-emerald-700 bg-emerald-50 border-emerald-100";
-              } else if (bettungstyp === 'feste_fahrbahn') {
-                statusMsg = inhalt.werte.formstabileVerankerungFesteFahrbahn;
-                statusColorClass = "text-emerald-700 bg-emerald-50 border-emerald-100";
-              } else if (sigma_T >= knickLimit) {
-                statusMsg = inhalt.werte.akuteGefahrVonGleisverwerfung;
-                statusColorClass = "text-rose-700 bg-rose-50 border-rose-200";
-              } else if (sigma_T >= knickLimit * 0.7) {
-                statusMsg = inhalt.werte.erhöhtesRisikoGeringerQuerverschiebesich;
-                statusColorClass = "text-amber-700 bg-amber-50 border-amber-200";
-              } else {
-                statusMsg = inhalt.werte.thermischeEigenspannungUnkritischAusreic;
-                statusColorClass = "text-emerald-700 bg-emerald-50 border-emerald-100";
-              }
+              const STATUS: Record<GleisStatus, [string, string]> = {
+                zugKritisch: [inhalt.werte.kritischeZugspannungErhöhteGefahr, "text-rose-700 bg-rose-50 border-rose-200"],
+                zug: [inhalt.werte.zugspannungsbereichWinterbetriebSchienen, "text-emerald-700 bg-emerald-50 border-emerald-100"],
+                festeFahrbahn: [inhalt.werte.formstabileVerankerungFesteFahrbahn, "text-emerald-700 bg-emerald-50 border-emerald-100"],
+                verwerfung: [inhalt.werte.akuteGefahrVonGleisverwerfung, "text-rose-700 bg-rose-50 border-rose-200"],
+                erhoeht: [inhalt.werte.erhöhtesRisikoGeringerQuerverschiebesich, "text-amber-700 bg-amber-50 border-amber-200"],
+                unkritisch: [inhalt.werte.thermischeEigenspannungUnkritischAusreic, "text-emerald-700 bg-emerald-50 border-emerald-100"],
+              };
+              const [statusMsg, statusColorClass] = STATUS[gleis.status];
 
               return (
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs">

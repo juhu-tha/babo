@@ -142,7 +142,8 @@
     "lehrwerteFYdNach": "Lehrwerte: f_yd nach EC2; Bemessungswert Carbon als Lehrannahme (maßgebend Zulassung)",
     "carbonSpartQuerschnittUnd": "Carbon spart Querschnitt und Deckung; der geringere E-Modul (Gitter je nach Produkt) kann aber Verformung und Rissbreite maßgebend machen.",
     "technologyReadinessLevel": "Technology Readiness Level",
-    "deutschesInstitutFürBautechnik": "Deutsches Institut für Bautechnik (DIBt)"
+    "deutschesInstitutFürBautechnik": "Deutsches Institut für Bautechnik (DIBt)",
+    "reiterBereiche": "Bereiche Innovationen"
   },
   "daten": {
     "PRESETS": [

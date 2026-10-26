@@ -86,7 +86,8 @@
   "werte": {
     "anwendungsbeispielTragfähigkeitEinerKs": "Anwendungsbeispiel: Tragfähigkeit einer KS-Innenwand",
     "dinEn19961": "DIN EN 1996-1-1, Gl. (3.1) und 6.1.2 (Lehrbeispiel mit Empfehlungswerten; in Deutschland f_k nach DIN EN 1996-1-1/NA)",
-    "rund710KnM": "Rund 710 kN/m – genug für die Lasten mehrerer Geschosse im Wohnungsbau."
+    "rund710KnM": "Rund 710 kN/m – genug für die Lasten mehrerer Geschosse im Wohnungsbau.",
+    "reiterBereiche": "Bereiche Mauerwerk"
   },
   "daten": {
     "masonryProducts": [

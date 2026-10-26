@@ -10,6 +10,7 @@ import { BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/lehm/Lehm.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unknown }) {
   return (
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
@@ -102,42 +103,19 @@ export default function Lehm() {
           <p><MdText text={inhalt.texte.lehmIstEinerDer} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          ><MdText text={inhalt.texte.grundlagenZusammensetzung} /></button>
-          <button aria-pressed={activeTab === 'bemessung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bemessung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bemessung')}
-          ><MdText text={inhalt.texte.bemessungNeueNorm} /></button>
-          <button aria-pressed={activeTab === 'bentonit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bentonit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bentonit')}
-          ><MdText text={inhalt.texte.bentonitTonmineral} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: 'Baustoff-Steckbrief', icon: BookOpen },
+            { id: 'grundlagen' as const, label: inhalt.texte.grundlagenZusammensetzung },
+            { id: 'bemessung' as const, label: inhalt.texte.bemessungNeueNorm },
+            { id: 'bentonit' as const, label: inhalt.texte.bentonitTonmineral },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
+        <div className="flex flex-col gap-6">
 
         {activeTab === 'grundlagen' && (
           <div className="animate-in fade-in duration-300">
@@ -284,6 +262,8 @@ export default function Lehm() {
             </div>
           </div>
         )}
+        </div>
+        </ModuleTabs>
 
       </div>
 

@@ -15,6 +15,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/bpbaustoffindustrie/BpBaustoffindustrie.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 // Define the Tabs
 type SubTab = 'overview' | 'sources';
@@ -25,22 +26,17 @@ export default function BpBaustoffindustrie() {
   return (
     <div className="flex flex-col gap-8">
       {/* Tab Navigation header */}
-      <div className="flex flex-col gap-3">
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-home-grau/30 flex flex-wrap justify-center sm:justify-start gap-2">
-          <button aria-pressed={activeSubTab === 'overview'} 
-            onClick={() => setActiveSubTab('overview')}
-            className={`py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${activeSubTab === 'overview' ? 'bg-shiraz text-white shadow-sm' : 'bg-slate-50 border border-home-grau/25 hover:border-shiraz text-text-main'}`}
-          >
-            <Factory size={16} /><MdText text={inhalt.texte.marktdynamikSegmente} /></button>
-          
-          <button aria-pressed={activeSubTab === 'sources'} 
-            onClick={() => setActiveSubTab('sources')}
-            className={`py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${activeSubTab === 'sources' ? 'bg-shiraz text-white shadow-sm' : 'bg-slate-50 border border-home-grau/25 hover:border-shiraz text-text-main'}`}
-          >
-            <FileText size={16} /> Fachquellen
-          </button>
-        </div>
-      </div>
+      <ModuleTabs
+        label={inhalt.werte.reiterBereiche}
+        tabs={[
+          { id: 'overview' as const, label: inhalt.texte.marktdynamikSegmente, icon: Factory },
+          { id: 'sources' as const, label: 'Fachquellen', icon: FileText },
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="flex flex-col gap-8 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:justify-center [&>[role=tablist]]:sm:justify-start"
+      >
+      <div className="flex flex-col gap-8">
 
       {/* SUB-TAB 1: OVERVIEW */}
       {activeSubTab === 'overview' && (
@@ -219,6 +215,8 @@ export default function BpBaustoffindustrie() {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox

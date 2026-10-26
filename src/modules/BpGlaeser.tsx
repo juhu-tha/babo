@@ -27,6 +27,7 @@ import { GLASS_PRODUCTS, WINDOW_TYPES } from './bpglaeser/daten';
 import { KalkulatorTab } from './bpglaeser/KalkulatorTab';
 import inhalt from '@/content/bpglaeser/BpGlaeser.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function BpGlaeser() {
   const [activeTab, setActiveTab] = useState<'uebersicht' | 'glasarten' | 'beschichtungen' | 'fenster' | 'kalkulator' | 'normen'>('uebersicht');
@@ -72,70 +73,21 @@ export default function BpGlaeser() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           <p><MdText text={inhalt.texte.moderneFensterUndGlasfassaden} /></p>
         </div>
-
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pt-6 border-t border-home-grau/20 mt-4">
-          <button aria-pressed={activeTab === 'uebersicht'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'uebersicht' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('uebersicht')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.übersichtAufbau} /></button>
-
-          <button aria-pressed={activeTab === 'glasarten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'glasarten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('glasarten')}
-          >
-            <ShieldCheck size={16} /><MdText text={inhalt.texte.glasprodukteDicken} /></button>
-
-          <button aria-pressed={activeTab === 'beschichtungen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'beschichtungen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('beschichtungen')}
-          >
-            <Sparkles size={16} /><MdText text={inhalt.texte.bedampfungSchichtenGase} /></button>
-
-          <button aria-pressed={activeTab === 'fenster'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'fenster' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('fenster')}
-          >
-            <Building2 size={16} /><MdText text={inhalt.texte.fensterartenRahmen} /></button>
-
-          <button aria-pressed={activeTab === 'kalkulator'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kalkulator' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kalkulator')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.interaktiverUwRechner} /></button>
-
-          <button aria-pressed={activeTab === 'normen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'normen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('normen')}
-          >
-            <FileText size={16} /><MdText text={inhalt.texte.normenPrüfungen} /></button>
-        </div>
       </div>
+      <ModuleTabs
+        label={inhalt.werte.reiterBereiche}
+        tabs={[
+          { id: 'uebersicht' as const, label: inhalt.texte.übersichtAufbau, icon: Layers },
+          { id: 'glasarten' as const, label: inhalt.texte.glasprodukteDicken, icon: ShieldCheck },
+          { id: 'beschichtungen' as const, label: inhalt.texte.bedampfungSchichtenGase, icon: Sparkles },
+          { id: 'fenster' as const, label: inhalt.texte.fensterartenRahmen, icon: Building2 },
+          { id: 'kalkulator' as const, label: inhalt.texte.interaktiverUwRechner, icon: Calculator },
+          { id: 'normen' as const, label: inhalt.texte.normenPrüfungen, icon: FileText },
+        ]}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="flex flex-col gap-8 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+      >
 
       {/* TAB 1: ÜBERSICHT & SYSTEMATIK */}
       {activeTab === 'uebersicht' && (
@@ -678,6 +630,7 @@ export default function BpGlaeser() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox

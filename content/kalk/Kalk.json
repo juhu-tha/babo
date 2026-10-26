@@ -37,7 +37,8 @@
   "werte": {
     "thermodynamischeHerleitungEnergieEnthalp": "Thermodynamische Herleitung: Energie- & Enthalpiebilanz des Kalkkreislaufs",
     "thermochemischeStandardwerteLehrbuchwert": "Thermochemische Standardwerte (Lehrbuchwerte); Baukalk nach DIN EN 459-1",
-    "vollständigerChemischEnergetischerZyklus": "Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme."
+    "vollständigerChemischEnergetischerZyklus": "Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme.",
+    "reiterBereiche": "Bereiche Kalk"
   },
   "daten": {
     "Kalk.schritte": [

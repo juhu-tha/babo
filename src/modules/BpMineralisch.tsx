@@ -7,6 +7,7 @@ import { ShieldCheck, Calculator, Check, AlertTriangle, Layers as LayersIcon, Ha
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpmineralisch/BpMineralisch.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface MineralMaterial {
   id: string;
@@ -128,6 +129,9 @@ const mineralDb: MineralMaterial[] = [
 export default function BpMineralisch() {
   const [activeTab, setActiveTab] = useState<'glass' | 'ceramics' | 'stone'>('glass');
   const [selectedMat, setSelectedMat] = useState<MineralMaterial>(mineralDb[0]);
+  // Kategorie-Reiter: beim Wechsel das erste Material der Kategorie auswählen (wie bisher)
+  const ERSTES = { glass: 0, ceramics: 3, stone: 6 } as const;
+  const wechsleKategorie = (t: 'glass' | 'ceramics' | 'stone') => { setActiveTab(t); setSelectedMat(mineralDb[ERSTES[t]]); };
 
   // Calculator states
   const [calcArea, setCalcArea] = useState<number>(25); // m²
@@ -202,27 +206,17 @@ export default function BpMineralisch() {
         <div className="lg:col-span-4 space-y-4">
           <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.kategoriematerialAuswählen} /></span>
           
-          <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
-            <button 
-              onClick={() => { setActiveTab('glass'); setSelectedMat(mineralDb[0]); }}
-              className={`p-2 rounded-lg text-xs font-bold transition-all text-center ${activeTab === 'glass' ? 'bg-white text-shiraz shadow-sm' : 'text-text-main/60 hover:text-text-main'}`}
-            >
-              Gläser
-            </button>
-            <button 
-              onClick={() => { setActiveTab('ceramics'); setSelectedMat(mineralDb[3]); }}
-              className={`p-2 rounded-lg text-xs font-bold transition-all text-center ${activeTab === 'ceramics' ? 'bg-white text-shiraz shadow-sm' : 'text-text-main/60 hover:text-text-main'}`}
-            >
-              Keramik
-            </button>
-            <button 
-              onClick={() => { setActiveTab('stone'); setSelectedMat(mineralDb[6]); }}
-              className={`p-2 rounded-lg text-xs font-bold transition-all text-center ${activeTab === 'stone' ? 'bg-white text-shiraz shadow-sm' : 'text-text-main/60 hover:text-text-main'}`}
-            >
-              Steine
-            </button>
-          </div>
-
+          <ModuleTabs
+            label={inhalt.werte.reiterBereiche}
+            tabs={[
+              { id: 'glass' as const, label: 'Gläser' },
+              { id: 'ceramics' as const, label: 'Keramik' },
+              { id: 'stone' as const, label: 'Steine' },
+            ]}
+            aktiv={activeTab}
+            onWechsel={wechsleKategorie}
+            className="space-y-4"
+          >
           <div className="flex flex-col gap-2">
             {mineralDb.filter(m => m.type === activeTab).map((m) => (
               <button
@@ -243,6 +237,7 @@ export default function BpMineralisch() {
               </button>
             ))}
           </div>
+          </ModuleTabs>
 
           <div className="bg-yellow-50/50 p-4 border border-yellow-200/50 rounded-xl space-y-2 text-xs text-yellow-900">
             <div className="flex items-center gap-1.5 font-bold">

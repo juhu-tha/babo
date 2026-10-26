@@ -37,7 +37,8 @@
     "dauerÜberDieDie": "Dauer, über die die Last auf das Bauteil einwirkt.",
     "anwendungsbeispielThermischerGlasbruchBe": "Anwendungsbeispiel: Thermischer Glasbruch bei teilbeschattetem Floatglas",
     "lehrmodellVollBehinderteDehnung": "Lehrmodell (voll behinderte Dehnung); zulässige Temperaturdifferenzen als Richtwerte",
-    "beiRisikoThermischerSpannungen": "Bei Risiko thermischer Spannungen (Teilverschattung, Heizkörper, Sonnenschutzfolien) wird TVG oder ESG gewählt; die Kanten sind sauber zu bearbeiten."
+    "beiRisikoThermischerSpannungen": "Bei Risiko thermischer Spannungen (Teilverschattung, Heizkörper, Sonnenschutzfolien) wird TVG oder ESG gewählt; die Kanten sind sauber zu bearbeiten.",
+    "reiterBereiche": "Bereiche Glas"
   },
   "daten": {
     "glassTypes": {

@@ -39,7 +39,23 @@
     "tragfähigkeitsnachweisErfüllt": "Tragfähigkeitsnachweis ERFÜLLT",
     "tragfähigkeitNichtErfüllt": "TRAGFÄHIGKEIT NICHT ERFÜLLT",
     "schlankheitGreiftNichtÜberschritten": "SCHLANKHEIT GREIFT NICHT (Überschritten!)",
-    "dachverbandLehmEV": "Dachverband Lehm e. V."
+    "dachverbandLehmEV": "Dachverband Lehm e. V.",
+    "reiterBereiche": "Bereiche Lehmbauprodukte",
+    "rwTitel": "Ihr Rechenweg: Tragfähigkeit der Lehmsteinwand",
+    "rwNormQuelle": "DIN 18940 (vereinfachter Lehransatz des Rechners)",
+    "rwKnicklaengeTitel": "Knicklänge",
+    "rwKnicklaenge": "Die lichte Wandhöhe h wird mit dem Beiwert β abgemindert: β = 0,75 für eine oben und unten horizontal gehaltene Wand, β = 1,0 für eine frei auskragende Wand.",
+    "rwSchlankheitTitel": "Schlankheit",
+    "rwSchlankheit": "Die Schlankheit ist das Verhältnis von Knicklänge zu Wanddicke. Der Rechner setzt als Lehrannahme die Grenze λ ≤ 21 an (Grenzwert nach DIN 18940 manuell prüfen).",
+    "rwFestigkeitTitel": "Bemessungswert der Druckfestigkeit",
+    "rwFestigkeit": "Die charakteristische Mauerwerksdruckfestigkeit f_k ergibt sich aus der gewählten Festigkeitsklasse (Rechenwert des Moduls) und wird durch den Teilsicherheitsbeiwert γ_M = 2,0 geteilt.",
+    "rwAbminderungTitel": "Abminderungsbeiwert",
+    "rwAbminderung": "Knicken und planmäßige Ausmitte erfasst der Rechner vereinfacht über Φ = 0,85 · (1 − (λ/24)²); Φ wird nicht kleiner als 0 angesetzt.",
+    "rwTragfaehigkeitTitel": "Tragfähigkeit je Meter Wand",
+    "rwTragfaehigkeit": "Die aufnehmbare Normalkraft je Meter Wandlänge ist das Produkt aus Abminderungsbeiwert, Wanddicke und Bemessungsdruckfestigkeit.",
+    "rwNachweisTitel": "Nachweis",
+    "rwNachweis": "Die Bemessungslast N_Ed wird der Tragfähigkeit N_Rd gegenübergestellt. Der Nachweis ist erfüllt, wenn zusätzlich die Schlankheitsgrenze eingehalten ist.",
+    "rwHinweis": "Lehrrechnung, keine Bemessung"
   },
   "daten": {
     "LOAM_STANDARDS_DB": [

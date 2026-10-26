@@ -146,7 +146,8 @@
   "werte": {
     "anwendungsbeispielBemessungsfestigkeitVo": "Anwendungsbeispiel: Bemessungsfestigkeit von Float, TVG und ESG",
     "din180081Und": "DIN 18008-1 und -2 (Windlast: Float k_mod = 0,7, γ_M = 1,8, k_c = 1,8 bei linienförmiger Lagerung; vorgespanntes Glas k_mod = 1,0, k_c = 1,0, γ_M = 1,5)",
-    "esgHatRundDie": "ESG hat rund die 2,5-fache Bemessungsfestigkeit von linienförmig gelagertem Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung."
+    "esgHatRundDie": "ESG hat rund die 2,5-fache Bemessungsfestigkeit von linienförmig gelagertem Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung.",
+    "reiterBereiche": "Bereiche Gläser und Fenster"
   },
   "daten": {
     "BpGlaeser.schritte": [

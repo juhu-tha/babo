@@ -63,7 +63,8 @@
   "werte": {
     "anwendungsbeispielEigengewichtSpannbeton": "Anwendungsbeispiel: Eigengewicht Spannbeton-Hohlplatte vs. Massivdecke",
     "dinEn1168Hohlraumanteil": "DIN EN 1168 (Hohlraumanteil als Lehrwert)",
-    "maßgebendSindDieHerstellerangaben": "Maßgebend sind die Herstellerangaben für den konkreten Plattentyp (Typenstatik)."
+    "maßgebendSindDieHerstellerangaben": "Maßgebend sind die Herstellerangaben für den konkreten Plattentyp (Typenstatik).",
+    "reiterBereiche": "Bereiche Betonfertigteile"
   },
   "daten": {
     "BpBetonfertigteile.elementParts": {

@@ -32,7 +32,8 @@
   "werte": {
     "anwendungsbeispielBetonausbruchEinesEinz": "Anwendungsbeispiel: Betonausbruch eines Einzeldübels",
     "dinEn19924": "DIN EN 1992-4, 7.2.1.4 (gerissener Beton k_1 = 7,7; Lehrbeispiel ohne Rand- und Gruppeneinfluss)",
-    "dieTragfähigkeitWächstMit": "Die Tragfähigkeit wächst mit h_ef^1,5 – eine um 50 % tiefere Verankerung bringt rund 84 % mehr Betonausbruchlast."
+    "dieTragfähigkeitWächstMit": "Die Tragfähigkeit wächst mit h_ef^1,5 – eine um 50 % tiefere Verankerung bringt rund 84 % mehr Betonausbruchlast.",
+    "reiterBereiche": "Bereiche Befestigungstechnik"
   },
   "daten": {
     "anchorProducts": [
