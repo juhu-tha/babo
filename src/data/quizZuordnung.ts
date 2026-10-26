@@ -31,9 +31,14 @@ export function quizRoute(moduleId: string): ModulId | undefined {
   return MODUL_KERN.has(id) ? (id as ModulId) : undefined;
 }
 
+/** Routen ohne Menügruppe (nur per Direktlink erreichbar) mit eigenem Selbsttest → Route, deren Menügruppe und Cluster gelten */
+export const QUIZ_GRUPPE_VON: Readonly<Record<string, ModulId>> = {
+  zwang: 'hydratation_folgen',
+};
+
 export function quizGruppe(moduleId: string): string | undefined {
   const r = quizRoute(moduleId);
-  return r ? MODUL_KERN.get(r)?.gruppe : undefined;
+  return r ? MODUL_KERN.get(QUIZ_GRUPPE_VON[r] ?? r)?.gruppe : undefined;
 }
 
 export function quizCluster(moduleId: string): { id: ClusterNummer; name: string } | undefined {
@@ -55,4 +60,5 @@ export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
   'rechnung_bestand', 'rechnung_beton', 'rechnung_brandschutz', 'rechnung_holzbau', 'rechnung_mauerwerk',
   'rechnung_nachhaltigkeit', 'rechnung_schallschutz', 'rechnung_stahlbeton', 'rechnung_u_wert',
   'spannbeton', 'stahlbeton_info',
+  'labor_sicherheit', 'zwang',
 ]);
