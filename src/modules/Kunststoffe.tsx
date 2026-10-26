@@ -26,6 +26,8 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/kunststoffe/Kunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { kunststoffTemperatur } from '@/src/calc/werkstoffmodelle';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 ChartJS.register(
   CategoryScale,
@@ -137,92 +139,14 @@ export default function Kunststoffe() {
   const [plasticType, setPlasticType] = useState<'amorphous' | 'semicrystalline' | 'elastomer' | 'duroplast'>('amorphous');
   const [temperature, setTemperature] = useState(20);
 
+  // E-Modul über der Temperatur (Lehrmodell, Rechenkern src/calc/werkstoffmodelle.ts)
+  const modell = useMemo(() => kunststoffTemperatur(plasticType, temperature), [plasticType, temperature]);
+
   const chartData = useMemo(() => {
-    const labels = [];
-    const data = [];
-
-    let Tg = 100;
-    let Tm = 250;
-    let Tf = 160;
-
-    for (let T = -100; T <= 300; T += 2) {
-      labels.push(T);
-      let E = 0.1;
-
-      if (plasticType === 'amorphous') {
-        Tg = 100;
-        Tf = 150;
-        const E_glass = 3000;
-        const E_rubber = 10;
-        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.15 * (T - Tg)));
-        E_val = E_val / (1 + Math.exp(0.2 * (T - Tf)));
-        E = Math.max(0.1, E_val);
-      } 
-      else if (plasticType === 'semicrystalline') {
-        Tg = 20; 
-        Tm = 160;
-        const E_glass = 3000;
-        const E_leathery = 300;
-        let E_val = E_leathery + (E_glass - E_leathery) / (1 + Math.exp(0.1 * (T - Tg)));
-        E_val = E_val / (1 + Math.exp(0.5 * (T - Tm)));
-        E = Math.max(0.1, E_val);
-      }
-      else if (plasticType === 'elastomer') {
-        Tg = -40;
-        const E_glass = 3000;
-        const E_rubber = 3;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
-        E = Math.max(0.1, E_val);
-      }
-      else if (plasticType === 'duroplast') {
-        Tg = 150;
-        const E_glass = 4000;
-        const E_rubber = 800;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
-        E = Math.max(0.1, E_val);
-      }
-
-      data.push(E);
-    }
-
-    let currentE = 0.1;
-    const T = temperature;
-    if (plasticType === 'amorphous') {
-        Tg = 100;
-        Tf = 150;
-        const E_glass = 3000;
-        const E_rubber = 10;
-        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.15 * (T - Tg)));
-        E_val = E_val / (1 + Math.exp(0.2 * (T - Tf)));
-        currentE = Math.max(0.1, E_val);
-    } 
-    else if (plasticType === 'semicrystalline') {
-        Tg = 20;
-        Tm = 160;
-        const E_glass = 3000;
-        const E_leathery = 300;
-        let E_val = E_leathery + (E_glass - E_leathery) / (1 + Math.exp(0.1 * (T - Tg)));
-        E_val = E_val / (1 + Math.exp(0.5 * (T - Tm)));
-        currentE = Math.max(0.1, E_val);
-    }
-    else if (plasticType === 'elastomer') {
-        Tg = -40;
-        const E_glass = 3000;
-        const E_rubber = 3;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
-        currentE = Math.max(0.1, E_val);
-    }
-    else if (plasticType === 'duroplast') {
-        Tg = 150;
-        const E_glass = 4000;
-        const E_rubber = 800;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
-        currentE = Math.max(0.1, E_val);
-    }
-
-    // Find closest index for the point
-    const closestIndex = labels.findIndex(l => l >= temperature);
-    const pointData = labels.map((_, i) => i === closestIndex ? currentE : null);
+    const labels = modell.kurve.map(p => p.T);
+    const data = modell.kurve.map(p => p.E);
+    const currentE = modell.E;
+    const pointData = labels.map((_, i) => i === modell.index ? currentE : null);
 
     return {
       labels,
@@ -248,7 +172,7 @@ export default function Kunststoffe() {
       ],
       currentE
     };
-  }, [plasticType, temperature]);
+  }, [modell]);
 
   const options = {
     responsive: true,
@@ -352,6 +276,7 @@ export default function Kunststoffe() {
               info={inhalt.werte.aktuelleBauteiltemperatur}
               onChange={(e) => setTemperature(Number(e.target.value))}
             />
+            <EingabeHinweise hinweise={modell.hinweise} />
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
               <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.aktuellerEModul} /></div>

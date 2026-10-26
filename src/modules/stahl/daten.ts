@@ -1,5 +1,6 @@
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahl/daten.json';
+import { abminderungStahlBrand, stahlSpannungBeiDehnung, stahlKennlinienPunkte, stahlVerformungsphase, proportionalAnteil } from '@/src/calc/werkstoffmodelle';
 
 export const steelGrades = {
   'S235': { fy: 235, fu: 360 },
@@ -24,26 +25,8 @@ export const steelProperties = {
   nu: 0.3 // Poissonzahl
 };
 
-// EC3 Part 1-2 Reduction factors for Carbon Steel
-export const getReductionFactors = (temp: number) => {
-  const temps = [20, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
-  const ky = [1.0, 1.0, 1.0, 1.0, 1.0, 0.78, 0.47, 0.23, 0.11, 0.06, 0.04, 0.02, 0.0];
-  const kE = [1.0, 1.0, 0.9, 0.8, 0.7, 0.6, 0.31, 0.13, 0.09, 0.0675, 0.045, 0.0225, 0.0];
-
-  if (temp <= 20) return { ky: 1.0, kE: 1.0 };
-  if (temp >= 1200) return { ky: 0.0, kE: 0.0 };
-
-  for (let i = 0; i < temps.length - 1; i++) {
-    if (temp >= temps[i] && temp <= temps[i + 1]) {
-      const t = (temp - temps[i]) / (temps[i + 1] - temps[i]);
-      return {
-        ky: ky[i] + t * (ky[i + 1] - ky[i]),
-        kE: kE[i] + t * (kE[i + 1] - kE[i])
-      };
-    }
-  }
-  return { ky: 1.0, kE: 1.0 };
-};
+// Abminderungsfaktoren DIN EN 1993-1-2, Tab. 3.1 – Rechenkern src/calc/werkstoffmodelle.ts
+export const getReductionFactors = abminderungStahlBrand;
 
 export interface ExtendedSteelGrade {
   id: string;
@@ -677,179 +660,24 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
   }
 ];
 
-// Berechnet die physikalisch konsistente Spannung sigma [MPa] bei beliebiger Dehnung eps [%]
-export const calculateSteelStressAtStrain = (steel: SteelCurveDefinition, eps: number): number => {
-  if (eps <= 0) return 0;
-  if (eps > steel.A) return 0; // Nach Bruch keine Spannung
-
-  if (steel.yieldType === 'ausgeprägt') {
-    const eps_el = (steel.fy / steel.E) * 100; // in %
-    if (eps <= eps_el) {
-      return steel.E * (eps / 100);
-    }
-    // Fließplateau (Lüders-Bereich)
-    if (eps <= steel.sh_strain) {
-      return steel.fy;
-    }
-    // Kaltverfestigungsbereich bis fu bei Gleichmaßdehnung fu_strain
-    if (eps <= steel.fu_strain) {
-      const t = (eps - steel.sh_strain) / (steel.fu_strain - steel.sh_strain);
-      // t in [0, 1]: parabolischer Übergang mit horizontaler Tangente bei fu
-      return steel.fy + (steel.fu - steel.fy) * (2 * t - t * t);
-    }
-    // Einschnürbereich bis zum Bruch
-    const t = (eps - steel.fu_strain) / (steel.A - steel.fu_strain);
-    return steel.fu - (steel.fu - steel.frac_stress) * t;
-  } else {
-    // Stetiger Fließübergang (Ramberg-Osgood / Vergütet / Kaltgezogen / Edelstahl)
-    const s_prop = (steel.id === 'Edelstahl' ? 0.65 : 0.75) * steel.fy;
-    const eps_prop = (s_prop / steel.E) * 100;
-    const eps_p02 = (steel.fy / steel.E) * 100 + 0.2;
-
-    if (eps <= eps_prop) {
-      return steel.E * (eps / 100);
-    }
-
-    if (eps <= eps_p02) {
-      const t = (eps - eps_prop) / (eps_p02 - eps_prop);
-      // Glatter degressiver Übergang von s_prop exakt zu fy (Rp0,2)
-      return s_prop + (steel.fy - s_prop) * (1 - Math.pow(1 - t, 1.6));
-    }
-
-    if (eps <= steel.fu_strain) {
-      const t = (eps - eps_p02) / (steel.fu_strain - eps_p02);
-      // Verfestigung von fy zu fu mit horizontaler Tangente bei fu
-      return steel.fy + (steel.fu - steel.fy) * (2 * t - t * t);
-    }
-
-    // Einschnürbereich bis zum Bruch bei A
-    const t = (eps - steel.fu_strain) / (steel.A - steel.fu_strain);
-    return steel.fu - (steel.fu - steel.frac_stress) * t;
-  }
-};
+// Spannung sigma [MPa] bei Dehnung eps [%] – Rechenkern src/calc/werkstoffmodelle.ts
+export const calculateSteelStressAtStrain = (steel: SteelCurveDefinition, eps: number): number => stahlSpannungBeiDehnung(steel, eps);
 
 // Liefert den qualitativen Zustand der Verformung
 export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: number) => {
-  if (eps <= 0) return { phase: 'Ruhezustand', text: inhalt.werte.unbelastet0Mpa, color: 'text-slate-500 bg-slate-100' };
-  if (eps > steel.A) return inhalt.daten.getSteelDeformationPhase;
-
-  if (steel.yieldType === 'ausgeprägt') {
-    const eps_el = (steel.fy / steel.E) * 100;
-    if (eps <= eps_el) {
-      return { 
-        phase: inhalt.werte.t1ElastischerBereich, 
-        text: `Reversibel nach Hooke (E = ${formatDeWert(steel.E)} MPa)`, 
-        color: 'text-blue-700 bg-blue-100' 
-      };
-    }
-    if (eps <= steel.sh_strain) {
-      return { 
-        phase: inhalt.werte.t2FließplateauLüdersbänder, 
-        text: `Spannung verharrt konstant bei fy = ${formatDeWert(steel.fy)} MPa`, 
-        color: 'text-amber-700 bg-amber-100' 
-      };
-    }
-  } else {
-    const s_prop = (steel.id === 'Edelstahl' ? 0.65 : 0.75) * steel.fy;
-    const eps_prop = (s_prop / steel.E) * 100;
-    const eps_p02 = (steel.fy / steel.E) * 100 + 0.2;
-
-    if (eps <= eps_prop) {
-      return { 
-        phase: inhalt.werte.t1ElastischerBereich2, 
-        text: `Reversibel nach Hooke bis Proportionalitätsgrenze (~${formatDeZahl(s_prop, 0)} MPa)`, 
-        color: 'text-blue-700 bg-blue-100' 
-      };
-    }
-    if (eps <= eps_p02) {
-      return { 
-        phase: inhalt.werte.t2FließübergangDehngrenze, 
-        text: `Elastisch-plastischer Übergang bis Rp0,2 = ${formatDeWert(steel.fy)} MPa`, 
-        color: 'text-purple-700 bg-purple-100' 
-      };
-    }
+  // Phasengrenzen aus dem Rechenkern, Texte aus content/stahl/daten.json
+  switch (stahlVerformungsphase(steel, eps)) {
+    case 'ruhe': return { phase: 'Ruhezustand', text: inhalt.werte.unbelastet0Mpa, color: 'text-slate-500 bg-slate-100' };
+    case 'bruch': return inhalt.daten.getSteelDeformationPhase;
+    case 'elastisch': return steel.yieldType === 'ausgeprägt'
+      ? { phase: inhalt.werte.t1ElastischerBereich, text: `Reversibel nach Hooke (E = ${formatDeWert(steel.E)} MPa)`, color: 'text-blue-700 bg-blue-100' }
+      : { phase: inhalt.werte.t1ElastischerBereich2, text: `Reversibel nach Hooke bis Proportionalitätsgrenze (~${formatDeZahl(proportionalAnteil(steel) * steel.fy, 0)} MPa)`, color: 'text-blue-700 bg-blue-100' };
+    case 'fliessplateau': return { phase: inhalt.werte.t2FließplateauLüdersbänder, text: `Spannung verharrt konstant bei fy = ${formatDeWert(steel.fy)} MPa`, color: 'text-amber-700 bg-amber-100' };
+    case 'fliessuebergang': return { phase: inhalt.werte.t2FließübergangDehngrenze, text: `Elastisch-plastischer Übergang bis Rp0,2 = ${formatDeWert(steel.fy)} MPa`, color: 'text-purple-700 bg-purple-100' };
+    case 'verfestigung': return { phase: inhalt.werte.t3KaltverfestigungPlastisch, text: `Plastische Reserve durch Versetzungsaufstau bis fu = ${formatDeWert(steel.fu)} MPa`, color: 'text-emerald-700 bg-emerald-100' };
+    default: return { phase: inhalt.werte.t4EinschnürungLokaleVerengung, text: `Lokale Querschnittsreduktion bis zur Bruchdehnung A = ${formatDeWert(steel.A)} %`, color: 'text-rose-700 bg-rose-100' };
   }
-
-  if (eps <= steel.fu_strain) {
-    return { 
-      phase: inhalt.werte.t3KaltverfestigungPlastisch, 
-      text: `Plastische Reserve durch Versetzungsaufstau bis fu = ${formatDeWert(steel.fu)} MPa`, 
-      color: 'text-emerald-700 bg-emerald-100' 
-    };
-  }
-
-  return { 
-    phase: inhalt.werte.t4EinschnürungLokaleVerengung, 
-    text: `Lokale Querschnittsreduktion bis zur Bruchdehnung A = ${formatDeWert(steel.A)} %`, 
-    color: 'text-rose-700 bg-rose-100' 
-  };
 };
 
-// Generiert die Punktreihe für Chart.js streng monoton steigend ohne Schleifen und Rücksprünge
-export const generateSteelCurveDataPoints = (steel: SteelCurveDefinition) => {
-  const points: { x: number; y: number }[] = [];
-  const xSet = new Set<number>();
-
-  const addPoint = (x: number) => {
-    if (x >= 0 && x <= steel.A) {
-      xSet.add(Number(x.toFixed(3)));
-    }
-  };
-
-  addPoint(0);
-
-  const eps_el = (steel.fy / steel.E) * 100;
-  const eps_p02 = eps_el + 0.2;
-  const s_prop = (steel.id === 'Edelstahl' ? 0.65 : 0.75) * steel.fy;
-  const eps_prop = (s_prop / steel.E) * 100;
-
-  // 1. Sehr dichte Abtastung im elastischen Bereich & Fließbeginn
-  const elasticEnd = steel.yieldType === 'ausgeprägt' ? steel.sh_strain : eps_p02;
-  const fineLimit = Math.min(steel.A, elasticEnd + 0.3);
-
-  for (let e = 0.02; e <= fineLimit; e += 0.02) {
-    addPoint(e);
-  }
-
-  // Wichtige Stützstellen einfügen
-  if (steel.yieldType === 'ausgeprägt') {
-    addPoint(eps_el);
-    addPoint(eps_el + 0.015); // ReH Peak
-    addPoint(eps_el + 0.04);  // Rückkehr zu ReL
-    addPoint(steel.sh_strain);
-  } else {
-    addPoint(eps_prop);
-    addPoint(eps_p02);
-  }
-
-  // 2. Kaltverfestigung
-  const midStep = steel.fu_strain > 15 ? 0.4 : 0.2;
-  for (let e = fineLimit; e <= steel.fu_strain; e += midStep) {
-    addPoint(e);
-  }
-  addPoint(steel.fu_strain);
-
-  // 3. Einschnürbereich
-  const postStep = (steel.A - steel.fu_strain) > 10 ? 0.5 : 0.25;
-  for (let e = steel.fu_strain + postStep; e <= steel.A; e += postStep) {
-    addPoint(e);
-  }
-  addPoint(steel.A);
-
-  // Exakt aufsteigend nach x sortieren
-  const sortedX = Array.from(xSet).sort((a, b) => a - b);
-
-  for (const x of sortedX) {
-    if (steel.yieldType === 'ausgeprägt') {
-      const eps_el_val = (steel.fy / steel.E) * 100;
-      if (Math.abs(x - (eps_el_val + 0.015)) < 0.006) {
-        points.push({ x, y: Number((steel.fy * 1.035).toFixed(1)) });
-        continue;
-      }
-    }
-    const y = calculateSteelStressAtStrain(steel, x);
-    points.push({ x, y: Number(y.toFixed(1)) });
-  }
-
-  return points;
-};
+// Punktreihe für Chart.js, streng monoton in x – Rechenkern src/calc/werkstoffmodelle.ts
+export const generateSteelCurveDataPoints = (steel: SteelCurveDefinition) => stahlKennlinienPunkte(steel);
