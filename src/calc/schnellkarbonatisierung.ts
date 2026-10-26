@@ -96,6 +96,8 @@ export interface KarbonatisierungErgebnis {
 
 /** Prognose der Karbonatisierungstiefe x(t) = K_nat · √t (t in Jahren) */
 export const tiefeNach = (kNat: number, tJahre: number) => kNat * Math.sqrt(Math.max(tJahre, 0));
+/** Umkehrung des Wurzel-t-Gesetzes: Zeit in Jahren, bis die Front die Tiefe x erreicht, t = (x/K)² */
+export const zeitBisTiefe = (tiefeMm: number, kNat: number) => (tiefeMm / kNat) ** 2;
 
 export function schnellkarbonatisierung(e: KarbonatisierungEingabe): KarbonatisierungErgebnis {
   const hinweise: Hinweis[] = [];
@@ -128,7 +130,7 @@ export function schnellkarbonatisierung(e: KarbonatisierungEingabe): Karbonatisi
   const faktor = umrechnungsfaktor(e.cAcc, e.cNat);
   const kNat = reg.k * faktor;
   const xNutzung = tiefeNach(kNat, e.nutzungsdauer);
-  const tDeckung = (e.deckung / kNat) ** 2;
+  const tDeckung = zeitBisTiefe(e.deckung, kNat);
   const ausreichend = xNutzung <= e.deckung;
 
   // Warnungen zur Prüfdurchführung und zur Aussagekraft

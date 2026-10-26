@@ -69,3 +69,63 @@ export function taupunkt(theta: number, phi: number): number {
   return temperaturBeiPsat(psat(theta) * (phi / 100));
 }
 
+// ---------------------------------------------------------------------------------------------------------------
+// Thermische Stoffkennwerte und erforderliche Dämmdicke (AP 4.2, Runde 3 – Modul Waermeeigenschaften)
+// ---------------------------------------------------------------------------------------------------------------
+
+/** Wärmeeindringkoeffizient der Haut [J/(m²K√s)] und Hauttemperatur [°C] für die Kontakttemperatur (Lehrwerte) */
+export const HAUT = { b: 1100, theta: 33 } as const;
+
+/** Volumenbezogene Wärmespeicherfähigkeit ρ·c [J/(m³K)] */
+export function waermespeicherVolumen(rho: number, c: number): number {
+  return rho * c;
+}
+
+/** Temperaturleitfähigkeit a = λ/(ρ·c) [m²/s] */
+export function temperaturleitfaehigkeit(lambda: number, rho: number, c: number): number {
+  return lambda / (rho * c);
+}
+
+/** Wärmeeindringkoeffizient b = √(λ·ρ·c) [J/(m²K√s)] */
+export function waermeeindringkoeffizient(lambda: number, rho: number, c: number): number {
+  return Math.sqrt(lambda * rho * c);
+}
+
+/** Kontakttemperatur zweier halbunendlicher Körper: θ_K = (b₁θ₁ + b₂θ₂)/(b₁ + b₂) */
+export function kontakttemperatur(b1: number, theta1: number, b2: number, theta2: number): number {
+  return (b1 * theta1 + b2 * theta2) / (b1 + b2);
+}
+
+/** Thermische Kennwerte eines Stoffs; Kontakttemperatur der Haut (33 °C) auf dem Stoff mit θ_Stoff (Standard 20 °C) */
+export function thermischeKennwerte(lambda: number, rho: number, c: number, thetaStoff = 20) {
+  const hinweise: Hinweis[] = [];
+  if (!istEndlich(lambda, rho, c, thetaStoff)) hinweise.push({ stufe: 'fehler', feld: 'eingabe', text: 'λ, ρ und c müssen Zahlen sein.' });
+  else if (!(lambda > 0 && rho > 0 && c > 0)) hinweise.push({ stufe: 'fehler', feld: 'lambda', text: 'λ, ρ und c müssen größer als 0 sein.' });
+  if (hinweise.length) return { C: 0, C_MJ: 0, a: 0, a_mm2s: 0, b: 0, thetaKontakt: 0, hinweise };
+  const C = waermespeicherVolumen(rho, c);
+  const a = temperaturleitfaehigkeit(lambda, rho, c);
+  const b = waermeeindringkoeffizient(lambda, rho, c);
+  return { C, C_MJ: C / 1e6, a, a_mm2s: a * 1e6, b, thetaKontakt: kontakttemperatur(HAUT.b, HAUT.theta, b, thetaStoff), hinweise };
+}
+
+/**
+ * Erforderliche Dämmdicke [cm] je Dämmstoff, damit eine Bestandswand (eine Schicht d, λ) den Ziel-U-Wert erreicht:
+ * R_D,erf = 1/U_Ziel − (R_si + R_se) − d/λ; d_D = R_D,erf · λ_D. R_si + R_se für Außenwände nach DIN EN ISO 6946.
+ */
+export function erforderlicheDaemmdicke(uZiel: number, dBestandM: number, lambdaBestand: number, lambdaDaemm: readonly number[]) {
+  const hinweise: Hinweis[] = [];
+  const { Rsi, Rse } = uebergang('wall');
+  if (!istEndlich(uZiel, dBestandM, lambdaBestand, ...lambdaDaemm)) hinweise.push({ stufe: 'fehler', feld: 'eingabe', text: 'Alle Eingaben müssen Zahlen sein.' });
+  else {
+    if (!(uZiel > 0)) hinweise.push({ stufe: 'fehler', feld: 'uZiel', text: 'Der Ziel-U-Wert muss größer als 0 sein.' });
+    if (!(dBestandM >= 0 && lambdaBestand > 0)) hinweise.push({ stufe: 'fehler', feld: 'lambdaBestand', text: 'Dicke ≥ 0 und λ > 0 der Bestandswand erforderlich.' });
+    if (lambdaDaemm.some(l => !(l > 0))) hinweise.push({ stufe: 'fehler', feld: 'lambdaDaemm', text: 'Die Wärmeleitfähigkeit der Dämmstoffe muss größer als 0 sein.' });
+  }
+  if (hinweise.length) return { RsiRse: Rsi + Rse, rBestand: 0, rGesamtErf: 0, rDaemmErf: 0, erreicht: false, dickenCm: lambdaDaemm.map(() => 0), hinweise };
+  const rBestand = dBestandM / lambdaBestand;
+  const rGesamtErf = 1 / uZiel;
+  const rDaemmErf = rGesamtErf - (Rsi + Rse) - rBestand;
+  const erreicht = rDaemmErf <= 0;
+  return { RsiRse: Rsi + Rse, rBestand, rGesamtErf, rDaemmErf, erreicht, dickenCm: lambdaDaemm.map(l => (erreicht ? 0 : rDaemmErf * l * 100)), hinweise };
+}
+

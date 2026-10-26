@@ -7,57 +7,28 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
 import inhalt from '@/content/mischungsberechnung/WalzKurvenSection.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { walzKurve, type WalzKlasse } from '@/src/calc/mischung';
 
 export function WalzKurvenSection() {
   const [wzWert, setWzWert] = useState(0.50);
-  const [zementKlasse, setZementKlasse] = useState(42.5);
+  const [zementKlasse, setZementKlasse] = useState<WalzKlasse>(42.5);
 
-  const chartData = useMemo(() => {
-    const wzValues = [];
-    for (let i = 0.35; i <= 0.8; i += 0.05) {
-      wzValues.push(i);
-    }
+  // Abrams-Näherung im Rechenkern (src/calc/mischung.ts)
+  const walz = useMemo(() => walzKurve(wzWert, zementKlasse), [wzWert, zementKlasse]);
 
-    const calcStrength = (wz: number, klasse: number) => {
-      let A = 100;
-      if (klasse === 42.5) A = 120;
-      if (klasse === 52.5) A = 140;
-      return A / Math.pow(5, wz);
-    };
-
-    return {
-      labels: wzValues.map(v => formatDeZahl(v, 2)),
-      datasets: [
-        {
-          label: 'CEM 32,5',
-          data: wzValues.map(wz => calcStrength(wz, 32.5)),
-          borderColor: zementKlasse === 32.5 ? '#A3113E' : '#cbd5e1',
-          borderWidth: zementKlasse === 32.5 ? 3 : 2,
-          borderDash: zementKlasse === 32.5 ? [] : [5, 5],
-          tension: 0.4,
-          pointRadius: zementKlasse === 32.5 ? 4 : 0,
-        },
-        {
-          label: 'CEM 42,5',
-          data: wzValues.map(wz => calcStrength(wz, 42.5)),
-          borderColor: zementKlasse === 42.5 ? '#A3113E' : '#cbd5e1',
-          borderWidth: zementKlasse === 42.5 ? 3 : 2,
-          borderDash: zementKlasse === 42.5 ? [] : [5, 5],
-          tension: 0.4,
-          pointRadius: zementKlasse === 42.5 ? 4 : 0,
-        },
-        {
-          label: 'CEM 52,5',
-          data: wzValues.map(wz => calcStrength(wz, 52.5)),
-          borderColor: zementKlasse === 52.5 ? '#A3113E' : '#cbd5e1',
-          borderWidth: zementKlasse === 52.5 ? 3 : 2,
-          borderDash: zementKlasse === 52.5 ? [] : [5, 5],
-          tension: 0.4,
-          pointRadius: zementKlasse === 52.5 ? 4 : 0,
-        }
-      ]
-    };
-  }, [zementKlasse]);
+  const chartData = useMemo(() => ({
+    labels: walz.stuetzstellen.map(v => formatDeZahl(v, 2)),
+    datasets: walz.kurven.map(({ klasse, werte }) => ({
+      label: `CEM ${formatDeZahl(klasse, 1)}`,
+      data: werte,
+      borderColor: zementKlasse === klasse ? '#A3113E' : '#cbd5e1',
+      borderWidth: zementKlasse === klasse ? 3 : 2,
+      borderDash: zementKlasse === klasse ? [] : [5, 5],
+      tension: 0.4,
+      pointRadius: zementKlasse === klasse ? 4 : 0,
+    })),
+  }), [walz, zementKlasse]);
 
   const options = {
     responsive: true,
@@ -90,12 +61,7 @@ export function WalzKurvenSection() {
     }
   };
 
-  const currentStrength = useMemo(() => {
-    let A = 100;
-    if (zementKlasse === 42.5) A = 120;
-    if (zementKlasse === 52.5) A = 140;
-    return A / Math.pow(5, wzWert);
-  }, [wzWert, zementKlasse]);
+  const currentStrength = walz.festigkeit;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
@@ -124,7 +90,7 @@ export function WalzKurvenSection() {
             aria-label="Zementfestigkeitsklasse"
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
             value={zementKlasse}
-            onChange={(e) => setZementKlasse(Number(e.target.value))}
+            onChange={(e) => setZementKlasse(Number(e.target.value) as WalzKlasse)}
           >
             <option value={32.5}>CEM 32.5</option>
             <option value={42.5}>CEM 42.5</option>
@@ -137,6 +103,7 @@ export function WalzKurvenSection() {
           <div className="text-3xl font-bold text-shiraz">{formatDeZahl(currentStrength, 1)} <span className="text-lg font-normal">MPa</span></div>
           <div className="text-sm text-shiraz/80 mt-1"><FormulaText text={inhalt.werte.fCmBei28} /></div>
         </div>
+        <EingabeHinweise hinweise={walz.hinweise} />
       </div>
 
       <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">

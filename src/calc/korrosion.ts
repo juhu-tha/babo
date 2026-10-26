@@ -135,6 +135,30 @@ export function karbonatisierungsFront(k: number, tJahre: number, deckungMm: num
   return { xc, tDeckung: k > 0 ? (deckungMm / k) ** 2 : Infinity, depassiviert: xc >= deckungMm, gueltig: true, hinweise };
 }
 
+export interface KarbonatisierungsLebensdauer extends KarbonatisierungsFront {
+  /** Zeit bis zur Depassivierung (c/K)², auf ganze Jahre gerundet [a] */
+  tKrit: number;
+  /** verbleibende Jahre bis zur Depassivierung t_krit − t (negativ: Front hat die Bewehrung bereits erreicht) [a] */
+  restJahre: number;
+}
+
+/**
+ * Lebensdauersimulator (src/modules/dauerhaftigkeit/BetonDauerhaftigkeitsSimulator.tsx): Front x_c = K·√t,
+ * t_krit = round((c/K)²) und Restjahre t_krit − t. Rundung auf ganze Jahre wie im Modul.
+ * K muss > 0 sein (früher: Ersatzwert 999 a bei K = 0).
+ */
+export function karbonatisierungsLebensdauer(k: number, tJahre: number, deckungMm: number): KarbonatisierungsLebensdauer {
+  const front = karbonatisierungsFront(k, tJahre, deckungMm);
+  if (front.gueltig && !(k > 0)) {
+    front.hinweise.push({ stufe: 'fehler', feld: 'k', text: 'Der Karbonatisierungskoeffizient muss größer als 0 sein.' });
+    front.gueltig = false;
+  }
+  if (!front.gueltig) return { ...front, tKrit: NaN, restJahre: NaN };
+  const tKrit = Math.round(front.tDeckung);
+  if (tKrit > 200) front.hinweise.push({ stufe: 'warnung', feld: 'k', text: 'Rechnerische Zeit bis zur Depassivierung über 200 Jahre – das Wurzel-t-Gesetz ist so weit nicht abgesichert.' });
+  return { ...front, tKrit, restJahre: tKrit - tJahre };
+}
+
 /** Kurve x_c(t) für t = 0 … tMax (ganzzahlige Schritte) */
 export const karbonatisierungsKurve = (k: number, tMax: number) => Array.from({ length: tMax + 1 }, (_, t) => tiefeNach(k, t));
 

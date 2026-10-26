@@ -27,6 +27,9 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/holz/Holz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, schwindmass } from '@/src/calc/holzphysik';
+import { festigkeitswerte, kdefFuer, KLED_NAME, type Nutzungsklasse } from '@/src/calc/holzbau';
 
 ChartJS.register(
   CategoryScale,
@@ -65,11 +68,8 @@ const festigkeitsklassen = {
   'GL30h (BSH)': { fm: 30, ft0: 24, ft90: 0.5, fc0: 30, fc90: 2.5, fv: 3.5, E0mean: 13600, gammaM: 1.3 },
 };
 
-const kmodTable = {
-  'NKL 1': { 'ständig': 0.6, 'lang': 0.7, 'mittel': 0.8, 'kurz': 0.9, 'sehr kurz': 1.1 },
-  'NKL 2': { 'ständig': 0.6, 'lang': 0.7, 'mittel': 0.8, 'kurz': 0.9, 'sehr kurz': 1.1 },
-  'NKL 3': { 'ständig': 0.5, 'lang': 0.55, 'mittel': 0.65, 'kurz': 0.7, 'sehr kurz': 0.9 },
-};
+type NklName = 'NKL 1' | 'NKL 2' | 'NKL 3';
+const nklNummer = (n: NklName) => Number(n.slice(4)) as Nutzungsklasse;
 
 function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -189,7 +189,7 @@ export default function Holz() {
 
   // Strength Parameters
   const [festigkeitsklasse, setFestigkeitsklasse] = useState<keyof typeof festigkeitsklassen>('C24 (Vollholz)');
-  const [nkl, setNkl] = useState<keyof typeof kmodTable>('NKL 1');
+  const [nkl, setNkl] = useState<NklName>('NKL 1');
   const [kled, setKled] = useState('mittel');
   const [winkel, setWinkel] = useState(0);
   const [kc90, setKc90] = useState(1.0);
@@ -202,77 +202,47 @@ export default function Holz() {
     else if (querschnitt === 'rund') { setBreite(150); setDicke(150); }
   }, [querschnitt]);
 
-  const uGleichgewicht = useMemo(() => {
-    const h = rh / 100;
-    // Lehrmodell: Polynom-Näherung der Sorptionsisotherme bei 20 °C, Temperatureinfluss vereinfacht (ca. −1 % relativ je K über 20 °C)
-    const simpleEmc = (18 * h * h * h - 10 * h * h + 20 * h) * (1 - (temp - 20) * 0.01);
-    return Math.max(0, Math.min(30, simpleEmc));
-  }, [temp, rh]);
-
-  const uEnde = useMemo(() => {
-    // Lehrmodell: exponentielle Annäherung, Zeitkonstante ~ Dicke² (Diffusion), Kalibrierung als Lehrannahme
-    const tau = Math.pow(dicke / 20, 2) * 15;
-    const factor = Math.exp(-lagerDauer / tau);
-    return uGleichgewicht + (uStart - uGleichgewicht) * factor;
-  }, [uStart, uGleichgewicht, lagerDauer, dicke]);
+  // Rechenkern src/calc/holzphysik.ts: Gleichgewichtsfeuchte, Feuchteangleich und anisotropes Schwinden
+  const feuchteGl = useMemo(() => gleichgewichtsfeuchte(rh, temp), [temp, rh]);
+  const uGleichgewicht = feuchteGl.u;
+  // Beim Rundholz ist die maßgebende Dicke der Durchmesser (Regler „Dicke“ ist dort ausgeblendet)
+  const dickeWirksam = querschnitt === 'rund' ? breite : dicke;
+  const lagerung = useMemo(() => feuchteNachLagerung(uStart, uGleichgewicht, lagerDauer, dickeWirksam), [uStart, uGleichgewicht, lagerDauer, dickeWirksam]);
+  const uEnde = lagerung.u;
 
   const { qr, qt, ql } = holzArten[holz];
-
-  const effStart = Math.min(uStart, 30);
-  const effEnde = Math.min(uEnde, 30);
-  const deltaU = effStart - effEnde;
-
-  const shrinkT = (deltaU * qt) / 100;
-  const shrinkR = (deltaU * qr) / 100;
-  const shrinkL = (deltaU * ql) / 100;
-
-  const scaleX = 1 - shrinkT;
-  const scaleY = 1 - shrinkR;
-  const scaleZ = 1 - shrinkL;
+  const sw = schwinden({ uStart, uEnde, qt, qr, ql, breite, dicke: dickeWirksam, laenge });
+  const deltaU = sw.deltaU;
+  const shrinkT = sw.epsT, shrinkR = sw.epsR;
 
   const visualShrinkT = shrinkT * skalierungsfaktor;
   const visualShrinkR = shrinkR * skalierungsfaktor;
-  const visualShrinkL = shrinkL * skalierungsfaktor;
+  const visualShrinkL = sw.epsL * skalierungsfaktor;
 
   const visualScaleX = 1 - visualShrinkT;
   const visualScaleY = 1 - visualShrinkR;
   const visualScaleZ = 1 - visualShrinkL;
 
-  const newBreite = breite * scaleX;
-  const newDicke = dicke * scaleY;
-  const newLaenge = laenge * scaleZ;
+  const newBreite = sw.neueBreite;
+  const newDicke = sw.neueDicke;
+  const newLaenge = sw.neueLaenge;
+  const feuchteHinweise = [...feuchteGl.hinweise, ...lagerung.hinweise, ...sw.hinweise];
 
-
-  // Strength Calculations
+  // Rechenkern src/calc/holzbau.ts: Bemessungswerte und Druck unter Winkel (6.16)
   const { fm, ft0, ft90, fc0, fc90, fv, E0mean, gammaM } = festigkeitsklassen[festigkeitsklasse];
-  const kmod = kmodTable[nkl][kled as keyof typeof kmodTable['NKL 1']];
-  
-  const fmd = (fm * kmod) / gammaM;
-  const ft0d = (ft0 * kmod) / gammaM;
-  const ft90d = (ft90 * kmod) / gammaM;
-  const fc0d = (fc0 * kmod) / gammaM;
-  const fc90d = (fc90 * kmod) / gammaM;
-  const fvd = (fv * kmod) / gammaM;
-
-  const alphaRad = (winkel * Math.PI) / 180;
-  const fcad = fc0d / ((fc0d / (kc90 * fc90d)) * Math.pow(Math.sin(alphaRad), 2) + Math.pow(Math.cos(alphaRad), 2));
+  const fw = useMemo(() => festigkeitswerte({ fm, ft0, ft90, fc0, fc90, fv, gammaM, nkl: nklNummer(nkl), kled: KLED_NAME[kled], kc90, winkel }), [fm, ft0, ft90, fc0, fc90, fv, gammaM, nkl, kled, kc90, winkel]);
+  const { kmod, fmd, ft0d, ft90d, fc0d, fc90d, fvd, fcad } = fw;
+  const kdef = kdefFuer(holz, nklNummer(nkl));
 
   const hankinsonData = useMemo(() => {
     const labels = [];
     const data = [];
     const currentPoint = [];
 
-    for (let w = 0; w <= 90; w += 5) {
+    for (const { winkel: w, fcad: wert } of fw.kurve) {
       labels.push(`${formatDeWert(w)}°`);
-      const rad = (w * Math.PI) / 180;
-      const currentFcad = fc0d / ((fc0d / (kc90 * fc90d)) * Math.pow(Math.sin(rad), 2) + Math.pow(Math.cos(rad), 2));
-      data.push(currentFcad);
-      
-      if (Math.abs(w - winkel) < 2.5) {
-        currentPoint.push(fcad);
-      } else {
-        currentPoint.push(null);
-      }
+      data.push(wert);
+      currentPoint.push(Math.abs(w - winkel) < 2.5 ? fcad : null);
     }
 
     return {
@@ -298,7 +268,7 @@ export default function Holz() {
         }
       ]
     };
-  }, [fc0d, fc90d, kc90, winkel, fcad]);
+  }, [fw.kurve, winkel, fcad]);
 
   const hankinsonOptions = {
     responsive: true,
@@ -376,9 +346,9 @@ export default function Holz() {
               <div className="font-bold text-slate-800"><MdText text={inhalt.texte.schwindSzenarioFür} />{holz}:</div>
               <p className="leading-relaxed"><MdText text={inhalt.texte.wirdDasMaterialVon} /><FormulaText text="\Delta u = 18\%" /><MdText text={inhalt.texte.verringernSichDieAbmessungen} /></p>
               <ul className="list-disc pl-5 space-y-1 text-slate-650">
-                <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl((18 * holzArten[holz].qt), 2)}%</strong><MdText text={inhalt.texte.spürbareBreitenreduktion} /></li>
-                <li>Radial: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].qr), 2)}%</strong><MdText text={inhalt.texte.moderateDickenreduktion} /></li>
-                <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].ql), 2)}%</strong><MdText text={inhalt.texte.längenänderungVernachlässigbar} /></li>
+                <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl(schwindmass(18, holzArten[holz].qt), 2)}%</strong><MdText text={inhalt.texte.spürbareBreitenreduktion} /></li>
+                <li>Radial: <strong className="font-mono text-slate-800">{formatDeZahl(schwindmass(18, holzArten[holz].qr), 2)}%</strong><MdText text={inhalt.texte.moderateDickenreduktion} /></li>
+                <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl(schwindmass(18, holzArten[holz].ql), 2)}%</strong><MdText text={inhalt.texte.längenänderungVernachlässigbar} /></li>
               </ul>
               <div className="text-[10px] text-slate-550 border-t border-home-grau/10 pt-1.5 mt-1.5 italic">
                 {holz.includes('Brettschichtholz')
@@ -520,6 +490,7 @@ export default function Holz() {
               <span className="text-text-main/70"><MdText text={inhalt.texte.erreichteEndfeuchte} /></span>
               <span className="font-bold text-shiraz">{formatDeZahl(uEnde, 1)} %</span>
             </div>
+            <EingabeHinweise hinweise={feuchteHinweise} />
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col gap-4">
@@ -605,10 +576,10 @@ export default function Holz() {
                 {querschnitt === 'rund' ? inhalt.werte.durchmesserR : 'Dicke (R)'}
               </div>
               <div className="text-lg font-bold text-shiraz">
-                {querschnitt === 'rund' ? formatDeZahl((breite * scaleY), 1) : formatDeZahl(newDicke, 1)} mm
+                {formatDeZahl(newDicke, 1)} mm
               </div>
               <div className="text-xs text-torch-red">
-                Δ {formatDeZahl((querschnitt === 'rund' ? (breite * scaleY) - breite : newDicke - dicke), 1)} mm
+                Δ {formatDeZahl(newDicke - dickeWirksam, 1)} mm
               </div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
@@ -618,7 +589,7 @@ export default function Holz() {
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">Volumenschwindmaß</div>
-              <div className="text-lg font-bold text-shiraz">{formatDeZahl(((1 - (scaleX * scaleY * scaleZ)) * 100), 1)} %</div>
+              <div className="text-lg font-bold text-shiraz">{formatDeZahl(sw.epsV * 100, 1)} %</div>
               <div className="text-xs text-text-main/60">ΔV / V</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
@@ -652,7 +623,7 @@ export default function Holz() {
             <select aria-label={inhalt.werte.nutzungsklasseNkl} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={nkl}
-              onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}
+              onChange={(e) => setNkl(e.target.value as NklName)}
             >
               <option value="NKL 1">NKL 1 (Innenraum, trocken)</option>
               <option value="NKL 2">NKL 2 (Überdacht, außen)</option>
@@ -700,6 +671,7 @@ export default function Holz() {
 
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
           <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.bemessungswerteDerFestigkeitF} /></h2>
+          <EingabeHinweise hinweise={fw.hinweise} />
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
@@ -880,7 +852,7 @@ export default function Holz() {
             <select aria-label={inhalt.werte.nutzungsklasseNkl2} 
               className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-text-main focus:outline-none focus:border-shiraz"
               value={nkl} 
-              onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}
+              onChange={(e) => setNkl(e.target.value as NklName)}
             >
               <option value="NKL 1">NKL 1 (Innenraum, trocken)</option>
               <option value="NKL 2">NKL 2 (Überdacht, außen)</option>
@@ -912,36 +884,10 @@ export default function Holz() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-center items-center text-center">
               <h3 className="text-lg font-bold text-text-main mb-2"><FormulaText text={inhalt.werte.verformungsbeiwertKDef} /></h3>
               <div className="text-5xl font-bold text-shiraz my-4">
-                {(() => {
-                  const kdefMap: Record<string, Record<string, number>> = {
-                    'Vollholz': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'BSH': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'FSH': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'OSB': { 'NKL 1': 1.50, 'NKL 2': 2.25, 'NKL 3': 0 },
-                  };
-                  let holzType = 'Vollholz';
-                  if (holz.includes('BSH')) holzType = 'BSH';
-                  else if (holz.includes('OSB')) holzType = 'OSB';
-                  else if (holz.includes('FSH')) holzType = 'FSH';
-                  const kdef = kdefMap[holzType]?.[nkl] || 0;
-                  return kdef > 0 ? formatDeZahl(kdef, 2) : 'N/A';
-                })()}
+                {kdef !== null ? formatDeZahl(kdef, 2) : 'N/A'}
               </div>
               <p className="text-sm text-text-main/80">
-                {(() => {
-                  const kdefMap: Record<string, Record<string, number>> = {
-                    'Vollholz': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'BSH': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'FSH': { 'NKL 1': 0.60, 'NKL 2': 0.80, 'NKL 3': 2.00 },
-                    'OSB': { 'NKL 1': 1.50, 'NKL 2': 2.25, 'NKL 3': 0 },
-                  };
-                  let holzType = 'Vollholz';
-                  if (holz.includes('BSH')) holzType = 'BSH';
-                  else if (holz.includes('OSB')) holzType = 'OSB';
-                  else if (holz.includes('FSH')) holzType = 'FSH';
-                  const kdef = kdefMap[holzType]?.[nkl] || 0;
-                  return kdef === 0 ? inhalt.werte.fürDieseKombinationNicht : inhalt.werte.berücksichtigtDieKriechverformungÜber;
-                })()}
+                {kdef === null ? inhalt.werte.fürDieseKombinationNicht : inhalt.werte.berücksichtigtDieKriechverformungÜber}
               </p>
             </div>
 
@@ -953,7 +899,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.tangentialQuerZurFaser} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
-                      {formatDeZahl(Math.abs(deltaU * qt * 10000), 0)}
+                      {formatDeZahl(sw.mikroT, 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-500 ml-1">μm/m</span>
                   </div>
@@ -962,7 +908,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.radialQuerZurFaser} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
-                      {formatDeZahl(Math.abs(deltaU * qr * 10000), 0)}
+                      {formatDeZahl(sw.mikroR, 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-500 ml-1">μm/m</span>
                   </div>
@@ -971,7 +917,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500"><MdText text={inhalt.texte.longitudinalFaserparallel} /></span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-slate-400">
-                      {formatDeZahl(Math.abs(deltaU * ql * 10000), 0)}
+                      {formatDeZahl(sw.mikroL, 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-400 ml-1">μm/m</span>
                   </div>

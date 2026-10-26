@@ -8,6 +8,8 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpholzprodukte/BpHolzprodukte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { bemesseEinfeldbalken, KMOD } from '@/src/calc/holzbau';
 
 interface WoodProductType {
   id: string;
@@ -133,56 +135,16 @@ export default function BpHolzprodukte() {
   };
 
   const activeMat = getCalcProperties(woodClass);
-  const k_mod = 0.8; // Medium-term (Standard Nutzungsklasse 1)
-
-  // Calculations:
-  // 1. Self-weight of timber beam: g_wood_k = (b * h / 10^6) * (density * 9.81 / 1000) kN/m
-  const selfWeightKN_m = (beamWidth * beamHeight / 1000000) * (activeMat.density * 0.00981);
-  
-  // Line loads (kN/m)
-  const g_k = selfWeightKN_m; // kN/m (Balkeneigengewicht)
-  const q_k = loadk * spacing; // kN/m (Ausbau- und Nutzlasten)
-  
-  // Design line load: q_d = 1.35 * g_k + 1.5 * q_k
-  const q_d = 1.35 * g_k + 1.5 * q_k;
-  const q_inst = g_k + q_k; // SLS: charakteristische Kombination
-  
-  // Bending moment: M_Ed = q_d * L^2 / 8
-  const m_ed = (q_d * Math.pow(span, 2)) / 8; // kNm
-  
-  // Shear force: V_Ed = q_d * L / 2
-  const v_ed = (q_d * span) / 2; // kN
-
-  // Section properties
-  const w_y = (beamWidth * Math.pow(beamHeight, 2)) / 6; // mm³
-  const i_y = (beamWidth * Math.pow(beamHeight, 3)) / 12; // mm⁴
-
-  // Bending stress: sigma_m_d = M_Ed * 10^6 / W_y (N/mm²)
-  const sigma_md = (m_ed * 1000000) / w_y;
-  // Bending strength design: f_md = k_mod * f_mk / gammaM
-  const f_md = (k_mod * activeMat.f_mk) / activeMat.gammaM;
-  const bendingUtilization = (sigma_md / f_md) * 100;
-
-  // Shear stress with crack factor (EC 5, 6.1.7 + NA): b_ef = k_cr * b
-  // k_cr = 2,0 / f_vk (Nadelvollholz), 2,5 / f_vk (BSH)
-  const k_cr = Math.min(1, (woodClass === 'c24' ? 2.0 : 2.5) / activeMat.f_vk);
-  const tau_d = (1.5 * v_ed * 1000) / (k_cr * beamWidth * beamHeight);
-  // Shear strength design: f_vd = k_mod * f_vk / gammaM
-  const f_vd = (k_mod * activeMat.f_vk) / activeMat.gammaM;
-  const shearUtilization = (tau_d / f_vd) * 100;
-
-  // Elastic Deflection comfort check: w = (5/384) * (q_inst * L^4) / (E * I)
-  // q_inst is in kN/m which equals N/mm, L is converted to mm, E in N/mm², I in mm⁴
-  const span_mm = span * 1000;
-  const w_inst = (5 * q_inst * Math.pow(span_mm, 4)) / (384 * activeMat.E * i_y);
-  
-  // SLS boundary: w_limit = L / 300 (standard structural requirement)
-  const w_limit = span_mm / 300;
-  const deflectionUtilization = (w_inst / w_limit) * 100;
-
-  // Max of utilizations
-  const maxUtilization = Math.max(bendingUtilization, shearUtilization, deflectionUtilization);
-  const isSafe = maxUtilization <= 100;
+  // Rechenkern src/calc/holzbau.ts: Einfeldbalken (Biegung, Schub mit k_cr, w_inst ≤ l/300); k_mod NKL 1, mittlere KLED
+  const balken = bemesseEinfeldbalken({
+    l: span, abstand: spacing, qk: loadk, b: beamWidth, h: beamHeight,
+    fmk: activeMat.f_mk, fvk: activeMat.f_vk, E0mean: activeMat.E, rhoMean: activeMat.density,
+    brettschichtholz: woodClass !== 'c24', kmod: KMOD[1].mtl, gammaM: activeMat.gammaM,
+  });
+  const { sigma_md, f_md, k_cr, tau_d, f_vd, w_inst } = balken;
+  const w_limit = balken.w_grenz;
+  const bendingUtilization = balken.eta_m, shearUtilization = balken.eta_v, deflectionUtilization = balken.eta_w;
+  const isSafe = balken.ok;
 
   return (
     <div id="bp-holzprodukte-module" className="flex flex-col gap-8">
@@ -440,6 +402,7 @@ export default function BpHolzprodukte() {
                 </span>
               </div>
 
+              <EingabeHinweise hinweise={balken.hinweise} />
               {/* Util percentages */}
               <div className="space-y-3 font-mono text-xs">
                 <div>
@@ -499,7 +462,7 @@ export default function BpHolzprodukte() {
             </div>
 
             <div className="pt-3 border-t border-home-grau/10 text-[10px] space-y-1 text-text-main/60 font-sans leading-relaxed">
-              <div><MdText text={inhalt.texte.eigengewicht} /><strong>{formatDeZahl((selfWeightKN_m * 100), 0)} kg/m</strong> (~{formatDeWert(activeMat.density)}<MdText text={inhalt.texte.kgMDensity} /></div>
+              <div><MdText text={inhalt.texte.eigengewicht} /><strong>{formatDeZahl(balken.masse, 1)} kg/m</strong> (~{formatDeWert(activeMat.density)}<MdText text={inhalt.texte.kgMDensity} /></div>
               <div><MdText text={inhalt.texte.teilsicherheitsbeiwerteG135} /></div>
               <div><MdText text={inhalt.texte.kModBeiwert0} />{formatDeWert(activeMat.gammaM)}</div>
             </div>
