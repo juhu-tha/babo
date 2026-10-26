@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "zyklischerVortriebDieNeue": " Zyklischer Vortrieb & Die Neue Österreichische Tunnelbauweise",
+    "dasPrinzipDerNöt": "Das Prinzip der NÖT (NATM)",
+    "dieNeueÖsterreichischeTunnelbauweise": "Die **Neue Österreichische Tunnelbauweise (NÖT)** prägte maßgebend die Entwicklung des modernen Tunnelbaus. Das Hauptprinzip besagt, dass das umgebende Gebirge nicht nur als belastende Masse betrachtet werden darf, sondern selbst als **tragendes Bauteil (Gewölbe)** herangezogen werden muss.",
+    "direktNachDemMechanischen": "Direkt nach dem mechanischen Abschlag oder der Sprengung werden kontrollierte radiale Verformungen des Gebirges zugelassen, um die Spannungsspitzen abzubauen. Anschliessend wird die Tunneldecke durch eine spritzbare Betonschale, Felsanker und Gitterträger sekundenschnell abgedichtet und verbaut.",
+    "frühfestigkeitsklassenBeiSpritzbeton": "Frühfestigkeitsklassen bei Spritzbeton",
+    "nachDerRichtlinieSpritzbeton": "Nach der Richtlinie Spritzbeton werden zur Gewährleistung des Arbeitsschutzes direkt nach dem Aufspritzen Einstufungen vorgenommen:",
+    "klasseJ1GeringeFrühfestigkeit": "**Klasse J1:** Geringe Frühfestigkeit – für dünne Lagen auf trockenem Untergrund ohne besondere Anforderungen.",
+    "klasseJ2HöhereFrühfestigkeit": "**Klasse J2:** Höhere Frühfestigkeit – für dickere Lagen, auch über Kopf, und bei Wasserandrang.",
+    "klasseJ3SehrHohe": "**Klasse J3:** Sehr hohe Frühfestigkeit – bei stark wasserführendem oder nachbrüchigem Gebirge (mehr Staub und Rückprall).",
+    "vortriebsverfahrenImVergleich": "Vortriebsverfahren im Vergleich",
+    "währendDieNötFlexibel": "Während die NÖT flexibel auf wechselnde Geologien (Felswechsel, Störungszonen) reagieren kann, eignet sich der **Schildvortrieb mit Tunnelbohrmaschinen (TBM)** vor allem bei langen Tunnelstrecken in gleichartigem Baugrund aufgrund der vollautomatisierten Einbringung von Betonfertigteil-Tübbingen.",
+    "statischeVordimensionierungDerSpritzbeto": " Statische Vordimensionierung der Spritzbetonsicherung",
+    "lehrmodellMitDerKesselformel": "Lehrmodell: Mit der Kesselformel (σ = p · r / d) lässt sich die Ringdruckspannung einer Spritzbetonschale unter angenommenem radialem Gebirgsdruck abschätzen. Eine echte Bemessung erfordert gebirgsmechanische Nachweise.",
+    "vortriebsAussenradiusR": "Vortriebs-Aussenradius (R):",
+    "gebirgsdruckPGRadialspannung": "Gebirgsdruck (p_g / Radialspannung):",
+    "hinweis010Mpa": "Hinweis: 0,10 MPa ≈ 10 t/m² vertikale Auflast.",
+    "sicherungsdickeD": "Sicherungsdicke (d):",
+    "betonfestigkeitsklasseSpritzbeton": "Betonfestigkeitsklasse (Spritzbeton):",
+    "ringdruckkraftNRing": "Ringdruckkraft (N_ring):",
+    "ringdruckspannungRing": "Ringdruckspannung (σ_Ring):",
+    "bemessungsfestigkeitFCdTemp": "Bemessungsfestigkeit (f_cd,temp):",
+    "auslastungsgrad": "Auslastungsgrad (η):",
+    "ringnormalspannungsformelRingPG": "Ringnormalspannungsformel: σ_Ring = (p_g · R) / d Teilsicherheitsbeiwert Bauzustand: γ_c = 1,3 (Lehrannahme)",
+    "imLehrmodellAusreichendDie": "✓ Im Lehrmodell ausreichend: Die Ringdruckspannung liegt unter dem Bemessungswert der Spritzbetonfestigkeit.",
+    "imLehrmodellNichtAusreichend": "✗ Im Lehrmodell nicht ausreichend: Die Ringdruckspannung übersteigt den Bemessungswert. Erhöhen Sie die Dicke oder die Festigkeitsklasse."
+  },
+  "werte": {
+    "hinweis010Mpa": "Hinweis: 0,10 MPa ≈ 10 t/m² vertikale Auflast.",
+    "betonfestigkeitsklasseSpritzbeton": "Betonfestigkeitsklasse (Spritzbeton)"
+  }
+}

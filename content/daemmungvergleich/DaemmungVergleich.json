@@ -1,0 +1,108 @@
+{
+  "texte": {
+    "innendämmungVsAußendämmung": " Innendämmung vs. Außendämmung",
+    "dieWahlZwischenInnendämmung": "Die Wahl zwischen Innendämmung und Außendämmung (z.B. WDVS) ist eine der wichtigsten bauphysikalischen Entscheidungen bei der energetischen Sanierung. Beide Systeme haben grundlegend unterschiedliche Auswirkungen auf den Temperaturverlauf, den Feuchteschutz und das Speicherverhalten der Wand.",
+    "außendämmungZBWdvs": "Außendämmung (z.B. WDVS)",
+    "außenKalt": "Außen (Kalt)",
+    "dieDämmschichtWirdAuf": "Die Dämmschicht wird auf der Außenseite des tragenden Mauerwerks angebracht. Das Mauerwerk befindet sich im warmen Bereich.",
+    "wärmespeicherMauerwerkSpeichertWärme": "**Wärmespeicher:** Mauerwerk speichert Wärme, gleicht Temperaturschwankungen aus.",
+    "wärmebrückenWerdenEffektivMinimiert": "**Wärmebrücken:** Werden effektiv minimiert (Dämmung \"packt\" das Haus ein).",
+    "tauwasserGeringesRisikoFür": "**Tauwasser:** Geringes Risiko für Tauwasserausfall im Bauteilinneren.",
+    "wohnraumKeinVerlustVon": "**Wohnraum:** Kein Verlust von Wohnfläche im Innenraum.",
+    "witterungsschutzSchütztDieTragstruktur": "**Witterungsschutz:** Schützt die Tragstruktur vor Frost und Schlagregen.",
+    "optikHistorischeOderErhaltenswerte": "**Optik:** Historische oder erhaltenswerte Fassaden gehen verloren.",
+    "aufwandGerüststellungErforderlichWitteru": "**Aufwand:** Gerüststellung erforderlich, witterungsabhängige Ausführung.",
+    "dickeFensterlaibungenWerdenTiefer": "**Dicke:** Fensterlaibungen werden tiefer (Schießscharten-Effekt).",
+    "außenKalt2": "Außen (Kalt)",
+    "dieDämmschichtWirdAuf2": "Die Dämmschicht wird auf der Rauminnenseite angebracht. Das tragende Mauerwerk kühlt im Winter stark aus.",
+    "fassadeErhaltVonHistorischen": "**Fassade:** Erhalt von historischen, denkmalgeschützten oder aufwendigen Fassaden.",
+    "flexibilitätRaumweiseSanierungMöglich": "**Flexibilität:** Raumweise Sanierung möglich, unabhängig vom Wetter.",
+    "aufheizzeitRäumeLassenSich": "**Aufheizzeit:** Räume lassen sich schneller aufheizen (da das Mauerwerk nicht mitgeheizt wird).",
+    "kostenKeinGerüstErforderlich": "**Kosten:** Kein Gerüst erforderlich.",
+    "tauwassergefahrHohesRisikoFür": "**Tauwassergefahr:** Hohes Risiko für Kondensation zwischen Dämmung und kalter Wand (Schimmelgefahr!). Erfordert eine (feuchtevariable) Dampfbremse oder ein kapillaraktives System mit Feuchtenachweis.",
+    "wärmebrückenEinbindendeInnenwändeUnd": "**Wärmebrücken:** Einbindende Innenwände und Holzbalkendecken bilden kritische Wärmebrücken (Gefahr von Balkenkopffäule).",
+    "wohnraumVerlustVonWohnfläche": "**Wohnraum:** Verlust von Wohnfläche.",
+    "installationSteckdosenUndLeitungen": "**Installation:** Steckdosen und Leitungen in der Außenwand sind problematisch.",
+    "fazitBauphysikalischeRegel": " Fazit & Bauphysikalische Regel",
+    "ausBauphysikalischerSichtIst": "Aus bauphysikalischer Sicht ist die **Außendämmung in der Regel zu bevorzugen**, da sie die Bausubstanz schützt und Wärmebrücken sowie Tauwasserprobleme minimiert. Die Innendämmung ist bei Denkmalschutz, erhaltenswerten Fassaden oder Grenzbebauung eine bewährte Lösung, erfordert aber eine sorgfältige Planung (Feuchtenachweis nach DIN 4108-3 bzw. hygrothermische Simulation nach WTA-Merkblatt 6-5 / DIN EN 15026, Schlagregenschutz der Fassade, Holzbalkenköpfe) und eine fehlerfreie, luftdichte Ausführung."
+  },
+  "werte": {
+    "beispiel1TemperaturHinter": "Beispiel 1: Temperatur hinter der Innendämmung im Vergleich zur Außendämmung",
+    "beiGleicherDämmwirkungLiegt": "Bei gleicher Dämmwirkung liegt die Grenzschicht der Innendämmung mit 1,5 °C weit unter dem Taupunkt der Raumluft (9,3 °C bei 20 °C / 50 % r. F.). Ohne Dampfbremse oder kapillaraktives System droht dort Tauwasser; das Mauerwerk liegt im Frostbereich.",
+    "stationärerTemperaturverlaufNachDin": "Stationärer Temperaturverlauf nach DIN EN ISO 6946:2018-03",
+    "beispiel2WoherKommt": "Beispiel 2: Woher kommt der Temperaturfaktor f_Rsi ≥ 0,70?",
+    "dieBestandswandAusBeispiel": "Die Bestandswand aus Beispiel 1 erreicht ungestört f = (15,4 + 5)/25 = 0,82; kritisch sind Ecken, Fensteranschlüsse und einbindende Innenwände, für die f_Rsi mit Wärmebrückenberechnung (DIN EN ISO 10211) nachzuweisen ist.",
+    "din410822013": "DIN 4108-2:2013-02 (Neuausgabe 2026-05 manuell abgleichen); DIN EN ISO 13788:2013-05",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Temperaturverläufe, Temperaturfaktor, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "DaemmungVergleich.schritte": [
+      {
+        "titel": "Bestandswand",
+        "erklaerung": "36,5 cm Vollziegel (λ = 0,68 W/(mK)), θ_i = 20 °C, θ_e = −5 °C:",
+        "formel": "R_T = 0{,}13 + \\frac{0{,}365}{0{,}68} + 0{,}04 = 0{,}71\\,\\text{m}^2\\text{K/W}, \\quad \\theta_{si} = 20 - \\frac{0{,}13}{0{,}71} \\cdot 25 = 15{,}4\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Mit 6 cm Dämmung (λ = 0,040)",
+        "erklaerung": "Zusätzlicher Widerstand R = 1,50 m²K/W; Oberfläche innen wird wärmer:",
+        "formel": "R_T = 2{,}21\\,\\text{m}^2\\text{K/W}, \\quad \\theta_{si} = 20 - \\frac{0{,}13}{2{,}21} \\cdot 25 = 18{,}5\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Grenzschicht bei Innendämmung",
+        "erklaerung": "Zwischen Dämmung und Mauerwerk:",
+        "formel": "\\theta = 20 - \\frac{0{,}13 + 1{,}50}{2{,}21} \\cdot 25 = 1{,}5\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Grenzschicht bei Außendämmung",
+        "erklaerung": "Zwischen Mauerwerk und Dämmung (von außen gerechnet):",
+        "formel": "\\theta = -5 + \\frac{0{,}04 + 1{,}50}{2{,}21} \\cdot 25 = 12{,}4\\,^\\circ\\text{C}"
+      }
+    ],
+    "DaemmungVergleich.schritte_2": [
+      {
+        "titel": "Dampfdruck der Raumluft",
+        "erklaerung": "Raumklima 20 °C / 50 % r. F. (Sättigungsdampfdruck nach Magnus-Formel):",
+        "formel": "p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}"
+      },
+      {
+        "titel": "Schimmelkriterium",
+        "erklaerung": "An der Oberfläche darf die relative Feuchte 80 % nicht überschreiten:",
+        "formel": "p_{sat}(\\theta_{si,min}) = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "Temperaturfaktor",
+        "erklaerung": "Bezogen auf −5 °C Außentemperatur:",
+        "formel": "f_{Rsi} = \\frac{12{,}6 - (-5)}{20 - (-5)} = 0{,}70"
+      }
+    ],
+    "DaemmungVergleich.literatur": [
+      "Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017",
+      "Künzel, H. M.: Verfahren zur ein- und zweidimensionalen Berechnung des gekoppelten Wärme- und Feuchtetransports in Bauteilen mit einfachen Kennwerten. Dissertation, Universität Stuttgart 1994"
+    ],
+    "DaemmungVergleich.regelwerke": [
+      {
+        "title": "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt 2018-10)"
+      },
+      {
+        "title": "WTA-Merkblatt 6-4-16/D (Innendämmung nach WTA I: Planungsleitfaden, Ausgabe 10.2016)",
+        "url": "https://www.wta-international.org/"
+      },
+      {
+        "title": "WTA-Merkblatt 6-5-14/D (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren, Ausgabe 2014)",
+        "url": "https://www.wta-international.org/"
+      }
+    ],
+    "DaemmungVergleich.formeln": [
+      {
+        "formel": "\\theta_{si} = T_{\\text{innen}} - \\frac{R_{si}}{R_T} \\cdot (T_{\\text{innen}} - T_{\\text{aussen}})",
+        "erklaerung": "Innere Oberflächentemperatur der Wand $\\theta_{si}$: Schimmelpilzbildung droht bereits, wenn an der Oberfläche 80 % r. F. erreicht werden (bei 20 °C / 50 % r. F. innen ab ca. 12,6 °C, d. h. $f_{Rsi} < 0{,}70$) – also oberhalb der Taupunkttemperatur (ca. 9,3 °C). Erst unterhalb des Taupunkts fällt Tauwasser aus.",
+        "quelle": "DIN EN ISO 6946; DIN 4108-2"
+      },
+      {
+        "formel": "f_{Rsi} = \\frac{\\theta_{si} - T_e}{T_i - T_e} \\ge 0{,}70",
+        "erklaerung": "Temperaturfaktor f_Rsi an der ungünstigsten Stelle zur Vermeidung von Schimmelpilzwachstum (entspricht ca. 12,6 °C Oberflächentemperatur bei 20 °C / 50 % r. F. innen und −5 °C außen; Kriterium 80 % r. F. an der Oberfläche).",
+        "quelle": "DIN 4108-2:2013-02 (Neuausgabe 2026-05 – Änderungen manuell prüfen)"
+      }
+    ]
+  }
+}

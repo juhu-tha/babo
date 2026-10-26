@@ -1,0 +1,102 @@
+{
+  "texte": {
+    "praxisGerätepoolFachDatenblätter": "Praxis-Gerätepool & Fach-Datenblätter",
+    "wählenSieEinPrüfgerät": "Wählen Sie ein Prüfgerät aus, um detaillierte normative und bautechnische Spezifikationen einzusehen.",
+    "relevanteNormRegelwerk": "Relevante Norm / Regelwerk",
+    "typischerEinsatzzweck": "Typischer Einsatzzweck",
+    "technischeMethodischeDetails": "Technische & Methodische Details",
+    "mechanischRückprall": " Mechanisch (Rückprall)",
+    "akustischUsIe": " Akustisch (US, IE)",
+    "thermischStrahlung": " Thermisch & Strahlung",
+    "holzFeuchte": " Holz & Feuchte",
+    "dgzfpRichtlinien": " DGZfP & Richtlinien"
+  },
+  "werte": {
+    "gering10": "Gering (< 10%)",
+    "hoch90": "Hoch (> 90%)",
+    "mittelUnsicher": "Mittel (unsicher)",
+    "sehrTrockenesBauteilOder": "Sehr trockenes Bauteil oder extrem dichtes Gefüge (z.B. Silicafume/HSPC). Eine Korrosionsinitiierung ist thermodynamisch extrem unwahrscheinlich.",
+    "feuchterChloridbelasteterOderKarbonatisi": "Feuchter, chloridbelasteter oder karbonatisierter Beton. Aktiver Korrosionsstrom kann ungehindert fließen (Lochfraßgefahr).",
+    "durchschnittlicherFeuchteUndCarbonatisie": "Durchschnittlicher Feuchte- und Carbonatisierungsgrad. Geringe bis moderate Ausbreitungsgeschwindigkeit.",
+    "vorwiegendTrockenHoheBetondichte": "Vorwiegend trocken, hohe Betondichte. Sehr geringe Schädigungsdynamik.",
+    "klasseISehrNiedrig": "Klasse I (Sehr niedrig)",
+    "hervorragendDicht": "Hervorragend dicht",
+    "maximaleDauerhaftigkeitDasBauteil": "Maximale Dauerhaftigkeit. Das Bauteil besitzt einen sehr guten Widerstand gegen Karbonatisierung und Chlorideindringung.",
+    "klasseVSehrHoch": "Klasse V (Sehr hoch)",
+    "ungenügendSehrOffenporig": "Ungenügend / Sehr offenporig",
+    "extremDurchlässigesPorensystemDringender": "Extrem durchlässiges Porensystem. Dringender Sanierungsbedarf oder zusätzliche hydrophobierende Applikation angeraten.",
+    "klasseIvHoch": "Klasse IV (Hoch)",
+    "minderwertigerSchutz": "Minderwertiger Schutz",
+    "erhöhtesRisikoFürBewehrungskorrosion": "Erhöhtes Risiko für Bewehrungskorrosion. Die Karbonatisierungsfront schreitet beschleunigt voran.",
+    "klasseIiiMittel": "Klasse III (Mittel)",
+    "durchschnittlicherBetonüberdeckungswider": "Durchschnittlicher Betonüberdeckungswiderstand. Standardbeton ohne gesonderte Expositionsklassenschutz-Vorgaben.",
+    "klasseIiNiedrig": "Klasse II (Niedrig)",
+    "guteQualität": "Gute Qualität",
+    "sicheresBauteilverhaltenAusreichenderPor": "Sicheres Bauteilverhalten. Ausreichender Porenwiderstand für reguläre Umwelteinflüsse.",
+    "kritischeBetonfeuchte85Die": "Kritische Betonfeuchte (> 85%): Die Messung ist extrem fehleranfällig und ungültig! Wasser blockiert den Porenraum, wodurch der gemessene kT-Wert künstlich gegen Null fällt.",
+    "hoheBetonfeuchte70Die": "Hohe Betonfeuchte (> 70%): Die tatsächliche Gaspermeabilität ist durch okkludiertes Porenwasser beeinträchtigt. Der reale kT-Wert ist schätzungsweise um den Faktor 2-5 höher.",
+    "wasserabweisendHydrophob": "Wasserabweisend (Hydrophob)",
+    "sehrGuteSperrwirkungGegen": "Sehr gute Sperrwirkung gegen eindringende Flüssigkeiten. Extrem hohe Lebensdauer bei Schlagregenbelastung.",
+    "starkSaugendAbsorbierend": "Stark saugend (Absorbierend)",
+    "baustoffSaugtFeuchtigkeitGierig": "Baustoff saugt Feuchtigkeit gierig auf. Extreme Frost-Tau-Schadensgefahr und beschleunigter Carbonatisierungsgrad.",
+    "ausreichendeReduzierungDerSaugwirkung": "Ausreichende Reduzierung der Saugwirkung. Regellösung für gut ausgeführte mineralische Außenputze.",
+    "keineAuffälligkeiten": "Keine Auffälligkeiten",
+    "deutlicherHohlraumAblösung": "Deutlicher Hohlraum / Ablösung",
+    "möglicheFehlstelle": "Mögliche Fehlstelle",
+    "schlechtZuDickDicht": "Schlecht (zu dick/dicht)",
+    "horizontal0": "Horizontal (0°)",
+    "nachUnten90": "Nach unten (+90°)",
+    "nachOben90": "Nach oben (-90°)",
+    "druckfestigkeitFCN": "Druckfestigkeit f_c [N/mm²]",
+    "rückprallzahlR": "Rückprallzahl R [-]",
+    "keineAngabe": "Keine Angabe",
+    "zerstörungsfreiePrüfung": "Zerstörungsfreie Prüfung",
+    "keyframesScan0Transform": "\n        @keyframes scan {\n          0% { transform: translateX(0); }\n          100% { transform: translateX(1000%); }\n        }\n      "
+  },
+  "daten": {
+    "ZfP.weblinks": [
+      {
+        "title": "Deutsche Gesellschaft für Zerstörungsfreie Prüfung e.V. (DGZfP)",
+        "url": "https://www.dgzfp.de"
+      }
+    ],
+    "ZfP.literatur": [
+      "Schickert, M.: Verfahren der zerstörungsfreien Prüfung im Bauwesen.",
+      "DGZfP-Merkblatt B 04: Ultraschallverfahren zur Zerstörungsfreien Prüfung im Bauwesen."
+    ],
+    "ZfP.regelwerke": [
+      {
+        "title": "DIN EN 12504-2 (Prüfung von Beton - Bestimmung der Rückprallzahl)"
+      },
+      {
+        "title": "DIN EN 12504-4 (Prüfung von Beton - Bestimmung der Ultraschalllaufzeit)"
+      },
+      {
+        "title": "DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen)",
+        "url": "https://publikationen.dgzfp.de/"
+      }
+    ],
+    "ZfP.formeln": [
+      {
+        "formel": "E_{dyn} = \\rho \\cdot v^2 \\cdot \\frac{(1+\\nu)(1-2\\nu)}{1-\\nu}",
+        "erklaerung": "Dynamischer Elastizitätsmodul E_{dyn} aus der Ultraschall-Impulsgeschwindigkeit v (mit Dichte \\rho und Querdehnzahl \\nu).",
+        "quelle": "DIN EN 12504-4"
+      },
+      {
+        "formel": "d = \\frac{v \\cdot t}{2}",
+        "erklaerung": "Tiefenberechnung beim akustischen Impuls-Echo-Verfahren aus Ultraschallgeschwindigkeit v und Reflexionslaufzeit t.",
+        "quelle": "DGZfP-Merkblatt B 04"
+      },
+      {
+        "formel": "d = \\frac{c_0}{\\sqrt{\\varepsilon_r}} \\cdot \\frac{t}{2}",
+        "erklaerung": "Tiefenberechnung beim Boden- und Betonradar (GPR): c_0 = Lichtgeschwindigkeit im Vakuum, \\varepsilon_r = relative Dielektrizitätskonstante des Baustoffs, t = Signallaufzeit.",
+        "quelle": "DGZfP Richtlinie B1"
+      },
+      {
+        "formel": "I = I_0 \\cdot e^{-\\mu \\cdot d}",
+        "erklaerung": "Lambert-Beersches Schwächungsgesetz für Durchstrahlungsprüfungen (Röntgen- / Gammametrie): I_0 = Ursprungsintensität, \\mu = linearer Schwächungskoeffizient, d = Bauteildicke.",
+        "quelle": "DIN EN ISO 5579"
+      }
+    ]
+  }
+}

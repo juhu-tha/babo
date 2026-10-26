@@ -1,0 +1,95 @@
+{
+  "texte": {
+    "bruchmechanikLinearElastisch": " Bruchmechanik (Linear-elastisch)",
+    "dieBruchmechanikBefasstSich": "Die Bruchmechanik befasst sich mit der Rissausbreitung in rissbehafteten Bauteilen. Die linear-elastische Bruchmechanik (LEBM) beschreibt spröde Werkstoffe wie Glas sehr gut. Beton ist dagegen quasi-spröde: Vor der Rissspitze bildet sich eine ausgedehnte Bruchprozesszone, daher werden dort nichtlineare Modelle (z. B. fiktives Rissmodell nach Hillerborg mit der Bruchenergie G_F) verwendet.",
+    "spannungsintensitätKI": "Spannungsintensität K_I:",
+    "ausnutzungKIK": "Ausnutzung K_I / K_Ic:",
+    "rissmodellKantenriss": "Rissmodell (Kantenriss)",
+    "spannungsintensitätVsRisslänge": "Spannungsintensität vs. Risslänge",
+    "schematischeDarstellungRissöffnungsmodi": "Schematische Darstellung: Rissöffnungsmodi",
+    "dieBruchmechanikUnterscheidetDrei": "Die Bruchmechanik unterscheidet drei Rissöffnungsarten. Modus I (Öffnung durch Normalspannung senkrecht zum Riss) ist in der Praxis meist maßgebend. Modus II (ebener Schub) und Modus III (nicht-ebener Schub) entstehen durch Schubspannungen."
+  },
+  "werte": {
+    "spannungsintensitätKI": "Spannungsintensität K_I",
+    "risszähigkeitKIcGrenzwert": "Risszähigkeit K_Ic (Grenzwert)",
+    "aktuellerZustand": "Aktueller Zustand",
+    "risslängeAMm": "Risslänge a [mm]",
+    "spannungsintensitätKIMpa": "Spannungsintensität K_I [MPa√m]",
+    "dieVonAußenAufgebrachte": "Die von außen aufgebrachte Nennspannung im ungestörten Bauteilquerschnitt.",
+    "dieLängeDesPrimären": "Die Länge des primären Risses (bzw. halbe Risslänge bei Innenrissen).",
+    "risslängeA": "Risslänge (a)",
+    "korrekturbeiwertFürDieBauteilgeometrie": "Korrekturbeiwert für die Bauteilgeometrie, Risslage und Einspannbedingungen.",
+    "geometriefaktorY": "Geometriefaktor (Y)",
+    "kritischerSpannungsintensitätsfaktorBeiD": "Kritischer Spannungsintensitätsfaktor, bei dem instabile Rissausbreitung beginnt. Richtwerte: Glas ≈ 0,75; Beton ≈ 0,5–1,5 (scheinbar, größenabhängig); Baustahl ≈ 50–150 MPa√m.",
+    "risszähigkeitKIc": "Risszähigkeit (K_{Ic})",
+    "kIKIc": "K_I ≥ K_Ic: instabile Rissausbreitung (Bruch)",
+    "beispiel1WarumBricht": "Beispiel 1: Warum bricht Glas schon bei geringen Spannungen?",
+    "einHalberMillimeterKantenverletzung": "Ein halber Millimeter Kantenverletzung senkt die Festigkeit weit unter die charakteristische Biegezugfestigkeit von 45 MPa – deshalb werden Glaskanten geschliffen und Gläser vorgespannt.",
+    "lebmNachIrwinVgl": "LEBM nach Irwin; vgl. Gross/Seelig 2016",
+    "beispiel2IstEin": "Beispiel 2: Ist ein 10 mm tiefer Riss in einem Stahlblech gefährlich?",
+    "statischUnkritischUnterWiederholter": "Statisch unkritisch – unter wiederholter Belastung kann der Riss aber durch Ermüdung wachsen. Bei tiefen Temperaturen sinkt die Zähigkeit (Gütegruppe nach DIN EN 1993-1-10 wählen).",
+    "lebmStahlgütewahlNachDin": "LEBM; Stahlgütewahl nach DIN EN 1993-1-10",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: LEBM, Risszähigkeiten und Grenzen für Beton geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Bruchmechanik.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Kalk-Natron-Glas, K_Ic ≈ 0,75 MPa√m; Kratzer an der Kante mit Tiefe a = 0,5 mm, Kantenriss Y = 1,12.",
+        "formel": "a = 0{,}5\\,\\text{mm} = 5 \\cdot 10^{-4}\\,\\text{m}"
+      },
+      {
+        "titel": "Kritische Spannung",
+        "erklaerung": "Umstellen des Bruchkriteriums K_I = K_Ic nach σ:",
+        "formel": "\\sigma_c = \\frac{0{,}75}{1{,}12 \\cdot \\sqrt{\\pi \\cdot 5 \\cdot 10^{-4}}} = 16{,}9\\,\\text{MPa}"
+      }
+    ],
+    "Bruchmechanik.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Baustahl mit K_Ic ≈ 100 MPa√m, Nennspannung 200 MPa, Kantenriss a = 10 mm (Y = 1,12).",
+        "formel": "a = 0{,}010\\,\\text{m}"
+      },
+      {
+        "titel": "Spannungsintensität",
+        "erklaerung": "Einsetzen:",
+        "formel": "K_I = 1{,}12 \\cdot 200 \\cdot \\sqrt{\\pi \\cdot 0{,}010} = 39{,}7\\,\\text{MPa}\\sqrt{\\text{m}}"
+      },
+      {
+        "titel": "Sicherheit gegen instabiles Risswachstum",
+        "erklaerung": "Verhältnis zur Risszähigkeit:",
+        "formel": "\\eta = \\frac{100}{39{,}7} = 2{,}5"
+      }
+    ],
+    "Bruchmechanik.regelwerke": [
+      {
+        "title": "fib Model Code for Concrete Structures 2010 (Bruchenergie G_F, Zugentfestigung)",
+        "url": "https://www.fib-international.org/"
+      },
+      {
+        "title": "RILEM TC 50-FMC (1985): Bestimmung der Bruchenergie von Mörtel und Beton am gekerbten Balken",
+        "url": "https://www.rilem.net/"
+      },
+      {
+        "title": "ISO 12737 (Metallische Werkstoffe – Bestimmung der Bruchzähigkeit bei ebener Dehnung K_Ic)"
+      }
+    ],
+    "Bruchmechanik.literatur": [
+      "Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. 6. Aufl., Berlin: Springer Vieweg 2016",
+      "Karihaloo, B. L.: Fracture Mechanics and Structural Concrete. Harlow: Longman 1995",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Bruchmechanik.formeln": [
+      {
+        "formel": "K_{\\text{I}} = Y \\cdot \\sigma \\cdot \\sqrt{\\pi \\cdot a} \\quad [\\text{MPa}\\sqrt{\\text{m}}]",
+        "erklaerung": "Spannungsintensitätsfaktor im Rissöffnungsmodus I nach Irwin: Y ist der Geometriefaktor des Bauteils, σ die anliegende Nennspannung und a die Risslänge.",
+        "quelle": "Gross, D.; Seelig, T.: Bruchmechanik"
+      },
+      {
+        "formel": "K_{\\text{I}} \\le K_{\\text{Ic}} \\iff \\eta = \\frac{K_{\\text{Ic}}}{K_{\\text{I}}} \\ge 1{,}0",
+        "erklaerung": "Linear-elastisches Bruchkriterium: Instabiles Risswachstum tritt ein, wenn der Spannungsintensitätsfaktor KI die werkstoffspezifische Risszähigkeit (kritischer Spannungsintensitätsfaktor KIc) erreicht oder übersteigt.",
+        "quelle": "Linear-Elastische Bruchmechanik (LEBM)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "texte": {
+    "bauproduktInnovationenFE": "Bauprodukt-Innovationen, F&E & Technology Readiness Level",
+    "forschungEntwicklungFE": "Forschung, Entwicklung (F&E) und Reifegradbewertung (TRL 1–9) neuartiger Baustoffe von der Laboridee bis zur DIBt-Zulassung",
+    "dieTransformationDerBauwirtschaft": "Die Transformation der Bauwirtschaft zur **Klimaneutralität (Net-Zero 2045)** und zur echten **Kreislaufwirtschaft** erfordert einen starken Innovationsschub. Ob klinkereffiziente Bindemittel, Carbonbeton, biobasierte Myzel-Dämmstoffe oder CO₂-mineralisierte Rezyklate: Baustoffinnovationen bewegen sich in einem hochregulierten Spannungsfeld zwischen **akademischer Grundlagenforschung**,**normativer Konformitätsprüfung (TRL 1–9)** und den strengen **Sicherheitsnachweisen der Musterbauordnung (MBO / DIBt)**.",
+    "aInnovationTransformation": " a) Innovation & Transformation",
+    "bTrlSkala1": " b) TRL-Skala (1–9) im Bauwesen",
+    "cFELandschaft": " c) F&E-Landschaft & Förderung",
+    "dZukunftswerkstoffeImPortrait": " d) Zukunftswerkstoffe im Portrait",
+    "eZulassungswegeDibtEta": " e) Zulassungswege (DIBt / ETA)",
+    "fInteraktiverTrlRechner": " f) Interaktiver TRL-Rechner",
+    "derDekarbonisierungsdruck": "Der Dekarbonisierungsdruck",
+    "dieZementUndBetonindustrie": "Die Zement- und Betonindustrie ist für rund **8 % der weltweiten Treibhausgasemissionen** verantwortlich. Nach dem Bundes-Klimaschutzgesetz (KSG) soll Deutschland bis 2045 treibhausgasneutral sein – das betrifft auch die Bauwirtschaft. Inkrementelle Optimierungen genügen nicht mehr – gefordert sind fundamentale **Werkstoff- und Technologieinnovationen**.",
+    "dasTalDesTodes": "Das \"Tal des Todes\" im Bauwesen",
+    "vieleVielversprechendeBaustoffeScheitern": "Viele vielversprechende Baustoffe scheitern beim Übergang von **TRL 4 (Laborversuch)** zu **TRL 7/8 (bauaufsichtliche Zulassung)**. Gründe sind hohe Kosten für Bauteilversuche, oft mehrjährige Prüf- und Zulassungsverfahren, Haftungsrisiken der Planer nach BGB/VOB sowie fehlende Regeln in den Eurocodes.",
+    "dieZirkularitätsWende": "Die Zirkularitäts-Wende",
+    "mitDemInkrafttretenDer": "Mit dem Inkrafttreten der **Ersatzbaustoffverordnung (EBV)** und der Neufassung der **EU-Bauprodukteverordnung (CPR)** rücken der Digitale Produktpass (DPP), Rezyklatanteile und die sortenreine Demontierbarkeit in den Fokus. Innovation bedeutet heute: Entwickle Baustoffe, die nicht nur halten, sondern am Lebensende wieder zu Primärrohstoffen werden.",
+    "spannungsfeldImBauproduktMarkt": "Spannungsfeld im Bauprodukt-Markt: Hemmnisse vs. Treiber",
+    "hemmnisseBarrieren": "Hemmnisse & Barrieren",
+    "treiberInnovationsEnabler": "Treiber & Innovations-Enabler",
+    "baurechtNormung": "Baurecht & Normung",
+    "konservativeDinEnNormen": "Konservative DIN EN-Normen, langwierige Zulassungsverfahren (abZ/aBG oft mehrere Jahre), hohe Prüfkosten.",
+    "reallaborGesetzeExperimentierklauselnIn": "Reallabor-Gesetze, Experimentierklauseln in den Landesbauordnungen (z. B. Gebäudetyps E), DIBt-Fast-Track für Nachhaltigkeit.",
+    "haftungVersicherung": "Haftung & Versicherung",
+    "mängelansprücheBeiBauwerkenVerjähren": "Mängelansprüche bei Bauwerken verjähren nach 5 Jahren (§ 634a BGB); Haftpflichtversicherer erwarten die Einhaltung der anerkannten Regeln der Technik.",
+    "vorhabenbezogeneBauartgenehmigungenVbgHe": "Vorhabenbezogene Bauartgenehmigungen (vBG), herstellergestützte Systemgarantien und Zertifikate durch akkreditierte Prüfstellen (BAM, Fraunhofer).",
+    "hoheErstinvestitionenFürSkalierung": "Hohe Erstinvestitionen für Skalierung; fossile Standardbaustoffe sind subventioniert oder verfügen über abgeschriebene Großanlagen.",
+    "steigendeCoPreiseIm": "Steigende CO₂-Preise im EU-ETS, ESG-Kriterien bei Bankkrediten, Bepreisung des Grauen Kohlenstoffs (LCA) bei Gebäudezertifizierungen (DGNB, QNG).",
+    "lieferketteHandwerk": "Lieferkette & Handwerk",
+    "mangelndeErfahrungAufDer": "Mangelnde Erfahrung auf der Baustelle; Verarbeiter greifen aus Gewohnheit auf bekannte Standardmischungen zurück.",
+    "plugAndPlayFertigteile": "Plug-and-Play-Fertigteile, werkseitige Vorkonfektionierung, digitale Einbauanleitungen und Schulungsinitiativen der Hersteller.",
+    "die9TechnologyReadiness": "Die 9 Technology Readiness Levels (TRL) nach NASA / EU Horizon Europe für Bauprodukte",
+    "dieTrlSkalaUrsprünglich": "Die TRL-Skala (ursprünglich von der NASA in den 1970er Jahren entwickelt und heute von der Europäischen Kommission nach **ISO 16290:2013** standardisiert) misst den technischen Reifegrad einer Innovation auf einer Skala von 1 bis 9. Im Bauwesen unterscheidet man drei übergeordnete Abschnitte: **Forschung (TRL 1–3)**,**Entwicklung & Prototyp (TRL 4–6)** sowie **Zulassung & Marktreife (TRL 7–9)**.",
+    "wasBedeutetDasKonkret": "Was bedeutet das konkret auf der Baustelle / im Baustofflabor?",
+    "typischeFörderprogrammeAkteure": "Typische Förderprogramme & Akteure",
+    "fördererDfgDeutscheForschungsgemeinschaf": "• **Förderer:** DFG (Deutsche Forschungsgemeinschaft), EU Horizon Europe (Pillar 1 - ERC / Marie Curie).",
+    "akteureUniversitätenMaxPlanck": "• **Akteure:** Universitäten, Max-Planck-Institute, BAM (Bundesanstalt für Materialforschung).",
+    "kostenrahmen50000300": "• **Kostenrahmen:** 50.000 – 300.000 € (überwiegend Personalmittel für Doktoranden / Postdocs).",
+    "fördererZukunftBauBbsr": "• **Förderer:** Zukunft Bau (BBSR), ZIM (Zentrales Innovationsprogramm Mittelstand), KMU-innovativ.",
+    "akteureFraunhoferInstituteIbp": "• **Akteure:** Fraunhofer-Institute (IBP, WKI), industrielle F&E-Abteilungen, Zement- und Bauchemie-KMU.",
+    "kostenrahmen3000002": "• **Kostenrahmen:** 300.000 – 2.000.000 € (Pilotanlagen, Prüfkörper, Versuchsserien).",
+    "fördererEuInnovationFund": "• **Förderer:** EU Innovation Fund, BMWE Klimaschutzverträge, Reallabore der Energiewende.",
+    "akteureDibtMpaMaterialprüfanstalten": "• **Akteure:** DIBt, MPA (Materialprüfanstalten), Baukonzerne, Generalübernehmer, Investoren.",
+    "kostenrahmen1000000": "• **Kostenrahmen:** 1.000.000 – 10.000.000+ € (Zulassungsprüfungen, Brandprüfungen, Industrieanlagen).",
+    "phasenmodellEinesBaustoffF": "Phasenmodell eines Baustoff-F&E-Projekts",
+    "phase1SyntheseRezepturoptimierung": "Phase 1: Synthese & Rezepturoptimierung",
+    "reaktionskinetikPartikelgrößenverteilung": "Reaktionskinetik, Partikelgrößenverteilung (Sieblinie), rheologische Modellierung (Viskosität, Fließgrenze nach Bingham).",
+    "phase2DauerhaftigkeitsAlterungsprüfungen": "Phase 2: Dauerhaftigkeits- & Alterungsprüfungen",
+    "klimakammernFrostTauWechsel": "Klimakammern, Frost-Tau-Wechsel (CDF-Test nach CEN/TS 12390-9), Schnellkarbonatisierung unter 1–2 % CO₂, Sulfatwiderstand.",
+    "phase3BrandschutzToxikologieprüfung": "Phase 3: Brandschutz- & Toxikologieprüfung",
+    "brandprüfungImGroßofenDin": "Brandprüfung im Großofen (DIN EN 1363 / DIN EN 13501), Rauchgasentwicklung, Ausgasung flüchtiger organischer Verbindungen (VOC nach AgBB).",
+    "phase4ÖkobilanzierungLca": "Phase 4: Ökobilanzierung (LCA) & EPD-Erstellung",
+    "berechnungVonGwpGlobal": "Berechnung von GWP (Global Warming Potential), PE-NR (Primärenergie nicht erneuerbar) über den Lebenszyklus A1–A3, C1–C4 und D nach DIN EN 15804.",
+    "zentraleFördermittelgeberFürBau": "Zentrale Fördermittelgeber für Bau-Innovationen",
+    "zukunftBauBbsrBmwsb": "Zukunft Bau (BBSR / BMWSB)",
+    "förderungVonAngewandterForschung": "Förderung von angewandter Forschung im Hoch- und Ingenieurbau. Schwerpunkte: Klimagerechtes Bauen, zirkuläre Baustoffe, Digitalisierung und Holzbau.",
+    "zimZentralesInnovationsprogrammMittelsta": "ZIM – Zentrales Innovationsprogramm Mittelstand",
+    "förderungMarktnaherFueKooperationsprojek": "Förderung marktnaher FuE-Kooperationsprojekte zwischen mittelständischen Bauprodukt-Herstellern und Forschungsinstituten (Fördersätze und Höchstbeträge nach aktueller ZIM-Richtlinie – manuell prüfen).",
+    "horizonEuropeBuilt4peoplePartnership": "Horizon Europe – Built4People Partnership",
+    "multinationaleKonsortienZurDekarbonisier": "Multinationale Konsortien zur Dekarbonisierung des europäischen Gebäudebestands. Fokus auf Industrialisierung, Vorfertigung und CO₂-negative Materialien.",
+    "deutscheBundesstiftungUmweltDbu": "Deutsche Bundesstiftung Umwelt (DBU)",
+    "umweltNatur": "Umwelt & Natur",
+    "modellprojekteZumSchutzVon": "Modellprojekte zum Schutz von Ressourcen, Ersatz von Primärrohstoffen (z. B. Kies/Sand durch Lehm, Hanf, Myzel) und Schadstoffvermeidung.",
+    "strategischesDilemmaPatentrechtVs": "Strategisches Dilemma: Patentrecht vs. Normung im Bauingenieurwesen",
+    "währendInDerElektronik": "Während in der Elektronik- oder Pharmabranche Patente 20 Jahre lang Monopolrenditen sichern, gilt im Bauwesen eine Besonderheit:**Öffentliche Auftraggeber dürfen nach VOB/A § 7 keine geschützten Markennamen oder patentierte Alleinstellungsmerkmale ausschreiben**, es sei denn, es existiert keine andere marktreife Lösung. Hersteller innovativer Baustoffe müssen daher eine zweigleisige Strategie fahren: Verfahrenspatente für die chemische Herstellung sichern, gleichzeitig aber zügig auf **offene Normung (z. B. DIN SPEC, DIN EN)**oder DIBt-Zulassungen hinwirken, damit Planer die Technologie rechtlich belastbar in Leistungsverzeichnisse aufnehmen können.",
+    "bautechnischeVorteileImpact": " Bautechnische Vorteile & Impact",
+    "kritischeFlaschenhälseFE": " Kritische Flaschenhälse & F&E-Bedarf",
+    "aktuellerBauaufsichtlicherZulassungsstat": " Aktueller bauaufsichtlicher Zulassungsstatus:",
+    "vomLaborversuchZurBaustelle": "Vom Laborversuch zur Baustelle: Das deutsche und europäische Zulassungssystem",
+    "imDeutschenBauordnungsrechtMusterbauordn": "Im deutschen Bauordnungsrecht (Musterbauordnung MBO § 17 ff.) darf ein Bauprodukt nur verwendet werden, wenn es entweder einer harmonisierten europäischen Norm (hEN) oder einer nationalen DIN-Norm entspricht, oder wenn seine Verwendbarkeit durch einen **bauaufsichtlichen Verwendbarkeitsnachweis** nachgewiesen ist.",
+    "nationaleNachweiseÜberDas": "Nationale Nachweise über das DIBt",
+    "abzAllgemeineBauaufsichtlicheZulassung": "abZ – Allgemeine bauaufsichtliche Zulassung",
+    "beziehtSichAufDas": "Bezieht sich auf das **Bauprodukt selbst** (z. B. einen neuartigen Faserverbundwerkstoff oder ein Zementzusatzmittel). Geregelt durch das Deutsche Institut für Bautechnik (DIBt). Gültigkeit meist 5 Jahre.",
+    "abgAllgemeineBauartgenehmigung": "aBG – Allgemeine Bauartgenehmigung",
+    "beziehtSichAufDas2": "Bezieht sich auf das **Zusammenfügen von Bauprodukten zu Bauarten** (z. B. Bemessung und Verankerung von Carbonbeton-Trägern nach MBO § 16a). Wird seit 2017 zwingend getrennt von der abZ erteilt.",
+    "zieVbgZustimmungIm": "ZiE / vBG – Zustimmung im Einzelfall",
+    "fürEinKonkretesBauvorhaben": "Für ein **konkretes Bauvorhaben** bei der obersten Bauaufsicht des jeweiligen Bundeslandes. Ideal für Pilotbauwerke und Reallabore (TRL 7), bevor eine teure bundesweite abZ beantragt wird.",
+    "europäischeSchieneEotaCpr": "Europäische Schiene (EOTA / CPR)",
+    "eadEuropeanAssessmentDocument": "EAD – European Assessment Document",
+    "dieHarmonisierteEuropäischeBewertungsric": "Die harmonisierte europäische Bewertungsrichtlinie, die erarbeitet wird, wenn für ein neuartiges Produkt noch keine hEN existiert.",
+    "etaEuropeanTechnicalAssessment": "ETA – European Technical Assessment",
+    "europäischeTechnischeBewertungAuf": "Europäische Technische Bewertung auf Basis eines EAD. Ermöglicht die Anbringung der **CE-Kennzeichnung**und den freien Warenverkehr in allen 27 EU-Mitgliedsstaaten.",
+    "avcpSysteme11": "AVCP-Systeme (1+, 1, 2+, 3, 4)",
+    "festlegungObEineNotifizierte": "Festlegung, ob eine notifizierte Stelle (Notified Body) die werkseigene Produktionskontrolle (WPK) überwachen muss (bei tragenden Bauteilen meist AVCP 1 oder 1+).",
+    "typischerZulassungsFahrplanFür": "Typischer Zulassungs-Fahrplan für eine Baustoff-Innovation",
+    "antragstellungBeimDibtFestlegung": "Antragstellung beim DIBt, Festlegung des Prüfprogramms (Prüfplan durch Sachverständigenausschuss).",
+    "durchführungAllerStatischenDynamischen": "Durchführung aller statischen, dynamischen, Brand- und Alterungsprüfungen an akkreditierten MPAs.",
+    "begutachtungDerPrüfberichteIm": "Begutachtung der Prüfberichte im DIBt-Ausschuss, Erarbeitung des Zulassungsentwurfs, WPK-Einrichtung.",
+    "erteilungDerAbzAbg": "Erteilung der abZ / aBG, Veröffentlichung im DIBt-Register, Start der regulären Vermarktung (TRL 8/9).",
+    "interaktiverReifegradCheckErmitteln": "Interaktiver Reifegrad-Check: Ermitteln Sie den TRL Ihres Bauprodukt-Projekts",
+    "beantwortenSieDieFolgenden": "Beantworten Sie die folgenden Fragen entlang der Entwicklungskette eines Baustoffs, um den aktuellen Reifegrad (TRL 1–9), den nächsten technischen Meilenstein und passende Förderprogramme zu berechnen.",
+    "projektkriterienZutreffendesAnkreuzen": "Projektkriterien (Zutreffendes ankreuzen):",
+    "t1KonzeptRezepturFormuliert": "1. Konzept & Rezeptur formuliert (TRL 2+)",
+    "dasTheoretischeWirkprinzipUnd": "Das theoretische Wirkprinzip und die Rohstoffbasis sind wissenschaftlich fundiert definiert.",
+    "t2ImLaboratoriumValidiert": "2. Im Laboratorium validiert (TRL 4+)",
+    "standardisiertePrüfkörperZB": "Standardisierte Prüfkörper (z. B. Prismen) haben Festigkeits- und Dauerhaftigkeitstests bestanden.",
+    "t3TechnischerScaleUp": "3. Technischer Scale-Up im Werk (TRL 6+)",
+    "dasMaterialWurdeIn": "Das Material wurde in industriellen Mischern in realistischer Losgröße (ab 1 m³) erfolgreich hergestellt.",
+    "t4PrototypPilotbauwerkErrichtet": "4. Prototyp / Pilotbauwerk errichtet (TRL 7+)",
+    "derBaustoffWurdeIn": "Der Baustoff wurde in einem realen Reallabor oder Pilotgebäude (z. B. via ZiE/vBG) erfolgreich eingebaut.",
+    "t5BauaufsichtlicheZulassungLiegt": "5. Bauaufsichtliche Zulassung liegt vor (TRL 8+)",
+    "eineGültigeAbzAbg": "Eine gültige abZ / aBG des DIBt oder eine europäische ETA mit CE-Kennzeichnung ist vorhanden.",
+    "t6SerienproduktionMarkteinsatzTrl": "6. Serienproduktion & Markteinsatz (TRL 9)",
+    "dasProduktIstRegulär": "Das Produkt ist regulär lieferbar, in VOB-Ausschreibungen etabliert und besitzt eine WPK nach AVCP.",
+    "errechneterReifegrad": "Errechneter Reifegrad",
+    "technologyReadinessLevel": "Technology Readiness Level ",
+    "nächsterTechnologischerFlaschenhals": " Nächster technologischer Flaschenhals",
+    "empfohleneFörderschiene": " Empfohlene Förderschiene"
+  },
+  "werte": {
+    "grundlegendePrinzipienBeobachtetUnd": "Grundlegende Prinzipien beobachtet und beschrieben",
+    "technologiekonzeptUndOderAnwendung": "Technologiekonzept und/oder Anwendung formuliert",
+    "experimentellerNachweisDesKonzepts": "Experimenteller Nachweis des Konzepts (Proof of Concept)",
+    "technologieImLaboratoriumValidiert": "Technologie im Laboratorium validiert (Lab Scale)",
+    "technologieInRelevanterUmgebung": "Technologie in relevanter Umgebung validiert (Pilotversuch)",
+    "technologieInRelevanterUmgebung2": "Technologie in relevanter Umgebung demonstriert (Prototyp)",
+    "demonstrationDesSystemsIm": "Demonstration des Systems im Einsatzbereich (Reallabor / ZiE)",
+    "systemKomplettGeprüftUnd": "System komplett, geprüft und qualifiziert (abZ / ETA / aBG)",
+    "tatsächlichesSystemImPraxiseinsatz": "Tatsächliches System im Praxiseinsatz bewährt (Serienproduktion)",
+    "phaseIGrundlagenforschung": "Phase I: Grundlagenforschung",
+    "phaseIiAngewandteF": "Phase II: Angewandte F&E",
+    "phaseIiiMarktreifeNormung": "Phase III: Marktreife & Normung",
+    "literaturrecherchenTheoretischeThermodyn": "Literaturrecherchen, theoretische thermodynamische Simulationen von Bindemitteln, atomistische Kristallisationsmodelle (z. B. C-S-H-Phasenwachstum) im Reagenzglas.",
+    "formulierungKonkreterBaustoffRezepturen": "Formulierung konkreter Baustoff-Rezepturen (z. B. \"Kalzinierter Ton aus Bayern + Wasserglas als klinkerarmer Zementersatz\"). Erste theoretische Patentanmeldungen.",
+    "herstellungErsterKleinerMörtelprismen": "Herstellung erster kleiner Mörtelprismen (40 × 40 × 160 mm). Messung von Früh- und 28-Tage-Druckfestigkeit im Universitätslabor. Erste qualitative Machbarkeitsbestätigung.",
+    "systematischePrüfreihenNachNorm": "Systematische Prüfreihen nach Norm (DIN EN 196, DIN EN 12390). Kalorimetrie, Schwindmessungen, Frost-Tau-Widerstand und Karbonatisierungstests. Werkstoffkennwerte statistisch erfasst.",
+    "hochskalierungVomLaborrührwerkAuf": "Hochskalierung vom Laborrührwerk auf den 1-m³-Mischer im Transportbetonwerk. Prüfung von Pumpfähigkeit, Verarbeitbarkeitszeit (90 Minuten) und Konsistenzverlust bei Sommer-/Wintertemperaturen.",
+    "herstellungRealerBauteileIm": "Herstellung realer Bauteile im Werk (z. B. eine 6 m lange Spannbetonplatte oder 100 m² Fassadenelemente). Belastungsversuche bis zum Bruch unter realistischen Randbedingungen.",
+    "einbauDesBaustoffsIn": "Einbau des Baustoffs in ein reales Referenzgebäude über eine \"Zustimmung im Einzelfall\" (ZiE) oder vorhabenbezogene Bauartgenehmigung (vBG). Installation von Sensoren zur Langzeitüberwachung.",
+    "erteilungDerAllgemeinenBauaufsichtlichen": "Erteilung der allgemeinen bauaufsichtlichen Zulassung (abZ) oder aBG durch das DIBt oder European Technical Assessment (ETA). Alle Prüfzeugnisse akkreditierter Institute liegen vor.",
+    "dasBauproduktIstRegulär": "Das Bauprodukt ist regulär im Baustofffachhandel gelistet, besitzt ein CE-Zeichen, eine Leistungserklärung (DoP) und wird in Standard-Ausschreibungstexten nach VOB/A genannt.",
+    "angewandtePrototypenPhase": "Angewandte Prototypen-Phase",
+    "zulassungVermarktung": "Zulassung & Vermarktung",
+    "führenSieGenormteReihenprüfungen": "Führen Sie genormte Reihenprüfungen an Mörtel- und Betonprismen durch. Priorisieren Sie Langzeitparameter wie Schwinden, Karbonatisierung und Chloridmigration, um Investoren von der Dauerhaftigkeit zu überzeugen.",
+    "verlassenSieDieLabormischung": "Verlassen Sie die Labormischung. Testen Sie das Material in einem realen Betonwerk unter Schwankungen der Feuchte der Gesteinskörnung und logistischer Verarbeitbarkeit von mindestens 90 Minuten.",
+    "bauenSieEinPilotprojekt": "Bauen Sie ein Pilotprojekt über eine Zustimmung im Einzelfall (ZiE) oder vorhabenbezogene Bauartgenehmigung (vBG). Reichen Sie gleichzeitig den Zulassungsantrag beim DIBt ein.",
+    "skalierenSieDasVertriebsnetzwerk": "Skalieren Sie das Vertriebsnetzwerk und etablieren Sie die werkseigene Produktionskontrolle (WPK). Initiieren Sie die Aufnahme in die relevanten DIN-Normenausschüsse.",
+    "dfgSachbeihilfeExistForschungstransfer": "DFG-Sachbeihilfe, EXIST-Forschungstransfer (für akademische Ausgründungen), EU Marie-Curie.",
+    "zukunftBauBbsrForschungsförderung": "Zukunft Bau (BBSR-Forschungsförderung), BMWE ZIM-Kooperationsprojekte, KMU-innovativ.",
+    "euInnovationFundBmwe": "EU Innovation Fund, BMWE Klimaschutzverträge, InvestEU, industrielle Pilotbau-Zuschüsse der Bundesländer.",
+    "anwendungsbeispielBewehrungsquerschnittS": "Anwendungsbeispiel: Bewehrungsquerschnitt Stahl vs. Carbon für 100 kN Zugkraft",
+    "lehrwerteFYdNach": "Lehrwerte: f_yd nach EC2; Bemessungswert Carbon als Lehrannahme (maßgebend Zulassung)",
+    "carbonSpartQuerschnittUnd": "Carbon spart Querschnitt und Deckung; der geringere E-Modul (Gitter je nach Produkt) kann aber Verformung und Rissbreite maßgebend machen.",
+    "technologyReadinessLevel": "Technology Readiness Level",
+    "deutschesInstitutFürBautechnik": "Deutsches Institut für Bautechnik (DIBt)"
+  },
+  "daten": {
+    "PRESETS": [
+      {
+        "id": "carbonbeton",
+        "name": "Carbonbeton & Textilbewehrung",
+        "category": "Hochleistungs-Verbundwerkstoffe",
+        "trlCurrent": 8,
+        "description": "Ersatz von korrosionsanfälligem Betonstahl durch nichtrostende Carbon- oder Basaltfasergitter mit Epoxid- oder mineralischer Matrix. Ermöglicht schlanke Bauteile mit nur 10–15 mm Betondeckung.",
+        "advantages": [
+          "Deutlich schlankere und leichtere Bauteile; CO₂-Einsparung durch geringeren Betonbedarf",
+          "Vollständige Korrosionsfreiheit gegenüber Tausalzen (keine Lochfraßkorrosion)",
+          "Zugfestigkeit der Carbonfaser (bis zu 3.000 MPa) ca. 6-mal höher als B500B"
+        ],
+        "bottlenecks": [
+          "Geringere Bruchdehnung (sprödes Versagen ohne ausgeprägte Fließzone)",
+          "Brandverhalten organischer Tränkungsmittel (Matrixabbau ab ca. 150 °C)",
+          "Recycling und Trennung der Carbonfasern am Lebensende (Szenario C)"
+        ],
+        "regulationPath": "Allgemeine bauaufsichtliche Zulassungen (abZ) und aBG für Einzelsysteme (z. B. TUDALIT, Solidian) beim DIBt; Normungsentwurf DIN 1045-100 in Vorbereitung.",
+        "foerderung": "BMBF Zwanzig20 \"C³ – Carbon Concrete Composite\", Zukunft Bau"
+      },
+      {
+        "id": "geopolymer",
+        "name": "Geopolymere & Alkalisch aktivierte Bindemittel (AAM)",
+        "category": "Zementfreie / Klinkereffiziente Bindemittel",
+        "trlCurrent": 6,
+        "description": "Bindemittel auf Basis von Alumosilikaten (kalzinierte Tone, Hüttensand, Flugaschen), die mit alkalischen Aktivatoren (Wasserglas, Natronlauge) polykondensieren – ohne Portlandzementklinker.",
+        "advantages": [
+          "Bis zu 75 % weniger CO₂-Emissionen im Vergleich zu reinem CEM I",
+          "Extrem hohe Säure- und Sulfatbeständigkeit (z. B. im Abwasserbereich / Biogas)",
+          "Hervorragende thermische Beständigkeit bis 1.000 °C"
+        ],
+        "bottlenecks": [
+          "Handhabung hochalkalischer Aktivatorlösungen im Transportbetonwerk (Arbeitsschutz)",
+          "Stark schwankende Reaktivität regionaler Rohstoffe und Schwindneigung",
+          "Fehlende Langzeitdaten zur Passivierung von herkömmlichem Betonstahl"
+        ],
+        "regulationPath": "Vorhabenbezogene Bauartgenehmigungen (vBG) und Zustimmung im Einzelfall (ZiE); erste DIBt-Zulassungen für Betonfertigteile im Tiefbau.",
+        "foerderung": "Zukunft Bau (BBSR), Horizon Europe, ZIM"
+      },
+      {
+        "id": "myzelium",
+        "name": "Myzel-Baustoffe & Pilz-Biokomposite",
+        "category": "Zirkuläre Bio-Baustoffe",
+        "trlCurrent": 5,
+        "description": "Pilzmyzel (z. B. Ganoderma lucidum), das auf landwirtschaftlichen Reststoffen (Hanfschäben, Sägemehl, Stroh) wächst und diese zu druckfesten, formstabilen Dämm- und Akustikelementen verfilzt.",
+        "advantages": [
+          "100 % biobasiert, vollständig kompostierbar (Cradle-to-Cradle Gold-Potenzial)",
+          "Sehr gute Wärmeleitfähigkeit (λ ≈ 0,038 bis 0,042 W/(mK))",
+          "Natürlicher Brandschutz durch Chitinanteile in den Zellwänden (Klasse B2 / B1)"
+        ],
+        "bottlenecks": [
+          "Feuchteempfindlichkeit im ungeschützten Außenbereich (Gefahr von Schimmelwachstum)",
+          "Standardisierung von Rohstoffchargen bei biologischen Wachstumsprozessen",
+          "Inaktivierung des Myzels (Hitzebehandlung) erfordert genaue Prozesskontrolle"
+        ],
+        "regulationPath": "Bauaufsichtliche Verwendbarkeitsnachweise (abZ/ETA) bisher kaum vorhanden; Einsatz v. a. in Forschung, Innenausbau und Möbelbau.",
+        "foerderung": "BMBF Bioökonomie, DBU (Deutsche Bundesstiftung Umwelt), EU EIC"
+      },
+      {
+        "id": "biobeton",
+        "name": "Bakteriell selbstheilender Beton (Bio-Beton)",
+        "category": "Smarte Werkstoffe & Bionik",
+        "trlCurrent": 7,
+        "description": "Verkapselte Sporen von alkaliphilen Bodenbakterien (z. B. Bacillus pseudofirmus) zusammen mit Nährstoffen (Calciumlactat). Bei Rissbildung und Wassereintritt können die Bakterien Risse durch mikrobiell induzierte Calcitfällung (MICP) verschließen – im Labor bis ca. 0,4–0,5 mm Breite.",
+        "advantages": [
+          "Drastische Verlängerung der Bauwerkslebensdauer im Tief-, Wasser- und Tunnelbau",
+          "Verringerung von Instandhaltungs- und Sanierungskosten um bis zu 60 %",
+          "Perspektivisch geringerer Instandhaltungsaufwand (derzeit nicht auf w_k nach EC2 anrechenbar)"
+        ],
+        "bottlenecks": [
+          "Überlebensrate der Sporen unter hohem mechanischem Mischdruck und hohem pH-Wert (> 12,5)",
+          "Kostenaufschlag gegenüber Standardbetonzusatzmitteln",
+          "Reaktionskinetik benötigt einige Wochen Feuchtekontakt zur vollständigen Heilung"
+        ],
+        "regulationPath": "Zulassung als Betonzusatzmittel nach DIN EN 934-2 bzw. mit abZ/aBG für WU-Betonkonstruktionen (Wasserundurchlässige Bauwerke).",
+        "foerderung": "Horizon Europe, TU Delft Spin-off-Programme, Zukunft Bau"
+      },
+      {
+        "id": "ccu_beton",
+        "name": "CO₂-Mineralisierung & Sequestrierter Beton (CCU)",
+        "category": "Dekarbonisierung & Carbon Capture",
+        "trlCurrent": 8,
+        "description": "Injektion von industriell abgeschiedenem CO₂ in Frischbeton oder in aufbereitetes Betonabbruchgranulat. Das CO₂ reagiert mit Calciumhydroxid dauerhaft zu nanokristallinem Calciumcarbonat (CaCO₃).",
+        "advantages": [
+          "Dauerhafte Bindung von CO₂ als Calcit (Herstellerangaben: etwa 10–15 kg CO₂ je Tonne Rezyklat)",
+          "Erhöhung der Frühfestigkeit und Druckfestigkeit um 10–15 %",
+          "Bindet einen Teil des beim Klinkerbrennen freigesetzten CO₂ wieder"
+        ],
+        "bottlenecks": [
+          "Logistik und Bereitstellung von verflüssigtem CO₂ auf dem Recyclinghof / Betonwerk",
+          "Investitionskosten für Druck- oder Begasungskammern",
+          "Normative Anrechnung der negativen Emissionen in der Ökobilanz (EN 15804 Modul D/A1)"
+        ],
+        "regulationPath": "Bereits industriell eingesetzt (z. B. neustark, CarbonCure); in Deutschland Nachweis über DIN EN 206 / DIN 1045-2 bzw. Einzelregelungen (manuell prüfen).",
+        "foerderung": "Klimaschutzverträge (BMWE), Innovation Fund (EU), Zukunft Bau"
+      }
+    ],
+    "BpInnovationen.schritte": [
+      {
+        "titel": "1. Betonstahl B500B",
+        "formel": "f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2 \\Rightarrow A_s = 100\\,000/435 = 230\\,\\text{mm}^2",
+        "erklaerung": "Entspricht ca. 3 Ø 10."
+      },
+      {
+        "titel": "2. Carbonbewehrung",
+        "formel": "f_{fd} \\approx 1200\\,\\text{N/mm}^2 \\Rightarrow A_f = 100\\,000/1200 = 83\\,\\text{mm}^2",
+        "erklaerung": "Lehrannahme: Bemessungswert deutlich unter der Faserzugfestigkeit (Dauerstand, Verbund, Teilsicherheit)."
+      },
+      {
+        "titel": "3. Verhältnis",
+        "formel": "230/83 \\approx 2{,}8",
+        "erklaerung": "Weniger Bewehrungsquerschnitt – und kein Korrosionsschutz durch dicke Betondeckung nötig."
+      }
+    ],
+    "BpInnovationen.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Springer Vieweg 2011",
+      "Davidovits, J.: Geopolymer Chemistry and Applications. 5th ed., Saint-Quentin: Institut Géopolymère 2020",
+      "Deutscher Ausschuss für Stahlbeton (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“. DAfStb-Heft 660. Berlin: DIN Media 2024"
+    ],
+    "BpInnovationen.regelwerke": [
+      {
+        "title": "ISO 16290:2013 (Raumfahrtsysteme – Definition der Technology Readiness Levels und Bewertungskriterien)"
+      },
+      {
+        "title": "Musterbauordnung (MBO) §§ 16a bis 25 (Bauarten, Bauprodukte, Verwendbarkeitsnachweise, Ü-Zeichen)",
+        "url": "https://www.bauministerkonferenz.de/"
+      },
+      {
+        "title": "Verordnung (EU) 2024/3110 (neue Bauprodukteverordnung, ersetzt schrittweise (EU) Nr. 305/2011)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/3110/oj"
+      },
+      {
+        "title": "DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)"
+      }
+    ],
+    "BpInnovationen.formeln": [
+      {
+        "formel": "c_{\\text{min}} = \\max\\{c_{\\text{min,b}};\\; c_{\\text{min,dur}} + \\Delta c_{\\text{dur},\\gamma} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}};\\; 10\\,\\text{mm}\\}",
+        "erklaerung": "Mindestbetondeckung nach Eurocode 2 (Gl. 4.2). Bei nichtrostender Carbon- oder Textilbewehrung ist der Dauerhaftigkeitsanteil für Korrosionsschutz nicht nötig; maßgebend werden Verbund und Brandschutz – Werte nach Zulassung bzw. DAfStb-Richtlinie (oft 10–15 mm).",
+        "quelle": "DIN EN 1992-1-1, Gl. 4.2 / Zulassungen Carbonbeton"
+      },
+      {
+        "formel": "M_n(-\\text{Si-O-Al-O-})_n \\cdot w\\,\\text{H}_2\\text{O}",
+        "erklaerung": "Strukturformel von Polysialat-Geopolymeren (Alumosilikat-Netzwerk) durch alkalische Aktivierung von Puzzolanen ohne Calciumsilikathydrat (C-S-H).",
+        "quelle": "Davidovits Geopolymer Model"
+      },
+      {
+        "formel": "\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}",
+        "erklaerung": "Karbonatisierung: CO₂ wird in recyceltem Beton als stabiles Calcit gebunden (exotherm, ca. −114 kJ/mol bei flüssigem Wasser).",
+        "quelle": "Thermochemie (Standardbildungsenthalpien)"
+      }
+    ]
+  }
+}

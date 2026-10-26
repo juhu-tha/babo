@@ -1,6 +1,8 @@
 // Ausgelagert aus src/modules/Dauerhaftigkeit.tsx (AP 5.2)
 import { ShieldAlert, Layers, BookOpen, ArrowRight } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
+import inhalt from '@/content/dauerhaftigkeit/ThematischeLinks.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -8,12 +10,8 @@ export function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodu
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 mt-6">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Holz im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Holz-Baustofflehre:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadHolzIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -28,11 +26,9 @@ export function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodu
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Anisotropes Quellen/Schwinden (3D-Modell), Holzfestigkeiten (EC5) & Kennwerte.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.anisotropesQuellenSchwinden3d} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -52,11 +48,9 @@ export function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodu
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Holzprodukte & Praxis</span>
+            <span><MdText text={inhalt.texte.t2HolzproduktePraxis} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Konstruktionsvollholz, CLT, Vor- und Nachteile & Vorbemessungsrechner.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.konstruktionsvollholzCltVorUnd} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -76,11 +70,9 @@ export function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodu
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Holzzerstörende Pilze/Insekten, Witterung & baulicher Holzschutz nach DIN 68800.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.holzzerstörendePilzeInsektenWitterung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -103,12 +95,8 @@ export function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'baup
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 mt-6">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Kunststoffe im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Kunststoff-Werkstoffkunde:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadKunststoffeIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen2} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -123,11 +111,9 @@ export function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Eigenschaften</span>
+            <span><MdText text={inhalt.texte.t1BaustoffEigenschaften} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Thermoplasten vs. Duroplasten, E-Modul-Temperatur-Scherkurven & Arten.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.thermoplastenVsDuroplastenE} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -147,11 +133,9 @@ export function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik & Rechner</span>
+            <span><MdText text={inhalt.texte.t2MechanikRechner} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            PE-HD Folien, PVC-U Rohre, Flachdachbahnen (EPDM) & Dehnungsrechner.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.peHdFolienPvc} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -171,11 +155,9 @@ export function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Alterung & Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3AlterungDauerhaftigkeit} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            UV-Versprödung, Weichmacher-Auswaschung, Spannungsrisse & thermische Alterung.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.uvVersprödungWeichmacherAuswaschung} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -198,12 +180,8 @@ export function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bau
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 mt-6">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Mauerwerk & Stein im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Mauerwerkskunde:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadMauerwerkStein} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen3} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -218,11 +196,9 @@ export function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bau
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Eigenschaften</span>
+            <span><MdText text={inhalt.texte.t1BaustoffEigenschaften2} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Steinarten (Ziegel, KS, Porenbeton), Festigkeitsbemessung & Mauerwerksverbände im 3D-Modell.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.steinartenZiegelKsPorenbeton} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -242,11 +218,9 @@ export function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bau
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mauerwerksprodukte & Praxis</span>
+            <span><MdText text={inhalt.texte.t2MauerwerksproduktePraxis} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Hintermauer- und Vormauerziegel, Planblöcke, Mauermörtelarten & Herstellerlisten nach BauPVO.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.hintermauerUndVormauerziegelPlanblöcke} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -266,11 +240,9 @@ export function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bau
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Alterung & Denkmalschutz</span>
+            <span><MdText text={inhalt.texte.t3AlterungDenkmalschutz} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Salzkristallisation, Frostsprengung, chemischer Verwitterungsschutz & Sanierputze.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.salzkristallisationFrostsprengungChemisc} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -293,12 +265,8 @@ export function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'baup
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 mt-6">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Beton im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den verschiedenen Beton-Lehrbereichen:
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadBetonIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen4} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe / Betonpraxis */}
@@ -313,11 +281,9 @@ export function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Betontechnologie & Praxis</span>
+            <span><MdText text={inhalt.texte.t1BetontechnologiePraxis} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Expositionsklassen-Konfigurator, Nachbehandlungsrechner & Betondeckung.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.expositionsklassenKonfiguratorNachbehand} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -337,11 +303,9 @@ export function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Betonzulassung (Bauprodukt)</span>
+            <span><MdText text={inhalt.texte.t2BetonzulassungBauprodukt} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Transport- vs. Baustellenbeton, WPK-Überwachung, Ü-Zeichen & Abnahme.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.transportVsBaustellenbetonWpk} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -361,11 +325,9 @@ export function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'baup
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftung & Schäden</span>
+            <span><MdText text={inhalt.texte.t3DauerhaftungSchäden} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Karbonatisierung, Frost-Tausalz-Angriff, AKR-Treiben & Bewehrungskorrosion.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.karbonatisierungFrostTausalzAngriff} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -383,12 +345,8 @@ export function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprod
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 mt-6">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Metalle im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Baustofflehre (Basis, Anwendung und Alterung):
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadMetalleIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen5} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -403,11 +361,9 @@ export function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprod
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte2} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Physikalische Eigenschaften, Schmelzpunkt & Legierungen der Metalle.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.physikalischeEigenschaftenSchmelzpunktLe} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -427,11 +383,9 @@ export function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprod
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik & Praxis</span>
+            <span><MdText text={inhalt.texte.t2MechanikPraxis} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Plattenrechner, Kontaktkorrosions-Prüfung & Lieferantenlisten der BauPVO.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.plattenrechnerKontaktkorrosionsPrüfungLi} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -451,11 +405,9 @@ export function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprod
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit2} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Galvanische Zellen, Korrosionsarten & Schutz nach DIN EN ISO 12944.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.galvanischeZellenKorrosionsartenSchutz} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />

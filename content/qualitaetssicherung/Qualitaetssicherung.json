@@ -1,0 +1,90 @@
+{
+  "texte": {
+    "qualitätssicherungKonformitätswesen": " Qualitätssicherung & Konformitätswesen",
+    "gütesicherungImBetonbauWerkseigene": "Gütesicherung im Betonbau: werkseigene Produktionskontrolle (WPK), Konformitätskriterien für die Druckfestigkeit nach DIN EN 206 / DIN 1045-2, Betonbauqualitätsklassen (BBQ) nach DIN 1045-1000 und CSC-Nachhaltigkeitszertifizierung. Empfohlene Reihenfolge: von links nach rechts.",
+    "betonbauklassenBbq": " Betonbauklassen (BBQ)"
+  },
+  "werte": {
+    "betonbauklassenBbq": "Betonbauklassen (BBQ)",
+    "anwendungsbeispielKonformitätBeiStetiger": "Anwendungsbeispiel: Konformität bei stetiger Herstellung (C30/37)",
+    "dinEn206Abschnitt": "DIN EN 206, Abschnitt 8.2.1 i. V. m. DIN 1045-2 (σ ≥ 3 N/mm²)",
+    "konformWennFCm": "Konform, wenn f_cm ≥ 41,4 N/mm² und kein Einzelwert unter 33 N/mm² liegt.",
+    "betonWikiÜbereinstimmungsnachweis": "Beton.wiki: Übereinstimmungsnachweis",
+    "betonWikiBetonbauqualität": "Beton.wiki: BetonBauQualität",
+    "baunetzWissenZertifizierungDes": "Baunetz Wissen: Zertifizierung des CSC",
+    "dgnbKriteriumEnv13": "DGNB-Kriterium ENV1.3 (Neubau, Version 2023)"
+  },
+  "daten": {
+    "Qualitaetssicherung.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "f_{ck,cube} = 37\\,\\text{N/mm}^2,\\; n = 15,\\; s = 2{,}5\\,\\text{N/mm}^2",
+        "erklaerung": "Würfelprüfung, 15 Ergebnisse aus dem Beurteilungszeitraum."
+      },
+      {
+        "titel": "2. Standardabweichung ansetzen",
+        "formel": "\\sigma = \\max(s;\\,3{,}0) = 3{,}0\\,\\text{N/mm}^2",
+        "erklaerung": "Der Rechenwert darf 3 N/mm² nicht unterschreiten."
+      },
+      {
+        "titel": "3. Mittelwert-Kriterium",
+        "formel": "f_{cm} \\ge 37 + 1{,}48 \\cdot 3{,}0 = 41{,}4\\,\\text{N/mm}^2",
+        "erklaerung": "Mindestmittelwert der 15 Ergebnisse."
+      },
+      {
+        "titel": "4. Einzelwert-Kriterium",
+        "formel": "f_{ci} \\ge 37 - 4 = 33\\,\\text{N/mm}^2",
+        "erklaerung": "Gilt für jedes Einzelergebnis."
+      }
+    ],
+    "Qualitaetssicherung.weblinks.2": {
+      "title": "Concrete Sustainability Council (CSC)",
+      "url": "https://csc.eco/"
+    },
+    "Qualitaetssicherung.literatur": [
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001",
+      "Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Düsseldorf: Verlag Bau+Technik 2018",
+      "Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Qualitaetssicherung.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN EN 13670 / DIN 1045-3:2023-08 (Bauausführung, Überwachungsklassen)"
+      },
+      {
+        "title": "DIN 1045-1000:2023-08 (Grundlagen und Betonbauqualitätsklassen BBQ)"
+      },
+      {
+        "title": "DIN EN 12390-3:2019-10 (Druckfestigkeit von Probekörpern)"
+      },
+      {
+        "title": "CSC Technical Manual, Version 3.0 (2025-12)"
+      }
+    ],
+    "Qualitaetssicherung.formeln": [
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 4 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{N/mm}^2]",
+        "erklaerung": "Erstherstellung: mindestens 3 Ergebnisse; Mittelwert und jedes Einzelergebnis prüfen.",
+        "quelle": "DIN EN 206, Abschnitt 8.2.1"
+      },
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{N/mm}^2]",
+        "erklaerung": "Stetige Herstellung: mindestens 15 Ergebnisse; σ als Standardabweichung der Produktion, Rechenwert mindestens 3 N/mm².",
+        "quelle": "DIN EN 206, Abschnitt 8.2.1; DIN 1045-2"
+      },
+      {
+        "formel": "n = 1:\\; f_{ci} \\ge f_{ck} - 4; \\quad n = 2\\ldots4:\\; f_{cm} \\ge f_{ck} + 1; \\quad n = 5\\ldots6:\\; f_{cm} \\ge f_{ck} + 2",
+        "erklaerung": "Identitätsprüfung auf der Baustelle; zusätzlich gilt für jedes Einzelergebnis f_ci ≥ f_ck − 4.",
+        "quelle": "DIN EN 206, Anhang B"
+      },
+      {
+        "formel": "s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (f_{ci} - f_{cm})^2} \\quad [\\text{N/mm}^2]",
+        "erklaerung": "Empirische Standardabweichung der Prüfserie.",
+        "quelle": "DIN EN 206"
+      }
+    ]
+  }
+}

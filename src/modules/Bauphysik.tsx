@@ -29,47 +29,14 @@ import { Querverweis } from '@/src/components/ui/Querverweis';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
+import inhalt from '@/content/bauphysik/Bauphysik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
-const materialLibrary = [
-  { id: 'innenputz_gips', name: 'Gipsputz (Innen)', lambda: 0.35, mu: 10, density: 1000, c: 1000 },
-  { id: 'innenputz_kalk', name: 'Kalkputz (Innen)', lambda: 0.70, mu: 15, density: 1400, c: 1000 },
-  { id: 'aussenputz_zement', name: 'Zementputz (Außen)', lambda: 1.00, mu: 25, density: 1800, c: 1000 },
-  { id: 'mauerwerk_ziegel_hochloch', name: 'Hochlochziegel (HLZ)', lambda: 0.42, mu: 5, density: 800, c: 1000 },
-  { id: 'mauerwerk_ziegel_voll', name: 'Vollziegel (MZ)', lambda: 0.81, mu: 10, density: 1800, c: 1000 },
-  { id: 'mauerwerk_kalksandstein', name: 'Kalksandstein (KS)', lambda: 0.99, mu: 15, density: 2000, c: 1000 },
-  { id: 'mauerwerk_porenbeton', name: 'Porenbeton (PB)', lambda: 0.14, mu: 5, density: 400, c: 1000 },
-  { id: 'beton_normal', name: 'Normalbeton (Stahlbeton)', lambda: 2.30, mu: 80, density: 2400, c: 1000 },
-  { id: 'beton_leicht', name: 'Leichtbeton', lambda: 0.40, mu: 15, density: 1200, c: 1000 },
-  { id: 'daemmung_eps', name: 'EPS (Polystyrol-Partikelschaum)', lambda: 0.035, mu: 50, density: 20, c: 1450 },
-  { id: 'daemmung_xps', name: 'XPS (Polystyrol-Extruderschaum)', lambda: 0.035, mu: 150, density: 35, c: 1450 },
-  { id: 'daemmung_miwo', name: 'Mineralwolle (MiWo)', lambda: 0.035, mu: 1, density: 50, c: 1030 },
-  { id: 'daemmung_holzfaser', name: 'Holzfaserplatte (Bio)', lambda: 0.045, mu: 5, density: 160, c: 2100 },
-  { id: 'daemmung_pur', name: 'PUR/PIR Hartschaum', lambda: 0.025, mu: 100, density: 30, c: 1400 },
-  { id: 'holz_fichte', name: 'Fichte / Tanne (Vollholz)', lambda: 0.13, mu: 40, density: 450, c: 1600 },
-  { id: 'holz_eiche', name: 'Eiche (Hardwood)', lambda: 0.20, mu: 50, density: 700, c: 1600 },
-  { id: 'platte_osb', name: 'OSB-Platte', lambda: 0.13, mu: 200, density: 600, c: 1700 },
-  { id: 'platte_gipskarton', name: 'Gipskartonplatte (GKB)', lambda: 0.25, mu: 10, density: 800, c: 1000 },
-  { id: 'folie_pe', name: 'PE-Folie (Dampfsperre)', lambda: 0.50, mu: 100000, density: 900, c: 1500 },
-  { id: 'folie_klimamembran', name: 'Klimamembran', lambda: 0.50, mu: 2500, density: 1000, c: 1500 },
-  { id: 'luftschicht_ruhend', name: 'Luftschicht (ruhend, 2cm)', lambda: 0.13, mu: 1, density: 1.2, c: 1000 },
-  { id: 'stahl', name: 'Stahl', lambda: 50.00, mu: 1000000, density: 7850, c: 460 },
-  { id: 'glass', name: 'Glas', lambda: 1.00, mu: 1000000, density: 2500, c: 800 },
-  { id: 'custom', name: '✏️ Benutzerdefiniertes Material...', lambda: 0.08, mu: 10, density: 300, c: 1200 }
-];
+const materialLibrary = inhalt.daten.materialLibrary;
 
 // Room acoustics materials library with scalar and frequency octave band (125, 250, 500, 1000, 2000, 4000 Hz) absorption coefficients
-const acousticMaterials = [
-  { id: 'beton_roh', name: 'Sichtbeton / Estrich (hart)', alpha: 0.02, alphas: [0.01, 0.01, 0.02, 0.02, 0.02, 0.02] },
-  { id: 'putz_gips', name: 'Kalk-Gips-Verputz (glatt)', alpha: 0.04, alphas: [0.02, 0.03, 0.04, 0.05, 0.04, 0.03] },
-  { id: 'parkett', name: 'Holzparkett auf Balkenlage', alpha: 0.12, alphas: [0.15, 0.18, 0.12, 0.10, 0.10, 0.10] },
-  { id: 'teppich', name: 'Velours-Teppichboden (weich)', alpha: 0.25, alphas: [0.05, 0.10, 0.25, 0.40, 0.50, 0.60] },
-  { id: 'vorhang_schwer', name: 'Schwere Vorhangstoffe (gefaltet)', alpha: 0.45, alphas: [0.10, 0.25, 0.50, 0.60, 0.70, 0.70] },
-  { id: 'akustik_decke', name: 'Mineralfaser-Lochdecke', alpha: 0.70, alphas: [0.35, 0.55, 0.75, 0.80, 0.80, 0.75] },
-  { id: 'akustik_schaum', name: 'Melaminharz-Absorber (Basotect)', alpha: 0.85, alphas: [0.15, 0.45, 0.85, 0.95, 0.98, 0.95] },
-  { id: 'glass_fenster', name: 'Große Fensterflächen', alpha: 0.03, alphas: [0.10, 0.05, 0.04, 0.03, 0.03, 0.02] },
-  { id: 'fenster_offen', name: 'Offenes Fenster (vollständig)', alpha: 1.00, alphas: [1.00, 1.00, 1.00, 1.00, 1.00, 1.00] }
-];
+const acousticMaterials = inhalt.daten.acousticMaterials;
 
 export default function Bauphysik() {
   // Main tab controller: 'thermal_hygric' | 'summer_heat' | 'acoustics'
@@ -101,7 +68,7 @@ export default function Bauphysik() {
       if (l.matId === 'custom') {
         return {
           ...l,
-          name: l.customName || '✏️ Spezialbaustoff (Benutzerdefiniert)',
+          name: l.customName || inhalt.werte.spezialbaustoffBenutzerdefiniert,
           lambda: l.customLambda !== undefined ? l.customLambda : 0.08,
           mu: l.customMu !== undefined ? l.customMu : 10,
           density: l.customDensity !== undefined ? l.customDensity : 300,
@@ -171,7 +138,7 @@ export default function Bauphysik() {
       labels: t_labels,
       datasets: [
         {
-          label: 'Außenluft-Temperatur (°C) [T_a]',
+          label: inhalt.werte.außenluftTemperaturCT,
           data: t_outside,
           borderColor: '#A3113E', // rose-500
           backgroundColor: 'transparent',
@@ -181,7 +148,7 @@ export default function Bauphysik() {
           fill: false,
         },
         {
-          label: 'Innenwand-Oberflächen-Temperatur (°C) [T_si]',
+          label: inhalt.werte.innenwandOberflächenTemperaturC,
           data: t_inside,
           borderColor: '#475569', // sky-600
           backgroundColor: 'rgba(56, 189, 248, 0.1)', // sky-300 light overlay
@@ -247,28 +214,28 @@ export default function Bauphysik() {
     // DIN 18041:2016-03, Gruppe A: T_soll abhängig vom Raumvolumen; Toleranz 0,8 bis 1,2 · T_soll (250–2000 Hz)
     const lgV = Math.log10(Math.max(volume, 30));
     let T_target = Math.max(0.3, 0.32 * lgV - 0.17); // A3 Unterricht/Kommunikation
-    let roomLabel = 'Schul- / Unterrichtsraum (Nutzungsart A3)';
+    let roomLabel = inhalt.werte.schulUnterrichtsraumNutzungsartA3;
     let minTarget = 0.8 * T_target;
     let maxTarget = 1.2 * T_target;
 
     if (roomType === 'office') {
       // Gruppe B: keine T_soll-Anforderung, sondern A/V-Empfehlung; Orientierungswert
       T_target = 0.75;
-      roomLabel = 'Mehrpersonen-Büro / Kantine (Gruppe B, Orientierungswert)';
+      roomLabel = inhalt.werte.mehrpersonenBüroKantineGruppe;
       minTarget = 0.60;
       maxTarget = 0.85;
     } else if (roomType === 'hall') {
       T_target = Math.max(0.3, 0.37 * lgV - 0.14); // A2 Sprache/Vortrag
-      roomLabel = 'Hörsaal / Vortragssaal (Nutzungsart A2)';
+      roomLabel = inhalt.werte.hörsaalVortragssaalNutzungsartA2;
       minTarget = 0.8 * T_target;
       maxTarget = 1.2 * T_target;
     }
 
     const stateDesc = T > maxTarget 
-      ? 'Zu viel Nachhall: Die Sprachverständlichkeit sinkt.' 
+      ? inhalt.werte.zuVielNachhallDie 
       : T < minTarget 
-        ? 'Zu trocken (akustisch überdämpft): Sprechende müssen lauter sprechen.' 
-        : 'Nachhallzeit im Toleranzbereich nach DIN 18041.';
+        ? inhalt.werte.zuTrockenAkustischÜberdämpft 
+        : inhalt.werte.nachhallzeitImToleranzbereichNach;
 
     return {
       volume,
@@ -355,7 +322,7 @@ export default function Bauphysik() {
       labels: acousticsFrequencyResolved.labels,
       datasets: [
         {
-          label: 'Berechnete Nachhallzeit T(f) [s]',
+          label: inhalt.werte.berechneteNachhallzeitTF,
           data: acousticsFrequencyResolved.calculatedTimes,
           borderColor: '#A3113E', // Shiraz Primary color
           backgroundColor: '#A3113E',
@@ -366,7 +333,7 @@ export default function Bauphysik() {
           fill: false,
         },
         {
-          label: 'Optimum T_soll [s]',
+          label: inhalt.werte.optimumTSollS,
           data: acousticsFrequencyResolved.targetCenter,
           borderColor: '#475569', // Slate Gray
           borderWidth: 1.5,
@@ -375,7 +342,7 @@ export default function Bauphysik() {
           fill: false,
         },
         {
-          label: 'DIN 18041 Toleranz-Oberkante',
+          label: inhalt.werte.din18041ToleranzOberkante,
           data: acousticsFrequencyResolved.targetMax,
           borderColor: '#94A3B8', // Orange
           borderWidth: 1.2,
@@ -384,7 +351,7 @@ export default function Bauphysik() {
           fill: false,
         },
         {
-          label: 'DIN 18041 Toleranz-Unterkante',
+          label: inhalt.werte.din18041ToleranzUnterkante,
           data: acousticsFrequencyResolved.targetMin,
           borderColor: '#94A3B8', // Orange
           borderWidth: 1.2,
@@ -452,12 +419,8 @@ export default function Bauphysik() {
               <Activity size={24} className="animate-pulse" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-                Bauphysik-Zentrum d. TH Augsburg
-              </h2>
-              <p className="text-sm text-text-main/60 mt-0.5">
-                Simulationsrechner für U-Wert und Temperaturfaktor, sommerlichen Wärmeschutz und Nachhallzeit (DIN 18041)
-              </p>
+              <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.bauphysikZentrumDTh} /></h2>
+              <p className="text-sm text-text-main/60 mt-0.5"><MdText text={inhalt.texte.simulationsrechnerFürUWert} /></p>
             </div>
           </div>
         </div>
@@ -472,8 +435,7 @@ export default function Bauphysik() {
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <Thermometer size={14} /> Wärmeschutz (U-Wert &amp; f_Rsi)
-          </button>
+            <Thermometer size={14} /><MdText text={inhalt.texte.wärmeschutzUWertF} /></button>
           
           <button aria-pressed={activeTab === 'summer_heat'}
             onClick={() => setActiveTab('summer_heat')}
@@ -483,8 +445,7 @@ export default function Bauphysik() {
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <Sun size={14} /> Sommerlicher Wärmeschutz (Trägheit)
-          </button>
+            <Sun size={14} /><MdText text={inhalt.texte.sommerlicherWärmeschutzTrägheit} /></button>
 
           <button aria-pressed={activeTab === 'acoustics'}
             onClick={() => setActiveTab('acoustics')}
@@ -494,8 +455,7 @@ export default function Bauphysik() {
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <Volume2 size={14} /> Raumakustik (Nachhallzeit T)
-          </button>
+            <Volume2 size={14} /><MdText text={inhalt.texte.raumakustikNachhallzeitT} /></button>
         </div>
       </div>
 
@@ -509,14 +469,11 @@ export default function Bauphysik() {
             {/* Climate Conditions */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4 flex items-center gap-1.5">
-                <Thermometer size={14} className="text-shiraz" /> Klima-Randbedingungen &amp; Bauteil
-              </h3>
+                <Thermometer size={14} className="text-shiraz" /><MdText text={inhalt.texte.klimaRandbedingungenBauteil} /></h3>
 
               {/* Bauteil-Zuweisung und GEG Auswahl */}
               <div className="mb-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-1.5">
-                  Bauteil-Typ (Regelt R_si &amp; GModG/GEG Sollwert):
-                </label>
+                <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-1.5"><MdText text={inhalt.texte.bauteilTypRegeltR} /></label>
                 <select 
                   id="building-part-select"
                   aria-label="Bauteil-Typ"
@@ -537,12 +494,12 @@ export default function Bauphysik() {
                     <h4 className="font-bold text-xs text-shiraz mb-2">Innenklima</h4>
                     <div className="space-y-2">
                       <div className="flex justify-between text-[11px] font-bold text-slate-700">
-                        <span>Temperatur (T_i)</span>
+                        <span><MdText text={inhalt.texte.temperaturTI} /></span>
                         <span className="text-shiraz">{formatDeWert(Ti)} °C</span>
                       </div>
                       <input 
                         type="range" min="15" max="25" step="1" value={Ti} 
-                        aria-label="Innentemperatur Ti in °C"
+                        aria-label={inhalt.werte.innentemperaturTiInC}
                         onChange={(e) => setTi(Number(e.target.value))} 
                         className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                       />
@@ -555,12 +512,12 @@ export default function Bauphysik() {
                     <h4 className="font-bold text-xs text-blue-600 mb-2">Außenklima</h4>
                     <div className="space-y-2">
                       <div className="flex justify-between text-[11px] font-bold text-slate-700">
-                        <span>Temperatur (T_e)</span>
+                        <span><MdText text={inhalt.texte.temperaturTE} /></span>
                         <span className="text-blue-600">{formatDeWert(Te)} °C</span>
                       </div>
                       <input 
                         type="range" min="-20" max="5" step="1" value={Te} 
-                        aria-label="Außentemperatur Te in °C"
+                        aria-label={inhalt.werte.außentemperaturTeInC}
                         onChange={(e) => setTe(Number(e.target.value))} 
                         className="w-full accent-blue-600 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                       />
@@ -574,11 +531,10 @@ export default function Bauphysik() {
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
                 <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest flex items-center gap-1.5">
-                  <Layers size={14} className="text-slate-600" /> Bauteilschichten (Innen → Außen)
-                </h3>
+                  <Layers size={14} className="text-slate-600" /><MdText text={inhalt.texte.bauteilschichtenInnenAußen} /></h3>
                 <button 
                   onClick={addLayer}
-                  aria-label="Schicht hinzufügen (neue Bauteilschicht)"
+                  aria-label={inhalt.werte.schichtHinzufügenNeueBauteilschicht}
                   className="px-2.5 py-1 bg-shiraz hover:bg-slate-900 border border-transparent hover:border-slate-800 text-white rounded-lg text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-all uppercase tracking-wider shadow pointer-events-auto"
                 >
                   <Plus size={12} /> Schicht
@@ -593,7 +549,7 @@ export default function Bauphysik() {
                         <button 
                           onClick={() => moveLayer(index, 'up')} 
                           disabled={index === 0} 
-                          aria-label="Schicht nach oben verschieben"
+                          aria-label={inhalt.werte.schichtNachObenVerschieben}
                           className="text-slate-400 hover:text-shiraz disabled:opacity-20 cursor-pointer"
                         >
                           <ArrowUp size={14} />
@@ -601,7 +557,7 @@ export default function Bauphysik() {
                         <button 
                           onClick={() => moveLayer(index, 'down')} 
                           disabled={index === layers.length - 1} 
-                          aria-label="Schicht nach unten verschieben"
+                          aria-label={inhalt.werte.schichtNachUntenVerschieben}
                           className="text-slate-400 hover:text-shiraz disabled:opacity-20 cursor-pointer"
                         >
                           <ArrowDown size={14} />
@@ -698,17 +654,14 @@ export default function Bauphysik() {
             <NachErstemBild minHoehe="40rem">
             
             {/* Feuchteschutz: eine Quelle (AP 3.9) */}
-            <Querverweis ziel="feuchteschutz" titel="Tauwasser im Bauteil? → Glaser-Verfahren im Modul Feuchteschutz" linkText="Zum Glaser-Rechner (Feuchteschutz)">
-              <p>
-                Der hier berechnete Temperaturverlauf ist die Grundlage des Tauwassernachweises: Fällt der Wasserdampf-Partialdruck an einer Schichtgrenze bis auf den Sättigungsdampfdruck, entsteht Tauwasser. Das Glaser-Diagramm mit Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 wird an einer Stelle gepflegt – im Modul Feuchteschutz.
-              </p>
+            <Querverweis ziel="feuchteschutz" titel={inhalt.werte.tauwasserImBauteilGlaser} linkText={inhalt.werte.zumGlaserRechnerFeuchteschutz}>
+              <p><MdText text={inhalt.texte.derHierBerechneteTemperaturverlauf} /></p>
             </Querverweis>
 
             {/* Wärmeschutz-Bewertung */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4 flex items-center gap-1.5">
-                <Award size={14} className="text-shiraz" /> Wärmeschutz-Bewertung (GModG Anlage 7, DIN 4108-2)
-              </h3>
+                <Award size={14} className="text-shiraz" /><MdText text={inhalt.texte.wärmeschutzBewertungGmodgAnlage} /></h3>
 
               <EingabeHinweise hinweise={waerme.hinweise} />
               {/* GEG 2024 & DIN 4108-2 f_RSi Mold Risk overall Audit Panel */}
@@ -720,9 +673,9 @@ export default function Bauphysik() {
                   return (
                     <div className={`p-4 rounded-xl border ${isGegCompliant ? 'bg-emerald-50/40 border-emerald-150 text-emerald-950' : 'bg-red-50/40 border-red-150 text-red-950'}`}>
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">GModG Konformität (vormals GEG)</span>
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block"><MdText text={inhalt.texte.gmodgKonformitätVormalsGeg} /></span>
                         <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase ${isGegCompliant ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}`}>
-                          {isGegCompliant ? 'U-Wert konform' : 'U-Wert unzureichend'}
+                          {isGegCompliant ? inhalt.werte.uWertKonform : inhalt.werte.uWertUnzureichend}
                         </span>
                       </div>
                       <div className="text-xs space-y-0.5">
@@ -736,8 +689,8 @@ export default function Bauphysik() {
                         </div>
                         <div className="text-[9.5px] leading-relaxed text-slate-500 pt-1 border-t border-slate-200/50">
                           {isGegCompliant 
-                            ? 'Höchstwert nach GModG/GEG Anlage 7 (Änderung bestehender Gebäude) eingehalten. Für Neubauten gilt der Nachweis über das Referenzgebäude (§§ 15, 16).'
-                            : 'Der U-Wert überschreitet den Höchstwert nach GModG/GEG Anlage 7: Dämmstoffdicke erhöhen oder Dämmstoff mit kleinerem λ wählen.'
+                            ? inhalt.werte.höchstwertNachGmodgGeg
+                            : inhalt.werte.derUWertÜberschreitet
                           }
                         </div>
                       </div>
@@ -756,26 +709,26 @@ export default function Bauphysik() {
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Schimmelpilzkriterium</span>
                         <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase ${is_f_RSi_compliant ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}`}>
-                          {is_f_RSi_compliant ? 'Schimmelsicher' : 'Vorsicht! Schimmelgefahr'}
+                          {is_f_RSi_compliant ? 'Schimmelsicher' : inhalt.werte.vorsichtSchimmelgefahr}
                         </span>
                       </div>
                       <div className="text-xs space-y-0.5">
                         <div className="flex justify-between items-baseline">
-                          <span className="font-semibold text-slate-600">Oberflächentemperatur (θ_si mit R_si = 0,25):</span>
+                          <span className="font-semibold text-slate-600"><MdText text={inhalt.texte.oberflächentemperaturSiMitR} /></span>
                           <span className="font-mono text-slate-700 font-bold">{formatDeZahl(t_si, 1)} °C</span>
                         </div>
                         <div className="flex justify-between items-baseline">
-                          <span className="font-semibold text-slate-600">Ist-Wert f_RSi:</span>
+                          <span className="font-semibold text-slate-600"><MdText text={inhalt.texte.istWertFRsi} /></span>
                           <span className="font-mono font-black text-slate-900 text-[13px]">{formatDeZahl(f_RSi, 3)}</span>
                         </div>
                         <div className="flex justify-between items-baseline pb-1">
-                          <span className="font-semibold text-slate-600">Norm-Sollwert (DIN 4108-2):</span>
+                          <span className="font-semibold text-slate-600"><MdText text={inhalt.texte.normSollwertDin4108} /></span>
                           <span className="font-mono text-slate-500">≥ 0,700</span>
                         </div>
                         <div className="text-[9.5px] leading-relaxed text-slate-500 pt-1 border-t border-slate-200/50">
                           {is_f_RSi_compliant 
-                            ? 'Die innere Oberflächentemperatur ist hoch genug. f_RSi ≥ 0,70 verhindert hohe lokale Oberflächenfeuchte.'
-                            : 'Gefahr von Schimmelpilzbildung: Wärmeschutz verbessern (bevorzugt außenseitig) und Wärmebrücken prüfen.'
+                            ? inhalt.werte.dieInnereOberflächentemperaturIst
+                            : inhalt.werte.gefahrVonSchimmelpilzbildungWärmeschutz
                           }
                         </div>
                       </div>
@@ -788,48 +741,46 @@ export default function Bauphysik() {
               {/* Live-Rechenweg (AP 3.7): U-Wert mit dem aktuellen Schichtaufbau */}
               <FormulaDerivationBox
                 live
-                title="Ihr Rechenweg: U-Wert Ihres Bauteils"
+                title={inhalt.werte.ihrRechenwegUWert}
                 zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}"
                 schritte={[
                   {
                     titel: 'Wärmeübergangswiderstände',
-                    erklaerung: 'Nach DIN EN ISO 6946, Tab. 7 für die gewählte Bauteilart (Wärmestromrichtung):',
+                    erklaerung: inhalt.werte.nachDinEnIso,
                     formel: `R_{si} = ${formatDeTeX(Rsi, 2)}\\,\\text{m}^2\\text{K/W},\\quad R_{se} = ${formatDeTeX(Rse, 2)}\\,\\text{m}^2\\text{K/W}`
                   },
                   {
-                    titel: 'Wärmedurchlasswiderstände der Schichten',
-                    erklaerung: 'Jede Schicht trägt mit Dicke d (in m) geteilt durch die Wärmeleitfähigkeit λ bei:',
+                    titel: inhalt.werte.wärmedurchlasswiderständeDerSchichten,
+                    erklaerung: inhalt.werte.jedeSchichtTrägtMit,
                     formel: `\\sum \\frac{d_i}{\\lambda_i} = ${resolvedLayers.map(l => `\\frac{${formatDeTeXWert(l.d)}}{${formatDeTeXWert(l.lambda)}}`).join(' + ') || '0'} = ${formatDeTeX(waerme.R_T - Rsi - Rse, 3)}\\,\\text{m}^2\\text{K/W}`
                   },
                   {
                     titel: 'Wärmedurchgangswiderstand',
-                    erklaerung: 'Summe aus Übergangs- und Schichtwiderständen:',
+                    erklaerung: inhalt.werte.summeAusÜbergangsUnd,
                     formel: `R_T = ${formatDeTeX(Rsi, 2)} + ${formatDeTeX(waerme.R_T - Rsi - Rse, 3)} + ${formatDeTeX(Rse, 2)} = ${formatDeTeX(waerme.R_T, 3)}\\,\\text{m}^2\\text{K/W}`
                   },
                   {
-                    titel: 'U-Wert und Anforderung',
+                    titel: inhalt.werte.uWertUndAnforderung,
                     erklaerung: waerme.U <= gegLimit
                       ? `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist eingehalten.`
                       : `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist überschritten.`,
                     formel: `U = \\frac{1}{${formatDeTeX(waerme.R_T, 3)}} = ${formatDeTeX(waerme.U, 3)}\\,\\text{W/(m}^2\\text{K)} ${waerme.U <= gegLimit ? '\\le' : '>'} ${formatDeTeX(gegLimit, 2)}`
                   },
                   {
-                    titel: 'Temperaturfaktor (Schimmelnachweis)',
-                    erklaerung: 'Mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W nach DIN 4108-2; gefordert ist f_Rsi ≥ 0,70:',
+                    titel: inhalt.werte.temperaturfaktorSchimmelnachweis,
+                    erklaerung: inhalt.werte.mitDemErhöhtenÜbergangswiderstand,
                     formel: `f_{Rsi} = 1 - 0{,}25 \\cdot ${formatDeTeX(waerme.U, 3)} = ${formatDeTeX(1 - 0.25 * waerme.U, 3)}`
                   }
                 ]}
-                ergebnisHinweis="Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F)."
-                normQuelle="DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05 (§ 11 GModG nimmt weiterhin die Ausgabe 2013-02 in Bezug); GModG/GEG Anlage 7"
+                ergebnisHinweis={inhalt.werte.wärmebrückenBefestigungsmittelUndLuftsch}
+                normQuelle={inhalt.werte.dinEnIso6946}
               />
 
             </div>
 
             {/* Layer values Table */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3">
-                U-Wert &amp; Schichten-Auditdatenbank
-              </h3>
+              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3"><MdText text={inhalt.texte.uWertSchichtenAuditdatenbank} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs font-medium">
                   <thead>
@@ -840,7 +791,7 @@ export default function Bauphysik() {
                       <th className="py-2 px-1 font-bold text-right">λ (W/mK)</th>
                       <th className="py-2 px-1 font-bold text-right">μ (-)</th>
                       <th className="py-2 px-1 font-bold text-right">s_d (m)</th>
-                      <th className="py-2 px-1 font-bold text-right">Temp. Grenzfläche</th>
+                      <th className="py-2 px-1 font-bold text-right"><MdText text={inhalt.texte.tempGrenzfläche} /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -875,32 +826,29 @@ export default function Bauphysik() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4 flex items-center gap-1.5">
-                <Sun size={14} className="text-amber-500" /> Thermische Speichermasse d. Werkstoffe
-              </h3>
+                <Sun size={14} className="text-amber-500" /><MdText text={inhalt.texte.thermischeSpeichermasseDWerkstoffe} /></h3>
               
-              <div className="p-4 bg-amber-50/45 border border-amber-100 rounded-xl leading-relaxed text-xs text-slate-700 font-normal">
-                Der sommerliche Wärmeschutz schützt Räume vor Überhitzung. Schwere Baustoffe mit hoher Dichte (<FormulaText text="\rho" />) und hohem Speicherwert (<FormulaText text="c" />) wirken wie eine thermische Batterie: Sie schlucken tagsüber Hitze und geben sie erst nachts verzögert (Phasenverschiebung) ab.
-              </div>
+              <div className="p-4 bg-amber-50/45 border border-amber-100 rounded-xl leading-relaxed text-xs text-slate-700 font-normal"><MdText text={inhalt.texte.derSommerlicheWärmeschutzSchützt} /><FormulaText text="\rho" /><MdText text={inhalt.texte.undHohemSpeicherwert} /><FormulaText text="c" /><MdText text={inhalt.texte.wirkenWieEineThermische} /></div>
 
               {/* Specific heat values info box */}
               <div className="mt-4 space-y-2">
-                <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">Wärmespeichereigenschaften in dieser Berechnung:</label>
+                <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.wärmespeichereigenschaftenInDieserBerech} /></label>
                 <div className="divide-y divide-slate-100 text-[11px] text-slate-600">
                   <div className="py-1.5 flex justify-between">
-                    <span className="font-semibold text-slate-800">Holzfaserplatte (Bio)</span>
-                    <span className="font-mono font-bold text-slate-700">c = 2100 J/(kg·K)</span>
+                    <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.holzfaserplatteBio} /></span>
+                    <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c2100JKg} /></span>
                   </div>
                   <div className="py-1.5 flex justify-between">
-                    <span className="font-semibold text-slate-800">Fichtenholz / Massivholz</span>
-                    <span className="font-mono font-bold text-slate-700">c = 1600 J/(kg·K)</span>
+                    <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.fichtenholzMassivholz} /></span>
+                    <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c1600JKg} /></span>
                   </div>
                   <div className="py-1.5 flex justify-between">
-                    <span className="font-semibold text-slate-800">Normalbeton (Stahlbeton)</span>
-                    <span className="font-mono font-bold text-slate-700">c = 1000 J/(kg·K)</span>
+                    <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.normalbetonStahlbeton} /></span>
+                    <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c1000JKg} /></span>
                   </div>
                   <div className="py-1.5 flex justify-between">
-                    <span className="font-semibold text-slate-800">Ziegelmauerwerk (HLZ / MZ)</span>
-                    <span className="font-mono font-bold text-slate-700">c = 1000 J/(kg·K)</span>
+                    <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.ziegelmauerwerkHlzMz} /></span>
+                    <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c1000JKg2} /></span>
                   </div>
                 </div>
               </div>
@@ -908,16 +856,14 @@ export default function Bauphysik() {
 
             {/* Live Bauteil-Audit trigger feedback */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4">
-                U-Wert &amp; Thermische Bilanz
-              </h3>
+              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4"><MdText text={inhalt.texte.uWertThermischeBilanz} /></h3>
               <div className="space-y-4">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
-                  <span className="text-xs font-bold text-slate-600">Wärmedurchgang (U-Wert)</span>
+                  <span className="text-xs font-bold text-slate-600"><MdText text={inhalt.texte.wärmedurchgangUWert} /></span>
                   <span className="text-sm font-black text-slate-800 font-mono">{formatDeZahl(waerme.U, 3)} W/(m²K)</span>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
-                  <span className="text-xs font-bold text-slate-600">Gesamte Wanddicke</span>
+                  <span className="text-xs font-bold text-slate-600"><MdText text={inhalt.texte.gesamteWanddicke} /></span>
                   <span className="text-sm font-black text-slate-800 font-mono">
                     {formatDeZahl(resolvedLayers.reduce((acc, l) => acc + l.d, 0), 3)} m
                   </span>
@@ -930,37 +876,35 @@ export default function Bauphysik() {
           <div className="lg:col-span-7 space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
-                <Sparkles size={20} className="text-shiraz" />
-                Auswertungsbericht: Raumklimatische Phasenverzögerung
-              </h3>
+                <Sparkles size={20} className="text-shiraz" /><MdText text={inhalt.texte.auswertungsberichtRaumklimatischePhasenv} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 
                 {/* 1. Amplitudendämpfung TAV */}
                 <div className="p-4 bg-gradient-to-b from-slate-50 to-slate-100 border border-slate-200 rounded-2xl text-center shadow-sm">
-                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider">Amplitudenverhältnis TAV</span>
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider"><MdText text={inhalt.texte.amplitudenverhältnisTav} /></span>
                   <span className="text-3xl font-black text-shiraz font-mono block mt-2">
                     {formatDeZahl(summerHeatAnalysis.TAV, 3)}
                   </span>
-                  <span className="text-[9px] text-slate-400 block mt-1">Dämpfungsfaktor der Hitzewelle</span>
+                  <span className="text-[9px] text-slate-400 block mt-1"><MdText text={inhalt.texte.dämpfungsfaktorDerHitzewelle} /></span>
                 </div>
 
                 {/* 2. Phasenverschiebung in Stunden */}
                 <div className="p-4 bg-gradient-to-b from-slate-50 to-slate-100 border border-slate-200 rounded-2xl text-center shadow-sm">
-                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider">Phasenverschiebung η</span>
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider"><MdText text={inhalt.texte.phasenverschiebung} /></span>
                   <span className="text-3xl font-black text-amber-600 font-mono block mt-2">
                     {formatDeZahl(summerHeatAnalysis.phaseShift, 1)} <span className="text-xs">h</span>
                   </span>
-                  <span className="text-[9px] text-slate-400 block mt-1">Verzögerung der Hitze ins Innere</span>
+                  <span className="text-[9px] text-slate-400 block mt-1"><MdText text={inhalt.texte.verzögerungDerHitzeIns} /></span>
                 </div>
 
                 {/* 3. Gesamt-Wärmespeicherung kJ/m²K */}
                 <div className="p-4 bg-gradient-to-b from-slate-50 to-slate-100 border border-slate-200 rounded-2xl text-center shadow-sm">
-                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider">Wärmekapazität C_tot</span>
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase block tracking-wider"><MdText text={inhalt.texte.wärmekapazitätCTot} /></span>
                   <span className="text-3xl font-black text-rose-600 font-mono block mt-2">
                     {formatDeZahl(summerHeatAnalysis.totalHeatCapacity, 0)} <span className="text-xs">kJ/m²K</span>
                   </span>
-                  <span className="text-[9px] text-slate-400 block mt-1">Spezifische Bauteilspeicherung</span>
+                  <span className="text-[9px] text-slate-400 block mt-1"><MdText text={inhalt.texte.spezifischeBauteilspeicherung} /></span>
                 </div>
 
               </div>
@@ -981,10 +925,10 @@ export default function Bauphysik() {
                 <div>
                   <h4 className="font-extrabold text-sm uppercase tracking-wide">
                     {summerHeatAnalysis.phaseShift >= 10.0 
-                      ? 'Hervorragender sommerlicher Hitzeschutz (η ≥ 10h)' 
+                      ? inhalt.werte.hervorragenderSommerlicherHitzeschutz10h 
                       : summerHeatAnalysis.phaseShift >= 6.0 
-                        ? 'Ausreichender sommerlicher Hitzeschutz (6h ≤ η < 10h)' 
-                        : 'Mangelhafter sommerlicher Hitzeschutz (η < 6h)'}
+                        ? inhalt.werte.ausreichenderSommerlicherHitzeschutz6h 
+                        : inhalt.werte.mangelhafterSommerlicherHitzeschutz6h}
                   </h4>
                   <p className="text-xs mt-1 leading-relaxed opacity-90 font-medium">
                     {summerHeatAnalysis.phaseShift >= 10.0 ? (
@@ -1001,9 +945,9 @@ export default function Bauphysik() {
               {/* Dynamic 24h temperature wave progression simulation chart */}
               <div className="mt-6 pt-5 border-t border-slate-150">
                 <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest mb-3 flex items-center justify-between">
-                  <span>Temperaturverlauf-Schnitt (24-Stunden-Welle)</span>
+                  <span><MdText text={inhalt.texte.temperaturverlaufSchnitt24Stunden} /></span>
                   <span className="text-[9px] font-mono text-slate-400 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">
-                    η = {formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden | TAV = {formatDeZahl(summerHeatAnalysis.TAV, 3)}
+                    η = {formatDeZahl(summerHeatAnalysis.phaseShift, 1)}<MdText text={inhalt.texte.stundenTav} />{formatDeZahl(summerHeatAnalysis.TAV, 3)}
                   </span>
                 </h4>
                 <div className="h-[250px] w-full relative">
@@ -1018,7 +962,7 @@ export default function Bauphysik() {
                           ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' } 
                         },
                         y: { 
-                          title: { display: true, text: 'Temperatur (°C)', font: { size: 10, weight: 'bold' }, color: '#475569' }, 
+                          title: { display: true, text: inhalt.werte.temperaturC, font: { size: 10, weight: 'bold' }, color: '#475569' }, 
                           ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' } 
                         }
                       },
@@ -1031,18 +975,14 @@ export default function Bauphysik() {
                     }} 
                   />
                 </div>
-                <div className="text-[10px] text-slate-500 italic mt-2 text-center leading-relaxed">
-                  Die Grafik simuliert eine typische sommerliche Außenluft-Temperaturwelle (Sinus, Spitze um 14:00 Uhr) und zeigt wie die Innenoberflächentemperatur dank der thermalen Dämmträgheit des Schichtenpakets gedämpft (TAV) und zeitverzögert (η) verhält.
-                </div>
+                <div className="text-[10px] text-slate-500 italic mt-2 text-center leading-relaxed"><MdText text={inhalt.texte.dieGrafikSimuliertEine} /></div>
               </div>
 
             </div>
 
             {/* Specific values list table */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3">
-                Thermodynamisches Detailverzeichnis der Schichten
-              </h3>
+              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3"><MdText text={inhalt.texte.thermodynamischesDetailverzeichnisDerSch} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs font-medium text-slate-700">
                   <thead>
@@ -1051,7 +991,7 @@ export default function Bauphysik() {
                       <th className="py-2 px-1 font-bold">Material</th>
                       <th className="py-2 px-1 font-bold text-right">Rho (kg/m³)</th>
                       <th className="py-2 px-1 font-bold text-right">c (J/kgK)</th>
-                      <th className="py-2 px-1 font-bold text-right">Masse (kg/m²)</th>
+                      <th className="py-2 px-1 font-bold text-right"><MdText text={inhalt.texte.masseKgM} /></th>
                       <th className="py-2 px-1 font-bold text-right">C (kJ/m²K)</th>
                     </tr>
                   </thead>
@@ -1088,18 +1028,17 @@ export default function Bauphysik() {
             {/* Room Dimensions config card */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-4 flex items-center gap-1.5">
-                <Volume2 size={14} className="text-shiraz animate-pulse" /> Raum-Dimensionen (DIN 18041)
-              </h3>
+                <Volume2 size={14} className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.raumDimensionenDin18041} /></h3>
 
               <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center mb-4 flex justify-between font-mono font-bold text-xs">
                 <span>Volumen V = {formatDeZahl(roomW*roomL*roomH, 0)} m³</span>
-                <span>Mantelfläche S = {formatDeZahl(acousticsResults.totalSurfaceArea, 0)} m²</span>
+                <span><MdText text={inhalt.texte.mantelflächeS} />{formatDeZahl(acousticsResults.totalSurfaceArea, 0)} m²</span>
               </div>
 
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
-                    <span>Länge des Raumes (L)</span>
+                    <span><MdText text={inhalt.texte.längeDesRaumesL} /></span>
                     <span className="font-mono">{formatDeZahl(roomL, 1)} m</span>
                   </div>
                   <input 
@@ -1111,7 +1050,7 @@ export default function Bauphysik() {
 
                 <div>
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
-                    <span>Breite des Raumes (W)</span>
+                    <span><MdText text={inhalt.texte.breiteDesRaumesW} /></span>
                     <span className="font-mono">{formatDeZahl(roomW, 1)} m</span>
                   </div>
                   <input 
@@ -1123,7 +1062,7 @@ export default function Bauphysik() {
 
                 <div>
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
-                    <span>Lichte Höhe des Raumes (H)</span>
+                    <span><MdText text={inhalt.texte.lichteHöheDesRaumes} /></span>
                     <span className="font-mono">{formatDeZahl(roomH, 1)} m</span>
                   </div>
                   <input 
@@ -1135,8 +1074,8 @@ export default function Bauphysik() {
 
                 {/* Target context selection */}
                 <div className="pt-2 border-t border-slate-100">
-                  <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-2">Raumtyp &amp; Sollvorgaben nach DIN:</label>
-                  <select aria-label="Raumtyp &amp; Sollvorgaben nach DIN" 
+                  <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.raumtypSollvorgabenNachDin} /></label>
+                  <select aria-label={inhalt.werte.raumtypSollvorgabenNachDin} 
                     value={roomType}
                     onChange={(e) => setRoomType(e.target.value as typeof roomType)}
                     className="w-full text-xs p-2 border border-slate-200 bg-white rounded-lg font-bold text-slate-800"
@@ -1151,9 +1090,7 @@ export default function Bauphysik() {
 
             {/* Surface Material assignments */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3">
-                Zuweisung d. Schallabsorber-Oberflächen
-              </h3>
+              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3"><MdText text={inhalt.texte.zuweisungDSchallabsorberOberflächen} /></h3>
 
               <div className="space-y-3">
                 {/* 1. Ceiling */}
@@ -1238,7 +1175,7 @@ export default function Bauphysik() {
 
                 {/* 6. Right Wall */}
                 <div className="grid grid-cols-12 items-center gap-2">
-                  <span className="col-span-4 text-[11px] font-bold text-slate-600">Rechte Wand:</span>
+                  <span className="col-span-4 text-[11px] font-bold text-slate-600"><MdText text={inhalt.texte.rechteWand} /></span>
                   <div className="col-span-8">
                     <select aria-label="Rechte Wand"
                       value={selectedRightWall}
@@ -1261,19 +1198,18 @@ export default function Bauphysik() {
             {/* Sabine Hallzeit Meter panel */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-sm font-bold text-slate-800 mb-4 uppercase tracking-widest border-b border-slate-100 pb-3 flex items-center gap-1.5">
-                <Volume2 size={16} className="text-shiraz" /> Raumakustische Verhaltenskontrolle
-              </h3>
+                <Volume2 size={16} className="text-shiraz" /><MdText text={inhalt.texte.raumakustischeVerhaltenskontrolle} /></h3>
 
               {/* Graphical gauge chart display */}
               <div className="flex flex-col items-center py-6 border border-slate-100 bg-slate-50/50 rounded-2xl mb-6 relative">
-                <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-widest block">Berechnete Hallzeit T d. Raumes</span>
+                <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-widest block"><MdText text={inhalt.texte.berechneteHallzeitTD} /></span>
                 
                 <span className="text-5xl font-black text-shiraz font-mono mt-2 mb-1 animate-pulse">
                   {formatDeZahl(acousticsResults.reverberationTime, 2)} <span className="text-lg">Sekunden</span>
                 </span>
                 
                 <span className="text-xs bg-slate-900 border border-slate-800 text-slate-200 font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
-                  Typ: {acousticsResults.roomLabel} | DIN-Empfehlung: {formatDeZahl(acousticsResults.T_target, 2)} s ({formatDeZahl(acousticsResults.minTarget, 2)} s - {formatDeZahl(acousticsResults.maxTarget, 2)} s)
+                  Typ: {acousticsResults.roomLabel}<MdText text={inhalt.texte.dinEmpfehlung} />{formatDeZahl(acousticsResults.T_target, 2)} s ({formatDeZahl(acousticsResults.minTarget, 2)} s - {formatDeZahl(acousticsResults.maxTarget, 2)} s)
                 </span>
               </div>
 
@@ -1293,15 +1229,15 @@ export default function Bauphysik() {
                 <div>
                   <h4 className="font-extrabold text-sm uppercase">
                     {acousticsResults.reverberationTime > acousticsResults.maxTarget 
-                      ? 'UNTERRICHTSFLUSS BEHINDERT - ZU HALLIG' 
+                      ? inhalt.werte.unterrichtsflussBehindertZuHallig 
                       : acousticsResults.reverberationTime < acousticsResults.minTarget 
-                        ? 'TOTER RAUM - ZUKLEINE HALLZEIT' 
-                        : 'Perfekte akustische Raumstimmung!'}
+                        ? inhalt.werte.toterRaumZukleineHallzeit 
+                        : inhalt.werte.perfekteAkustischeRaumstimmung}
                   </h4>
                   <p className="text-xs mt-1 leading-relaxed opacity-95">
                     {acousticsResults.stateDesc} 
-                    {acousticsResults.reverberationTime > acousticsResults.maxTarget && ' TIPP: Ändern Sie das Deckenmaterial auf "Mineralfaser-Lochdecke" [α=0.70] oder bringe einen Akustik-Schaumstoffabsorber an.'}
-                    {acousticsResults.reverberationTime < acousticsResults.minTarget && ' TIPP: Entfernen Sie einige Hochleistungs-Absorberdecken und tauschen sie diese gegen Sichtbeton oder Kalk-Gipskartonglätte aus.'}
+                    {acousticsResults.reverberationTime > acousticsResults.maxTarget && inhalt.werte.tippÄndernSieDas}
+                    {acousticsResults.reverberationTime < acousticsResults.minTarget && inhalt.werte.tippEntfernenSieEinige}
                   </p>
                 </div>
               </div>
@@ -1309,10 +1245,8 @@ export default function Bauphysik() {
               {/* Dynamic Octave-Band Reverberation DIN 18041 Corridor Chart */}
               <div className="mt-6 pt-5 border-t border-slate-150">
                 <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest mb-3 flex items-center justify-between">
-                  <span>Soll-Korridor der Nachhallzeit T(f) (DIN 18041)</span>
-                  <span className="text-[9px] font-mono text-slate-400 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">
-                    Frequenzbereich: 125 Hz - 4000 Hz
-                  </span>
+                  <span><MdText text={inhalt.texte.sollKorridorDerNachhallzeit} /></span>
+                  <span className="text-[9px] font-mono text-slate-400 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded"><MdText text={inhalt.texte.frequenzbereich125Hz4000} /></span>
                 </h4>
                 <div className="h-[250px] w-full relative">
                   <Line 
@@ -1326,7 +1260,7 @@ export default function Bauphysik() {
                           ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' } 
                         },
                         y: { 
-                          title: { display: true, text: 'Nachhallzeit T(f) [s]', font: { size: 10, weight: 'bold' }, color: '#475569' }, 
+                          title: { display: true, text: inhalt.werte.nachhallzeitTFS, font: { size: 10, weight: 'bold' }, color: '#475569' }, 
                           ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' } 
                         }
                       },
@@ -1339,26 +1273,22 @@ export default function Bauphysik() {
                     }} 
                   />
                 </div>
-                <div className="text-[10px] text-slate-500 italic mt-2 text-center leading-relaxed">
-                  Die Grafik stellt den berechneten oktavweisen Verlauf T(f) relativ zur nach DIN 18041 geforderten Toleranzgrenze dar. Für barrierefreie Nutzung darf T(f) die orangefarbenen Korridorlinien nicht durchbrechen.
-                </div>
+                <div className="text-[10px] text-slate-500 italic mt-2 text-center leading-relaxed"><MdText text={inhalt.texte.dieGrafikStelltDen} /></div>
               </div>
 
             </div>
 
             {/* Sabine calculation table list */}
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3">
-                Äquivalente Absorptionsbilanz der Hüllflächen
-              </h3>
+              <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-3 mb-3"><MdText text={inhalt.texte.äquivalenteAbsorptionsbilanzDerHüllfläch} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs font-medium text-slate-700">
                   <thead>
                     <tr className="border-b border-slate-200 text-slate-500">
                       <th className="py-2 px-1 font-bold">Flächenwand</th>
-                      <th className="py-2 px-1 font-bold text-right">Fläche S (m²)</th>
-                      <th className="py-2 px-1 font-bold text-right">Absorptionsgrad α (-)</th>
-                      <th className="py-2 px-1 font-bold text-right">Komp. Absorption A (m²)</th>
+                      <th className="py-2 px-1 font-bold text-right"><MdText text={inhalt.texte.flächeSM} /></th>
+                      <th className="py-2 px-1 font-bold text-right"><MdText text={inhalt.texte.absorptionsgrad} /></th>
+                      <th className="py-2 px-1 font-bold text-right"><MdText text={inhalt.texte.kompAbsorptionAM} /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1374,7 +1304,7 @@ export default function Bauphysik() {
                       );
                     })}
                     <tr className="bg-slate-50 font-bold border-t border-slate-300 font-semibold text-slate-900">
-                      <td className="py-2 px-1">Summe (Gesamt)</td>
+                      <td className="py-2 px-1"><MdText text={inhalt.texte.summeGesamt} /></td>
                       <td className="py-2 px-1 text-right font-mono">{formatDeZahl(acousticsResults.totalSurfaceArea, 1)}</td>
                       <td className="py-2 px-1 text-right text-slate-400 font-mono">-</td>
                       <td className="py-2 px-1 text-right font-mono text-shiraz font-black">
@@ -1390,27 +1320,18 @@ export default function Bauphysik() {
       )}      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <NachErstemBild minHoehe="30rem">
       <FormulaDerivationBox
-        title="Beispiel 1: U-Wert und Temperaturfaktor einer gedämmten Kalksandsteinwand"
+        title={inhalt.werte.beispiel1UWert}
         zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}, \quad f_{Rsi} = 1 - R_{si}^{*} \cdot U"
-        schritte={[
-          { titel: 'Schichten', erklaerung: 'Innenputz 1,5 cm (λ = 0,70), KS 17,5 cm (λ = 0,99), Mineralwolle 14 cm (λ = 0,035); Putzträger außen vernachlässigt:', formel: 'R_T = 0{,}13 + \\frac{0{,}015}{0{,}70} + \\frac{0{,}175}{0{,}99} + \\frac{0{,}14}{0{,}035} + 0{,}04 = 4{,}37\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'U-Wert', erklaerung: 'Vergleich mit dem Höchstwert nach Anlage 7 (Außenwand 0,24):', formel: 'U = \\frac{1}{4{,}37} = 0{,}229\\,\\text{W/(m}^2\\text{K)} \\le 0{,}24' },
-          { titel: 'Temperaturfaktor', erklaerung: 'Schimmelnachweis nach DIN 4108-2 mit erhöhtem Übergangswiderstand R*_si = 0,25 m²K/W:', formel: 'f_{Rsi} = 1 - 0{,}25 \\cdot 0{,}229 = 0{,}94 \\ge 0{,}70' }
-        ]}
-        ergebnisHinweis="In der ungestörten Fläche ist ein gut gedämmtes Bauteil unkritisch; maßgebend für Schimmel sind Wärmebrücken (Ecken, Laibungen, Sockel)."
-        normQuelle="DIN EN ISO 6946:2018-03; GModG Anlage 7; DIN 4108-2"
+        schritte={inhalt.daten["Bauphysik.schritte"]}
+        ergebnisHinweis={inhalt.werte.inDerUngestörtenFläche}
+        normQuelle={inhalt.werte.dinEnIso69462}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Nachhallzeit eines Klassenraums nach Sabine"
+        title={inhalt.werte.beispiel2NachhallzeitEines}
         zielGleichung="T = 0{,}163 \cdot \frac{V}{A}"
-        schritte={[
-          { titel: 'Sollwert', erklaerung: 'Klassenraum 9 m × 7 m × 3 m, Nutzungsart A3:', formel: 'V = 189\\,\\text{m}^3, \\quad T_{soll} = 0{,}32 \\cdot \\lg 189 - 0{,}17 = 0{,}56\\,\\text{s}' },
-          { titel: 'Ohne Maßnahmen', erklaerung: 'Alle 222 m² Oberfläche schallhart (α ≈ 0,05):', formel: 'A = 222 \\cdot 0{,}05 = 11{,}1\\,\\text{m}^2 \\Rightarrow T = \\frac{0{,}163 \\cdot 189}{11{,}1} = 2{,}78\\,\\text{s}' },
-          { titel: 'Akustikdecke', erklaerung: 'Deckenfläche 63 m² mit α = 0,90 statt 0,05:', formel: 'A = 11{,}1 + 63 \\cdot 0{,}85 = 64{,}7\\,\\text{m}^2 \\Rightarrow T = \\frac{30{,}8}{64{,}7} = 0{,}48\\,\\text{s}' },
-          { titel: 'Bewertung', erklaerung: 'Toleranzbereich 0,8 bis 1,2 · T_soll:', formel: '0{,}45\\,\\text{s} \\le 0{,}48\\,\\text{s} \\le 0{,}67\\,\\text{s}' }
-        ]}
-        ergebnisHinweis="Eine vollflächige Akustikdecke senkt die Nachhallzeit auf rund ein Sechstel. Personen und Möblierung bringen zusätzliche Absorption; für tiefe Frequenzen sind oft zusätzliche Absorber an der Rückwand nötig."
-        normQuelle="DIN 18041:2016-03 (Gruppe A, Nutzungsart A3)"
+        schritte={inhalt.daten["Bauphysik.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.eineVollflächigeAkustikdeckeSenkt}
+        normQuelle={inhalt.werte.din18041201603}
       />
       </NachErstemBild>
 
@@ -1420,40 +1341,16 @@ export default function Bauphysik() {
       {/* 5. ACADEMY DOCUMENTATION FOOTER */}
       <CalculatorDisclaimerBanner className="my-2" />
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Diffusionsleitkoeffizient korrigiert, Magnus über Eis, f_Rsi mit R_si = 0,25, T_soll nach DIN 18041 volumenabhängig, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap6}
 wikipedia={[
           { title: 'Bauphysik', url: 'https://de.wikipedia.org/wiki/Bauphysik' },
           { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
-        regelwerke={[
-          { title: 'DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)' },
-          { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Periodenbilanzverfahren; ersetzt 2018-10)' },
-          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen – Anforderungen, Empfehlungen und Hinweise für die Planung)' },
-          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG) – Anlage 7', url: 'https://www.gesetze-im-internet.de/geg/' }
-        ]}
-        literatur={[
-          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
-          'Bauphysik-Kalender. Berlin: Ernst & Sohn (jährlich)'
-        ]}
-        weblinks={[
-          { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Tauwassernachweis', url: 'https://www.ubakus.de/' },
-          { title: 'LBNL THERM – 2D-Wärmebrücken-FE-Simulation', url: 'https://windows.lbl.gov/software/therm' },
-          { title: 'ÖKOBAUDAT Plattform – BMWSB EPD-Datenbank', url: 'https://www.oekobaudat.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'U = 1 / R_T = 1 / (R_{si} + \\sum (d_i / \\lambda_i) + R_{se})',
-            erklaerung: 'Wärmedurchgangskoeffizient (U-Wert) in W/(m²K). Berechnet den Transmissionswärmeverlust durch mehrschichtige Bauteile.',
-            quelle: 'DIN EN ISO 6946'
-          },
-          {
-            formel: 'T = 0{,}163 \\cdot \\frac{V}{A} \\quad \\text{mit} \\quad A = \\sum S_i \\cdot \\alpha_i',
-            erklaerung: 'Sabinesche Nachhallzeit-Gleichung zur quantitativen Ermittlung der akustischen Raumantwort T in Sekunden.',
-            quelle: 'Sabine; DIN 18041:2016-03'
-          }
-        ]}
+        regelwerke={inhalt.daten["Bauphysik.regelwerke"]}
+        literatur={inhalt.daten["Bauphysik.literatur"]}
+        weblinks={inhalt.daten["Bauphysik.weblinks"]}
+        formeln={inhalt.daten["Bauphysik.formeln"]}
       />
     </div>
   );

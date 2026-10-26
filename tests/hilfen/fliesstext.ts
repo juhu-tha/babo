@@ -35,15 +35,17 @@ function woerterQuelle(code: string, datei: string): number {
 }
 
 function woerterJson(wert: unknown): number {
-  if (typeof wert === 'string') return /\s/.test(wert.trim()) ? zaehleText(wert) : 0;
+  // Inline-Markdown (content/…/„texte“): $TeX$ zählt wie math="…" nicht, <sub>/<sup>/<br> sind keine Wörter
+  if (typeof wert === 'string') { const t = wert.replace(/\$[^$]+\$/g, ' ').replace(/<\/?(sub|sup|br)>/g, ' '); return /\s/.test(t.trim()) ? zaehleText(t) : 0; }
   if (Array.isArray(wert)) return wert.reduce((s: number, w) => s + woerterJson(w), 0);
   if (wert && typeof wert === 'object') return Object.values(wert).reduce((s: number, w) => s + woerterJson(w), 0);
   return 0;
 }
 
 function aufloesen(von: string, spec: string): string | undefined {
-  if (!spec.startsWith('.')) return undefined;
-  const b = path.resolve(path.dirname(von), spec);
+  // relativ oder über den Alias @/ (Projektwurzel, z. B. '@/content/<modul>/<Datei>.json')
+  if (!spec.startsWith('.') && !spec.startsWith('@/')) return undefined;
+  const b = spec.startsWith('@/') ? path.resolve(process.cwd(), spec.slice(2)) : path.resolve(path.dirname(von), spec);
   return [b, b + '.tsx', b + '.ts', b + '/index.tsx', b + '/index.ts'].find(c => fs.existsSync(c) && fs.statSync(c).isFile());
 }
 

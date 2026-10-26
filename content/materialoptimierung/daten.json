@@ -1,0 +1,268 @@
+{
+  "werte": {
+    "effizienzBesserMachen": "Effizienz (Besser machen)",
+    "gleicherNutzenMitWeniger": "Gleicher Nutzen mit weniger Material- und Energieeinsatz.",
+    "t3050CoEinsparung": "30% - 50% CO₂-Einsparung",
+    "erhöhungDerMaterialausnutzungDurch": "Erhöhung der Materialausnutzung durch optimierte Tragwerkshierarchien und Hochleistungswerkstoffe. Ziel ist es, den Baustoff dorthin zu legen, wo er statisch zwingend benötigt wird.",
+    "einsatzVonUltrahochfestemBeton": "Einsatz von ultrahochfestem Beton (UHPC) für filigrane Querschnitte",
+    "topologieoptimierungUndBionischeBauteilg": "Topologieoptimierung und bionische Bauteilgestaltung",
+    "verwendungVonCarbonTextil": "Verwendung von Carbon-, Textil- oder Faserbeton zur Vermeidung dicker Korrosionsschutz-Betondeckungen",
+    "bauteilgradierungHohlräumeImInneren": "Bauteilgradierung (Hohlräume im Inneren von Betonbauteilen zur Gewichtsreduktion)",
+    "ersatzEinerStandardmäßig30": "Ersatz einer standardmäßig 30 cm dicken Stahlbetondecke durch eine vierteilige, textilbewehrte Hohlkörperdecke mit nur noch 12 cm effektiver Dicke.",
+    "suffizienzWenigerMachen": "Suffizienz (Weniger machen)",
+    "reduktionDesAbsolutenBedarfs": "Reduktion des absoluten Bedarfs an Materialien und Flächen.",
+    "t5080CoEinsparung": "50% - 80% CO₂-Einsparung",
+    "hinterfragenDesRealenBauteilbedarfs": "Hinterfragen des realen Bauteilbedarfs und Verzicht auf unproduktive Überdimensionierung. Es gilt eine nutzungsflexible, modulare Bauweise vorzuziehen, die Umbauten ohne Abbruch ermöglicht.",
+    "reduktionVonKomfortUnd": "Reduktion von Komfort- und Gestaltungsüberbauten (z. B. abgehängte Zierdecken)",
+    "erhöhungDerGrundrissentwurfsFlexibilität": "Erhöhung der Grundrissentwurfs-Flexibilität zur Vermeidung zukünftigen Umbaubedarfs",
+    "bewussterVerzichtAufTiefgehende": "Bewusster Verzicht auf tiefgehende Untergeschosse bei schwierigen Baugrundverhältnissen",
+    "nutzungsgerechteLastannahmenStattPauscha": "Nutzungsgerechte Lastannahmen statt pauschaler Maximal-Sicherheitsbeiwerte",
+    "modulareTrennwandsystemeImHolzständerbau": "Modulare Trennwandsysteme im Holzständerbau, die werkzeuglos versetzbar sind, wodurch Mieterwechsel keinen Abbruchschutt erzeugen.",
+    "konsistenzInKreisläufenDenken": "Konsistenz (In Kreisläufen denken)",
+    "nutzungUmweltverträglicherStoffströmeUnd": "Nutzung umweltverträglicher Stoffströme und geschlossener Materialkreisläufe.",
+    "t4070CoEinsparung": "40% - 70% CO₂-Einsparung",
+    "einsatzKreislauffähigerCradleTo": "Einsatz kreislauffähiger (Cradle-to-Cradle) Rohstoffe, nachwachsender Naturmaterialien oder Sekundärbaustoffe. Konstruktionen müssen recyclinggerecht trennbar gefügt werden.",
+    "einsatzVonRcBeton": "Einsatz von RC-Beton (Recycling-Gesteinskörnung Typ 1 & 2)",
+    "verstärkterEinsatzNachwachsenderRohstoff": "Verstärkter Einsatz nachwachsender Rohstoffe (Holz, Stroh, Lehm, Hanfschäben)",
+    "verwendungVonRückbaubarenMechanisch": "Verwendung von rückbaubaren, mechanisch gelösten Verbindungen (Schrauben statt Kleben)",
+    "aufbauDigitalerMaterialpässeDpp": "Aufbau digitaler Materialpässe (DPP) zur Rückführung in den Baustoffkreislauf",
+    "schraubbareHolzBetonVerbunddecken": "Schraubbare Holz-Beton-Verbunddecken mit trennbaren Schubkegeln anstelle unzertrennlich flächig verklebter Hybridbauteile.",
+    "resilienzLanglebigMachen": "Resilienz (Langlebig machen)",
+    "verlängerungDerNutzungsdauerDurch": "Verlängerung der Nutzungsdauer durch Robustheit und Wartungsfreundlichkeit.",
+    "langfristigExtremHoch": "Langfristig extrem hoch",
+    "dieUmweltfreundlichsteTonneZement": "Die umweltfreundlichste Tonne Zement ist jene, die gar nicht erst produziert werden muss, weil das bestehende Bauteil 150 statt 50 Jahre schadensfrei übersteht. Anpassungsfähigkeit an verändertes Klima steht im Fokus.",
+    "erhöhungDerDauerhaftigkeitDurch": "Erhöhung der Dauerhaftigkeit durch optimierten Feuchteschutz und korrosionsfreie Bewehrungen",
+    "leichtAustauschbareHaustechniksystemeEnt": "Leicht austauschbare Haustechniksysteme, entkoppelt von der tragenden Hauptstruktur",
+    "schlagregensichereDiffusionsoffeneAußenw": "Schlagregensichere, diffusionsoffene Außenwandkonstruktionen",
+    "erhöhterMechanischerSchutzGefährdeter": "Erhöhter mechanischer Schutz gefährdeter Sockel- und Fassadenbereiche",
+    "ersatzEinerHinterlüftetenHolzfassade": "Ersatz einer hinterlüfteten Holzfassade mit konstruktivem Holzschutz, deren Einzelelemente ohne Beschädigung des Dämmkerns getauscht werden können.",
+    "t1VermeidungSubstitution": "1. Vermeidung & Substitution",
+    "strategischerMaterialersatzTragwerkseffi": "Strategischer Materialersatz & Tragwerkseffizienz",
+    "derEffektivsteHebelZur": "Der effektivste Hebel zur CO₂-Minderung liegt in der Vermeidung von Klinker und Zementvolumen. Dies geschieht durch alternativen Baustoffbezug oder extreme Erhöhung der geometrischen Konstruktionseffizienz.",
+    "t2RezepturHerstelloptimierung": "2. Rezeptur- & Herstelloptimierung",
+    "chemischeGefügePräzisionThermische": "Chemische Gefüge-Präzision & Thermische Energiequellen",
+    "effizienzsprüngeAufMaterialUnd": "Effizienzsprünge auf Material- und Prozessebene optimieren die Wirkstoffteilchen des Betongefüges und dämpfen Drehofen-Emissionen direkt am Entstehungsort.",
+    "t3RecyclingKreislaufführung": "3. Recycling & Kreislaufführung",
+    "ressourcenschonungDurchMineralischeSekun": "Ressourcenschonung durch mineralische Sekundärgesteine",
+    "vermeidungPrimärerRohstoffentnahmenDurch": "Vermeidung primärer Rohstoffentnahmen durch dezentrales, hocheffizientes Aufbereiten mineralischer Altbausubstanzen und Rückführung in das Nutzungsnetzwerk.",
+    "t4TechnischeCarbonSenken": "4. Technische Carbon-Senken & Abscheidung",
+    "chemischeBindungZirkuläresNet": "Chemische Bindung & zirkuläres Net-Zero-Engineering",
+    "klimapositiveEffekteUndTechnische": "Klimapositive Effekte und technische Carbonat-Anreicherung zur Bindung klimaschädlicher Gase im Inneren mineralischer Matrixsysteme oder unmittelbar am Klinkerofen."
+  },
+  "daten": {
+    "BETON_PRINZIPIEN.vermeidung.categories": [
+      {
+        "name": "Vermeidung & Kompletter Ersatz",
+        "items": [
+          {
+            "title": "Substituierung tragender Massivbauteile",
+            "desc": "Kompletter Ersatz von Beton durch Holz-, Hybrid- oder Lehmkonstruktionen (z.B. Brettsperrholz CLT). Dadurch wird Kohlenstoff langfristig biogen im Holzvolumen gespeichert und klinkerbedingte Prozessemissionen entfallen vollständig.",
+            "tags": [
+              "Holzbau (CLT)",
+              "Lehmbau",
+              "Biogene CO2-Senke"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Reduktion & Geometrieoptimierung",
+        "items": [
+          {
+            "title": "Verringerung des absoluten Materialeinsatzes",
+            "desc": "Gezielte Ausdünnung von Querschnitten durch bionische Bauweisen, Topologieoptimierung und exakte Tragwerks-Lastflussanalysen zur Reduzierung des unproduktiven Volumens.",
+            "tags": [
+              "Bionik",
+              "Topologieoptimierung",
+              "Materialeffizienz"
+            ]
+          },
+          {
+            "title": "Steigerung der Leistungsfähigkeit & Dauerhaftigkeit",
+            "desc": "Einsatz von ultrahochfestem Beton (UHPC), Hochleistungsfasern oder korrosionsfreier Bewehrung. Da Carbon oder Glasfaser nicht rosten, entfällt der Bedarf an dicken statisch inaktiven Schutzdeckungen (~4-5 cm), was filigrane Bauglieder ermöglicht.",
+            "tags": [
+              "UHPC / Faserbeton",
+              "Carbon- & Glasfaserbewehrung"
+            ]
+          },
+          {
+            "title": "Verbesserte Konstruktion & Hybridglieder",
+            "desc": "Tragwerksänderung weg vom Vollquerschnitt hin zu Rippendecken, Kasettendecken, Hohlkörperdecken oder Holz-Beton-Verbundkonstruktionen (HBV). Der Beton wird geometrisch hocheffizient nur in der materialgerechten Druckzone gelagert.",
+            "tags": [
+              "Rippen- & Waffendecken",
+              "Holz-Beton-Verbund (HBV)"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ersatz nicht-nachhaltiger Komponenten",
+        "items": [
+          {
+            "title": "Zementklinker-Substitution (Minderungsstoffe)",
+            "desc": "Vorteilhafter Teilersatz des CO₂-intensiven CEM I (Portlandzement) durch Zusatzstoffe wie Steinkohlenflugasche (SFA), Hüttensandmehl (HÜS) oder Kalksteinmehl (KSM).",
+            "tags": [
+              "Flugasche (SFA)",
+              "Hüttensand (HÜS)",
+              "Kalksteinmehl (KSM)"
+            ]
+          },
+          {
+            "title": "Geopolymere & Alkali-aktivierte Bindemittel",
+            "desc": "Klinkerfreie, anorganische Bindemittelfamilien (Alkali-activated Binders AAB) auf Basis von reaktiven Alumosilikaten (z.B. Hüttensanden oder Flugaschen) in Kombination mit alkalischen Aktivatoren.",
+            "tags": [
+              "Geopolymere",
+              "Klinkerfreie Binder",
+              "AAB-Systeme"
+            ]
+          },
+          {
+            "title": "Alternative Klinkertechnologien",
+            "desc": "Herstellung kohlendioxidarmer Klinkermodifikationen wie Calciumsulfoaluminat-Zemente (CSA), Celitement oder bio-mineralisierten Bindemittelsystemen mit drastisch geringeren Prozesstemperaturen.",
+            "tags": [
+              "Celitement",
+              "CSA-Zemente",
+              "Biozemente"
+            ]
+          },
+          {
+            "title": "Calcinierte Tone (Metakaolin & LC3)",
+            "desc": "Einsatz thermisch aktivierter Tone in Kombination mit gemahlenem Kalkstein (LC3 - Limestone Calcined Clay Cement). Ermöglicht Klinkersubstitutionen von bis zu 50% bei hohem mechanischem Dauerhaftigkeitsniveau.",
+            "tags": [
+              "Metakaolin",
+              "LC3-Zement",
+              "Thermischer Ton"
+            ]
+          },
+          {
+            "title": "Alternative mineralische Silikatquellen",
+            "desc": "Ersatz künstlicher Puzzolane durch amorphe, natürliche agro-industrielle Reststoffaschen (z.B. Reisschalenasche mit enorm hohem SiO₂-Gehalt).",
+            "tags": [
+              "Reisschalenasche",
+              "Bio-Silikate"
+            ]
+          }
+        ]
+      }
+    ],
+    "BETON_PRINZIPIEN.optimierung.categories": [
+      {
+        "name": "Zusammensetzung & Gefüge",
+        "items": [
+          {
+            "title": "Gefügeoptimierte Packungsdichte (Funk & Dinger)",
+            "desc": "Optimierung der Partikelabstufung (Sieblinie) im Feinstbereich. Dadurch wird der Hohlraum (Zwickelvolumen) zwischen den größeren Gesteinskörnern minimiert, sodass massiv weniger teurer und CO₂-belasteter Zementleim zur Gefüllung anfällt.",
+            "tags": [
+              "Partikeleinpassung",
+              "Funk & Dinger",
+              "Leimminderung"
+            ]
+          },
+          {
+            "title": "Spezialzusatzmittel (BZM / superplastifizierende PCE)",
+            "desc": "Nutzung hochentwickelter Polycarboxylatether-Fließmittel (PCE) zur elektrostatischen Dispergierung im Frischbeton. Ermöglicht extreme Reduktionen des Wasseranspruchs (sehr niedriger w/z-Wert) bei voller Fließfähigkeit.",
+            "tags": [
+              "PCE-Dispergierung",
+              "Niedriger w/z-Wert"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Herstellungsprozess",
+        "items": [
+          {
+            "title": "Herstellung Beton (Qualitätssicherung & Vorhaltemaße)",
+            "desc": "Reduktion werkseitig aufgeprägter Festigkeits-Sicherheitsüberhöhungen durch hochpräzise Online-Feuchtemessgeräte der Gesteinskörnungen im Betonwerk. Dies senkt statistische Schwankungen und ermöglicht zielgenaue Punktlandungen der Festigkeitsklasse.",
+            "tags": [
+              "Online-Feuchtesensoren",
+              "Grenzfaktoren"
+            ]
+          },
+          {
+            "title": "Herstellung Zement (Thermische Ofen-Brennstoffe)",
+            "desc": "Substitution fossiler Energieträger (Kohle) im Drehrohrofen des Zementwerkes durch energetische Sekundärbrennstoffe wie Altreifen, getrocknete Klärschlämme, Biomasse und zukünftig grüne Wasserstoff-Zyklonbrenner.",
+            "tags": [
+              "Sekundärbrennstoffe",
+              "Drehofen",
+              "H2-Brennstoff"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Regulatives & Leistungsorientierung",
+        "items": [
+          {
+            "title": "Unterschreitung normativer Mindestzementgehalte",
+            "desc": "Individueller, experimentaler Nachweis der Frost-Tausalz- und Karbonatisierungsbeständigkeit mittels performancebasierter Entwurfsverfahren (Performance Concept) anstelle starrer deskriptiver Tabellenwerte.",
+            "tags": [
+              "Performance Concept",
+              "Abweichende Rezeptur"
+            ]
+          }
+        ]
+      }
+    ],
+    "BETON_PRINZIPIEN.recycling.categories": [
+      {
+        "name": "Kreislaufkomponenten",
+        "items": [
+          {
+            "title": "RC-Beton (Gesteinskörnung Typ 1 & Typ 2)",
+            "desc": "Ersatz natürlich gewonnener Quarzkiese und Sande durch rezyklierte Gesteinskörnungen aus sortenrein aufbereitetem Beton- und Mauerwerksbruch (Recycling-Splitt). Schont wertvolle biologische Bodenhorizonte vor Auskiesung.",
+            "tags": [
+              "RC-Gesteinskörnung Typ 1 (Beton)",
+              "RC-Gesteinskörnung Typ 2 (Misch)"
+            ]
+          },
+          {
+            "title": "Rezyklierter Gesteinssand & CO₂-Karbonatisierung",
+            "desc": "Spezielle Anreicherung und Begasung von feinsten Recycling-Sanden mit CO₂-Gasströmen zur Festigkeitshärtung der sandigen Randzonen bei permanentem, materialschonendem Kohlenstoffschadensausgleich.",
+            "tags": [
+              "Sand-Karbonatisierung",
+              "Aggregatsverstärkung"
+            ]
+          }
+        ]
+      }
+    ],
+    "BETON_PRINZIPIEN.sonstiges.categories": [
+      {
+        "name": "Kohlenstoffsenken im Beton",
+        "items": [
+          {
+            "title": "Misch-Karbonatisierung (Wasser- & Gastechnik)",
+            "desc": "Aktives Injizieren verflüssigten gasförmigen Treibhausgases während des Nassmischvorgangs. Das CO₂ mineralisiert sofort in microfeine, laststabile Calciumcarbonatkristallite und schließt das Treibhausgas dauerhaft physikalisch ein.",
+            "tags": [
+              "CO2-Mischereindüsung",
+              "Kalksteinausfällung"
+            ]
+          },
+          {
+            "title": "Pyrogene Pflanzenkohle als stabile Kohlenstoffkomponente",
+            "desc": "Integration zertifizierter, stabiler Pflanzenkohle als inertes Substitutionsgut für Feinstsande. Wirkt über Jahrhunderte als statisch neutrale, unzerfallbare bioklimatische CO₂-Speicher-Senke im tragenden Gefüge.",
+            "tags": [
+              "Pflanzenkohle",
+              "Carbon Carbon Sink"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Carbon Capture & Storage (CCU / CCS)",
+        "items": [
+          {
+            "title": "Industrielle Abscheidung und Ofenmündungsspeicherung",
+            "desc": "Abfangen des prozess- und rohstoffbedingten Drehofen-CO₂ (Kalksteinentsäuerung) am Industrieschornstein (CCS). Das komprimierte Gas wird dauerhaft verflüssigt in ungenutzten marinen Kavernen verpresst oder für chemische Wertkreisläufe katalytisch aufbereitet (CCU).",
+            "tags": [
+              "Carbon Capture",
+              "Klinkergas-Abscheidung",
+              "Endlagerung (CCS)"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

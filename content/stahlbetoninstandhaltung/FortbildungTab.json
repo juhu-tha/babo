@@ -1,0 +1,24 @@
+{
+  "texte": {
+    "qualifikationsanforderungenInDerBetonins": "Qualifikationsanforderungen in der Betoninstandsetzung",
+    "dieInstandsetzungVonBetonbauteilen": "Die Instandsetzung von Betonbauteilen erfordert spezielles Fachwissen, da Fehler schwerwiegende Folgen für die Standsicherheit und Dauerhaftigkeit haben können. Deshalb schreiben die relevanten Regelwerke besondere Qualifikationen für Planung und Ausführung vor.",
+    "skpSachkundigerPlaner": "SKP (Sachkundiger Planer)",
+    "sachkundigerPlanerFürSchutz": "**Sachkundiger Planer für Schutz und Instandsetzung von Betonbauteilen**<br><br>Die Planung und Überwachung von Instandsetzungsmaßnahmen darf nach TR Instandhaltung nur von sachkundigen Planern durchgeführt werden. Der SKP ist verantwortlich für:",
+    "ermittlungDesIstZustandes": "Ermittlung des Ist-Zustandes und der Schadensursachen",
+    "erstellungDesInstandsetzungskonzepts": "Erstellung des Instandsetzungskonzepts",
+    "auswahlGeeigneterStoffeUnd": "Auswahl geeigneter Stoffe und Systeme (z.B. OS-Systeme, PCC)",
+    "bauüberwachungUndQualitätssicherung": "Bauüberwachung und Qualitätssicherung",
+    "zugangsvoraussetzungenIDR": "**Zugangsvoraussetzungen:** I.d.R. abgeschlossenes Ingenieurstudium (Bauwesen) sowie Nachweis besonderer Kenntnisse durch Prüfung oder Zusatzausbildung.",
+    "schützenInstandsetzenVerbindenUnd": "**Schützen, Instandsetzen, Verbinden und Verstärken von Betonbauteilen**<br><br>Fachkräfte in den ausführenden Unternehmen müssen nachweislich über die notwendigen verarbeitungstechnischen Kenntnisse verfügen. Der SIVV-Schein richtet sich primär an das Baustellenpersonal:",
+    "untergrundvorbereitungUndPrüfung": "Untergrundvorbereitung und -prüfung",
+    "verarbeitungVonInstandsetzungsmörtelnZ": "Verarbeitung von Instandsetzungsmörteln (z.B. PCC, SPCC)",
+    "applikationVonOberflächenschutzsystemen": "Applikation von Oberflächenschutzsystemen",
+    "risikoUndFehlerminimierungAuf": "Risiko- und Fehlerminimierung auf der Baustelle",
+    "regelwerkNachTrInstandhaltung": "**Regelwerk:** Nach TR Instandhaltung (bzw. DAfStb) ist der SIVV-Schein für das Aufsichtspersonal (Vorarbeiter, Poliere) auf der Baustelle vorgeschrieben.",
+    "weitereQualifikationenQualitätssicherung": "Weitere Qualifikationen & Qualitätssicherung",
+    "eScheinErweiterteBetontechnologische": "E-Schein (Erweiterte betontechnologische Kenntnisse)",
+    "berechtigtUAZur": "Berechtigt u.a. zur Überwachung von Beton der Überwachungsklassen 2 und 3. Erforderlich für den verantwortlichen Fachingenieur in Transportbetonwerken und Bauunternehmen.",
+    "düsenführerscheinSpccSpritzbeton": "Düsenführerschein (SPCC / Spritzbeton)",
+    "speziellerNachweisFürDas": "Spezieller Nachweis für das Personal, das den Spritzbeton oder Spritzmörtel an der Düse aufträgt (oft zwingend erforderlich bei Verstärkungsmaßnahmen)."
+  }
+}

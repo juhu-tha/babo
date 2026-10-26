@@ -5,6 +5,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 import { TrendingUp, AlertTriangle, Milestone } from 'lucide-react';
 import { type RstoProfile } from './daten';
+import inhalt from '@/content/bpverkehrswegebau/RstoRechnerTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface RstoRechnerTabProps {
   activeProfile: RstoProfile;
@@ -19,11 +21,8 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
         <h3 className="font-bold text-text-main text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-          <Milestone size={16} className="text-shiraz" /> Grundlagen der Bemessung nach RStO 12/24
-        </h3>
-        <p className="text-xs text-text-main/80 leading-relaxed">
-          Die <strong>Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (RStO 12/24, Ausgabe 2012, Fassung 2024)</strong> regeln den Aufbau von Straßenquerschnitten in Deutschland. Die Schichtdicken im Rechner sind vereinfachte Lehrwerte – maßgebend sind die Tafeln der RStO 12/24 und die ZTV SoB-StB. Ziel ist die Festlegung der wirtschaftlichsten Dicke der einzelnen Schichten unter Berücksichtigung von <strong>Schwerverkehr</strong> (charakterisiert durch die Belastungsklasse <InlineMath math="B_k" />), Frostempfindlichkeit des Untergrundes und klimatischen Randbedingungen.
-        </p>
+          <Milestone size={16} className="text-shiraz" /><MdText text={inhalt.texte.grundlagenDerBemessungNach} /></h3>
+        <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieRichtlinienFürDie} /></p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -33,7 +32,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
           
           {/* Bauweise */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-bold text-text-main/70">1. Überbaubauweise</span>
+            <span className="text-xs font-bold text-text-main/70"><MdText text={inhalt.texte.t1Überbaubauweise} /></span>
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => { setBauweise('asphalt'); setBelastungsKlasse('Bk32'); }}
@@ -60,8 +59,8 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
 
           {/* Belastungsklasse Selector */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-bold text-text-main/70">2. Belastungsklasse (<InlineMath math="B_k" />)</span>
-            <select aria-label="2. Belastungsklasse ()"
+            <span className="text-xs font-bold text-text-main/70"><MdText text={inhalt.texte.t2BelastungsklasseBK} /></span>
+            <select aria-label={inhalt.werte.t2Belastungsklasse}
               value={belastungsKlasse}
               onChange={(e) => setBelastungsKlasse(e.target.value)}
               className="p-2 text-xs border border-zinc-300 rounded-md bg-white text-text-main font-semibold"
@@ -84,11 +83,11 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
             <div className="flex items-start gap-2 text-amber-800">
               <AlertTriangle size={15} className="mt-0.5 shrink-0" />
               <div>
-                <p className="font-bold text-[11px] text-amber-900">ZTV Asphalt-StB Hinweis:</p>
+                <p className="font-bold text-[11px] text-amber-900"><MdText text={inhalt.texte.ztvAsphaltStbHinweis} /></p>
                 <p className="text-[10px] text-text-main/70 leading-relaxed mt-0.5">
                   {bauweise === 'asphalt' 
-                    ? 'Erhöhte Anforderungen an die Kornform (z. B. Kategorie SI15 bzw. FI15) und verformungsstabilere PmB-Bitumensorten bei schwerer Lastklasse (≥ Bk32).'
-                    : 'Querscheinfugen mit Dübeln (Ø 25 mm, kunststoffbeschichtet), Längsfugen mit Ankern – gegen Stufenbildung und Auseinanderwandern der Platten.'}
+                    ? inhalt.werte.erhöhteAnforderungenAnDie
+                    : inhalt.werte.querscheinfugenMitDübeln25}
                 </p>
               </div>
             </div>
@@ -96,11 +95,9 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
 
           {/* Interactive Dimensioning Formula Context */}
           <div className="p-3 text-[11px] font-mono text-text-main/60 bg-white border border-home-grau/15 rounded-lg">
-            <span className="font-bold text-text-main block mb-1">Dimensionierungsformel (Äquivalenz):</span>
+            <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.dimensionierungsformelÄquivalenz} /></span>
             <FormulaText text="B = N \cdot  f_A \cdot  f_G \cdot  f_B \cdot  t_{N}" />
-            <span className="text-[10px] text-text-main/70 block mt-1">
-              <InlineMath math="N" />: Mittlere tägliche Lkw-Stärke, <InlineMath math="f_A" />: Achszahlfaktor, <InlineMath math="f_G" />: Spurbreitenfaktor, <InlineMath math="f_B" />: Achslastfaktor.
-            </span>
+            <span className="text-[10px] text-text-main/70 block mt-1"><MdText text={inhalt.texte.nMittlereTäglicheLkw} /></span>
           </div>
         </div>
 
@@ -108,8 +105,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
         <div className="lg:col-span-7 flex flex-col gap-4">
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
             <div className="flex justify-between items-center mb-4">
-              <h5 className="font-bold text-sm text-text-main">
-                Soll-Aufbau nach RStO {bauweise === 'asphalt' ? 'Tafel 1 (Asphalt)' : 'Tafel 2 (Beton)'}
+              <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.sollAufbauNachRsto} />{bauweise === 'asphalt' ? inhalt.werte.tafel1Asphalt : inhalt.werte.tafel2Beton}
               </h5>
               <span className="text-xs bg-zinc-100 border border-zinc-200 px-2 py-1 rounded font-mono font-bold text-zinc-700">
                 Gesamtdicke: {formatDeWert(activeProfile.totalThickness)} cm
@@ -145,7 +141,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
                     
                     {/* Rich-Tooltip on hover showing requirements */}
                     <div className="absolute inset-0 bg-black/95 text-white p-3 hidden group-hover:flex flex-col justify-center text-[10.5px] leading-normal transition-all duration-300">
-                      <span className="font-bold text-zinc-300">Normative Anforderung (ZTV Asphalt-StB / EN 13043):</span>
+                      <span className="font-bold text-zinc-300"><MdText text={inhalt.texte.normativeAnforderungZtvAsphalt} /></span>
                       <p className="mt-1">{layer.normRequirement}</p>
                     </div>
                   </div>
@@ -157,10 +153,8 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
             <div className="mt-2 p-3 bg-amber-50/80 border border-amber-200 rounded-lg text-amber-950 flex gap-2.5">
               <TrendingUp className="text-amber-700 mt-1 shrink-0" size={16} />
               <div className="text-xs">
-                <p className="font-bold">Untergrund / Unterbau (Planum):</p>
-                <p className="text-[11px] leading-relaxed mt-0.5">
-                  Tragfähigkeitsnachweis gemäß ZTV E-StB mittels Statischem Plattendruckversuch nach DIN 18134. <strong className="font-mono text-slate-800">Sollwert: EV2 ≥ 45 MPa</strong>. Ist dieser Wert nicht erreichbar, muss eine Bodenverbesserung mit Kalk/Zement oder Bodenaustausch erfolgen.
-                </p>
+                <p className="font-bold"><MdText text={inhalt.texte.untergrundUnterbauPlanum} /></p>
+                <p className="text-[11px] leading-relaxed mt-0.5"><MdText text={inhalt.texte.tragfähigkeitsnachweisGemäßZtvE} /><strong className="font-mono text-slate-800"><MdText text={inhalt.texte.sollwertEv245Mpa} /></strong><MdText text={inhalt.texte.istDieserWertNicht} /></p>
               </div>
             </div>
 

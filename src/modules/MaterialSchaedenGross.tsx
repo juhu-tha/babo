@@ -18,6 +18,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { DAMAGE_CASES } from './materialschaedengross/daten';
+import inhalt from '@/content/materialschaedengross/MaterialSchaedenGross.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function MaterialSchaedenGross() {
   const { setActiveTab, setTypischeBauschaedenSubTab } = useTabContext();
@@ -46,12 +48,8 @@ export default function MaterialSchaedenGross() {
               <ShieldAlert size={26} />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-                Große materialbedingte Bauschäden &amp; Einstürze
-              </h2>
-              <p className="text-xs text-text-main/70">
-                Forensische Schadensanalyse historischer Großschadensfälle: Projektdaten, Werkstoffmechanismen, Historie, Ursachen &amp; normative Konsequenzen
-              </p>
+              <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.großeMaterialbedingteBauschädenEinstürze} /></h2>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.forensischeSchadensanalyseHistorischerGr} /></p>
             </div>
           </div>
 
@@ -84,8 +82,7 @@ export default function MaterialSchaedenGross() {
                   ? 'bg-shiraz text-white shadow-sm'
                   : 'bg-off-white text-text-main/80 hover:bg-home-grau/20 border border-home-grau/30'
               }`}
-            >
-              Infrastruktur &amp; Schiene ({DAMAGE_CASES.filter(c => c.category === 'infrastruktur').length})
+            ><MdText text={inhalt.texte.infrastrukturSchiene} />{DAMAGE_CASES.filter(c => c.category === 'infrastruktur').length})
             </button>
             <button aria-pressed={activeCategoryFilter === 'hallen'}
               onClick={() => setActiveCategoryFilter('hallen')}
@@ -116,7 +113,7 @@ export default function MaterialSchaedenGross() {
             <Search className="absolute left-3 top-2.5 text-text-main/40" size={16} />
             <input
               type="text"
-              placeholder="Fallakte durchsuchen (z.B. Bahnschwellen, AKR, Leim, Spannungsrisskorrosion, Carolabrücke, Stava)..."
+              placeholder={inhalt.werte.fallakteDurchsuchenZB}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-4 py-2 bg-off-white border border-home-grau/30 rounded-xl text-xs text-text-main placeholder:text-text-main/50 focus:outline-none focus:border-shiraz/50"
@@ -126,9 +123,7 @@ export default function MaterialSchaedenGross() {
 
         {/* Introduction Quote / Banner */}
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
-          <p>
-            Große Einstürze und Strukturversagen der Bau- und Verkehrsgeschichte sind selten das Resultat eines einzelnen Versehens. Nahezu ausnahmslos handelt es sich um das verhängnisvolle Zusammenspiel von <strong>materialbedingter Degradation</strong> (z.B. Alkali-Kieselsäure-Reaktion im Beton, Spannungsrisskorrosion, Hydrolyse von Leimfugen, Verflüssigung unter Porenwasserdruck), <strong>bauphysikalischer oder statischer Fehlkonzeption</strong>, <strong>fehlender System-Redundanz</strong> und <strong>Lücken in der periodischen Bauwerksüberwachung</strong>.
-          </p>
+          <p><MdText text={inhalt.texte.großeEinstürzeUndStrukturversagen} /></p>
         </div>
 
         {/* Case Study Selector Cards */}
@@ -160,7 +155,7 @@ export default function MaterialSchaedenGross() {
                 <div className={`mt-3 pt-2 border-t text-[10px] font-semibold flex items-center justify-between ${
                   isSelected ? 'border-white/20 text-white' : 'border-home-grau/20 text-shiraz'
                 }`}>
-                  <span>Fallakte öffnen</span>
+                  <span><MdText text={inhalt.texte.fallakteÖffnen} /></span>
                   <ChevronRight size={12} />
                 </div>
               </div>
@@ -192,9 +187,7 @@ export default function MaterialSchaedenGross() {
               </p>
             </div>
             <div className="p-3 bg-white rounded-xl border border-home-grau/20 shadow-2xs max-w-sm">
-              <span className="text-[10px] uppercase font-bold text-text-main/60 block mb-1">
-                Kritischer Werkstoffmechanismus
-              </span>
+              <span className="text-[10px] uppercase font-bold text-text-main/60 block mb-1"><MdText text={inhalt.texte.kritischerWerkstoffmechanismus} /></span>
               <div className="text-xs font-bold text-text-main leading-snug">
                 <FormulaText text={currentCase.keyMaterialMechanism} />
               </div>
@@ -209,20 +202,19 @@ export default function MaterialSchaedenGross() {
           {/* 1. Projektdaten & Kenngrößen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-              <Building2 size={16} className="text-shiraz" /> Projektdaten &amp; Bauwerkskenngrößen
-            </h4>
+              <Building2 size={16} className="text-shiraz" /><MdText text={inhalt.texte.projektdatenBauwerkskenngrößen} /></h4>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20">
-                <span className="text-[10px] text-text-main/60 font-semibold block uppercase">Baujahr &amp; Schadenszeitpunkt</span>
+                <span className="text-[10px] text-text-main/60 font-semibold block uppercase"><MdText text={inhalt.texte.baujahrSchadenszeitpunkt} /></span>
                 <p className="font-bold text-text-main mt-0.5">{currentCase.projectData.baujahr} / {currentCase.projectData.schadensdatum}</p>
               </div>
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20">
-                <span className="text-[10px] text-text-main/60 font-semibold block uppercase">Tragwerkstyp &amp; Abmessungen</span>
+                <span className="text-[10px] text-text-main/60 font-semibold block uppercase"><MdText text={inhalt.texte.tragwerkstypAbmessungen} /></span>
                 <p className="font-bold text-text-main mt-0.5">{currentCase.projectData.tragwerkstyp}</p>
                 <p className="text-[11px] text-text-main/70 mt-1">{currentCase.projectData.spannweiteAbmessungen}</p>
               </div>
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20">
-                <span className="text-[10px] text-text-main/60 font-semibold block uppercase">Beteiligte Werkstoffe</span>
+                <span className="text-[10px] text-text-main/60 font-semibold block uppercase"><MdText text={inhalt.texte.beteiligteWerkstoffe} /></span>
                 <ul className="mt-1 space-y-0.5 font-semibold text-text-main list-disc list-inside">
                   {currentCase.projectData.beteiligteBaustoffe.map((m, i) => (
                     <li key={i} className="text-[11px]">{m}</li>
@@ -230,7 +222,7 @@ export default function MaterialSchaedenGross() {
                 </ul>
               </div>
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20">
-                <span className="text-[10px] text-text-main/60 font-semibold block uppercase">Schadensausmaß &amp; Verluste</span>
+                <span className="text-[10px] text-text-main/60 font-semibold block uppercase"><MdText text={inhalt.texte.schadensausmaßVerluste} /></span>
                 <p className="font-bold text-shiraz mt-0.5">{currentCase.projectData.opferZahlen}</p>
                 <p className="text-[11px] text-text-main/70 mt-1">{currentCase.projectData.gesamtschaden}</p>
               </div>
@@ -240,8 +232,7 @@ export default function MaterialSchaedenGross() {
           {/* 2. Historie & Schadensverlauf */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-              <Clock size={16} className="text-shiraz" /> Historie &amp; Schadenschronologie
-            </h4>
+              <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.historieSchadenschronologie} /></h4>
             <div className="space-y-3 relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-home-grau/30">
               {currentCase.historie.map((step, idx) => (
                 <div key={idx} className="relative flex items-start gap-3 pl-7">
@@ -265,8 +256,7 @@ export default function MaterialSchaedenGross() {
           {/* 3. Physikalische & Materialbedingte Schadensursachen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-              <Layers size={16} className="text-shiraz" /> Materialmechanische &amp; Ingenieurtechnische Schadensursachen
-            </h4>
+              <Layers size={16} className="text-shiraz" /><MdText text={inhalt.texte.materialmechanischeIngenieurtechnischeSc} /></h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {currentCase.ursachen.map((u, i) => (
                 <div key={i} className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/40 flex flex-col justify-between text-xs">
@@ -303,8 +293,7 @@ export default function MaterialSchaedenGross() {
           {/* 4. Folgen & Normative Konsequenzen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-              <Scale size={16} className="text-shiraz" /> Folgen &amp; Normative Konsequenzen für die Baupraxis
-            </h4>
+              <Scale size={16} className="text-shiraz" /><MdText text={inhalt.texte.folgenNormativeKonsequenzenFür} /></h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               {currentCase.folgen.map((f, i) => (
                 <div key={i} className="p-3.5 bg-off-white/80 rounded-xl border border-home-grau/20 flex flex-col justify-between">
@@ -313,7 +302,7 @@ export default function MaterialSchaedenGross() {
                     <p className="text-text-main/80 leading-relaxed mb-3">{f.auswirkung}</p>
                   </div>
                   <div className="pt-2 border-t border-home-grau/20">
-                    <span className="text-[10px] text-text-main/60 block font-semibold uppercase">Relevantes Regelwerk</span>
+                    <span className="text-[10px] text-text-main/60 block font-semibold uppercase"><MdText text={inhalt.texte.relevantesRegelwerk} /></span>
                     <div className="font-mono text-[11px] font-bold text-shiraz mt-0.5">
                       <FormulaText text={f.normativeKonsequenz} />
                     </div>
@@ -326,8 +315,7 @@ export default function MaterialSchaedenGross() {
           {/* 5. Lessons Learned / Wichtigste Ingenieur-Erkenntnisse */}
           <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20 shadow-2xs">
             <h4 className="text-sm font-bold text-shiraz flex items-center gap-2 mb-2">
-              <CheckCircle2 size={16} /> Fundamentale Lehren für Bauingenieure &amp; Werkstoffprüfer
-            </h4>
+              <CheckCircle2 size={16} /><MdText text={inhalt.texte.fundamentaleLehrenFürBauingenieure} /></h4>
             <ul className="space-y-1.5 text-xs text-text-main/80 list-disc list-inside">
               {currentCase.lessonsLearned.map((ll, i) => (
                 <li key={i} className="leading-relaxed">
@@ -345,9 +333,7 @@ export default function MaterialSchaedenGross() {
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-shiraz text-white">
                     Fachwissen-Verknüpfung
                   </span>
-                  <strong className="text-xs text-text-main">
-                    Verwandter Schadensmechanismus in: Typische Bauschäden
-                  </strong>
+                  <strong className="text-xs text-text-main"><MdText text={inhalt.texte.verwandterSchadensmechanismusInTypische} /></strong>
                 </div>
                 <p className="text-xs text-text-main/80 font-medium">
                   {currentCase.typischeBauschaedenLink.description}
@@ -369,8 +355,7 @@ export default function MaterialSchaedenGross() {
           {/* 7. Fachquellen, Untersuchungsberichte & Gutachten */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-              <BookOpen size={16} className="text-shiraz" /> Relevante Fachquellen, Gutachten &amp; Untersuchungsberichte
-            </h4>
+              <BookOpen size={16} className="text-shiraz" /><MdText text={inhalt.texte.relevanteFachquellenGutachtenUntersuchun} /></h4>
             {currentCase.quellenlage && (
               <p className="text-xs text-text-main/80 mb-3 leading-relaxed">
                 <strong>Quellenlage:</strong> {currentCase.quellenlage}
@@ -388,7 +373,7 @@ export default function MaterialSchaedenGross() {
                           target="_blank" 
                           rel="noreferrer" 
                           className="text-shiraz hover:underline shrink-0 p-0.5"
-                          title="Quelle extern öffnen"
+                          title={inhalt.werte.quelleExternÖffnen}
                         >
                           <ExternalLink size={12} />
                         </a>
@@ -411,85 +396,41 @@ export default function MaterialSchaedenGross() {
       {/* Standardisierter ModuleFooter nach Styleguide */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Kritische Rissgröße in einem Stahlbauteil bei Kälte"
+        title={inhalt.werte.beispiel1KritischeRissgröße}
         zielGleichung="a_c = \frac{1}{\pi}\left(\frac{K_{Ic}}{Y \cdot \sigma}\right)^2"
-        schritte={[
-          { titel: 'Werkstoff', erklaerung: 'Älterer Baustahl bei Frost mit geringer Bruchzähigkeit (Lehrwert):', formel: 'K_{Ic} = 30\\,\\text{MPa}\\sqrt{\\text{m}}' },
-          { titel: 'Beanspruchung', erklaerung: 'Nennspannung im Bauteil 300 MPa, Randriss (Y = 1,12):', formel: 'Y \\cdot \\sigma = 336\\,\\text{MPa}' },
-          { titel: 'Kritischer Riss', erklaerung: 'Einsetzen:', formel: 'a_c = \\frac{1}{\\pi}\\left(\\frac{30}{336}\\right)^2 = 0{,}0025\\,\\text{m} = 2{,}5\\,\\text{mm}' }
-        ]}
-        ergebnisHinweis="Ein Riss von wenigen Millimetern genügt – visuell kaum auffindbar. Ohne Redundanz (Silver Bridge 1967) führt das Versagen eines Glieds zum Gesamteinsturz."
-        normQuelle="Irwin (1957); NTSB-Bericht Silver Bridge (1970)"
+        schritte={inhalt.daten["MaterialSchaedenGross.schritte"]}
+        ergebnisHinweis={inhalt.werte.einRissVonWenigen}
+        normQuelle={inhalt.werte.irwin1957NtsbBericht}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Lastverdopplung durch geänderte Anschlussausbildung (Hyatt Regency 1981)"
+        title={inhalt.werte.beispiel2LastverdopplungDurch}
         zielGleichung="F_{Mutter,ist} = 2 \cdot F_{Mutter,plan}"
-        schritte={[
-          { titel: 'Planung', erklaerung: 'Durchlaufende Hängestange: Jede Mutter unter einem Steg trägt nur dessen Last P.', formel: 'F_{plan} = P' },
-          { titel: 'Ausführung', erklaerung: 'Zwei versetzte Stangen: Die Mutter am oberen Steg trägt dessen Last und die des unteren Stegs.', formel: 'F_{ist} = P + P = 2P' },
-          { titel: 'Folge', erklaerung: 'Bei P = 90 kN (Lehrwert):', formel: 'F_{ist} = 180\\,\\text{kN} \\text{ statt } 90\\,\\text{kN}' }
-        ]}
-        ergebnisHinweis="Die unscheinbare Detailänderung verdoppelte die Beanspruchung des Kastenträgeranschlusses; schon die ursprüngliche Planung erfüllte die Anforderungen der Bauordnung nach dem NBS-Bericht nicht vollständig."
-        normQuelle="NBS BSS 143 (1982)"
+        schritte={inhalt.daten["MaterialSchaedenGross.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dieUnscheinbareDetailänderungVerdoppelte}
+        normQuelle={inhalt.werte.nbsBss1431982}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="material_schaeden_gross" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: Fallchronologien, Opferzahlen und Quellen geprüft; nicht verifizierbare Gutachtenangaben neutralisiert; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap11}
         wikipedia={[
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' },
-          { title: 'Eisenbahnunfall von Burgrain (Garmisch-Partenkirchen)', url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain' },
-          { title: 'Hyatt-Regency-Einsturz (Kansas City)' },
-          { title: 'Katastrophe von Stava (Dammbruch)' },
-          { title: 'Schiersteiner Brücke (Havarie)', url: 'https://de.wikipedia.org/wiki/Schiersteiner_Br%C3%BCcke' },
-          { title: 'Einsturz der Eishalle Bad Reichenhall' },
-          { title: 'Polcevera-Viadukt (Ponte Morandi)', url: 'https://de.wikipedia.org/wiki/Polcevera-Viadukt' },
-          { title: 'Carolabrücke (Dresden)', url: 'https://de.wikipedia.org/wiki/Carolabr%C3%BCcke_(Dresden)' },
-          { title: 'Silver Bridge', url: 'https://de.wikipedia.org/wiki/Silver_Bridge' },
-          { title: 'Kongresshalle (Berlin)', url: 'https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt' },
+          { title: inhalt.werte.eisenbahnunfallVonBurgrainGarmisch, url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain' },
+          { title: inhalt.werte.hyattRegencyEinsturzKansas },
+          inhalt.daten["MaterialSchaedenGross.wikipedia.3"],
+          { title: inhalt.werte.schiersteinerBrückeHavarie, url: 'https://de.wikipedia.org/wiki/Schiersteiner_Br%C3%BCcke' },
+          inhalt.daten["MaterialSchaedenGross.wikipedia.5"],
+          { title: inhalt.werte.polceveraViaduktPonteMorandi, url: 'https://de.wikipedia.org/wiki/Polcevera-Viadukt' },
+          { title: inhalt.werte.carolabrückeDresden, url: 'https://de.wikipedia.org/wiki/Carolabr%C3%BCcke_(Dresden)' },
+          { title: inhalt.werte.silverBridge, url: 'https://de.wikipedia.org/wiki/Silver_Bridge' },
+          { title: inhalt.werte.kongresshalleBerlin, url: 'https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt' },
           { title: 'Reichsbrücke', url: 'https://de.wikipedia.org/wiki/Reichsbr%C3%BCcke' }
         ]}
-        literatur={[
-          'Bundesstelle für Eisenbahnunfalluntersuchung (BEU): Untersuchungsbericht zum Zugunglück bei Burgrain 2022 (AKR an Spannbetonschwellen)',
-          'Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'National Bureau of Standards (NBS): Investigation of the Kansas City Hyatt Regency Walkways Collapse. NBS Building Science Series 143, 1982',
-          'Schlaich, J.; Kordina, K.; Engell, H.-J.: Teileinsturz der Kongresshalle Berlin – Schadensursachen. Zusammenfassendes Gutachten. Beton- und Stahlbetonbau 75 (1980) H. 12, S. 281–294',
-          'N. N.: Gutachten zu den Ursachen des Einsturzes der Eissporthalle in Bad Reichenhall vorgelegt. Bautechnik 83 (2006) H. 9, S. 667–668; Voormann, F.; Pfeifer, M.: Die Kämpf-Stegträger der Eissporthalle Bad Reichenhall – Eine typische Holzkonstruktion der 1950er und 1960er Jahre? Bautechnik 84 (2007) H. 1, S. 1–7; BGH, Urteil vom 12.01.2010 – 1 StR 272/09',
-          'Petroski, H. (1994): Design Paradigms: Case Histories of Error and Judgment in Engineering (Cambridge University Press)'
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Alkali-Richtlinie (Alkalireaktion im Beton), Ausgabe 2013-10', url: 'https://www.dafstb.de/' },
-          { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)' },
-          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)' },
-          { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)' },
-          { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)' }
-        ]}
-        formeln={[
-          {
-            formel: 'Na_2O_{äq} = \\%Na_2O + 0{,}658 \\cdot \\%K_2O \\le 0{,}60\\% \\quad (\\text{NA-Zement})',
-            erklaerung: 'Äquivalenter Natriumoxidgehalt von Zementen nach DIN EN 197 / DAfStb-Alkali-Richtlinie. Niedrigalkalische Zemente (NA-Zemente) begrenzen das Risiko schädigender Alkali-Kieselsäure-Reaktionen. Der Grenzwert 0,60 % gilt allgemein; für hüttensandreiche Zemente nennt DIN 1164-10 höhere Grenzwerte (z. B. CEM II/B-S ≤ 0,70 %, CEM III/A ≤ 0,95 bzw. 1,10 %, CEM III/B und III/C ≤ 2,00 %).',
-            quelle: 'DIN 1164-10 & DAfStb-Alkali-Richtlinie'
-          },
-          {
-            formel: 'K_I = Y \\cdot \\sigma \\cdot \\sqrt{\\pi a} \\ge K_{Ic} \\quad [\\text{MPa}\\sqrt{\\text{m}}]',
-            erklaerung: 'Bruchkriterium der linearen elastischen Bruchmechanik (LEBM): Ein instabiler Sprödbruch tritt ein, wenn die Spannungsintensität an der Rissspitze die kritische Bruchzähigkeit KIc des Werkstoffs überschreitet (z. B. Silver Bridge).',
-            quelle: 'Griffith-Irwin Bruchmechanik'
-          },
-          {
-            formel: '\\tau_f = c\' + (\\sigma - u) \\cdot \\tan\\varphi\' \\xrightarrow{u \\rightarrow \\sigma} \\tau_f \\approx 0',
-            erklaerung: 'Mohr-Coulomb-Bruchkriterium mit effektiven Scherparametern c′, φ′ unter Porenwasserüberdruck u (Scherverflüssigung / Static Liquefaction): Steigt der Porenwasserdruck bis zur Normalspannung an, fällt die effektive Scherfestigkeit auf null (Dammbruch Stava).',
-            quelle: 'Terzaghi / Bodenmechanik'
-          },
-          {
-            formel: '-\\text{NH}-\\text{CH}_2-\\text{NH}- + \\text{H}_2\\text{O} \\xrightarrow{\\text{H}^+, \\, T} -\\text{NH}_2 + \\text{HCHO} + \\text{H}_2\\text{N}-',
-            erklaerung: 'Säurekatalysierte Hydrolyse von Harnstoff-Formaldehyd-Harzen (UF-Leimen) unter Einwirkung permanenter Feuchte und Kondenswasserbildung (Bad Reichenhall).',
-            quelle: 'Bauchemie der Polymerklebstoffe'
-          }
-        ]}
+        literatur={inhalt.daten["MaterialSchaedenGross.literatur"]}
+        regelwerke={inhalt.daten["MaterialSchaedenGross.regelwerke"]}
+        formeln={inhalt.daten["MaterialSchaedenGross.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,210 @@
+{
+  "texte": {
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen • THA",
+    "weiterführendeStudienangeboteThaIbi": "Weiterführende Studienangebote (THA & ibi)",
+    "bereitenSieSichAuf": "Bereiten Sie sich auf Führungsaufgaben vor! Die Technische Hochschule Augsburg (THA) bietet Absolventinnen und Absolventen herausragende Masterstudiengänge sowie maßgeschneiderte berufsbegleitende Weiterbildungen über das **ibi - Institut für Bau und Immobilie** an.",
+    "maprAppliedResearch": "MAPR (Applied Research)",
+    "wählenSieEinAkademisches": "Wählen Sie ein akademisches Angebot zur Detailansicht aus:",
+    "alleAngebote": "Alle Angebote",
+    "zurWebseite": "Zur Webseite",
+    "bewerbungInformationAnDer": "Bewerbung / Information an der THA",
+    "studiengangsleiterProfHuber": "Studiengangsleiter: Prof. Huber",
+    "studiengangsleiterProfHuber2": "Studiengangsleiter: **Prof. Huber**",
+    "akademischerGradAbschluss": " Akademischer Grad / Abschluss",
+    "regelstudienzeitStruktur": " Regelstudienzeit / Struktur",
+    "formatPräsenz": " Format & Präsenz"
+  },
+  "werte": {
+    "bauingenieurwesenMaster": "Bauingenieurwesen (Master)",
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen",
+    "architekturBauwesenTha": "Architektur & Bauwesen • THA",
+    "masterOfEngineeringM": "Master of Engineering (M.Eng.)",
+    "t3SemesterVollzeit5": "3 Semester (Vollzeit) / 5 Semester (Teilzeit)",
+    "vollzeitTeilzeitOderStudium": "Vollzeit, Teilzeit oder Studium mit vertiefter Praxis; Beginn jedes Semester",
+    "derForschungsUndPraxisorientierte": "Der forschungs- und praxisorientierte Masterstudiengang vertieft und erweitert das im Bachelor erworbene ingenieurwissenschaftliche Fachwissen. Er befähigt Sie zur eigenständigen Lösung komplexer Aufgabenstellungen des modernen Bauwesens, vom Konstruktiven Ingenieurbau über Digitales Bauen (BIM) bis hin zu Infrastruktur und Umwelttechnik. Das Studium ist flexibel gestaltbar und auch in Teilzeit möglich.",
+    "bereitenSieSichAuf": "Bereiten Sie sich auf anspruchsvolle Entwicklungs-, Planungs- und Führungsaufgaben vor. Absolventen übernehmen hochqualifizierte Positionen in renommierten Ingenieurbüros, führenden Bauunternehmungen, staatlichen Baubehörden sowie Prüfämtern.",
+    "studienschwerpunkteFächer": "Studienschwerpunkte & Fächer",
+    "berufsfelderKarriere": "Berufsfelder & Karriere",
+    "absolventenÜbernehmenHochqualifizierteFa": "Absolventen übernehmen hochqualifizierte Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmungen, Prüfämtern und der öffentlichen Bauverwaltung:",
+    "projektmanagementBauMaster": "Projektmanagement Bau (Master)",
+    "thaIbiInstitutFür": "THA_ibi – Institut für Bau und Immobilie (berufsbegleitender Weiterbildungsmaster)",
+    "weiterbildungsstudiengangIbi": "Weiterbildungsstudiengang • ibi",
+    "masterOfEngineeringM2": "Master of Engineering (M.Eng.)",
+    "t5SemesterBerufsbegleitend": "5 Semester (berufsbegleitend)",
+    "freitagSamstagPräsenzPlus": "Freitag/Samstag-Präsenz plus 1–2 Blockseminare je Semester; Gebühren 5 × 2.800 € (Stand 10/2026)",
+    "dieserBerufsbegleitendeWeiterbildungsstu": "Dieser berufsbegleitende Weiterbildungsstudiengang ist interdisziplinär angelegt und richtet sich an Architekten, Bauingenieure, Wirtschaftsingenieure und Absolventen verwandter Studiengänge mit erster Berufserfahrung. Er verknüpft technisches Know-how mit juristischer Kompetenz, Projektsteuerung, BIM-Management und Teamführung.",
+    "derMasterstudiengangQualifiziertSie": "Der Masterstudiengang qualifiziert Sie für Führungsrollen in der Bau- und Immobilienwirtschaft. Der Schwerpunkt liegt auf ganzheitlicher Projektleitung und -steuerung im Einklang mit wirtschaftlichen, ökologischen und rechtlichen Parametern.",
+    "kerninhalteDerPmModule": "Kerninhalte der PM-Module",
+    "nutzenFürIhrePraxis": "Nutzen für Ihre Praxis",
+    "dieEngeVerknüpfungMit": "Die enge Verknüpfung mit erfahrenen Dozierenden aus Planung, Bauwirtschaft, Recht und Immobilienwirtschaft bietet wertvolles Praxis-Networking:",
+    "ausbauUndBestandZertifikat": "Ausbau und Bestand (Zertifikat)",
+    "thaIbiInstitutFür2": "THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)",
+    "zertifikatslehrgangIbi": "Zertifikatslehrgang • ibi",
+    "zertifikatFachingenieurInFachplaner": "Zertifikat Fachingenieur:in / Fachplaner:in Ausbau und Bestand (30 ECTS)",
+    "t2SemesterBerufsbegleitend": "2 Semester (berufsbegleitend)",
+    "berufsbegleitendBeginnImWintersemester": "Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau",
+    "berufsbegleitendesZertifikatsstudiumFürA": "Berufsbegleitendes Zertifikatsstudium für Ausbau und Bauen im Bestand. Schwerpunkte sind Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft und Projektmanagement sowie aktuelle Systeme des Aus- und Leichtbaus; Projektarbeiten und Fallstudien in interdisziplinären Gruppen.",
+    "bauenImBestandUnd": "Bauen im Bestand und anspruchsvolle Innenausbauten erfordern lückenlose technische Detailkompetenz. Gewinnen Sie Vertrauen bei komplexesten Schnittstellenkoordinationen am Bau.",
+    "werProfitiertAmMeisten": "Wer profitiert am meisten?",
+    "diePraxisnaheWeiterbildungVerbindet": "Die praxisnahe Weiterbildung verbindet Planung und Ausführung:",
+    "fassadeZertifikat": "Fassade (Zertifikat)",
+    "thaIbiInstitutFür3": "THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)",
+    "zertifikatslehrgangIbiNeu": "Zertifikatslehrgang • ibi (NEU)",
+    "zertifikatFachingenieurInFachplaner2": "Zertifikat Fachingenieur:in / Fachplaner:in Fassade (30 ECTS)",
+    "t2SemesterBerufsbegleitend2": "2 Semester (berufsbegleitend)",
+    "berufsbegleitendBeginnImWintersemester2": "Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau",
+    "dieGebäudehülleBzwVorhangfassade": "Die Gebäudehülle bzw. Vorhangfassade stellt als Schnittstelle zwischen Tragwerk, Bauphysik und architektonischem Ausdruck eines der komplexesten Bauteile dar. Dieser praxisnahe Zertifikatslehrgang vertieft Konstruktionsdetails von Glas-, Metall- und Elementfassaden, thermische Bauphysik sowie brandschutztechnische Anforderungen im modernen Fassadenbau.",
+    "effizientesPlanenModernerSystem": "Effizientes Planen moderner System- und Elementfassaden setzt herstellerunabhängiges, vertieftes technisches Spezialwissen voraus, insbesondere bei der Bewertung thermischer Effekte, Strömungsverhalten und Tragstruktur-Anschlüssen.",
+    "lehrplanthemenModule": "Lehrplanthemen / Module",
+    "werProfitiertAmMeisten2": "Wer profitiert am meisten?",
+    "dieFortbildungBringtSie": "Die Fortbildung bringt Sie auf Augenhöhe mit spezialisierten Systemherstellern und schützt Sie vor kostspieligen Haftungsfällen:",
+    "holzbauZertifikat": "Holzbau (Zertifikat)",
+    "thaIbiInstitutFür4": "THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)",
+    "zertifikatslehrgangIbiNeu2": "Zertifikatslehrgang • ibi (NEU)",
+    "zertifikatFachingenieurInFachplaner3": "Zertifikat Fachingenieur:in / Fachplaner:in Holzbau (30 ECTS)",
+    "t2SemesterBerufsbegleitend3": "2 Semester (berufsbegleitend)",
+    "berufsbegleitendBeginnImWintersemester3": "Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau",
+    "derModerneHolzbauUnd": "Der moderne Holzbau und mehrgeschossige Holz-Hybridbau boomen im Zuge des nachhaltigen Bauens. Dieser Zertifikatslehrgang bereitet Sie auf die anspruchsvolle Detailplanung vor, von Tragfähigkeit und Bemessung, Feuchtelast- und Schwingungsschutz bis hin zu Schallschutz und Brandschutz nach anspruchsvollen Landesbauordnungen.",
+    "nachhaltigesSchnellesUndPräzises": "Nachhaltiges, schnelles und präzises zirkuläres Bauen gelingt am besten im Holzbau. Das interdisziplinäre Planen mehrgeschossiger Holzbauten verlangt jedoch höchste Fachkunde bezüglich Verformungen, Schallbrücken und Fluchtwegevorsorge.",
+    "lehrplanthemenModule2": "Lehrplanthemen / Module",
+    "werProfitiertAmMeisten3": "Wer profitiert am meisten?",
+    "rüstenSieSichFür": "Rüsten Sie sich für die Bauwende durch echtes Holz-Tragwerks- und Ausführungswissen:",
+    "ttzAichachTechnologietransferzentrum": "TTZ Aichach (Technologietransferzentrum)",
+    "technologietransferzentrumFürDigitalesPl": "Technologietransferzentrum für Digitales Planen und Fertigen im Bauwesen (gegründet 2023)",
+    "forschungTransferTha": "Forschung & Transfer • THA",
+    "forschungTransferInnovation": "Forschung, Transfer & Innovation",
+    "forschungTransfer": "Forschung & Transfer",
+    "kooperationsprojekteMitBauwirtschaftUnd": "Kooperationsprojekte mit Bauwirtschaft und Handwerk",
+    "dasTechnologietransferzentrumTtzAichach": "Das Technologietransferzentrum (TTZ) Aichach der Technischen Hochschule Augsburg (THA) ist auf Digitales Planen und Fertigen im Bauwesen spezialisiert (Fachbereiche Massivbau und Digitaler Holzbau). Es verbindet angewandte Forschung mit der Praxis von Bauwirtschaft und Handwerk in der Region.",
+    "inKooperationMitUnternehmen": "In Kooperation mit Unternehmen werden praxisorientierte Lösungen für moderne Fertigungstechniken im Holzbau, Automatisierung, CO2-neutrale Baumaterialien und kreislaufgerechtes Konstruieren erprobt. Ein forschen-fokussiertes Umfeld bietet sehr gute Bedingungen für Doktoranden.",
+    "forschungsFokusthemen": "Forschungs- & Fokusthemen",
+    "zusammenarbeitTransfer": "Zusammenarbeit & Transfer",
+    "dasTtzBietetEin": "Das TTZ bietet ein lebendiges Innovationsökosystem für Studierende, Forschende und Partnerunternehmen:",
+    "masterOfAppliedResearch": "Master of Applied Research (MAPR)",
+    "forschungsorientierterMasterDerFakultät": "Forschungsorientierter Master der Fakultät Elektrotechnik (fakultätsübergreifend)",
+    "masterOfScienceM": "Master of Science (M.Sc.)",
+    "masterOfScienceM2": "Master of Science (M.Sc.)",
+    "t3SemesterVollzeit": "3 Semester (Vollzeit)",
+    "vollzeitBeginnJedesSemester": "Vollzeit; Beginn jedes Semester",
+    "derInterdisziplinäreMasterstudiengangAng": "Der interdisziplinäre Masterstudiengang Angewandte Forschung und Entwicklung wendet sich an überdurchschnittlich qualifizierte Absolventen technischer Studiengänge. Sie bearbeiten ab dem ersten Tag ein konkretes Forschungs- und Entwicklungsprojekt und erlangen tiefes wissenschaftliches Know-how.",
+    "dieserStudiengangKombiniertAnspruchsvoll": "Dieser Studiengang kombiniert anspruchsvolle angewandte Forschungsprojekte in enger Zusammenarbeit mit Instituten oder Industriepartnern mit einem flexibel gestaltbaren technologisch-wissenschaftlichen Curriculum.",
+    "studienForschungsstruktur": "Studien- & Forschungsstruktur",
+    "herausragendePerspektiven": "Herausragende Perspektiven",
+    "bereitetSieZielgerichtetAuf": "Bereitet Sie zielgerichtet auf forschungsintensive Aufgaben oder eine anschließende Promotion vor:",
+    "masterBauImmobilie": " (Master - Bau & Immobilie)",
+    "oktober2026Ap17": "Oktober 2026 (AP 17: Studiendaten, Gebühren, Module und Links mit tha.de abgeglichen, Stand 22.10.2026; Angaben können sich ändern)",
+    "technischeHochschuleAugsburg": "Technische Hochschule Augsburg",
+    "bachelorBauingenieurwesenTha": "Bachelor Bauingenieurwesen - THA",
+    "ttzAichachTechnologietransferzentrum2": "TTZ Aichach - Technologietransferzentrum",
+    "maprMasterOfApplied": "MAPR - Master of Applied Research"
+  },
+  "daten": {
+    "PROGRAMS.bauing.modules": [
+      "Infrastrukturbau und Verkehrsinfrastruktur",
+      "Konstruktiver Ingenieurbau",
+      "Geotechnik und Spezialtiefbau",
+      "Wasserwirtschaft und Wasserbau",
+      "Digitales Planen und Bauen",
+      "Nachhaltiges Bauen und Klimaschutz",
+      "Vertiefte Statik und numerische Methoden",
+      "Interdisziplinäre Projektarbeit"
+    ],
+    "PROGRAMS.bauing.benefits": [
+      "Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmen und Bauverwaltung",
+      "Zugang zum höheren technischen Dienst (Laufbahnvoraussetzungen des Dienstherrn beachten)",
+      "Grundlage für eine Promotion; die Bauvorlageberechtigung richtet sich nach Landesrecht (z. B. Kammereintragung und Berufserfahrung)"
+    ],
+    "PROGRAMS.pm.modules": [
+      "Master Basis: Schlüsselkompetenzen, Baurecht, International Project Management",
+      "Vertiefung Bau und Immobilie: Methoden des Projektmanagements, Projektentwicklung, Nachhaltiges Bauen und Zertifizierung, Baubetrieb und KLR",
+      "Alternativ Vertiefung Ausbau und Bestand, Fassade oder Holzbau (entspricht den Zertifikatsstudiengängen)",
+      "Master Final: Masterseminar und Masterarbeit"
+    ],
+    "PROGRAMS.pm.benefits": [
+      "Karrieresprung zum Projektleiter, PM-Director oder Niederlassungsleiter",
+      "Umfassendes Verständnis von immobilienwirtschaftlichen Zusammenhängen",
+      "Unmittelbare Übertragbarkeit von erlernten Modulen in den Berufsalltag"
+    ],
+    "PROGRAMS.ausbau.modules": [
+      "A 1: Projektmodul Ausbau und Bestand",
+      "A 2: Konzeption und Konstruktion im Ausbau und Bestand",
+      "A 3: Bauphysik und TGA im Ausbau und Bestand",
+      "Schwerpunkte: Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft, Projektmanagement, Aus- und Leichtbausysteme"
+    ],
+    "PROGRAMS.ausbau.benefits": [
+      "Planenden Architekten und Bauingenieure zur Erstellung haftungssicherer Details",
+      "Bauleiter, Bauherrenbeauftragte & Gutachter zur Früherkennung von Ausbaufehlern",
+      "Projektsteuerer zur zeitlichen & kostengünstigen Koordination der Gewerke"
+    ],
+    "PROGRAMS.fassade.modules": [
+      "F 1: Projektmodul Fassade",
+      "F 2: Konzeption und Konstruktion in der Fassade",
+      "F 3: Bauphysik und TGA in der Fassade",
+      "F 4: Bauabwicklung in der Fassade (Kosten und Abwicklung; Regelwerke, Prüfmethoden, Schäden)"
+    ],
+    "PROGRAMS.fassade.benefits": [
+      "Planungsbüros für Fassadentechnik sowie Bauingenieure und Architekten in der Tragwerksplanung",
+      "Bauleiter & QS-Beauftragte von Fassadenbauunternehmen zur Schadensvermeidung",
+      "Spezialisten für thermische Hüllensanierungen, Energieberater und Bauherrenvertreter"
+    ],
+    "PROGRAMS.holzbau.modules": [
+      "H 1: Projektmodul Integrale Planung",
+      "H 2: Bauen mit Holz",
+      "H 3: Schutzmaßnahmen",
+      "Schwerpunkte: Ökonomie, Ökologie, Kreislauffähigkeit, Feuchteschutz, digitale Planung, Bauen im Bestand mit Holz"
+    ],
+    "PROGRAMS.holzbau.benefits": [
+      "Tragwerksplaner & Statiker zur Erweiterung auf komplexe und klimafreundliche Holz-Tragstrukturen",
+      "Zimmerermeister, Holzbautechniker, Bauleiter & Planer im modernen Zimmereihandwerk",
+      "Architekten für ressourcen-, kreislaufbewusstes, modulares und klimabewusstes Entwerfen"
+    ],
+    "PROGRAMS.ttz.modules": [
+      "Fachbereiche Massivbau und Digitaler Holzbau",
+      "Ressourcenschonende Baumaterialien",
+      "Additive und digitale Produktionsmethoden, automatisierte Fertigung",
+      "Digitale Planungstools",
+      "Aus- und Weiterbildung von Fachkräften"
+    ],
+    "PROGRAMS.ttz.benefits": [
+      "Abschlussarbeiten und Projektarbeiten mit Praxispartnern",
+      "Gemeinsame drittmittelgeförderte Forschungs- und Entwicklungsprojekte",
+      "Promotion in Kooperation (Voraussetzungen und Formate bei der THA prüfen)",
+      "Gefördert im Rahmen der Hightech Agenda Bayern sowie von Landkreis Aichach-Friedberg und Stadt Aichach"
+    ],
+    "PROGRAMS.mapr.modules": [
+      "Selbstständiges Forschungs- und Entwicklungsprojekt (ca. 50% des Studiums)",
+      "Vertiefende Fachvorlesungen nach individuellem Studienplan",
+      "Wissenschaftliche Methodik, Projektmanagement & Patentrecht",
+      "Verfassen wissenschaftlicher Publikationen & Teilnahme an Fachkongressen",
+      "Interdisziplinäres Forschungsseminar der bayerischen Hochschulen"
+    ],
+    "PROGRAMS.mapr.benefits": [
+      "Direkte Anbindung an modernste Forschungsaktivitäten und sehr gute Labore der THA",
+      "Hervorragende Vorbereitung auf F&E-Leitungsfunktionen in der High-Tech-Industrie",
+      "Idealer Wegbereiter für eine anschließende kooperative Promotion (Dr.-Ing. / Dr. rer. nat.)"
+    ],
+    "WeiterTHA.literatur": [
+      "Kochendörfer, B.; Liebchen, J. H.; Viering, M. G.: Bau-Projektmanagement: Grundlagen und Vorgehensweisen (Springer Vieweg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "WeiterTHA.regelwerke": [
+      {
+        "title": "AHO-Heft Nr. 9 (Projektmanagementleistungen in der Bau- und Immobilienwirtschaft)",
+        "url": "https://www.aho.de/"
+      },
+      {
+        "title": "VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)"
+      },
+      {
+        "title": "DIN 68800 (Holzschutz im Hochbau)"
+      },
+      {
+        "title": "DIN 18516 (Außenwandbekleidungen, hinterlüftet)"
+      }
+    ],
+    "WeiterTHA.weblinks.0": {
+      "title": "THA_ibi – Institut für Bau und Immobilie",
+      "url": "https://www.tha.de/ibi"
+    }
+  }
+}

@@ -7,11 +7,14 @@
 //    jedes in einer eigenen Task – Diagramme weiter unten blockieren den Seitenaufbau nicht (TBT).
 //    Vor dem Drucken und vor dem PDF-Export (zeichneAlleDiagramme) werden alle sofort und ohne Animation gezeichnet.
 //  - Der Platzhalter hat die Größe, die Chart.js dem Diagramm geben wird (Seitenverhältnis bzw. Behältergröße) → kein Layoutsprung.
+//  - Jedes Diagramm liegt in der Hülle aus src/lib/diagrammAlternative.tsx (Paket Z8): aria-label mit Kurzbeschreibung,
+//    Datentabelle zum Aufklappen, Kurzbeschreibung im Druck. Platzhalter und Leinwand liegen in derselben Fläche.
 import React from 'react';
 import { flushSync } from 'react-dom';
 import type * as ReactChartjs from 'react-chartjs-2';
 import { verbinde, istMarke } from './chartJsBedarf';
 import { beimDrucken, STUFE } from './druckVorbereitung';
+import { DiagrammHuelle, type DiagrammModus } from './diagrammAlternative';
 
 type Bibliothek = typeof ReactChartjs;
 type Art = 'Chart' | 'Line' | 'Bar' | 'Radar' | 'Doughnut' | 'PolarArea' | 'Bubble' | 'Pie' | 'Scatter';
@@ -120,18 +123,30 @@ function platzhalterStil(art: Art, p: Props): React.CSSProperties {
   return { display: 'block', width: '100%', aspectRatio: String(verhaeltnis), ...p.style };
 }
 
+function modus(p: Props): DiagrammModus {
+  const o = p.options ?? {};
+  return o.responsive === false ? 'fest' : o.maintainAspectRatio === false ? 'fuellen' : 'verhaeltnis';
+}
+
 function erzeuge(art: Art) {
   function BedarfsDiagramm(props: Props) {
     const b = useBibliothek();
     const ref = React.useRef<HTMLDivElement>(null);
     const frei = useFreigabe(ref);
-    if (b && frei) {
-      const Echt = b[art] as unknown as React.ComponentType<Props>;
-      return frei === 'ohneAnimation'
-        ? <Echt {...props} options={{ ...props.options, animation: false }} />
-        : <Echt {...props} />;
-    }
-    return <div ref={ref} role="img" aria-label="Diagramm wird geladen" aria-busy="true" className={props.className} id={props.id} data-diagramm-platzhalter="" style={platzhalterStil(art, props)} />;
+    const typ = TYP[art] ?? (typeof props.type === 'string' ? props.type : '');
+    return (
+      <DiagrammHuelle art={typ} daten={props.data} optionen={props.options} ariaLabel={props['aria-label']} modus={modus(props)}>
+        {beschreibung => {
+          if (b && frei) {
+            const Echt = b[art] as unknown as React.ComponentType<Props>;
+            return frei === 'ohneAnimation'
+              ? <Echt {...props} aria-label={beschreibung} options={{ ...props.options, animation: false }} />
+              : <Echt {...props} aria-label={beschreibung} />;
+          }
+          return <div ref={ref} role="img" aria-label={beschreibung} aria-busy="true" className={props.className} id={props.id} data-diagramm-platzhalter="" style={platzhalterStil(art, props)} />;
+        }}
+      </DiagrammHuelle>
+    );
   }
   BedarfsDiagramm.displayName = `Bedarf(${art})`;
   return BedarfsDiagramm as unknown as Bibliothek[typeof art];

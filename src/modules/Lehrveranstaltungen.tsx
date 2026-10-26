@@ -14,6 +14,8 @@ import { KI_UEBUNGEN } from '@/src/data/kiUebungen';
 import { ENTWURF_HINWEIS, LERNPFADE, LERNPFAD_BY_ID, moduleDesLernpfads, terminKennung, type Lernpfad } from '@/src/data/lernpfade';
 import { formatDeGanzzahl } from '@/src/utils/numberFormat';
 import { setzeSprungziel } from '@/src/utils/sprungziel';
+import inhalt from '@/content/lehrveranstaltungen/Lehrveranstaltungen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 /**
  * Lernpfade „Lehrveranstaltungen“ (Umsetzungsplan Phase 6, AP 6.1): eine Seite je Lehrveranstaltung mit
@@ -29,7 +31,7 @@ const BEREICHE: readonly ModulTab<Bereich>[] = [
   { id: 'klausur', label: 'Klausurtraining', icon: Trophy },
 ];
 
-const NIVEAU = { B: 'Bachelor', M: 'Master', 'B/M': 'Bachelor und Master' } as const;
+const NIVEAU = { B: 'Bachelor', M: 'Master', 'B/M': inhalt.werte.bachelorUndMaster } as const;
 
 const titelVon = (id: string) => MODUL_BY_ID.get(id)?.baum?.titel ?? MODUL_BY_ID.get(id)?.label ?? id;
 const plural = (n: number, eins: string, viele: string) => `${formatDeGanzzahl(n)} ${n === 1 ? eins : viele}`;
@@ -41,9 +43,7 @@ function EntwurfBanner({ lp }: { lp: Lernpfad }) {
       <AlertTriangle size={20} className="shrink-0 mt-0.5 text-amber-700" aria-hidden="true" />
       <div>
         <p className="font-bold">{ENTWURF_HINWEIS}</p>
-        <p className="mt-1 text-xs leading-relaxed">
-          Termine, Reihenfolge und Modulzuordnung sind ein Vorschlag aus dem vorhandenen Modulbestand. Daten werden erst nach der Freigabe eingetragen.
-        </p>
+        <p className="mt-1 text-xs leading-relaxed"><MdText text={inhalt.texte.termineReihenfolgeUndModulzuordnung} /></p>
       </div>
     </div>
   );
@@ -75,7 +75,7 @@ function Terminplan({ lp }: { lp: Lernpfad }) {
       <p className="text-xs text-text-main/70 mt-0.5">
         {plural(lp.termine.length, 'Termin', 'Termine')}
         {ueGesamt > 0 && ` · ${formatDeGanzzahl(ueGesamt)} UE à 45 min im Grundlagenteil`}
-        {' · '}{plural(moduleDesLernpfads(lp).length, 'zugeordnetes Modul', 'zugeordnete Module')}
+        {' · '}{plural(moduleDesLernpfads(lp).length, inhalt.werte.zugeordnetesModul, inhalt.werte.zugeordneteModule)}
       </p>
       <ol className="mt-4 space-y-3" role="list">
         {lp.termine.map(t => {
@@ -130,13 +130,12 @@ function Lernziele({ lp }: { lp: Lernpfad }) {
 
   return (
     <section aria-labelledby="lp-lernziele" className="pt-5">
-      <h3 id="lp-lernziele" className="text-base font-bold text-text-main">Lernziele der zugeordneten Module</h3>
-      {!daten && <p role="status" className="mt-2 text-xs text-text-main/70">Lernziele werden geladen …</p>}
+      <h3 id="lp-lernziele" className="text-base font-bold text-text-main"><MdText text={inhalt.texte.lernzieleDerZugeordnetenModule} /></h3>
+      {!daten && <p role="status" className="mt-2 text-xs text-text-main/70"><MdText text={inhalt.texte.lernzieleWerdenGeladen} /></p>}
       {daten && (
         <>
           <p className="text-xs text-text-main/70 mt-0.5">
-            {plural(anzahlZiele, 'Lernziel', 'Lernziele')} aus {plural(mit.length, 'Modul', 'Modulen')} (aus den Modulköpfen zusammengeführt)
-          </p>
+            {plural(anzahlZiele, 'Lernziel', 'Lernziele')} aus {plural(mit.length, 'Modul', 'Modulen')}<MdText text={inhalt.texte.ausDenModulköpfenZusammengeführt} /></p>
           <ul className="mt-4 space-y-3" role="list">
             {mit.map(m => {
               const d = daten[m] as ModulLernziele;
@@ -162,7 +161,7 @@ function Lernziele({ lp }: { lp: Lernpfad }) {
           </ul>
           {ohne.length > 0 && (
             <p className="mt-4 text-xs text-text-main/75">
-              <span className="font-semibold">Ohne hinterlegte Lernziele (Übersichts- und Infoseiten): </span>
+              <span className="font-semibold"><MdText text={inhalt.texte.ohneHinterlegteLernzieleÜbersichts} /></span>
               {ohne.map(titelVon).join(', ')}
             </p>
           )}
@@ -187,9 +186,8 @@ function Quizset({ lp }: { lp: Lernpfad }) {
     <section aria-labelledby="lp-quiz" className="pt-5">
       <h3 id="lp-quiz" className="text-base font-bold text-text-main">Quizset</h3>
       <p className="text-xs text-text-main/70 mt-0.5">
-        {plural(gesamt, 'Frage', 'Fragen')} aus den Selbsttests der zugeordneten Module, nach Terminen geordnet. Die Fragen eines Termins werden beim Aufklappen nachgeladen.
-      </p>
-      {gruppen.length === 0 && <p className="mt-3 text-sm text-text-main/80">Zu den zugeordneten Modulen gibt es noch keine Fragen.</p>}
+        {plural(gesamt, 'Frage', 'Fragen')}<MdText text={inhalt.texte.ausDenSelbsttestsDer} /></p>
+      {gruppen.length === 0 && <p className="mt-3 text-sm text-text-main/80"><MdText text={inhalt.texte.zuDenZugeordnetenModulen} /></p>}
       <div className="mt-4 space-y-6">
         {gruppen.map(({ t, ids }) => (
           <div key={t.nr}>
@@ -211,8 +209,7 @@ function Kursseite({ lp }: { lp: Lernpfad }) {
     <div className="flex flex-col gap-6">
       <div className="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <p className="text-xs font-bold uppercase tracking-wider text-shiraz flex items-center gap-1.5">
-          <Route size={14} aria-hidden="true" /> Lernpfad · Lehrveranstaltung
-        </p>
+          <Route size={14} aria-hidden="true" /><MdText text={inhalt.texte.lernpfadLehrveranstaltung} /></p>
         <h2 className="mt-1 text-xl font-bold text-text-main">{lp.titel}</h2>
         <dl className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
           <div className="p-2.5 rounded-lg bg-off-white border border-home-grau/20"><dt className="font-semibold text-text-main/70">Studiengang</dt><dd className="text-text-main">{lp.studiengang}</dd></div>
@@ -223,13 +220,13 @@ function Kursseite({ lp }: { lp: Lernpfad }) {
         {lp.hinweis && <p className="mt-4 text-sm text-text-main/85 leading-relaxed">{lp.hinweis}</p>}
 
         <div className="mt-6">
-          <ModuleTabs label="Bereiche des Lernpfads" tabs={BEREICHE} aktiv={bereich} onWechsel={setBereich}>
+          <ModuleTabs label={inhalt.werte.bereicheDesLernpfads} tabs={BEREICHE} aktiv={bereich} onWechsel={setBereich}>
             {bereich === 'termine' && <Terminplan lp={lp} />}
             {bereich === 'lernziele' && <Lernziele lp={lp} />}
             {bereich === 'quiz' && <Quizset lp={lp} />}
             {bereich === 'klausur' && (
               <div className="pt-5">
-                <p className="mb-4 text-xs text-text-main/75">Prüfungssimulation nur mit Fragen der {plural(routen.length, 'zugeordneten Modul', 'zugeordneten Module')} dieser Lehrveranstaltung.</p>
+                <p className="mb-4 text-xs text-text-main/75"><MdText text={inhalt.texte.prüfungssimulationNurMitFragen} />{plural(routen.length, inhalt.werte.zugeordnetenModul, inhalt.werte.zugeordnetenModule)}<MdText text={inhalt.texte.dieserLehrveranstaltung} /></p>
                 <KlausurSimulator routen={routen} titel={`Klausurtraining: ${lp.kurztitel}`} />
               </div>
             )}
@@ -246,16 +243,12 @@ function Uebersicht() {
     <div className="flex flex-col gap-6">
       <div className="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <GraduationCap className="text-shiraz" aria-hidden="true" /> Lernpfade nach Lehrveranstaltung
-        </h2>
-        <p className="mt-2 text-sm text-text-main/80 leading-relaxed">
-          Jede Lehrveranstaltung bündelt die passenden BaustoffBoard-Module zu einem Terminplan – mit den Lernzielen der Module,
-          einem Quizset zum Selbsttest und einem Klausurtraining nur mit den Fragen dieser Lehrveranstaltung.
-        </p>
+          <GraduationCap className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.lernpfadeNachLehrveranstaltung} /></h2>
+        <p className="mt-2 text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.jedeLehrveranstaltungBündeltDie} /></p>
         {LERNPFADE.some(l => l.status === 'entwurf') && (
           <div role="note" className="mt-4 rounded-xl border-2 border-amber-400 bg-amber-50 p-4 text-sm text-amber-950 flex gap-3 items-start">
             <AlertTriangle size={20} className="shrink-0 mt-0.5 text-amber-700" aria-hidden="true" />
-            <p><strong>{ENTWURF_HINWEIS}.</strong> Alle mit „Entwurf“ gekennzeichneten Terminpläne sind Vorschläge und werden noch abgestimmt.</p>
+            <p><strong>{ENTWURF_HINWEIS}.</strong><MdText text={inhalt.texte.alleMitEntwurfGekennzeichneten} /></p>
           </div>
         )}
         <ul className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3" role="list">

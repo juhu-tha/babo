@@ -1,0 +1,121 @@
+{
+  "texte": {
+    "lernpfad1Sichtbetonklassen2": "**Lernpfad:** 1. Sichtbetonklassen → 2. Einflussfaktoren (Schalung, Trennmittel, Rezeptur) → 3. typische Mängel → 4. Mischung und Betondeckung.",
+    "alsSichtbetonBezeichnetMan": "Als Sichtbeton bezeichnet man Betonbauteile, deren Ansichtsflächen Teil der architektonischen Gestaltung sind und an die besondere optische Anforderungen gestellt werden. Die Herstellung erfordert eine präzise Abstimmung von Schalung, Trennmittel, Betonzusammensetzung und Verarbeitung.",
+    "sichtbetonklassenNachDbvVdz": "Sichtbetonklassen (nach DBV/VDZ-Merkblatt Sichtbeton, 2015)",
+    "geringeAnforderungen": "Geringe Anforderungen",
+    "zBKellerwändeGewerbliche": "z.B. Kellerwände, gewerbliche Bereiche mit geringer optischer Bedeutung. Textur der Schalungshaut darf sich abzeichnen. Poren und Farbunterschiede sind weitgehend zulässig.",
+    "normaleAnforderungen": "Normale Anforderungen",
+    "zBTreppenhäuserStützmauern": "z.B. Treppenhäuser, Stützmauern. Standardklasse im Hochbau. Begrenzte Anforderungen an Poren und Farbtongleichmäßigkeit.",
+    "hoheAnforderungen": "Hohe Anforderungen",
+    "zBFassadenRepräsentative": "z.B. Fassaden, repräsentative Innenräume. Hohe Anforderungen an die Schalungshaut, Fugenbild, Porenarmut und gleichmäßige Farbgebung. Erfordert Erprobungsflächen.",
+    "besondersHoheAnford": "Besonders hohe Anford.",
+    "repräsentativeBauteileMitExtremen": "Repräsentative Bauteile mit extremen architektonischen Ansprüchen. Sehr hohe Anforderungen an Porigkeit, Farbtongleichmäßigkeit und Fugenbild; die Kriterien werden über Erprobungsflächen vereinbart. Sehr aufwendig und teuer.",
+    "entscheidendeEinflussfaktoren": "Entscheidende Einflussfaktoren",
+    "t1Schalungshaut": "1. Schalungshaut",
+    "dieSchalungIstDer": "Die Schalung ist der \"Stempel\", der die Betonoberfläche prägt.",
+    "saugendZBSägeraues": "**Saugend (z.B. sägeraues Holz):** Dunklere, porenärmere Oberfläche, Holzmaserung sichtbar.",
+    "nichtSaugendZB": "**Nicht saugend (z.B. kunststoffbeschichtet, Stahl):** Sehr glatte, helle Oberfläche, aber höhere Neigung zu Lunkern (Poren) und Marmorierungen.",
+    "fugenbildUndAnkerlöcherMüssen": "Fugenbild und Ankerlöcher müssen architektonisch geplant werden.",
+    "t2Trennmittel": "2. Trennmittel",
+    "verhindertDasAnhaftenDes": "Verhindert das Anhaften des Betons an der Schalung.",
+    "mussExtremDünnUnd": "Muss extrem dünn und gleichmäßig aufgetragen werden (meist gesprüht und nachgewischt).",
+    "zuVielTrennmittelFührt": "Zu viel Trennmittel führt zu Flecken, Verfärbungen und Staubbildung auf der Betonoberfläche.",
+    "mussAufDieSchalungshaut": "Muss auf die Schalungshaut abgestimmt sein.",
+    "t3Betonzusammensetzung": "3. Betonzusammensetzung",
+    "dieRezepturMussEin": "Die Rezeptur muss ein gleichmäßiges Erscheinungsbild gewährleisten.",
+    "ausreichendMehlkornZementZusatzstoffe": "Ausreichend Mehlkorn (Zement + Zusatzstoffe) für eine geschlossene Oberfläche.",
+    "gleichbleibendeZementsorteUndGesteinskör": "Gleichbleibende Zementsorte und Gesteinskörnung (aus demselben Werk/Abbaugebiet) zur Vermeidung von Farbschwankungen.",
+    "konsistenzMussDasEntweichen": "Konsistenz muss das Entweichen von Luftblasen beim Verdichten ermöglichen (meist F3-F4).",
+    "typischeOptischeBeeinträchtigungen": "Typische optische Beeinträchtigungen",
+    "lunkerPoren": "Lunker (Poren):",
+    "lufteinschlüsseAnDerOberfläche": "Lufteinschlüsse an der Oberfläche. Entstehen oft durch unzureichendes Verdichten oder bei sehr glatten, nicht saugenden Schalungen, an denen die Luftblasen nicht aufsteigen können.",
+    "marmorierungenWolkenbildung": "Marmorierungen / Wolkenbildung:",
+    "helligkeitsunterschiedeEntstehenDurchUnt": "Helligkeitsunterschiede. Entstehen durch unterschiedliche Wasserzementwerte an der Oberfläche (z.B. durch ungleichmäßiges Saugen der Schalung oder Trennmittelpfützen).",
+    "stellenAnDenenDer": "Stellen, an denen der Zementleim fehlt und nur grobe Gesteinskörnung sichtbar ist. Ursache: Entmischung beim Einbau oder undichte Schalungsfugen (Ausbluten des Leims).",
+    "verfärbungenDurchKorrodierendeBewehrung": "Verfärbungen durch korrodierende Bewehrung oder Bindedraht, der zu nah an der Schalungshaut lag (unzureichende Betondeckung).",
+    "typischeMischungszusammensetzungProM": "Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)",
+    "zementZBCem": "Zement (z.B. CEM I oder CEM II)",
+    "wasserWZ0": "Wasser (w/z ~0,50)",
+    "gesteinskörnungHoherMehlkorngehaltFür": "Gesteinskörnung (hoher Mehlkorngehalt für geschlossenes Gefüge)",
+    "zusatzmittelFließmittel": "Zusatzmittel (Fließmittel)"
+  },
+  "werte": {
+    "anwendungsbeispielBetondeckungEinerSicht": "Anwendungsbeispiel: Betondeckung einer Sichtbetonfassade",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (XC4: c_min,dur = 25 mm; Δc_dev = 15 mm)",
+    "cNom40Mm": "c_nom = 40 mm; Abstandhalter mit Sichtbetoneignung verwenden.",
+    "anwendungsbeispielPorenflächenanteilEine": "Anwendungsbeispiel: Porenflächenanteil einer Prüffläche",
+    "auswertungAnErprobungsflächenLehrwerte": "Auswertung an Erprobungsflächen (Lehrwerte; Porigkeitsklassen P1–P4 nach DBV/VDZ-Merkblatt Sichtbeton, Fassung Juni 2015)",
+    "porenflächenanteil024Lehrwerte": "Porenflächenanteil 0,24 % (Lehrwerte).",
+    "betonWikiSichtbeton": "Beton.wiki: Sichtbeton",
+    "zementMerkblattH8": "Zement-Merkblatt H 8: Sichtbeton – Techniken der Flächengestaltung (BauNetz Wissen)",
+    "schalungBeton": "Schalung (Beton)"
+  },
+  "daten": {
+    "Sichtbeton.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "\\text{XC4},\\; \\varnothing = 12\\,\\text{mm}",
+        "erklaerung": "Bewitterte Fassade mit Betonstahl Ø 12."
+      },
+      {
+        "titel": "2. Mindestbetondeckung",
+        "formel": "c_{min} = \\max(12;\\; 25;\\; 10) = 25\\,\\text{mm}",
+        "erklaerung": "Maßgebend ist die Dauerhaftigkeit."
+      },
+      {
+        "titel": "3. Nennmaß",
+        "formel": "c_{nom} = 25 + 15 = 40\\,\\text{mm}",
+        "erklaerung": "Abstandhalter und Bindedraht dürfen das Nennmaß nicht unterschreiten – sonst Rostfahnen."
+      }
+    ],
+    "Sichtbeton.schritte_2": [
+      {
+        "titel": "1. Messfeld",
+        "formel": "A_{Messfeld} = 500 \\cdot 500 = 250\\,000\\,\\text{mm}^2",
+        "erklaerung": "Quadratisches Messfeld auf der Ansichtsfläche."
+      },
+      {
+        "titel": "2. Porenfläche",
+        "formel": "\\sum A_{Pore,i} = 600\\,\\text{mm}^2",
+        "erklaerung": "Summe aller Poren über der Erfassungsgrenze."
+      },
+      {
+        "titel": "3. Anteil",
+        "formel": "A_{Poren} = \\frac{600}{250\\,000} \\cdot 100 = 0{,}24\\,\\%",
+        "erklaerung": "Vergleich mit der vereinbarten Porigkeitsklasse."
+      }
+    ],
+    "Sichtbeton.regelwerke": [
+      {
+        "title": "DBV/VDZ-Merkblatt Sichtbeton (Fassung 2015; Klassen SB 1 bis SB 4)"
+      },
+      {
+        "title": "DIN 18217 (Betonflächen und Schalungshaut)"
+      },
+      {
+        "title": "DIN 18218 (Frischbetondruck auf Schalungen)"
+      },
+      {
+        "title": "DIN EN 13670 (Ausführung von Tragwerken aus Beton)"
+      }
+    ],
+    "Sichtbeton.literatur": [
+      "Peck, M.; Bose, T.; Bosold, D.: Technik des Sichtbetons – Planung und Ausführung von Sichtbetonflächen. 2., überarb. Aufl., Erkrath: Verlag Bau+Technik 2014",
+      "Deutscher Beton- und Bautechnik-Verein (Hrsg.): Sichtbeton planen, ausschreiben und ausführen – Hintergründe und Erläuterungen zum DBV/VDZ-Merkblatt Sichtbeton. Berlin 2022",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Sichtbeton.formeln": [
+      {
+        "formel": "A_{\\text{Poren}} = \\frac{\\sum A_{\\text{Pore,i}}}{A_{\\text{Messfeld}}} \\cdot 100\\,\\%",
+        "erklaerung": "Porenflächenanteil auf der Schalungsfläche zur Einstufung nach DBV-Porenschablone (z. B. P1 bis P4).",
+        "quelle": "DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015; Porigkeitsklassen P1 ≤ 3000 mm², P2 ≤ 2250 mm², P3 ≤ 1500 mm², P4 ≤ 750 mm² je Prüffläche 500 × 500 mm)"
+      },
+      {
+        "formel": "c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}} \\quad (\\text{Farb- und Rostschutz})",
+        "erklaerung": "Ausreichende Betondeckung nach DIN EN 1992-1-1 zur sicheren Vermeidung von Rostfahnen an der Sichtfläche.",
+        "quelle": "DIN EN 1992-1-1 / DBV-Merkblatt"
+      }
+    ]
+  }
+}

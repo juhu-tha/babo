@@ -1,0 +1,55 @@
+{
+  "texte": {
+    "preisentwicklungBaustoffe": "Preisentwicklung Baustoffe",
+    "diePreisentwicklungVonBaustoffen": "Die Preisentwicklung von Baustoffen unterliegt starken Schwankungen, die durch globale Krisen, Energiekosten, Rohstoffknappheit und Lieferkettenprobleme beeinflusst werden. Die folgende Grafik zeigt die exemplarische Entwicklung der Erzeugerpreise für ausgewählte Baustoffe seit 1980.",
+    "hinweisDieDargestelltenWerte": "**Hinweis:** Die dargestellten Werte sind exemplarische Indexwerte zur Veranschaulichung der Trends. Ein Wert von 100 entspricht dem durchschnittlichen Preisniveau im Basisjahr ",
+    "realeBaupreiseKönnenRegional": ". Reale Baupreise können regional und projektspezifisch abweichen.",
+    "energiekostenBesondersEnergieintensiveBa": "**Energiekosten:** Besonders energieintensive Baustoffe wie Zement, Ziegel und Stahl reagieren stark auf schwankende Strom- und Gaspreise.",
+    "globaleNachfrageEinBauboom": "**Globale Nachfrage:** Ein Bauboom in anderen Teilen der Welt (z.B. USA, China) kann zu lokaler Verknappung und Preissteigerungen führen (z.B. bei Bauholz 2021).",
+    "lieferkettenStörungenInGlobalen": "**Lieferketten:** Störungen in globalen Lieferketten (Pandemien, Konflikte) verzögern Materiallieferungen und treiben Preise.",
+    "coBepreisungZunehmendeKosten": "**CO₂-Bepreisung:** Zunehmende Kosten für CO₂-Zertifikate verteuern emissionsintensive Materialien (Zement, Stahl).",
+    "lohnkostenTariflicheAnpassungenUnd": "**Lohnkosten:** Tarifliche Anpassungen und der generelle Fachkräftemangel führen zu einem stetigen, langfristig planbaren Anstieg der Bau- und Baunebenlöhne.",
+    "historischeEreignisse": " Historische Ereignisse",
+    "t20212022DieHolzkrise": "2021/2022: Die \"Holzkrise\"",
+    "extremePreisspitzenBeiBauholz": "Extreme Preisspitzen bei Bauholz durch hohe Nachfrage aus den USA, Borkenkäferbefall und gestörte Lieferketten während der Corona-Pandemie.",
+    "t2022Energiekrise": "2022: Energiekrise",
+    "massiverAnstiegDerGas": "Massiver Anstieg der Gas- und Strompreise in Folge des Ukraine-Kriegs führte zu historischen Preissprüngen bei Zement, Ziegeln und Stahl.",
+    "langfristigerTrend": "Langfristiger Trend",
+    "stetigerModeraterAnstiegDer": "Stetiger, moderater Anstieg der Baupreise seit den 1980er Jahren, überlagert von konjunkturellen Zyklen und jüngsten Krisen."
+  },
+  "werte": {
+    "dämmstoffeEps": "Dämmstoffe (EPS)",
+    "kupferRohre": "Kupfer (Rohre)",
+    "baulöhneTarif": "Baulöhne (Tarif)",
+    "referenzjahrFürDiePreisentwicklung": "Referenzjahr für die Preisentwicklung."
+  },
+  "daten": {
+    "Preisentwicklung.regelwerke": [
+      {
+        "title": "Baupreisindizes des Statistischen Bundesamtes (Destatis Fachserie 17 Reihe 4)",
+        "url": "https://www.destatis.de/"
+      },
+      {
+        "title": "VOB/B § 2 Abs. 3 (Mehr- und Minderkostenberechnung bei Mengenabweichungen)",
+        "url": "https://www.gesetze-im-internet.de/"
+      }
+    ],
+    "Preisentwicklung.literatur": [
+      "Destatis: Methodische Erläuterungen zu den Baupreis- und Immobilienpreisindizes",
+      "Hauptverband der Deutschen Bauindustrie: Bauwirtschaftliche Zahlen und Trends",
+      "Wendehorst Bautechnische Zahlentafeln: Kapitel Kostenplanung und Preisentwicklung"
+    ],
+    "Preisentwicklung.formeln": [
+      {
+        "formel": "I_L = \\frac{\\sum p_{t,i} \\cdot q_{0,i}}{\\sum p_{0,i} \\cdot q_{0,i}} \\cdot 100",
+        "erklaerung": "Laspeyres-Preisindex: Gesetzliche Grundlage für amtliche Preisindizes (z.B. Destatis Baupreisindex). Vergleicht die Kosten eines festen Warenkorbs (q_0) aus der Basisperiode bei aktuellen Preisen p_t mit den Basispreisen p_0.",
+        "quelle": "Statistisches Bundesamt (Destatis)"
+      },
+      {
+        "formel": "K_t = K_0 \\cdot \\frac{I_t}{I_0} \\quad \\text{bzw.} \\quad \\Delta K = K_0 \\cdot \\left(\\frac{I_t - I_0}{I_0}\\right)",
+        "erklaerung": "Preisgleitklausel-Berechnung zur Anpassung von Bauwerksverträgen bei unvorhersehbaren Baustoffpreiserhöhungen.",
+        "quelle": "VOB/B § 2 / BGB"
+      }
+    ]
+  }
+}

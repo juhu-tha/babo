@@ -20,6 +20,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/bautagebuch/Bautagebuch.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Define the construction projects
 interface ProjectTemplate {
@@ -34,59 +36,7 @@ interface ProjectTemplate {
   defaultTasks: string[];
 }
 
-const PROJECTS: ProjectTemplate[] = [
-  {
-    id: 'carbon-beton',
-    name: 'Neubau Laborgebäude Carbonbeton (C³)',
-    location: 'Campus TH Augsburg, Halle 4b',
-    client: 'Staatliches Bauamt Augsburg / Freistaat Bayern',
-    structuralEngineer: 'Ingenieurbüro Dr. Vrabec & Partner',
-    budget: '€4.200.000',
-    timeline: '12 Monate (Rohbau)',
-    description: 'Forschungsbauwerk unter Verwendung von Carbonbeton. Erfordert hochfesten Feinbeton (Zementgehalt ≥ 450 kg/m³, w/z-Wert = 0.35) mit abgestimmter 2mm-Feingesteinskörnung, Hochleistungsfließmittel auf Polycarboxylatether-Basis (PCE) und korrosionsfreien Carbonfasergelegen.',
-    defaultTasks: [
-      'Einbau der korrosionsfreien Carbonfaser-Gelege (Zugbewehrung)',
-      'Prüfung des Feinbeton-Ausbreitmaßes bzgl. Fließverhalten (dsp ≥ 700 mm)',
-      'Dokumentation der adiabatischen Hydratationswärme im Bauteilkern',
-      'Messen der Mindestbetondeckung an Deckenunterseiten (cmin = 10 mm)',
-      'Ausschalen der Sichtbetonträger nach Erreichen der Festigkeit'
-    ]
-  },
-  {
-    id: 'mensa-sanierung',
-    name: 'Denkmalschutz-Sanierung Mensa TH Augsburg',
-    location: 'An der Hochschule 1, Augsburg',
-    client: 'Technische Hochschule Augsburg (THA) (Körperschaft des öff. Rechts)',
-    structuralEngineer: 'Tragwerksplanung Dipl.-Ing. Keller',
-    budget: '€1.850.000',
-    timeline: '6 Monate (Sommersemester)',
-    description: 'Tragwerkssanierung im historischen Bestand. Einbau von Holz-Beton-Verbunddecken mit Trass-Kalk-Mörtel im Mauerwerksbereich zur Vermeidung alkalischer Ausblühungen sowie mineralischem Fließestrich (CA-C25-F5 auf Anhydritbasis) mit Belegreife-Analysen.',
-    defaultTasks: [
-      'Einbringen der selbstschneidenden Schrauben für Holz-Beton-Verbund',
-      'CM-Restfeuchtemessung des frisch hergestellten Calciumsulfatestrichs (Soll < 0,5%)',
-      ' NHL-Trassmörtelmischung am historischen Sichtmauerwerk prüfen',
-      'Rissverpressung (Epoxidharz-Injektion nach DIN EN 1504) im Außenmauerwerk',
-      'Auftragen der bitumenfreien Bauwerks-Reaktivabdichtung (MDS) an Sockelanschlüssen'
-    ]
-  },
-  {
-    id: 'parkhaus-fertigteil',
-    name: 'Neubau Studierenden-Parkhaus (Fertigteilbau)',
-    location: 'Brunnenlechgässchen, Augsburg',
-    client: 'Parkhaus GmbH Augsburg',
-    structuralEngineer: 'Büro für Baustatik Müller & Co.',
-    budget: '€3.100.000',
-    timeline: '8 Monate (Schnellmontage)',
-    description: 'Montage von großformatigen Fertigteilen hoher Festigkeitsklassen (C50/60). Kritische Schnittstellen sind das schwindkompensierte Ausgießen der lastübertragenden Fugen mit quellfähigem Vergussmörtel, Expositionsklassen XD3/XS3 sowie Tausalzbeständigkeit durch Hydrophobierung.',
-    defaultTasks: [
-      'Montage der vorgefertigten C50/60 Spannbetonträger (Takt 3)',
-      'Ausgießen der Ringanker-Schnittstellen mit quellfähigem Vergussmörtel',
-      'Haftzugprüfung der rissüberbrückenden OS-11-Fahrbahnbeschichtung',
-      'Verbundfugen-Rauheit vor Schwindfugenverguss nach Eurocode 2 prüfen',
-      'Auftrag der hydrophobierenden Silan-Imprägnierung auf Sichtbeton-Randträgern'
-    ]
-  }
-];
+const PROJECTS: ProjectTemplate[] = inhalt.daten.PROJECTS;
 
 // Structured Scenario Challenges
 interface Scenario {
@@ -102,57 +52,7 @@ interface Scenario {
   hints: string[];
 }
 
-const SCENARIOS: Scenario[] = [
-  {
-    id: 'schlechtwetter',
-    name: 'Betonieren bei Frostgefahr',
-    title: 'Herausforderung: Hydratation & Gefrierschutz nach DIN 1045-3',
-    description: 'Es ist November. Die Temperaturen sinken nachts auf +1,5°C ab, begleitet von starkem Wind (erhöhte Verdunstungsgefahr!). Heute wird die hochfeste Carbonbeton-Bodenplatte betoniert. Der Polier verlangt eigenmächtig Wasserzugabe am Fahrmischer bzgl. Verarbeitbarkeit. Ein fehlerhaftes Protokoll oder mangelnde Curing-Maßnahmen ruinieren die Festigkeitsklasse des Betons irreparabel.',
-    date: '15. November 2026',
-    tempMin: 1.5,
-    tempMax: 4.5,
-    weatherConditions: ['Rain', 'Frost'],
-    objective: 'Dokumentieren Sie die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).',
-    hints: [
-      'Geben Sie die Min-Temperatur exakt auf 1,5 °C an, um die Frost-Hydratationswarnung auszulösen.',
-      'Wählen Sie im Prüfverfahren-Bereich "Frischbetontemperatur gemessen" und "Ausbreitversuch durchgeführt" aus.',
-      'Ergänzen Sie im Freitext "Auflegen von Thermomatten (Wärmeschutz und Nachbehandlung nach DIN 1045-3)".',
-      'Dokumentieren Sie das Verbot des Wasserzusatzes: Er erhöht den w/z-Wert und mindert Festigkeit und Dauerhaftigkeit.'
-    ]
-  },
-  {
-    id: 'claim_conflict',
-    name: 'Feuchtigkeitsschutz & Baurecht',
-    title: 'Herausforderung: Weglassen der Sockelabdichtung (MDS)',
-    description: 'Bei der denkmalgeschützten Mensa-Sanierung fordert der Projektleiter mündlich den Verzicht auf die rissüberbrückende mineralische Dichtungsschlämme (MDS) am feuchtebeanspruchten Sockelbereich wg. Budgetkürzungen. Das widerspricht den Anforderungen der Abdichtungsnorm DIN 18533 und dem vereinbarten Leistungssoll.',
-    date: '28. Juni 2026',
-    tempMin: 19.0,
-    tempMax: 26.5,
-    weatherConditions: ['Sunny'],
-    objective: 'Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Melden Sie als ausführendes Unternehmen schriftlich Bedenken nach VOB/B § 4 Abs. 3 an und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
-    hints: [
-      'Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.',
-      'Setzen Sie den Haken bei "Bedenkenanmeldung erheben" auf AKTIV.',
-      'Begründen Sie baustofflich mit den Verletzungen der DIN 18533 (Bauwerksabdichtung) und drohenden Schädlings- und Schimmelbefällen.'
-    ]
-  },
-  {
-    id: 'delay_excavator',
-    name: 'Güteabnahme Fugenmörtel verzögert',
-    title: 'Herausforderung: Baustopp wg. Fugenverguss im Fertigteilbau',
-    description: 'Im Studierenden-Parkhaus ist der Spezialmörtel zum schwindkompensierten Ausgießen der Stützen-Vergussfugen (Festigkeitsklasse C50/60 gefordert) verzögert geliefert worden. Ohne Festigkeitsnachweis der Vorleistung im Takt 1 darf der Autokran keine weiteren Spannbetonträger auflegen. Der Kran-Stillstand kostet täglich hohe Mieten.',
-    date: '04. Mai 2026',
-    tempMin: 12.0,
-    tempMax: 17.5,
-    weatherConditions: ['Cloudy'],
-    objective: 'Protokollieren Sie die Baustörung. Aktivieren Sie die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie den Festigkeitsnachweis (Prüfbericht) sowie den Verwendbarkeitsnachweis des Vergussmörtels an.',
-    hints: [
-      'Grenzfälle im Fertigteilbau sind sicherheitskritisch: Markieren Sie die Behinderungsanzeige auf JA.',
-      'Erfassen Sie im Störungsfeld die genaue Ursache: ausstehender Festigkeitsnachweis für den Vergussmörtel.',
-      'Weisen Sie darauf hin, dass erst nach Erreichen der von der Tragwerksplanung geforderten Fugenfestigkeit (z. B. 70 % von f_ck) weiter belastet werden darf.'
-    ]
-  }
-];
+const SCENARIOS: Scenario[] = inhalt.daten.SCENARIOS;
 
 interface SavedDiary {
   id: string;
@@ -190,13 +90,13 @@ export default function Bautagebuch() {
   const [tempMin, setTempMin] = useState<number>(18);
   const [tempMax, setTempMax] = useState<number>(24);
   const [selectedWeather, setSelectedWeather] = useState<string[]>(['Sunny']);
-  const [weatherEinfluss, setWeatherEinfluss] = useState<string>('Keine Beeinflussung');
+  const [weatherEinfluss, setWeatherEinfluss] = useState<string>(inhalt.werte.keineBeeinflussung);
   const [arbeiterEigene, setArbeiterEigene] = useState<number>(4);
   const [arbeiterSubStr, setArbeiterSubStr] = useState<string>(
-    'Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure'
+    inhalt.werte.bauunternehmungMüllerGmbh1
   );
   const [fortschritt, setFortschritt] = useState<string>(
-    'Decke über UG: Bewehrungsabnahme durch Prüfstatiker ohne gravierende Rügen erfolgt. Beginn Vorbereitungen Betonguss.'
+    inhalt.werte.deckeÜberUgBewehrungsabnahme
   );
   const [stoerungen, setStoerungen] = useState<string>('');
   const [selectedTesting, setSelectedTesting] = useState<string[]>([]);
@@ -243,7 +143,7 @@ export default function Bautagebuch() {
     setTempMin(scenario.tempMin);
     setTempMax(scenario.tempMax);
     setSelectedWeather(scenario.weatherConditions);
-    setWeatherEinfluss(scenario.tempMin < 5 ? 'Beeinträchtigung' : 'Keine Beeinflussung');
+    setWeatherEinfluss(scenario.tempMin < 5 ? 'Beeinträchtigung' : inhalt.werte.keineBeeinflussung2);
     setFortschritt('');
     // Lösungsfelder starten leer: Die Aufgabe steht in der Szenariobeschreibung, gelöst wird im Editor.
     setStoerungen('');
@@ -281,30 +181,18 @@ export default function Bautagebuch() {
     // Check 1: General descriptors filled in
     if (!fortschritt || fortschritt.trim().length < 15) {
       score -= 20;
-      checks.push({
-        title: "Detaillierungsgrad Baufortschritt (DIN 1045 / VOB)",
-        success: false,
-        detail: "Die Dokumentation des täglichen Arbeitsfortschritts ist unvollständig oder leer. Gemäß HOAI Lph 8 ist eine lückenlose Dokumentation gefordert."
-      });
+      checks.push(inhalt.daten.handleAnalyzeAndSubmit);
     } else {
-      checks.push({
-        title: "Detaillierungsgrad Baufortschritt (DIN 1045 / VOB)",
-        success: true,
-        detail: "Sehr gut! Sie haben den täglichen Arbeitsfortschritt plausibel beschrieben."
-      });
+      checks.push(inhalt.daten.handleAnalyzeAndSubmit_2);
     }
 
     // Check 2: Weather and Temperature Analysis
     if (tempMin === undefined || tempMax === undefined || tempMin > tempMax) {
       score -= 10;
-      checks.push({
-        title: "Temperaturangaben unterliegen logischer Plausibilität",
-        success: false,
-        detail: "Die Mindesttemperatur darf nicht größer als die Maximaltemperatur sein."
-      });
+      checks.push(inhalt.daten.handleAnalyzeAndSubmit_3);
     } else {
       checks.push({
-        title: "Temperaturangaben vorhanden",
+        title: inhalt.werte.temperaturangabenVorhanden,
         success: true,
         detail: `Temperaturspektrum von ${formatDeWert(tempMin)}°C bis ${formatDeWert(tempMax)}°C dokumentiert.`
       });
@@ -318,33 +206,21 @@ export default function Bautagebuch() {
       if (!handlesWinterMat) {
         score -= 25;
         checks.push({
-          title: "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
+          title: inhalt.werte.winterbaumaßnahmenNachDin1045,
           success: false,
           detail: `Kritischer Fehler! Bei Bauteil- und Außentemperaturen unter +5°C (${formatDeWert(tempMin)}°C) darf Beton nicht unbeaufsichtigt und ungeschützt erhärten. Sie müssen explizit Frostschutzmaßnahmen (Thermodecken, Folien o.ä.) im Bautagebuch anordnen.`
         });
       } else {
-        checks.push({
-          title: "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
-          success: true,
-          detail: "Hervorragend! Sie haben trotz Temperaturen unter 5 °C angemessene Wärmeschutz- und Nachbehandlungsmaßnahmen nach DIN 1045-3 dokumentiert."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_4);
       }
 
       // Check concrete testing for cold weather
-      const testingConcreteTemp = selectedTesting.includes('Frischbetontemperatur gemessen');
+      const testingConcreteTemp = selectedTesting.includes(inhalt.werte.frischbetontemperaturGemessen);
       if (!testingConcreteTemp) {
         score -= 15;
-        checks.push({
-          title: "Frischbetontemperatur-Messkontrolle",
-          success: false,
-          detail: "Zementhydratation verlangt bei Frischbeton einen Mindesteinbauwert von +5°C. Bei Frostgefahr muss die Frischbetontemperatur gemessen und im Prüfprotokoll eingetragen werden."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_5);
       } else {
-        checks.push({
-          title: "Frischbetontemperatur-Messkontrolle",
-          success: true,
-          detail: "Sehr gut. Die Frischbeton-Kerntemperaturüberwachung wurde vorgenommen."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_6);
       }
     }
 
@@ -354,102 +230,54 @@ export default function Bautagebuch() {
       const deniedWater = fortschritt.toLowerCase().includes('wasser') || stoerungen.toLowerCase().includes('wasser') || fortschritt.toLowerCase().includes('fm') || fortschritt.toLowerCase().includes('fließmittel') || stoerungen.toLowerCase().includes('untersagt') || stoerungen.toLowerCase().includes('fließkraft');
       if (!deniedWater) {
         score -= 15;
-        checks.push({
-          title: "Szenario-Ziel: Versuchter Wasserzusatz",
-          success: false,
-          detail: "Mangelhafte Beurteilung. Sie haben dem Polier nicht schriftlich verboten, Wasser hinzuzufügen, oder den Vorfall stillschweigend übergangen. Wasserzugabe erhöht w/z-Wert exzessiv!"
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_7);
       } else {
-        checks.push({
-          title: "Szenario-Ziel: Versuchter Wasserzusatz",
-          success: true,
-          detail: "Perfekt! Sie haben das illegale Hinzufügen von Baustellenwasser explizit untersagt und auf eine normgerechte Konsistenzregelung per Fließmittel verwiesen."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_8);
       }
     }
 
     if (activeScenarioId === 'claim_conflict') {
       if (!bedenken) {
         score -= 30;
-        checks.push({
-          title: "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
-          success: false,
-          detail: "Baurechtliches Risiko! Eine mündliche Weisung des Bauherrn zum Weglassen von Kernabdichtungen erfordert eine unverzügliche schriftliche Bedenkenanmeldung; ohne sie haftet das ausführende Unternehmen für den entstehenden Mangel (§ 13 Abs. 3 VOB/B)."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_9);
       } else if (!bedenkenDetails || bedenkenDetails.trim().length < 15) {
         score -= 15;
-        checks.push({
-          title: "Präzision der Bedenkenanmeldung",
-          success: false,
-          detail: "Sie haben Bedenken angekreuzt aber die bautechnische Begründung (z.B. Verletzung der DIN 18533, Feuchteschäden) nicht detailliert beschrieben."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_10);
       } else {
-        checks.push({
-          title: "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
-          success: true,
-          detail: "Exzellent abgefangen! Die formale schriftliche Anmeldung von Bedenken schützt Ihr Büro und den Auftraggeber vor kostspieligen Überraschungen und Schimmelbildung."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_11);
       }
     }
 
     if (activeScenarioId === 'delay_excavator') {
       if (!behinderung) {
         score -= 30;
-        checks.push({
-          title: "Szenario-Ziel: Behinderungsanzeige (VOB/B § 6)",
-          success: false,
-          detail: "Gestörtes Bau-Soll! Wenn Fremdfirmen nicht plangemäß leisten und dadurch teure Maschinen (z.B. Autokran) stillstehen, müssen Sie unverzüglich eine formale schriftliche Behinderungsanzeige einreichen, um Ansprüche auf Bauzeitverlängerung zu sichern."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_12);
       } else if (!behinderungDetails || behinderungDetails.trim().length < 15) {
         score -= 15;
-        checks.push({
-          title: "Schadensminderung im Baubetrieb",
-          success: false,
-          detail: "Sie haben die Behinderung markiert, aber den betroffenen Verursacher und die genauen wirtschaftlichen Konsequenzen (Verzug, Stillstandskosten Kran) nicht hinreichend spezifiziert."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_13);
       } else {
-        checks.push({
-          title: "Szenario-Ziel: Behinderungsanzeige (VOB/B § 6)",
-          success: true,
-          detail: "Sehr klug reagiert. Die Behinderungsanzeige sichert dem ausführenden Unternehmen die Verlängerung der Ausführungsfristen (§ 6 Abs. 2 VOB/B) und schützt vor Vertragsstrafen wegen nicht zu vertretender Verzögerung."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_14);
       }
     }
 
     // Check 4: CM-testing for Concrete/Estrich
     const mentionsEstrich = fortschritt.toLowerCase().includes('estrich') || fortschritt.toLowerCase().includes('belegreif') || FortschrittDescribesFloor(fortschritt);
     if (mentionsEstrich && selectedProjectId === 'mensa-sanierung') {
-      const ranCMTest = selectedTesting.includes('CM-Messung durchgeführt');
+      const ranCMTest = selectedTesting.includes(inhalt.werte.cmMessungDurchgeführt);
       if (!ranCMTest) {
         score -= 15;
-        checks.push({
-          title: "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
-          success: false,
-          detail: "Achtung! Vor der Belegung eines Estrichs mit feuchteempfindlichen Belägen (Holz/Vinyl) muss eine Calciumcarbid-Messung (CM) zur Restfeuchtebestimmung stattfinden und protokolliert werden."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_15);
       } else {
-        checks.push({
-          title: "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
-          success: true,
-          detail: "Klassenbeste Entscheidung: CM-Protokoll erhoben, damit der Parkettleger die Haftung wegen aufsteigender Feuchtigkeit nicht abwälzen kann."
-        });
+        checks.push(inhalt.daten.handleAnalyzeAndSubmit_16);
       }
     }
 
     // Check 5: General Personnel Logging
     if (!arbeiterSubStr || arbeiterSubStr.trim().length < 10) {
       score -= 10;
-      checks.push({
-        title: "Dokumentation am Bau - Personalstärke",
-        success: false,
-        detail: "Unvollständige Berichterstattung! Für die Dokumentation der Leistungsfähigkeit und Streitigkeiten müssen alle tätigen Mitarbeiter der Fremdfirmen sowie deren Gewerke täglich namentlich oder nach Qualifikation gezählt werden."
-      });
+      checks.push(inhalt.daten.handleAnalyzeAndSubmit_17);
     } else {
-      checks.push({
-        title: "Dokumentation am Bau - Personalstärke",
-        success: true,
-        detail: "Personalstand der Fremdfirmen und Subunternehmer wurde erfolgreich erfasst."
-      });
+      checks.push(inhalt.daten.handleAnalyzeAndSubmit_18);
     }
 
     // Standardize score bounds
@@ -460,22 +288,22 @@ export default function Bautagebuch() {
     let summaryText = '';
     if (score >= 95) {
       grade = '1.0';
-      summaryText = 'Herausragende Leistung! Ihr Bautagebuch entspricht vollumfänglich den rechtlichen Ansprüchen nach VOB/B, der HOAI Leistungsphase 8 sowie den einschlägigen technischen DIN-Normen. Damit ist der Bauablauf beweissicher dokumentiert.';
+      summaryText = inhalt.werte.herausragendeLeistungIhrBautagebuch;
     } else if (score >= 88) {
       grade = '1.7';
-      summaryText = 'Sehr gute Ausarbeitung. Alle sicherheitsrelevanten Witterungsverhältnisse und wesentlichen Bauabschnitte wurden erfasst. Kleinste formale Lücken.';
+      summaryText = inhalt.werte.sehrGuteAusarbeitungAlle;
     } else if (score >= 80) {
       grade = '2.3';
-      summaryText = 'Gute Bauleiterqualität. Der Bericht ist absolut brauchbar und gerichtsverwertbar. Einige praxisnahe Detailhinweise zur Schadensminderung könnten tiefer ausfallen.';
+      summaryText = inhalt.werte.guteBauleiterqualitätDerBericht;
     } else if (score >= 70) {
       grade = '3.0';
-      summaryText = 'Durchsetzungsfähig, aber mit merklichen Auslassungen. Die Dokumentation ist im alltäglichen Regelbetrieb ausreichend, birgt aber feine rechtliche Schnittstellenschwächen im Streitfall.';
+      summaryText = inhalt.werte.durchsetzungsfähigAberMitMerklichen;
     } else if (score >= 60) {
       grade = '4.0';
-      summaryText = 'Ausreichend (Gerade noch bestanden). Sie haben den Bericht ausgefüllt, jedoch gravierende Aspekte wie Mindest-Betonpflegeregeln oder formale VOB-Fristhinderungen vernachlässigt. Bitte überarbeiten!';
+      summaryText = inhalt.werte.ausreichendGeradeNochBestanden;
     } else {
       grade = '5.0';
-      summaryText = 'Mangelhaft. Ihr Bericht ist rechtlich lückenhaft und bautechnisch fahrlässig. Bei Schadensfällen am Tragwerk oder Feuchtigkeitseinbruch haftet Ihre Bauleitung vollumfänglich. Nutzen Sie die Tipps und probieren Sie es erneut!';
+      summaryText = inhalt.werte.mangelhaftIhrBerichtIst;
     }
 
     const review: SavedDiary = {
@@ -535,9 +363,9 @@ export default function Bautagebuch() {
     setTempMin(18);
     setTempMax(24);
     setSelectedWeather(['Sunny']);
-    setWeatherEinfluss('Keine Beeinflussung');
+    setWeatherEinfluss(inhalt.werte.keineBeeinflussung3);
     setArbeiterEigene(4);
-    setArbeiterSubStr('Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure');
+    setArbeiterSubStr(inhalt.werte.bauunternehmungMüllerGmbh12);
     const proj = PROJECTS.find(p => p.id === selectedProjectId);
     setFortschritt(proj ? `Arbeiten an: ${proj.defaultTasks[0]} heute durchgeführt.` : '');
     setStoerungen('');
@@ -581,9 +409,7 @@ export default function Bautagebuch() {
               <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
                 Bautagebuch
               </h2>
-              <p className="text-xs text-slate-500 font-mono">
-                HOAI Leistungsphase 8 (Objektüberwachung) &bull; Haftungsminimierung nach VOB
-              </p>
+              <p className="text-xs text-slate-500 font-mono"><MdText text={inhalt.texte.hoaiLeistungsphase8Objektüberwachung} /></p>
             </div>
           </div>
           
@@ -596,9 +422,7 @@ export default function Bautagebuch() {
                   : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
               }`}
               id="tab-btn-guide"
-            >
-              Leitfaden (VOB-Regeln)
-            </button>
+            ><MdText text={inhalt.texte.leitfadenVobRegeln} /></button>
             <button
               onClick={() => { setActiveTab('scenarios'); }}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
@@ -618,9 +442,7 @@ export default function Bautagebuch() {
                   : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
               }`}
               id="tab-btn-editor"
-            >
-              Bericht erstellen
-            </button>
+            ><MdText text={inhalt.texte.berichtErstellen} /></button>
             <button
               onClick={() => { setActiveTab('saved'); }}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border relative ${
@@ -629,8 +451,7 @@ export default function Bautagebuch() {
                   : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
               }`}
               id="tab-btn-saved"
-            >
-              Gespeicherte Berichte ({savedDiaries.length})
+            ><MdText text={inhalt.texte.gespeicherteBerichte} />{savedDiaries.length})
               {savedDiaries.length > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-shiraz text-xs font-bold text-white">
                   {savedDiaries.length}
@@ -643,8 +464,8 @@ export default function Bautagebuch() {
         {/* INFO BOX */}
         <div className="bg-slate-50 rounded-xl p-4 border border-home-grau/30 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <p className="text-sm text-text-main font-semibold">Projekt-Steckbrief wählen (Baustellenprojekt)</p>
-            <p className="text-xs text-slate-600">Jedes Projekt fordert unterschiedliche QS-Verfahren und birgt spezifische Anfängerrisiken.</p>
+            <p className="text-sm text-text-main font-semibold"><MdText text={inhalt.texte.projektSteckbriefWählenBaustellenprojekt} /></p>
+            <p className="text-xs text-slate-600"><MdText text={inhalt.texte.jedesProjektFordertUnterschiedliche} /></p>
           </div>
           <div className="flex gap-2 flex-wrap" id="project-selector-group">
             {PROJECTS.map(proj => (
@@ -658,7 +479,7 @@ export default function Bautagebuch() {
                 }`}
                 id={`btn-proj-${proj.id}`}
               >
-                {proj.id === 'carbon-beton' ? '🔺 Carbonbeton' : proj.id === 'mensa-sanierung' ? '🏛️ Mensa Umbau' : '🏢 Parkhaus'}
+                {proj.id === 'carbon-beton' ? inhalt.werte.carbonbeton : proj.id === 'mensa-sanierung' ? inhalt.werte.mensaUmbau : '🏢 Parkhaus'}
               </button>
             ))}
           </div>
@@ -668,7 +489,7 @@ export default function Bautagebuch() {
         <div className="bg-stone-50 border border-stone-200 p-5 rounded-xl shadow-xs mb-8 text-stone-900">
           <div className="flex justify-between items-start flex-wrap gap-4 mb-3">
             <div>
-              <span className="text-xs uppercase font-mono tracking-widest text-stone-550 font-bold border-b border-stone-200 pb-0.5 block">Aktives Bauprojekt</span>
+              <span className="text-xs uppercase font-mono tracking-widest text-stone-550 font-bold border-b border-stone-200 pb-0.5 block"><MdText text={inhalt.texte.aktivesBauprojekt} /></span>
               <h3 className="text-base font-extrabold tracking-tight text-slate-900 mt-1">{selectedProject.name}</h3>
               <p className="text-xs text-slate-700 mt-1 font-medium leading-relaxed">{selectedProject.description}</p>
             </div>
@@ -683,43 +504,37 @@ export default function Bautagebuch() {
         {/* ACTIVE LAYOUTS BASING ON SELECTED TAB */}
         {activeTab === 'guide' && (
           <div className="space-y-6">
-            <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2">
-              Leitfaden: Das VOB-Bautagebuch im Bauwesen
-            </h3>
+            <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.leitfadenDasVobBautagebuch} /></h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4 text-sm text-slate-700 leading-relaxed">
                 <div className="p-4 bg-off-white border-l-4 border-shiraz rounded-r-xl space-y-2">
                   <h4 className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <Info size={16} className="text-shiraz" /> Was ist ein Bautagebuch?
-                  </h4>
-                  <p>
-                    Ein Bautagebuch ist die <strong>beweissichere, tagesaktuelle Dokumentation</strong> aller Vorgänge und Bedingungen auf einer Baustelle. Nach HOAI gehört es zu den Grundleistungen der <strong>Leistungsphase 8 (Objektüberwachung)</strong>.
-                  </p>
+                    <Info size={16} className="text-shiraz" /><MdText text={inhalt.texte.wasIstEinBautagebuch} /></h4>
+                  <p><MdText text={inhalt.texte.einBautagebuchIstDie} /></p>
                 </div>
                 
-                <h4 className="font-bold text-slate-900">Die 4 unverzichtbaren Pflichtinhalte</h4>
+                <h4 className="font-bold text-slate-900"><MdText text={inhalt.texte.die4UnverzichtbarenPflichtinhalte} /></h4>
                 <ul className="list-disc pl-5 space-y-1">
-                  <li><strong>Witterung:</strong> Mindest- und Höchsttemperaturen (extrem kritisch für Betonierung bzgl. Gefrierpunkt und Rissbildung).</li>
-                  <li><strong>Personal &amp; Gewerke:</strong> Anzahl der Arbeiter aller Firmen zur Überprüfung der Baukapazitäten und Fristen.</li>
-                  <li><strong>Tagesleistung &amp; Baufortschritt:</strong> Räumlich genau lokalisierte Tätigkeiten (z.B. Deckenbewehrung über 1. OG).</li>
-                  <li><strong>Abweichungen &amp; Störungen:</strong> Eventuelle Verzögerungen durch Schäden, unzureichende Vorleistungen oder Planungsfehler.</li>
+                  <li><MdText text={inhalt.texte.witterungMindestUndHöchsttemperaturen} /></li>
+                  <li><MdText text={inhalt.texte.personalGewerkeAnzahlDer} /></li>
+                  <li><MdText text={inhalt.texte.tagesleistungBaufortschrittRäumlichGenau} /></li>
+                  <li><MdText text={inhalt.texte.abweichungenStörungenEventuelleVerzögeru} /></li>
                 </ul>
               </div>
 
               <div className="space-y-4">
                 <div className="bg-rose-50/40 border border-shiraz/20 p-5 rounded-2xl space-y-4">
                   <h4 className="font-bold text-shiraz flex items-center gap-1.5 text-sm">
-                    <AlertTriangle size={18} /> Baurechtliche Kernfehler bei unvollständigen Logbüchern:
-                  </h4>
+                    <AlertTriangle size={18} /><MdText text={inhalt.texte.baurechtlicheKernfehlerBeiUnvollständige} /></h4>
                   <div className="space-y-3 font-medium text-xs sm:text-sm text-slate-800">
                     <div>
-                      <span className="text-shiraz font-bold">1. Beweisnot im Streitfall:</span>
-                      <p className="text-xs text-slate-700 mt-1">Kann die Bauüberwachung keine Temperaturaufzeichnungen vorlegen, fehlt der Nachweis ordnungsgemäßer Überwachung – die Abwehr von Ansprüchen wegen Frost- oder Feuchteschäden wird erheblich erschwert.</p>
+                      <span className="text-shiraz font-bold"><MdText text={inhalt.texte.t1BeweisnotImStreitfall} /></span>
+                      <p className="text-xs text-slate-700 mt-1"><MdText text={inhalt.texte.kannDieBauüberwachungKeine} /></p>
                     </div>
                     <div>
-                      <span className="text-shiraz font-bold">2. Verlust von Verzugs-Ansprüchen (§ 6 VOB/B):</span>
-                      <p className="text-xs text-slate-700 mt-1">Ohne schriftliche Behinderungsanzeige werden Behinderungen nur berücksichtigt, wenn sie dem Auftraggeber offenkundig bekannt waren (§ 6 Abs. 1 VOB/B) – Ansprüche auf Bauzeitverlängerung und Ersatz sind dann gefährdet.</p>
+                      <span className="text-shiraz font-bold"><MdText text={inhalt.texte.t2VerlustVonVerzugs} /></span>
+                      <p className="text-xs text-slate-700 mt-1"><MdText text={inhalt.texte.ohneSchriftlicheBehinderungsanzeigeWerde} /></p>
                     </div>
                   </div>
                 </div>
@@ -727,13 +542,12 @@ export default function Bautagebuch() {
             </div>
 
             <div className="border-t border-home-grau/30 pt-4 flex justify-between items-center">
-              <span className="text-xs text-slate-500 italic">Interaktives Praxismodul TH Augsburg</span>
+              <span className="text-xs text-slate-500 italic"><MdText text={inhalt.texte.interaktivesPraxismodulThAugsburg} /></span>
               <button
                 onClick={() => setActiveTab('scenarios')}
                 className="px-5 py-2.5 bg-shiraz text-white rounded-xl text-xs font-bold hover:bg-shiraz/90 shadow-sm transition-all flex items-center gap-2"
                 id="btn-start-scenarios"
-              >
-                Weiter zu den Lernszenarien <ChevronRight size={14} />
+              ><MdText text={inhalt.texte.weiterZuDenLernszenarien} /><ChevronRight size={14} />
               </button>
             </div>
           </div>
@@ -742,8 +556,8 @@ export default function Bautagebuch() {
         {activeTab === 'scenarios' && (
           <div className="space-y-6">
             <div className="space-y-2">
-              <h3 className="text-lg font-bold text-slate-900">Studierenden-Lernszenarien &amp; Baustellen-Herausforderungen</h3>
-              <p className="text-xs text-slate-600">Reale Konfliktsituationen auf der Baustelle: Lade ein Szenario, löse die Aufgabenstellung im Bautagebuch-Editor und lassen Sie Ihre Eingabe vom "Professor" bewerten.</p>
+              <h3 className="text-lg font-bold text-slate-900"><MdText text={inhalt.texte.studierendenLernszenarienBaustellenHerau} /></h3>
+              <p className="text-xs text-slate-600"><MdText text={inhalt.texte.realeKonfliktsituationenAufDer} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -775,9 +589,7 @@ export default function Bautagebuch() {
                         onClick={() => handleLoadScenario(scenario)}
                         className="w-full py-2 bg-slate-700 text-white rounded-xl text-xs font-bold hover:bg-slate-600 transition-all flex items-center justify-center gap-1.5"
                         id={`btn-load-scenario-${scenario.id}`}
-                      >
-                        Szenario starten &rarr;
-                      </button>
+                      ><MdText text={inhalt.texte.szenarioStarten} /></button>
                     </div>
                   </div>
                 );
@@ -788,20 +600,17 @@ export default function Bautagebuch() {
 
         {activeTab === 'saved' && (
           <div className="space-y-6">
-            <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2">
-              Archivierte &amp; bewertete Tagesberichte ({savedDiaries.length})
+            <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.archivierteBewerteteTagesberichte} />{savedDiaries.length})
             </h3>
             {savedDiaries.length === 0 ? (
               <div className="text-center py-12 text-slate-500 space-y-4">
                 <Bookmark size={48} className="mx-auto text-slate-300" />
-                <p className="text-sm font-medium">Bislang wurden keine Tagesprotokolle erstellt.</p>
+                <p className="text-sm font-medium"><MdText text={inhalt.texte.bislangWurdenKeineTagesprotokolle} /></p>
                 <button
                   onClick={() => setActiveTab('scenarios')}
                   className="px-4 py-2 bg-shiraz text-white rounded-xl text-xs font-bold hover:bg-shiraz/90 transition-all"
                   id="btn-view-scenarios-empty"
-                >
-                  Zu den Lernszenarien
-                </button>
+                ><MdText text={inhalt.texte.zuDenLernszenarien} /></button>
               </div>
             ) : (
               <div className="space-y-4">
@@ -827,9 +636,9 @@ export default function Bautagebuch() {
                         <strong>Tätigkeiten:</strong> {diary.fortschritt}
                       </p>
                       <div className="flex items-center gap-4 text-xs font-medium text-slate-500">
-                        <span>Min/Max Temp: {formatDeWert(diary.wetterTempMin)}°C - {formatDeWert(diary.wetterTempMax)}°C</span>
-                        {diary.behinderung && <span className="text-rose-600 font-bold">&#9888; Behinderung aktiv</span>}
-                        {diary.bedenken && <span className="text-amber-600 font-bold">&#9888; Bedenken angemeldet</span>}
+                        <span><MdText text={inhalt.texte.minMaxTemp} />{formatDeWert(diary.wetterTempMin)}°C - {formatDeWert(diary.wetterTempMax)}°C</span>
+                        {diary.behinderung && <span className="text-rose-600 font-bold"><MdText text={inhalt.texte.behinderungAktiv} /></span>}
+                        {diary.bedenken && <span className="text-amber-600 font-bold"><MdText text={inhalt.texte.bedenkenAngemeldet} /></span>}
                       </div>
                     </div>
 
@@ -845,7 +654,7 @@ export default function Bautagebuch() {
                       <button
                         onClick={(e) => handleDeleteDiary(diary.id, e)}
                         className="p-2 text-slate-400 hover:text-rose-600 transition-all rounded-lg hover:bg-rose-50"
-                        title="Bericht löschen"
+                        title={inhalt.werte.berichtLöschen}
                         id={`btn-delete-${diary.id}`}
                       >
                         <Trash2 size={16} />
@@ -865,12 +674,10 @@ export default function Bautagebuch() {
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   <span>VOB-Tageserfassung</span>
                   {activeScenarioId && (
-                    <span className="text-xs font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300 px-2 py-0.5 rounded uppercase">
-                      Szenario-Modus aktiv
-                    </span>
+                    <span className="text-xs font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300 px-2 py-0.5 rounded uppercase"><MdText text={inhalt.texte.szenarioModusAktiv} /></span>
                   )}
                 </h3>
-                <p className="text-xs text-slate-600">Tragen Sie alle relevanten Witterungs- und baubetrieblichen Werte ein.</p>
+                <p className="text-xs text-slate-600"><MdText text={inhalt.texte.tragenSieAlleRelevanten} /></p>
                 {activeScenarioId && (
                   <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg p-2 max-w-2xl">
                     <strong>Lage:</strong> {SCENARIOS.find(sc => sc.id === activeScenarioId)?.description}
@@ -907,13 +714,11 @@ export default function Bautagebuch() {
                 
                 {/* 1. REPORT IDENTITY */}
                 <div className="bg-slate-50/50 p-5 rounded-2xl border border-home-grau/30 space-y-4">
-                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1">
-                    1. Allgemeine Berichtangaben
-                  </span>
+                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1"><MdText text={inhalt.texte.t1AllgemeineBerichtangaben} /></span>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1">Berichtsnummer (Fortlaufend)</label>
+                      <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.berichtsnummerFortlaufend} /></label>
                       <input 
                         type="number" min="1"
                         id="form-bericht-nummer"
@@ -923,7 +728,7 @@ export default function Bautagebuch() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1">Datum der Aufzeichnung</label>
+                      <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.datumDerAufzeichnung} /></label>
                       <input 
                         type="date"
                         id="form-date"
@@ -933,7 +738,7 @@ export default function Bautagebuch() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1">Innere Bauleitung (Mitarbeiter)</label>
+                      <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.innereBauleitungMitarbeiter} /></label>
                       <input 
                         type="number" min="0"
                         id="form-eigene-arbeiter"
@@ -948,17 +753,15 @@ export default function Bautagebuch() {
                 {/* 2. WEATHER BLOCK */}
                 <div className="p-5 rounded-2xl border border-home-grau/30 space-y-4">
                   <div className="flex justify-between items-center border-b border-home-grau/30 pb-1">
-                    <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block">
-                      2. Witterung und klimatologische Belastungen
-                    </span>
-                    <span className="text-xs font-mono text-slate-400 font-medium">DIN EN 13670 / DIN 1045</span>
+                    <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block"><MdText text={inhalt.texte.t2WitterungUndKlimatologische} /></span>
+                    <span className="text-xs font-mono text-slate-400 font-medium"><MdText text={inhalt.texte.dinEn13670Din} /></span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1">Temperatur Min (&deg;C)</label>
+                      <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.temperaturMinC} /></label>
                       <div className="flex items-center gap-2">
-                        <input aria-label="Temperatur Min (&deg;C)" 
+                        <input aria-label={inhalt.werte.temperaturMinC} 
                           type="range" 
                           min="-10" 
                           max="45" 
@@ -971,9 +774,9 @@ export default function Bautagebuch() {
                       </div>
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1">Temperatur Max (&deg;C)</label>
+                      <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.temperaturMaxC} /></label>
                       <div className="flex items-center gap-2">
-                        <input aria-label="Temperatur Max (&deg;C)" 
+                        <input aria-label={inhalt.werte.temperaturMaxC} 
                           type="range" 
                           min="-10" 
                           max="45" 
@@ -991,15 +794,13 @@ export default function Bautagebuch() {
                   {tempMin < 5 && (
                     <div className="p-3 bg-rose-50 border border-shiraz/20 rounded-lg flex items-start gap-1.5">
                       <ThermometerSnowflake className="text-shiraz shrink-0 mt-0.5" size={16} />
-                      <div className="text-xs text-rose-950 font-medium">
-                        <strong>Frostgefahr / Nachbehandlungspflicht!</strong> Min-Temperatur liegt unter +5&deg;C. Betonaktivitäten erfordern Thermoplanung und Abdeckung, um Einfrieren oder Erstarrungsabbrüche zu verhindern.
-                      </div>
+                      <div className="text-xs text-rose-950 font-medium"><MdText text={inhalt.texte.frostgefahrNachbehandlungspflichtMinTemp} /></div>
                     </div>
                   )}
 
                   {/* Conditions toggle */}
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-2">Witterungsbedingungen (Auswahl)</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-2"><MdText text={inhalt.texte.witterungsbedingungenAuswahl} /></label>
                     <div className="flex flex-wrap gap-1.5" id="weather-checkbox-group">
                       {['Sunny', 'Cloudy', 'Rain', 'Snow', 'Frost', 'Stormy'].map(cond => {
                         const active = selectedWeather.includes(cond);
@@ -1018,8 +819,8 @@ export default function Bautagebuch() {
                             {cond === 'Sunny' ? '☀️ Sonnig' : 
                              cond === 'Cloudy' ? '☁️ Bewölkt' : 
                              cond === 'Rain' ? '🌧️ Regen' : 
-                             cond === 'Snow' ? '❄️ Schneefall' : 
-                             cond === 'Frost' ? '🥶 Frost' : '💨 Wind/Sturm'}
+                             cond === 'Snow' ? inhalt.werte.schneefall : 
+                             cond === 'Frost' ? '🥶 Frost' : inhalt.werte.windSturm}
                           </button>
                         );
                       })}
@@ -1028,7 +829,7 @@ export default function Bautagebuch() {
 
                   {/* Operational impact */}
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1">Einfluss auf die Baustelle</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.einflussAufDieBaustelle} /></label>
                     <select
                       id="form-weather-einfluss"
                       value={weatherEinfluss}
@@ -1045,12 +846,10 @@ export default function Bautagebuch() {
 
                 {/* 3. MANPOWER & SUBCONTRACTORS */}
                 <div className="p-5 rounded-2xl border border-home-grau/30 space-y-4">
-                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1">
-                    3. Fremdfirmen &amp; Subunternehmer-Personalstärken
-                  </span>
+                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1"><MdText text={inhalt.texte.t3FremdfirmenSubunternehmerPersonalstärke} /></span>
                   
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1">Fremdfirmen-Verzeichnis &amp; Mitarbeiter (pro Zeile)</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.fremdfirmenVerzeichnisMitarbeiterPro} /></label>
                     <textarea
                       id="form-arbeiter-sub"
                       rows={3}
@@ -1059,32 +858,29 @@ export default function Bautagebuch() {
                       placeholder="z.B. Müller Erdbau GmbH: 1 Polier, 3 Baggerfahrer&#10;TGA Elektro Schmidt: 2 Monteure"
                       className="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 font-mono"
                     />
-                    <p className="text-xs text-slate-600 mt-1">Geben Sie das exakte Gewerk, Firma und Anzahl an. Unbesetzte Positionen sind ein wichtiger Verzugsindikator.</p>
+                    <p className="text-xs text-slate-600 mt-1"><MdText text={inhalt.texte.gebenSieDasExakte} /></p>
                   </div>
                 </div>
 
                 {/* 4. PERFORMANCE & TESTS */}
                 <div className="p-5 rounded-2xl border border-home-grau/30 space-y-4">
-                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1">
-                    4. Ausgeführte Tagesleistung &amp; Qualitätsprüfungen
-                  </span>
+                  <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block border-b border-home-grau/30 pb-1"><MdText text={inhalt.texte.t4AusgeführteTagesleistungQualitätsprüfun} /></span>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1">Tagesarbeit / Baufortschritt (Schnittstellen-genau beschreiben)</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.tagesarbeitBaufortschrittSchnittstellenG} /></label>
                     <textarea
                       id="form-fortschritt"
                       rows={4}
                       value={fortschritt}
                       onChange={(e) => setFortschritt(e.target.value)}
-                      placeholder="Beschreiben Sie räumlich präzise, welche Abschnitte heute geschalt, bewehrt, betoniert oder saniert wurden..."
+                      placeholder={inhalt.werte.beschreibenSieRäumlichPräzise}
                       className="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 leading-relaxed font-semibold placeholder:font-normal"
                     />
                     
                     {/* Prompt sub tasks suggestion to help students */}
                     <div className="mt-2.5 p-3 bg-slate-50 border border-slate-200 rounded-lg">
                       <p className="text-xs uppercase tracking-wider font-bold text-slate-900 mb-1.5 flex items-center gap-1">
-                        <ClipboardList size={11} className="text-shiraz" /> Vorgeschlagene Tätigkeiten für dieses Projekt:
-                      </p>
+                        <ClipboardList size={11} className="text-shiraz" /><MdText text={inhalt.texte.vorgeschlageneTätigkeitenFürDieses} /></p>
                       <div className="flex flex-wrap gap-1">
                         {selectedProject.defaultTasks.map((t, idx) => (
                           <button
@@ -1105,15 +901,15 @@ export default function Bautagebuch() {
 
                   {/* Quality tests selector */}
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1.5">Eingeleitete Güteprüfungen / Schnelltests (Gewerke-QS)</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.eingeleiteteGüteprüfungenSchnelltestsGew} /></label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2" id="testing-checkbox-group">
                       {[
-                        'Frischbetontemperatur gemessen',
-                        'Ausbreitversuch durchgeführt',
-                        'Probekörper (Würfel/Zylinder) gegossen',
-                        'CM-Messung durchgeführt',
-                        'Haftzugprüfung vorgenommen',
-                        'Holzfeuchtigkeitsbestimmung gemessen'
+                        inhalt.werte.frischbetontemperaturGemessen2,
+                        inhalt.werte.ausbreitversuchDurchgeführt,
+                        inhalt.werte.probekörperWürfelZylinderGegossen,
+                        inhalt.werte.cmMessungDurchgeführt2,
+                        inhalt.werte.haftzugprüfungVorgenommen,
+                        inhalt.werte.holzfeuchtigkeitsbestimmungGemessen
                       ].map(test => {
                         const active = selectedTesting.includes(test);
                         return (
@@ -1140,32 +936,30 @@ export default function Bautagebuch() {
                 {/* 5. VOB/B INFRINGEMENTS & VERBAL DIRECTIVES */}
                 <div className="p-5 rounded-2xl border border-home-grau/30 space-y-4">
                   <div className="flex justify-between items-center border-b border-home-grau/30 pb-1">
-                    <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block">
-                      5. Besondere Vorkommnisse &amp; Baurechtliches
-                    </span>
-                    <span className="text-xs font-mono text-slate-400 font-bold">VOB/B § 4 &amp; § 6</span>
+                    <span className="text-xs text-shiraz font-bold font-mono tracking-widest uppercase block"><MdText text={inhalt.texte.t5BesondereVorkommnisseBaurechtliches} /></span>
+                    <span className="text-xs font-mono text-slate-400 font-bold"><MdText text={inhalt.texte.vobB46} /></span>
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1">Mündliche Anweisungen / Baustellenbeschlüsse (z.B. Schmidt)</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.mündlicheAnweisungenBaustellenbeschlüsse} /></label>
                     <input 
                       type="text"
                       id="form-anweisungen"
                       value={anweisungen}
                       onChange={(e) => setAnweisungen(e.target.value)}
-                      placeholder="Wer hat was veranlasst? (z.B. Herr Schmidt ordnete mündlich den Verzicht auf...)"
+                      placeholder={inhalt.werte.werHatWasVeranlasst}
                       className="w-full bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-800 font-mono"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1">Unvorhergesehene Störungen / Havarien / Geräteschäden</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.unvorhergeseheneStörungenHavarienGerätes} /></label>
                     <input 
                       type="text"
                       id="form-stoerungen"
                       value={stoerungen}
                       onChange={(e) => setStoerungen(e.target.value)}
-                      placeholder="z.B. Rohrbruch im Kellerbereich, Ausfall Hauptkran Liebherr..."
+                      placeholder={inhalt.werte.zBRohrbruchIm}
                       className="w-full bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-800"
                     />
                   </div>
@@ -1181,7 +975,7 @@ export default function Bautagebuch() {
                           onChange={(e) => setBehinderung(e.target.checked)}
                           className="rounded border-slate-300 text-shiraz focus:ring-shiraz uppercase"
                         />
-                        <span className="text-xs font-bold text-rose-800">Formelle Behinderungsanzeige erforderlich?</span>
+                        <span className="text-xs font-bold text-rose-800"><MdText text={inhalt.texte.formelleBehinderungsanzeigeErforderlich} /></span>
                       </label>
                       {behinderung && (
                         <input 
@@ -1189,7 +983,7 @@ export default function Bautagebuch() {
                           id="form-behinderung-details"
                           value={behinderungDetails}
                           onChange={(e) => setBehinderungDetails(e.target.value)}
-                          placeholder="Begründung nach § 6 Abs. 1 VOB/B..."
+                          placeholder={inhalt.werte.begründungNach6Abs}
                           className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-medium/80"
                         />
                       )}
@@ -1204,7 +998,7 @@ export default function Bautagebuch() {
                           onChange={(e) => setBedenken(e.target.checked)}
                           className="rounded border-slate-300 text-shiraz focus:ring-shiraz uppercase"
                         />
-                        <span className="text-xs font-bold text-amber-800">Bedenkenanmeldung erheben (Sicherheitsausschluss)?</span>
+                        <span className="text-xs font-bold text-amber-800"><MdText text={inhalt.texte.bedenkenanmeldungErhebenSicherheitsaussc} /></span>
                       </label>
                       {bedenken && (
                         <input 
@@ -1212,7 +1006,7 @@ export default function Bautagebuch() {
                           id="form-bedenken-details"
                           value={bedenkenDetails}
                           onChange={(e) => setBedenkenDetails(e.target.value)}
-                          placeholder="Technische Bedenken nach § 4 Abs. 3 VOB/B..."
+                          placeholder={inhalt.werte.technischeBedenkenNach4}
                           className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-medium/80"
                         />
                       )}
@@ -1227,8 +1021,7 @@ export default function Bautagebuch() {
                   className="w-full py-4 bg-shiraz text-white hover:bg-shiraz/90 font-extrabold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm cursor-pointer"
                   id="btn-submit-diary"
                 >
-                  <Plus size={18} /> Bautagebuch überprüfen &amp; archivieren
-                </button>
+                  <Plus size={18} /><MdText text={inhalt.texte.bautagebuchÜberprüfenArchivieren} /></button>
 
               </div>
 
@@ -1239,29 +1032,27 @@ export default function Bautagebuch() {
                 <div className="bg-slate-50 border border-home-grau/30 rounded-2xl p-5 space-y-4 shadow-xxs">
                   <div className="flex items-center gap-2 border-b border-home-grau/30 pb-2">
                     <GraduationCap className="text-shiraz" size={20} />
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-900 block font-bold">
-                      Virtuelle Professur: Auswertung &amp; Feedback
-                    </span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-900 block font-bold"><MdText text={inhalt.texte.virtuelleProfessurAuswertungFeedback} /></span>
                   </div>
 
                   {!reviewResult ? (
                     <div className="text-center py-12 text-slate-500 space-y-3">
                       <HelpCircle size={40} className="mx-auto text-slate-300 animate-pulse" />
-                      <p className="text-xs font-bold text-slate-700">Warten auf Berichtsabgabe...</p>
-                      <p className="text-xs text-slate-500 max-w-xs mx-auto">Tragen Sie Ihre Werte links ein und klicken Sie unten auf Überprüfen. Ihre Arbeit wird sofort nach HOAI und VOB Kriterien analysiert.</p>
+                      <p className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.wartenAufBerichtsabgabe} /></p>
+                      <p className="text-xs text-slate-500 max-w-xs mx-auto"><MdText text={inhalt.texte.tragenSieIhreWerte} /></p>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       
                       {/* Score Badge */}
                       <div className="bg-white p-4 rounded-xl border border-home-grau/30 text-center space-y-1 shadow-xxs">
-                        <span className="text-xs text-slate-600 font-extrabold uppercase">Erhobene Prüfungsnote</span>
+                        <span className="text-xs text-slate-600 font-extrabold uppercase"><MdText text={inhalt.texte.erhobenePrüfungsnote} /></span>
                         <div className={`text-4xl font-extrabold font-mono ${
                           reviewResult.score >= 80 ? 'text-emerald-700' : reviewResult.score >= 60 ? 'text-amber-600' : 'text-rose-600'
                         }`}>
                           {reviewResult.grade}
                         </div>
-                        <p className="text-xs font-medium text-slate-600">Soll-Akkreditierungsgrad: {formatDeWert(reviewResult.score)} / 100 Punkte</p>
+                        <p className="text-xs font-medium text-slate-600">Soll-Akkreditierungsgrad: {formatDeWert(reviewResult.score)}<MdText text={inhalt.texte.t100Punkte} /></p>
                       </div>
 
                       {/* Prof assessment commentary */}
@@ -1296,8 +1087,8 @@ export default function Bautagebuch() {
                        {/* Scenario hint helper */}
                       {activeScenarioId && (
                         <div className="bg-amber-50 border border-amber-300 text-amber-950 p-4 rounded-xl space-y-1.5 shadow-xxs">
-                          <span className="text-xs uppercase tracking-wider text-amber-800 font-extrabold block">Szenario-Hinweise &amp; Lösungen</span>
-                          <p className="text-xs text-amber-900 font-bold">Empfohlene Baustoff-Parameter:</p>
+                          <span className="text-xs uppercase tracking-wider text-amber-800 font-extrabold block"><MdText text={inhalt.texte.szenarioHinweiseLösungen} /></span>
+                          <p className="text-xs text-amber-900 font-bold"><MdText text={inhalt.texte.empfohleneBaustoffParameter} /></p>
                           <ul className="list-disc pl-4 text-xs text-stone-800 space-y-1.5">
                             {SCENARIOS.find(s => s.id === activeScenarioId)?.hints.map((hint, idx) => (
                               <li key={idx} className="leading-relaxed">{hint}</li>
@@ -1319,13 +1110,10 @@ export default function Bautagebuch() {
                     </div>
                     
                     <div className="space-y-1.5 z-10 relative">
-                      <span className="text-xs text-stone-600 font-bold uppercase block tracking-widest font-mono">VOB-Ausdruck (Vorschau)</span>
+                      <span className="text-xs text-stone-600 font-bold uppercase block tracking-widest font-mono"><MdText text={inhalt.texte.vobAusdruckVorschau} /></span>
                       <h4 className="font-extrabold text-[#0f172a] text-sm flex items-center gap-1.5">
-                        <CheckCircle className="text-emerald-600" size={16} /> Tagesbericht gerichtsicher zertifiziert
-                      </h4>
-                      <p className="text-xs text-stone-700 leading-relaxed">
-                        Dieser Tagesbericht #<strong>{reviewResult.berichtNummer}</strong> vom <strong>{reviewResult.date}</strong> für das Projekt &ldquo;<strong>{selectedProject.name}</strong>&rdquo; wurde in der Datenbank verschlüsselt und für die Bauakte ablagefertig vorbereitet.
-                      </p>
+                        <CheckCircle className="text-emerald-600" size={16} /><MdText text={inhalt.texte.tagesberichtGerichtsicherZertifiziert} /></h4>
+                      <p className="text-xs text-stone-700 leading-relaxed"><MdText text={inhalt.texte.dieserTagesbericht} /><strong>{reviewResult.berichtNummer}</strong> vom <strong>{reviewResult.date}</strong><MdText text={inhalt.texte.fürDasProjekt} /><strong>{selectedProject.name}</strong><MdText text={inhalt.texte.wurdeInDerDatenbank} /></p>
                     </div>
 
                     <div className="flex gap-2">
@@ -1334,8 +1122,7 @@ export default function Bautagebuch() {
                         className="flex-1 py-2 bg-slate-700 text-white rounded-xl text-xs font-bold hover:bg-slate-600 transition-all flex items-center justify-center gap-1.5"
                         id="btn-print"
                       >
-                        <Printer size={13} /> Bericht drucken / PDF
-                      </button>
+                        <Printer size={13} /><MdText text={inhalt.texte.berichtDruckenPdf} /></button>
                     </div>
                   </div>
                 )}
@@ -1350,107 +1137,37 @@ export default function Bautagebuch() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Ausschalfrist bei kühler Witterung abschätzen"
+        title={inhalt.werte.beispiel1AusschalfristBei}
         zielGleichung="t_{Ausschal} \ge t_{min} \cdot f_T,\quad f_T = \frac{30}{\bar T + 10}"
-        schritte={[
-          { titel: 'Bezugswert', erklaerung: 'Planerische Ausschalfrist bei 20 °C (Lehrwert):', formel: 't_{min} = 3\\,\\text{d}' },
-          { titel: 'Temperaturfaktor', erklaerung: 'Mittlere Betontemperatur aus dem Bautagebuch 5 °C:', formel: 'f_T = \\frac{30}{5 + 10} = 2{,}0' },
-          { titel: 'Ausschalfrist', erklaerung: 'Verlängerte Frist:', formel: 't_{Ausschal} \\ge 3 \\cdot 2{,}0 = 6\\,\\text{d}' }
-        ]}
-        ergebnisHinweis="Ohne dokumentierte Temperaturen ist die Verlängerung nicht begründbar. Verbindlich sind die Vorgaben der Tragwerksplanung; im Zweifel die Festigkeit am Bauwerk oder an mitgelagerten Probekörpern prüfen."
-        normQuelle="Reifegradansatz nach Saul; DIN 1045-3:2023-08"
+        schritte={inhalt.daten["Bautagebuch.schritte"]}
+        ergebnisHinweis={inhalt.werte.ohneDokumentierteTemperaturenIst}
+        normQuelle={inhalt.werte.reifegradansatzNachSaulDin}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Festigkeitsentwicklung aus dem Lieferschein einordnen"
+        title={inhalt.werte.beispiel2FestigkeitsentwicklungAus}
         zielGleichung="r = \frac{f_{cm,2}}{f_{cm,28}}"
-        schritte={[
-          { titel: 'Angaben', erklaerung: 'Lieferwerk: mittlere Festigkeit nach 2 Tagen 18 N/mm², nach 28 Tagen 40 N/mm²:', formel: 'r = \\frac{18}{40} = 0{,}45' },
-          { titel: 'Einordnung', erklaerung: 'Grenzen: schnell ≥ 0,50, mittel ≥ 0,30, langsam ≥ 0,15:', formel: '0{,}30 \\le 0{,}45 < 0{,}50 \\Rightarrow \\text{mittel}' },
-          { titel: 'Folge', erklaerung: 'Die Mindestdauer der Nachbehandlung wird mit der Klasse mittel und der Oberflächentemperatur aus der Tabelle der DIN 1045-3 bestimmt:', formel: '\\text{mittel} + \\bar T \\to t_{NB}' }
-        ]}
-        ergebnisHinweis="Festigkeitsentwicklung und Temperatur gehören deshalb in jedes Betonier-Protokoll; sie begründen Nachbehandlungs- und Ausschalfristen."
-        normQuelle="DIN EN 206 / DIN 1045-2; DIN 1045-3:2023-08"
+        schritte={inhalt.daten["Bautagebuch.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.festigkeitsentwicklungUndTemperaturGehör}
+        normQuelle={inhalt.werte.dinEn206Din}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="px_bautagebuch" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 15 Praxiswissen: Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap15}
         wikipedia={[
           { title: 'Bautagebuch', url: 'https://de.wikipedia.org/wiki/Bautagebuch' },
           { title: 'Objektüberwachung', url: 'https://de.wikipedia.org/wiki/Objekt%C3%BCberwachung' },
           { title: 'Behinderungsanzeige', url: 'https://de.wikipedia.org/wiki/Behinderungsanzeige' }
         ]}
-        literatur={[
-          'Wendehorst Baustoffkunde. Wiesbaden: Springer Vieweg (aktuelle Auflage)',
-          'Bauleiter-Handbuch: Ausführung, Dokumentation und Abnahme (Werner Verlag)',
-          'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management (Springer Vieweg)'
-        ]}
-        regelwerke={[
-          { title: 'VOB/B 2016 § 4 Abs. 3 & § 6 (Bedenken und Behinderung)' },
-          { title: 'HOAI 2021, Anlage 10 Lph 8 (Objektüberwachung: Dokumentation des Bauablaufs)', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
-          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Bauausführung)' }
-        ]}
-        formeln={[
-          {
-            formel: 't_{\\text{Ausschal}} \\ge t_{\\text{min}} \\cdot f_T \\quad \\text{mit} \\quad f_T = \\frac{30}{\\bar{T} + 10}',
-            erklaerung: 'Näherung für die Verlängerung von Ausschalfristen bei niedriger mittlerer Betontemperatur (Bezug 20 °C); verbindlich sind die Vorgaben der Tragwerksplanung und die Festigkeitskontrolle.',
-            quelle: 'Reifegradansatz nach Saul (Näherung)'
-          },
-          {
-            formel: 'r_{\\text{fest}} = \\frac{f_{\\text{cm},2}}{f_{\\text{cm},28}} \\implies \\text{Festigkeitsentwicklung: schnell (} \\ge 0{,}50 \\text{), mittel, langsam}',
-            erklaerung: 'Festigkeitsentwicklungsverhältnis r nach DIN EN 206 zur Bestimmung der Mindestnachbehandlungsdauer von Betonoberflächen.',
-            quelle: 'DIN EN 206 / DIN 1045-3'
-          }
-        ]}
+        literatur={inhalt.daten["Bautagebuch.literatur"]}
+        regelwerke={inhalt.daten["Bautagebuch.regelwerke"]}
+        formeln={inhalt.daten["Bautagebuch.formeln"]}
       />
 
       {/* PRINT STYLING INJECTED VIA MEDIA QUERY FOR HIGH CONTRAST BLACK & WHITE PAPER OUTPUT */}
-      <style>{`
-        @media print {
-          body {
-            background: white !important;
-            color: black !important;
-          }
-          #bautagebuch-root {
-            padding: 0 !important;
-          }
-          .md\\:flex-row, .grid, .flex {
-            display: block !important;
-          }
-          button, select, input[type="range"], #tab-btn-guide, #tab-btn-scenarios, #tab-btn-editor, #tab-btn-saved, #project-selector-group {
-            display: none !important;
-          }
-          .lg\\:col-span-12, .lg\\:col-span-7, .lg\\:col-span-5 {
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-          }
-          textarea, input {
-            border: none !important;
-            background: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            font-size: 11pt !important;
-            color: black !important;
-            font-family: monospace !important;
-          }
-          textarea {
-            white-space: pre-wrap !important;
-          }
-          .bg-slate-50, .bg-slate-50\\/50, .bg-gradient-to-r, .bg-slate-900 {
-            background: none !important;
-            color: black !important;
-            border: 1px solid #cbd5e1 !important;
-          }
-          .text-white {
-            color: black !important;
-          }
-        }
-      `}</style>
+      <style>{inhalt.werte.mediaPrintBodyBackground}</style>
 
     </div>
   );

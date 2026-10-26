@@ -20,6 +20,8 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import inhalt from '@/content/hydratation/Hydratation.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -291,7 +293,7 @@ export default function Hydratation() {
     if (festigkeitsModus === 'relativ') {
       strengthDatasets = [
         {
-          label: 'Druckfestigkeit f_cm (Kern) (%)',
+          label: inhalt.werte.druckfestigkeitFCmKern,
           data: fcActRel,
           borderColor: '#A3113E', // Shiraz
           backgroundColor: 'rgba(163, 17, 62, 0.08)',
@@ -301,7 +303,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: 'Zugfestigkeit f_ctm (Kern) (%)',
+          label: inhalt.werte.zugfestigkeitFCtmKern,
           data: fctActRel,
           borderColor: '#2563eb', // Blau
           borderWidth: 2.5,
@@ -309,7 +311,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: 'E-Modul E_cm (Kern) (%)',
+          label: inhalt.werte.eModulECm,
           data: EActRel,
           borderColor: '#059669', // Grün
           borderWidth: 2.5,
@@ -317,7 +319,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: '20°C Referenz f_cm (%)',
+          label: inhalt.werte.t20CReferenzF,
           data: fcRefRel,
           borderColor: '#94a3b8',
           borderDash: [5, 5],
@@ -329,7 +331,7 @@ export default function Hydratation() {
     } else if (festigkeitsModus === 'druck') {
       strengthDatasets = [
         {
-          label: 'Druckfestigkeit f_cm (Kern) (MPa)',
+          label: inhalt.werte.druckfestigkeitFCmKern2,
           data: fcActMpa,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.12)',
@@ -339,7 +341,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: 'Referenz f_cm bei 20°C (MPa)',
+          label: inhalt.werte.referenzFCmBei,
           data: fcRefMpa,
           borderColor: '#94a3b8',
           borderDash: [5, 5],
@@ -359,7 +361,7 @@ export default function Hydratation() {
     } else if (festigkeitsModus === 'zug') {
       strengthDatasets = [
         {
-          label: 'Zugfestigkeit f_ctm (Kern) (MPa)',
+          label: inhalt.werte.zugfestigkeitFCtmKern2,
           data: fctActMpa,
           borderColor: '#2563eb',
           backgroundColor: 'rgba(37, 99, 235, 0.12)',
@@ -369,7 +371,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: 'Referenz f_ctm bei 20°C (MPa)',
+          label: inhalt.werte.referenzFCtmBei,
           data: fctRefMpa,
           borderColor: '#94a3b8',
           borderDash: [5, 5],
@@ -381,7 +383,7 @@ export default function Hydratation() {
     } else if (festigkeitsModus === 'emodul') {
       strengthDatasets = [
         {
-          label: 'E-Modul E_cm (Kern) (GPa)',
+          label: inhalt.werte.eModulECm2,
           data: EActGpa,
           borderColor: '#059669',
           backgroundColor: 'rgba(5, 150, 105, 0.12)',
@@ -391,7 +393,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: 'Referenz E_cm bei 20°C (GPa)',
+          label: inhalt.werte.referenzECmBei,
           data: ERefGpa,
           borderColor: '#94a3b8',
           borderDash: [5, 5],
@@ -403,7 +405,7 @@ export default function Hydratation() {
     } else { // 'alle_absolut'
       strengthDatasets = [
         {
-          label: 'Druckfestigkeit f_cm (MPa)',
+          label: inhalt.werte.druckfestigkeitFCmMpa,
           data: fcActMpa,
           borderColor: '#A3113E',
           borderWidth: 3,
@@ -412,7 +414,7 @@ export default function Hydratation() {
           yAxisID: 'y',
         },
         {
-          label: 'Zugfestigkeit f_ctm (MPa)',
+          label: inhalt.werte.zugfestigkeitFCtmMpa,
           data: fctActMpa,
           borderColor: '#2563eb',
           borderWidth: 2.5,
@@ -421,7 +423,7 @@ export default function Hydratation() {
           yAxisID: 'y',
         },
         {
-          label: 'E-Modul E_cm (GPa)',
+          label: inhalt.werte.eModulECm3,
           data: EActGpa,
           borderColor: '#059669',
           borderWidth: 2.5,
@@ -458,7 +460,7 @@ export default function Hydratation() {
         labels: timeSteps,
         datasets: [
           {
-            label: 'Adiabatische Temperatur (°C)',
+            label: inhalt.werte.adiabatischeTemperaturC,
             data: tempAdiabatic,
             borderColor: '#cbd5e1',
             borderDash: [5, 5],
@@ -467,7 +469,7 @@ export default function Hydratation() {
             pointRadius: 0,
           },
           {
-            label: 'Kerntemperatur Bauteil (°C)',
+            label: inhalt.werte.kerntemperaturBauteilC,
             data: tempCore,
             borderColor: '#A3113E',
             backgroundColor: 'rgba(255, 3, 80, 0.1)',
@@ -477,7 +479,7 @@ export default function Hydratation() {
             pointRadius: 0,
           },
           {
-            label: 'Randtemperatur Bauteil (°C)',
+            label: inhalt.werte.randtemperaturBauteilC,
             data: tempRand,
             borderColor: '#475569',
             borderWidth: 2,
@@ -494,7 +496,7 @@ export default function Hydratation() {
     maintainAspectRatio: false,
     scales: {
       x: {
-        title: { display: true, text: 'Zeit t (Tage)', font: { family: 'Work Sans', weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.zeitTTage, font: { family: 'Work Sans', weight: 'bold' as const } },
         ticks: { maxTicksLimit: 15 } // Verhindert überlappende Labels bei 280 Messpunkten
       }
     },
@@ -513,7 +515,7 @@ export default function Hydratation() {
       y: {
         min: 0,
         max: 120,
-        title: { display: true, text: 'Relativer Kennwert (%)', font: { family: 'Work Sans', weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.relativerKennwert, font: { family: 'Work Sans', weight: 'bold' as const } },
         ticks: { callback: (val: string | number) => `${val} %` }
       }
     };
@@ -523,7 +525,7 @@ export default function Hydratation() {
         y: {
           min: 0,
           suggestedMax: Math.ceil(fcm28 * 1.15),
-          title: { display: true, text: 'Druckfestigkeit f_cm (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.druckfestigkeitFCmMpa2, font: { family: 'Work Sans', weight: 'bold' as const } },
           ticks: { callback: (val: string | number) => `${val} MPa` }
         }
       };
@@ -532,7 +534,7 @@ export default function Hydratation() {
         y: {
           min: 0,
           suggestedMax: Number((fctm28 * 1.25).toFixed(1)),
-          title: { display: true, text: 'Zugfestigkeit f_ctm (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.zugfestigkeitFCtmMpa2, font: { family: 'Work Sans', weight: 'bold' as const } },
           ticks: { callback: (val: string | number) => `${val} MPa` }
         }
       };
@@ -541,7 +543,7 @@ export default function Hydratation() {
         y: {
           min: 0,
           suggestedMax: Math.ceil(Ecm28 * 1.15),
-          title: { display: true, text: 'Elastizitätsmodul E_cm (GPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.elastizitätsmodulECmGpa, font: { family: 'Work Sans', weight: 'bold' as const } },
           ticks: { callback: (val: string | number) => `${val} GPa` }
         }
       };
@@ -553,7 +555,7 @@ export default function Hydratation() {
           position: 'left',
           min: 0,
           suggestedMax: Math.ceil(fcm28 * 1.15),
-          title: { display: true, text: 'Druck- & Zugfestigkeit (MPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.druckZugfestigkeitMpa, font: { family: 'Work Sans', weight: 'bold' as const } },
           ticks: { callback: (val: string | number) => `${val} MPa` }
         },
         yE: {
@@ -562,7 +564,7 @@ export default function Hydratation() {
           position: 'right',
           min: 0,
           suggestedMax: Math.ceil(Ecm28 * 1.15),
-          title: { display: true, text: 'E-Modul (GPa)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.eModulGpa, font: { family: 'Work Sans', weight: 'bold' as const } },
           grid: { drawOnChartArea: false },
           ticks: { callback: (val: string | number) => `${val} GPa` }
         }
@@ -574,7 +576,7 @@ export default function Hydratation() {
       maintainAspectRatio: false,
       scales: {
         x: {
-          title: { display: true, text: 'Reifealter t (Tage)', font: { family: 'Work Sans', weight: 'bold' as const } },
+          title: { display: true, text: inhalt.werte.reifealterTTage, font: { family: 'Work Sans', weight: 'bold' as const } },
           ticks: { maxTicksLimit: 15 }
         },
         ...yScales
@@ -606,20 +608,17 @@ export default function Hydratation() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-        <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Flame className="text-shiraz" /> Hydratation: Reifegrad &amp; Kinetik</h2>
+        <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Flame className="text-shiraz" /><MdText text={inhalt.texte.hydratationReifegradKinetik} /></h2>
       
 
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Hydratation ist eine exotherme Reaktion. Je massiger ein Bauteil ist, desto schlechter kann die Wärme abfließen. 
-            Dies führt zu hohen Kerntemperaturen, was die Erhärtung (Reifegrad) beschleunigt, aber auch zu thermischen Spannungen und Rissen führen kann.
-          </p>
+          <p><MdText text={inhalt.texte.dieHydratationIstEine} /></p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label><InfoTooltip text={inhalt.werte.artDesVerwendetenZements} /></div>
             <select aria-label="Zementart" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={zementArt}
@@ -631,7 +630,7 @@ export default function Hydratation() {
             </select>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Festigkeitsklasse</label><InfoTooltip text="Normfestigkeit des Materials." /></div>
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Festigkeitsklasse</label><InfoTooltip text={inhalt.werte.normfestigkeitDesMaterials} /></div>
             <select aria-label="Festigkeitsklasse" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={festigkeitsklasse}
@@ -646,7 +645,7 @@ export default function Hydratation() {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Erhärtung</label><InfoTooltip text="Geschwindigkeit der Festigkeitsentwicklung." /></div>
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Erhärtung</label><InfoTooltip text={inhalt.werte.geschwindigkeitDerFestigkeitsentwicklung} /></div>
             <select aria-label="Erhärtung" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={erhaertungsgeschwindigkeit}
@@ -658,7 +657,7 @@ export default function Hydratation() {
             </select>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zusatzstoff</label><InfoTooltip text="Art des verwendeten Betonzusatzstoffs." /></div>
+            <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zusatzstoff</label><InfoTooltip text={inhalt.werte.artDesVerwendetenBetonzusatzstoffs} /></div>
             <div className="flex gap-2">
               <select aria-label="Zusatzstoff" 
                 className="flex-1 p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
@@ -678,16 +677,16 @@ export default function Hydratation() {
 
         {zusatzstoff !== 'Ohne' && (
           <Slider
-            label="Zusatzstoff Menge"
+            label={inhalt.werte.zusatzstoffMenge}
             min={0} max={150} step={5}
             value={zusatzstoffMenge} unit="kg/m³"
-            info="Menge des Zusatzstoffs. Beeinflusst die Hydratationswärme und die Erhärtungsgeschwindigkeit."
+            info={inhalt.werte.mengeDesZusatzstoffsBeeinflusst}
             onChange={(e) => setZusatzstoffMenge(Number(e.target.value))}
           />
         )}
 
         <Slider
-          label="Zementgehalt (z)"
+          label={inhalt.werte.zementgehaltZ}
           min={250} max={450} step={10}
           value={zement} unit="kg/m³"
           
@@ -695,10 +694,10 @@ export default function Hydratation() {
         />
         
         <Slider
-          label="Umgebungstemperatur (T_c)"
+          label={inhalt.werte.umgebungstemperaturTC}
           min={0} max={40} step={1}
           value={tempC} unit="°C"
-          info="Temperatur der Umgebung. Beeinflusst die Wärmeabfuhr und die Starttemperatur."
+          info={inhalt.werte.temperaturDerUmgebungBeeinflusst}
           onChange={(e) => setTempC(Number(e.target.value))}
         />
 
@@ -706,12 +705,12 @@ export default function Hydratation() {
           label="Frischbetontemperatur"
           min={10} max={35} step={1}
           value={frischbetonTemp} unit="°C"
-          info="Temperatur des Betons beim Einbau. Maßgeblich für die Startbedingungen."
+          info={inhalt.werte.temperaturDesBetonsBeim}
           onChange={(e) => setFrischbetonTemp(Number(e.target.value))}
         />
 
         <Slider
-          label="Bauteildicke (Massigkeit)"
+          label={inhalt.werte.bauteildickeMassigkeit}
           min={0.1} max={3.0} step={0.1}
           value={bauteildicke} unit="m"
           
@@ -719,21 +718,21 @@ export default function Hydratation() {
         />
 
         <Slider
-          label="Erforderliche Ausschalfestigkeit"
+          label={inhalt.werte.erforderlicheAusschalfestigkeit}
           min={30} max={80} step={5}
           value={ausschalFestigkeit} unit="% von f_ck"
-          info="Prozentsatz der charakteristischen Druckfestigkeit, der zum Ausschalen erreicht sein muss."
+          info={inhalt.werte.prozentsatzDerCharakteristischenDruckfes}
           onChange={(e) => setAusschalFestigkeit(Number(e.target.value))}
         />
 
         <div className="flex flex-col gap-2 mt-2">
-          <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Reifeverfahren</label><InfoTooltip text="Berechnungsmodell für das Äquivalentalter." /></div>
+          <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Reifeverfahren</label><InfoTooltip text={inhalt.werte.berechnungsmodellFürDasÄquivalentalter} /></div>
           <select aria-label="Reifeverfahren" 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue text-sm"
             value={reifeVerfahren}
             onChange={(e) => setReifeVerfahren(e.target.value)}
           >
-            {['Arrhenius', 'fib Model Code 2010', 'Saul', 'DIN 1045-3 (Rastrup)', 'de Vree'].map(v => (
+            {['Arrhenius', inhalt.werte.fibModelCode2010, 'Saul', inhalt.werte.din10453Rastrup, 'de Vree'].map(v => (
               <option key={v} value={v}>{v}</option>
             ))}
           </select>
@@ -741,43 +740,38 @@ export default function Hydratation() {
 
         {reifeVerfahren === 'Arrhenius' && (
           <Slider
-            label="Aktivierungsenergie (E_a)"
+            label={inhalt.werte.aktivierungsenergieEA}
             min={30} max={60} step={1}
             value={aktivierungsEnergie} unit="kJ/mol"
-            info="Scheinbare Aktivierungsenergie. Beschreibt die Temperaturabhängigkeit der Reaktionsgeschwindigkeit. Häufig zwischen 30 und 50 kJ/mol."
+            info={inhalt.werte.scheinbareAktivierungsenergieBeschreibtD}
             onChange={(e) => setAktivierungsEnergie(Number(e.target.value))}
           />
         )}
 
         <div className="mt-4 p-4 bg-off-white rounded-xl border border-home-grau/50 text-sm">
-          <h3 className="font-bold text-text-main mb-2">Reifefunktion (Äquivalentalter)</h3>
+          <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.reifefunktionÄquivalentalter} /></h3>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-text-main/80">Nach 28 Tagen real:</span>
+            <span className="text-text-main/80"><MdText text={inhalt.texte.nach28TagenReal} /></span>
             <span className="text-middle-blue font-bold text-lg">{formatDeZahl(te28, 1)} Tage</span>
           </div>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-text-main/80">Ausschalfrist (ca.):</span>
+            <span className="text-text-main/80"><MdText text={inhalt.texte.ausschalfristCa} /></span>
             <span className="text-middle-blue font-bold text-lg">{ausschalTage > 0 ? `${formatDeWert(ausschalTage)} Tage` : '> 28 Tage'}</span>
           </div>
-          <p className="text-text-main/80 text-xs mt-2">
-            Das Äquivalentalter beschreibt die Zeit, die der Beton bei 20°C benötigen würde, 
-            um den gleichen Reifegrad (Festigkeit) zu erreichen wie bei der aktuellen Temperatur im Bauteilkern.
-          </p>
+          <p className="text-text-main/80 text-xs mt-2"><MdText text={inhalt.texte.dasÄquivalentalterBeschreibtDie} /></p>
         </div>
 
         <div className="mt-4 p-4 bg-off-white rounded-xl border border-home-grau/50 text-sm">
-          <h3 className="font-bold text-text-main mb-2">Thermische Rissgefahr</h3>
+          <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.thermischeRissgefahr} /></h3>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-text-main/80">Max. ΔT (Kern - Rand):</span>
+            <span className="text-text-main/80"><MdText text={inhalt.texte.maxTKernRand} /></span>
             <span className="font-bold">{formatDeZahl(maxTempDiff, 1)} K</span>
           </div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Rissgefahr:</span>
             <span className={`font-bold ${rissgefahr === 'Hoch' ? 'text-red-500' : rissgefahr === 'Mittel' ? 'text-yellow-500' : 'text-green-500'}`}>{rissgefahr}</span>
           </div>
-          <p className="text-text-main/80 text-xs mt-2">
-            Ein Temperaturunterschied von mehr als 15 K zwischen Kern und Rand führt häufig zu thermischen Eigenspannungen und Rissen.
-          </p>
+          <p className="text-text-main/80 text-xs mt-2"><MdText text={inhalt.texte.einTemperaturunterschiedVonMehr} /></p>
         </div>
       </div>
 
@@ -789,7 +783,7 @@ export default function Hydratation() {
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2">
                   <Activity className="text-shiraz" size={20} />
-                  <h3 className="text-base font-bold text-text-main">Festigkeits- &amp; Steifigkeitsentwicklung</h3>
+                  <h3 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.festigkeitsSteifigkeitsentwicklung} /></h3>
                 </div>
               </div>
 
@@ -803,7 +797,7 @@ export default function Hydratation() {
                       ? 'bg-shiraz text-white shadow-sm font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
-                  title="Vergleicht Druck-, Zugfestigkeit und E-Modul normiert auf 100 % nach DIN EN 1992-1-1"
+                  title={inhalt.werte.vergleichtDruckZugfestigkeitUnd}
                 >
                   [%] Relativ
                 </button>
@@ -815,7 +809,7 @@ export default function Hydratation() {
                       ? 'bg-shiraz text-white shadow-sm font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
-                  title="Druckfestigkeitsverlauf f_cm(t) in MPa mit Ausschalzielwert"
+                  title={inhalt.werte.druckfestigkeitsverlaufFCmT}
                 >
                   [MPa] Druck
                 </button>
@@ -827,7 +821,7 @@ export default function Hydratation() {
                       ? 'bg-shiraz text-white shadow-sm font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
-                  title="Zugfestigkeitsverlauf f_ctm(t) in MPa nach EC2 Gl. 3.4"
+                  title={inhalt.werte.zugfestigkeitsverlaufFCtmT}
                 >
                   [MPa] Zug
                 </button>
@@ -839,10 +833,8 @@ export default function Hydratation() {
                       ? 'bg-shiraz text-white shadow-sm font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
-                  title="Elastizitätsmodul E_cm(t) in GPa nach EC2 Gl. 3.5"
-                >
-                  [GPa] E-Modul
-                </button>
+                  title={inhalt.werte.elastizitätsmodulECmT}
+                ><MdText text={inhalt.texte.gpaEModul} /></button>
                 <button aria-pressed={festigkeitsModus === 'alle_absolut'}
                   type="button"
                   onClick={() => setFestigkeitsModus('alle_absolut')}
@@ -851,24 +843,22 @@ export default function Hydratation() {
                       ? 'bg-shiraz text-white shadow-sm font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
-                  title="Kombinierte Darstellung aller absoluten Werte (MPa & GPa auf Doppelachse)"
-                >
-                  [Kombi] Absolut
-                </button>
+                  title={inhalt.werte.kombinierteDarstellungAllerAbsoluten}
+                ><MdText text={inhalt.texte.kombiAbsolut} /></button>
               </div>
 
               {/* KPI Chips */}
               <div className="flex flex-wrap items-center gap-1.5 mb-3 text-[11px] font-mono">
-                <span className="bg-red-50 text-red-900 border border-red-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert Druckfestigkeit f_cm">
+                <span className="bg-red-50 text-red-900 border border-red-200 px-2 py-0.5 rounded-md font-bold" title={inhalt.werte.t28TageMittelwertDruckfestigkeit}>
                   f_cm,28 = {formatDeZahl(fcm28, 1)} MPa
                 </span>
-                <span className="bg-blue-50 text-blue-900 border border-blue-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert zentrische Zugfestigkeit f_ctm">
+                <span className="bg-blue-50 text-blue-900 border border-blue-200 px-2 py-0.5 rounded-md font-bold" title={inhalt.werte.t28TageMittelwertZentrische}>
                   f_ctm,28 = {formatDeZahl(fctm28, 2)} MPa
                 </span>
-                <span className="bg-emerald-50 text-emerald-900 border border-emerald-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert Elastizitätsmodul E_cm">
+                <span className="bg-emerald-50 text-emerald-900 border border-emerald-200 px-2 py-0.5 rounded-md font-bold" title={inhalt.werte.t28TageMittelwertElastizitätsmodul}>
                   E_cm,28 = {formatDeZahl(Ecm28, 1)} GPa
                 </span>
-                <span className="bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-md font-semibold" title="Erreichte Ausschalfrist">
+                <span className="bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-md font-semibold" title={inhalt.werte.erreichteAusschalfrist}>
                   Ausschalzeit: {ausschalTage > 0 ? `${formatDeZahl(ausschalTage, 1)} d` : '> 28 d'}
                 </span>
               </div>
@@ -884,16 +874,14 @@ export default function Hydratation() {
             {/* Fachtechnischer Didaktik-Hinweis */}
             <div className="mt-3 pt-2.5 border-t border-home-grau/20 text-[11px] text-text-main/80 flex items-start gap-1.5 leading-relaxed bg-off-white/80 p-2.5 rounded-xl border border-home-grau/30">
               <Info className="text-shiraz shrink-0 mt-0.5" size={14} />
-              <span>
-                <strong>Kinetik nach EC2 (DIN EN 1992-1-1):</strong> Der <strong>E-Modul</strong> eilt stark voraus und erreicht nach 2 Tagen bereits <strong>{formatDeZahl(E_2d_rel, 0)} % ({formatDeZahl(E_2d_val, 1)} GPa)</strong>, während die <strong>Druckfestigkeit</strong> erst bei <strong>{formatDeZahl(fc_2d_rel, 0)} % ({formatDeZahl(fc_2d_val, 1)} MPa)</strong> liegt. Die <strong>Zugfestigkeit</strong> <InlineMath math="f_{ctm}" /> folgt <InlineMath math="\beta_{cc}^{1{,}0}" /> ({formatDeZahl(fct_2d_val, 2)} MPa bei 2d).
-              </span>
+              <span><MdText text={inhalt.texte.kinetikNachEc2Din} /><strong>{formatDeZahl(E_2d_rel, 0)} % ({formatDeZahl(E_2d_val, 1)} GPa)</strong><MdText text={inhalt.texte.währendDieDruckfestigkeitErst} /><strong>{formatDeZahl(fc_2d_rel, 0)} % ({formatDeZahl(fc_2d_val, 1)} MPa)</strong><MdText text={inhalt.texte.liegtDieZugfestigkeitF} />{formatDeZahl(fct_2d_val, 2)}<MdText text={inhalt.texte.mpaBei2d} /></span>
             </div>
 
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Festigkeit nach 2 Tagen mit den aktuellen Eingaben"
+              title={inhalt.werte.ihrRechenwegFestigkeitNach}
               zielGleichung={`f_{cm}(2\\,\\text{d}) = \\beta_{cc}(t_e) \\cdot f_{cm} = ${formatDeTeX(fc_2d_val, 1)}\\,\\text{N/mm}^2`}
-              normQuelle="DIN EN 1992-1-1, 3.1.2 und 3.1.3; Reifefunktion nach gewähltem Verfahren"
+              normQuelle={inhalt.werte.dinEn19921}
               schritte={[
                 {
                   titel: '28-Tage-Kennwerte',
@@ -901,18 +889,18 @@ export default function Hydratation() {
                   formel: `f_{cm} = ${formatDeTeX(fckRechen, 1)} + 8 = ${formatDeTeX(fcm28, 1)};\\quad f_{ctm} = 0{,}30 \\cdot ${formatDeTeX(fckRechen, 1)}^{2/3} = ${formatDeTeX(fctm28, 2)}\\,\\text{N/mm}^2;\\quad E_{cm} = 22 \\cdot \\left(\\tfrac{${formatDeTeX(fcm28, 1)}}{10}\\right)^{0{,}3} = ${formatDeTeX(Ecm28, 1)}\\,\\text{GPa}`,
                 },
                 {
-                  titel: 'Wirksames Betonalter',
+                  titel: inhalt.werte.wirksamesBetonalter,
                   erklaerung: `Reifeverfahren „${reifeVerfahren}“: Die Kerntemperatur wird in Zeitschritten von 0,1 d über einen Temperaturfaktor k_T aufsummiert.`,
                   formel: `t_e(2\\,\\text{d}) = \\sum k_T(T_{Kern}) \\cdot \\Delta t = ${formatDeTeX(te2d, 2)}\\,\\text{d}`,
                 },
                 {
-                  titel: 'Zeitbeiwert der Festigkeit',
+                  titel: inhalt.werte.zeitbeiwertDerFestigkeit,
                   erklaerung: `Zementbeiwert s = ${formatDeZahl(sBeiwert, 2)} (Festigkeitsklasse und Erhärtungsgeschwindigkeit).`,
                   formel: `\\beta_{cc}(t_e) = \\exp\\left[${formatDeTeX(sBeiwert, 2)} \\cdot \\left(1 - \\sqrt{\\tfrac{28}{${formatDeTeX(te2d, 2)}}}\\right)\\right] = ${formatDeTeX(beta2d, 3)}`,
                 },
                 {
-                  titel: 'Kennwerte nach 2 Tagen',
-                  erklaerung: 'Zugfestigkeit mit β_cc^1,0 (t < 28 d), E-Modul mit β_cc^0,3.',
+                  titel: inhalt.werte.kennwerteNach2Tagen,
+                  erklaerung: inhalt.werte.zugfestigkeitMitCc1,
                   formel: `f_{cm} = ${formatDeTeX(beta2d, 3)} \\cdot ${formatDeTeX(fcm28, 1)} = ${formatDeTeX(fc_2d_val, 1)};\\quad f_{ctm} = ${formatDeTeX(beta2d, 3)} \\cdot ${formatDeTeX(fctm28, 2)} = ${formatDeTeX(fct_2d_val, 2)}\\,\\text{N/mm}^2;\\quad E_{cm} = ${formatDeTeX(beta2d, 3)}^{0{,}3} \\cdot ${formatDeTeX(Ecm28, 1)} = ${formatDeTeX(E_2d_val, 1)}\\,\\text{GPa}`,
                 },
                 {
@@ -939,7 +927,7 @@ export default function Hydratation() {
                     y: {
                       min: 0,
                       max: 100,
-                      title: { display: true, text: 'Temperatur (°C)', font: { family: 'Work Sans', weight: 'bold' as const } }
+                      title: { display: true, text: inhalt.werte.temperaturC, font: { family: 'Work Sans', weight: 'bold' as const } }
                     }
                   }
                 }} 
@@ -950,7 +938,7 @@ export default function Hydratation() {
 
         {/* Schematische Darstellung */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-          <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Temperaturverteilung im Bauteil</h3>
+          <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungTemperaturverteil} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
             <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Bauteil (Querschnitt) */}

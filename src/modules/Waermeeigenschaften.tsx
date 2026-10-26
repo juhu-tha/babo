@@ -17,6 +17,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import inhalt from '@/content/waermeeigenschaften/Waermeeigenschaften.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -51,19 +53,7 @@ export default function Waermeeigenschaften() {
   const [baseThickness, setBaseThickness] = useState(24); // cm
   const [baseLambda, setBaseLambda] = useState(1.0); // W/(mK)
 
-  const daemmMaterials = useMemo(() => [
-    { name: 'VIP', lambda: 0.007, color: '#64748b', desc: 'Vakuumisolationspaneel, extrem dünn' },
-    { name: 'Aerogel', lambda: 0.015, color: '#64748b', desc: 'Hochleistungsdämmstoff, sehr teuer' },
-    { name: 'PUR / PIR', lambda: 0.025, color: '#475569', desc: 'Polyurethan, sehr gute Dämmwirkung' },
-    { name: 'EPS / XPS', lambda: 0.035, color: '#475569', desc: 'Polystyrol-Hartschaum (expandiert bzw. extrudiert), Standard im Hochbau; XPS auch als Perimeterdämmung' },
-    { name: 'Steinwolle', lambda: 0.035, color: '#A3113E', desc: 'Nicht brennbar, guter Schallschutz, formstabil' },
-    { name: 'Glaswolle', lambda: 0.035, color: '#94a3b8', desc: 'Nicht brennbar, leicht, flexibel' },
-    { name: 'Mineralwolle', lambda: 0.040, color: '#64748b', desc: 'Sammelbegriff für Stein- und Glaswolle; Bemessungswerte je nach Produkt etwa 0,032 bis 0,040' },
-    { name: 'Holzfaser', lambda: 0.040, color: '#475569', desc: 'Ökologisch, sehr guter sommerlicher Wärmeschutz' },
-    { name: 'Zellulose', lambda: 0.040, color: '#475569', desc: 'Einblasdämmung, Recyclingmaterial, diffusionsoffen' },
-    { name: 'Schaumglas', lambda: 0.040, color: '#64748b', desc: 'Druckfest, wasser- und dampfdicht' },
-    { name: 'Hanffaser', lambda: 0.040, color: '#64748b', desc: 'Nachwachsend, feuchtigkeitsregulierend' },
-    { name: 'Schafwolle', lambda: 0.040, color: '#94a3b8', desc: 'Naturfaser, nachwachsend; Formaldehyd-Bindung laut Herstellern, Mottenschutz erforderlich' }], []);
+  const daemmMaterials = useMemo(() => inhalt.daten.Waermeeigenschaften, []);
 
   // Update sliders when preset changes
   useEffect(() => {
@@ -124,7 +114,7 @@ export default function Waermeeigenschaften() {
         labels: chartLabels,
         datasets: [
           {
-            label: 'Wärmeeindringfähigkeit b [J/(m²K√s)]',
+            label: inhalt.werte.wärmeeindringfähigkeitBJM,
             data: chartDataB,
             backgroundColor: chartLabels.map(l => l === selectedPreset || (l === 'Aktuell' && selectedPreset === 'Benutzerdefiniert') ? '#A3113E' : '#475569'),
             borderRadius: 4,
@@ -154,7 +144,7 @@ export default function Waermeeigenschaften() {
         labels: daemmMaterials.map(m => m.name),
         datasets: [
           {
-            label: 'Erforderliche Dämmdicke (cm)',
+            label: inhalt.werte.erforderlicheDämmdickeCm,
             data: thicknesses,
             backgroundColor: daemmMaterials.map(m => m.color),
             borderRadius: 4,
@@ -167,10 +157,10 @@ export default function Waermeeigenschaften() {
   return (
     <div className="space-y-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Thermometer className="text-shiraz" /> Thermische Materialeigenschaften &amp; Dämmstoffe</h2>
+        <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Thermometer className="text-shiraz" /><MdText text={inhalt.texte.thermischeMaterialeigenschaftenDämmstoff} /></h2>
         <p className="text-text-main/80 mb-6">
           Dieses Modul veranschaulicht das Zusammenspiel von <strong>Wärmeleitfähigkeit</strong>, <strong>Dichte</strong> und 
-          <strong> spezifischer Wärmekapazität</strong>. Daraus ergeben sich abgeleitete Größen wie die 
+          <strong><MdText text={inhalt.texte.spezifischerWärmekapazität} /></strong>. Daraus ergeben sich abgeleitete Größen wie die 
           <strong> Wärmespeicherkapazität</strong> (wichtig für den sommerlichen Wärmeschutz), die 
           <strong> Temperaturleitfähigkeit</strong> (wie schnell ändert sich die Temperatur im Bauteil?) und die 
           <strong> Wärmeeindringfähigkeit</strong> (wie fühlt sich das Material bei Berührung an?). 
@@ -213,7 +203,7 @@ export default function Waermeeigenschaften() {
                 unit="kg/m³"
               />
               <Slider
-                label={<FormulaText text="Spez. Wärmekapazität (c)" />}
+                label={<FormulaText text={inhalt.werte.spezWärmekapazitätC} />}
                 value={c}
                 min={100}
                 max={4500}
@@ -222,7 +212,7 @@ export default function Waermeeigenschaften() {
                 unit="J/(kgK)"
               />
               <Slider
-                label={<FormulaText text="Ziel-U-Wert (U_{req})" />}
+                label={<FormulaText text={inhalt.werte.zielUWertU} />}
                 value={targetU}
                 min={0.10}
                 max={1.0}
@@ -233,9 +223,9 @@ export default function Waermeeigenschaften() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/20">
-              <h3 className="font-semibold mb-4 text-text-main">Bestandswand (Tragschicht)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.bestandswandTragschicht} /></h3>
               <Slider
-                label="Dicke der Tragschicht"
+                label={inhalt.werte.dickeDerTragschicht}
                 value={baseThickness}
                 min={10}max={50}step={1}
                 onChange={(e) => setBaseThickness(Number(e.target.value))}
@@ -251,22 +241,22 @@ export default function Waermeeigenschaften() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/20">
-              <h3 className="font-semibold mb-4 text-text-main">Abgeleitete thermische Eigenschaften</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.abgeleiteteThermischeEigenschaften} /></h3>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
-                  <div className="text-xs text-text-main/70 mb-1">Wärmespeicherfähigkeit (C)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.wärmespeicherfähigkeitC} /></div>
                   <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.capVolMJ, 2)} <span className="text-xs font-normal">MJ/(m³K)</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
-                  <div className="text-xs text-text-main/70 mb-1">Temperaturleitfähigkeit (a)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.temperaturleitfähigkeitA} /></div>
                   <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.a_mm2_s, 2)} <span className="text-xs font-normal">mm²/s</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
-                  <div className="text-xs text-text-main/70 mb-1">Wärmeeindringfähigkeit (b)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.wärmeeindringfähigkeitB} /></div>
                   <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.b, 0)} <span className="text-xs font-normal">J/(m²K√s)</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
-                  <div className="text-xs text-text-main/70 mb-1">Kontakttemperatur (Haut)</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.kontakttemperaturHaut} /></div>
                   <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.T_contact, 1)} <span className="text-xs font-normal">°C</span></div>
                 </div>
               </div>
@@ -277,7 +267,7 @@ export default function Waermeeigenschaften() {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { title: { display: true, text: 'b [J/(m²K√s)]' } } }
+                    scales: { y: { title: { display: true, text: inhalt.werte.bJMK } } }
                   }} 
                 />
               </div>
@@ -286,12 +276,10 @@ export default function Waermeeigenschaften() {
 
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Erforderliche Dämmdicke</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.erforderlicheDämmdicke} /></h3>
               
               {daemmResults.rInsReq <= 0 ? (
-                <div className="p-4 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200">
-                  Die Bestandswand erreicht den Ziel-U-Wert bereits ohne zusätzliche Dämmung!
-                </div>
+                <div className="p-4 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200"><MdText text={inhalt.texte.dieBestandswandErreichtDen} /></div>
               ) : (
                 <div className="h-72">
                   <Bar 
@@ -346,75 +334,34 @@ export default function Waermeeigenschaften() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Warum fühlt sich Beton kälter an als Holz?"
+        title={inhalt.werte.beispiel1WarumFühlt}
         zielGleichung="\vartheta_K = \frac{b_H \cdot \vartheta_H + b_M \cdot \vartheta_M}{b_H + b_M}"
-        schritte={[
-          { titel: 'Wärmeeindringfähigkeit Beton', erklaerung: 'λ = 2,0 W/(mK), ρ = 2400 kg/m³, c = 1000 J/(kgK):', formel: 'b_{Beton} = \\sqrt{2{,}0 \\cdot 2\\,400 \\cdot 1\\,000} = 2\\,191\\,\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})' },
-          { titel: 'Wärmeeindringfähigkeit Fichte', erklaerung: 'λ = 0,13 W/(mK), ρ = 500 kg/m³, c = 1600 J/(kgK):', formel: 'b_{Holz} = \\sqrt{0{,}13 \\cdot 500 \\cdot 1\\,600} = 322\\,\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})' },
-          { titel: 'Kontakttemperatur', erklaerung: 'Haut 33 °C (b ≈ 1100), Material 20 °C:', formel: '\\vartheta_{Beton} = \\frac{1\\,100 \\cdot 33 + 2\\,191 \\cdot 20}{3\\,291} = 24{,}3\\,^\\circ\\text{C}, \\quad \\vartheta_{Holz} = \\frac{1\\,100 \\cdot 33 + 322 \\cdot 20}{1\\,422} = 30{,}1\\,^\\circ\\text{C}' }
-        ]}
-        ergebnisHinweis="Beide Oberflächen haben 20 °C, doch Beton entzieht der Haut schneller Wärme. Für Fußböden ist deshalb neben der Oberflächentemperatur die Wärmeeindringfähigkeit maßgebend (Fußwärme)."
-        normQuelle="Bemessungswerte nach DIN EN ISO 10456:2010-05 / DIN 4108-4:2020-11"
+        schritte={inhalt.daten["Waermeeigenschaften.schritte"]}
+        ergebnisHinweis={inhalt.werte.beideOberflächenHaben20}
+        normQuelle={inhalt.werte.bemessungswerteNachDinEn}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Dämmdicke für die nachträgliche Außendämmung einer Bestandswand"
+        title={inhalt.werte.beispiel2DämmdickeFür}
         zielGleichung="d_D = \lambda_D \cdot \left(\frac{1}{U_{Ziel}} - R_{si} - R_{Wand} - R_{se}\right)"
-        schritte={[
-          { titel: 'Anforderung', erklaerung: 'Außendämmung einer Außenwand im Bestand: Höchstwert nach GModG, Anlage 7, Zeile 1b.', formel: 'U_{Ziel} = 0{,}24\\,\\text{W/(m}^2\\text{K)} \\Rightarrow R_T = \\frac{1}{0{,}24} = 4{,}17\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'Bestand', erklaerung: 'Wand 24 cm mit λ = 1,0 W/(mK); Übergangswiderstände 0,13 + 0,04:', formel: 'R_{Wand} = \\frac{0{,}24}{1{,}0} = 0{,}24, \\quad R_{D,erf} = 4{,}17 - 0{,}17 - 0{,}24 = 3{,}76\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'Dämmdicken', erklaerung: 'Je nach Bemessungswert der Wärmeleitfähigkeit:', formel: 'd_{EPS\\,035} = 13{,}1\\,\\text{cm}, \\quad d_{Holzfaser\\,040} = 15{,}0\\,\\text{cm}, \\quad d_{PIR\\,025} = 9{,}4\\,\\text{cm}' }
-        ]}
-        ergebnisHinweis="Gewählt wird die nächste Lieferdicke (z. B. 14 cm EPS bzw. 16 cm Holzfaser). Wärmebrücken, Dübel und Fensteranschlüsse sind gesondert zu bewerten."
-        normQuelle="DIN EN ISO 6946:2018-03; GModG Anlage 7 (Lesefassung Stand 29.07.2026)"
+        schritte={inhalt.daten["Waermeeigenschaften.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.gewähltWirdDieNächste}
+        normQuelle={inhalt.werte.dinEnIso6946}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="waermeeigenschaften" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Kennwerte, Dämmdicken und Normausgaben geprüft, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' },
           { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
-          { title: 'Spezifische Wärmekapazität', url: 'https://de.wikipedia.org/wiki/Spezifische_W%C3%A4rmekapazit%C3%A4t' },
+          { title: inhalt.werte.spezifischeWärmekapazität, url: 'https://de.wikipedia.org/wiki/Spezifische_W%C3%A4rmekapazit%C3%A4t' },
           { title: 'Temperaturleitfähigkeit', url: 'https://de.wikipedia.org/wiki/Temperaturleitf%C3%A4higkeit' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 10456:2010-05 (Baustoffe und Bauprodukte – Wärme- und feuchtetechnische Eigenschaften, tabellierte Bemessungswerte)' },
-          { title: 'DIN 4108-4:2020-11 (Wärmeschutz und Energie-Einsparung in Gebäuden – Wärme- und feuchteschutztechnische Bemessungswerte)' },
-          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 Gebäudeenergiegesetz GEG) – Anlage 7: Höchstwerte der U-Werte bei Änderung', url: 'https://www.gesetze-im-internet.de/geg/' }
-        ]}
-        literatur={[
-          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
-          'Bauphysik-Kalender. Berlin: Ernst & Sohn (jährlich)'
-        ]}
-        formeln={[
-          {
-            erklaerung: "Volumenbezogene Wärmespeicherkapazität",
-            formel: "C = \\rho \\cdot c \\quad [\\text{J/(m}^3\\text{K)}]"
-          },
-          {
-            erklaerung: "Temperaturleitfähigkeit",
-            formel: "a = \\frac{\\lambda}{\\rho \\cdot c} \\quad [\\text{m}^2\\text{/s}]"
-          },
-          {
-            erklaerung: "Wärmeeindringfähigkeit",
-            formel: "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})]"
-          },
-          {
-            erklaerung: "Kontakttemperatur zweier halbunendlicher Körper (Haut: b ≈ 1100 J/(m²K√s) als Lehrwert)",
-            formel: "T_m = \\frac{b_1 \\cdot T_1 + b_2 \\cdot T_2}{b_1 + b_2}"
-          },
-          {
-            erklaerung: "Wärmedurchlasswiderstand",
-            formel: "R = \\frac{d}{\\lambda} \\quad [\\text{m}^2\\text{K/W}]"
-          },
-          {
-            erklaerung: "Wärmedurchgangskoeffizient (U-Wert) nach DIN EN ISO 6946; Wand bei horizontalem Wärmestrom: R_si = 0,13, R_se = 0,04 m²K/W",
-            formel: "U = \\frac{1}{R_{si} + \\sum R_i + R_{se}} \\quad [\\text{W/(m}^2\\text{K)}]"
-          }
-        ]}
+        regelwerke={inhalt.daten["Waermeeigenschaften.regelwerke"]}
+        literatur={inhalt.daten["Waermeeigenschaften.literatur"]}
+        formeln={inhalt.daten["Waermeeigenschaften.formeln"]}
       />
     </div>
   );

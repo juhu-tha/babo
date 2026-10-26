@@ -1,0 +1,181 @@
+{
+  "texte": {
+    "interaktiveMaterialanalyse": "Interaktive Materialanalyse",
+    "bewegenSieDieMaus": "Bewegen Sie die Maus über die markierten Hotspots der technischen Skizze, um die physikalischen, mechanischen und chemischen Eigenschaften einzublenden.",
+    "betonwarenBauprodukteTiefbau": " Betonwaren (Bauprodukte & Tiefbau)",
+    "geprägtDurchUnbewehrteProfile": "Geprägt durch unbewehrte Profile, hohe Stückproduktion im erdfeuchten Rüttel-Press-Druckverfahren sowie optimierte Frost-Tausalz-Dauerhaftigkeiten gehören Betonwaren zu den am stärksten automatisierten Standard-Baukomponenten des modernen Stadt- und Kanalkonstrukts.",
+    "basiswissenMaterialanalyse": " Basiswissen & Materialanalyse",
+    "imGegensatzZuGroßformatigen": "Im Gegensatz zu großformatigen, hochgradig konstruktiv bewehrten Betonfertigteilen zeichnet sich die Warengruppe der **Betonwaren** durch eine massenweise, serielle Fertigung meist unbewehrter Produkte aus. Hierzu zählen Pflastersteine, Gehwegplatten, Straßenborde sowie Rohr- und Schachtsysteme des Abwasserwesens.",
+    "dieWesentlichenFertigungstechnischenErru": "Die wesentlichen fertigungstechnischen Errungenschaften der Betonwarenindustrie ruhen auf dem physikalischen Prinzip der **Sofortentschalung erdfeuchter Gemische** und dem zweischichtigen Werkstoffaufbau durch den formgetreuen Einsatz von **Vorsatzbeton**.",
+    "interaktivesBetonwarenZertifizierungsstu": " Interaktives Betonwaren-Zertifizierungsstudio",
+    "wählenSieEineBauteilskizze": "Wählen Sie eine Bauteilskizze aus, um den Werkstoffaufbau, Fertigungszonen und Anschlussdetails zu untersuchen.",
+    "t1PflastersteinVorsatz": " 1. Pflasterstein & Vorsatz",
+    "t2BetonrohrMuffung": " 2. Betonrohr & Muffung",
+    "interaktivBewegeDenMauszeiger": " Interaktiv – Bewege den Mauszeiger über Elemente.",
+    "funktionaleDetailauswahl": "Funktionale Detailauswahl:",
+    "erdfeuchteThixotropie": "Erdfeuchte Thixotropie",
+    "sofortentschalungGrünstandsfestigkeit": "Sofortentschalung (Grünstandsfestigkeit)",
+    "bskZementsäurekorrosion": "BSK (Zementsäurekorrosion)",
+    "regelwerkskonformeParameter": " Regelwerkskonforme Parameter",
+    "derMechanischVerpressteSofortentschalte": "Der mechanisch verpresste, sofortentschalte Betonwarenkörper ist bei richtiger Verlegung sehr dauerhaft.",
+    "t50MpaKlasse": "≥ 5,0 MPa (Klasse 3, Kennz. U)",
+    "xf410Kg": "XF4 (≤ 1,0 kg/m² Abwitterung)",
+    "betonUndStahlbetonrohreNach": "Beton- und Stahlbetonrohre nach DIN EN 1916 tragen statisch schwere Erdlasten und bleiben durch gedichtete Muffen bei kleinen Setzungen beweglich.",
+    "dinEn1916Din": "DIN EN 1916 / DIN V 1201",
+    "prüfdruck05Bar": "Prüfdruck ≥ 0,5 bar (Kanal)",
+    "tragfähigkeitsklasseFn": "Tragfähigkeitsklasse (Fn)",
+    "innentemperungSrZement": "Innentemperung / SR-Zement",
+    "detaillierteWerkstoffUndProduktionstheor": "Detaillierte Werkstoff- und Produktionstheorie",
+    "vorsatzbetonEdelvorsatz": "Vorsatzbeton (Edelvorsatz)",
+    "pflastersteineWerdenFastAusnahmslos": "Pflastersteine werden fast ausnahmslos in **Zweischicht-Bauweise** gefertigt. Vorsatzbeton bildet die bewitterte Sichtseite. Er besteht aus feinen Edel-Hartgesteinskörnungen (Körnung meist 0/2 bis 0/4 aus Granit, Basalt, Diabas oder Quarzsand).",
+    "tausalzResistenzHöhererZementgehalt": "**Tausalz-Resistenz:** Höherer Zementgehalt und optimiertes Porensystem schützen wirksam vor dem winterlichen Frostangriff.",
+    "abriebwiderstandEdelHartgesteineVerhinde": "**Abriebwiderstand:** Edel-Hartgesteine verhindern ein \"Glattpolieren\" des Gehwegkörpers über Jahrzehnte.",
+    "wasserdichtheitOftWerkseitigDurch": "**Wasserdichtheit:** Oft werkseitig durch Zugabe von flüssigen Hydrophobierungsmitteln im Mischer vergütet (Core-Hydrophobierung).",
+    "schütztDieFarbpigmenteMeist": "Schützt die Farbpigmente (meist anorganische Metalloxide wie Fe₂O₃ oder Cr₂O₃) vor saurem Regen.",
+    "sofortentschalungRüttelPress": "Sofortentschalung (Rüttel-Press)",
+    "derSchlüsselZurRasanten": "Der Schlüssel zur rasanten Taktzeit (wenige Sekunden pro Palette) ist die **Sofortentschalung im erdfeuchten Frischzustand**. Es wird kein teures Gussformensystem je Stein benötigt.",
+    "konsistenzbereichErdfeuchtDerWasserzemen": "**Konsistenzbereich erdfeucht:** Der Wasserzementwert wird sehr niedrig eingestellt (",
+    "derFrischbetonVerhältSich": "). Der Frischbeton verhält sich wie leicht feuchter Sand.",
+    "rüttelpressVerdichtungDerBeton": "**Rüttelpress-Verdichtung:** Der Beton wird in die Gussform gefüllt. Ein Rütteltisch versetzt das System in Schwingung, wodurch die Körner dicht gleiten. Gleichzeitig presst ein Hydraulikschuh (Auflast) mechanisch von oben.",
+    "grünstandsfestigkeitNachBeendigungDes": "**Grünstandsfestigkeit:** Nach Beendigung des Rüttelns bewirkt die innere Reibung der dichten Gesteinskörnung, dass die Steinlinge sofort standsicher sind. Die Stahlform wird nach oben gezogen („Sofortentschalung“).",
+    "taktzyklusEineFormFertigt": "Taktzyklus: Eine Form fertigt je Takt ein ganzes Brett voller Steine in wenigen Sekunden.",
+    "rohreSchachtsysteme": "Rohre & Schachtsysteme",
+    "betonrohreBildenDieUnterirdische": "Betonrohre bilden die unterirdische Infrastruktur der Entwässerung (DIN EN 1916). Sie müssen Erd- und Verkehrslasten aufnehmen.",
+    "falzmuffenverbindungDieSpitzendenGleiten": "**Falzmuffenverbindung:** Die Spitzenden gleiten flexibel in die Glockenmuffen des Nachbarrohres. Sichert elastische Winkelbeweglichkeit bei Geländesetzungen.",
+    "dichtungstechnikDieStandardisierteKeilgl": "**Dichtungstechnik:** Die standardisierte \\*Keilgleitdichtung\\* (aus Synthesekautschuk) dichtet das Gelenk dauerhaft gegen einsickerndes Grundwasser und austretendes Schmutzwasser (Exfiltration) ab.",
+    "säureangriffBskBakteriellerAbbau": "**Säureangriff (BSK):** Bakterieller Abbau von organischem Abwasser setzt Schwefelwasserstoff (H₂S) frei. Bakterien oxidieren ihn an der Rohrdecke zu Schwefelsäure, die den Zementstein auflöst.",
+    "lösungFaulprozesseVermeidenSäurewidersta": "Lösung: Faulprozesse vermeiden, säurewiderstandsfähiger Beton oder Auskleidung – SR-Zement allein genügt nicht.",
+    "qualitätskontrolleUndSchadensbilderBei": " Qualitätskontrolle und Schadensbilder bei Betonwaren",
+    "phänomenPrüfung": "Phänomen / Prüfung",
+    "ursacheImWerkBaustelle": "Ursache im Werk/Baustelle",
+    "hintergrundVermeidung": "Hintergrund & Vermeidung",
+    "ausblühungenKalkschleier": "Ausblühungen (Kalkschleier)",
+    "aufsteigenVonFreiemCa": "Aufsteigen von freiem Ca(OH)₂ an die bewitterte Oberfläche, Reaktion mit H₂CO₃ zu schwerlöslichem CaCO₃.",
+    "niedrigeZementhydratationImFrühen": "Niedrige Zementhydratation im frühen Alter begünstigt diesen Effekt. Vermeidung durch dichte Gefügepackung, puzzolanische Zusatzstoffe (Trass) oder Hydrophobierungen.",
+    "kantenabplatzungenNachPflasterung": "Kantenabplatzungen nach Pflasterung",
+    "fehlendeOderZuEnge": "Fehlende oder zu enge Fuge bei der Verlegung im Sand/Splittbett. Knirsch-Verlegung führt zu Scherdruckspitzen.",
+    "betonflächenLeitenSpannungenBei": "Betonflächen leiten Spannungen bei Ausdehnung ab. Fugenbreite 3 bis 5 mm (DIN 18318 / ZTV Wegebau). Pflasterabstandhalter weisen darauf hin, ersetzen die Fuge jedoch nicht.",
+    "spaltzugprüfungDinEn1338": "Spaltzugprüfung (DIN EN 1338)",
+    "spaltzugprüfungNachDinEn": "Spaltzugprüfung nach DIN EN 1338 entlang der Längsachse des Steins.",
+    "mittelwert36N": "Mittelwert ≥ 3,6 N/mm², Einzelwert ≥ 2,9 N/mm², Bruchlast je Länge ≥ 250 N/mm.",
+    "biogeneSchwefelsäurekorrosion": "Biogene Schwefelsäurekorrosion",
+    "stagnierendesAbwasserInTeilgefüllten": "Stagnierendes Abwasser in teilgefüllten Abwasserrohren, H₂S Oxidation im Gasraum oberhalb der Wasserlinie.",
+    "esHandeltSichUm": "Es handelt sich um einen Säureangriff (pH bis < 2), nicht um einen Sulfattreiben-Angriff – SR-Zemente allein helfen daher nicht. Maßnahmen: Vermeidung von H₂S (Belüftung, kurze Aufenthaltszeiten), dichter säurewiderstandsfähiger Beton (niedriger w/z-Wert, ggf. Calciumaluminatzement) sowie Schutzauskleidungen (Epoxidharz-Lining, HDPE-Inliner)."
+  },
+  "werte": {
+    "anwendungsbeispielSpaltzugfestigkeitEine": "Anwendungsbeispiel: Spaltzugfestigkeit eines Pflastersteins",
+    "dinEn1338Anhang": "DIN EN 1338, Anhang F (k = Dickenfaktor, für t = 80 mm: k = 1,0)",
+    "derSteinVerfehltDen": "Der Stein verfehlt den Einzelwert knapp – die Serie ist mit Mittelwert (≥ 3,6) und allen Einzelwerten zu bewerten.",
+    "pflasterBodenbelag": "Pflaster (Bodenbelag)"
+  },
+  "daten": {
+    "BpBetonwaren.studioData": {
+      "paving-vorsatz": {
+        "title": "Vorsatzbeton (Edelvorsatzschicht)",
+        "description": "Eine einige Millimeter dicke Oberflächenschicht aus zementreichem Feinbeton (häufig CEM I) mit Hartgesteinskörnungen (Granit, Quarz, Basalt) bis ca. 4 mm. Sichert Abriebwiderstand, Frost-Tausalz-Widerstand und eine dauerhafte Farbe (Eisenoxidpigmente).",
+        "tag": "Oberflächenschutz & Ästhetik"
+      },
+      "paving-kern": {
+        "title": "Kernbeton (Hinterbeton / Tragschicht)",
+        "description": "Bildet den tragenden, dicken Unterkörper des Pflasters. Besteht aus wirtschaftlichen, gröberen Gesteinskörnungen (bis 8 oder 11 mm) und hat einen etwas geringeren Zementanteil als der Vorsatz. Sichert die Stoß- und Auflastdämpfung sowie den lückenlosen Verbund zur Tragschicht auf der Baustelle.",
+        "tag": "Tragfähigkeit & Massenoptimierung"
+      },
+      "paving-interface": {
+        "title": "Monolithischer Verbund (Grenzschicht)",
+        "description": "Trotz zweier separater Einbringungsprozesse im Fertiger (Doppelfüllwagen im Werk) härtet der Stein vollfugig und monolithisch aus. Es darf im Bauteilleben niemals zum Abscheren oder Abblättern des Vorsatzes kommen! Dies wird durch das Nass-in-Nass-Verpressen erzielt.",
+        "tag": "Bauteilsicherheit"
+      },
+      "paving-compact": {
+        "title": "Erdfeuchte Konsistenz & Grünfestigkeit",
+        "description": "Zentralschlüssel der Fertigung: Der Beton hat einen w/z-Wert von nur ca. 0.30 bis 0.38 (sehr trocken / erdfeucht). Bei Vibration verflüssigt sich die dichte Packung kurzzeitig (thixotroper Effekt) und verkeilt sich unter hohem Rütteldruck. Dies schafft hohe Kapillarkohäsion und die so genannte „Grünfestigkeit“.",
+        "tag": "Verarbeitungstechnik"
+      },
+      "paving-demold": {
+        "title": "Sofortentschalung im Taktverfahren",
+        "description": "Die frisch gepressten, noch nassen Steine haben sofort eine so hohe Kantenstabilität („Grünstand“), dass die stählerne Hohlform maschinell nach oben abgezogen wird. Der formstabile „grüne“ Betonling verbleibt ohne Schutzrahmen auf dem Fertigungsbrett und fährt direkt in die Klimakammer zur Hydratation.",
+        "tag": "Produktions-Wirtschaftlichkeit"
+      },
+      "pipe-wall": {
+        "title": "Hochfester Rohrkörper (Beton/Stahlbeton)",
+        "description": "Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie sind dicht und tragen Erd- und Verkehrslasten (z. B. SLW 60) nach statischer Berechnung (z. B. ATV-DVWK-A 127).",
+        "tag": "Schwerlast-Festigkeit"
+      },
+      "pipe-spigot": {
+        "title": "Spitzende (Pointy Tip)",
+        "description": "Das angeschrägte Ende des Rohres, das in die nachfolgende Glockenmuffe eingeschoben wird. Es besitzt eine exakte Passmaße mit einer profilierten Nut zur Aufnahme der Gleitdichtung.",
+        "tag": "Präzisions-Knoten"
+      },
+      "pipe-socket": {
+        "title": "Glockenmuffe (Socket Bell)",
+        "description": "Das aufgeweitete Rohrende, das die Lasten übertragen und Platz für die Dichtung bieten muss. Einbauseitig fängt die Muffe die vertikalen Scherkräfte durch umliegende Bodensetzungen ab.",
+        "tag": "Geometrische Führung"
+      },
+      "pipe-seal": {
+        "title": "Keilgleitdichtung (Integrierte Elastomerdichtung)",
+        "description": "Ein hochpräziser Dichtring aus EPDM oder SBR. Beim Zusammenschieben der Rohre wird die Dichtung elastisch komprimiert und gleitet spaltfrei in das Gelenk. Sichert zuverlässig gegen Exfiltration (Abwasseraustritt in den Boden) und Infiltration (Grundwassereintritt in den Kanal) gemäß DIN EN 1916.",
+        "tag": "Wasser- & Dichtheit"
+      },
+      "pipe-bsk": {
+        "title": "Gefahr: Biogene Schwefelsäurekorrosion (BSK)",
+        "description": "Im Abwasser bilden Bakterien unter Sauerstoffmangel Schwefelwasserstoff (H₂S). Im Kondenswasser an der Rohrdecke oxidieren andere Bakterien das H₂S zu Schwefelsäure, die den Zementstein auflöst (biogene Schwefelsäurekorrosion). Abhilfe: Faulprozesse vermeiden (Belüftung, Gefälle), säurewiderstandsfähiger Beton oder Auskleidung (z. B. PE-HD). SR-Zemente allein schützen nicht vor Säureangriff.",
+        "tag": "Dauerhaftigkeits-Schnittstelle"
+      }
+    },
+    "BpBetonwaren.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "P = 72\\,000\\,\\text{N},\\; l = 200\\,\\text{mm},\\; t = 80\\,\\text{mm},\\; k = 1{,}0",
+        "erklaerung": "Bruchlast und Spaltlänge eines Rechtecksteins."
+      },
+      {
+        "titel": "2. Bruchfläche",
+        "formel": "S = 200 \\cdot 80 = 16\\,000\\,\\text{mm}^2",
+        "erklaerung": "Spaltfläche = Spaltlänge × Dicke."
+      },
+      {
+        "titel": "3. Spaltzugfestigkeit",
+        "formel": "T = 0{,}637 \\cdot 1{,}0 \\cdot 72\\,000 / 16\\,000 = 2{,}87\\,\\text{N/mm}^2",
+        "erklaerung": "Unter dem Einzelwert 2,9 N/mm²."
+      },
+      {
+        "titel": "4. Bruchlast je Länge",
+        "formel": "F = P/l = 72\\,000/200 = 360\\,\\text{N/mm} \\ge 250",
+        "erklaerung": "Dieses Kriterium ist erfüllt."
+      }
+    ],
+    "BpBetonwaren.literatur": [
+      "FGSV: ZTV Wegebau – Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Wegen und Plätzen außerhalb von Flächen des Straßenverkehrs (Ausgabe 2013)",
+      "FGSV: Merkblatt für Flächenbefestigungen mit Pflasterdecken und Plattenbelägen in ungebundener Ausführung (M FP), FGSV 618/1, Ausgabe 2024",
+      "ATV-DVWK-A 127:2000-08 (Statische Berechnung von Abwasserkanälen und -leitungen, 3. Aufl.) bzw. DWA-A 127-1:2022-12 (Statische Berechnung von Entwässerungsanlagen – Teil 1: Grundlagen)"
+    ],
+    "BpBetonwaren.regelwerke": [
+      {
+        "title": "DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)"
+      },
+      {
+        "title": "DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)"
+      },
+      {
+        "title": "DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)"
+      },
+      {
+        "title": "DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)"
+      },
+      {
+        "title": "DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)"
+      }
+    ],
+    "BpBetonwaren.formeln": [
+      {
+        "formel": "T = \\frac{2 \\cdot F}{\\pi \\cdot l \\cdot t} \\ge 3{,}6\\,\\text{N/mm}^2",
+        "erklaerung": "Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert ≥ 2,9 N/mm²; Bruchlast je Länge ≥ 250 N/mm.",
+        "quelle": "DIN EN 1338 Anhang F"
+      },
+      {
+        "formel": "w/z \\approx 0{,}30 - 0{,}38 \\quad (\\text{Konsistenz: erdfeucht})",
+        "erklaerung": "Niedriger Wasserzementwert zur Gewährleistung der sofortigen Entschalung und Formstabilität (Grünstandsfestigkeit).",
+        "quelle": "Betonwaren-Technologie"
+      }
+    ]
+  }
+}

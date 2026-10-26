@@ -2,6 +2,8 @@ import { Leaf, TrendingUp } from 'lucide-react';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { BlockMath, InlineMath } from 'react-katex';
 import React from 'react';
+import inhalt from '@/content/beispielrechnungen/RechnungNachhaltigkeit.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungNachhaltigkeitProps {
   bauteilVol: number;
@@ -51,9 +53,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     ? 'bg-shiraz text-white shadow-sm'
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
-          >
-            1. Re-Karbonatisierung (CO2-Speicherung)
-          </button>
+          ><MdText text={inhalt.texte.t1ReKarbonatisierungCo2} /></button>
           <button aria-pressed={co2SubTab === 'gwp_vergleich'}
             onClick={() => setCo2SubTab('gwp_vergleich')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
@@ -61,9 +61,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     ? 'bg-shiraz text-white shadow-sm'
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
-          >
-            2. Ökobilanz: GWP-Vergleich (CEM I vs. CEM III)
-          </button>
+          ><MdText text={inhalt.texte.t2ÖkobilanzGwpVergleich} /></button>
         </div>
 
         {co2SubTab === 'karbonatisierung' && (
@@ -72,13 +70,12 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
                 <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">
-                  <Leaf className="text-shiraz" size={16} /> Eingabeparameter: CO2-Absorption
-                </h3>
+                  <Leaf className="text-shiraz" size={16} /><MdText text={inhalt.texte.eingabeparameterCo2Absorption} /></h3>
 
                 {/* k-Faktor Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-bold">
-                    <span className="text-slate-700">Karbonatisierungsbeiwert k:</span>
+                    <span className="text-slate-700"><MdText text={inhalt.texte.karbonatisierungsbeiwertK} /></span>
                     <span className="text-shiraz">{formatDeZahl(kFactor, 1)} mm/√a</span>
                   </div>
                   <input 
@@ -90,13 +87,13 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     onChange={(e) => setKFactor(parseFloat(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <span className="text-xxs text-slate-500 block">Typisch: 1,0 - 3,0 (Innenbereich/trocken), 4,0 - 8,0 (Außenbereich, bewittert).</span>
+                  <span className="text-xxs text-slate-500 block"><MdText text={inhalt.texte.typisch103} /></span>
                 </div>
 
                 {/* Nutzungsdauer Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-bold">
-                    <span className="text-slate-700">Nutzungsdauer t:</span>
+                    <span className="text-slate-700"><MdText text={inhalt.texte.nutzungsdauerT} /></span>
                     <span className="text-shiraz">{durabilityYears} Jahre</span>
                   </div>
                   <input 
@@ -113,7 +110,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                 {/* Zementgehalt Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-bold">
-                    <span className="text-slate-700">Zementgehalt c:</span>
+                    <span className="text-slate-700"><MdText text={inhalt.texte.zementgehaltC} /></span>
                     <span className="text-shiraz">{formatDeWert(cementGehalt)} kg/m³</span>
                   </div>
                   <input 
@@ -130,7 +127,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                 {/* CaO-Anteil im Klinker */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-bold">
-                    <span className="text-slate-700">CaO-Anteil im Zement:</span>
+                    <span className="text-slate-700"><MdText text={inhalt.texte.caoAnteilImZement} /></span>
                     <span className="text-shiraz">{formatDeWert(caoAnteil)}%</span>
                   </div>
                   <input 
@@ -142,7 +139,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     onChange={(e) => setCaoAnteil(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <span className="text-xxs text-slate-500 block">Anteil reaktives Calciumoxid im Zementstein (standardmäßig ca. 65%).</span>
+                  <span className="text-xxs text-slate-500 block"><MdText text={inhalt.texte.anteilReaktivesCalciumoxidIm} /></span>
                 </div>
 
                 {/* Karbonatisierungsgrad */}
@@ -160,7 +157,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     onChange={(e) => setCarbGrad(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <span className="text-xxs text-slate-500 block">Prozentsatz des reaktionsfähigen CaO, der tatsächlich mit CO2 reagiert.</span>
+                  <span className="text-xxs text-slate-500 block"><MdText text={inhalt.texte.prozentsatzDesReaktionsfähigenCao} /></span>
                 </div>
               </div>
             </div>
@@ -168,34 +165,20 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
             {/* Step by Step calculation */}
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-                <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-                  Berechnung & CO2-Uptake-Bilanz
-                </h3>
+                <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.berechnungCo2UptakeBilanz} /></h3>
 
                 <div className="space-y-4 text-xs text-text-main/80 leading-relaxed">
-                  <div>
-                    <strong>Schritt 1: Karbonatisierungstiefe d_k</strong>
-                    <p className="mt-1 text-xxs">
-                      Die Tiefenwirkung der Karbonatisierung folgt dem Quadratwurzel-Zeit-Gesetz (Fick'sche Diffusion):
-                    </p>
+                  <div><MdText text={inhalt.texte.schritt1KarbonatisierungstiefeD} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.dieTiefenwirkungDerKarbonatisierung} /></p>
                     <BlockMath math={`d_k = k \\cdot \\sqrt{t} = \\color{#A3113E}{${formatDeTeX(kFactor, 1)}} \\cdot \\sqrt{\\color{#A3113E}{${durabilityYears}}} = \\color{#A3113E}{${formatDeTeX(carbonationDepth, 2)}} \\, \\text{mm} = \\color{#A3113E}{${formatDeTeX((carbonationDepth/1000), 4)}} \\, \\text{m}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Schritt 2: Stoffmengen im karbonatisierten Volumen</strong>
-                    <p className="mt-1 text-xxs">
-                      Betrachtet wird 1 m² Wandfläche. Das betroffene Volumen beträgt <InlineMath math="V = 1{,}0 \, \text{m}^2 \times d_k" />.
-                    </p>
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2StoffmengenIm} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.betrachtetWird1M} /></p>
                     <BlockMath math={`m_{\\text{Zement}} = V \\cdot c = \\color{#A3113E}{${formatDeTeX((carbonationDepth/1000), 4)}} \\, \\text{m}^3 \\cdot \\color{#A3113E}{${cementGehalt}} \\, \\text{kg/m}^3 = \\color{#A3113E}{${formatDeTeX(cementMassPerM2, 2)}} \\, \\text{kg}`} />
                     <BlockMath math={`m_{\\text{CaO}} = m_{\\text{Zement}} \\cdot \\text{Anteil} = \\color{#A3113E}{${formatDeTeX(cementMassPerM2, 2)}} \\cdot \\color{#A3113E}{${formatDeTeX((caoAnteil/100), 2)}} = \\color{#A3113E}{${formatDeTeX(caoMassPerM2, 2)}} \\, \\text{kg}`} />
                     <BlockMath math={`m_{\\text{CaO,react}} = m_{\\text{CaO}} \\cdot \\text{Grad} = \\color{#A3113E}{${formatDeTeX(caoMassPerM2, 2)}} \\cdot \\color{#A3113E}{${formatDeTeX((carbGrad/100), 2)}} = \\color{#A3113E}{${formatDeTeX(reactedCaoMassPerM2, 2)}} \\, \\text{kg}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Schritt 3: CO2-Absorption (Molares Verhältnis)</strong>
-                    <p className="mt-1 text-xxs">
-                      Die chemische Umwandlung lautet <InlineMath math="CaO + CO_2 \rightarrow CaCO_3" />. Das Verhältnis der Molmassen beträgt <InlineMath math="44{,}01 / 56{,}08 \approx 0{,}784" />:
-                    </p>
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3Co2Absorption} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.dieChemischeUmwandlungLautet} /></p>
                     <BlockMath math={`m_{\\text{CO2}} = m_{\\text{CaO,react}} \\cdot 0{,}784 = \\color{#A3113E}{${formatDeTeX(reactedCaoMassPerM2, 2)}} \\cdot 0{,}784 = \\color{#A3113E}{${formatDeTeX(co2UptakePerM2, 2)}} \\, \\text{kg CO}_2 / \\text{m}^2`} />
                   </div>
                 </div>
@@ -204,14 +187,10 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
               <div className="p-4 rounded-xl bg-green-50 border border-green-150 text-xs text-green-900 leading-relaxed font-normal space-y-2">
                 <div className="flex items-center gap-2 font-bold text-green-900">
                   <Leaf className="text-green-600 animate-pulse" size={18} />
-                  <span>CO2-Klimabilanz (Sicherer Kohlenstoffspeicher):</span>
+                  <span><MdText text={inhalt.texte.co2KlimabilanzSichererKohlenstoffspeiche} /></span>
                 </div>
-                <p>
-                  Durch die Re-Karbonatisierung des Zementsteins hat die Betonwand über die {durabilityYears} Jahre hinweg pro m² Bauteilfläche ca. <strong>{formatDeZahl(co2UptakePerM2, 2)} kg CO2</strong> dauerhaft aus der Atmosphäre zurückgebunden.
-                </p>
-                <p className="text-xxs text-green-800 opacity-90">
-                  Hinweis: Bei einer typischen Tragwerk-Sichtfläche von 1.000 m² entspricht dies einer Speichermenge von ca. <strong>{formatDeZahl((co2UptakePerM2 * 1000 / 1000), 1)} Tonnen CO2</strong>. Dies mildert den CO2-Fußabdruck der Herstellung (GWP) nachträglich ab. Jedoch schwächt die Karbonatisierung das alkalische Milieu (Depassivierung des Bewehrungsstahls bei Erreichen der Bewehrungslage!).
-                </p>
+                <p><MdText text={inhalt.texte.durchDieReKarbonatisierung} />{durabilityYears}<MdText text={inhalt.texte.jahreHinwegProM} /><strong>{formatDeZahl(co2UptakePerM2, 2)} kg CO2</strong><MdText text={inhalt.texte.dauerhaftAusDerAtmosphäre} /></p>
+                <p className="text-xxs text-green-800 opacity-90"><MdText text={inhalt.texte.hinweisBeiEinerTypischen} /><strong>{formatDeZahl((co2UptakePerM2 * 1000 / 1000), 1)} Tonnen CO2</strong><MdText text={inhalt.texte.diesMildertDenCo2} /></p>
               </div>
             </div>
           </div>
@@ -221,13 +200,12 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
               <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">
-                <Leaf className="text-shiraz" size={16} /> GWP-Eingabeparameter (CEM I vs. CEM III)
-              </h3>
+                <Leaf className="text-shiraz" size={16} /><MdText text={inhalt.texte.gwpEingabeparameterCemI} /></h3>
 
               {/* Bauteilvolumen Slider */}
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between font-bold">
-                  <span className="text-slate-700">Bauteilvolumen V:</span>
+                  <span className="text-slate-700"><MdText text={inhalt.texte.bauteilvolumenV} /></span>
                   <span className="text-shiraz">{formatDeWert(bauteilVol)} m³</span>
                 </div>
                 <input 
@@ -242,11 +220,11 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
               </div>
 
               <div className="border-t border-slate-100 pt-3 space-y-3">
-                <h4 className="font-bold text-xs text-slate-800">Rezeptur A: Portlandzement (CEM I)</h4>
+                <h4 className="font-bold text-xs text-slate-800"><MdText text={inhalt.texte.rezepturAPortlandzementCem} /></h4>
                 {/* c_A Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-normal">
-                    <span className="text-slate-600">Zementgehalt c_A:</span>
+                    <span className="text-slate-600"><MdText text={inhalt.texte.zementgehaltCA} /></span>
                     <span className="font-bold">{formatDeWert(cementGehaltA)} kg/m³</span>
                   </div>
                   <input 
@@ -262,7 +240,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                 {/* spec GWP A Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-normal">
-                    <span className="text-slate-600">Spezifischer GWP_A (klinkerreich):</span>
+                    <span className="text-slate-600"><MdText text={inhalt.texte.spezifischerGwpAKlinkerreich} /></span>
                     <span className="font-bold">{formatDeWert(gwpZementA)} kg CO2-eq/t</span>
                   </div>
                   <input 
@@ -278,11 +256,11 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
               </div>
 
               <div className="border-t border-slate-100 pt-3 space-y-3">
-                <h4 className="font-bold text-xs text-shiraz">Rezeptur B: Hochofenzement (CEM III/B)</h4>
+                <h4 className="font-bold text-xs text-shiraz"><MdText text={inhalt.texte.rezepturBHochofenzementCem} /></h4>
                 {/* c_B Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-normal">
-                    <span className="text-slate-600">Zementgehalt c_B:</span>
+                    <span className="text-slate-600"><MdText text={inhalt.texte.zementgehaltCB} /></span>
                     <span className="font-bold text-shiraz">{formatDeWert(cementGehaltB)} kg/m³</span>
                   </div>
                   <input 
@@ -298,7 +276,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                 {/* spec GWP B Slider */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between font-normal">
-                    <span className="text-slate-600">Spezifischer GWP_B (hüttensandreich):</span>
+                    <span className="text-slate-600"><MdText text={inhalt.texte.spezifischerGwpBHüttensandreich} /></span>
                     <span className="font-bold text-shiraz">{formatDeWert(gwpZementB)} kg CO2-eq/t</span>
                   </div>
                   <input 
@@ -316,26 +294,18 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
 
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-                <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-                  Vergleichsrechnung GWP (Treibhauspotenzial)
-                </h3>
+                <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.vergleichsrechnungGwpTreibhauspotenzial} /></h3>
 
                 <div className="space-y-4 text-xs text-text-main/80 leading-relaxed">
-                  <div>
-                    <strong>Berechnung Rezeptur A (CEM I):</strong>
-                    <BlockMath math={`M_{c,A} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltA} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementA, 1)}} \\, \\text{t Zement}`} />
+                  <div><MdText text={inhalt.texte.berechnungRezepturACem} /><BlockMath math={`M_{c,A} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltA} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementA, 1)}} \\, \\text{t Zement}`} />
                     <BlockMath math={`GWP_A = \\frac{${formatDeTeX(totalCementA, 1)} \\, \\text{t} \\cdot ${gwpZementA} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${formatDeTeX(totalGwpA, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Berechnung Rezeptur B (CEM III):</strong>
-                    <BlockMath math={`M_{c,B} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltB} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementB, 1)}} \\, \\text{t Zement}`} />
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.berechnungRezepturBCem} /><BlockMath math={`M_{c,B} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltB} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementB, 1)}} \\, \\text{t Zement}`} />
                     <BlockMath math={`GWP_B = \\frac{${formatDeTeX(totalCementB, 1)} \\, \\text{t} \\cdot ${gwpZementB} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${formatDeTeX(totalGwpB, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Ergebnis GWP-Einsparung:</strong>
-                    <BlockMath math={`\\Delta GWP = GWP_A - GWP_B = ${formatDeTeX(totalGwpA, 2)} - ${formatDeTeX(totalGwpB, 2)} = \\color{#A3113E}{${formatDeTeX(deltaGwp, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.ergebnisGwpEinsparung} /><BlockMath math={`\\Delta GWP = GWP_A - GWP_B = ${formatDeTeX(totalGwpA, 2)} - ${formatDeTeX(totalGwpB, 2)} = \\color{#A3113E}{${formatDeTeX(deltaGwp, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
                     <BlockMath math={`\\text{Prozentuale Einsparung} = \\color{#A3113E}{${formatDeTeX(percentSavings, 1)}\\%}`} />
                   </div>
                 </div>
@@ -344,11 +314,11 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
               <div className="p-4 rounded-xl bg-blue-50 border border-blue-150 text-xs text-blue-900 leading-relaxed font-normal space-y-2">
                 <div className="flex items-center gap-2 font-bold text-blue-900">
                   <TrendingUp size={18} />
-                  <span>Betontechnologische Unterschiede & Beratung:</span>
+                  <span><MdText text={inhalt.texte.betontechnologischeUnterschiedeBeratung} /></span>
                 </div>
                 <ul className="list-disc pl-4 space-y-1 text-xxs">
-                  <li><strong>Hydratationswärme:</strong> CEM III/B (Hochofenzement mit hohem Hüttensandgehalt) reagiert durch den geringen Klinkeranteil extrem langsam. Die Hydratationswärme im Brückenwiderlager oder Fundament (massige Bauteile) wird drastisch verringert. Dies verhindert gefährliche Risse durch thermische Eigenspannungen!</li>
-                  <li><strong>Nachbehandlung:</strong> Wegen der langsameren Hydratation baut der Beton seine Dichtigkeit in den ersten Tagen viel langsamer auf. Die Nachbehandlungsdauer (Schutz vor Austrocknung, z.B. Besprühen oder Abdecken) muss verdoppelt werden (z.B. von 3 Tagen auf 7 bis 10 Tage), um Gefügeschäden in der Randzone zu vermeiden.</li>
+                  <li><MdText text={inhalt.texte.hydratationswärmeCemIiiB} /></li>
+                  <li><MdText text={inhalt.texte.nachbehandlungWegenDerLangsameren} /></li>
                 </ul>
               </div>
             </div>

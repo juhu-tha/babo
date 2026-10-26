@@ -1,0 +1,227 @@
+{
+  "texte": {
+    "altholzNirSortierungUnd": " Altholz-NIR-Sortierung und Urban Mining",
+    "holzAusRückbauSperrmüll": "Holz aus Rückbau, Sperrmüll und Gewerbe ist ein Sekundärrohstoff – aber nur, wenn es sortenrein und schadstoffarm vorliegt. Das Modul führt von den Altholzkategorien der Altholzverordnung über das Prinzip der Nahinfrarot-Spektroskopie (NIR) zur sensorgestützten Sortierung, zeigt deren Grenzen und ordnet beides in den Gedanken des Urban Mining und der Materialkataster ein. Mit dem Rechner stellen Sie die Massenbilanz einer Sortieranlage auf.",
+    "projekthinweisDieSensorgestützteSortieru": "**Projekthinweis:** Die sensorgestützte Sortierung von Altholz und das Urban Mining sind Forschungsthemen an der Technischen Hochschule Augsburg bzw. im TTZ Aichach. Dieses Modul gibt ausschließlich den öffentlich zugänglichen Stand von Recht, Normung und Fachliteratur wieder; Zahlenangaben ohne Normbezug sind Richtwerte.",
+    "altholzAlsStoffstrom": "Altholz als Stoffstrom",
+    "mengeInDeutschlandFallen": "**Menge:** In Deutschland fallen jährlich rund 8 Mio. t Altholz an (Richtwert, Verbandsangabe). Bau- und Abbruchholz, Verpackungen (Paletten), Möbel und Sperrmüll sind die Hauptquellen.",
+    "verwertungswegeEtwaEinFünftel": "**Verwertungswege:** Etwa ein Fünftel wird stofflich verwertet – fast ausschließlich zu Spanplatten. Der größere Teil geht in die energetische Verwertung in Altholzkraftwerken und Feuerungsanlagen (Richtwert).",
+    "abfallhierarchieDasKreislaufwirtschaftsg": "**Abfallhierarchie:** Das Kreislaufwirtschaftsgesetz (§ 6 KrWG) stellt Vermeidung, Vorbereitung zur Wiederverwendung und Recycling vor die energetische Verwertung. Die geltende AltholzV stellt stoffliche und energetische Verwertung dagegen noch gleichrangig nebeneinander.",
+    "kaskadennutzungHolzWirdMöglichst": "**Kaskadennutzung:** Holz wird möglichst lange stofflich genutzt – Wiederverwendung von Balken, dann Holzwerkstoffe, zuletzt Energie. Jede stoffliche Runde hält den im Holz gebundenen Kohlenstoff länger im Bestand.",
+    "warumSortieren": "Warum sortieren?",
+    "qualitätHolzwerkstoffwerkeDürfenNur": "**Qualität:** Holzwerkstoffwerke dürfen nur Hackschnitzel und Späne einsetzen, die die Grenzwerte des Anhangs II AltholzV einhalten. Bereits wenige mit Holzschutzmitteln behandelte Stücke können eine Charge unbrauchbar machen.",
+    "rechtAltholzDerKategorie": "**Recht:** Altholz der Kategorie A IV ist gefährlicher Abfall; vermischt mit A I bis A III gilt das gesamte Gemisch als A IV.",
+    "wirtschaftJeReinerDie": "**Wirtschaft:** Je reiner die stoffliche Fraktion, desto höher ihr Wert. Sensorgestützte Sortierung soll die händische Sortierung ergänzen und Fehlsortierungen verringern.",
+    "altholzkategorienNach2Altholzv": "Altholzkategorien nach § 2 AltholzV",
+    "definitionenSinngemäßNach2": "Definitionen sinngemäß nach § 2 Nr. 4 AltholzV; Beispiele nach der Regelzuordnung in Anhang III. Im Zweifel ist die höhere Kategorie maßgebend.",
+    "typischeBeispiele": "Typische Beispiele",
+    "altholzDasPcbIm": "Altholz, das PCB im Sinne der PCB/PCT-Abfallverordnung enthält",
+    "zBMitPcb": "z. B. mit PCB-haltigen Mitteln behandelte Dämm- und Schallschutzplatten",
+    "beseitigungNachPcbPct": "Beseitigung nach PCB/PCT-Abfallverordnung",
+    "grenzwerteFürHolzwerkstoffeAnhang": "Grenzwerte für Holzwerkstoffe (Anhang II)",
+    "holzhackschnitzelUndHolzspäneZur": "Holzhackschnitzel und Holzspäne zur Herstellung von Holzwerkstoffen, in mg/kg Trockenmasse. Eingehalten, wenn der gleitende Mittelwert der letzten vier Untersuchungen den Grenzwert nicht überschreitet und kein Einzelwert ihn um mehr als 25 % übersteigt.",
+    "grenzwertInMgKg": "Grenzwert in mg/kg TM",
+    "pflichtenImÜberblick": "Pflichten im Überblick",
+    "zuordnungDerBesitzerOrdnet": "**Zuordnung:** Der Besitzer ordnet Altholz einer Kategorie zu; bei Bau- und Abbruchholz hilft die Regelzuordnung des Anhangs III.",
+    "getrennthaltungAIvUnd": "**Getrennthaltung:** A IV und PCB-Altholz sind von den übrigen Kategorien getrennt zu halten. Die Gewerbeabfallverordnung verlangt zudem die getrennte Sammlung von Holz bei Bau- und Abbruchabfällen.",
+    "stofflicheVerwertungZulässigFür": "**Stoffliche Verwertung:** zulässig für A I und A II; A III nur, wenn Lacke und Beschichtungen vorher oder bei der Aufbereitung weitgehend entfernt werden. A IV ist von der Holzwerkstoffherstellung ausgeschlossen.",
+    "energetischeVerwertungAIii": "**Energetische Verwertung:** A III und A IV nur in Anlagen nach der 17. BImSchV.",
+    "novelleDerAltholzvStand": "Novelle der AltholzV – Stand unsicher",
+    "dieAltholzvVom15": "Die AltholzV vom 15. August 2002 (zuletzt geändert 2020) wird seit Jahren überarbeitet. Ein Diskussionsentwurf des Bundesumweltministeriums von 2020 sah u. a. vor: Aufbereitung allen Altholzes vor der Verwertung, Vorrang der stofflichen Verwertung für A I mit Recyclingquoten, Zuordnung von Sperrmüll-Holzgemischen zu A III und angepasste Grenzwerte in Anhang II. 2024 kündigte das Ministerium einen Referentenentwurf für die folgende Legislaturperiode an.",
+    "einInkrafttretenDerNovelle": "**Ein Inkrafttreten der Novelle ist nach dem Stand der Recherche (Oktober 2026) nicht bekannt.** Maßgebend ist die geltende Fassung; vor Verwendung in Lehre oder Praxis den aktuellen Stand prüfen.",
+    "prinzipDerNirSpektroskopie": "Prinzip der NIR-Spektroskopie",
+    "spektralbereichNahesInfrarotUmfasst": "**Spektralbereich:** Nahes Infrarot umfasst Wellenlängen ab rund 780 nm (nach ISO 20473 bis 3 µm). Sortiersysteme arbeiten typischerweise im Bereich von etwa 900 bis 1.700 nm oder bis 2.500 nm (Richtwerte, je nach Detektor).",
+    "wechselwirkungImNirLiegen": "**Wechselwirkung:** Im NIR liegen Ober- und Kombinationsschwingungen von C–H-, O–H- und N–H-Bindungen. Die Probe absorbiert je nach chemischem Aufbau bei charakteristischen Wellenlängen – das reflektierte Spektrum ist ein „Fingerabdruck“ der Oberfläche.",
+    "holzCelluloseHemicellulosenUnd": "**Holz:** Cellulose, Hemicellulosen und Lignin prägen das Spektrum von Vollholz; Wasser absorbiert stark (Banden um 1.450 nm und 1.940 nm).",
+    "holzfremdeStoffeBindemittelMit": "**Holzfremde Stoffe:** Bindemittel mit N–H-Gruppen (Harnstoff- und Melaminharze in Holzwerkstoffen), Lacke auf Acrylat- oder Polyurethanbasis und PVC-Beschichtungen erzeugen eigene Banden. Daran lassen sich Vollholz, Holzwerkstoffe sowie beschichtete und kunststoffbeschichtete Teile unterscheiden.",
+    "ablaufDerSensorgestütztenSortierung": "Ablauf der sensorgestützten Sortierung",
+    "aufbereitungVorzerkleinernAbtrennenVon": "**Aufbereitung:** Vorzerkleinern, Abtrennen von Metallen (Magnet, Wirbelstrom) und Feinanteil; die Stücke werden auf einem schnellen Förderband vereinzelt.",
+    "messungEineHyperspektralkameraNimmt": "**Messung:** Eine Hyperspektralkamera nimmt Zeile für Zeile ein Spektrum je Bildpunkt auf; eine breitbandige Lichtquelle beleuchtet das Band.",
+    "auswertungVorverarbeitungDerSpektren": "**Auswertung:** Vorverarbeitung der Spektren (z. B. Normierung, Ableitung) und Klassifizierung mit chemometrischen Verfahren oder maschinellem Lernen, trainiert an Referenzproben bekannter Kategorie.",
+    "ausschleusungErkannteStückeWerden": "**Ausschleusung:** Erkannte Stücke werden am Bandende durch Druckluftdüsen aus der Flugbahn geblasen. Mehrere Sortierstufen nacheinander erhöhen die Reinheit.",
+    "kennzahlenEinerSortierung": "Kennzahlen einer Sortierung",
+    "ausbringenEinerKategorieAnteil": "**Ausbringen** einer Kategorie: Anteil ihrer Masse, der in der richtigen Ziellinie ankommt.",
+    "reinheitEinerAusgangsfraktionAnteil": "**Reinheit** einer Ausgangsfraktion: Anteil der Zielkategorien an deren Masse.",
+    "fehlsortierquoteFehlgelenkteMasseBezogen": "**Fehlsortierquote:** fehlgelenkte Masse bezogen auf den Eingang.",
+    "ausbringenUndReinheitStehen": "Ausbringen und Reinheit stehen im Zielkonflikt: Wer streng aussortiert, erhält eine reine, aber kleinere stoffliche Fraktion.",
+    "wasNirNichtSieht": "Was NIR nicht sieht",
+    "nurDieOberflächeNir": "**Nur die Oberfläche:** NIR-Strahlung dringt in Holz nur wenige Millimeter ein (Richtwert). Eine tief eingebrachte Kesseldruckimprägnierung unter einem späteren Anstrich bleibt verborgen.",
+    "anorganischeHolzschutzmittelSalzeAuf": "**Anorganische Holzschutzmittel:** Salze auf Basis von Kupfer, Chrom, Arsen oder Bor zeigen kaum eigene NIR-Banden. Hierfür werden elementanalytische Sensoren wie Röntgenfluoreszenz (RFA) oder laserinduzierte Plasmaspektroskopie (LIBS) ergänzt.",
+    "geringeKonzentrationenOrganischeWirkstof": "**Geringe Konzentrationen:** Organische Wirkstoffe wie PCP oder Lindan wirken schon im mg/kg-Bereich; die NIR-Erkennung arbeitet dagegen eher im Prozentbereich (Richtwert). Grenzwerte nach Anhang II lassen sich nur im Labor nachweisen.",
+    "störgrößenFeuchteÜberlagertDie": "**Störgrößen:** Feuchte überlagert die Banden, dunkle, verrußte oder verschmutzte Oberflächen liefern schwache Spektren, sich überlappende Stücke und Feinanteil verfälschen die Zuordnung.",
+    "folgerungenFürDiePraxis": "Folgerungen für die Praxis",
+    "sensorgestützteSortierungErgänztEingangs": "Sensorgestützte Sortierung **ergänzt** Eingangskontrolle, Sichtprüfung und Laboranalytik, sie ersetzt sie nicht.",
+    "dieKategorieHängtAuch": "Die Kategorie hängt auch von der **Herkunft** ab (Anhang III): Holz aus dem Außenbereich gilt regelmäßig als A IV, auch wenn die Oberfläche unauffällig ist. Herkunftsinformationen aus dem Rückbau sind daher wertvoll.",
+    "klassifikatorenSindNurSo": "Klassifikatoren sind nur so gut wie ihre **Trainingsdaten**; neue Beschichtungen oder Holzwerkstoffe erfordern ein Nachkalibrieren.",
+    "kombinierteSensorikNirRfa": "Kombinierte Sensorik (NIR, RFA, Farbkamera) und mehrstufige Sortierung verbessern die Reinheit, kosten aber Durchsatz.",
+    "urbanMiningDieStadt": "Urban Mining – die Stadt als Rohstofflager",
+    "anthropogenesLagerNachSchätzungen": "**Anthropogenes Lager:** Nach Schätzungen des Umweltbundesamts waren in Deutschland 2010 rund 51,7 Mrd. t Material in Gebäuden, Infrastruktur und langlebigen Gütern gebunden – davon etwa 55 % in Gebäuden und 44 % in Infrastruktur. Das Lager wächst netto um rund 0,8 Mrd. t pro Jahr, etwa 10 t je Einwohner.",
+    "leitgedankeBauwerkeWerdenAls": "**Leitgedanke:** Bauwerke werden als künftige Rohstoffquelle betrachtet. Urban Mining plant den Rückgewinn schon beim Neubau mit und erschließt die Bestände beim Rückbau gezielt.",
+    "holzImLagerDachstühle": "**Holz im Lager:** Dachstühle, Holzbalkendecken, Fußböden und Holzbauten enthalten große Mengen Holz, häufig mit unbekannter Behandlung. Die Wiederverwendung tragender Hölzer setzt eine Prüfung von Zustand, Festigkeit und Holzschutzmittelbelastung voraus.",
+    "kohlenstoffHolzBestehtZu": "**Kohlenstoff:** Holz besteht zu rund der Hälfte seiner Trockenmasse aus Kohlenstoff; 1 t darrtrockenes Holz entspricht etwa 1,8 t CO₂ (Richtwert). Kaskadennutzung verlängert diese Speicherung.",
+    "einMaterialkatasterErfasstWelche": "Ein Materialkataster erfasst, welche Baustoffe in welcher Menge und Qualität wo verbaut sind. Zwei Wege ergänzen sich:",
+    "bottomUpGebäudeMaterialpass": "**Bottom-up (Gebäude):** Materialpass oder Gebäuderessourcenpass aus Planung, BIM-Modell oder Bestandsaufnahme; enthält Mengen, Einbauorte, Verbindungen und Schadstoffe.",
+    "topDownQuartierStadt": "**Top-down (Quartier, Stadt):** Gebäudebestand aus Geodaten (Grundfläche, Höhe, Baujahr, Nutzung) mal typologiebezogener Materialintensität in kg/m² Bruttogrundfläche. So lassen sich künftige Rückbaumengen abschätzen.",
+    "abschätzungMBgfSub": "Abschätzung: *m* = Σ BGF<sub>i</sub> · MI<sub>i</sub> (BGF Bruttogrundfläche, MI Materialintensität je Gebäudetyp und Baustoff). Die Materialintensitäten streuen stark und sind als Richtwerte zu behandeln.",
+    "eingangMasseJeTatsächlicher": "Eingang: Masse je tatsächlicher Kategorie",
+    "sortiererAusbringenInDie": "Sortierer: Ausbringen in die Ziellinie",
+    "stofflicheVerwertungsquoteQSt": "stoffliche Verwertungsquote q_st",
+    "fehlsortierquoteQF": "Fehlsortierquote q_F",
+    "tFehlgelenkt": " t fehlgelenkt",
+    "reinheitStofflicheLinie": "Reinheit stoffliche Linie",
+    "aIvInDer": "A IV in der stofflichen Linie",
+    "eingangInT": "Eingang in t",
+    "stofflichInT": "stofflich in t",
+    "energetischInT": "energetisch in t",
+    "fehlsortiertInT": "fehlsortiert in t",
+    "keineBerechnungMöglich": "Keine Berechnung möglich."
+  },
+  "werte": {
+    "altholzvKategorien": "AltholzV & Kategorien",
+    "grenzenDerSensorik": "Grenzen der Sensorik",
+    "urbanMiningKataster": "Urban Mining & Kataster",
+    "rechnerSortierbilanz": "Rechner Sortierbilanz",
+    "naturbelassenesOderLediglichMechanisch": "naturbelassenes oder lediglich mechanisch bearbeitetes Altholz, das bei seiner Verwendung nicht mehr als unerheblich mit holzfremden Stoffen verunreinigt wurde",
+    "palettenAusVollholzKabeltrommeln": "Paletten aus Vollholz, Kabeltrommeln aus Vollholz, Verschnitt und Abschnitte aus unbehandeltem Vollholz",
+    "stofflichHolzwerkstoffeOderEnergetisch": "stofflich (Holzwerkstoffe) oder energetisch",
+    "verleimtesGestrichenesBeschichtetesLacki": "verleimtes, gestrichenes, beschichtetes, lackiertes oder anderweitig behandeltes Altholz ohne halogenorganische Verbindungen in der Beschichtung und ohne Holzschutzmittel",
+    "spanplattenUndMöbelresteOhne": "Spanplatten- und Möbelreste ohne PVC, Dielen und Bretterschalungen aus dem Innenausbau ohne schädliche Verunreinigungen",
+    "stofflichHolzwerkstoffeOderEnergetisch2": "stofflich (Holzwerkstoffe) oder energetisch",
+    "altholzMitHalogenorganischenVerbindungen": "Altholz mit halogenorganischen Verbindungen in der Beschichtung ohne Holzschutzmittel",
+    "pvcBeschichteteMöbelteileUnd": "PVC-beschichtete Möbelteile und Platten, Sperrmüllholz (Gemisch)",
+    "stofflichNurNachWeitgehender": "stofflich nur nach weitgehender Entfernung der Beschichtung, sonst energetisch (17. BImSchV)",
+    "mitHolzschutzmittelnBehandeltesAltholz": "mit Holzschutzmitteln behandeltes Altholz sowie sonstiges Altholz, das aufgrund seiner Schadstoffbelastung nicht A I bis A III zugeordnet werden kann, ausgenommen PCB-Altholz",
+    "bahnschwellenLeitungsmastenHopfenstangen": "Bahnschwellen, Leitungsmasten, Hopfenstangen, Rebpfähle; Fenster, Außentüren und imprägnierte Konstruktionshölzer aus dem Außenbereich",
+    "energetischInAnlagenNach": "energetisch in Anlagen nach 17. BImSchV oder Beseitigung; gefährlicher Abfall (AVV 17 02 04*)",
+    "pentachlorphenolPcp": "Pentachlorphenol (PCP)",
+    "polychlorierteBiphenylePcb": "Polychlorierte Biphenyle (PCB)",
+    "stofflicheLinieZielA": "stoffliche Linie (Ziel A I/A II)",
+    "energetischeLinieZielA": "energetische Linie (Ziel A III/A IV)",
+    "summeDerTatsächlichAngelieferten": "Summe der tatsächlich angelieferten Kategorien:",
+    "masseDerStofflichenLinie": "Masse der stofflichen Linie",
+    "richtigGelenktesAI": "Richtig gelenktes A I/A II plus fehlgelenktes A III/A IV:",
+    "alleMassenDieIn": "Alle Massen, die in der jeweils falschen Linie landen, bezogen auf den Eingang:",
+    "reinheitUndAIv": "Reinheit und A-IV-Anteil der stofflichen Linie",
+    "anteilRichtigSortiertenHolzes": "Anteil richtig sortierten Holzes und Anteil holzschutzmittelbehandelten Holzes im Strom zur Holzwerkstoffherstellung:",
+    "dieStofflicheLinieIst": "Die stoffliche Linie ist leer.",
+    "stofflicheVerwertungsquote": "Stoffliche Verwertungsquote",
+    "nurRichtigSortiertesA": "Nur richtig sortiertes A I/A II zählt; der Höchstwert bei idealer Sortierung ist der Anteil A I + A II im Eingang:",
+    "bereicheDesModulsAltholz": "Bereiche des Moduls Altholz-NIR-Sortierung und Urban Mining",
+    "abfallrechtImÜberblick": "Abfallrecht im Überblick",
+    "zumModulAbfälleAltlasten": "Zum Modul Abfälle & Altlasten",
+    "avvSchlüsselAbfallhierarchieUnd": "AVV-Schlüssel, Abfallhierarchie und die Grundzüge der Altholzverordnung finden Sie im Modul Abfälle & Altlasten.",
+    "spektroskopischeVerfahren": "Spektroskopische Verfahren",
+    "zumModulAnalytik": "Zum Modul Analytik",
+    "weitereAnalyseverfahrenWieRöntgenfluores": "Weitere Analyseverfahren wie Röntgenfluoreszenz und Infrarotspektroskopie im Labor behandelt das Modul Analytik.",
+    "holzschutzUndHolzschutzmittel": "Holzschutz und Holzschutzmittel",
+    "zumModulHolzkorrosion": "Zum Modul Holzkorrosion",
+    "welcheHolzschutzmittelFrüherEingesetzt": "Welche Holzschutzmittel früher eingesetzt wurden und wie sie wirken, beschreibt das Modul zur Holzkorrosion und zum Holzschutz.",
+    "zumModulMaterialpässe": "Zum Modul Materialpässe",
+    "aufbauUndInhalteDigitaler": "Aufbau und Inhalte digitaler Material- und Gebäuderessourcenpässe werden im Modul Materialpässe behandelt; den selektiven Rückbau beschreibt das Modul Rückbau & Material.",
+    "lehrrechnerVereinfachtesZweiLinien": "Lehrrechner: vereinfachtes Zwei-Linien-Modell einer Sortieranlage. Ausbringen und Warnschwellen sind Lehrannahmen, keine Anlagen- oder Grenzwerte.",
+    "ziellinieStofflichHolzwerkstoffe": "Ziellinie: stofflich (Holzwerkstoffe).",
+    "ziellinieEnergetisch17Bimschv": "Ziellinie: energetisch (17. BImSchV).",
+    "schonWenigeProzentFehlgelenktes": "Schon wenige Prozent fehlgelenktes A IV verschlechtern die Qualität der stofflichen Fraktion stärker, als ein etwas geringeres Ausbringen bei A II die Quote mindert.",
+    "massenbilanzErhaltungDerMasse": "Massenbilanz (Erhaltung der Masse); Kategorien nach § 2 AltholzV; Ausbringen und Warnschwellen als Lehrannahmen",
+    "beispiel1WirkungEiner": "Beispiel 1: Wirkung einer zweiten Sortierstufe auf den A-IV-Anteil",
+    "eineNachsortierungSenktDen": "Eine Nachsortierung senkt den A-IV-Anteil um eine Größenordnung und kostet nur rund 1,1 t stoffliches Material. Ob die Grenzwerte nach Anhang II eingehalten sind, zeigt erst die Analyse der Hackschnitzel.",
+    "massenbilanzAusbringenDerZweiten": "Massenbilanz; Ausbringen der zweiten Stufe als Lehrannahme",
+    "beispiel2HolzpotenzialEines": "Beispiel 2: Holzpotenzial eines Quartiers aus dem Materialkataster",
+    "dasKatasterLiefertGrößenordnungen": "Das Kataster liefert Größenordnungen für die Planung von Rückbau und Aufbereitung. Die tatsächliche Kategorie ergibt sich erst aus Schadstofferkundung und Sortierung.",
+    "topDownAbschätzungMit": "Top-down-Abschätzung mit Materialintensitäten (Lehrannahmen)",
+    "oktober2026NeuErstellt": "Oktober 2026 (neu erstellt, AP 6.2 (c); fachliche Freigabe durch den Autor ausstehend)",
+    "umweltbundesamtDasAnthropogeneLager": "Umweltbundesamt: Das anthropogene Lager"
+  },
+  "daten": {
+    "AltholzUrbanMining": [
+      {
+        "titel": "Keine Berechnung",
+        "erklaerung": "Die Eingaben sind unzulässig – siehe Hinweise im Rechner."
+      }
+    ],
+    "AltholzUrbanMining.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Stoffliche Linie nach der ersten Stufe (Beispiel im Rechner): 58,25 t, davon 1,25 t A IV. Eine zweite NIR-Stufe lenkt 90 % des verbliebenen A IV aus (Lehrannahme) und verliert dabei 2 % des richtig sortierten A I/A II.",
+        "formel": "M_{st} = 58{,}25\\,\\text{t}, \\quad m_{IV,st} = 1{,}25\\,\\text{t}"
+      },
+      {
+        "titel": "A IV nach Stufe 2",
+        "erklaerung": "Rest an A IV und neue Masse der stofflichen Linie (A III bleibt unverändert):",
+        "formel": "m_{IV} = 0{,}10 \\cdot 1{,}25 = 0{,}125\\,\\text{t}; \\quad M_{st} = 0{,}98 \\cdot 54{,}75 + 2{,}25 + 0{,}125 = 56{,}03\\,\\text{t}"
+      },
+      {
+        "titel": "Anteil A IV",
+        "erklaerung": "Vergleich vor und nach der zweiten Stufe:",
+        "formel": "w_{A\\,IV} = \\frac{1{,}25}{58{,}25} = 2{,}15\\,\\% \\;\\Rightarrow\\; \\frac{0{,}125}{56{,}03} = 0{,}22\\,\\%"
+      }
+    ],
+    "AltholzUrbanMining.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Quartier mit 40 Mehrfamilienhäusern der 1950er-Jahre zu je 900 m² BGF. Angenommene Materialintensität Holz (Dachstuhl, Holzbalkendecken, Fußböden): 60 kg/m² BGF (Lehrannahme).",
+        "formel": "\\text{BGF} = 40 \\cdot 900 = 36\\,000\\,\\text{m}^2, \\quad \\text{MI} = 60\\,\\text{kg/m}^2"
+      },
+      {
+        "titel": "Holzmasse im Lager",
+        "erklaerung": "Produkt aus Fläche und Materialintensität:",
+        "formel": "m = 36\\,000 \\cdot 60 = 2\\,160\\,000\\,\\text{kg} = 2\\,160\\,\\text{t}"
+      },
+      {
+        "titel": "Stofflich verwertbarer Anteil",
+        "erklaerung": "Angenommen: 40 % A IV (Dachstuhl mit Holzschutzmittel), 60 % A I/A II. Bei q_st = 90 % des Potenzials:",
+        "formel": "m_{st} = 2\\,160 \\cdot 0{,}60 \\cdot 0{,}90 \\approx 1\\,166\\,\\text{t}"
+      }
+    ],
+    "AltholzUrbanMining.weblinks.0": {
+      "title": "Altholzverordnung (AltholzV) – Gesetze im Internet",
+      "url": "https://www.gesetze-im-internet.de/altholzv/"
+    },
+    "AltholzUrbanMining.literatur": [
+      "Umweltbundesamt (Hrsg.): Urban Mining – Ressourcenschonung im Anthropozän. Dessau-Roßlau: UBA 2017",
+      "Siesler, H. W.; Ozaki, Y.; Kawata, S.; Heise, H. M. (Hrsg.): Near-Infrared Spectroscopy – Principles, Instruments, Applications. Weinheim: Wiley-VCH 2002",
+      "Brunner, P. H.; Rechberger, H.: Handbook of Material Flow Analysis. 2. Aufl. Boca Raton: CRC Press 2016",
+      "Baccini, P.; Brunner, P. H.: Metabolism of the Anthroposphere. 2. Aufl. Cambridge (MA): MIT Press 2012"
+    ],
+    "AltholzUrbanMining.regelwerke": [
+      {
+        "title": "AltholzV – Verordnung über Anforderungen an die Verwertung und Beseitigung von Altholz vom 15.08.2002, zuletzt geändert 2020"
+      },
+      {
+        "title": "KrWG – Kreislaufwirtschaftsgesetz (Abfallhierarchie § 6)"
+      },
+      {
+        "title": "GewAbfV – Gewerbeabfallverordnung (getrennte Sammlung von Bau- und Abbruchabfällen)"
+      },
+      {
+        "title": "AVV – Abfallverzeichnis-Verordnung (17 02 01 Holz, 17 02 04* gefährliche Stoffe enthaltendes Holz)"
+      },
+      {
+        "title": "PCB/PCT-Abfallverordnung"
+      },
+      {
+        "title": "17. BImSchV – Verordnung über die Verbrennung und die Mitverbrennung von Abfällen"
+      },
+      {
+        "title": "ISO 20473:2007 (Optics and photonics – Spectral bands)"
+      }
+    ],
+    "AltholzUrbanMining.formeln": [
+      {
+        "formel": "M_{st} = \\sum_{A\\,I,\\,A\\,II} a_k m_k + \\sum_{A\\,III,\\,A\\,IV} (1 - a_k) m_k",
+        "erklaerung": "Masse der stofflichen Linie aus den Kategoriemassen m_k und dem Ausbringen a_k in die jeweilige Ziellinie.",
+        "quelle": "Massenbilanz"
+      },
+      {
+        "formel": "q_F = \\frac{\\sum_k (1 - a_k) m_k}{M_{in}}, \\quad q_{st} = \\frac{\\sum_{A\\,I,\\,A\\,II} a_k m_k}{M_{in}}",
+        "erklaerung": "Fehlsortierquote und stoffliche Verwertungsquote bezogen auf die Eingangsmasse.",
+        "quelle": "Massenbilanz"
+      },
+      {
+        "formel": "m = \\sum_i \\text{BGF}_i \\cdot \\text{MI}_i",
+        "erklaerung": "Top-down-Abschätzung eines Materiallagers aus Bruttogrundfläche und Materialintensität je Gebäudetyp.",
+        "quelle": "Materialflussanalyse"
+      }
+    ]
+  }
+}

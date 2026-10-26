@@ -1,0 +1,282 @@
+{
+  "texte": {
+    "schutzInstandsetzungNachMaterialien": " Schutz & Instandsetzung nach Materialien",
+    "werkstoffspezifischeSchutzUndSanierungsv": "Werkstoffspezifische Schutz- und Sanierungsverfahren für Holz, Metalle, Kunststoffe, Asphalt und Mauerwerk",
+    "din68800DinEn": "DIN 68800 • DIN EN ISO 12944 • DVS 2207 • ZTV BEA-StB • WTA",
+    "jederBaustoffUnterliegtWerkstoffspezifis": "Jeder Baustoff unterliegt werkstoffspezifischen Degradationsmechanismen und verlangt maßgeschneiderte Schutz- und Instandsetzungstechnologien. Während bei **Holz** der konstruktive Feuchteschutz (DIN 68800-2) vor Pilzbefall schützt und Altschäden mit Holzprothesen statisch saniert werden, erfordert **Stahl** präzise Oberflächenentrostungen (Sa 2 ½) und Duplex-Beschichtungssysteme nach DIN EN ISO 12944. Bei **Kunststoffen** stehen Schweißverfahren nach DVS und UV-Stabilisatoren im Fokus, während **Asphalt** durch Heißverguss, DSK/DSH-V-Dünnschichten und Deckenerneuerungen nach ZTV BEA-StB instandgesetzt wird.",
+    "holzDin68800": " Holz (DIN 68800)",
+    "metalleStahlIso12944": " Metalle & Stahl (ISO 12944)",
+    "kunststoffeFugenDvsDin": " Kunststoffe & Fugen (DVS / DIN 18540)",
+    "asphaltBitumenZtvBea": " Asphalt & Bitumen (ZTV BEA-StB)",
+    "mauerwerkNatursteinWta": " Mauerwerk & Naturstein (WTA)",
+    "übersichtSchadensmechanismen": "Übersicht & Schadensmechanismen",
+    "präventiverSchutz": "Präventiver Schutz",
+    "instandsetzungSanierung": "Instandsetzung & Sanierung",
+    "praxiswissenSchadensfälle": "Praxiswissen & Schadensfälle",
+    "holzschutzHolzinstandsetzungDin68800": " Holzschutz & Holzinstandsetzung (DIN 68800)",
+    "gebrauchsklassenGk0Bis": "Gebrauchsklassen GK 0 bis GK 5",
+    "alsOrganischerAnisotropHygroskopischer": "Als organischer, anisotrop-hygroskopischer Naturbaustoff unterliegt Holz biologischem Abbau durch holzzerstörende Pilze (Basidiomyceten wie Braunfäule, Weißfäule, Moderfäule) und tierische Holzschädlinge (Insekten wie Hausbock *Hylotrupes bajulus*, Gewöhnlicher Nagekäfer). Entscheidender Aktivierungsparameter ist die **Holzfeuchte $u$**: Pilzwachstum setzt erst bei anhaltender Holzfeuchte $u > 20\\%$ ein (Fasersättigungsgrenze $\\approx 28\\text{ bis }30\\%$).",
+    "pilzbefallBraunfäuleHausschwamm": "Pilzbefall (Braunfäule & Hausschwamm)",
+    "abbauVonCelluloseUnd": "Abbau von Cellulose und Hemicellulose führt zu dramatischem Festigkeitsverlust und dem charakteristischen *Würfelbruch*. Gefährlichster Vertreter: Echter Hausschwamm (*Serpula lacrymans*), dessen Myzelien meterweit durch Mauerwerk wachsen und Wasser transportieren.",
+    "insektenbefallHausbockAnobien": "Insektenbefall (Hausbock & Anobien)",
+    "larvenFressenVerborgeneGänge": "Larven fressen verborgene Gänge im Splintholz von Nadelhölzern. Von außen sind oft nur wenige Millimeter große Ausfluglöcher und feines Bohrmehl sichtbar, während das Innengefüge bereits statisch zerstört ist.",
+    "verwitterungUvPhotooxidation": "Verwitterung & UV-Photooxidation",
+    "uvStrahlungSpaltetDas": "UV-Strahlung spaltet das Bindeglied Lignin in wasserlösliche Abbauprodukte, die durch Regen ausgewaschen werden. Die Oberfläche vergraut und fasert aus (Abtrag $\\approx 1\\text{ bis }2\\text{ mm pro Jahrzehnt}$).",
+    "präventiverHolzschutzNachDin": "Präventiver Holzschutz nach DIN 68800",
+    "t1BaulichKonstruktiverHolzschutz": "1. Baulich-konstruktiver Holzschutz (DIN 68800-2) – Vorrangprinzip!",
+    "nachDin688002": "Nach DIN 68800-2 hat der bauliche Holzschutz absolute Priorität. Ziel ist die Einstufung in **Gebrauchsklasse GK 0**, wodurch chemischer Holzschutz überflüssig wird:",
+    "dachüberständeZumSchutzDer": "Dachüberstände zum Schutz der Fassaden vor Schlagregen",
+    "sockelabstandVonMindestens30": "Sockelabstand von mindestens 30 cm zum Gelände (mind. 15 cm bei Spritzwasserschutz durch Kiesbett)",
+    "hinterlüftungVonHolzfassadenMind": "Hinterlüftung von Holzfassaden (mind. 20 mm Querschnitt)",
+    "schutzDesHirnholzesDurch": "Schutz des Hirnholzes durch Abdeckungen oder Abschrägung ($\\ge 15^\\circ$)",
+    "dampfdiffusionsoffeneSchichtaufbautenZur": "Dampfdiffusionsoffene Schichtaufbauten zur Vermeidung von Tauwasserausfall",
+    "t2ChemischerHolzschutzDin": "2. Chemischer Holzschutz (DIN 68800-3)",
+    "nurZulässigWennGefährdung": "Nur zulässig, wenn Gefährdung vorliegt (GK 1 bis GK 4) und konstruktive Maßnahmen allein nicht ausreichen:",
+    "kesseldruckimprägnierungKdiVakuumDruck": "**Kesseldruckimprägnierung (KDI):** Vakuum-Druck-Verfahren zur Einbringung wasserlöslicher Kupfer- oder Borsalze bis in den Kern von Splintholz. Standard bei Erdkontakt (GK 4, Masten, Terrassenlager).",
+    "wirkstoffprüfungZertifizierteHolzschutzm": "**Wirkstoffprüfung:** Zertifizierte Holzschutzmittel mit RAL-Gütezeichen (Prüfprädikate Iv = Insekten vorbeugend, P = Pilze vorbeugend, W = Witterungsbeständig).",
+    "t3ModifizierteHölzerDauerhaftigkeitsklass": "3. Modifizierte Hölzer & Dauerhaftigkeitsklassen (DIN EN 350)",
+    "einsatzVonHölzernMit": "Einsatz von Hölzern mit natürlicher Dauerhaftigkeit (Klasse 1: Robinie, Teak; Klasse 2: Eiche, Lärche) oder technisch modifizierten Hölzern:<br>• *Thermoholz (TMT):* Thermische Behandlung bei 180–220 °C zerstört Hydroxylgruppen; Feuchteaufnahme sinkt um 50 %.<br>• *Acetyliertes Holz (Accoya):* Veresterung freier OH-Gruppen mit Essigsäureanhydrid; extreme Dimensionsstabilität und Pilzresistenz.",
+    "instandsetzungsverfahrenFürGeschädigteHo": "Instandsetzungsverfahren für geschädigte Holztragwerke",
+    "bekämpfenderHolzschutzDin68800": " Bekämpfender Holzschutz (DIN 68800-4)",
+    "bekämpfungEchterHausschwammBefallenes": "**Bekämpfung Echter Hausschwamm:** Befallenes Holz muss mindestens **1,0 Meter** über den sichtbaren Befall hinaus abgesägt und entsorgt werden. Angrenzendes Mauerwerk muss abgeflämmt, Fugen ausgekratzt und mit Schwammsperrmitteln (Bohrlochinjektion) behandelt werden.",
+    "heißluftverfahrenGegenInsektenBauteilerw": "**Heißluftverfahren gegen Insekten:** Bauteilerwärmung mittels Hochleistungsgebläsen auf mindestens **55 °C im Holzkern über 60 Minuten** führt zur Denaturierung des Eiweißes aller Entwicklungsstadien (Eier, Larven, Käfer) ohne Gifteinsatz.",
+    "statischeInstandsetzungHolzprothesen": " Statische Instandsetzung & Holzprothesen",
+    "balkenkopfSanierungMorscheBalkenköpfe": "**Balkenkopf-Sanierung:** Morsche Balkenköpfe in Außenwänden werden gesundgeschnitten. Ersatz durch Passstücke aus Vollholz/BSH, kraftschlüssig verbunden durch:",
+    "eingeklebteGewindestangenAusEdelstahl": "Eingeklebte Gewindestangen aus Edelstahl oder GFK/CFK-Stäben mit Epoxidharz",
+    "seitlicheStahllaschenOderAufgeschraubte": "Seitliche Stahllaschen oder aufgeschraubte BSH-Verstärkungslaschen",
+    "epoxidharzHolzersatzmassenFürLokale": "Epoxidharz-Holzersatzmassen für lokale Ausflickungen an denkmalgeschützten Zierprofilen",
+    "schubBiegeverstärkungEinschraubenVon": "**Schub- & Biegeverstärkung:** Einschrauben von Vollgewindeschrauben im $45^\\circ$-Winkel zur Aufnahme von Querzug- und Schubspannungen.",
+    "häufigerPraxisfehlerLuftdichtesEinpacken": " Häufiger Praxisfehler: Luftdichtes Einpacken von Holzbalkenköpfen",
+    "schadensbildBeiDerEnergetischen": "**Schadensbild:** Bei der energetischen Sanierung alter Holzbalkendecken werden Balkenköpfe im Auflagerbereich oft mit Bitumenbahnen oder Folien allseitig eingepackt, um sie vor Feuchte aus der Außenwand zu schützen.",
+    "fataleFolgeRaumseitigEindringende": "**Fatale Folge:** Raumseitig eindringende Feuchte oder Baurestfeuchte kann durch die diffusionsdichte Folie nicht mehr nach oben oder seitlich austrocknen. Es bildet sich ein Mikroklima mit $u > 30\\%$, das innerhalb von 3 bis 5 Jahren zur vollständigen Zerstörung des Balkenkopfs durch Kellerschwamm oder Hausschwamm führt.",
+    "fachgerechteSanierungStirnUnd": "**Fachgerechte Sanierung:** Stirn- und Längsseiten des Holzbalkenkopfs müssen **hinterlüftet** bleiben (mindestens 2 cm Luftspalt zur Wand). Nur die Unterseite erhält eine kapillarbrechende Unterlage (z. B. Bitumendachpappe auf dem Mauerwerk).",
+    "metallschutzKorrosionsschutzDinEn": " Metallschutz & Korrosionsschutz (DIN EN ISO 12944)",
+    "klassenC1BisCx": "Klassen C1 bis CX • ISO 8501-1",
+    "ungeschützterBaustahlKorrodiertIn": "Ungeschützter Baustahl korrodiert in Gegenwart von Feuchtigkeit und Sauerstoff durch elektrochemische Oxidation:$4\\text{Fe} + 3\\text{O}_2 + 6\\text{H}_2\\text{O} \\rightarrow 4\\text{Fe(OH)}_3$. Die atmosphärische Korrosivität richtet sich nach der relativen Luftfeuchte ($> 60\\%$), der Benetzungsdauer sowie den Luftverunreinigungen ($\\text{SO}_2$ im Industrieklima, $\\text{Cl}^-$ im Küstenklima).",
+    "kategorieIso129442": "Kategorie (ISO 12944-2)",
+    "typischeUmgebung": "Typische Umgebung",
+    "zinkabtragMA": "Zinkabtrag [µm/a]",
+    "stahlabtragMA": "Stahlabtrag [µm/a]",
+    "innenräumeBeheiztBürosSchulen": "Innenräume beheizt (Büros, Schulen)",
+    "unbeheizteGebäudeLagerhallenSporthallen": "Unbeheizte Gebäude (Lagerhallen, Sporthallen)",
+    "t13Bis25": "> 1,3 bis 25",
+    "stadtUndIndustrieatmosphäreMit": "Stadt- und Industrieatmosphäre mit mäßigem SO₂",
+    "industriegebieteKüstenbereicheMitMäßiger": "Industriegebiete, Küstenbereiche mit mäßiger Salzbelastung",
+    "industrieMitHoherFeuchte": "Industrie mit hoher Feuchte, Küsten mit hoher Salzlast",
+    "t80Bis200": "> 80 bis 200",
+    "offshoreSpritzwasserzonenTunnelsMit": "Offshore, Spritzwasserzonen, Tunnels mit Tausalznebel",
+    "t84Bis25": "> 8,4 bis 25",
+    "t200Bis700": "> 200 bis 700",
+    "korrosionsschutzsystemeNachDinEn": "Korrosionsschutzsysteme nach DIN EN ISO 12944",
+    "t1OberflächenvorbereitungNachIso": "1. Oberflächenvorbereitung nach ISO 8501-1 (Grundvoraussetzung!)",
+    "ohneEinwandfreieEntrostungVersagt": "Ohne einwandfreie Entrostung versagt jedes Lacksystem vorzeitig:",
+    "sa2SehrGründliches": "**Sa 2 ½ (Sehr gründliches Strahlen):** Nahezu metallisch blank. Zunder, Rost und Fremdkörper werden so gründlich entfernt, dass nur noch schattenhafte Flecken sichtbar sind. *Industrieller Mindeststandard!*",
+    "sa3OptischReines": "**Sa 3 (Optisch reines Metall):** Völlig freie, silbrig glänzende Oberfläche für höchste Beanspruchung.",
+    "rauheitDinEnIso": "**Rauheit (DIN EN ISO 8503):** Mittlere Rauheit (Rz 40–80 µm) sichert die mechanische Verankerung.",
+    "t2MehrschichtigeBeschichtungssystemeTypis": "2. Mehrschichtige Beschichtungssysteme (Typischer Schichtaufbau)",
+    "grundbeschichtung6080M": "**Grundbeschichtung (60–80 µm):** Zinkstaubhaltiges Epoxidharz (EP-Zinkstaub). Zink opfert sich galvanisch bei Beschädigung (aktiver kathodischer Schutz).",
+    "zwischenbeschichtung80160M": "**Zwischenbeschichtung (80–160 µm):** Epoxidharz mit Eisenglimmer (MIOX). Die plättchenförmigen Schuppen lagern sich parallel zur Oberfläche an (\"Schuppenpanzer\") und verlängern den Diffusionsweg für Wasser und Ionen drastisch.",
+    "deckbeschichtung6080M": "**Deckbeschichtung (60–80 µm):** Polyurethan (2K-PUR) für sehr gute UV-Stabilität, Kreidungsresistenz und Farbtonbeständigkeit.",
+    "t3SchutzdauerbereicheNachDin": "3. Schutzdauerbereiche nach DIN EN ISO 12944-1 (Ausgabe 2019-01)",
+    "dieNeufassungDerNormenreihe": "Die Neufassung der Normenreihe definiert vier statt der früheren drei Schutzdauerklassen bis zur ersten grundlegenden Instandsetzung:",
+    "t7Bis15Jahre": "7 bis 15 Jahre",
+    "t15Bis25Jahre": "15 bis 25 Jahre",
+    "vhSehrHoch": "VH (Sehr hoch)",
+    "t25JahreNeu": "> 25 Jahre (neu)",
+    "t4DuplexSystemeFeuerverzinkung": "4. Duplex-Systeme (Feuerverzinkung + Beschichtung)",
+    "kombinationAusStückverzinkungNach": "Kombination aus Stückverzinkung nach DIN EN ISO 1461 (Zinkauflage 70–150 µm) und nachfolgender organischer Beschichtung. Der Synergie-Faktor beträgt $S = 1{,}2\\text{ bis }2{,}5$: Die Gesamtschutzdauer ist wesentlich länger als die Summe der Einzelschutzdauern ($t_{\\text{ges}} = S \\cdot (t_{\\text{Zink}} + t_{\\text{Lack}})$). Vor dem Beschichten ist Sweep-Strahlen zwingend!",
+    "instandsetzungUndVerstärkungGeschädigter": "Instandsetzung und Verstärkung geschädigter Stahltragwerke",
+    "altanstrichsanierungNachIso4628": " Altanstrichsanierung nach ISO 4628",
+    "ermittlungDesRostgradsNach": "Ermittlung des Rostgrads nach DIN EN ISO 4628-3 (Ri 0 = rostfrei bis Ri 5 = > 40 % Rostfläche):",
+    "ri1BisRi": "**Ri 1 bis Ri 3 (< 1 % Rost):** Partielles Ausbessern. Lokales Strahlen auf P Sa 2 ½, Grundieren und 1–2 Gesamtlackierungen.",
+    "ri4BisRi": "**Ri 4 bis Ri 5 (> 1 % Rost / Enthaftung):** Totalabtrag des Altsystems. Vollständiges Sandstrahlen auf Sa 2 ½ und kompletter Neuaufbau des Beschichtungssystems.",
+    "statischeErtüchtigungVonStahlbauteilen": " Statische Ertüchtigung von Stahlbauteilen",
+    "querschnittsverlustDurchLochfraßAnschwei": "**Querschnittsverlust durch Lochfraß:** Anschweißen von Aussteifungs- und Verstärkungslamellen unter Berücksichtigung des Schweißbarkeitsäquivalents ($\\text{CEV} \\le 0{,}45$). Vorwärmung erforderlich!",
+    "ermüdungsrisseSetzenVonEntlastungsbohrun": "**Ermüdungsrisse:** Setzen von *Entlastungsbohrungen* am Rissende zur Reduktion der Spannungsspitze, Ausschleifen des Risses (V-Naht) und Reparaturschweißung mit WIG/MAG.",
+    "nietensanierungGelockerteOderDurchgerost": "**Nietensanierung:** Gelockerte oder durchgerostete Niete werden ausgebohrt und durch hochfeste vorgespannte Schrauben (HV-Schrauben nach DIN EN 14399) ersetzt.",
+    "cfkLamellenverstärkungAufklebenHochmodul": "**CFK-Lamellenverstärkung:** Aufkleben hochmoduliger Kohlenstofffaserlamellen zur Entlastung ermüdungsbeanspruchter Brückenträger.",
+    "häufigerPraxisfehlerTaupunktunterschreit": " Häufiger Praxisfehler: Taupunktunterschreitung bei der Lackierung",
+    "ursacheBeimBeschichtenVon": "**Ursache:** Beim Beschichten von Stahl auf Baustellen wird der Mindestabstand zwischen Stahloberflächentemperatur $T_{\\text{Stahl}}$ und der Taupunkttemperatur $T_{\\text{Tau}}$ nicht eingehalten.",
+    "anforderungDinEnIso": "**Anforderung DIN EN ISO 12944-7:** Die Stahloberflächentemperatur muss während des gesamten Strahl- und Beschichtungsvorgangs mindestens **3 °C (3 Kelvin) über dem Taupunkt** liegen ($T_{\\text{Stahl}} \\ge T_{\\text{Tau}} + 3\\text{ K}$), und die relative Luftfeuchte darf $85\\%$ nicht überschreiten.",
+    "schadensfolgeEinUnsichtbarerMikroskopisc": "**Schadensfolge:** Ein unsichtbarer mikroskopischer Kondensatfilm auf dem frisch gestrahlten Stahl verhindert die Benetzung. Es kommt nach 6 bis 18 Monaten zu großflächiger Blasenbildung (Osmoseblasen) und partiellem Enthaftungsabriss.",
+    "schutzInstandsetzungVonKunststoffen": " Schutz & Instandsetzung von Kunststoffen & Dichtstoffen",
+    "din18540Dvs2207": "DIN 18540 • DVS 2207 / 2208 • DIN EN 15651",
+    "kunststoffeImBauwesenFlachdachbahnen": "Kunststoffe im Bauwesen (Flachdachbahnen wie PVC-P, FPO/TPO, EPDM; PE-HD-Rohre, Dichtstoffe wie Silikon, Polyurethan, MS-Polymer) unterliegen Alterung durch **UV-Strahlung, Sauerstoff, thermische Wechsellasten und Weichmacherverlust**. Die Hauptfolgen sind Kettenspaltung, Versprödung, Schrumpfung und Rissbildung.",
+    "photooxidationVersprödung": "Photooxidation & Versprödung",
+    "uvQuantenSpaltenC": "UV-Quanten spalten C-C-Kettenbindungen. Sauerstoffradikale bilden Hydroperoxide. Der E-Modul steigt sprunghaft an; der Kunststoff verliert seine Dehnbarkeit und bricht bei thermischer Dehnung.",
+    "niedermolekulareWeichmacherPhthalateIn": "Niedermolekulare Weichmacher (Phthalate in Weich-PVC) wandern an die Oberfläche oder diffundieren in Kontaktmaterialien (Bitumen, EPS-Dämmung). Die Bahn schrumpft und reißt an den Befestigern aus.",
+    "spannungsrisskorrosionEsc": "Spannungsrisskorrosion (ESC)",
+    "gleichzeitigeEinwirkungMechanischerZugsp": "Gleichzeitige Einwirkung mechanischer Zugspannungen und aggressiver Medien (Tenside, Fette) führt bei amorphen Thermoplasten zu sprödem Versagen ohne plastische Vorverformung.",
+    "präventiveSchutzmaßnahmenFürBauwerkspoly": "Präventive Schutzmaßnahmen für Bauwerkspolymere",
+    "t1UvUndAlterungsstabilisierung": "1. UV- und Alterungsstabilisierung (Compoundierung)",
+    "rußCarbonBlackFein": "**Ruß (Carbon Black):** Fein disperser Ruß (2,0 bis 2,5 M.-%) in PE-HD-Dichtungsbahnen und Rohren absorbiert UV-Strahlung vollständig und leitet sie als Wärme ab. Lebensdauer > 50 Jahre.",
+    "halsLichtschutzmittelHinderedAmine": "**HALS-Lichtschutzmittel (Hindered Amine Light Stabilizers):** Radikalfänger im Kunststoff fangen intermediäre Peroxidradikale ab und regenerieren sich kontinuierlich im *Denisov-Zyklus*.",
+    "uvAbsorberHydroxyphenylbenztriazoleWande": "**UV-Absorber:** Hydroxyphenylbenztriazole wandeln UV-Licht photochemisch in unschädliche Wärme um.",
+    "t2WeichmacherschutzTrennlagen": "2. Weichmacherschutz & Trennlagen",
+    "beiVerlegungVonPvc": "Bei Verlegung von PVC-P-Dichtungsbahnen auf Bitumen oder Polystyrol-Hartschaum (EPS/XPS) muss zwingend eine **Trennlage aus Glasvlies (mind. 120 g/m²) oder Polyestervlies (mind. 300 g/m²)** eingebaut werden. Ohne Trennlage entzieht das Bitumen dem PVC die Weichmacher, was zur sofortigen Versprödung und Verhärtung führt.",
+    "t3KonstruktiveFugenplanungDin": "3. Konstruktive Fugenplanung (DIN 18540)",
+    "sicherungDerZweiflankenhaftungDurch": "Sicherung der **Zweiflankenhaftung** durch geschlossenzellige PE-Hinterfüllschnüre. Ein Fugendichtstoff darf niemals am Fugenboden haften (Dreiflankenhaftung erzeugt unzulässige multiaxiale Zugspannungen und führt zum Flankenabriss).",
+    "sanierungsverfahrenFürKunststoffeDichtun": "Sanierungsverfahren für Kunststoffe, Dichtungsbahnen und Rohrleitungen",
+    "thermoplastischesKunststoffschweißenDvs2": " Thermoplastisches Kunststoffschweißen (DVS 2207 / 2208)",
+    "warmgasziehschweißenWzFügenVon": "**Warmgasziehschweißen (WZ):** Fügen von Reparaturflicken auf thermoplastischen Bahnen (PVC, FPO, PE) mittels Heißluftfön und Andrückrolle. Nahtüberdeckung mind. 50 mm.",
+    "heizelementschweißenHsSpiegelschweißenSt": "**Heizelementschweißen (HS / Spiegelschweißen):** Stumpfschweißen von PE-HD-Rohren nach planparallelem Hobeln unter definiertem Anpressdruck.",
+    "heizwendelschweißenHmAufschiebenVon": "**Heizwendelschweißen (HM):** Aufschieben von Reparaturmuffen mit integriertem Heizdraht; Verschmelzen durch computergesteuerten Stromimpuls.",
+    "flüssigkunststoffInlinerSanierung": " Flüssigkunststoff- & Inliner-Sanierung",
+    "flüssigkunststoffÜberarbeitungPmma2k": "**Flüssigkunststoff-Überarbeitung (PMMA / 2K-PUR):** Vollflächig vliesarmierte Beschichtung über undichten Dachanschlüssen, Gullys und Lichtkuppeln. Nahtlose, hochflexible Einbindung komplizierter Geometrien.",
+    "fugensanierungAltdichtstoffRestlosHeraus": "**Fugensanierung:** Altdichtstoff restlos herausschneiden, Flanken mechanisch abschleifen, Primerauftrag, neue PE-Rundschnur und Neuverfugung mit modifiziertem Silikon oder MS-Polymer.",
+    "schlauchreliningKanalrohrinstandsetzungE": "**Schlauchrelining (Kanalrohrinstandsetzung):** Einziehen eines harzgetränkten Textilschlauchs (Polyester- oder Vinylesterharz) in das Altrohr und Aushärtung mittels UV-Lichtkette (grabenlose Kanalsanierung).",
+    "häufigerPraxisfehlerSchweißenAuf": " Häufiger Praxisfehler: Schweißen auf verschmutzten, oxidierten Bahnen",
+    "problemBeiDerInstandsetzung": "**Problem:** Bei der Instandsetzung älterer FPO- oder PE-Flachdachbahnen wird ein neuer Reparaturflicken direkt auf die bewitterte Altbahn aufgeschweißt.",
+    "schadensursacheDurchLangjährigeUv": "**Schadensursache:** Durch langjährige UV-Einwirkung hat sich auf der Altbahn eine mikroskopische Photooxidationsschicht gebildet, auf der Polymerketten keine Diffusion mehr eingehen können. Die Schweißnaht besitzt keinerlei Schälfestigkeit und reißt beim ersten Windsturm ab.",
+    "fachgerechtesVorgehenNachDvs": "**Fachgerechtes Vorgehen nach DVS:** Die Altbahn muss im Nahtbereich mit Spezialreiniger gereinigt und anschließend **mechanisch abgekratzt oder angeschliffen werden**, um unverbrauchte, schweißfähige Polymerschichten freizulegen. Erst danach darf die Heißluftverschweißung mit Andrückrolle erfolgen.",
+    "schutzErhaltungVonAsphaltbefestigungen": " Schutz & Erhaltung von Asphaltbefestigungen (ZTV BEA-StB)",
+    "rsto1224Ztv": "RStO 12/24 • ZTV Fug-StB • TL Bitumen",
+    "asphaltIstEinThermoviskoelastischer": "Asphalt ist ein thermoviskoelastischer Verbundwerkstoff aus Gesteinskörnungen und dem viskoelastischen Bindemittel Bitumen. Unter dem kombinierten Einfluss von Verkehrsbelastung (Schwerlastachsen), Sauerstoff, UV-Licht und Temperaturschwankungen altert das Bitumen durch **Oxidation und Verlust flüchtiger Maltene**. Der Asphaltenanteil steigt an, die Nadelpenetration sinkt, und der Erweichungspunkt Ring und Kugel ($T_{\\text{RuK}}$) steigt.",
+    "spurrinnenVerformung": "Spurrinnen & Verformung",
+    "beiHohenSommertemperaturenSinkt": "Bei hohen Sommertemperaturen sinkt die Viskosität des Bitumens. Wiederholte Schwerlastüberrollungen führen zu plastischer Nachverdichtung und seitlichem Materialaufwurf in den Rollspuren.",
+    "ermüdungsrisseNetzrisse": "Ermüdungsrisse (Netzrisse)",
+    "alterungsbedingteVersprödungFührtBei": "Alterungsbedingte Versprödung führt bei winterlichen Zugspannungen zur Bildung von Mikrorissen, die sich unter Last zu charakteristischen \"Krokodilhaut\"-Netzrissen zusammenschließen.",
+    "schlaglöcherFrostaufbrüche": "Schlaglöcher & Frostaufbrüche",
+    "wasserDringtÜberRisse": "Wasser dringt über Risse in den Schichtenverbund ein. Bei Frost-Tau-Wechseln sprengt das Eis das Korngerüst auf; der Verkehr walkt die losen Gesteinskörner heraus.",
+    "präventiveSchutzmaßnahmenFürAsphaltbeläg": "Präventive Schutzmaßnahmen für Asphaltbeläge",
+    "t1SamiSchichtenStress": "1. SAMI-Schichten (Stress Absorbing Membrane Interlayer)",
+    "elastomermodifizierteBitumenschichtOftMi": "Elastomermodifizierte Bitumenschicht (oft mit Vliesarmierung), die vor dem Einbau der Asphaltdeckschicht aufgerollt wird. Sie baut Scherspannungen elastisch ab und verhindert, dass Risse aus dem Unterbau (z. B. Fugen von Betonfahrbahnen oder Zementstabilisierungen) in die Deckschicht durchschlagen (Reflexionsrisse).",
+    "t2OberflächenbehandlungenObNach": "2. Oberflächenbehandlungen (OB nach ZTV BEA-StB)",
+    "aufspritzenEinerPolymermodifiziertenBitu": "Aufspritzen einer polymermodifizierten Bitumenemulsion (z. B. C60BP5-S) und direktes Abstreuen mit Edelsplitt (z. B. 2/5 oder 5/8 mm) mit anschließendem Einwalzen mit Gummiradwalzen. Versiegelt die Poren gealterter Deckschichten und stellt die Griffigkeit wieder her.",
+    "t3BitumenVerjüngungsmittelRejuvenators": "3. Bitumen-Verjüngungsmittel (Rejuvenators)",
+    "sprühlösungenAufBasisSpezieller": "Sprühlösungen auf Basis spezieller aromatischer Pflanzen- oder Mineralöle. Sie dringen bis zu 10 mm in den Asphalt ein, reichern die verarmte Maltenphase wieder an und senken den Versprödungspunkt um mehrere Grad Celsius.",
+    "instandsetzungsverfahrenNachZtvBea": "Instandsetzungsverfahren nach ZTV BEA-StB",
+    "rissesanierungKleinflächigeReparaturen": " Rissesanierung & kleinflächige Reparaturen",
+    "rissheißvergussZtvFugStb": "**Rissheißverguss (ZTV Fug-StB):** Aufweiten des Risses auf mind. 10–15 mm Breite, Heißluftlanzen-Reinigung (> 150 °C zum Trocknen und Anwärmen der Flanken), Voranstrich und Verfüllen mit polymermodifizierter Bitumenheißvergussmasse. Abstreuen mit Brechsand.",
+    "schlaglochsanierungKaltmischgutIstNur": "**Schlaglochsanierung:** Kaltmischgut ist nur ein *Notbehelf* für den Winter! Dauerhafte Reparatur verlangt: Rechtwinkliges Ausschneiden der Ränder, Grundieren mit Bitumenemulsion, Heißasphalteinbau (AC 8 / AC 11) aus dem Thermocontainer und maschinelle Verdichtung.",
+    "großflächigeDeckenerneuerungDünnschichte": " Großflächige Deckenerneuerung & Dünnschichten",
+    "dskDünneSchichtenIm": "**DSK (Dünne Schichten im Kalteinbau):** Kalt verarbeiteter Mikroasphalt aus Edelsplitt, Zement, Wasser und Polymerbitumen-Emulsion. Einbau in Schichtdicken von 8–15 mm bei voller Verkehrsfreigabe nach 30 Minuten.",
+    "kaltfräsenDeckschichterneuerungAbfräsenD": "**Kaltfräsen & Deckschichterneuerung:** Abfräsen der obersten 4 cm (Deckschicht) und profilgerechter Neueinbau eines Splittmastixasphalts (SMA 11 S) oder Asphaltbetons (AC 11 D S) nach Anspritzen mit Bitumenemulsion (Schichtenverbund nach ZTV Asphalt-StB).",
+    "inSituHeißrecyclingRepave": "**In-situ-Heißrecycling (Repave/Remix):** Erwärmen des Altbelags mit Infrarotstrahlern, Auflockern mit Zinken, Zudosieren von Neubitumen/Splitt und sofortiges Wiedereinbauen in einem Arbeitsgang.",
+    "häufigerPraxisfehlerMangelhafterSchichte": " Häufiger Praxisfehler: Mangelhafter Schichtenverbund beim Asphalteinbau",
+    "schadensbildNach2Bis": "**Schadensbild:** Nach 2 bis 4 Jahren schiebt sich die Asphaltdeckschicht vor Kreuzungen wellenförmig auf (\"Wellblechbildung\") oder platzt großflächig ab.",
+    "ursacheVorDemEinbau": "**Ursache:** Vor dem Einbau der neuen Deckschicht wurde die Unterlage nicht ausreichend gekehrt oder die Bitumenemulsion zum Anspritzen wurde ungleichmäßig dosiert (Vorgabe: $150\\text{ bis }250\\text{ g/m}^2$ Restbindemittel). Zudem wurde der Asphalt eingebaut, bevor die Emulsion vollständig \"gebrochen\" (Wasser verdampft) war.",
+    "qualitätsprüfungNachZtvAsphalt": "**Qualitätsprüfung:** Nach ZTV Asphalt-StB muss der Schichtenverbund an Bohrkernen mittels **Schichtenverbundprüfung nach Leutner** nachgewiesen werden. Die dynamische Scherkraft muss mindestens $15\\text{ kN}$ erreichen.",
+    "schutzInstandsetzungVonMauerwerk": " Schutz & Instandsetzung von Mauerwerk & Naturstein",
+    "wtaMerkblätterReihe2": "WTA-Merkblätter Reihe 2 & 4 • DIN 18533",
+    "mauerwerksUndNatursteinbautenZiegel": "Mauerwerks- und Natursteinbauten (Ziegel, Sandstein, Kalkstein, Tuff) leiden primär unter **aufsteigender Feuchtigkeit und bauschädlichen Salzen** (Chloride, Nitrate, Sulfate). Beim Verdunsten des Wassers kristallisieren die Salze im oberflächennahen Porenraum. Der **Kristallisationsdruck** ($\\sigma_{\\text{krist}} \\le 200\\text{ MPa}$) übersteigt die Zugfestigkeit des Steins ($f_{\\text{ct}} \\approx 1\\text{ bis }5\\text{ MPa}$) um ein Vielfaches und sprengt die Steinoberfläche ab.",
+    "präventiverSchutzVonHistorischem": "Präventiver Schutz von historischem Mauerwerk und Naturstein",
+    "t1HydrophobierungMitAlkylalkoxysilanen": "1. Hydrophobierung mit Alkylalkoxysilanen",
+    "eindringtiefeMindestens3Bis": "Eindringtiefe mindestens 3 bis 5 mm. Schützt Fassaden vor eindringendem Schlagregen, erhält aber die Diffusionsfähigkeit für Wasserdampf. *Wichtig:* Niemals auf salzbelasteten Untergründen anwenden, da die Salzverdunstungsfront hinter die hydrophobierte Schicht verlagert wird und großflächige Schalenabplatzungen verursacht!",
+    "t2KonservierungMitKieselsäureester": "2. Konservierung mit Kieselsäureester (KSE)",
+    "beiMürbenAbsandendenNatursteinen": "Bei mürben, absandenden Natursteinen (z. B. Schilfsandstein): Tränkung mit monomeren Kieselsäureestern. Durch Reaktion mit Porenwasser hydrolysiert das Molekül und scheidet amorphes Siliziumdioxid-Gel ($\\text{SiO}_2 \\cdot n\\text{H}_2\\text{O}$) ab, das das Steingefüge mineralisch wieder verfestigt, ohne Poren zu verstopfen.",
+    "instandsetzungsverfahrenNachWta": "Instandsetzungsverfahren nach WTA",
+    "nachträglicheHorizontalsperrenWta4": " Nachträgliche Horizontalsperren (WTA 4-10)",
+    "bohrlöcherVarnothing12textBis": "Bohrlöcher ($\\varnothing 12\\text{ bis }16\\text{ mm}$ im Abstand von 10–12 cm) in die Lagerfuge einbringen. Injektion von:",
+    "silanCremesDrucklosHochkonzentrierte": "**Silan-Cremes (drucklos):** Hochkonzentrierte Creme wandert durch Kapillarkräfte und Spreitvermögen selbst bei Durchfeuchtungsgraden bis 95 % tief ins Mauerwerk und bildet eine dauerhafte wasserabweisende Sperrschicht.",
+    "mikroemulsionenNiederdruckinjektionKontr": "**Mikroemulsionen (Niederdruckinjektion):** Kontrolliertes Einbringen über Packer bei stark zerklüftetem Mauerwerk.",
+    "sanierputzsystemeRissverankerung": " Sanierputzsysteme & Rissverankerung",
+    "sanierputzNachWtaMerkblatt": "**Sanierputz nach WTA-Merkblatt 2-9:** Hochporöser Putzmörtel mit Gesamtporenvolumen $\\ge 40\\text{ Vol.-\\%}$. Er nimmt Salzlösungen kapillar auf; das Wasser verdunstet im Putzinneren, und die Salze kristallisieren schadlos in den Poren aus, ohne die Wandoberfläche zu zerstören.",
+    "spiralankerSystemeHelikaleEdelstahl": "**Spiralanker-Systeme:** Helikale Edelstahl-Zuganker werden in geschädigte Lagerfugen eingefräst und mit thixotropem Zementquellmörtel verpresst, um Mauerwerksrisse kraftschlüssig zu überbrücken und den Mauerwerksverbund wiederherzustellen.",
+    "häufigerPraxisfehlerZementputzAuf": " Häufiger Praxisfehler: Zementputz auf salzbelastetem Feuchtmauerwerk",
+    "fehlerAufFeuchtemSalzbelastetem": "**Fehler:** Auf feuchtem, salzbelastetem Altziegelmauerwerk wird ein dichter, starrer Zementputz aufgetragen, um die Feuchte \"einzusperren\".",
+    "fataleFolgeZementputzBesitzt": "**Fatale Folge:** Zementputz besitzt einen sehr hohen Diffusionswiderstand. Die aufsteigende Feuchte steigt im Mauerwerk kapillar noch höher auf (teilweise bis ins 1. OG). Hinter dem dichten Putz reichern sich Salze an; der Kristallisationsdruck sprengt nach 2 bis 3 Wintern den Putz mitsamt den Ziegelstirnen ab.",
+    "lösungAltputzMindestens80": "**Lösung:** Altputz mindestens 80 cm über die Schadensgrenze abschlagen, Fugen 2 cm tief auskratzen, Mauerwerk trocken bürsten, WTA-zertifizierten Sanierputz aufbringen und Horizontalsperre herstellen."
+  },
+  "werte": {
+    "beispiel1SchutzdauerEines": "Beispiel 1: Schutzdauer eines Duplex-Systems",
+    "derSynergieeffektEntstehtWeil": "Der Synergieeffekt entsteht, weil die Beschichtung die Zinkkorrosion bremst und das Zink Unterrostung an Fehlstellen verhindert.",
+    "dinEnIso9223": "DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1; DIN EN ISO 12944-5",
+    "beispiel2ResttragfähigkeitEines": "Beispiel 2: Resttragfähigkeit eines angefaulten Holzbalkens",
+    "schon3CmFäule": "Schon 3 cm Fäule ringsum halbieren die Biegetragfähigkeit. Vor der Sanierung nach DIN 68800-4 Feuchteursache beseitigen und den gesunden Restquerschnitt durch Bohrwiderstandsmessung bestimmen.",
+    "din6880042020": "DIN 68800-4:2020-12; DIN EN 1995-1-1",
+    "oktober2026Ap12": "Oktober 2026 (AP 12 Schutz & Instandsetzung: Holz-, Metall- und Mauerwerksinstandsetzung, Normausgaben und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "InstandsetzungMaterialien.schritte": [
+      {
+        "titel": "Zinkschicht",
+        "erklaerung": "85 µm Feuerverzinkung in C4 (Zinkabtrag bis 4,2 µm/a):",
+        "formel": "t_{Zn} = 85 / 4{,}2 \\approx 20\\,\\text{a}"
+      },
+      {
+        "titel": "Beschichtung",
+        "erklaerung": "Erwartete Schutzdauer der Beschichtung allein (Lehrwert):",
+        "formel": "t_{Lack} = 10\\,\\text{a}"
+      },
+      {
+        "titel": "Synergie",
+        "erklaerung": "Synergiefaktor nach Literatur 1,2 bis 2,5; gewählt 1,5:",
+        "formel": "t_{Duplex} = 1{,}5 \\cdot (20 + 10) = 45\\,\\text{a}"
+      }
+    ],
+    "InstandsetzungMaterialien.schritte_2": [
+      {
+        "titel": "Ausgangsquerschnitt",
+        "erklaerung": "Balken b/h = 160/220 mm:",
+        "formel": "W_0 = \\frac{160 \\cdot 220^2}{6} = 1\\,290\\,667\\,\\text{mm}^3"
+      },
+      {
+        "titel": "Restquerschnitt",
+        "erklaerung": "Braunfäule seitlich je 30 mm und unten 30 mm abgetragen: b_r = 100 mm, h_r = 190 mm.",
+        "formel": "W_{Rest} = \\frac{100 \\cdot 190^2}{6} = 601\\,667\\,\\text{mm}^3"
+      },
+      {
+        "titel": "Verhältnis",
+        "erklaerung": "Verbleibende Biegetragfähigkeit:",
+        "formel": "\\frac{601\\,667}{1\\,290\\,667} = 0{,}47 = 47\\,\\%"
+      }
+    ],
+    "InstandsetzungMaterialien.weblinks": [
+      {
+        "title": "WTA e.V. - Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung",
+        "url": "https://www.wta-international.org"
+      },
+      {
+        "title": "DVS - Deutscher Verband für Schweißen und verwandte Verfahren",
+        "url": "https://www.dvs-home.de"
+      },
+      {
+        "title": "FGSV - Forschungsgesellschaft für Straßen- und Verkehrswesen",
+        "url": "https://www.fgsv.de"
+      }
+    ],
+    "InstandsetzungMaterialien.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. Berlin: Springer Vieweg (aktuelle Auflage)",
+      "Stahr, M. (Hrsg.): Bausanierung – Erkennen und Beheben von Bauschäden. Wiesbaden: Springer Vieweg (aktuelle Auflage)"
+    ],
+    "InstandsetzungMaterialien.regelwerke": [
+      {
+        "title": "DIN 68800 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)"
+      },
+      {
+        "title": "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)"
+      },
+      {
+        "title": "DVS 2207 / DVS 2208 (Schweißen von thermoplastischen Kunststoffen)",
+        "url": "https://www.dvs-regelwerk.de/"
+      },
+      {
+        "title": "ZTV BEA-StB (Zusätzliche Technische Vertragsbedingungen für die Erhaltung von Asphaltbefestigungen)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "WTA-Merkblatt 2-9-20/D (Sanierputzsysteme) & 4-10 (Injektionsverfahren gegen kapillaren Feuchtetransport)",
+        "url": "https://www.wta-international.org/"
+      }
+    ],
+    "InstandsetzungMaterialien.formeln": [
+      {
+        "formel": "S = \\frac{t_{\\text{Duplex}}}{t_{\\text{Zink}} + t_{\\text{Lack}}} = 1{,}2 \\text{ bis } 2{,}5",
+        "erklaerung": "Synergiefaktor S von Duplex-Systemen (Feuerverzinkung + Beschichtung; Literaturwerte, vgl. DIN EN ISO 14713-1 und DIN EN ISO 12944-5): Die Gesamtschutzdauer übersteigt die algebraische Summe der Einzelschutzdauern durch gegenseitigen Schutz vor Weißrost und Unterrostung.",
+        "quelle": "DIN EN ISO 14713-1 / DIN EN ISO 12944-5"
+      },
+      {
+        "formel": "u = \\frac{m_w - m_0}{m_0} \\cdot 100\\% \\le 20\\%",
+        "erklaerung": "Kritische Holzfeuchte u (Darrprobe nach DIN EN 13183-1): Masse des enthaltenen Wassers bezogen auf die Trockenmasse m₀. Ab u > 20 % (insbesondere bei u > 28-30 % Fasersättigung) setzt das destruktive Wachstum holzzerstörender Pilze ein.",
+        "quelle": "DIN 68800-1"
+      },
+      {
+        "formel": "b_{\\text{erf}} = \\frac{\\Delta l_{\\text{therm}} + \\Delta l_{\\text{hydr}}}{\\varepsilon_{\\text{zul}}} + \\text{Toleranz}",
+        "erklaerung": "Erforderliche Fugenbreite für elastische Fugendichtstoffe nach DIN 18540: Verhältnis der Gesamtfugenbewegung zur zulässigen Gesamtverformung ε_zul (typisch 20-25 % bei Silikon/PU) zzgl. Fertigungstoleranzen.",
+        "quelle": "DIN 18540 / IVD-Merkblatt"
+      }
+    ]
+  }
+}

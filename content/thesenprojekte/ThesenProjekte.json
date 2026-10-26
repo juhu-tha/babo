@@ -1,0 +1,158 @@
+{
+  "texte": {
+    "akademischeArbeiten": "Akademische Arbeiten",
+    "thesenSemesterprojekte": "Thesen & Semesterprojekte",
+    "hierFindenSieInformationen": "Hier finden Sie Informationen zu Abschlussarbeiten (Bachelor/Master) sowie semesterbegleitenden Projektarbeiten am Institut für Bau und Immobilie (ibi) der THA unter der Betreuung von Prof. Huber.",
+    "betreuungAktiv": "Betreuung Aktiv",
+    "thesenUndSemesterprojekteBei": "Thesen und Semesterprojekte bei Prof. Huber",
+    "akademischeArbeitenBachelorMasterthesis": "Akademische Arbeiten (Bachelor- / Masterthesis) und Semesterprojekte unter der wissenschaftlichen Betreuung von **Prof. Dr.-Ing. Jürgen Huber** orientieren sich eng an dessen Lehrveranstaltungen und Forschungsaktivitäten. Nachfolgend finden Sie die zentralen **Fachdisziplinen** aus dem Curriculum der TH Augsburg zusammen mit beispielhaften Fragestellungen und Verweisen auf die interaktiven Berechnungsmodule dieses Boards zur zeitlichen und fachlichen Vorbereitung.",
+    "fachdisziplinenForschungsschwerpunkteFür": "Fachdisziplinen & Forschungsschwerpunkte für Abschlussarbeiten:",
+    "verwandteModule": "Verwandte Module:",
+    "ablaufAnforderungenAllgemeineLeitlinien": "Ablauf & Anforderungen (Allgemeine Leitlinien)",
+    "eineWissenschaftlicheAbschlussarbeitOder": "Eine wissenschaftliche Abschlussarbeit oder Projektarbeit verlangt neben hohem persönlichem Engagement ein strukturiertes Vorgehen. Zur optimalen Orientierung dienen folgende Phasen und Standards:",
+    "themenfindungExpos": "Themenfindung & Exposé",
+    "egalObEigenesWunschthema": "Egal ob eigenes Wunschthema (z.B. aus der Praxis / Werkstudententätigkeit) oder ein ausgeschriebenes Thema: Sie erstellen zunächst ein 2-3 seitiges Exposé mit Zielsetzung, Methodik und Zeitplan.",
+    "anmeldungBetreuungsvereinbarung": "Anmeldung & Betreuungsvereinbarung",
+    "formalerStartDurchAnmeldung": "Formaler Start durch Anmeldung beim Prüfungsamt der THA. Festlegung von Erst- und Zweitprüfer:in nach Prüfungsordnung (z. B. Prof. Huber); Praxispartner können die fachliche Betreuung übernehmen.",
+    "durchführungLiteratursichtung": "Durchführung & Literatursichtung",
+    "nutzungDerHochschulbibliothekEinschlägig": "Nutzung der Hochschulbibliothek, einschlägiger Fachportale und Regelwerke. Bei experimentellen Arbeiten: Laborplanung und Abstimmung mit den Laboringenieuren.",
+    "kolloquiumPräsentation": "Kolloquium / Präsentation",
+    "mündlicheVerteidigungDerErarbeiteten": "Mündliche Verteidigung der erarbeiteten Ergebnisse im Rahmen eines Kolloquiums an der Hochschule.",
+    "kontaktBetreuung": "Kontakt & Betreuung",
+    "studiengangsleiterLehrgebiete": "Studiengangsleiter / Lehrgebiete",
+    "profDrIngHuber": "Prof. Dr.-Ing. Huber",
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen",
+    "fragenZurEignungIhres": "Fragen zur Eignung Ihres praxisbezogenen Themas oder Initiativbewerbungen richten Sie bitte per E-Mail oder über das nebenstehende Formular direkt an uns.",
+    "thesenInteresseBekunden": "Thesen-Interesse bekunden",
+    "tragenSieSichUnverbindlich": "Tragen Sie sich unverbindlich mit Ihrem Wunschgebiet ein. Prof. Huber wird sich bezüglich der Realisierbarkeit melden.",
+    "eMailTha": "E-Mail (THA)",
+    "fachdisziplinForschungsschwerpunkt": "Fachdisziplin / Forschungsschwerpunkt",
+    "artDerArbeit": "Art der Arbeit",
+    "ungefähresWunschthemaNotiz": "Ungefähres Wunschthema / Notiz",
+    "interesseVorgemerkt": "Interesse vorgemerkt!",
+    "vielenDank": "Vielen Dank, ",
+    "ihreAnfrageZumWunschgebiet": ". Ihre Anfrage zum Wunschgebiet wurde simuliert und erfolgreich registriert. Prof. Dr.-Ing. Huber freut sich auf neue innovative Fragestellungen!",
+    "neuesFormularAusfüllen": "Neues Formular ausfüllen"
+  },
+  "werte": {
+    "bauingenieurwesenBEng": "Bauingenieurwesen (B.Eng.)",
+    "bauenImBestand": "Bauen im Bestand",
+    "bauingenieurwesenBEng2": "Bauingenieurwesen (B.Eng.)",
+    "bauenImBestand2": "Bauen im Bestand",
+    "ihrVorUndNachname": "Ihr Vor- und Nachname",
+    "fachdisziplinForschungsschwerpunkt": "Fachdisziplin / Forschungsschwerpunkt",
+    "eigeneThemenideeOderBevorzugte": "Eigene Themenidee oder bevorzugte Baustoffe / Laborthemen...",
+    "sendeAnfrage": "Sende Anfrage...",
+    "interesseÜbermitteln": "Interesse übermitteln",
+    "wissenschaftlicheArbeit": "Wissenschaftliche Arbeit"
+  },
+  "daten": {
+    "ThesenProjekte": [
+      {
+        "title": "1. Baustoffkunde & Werkstoffkunde",
+        "focus": "Untersuchung physikalisch-mechanischer Eigenschaften sowie Entwicklung CO₂-reduzierter Bindemittel.",
+        "examples": "Druckfestigkeitsentwicklung von Öko-Zementen, Einfluss von Zusatzmitteln auf das Hydratationsverhalten, E-Modul-Bestimmung im Baustofflabor.",
+        "modules": [
+          "Biegezugversuch",
+          "Hydratation",
+          "E-Modul",
+          "Zementchemie",
+          "Messen & Prüfen"
+        ]
+      },
+      {
+        "title": "2. Recycling, Abfälle & Altlasten",
+        "focus": "Schließung von Materialkreisläufen, Ressourceneffizienz und der gesetzeskonforme Rückbau von Tragstrukturen.",
+        "examples": "Qualitätskontrolle von rezyklierten Gesteinskörnungen (RC-Beton), Verwertung mineralischer Abbruchabfälle, Schadstoffentfrachtung im Bestand.",
+        "modules": [
+          "Kreislaufwirtschaft",
+          "Rückbau",
+          "Schadstoffe"
+        ]
+      },
+      {
+        "title": "3. Stahlbetoninstandhaltung",
+        "focus": "Diagnostik und Ertüchtigung geschädigter Stahlbetonbauteile zur Lebenszyklusverlängerung.",
+        "examples": "Carbonatisierungstiefe & Chloridinduzierte Korrosion, Deponierungs- und Monitoringkonzepte, Instandsetzungsplanung nach DAfStb-Richtlinie.",
+        "modules": [
+          "Korrosion",
+          "Zustandsbewertung"
+        ]
+      },
+      {
+        "title": "4. Bauen im Bestand",
+        "focus": "Bauwerksanalytik, Zustandserfassung und Traglastbewertung historischer Konstruktionen.",
+        "examples": "Zerstörungsfreie Materialprüfung (NDT) vor Ort, Bestimmung historischer Materialkennwerte, Sanierungskonzepte für Mauerwerksbauten.",
+        "modules": [
+          "Bestand",
+          "Bauwerkserfassung",
+          "Historische Materialkennwerte"
+        ]
+      },
+      {
+        "title": "5. Bauschäden & Bauschadensanalyse",
+        "focus": "Ursachenforschung bei Bauteilmängeln und bauphysikalischen Schädigungsmechanismen.",
+        "examples": "Holzzerstörende Pilze und Holzkorrosion, Rissursachen und Rissbreitenbeschränkung unter Zwangbeanspruchung, Feuchtetransport in Putzen und Mörteln.",
+        "modules": [
+          "Bauschäden",
+          "Holzkorrosion",
+          "Rissbreite",
+          "Zwang",
+          "Putze & Mörtel"
+        ]
+      },
+      {
+        "title": "6. Nachhaltiges Bauen & Klimaschutz",
+        "focus": "Ökobilanzierung (LCA), Erfassung grauer Energie und Konformitätsprüfungen für Zertifizierungen.",
+        "examples": "Gebäude-Ökobilanzierung nach QNG- und DGNB-Kriterien, Nutzen spezifischer Produkt-EPDs im Vergleich zu Generischen ÖKOBAUDAT-Sicherheitsbeiwerten.",
+        "modules": [
+          "Nachhaltigkeit",
+          "LCA & EPD-Leitfaden"
+        ]
+      },
+      {
+        "title": "7. Beton- und Spannbetonbau",
+        "focus": "Optimierung von Hochleistungs-Betonsystemen und Bemessung unter mechanischer Beanspruchung.",
+        "examples": "Fließfähigkeit von Ultra-High Performance Concrete (UHPC), Bruchverhalten von Faserbeton, Biegebemessung und Verankerungslängen carbonbewehrter Bauteile.",
+        "modules": [
+          "UHPC",
+          "Carbonbeton",
+          "Faserbeton",
+          "Biegebemessung",
+          "Verankerungslänge"
+        ]
+      }
+    ],
+    "ThesenProjekte.weblinks": [
+      {
+        "title": "THA_ibi – Institut für Bau und Immobilie",
+        "url": "https://www.tha.de/ibi"
+      },
+      {
+        "title": "Fakultät für Architektur und Bauwesen - Technische Hochschule Augsburg",
+        "url": "https://www.tha.de/hochschule/fakultaet/ab/"
+      }
+    ],
+    "ThesenProjekte.literatur": [
+      "Karmasin, M.; Ribing, R. (2019): Die Gestaltung wissenschaftlicher Arbeiten (Facultas / UTB)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "ThesenProjekte.regelwerke": [
+      {
+        "title": "Leitfaden zur Anfertigung wissenschaftlicher Abschlussarbeiten der THA",
+        "url": "https://www.tha.de/"
+      },
+      {
+        "title": "Gute wissenschaftliche Praxis (DFG-Kodex)",
+        "url": "https://www.dfg.de/de/grundlagen-themen/grundlagen-und-prinzipien-der-foerderung/gwp"
+      }
+    ],
+    "ThesenProjekte.formeln": [
+      {
+        "formel": "CP = \\sum_{i=1}^n ECTS_i = 180 \\quad (\\text{Bachelor}) \\;\\lor\\; 90\\,\\text{bzw. } 120 \\quad (\\text{Master})",
+        "erklaerung": "Credit-Point-Struktur akademischer Studiengänge an der Fakultät für Architektur und Bauwesen der TH Augsburg.",
+        "quelle": "SPO THA"
+      }
+    ]
+  }
+}

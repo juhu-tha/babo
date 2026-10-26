@@ -1,0 +1,101 @@
+{
+  "texte": {
+    "interaktiveBeispielrechnungenSchrittFür": " Interaktive Beispielrechnungen Schritt für Schritt",
+    "verstehenSieBautechnischeNachweise": "Verstehen Sie bautechnische Nachweise und physikalische Berechnungsmodelle durch interaktives Ausprobieren. Jedes Untermodul erklärt **was**, **wie** und **warum** berechnet wird, nennt die normativen Quellen und bewertet das Ergebnis live basierend auf Ihren Eingaben."
+  },
+  "werte": {
+    "beispielrechnungenBereiche": "Beispielrechnungen: Bereiche",
+    "eurocode2Betonbau": "Eurocode 2 (Betonbau)",
+    "eurocode5Holzbau": "Eurocode 5 (Holzbau)",
+    "eurocode6Mauerwerk": "Eurocode 6 (Mauerwerk)",
+    "karbonatisierungBeton": "Karbonatisierung (Beton)",
+    "treibhauspotentialGwp": "Treibhauspotential (GWP)"
+  },
+  "daten": {
+    "Beispielrechnungen.schall_soll_werte": {
+      "wohnungstrenn": {
+        "erf": 53,
+        "label": "Wohnungstrennwand (DIN 4109-1 Tab. 2)"
+      },
+      "treppenhaus": {
+        "erf": 52,
+        "label": "Treppenraumwand zu Aufenthaltsräumen"
+      },
+      "behandlung": {
+        "erf": 47,
+        "label": "Untersuchungs- & Behandlungsräume"
+      },
+      "doppelhaus": {
+        "erf": 59,
+        "label": "Haustrennwand Doppel-/Reihenhaus (zweischalig)"
+      }
+    },
+    "Beispielrechnungen.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+      "Zement-Merkblatt B12: Mischungsentwurf für Normalbeton (InformationsZentrum Beton)",
+      "Fasold, W.; Veres, E.: Schallschutz und Raumakustik in der Praxis. 2. Aufl., Berlin: Verlag Bauwesen 2003",
+      "Klingsch, W. et al.: Brandschutz im Bauwesen. Berlin: Springer 2018"
+    ],
+    "Beispielrechnungen.regelwerke": [
+      {
+        "title": "DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      },
+      {
+        "title": "DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)"
+      },
+      {
+        "title": "DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)"
+      },
+      {
+        "title": "DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)"
+      },
+      {
+        "title": "DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)"
+      },
+      {
+        "title": "DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)"
+      },
+      {
+        "title": "DAfStb-Richtlinie: Bauen im Bestand (März 2017)"
+      }
+    ],
+    "Beispielrechnungen.formeln": [
+      {
+        "formel": "U = \\frac{1}{R_{si} + \\sum \\frac{d_i}{\\lambda_i} + R_{se}}",
+        "erklaerung": "Berechnung des Wärmedurchgangskoeffizienten eines mehrschichtigen Bauteils mit stationärem Wärmestrom.",
+        "quelle": "DIN EN ISO 6946"
+      },
+      {
+        "formel": "R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0",
+        "erklaerung": "Direktschalldämm-Maß einschaliger Massivbauteile aus der flächenbezogenen Masse nach DIN 4109 Massekurve.",
+        "quelle": "DIN 4109 Beiblatt 1"
+      },
+      {
+        "formel": "d_{\\text{ef}} = \\beta_n \\cdot t_{\\text{fi}} + k_0 \\cdot d_0",
+        "erklaerung": "Effektive Abbrandtiefe im Holzbau unter Normbrandbeanspruchung nach der Restquerschnittsmethode.",
+        "quelle": "DIN EN 1995-1-2"
+      },
+      {
+        "formel": "\\mu_{Ed} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}}",
+        "erklaerung": "Dimensionsloses Biegemoment zur Bestimmung der Biegebewehrung und Überprüfung der Betondruckzone.",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "\\sigma_{c,0,d} \\le k_c \\cdot f_{c,0,d}",
+        "erklaerung": "Zentrischer Drucknachweis unter Berücksichtigung der Knickgefahr durch den Abminderungsbeiwert k_c.",
+        "quelle": "DIN EN 1995-1-1"
+      },
+      {
+        "formel": "N_{Rd} = \\Phi \\cdot t \\cdot f_d",
+        "erklaerung": "Vertikaler Traglastwiderstand pro Meter Wandlänge unter Berücksichtigung von Schlankheit und Lastexzentrizität.",
+        "quelle": "DIN EN 1996-3"
+      },
+      {
+        "formel": "d_k = k \\cdot \\sqrt{t}",
+        "erklaerung": "Karbonatisierungstiefe über das Quadratwurzel-Zeit-Gesetz (Diffusionskinetik nach Fick).",
+        "quelle": "DIN EN 1992-1-1"
+      }
+    ]
+  }
+}

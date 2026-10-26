@@ -1,0 +1,35 @@
+{
+  "texte": {
+    "stabilitätsnachweisBiegeknickenEinerPend": "Stabilitätsnachweis (Biegeknicken) einer pendelnd gelagerten Holzstütze",
+    "wasBerechnetWirdDer": "**Was?** Berechnet wird der Standsicherheitsnachweis einer druckbeanspruchten Holzstütze mit quadratischem/rechteckigem Querschnitt. <br>**Warum?** Schlanke Bauteile versagen unter zentrischer Druckkraft oft nicht durch direktes Brechen (Materialstauchung), sondern weichen schlagartig seitlich aus (instabiles Biegeknicken). <br>**Wie?** Mit dem Ersatzstabverfahren nach dem Abminderungsbeiwert $k_c$ gemäß **Eurocode 5 (DIN EN 1995-1-1)**.",
+    "abmessungenEinwirkungen": " Abmessungen & Einwirkungen",
+    "knicklängeSKL": "Knicklänge $s_k = L$ (m):",
+    "querschnittBHCm": "Querschnitt $b = h$ (cm):",
+    "normalkraftNDKn": "Normalkraft $N_d$ (kN):",
+    "knicknachweisNachEurocode5": "Knicknachweis nach Eurocode 5 Schritt für Schritt",
+    "fürDieHolzgüte": "Für die Holzgüte ",
+    "beträgtDerFestigkeitswert": " beträgt der Festigkeitswert ",
+    "brFürNutzungsklasse1": ". <br>Für Nutzungsklasse 1 oder 2 und die Klasse der Lasteinwirkungsdauer (KLED) „kurz“ – angenommen ist, dass eine kurzzeitige Einwirkung (z. B. Schnee unter 1000 m ü. NN) die maßgebende Kombination bestimmt – gilt $k_{mod} = 0{,}9$ (DIN EN 1995-1-1, Tab. 3.1). Bei ständiger bzw. langer Lasteinwirkung wäre k_mod = 0,6 bzw. 0,7 anzusetzen. Der Bemessungswert lautet:",
+    "schritt1FestigkeitenBestimmen": "**Schritt 1: Festigkeiten bestimmen**",
+    "flächeAUndTrägheitsradius": "Fläche $A$ und Trägheitsradius $i$ des quadratischen Querschnitts:",
+    "darausFolgtDerDimensionslose": "Daraus folgt der dimensionslose Schlankheitsgrad $\\lambda$:",
+    "schritt2GeometrischeKennwerte": "**Schritt 2: Geometrische Kennwerte & Schlankheit ermitteln**",
+    "mitDemEModul": "Mit dem E-Modul-Quantilswert ",
+    "schritt3RelativenSchlankheitsgrad": "**Schritt 3: Relativen Schlankheitsgrad berechnen**",
+    "mitDemGradDer": "Mit dem Grad der Systemunvollkommenheit $\\beta_c = 0{,}2$ für Vollholz:",
+    "darausErgibtSichDer": "Daraus ergibt sich der Abminderungsbeiwert $k_c$:",
+    "schritt4KnickbeiwertK": "**Schritt 4: Knickbeiwert k_c bestimmen**",
+    "einwirkendeDruckspannungSigmaC": "Einwirkende Druckspannung $\\sigma_{c,0,d}$:",
+    "schritt5SpannungsnachweisDurchführen": "**Schritt 5: Spannungsnachweis durchführen**",
+    "ausnutzungsgradKnicknachweis": "Ausnutzungsgrad (Knicknachweis):",
+    "ausnutzung": "% Ausnutzung",
+    "dieStützeIstZu": "Die Stütze ist zu "
+  },
+  "werte": {
+    "knicklängeM": "Knicklänge (m)",
+    "querschnittCm": "Querschnitt (cm)",
+    "normalkraftKn": "Normalkraft (kN)",
+    "derNachweisGegenStabilitätsversagen": "Der Nachweis gegen Stabilitätsversagen im Grenzzustand der Tragfähigkeit (GZT) ist erfüllt. Die Stütze besitzt ausreichenden Widerstand gegen seitliches Ausknicken unter der vorgegebenen Einwirkung.",
+    "achtungDieTragfähigkeitIst": "Achtung! Die Tragfähigkeit ist überschritten. Erhöhen Sie den Holzquerschnitt (z.B. auf 16x16 cm) oder verringern Sie die Knicklänge der Stütze mittels konstruktiver Zwischenhalterungen."
+  }
+}

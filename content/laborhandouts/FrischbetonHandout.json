@@ -1,0 +1,55 @@
+{
+  "texte": {
+    "ergebnisseJeProbe": "Ergebnisse je Probe",
+    "luftAusRohdichteIn": "Luft aus Rohdichte in %",
+    "ausbreitmaßklassenNachDinEn": "Ausbreitmaßklassen nach DIN EN 206",
+    "versuchsHandoutFrischbetonprüfungen": " Versuchs-Handout: Frischbetonprüfungen",
+    "ausbreitmaßDinEn12350": "Ausbreitmaß (DIN EN 12350-5), Frischbetonrohdichte (DIN EN 12350-6) und Luftgehalt im Druckausgleichsverfahren (DIN EN 12350-7)",
+    "dieDreiPrüfungenWerden": "Die drei Prüfungen werden an derselben Probe direkt nacheinander ausgeführt. Sie entscheiden auf der Baustelle über die Annahme des Betons und im Labor über die Eignung eines Mischungsentwurfs.",
+    "konsistenzprüfverfahrenImÜberblickRheolo": "Konsistenzprüfverfahren im Überblick, Rheologie und Einflüsse auf die Verarbeitbarkeit behandelt das Modul Frischbeton."
+  },
+  "werte": {
+    "ausbreitmaßMittel": "Ausbreitmaß (Mittel)",
+    "frischbetonrohdichteMittel": "Frischbetonrohdichte (Mittel)",
+    "luftgehaltACMittel": "Luftgehalt A_c (Mittel)",
+    "unvollständigeZeilenWerdenNicht": "Unvollständige Zeilen werden nicht ausgewertet.",
+    "ausbreitmaßF": "Ausbreitmaß f",
+    "klasse1Probe": "Klasse (1. Probe)",
+    "luftgehaltAC": "Luftgehalt A_c",
+    "ihrRechenwegProbe1": "Ihr Rechenweg: Probe 1",
+    "mittelDerBeidenDurchmesser": "Mittel der beiden Durchmesser, auf 10 mm gerundet:",
+    "masseDesVerdichtetenBetons": "Masse des verdichteten Betons durch das Behältervolumen, auf 10 kg/m³ gerundet:",
+    "ablesewertMinusKorrekturfaktorDer": "Ablesewert minus Korrekturfaktor der Gesteinskörnung:",
+    "gegenprobeÜberDieRohdichte": "Gegenprobe über die Rohdichte",
+    "luftporenfreieSollRohdichteAus": "Luftporenfreie Soll-Rohdichte aus dem Mischungsentwurf:",
+    "dieGegenprobeIstNur": "Die Gegenprobe ist nur so gut wie die Soll-Rohdichte: Abweichungen im Wassergehalt oder in der Kornrohdichte verschieben sie um mehrere Zehntel Prozent.",
+    "dinEn123505": "DIN EN 12350-5:2019-09, DIN EN 12350-6:2019-09, DIN EN 12350-7:2022-05; Klassen nach DIN EN 206",
+    "theorieUndVirtuelleVersuche": "Theorie und virtuelle Versuche",
+    "zumModulFrischbeton": "Zum Modul Frischbeton",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)",
+    "konsistenzBeton": "Konsistenz (Beton)"
+  },
+  "daten": {
+    "FrischbetonHandout.literatur": [
+      "Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (jeweils aktuelle Ausgabe)",
+      "Weigler, H.; Karl, S.: Beton – Arten, Herstellung, Eigenschaften. Berlin: Ernst & Sohn 1989"
+    ],
+    "FrischbetonHandout.formeln": [
+      {
+        "formel": "f = (d_1 + d_2)/2",
+        "erklaerung": "Ausbreitmaß, auf 10 mm gerundet.",
+        "quelle": "DIN EN 12350-5:2019-09"
+      },
+      {
+        "formel": "D = (m_2 - m_1)/V",
+        "erklaerung": "Frischbetonrohdichte, auf 10 kg/m³ gerundet.",
+        "quelle": "DIN EN 12350-6:2019-09"
+      },
+      {
+        "formel": "A_c = A_1 - G",
+        "erklaerung": "Luftgehalt des Betons; G Korrekturfaktor der Gesteinskörnung.",
+        "quelle": "DIN EN 12350-7:2022-05"
+      }
+    ]
+  }
+}

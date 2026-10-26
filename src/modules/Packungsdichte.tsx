@@ -18,6 +18,8 @@ import {
   Legend,
   LogarithmicScale
 } from 'chart.js';
+import inhalt from '@/content/packungsdichte/Packungsdichte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -142,7 +144,7 @@ export default function Packungsdichte() {
         labels: sieves,
         datasets: [
           {
-            label: 'Aktuelles Gemisch',
+            label: inhalt.werte.aktuellesGemisch,
             data: mixedCurve,
             borderColor: '#A3113E',
             backgroundColor: 'rgba(239, 68, 68, 0.1)',
@@ -224,7 +226,7 @@ export default function Packungsdichte() {
         labels: fractions.map(f => f.x),
         datasets: [
           {
-            label: 'Ideale Theorie (Mooney/Furnas)',
+            label: inhalt.werte.idealeTheorieMooneyFurnas,
             data: fractions.map(f => f.ideal),
             borderColor: '#94a3b8',
             borderDash: [5, 5],
@@ -233,7 +235,7 @@ export default function Packungsdichte() {
             pointRadius: 0
           },
           {
-            label: 'Theoretisch linear (Gleiche Größen)',
+            label: inhalt.werte.theoretischLinearGleicheGrößen,
             data: fractions.map(f => f.linear),
             borderColor: '#e2e8f0',
             borderWidth: 1,
@@ -261,11 +263,7 @@ export default function Packungsdichte() {
           <Layers className="text-shiraz" /> Packungsdichteoptimierung
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Optimierung der Packungsdichte aller Feststoffe (Gesteinskörnung + Feinteile) ist entscheidend für 
-          leistungsfähigen und ressourcenschonenden Beton (z.B. UHPC oder Eco-Beton). Eine optimale Sieblinie minimiert den Hohlraumgehalt, 
-          wodurch weniger Wasser und Zementleim zur Verfüllung benötigt wird.
-          </p>
+          <p><MdText text={inhalt.texte.dieOptimierungDerPackungsdichte} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 w-full">
@@ -276,9 +274,7 @@ export default function Packungsdichte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveTab('sieblinien')}
-          >
-            Kontinuierliche Modelle (Sieblinien)
-          </button>
+          ><MdText text={inhalt.texte.kontinuierlicheModelleSieblinien} /></button>
           <button aria-pressed={activeTab === 'zweikorn'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zweikorn' 
@@ -286,19 +282,17 @@ export default function Packungsdichte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveTab('zweikorn')}
-          >
-            Diskrete Modelle (Zweikornmischung)
-          </button>
+          ><MdText text={inhalt.texte.diskreteModelleZweikornmischung} /></button>
         </div>
 
         {activeTab === 'sieblinien' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Feststoffanteile (Vol.-%)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.feststoffanteileVol} /></h3>
               <div className="space-y-4">
                 <Slider
-                  label="Zement" info="Menge des Zements."
+                  label="Zement" info={inhalt.werte.mengeDesZements}
                   value={results.aZement}
                   min={0}
                   max={30}
@@ -307,7 +301,7 @@ export default function Packungsdichte() {
                   unit="%"
                 />
                 <Slider
-                  label="Zusatzstoff (z.B. Kalksteinmehl)" 
+                  label={inhalt.werte.zusatzstoffZBKalksteinmehl} 
                   value={results.aZusatz}
                   min={0}
                   max={30}
@@ -316,7 +310,7 @@ export default function Packungsdichte() {
                   unit="%"
                 />
                 <Slider
-                  label="Sand (0/2 mm)" info="Menge der feinen Gesteinskörnung."
+                  label={inhalt.werte.sand02Mm} info={inhalt.werte.mengeDerFeinenGesteinskörnung}
                   value={results.aSand}
                   min={0}
                   max={60}
@@ -325,7 +319,7 @@ export default function Packungsdichte() {
                   unit="%"
                 />
                 <Slider
-                  label="Kies (2/8 mm)" 
+                  label={inhalt.werte.kies28Mm} 
                   value={results.aKies1}
                   min={0}
                   max={60}
@@ -335,7 +329,7 @@ export default function Packungsdichte() {
                 />
                 <div className="pt-2 border-t border-home-grau/30">
                   <div className="flex justify-between text-sm font-medium text-text-main">
-                    <span>Kies (8/16 mm) - Rest</span>
+                    <span><MdText text={inhalt.texte.kies816Mm} /></span>
                     <span>{formatDeZahl(results.aKies2, 0)} %</span>
                   </div>
                   <div className="w-full bg-home-grau/20 h-3 rounded-full mt-2 overflow-hidden flex">
@@ -350,8 +344,8 @@ export default function Packungsdichte() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Massen pro m³ Beton</h3>
-              <Slider info="Volumenanteil aller festen Bestandteile im Beton." label="Feststoffvolumen im Beton"
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.massenProMBeton} /></h3>
+              <Slider info={inhalt.werte.volumenanteilAllerFestenBestandteile} label={inhalt.werte.feststoffvolumenImBeton}
                 value={vFest}
                 min={600}
                 max={850}
@@ -362,23 +356,23 @@ export default function Packungsdichte() {
               />
               <div className="mt-6 space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-600">Zement (ρ = 3,1 kg/l)</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.zement31Kg} /></span>
                   <span className="font-medium">{formatDeZahl(results.mZement, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Zusatzstoff (ρ = 2,65 kg/l)</span>
+                  <span className="text-slate-500"><MdText text={inhalt.texte.zusatzstoff265Kg} /></span>
                   <span className="font-medium">{formatDeZahl(results.mZusatz, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-amber-600">Sand 0/2 (ρ = 2,65 kg/l)</span>
+                  <span className="text-amber-600"><MdText text={inhalt.texte.sand022} /></span>
                   <span className="font-medium">{formatDeZahl(results.mSand, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-stone-500">Kies 2/8 (ρ = 2,65 kg/l)</span>
+                  <span className="text-stone-500"><MdText text={inhalt.texte.kies282} /></span>
                   <span className="font-medium">{formatDeZahl(results.mKies1, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-stone-700">Kies 8/16 (ρ = 2,65 kg/l)</span>
+                  <span className="text-stone-700"><MdText text={inhalt.texte.kies8162} /></span>
                   <span className="font-medium">{formatDeZahl(results.mKies2, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm font-bold border-t border-home-grau/30 pt-3 mt-3">
@@ -389,10 +383,10 @@ export default function Packungsdichte() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Modellparameter & Eigenschaften</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.modellparameterEigenschaften} /></h3>
               
               <div className="mb-6">
-                <div className="flex items-center gap-2"><label className="block text-sm font-medium text-text-main mb-2">Kornform der Gesteinskörnung</label><InfoTooltip text="Form der Gesteinskörner (z.B. gedrungen, plattig)." /></div>
+                <div className="flex items-center gap-2"><label className="block text-sm font-medium text-text-main mb-2"><MdText text={inhalt.texte.kornformDerGesteinskörnung} /></label><InfoTooltip text={inhalt.werte.formDerGesteinskörnerZ} /></div>
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input 
@@ -403,7 +397,7 @@ export default function Packungsdichte() {
                       onChange={() => setKornform('rund')}
                       className="text-primary focus:ring-primary"
                     />
-                    <span className="text-sm">Rund (Flusskies)</span>
+                    <span className="text-sm"><MdText text={inhalt.texte.rundFlusskies} /></span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input 
@@ -414,12 +408,12 @@ export default function Packungsdichte() {
                       onChange={() => setKornform('gebrochen')}
                       className="text-primary focus:ring-primary"
                     />
-                    <span className="text-sm">Gebrochen (Splitt)</span>
+                    <span className="text-sm"><MdText text={inhalt.texte.gebrochenSplitt} /></span>
                   </label>
                 </div>
               </div>
 
-              <Slider info="Exponent q der modifizierten Andreasen-Gleichung. Ein kleineres q erhöht die Packungsdichte durch einen höheren Feinstoffanteil (Feinsand/Zement)." label={<FormulaText text="Verteilungsmodul (q)" />}
+              <Slider info={inhalt.werte.exponentQDerModifizierten} label={<FormulaText text={inhalt.werte.verteilungsmodulQ} />}
                 value={q}
                 min={0.20}
                 max={0.50}
@@ -442,7 +436,7 @@ export default function Packungsdichte() {
                     scales: {
                       x: {
                         type: 'logarithmic',
-                        title: { display: true, text: 'Partikelgröße d (mm)' },
+                        title: { display: true, text: inhalt.werte.partikelgrößeDMm },
                         min: 0.001,
                         max: 20,
                         ticks: {
@@ -454,7 +448,7 @@ export default function Packungsdichte() {
                       y: {
                         beginAtZero: true,
                         max: 100,
-                        title: { display: true, text: 'Durchgang (%)' }
+                        title: { display: true, text: inhalt.werte.durchgang }
                       }
                     },
                     plugins: {
@@ -470,7 +464,7 @@ export default function Packungsdichte() {
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Bewertung & Visualisierung</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.bewertungVisualisierung} /></h3>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
                   <div className="text-xs text-text-main/70 mb-1">RMSE zu A&A</div>
@@ -479,13 +473,13 @@ export default function Packungsdichte() {
                   </div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
-                  <div className="text-xs text-text-main/70 mb-1">RMSE zu Fuller</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.rmseZuFuller} /></div>
                   <div className={`text-xl font-bold ${results.rmseFuller < 5 ? 'text-emerald-600' : results.rmseFuller < 10 ? 'text-amber-500' : 'text-torch-red'}`}>
                     {formatDeZahl(results.rmseFuller, 1)}
                   </div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
-                  <div className="text-xs text-text-main/70 mb-1">Est. Packungsdichte</div>
+                  <div className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.estPackungsdichte} /></div>
                   <div className="text-xl font-bold text-primary">
                     {formatDeZahl((results.estimatedPD * 100), 1)} %
                   </div>
@@ -494,7 +488,7 @@ export default function Packungsdichte() {
 
               {/* Grafische Darstellung des Querschnitts */}
               <div className="mt-4">
-                <h4 className="text-sm font-medium text-text-main mb-2">Schematisches Gefügemodell</h4>
+                <h4 className="text-sm font-medium text-text-main mb-2"><MdText text={inhalt.texte.schematischesGefügemodell} /></h4>
                 <div className="relative w-full h-40 bg-slate-100 rounded-lg border border-home-grau/30 overflow-hidden">
                   <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice">
                     {/* Hintergrund (Wasser/Luft) */}
@@ -551,15 +545,9 @@ export default function Packungsdichte() {
                       />
                     ))}
                   </svg>
-                  <div className="absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded text-[10px] text-text-main/70 backdrop-blur-sm">
-                    Visualisierung stark vereinfacht
-                  </div>
+                  <div className="absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded text-[10px] text-text-main/70 backdrop-blur-sm"><MdText text={inhalt.texte.visualisierungStarkVereinfacht} /></div>
                 </div>
-                <p className="text-xs text-text-main/60 mt-2">
-                  Ein geringer RMSE-Wert bedeutet eine gute Annäherung an die Idealsieblinie. 
-                  Die Feinteile (Zement, Zusatzstoffe) füllen die Hohlräume zwischen den Sand- und Kieskörnern.
-                  Runde Körner ermöglichen eine dichtere Packung als gebrochene Körner.
-                </p>
+                <p className="text-xs text-text-main/60 mt-2"><MdText text={inhalt.texte.einGeringerRmseWert} /></p>
               </div>
             </div>
           </div>
@@ -570,57 +558,52 @@ export default function Packungsdichte() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-2 text-text-main">Diskrete Packungsdichtemodelle</h3>
-              <p className="text-sm text-text-main/80 mb-4">
-                Während kontinuierliche Modelle (wie A&A) eine ideale Kornverteilungskurve vorgeben, betrachten 
-                diskrete Modelle (wie das Toufar-Modell oder CPM) die Interaktion einzelner Korngrößenklassen. 
-                Sie berechnen die resultierende Packungsdichte basierend auf den Eigenpackungsdichten und den 
-                Größenverhältnissen (d₁/d₂).
-              </p>
+              <h3 className="font-semibold mb-2 text-text-main"><MdText text={inhalt.texte.diskretePackungsdichtemodelle} /></h3>
+              <p className="text-sm text-text-main/80 mb-4"><MdText text={inhalt.texte.währendKontinuierlicheModelleWie} /></p>
               
               <div className="space-y-3 mb-6">
                 <div className="bg-white p-3 border border-home-grau/30 rounded-lg">
-                  <h4 className="font-bold text-sm">Compressible Packing Model (CPM)</h4>
-                  <p className="text-xs text-text-main/70 mt-1">Nach de Larrard (1999). Berücksichtigt zusätzlich zu idealen geometrischen Modellen den Wandeffekt (Wall effect) und den Auflockerungseffekt (Loosening effect) über einen Verdichtungsindex K.</p>
+                  <h4 className="font-bold text-sm"><MdText text={inhalt.texte.compressiblePackingModelCpm} /></h4>
+                  <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.nachDeLarrard1999} /></p>
                 </div>
                 <div className="bg-white p-3 border border-home-grau/30 rounded-lg">
-                  <h4 className="font-bold text-sm">Toufar-, Klose- und Born-Modell (1976)</h4>
-                  <p className="text-xs text-text-main/70 mt-1">Beschreibt die Änderung der Packungsdichte einer binären Mischung in Abhängigkeit des Durchmessers der beiden Fraktionen und ihres Mischungsverhältnisses.</p>
+                  <h4 className="font-bold text-sm"><MdText text={inhalt.texte.toufarKloseUndBorn} /></h4>
+                  <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.beschreibtDieÄnderungDer} /></p>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h4 className="font-medium text-sm text-text-main border-b border-home-grau/30 pb-2">Eingabeparameter Feinkorn (Index 1)</h4>
+                <h4 className="font-medium text-sm text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.eingabeparameterFeinkornIndex1} /></h4>
                 <div className="grid grid-cols-2 gap-4">
-                  <Slider label="Durchmesser (d₁)" value={d1} min={0.1} max={4} step={0.1} onChange={(e) => setD1(Number(e.target.value))} unit=" mm" />
-                  <Slider label="Packungsdichte (φ₁)" value={phi1} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi1(Number(e.target.value))} unit="" />
+                  <Slider label={inhalt.werte.durchmesserD} value={d1} min={0.1} max={4} step={0.1} onChange={(e) => setD1(Number(e.target.value))} unit=" mm" />
+                  <Slider label={inhalt.werte.packungsdichte} value={phi1} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi1(Number(e.target.value))} unit="" />
                 </div>
                 
-                <h4 className="font-medium text-sm text-text-main border-b border-home-grau/30 pb-2 mt-4">Eingabeparameter Grobkorn (Index 2)</h4>
+                <h4 className="font-medium text-sm text-text-main border-b border-home-grau/30 pb-2 mt-4"><MdText text={inhalt.texte.eingabeparameterGrobkornIndex2} /></h4>
                 <div className="grid grid-cols-2 gap-4">
-                  <Slider label="Durchmesser (d₂)" value={d2} min={4} max={32} step={1} onChange={(e) => setD2(Number(e.target.value))} unit=" mm" />
-                  <Slider label="Packungsdichte (φ₂)" value={phi2} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi2(Number(e.target.value))} unit="" />
+                  <Slider label={inhalt.werte.durchmesserD2} value={d2} min={4} max={32} step={1} onChange={(e) => setD2(Number(e.target.value))} unit=" mm" />
+                  <Slider label={inhalt.werte.packungsdichte2} value={phi2} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi2(Number(e.target.value))} unit="" />
                 </div>
               </div>
             </div>
             
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-2 text-text-main">Wandeffekt und Auflockerung</h3>
+              <h3 className="font-semibold mb-2 text-text-main"><MdText text={inhalt.texte.wandeffektUndAuflockerung} /></h3>
               <ul className="text-sm text-text-main/80 space-y-2 list-disc pl-5">
-                <li><strong>Wandeffekt:</strong> Wenn ein kleines Korn an ein sehr großes Korn stößt (Grobkorn als "Wand"), entsteht dort ein asymmetrischer Hohlraum, weil sich Feinkörner nicht perfekt an ebene Wände anlegen können.</li>
-                <li><strong>Auflockerungseffekt:</strong> Wenn das Größenverhältnis (d₁/d₂) zu groß ist, passen feine Partikel nicht mehr in die Poren der Grobkörner. Sie drücken die Grobkörner auseinander, was das Gesamtvolumen vergrößert.</li>
+                <li><MdText text={inhalt.texte.wandeffektWennEinKleines} /></li>
+                <li><MdText text={inhalt.texte.auflockerungseffektWennDasGrößenverhältn} /></li>
               </ul>
               
               <div className="mt-4 p-4 border border-blue-200 bg-blue-50 rounded-lg text-sm text-blue-900 shadow-sm">
-                <strong>Verhältnis der Durchmesser (d₁/d₂): {formatDeZahl((d1/d2), 3)}</strong>
-                <p className="mt-1 opacity-80">Je näher das Verhältnis an 0 ist, desto mehr nähert sich die reale Packungsdichte der idealen Theorieküste an. Je näher es an 1 ist, desto flacher verläuft die Kurve.</p>
+                <strong><MdText text={inhalt.texte.verhältnisDerDurchmesserD} />{formatDeZahl((d1/d2), 3)}</strong>
+                <p className="mt-1 opacity-80"><MdText text={inhalt.texte.jeNäherDasVerhältnis} /></p>
               </div>
             </div>
           </div>
 
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Zweikornmischung Packungsdichte (φ)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.zweikornmischungPackungsdichte} /></h3>
               <div className="h-[400px]">
                 <Line 
                   data={zweikornResults.chartData} 
@@ -629,12 +612,12 @@ export default function Packungsdichte() {
                     maintainAspectRatio: false,
                     scales: {
                       x: {
-                        title: { display: true, text: 'Volumenanteil Feinkorn (%)' },
+                        title: { display: true, text: inhalt.werte.volumenanteilFeinkorn },
                         min: 0,
                         max: 100
                       },
                       y: {
-                        title: { display: true, text: 'Packungsdichte (%)' },
+                        title: { display: true, text: inhalt.werte.packungsdichte3 },
                         suggestedMin: Math.min(phi1, phi2) * 100 - 5,
                         suggestedMax: 85
                       }
@@ -660,33 +643,9 @@ export default function Packungsdichte() {
         { title: 'Packungsdichte', url: 'https://de.wikipedia.org/wiki/Packungsdichte' },
         { title: 'Sieblinie', url: 'https://de.wikipedia.org/wiki/Sieblinie' }
       ]}
-        literatur={[
-          'De Larrard, F. (1999): Concrete Mixture Proportioning: A Scientific Approach (E & FN Spon)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Frings, K.: Optimierung von Betonzusammensetzungen mittels Kornpackungsmodellen (RWTH Aachen)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 12620: Gesteinskörnungen für Beton' },
-          { title: 'DIN EN 933: Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen (Kornverteilung - Siebverfahren)' },
-          { title: 'DIN 1045-2: Anhang L (Kornzusammensetzung der Gesteinskörnung)' }
-        ]}
-        formeln={[
-          {
-            formel: 'P(d) = \\frac{d^q - d_{\\text{min}}^q}{D_{\\text{max}}^q - d_{\\text{min}}^q} \\cdot 100\\,\\%',
-            erklaerung: 'Modifiziertes Andreasen & Andersen Modell (A&A): Kontinuierliche Kornpackungsoptimierung unter Einbeziehung des Feinstkornbereichs d_min mit Verteilungsmodul q (für UHPC oft q = 0.23 bis 0.28).',
-            quelle: 'Andreasen & Andersen / Funk & Dinger'
-          },
-          {
-            formel: 'P(d) = \\left(\\frac{d}{D_{\\text{max}}}\\right)^n \\cdot 100\\,\\% \\quad (n = 0{,}5 \\implies \\text{Fuller-Kurve})',
-            erklaerung: 'Fuller-Gleichung: Idealisierte stetige Sieblinie mit Exponent n = 0.5 für maximale Dichte und minimale Hohlraumvolumina.',
-            quelle: 'DIN 1045-2 / Fuller-Thompson'
-          },
-          {
-            formel: '\\Phi = \\frac{V_{\\text{Fest}}}{V_{\\text{Gesamt}}} = 1 - \\varepsilon',
-            erklaerung: 'Packungsdichte Phi: Verhältnis des Feststoffvolumens zum Gesamtvolumen (wobei epsilon der Hohlraumgehalt ist).',
-            quelle: 'De Larrard'
-          }
-        ]}
+        literatur={inhalt.daten["Packungsdichte.literatur"]}
+        regelwerke={inhalt.daten["Packungsdichte.regelwerke"]}
+        formeln={inhalt.daten["Packungsdichte.formeln"]}
       />
     </div>
   );

@@ -4,6 +4,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, ShieldAlert, Sparkles, AlertTriangle, ArrowRight } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpbefestigung/BpBefestigung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface FastenerProduct {
   name: string;
@@ -19,60 +21,7 @@ interface FastenerProduct {
   disadvantages: string[];
 }
 
-const anchorProducts: FastenerProduct[] = [
-  {
-    name: 'M4 - M16 Nylon-Spreizdübel',
-    category: 'Einfacher Kunststoffdübel',
-    standard: 'DIN EN 1992-4 / ETA',
-    loadCapacity: '0,1 kN - 1,5 kN (Gering bis mittel)',
-    edgeDistance: 'Große Randabstände erforderlich',
-    installTemp: '-40 °C bis +80 °C (Nutzung)',
-    substrate: 'Vollmauerwerk, Kalksandstein, Standard-Beton',
-    failureMode: 'Herausziehen (Schlupf), Kunststoffschandlung',
-    description: 'Universeller Spreizdübel aus Polyamid (Nylon). Dehnt sich beim Eindrehen der Schraube kraftschlüssig an die Flanken der Bohrlochwandung aus. In Hochlochziegeln nur bedingt mit Siebhülsen einsetzbar.',
-    advantages: ['Sehr kostengünstiges Bauteil', 'Einfache visuelle Kontrolle', 'Unempfindlich gegen leichte Bohrlochtoleranzen'],
-    disadvantages: ['Tragende Anwendungen nur mit ETA (z. B. Mehrfachbefestigung nichttragender Systeme)', 'Hohe Alterungssensibilität', 'Kriecht unter dauerhafter Zuglast']
-  },
-  {
-    name: 'M8 - M24 Bolzenanker (Spreizanker)',
-    category: 'Mechanischer Lastanker',
-    standard: 'DIN EN 1992-4 (ehem. ETAG 001)',
-    loadCapacity: '5,0 kN - 45,0 kN (Sehr hoch)',
-    edgeDistance: 'Mäßig (hohe Spreizkräfte im Untergrund)',
-    installTemp: 'Temperaturunabhängig',
-    substrate: 'Gerissener & ungerissener Beton (min. C20/25)',
-    failureMode: 'Betonausbruch (Konus), Stahlversagen des Bolzens',
-    description: 'Mechanisches Befestigungssystem mit Kraftkontrolle. Beim Anziehen der Mutter wird der Konusbolzen in den Spreizclip gezogen, der sich gegen das Bohrloch verpresst.',
-    advantages: ['Sofort voll belastbar nach fachgerechtem Drehmomentanzug', 'Je nach ETA für gerissenen Beton und seismische Kategorien C1/C2', 'Hohe Querlastübertragung'],
-    disadvantages: ['Große Spreizdrücke erfordern hohe Rand-/Achsabstände', 'Kein Spielraum für Bohrtiefenunterschreitungen', 'Nicht im Mauerwerk einsetzbar']
-  },
-  {
-    name: 'M8 - M30 Verbundmörtel (Injektionskleber)',
-    category: 'Chemischer Verbunddübel',
-    standard: 'DIN EN 1992-4 / EAD 330499',
-    loadCapacity: '10,0 kN - 120,0 kN (Extrem hoch)',
-    edgeDistance: 'Minimal (vollständig spreizdruckfrei)',
-    installTemp: 'Min. +5 °C bis +40 °C (beim Verarbeiten)',
-    substrate: 'Beton, hochporöses Mauerwerk, Naturwerkstein',
-    failureMode: 'Verbundversagen (Herausziehen zwischen Mörtel/Beton)',
-    description: 'Hocheffektives Befestigungssystem auf duroplastischer Reaktionsharzbasis (Epoxidharz EP, Vinylester VES oder Polyester). Bohrloch wird mit Mörtel befüllt und die Ankerstange eingedreht. Klebt fugenlos.',
-    advantages: ['Absolut spreizdruckfreie Lastverteilung', 'Minimalster Rand- und Achsabstand möglich', 'Wasser- und dampfdichter Bohrlochverschluss'],
-    disadvantages: ['Chemische Aushärtezeit muss strikt beachtet werden', 'Penible Bohrlochreinigung (Ausblasen/Bürsten) zwingend erforderlich', 'Temperaturabhängiger Einbau']
-  },
-  {
-    name: 'Hinterschnittanker (z. B. Zykon-System als Beispiel)',
-    category: 'Dauerwechsel-Schwerlastanker',
-    standard: 'DIN EN 1992-4 (Zulassung)',
-    loadCapacity: '15,0 kN - 80,0 kN (Extrem sicher)',
-    edgeDistance: 'Gering',
-    installTemp: 'Temperaturunabhängig',
-    substrate: 'Gerissener Beton (auch in kerntechnischen Anlagen qualifizierte Systeme)',
-    failureMode: 'Reiner Stahlbruch (höchste Formschlusswirkung)',
-    description: 'Formgeschlossener Anker. Erfordert einen Spezialbohrer, der am Bohrlochgrund einen konischen Hinterschnitt fräst. Die Ankerhülse wird formschlüssig aufgeweitet.',
-    advantages: ['Formschluss mit sehr geringem Schlupf', 'Geeignet für dynamisch beanspruchte Befestigungen (nach ETA)', 'Geringe Spreizkräfte'],
-    disadvantages: ['Sehr teure Spezialwerkzeuge erforderlich', 'Hoher Arbeits- und Kontrollaufwand beim Bohren']
-  }
-];
+const anchorProducts: FastenerProduct[] = inhalt.daten.anchorProducts;
 
 export default function BpBefestigung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -82,12 +31,9 @@ export default function BpBefestigung() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 font-sans">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Befestigungstechnik &amp; Verankerung (Bauprodukte)
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.befestigungstechnikVerankerungBauprodukt} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 animate-in fade-in">
-          <p>
-            Anforderungen nach DIN EN 1992-4 (Eurocode 2 - Teil 4). Lastübertragung in feste Untergründe mittels mechanischer Spreizwirkung, formschlüssigem Hinterschnitt und stoffschlüssigem Polyester- oder Epoxidharzverbund.
-          </p>
+          <p><MdText text={inhalt.texte.anforderungenNachDinEn} /></p>
         </div>
 
         {/* Primary Navigation Tabs */}
@@ -100,8 +46,7 @@ export default function BpBefestigung() {
             }`}
             onClick={() => setActiveTab('allgemein')}
           >
-            <BookOpen size={16} /> Basiswissen &amp; Verankerungs-Katalog
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.basiswissenVerankerungsKatalog} /></button>
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
@@ -132,7 +77,7 @@ export default function BpBefestigung() {
               
               {/* Left Selector List */}
               <div className="lg:col-span-5 space-y-3">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Befestigungssysteme herstellerneutral:</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.befestigungssystemeHerstellerneutral} /></span>
                 <div className="flex flex-col gap-2">
                   {anchorProducts.map((prod) => (
                     <button
@@ -158,11 +103,9 @@ export default function BpBefestigung() {
                 <div className="bg-red-50 border border-red-200 p-4 rounded-xl space-y-2 mt-4 text-xs text-red-950 leading-relaxed">
                   <div className="flex gap-1.5 items-center font-bold">
                     <ShieldAlert size={14} className="text-red-800" />
-                    <span>KRITISCH: Drehmoment-Überprüfung</span>
+                    <span><MdText text={inhalt.texte.kritischDrehmomentÜberprüfung} /></span>
                   </div>
-                  <p className="font-normal text-[11px] text-red-900">
-                    Mechanische Bolzenanker müssen zwingend mit einem kalibrierten <strong>Drehmomentschlüssel</strong> geschraubt werden (T_inst). Ein zu geringes Moment verringert die Vorspannung und Tragfähigkeit; ein zu hohes kann den Bolzen überlasten oder den Beton spalten.
-                  </p>
+                  <p className="font-normal text-[11px] text-red-900"><MdText text={inhalt.texte.mechanischeBolzenankerMüssenZwingend} /></p>
                 </div>
               </div>
 
@@ -171,7 +114,7 @@ export default function BpBefestigung() {
                 <div>
                   <div className="border-b border-home-grau/20 pb-3 mb-4 flex justify-between items-start flex-wrap gap-2">
                     <div>
-                      <span className="text-[9px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-full uppercase tracking-wider">Normatives Befestigungsdatenblatt</span>
+                      <span className="text-[9px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-full uppercase tracking-wider"><MdText text={inhalt.texte.normativesBefestigungsdatenblatt} /></span>
                       <h3 className="text-base font-bold text-slate-800 mt-1">{selectedFastener.name}</h3>
                     </div>
                     <div className="bg-white px-2 py-1 rounded border border-slate-200 text-right font-mono">
@@ -191,7 +134,7 @@ export default function BpBefestigung() {
                       <span className="text-xxs font-bold text-slate-700 font-mono block leading-snug">{selectedFastener.loadCapacity}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
-                      <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Randabstand min.</span>
+                      <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.randabstandMin} /></span>
                       <span className="text-xxs font-bold text-slate-700 leading-snug block">{selectedFastener.edgeDistance}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
@@ -238,7 +181,7 @@ export default function BpBefestigung() {
 
                 {/* Applications block at bottom */}
                 <div className="p-3 bg-white rounded-xl border border-slate-200/80 mt-4">
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Zulässige Temperaturbeständigkeit:</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.zulässigeTemperaturbeständigkeit} /></div>
                   <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold font-mono">
                     {selectedFastener.installTemp}
                   </span>
@@ -249,47 +192,42 @@ export default function BpBefestigung() {
             {/* FAILURE MODES EXPLAINED (SCIENTIFIC BACKGROUND ACCENTS) */}
             <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 shadow-sm mt-4">
               <h3 className="font-extrabold text-sm text-text-main mb-3 flex items-center gap-1.5 border-b border-home-grau/15 pb-2">
-                <Sparkles className="text-shiraz" size={18} /> Versagensmodi von Betonverankerungen nach DIN EN 1992-4
-              </h3>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-                Bei der Bemessung einer Befestigung in Beton müssen fünf physische Versagensgrenzen unter Zuglast rechnerisch überprüft werden:
-              </p>
+                <Sparkles className="text-shiraz" size={18} /><MdText text={inhalt.texte.versagensmodiVonBetonverankerungenNach} /></h3>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-4"><MdText text={inhalt.texte.beiDerBemessungEiner} /></p>
               
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 text-center font-medium">
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
-                  <span className="text-[9px] text-slate-400 font-bold block mb-1">1. Stahlversagen</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Der Zugbolzen reißt mechanisch ab, weil seine Zugstreckgrenze überschritten wurde (N_Rk,s = A_s * f_uk).</p>
+                  <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.t1Stahlversagen} /></span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal"><MdText text={inhalt.texte.derZugbolzenReißtMechanisch} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
-                  <span className="text-[9px] text-slate-400 font-bold block mb-1">2. Herausziehen</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Der Anker rutscht mitsamt dem Spreizkeil schlupfartig aus dem Bohrloch (Herausziehwiderstand N_Rk,p).</p>
+                  <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.t2Herausziehen} /></span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal"><MdText text={inhalt.texte.derAnkerRutschtMitsamt} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
-                  <span className="text-[9px] text-slate-400 font-bold block mb-1">3. Betonausbruch</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Unter Zuglast platzt ein trichterförmiger Betonkegel aus (35° Winkel). Begrenzt durch Verankerungstiefe h_ef.</p>
+                  <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.t3Betonausbruch} /></span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal"><MdText text={inhalt.texte.unterZuglastPlatztEin} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
-                  <span className="text-[9px] text-slate-400 font-bold block mb-1">4. Gespaltenes Beton</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Spreizkräfte oder die Last spalten das Bauteil, besonders bei geringer Bauteildicke oder Randnähe (Spalten).</p>
+                  <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.t4GespaltenesBeton} /></span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal"><MdText text={inhalt.texte.spreizkräfteOderDieLast} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
-                  <span className="text-[9px] text-slate-400 font-bold block mb-1">5. Pry-out Versagen</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Bei Querkraftpressungen bricht die dem Vektor entgegengesetzte Betonkante mitsamt dem Dübelfuß aus.</p>
+                  <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.t5PryOutVersagen} /></span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal"><MdText text={inhalt.texte.beiQuerkraftpressungenBrichtDie} /></p>
                 </div>
               </div>
             </div>
 
             {/* SYSTEM OVERVIEW */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-4 bg-slate-50/50">
-              <h3 className="font-bold text-home-prim text-base mb-2 flex items-center gap-2">Marktübersicht typischer Systemlösungen (Herstellerneutral)</h3>
-              <p className="text-xs text-text-main/60 mb-4 italic">
-                Hinweis zur Herstellerneutralität: Die nachfolgende Auflistung dient als unverbindliche Übersicht marktrelevanter Befestigungs- und Verbindungssysteme zur Erleichterung der baupraktischen Orientierung und Normenrecherche im Rahmen der akademischen Lehre.
-              </p>
+              <h3 className="font-bold text-home-prim text-base mb-2 flex items-center gap-2"><MdText text={inhalt.texte.marktübersichtTypischerSystemlösungenHer} /></h3>
+              <p className="text-xs text-text-main/60 mb-4 italic"><MdText text={inhalt.texte.hinweisZurHerstellerneutralitätDie} /></p>
               <ul className="list-disc list-inside text-xs text-text-main/70 space-y-2 pl-2">
-                <li><span className="font-bold text-slate-800">Injektionssysteme:</span> Zweikomponenten-Injektionsmörtel (Verbunddübel) mit Europäischer Technischer Bewertung (ETA) für gerissenen Beton.</li>
-                <li><span className="font-bold text-slate-800">Bolzenanker &amp; Verbundanker:</span> Schwere mechanische Bolzenankersysteme und Epoxidharz-Injektionsklebstoffe zur Brückensanierung und Verankerung schwerer Stahlkonstruktionen.</li>
-                <li><span className="font-bold text-slate-800">Holzbauschraubensysteme:</span> Vollgewinde-Holzbauschrauben zur statisch wirksamen Bemessung und Lastabtragung von Holzständerwerken nach Eurocode 5.</li>
-                <li><span className="font-bold text-slate-800">Ankerschienensysteme:</span> System-Ankerschienen zum rüttelfreien Einbetonieren in die Bewehrungslage vor dem Einbringen von Frischbeton.</li>
+                <li><span className="font-bold text-slate-800">Injektionssysteme:</span><MdText text={inhalt.texte.zweikomponentenInjektionsmörtelVerbunddü} /></li>
+                <li><span className="font-bold text-slate-800"><MdText text={inhalt.texte.bolzenankerVerbundanker} /></span><MdText text={inhalt.texte.schwereMechanischeBolzenankersystemeUnd} /></li>
+                <li><span className="font-bold text-slate-800">Holzbauschraubensysteme:</span><MdText text={inhalt.texte.vollgewindeHolzbauschraubenZurStatisch} /></li>
+                <li><span className="font-bold text-slate-800">Ankerschienensysteme:</span><MdText text={inhalt.texte.systemAnkerschienenZumRüttelfreien} /></li>
               </ul>
             </div>
           </div>
@@ -302,15 +240,11 @@ export default function BpBefestigung() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Betonausbruch eines Einzeldübels"
+          title={inhalt.werte.anwendungsbeispielBetonausbruchEinesEinz}
           zielGleichung="N^0_{Rk,c} = k_1 \cdot \sqrt{f_{ck}} \cdot h_{ef}^{1{,}5}"
-          normQuelle="DIN EN 1992-4, 7.2.1.4 (gerissener Beton k_1 = 7,7; Lehrbeispiel ohne Rand- und Gruppeneinfluss)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'f_{ck} = 25\\,\\text{N/mm}^2,\\; h_{ef} = 80\\,\\text{mm},\\; k_1 = 7{,}7', erklaerung: 'Einzeldübel im gerissenen Beton C25/30.' },
-            { titel: '2. Grundwert', formel: 'N^0_{Rk,c} = 7{,}7 \\cdot \\sqrt{25} \\cdot 80^{1{,}5} = 7{,}7 \\cdot 5 \\cdot 715{,}5 = 27{,}5\\,\\text{kN}', erklaerung: 'h_ef^1,5 = 715,5 mm^1,5.' },
-            { titel: '3. Bemessungswert', formel: 'N_{Rd,c} = 27{,}5 / 1{,}5 = 18{,}4\\,\\text{kN}', erklaerung: 'γ_Mc = 1,5 (Teilsicherheitsbeiwert Beton bei Befestigungen).' },
-          ]}
-          ergebnisHinweis="Die Tragfähigkeit wächst mit h_ef^1,5 – eine um 50 % tiefere Verankerung bringt rund 84 % mehr Betonausbruchlast."
+          normQuelle={inhalt.werte.dinEn19924}
+          schritte={inhalt.daten["BpBefestigung.schritte"]}
+          ergebnisHinweis={inhalt.werte.dieTragfähigkeitWächstMit}
         />
       </div>
 
@@ -321,26 +255,9 @@ export default function BpBefestigung() {
           { title: 'Dübel', url: 'https://de.wikipedia.org/wiki/D%C3%BCbel' },
           { title: 'Befestigungstechnik', url: 'https://de.wikipedia.org/wiki/Befestigungstechnik' }
         ]} 
-        literatur={[ 
-          'Eligehausen, R.; Mallée, R.; Silva, J. F.: Anchorage in Concrete Construction. Berlin: Ernst & Sohn 2006',
-          'Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)' 
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN EN 1992-4 (Eurocode 2 - Bemessung der Verankerung von Befestigungen in Beton)' }, 
-          { title: 'EAD 330232 (mechanische Dübel) und EAD 330499 (Verbunddübel) – Europäische Bewertungsdokumente der EOTA', url: 'https://www.eota.eu/' }
-        ]} 
-        formeln={[
-          { 
-            formel: 'N_{Rk,c} = N_{Rk,c}^0 \\cdot \\frac{A_{c,N}}{A_{c,N}^0} \\cdot \\psi_{s,N} \\cdot \\psi_{re,N} \\cdot \\psi_{ec,N} \\cdot \\psi_{M,N}', 
-            erklaerung: 'Charakteristischer Widerstand gegen Betonausbruch (Betonkonus) nach Eurocode 2 (DIN EN 1992-4) unter Berücksichtigung von Randabständen und Gruppenwirkungen.',
-            quelle: 'DIN EN 1992-4 Abs. 7.2.1.4'
-          },
-          { 
-            formel: '\\beta_N = \\frac{N_{Ed}}{N_{Rd}} \\le 1{,}0', 
-            erklaerung: 'Auslastungsgrad des Befestigungsmittels unter einwirkender Zugbeanspruchung NEd gegenüber dem Bemessungswiderstand NRd.',
-            quelle: 'DIN EN 1992-4'
-          }
-        ]} 
+        literatur={inhalt.daten["BpBefestigung.literatur"]} 
+        regelwerke={inhalt.daten["BpBefestigung.regelwerke"]} 
+        formeln={inhalt.daten["BpBefestigung.formeln"]} 
       />
     </div>
   );

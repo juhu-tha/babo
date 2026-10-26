@@ -25,6 +25,8 @@ import TiefbauTab from './bpverkehrswegebau/TiefbauTab';
 import BahnbauTab from './bpverkehrswegebau/BahnbauTab';
 import TunnelbauTab from './bpverkehrswegebau/TunnelbauTab';
 import BetondeckenTab from './bpverkehrswegebau/BetondeckenTab';
+import inhalt from '@/content/bpverkehrswegebau/BpVerkehrswegebau.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type VerkehrReiter = 'rsto_rechner' | 'vergleich' | 'bindemittel' | 'prueftechnik' | 'bahnbau' | 'tunnelbau' | 'tiefbau' | 'betondecken';
 
@@ -108,14 +110,14 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
   // Reiter (AP 3.8): 6 Hauptbereiche; Asphalt (Sorten, Bitumen/Gesteine, Prüfmethoden) als zweite Ebene.
   // Zustand bleibt die bisherige Reiter-ID, damit die Routen bp_verkehr_* (initialTab) weiter passen.
   const gruppen: readonly ModulTabGruppe<VerkehrReiter>[] = [
-    { id: 'rsto_g', label: 'Oberbau-Rechner (RStO 12/24)', icon: Calculator, mitglieder: [{ id: 'rsto_rechner', label: 'Oberbau-Rechner (RStO 12/24)' }] },
-    { id: 'asphalt_g', label: 'Asphalt, Bitumen & Prüfung', icon: Layers, mitglieder: [
-      { id: 'vergleich', label: 'Asphaltsorten & Tragschichten', icon: Layers },
-      { id: 'bindemittel', label: 'Bitumen & PSV-Gesteine', icon: FileText },
+    { id: 'rsto_g', label: inhalt.werte.oberbauRechnerRsto12, icon: Calculator, mitglieder: [{ id: 'rsto_rechner', label: inhalt.werte.oberbauRechnerRsto122 }] },
+    { id: 'asphalt_g', label: inhalt.werte.asphaltBitumenPrüfung, icon: Layers, mitglieder: [
+      { id: 'vergleich', label: inhalt.werte.asphaltsortenTragschichten, icon: Layers },
+      { id: 'bindemittel', label: inhalt.werte.bitumenPsvGesteine, icon: FileText },
       { id: 'prueftechnik', label: 'Labor-Prüfmethoden', icon: BookOpen },
     ] },
     { id: 'betondecken_g', label: 'Betondecken', icon: Layers, mitglieder: [{ id: 'betondecken', label: 'Betondecken' }] },
-    { id: 'tiefbau_g', label: 'Tiefbau & Entwässerung', icon: Droplets, mitglieder: [{ id: 'tiefbau', label: 'Tiefbau & Entwässerung' }] },
+    { id: 'tiefbau_g', label: inhalt.werte.tiefbauEntwässerung, icon: Droplets, mitglieder: [{ id: 'tiefbau', label: inhalt.werte.tiefbauEntwässerung2 }] },
     { id: 'bahnbau_g', label: 'Bahnbau', icon: Train, mitglieder: [{ id: 'bahnbau', label: 'Bahnbau' }] },
     { id: 'tunnelbau_g', label: 'Tunnelbau', icon: HardHat, mitglieder: [{ id: 'tunnelbau', label: 'Tunnelbau' }] },
   ];
@@ -130,24 +132,20 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 border-b border-home-grau/10 pb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Milestone className="text-shiraz" /> Verkehr und Tiefbau
-            </h2>
+              <Milestone className="text-shiraz" /><MdText text={inhalt.texte.verkehrUndTiefbau} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Akademische Aufbereitung zu Straßenbau (RStO 12/24), Tiefbau &amp; Entwässerung (Kanalisation, Versickerung, Rigolen), Bahnbau (Gleisköper) und Tunnelbau (Sprengvortrieb, NÖT &amp; Spritzbetonsicherung).
-          </p>
+          <p><MdText text={inhalt.texte.akademischeAufbereitungZuStraßenbau} /></p>
         </div>
           <button 
             onClick={handleLinkToAsphaltBase}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-shiraz bg-shiraz/5 border border-shiraz/35 rounded-lg hover:bg-shiraz/10 transition-all self-start md:self-auto"
           >
-            <Route size={14} /> Zum Asphalt-Werkstoffmodul
-          </button>
+            <Route size={14} /><MdText text={inhalt.texte.zumAsphaltWerkstoffmodul} /></button>
         </div>
 
         {/* Reiter: 6 Hauptbereiche, Asphalt mit zweiter Ebene (AP 3.8) */}
         <GruppierteModuleTabs
-          label="Verkehr und Tiefbau: Bereiche"
+          label={inhalt.werte.verkehrUndTiefbauBereiche}
           gruppen={gruppen}
           aktiv={activeTab}
           onWechsel={setActiveTab2}
@@ -185,15 +183,11 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
       {activeTab === 'bahnbau' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Temperaturkraft im lückenlos verschweißten Gleis"
+          title={inhalt.werte.anwendungsbeispielTemperaturkraftImLücke}
           zielGleichung="\sigma_T = E \cdot \alpha_T \cdot \Delta T, \quad N_T = \sigma_T \cdot A"
-          normQuelle="Grundgleichung der Zwangsspannung (Lehrbeispiel UIC 60)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'E = 210\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 1{,}2 \\cdot 10^{-5}\\,\\text{K}^{-1},\\; \\Delta T = 35\\,\\text{K},\\; A = 7686\\,\\text{mm}^2', erklaerung: 'Schiene im Sommer 35 K über der Verlegetemperatur.' },
-            { titel: '2. Spannung', formel: '\\sigma_T = 210\\,000 \\cdot 1{,}2 \\cdot 10^{-5} \\cdot 35 = 88\\,\\text{N/mm}^2', erklaerung: 'Druckspannung, weil die Dehnung behindert ist.' },
-            { titel: '3. Längskraft je Schiene', formel: 'N_T = 88 \\cdot 7686 = 676\\,000\\,\\text{N} \\approx 680\\,\\text{kN}', erklaerung: 'Diese Kraft muss der Querverschiebewiderstand des Schotters sicher aufnehmen.' },
-          ]}
-          ergebnisHinweis="Rund 680 kN Druck je Schiene – deshalb wird bei einer neutralen Temperatur verschweißt und das Schotterbett sorgfältig verdichtet."
+          normQuelle={inhalt.werte.grundgleichungDerZwangsspannungLehrbeisp}
+          schritte={inhalt.daten["BpVerkehrswegebau.schritte"]}
+          ergebnisHinweis={inhalt.werte.rund680KnDruck}
         />
       </div>
       )}
@@ -207,31 +201,9 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           { title: 'Bitumen', url: 'https://de.wikipedia.org/wiki/Bitumen' },
           { title: 'Betondecke', url: 'https://de.wikipedia.org/wiki/Betondecke' }
         ]}
-        literatur={[
-          'Mentlein, H.; Lorenzl, H.: Straßenbau, Straßenbautechnik. 8., aktual. Aufl., Köln: Reguvis 2021',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'ZTV SoB-StB (Schichten ohne Bindemittel)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'DIN EN 14487-1 / DIN 18551 (Spritzbeton)' },
-          { title: 'DAfStb-Alkali-Richtlinie' },
-          { title: 'ZTV Asphalt-StB (Zusätzliche Technische Vertragsbedingungen für Asphalt)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'TL Asphalt-StB (Technische Lieferbedingungen für Asphaltmischgut)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'ZTV Beton-StB (Zusätzliche Technische Vertragsbedingungen für Betonfahrbahnen)', url: 'https://www.fgsv-verlag.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'B = \\sum_{i=1}^m DTV^{(SV)}_i \\cdot q_i \\cdot f_1 \\cdot f_2 \\cdot f_3 \\cdot f_z \\cdot 365 \\quad [\\text{Äquivalente 10-t-Achsübergänge}]',
-            erklaerung: 'Dimensionierungsrelevante Beanspruchung B für die Ermittlung der Belastungsklasse (Bk100 bis Bk0,3) nach RStO 12/24 aus dem Schwerverkehrsaufkommen.',
-            quelle: 'RStO 12/24 Gl. 1'
-          },
-          {
-            formel: 'E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}2',
-            erklaerung: 'Verformungsmodul Ev2 und Verdichtungsverhältnis Ev2/Ev1 beim statischen Plattendruckversuch auf ungebundenen Frostschutz- und Schottertragschichten.',
-            quelle: 'ZTV SoB-StB / DIN 18134 (Ev2 ≥ 120 MPa bzw. 100 MPa je Belastungsklasse; Ev2/Ev1 ≤ 2,2, höher zulässig bei Ev1 ≥ 0,6·Ev2,erf)'
-          }
-        ]}
+        literatur={inhalt.daten["BpVerkehrswegebau.literatur"]}
+        regelwerke={inhalt.daten["BpVerkehrswegebau.regelwerke"]}
+        formeln={inhalt.daten["BpVerkehrswegebau.formeln"]}
       />
     </div>
   );

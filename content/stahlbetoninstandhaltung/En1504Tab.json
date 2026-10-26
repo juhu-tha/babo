@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "dinEn1504Produkte": "DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung)",
+    "fokusSanierungsverfahrenRissinjektionCar": "Fokus-Sanierungsverfahren: Rissinjektion & Carbonfaser-Ertüchtigung",
+    "rissinjektionRissverpressungDinEn": " Rissinjektion & Rissverpressung (DIN EN 1504-5)",
+    "risseImBetonBeeinträchtigen": "Risse im Beton beeinträchtigen entweder die Dauerhaftigkeit (Zutritt von Chloriden und Sauerstoff zur Bewehrung) oder die Standsicherheit. Die Injektion füllt den Risshohlraum dauerhaft aus.",
+    "klassifizierungDerInjektionsstoffeFüllgü": "Klassifizierung der Injektionsstoffe (Füllgüter):",
+    "fKraftschlüssigesFüllenKraftübertragend": "**F (Kraftschlüssiges Füllen / Kraftübertragend):** Epoxidharze (EP) besitzen enorme Haft- und Zugfestigkeiten. Sie übertragen Zug- und Druckspannungen und stellen den Bauteilverbund wieder her (f_ct,EP > 15 N/mm²).",
+    "dDehnfähigesFüllenAbdichtend": "**D (Dehnfähiges Füllen / Abdichtend):** Polyurethane (PUR). Ideal für bewegte Risse. Sie reagieren bei Wasserkontakt unter leichter Schaumbildung und dichten das Bauteil dauerhaft elastisch ab.",
+    "sQuellfähigesFüllenAcrylatgele": "**S (Quellfähiges Füllen):** Acrylatgele. Werden vor allem für flächige Mauerwerksabdichtungen (Schleierinjektion) verwendet.",
+    "mechanischeStrömungsbeziehungHagenPoiseu": "Mechanische Strömungsbeziehung (Hagen-Poiseuille):",
+    "dieFließgeschwindigkeitDesInjektionsharz": "Die Fließgeschwindigkeit des Injektionsharzes im Riss ist umgekehrt proportional zur dynamischen Viskosität (η) und quadratisch abhängig von der Rissbreite (w). Feine Risse (w < 0,2 mm) erfordern Viskositäten von η < 100 mPa·s und hohe Verpressdrücke.",
+    "baustellenpraxisQualitätssicherung": "⚙️ Baustellenpraxis & Qualitätssicherung:",
+    "packersetzungBohrpackerWerdenAbwechselnd": "**Packersetzung:** Bohrpacker werden abwechselnd links und rechts des Risses unter einem Winkel von 45° gesetzt, um den Riss im Bauteilinneren zu kreuzen.",
+    "verdämmungDerRissspaltIm": "**Verdämmung:** Der Rissspalt im Sichtbereich wird zugegipst oder mit Epoxidharz zugespachtelt, damit das Harz beim Verpressen nicht austritt.",
+    "verpressungVonUntenNach": "**Verpressung:** Von unten nach oben verpressen, bis das material am nächsten Packer austritt.",
+    "tragwerksertüchtigungMitCarbonlamellenCf": " Tragwerksertüchtigung mit Carbonlamellen (CFK)",
+    "einführungHöhererLastenOder": "Einführung höherer Lasten oder Korrosionsschäden verlangen oft eine Erhöhung des Bewehrungsquerschnitts. Kohlenstofffaserverstärkte Kunststoffe (CFK) bieten eine hochfeste, leichte Alternative zur klassischen Stahlbetonverstärkung.",
+    "klassifizierungAnwendungstechnologien": "Klassifizierung & Anwendungstechnologien:",
+    "aufgeklebteLamellenAussenCfk": "**Aufgeklebte Lamellen (Aussen):** CFK-Lamellen werden mittels Epoxidharzkleber direkt auf die vorbehandelte Beton-Zugzone geklebt. Typisch bei Deckenbalken zur Biegemomenterhöhung.",
+    "inSchlitzeEingeklebteLamellen": "**In Schlitze eingeklebte Lamellen (Schlitzlamellen):** Schlitze werden ca. 15-25 mm tief in den Beton gefräst. Kohlenstoff-Streifen werden hochkant eingeschlitzt und verklebt. Bietet extrem guten Verbund und ist brandschutztechnisch geschützter.",
+    "bruchmechanischerGrenznachweisVerbundbru": "Bruchmechanischer Grenznachweis (Verbundbruch):",
+    "dieHoheZugfestigkeitDes": "Die hohe Zugfestigkeit des CFK (ca. 3.000 N/mm²) kann nur ausgenutzt werden, wenn kein Schälbruch eintritt. Der Verbundversatz wird limitiert durch die maximale Verankerungskraft (F_bd), welche stark von der Betonzugfestigkeit abhängt:",
+    "wobeiGCbdDie": "Wobei G_cbd die spezifische Verbundenergie und E_f der Elastizitätsmodul des Materials sind. Die Betonoberflächen-Abreißfestigkeit muss zwingend ≥ 1,5 N/mm² betragen.",
+    "brandschutzEinschränkung": "🛡️ Brandschutz & Einschränkung:",
+    "epoxidharzKlebstoffeSindHitzeempfindlich": "Epoxidharz-Klebstoffe sind hitzeempfindlich. Ab ca. 55-80°C (Glasübergangstemperatur T_g) verliert der Kleber seine Wirksamkeit. Daher müssen CFK-Systeme im Hochbau fast immer mit Brandschutzdecken oder dämmschichtbildenden Beschichtungen geschützt werden.",
+    "zusammenfassungFürDenBauingenieur": "💡 Zusammenfassung für den Bauingenieur:",
+    "dieKombinationAusRissinjektion": "Die Kombination aus **Rissinjektion** (Beseitigung innerer Schwachstellen, Wiederherstellung Korrosionsschutz) und der Applikation von **Carbonlamellen** (Tragfähigkeitsertüchtigung im Zuggurt) ermöglicht ressourcenschonendes Bauen im Bestand ohne nennenswerte Bauwerkshöhenminderungen oder Eigengewichtserhöhung."
+  },
+  "werte": {
+    "dieEuropäischeNormenreiheDin": "Die europäische Normenreihe DIN EN 1504 definiert 11 Prinzipien für den Schutz und die Instandsetzung von Betontragwerken. Prinzipien 1-6 beziehen sich auf Betonschäden, Prinzipien 7-11 auf Bewehrungskorrosion."
+  }
+}

@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Layers, Zap, AlertTriangle, Check, AlertCircle } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/dauerhaftigkeit/MetalDurabilitySimulator.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export function MetalDurabilitySimulator() {
   const [targetClass, setTargetClass] = useState<string>('C3');
@@ -14,14 +16,7 @@ export function MetalDurabilitySimulator() {
   const [environment, setEnvironment] = useState<string>('moist'); // Feuchtespeicher
 
   // ISO 12944 corrosion category values inside unalloyed steel & zinc (micro-meter layer loss in year 1)
-  const isoData: Record<string, { label: string; steelLoss: number; zincLoss: number; desc: string }> = {
-    C1: { label: 'C1 (Kleinstes Risiko / Innen beheizt)', steelLoss: 0.1, zincLoss: 0.02, desc: 'Trockene Büros, Schulen, geringe Kondensation.' },
-    C2: { label: 'C2 (Gering / Unbeheizte Depots, ländlich)', steelLoss: 10, zincLoss: 0.5, desc: 'Geringe Verschmutzung, offene Garagen.' },
-    C3: { label: 'C3 (Mäßig / Stadtgase, mäßige Küste)', steelLoss: 35, zincLoss: 1.2, desc: 'Urbane u. industrielle Bereiche, mäßiges Chlorid.' },
-    C4: { label: 'C4 (Stark / Chemieparks, Küstenregion)', steelLoss: 65, zincLoss: 2.8, desc: 'Chemieanlagen, Schwimmbäder, Küstenbereiche mit mäßiger Salzbelastung.' },
-    C5: { label: 'C5 (Sehr stark / Industrie, Küste)', steelLoss: 140, zincLoss: 5.5, desc: 'Industrie mit hoher Feuchte und aggressiver Atmosphäre, Küste mit hoher Salzbelastung (Offshore: CX).' },
-    CX: { label: 'CX (Extrem / Tropische u. marine Bereiche)', steelLoss: 450, zincLoss: 15, desc: 'Extreme Salzbelastung und andauernd hohe Luftfeuchte.' },
-  };
+  const isoData: Record<string, { label: string; steelLoss: number; zincLoss: number; desc: string }> = inhalt.daten["MetalDurabilitySimulator.isoData"];
 
   const chosen = isoData[targetClass] || isoData.C3;
   const totalSteelLoss = chosen.steelLoss * years;
@@ -34,7 +29,7 @@ export function MetalDurabilitySimulator() {
         label: 'Unbedenklich',
         color: 'bg-slate-50 border-home-grau/30 text-slate-800',
         icon: Check,
-        desc: 'In trockenen Innenbereichen findet kein nennenswerter Elektrolytfluss statt. Korrosionsrisiko vernachlässigbar.'
+        desc: inhalt.werte.inTrockenenInnenbereichenFindet
       };
     }
 
@@ -43,7 +38,7 @@ export function MetalDurabilitySimulator() {
         label: 'Unbedenklich',
         color: 'bg-slate-50 border-home-grau/30 text-slate-800',
         icon: Check,
-        desc: 'Homogene Verbindung aus identischen Metallen besitzt keine Potentialdifferenz.'
+        desc: inhalt.werte.homogeneVerbindungAusIdentischen
       };
     }
 
@@ -51,49 +46,49 @@ export function MetalDurabilitySimulator() {
     // RULE 1: Stainless steel fastener (Edelstahl B) in large Zinc, Aluminium, or Baustahl
     if (metalB === 'edelstahl') {
       return {
-        label: 'Geringes bis mäßiges Risiko',
+        label: inhalt.werte.geringesBisMäßigesRisiko,
         color: 'bg-slate-100/50 border-home-grau/30 text-slate-800',
         icon: AlertCircle,
-        desc: 'Klassische Montageausnahme! Das edle Schraubenmetall (Edelstahl) besitzt ein mäßiges Risiko, führt aber wegen der winzigen Kathodenfläche (Schraube) im Vergleich zur großen Anode (Platte) meist zu keinem katastrophalen Versagen der Platte.'
+        desc: inhalt.werte.klassischeMontageausnahmeDasEdle
       };
     }
 
     // RULE 2: Copper fastener (Kupfer B) in anything unnoble
     if (metalB === 'kupfer') {
       return {
-        label: 'Kritisches Risiko / Absolutes No-Go!',
+        label: inhalt.werte.kritischesRisikoAbsolutesNo,
         color: 'bg-rose-50 border-shiraz/20 text-slate-900',
         icon: AlertTriangle,
-        desc: 'Schraubverbindung verboten! Das edle Kupfer wird die unedle Platte (Alu, Verzinkt, Stahl) lokal zerstören. Durch abgewaschene Kupferionen droht verheerender Lochfraß (Fließregel!).'
+        desc: inhalt.werte.schraubverbindungVerbotenDasEdle
       };
     }
 
     // RULE 3: Unnoble fastener in stainless steel components (Large stainless plate, small regular iron screw)
     if (metalA === 'edelstahl' && (metalB === 'baustahl' || metalB === 'verzinkt')) {
       return {
-        label: 'Extremes Versagensrisiko! (Sicherer Bruch)',
+        label: inhalt.werte.extremesVersagensrisikoSichererBruch,
         color: 'bg-rose-50 border-shiraz/35 text-shiraz font-bold',
         icon: AlertTriangle,
-        desc: 'Gefährliche Konstellation! Die unedle Schraube fungiert als winzige Opferanode für die riesige Inox-Platte. Das Verbindungsmittel wird extrem schnell unter Spannung korrodieren und abscheren!'
+        desc: inhalt.werte.gefährlicheKonstellationDieUnedle
       };
     }
 
     // Aluminum fastener on copper
     if (metalA === 'kupfer' && metalB === 'aluminium') {
       return {
-        label: 'Kritisches Risiko / No-Go',
+        label: inhalt.werte.kritischesRisikoNoGo,
         color: 'bg-rose-50 border-shiraz/30 text-slate-950',
         icon: AlertTriangle,
-        desc: 'Aluminium-Niete oder Schrauben werden in direktem Kupferkontakt rasend schnell elektrolytisch aufgelöst.'
+        desc: inhalt.werte.aluminiumNieteOderSchrauben
       };
     }
 
     // Baustahl fastener in Verzinkt / Aluminium
     return {
-      label: 'Mäßiges Risiko',
+      label: inhalt.werte.mäßigesRisiko,
       color: 'bg-slate-100/70 border-home-grau/30 text-slate-800',
       icon: AlertCircle,
-      desc: 'Mäßige Potentialdifferenz. Unverzinkte Stahlbauteile rosten beschleunigt, falls sie von Feuchtigkeit umgeben sind.'
+      desc: inhalt.werte.mäßigePotentialdifferenzUnverzinkteStahl
     };
   };
 
@@ -107,20 +102,15 @@ export function MetalDurabilitySimulator() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <Layers className="text-shiraz w-5 h-5" />
-          <h4 className="font-bold text-slate-850 text-sm sm:text-base">
-            DIN EN ISO 12944-2: Werkstoffabtragungs-Projektion
-          </h4>
+          <h4 className="font-bold text-slate-850 text-sm sm:text-base"><MdText text={inhalt.texte.dinEnIso12944} /></h4>
         </div>
-        <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-          Stahl und Zink korrodieren abhängig von der Schadstoffbelastung in unterschiedlichen Millimeterraten. 
-          Wählen Sie die Korrosivitätskategorie und simulieren Sie den Schichtabtrag über Jahre:
-        </p>
+        <p className="text-xs text-slate-600 mb-4 leading-relaxed"><MdText text={inhalt.texte.stahlUndZinkKorrodieren} /></p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
           <div className="space-y-3.5">
             <div>
-              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Luftreinheits-Klasse (ISO 12944)</span>
-              <select aria-label="Luftreinheits-Klasse (ISO 12944)"
+              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider"><MdText text={inhalt.texte.luftreinheitsKlasseIso12944} /></span>
+              <select aria-label={inhalt.werte.luftreinheitsKlasseIso12944}
                 value={targetClass}
                 onChange={(e) => setTargetClass(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -148,10 +138,10 @@ export function MetalDurabilitySimulator() {
           </div>
 
           <div className="md:col-span-2 bg-slate-50 border border-home-grau/30 p-4 rounded-xl flex flex-col gap-3">
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Gerechneter Substanzverlust</span>
+            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider"><MdText text={inhalt.texte.gerechneterSubstanzverlust} /></span>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-2.5 rounded border border-home-grau/30 text-center">
-                <span className="text-xs block text-slate-500 font-semibold mb-0.5">Baustahl unlegiert</span>
+                <span className="text-xs block text-slate-500 font-semibold mb-0.5"><MdText text={inhalt.texte.baustahlUnlegiert} /></span>
                 <span className="text-base font-black text-shiraz font-mono">
                   {formatDeZahl(totalSteelLoss / 1000, 3)} mm
                 </span>
@@ -162,7 +152,7 @@ export function MetalDurabilitySimulator() {
                 <span className="text-base font-black text-slate-700 font-mono">
                   {formatDeZahl(totalZincLoss, 1)} μm
                 </span>
-                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({formatDeZahl(80 / chosen.zincLoss, 0)} a Schutzzeit bei 80 μm Zink)</span>
+                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({formatDeZahl(80 / chosen.zincLoss, 0)}<MdText text={inhalt.texte.aSchutzzeitBei80} /></span>
               </div>
             </div>
             <p className="text-xs text-slate-500 leading-normal italic">
@@ -178,20 +168,15 @@ export function MetalDurabilitySimulator() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <Zap className="text-shiraz w-5 h-5" />
-          <h4 className="font-bold text-slate-850 text-sm sm:text-base">
-            Bimetall-Verträglichkeits-Prüfer (DIN EN ISO 14713)
-          </h4>
+          <h4 className="font-bold text-slate-850 text-sm sm:text-base"><MdText text={inhalt.texte.bimetallVerträglichkeitsPrüferDin} /></h4>
         </div>
-        <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-          Wird ein edleres Metall leitend mit einem unedleren Metall verbunden, opfert sich das unedlere Metall als Anode auf. 
-          Prüfen Sie Metallunverträglichkeiten im Baubetrieb:
-        </p>
+        <p className="text-xs text-slate-600 mb-4 leading-relaxed"><MdText text={inhalt.texte.wirdEinEdleresMetall} /></p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
           <div className="space-y-3">
             <div>
-              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Großteil (z.B. Blech/Fassade)</span>
-              <select aria-label="Großteil (z.B. Blech/Fassade)"
+              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider"><MdText text={inhalt.texte.großteilZBBlech} /></span>
+              <select aria-label={inhalt.werte.großteilZBBlech}
                 value={metalA}
                 onChange={(e) => setMetalA(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -205,8 +190,8 @@ export function MetalDurabilitySimulator() {
             </div>
 
             <div>
-              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Verbindungsmittel (Schraube/Niet)</span>
-              <select aria-label="Verbindungsmittel (Schraube/Niet)"
+              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider"><MdText text={inhalt.texte.verbindungsmittelSchraubeNiet} /></span>
+              <select aria-label={inhalt.werte.verbindungsmittelSchraubeNiet}
                 value={metalB}
                 onChange={(e) => setMetalB(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -220,8 +205,8 @@ export function MetalDurabilitySimulator() {
             </div>
 
             <div>
-              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Feuchtigkeit / Umgebung</span>
-              <select aria-label="Feuchtigkeit / Umgebung"
+              <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider"><MdText text={inhalt.texte.feuchtigkeitUmgebung} /></span>
+              <select aria-label={inhalt.werte.feuchtigkeitUmgebung}
                 value={environment}
                 onChange={(e) => setEnvironment(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -258,44 +243,35 @@ export function MetalDurabilitySimulator() {
           onClick={() => setShowMetalPath(!showMetalPath)}
           className="text-xs font-bold text-shiraz hover:text-shiraz/80 flex items-center gap-1.5 cursor-pointer transition-all focus:outline-none"
         >
-          <span>{showMetalPath ? '▲ Formeln & Korrosionsschritte ausblenden' : '▼ Formeln & interaktiver Korrosionsweg (Schritt für Schritt)'}</span>
+          <span>{showMetalPath ? inhalt.werte.formelnKorrosionsschritteAusblenden : inhalt.werte.formelnInteraktiverKorrosionswegSchritt}</span>
         </button>
         {showMetalPath && (
           <div className="mt-3 bg-stone-50 border border-slate-200 rounded-xl p-4 space-y-4 text-xs text-slate-700 animate-in fade-in slide-in-from-top-2">
             <h5 className="font-bold text-slate-900 border-b border-slate-200 pb-1.5 flex items-center gap-1.5">
-              <span>Korrosionsschritte & Galvanischer Leitfaden</span>
+              <span><MdText text={inhalt.texte.korrosionsschritteGalvanischerLeitfaden} /></span>
             </h5>
             <div className="space-y-3.5">
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 1: Rechnerischer Abtrag unlegierter Baustahl ({formatDeWert(totalSteelLoss)} μm)</p>
-                <p className="text-slate-650 leading-relaxed">
-                  Nach DIN EN ISO 12944-2 wird der jährliche Korrosionsverlust für unlegierten Stahl als konstanter Wert angenommen. Für die ausgewählte Klasse <strong>{targetClass}</strong> beträgt dieser im ersten Jahr {formatDeWert(chosen.steelLoss)} μm/a. Über {years} Jahre rechnet man linear:
-                </p>
+                <p className="font-semibold text-slate-850"><MdText text={inhalt.texte.schritt1RechnerischerAbtrag} />{formatDeWert(totalSteelLoss)} μm)</p>
+                <p className="text-slate-650 leading-relaxed"><MdText text={inhalt.texte.nachDinEnIso} /><strong>{targetClass}</strong><MdText text={inhalt.texte.beträgtDieserImErsten} />{formatDeWert(chosen.steelLoss)} μm/a. Über {years}<MdText text={inhalt.texte.jahreRechnetManLinear} /></p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
                   d_loss = {formatDeWert(chosen.steelLoss)} μm/a · {years} Jahre = {formatDeWert(totalSteelLoss)} μm ({formatDeZahl(totalSteelLoss / 1000, 3)} mm)
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 2: Rechnerischer Zinkabtrag und theoretische Schutzdauer ({formatDeWert(totalZincLoss)} μm)</p>
-                <p className="text-slate-500 leading-relaxed">
-                  Zink besitzt eine erheblich niedrigere elektrochemische Abtragsrate von {formatDeWert(chosen.zincLoss)} μm/a. Bei einer handelsüblichen Standardfeuerverzinkung mit z.B. 80 μm (Z80) berechnet sich die rechnerische Schutzzeit bis zur vollkommenen Aufzehrung des Zinks durch:
-                </p>
-                <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
-                  t_Schutz = 80 μm / {formatDeZahl(chosen.zincLoss, 1)} μm/a = {formatDeZahl(80 / chosen.zincLoss, 1)} Jahre Schutzdauer
-                </div>
+                <p className="font-semibold text-slate-850"><MdText text={inhalt.texte.schritt2RechnerischerZinkabtrag} />{formatDeWert(totalZincLoss)} μm)</p>
+                <p className="text-slate-500 leading-relaxed"><MdText text={inhalt.texte.zinkBesitztEineErheblich} />{formatDeWert(chosen.zincLoss)}<MdText text={inhalt.texte.mABeiEiner} /></p>
+                <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs"><MdText text={inhalt.texte.tSchutz80M} />{formatDeZahl(chosen.zincLoss, 1)} μm/a = {formatDeZahl(80 / chosen.zincLoss, 1)}<MdText text={inhalt.texte.jahreSchutzdauer} /></div>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 3: Bimetall-Verbindung & Anoden-/Kathodenverhältnis</p>
-                <p className="text-slate-650 leading-relaxed text-xs">
-                  Das Risiko aus Kontaktkorrosion beruht auf dem elektrochemischen Potenzialunterschied und dem Flächenverhältnis.
-                  Ein verhängnisvoller Fehler im Stahlbau ist das Platzieren eines unedlen Fasteners (z.B. Schraube aus Baustahl/Zink) in einem riesigen edlen Bauteil (z.B. Edelstahl-Träger). Die Schraube wirkt als punktuelle, winzige Opferanode und korrodiert extrem schnell, was zum standsicherheits-gefährdenden Abscheren führt.
-                </p>
+                <p className="font-semibold text-slate-850"><MdText text={inhalt.texte.schritt3BimetallVerbindung} /></p>
+                <p className="text-slate-650 leading-relaxed text-xs"><MdText text={inhalt.texte.dasRisikoAusKontaktkorrosion} /></p>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 4: Korrosionsmindernde Vorkehrungen</p>
+                <p className="font-semibold text-slate-850"><MdText text={inhalt.texte.schritt4KorrosionsminderndeVorkehrungen} /></p>
                 <ul className="list-disc pl-5 space-y-1 text-slate-600 text-xs">
-                  <li><strong>Galvanische Entkopplung:</strong> Verwendung nicht-leitender EPDM- bzw. Polyamid-Unterlegscheiben zur Unterbrechung des elektrischen Feststoffkontakts.</li>
-                  <li><strong>Katodische Opferbarrieren:</strong> Einsatz opferbereiter galvanischer Schutzschichten (z.B. Zink-Staub-Grundierung oder Sherardisieren).</li>
+                  <li><MdText text={inhalt.texte.galvanischeEntkopplungVerwendungNicht} /></li>
+                  <li><MdText text={inhalt.texte.katodischeOpferbarrierenEinsatzOpferbere} /></li>
                 </ul>
               </div>
             </div>

@@ -1,0 +1,23 @@
+{
+  "texte": {
+    "eingabeparameterSäule": "Eingabeparameter (Säule)",
+    "materialPreset": "Material Preset",
+    "festgelegteMaterialempfehlungen": "Festgelegte Materialempfehlungen:",
+    "druckfestigkeitFCrit": "Druckfestigkeit ($f_{crit}$): ",
+    "charakteristischeWerteOhneTeilsicherheit": "Charakteristische Werte ohne Teilsicherheitsbeiwerte und ohne Knicknachweis – das Beispiel zeigt nur den Zusammenhang σ = F/A und ε = σ/E. Bemessung siehe Module Eurocode und Knicken.",
+    "berechnungPhysikalischeAuswertung": "Berechnung & Physikalische Auswertung",
+    "t1NormalspannungSigma": "1. Normalspannung ($\\sigma$)",
+    "t10N": " * 10³) N / (",
+    "t2ElastischeDehnungVarepsilon": "2. Elastische Dehnung ($\\varepsilon$)",
+    "t3GesamteVerkürzungDelta": "3. Gesamte Verkürzung ($\\Delta l$)",
+    "t4AuslastungsgradEta": "4. Auslastungsgrad ($\\eta$)"
+  },
+  "werte": {
+    "materialPreset": "Material Preset",
+    "belastungF": "Belastung (F)",
+    "querschnittsflächeA": "Querschnittsfläche (A)",
+    "säulenhöheL": "Säulenhöhe (l₀)",
+    "grenzfestigkeitFK": "Grenzfestigkeit (f_k)",
+    "dieSäuleTrägtDie": "Die Säule trägt die Belastung problemlos im elastisch-sicheren Beanspruchungsbereich."
+  }
+}

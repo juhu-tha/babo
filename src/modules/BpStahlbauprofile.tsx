@@ -6,6 +6,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpstahlbauprofile/BpStahlbauprofile.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ProfileData {
   name: string;
@@ -185,13 +187,9 @@ export default function BpStahlbauprofile() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center gap-3 mb-6">
           <Layers className="text-shiraz" size={28} />
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Stahlbauprofile (Profile &amp; Querschnittswerte)
-            </h2>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.stahlbauprofileProfileQuerschnittswerte} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Interaktive Bibliothek und statischer Querschnittrechner für europäische Normprofile im Stahlbau
-          </p>
+          <p><MdText text={inhalt.texte.interaktiveBibliothekUndStatischer} /></p>
         </div>
         </div>
 
@@ -199,7 +197,7 @@ export default function BpStahlbauprofile() {
           {/* LEFT COLUMN: SELECTOR & INFORMATIONAL TABS */}
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 space-y-4">
-              <span className="text-xs font-bold text-shiraz block uppercase tracking-wide">Profilreihe wählen</span>
+              <span className="text-xs font-bold text-shiraz block uppercase tracking-wide"><MdText text={inhalt.texte.profilreiheWählen} /></span>
               
               <div className="grid grid-cols-3 gap-1.5">
                 {(['IPE', 'HEA', 'HEB', 'HEM', 'UPN'] as const).map((series) => (
@@ -223,7 +221,7 @@ export default function BpStahlbauprofile() {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-semibold text-text-main">Profil-Größe (Schieberegler)</label>
+                  <label className="text-xs font-semibold text-text-main"><MdText text={inhalt.texte.profilGrößeSchieberegler} /></label>
                   <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded">
                     {formatDeWert(activeProfileIndex + 1)} / {activeProfileList.length}
                   </span>
@@ -256,51 +254,33 @@ export default function BpStahlbauprofile() {
             {/* Profile Series info */}
             <div className="bg-shiraz/5 border border-shiraz/10 p-4 rounded-xl text-xs text-text-main/80 space-y-2">
               <div className="font-bold flex items-center gap-1.5 text-shiraz">
-                <Info size={14} />
-                Typische Profilanwendungen:
-              </div>
+                <Info size={14} /><MdText text={inhalt.texte.typischeProfilanwendungen} /></div>
               {profileSeries === 'IPE' && (
-                <p>
-                  <strong>IPE-Träger (Mittelbreite I-Träger):</strong> Ideal auf reine Biegung um die starke y-y Achse dimensioniert. Finden breiten Einsatz als Deckenträger, Riegel oder Hallenrahmen, wenn Knicken quer zum Träger konstruktiv verhindert wird.
-                </p>
+                <p><MdText text={inhalt.texte.ipeTrägerMittelbreiteI} /></p>
               )}
               {profileSeries === 'HEA' && (
-                <p>
-                  <strong>HEA-Träger (Leichtes Breitflanschprofil):</strong> Besitzen im Verhältnis zum Bauteileigengewicht sehr günstige Tragfähigkeiten. Werden häufig bei Platzersparnis oder moderaten Knicklasten als Stützen und Riegel verwendet.
-                </p>
+                <p><MdText text={inhalt.texte.heaTrägerLeichtesBreitflanschprofil} /></p>
               )}
               {profileSeries === 'HEB' && (
-                <p>
-                  <strong>HEB-Träger (Normales Breitflanschprofil):</strong> Häufiger Stützenquerschnitt im Hochbau. Durch breite Flansche haben HEB-Profile deutlich größere Trägheitsmomente um die schwache z-z Achse im Vergleich zu IPE.
-                </p>
+                <p><MdText text={inhalt.texte.hebTrägerNormalesBreitflanschprofil} /></p>
               )}
               {profileSeries === 'HEM' && (
-                <p>
-                  <strong>HEM-Träger (Verstärktes Breitflanschprofil):</strong> Für hoch belastete Stützen und schwere Abfangträger; sehr dicke Flansche und Stege für große Einzel- und Stützlasten.
-                </p>
+                <p><MdText text={inhalt.texte.hemTrägerVerstärktesBreitflanschprofil} /></p>
               )}
               {profileSeries === 'UPN' && (
-                <p>
-                  <strong>UPN-Träger (U-Stahl Standard):</strong> Asymmetrischer Querschnitt. Oft paarweise zusammengeschweißt ("gekuppelt") für Stützen oder eingesetzt bei Treppenwangen, Randeinfassungen und Schlosserarbeiten.
-                </p>
+                <p><MdText text={inhalt.texte.upnTrägerUStahl} /></p>
               )}
             </div>
 
             {/* Math Box */}
             <div className="bg-stone-50/70 p-4 rounded-xl border border-home-grau/30 text-xs text-text-main/70 space-y-2 leading-relaxed font-normal">
-              <span className="font-bold text-text-main block">Berechnungsformeln für Normalspannung:</span>
-              <p>
-                Die Überlagerung von Normalkraft und Biegung (Navier) führt zur elastischen Randspannung:
-              </p>
+              <span className="font-bold text-text-main block"><MdText text={inhalt.texte.berechnungsformelnFürNormalspannung} /></span>
+              <p><MdText text={inhalt.texte.dieÜberlagerungVonNormalkraft} /></p>
               <div className="bg-white p-2.5 rounded border border-home-grau/10 font-mono text-center text-[11px] text-text-main w-full overflow-x-auto">
                 <FormulaText text="\sigma_{Ed} = \frac{N_{Ed}}{A} \pm \frac{M_{Ed}}{W_y}" />
               </div>
-              <p>
-                Der Tragfähigkeitsnachweis (GZT) verlangt, dass die maximale kombinierte Randspannung unter der bemessenen Grenzkraft liegt:
-              </p>
-              <div className="bg-white p-2 text-center text-[10px] border border-home-grau/10 rounded font-bold text-shiraz">
-                &eta; = σ_Ed / f_yd ≤ 100%
-              </div>
+              <p><MdText text={inhalt.texte.derTragfähigkeitsnachweisGztVerlangt} /></p>
+              <div className="bg-white p-2 text-center text-[10px] border border-home-grau/10 rounded font-bold text-shiraz"><MdText text={inhalt.texte.edFYd100} /></div>
             </div>
           </div>
 
@@ -322,11 +302,11 @@ export default function BpStahlbauprofile() {
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.A, 1)} cm²</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
-                    <span className="text-[10px] text-text-main/50 block font-bold">Trägheit I_y</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold"><MdText text={inhalt.texte.trägheitIY} /></span>
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Iy, 0)} cm⁴</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
-                    <span className="text-[10px] text-text-main/50 block font-bold">Widerstand W_y</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold"><MdText text={inhalt.texte.widerstandWY} /></span>
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Wy, 1)} cm³</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
@@ -334,11 +314,11 @@ export default function BpStahlbauprofile() {
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.iy, 2)} cm</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
-                    <span className="text-[10px] text-text-main/50 block font-bold">Trägheit I_z</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold"><MdText text={inhalt.texte.trägheitIZ} /></span>
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Iz, 0)} cm⁴</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
-                    <span className="text-[10px] text-text-main/50 block font-bold">Widerstand W_z</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold"><MdText text={inhalt.texte.widerstandWZ} /></span>
                     <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Wz, 1)} cm³</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
@@ -359,9 +339,7 @@ export default function BpStahlbauprofile() {
 
               {/* Dynamic SVG Visual Profile Rendering */}
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xs flex flex-col items-center justify-between">
-                <span className="text-[10px] font-bold text-text-main/40 uppercase tracking-wider block mb-2 w-full text-left">
-                  Profilgeometrie &amp; Hauptachsen (Skaliert)
-                </span>
+                <span className="text-[10px] font-bold text-text-main/40 uppercase tracking-wider block mb-2 w-full text-left"><MdText text={inhalt.texte.profilgeometrieHauptachsenSkaliert} /></span>
                 
                 <div className="flex-1 flex items-center justify-center p-2 min-h-[170px]">
                   {(() => {
@@ -451,9 +429,7 @@ export default function BpStahlbauprofile() {
                   })()}
                 </div>
                 
-                <span className="text-[10px] text-text-main/50 text-center uppercase tracking-normal">
-                  Starke Biegeachse = <strong>y-y</strong> &bull; Schwache Achse = <strong>z-z</strong>
-                </span>
+                <span className="text-[10px] text-text-main/50 text-center uppercase tracking-normal"><MdText text={inhalt.texte.starkeBiegeachseYY} /></span>
               </div>
 
             </div>
@@ -462,16 +438,16 @@ export default function BpStahlbauprofile() {
             <div className="bg-stone-50 border border-home-grau/25 rounded-xl p-5 space-y-5">
               <div className="flex items-center gap-2.5 pb-2 border-b border-home-grau/30">
                 <Calculator className="text-shiraz" size={20} />
-                <span className="text-sm font-bold text-text-main">Interaktive Spannungsüberlagerung &amp; Tragfähigkeit</span>
+                <span className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.interaktiveSpannungsüberlagerungTragfähi} /></span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <label className="text-[11px] font-bold text-text-main/60 block uppercase">Normalkraft N_Ed</label>
+                    <label className="text-[11px] font-bold text-text-main/60 block uppercase"><MdText text={inhalt.texte.normalkraftNEd} /></label>
                   </div>
                   <div className="relative">
-                    <input aria-label="Normalkraft N_Ed"
+                    <input aria-label={inhalt.werte.normalkraftNEd}
                       type="number"
                       value={ned}
                       onChange={(e) => setNed(Number(e.target.value))}
@@ -492,10 +468,10 @@ export default function BpStahlbauprofile() {
  
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <label className="text-[11px] font-bold text-text-main/60 block uppercase">Biegung M_y,Ed</label>
+                    <label className="text-[11px] font-bold text-text-main/60 block uppercase"><MdText text={inhalt.texte.biegungMYEd} /></label>
                   </div>
                   <div className="relative">
-                    <input aria-label="Biegung M_y,Ed"
+                    <input aria-label={inhalt.werte.biegungMYEd}
                       type="number"
                       value={myed}
                       onChange={(e) => setMyed(Number(e.target.value))}
@@ -526,8 +502,8 @@ export default function BpStahlbauprofile() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-text-main/60 block uppercase">Beiwert γ_M0</label>
-                  <select aria-label="Beiwert γ_M0"
+                  <label className="text-[11px] font-bold text-text-main/60 block uppercase"><MdText text={inhalt.texte.beiwertM0} /></label>
+                  <select aria-label={inhalt.werte.beiwertM0}
                     value={safetyFactor}
                     onChange={(e) => setSafetyFactor(Number(e.target.value))}
                     className="w-full p-2 text-sm border border-home-grau rounded-md bg-white focus:outline-none"
@@ -541,19 +517,19 @@ export default function BpStahlbauprofile() {
               {/* Stress Results Box */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-5 pt-3 border-t border-home-grau/10">
                 <div className="md:col-span-7 space-y-3.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/40 block">Spannungsaufteilung am Rand:</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/40 block"><MdText text={inhalt.texte.spannungsaufteilungAmRand} /></span>
                   
                   <div className="space-y-1.5 text-xs">
                     <div className="flex justify-between font-normal text-text-main/80">
-                      <span>Anteil Normalspannung (σ_N):</span>
+                      <span><MdText text={inhalt.texte.anteilNormalspannungN} /></span>
                       <span className="font-mono font-bold">{formatDeZahl(stressN, 1)} N/mm²</span>
                     </div>
                     <div className="flex justify-between font-normal text-text-main/80">
-                      <span>Anteil Biegespannung (σ_My):</span>
+                      <span><MdText text={inhalt.texte.anteilBiegespannungMy} /></span>
                       <span className="font-mono font-bold">{formatDeZahl(stressM, 1)} N/mm²</span>
                     </div>
                     <div className="flex justify-between text-text-main font-bold pt-1.5 border-t border-home-grau/10">
-                      <span>Gesamt Randspannung (σ_Ed,max):</span>
+                      <span><MdText text={inhalt.texte.gesamtRandspannungEdMax} /></span>
                       <span className="font-mono text-shiraz">{formatDeZahl(totalStress, 1)} N/mm²</span>
                     </div>
                   </div>
@@ -567,16 +543,13 @@ export default function BpStahlbauprofile() {
                     {utilization <= 100 ? (
                       <>
                         <CheckCircle className="text-emerald-600 mt-0.5" size={16} />
-                        <div>
-                          <strong>Nachweis erfüllt!</strong> Die maximale Randspannung σ_Ed ({formatDeZahl(totalStress, 1)} N/mm²) liegt unter der zulässigen Festigkeit f_yd ({formatDeZahl(fyd, 0)} N/mm²).
+                        <div><MdText text={inhalt.texte.nachweisErfülltDieMaximale} />{formatDeZahl(totalStress, 1)}<MdText text={inhalt.texte.nMmLiegtUnter} />{formatDeZahl(fyd, 0)} N/mm²).
                         </div>
                       </>
                     ) : (
                       <>
                         <AlertTriangle className="text-red-600 mt-0.5 flex-none" size={16} />
-                        <div>
-                          <strong>Tragfähigkeit überschritten:</strong> Die Randspannung liegt über f<sub>yd</sub>. Größeres Profil, höhere Stahlgüte oder geringere Beanspruchung wählen.
-                        </div>
+                        <div><MdText text={inhalt.texte.tragfähigkeitÜberschrittenDieRandspannun} /></div>
                       </>
                     )}
                   </div>
@@ -615,15 +588,11 @@ export default function BpStahlbauprofile() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: IPE 300 aus S235 als Deckenträger"
+          title={inhalt.werte.anwendungsbeispielIpe300Aus}
           zielGleichung="\sigma = \frac{M_{Ed}}{W_{el,y}} \le \frac{f_y}{\gamma_{M0}}, \quad w = \frac{5 q L^4}{384 E I_y}"
-          normQuelle="DIN EN 1993-1-1 mit NA (elastischer Nachweis, Profilwerte nach Tabelle)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'L = 6{,}0\\,\\text{m},\\; q_d = 10\\,\\text{kN/m},\\; q_k = 7\\,\\text{kN/m};\\; W_{el,y} = 557\\,\\text{cm}^3,\\; I_y = 8356\\,\\text{cm}^4', erklaerung: 'Einfeldträger unter Gleichlast.' },
-            { titel: '2. Biegespannung', formel: 'M_{Ed} = 10 \\cdot 6^2/8 = 45\\,\\text{kNm};\\; \\sigma = 45 \\cdot 10^6 / 557 \\cdot 10^3 = 81\\,\\text{N/mm}^2 \\le 235', erklaerung: 'Ausnutzung rund 34 %.' },
-            { titel: '3. Durchbiegung (charakteristisch)', formel: 'w = \\frac{5 \\cdot 7 \\cdot 6000^4}{384 \\cdot 210\\,000 \\cdot 8356 \\cdot 10^4} = 6{,}7\\,\\text{mm} \\le L/300 = 20\\,\\text{mm}', erklaerung: 'Gebrauchstauglichkeit erfüllt.' },
-          ]}
-          ergebnisHinweis="Tragfähigkeit und Durchbiegung sind deutlich erfüllt – ein IPE 270 wäre zu prüfen; Biegedrillknicken ist gesondert nachzuweisen."
+          normQuelle={inhalt.werte.dinEn19931}
+          schritte={inhalt.daten["BpStahlbauprofile.schritte"]}
+          ergebnisHinweis={inhalt.werte.tragfähigkeitUndDurchbiegungSind}
         />
       </div>
 
@@ -636,31 +605,9 @@ export default function BpStahlbauprofile() {
           { title: 'Widerstandsmoment', url: 'https://de.wikipedia.org/wiki/Widerstandsmoment' },
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
-        literatur={[
-          'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Band 1: Tragwerksplanung, Grundlagen, 6., überarb. u. erw. Aufl.; Band 2: Verbindungen und Konstruktionen, 5., überarb. u. erw. Aufl.; Band 3: Komponentenmethode, 2. Aufl. Berlin: Beuth 2021',
-          'Kuhlmann, U. (Hrsg.): Stahlbau-Kalender. Berlin: Ernst & Sohn (jährlich)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)' },
-          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)' }
-        ]}
-        formeln={[
-          {
-            formel: '\\sigma = \\frac{M_{y,Ed}}{W_{el,y}} \\le f_{y,d} = \\frac{f_y}{\\gamma_{M0}}',
-            erklaerung: 'Elastischer Biegespannungsnachweis für einfach-symmetrische oder doppeltsymmetrische I-Profile nach EC3 (γ_M0 = 1,0 nach NA).',
-            quelle: 'DIN EN 1993-1-1 Abs. 6.2.5'
-          },
-          {
-            formel: '\\tau = \\frac{V_{z,Ed} \\cdot S_y}{I_y \\cdot t_w} \\le \\frac{f_y}{\\sqrt{3} \\cdot \\gamma_{M0}}',
-            erklaerung: 'Schubspannungsnachweis im Steg des I-Profils unter Querkraftbeanspruchung V_z,Ed.',
-            quelle: 'DIN EN 1993-1-1 Abs. 6.2.6'
-          },
-          {
-            formel: 'w = \\frac{5 \\cdot q \\cdot L^4}{384 \\cdot E \\cdot I_y} \\le \\frac{L}{300}',
-            erklaerung: 'Mittendurchbiegung des Einfeldträgers; der Grenzwert (z. B. L/300) ist eine übliche Empfehlung und wird projektbezogen vereinbart.',
-            quelle: 'Technische Mechanik / DIN EN 1993-1-1 (Abschn. 7)'
-          }
-        ]}
+        literatur={inhalt.daten["BpStahlbauprofile.literatur"]}
+        regelwerke={inhalt.daten["BpStahlbauprofile.regelwerke"]}
+        formeln={inhalt.daten["BpStahlbauprofile.formeln"]}
       />
     </div>
   );

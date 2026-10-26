@@ -1,0 +1,43 @@
+{
+  "texte": {
+    "kopierenNichtMöglichBitte": "Kopieren nicht möglich – bitte den Text markieren und manuell kopieren.",
+    "zeitbedarfEtwa": " Zeitbedarf: etwa ",
+    "ohneProgrammierungMicrosoftCopilot": "ohne Programmierung · Microsoft Copilot (Hochschulkonto)",
+    "platzhalterInEckigenKlammern": "Platzhalter in eckigen Klammern ersetzen Sie durch eigene, fiktive Angaben.",
+    "verifikationsChecklisteZu": "Verifikations-Checkliste zu ",
+    "punktenGeprüftWirdNicht": " Punkten geprüft (wird nicht gespeichert).",
+    "handsOnÜbungenKi": " Hands-on-Übungen: KI im Bauwesen (Master)",
+    "zuJedemThemenblockDer": "Zu jedem Themenblock der Master-Vorlesung „Grundlagen für den Einsatz von Künstlicher Intelligenz im Bauwesen – Möglichkeiten und Grenzen“ gibt es eine Selbstlernübung. Die Übungen sind unbenotet, kommen ohne Programmierung aus und dauern zusammen etwa ",
+    "bevorSieBeginnenWerkzeug": " Bevor Sie beginnen: Werkzeug und Datenschutz"
+  },
+  "werte": {
+    "promptInDieZwischenablage": "Prompt in die Zwischenablage kopiert.",
+    "aufgabeSchrittFürSchritt": "Aufgabe Schritt für Schritt",
+    "promptVorlagenZumKopieren": "Prompt-Vorlagen zum Kopieren",
+    "theorieZumBlock": "Theorie zum Block",
+    "regelnFürAlleÜbungen": "Regeln für alle Übungen",
+    "übungenNachThemenblock": "Übungen nach Themenblock",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.5: Übungen neu erstellt; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "KiUebungen.literatur": [
+      "Russell, S.; Norvig, P.: Artificial Intelligence – A Modern Approach. 4. Aufl., Hoboken: Pearson 2021"
+    ],
+    "KiUebungen.regelwerke": [
+      {
+        "title": "Verordnung (EU) 2024/1689 (KI-Verordnung), Art. 4 KI-Kompetenz",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+      },
+      {
+        "title": "Verordnung (EU) 2016/679 (DSGVO)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+      },
+      {
+        "title": "VOB/B § 4 Abs. 3 (Bedenkenanzeige)"
+      },
+      {
+        "title": "DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      }
+    ]
+  }
+}

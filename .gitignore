@@ -19,3 +19,6 @@ __pycache__/
 .cache/
 # Linkprüfung (Z16): JSON-Rohdaten nur als Workflow-Artefakt
 docs/linkcheck/*.json
+
+# Arbeitsreste (Skripte, Zwischenstände) nicht einchecken
+tmp/

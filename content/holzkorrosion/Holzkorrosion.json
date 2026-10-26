@@ -1,0 +1,426 @@
+{
+  "texte": {
+    "materialLehrpfadHolzIm": "Material-Lehrpfad: Holz im Bauwesen",
+    "wechselnSieNahtlosZwischen": "Wechseln Sie nahtlos zwischen den drei Säulen der Holz-Baustofflehre:",
+    "t1BaustoffKennwerte": "1. Baustoff-Kennwerte",
+    "anisotropesQuellenSchwinden3d": "Anisotropes Quellen/Schwinden (3D-Modell), Holzfestigkeiten (EC5) & Kennwerte.",
+    "t2HolzproduktePraxis": "2. Holzprodukte & Praxis",
+    "konstruktionsvollholzCltVorUnd": "Konstruktionsvollholz, CLT, Vor- und Nachteile & Vorbemessungsrechner.",
+    "t3Dauerhaftigkeit": "3. Dauerhaftigkeit",
+    "holzzerstörendePilzeInsektenWitterung": "Holzzerstörende Pilze/Insekten, Witterung & baulicher Holzschutz nach DIN 68800.",
+    "grundlagenSimulation": "Grundlagen & Simulation",
+    "holzschutzDin68800": "Holzschutz (DIN 68800)",
+    "holzkorrosionSchädlingeHolzschutz": " Holzkorrosion (Schädlinge & Holzschutz)",
+    "unterKorrosionBeiHolz": "Unter \"Korrosion\" bei Holz versteht man meist den biologischen Abbau (durch Pilze und Insekten), chemische Zersetzung oder die natürliche Abwitterung (durch UV-Strahlung und Auswaschung). Um die Dauerhaftigkeit von Holzbauteilen zu gewährleisten, ist in den meisten Fällen der bauliche Holzschutz entscheidend.",
+    "voraussetzungenFürDenHolzabbau": "Voraussetzungen für den Holzabbau: Sauerstoff, Wasser & Substrat",
+    "derBiologischeAbbauOft": "Der biologische Abbau (oft als \"Holzkorrosion\" bezeichnet) wird durch lebende Organismen verursacht. Damit dieser Schadensprozess verläuft, müssen drei entscheidende Lebensbedingungen zeitgleich erfüllt sein. Fehlt nur ein einziger Faktor, stoppt der Abbau vollständig!",
+    "nährsubstratHolz": "Nährsubstrat (Holz)",
+    "energiequelleZelluloseHemizelluloseUnd": "**Energiequelle:** Zellulose, Hemizellulose und Lignin dienen Pilzen als hochenergetische Kohlenstoffquelle, Insektenlarven als Eiweiß- und Stärkespender. Im Holzbauteil ist dieses Substrat von Natur aus dauerhaft vorhanden.",
+    "sauerstoffO": "Sauerstoff (O₂)",
+    "atmungsgasAlleHolzzerstörendenOrganismen": "**Atmungsgas:** Alle holzzerstörenden Organismen betreiben aeroben Stoffwechsel. Fehlt molekularer Sauerstoff vollständig (z. B. bei permanent geflutetem Holz), ruht die biologische Zersetzung.",
+    "holzfeuchteU": "Holzfeuchte (u)",
+    "derHauptstellhebelOhneGenügend": "**Der Hauptstellhebel:** Ohne genügend freies Zellwasser können enzymatische Abbauproteine nicht diffundieren. Unter der kritischen Schwelle von **u = 20 %** ist Pilzwachstum physikalisch unmöglich!",
+    "interaktiverHolzfeuchteGrenzwerteSimulat": "Interaktiver Holzfeuchte-Grenzwerte-Simulator",
+    "verschiebenSieDenRegler": "Verschieben Sie den Regler oder wählen Sie ein praktisches Szenario aus, um die biologische Gefährdung und die mikroskopischen Wasserzustände live zu erforschen:",
+    "darrfeuchteFormelDinEn": "Darrfeuchte-Formel (DIN EN 13183-1)",
+    "dieHolzfeuchteOmegaIn": "Die Holzfeuchte $\\omega$ (in der Holzpraxis auch als $u$ bezeichnet) bezieht sich immer auf das **Darrgewicht** (Trockenmasse) und kann über 100 % liegen:",
+    "omegaHolzfeuchteFeuchtegehaltIn": "• $\\omega$ = Holzfeuchte / Feuchtegehalt in %",
+    "m1MasseDer": "• $m_1$ = Masse der feuchten Probe vor dem Trocknen (g)",
+    "m0MasseDer": "• $m_0$ = Masse der absolut trockenen Probe (Darrgewicht) (g)",
+    "holzfeuchteUWählen": "Holzfeuchte (u) wählen:",
+    "t0Fasertrockon": "0% (Fasertrockon)",
+    "t12UglInnen": "12% (UGL innen)",
+    "t20Pilzgrenze": "20% (Pilzgrenze)",
+    "t30Fasersättigung": "30% (Fasersättigung)",
+    "mikroskopischeZellstrukturenZellwändeVs": "Mikroskopische Zellstrukturen (Zellwände vs. Hohlräume):",
+    "gefährdungspotenzialBeiU": "Gefährdungspotenzial bei u = ",
+    "statusDerHauptschädlinge": "Status der Hauptschädlinge:",
+    "biotischeSchadensverursacherHolzzerstöre": "Biotische Schadensverursacher: Holzzerstörende Pilze (F 10, F 11, F 12, F 13)",
+    "pilzeBenötigenFürIhren": "Pilze benötigen für ihren enzymatischen Stoffwechsel Sauerstoff, ein Nährsubstrat (Kohlenstoffquellen) und eine erhöhte Holzfeuchte (",
+    "fasertrockengrenzeSieBauenDie": ", Fasertrockengrenze). Sie bauen die Zellwandbestandteile ab oder besiedeln das Zelllumen:",
+    "braunfäuleDestruktionsfäule": "Braunfäule (Destruktionsfäule)",
+    "großpilzeStänderpilzeBasidiomycetenBauen": "Großpilze (Ständerpilze, Basidiomyceten) bauen vorwiegend die helle **Cellulose** ab, das dunkelbraune Ligningerüst bleibt nahezu unberührt. Das Holz verliert massiv an Tragfähigkeit, schrumpft spröde und zeigt das typische Schadbild des **Würfelbruchs** (Risse längs und quer zur Faser).",
+    "hauptvertreterEchterHausschwammSerpula": "**Hauptvertreter:** Echter Hausschwamm (*Serpula lacrymans* - besitzt sehr gute Wasserleitungsmyzelien zur Fernbefeuchtung und Mauerwerkspenetration), Kellerschwamm (*Coniophora puteana*).",
+    "weißfäuleKorrosionsfäule": "Weißfäule (Korrosionsfäule)",
+    "pilzeZerlegenGleichzeitigDas": "Pilze zerlegen gleichzeitig das dunkle **Lignin** und die Cellulose mittels oxidativer Enzyme (Ligninasen). Das Holz verfärbt sich weißgelb, wird faserig-weich, verliert an Rohdichte und bricht nicht würfelnd, sondern splittert faserig aus (**Faserbruch**). Tritt primär bei Laubhölzern auf.",
+    "hauptvertreterSchmetterlingstrameteAusge": "**Hauptvertreter:** Schmetterlingstramete, Ausgebreiteter Hausporling, zersetzt Tragzäune und feuchte Außenkonstruktionen im Erdkontakt.",
+    "moderfäuleSoftRot": "Moderfäule (Soft Rot)",
+    "schadformUnterExtremenNassbedingungen": "Schadform unter extremen Nassbedingungen (**Gebrauchsklasse 4**), z.B. bei permanentem Erdkontakt oder Süßwasserberührung. Mikroskopisch winzige Pilzschläuche fressen Kavernen direkt in die Sekundärwände der Holzzellen. Das Holz erweicht oberflächlich und verfällt schlammig-schwarz.",
+    "hauptvertreterAscomycetenUndFungi": "**Hauptvertreter:** Ascomyceten und Fungi imperfecti. Hohe Widerstandsfähigkeit gegen herkömmliche Schutzsalze und Sauerstoffarmut am Baugrund.",
+    "holzverfärbendeOrganismenBakterienF": "Holzverfärbende Organismen & Bakterien (F 11)",
+    "bläuepilzeZBAureobasidium": "Bläuepilze (z.B. Aureobasidium)",
+    "besiedelnAusschließlichDasZelllumen": "Besiedeln ausschließlich das Zelllumen und nähren sich von Zellinhaltsstoffen (Stärke, Eiweiß, Zucker). Sie zerstören die tragenden Zellwände **nicht** (kein direkter Festigkeitsverlust). **Achtung:** Die Myzelien bohren Düsenkanäle durch die Hoftüpfel. Das erhöht die kapillare Wasseraufnahmefähigkeit drastisch und bereitet den Boden für Fäulnispilze!",
+    "schimmelpilzePenicilliumUA": "Schimmelpilze (Penicillium u.a.)",
+    "erzeugenEinenFarbigenOberflächenrasen": "Erzeugen einen farbigen Oberflächenrasen auf nassem Holz. Verursachen keine Festigkeitseinbußen, signalisieren jedoch akute Feuchtigkeitsfehler (Frischbetonausgasungen, Leckagen) und setzen gesundheitsschädliche, allergene Sporen frei.",
+    "bauenExtremLangsamDie": "Bauen extrem langsam die Tüpfelmembranen (Kopplungsventile der Holzzellen) ab. Dies erhöht die kapillare Wasserpermeabilität langgelagerter Hölzer (z.B. im Telegrafenmast- und Wasserbau), verbessert aber im Gegenzug die spätere Kesseldruck-Imprägnierbarkeit schwieriger Holzarten wie der Fichte.",
+    "holzzerstörendeInsektenTrockenholzinsekt": "Holzzerstörende Insekten: Trockenholzinsekten & Termiten (F 14 - F 18)",
+    "insektenlarvenFressenSichDurch": "Insektenlarven fressen sich durch das Holz und verwerten die organischen Stoffe (Stärke, Eiweiß, Cellulose). Sie benötigen weitaus geringere Holzfeuchtigkeiten als Pilze (oft bereits aktiv ab ",
+    "hausbockHylotrupesBajulus": "Hausbock (*Hylotrupes bajulus*)",
+    "gefährlichsterSchädling": "Gefährlichster Schädling",
+    "befälltBevorzugtDasProteinreiche": "Befällt bevorzugt das proteinreiche **Splintholzgürtelvolumen** trockener Nadelhölzer (Fichte, Kiefer, Tanne). Die Larve frisst bis zu 10 Jahre im Inneren, während die Holzoberfläche intakt bleibt (**hauchdünne Papierhaut**). Der Befall bleibt oft bis zum statischen Versagen im Dachstuhl unentdeckt.",
+    "merkmaleOvaleAusflugslöcher3": "**Merkmale:** Ovale Ausflugslöcher (3 x 6 mm), raspelndes Fraßgeräusch der Larven bei Stille vernehmbar.",
+    "gewöhnlicherNagekäfer": "Gewöhnlicher Nagekäfer",
+    "volksmundHolzwurm": "Volksmund: \"Holzwurm\"",
+    "befälltSplintUndKernholz": "Befällt Splint- und Kernholz von Laub- und Nadelholz. Findet sich bevorzugt in feuchteren Kellerräumen, Kirchen, Dielenböden und Möbeln. Benötigt eine Mindestholzfeuchte von ",
+    "inDarrtrockenenBeheiztenWohnräumen": "; in darrtrockenen, beheizten Wohnräumen erlischt der Befall von selbst.",
+    "merkmaleKreisförmigeAusflugslöcher1": "**Merkmale:** Kreisförmige Ausflugslöcher (1 - 2 mm Durchmesser), feinkörniges Bohrmehl mit Kotpillen.",
+    "splintholzkäferLyctus": "Splintholzkäfer (*Lyctus*)",
+    "geringfeldigTrockenresistent": "Geringfeldig trockenresistent",
+    "befälltStärkereichesOffenporigesLaubholz": "Befällt stärkereiches, offenporiges Laubholz (Eiche, Esche, Nussbaum, Tropenholz). Die Larven fressen das tragende Splintholz vollständig zusammen und verwandeln es im Laufe der Generationen im Bauteilinneren zu pudrigem, strukturlosen Mehl (**Puderholz**).",
+    "merkmaleRundeFluglöcher1": "**Merkmale:** Runde Fluglöcher (1 - 1,5 mm), mehlfeines Fraßmehl rieselt aktiv bei Erschütterung heraus.",
+    "sonderlingeTermiten": "Sonderlinge & Termiten",
+    "f14F15": "F 14 / F 15 / F 17",
+    "termitenIsopteraErdbewohnendeOder": "**Termiten (Isoptera):** Erdbewohnende oder feuchtholzbewohnende Termiten fressen Holz lichtscheu von innen aus und verstopfen Hohlräume mit Lehm/Kot. Im Küstenwasser kommen zudem **Meerwasserschädlinge** (F 17) wie die Bohrmuschel (*Teredo navalis*) und die Bohrassel hinzu, welche tragende Hafenanlegestege durchnässen.",
+    "weitereAmeisenBewohnenMarodes": "**Weitere:** Ameisen bewohnen marodes Holz, Holzwespen befallen nur frisch gefälltes Waldholz.",
+    "abiotischeSchädigungsfaktorenAmBauholz": "Abiotische Schädigungsfaktoren am Bauholz (F 19)",
+    "nichtBiologischeZerstörungsmechanismenGr": "Nicht-biologische Zerstörungsmechanismen greifen die Holzoberfläche chemisch-physikalisch an und schwächen die Schutzwirkung gegenüber Feuchtigkeitseintrag:",
+    "uvStrahlungSonne": "UV-Strahlung (Sonne)",
+    "photochemischerAbbauDesBindeglieds": "Photochemischer Abbau des Bindeglieds **Lignin**. UV-Licht spaltet die Molekülketten der Holzoberfläche in wasserlösliche Abbauprodukte auf. Das Holz verfärbt sich zunächst gelbbraun bis tiefdunkelbraun.",
+    "niederschlagAuswaschung": "Niederschlag & Auswaschung",
+    "regenwasserWäschtDieDurch": "Regenwasser wäscht die durch UV-Strahlung zersetzten Ligninkomponenten von der Oberfläche ab. Zurück bleibt das silbergraue, widerstandsfähige Cellulosegerüst (**graue Patina**). Abtragungsgeschwindigkeit: ca. 0,1 mm/Jahr.",
+    "thermischerEinfluss": "Thermischer Einfluss",
+    "langAnhaltendHoheTemperaturen": "Lang anhaltend hohe Temperaturen (über 60°C) trocknen das Holz dauerhaft aus und spalten flüchtige organische Holzbestandteile ab. Dies beeinträchtigt elastische Tragfähigkeiten. Bei Temperaturen über 100°C beginnt die Zersetzung (Pyrolyse).",
+    "chemischerMechanischerAngriff": "Chemischer & Mechanischer Angriff",
+    "schlagregenUndWindSand": "Schlagregen und Wind-Sand-Erosion schleifen verwitterte Holzoberflächen ab. Starke Säuren oder Alkalien bewirken Hydrolysereaktionen der Hemicellulosen (Säurefraß/Laugenfraß), was die Holzfasern irreversibel ablöst.",
+    "biozidZulassungsverfahrenGesetzgebungF": "Biozid-Zulassungsverfahren & Gesetzgebung (F 52 - F 55, F 59 - F 60)",
+    "holzschutzmittelHsmDieSchädigende": "Holzschutzmittel (HSM), die schädigende Zielorganismen chemisch bekämpfen, unterliegen strengen umwelt- und gesundheitsrechtlichen Auflagen. Sie fallen unter die europäische **Biozidprodukte-Verordnung (BPR, Verordnung (EU) Nr. 528/2012)**. Die Zulassung erfolgt in einem zweistufigen Verfahren:",
+    "stufe1WirkstoffgenehmigungEu": "Stufe 1: Wirkstoffgenehmigung (EU-Ebene)",
+    "dieEuropäischeChemikalienagenturEcha": "Die Europäische Chemikalienagentur (ECHA) bewertet die chemischen Wirkstoffe auf Toxizität, Ökotoxizität und Wirksamkeit. Nur positiv beschlossene und im Register (Union List) aufgeführte chemische Wirkstoffe dürfen für HSM verwendet werden.",
+    "stufe2ProduktzulassungNational": "Stufe 2: Produktzulassung (National)",
+    "fürDasVerkaufsfertigePräparat": "Für das verkaufsfertige Präparat ist eine spezifische Registrierung im jeweiligen Mitgliedstaat erforderlich (in Deutschland koordiniert durch die Bundesanstalt für Arbeitsschutz und Arbeitsmedizin - BAuA). Für tragende Holzkonstruktionen verlangt das Bauordnungsrecht zusätzlich eine **allgemeine bauaufsichtliche Zulassung (abZ)** durch das DIBt.",
+    "abfallrechtlicheEntsorgungVonSchutzbehan": "Abfallrechtliche Entsorgung von schutzbehandeltem Altholz (F 58)",
+    "abgebautesHolzDasMit": "Abgebautes Holz, das mit Holzschutzmitteln oder halogenorganischen Verbindungen behandelt wurde, kann gefährlicher Abfall sein (Altholz A IV: AVV 17 02 04*). Gemäß der deutschen **Altholzverordnung (AltholzV, Novelle in Vorbereitung)** sind vier Altholzkategorien definiert, deren Entsorgungs- und Recyclingwege intensiv reglementiert sind:",
+    "kategorieAI": "Kategorie A I",
+    "naturbelassenesHolz": "Naturbelassenes Holz",
+    "lediglichMechanischBearbeitetesHolz": "Lediglich mechanisch bearbeitetes Holz ohne Fremdstoffbelastungen. Uneingeschränkt stofflich verwertbar (z.B. Spanplattenindustrie).",
+    "kategorieAIi": "Kategorie A II",
+    "verleimtesHolz": "Verleimtes Holz",
+    "behandeltesHolzOhneHalogenorganische": "Behandeltes Holz ohne halogenorganische Verbindungen in der Beschichtung und ohne Holzschutzmittel (z.B. Innentüren, Verschnitte).",
+    "kategorieAIii": "Kategorie A III",
+    "beschichtetesHolz": "Beschichtetes Holz",
+    "hölzerMitHalogenorganischenBeschichtunge": "Hölzer mit halogenorganischen Beschichtungen (z.B. PVC-Folien, Lacke) aber ohne Holzschutzmittelbelastung.",
+    "kategorieAIv": "Kategorie A IV",
+    "gefährlicherAbfall": "⚠️ Gefährlicher Abfall",
+    "imprägniertesAbbruchholzEnthältNachweisl": "**Imprägniertes Abbruchholz:** Enthält nachweislich oder mutmaßlich HSM (z.B. Leitungsmasten, Bahnschwellen, Zäune). Stoffliche Verwertung nur sehr eingeschränkt (z. B. Herstellung von Aktivkohle/Industrieholzkohle); in der Regel **energetische Verwertung** in nach 17. BImSchV zugelassenen Anlagen mit Abgasreinigung.",
+    "primatDesBaulichenHolzschutzes": "Primat des baulichen Holzschutzes & Gebrauchsklassen (DIN 68800-1 u. -2)",
+    "dieNationaleNormenreiheDin": "Die nationale Normenreihe **DIN 68800** (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12) gibt baulichen Maßnahmen ausdrücklich Vorrang vor Bioziden. Das primäre Entwurfsziel des Tragwerksplaners lautet: **Fernhalten von Feuchtigkeit durch konstruktiven Holzschutz**. Nur wenn bauliche Maßnahmen nachweislich nicht ausreichen, darf chemischer Holzschutz in Erwägung gezogen werden.",
+    "konstruktivesFeuchtemanagement": "Konstruktives Feuchtemanagement",
+    "spritzwasserschutzBauteilsockelMindesten": "**Spritzwasserschutz:** Bauteilsockel mindestens 30 cm über Geländeoberkante planieren, Einsatz von Stahlschuhen für Tragstützen.",
+    "wasserableitungDachüberständeDimensionie": "**Wasserableitung:** Dachüberstände dimensionieren, Abtropfkanten fräsen, waagerechte Anschlüsse mit Mindestgefälle (≥ 2 %) versehen.",
+    "freieLüftungHinterlüftungenBei": "**Freie Lüftung:** Hinterlüftungen bei Außenwandbekleidungen anlegen, um Kondensations- und Kriechfeuchte abzuführen (Feuchtestaustopp).",
+    "ausschreibungNatürlicherDauerhaftigkeit": "Ausschreibung natürlicher Dauerhaftigkeit",
+    "einsatzVonSplintholzFreiem": "Einsatz von Splintholz-freiem Kernholz natürlich dauerhafter Holzarten nach **DIN EN 350:2016-12**. Dadurch lässt sich oft eine risikofreie Einstufung erzielen:",
+    "eicheKlasse2Bis": "**Eiche (Klasse 2 bis 4 nach EN 350:2016):** Dauerhaft bis wenig dauerhaft; Kernholz bewährt für Fachwerk mit konstruktivem Schutz.",
+    "lärcheDouglasieKlasse3": "**Lärche / Douglasie (Klasse 3-4):** Mäßig dauerhaft, geeignet für Außen-Fassadenverschalungen ohne Erdkontakt.",
+    "fichteTanneKlasse4": "**Fichte / Tanne (Klasse 4):** Wenig dauerhaft, ungeschützt im Außenbereich nicht standsicher einsetzbar.",
+    "holzmodifikationInnovativeWerkstoffe": "Holzmodifikation (Innovative Werkstoffe)",
+    "verbesserungDerBiologischenDauerhaftigke": "Verbesserung der biologischen Dauerhaftigkeit und Verminderung des Quell-/Schwindverhaltens ohne den Einsatz umweltschädlicher Biozide:",
+    "thermoholzTmtKontrolliertePyrolyse": "**Thermoholz (TMT):** Kontrollierte Pyrolyse bei 180°C bis 220°C unter Sauerstoffmangel. Baut Hemicellulosen ab, wodurch Pilzen der Nährboden entzogen wird.",
+    "acetyliertesHolzAccoyaReaktion": "**Acetyliertes Holz (Accoya):** Reaktion mit Essigsäureanhydrid blockiert die freien Hydroxygruppen der Zellwand. Das Holz kann kaum noch Quellwasser einlagern.",
+    "normmatrixDerGebrauchsklassenGk": "Normmatrix der Gebrauchsklassen (GK) nach DIN 68800-1",
+    "dieZuordnungEntscheidetZwingend": "Die Zuordnung entscheidet zwingend über die Zulässigkeit, das Gefährdungsspektrum und die Notwendigkeit von Schutzvorkehrungen:",
+    "klimaEinbaubedingung": "Klima & Einbaubedingung",
+    "hauptgefährdungOrganismus": "Hauptgefährdung & Organismus",
+    "empfohleneSchutzmaßnahmeChemischeRelevan": "Empfohlene Schutzmaßnahme / Chemische Relevanz",
+    "innenräumeDauerhaftTrocken": "Innenräume, dauerhaft trocken (",
+    "allseitigMechanischAbgedeckt": "), allseitig mechanisch abgedeckt.",
+    "keineInaktivitätAllerHolzabbauenden": "Keine (Inaktivität aller holzabbauenden Schädlinge).",
+    "einsatzVonTrockenemHolz": "Einsatz von trockenem Holz (u ≤ 20 %). Chemischer Holzschutz ist weder erforderlich noch vorgesehen.",
+    "innenräumeDauerhaftTrocken2": "Innenräume, dauerhaft trocken (",
+    "nichtBewittertSplintholzLiegend": "), nicht bewittert, Splintholz liegend.",
+    "holzzerstörendeInsektenHausbockGewöhnlic": "Holzzerstörende Insekten (Hausbock, Gewöhnlicher Nagekäfer).",
+    "trockenesHolzEinbauenBei": "Trockenes Holz einbauen. Bei Splintholzanteilen vorbeugender Insektenschutz (Prüfprädikat Iv) falls unzugänglich.",
+    "überdachtKeineDirekteBewitterung": "Überdacht, keine direkte Bewitterung, aber gelegentlich erhöhte Feuchtigkeit möglich.",
+    "holzzerstörendeInsektenSowiePilze": "Holzzerstörende Insekten sowie Pilze (Insekten- und Pilzrisiko).",
+    "konstruktiverSchutzZurVermeidung": "Konstruktiver Schutz zur Vermeidung längerfristiger Feuchtigkeitsnester. Vorbeugender Schutz (Prüfprädikat P u. Iv).",
+    "schwachBeansprucht": "Schwach beansprucht",
+    "außenFreiBewittertOhne": "Außen, frei bewittert, ohne Erdkontakt. ",
+    "wasserKannRaschAbfließen": " (Wasser kann rasch abfließen).",
+    "insektenSowieHolzzerstörendeFäulnispilze": "Insekten sowie holzzerstörende Fäulnispilze (Braun- und Weißfäule).",
+    "widerstandsfähigeKernhölzerOderVorbeugen": "Widerstandsfähige Kernhölzer oder vorbeugende auswaschbeständige Holzschutzmittel (Prüfprädikat P, Iv, W).",
+    "starkBeansprucht": "Stark beansprucht",
+    "außenFreiBewittertOhne2": "Außen, frei bewittert, ohne Erdkontakt. ",
+    "feuchtigkeitsansammlungenMöglich": " (Feuchtigkeitsansammlungen möglich).",
+    "pilzeAkuteFäulnisgefahrIm": "Pilze (akute Fäulnisgefahr im Bohrloch- oder Verbindungsquerschnitt).",
+    "dauerhafteHölzerDk1": "Dauerhafte Hölzer (DK 1-2) o. intensiv wirksamer chemischer Schutz erforderlich. Schutzmittelprüfschema nach EN 113 & EN 152.",
+    "ständigerErdkontaktUndOder": "Ständiger Erdkontakt und/oder permanenter Süßwasserkontakt (z.B. Pfähle).",
+    "moderfäuleSoftRotHolzzerstörende": "Moderfäule (Soft Rot), holzzerstörende Braun- und Weißfäulepilze.",
+    "kernholzDerDauerhaftigkeitsklasse1": "Kernholz der Dauerhaftigkeitsklasse 1 oder Kesseldrucktränkung mit Mittel mit Prüfprädikat E (Erdkontakt) erforderlich.",
+    "ständigerSalzwasserMeerwasserkontaktHafe": "Ständiger Salzwasser-/Meerwasserkontakt (Hafen- und Küstenbauten).",
+    "meerwasserschädlingeBohrmuschelTeredoNav": "Meerwasserschädlinge (Bohrmuschel *Teredo navalis*, Bohrassel).",
+    "höchstmöglichDosierterKesseldruckschutzM": "Höchstmöglich dosierter Kesseldruckschutz mit speziellem Kupfer-Salz-Wirkstoffmix für marine Zonen.",
+    "einteilungVonHolzschutzmittelnPrüfprädik": "Einteilung von Holzschutzmitteln & Prüfprädikate (F 27, F 28, F 33)",
+    "holzschutzmittelHsmSindBiozidprodukte": "Holzschutzmittel (HSM) sind Biozidprodukte, die europäischen Biozid-Verordnungen (**BPR / Register der Biocidal Products Regulation EU Nr. 528/2012**) unterliegen. Sie werden nach Verwendungszweck (vorbeugend vs. bekämpfend) und Wirkstoffgruppe klassifiziert:",
+    "ivVorbeugendGegenInsekten": "• **Iv**: Vorbeugend gegen Insekten",
+    "pVorbeugendGegenPilze": "• **P**: Vorbeugend gegen Pilze",
+    "wAuswaschbeständigWitterung": "• **W**: Auswaschbeständig (Witterung)",
+    "eExtremAuswaschfestErdkontakt": "• **E**: Extrem auswaschfest (Erdkontakt)",
+    "ibBekämpfendGegenInsekten": "• **Ib**: Bekämpfend gegen Insekten",
+    "mGegenHausschwammMauerwerk": "• **M**: Gegen Hausschwamm (Mauerwerk)",
+    "einteilungNachVermarktungsform": "**Einteilung nach Vermarktungsform:**",
+    "wässrigeSchutzsalzeZB": "**Wässrige Schutzsalze:** z.B. Kupfer-HDO oder Borate (Vorteil: hohe Diffusionstiefe; Nachteil: reine Borate sind auswaschbar und daher nur bis GK 2 zulässig).",
+    "lösemittelbasierteMittelHäufigDünnschich": "**Lösemittelbasierte Mittel:** Häufig dünnschichtige, organische Wirkstofflasuren für den maßhaltigen Bauteilschutz (Fenster, Außentüren, F 32).",
+    "emulsionenModerneWasserbasierteBindemitt": "**Emulsionen:** Moderne wasserbasierte Bindemittelsysteme mit mikrodispergierten Wirkstoffnanopartikeln.",
+    "applikationsImprägnierverfahrenF40": "Applikations- & Imprägnierverfahren (F 40 - F 46)",
+    "dieSchutzwirkungHängtElementar": "Die Schutzwirkung hängt elementar von der erreichten Eindringtiefe (**Penetrationsklassen NP1 bis NP6** nach EN 351-1) ab. Man unterscheidet Druckverfahren von Nichtdruckverfahren:",
+    "vakuumZiehtLuftUnd": "Vakuum zieht Luft und freies Zellwasser vollständig aus den äußeren Holzkapillaren heraus. Danach wird das schützende Salzgemisch unter hohem, langanhaltendem Überdruck (8 bis 10 bar) tief in das Splintholz hineingepresst. Erreicht Penetrationsklasse ",
+    "unabdingbarFürDieGk": ". Unabdingbar für die GK 4.",
+    "t1KesseldruckimprägnierungKvd": "**1. Kesseldruckimprägnierung (KVD):**",
+    "doppelvakuumverlegungDvNutztOrganisch": "**Doppelvakuumverlegung (DV)** nutzt organisch gelöste Wirkstoffe ohne Wasserzufuhr zur Imprägnierung maßhaltiger Fensterteile, um Quellverformungen auszuschließen. **Wechseldruckimprägnierung (WD)** wechselt rasch zwischen Vakuum und Druck zur Tränkung waldfrischer, saftreicher Fichtenmasten.",
+    "t2WechseldruckverfahrenWdDoppelvakuum": "**2. Wechseldruckverfahren (WD) & Doppelvakuum (DV):**",
+    "trogtränkungEinlagernDesHolzes": "Trogtränkung (Einlagern des Holzes über Stunden), Tauchen (Sekunden/Minuten), Sprühen und manuelles Streichen. Erreichen meist nur Oberflächenschutz (",
+    "lokaleSpezialverfahrenF32": "). **Lokale Spezialverfahren** (F 32) beinhalten die mechanische Bohrlochdrucktränkung oder Heißluftaufwärmung zur biologischen Bekämpfung bei akutem Hausbockbefall.",
+    "t3Nichtdruckverfahren": "**3. Nichtdruckverfahren:**",
+    "eindringtiefePenetrationsklassenNachEn": "Eindringtiefe & Penetrationsklassen nach EN 351-1",
+    "dieQualitätEinerChemischen": "Die Qualität einer chemischen Schutzbehandlung wird maßgeblich durch die Eindringtiefe der bioziden Wirkstoffe bestimmt. Die DIN EN 351-1 definiert standardisierte **Penetrationsklassen (NP)**, die je nach angestrebter Gebrauchsklasse (GK) und Holzart verlangt werden:",
+    "klasseNp1Np2": "Klasse NP1 & NP2:",
+    "np1KeineAnforderungenAn": "• **NP1:** Keine Anforderungen an die Eindringtiefe (reiner Oberflächenschutz, z.B. Streichen).",
+    "np2Mindestens3Mm": "• **NP2:** Mindestens 3 mm tief im schutzbereiten Splintholz.",
+    "klasseNp3Np4": "Klasse NP3 & NP4:",
+    "np3Mindestens6Mm": "• **NP3:** Mindestens 6 mm tief im Splintholz.",
+    "np4Mindestens9Mm": "• **NP4:** Mindestens 9 mm tief im Splintholz. Typisch für wässrige Salze im Außenbereich.",
+    "klasseNp5Np6Vollschutz": "Klasse NP5 & NP6 (Vollschutz):",
+    "np5UmfassendeSplintholzdurchdringungMind": "• **NP5:** Umfassende Splintholzdurchdringung (mind. 20 mm).",
+    "np6VollständigeSplintholzdurchdringungUn": "• **NP6:** Vollständige Splintholzdurchdringung und mind. 6 mm Eindringtiefe im Kernholz (Kesseldruckverfahren).",
+    "regelsanierungsverfahrenBeiAkutemBefall": "Regelsanierungsverfahren bei akutem Befall nach DIN 68800-4",
+    "istEinBauteilBereits": "Ist ein Bauteil bereits aktiv befallen, reicht mechanischer oder rein vorbeugender Schutz nicht mehr aus. Das Sanierungskonzept muss nach DIN 68800-4 unter Hinzuziehung von Sachverständigen durchgeführt werden:",
+    "t1RegelsanierungBeiBefall": "1. Regelsanierung bei Befall durch Echten Hausschwamm",
+    "daDerEchteHausschwamm": "Da der Echte Hausschwamm als einziger Pilz in der Lage ist, Trockenmauerwerk aktiv mit Leitungsmyzelien zu durchdringen, gelten extrem strenge Auflagen:",
+    "schnittgrenzeBefallenesHolzIst": "**Schnittgrenze:** Befallenes Holz ist großzügig mit einem Sicherheitsabstand von mindestens **1,00 Meter** über den sichtbaren Befallsrand hinaus abzusägen.",
+    "mauerwerkssanierungMauerwerkReinigenPutz": "**Mauerwerkssanierung:** Mauerwerk reinigen, Putz abschlagen, Fugen auskratzen. Myzelien durch Abflammen mit Gasbrenner abtöten.",
+    "schwammSperrmittelEinstreichenOder": "**Schwamm-Sperrmittel:** Einstreichen oder flächiges druckloses/Druck-Einbringen (Bohrlochtränkung) von Spezialsalzen mit dem Prüfprädikat **\"M\"** (Maurerwerks-Schwammsperrmittel).",
+    "t2RegelsanierungBeiAktivem": "2. Regelsanierung bei aktivem Insektenbefall (z.B. Hausbock)",
+    "unterdrückungUndEliminierungVon": "Unterdrückung und Eliminierung von Ei- und Larvenaktivität im Querschnitt tragender Strukturen erfolgt über zwei Hauptverfahren:",
+    "thermischeSanierungHeißluftverfahrenEinb": "**Thermische Sanierung (Heißluftverfahren):** Einblasen heißer Luft in den abgesperrten Bauwerksabschnitt. Ziel: Die Temperatur im innersten Kern des Holzquerschnitts muss für mindestens **60 Minuten auf mind. 55 °C** erhöht werden. Dadurch gerinnen die Eiweißstrukturen der Larven, Eier und Puppen irreversibel (100%ige Abtötung).",
+    "chemischeBekämpfungSchädigendeStellen": "**Chemische Bekämpfung:** Schädigende Stellen abbeilen (Bohrmehl-Fraßgänge entfernen), Fräsflächen mit einziehenden lösemittelbasierten Bekämpfungspräparaten (Prüfsiegel **\"Ib\"**) einstreichen oder mittels Bohrloch-Injektionsverfahren direkt in Fraßwege impfen."
+  },
+  "werte": {
+    "innenraum8": "🏜️ Innenraum (8%)",
+    "dachstuhl15": "🌫️ Dachstuhl (15%)",
+    "bewittert24": "🌧️ Bewittert (24%)",
+    "staunässe45": "💦 Staunässe (45%)",
+    "geflutet95": "🌊 Geflutet (95%)",
+    "freiesWasser": "Freies Wasser",
+    "porenGefüllt": "Poren gefüllt",
+    "freiesWasser2": "Freies Wasser",
+    "bisCa30Fasersättigung": "Bis ca. 30 % (Fasersättigung) lagert Wasser sich ausschließlich in den Zellwänden an. Das Holz quillt auf. Pilzwachstum ist physikalisch unmöglich oder extrem gehemmt. Zellhohlräume bleiben trocken.",
+    "über30DieZellwände": "Über 30 %: Die Zellwände können kein Wasser mehr binden. Überschüssiges Wasser lagert sich frei flüssig in den Zellhohlräumen ab. Das ideale Diffusionsmedium für Pilzenzyme!",
+    "beispiel1HolzfeuchteEiner": "Beispiel 1: Holzfeuchte einer Balkenkopfprobe nach dem Darrverfahren",
+    "elektrischeWiderstandsmessgeräteDinEn": "Elektrische Widerstandsmessgeräte (DIN EN 13183-2) eignen sich für die Kartierung; das Darrverfahren (DIN EN 13183-1) ist das Referenzverfahren. Bei Hausschwammverdacht ist die Sanierung nach DIN 68800-4 zu planen.",
+    "dinEn131831": "DIN EN 13183-1; DIN 68800-1:2019-06; DIN 68800-4:2020-12",
+    "beispiel2WirkstoffaufnahmeBei": "Beispiel 2: Wirkstoffaufnahme bei einer Kesseldrucktränkung",
+    "nebenDerAufnahmeRetention": "Neben der Aufnahme (Retention) ist die Eindringtiefe nach DIN EN 351-1:2023-07 (Penetrationsklassen NP1 bis NP6) nachzuweisen. Fichte ist schwer tränkbar; Kiefernsplint lässt sich dagegen gut volltränken.",
+    "dinEn3511": "DIN EN 351-1:2023-07; DIN 68800-3:2020-03",
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: DIN 68800-Ausgaben, Gebrauchsklassen, DIN EN 350:2016 und 351-1:2023, AltholzV geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "echterHausschwamm": "Echter Hausschwamm"
+  },
+  "daten": {
+    "moistureRanges": [
+      {
+        "min": 0,
+        "max": 12,
+        "label": "Darrtrocken bis trocken (Heizklimabereich)",
+        "level": "Sicher & geschützt (Kein Befall möglich)",
+        "colorText": "text-slate-800",
+        "colorBg": "bg-slate-50 border-home-grau/30 text-slate-900",
+        "badgeColor": "bg-slate-600 text-white",
+        "badge": "u < 12%",
+        "description": "Typisches Klima in geheizten Innenräumen (u = 6% - 10%). Biologische Schädlinge (Pilze & holzzerstörende Insekten) sind vollständig inaktiv, da ihnen die lebensnotwendige Grundfeuchtigkeitsumgebung fehlt. Ein absolut sicherer Schutzbereich.",
+        "pests": [
+          {
+            "name": "Schimmel / Bläuepilze",
+            "status": "Inaktiv (Benötigen u > 15-20%)",
+            "risk": "safe"
+          },
+          {
+            "name": "Holzzerstörende Pilze",
+            "status": "Inaktiv (Benötigen u > 20%)",
+            "risk": "safe"
+          },
+          {
+            "name": "Insektenlarven",
+            "status": "Inaktiv / Überlebensgrenze unterschritten",
+            "risk": "safe"
+          }
+        ]
+      },
+      {
+        "min": 12,
+        "max": 20,
+        "label": "Trocken- & Übergangsbereich (Grenzbereich)",
+        "level": "Pilzsicher, aber potenziell Insektengefahr",
+        "colorText": "text-slate-800",
+        "colorBg": "bg-slate-50/75 h-full border-home-grau/30 text-slate-900",
+        "badgeColor": "bg-slate-600 text-white",
+        "badge": "u = 12% - 20%",
+        "description": "Klima in unbeheizten Räumen oder gut belüfteten Dachräumen. Holzzerstörende Pilze können sich hier NICHT entwickeln (Schwellenwert u > 20% nicht erreicht). Vorsicht: Einige trockenheitsresistente Insekten wie der Hausbock (ab u = 12%) oder der Gewöhnliche Nagekäfer (ab u = 14%) sind bereits aktiv und können das Holz dauerhaft schädigen!",
+        "pests": [
+          {
+            "name": "Schimmel / Bläuepilze",
+            "status": "Inaktiv",
+            "risk": "safe"
+          },
+          {
+            "name": "Holzzerstörende Pilze",
+            "status": "Inaktiv",
+            "risk": "safe"
+          },
+          {
+            "name": "Insektenlarven (Hausbock)",
+            "status": "Aktiv (Fressen im Splintholz)",
+            "risk": "danger"
+          }
+        ]
+      },
+      {
+        "min": 20,
+        "max": 30,
+        "label": "Kritischer Bereich (Fasersättigungsbereich)",
+        "level": "Akute Pilzgefahr (Wachstumsschwellen)",
+        "colorText": "text-shiraz",
+        "colorBg": "bg-off-white border-shiraz/20 text-slate-950",
+        "badgeColor": "bg-shiraz text-white",
+        "badge": "u = 20% - 30%",
+        "description": "Dieser Bereich nähert sich dem Fasersättigungspunkt (ca. 30%). Die Zellwände lagern maximal viel Wasser ein. Erste holzzerstörende Pilze erwachen ab u ≥ 20% (vor allem der extrem gefährliche Echte Hausschwamm) und zersetzen das Holz rasant. Insektenlarven finden perfekte Wachstumsraten.",
+        "pests": [
+          {
+            "name": "Bläuepilze & Schimmel",
+            "status": "Sehr aktiv (Optische Schäden)",
+            "risk": "danger"
+          },
+          {
+            "name": "Echter Hausschwamm",
+            "status": "Kritisches Wachstum ab u ≈ 20%",
+            "risk": "danger"
+          },
+          {
+            "name": "Hausbock / Holzwurm",
+            "status": "Optimale Fraßbedingungen",
+            "risk": "danger"
+          }
+        ]
+      },
+      {
+        "min": 30,
+        "max": 80,
+        "label": "Bereich freies Zellwasser (Fäulnis-Maximum)",
+        "level": "Katastrophale Fäulnis / Destruktion",
+        "colorText": "text-shiraz font-bold",
+        "colorBg": "bg-off-white border-shiraz/35 text-slate-950",
+        "badgeColor": "bg-shiraz text-white",
+        "badge": "u = 30% - 80%",
+        "description": "Der Fasersättigungspunkt ist überschritten (u >= 30%) - freies flüssiges Wasser füllt die Zellhohlräume. Dies ist das absolute Optimum für alle echten Holzfäulnispilze (Braunfäule, Kellerschwamm, Blättlinge). Das Holz erleidet innerhalb kürzester Zeit dramatischen Festigkeitsverlust (Würfelbruch).",
+        "pests": [
+          {
+            "name": "Fäulnispilze (Nass-/Braunfäule)",
+            "status": "Wohlfühlbereich / Maximaler Abbau",
+            "risk": "danger"
+          },
+          {
+            "name": "Moderfäule",
+            "status": "Besonders aktiv an Erdkontakten",
+            "risk": "danger"
+          },
+          {
+            "name": "Insekten / Larven",
+            "status": "Aktiv, bevorzugen leicht feuchtes Holz",
+            "risk": "warn"
+          }
+        ]
+      },
+      {
+        "min": 80,
+        "max": 100,
+        "label": "Wassergesättigt (Sauerstoffmangel)",
+        "level": "Sicher durch O₂-Ausschluss (Konservierung)",
+        "colorText": "text-slate-800",
+        "colorBg": "bg-slate-150/40 border-home-grau/30 text-slate-900",
+        "badgeColor": "bg-slate-700 bg-slate-800 text-white",
+        "badge": "u > 80%",
+        "description": "Das Holz is vollständig geflutet (z.B. Gründungspfähle unter Grundwasser, Nasslager). Da Wasser kaum Sauerstoff transportiert, ersticken holzzerstörende Pilze und Insekten vollständig aufgrund von akutem Sauerstoffmangel. Das Holz bleibt konserviert. Nur hochspezialisierte, sehr langsame Moderfäulepilze verbleiben minimal aktiv.",
+        "pests": [
+          {
+            "name": "Holzzerstörende Pilze",
+            "status": "Inaktiv (Erstickungsgefahr / O₂-Mangel)",
+            "risk": "safe"
+          },
+          {
+            "name": "Insekten",
+            "status": "Inaktiv (Keine Eiablage, ertrunken)",
+            "risk": "safe"
+          },
+          {
+            "name": "Moderfäule",
+            "status": "Träge aktiv (toleriert O₂-Mangel)",
+            "risk": "warn"
+          }
+        ]
+      }
+    ],
+    "Holzkorrosion.schritte": [
+      {
+        "titel": "Wägung",
+        "erklaerung": "Bohrkernprobe aus dem Auflager im Außenmauerwerk: feucht 512 g, nach Darrtrocknung bei 103 °C bis zur Massekonstanz 418 g.",
+        "formel": "m_u = 512\\,\\text{g}, \\quad m_0 = 418\\,\\text{g}"
+      },
+      {
+        "titel": "Holzfeuchte",
+        "erklaerung": "Bezug auf die Darrmasse:",
+        "formel": "u = \\frac{512 - 418}{418} \\cdot 100 = 22{,}5\\,\\%"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Oberhalb von etwa 20 % ist Pilzbefall möglich; das Bauteil entspricht mindestens Gebrauchsklasse 2.",
+        "formel": "22{,}5\\,\\% > 20\\,\\% \\Rightarrow \\text{Feuchtequelle beseitigen}"
+      }
+    ],
+    "Holzkorrosion.schritte_2": [
+      {
+        "titel": "Charge",
+        "erklaerung": "Kiefernsplintholz 0,80 m³; Lösungsaufnahme aus der Wägung vor und nach der Tränkung 280 kg; Konzentration der Tränklösung 3,0 %.",
+        "formel": "m_{WS} = 280 \\cdot 0{,}030 = 8{,}4\\,\\text{kg}"
+      },
+      {
+        "titel": "Einbringmenge",
+        "erklaerung": "Bezogen auf das Holzvolumen:",
+        "formel": "R = \\frac{8{,}4}{0{,}80} = 10{,}5\\,\\text{kg/m}^3"
+      },
+      {
+        "titel": "Vergleich",
+        "erklaerung": "Erforderliche Einbringmenge laut Zulassung des Holzschutzmittels für die Gebrauchsklasse (hier angenommen 9,0 kg/m³):",
+        "formel": "10{,}5 \\ge 9{,}0 \\Rightarrow \\text{Aufnahme ausreichend}"
+      }
+    ],
+    "Holzkorrosion.literatur": [
+      "Huckfeldt, T.; Schmidt, O.: Hausfäule- und Bauholzpilze – Diagnose und Sanierung. Köln: Rudolf Müller (aktuelle Auflage)",
+      "Glauner, R.; Grosser, D.; Melcher, E.; Plarre, R.: Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Hrsg.: DIN e. V. 3., vollst. überarb. Ausg., Berlin: Beuth 2022",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Holzkorrosion.regelwerke": [
+      {
+        "title": "DIN 68800-1:2019-06 (Holzschutz – Teil 1: Allgemeines)"
+      },
+      {
+        "title": "DIN 68800-2:2022-02 (Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)"
+      },
+      {
+        "title": "DIN 68800-3:2020-03 (Holzschutz – Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)"
+      },
+      {
+        "title": "DIN 68800-4:2020-12 (Holzschutz – Teil 4: Bekämpfungsmaßnahmen gegen Holz zerstörende Pilze und Insekten und Sanierungsmaßnahmen)"
+      }
+    ],
+    "Holzkorrosion.formeln": [
+      {
+        "formel": "u = \\frac{m_w - m_0}{m_0} \\cdot 100\\,\\%",
+        "erklaerung": "Holzfeuchte u [%] bezogen auf die Trockenmasse m0 (Darrgewicht). Oberhalb von etwa u = 20 % ist bei üblichen Temperaturen Befall durch holzzerstörende Pilze möglich (Braun-, Weiß-, Moderfäule).",
+        "quelle": "DIN EN 13183-1"
+      },
+      {
+        "formel": "u_{\\text{Gebrauch}} \\le 20\\,\\% \\implies \\text{GK 0 oder GK 1}",
+        "erklaerung": "Grundsatz nach DIN 68800-1/-2: Dauerhaft auf u ≤ 20 % gehaltenes Holz ist vor Pilzen geschützt (GK 0/1). In GK 1 kann ein Insektenrisiko bestehen, das durch bauliche Maßnahmen (z. B. Kontrollierbarkeit, technisch getrocknetes Holz) auf GK 0 reduziert wird.",
+        "quelle": "DIN 68800-1/-2"
+      }
+    ]
+  }
+}

@@ -19,6 +19,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import inhalt from '@/content/schadreaktionenbeton/SchadreaktionenBeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -59,21 +61,21 @@ function AkrGefuegeSimulator() {
     const crackWidthMm = isCracked ? Math.min(2.8, (currentGelPressure - fctm) * 0.28 * (years / 10)) : 0;
     const expansionEpsMm = isCracked ? Math.min(3.5, 0.4 + crackWidthMm * 1.1) : 0;
 
-    let damageLevel = 'Keine AKR (Dauerhaft)';
+    let damageLevel = inhalt.werte.keineAkrDauerhaft;
     let badgeColor = 'bg-emerald-50 text-emerald-800 border-emerald-300';
 
     if (akrTriggered) {
       if (currentGelPressure < fctm) {
-        damageLevel = 'Gelbildungsphase (Latenzzeit)';
+        damageLevel = inhalt.werte.gelbildungsphaseLatenzzeit;
         badgeColor = 'bg-amber-50 text-amber-800 border-amber-300';
       } else if (crackWidthMm < 0.3) {
-        damageLevel = 'Mikrorissbildung (Drei-Sterne-Risse)';
+        damageLevel = inhalt.werte.mikrorissbildungDreiSterneRisse;
         badgeColor = 'bg-orange-50 text-orange-800 border-orange-300';
       } else if (crackWidthMm < 1.0) {
-        damageLevel = 'Netzrissmuster & Gelaustritt';
+        damageLevel = inhalt.werte.netzrissmusterGelaustritt;
         badgeColor = 'bg-rose-50 text-rose-800 border-rose-300 font-bold';
       } else {
-        damageLevel = 'Strukturelles Versagen ("Betonkrebs")';
+        damageLevel = inhalt.werte.strukturellesVersagenBetonkrebs;
         badgeColor = 'bg-red-100 text-red-800 border-red-500 font-bold animate-pulse';
       }
     }
@@ -94,14 +96,7 @@ function AkrGefuegeSimulator() {
       
       {/* Intro Box */}
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-        <p>
-          <strong>Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):</strong> Alkalilösliche 
-          Kieselsäure (<InlineMath math="\text{SiO}_2" />) aus empfindlichen Gesteinskörnern (Opalsandstein, Flinte) reagiert 
-          mit Alkalihydroxiden (<InlineMath math="\text{Na}^+, \text{K}^+, \text{OH}^-" />) aus dem Zement und externen Tausalzen. 
-          Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck 
-          die Betonzugfestigkeit (<InlineMath math="f_{\text{ctm}} \approx 3{,}0\text{ MPa}" />) übersteigt, entstehen 
-          charakteristische <strong>Drei-Sterne-Radialrisse</strong> und das typische netzartige Oberflächenrissmuster.
-        </p>
+        <p><MdText text={inhalt.texte.mikrostrukturelleSimulationDerAlkali} /></p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -110,13 +105,12 @@ function AkrGefuegeSimulator() {
         <div className="lg:col-span-5 flex flex-col gap-5">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/20 pb-2">
-              <Microscope size={16} className="text-shiraz" /> 1. Reaktionsbedingungen
-            </h3>
+              <Microscope size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1Reaktionsbedingungen} /></h3>
 
             {/* Alkali Content Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Alkaligehalt (Na₂O-Äquivalent):</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.alkaligehaltNaOÄquivalent} /></span>
                 <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs ${
                   alkaliContent > 0.60 ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
                 }`}>
@@ -134,19 +128,19 @@ function AkrGefuegeSimulator() {
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
                 <span>0,40 %</span>
-                <span className="font-bold text-shiraz">NA-Grenze: 0,60 %</span>
-                <span>1,60 % (Sehr hoch)</span>
+                <span className="font-bold text-shiraz"><MdText text={inhalt.texte.naGrenze060} /></span>
+                <span><MdText text={inhalt.texte.t160SehrHoch} /></span>
               </div>
             </div>
 
             {/* Aggregate Sensitivity Radio */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
-              <span className="font-bold text-text-main block">Alkaliempfindlichkeitsklasse Gestein:</span>
+              <span className="font-bold text-text-main block"><MdText text={inhalt.texte.alkaliempfindlichkeitsklasseGestein} /></span>
               <div className="grid grid-cols-3 gap-1.5">
                 {[
-                  { id: 'E1', label: 'E I (unbedenklich)', sub: 'Quarz/Granit' },
-                  { id: 'E2', label: 'E II (bedenklich)', sub: 'z. B. Kies mit Flint' },
-                  { id: 'E3', label: 'E III (schädlich)', sub: 'Opalsandstein' },
+                  { id: 'E1', label: inhalt.werte.eIUnbedenklich, sub: 'Quarz/Granit' },
+                  { id: 'E2', label: inhalt.werte.eIiBedenklich, sub: inhalt.werte.zBKiesMit },
+                  { id: 'E3', label: inhalt.werte.eIiiSchädlich, sub: 'Opalsandstein' },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -166,12 +160,12 @@ function AkrGefuegeSimulator() {
 
             {/* Exposure Environment */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
-              <span className="font-bold text-text-main block">Feuchte- &amp; Tausalz-Exposition:</span>
+              <span className="font-bold text-text-main block"><MdText text={inhalt.texte.feuchteTausalzExposition} /></span>
               <div className="grid grid-cols-3 gap-1.5">
                 {[
-                  { id: 'WO', label: 'WO (Trocken)', sub: 'Innenräume' },
+                  { id: 'WO', label: inhalt.werte.woTrocken, sub: 'Innenräume' },
                   { id: 'WF', label: 'WF (Feucht)', sub: 'Außenbauteile' },
-                  { id: 'WS', label: 'WS (Tausalz)', sub: 'Autobahnen' },
+                  { id: 'WS', label: inhalt.werte.wsTausalz, sub: 'Autobahnen' },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -217,7 +211,7 @@ function AkrGefuegeSimulator() {
                 }`}>
                   {formatDeZahl(simResults.currentGelPressure, 1)} MPa
                 </span>
-                <span className="text-[9px] text-text-main/70 block">fctm ≈ 3,0 MPa</span>
+                <span className="text-[9px] text-text-main/70 block"><MdText text={inhalt.texte.fctm30Mpa} /></span>
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -229,7 +223,7 @@ function AkrGefuegeSimulator() {
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Dehnung ε_AKR</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.dehnungAkr} /></span>
                 <span className="text-xl font-mono font-bold text-amber-700">
                   {formatDeZahl(simResults.expansionEpsMm, 2)} mm/m
                 </span>
@@ -239,7 +233,7 @@ function AkrGefuegeSimulator() {
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Reaktionsstatus</span>
                 <span className="text-xs font-bold text-text-main mt-1 block">
-                  {simResults.akrTriggered ? 'Aktiv quellend' : 'Inaktiv (Stabil)'}
+                  {simResults.akrTriggered ? inhalt.werte.aktivQuellend : inhalt.werte.inaktivStabil}
                 </span>
               </div>
             </div>
@@ -259,13 +253,10 @@ function AkrGefuegeSimulator() {
             <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
               <div>
                 <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                  <Sparkles size={18} className="text-shiraz" /> 2. Mikrogefüge &amp; Gelquellen (Mikroskopie)
-                </h3>
-                <span className="text-xs text-text-main/70 font-medium">Reaktives Opalkorn im Zementsteingefüge</span>
+                  <Sparkles size={18} className="text-shiraz" /><MdText text={inhalt.texte.t2MikrogefügeGelquellenMikroskopie} /></h3>
+                <span className="text-xs text-text-main/70 font-medium"><MdText text={inhalt.texte.reaktivesOpalkornImZementsteingefüge} /></span>
               </div>
-              <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200">
-                Vergrößerung: 200×
-              </span>
+              <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200"><MdText text={inhalt.texte.vergrößerung200} /></span>
             </div>
 
             {/* SVG Visualizer Canvas */}
@@ -386,7 +377,7 @@ function AkrGefuegeSimulator() {
                     Reaktives Quarzkorn
                   </text>
                   <text x="0" y="8" fill="#334155" fontSize="10" className="font-mono" textAnchor="middle">
-                    ({aggregateSensitivity === 'E3' ? 'Opalsandstein' : aggregateSensitivity === 'E2' ? 'Grauwacke' : 'Inertes Korn'})
+                    ({aggregateSensitivity === 'E3' ? 'Opalsandstein' : aggregateSensitivity === 'E2' ? 'Grauwacke' : inhalt.werte.inertesKorn})
                   </text>
 
                   {/* Internal pressure radial arrows if swelling */}
@@ -457,13 +448,8 @@ function AkrGefuegeSimulator() {
 
             {/* Scientific Explanation Footer */}
             <div className="mt-3 p-3 bg-off-white rounded-xl border border-home-grau/25 text-xs text-text-main/80 space-y-1">
-              <span className="font-bold text-shiraz block">Schadensmechanismus der Alkali-Kieselsäure-Reaktion:</span>
-              <p className="leading-relaxed">
-                Hydroxidionen spalten die festen Siloxanbrücken (<InlineMath math="\equiv\text{Si}-\text{O}-\text{Si}\equiv" />) 
-                des amorphen Quarzes. Die positiv geladenen Alkali-Kationen (<InlineMath math="\text{Na}^+, \text{K}^+" />) 
-                lagern sich an die negativ geladenen Silanolatgruppen an. Das entstehende hygroskopische Gel saugt Porenwasser auf 
-                und baut Sprengdrücke von über <InlineMath math="10\text{ MPa}" /> auf, die den Beton von innen her sprengen.
-              </p>
+              <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.schadensmechanismusDerAlkaliKieselsäure} /></span>
+              <p className="leading-relaxed"><MdText text={inhalt.texte.hydroxidionenSpaltenDieFesten} /></p>
             </div>
 
           </div>
@@ -498,28 +484,28 @@ export default function SchadreaktionenBeton() {
   const akrResults = useMemo(() => {
     const alkaliEintrag = zement * (na2o / 100);
     let risiko = 'Gering';
-    let massnahmen = 'Keine besonderen Maßnahmen erforderlich.';
+    let massnahmen = inhalt.werte.keineBesonderenMaßnahmenErforderlich;
     let isOk = true;
 
     if (feuchteklasse === 'WO') {
       risiko = 'Kein Risiko';
-      massnahmen = 'Beton ist trocken. Keine AKR möglich.';
+      massnahmen = inhalt.werte.betonIstTrockenKeine;
     } else if (eKlasse === 'E1') {
       risiko = 'Gering';
-      massnahmen = 'Unbedenkliche Gesteinskörnung. Keine weiteren Maßnahmen erforderlich.';
+      massnahmen = inhalt.werte.unbedenklicheGesteinskörnungKeineWeitere;
     } else {
       if (alkaliEintrag <= 3.0) {
         risiko = 'Mittel';
-        massnahmen = 'Alkalimenge ≤ 3,0 kg/m³ (vereinfachte Lehrgrenze nach britischem Ansatz). In Deutschland: Maßnahme nach Tabelle der Alkali-Richtlinie, z. B. NA-Zement oder begrenzter Zementgehalt.';
+        massnahmen = inhalt.werte.alkalimenge30Kg;
       } else {
         risiko = 'Hoch';
         isOk = false;
-        massnahmen = 'Alkalimenge > 3,0 kg/m³ (vereinfachte Lehrgrenze). Maßnahmen nach Alkali-Richtlinie erforderlich: NA-Zement, Zementgehalt begrenzen oder Gesteinskörnung E I wählen.';
+        massnahmen = inhalt.werte.alkalimenge30Kg2;
       }
       if (feuchteklasse === 'WS' && eKlasse === 'E3') {
         risiko = 'Sehr Hoch';
         isOk = false;
-        massnahmen = 'Feuchtigkeitsklasse WS mit E III: Gesteinskörnung austauschen oder gutachterliche Stellungnahme bzw. Performance-Prüfung erforderlich (Alkali-Richtlinie).';
+        massnahmen = inhalt.werte.feuchtigkeitsklasseWsMitE;
       }
     }
     return { alkaliEintrag, risiko, massnahmen, isOk };
@@ -545,7 +531,7 @@ export default function SchadreaktionenBeton() {
           tension: 0.1,
         },
         {
-          label: 'NA-Zement (0,60 M.-%)',
+          label: inhalt.werte.naZement060,
           data: dataNA,
           borderColor: '#3b82f6',
           backgroundColor: '#3b82f6',
@@ -562,29 +548,29 @@ export default function SchadreaktionenBeton() {
     const s_krit = 88;
     let risiko = 'Gering';
     let isOk = true;
-    let massnahmen = 'Beton ist ausreichend frostbeständig.';
+    let massnahmen = inhalt.werte.betonIstAusreichendFrostbeständig;
 
     if (saettigung > s_krit) {
-      risiko = 'Sehr Hoch (Frostsprengung)';
+      risiko = inhalt.werte.sehrHochFrostsprengung;
       isOk = false;
       massnahmen = `Der Sättigungsgrad (${formatDeWert(saettigung)}%) überschreitet den kritischen Wert (${s_krit}%). Das gefrierende Wasser hat keinen Platz zum Ausweichen. Frostsprengung wahrscheinlich!`;
     } else if (tausalz) {
       if (wz > 0.50 || lp < 4.0 || l_bar > 0.20) {
-        risiko = 'Hoch (Oberflächenabwitterung)';
+        risiko = inhalt.werte.hochOberflächenabwitterung;
         isOk = false;
-        massnahmen = 'Bei Frost-Tausalz-Angriff (XF4) ist ein w/z-Wert ≤ 0.50 und ausreichend künstliche Luftporen (LP ≥ 4,0 Vol.-%, Abstandsfaktor ≤ 0,20 mm) zwingend erforderlich.';
+        massnahmen = inhalt.werte.beiFrostTausalzAngriff;
       } else {
-        risiko = 'Gering (Frost-Tausalz-beständig)';
-        massnahmen = 'Ausreichender Luftporengehalt und niedriger w/z-Wert schützen vor osmotischem Druck und Abwitterung.';
+        risiko = inhalt.werte.geringFrostTausalzBeständig;
+        massnahmen = inhalt.werte.ausreichenderLuftporengehaltUndNiedriger;
       }
     } else {
       if (wz > 0.55 && saettigung > 80) {
-        risiko = 'Mittel (Mikrorissbildung)';
+        risiko = inhalt.werte.mittelMikrorissbildung;
         isOk = false;
-        massnahmen = 'Hoher w/z-Wert führt zu hoher Kapillarporosität. Bei hoher Sättigung drohen Mikrorisse durch Eisdruck.';
+        massnahmen = inhalt.werte.hoherWZWert;
       } else {
-        risiko = 'Gering (Frostbeständig)';
-        massnahmen = 'Beton ist für reinen Frostangriff ohne Tausalz ausreichend ausgelegt.';
+        risiko = inhalt.werte.geringFrostbeständig;
+        massnahmen = inhalt.werte.betonIstFürReinen;
       }
     }
     return { l_bar, s_krit, risiko, isOk, massnahmen };
@@ -608,7 +594,7 @@ export default function SchadreaktionenBeton() {
       labels,
       datasets: [
         {
-          label: 'Abstandsfaktor L_bar [mm]',
+          label: inhalt.werte.abstandsfaktorLBarMm,
           data: lBarData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -617,7 +603,7 @@ export default function SchadreaktionenBeton() {
           tension: 0.4,
         },
         {
-          label: 'Aktueller Wert',
+          label: inhalt.werte.aktuellerWert,
           data: currentPointData,
           borderColor: '#0e558c',
           backgroundColor: '#0e558c',
@@ -634,35 +620,35 @@ export default function SchadreaktionenBeton() {
     let xA = 'XA1';
     let risiko = 'Gering';
     let isOk = true;
-    let massnahmen = 'Keine besonderen Maßnahmen erforderlich.';
+    let massnahmen = inhalt.werte.keineBesonderenMaßnahmenErforderlich2;
 
     if (sulfatKonz <= 200) {
       xA = 'X0';
       risiko = 'Kein Risiko';
-      massnahmen = 'Sulfatkonzentration unbedenklich.';
+      massnahmen = inhalt.werte.sulfatkonzentrationUnbedenklich;
     } else if (sulfatKonz <= 600) {
       xA = 'XA1';
-      risiko = 'Schwach angreifend';
+      risiko = inhalt.werte.schwachAngreifend;
       if (zementArt !== 'CEM I' && zementArt !== 'CEM III/B' && zementArt !== 'SR-Zement') {
-        massnahmen = 'Verwendung von Zementen mit mäßigem Sulfatwiderstand empfohlen.';
+        massnahmen = inhalt.werte.verwendungVonZementenMit;
       }
     } else if (sulfatKonz <= 3000) {
       xA = 'XA2';
-      risiko = 'Mäßig angreifend';
+      risiko = inhalt.werte.mäßigAngreifend;
       if (zementArt !== 'SR-Zement' && zementArt !== 'CEM III/B') {
         isOk = false;
-        massnahmen = 'Zwingend SR-Zement (hoher Sulfatwiderstand) oder CEM III/B / CEM III/C verwenden!';
+        massnahmen = inhalt.werte.zwingendSrZementHoher;
       } else {
-        massnahmen = 'SR-Zement oder Hochofenzement schützt vor Ettringitbildung.';
+        massnahmen = inhalt.werte.srZementOderHochofenzement;
       }
     } else {
       xA = 'XA3';
-      risiko = 'Stark angreifend';
+      risiko = inhalt.werte.starkAngreifend;
       isOk = false;
       if (zementArt !== 'SR-Zement' && zementArt !== 'CEM III/B') {
-        massnahmen = 'Zwingend SR-Zement oder CEM III/B / CEM III/C verwenden! Ggf. zusätzliche Schutzbeschichtung erforderlich.';
+        massnahmen = inhalt.werte.zwingendSrZementOder;
       } else {
-        massnahmen = 'Zusätzliche Schutzmaßnahmen (z.B. Beschichtung) bei XA3 oft erforderlich, trotz SR-Zement.';
+        massnahmen = inhalt.werte.zusätzlicheSchutzmaßnahmenZB;
       }
     }
 
@@ -680,7 +666,7 @@ export default function SchadreaktionenBeton() {
 
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
         <p>
-          <FormulaText text="Schadreaktionen im Beton können durch innere chemische Reaktionen (AKR), physikalische Einwirkungen (Frost-Tau) oder äußere chemische Angriffe (Sulfattreiben) entstehen. Alle diese Prozesse führen zu einer Volumenvergrößerung und damit zu Rissen und Abplatzungen." />
+          <FormulaText text={inhalt.werte.schadreaktionenImBetonKönnen} />
         </p>
       </div>
 
@@ -692,8 +678,7 @@ export default function SchadreaktionenBeton() {
               : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
           }`}
           onClick={() => setActiveTab('akr')}>
-          <Sparkles size={16} /> Alkalitreiben (AKR)
-        </button>
+          <Sparkles size={16} /><MdText text={inhalt.texte.alkalitreibenAkr} /></button>
         <button aria-pressed={activeTab === 'frost'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'frost' 
@@ -718,7 +703,7 @@ export default function SchadreaktionenBeton() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Eingabeparameter (AKR)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.eingabeparameterAkr} /></h3>
               
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex flex-col gap-2">
@@ -748,19 +733,19 @@ export default function SchadreaktionenBeton() {
                 </div>
               </div>
 
-              <Slider info="Menge an Zement im Beton." label={<FormulaText text="Zementgehalt" />} min={250} max={500} step={10} value={zement} unit="kg/m³" onChange={(e) => setZement(Number(e.target.value))} />
+              <Slider info={inhalt.werte.mengeAnZementIm} label={<FormulaText text="Zementgehalt" />} min={250} max={500} step={10} value={zement} unit="kg/m³" onChange={(e) => setZement(Number(e.target.value))} />
               <div className="mt-4">
-                <Slider label={<FormulaText text="Alkaligehalt Zement (Na_2O-Äq.)" />} info="NA-Zemente haben i.d.R. ≤ 0,60 M.-%" min={0.2} max={1.5} step={0.05} value={na2o} unit="M.-%" onChange={(e) => setNa2o(Number(e.target.value))} />
+                <Slider label={<FormulaText text={inhalt.werte.alkaligehaltZementNa2o} />} info={inhalt.werte.naZementeHabenI} min={0.2} max={1.5} step={0.05} value={na2o} unit="M.-%" onChange={(e) => setNa2o(Number(e.target.value))} />
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
             <div className={`p-6 rounded-xl shadow-md text-white ${akrResults.isOk ? 'bg-shiraz' : 'bg-red-600'}`}>
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Bewertung & Alkalieintrag</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.bewertungAlkalieintrag} /></h3>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-white/70 text-sm mb-1">Alkalieintrag (Zement)</div>
+                  <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.alkalieintragZement} /></div>
                   <div className="text-3xl font-bold">{formatDeZahl(akrResults.alkaliEintrag, 2)} kg/m³</div>
                 </div>
                 <div>
@@ -782,7 +767,7 @@ export default function SchadreaktionenBeton() {
             </div>
             
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Alkalieintrag über Zementgehalt</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.alkalieintragÜberZementgehalt} /></h3>
               <div className="h-[250px] w-full">
                 <Line data={akrChartData} options={{ maintainAspectRatio: false }} />
               </div>
@@ -795,7 +780,7 @@ export default function SchadreaktionenBeton() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Eingabeparameter (Frost)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.eingabeparameterFrost} /></h3>
               
               <div className="flex items-center gap-3 mb-6 bg-white p-3 rounded-lg border border-home-grau/30">
                 <input 
@@ -806,27 +791,25 @@ export default function SchadreaktionenBeton() {
                   className="w-5 h-5 text-shiraz rounded border-gray-300 focus:ring-middle-blue"
                 />
                 <label htmlFor="tausalz" className="text-sm font-medium text-text-main flex items-center gap-2 cursor-pointer">
-                  <Snowflake size={16} className="text-blue-500" />
-                  Frost-Tausalz-Angriff (XF2, XF4)
-                </label>
+                  <Snowflake size={16} className="text-blue-500" /><MdText text={inhalt.texte.frostTausalzAngriffXf2} /></label>
               </div>
 
               <Slider label="w/z-Wert" min={0.35} max={0.70} step={0.01} value={wz} unit="-" onChange={(e) => setWz(Number(e.target.value))} />
               <div className="mt-4">
-                <Slider label="Luftporengehalt (LP)" min={1.0} max={8.0} step={0.1} value={lp} unit="Vol.-%" onChange={(e) => setLp(Number(e.target.value))} />
+                <Slider label={inhalt.werte.luftporengehaltLp} min={1.0} max={8.0} step={0.1} value={lp} unit="Vol.-%" onChange={(e) => setLp(Number(e.target.value))} />
               </div>
               <div className="mt-4">
-                <Slider label="Sättigungsgrad (Wasser)" min={50} max={100} step={1} value={saettigung} unit="%" onChange={(e) => setSaettigung(Number(e.target.value))} />
+                <Slider label={inhalt.werte.sättigungsgradWasser} min={50} max={100} step={1} value={saettigung} unit="%" onChange={(e) => setSaettigung(Number(e.target.value))} />
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
             <div className={`p-6 rounded-xl shadow-md text-white ${frostResults.isOk ? 'bg-shiraz' : 'bg-red-600'}`}>
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Bewertung & Kennwerte</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.bewertungKennwerte} /></h3>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-white/70 text-sm mb-1">Abstandsfaktor L_bar</div>
+                  <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.abstandsfaktorLBar} /></div>
                   <div className="text-3xl font-bold">{formatDeZahl(frostResults.l_bar, 2)} mm</div>
                 </div>
                 <div>
@@ -839,8 +822,7 @@ export default function SchadreaktionenBeton() {
               </div>
               <div className="bg-white/10 p-4 rounded-lg border border-white/20">
                 <div className="text-sm font-bold mb-1 flex items-center gap-2">
-                  <Droplets size={16} /> Diagnose & Maßnahmen
-                </div>
+                  <Droplets size={16} /><MdText text={inhalt.texte.diagnoseMaßnahmen} /></div>
                 <div className="text-sm leading-relaxed">
                   {frostResults.massnahmen}
                 </div>
@@ -848,7 +830,7 @@ export default function SchadreaktionenBeton() {
             </div>
 
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
-              <h3 className="text-sm font-bold text-center mb-2">Abstandsfaktor L_bar vs. Luftporengehalt</h3>
+              <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.abstandsfaktorLBarVs} /></h3>
               <div className="flex-1 relative">
                 <Line data={frostChartData} options={{ maintainAspectRatio: false }} />
               </div>
@@ -861,7 +843,7 @@ export default function SchadreaktionenBeton() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Eingabeparameter (Sulfat)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.eingabeparameterSulfat} /></h3>
               
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label></div>
@@ -878,12 +860,12 @@ export default function SchadreaktionenBeton() {
                 </select>
               </div>
 
-              <Slider label="Sulfatkonzentration im Grundwasser" min={0} max={4000} step={50} value={sulfatKonz} unit="mg/l" onChange={(e) => setSulfatKonz(Number(e.target.value))} />
+              <Slider label={inhalt.werte.sulfatkonzentrationImGrundwasser} min={0} max={4000} step={50} value={sulfatKonz} unit="mg/l" onChange={(e) => setSulfatKonz(Number(e.target.value))} />
             </div>
             
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Sulfattreiben</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSulfattreiben} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="160" viewBox="0 0 300 160">
                   <rect width="300" height="160" fill="#cbd5e1" />
@@ -918,16 +900,14 @@ export default function SchadreaktionenBeton() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Sulfationen reagieren mit C3A aus dem Zement zu Ettringit. Diese Kristallbildung ist mit einer starken Volumenzunahme verbunden und sprengt das Gefüge.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.sulfationenReagierenMitC3a} /></div>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
             <div className={`p-6 rounded-xl shadow-md text-white ${sulfatResults.isOk ? 'bg-shiraz' : 'bg-red-600'}`}>
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Bewertung & Expositionsklasse</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.bewertungExpositionsklasse} /></h3>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1">Expositionsklasse</div>
@@ -956,65 +936,33 @@ export default function SchadreaktionenBeton() {
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Alkaligehalt eines Betons und Vergleich mit NA-Zement"
+        title={inhalt.werte.beispiel1AlkaligehaltEines}
         zielGleichung="\mathrm{Na_2O_{eq}} = \mathrm{Na_2O} + 0{,}658 \cdot \mathrm{K_2O}, \quad A = z \cdot \mathrm{Na_2O_{eq}}"
-        schritte={[
-          { titel: 'Zementanalyse', erklaerung: 'CEM I 42,5 R: Na₂O = 0,25 M.-%, K₂O = 0,95 M.-%:', formel: '\\mathrm{Na_2O_{eq}} = 0{,}25 + 0{,}658 \\cdot 0{,}95 = 0{,}88\\,\\text{M.-\\%}' },
-          { titel: 'Alkalimenge im Beton', erklaerung: 'Zementgehalt z = 360 kg/m³:', formel: 'A = 360 \\cdot 0{,}0088 = 3{,}2\\,\\text{kg/m}^3' },
-          { titel: 'Mit NA-Zement', erklaerung: 'CEM I-NA (Na₂O-Äq. ≤ 0,60 M.-%):', formel: 'A_{NA} \\le 360 \\cdot 0{,}0060 = 2{,}2\\,\\text{kg/m}^3' }
-        ]}
-        ergebnisHinweis="In Deutschland richten sich die Maßnahmen nicht nach einem Grenzwert in kg/m³, sondern nach der Maßnahmentabelle der Alkali-Richtlinie (Alkaliempfindlichkeitsklasse E I bis E III, Feuchtigkeitsklasse WO/WF/WA/WS, Zementgehalt, NA-Zement oder Gutachten)."
-        normQuelle="DAfStb-Alkali-Richtlinie (2013-10); DIN 1164-10 (NA-Zement)"
+        schritte={inhalt.daten["SchadreaktionenBeton.schritte"]}
+        ergebnisHinweis={inhalt.werte.inDeutschlandRichtenSich}
+        normQuelle={inhalt.werte.dafstbAlkaliRichtlinie2013}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Kritischer Sättigungsgrad bei Frost"
+        title={inhalt.werte.beispiel2KritischerSättigungsgrad}
         zielGleichung="S_{krit} = \frac{1}{1 + \Delta V_{Eis}}"
-        schritte={[
-          { titel: 'Volumenzunahme', erklaerung: 'Wasser dehnt sich beim Gefrieren um etwa 9 % aus:', formel: '\\Delta V_{Eis} = 0{,}09' },
-          { titel: 'Grenzsättigung', erklaerung: 'Bis zu diesem Füllungsgrad findet das Eis noch Platz im Porenraum:', formel: 'S_{krit} = \\frac{1}{1{,}09} = 0{,}917 = 91{,}7\\,\\%' },
-          { titel: 'Folgerung', erklaerung: 'Künstliche Luftporen bleiben bei kapillarem Saugen weitgehend luftgefüllt und senken den Sättigungsgrad:', formel: 'S < S_{krit} \\Rightarrow \\text{kein Frostschaden}' }
-        ]}
-        ergebnisHinweis="Deshalb fordert DIN 1045-2 bei XF2 bis XF4 (bzw. alternativ sehr dichten Beton bei XF3) Luftporenbildner mit einem Abstandsfaktor der Poren unter etwa 0,20 mm."
-        normQuelle="Powers (1949); DIN 1045-2:2023-08"
+        schritte={inhalt.daten["SchadreaktionenBeton.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.deshalbFordertDin1045}
+        normQuelle={inhalt.werte.powers1949Din1045}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="schadreaktionen_beton" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap10} 
         wikipedia={[
           { title: 'Alkalitreiben', url: 'https://de.wikipedia.org/wiki/Alkalitreiben' },
           { title: 'Frost-Tau-Wechsel', url: 'https://de.wikipedia.org/wiki/Frost-Tau-Wechsel' },
           { title: 'Sulfattreiben', url: 'https://de.wikipedia.org/wiki/Sulfattreiben' }
         ]}
-        literatur={[
-          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (aktuelle Ausgabe)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN 19573:2026-06 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden)' }
-        ]}
-        formeln={[
-          {
-            formel: '3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot \\text{CaSO}_4 \\cdot 12\\text{H}_2\\text{O} + 2\\text{Ca}^{2+} + 2\\text{SO}_4^{2-} + 20\\text{H}_2\\text{O} \\rightarrow 3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot 3\\text{CaSO}_4 \\cdot 32\\text{H}_2\\text{O}',
-            erklaerung: 'Klassisches Sulfattreiben: Reaktion von Monosulfat (im erhärteten Hydratgefüge) mit eindringenden Sulfationen und Calciumionen zu expansivem, kristallwasserreichem Ettringit (Trisulfat, 32 H2O). Die drastische Volumenvergrößerung sprengt die gehärtete Zementsteinmatrix.',
-            quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton'
-          },
-          {
-            formel: '\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv + \\, 2\\text{Na}^+ + 2\\text{OH}^- \\rightarrow 2(\\equiv\\text{Si}-\\text{O}^-\\text{Na}^+) + \\text{H}_2\\text{O}',
-            erklaerung: 'Spaltung stabiler Neutralsiloxanbrücken des amorphen Quarzes durch hochalkalisches Porenwasser (OH-Ionen) bei der Alkali-Kieselsäure-Reaktion (AKR). Es bildet sich quellfähiges, stark wasseranziehendes Natrium-Alkali-Kieselgel, das Risse initiiert.',
-            quelle: 'DAfStb-Alkali-Richtlinie / Stark & Wicht'
-          },
-          {
-            formel: 'S_{\\text{crit}} = \\frac{V_w}{V_p} \\approx 91{,}7\\,\\% \\quad (\\Delta V_{\\text{Eis}} \\approx +9\\,\\%)',
-            erklaerung: 'Kritischer Wassersättigungsgrad bei Frostbeanspruchung. Überschreitet der Füllungsgrad der Kapillarporen 91,7%, kann das Wasser die 9-prozentige Volumenzunahme beim Phasenübergang zu Eis nicht mehr schadlos in freie Luftporen verdrängen; es entsteht zerstörerischer hydraulischer Sprengdruck.',
-            quelle: 'Powers: Freezing in Hardened Cement Paste'
-          }
-        ]}
+        literatur={inhalt.daten["SchadreaktionenBeton.literatur"]}
+        regelwerke={inhalt.daten["SchadreaktionenBeton.regelwerke"]}
+        formeln={inhalt.daten["SchadreaktionenBeton.formeln"]}
       />
     </div>
   );

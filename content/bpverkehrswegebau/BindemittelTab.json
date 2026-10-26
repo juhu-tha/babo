@@ -1,0 +1,17 @@
+{
+  "texte": {
+    "straßenbaubitumenViskositätsklassen": "Straßenbaubitumen & Viskositätsklassen",
+    "dasBindemittelBitumenIst": "Das Bindemittel Bitumen ist thermoplastisch: Bei Kälte spröde, bei Hitze zähviskos/flüssig. Für die Eignung im Asphalt wird es nach den Labortests charakterisiert:",
+    "t1NadelpenetrationDinEn": "1. Nadelpenetration (DIN EN 1426)",
+    "eineStandardisierteStahlnadel100g": "Eine standardisierte Stahlnadel (100g) dringt 5 Sekunden bei 25 °C in das Bitumen ein. Ein Eindringtiefe-Wert von 50 Zehntelmillimeter (0,1 mm) entspricht der Klassifizierung \"50\". Standard-Straßenbitumen: **50/70** oder **70/100**. Je höher die Zahl, desto weicher das Bitumen.",
+    "t2ErweichungspunktRingUnd": "2. Erweichungspunkt Ring und Kugel (RuK, DIN EN 1427)",
+    "temperaturBeiDerEine": "Temperatur, bei der eine Stahlkugel eine erhitzte Bitumenscheibe um eine definierte Distanz nach unten durchbiegt. Straßenbaubitumen 50/70 bzw. 70/100 hat einen Erweichungspunkt RuK von ca. **43 °C bis 54 °C** (DIN EN 12591). Polymermodifizierte Bitumen (PmB, z. B. mit SBS) erreichen höhere Erweichungspunkte und bleiben bei Kälte elastischer.",
+    "polishingStoneValuePsv": "Polishing Stone Value (PSV-Wert, DIN EN 1097-8)",
+    "derWichtigsteMaterialParameter": "Der wichtigste Material-Parameter für die Griffigkeit und Fahrsicherheit der Asphaltdeckschichten (Vermeidung von Rutschen bei Regen).",
+    "gesteinssplittKörnerWerdenAuf": "Gesteinssplitt-Körner werden auf einem Probekörper-Rad fixiert und unter permanentem Schleifsand-Wasserstrom unter Andruck eines Reifens künstlich poliert. Anschließend wird die **Reibung (Gleitkoeffizient)** mittels Pendelprüfgerät (SRT) gemessen.",
+    "autobahndeckschichtenZwingendPsvWert": "Autobahndeckschichten zwingend: PSV-Wert ≥ 51 oder ≥ 54",
+    "geeigneteNaturgesteineFürExtremen": "Geeignete Naturgesteine für extremen Abrieb:",
+    "basaltAndesitDiabas": "Basalt, Andesit, Diabas",
+    "keinWeicherKalkstein": "Kein weicher Kalkstein!"
+  }
+}

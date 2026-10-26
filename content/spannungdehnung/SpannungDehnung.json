@@ -1,0 +1,25 @@
+{
+  "texte": {
+    "dasSpannungsDehnungsDiagramm": "Das Spannungs-Dehnungs-Diagramm (",
+    "diagrammBeschreibtDasMechanische": "-Diagramm) beschreibt das mechanische Verhalten von Baustoffen unter Last. Hier können Sie interaktiv erforschen, wie sich Materialparameter auf das Tragverhalten auswirken. Beim Beton wird der Unterschied zwischen dem **Mittelwert-Realverhalten** (für Verformungen) und der abgesicherten **Bemessungskurve** (Parabel-Rechteck) deutlich. Stahl verhält sich zunächst linear-elastisch, beginnt dann zu fließen und verfestigt sich bis zur Bruchdehnung.",
+    "hinweisDieFormelnDer": "Hinweis: Die Formeln der Spannungs-Dehnungs-Linie nach DIN EN 1992-1-1, 3.1 gelten nur bis C90/105 (f_ck ≤ 90 MPa); der Regler ist deshalb auf 90 MPa begrenzt."
+  },
+  "werte": {
+    "betonDruck": "Beton (Druck)",
+    "vergleichZwischenDerBemessung": "Vergleich zwischen der Bemessung nach EC2 (Parabel-Rechteck) und dem physikalischen Realverhalten (Nichtlinear).",
+    "charaktDruckfestigkeitFCk": "Charakt. Druckfestigkeit (f_{ck})",
+    "zylinderdruckfestigkeitNach28Tagen": "Zylinderdruckfestigkeit nach 28 Tagen. Höhere Festigkeit führt zu spröderem Versagen.",
+    "bemessungswertFCd": "Bemessungswert f_{cd}",
+    "mittlereFestigkeitFCm": "Mittlere Festigkeit f_{cm}",
+    "eModulECm": "E-Modul E_{cm}",
+    "dehnung": "Dehnung ε (‰)",
+    "spannungCMpa": "Spannung σ_c (MPa)",
+    "betonstahlB500NachDin": "Betonstahl B500 nach DIN 488-1, idealisiert nach EC2 Bild 3.8.",
+    "normaleDuktilität": "(normale Duktilität)",
+    "hoheDuktilität": "(hohe Duktilität)",
+    "streckgrenzeFYk": "Streckgrenze f_{yk}",
+    "zugfestigkeitFTk": "Zugfestigkeit f_{tk}",
+    "dehnung2": "Dehnung ε (‰)",
+    "spannungSMpa": "Spannung σ_s (MPa)"
+  }
+}

@@ -30,10 +30,12 @@ ChartJS.register(
 );
 
 import { ZwangCalculator } from './Zwang';
+import inhalt from '@/content/praxisbeispiele/Praxisbeispiele.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Praxisbeispiele() {
   const [thickness, setThickness] = useState(1.5);
-  const [cementType, setCementType] = useState('CEM I 42.5 R');
+  const [cementType, setCementType] = useState(inhalt.werte.cemI425);
   const [cementContent, setCementContent] = useState(350);
   const [tFresh, setTFresh] = useState(20);
   const [tAmbient, setTAmbient] = useState(15);
@@ -122,7 +124,7 @@ export default function Praxisbeispiele() {
         labels,
         datasets: [
           {
-            label: 'Kerntemperatur (°C)',
+            label: inhalt.werte.kerntemperaturC,
             data: tempCurve,
             borderColor: '#ef4444',
             backgroundColor: 'rgba(239, 68, 68, 0.1)',
@@ -131,7 +133,7 @@ export default function Praxisbeispiele() {
             pointRadius: 0
           },
           {
-            label: 'Umgebungstemperatur (°C)',
+            label: inhalt.werte.umgebungstemperaturC,
             data: labels.map(() => tAmbient),
             borderColor: '#3b82f6',
             borderDash: [5, 5],
@@ -144,7 +146,7 @@ export default function Praxisbeispiele() {
         labels,
         datasets: [
           {
-            label: 'Zwangspannung (MPa)',
+            label: inhalt.werte.zwangspannungMpa,
             data: stressCurve,
             borderColor: '#f97316',
             backgroundColor: 'rgba(249, 115, 22, 0.1)',
@@ -153,7 +155,7 @@ export default function Praxisbeispiele() {
             pointRadius: 0
           },
           {
-            label: 'Zugfestigkeit f_ctm(t) (MPa)',
+            label: inhalt.werte.zugfestigkeitFCtmT,
             data: strengthCurve,
             borderColor: '#22c55e',
             borderDash: [5, 5],
@@ -172,24 +174,20 @@ export default function Praxisbeispiele() {
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <Layers size={24} />
           </div>
-          <h2 className="text-xl font-bold text-text-main">Zwang & Rissbreite bei massigen Bauteilen</h2>
+          <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.zwangRissbreiteBeiMassigen} /></h2>
       
 
         </div>
 
         <div className="text-sm text-text-main/80 bg-blue-50 border-blue-200 p-5 rounded-xl border my-4">
           <h3 className="text-base font-bold text-blue-900 mb-3 flex items-center gap-2">
-            <Info size={20} />
-            Einfache Erklärung der Phänomene
-          </h3>
-          <p className="mb-4">
-            Beim Betonieren massiger Bauteile (z.B. dicke Bodenplatten) greifen verschiedene Effekte ineinander, die zu Rissen führen können:
-          </p>
+            <Info size={20} /><MdText text={inhalt.texte.einfacheErklärungDerPhänomene} /></h3>
+          <p className="mb-4"><MdText text={inhalt.texte.beimBetonierenMassigerBauteile} /></p>
           <ul className="list-disc pl-5 space-y-3">
-            <li><strong>Wärmefluss & Hydratation:</strong> Zement reagiert mit Wasser und erzeugt Wärme (Hydratationswärme). Ein massiges Bauteil kann diese Wärme im Kern schlecht abgeben, wodurch es sich ausdehnt (Aufheizphase).</li>
-            <li><strong>Verformungsbehinderung (Zwang):</strong> Wenn das Bauteil abkühlt oder schwindet, möchte es sich zusammenziehen. Ist es aber z.B. starr mit dem Untergrund verbunden, wird diese Verkürzung behindert. Das erzeugt enorme Zugkräfte (Zwangspannungen).</li>
-            <li><strong>Schwindarten:</strong> Beton zieht sich beim Austrocknen (Trocknungsschwinden) und chemisch bei der Hydratation (Autogenes Schwinden) zusammen. Das erhöht die Dehnungsbehinderung und somit die Zugspannungen.</li>
-            <li><strong>Festigkeitsentwicklung:</strong> Junger Beton ist noch sehr weich und hat eine geringe Zugfestigkeit. Gleichzeitig entwickeln sich in dieser frühen Phase die höchsten Spannungen durch Hitze und Abkühlung. Überschreitet die Zwangspannung die junge Zugfestigkeit, reißt der Beton (Trennrisse).</li>
+            <li><MdText text={inhalt.texte.wärmeflussHydratationZementReagiert} /></li>
+            <li><MdText text={inhalt.texte.verformungsbehinderungZwangWennDas} /></li>
+            <li><MdText text={inhalt.texte.schwindartenBetonZiehtSich} /></li>
+            <li><MdText text={inhalt.texte.festigkeitsentwicklungJungerBetonIst} /></li>
           </ul>
         </div>
 
@@ -197,17 +195,17 @@ export default function Praxisbeispiele() {
           {/* Inputs */}
           <div className="lg:col-span-1 flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Bauteil & Zwang</h3>
-              <Slider info="Dicke des Bauteils." label={<FormulaText text="Bauteildicke h" />} min={0.5} max={3.0} step={0.1} value={thickness} unit="m" onChange={(e) => setThickness(Number(e.target.value))} />
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.bauteilZwang} /></h3>
+              <Slider info={inhalt.werte.dickeDesBauteils} label={<FormulaText text={inhalt.werte.bauteildickeH} />} min={0.5} max={3.0} step={0.1} value={thickness} unit="m" onChange={(e) => setThickness(Number(e.target.value))} />
               <div className="mt-4">
-                <Slider  label={<FormulaText text="Behinderungsgrad R" />} min={0} max={1.0} step={0.1} value={restraint} unit="-" onChange={(e) => setRestraint(Number(e.target.value))} />
-                <p className="text-xs text-home-grau mt-1">R=0 (frei beweglich), R=1 (starr eingespannt). Bodenplatten typischerweise R=0.3 bis 0.5.</p>
+                <Slider  label={<FormulaText text={inhalt.werte.behinderungsgradR} />} min={0} max={1.0} step={0.1} value={restraint} unit="-" onChange={(e) => setRestraint(Number(e.target.value))} />
+                <p className="text-xs text-home-grau mt-1"><MdText text={inhalt.texte.r0FreiBeweglich} /></p>
               </div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Betonrezeptur</h3>
-              <div className="flex items-center gap-2"><label className="text-xs font-bold text-home-grau uppercase tracking-wider mb-1 block">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
+              <div className="flex items-center gap-2"><label className="text-xs font-bold text-home-grau uppercase tracking-wider mb-1 block">Zementart</label><InfoTooltip text={inhalt.werte.artDesVerwendetenZements} /></div>
               <select aria-label="Zementart" 
                 value={cementType}
                 onChange={(e) => setCementType(e.target.value)}
@@ -217,14 +215,14 @@ export default function Praxisbeispiele() {
                 <option value="CEM II/A-LL 32.5 R">CEM II/A-LL 32.5 R (Mittel)</option>
                 <option value="CEM III/B 32.5 N">CEM III/B 32.5 N (Langsam, niedrige Wärme)</option>
               </select>
-              <Slider label="Zementgehalt" info="Menge des Zements pro Kubikmeter." min={250} max={450} step={10} value={cementContent} unit="kg/m³" onChange={(e) => setCementContent(Number(e.target.value))} />
+              <Slider label="Zementgehalt" info={inhalt.werte.mengeDesZementsPro} min={250} max={450} step={10} value={cementContent} unit="kg/m³" onChange={(e) => setCementContent(Number(e.target.value))} />
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Temperaturen</h3>
               <Slider label="Frischbetontemperatur"  min={5} max={30} step={1} value={tFresh} unit="°C" onChange={(e) => setTFresh(Number(e.target.value))} />
               <div className="mt-4">
-                <Slider label="Umgebungstemperatur" info="Temperatur der Umgebung." min={-5} max={35} step={1} value={tAmbient} unit="°C" onChange={(e) => setTAmbient(Number(e.target.value))} />
+                <Slider label="Umgebungstemperatur" info={inhalt.werte.temperaturDerUmgebung} min={-5} max={35} step={1} value={tAmbient} unit="°C" onChange={(e) => setTAmbient(Number(e.target.value))} />
               </div>
             </div>
           </div>
@@ -233,28 +231,28 @@ export default function Praxisbeispiele() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Kerntemperatur</div>
+                <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxKerntemperatur} /></div>
                 <div className="text-2xl font-bold text-shiraz">{formatDeZahl(results.T_max, 1)} °C</div>
-                <div className="text-xs text-text-main/60 mt-1">ΔT = {formatDeZahl((results.T_max - tAmbient), 1)} K zur Umgebung</div>
+                <div className="text-xs text-text-main/60 mt-1">ΔT = {formatDeZahl((results.T_max - tAmbient), 1)}<MdText text={inhalt.texte.kZurUmgebung} /></div>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zwangspannung</div>
+                <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxZwangspannung} /></div>
                 <div className="text-2xl font-bold text-fuchsia-600">{formatDeZahl(results.maxStress, 2)} MPa</div>
-                <div className="text-xs text-text-main/60 mt-1">Tritt in der Abkühlphase auf</div>
+                <div className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.trittInDerAbkühlphase} /></div>
               </div>
               <div className={`p-4 rounded-xl border shadow-sm text-white ${results.crackRisk ? 'bg-red-500 border-red-600' : 'bg-emerald-500 border-emerald-600'}`}>
-                <div className="text-xs uppercase tracking-wider mb-1 opacity-90">Rissrisiko (Trennrisse)</div>
+                <div className="text-xs uppercase tracking-wider mb-1 opacity-90"><MdText text={inhalt.texte.rissrisikoTrennrisse} /></div>
                 <div className="text-2xl font-bold flex items-center gap-2">
                   {results.crackRisk ? <><AlertTriangle size={24} /> Sehr Hoch</> : <><CheckCircle2 size={24} /> Gering</>}
                 </div>
                 <div className="text-xs opacity-90 mt-1">
-                  {results.crackRisk ? 'Spannung > Zugfestigkeit' : 'Spannung < Zugfestigkeit'}
+                  {results.crackRisk ? inhalt.werte.spannungZugfestigkeit : inhalt.werte.spannungZugfestigkeit2}
                 </div>
               </div>
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm h-[300px]">
-              <h3 className="text-sm font-bold text-text-main mb-4">Temperaturverlauf (Kern)</h3>
+              <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.temperaturverlaufKern} /></h3>
               <div className="relative w-full h-[220px]">
                 <Line 
                   data={results.tempChartData} 
@@ -265,7 +263,7 @@ export default function Praxisbeispiele() {
                         title: { display: true, text: 'Zeit (Tage)' },
                         ticks: { maxTicksLimit: 15 }
                       },
-                      y: { title: { display: true, text: 'Temperatur (°C)' } }
+                      y: { title: { display: true, text: inhalt.werte.temperaturC } }
                     }
                   }} 
                 />
@@ -273,20 +271,11 @@ export default function Praxisbeispiele() {
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm h-[300px]">
-              <h3 className="text-sm font-bold text-text-main mb-4">Spannungsentwicklung vs. Festigkeit</h3>
+              <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.spannungsentwicklungVsFestigkeit} /></h3>
               <div className="relative w-full h-[220px]">
                 <Line 
                   data={results.stressChartData} 
-                  options={{
-                    responsive: true, maintainAspectRatio: false,
-                    scales: {
-                      x: { 
-                        title: { display: true, text: 'Zeit (Tage)' },
-                        ticks: { maxTicksLimit: 15 }
-                      },
-                      y: { title: { display: true, text: 'Spannung / Festigkeit (MPa)' } }
-                    }
-                  }} 
+                  options={inhalt.daten["Praxisbeispiele.options"]} 
                 />
               </div>
             </div>
@@ -294,13 +283,12 @@ export default function Praxisbeispiele() {
             {results.crackRisk && (
               <div className="bg-orange-50 p-4 rounded-xl border border-orange-200">
                 <h4 className="font-bold text-orange-800 mb-2 flex items-center gap-2">
-                  <AlertTriangle size={18} /> Maßnahmen zur Rissvermeidung
-                </h4>
+                  <AlertTriangle size={18} /><MdText text={inhalt.texte.maßnahmenZurRissvermeidung} /></h4>
                 <ul className="list-disc list-inside text-sm text-orange-900 ml-4 space-y-1">
-                  <li>Verwendung eines Zements mit niedriger Wärmeentwicklung (z.B. CEM III).</li>
-                  <li>Reduzierung des Zementgehalts (sofern statisch/dauerhaft zulässig).</li>
-                  <li>Absenkung der Frischbetontemperatur (z.B. durch Zugabe von Eiswasser).</li>
-                  <li>Einbau einer ausreichenden Mindestbewehrung zur Rissbreitenbegrenzung (ca. {formatDeZahl(results.As_min, 1)} cm²/m je Seite).</li>
+                  <li><MdText text={inhalt.texte.verwendungEinesZementsMit} /></li>
+                  <li><MdText text={inhalt.texte.reduzierungDesZementgehaltsSofern} /></li>
+                  <li><MdText text={inhalt.texte.absenkungDerFrischbetontemperaturZ} /></li>
+                  <li><MdText text={inhalt.texte.einbauEinerAusreichendenMindestbewehrung} />{formatDeZahl(results.As_min, 1)}<MdText text={inhalt.texte.cmMJeSeite} /></li>
                 </ul>
               </div>
             )}

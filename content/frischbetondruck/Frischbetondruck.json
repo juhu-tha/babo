@@ -1,0 +1,39 @@
+{
+  "texte": {
+    "parameterDin18218": "Parameter (DIN 18218)",
+    "alsFrischbetondruckOderSchalungsdruck": "Als **Frischbetondruck** (oder Schalungsdruck) wird die Lastkomponente des Frischbetons bezeichnet, die senkrecht auf die Betonschalung einwirkt (nach DIN 18218:2010-01). Durch Reibung können zusätzlich Schubspannungen auftreten.",
+    "einflussgrößenWichteKonsistenzUnd": "**Einflussgrößen:** Wichte, Konsistenz und Erstarrungsverhalten (welches durch Zementart, Zusatzmittel und Temperatur gesteuert wird). Zudem beeinflussen Steiggeschwindigkeit, Rüttelintensität, Schalhaut, Bewehrung und Schalungsneigung den Druck.",
+    "druckverlaufImBereichDes": "**Druckverlauf:** Im Bereich des Rüttlers verhält sich der Frischbeton quasi-hydrostatisch. Mit zunehmender Höhe steigt der Druck an. Durch das fortschreitende Ansteifen (Hydratation) und die Reibung zwischen Beton und Schalung bzw. Bewehrung (*Siloeffekt*",
+    "subHkMaxSub": "<sub>hk,max</sub>) ausbildet.",
+    "erstarrenTemperaturAbs5": "Erstarren & Temperatur (Abs. 5.3)",
+    "effektiveErstarrungszeitTSub": "Effektive Erstarrungszeit t<sub>E</sub>: ",
+    "berücksichtigtDenTemperatureinflussNach": "Berücksichtigt den Temperatureinfluss nach Abs. 5.3 der DIN 18218.",
+    "näherungKSub1": "Näherung: K<sub>1</sub>-Ansatz (F3) für alle Klassen und Beiwert für F5 manuell an DIN 18218 prüfen.",
+    "maxSchalungsdruck": "Max. Schalungsdruck:",
+    "leichteRahmenschalungBrAusreichend": "**Leichte Rahmenschalung**<br>Ausreichend für geringe Drücke (z.B. Doka Frami, Peri Domino). Ideal für kleinere Bauteile und Fundamente.",
+    "standardRahmenschalungBrGeeignet": "**Standard Rahmenschalung**<br>Geeignet für mittlere Drücke (z.B. Doka Framax, Peri Trio). Der Standard im Hochbau für Wände.",
+    "schwereRahmenTrägerschalungBr": "**Schwere Rahmen- / Trägerschalung**<br>Erforderlich für hohe Drücke (z.B. Peri Maximo, Doka Top 50). Für schnelle Betonage oder hohe Wände.",
+    "sonderschalungHochleistungsschalungBrFür": "**Sonderschalung / Hochleistungsschalung**<br>Für sehr hohe Drücke (z.B. Doka FF20, Peri VARIO GT 24). Oft bei selbstverdichtendem Beton (SVB) oder massiven Bauteilen nötig.",
+    "druckverteilungAufLotrechteSchalung": "Druckverteilung auf lotrechte Schalung",
+    "derHydrostatischeDruckSteigt": "Der hydrostatische Druck steigt bis zum Erstarren an und bleibt danach konstant.",
+    "schematischeDruckverteilung": "Schematische Druckverteilung"
+  },
+  "werte": {
+    "frischbetondruckLimitiertKnM": "Frischbetondruck limitiert (kN/m²)",
+    "hydrostatischerDruckWorstCase": "Hydrostatischer Druck (Worst-Case)",
+    "wandhöheTiefeM": "Wandhöhe / Tiefe (m)",
+    "schalungsdruckHkKnM": "Schalungsdruck σ_hk (kN/m²)",
+    "steiggeschwindigkeitV": "Steiggeschwindigkeit (v)",
+    "geschwindigkeitMitDerDie": "Geschwindigkeit, mit der die Schalung mit Beton gefüllt wird. Üblich: 1 - 5 m/h. Höhere Geschwindigkeiten führen zu höherem Druck.",
+    "basisErstarrungszeitBei15": "Basis-Erstarrungszeit bei 15 °C (t_E,ref)",
+    "dieAmReferenzbetonErmittelte": "Die am Referenzbeton ermittelte Erstarrungszeit bei 15 °C. Normativer Standard: 5 h.",
+    "frischbetontemperaturTC": "Frischbetontemperatur (T_c)",
+    "temperaturDesFrischbetonsEine": "Temperatur des Frischbetons. Eine geringere Temperatur verzögert das Erstarren erheblich und erhöht somit den Schalungsdruck.",
+    "frischbetonrohdichte": "Frischbetonrohdichte (γ)",
+    "wichteDesFrischbetonsNormalbeton": "Wichte des Frischbetons. Normalbeton liegt bei ca. 25 kN/m³.",
+    "absoluteSchalungshöheH": "Absolute Schalungshöhe (H)",
+    "gesamthöheDerZuBetonierenden": "Gesamthöhe der zu betonierenden Schalung. Begrenzt den maximal möglichen hydrostatischen Druck.",
+    "maßFürDieVerarbeitbarkeit": "Maß für die Verarbeitbarkeit des Frischbetons.",
+    "beschreibtDieFließfähigkeitDes": "Beschreibt die Fließfähigkeit des Frischbetons. F1 ist steif, F5/F6/SVB ist sehr fließfähig (selbstverdichtend) und erzeugt den höchsten Druck."
+  }
+}

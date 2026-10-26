@@ -1,0 +1,74 @@
+{
+  "texte": {
+    "umgerechneteMesswerte": "Umgerechnete Messwerte",
+    "cClInMol": "c(Cl⁻) in mol/L",
+    "bereichRichtwert": "Bereich (Richtwert)",
+    "gestricheltDieBereichsgrenzenNach": "Gestrichelt die Bereichsgrenzen nach ASTM C876 (Richtwerte für Bauwerke, im Lösungsversuch nur zur Orientierung).",
+    "gNaclFälltDas": " g NaCl fällt das Potential um ",
+    "eineDepassivierungIstWahrscheinlich": " – eine Depassivierung ist wahrscheinlich. Das Verhältnis Cl⁻/OH⁻ liegt dann bei ",
+    "vorherigeStufe": " (vorherige Stufe ",
+    "hausmannNenntAlsRichtwert": "); Hausmann nennt als Richtwert ",
+    "keinPotentialabfallÜberDer": "Kein Potentialabfall über der Sprungschwelle – der Stahl ist nach dieser Auswertung noch passiv. Weitere NaCl-Stufen messen oder die Schwelle prüfen.",
+    "maßgebendIstDerVerlauf": "Maßgebend ist der Verlauf (Sprung) und die Begutachtung der Probe, nicht ein einzelner Grenzwert.",
+    "versuchsHandoutPotentialmessungAn": " Versuchs-Handout: Potentialmessung an Betonstahl",
+    "ruhepotentialInGesättigterCa": "Ruhepotential in gesättigter Ca(OH)₂-Lösung, schrittweise NaCl-Zugabe, Umrechnung auf SHE/CSE und Bewertung nach Potentialbereichen",
+    "dieGesättigteCalciumhydroxidlösungBildet": "Die gesättigte Calciumhydroxidlösung bildet vereinfacht die alkalische Porenlösung des Betons nach. Der Stahl bildet darin eine Passivschicht; Chloridionen können sie örtlich durchbrechen. Der Versuch macht diesen Übergang am Potential sichtbar – ohne Beton, Feuchtegradienten und Chloridbindung, also als Modellversuch.",
+    "passivierungLochfraßKritischerChloridgeh": "Passivierung, Lochfraß, kritischer Chloridgehalt im Beton und die Potentialfeldmessung am Bauwerk behandelt das Modul Bewehrungskorrosion."
+  },
+  "werte": {
+    "geringeKorrosionswahrscheinlichkeit": "geringe Korrosionswahrscheinlichkeit",
+    "unsichererBereich": "unsicherer Bereich",
+    "hoheKorrosionswahrscheinlichkeit": "hohe Korrosionswahrscheinlichkeit",
+    "ruhepotentialNullmessung": "Ruhepotential (Nullmessung)",
+    "hydroxidionenCOh": "Hydroxidionen c(OH⁻)",
+    "potentialabfallDepassivierungVermutet": "Potentialabfall (Depassivierung vermutet)",
+    "ruhepotentialCse": "Ruhepotential (CSE)",
+    "abfallBeiNacl": "Abfall bei NaCl",
+    "clOhBeimAbfall": "Cl⁻/OH⁻ beim Abfall",
+    "potentialGegenCseÜber": "Potential gegen CSE über der kumulierten NaCl-Zugabe mit den Grenzen −200 mV und −350 mV",
+    "ihrRechenwegUmrechnungUnd": "Ihr Rechenweg: Umrechnung und Cl⁻/OH⁻-Verhältnis",
+    "nullmessungAufSheUnd": "Nullmessung auf SHE und CSE",
+    "hydroxidionenAusDemPh": "Hydroxidionen aus dem pH-Wert",
+    "lehrvereinfachungAktivitätGleichKonzentr": "Lehrvereinfachung: Aktivität gleich Konzentration:",
+    "chloridionenBeimPotentialabfall": "Chloridionen beim Potentialabfall",
+    "chloridionenDerLetztenStufe": "Chloridionen der letzten Stufe",
+    "keinSprungErkanntVerhältnis": "Kein Sprung erkannt; Verhältnis der letzten Stufe:",
+    "elektrodenpotentialeBei25C": "Elektrodenpotentiale bei 25 °C (Literaturwerte ±3 mV); bei anderer Temperatur verschieben sie sich um etwa 0,5 bis 1 mV/K.",
+    "bewertungNachAstmC876": "Bewertung nach ASTM C876-22b (Richtwerte); Cl⁻/OH⁻-Richtwert nach Hausmann (1967)",
+    "hintergrundChloridinduzierteKorrosion": "Hintergrund: chloridinduzierte Korrosion",
+    "zumModulBewehrungskorrosion": "Zum Modul Bewehrungskorrosion",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)"
+  },
+  "daten": {
+    "Potentialmessung.literatur": [
+      "Hausmann, D. A.: Steel corrosion in concrete – How does it occur? Materials Protection 6 (1967), Nr. 11, S. 19–23",
+      "Angst, U.; Elsener, B.; Larsen, C. K.; Vennesland, Ø.: Critical chloride content in reinforced concrete – A review. Cement and Concrete Research 39 (2009), S. 1122–1138",
+      "Elsener, B.; Andrade, C.; Gulikers, J.; Polder, R.; Raupach, M.: Half-cell potential measurements – Potential mapping on reinforced concrete structures. RILEM TC 154-EMC Recommendations. Materials and Structures 36 (2003), S. 461–471",
+      "DGZfP-Merkblatt B 3: Elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion. Berlin: DGZfP 2014"
+    ],
+    "Potentialmessung.regelwerke": [
+      {
+        "title": "ASTM C876-22b (Standard Test Method for Corrosion Potentials of Uncoated Reinforcing Steel in Concrete)"
+      },
+      {
+        "title": "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)"
+      },
+      "DIN_EN_1992_1_1"
+    ],
+    "Potentialmessung.formeln": [
+      {
+        "formel": "E_{SHE} = E_{mess} + E_{Bezug,SHE}",
+        "erklaerung": "Umrechnung eines gegen eine Bezugselektrode gemessenen Potentials auf die Standardwasserstoffelektrode."
+      },
+      {
+        "formel": "E_{CSE} = E_{SHE} - 316\\,\\text{mV}",
+        "erklaerung": "Umrechnung auf die gesättigte Kupfer/Kupfersulfat-Elektrode (Bezugssystem der ASTM C876)."
+      },
+      {
+        "formel": "c_{Cl^-}/c_{OH^-}",
+        "erklaerung": "Verhältnis von Chlorid- zu Hydroxidionen; Richtwert für die Depassivierung in Lösung etwa 0,6 (Hausmann).",
+        "quelle": "Hausmann 1967"
+      }
+    ]
+  }
+}

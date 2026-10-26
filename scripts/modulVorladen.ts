@@ -147,8 +147,11 @@ const MODUL_BASIS: RegExp[] = [
   /\/src\/components\/quiz\/ModulTest\.tsx$/,
   /\/src\/data\/quizLader\.ts$/,
   /\/src\/utils\/mischeAntworten\.ts$/,
-  /\/src\/lib\/(utils\.ts|katexBedarf\.tsx|chartBedarf\.tsx|chartJsBedarf\.ts|chartSetup\.ts)$/,
+  /\/src\/lib\/(utils\.ts|katexBedarf\.tsx|chartBedarf\.tsx|chartJsBedarf\.ts|chartSetup\.ts|diagrammAlternative\.tsx|diagrammDaten\.ts)$/,
   /\/src\/components\/ui\/(Slider|InfoTooltip|EingabeHinweise)\.tsx$/,
+  // ausgelagerte Fachtexte (AP 5.3): Inline-Markdown-Renderer
+  /\/src\/components\/inhalt\/MdText\.tsx$/,
+  /\/src\/lib\/inhaltMd\.ts$/,
 ];
 
 type ModulInfo = { importedIds: readonly string[]; isEntry: boolean; code: string | null } | null;

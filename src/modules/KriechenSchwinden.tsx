@@ -22,6 +22,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Timer, Activity, Layers, Clock, Sliders } from 'lucide-react';
 import { InlineMath } from 'react-katex';
+import inhalt from '@/content/kriechenschwinden/KriechenSchwinden.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -160,44 +162,44 @@ export default function KriechenSchwinden() {
       <>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main flex items-center gap-2">Eingabeparameter (Beton)</h2>
+            <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.eingabeparameterBeton} /></h2>
       
 
             
-            <Slider info="Charakteristische Zylinderdruckfestigkeit des Betons in MPa, bestimmt den E-Modul und die Kriech- und Schwindbeiwerte."
-              label={<FormulaText text="Betondruckfestigkeit (f_{ck})" />}
+            <Slider info={inhalt.werte.charakteristischeZylinderdruckfestigkeit}
+              label={<FormulaText text={inhalt.werte.betondruckfestigkeitFCk} />}
               min={12} max={90} step={1}
               value={fck} unit="MPa"
               
               onChange={(e) => setFck(Number(e.target.value))}
             />
             
-            <Slider info="Umgebungsfeuchte im Jahresmittel (bspw. 50% für trockene Innenräume, 80% für Außenbauteile)."
-              label={<FormulaText text="Relative Luftfeuchtigkeit (RH)" />}
+            <Slider info={inhalt.werte.umgebungsfeuchteImJahresmittelBspw}
+              label={<FormulaText text={inhalt.werte.relativeLuftfeuchtigkeitRh} />}
               min={20} max={100} step={5}
               value={rh} unit="%"
               
               onChange={(e) => setRh(Number(e.target.value))}
             />
             
-            <Slider info="Wirksame Querschnittsdicke h_0 = 2 * A_c / u (A_c: Betonquerschnittsfläche, u: dem Schwinden ausgesetzter Umfang)."
-              label={<FormulaText text="Wirksame Bauteildicke (h_0)" />}
+            <Slider info={inhalt.werte.wirksameQuerschnittsdickeH0}
+              label={<FormulaText text={inhalt.werte.wirksameBauteildickeH0} />}
               min={50} max={1000} step={10}
               value={h0} unit="mm"
               
               onChange={(e) => setH0(Number(e.target.value))}
             />
 
-            <Slider info="Betonalter zum Zeitpunkt der ersten Belastungsübernahme."
-              label={<FormulaText text="Belastungsalter (t_0)" />}
+            <Slider info={inhalt.werte.betonalterZumZeitpunktDer}
+              label={<FormulaText text={inhalt.werte.belastungsalterT0} />}
               min={1} max={365} step={1}
               value={t0} unit="Tage"
               
               onChange={(e) => setT0(Number(e.target.value))}
             />
 
-            <Slider info="Ende der Nachbehandlung = Beginn des Trocknungsschwindens t_s (DIN EN 1992-1-1, 3.1.4)."
-              label={<FormulaText text="Trocknungsbeginn (t_s)" />}
+            <Slider info={inhalt.werte.endeDerNachbehandlungBeginn}
+              label={<FormulaText text={inhalt.werte.trocknungsbeginnTS} />}
               min={1} max={28} step={1}
               value={ts} unit="Tage"
               onChange={(e) => setTs(Number(e.target.value))}
@@ -205,7 +207,7 @@ export default function KriechenSchwinden() {
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text="S: langsam, N: normal, R: schnell erhärtend. Wirkt beim Kriechen über das wirksame Belastungsalter (Gl. B.9) und beim Trocknungsschwinden über α_ds1/α_ds2." /></div>
+                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text={inhalt.werte.sLangsamNNormal} /></div>
               </div>
               <select aria-label="Zementklasse" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
@@ -221,10 +223,10 @@ export default function KriechenSchwinden() {
 
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">φ(10 000 d, t₀)</span><strong className="font-mono text-shiraz text-base">{formatDeZahl(creepData[creepData.length - 1], 2)}</strong></div>
-              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">ε_cd (10 000 d)</span><strong className="font-mono text-base">{formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.t10000DT} /></span><strong className="font-mono text-shiraz text-base">{formatDeZahl(creepData[creepData.length - 1], 2)}</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.cd10000D} /></span><strong className="font-mono text-base">{formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m</strong></div>
               <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">ε_ca,∞</span><strong className="font-mono text-base">{formatDeZahl(m.epsCaInf * 1e6, 0)} µm/m</strong></div>
-              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">k_h · ε_cd,0</span><strong className="font-mono text-base">{formatDeZahl(m.kh, 2)} · {formatDeZahl(m.epsCd0 * 1e6, 0)}</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.kHCd0} /></span><strong className="font-mono text-base">{formatDeZahl(m.kh, 2)} · {formatDeZahl(m.epsCd0 * 1e6, 0)}</strong></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
@@ -234,7 +236,7 @@ export default function KriechenSchwinden() {
                     data={{
                       labels,
                       datasets: [{
-                        label: 'Kriechzahl φ',
+                        label: inhalt.werte.kriechzahl,
                         data: creepData,
                         borderColor: '#A3113E',
                         borderWidth: 2,
@@ -245,8 +247,8 @@ export default function KriechenSchwinden() {
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
-                        y: { min: 0, title: { display: true, text: 'Kriechzahl φ' } }
+                        x: { type: 'logarithmic', title: { display: true, text: inhalt.werte.betonalterTTage }, min: 1 },
+                        y: { min: 0, title: { display: true, text: inhalt.werte.kriechzahl2 } }
                       },
                       plugins: { legend: { display: false } }
                     }} 
@@ -255,23 +257,23 @@ export default function KriechenSchwinden() {
               </div>
 
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Schwinden ε_{cs} = ε_{cd} + ε_{ca}" /></h2>
+                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text={inhalt.werte.schwindenCsCdCa} /></h2>
                 <div className="flex-1 relative w-full h-full">
                   <Line 
                     data={{
                       labels,
                       datasets: [
-                        { label: 'Trocknungsschwinden εcd', data: shrinkageData, borderColor: '#0e558c', borderWidth: 2, pointRadius: 0 },
-                        { label: 'Autogenes Schwinden εca', data: autogenData, borderColor: '#a855f7', borderWidth: 2, pointRadius: 0, borderDash: [4, 3] },
-                        { label: 'Gesamtschwinden εcs', data: totalShrinkData, borderColor: '#0f172a', borderWidth: 2.5, pointRadius: 0 }
+                        { label: inhalt.werte.trocknungsschwindenCd, data: shrinkageData, borderColor: '#0e558c', borderWidth: 2, pointRadius: 0 },
+                        { label: inhalt.werte.autogenesSchwindenCa, data: autogenData, borderColor: '#a855f7', borderWidth: 2, pointRadius: 0, borderDash: [4, 3] },
+                        { label: inhalt.werte.gesamtschwindenCs, data: totalShrinkData, borderColor: '#0f172a', borderWidth: 2.5, pointRadius: 0 }
                       ]
                     }} 
                     options={{
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
-                        y: { min: 0, title: { display: true, text: 'Schwinddehnung (μm/m)' } }
+                        x: { type: 'logarithmic', title: { display: true, text: inhalt.werte.betonalterTTage2 }, min: 1 },
+                        y: { min: 0, title: { display: true, text: inhalt.werte.schwinddehnungMM } }
                       },
                       plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }
                     }} 
@@ -281,13 +283,13 @@ export default function KriechenSchwinden() {
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-              <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Wirksamer E-Modul E_{c,eff}(t, t_0)" /></h2>
+              <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text={inhalt.werte.wirksamerEModulE} /></h2>
               <div className="flex-1 relative w-full h-full">
                 <Line 
                   data={{
                     labels,
                     datasets: [{
-                      label: 'Wirksamer E-Modul Ec,eff',
+                      label: inhalt.werte.wirksamerEModulEc,
                       data: relaxationData,
                       borderColor: '#10b981',
                       borderWidth: 2,
@@ -298,25 +300,23 @@ export default function KriechenSchwinden() {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                      x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
-                      y: { min: 0, max: Ecm * 1.1, title: { display: true, text: 'Modul R (MPa)' } }
+                      x: { type: 'logarithmic', title: { display: true, text: inhalt.werte.betonalterTTage3 }, min: 1 },
+                      y: { min: 0, max: Ecm * 1.1, title: { display: true, text: inhalt.werte.modulRMpa } }
                     },
                     plugins: { legend: { display: false } }
                   }} 
                 />
               </div>
-              <p className="text-xs text-text-main/70 mt-2">
-                Für Verformungen unter Dauerlast wird nach DIN EN 1992-1-1, Gl. (7.20) der wirksame E-Modul <FormulaText text="E_{c,eff} = E_{cm} / (1 + \varphi(t, t_0))" /> angesetzt. Für Zwangsspannungen (Relaxation) ist das eine grobe Näherung; genauer ist <FormulaText text="E_{cm} / (1 + \rho \varphi)" /> mit dem Relaxationsbeiwert ρ ≈ 0,8 (Trost).
-              </p>
+              <p className="text-xs text-text-main/70 mt-2"><MdText text={inhalt.texte.fürVerformungenUnterDauerlast} /><FormulaText text="E_{c,eff} = E_{cm} / (1 + \varphi(t, t_0))" /><MdText text={inhalt.texte.angesetztFürZwangsspannungenRelaxation} /><FormulaText text="E_{cm} / (1 + \rho \varphi)" /><MdText text={inhalt.texte.mitDemRelaxationsbeiwert0} /></p>
             </div>
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Kriechen & Schwinden</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungKriechenSchwinden} /></h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Kriechen */}
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                  <div className="text-sm font-bold mb-2">Kriechen (unter Last)</div>
+                  <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.kriechenUnterLast} /></div>
                   <svg width="100%" height="100" viewBox="0 0 200 100">
                     {/* t=0 */}
                     <rect x="20" y="20" width="60" height="60" fill="#cbd5e1" stroke="#94a3b8" />
@@ -335,12 +335,12 @@ export default function KriechenSchwinden() {
                     <path d="M 185 20 L 185 30" stroke="#3b82f6" strokeWidth="1" markerStart="url(#arrow-blue)" markerEnd="url(#arrow-blue)" />
                     <text x="190" y="28" fontSize="10" fill="#3b82f6">Δl</text>
                   </svg>
-                  <div className="text-xs text-text-main/70 text-center mt-2">Zusätzliche Verformung bei konstanter Spannung.</div>
+                  <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.zusätzlicheVerformungBeiKonstanter} /></div>
                 </div>
 
                 {/* Schwinden */}
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                  <div className="text-sm font-bold mb-2">Schwinden (ohne Last)</div>
+                  <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.schwindenOhneLast} /></div>
                   <svg width="100%" height="100" viewBox="0 0 200 100">
                     {/* t=0 */}
                     <rect x="20" y="20" width="60" height="60" fill="#cbd5e1" stroke="#94a3b8" />
@@ -367,7 +367,7 @@ export default function KriechenSchwinden() {
                       </marker>
                     </defs>
                   </svg>
-                  <div className="text-xs text-text-main/70 text-center mt-2">Volumenverringerung durch Feuchtigkeitsabgabe.</div>
+                  <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.volumenverringerungDurchFeuchtigkeitsabg} /></div>
                 </div>
               </div>
             </div>
@@ -375,84 +375,60 @@ export default function KriechenSchwinden() {
             {/* --- Neu: Detaillierte Darstellung aller 5 Schwindarten --- */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
               <h3 className="font-bold text-lg text-text-main border-b border-home-grau/30 pb-2 flex items-center gap-2">
-                <span>🌊</span> Die 5 Arten des Schwindens im Detail
-              </h3>
+                <span>🌊</span><MdText text={inhalt.texte.die5ArtenDes} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Unter Schwinden versteht man die volumenmindernde zeitabhängige Verformung von unbelastetem Beton. 
-                Die Fachliteratur unterscheidet meist fünf Schwindarten; DIN EN 1992-1-1 erfasst rechnerisch das Trocknungs- und das autogene Schwinden:
-          </p>
+          <p><MdText text={inhalt.texte.unterSchwindenVerstehtMan} /></p>
         </div>
 
               <div className="grid grid-cols-1 gap-4 mt-1">
                 {/* 1. Plastisches Schwinden */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">1. Plastisches Schwinden (Kapillarschwinden)</span>
-                    <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-mono text-[9px] font-bold">Stadium: Frischbeton</span>
+                    <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.t1PlastischesSchwindenKapillarschwinden} /></span>
+                    <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-mono text-[9px] font-bold"><MdText text={inhalt.texte.stadiumFrischbeton} /></span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Tritt in den ersten Stunden auf, wenn an der freien Oberfläche mehr Wasser verdunstet, als durch Bluten nachgeliefert wird. Der kapillare Unterdruck in den Menisken zieht den noch plastischen Beton zusammen (Gefahr von Frühschwindrissen).
-                  </p>
-                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Frühzeitige Nachbehandlung: Abdecken mit Folie oder feuchten Vliesen, Nachbehandlungsmittel unmittelbar nach dem Abziehen, Schutz vor Wind und Sonne.
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1"><MdText text={inhalt.texte.ursacheTrittInDen} /></p>
+                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans"><MdText text={inhalt.texte.gegenmaßnahmeFrühzeitigeNachbehandlungAb} /></p>
                 </div>
 
                 {/* 2. Autogenes Schwinden */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">2. Autogenes Schwinden (Selbstaustrocknung)</span>
-                    <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-mono text-[9px] font-bold">Stadium: Erste Tage/Wochen</span>
+                    <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.t2AutogenesSchwindenSelbstaustrocknung} /></span>
+                    <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-mono text-[9px] font-bold"><MdText text={inhalt.texte.stadiumErsteTageWochen} /></span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Selbstaustrocknung: Die Hydratation verbraucht Wasser; bei niedrigen w/z-Werten (etwa &lt; 0,40) entleeren sich die feinen Poren, ohne dass Wasser von außen nachkommt. Der Kapillarunterdruck verkürzt den Zementstein. Nach DIN EN 1992-1-1 gilt ε_ca,∞ = 2,5 · (f_ck − 10) · 10⁻⁶.
-                  </p>
-                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Innere Nachbehandlung mit wassergesättigter leichter Gesteinskörnung oder Superabsorbern (SAP); schwindreduzierende Zusatzmittel (SRA).
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1"><MdText text={inhalt.texte.ursacheSelbstaustrocknungDieHydratation} /></p>
+                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans"><MdText text={inhalt.texte.gegenmaßnahmeInnereNachbehandlungMit} /></p>
                 </div>
 
                 {/* 3. Trocknungsschwinden */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">3. Trocknungsschwinden (Drying Shrinkage)</span>
-                    <span className="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-mono text-[9px] font-bold">Stadium: Langzeit (Jahre)</span>
+                    <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.t3TrocknungsschwindenDryingShrinkage} /></span>
+                    <span className="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-mono text-[9px] font-bold"><MdText text={inhalt.texte.stadiumLangzeitJahre} /></span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Langsame Abgabe von Kapillar- und Gelwasser an die Umgebung. Bei Normalbeton meist der größte Schwindanteil; maßgebend sind die relative Luftfeuchte (RH), die wirksame Bauteildicke h<sub>0</sub> und der Zementsteingehalt.
-                  </p>
-                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Geringer Zementleim- und Wassergehalt (hoher Gesteinskörnungsanteil), ausreichende Nachbehandlung, Bewehrung bzw. Fugen zur Rissverteilung.
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1"><MdText text={inhalt.texte.ursacheLangsameAbgabeVon} /></p>
+                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans"><MdText text={inhalt.texte.gegenmaßnahmeGeringerZementleimUnd} /></p>
                 </div>
 
                 {/* 4. Chemische Schrumpfung */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">4. Chemisches Schwinden (Schrumpfen)</span>
-                    <span className="px-2 py-0.5 rounded bg-teal-100 text-teal-800 font-mono text-[9px] font-bold">Stadium: Permanent aktiv</span>
+                    <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.t4ChemischesSchwindenSchrumpfen} /></span>
+                    <span className="px-2 py-0.5 rounded bg-teal-100 text-teal-800 font-mono text-[9px] font-bold"><MdText text={inhalt.texte.stadiumPermanentAktiv} /></span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Die Hydratationsprodukte nehmen weniger Volumen ein als Zement und Wasser vor der Reaktion (Le-Chatelier-Kontraktion, rund 25 % des chemisch gebundenen Wassers – Größenordnung). Nach dem Erstarren äußert sich die Kontraktion vor allem als zusätzlicher Porenraum; die äußere Verkürzung zeigt sich als autogenes Schwinden.
-                  </p>
-                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Nicht vermeidbar; die äußere Auswirkung wird über die Maßnahmen gegen autogenes Schwinden begrenzt.
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1"><MdText text={inhalt.texte.ursacheDieHydratationsprodukteNehmen} /></p>
+                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans"><MdText text={inhalt.texte.gegenmaßnahmeNichtVermeidbarDie} /></p>
                 </div>
 
                 {/* 5. Karbonatisierungsschwinden */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">5. Karbonatisierungsschwinden</span>
-                    <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-mono text-[9px] font-bold">Stadium: Langzeit (Jahrzehnte)</span>
+                    <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.t5Karbonatisierungsschwinden} /></span>
+                    <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-mono text-[9px] font-bold"><MdText text={inhalt.texte.stadiumLangzeitJahrzehnte} /></span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Chemische Umwandlung des alkalischen Calciumhydroxids Ca(OH)<sub>2</sub> durch eindiffundierendes Kohlenstoffdioxid CO<sub>2</sub> aus der Luft zu Calciumcarbonat CaCO<sub>3</sub>; dabei wird Wasser frei. Der Umbau der Hydratphasen verursacht eine geringe zusätzliche Verkürzung in der karbonatisierten Randzone.
-                  </p>
-                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Dichter Beton (niedriger w/z-Wert, gute Nachbehandlung) verlangsamt die Karbonatisierung.
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-[11px] pt-1"><MdText text={inhalt.texte.ursacheChemischeUmwandlungDes} /></p>
+                  <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans"><MdText text={inhalt.texte.gegenmaßnahmeDichterBetonNiedriger} /></p>
                 </div>
               </div>
             </div>
@@ -461,53 +437,25 @@ export default function KriechenSchwinden() {
         
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-6">
           <FormulaDerivationBox
-            title="Anwendungsbeispiel: Endkriechzahl und Endschwindmaß einer Innenwand C30/37"
+            title={inhalt.werte.anwendungsbeispielEndkriechzahlUndEndsch}
             zielGleichung="\varphi_0 = \varphi_{RH} \cdot \beta(f_{cm}) \cdot \beta(t_0), \quad \varepsilon_{cs,\infty} = k_h \cdot \varepsilon_{cd,0} + \varepsilon_{ca,\infty}"
-            normQuelle="DIN EN 1992-1-1, 3.1.4 und Anhang B"
-            schritte={[
-              { titel: '1. Gegeben', formel: 'f_{ck} = 30,\\; f_{cm} = 38\\,\\text{N/mm}^2,\\; RH = 50\\,\\%,\\; h_0 = 200\\,\\text{mm},\\; t_0 = 28\\,\\text{d, Zement N}', erklaerung: 'Innenbauteil, Belastung nach 28 Tagen.' },
-              { titel: '2. Feuchte und Dicke', formel: '\\varphi_{RH} = \\left[1 + \\frac{1 - 0{,}50}{0{,}1 \\cdot \\sqrt[3]{200}} \\cdot 0{,}944\\right] \\cdot 0{,}984 = 1{,}78', erklaerung: 'Wegen f_cm > 35 N/mm² mit α₁ = (35/38)^0,7 und α₂ = (35/38)^0,2.' },
-              { titel: '3. Festigkeit und Belastungsalter', formel: '\\beta(f_{cm}) = \\frac{16{,}8}{\\sqrt{38}} = 2{,}73;\\; \\beta(t_0) = \\frac{1}{0{,}1 + 28^{0{,}2}} = 0{,}49', erklaerung: 'Spätere Belastung verringert das Kriechen deutlich.' },
-              { titel: '4. Endkriechzahl', formel: '\\varphi_0 = 1{,}78 \\cdot 2{,}73 \\cdot 0{,}49 \\approx 2{,}37', erklaerung: 'Stimmt mit dem Nomogramm in DIN EN 1992-1-1, Bild 3.1 überein (≈ 2,3).' },
-              { titel: '5. Endschwindmaß', formel: '\\varepsilon_{cd,0} = 482\\,\\mu\\text{m/m};\\; k_h = 0{,}85 \\Rightarrow 410 + \\underbrace{2{,}5 \\cdot 20}_{\\varepsilon_{ca,\\infty}} = 460\\,\\mu\\text{m/m}', erklaerung: 'Trocknungsschwinden überwiegt; autogenes Schwinden rund 50 µm/m.' },
-            ]}
-            ergebnisHinweis="Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ) + ε_cs ≈ 0,26 · 3,37 + 0,46 ≈ 1,3 ‰ – rund das Fünffache der elastischen Stauchung."
+            normQuelle={inhalt.werte.dinEn19921}
+            schritte={inhalt.daten["renderBeton.schritte"]}
+            ergebnisHinweis={inhalt.werte.eineStützeUnterC}
           />
         </div>
 
         <ModulTest moduleId="kriechen_schwinden" />
 
         {!eingebettet && (
-<ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
+<ModuleFooter weblinks={[{ title: inhalt.werte.betonWikiKriechen, url: "https://beton.wiki/index.php?title=Kriechen" }, { title: inhalt.werte.zementMerkblätterÜbersicht, url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: inhalt.werte.betonWikiSchwinden, url: "https://beton.wiki/index.php?title=Schwinden" }]} 
           wikipedia={[
-                { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
-                { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
+                { title: inhalt.werte.kriechenWerkstoffe, url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+                { title: inhalt.werte.schwindenBeton, url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
               ]}
-              regelwerke={[
-            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
-            { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
-          ]}
-          literatur={[
-            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020'
-          ]}
-          formeln={[
-            {
-              formel: '\\varphi (t, t_0) = \\varphi _0 \\cdot  \\beta _c(t, t_0)',
-              erklaerung: 'Kriechzahl\n\\varphi (t, t_0): Kriechzahl zum Zeitpunkt t bei Belastungsalter t_0 [-]\n\\beta _c(t, t_0): Beiwert für den zeitlichen Verlauf des Kriechens [-]\n\\varphi _0: Nennkriechzahl [-]',
-              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
-            },
-            {
-              formel: '\\varepsilon _{cs} = \\varepsilon _{cd} + \\varepsilon _{ca}',
-              erklaerung: 'Gesamtschwinddehnung\n\\varepsilon _{cs}: Gesamtschwinddehnung [-]\n\\varepsilon _{cd}: Trocknungsschwinddehnung [-]\n\\varepsilon _{ca}: Autogene Schwinddehnung [-]',
-              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
-            },
-            {
-              formel: 'E_{c,eff} = \\frac{E_{cm}}{1 + \\varphi (t, t_0)}',
-              erklaerung: 'Wirksamer E-Modul unter Dauerlast (Gl. 7.20)\nE_{c,eff}: wirksamer E-Modul [MPa]\nE_{cm}: Sekantenmodul der Elastizität des Betons [MPa]\n\\varphi (t, t_0): Kriechzahl [-]',
-              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
-            }
-          ]}
+              regelwerke={inhalt.daten["renderBeton.regelwerke"]}
+          literatur={inhalt.daten["renderBeton.literatur"]}
+          formeln={inhalt.daten["renderBeton.formeln"]}
         />
 )}
       </>
@@ -521,18 +469,15 @@ export default function KriechenSchwinden() {
       <>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">Eingabeparameter (Spannstahl)</h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.eingabeparameterSpannstahl} /></h2>
             
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Kriechen und Schwinden spielen bei Betonstahl und Baustahl bei Raumtemperatur praktisch keine Rolle. 
-                Bei <strong>Spannstahl</strong> ist jedoch die <strong>Relaxation</strong> (Spannungsverlust bei konstanter Dehnung) von großer Bedeutung.
-              </p>
+              <p><MdText text={inhalt.texte.kriechenUndSchwindenSpielen} /></p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Spannstahlklasse (Relaxationsverhalten)</label><InfoTooltip text="Klassifizierung des Spannstahls nach seinem Spannungsverlust." /></div>
-              <select aria-label="Spannstahlklasse (Relaxationsverhalten)" 
+              <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.spannstahlklasseRelaxationsverhalten} /></label><InfoTooltip text={inhalt.werte.klassifizierungDesSpannstahlsNach} /></div>
+              <select aria-label={inhalt.werte.spannstahlklasseRelaxationsverhalten} 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={stahlKlasse}
                 onChange={(e) => setStahlKlasse(e.target.value)}
@@ -543,7 +488,7 @@ export default function KriechenSchwinden() {
               </select>
             </div>
 
-            <Slider info="Verhältnis der eingetragenen Vorspannung im Spannstahl zur charakteristischen Zugfestigkeit f_pk des Spannstahls."
+            <Slider info={inhalt.werte.verhältnisDerEingetragenenVorspannung}
               label={<FormulaText text="Spannungsniveau (\sigma_{pi} / f_{pk})" />}
               min={0.4} max={0.8} step={0.05}
               value={sigmaRatio} unit="-"
@@ -560,7 +505,7 @@ export default function KriechenSchwinden() {
                   data={{
                     labels,
                     datasets: [{
-                      label: 'Spannungsverlust (%)',
+                      label: inhalt.werte.spannungsverlust,
                       data: relaxationData,
                       borderColor: '#10b981',
                       borderWidth: 2,
@@ -572,8 +517,8 @@ export default function KriechenSchwinden() {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                      x: { type: 'logarithmic', title: { display: true, text: 'Zeit t (Stunden)' } },
-                      y: { min: 0, title: { display: true, text: 'Spannungsverlust (%)' } }
+                      x: { type: 'logarithmic', title: { display: true, text: inhalt.werte.zeitTStunden } },
+                      y: { min: 0, title: { display: true, text: inhalt.werte.spannungsverlust2 } }
                     },
                     plugins: { 
                       legend: { display: false },
@@ -593,24 +538,12 @@ export default function KriechenSchwinden() {
         {!eingebettet && (
 <ModuleFooter 
           wikipedia={[
-                { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
-                { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
+                { title: inhalt.werte.kriechenWerkstoffe2, url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+                { title: inhalt.werte.schwindenBeton2, url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
               ]}
-              regelwerke={[
-            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
-            { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
-          ]}
-          literatur={[
-            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020'
-          ]}
-          formeln={[
-            {
-              formel: '\\frac{\\Delta \\sigma _{pr}}{\\sigma _{pi}} = k_1 \\cdot  \\rho _{1000} \\cdot  e^{k_2 \\cdot  \\mu } \\cdot  \\left(\\frac{t}{1000}\\right)^{0{,}75 \\cdot  (1-\\mu )} \\cdot  10^{-5}',
-              erklaerung: 'Spannungsverlust durch Relaxation\n\\Delta\\sigma_{pr}: Spannungsverlust durch Relaxation [MPa]\n\\sigma_{pi}: Anfängliche Vorspannung [MPa]\n\\rho_{1000}: Relaxationsverlust nach 1000h in % (Klasse 1: 8,0; Klasse 2: 2,5; Klasse 3: 4,0)\n\\mu: Spannungsniveau (\\sigma_{pi} / f_{pk}) [-]\nt: Zeit [Stunden]\nk_1, k_2: Beiwerte nach Klasse (Kl. 1: 5,39 / 6,7; Kl. 2: 0,66 / 9,1; Kl. 3: 1,98 / 8,0)\nQuelle: DIN EN 1992-1-1 (EC2)',
-              quelle: 'DIN EN 1992-1-1, 3.3.2, Gl. (3.28)–(3.30)'
-            }
-          ]}
+              regelwerke={inhalt.daten["renderStahl.regelwerke"]}
+          literatur={inhalt.daten["renderStahl.literatur"]}
+          formeln={inhalt.daten["renderStahl.formeln"]}
         />
 )}
       </>
@@ -620,12 +553,12 @@ export default function KriechenSchwinden() {
   const renderRheologieSimulator = () => {
     // Current simulation time points
     const simDays = [
-      { label: 't₀ (Start Last)', days: t0 },
+      { label: inhalt.werte.tStartLast, days: t0 },
       { label: '90 Tage', days: 90 },
-      { label: '1 Jahr (365 d)', days: 365 },
-      { label: '5 Jahre (1825 d)', days: 1825 },
-      { label: '30 Jahre (10950 d)', days: 10950 },
-      { label: '50 Jahre (18250 d)', days: 18250 },
+      { label: inhalt.werte.t1Jahr365D, days: 365 },
+      { label: inhalt.werte.t5Jahre1825D, days: 1825 },
+      { label: inhalt.werte.t30Jahre10950D, days: 10950 },
+      { label: inhalt.werte.t50Jahre18250D, days: 18250 },
     ];
 
     const m = ec2KriechenSchwinden(fck, rh, h0, t0, ts, zementArt);
@@ -656,13 +589,7 @@ export default function KriechenSchwinden() {
     return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300">
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            <strong>Rheologischer Mechanismus &amp; Stützenverformung (DIN EN 1992-1-1):</strong> Das zeitabhängige Kriechen von Beton 
-            lässt sich physikalisch als Kombination aus einer rein elastischen Hooke’schen Feder (<InlineMath math="E_1" />) und einem 
-            viskoelastischen Kelvin-Voigt-Körper (Feder <InlineMath math="E_2" /> parallel zu einem viskosen Newton-Dämpfer <InlineMath math="\eta" />) 
-            beschreiben. Unter konstanter Last verlagert sich die Spannung allmählich vom Dämpfer auf die Feder. 
-            Gleichzeitig bewirkt das lastunabhängige Schwinden eine zusätzliche Stauchung. Das Federmodell veranschaulicht das Verhalten qualitativ; gerechnet wird mit den Ansätzen nach DIN EN 1992-1-1, Anhang B. Linearität des Kriechens setzt σ_c ≤ 0,45 · f_ck voraus – bei f_ck &lt; 19 MPa ist das mit 8,5 MPa nicht mehr erfüllt.
-          </p>
+          <p><MdText text={inhalt.texte.rheologischerMechanismusStützenverformun} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -670,13 +597,12 @@ export default function KriechenSchwinden() {
           <div className="lg:col-span-5 flex flex-col gap-5">
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/20 pb-2">
-                <Clock size={16} className="text-shiraz" /> 1. Betrachtungszeitraum (t)
-              </h3>
+                <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1BetrachtungszeitraumT} /></h3>
 
               {/* Time Slider */}
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold text-text-main">Standzeit des Tragwerks:</span>
+                  <span className="font-bold text-text-main"><MdText text={inhalt.texte.standzeitDesTragwerks} /></span>
                   <span className="font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded text-xs">
                     {simDays[timeIndex].label}
                   </span>
@@ -719,22 +645,22 @@ export default function KriechenSchwinden() {
 
               {/* Base Parameters Overview */}
               <div className="pt-3 border-t border-home-grau/20 space-y-2 text-xs">
-                <span className="font-bold text-text-main block">Randbedingungen der Stütze:</span>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.randbedingungenDerStütze} /></span>
                 <div className="grid grid-cols-2 gap-2 text-[11px]">
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
-                    <span className="text-text-main/60 block">Stützenhöhe L₀:</span>
-                    <strong className="font-mono text-text-main">3.000 mm (3 m)</strong>
+                    <span className="text-text-main/60 block"><MdText text={inhalt.texte.stützenhöheL} /></span>
+                    <strong className="font-mono text-text-main"><MdText text={inhalt.texte.t3000Mm3} /></strong>
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
-                    <span className="text-text-main/60 block">Dauerlast σc:</span>
-                    <strong className="font-mono text-text-main">8,5 MPa (Lehrannahme)</strong>
+                    <span className="text-text-main/60 block"><MdText text={inhalt.texte.dauerlastC} /></span>
+                    <strong className="font-mono text-text-main"><MdText text={inhalt.texte.t85MpaLehrannahme} /></strong>
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
-                    <span className="text-text-main/60 block">E-Modul Ecm:</span>
+                    <span className="text-text-main/60 block"><MdText text={inhalt.texte.eModulEcm} /></span>
                     <strong className="font-mono text-text-main">{formatDeZahl(Ecm, 0)} MPa</strong>
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
-                    <span className="text-text-main/60 block">Luftfeuchte RH:</span>
+                    <span className="text-text-main/60 block"><MdText text={inhalt.texte.luftfeuchteRh} /></span>
                     <strong className="font-mono text-text-main">{formatDeWert(rh)} %</strong>
                   </div>
                 </div>
@@ -743,15 +669,15 @@ export default function KriechenSchwinden() {
               {/* Live Deformation Readouts */}
               <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
                 <div className="bg-blue-50/80 p-2.5 rounded-xl border border-blue-200">
-                  <span className="text-[10px] uppercase font-bold text-blue-900 block">Elastisch ΔL_el</span>
+                  <span className="text-[10px] uppercase font-bold text-blue-900 block"><MdText text={inhalt.texte.elastischLEl} /></span>
                   <span className="text-lg font-mono font-bold text-blue-700">
                     {formatDeZahl(currentState.dL_el, 2)} mm
                   </span>
-                  <span className="text-[9px] text-blue-900/70 block">Spontan bei Lastbeginn</span>
+                  <span className="text-[9px] text-blue-900/70 block"><MdText text={inhalt.texte.spontanBeiLastbeginn} /></span>
                 </div>
 
                 <div className="bg-rose-50/80 p-2.5 rounded-xl border border-rose-200">
-                  <span className="text-[10px] uppercase font-bold text-rose-900 block">Kriechen ΔL_cr</span>
+                  <span className="text-[10px] uppercase font-bold text-rose-900 block"><MdText text={inhalt.texte.kriechenLCr} /></span>
                   <span className="text-lg font-mono font-bold text-shiraz">
                     {formatDeZahl(currentState.dL_cr, 2)} mm
                   </span>
@@ -759,7 +685,7 @@ export default function KriechenSchwinden() {
                 </div>
 
                 <div className="bg-purple-50/80 p-2.5 rounded-xl border border-purple-200">
-                  <span className="text-[10px] uppercase font-bold text-purple-900 block">Schwinden ΔL_cs</span>
+                  <span className="text-[10px] uppercase font-bold text-purple-900 block"><MdText text={inhalt.texte.schwindenLCs} /></span>
                   <span className="text-lg font-mono font-bold text-purple-700">
                     {formatDeZahl(currentState.dL_cs, 2)} mm
                   </span>
@@ -785,13 +711,10 @@ export default function KriechenSchwinden() {
               <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
                 <div>
                   <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                    <Layers size={18} className="text-shiraz" /> 2. Physischer Säulenvergleich &amp; Rheologisches Modell
-                  </h3>
-                  <span className="text-xs text-text-main/70 font-medium">Belastete Stütze (Kriechen + Schwinden) vs. unbelastetes Schwindprisma</span>
+                    <Layers size={18} className="text-shiraz" /><MdText text={inhalt.texte.t2PhysischerSäulenvergleichRheologisches} /></h3>
+                  <span className="text-xs text-text-main/70 font-medium"><MdText text={inhalt.texte.belasteteStützeKriechenSchwinden} /></span>
                 </div>
-                <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200">
-                  Maßstab Verformung: 25× überhöht
-                </span>
+                <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200"><MdText text={inhalt.texte.maßstabVerformung25Überhöht} /></span>
               </div>
 
               {/* Visual SVG Canvas */}
@@ -961,7 +884,7 @@ export default function KriechenSchwinden() {
 
               {/* Formula & Mechanistic Footer */}
               <div className="mt-3 p-3 bg-off-white rounded-xl border border-home-grau/25 text-xs text-text-main/80 space-y-1">
-                <span className="font-bold text-text-main block">Überlagerung der Verformungsanteile (DIN EN 1992-1-1, 3.1.4):</span>
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.überlagerungDerVerformungsanteileDin} /></span>
                 <div className="overflow-x-auto py-0.5">
                   <InlineMath math="\varepsilon_{\text{tot}}(t) = \varepsilon_{\text{el}} + \varepsilon_{\text{cr}}(t, t_0) + \varepsilon_{\text{cs}}(t) = \frac{\sigma_c}{E_{\text{cm}}} \cdot \left[1 + \varphi(t, t_0)\right] + \varepsilon_{\text{cs}}(t)" />
                 </div>
@@ -974,25 +897,13 @@ export default function KriechenSchwinden() {
         {!eingebettet && (
 <ModuleFooter 
           wikipedia={[
-            { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
-            { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
+            { title: inhalt.werte.kriechenWerkstoffe3, url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+            { title: inhalt.werte.schwindenBeton3, url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
             { title: 'Kelvin-Voigt-Modell', url: 'https://de.wikipedia.org/wiki/Kelvin-Voigt-Modell' }
           ]}
-          regelwerke={[
-            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
-            { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
-          ]}
-          literatur={[
-            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020'
-          ]}
-          formeln={[
-            {
-              formel: '\\varepsilon_{\\text{tot}}(t) = \\frac{\\sigma_c}{E_{\\text{cm}}} \\cdot [1 + \\varphi(t, t_0)] + \\varepsilon_{\\text{cs}}(t)',
-              erklaerung: 'Gesamtdehnung eines druckbeanspruchten Bauteils aus elastischer Dehnung, Kriechen und Schwinden (vereinfachend mit E_cm statt E_c = 1,05 E_cm).',
-              quelle: 'DIN EN 1992-1-1 Abs. 3.1.4'
-            }
-          ]}
+          regelwerke={inhalt.daten["renderRheologieSimulator.regelwerke"]}
+          literatur={inhalt.daten["renderRheologieSimulator.literatur"]}
+          formeln={inhalt.daten["renderRheologieSimulator.formeln"]}
         />
 )}
       </div>
@@ -1005,13 +916,10 @@ export default function KriechenSchwinden() {
     <div className="flex flex-col gap-6">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in slide-in-from-left duration-200">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Timer className="text-shiraz" /> Kriechen, Schwinden &amp; Relaxation
-        </h2>
+          <Timer className="text-shiraz" /><MdText text={inhalt.texte.kriechenSchwindenRelaxation} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Verformungsverhalten von Beton (Kriechen und Schwinden) nach Eurocode 2 (DIN EN 1992-1-1) sowie zeitabhängige Relaxationsverluste von Spannstählen unter hoher Dauerlast.
-          </p>
+          <p><MdText text={inhalt.texte.verformungsverhaltenVonBetonKriechen} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -1043,8 +951,7 @@ export default function KriechenSchwinden() {
             }`}
             onClick={() => setMaterial('rheologie')}
           >
-            <Sliders size={16} /> Rheologie &amp; Säulenverformung
-          </button>
+            <Sliders size={16} /><MdText text={inhalt.texte.rheologieSäulenverformung} /></button>
         </div>
       </div>
 

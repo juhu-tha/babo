@@ -2,6 +2,8 @@ import { Scale, Sliders, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React from 'react';
+import inhalt from '@/content/beispielrechnungen/RechnungHolzbau.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungHolzbauProps {
   A_wood: number;
@@ -33,26 +35,21 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
           <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
             <Scale className="text-shiraz" size={18} />
-            <span>Stabilitätsnachweis (Biegeknicken) einer pendelnd gelagerten Holzstütze</span>
+            <span><MdText text={inhalt.texte.stabilitätsnachweisBiegeknickenEinerPend} /></span>
           </h3>
-          <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-            <strong>Was?</strong> Berechnet wird der Standsicherheitsnachweis einer druckbeanspruchten Holzstütze mit quadratischem/rechteckigem Querschnitt. <br />
-            <strong>Warum?</strong> Schlanke Bauteile versagen unter zentrischer Druckkraft oft nicht durch direktes Brechen (Materialstauchung), sondern weichen schlagartig seitlich aus (instabiles Biegeknicken). <br />
-            <strong>Wie?</strong> Mit dem Ersatzstabverfahren nach dem Abminderungsbeiwert <InlineMath math="k_c" /> gemäß <strong>Eurocode 5 (DIN EN 1995-1-1)</strong>.
-          </p>
+          <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetWirdDer} /></p>
         </div>
 
         {/* INTERACTIVE CONTROLS */}
         <div className="bg-slate-50/50 p-5 rounded-xl border border-home-grau/30 space-y-4">
           <h4 className="font-bold text-xs text-slate-700 flex items-center gap-1.5 uppercase tracking-wider">
-            <Sliders size={14} className="text-shiraz" /> Abmessungen &amp; Einwirkungen
-          </h4>
+            <Sliders size={14} className="text-shiraz" /><MdText text={inhalt.texte.abmessungenEinwirkungen} /></h4>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
             {/* Column Length */}
             <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
-              <label className="font-bold text-slate-700 block">Knicklänge <InlineMath math="s_k = L" /> (m):</label>
-              <input aria-label="Knicklänge (m)" 
+              <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.knicklängeSKL} /></label>
+              <input aria-label={inhalt.werte.knicklängeM} 
                 type="range" min="1.5" max="6.0" step="0.5"
                 value={colLength}
                 onChange={(e) => setColLength(Number(e.target.value))}
@@ -63,8 +60,8 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
 
             {/* Section b x h */}
             <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
-              <label className="font-bold text-slate-700 block">Querschnitt <InlineMath math="b = h" /> (cm):</label>
-              <input aria-label="Querschnitt (cm)" 
+              <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.querschnittBHCm} /></label>
+              <input aria-label={inhalt.werte.querschnittCm} 
                 type="range" min="8" max="24" step="2"
                 value={colHeight}
                 onChange={(e) => {
@@ -78,8 +75,8 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
 
             {/* Axial Force */}
             <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
-              <label className="font-bold text-slate-700 block">Normalkraft <InlineMath math="N_d" /> (kN):</label>
-              <input aria-label="Normalkraft (kN)" 
+              <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.normalkraftNDKn} /></label>
+              <input aria-label={inhalt.werte.normalkraftKn} 
                 type="range" min="10" max="150" step="5"
                 value={designForce}
                 onChange={(e) => setDesignForce(Number(e.target.value))}
@@ -106,47 +103,32 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
 
         {/* STEP-BY-STEP DETAILS */}
         <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-          <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-            Knicknachweis nach Eurocode 5 Schritt für Schritt
-          </h4>
+          <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.knicknachweisNachEurocode5} /></h4>
 
           <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal">
-            <div>
-              <strong>Schritt 1: Festigkeiten bestimmen</strong>
-              <p className="mt-1">
-                Für die Holzgüte <span className="text-shiraz font-bold">{timberGrade}</span> beträgt der Festigkeitswert <InlineMath math={`f_{c,0,k} = ${f_c0k} \\, \\text{N/mm}^2`} />. <br />
-                Für Nutzungsklasse 1 oder 2 und die Klasse der Lasteinwirkungsdauer (KLED) „kurz“ – angenommen ist, dass eine kurzzeitige Einwirkung (z. B. Schnee unter 1000 m ü. NN) die maßgebende Kombination bestimmt – gilt <InlineMath math="k_{mod} = 0{,}9" /> (DIN EN 1995-1-1, Tab. 3.1). Bei ständiger bzw. langer Lasteinwirkung wäre k_mod = 0,6 bzw. 0,7 anzusetzen. Der Bemessungswert lautet:
-              </p>
+            <div><MdText text={inhalt.texte.schritt1FestigkeitenBestimmen} /><p className="mt-1"><MdText text={inhalt.texte.fürDieHolzgüte} /><span className="text-shiraz font-bold">{timberGrade}</span><MdText text={inhalt.texte.beträgtDerFestigkeitswert} /><InlineMath math={`f_{c,0,k} = ${f_c0k} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.brFürNutzungsklasse1} /></p>
               <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0{,}9 \\cdot \\frac{\\color{#A3113E}{${f_c0k}}}{1{,}3} = \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}} \\, \\text{N/mm}^2`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3">
-              <strong>Schritt 2: Geometrische Kennwerte &amp; Schlankheit ermitteln</strong>
-              <p className="mt-1">Fläche <InlineMath math="A" /> und Trägheitsradius <InlineMath math="i" /> des quadratischen Querschnitts:</p>
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2GeometrischeKennwerte} /><p className="mt-1"><MdText text={inhalt.texte.flächeAUndTrägheitsradius} /></p>
               <BlockMath math={`A = b \\cdot h = \\color{#A3113E}{${colWidth}} \\cdot \\color{#A3113E}{${colHeight}} = \\color{#A3113E}{${formatDeTeXWert(A_wood)}} \\, \\text{cm}^2`} />
               <BlockMath math={`i = \\frac{h}{\\sqrt{12}} = \\frac{\\color{#A3113E}{${colHeight}}}{3{,}464} = \\color{#A3113E}{${formatDeTeX(i_radius, 2)}} \\, \\text{cm}`} />
-              <p className="mt-1">Daraus folgt der dimensionslose Schlankheitsgrad <InlineMath math="\lambda" />:</p>
+              <p className="mt-1"><MdText text={inhalt.texte.darausFolgtDerDimensionslose} /></p>
               <BlockMath math={`\\lambda = \\frac{s_k}{i} = \\frac{\\color{#A3113E}{${formatDeTeX((colLength * 100), 0)}} \\, \\text{cm}}{\\color{#A3113E}{${formatDeTeX(i_radius, 2)}} \\, \\text{cm}} = \\color{#A3113E}{${formatDeTeX(slenderness, 2)}}`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3">
-              <strong>Schritt 3: Relativen Schlankheitsgrad berechnen</strong>
-              <p className="mt-1">Mit dem E-Modul-Quantilswert <InlineMath math={`E_{0{,}05} = ${E_005} \\, \\text{N/mm}^2`} />:</p>
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3RelativenSchlankheitsgrad} /><p className="mt-1"><MdText text={inhalt.texte.mitDemEModul} /><InlineMath math={`E_{0{,}05} = ${E_005} \\, \\text{N/mm}^2`} />:</p>
               <BlockMath math={`\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\cdot \\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{\\color{#A3113E}{${formatDeTeX(slenderness, 2)}}}{\\pi} \\cdot \\sqrt{\\frac{\\color{#A3113E}{${f_c0k}}}{${E_005}}} = \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3">
-              <strong>Schritt 4: Knickbeiwert k_c bestimmen</strong>
-              <p className="mt-1">Mit dem Grad der Systemunvollkommenheit <InlineMath math="\beta_c = 0{,}2" /> für Vollholz:</p>
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt4KnickbeiwertK} /><p className="mt-1"><MdText text={inhalt.texte.mitDemGradDer} /></p>
               <BlockMath math={`k = 0{,}5 \\cdot [1 + \\beta_c \\cdot (\\lambda_{rel} - 0{,}3) + \\lambda_{rel}^2]`} />
               <BlockMath math={`k = 0{,}5 \\cdot [1 + 0{,}2 \\cdot (\\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}} - 0{,}3) + \\color{#A3113E}{${formatDeTeX(Math.pow(lambda_rel, 2), 4)}}] = \\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}}`} />
-              <p className="mt-1">Daraus ergibt sich der Abminderungsbeiwert <InlineMath math="k_c" />:</p>
+              <p className="mt-1"><MdText text={inhalt.texte.darausErgibtSichDer} /></p>
               <BlockMath math={`k_c = \\frac{1}{k + \\sqrt{k^2 - \\lambda_{rel}^2}} = \\frac{1}{\\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}} + \\sqrt{\\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}}^2 - \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}^2}} = \\color{#A3113E}{${formatDeTeX(k_c_final, 4)}}`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3">
-              <strong>Schritt 5: Spannungsnachweis durchführen</strong>
-              <p className="mt-1">Einwirkende Druckspannung <InlineMath math="\sigma_{c,0,d}" />:</p>
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt5SpannungsnachweisDurchführen} /><p className="mt-1"><MdText text={inhalt.texte.einwirkendeDruckspannungSigmaC} /></p>
               <BlockMath math={`\\sigma_{c,0,d} = \\frac{N_d \\cdot 10}{A} = \\frac{\\color{#A3113E}{${designForce}} \\cdot 10}{\\color{#A3113E}{${A_wood}}} = \\color{#A3113E}{${formatDeTeX(sigma_c0d, 3)}} \\, \\text{N/mm}^2`} />
               <p className="mt-1">Knicknachweis-Bedingung:</p>
               <BlockMath math={`\\eta = \\frac{\\sigma_{c,0,d}}{k_c \\cdot f_{c,0,d}} = \\frac{\\color{#A3113E}{${formatDeTeX(sigma_c0d, 3)}}}{\\color{#A3113E}{${formatDeTeX(k_c_final, 3)}} \\cdot \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}}} = \\color{#A3113E}{${formatDeTeX(utilizationWood, 3)}} \\le 1{,}0`} />
@@ -169,20 +151,18 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
           </div>
           <div className="space-y-1 flex-1 font-normal">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-bold text-sm">Ausnutzungsgrad (Knicknachweis):</span>
+              <span className="font-bold text-sm"><MdText text={inhalt.texte.ausnutzungsgradKnicknachweis} /></span>
               <span className={`px-2.5 py-0.5 rounded-full font-bold text-xxs tracking-wider uppercase ${
                     utilizationWood <= 1.0 ? 'bg-green-200 text-green-900' : 'bg-red-200 text-red-900'
                   }`}>
-                {formatDeZahl((utilizationWood * 100), 0)}% Ausnutzung
-              </span>
+                {formatDeZahl((utilizationWood * 100), 0)}<MdText text={inhalt.texte.ausnutzung} /></span>
             </div>
-            <p>
-              Die Stütze ist zu <strong>{formatDeZahl((utilizationWood * 100), 1)}%</strong> ausgelastet.
+            <p><MdText text={inhalt.texte.dieStützeIstZu} /><strong>{formatDeZahl((utilizationWood * 100), 1)}%</strong> ausgelastet.
             </p>
             <p className="text-xxs opacity-90 mt-1">
               {utilizationWood <= 1.0 
-                ? 'Der Nachweis gegen Stabilitätsversagen im Grenzzustand der Tragfähigkeit (GZT) ist erfüllt. Die Stütze besitzt ausreichenden Widerstand gegen seitliches Ausknicken unter der vorgegebenen Einwirkung.'
-                : 'Achtung! Die Tragfähigkeit ist überschritten. Erhöhen Sie den Holzquerschnitt (z.B. auf 16x16 cm) oder verringern Sie die Knicklänge der Stütze mittels konstruktiver Zwischenhalterungen.'}
+                ? inhalt.werte.derNachweisGegenStabilitätsversagen
+                : inhalt.werte.achtungDieTragfähigkeitIst}
             </p>
           </div>
         </div>

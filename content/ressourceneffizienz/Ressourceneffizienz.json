@@ -1,0 +1,376 @@
+{
+  "texte": {
+    "kooperationThAugsburgRez": "Kooperation TH Augsburg & REZ Bayern",
+    "standLfu2026": "Stand: LfU 2026",
+    "ressourceneffizienzImBauwesen": "Ressourceneffizienz im Bauwesen",
+    "ressourceneffizienzZentrumsBayernRez": " Ressourceneffizienz-Zentrums Bayern (REZ)",
+    "klickenSieObenAuf": "Klicken Sie oben auf eine Säule zum Umschalten",
+    "wissenstransferSensibilisierungDesRez": "Wissenstransfer & Sensibilisierung des REZ Bayern",
+    "dasRessourceneffizienzZentrumBayern": "Das **Ressourceneffizienz-Zentrum Bayern (REZ)** ist die zentrale neutrale Anlaufstelle für kleine und mittelständische Unternehmen im Bereich Umweltpakt Bayern. Ein wesentlicher Fokus liegt im zirkulären und ressourcenschonenden Planen und Bauen (Circular Construction).",
+    "dasMultibarrierenUndKaskadenprinzip": "Das Multibarrieren- und Kaskadenprinzip:",
+    "informationsangebotePublikationNeutraler": "**Informationsangebote:** Publikation neutraler Datenblätter zu Ersatzbaustoffen, Umweltproduktdeklarationen (EPD) und Recycling-Leitfäden.",
+    "technologieVergleichAbwägungDer": "**Technologie-Vergleich:** Abwägung der CO₂-Minderung durch klinkerreduzierte Bindemittel und optimierte Gesteinskörnung.",
+    "bayerischeBestimmungenHilfestellungenZur": "**Bayerische Bestimmungen:** Hilfestellungen zur Ersatzbaustoffverordnung (EBV) und dem Wasserrecht zur schadlosen mineralischen Wiederverwertung.",
+    "schonGewusstProfHubers": "Schon gewusst? (Prof. Hubers Faktencheck)",
+    "mineralischeBauUndAbbruchabfälle": "Mineralische Bau- und Abbruchabfälle (Bauschutt, Straßenaufbruch, Bodenaushub) sind in Bayern wie bundesweit der mit Abstand größte Abfallstrom (Größenordnung mehrere zehn Millionen Tonnen jährlich; aktuelle Zahlen in der Abfallbilanz des LfU bzw. im Monitoringbericht Kreislaufwirtschaft Bau). Eine hohe Verwertungsquote wird zwar statistisch erreicht, jedoch fließt ein Großteil in den niederwertigen Straßenunterbau (Downcycling). Echtes Hochbau-Recycling (RC-Beton) schont bayerischen Kiesabbaugebiete und Waldlandschaften langfristig.",
+    "faktenDatenbankBayern": "Fakten-Datenbank Bayern",
+    "zusammensetzungVerbleibBayerischerMinera": "Zusammensetzung & Verbleib bayerischer mineralischer Abfälle",
+    "straßenbauErdbauVerfüllung": "Straßenbau & Erdbau (Verfüllung)",
+    "deponierungAbfallbeseitigung": "Deponierung (Abfallbeseitigung)",
+    "hochwertigesRcMaterialHochbau": "Hochwertiges RC-Material (Hochbau)",
+    "downcyclingSchütztZwarDeponieraum": "Downcycling schützt zwar Deponieraum, trägt aber wenig zur Baustoffautarkie bei.",
+    "politischesZielMehrRc": "Politisches Ziel: mehr RC-Beton im öffentlichen Hochbau (konkrete Zielwerte der bayerischen Strategie manuell prüfen).",
+    "rStrategienDesProduktlebenszyklus": "R-Strategien des Produktlebenszyklus",
+    "bayerischesRessourceneffizienzZentrumBay": "Bayerisches Ressourceneffizienz-Zentrum Bayern (REZ)",
+    "derZirkuläreProduktlebenszyklusInnovativ": "Der zirkuläre Produktlebenszyklus – Innovative R-Strategien",
+    "dieSchonungDerRohstoffvorräte": "Die Schonung der Rohstoffvorräte wird durch intelligente Entwurfs- und Verwertungsstufen systematisiert. Das Spektrum reicht von der radikalen Vermeidung **(R0)** bis zur ungeliebten thermischen Entsorgung **(R9)**. Klicken Sie auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:",
+    "produkteEinsparenKlügerNutzen": "Produkte einsparen, klüger nutzen & Herstellen",
+    "lebensdauerVonProduktenOder": "Lebensdauer von Produkten oder Teilen erhöhen",
+    "materialSinnvollWiederverwenden": "Material sinnvoll wiederverwenden",
+    "zirkulareWertschöpfung": "Zirkulare Wertschöpfung",
+    "highLevel": "◀ HIGH-LEVEL",
+    "zirkulareWertschöpfung2": "Zirkulare Wertschöpfung",
+    "inkrementell": "INKREMENTELL ▶",
+    "quellePrognos2023Basierend": "Quelle: Prognos 2023, basierend auf (Kirchherr, Reike, & Hekkert, 2017)",
+    "lfuRezBayernHandlungsrahmen": "LfU / REZ Bayern Handlungsrahmen",
+    "deutscheFormulierung": "Deutsche Formulierung:",
+    "bedeutungEinordnung": "Bedeutung & Einordnung:",
+    "praxisbeispielImBayerischenBauwesen": "Praxisbeispiel im bayerischen Bauwesen:",
+    "klimaschutzWirkungCo": "Klimaschutz-Wirkung (CO₂):",
+    "interaktiverWerkstoffKonstruktionsoptimi": "Interaktiver Werkstoff- & Konstruktionsoptimierer",
+    "spielenSieUnterschiedlicheTragwerksbauwe": "Spielen Sie unterschiedliche Tragwerksbauweisen am Simulator durch. Kombiniere nachhaltige Zementsorten (CEM III), den Einsatz von mineralischer Gesteinskörnung der Kategorie RC-1 (Bauschuttaufbereitung) und geometrische Tragwerksoptimierungen, um Ressourcenverbräuche und graue Energie drastisch zu senken!",
+    "tragwerkBetonmischungKonfigurieren": "Tragwerk & Betonmischung konfigurieren",
+    "t1BauteiltypUndStandardmaß": "1. Bauteiltyp und Standardmaß",
+    "t2ZementGesteinskörnungsklasse": "2. Zement- & Gesteinskörnungsklasse",
+    "standardCemI": "Standard CEM I",
+    "hüttensandCemIii": "Hüttensand CEM III",
+    "rcBetonRezyklGesteinskörnung": "RC-Beton (rezykl. Gesteinskörnung)",
+    "t3BewehrungsgehaltStahl": "3. Bewehrungsgehalt (Stahl)",
+    "stahlminimiertFiligraner": "Stahlminimiert (Filigraner)",
+    "t100SollEurocode": "100% (Soll / Eurocode)",
+    "dichtBewehrt": "Dicht bewehrt",
+    "t4ProzessBauOptionen": "4. Prozess- & Bau-Optionen",
+    "regionaleGesteinskörnung": "Regionale Gesteinskörnung",
+    "verkürztTransportwegeVon65": "Verkürzt Transportwege von 65 km auf 15 km (Vermeidung von Importen).",
+    "bauwerksintegrierteOptimierung": "Bauwerksintegrierte Optimierung",
+    "sparsameElementstärkenHohlkörperdeckenSp": "Sparsame Elementstärken & Hohlkörperdecken sparen ca. 15 % Gesamtvolumen.",
+    "echtzeitBerechnungBewertung": "Echtzeit-Berechnung & Bewertung",
+    "bayerischesLfuModell": "Bayerisches LfU-Modell",
+    "erforderlicheMasse": "Erforderliche Masse",
+    "endgewichtDesBauteils": "Endgewicht des Bauteils",
+    "abbauradiusReduziert": "Abbauradius reduziert",
+    "grauerCoGehalt": "Grauer CO₂-Gehalt",
+    "inklTransportStahl": "Inkl. Transport & Stahl",
+    "gegStandardSkelettbau": "geg. Standard-Skelettbau",
+    "vergleichsanalyseIhrOptimierterEntwurf": "🚀 **Vergleichsanalyse:** Ihr optimierter Entwurf emittiert ca. ",
+    "tonnenCoEqIm": " Tonnen CO₂-eq im Vergleich zum veralteten traditionellen Referenzwert von ",
+    "recyclingBonusSieVerwenden": "🌾 **Recycling-Bonus:** Sie verwenden ",
+    "tAufbereitetenBauschuttUnd": " t aufbereiteten Bauschutt und stoppen damit die Mülldeponierung wertvollen Betons.",
+    "handlungsempfehlungDesRezBayern": "Handlungsempfehlung des REZ Bayern:",
+    "vergabeerleichterungNachBayerischemBauve": "**Vergabeerleichterung:** Nach bayerischem Bauvergabeerlass dürfen mineralische RC-Baustoffe der Güteklasse RC-1 im Straßen- und Hochbau gleichwertig wie Primärbaustoffe ausgeschrieben werden.",
+    "mischungsrezepturAchtenSieAuf": "**Mischungsrezeptur:** Achten Sie auf ausreichende Nachbehandlung (Feuchthaltung) von RC-Beton der Klassen C25/30 bis C30/37, da die rezyklierte Gesteinskörnung im Vorfeld mehr Wasser aufsaugt.",
+    "legenSieFestWie": "Legen Sie fest, wie energie- und materialbewusst Ihre Baustelle gesteuert wird. Der Rechner ermittelt finanzielle Ersparnisse durch Müllvermeidung, Transportoptimierung und CO₂-Abgabenbefreiung in Bayern.",
+    "gebäudeNutzflächeM": "Gebäude-Nutzfläche (m²)",
+    "abfallvermeidungVorOrtGewerke": "Abfallvermeidung vor Ort (Gewerke-Trennung)",
+    "unsortierterContainer": "Unsortierter Container",
+    "hoheDisziplinSortiereimer": "Hohe Disziplin / Sortiereimer",
+    "rcBaustoffErsatzanteilIm": "RC-Baustoff-Ersatzanteil im Rohbau",
+    "reinerPrimärkies": "Reiner Primärkies",
+    "maxStatischeRcLastung": "Max. statische RC-Lastung",
+    "errechneterÖkonomischerMehrwertRoi": "Errechneter ökonomischer Mehrwert (ROI)",
+    "bayerischeTarifübersicht": "Bayerische Tarifübersicht",
+    "deponiekostenGespart": "Deponiekosten gespart",
+    "reduzierterMischBauschuttVon": "Reduzierter Misch-Bauschutt von ",
+    "spartTeureKlassenEinstufungen": " spart teure Klassen-Einstufungen auf bayerischen Deponien.",
+    "günstigererRcBezug": "Günstigerer RC-Bezug",
+    "rcGesteinskörnungImHochbau": "RC-Gesteinskörnung im Hochbau ist regional in Bayern im Schnitt 4-8 €/Tonne preiswerter als frisch gebrochener Primärkies.",
+    "coKostenSchattenpreis": "CO₂-Kosten (Schattenpreis)",
+    "kalkulatorischerCoPreisVon": "Kalkulatorischer CO₂-Preis von 65 €/t (Obergrenze des BEHG-Preiskorridors 2026) als Schattenpreis; eine direkte CO₂-Abgabe auf Baustoffe gibt es für das Bauvorhaben nicht.",
+    "förderbonusFiktiverLehrwert": "Förderbonus (fiktiver Lehrwert)",
+    "modellannahmeOhneRealesFörderprogramm": "Modellannahme ohne reales Förderprogramm: Bonus ab 25 % Substitution. Prüfen Sie aktuelle Programme (z. B. KfW/QNG-Förderung) im Einzelfall.",
+    "zusammenfassungProfitabilitätNachhaltigk": "Zusammenfassung: Profitabilität & Nachhaltigkeit",
+    "gesamtfreigestellterProjektnutzen": "Gesamtfreigestellter Projektnutzen:",
+    "einSparsamesKreislauffreundlichesBaustel": "Ein sparsames, kreislauffreundliches Baustellenmanagement rechnet sich bereits ab Tag 1 durch gesparte Logistikkombinationen und niedrige Entsorgungsentgelte. Zertifizierung: ",
+    "bayerischeNetzwerkeRegionaleVernetzung": "Bayerische Netzwerke & Regionale Vernetzung stärken",
+    "ressourceneffizienzLebtVomZusammenwirken": "Ressourceneffizienz lebt vom Zusammenwirken aller Akteure. Das REZ Bayern stellt Verbindungen her zwischen Bauunternehmen, Recyclern, Bauaufsichten und Hochschul-Forschungszentren. Wählen Sie eine bayerische Region, um lokal aktive Akteure und Koordinations-Cluster des REZ zu finden:",
+    "schwabenAugsburg": "Schwaben (Augsburg)",
+    "aktivWerdenAlsTha": "Aktiv werden als THA-Absolvent oder Partnerbetrieb",
+    "umDieKreislaufwirtschaftZu": "Um die Kreislaufwirtschaft zu stärken, unterstützen Prof. Huber und das REZ Bayern gezielt Studierende bei der Verfassung von praxisnahen Abschlussarbeiten (Bachelor / Master) in direkter Zusammenarbeit mit bayerischen Recycling-Unternehmen und Ingenieurbüros.",
+    "forschungsanfrageStellen": "Forschungsanfrage stellen ",
+    "offizielleRezWebsiteAufrufen": "Offizielle REZ Website aufrufen "
+  },
+  "werte": {
+    "wissenSensibilisierung": "Wissen & Sensibilisierung",
+    "systematischesErschließenVonFachwissen": "Systematisches Erschließen von Fachwissen zu Material- und Ressourceneffizienz. Zugriff auf bayerische Studien, Leitfäden des LfU und neutrale Fachberatung.",
+    "werkzeugePraxis": "Werkzeuge & Praxis",
+    "konkreteMaßnahmenZurMaterialeinsparung": "Konkrete Maßnahmen zur Materialeinsparung und Stoffkreislaufführung auf Baustellen. Einsatz von KI, digitaler Gebäudeplanung (BIM) und Materialpässen.",
+    "wirtschaftlichkeitÖkologie": "Wirtschaftlichkeit & Ökologie",
+    "erfassungDerÖkologischenUnd": "Erfassung der ökologischen und ökonomischen Potenziale. Reduktion von CO₂-Abgaben, Einsparung von Entsorgungskosten und Sicherung von Fördermitteln.",
+    "kompetenzNetzwerke": "Kompetenz & Netzwerke",
+    "verankerungDerRessourceneffizienzIn": "Verankerung der Ressourceneffizienz in der bayerischen Baupraxis. Vernetzung von Planern, Recyclern, Bauherren und wissenschaftlichen Clustern.",
+    "positiverBeitragZuZertifizierungskriteri": "Positiver Beitrag zu Zertifizierungskriterien (z. B. DGNB Ressourcen)",
+    "t1BauteiltypUndStandardmaß": "1. Bauteiltyp und Standardmaß",
+    "frankenNordbayern": "Franken / Nordbayern",
+    "beispiel1MaterialCircularity": "Beispiel 1: Material Circularity Indicator eines Betonbauteils",
+    "vAnteilPrimärmaterialW": "V = Anteil Primärmaterial, W = nicht verwerteter Abfallanteil (beide bezogen auf die Masse M). Eine längere Nutzungsdauer (X = 2) senkt F(X) auf 0,45 und hebt den MCI auf 0,78 – Langlebigkeit wirkt so stark wie Rezyklateinsatz.",
+    "ellenMacarthurFoundationGranta": "Ellen MacArthur Foundation / Granta Design: Circularity Indicators, Methodology (2015/2019)",
+    "beispiel2RezyklatanteilUnd": "Beispiel 2: Rezyklatanteil und Primärkieseinsparung im Hochbau",
+    "rezyklierteGesteinskörnungErsetztPrimärk": "Rezyklierte Gesteinskörnung ersetzt Primärkies, senkt die CO₂-Bilanz des Betons aber nur wenig – der Zementgehalt dominiert. Der größere Hebel liegt bei klinkerarmen Zementen und schlanker Bemessung.",
+    "dinEn12620Dafstb": "DIN EN 12620; DAfStb-Richtlinie Beton mit rezyklierter Gesteinskörnung (2010-09, mit Berichtigung 1:2019-09)",
+    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: Statistik- und Förderangaben als Lehrwerte gekennzeichnet, MCI und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "urbanMining": "Urban Mining"
+  },
+  "daten": {
+    "R_STRATEGIES": [
+      {
+        "id": "R0",
+        "name": "Refuse",
+        "shortDe": "Produkt überflüssig machen; Funktion anders bereitstellen",
+        "category": "Produkte einsparen, klüger nutzen & Herstellen",
+        "categoryIndex": 0,
+        "circularLevel": "HIGH-LEVEL (Maximale Kreislaufschonung)",
+        "innovationLevel": "RADIKAL (Neue Entwurfsparadigmen)",
+        "positionPercent": 5,
+        "innovationPercent": 5,
+        "details": "Dieser radikalste Ansatz hinterfragt die Notwendigkeit bestimmter Bauwerke oder Bauteile bereits in der Entwurfsphase grundlegend.",
+        "example": "Verzicht auf Unterkellerung bei unkomplizierten Bodenverhältnissen spart enorme Mengen an kies- und zementintensivem Beton sowie Erdaushubtransporte. Oder Verzicht auf rein dekorative Beton-Auskragungen.",
+        "quote": "Bester Ressourcenschutz entsteht durch das Weglassen des Unnötigen."
+      },
+      {
+        "id": "R1",
+        "name": "Rethink",
+        "shortDe": "Produktnutzung intensivieren (z. B. Sharing)",
+        "category": "Produkte einsparen, klüger nutzen & Herstellen",
+        "categoryIndex": 0,
+        "circularLevel": "HIGH-LEVEL (Maximale Kreislaufschonung)",
+        "innovationLevel": "RADIKAL (Umnutzungskonzepte)",
+        "positionPercent": 15,
+        "innovationPercent": 15,
+        "details": "Moderne Gebäude müssen so flexibel entworfen werden, dass sie über ihren Lebenszyklus hinweg unterschiedliche Verwendungszwecke aufnehmen können, anstatt abgerissen zu werden.",
+        "example": "Modularer Skelettbau mit nicht-tragenden Trennwänden, der ein einfaches Umschalten zwischen Wohnnutzung, Büro- oder Pflege-Apartments ermöglicht, ohne statische Eingriffe vornehmen zu müssen.",
+        "quote": "Planung von vornherein multifunktional und flexibel gestalten."
+      },
+      {
+        "id": "R2",
+        "name": "Reduce",
+        "shortDe": "Effizienz in Produktion oder Nutzung erhöhen: Rohstoff-/Materialeinsatz reduzieren",
+        "category": "Produkte einsparen, klüger nutzen & Herstellen",
+        "categoryIndex": 0,
+        "circularLevel": "HIGH-LEVEL / TRANSITION",
+        "innovationLevel": "RADIKAL / HOCH (Materialoptimierung)",
+        "positionPercent": 25,
+        "innovationPercent": 30,
+        "details": "Durch Optimierung von Bauteilegeometrie und dem gezielten Einsatz hochentwickelter Baustoffe wird die absolute Masse an benötigten Rohstoffen minimiert.",
+        "example": "Verwendung von Hohlkörperdecken (z. B. Cobiax) oder hochfestem Carbonbeton anstelle dicker Vollbetonplatten. Dies reduziert das Eigengewicht um bis zu 30 % und spart Beton im gesamten Tragwerk.",
+        "quote": "Weniger Material durch intelligentere Ingenieurskunst."
+      },
+      {
+        "id": "R3",
+        "name": "Reuse",
+        "shortDe": "Wiederverwendung durch andere Nutzer; Nutzung gemäß Originalfunktion",
+        "category": "Lebensdauer von Produkten oder Teilen erhöhen",
+        "categoryIndex": 1,
+        "circularLevel": "MID-LEVEL (Erhalt der Produktform)",
+        "innovationLevel": "INTELLIGENT / MITTEL (Bauteilbörsen)",
+        "positionPercent": 44,
+        "innovationPercent": 45,
+        "details": "Direkter Wiedereinbau intakter Bauteile an anderer Stelle in ihrer ursprünglichen Funktion, ohne stoffliche Umwandlung.",
+        "example": "Zerstörungsfreie Demontage und anschließende Wiederverwendung von Stahlträgern, Klinkersteinen, Natursteinplatten oder Trennwandsystemen auf regionalen Baustellen (vermittelt über Bauteilbörsen).",
+        "quote": "Gebrauchte Bauteile direkt wertschätzen und neu montieren."
+      },
+      {
+        "id": "R4",
+        "name": "Repair",
+        "shortDe": "Reparatur durch Wartung kaputter Produkte; Nutzung im Originalzustand",
+        "category": "Lebensdauer von Produkten oder Teilen erhöhen",
+        "categoryIndex": 1,
+        "circularLevel": "MID-LEVEL (Erhalt der Produktform)",
+        "innovationLevel": "MITTEL (Instandsetzungskunst)",
+        "positionPercent": 54,
+        "innovationPercent": 55,
+        "details": "Erhalt und Wiederherstellung der Funktionsfähigkeit lokaler Bauteile direkt am Bestandsgebäude.",
+        "example": "Fachgerechte Reparatur historischer Massivholzfenster, energetische Aufarbeitung von Bestandsfassaden oder Betonsanierung mittels Rissinjektion, statt Bauteile komplett auszutauschen.",
+        "quote": "Instandhaltung vor Austausch schützt graue Energie."
+      },
+      {
+        "id": "R5",
+        "name": "Refurbish",
+        "shortDe": "Wiederherstellen/ Restaurieren und „Updaten“ alter Produkte",
+        "category": "Lebensdauer von Produkten oder Teilen erhöhen",
+        "categoryIndex": 1,
+        "circularLevel": "MID-LEVEL / TRANSITION",
+        "innovationLevel": "MITTEL-INKREMENTELL (Sanierung)",
+        "positionPercent": 64,
+        "innovationPercent": 65,
+        "details": "Tiefgreifende kosmetische und technische Modernisierung von Systemen, um sie den aktuellen Standards anzupassen.",
+        "example": "Energetische Sanierung eines Wohnblocks aus den 1970ern mit neuer WDVS-Dämmung oder ökologischer Einblasedämmung und moderner zentraler Haustechnik bei Erhalt der Grundstruktur.",
+        "quote": "Alte Gebäude technisch aufwerten statt abreißen."
+      },
+      {
+        "id": "R6",
+        "name": "Remanufacture",
+        "shortDe": "Teile eines alten Produkts in einem neuen Produkt mit selber Funktion nutzen",
+        "category": "Lebensdauer von Produkten oder Teilen erhöhen",
+        "categoryIndex": 1,
+        "circularLevel": "MID-LEVEL / TRANSITION",
+        "innovationLevel": "INKREMENTELL (Werks-Aufbereitung)",
+        "positionPercent": 74,
+        "innovationPercent": 72,
+        "details": "Industrielle Demontage gebrauchter Baugruppen mit anschließender Generalüberholung im Herstellerwerk zur Erreichung von Neugeräte-Garantien.",
+        "example": "Werksseitige Aufbereitung und technische Generalüberholung von komplexen Heizungsventilen, Kompressoren, Brandschutz-Schiebern oder Doppelbodenplatten durch den Ersthersteller.",
+        "quote": "Industrielles Remanufacturing sichert Qualität und Gewährleistung."
+      },
+      {
+        "id": "R7",
+        "name": "Repurpose",
+        "shortDe": "Teile eines alten Produkts in einem neuen Produkt mit anderer Funktion nutzen",
+        "category": "Material sinnvoll wiederverwenden",
+        "categoryIndex": 2,
+        "circularLevel": "LOW-LEVEL / STOFFLICH",
+        "innovationLevel": "INKREMENTELL (Sinnvolle Umnutzung)",
+        "positionPercent": 84,
+        "innovationPercent": 80,
+        "details": "Kreative stoffliche Zweckentfremdung ausgedienter Baustoffe oder Bauteile für völlig andere Einsatzgebiete (Upcycling).",
+        "example": "Umnutzung ausrangierter Stahl-Gitterroste als langlebiges Rankgitter-System für begrünte Fassaden oder Verwendung recycelter Holzdeckenbalken für wertvolles Echtholz-Interieur.",
+        "quote": "Alten Werkstoffen eine völlig neue Seele einhauchen."
+      },
+      {
+        "id": "R8",
+        "name": "Recycle",
+        "shortDe": "Materielle Verwertung",
+        "category": "Material sinnvoll wiederverwenden",
+        "categoryIndex": 2,
+        "circularLevel": "LOW-LEVEL (Stoffkreislauf)",
+        "innovationLevel": "INKREMENTELL (Aufbereitungs-Tech)",
+        "positionPercent": 92,
+        "innovationPercent": 90,
+        "details": "Aufarbeitung von Abfällen zu Sekundärrohstoffen zur Produktion neuer Produkte – der klassische Weg im Baustoffrecycling.",
+        "example": "Zerkleinerung und Aufarbeitung von Abbruchbeton in Prallbrecheranlagen zu genormtem RC-Brechsand und RC-Splitt der Klassen RC-1 und RC-2. Dieser dient als 1:1 Ersatz für Primärkies im Frischbeton.",
+        "quote": "Rohstoffe im stofflichen Kreislauf halten."
+      },
+      {
+        "id": "R9",
+        "name": "Recover",
+        "shortDe": "Energetische Verwertung",
+        "category": "Material sinnvoll wiederverwenden",
+        "categoryIndex": 2,
+        "circularLevel": "LOW-LEVEL (End-of-Pipe)",
+        "innovationLevel": "INKREMENTELL (Fossile Ersetzung)",
+        "positionPercent": 98,
+        "innovationPercent": 98,
+        "details": "Thermische Verwertung von brennbaren Materialien zur Gewinnung von Nutzwärme und Elektrizität, wenn kein stofflicher Verwertungspfad mehr zulässig ist.",
+        "example": "Heizkraftwerk-Verfeuerung kontaminierter Altholzfraktionen (Altholzkategorie A IV, z.B. teer- oder salzimprägnierte Balken) unter strenger Rauchgasreinigung zur regionalen Fernwärmegewinnung.",
+        "quote": "Gewinnung von Nutzwärme, wenn stoffliche Wege ausgeschlossen sind."
+      }
+    ],
+    "Ressourceneffizienz.regionalHubs": [
+      {
+        "name": "Ressourceneffizienz-Zentrum Bayern (REZ) Hauptquartier",
+        "city": "Augsburg",
+        "region": "schwaben",
+        "focus": "Zentrale Koordinierung, Landesweites LfU-Beraternetzwerk & Publikationen",
+        "partner": "Bayerisches Landesamt für Umwelt (LfU) / TH Augsburg",
+        "description": "Zentrale Institution für herstellerneutrale Beratung, Forschungsförderung und Initiator von Best-Practice-Projekten im Freistaat."
+      },
+      {
+        "name": "BaustoffAllianz Kreislaufwirtschaft Bayern",
+        "city": "München",
+        "region": "oberbayern",
+        "focus": "Recycling-Beton Richtlinien, Baustoffbörsen & Vergaberatgeber",
+        "partner": "Bayerischer Industrieverband Steine und Erden",
+        "description": "Gemeinsame Arbeitsgruppe zur Standardisierung von RC-Zustandszulassungen in Kooperation mit Kommunen und Landratsämtern."
+      },
+      {
+        "name": "Entwicklungszentrum für Ressourceneffizienz Nordbayern",
+        "city": "Nürnberg",
+        "region": "franken",
+        "focus": "Industrieller Bauteilkreislauf, thermischer Rückbau & Gipskartonrecycling",
+        "partner": "IHK Nürnberg für Mittelfranken & Fraunhofer IPA",
+        "description": "Technikum zur mechanischen Trennung von Verbundwerkstoffen und Optimierung der Gips-zu-Gips-Recyclingkette."
+      },
+      {
+        "name": "Forschungsgruppe Ressourceneffizientes Bauen TH Augsburg",
+        "city": "Augsburg",
+        "region": "schwaben",
+        "focus": "Carbonbeton-Aufbereitung, Sortenreines Abbruch-Design & Didaktik",
+        "partner": "Prof. Dr.-Ing. Jürgen Huber / Technische Hochschule Augsburg (THA)",
+        "description": "Wegweisendes Labor zur Entwicklung von mineralischen Dämmstoffen aus Abbruchabfällen und BIM-basierten Rückbaukonzepten."
+      },
+      {
+        "name": "Kompetenzcluster Holz- und Kreislaufwirtschaft Ostbayern",
+        "city": "Straubing / Roßbach",
+        "region": "ostbayern",
+        "focus": "Kaskadennutzung von Altholz, biogene Kreisläufe & Strohdämmung Systems",
+        "partner": "CARMEN e.V. & HS Weihenstephan-Triesdorf",
+        "description": "Fördert das Schließen von Stoffströmen bei Holzprodukten und optimiert CO₂-optimierte Gebäudehüllen aus bayerischen Naturmaterialien."
+      }
+    ],
+    "Ressourceneffizienz.schritte": [
+      {
+        "titel": "Lineare Flussrate",
+        "erklaerung": "Rezyklatanteil der Gesteinskörnung 30 %, stoffliche Verwertung am Lebensende 70 % (davon Recycling-Effizienz berücksichtigt), vereinfachter Ansatz:",
+        "formel": "LFI = \\frac{V + W}{2M} = \\frac{0{,}70 + 0{,}30}{2} = 0{,}50"
+      },
+      {
+        "titel": "Nutzungsfaktor",
+        "erklaerung": "Nutzungsdauer gleich dem Branchendurchschnitt:",
+        "formel": "X = 1 \\Rightarrow F(X) = 0{,}9"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Einsetzen:",
+        "formel": "MCI = 1 - 0{,}50 \\cdot 0{,}9 = 0{,}55"
+      }
+    ],
+    "Ressourceneffizienz.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Bürogebäude mit 2 500 m³ Beton, Gesteinskörnung 1 850 kg/m³, Austauschanteil grober Körnung 35 % (Lehrwert; zulässige Anteile nach DAfStb-Richtlinie je Expositionsklasse prüfen):",
+        "formel": "m_{RC} = 2\\,500 \\cdot 1{,}85 \\cdot 0{,}35 = 1\\,619\\,\\text{t}"
+      },
+      {
+        "titel": "Lkw-Fahrten",
+        "erklaerung": "Bei 25 t Nutzlast:",
+        "formel": "n = \\frac{1\\,619}{25} = 65\\,\\text{Fahrten Primärkies weniger}"
+      },
+      {
+        "titel": "Massenbezogene Quote",
+        "erklaerung": "Bezogen auf die gesamte Gesteinskörnung:",
+        "formel": "RER = \\frac{1\\,619}{2\\,500 \\cdot 1{,}85} = 0{,}35 = 35\\,\\%"
+      }
+    ],
+    "Ressourceneffizienz.literatur": [
+      "Ressourceneffizienz-Zentrum Bayern (REZ) am LfU: Informationsangebote zum ressourceneffizienten Bauen (www.umweltpakt.bayern.de/rez; Titel manuell prüfen)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Sobek, W. (2022): non nobis – über das Bauen in der Zukunft (av edition)"
+    ],
+    "Ressourceneffizienz.regelwerke": [
+      {
+        "title": "Ersatzbaustoffverordnung (EBV)",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
+      },
+      {
+        "title": "Kreislaufwirtschaftsgesetz (KrWG § 14 Abs. 2: Ziel 70 % für Bau- und Abbruchabfälle)",
+        "url": "https://www.gesetze-im-internet.de/krwg/"
+      },
+      {
+        "title": "VDI 4800 Blatt 1:2016-02 (Ressourceneffizienz – Methodische Grundlagen, Prinzipien und Strategien)"
+      },
+      {
+        "title": "DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)"
+      }
+    ],
+    "Ressourceneffizienz.formeln": [
+      {
+        "formel": "RER = \\frac{m_{\\text{recycelt}} + m_{\\text{sekundär}}}{m_{\\text{gesamt}}} \\cdot 100\\% \\quad (\\text{Recycling-Einsatz-Quote})",
+        "erklaerung": "Massenbezogene Recycling-Einsatzquote (Recycled Content Rate) für mineralische Baustoffe, wie sie in Zertifizierungssystemen (z. B. DGNB) bewertet wird.",
+        "quelle": "VDI 4800 / DGNB"
+      },
+      {
+        "formel": "MCI = 1 - LFI \\cdot F(X) \\in [0; 1]",
+        "erklaerung": "Material Circularity Indicator: MCI = max(0; 1 − LFI · F(X)) mit linearer Flussrate LFI und Nutzungsfaktor F(X) = 0,9/X.",
+        "quelle": "Ellen MacArthur Foundation"
+      }
+    ]
+  }
+}

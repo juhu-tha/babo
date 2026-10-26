@@ -1,0 +1,29 @@
+{
+  "texte": {
+    "makromolekulareLackchemieFilmbildung": "Makromolekulare Lackchemie & Filmbildung",
+    "lackeBestehenNichtNur": "Lacke bestehen nicht nur aus farbgebenden Pigmenten; ihre tatsächliche Funktion beruht auf der Verknüpfung winziger Monomere und Oligomere zu riesigen Polymernetzwerken. Dieser Übergang vom flüssigen in den festen Zustand bestimmt die mechanischen und chemischen Resistenzen des Baustoffs.",
+    "physikalischeFilmbildung": "Physikalische Filmbildung",
+    "reinesTrocknenDurchDas": "Reines Trocknen durch das Verdunsten flüchtiger organischer Lösemittel oder Wasser. Die Polymerketten liegen bereits voll funktional vor und \"verknäueln\" sich lediglich mechanisch. Reversibel löslich (z.B. Dispersionsfarben, Chlorkautschuksysteme).",
+    "chemischeFilmbildung": "Chemische Filmbildung",
+    "irreversibleChemischeReaktionWährend": "Irreversible chemische Reaktion während der Verarbeitungsphase. Durch Autoxidation, Polyaddition oder lichtinitiierte Polymerisation vernetzen sich Moleküle dreidimensional über kovalente Hauptvalenzbindungen. Nicht wieder anlösbar (z.B. Polyurethane, Epoxide, Silikate).",
+    "mechanismenDerLehreVci": "Mechanismen der Lehre (VCI)",
+    "streukraftExkursBrechzahl": " Streukraft-Exkurs (Brechzahl)",
+    "dieDeckkraftWeißerPigmente": "Die Deckkraft weißer Pigmente beruht auf dem Unterschied ihrer Brechzahl zum Bindemittel (",
+    "titandioxidRutilBesitztMit": ").**Titandioxid (Rutil)** besitzt mit ",
+    "dasGrößteDeckvermögenFüllstoffe": " das größte Deckvermögen. Füllstoffe wie **Kreide** (",
+    "erscheinenImBindemittelFast": ") erscheinen im Bindemittel fast transparent und dienen primär der Füllvolumen-Erhöhung.",
+    "reaktiveEdukteBindungspartner": "Reaktive Edukte (Bindungspartner)",
+    "katalysatorenReaktionsInitiatoren": "Katalysatoren / Reaktions-Initiatoren",
+    "chemischeStrukturUndVernetzungs": "Chemische Struktur- und Vernetzungs-Gleichung",
+    "prozessbeschreibungMikroskopischeEbene": "Prozessbeschreibung (Mikroskopische Ebene)",
+    "kritischeAusführungsVerarbeitungsregelnF": "Kritische Ausführungs- & Verarbeitungsregeln für Bauproﬁs:",
+    "herstellerneutraleSystemeErzeugnisseIm": "Herstellerneutrale Systeme & Erzeugnisse im Hoch- & Tiefbau",
+    "phasenDerTrocknungUnd": "Phasen der Trocknung und Filmbildung (Schematisch)",
+    "phase1Nassauftrag": "Phase 1: Nassauftrag",
+    "bindemittelPigmenteUndLösemittelmoleküle": "Bindemittel, Pigmente und Lösemittelmoleküle sind homogen verteilt und frei gleitend.",
+    "phase2VerdampfungStart": "Phase 2: Verdampfung & Start",
+    "trägerstoffEntweichtErsteVernetzungspunk": "Trägerstoff entweicht. Erste Vernetzungspunkte oder Kettenverhakungen entstehen.",
+    "phase3Ausgehärtet": "Phase 3: Ausgehärtet",
+    "einRäumlichVermaschterUnlöslicher": "Ein räumlich vermaschter, unlöslicher Farbfilm haftet fest auf dem Untergrund."
+  }
+}

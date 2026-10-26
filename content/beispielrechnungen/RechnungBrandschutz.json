@@ -1,0 +1,39 @@
+{
+  "texte": {
+    "brandschutzHeißbemessungNachEurocode": "Brandschutz: Heißbemessung nach Eurocode 5 (Holz) & Eurocode 2 (Beton)",
+    "wasBerechnungDesBrandwiderstands": "**Was?** Berechnung des Brandwiderstands tragender Bauteile unter der **Einheits-Temperaturzeitkurve (ETK)** nach DIN EN 1363-1 / DIN 4102-2. <br>**Warum?** Nachweis der Mindest-Feuerwiderstandsdauer (R30 bis R120) zur Rettung von Menschenleben und Gewährleistung sicherer Löscharbeiten der Feuerwehr gemäß Musterbauordnung (MBO). <br>**Wie?** Im Holzbau über die **Methode des effektiven Restquerschnitts** (konstante Abbrandrate $\\beta$ plus Entfestigungszone $d_0 = 7\\,\\text{mm}$). Im Massivbau über Mindestbauteilbreiten und Achsabstände der Bewehrung.",
+    "holzbauEffektiverRestquerschnittEc5": "🌲 Holzbau: Effektiver Restquerschnitt (EC5-1-2)",
+    "stahlbetonMindestabmessungenAchsabstandE": "🧱 Stahlbeton: Mindestabmessungen & Achsabstand (EC2-1-2)",
+    "holzträgerEingabenBrandfall": "Holzträger-Eingaben (Brandfall)",
+    "holzartFestigkeit": "Holzart & Festigkeit:",
+    "breiteBCm": "Breite b [cm]:",
+    "höheHCm": "Höhe h [cm]:",
+    "t3SeitigDeckenbalken": "3-seitig (Deckenbalken)",
+    "t4SeitigFreieStütze": "4-seitig (freie Stütze)",
+    "biegemomentKaltzustandMEd": "Biegemoment Kaltzustand (M_Ed):",
+    "nachweisNachDinEn": "Nachweis nach DIN EN 1995-1-2 (Restquerschnittsmethode)",
+    "zuschlagD07": "Zuschlag $d_0 = 7\\,\\text{mm}$ für die temperaturgeschädigte Kohleschicht:",
+    "schritt1RechnerischeAbbrandtiefe": "**Schritt 1: Rechnerische Abbrandtiefe d_char,n & d_ef**",
+    "schritt2EffektiverRestquerschnitt": "**Schritt 2: Effektiver Restquerschnitt b_ef × h_ef**",
+    "schritt3HeißtragfähigkeitM": "**Schritt 3: Heißtragfähigkeit M_fi,Rd vs. Einwirkung M_fi,Ed**",
+    "stahlbetonBrandschutzTabellarischeMindes": "Stahlbeton-Brandschutz: Tabellarische Mindestmaße nach DIN EN 1992-1-2",
+    "dieHeißbemessungVonBetonbauteilen": "Die Heißbemessung von Betonbauteilen erfolgt in der Praxis meist über das normative Tabellenverfahren. Maßgebend sind die Mindestbauteildicke $b_{\\text{min}}$ und der Achsabstand $a$ der Bewehrungsstäbe zum Brandrand, um die Stahltemperatur unter $500^\\circ\\text{C}$ zu halten.",
+    "einfeldträgerMindestbreiteBMin": "Einfeldträger Mindestbreite b_min",
+    "achsabstandABalken": "Achsabstand a (Balken)",
+    "plattendickeHMin": "Plattendicke h_min",
+    "stützenMindestmaßBMin": "Stützen Mindestmaß b_min",
+    "r3030Min": "R30 (30 min)",
+    "t200MmA25": "200 mm (a = 25 mm)",
+    "r6060Min": "R60 (60 min)",
+    "t250MmA35": "250 mm (a = 35 mm)",
+    "r9090Min": "R90 (90 min)",
+    "t300MmA45": "300 mm (a = 45 mm)",
+    "r120120Min": "R120 (120 min)",
+    "t350MmA55": "350 mm (a = 55 mm)",
+    "achtungBeiHochfestemBeton": "**Achtung bei hochfestem Beton (UHPC / > C55/67):** Abplatzungsgefahr durch inneren Dampfdruck! Nach DIN EN 1992-1-2 ist bei hochfestem Beton die Zugabe von mindestens 2 kg/m³ Polypropylen-Fasern (PP-Fasern) zwingend erforderlich."
+  },
+  "werte": {
+    "holzartFestigkeit": "Holzart & Festigkeit",
+    "breiteBCm": "Breite b [cm]"
+  }
+}

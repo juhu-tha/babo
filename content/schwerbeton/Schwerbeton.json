@@ -1,0 +1,17 @@
+{
+  "texte": {
+    "schwerbetonIstDefiniertAls": "Schwerbeton ist definiert als Beton mit einer Trockenrohdichte von mehr als **2.600 kg/m³** (bzw. > 2,6 kg/dm³). Durch den Einsatz spezieller Gesteinskörnungen mit hoher Eigenmasse lassen sich spezielle physikalische Eigenschaften wie erhöhter Strahlenschutz oder eine hohe Masse je Volumen erzielen.",
+    "zurErreichungDerHohen": "Zur Erreichung der hohen Dichte werden als Gesteinskörnungen Natur- und Metallkörnungen mit hoher Rohdichte verwendet. Übliche Beispiele:",
+    "barytSchwerspatRohdichte4": "**Baryt (Schwerspat):** Rohdichte ~ 4.200 kg/m³",
+    "magnetitHämatitEisenerzeRohdichte": "**Magnetit, Hämatit (Eisenerze):** Rohdichte ~ 4.500 bis 5.000 kg/m³",
+    "stahlschrottBleischrotHöchsteRohdichten": "**Stahlschrott, Bleischrot:** Höchste Rohdichten bis über 7.000 kg/m³ (jedoch anspruchsvoll in der Verarbeitung bzgl. Entmischung)",
+    "dieHoheDichteBringt": "Die hohe Dichte bringt spezifische Nutzungsmöglichkeiten mit sich:",
+    "ballastUndGegengewichteBei": "**Ballast und Gegengewichte:** Bei Brücken, Kränen oder Schiffen.",
+    "auftriebssicherungBeiBauwerkenIm": "**Auftriebssicherung:** Bei Bauwerken im Grundwasser (z.B. Tunnelsohlen, dichte Wannen).",
+    "beschussSicherheitImSchutzraumbau": "**Beschuss-Sicherheit:** Im Schutzraumbau (Tresore).",
+    "einePrimäreAnwendungVon": "Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke). Die hohe Massendichte schwächt Gammastrahlung ab, während oft noch zusätzlich Wasserstoffhaltige Bestandteile (wie Kristallwasser in der Gesteinskörnung oder viel Zementleim) eingebracht werden, um Neutronenstrahlung effektiv abzubremsen.",
+    "typischeMischungszusammensetzungProM": "Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)",
+    "schwereGesteinskörnungZB": "Schwere Gesteinskörnung (z.B. Baryt, Magnetit)",
+    "t2800KgJeNach": "~ 2800 kg (je nach Dichte)"
+  }
+}

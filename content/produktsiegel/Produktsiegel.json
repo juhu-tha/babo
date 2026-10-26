@@ -1,0 +1,86 @@
+{
+  "texte": {
+    "klassifizierungNachIso14020": "Klassifizierung nach ISO 14020 Serie",
+    "dieInternationaleNormenserieIso": "Die internationale Normenserie ISO 14020 unterscheidet drei formalisierte Typen von Umweltdeklarationen für Bauprodukte.",
+    "iso14420Series": "ISO 14420 SERIES",
+    "kerneigenschaftenKriterien": " Kerneigenschaften & Kriterien:",
+    "typischeBeispieleImBauwesen": "Typische Beispiele im Bauwesen:",
+    "etablierteSiegelKennzeichnungen": " Etablierte Siegel & Kennzeichnungen",
+    "imGegensatzZuGebäudezertifizierungen": "Im Gegensatz zu Gebäudezertifizierungen (für das gesamte Bauwerk) bewerten Produktsiegel und Zertifikate einzelne Baustoffe und Bauprodukte. Sie geben zuverlässig Auskunft über Umweltverträglichkeit, Schadstoffemissionen, gesundheitliche Auswirkungen und Kreislauffähigkeit.",
+    "blauerEngel": "Blauer Engel ",
+    "dasÄltesteUmweltzeichenDer": "Das älteste Umweltzeichen der Welt (seit 1978). Kennzeichnet Produkte, die umweltfreundlicher sind als vergleichbare konventionelle Produkte. Im Bauwesen oft für emissionsarme Bodenbeläge, Farben, Lacke und Holzwerkstoffe relevant.",
+    "typIArtig": "(Typ I artig)",
+    "cradleToCradleC2c": "Cradle to Cradle (C2C) ",
+    "bewertetDieKreislauffähigkeitVon": "Bewertet die Kreislauffähigkeit von Produkten (Cradle to Cradle). Ziel ist es, Produkte so zu gestalten, dass sie am Ende ihrer Nutzung als \"technische \"oder \"biologische Nährstoffe\" in Kreisläufe zurückfließen, ohne Qualitätsverlust. Stufen: Basic, Bronze, Silver, Gold, Platinum.",
+    "zertifikateFürNachhaltigeWaldwirtschaft": "Zertifikate für nachhaltige Waldwirtschaft (Anbieterkettenzertifikate). Sie stellen sicher, dass Holzprodukte (z. B. für Dachstühle, tragende Balken, Parkett) aus Wäldern stammen, die nach ökologischen und sozialen Standards verantwortungsvoll bewirtschaftet werden.",
+    "internationalesQualitätszeichenFürNachha": "Internationales Qualitätszeichen für nachhaltige Wohn- und Bauprodukte (z.B. Dämmstoffe aus nachwachsenden Rohstoffen). Prüft streng auf Gesundheitsverträglichkeit, umweltgerechte Produktion und Schonung endlicher Ressourcen.",
+    "cscConcreteSustainabilityCouncil": "CSC (Concrete Sustainability Council)",
+    "weltweitesZertifizierungssystemSpeziellF": "Weltweites Zertifizierungssystem speziell für Unternehmen der Beton-, Zement- und Gesteinskörnungsindustrie. Bewertet die ökologische, soziale und ökonomische Verantwortung sowie umweltbewusste Lieferketten.",
+    "wichtigesSiegelFürVerlegewerkstoffe": "Wichtiges Siegel für Verlegewerkstoffe (Klebstoffe, Abdichtungsbänder) und flüssige Bauprodukte. Bewertet die Emissionsarmut (\"EC 1\" oder \"EC 1 PLUS\"). Schützt Verarbeiter und Bewohner vor VOCs in der Raumluft.",
+    "verlässlicheAuszeichnungFürBesonders": "Verlässliche Auszeichnung für besonders schadstoff- und emissionsarme Produkte. Es werden strenge Prüfkammerprüfungen an Fertigprodukten wie Matratzen, Bodenbelägen und Dämmstoffen durchgeführt.",
+    "epdEnvironmentalProductDeclaration": "EPD (Environmental Product Declaration) ",
+    "standardisierteUmweltproduktdeklarationN": "Standardisierte Umweltproduktdeklaration (nach ISO 14025 / EN 15804), die quantitative Sachdaten über den gesamten Lebenszyklus eines Bauprodukts transparent bereithält. Die entscheidende Grundlage jeder Gebäude-Ökobilanzierung."
+  },
+  "werte": {
+    "typIIso14024": "Typ I (ISO 14024)",
+    "klassischeUmweltzeichen": "Klassische Umweltzeichen",
+    "freiwilligeAufKriterienBasierende": "Freiwillige, auf Kriterien basierende Umweltkennzeichnungen, die von unabhängigen Dritten (Dritterhebung) verifiziert werden. Sie betrachten den gesamten Lebensweg eines Produkts und zeichnen die ökologischen Spitzenreiter einer Produktgruppe aus.",
+    "blauerEngelNatureplusEu": "Blauer Engel, natureplus, EU-Ecolabel",
+    "zertifiziertDurchDritte": "Zertifiziert durch Dritte",
+    "typIiIso14021": "Typ II (ISO 14021)",
+    "umweltbezogeneAnbietererklärungenDieVom": "Umweltbezogene Anbietererklärungen, die vom Hersteller selbst formuliert und veröffentlicht werden (z. B. auf Verpackungen oder Datenblättern). Sie sind oft nicht zertifiziert, müssen aber sachlich richtig, prüfbar und wissenschaftlich fundiert sein.",
+    "selbsterklärungenZuRecyclatgehaltRecycli": "Selbsterklärungen zu Recyclatgehalt, Recyclingfähigkeit, Schadstofffreiheit",
+    "eigenerklärungDesHerstellers": "Eigenerklärung des Herstellers",
+    "typIiiIso14025": "Typ III (ISO 14025)",
+    "umweltproduktdeklarationenEpd": "Umweltproduktdeklarationen (EPD)",
+    "standardisierteQuantifizierteUmweltinfor": "Standardisierte, quantifizierte Umweltinformationen auf Basis einer wissenschaftlichen Ökobilanz (LCA) nach EN 15804. Sie enthalten keine Bewertung (\"gut/schlecht\"), sondern stellen lediglich verifizierte ökologische Fakten zur Verfügung.",
+    "epdVomInstitutBauen": "EPD vom Institut Bauen und Umwelt (IBU), EPD-Musterdatenbanken",
+    "unabhängigVerifiziert": "Unabhängig verifiziert",
+    "epdsSindReinInformative": "EPDs sind rein informative Produktdeklarationen ohne absolute Bewertungsstufe.",
+    "selbstdeklarationenDeckenOftEinzelne": "Selbstdeklarationen decken oft einzelne Recycling-Anteile im R-Beton oder Mauerwerk ab.",
+    "umweltzeichenBewertenDasBauteil": "Umweltzeichen bewerten das Bauteil bezüglich Wohngesundheit und Chemikalien.",
+    "blauerEngel": "Blauer Engel"
+  },
+  "daten": {
+    "Produktsiegel.isoTypes.0.criteria": [
+      "Prüfung durch unabhängige Zertifizierungsstellen",
+      "Ganzheitlicher Ansatz (Multi-Criteria)",
+      "Erhöhtes Vertrauen durch objektive Kriterien",
+      "Zielgruppe: Planer, Endverbraucher, Bauherren"
+    ],
+    "Produktsiegel.isoTypes.1.criteria": [
+      "Keine obligatorische Drittprüfung erforderlich",
+      "Fokus meist auf Einzeleigenschaften (Single-Issue)",
+      "Beispiele: \"100% recyclingfähig\", \"30% Recyclatanteil\"",
+      "Zielgruppe: Direktabnehmer, Verarbeiter"
+    ],
+    "Produktsiegel.isoTypes.2.criteria": [
+      "Obligatorische Prüfung durch unabhängigen Verifizierer",
+      "Grundlage: Umfassende quantitative Ökobilanzierung (LCA)",
+      "Voraussetzung für Gebäudezertifikationen (DGNB, QNG, LEED)",
+      "Zielgruppe: Fachplaner, Ökobilanzierer, Auditoren"
+    ],
+    "Produktsiegel.literatur": [
+      "Wendehorst Baustoffkunde: Kapitel \"Labels, Produktsiegel und gesetzliche Baustoffdeklarationen\".",
+      "Umweltbundesamt (UBA): Praxis-Leitfaden zur umweltfreundlichen öffentlichen Beschaffung von Bauprodukten."
+    ],
+    "Produktsiegel.regelwerke": [
+      {
+        "title": "DIN EN ISO 14020:2023-07 (ISO 14020:2022; Umweltaussagen für Produkte und deren Programme – Grundsätze und allgemeine Anforderungen)"
+      },
+      {
+        "title": "ISO 14024:2018 (Umweltkennzeichnungen Typ I – Grundsätze und Verfahren)"
+      },
+      {
+        "title": "DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen und -deklarationen – Typ III Umweltdeklarationen – Grundsätze und Verfahren)"
+      }
+    ],
+    "Produktsiegel.formeln": [
+      {
+        "formel": "\\text{Score}_{\\text{Siegel}} = \\sum_{j} w_j \\cdot R_j \\quad [-]",
+        "erklaerung": "Gewichtete Gesamtbewertung von materialökologischen Vergabekriterien (R_j) bei Typ-I-Produktsiegeln.",
+        "quelle": "natureplus Vergaberichtlinie"
+      }
+    ]
+  }
+}

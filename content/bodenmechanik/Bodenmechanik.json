@@ -1,0 +1,180 @@
+{
+  "texte": {
+    "erdbauBodenmechanikKonsistenzgrenzen": " Erdbau & Bodenmechanik (Konsistenzgrenzen)",
+    "bindigeBödenTonSchluff": "Bindige Böden (Ton, Schluff) ändern ihre Eigenschaften stark mit dem Wassergehalt (w). Die Atterbergschen Grenzen definieren die Übergänge zwischen den Zustandsformen: Die Ausrollgrenze (w_P) trennt halbfest von plastisch, die Fließgrenze (w_L) trennt plastisch von flüssig. Die Plastizitätszahl (I_P = w_L - w_P) gibt den Bereich an, in dem der Boden plastisch verformbar ist. Die Konsistenzzahl (I_c) beschreibt den aktuellen Zustand des Bodens in der Natur.",
+    "eingabeparameterWassergehalteIn": "Eingabeparameter (Wassergehalte in %)",
+    "schematischeDarstellungKonsistenzbereich": "Schematische Darstellung: Konsistenzbereiche",
+    "dieKonsistenzgrenzenWP": "Die Konsistenzgrenzen w_P (Ausrollgrenze) und w_L (Fließgrenze) teilen das Verhalten bindiger Böden in fest/halbfest, plastisch und flüssig ein. Der rote Marker zeigt den aktuellen Zustand w.",
+    "zustandsformKonsistenz": " Zustandsform (Konsistenz)",
+    "bodenklassifikationVereinfacht": " Bodenklassifikation (vereinfacht)",
+    "scherfestigkeitNachMohrCoulomb": " Scherfestigkeit nach Mohr-Coulomb",
+    "dasBruchkriteriumNachMohr": "Das Bruchkriterium nach Mohr-Coulomb beschreibt die Scherfestigkeit von Böden. Die Bruchbedingung lautet **τ = c + σ · tan(φ)**. Der Spannungszustand im Boden wird durch den **Mohrschen Spannungskreis** (definiert durch die Hauptspannungen σ₁ und σ₃) dargestellt. Berührt oder schneidet der Kreis die Bruchgerade, kommt es zum Versagen (Bruch) des Bodens.",
+    "mohrCoulombBruchkriterium": "Mohr-Coulomb Bruchkriterium",
+    "erddruckNachRankine": " Erddruck nach Rankine",
+    "derErddruckBeschreibtDie": "Der Erddruck beschreibt die Belastung von Stützwänden durch den anstehenden Boden. Der **aktive Erddruck (E_a)** entsteht, wenn die Wand vom Boden weg nachgibt. Der **passive Erddruck (E_p)** entsteht, wenn die Wand in den Boden gedrückt wird (Erddruckwiderstand). Der **Erdruhedruck (E_0)** wirkt auf eine unverschiebliche Wand (z.B. Kellerwand).",
+    "geometrieBoden": "Geometrie & Boden",
+    "resultierendeKräfte": "Resultierende Kräfte",
+    "erddruckverteilungÜberDieTiefe": "Erddruckverteilung über die Tiefe",
+    "konsolidierungEindimensionaleSetzung": " Konsolidierung (Eindimensionale Setzung)",
+    "beiBindigenWassergesättigtenBöden": "Bei bindigen, wassergesättigten Böden (z.B. Ton) führt eine Lasterhöhung zunächst zu einem Porenwasserüberdruck. Die Setzung erfolgt erst zeitverzögert, wenn das Wasser aus den Poren ausgepresst wird (Konsolidierung). Die Endsetzung s hängt von der Steifigkeit (E_s) ab, die Dauer vom Konsolidierungsbeiwert (c_v) und dem Entwässerungsweg (d).",
+    "bodenBelastung": "Boden & Belastung"
+  },
+  "werte": {
+    "bruchgeradeMohrCoulomb": "Bruchgerade (Mohr-Coulomb)",
+    "mohrscherSpannungskreis": "Mohrscher Spannungskreis",
+    "aktiverErddruckEA": "Aktiver Erddruck e_a",
+    "erdruhedruckE0": "Erdruhedruck e_0",
+    "passiverErddruckEP": "Passiver Erddruck e_p",
+    "setzungSTMm": "Setzung s(t) [mm]",
+    "normalspannungKnM": "Normalspannung σ (kN/m²)",
+    "scherspannungKnM": "Scherspannung τ (kN/m²)",
+    "erddruckordinateEKnM": "Erddruckordinate e (kN/m²)",
+    "zeitTJahre": "Zeit t [Jahre]",
+    "setzungSMm": "Setzung s [mm]",
+    "berechnungVonPlastizitätszahlUnd": "Berechnung von Plastizitätszahl und Konsistenzzahl nach Atterberg zur Klassifikation bindiger Böden.",
+    "aktuellerNatürlicherWassergehaltDes": "Aktueller, natürlicher Wassergehalt des Bodens in Prozent.",
+    "natürlicherWassergehaltW": "Natürlicher Wassergehalt (w)",
+    "fließgrenzeWL": "Fließgrenze (w_L)",
+    "liquidLimitWassergehaltAm": "Liquid Limit: Wassergehalt am Übergang vom plastischen zum flüssigen Zustand (Casagrande-Gerät).",
+    "plasticLimitWassergehaltAm": "Plastic Limit: Wassergehalt am Übergang vom halbfesten zum plastischen Zustand (Faden-Ausroll-Versuch).",
+    "ausrollgrenzeWP": "Ausrollgrenze (w_P)",
+    "fehlerDieFließgrenzeW": "Fehler: Die Fließgrenze (w_L) muss größer sein als die Ausrollgrenze (w_P)!",
+    "plastizitätszahlIP": "Plastizitätszahl (I_P)",
+    "iPWL": "I_P = w_L - w_P. Maß für die Plastizität des Bodens.",
+    "konsistenzzahlIC": "Konsistenzzahl (I_c)",
+    "iCWL": "I_c = (w_L - w) / I_P. Beschreibt den aktuellen Zustand.",
+    "ihrRechenwegKonsistenzUnd": "Ihr Rechenweg: Konsistenz und Bodengruppe",
+    "spanneDesPlastischenBereichs": "Spanne des plastischen Bereichs zwischen Fließ- und Ausrollgrenze:",
+    "lageZurALinie": "Lage zur A-Linie",
+    "plastizitätsdiagrammNachDin18196": "Plastizitätsdiagramm nach DIN 18196; organische Beimengungen sind gesondert zu prüfen.",
+    "dinEnIso17892": "DIN EN ISO 17892-12:2022-08; DIN EN ISO 14688-2; DIN 18196:2023-02",
+    "berechnungDerScherfestigkeitEines": "Berechnung der Scherfestigkeit eines Bodens in Abhängigkeit von Kohäsion, Reibungswinkel und Normalspannung.",
+    "kohäsionDesBodens": "Kohäsion des Bodens.",
+    "kohäsionC": "Kohäsion (c)",
+    "kleinsteHauptspannungZB": "Kleinste Hauptspannung (z.B. Seitendruck im Triaxialversuch).",
+    "größteHauptspannungZB": "Größte Hauptspannung (z.B. Vertikaldruck).",
+    "bruchzustandErreicht": "Bruchzustand erreicht!",
+    "bodenIstStandsicher": "Boden ist standsicher",
+    "berechnungVonAktivemPassivem": "Berechnung von aktivem, passivem und Erdruhedruck für eine senkrechte Wand und horizontale Geländeoberfläche.",
+    "wandhöheH": "Wandhöhe (h)",
+    "höheDerStützwandBzw": "Höhe der Stützwand bzw. der vertikalen Geländestufe.",
+    "dieWichteFeuchtesRaumgewicht": "Die Wichte (feuchtes Raumgewicht) des anstehenden Bodens.",
+    "derCharakteristischeReibungswinkelDes": "Der charakteristische Reibungswinkel des Bodens zur Scherfestigkeitsberechnung.",
+    "aktiverErddruckEA2": "Aktiver Erddruck (E_a)",
+    "erdruhedruckE02": "Erdruhedruck (E_0)",
+    "passiverErddruckEP2": "Passiver Erddruck (E_p)",
+    "berechnungDerZeitlichenEntwicklung": "Berechnung der zeitlichen Entwicklung von Setzungen in bindigen Böden nach der Terzaghi-Theorie.",
+    "dickeDerBodenschicht": "Dicke der Bodenschicht.",
+    "schichtdickeH": "Schichtdicke (h)",
+    "steifemodulDesBodens": "Steifemodul des Bodens.",
+    "steifemodulES": "Steifemodul (E_s)",
+    "konsolidierungsbeiwertCV": "Konsolidierungsbeiwert (c_v)",
+    "artDerWasserableitungVom": "Art der Wasserableitung vom Bauteil.",
+    "endsetzungSEnd": "Endsetzung (s_{end})",
+    "beispiel1ZustandsformUnd": "Beispiel 1: Zustandsform und Bodengruppe eines bindigen Bodens",
+    "einSteiferMittelplastischerTon": "Ein steifer, mittelplastischer Ton (TM) ist ein typischer Baugrund für Flachgründungen, aber setzungs- und frostempfindlich. Steigt w auf 35 %, sinkt I_C auf 0,40 (breiig).",
+    "dinEnIso178922": "DIN EN ISO 17892-12:2022-08; DIN 18196:2023-02",
+    "beispiel2AktiverErddruck": "Beispiel 2: Aktiver Erddruck auf eine Stützwand und Konsolidationssetzung",
+    "beiEinseitigerEntwässerungVerdoppelt": "Bei einseitiger Entwässerung verdoppelt sich d und die Konsolidationszeit vervierfacht sich (etwa 6,8 Jahre) – Dränschichten oder Vertikaldräns verkürzen sie gezielt.",
+    "din4085201708": "DIN 4085:2017-08 (Erddruck); DIN 4019:2015-05 (Setzungen); Terzaghi-Konsolidationstheorie",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Konsistenzgrenzen, Bodengruppen nach DIN 18196, Mohr-Coulomb, Rankine-Erddruck und Terzaghi-Konsolidation geprüft, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Bodenmechanik.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Laborwerte: natürlicher Wassergehalt w = 25 %, Fließgrenze w_L = 45 %, Ausrollgrenze w_P = 20 %.",
+        "formel": "w = 25\\,\\%,\\; w_L = 45\\,\\%,\\; w_P = 20\\,\\%"
+      },
+      {
+        "titel": "Plastizitäts- und Konsistenzzahl",
+        "erklaerung": "Plastizitätsbereich und Lage des Wassergehalts darin:",
+        "formel": "I_P = 45 - 20 = 25\\,\\%, \\quad I_C = \\frac{45 - 25}{25} = 0{,}80"
+      },
+      {
+        "titel": "Zustandsform",
+        "erklaerung": "I_C zwischen 0,75 und 1,00 bedeutet steif.",
+        "formel": "0{,}75 \\le I_C = 0{,}80 < 1{,}00 \\Rightarrow \\text{steif}"
+      },
+      {
+        "titel": "Bodengruppe",
+        "erklaerung": "A-Linie im Plastizitätsdiagramm; I_P liegt darüber, w_L zwischen 35 und 50 %:",
+        "formel": "I_{P,A} = 0{,}73 \\cdot (45 - 20) = 18{,}3\\,\\% < 25\\,\\% \\Rightarrow \\text{TM}"
+      }
+    ],
+    "Bodenmechanik.schritte_2": [
+      {
+        "titel": "Erddruckbeiwert",
+        "erklaerung": "Rankine, φ = 30°, Wand lotrecht und glatt:",
+        "formel": "K_a = \\tan^2(45^\\circ - 15^\\circ) = 0{,}333"
+      },
+      {
+        "titel": "Erddruckkraft",
+        "erklaerung": "γ = 20 kN/m³, Wandhöhe h = 5 m; dreieckförmige Verteilung, Angriff bei h/3 über dem Wandfuß:",
+        "formel": "e_a = 0{,}333 \\cdot 20 \\cdot 5 = 33{,}3\\,\\text{kN/m}^2, \\quad E_a = \\tfrac{1}{2} \\cdot 33{,}3 \\cdot 5 = 83{,}3\\,\\text{kN/m}"
+      },
+      {
+        "titel": "Endsetzung",
+        "erklaerung": "Tonschicht h = 4 m, Zusatzspannung Δσ = 50 kN/m², Steifemodul E_s = 5 MN/m²:",
+        "formel": "s_\\infty = \\frac{50}{5\\,000} \\cdot 4\\,000\\,\\text{mm} = 40\\,\\text{mm}"
+      },
+      {
+        "titel": "Zeitpunkt 90 % Konsolidierung",
+        "erklaerung": "Zweiseitige Entwässerung (d = 2 m), c_v = 2 m²/Jahr, T_v(90 %) = 0,848:",
+        "formel": "t_{90} = \\frac{0{,}848 \\cdot 2^2}{2} = 1{,}70\\,\\text{Jahre}"
+      }
+    ],
+    "Bodenmechanik.literatur": [
+      "Kolymbas, D.: Geotechnik – Bodenmechanik, Grundbau und Tunnelbau. 5. Aufl., Berlin: Springer Vieweg 2019",
+      "Witt, K. J. (Hrsg.): Grundbau-Taschenbuch, Teil 1: Geotechnische Grundlagen. 8. Aufl., Berlin: Ernst & Sohn 2017",
+      "Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)"
+    ],
+    "Bodenmechanik.regelwerke": [
+      {
+        "title": "DIN EN 1997-1:2014-03 mit DIN EN 1997-1/NA:2010-12 und DIN 1054:2021-04 (Eurocode 7; MVV TB 2025/1 führt DIN EN 1997-1:2009-09 als eingeführte Fassung); neue Generation EN 1997-1:2024 – DIN-Fassung noch nicht erschienen (geplant 2027)"
+      },
+      {
+        "title": "DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)"
+      },
+      {
+        "title": "DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)"
+      },
+      {
+        "title": "DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)"
+      },
+      {
+        "title": "DIN 4019:2015-05 (Baugrund – Setzungsberechnungen)"
+      },
+      {
+        "title": "DIN 4085:2017-08 (Baugrund – Berechnung des Erddrucks)"
+      }
+    ],
+    "Bodenmechanik.formeln": [
+      {
+        "formel": "I_c = \\frac{w_L - w}{I_P}",
+        "erklaerung": "Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).",
+        "quelle": "DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2"
+      },
+      {
+        "formel": "\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)",
+        "erklaerung": "Bruchkriterium nach Mohr-Coulomb: \\tau_f = Scherfestigkeit, c = Kohäsion, \\sigma = wirksame Normalspannung, \\varphi = Reibungswinkel (wirksame Scherparameter).",
+        "quelle": "Mohr-Coulomb; Scherparameter nach DIN EN 1997-1 / DIN 1054"
+      },
+      {
+        "formel": "K_a = \\tan^2\\left(45^\\circ - \\frac{\\varphi}{2}\\right)",
+        "erklaerung": "Aktiver Erddruckbeiwert nach Rankine bei lotrechter, reibungsfreier Wand (δ = 0) und horizontaler Geländeoberfläche; DIN 4085 erfasst zusätzlich Wandreibung und Geländeneigung.",
+        "quelle": "Rankine (1857); DIN 4085"
+      },
+      {
+        "formel": "s = \\frac{\\Delta \\sigma}{E_s} \\cdot h",
+        "erklaerung": "Eindimensionale Endsetzung einer Bodenschicht: \\Delta \\sigma = Spannungszuwachs, E_s = Steifemodul (Ödometerversuch), h = Schichtdicke.",
+        "quelle": "DIN 4019:2015-05"
+      },
+      {
+        "formel": "T_v = \\frac{c_v \\cdot t}{d^2}",
+        "erklaerung": "Zeitfaktor der Konsolidierung nach Terzaghi: c_v = Konsolidierungsbeiwert, d = maximaler Entwässerungsweg, t = Konsolidierungszeit.",
+        "quelle": "Terzaghi: Theoretical Soil Mechanics"
+      }
+    ]
+  }
+}

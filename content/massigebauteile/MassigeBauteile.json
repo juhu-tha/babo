@@ -1,0 +1,16 @@
+{
+  "texte": {
+    "massigeBauteile": "Massige Bauteile",
+    "alsMassigeBauteileGelten": "Als massige Bauteile gelten Betonbauteile mit einer kleinsten Abmessung von mehr als 0,80 m (DAfStb-Richtlinie). Durch die hohe Hydratationswärme und die schlechte Wärmeleitfähigkeit von Beton entstehen in solchen Bauteilen große Temperaturgradienten zwischen dem heißen Kern und der abkühlenden Randzone, was ohne Gegenmaßnahmen zu Zwangspannungen und Rissen führt.",
+    "maßnahmenGegenRissbildung": " Maßnahmen gegen Rissbildung",
+    "verwendungVonZementenMit": "Verwendung von Zementen mit niedriger Hydratationswärme (LH-Zemente, z. B. CEM III).",
+    "reduktionDesZementgehaltsDurch": "Reduktion des Zementgehalts durch Zumischung von Flugasche (FA).",
+    "kühlungDesFrischbetonsZugabe": "Kühlung des Frischbetons (Zugabe von Scherbeneis statt Zugabewasser).",
+    "einbauVonKühlrohrenIm": "Einbau von Kühlrohren im Bauteil (Rohrkühlung).",
+    "wärmedämmendeSchalungenUmDen": "Wärmedämmende Schalungen, um den Temperaturgradienten zum Rand zu reduzieren (verhindert den \"Thermoschock\" bei frühem Ausschalen).",
+    "maximalerAdiabatischerTemperaturanstiegZ": "Maximaler adiabatischer Temperaturanstieg. z: Zementgehalt, H: Hydratationswärme, c_p: Spezifische Wärmekapazität, ρ: Dichte.",
+    "erwärmungAbschätzung": "Erwärmung (Abschätzung)",
+    "adiabatischerTempAnstieg": "Adiabatischer Temp.-Anstieg ",
+    "beiEinerFrischbetontemperaturVon": "Bei einer Frischbetontemperatur von 20°C erhitzt sich der Betonkern abgeschirmt auf ca. "
+  }
+}

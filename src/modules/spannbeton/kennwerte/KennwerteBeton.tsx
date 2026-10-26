@@ -2,6 +2,8 @@ import { Building, Activity, Thermometer, BookOpen, Check, ShieldAlert, Layers, 
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
+import inhalt from '@/content/spannbeton/kennwerte/KennwerteBeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface KennwerteBetonProps {
   activeMatData: { fck: number; fck_cube: number; fcm: number; fctm: number; fctk005: number; fctk095: number; Ecm: number; eps_c1: number; eps_cu1: number; eps_c2: number; eps_cu2: number; typicalUse: string; prestressSuitability: string; };
@@ -30,35 +32,21 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/15 pb-4">
             <div>
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Building className="text-shiraz h-5 w-5" />
-                0. Beton-Materialeigenschaften im Spannbetonbau
-              </h4>
-              <p className="text-xs text-text-main/70 mt-1">
-                Druckfestigkeit (<InlineMath math="f_{ck}" />), Elastizitätsmodul (<InlineMath math="E_{cm}" />), Zugfestigkeiten (<InlineMath math="f_{ctm}" />) &amp; Reifeentwicklung nach DIN EN 1992-1-1 (Eurocode 2) Kap. 3.1 &amp; DIN 1045-2
-              </p>
+                <Building className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.t0BetonMaterialeigenschaftenIm} /></h4>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.druckfestigkeitFCkElastizitätsmodul} /></p>
             </div>
-            <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-              EC2 Tab. 3.1 &amp; Gl. (3.1)–(3.5)
-            </span>
+            <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.ec2Tab31} /></span>
           </div>
 
           {/* Didaktische Einleitung */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
             <div>
-              <strong className="text-text-main block mb-1">Warum sind die Betoneigenschaften im Spannbetonbau kritischer als im Stahlbeton?</strong>
-              <p>
-                Im klassischen Stahlbetonbau werden Risse in der Zugzone einkalkuliert. Im <strong>Spannbetonbau</strong> muss der Beton 
-                enorme konzentrierte Einleitungsdrücke unter den Spannankern aufnehmen und über Jahrzehnte hinweg 
-                kriech- und schwindarm bleiben. Die Dekompression verlangt Druckspannungen um das Spannglied (<InlineMath math="\sigma_c \le 0" />); die Zugfestigkeit ist dafür nicht maßgebend, wohl aber für die Rissschnittgröße und Rissvermeidung.
-              </p>
+              <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.warumSindDieBetoneigenschaften} /></strong>
+              <p><MdText text={inhalt.texte.imKlassischenStahlbetonbauWerden} /></p>
             </div>
             <div>
-              <strong className="text-text-main block mb-1">Vorspannzeitpunkt (<InlineMath math="t_0" />) &amp; Frühfestigkeit:</strong>
-              <p>
-                Die Spannkraft darf erst eingeleitet werden, wenn der Beton eine ausreichende Druckfestigkeit aufweist 
-                (typischerweise <InlineMath math="f_{ck}(t) \ge 0{,}70 \cdot f_{ck}" />). Ein zu frühes Spannen führt zu 
-                übermäßigen Kriechverlusten, Gefügezerrüttung und Verankerungsversagen.
-              </p>
+              <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.vorspannzeitpunktT0Frühfestigkeit} /></strong>
+              <p><MdText text={inhalt.texte.dieSpannkraftDarfErst} /></p>
             </div>
           </div>
 
@@ -66,9 +54,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                <Activity size={14} className="text-shiraz" />
-                Interaktiver Werkstoff- &amp; Reifesimulator
-              </span>
+                <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverWerkstoffReifesimulator} /></span>
               <span className="text-[11px] font-mono text-slate-500">
                 Aktuell: <strong className="text-shiraz font-bold">{matGrade}</strong> | Alter: <strong className="text-slate-800 font-bold">{formatDeWert(matAgeDays)} d</strong> ({formatDeWert(matTemp)} °C)
               </span>
@@ -76,9 +62,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
 
             {/* 1. Betonklassen Schnellwahlschalter */}
             <div>
-              <label className="text-xs font-semibold text-text-main block mb-2">
-                Druckfestigkeitsklasse wählen (DIN EN 1992-1-1 Tab. 3.1):
-              </label>
+              <label className="text-xs font-semibold text-text-main block mb-2"><MdText text={inhalt.texte.druckfestigkeitsklasseWählenDinEn} /></label>
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
                 {Object.keys(concDatabase).map((grade) => {
                   const isSelected = matGrade === grade;
@@ -121,13 +105,13 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   <option value="N">Klasse N (normal; s = 0,25)</option>
                   <option value="S">Klasse S (langsam; s = 0,38)</option>
                 </select>
-                <p className="text-[10px] text-slate-500">Beiwert s in EC2 Gl. (3.2)</p>
+                <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.beiwertSInEc2} /></p>
               </div>
 
               {/* Betonalter t */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Betonalter t:</span>
+                  <span><MdText text={inhalt.texte.betonalterT} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matAgeDays)} d</span>
                 </div>
                 <input
@@ -152,9 +136,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                   <span className="flex items-center gap-1">
-                    <Thermometer size={13} className="text-shiraz" />
-                    Temperatur T:
-                  </span>
+                    <Thermometer size={13} className="text-shiraz" /><MdText text={inhalt.texte.temperaturT} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matTemp)} °C</span>
                 </div>
                 <input
@@ -169,14 +151,14 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                 <div className="flex justify-between text-[10px] text-slate-400">
                   <button type="button" onClick={() => setMatTemp(10)} className="hover:text-shiraz cursor-pointer">10 °C</button>
                   <button type="button" onClick={() => setMatTemp(20)} className="hover:text-shiraz cursor-pointer">20 °C</button>
-                  <button type="button" onClick={() => setMatTemp(60)} className="hover:text-shiraz cursor-pointer">60 °C (Dampf)</button>
+                  <button type="button" onClick={() => setMatTemp(60)} className="hover:text-shiraz cursor-pointer"><MdText text={inhalt.texte.t60CDampf} /></button>
                 </div>
               </div>
 
               {/* Gesteinskörnung */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-text-main flex items-center justify-between">
-                  <span>Gestein (EC2 3.1.3):</span>
+                  <span><MdText text={inhalt.texte.gesteinEc231} /></span>
                   <span className="font-mono text-shiraz font-bold">α_E = {formatDeZahl(matMaturity.aggFactor, 2)}</span>
                 </label>
                 <select
@@ -189,13 +171,13 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   <option value="kalkstein">Kalkstein (-10 %, α_E = 0,90)</option>
                   <option value="sandstein">Sandstein (-30 %, α_E = 0,70)</option>
                 </select>
-                <p className="text-[10px] text-slate-500">Beeinflusst E-Modul &amp; Kriechen</p>
+                <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.beeinflusstEModulKriechen} /></p>
               </div>
 
               {/* Querschnittshöhe h für Biegezugfestigkeit */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span>Höhe h (f_ctm,fl):</span>
+                  <span><MdText text={inhalt.texte.höheHFCtm} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matBeamHeight)} mm</span>
                 </div>
                 <input
@@ -225,7 +207,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-bold font-mono text-shiraz">{formatDeWert(matMaturity.fck_t)}</span>
-                <span className="text-xs text-text-main/60 font-medium">N/mm² (f_ck(t))</span>
+                <span className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.nMmFCk} /></span>
               </div>
               <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                 <div className="flex justify-between">
@@ -233,15 +215,15 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   <strong className="font-mono">{formatDeWert(activeMatData.fck)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Mittlere Druckfestigkeit:</span>
+                  <span><MdText text={inhalt.texte.mittlereDruckfestigkeit} /></span>
                   <strong className="font-mono">{formatDeWert(matMaturity.fcm_t)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Würfelfestigkeit f_ck,cube:</span>
+                  <span><MdText text={inhalt.texte.würfelfestigkeitFCkCube} /></span>
                   <strong className="font-mono">{formatDeWert(activeMatData.fck_cube)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Bemessungswert f_cd(t):</span>
+                  <span><MdText text={inhalt.texte.bemessungswertFCdT} /></span>
                   <strong className="font-mono text-shiraz">{formatDeWert(matMaturity.fcd_t)} N/mm²</strong>
                 </div>
               </div>
@@ -259,19 +241,19 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               </div>
               <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                 <div className="flex justify-between">
-                  <span>28-Tage-Wert (mit Gestein):</span>
+                  <span><MdText text={inhalt.texte.t28TageWertMit} /></span>
                   <strong className="font-mono">{formatDeWert(matMaturity.Ecm_28)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Tabellenwert EC2 Tab. 3.1:</span>
+                  <span><MdText text={inhalt.texte.tabellenwertEc2Tab3} /></span>
                   <strong className="font-mono">{formatDeWert(activeMatData.Ecm)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Gesteinsfaktor α_E:</span>
+                  <span><MdText text={inhalt.texte.gesteinsfaktorE} /></span>
                   <strong className="font-mono">{formatDeZahl(matMaturity.aggFactor, 2)}</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Elastische Stauchung bei 10 MPa:</span>
+                  <span><MdText text={inhalt.texte.elastischeStauchungBei10} /></span>
                   <strong className="font-mono">{formatDeZahl(((10 / matMaturity.Ecm_t) * 1000), 2)} ‰</strong>
                 </div>
               </div>
@@ -289,19 +271,19 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               </div>
               <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                 <div className="flex justify-between">
-                  <span>Unteres 5%-Quantil f_ctk,0.05:</span>
+                  <span><MdText text={inhalt.texte.unteres5QuantilF} /></span>
                   <strong className="font-mono text-blue-700">{formatDeWert(matMaturity.fctk005_t)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Oberes 95%-Quantil f_ctk,0.95:</span>
+                  <span><MdText text={inhalt.texte.oberes95QuantilF} /></span>
                   <strong className="font-mono text-purple-700">{formatDeWert(matMaturity.fctk095_t)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span>Biegezugfestigkeit f_ctm,fl:</span>
+                  <span><MdText text={inhalt.texte.biegezugfestigkeitFCtmFl} /></span>
                   <strong className="font-mono">{formatDeWert(matMaturity.fctm_fl_t)} N/mm²</strong>
                 </div>
                 <div className="flex justify-between text-[10px] text-slate-500">
-                  <span>Rissnachweis / Dekompression maßgebend: f_ctk,0.05</span>
+                  <span><MdText text={inhalt.texte.rissnachweisDekompressionMaßgebendF} /></span>
                 </div>
               </div>
             </div>
@@ -315,7 +297,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   : 'bg-rose-50/70 border-rose-200'
               }`}>
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold uppercase tracking-wider text-slate-700">Spannfreigabe (Transfer)</span>
+                <span className="font-semibold uppercase tracking-wider text-slate-700"><MdText text={inhalt.texte.spannfreigabeTransfer} /></span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full font-mono ${
                     matMaturity.releaseOptimum
                       ? 'bg-emerald-600 text-white'
@@ -323,7 +305,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                       ? 'bg-amber-600 text-white'
                       : 'bg-rose-600 text-white'
                   }`}>
-                  {matMaturity.releaseOptimum ? 'Optimal' : matMaturity.releaseReady ? 'Bedingt zulässig' : 'Gesperrt!'}
+                  {matMaturity.releaseOptimum ? 'Optimal' : matMaturity.releaseReady ? inhalt.werte.bedingtZulässig : 'Gesperrt!'}
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
@@ -336,14 +318,12 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               </div>
               <div className="text-[11px] text-slate-700 space-y-0.5 border-t border-slate-300/40 pt-2">
                 <div className="flex justify-between">
-                  <span>Zulässige Betondruckspannung:</span>
+                  <span><MdText text={inhalt.texte.zulässigeBetondruckspannung} /></span>
                   <strong className="font-mono text-slate-900">{formatDeWert(matMaturity.sigma_c_zul)} N/mm²</strong>
                 </div>
-                <div className="text-[10px] text-slate-600">
-                  <InlineMath math="\sigma_{c,zul} = 0{,}60 \cdot f_{ck}(t)" /> (EC2 5.10.2.2)
-                </div>
+                <div className="text-[10px] text-slate-600"><MdText text={inhalt.texte.sigmaCZul0} /></div>
                 <div className="flex justify-between pt-0.5">
-                  <span>Äquivalentes Alter t_eff:</span>
+                  <span><MdText text={inhalt.texte.äquivalentesAlterTEff} /></span>
                   <strong className="font-mono">{formatDeWert(matMaturity.t_eff)} d</strong>
                 </div>
               </div>
@@ -355,20 +335,15 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-home-grau/15 pb-2">
               <div>
                 <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                  <Activity className="text-shiraz h-4 w-4" />
-                  Spannungs-Dehnungs-Kennlinie (<InlineMath math="\sigma_c - \varepsilon_c" />) für {matGrade} bei t = {formatDeWert(matAgeDays)} d
+                  <Activity className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.spannungsDehnungsKennlinieSigma} />{matGrade} bei t = {formatDeWert(matAgeDays)} d
                 </h5>
-                <p className="text-[11px] text-text-main/70">
-                  Vergleich der realen Arbeitslinie nach DIN EN 1992-1-1 Gl. (3.14) mit dem Parabel-Rechteck-Diagramm (GZT)
-                </p>
+                <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.vergleichDerRealenArbeitslinie} /></p>
               </div>
               <div className="flex items-center gap-3 text-xs">
                 <span className="flex items-center gap-1.5 font-medium text-shiraz">
-                  <span className="w-3.5 h-1 bg-shiraz rounded-full inline-block"></span> Reale Arbeitslinie Gl. (3.14)
-                </span>
+                  <span className="w-3.5 h-1 bg-shiraz rounded-full inline-block"></span><MdText text={inhalt.texte.realeArbeitslinieGl3} /></span>
                 <span className="flex items-center gap-1.5 font-medium text-slate-500">
-                  <span className="w-3.5 h-0.5 border-b-2 border-dashed border-slate-500 inline-block"></span> Parabel-Rechteck (GZT)
-                </span>
+                  <span className="w-3.5 h-0.5 border-b-2 border-dashed border-slate-500 inline-block"></span><MdText text={inhalt.texte.parabelRechteckGzt} /></span>
               </div>
             </div>
 
@@ -518,22 +493,15 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                 </svg>
               </div>
             </div>
-            <p className="text-xs text-text-main/70">
-              <strong>Didaktischer Hinweis:</strong> Achten Sie auf den Unterschied zwischen Normalbeton (C30/37 bis C50/60) 
-              und Hochleistungsbeton (C70/85 und C90/105): Bei hochfestem Beton steigt der Scheitelwert drastisch an, 
-              der abfallende Ast wird jedoch wesentlich steiler und die Bruchstauchung <InlineMath math="\varepsilon_{cu1}" /> 
-              sinkt von 3,5 ‰ auf 2,8 ‰, <InlineMath math="\varepsilon_{cu2}" /> (Parabel-Rechteck) von 3,5 ‰ auf 2,6 ‰ (spröderes Bruchverhalten!).
-            </p>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.didaktischerHinweisAchtenSie} /></p>
           </div>
 
           {/* Vollständige DIN EN 1992-1-1 Tabelle 3.1 & 3.2 Normübersicht */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
               <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <BookOpen className="text-shiraz h-4 w-4" />
-                Eurocode 2 Normkennwerte aller Spannbeton-Festigkeitsklassen (DIN EN 1992-1-1 Tab. 3.1)
-              </h5>
-              <span className="text-[11px] text-slate-500">Klick auf eine Zeile wählt die Klasse</span>
+                <BookOpen className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.eurocode2NormkennwerteAller} /></h5>
+              <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.klickAufEineZeile} /></span>
             </div>
 
             <div className="overflow-x-auto">
@@ -550,7 +518,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                     <th className="p-2.5 font-mono">E_cm [MPa]</th>
                     <th className="p-2.5 font-mono">ε_c1 [‰]</th>
                     <th className="p-2.5 font-mono">ε_cu1 [‰]</th>
-                    <th className="p-2.5">Eignung im Spannbetonbau</th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.eignungImSpannbetonbau} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20">
@@ -594,72 +562,49 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
             {/* Box 1: Mindestdruckfestigkeiten */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <ShieldAlert className="h-4 w-4 text-shiraz" />
-                1. Normative Mindestdruckfestigkeiten &amp; Baupraxis
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Nach <strong>DIN EN 1992-1-1 Abs. 3.1.2</strong> und den nationalen Anwendungsregeln (DIN 1045-2) gelten folgende Erfahrungswerte und Regelungen:
-              </p>
+                <ShieldAlert className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t1NormativeMindestdruckfestigkeitenBaupra} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.nachDinEn1992} /></p>
               <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                <li><strong>Nachträglicher Verbund (Hüllrohre):</strong> Übliche Praxis mindestens <strong>C30/37</strong>, um Berst- und Spaltzugspannungen hinter den Ankerkörpern sicher abzutragen.</li>
-                <li><strong>Sofortiger Verbund (Spannbett):</strong> Übliche Praxis mindestens <strong>C35/45</strong>, da die Kraftübertragung rein über Verbund, Keilwirkung (Hoyer-Effekt) und Adhäsion erfolgt.</li>
-                <li><strong>Brückenbau:</strong> In der Praxis werden meist <strong>C35/45 bis C45/55</strong> eingesetzt (Anforderungen der ZTV-ING und des Bauherrn prüfen).</li>
-                <li><strong>Zulassungsbezug:</strong> Die Mindestfestigkeit zum Spannzeitpunkt regelt verbindlich die europäische technische Bewertung (ETA) bzw. allgemeine bauaufsichtliche Zulassung (abZ) des jeweiligen Spannverfahrens.</li>
+                <li><MdText text={inhalt.texte.nachträglicherVerbundHüllrohreÜbliche} /></li>
+                <li><MdText text={inhalt.texte.sofortigerVerbundSpannbettÜbliche} /></li>
+                <li><MdText text={inhalt.texte.brückenbauInDerPraxis} /></li>
+                <li><MdText text={inhalt.texte.zulassungsbezugDieMindestfestigkeitZum} /></li>
               </ul>
             </div>
 
             {/* Box 2: Reife & Dampfhärtung */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <Thermometer className="h-4 w-4 text-shiraz" />
-                2. Reifeentwicklung &amp; Wärmebehandlung
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Im Fertigteilwerk werden Spannbetonelemente oft <strong>wärmebehandelt (60 °C)</strong>, um die Formen nach 12–16 Stunden 
-                wieder zu entspannen. Das äquivalente Alter wird nach der <strong>Arrhenius-Gleichung</strong> (EC2 Gl. B.10) berechnet:
-              </p>
+                <Thermometer className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t2ReifeentwicklungWärmebehandlung} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.imFertigteilwerkWerdenSpannbetonelemente} /></p>
               <div className="bg-white p-2 rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
                 <InlineMath math="t_T = \sum_{i=1}^n \Delta t_i \cdot \exp\left[ 4000 \cdot \left(\frac{1}{293} - \frac{1}{273 + T(\Delta t_i)}\right) \right]" />
               </div>
-              <p className="text-[11px] text-text-main/70">
-                Bei 60 °C läuft die Hydratation etwa 5-mal schneller ab als bei 20 °C Normtemperatur (nach Gl. B.10).
-              </p>
+              <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.bei60CLäuft} /></p>
             </div>
 
             {/* Box 3: Gesteinskörnung & E-Modul */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <Layers className="h-4 w-4 text-shiraz" />
-                3. Einfluss der Gesteinskörnung auf Steifigkeit
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Der Elastizitätsmodul hängt stark vom Gesteinstyp der Gesteinskörnung ab (EC2 Abs. 3.1.3):
-              </p>
+                <Layers className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t3EinflussDerGesteinskörnung} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.derElastizitätsmodulHängtStark} /></p>
               <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                <li><strong>Basalt / Diabas:</strong> <InlineMath math="\alpha_E = 1{,}20" /> (+20 % E-Modul, extrem steif, minimale Durchbiegung).</li>
-                <li><strong>Quarzit (Normreferenz):</strong> <InlineMath math="\alpha_E = 1{,}00" />.</li>
-                <li><strong>Kalkstein:</strong> <InlineMath math="\alpha_E = 0{,}90" /> (-10 % E-Modul).</li>
-                <li><strong>Sandstein:</strong> <InlineMath math="\alpha_E = 0{,}70" /> (-30 % E-Modul, führt zu massiv erhöhter elastischer Stauchung und Kriechverlusten!).</li>
+                <li><MdText text={inhalt.texte.basaltDiabasAlphaE} /></li>
+                <li><MdText text={inhalt.texte.quarzitNormreferenzAlphaE} /></li>
+                <li><MdText text={inhalt.texte.kalksteinAlphaE0} /></li>
+                <li><MdText text={inhalt.texte.sandsteinAlphaE0} /></li>
               </ul>
             </div>
 
             {/* Box 4: Mehraxialer Druck & Verankerung */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <Scale className="h-4 w-4 text-shiraz" />
-                4. Teilflächenbelastung in der Verankerungszone
-              </h5>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Direkt unter den Spannankern entsteht ein <strong>dreiachsiger Druckspannungszustand</strong>, 
-                der die lokale Druckfestigkeit des Betons gegenüber dem einachsigen Zylinderwert dramatisch steigert (EC2 Gl. 6.63):
-              </p>
+                <Scale className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t4TeilflächenbelastungInDer} /></h5>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.direktUnterDenSpannankern} /></p>
               <div className="bg-white p-2 rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
                 <BlockMath math="F_{Rdu} = A_{c0} \cdot f_{cd} \cdot \sqrt{\frac{A_{c1}}{A_{c0}}} \le 3{,}0 \cdot f_{cd} \cdot A_{c0}" />
               </div>
-              <p className="text-[11px] text-text-main/70">
-                Trotzdem müssen Spaltzug- und Berstzugkräfte im dahinterliegenden ungestörten Bereich 
-                durch kräftige Wendel- und Bügelbewehrungen aufgenommen werden.
-              </p>
+              <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.trotzdemMüssenSpaltzugUnd} /></p>
             </div>
           </div>
 
@@ -667,45 +612,43 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
           <div className="p-5 rounded-xl bg-white border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
               <h5 className="font-bold text-xs uppercase tracking-wider text-slate-900 flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-shiraz" />
-                Tabelle 1: Wesentliche mechanische Betonkennwerte und deren Zeitabhängigkeit (DIN EN 1992-1-1)
-              </h5>
-              <span className="text-[10px] font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700">EC2 Kap. 3.1</span>
+                <BookOpen className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.tabelle1WesentlicheMechanische} /></h5>
+              <span className="text-[10px] font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700"><MdText text={inhalt.texte.ec2Kap31} /></span>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-slate-50 text-slate-700 font-bold">
-                    <th className="p-2.5">Mechanische Eigenschaft</th>
-                    <th className="p-2.5">Formelzeichen (EC2)</th>
-                    <th className="p-2.5">Zeit- und Alterungsabhängigkeit</th>
-                    <th className="p-2.5">Praxisbedeutung im Spannbetonbau</th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.mechanischeEigenschaft} /></th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.formelzeichenEc2} /></th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.zeitUndAlterungsabhängigkeit} /></th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.praxisbedeutungImSpannbetonbau} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700">
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-2.5 font-bold">Charakt. Zylinderdruckfestigkeit</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.charaktZylinderdruckfestigkeit} /></td>
                     <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="f_{ck}" /></td>
-                    <td className="p-2.5">Genormt bei <InlineMath math="t = 28" /> Tagen (Wasserlagerung 20 °C)</td>
-                    <td className="p-2.5 text-[11px]">Klassifizierungsgrundlage (z. B. C30/37 oder C50/60)</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.genormtBeiT28} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.klassifizierungsgrundlageZBC30} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-2.5 font-bold">Mittlere Zylinderdruckfestigkeit</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.mittlereZylinderdruckfestigkeit} /></td>
                     <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="f_{cm}(t)" /></td>
-                    <td className="p-2.5">Steigt stark in den ersten 7 Tagen, danach asymptotisch (<InlineMath math="\beta_{cc}(t)" />)</td>
-                    <td className="p-2.5 text-[11px]">Bestimmt Übertragungsdruckfestigkeit beim Spannen (<InlineMath math="t_0" />)</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.steigtStarkInDen} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.bestimmtÜbertragungsdruckfestigkeitBeimS} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-2.5 font-bold">Mittlere axiale Zugfestigkeit</td>
+                    <td className="p-2.5 font-bold"><MdText text={inhalt.texte.mittlereAxialeZugfestigkeit} /></td>
                     <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="f_{ctm}(t)" /></td>
-                    <td className="p-2.5">EC2 setzt für t &lt; 28 d dieselbe Entwicklung wie für f_cm an (α = 1, Gl. 3.4)</td>
-                    <td className="p-2.5 text-[11px]">Maßgebend für Rissbildung &amp; Dekompressionsgrenzen</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.ec2SetztFürT} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.maßgebendFürRissbildungDekompressionsgre} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2.5 font-bold">Sekanten-Elastizitätsmodul</td>
                     <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="E_{cm}(t)" /></td>
-                    <td className="p-2.5">Folgt der 0,3-Potenz der Druckfestigkeitsentwicklung</td>
-                    <td className="p-2.5 text-[11px]">Bestimmt elastische Stauchung &amp; Kriechverformung</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.folgtDer03} /></td>
+                    <td className="p-2.5 text-[11px]"><MdText text={inhalt.texte.bestimmtElastischeStauchungKriechverform} /></td>
                   </tr>
                 </tbody>
               </table>

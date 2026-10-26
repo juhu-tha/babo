@@ -4,6 +4,8 @@ import {
   Server, 
   Gauge 
 } from 'lucide-react';
+import inhalt from '@/content/ki/ModelBenchmarkMatrix.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ModelComparison {
   name: string;
@@ -20,88 +22,88 @@ interface ModelComparison {
 
 const COMPARISON_DATA: ModelComparison[] = [
   {
-    name: 'Anthropic Claude (Sonnet/Opus, Extended Thinking)',
+    name: inhalt.werte.anthropicClaudeSonnetOpus,
     type: 'cloud',
-    providerOrWeights: 'Anthropic Cloud API',
+    providerOrWeights: inhalt.werte.anthropicCloudApi,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: 'ca. 3,80 €',
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
-    vramOrSetup: 'Reiner API-Key / Web-Interface',
-    idealUseInCivilEng: 'Komplexe Baugutachten, statische Begründungsketten, Prüfingenieur-Ebene & autonome Tool-Orchestrierung.',
-    ratingNotes: 'Stark bei technischer Dokumentation, Code und agentischen Workflows (eigene Tests empfohlen). Bietet umschaltbares adaptives Denken (Extended Reasoning) für tiefgründige statische Plausibilisierungen.'
+    vramOrSetup: inhalt.werte.reinerApiKeyWeb,
+    idealUseInCivilEng: inhalt.werte.komplexeBaugutachtenStatischeBegründungs,
+    ratingNotes: inhalt.werte.starkBeiTechnischerDokumentation
   },
   {
-    name: 'OpenAI GPT (inkl. Reasoning-Varianten)',
+    name: inhalt.werte.openaiGptInklReasoning,
     type: 'cloud',
-    providerOrWeights: 'OpenAI Cloud API',
+    providerOrWeights: inhalt.werte.openaiCloudApi,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: 'ca. 1,60 € bis 3,20 €',
+    costPer1kPages: inhalt.werte.ca160Bis,
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
-    vramOrSetup: 'Reiner API-Key / Web-Interface',
-    idealUseInCivilEng: 'Reasoning-Varianten für mathematisch-statische Herleitungen & Python-Code; Hauptmodell als multimodaler Allrounder für 3D-Scans, Pläne und Schadensfotos.',
-    ratingNotes: 'Verbindet Multimodalität mit integriertem Deep Reasoning und nativer Python-Sandbox (Advanced Data Analysis) zur nachvollziehbaren Versuchsauswertung (Code prüfen).'
+    vramOrSetup: inhalt.werte.reinerApiKeyWeb2,
+    idealUseInCivilEng: inhalt.werte.reasoningVariantenFürMathematisch,
+    ratingNotes: inhalt.werte.verbindetMultimodalitätMitIntegriertem
   },
   {
-    name: 'Google Gemini (Flash/Pro, Thinking)',
+    name: inhalt.werte.googleGeminiFlashPro,
     type: 'cloud',
-    providerOrWeights: 'Google Cloud / Vertex AI',
+    providerOrWeights: inhalt.werte.googleCloudVertexAi,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: 'ca. 0,50 € bis 2,00 €',
+    costPer1kPages: inhalt.werte.ca050Bis,
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
-    vramOrSetup: 'API-Key / Vertex AI Frankfurt',
-    idealUseInCivilEng: 'Sehr großes Kontextfenster (Größenordnung 10⁶ Token; Stand prüfen) für vollständige Normensammlungen, hunderte Bauakten, Punktwolken & Live-CAD.',
-    ratingNotes: 'Schnelle Latenz, nativer Multimodal-Core für CAD/Punktwolken und integriertes adaptives Denken mit günstigem Preis-Leistungs-Verhältnis.'
+    vramOrSetup: inhalt.werte.apiKeyVertexAi,
+    idealUseInCivilEng: inhalt.werte.sehrGroßesKontextfensterGrößenordnung,
+    ratingNotes: inhalt.werte.schnelleLatenzNativerMultimodal
   },
   {
-    name: 'DeepSeek-R1 (offene Gewichte, Reasoning)',
+    name: inhalt.werte.deepseekR1OffeneGewichte,
     type: 'local',
-    providerOrWeights: 'DeepSeek / Open Weights (GGUF)',
+    providerOrWeights: inhalt.werte.deepseekOpenWeightsGguf,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: '0,00 € (Lokaler Strom)',
+    costPer1kPages: inhalt.werte.t000LokalerStrom,
     dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
-    vramOrSetup: '10–24 GB VRAM (Qwen-Distill 14B/32B)',
-    idealUseInCivilEng: 'Offene, transparente Nachweis-Plausibilisierung (zeigt den gesamten internen Denkprozess <think>).',
-    ratingNotes: 'Offenes Reasoning-Modell mit sichtbarer Denkkette. Reflektiert, widerlegt und verifiziert eigene Rechenschritte vor der endgültigen Ausgabe.'
+    vramOrSetup: inhalt.werte.t1024GbVram,
+    idealUseInCivilEng: inhalt.werte.offeneTransparenteNachweisPlausibilisier,
+    ratingNotes: inhalt.werte.offenesReasoningModellMit
   },
   {
-    name: 'Qwen2.5-Coder 32B Instruct',
+    name: inhalt.werte.qwen25Coder32b,
     type: 'local',
-    providerOrWeights: 'Open Source (GGUF Q4_K_M)',
+    providerOrWeights: inhalt.werte.openSourceGgufQ4,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: '0,00 € (Lokaler Strom)',
+    costPer1kPages: inhalt.werte.t000LokalerStrom2,
     dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
-    vramOrSetup: '20–24 GB VRAM (RTX 3090/4090/5090)',
-    idealUseInCivilEng: 'Automatisierung, Python-Prüfmaschinenauswertung, IFC-Datenfilterung, FEM- & Statik-Skripte.',
-    ratingNotes: 'Stark beim Generieren von Berechnungs-Skripten; Ergebnisse stets mit Testfällen prüfen.'
+    vramOrSetup: inhalt.werte.t2024GbVram,
+    idealUseInCivilEng: inhalt.werte.automatisierungPythonPrüfmaschinenauswer,
+    ratingNotes: inhalt.werte.starkBeimGenerierenVon
   },
   {
-    name: 'Llama 3.3 70B Instruct',
+    name: inhalt.werte.llama3370b,
     type: 'local',
-    providerOrWeights: 'Meta AI (GGUF Q4_K_M)',
+    providerOrWeights: inhalt.werte.metaAiGgufQ4,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: '0,00 € (Lokaler Strom)',
+    costPer1kPages: inhalt.werte.t000LokalerStrom3,
     dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
-    vramOrSetup: '40–48 GB VRAM (2x RTX 3090/4090 oder Mac Studio 64GB)',
-    idealUseInCivilEng: 'Gerichtliche Baugutachten, vertrauliche Schiedsgerichts-Akten, KRITIS-Infrastrukturbauten.',
-    ratingNotes: 'Leistungsfähiges Offline-Modell; Daten verlassen den Rechner nicht (DSGVO-Pflichten wie Zweckbindung und Löschung bleiben bestehen).'
+    vramOrSetup: inhalt.werte.t4048GbVram,
+    idealUseInCivilEng: inhalt.werte.gerichtlicheBaugutachtenVertraulicheSchi,
+    ratingNotes: inhalt.werte.leistungsfähigesOfflineModellDaten
   },
   {
     name: 'Qwen3 14B',
     type: 'local',
-    providerOrWeights: 'Open Source (Alibaba/Qwen GGUF)',
+    providerOrWeights: inhalt.werte.openSourceAlibabaQwen,
     normAccuracy: 5,
     mathConsistency: 5,
-    costPer1kPages: '0,00 € (Lokaler Strom)',
+    costPer1kPages: inhalt.werte.t000LokalerStrom4,
     dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
-    vramOrSetup: '10–12 GB VRAM (RTX 3060/4060/5060)',
-    idealUseInCivilEng: 'Guter Kompromiss für Büro-PCs; Verarbeitung lokal ohne Drittlandübermittlung.',
-    ratingNotes: 'Herausragendes deutsches Normenverständnis (DIN, EC2, DAfStb) und zuverlässige mechanische Gleichungen bei moderatem Hardware-Bedarf.'
+    vramOrSetup: inhalt.werte.t1012GbVram,
+    idealUseInCivilEng: inhalt.werte.guterKompromissFürBüro,
+    ratingNotes: inhalt.werte.herausragendesDeutschesNormenverständnis
   }
 ];
 
@@ -131,12 +133,8 @@ export default function ModelBenchmarkMatrix() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-home-grau/20">
         <div>
           <h4 className="font-bold text-base text-text-main flex items-center gap-2">
-            <Gauge className="text-shiraz w-5 h-5" />
-            Benchmarking-Matrix: Cloud- vs. Lokale KI im Bauwesen
-          </h4>
-          <p className="text-xs text-text-main/70 mt-1">
-            Objektive Gegenüberstellung für Ingenieurbüros: Normengenauigkeit, Rechenkonsistenz, Tokenkosten und Datenschutz.
-          </p>
+            <Gauge className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.benchmarkingMatrixCloudVs} /></h4>
+          <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.objektiveGegenüberstellungFürIngenieurbü} /></p>
         </div>
 
         {/* Filter Buttons */}
@@ -146,9 +144,7 @@ export default function ModelBenchmarkMatrix() {
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'all' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
             }`}
-          >
-            Alle Modelle
-          </button>
+          ><MdText text={inhalt.texte.alleModelle} /></button>
           <button aria-pressed={filterType === 'cloud'}
             onClick={() => setFilterType('cloud')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
@@ -162,9 +158,7 @@ export default function ModelBenchmarkMatrix() {
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'local' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
             }`}
-          >
-            Nur Lokal (Offline)
-          </button>
+          ><MdText text={inhalt.texte.nurLokalOffline} /></button>
         </div>
       </div>
 
@@ -173,13 +167,13 @@ export default function ModelBenchmarkMatrix() {
         <table className="w-full text-left text-xs border-collapse">
           <thead>
             <tr className="border-b border-home-grau/20 bg-off-white text-text-main/70 uppercase text-[10px] font-bold">
-              <th className="p-3">Modell &amp; Architektur</th>
-              <th className="p-3">Typ &amp; Plattform</th>
-              <th className="p-3">Normengenauigkeit (DIN/EC)</th>
+              <th className="p-3"><MdText text={inhalt.texte.modellArchitektur} /></th>
+              <th className="p-3"><MdText text={inhalt.texte.typPlattform} /></th>
+              <th className="p-3"><MdText text={inhalt.texte.normengenauigkeitDinEc} /></th>
               <th className="p-3">Rechenkonsistenz</th>
-              <th className="p-3">Kosten / 1.000 S.</th>
-              <th className="p-3">Datenschutz (DSGVO)</th>
-              <th className="p-3">Hardware / Anforderung</th>
+              <th className="p-3"><MdText text={inhalt.texte.kosten1000S} /></th>
+              <th className="p-3"><MdText text={inhalt.texte.datenschutzDsgvo} /></th>
+              <th className="p-3"><MdText text={inhalt.texte.hardwareAnforderung} /></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-home-grau/20 text-xxs">
@@ -230,22 +224,14 @@ export default function ModelBenchmarkMatrix() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 text-xs">
         <div className="p-4 bg-blue-50/70 border border-blue-200 rounded-xl space-y-1.5">
           <h5 className="font-bold text-blue-900 flex items-center gap-1.5">
-            <Cloud size={14} className="text-blue-700" />
-            Wann ist die Cloud die richtige Wahl?
-          </h5>
-          <p className="text-xxs text-blue-950 leading-relaxed">
-            Für wissenschaftliche Literaturrecherchen, unkritische Textzusammenfassungen, Sprachkorrekturen und das Auslesen riesiger PDF-Gutachten (1 Mio. Tokens), sofern keine vertraulichen Kundendaten oder Bauherrenpläne enthalten sind.
-          </p>
+            <Cloud size={14} className="text-blue-700" /><MdText text={inhalt.texte.wannIstDieCloud} /></h5>
+          <p className="text-xxs text-blue-950 leading-relaxed"><MdText text={inhalt.texte.fürWissenschaftlicheLiteraturrecherchenU} /></p>
         </div>
 
         <div className="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
           <h5 className="font-bold text-emerald-900 flex items-center gap-1.5">
-            <Server size={14} className="text-emerald-700" />
-            Wann ist lokale KI besonders zu empfehlen?
-          </h5>
-          <p className="text-xxs text-emerald-950 leading-relaxed">
-            Bei patentierten Rezepturen, internen Kalkulationen, KRITIS-Infrastrukturprojekten, gerichtlichen Schadensgutachten und auf Baustellen ohne stabile Internetverbindung. Ein lokales 14B-Modell (z. B. Qwen3 14B) vermeidet Datenübermittlung bei geringen Folgekosten. Modellangaben: Stand 10/2026; Versionen ändern sich schnell – vor dem Einsatz aktuelle Modellkarten prüfen.
-          </p>
+            <Server size={14} className="text-emerald-700" /><MdText text={inhalt.texte.wannIstLokaleKi} /></h5>
+          <p className="text-xxs text-emerald-950 leading-relaxed"><MdText text={inhalt.texte.beiPatentiertenRezepturenInternen} /></p>
         </div>
       </div>
 

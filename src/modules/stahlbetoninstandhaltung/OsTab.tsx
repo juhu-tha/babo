@@ -2,23 +2,23 @@
 import { Layers, CheckCircle2 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { osSysteme } from './daten';
+import inhalt from '@/content/stahlbetoninstandhaltung/OsTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function OsTab() {
   return (
     <div className="space-y-6">
       <div className="bg-white border-y border-r border-l-4 border-shiraz border-home-grau/20 p-4 rounded-xl">
         <h3 className="font-bold text-shiraz flex items-center gap-2">
-          <Layers size={20} />
-          Oberflächenschutzsysteme (OS-Systeme)
-        </h3>
+          <Layers size={20} /><MdText text={inhalt.texte.oberflächenschutzsystemeOsSysteme} /></h3>
         <p className="text-text-main mt-2 text-sm">
-          <FormulaText text="OS-Systeme dienen dem Schutz der Betonoberfläche vor dem Eindringen von Wasser und gelösten Stoffen (z.B. Chloriden) sowie der Begrenzung der Carbonatisierung. Sie sind ein wesentlicher Bestandteil der Prinzipien W und C." />
+          <FormulaText text={inhalt.werte.osSystemeDienenDem} />
         </p>
       </div>
 
       {/* Schematische Darstellung OS */}
       <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Aufbau von OS-Systemen</h3>
+        <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungAufbauVon} /></h3>
         <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
           <svg width="100%" height="200" viewBox="0 0 600 200">
             <defs>
@@ -76,9 +76,7 @@ export default function OsTab() {
               <text x="40" y="80" fontSize="10" fill="#475569" textAnchor="middle">Elastisch + Starr</text>
             </g>
           </svg>
-          <div className="text-xs text-text-main/70 text-center mt-2">
-            Unterschiedliche OS-Systeme: Hydrophobierungen ziehen in den Beton ein, dünne Beschichtungen liegen auf, dicke Systeme (OS 8) bieten mechanischen Schutz, und mehrschichtige Systeme (OS 11) kombinieren eine elastische Dichtung mit einer harten Nutzschicht.
-          </div>
+          <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.unterschiedlicheOsSystemeHydrophobierung} /></div>
         </div>
       </div>
 

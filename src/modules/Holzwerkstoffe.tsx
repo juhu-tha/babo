@@ -4,6 +4,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import inhalt from '@/content/holzwerkstoffe/Holzwerkstoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Holzwerkstoffe() {
   const [activeTab, setActiveTab] = useState<'steckbrief' | 'arten' | 'herstellung' | 'nachhaltigkeit'>('steckbrief');
@@ -16,10 +18,7 @@ export default function Holzwerkstoffe() {
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Holzwerkstoffe entstehen durch das Zerkleinern von Holz (in Bretter, Furniere, Späne oder Fasern) und das anschließende Zusammenfügen (meist durch Verleimen oder Pressen).
-            Dadurch werden die natürlichen Schwachstellen von Vollholz (wie Äste oder Risse) minimiert und die richtungsabhängigen Eigenschaften (Anisotropie) homogenisiert.
-          </p>
+          <p><MdText text={inhalt.texte.holzwerkstoffeEntstehenDurchDas} /></p>
         </div>
       </div>
 
@@ -42,8 +41,7 @@ export default function Holzwerkstoffe() {
           }`}
           onClick={() => setActiveTab('arten')}
         >
-          <Layers size={16} /> Arten &amp; Eigenschaften
-        </button>
+          <Layers size={16} /><MdText text={inhalt.texte.artenEigenschaften} /></button>
         <button aria-pressed={activeTab === 'herstellung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'herstellung' 
@@ -62,8 +60,7 @@ export default function Holzwerkstoffe() {
           }`}
           onClick={() => setActiveTab('nachhaltigkeit')}
         >
-          <Leaf size={16} /> Umwelt &amp; Nachhaltigkeit
-        </button>
+          <Leaf size={16} /><MdText text={inhalt.texte.umweltNachhaltigkeit} /></button>
       </div>
 
       {activeTab === 'arten' && (
@@ -72,24 +69,20 @@ export default function Holzwerkstoffe() {
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Vollholzwerkstoffe</h3>
           
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Brettschichtholz (BSH / Leimholz)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Besteht aus faserparallel miteinander verleimten (in der Regel mindestens drei) getrockneten Brettern oder Brettlamellen.
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.brettschichtholzBshLeimholz} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.bestehtAusFaserparallelMiteinander} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Sehr hohe Tragfähigkeit, formstabil, große Querschnitte und Längen möglich.</li>
-              <li><strong>Verwendung:</strong> Weitgespannte Träger, Stützen, Ingenieurholzbau.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenSehrHoheTragfähigkeit} /></li>
+              <li><MdText text={inhalt.texte.verwendungWeitgespannteTrägerStützen} /></li>
             </ul>
           </div>
 
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Brettsperrholz (BSP / CLT)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Besteht aus kreuzweise (meist im 90°-Winkel) verleimten Brettlagen (Cross Laminated Timber).
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.brettsperrholzBspClt} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.bestehtAusKreuzweiseMeist} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Hohe Formstabilität, Lastabtragung in zwei Richtungen möglich, plattenförmig.</li>
-              <li><strong>Verwendung:</strong> Massivholzwände, Decken, Dachelemente im modernen Holzbau.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenHoheFormstabilitätLastabtra} /></li>
+              <li><MdText text={inhalt.texte.verwendungMassivholzwändeDeckenDacheleme} /></li>
             </ul>
           </div>
         </div>
@@ -98,24 +91,20 @@ export default function Holzwerkstoffe() {
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Furnierwerkstoffe</h3>
           
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Furniersperrholz (FU)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Besteht aus mehreren kreuzweise verleimten Furnierlagen (Schälfurniere).
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.furniersperrholzFu} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.bestehtAusMehrerenKreuzweise} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Hohe Festigkeit bei geringer Dicke, stark reduzierte Quell- und Schwindmaße in Plattenebene.</li>
-              <li><strong>Verwendung:</strong> Beplankungen, Möbelbau, Fahrzeugbau.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenHoheFestigkeitBei} /></li>
+              <li><MdText text={inhalt.texte.verwendungBeplankungenMöbelbauFahrzeugba} /></li>
             </ul>
           </div>
 
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Furnierschichtholz (FSH / LVL)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Besteht aus faserparallel verleimten Furnieren (Laminated Veneer Lumber).
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.furnierschichtholzFshLvl} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.bestehtAusFaserparallelVerleimten} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Extrem hohe Zug- und Biegefestigkeit in Faserrichtung.</li>
-              <li><strong>Verwendung:</strong> Hochbelastete Träger, schlanke Bauteile.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenExtremHoheZug} /></li>
+              <li><MdText text={inhalt.texte.verwendungHochbelasteteTrägerSchlanke} /></li>
             </ul>
           </div>
         </div>
@@ -124,24 +113,20 @@ export default function Holzwerkstoffe() {
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Holzspanwerkstoffe</h3>
           
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">OSB-Platten (Oriented Strand Board)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Platten aus langen, schlanken, ausgerichteten Spänen (Strands). In den Deckschichten längs, in der Mittelschicht quer ausgerichtet.
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.osbPlattenOrientedStrand} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.plattenAusLangenSchlanken} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Hohe Biegefestigkeit, markante Optik, oft feuchtebeständig verleimt (OSB/3, OSB/4).</li>
-              <li><strong>Verwendung:</strong> Aussteifende Beplankung im Holzrahmenbau, Fußböden, Verpackungen.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenHoheBiegefestigkeitMarkante} /></li>
+              <li><MdText text={inhalt.texte.verwendungAussteifendeBeplankungIm} /></li>
             </ul>
           </div>
 
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Flachpressplatten (Spanplatten)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Platten aus kleinen Holzspänen, die mit Bindemitteln unter Druck und Wärme gepresst werden.
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.flachpressplattenSpanplatten} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.plattenAusKleinenHolzspänen} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Günstig, isotrope Eigenschaften in der Plattenebene, geringere Festigkeit als OSB oder Sperrholz.</li>
-              <li><strong>Verwendung:</strong> Möbelbau und Innenausbau (P2, P3); als P4–P7 nach DIN EN 312 auch tragend, z. B. Verlegeplatten und Beplankungen.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenGünstigIsotropeEigenschafte} /></li>
+              <li><MdText text={inhalt.texte.verwendungMöbelbauUndInnenausbau} /></li>
             </ul>
           </div>
         </div>
@@ -150,24 +135,20 @@ export default function Holzwerkstoffe() {
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Holzfaserwerkstoffe</h3>
           
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">MDF (Mitteldichte Faserplatte)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Hergestellt aus feinen Holzfasern, die im Trockenverfahren mit Bindemitteln gepresst werden.
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.mdfMitteldichteFaserplatte} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.hergestelltAusFeinenHolzfasern} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Sehr homogene Struktur, glatte Oberfläche, gut profilierbar.</li>
-              <li><strong>Verwendung:</strong> Möbelbau, profilierte Fronten, Innenausbau.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenSehrHomogeneStruktur} /></li>
+              <li><MdText text={inhalt.texte.verwendungMöbelbauProfilierteFronten} /></li>
             </ul>
           </div>
 
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-            <h4 className="font-bold text-sm mb-2 text-shiraz">Holzfaserdämmplatten (HFD)</h4>
-            <p className="text-sm text-text-main/80 mb-2">
-              Poröse Platten aus Holzfasern (Nass- oder Trockenverfahren).
-            </p>
+            <h4 className="font-bold text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.holzfaserdämmplattenHfd} /></h4>
+            <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.porösePlattenAusHolzfasern} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
-              <li><strong>Eigenschaften:</strong> Gute Wärmedämmung, hervorragender sommerlicher Hitzeschutz (hohe Wärmespeicherkapazität).</li>
-              <li><strong>Verwendung:</strong> Aufsparrendämmung, WDVS im Holzbau, Trittschalldämmung.</li>
+              <li><MdText text={inhalt.texte.eigenschaftenGuteWärmedämmungHervorragen} /></li>
+              <li><MdText text={inhalt.texte.verwendungAufsparrendämmungWdvsIm} /></li>
             </ul>
           </div>
         </div>
@@ -177,21 +158,19 @@ export default function Holzwerkstoffe() {
       {activeTab === 'herstellung' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
           <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-2">Herstellungsprozesse</h3>
-          <p className="text-text-main/80">
-            Die Herstellungsverfahren bestimmen maßgeblich die Struktur und Leistung der Endprodukte.
-          </p>
+          <p className="text-text-main/80"><MdText text={inhalt.texte.dieHerstellungsverfahrenBestimmenMaßgebl} /></p>
           <div className="space-y-4">
             <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-              <h4 className="font-bold text-shiraz mb-1">Verleimung (Klebeprozess)</h4>
-              <p className="text-sm text-text-main/80">Für baurelevante Anwendungen werden feuchtebeständige Leime (z. B. Phenol-Resorcin-Formaldehydharz [PRF], Melamin-Urea-Formaldehydharz [MUF] oder Polyurethan [PUR]) verwendet. PUR-Klebstoffe sind formaldehydfrei und setzen sich zunehmend durch.</p>
+              <h4 className="font-bold text-shiraz mb-1"><MdText text={inhalt.texte.verleimungKlebeprozess} /></h4>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.fürBaurelevanteAnwendungenWerden} /></p>
             </div>
             <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
               <h4 className="font-bold text-shiraz mb-1">Furnierherstellung</h4>
-              <p className="text-sm text-text-main/80">Der Stamm wird erhitzt, um ihn geschmeidiger zu machen. Anschließend wird er meist geschält (Schälfurnier, für Sperrholz) oder gemessert (Messerfurnier, oft für dekorative Zwecke).</p>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.derStammWirdErhitzt} /></p>
             </div>
             <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
               <h4 className="font-bold text-shiraz mb-1">Faseraufbereitung</h4>
-              <p className="text-sm text-text-main/80">Hackschnitzel werden unter hohem Druck und Dampf in Refinern (Mahlwerken) in Fasern zerrissen (Defibratorverfahren). Anschließend erfolgt die Leimzugabe (Blow-Line).</p>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.hackschnitzelWerdenUnterHohem} /></p>
             </div>
           </div>
         </div>
@@ -199,23 +178,23 @@ export default function Holzwerkstoffe() {
 
       {activeTab === 'nachhaltigkeit' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
-          <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-2">Ressourceneinsatz und Umwelt</h3>
+          <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.ressourceneinsatzUndUmwelt} /></h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h4 className="font-bold text-shiraz text-lg mb-2">Rohstoffausnutzung</h4>
-              <p className="text-sm text-text-main/80 mb-2">Holzwerkstoffe ermöglichen eine deutlich höhere Ausbeute des Baumstamms im Vergleich zu Vollholz. Späne und Fasern stammen oft aus Durchforstungsholz oder Reststoffen der Sägeindustrie.</p>
+              <p className="text-sm text-text-main/80 mb-2"><MdText text={inhalt.texte.holzwerkstoffeErmöglichenEineDeutlich} /></p>
             </div>
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h4 className="font-bold text-shiraz text-lg mb-2">Emissionen (VOCs und Formaldehyd)</h4>
-              <p className="text-sm text-text-main/80">Ein kritischer Faktor sind Formaldehydemissionen aus Klebstoffen. Die frühere Klasse E1 (EN 717-1) reicht heute nicht mehr: In Deutschland gilt seit 2020 die ChemVerbotsV mit Prüfung nach DIN EN 16516 (umgangssprachlich E05), seit 06.08.2026 EU-weit REACH Anhang XVII Eintrag 77 mit 0,062 mg/m³. Noch strengere Anforderungen stellen Umweltzeichen wie der Blaue Engel.</p>
+              <h4 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.emissionenVocsUndFormaldehyd} /></h4>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.einKritischerFaktorSind} /></p>
             </div>
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h4 className="font-bold text-shiraz text-lg mb-2">Kaskadennutzung</h4>
-              <p className="text-sm text-text-main/80">Idealerweise: Vollholz → Brettschichtholz → OSB/Spanplatten → Holzfaserplatten → Thermische Verwertung (Energiegewinnung am Ende des Lebenszyklus).</p>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.idealerweiseVollholzBrettschichtholzOsb} /></p>
             </div>
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h4 className="font-bold text-shiraz text-lg mb-2">Kreislauffähigkeit</h4>
-              <p className="text-sm text-text-main/80">Kompliziert durch Bindemittelanteile. Nach KrWG-Abfallhierarchie und AltholzV hat die stoffliche Verwertung (z. B. Spanplattenherstellung aus Altholz A I/A II) Vorrang; belastete Holzwerkstoffe (A III/A IV) werden überwiegend energetisch in zugelassenen Anlagen verwertet.</p>
+              <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.kompliziertDurchBindemittelanteileNach} /></p>
             </div>
           </div>
         </div>
@@ -229,16 +208,11 @@ export default function Holzwerkstoffe() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Kriechverformung einer OSB-Platte im Vergleich zu Vollholz"
+          title={inhalt.werte.anwendungsbeispielKriechverformungEinerO}
           zielGleichung="w_{fin} = w_{inst} \cdot (1 + k_{def}) \quad (\text{ständige Last, } \psi_2 = 1)"
-          normQuelle="DIN EN 1995-1-1, 2.2.3 und Tab. 3.2"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'w_{inst,G} = 4{,}0\\,\\text{mm}\\;(\\text{ständige Last}),\\; \\text{NKL 1}', erklaerung: 'Elastische Anfangsdurchbiegung aus Eigengewicht und Aufbau.' },
-            { titel: '2. OSB/3', formel: 'k_{def} = 1{,}5 \\Rightarrow w_{fin} = 4{,}0 \\cdot 2{,}5 = 10{,}0\\,\\text{mm}', erklaerung: 'Holzwerkstoffe mit kleinteiliger Struktur kriechen deutlich stärker.' },
-            { titel: '3. Vollholz zum Vergleich', formel: 'k_{def} = 0{,}6 \\Rightarrow w_{fin} = 4{,}0 \\cdot 1{,}6 = 6{,}4\\,\\text{mm}', erklaerung: 'Bei gleicher Anfangsdurchbiegung.' },
-            { titel: '4. NKL 2', formel: '\\text{OSB/3: } k_{def} = 2{,}25 \\Rightarrow w_{fin} = 13{,}0\\,\\text{mm}', erklaerung: 'Höhere Holzfeuchte verstärkt das Kriechen.' },
-          ]}
-          ergebnisHinweis="Für Holzwerkstoffplatten unter Dauerlast ist die Endverformung oft maßgebend – Plattendicke und Stützweite daher nicht nur nach der Tragfähigkeit wählen."
+          normQuelle={inhalt.werte.dinEn19951}
+          schritte={inhalt.daten["Holzwerkstoffe.schritte"]}
+          ergebnisHinweis={inhalt.werte.fürHolzwerkstoffplattenUnterDauerlast}
         />
       </div>
 
@@ -247,34 +221,13 @@ export default function Holzwerkstoffe() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Holzwerkstoff', url: 'https://de.wikipedia.org/wiki/Holzwerkstoff' },
-          { title: 'Oriented Strand Board (OSB)', url: 'https://de.wikipedia.org/wiki/Grobspanplatte' },
+          { title: inhalt.werte.orientedStrandBoardOsb, url: 'https://de.wikipedia.org/wiki/Grobspanplatte' },
           { title: 'Sperrholz', url: 'https://de.wikipedia.org/wiki/Sperrholz' },
-          { title: 'dataholz.eu - Online-Katalog für Holz- und Holzwerkstoffe, Baustoff- und Bauteildaten', url: 'https://www.dataholz.eu/' }
+          inhalt.daten["Holzwerkstoffe.wikipedia.3"]
         ]}
-        literatur={[
-          'Dunky, M.; Niemz, P. (2002): Holzwerkstoffe und Leime (Springer-Verlag)',
-          'Niemz, P.; Sonderegger, W. (2021): Holzphysik - Physik des Holzes und der Holzwerkstoffe (Hanser)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 13986:2015-06 (Holzwerkstoffe zur Verwendung im Bauwesen - Eigenschaften, Bewertung der Konformität und Kennzeichnung)' },
-          { title: 'DIN EN 300:2006-09 (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)' },
-          { title: 'DIN EN 312:2010-12 (Spanplatten - Anforderungen)' },
-          { title: 'DIN EN 636:2015-05 (Sperrholz - Anforderungen)' },
-          { title: 'DIN EN 16351:2025-07 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)' }
-        ]}
-        formeln={[
-          {
-            formel: 'f_{m,d} = k_{\\text{mod}} \\cdot \\frac{f_{m,k}}{\\gamma_M}',
-            erklaerung: 'Bemessungsbiegefestigkeit von Holzwerkstoffplatten nach EC 5: \\gamma_M = 1{,}3 nach DIN EN 1995-1-1/NA (Empfehlungswert Tab. 2.3: 1{,}2 für OSB/Sperrholz, 1{,}3 für Span- und Faserplatten), k_{mod} abhängig von Nutzungsklasse und Lasteinwirkungsdauer.',
-            quelle: 'DIN EN 1995-1-1 Tab. 2.3'
-          },
-          {
-            formel: 'E_{\\text{mean,fin}} = \\frac{E_{\\text{mean}}}{1 + k_{\\text{def}}}',
-            erklaerung: 'Kriechmodul zur Berechnung der Endverformung von Holzwerkstoffplatten: k_{def} ist bei Span-/Faserplatten höher als bei Vollholz (z.B. OSB NKL 1: k_{def} = 1{,}50).',
-            quelle: 'DIN EN 1995-1-1 Tab. 3.2'
-          }
-        ]}
+        literatur={inhalt.daten["Holzwerkstoffe.literatur"]}
+        regelwerke={inhalt.daten["Holzwerkstoffe.regelwerke"]}
+        formeln={inhalt.daten["Holzwerkstoffe.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,89 @@
+{
+  "texte": {
+    "baustoffkenngrößenBeschreibenDiePhysikal": "Baustoffkenngrößen beschreiben die physikalischen, mechanischen, hygrischen und thermischen Eigenschaften von Materialien. Sie sind die Grundlage für jede statische und bauphysikalische Bemessung.",
+    "zeitabhEigenschaften": " Zeitabh. Eigenschaften"
+  },
+  "werte": {
+    "spannungHookeschesGesetz": "Spannung (Hookesches Gesetz)",
+    "elastischeDehnung": "Elastische Dehnung",
+    "schwindverkürzungCs": "Schwindverkürzung |ε_cs|",
+    "gesamtstauchungBetrag": "Gesamtstauchung (Betrag)",
+    "spannungsverlaufRelaxation": "Spannungsverlauf (Relaxation)",
+    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: Dichten, Feuchte, Diffusion, Kapillarität, Wärme und Zeitverhalten gegen DIN 4108-3/-4, DIN EN ISO 10456, 12570, 15148 und DIN EN 1992-1-1 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Baustoffkenngroessen.dichtePresets": {
+      "ziegel": {
+        "name": "Ziegelscherben (Vollziegel)",
+        "rhoR": 2650,
+        "rho": 1800,
+        "rhoS": 1100,
+        "desc": "Der gebrannte Ziegelscherben hat eine Reindichte von etwa 2650 kg/m³. Durch die Brennporen sinkt die Scherbenrohdichte eines Vollziegels auf ca. 1800 kg/m³ (Lochziegel: Steinrohdichte durch die Lochung deutlich geringer). Geschütteter Ziegelsplitt erreicht ca. 1100 kg/m³."
+      },
+      "blaehton": {
+        "name": "Blähtongranulat",
+        "rhoR": 2500,
+        "rho": 650,
+        "rhoS": 380,
+        "desc": "Die Mineralsubstanz hat ca. 2500 kg/m³ Reindichte. Beim Brennen bei ca. 1200 °C blähen Gase den erweichten Ton auf; die Kornrohdichte sinkt dadurch auf ca. 650 kg/m³. Die lose Schüttung mit Haufwerksporen wiegt nur ca. 380 kg/m³."
+      },
+      "granit": {
+        "name": "Monolithischer Granit",
+        "rhoR": 2700,
+        "rho": 2650,
+        "rhoS": 1600,
+        "desc": "Quarzreiches Tiefengestein mit vernachlässigbar kleiner Porigkeit. Reindichte und Rohdichte sind quasi identisch (~2650 kg/m³). Als gebrochener Schotter (Haufwerk) bildet Granit eine Schüttdichte von ca. 1600 kg/m³."
+      },
+      "porenbeton": {
+        "name": "Porenbeton",
+        "rhoR": 2400,
+        "rho": 500,
+        "rhoS": 310,
+        "desc": "Das Feststoffgerüst (Tobermorit, Quarz) hat ca. 2400 kg/m³ Reindichte. Aluminiumpulver reagiert in der alkalischen Mischung unter Wasserstoffbildung und treibt den Mörtel auf; die Steinrohdichte sinkt dadurch auf ca. 500 kg/m³. Als Granulatschüttung wiegt der Baustoff nur noch ca. 310 kg/m³."
+      }
+    },
+    "Baustoffkenngroessen.literatur": [
+      "Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. 9. Aufl., Wiesbaden: Springer Vieweg 2022",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013"
+    ],
+    "Baustoffkenngroessen.regelwerke": [
+      {
+        "title": "DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)"
+      },
+      {
+        "title": "DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)"
+      },
+      {
+        "title": "DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)"
+      },
+      {
+        "title": "DIN 4108-4 (Wärme- und feuchteschutztechnische Bemessungswerte)"
+      },
+      {
+        "title": "DIN EN ISO 12570 (Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur)"
+      },
+      {
+        "title": "DIN EN ISO 12572 (Bestimmung der Wasserdampfdurchlässigkeit)"
+      },
+      {
+        "title": "DIN EN ISO 15148 (Bestimmung des Wasseraufnahmekoeffizienten bei teilweisem Eintauchen)"
+      },
+      {
+        "title": "DIN EN 1992-1-1 (Eurocode 2) – Kriechen und Schwinden (3.1.4, Anhang B)"
+      }
+    ],
+    "Baustoffkenngroessen.formeln": [
+      {
+        "formel": "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad \\left[\\frac{\\text{J}}{\\text{m}^2 \\cdot \\text{K} \\cdot \\text{s}^{1/2}}\\right]",
+        "erklaerung": "Wärmeeindringkoeffizient b: Beschreibt die Geschwindigkeit und Intensität, mit der ein Baustoff bei Kontakt Wärme aufnimmt (maßgeblich für Fußwärme von Bodenbelägen).",
+        "quelle": "Bauphysik / Willems"
+      },
+      {
+        "formel": "s_d = \\mu \\cdot d \\quad [\\text{m}] \\quad \\text{und} \\quad a = \\frac{\\lambda}{\\rho \\cdot c} \\quad \\left[\\frac{\\text{m}^2}{\\text{s}}\\right]",
+        "erklaerung": "Diffusionsäquivalente Luftschichtdicke s_d (Wasserdampfdiffusionswiderstand) und Temperaturleitfähigkeit a (thermische Trägheit des Bauteils).",
+        "quelle": "DIN 4108-3 / DIN EN ISO 13788"
+      }
+    ]
+  }
+}

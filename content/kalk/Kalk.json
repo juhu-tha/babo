@@ -1,0 +1,100 @@
+{
+  "texte": {
+    "baukalkIstEinesDer": "Baukalk ist eines der ältesten mineralischen Bindemittel. Er härtet durch Karbonatisierung an der Luft aus und verleiht Putz- und Mauermörteln eine hervorragende Verarbeitbarkeit.",
+    "technischerKalkkreislauf": " Technischer Kalkkreislauf",
+    "festigkeitsbildungErhärtung": " Festigkeitsbildung & Erhärtung",
+    "eigenschaftenNormen": " Eigenschaften & Normen",
+    "baukalkCalciumcarbonatCalciumhydroxidGeh": "**Baukalk** (Calciumcarbonat / Calciumhydroxid) gehört zu den ältesten Bindemitteln. Man unterscheidet den reinen **Luftkalk**, der nur an der Luft durch Aufnahme von CO₂ erhärtet, vom **hydraulischen Kalk**, der aufgrund begleitender Silikate/Aluminate auch unter Wasser aushärtet.",
+    "derTechnischeKalkkreislauf": "Der technische Kalkkreislauf",
+    "t1Brennen": "1. Brennen (",
+    "natürlicherKalksteinWirdBei": "Natürlicher Kalkstein wird bei ca. 900–1100 °C im Kalkofen gebrannt. Das CO₂ entweicht, es entsteht poröser **Branntkalk** (endotherme Kalzinierung).",
+    "t2LöschenHydratisieren": "2. Löschen (Hydratisieren)",
+    "zugabeVonWasserFührt": "Zugabe von Wasser führt zu einer stark exothermen Reaktion (Hitzeentwicklung!). Es entsteht pulvriger oder breiiger **Löschkalk** (Calciumhydroxid).",
+    "t3AbbindenKarbonatisierung": "3. Abbinden (Karbonatisierung)",
+    "erhärtungErfolgtNurWenn": "Erhärtung erfolgt nur, wenn dem angemachten Löschkalk ermöglicht wird, CO₂ aus der Luft aufzunehmen. Das Porenwasser ist das notwendige Reaktionsmedium: CO₂ löst sich darin und reagiert mit dem gelösten Calciumhydroxid.",
+    "artenVonBaukalk": "Arten von Baukalk",
+    "kurzzeichenNachDinEn": "**Kurzzeichen nach DIN EN 459-1:** CL (Weißkalk), DL (Dolomitkalk), NHL (natürlicher hydraulischer Kalk), HL (hydraulischer Kalk), FL (formulierter Kalk).",
+    "luftkalkeWeißkalkDolomitkalkErhärten": "**Luftkalke (Weißkalk, Dolomitkalk):** Erhärten nur durch Aufnahme von Kohlendioxid aus der Luft (Karbonatisierung). Sie sind im erhärteten Zustand nicht wasserbeständig und eignen sich primär für Innenputze oder Denkmalschutz.",
+    "wasserkalkHydraulischerKalkHl": "**Wasserkalk / Hydraulischer Kalk (HL / NHL):** Enthalten \"Verunreinigungen\" des Ursprungsgesteins (z.B. reaktionsfähige Kieselsäure/Tonerde). Er erhärtet sowohl durch CO₂ (Karbonatisierung) als auch durch Wasser (Hydratation). Wird im Außenputz und für feuchte Bereiche genutzt.",
+    "dieFestigkeitsbildungVonLuftkalk": "Die Festigkeitsbildung von **Luftkalk** basiert nicht auf der Hydratation einer Gel-Phase wie beim Zement, sondern auf einer langsamen chemischen Kristallbildung durch die Aufnahme von atmosphärischem Kohlendioxid.",
+    "mechanismusDerErhärtung": "Mechanismus der Erhärtung",
+    "karbonatisierungDieGelöstenCalciumhydrox": "**Karbonatisierung:** Die gelösten Calciumhydroxid-Ionen (Ca²⁺) reagieren mit dem gelösten Kohlendioxid (Carbonat-Ionen, CO₃²⁻) aus der Luft zu festen, wasserunlöslichen Calcit-Kristallen (CaCO₃).",
+    "wasserAlsKatalysatorDieser": "**Wasser als Katalysator:** Dieser Vorgang erfordert das Vorhandensein von Feuchtigkeit. CO₂ muss sich im Porenwasser lösen (Bildung von Kohlensäure), um reagieren zu können. Deshalb trocknet Kalkmörtel nicht nur, sondern benötigt eine regulierte, feuchte Nachbehandlung oder ein luftiges Umfeld, um zu karbonatisieren, bevor das gesamte Anmachwasser verschwunden ist.",
+    "dieseKristalleVerfilzenBeim": "Diese Kristalle verfilzen beim Ausfallen und verbinden die Sandkörner (Gesteinskörnung).",
+    "langsamerProzessDieCo": "**Langsamer Prozess:** Die CO₂-Diffusionsgeschwindigkeit von außen in den Mörtel bestimmt das Tempo. Je dichter die Struktur oder je dicker die Schicht, desto langsamer die Festigkeitsbildung. Ein vollständiges Aushärten im Kern dicker Mauern kann Jahrzehnte dauern.",
+    "geringereEndfestigkeitReineLuftkalkmörte": "**Geringere Endfestigkeit:** Reine Luftkalkmörtel erreichen meist nur Druckfestigkeiten im Bereich von 1 bis 3 MPa (zum Vergleich: normaler Beton 30 MPa).",
+    "plastizitätVerformbarkeitWegenDer": "**Plastizität & Verformbarkeit:** Wegen der geringen Steifigkeit können Kalkmörtel geringe Verformungen des Mauerwerks durch Kriechen, Schwinden oder thermische Längenänderungen besser rissfrei \"mitmachen\" als starre Zementmörtel (deshalb wichtig in der Denkmalpflege).",
+    "kalkZeichnetSichDurch": "Kalk zeichnet sich durch hohe kapillare Leitfähigkeit, Alkalität und spannungsarme Verformung aus. Er ist jedoch empfindlich gegen Säuren (chemisch) sowie gegen Frost bei Durchfeuchtung (physikalisch). Relevante Normen zur Kalkklassifizierung sind insbesondere die **DIN EN 459-1** (Baukalk).",
+    "hygienischeUndBauphysikalischeFunktion": "Hygienische und Bauphysikalische Funktion",
+    "alkalitätDesinfektionBaukalkIst": "**Alkalität & Desinfektion:** Baukalk ist stark alkalisch (pH-Wert um 12-13 im ungehärteten Zustand). Der hohe pH-Wert wirkt Schimmelbildung entgegen, solange der Kalk nicht vollständig carbonatisiert ist.",
+    "feuchtemanagementKalkputzeOhneKunstharzz": "**Feuchtemanagement:** Kalkputze (ohne Kunstharzzusätze) sind extrem kapillaroffen und diffusionsoffen. Überschüssige Luftfeuchtigkeit wird sehr schnell aufgenommen und bei Trockenheit wieder abgegeben, was das Raumklima reguliert.",
+    "chemischeBeständigkeit": "Chemische Beständigkeit",
+    "frostgefahrBeimAbbindenWenn": "**Frostgefahr beim Abbinden:** Wenn während der Karbonatisierungsphase, in der Feuchtigkeit zwingend notwendig ist, Frost auftritt, friert das Porenwasser und sprengt den Mörtel. (Kalkmörtel ist vor allem während der Erhärtung frostempfindlich).",
+    "saurerRegenSoDie": "**Saurer Regen (SO₂):** Die Umweltverschmutzung schädigt alte Kalksteinfassaden: Schwefeldioxid (SO₂) wandelt zusammen mit Wasser das unlösliche Calciumcarbonat (Kalk) an der Fassadenoberfläche in wasserlösliches Calciumsulfat (Gips) um. Der Gips kristallisiert voluminös, die oberste Schicht sprengt ab (Gipskruste) und wäscht sich im Regen aus (Verwitterung).",
+    "sicherheitArbeitsschutz": "Sicherheit & Arbeitsschutz",
+    "ätzendeWirkungUngelöschterBranntkalk": "**Ätzende Wirkung:** Ungelöschter Branntkalk (CaO) und angemachter Löschkalk (Ca(OH)₂) sind aufgrund ihrer starken Alkalität **stark ätzend** (Gefahr schwerer Augenschäden / Erblindung). Reaktionen mit Haut und Schleimhäuten müssen durch strenge PSA (Schutzbrille, Handschuhe) vermieden werden."
+  },
+  "werte": {
+    "thermodynamischeHerleitungEnergieEnthalp": "Thermodynamische Herleitung: Energie- & Enthalpiebilanz des Kalkkreislaufs",
+    "thermochemischeStandardwerteLehrbuchwert": "Thermochemische Standardwerte (Lehrbuchwerte); Baukalk nach DIN EN 459-1",
+    "vollständigerChemischEnergetischerZyklus": "Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme."
+  },
+  "daten": {
+    "Kalk.schritte": [
+      {
+        "titel": "1. Brennstufe (Kalzinierung / Dissoziation)",
+        "erklaerung": "Zersetzung von Calciumcarbonat bei T > 898 °C (Dissoziationsdruck p(CO₂) = 1 bar). Pro Mol CaO werden stöchiometrisch 44 g CO₂ abgespalten.",
+        "formel": "CaCO_3(s) \\xrightarrow{\\approx 900-1100^{\\circ}\\text{C}} CaO(s) + CO_2(g) \\uparrow \\quad (\\Delta H = +178{,}2\\text{ kJ/mol})",
+        "einheit": "kJ/mol"
+      },
+      {
+        "titel": "2. Löschstufe (Hydratation zu Calciumhydroxid)",
+        "erklaerung": "Stark exotherme Reaktion von Branntkalk mit flüssigem Wasser. Die freiwerdende Hydratationswärme bringt überschüssiges Wasser zum Kochen (Kalkmilch/Kalkteig).",
+        "formel": "CaO(s) + H_2O(l) \\longrightarrow Ca(OH)_2(s) \\quad (\\Delta H = -65{,}2\\text{ kJ/mol})",
+        "einheit": "kJ/mol"
+      },
+      {
+        "titel": "3. Erhärtungsstufe (Karbonatisierung an Umgebungsluft)",
+        "erklaerung": "Bindung von atmosphärischem Kohlendioxid im Porenwasser unter Rekristallisation von Calcit. Schließt den chemischen Kreislauf vollständig.",
+        "formel": "Ca(OH)_2(s) + CO_2(g) \\xrightarrow{\\text{Porenfeuchte}} CaCO_3(s) + H_2O(l) \\quad (\\Delta H = -113\\text{ kJ/mol})",
+        "einheit": "kJ/mol"
+      }
+    ],
+    "Kalk.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016",
+      "Benedix, R.: Bauchemie – Einführung in die Chemie für Bauingenieure und Architekten. 7. Aufl., Wiesbaden: Springer Vieweg 2020"
+    ],
+    "Kalk.regelwerke": [
+      {
+        "title": "DIN EN 459-1:2015-07 (Baukalk - Teil 1: Begriffe, Anforderungen und Konformitätskriterien)"
+      },
+      {
+        "title": "DIN EN 459-2:2021-09 (Baukalk - Teil 2: Prüfverfahren)"
+      },
+      {
+        "title": "DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)"
+      },
+      {
+        "title": "DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)"
+      }
+    ],
+    "Kalk.formeln": [
+      {
+        "formel": "CaCO_3 \\xrightarrow{\\approx 900\\text{ bis }1.100^{\\circ}\\text{C}} CaO + CO_2 \\uparrow",
+        "erklaerung": "Thermische Zersetzung (Kalzinieren) von Calciumcarbonat (Kalkstein) zu Calciumoxid (Branntkalk) unter Abspaltung von Kohlendioxid. Die Reaktion ist stark endotherm.",
+        "quelle": "DIN EN 459-1:2015-07"
+      },
+      {
+        "formel": "CaO + H_2O \\rightarrow Ca(OH)_2 + \\Delta H \\quad (\\Delta H = -65{,}2\\text{ kJ/mol})",
+        "erklaerung": "Exothermes Trocken- oder Nasslöschen von Calciumoxid mit Wasser zu Calciumhydroxid (Löschkalk). Die freigesetzte Wärmeenergie führt zu starkem Erhitzen des Gemischs.",
+        "quelle": "Thermochemische Standardwerte"
+      },
+      {
+        "formel": "Ca(OH)_2 + CO_2 \\xrightarrow{\\text{Porenwasser}} CaCO_3 + H_2O",
+        "erklaerung": "Karbonatisierung (Abbindeprozess) des Löschkalks durch Aufnahme von CO2 aus der Luft. Das Porenwasser ist Reaktionsmedium; zu schnell austrocknender Kalkmörtel erhärtet nicht (Gefahr des Aufbrennens).",
+        "quelle": "Baustoffkenntnis (2016)"
+      }
+    ]
+  }
+}

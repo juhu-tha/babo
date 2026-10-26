@@ -2,6 +2,8 @@
 import React from 'react';
 import { Sliders, GitCommit } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/stahlbetoninstandhaltung/RissinjektionTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface RissinjektionTabProps {
   bauteilDicke: number;
@@ -23,17 +25,10 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
       <div className="bg-white border-y border-r border-l-4 border-shiraz border-home-grau/20 p-5 rounded-xl shadow-xs">
         <div className="flex items-center justify-between pb-2 border-b border-home-grau/20">
           <h3 className="font-bold text-shiraz flex items-center gap-2 text-base">
-            <GitCommit size={20} />
-            Rissinjektion im Stahlbetonbau (DIN EN 1504-5 / DIN V 18028 / ZTV-ING)
-          </h3>
-          <span className="text-xs font-mono font-bold text-slate-500 bg-off-white px-2.5 py-1 rounded-lg border border-home-grau/20">
-            Prinzip 1 (PI) &bull; Prinzip 4 (SS)
-          </span>
+            <GitCommit size={20} /><MdText text={inhalt.texte.rissinjektionImStahlbetonbauDin} /></h3>
+          <span className="text-xs font-mono font-bold text-slate-500 bg-off-white px-2.5 py-1 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.prinzip1PiPrinzip} /></span>
         </div>
-        <p className="text-text-main/80 text-xs mt-3 leading-relaxed">
-          Das Füllen von Rissen dient dem <strong>Schließen gegen das Eindringen korrosionsfördernder Stoffe</strong> (Feuchte, Chloride, CO₂), dem <strong>dauerhaft dehnfähigen Abdichten</strong> oder der <strong>kraftschlüssigen Wiederherstellung des statischen Bauteilverbundes</strong>. 
-          Die Wahl des Füllguts (Epoxidharz, Polyurethan, Feinzementsuspension oder Acrylatgel) richtet sich streng nach Rissursache, Rissweitenänderung und Feuchtezustand.
-        </p>
+        <p className="text-text-main/80 text-xs mt-3 leading-relaxed"><MdText text={inhalt.texte.dasFüllenVonRissen} /></p>
       </div>
 
       {/* Interactive Injection Configurator */}
@@ -43,19 +38,18 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
         <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-home-grau/25 shadow-xs space-y-4 text-xs font-sans">
           <div className="flex items-center justify-between pb-2 border-b border-home-grau/20">
             <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-              <Sliders size={14} className="text-shiraz" /> Rissdiagnostik &amp; Parameter
-            </span>
+              <Sliders size={14} className="text-shiraz" /><MdText text={inhalt.texte.rissdiagnostikParameter} /></span>
             <span className="text-[10px] text-slate-500 font-mono">Befundaufnahme</span>
           </div>
 
           {/* Injektionsziel */}
           <div>
-            <label className="block font-bold text-slate-800 mb-1.5">1. Primäres Injektionsziel:</label>
+            <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t1PrimäresInjektionsziel} /></label>
             <div className="grid grid-cols-3 gap-1.5">
               {[
-                { id: 'kraftschluessig', label: 'Kraftschlüssig (F)', desc: 'Zug/Druck' },
-                { id: 'dehnfaehig', label: 'Dehnfähig (D)', desc: 'Bewegt' },
-                { id: 'abdichtend', label: 'Quellfähig (S)', desc: 'Schleier' }
+                { id: 'kraftschluessig', label: inhalt.werte.kraftschlüssigF, desc: 'Zug/Druck' },
+                { id: 'dehnfaehig', label: inhalt.werte.dehnfähigD, desc: 'Bewegt' },
+                { id: 'abdichtend', label: inhalt.werte.quellfähigS, desc: 'Schleier' }
               ].map((target) => (
                 <button
                   key={target.id}
@@ -76,7 +70,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
 
           {/* Rissdynamik */}
           <div>
-            <label className="block font-bold text-slate-800 mb-1.5">2. Kinetik der Rissbewegung:</label>
+            <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t2KinetikDerRissbewegung} /></label>
             <div className="grid grid-cols-2 gap-2">
               <button aria-pressed={crackActivity === 'ruhend'}
                 type="button"
@@ -86,9 +80,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                     ? 'bg-slate-800 text-white border-slate-800 font-bold' 
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                Ruhender Riss (&Delta;w ≤ 0,05 mm)
-              </button>
+              ><MdText text={inhalt.texte.ruhenderRissW0} /></button>
               <button aria-pressed={crackActivity === 'dynamisch'}
                 type="button"
                 onClick={() => setCrackActivity('dynamisch')}
@@ -97,20 +89,18 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                     ? 'bg-slate-800 text-white border-slate-800 font-bold' 
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
-              >
-                Dynamisch / Bewegt (&Delta;w &gt; 0,05 mm)
-              </button>
+              ><MdText text={inhalt.texte.dynamischBewegtW0} /></button>
             </div>
           </div>
 
           {/* Feuchtezustand */}
           <div>
-            <label className="block font-bold text-slate-800 mb-1.5">3. Feuchtegrad im Rissquerschnitt:</label>
+            <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t3FeuchtegradImRissquerschnitt} /></label>
             <div className="grid grid-cols-3 gap-1.5">
               {[
                 { id: 'trocken', label: 'Trocken' },
                 { id: 'feucht', label: 'Mattfeucht' },
-                { id: 'drueckend', label: 'Drückend Wasser' }
+                { id: 'drueckend', label: inhalt.werte.drückendWasser }
               ].map((m) => (
                 <button
                   key={m.id}
@@ -131,7 +121,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           {/* Rissbreite w Slider */}
           <div className="space-y-1.5 pt-1">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">4. Rissbreite (w):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.t4RissbreiteW} /></label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
                 {formatDeZahl(crackWidth, 2)} mm
               </span>
@@ -146,16 +136,16 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               className="w-full accent-shiraz cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-              <span>0,10 mm (Haarriss)</span>
-              <span>0,50 mm (Trennrisse)</span>
-              <span>1,50 mm (Klaffend)</span>
+              <span><MdText text={inhalt.texte.t010MmHaarriss} /></span>
+              <span><MdText text={inhalt.texte.t050MmTrennrisse} /></span>
+              <span><MdText text={inhalt.texte.t150MmKlaffend} /></span>
             </div>
           </div>
 
           {/* Bauteildicke h Slider */}
           <div className="space-y-1.5 pt-1">
             <div className="flex justify-between items-center">
-              <label className="font-bold text-slate-800">5. Bauteildicke (h):</label>
+              <label className="font-bold text-slate-800"><MdText text={inhalt.texte.t5BauteildickeH} /></label>
               <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
                 {formatDeWert(bauteilDicke)} mm
               </span>
@@ -170,9 +160,9 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               className="w-full accent-shiraz cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-              <span>150 mm (Wand/Decke)</span>
-              <span>400 mm (Bodenplatte)</span>
-              <span>800 mm (Massivbau)</span>
+              <span><MdText text={inhalt.texte.t150MmWandDecke} /></span>
+              <span><MdText text={inhalt.texte.t400MmBodenplatte} /></span>
+              <span><MdText text={inhalt.texte.t800MmMassivbau} /></span>
             </div>
           </div>
         </div>
@@ -184,9 +174,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           <div className="p-5 rounded-2xl bg-white border border-home-grau/30 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
               <div>
-                <span className="text-[10px] font-mono uppercase font-bold text-shiraz block">
-                  Technologischer Injektionsplan
-                </span>
+                <span className="text-[10px] font-mono uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.technologischerInjektionsplan} /></span>
                 <h4 className="text-base font-bold text-slate-900 mt-0.5">
                   {rissStats.harzTyp}
                 </h4>
@@ -202,27 +190,25 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
               <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] text-slate-500 uppercase font-bold block">Packer-Abstand (&Delta;l)</span>
+                <span className="text-[10px] text-slate-500 uppercase font-bold block"><MdText text={inhalt.texte.packerAbstandL} /></span>
                 <div className="text-lg font-bold font-mono text-slate-900 mt-0.5">
                   ≈ {formatDeWert(rissStats.packerSpacingMm)} mm
                 </div>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Regel: &Delta;l = h / 2</span>
+                <span className="text-[10px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.regelLH2} /></span>
               </div>
 
               <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] text-slate-500 uppercase font-bold block">Zul. Verpressdruck (p_max)</span>
+                <span className="text-[10px] text-slate-500 uppercase font-bold block"><MdText text={inhalt.texte.zulVerpressdruckPMax} /></span>
                 <div className="text-lg font-bold font-mono text-blue-700 mt-0.5">
                   ≤ {formatDeWert(rissStats.maxPressureBar)} bar
                 </div>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Schutz vor Hydrofraktur</span>
+                <span className="text-[10px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.schutzVorHydrofraktur} /></span>
               </div>
 
               <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] text-slate-500 uppercase font-bold block">Bohrloch-Winkel</span>
-                <div className="text-lg font-bold font-mono text-emerald-700 mt-0.5">
-                  45&deg; zur Rissebene
-                </div>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Wechselseitig versetzt</span>
+                <div className="text-lg font-bold font-mono text-emerald-700 mt-0.5"><MdText text={inhalt.texte.t45ZurRissebene} /></div>
+                <span className="text-[10px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.wechselseitigVersetzt} /></span>
               </div>
             </div>
           </div>
@@ -230,8 +216,8 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           {/* SVG Visual of Crack Injection */}
           <div className="bg-white border border-home-grau/30 rounded-2xl p-4 flex flex-col items-center justify-center text-text-main relative overflow-hidden shadow-xs">
             <div className="w-full flex items-center justify-between pb-2 border-b border-home-grau/20 text-xs font-mono text-slate-700">
-              <span className="font-bold">Prinzipschnitt: Hochdruck-Rissinjektion mit Schraubpackern</span>
-              <span className="text-emerald-700 font-bold">&bull; ZTV-ING / DIN EN 1504-5</span>
+              <span className="font-bold"><MdText text={inhalt.texte.prinzipschnittHochdruckRissinjektionMit} /></span>
+              <span className="text-emerald-700 font-bold"><MdText text={inhalt.texte.ztvIngDinEn} /></span>
             </div>
 
             <svg width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
@@ -280,8 +266,8 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
             </svg>
 
             <div className="w-full flex items-center justify-between text-[10px] text-slate-500 mt-2 font-mono">
-              <span>• Harzfluss von unten nach oben</span>
-              <span>• Nachinjektion bis blasenfreier Austritt</span>
+              <span><MdText text={inhalt.texte.harzflussVonUntenNach} /></span>
+              <span><MdText text={inhalt.texte.nachinjektionBisBlasenfreierAustritt} /></span>
             </div>
           </div>
 

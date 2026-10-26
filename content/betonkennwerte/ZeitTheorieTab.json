@@ -1,0 +1,19 @@
+{
+  "texte": {
+    "festigkeitsentwicklungCcTAbschnitt": " Festigkeitsentwicklung β_cc(t) (Abschnitt 1)",
+    "dieDruckfestigkeitWächstMit": "Die Druckfestigkeit wächst mit fortschreitender Zementhydratation. Nach EC2 Abs. 3.1.2 berechnet sich der Mittelwert zum Zeitpunkt $t$ [Tage] nach:",
+    "s020Klasse": "• **s = 0,20:** Klasse R (CEM 42,5 R, CEM 52,5 N/R)",
+    "s025Klasse": "• **s = 0,25:** Klasse N (CEM 32,5 R, CEM 42,5 N)",
+    "s038Klasse": "• **s = 0,38:** Klasse S (CEM 32,5 N)",
+    "zeitlicheEntwicklungDerZugfestigkeit": "Zeitliche Entwicklung der Zugfestigkeit nach Gl. (3.4): $f_{ctm}(t) = (\\beta_{cc}(t))^{\\alpha} \\cdot f_{ctm}$ ($\\alpha = 1{,}0$ für $t < 28\\text{ d}$, $\\alpha = 2/3$ für $t \\ge 28\\text{ d}$).",
+    "spannungsDehnungsLinienAbschnitt": " Spannungs-Dehnungs-Linien (Abschnitt 4)",
+    "fürDieQuerschnittsbemessungIm": "Für die Querschnittsbemessung im Grenzzustand der Tragfähigkeit (GZT) stellt EC2 das **Parabel-Rechteck-Diagramm** bereit (Gl. 3.17 – 3.20):",
+    "fürNormalbetonGiltVarepsilon": "Für Normalbeton gilt: $\\varepsilon_{c2} = 2{,}0\\,\\text{‰}$, $\\varepsilon_{cu2} = 3{,}5\\,\\text{‰}$, $n = 2{,}0$ (reine quadratische Parabel).",
+    "nichtlineareBeziehungFürVerformungsberec": "Nichtlineare Beziehung für Verformungsberechnungen (Gl. 3.14): $\\frac{\\sigma_c}{f_{cm}} = \\frac{k \\cdot \\eta - \\eta^2}{1 + (k - 2) \\cdot \\eta}$",
+    "trocknungsschwindenVsAutogenesSchwinden": "Trocknungsschwinden vs. Autogenes Schwinden (Physikalischer Mechanismus)",
+    "t1TrocknungsschwindenCdT": "1. Trocknungsschwinden ε_cd(t) (Abschnitt 5)",
+    "entstehtDurchDenPhysikalischen": "Entsteht durch den physikalischen Wasserverlust des Betons an eine ungesättigte Umgebung (relative Luftfeuchte RH < 100 %). Durch das Verdunsten von Meniskuswasser in den Kapillarporen entstehen enorme Kapillarkräfte (Unterdruck), die die Porenwände zusammenziehen.",
+    "t2AutogenesSchwindenCa": "2. Autogenes Schwinden ε_ca(t) (Abschnitt 5)",
+    "trittVollkommenOhneWasserverlust": "Tritt vollkommen ohne Wasserverlust an die Außenwelt auf (sogar unter lückenloser Versiegelung oder unter Wasser). Ursache ist die **chemische Kontraktion (Le-Chatelier)**: Das Volumen der Hydratationsprodukte (C-S-H) ist um ca. 8–10 % kleiner als die Summe der Ausgangsvolumina von Zement und Wasser."
+  }
+}

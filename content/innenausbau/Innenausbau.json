@@ -1,0 +1,291 @@
+{
+  "texte": {
+    "clusterIiiEntwurfBemessung": "Cluster III: Entwurf & Bemessung • Fachbereich Ausbau",
+    "innenausbauAusbausysteme": " Innenausbau & Ausbausysteme",
+    "trockenbausystemeMineralischeEstricheVer": "Trockenbausysteme, mineralische Estriche, Verbundabdichtungen, Bauakustik und Belegreifeprüfung nach DIN 18560, DIN EN 520 & DIN 18534.",
+    "fachingenieurAusbauIbi": " Fachingenieur Ausbau (ibi)",
+    "estricheCtCaAs": " Estriche (CT/CA/AS) & Belegreife",
+    "trockenbauGipsplatten": " Trockenbau & Gipsplatten",
+    "verbundabdichtungDin18534": " Verbundabdichtung (DIN 18534)",
+    "modulÖffnen": "Modul öffnen",
+    "baustoffkundeDerEstricheNach": " Baustoffkunde der Estriche nach DIN EN 13813 & DIN 18560",
+    "estricheErfüllenImInnenausbau": "Estriche erfüllen im Innenausbau tragende, wärmeverteilende und lastverteilende Aufgaben. Bindemittelart und Trocknungsverhalten bestimmen maßgeblich die Belegreife.",
+    "zementestrichCt": "Zementestrich (CT)",
+    "bestehendAusZementCem": "Bestehend aus Zement (CEM I/II), Gesteinskörnung 0/8 mm und Wasser. Unempfindlich gegen Dauernässe, universell im Innen- und Außenbereich einsetzbar.",
+    "schwindmaßCa04": "**Schwindmaß:** ca. 0,4 – 0,6 mm/m (Schwindrissgefahr!)",
+    "belegreifeUnbeheizt20": "**Belegreife unbeheizt:** ≤ 2,0 CM-%",
+    "belegreifeBeheizt18": "**Belegreife beheizt:** ≤ 1,8 CM-%",
+    "neigtBeiSchnellerAustrocknung": "⚠️ Neigt bei schneller Austrocknung zum Aufschüsseln der Randbereiche.",
+    "calciumsulfatestrichCaCaf": "Calciumsulfatestrich (CA/CAF)",
+    "bestehendAusAnhydritOder": "Bestehend aus Anhydrit oder Alphahalbhydrat. Nahezu schwind- und spannungsfrei, hervorragend als Fließestrich (CAF) für Fußbodenheizungen geeignet.",
+    "schwindmaßMinimal01": "**Schwindmaß:** minimal (< 0,1 mm/m)",
+    "belegreifeUnbeheizt05": "**Belegreife unbeheizt:** ≤ 0,5 CM-%",
+    "belegreifeBeheizt03": "**Belegreife beheizt:** ≤ 0,3 CM-% (Richtwert nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“)",
+    "strengFeuchteempfindlichKeinEinsatz": "🚫 Streng feuchteempfindlich – kein Einsatz in Nassräumen (W2-I/W3-I) oder im Freien.",
+    "gussasphaltAs": "Gussasphalt (AS)",
+    "gemischAusBitumenFüller": "Gemisch aus Bitumen, Füller, Sand und Splitt, heiß eingebaut bei ca. 220–250 °C. Bringt kein Wasser in den Bau ein und ist nach dem Erkalten sofort belegreif.",
+    "wassergehalt00Keine": "**Wassergehalt:** 0,0 % (keine Trocknungszeit)",
+    "belegreifeSobaldErkaltetNach": "**Belegreife:** Sobald erkaltet (nach ca. 2–4 Stunden)",
+    "brandschutzSchwerEntflammbarRaucharm": "**Brandschutz:** Schwer entflammbar, raucharm",
+    "idealerSchnellbauestrichErfordertTempera": "ℹ️ Idealer Schnellbauestrich; erfordert temperaturbeständige Dämmschichten.",
+    "dasCalciumcarbidVerfahrenCm": " Das Calciumcarbid-Verfahren (CM-Methode) nach DIN 18560",
+    "dieCmMessungIst": "Die CM-Messung ist in Deutschland das übliche Verfahren zur Prüfung der Belegreife (DIN 18560-1). Estrichgut aus dem gesamten Querschnitt wird mit Calciumcarbid in einer Druckflasche zerkleinert. Das freie Wasser reagiert unter Acetylen-Gasentwicklung:",
+    "derEntstehendeGasdruckIm": "Der entstehende Gasdruck im Druckbehälter verhält sich proportional zum Wassergehalt der Probe. Elektronische Feuchtemessgeräte eignen sich nur zur Vorprüfung und ersetzen die CM-Messung nicht.",
+    "plattenwerkstoffeImTrockenbauNach": " Plattenwerkstoffe im Trockenbau nach DIN EN 520 & DIN 18180",
+    "trockenbausystemeBasierenAufWerkseitig": "Trockenbausysteme basieren auf werkseitig vorgefertigten Plattenwerkstoffen, die auf schlanken CW/UW-Metallständerwerken oder Holzrippen montiert werden.",
+    "klassischeBauplatteMitKartonummantelung": "Klassische Bauplatte mit Kartonummantelung. Für Standard-Trennwände und Deckenbekleidungen ohne besondere Brand- oder Feuchteschutzanforderungen.",
+    "kartonElfenbeinGrau": "Karton: Elfenbein/Grau",
+    "typDfGkf": "Typ DF (GKF)",
+    "plattenkernMitGlasfasernArmiert": "Plattenkern mit Glasfasern armiert, die das Gefüge bei Brandeinwirkung auch nach Verdampfen des Kristallwassers mechanisch zusammenhalten.",
+    "kartonRoterStempel": "Karton: Roter Stempel",
+    "typH2Gkbi": "Typ H2 (GKBI)",
+    "kernUndKartonSilikonisiert": "Kern und Karton silikonisiert zur Verringerung der kapillaren Wasseraufnahme (≤ 10 %). Üblich in häuslichen Bädern; eine Abdichtung nach DIN 18534 bleibt bei Spritzwasser erforderlich.",
+    "kartonGrün": "Karton: Grün",
+    "homogeneMischungAusGips": "Homogene Mischung aus Gips und recycelten Zellulosefasern ohne Kartonmantel. Stoßfest, je nach Produkt nichtbrennbar und als aussteifende Beplankung nach Zulassung einsetzbar.",
+    "strukturFaserverbund": "Struktur: Faserverbund",
+    "verspachtelungsstufenQualitätsstufenQ1Bi": " Verspachtelungsstufen (Qualitätsstufen Q1 bis Q4 nach IGG-Merkblatt 2)",
+    "stufeQ1Grundverspachtelung": "Stufe Q1: Grundverspachtelung",
+    "füllenDerFugenUnd": "Füllen der Fugen und Überziehen der Schraubenköpfe mit Fugenband (Bewehrungsstreifen). Nur als Untergrund für Fliesenbeläge geeignet.",
+    "stufeQ2Standardverspachtelung": "Stufe Q2: Standardverspachtelung",
+    "nachspachtelnBisZumStufenlosen": "Nachspachteln bis zum stufenlosen Übergang. Geeignet für Raufasertapeten, mittel und grob strukturierte Wandbekleidungen sowie matte, füllende Anstriche.",
+    "stufeQ3Sonderverspachtelung": "Stufe Q3: Sonderverspachtelung",
+    "breitesAusspachtelnDerFugen": "Breites Ausspachteln der Fugen und scharfes Abziehen der gesamten Plattenoberfläche mit Finish-Paste. Für feine Tapeten und matte Anstriche.",
+    "stufeQ4Vollflächenspachtelung": "Stufe Q4: Vollflächenspachtelung",
+    "vollflächigerSpachtelauftrag1Mm": "Vollflächiger Spachtelauftrag (> 1 mm) über die gesamte Wand. Erforderlich bei Streiflicht, glänzenden Lacken, Metalltapeten und Stucco-Techniken.",
+    "innenraumabdichtungImVerbundAiv": " Innenraumabdichtung im Verbund (AIV) nach DIN 18534",
+    "fliesenUndPlattenbelägeSind": "Fliesen- und Plattenbeläge sind durch ihre Zementfugen nicht wasserdicht. Darunterliegende feuchteempfindliche Ausbaustoffe (Gipsplatten, Calciumsulfatestriche) müssen durch normgerechte Verbundabdichtungen geschützt werden.",
+    "flächenMitSeltenemSpritzwasserkontakt": "Flächen mit seltenem Spritzwasserkontakt (z. B. Wandflächen über Waschbecken in Wohnungen und Gäste-WCs).",
+    "keineAbdichtungAufFeuchteunempfindlichen": "Keine Abdichtung auf feuchteunempfindlichen Untergründen zwingend gefordert.",
+    "wandflächenÜberBadewannenUnd": "Wandflächen über Badewannen und in Duschen im häuslichen Bereich; Bodenflächen im Bad ohne Ablauf.",
+    "verbundabdichtungFlüssigPolymerdispersio": "Verbundabdichtung flüssig (Polymerdispersion) zulässig.",
+    "wandUndBodenflächenIn": "Wand- und Bodenflächen in bodengleichen Duschen, gewerblichen Küchen und Sanitärräumen mit Bodenablauf.",
+    "bahnenförmigeAbdichtungAivB": "Bahnenförmige Abdichtung (AIV-B) oder MDS vorgeschrieben; Dichtmanschetten Pflicht!",
+    "flächenMitSehrHäufiger": "Flächen mit sehr häufiger oder langanhaltender Einwirkung von Spritz- und Brauchwasser (z. B. Hallenbäder, gewerbliche Großküchen).",
+    "reaktionsharzabdichtungenEpoxidPolyureth": "Reaktionsharzabdichtungen (Epoxid / Polyurethan) oder mineralische Dichtschlämmen.",
+    "häufigeSchadensursachenImAusbau": " Häufige Schadensursachen im Ausbau:",
+    "fehlendeOderMangelhaftEingearbeitete": "Fehlende oder mangelhaft eingearbeitete Dichtmanschetten an Sanitär-Rohrdurchführungen und Bodenabläufen.",
+    "verwendungUngeeigneterSilikoneAn": "Verwendung ungeeigneter Silikone an Dehnungsfugen (Silikonfugen sind reine Wartungsfugen, keine Abdichtung!).",
+    "verlegungVonFliesenbelägenAuf": "Verlegung von Fliesenbelägen auf zu feuchten Zement- oder Calciumsulfatestrichen vor Erreichen der Belegreife.",
+    "interaktiverBelegreifeCmRestfeuchterechn": " Interaktiver Belegreife- & CM-Restfeuchterechner",
+    "prüfenSieDieBelegreife": "Prüfen Sie die Belegreife anhand üblicher Richtwerte nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“ (Zementestrich ≤ 2,0 bzw. beheizt ≤ 1,8 CM-%, Calciumsulfatestrich ≤ 0,5 bzw. beheizt ≤ 0,3 CM-%).",
+    "t1EstrichBelagsparameter": "1. Estrich- & Belagsparameter",
+    "zementestrichCt2": "Zementestrich (CT)",
+    "calciumsulfatCaCaf": "Calciumsulfat (CA/CAF)",
+    "fußbodenheizungHeizestrich": "Fußbodenheizung (Heizestrich):",
+    "jaMitHeizung": "Ja (mit Heizung)",
+    "neinUnbeheizt": "Nein (unbeheizt)",
+    "geplanterOberbodenbelag": "Geplanter Oberbodenbelag:",
+    "gemessenerCmWert": "Gemessener CM-Wert:",
+    "t2NormativeBeurteilungDer": "2. Normative Beurteilung der Belegreife",
+    "zulässigerGrenzwert": "Zulässiger Grenzwert:",
+    "differenzÜberschreitung": "Differenz / Überschreitung:",
+    "rechtlicherHinweisNachVob": "**Rechtlicher Hinweis:** Nach VOB/C DIN 18365 gehört die Prüfung des Untergrunds einschließlich Feuchtemessung zu den Nebenleistungen des Bodenlegers; das Ergebnis sollte protokolliert werden (keine Rechtsberatung)."
+  },
+  "werte": {
+    "trockenbausystemeStänderwerke": "Trockenbausysteme & Ständerwerke",
+    "metallunterkonstruktionenBeplankungenSys": "Metallunterkonstruktionen, Beplankungen & Systemwände",
+    "detaillierteÜbersichtÜberCw": "Detaillierte Übersicht über CW/UW-Metallprofile, Holzständerwerke sowie Gipsplatten nach DIN EN 520 (GKB, GKBI, GKF). Berechnungen zu Schalldämmmaßen und Brandschutzwänden (F30–F90).",
+    "din18181DinEn": "DIN 18181 / DIN EN 520",
+    "zweischaligeTrockenbauwändeErreichenTrot": "Zweischalige Trockenbauwände erreichen trotz geringer Masse durch biegeweiche Schalen hohe Schalldämmmaße (je nach Aufbau R_w über 55 dB).",
+    "putzEstrichsysteme": "Putz- & Estrichsysteme",
+    "innenputzeHeizestricheCalciumsulfat": "Innenputze, Heizestriche & Calciumsulfat",
+    "gegenüberstellungAllerMineralischenAusba": "Gegenüberstellung aller mineralischen Ausbausysteme: Zementestriche (CT), Calciumsulfat-Fließestriche (CAF), Gussasphalt (AS) sowie Innenputze von Gipsmörtel (GP) bis Kalkputz (CS I).",
+    "din18560DinEn": "DIN 18560 / DIN EN 13813",
+    "calciumsulfatFließestricheCafSchwinden": "Calciumsulfat-Fließestriche (CAF) schwinden gering; ohne Fußbodenheizung sind große fugenlose Felder möglich (Feldgröße nach Herstellerangabe).",
+    "ausbauAbdichtungBeläge": "Ausbau, Abdichtung & Beläge",
+    "bodenaufbautenFliesenParkettDin": "Bodenaufbauten, Fliesen, Parkett & DIN 18534",
+    "umfassendesFachmodulZuAusbaumaterialien": "Umfassendes Fachmodul zu Ausbaumaterialien, Bodenbelägen (Echtholzparkett, Laminat, Linoleum) und normgerechten Innenraumabdichtungen im Verbund (AIV) unter Fliesen und Platten.",
+    "din18534Din18157": "DIN 18534 / DIN 18157",
+    "bodengleicheDuschenFallenNach": "Bodengleiche Duschen fallen nach DIN 18534-1 in W2-I; Rohrdurchführungen und Abläufe sind in allen Klassen mit Dichtmanschetten bzw. Flanschen einzubinden.",
+    "bindemittelGipsCalciumsulfat": "Bindemittel Gips & Calciumsulfat",
+    "materialwissenschaftHydratationBrandschu": "Materialwissenschaft, Hydratation & Brandschutzwirkung",
+    "tiefgehendesMaterialwissenschaftlichesPr": "Tiefgehendes materialwissenschaftliches Profil von Baugips, Anhydrit und Stuckgips. Chemischer Kreislauf, Kristallwasser im Brandschutz sowie Treibreaktionen (Ettringit) bei feuchtem Kontakt von Gips und Zement.",
+    "dinEn132791": "DIN EN 13279-1",
+    "imBrandfallVerdampfenAus": "Im Brandfall verdampfen aus einer 15 mm GKF-Platte rund 2–3 Liter chemisch gebundenes Wasser je Quadratmeter und verzögern die Erwärmung (Größenordnung).",
+    "dämmstoffeImInnenausbau": "Dämmstoffe im Innenausbau",
+    "trittschallHohlraumdämpfungInnendämmung": "Trittschall, Hohlraumdämpfung & Innendämmung",
+    "auswahlUndBemessungVon": "Auswahl und Bemessung von Dämmstoffen im Innenausbau: Mineralwolle-Matten zur Vermeidung von Hohlraumresonanzen, elastifizierte EPS-T Trittschalldämmung und Kalziumsilikat-Innendämmung.",
+    "dinEn13162Din": "DIN EN 13162 / DIN 4108",
+    "einSchwimmenderEstrichAuf": "Ein schwimmender Estrich auf Trittschalldämmung mit niedriger dynamischer Steifigkeit s' kann den Trittschall einer Massivdecke um rund 25–30 dB mindern (ΔL_w).",
+    "laborprüfstandHaftzugprüfung": "Laborprüfstand: Haftzugprüfung",
+    "virtuelleAbreißprüfungAnEstrich": "Virtuelle Abreißprüfung an Estrich & Fliesenkleber",
+    "interaktiverLaborversuchNachDin": "Interaktiver Laborversuch nach DIN EN 1542 / DIN EN 12004: Prüfen Sie die Haftzugfestigkeit von Verbundestrich auf Beton mit Haftschlämme oder Flexkleber auf Calciumsulfatestrich.",
+    "dinEn12004Din": "DIN EN 12004 / DIN EN 1542",
+    "calciumsulfatFließestricheWerdenVor": "Calciumsulfat-Fließestriche werden vor der Belagsverlegung in der Regel angeschliffen, abgesaugt und grundiert (Herstellerangaben beachten).",
+    "bauakustikSchallschutz": "Bauakustik & Schallschutz",
+    "biegeweicheWandschalenTrittschallminderu": "Biegeweiche Wandschalen & Trittschallminderung",
+    "berechnungUndOptimierungDer": "Berechnung und Optimierung der Luft- und Trittschalldämmung im Trockenbau: Masse-Feder-Masse-Prinzip, Koinzidenzfrequenz, elastische Randanschlüsse und Vermeidung von Schallbrücken.",
+    "din4109Vdi4100": "DIN 4109 / VDI 4100",
+    "schonEineEinzelneSchallbrücke": "Schon eine einzelne Schallbrücke (z. B. Mörtelreste am Randdämmstreifen) kann den Trittschallschutz um 10 dB und mehr verschlechtern.",
+    "feuchteschutzDampfdiffusion": "Feuchteschutz & Dampfdiffusion",
+    "tauwasserausfallDampfbremsenBaufeuchte": "Tauwasserausfall, Dampfbremsen & Baufeuchte",
+    "nachweisDerTauwasserfreiheitUnd": "Nachweis der Tauwasserfreiheit und Dampfdiffusion bei Innenausbau- und Dämmkonstruktionen: Glaser-Diagramm, sd-Werte von Dampfbremsen und Austrocknungsverhalten von Nassbaustoffen.",
+    "gipsplattenPuffernFeuchtespitzenDauerhaf": "Gipsplatten puffern Feuchtespitzen; dauerhaft hohe Luftfeuchte ist zu vermeiden (Grenzen nach DIN 18181 und Herstellerangaben).",
+    "vorbeugenderBrandschutz": "Vorbeugender Brandschutz",
+    "feuerwiderstandsklassenBekleidungenAbsch": "Feuerwiderstandsklassen, Bekleidungen & Abschottungen",
+    "nachweisVonF30Bis": "Nachweis von F30- bis F90-Konstruktionen im Trockenbau: Plattendicken, zweilagige Beplankungen, Brandschutzkappen für Einbauleuchten und Kabelabschottungen in Brandwänden.",
+    "din41024Din": "DIN 4102-4 / DIN EN 13501",
+    "inNotwendigenTreppenräumenUnd": "In notwendigen Treppenräumen und Fluren müssen Bekleidungen, Putze und Dämmstoffe in der Regel nichtbrennbar sein (MBO §§ 35, 36; Landesrecht beachten).",
+    "prüfungsaufgabenAusbauBauprodukte": "Prüfungsaufgaben: Ausbau & Bauprodukte",
+    "klausurrelevanteFragenBerechnungen": "Klausurrelevante Fragen & Berechnungen",
+    "interaktiveÜbungsUndKlausuraufgaben": "Interaktive Übungs- und Klausuraufgaben zu Trockenbausystemen, Estrichbemessung, Fugenausbildung, Feuchtemessung mit der CM-Methode und Haftzugnachweisen.",
+    "prüfungsordnungTha": "Prüfungsordnung THA",
+    "typischePrüfungsfrageWarumSind": "Typische Prüfungsfrage: Warum sind zementgebundene Stoffe und Calciumsulfat bei Feuchteeinwirkung zu trennen? (Ettringitbildung)",
+    "wtaMerkblätterInnensanierung": "WTA-Merkblätter: Innensanierung",
+    "nachträglicheAbdichtungSchimmelsanierung": "Nachträgliche Abdichtung & Schimmelsanierung",
+    "leitfädenDerWissenschaftlichTechnischen": "Leitfäden der Wissenschaftlich-Technischen Arbeitsgemeinschaft für Bauwerkserhaltung: WTA-Merkblatt 6-4 (Innendämmung), Sanierputzsysteme und mikrobieller Befall im Innenausbau.",
+    "wtaMerkblatt64": "WTA Merkblatt 6-4 / 2-9",
+    "sanierputzeLagernSalzeFür": "Sanierputze lagern Salze für begrenzte Zeit im Porensystem ein und verringern Ausblühungen an der Oberfläche (WTA-Merkblatt 2-9).",
+    "rechnerUWertVon": "Rechner: U-Wert von Schichtaufbauten",
+    "berechnungVonTrockenbauDachaufbauten": "Berechnung von Trockenbau- & Dachaufbauten",
+    "interaktiverRechner": "Interaktiver Rechner",
+    "berechnenSieDenWärmedurchgangskoeffizien": "Berechnen Sie den Wärmedurchgangskoeffizienten U für mehrschichtige Wand-, Decken- und Fußbodenaufbauten nach DIN EN ISO 6946 inklusive Übergangswiderständen.",
+    "dinEnIso6946": "DIN EN ISO 6946",
+    "derWärmeübergangswiderstandRsiBeträgt": "Der Wärmeübergangswiderstand Rsi beträgt für Decken bei Wärmestrom nach oben 0,10 m²K/W, nach unten (z.B. Kellerdecke) 0,17 m²K/W.",
+    "alleAusbauTools12": "Alle Ausbau-Tools (12)",
+    "estrichPutzBelag": "Estrich, Putz & Belag",
+    "physikLaborversuche": "Physik & Laborversuche",
+    "normenÜbungen": "Normen & Übungen",
+    "themaNormOderBaustoff": "Thema, Norm oder Baustoff...",
+    "geplanterOberbodenbelag": "Geplanter Oberbodenbelag",
+    "estrichIstBelegreif": "ESTRICH IST BELEGREIF",
+    "achtungNochNichtBelegreif": "ACHTUNG: NOCH NICHT BELEGREIF!",
+    "anwendungsbeispielResonanzfrequenzEinerM": "Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand",
+    "masseFederMasseModell": "Masse-Feder-Masse-Modell (vgl. DIN EN 12354-1); Plattenmassen als Lehrannahme",
+    "einfacheBeplankungM8": "Einfache Beplankung (m' ≈ 8,5 kg/m²) ergäbe rund 94 Hz; die Doppelbeplankung senkt f₀ also deutlich."
+  },
+  "daten": {
+    "Innenausbau.tools.bp_trockenbau.features": [
+      "Einfach- und Doppelständerwerke (CW 50/75/100)",
+      "Schraubabstände & Beplankungsregeln nach DIN 18181",
+      "Akustik- und Brandschutzwand-Konstruktionen",
+      "Fugenverspachtelung (Qualitätsstufen Q1 bis Q4)"
+    ],
+    "Innenausbau.tools.bp_putz_estrich.features": [
+      "Heizestrich auf Dämmschicht (Konstruktionsart A)",
+      "Belegreife-Grenzwerte & CM-Feuchtemessung",
+      "Verformungs- & Schwindrissrisiken (Aufschüsseln)",
+      "Gips- vs. Kalkputze zur Raumklimaregulierung"
+    ],
+    "Innenausbau.tools.ausbau.features": [
+      "Wassereinwirkungsklassen W0-I bis W3-I nach DIN 18534",
+      "Fliesenklassifizierung nach Wasseraufnahme (E ≤ 0,5 %)",
+      "Schwimmende vs. vollflächige Parkettverklebung",
+      "Dispersions-, Silikat- und Reaktionsharzanstriche"
+    ],
+    "Innenausbau.tools.gips.features": [
+      "Hydratation: CaSO₄ · ½ H₂O + 1½ H₂O → CaSO₄ · 2 H₂O",
+      "Physikalischer W/G-Wert und Porenbildung",
+      "Kristallwasser als Brandschutzschild (~20 M.-% H₂O)",
+      "Verbot des Zement-Gips-Direktkontakts im Feuchten"
+    ],
+    "Innenausbau.tools.bp_daemmung.features": [
+      "Strömungswiderstand r ≥ 5 kPa·s/m² für Wanddämmung",
+      "Dynamische Steifigkeit s' von Trittschalldämmplatten",
+      "Schimmelhemmende Calciumsilikatplatten (pH ~ 10)",
+      "Nichtbrennbarkeit A1 für Installationsschächte"
+    ],
+    "Innenausbau.tools.labor.features": [
+      "Prüfstempeldurchmesser 50 mm & Ringnutbohrung",
+      "Simulierte Bruchbilder (Adhäsions- vs. Kohäsionsbruch)",
+      "Anforderung Verbundestrich: fh ≥ 1,0 N/mm²",
+      "Einfluss von Estrichanschleifen & Voranstrich"
+    ],
+    "Innenausbau.tools.schallschutz.features": [
+      "Zweischalige Trennwände: Resonanzfrequenz f₀ < 100 Hz, möglichst ≤ 80 Hz",
+      "Trittschallverbesserung ΔLw durch schwimmende Estriche",
+      "Entkopplung von Boden- & Deckenanschlussprofilen",
+      "Flankenübertragung über Decken und Vorwandelemente"
+    ],
+    "Innenausbau.tools.feuchteschutz.features": [
+      "Diffusionswiderstandszahl µ und Sperrwert sd",
+      "Feuchtepufferung durch Lehm- und Gipsputz",
+      "Austrocknung von Zement- vs. Calciumsulfatestrich",
+      "Vermeidung von Feuchteschäden hinter Wandbekleidungen"
+    ],
+    "Innenausbau.tools.brandschutz.features": [
+      "Klassifizierung nach DIN EN 13501 (EI 30 bis EI 90)",
+      "Brandschutz-Gipsplatten GKF (DIN EN 520 Typ DF)",
+      "Schmelzpunkt von Mineralwolle > 1000 °C (Steinwolle)",
+      "Kompensationsmaßnahmen bei Holzbau-Innenausbau"
+    ],
+    "Innenausbau.tools.aufgaben_bauprodukte.features": [
+      "Multiple-Choice & Berechnungsschritte mit KaTeX",
+      "Detaillierte Musterlösungen & Normenverweise",
+      "Typische Fallstricke in Prüfungen der Baustoffkunde",
+      "Bewertung von Schadensfällen (z.B. Estrichschüsseln)"
+    ],
+    "Innenausbau.tools.wta.features": [
+      "Sanierputzsysteme WTA (Porenvolumen > 45 Vol.-%)",
+      "Kondensationsrisiko bei fehlerhafter Innendämmung",
+      "Rücktrocknungspotenzial von Außenwänden",
+      "Messtechnische Erfassung von Schimmelpilzbefall"
+    ],
+    "Innenausbau.tools.rechnung_u_wert.features": [
+      "Berechnung von Wärmedurchlasswiderständen R = d / λ",
+      "Einfluss von Luftschichten & Dämmstoffstärken",
+      "Nachweis der Grenzwerte nach Gebäudeenergiegesetz (GEG)",
+      "Temperaturverlauf im Querschnitt grafisch visualisiert"
+    ],
+    "Innenausbau.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "\\text{je Seite } 2 \\times 12{,}5\\,\\text{mm GKB: } m'_1 = m'_2 \\approx 17\\,\\text{kg/m}^2;\\; d = 75\\,\\text{mm, Hohlraum gedämmt}",
+        "erklaerung": "Flächenmasse je Platte rund 8,5 kg/m² (Lehrannahme)."
+      },
+      {
+        "titel": "2. Steifigkeit des Hohlraums",
+        "formel": "s' \\approx \\frac{0{,}111}{d} = \\frac{0{,}111}{0{,}075} = 1{,}48\\,\\text{MN/m}^3",
+        "erklaerung": "Näherung für einen mit Faserdämmstoff gefüllten Hohlraum (d in m)."
+      },
+      {
+        "titel": "3. Resonanzfrequenz",
+        "formel": "f_0 = \\frac{1}{2\\pi}\\sqrt{1{,}48 \\cdot 10^6 \\cdot \\frac{2}{17}} \\approx 66\\,\\text{Hz}",
+        "erklaerung": "Liegt unter 80 Hz – die Resonanz stört den bauakustisch relevanten Bereich ab 100 Hz kaum."
+      }
+    ],
+    "Innenausbau.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011",
+      "Bundesverband der Gipsindustrie e. V. (Industriegruppe Baugipsplatten): Merkblätter zum Trockenbau",
+      "Bundesverband Estrich und Belag e. V. (BEB): Hinweisblätter und Arbeitsblätter"
+    ],
+    "Innenausbau.regelwerke": [
+      {
+        "title": "DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)"
+      },
+      {
+        "title": "DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)"
+      },
+      {
+        "title": "DIN 18560-1:2021-02, -2:2022-08, -3:2006-03, -4:2012-06 und -7:2004-04 (Estriche im Bauwesen)"
+      },
+      {
+        "title": "DIN EN 1264-4 (Flächenheizung – Installation; Belegreife beheizter Estriche)"
+      },
+      {
+        "title": "DIN 18534-1 bis -6:2025-10 (Abdichtung von Innenräumen)"
+      },
+      {
+        "title": "DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)"
+      }
+    ],
+    "Innenausbau.formeln": [
+      {
+        "formel": "CaC_2 + 2\\,H_2O \\rightarrow Ca(OH)_2 + C_2H_2 \\uparrow",
+        "erklaerung": "Reaktionsgleichung der Calciumcarbid-Methode (CM-Messung) zur Feuchtebestimmung an Estrichproben vor Ort.",
+        "quelle": "DIN 18560-1"
+      },
+      {
+        "formel": "R'_w = R_w - 10 \\cdot \\lg\\left(1 + \\sum 10^{\\frac{R_w - R_{ij,w}}{10}}\\right) \\quad [\\text{dB}]",
+        "erklaerung": "Bau-Schalldämmmaß unter Berücksichtigung der flankierenden Bauteile (Flankenübertragung über Decken und Vorwandelemente) nach DIN 4109-2.",
+        "quelle": "DIN 4109-2:2018-01"
+      },
+      {
+        "formel": "f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s' \\cdot \\left(\\frac{1}{m'_1} + \\frac{1}{m'_2}\\right)} \\quad [\\text{Hz}]",
+        "erklaerung": "Resonanzfrequenz f₀ einer zweischaligen Trockenbauwand mit Schalenmassen m'₁, m'₂ und dynamischer Steifigkeit s' des Luft-/Dämmstoffpolsters. Für guten Schallschutz muss f₀ < 100 Hz, möglichst ≤ 80 Hz liegen.",
+        "quelle": "DIN EN 12354-1"
+      }
+    ]
+  }
+}

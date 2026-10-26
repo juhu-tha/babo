@@ -1,0 +1,120 @@
+{
+  "texte": {
+    "nachbehandlungVerdunstung": " Nachbehandlung & Verdunstung",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 13670 / DIN 1045-3:2023-08",
+    "dieNachbehandlungSchütztDen": "Die Nachbehandlung schützt den jungen Beton vor zu schnellem Austrocknen. Wenn Wasser schneller von der Oberfläche verdunstet, als es aus dem Inneren nachgeliefert wird (Bluten), entstehen kapillare Zugspannungen und es kommt zu **Frühschwindrissen** (plastisches Schwinden). Eine Verdunstungsrate > 1,0 kg/m²h gilt als kritisch.",
+    "lernpfad1VerdunstungAbschätzen": "**Lernpfad:** 1. Verdunstung abschätzen → 2. Mindestdauer festlegen → 3. Maßnahmen wählen (Folie, Nachbehandlungsmittel, Wasserzufuhr, Schalung belassen). Grundlagen der Erhärtung: Reiter Hydratation & Folgen.",
+    "mindestdauerDerNachbehandlung": "Mindestdauer der Nachbehandlung",
+    "nachDinEn13670": "Nach DIN EN 13670 / DIN 1045-3 in Abhängigkeit der Festigkeitsentwicklung (r = f<sub>cm,2</sub> / f<sub>cm,28</sub>).",
+    "festigkeitsentwicklungR": "Festigkeitsentwicklung (r)",
+    "ergebnisNachbehandlungsdauer": "Ergebnis (Nachbehandlungsdauer)",
+    "erforderlicheMindestdauer": "Erforderliche Mindestdauer:",
+    "beiOberflächentemperaturenUnter5": "Bei Oberflächentemperaturen unter 5°C kommt die Festigkeitsentwicklung nahezu zum Erliegen. Beton darf nicht gefrieren! Es sind **Winterbaumaßnahmen** (Wärmedämmung, Beheizung) erforderlich.",
+    "x0UndXc10": "X0 und XC1: 0,5 Tage (12 Stunden), sofern die Verarbeitbarkeitszeit unter 5 Stunden liegt und die Oberflächentemperatur mindestens 5 °C beträgt.",
+    "normtabelleAnzeigenDin1045": "Normtabelle anzeigen (DIN 1045-3, Mindestdauer in Tagen; X0/XC1: 0,5 Tage; XM: doppelte Werte)",
+    "werteNachDin1045": "Werte nach DIN 1045-3:2023-08, Abschn. 9.6 (Nachbehandlungsklasse 3).",
+    "schematischeDarstellungVerdunstung": "Schematische Darstellung: Verdunstung"
+  },
+  "werte": {
+    "lufttemperaturTA": "Lufttemperatur (T_a)",
+    "temperaturDerUmgebungsluft": "Temperatur der Umgebungsluft.",
+    "betontemperaturTC": "Betontemperatur (T_c)",
+    "relativeLuftfeuchteR": "Relative Luftfeuchte (r)",
+    "relativeLuftfeuchtigkeitDerUmgebung": "Relative Luftfeuchtigkeit der Umgebung. Trockene Luft (niedriger Wert) erhöht die Verdunstung.",
+    "windgeschwindigkeitV": "Windgeschwindigkeit (V)",
+    "achtungSehrHohesRisiko": "Achtung: Sehr hohes Risiko für Frühschwindrisse! Sofortige Nachbehandlung (z.B. Folie, Nachbehandlungsmittel) erforderlich.",
+    "geringesBisMittleresRisiko": "Geringes bis mittleres Risiko. Normgerechte Nachbehandlung ist dennoch erforderlich.",
+    "festigkeitsentwicklungR": "Festigkeitsentwicklung (r)",
+    "t15T25C": "15 ≤ T < 25 °C",
+    "t10T15C": "10 ≤ T < 15 °C",
+    "t5T10C": "5 ≤ T < 10 °C",
+    "anwendungsbeispielVerdunstungsrateAnEine": "Anwendungsbeispiel: Verdunstungsrate an einem Sommertag",
+    "aci305rVerdunstungsformelMetrisch": "ACI 305R (Verdunstungsformel, metrisch)",
+    "e123Kg": "E ≈ 1,23 kg/(m²·h) – kritisch, Schutzmaßnahmen sofort nach dem Abziehen.",
+    "anwendungsbeispielMindestdauerDerNachbeh": "Anwendungsbeispiel: Mindestdauer der Nachbehandlung",
+    "din104532023": "DIN 1045-3:2023-08, Abschn. 9.6 (Mindestdauer der Nachbehandlung, Nachbehandlungsklasse 3)",
+    "t7TageNachbehandlung": "7 Tage Nachbehandlung.",
+    "betonWikiNachbehandlung": "Beton.wiki: Nachbehandlung",
+    "zementMerkblattB8": "Zement-Merkblatt B 8: Nachbehandlung und Schutz des jungen Betons (BauNetz Wissen)"
+  },
+  "daten": {
+    "Nachbehandlung.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "T_a = T_c = 25\\,^{\\circ}\\text{C},\\; r = 0{,}30,\\; V = 25\\,\\text{km/h}",
+        "erklaerung": "Trockene, windige Witterung."
+      },
+      {
+        "titel": "2. Klammerausdruck",
+        "formel": "43^{2{,}5} \\cdot (1 - 0{,}30) = 12\\,124 \\cdot 0{,}70 = 8\\,487",
+        "erklaerung": "Bei gleicher Beton- und Lufttemperatur vereinfacht sich der Ausdruck."
+      },
+      {
+        "titel": "3. Verdunstungsrate",
+        "formel": "E = 5 \\cdot 8\\,487 \\cdot 29 \\cdot 10^{-6} = 1{,}23\\,\\text{kg/(m}^2\\text{h)}",
+        "erklaerung": "Wind erhöht den Wert linear über (V + 4)."
+      },
+      {
+        "titel": "4. Bewertung",
+        "formel": "1{,}23 > 1{,}0\\,\\text{kg/(m}^2\\text{h)}",
+        "erklaerung": "Gefahr von Frühschwindrissen: sofort abdecken oder Nachbehandlungsmittel aufsprühen."
+      }
+    ],
+    "Nachbehandlung.schritte_2": [
+      {
+        "titel": "1. Festigkeitsentwicklung",
+        "formel": "r = f_{cm,2} / f_{cm,28} = 0{,}25 \\Rightarrow \\text{langsam}",
+        "erklaerung": "Angabe des Betonwerks, z. B. Beton mit CEM III/A."
+      },
+      {
+        "titel": "2. Randbedingungen",
+        "formel": "\\text{XC4},\\; T_{Oberfläche} = 12\\,^{\\circ}\\text{C}",
+        "erklaerung": "Spalte „andere Expositionsklassen“, Zeile 10 ≤ T < 15 °C."
+      },
+      {
+        "titel": "3. Ablesen",
+        "formel": "t_{NB} = 7\\,\\text{Tage}",
+        "erklaerung": "Bei XM wären es 14 Tage."
+      }
+    ],
+    "Nachbehandlung.regelwerke": [
+      {
+        "title": "DIN EN 13670:2011-03 (Ausführung von Tragwerken aus Beton)"
+      },
+      {
+        "title": "DIN 1045-3:2023-08 (Tragwerke aus Beton - Teil 3: Bauausführung - Anwendungsregeln zu DIN EN 13670)"
+      },
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)"
+      },
+      {
+        "title": "DBV-Merkblatt: Nachbehandlung von Beton (Deutscher Beton- und Bautechnik-Verein)"
+      }
+    ],
+    "Nachbehandlung.literatur": [
+      "Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)",
+      "Neville, A. M. (2011): Properties of Concrete (5. Auflage, Pearson Education)",
+      "Springenschmid, R. (Hrsg.): Prevention of Thermal Cracking in Concrete at Early Ages. State-of-the-Art Report prepared by RILEM Technical Committee 119. RILEM Report 15. London: E & FN Spon 1998"
+    ],
+    "Nachbehandlung.formeln": [
+      {
+        "formel": "E = 5 \\cdot \\left[ (T_c + 18)^{2{,}5} - r \\cdot (T_a + 18)^{2{,}5} \\right] \\cdot (V + 4) \\cdot 10^{-6}",
+        "erklaerung": "Verdunstungsrate E [kg/(m²·h)] nach ACI 305R: Tc = Betontemperatur [°C], Ta = Lufttemperatur [°C], r = relative Feuchte [-], V = Windgeschwindigkeit [km/h]. Bei E > 1,0 kg/(m²·h) droht akute Frühschwindrissgefahr.",
+        "quelle": "ACI 305R-10"
+      },
+      {
+        "formel": "r = \\frac{f_{cm,2}}{f_{cm,28}}",
+        "erklaerung": "Festigkeitsentwicklungsverhältnis r nach DIN EN 13670: schnell (r ≥ 0,50), mittel (0,30 ≤ r < 0,50), langsam (0,15 ≤ r < 0,30), sehr langsam (r < 0,15).",
+        "quelle": "DIN EN 13670 / DIN 1045-3"
+      },
+      {
+        "formel": "f_{ck,t} \\ge 0{,}50 \\cdot f_{ck}",
+        "erklaerung": "Ziel-Kriterium der Nachbehandlung: Die Betonrandzone muss mindestens 50 % der charakteristischen Zylinderdruckfestigkeit erreicht haben, um ausreichende Dauerhaftigkeit und Dichtigkeit zu gewährleisten.",
+        "quelle": "DIN 1045-3:2023-08 (Nachbehandlungsklasse 3: 50 % f_ck)"
+      }
+    ]
+  }
+}

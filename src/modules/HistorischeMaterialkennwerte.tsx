@@ -37,6 +37,8 @@ import { MaterialCategory, historicalData } from '@/src/data/historicalMaterials
 import { NachweisBestandTab } from './historischematerialkennwerte/NachweisBestandTab';
 import { RechnerLaborTab } from './historischematerialkennwerte/RechnerLaborTab';
 import { DatenbankTab } from './historischematerialkennwerte/DatenbankTab';
+import inhalt from '@/content/historischematerialkennwerte/HistorischeMaterialkennwerte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -202,7 +204,7 @@ export default function HistorischeMaterialkennwerte() {
     const fCdAssessment = (alphaCc * fIsCyl) / gammaC_assessment;
 
     // Aus EINEM Kern keine Festigkeitsklasse: Einstufung erfolgt über die Stichprobe (siehe coreSeries)
-    const classEstimate = 'nur aus Stichprobe (n ≥ 3 Kerne) – siehe unten';
+    const classEstimate = inhalt.werte.nurAusStichprobeN;
 
     return {
       areaSqMm,
@@ -288,12 +290,12 @@ export default function HistorischeMaterialkennwerte() {
     const gammaM0 = 1.00;
     const fYd = yieldStrengthMpa / gammaM0;
 
-    let designation = 'S235JR (St 37-2)';
-    if (yieldStrengthMpa < 210) designation = 'Schmiedeeisen / Flusseisen (< 1900)';
-    else if (yieldStrengthMpa < 255) designation = 'St 37-2 / S235JR';
-    else if (yieldStrengthMpa < 310) designation = 'St 44-2 / S275JR';
-    else if (yieldStrengthMpa < 450) designation = 'St 52-3 / S355J2';
-    else designation = 'BSt 500S / B500B (Betonstahl)';
+    let designation = inhalt.werte.s235jrSt372;
+    if (yieldStrengthMpa < 210) designation = inhalt.werte.schmiedeeisenFlusseisen1900;
+    else if (yieldStrengthMpa < 255) designation = inhalt.werte.st372S235jr;
+    else if (yieldStrengthMpa < 310) designation = inhalt.werte.st442S275jr;
+    else if (yieldStrengthMpa < 450) designation = inhalt.werte.st523S355j2;
+    else designation = inhalt.werte.bst500sB500bBetonstahl;
 
     return {
       areaSqMm,
@@ -320,7 +322,7 @@ export default function HistorischeMaterialkennwerte() {
         labels,
         datasets: [
           {
-            label: 'Streckgrenze / Zugfestigkeit (MPa)',
+            label: inhalt.werte.streckgrenzeZugfestigkeitMpa,
             data,
             borderColor: '#be123c', // Shiraz red style
             backgroundColor: '#be123c',
@@ -337,7 +339,7 @@ export default function HistorischeMaterialkennwerte() {
     maintainAspectRatio: false,
     scales: {
       y: {
-        title: { display: true, text: 'Festigkeit (MPa)' },
+        title: { display: true, text: inhalt.werte.festigkeitMpa },
         beginAtZero: true
       }
     }
@@ -348,13 +350,9 @@ export default function HistorischeMaterialkennwerte() {
       <div className="bg-white rounded-2xl shadow-sm border border-home-grau/30 overflow-hidden">
         <div className="border-b border-home-grau/30 p-6 bg-slate-50/50">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <HistoryIcon className="w-5 h-5 text-shiraz" />
-            Historische Kennwerte &amp; Prüfungsverfahren
-        </h2>
+          <HistoryIcon className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.historischeKennwertePrüfungsverfahren} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Forschungswerkzeug für das Bauen im Bestand, die Festigkeitseinstufung historischer Baustoffe und die Auswertung experimenteller Bauwerkproben.
-          </p>
+          <p><MdText text={inhalt.texte.forschungswerkzeugFürDasBauen} /></p>
         </div>
         </div>
 
@@ -368,8 +366,7 @@ export default function HistorischeMaterialkennwerte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <Database size={16} /> Historische Materialdatenbank
-          </button>
+            <Database size={16} /><MdText text={inhalt.texte.historischeMaterialdatenbank} /></button>
           <button aria-pressed={mainTab === 'rechner_labor'}
             onClick={() => setMainTab('rechner_labor')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -378,8 +375,7 @@ export default function HistorischeMaterialkennwerte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <Calculator size={16} /> Rechner &amp; Laborprüfungen
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.rechnerLaborprüfungen} /></button>
           <button aria-pressed={mainTab === 'nachweis_bestand'}
             onClick={() => setMainTab('nachweis_bestand')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -388,8 +384,7 @@ export default function HistorischeMaterialkennwerte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <ShieldCheck size={16} /> Statische Nachweise im Bestand (DBV &amp; EN 1990-2:2026)
-          </button>
+            <ShieldCheck size={16} /><MdText text={inhalt.texte.statischeNachweiseImBestand} /></button>
         </div>
         <div className="p-6">
 
@@ -412,78 +407,34 @@ export default function HistorischeMaterialkennwerte() {
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Bemessungswert der Betonfestigkeit aus Bestandsprüfungen (lognormal)"
+        title={inhalt.werte.beispiel1BemessungswertDer}
         zielGleichung="f_d = f_m \cdot \exp\left(-\alpha_R \cdot \beta \cdot V - 0{,}5 \cdot V^2\right)"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Mittelwert aus Bohrkernen f_m = 25,0 N/mm², Variationskoeffizient V = 0,15; α_R = 0,8, β = 3,8 (Referenzzeitraum 50 Jahre, RC2):', formel: '\\alpha_R \\cdot \\beta \\cdot V = 0{,}8 \\cdot 3{,}8 \\cdot 0{,}15 = 0{,}456' },
-          { titel: 'Exponent', erklaerung: 'Mit Lognormal-Korrekturterm:', formel: '-0{,}456 - 0{,}5 \\cdot 0{,}15^2 = -0{,}467 \\Rightarrow e^{-0{,}467} = 0{,}627' },
-          { titel: 'Bemessungswert', erklaerung: 'Direkter Bemessungswert ohne Teilsicherheitsbeiwert:', formel: 'f_d = 25{,}0 \\cdot 0{,}627 = 15{,}7\\,\\text{N/mm}^2' }
-        ]}
-        ergebnisHinweis="Zum Vergleich: Klassisch mit f_ck = 20 N/mm² und γ_c = 1,5 ergäbe sich 13,3 N/mm² (ohne α_cc). Gemessene, geringe Streuung kann im Bestand Reserven aufdecken – Modelleunsicherheit und Umrechnungsfaktoren sind zusätzlich zu berücksichtigen."
-        normQuelle="DIN EN 1990, Anhang C/D; EN 1990-2:2026 (DIN-Fassung noch nicht erschienen, geplant 2027)"
+        schritte={inhalt.daten["HistorischeMaterialkennwerte.schritte"]}
+        ergebnisHinweis={inhalt.werte.zumVergleichKlassischMit}
+        normQuelle={inhalt.werte.dinEn1990Anhang}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Zugversuch an einem historischen Flussstahl"
+        title={inhalt.werte.beispiel2ZugversuchAn}
         zielGleichung="R_{eH} = \frac{F_{eH}}{A_0}, \quad R_m = \frac{F_m}{A_0}"
-        schritte={[
-          { titel: 'Probe', erklaerung: 'Rundprobe aus einem Unterzug um 1910, Ausgangsdurchmesser 20 mm:', formel: 'A_0 = \\frac{\\pi \\cdot 20^2}{4} = 314{,}2\\,\\text{mm}^2' },
-          { titel: 'Streckgrenze', erklaerung: 'Obere Streckgrenzkraft 70 kN:', formel: 'R_{eH} = \\frac{70\\,000}{314{,}2} = 223\\,\\text{N/mm}^2' },
-          { titel: 'Zugfestigkeit', erklaerung: 'Höchstkraft 113 kN:', formel: 'R_m = \\frac{113\\,000}{314{,}2} = 360\\,\\text{N/mm}^2, \\quad \\frac{R_m}{R_{eH}} = 1{,}61' }
-        ]}
-        ergebnisHinweis="Die Werte liegen im Bereich heutiger S235-Stähle. Vor einer Schweißung sind Schweißeignung (chemische Analyse, P- und S-Gehalt, Alterung) und Sprödbruchneigung zu prüfen; Flussstahl vor etwa 1900 kann auch Puddeleisen sein."
-        normQuelle="DIN EN ISO 6892-1"
+        schritte={inhalt.daten["HistorischeMaterialkennwerte.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dieWerteLiegenIm}
+        normQuelle={inhalt.werte.dinEnIso6892}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="historisch" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 8 Bestand: probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: 'Baustoffprüfung', url: 'https://de.wikipedia.org/wiki/Baustoffpr%C3%BCfung' },
           { title: 'Bohrkern', url: 'https://de.wikipedia.org/wiki/Bohrkern' },
           { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
           { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)' },
-          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Fassung noch nicht erschienen, geplant 2027)' },
-          { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09' },
-          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)' },
-          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben)' },
-          { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)' },
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)' }
-        ]}
-        literatur={[
-          'DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte',
-          
-          'Ahnert, R.; Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960, Bände 1–3. Berlin: Huss-Medien (aktuelle Auflage)',
-          'DBV-Merkblätter „Bauen im Bestand“ (Beton und Betonstahl; Modifizierte Teilsicherheitsbeiwerte)',
-          'Fischer, A.: Bestimmung modifizierter Teilsicherheitsbeiwerte zur Beurteilung von Bestandsbauten (Dissertation)'
-        ]}
-        formeln={[
-          {
-            formel: 'f_d = f_m \\cdot \\exp\\left(-\\alpha_R \\cdot \\beta \\cdot V_f - 0{,}5 \\cdot V_f^2\\right)',
-            erklaerung: 'Probabilistischer Bemessungswert nach EN 1990-2:2026 zur Bewertung von Bestandsbauten unter Berücksichtigung von Mittelwert f_m, Sensitivitätsfaktor alpha_R (0,8), Zuverlässigkeitsindex beta und Variationskoeffizient V_f.',
-            quelle: 'EN 1990-2:2026'
-          },
-          {
-            formel: 'f_{is,cyl} = f_{c,core} \\cdot k_{ratio} \\cdot k_{moist} \\cdot k_{rebar} \\cdot k_{dia}',
-            erklaerung: 'Umrechnung der In-situ-Bohrkernfestigkeit auf standardisierte Zylinder-Größe (DIN EN 13791).\n\nParameter:\n• f_{is,cyl}: Äquivalente in-situ Zylinderdruckfestigkeit [N/mm²]\n• f_{c,core}: Experimentell gemessene Bohrkerndruckfestigkeit [N/mm²]\n• k_{ratio} (oder k_{ratioToCylinder}): Schlankheits-Formbeiwert bezogen auf Höhe/Durchmesser-Verhältnis (h/d)\n• k_{moist}: Korrekturbeiwert für den Feuchtezustand (nass = 1.09, raumklimatrocken = 1.00, ofentrocken = 0.92)\n• k_{rebar}: Minderungskoeffizient für getroffene Bewehrung im Kern (ohne = 1.00, 1 Stab = 1.04, 2 Stäbe = 1.10)\n• k_{dia}: Maßstabsfaktor für den Kernmaßstab (Ø50 = 0.85, Ø80 = 0.95, Ø100 = 1.00, Ø150 = 1.02)',
-            quelle: 'DIN EN 13791'
-          },
-          {
-            formel: 'f_k = K \\cdot f_b^{\\alpha} \\cdot f_m^{\\beta}',
-            erklaerung: 'Charakteristische Druckfestigkeit des Mauerwerks nach Eurocode 6.\n\nParameter:\n• f_k: Charakteristische Tragfähigkeit der Mauerwerkswand [N/mm²]\n• K: Systembeiwert der Stein-Mörtel-Paarung (empfohlener Wert K = 0,55 für Mauerziegel Gruppe 1 mit Normalmauermörtel; der deutsche NA verwendet abweichende Tabellenwerte)\n• f_b: Normierte Steindruckfestigkeit (inklusive Formbeiwert d) [N/mm²]\n• f_m: Festigkeit des Mauermörtels [N/mm²]\n• \\alpha: Exponentielle Einwirkmacht der Steinqualität (Eurocode-Wert = 0.7)\n• \\beta: Exponentielle Einwirkmacht der Mörtelqualität (Eurocode-Wert = 0.3)',
-            quelle: 'DIN EN 1996-1-1'
-          },
-          {
-            formel: 'R_{eH} = \\frac{F_{eH}}{A_0} \\quad \\text{bzw.} \\quad R_m = \\frac{F_m}{A_0}',
-            erklaerung: 'Mechanische Spannungsübertragungen aus dem Zerreißversuch von historischen Baustählen.\n\nParameter:\n• R_{eH}: Elastische obere Streckgrenze des Stahls [N/mm²]\n• R_m: Maximale plastische Zugfestigkeit [N/mm²]\n• F_{eH}: Beanspruchende Zugkraft beim Einsetzen des Fließens [kN]\n• F_m: Höchste ertragbare Zugkraft der flachen oder runden Probe [kN]\n• A_0: Anfangs-Nettomessquerschnitt der Stahlprobe [mm²]',
-            quelle: 'DIN EN ISO 6892-1'
-          }
-        ]}
+        regelwerke={inhalt.daten["HistorischeMaterialkennwerte.regelwerke"]}
+        literatur={inhalt.daten["HistorischeMaterialkennwerte.literatur"]}
+        formeln={inhalt.daten["HistorischeMaterialkennwerte.formeln"]}
       />
     </div>
   );

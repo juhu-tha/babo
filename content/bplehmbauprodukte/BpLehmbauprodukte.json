@@ -1,0 +1,142 @@
+{
+  "texte": {
+    "industrielleLehmbauprodukteBauprodukte": " Industrielle Lehmbauprodukte (Bauprodukte)",
+    "derModerneLehmbauVerbindet": "Der moderne Lehmbau verbindet traditionelle, kreislauffähige Baustoffqualitäten mit industrieller Präzision und Normensicherheit. Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.",
+    "tragfähigkeitDin18940": " Tragfähigkeit (DIN 18940)",
+    "feuchteschutzKonstruktion": " Feuchteschutz & Konstruktion",
+    "amtlichGeregelt": " Amtlich geregelt",
+    "technischeRohdichten": "Technische Rohdichten",
+    "spezifischeVerarbeitungsvorschrift": "Spezifische Verarbeitungsvorschrift",
+    "werkstofflicheVorteile": "Werkstoffliche Vorteile",
+    "tragfähigkeitsprüfungNachDin18940": " Tragfähigkeitsprüfung nach DIN 18940 (Mauerwerksbemessung)",
+    "ermittelnSieDieMaximale": "Ermitteln Sie die maximale Tragfähigkeit von massiven Innen- und geschützten Außenwänden aus genormten Lehmplansteinen unter mäßiger horizontaler Halterung im vereinfachten Berechnungskonzept.",
+    "lichteWandhöheH": "Lichte Wandhöhe (h):",
+    "wandstärkeT": "Wandstärke (t):",
+    "festigkeitsklasseFk": "Festigkeitsklasse (FK):",
+    "charakteristischeMauerwerksdruckfestigke": "Charakteristische Mauerwerksdruckfestigkeit f<sub>k</sub> = ",
+    "nMmNachDin": " N/mm² (nach DIN 18940)",
+    "obenUntenHorizontalGehalten": "Oben & unten horizontal gehalten?",
+    "jaSlabHalterung0": "Ja (Slab-Halterung, β = 0,75)",
+    "neinFreiAuskragend1": "Nein (Frei/Auskragend, β = 1,0)",
+    "bemessungslastNSubEd": "Bemessungslast (N<sub>Ed</sub>):",
+    "knicklängeHSubEf": "Knicklänge h<sub>ef</sub>",
+    "schlankheitsgrad": "Schlankheitsgrad λ",
+    "reduktionsbeiwert": "Reduktionsbeiwert Φ",
+    "rechnerischerFestigkeitsbezugLatex": "Rechnerischer Festigkeitsbezug (LaTeX):",
+    "daLehmReinPhysikalisch": "Da Lehm rein physikalisch bindet und wasserlöslich ist, ist der konstruktive Feuchteschutz entscheidend. Mit einfachen Regeln („guter Stiefel und guter Hut“) sind Lehmbauten sehr dauerhaft.",
+    "t1SpritzwasserschutzDerStiefel": " 1. Spritzwasserschutz („Der Stiefel“)",
+    "derSensibleFußpunktDer": "Der sensible Fußpunkt der Lehmwand im erdberührten Sockelbereich muss zwingend aus wasserfesten Baustoffen (z. B. Beton, Mauerwerk aus Klinker, Schaumglas) hergestellt werden.",
+    "vorgabeDin18940Wta": "**Vorgabe (DIN 18940 / WTA):** Sockelhöhe min. 30 cm über Geländeoberfläche im fertigen Zustand.",
+    "t2NiederschlagsschutzDerHut": " 2. Niederschlagsschutz („Der Hut“)",
+    "gegenDirektenSchlagregenSind": "Gegen direkten Schlagregen sind breite architektonische Schutzflächen unerlässlich, damit Lehmoberflächen nicht ausgewaschen werden.",
+    "schutzmaßnahmeGroßzügigeDachüberständeAl": "**Schutzmaßnahme:** Großzügige Dachüberstände. Alternativ hydrophobe Bekleidungen oder Holzverschalungen.",
+    "t3DiffusionsoffenheitDieLunge": " 3. Diffusionsoffenheit („Die Lunge“)",
+    "lehmwändeMüssenDiffusionsoffenUnd": "Lehmwände müssen diffusionsoffen und sorptionsfähig bleiben. Diffusionsdichte Folien, Dispersions- oder Kunstharzbeschichtungen sind ungeeignet.",
+    "kompatibilitätSumpfkalkfarbenReinSilikat": "**Kompatibilität:** Sumpfkalkfarben, Rein-Silikatfarben oder spezielle, diffusionsoffene Lehm-Designputze.",
+    "lehmbauteileDürfenNichtDauerhaft": " Lehmbauteile dürfen nicht dauerhaft hoher Feuchte oder stehendem Wasser ausgesetzt sein, da Festigkeit und Schimmelresistenz mit steigendem Wassergehalt sinken (Anwendungsgrenzen nach DIN 18940 beachten)."
+  },
+  "werte": {
+    "tragfähigkeitsnachweisErfüllt": "Tragfähigkeitsnachweis ERFÜLLT",
+    "tragfähigkeitNichtErfüllt": "TRAGFÄHIGKEIT NICHT ERFÜLLT",
+    "schlankheitGreiftNichtÜberschritten": "SCHLANKHEIT GREIFT NICHT (Überschritten!)",
+    "dachverbandLehmEV": "Dachverband Lehm e. V."
+  },
+  "daten": {
+    "LOAM_STANDARDS_DB": [
+      {
+        "id": "stein",
+        "norm": "DIN 18945",
+        "title": "Lehmsteine",
+        "classes": "Anwendungsklassen nach DIN 18945: AK Ia (verputztes, bewittertes Außenmauerwerk von Sichtfachwerk), AK Ib (durchgängig verputztes, bewittertes Außenmauerwerk), AK II (verkleidetes, witterungsgeschütztes Außenmauerwerk und Innenmauerwerk), AK III (trockene Anwendungen) – sie beschreiben die Feuchtebeanspruchung, nicht die Tragfähigkeit.",
+        "density": "0,90 - 2,20 g/cm³ (Leicht- bis Schwersysteme)",
+        "strength": "Druckfestigkeitsklassen nach DIN 18945: 2 – 2,5 – 3 – 4 – 5 – 6 (mittlere Steindruckfestigkeit in N/mm²); die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.",
+        "rules": "Müssen trocken gelagert und vor Feuchtigkeit geschützt werden. Werden im Verband mit Dünnbett- oder Normalmörtel vermauert.",
+        "application": "Ausfachung von historischen Fachwerkhäusern, Bau von schweren, wärmespeichernden Innenwänden, tragendes Mauerwerk nach DIN 18940.",
+        "pros": [
+          "Guter Schallschutz bei hohen Rohdichten",
+          "Hervorragendes Raumklimaregulationsverhalten (Wasseraufnahmevermögen WSIII)",
+          "Einfach mit Handwerkzeugen säg- und bearbeitbar"
+        ]
+      },
+      {
+        "id": "moertel",
+        "norm": "DIN 18946",
+        "title": "Lehmmauermörtel",
+        "classes": "Lehmmauermörtel nach DIN 18946:2024-03 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen z. B. M 2,5 mit Druckfestigkeit ≥ 2,5 N/mm²)",
+        "density": "1,40 - 1,80 g/cm³",
+        "strength": "Druckfestigkeitsklassen nach DIN 18946 (z. B. M 2,5: ≥ 2,5 N/mm²)",
+        "rules": "Bindet nur über die Tonminerale; Zusätze wie Zement oder Kalk sind nicht zulässig, sonst geht die Wiederverarbeitbarkeit verloren.",
+        "application": "Vermauern von Lehmsteinen, Verfüllen von historischen Fugen im Fachwerkbestand.",
+        "pros": [
+          "Lange Verarbeitungszeit (erhärtet nur durch Trocknen)",
+          "Kann bei Bedarf durch bloßes Hinzufügen von Wasser wieder verflüssigt werden",
+          "Absolut materialschonend (salz- und säurefrei, schützt historisches Holz)"
+        ]
+      },
+      {
+        "id": "putz",
+        "norm": "DIN 18947",
+        "title": "Lehmputzmörtel",
+        "classes": "Anforderungsklassen: S I (Standard-Lehmputzmörtel), S II (Putze für erhöhte mechanische Belastung)",
+        "density": "1,20 - 1,70 g/cm³",
+        "strength": "Biegezugfestigkeit: Klasse I (≥ 0,3 MPa), Klasse II (≥ 0,4 MPa)",
+        "rules": "Mehrlagiger Auftrag empfohlen. Rissempfindlichkeit durch Faserzugabe (Stroh, Flachs, Tierhaare) oder Gewebearmierung (Jute, Glasfaser) verringern.",
+        "application": "Innenputz auf mineralischen Untergründen (Ziegel, Beton, KS) oder Holzfaser- und Lehmbauplatten.",
+        "pros": [
+          "Bindet keine Schadstoffe, absorbiert luftgetragene Gerüche und Rauch",
+          "Puffert Schwankungen der Raumluftfeuchte (Sorptionsklassen nach DIN 18947)",
+          "Hält angrenzende Holzbauteile trocken"
+        ]
+      },
+      {
+        "id": "platte",
+        "norm": "DIN 18948",
+        "title": "Lehmbauplatten",
+        "classes": "Typen: LPL1 (Reine Lehmplatten), LPL2 (Faser- oder Schilfrohr-armiert), LPL3 (Gipskarton-Alternative)",
+        "density": "0,80 - 1,40 g/cm³",
+        "strength": "Biegebeanspruchung: Bruchkraft ≥ 100 N pro 10 mm Plattenstärke",
+        "rules": "Montage auf Holz- oder Metall-Unterkonstruktionen im Trockenbauverfahren mittels Tellerkopfschrauben.",
+        "application": "Ökologischer, atmungsaktiver Trockenbau bei Trennwänden, Deckenabhängungen, Vorsatzschalen und Sanierungen.",
+        "pros": [
+          "Verbessert den Schallschutz durch zusätzliche Masse",
+          "Je nach Produkt ohne synthetische Bindemittel",
+          "Sofort trocken montierbar, wodurch wochenlange Bau-Trocknungszeiten entfallen"
+        ]
+      }
+    ],
+    "BpLehmbauprodukte.literatur": [
+      "Minke, Gernot: Handbuch Lehmbau - Baustoffkunde, Techniken und Architektur (Ökobuch Verlag)",
+      "Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln – Begriffe, Baustoffe, Bauteile. 3., überarb. Aufl., Wiesbaden: Vieweg+Teubner 2009",
+      "Dachverband Lehm e. V.: Technische Merkblätter TM01 Anforderungen an Lehmputz als Bauteil (2. Aufl., Juni 2014), TM05 Qualitätsüberwachung von Baulehm (Juni 2011), TM06 Lehmdünnlagenbeschichtungen (Juni 2015)"
+    ],
+    "BpLehmbauprodukte.regelwerke": [
+      {
+        "title": "DIN 18940:2023-06: Tragendes Lehmsteinmauerwerk – Konstruktion, Bemessung und Ausführung"
+      },
+      {
+        "title": "DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung"
+      },
+      {
+        "title": "DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung"
+      },
+      {
+        "title": "DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung"
+      },
+      {
+        "title": "DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung"
+      }
+    ],
+    "BpLehmbauprodukte.formeln": [
+      {
+        "formel": "\\lambda = \\frac{h_{ef}}{t} \\leq 21",
+        "erklaerung": "Schlankheit der Wand (Grenzwert 21 als Lehrannahme; maßgebender Wert nach DIN 18940 manuell prüfen).",
+        "quelle": "DIN 18940 Kap. 6.2"
+      },
+      {
+        "formel": "N_{Rd} = \\Phi \\cdot t \\cdot f_d",
+        "erklaerung": "Bemessungswert des vertikalen Tragwiderstands pro Längeneinheit unter Berücksichtigung von Ausbiegungen.",
+        "quelle": "DIN 18940 Kap. 6.1"
+      }
+    ]
+  }
+}

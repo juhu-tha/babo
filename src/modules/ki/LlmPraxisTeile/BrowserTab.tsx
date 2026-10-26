@@ -1,5 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { Terminal, Globe, CheckCircle2, Search, ShieldCheck } from 'lucide-react';
+import inhalt from '@/content/ki/LlmPraxisTeile/BrowserTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface BrowserTabProps {
   browserEngine: "perplexity" | "chatgpt_search" | "claude_search";
@@ -13,11 +15,8 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <Globe size={20} className="text-shiraz" /> Browser-Nutzung &amp; Web-Grounding: Normenrecherche ohne Halluzinationen
-            </h3>
-            <p className="text-xs text-text-main/70">
-              Wie Sie Echtzeit-Suchwerkzeuge mit gezielten Suchfiltern einsetzen, um stets den tagesaktuellen Stand der Bautechnik zu verifizieren
-            </p>
+              <Globe size={20} className="text-shiraz" /><MdText text={inhalt.texte.browserNutzungWebGrounding} /></h3>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wieSieEchtzeitSuchwerkzeuge} /></p>
           </div>
     
           {/* Browser Engine Toggle */}
@@ -25,21 +24,15 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
             <button aria-pressed={browserEngine === 'perplexity'}
               onClick={() => setBrowserEngine('perplexity')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'perplexity' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            >
-              Perplexity / Deep Research
-            </button>
+            ><MdText text={inhalt.texte.perplexityDeepResearch} /></button>
             <button aria-pressed={browserEngine === 'chatgpt_search'}
               onClick={() => setBrowserEngine('chatgpt_search')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'chatgpt_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            >
-              ChatGPT Search
-            </button>
+            ><MdText text={inhalt.texte.chatgptSearch} /></button>
             <button aria-pressed={browserEngine === 'claude_search'}
               onClick={() => setBrowserEngine('claude_search')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'claude_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            >
-              Claude Web Search
-            </button>
+            ><MdText text={inhalt.texte.claudeWebSearch} /></button>
           </div>
         </div>
     
@@ -48,72 +41,49 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
           {browserEngine === 'perplexity' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Search size={14} className="text-blue-600" /> Perplexity &amp; Deep Research: Synthese aus 30+ Primärquellen
-              </span>
-              <p className="text-text-main/70 leading-relaxed">
-                Ideal für wissenschaftliche Literaturrecherchen und neue bauaufsichtliche Zulassungen. Deep Research führt mehrstufige Suchketten aus, filtert Werbetexte heraus und belegt jede Aussage mit Fußnoten und direkten DOI/URL-Nachweisen.
-              </p>
+                <Search size={14} className="text-blue-600" /><MdText text={inhalt.texte.perplexityDeepResearchSynthese} /></span>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.idealFürWissenschaftlicheLiteraturrecher} /></p>
             </div>
           )}
     
           {browserEngine === 'chatgpt_search' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Globe size={14} className="text-emerald-600" /> ChatGPT Search: Interaktives Fact-Checking mit Karten &amp; News
-              </span>
-              <p className="text-text-main/70 leading-relaxed">
-                Hervorragend zur schnellen Überprüfung von Baustoffpreisen, Hersteller-Lieferzeiten oder regionalen Verwaltungsvorschriften der Bundesländer (z. B. VV TB Bayern).
-              </p>
+                <Globe size={14} className="text-emerald-600" /><MdText text={inhalt.texte.chatgptSearchInteraktivesFact} /></span>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.hervorragendZurSchnellenÜberprüfung} /></p>
             </div>
           )}
     
           {browserEngine === 'claude_search' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Terminal size={14} className="text-amber-600" /> Claude Web Search: Gezielter Abruf während der Code- &amp; Dokumentenerstellung
-              </span>
-              <p className="text-text-main/70 leading-relaxed">
-                Ruft bei unklaren Normentexten oder fehlenden API-Parametern selbstständig die Dokumentation ab und bettet die verifizierten Daten direkt in Ihre Markdown-Berichte oder Berechnungen ein.
-              </p>
+                <Terminal size={14} className="text-amber-600" /><MdText text={inhalt.texte.claudeWebSearchGezielter} /></span>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ruftBeiUnklarenNormentexten} /></p>
             </div>
           )}
         </div>
     
         {/* SEARCH OPERATORS TABLE FOR CIVIL ENGINEERING */}
         <div className="space-y-3">
-          <h4 className="font-bold text-sm text-text-main">
-            Gezielte Such-Operatoren (Google Dorks) für Bau-Recherchen im LLM
-          </h4>
+          <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.gezielteSuchOperatorenGoogle} /></h4>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
-              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20">
-                site:dibt.de [Zulassungsnr]
-              </div>
-              <div className="font-bold text-text-main">DIBt-Zulassungen verifizieren</div>
-              <p className="text-text-main/70 leading-relaxed">
-                Sucht ausschließlich auf den Servern des Deutschen Instituts für Bautechnik nach allgemeinen bauaufsichtlichen Zulassungen (abZ) oder Bauartgenehmigungen (aBG).
-              </p>
+              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.siteDibtDeZulassungsnr} /></div>
+              <div className="font-bold text-text-main"><MdText text={inhalt.texte.dibtZulassungenVerifizieren} /></div>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.suchtAusschließlichAufDen} /></p>
             </div>
     
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
-              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20">
-                site:oekobaudat.de [Baustoff]
-              </div>
-              <div className="font-bold text-text-main">Ökobilanzdaten (EPD) abrufen</div>
-              <p className="text-text-main/70 leading-relaxed">
-                Findet verifizierte EPD-Datensätze und Treibhauspotenziale (GWP A1-A3) für konkrete Baustoffe auf der Bundesplattform ÖKOBAUDAT.
-              </p>
+              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.siteOekobaudatDeBaustoff} /></div>
+              <div className="font-bold text-text-main"><MdText text={inhalt.texte.ökobilanzdatenEpdAbrufen} /></div>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.findetVerifizierteEpdDatensätze} /></p>
             </div>
     
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
-              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20">
-                filetype:pdf "Technisches Merkblatt" [Produkt]
-              </div>
-              <div className="font-bold text-text-main">Herstellerdatenblätter filtern</div>
-              <p className="text-text-main/70 leading-relaxed">
-                Filtert Marketingtexte heraus und erzwingt das Herunterladen des reinen technischen Datenblatts (Verarbeitungstemperatur, Festigkeit, Mischungsverhältnis).
-              </p>
+              <div className="font-mono font-bold text-shiraz bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.filetypePdfTechnischesMerkblatt} /></div>
+              <div className="font-bold text-text-main"><MdText text={inhalt.texte.herstellerdatenblätterFiltern} /></div>
+              <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.filtertMarketingtexteHerausUnd} /></p>
             </div>
           </div>
         </div>
@@ -121,39 +91,30 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
         {/* CHECKLIST AGAINST HALLUCINATIONS */}
         <div className="p-5 bg-off-white rounded-xl border border-home-grau/20 space-y-3">
           <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-            <ShieldCheck size={18} className="text-emerald-600" /> Der 4-Stufen-Sicherheitscheck gegen Halluzinationen
-          </h4>
+            <ShieldCheck size={18} className="text-emerald-600" /><MdText text={inhalt.texte.der4StufenSicherheitscheck} /></h4>
     
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <div className="flex items-start gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <strong>1. Zitationszwang mit URL verlangen:</strong>
-                <p className="text-text-main/70">Instruieren Sie die KI: <em>"Nenne mir zu jedem Normen-Grenzwert die exakte Normentabelle und verlinke die Primärquelle per Websuche."</em></p>
+              <div><MdText text={inhalt.texte.t1ZitationszwangMitUrl} /><p className="text-text-main/70"><MdText text={inhalt.texte.instruierenSieDieKi} /></p>
               </div>
             </div>
     
             <div className="flex items-start gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <strong>2. Blindtext-Verbot (Negativ-Constraint):</strong>
-                <p className="text-text-main/70"><em>"Wenn du den genauen Wert nach DIN EN 1992 nicht kennst, rate nicht, sondern sage explizit: 'Wert muss im Original-Normblatt nachgeschlagen werden'."</em></p>
+              <div><MdText text={inhalt.texte.t2BlindtextVerbotNegativ} /><p className="text-text-main/70"><MdText text={inhalt.texte.wennDuDenGenauen} /></p>
               </div>
             </div>
     
             <div className="flex items-start gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <strong>3. Rechnen immer mit Python-Tool:</strong>
-                <p className="text-text-main/70">Reine Sprachmodelle rechnen per Token-Wahrscheinlichkeit. Zwingen Sie das Modell per Code-Interpreter oder Vorrechnung per Hand zur Plausibilitätsprüfung.</p>
+              <div><MdText text={inhalt.texte.t3RechnenImmerMit} /><p className="text-text-main/70"><MdText text={inhalt.texte.reineSprachmodelleRechnenPer} /></p>
               </div>
             </div>
     
             <div className="flex items-start gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <strong>4. Zwei-Modell-Validierung (Cross-Checking):</strong>
-                <p className="text-text-main/70">Lassen Sie einen statischen Nachweis von Claude formulieren und übergeben Sie die Lösung an ChatGPT (Reasoning-Modus) mit dem Prompt: <em>"Finde den Rechenfehler in diesem statischen Nachweis."</em></p>
+              <div><MdText text={inhalt.texte.t4ZweiModellValidierung} /><p className="text-text-main/70"><MdText text={inhalt.texte.lassenSieEinenStatischen} /></p>
               </div>
             </div>
           </div>

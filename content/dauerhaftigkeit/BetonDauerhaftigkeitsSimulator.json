@@ -1,0 +1,70 @@
+{
+  "texte": {
+    "stahlbetonLebensdauersimulatorKarbonatis": "Stahlbeton-Lebensdauersimulator: Karbonatisierungs-Prüfung",
+    "nachDemWurzelZeit": "Nach dem Wurzel-Zeit-Gesetz dringt die Karbonatisierungsfront ein: s(t) = k·√t. stetig ein: ",
+    "sinktDerPhWert": ". Sinkt der pH-Wert des Betons von anfänglich > 12,5 auf unter 9.0 (Depassivierung), entfällt der Rostschutz des Stahls.",
+    "schnellKonfigurationDinEn": "Schnell-Konfiguration (DIN EN 206)",
+    "dichteZementeC3545": "Dichte Zemente (C35/45) weisen k ~ 1,0 auf; magere k > 4.0.",
+    "vorgeschriebenIstCNom": "Vorgeschrieben ist c_nom = c_min + Δc_dev mit c_min,dur z. B. 20–40 mm und Δc_dev = 15 mm (nur XC1: 10 mm) nach NA.",
+    "rechnerischeKarbonatisierungstiefe": "Rechnerische Karbonatisierungstiefe",
+    "alkalischPh125": "Alkalisch (pH > 12,5)",
+    "coEinflussPh9": "CO₂-Einfluss (pH < 9)",
+    "bewehrungC": "Bewehrung (c = ",
+    "skalierung070Mm": "Skalierung: 0 - 70 mm",
+    "hatDieSaureFront": " hat die saure Front die Bewehrung erreicht. Ohne korrosions-inhibierende Alkalität droht bei Feuchtezugriff **Bewehrungsrost** (Rostsprengung).",
+    "dieAlkalitätSchütztDie": "Die Alkalität schützt die Bewehrungsmatten verlässlich. Rechnerisch verbleibende Restschutzdauer vor Depassivierung: ",
+    "schwelleBeiT": " (Schwelle bei t = ",
+    "schrittFürSchrittHerleitung": "Schritt-für-Schritt Herleitung der Stahlbeton-Lebensdauer",
+    "schritt1BestimmungDes": "Schritt 1: Bestimmung des Karbonatisierungsbeiwerts k (",
+    "derWiderstandDesZementsteins": "Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Ihre aktuelle Auswahl simuliert einen Beiwert von ",
+    "schritt2DasQuadratische": "Schritt 2: Das quadratische Zeitgesetz",
+    "dieGasdiffusionImPorensystem": "Die Gasdiffusion im Porensystem verläuft nicht-linear. Die Lage der Carbonatisierungsfront s(t) nach ",
+    "jahrenBerechnetSichAus": " Jahren berechnet sich aus:",
+    "schritt3AbgleichMit": "Schritt 3: Abgleich mit der installierten Betondeckung c_nom (",
+    "dieCarbonatisierungsfront": "➔ Die Carbonatisierungsfront (",
+    "mmHatDenSchützenden": " mm) hat den schützenden Betonbereich um ",
+    "mmÜberschrittenDieBewehrung": " mm überschritten. Die Bewehrung ist depassiviert und rostgefährdet!",
+    "dieHochalkalischeRestpufferzoneVor": "➔ Die hochalkalische Restpufferzone vor dem reinen Stahl beträgt noch ",
+    "mmDerPassiveRostschutz": " mm. Der passive Rostschutz steht sicher.",
+    "damitDerKorrosionsschutzAktiv": "Damit der Korrosionsschutz aktiv bleibt, muss die carbonatisierte Schichtdicke kleiner sein als die Deckungstiefe (s(t) < c_nom).",
+    "schritt4BestimmungDes": "Schritt 4: Bestimmung des rechnerischen Depassivierungszeitpunkts t_crit",
+    "derGenaueZeitpunktAn": "Der genaue Zeitpunkt, an dem die Carbonatisierungsfront exakt die Tiefe der Bewehrung berührt (s(t) = c_nom), berechnet sich durch Umstellen der Formel nach t:",
+    "tCritCNom": "t_crit = (c_nom / k)² = (",
+    "dasBauteilBefindetSich": "Das Bauteil befindet sich bereits seit ",
+    "imUngeschütztenZustand": " im ungeschützten Zustand.",
+    "rechnerischVerbleibendeRestlebensdauerVo": "Rechnerisch verbleibende Restlebensdauer vor Depassivierung: ",
+    "schritt5KonstruktiveUnd": "Schritt 5: Konstruktive und betontechnologische Stellschrauben",
+    "geringererWZWert": "**Geringerer w/z-Wert (dichterer Zementstein):** Reduziert das kapillare Porenvolumen und senkt den k-Wert drastisch (z. B. von 4,5 auf 1,5 mm/√a).",
+    "erhöhterVorhaltemaßDcEin": "**Erhöhter Vorhaltemaß dc:** Ein Erhöhen der Schalungspräzision ermöglicht dickere Bauteildeckungen (z.B. 35mm anstelle von 15mm), was die t_crit-Schutzdauer quadratisch vergrößert."
+  },
+  "werte": {
+    "gefahrDepassivierungEingetreten": "Gefahr: Depassivierung eingetreten!",
+    "sichererBereichStahloberflächePassiviert": "Sicherer Bereich: Stahloberfläche passiviert.",
+    "formelnBerechnungsschritteAusblenden": "▲ Formeln & Berechnungsschritte ausblenden",
+    "formelnInteraktiverBerechnungswegSchritt": "▼ Formeln & interaktiver Berechnungsweg (Schritt für Schritt)"
+  },
+  "daten": {
+    "BetonDauerhaftigkeitsSimulator.presets": [
+      {
+        "label": "XC1 (trocken, z. B. Innenraum): c_nom = 20 mm",
+        "kValue": 4.5,
+        "cnomDefault": 20
+      },
+      {
+        "label": "XC2 (nass, selten trocken): c_nom = 35 mm",
+        "kValue": 1,
+        "cnomDefault": 35
+      },
+      {
+        "label": "XC3 (mäßig feucht): c_nom = 35 mm",
+        "kValue": 2.5,
+        "cnomDefault": 35
+      },
+      {
+        "label": "XC4 (Wechsel nass/trocken): c_nom = 40 mm",
+        "kValue": 1.5,
+        "cnomDefault": 40
+      }
+    ]
+  }
+}

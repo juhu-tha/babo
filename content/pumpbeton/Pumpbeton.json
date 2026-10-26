@@ -1,0 +1,16 @@
+{
+  "texte": {
+    "pumpenVonBeton": " Pumpen von Beton",
+    "dasFördernVonBeton": "Das Fördern von Beton mittels Betonpumpen ist heute die Standardmethode auf vielen Baustellen. Damit der Beton pumpbar ist, muss er spezielle rheologische Eigenschaften aufweisen. Das Kernprinzip des Pumpens beruht auf der Ausbildung einer **Gleitschicht** (Schmierfilm) an der Rohrwandung.",
+    "gleitschichtDerBetonBewegt": "**Gleitschicht:** Der Beton bewegt sich als Pfropfen; die Reibung entsteht in einer dünnen Leim-/Mörtelschicht an der Rohrwand.",
+    "mehlkornAusreichendFeinstoffeZement": "**Mehlkorn:** Ausreichend Feinstoffe (Zement, Zusatzstoffe, Feinsand ≤ 0,125 mm) für die Gleitschicht und das Wasserhaltevermögen.",
+    "konsistenzMeistF3Bis": "**Konsistenz:** meist F3 bis F5; stetige Sieblinie gegen Entmischen unter Druck.",
+    "stopferDurchBlutenUnter": "**Stopfer:** durch Bluten unter Druck, fehlenden Vorlaufmörtel oder ungünstige Leitungsführung.",
+    "herstellungEinbau": "Herstellung & Einbau",
+    "ausführlichMitRechenbeispielZum": "Ausführlich mit Rechenbeispiel zum Förderdruck:",
+    "typischeMischungszusammensetzungProM": "Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)",
+    "zusatzstoffZBFlugasche": "Zusatzstoff (z.B. Flugasche zur Erhöhung des Mehlkorns)",
+    "wasserWZ0": "Wasser (w/z ~0,50 - 0,55)",
+    "gesteinskörnungAusreichendMehlkornGute": "Gesteinskörnung (ausreichend Mehlkorn, gute Rundkörnigkeit)"
+  }
+}

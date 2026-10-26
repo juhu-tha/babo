@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpmetallisch/BpMetallisch.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -24,12 +26,8 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Metalle im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Weiter zu den anderen Teilen des Lehrpfads (Basis, Anwendung, Alterung):
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadMetalleIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.weiterZuDenAnderen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -44,11 +42,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Physikalische Eigenschaften, Schmelzpunkt &amp; Legierungen der Metalle.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.physikalischeEigenschaftenSchmelzpunktLe} /></span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -68,11 +64,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik &amp; Praxis</span>
+            <span><MdText text={inhalt.texte.t2MechanikPraxis} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Plattenrechner, Kontaktkorrosions-Prüfung &amp; Lieferantenlisten der BauPVO.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.plattenrechnerKontaktkorrosionsPrüfungLi} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -92,11 +86,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit} /></span>
           </div>
-          <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Galvanische Zellen, Korrosionsarten &amp; Schutz nach DIN EN ISO 12944.
-          </span>
+          <span className="text-[11px] text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.galvanischeZellenKorrosionsartenSchutz} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -128,229 +120,67 @@ export interface MetalMaterial {
 }
 
 export const metalsDb: MetalMaterial[] = [
-  {
-    id: 'zinc',
-    name: 'Verzinkter Stahl (Zinküberzug)',
-    density: 7850, // Grundstahl (Zink allein: 7140 kg/m³)
-    potential: -0.76, // Oberfläche Zink
-    lambda: 50, // Grundstahl (Zink allein: ca. 110 W/(m·K))
-    alpha: 12, // Grundstahl (Zink allein: ca. 22–29 · 10⁻⁶/K)
-    crystalStructure: 'Grundstahl krz; Zinküberzug hexagonal dichteste Kugelpackung (hdp)',
-    eModul: 210000, // Grundstahl 210 GPa, Zinkschicht ca. 100 GPa
-    yieldStrength: 'fy = 220 – 350 N/mm² (DX51D / S250GD)',
-    standards: 'DIN EN ISO 1461, DIN EN 10346, DIN EN 988',
-    corrosionCategory: 'C1 bis C4 (Abtragsrate Zink: 0,2–2 µm/Jahr)',
-    poissonRatio: 0.30,
-    elongationAtBreak: 'A80 ≥ 22 % (Tiefziehgüte)',
-    recyclingRate: '> 95 % im Elektrostahlwerk',
-    description: `Stahl geschützt durch einen metallischen Zinküberzug (Stückverzinkung im Tauchbad bei ca. 450 °C mit diffusionsbedingter Eisen-Zink-Phasenbildung Γ-, δ- und ζ-Phase oder kontinuierliche Bandverzinkung mit Zink-Aluminium-Magnesium-Überzügen ZM). Zink bildet auf der Oberfläche durch Reaktion mit Sauerstoff, Feuchte und Kohlendioxid eine dichte, festhaftende Schutzschicht aus basischem Zinkcarbonat (2 ZnCO₃ · 3 Zn(OH)₂).
-
-Herausragende werkstoffliche Eigenschaft ist der aktive kathodische Opferschutz: Da Zink mit U₀ = -0,76 V deutlich unedler ist als Eisen (-0,44 V), opfert es sich an Schnittkanten, Bohrungen und Kratzern bis zu einer Breite von 1,5 mm als galvanische Anode auf, sodass der Grundstahl vollkommen rostfrei bleibt.
-
-Bei behinderter Belüftung oder feuchter Lagerung kann sich poröser, voluminöser Weißrost (Zinkhydroxid Zn(OH)₂) bilden, der die Schutzschicht zersetzt. Zinkbleche (Titanzink nach DIN EN 988 mit 0,08–0,2 % Titan und Kupfer zur Kriechhemmung) besitzen hervorragende Falzeigenschaften, bedürfen jedoch wegen der hohen Wärmedehnung ausreichender Schiebehafte.`,
-    practicalAdvice: 'Titanzinkdächer und verzinkte Fassadenelemente müssen an der Unterseite zwingend hinterlüftet werden (Tauwasser-Abtrocknung), um Weißrostbildung zu vermeiden. Niemals unterhalb von Kupfer einbauen (Fließregel!).'
-  },
-  {
-    id: 'aluminum',
-    name: 'Aluminium & -Legierungen',
-    density: 2700,
-    potential: -0.50, // Passivpotential in Außenluft
-    lambda: 220,
-    alpha: 23,
-    crystalStructure: 'Kubisch flächenzentriert (kfz)',
-    eModul: 70000,
-    yieldStrength: 'Rp0,2 = 120 – 240 N/mm² (EN AW-6060 T6)',
-    standards: 'DIN EN 1999 (EC 9), DIN EN 573, DIN 17611 (Eloxal)',
-    corrosionCategory: 'C1 bis C4 (Eloxiert / Pulverbeschichtet)',
-    poissonRatio: 0.33,
-    elongationAtBreak: 'A50 ≥ 8 – 12 % (aushärtbare Knetlegierung)',
-    recyclingRate: '> 95 % (Sekundäraluminium spart 95 % Schmelzenergie)',
-    description: `Leichtmetall mit kubisch-flächenzentriertem Gitter, sehr guter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.
-
-Aggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphotere Oxidschicht unter Wasserstoffbildung auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.
-
-In der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schichtdicke 15–25 µm nach DIN 17611) oder einbrennpulverbeschichtet. Aufgrund des niedrigen E-Moduls (ca. 1/3 des Stahls) sind Profile mit größeren Trägheitsmomenten Iy auszuführen. Die Wärmedehnung ist mit 23 × 10⁻⁶/K fast doppelt so hoch wie bei Baustahl.`,
-    practicalAdvice: 'Aluminium-Fassadenunterkonstruktionen stellen erhebliche Wärmebrücken dar (hohe Wärmeleitfähigkeit λ = 220 W/(m·K)) und müssen zwingend mit thermischen Trennelementen (Thermostopps) an der Massivwand verankert werden.'
-  },
-  {
-    id: 'steel',
-    name: 'Baustahl (unlegiert S235 / S355)',
-    density: 7850,
-    potential: -0.44,
-    lambda: 50,
-    alpha: 12,
-    crystalStructure: 'Raumzentriert kubisch (krz, Ferrit + Perlit)',
-    eModul: 210000,
-    yieldStrength: 'fy = 235 N/mm² (S235) bzw. 355 N/mm² (S355)',
-    standards: 'DIN EN 1993 (EC 3), DIN EN 10025-2, DIN EN ISO 12944',
-    corrosionCategory: 'Erfordert Schutzsysteme nach ISO 12944 (C1–CX)',
-    poissonRatio: 0.30,
-    elongationAtBreak: 'A ≥ 20 – 26 % (ausgeprägtes Fließplateau)',
-    recyclingRate: 'Hohe Recyclingquote (Branchenangaben > 90 %); Stahl ist ohne Qualitätsverlust wiederverwertbar',
-    description: `Ferritisch-perlitischer Konstruktionswerkstoff und das universelle Rückgrat des modernen Hoch-, Hallen- und Brückenbaus. Zeichnet sich durch ein ausgeprägtes Fließplateau, sehr gute Schweißbarkeit und hohe Bruchdehnungen (A ≥ 20 %) aus, was die Ausbildung stabiler Fließgelenke und plastischer Schnittgrößenumlagerungen nach Eurocode 3 ermöglicht.
-
-Korrosionsverhalten: Baustahl ist an feuchter Atmosphäre thermodynamisch unedel und bildet porösen Rost (FeO(OH) und Fe₂O₃ · n H₂O). Da das Rostvolumen bis zum 6-fachen des Ausgangsstahls anwächst, haftet der Rost nicht dicht an, sondern blättert kontinuierlich ab, sodass der Querschnitt ohne Schutzschicht linear abgetragen wird.
-
-Schutzsysteme: Baustahl erfordert im Außenbereich zwingend hochwertige Mehrschicht-Flüssigbeschichtungen (Zinkstaub-Grundierung, Eisenglimmer-Zwischenschicht, PU-Decklack nach DIN EN ISO 12944) oder Stückfeuerverzinkung. In Betonbauteilen bewirkt die alkalische Porenlösung des Zements (pH > 12,5) eine selbsttätige Passivierung (dünner γ-Fe₂O₃-Film).`,
-    practicalAdvice: 'Konstruktiven Korrosionsschutz beachten: Schmutz- und Wassersäcke (z.B. nach oben offene U-Profile) vermeiden, kontinuierliche Schweißnähte statt Heftschweißung wählen und scharfe Profilkanten vor der Beschichtung abrunden.'
-  },
+  inhalt.daten["metalsDb.zinc"],
+  inhalt.daten["metalsDb.aluminum"],
+  inhalt.daten["metalsDb.steel"],
   {
     id: 'stainless',
-    name: 'Edelstahl rostfrei (A2 / A4, 1.4301 / 1.4404)',
+    name: inhalt.werte.edelstahlRostfreiA2A4,
     density: 7900,
     potential: +0.15, // Passivzustand in belüfteter Atmosphäre
     lambda: 15,
     alpha: 16,
-    crystalStructure: 'Kubisch flächenzentriert (kfz, Austenit)',
+    crystalStructure: inhalt.werte.kubischFlächenzentriertKfzAustenit,
     eModul: 200000,
-    yieldStrength: 'Rp0,2 = 200 – 240 N/mm² (Rm = 500 – 700 N/mm²)',
-    standards: 'DIN EN 10088, DIN EN 1993-1-4 (EC 3 Edelstahl), Z-30.3-6',
-    corrosionCategory: 'CRC II (A2) bis CRC III / IV (A4 / Sonderedelstähle)',
+    yieldStrength: inhalt.werte.rp02200240,
+    standards: inhalt.werte.dinEn10088Din,
+    corrosionCategory: inhalt.werte.crcIiA2Bis,
     poissonRatio: 0.30,
-    elongationAtBreak: 'A ≥ 40 – 45 % (hohe Kaltverfestigung)',
-    recyclingRate: '100 % (wichtiger Träger von Legierungselementen Cr, Ni, Mo)',
-    description: `Austenitischer Chrom-Nickel- bzw. Chrom-Nickel-Molybdän-Stahl mit dichtester kubisch-flächenzentrierter Atompackung. Durch mindestens 10,5 % Chrom bildet sich an sauerstoffhaltiger Luft spontan eine nanometerdünne, extrem dichte und unsichtbare Passivschicht aus Chrom(III)-oxid (Cr₂O₃), die sich bei mechanischer Beschädigung selbstständig regeneriert.
-
-Legierungsunterschiede:
-• A2 (Werkstoff 1.4301 / X5CrNi18-10): Standard für normale Außenluft, Fassadenunterkonstruktionen und Geländer (Korrosionswiderstandsklasse CRC II).
-• A4 (Werkstoff 1.4404 / X2CrNiMo17-12-2): Durch 2–2,5 % Molybdänzusatz stark erhöhter Lochfraßwiderstand (PREN ≥ 23); für chloridbelastete Umgebungen (Meeresnähe, Tausalz-Spritzwasser) – Auswahl nach Korrosionswiderstandsklasse CRC (DIN EN 1993-1-4 mit NA).
-
-Besondere Gefahren: In chloridhaltigen Hallenschwimmbad-Atmosphären können Standard-Austenite unter Zugspannung durch Spannungsrisskorrosion (SCC) versagen – oft ohne sichtbare Vorwarnung. Für tragende Bauteile gelten dort Stähle hoher Korrosionswiderstandsklasse (z. B. CRC V, 1.4529).`,
-    practicalAdvice: 'In Hallenbädern, Straßentunneln und Küstenklima keinen Standard-A2-Stahl für tragende Befestigungen einsetzen. Edelstahlwerkzeuge für die Montage verwenden, um Fremdrost-Kontaminationen (Kontakt mit Eisenabrieb) zu verhindern.'
+    elongationAtBreak: inhalt.werte.a4045Hohe,
+    recyclingRate: inhalt.werte.t100WichtigerTrägerVon,
+    description: inhalt.werte.austenitischerChromNickelBzw,
+    practicalAdvice: inhalt.werte.inHallenbädernStraßentunnelnUnd
   },
-  {
-    id: 'lead',
-    name: 'Blei (Bauwalzblei DIN EN 12588)',
-    density: 11340,
-    potential: -0.13,
-    lambda: 35,
-    alpha: 29,
-    crystalStructure: 'Kubisch flächenzentriert (kfz, Mohshärte 1,5)',
-    eModul: 16000,
-    yieldStrength: 'Rp0,2 ≈ 10 – 15 N/mm² (viskoses Kriechverhalten)',
-    standards: 'DIN EN 12588, DIN EN 1991, ZVDH-Fachregeln',
-    corrosionCategory: 'Sehr witterungsbeständig durch basische Bleicarbonatpatina',
-    poissonRatio: 0.44,
-    elongationAtBreak: 'A > 50 % (keine Kaltverfestigung)',
-    recyclingRate: '> 95 % geschlossene Kreisläufe',
-    description: `Extrem dichtes, weiches und leicht verformbares Schwermetall (Dichte 11.340 kg/m³). Da die Rekristallisationstemperatur von reinem Blei unterhalb der Raumtemperatur liegt, verfestigt sich Blei beim Kaltumformen nicht, sondern lässt sich mühelos von Hand an dreidimensionale Dachdetails, Kamineinfassungen und Ziegelanschlüsse anformen.
-
-Deckschichten & Beständigkeit: An der Atmosphäre reagiert Blei mit Kohlendioxid und Feuchte zu einer unlöslichen, dichten Schutzschicht aus basischem Bleicarbonat (2 PbCO₃ · Pb(OH)₂), die über Jahrzehnte hinweg wetterfest bleibt.
-
-Toxikologie & Korrosionsrisiken: Blei ist anfällig für Angriffe durch organische Säuren (z.B. Essigsäuredämpfe aus feuchtem Eichenholz) sowie durch stark alkalische Medien (frischer Zementmörtel). Wegen der Schwermetalltoxizität (REACH) wird Bauwalzblei heute zunehmend durch bitumenbasierte oder polymere Verbund-Bleiersatzbänder mit Aluminiumstreckgitter-Einlage substituiert.`,
-    practicalAdvice: 'Beim Einbau von Walzblech an Dachanschlüssen direkten Kontakt zu frischem Mörtel und gerbstoffreicher Eiche durch Bitumentrennlagen verhindern. Schutzkleidung tragen und Staubentwicklung meiden.'
-  },
+  inhalt.daten["metalsDb.lead"],
   {
     id: 'titanium',
-    name: 'Titan (Reintitan Grad 1 / Grad 2)',
+    name: inhalt.werte.titanReintitanGrad1,
     density: 4500,
     potential: +0.20,
     lambda: 22,
     alpha: 8.6,
-    crystalStructure: 'Hexagonal dichteste Kugelpackung (hdp, α-Titan)',
+    crystalStructure: inhalt.werte.hexagonalDichtesteKugelpackungHdp,
     eModul: 105000,
-    yieldStrength: 'Rp0,2 = 275 – 345 N/mm² (Grad 2 nach ASTM B265)',
-    standards: 'DIN EN ISO 28438, ASTM B265, DIN 17850',
-    corrosionCategory: 'Höchste Korrosionsbeständigkeit (Meerwasser, CX, chloridresistent)',
+    yieldStrength: inhalt.werte.rp02275345,
+    standards: inhalt.werte.dinEnIso28438,
+    corrosionCategory: inhalt.werte.höchsteKorrosionsbeständigkeitMeerwasser,
     poissonRatio: 0.34,
     elongationAtBreak: 'A ≥ 20 %',
-    recyclingRate: '> 90 % als Titanschrott & Ferro-Titan',
-    description: `Hochleistungs-Leichtmetall mit herausragendem Festigkeits-zu-Dichte-Verhältnis und dem geringsten thermischen Längenausdehnungskoeffizienten (α = 8,6 × 10⁻⁶/K) aller Fassadenmetalle. Dies verhindert thermisch bedingte Wellenbildung bei großflächigen Kassetten und ermöglicht verzugsfreie Fassadenkonstruktionen.
-
-Überragende Passivierung: Titan bildet unter allen atmosphärischen Bedingungen spontan eine sehr beständige, festhaftende TiO₂-Oxidschicht. Es ist in Meerwasser, saurem Regen und Industrieatmosphäre praktisch korrosionsbeständig.
-
-Einsatzbereiche: Aufgrund der anspruchsvollen Gewinnung (Kroll-Verfahren) und Schmelzführung ist Titan kostspielig und wird vorrangig bei ikonischen Monumentalbauten (z.B. Guggenheim-Museum Bilbao) eingesetzt. Es behält über Jahrhunderte seine silbergraue, samtmatte Optik ohne jeglichen Wartungsaufwand.`,
-    practicalAdvice: 'Fügen von Titanelementen auf der Baustelle nur durch mechanische Falzungen oder Nieten. Schweißarbeiten müssen unter 100 % hochreinem Schutzgas (Argon 5.0) erfolgen, da Titan ab ca. 300 °C Sauerstoff und Stickstoff aus der Luft löst und versprödet.'
+    recyclingRate: inhalt.werte.t90AlsTitanschrottFerro,
+    description: inhalt.werte.hochleistungsLeichtmetallMitHerausragend,
+    practicalAdvice: inhalt.werte.fügenVonTitanelementenAuf
   },
   {
     id: 'copper',
-    name: 'Kupfer (Bau-Kupfer Cu-DHP)',
+    name: inhalt.werte.kupferBauKupferCu,
     density: 8960,
     potential: +0.34,
     lambda: 380,
     alpha: 17,
-    crystalStructure: 'Kubisch flächenzentriert (kfz)',
+    crystalStructure: inhalt.werte.kubischFlächenzentriertKfz,
     eModul: 130000,
-    yieldStrength: 'Rp0,2 = 140 – 250 N/mm² (R220 weich / R240 halbhart)',
-    standards: 'DIN EN 1172 (Kupfer für das Bauwesen), DIN EN 1993',
-    corrosionCategory: 'Äußerst beständig, bildet schützende Patina',
+    yieldStrength: inhalt.werte.rp02140250,
+    standards: inhalt.werte.dinEn1172Kupfer,
+    corrosionCategory: inhalt.werte.äußerstBeständigBildetSchützende,
     poissonRatio: 0.34,
-    elongationAtBreak: 'A50 ≥ 33 % (R220 weich)',
-    recyclingRate: '> 95 % ohne Qualitätsverlust recyclierbar',
-    description: `Halbedelmetall mit kubisch-flächenzentriertem Gitter, überragender thermischer Leitfähigkeit (λ = 380 W/(m·K)) und sehr guter Falzbarkeit selbst bei Minusgraden. Seit Jahrhunderten der bevorzugte Werkstoff für repräsentative Dacheindeckungen, Stehfalzfassaden und Dachentwässerungen.
-
-Patinabildung im Lebenszyklus:
-Frisch gewalztes Kupfer glänzt lachsrot, oxidiert rasch zu dunkelbraunem Kupfer(I)-oxid (Cu₂O) und wandelt sich an der Atmosphäre über Jahre unter Einwirkung von CO₂, SO₂ und Feuchtigkeit in die samtartige grüne Patina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit) um. Diese Schicht ist wasserunlöslich und schützt das Metall für Jahrhunderte.
-
-Die „Fließregel“ (Fachregel): Da Kupfer im sauren Niederschlag geringe Mengen Kupferionen (Cu²⁺) freisetzt, darf ablaufendes Wasser niemals auf tieferliegende, unedlere Metalle (verzinkter Stahl, Zink, Aluminium) geleitet werden. Kupfer scheidet sich dort ab und verursacht Lochfraß am unedleren Metall.`,
-    practicalAdvice: 'Fließregel zwingend einhalten: Kupferrinnen niemals über verzinkte Fallrohre entwässern! Kupferbefestigungen nur mit Edelstahlschrauben (A4) oder Kupfernägeln ausführen.'
+    elongationAtBreak: inhalt.werte.a5033R220Weich,
+    recyclingRate: inhalt.werte.t95OhneQualitätsverlustRecyclierbar,
+    description: inhalt.werte.halbedelmetallMitKubischFlächenzentriert,
+    practicalAdvice: inhalt.werte.fließregelZwingendEinhaltenKupferrinnen
   },
-  {
-    id: 'corten',
-    name: 'Wetterfester Baustahl (Cortenstahl S355J2W)',
-    density: 7850,
-    potential: -0.40,
-    lambda: 48,
-    alpha: 12,
-    crystalStructure: 'Raumzentriert kubisch (krz)',
-    eModul: 210000,
-    yieldStrength: 'fy = 355 N/mm² (Zugfestigkeit Rm = 470 – 630 N/mm²)',
-    standards: 'DIN EN 10025-5, DASt-Richtlinie 007, DIN EN 1993',
-    corrosionCategory: 'Selbstschützend unter zyklischer Feuchte-Trocken-Einwirkung',
-    poissonRatio: 0.30,
-    elongationAtBreak: 'A ≥ 22 %',
-    recyclingRate: '> 98 % voll recyclierbar im Schrottkreislauf',
-    description: `Niedriglegierter Konstruktionsstahl mit Beimengungen von Kupfer (0,25–0,55 %), Chrom, Nickel und Phosphor. Unter freier Bewitterung bildet Cortenstahl durch den kontinuierlichen Wechsel von Befeuchtung (Regen) und vollständiger Austrocknung (Sonne/Wind) binnen 1,5 bis 3 Jahren eine außergewöhnlich dichte, fest haftende Sperrschicht (Edelrost-Patina) aus amorphem Eisenoxihydroxid und dotiertem α-FeOOH.
-
-Schutzmechanismus: Die Sperrschicht verlangsamt die Sauerstoffdiffusion an den Grundstahl drastisch. Der jährliche Materialabtrag sinkt nach Ausbildung der Patina auf unter 2–5 µm/Jahr ab, sodass auf Lackierungen oder Verzinkungen vollständig verzichtet werden kann.
-
-Kritische Einsatzgrenzen: Cortenstahl benötigt zwingend vollständige Trocknungszyklen. Im Erdreich, im permanenten Spritzwasserbereich mit Tausalzkontakt oder in unbelüfteten Hohlräumen versagt der Passivierungsmechanismus und das Material rostet wie unlegierter Stahl kontinuierlich durch.`,
-    practicalAdvice: 'Bei Fassadenkonstruktionen das Abwaschen von braunem Rostwasser während der 2- bis 3-jährigen Patinierungsphase baulich einplanen: Vorstehende Bauteile, helle Natursteine oder Sichtbetonflächen müssen vor abtropfendem Rostwasser durch Tropfkanten und Rinnen geschützt werden.'
-  },
-  {
-    id: 'brass',
-    name: 'Messing (CuZn-Legierung CuZn39Pb3 / CW614N)',
-    density: 8470,
-    potential: -0.10,
-    lambda: 120,
-    alpha: 19,
-    crystalStructure: 'Mischkristall aus kfz (α-Phase) und krz (β-Phase)',
-    eModul: 105000,
-    yieldStrength: 'Rp0,2 = 250 – 350 N/mm² (Rm = 450 – 550 N/mm²)',
-    standards: 'DIN EN 12164, DIN EN 12165, DIN EN 12449',
-    corrosionCategory: 'Gute Witterungsbeständigkeit an normaler Atmosphäre',
-    poissonRatio: 0.35,
-    elongationAtBreak: 'A ≥ 12 – 18 %',
-    recyclingRate: '> 95 % als Späne & Gussrücklauf',
-    description: `Kupfer-Zink-Knetlegierung mit ca. 58 % Kupfer, 39 % Zink und geringem Bleianteil zur Spanbrechung. Häufig verwendet für hochwertige Architektur- und Türbeschläge, Fassadenverankerungen, Sanitärinstallationen und hochpräzise mechanische Befestigungsmittel.
-
-Gefüge & Festigkeit: Das zweiphasige (α + β)-Gefüge vereint gute Festigkeit mit hoher Härte und ausgezeichneter Warmumformbarkeit beim Strangpressen. An trockener Luft bildet sich eine schützende Zinkoxid-Kupferoxid-Deckschicht.
-
-Besondere Korrosionsrisiken: Bei gleichzeitiger Einwirkung von Zugspannungen und ammoniakhaltiger Umgebung (z.B. Stallungen, Fäulnisgase, feuchtes Holz mit Amin-Ausgasungen) neigt unentspanntes Messing zu interkristalliner Spannungsrisskorrosion (sog. Saisonrissigkeit). In stark chloridhaltigem Wasser kann es zudem zur "Entzinkung" kommen, bei der das Zink selektiv herausgelöst wird und ein poröses, mechanisch instabiles Kupferschwämmchen zurückbleibt.`,
-    practicalAdvice: 'In landwirtschaftlichen Bauten und Schwimmbädern keine einfachen Standard-Messingdübel oder -Schrauben unter Zuglast einsetzen. Hierfür entzinkungsbeständiges Messing (DZR) oder Edelstahl A4 wählen.'
-  },
-  {
-    id: 'cast_iron',
-    name: 'Gusseisen mit Kugelgraphit (Sphäroguss EN-GJS)',
-    density: 7200,
-    potential: -0.42,
-    lambda: 36,
-    alpha: 11.5,
-    crystalStructure: 'Ferritisch-perlitische Matrix mit kugelförmigem Graphit',
-    eModul: 170000,
-    yieldStrength: 'Rp0,2 = 250 – 400 N/mm² (EN-GJS-400 bis EN-GJS-600)',
-    standards: 'DIN EN 1563 (Sphäroguss), DIN EN 124 (Schachtabdeckungen)',
-    corrosionCategory: 'Hohe Beständigkeit gegen Erdreich- und Abwasserkorrosion',
-    poissonRatio: 0.28,
-    elongationAtBreak: 'A ≥ 12 – 18 % (EN-GJS-400-18)',
-    recyclingRate: '> 95 % in Gießereien',
-    description: `Eisen-Kohlenstoff-Gusswerkstoff mit 3,2 bis 3,8 % Kohlenstoff. Durch eine gezielte Schmelzenbehandlung mit Magnesium erstarrt der freie Kohlenstoff nicht in scharfkantigen Lamellen (wie beim spröden Grauguss EN-GJL), sondern in Form feinverteilter mikroskopischer Graphitkugeln (Nodules).
-
-Mechanische Überlegenheit: Die Kugelform verhindert Spannungsspitzen an den Graphiträndern. Dadurch erreicht Sphäroguss stahlähnliche Festigkeiten bei hervorragender plastischer Dehnbarkeit (Bruchdehnung A bis 18 %) und hoher Kerbschlagzähigkeit. Zudem besitzt er erstklassige Schwingungsdämpfungseigenschaften.
-
-Bauanwendungen: Der Standardwerkstoff für hochbelastete Kanalisationsguss-Erzeugnisse nach DIN EN 124 (Schachtabdeckungen Klassen D400 bis F900 im Straßen- und Flughafenbau), Druckrohrleitungen für Trinkwasser und Abwasser sowie historisierende Stützen und Brückenauflager. Er ist wesentlich korrosionsbeständiger gegenüber Erdreich und Grundwasser als unlegierter Walzstahl.`,
-    practicalAdvice: 'Gusseiserne Bauteile sind für Schweißverbindungen auf der Baustelle ungeeignet (Gefahr von Aufhärtung und Rissbildung). Verbindungen müssen formschlüssig oder über Flansche und Schrauben ausgeführt werden.'
-  }
+  inhalt.daten["metalsDb.corten"],
+  inhalt.daten["metalsDb.brass"],
+  inhalt.daten["metalsDb.cast_iron"]
 ];
 
 export default function BpMetallisch() {
@@ -382,19 +212,19 @@ export default function BpMetallisch() {
 
   const getCorrosionRating = (val: number, an: string, cat: string) => {
     if (an === cat) {
-      return { rating: 'Keine (Gleiche Metalle)', color: 'bg-emerald-100 text-emerald-800 border-emerald-300', icon: 'check', desc: 'Identisches Material. Es tritt kein elektrochemischer Stromfluss auf.' };
+      return inhalt.daten.getCorrosionRating;
     }
     // Copper is extremely noble, aluminium or zinc next to it is disastrous
     if ((an === 'zinc' || an === 'aluminum' || an === 'steel' || an === 'corten') && cat === 'copper') {
-      return { rating: 'Sehr hohes Korrosionsrisiko', color: 'bg-red-100 text-red-900 border-red-300', icon: 'danger', desc: 'Große Potentialdifferenz zum edlen Kupfer: In feuchter Außenluft korrodieren kleine unedle Verbindungsmittel schnell (Flächenregel beachten).' };
+      return inhalt.daten.getCorrosionRating_2;
     }
     if (val <= 0.15) {
-      return { rating: 'Sicher (Geringes Risiko)', color: 'bg-emerald-150 text-emerald-800 border-emerald-300', icon: 'check', desc: 'Geringes Potentialgefälle (ΔU ≤ 150 mV). Bei normalen Witterungsbedingungen im Außenbereich unbedenklich.' };
+      return inhalt.daten.getCorrosionRating_3;
     }
     if (val <= 0.35) {
-      return { rating: 'Bedenklich (Nutzung einschränken)', color: 'bg-amber-100 text-amber-800 border-amber-300', icon: 'warning', desc: 'Mäßiges Potentialgefälle. Für trockene Innenräume sicher; im Außenbereich ist eine elektrische Trennung (Polyamid- oder EPDM-Dichtscheiben) zwingend erforderlich.' };
+      return inhalt.daten.getCorrosionRating_4;
     }
-    return { rating: 'Hohes Korrosionsrisiko', color: 'bg-red-100 text-red-800 border-red-200', icon: 'danger', desc: 'Starkes Potentialgefälle. Das unedlere Metall opfert sich rasch auf. Direkten mechanischen Kontakt unbedingt verhindern!' };
+    return inhalt.daten.getCorrosionRating_5;
   };
 
   const corrosionResult = getCorrosionRating(deltaE, metalAnode, metalCathode);
@@ -409,24 +239,18 @@ export default function BpMetallisch() {
             <Flame className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Metallische Bauprodukte: Tragwerk, Hülle &amp; Verbindungstechnik
-            </h2>
-            <p className="text-xs text-text-main/70 mt-0.5">
-              Werkstoffliche Charakteristiken, physikalische Kennwerte, CE-Leistungsprofile &amp; Bimetallkorrosion
-            </p>
+            <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.metallischeBauprodukteTragwerkHülle} /></h2>
+            <p className="text-xs text-text-main/70 mt-0.5"><MdText text={inhalt.texte.werkstofflicheCharakteristikenPhysikalis} /></p>
           </div>
         </div>
-        <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Metalle haben hohe Zug- und Fließfestigkeiten und eine gute Duktilität. Wegen Wärmedehnung, Wärmeleitung und Korrosionsneigung sind Temperaturverformungen und Kontaktkorrosion konstruktiv zu beachten.
-        </p>
+        <p className="text-sm text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.metalleHabenHoheZug} /></p>
       </div>
 
       {/* Main Material Database Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left hand selection list */}
         <div className="lg:col-span-4 space-y-3">
-          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block">Verfügbare Konstruktionsmetalle:</span>
+          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.verfügbareKonstruktionsmetalle} /></span>
           
           <div className="flex flex-col gap-2 max-h-[580px] overflow-y-auto pr-1">
             {metalsDb.map((m) => (
@@ -457,11 +281,9 @@ export default function BpMetallisch() {
           <div className="bg-amber-50/80 p-4 border border-amber-250 rounded-xl space-y-2 text-xs text-amber-900 mt-2">
             <div className="flex items-center gap-1.5 font-bold">
               <AlertTriangle className="text-amber-800" size={14} />
-              <span>Die Anoden/Kathoden "Flächenregel"</span>
+              <span><MdText text={inhalt.texte.dieAnodenKathodenFlächenregel} /></span>
             </div>
-            <p className="font-normal text-[11px] text-amber-950/80 leading-relaxed">
-              Besonders kritisch ist Kontaktkorrosion, wenn ein <strong>kleines unedleres Metall (z. B. feuerverzinkte Schraube)</strong> in Verbindung steht mit einem <strong>großen edleren Metall (z. B. Edelstahlblech oder Kupferbahn)</strong>. Hier bündelt sich der Stromfluss auf kleinstem Raum und kann das Verbindungsmittel in kurzer Zeit zerstören.
-            </p>
+            <p className="font-normal text-[11px] text-amber-950/80 leading-relaxed"><MdText text={inhalt.texte.besondersKritischIstKontaktkorrosion} /></p>
           </div>
         </div>
 
@@ -470,11 +292,11 @@ export default function BpMetallisch() {
           <div className="space-y-5">
             <div className="border-b border-home-grau/15 pb-4 flex justify-between items-start flex-wrap gap-2">
               <div>
-                <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">LEISTUNGSWERTE NACH BAUPVO / DIN EN</span>
+                <span className="text-xs font-bold text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.leistungswerteNachBaupvoDin} /></span>
                 <h3 className="text-xl font-extrabold text-text-main mt-0.5">{selectedMetal.name}</h3>
               </div>
               <div className="bg-slate-50 border border-home-grau/15 px-3 py-1.5 rounded-lg text-right">
-                <span className="text-[10px] text-text-main/50 block leading-tight font-medium">Grenz-Potential (U₀)</span>
+                <span className="text-[10px] text-text-main/50 block leading-tight font-medium"><MdText text={inhalt.texte.grenzPotentialU} /></span>
                 <span className="text-sm font-extrabold text-slate-800 font-mono">{(selectedMetal.potential > 0 ? '+' : '') + formatDeZahl(selectedMetal.potential, 2)} V</span>
               </div>
             </div>
@@ -482,15 +304,15 @@ export default function BpMetallisch() {
             {/* Quick specifications grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Dichte (Rohdichte)</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.dichteRohdichte} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMetal.density.toLocaleString('de-DE')} kg/m³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmeleitfähigkeit λ</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmeleitfähigkeit} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMetal.lambda)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmedehnung α</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmedehnung} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMetal.alpha)} × 10⁻⁶/K</span>
               </div>
             </div>
@@ -499,8 +321,7 @@ export default function BpMetallisch() {
             <div className="p-5 bg-slate-50/90 rounded-xl border border-home-grau/25 space-y-3.5 leading-relaxed font-sans">
               <div className="flex items-center justify-between border-b border-home-grau/15 pb-2.5 flex-wrap gap-2">
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                  <Sparkles size={15} /> Werkstoffliche Charakteristik:
-                </span>
+                  <Sparkles size={15} /><MdText text={inhalt.texte.werkstofflicheCharakteristik} /></span>
                 {selectedMetal.standards && (
                   <span className="text-[10px] font-mono font-bold bg-white text-slate-700 px-2 py-0.5 rounded border border-home-grau/25 shadow-2xs">
                     Normung: {selectedMetal.standards}
@@ -516,37 +337,37 @@ export default function BpMetallisch() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-3 border-t border-home-grau/15">
                 {selectedMetal.crystalStructure && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">Kristallgitter / Gefüge</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.kristallgitterGefüge} /></span>
                     <span className="text-xs font-bold text-slate-800">{selectedMetal.crystalStructure}</span>
                   </div>
                 )}
                 {selectedMetal.eModul && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">E-Modul (Steifigkeit)</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.eModulSteifigkeit} /></span>
                     <span className="text-xs font-bold font-mono text-slate-800">{selectedMetal.eModul.toLocaleString('de-DE')} N/mm²</span>
                   </div>
                 )}
                 {selectedMetal.yieldStrength && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">Streckgrenze (fy / Rp0,2)</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.streckgrenzeFyRp02} /></span>
                     <span className="text-xs font-bold font-mono text-slate-800">{selectedMetal.yieldStrength}</span>
                   </div>
                 )}
                 {selectedMetal.poissonRatio && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">Querdehnzahl ν (Poisson)</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.querdehnzahlPoisson} /></span>
                     <span className="text-xs font-bold font-mono text-slate-800">{formatDeZahl(selectedMetal.poissonRatio, 2)} [-]</span>
                   </div>
                 )}
                 {selectedMetal.elongationAtBreak && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">Bruchdehnung (Duktilität)</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.bruchdehnungDuktilität} /></span>
                     <span className="text-xs font-bold font-mono text-slate-800">{selectedMetal.elongationAtBreak}</span>
                   </div>
                 )}
                 {selectedMetal.recyclingRate && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
-                    <span className="text-[10px] text-text-main/50 block font-bold uppercase">Recycling &amp; Zirkularität</span>
+                    <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.recyclingZirkularität} /></span>
                     <span className="text-xs font-bold text-emerald-700">{selectedMetal.recyclingRate}</span>
                   </div>
                 )}
@@ -556,7 +377,7 @@ export default function BpMetallisch() {
                 <div className="bg-amber-50/90 border border-amber-200/80 p-3 rounded-lg text-[11px] text-amber-950 flex items-start gap-2 mt-2">
                   <Info size={14} className="text-amber-800 mt-0.5 shrink-0" />
                   <div>
-                    <strong className="font-bold text-amber-900">Praxis- &amp; Ausführungshinweis: </strong>
+                    <strong className="font-bold text-amber-900"><MdText text={inhalt.texte.praxisAusführungshinweis} /></strong>
                     <span>{selectedMetal.practicalAdvice}</span>
                   </div>
                 </div>
@@ -566,7 +387,7 @@ export default function BpMetallisch() {
 
           <div className="bg-slate-50 p-3 border border-home-grau/10 rounded-xl text-xs flex gap-2 items-center text-text-main/70 mt-4 font-normal">
             <Info size={14} className="text-shiraz shrink-0" />
-            <span>Aluminium weist eine um ein Vielfaches höhere Wärmeleitung (220 W/(m·K)) auf als Edelstahl (15 W/(m·K)). Wärmebrücken an Fassadenkonsolen müssen daher thermisch entkoppelt werden!</span>
+            <span><MdText text={inhalt.texte.aluminiumWeistEineUm} /></span>
           </div>
         </div>
       </div>
@@ -575,21 +396,18 @@ export default function BpMetallisch() {
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
         <div className="border-b border-home-grau/15 pb-4">
           <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Opferanoden &amp; Kontaktkorrosions-Prüfung
-          </h3>
-          <p className="text-xs text-text-main/70 mt-1">
-            Interaktive Verbindungsmittel-Kompatibilitätsprüfung nach der galvanischen Spannungsreihe (Lehrmodell; Begriffe nach DIN EN ISO 8044)
-          </p>
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.opferanodenKontaktkorrosionsPrüfung} /></h3>
+          <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.interaktiveVerbindungsmittelKompatibilit} /></p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
           {/* Controls Column (col span 5) */}
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider">Verbindungspaar auswählen</span>
+            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider"><MdText text={inhalt.texte.verbindungspaarAuswählen} /></span>
             
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-text-main text-shiraz">1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode):</label>
-              <select aria-label="1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode)"
+              <label className="text-xs font-bold text-text-main text-shiraz"><MdText text={inhalt.texte.t1MetallMeistDas} /></label>
+              <select aria-label={inhalt.werte.t1MetallMeistDas}
                 value={metalAnode}
                 onChange={(e) => setMetalAnode(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -603,8 +421,8 @@ export default function BpMetallisch() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-text-main text-slate-700">2. Metall (Profilblech, Abdeckung oder Schiene - Kathode):</label>
-              <select aria-label="2. Metall (Profilblech, Abdeckung oder Schiene - Kathode)"
+              <label className="text-xs font-bold text-text-main text-slate-700"><MdText text={inhalt.texte.t2MetallProfilblechAbdeckung} /></label>
+              <select aria-label={inhalt.werte.t2MetallProfilblechAbdeckung}
                 value={metalCathode}
                 onChange={(e) => setMetalCathode(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -619,12 +437,12 @@ export default function BpMetallisch() {
 
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-[11px] text-text-main/70 space-y-1">
               <div className="flex justify-between font-mono">
-                <span>Spannungsdifferenz ΔU₀:</span>
+                <span><MdText text={inhalt.texte.spannungsdifferenzU} /></span>
                 <strong className="text-slate-800">{formatDeZahl(deltaE, 2)} V ({formatDeZahl((deltaE * 1000), 0)} mV)</strong>
               </div>
               <div className="flex justify-between font-mono text-[10px]">
-                <span>Grenzschwelle (Lehrannahme):</span>
-                <span className="text-slate-500">≤ 150 mV empfohlen</span>
+                <span><MdText text={inhalt.texte.grenzschwelleLehrannahme} /></span>
+                <span className="text-slate-500"><MdText text={inhalt.texte.t150MvEmpfohlen} /></span>
               </div>
             </div>
           </div>
@@ -632,7 +450,7 @@ export default function BpMetallisch() {
           {/* Result Column (col span 7) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-slate-50/60 p-5 rounded-xl border border-home-grau/25">
             <div>
-              <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider block mb-2">Elektrochemische Risikobewertung:</span>
+              <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider block mb-2"><MdText text={inhalt.texte.elektrochemischeRisikobewertung} /></span>
               <div className={`p-4 rounded-xl border ${corrosionResult.color} space-y-2`}>
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-sm flex items-center gap-2">
@@ -649,7 +467,7 @@ export default function BpMetallisch() {
             </div>
 
             <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-600 space-y-1">
-              <p><strong>Praxis-Regel:</strong> Im Freien müssen ungleiche Metalle durch isolierende Zwischenlagen (z.B. EPDM-Unterlegscheiben, Polyamid-Hülsen, Bitumenanstriche) elektrisch voneinander getrennt werden.</p>
+              <p><MdText text={inhalt.texte.praxisRegelImFreien} /></p>
             </div>
           </div>
         </div>
@@ -659,11 +477,8 @@ export default function BpMetallisch() {
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
         <div className="border-b border-home-grau/15 pb-4">
           <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Calculator className="text-shiraz" /> Blech- &amp; Profil-Gewichtsrechner
-          </h3>
-          <p className="text-xs text-text-main/70 mt-1">
-            Ermittlung von Eigenlasten gk [kN/m²] und Gesamtmasse für Kranlogistik, Transport und statische Bemessung
-          </p>
+            <Calculator className="text-shiraz" /><MdText text={inhalt.texte.blechProfilGewichtsrechner} /></h3>
+          <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.ermittlungVonEigenlastenGk} /></p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -681,8 +496,8 @@ export default function BpMetallisch() {
           </div>
 
           <div>
-            <label className="text-xs font-bold text-text-main block mb-1">Blechdicke (mm):</label>
-            <input aria-label="Blechdicke (mm)"
+            <label className="text-xs font-bold text-text-main block mb-1"><MdText text={inhalt.texte.blechdickeMm} /></label>
+            <input aria-label={inhalt.werte.blechdickeMm}
               type="number"
               step="0.1"
               min="0.4"
@@ -694,8 +509,8 @@ export default function BpMetallisch() {
           </div>
 
           <div>
-            <label className="text-xs font-bold text-text-main block mb-1">Blechbreite (m):</label>
-            <input aria-label="Blechbreite (m)"
+            <label className="text-xs font-bold text-text-main block mb-1"><MdText text={inhalt.texte.blechbreiteM} /></label>
+            <input aria-label={inhalt.werte.blechbreiteM}
               type="number"
               step="0.05"
               min="0.1"
@@ -707,8 +522,8 @@ export default function BpMetallisch() {
           </div>
 
           <div>
-            <label className="text-xs font-bold text-text-main block mb-1">Blechlänge (m):</label>
-            <input aria-label="Blechlänge (m)"
+            <label className="text-xs font-bold text-text-main block mb-1"><MdText text={inhalt.texte.blechlängeM} /></label>
+            <input aria-label={inhalt.werte.blechlängeM}
               type="number"
               step="0.1"
               min="0.1"
@@ -723,14 +538,14 @@ export default function BpMetallisch() {
         {/* Calculator Output */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
-            <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Flächenbezogene Masse</span>
+            <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.flächenbezogeneMasse} /></span>
             <span className="text-lg font-extrabold font-mono text-slate-800">
               {formatDeZahl(((sheetThick / 1000) * calcMetal.density), 2)} kg/m²
             </span>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
-            <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Charakteristisches Eigengewicht (gk)</span>
+            <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.charakteristischesEigengewichtGk} /></span>
             <span className="text-lg font-extrabold font-mono text-shiraz">
               {formatDeZahl((((sheetThick / 1000) * calcMetal.density * 9.81) / 1000), 3)} kN/m²
             </span>
@@ -748,39 +563,36 @@ export default function BpMetallisch() {
       {/* Normative Bauprodukte Matrix */}
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
         <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <ShieldCheck className="text-shiraz" /> Bauprodukt-Gruppen &amp; Nachweissysteme (EN 1090)
-        </h3>
-        <p className="text-xs text-text-main/70 mb-4 font-normal">
-          Tragende Stahl- und Aluminiumbauteile werden nach DIN EN 1090 hergestellt (Herstellerzertifizierung nach EN 1090-1, Ausführungsklassen EXC nach EN 1090-2/-3) und nach genormten Güten spezifiziert:
-        </p>
+          <ShieldCheck className="text-shiraz" /><MdText text={inhalt.texte.bauproduktGruppenNachweissystemeEn} /></h3>
+        <p className="text-xs text-text-main/70 mb-4 font-normal"><MdText text={inhalt.texte.tragendeStahlUndAluminiumbauteile} /></p>
         <div className="overflow-x-auto rounded-xl border border-home-grau/15 bg-white">
           <table className="w-full text-xs text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-home-grau/15 text-text-main/80 font-bold">
-                <th className="p-3">Produktgruppe / System</th>
-                <th className="p-3">Typische Erzeugnisse &amp; Spezifikationen</th>
-                <th className="p-3">Güteklassen / Zertifikate</th>
-                <th className="p-3">Bedeutung im modernen Tragwerks- &amp; Leichtbau</th>
+                <th className="p-3"><MdText text={inhalt.texte.produktgruppeSystem} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.typischeErzeugnisseSpezifikationen} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.güteklassenZertifikate} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.bedeutungImModernenTragwerks} /></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-text-main/80">
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Dach- und Fassadenprofile (Feinbleche)</td>
-                <td className="p-3">Trapezbleche, Wellprofile, Sandwichelemente, korrosionsschützende Schmelztauchveredelungen.</td>
-                <td className="p-3 font-mono">DIN EN 10346 (S220GD - S550GD), EN 10169 (Organische Bandbeschichtungen)</td>
-                <td className="p-3">Weit verbreitet im großflächigen Industrie- und Hallenleichtbau im Wand- und Dachbereich.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.dachUndFassadenprofileFeinbleche} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.trapezblecheWellprofileSandwichelementeK} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.dinEn10346S220gd} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.weitVerbreitetImGroßflächigen} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Form- und Profilstähle (Profilwalzerzeugnisse)</td>
-                <td className="p-3">Warmgewalzte Träger (HEB, IPE, HEA), U-Profile, Hohlprofile für Schweißkonstruktionen.</td>
-                <td className="p-3 font-mono">DIN EN 10025 (S235JR bis S460QL), EN 1090-2 (EXC1-EXC4)</td>
-                <td className="p-3">Rückgrat des klassischen Skelett-, Hochhaus- und Brückenbaus sowie für Rahmenkonstruktionen.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.formUndProfilstähleProfilwalzerzeugnisse} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.warmgewalzteTrägerHebIpe} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.dinEn10025S235jr} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.rückgratDesKlassischenSkelett} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Bewehrungsstähle (Betonstähle)</td>
-                <td className="p-3">Gerippter Betonstahl in Stäben, standardisierte Betonstahlmatten (Q- und R-Matten), Bewehrungskörbe.</td>
-                <td className="p-3 font-mono">DIN 488 (B500A, B500B), Gütezeichen Betonstahl</td>
-                <td className="p-3">Verbundpartner im Stahlbetonbau zur Aufnahme von Zugspannungen.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.bewehrungsstähleBetonstähle} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.gerippterBetonstahlInStäben} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.din488B500aB500b} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.verbundpartnerImStahlbetonbauZur} /></td>
               </tr>
             </tbody>
           </table>
@@ -793,15 +605,11 @@ export default function BpMetallisch() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Eigenlast und Wärmedehnung einer Titanzink-Dachbahn"
+          title={inhalt.werte.anwendungsbeispielEigenlastUndWärmedehnu}
           zielGleichung="G_k = L \cdot W \cdot \frac{t}{1000} \cdot \rho \cdot 9{,}81 \cdot 10^{-3}, \quad \Delta L = L \cdot \alpha_T \cdot \Delta T"
-          normQuelle="Lehrbeispiel (ρ = 7200 kg/m³, α_T ≈ 22 · 10⁻⁶ 1/K für Titanzink in Walzrichtung)"
-          schritte={[
-            { titel: '1. Eigenlast einer Bahn', formel: 'G_k = 10 \\cdot 0{,}5 \\cdot 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}25\\,\\text{kN}', erklaerung: 'Länge 10 m, Breite 0,5 m, Dicke 0,7 mm (≈ 25 kg).' },
-            { titel: '2. Flächenlast', formel: 'g_k = 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}05\\,\\text{kN/m}^2', erklaerung: 'Sehr leichte Deckung.' },
-            { titel: '3. Wärmedehnung', formel: '\\Delta L = 10\\,000 \\cdot 22 \\cdot 10^{-6} \\cdot 100 = 22\\,\\text{mm}', erklaerung: 'Temperaturspanne der Dachoberfläche ca. 100 K (−20 °C bis +80 °C).' },
-          ]}
-          ergebnisHinweis="22 mm Längenänderung auf 10 m: Titanzinkbahnen brauchen Schiebehafte und begrenzte Bahnlängen – fest fixierte Bahnen reißen oder wellen sich."
+          normQuelle={inhalt.werte.lehrbeispiel7200KgM}
+          schritte={inhalt.daten["BpMetallisch.schritte"]}
+          ergebnisHinweis={inhalt.werte.t22MmLängenänderungAuf}
         />
       </div>
 
@@ -814,40 +622,10 @@ export default function BpMetallisch() {
           { title: "Nichteisenmetall", url: "https://de.wikipedia.org/wiki/Nichteisenmetall" },
           { title: "Verzinken", url: "https://de.wikipedia.org/wiki/Verzinken" }
         ]} 
-        literatur={[ 
-          'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3 (Bauwerk Verlag)', 
-                    'Bargel, H.-J.; Schulze, G.: Werkstoffkunde (Springer Vieweg)',
-          'Kupferverband e. V. (ehem. Deutsches Kupferinstitut): Informationsdrucke \'Kupfer in der Architektur\' (03/2020), \'Dachdeckung und Außenwandbekleidung mit Kupfer\' (05/2002), \'Nachhaltiges Bauen mit Kupfer\' (08/2022)'
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)' }, 
-          { title: 'DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)' }, 
-          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)' },
-          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)' },
-          { title: 'DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)' }
-        ]} 
-        weblinks={[
-          { title: 'bauforumstahl e.V. – Bemessungshilfen & Nachhaltigkeitsdaten', url: 'https://www.bauforumstahl.de/' },
-          { title: 'Gütegemeinschaft Verzinken e.V. – Korrosionsschutz durch Feuerverzinken', url: 'https://www.feuerverzinken.com/' },
-          { title: 'Informationsplattform Nichtrostender Stahl (ISER)', url: 'https://www.edelstahl-rostfrei.de/' }
-        ]}
-        formeln={[
-          { 
-            formel: 'G_k = L \\cdot W \\cdot \\frac{t}{1000} \\cdot \\rho_{\\text{metal}} \\cdot 9{,}81 \\cdot 10^{-3} \\quad [\\text{kN}]', 
-            erklaerung: 'Charakteristische Eigengewichtslast Gk flächiger Bleche: L = Länge [m], W = Breite [m], t = Blechdicke [mm], rho = Dichte [kg/m³].',
-            quelle: 'DIN EN 1991-1-1'
-          },
-          { 
-            formel: '\\Delta U_0 = |U_{\\text{Kathode}} - U_{\\text{Anode}}| \\ge 150\\,\\text{mV}', 
-            erklaerung: 'Faustregel: Ab Potentialdifferenzen von etwa 150–200 mV (in der praktischen Spannungsreihe im jeweiligen Medium) steigt die Gefahr der Kontaktkorrosion des unedleren Metalls deutlich; entscheidend sind auch Flächenverhältnis und Elektrolyt.',
-            quelle: 'Lehrannahme (Begriffe nach DIN EN ISO 8044)'
-          },
-          {
-            formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T \\quad [\\text{mm}]',
-            erklaerung: 'Thermische Längenänderung von Metallbauteilen: L0 = Ausgangslänge [m], alpha_T = thermischer Längenausdehnungskoeffizient [1/K], delta_T = Temperaturdifferenz [K].',
-            quelle: 'DIN EN 1991-1-5'
-          }
-        ]} 
+        literatur={inhalt.daten["BpMetallisch.literatur"]} 
+        regelwerke={inhalt.daten["BpMetallisch.regelwerke"]} 
+        weblinks={inhalt.daten["BpMetallisch.weblinks"]}
+        formeln={inhalt.daten["BpMetallisch.formeln"]} 
       />
     </div>
   );

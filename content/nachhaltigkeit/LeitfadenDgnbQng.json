@@ -1,0 +1,57 @@
+{
+  "texte": {
+    "schritt5Von5": "Schritt 5 von 5",
+    "dgnbQngZertifizierungsprozessQualitätssi": "DGNB- & QNG-Zertifizierungsprozess (Qualitätssiegel)",
+    "nachAbschlussDerBauteilbilanzierung": "Nach Abschluss der Bauteilbilanzierung werden die Einzelergebnisse zum Gebäude zusammengesetzt. In der Praxis dienen zwei führende Zertifizierungs- und Qualitätssiegel-Verfahren zur Validierung der Nachhaltigkeit:",
+    "einGanzheitlicherFreiwilligerSystemansat": "Ein ganzheitlicher, freiwilliger Systemansatz der Deutschen Gesellschaft für Nachhaltiges Bauen. Bewertet 6 Themenfelder über 50 Jahre Betrachtungszeitraum.",
+    "auszeichnungsklassenPlatin80Gold": "Auszeichnungsklassen: Platin (≥ 80%), Gold (≥ 65%), Silber (≥ 50%), Bronze (≥ 35%).",
+    "verbindetÖkobilanzGwpOdp": "Verbindet Ökobilanz (GWP, ODP) mit ökonomischen Lebenszykluskosten (LCC) und soziokulturellem Komfort.",
+    "fördertSortenreinenModulrückbauDurch": "Fördert sortenreinen Modulrückbau durch CE-Bonuspunkte.",
+    "qngSiegelBmwsb": "QNG-Siegel (BMWSB)",
+    "dasStaatlicheQualitätssiegelNachhaltiges": "Das staatliche **Qualitätssiegel Nachhaltiges Gebäude** ist Voraussetzung für die Inanspruchnahme der zinsgünstigen KFN-Förderung (Klimafreundlicher Neubau) der KfW-Bank.",
+    "qngPlus24Kg": "**QNG-Plus:** ≤ 24 kg CO₂-eq/(m² NRF · a) (LCA über 50 Jahre; PENRT ≤ 96 kWh/(m² NRF · a)).",
+    "qngPremium20Kg": "**QNG-Premium:** ≤ 20 kg CO₂-eq/(m² NRF · a) (PENRT ≤ 64 kWh/(m² NRF · a); erfordert z. B. sehr gut gedämmten Holz- oder Hybridbau).",
+    "striktePflichtenZurSchadstofffreien": "Strikte Pflichten zur schadstofffreien Baustoffwahl auf der Baustelle.",
+    "schadstoffvermeidungAlsQngAusschlusskrit": "Schadstoffvermeidung als QNG-Ausschlusskriterium:",
+    "dasBesteGebäudeGwp": "Das beste Gebäude-GWP nützt nichts, wenn schadstoffhaltige Materialien verbaut werden. Die QNG-Zertifizierung definiert strikte Grenzwerte für Organische Halogenverbindungen, Biozide, Blei und flüchtige organische Verbindungen (VOCs) in Farben, Klebern und Dämmstoffen. Machen Sie sich mit diesen Anforderungen im Modul **Schadstoffe** sowie im Modul **Farben & Lacke** vertraut, um Planungsfehler im Zertifizierungsprozess zu verhindern!",
+    "zirkularitätsmetrikenUrbanMiningIndex": "Zirkularitätsmetriken: Urban Mining Index (UMI) & Materialpässe",
+    "zirkuläresBauen": "Zirkuläres Bauen",
+    "moderneÖkobilanzierungenUndDgnb": "Moderne Ökobilanzierungen und DGNB-/QNG-Audits bewerten neben GWP zunehmend die Kreislauffähigkeit von Bauteilen:",
+    "urbanMiningIndexUmi": "Urban Mining Index (UMI):",
+    "gibtAnWieViel": "Gibt an, wie viel Prozent der Baustoffmasse nach dem Rückbau tatsächlich wieder hochwertig in den Stoffkreislauf zurückgeführt werden können (Closed-Loop-Recyclingquote abzüglich Downcycling und Deponieanteil).",
+    "materialpässeMadasterDinSpec": "Materialpässe (Madaster / DIN SPEC 91525):",
+    "digitaleInventarisierungAllerVerbauten": "Digitale Inventarisierung aller verbauten Werkstoffe, Schadstofffreiheit und Demontagepfade auf Bauteilebene für zukünftige Rückbauaudits.",
+    "trennbarkeitVonVerbundbauteilen": "Trennbarkeit von Verbundbauteilen:",
+    "präferenzMechanischLösbarerVerbindungen": "Präferenz mechanisch lösbarer Verbindungen (Schrauben, Stecken) statt vollflächiger Verklebungen oder Verbundestrichen, um sortenreines Trennen im Rückbau zu garantieren.",
+    "qngSchadstoffvermeidungQualitätsstufenQs": "QNG-Schadstoffvermeidung: Qualitätsstufen (QS1-QS4) nach Steckbrief 313",
+    "nebenDenGwpGrenzdaten": "Neben den GWP-Grenzdaten ist die absolute \\*\\*Schadstofffreiheit\\*\\* das schärfste Ausschlusskriterium im QNG. Alle bauchemischen Produkte müssen in Qualitätsstufen eingeordnet werden:"
+  },
+  "daten": {
+    "LeitfadenDgnbQng": [
+      {
+        "stufe": "QS 1",
+        "title": "Gesetzlich konform",
+        "desc": "Erfüllt das REACH-Minimum. Kaum förderfähig für anspruchsvolle Zertifikate.",
+        "style": "bg-red-50 border-red-200 text-red-950 shadow-2xs"
+      },
+      {
+        "stufe": "QS 2",
+        "title": "Standard-Qualität",
+        "desc": "Grundlegende Schadstoffreduzierung, z.B. lösemittelarme Dispersionsklebstoffe.",
+        "style": "bg-amber-50 border-amber-100 text-amber-950 shadow-2xs"
+      },
+      {
+        "stufe": "QS 3",
+        "title": "Erhöhte Qualität",
+        "desc": "Sehr emissionsarme Produkte, z.B. weichmacherfreie Innenfarben.",
+        "style": "bg-blue-50 border-blue-150 text-blue-950 shadow-2xs"
+      },
+      {
+        "stufe": "QS 4",
+        "title": "Spitzen-Qualität",
+        "desc": "Lösemittel- und weichmacherfrei (z.B. Blauer Engel oder EMICODE EC1 Plus).",
+        "style": "bg-emerald-50 border-emerald-150 text-emerald-950 font-semibold shadow-2xs"
+      }
+    ]
+  }
+}

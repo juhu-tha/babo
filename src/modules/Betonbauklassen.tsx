@@ -8,6 +8,8 @@ import {
   HelpCircle,
   FileCheck
 } from 'lucide-react';
+import inhalt from '@/content/betonbauklassen/Betonbauklassen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface BauteilTemplate {
   id: string;
@@ -53,161 +55,161 @@ interface BauteilTemplate {
 const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
   {
     id: 'weisse_wanne',
-    name: 'WU-Bodenplatte (Weiße Wanne)',
+    name: inhalt.werte.wuBodenplatteWeißeWanne,
     bbqClass: 'BBQ-E',
     ueberwachungsklasse: 'ÜK 2',
-    description: 'Bodenplatte eines Mehrfamilienhaus-Kellers gegen drückendes Grundwasser nach der WU-Richtlinie. Rissbreitenschränkung steht im Vordergrund.',
-    dangerLevel: 'Mittel-Erhöht (Dichtigkeitsrisiko)',
+    description: inhalt.werte.bodenplatteEinesMehrfamilienhausKellers,
+    dangerLevel: inhalt.werte.mittelErhöhtDichtigkeitsrisiko,
     phases: {
       planning: {
-        action: 'Festlegung von BBQ-E im Standsicherheitsnachweis. Vorgabe der Expositionsklassen (XC2, XF1, WF) sowie des rechnerischen Grenzwerts der Rissbreite w_max ≤ 0,2 mm zur Erfüllung der Dichtigkeit.',
-        responsible: 'Tragwerksplaner (Statiker)',
-        normDetail: 'Die BBQ-Klasse wird nach DIN 1045-1000 in der Planung festgelegt und an Betonhersteller und Bauausführende weitergegeben.',
-        tip: 'Vermeiden Sie widersprüchliche Angaben im LV bezüglich Festigkeitsklassen und w/z-Wert-Limits.'
+        action: inhalt.werte.festlegungVonBbqE,
+        responsible: inhalt.werte.tragwerksplanerStatiker,
+        normDetail: inhalt.werte.dieBbqKlasseWird,
+        tip: inhalt.werte.vermeidenSieWidersprüchlicheAngaben
       },
       concept: {
-        action: 'Formulierung eines detaillierten Betonkonzepts durch das Lieferwerk. Auswahl von Zementen mit langsamer Wärmeentwicklung (NW/LH-Zemente) zur Verringerung thermischer Zwangsspannungen.',
-        responsible: 'Hersteller (Technologe des Zement-/Betonwerks)',
-        normDetail: 'Eignungsnachweis nach DIN EN 206 für langsame Festigkeitsentwicklung nach 56 oder 90 Tagen (statt 28 Tagen).',
-        tip: 'Eine Festigkeitsentwicklung über 56 Tage spart Zementfeinheit, reduziert Hitze und verringert Schwindrisse signifikant!'
+        action: inhalt.werte.formulierungEinesDetailliertenBetonkonze,
+        responsible: inhalt.werte.herstellerTechnologeDesZement,
+        normDetail: inhalt.werte.eignungsnachweisNachDinEn,
+        tip: inhalt.werte.eineFestigkeitsentwicklungÜber56
       },
       kooperation: {
-        action: 'Förmliche Durchführung des BBQ-Kooperationsgesprächs vor Betonierbeginn. Dokumentation der Lieferraten (z.B. 40 m³/h konstant), der Pumpenstandorte und der fugenlosen Taktplanung.',
-        responsible: 'BBQ-Koordinator, Bauleiter, Werkstechniker',
-        normDetail: 'Das Protokoll des Kooperationsgesprächs ist integraler Bestandteil der Konformitätsdokumentation nach DIN 1045-1000.',
-        tip: 'Lade auch den Betonpumpen-Führer zur Abstimmung ein, um ungeplante Unterbrechungen beim Einbautakt zu verhüten.'
+        action: inhalt.werte.förmlicheDurchführungDesBbq,
+        responsible: inhalt.werte.bbqKoordinatorBauleiterWerkstechniker,
+        normDetail: inhalt.werte.dasProtokollDesKooperationsgesprächs,
+        tip: inhalt.werte.ladeAuchDenBetonpumpen
       },
       execution: {
-        action: 'Kontinuierliche Einbaubegleitung. Überwachung des Ausbreitmaßes bei Eintreffen der Fahrmischer per Erstprüfungs-Messung. Sachkundiger Einsatz von Rüttelflaschen im quadratischen Raster.',
-        responsible: 'Ausführender Betrieb (ÜK2-überwachter Betonierpolier)',
-        normDetail: 'Fremdüberwachung der Baustelle nach DIN 1045-3 durch eine akkreditierte Überwachungsstelle.',
-        tip: 'Zusatzwasser darf vor Ort unter keinen Umständen hinzugefügt werden! Bei Konsistenzmangel Fließmittel nachdosieren (nur durch geschultes Personal).'
+        action: inhalt.werte.kontinuierlicheEinbaubegleitungÜberwachu,
+        responsible: inhalt.werte.ausführenderBetriebÜk2Überwachter,
+        normDetail: inhalt.werte.fremdüberwachungDerBaustelleNach,
+        tip: inhalt.werte.zusatzwasserDarfVorOrt
       },
       curing: {
-        action: 'Sofortiger Beginn der Nachbehandlung nach dem Abziehen der Betonoberfläche. Abdecken mit dampfdichten PE-Folien für mindestens 7 Tage oder bis zum Nachweis von 50 % der Festigkeit.',
-        responsible: 'Polier / Betonbauer vor Ort',
-        normDetail: 'DIN 1045-3, Tabelle 2 regelt die Mindestnachbehandlungsdauer abhängig von der Außentemperatur und Festigkeitsentwicklung.',
-        tip: 'Bei sommerlichen Winden trocknet die Oberfläche im Handumdrehen aus. Sprühen Sie unmittelbar Nebelfilme auf, noch vor dem Folienlegen.'
+        action: inhalt.werte.sofortigerBeginnDerNachbehandlung,
+        responsible: inhalt.werte.polierBetonbauerVorOrt,
+        normDetail: inhalt.werte.din10453Tabelle,
+        tip: inhalt.werte.beiSommerlichenWindenTrocknet
       }
     }
   },
   {
     id: 'sichtbeton_sb4',
-    name: 'Sichtbetonstützen (Klasse SB4)',
+    name: inhalt.werte.sichtbetonstützenKlasseSb4,
     bbqClass: 'BBQ-S',
     ueberwachungsklasse: 'ÜK 3',
-    description: 'Raumhohe, hochausgelastete Tragstützen eines repräsentativen Foyers mit höchsten Anforderungen an Farbtonhomogenität und Porenfreiheit.',
-    dangerLevel: 'Sehr hoch (Optischer Sachmangel & Tragfähigkeit)',
+    description: inhalt.werte.raumhoheHochausgelasteteTragstützenEines,
+    dangerLevel: inhalt.werte.sehrHochOptischerSachmangel,
     phases: {
       planning: {
-        action: 'Detailplanung mit exaktem Fugen- und Ankerbild der Schalhaut. Ausschluss von saugenden Schalungsmaterialien zur Unterbindung von unregelmäßigen Verfärbungen.',
-        responsible: 'Tragwerksplaner & Architekt',
-        normDetail: 'Zuordnung SB4 → BBQ-S ist eine Lehrannahme: Das Merkblatt Sichtbeton (2015) ist älter als das BBQ-Konzept (2023).',
-        tip: 'Schreiben Sie eine Probe-Betonierfläche zur Genehmigung durch den Bauherrn verbindlich im LV vor.'
+        action: inhalt.werte.detailplanungMitExaktemFugen,
+        responsible: inhalt.werte.tragwerksplanerArchitekt,
+        normDetail: inhalt.werte.zuordnungSb4BbqS,
+        tip: inhalt.werte.schreibenSieEineProbe
       },
       concept: {
-        action: 'Rezepturgestaltung mit feinstmaterieller Abstimmung zur Unterdrückung von Wasserabsonderungen (Bluten). Verwendung von farbkonstantem Zement desselben Herstellers und Abbauorts.',
-        responsible: 'Hersteller (Qualitätsbeauftragter)',
-        normDetail: 'Festlegung des Feinanteils nach DIN 1045-2 zur Erzielung eines absolut geschlossenen und dichten Gefüges.',
-        tip: 'Die Verwendung von Flugasche erhöht die Geschmeidigkeit des Frischbetons und füllt Mikrohohlräume wirkungsvoll auf.'
+        action: inhalt.werte.rezepturgestaltungMitFeinstmateriellerAb,
+        responsible: inhalt.werte.herstellerQualitätsbeauftragter,
+        normDetail: inhalt.werte.festlegungDesFeinanteilsNach,
+        tip: inhalt.werte.dieVerwendungVonFlugasche
       },
       kooperation: {
-        action: 'Absprache über Schalungsvorbereitung, spezifische Schalwachse und Schalspray-Mengen. Abstimmung der maximalen Steiggeschwindigkeit des Frischbetons zur Einhaltung des hydrostatischen Schalungsdrucks.',
-        responsible: 'Kooperations-Gremium (Planer, Werkstechniker, Schalungsmeister)',
-        normDetail: 'Regelung der zulässigen Konsistenzabweichung auf extrem engem Band zur Verhinderung von Farbton-Fluktuationen.',
-        tip: 'Tragen Sie das Trennmittel hauchdünn und gleichmäßig auf. Pfützenbildung führt zu hässlichen dunklen Flecken (Ölflecken) auf der Stütze.'
+        action: inhalt.werte.abspracheÜberSchalungsvorbereitungSpezif,
+        responsible: inhalt.werte.kooperationsGremiumPlanerWerkstechniker,
+        normDetail: inhalt.werte.regelungDerZulässigenKonsistenzabweichun,
+        tip: inhalt.werte.tragenSieDasTrennmittel
       },
       execution: {
-        action: 'Baustellenseitige Verdichtung mit vibrationsoptimierten Innenrüttlern mit Gummikappen (keine Beschädigung der Schalhaut). Überwachung der maximalen Fallhöhe (Fallrohr nutzen ab > 1,50 m Fallhöhe).',
-        responsible: 'Betonier-Profis / Werkspolier',
-        normDetail: 'Fremdüberwachung der Baustelle nach DIN 1045-3 Stufe 3 durch Prüfingenieure oder zertifizierte Institute.',
-        tip: 'Durch den Einsatz eines Fallschlauchs wird die gravitative Entmischung des Betons beim Einfüllen ins Schalungsrohr zuverlässig gebannt.'
+        action: inhalt.werte.baustellenseitigeVerdichtungMitVibration,
+        responsible: inhalt.werte.betonierProfisWerkspolier,
+        normDetail: inhalt.werte.fremdüberwachungDerBaustelleNach2,
+        tip: inhalt.werte.durchDenEinsatzEines
       },
       curing: {
-        action: 'Konstantes Belassen in der Schalung für mindestens 72 Stunden (Hydratationsunterstützung). Nach dem Ausschalen sofortiges Einpacken in reißfeste Planen zum Schutz vor direktem Sonnenlicht.',
-        responsible: 'Ausbaugewerke / Polier',
-        normDetail: 'Sonder-Nachbehandlung nach Sichtbetonspezifikation zur Konservierung der homogenen Oberflächenhydratation.',
-        tip: 'Verwenden Sie zum Schutz vor mechanischen Beschädigungen in den Folgewochen robuste Eckschutzwinkel aus Holz.'
+        action: inhalt.werte.konstantesBelassenInDer,
+        responsible: inhalt.werte.ausbaugewerkePolier,
+        normDetail: inhalt.werte.sonderNachbehandlungNachSichtbetonspezif,
+        tip: inhalt.werte.verwendenSieZumSchutz
       }
     }
   },
   {
     id: 'spannbeton_binder',
-    name: 'Spannbeton-Hauptträger (Weitspan)',
+    name: inhalt.werte.spannbetonHauptträgerWeitspan,
     bbqClass: 'BBQ-S',
     ueberwachungsklasse: 'ÜK 3',
-    description: 'Vorgespannter Dachbinder im Industriebau mit 42 m Spannweite aus hochfestem Beton (C55/67) unter aggressiver Industrie-Atmosphäre.',
-    dangerLevel: 'Kritisch (Versagensrisiko bei fehlerhaftem Verbund)',
+    description: inhalt.werte.vorgespannterDachbinderImIndustriebau,
+    dangerLevel: inhalt.werte.kritischVersagensrisikoBeiFehlerhaftem,
     phases: {
       planning: {
-        action: 'Exakte Berechnung der Vorspannkräfte und Kriechbeiwerte. Festlegung von statisch hochsensibler Rissbegrenzung und dichter Bewehrungsführung zur Aufnahme der Spaltzugkräfte.',
-        responsible: 'Fachingenieur für Tragwerksplanung',
-        normDetail: 'ÜK 3 folgt hier aus der Festigkeitsklasse C55/67 (DIN 1045-3); die BBQ-Einstufung als BBQ-S ist ein Lehrbeispiel.',
-        tip: 'Zeichnen Sie ein dreidimensionales CAD-Modell für den Knotenpunkt über dem Auflager, um Kollisionen der Spannglieder aufzudecken.'
+        action: inhalt.werte.exakteBerechnungDerVorspannkräfte,
+        responsible: inhalt.werte.fachingenieurFürTragwerksplanung,
+        normDetail: inhalt.werte.ük3FolgtHier,
+        tip: inhalt.werte.zeichnenSieEinDreidimensionales
       },
       concept: {
-        action: 'Sonderrezeptur für hochfesten Beton mit Mikrosilica und Hochleistungs-Fließmitteln (PCE) zur Realisierung extrem dichter Zementsteinstrukturen. E-Modul-Nachweis erforderlich.',
-        responsible: 'Zentrallabor des Herstellers',
-        normDetail: 'Prüfung des Elastizitätsmoduls des Betons nach DIN EN 12390-13 vor Erstlieferung (Lehrannahme).',
-        tip: 'Die Verwendung von lokalem Granit oder Quarzit anstelle von weicherem Kalkstein maximiert den Elastizitätsmodul des Betons.'
+        action: inhalt.werte.sonderrezepturFürHochfestenBeton,
+        responsible: inhalt.werte.zentrallaborDesHerstellers,
+        normDetail: inhalt.werte.prüfungDesElastizitätsmodulsDes,
+        tip: inhalt.werte.dieVerwendungVonLokalem
       },
       kooperation: {
-        action: 'Erarbeitung eines dedizierten logistischen Abwicklungsplans. Abstimmung über die Einblastaktung der Spannkanal-Injektionsmörtel zur Vermeidung von Luftblasen.',
-        responsible: 'Tragwerksplaner, Spannbetonspezialist, Werkstechnologe',
-        normDetail: 'Es ist ein objektspezifischer Qualitätssicherungsplan nach DIN 1045-1000 verbindlich zu vereinbaren.',
-        tip: 'Simulieren Sie den Injektionsprozess an einem transparenten Test-Spanngliedstück, um Luftporennester visuell auszuschließen.'
+        action: inhalt.werte.erarbeitungEinesDediziertenLogistischen,
+        responsible: inhalt.werte.tragwerksplanerSpannbetonspezialistWerks,
+        normDetail: inhalt.werte.esIstEinObjektspezifischer,
+        tip: inhalt.werte.simulierenSieDenInjektionsprozess
       },
       execution: {
-        action: 'Überwachung aller Pressenwege und Spannkräfte während des hydraulischen Spannens. Lückenlose Führung des Spannprotokolls. ÜK3 Selbstüberwachung vor Ort.',
-        responsible: 'Zertifizierter Spann-Techniker',
-        normDetail: 'Spannverfahren benötigen eine allgemeine bauaufsichtliche Zulassung bzw. eine Europäische Technische Bewertung (ETA).',
-        tip: 'Kalibrieren Sie die hydraulischen Manometer der Spannpressen unmittelbar vor Baustelleneinsatz.'
+        action: inhalt.werte.überwachungAllerPressenwegeUnd,
+        responsible: inhalt.werte.zertifizierterSpannTechniker,
+        normDetail: inhalt.werte.spannverfahrenBenötigenEineAllgemeine,
+        tip: inhalt.werte.kalibrierenSieDieHydraulischen
       },
       curing: {
-        action: 'Kontrollierte Wärme- oder Dampfbehandlung im Fertigteilwerk zur beschleunigten Festigkeitsentwicklung. Vermeidung von Temperaturgradienten > 20 °C über den Trägerquerschnitt.',
-        responsible: 'Abschnittsleiter des Fertigteilwerks',
-        normDetail: 'DIN EN 13369 regelt die maximal zulässigen Betontemperaturen bei der werkseitigen Wärmebehandlung.',
-        tip: 'Zeichnen Sie die Temperaturkurven an mehreren Stellen im Bauteilinneren mittels Thermoelementen kontinuierlich auf.'
+        action: inhalt.werte.kontrollierteWärmeOderDampfbehandlung,
+        responsible: inhalt.werte.abschnittsleiterDesFertigteilwerks,
+        normDetail: inhalt.werte.dinEn13369Regelt,
+        tip: inhalt.werte.zeichnenSieDieTemperaturkurven
       }
     }
   },
   {
     id: 'garagen_fundament',
-    name: 'Sauberkeitsschicht / Fundamentstreifen',
+    name: inhalt.werte.sauberkeitsschichtFundamentstreifen,
     bbqClass: 'BBQ-N',
     ueberwachungsklasse: 'ÜK 1',
-    description: 'Unbewehrter Fundamentstreifen für eine einfache Garage oder untergeordnete Sauberkeitsschichten im Erdreich.',
-    dangerLevel: 'Sehr gering (Geringfügige Belastungen)',
+    description: inhalt.werte.unbewehrterFundamentstreifenFürEine,
+    dangerLevel: inhalt.werte.sehrGeringGeringfügigeBelastungen,
     phases: {
       planning: {
-        action: 'Festlegung von BBQ-N. Mindestbetonfestigkeit C12/15 der Expositionsklasse X0. Reine Flachgründung ohne anspruchsvolle Standsicherheitsvorgaben.',
-        responsible: 'Entwurfsverfasser / Bauingenieur',
-        normDetail: 'BBQ-N ist die Regelklasse nach DIN 1045-1000; die Einstufung trifft der Planer im Einzelfall (Lehrbeispiel).',
-        tip: 'Für einfache Bauteile genügt in der Regel BBQ-N mit üblicher Eigenüberwachung.'
+        action: inhalt.werte.festlegungVonBbqN,
+        responsible: inhalt.werte.entwurfsverfasserBauingenieur,
+        normDetail: inhalt.werte.bbqNIstDie,
+        tip: inhalt.werte.fürEinfacheBauteileGenügt
       },
       concept: {
-        action: 'Lieferung einer normkonformen Standard-Rezeptur der Festigkeitsklasse C12/15 oder C20/25. Keine Sonderanforderungen bezüglich Hydratationswärme oder Chemiebestand.',
+        action: inhalt.werte.lieferungEinerNormkonformenStandard,
         responsible: 'Transportbetonwerk',
-        normDetail: 'Reguläre werkseigene Produktionskontrolle (WPK) nach DIN EN 206.',
-        tip: 'Standardrezepturen des Typs "Sortenverzeichnis" sind hierfür am einfachsten und günstigsten bereitzustellen.'
+        normDetail: inhalt.werte.reguläreWerkseigeneProduktionskontrolleW,
+        tip: inhalt.werte.standardrezepturenDesTypsSortenverzeichn
       },
       kooperation: {
-        action: 'Kein gesondertes Kooperationsgespräch vorgesehen (Lehrannahme). Einfacher bilateraler Telefonkontakt zur Disposition der Liefermenge und -zeit reicht aus.',
-        responsible: 'Bauleiter, Werkdisponent',
-        normDetail: 'Bei BBQ-N ist kein Betonbaukonzept erforderlich; BBQ-E und BBQ-S erfordern ein (vorläufiges) Betonbaukonzept nach DIN 1045-1000:2023-08 (vgl. DBV-Merkblatt „Umsetzung des BBQ-Konzepts“, März 2024).',
-        tip: 'Klären Sie dennoch die Befahrbarkeit des Geländes durch die schweren LKW-Mischer im Voraus ab.'
+        action: inhalt.werte.keinGesondertesKooperationsgesprächVorge,
+        responsible: inhalt.werte.bauleiterWerkdisponent,
+        normDetail: inhalt.werte.beiBbqNIst,
+        tip: inhalt.werte.klärenSieDennochDie
       },
       execution: {
-        action: 'Standardmäßiger Einbau durch das Bauunternehmen. Eigenüberwachung durch den Baustellenpolier im Rahmen der normalen täglichen Praxis (Sichtprüfung Konsistenz).',
-        responsible: 'Baustellenpolier (ÜK 1)',
-        normDetail: 'Überwachungsklasse ÜK 1 nach DIN 1045-3 erfordert keine staatliche Prüfstelle oder externen Güteschutz.',
-        tip: 'Achten Sie darauf, dass der Untergrund vorgenässt ist, damit dem frischen Beton kein Wasser entzogen wird.'
+        action: inhalt.werte.standardmäßigerEinbauDurchDas,
+        responsible: inhalt.werte.baustellenpolierÜk1,
+        normDetail: inhalt.werte.überwachungsklasseÜk1Nach,
+        tip: inhalt.werte.achtenSieDaraufDass
       },
       curing: {
-        action: 'Einfaches Besprühen mit Wasser am Folgetag oder Abdecken mit Folie bei extrem kühler Luft zur Verhinderung von Frostschäden an den Rändern.',
-        responsible: 'Maurer / Betonarbeiter',
-        normDetail: 'Grundlegender Wetterschutz nach DIN 1045-3.',
-        tip: 'Bei milder Witterung reicht das Abdecken mit leicht benässten Geotextilbahnen völlig aus.'
+        action: inhalt.werte.einfachesBesprühenMitWasser,
+        responsible: inhalt.werte.maurerBetonarbeiter,
+        normDetail: inhalt.werte.grundlegenderWetterschutzNachDin,
+        tip: inhalt.werte.beiMilderWitterungReicht
       }
     }
   }
@@ -228,141 +230,109 @@ export default function Betonbauklassen() {
           <ShieldAlert size={24} />
         </div>
         <div>
-          <span className="text-xs font-bold text-shiraz tracking-wider uppercase bg-shiraz/10 px-2.5 py-1 rounded-md">
-            Wichtiges Normen-Update (DIN 1045:2023-08)
-          </span>
-          <h3 className="text-xl font-bold text-text-main mt-1 flex items-center gap-2">
-            Vom "DBV-Merkblatt" zum gesetzten Standard (DIN 1045-1000)
-          </h3>
+          <span className="text-xs font-bold text-shiraz tracking-wider uppercase bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.wichtigesNormenUpdateDin} /></span>
+          <h3 className="text-xl font-bold text-text-main mt-1 flex items-center gap-2"><MdText text={inhalt.texte.vomDbvMerkblattZum} /></h3>
           <p className="text-xs text-text-main/80 leading-relaxed mt-1">
             Das bisherige freiwillige DBV-Merkblatt "Betonbauqualität (BBQ)" wurde mit der Veröffentlichung der neuen 
-            <strong> DIN 1045-Reihe (Ausgabe August 2023)</strong> vollumfänglich harmonisiert und als verbindlicher deutscher 
-            Standard eingeführt. Neu geschaffen wurde die Überbau-Norm <strong>DIN 1045-1000 ("Zusammenarbeit bei der Planung, 
-            Herstellung und Bauausführung")</strong>, die das sogenannte <strong>Kooperationsmodell</strong> verbindlich regelt.
+            <strong><MdText text={inhalt.texte.din1045ReiheAusgabe} /></strong> vollumfänglich harmonisiert und als verbindlicher deutscher 
+            Standard eingeführt. Neu geschaffen wurde die Überbau-Norm <strong><MdText text={inhalt.texte.din10451000Zusammenarbeit} /></strong>, die das sogenannte <strong>Kooperationsmodell</strong> verbindlich regelt.
           </p>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-          <Layers className="text-shiraz" /> BBQ - Betonbauqualitätsklassen
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.bbqBetonbauqualitätsklassen} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-8 leading-relaxed">
-          <p>
-            Das BBQ-Planungskonzept verknüpft die Anforderungen an den Beton (Tragwerk &amp; Dauerhaftigkeit nach Eurocode 2 / DIN EN 1992-1-1 und DIN 1045-2:2023) 
-            bereits in der Entwurfsphase direkt mit den Regelungen der Bauausführung (DIN EN 13670 / DIN 1045-3). Es löst Silodenken auf 
-            und erzwingt eine strukturierte Kommunikation zwischen Planer, Betonwerk und Bauunternehmen unter der Koordination der <strong>Betonbauqualitätsklasse (BBQ)</strong>.
-          </p>
+          <p><MdText text={inhalt.texte.dasBbqPlanungskonzeptVerknüpft} /></p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-3">
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/25 hover:border-shiraz/20 transition-colors">
             <h3 className="font-bold text-base mb-2 text-text-main flex items-center justify-between">
-              <span>BBQ-N (Normal)</span>
+              <span><MdText text={inhalt.texte.bbqNNormal} /></span>
               <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Standard</span>
             </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Reguläre Betonbauqualität. Gilt für gewöhnliche Bauteile im Hoch- und Ingenieurbau ohne gehobenes oder komplexes Anforderungsprofil.
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.reguläreBetonbauqualitätGiltFür} /></p>
             <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
-              <li>Übliche Überwachung (z.B. ÜK 1 auf der Baustelle)</li>
-              <li>Keine gesonderten Abstimmungsrunden zwingend</li>
+              <li><MdText text={inhalt.texte.üblicheÜberwachungZB} /></li>
+              <li><MdText text={inhalt.texte.keineGesondertenAbstimmungsrundenZwingen} /></li>
             </ul>
           </div>
           
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/25 hover:border-shiraz/20 transition-colors">
             <h3 className="font-bold text-base mb-2 text-text-main flex items-center justify-between">
-              <span>BBQ-E (Erhöht)</span>
+              <span><MdText text={inhalt.texte.bbqEErhöht} /></span>
               <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">Qualitätsstufe</span>
             </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Erhöhte Betonbauqualität. Greift bei Bauteilen mit gesteigerten Qualitäts-, Sicht-, oder Dichtigkeitsansprüchen (z.B. standardmäßiger WU-Beton).
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.erhöhteBetonbauqualitätGreiftBei} /></p>
             <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
-              <li>Z.B. Sichtbetonklasse SB3, WU-Bauteile (Lehrbeispiele)</li>
-              <li>Erhöhte Dokumentations- und Qualitätssicherungspflicht</li>
+              <li><MdText text={inhalt.texte.zBSichtbetonklasseSb3} /></li>
+              <li><MdText text={inhalt.texte.erhöhteDokumentationsUndQualitätssicheru} /></li>
             </ul>
           </div>
           
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/25 hover:border-shiraz/20 transition-colors">
             <h3 className="font-bold text-base mb-2 text-text-main flex items-center justify-between">
-              <span>BBQ-S (Sonder)</span>
+              <span><MdText text={inhalt.texte.bbqSSonder} /></span>
               <span className="text-[10px] font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded">Sonderstufe</span>
             </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Sonder-Betonbauqualität. Gilt bei anspruchsvollen Spezialbauweisen, hochfesten Betonen oder extremen Sichtflächenansprüchen (SB4).
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.sonderBetonbauqualitätGiltBei} /></p>
             <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
-              <li>Z.B. C55/67 aufwärts, Sichtbeton SB4, dichte Kappen im Brückenbau</li>
-              <li>Objektspezifischer Qualitätssicherungsplan erforderlich</li>
+              <li><MdText text={inhalt.texte.zBC5567} /></li>
+              <li><MdText text={inhalt.texte.objektspezifischerQualitätssicherungspla} /></li>
             </ul>
           </div>
           
         </div>
-        <p className="text-[11px] text-text-main/60 mb-8">DIN 1045-1000:2023-08 kennt drei Klassen: BBQ-N, BBQ-E und BBQ-S. Die genannten Bauteilbeispiele sind Lehrbeispiele – die Einstufung trifft der Planer im Einzelfall.</p>
+        <p className="text-[11px] text-text-main/60 mb-8"><MdText text={inhalt.texte.din104510002023} /></p>
 
         {/* Detailed BBQ consequences & task profiles according to DIN 1045-1000 */}
         <section className="mt-4 mb-8 bg-white p-6 rounded-2xl border border-home-grau/25 shadow-3xs">
           <h3 className="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
-            <ClipboardList className="text-shiraz w-5 h-5" /> 
-            Konkrete Aufgaben und administrative Folgen der BBQ-Klassen
-          </h3>
-          <p className="text-xs text-text-main/75 mb-6 leading-relaxed">
-            Die Zuweisung einer Betonbauqualitätsklasse (BBQ) ist kein rein theoretischer Akt, sondern steuert verbindlich
-            die Aufgabenprofile der drei Hauptakteure (Planer, Hersteller, Ausführende) und legt fest, welche Nachweise und 
-            Kooperationsprozesse rechtlich erbracht werden müssen.
-          </p>
+            <ClipboardList className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.konkreteAufgabenUndAdministrative} /></h3>
+          <p className="text-xs text-text-main/75 mb-6 leading-relaxed"><MdText text={inhalt.texte.dieZuweisungEinerBetonbauqualitätsklasse} /></p>
 
           <div className="space-y-6">
             
             {/* BBQ-N normal */}
             <div className="border-l-4 border-slate-400 pl-4 py-1">
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <span className="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-md font-mono">BBQ-N</span>
-                Normalanforderung lückenloser Standard-Ablauf
-              </h4>
+                <span className="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-md font-mono">BBQ-N</span><MdText text={inhalt.texte.normalanforderungLückenloserStandardAbla} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3 text-[11px] text-text-main/80">
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-text-main text-[11px] mb-1">📐 Tragwerksplaner (Statik)</strong>
-                  Normaler Entwurfs- und Prüfbogen. Spezifikation der Standardklassen (C25/30, XC1/XC2). Keine Sonderanforderung im LV.
-                </div>
+                  <strong className="block text-text-main text-[11px] mb-1"><MdText text={inhalt.texte.tragwerksplanerStatik} /></strong><MdText text={inhalt.texte.normalerEntwurfsUndPrüfbogen} /></div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-text-main text-[11px] mb-1">🏭 Hersteller (Betonwerk)</strong>
-                  Standardmäßige Mischungsbemessung aus dem Sortenverzeichnis. Normkonforme werkseigene Produktionskontrolle (WPK).
-                </div>
+                  <strong className="block text-text-main text-[11px] mb-1"><MdText text={inhalt.texte.herstellerBetonwerk} /></strong><MdText text={inhalt.texte.standardmäßigeMischungsbemessungAusDem} /></div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-text-main text-[11px] mb-1">🏗️ Bauunternehmen (Ausführung)</strong>
-                  Reguläre Eigenüberwachung (ÜK 1). Standardmäßiges Verdichten und Standard-Nachbehandlung nach Tabelle. Lieferscheinprüfung reicht aus.
-                </div>
+                  <strong className="block text-text-main text-[11px] mb-1"><MdText text={inhalt.texte.bauunternehmenAusführung} /></strong><MdText text={inhalt.texte.reguläreEigenüberwachungÜk1} /></div>
               </div>
             </div>
 
             {/* BBQ-E elevated */}
             <div className="border-l-4 border-amber-500 pl-4 py-1">
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <span className="bg-amber-50 text-amber-800 text-xs px-2 py-0.5 rounded-md font-mono">BBQ-E</span>
-                Erhöhtes Aufgabenprofil &amp; Kooperationszwang
-              </h4>
+                <span className="bg-amber-50 text-amber-800 text-xs px-2 py-0.5 rounded-md font-mono">BBQ-E</span><MdText text={inhalt.texte.erhöhtesAufgabenprofilKooperationszwang} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3 text-[11px] text-text-main/80">
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-amber-800 text-[11px] mb-1">📐 Tragwerksplaner (Statik)</strong>
+                  <strong className="block text-amber-800 text-[11px] mb-1"><MdText text={inhalt.texte.tragwerksplanerStatik2} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Rechtliche Einbauverantwortung und frühzeitige Ausweisung der BBQ-E im Bemessungsprüfbogen.</li>
-                    <li>Schnittstellenregelung und Terminierung des BBQ-Kooperationsgesprächs vor Gussphase.</li>
+                    <li><MdText text={inhalt.texte.rechtlicheEinbauverantwortungUndFrühzeit} /></li>
+                    <li><MdText text={inhalt.texte.schnittstellenregelungUndTerminierungDes} /></li>
                   </ul>
                 </div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-amber-800 text-[11px] mb-1">🏭 Hersteller (Betonwerk)</strong>
+                  <strong className="block text-amber-800 text-[11px] mb-1"><MdText text={inhalt.texte.herstellerBetonwerk2} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Ausarbeitung eines projektspezifischen <strong>Betonkonzepts</strong> (z.B. Optimierung bezgl. Rissneigung, Hydratationswärme).</li>
-                    <li>Teilnahmepflicht am Abstimmungsgespräch; genaue Disposition der Lieferleistung (Konstanzbedarf).</li>
+                    <li><MdText text={inhalt.texte.ausarbeitungEinesProjektspezifischenBeto} /></li>
+                    <li><MdText text={inhalt.texte.teilnahmepflichtAmAbstimmungsgesprächGen} /></li>
                   </ul>
                 </div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-amber-800 text-[11px] mb-1">🏗️ Bauunternehmen (Ausführung)</strong>
+                  <strong className="block text-amber-800 text-[11px] mb-1"><MdText text={inhalt.texte.bauunternehmenAusführung2} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Erstellung schriftlicher Pläne für Einbau, Verdichtung und qualifizierte <strong>Nachbehandlung</strong> (z.B. Bestimmung der Reifegrades).</li>
-                    <li>Erweitertes Bautagebuch und obligatorische Frischbeton-Erstprüfungen auf der Baustelle.</li>
+                    <li><MdText text={inhalt.texte.erstellungSchriftlicherPläneFür} /></li>
+                    <li><MdText text={inhalt.texte.erweitertesBautagebuchUndObligatorische} /></li>
                   </ul>
                 </div>
               </div>
@@ -371,29 +341,27 @@ export default function Betonbauklassen() {
             {/* BBQ-S special */}
             <div className="border-l-4 border-shiraz pl-4 py-1">
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <span className="bg-shiraz/5 text-shiraz text-xs px-2 py-0.5 rounded-md font-mono">BBQ-S</span>
-                Sonderprozess mit Qualitätssicherungsplan &amp; Koordinator
-              </h4>
+                <span className="bg-shiraz/5 text-shiraz text-xs px-2 py-0.5 rounded-md font-mono">BBQ-S</span><MdText text={inhalt.texte.sonderprozessMitQualitätssicherungsplanK} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3 text-[11px] text-text-main/80">
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-shiraz text-[11px] mb-1">📐 Tragwerksplaner (Statik)</strong>
+                  <strong className="block text-shiraz text-[11px] mb-1"><MdText text={inhalt.texte.tragwerksplanerStatik3} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Gemeinsame Erstellung eines umfassenden <strong>objektspezifischen QS-Plans</strong> mit allen Partnern.</li>
-                    <li>Bestellung eines dezidierten <strong>BBQ-Koordinators</strong> (Verbindungsbahn zw. Statiker und Bauleitung).</li>
+                    <li><MdText text={inhalt.texte.gemeinsameErstellungEinesUmfassenden} /></li>
+                    <li><MdText text={inhalt.texte.bestellungEinesDezidiertenBbq} /></li>
                   </ul>
                 </div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-shiraz text-[11px] mb-1">🏭 Hersteller (Betonwerk)</strong>
+                  <strong className="block text-shiraz text-[11px] mb-1"><MdText text={inhalt.texte.herstellerBetonwerk3} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Labortechnische Sonderprüfungen (Scherversuche, Kriechverhalten, Elastizitätsmoduln).</li>
-                    <li>Vorschreiben extrem enger Temperatur- und Ausbreitgrenzen für Gussphasen.</li>
+                    <li><MdText text={inhalt.texte.labortechnischeSonderprüfungenScherversu} /></li>
+                    <li><MdText text={inhalt.texte.vorschreibenExtremEngerTemperatur} /></li>
                   </ul>
                 </div>
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-shiraz text-[11px] mb-1">🏗️ Bauunternehmen (Ausführung)</strong>
+                  <strong className="block text-shiraz text-[11px] mb-1"><MdText text={inhalt.texte.bauunternehmenAusführung3} /></strong>
                   <ul className="list-disc pl-3.5 space-y-0.5">
-                    <li>Umfangreiche <strong>Fremdüberwachung (ÜK3)</strong> mit unangekündigten Kontrollen externer Laboranten.</li>
-                    <li>Pflicht zur Durchführung von Vorversuchen (Probebetonagen im Realmaßstab vor Konstruktionsbeginn).</li>
+                    <li><MdText text={inhalt.texte.umfangreicheFremdüberwachungÜk3Mit} /></li>
+                    <li><MdText text={inhalt.texte.pflichtZurDurchführungVon} /></li>
                   </ul>
                 </div>
               </div>
@@ -406,30 +374,20 @@ export default function Betonbauklassen() {
         {/* Das neue Kooperationsmodell */}
         <div className="bg-emerald-50/40 p-6 rounded-2xl border border-emerald-500/20 mb-8">
           <h3 className="text-base font-bold text-emerald-800 mb-3 flex items-center gap-2">
-            <Users size={18} /> Das "Kooperationsmodell" nach DIN 1045-1000
-          </h3>
-          <p className="text-xs text-emerald-950/80 leading-relaxed mb-4">
-            Die elementare Änderung ist, dass die Schnittstellen zwischen den Partnern nun regulatorisch festgeschrieben sind.
-            Für Bauteile der Klassen <strong>BBQ-E und BBQ-S</strong> ist ein strukturierter Kooperationsablauf bindend vorgeschrieben:
-          </p>
+            <Users size={18} /><MdText text={inhalt.texte.dasKooperationsmodellNachDin} /></h3>
+          <p className="text-xs text-emerald-950/80 leading-relaxed mb-4"><MdText text={inhalt.texte.dieElementareÄnderungIst} /></p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-3.5 rounded-lg border border-emerald-500/10">
-              <span className="text-[10px] font-bold text-emerald-600 block mb-1">1. Planung (Part 1)</span>
-              <p className="text-[11px] text-emerald-950/90 leading-normal">
-                Der Tragwerksplaner legt die BBQ-Klasse fest, definiert die Anforderungen im LV und ernennt bei Bedarf einen BBQ-Koordinator.
-              </p>
+              <span className="text-[10px] font-bold text-emerald-600 block mb-1"><MdText text={inhalt.texte.t1PlanungPart1} /></span>
+              <p className="text-[11px] text-emerald-950/90 leading-normal"><MdText text={inhalt.texte.derTragwerksplanerLegtDie} /></p>
             </div>
             <div className="bg-white p-3.5 rounded-lg border border-emerald-500/10">
-              <span className="text-[10px] font-bold text-emerald-600 block mb-1">2. Herstellung (Part 2)</span>
-              <p className="text-[11px] text-emerald-950/90 leading-normal">
-                Das Transportbetonwerk entwirft die Rezeptur (das "Betonkonzept") passend zur BBQ-Klasse und stimmt Lieferraten &amp; Logistik ab.
-              </p>
+              <span className="text-[10px] font-bold text-emerald-600 block mb-1"><MdText text={inhalt.texte.t2HerstellungPart2} /></span>
+              <p className="text-[11px] text-emerald-950/90 leading-normal"><MdText text={inhalt.texte.dasTransportbetonwerkEntwirftDie} /></p>
             </div>
             <div className="bg-white p-3.5 rounded-lg border border-emerald-500/10">
-              <span className="text-[10px] font-bold text-emerald-600 block mb-1">3. Ausführung (Part 3)</span>
-              <p className="text-[11px] text-emerald-950/90 leading-normal">
-                Das Bauunternehmen setzt die Baustellentechnik (Rüttelenergie, Nachbehandlungsdauer, Schalhautpflege) passgenau um.
-              </p>
+              <span className="text-[10px] font-bold text-emerald-600 block mb-1"><MdText text={inhalt.texte.t3AusführungPart3} /></span>
+              <p className="text-[11px] text-emerald-950/90 leading-normal"><MdText text={inhalt.texte.dasBauunternehmenSetztDie} /></p>
             </div>
           </div>
         </div>
@@ -441,12 +399,8 @@ export default function Betonbauklassen() {
             <div className="flex items-center gap-2">
               <ClipboardList className="text-shiraz" size={22} />
               <div>
-                <h3 className="text-base font-bold text-text-main">
-                  Interaktiver BBQ-Umsetzungs-Leitfaden
-                </h3>
-                <p className="text-[11px] text-text-main/60">
-                  Wählen Sie ein Bauteilszenario, um den phasengenauen Prozessablauf ohne manuelle Abarbeitungs-Pflicht zu simulieren.
-                </p>
+                <h3 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.interaktiverBbqUmsetzungsLeitfaden} /></h3>
+                <p className="text-[11px] text-text-main/60"><MdText text={inhalt.texte.wählenSieEinBauteilszenario} /></p>
               </div>
             </div>
           </div>
@@ -502,15 +456,9 @@ export default function Betonbauklassen() {
               
               {/* Left Column: Flow Phases Timeline Selector */}
               <div className="md:col-span-5 space-y-2">
-                <span className="text-[10px] font-bold text-text-main/45 uppercase tracking-wide block mb-2">Prozessschritte im Kooperationsmodell:</span>
+                <span className="text-[10px] font-bold text-text-main/45 uppercase tracking-wide block mb-2"><MdText text={inhalt.texte.prozessschritteImKooperationsmodell} /></span>
                 
-                {[
-                  { id: 'planning', num: '1', title: 'Planung & Standsicherheit', desc: 'Sollwertanalyse im Entwurf' },
-                  { id: 'concept', num: '2', title: 'Rezeptur & Betonkonzept', desc: 'Lieferwerks-Qualitätsplanung' },
-                  { id: 'kooperation', num: '3', title: 'Kooperationsgespräch', desc: 'Förmlicher Abgleich vor Guss' },
-                  { id: 'execution', num: '4', title: 'Einbau & Frischprüfung', desc: 'Durchführung auf Baustelle' },
-                  { id: 'curing', num: '5', title: 'Nachbehandlung & Abnahme', desc: 'Feuchtigkeits- & Rissverzögerung' },
-                ].map(phase => {
+                {inhalt.daten.Betonbauklassen.map(phase => {
                   const isActive = activePhase === phase.id;
                   return (
                     <button
@@ -555,7 +503,7 @@ export default function Betonbauklassen() {
 
                     <div className="space-y-3">
                       <div>
-                        <label className="text-[9.5px] font-bold text-text-main/40 uppercase block">Was ist konkret zu tun?</label>
+                        <label className="text-[9.5px] font-bold text-text-main/40 uppercase block"><MdText text={inhalt.texte.wasIstKonkretZu} /></label>
                         <p className="text-xs text-text-main leading-relaxed font-semibold mt-1">
                           {selectedTemplate.phases[activePhase].action}
                         </p>
@@ -569,7 +517,7 @@ export default function Betonbauklassen() {
                           </span>
                         </div>
                         <div>
-                          <label className="text-[9.5px] font-bold text-text-main/40 uppercase block">Normvorgabe (DIN 1045):</label>
+                          <label className="text-[9.5px] font-bold text-text-main/40 uppercase block"><MdText text={inhalt.texte.normvorgabeDin1045} /></label>
                           <span className="text-xs text-text-main/80 block mt-0.5 leading-tight">
                             📕 {selectedTemplate.phases[activePhase].normDetail}
                           </span>
@@ -580,9 +528,7 @@ export default function Betonbauklassen() {
 
                   <div className="bg-amber-50/50 border border-amber-200/40 p-3 rounded-lg text-xs">
                     <div className="font-bold text-amber-800 flex items-center gap-1">
-                      <HelpCircle size={13} />
-                      Baupraktischer Insider-Tipp:
-                    </div>
+                      <HelpCircle size={13} /><MdText text={inhalt.texte.baupraktischerInsiderTipp} /></div>
                     <p className="text-amber-900/85 text-[11px] mt-1 leading-normal italic">
                       " {selectedTemplate.phases[activePhase].tip} "
                     </p>
@@ -596,21 +542,19 @@ export default function Betonbauklassen() {
 
           <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 text-xs text-text-main/70 text-center flex items-center justify-center gap-2">
             <span>💡</span>
-            <span><strong>Kooperationsvorteil:</strong> Durch dieses strukturierte, phasenweise Leitfadenmodell werden bis zu <strong>80% aller typischen Rissbildungs- und Prozessfehler</strong> präventiv vor Betonierbeginn vermieden.</span>
+            <span><MdText text={inhalt.texte.kooperationsvorteilDurchDiesesStrukturie} /></span>
           </div>
 
         </div>
 
         <div className="bg-shiraz/5 p-6 rounded-xl border border-shiraz/20 mt-8">
-          <h3 className="text-base font-bold text-shiraz mb-2">Zusammenhang mit Überwachungsklassen</h3>
-          <p className="text-xs text-text-main/80 mb-4 leading-relaxed">
-            Die Betonbauqualitätsklassen (BBQ) stehen in enger Verbindung mit den Überwachungsklassen (ÜK) zur Baustellenselbst- und Fremdüberwachung nach DIN 1045-3:
-          </p>
+          <h3 className="text-base font-bold text-shiraz mb-2"><MdText text={inhalt.texte.zusammenhangMitÜberwachungsklassen} /></h3>
+          <p className="text-xs text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.dieBetonbauqualitätsklassenBbqStehen} /></p>
           <ul className="list-disc list-inside text-xs text-text-main/80 space-y-2 leading-relaxed">
-            <li><strong>ÜK 1:</strong> Festigkeitsklassen bis C25/30 sowie z. B. WU-Beton und Unterwasserbeton. Eigenüberwachung durch das Bauunternehmen.</li>
-            <li><strong>ÜK 2:</strong> C30/37 bis C100/115 sowie Betone mit besonderen Expositionen bzw. Eigenschaften. Zusätzlich Überwachung durch eine anerkannte Überwachungsstelle.</li>
+            <li><MdText text={inhalt.texte.ük1FestigkeitsklassenBis} /></li>
+            <li><MdText text={inhalt.texte.ük2C3037} /></li>
           </ul>
-          <p className="text-[11px] text-text-main/60 mt-3">Zuordnung nach DIN 1045-3:2023-08, Tabelle 3; die frühere ÜK 3 ist entfallen.</p>
+          <p className="text-[11px] text-text-main/60 mt-3"><MdText text={inhalt.texte.zuordnungNachDin1045} /></p>
         </div>
       </div>
 

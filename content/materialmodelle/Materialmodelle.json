@@ -1,0 +1,247 @@
+{
+  "texte": {
+    "simulationRheologischerModelle": " Simulation Rheologischer Modelle",
+    "interaktivesPrüflaborFürRheologische": "Interaktives Prüflabor für rheologische Ersatzmodelle der Baustoffkunde. Stellen Sie Einwirkungen (Kriechen, Relaxation, zyklische Lasten) und Materialparameter ein, um Spannungs- und Dehnungsantworten sowie Formänderungsarbeit und Hysterese zu analysieren.",
+    "praxisbeispieleAusDemBaustoff": " Praxisbeispiele aus dem Baustoff- & Werkstoffbereich für jedes Modell",
+    "inDerBauwerkstoffkundeRepräsentiert": "In der Bauwerkstoffkunde repräsentiert jedes rheologische Ersatzmodell das charakteristische mechanische Antwortverhalten konkreter Baustoffe unter Kurzzeit-, Dauer- oder Zwangbeanspruchung.",
+    "t1HookeKörper": "1. Hooke-Körper",
+    "eFeder": "σ = E · ε | Feder",
+    "typischeBaustoffe": "**Typische Baustoffe:**",
+    "bauglasKalkNatronFloatglas": "**Bauglas (Kalk-Natron-Floatglas):** Ideal sprödelastisch bis zum Bruch (DIN 18008). Keinerlei Fließzone oder Raumtemperaturkriechen.",
+    "keramikKlinkerKristallinesUnd": "**Keramik & Klinker:** Kristallines und amorphes Gefüge federt verzögerungsfrei ein.",
+    "baustahlS235S355Unterhalb": "**Baustahl (S235/S355):** Unterhalb der Streckgrenze ($\\sigma < f_y$) streng linear-elastisch.",
+    "cfkLamellenCarbonfasernBesitzen": "**CFK-Lamellen:** Carbonfasern besitzen rein elastische Dehnkennlinien bis zum Faserbruch.",
+    "mechanismusReversibleElastischeAuslenkun": "Mechanismus: Reversible elastische Auslenkung der Atomgitterbindungen ohne Dämpfungsverluste.",
+    "t2NewtonKörper": "2. Newton-Körper",
+    "dDtDämpfer": "σ = η · (dε/dt) | Dämpfer",
+    "typischeBaustoffe2": "**Typische Baustoffe:**",
+    "heißbitumenT140C": "**Heißbitumen (T > 140 °C):** Beim Mischen näherungsweise newtonsch-viskos zur vollflächigen Gesteinsbenetzung. Gussasphalt als Bitumen-Gesteinskörnungs-Gemisch ist dagegen kein Newton-Fluid (Fließgrenze, strukturviskos).",
+    "wasserUndStarkVerdünnte": "**Wasser und stark verdünnte Feinstsuspensionen:** näherungsweise newtonsch. Zementleim üblicher w/z-Werte verhält sich dagegen wie ein Bingham-Fluid.",
+    "niedrigviskoseEpoxidharzeZurDrucklosen": "**Niedrigviskose Epoxidharze:** Zur drucklosen Rissverpressung vor dem Gelieren.",
+    "mechanismusReinesLaminaresGleiten": "Mechanismus: Reines laminares Gleiten von Fluidmolekülen. Keine Energiespeicherung, 100 % Dissipation in Wärme.",
+    "t3StVenantKörper": "3. St.-Venant-Körper",
+    "fYReibelement": "|σ| ≤ f_y | Reibelement",
+    "typischeBaustoffe3": "**Typische Baustoffe:**",
+    "trockenerBaugrundSandKies": "**Trockener Baugrund (Sand & Kies):** Coulomb'sches Gesetz $\\tau = c + \\sigma \\cdot \\tan\\varphi$ (trockener Sand: c ≈ 0). Unterhalb der Scherfestigkeit starr, bei Überschreiten Gleiten. Die Grenzschubspannung hängt hier von der Normalspannung ab – das St.-Venant-Element bildet nur eine konstante Grenze ab.",
+    "ptfeGleitplattenInBrückenlagern": "**PTFE-Gleitplatten in Brückenlagern:** Feste Reibungsgrenze zur Verschiebungskompensation.",
+    "reinesFließplateauVonWeichstahl": "**Reines Fließplateau von Weichstahl:** Plastisches Gleiten bei konstanter Streckgrenzenspannung.",
+    "mechanismusCoulombscheFestkörperreibungA": "Mechanismus: Coulombsche Festkörperreibung / Aktivierung von Kristallgleitsystemen bei Grenzschubspannung.",
+    "t4PrandtlModell": "4. Prandtl-Modell",
+    "federReibelementReihe": "Feder + Reibelement (Reihe)",
+    "typischeBaustoffe4": "**Typische Baustoffe:**",
+    "warmgewalzterBaustahlS235S355": "**Warmgewalzter Baustahl (S235, S355):** Elastische Dehnung bis zur Streckgrenze $f_y$, danach Fließplateau ohne Spannungsanstieg (Lüdersband-Bereich, ca. 1–2 % Dehnung); anschließend folgt Verfestigung.",
+    "fließgelenkeImStahlStahlbetonbau": "**Fließgelenke im Stahl- & Stahlbetonbau:** Basis der Fließgelenktheorie nach DIN EN 1993-1-1 (plastische Tragwerksberechnung nur mit Querschnittsklasse 1; Klasse 2 erreicht die plastische Querschnittstragfähigkeit, aber ohne ausreichende Rotationskapazität).",
+    "mechanismusElastischeGitterdehnungGekopp": "Mechanismus: Elastische Gitterdehnung gekoppelt mit athermischer Versetzungsbewegung ab $f_y$.",
+    "t5ElastoPlastischMit": "5. Elasto-Plastisch mit Verfestigung",
+    "federEInReihe": "Feder E in Reihe mit (Reibelement f_y ∥ Feder H), E_t = E·H/(E+H)",
+    "typischeBaustoffeNormbezug": "**Typische Baustoffe & Normbezug:**",
+    "betonstabstahlB500bNachEc2": "**Betonstabstahl (B500B nach EC2):** Ausgeprägter Verfestigungsast mit $k = (f_t/f_y)_k \\ge 1{,}08$ und $\\varepsilon_{uk} \\ge 5{,}0\\,\\%$ zur Sicherung hoher Rotationsfähigkeit im Bruchzustand (GZT).",
+    "kaltverformterBetonstahlB500aDuktilitäts": "**Kaltverformter Betonstahl B500A (Duktilitätsklasse A: k ≥ 1,05, ε<sub>uk</sub> ≥ 2,5 %):** Kaltverfestigt mit kontinuierlichem Spannungsanstieg ohne Fließplateau.",
+    "aluminiumlegierungenEnAw6060": "**Aluminiumlegierungen (EN AW-6060 / 6082):** Ausgeprägte Dehnungsverfestigung ab Dehngrenze $R_{p0{,}2}$.",
+    "mechanismusVersetzungsaufstauAnKorngrenz": "Mechanismus: Versetzungsaufstau an Korngrenzen (Kaltverfestigung); Bauschinger-Hysterese bei zyklischer Umkehr.",
+    "t6MaxwellModell": "6. Maxwell-Modell",
+    "federDämpferReihe": "Feder + Dämpfer (Reihe)",
+    "typischeBaustoffe5": "**Typische Baustoffe:**",
+    "bitumenUndBitumenhaltigeFugenvergussmass": "**Bitumen und bitumenhaltige Fugenvergussmassen bei Dauerdehnung:** Zwangspannungen aus Temperatur bauen sich viskos ab.",
+    "thermoplasteOberhalbDerGlasübergangstemp": "**Thermoplaste oberhalb der Glasübergangstemperatur:** Spannungen unter konstanter Dehnung relaxieren nahezu vollständig.",
+    "mechanismusDerSerielleDämpfer": "Mechanismus: Der serielle Dämpfer fließt stetig und entlastet die elastische Feder ($\\sigma(t) \\to 0$). Spannstahl relaxiert dagegen nur um wenige Prozent (Relaxationsklasse 2: ρ<sub>1000</sub> = 2,5 %) → Zener-Modell.",
+    "t7KelvinVoigtModell": "7. Kelvin-Voigt-Modell",
+    "kriechenRetardation": "Kriechen / Retardation",
+    "federDämpferParallel": "Feder + Dämpfer (Parallel)",
+    "typischeBaustoffe6": "**Typische Baustoffe:**",
+    "normalbetonZementsteinDinEn": "**Normalbeton & Zementstein (DIN EN 1992-1-1):** Langzeitdurchbiegung von Decken unter Dauerlastspannung. Die Verformung ist durch das elastische Gesteinsgerüst asymptotisch begrenzt ($\\varphi \\approx 1{,}5 - 3{,}0$).",
+    "konstruktionsvollholzC24NachEc5": "**Konstruktionsvollholz (C24 nach EC5):** Langzeitkriechen der Zellwand (Hemicellulose-Lignin-Matrix); k<sub>def</sub> nach DIN EN 1995-1-1, Tab. 3.2: Vollholz NKL 1 = 0,6; NKL 2 = 0,8; NKL 3 = 2,0.",
+    "mechanismusDämpferBremstVerformungsgesch": "Mechanismus: Dämpfer bremst Verformungsgeschwindigkeit; parallele Feder garantiert endlichen Gleichgewichtsendwert. Kelvin-Voigt allein hat keine elastische Sofortverformung und keinen irreversiblen Kriechanteil – für Beton und Holz wird daher die Reihenschaltung Feder + Kelvin (= Zener/SLS) oder das Burgers-Modell verwendet.",
+    "t8ZenerModellSls": "8. Zener-Modell (SLS)",
+    "viskoelastischerFestkörper": "Viskoelastischer Festkörper",
+    "federEParallelZu": "Feder E₁ parallel zu Maxwell (E₂ + η)",
+    "typischeBaustoffe7": "**Typische Baustoffe:**",
+    "spannstahlEc2RelaxationUnter": "**Spannstahl (EC2):** Relaxation unter konstanter Vordehnung auf einen Endwert σ<sub>∞</sub> > 0 (Spannkraftverlust $\\Delta \\sigma_{pr}$).",
+    "betonUnterDauerlastDie": "**Beton unter Dauerlast:** Die Kriechzahl φ entspricht im Zener-Modell E₂/E₁.",
+    "asphaltbetonImStraßenbauDin": "**Asphaltbeton im Straßenbau (DIN EN 13108):** Das Mineralgerüst federt elastisch ($E_1$), während der Bitumenfilm viskose Relaxationen steuert; für bleibende Verformung (Spurrinnen) → Burgers-Modell.",
+    "elastomerBrückenlagerNeoprenNach": "**Elastomer-Brückenlager (Neopren nach DIN EN 1337-3):** Sofortige elastische Stauchung, gefolgt von Relaxation auf Restspannung $\\sigma_\\infty > 0$.",
+    "kombiniertElastischeSofortantwortAsympto": "Kombiniert elastische Sofortantwort, asymptotisch begrenztes Kriechen und unvollständige Relaxation.",
+    "t9BinghamKörper": "9. Bingham-Körper",
+    "viskoplastischesFluid": "Viskoplastisches Fluid",
+    "reibelementParallelZuDämpfer": "Reibelement parallel zu Dämpfer (τ = τ₀ + μ_p · γ̇)",
+    "typischeBaustoffe8": "**Typische Baustoffe:**",
+    "frischbetonTransportbetonNachDin": "**Frischbeton (Transportbeton nach DIN EN 206):** Besitzt eine Fließgrenze $\\tau_0$ (steht auf dem Förderband) und fließt erst bei Rüttelenergie mit plastischer Viskosität $\\mu_p$.",
+    "selbstverdichtenderBetonSvbScc": "**Selbstverdichtender Beton (SVB / SCC):** Fließgrenze wird minimiert ($\\tau_0 \\approx 0$), hohe Viskosität verhindert Entmischung.",
+    "putzmörtelFliesenkleberBleibenStandfest": "**Putzmörtel & Fliesenkleber:** Bleiben standfest an senkrechten Wänden haften.",
+    "fließtErstNachÜberwinden": "Fließt erst nach Überwinden der inneren Haft- und Fließgrenze; Standardmodell der Frischbeton-Rheologie. Größenordnungen (stark rezepturabhängig): Normalbeton F3 τ₀ ≈ 0,5–2 kPa, μ<sub>p</sub> ≈ 20–100 Pa·s; SVB τ₀ ≈ 0–60 Pa. Der Bingham-Körper wird in Scherung (τ, γ̇) beschrieben, nicht in Normalspannung σ/ε.",
+    "materialmodelleRheologie": " Materialmodelle & Rheologie",
+    "materialmodelleStoffgesetzeBeschreibenDe": "Materialmodelle (Stoffgesetze) beschreiben den mathematischen Zusammenhang zwischen Spannung und Dehnung (bzw. Kraft und Verformung) eines Baustoffs. Sie sind die zwingende Grundlage für reale statisch-konstruktive Nachweise und nichtlineare Finite-Elemente-Berechnungen (FEM).",
+    "elastoPlastischMitVerfestigung": " Elasto-Plastisch mit Verfestigung",
+    "rheologischZeitabh": " Rheologisch (Zeitabh.)",
+    "thixotropieRheopexie": " Thixotropie & Rheopexie",
+    "hookeschesGesetzSpannungUnd": "**Hookesches Gesetz:** Spannung und Dehnung sind streng proportional. Es gilt ",
+    "keineBleibendenVerformungenNach": "Keine bleibenden Verformungen nach Entlastung (vollständige Reversibilität).",
+    "giltNäherungsweiseFürViele": "Gilt näherungsweise für viele Baustoffe (Stahl, Glas, Holz parallel zur Faser) bei kleinen Dehnungen.",
+    "mathematischAmEinfachstenZu": "Mathematisch am einfachsten zu handhaben, da es auf lineare Gleichungssysteme führt.",
+    "krümmungDesVerlaufsSpannung": "**Krümmung des Verlaufs:** Spannung und Dehnung sind nicht proportional, jedoch gibt es keine bleibenden Verformungen (elastisch).",
+    "derZusammenhangZwischenSpannung": "Der Zusammenhang zwischen Spannung und Dehnung ändert sich kontinuierlich.",
+    "typischFürElastomereBeton": "Typisch für Elastomere. Beton unter Druck zeigt ebenfalls eine gekrümmte Arbeitslinie, jedoch mit bleibenden Anteilen aus Mikrorissbildung – streng genommen also nicht rein elastisch.",
+    "rechnerischFürBetonÜber": "Rechnerisch für Beton über die Arbeitslinie nach DIN EN 1992-1-1, 3.1.5 (Schnittgrößenermittlung) bzw. das Parabel-Rechteck-Diagramm nach 3.1.7 (Querschnittsbemessung); für Metalle ohne ausgeprägte Streckgrenze über den Ramberg-Osgood-Ansatz.",
+    "fließplateauOhneVerfestigungNach": "**Fließplateau (ohne Verfestigung):** Nach Erreichen der Fließgrenze (",
+    "nimmtDieDehnungZu": ") nimmt die Dehnung zu, ohne dass sich die Spannung weiter erhöht.",
+    "typischFürKlassischenBaustahl": "Typisch für klassischen Baustahl (z.B. S235, S355) mit ausgeprägter Streckgrenze.",
+    "ermöglichtStatischeSchnittgrößenumlageru": "Ermöglicht statische Schnittgrößenumlagerungen in Tragwerken (Fließgelenktheorie / Traglastverfahren nach Eurocode).",
+    "nachEntlastungBleibenIrreversible": "Nach Entlastung bleiben irreversible plastische Verformungen zurück.",
+    "bilinearesVerfestigungsmodellNachÜbersch": "**Bilineares Verfestigungsmodell:** Nach Überschreiten der Fließgrenze ($f_y$) steigt die Spannung bei weiterer Dehnung linear entlang des Tangentenmoduls $E_t$ (Verfestigungsmodul) an.",
+    "b500bBetonstahl": "B500B (Betonstahl)",
+    "s355Baustahl": "S355 (Baustahl)",
+    "s235Weichstahl": "S235 (Weichstahl)",
+    "enAw6060Alu": "EN AW-6060 (Alu)",
+    "fließdehnungY": "Fließdehnung ε_y",
+    "yFYE": "ε_y = f_y / E",
+    "höchstspannungMax": "Höchstspannung σ_max",
+    "spannungsverhältnisMaxFY": "Spannungsverhältnis σ_max / f_y bei ε_max",
+    "kFTF": "k = f_t/f_y wird bei ε_uk bestimmt (B500B: k ≥ 1,08 bei ε_uk ≥ 5 %)",
+    "rückfederungE": "Rückfederung Δε_e",
+    "eMaxE": "Δε_e = σ_max / E",
+    "bleibendeDehnungP": "Bleibende Dehnung ε_p",
+    "pMaxEPlastische": "ε_p = ε_max - Δε_e (plastische Deformation)",
+    "entlastungsastBeiLastrücknahmeEntspannt": "**Entlastungsast:** Bei Lastrücknahme entspannt das Material rein linear-elastisch mit voller elastischer Steifigkeit $E$ parallel zur Hookeschen Geraden.",
+    "kaltverfestigungDurchAufstauVon": "**Kaltverfestigung:** Durch Aufstau von Kristallbaufehlern (Versetzungen) steigt die Scherspannungsgrenze der Gleitebenen.",
+    "duktilitätNachEc2Hochduktiler": "**Duktilität nach EC2:** Hochduktiler Betonstahl B500B garantiert durch seinen Verfestigungsast ein großes Sicherheitsvermögen vor dem spröden Versagen.",
+    "zeitabhängigkeitDieBeziehungZwischen": "**Zeitabhängigkeit:** Die Beziehung zwischen Spannung und Dehnung hängt von der Zeit bzw. der Belastungsgeschwindigkeit ab.",
+    "kriechenRetardationZunahmeDer": "**Kriechen (Retardation):** Zunahme der Dehnung unter konstanter Spannung. Relevant für Beton, Holz und Kunststoffe.",
+    "relaxationAbnahmeDerSpannung": "**Relaxation:** Abnahme der Spannung unter konstanter Dehnung. Maßgebend bei hochfestem Spannstahl (Vorspannungsverluste).",
+    "abgebildetDurchKombinationenVon": "Abgebildet durch Kombinationen von elastischen Federn (Hooke) und viskosen Dämpfern (Newton) – z.B. Maxwell- oder Kelvin-Voigt-Modelle.",
+    "dasDiagrammZeigtQualitativ": "Das Diagramm zeigt qualitativ eine σ-ε-Kurve bei konstanter Dehnrate: Je schneller belastet wird, desto steiler verläuft sie. Quantitative Verläufe liefert der Rheologie-Simulator unten.",
+    "zeitabhängigeFluidEigenschaftenRheologie": "**Zeitabhängige Fluid-Eigenschaften (Rheologie):** Bei thixotropen und rheopexen Systemen ändert sich die Viskosität unter konstanter mechanischer Beanspruchungsgeschwindigkeit (Scherung) mit der Zeit.",
+    "thixotropieVerflüssigung": "Thixotropie (Verflüssigung)",
+    "prinzipViskositätsabnahmeBeiKonstanter": "**Prinzip:** Viskositätsabnahme bei konstanter Scherbeanspruchung. Nach Entlastung baut sich das Netzwerk vollständig wieder auf (Gelkonsistenz).<br>**Bedeutung:** Sichert hervorragende Verarbeitbarkeit beim Pumpen, verhindert danach sofort das Abrutschen (Fliesenkleber, Putze, Betone).",
+    "rheopexieVerdickung": "Rheopexie (Verdickung)",
+    "prinzipViskositätserhöhungBeiFortwährend": "**Prinzip:** Viskositätserhöhung bei fortwährender mechanischer Scherung über die Zeit.<br>**Vorkommen:** Extrem selten im Bauwesen; vereinzelt bei hochkonzentrierten feinsten mineralischen Bindemittelsuspensionen.",
+    "bilineareVerfestigung": "Bilineare Verfestigung"
+  },
+  "werte": {
+    "eParallel": "E₁ (Parallel)",
+    "eElastisch": "E (Elastisch)",
+    "thixotropiePaSAbbau": "Thixotropie η (Pa·s) - Abbau bei konstanter Scherrate",
+    "rheopexiePaSAufbau": "Rheopexie η (Pa·s) - Aufbau bei konstanter Scherrate",
+    "belastungsastMitVerfestigungEt": "Belastungsast (mit Verfestigung Et)",
+    "entlastungspfadElastischerRücksprungMit": "Entlastungspfad (elastischer Rücksprung mit Steigung E)",
+    "vergleichElastischIdealplastischOhne": "Vergleich: Elastisch-Idealplastisch (ohne Verfestigung)",
+    "spannungMpa": "Spannung σ (MPa)",
+    "linearElastischesMaterialmodell": "Linear-Elastisches Materialmodell",
+    "nichtlinearElastischesModell": "Nichtlinear-Elastisches Modell",
+    "elastischIdealplastischesModellOhne": "Elastisch-Idealplastisches Modell (ohne Verfestigung)",
+    "elastoPlastischMitVerfestigung": "Elasto-Plastisch mit Verfestigung (Bilineares Stoffgesetz)",
+    "rheologischesModellZB": "Rheologisches Modell (z.B. Maxwell)",
+    "thixotropieRheopexieZeitabhängigeViskosi": "Thixotropie & Rheopexie (Zeitabhängige Viskosität)",
+    "fließgrenzeFY": "Fließgrenze f_y",
+    "elastizitätsmodulE": "Elastizitätsmodul E",
+    "verfestigungsmodulETTangentenmodul": "Verfestigungsmodul E_t (Tangentenmodul)",
+    "rheologischerZeitverlaufViskositätZeit": "Rheologischer Zeitverlauf (Viskosität η / Zeit t)",
+    "spannungsDehnungsDiagramm": "Spannungs-Dehnungs-Diagramm σ / ε",
+    "viskositätPaS": "Viskosität η (Pa·s)",
+    "spannungMpa2": "Spannung σ (MPa)",
+    "scherdauerTSBei": "Scherdauer t (s) bei konstanter Scherrate",
+    "dehnung": "Dehnung ε (‰)",
+    "beispiel1BleibendeDehnung": "Beispiel 1: Bleibende Dehnung eines Betonstahls B500B nach Überlastung",
+    "fastDieGesamteDehnung": "Fast die gesamte Dehnung bleibt erhalten; die erneute Belastung verläuft elastisch bis 535 MPa (Kaltverfestigung). Das Verhältnis 535/500 = 1,07 bei 20 ‰ zeigt, warum k = f_t/f_y ≥ 1,08 erst bei ε_uk ≥ 5 % nachgewiesen wird.",
+    "dinEn19921": "DIN EN 1992-1-1, 3.2.7 und Anhang C (Duktilitätsklasse B)",
+    "beispiel2RelaxationMaxwell": "Beispiel 2: Relaxation (Maxwell) und Bingham-Fließen von Frischbeton",
+    "rüttelenergieSenktDieWirksame": "Rüttelenergie senkt die wirksame Fließgrenze; selbstverdichtender Beton erreicht durch Fließmittel eine sehr niedrige Fließgrenze (rund 10 bis 50 Pa) und entlüftet allein unter Eigengewicht.",
+    "rheologischeGrundmodelleMaxwellBingham": "Rheologische Grundmodelle (Maxwell, Bingham); Begriffe nach DIN 1342",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links geprüft (Oktober 2026); fachliche Freigabe durch den Autor ausstehend)",
+    "hookeschesGesetz": "Hookesches Gesetz"
+  },
+  "daten": {
+    "Materialmodelle.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2 000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.",
+        "formel": "f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2\\,000\\,\\text{MPa}"
+      },
+      {
+        "titel": "Fließdehnung",
+        "erklaerung": "Ende des elastischen Bereichs:",
+        "formel": "\\varepsilon_y = \\frac{500}{200\\,000} = 2{,}5\\,\\text{‰}"
+      },
+      {
+        "titel": "Höchstspannung",
+        "erklaerung": "Verfestigungsast bis ε_max:",
+        "formel": "\\sigma_{max} = 500 + 2\\,000 \\cdot (0{,}020 - 0{,}0025) = 535\\,\\text{MPa}"
+      },
+      {
+        "titel": "Entlastung",
+        "erklaerung": "Rückfederung parallel zur Hookeschen Geraden:",
+        "formel": "\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\text{‰}"
+      }
+    ],
+    "Materialmodelle.schritte_2": [
+      {
+        "titel": "Maxwell-Relaxation",
+        "erklaerung": "Aufgezwungene Dehnung mit σ₀ = 10 MPa, Relaxationszeit τ = η/E = 2 s. Spannung nach t = 3 s:",
+        "formel": "\\sigma(3\\,\\text{s}) = 10 \\cdot e^{-3/2} = 2{,}23\\,\\text{MPa}"
+      },
+      {
+        "titel": "Halbwertszeit",
+        "erklaerung": "Zeit bis zum Abbau auf 50 %:",
+        "formel": "t_{1/2} = \\tau \\cdot \\ln 2 = 2 \\cdot 0{,}693 = 1{,}39\\,\\text{s}"
+      },
+      {
+        "titel": "Bingham-Fluid",
+        "erklaerung": "Frischbeton mit τ₀ = 500 Pa und μ_p = 50 Pa·s unter einer Scherspannung von 800 Pa:",
+        "formel": "\\dot{\\gamma} = \\frac{800 - 500}{50} = 6\\,\\text{s}^{-1}"
+      },
+      {
+        "titel": "Unterhalb der Fließgrenze",
+        "erklaerung": "Bei τ = 400 Pa < τ₀ fließt der Beton nicht:",
+        "formel": "\\dot{\\gamma} = 0"
+      }
+    ],
+    "Materialmodelle.regelwerke": [
+      {
+        "title": "DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.5 / 3.1.7 / 3.2.7 Arbeitslinien); neue Generation DIN EN 1992-1-1:2025-09"
+      },
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 5.4.3 plastische Tragwerksberechnung); neue Generation DIN EN 1993-1-1:2025-04"
+      },
+      {
+        "title": "DIN 1342-1 bis -3:2003-11 (Viskosität – Rheologische Begriffe, Newtonsche und nicht-newtonsche Flüssigkeiten)"
+      }
+    ],
+    "Materialmodelle.literatur": [
+      "Mang, H.; Hofstetter, G.: Festigkeitslehre. 4. Aufl., Berlin: Springer Vieweg 2013",
+      "Gross, D., Hauger, W. et al.: Technische Mechanik 4: Hydromechanik, Elemente der Höheren Mechanik (Springer, 2018)",
+      "Wriggers, P.: Nichtlineare Finite-Element-Methoden (Springer, 2001)"
+    ],
+    "Materialmodelle.formeln": [
+      {
+        "erklaerung": "Hookesches Gesetz (Linear-Elastisch)\n\\sigma: Normalspannung\nE: Elastizitätsmodul\n\\varepsilon: Dehnung",
+        "formel": "\\sigma = E \\cdot \\varepsilon"
+      },
+      {
+        "erklaerung": "Elasto-Plastisch mit bilinearer Verfestigung (Betonstahl-Arbeitslinie nach DIN EN 1992-1-1, Bild 3.8)\nf_y: Fließgrenze\nE_t: Tangentenmodul (Verfestigungsmodul)\n\\varepsilon_y: Fließdehnung (\\varepsilon_y = f_y / E)\n\\varepsilon_p: bleibende plastische Dehnung nach Entlastung (\\varepsilon_p = \\varepsilon - \\sigma / E)",
+        "formel": "\\sigma(\\varepsilon) = \\begin{cases} E \\cdot \\varepsilon & \\text{für } \\varepsilon \\le \\varepsilon_y \\\\ f_y + E_t \\cdot (\\varepsilon - \\varepsilon_y) & \\text{für } \\varepsilon > \\varepsilon_y \\end{cases}"
+      },
+      {
+        "erklaerung": "Verfestigungsverhältnis k (Duktilitätskriterium nach Eurocode 2)\nf_t: Zugfestigkeit bei Höchstlast\nf_y: Streckgrenze des Betonstahls (B500B erfordert k ≥ 1,08 und ε_uk ≥ 5 % nach DIN EN 1992-1-1, Anhang C)",
+        "formel": "k = \\frac{f_t}{f_y} = 1 + \\frac{E_t}{f_y} \\cdot (\\varepsilon_{uk} - \\varepsilon_y)"
+      },
+      {
+        "erklaerung": "Maxwell-Modell (Viskoelastische Relaxation)\nKombination aus Feder und Dämpfer in Reihe.\n\\dot{\\varepsilon}: Dehnrate\n\\eta: Viskosität des Dämpfers\n\\tau = \\eta / E: Relaxationszeit (Abbau auf 1/e = 36,8 %)",
+        "formel": "\\dot{\\varepsilon} = \\frac{\\dot{\\sigma}}{E} + \\frac{\\sigma}{\\eta} \\implies \\sigma(t) = \\sigma_0 \\cdot e^{-t / \\tau}"
+      },
+      {
+        "erklaerung": "Kelvin-Voigt-Modell (Verzögerte Elastizität / Retardation / Kriechen)\nFeder und Dämpfer parallel geschaltet.\n\\tau = \\eta / E: Retardationszeit",
+        "formel": "\\sigma = E \\cdot \\varepsilon + \\eta \\cdot \\dot{\\varepsilon} \\implies \\varepsilon(t) = \\frac{\\sigma_0}{E} \\cdot \\left(1 - e^{-t / \\tau}\\right)"
+      },
+      {
+        "erklaerung": "Bingham-Modell (Viskoplastisches Fluid für Frischbeton und Mörtel)\n\\tau_0: Fließgrenze (Haftspannung)\n\\mu_p: plastische Viskosität\n\\dot{\\gamma}: Scherrate",
+        "formel": "\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma} \\quad \\text{für } |\\tau| > \\tau_0"
+      },
+      {
+        "erklaerung": "Dissipationsarbeit / Hysteresefläche pro Zyklus\nW_{diss}: mechanische Dissipationsenergie (in kJ/m³ bzw. N/mm²)\n\\sigma: Spannung, \\varepsilon: Dehnung",
+        "formel": "W_{\\text{diss}} = \\oint \\sigma \\, d\\varepsilon"
+      }
+    ]
+  }
+}

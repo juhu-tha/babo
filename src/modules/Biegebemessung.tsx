@@ -24,6 +24,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { bemesseBiegung, MU_LIM_STAHL, MU_LIM_FRP } from '@/src/calc/biegung';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
+import inhalt from '@/content/biegebemessung/Biegebemessung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -67,7 +69,7 @@ export default function Biegebemessung() {
       labels: med_values,
       datasets: [
         {
-          label: 'Erforderliches As1 (cm²)',
+          label: inhalt.werte.erforderlichesAs1Cm,
           data: as_values,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -75,7 +77,7 @@ export default function Biegebemessung() {
           tension: 0.1
         },
         {
-          label: 'Mindestbewehrung As,min (NA DE)',
+          label: inhalt.werte.mindestbewehrungAsMinNa,
           data: med_values.map(() => results.as_min),
           borderColor: '#64748b',
           borderDash: [5, 5],
@@ -90,8 +92,8 @@ export default function Biegebemessung() {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
-      y: { title: { display: true, text: 'Erf. As (cm²)', font: { family: 'Work Sans', weight: 'bold' as const } } },
-      x: { title: { display: true, text: 'Biegemoment M_Ed (kNm)', font: { family: 'Work Sans', weight: 'bold' as const } } }
+      y: { title: { display: true, text: inhalt.werte.erfAsCm, font: { family: 'Work Sans', weight: 'bold' as const } } },
+      x: { title: { display: true, text: inhalt.werte.biegemomentMEdKnm, font: { family: 'Work Sans', weight: 'bold' as const } } }
     },
     plugins: { legend: { display: true, position: 'top' as const } }
   };
@@ -111,19 +113,13 @@ export default function Biegebemessung() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center justify-between gap-2 flex-wrap mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" />
-            Biegebemessung (Massivbau)
-            <InfoTooltip text="Biegebemessung für Rechteckquerschnitte nach DIN EN 1992-1-1 mit NA DE." />
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.biegebemessungMassivbau} /><InfoTooltip text={inhalt.werte.biegebemessungFürRechteckquerschnitteNac} />
           </h2>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
-          </span>
+          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300"><MdText text={inhalt.texte.berechnetNachDinEn} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Die Biegebemessung ermittelt die erforderliche Längsbewehrung (<FormulaText text="A_s" />) für ein gegebenes Biegemoment (<FormulaText text="M_{Ed}" />). Die Mindestbewehrung wird in Deutschland (NA DE) als Robustheitsbewehrung zur Aufnahme des Rissmoments berechnet.
-          </p>
+          <p><MdText text={inhalt.texte.dieBiegebemessungErmitteltDie} /><FormulaText text="A_s" /><MdText text={inhalt.texte.fürEinGegebenesBiegemoment} /><FormulaText text="M_{Ed}" /><MdText text={inhalt.texte.dieMindestbewehrungWirdIn} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -131,15 +127,15 @@ export default function Biegebemessung() {
           <NachErstemBild minHoehe="30rem">
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Querschnitt &amp; Einwirkung</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.querschnittEinwirkung} /></h3>
               <div className="grid grid-cols-1 gap-4">
-                <Slider info="Breite des Bauteils." label={<FormulaText text="Breite b" />} min={10} max={100} step={5} value={b} unit="cm" onChange={(e) => setB(Number(e.target.value))} />
+                <Slider info={inhalt.werte.breiteDesBauteils} label={<FormulaText text="Breite b" />} min={10} max={100} step={5} value={b} unit="cm" onChange={(e) => setB(Number(e.target.value))} />
                 <Slider label={<FormulaText text="Höhe h" />} min={20} max={150} step={5} value={h} unit="cm" onChange={(e) => setH(Number(e.target.value))} />
-                <Slider info="Abstand vom Rand zur Zugbewehrung." label={<FormulaText text="Randabstand d_1 (Zug)" />} min={2} max={10} step={0.5} value={d1} unit="cm" onChange={(e) => setD1(Number(e.target.value))} />
-                <Slider info="Abstand vom Rand zur Druckbewehrung." label={<FormulaText text="Randabstand d_2 (Druck)" />} min={2} max={10} step={0.5} value={d2} unit="cm" onChange={(e) => setD2(Number(e.target.value))} />
+                <Slider info={inhalt.werte.abstandVomRandZur} label={<FormulaText text={inhalt.werte.randabstandD1Zug} />} min={2} max={10} step={0.5} value={d1} unit="cm" onChange={(e) => setD1(Number(e.target.value))} />
+                <Slider info={inhalt.werte.abstandVomRandZur2} label={<FormulaText text={inhalt.werte.randabstandD2Druck} />} min={2} max={10} step={0.5} value={d2} unit="cm" onChange={(e) => setD2(Number(e.target.value))} />
                 
                 <div className="mt-4 pt-4 border-t border-home-grau/30">
-                  <Slider label={<FormulaText text="Biegemoment M_{Ed}" />} min={10} max={1000} step={10} value={med} unit="kNm" onChange={(e) => setMed(Number(e.target.value))} />
+                  <Slider label={<FormulaText text={inhalt.werte.biegemomentMEd} />} min={10} max={1000} step={10} value={med} unit="kNm" onChange={(e) => setMed(Number(e.target.value))} />
                 </div>
               </div>
             </div>
@@ -148,7 +144,7 @@ export default function Biegebemessung() {
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Materialien</h3>
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <div className="flex items-center gap-2 mb-2"><label className="text-xs text-home-grau block"><FormulaText text="Betonfestigkeit f_{ck}" /></label><InfoTooltip text="Charakteristische Druckfestigkeit des Betons." /></div>
+                  <div className="flex items-center gap-2 mb-2"><label className="text-xs text-home-grau block"><FormulaText text={inhalt.werte.betonfestigkeitFCk} /></label><InfoTooltip text={inhalt.werte.charakteristischeDruckfestigkeitDesBeton} /></div>
                   <select
                     value={fck}
                     onChange={(e) => setFck(Number(e.target.value))}
@@ -163,7 +159,7 @@ export default function Biegebemessung() {
                   </select>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-2"><label className="text-xs text-home-grau block">Bewehrungsart</label><InfoTooltip text="Art der verwendeten Bewehrung (z.B. Betonstahl, Carbon)." /></div>
+                  <div className="flex items-center gap-2 mb-2"><label className="text-xs text-home-grau block">Bewehrungsart</label><InfoTooltip text={inhalt.werte.artDerVerwendetenBewehrung} /></div>
                   <select aria-label="Bewehrungsart"
                     value={bewehrungsArt}
                     onChange={(e) => setBewehrungsArt(e.target.value as 'Stahl' | 'Carbon' | 'GFK' | 'Basalt')}
@@ -178,7 +174,7 @@ export default function Biegebemessung() {
 
                 {bewehrungsArt === 'Stahl' ? (
                   <div>
-                    <label className="text-xs text-home-grau block mb-2"><FormulaText text="Stahlfestigkeit f_{yk}" /></label>
+                    <label className="text-xs text-home-grau block mb-2"><FormulaText text={inhalt.werte.stahlfestigkeitFYk} /></label>
                     <select
                       value={fyk}
                       onChange={(e) => setFyk(Number(e.target.value))}
@@ -189,19 +185,16 @@ export default function Biegebemessung() {
                   </div>
                 ) : (
                   <>
-                    <Slider label="Zugfestigkeit ftk" info="Charakteristische Zugfestigkeit des Materials." min={500} max={4000} step={100} value={ftk} unit="MPa" onChange={(e) => setFtk(Number(e.target.value))} />
-                    <Slider label="Teilsicherheitsbeiwert γFRP" min={1.0} max={2.0} step={0.05} value={gammaFRP} unit="-" onChange={(e) => setGammaFRP(Number(e.target.value))} />
-                    <p className="text-[11px] text-text-main/60 leading-relaxed">
-                      Lehrannahme: Nichtmetallische Bewehrung ist nicht in EC2 geregelt. Maßgebend sind die DAfStb-Richtlinie
-                      „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01) bzw. die jeweilige Zulassung; γ und μ_lim = 0,25 sind hier vereinfacht.
-                    </p>
+                    <Slider label={inhalt.werte.zugfestigkeitFtk} info={inhalt.werte.charakteristischeZugfestigkeitDesMateria} min={500} max={4000} step={100} value={ftk} unit="MPa" onChange={(e) => setFtk(Number(e.target.value))} />
+                    <Slider label={inhalt.werte.teilsicherheitsbeiwertFrp} min={1.0} max={2.0} step={0.05} value={gammaFRP} unit="-" onChange={(e) => setGammaFRP(Number(e.target.value))} />
+                    <p className="text-[11px] text-text-main/60 leading-relaxed"><MdText text={inhalt.texte.lehrannahmeNichtmetallischeBewehrungIst} /></p>
                   </>
                 )}
               </div>
             </div>
             
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col h-[300px]">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2">Erf. As über Biegemoment</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.erfAsÜberBiegemoment} /></h3>
               <div className="flex-1 relative w-full h-full">
                 <Chart type="line" data={chartData} options={chartOptions} />
               </div>
@@ -213,21 +206,19 @@ export default function Biegebemessung() {
           <div className="lg:col-span-6 flex flex-col gap-6">
             <EingabeHinweise hinweise={results.hinweise} />
             <div className={`${results.isPossible ? 'bg-shiraz/5 border-shiraz/20' : 'bg-red-100 border-red-300'} p-6 rounded-xl border flex flex-col justify-center`}>
-              <h3 className={`text-sm font-bold uppercase tracking-wider mb-6 ${results.isPossible ? 'text-shiraz' : 'text-red-700'}`}>
-                Bemessungsergebnis (NA DE)
-              </h3>
+              <h3 className={`text-sm font-bold uppercase tracking-wider mb-6 ${results.isPossible ? 'text-shiraz' : 'text-red-700'}`}><MdText text={inhalt.texte.bemessungsergebnisNaDe} /></h3>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-home-grau text-sm mb-1">Bezogenes Moment (<FormulaText text="\mu_{Ed}" />)</div>
+                  <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.bezogenesMoment} /><FormulaText text="\mu_{Ed}" />)</div>
                   <div className={`text-3xl font-bold ${results.isPossible ? 'text-text-main' : 'text-red-600'}`}>
                     {formatDeZahl(results.mu_Ed, 3)}
                   </div>
-                  <div className="text-xs text-home-grau mt-1">Grenzwert: {formatDeZahl(bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP, 3)}{bewehrungsArt === 'Stahl' && <> (ξ<sub>lim</sub> = 0,45)</>}</div>
+                  <div className="text-xs text-home-grau mt-1">Grenzwert: {formatDeZahl(bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP, 3)}{bewehrungsArt === 'Stahl' && <><MdText text={inhalt.texte.subLimSub0} /></>}</div>
                 </div>
                 
                 <div>
-                  <div className="text-home-grau text-sm mb-1">Mech. Bewehrungsgrad (<FormulaText text="\omega" />)</div>
+                  <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.mechBewehrungsgrad} /><FormulaText text="\omega" />)</div>
                   <div className="text-3xl font-bold text-text-main">
                     {results.isPossible ? formatDeZahl(results.omega, 3) : '-'}
                   </div>
@@ -235,7 +226,7 @@ export default function Biegebemessung() {
               </div>
 
               <div className="p-6 bg-white rounded-xl border border-home-grau/30 shadow-sm text-center">
-                <div className="text-home-grau text-sm font-bold uppercase mb-2">Maßgebende Zugbewehrung (<FormulaText text="A_{s1}" />)</div>
+                <div className="text-home-grau text-sm font-bold uppercase mb-2"><MdText text={inhalt.texte.maßgebendeZugbewehrung} /><FormulaText text="A_{s1}" />)</div>
                 {results.isPossible ? (
                   <>
                     <div className="text-5xl font-bold text-shiraz">{formatDeZahl(results.as_final, 2)} <span className="text-xl font-normal">cm²</span></div>
@@ -251,7 +242,7 @@ export default function Biegebemessung() {
 
               {results.as2_req > 0 && (
                 <div className="p-6 bg-white rounded-xl border border-home-grau/30 shadow-sm text-center mt-4">
-                  <div className="text-home-grau text-sm font-bold uppercase mb-2">Erforderliche Druckbewehrung (<FormulaText text="A_{s2}" />)</div>
+                  <div className="text-home-grau text-sm font-bold uppercase mb-2"><MdText text={inhalt.texte.erforderlicheDruckbewehrung} /><FormulaText text="A_{s2}" />)</div>
                   <div className="text-4xl font-bold text-slate-700">{formatDeZahl(results.as2_req, 2)} <span className="text-xl font-normal">cm²</span></div>
                   <div className="text-xs text-home-grau mt-2">
                     {results.message}
@@ -260,57 +251,57 @@ export default function Biegebemessung() {
               )}
 
               <div className="mt-8 grid grid-cols-2 gap-4 text-xs text-home-grau">
-                <div>Statische Nutzhöhe <FormulaText text="d" />: {formatDeWert(results.d)} cm</div>
+                <div><MdText text={inhalt.texte.statischeNutzhöhe} /><FormulaText text="d" />: {formatDeWert(results.d)} cm</div>
                 <div>Rissmoment <FormulaText text="M_{cr}" />: {formatDeZahl(results.mcr_kNm, 2)} kNm</div>
-                <div>Bemessungswert Beton <FormulaText text="f_{cd}" />: {formatDeZahl(results.fcd, 1)} MPa</div>
-                <div>Bemessungswert Stahl <FormulaText text="f_{yd}" />: {formatDeZahl(results.fyd, 1)} MPa</div>
+                <div><MdText text={inhalt.texte.bemessungswertBeton} /><FormulaText text="f_{cd}" />: {formatDeZahl(results.fcd, 1)} MPa</div>
+                <div><MdText text={inhalt.texte.bemessungswertStahl} /><FormulaText text="f_{yd}" />: {formatDeZahl(results.fyd, 1)} MPa</div>
                 {results.isPossible && <div>Druckzonenhöhe <FormulaText text="x" />: {formatDeZahl(results.x, 1)} cm</div>}
               </div>
             </div>
 
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Biegebemessung mit den aktuellen Eingaben"
+              title={inhalt.werte.ihrRechenwegBiegebemessungMit}
               zielGleichung={`A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{f_{yd}} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`}
-              normQuelle="DIN EN 1992-1-1 mit NA (DE), 3.1.7 und 6.1"
+              normQuelle={inhalt.werte.dinEn19921}
               schritte={[
                 {
-                  titel: 'Bemessungswerte der Baustoffe',
+                  titel: inhalt.werte.bemessungswerteDerBaustoffe,
                   erklaerung: bewehrungsArt === 'Stahl'
-                    ? 'Beton mit α_cc = 0,85 und γ_c = 1,5, Betonstahl mit γ_s = 1,15.'
-                    : 'Beton mit α_cc = 0,85 und γ_c = 1,5; nichtmetallische Bewehrung mit dem gewählten Teilsicherheitsbeiwert γ_FRP.',
+                    ? inhalt.werte.betonMitCc0
+                    : inhalt.werte.betonMitCc02,
                   formel: bewehrungsArt === 'Stahl'
                     ? `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{yd} = \\frac{${formatDeTeX(fyk, 0)}}{${formatDeTeX(EC2_NA_DE.gammaS, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`
                     : `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{fd} = \\frac{${formatDeTeX(ftk, 0)}}{${formatDeTeX(gammaFRP, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`,
                 },
                 {
-                  titel: 'Statische Nutzhöhe',
-                  erklaerung: 'Abstand vom gedrückten Rand bis zur Achse der Zugbewehrung.',
+                  titel: inhalt.werte.statischeNutzhöhe,
+                  erklaerung: inhalt.werte.abstandVomGedrücktenRand,
                   formel: `d = h - d_1 = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm}`,
                 },
                 {
-                  titel: 'Bezogenes Moment',
+                  titel: inhalt.werte.bezogenesMoment,
                   erklaerung: results.mu_Ed > (bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP)
                     ? (bewehrungsArt === 'Stahl'
-                      ? 'Der Grenzwert ist überschritten: Der Querschnitt wird mit μ_lim bemessen, das Restmoment übernimmt eine Druckbewehrung A_s2.'
-                      : 'Der Grenzwert ist überschritten: Die Druckzone versagt, der Querschnitt muss vergrößert werden.')
-                    : 'Der Grenzwert ist eingehalten, eine Druckbewehrung ist nicht erforderlich.',
+                      ? inhalt.werte.derGrenzwertIstÜberschritten
+                      : inhalt.werte.derGrenzwertIstÜberschritten2)
+                    : inhalt.werte.derGrenzwertIstEingehalten,
                   formel: `\\mu_{Eds} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}} = \\frac{${formatDeTeX(med / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.d / 100, 3)}^2 \\cdot ${formatDeTeX(results.fcd, 1)}} = ${formatDeTeX(results.mu_Ed, 3)} \\;${results.mu_Ed > (bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP) ? '>' : '\\le'}\\; \\mu_{lim} = ${formatDeTeX(bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP, 3)}`,
                 },
                 {
-                  titel: 'Mechanischer Bewehrungsgrad und Druckzone',
-                  erklaerung: 'Rechteckiger Spannungsblock mit λ = 0,8; die Druckzonenhöhe folgt aus x = ω · d / λ.',
+                  titel: inhalt.werte.mechanischerBewehrungsgradUndDruckzone,
+                  erklaerung: inhalt.werte.rechteckigerSpannungsblockMit0,
                   formel: results.isPossible
                     ? `\\omega = 1 - \\sqrt{1 - 2 \\cdot ${formatDeTeX(Math.min(results.mu_Ed, bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP), 3)}} = ${formatDeTeX(results.omega, 3)};\\quad x = \\frac{${formatDeTeX(results.omega, 3)} \\cdot ${formatDeTeX(results.d, 1)}}{0{,}8} = ${formatDeTeX(results.x, 1)}\\,\\text{cm}`
                     : `\\text{${results.message}}`,
                 },
                 {
-                  titel: 'Erforderliche Zugbewehrung',
+                  titel: inhalt.werte.erforderlicheZugbewehrung,
                   erklaerung: results.as2_req > 0
                     ? `Anteil aus dem Grenzmoment plus Anteil der Druckbewehrung (A_s2 = ${formatDeZahl(results.as2_req, 2)} cm², σ_s2 = ${formatDeZahl(results.sigma_s2, 0)} N/mm²).`
                     : bewehrungsArt === 'Stahl'
-                      ? 'Die Bewehrung fließt; Bemessung mit f_yd.'
-                      : 'Nichtmetallische Bewehrung: Bemessung mit der Spannung σ_f aus dem ebenen Dehnungszustand (höchstens f_fd).',
+                      ? inhalt.werte.dieBewehrungFließtBemessung
+                      : inhalt.werte.nichtmetallischeBewehrungBemessungMit,
                   formel: !results.isPossible
                     ? '\\text{nicht bemessbar}'
                     : results.as2_req > 0
@@ -320,8 +311,8 @@ export default function Biegebemessung() {
                         : `A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{\\sigma_f} = ${formatDeTeX(results.as1_req, 2)}\\,\\text{cm}^2 \\quad (\\sigma_f = ${formatDeTeX(results.as1_req > 0 ? results.omega * b * results.d * results.fcd / results.as1_req : NaN, 0)}\\,\\text{N/mm}^2)`,
                 },
                 {
-                  titel: 'Mindestbewehrung und maßgebender Wert',
-                  erklaerung: 'Robustheitsbewehrung nach NA (DE): A_s,min = M_cr / (f_yk · z) mit z = 0,9 d; maßgebend ist der größere Wert.',
+                  titel: inhalt.werte.mindestbewehrungUndMaßgebenderWert,
+                  erklaerung: inhalt.werte.robustheitsbewehrungNachNaDe,
                   formel: results.isPossible
                     ? `M_{cr} = ${formatDeTeX(results.mcr_kNm, 2)}\\,\\text{kNm},\\; A_{s,min} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2 \\;\\Rightarrow\\; A_{s1} = \\max(${formatDeTeX(results.as1_req, 2)};\\, ${formatDeTeX(results.as_min, 2)}) = ${formatDeTeX(results.as_final, 2)}\\,\\text{cm}^2`
                     : `M_{cr} = ${formatDeTeX(results.mcr_kNm, 2)}\\,\\text{kNm},\\; A_{s,min} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2`,
@@ -332,7 +323,7 @@ export default function Biegebemessung() {
 
             {/* Interaktives Schnittgrößenmodell */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Interaktives Schnittgrößenmodell (ULS)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.interaktivesSchnittgrößenmodellUls} /></h3>
               <div className="w-full overflow-x-auto bg-off-white rounded-lg border border-home-grau/30">
                 <svg width="550" height="320" className="mx-auto block">
                   <defs>
@@ -435,8 +426,7 @@ export default function Biegebemessung() {
                     );
                   })()}
                 </svg>
-                <div className="p-4 text-xs text-text-main/70 border-t border-home-grau/30">
-                  Diese Darstellung ist <strong>maßstäblich in Bezug auf die Profilhöhe h</strong>. Der Betondruckblock wird vereinfacht als Rechteck (<FormulaText text="0{,}8 \cdot x" />) mit der Bemessungsspannung <FormulaText text="f_{cd}" /> angenommen.
+                <div className="p-4 text-xs text-text-main/70 border-t border-home-grau/30"><MdText text={inhalt.texte.dieseDarstellungIstMaßstäblich} /><FormulaText text="0{,}8 \cdot x" /><MdText text={inhalt.texte.mitDerBemessungsspannung} /><FormulaText text="f_{cd}" /> angenommen.
                 </div>
               </div>
             </div>
@@ -447,17 +437,11 @@ export default function Biegebemessung() {
       
       <NachErstemBild minHoehe="14rem">
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Biegebemessung Rechteckquerschnitt (Standardwerte)"
+        title={inhalt.werte.anwendungsbeispielBiegebemessungRechteck}
         zielGleichung="A_{s1} = \omega \cdot b \cdot d \cdot \frac{f_{cd}}{f_{yd}}, \quad \omega = 1 - \sqrt{1 - 2\mu_{Eds}}"
-        normQuelle="DIN EN 1992-1-1 mit NA, 3.1.7 (Spannungsblock) und 6.1"
-        schritte={[
-          { titel: '1. Gegeben', formel: 'b/h = 30/50\\,\\text{cm},\\; d = 45\\,\\text{cm},\\; M_{Ed} = 200\\,\\text{kNm},\\; \\text{C30/37, B500}', erklaerung: 'Rechteckquerschnitt ohne Normalkraft.' },
-          { titel: '2. Bemessungswerte', formel: 'f_{cd} = 0{,}85 \\cdot 30/1{,}5 = 17{,}0\\,\\text{N/mm}^2;\\; f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
-          { titel: '3. Bezogenes Moment', formel: '\\mu_{Eds} = \\frac{0{,}200}{0{,}30 \\cdot 0{,}45^2 \\cdot 17{,}0} = 0{,}194 < 0{,}296', erklaerung: 'Keine Druckbewehrung erforderlich.' },
-          { titel: '4. Mechanischer Bewehrungsgrad', formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot 0{,}194} = 0{,}217;\\; \\zeta = 1 - \\omega/2 = 0{,}891', erklaerung: 'Rechteckiger Spannungsblock (λ = 0,8).' },
-          { titel: '5. Bewehrung', formel: 'A_{s1} = 0{,}217 \\cdot 30 \\cdot 45 \\cdot \\frac{17{,}0}{435} = 11{,}5\\,\\text{cm}^2 \\;>\\; A_{s,min} = 1{,}8\\,\\text{cm}^2', erklaerung: 'A_s,min aus dem Rissmoment (f_ctm = 2,9 N/mm², z = 0,9d).' },
-        ]}
-        ergebnisHinweis="A_s1 ≈ 11,5 cm², z. B. 6 Ø 16 (12,1 cm²)."
+        normQuelle={inhalt.werte.dinEn199212}
+        schritte={inhalt.daten["Biegebemessung.schritte"]}
+        ergebnisHinweis={inhalt.werte.aS1115}
       />
       </NachErstemBild>
 

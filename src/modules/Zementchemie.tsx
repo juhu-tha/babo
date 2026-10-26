@@ -10,6 +10,8 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Box, BookOpen, Calculator, Sparkles, Microscope, Clock } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import inhalt from '@/content/zementchemie/Zementchemie.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(LinearScale, ArcElement, Tooltip, Legend);
 
@@ -19,74 +21,7 @@ function GefuegebildungSimulator() {
   const [cementType, setCementType] = useState<'CEM_I' | 'CEM_III'>('CEM_I');
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const stages = [
-    {
-      id: '0min',
-      timeLabel: '0 Minuten (Frisch gemischt)',
-      hours: 0,
-      phaseTitle: 'Phase 1: Initial- und Lösungsphase',
-      alpha: 2,
-      strengthMPa: 0,
-      porosityPercent: 62,
-      heatJg: 25,
-      desc: 'Zementkörner (Alit C₃S, Belit C₂S, Aluminat C₃A) werden mit Anmachwasser benetzt. Schnelle Freisetzung von Ca²⁺- und OH⁻-Ionen in die Porenlösung. An der Klinkeroberfläche bildet sich ein erster dünner Belag aus Ettringitkristallen durch Reaktion von C₃A mit Calciumsulfat (Gips).'
-    },
-    {
-      id: '2h',
-      timeLabel: '2 Stunden (Ruhephase / Induktion)',
-      hours: 2,
-      phaseTitle: 'Phase 2: Induktionsperiode (Dormant Period)',
-      alpha: 6,
-      strengthMPa: 0,
-      porosityPercent: 58,
-      heatJg: 55,
-      desc: 'Niedrige chemische Reaktionsgeschwindigkeit. Die Hydratationsreaktion verharrt temporär, da sich eine quasi-passivierende Schicht gebildet hat. Der Frischbeton bleibt verarbeitbar, pumpfähig und verdichtungswillig (Offenzeit).'
-    },
-    {
-      id: '10h',
-      timeLabel: '10 Stunden (Erstarrungsbeginn & -ende)',
-      hours: 10,
-      phaseTitle: 'Phase 3: Beschleunigungsperiode',
-      alpha: 22,
-      strengthMPa: 4.5,
-      porosityPercent: 44,
-      heatJg: 160,
-      desc: 'Kritische Übersättigung der Porenlösung erreicht. Massives Auskristallisieren von faserigem Calciumsilicathydrat-Gel (C-S-H) auf der Klinkeroberfläche. Sechseckige Portlandit-Tafeln (CH, Ca(OH)₂) wachsen im Porenraum. Der Zementleim verliert seine Plastizität und erstarrt.'
-    },
-    {
-      id: '24h',
-      timeLabel: '24 Stunden (1 Tag – Frühe Erhärtung)',
-      hours: 24,
-      phaseTitle: 'Phase 4: Diffusionsgesteuertes Wachstum',
-      alpha: 48,
-      strengthMPa: 18.0,
-      porosityPercent: 32,
-      heatJg: 270,
-      desc: 'C-S-H-Nadeln wachsen brückenartig von den Klinkeroberflächen in den freien Porenraum („Igel“-Struktur). Erste feste Verkrallung der Körner untereinander. Die Hydratation wird diffusionskontrolliert, da Wasser durch die wachsende C-S-H-Schale diffundieren muss.'
-    },
-    {
-      id: '7d',
-      timeLabel: '7 Tage (Fortgeschrittenes Gefüge)',
-      hours: 168,
-      phaseTitle: 'Phase 5: Porenraum-Segmentierung',
-      alpha: 74,
-      strengthMPa: 38.5,
-      porosityPercent: 21,
-      heatJg: 350,
-      desc: 'Weitgehende Verfilzung der C-S-H-Phasen. Kapillarporen werden segmentiert und in isolierte Gelporen umgewandelt. Die Durchlässigkeit für Wasser und Schadstoffe sinkt um mehrere Zehnerpotenzen. Der Beton erreicht ca. 70 % seiner 28-Tage-Normfestigkeit.'
-    },
-    {
-      id: '28d',
-      timeLabel: '28 Tage (Dichtes Endgefüge)',
-      hours: 672,
-      phaseTitle: 'Phase 6: Ausgereifter Zementstein',
-      alpha: 88,
-      strengthMPa: 52.0,
-      porosityPercent: 14,
-      heatJg: 395,
-      desc: 'Hochdichtes Zementsteingefüge mit minimalem Anteil an durchgehenden Kapillarporen. Monosulfat-Bildung. Bei niedrigem w/z-Wert verbleiben unhydratisierte Klinkerreste als inerter Mikrofüller. Erreichen der normativen Charakteristischen Druckfestigkeit fck.'
-    }
-  ];
+  const stages = inhalt.daten["GefuegebildungSimulator.stages"];
 
   const currentStage = stages[timeStageIndex];
 
@@ -109,12 +44,7 @@ function GefuegebildungSimulator() {
       
       {/* Intro Box */}
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-        <p>
-          <strong>Interaktive Mikroskopie-Simulation:</strong> Verfolgen Sie das Wachstum der festigkeitsbildenden 
-          Calciumsilicathydrat-Phasen (C-S-H-Gel), der hexagonalen Portlandit-Platten (<InlineMath math="Ca(OH)_2" />) 
-          und der nadeligen Ettringit-Büschel (<InlineMath math="AFt" />) im wassergefüllten Porenraum. 
-          Stellen Sie den Hydratationszeitpunkt und den <InlineMath math="w/z" />-Wert ein, um das Zementsteingefüge live zu analysieren.
-        </p>
+        <p><MdText text={inhalt.texte.interaktiveMikroskopieSimulationVerfolge} /></p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -123,8 +53,7 @@ function GefuegebildungSimulator() {
         <div className="lg:col-span-5 flex flex-col gap-5">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/20 pb-2">
-              <Clock size={16} className="text-shiraz" /> 1. Reaktionszeit &amp; Phasen
-            </h3>
+              <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1ReaktionszeitPhasen} /></h3>
 
             {/* Stage Selector Slider */}
             <div>
@@ -173,7 +102,7 @@ function GefuegebildungSimulator() {
             {/* w/z Value Slider */}
             <div className="pt-3 border-t border-home-grau/20 space-y-2">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Wasserzementwert (w/z):</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.wasserzementwertWZ} /></span>
                 <span className="font-mono font-bold text-text-main bg-slate-100 px-2 py-0.5 rounded">
                   {formatDeZahl(wzRatio, 2)}
                 </span>
@@ -189,10 +118,10 @@ function GefuegebildungSimulator() {
               />
               <p className="text-[10px] text-text-main/60">
                 {wzRatio <= 0.42
-                  ? 'Niedriger w/z: Dichtes Gefüge, sehr geringe Kapillarporosität, hohe Dauerhaftigkeit.'
+                  ? inhalt.werte.niedrigerWZDichtes
                   : wzRatio <= 0.50
-                  ? 'Standard w/z nach DIN EN 206 (XC3 / XC4).'
-                  : 'Hoher w/z: Hoher Überschuss an nicht chemisch gebundenem Wasser erzeugt offene Kapillarporen.'}
+                  ? inhalt.werte.standardWZNach
+                  : inhalt.werte.hoherWZHoher}
               </p>
             </div>
 
@@ -208,8 +137,8 @@ function GefuegebildungSimulator() {
                       : 'bg-off-white text-text-main border-home-grau/30'
                   }`}
                 >
-                  <span className="block font-bold text-xs">CEM I (Portland)</span>
-                  <span className="text-[10px] opacity-75">Schnelles Alit-Wachstum</span>
+                  <span className="block font-bold text-xs"><MdText text={inhalt.texte.cemIPortland} /></span>
+                  <span className="text-[10px] opacity-75"><MdText text={inhalt.texte.schnellesAlitWachstum} /></span>
                 </button>
                 <button aria-pressed={cementType === 'CEM_III'}
                   onClick={() => setCementType('CEM_III')}
@@ -219,8 +148,8 @@ function GefuegebildungSimulator() {
                       : 'bg-off-white text-text-main border-home-grau/30'
                   }`}
                 >
-                  <span className="block font-bold text-xs">CEM III (Hochofen)</span>
-                  <span className="text-[10px] opacity-75">Latent-hydraulisch dicht</span>
+                  <span className="block font-bold text-xs"><MdText text={inhalt.texte.cemIiiHochofen} /></span>
+                  <span className="text-[10px] opacity-75"><MdText text={inhalt.texte.latentHydraulischDicht} /></span>
                 </button>
               </div>
             </div>
@@ -228,11 +157,11 @@ function GefuegebildungSimulator() {
             {/* Live Metrics Grid */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Hydratationsgrad α</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.hydratationsgrad} /></span>
                 <span className="text-xl font-mono font-bold text-shiraz">{formatDeWert(currentStage.alpha)} %</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Druckfestigkeit fc</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.druckfestigkeitFc} /></span>
                 <span className="text-xl font-mono font-bold text-emerald-600">{effectiveStrength} MPa</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -240,13 +169,13 @@ function GefuegebildungSimulator() {
                 <span className="text-xl font-mono font-bold text-text-main">{formatDeZahl(effectivePorosity, 1)} %</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Hydratationswärme Q</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.hydratationswärmeQ} /></span>
                 <span className="text-xl font-mono font-bold text-amber-600">{formatDeWert(currentStage.heatJg)} J/g</span>
               </div>
             </div>
             <div className="text-[11px] text-text-main/70 bg-off-white p-2.5 rounded-xl border border-home-grau/20 space-y-1">
-              <p><strong>Kapillarporosität nach Powers:</strong> <InlineMath math={`p = \\frac{w/z - 0{,}36\\,\\alpha}{w/z + 0{,}32} = \\frac{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} - 0{,}36 \\cdot ${formatDeZahl(currentStage.alpha / 100, 2).replace(',', '{,}')}}{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} + 0{,}32} = ${formatDeZahl(effectivePorosity, 1).replace(',', '{,}')}\\,\\%`} /> (Volumenanteil im Zementstein)</p>
-              <p>Qualitative Lehrsimulation: Hydratationsgrad, Festigkeit und Wärme sind Lehrwerte.</p>
+              <p><MdText text={inhalt.texte.kapillarporositätNachPowers} /><InlineMath math={`p = \\frac{w/z - 0{,}36\\,\\alpha}{w/z + 0{,}32} = \\frac{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} - 0{,}36 \\cdot ${formatDeZahl(currentStage.alpha / 100, 2).replace(',', '{,}')}}{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} + 0{,}32} = ${formatDeZahl(effectivePorosity, 1).replace(',', '{,}')}\\,\\%`} /><MdText text={inhalt.texte.volumenanteilImZementstein} /></p>
+              <p><MdText text={inhalt.texte.qualitativeLehrsimulationHydratationsgra} /></p>
             </div>
 
           </div>
@@ -259,13 +188,10 @@ function GefuegebildungSimulator() {
             <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
               <div>
                 <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                  <Microscope size={18} className="text-shiraz" /> 2. REM-Gefügebild (Rasterelektronenmikroskopie)
-                </h3>
+                  <Microscope size={18} className="text-shiraz" /><MdText text={inhalt.texte.t2RemGefügebildRasterelektronenmikroskopi} /></h3>
                 <span className="text-xs text-text-main/70 font-medium">{currentStage.phaseTitle}</span>
               </div>
-              <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2 py-1 rounded border border-slate-200">
-                Vergrößerung: 5.000×
-              </span>
+              <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2 py-1 rounded border border-slate-200"><MdText text={inhalt.texte.vergrößerung5000} /></span>
             </div>
 
             {/* SVG Microstructure Viewport */}
@@ -299,7 +225,7 @@ function GefuegebildungSimulator() {
 
                 {/* Substrate Pore Space Label */}
                 <text x="250" y="30" fill="#94a3b8" fontSize="10" className="font-mono" textAnchor="middle" opacity="0.6">
-                  {timeStageIndex <= 1 ? 'Wassergefüllter Kapillarporenraum (w/z = ' + formatDeZahl(wzRatio, 2) + ')' : 'Fortschreitende Gefügeverdichtung (C-S-H Verfilzung)'}
+                  {timeStageIndex <= 1 ? 'Wassergefüllter Kapillarporenraum (w/z = ' + formatDeZahl(wzRatio, 2) + ')' : inhalt.werte.fortschreitendeGefügeverdichtungCS}
                 </text>
 
                 {/* 1. Clinker Grain Left (Alit C3S dominant) */}
@@ -489,17 +415,13 @@ function GefuegebildungSimulator() {
             <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-home-grau/20 text-xs">
               <span className="font-bold text-text-main/70 text-[11px] uppercase tracking-wider">Legende:</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <span className="w-3 h-3 rounded-full bg-slate-500 border border-slate-700 inline-block"></span> Klinkerkorn (C₃S/C₂S)
-              </span>
+                <span className="w-3 h-3 rounded-full bg-slate-500 border border-slate-700 inline-block"></span><MdText text={inhalt.texte.klinkerkornCSC} /></span>
               <span className="flex items-center gap-1.5 font-medium">
-                <span className="w-3 h-1 bg-sky-400 inline-block"></span> C-S-H Nadeln (Gel)
-              </span>
+                <span className="w-3 h-1 bg-sky-400 inline-block"></span><MdText text={inhalt.texte.cSHNadeln} /></span>
               <span className="flex items-center gap-1.5 font-medium">
-                <span className="w-3 h-3 bg-amber-400 border border-amber-600 inline-block transform rotate-12"></span> Portlandit (CH)
-              </span>
+                <span className="w-3 h-3 bg-amber-400 border border-amber-600 inline-block transform rotate-12"></span><MdText text={inhalt.texte.portlanditCh} /></span>
               <span className="flex items-center gap-1.5 font-medium">
-                <span className="w-3 h-1 bg-pink-400 inline-block"></span> Ettringit (AFt)
-              </span>
+                <span className="w-3 h-1 bg-pink-400 inline-block"></span><MdText text={inhalt.texte.ettringitAft} /></span>
               <span className="flex items-center gap-1.5 font-medium">
                 <span className="w-3 h-3 bg-sky-900 border border-sky-700 inline-block"></span> Porenlösung
               </span>
@@ -518,9 +440,7 @@ function ReaktionenSection() {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-        <p>
-          Betonzusatzstoffe (z.B. Flugasche, Hüttensand, Kalksteinmehl) werden dem Beton zugegeben, um gezielt Verarbeitbarkeit, Dichte, Dauerhaftigkeit oder Wärmeentwicklung zu steuern und Zementklinker einzusparen (CO₂-Minderung nach dem k-Wert-Konzept). Je nach chemisch-mineralogischem Aufbau werden vier Wirkungsmechanismen unterschieden.
-        </p>
+        <p><MdText text={inhalt.texte.betonzusatzstoffeZBFlugasche} /></p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -528,64 +448,40 @@ function ReaktionenSection() {
         <div className="border border-blue-200 rounded-xl p-5 bg-blue-50/40 flex flex-col justify-between">
           <div>
             <h3 className="font-bold text-blue-900 text-base mb-2 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block"></span>
-              1. Hydraulische Erhärtung
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-              Erhärten sowohl an der Luft als auch unter Wasser selbstständig nach Zugabe von Wasser durch Bildung wasserunlöslicher Calciumsilicathydrat-Phasen (C-S-H).
-            </p>
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block"></span><MdText text={inhalt.texte.t1HydraulischeErhärtung} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.erhärtenSowohlAnDer} /></p>
           </div>
-          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-blue-150">
-            <strong>Beispiel:</strong> Portlandzementklinker, hydraulische Kalke nach DIN EN 459.
-          </div>
+          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-blue-150"><MdText text={inhalt.texte.beispielPortlandzementklinkerHydraulisch} /></div>
         </div>
 
         {/* Latent-hydraulisch */}
         <div className="border border-emerald-200 rounded-xl p-5 bg-emerald-50/40 flex flex-col justify-between">
           <div>
             <h3 className="font-bold text-emerald-900 text-base mb-2 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block"></span>
-              2. Latent-hydraulische Erhärtung
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-              Besitzen grundsätzlich hydraulisches Abbindevermögen, benötigen jedoch zur Auflösung des glasigen Silicatnetzwerks einen alkalischen oder sulfatischen Aktivator (z. B. <InlineMath math="Ca(OH)_2" /> oder <InlineMath math="SO_4^{2-}" /> aus dem Zement).
-            </p>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block"></span><MdText text={inhalt.texte.t2LatentHydraulischeErhärtung} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.besitzenGrundsätzlichHydraulischesAbbind} /></p>
           </div>
-          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-emerald-150">
-            <strong>Beispiel:</strong> Hüttensandmehl (granulierte Hochofenschlacke) nach DIN EN 15167.
-          </div>
+          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-emerald-150"><MdText text={inhalt.texte.beispielHüttensandmehlGranulierteHochofe} /></div>
         </div>
 
         {/* Puzzolanisch */}
         <div className="border border-amber-200 rounded-xl p-5 bg-amber-50/40 flex flex-col justify-between">
           <div>
             <h3 className="font-bold text-amber-900 text-base mb-2 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-600 inline-block"></span>
-              3. Puzzolanische Erhärtung
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-              Reagieren nicht eigenständig mit Wasser, sondern binden das bei der Klinkerhydratation freiwerdende Calciumhydroxid (Portlandit, <InlineMath math="Ca(OH)_2" />) stöchiometrisch zu weiterem festigkeitsbildenden C-S-H-Gel ab.
-            </p>
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-600 inline-block"></span><MdText text={inhalt.texte.t3PuzzolanischeErhärtung} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.reagierenNichtEigenständigMit} /></p>
           </div>
-          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-amber-150">
-            <strong>Beispiel:</strong> Steinkohlenflugasche (DIN EN 450), Silikastaub (DIN EN 13263), Trass, calciniertes Tonmehl (Metakaolin).
-          </div>
+          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-amber-150"><MdText text={inhalt.texte.beispielSteinkohlenflugascheDinEn} /></div>
         </div>
 
         {/* Inert */}
         <div className="border border-slate-200 rounded-xl p-5 bg-slate-50/70 flex flex-col justify-between">
           <div>
             <h3 className="font-bold text-slate-800 text-base mb-2 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-500 inline-block"></span>
-              4. Inerte Gesteinsmehle (Füllereffekt)
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-              Nehmen chemisch kaum an der Zementhydratation teil. Sie optimieren die Kornpackungsdichte (Mikro-Füllereffekt), verbessern den Zementleimgehalt und dienen als Kristallisationskeime für C-S-H-Keimwachstum.
-            </p>
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-500 inline-block"></span><MdText text={inhalt.texte.t4InerteGesteinsmehleFüllereffekt} /></h3>
+            <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.nehmenChemischKaumAn} /></p>
           </div>
-          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-slate-200">
-            <strong>Beispiel:</strong> Kalksteinmehl (DIN EN 12620 / DIN EN 197-1), Quarzmehl.
-          </div>
+          <div className="bg-white/90 p-3 rounded-lg text-xs text-text-main/80 border border-slate-200"><MdText text={inhalt.texte.beispielKalksteinmehlDinEn} /></div>
         </div>
       </div>
     </div>
@@ -634,7 +530,7 @@ export default function Zementchemie() {
   }, [cao, sio2, al2o3, fe2o3, so3]);
 
   const pieChartData = {
-    labels: ['Alit (C₃S)', 'Belit (C₂S)', 'Aluminat (C₃A)', 'Ferrit (C₄AF)', 'Gips/Nebenbestandteile'],
+    labels: ['Alit (C₃S)', 'Belit (C₂S)', inhalt.werte.aluminatCA, inhalt.werte.ferritCAf, 'Gips/Nebenbestandteile'],
     datasets: [{
       data: [
         results.c3s, 
@@ -652,13 +548,11 @@ export default function Zementchemie() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2 mb-4">
           <Box className="text-shiraz" /> Zementchemie
-          <InfoTooltip text="Berechnung der potenziellen Klinkerphasen aus der chemischen Analyse nach Bogue." />
+          <InfoTooltip text={inhalt.werte.berechnungDerPotenziellenKlinkerphasen} />
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Klinkerphasen nach Bogue, Hydratationskinetik und Reaktionsmechanismen mineralischer Bindemittel und Betonzusatzstoffe nach DIN EN 197-1.
-          </p>
+          <p><MdText text={inhalt.texte.klinkerphasenNachBogueHydratationskineti} /></p>
         </div>
 
         {/* Tab Selection */}
@@ -681,8 +575,7 @@ export default function Zementchemie() {
             }`}
             onClick={() => setActiveTab('bogue')}
           >
-            <Calculator size={16} /> Klinkerberechnung &amp; Hydratation (Bogue)
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.klinkerberechnungHydratationBogue} /></button>
           <button aria-pressed={activeTab === 'gefluege'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'gefluege' 
@@ -691,8 +584,7 @@ export default function Zementchemie() {
             }`}
             onClick={() => setActiveTab('gefluege')}
           >
-            <Microscope size={16} /> Gefügebildung &amp; C-S-H Simulator
-          </button>
+            <Microscope size={16} /><MdText text={inhalt.texte.gefügebildungCSH} /></button>
           <button aria-pressed={activeTab === 'zusatzstoffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zusatzstoffe' 
@@ -701,8 +593,7 @@ export default function Zementchemie() {
             }`}
             onClick={() => setActiveTab('zusatzstoffe')}
           >
-            <Sparkles size={16} /> Reaktion von Zusatzstoffen
-          </button>
+            <Sparkles size={16} /><MdText text={inhalt.texte.reaktionVonZusatzstoffen} /></button>
         </div>
 
         {activeTab === 'steckbrief' && (
@@ -714,25 +605,23 @@ export default function Zementchemie() {
         {activeTab === 'bogue' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 space-y-3">
-              <p>
-                <strong>Didaktischer Leitfaden (DIN EN 197-1):</strong> Portlandzementklinker besteht hauptsächlich aus vier Klinkermineralen: Alit (<InlineMath math="C_3S" />), Belit (<InlineMath math="C_2S" />), Aluminat (<InlineMath math="C_3A" />) und Ferrit (<InlineMath math="C_4AF" />). Die quantitativen Massenanteile werden mittels der <strong>Bogue-Rechnung</strong> aus der oxidischen Zusammensetzung errechnet.
-              </p>
+              <p><MdText text={inhalt.texte.didaktischerLeitfadenDinEn} /></p>
               <div className="border-t border-home-grau/30 pt-3 mt-2 space-y-2">
-                <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">Hydratations-Hauptreaktionen (Stöchiometrie)</h4>
+                <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.hydratationsHauptreaktionenStöchiometrie} /></h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-                    <span className="font-semibold block mb-1">1. Alit-Hydratation (<InlineMath math="C_3S" /> - Frühfestigkeit):</span>
+                    <span className="font-semibold block mb-1"><MdText text={inhalt.texte.t1AlitHydratationC} /></span>
                     <div className="my-1.5 overflow-x-auto">
                       <BlockMath math="2\,C_3S + 6\,H_2O \rightarrow C_3S_2H_3\,\text{(C-S-H-Gel)} + 3\,Ca(OH)_2\,\text{(Portlandit)}" />
                     </div>
-                    <span className="text-[11px] text-text-main/70 block mt-1">Sorgt für die charakterbildende Festigkeitsentwicklung in den ersten 7 Tagen. Wasserzementwert (<InlineMath math="w/z" />) steuert die Gefügedichte.</span>
+                    <span className="text-[11px] text-text-main/70 block mt-1"><MdText text={inhalt.texte.sorgtFürDieCharakterbildende} /></span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-                    <span className="font-semibold block mb-1">2. Belit-Hydratation (<InlineMath math="C_2S" /> - Spätfestigkeit):</span>
+                    <span className="font-semibold block mb-1"><MdText text={inhalt.texte.t2BelitHydratationC} /></span>
                     <div className="my-1.5 overflow-x-auto">
                       <BlockMath math="2\,C_2S + 4\,H_2O \rightarrow C_3S_2H_3\,\text{(C-S-H-Gel)} + Ca(OH)_2\,\text{(Portlandit)}" />
                     </div>
-                    <span className="text-[11px] text-text-main/70 block mt-1">Reagiert langsamer; verantwortlich für die kontinuierliche Festigkeitszunahme ab Tag 28 und chemische Beständigkeit.</span>
+                    <span className="text-[11px] text-text-main/70 block mt-1"><MdText text={inhalt.texte.reagiertLangsamerVerantwortlichFür} /></span>
                   </div>
                 </div>
               </div>
@@ -741,52 +630,52 @@ export default function Zementchemie() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="flex flex-col gap-6">
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                  <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Chemische Analyse (Oxide in M.-%)</h3>
+                  <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.chemischeAnalyseOxideIn} /></h3>
                   
                   <div className="grid grid-cols-1 gap-4">
-                    <Slider info="Calciumoxid (CaO) Parameter" label={<FormulaText text="Calciumoxid (CaO)" />} min={55} max={70} step={0.1} value={cao} unit="%" onChange={(e) => setCao(Number(e.target.value))} />
-                    <Slider info="Siliciumdioxid (SiO_2) Parameter" label={<FormulaText text="Siliciumdioxid (SiO_2)" />} min={15} max={25} step={0.1} value={sio2} unit="%" onChange={(e) => setSio2(Number(e.target.value))} />
-                    <Slider info="Aluminiumoxid (Al_2O_3) Parameter" label={<FormulaText text="Aluminiumoxid (Al_2O_3)" />} min={2} max={8} step={0.1} value={al2o3} unit="%" onChange={(e) => setAl2o3(Number(e.target.value))} />
-                    <Slider info="Eisen(III)-oxid (Fe_2O_3) Parameter" label={<FormulaText text="Eisen(III)-oxid (Fe_2O_3)" />} min={0} max={6} step={0.1} value={fe2o3} unit="%" onChange={(e) => setFe2o3(Number(e.target.value))} />
-                    <Slider info="Schwefeltrioxid (SO_3) Parameter" label={<FormulaText text="Schwefeltrioxid (SO_3)" />}  min={0} max={4} step={0.1} value={so3} unit="%" onChange={(e) => setSo3(Number(e.target.value))} />
+                    <Slider info={inhalt.werte.calciumoxidCaoParameter} label={<FormulaText text={inhalt.werte.calciumoxidCao} />} min={55} max={70} step={0.1} value={cao} unit="%" onChange={(e) => setCao(Number(e.target.value))} />
+                    <Slider info={inhalt.werte.siliciumdioxidSio2Parameter} label={<FormulaText text={inhalt.werte.siliciumdioxidSio2} />} min={15} max={25} step={0.1} value={sio2} unit="%" onChange={(e) => setSio2(Number(e.target.value))} />
+                    <Slider info={inhalt.werte.aluminiumoxidAl2o3} label={<FormulaText text={inhalt.werte.aluminiumoxidAl2o32} />} min={2} max={8} step={0.1} value={al2o3} unit="%" onChange={(e) => setAl2o3(Number(e.target.value))} />
+                    <Slider info={inhalt.werte.eisenIiiOxidFe} label={<FormulaText text={inhalt.werte.eisenIiiOxidFe2} />} min={0} max={6} step={0.1} value={fe2o3} unit="%" onChange={(e) => setFe2o3(Number(e.target.value))} />
+                    <Slider info={inhalt.werte.schwefeltrioxidSo3Parameter} label={<FormulaText text={inhalt.werte.schwefeltrioxidSo3} />}  min={0} max={4} step={0.1} value={so3} unit="%" onChange={(e) => setSo3(Number(e.target.value))} />
                   </div>
                   
                   <div className="mt-4 text-xs text-text-main/70 flex justify-between font-mono">
-                    <span>Summe der Oxide: {formatDeZahl((cao + sio2 + al2o3 + fe2o3 + so3), 1)} %</span>
-                    {cao + sio2 + al2o3 + fe2o3 + so3 > 100 && <span className="text-red-500 font-bold">Summe &gt; 100%!</span>}
+                    <span><MdText text={inhalt.texte.summeDerOxide} />{formatDeZahl((cao + sio2 + al2o3 + fe2o3 + so3), 1)} %</span>
+                    {cao + sio2 + al2o3 + fe2o3 + so3 > 100 && <span className="text-red-500 font-bold"><MdText text={inhalt.texte.summe100} /></span>}
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-col gap-6">
                 <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
-                  <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Klinkerphasen nach Bogue</h3>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.klinkerphasenNachBogue} /></h3>
                   <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-2">
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Alit (<InlineMath math="C_3S" />)</span>
-                        <InfoTooltip text="Tricalciumsilicat: Schnelle Erhärtung, hohe Frühfestigkeit, hohe Hydratationswärme." />
+                        <InfoTooltip text={inhalt.werte.tricalciumsilicatSchnelleErhärtungHohe} />
                       </div>
                       <div className="text-3xl font-bold text-blue-200">{formatDeZahl(results.c3s, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Belit (<InlineMath math="C_2S" />)</span>
-                        <InfoTooltip text="Dicalciumsilicat: Langsame Erhärtung, hohe Endfestigkeit, geringe Hydratationswärme." />
+                        <InfoTooltip text={inhalt.werte.dicalciumsilicatLangsameErhärtungHohe} />
                       </div>
                       <div className="text-3xl font-bold text-emerald-200">{formatDeZahl(results.c2s, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Aluminat (<InlineMath math="C_3A" />)</span>
-                        <InfoTooltip text="Tricalciumaluminat: Sehr schnelle Reaktion, Erstarrungsregelung durch Sulfat nötig. Sulfatempfindlich (Ettringittreiben)." />
+                        <InfoTooltip text={inhalt.werte.tricalciumaluminatSehrSchnelleReaktion} />
                       </div>
                       <div className="text-3xl font-bold text-amber-200">{formatDeZahl(results.c3a, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Ferrit (<InlineMath math="C_4AF" />)</span>
-                        <InfoTooltip text="Tetracalciumaluminatferrit: Graue Farbe des Zements, wirkt als Flussmittel beim Brennen." />
+                        <InfoTooltip text={inhalt.werte.tetracalciumaluminatferritGraueFarbeDes} />
                       </div>
                       <div className="text-3xl font-bold text-rose-200">{formatDeZahl(results.c4af, 1)} %</div>
                     </div>
@@ -794,7 +683,7 @@ export default function Zementchemie() {
                 </div>
 
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                  <h3 className="font-bold text-sm mb-4 text-text-main uppercase tracking-wider">Zusammensetzung (Massen-%)</h3>
+                  <h3 className="font-bold text-sm mb-4 text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.zusammensetzungMassen} /></h3>
                   <div className="h-[230px]">
                     <Pie data={pieChartData} options={{ maintainAspectRatio: false }} />
                   </div>
@@ -802,7 +691,7 @@ export default function Zementchemie() {
 
                 {/* Schematische Darstellung */}
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                  <h3 className="font-bold text-sm mb-4 text-text-main uppercase tracking-wider">Schematische Klinkerkorn-Struktur</h3>
+                  <h3 className="font-bold text-sm mb-4 text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.schematischeKlinkerkornStruktur} /></h3>
                   <div className="relative w-full h-48 bg-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
                     <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                       {/* Klinkerkorn */}
@@ -847,18 +736,18 @@ export default function Zementchemie() {
               </div>
             </div>
             <FormulaDerivationBox
-              title="Rechenweg Bogue mit den eingestellten Werten"
+              title={inhalt.werte.rechenwegBogueMitDen}
               zielGleichung="\text{C}_3\text{S} = 4{,}071\,\text{CaO} - 7{,}600\,\text{SiO}_2 - 6{,}718\,\text{Al}_2\text{O}_3 - 1{,}430\,\text{Fe}_2\text{O}_3 - 2{,}852\,\text{SO}_3"
-              normQuelle="Bogue (1929); Formeln für Al₂O₃/Fe₂O₃ ≥ 0,64"
+              normQuelle={inhalt.werte.bogue1929FormelnFür}
               schritte={results.afRatio >= 0.64 ? [
-                { titel: '1. Modul A/F', formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(al2o3, 1).replace(',', '{,}')}/${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} \\ge 0{,}64`, erklaerung: 'Damit gelten die Standardgleichungen.' },
-                { titel: '2. Alit', formel: `\\text{C}_3\\text{S} = 4{,}071 \\cdot ${formatDeZahl(cao, 1).replace(',', '{,}')} - 7{,}600 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 6{,}718 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}430 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} - 2{,}852 \\cdot ${formatDeZahl(so3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'Eingesetzt sind die Oxidgehalte in M.-%.' },
-                { titel: '3. Belit', formel: `\\text{C}_2\\text{S} = 2{,}867 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 0{,}7544 \\cdot ${formatDeZahl(results.c3s, 1).replace(',', '{,}')} = ${formatDeZahl(results.c2s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'SiO₂, das nicht im Alit gebunden ist.' },
-                { titel: '4. Aluminat und Ferrit', formel: `\\text{C}_3\\text{A} = 2{,}650 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}692 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3a, 1).replace(',', '{,}')}\\,\\%; \\quad \\text{C}_4\\text{AF} = 3{,}043 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c4af, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'Negative Ergebnisse werden im Rechner auf 0 gesetzt.' },
+                { titel: inhalt.werte.t1ModulAF, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(al2o3, 1).replace(',', '{,}')}/${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} \\ge 0{,}64`, erklaerung: inhalt.werte.damitGeltenDieStandardgleichungen },
+                { titel: '2. Alit', formel: `\\text{C}_3\\text{S} = 4{,}071 \\cdot ${formatDeZahl(cao, 1).replace(',', '{,}')} - 7{,}600 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 6{,}718 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}430 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} - 2{,}852 \\cdot ${formatDeZahl(so3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.eingesetztSindDieOxidgehalte },
+                { titel: '3. Belit', formel: `\\text{C}_2\\text{S} = 2{,}867 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 0{,}7544 \\cdot ${formatDeZahl(results.c3s, 1).replace(',', '{,}')} = ${formatDeZahl(results.c2s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.sioDasNichtIm },
+                { titel: inhalt.werte.t4AluminatUndFerrit, formel: `\\text{C}_3\\text{A} = 2{,}650 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}692 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3a, 1).replace(',', '{,}')}\\,\\%; \\quad \\text{C}_4\\text{AF} = 3{,}043 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c4af, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.negativeErgebnisseWerdenIm },
               ] : [
-                { titel: '1. Modul A/F', formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} < 0{,}64`, erklaerung: 'Es bildet sich kein C₃A; Ferrit liegt als Mischkristall vor. Der Rechner verwendet die Sondergleichungen.' },
+                { titel: inhalt.werte.t1ModulAF2, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} < 0{,}64`, erklaerung: inhalt.werte.esBildetSichKein },
               ]}
-              ergebnisHinweis="Bogue liefert potenzielle Phasengehalte; die tatsächlichen Gehalte (z. B. Röntgenanalyse) weichen ab."
+              ergebnisHinweis={inhalt.werte.bogueLiefertPotenziellePhasengehalte}
             />
           </div>
         )}

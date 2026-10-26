@@ -10,6 +10,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
+import inhalt from '@/content/bauwerksunters_monitoring/Bauwerksunters_Monitoring.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Constants for Wood Drill Simulator
 interface TimberConfig {
@@ -19,45 +21,9 @@ interface TimberConfig {
   description: string;
 }
 
-const TIMBER_TYPES: Record<string, TimberConfig> = {
-  fichte: {
-    name: "Fichte (Gemeine Fichte)",
-    density: "380–470 kg/m³",
-    baseResistance: 48,
-    description: "Häufigstes Nadelbauholz im Tragwerksbereich. Zeigt ausgeprägte Frühholz-Spätholz-Dichteunterschiede."
-  },
-  kiefer: {
-    name: "Kiefer (Waldkiefer)",
-    density: "490–550 kg/m³",
-    baseResistance: 58,
-    description: "Kernholzbaum mit harzreichem Holz. Deutliche Härteunterschiede im Jahresringübergang."
-  },
-  eiche: {
-    name: "Eiche (Stieleiche)",
-    density: "650–760 kg/m³",
-    baseResistance: 78,
-    description: "Sehr dichtes, zähes Laubholz mit hervorragender biologischer Dauerhaftigkeit im Kernbereich."
-  }
-};
+const TIMBER_TYPES: Record<string, TimberConfig> = inhalt.daten.TIMBER_TYPES;
 
-const TIMBER_STATES = {
-  gesund: {
-    name: "Gesunder Querschnitt",
-    desc: "Homogene Dichteverteilung über den gesamten Holzquerschnitt mit normalen Jahresring-Oszillationen."
-  },
-  kernfaeule: {
-    name: "Kernfäule (Pilzbefall)",
-    desc: "Ausgeprägte Zersetzung des Holzgefüges im inneren Bereich. Festigkeitsverlust im tragenden Zentrum."
-  },
-  kaefer: {
-    name: "Nagekäferbefall (Anobien, Anobium punctatum) bzw. Splintholzkäferbefall (Lyctus spp.)",
-    desc: "Zerstörung der weicheren äußeren Splintholzzone durch Fraßgänge. Innerer Kern bleibt vorerst intakt."
-  },
-  hohl: {
-    name: "Hohler Stamm / Riss",
-    desc: "Vollständiger Materialausfall (Hohlraum oder breiter Schwindriss) im mittleren Tiefenbereich."
-  }
-};
+const TIMBER_STATES = inhalt.daten.TIMBER_STATES;
 
 export default function Bauwerksunters_Monitoring() {
   const [activeTab, setActiveTab] = useState<'monitoring' | 'grundlagen' | 'rechner' | 'katalog'>('monitoring');
@@ -160,11 +126,11 @@ export default function Bauwerksunters_Monitoring() {
 
     // HF Indicator Interpretation (approximate mapping)
     if (measuredDigits < 40) {
-      hfIndication = "Trocken (unter 40 Digits - oberflächennah unkritisch)";
+      hfIndication = inhalt.werte.trockenUnter40Digits;
     } else if (measuredDigits >= 40 && measuredDigits <= 80) {
-      hfIndication = "Feuchtigkeitsgrenzbereich (40-80 Digits - Messung in der Tiefe empfohlen)";
+      hfIndication = inhalt.werte.feuchtigkeitsgrenzbereich4080Digits;
     } else {
-      hfIndication = "Nass (über 80 Digits - Akute Feuchtebelastung)";
+      hfIndication = inhalt.werte.nassÜber80Digits;
     }
 
     return { limitCM, evalText, isBelegreif, hfIndication };
@@ -182,7 +148,7 @@ export default function Bauwerksunters_Monitoring() {
     return {
       rawStrength: String(reboundVal),
       correction: kategorie,
-      correctedStrength: karbonatisiert ? 'Randzone karbonatisiert' : 'Randzone nicht karbonatisiert',
+      correctedStrength: karbonatisiert ? inhalt.werte.randzoneKarbonatisiert : inhalt.werte.randzoneNichtKarbonatisiert,
       karbonatisiert,
       k_c: formatDeZahl(k_c, 2)
     };
@@ -197,14 +163,12 @@ export default function Bauwerksunters_Monitoring() {
             <Activity size={22} />
           </div>
           <div>
-            <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase">Mängel &amp; Schäden • Strukturüberwachung</span>
-            <h2 className="text-xl font-bold text-text-main">Tragwerks-Monitoring &amp; Schadenssensorik (SHM)</h2>
+            <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase"><MdText text={inhalt.texte.mängelSchädenStrukturüberwachung} /></span>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.tragwerksMonitoringSchadenssensorikShm} /></h2>
           </div>
         </div>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed md:flex items-center gap-4">
-          <p className="flex-1">
-            Das Schadensmanagement akut beanspruchter Tragwerke beruht auf kontinuierlicher <strong>Sensorik (Structural Health Monitoring - SHM)</strong>, messtechnischer Rissbreitenüberwachung (LVDT), Dehnungsmessungen (DMS) und forensischer Holz-Resistographie. Zerstörungsfreie Prüfverfahren (ZfP) sind mit dem zentralen Prüfkatalog konsolidiert.
-          </p>
+          <p className="flex-1"><MdText text={inhalt.texte.dasSchadensmanagementAkutBeanspruchter} /></p>
           <div className="shrink-0 flex gap-2 mt-3 md:mt-0">
             <span className="px-2 py-1 bg-shiraz/5 text-shiraz font-black rounded text-[10px] tracking-wider border border-shiraz/20">VDI 6200</span>
             <span className="px-2 py-1 bg-slate-100 text-slate-600 font-black rounded text-[10px] tracking-wider border border-slate-200">DIN 1076</span>
@@ -222,9 +186,7 @@ export default function Bauwerksunters_Monitoring() {
           }`}
           onClick={() => setActiveTab('monitoring')}
         >
-          <Activity size={16} />
-          Tragwerks-Monitoring &amp; Sensorik (SHM)
-        </button>
+          <Activity size={16} /><MdText text={inhalt.texte.tragwerksMonitoringSensorikShm} /></button>
         <button aria-pressed={activeTab === 'grundlagen'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'grundlagen'
@@ -233,9 +195,7 @@ export default function Bauwerksunters_Monitoring() {
           }`}
           onClick={() => setActiveTab('grundlagen')}
         >
-          <Hammer size={16} />
-          Holzdiagnostik &amp; Resistographie
-        </button>
+          <Hammer size={16} /><MdText text={inhalt.texte.holzdiagnostikResistographie} /></button>
         <button aria-pressed={activeTab === 'rechner'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'rechner'
@@ -244,9 +204,7 @@ export default function Bauwerksunters_Monitoring() {
           }`}
           onClick={() => setActiveTab('rechner')}
         >
-          <ClipboardCheck size={16} />
-          Schadens- &amp; Feuchterechner
-        </button>
+          <ClipboardCheck size={16} /><MdText text={inhalt.texte.schadensFeuchterechner} /></button>
         <button aria-pressed={activeTab === 'katalog'}
           className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeTab === 'katalog'
@@ -255,9 +213,7 @@ export default function Bauwerksunters_Monitoring() {
           }`}
           onClick={() => setActiveTab('katalog')}
         >
-          <Layers size={16} />
-          ZfP-Prüfkatalog (Konsolidiert)
-        </button>
+          <Layers size={16} /><MdText text={inhalt.texte.zfpPrüfkatalogKonsolidiert} /></button>
       </div>
 
       {/* 3. Tab Contents Content */}
@@ -271,10 +227,8 @@ export default function Bauwerksunters_Monitoring() {
                 <Layers size={20} />
               </div>
               <div className="space-y-1">
-                <h3 className="font-bold text-base text-slate-900">Zentraler ZfP- & Diagnosemethodenkatalog</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Konsolidierter Katalog sämtlicher 14 Vor-Ort- und Laborprüfverfahren nach DGZfP, DBV und DIN EN – synchronisiert mit dem Modul <em>Bauen im Bestand &gt; Bauwerksuntersuchung</em>. Hier stehen alle physikalischen Wirkprinzipien, Auswerteformeln, Systemgrenzen und interaktiven Rechner zur Verfügung.
-                </p>
+                <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.zentralerZfpDiagnosemethodenkatalog} /></h3>
+                <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.konsolidierterKatalogSämtlicher14} /></p>
               </div>
             </div>
             <PruefverfahrenKatalog />
@@ -286,12 +240,8 @@ export default function Bauwerksunters_Monitoring() {
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-300">
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Trees className="text-shiraz" />
-                Interaktiver Bohrwiderstands-Simulator (Holzuntersuchung)
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Simulieren Sie das mechanische Kraftprofil von <strong>Resistographen-Prüfungen</strong> im Inneren tragender Holzbauteile (z.B. Deckenbalken, Fachwerk, Brückenpfähle). Durch die Dichteunterschiede zwischen dichtem Spätholz und weicherem Frühholz oszilliert die Kurve; Fehlstellen, Fäule oder Insektenfraß führen zu charakteristischen Kurveneinbrüchen.
-              </p>
+                <Trees className="text-shiraz" /><MdText text={inhalt.texte.interaktiverBohrwiderstandsSimulatorHolz} /></h3>
+              <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.simulierenSieDasMechanische} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -300,7 +250,7 @@ export default function Bauwerksunters_Monitoring() {
                 <span className="text-[10px] font-black text-shiraz uppercase tracking-wider block">Simulator-Parameter:</span>
                 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 block mb-1">Holzart auswählen:</label>
+                  <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.holzartAuswählen} /></label>
                   <div className="grid grid-cols-1 gap-1.5">
                     {Object.entries(TIMBER_TYPES).map(([key, item]) => (
                       <button
@@ -322,7 +272,7 @@ export default function Bauwerksunters_Monitoring() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 block mb-1">Struktureller Werkstoffzustand:</label>
+                  <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.strukturellerWerkstoffzustand} /></label>
                   <div className="grid grid-cols-1 gap-1.5">
                     {Object.entries(TIMBER_STATES).map(([key, item]) => (
                       <button
@@ -342,9 +292,7 @@ export default function Bauwerksunters_Monitoring() {
                 </div>
 
                 <div className="pt-3 border-t border-slate-200 text-slate-500 text-[11px] leading-relaxed">
-                  <span className="font-extrabold text-slate-800 uppercase block text-[9px] tracking-wider mb-1">Mess-Funktionsweise:</span>
-                  Eine rotierende Stahlnadel (<InlineMath math="\emptyset \approx 1{,}5\,\text{mm}" />) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert mit der lokalen Rohdichte; Absolutwerte sind gerätespezifisch, ausgewertet wird relativ (Profilvergleich).
-                </div>
+                  <span className="font-extrabold text-slate-800 uppercase block text-[9px] tracking-wider mb-1">Mess-Funktionsweise:</span><MdText text={inhalt.texte.eineRotierendeStahlnadelEmptyset} /></div>
               </div>
 
               {/* Diagramm & Visualisierung */}
@@ -352,12 +300,12 @@ export default function Bauwerksunters_Monitoring() {
                 <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex-1 flex flex-col gap-4 relative overflow-hidden">
                   <div className="absolute top-2 right-2 flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Active Simulator Monitor</span>
+                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest"><MdText text={inhalt.texte.activeSimulatorMonitor} /></span>
                   </div>
                   
                   {/* Schematic Timber Cross-section visualization */}
                   <div className="flex items-center gap-4 bg-slate-900 px-4 py-3 rounded-xl border border-slate-800">
-                    <div className="text-[10px] font-mono text-slate-300">Querschnitts-Modell (120 mm):</div>
+                    <div className="text-[10px] font-mono text-slate-300"><MdText text={inhalt.texte.querschnittsModell120Mm} /></div>
                     <div className="flex-1 h-6 rounded bg-[#1e293b] relative border border-[#334155] overflow-hidden flex">
                       {/* Left healthy bark segment */}
                       <div className="w-[10%] h-full bg-[#475569] shrink-0 border-r border-[#64748b]"></div>
@@ -366,7 +314,7 @@ export default function Bauwerksunters_Monitoring() {
                       <div className="flex-1 h-full relative">
                         {selectedState === 'kernfaeule' && (
                           <div className="absolute left-[33%] right-[20%] top-0 bottom-0 bg-yellow-900/60 blur-[3px] border-l border-r border-dashed border-yellow-750 flex items-center justify-center">
-                            <span className="text-[8px] font-extrabold uppercase text-yellow-300 tracking-widest opacity-80">Zersetzung (Pilz)</span>
+                            <span className="text-[8px] font-extrabold uppercase text-yellow-300 tracking-widest opacity-80"><MdText text={inhalt.texte.zersetzungPilz} /></span>
                           </div>
                         )}
                         {selectedState === 'kaefer' && (
@@ -381,7 +329,7 @@ export default function Bauwerksunters_Monitoring() {
                         )}
                         {selectedState === 'gesund' && (
                           <div className="w-full h-full flex items-center justify-center opacity-40">
-                            <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-widest">Gefüge Gesund / Kraftschlüssig</span>
+                            <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-widest"><MdText text={inhalt.texte.gefügeGesundKraftschlüssig} /></span>
                           </div>
                         )}
                       </div>
@@ -431,18 +379,16 @@ export default function Bauwerksunters_Monitoring() {
                       </svg>
                       
                       {/* Axis indicators in graph */}
-                      <div className="absolute left-2 top-2 bg-slate-950 px-1.5 py-0.5 rounded text-[8px] font-mono text-slate-400">
-                        Amplitudenhöhe in % (Bohrwiderstand)
-                      </div>
+                      <div className="absolute left-2 top-2 bg-slate-950 px-1.5 py-0.5 rounded text-[8px] font-mono text-slate-400"><MdText text={inhalt.texte.amplitudenhöheInBohrwiderstand} /></div>
                     </div>
                     
                     {/* X-Axis labels */}
                     <div className="flex justify-between text-[9px] font-mono text-slate-500 pt-2 border-t border-slate-800">
-                      <span>0 mm (Eintritt)</span>
+                      <span><MdText text={inhalt.texte.t0MmEintritt} /></span>
                       <span>30 mm</span>
                       <span>60 mm</span>
                       <span>90 mm</span>
-                      <span>120 mm (Austritt)</span>
+                      <span><MdText text={inhalt.texte.t120MmAustritt} /></span>
                     </div>
                   </div>
                 </div>
@@ -454,10 +400,10 @@ export default function Bauwerksunters_Monitoring() {
                     <span>Kurvendiagnose: {TIMBER_STATES[selectedState as keyof typeof TIMBER_STATES].name}</span>
                   </div>
                   <p className="leading-relaxed">
-                    {selectedState === 'gesund' && "Die ungestörte Dämpfungskurve beweist eine intakte Faserstruktur des tragenden Bauteils. Die kleinen lokalen Ausschläge belegen die härteren Spätholzbänder, wodurch das Jahrringalter des Holzes gezählt werden kann."}
-                    {selectedState === 'kernfaeule' && "Der charakteristische langanhaltende Dichteeinbruch zwischen 40mm und 95mm zeigt tiefgreifende Braunfäule oder Moderfäule im Kernbereich auf. Trotz anscheinend intakter Randschichten ist die Biegetragfähigkeit um bis zu 60% gemindert!"}
-                    {selectedState === 'kaefer' && "Ein typisches Schadbild bei historischem Nadelholz. Die äußeren Millimeter weisen extrem geringen Bohrwiderstand auf, was einem vollständigen Gefügebearbeitungsverlust durch Anobien (Holzwurm) entspricht."}
-                    {selectedState === 'hohl' && "Der plötzliche Abfall des Bohrwiderstands auf den Reibungswert der bloßen Nadelwelle (nahe 0%) signalisiert eine vollständige mechanische Entkopplung im Inneren (Spaltriss oder Hohlstamm)."}
+                    {selectedState === 'gesund' && inhalt.werte.dieUngestörteDämpfungskurveBeweist}
+                    {selectedState === 'kernfaeule' && inhalt.werte.derCharakteristischeLanganhaltendeDichte}
+                    {selectedState === 'kaefer' && inhalt.werte.einTypischesSchadbildBei}
+                    {selectedState === 'hohl' && inhalt.werte.derPlötzlicheAbfallDes}
                   </p>
                 </div>
               </div>
@@ -472,67 +418,52 @@ export default function Bauwerksunters_Monitoring() {
             <div className="md:col-span-4 bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
                 <span className="text-[10px] font-black text-shiraz uppercase tracking-wider block">Struktur-Überwachung</span>
-                <h3 className="font-bold text-base text-slate-900">Echtzeit-Monitoring (SHM)</h3>
+                <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.echtzeitMonitoringShm} /></h3>
                 
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Beim <strong>Structural Health Monitoring (SHM)</strong> verbleiben physikalische Sensoren dauerhaft am oder im Bauwerk. Sie erfassen kontinuierlich den Beanspruchungsverlauf aus dynamischen Lasten (Verkehr, Wind) und thermohygrischen Dehnungen.
-                </p>
+                <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.beimStructuralHealthMonitoring} /></p>
 
                 <div className="p-3 bg-red-50 border border-red-100 rounded-xl space-y-1.5">
-                  <span className="text-[10px] font-extrabold text-red-800 uppercase block tracking-wider">Klassische Messgrößen &amp; Sensortypologie:</span>
+                  <span className="text-[10px] font-extrabold text-red-800 uppercase block tracking-wider"><MdText text={inhalt.texte.klassischeMessgrößenSensortypologie} /></span>
                   <ul className="space-y-1.5 text-[11px] text-slate-700">
                     <li className="flex gap-1.5 items-start">
                       <span className="text-shiraz">•</span>
-                      <span>
-                        <strong>Induktive Wegaufnehmer (LVDTs):</strong> Erfassen Rissbreitenbewegungen im Mikrometerbereich (<InlineMath math="\mu\text{m}" />).
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: Kalibrierung nach Herstellerangabe bzw. DAkkS-Kalibrierschein; Messkonzept nach Bauwerksmonitoring-Literatur (DGZfP). Rissbreitenkriterien ggf. nach TR Instandhaltung</span>
+                      <span><MdText text={inhalt.texte.induktiveWegaufnehmerLvdtsErfassen} /><span className="block text-[10px] text-slate-500 mt-0.5"><MdText text={inhalt.texte.prüfvorschriftKalibrierungNachHersteller} /></span>
                       </span>
                     </li>
                     <li className="flex gap-1.5 items-start">
                       <span className="text-shiraz">•</span>
-                      <span>
-                        <strong>Dehnungsmesstreifen (DMS):</strong> Werden auf Stahlträger oder Betonflächen geklebt zur Bestimmung realer mikro-elastischer Spannungen (<InlineMath math="\sigma_s" />).
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: VDI/VDE 2635 Blatt 1 (Dehnungsmessstreifen mit metallischem Messgitter)</span>
+                      <span><MdText text={inhalt.texte.dehnungsmesstreifenDmsWerdenAuf} /><span className="block text-[10px] text-slate-500 mt-0.5"><MdText text={inhalt.texte.prüfvorschriftVdiVde2635} /></span>
                       </span>
                     </li>
                     <li className="flex gap-1.5 items-start">
                       <span className="text-shiraz">•</span>
-                      <span>
-                        <strong>Piezokeramische Beschleunigungsgeber:</strong> Registrieren von Eigenfrequenzen zur frühzeitigen Feststellung von Tragfähigkeitsminderungen.
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: DIN 45669-1, VDI 2038 Blatt 1</span>
+                      <span><MdText text={inhalt.texte.piezokeramischeBeschleunigungsgeberRegis} /><span className="block text-[10px] text-slate-500 mt-0.5"><MdText text={inhalt.texte.prüfvorschriftDin456691} /></span>
                       </span>
                     </li>
                     <li className="flex gap-1.5 items-start">
                       <span className="text-shiraz">•</span>
-                      <span>
-                        <strong>TDR-Feuchtesonden:</strong> Messen zeitlich aufgelöste elektrolytische Bauwerksfeuchten direkt im Gefügeinneren.
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: WTA-Merkblatt 4-11-16/D (Messung des Wassergehalts bzw. der Feuchte von mineralischen Baustoffen)</span>
+                      <span><MdText text={inhalt.texte.tdrFeuchtesondenMessenZeitlich} /><span className="block text-[10px] text-slate-500 mt-0.5"><MdText text={inhalt.texte.prüfvorschriftWtaMerkblatt4} /></span>
                       </span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mt-4 text-[10.5px] text-slate-500 leading-normal">
-                <strong>Ingenieur-Vorteil:</strong> Monitoring ergänzt die Prüfungen nach DIN 1076, ersetzt oder verlängert die Regelintervalle aber nicht; es kann Sonderprüfungen gezielt auslösen und Nutzungsauflagen absichern, da das Risikopotential transparent überwacht wird.
-              </div>
+              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mt-4 text-[10.5px] text-slate-500 leading-normal"><MdText text={inhalt.texte.ingenieurVorteilMonitoringErgänzt} /></div>
             </div>
 
             {/* Interactive thermal-crack breathing loop demonstration */}
             <div className="md:col-span-8 bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div className="space-y-2">
                 <span className="text-xs font-black text-shiraz uppercase tracking-widest block flex items-center gap-1.5">
-                  <LineChart size={14} /> Dynamisches Rissbreiten-Monitoring &amp; Temperaturgang-Simulator
-                </span>
-                <p className="text-xs text-slate-600 leading-normal">
-                  Risse in Bauwerken stehen unter mechanischer Dehnung. Die größte Bewegungsamplitude entsteht jedoch meist nicht durch die Nutzlast, sondern durch die thermische Längenänderung der Bauteilkörper (<strong>"Riss-Atmung"</strong>). Betrachten Sie die periodische 24h-Kurve zwischen Bauteiltemperatur und LVDT-Rissöffnung:
-                </p>
+                  <LineChart size={14} /><MdText text={inhalt.texte.dynamischesRissbreitenMonitoringTemperat} /></span>
+                <p className="text-xs text-slate-600 leading-normal"><MdText text={inhalt.texte.risseInBauwerkenStehen} /></p>
               </div>
 
               <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 my-4 text-white">
                 <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 mb-2 border-b border-slate-800 pb-1">
-                  <span>Sensor ID: LVDT_C12_401 (Zementestrich/Trägergelenk)</span>
-                  <span className="text-emerald-400">Stream: Online</span>
+                  <span><MdText text={inhalt.texte.sensorIdLvdtC12} /></span>
+                  <span className="text-emerald-400"><MdText text={inhalt.texte.streamOnline} /></span>
                 </div>
 
                 <div className="h-44 relative flex flex-col justify-end">
@@ -566,37 +497,33 @@ export default function Bauwerksunters_Monitoring() {
 
                   {/* Vertical markers for noon */}
                   <div className="absolute left-[50%] top-0 bottom-0 border-l border-dashed border-white/20"></div>
-                  <div className="absolute left-[50%] top-2 bg-slate-900 border border-slate-800 px-1 text-[8px] rounded text-slate-300 -translate-x-[50%]">
-                    Mittagshitze (T_max)
-                  </div>
+                  <div className="absolute left-[50%] top-2 bg-slate-900 border border-slate-800 px-1 text-[8px] rounded text-slate-300 -translate-x-[50%]"><MdText text={inhalt.texte.mittagshitzeTMax} /></div>
                 </div>
 
                 {/* X-axis time indicator */}
                 <div className="flex justify-between text-[9px] font-mono text-slate-500 pt-1.5 border-t border-slate-800">
-                  <span>06:00 (Morgen)</span>
+                  <span><MdText text={inhalt.texte.t0600Morgen} /></span>
                   <span>12:00</span>
                   <span>18:00</span>
                   <span>24:00</span>
-                  <span>06:00 (Nächster Tag)</span>
+                  <span><MdText text={inhalt.texte.t0600NächsterTag} /></span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mt-3 pt-3 border-t border-slate-800">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-1.5 bg-[#A3113E] inline-block rounded"></span>
-                    <span className="text-[10px] font-mono text-slate-300">Bauteil-Temperatur (°C)</span>
+                    <span className="text-[10px] font-mono text-slate-300"><MdText text={inhalt.texte.bauteilTemperaturC} /></span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-1.5 border-t-2 border-dashed border-[#94a3b8] inline-block"></span>
-                    <span className="text-[10px] font-mono text-slate-300">Rissöffnungs-Weite (mm)</span>
+                    <span className="text-[10px] font-mono text-slate-300"><MdText text={inhalt.texte.rissöffnungsWeiteMm} /></span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2 text-xs text-slate-700 leading-normal">
-                <span className="font-extrabold text-slate-800">Diagnostische Erkenntnis:</span>
-                <p>
-                  Im Sommer dehnt sich das Tragwerk infolge solarer Aufheizung aus <InlineMath math="\Delta l = \alpha_t \cdot l_0 \cdot \Delta T" />. Dadurch schließen sich Risse und Dehnfugen mechanisch (LVDT-Kurve sinkt). Bei winterlichem Frost zieht sich das Bauteil zusammen, Dehnfugen und Risse öffnen sich maximal (Vorsicht bei Frost-Tausalz-Angriffen!). Ein Rissgitter ohne Einbezug dieses Dehneffekts ist extrem fehleranfällig. Für eine Trendaussage müssen die Messwerte temperaturkompensiert werden. Nimmt die Rissöffnung über mehrere Zyklen bleibend zu, deutet das auf aktive Ursachen hin (Setzung, Kriechen, Korrosion, Überlast).
-                </p>
+                <span className="font-extrabold text-slate-800"><MdText text={inhalt.texte.diagnostischeErkenntnis} /></span>
+                <p><MdText text={inhalt.texte.imSommerDehntSich} /></p>
               </div>
             </div>
           </div>
@@ -613,15 +540,15 @@ export default function Bauwerksunters_Monitoring() {
                     <Droplets size={16} />
                   </span>
                   <div>
-                    <h3 className="font-bold text-sm text-slate-900">Feuchtigkeitsrechner (Belegreife, CM-Methode)</h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase">Estriche &amp; Mauerwerke bewerten</p>
+                    <h3 className="font-bold text-sm text-slate-900"><MdText text={inhalt.texte.feuchtigkeitsrechnerBelegreifeCmMethode} /></h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase"><MdText text={inhalt.texte.estricheMauerwerkeBewerten} /></p>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs font-semibold text-slate-600 block mb-1">Estrich / Baustoff-Klassifizierung</label>
-                    <select aria-label="Estrich / Baustoff-Klassifizierung"
+                    <label className="text-xs font-semibold text-slate-600 block mb-1"><MdText text={inhalt.texte.estrichBaustoffKlassifizierung} /></label>
+                    <select aria-label={inhalt.werte.estrichBaustoffKlassifizierung}
                       value={substrate}
                       onChange={(e) => setSubstrate(e.target.value as typeof substrate)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -641,15 +568,13 @@ export default function Bauwerksunters_Monitoring() {
                         onChange={(e) => setIsHeated(e.target.checked)}
                         className="rounded text-shiraz focus:ring-shiraz"
                       />
-                      <label htmlFor="heated" className="text-xs font-semibold text-slate-700 cursor-pointer">
-                        Beheizte Estrichkonstruktion (Fußbodenheizung)
-                      </label>
+                      <label htmlFor="heated" className="text-xs font-semibold text-slate-700 cursor-pointer"><MdText text={inhalt.texte.beheizteEstrichkonstruktionFußbodenheizu} /></label>
                     </div>
                   )}
 
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
-                      <span>Messergebnis Calciumcarbid-Methode:</span>
+                      <span><MdText text={inhalt.texte.messergebnisCalciumcarbidMethode} /></span>
                       <span className="font-bold text-shiraz">{formatDeWert(measuredCM)} CM-%</span>
                     </div>
                     <input
@@ -665,7 +590,7 @@ export default function Bauwerksunters_Monitoring() {
 
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
-                      <span>Zerstörungsfreie HF-Messung (Eindringtiefe ca. 3cm):</span>
+                      <span><MdText text={inhalt.texte.zerstörungsfreieHfMessungEindringtiefe} /></span>
                       <span className="font-bold text-slate-800">{formatDeWert(measuredDigits)} Digits</span>
                     </div>
                     <input
@@ -681,7 +606,7 @@ export default function Bauwerksunters_Monitoring() {
 
                 <div className={`p-4 rounded-xl border ${moistureEvaluation.isBelegreif ? 'bg-emerald-50 border-emerald-100 text-emerald-900' : 'bg-amber-50 border-amber-100 text-amber-900'} text-xs space-y-2`}>
                   <div className="font-bold flex items-center gap-1">
-                    <span>{substrate === 'brick' ? 'ℹ Mauerwerk: keine Belegreife-Grenze' : moistureEvaluation.isBelegreif ? '✔ Freigabe erteilt (Belegreif)' : '⚠ Verlege-Sperre (Nicht Belegreif)'}</span>
+                    <span>{substrate === 'brick' ? inhalt.werte.mauerwerkKeineBelegreifeGrenze : moistureEvaluation.isBelegreif ? inhalt.werte.freigabeErteiltBelegreif : inhalt.werte.verlegeSperreNichtBelegreif}</span>
                   </div>
                   <p className="leading-relaxed">{moistureEvaluation.evalText}</p>
                   <p className="border-t border-current/20 pt-1.5 text-[11px] opacity-80">
@@ -691,7 +616,7 @@ export default function Bauwerksunters_Monitoring() {
               </div>
 
               <div className="pt-3 border-t border-slate-100 text-[10px] text-slate-500 leading-normal space-y-1">
-                <p><strong>Normhinweis:</strong> Das kapazitive Hochfrequenz-Verfahren (HF) dient ausschließlich der schnellen, zerstörungsfreien Eingrenzung feuchter Zonen. Die <strong>CM-Messung</strong> ist das in der Praxis vereinbarte Prüfverfahren für die Belegreife; Darr- und KRL-Verfahren sind Referenz- bzw. alternative Verfahren. Die CM-Richtwerte (CT ≤ 2,0 / beheizt ≤ 1,8; CA ≤ 0,5 / beheizt ≤ 0,3 CM-%) stammen aus der Schnittstellenkoordination und hängen vom Belag ab.</p>
+                <p><MdText text={inhalt.texte.normhinweisDasKapazitiveHochfrequenz} /></p>
               </div>
             </div>
 
@@ -703,15 +628,15 @@ export default function Bauwerksunters_Monitoring() {
                     <Ruler size={16} strokeWidth={2.5} />
                   </span>
                   <div>
-                    <h3 className="font-bold text-sm text-slate-900">Rückprallhammer & Karbonatisierung</h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase">DIN EN 12504-2 · Festigkeit nur mit Kalibrierung (DIN EN 13791)</p>
+                    <h3 className="font-bold text-sm text-slate-900"><MdText text={inhalt.texte.rückprallhammerKarbonatisierung} /></h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase"><MdText text={inhalt.texte.dinEn125042} /></p>
                   </div>
                 </div>
 
                 <div className="space-y-4 text-xs font-medium text-slate-600">
                   <div>
                     <div className="flex justify-between mb-1">
-                      <span>Gemessener Schlagrückprall R (Mittelwert):</span>
+                      <span><MdText text={inhalt.texte.gemessenerSchlagrückprallRMittelwert} /></span>
                       <span className="font-bold text-slate-900">R = {formatDeWert(reboundVal)}</span>
                     </div>
                     <input
@@ -726,7 +651,7 @@ export default function Bauwerksunters_Monitoring() {
 
                   <div>
                     <div className="flex justify-between mb-1">
-                      <span>Mit Phenolphthalein bestimmte Karbonatisierungstiefe:</span>
+                      <span><MdText text={inhalt.texte.mitPhenolphthaleinBestimmteKarbonatisier} /></span>
                       <span className="font-shiraz font-bold">{formatDeWert(carbDepth)} mm</span>
                     </div>
                     <input
@@ -741,7 +666,7 @@ export default function Bauwerksunters_Monitoring() {
 
                   <div>
                     <div className="flex justify-between mb-1">
-                      <span>Alter des Tragwerks:</span>
+                      <span><MdText text={inhalt.texte.alterDesTragwerks} /></span>
                       <span className="font-bold text-slate-900">{formatDeWert(concreteAge)} Jahre</span>
                     </div>
                     <input
@@ -759,27 +684,26 @@ export default function Bauwerksunters_Monitoring() {
                   <span className="text-[10px] font-black uppercase text-shiraz tracking-widest block">Auswertung:</span>
                   <div className="grid grid-cols-2 gap-3 text-xs leading-none">
                     <div className="bg-white p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Rückprallzahl R:</span>
+                      <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.rückprallzahlR} /></span>
                       <strong className="text-sm font-mono text-slate-800">{reboundEvaluation.rawStrength}</strong>
                     </div>
                     <div className="bg-white p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Qualitative Einordnung (Relativvergleich):</span>
+                      <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.qualitativeEinordnungRelativvergleich} /></span>
                       <strong className="text-sm font-mono text-rose-600">{reboundEvaluation.correction}</strong>
                     </div>
                     <div className="bg-[#1e293b] p-2.5 rounded-lg border border-[#334155] col-span-2 text-white">
                       <span className="text-[9px] text-orange-200 font-bold block mb-1">Prüffläche:</span>
                       <strong className="text-base font-black font-mono text-amber-300">{reboundEvaluation.correctedStrength}</strong>
-                      <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? 'Karbonatisierte Randzonen erhöhen R – Prüffläche abschleifen bzw. Karbonatisierungstiefe dokumentieren.' : 'In Festigkeit umrechnen nur über eine Kalibrierung an Bohrkernen desselben Bauteils (DIN EN 13791).'}</span>
+                      <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? inhalt.werte.karbonatisierteRandzonenErhöhenR : inhalt.werte.inFestigkeitUmrechnenNur}</span>
                     </div>
                   </div>
-                  <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-200">
-                    <strong>Progress-Koeffizient f. Karbonatfront:</strong> k_c = {reboundEvaluation.k_c} mm/Jahr<sup>0,5</sup>
+                  <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-200"><MdText text={inhalt.texte.progressKoeffizientFKarbonatfront} />{reboundEvaluation.k_c} mm/Jahr<sup>0,5</sup>
                   </div>
                 </div>
               </div>
 
               <div className="pt-3 border-t border-slate-100 text-[10px] text-slate-500 leading-normal">
-                <p><strong>Hintergrund:</strong> Durch Aufnahme von atmosphärischem <InlineMath math="\text{CO}_2" /> wandelt sich Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" /> im Beton unter Oberflächenhärtung in Kalkstein <InlineMath math="\text{CaCO}_3" /> um. Ein Sklerometer (Rückprallhammer) prallt dort härter ab und liefert dort höhere Rückprallzahlen. Deshalb Prüffläche abschleifen, Karbonatisierungstiefe dokumentieren und die Rückprallzahl nur über Bohrkerne kalibriert in Festigkeit umrechnen.</p>
+                <p><MdText text={inhalt.texte.hintergrundDurchAufnahmeVon} /></p>
               </div>
             </div>
           </div>
@@ -790,28 +714,23 @@ export default function Bauwerksunters_Monitoring() {
       {/* 4. Standardization Scientific / Code Rules (Didaktisches Formelregister) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h3 className="font-bold text-sm text-text-main mb-3 flex items-center gap-1.5 uppercase text-[10px] tracking-widest text-[#475569]">
-          <Compass size={14} className="text-shiraz" /> Didaktisches Formelregister riss- &amp; diagnostikspezifischer Tragwerksprozesse
-        </h3>
+          <Compass size={14} className="text-shiraz" /><MdText text={inhalt.texte.didaktischesFormelregisterRissDiagnostik} /></h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600 leading-relaxed md:divide-x md:divide-slate-200">
           <div className="space-y-2">
-            <span className="font-bold text-slate-800 uppercase text-[9px] tracking-wider block">1. Elastomechanische Impulslaufzeit (E-Modul)</span>
-            <p>Zur zerstörungsfreien Bestimmung der homogenen Betoneigenschaften in-situ wird die Ultraschall-Laufzeit ermittelt:</p>
+            <span className="font-bold text-slate-800 uppercase text-[9px] tracking-wider block"><MdText text={inhalt.texte.t1ElastomechanischeImpulslaufzeitE} /></span>
+            <p><MdText text={inhalt.texte.zurZerstörungsfreienBestimmungDer} /></p>
             <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/20 my-1 text-center">
               <BlockMath math="E_{dyn} = \frac{\rho \cdot v_p^2 \cdot (1 + \nu) \cdot (1 - 2\nu)}{1 - \nu}" />
             </div>
-            <p className="text-[10px] text-slate-500">
-              Wobei <InlineMath math="\rho" /> die Rohdichte des Betons (<InlineMath math="\text{kg/m}^3" />), <InlineMath math="v_p" /> die Schallgeschwindigkeit (<InlineMath math="\text{m/s}" />) und <InlineMath math="\nu" /> die Querdehnzahl (ca. 0,2) repräsentieren.
-            </p>
+            <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.wobeiRhoDieRohdichte} /></p>
           </div>
           <div className="space-y-2 md:pl-4">
-            <span className="font-bold text-slate-800 uppercase text-[9px] tracking-wider block">2. Diffusionsfortschritt der Karbonatisierung</span>
-            <p>Die zeitliche Entwicklung der Karbonatisierungsfront folgt näherungsweise dem √t-Gesetz (aus dem Fick’schen Gesetz mit wandernder Reaktionsfront abgeleitet):</p>
+            <span className="font-bold text-slate-800 uppercase text-[9px] tracking-wider block"><MdText text={inhalt.texte.t2DiffusionsfortschrittDerKarbonatisierun} /></span>
+            <p><MdText text={inhalt.texte.dieZeitlicheEntwicklungDer} /></p>
             <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/20 my-1 text-center">
               <BlockMath math="x_c(t) = k_c \cdot \sqrt{t}" />
             </div>
-            <p className="text-[10px] text-slate-500">
-              Hier bezeichnet <InlineMath math="x_c" /> die Karbonatisierungstiefe (<InlineMath math="\text{mm}" />), <InlineMath math="k_c" /> den stoff- und umweltabhängigen Karbonatisierungsbeiwert und <InlineMath math="t" /> das Alter (Jahre).
-            </p>
+            <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.hierBezeichnetXC} /></p>
           </div>
         </div>
       </div>
@@ -819,67 +738,34 @@ export default function Bauwerksunters_Monitoring() {
       {/* 5. Standardized Module Footer */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Dynamischer E-Modul aus der Ultraschalllaufzeit"
+        title={inhalt.werte.beispiel1DynamischerE}
         zielGleichung="E_{dyn} = v_L^2 \cdot \rho \cdot \frac{(1+\nu)(1-2\nu)}{1-\nu}"
-        schritte={[
-          { titel: 'Messung', erklaerung: 'Durchschallung einer 300 mm dicken Wand, Laufzeit 71,4 µs:', formel: 'v_L = \\frac{0{,}300}{71{,}4 \\cdot 10^{-6}} = 4\\,200\\,\\text{m/s}' },
-          { titel: 'Kennwerte', erklaerung: 'ρ = 2 400 kg/m³, ν = 0,2:', formel: '\\frac{1{,}2 \\cdot 0{,}6}{0{,}8} = 0{,}90' },
-          { titel: 'E-Modul', erklaerung: 'Einsetzen:', formel: 'E_{dyn} = 4\\,200^2 \\cdot 2\\,400 \\cdot 0{,}90 = 38{,}1\\,\\text{GPa}' }
-        ]}
-        ergebnisHinweis="Der dynamische E-Modul liegt über dem statischen. Deutlich geringere Laufzeiten-Geschwindigkeiten in Teilbereichen weisen auf Gefügestörungen, Kiesnester oder Risse hin."
-        normQuelle="DIN EN 12504-4"
+        schritte={inhalt.daten["Bauwerksunters_Monitoring.schritte"]}
+        ergebnisHinweis={inhalt.werte.derDynamischeEModul}
+        normQuelle={inhalt.werte.dinEn125044}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Elektrolytischer Betonwiderstand nach dem Wenner-Verfahren"
+        title={inhalt.werte.beispiel2ElektrolytischerBetonwiderstand}
         zielGleichung="\rho = 2\pi \cdot a \cdot \frac{U}{I}"
-        schritte={[
-          { titel: 'Messanordnung', erklaerung: 'Elektrodenabstand a = 50 mm; gemessene Spannung 0,40 V bei 1,0 mA:', formel: '\\frac{U}{I} = \\frac{0{,}40}{0{,}001} = 400\\,\\Omega' },
-          { titel: 'Widerstand', erklaerung: 'Einsetzen:', formel: '\\rho = 2\\pi \\cdot 0{,}05 \\cdot 400 = 126\\,\\Omega\\text{m}' },
-          { titel: 'Einordnung', erklaerung: 'Orientierungswerte: hoher Widerstand bedeutet geringe Korrosionsgeschwindigkeit.', formel: '\\rho > 100\\,\\Omega\\text{m} \\Rightarrow \\text{eher geringes Risiko}' }
-        ]}
-        ergebnisHinweis="Die Grenzwerte hängen von Zementart, Feuchte und Temperatur ab; der Widerstand wird mit Potentialfeldmessung und Chloridanalytik kombiniert. Bewehrung nahe der Messstrecke verfälscht das Ergebnis."
-        normQuelle="RILEM TC 154-EMC; DGZfP-Merkblatt B 03"
+        schritte={inhalt.daten["Bauwerksunters_Monitoring.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dieGrenzwerteHängenVon}
+        normQuelle={inhalt.werte.rilemTc154Emc}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bauwerksunters_monitoring" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, ZfP-Kennwerte und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap11}
         wikipedia={[
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
-          { title: 'Zerstörungsfreie Werkstoffprüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
+          { title: inhalt.werte.zerstörungsfreieWerkstoffprüfung, url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
           { title: 'Bohrwiderstandsmessung', url: 'https://de.wikipedia.org/wiki/Bohrwiderstandsmessung' },
           { title: 'Structural-Health-Monitoring' }
         ]}
-        literatur={[
-          'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen); DIN 1076 und RI-EBW-PRÜF: Zustandserfassung, Analyse und Bauwerksdiagnostik im Bestand.',
-          'DGZfP-Merkblätter B 02, B 03 (2025), B 04, B 10, B 11 (2022) – Deutsche Gesellschaft für Zerstörungsfreie Prüfung.',
-          'DIN 68800-4: Holzschutz – Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten.'
-        ]}
-        regelwerke={[
-          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06', url: 'https://www.vdi.de/' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)' },
-          { title: 'DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365' },
-          { title: 'RILEM TC 154-EMC: Test methods for on-site measurement of resistivity of concrete (Polder, Materials and Structures 33, 2000)', url: 'https://www.rilem.net/' }
-        ]}
-        formeln={[
-          {
-            formel: 'v_L = \\sqrt{\\frac{E \\cdot (1-\\nu)}{\\rho \\cdot (1+\\nu)(1-2\\nu)}} \\quad [\\text{m/s}]',
-            erklaerung: 'Longitudinalwellen-Geschwindigkeit bei Ultraschallprüfungen an Beton und Mauerwerk zur Detektion von Fehlstellen, Hohlräumen und Festigkeitsgradienten.',
-            quelle: 'DIN EN 12504-4'
-          },
-          {
-            formel: '\\rho_{\\text{app}} = 2\\pi \\cdot a \\cdot \\frac{U}{I} \\quad [\\Omega\\cdot\\text{m}]',
-            erklaerung: 'Spezifischer elektrischer Widerstand nach dem Wenner-Vier-Punkt-Verfahren zur Bewertung des Korrosionsrisikos der Bewehrung (RILEM TC 154-EMC).',
-            quelle: 'RILEM TC 154-EMC'
-          },
-          {
-            formel: 'R_B = \\frac{\\Delta W}{\\Delta x} \\implies \\text{Holzgüteprofil nach Resistographie}',
-            erklaerung: 'Bohrwiderstandsmessung (Resistographie) an Holzkonstruktionen: Verlauf des Drehmoments über die Bohrtiefe zur Identifizierung von Fäulnis, Fraßgängen und Jahrringdichten.',
-            quelle: 'WTA / DGZfP'
-          }
-        ]}
+        literatur={inhalt.daten["Bauwerksunters_Monitoring.literatur"]}
+        regelwerke={inhalt.daten["Bauwerksunters_Monitoring.regelwerke"]}
+        formeln={inhalt.daten["Bauwerksunters_Monitoring.formeln"]}
       />
     </div>
   );

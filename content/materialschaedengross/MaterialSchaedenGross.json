@@ -1,0 +1,135 @@
+{
+  "texte": {
+    "großeMaterialbedingteBauschädenEinstürze": "Große materialbedingte Bauschäden & Einstürze",
+    "forensischeSchadensanalyseHistorischerGr": "Forensische Schadensanalyse historischer Großschadensfälle: Projektdaten, Werkstoffmechanismen, Historie, Ursachen & normative Konsequenzen",
+    "infrastrukturSchiene": "Infrastruktur & Schiene (",
+    "großeEinstürzeUndStrukturversagen": "Große Einstürze und Strukturversagen der Bau- und Verkehrsgeschichte sind selten das Resultat eines einzelnen Versehens. Nahezu ausnahmslos handelt es sich um das verhängnisvolle Zusammenspiel von **materialbedingter Degradation** (z.B. Alkali-Kieselsäure-Reaktion im Beton, Spannungsrisskorrosion, Hydrolyse von Leimfugen, Verflüssigung unter Porenwasserdruck), **bauphysikalischer oder statischer Fehlkonzeption**, **fehlender System-Redundanz** und **Lücken in der periodischen Bauwerksüberwachung**.",
+    "fallakteÖffnen": "Fallakte öffnen",
+    "kritischerWerkstoffmechanismus": "Kritischer Werkstoffmechanismus",
+    "projektdatenBauwerkskenngrößen": " Projektdaten & Bauwerkskenngrößen",
+    "baujahrSchadenszeitpunkt": "Baujahr & Schadenszeitpunkt",
+    "tragwerkstypAbmessungen": "Tragwerkstyp & Abmessungen",
+    "beteiligteWerkstoffe": "Beteiligte Werkstoffe",
+    "schadensausmaßVerluste": "Schadensausmaß & Verluste",
+    "historieSchadenschronologie": " Historie & Schadenschronologie",
+    "materialmechanischeIngenieurtechnischeSc": " Materialmechanische & Ingenieurtechnische Schadensursachen",
+    "folgenNormativeKonsequenzenFür": " Folgen & Normative Konsequenzen für die Baupraxis",
+    "relevantesRegelwerk": "Relevantes Regelwerk",
+    "fundamentaleLehrenFürBauingenieure": " Fundamentale Lehren für Bauingenieure & Werkstoffprüfer",
+    "verwandterSchadensmechanismusInTypische": "Verwandter Schadensmechanismus in: Typische Bauschäden",
+    "relevanteFachquellenGutachtenUntersuchun": " Relevante Fachquellen, Gutachten & Untersuchungsberichte"
+  },
+  "werte": {
+    "fallakteDurchsuchenZB": "Fallakte durchsuchen (z.B. Bahnschwellen, AKR, Leim, Spannungsrisskorrosion, Carolabrücke, Stava)...",
+    "quelleExternÖffnen": "Quelle extern öffnen",
+    "beispiel1KritischeRissgröße": "Beispiel 1: Kritische Rissgröße in einem Stahlbauteil bei Kälte",
+    "einRissVonWenigen": "Ein Riss von wenigen Millimetern genügt – visuell kaum auffindbar. Ohne Redundanz (Silver Bridge 1967) führt das Versagen eines Glieds zum Gesamteinsturz.",
+    "irwin1957NtsbBericht": "Irwin (1957); NTSB-Bericht Silver Bridge (1970)",
+    "beispiel2LastverdopplungDurch": "Beispiel 2: Lastverdopplung durch geänderte Anschlussausbildung (Hyatt Regency 1981)",
+    "dieUnscheinbareDetailänderungVerdoppelte": "Die unscheinbare Detailänderung verdoppelte die Beanspruchung des Kastenträgeranschlusses; schon die ursprüngliche Planung erfüllte die Anforderungen der Bauordnung nach dem NBS-Bericht nicht vollständig.",
+    "nbsBss1431982": "NBS BSS 143 (1982)",
+    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: Fallchronologien, Opferzahlen und Quellen geprüft; nicht verifizierbare Gutachtenangaben neutralisiert; fachliche Freigabe durch den Autor ausstehend)",
+    "eisenbahnunfallVonBurgrainGarmisch": "Eisenbahnunfall von Burgrain (Garmisch-Partenkirchen)",
+    "hyattRegencyEinsturzKansas": "Hyatt-Regency-Einsturz (Kansas City)",
+    "schiersteinerBrückeHavarie": "Schiersteiner Brücke (Havarie)",
+    "polceveraViaduktPonteMorandi": "Polcevera-Viadukt (Ponte Morandi)",
+    "carolabrückeDresden": "Carolabrücke (Dresden)",
+    "silverBridge": "Silver Bridge",
+    "kongresshalleBerlin": "Kongresshalle (Berlin)"
+  },
+  "daten": {
+    "MaterialSchaedenGross.schritte": [
+      {
+        "titel": "Werkstoff",
+        "erklaerung": "Älterer Baustahl bei Frost mit geringer Bruchzähigkeit (Lehrwert):",
+        "formel": "K_{Ic} = 30\\,\\text{MPa}\\sqrt{\\text{m}}"
+      },
+      {
+        "titel": "Beanspruchung",
+        "erklaerung": "Nennspannung im Bauteil 300 MPa, Randriss (Y = 1,12):",
+        "formel": "Y \\cdot \\sigma = 336\\,\\text{MPa}"
+      },
+      {
+        "titel": "Kritischer Riss",
+        "erklaerung": "Einsetzen:",
+        "formel": "a_c = \\frac{1}{\\pi}\\left(\\frac{30}{336}\\right)^2 = 0{,}0025\\,\\text{m} = 2{,}5\\,\\text{mm}"
+      }
+    ],
+    "MaterialSchaedenGross.schritte_2": [
+      {
+        "titel": "Planung",
+        "erklaerung": "Durchlaufende Hängestange: Jede Mutter unter einem Steg trägt nur dessen Last P.",
+        "formel": "F_{plan} = P"
+      },
+      {
+        "titel": "Ausführung",
+        "erklaerung": "Zwei versetzte Stangen: Die Mutter am oberen Steg trägt dessen Last und die des unteren Stegs.",
+        "formel": "F_{ist} = P + P = 2P"
+      },
+      {
+        "titel": "Folge",
+        "erklaerung": "Bei P = 90 kN (Lehrwert):",
+        "formel": "F_{ist} = 180\\,\\text{kN} \\text{ statt } 90\\,\\text{kN}"
+      }
+    ],
+    "MaterialSchaedenGross.wikipedia.3": {
+      "title": "Katastrophe von Stava (Dammbruch)"
+    },
+    "MaterialSchaedenGross.wikipedia.5": {
+      "title": "Einsturz der Eishalle Bad Reichenhall"
+    },
+    "MaterialSchaedenGross.literatur": [
+      "Bundesstelle für Eisenbahnunfalluntersuchung (BEU): Untersuchungsbericht zum Zugunglück bei Burgrain 2022 (AKR an Spannbetonschwellen)",
+      "Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "National Bureau of Standards (NBS): Investigation of the Kansas City Hyatt Regency Walkways Collapse. NBS Building Science Series 143, 1982",
+      "Schlaich, J.; Kordina, K.; Engell, H.-J.: Teileinsturz der Kongresshalle Berlin – Schadensursachen. Zusammenfassendes Gutachten. Beton- und Stahlbetonbau 75 (1980) H. 12, S. 281–294",
+      "N. N.: Gutachten zu den Ursachen des Einsturzes der Eissporthalle in Bad Reichenhall vorgelegt. Bautechnik 83 (2006) H. 9, S. 667–668; Voormann, F.; Pfeifer, M.: Die Kämpf-Stegträger der Eissporthalle Bad Reichenhall – Eine typische Holzkonstruktion der 1950er und 1960er Jahre? Bautechnik 84 (2007) H. 1, S. 1–7; BGH, Urteil vom 12.01.2010 – 1 StR 272/09",
+      "Petroski, H. (1994): Design Paradigms: Case Histories of Error and Judgment in Engineering (Cambridge University Press)"
+    ],
+    "MaterialSchaedenGross.regelwerke": [
+      {
+        "title": "DAfStb-Alkali-Richtlinie (Alkalireaktion im Beton), Ausgabe 2013-10",
+        "url": "https://www.dafstb.de/"
+      },
+      {
+        "title": "VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)",
+        "url": "https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung"
+      },
+      {
+        "title": "DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)"
+      },
+      {
+        "title": "DIN EN 12620 (Gesteinskörnungen für Beton)"
+      },
+      {
+        "title": "DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)"
+      },
+      {
+        "title": "DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)"
+      }
+    ],
+    "MaterialSchaedenGross.formeln": [
+      {
+        "formel": "Na_2O_{äq} = \\%Na_2O + 0{,}658 \\cdot \\%K_2O \\le 0{,}60\\% \\quad (\\text{NA-Zement})",
+        "erklaerung": "Äquivalenter Natriumoxidgehalt von Zementen nach DIN EN 197 / DAfStb-Alkali-Richtlinie. Niedrigalkalische Zemente (NA-Zemente) begrenzen das Risiko schädigender Alkali-Kieselsäure-Reaktionen. Der Grenzwert 0,60 % gilt allgemein; für hüttensandreiche Zemente nennt DIN 1164-10 höhere Grenzwerte (z. B. CEM II/B-S ≤ 0,70 %, CEM III/A ≤ 0,95 bzw. 1,10 %, CEM III/B und III/C ≤ 2,00 %).",
+        "quelle": "DIN 1164-10 & DAfStb-Alkali-Richtlinie"
+      },
+      {
+        "formel": "K_I = Y \\cdot \\sigma \\cdot \\sqrt{\\pi a} \\ge K_{Ic} \\quad [\\text{MPa}\\sqrt{\\text{m}}]",
+        "erklaerung": "Bruchkriterium der linearen elastischen Bruchmechanik (LEBM): Ein instabiler Sprödbruch tritt ein, wenn die Spannungsintensität an der Rissspitze die kritische Bruchzähigkeit KIc des Werkstoffs überschreitet (z. B. Silver Bridge).",
+        "quelle": "Griffith-Irwin Bruchmechanik"
+      },
+      {
+        "formel": "\\tau_f = c' + (\\sigma - u) \\cdot \\tan\\varphi' \\xrightarrow{u \\rightarrow \\sigma} \\tau_f \\approx 0",
+        "erklaerung": "Mohr-Coulomb-Bruchkriterium mit effektiven Scherparametern c′, φ′ unter Porenwasserüberdruck u (Scherverflüssigung / Static Liquefaction): Steigt der Porenwasserdruck bis zur Normalspannung an, fällt die effektive Scherfestigkeit auf null (Dammbruch Stava).",
+        "quelle": "Terzaghi / Bodenmechanik"
+      },
+      {
+        "formel": "-\\text{NH}-\\text{CH}_2-\\text{NH}- + \\text{H}_2\\text{O} \\xrightarrow{\\text{H}^+, \\, T} -\\text{NH}_2 + \\text{HCHO} + \\text{H}_2\\text{N}-",
+        "erklaerung": "Säurekatalysierte Hydrolyse von Harnstoff-Formaldehyd-Harzen (UF-Leimen) unter Einwirkung permanenter Feuchte und Kondenswasserbildung (Bad Reichenhall).",
+        "quelle": "Bauchemie der Polymerklebstoffe"
+      }
+    ]
+  }
+}

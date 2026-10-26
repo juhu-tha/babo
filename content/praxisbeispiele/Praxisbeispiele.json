@@ -1,0 +1,65 @@
+{
+  "texte": {
+    "zwangRissbreiteBeiMassigen": "Zwang & Rissbreite bei massigen Bauteilen",
+    "einfacheErklärungDerPhänomene": "Einfache Erklärung der Phänomene",
+    "beimBetonierenMassigerBauteile": "Beim Betonieren massiger Bauteile (z.B. dicke Bodenplatten) greifen verschiedene Effekte ineinander, die zu Rissen führen können:",
+    "wärmeflussHydratationZementReagiert": "**Wärmefluss & Hydratation:** Zement reagiert mit Wasser und erzeugt Wärme (Hydratationswärme). Ein massiges Bauteil kann diese Wärme im Kern schlecht abgeben, wodurch es sich ausdehnt (Aufheizphase).",
+    "verformungsbehinderungZwangWennDas": "**Verformungsbehinderung (Zwang):** Wenn das Bauteil abkühlt oder schwindet, möchte es sich zusammenziehen. Ist es aber z.B. starr mit dem Untergrund verbunden, wird diese Verkürzung behindert. Das erzeugt enorme Zugkräfte (Zwangspannungen).",
+    "schwindartenBetonZiehtSich": "**Schwindarten:** Beton zieht sich beim Austrocknen (Trocknungsschwinden) und chemisch bei der Hydratation (Autogenes Schwinden) zusammen. Das erhöht die Dehnungsbehinderung und somit die Zugspannungen.",
+    "festigkeitsentwicklungJungerBetonIst": "**Festigkeitsentwicklung:** Junger Beton ist noch sehr weich und hat eine geringe Zugfestigkeit. Gleichzeitig entwickeln sich in dieser frühen Phase die höchsten Spannungen durch Hitze und Abkühlung. Überschreitet die Zwangspannung die junge Zugfestigkeit, reißt der Beton (Trennrisse).",
+    "bauteilZwang": "Bauteil & Zwang",
+    "r0FreiBeweglich": "R=0 (frei beweglich), R=1 (starr eingespannt). Bodenplatten typischerweise R=0.3 bis 0.5.",
+    "maxKerntemperatur": "Max. Kerntemperatur",
+    "kZurUmgebung": " K zur Umgebung",
+    "maxZwangspannung": "Max. Zwangspannung",
+    "trittInDerAbkühlphase": "Tritt in der Abkühlphase auf",
+    "rissrisikoTrennrisse": "Rissrisiko (Trennrisse)",
+    "temperaturverlaufKern": "Temperaturverlauf (Kern)",
+    "spannungsentwicklungVsFestigkeit": "Spannungsentwicklung vs. Festigkeit",
+    "maßnahmenZurRissvermeidung": " Maßnahmen zur Rissvermeidung",
+    "verwendungEinesZementsMit": "Verwendung eines Zements mit niedriger Wärmeentwicklung (z.B. CEM III).",
+    "reduzierungDesZementgehaltsSofern": "Reduzierung des Zementgehalts (sofern statisch/dauerhaft zulässig).",
+    "absenkungDerFrischbetontemperaturZ": "Absenkung der Frischbetontemperatur (z.B. durch Zugabe von Eiswasser).",
+    "einbauEinerAusreichendenMindestbewehrung": "Einbau einer ausreichenden Mindestbewehrung zur Rissbreitenbegrenzung (ca. ",
+    "cmMJeSeite": " cm²/m je Seite)."
+  },
+  "werte": {
+    "cemI425": "CEM I 42.5 R",
+    "kerntemperaturC": "Kerntemperatur (°C)",
+    "umgebungstemperaturC": "Umgebungstemperatur (°C)",
+    "zwangspannungMpa": "Zwangspannung (MPa)",
+    "zugfestigkeitFCtmT": "Zugfestigkeit f_ctm(t) (MPa)",
+    "dickeDesBauteils": "Dicke des Bauteils.",
+    "bauteildickeH": "Bauteildicke h",
+    "behinderungsgradR": "Behinderungsgrad R",
+    "artDesVerwendetenZements": "Art des verwendeten Zements (z.B. CEM I, CEM II).",
+    "mengeDesZementsPro": "Menge des Zements pro Kubikmeter.",
+    "temperaturDerUmgebung": "Temperatur der Umgebung.",
+    "spannungZugfestigkeit": "Spannung > Zugfestigkeit",
+    "spannungZugfestigkeit2": "Spannung < Zugfestigkeit",
+    "temperaturC": "Temperatur (°C)"
+  },
+  "daten": {
+    "Praxisbeispiele.options": {
+      "responsive": true,
+      "maintainAspectRatio": false,
+      "scales": {
+        "x": {
+          "title": {
+            "display": true,
+            "text": "Zeit (Tage)"
+          },
+          "ticks": {
+            "maxTicksLimit": 15
+          }
+        },
+        "y": {
+          "title": {
+            "display": true,
+            "text": "Spannung / Festigkeit (MPa)"
+          }
+        }
+      }
+    }
+  }
+}

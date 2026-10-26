@@ -1,0 +1,175 @@
+{
+  "texte": {
+    "klebDichtstoffsystemeBauprodukte": " Kleb- & Dichtstoffsysteme (Bauprodukte)",
+    "anforderungenNachDinEn": "Anforderungen nach DIN EN 12004 und DIN EN 15651. Bauchemische Differenzierung zwischen Adhäsion und Kohäsion, anwendungsspezifischen Beanspruchungsklassen und dem werkstofflichen Korrosionsschutz.",
+    "basiswissenProduktkatalog": " Basiswissen & Produktkatalog",
+    "fugenKlebetechnikRechner": " Fugen- & Klebetechnik-Rechner",
+    "verfügbareKlebUndDichtstoffe": "Verfügbare Kleb- und Dichtstoffe:",
+    "silikonDreipunfthaftungVerhindern": "Silikon-Dreipunfthaftung verhindern!",
+    "beiBauDehnungsfugenDarf": "Bei Bau-Dehnungsfugen darf das Silikon zwingend **nur an zwei Fugenflanken** anhaften. Kommt es zu einer Haftung am Fugenboden (Dreipunkthaftung), reißt der Dichtstoff bei Fugenbewegungen, weil er sich nicht frei dehnen kann. Abhilfe schaffen \\*\\*Fugenfüllprofile/Rundschnüre\\*\\* aus PE.",
+    "werkstoffdatenblattBauchemie": "Werkstoffdatenblatt Bauchemie",
+    "chemischeBasis": "Chemische Basis",
+    "adhäsionGrenzflächenhaftung": " Adhäsion (Grenzflächenhaftung)",
+    "diePhysikalischenWechselwirkungenAn": "Die physikalischen Wechselwirkungen an der Grenzfläche zwischen dem flüssigen Klebstofffilm und dem festen Untergrund. Sie basiert primär auf elektromagnetischen Kräften (Van-der-Waals-Kräfte, Wasserstoffbrückenbindungen) und mikromechanischer Verzahnung in den Poren des Werkstoffs. \\*\\*Untergrundreinheit\\*\\* ist hierfür die absolute Lebensader!",
+    "kohäsionInnereFestigkeit": " Kohäsion (Innere Festigkeit)",
+    "beschreibtDieInnerenMolekularen": "Beschreibt die inneren molekularen Bindungskräfte innerhalb der ausgehärteten Kleb- oder Dichtstoffschicht. Sie bestimmt, wie stark der ausgehärtete Klebstoff selbst mechanisch beansprucht werden kann. Nach dem Molekularaufbau fließen hier kovalente Hauptvalenzbindungen (Reaktionsharze wie Epoxid) oder mechanische Festkörperverfilmungen (Weißleim) ein.",
+    "übersichtNormgerechterSystemanwendungenI": "Übersicht normgerechter Systemanwendungen im Hochbau (Herstellerneutral)",
+    "dieChemischeZusammensetzungUnd": "Die chemische Zusammensetzung und Applikationstechnik von Kleb- und Dichtsystemen orientiert sich an streng normativen Leistungsklassen nach DIN EN 15651 (Teile 1-4) und anwendungsbezogenen Spezifikationen (z.B. IVD-Merkblätter).",
+    "hochbauFassadendichtstoffeDinEn": "Hochbau-Fassadendichtstoffe (DIN EN 15651-1 - Typ F)",
+    "systemeZurAbdichtungVon": "Systeme zur Abdichtung von Außenwandfugen (z.B. Betonfertigteilplatten nach DIN 18540). Typisch sind hochverformbare Polyurethane (PU) oder silanterminierte Polymere (STP) mit einer zulässigen Gesamtverformung (ZGV) von ≥ 25%, die thermische Dehnbelastungen dauerhaft abfedern.",
+    "sanitärFeuchtraumdichtstoffeDinEn": "Sanitär- & Feuchtraumdichtstoffe (DIN EN 15651-3 - Typ S)",
+    "spezialsystemeFürDehnungsfugenIm": "Spezialsysteme für Dehnungsfugen im Nassbereich (Sanitäreinrichtungen, Fliesenanschlüsse). Zum Schutz vor mikrobiellem Befall sind diese Silicondichtstoffe fungizid ausgerüstet (Sanitärdichtstoffe nach DIN EN 15651-3, Klassen XS1/XS2).",
+    "bodenfugensystemeDinEn15651": "Bodenfugensysteme (DIN EN 15651-4 - Typ PW)",
+    "hochelastischeSystemeFürBefahrbare": "Hochelastische Systeme für befahrbare oder mechanisch beanspruchte Bodenflächen (Logistikhallen, Parkdecks). Sie erfordern Dichtstoffe mit höherer Shore-A-Härte, hoher Weiterreißfestigkeit und Beständigkeit gegen Treib- und Schmierstoffe (Hinweise in IVD-Merkblättern).",
+    "konstruktiveBausystemverklebungenDinEn": "Konstruktive Bausystemverklebungen (DIN EN 1504-4)",
+    "strukturelleEpoxidharzKlebemittelZur": "Strukturelle Epoxidharz-Klebemittel zur hochfesten Verklebung von Betonbauteilen, Stahllaschen oder Carbonfaserlamellen (CFK) zur statischen Tragwerkssanierung. Sie haben hohe Haft- und Scherfestigkeiten (starre Klebefuge)."
+  },
+  "werte": {
+    "anwendungsbeispielMindestfugenbreiteEine": "Anwendungsbeispiel: Mindestfugenbreite einer Außenwandfuge",
+    "din18540FugenIm": "DIN 18540 (Fugen im Außenwandbereich); α_T und ZGV als Lehrwerte",
+    "istDieFugeZu": "Ist die Fuge zu schmal, wird der Dichtstoff überdehnt und reißt – Fugenbreiten werden aus der Bewegung, nicht nach Gefühl festgelegt."
+  },
+  "daten": {
+    "adhesiveProducts": [
+      {
+        "name": "Zementärer Flexmörtel (Fliesenkleber)",
+        "category": "Fliesenkleber nach DIN EN 12004",
+        "standard": "DIN EN 12004 (Klasse C2 TE S1)",
+        "chemicalBase": "Portlandzement mit redispergierbaren Kunststoffen",
+        "curingType": "Hydraulische Erhärtung + Polymerfilmbildung",
+        "durabilityClass": "C2 (Haftfestigkeit ≥ 1,0 N/mm²)",
+        "maxElongation": "Verformung S1 (≥ 2,5 mm und < 5,0 mm)",
+        "description": "Kunststoffmodifizierter hydraulischer Dünnbettmörtel. Die Polymerzusätze verbessern die Scherfestigkeit und Flexibilität, sodass thermische Längenänderungen (z.B. bei Fußbodenheizungen) schadensfrei aufgenommen werden.",
+        "advantages": [
+          "Frostsicher und wasserbeständig (für außen geeignet)",
+          "Verformbar (Klasse S1)",
+          "Verlängerte Offenzeit und verringertes Abrutschen"
+        ],
+        "disadvantages": [
+          "Zementallergie-Risiko bei Verarbeitung",
+          "Feuchtigkeitsempfindliche Lagerung des Werktrockenpulvers"
+        ]
+      },
+      {
+        "name": "D3 / D4 PVAc-Holzleim (Weißleim)",
+        "category": "Holzklebemörtel nach DIN EN 204",
+        "standard": "DIN EN 204 / 205 (Klasse D3/D4)",
+        "chemicalBase": "Polyvinylacetat (PVAc-Dispersion)",
+        "curingType": "Physikalische Trocknung (Wasserverdunstung)",
+        "durabilityClass": "D3 (Innen Nassbereich / Außen geschützt)",
+        "maxElongation": "Gering (starr härtende Fuge)",
+        "description": "Klassischer Holzleim für den konstruktiven Innenausbau. D3-Leime sind widerstandsfähig gegen kurzfristige Feuchtigkeitsbelastungen. Durch Beigabe eines Isocyanat-Härters wird die wasserfeste Klasse D4 erreicht.",
+        "advantages": [
+          "Lösemittelfrei",
+          "Transparente, unauffällige Fuge nach Trocknung",
+          "Klebfuge oft fester als das Holz selbst"
+        ],
+        "disadvantages": [
+          "D3-Klebung ist nicht dauerhaft witterungsbeständig im Außenbereich",
+          "Erfordert zwingend Pressdruck beim Abbinden"
+        ]
+      },
+      {
+        "name": "Neutralvernetzendes Sanitärsilikon",
+        "category": "Fugendichtstoff nach DIN EN 15651-3",
+        "standard": "DIN EN 15651-3 (Klasse XS1)",
+        "chemicalBase": "Polydimethylsiloxan (Alkoxy- / Oxim-System)",
+        "curingType": "Chemisch vernetzend durch Luftfeuchtigkeit (Kondensation)",
+        "durabilityClass": "XS1 (Höchste Schimmelresistenz)",
+        "maxElongation": "Zulässige Gesamtverformung 25 %",
+        "description": "Dauerelastischer Dichtstoff für Dehnfugen in Bädern und Fliesenbelägen. Neutralvernetzende Silikone setzen beim Abbinden unbedenkliche Alkohole frei und greifen im Gegensatz zu essigsäurehaltigen Systemen Metalle und Beton nicht an.",
+        "advantages": [
+          "Sehr gute Pilzbeständigkeit (fungizid ausgerüstet)",
+          "Sehr hohe Rückstellfähigkeit und UV-Resistenz",
+          "Haftet ohne Primer auf Glas, Keramik und Emaille"
+        ],
+        "disadvantages": [
+          "Kann Natursteine (Marmor, Granit) durch Weichmacherwanderung verfärben",
+          "Befallene Fugen müssen mechanisch saniert werden"
+        ]
+      },
+      {
+        "name": "Plastisch-elastisches Fugenacryl",
+        "category": "Dichtstoff nach DIN EN 15651-1",
+        "standard": "DIN EN 15651-1 (Klasse F-EXT-INT 12.5P)",
+        "chemicalBase": "Polyacrylsäure-Ester-Dispersion",
+        "curingType": "Physikalische Trocknung (Wasserverdunstung)",
+        "durabilityClass": "Haftung ohne Rissbildung bei mäßiger Dehnung",
+        "maxElongation": "Zulässige Gesamtverformung 7,5 % - 12,5 %",
+        "description": "Plastisch erhärtender Fugendichtstoff primär für den trockenen Innenausbau. Acrylate zeichnen sich durch ihre direkte Überstreichbarkeit aus. Durch die Wasserverdampfung kommt es zu einem messbaren Volumenschwund.",
+        "advantages": [
+          "Hervorragend überstreichbar und lückenlos überputzbar",
+          "Nahezu geruchlos und umweltfreundlich",
+          "Haftet hervorragend auf Putz, Holz und Trockenbaugips"
+        ],
+        "disadvantages": [
+          "Nicht für Dauernassbereiche geeignet (quillt wieder auf)",
+          "Geringe Dehnfähigkeit im Vergleich zu Silikon"
+        ]
+      },
+      {
+        "name": "MS-Hybrid-Polymer Kleber",
+        "category": "Kombinierter Montageklebstoff",
+        "standard": "DIN EN 15651-1 / ISO 11600",
+        "chemicalBase": "Silanterminiertes Polymer (STP / MS-Polymer)",
+        "curingType": "Chemisch vernetzend durch Feuchtigkeit",
+        "durabilityClass": "Sehr hohe dynamische Zugbelastbarkeit",
+        "maxElongation": "Zulässige Gesamtverformung ca. 20 %",
+        "description": "Hochelastischer Hybrid-Kleb- und Dichtstoff, der die besten Eigenschaften von Silikonen (Elastizität) und Polyurethanen (Zähigkeit, lackierbar) kombiniert. Hohe Anfangshaftung.",
+        "advantages": [
+          "Hohe Anfangshaftung (oft ohne Fixierung)",
+          "Haftet auch auf feuchten und unebenen Untergründen",
+          "Völlig frei von Isocyanaten, Silikonen und Lösemitteln"
+        ],
+        "disadvantages": [
+          "Höherer Preis im Vergleich zu PUR oder Acryl",
+          "Härterückstand lässt sich mechanisch nur mühsam entfernen"
+        ]
+      }
+    ],
+    "BpKlebstoffe.schritte": [
+      {
+        "titel": "1. Längenänderung der Elemente",
+        "formel": "\\Delta l = l \\cdot \\alpha_T \\cdot \\Delta T = 6000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}",
+        "erklaerung": "Betonfertigteil 6 m, Temperaturspanne der Oberfläche 80 K."
+      },
+      {
+        "titel": "2. Zulässige Gesamtverformung",
+        "formel": "ZGV = 25\\,\\%",
+        "erklaerung": "Für elastische Dichtstoffe (PU, STP)."
+      },
+      {
+        "titel": "3. Erforderliche Fugenbreite",
+        "formel": "b_{min} = 4{,}8 / 0{,}25 = 19\\,\\text{mm}",
+        "erklaerung": "Zuzüglich Maßtoleranzen; in der Regel auf 20 mm gerundet."
+      }
+    ],
+    "BpKlebstoffe.literatur": [
+      "Habenicht, G.: Kleben – Grundlagen, Technologien, Anwendungen. 6. Aufl., Berlin: Springer 2009",
+      "Industrieverband Dichtstoffe e. V. (IVD): IVD-Merkblätter zu Fugenabdichtungen, jeweils aktuelle Ausgabe (z. B. Nr. 27 Fassadenfugen, Nr. 30 Montageklebstoffe, Nr. 35 Dichten und Kleben am Bau; www.abdichten.de)"
+    ],
+    "BpKlebstoffe.regelwerke": [
+      {
+        "title": "DIN EN 12004 (Mörtel und Klebstoffe für Fliesen und Platten)"
+      },
+      {
+        "title": "DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)"
+      },
+      {
+        "title": "DIN EN 204 (Beurteilung von Klebstoffen für nicht tragende Bauteile zur Holzverbindung)"
+      }
+    ],
+    "BpKlebstoffe.formeln": [
+      {
+        "formel": "\\tau = \\frac{F}{A_G} \\quad \\text{[N/mm²]}",
+        "erklaerung": "Mittlere Scherfestigkeit der Klebfuge (Bruchkraft F je Klebfläche A_G).",
+        "quelle": "z. B. DIN EN 205 (Holzklebstoffe)"
+      },
+      {
+        "formel": "ZGV = \\frac{b_{max} - b_{min}}{b_m} \\cdot 100\\,\\%",
+        "erklaerung": "Zulässige Gesamtverformung des Fugendichtstoffs: Bewegung der Fugenbreite bezogen auf die mittlere Fugenbreite b_m (Bemessung von Fugenbreiten).",
+        "quelle": "DIN 18540 / IVD-Merkblätter"
+      }
+    ]
+  }
+}

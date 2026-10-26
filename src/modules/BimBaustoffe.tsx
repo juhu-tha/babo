@@ -5,6 +5,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Monitor, Database, Settings, FileCode, Layers, ShieldCheck, Copy, Check, Download } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import inhalt from '@/content/bimbaustoffe/BimBaustoffe.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialArchetype {
   id: string;
@@ -17,48 +19,7 @@ interface MaterialArchetype {
   ifcClass: string;
 }
 
-const ARCHETYPES: MaterialArchetype[] = [
-  {
-    id: 'beton',
-    name: 'Normalbeton C30/37',
-    defaultDensity: 2400,
-    defaultConductivity: 2.10,
-    defaultEModulus: 33000,
-    defaultGwp: 245.0,
-    description: 'Klassischer mineralischer Baustoff mit hoher Tragfähigkeit, hoher thermischer Masse, aber signifikantem CO₂-Rucksack.',
-    ifcClass: 'IfcMaterial'
-  },
-  {
-    id: 'holz',
-    name: 'Brettschichtholz (Fichte)',
-    defaultDensity: 450,
-    defaultConductivity: 0.13,
-    defaultEModulus: 11000,
-    defaultGwp: -480.0, // negative GWP due to biogenic carbon storage
-    description: 'Nachwachsender Tragwerksbaustoff mit integriertem biogenem Kohlenstoffspeicher und hervorragendem Gewichts-Festigkeits-Verhältnis.',
-    ifcClass: 'IfcMaterial'
-  },
-  {
-    id: 'mineralwolle',
-    name: 'Mineralwolle (Dämmung)',
-    defaultDensity: 60,
-    defaultConductivity: 0.035,
-    defaultEModulus: 5,
-    defaultGwp: 42.0,
-    description: 'Hochleistungsdämmstoff zur thermischen Trennung und Minimierung der Transmissionswärmeverluste der thermischen Gebäudehülle.',
-    ifcClass: 'IfcMaterial'
-  },
-  {
-    id: 'stahl',
-    name: 'Baustahl S355',
-    defaultDensity: 7850,
-    defaultConductivity: 50.0,
-    defaultEModulus: 210000,
-    defaultGwp: 1450.0,
-    description: 'Duktiler Tragwerkswerkstoff mit sehr guten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.',
-    ifcClass: 'IfcMaterial'
-  }
-];
+const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES;
 
 export default function BimBaustoffe() {
   const [selectedId, setSelectedId] = useState<string>('beton');
@@ -122,45 +83,33 @@ export default function BimBaustoffe() {
     <div className="flex flex-col space-y-6">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Monitor className="text-shiraz animate-pulse" />
-          BIM für Baustoffe
-        </h2>
+          <Monitor className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.bimFürBaustoffe} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Building Information Modeling (BIM) kennzeichnet den umfassenden digitalen Wandel im Bauwesen. Es ist mehr als 3D-CAD: BIM verknüpft geometrische Körper mit semantischen Eigenschaften (Sachdaten). Im digitalen Zwilling wird jeder Baustoff als exklusiver Informationsträger abgebildet.
-          </p>
+          <p><MdText text={inhalt.texte.buildingInformationModelingBim} /></p>
         </div>
 
         {/* Info Grid - Vom Strich zum Bauteil / Attribute */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 font-normal">
           <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 shadow-inner">
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-3">
-              <Layers size={16} className="text-shiraz" />
-              1. Semantische Tiefe (Vom Strich zum Bauteil)
-            </h3>
-            <p className="text-xs text-slate-700 leading-relaxed mb-3">
-              Im klassischen 2D-CAD besteht eine Wand aus zwei nackten, parallelen Vektorlinien. Im BIM-Modell dagegen deklarieren wir ein intelligentes Bauteil-Objekt (z.B. <code className="bg-home-grau/20 px-1 py-0.5 rounded text-[11px] font-mono font-bold">IfcWall</code>), welches physikalisch determinierte Eigenschaften aufweist:
-            </p>
+              <Layers size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1SemantischeTiefeVom} /></h3>
+            <p className="text-xs text-slate-700 leading-relaxed mb-3"><MdText text={inhalt.texte.imKlassischen2dCad} /><code className="bg-home-grau/20 px-1 py-0.5 rounded text-[11px] font-mono font-bold">IfcWall</code><MdText text={inhalt.texte.welchesPhysikalischDeterminierteEigensch} /></p>
             <ul className="text-xs text-slate-700 space-y-1.5 pl-4 list-disc">
-              <li><strong>Materialzuweisung:</strong> Präzise Referenzierung konkreter Baustoffe.</li>
-              <li><strong>Mehrschichtigkeit:</strong> Verknüpfung komplexer Materialschichten.</li>
-              <li><strong>Mengen-Take-Off:</strong> Vollautomatische Massenberechnung aus der 3D-Geometrie für Kostenermittlungen.</li>
+              <li><MdText text={inhalt.texte.materialzuweisungPräziseReferenzierungKo} /></li>
+              <li><MdText text={inhalt.texte.mehrschichtigkeitVerknüpfungKomplexerMat} /></li>
+              <li><MdText text={inhalt.texte.mengenTakeOffVollautomatische} /></li>
             </ul>
           </div>
 
           <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 shadow-inner">
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-3">
-              <Settings size={16} className="text-shiraz" />
-              2. Parameter-Sets je Fachdisziplin
-            </h3>
-            <p className="text-xs text-slate-700 leading-relaxed mb-3">
-              Ein Baustoff im BIM-Prozess agiert als vernetztes Datenpaket, das von unterschiedlichen Projektbeteiligten gefüllt und ausgelesen wird:
-            </p>
+              <Settings size={16} className="text-shiraz" /><MdText text={inhalt.texte.t2ParameterSetsJe} /></h3>
+            <p className="text-xs text-slate-700 leading-relaxed mb-3"><MdText text={inhalt.texte.einBaustoffImBim} /></p>
             <ul className="text-xs text-slate-700 space-y-1.5 pl-4 list-disc">
-              <li><strong>Tragwerker:</strong> Festigkeitsklasse, Elastizitätsmodul, Querkontraktionszahl.</li>
-              <li><strong>Bauphysiker:</strong> Wärmeleitfähigkeit (λ), Wasserdampfdiffusionswiderstand (μ).</li>
-              <li><strong>Nachhaltigkeitsplaner (LCA):</strong> Globales Erwärmungspotenzial (GWP aus EPDs).</li>
-              <li><strong>Facility Manager (FM):</strong> Reinigungszyklen, Wartungshinweise, Recyclingcodes.</li>
+              <li><MdText text={inhalt.texte.tragwerkerFestigkeitsklasseElastizitätsm} /></li>
+              <li><MdText text={inhalt.texte.bauphysikerWärmeleitfähigkeitWasserdampf} /></li>
+              <li><MdText text={inhalt.texte.nachhaltigkeitsplanerLcaGlobalesErwärmun} /></li>
+              <li><MdText text={inhalt.texte.facilityManagerFmReinigungszyklen} /></li>
             </ul>
           </div>
         </div>
@@ -169,13 +118,9 @@ export default function BimBaustoffe() {
         <div className="border border-home-grau/30 rounded-2xl overflow-hidden mt-8 shadow-sm">
           <div className="bg-slate-100 p-4 border-b border-home-grau/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-                <FileCode className="text-shiraz" size={18} />
-                Interaktiver OpenBIM-Attributgenerator (IFC 4 / 4.3)
-              </h3>
+                <FileCode className="text-shiraz" size={18} /><MdText text={inhalt.texte.interaktiverOpenbimAttributgeneratorIfc} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Simulieren Sie, wie Material-Fachparameter im offenen Standard IFC strukturiert werden.
-          </p>
+          <p><MdText text={inhalt.texte.simulierenSieWieMaterial} /></p>
         </div>
             
             {/* Selection bar */}
@@ -210,7 +155,7 @@ export default function BimBaustoffe() {
                   {/* Slider 1: Density */}
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-semibold text-slate-900">Rohdichte (MassDensity):</span>
+                      <span className="font-semibold text-slate-900"><MdText text={inhalt.texte.rohdichteMassdensity} /></span>
                       <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(density)} kg/m³</span>
                     </div>
                     <input 
@@ -227,7 +172,7 @@ export default function BimBaustoffe() {
                   {/* Slider 2: Conductivity */}
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-semibold text-slate-900">Wärmeleitfähigkeit (λ):</span>
+                      <span className="font-semibold text-slate-900"><MdText text={inhalt.texte.wärmeleitfähigkeit} /></span>
                       <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(conductivity, 3)} W/m·K</span>
                     </div>
                     <input 
@@ -261,9 +206,7 @@ export default function BimBaustoffe() {
                   {/* Slider 4: GWP */}
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-semibold text-slate-900 flex items-center gap-1">
-                        CO₂-GWP (A1-A3):
-                        <InfoTooltip text="Treibhauspotenzial des Baustoffs (Global Warming Potential) aus der EPD." />
+                      <span className="font-semibold text-slate-900 flex items-center gap-1"><MdText text={inhalt.texte.coGwpA1A3} /><InfoTooltip text={inhalt.werte.treibhauspotenzialDesBaustoffsGlobal} />
                       </span>
                       <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gwp, 1)} kg/m³</span>
                     </div>
@@ -282,7 +225,7 @@ export default function BimBaustoffe() {
 
               <div className="mt-4 pt-3 border-t border-home-grau/30 flex items-start gap-1.5 text-[10px] text-slate-500 bg-white p-2 rounded-lg border">
                 <ShieldCheck size={14} className="text-emerald-600 shrink-0 mt-0.5" />
-                <span>Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), GEG-U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂).</span>
+                <span><MdText text={inhalt.texte.dieseKennwerteSteuernBerechnungs} /></span>
               </div>
             </div>
 
@@ -293,7 +236,7 @@ export default function BimBaustoffe() {
                   <span className="w-3 h-3 rounded-full bg-red-500"></span>
                   <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
                   <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                  <span className="text-xs text-gray-300 font-mono ml-2">IFC-EXPRESS Schema Physical File (.ifc)</span>
+                  <span className="text-xs text-gray-300 font-mono ml-2"><MdText text={inhalt.texte.ifcExpressSchemaPhysical} /></span>
                 </div>
                 
                 {/* Export & Copy actions */}
@@ -301,7 +244,7 @@ export default function BimBaustoffe() {
                   <button
                     onClick={handleCopy}
                     className="flex items-center gap-1 px-2.5 py-1 bg-gray-800 hover:bg-gray-700 text-white hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-gray-700/50 cursor-pointer"
-                    title="Code in Zwischenablage kopieren"
+                    title={inhalt.werte.codeInZwischenablageKopieren}
                   >
                     {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
                     <span>{copied ? 'Kopiert!' : 'Kopieren'}</span>
@@ -309,43 +252,42 @@ export default function BimBaustoffe() {
                   <button
                     onClick={handleDownload}
                     className="flex items-center gap-1 px-2.5 py-1 bg-gray-800 hover:bg-gray-700 text-white hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-gray-700/50 cursor-pointer"
-                    title="Als .ifc-Datei herunterladen"
+                    title={inhalt.werte.alsIfcDateiHerunterladen}
                   >
                     <Download size={12} />
                     <span>Download</span>
                   </button>
-                  <span className="text-[10px] bg-gray-800 text-gray-400 font-mono px-2 py-1 rounded font-bold uppercase border border-gray-750">ISO 10303-21</span>
+                  <span className="text-[10px] bg-gray-800 text-gray-400 font-mono px-2 py-1 rounded font-bold uppercase border border-gray-750"><MdText text={inhalt.texte.iso1030321} /></span>
                 </div>
               </div>
               
               <div className="flex-1 bg-gray-950 p-4 rounded-xl font-mono text-[11px] leading-relaxed text-gray-300 overflow-x-auto whitespace-pre select-all shadow-inner">
                 {/* Visualizing synthetic schema with customized token classes */}
-                <div><span className="text-gray-400">/* Bauteil-Zuweisungsstruktur für Building Information Modeling */</span></div>
-                <div>#100 = <span className="text-emerald-400 font-bold">IFCWALL</span>('2X3g5_w1S', #15, 'Aussenwand_Tragend', $, $, #101, $, $);</div>
+                <div><span className="text-gray-400"><MdText text={inhalt.texte.bauteilZuweisungsstrukturFürBuilding} /></span></div>
+                <div>#100 = <span className="text-emerald-400 font-bold">IFCWALL</span><MdText text={inhalt.texte.t2x3g5W1s15Aussenwand} /></div>
                 <div>#110 = <span className="text-emerald-400 font-bold">IFCMATERIAL</span>(<span className="text-amber-300">'{archetype.name}'</span>);</div>
-                <div>#120 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENTSET</span>('Schichtstruktur', $, (#130), $);</div>
-                <div>#130 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENT</span>($, #110, $, $, 'Tragende Schicht');</div>
-                <div>#140 = <span className="text-emerald-400 font-bold">IFCRELASSOCIATESMATERIAL</span>('3J7y$', #15, 'Material_Assoc', $, (#100), #120);</div>
+                <div>#120 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENTSET</span><MdText text={inhalt.texte.schichtstruktur130} /></div>
+                <div>#130 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENT</span><MdText text={inhalt.texte.t110TragendeSchicht} /></div>
+                <div>#140 = <span className="text-emerald-400 font-bold">IFCRELASSOCIATESMATERIAL</span><MdText text={inhalt.texte.t3j7y15MaterialAssoc} /></div>
                 <br />
-                <div><span className="text-gray-400">/* Property-Set: Mechanische Werkstoffdaten fuer Statik */</span></div>
-                <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialCommon', $, (#160), #110);</div>
-                <div>#155 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialMechanical', $, (#170), #110);</div>
-                <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('MassDensity', $, <span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
-                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('YoungModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
+                <div><span className="text-gray-400"><MdText text={inhalt.texte.propertySetMechanischeWerkstoffdaten} /></span></div>
+                <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialcommon160110} /></div>
+                <div>#155 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialmechanical170110} /></div>
+                <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.massdensity} /><span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
+                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.youngmodulus} /><span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
                 <br />
-                <div><span className="text-gray-400">/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */</span></div>
-                <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialThermal', $, (#190), #110);</div>
-                <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ThermalConductivity', $, <span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
+                <div><span className="text-gray-400"><MdText text={inhalt.texte.propertySetThermischeEigenschaften} /></span></div>
+                <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialthermal190110} /></div>
+                <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.thermalconductivity} /><span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
                 <br />
-                <div><span className="text-gray-400">/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */</span></div>
-                <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('CPset_Umweltdaten', $, (#210), #110);</div>
-                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GWP_A1_A3', $, <span className="text-yellow-400">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
+                <div><span className="text-gray-400"><MdText text={inhalt.texte.projektspezifischesPropertySetKein} /></span></div>
+                <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.cpsetUmweltdaten210110} /></div>
+                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.gwpA1A3} /><span className="text-yellow-400">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
               </div>
 
               {/* Explanatory footer */}
               <div className="mt-3 text-[10px] text-gray-300 font-normal leading-relaxed">
-                <span className="text-shiraz font-bold">Info:</span> In der IFC-Datei werden Geometrie-Objekte (<span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCWALL</span>) über Beziehungsentitäten (<span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCREL...</span>) sauber von Materialressourcen (<span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCMATERIAL</span>) und Attribut-Sets (<span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">Pset_*</span>) getrennt deklariert. Dies ermöglicht vollkommene M2M-Dateninteroperabilität.
-              </div>
+                <span className="text-shiraz font-bold">Info:</span><MdText text={inhalt.texte.inDerIfcDatei} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCWALL</span><MdText text={inhalt.texte.überBeziehungsentitäten} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCREL...</span><MdText text={inhalt.texte.sauberVonMaterialressourcen} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCMATERIAL</span><MdText text={inhalt.texte.undAttributSets} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">Pset_*</span><MdText text={inhalt.texte.getrenntDeklariertDiesErmöglicht} /></div>
             </div>
 
           </div>
@@ -353,16 +295,14 @@ export default function BimBaustoffe() {
 
         {/* EPDs und BIM explanation diagram */}
         <div className="space-y-4 mt-8">
-          <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2">EPDs und BIM (Building Lifecycle Assessment)</h3>
-          <p className="text-sm text-slate-700 font-normal">
-            Um ein automatisiertes Lifecycle Assessment (Gebäude-LCA) durchzuführen, verknüpfen moderne Ökobilanzierungstools (wie One Click LCA oder CAALA) direkt die geometrischen Massen aus dem BIM-Modell mit den parametrischen Daten aus Umweltproduktdeklarationen (EPDs):
-          </p>
+          <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.epdsUndBimBuilding} /></h3>
+          <p className="text-sm text-slate-700 font-normal"><MdText text={inhalt.texte.umEinAutomatisiertesLifecycle} /></p>
           <div className="flex flex-col sm:flex-row gap-4 items-stretch justify-between font-normal">
              <div className="flex-1 flex items-center gap-3 p-3 bg-blue-50 text-blue-900 rounded-xl border border-blue-200">
                <Database className="text-blue-700 shrink-0" size={20} />
                <div className="text-xs">
-                 <strong className="block text-blue-900 font-bold">1. BIM-Modell (OpenBIM)</strong>
-                 <span className="text-blue-800/85">Bereitstellung exakter Bauteil-Volumina (m³) und Massen (kg) über IFC-Mengen-Take-Off.</span>
+                 <strong className="block text-blue-900 font-bold"><MdText text={inhalt.texte.t1BimModellOpenbim} /></strong>
+                 <span className="text-blue-800/85"><MdText text={inhalt.texte.bereitstellungExakterBauteilVolumina} /></span>
                </div>
              </div>
              
@@ -371,8 +311,8 @@ export default function BimBaustoffe() {
              <div className="flex-1 flex items-center gap-3 p-3 bg-emerald-50 text-emerald-900 rounded-xl border border-emerald-200">
                <Database className="text-emerald-700 shrink-0" size={20} />
                <div className="text-xs">
-                 <strong className="block text-emerald-900 font-bold">2. EPD-Datenbank (z.B. ÖKOBAUDAT)</strong>
-                 <span className="text-emerald-800/85">Schnittstelle (REST-API) liefert normgerechte CO₂-Faktoren (kg CO₂-eq pro m³ oder kg) je Baustoff.</span>
+                 <strong className="block text-emerald-900 font-bold"><MdText text={inhalt.texte.t2EpdDatenbankZ} /></strong>
+                 <span className="text-emerald-800/85"><MdText text={inhalt.texte.schnittstelleRestApiLiefert} /></span>
                </div>
              </div>
              
@@ -380,7 +320,7 @@ export default function BimBaustoffe() {
              
              <div className="flex-1 flex items-center justify-center text-center p-3 bg-shiraz/10 text-shiraz font-bold rounded-xl border border-shiraz/30 flex-col gap-1">
                <span className="text-xs uppercase tracking-wider font-bold text-shiraz/80">Resultat</span>
-               <span className="text-sm font-bold">Automatisierte Gebäude-Ökobilanzierung (LCA)</span>
+               <span className="text-sm font-bold"><MdText text={inhalt.texte.automatisierteGebäudeÖkobilanzierungLca} /></span>
              </div>
           </div>
         </div>
@@ -389,64 +329,33 @@ export default function BimBaustoffe() {
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Treibhauspotenzial einer Wand aus dem BIM-Mengengerüst"
+        title={inhalt.werte.beispiel1TreibhauspotenzialEiner}
         zielGleichung="GWP = V \cdot gwp_{V}"
-        schritte={[
-          { titel: 'Menge aus dem Modell', erklaerung: 'IfcWall 12,0 m × 3,0 m × 0,24 m, Material Stahlbeton:', formel: 'V = 12{,}0 \\cdot 3{,}0 \\cdot 0{,}24 = 8{,}64\\,\\text{m}^3' },
-          { titel: 'EPD-Kennwert', erklaerung: 'Volumenbezogener GWP-Wert der Module A1–A3 aus einer verknüpften EPD (Lehrwert):', formel: 'gwp_V = 280\\,\\text{kg CO}_2\\text{e/m}^3' },
-          { titel: 'Ergebnis', erklaerung: 'Herstellungsphase der Wand:', formel: 'GWP_{A1\\text{–}A3} = 8{,}64 \\cdot 280 = 2\\,419\\,\\text{kg CO}_2\\text{e}' }
-        ]}
-        ergebnisHinweis="Die Rechnung ist nur so gut wie die Verknüpfung: Modelle müssen Netto-Volumen (ohne Öffnungen, ohne Doppelzählung an Wandanschlüssen) und eindeutige Material-IDs liefern. Bewehrung wird getrennt bilanziert."
-        normQuelle="DIN EN 15804+A2; ISO 16739-1:2024 (IFC 4.3)"
+        schritte={inhalt.daten["BimBaustoffe.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieRechnungIstNur}
+        normQuelle={inhalt.werte.dinEn15804A2}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: U-Wert eines mehrschichtigen Bauteils aus den Materialattributen"
+        title={inhalt.werte.beispiel2UWert}
         zielGleichung="U = \frac{1}{R_{si} + \sum d_j/\lambda_j + R_{se}}"
-        schritte={[
-          { titel: 'Schichten', erklaerung: 'Innenputz 15 mm (λ = 0,70), Stahlbeton 200 mm (λ = 2,3), Mineralwolle 160 mm (λ = 0,035) W/(mK):', formel: '\\sum \\frac{d}{\\lambda} = 0{,}021 + 0{,}087 + 4{,}571 = 4{,}680' },
-          { titel: 'Übergangswiderstände', erklaerung: 'Horizontaler Wärmestrom:', formel: 'R_T = 0{,}13 + 4{,}680 + 0{,}04 = 4{,}85\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'U-Wert', erklaerung: 'Kehrwert:', formel: 'U = \\frac{1}{4{,}85} = 0{,}21\\,\\text{W/(m}^2\\text{K)}' }
-        ]}
-        ergebnisHinweis="λ gehört als Bemessungswert in die Material-Property ThermalConductivity (Pset_MaterialThermal); ohne gepflegte Attribute ist eine automatische Auswertung nicht möglich."
-        normQuelle="DIN EN ISO 6946:2018-03; IFC 4.3"
+        schritte={inhalt.daten["BimBaustoffe.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.gehörtAlsBemessungswertIn}
+        normQuelle={inhalt.werte.dinEnIso6946}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bim_baustoffe" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 13 Digitales: IFC-Property-Sets (Pset_MaterialCommon, YoungModulus, keine Fantasie-Psets), Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap13} 
         wikipedia={[
-          { title: 'Building Information Modeling', url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
-          { title: 'Industry Foundation Classes', url: 'https://de.wikipedia.org/wiki/Industry_Foundation_Classes' }
+          { title: inhalt.werte.buildingInformationModeling, url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
+          { title: inhalt.werte.industryFoundationClasses, url: 'https://de.wikipedia.org/wiki/Industry_Foundation_Classes' }
         ]}
-        literatur={[
-          'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
-          'buildingSMART International: IFC4.3 Spezifikationen und Pset-Definitionen'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 19650-1/-2:2019-08 (Informationsmanagement mit BIM)' },
-          { title: 'ISO 16739-1:2024 (Industry Foundation Classes, IFC 4.3)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' }
-        ]}
-        weblinks={[
-          { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },
-          { title: 'BIM Deutschland – BIM-Portal des Bundes', url: 'https://www.bimdeutschland.de' },
-          { title: 'Geoportal.de – Amtliche Geodaten & Geländemodelle', url: 'https://www.geoportal.de/' },
-          { title: 'Calcpad – Parametrische Eurocode-Berechnungen', url: 'https://calcpad.eu/' }
-        ]}
-        formeln={[
-          {
-            formel: 'm_i = V_i \\cdot \\rho_i \\quad [\\text{kg}], \\quad GWP_i = m_i \\cdot gwp_{\\text{spec},i} \\quad [\\text{kg CO}_2\\text{-eq}]',
-            erklaerung: 'Mengenermittlung aus dem BIM-Attributmodell (Volumen V und Rohdichte MassDensity) multipliziert mit dem spezifischen Treibhauspotenzial gwp der verknüpften EPD.',
-            quelle: 'DIN EN 15804 / IFC Mengen-Takeoff'
-          },
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum_{j=1}^n \\frac{d_j}{\\lambda_j} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]',
-            erklaerung: 'Wärmedurchgangskoeffizient mehrschichtiger BIM-Bauteile (IfcWallStandardCase) aus den thermischen Materialeigenschaften.',
-            quelle: 'DIN EN ISO 6946'
-          }
-        ]}
+        literatur={inhalt.daten["BimBaustoffe.literatur"]}
+        regelwerke={inhalt.daten["BimBaustoffe.regelwerke"]}
+        weblinks={inhalt.daten["BimBaustoffe.weblinks"]}
+        formeln={inhalt.daten["BimBaustoffe.formeln"]}
       />
     </div>
   );

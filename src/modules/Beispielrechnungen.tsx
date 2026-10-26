@@ -14,13 +14,15 @@ import RechnungNachhaltigkeit from './beispielrechnungen/RechnungNachhaltigkeit'
 import RechnungBestand from './beispielrechnungen/RechnungBestand';
 import RechnungSchallschutz from './beispielrechnungen/RechnungSchallschutz';
 import RechnungBrandschutz from './beispielrechnungen/RechnungBrandschutz';
+import inhalt from '@/content/beispielrechnungen/Beispielrechnungen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 /** Reiterleiste nur ohne festen Einsprung (forceTab); sonst wird der Inhalt unverändert durchgereicht. */
 function RechnungReiterRahmen({ zeigen, aktiv, onWechsel, children }: { zeigen: boolean; aktiv: RechnungReiter; onWechsel: (t: RechnungReiter) => void; children: React.ReactNode }) {
   if (!zeigen) return <>{children}</>;
   return (
     <GruppierteModuleTabs
-      label="Beispielrechnungen: Bereiche"
+      label={inhalt.werte.beispielrechnungenBereiche}
       gruppen={RECHNUNG_GRUPPEN}
       aktiv={aktiv}
       onWechsel={onWechsel}
@@ -379,12 +381,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const schall_KF = schallFlanke === 'entkoppelt' ? 0 : schallFlanke === 'massiv' ? 2 : 4;
   const schall_R_prime_w = Math.max(0, schall_Rw - schall_KF);
 
-  const schall_soll_werte = {
-    wohnungstrenn: { erf: 53, label: 'Wohnungstrennwand (DIN 4109-1 Tab. 2)' },
-    treppenhaus: { erf: 52, label: 'Treppenraumwand zu Aufenthaltsräumen' },
-    behandlung: { erf: 47, label: 'Untersuchungs- & Behandlungsräume' },
-    doppelhaus: { erf: 59, label: 'Haustrennwand Doppel-/Reihenhaus (zweischalig)' }
-  };
+  const schall_soll_werte = inhalt.daten["Beispielrechnungen.schall_soll_werte"];
   const schall_erf = schall_soll_werte[schallSollTyp].erf;
   const schall_passed = schall_R_prime_w >= schall_erf;
 
@@ -424,14 +421,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
       {/* HEADER SECTION */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 font-sans">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Calculator className="text-shiraz" /> Interaktive Beispielrechnungen Schritt für Schritt
-        </h2>
+          <Calculator className="text-shiraz" /><MdText text={inhalt.texte.interaktiveBeispielrechnungenSchrittFür} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-          <p>
-            Verstehen Sie bautechnische Nachweise und physikalische Berechnungsmodelle durch interaktives Ausprobieren. 
-            Jedes Untermodul erklärt <strong>was</strong>, <strong>wie</strong> und <strong>warum</strong> berechnet wird, 
-            nennt die normativen Quellen und bewertet das Ergebnis live basierend auf Ihren Eingaben.
-          </p>
+          <p><MdText text={inhalt.texte.verstehenSieBautechnischeNachweise} /></p>
         </div>
 
         {/* TAB NAVIGATION (AP 3.8: 6 Hauptreiter, zweite Ebene für Bauphysik und Tragwerksnachweise) */}
@@ -470,67 +462,17 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
       <ModuleFooter 
         wikipedia={[
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
-          { title: 'Eurocode 2 (Betonbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
-          { title: 'Eurocode 5 (Holzbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_5' },
-          { title: 'Eurocode 6 (Mauerwerk)' },
+          { title: inhalt.werte.eurocode2Betonbau, url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
+          { title: inhalt.werte.eurocode5Holzbau, url: 'https://de.wikipedia.org/wiki/Eurocode_5' },
+          { title: inhalt.werte.eurocode6Mauerwerk },
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' },
           { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
-          { title: 'Karbonatisierung (Beton)' },
-          { title: 'Treibhauspotential (GWP)', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
+          { title: inhalt.werte.karbonatisierungBeton },
+          { title: inhalt.werte.treibhauspotentialGwp, url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-          'Zement-Merkblatt B12: Mischungsentwurf für Normalbeton (InformationsZentrum Beton)',
-          'Fasold, W.; Veres, E.: Schallschutz und Raumakustik in der Praxis. 2. Aufl., Berlin: Verlag Bauwesen 2003',
-          'Klingsch, W. et al.: Brandschutz im Bauwesen. Berlin: Springer 2018'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
-          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)' },
-          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)' },
-          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)' },
-          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)' },
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)' },
-          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)' }
-        ]}
-        formeln={[
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum \\frac{d_i}{\\lambda_i} + R_{se}}',
-            erklaerung: 'Berechnung des Wärmedurchgangskoeffizienten eines mehrschichtigen Bauteils mit stationärem Wärmestrom.',
-            quelle: 'DIN EN ISO 6946'
-          },
-          {
-            formel: 'R_w = 32{,}4 \\cdot \\lg(m\') - 26{,}0',
-            erklaerung: 'Direktschalldämm-Maß einschaliger Massivbauteile aus der flächenbezogenen Masse nach DIN 4109 Massekurve.',
-            quelle: 'DIN 4109 Beiblatt 1'
-          },
-          {
-            formel: 'd_{\\text{ef}} = \\beta_n \\cdot t_{\\text{fi}} + k_0 \\cdot d_0',
-            erklaerung: 'Effektive Abbrandtiefe im Holzbau unter Normbrandbeanspruchung nach der Restquerschnittsmethode.',
-            quelle: 'DIN EN 1995-1-2'
-          },
-          {
-            formel: '\\mu_{Ed} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}}',
-            erklaerung: 'Dimensionsloses Biegemoment zur Bestimmung der Biegebewehrung und Überprüfung der Betondruckzone.',
-            quelle: 'DIN EN 1992-1-1'
-          },
-          {
-            formel: '\\sigma_{c,0,d} \\le k_c \\cdot f_{c,0,d}',
-            erklaerung: 'Zentrischer Drucknachweis unter Berücksichtigung der Knickgefahr durch den Abminderungsbeiwert k_c.',
-            quelle: 'DIN EN 1995-1-1'
-          },
-          {
-            formel: 'N_{Rd} = \\Phi \\cdot t \\cdot f_d',
-            erklaerung: 'Vertikaler Traglastwiderstand pro Meter Wandlänge unter Berücksichtigung von Schlankheit und Lastexzentrizität.',
-            quelle: 'DIN EN 1996-3'
-          },
-          {
-            formel: 'd_k = k \\cdot \\sqrt{t}',
-            erklaerung: 'Karbonatisierungstiefe über das Quadratwurzel-Zeit-Gesetz (Diffusionskinetik nach Fick).',
-            quelle: 'DIN EN 1992-1-1'
-          }
-        ]}
+        literatur={inhalt.daten["Beispielrechnungen.literatur"]}
+        regelwerke={inhalt.daten["Beispielrechnungen.regelwerke"]}
+        formeln={inhalt.daten["Beispielrechnungen.formeln"]}
       />
     </div>
   );

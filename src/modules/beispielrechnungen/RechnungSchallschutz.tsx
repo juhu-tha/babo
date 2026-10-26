@@ -2,6 +2,8 @@ import { Volume2, Sliders, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React from 'react';
+import inhalt from '@/content/beispielrechnungen/RechnungSchallschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungSchallschutzProps {
   schallDicke: number;
@@ -32,20 +34,16 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
           <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
             <Volume2 className="text-shiraz" size={18} />
-            <span>Bauakustik: Luftschalldämmung massiver Bauteile nach DIN 4109:2018</span>
+            <span><MdText text={inhalt.texte.bauakustikLuftschalldämmungMassiverBaute} /></span>
           </h3>
-          <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-            <strong>Was?</strong> Berechnet wird die flächenbezogene Masse <InlineMath math="m'" /> in <InlineMath math="\text{kg/m}^2" />, das Direktschalldämm-Maß <InlineMath math="R_w" /> und das resultierende Bauschalldämm-Maß <InlineMath math="R'_w" /> unter Berücksichtigung von Flankenübertragungen. <br />
-            <strong>Warum?</strong> Schutz von Menschen in Wohn- und Arbeitsräumen vor unzumutbarer Schallübertragung aus fremden Wohnbereichen oder Treppenräumen gemäß <strong>DIN 4109-1:2018</strong> und Landesbauordnungen (LBO). <br />
-            <strong>Wie?</strong> Bei einschaligen biegesteifen Massivbauteilen dominiert das <strong>Massegesetz</strong>: Je schwerer das Bauteil pro Quadratmeter, desto höher ist sein Schalldämmmaß. Über Flankenkorrekturwerte <InlineMath math="K_F" /> wird die reale Übertragung im Gebäude abgebildet.
-          </p>
+          <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetWirdDie} /></p>
         </div>
 
         {/* INTERACTIVE CONTROLS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-5">
             <h3 className="font-bold text-sm text-slate-800 border-b border-slate-200 pb-2 flex items-center justify-between">
-              <span>Wandparameter &amp; Flankensituation</span>
+              <span><MdText text={inhalt.texte.wandparameterFlankensituation} /></span>
               <Sliders size={16} className="text-shiraz" />
             </h3>
 
@@ -54,10 +52,10 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
               <label className="text-xs font-bold text-slate-700 block">Wandbaustoff-Vorauswahl:</label>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 {[
-                  { id: 'ks', name: 'Kalksandstein (KS)', rho: 2000, defD: 17.5 },
-                  { id: 'beton', name: 'Stahlbeton (C25/30)', rho: 2400, defD: 20.0 },
-                  { id: 'hlz', name: 'Hochlochziegel (HLz)', rho: 1200, defD: 24.0 },
-                  { id: 'porenbeton', name: 'Porenbeton (PB)', rho: 500, defD: 24.0 }
+                  { id: 'ks', name: inhalt.werte.kalksandsteinKs, rho: 2000, defD: 17.5 },
+                  { id: 'beton', name: inhalt.werte.stahlbetonC2530, rho: 2400, defD: 20.0 },
+                  { id: 'hlz', name: inhalt.werte.hochlochziegelHlz, rho: 1200, defD: 24.0 },
+                  { id: 'porenbeton', name: inhalt.werte.porenbetonPb, rho: 500, defD: 24.0 }
                 ].map(mat => (
                   <button
                     key={mat.id}
@@ -85,7 +83,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
             {/* Wanddicke Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-700">
-                <span>Wanddicke Rohbauteil (d):</span>
+                <span><MdText text={inhalt.texte.wanddickeRohbauteilD} /></span>
                 <span className="text-shiraz font-mono">{formatDeZahl(schallDicke, 1)} cm</span>
               </div>
               <input 
@@ -99,7 +97,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
               />
               <div className="flex justify-between text-[10px] text-slate-400 font-mono">
                 <span>10,0 cm</span>
-                <span>17,5 cm (Standard KS)</span>
+                <span><MdText text={inhalt.texte.t175CmStandard} /></span>
                 <span>24,0 cm</span>
                 <span>36,5 cm</span>
               </div>
@@ -108,7 +106,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
             {/* Rohdichte Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-700">
-                <span>Trockenrohdichte (ρ):</span>
+                <span><MdText text={inhalt.texte.trockenrohdichte} /></span>
                 <span className="text-shiraz font-mono">{formatDeWert(schallRohdichte)} kg/m³</span>
               </div>
               <input 
@@ -125,8 +123,8 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
             {/* Beidseitiger Putz Checkbox */}
             <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold text-slate-800 block">Beidseitiger Putzauftrag</span>
-                <span className="text-[11px] text-slate-500">2 × 15 mm Gips-/Kalkgipsputz (+40 kg/m²)</span>
+                <span className="text-xs font-bold text-slate-800 block"><MdText text={inhalt.texte.beidseitigerPutzauftrag} /></span>
+                <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.t215MmGips} /></span>
               </div>
               <input 
                 type="checkbox"
@@ -138,8 +136,8 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
 
             {/* Flankensituation */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-700 block">Flankenübertragung (K_F):</label>
-              <select aria-label="Flankenübertragung (K_F)" 
+              <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.flankenübertragungKF} /></label>
+              <select aria-label={inhalt.werte.flankenübertragungKF} 
                 value={schallFlanke}
                 onChange={(e) => setSchallFlanke(e.target.value as "massiv" | "entkoppelt" | "leicht")}
                 className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -152,8 +150,8 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
 
             {/* Schutzziel */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-700 block">Gefordertes Schutzziel (DIN 4109-1):</label>
-              <select aria-label="Gefordertes Schutzziel (DIN 4109-1)" 
+              <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.gefordertesSchutzzielDin4109} /></label>
+              <select aria-label={inhalt.werte.gefordertesSchutzzielDin4109} 
                 value={schallSollTyp}
                 onChange={(e) => setSchallSollTyp(e.target.value as "wohnungstrenn" | "treppenhaus" | "behandlung" | "doppelhaus")}
                 className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -169,17 +167,11 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
           {/* CALCULATION BREAKDOWN */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-              <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-                Schrittweise akustische Berechnung (DIN 4109)
-              </h3>
+              <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.schrittweiseAkustischeBerechnungDin} /></h3>
 
               <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal font-sans">
                 {/* Step 1: Flächenbezogene Masse */}
-                <div>
-                  <strong>Schritt 1: Flächenbezogene Bauteilmasse m&apos;</strong>
-                  <p className="mt-1 text-xxs text-slate-500">
-                    Produkt aus Wanddicke <InlineMath math="d" /> und Rohdichte <InlineMath math="\rho" /> zuzüglich Putzmasse:
-                  </p>
+                <div><MdText text={inhalt.texte.schritt1FlächenbezogeneBauteilmasse} /><p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.produktAusWanddickeD} /></p>
                   <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`m'_0 = \\frac{${formatDeTeX(schallDicke, 1)}}{100} \\, \\text{m} \\times ${schallRohdichte} \\, \\text{kg/m}^3 = ${formatDeTeX(schall_m0, 1)} \\, \\text{kg/m}^2`} />
                     <BlockMath math={`m' = ${formatDeTeX(schall_m0, 1)} + ${schallPutz ? 40 : 0} = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_m_total, 1)}}} \\, \\text{kg/m}^2`} />
@@ -187,23 +179,15 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                 </div>
 
                 {/* Step 2: Direktes Schalldämmmaß */}
-                <div className="border-t border-slate-100 pt-3">
-                  <strong>Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109)</strong>
-                  <p className="mt-1 text-xxs text-slate-500">
-                    Für massive biegesteife Schalen (<InlineMath math="m' \ge 150 \, \text{kg/m}^2" />) nach DIN 4109 Beiblatt 1:
-                  </p>
+                <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2DirektesSchalldämm} /><p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.fürMassiveBiegesteifeSchalen} /></p>
                   <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0 = 32{,}4 \\cdot \\lg(${formatDeTeX(schall_m_total, 1)}) - 26{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_Rw, 1)}}} \\, \\text{dB}`} />
                   </div>
-                  <p className="mt-1 text-xxs text-slate-500">
-                    Hinweis zur Gültigkeit: Die Massekurve gilt ab ca. <InlineMath math="m' \approx 65 \, \text{kg/m}^2" />; für leichtere Bauteile ist das Ergebnis nicht belastbar.
-                  </p>
+                  <p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.hinweisZurGültigkeitDie} /></p>
                 </div>
 
                 {/* Step 3: Bauschalldämmmaß */}
-                <div className="border-t border-slate-100 pt-3">
-                  <strong>Schritt 3: Bauschalldämm-Maß R&apos;_w mit Flankenabzug K_F</strong>
-                  <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
+                <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3BauschalldämmMaß} /><div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`R'_w = R_w - K_F = ${formatDeTeX(schall_Rw, 1)} - ${schall_KF} = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_R_prime_w, 1)}}} \\, \\text{dB}`} />
                   </div>
                 </div>
@@ -217,15 +201,12 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                       }`}>
                     <div className="flex items-center gap-2 font-bold text-sm">
                       {schall_passed ? <CheckCircle2 size={18} className="text-emerald-700" /> : <AlertTriangle size={18} className="text-rose-700" />}
-                      <span>{schall_passed ? 'Normnachweis ERFÜLLT' : 'Normnachweis NICHT ERFÜLLT'}</span>
+                      <span>{schall_passed ? inhalt.werte.normnachweisErfüllt : inhalt.werte.normnachweisNichtErfüllt}</span>
                     </div>
-                    <p className="mt-1.5 text-xs leading-relaxed">
-                      Vorhandenes Bauschalldämm-Maß <strong>R&apos;_w = {formatDeZahl(schall_R_prime_w, 1)} dB</strong> vs. normative Mindestanforderung <strong>R&apos;_w,erf = {formatDeWert(schall_erf)} dB</strong> für {schall_soll_werte[schallSollTyp].label}.
+                    <p className="mt-1.5 text-xs leading-relaxed"><MdText text={inhalt.texte.vorhandenesBauschalldämmMaß} /><strong>R&apos;_w = {formatDeZahl(schall_R_prime_w, 1)} dB</strong><MdText text={inhalt.texte.vsNormativeMindestanforderung} /><strong>R&apos;_w,erf = {formatDeWert(schall_erf)} dB</strong> für {schall_soll_werte[schallSollTyp].label}.
                     </p>
                     {!schall_passed && (
-                      <p className="mt-2 text-xxs font-medium text-rose-800">
-                        Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2,0) oder flankierende Bauteile durch elastische Entkopplung optimieren.
-                      </p>
+                      <p className="mt-2 text-xxs font-medium text-rose-800"><MdText text={inhalt.texte.empfohleneGegenmaßnahmenWanddickeVergröß} /></p>
                     )}
                   </div>
                 </div>

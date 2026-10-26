@@ -6,6 +6,7 @@ import ts from 'typescript';
 import katex from 'katex';
 import fs from 'fs';
 import path from 'path';
+import { inhaltsDateien, inhaltsTexte, mdFormeln, relativ } from './inhaltDateien.mjs';
 
 const ROOT = path.resolve('src');
 const args = process.argv.slice(2);
@@ -41,6 +42,24 @@ function stringValue(node) {
   return null;
 }
 
+function pruefe(text) {
+  const problems = [];
+  if (CTRL.test(text)) problems.push('Steuerzeichen im String (verlorener Backslash vor t/f/v/b/r)');
+  // In JSX-Attributen ohne geschweifte Klammern (math="…") werden Escapes NICHT ausgewertet:
+  // "\\cdot" kommt dort als doppelter Backslash an → KaTeX bricht die Zeile um und zeigt "cdot".
+  const dbl = text.match(/\\\\([a-zA-Z]+)/);
+  if (dbl) problems.push(`Doppelter Backslash vor Befehl: "\\\\${dbl[1]}"`);
+  const m = text.match(LOST);
+  // "pi"/"circ" als Indexbuchstaben (σ_{pi}, r_{\text{circ}}) sind kein Fehler
+  if (m && !(/^(pi|circ|mu|eta|tau|phi|rho)$/.test(m[2]) && /[_{]$/.test(text.slice(0, m.index + m[1].length)))) problems.push(`Befehl ohne Backslash: "${m[2]}"`);
+  try {
+    katex.renderToString(text, { throwOnError: true, strict: 'ignore', displayMode: true, output: 'mathml' });
+  } catch (e) {
+    problems.push('KaTeX: ' + String(e.message).replace(/^KaTeX parse error: /, '').slice(0, 140));
+  }
+  return problems;
+}
+
 const findings = [];
 let total = 0;
 for (const file of walk(ROOT)) {
@@ -63,25 +82,27 @@ for (const file of walk(ROOT)) {
     if (cand && cand.text.trim()) {
       total++;
       const line = sf.getLineAndCharacterOfPosition(node.getStart()).line + 1;
-      const problems = [];
-      if (CTRL.test(cand.text)) problems.push('Steuerzeichen im String (verlorener Backslash vor t/f/v/b/r)');
-      // In JSX-Attributen ohne geschweifte Klammern (math="…") werden Escapes NICHT ausgewertet:
-      // "\\cdot" kommt dort als doppelter Backslash an → KaTeX bricht die Zeile um und zeigt "cdot".
-      const dbl = cand.text.match(/\\\\([a-zA-Z]+)/);
-      if (dbl) problems.push(`Doppelter Backslash vor Befehl: "\\\\${dbl[1]}"`);
-      const m = cand.text.match(LOST);
-      // "pi"/"circ" als Indexbuchstaben (σ_{pi}, r_{\text{circ}}) sind kein Fehler
-      if (m && !(/^(pi|circ|mu|eta|tau|phi|rho)$/.test(m[2]) && /[_{]$/.test(cand.text.slice(0, m.index + m[1].length)))) problems.push(`Befehl ohne Backslash: "${m[2]}"`);
-      try {
-        katex.renderToString(cand.text, { throwOnError: true, strict: 'ignore', displayMode: true, output: 'mathml' });
-      } catch (e) {
-        problems.push('KaTeX: ' + String(e.message).replace(/^KaTeX parse error: /, '').slice(0, 140));
-      }
+      const problems = pruefe(cand.text);
       if (problems.length) findings.push({ file: path.relative(process.cwd(), file), line, prop: kind, problems, value: cand.text.slice(0, 160) });
     }
     ts.forEachChild(node, visit);
   };
   visit(sf);
+}
+
+// Ausgelagerte Fachtexte (AP 5.3): Formel-Eigenschaften in content/**/*.json und $…$ in „texte“
+if (!filter || filter.includes('content')) {
+  for (const datei of inhaltsDateien()) {
+    for (const t of inhaltsTexte(datei)) {
+      const formeln = t.gruppe === 'texte' ? mdFormeln(t.text) : t.eigenschaft && MATH_PROPS.has(t.eigenschaft) ? [t.text] : [];
+      for (const f of formeln) {
+        if (!f.trim()) continue;
+        total++;
+        const problems = pruefe(f);
+        if (problems.length) findings.push({ file: relativ(datei), line: 0, prop: `${t.gruppe}.${t.schluessel}`, problems, value: f.slice(0, 160) });
+      }
+    }
+  }
 }
 
 if (asJson) {

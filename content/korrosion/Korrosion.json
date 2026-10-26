@@ -1,0 +1,159 @@
+{
+  "texte": {
+    "elektrochemischeKorrosionszelleImStahlbe": "**Elektrochemische Korrosionszelle im Stahlbeton:** Wenn Depassivierung eintritt (durch Chloride $Cl^-$ oder Absinken des pH-Wertes durch Karbonatisierung unter 9,5), bilden sich kurzgeschlossene galvanische Lokalelemente aus **Anode** (Eisenauflösung im Lochfraßkrater) und **Kathode** (Sauerstoffreduktion an der intakten Passivschicht). Der entstehende Rost expandiert um das 2- bis 6-fache seines Ursprungsvolumens und sprengt die Betondeckung ab.",
+    "t1KorrosionsParameter": " 1. Korrosions-Parameter",
+    "chloridgehaltAmBewehrungsstahl": "Chloridgehalt am Bewehrungsstahl:",
+    "t010Passiv": "0,10 % (Passiv)",
+    "kritisch050": "Kritisch: 0,50 %",
+    "t250Extrem": "2,50 % (Extrem)",
+    "relativeBetonfeuchteRh": "Relative Betonfeuchte (RH):",
+    "betondeckungCnom": "Betondeckung (cnom):",
+    "wirkungsdauerT": "Wirkungsdauer (t):",
+    "korrosionsstromIcorr": "Korrosionsstrom icorr",
+    "abtragsrateVcorr": "Abtragsrate vcorr",
+    "stahlverlustD": "Stahlverlust Δd",
+    "t2ElektrochemischeZelleRissfortschritt": " 2. Elektrochemische Zelle & Rissfortschritt",
+    "querschnittBetondeckungMitRebar": "Querschnitt Betondeckung mit Rebar Ø 16 mm",
+    "t1AnodischeTeilreaktionLochfraß": "1. Anodische Teilreaktion (Lochfraß):",
+    "eisenGehtAlsHydratisiertes": "Eisen geht als hydratisiertes Kation in Lösung. Die Elektronen fließen durch die metallische Bewehrung zur Kathode.",
+    "t2KathodischeTeilreaktionPassivfläche": "2. Kathodische Teilreaktion (Passivfläche):",
+    "sauerstoffAusDerPorenluft": "Sauerstoff aus der Porenluft verbraucht die Elektronen. Bildet Hydroxidionen, die den Stromkreis im Porenwasser schließen.",
+    "natürlicheKarbonatisierung": " Natürliche Karbonatisierung",
+    "elektrochemischeKorrosionszelleLochfraß": " Elektrochemische Korrosionszelle & Lochfraß",
+    "parameter2FickSches": "Parameter (2. Fick'sches Gesetz)",
+    "achtungDepassivierungErreichtRestnutzung": "ACHTUNG: Depassivierung erreicht! Restnutzungsdauer überschritten.",
+    "schematischeDarstellungChloridfrontBeweh": "Schematische Darstellung: Chloridfront & Bewehrung",
+    "normenFormeln": "Normen & Formeln",
+    "t2FickSchesDiffusionsgesetz": "2. Fick'sches Diffusionsgesetz:",
+    "erfGaußscheFehlerfunktionBr": "erf(): Gaußsche Fehlerfunktion<br>",
+    "mBezogenAufDen": " M.-% bezogen auf den Zement (Orientierungswert; objektspezifisch durch den sachkundigen Planer festzulegen)",
+    "fibModelCode2010": " fib Model Code 2010 / DIN EN 1992-1-1 (Dauerhaftigkeit)<br><br>",
+    "zeitabhängigerDiffusionskoeffizient": "Zeitabhängiger Diffusionskoeffizient:",
+    "referenzzeitpunktMeist28Tage": ": Referenzzeitpunkt (meist 28 Tage)<br>a: Alterungsexponent",
+    "parameterWurzelTGesetz": "Parameter (Wurzel-t-Gesetz)",
+    "achtungDepassivierungErreichtDie": "ACHTUNG: Depassivierung erreicht! Die Karbonatisierungsfront hat die Bewehrung erreicht.",
+    "parameterSchnelltest": "Parameter (Schnelltest)",
+    "schnellkarbonatisierungVsNatürlich": "Schnellkarbonatisierung vs. Natürlich",
+    "äquivalenterNatürlicherKWert": "Äquivalenter natürlicher K-Wert:"
+  },
+  "werte": {
+    "passivGeschützt": "Passiv (Geschützt)",
+    "lochfraßAktivMikrokorrosion": "Lochfraß aktiv (Mikrokorrosion)",
+    "spaltzugrissImBetoninneren": "Spaltzugriss im Betoninneren",
+    "durchgehenderLängsrissAnOberfläche": "Durchgehender Längsriss an Oberfläche",
+    "betondeckungAbgeplatztSpalling": "Betondeckung abgeplatzt (Spalling)",
+    "geringeFeuchteTrockenerBeton": "Geringe Feuchte: Trockener Beton, hoher elektrolytischer Widerstand hemmt Ionenstrom.",
+    "kritischerFeuchtebereich7585": "Kritischer Feuchtebereich (75-85 %): Optimale Bedingungen für rasenden Korrosionsfortschritt!",
+    "wassergesättigtSauerstoffdiffusionswider": "Wassergesättigt: Sauerstoffdiffusionswiderstand bremst die kathodische Reaktion stark ab.",
+    "passiviertPh125": "Passiviert (pH > 12,5)",
+    "chloridgehalt": "Chloridgehalt (%)",
+    "betondeckungCNom": "Betondeckung (c_nom)",
+    "kritischerGehalt05": "Kritischer Gehalt (0,5%)",
+    "karbonatisierungstiefeMm": "Karbonatisierungstiefe (mm)",
+    "betondeckungCNom2": "Betondeckung (c_nom)",
+    "aktuellesJahr": "Aktuelles Jahr",
+    "tiefeSchnellkarbonatisierungMm": "Tiefe Schnellkarbonatisierung (mm)",
+    "äquivalenteNatürlicheTiefeMm": "Äquivalente natürliche Tiefe (mm)",
+    "chloridgehaltGew": "Chloridgehalt (Gew.-%)",
+    "tiefeInsBauteilX": "Tiefe ins Bauteil x (mm)",
+    "zeitTJahre": "Zeit t (Jahre)",
+    "zeitTTage": "Zeit t (Tage)",
+    "dieDauerhaftigkeitVonStahlbeton": "Die Dauerhaftigkeit von Stahlbeton hängt vom Schutz der Bewehrung ab. Karbonatisierung (CO2) senkt den pH-Wert, Chloride zerstören die Passivschicht direkt. Beide Prozesse sind diffusionsgesteuert und zeitabhängig.",
+    "expositionszeitT": "Expositionszeit (t)",
+    "geplanteNutzungsdauerOderBetrachtungszei": "Geplante Nutzungsdauer oder Betrachtungszeitpunkt. Üblich im Hochbau: 50 Jahre, Brückenbau: 100 Jahre.",
+    "betondeckungCNom3": "Betondeckung (c_{nom})",
+    "abstandVonDerBetonoberfläche": "Abstand von der Betonoberfläche bis zur äußeren Bewehrung. Schützt den Stahl vor Korrosion. Üblich: 35-50 mm je nach Expositionsklasse (XD/XS).",
+    "apparenterChloriddiffusionskoeffizientDe": "Apparenter Chloriddiffusionskoeffizient, der den Transportwiderstand des Betons gegen Chloride beschreibt.",
+    "diffusionskoeffizientDApp": "Diffusionskoeffizient (D_{app})",
+    "t1012M2S": "×10^{-12} m2/s",
+    "chloridgehaltAnDerGeländeseitigen": "Chloridgehalt an der geländeseitigen Betonoberfläche, abhängig von Exposureklassen (Tausalze, Meerwasser).",
+    "oberflächenkonzentrationCS": "Oberflächenkonzentration (C_s)",
+    "alterungsexponentA": "Alterungsexponent (a)",
+    "beschreibtDieAbnahmeDes": "Beschreibt die Abnahme des Diffusionskoeffizienten über die Zeit durch fortschreitende Hydratation. Richtwerte nach fib Bulletin 34: Portlandzement ≈ 0,30, mit Flugasche ≈ 0,60, Hochofenzement ≈ 0,45.",
+    "betrachtungszeitpunktT": "Betrachtungszeitpunkt (t)",
+    "nennmaßDerBetondeckungFür": "Nennmaß der Betondeckung für die karbonatisierte Zone.",
+    "betondeckungCNom4": "Betondeckung (c_{nom})",
+    "karbonatisierungsgeschwindigkeitK": "Karbonatisierungsgeschwindigkeit (K)",
+    "hängtVonDerBetonqualität": "Hängt von der Betonqualität (w/z-Wert) und der Umgebung (Feuchte) ab. Trockene Innenräume (XC1): K ≈ 3-5. Außenbauteile (XC4): K ≈ 1-2.",
+    "prüfdauerT": "Prüfdauer (t)",
+    "co2KonzentrationKammer": "CO2-Konzentration (Kammer)",
+    "erhöhteCo2KonzentrationIm": "Erhöhte CO2-Konzentration im Prüfschrank zur Beschleunigung. Üblich: 1% bis 3%.",
+    "natürlicheCo2Konzentration": "Natürliche CO2-Konzentration",
+    "imLaborbeschleunigtenSchnellprüfverfahre": "Im laborbeschleunigten Schnellprüfverfahren (erhöhte CO2-Konzentration) ermittelte Karbonatisierungsgeschwindigkeit.",
+    "karbonatisierungsgeschwindigkeitKSchnell": "Karbonatisierungsgeschwindigkeit (K_schnell)",
+    "berechnetÜberDasVerhältnis": "(Berechnet über das Verhältnis der CO2-Konzentrationen)",
+    "beispiel1ChloridgehaltAn": "Beispiel 1: Chloridgehalt an der Bewehrung nach 50 Jahren (2. Ficksches Gesetz)",
+    "mit35MmDeckung": "Mit 35 mm Deckung ergäbe sich bereits 0,77 M.-% v. z. – die Deckung wirkt quadratisch auf die Zeit. Zeitabhängiges D_app (Alterungsexponent) und probabilistische Ansätze nach fib Bulletin 34 verfeinern die Prognose.",
+    "fibBulletin342006": "fib Bulletin 34 (2006); fib Model Code 2010",
+    "beispiel2QuerschnittsverlustEines": "Beispiel 2: Querschnittsverlust eines Bewehrungsstabes aus der Korrosionsstromdichte",
+    "beiChloridinduziertemLochfraßIst": "Bei chloridinduziertem Lochfraß ist der lokale Abtrag 4- bis 8-mal größer als der Mittelwert (Lochfraßfaktor) – der Querschnittsverlust kann lokal ein Vielfaches betragen, ohne dass Abplatzungen vorwarnen.",
+    "faradayschesGesetzDinEn": "Faradaysches Gesetz; DIN EN ISO 8044",
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: Chlorid- und Karbonatisierungsmodelle, Alterungsexponenten, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "karbonatisierungBeton": "Karbonatisierung (Beton)"
+  },
+  "daten": {
+    "Korrosion.schritte": [
+      {
+        "titel": "Eingangswerte",
+        "erklaerung": "Oberflächenchloridgehalt C_s = 3,0 M.-% v. z., Diffusionskoeffizient D_app = 0,3 · 10⁻¹² m²/s (konstant angesetzt), Betondeckung x = 45 mm, t = 50 a:",
+        "formel": "D_{app} = 0{,}3 \\cdot 10^{-12}\\,\\tfrac{\\text{m}^2}{\\text{s}} = 9{,}47\\,\\tfrac{\\text{mm}^2}{\\text{a}}"
+      },
+      {
+        "titel": "Argument der Fehlerfunktion",
+        "erklaerung": "Einsetzen:",
+        "formel": "z = \\frac{45}{2\\sqrt{9{,}47 \\cdot 50}} = \\frac{45}{43{,}5} = 1{,}03 \\Rightarrow \\mathrm{erf}(z) = 0{,}856"
+      },
+      {
+        "titel": "Chloridgehalt",
+        "erklaerung": "Vergleich mit dem kritischen Gehalt (Orientierungswert 0,5 M.-% v. z.):",
+        "formel": "C = 3{,}0 \\cdot (1 - 0{,}856) = 0{,}43 < 0{,}5 \\Rightarrow \\text{noch passiv}"
+      }
+    ],
+    "Korrosion.schritte_2": [
+      {
+        "titel": "Abtragsrate",
+        "erklaerung": "Eisen: M = 55,85 g/mol, z = 2, ρ = 7,87 g/cm³, i_corr = 1 µA/cm²:",
+        "formel": "v_{corr} = 11{,}6\\,\\mu\\text{m/a}"
+      },
+      {
+        "titel": "Radiusabnahme",
+        "erklaerung": "Gleichmäßiger Abtrag über 10 Jahre an einem Stab Ø 12 mm:",
+        "formel": "d = 12 - 2 \\cdot 0{,}116 = 11{,}77\\,\\text{mm}"
+      },
+      {
+        "titel": "Querschnittsverlust",
+        "erklaerung": "Bezogen auf den Ausgangsquerschnitt:",
+        "formel": "\\Delta A / A = 1 - (11{,}77/12)^2 = 3{,}8\\,\\%"
+      }
+    ],
+    "Korrosion.literatur": [
+      "fib Model Code for Concrete Structures 2010 (International Federation for Structural Concrete)",
+      "DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620, 2. überarb. Aufl. Berlin: Beuth 2011 (keine Neuausgabe zur DIN 1045:2023, Stand 10/2026)",
+      "fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Korrosion.regelwerke": [
+      {
+        "title": "DIN EN 12390-12:2020-04 (Bestimmung des Karbonatisierungswiderstandes – beschleunigtes Verfahren)"
+      },
+      {
+        "title": "DIN EN 12390-10:2019-02 (Karbonatisierungswiderstand bei atmosphärischer CO₂-Konzentration)"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + NA (Eurocode 2: Betondeckung cnom und Expositionsklassen)"
+      }
+    ],
+    "Korrosion.formeln": [
+      {
+        "formel": "C(x,t) = C_0 + (C_s - C_0) \\cdot \\left[1 - \\text{erf}\\left(\\frac{x}{2 \\cdot \\sqrt{D_{\\text{app}} \\cdot t}}\\right)\\right]",
+        "erklaerung": "2. Fick'sches Diffusionsgesetz zur Modellierung des instationären Chlorideindringens in das poröse Zementsteingefüge.",
+        "quelle": "fib Bulletin 34 / fib Model Code 2010"
+      },
+      {
+        "formel": "x_c(t) = K_{\\text{karb}} \\cdot \\sqrt{t} \\quad [\\text{mm}], \\quad K_{\\text{nat}} \\approx K_{\\text{schnell}} \\cdot \\sqrt{\\frac{\\text{CO}_{2,\\text{nat}}}{\\text{CO}_{2,\\text{schnell}}}}",
+        "erklaerung": "Quadratisches Wurzel-Zeit-Gesetz der Karbonatisierungstiefe xc(t) und Umrechnung beschleunigter CO2-Kammerprüfungen auf atmosphärische Verhältnisse.",
+        "quelle": "DIN EN 12390-12 / fib Model Code"
+      }
+    ]
+  }
+}

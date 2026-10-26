@@ -1,0 +1,89 @@
+{
+  "texte": {
+    "din68800BestimmerHolz": "DIN 68800 Bestimmer: Holz-Gebrauchsklasse & Resistenz-Abgleich",
+    "gebrauchsklassenGkBestimmenDas": "Gebrauchsklassen (GK) bestimmen das Gefährdungsspektrum für Holzbauteile. Klicken Sie die Einsatzkonditionen an, um die Gebrauchsklasse und die zulässigen natürlichen Holzarten (DIN EN 350 i. V. m. DIN 68800-1) zu bestimmen:",
+    "beheizterStändigGeschlossenerInnenraum": "Beheizter, ständig geschlossener Innenraum?",
+    "gefahrZeitweiserBefeuchtungNassraum": "Gefahr zeitweiser Befeuchtung (Nassraum/Kondensation)?",
+    "außenbereichBewittertDirektregen": "Außenbereich bewittert (Direktregen)?",
+    "direkterErdkontakt": "Direkter Erdkontakt?",
+    "ständigerKontaktMitSüßwasser": "Ständiger Kontakt mit Süßwasser?",
+    "holzartKernholz": "Holzart (Kernholz)",
+    "eignungBewittert": "Eignung Bewittert",
+    "normativeBestimmungsketteNachDin": "Normative Bestimmungskette nach DIN 68800-1 / DIN EN 350-2",
+    "schritt1UmgebungsdiagnostikFeuchteeinwir": "Schritt 1: Umgebungsdiagnostik (Feuchteeinwirkung)",
+    "wasserIstDerBiologische": "Wasser ist der biologische Katalysator. Pilze können Holz nur abbauen, wenn die Holzfeuchte dauerhaft über ca. 20 % liegt (Fasersättigung bei ca. 28–30 %). Unter beheizten Innenbedingungen bleibt u bei ca. 8–12 %, weshalb kein Pilzrisiko besteht. Sobald Erdkontakt oder Bewitterung einsetzen, stellt sich freies Wasser im Holzgefüge ein.",
+    "schritt2KlassifizierungDer": "Schritt 2: Klassifizierung der Gebrauchsklasse (GK)",
+    "ihreGewähltenParameterKlassifizieren": "Ihre gewählten Parameter klassifizieren das Tragwerk in die Klasse ",
+    "diesBestimmtNachDin": "). Dies bestimmt nach DIN 68800-1:2019-06 die erforderlichen Schutzmaßnahmen (Insektengefahr ab GK 1, Pilzgefahr ab GK 2, Moderfäulerisiko ab GK 4).",
+    "schritt3AbgleichDer": "Schritt 3: Abgleich der natürlichen Dauerhaftigkeit (Dauerhaftigkeitsklasse nach DIN EN 350:2016-12)",
+    "hölzerLagernInIhren": "Hölzer lagern in ihren inneren Kernzellen schützende Tannine, Terpene oder Harze ein. Je niedriger die Dauerhaftigkeitsklasse (1 = sehr dauerhaft bis 5 = nicht dauerhaft), desto widerstandsfähiger ist das Holz:",
+    "klasse1Bis2": "**Klasse 1 bis 2 (Robinie, Eiche):** Splintfreies Kernholz der Klasse 1 (Robinie) ist ohne chemischen Schutz auch in GK 4 verwendbar; Klasse 2 bis GK 3.2. Eiche wird nach DIN EN 350 mit 2 bis 4 eingestuft.",
+    "klasse34Douglasie": "**Klasse 3-4 (Douglasie, Lärche):** Nur baulich optimal geschützt (ohne Staunässe, freier Ablauf) einsatzfähig.",
+    "klasse45Fichte": "**Klasse 4-5 (Fichte, Tanne):** Ohne Schutzmaßnahmen nicht für bewitterte Gebrauchsklassen geeignet; Fichte ist zudem schlecht tränkbar, sodass auch eine Kesseldruckimprägnierung (KDI) nur begrenzt eindringt.",
+    "schritt4DasBiologische": "Schritt 4: Das biologische Dogma des Holzschutzes",
+    "baulichKonstruktiveVorsorgeHat": "Baulich-konstruktive Vorsorge hat ausnahmslos Vorrang vor chemischem Holzschutz!",
+    "nachDin68800Sind": "Nach DIN 68800 sind bauliche Maßnahmen vorrangig; in GK 0 sind keine vorbeugenden chemischen Maßnahmen vorgesehen, und in Aufenthaltsräumen soll chemischer Holzschutz vermieden werden. Holzschutzmittel sind Biozidprodukte (Verordnung (EU) Nr. 528/2012)."
+  },
+  "werte": {
+    "holzschutzKriterienAusblenden": "▲ Holzschutz-Kriterien ausblenden",
+    "formelnInteraktiveEinstufungsschritteSch": "▼ Formeln & interaktive Einstufungsschritte (Schritt für Schritt)"
+  },
+  "daten": {
+    "getGK": {
+      "gk": "GK 4",
+      "name": "Erd- oder Süßwasserkontakt",
+      "risks": "Fäulnispilze (Weichfäule), holzzerstörende Moderfäule, Larven.",
+      "recos": "Einsatz von Kiefer kesseldruckimprägniert (KD) oder extrem dauerhaften Harthölzern wie Robinie (Resistenzklasse 1)."
+    },
+    "getGK_2": {
+      "gk": "GK 3.2",
+      "name": "Außenbereich, voll bewittert mit Wasserspeicherung",
+      "risks": "Regenüberfeuchtung, Pilzbefall (Weiß-/Braunfäule), Rissbildung.",
+      "recos": "Konstruktiver Holzschutz unerlässlich (Hirnholzversiegelung, Ablaufschlitze), Douglasie / Lärche (Klasse 3) Kernholz nur für mäßige Beanspruchung."
+    },
+    "getGK_3": {
+      "gk": "GK 2",
+      "name": "Unter Dach, vor Regen geschützt, aber zeitweise feucht",
+      "risks": "Pilze (Bluringe/Hausfäulnis) sowie Hausbock/Nagekäfer.",
+      "recos": "Bauteile kontrollierbar halten, feuchtesteuernde Lasuren, Nadelholz Kernholzart ohne Imprägnierung möglich."
+    },
+    "getGK_4": {
+      "gk": "GK 1",
+      "name": "Innenbereich, trocken, aber ohne kontrollierte Heizung",
+      "risks": "Insektenbefall (Hausbocklarven), keine Pilzgefahr (da u < 20%).",
+      "recos": "Wahl von Kiefer/Fichte Kernholz ist vollkommen ausreichend. Keine chemische Behandlung nötig."
+    },
+    "getGK_5": {
+      "gk": "GK 0",
+      "name": "Innenbereich, ständig trocken (beheiztes Gebäude)",
+      "risks": "Keine Gefährdung durch Pilze oder Insekten.",
+      "recos": "Vorbeugender chemischer Holzschutz ist in GK 0 nach DIN 68800 nicht erforderlich und soll unterbleiben (Vorrang baulicher Maßnahmen; DIN 68800 ist eine Norm, kein Gesetz). Konstruktiver Standard genügt."
+    },
+    "TimberDurabilitySimulator.woodSuitability": [
+      {
+        "name": "Robinie (Scheinakazie)",
+        "classification": "Dauerhaftigkeitsklasse 1-2 (Dauerhaft)",
+        "gk4": "Sehr gut geeignet",
+        "gk3": "Sehr gute Wahl"
+      },
+      {
+        "name": "Eiche (Kernholz)",
+        "classification": "Dauerhaftigkeitsklasse 2 (Dauerhaft)",
+        "gk4": "Eingeschränkt geeignet",
+        "gk3": "Sehr gut geeignet"
+      },
+      {
+        "name": "Lärche / Douglasie",
+        "classification": "Dauerhaftigkeitsklasse 3-4 (Mäßig dauerhaft)",
+        "gk4": "Nicht geeignet",
+        "gk3": "Geeignet bei freiem Wasserablass"
+      },
+      {
+        "name": "Fichte",
+        "classification": "Dauerhaftigkeitsklasse 4 (Wenig dauerhaft)",
+        "gk4": "Ungenügend",
+        "gk3": "Nur mit tiefem Chemie-Holzschutz"
+      }
+    ]
+  }
+}

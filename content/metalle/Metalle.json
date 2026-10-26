@@ -1,0 +1,214 @@
+{
+  "texte": {
+    "materialLehrpfadMetalleIm": "Material-Lehrpfad: Metalle im Bauwesen",
+    "wechselnSieNahtlosZwischen": "Wechseln Sie nahtlos zwischen den drei Säulen der Baustofflehre (Basis, Anwendung und Alterung):",
+    "t1BaustoffKennwerte": "1. Baustoff-Kennwerte",
+    "physikalischeEigenschaftenSchmelzpunktLe": "Physikalische Eigenschaften, Schmelzpunkt & Legierungen der Metalle.",
+    "t2MechanikPraxis": "2. Mechanik & Praxis",
+    "plattenrechnerKontaktkorrosionsPrüfungHe": "Plattenrechner, Kontaktkorrosions-Prüfung & Herstellerübersicht (Produkte mit Leistungserklärung und CE-Kennzeichnung nach BauPVO (EU) 2024/3110).",
+    "t3Dauerhaftigkeit": "3. Dauerhaftigkeit",
+    "galvanischeZellenKorrosionsartenSchutz": "Galvanische Zellen, Korrosionsarten & Schutz nach DIN EN ISO 12944.",
+    "metalleImBauwesen": "Metalle im Bauwesen",
+    "metalleInsbBaustahlEdelstahl": "Metalle (insb. Baustahl, Edelstahl, Aluminium) zeichnen sich durch hohe Tragfähigkeit und Duktilität aus. In diesem Modul werden Festigkeiten, Spannungs-Dehnungs-Linien und Legierungskennwerte behandelt.",
+    "metalleKennwerte": "Metalle & Kennwerte",
+    "materialAuswählen": "Material auswählen",
+    "nebenBaustahlWerdenIm": "Neben Baustahl werden im Bauwesen zahlreiche weitere Metalle eingesetzt, insbesondere für die Gebäudehülle (Fassaden, Dächer), die Haustechnik und für spezielle architektonische Anforderungen. Die Wahl des Metalls hängt von Anforderungen an Festigkeit, Gewicht, Korrosionsbeständigkeit und Optik ab.",
+    "metallAuswählen": "Metall auswählen",
+    "korrosionsverhaltenWiderstand": "Korrosionsverhalten & Widerstand",
+    "korrosionsschutzVerhaltensmaßnahmen": "Korrosionsschutz & Verhaltensmaßnahmen",
+    "typischeEinsatzbereiche": "Typische Einsatzbereiche",
+    "vergleichDerPhysikalischenEigenschaften": "Vergleich der physikalischen Eigenschaften",
+    "dichteKgM": "Dichte [kg/m³]",
+    "eModulGpa": "E-Modul [GPa]",
+    "wärmeleitfWMk": "Wärmeleitf. [W/(mK)]"
+  },
+  "werte": {
+    "zinkTitanzink": "Zink / Titanzink",
+    "anwendungsbeispielWärmedehnungVonFassade": "Anwendungsbeispiel: Wärmedehnung von Fassadenprofilen im Vergleich",
+    "wärmedehnzahlenAlsRichtwerteHerstelleran": "Wärmedehnzahlen als Richtwerte (Herstellerangaben maßgebend)",
+    "aluminiumprofileDehnenSichDoppelt": "Aluminiumprofile dehnen sich doppelt so stark wie Stahl: Fest- und Gleitpunkte sowie Dehnfugen sind entsprechend zu planen. Bei Mischkonstruktionen Alu/Stahl entstehen sonst Zwängungen."
+  },
+  "daten": {
+    "METALS_DATA": [
+      {
+        "name": "Aluminium",
+        "symbol": "Al",
+        "density": 2700,
+        "eModul": 70000,
+        "thermalConductivity": 235,
+        "meltingPoint": 660,
+        "corrosionBehavior": "Bildet an der Luft spontan eine dichte, transparente Oxidschicht (Al₂O₃, 5–20 nm), die im neutralen pH-Bereich (pH 4,5–8,5) passivierend wirkt. Stark gefährdet bei direktem Kontakt mit edleren Metallen (Kupfer, Edelstahl) unter Feuchtigkeit (Bimetallkorrosion) sowie in chloridreicher Meeresluft (Lochfraß). Im stark alkalischen Milieu von frischem Zementmörtel oder Beton (pH > 12,5) löst sich die Oxidschicht stürmisch unter Freisetzung von brennbarem Wasserstoffgas auf.",
+        "corrosionProtection": "Künstliche Verstärkung der Oxidschicht durch Eloxieren (Anodisieren, 15–25 µm Schichtdicke) oder hochwertige Pulverbeschichtung. Bei Einbau in feuchtes Mauerwerk oder Kontakt mit edleren Metallen ist zwingend eine elektrische und stoffliche Trennung (EPDM-Dichtscheiben, Isolierhülsen, Folien) vorzusehen.",
+        "applications": "Fassadenunterkonstruktionen, Fenster- und Pfosten-Riegel-Profile, Trapezbleche, Leichtbautragwerke (DIN EN 1999)",
+        "description": "Leichtmetall mit kubisch-flächenzentriertem (kfz) Kristallgitter und hervorragender Kaltumformbarkeit ohne Tieftemperaturversprödung. Aufgrund des geringen E-Moduls (ca. 1/3 von Baustahl) sind tragende Profile formsteifer zu dimensionieren. Die hohe Wärmeleitung erfordert konsequente thermische Entkopplung an Fassadenkonsolen zur Vermeidung von Wärmebrücken."
+      },
+      {
+        "name": "Kupfer",
+        "symbol": "Cu",
+        "density": 8960,
+        "eModul": 130000,
+        "thermalConductivity": 380,
+        "meltingPoint": 1085,
+        "corrosionBehavior": "Thermodynamisch edles Metall (U₀ = +0,34 V) mit überragender atmosphärischer Witterungsbeständigkeit. Oxidiert zunächst zu dunkelbraunem Kupfer(I)-oxid und bildet über Jahrzehnte die charakteristische samtgrüne, unlösliche Schutzpatina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit). Aufgrund freigesetzter Kupferionen im Niederschlagswasser löst ablaufendes Wasser an nachgeschalteten unedlen Metallen (Zink, verzinkter Stahl, Alu) verheerenden Lochfraß aus (Fließregel!).",
+        "corrosionProtection": "Im Freien durch die Eigenschutzpatina wartungsfrei. Zwingend vorgeschrieben ist die Einhaltung der Fließregel: Kupfer niemals oberhalb von Zink oder verzinktem Stahl verbauen. Befestigungen nur mit Kupfer- oder Edelstahlschrauben (A4) ausführen.",
+        "applications": "Stehfalzdächer, architektonische Fassadenbekleidungen, Dachentwässerung (Rinnen, Fallrohre), Haustechnik (Trinkwasserleitungen)",
+        "description": "Halbedelmetall mit kubisch-flächenzentriertem Gitter, sehr guter plastischer Verformbarkeit auch bei Frost und höchster thermischer Leitfähigkeit. Bildet über Jahre eine schützende, unverwechselbare grüne Patina mit extrem hoher Lebensdauer von über 100 Jahren."
+      },
+      {
+        "name": "Stahl (Baustahl)",
+        "symbol": "Fe + C",
+        "density": 7850,
+        "eModul": 210000,
+        "thermalConductivity": 50,
+        "meltingPoint": 1530,
+        "corrosionBehavior": "Ferritisch-perlitische Grundmatrix mit hoher Korrosionsanfälligkeit in feuchter sauerstoffreicher Atmosphäre. Der entstehende Rost (Eisenoxidhydrat) besitzt das bis zu 6-fache Volumen des Stahls, haftet nicht dicht an und blättert kontinuierlich ab, sodass der tragende Querschnitt ohne Schutzschicht stetig abgetragen wird (ca. 20–100 µm/Jahr je nach Korrosivitätskategorie).",
+        "corrosionProtection": "Aktiver kathodischer Opferschutz durch Feuerverzinken (Zinkschicht opfert sich an Fehlstellen). Passive Barrieresysteme durch Mehrschicht-Flüssigbeschichtungen (Zinkstaub-Grundierung, Eisenglimmer-Zwischenschicht, PU-Decklack nach DIN EN ISO 12944). Im Stahlbetonbau: Selbstpassivierung durch die stark alkalische Porenlösung des Zementsteins (pH > 12,5).",
+        "applications": "Skelettbauten, Weitspannteile, Industriehallen, Brücken, Fachwerke, Betonstahl (B500) im Massivbau",
+        "description": "Raumzentriert-kubische (krz) Eisen-Kohlenstoff-Legierung (C < 0,22 %) mit unübertroffenem Verhältnis aus hoher Festigkeit, Steifigkeit und ausgeprägtem plastischen Fließvermögen. Bildet die statische Grundlage des modernen Ingenieurbaus nach Eurocode 3."
+      },
+      {
+        "name": "Edelstahl (Nichtrostender Stahl)",
+        "symbol": "Fe + Cr + Ni",
+        "density": 7900,
+        "eModul": 200000,
+        "thermalConductivity": 15,
+        "meltingPoint": 1450,
+        "corrosionBehavior": "Durch Legierung mit mindestens 10,5 % Chrom (in der Praxis 17–19 % Cr und 8–12 % Ni) bildet sich bei Sauerstoffkontakt spontan eine nanometerdünne, selbsterneuernde Passivschicht aus Chromoxid (Cr₂O₃). In Gegenwart von Chloriden (Tausalz, Meeresluft, Schwimmbäder) besteht jedoch bei unzureichender Legierungswahl akute Gefahr von mikroskopischem Lochfraß und unter Zugspannung von katastrophaler Spannungsrisskorrosion (SCC).",
+        "corrosionProtection": "Genaue Abstimmung der Werkstoffgüte auf die Umgebungsbedingungen: A2 (1.4301, CRC II) für normale Innen- und Landatmosphäre; A4 (1.4404 mit Molybdän, CRC III) für mäßig chloridbelastete Außenatmosphäre, z. B. küstennah; CRC V (z. B. 1.4529, 1.4565) für Straßentunnel mit Tausalzeintrag und für nicht regelmäßig gereinigte, sicherheitsrelevante Bauteile in Hallenschwimmbädern.; hochlegierte Sonderstähle wie 1.4529 (CRC IV/V) zwingend für Hallenschwimmbäder. Vermeidung von Kontakt mit gewöhnlichem ferritischen Eisenstaub (Fremdrost).",
+        "applications": "Fassadenbefestigungen, tragende Unterkonstruktionen, Glasfassadenanker, Geländer, Schwimmbaddächer, Bewehrung in hochbelasteten Bauteilen",
+        "description": "Austenitischer Hochleistungsstahl mit dichter kubisch-flächenzentrierter Atompackung. Hohe Zähigkeit ohne Tieftemperaturversprödung, sehr wartungsarm und repräsentativ. Geringe Wärmeleitung (15 W/(m·K)) minimiert Wärmebrücken."
+      },
+      {
+        "name": "Zink / Titanzink",
+        "symbol": "Zn / Zn-Ti",
+        "density": 7140,
+        "eModul": 100000,
+        "thermalConductivity": 110,
+        "meltingPoint": 420,
+        "corrosionBehavior": "Bildet unter atmosphärischer Einwirkung von CO₂ und Feuchte eine dichte, mattgraue Deckschicht aus basischem Zinkcarbonat (2 ZnCO₃ · 3 Zn(OH)₂). Bei stehender Nässe und behinderter Belüftung (z.B. mangelhafte Hinterlüftung an Dachunterseiten) bildet sich stattdessen mehliger, zerstörerischer Weißrost (Zinkhydroxid). Extrem empfindlich gegenüber saurem Regen und herablaufendem kupferhaltigem Wasser.",
+        "corrosionProtection": "Zwingend vollflächig hinterlüftete Dach- und Wandkonstruktionen ausführen (Verhinderung von Tauwasserstau an der Blechunterseite). Strukturierte Trennlagen einsetzen. Niemals in Fließrichtung unterhalb von Kupfer anordnen (Fließregel)..",
+        "applications": "Dacheindeckungen (Stehfalztechnik), Rinnen, Fallrohre, Gaubenbekleidungen, Feuerverzinkungsschichten für Tragwerksstahl",
+        "description": "Im Hochbau vor allem als Titanzink nach DIN EN 988 (Feinzink mit geringen Anteilen Titan und Kupfer zur Begrenzung des Kriechverhaltens) eingesetzt. Sehr gut falzbar, erfordert jedoch aufgrund der hohen Wärmedehnung (22 × 10⁻⁶/K) sorgfältig dimensionierte Schiebehafte."
+      },
+      {
+        "name": "Blei",
+        "symbol": "Pb",
+        "density": 11340,
+        "eModul": 16000,
+        "thermalConductivity": 35,
+        "meltingPoint": 327,
+        "corrosionBehavior": "Sehr gute Witterungsbeständigkeit durch dichte, unlösliche Deckschichten aus basischem Bleicarbonat. Korrodiert jedoch rasch bei Einwirkung schwacher flüchtiger organischer Säuren (z.B. Essigsäure- und Gerbsäuredämpfe aus feuchtem Eichenholz) oder stark alkalisch bei direktem Kontakt mit frischem Kalk- und Zementmörtel.",
+        "corrosionProtection": "Kein atmosphärischer Anstrich nötig. Direkten Kontakt zu gerbstoffreichem Holz (Eiche, Lärche) oder frischem Zementmörtel durch Bitumentrennlagen oder PE-Folien verhindern. Bei Sanierungen Umwelt- und Arbeitsschutzmaßnahmen (TRGS 505) streng einhalten.",
+        "applications": "Passgenaue Verwahrungen und Anschlüsse an Schornsteinen, Kehlen, Wandanschlüssen, Strahlenschutzräume, Schallschutz",
+        "description": "Sehr schweres, extrem duktiles Schwermetall (Dichte 11.340 kg/m³). Da seine Rekristallisationstemperatur unter Raumtemperatur liegt, verfestigt es sich nicht beim Kaltverformen und lässt sich händisch an komplexe Ziegeldurchdringungen anpassen. Wird aus Umweltschutzgründen heute oft durch elastomere Bleiersatzbänder substituiert."
+      },
+      {
+        "name": "Titan",
+        "symbol": "Ti",
+        "density": 4500,
+        "eModul": 105000,
+        "thermalConductivity": 22,
+        "meltingPoint": 1668,
+        "corrosionBehavior": "Unter allen Baumetallen die höchste Korrosionsbeständigkeit. Bildet spontan eine chemisch extrem inerte, festhaftende Rutil-Oxidschicht (TiO₂), die das Metall selbst gegen konzentrierte Meersalzlösungen, Industrieabgase und aggressive Säuren vollkommen resistent macht.",
+        "corrosionProtection": "Vollkommen wartungsfrei; keinerlei Beschichtungen oder Schutzmaßnahmen erforderlich. Selbst bei mechanischen Kratzern passiviert sich die Stelle im Kontakt mit Luftsauerstoff binnen Millisekunden neu.",
+        "applications": "Monumentale Architekturfassaden, extrem beanspruchte Dächer repräsentativer Kulturbauten, korrosionskritische Spezialverankerungen",
+        "description": "Leichtmetall (hdp) mit hoher Festigkeit im Verhältnis zur Dichte und der geringsten Wärmedehnzahl der üblichen Fassadenmetalle (α ≈ 8,6 · 10⁻⁶/K). Das verringert thermische Wellenbildung bei großformatigen Bekleidungen."
+      },
+      {
+        "name": "Wetterfester Baustahl (Cortenstahl)",
+        "symbol": "Fe + Cu + Cr",
+        "density": 7850,
+        "eModul": 210000,
+        "thermalConductivity": 48,
+        "meltingPoint": 1510,
+        "corrosionBehavior": "Niedriglegierter Baustahl (S355J2W nach DIN EN 10025-5) mit Zusätzen von Kupfer, Chrom und Nickel. Durch den zyklischen Wechsel von Befeuchtung (Regen) und rascher Abtrocknung bildet sich binnen 1,5 bis 3 Jahren eine außergewöhnlich dichte, fest haftende Sperrschicht (Edelrost-Patina) aus dotiertem α-FeOOH, die den Sauerstoffzutritt blockiert.",
+        "corrosionProtection": "Selbstschützend ohne Anstrich – jedoch nur bei freier Bewitterung und vollständigen Trocknungsphasen! In dauerfeuchten Zonen (Erdreich, Spritzwasser mit Tausalz) rostet Cortenstahl wie normaler Baustahl durch und muss mit Schutzanstrichen versehen werden.",
+        "applications": "Skulpturale Fassaden, Brückenbauwerke ohne Korrosionsschutzbeschichtung, Landschaftsarchitektur, Lärmschutzwände",
+        "description": "Konstruktionsstahl mit warmtoniger, lebendiger Rostoptik und hohem Fließgrenzwert (fy = 355 N/mm²). Spart über die Lebensdauer erhebliche Neubeschichtungskosten ein, erfordert jedoch eine konstruktive Ableitung des ablaufenden Rostwassers während der Patinierungsphase."
+      },
+      {
+        "name": "Messing (CuZn-Legierung)",
+        "symbol": "Cu + Zn",
+        "density": 8470,
+        "eModul": 105000,
+        "thermalConductivity": 120,
+        "meltingPoint": 900,
+        "corrosionBehavior": "Gute allgemeine Witterungsbeständigkeit an normaler Stadt- und Landluft. Gefahr von Entzinkung in chloridreichem Wasser (Herauslösen des Zinks hinterlässt brüchigen Kupferschwamm) sowie von katastrophaler Spannungsrisskorrosion (Saisonrissigkeit) unter Zugspannung in ammoniakalischer Umgebung (Fäulnisgase, Stallluft).",
+        "corrosionProtection": "Für korrosionskritische Anwendungen entzinkungsbeständige Sonderlegierungen (DZR-Messing nach DIN EN 12164) verwenden. Vor der Montage spannungsarm glühen, um Eigenspannungen abzubauen.",
+        "applications": "Tür- und Fensterbeschläge, Sanitärarmaturen, hochpräzise Fassadenbefestigungen, Innenausbau",
+        "description": "Zweiphasiger (α + β)-Kupfer-Zink-Mischkristall mit hervorragender Zerspanbarkeit, hoher Härte und edler goldener Optik. Widerstandsfähig gegen mechanischen Verschleiß."
+      },
+      {
+        "name": "Gusseisen mit Kugelgraphit (Sphäroguss)",
+        "symbol": "Fe + C + Si (GJS)",
+        "density": 7200,
+        "eModul": 170000,
+        "thermalConductivity": 36,
+        "meltingPoint": 1180,
+        "corrosionBehavior": "Deutlich beständiger gegen atmosphärische und bodenmechanische Korrosion als unlegierter Stahl. Bildet im Erdreich eine stabile, festhaftende Oxidhaut. Graphitkugeln wirken als Barrieren gegen das Fortschreiten mikroskopischer Risse.",
+        "corrosionProtection": "Für Tiefbauanwendungen werkseitig mit Zinküberzügen und Epoxidharz- bzw. Polyurethanbeschichtungen nach DIN EN 545 geschützt. Schachtabdeckungen erhalten bituminöse Tauchlackierungen.",
+        "applications": "Schachtabdeckungen und Entwässerungsrinnen (DIN EN 124, Klassen D400 bis F900), Druckrohre für Trink- und Abwasser, Brückenlager, historische Rekonstruktion tragender Stützen",
+        "description": "Gusswerkstoff, bei dem freier Kohlenstoff durch Magnesiumbehandlung in kugelförmiger Graphitgestalt (Nodules) erstarrt. Weist im Gegensatz zum spröden Lamellengrauguss hohe Duktilität (Bruchdehnung bis 18 %) und Weist im Gegensatz zum spröden Lamellengrauguss hohe Duktilität (Bruchdehnung bis 18 %) auf; die Schwingungsdämpfung ist geringer als bei Lamellengrauguss, aber höher als bei Stahl. auf."
+      }
+    ],
+    "Metalle.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "l_0 = 6{,}0\\,\\text{m},\\; \\Delta T = 80\\,\\text{K}\\;(-20\\,^\\circ\\text{C} \\text{ bis } +60\\,^\\circ\\text{C Oberfläche})",
+        "erklaerung": "Dunkle, besonnte Fassadenbekleidung."
+      },
+      {
+        "titel": "2. Aluminium",
+        "formel": "\\Delta l = 6000 \\cdot 24 \\cdot 10^{-6} \\cdot 80 \\approx 11{,}5\\,\\text{mm}",
+        "erklaerung": "α_Al ≈ 24 · 10⁻⁶/K."
+      },
+      {
+        "titel": "3. Stahl",
+        "formel": "\\Delta l = 6000 \\cdot 12 \\cdot 10^{-6} \\cdot 80 \\approx 5{,}8\\,\\text{mm}",
+        "erklaerung": "α_St ≈ 12 · 10⁻⁶/K."
+      },
+      {
+        "titel": "4. Titan",
+        "formel": "\\Delta l = 6000 \\cdot 8{,}6 \\cdot 10^{-6} \\cdot 80 \\approx 4{,}1\\,\\text{mm}",
+        "erklaerung": "α_Ti ≈ 8,6 · 10⁻⁶/K."
+      }
+    ],
+    "Metalle.literatur": [
+      "Bargel, H.-J.; Schulze, G. (2018): Werkstoffkunde (12. Auflage, Springer Vieweg)",
+      "Roos, E.; Maile, K. (2017): Werkstoffkunde für Ingenieure (Springer Vieweg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Metalle.regelwerke": [
+      {
+        "title": "DIN EN ISO 8044:2020-08 (Korrosion von Metallen und Legierungen - Grundbegriffe)"
+      },
+      {
+        "title": "DIN EN 1993-1-4:2015-10 + A2:2021-02 mit DIN EN 1993-1-4/NA:2020-11 (Eurocode 3, Teil 1-4: Nichtrostende Stähle; bauaufsichtlich eingeführt); 2. Generation DIN EN 1993-1-4:2026-04 mit NA:2026-11 noch nicht eingeführt"
+      },
+      {
+        "title": "DIN EN 1999-1-1:2014-03 mit DIN EN 1999-1-1/NA:2021-03 (Eurocode 9: Aluminiumtragwerke; bauaufsichtlich eingeführt); 2. Generation DIN EN 1999-1-1:2024-11 noch nicht eingeführt"
+      },
+      {
+        "title": "DIN EN ISO 12944-1:2019-01 ff. (Teile 1 bis 9; Beschichtungsstoffe - Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)"
+      },
+      {
+        "title": "DIN EN 10025-5:2019-10 (Warmgewalzte Erzeugnisse aus wetterfesten Baustählen)"
+      },
+      {
+        "title": "DIN EN 988:1996-08 (Zink und Zinklegierungen - Festlegungen für gewalzte Flacherzeugnisse für das Bauwesen)"
+      }
+    ],
+    "Metalle.formeln": [
+      {
+        "formel": "\\Delta l = l_0 \\cdot \\alpha_T \\cdot \\Delta T",
+        "erklaerung": "Thermische Längendehnung: l0 = Ausgangslänge, alpha_T = Längenausdehnungskoeffizient (z.B. Stahl: 12·10⁻⁶ 1/K, Aluminium: 24·10⁻⁶ 1/K, Zink (rein): ca. 30·10⁻⁶ 1/K, Titanzink (DIN EN 988, in Walzrichtung): ca. 22·10⁻⁶ 1/K), Delta T = Temperaturdifferenz.",
+        "quelle": "DIN EN 1993-1-1 / Physik"
+      },
+      {
+        "formel": "U_0 = E_{\\text{Kathode}} - E_{\\text{Anode}} > 0",
+        "erklaerung": "Elektrochemische Potentialdifferenz bei Kontaktkorrosion (galvanisches Element) zweier unterschiedlicher Metalle im wässrigen Elektrolyten.",
+        "quelle": "DIN EN ISO 8044"
+      }
+    ]
+  }
+}

@@ -10,6 +10,8 @@ import {
   Layers 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/literatur/Literatur.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface LiteratureEntry {
   id: string;
@@ -31,347 +33,347 @@ const LITERATURE_DATABASE: LiteratureEntry[] = [
   // 1. Allgemeine Baustoffkunde & Werkstoffwissenschaften
   {
     id: 'wendehorst_baustoffkunde',
-    title: 'Wendehorst Baustoffkunde',
-    subtitle: 'Grundlagen, Baustoffe, Oberflächenschutz und Werkstoffprüfung',
-    authors: 'Neroth, G.; Vollenschaar, D. (Hrsg.); begründet von R. Wendehorst',
-    yearOrEdition: '27. Auflage 2011',
-    publisher: 'Vieweg+Teubner, Wiesbaden',
+    title: inhalt.werte.wendehorstBaustoffkunde,
+    subtitle: inhalt.werte.grundlagenBaustoffeOberflächenschutzUnd,
+    authors: inhalt.werte.nerothGVollenschaarD,
+    yearOrEdition: inhalt.werte.t27Auflage2011,
+    publisher: inhalt.werte.viewegTeubnerWiesbaden,
     category: 'allgemein',
-    categoryLabel: 'Allgemeine Baustoffkunde',
+    categoryLabel: inhalt.werte.allgemeineBaustoffkunde,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-8351-0225-5',
+    isbnOrDoi: inhalt.werte.isbn97838351,
     url: 'https://link.springer.com/book/10.1007/978-3-8348-9919-4',
-    description: 'Das unangefochtene Grundlagen- und Nachschlagewerk im deutschsprachigen Bauingenieur- und Architekturstudium. Behandelt systematisch chemisch-physikalische Grundlagen, Strukturprüfungen, Rohstoffe, Herstellungsverfahren sowie das Verformungs- und Alterungsverhalten aller gebräuchlichen Baumaterialien.',
+    description: inhalt.werte.dasUnangefochteneGrundlagenUnd,
     coreTopics: ['Bindemittel', 'Beton', 'Metalle', 'Kunststoffe', 'Holzwerkstoffe', 'Prüfverfahren', 'Dauerhaftigkeit']
   },
   {
     id: 'scholz_baustoffkenntnis',
     title: 'Baustoffkenntnis',
-    subtitle: 'Eigenschaften, Herstellung, Normung und Einsatzgebiete im Hoch- und Tiefbau',
-    authors: 'Scholz, W. (Begr.); fortgeführt von Knoblauch, H. u. a.',
-    yearOrEdition: '18. Auflage 2016',
-    publisher: 'Bundesanzeiger Verlag (Werner), Köln',
+    subtitle: inhalt.werte.eigenschaftenHerstellungNormungUnd,
+    authors: inhalt.werte.scholzWBegrFortgeführt,
+    yearOrEdition: inhalt.werte.t18Auflage2016,
+    publisher: inhalt.werte.bundesanzeigerVerlagWernerKöln,
     category: 'allgemein',
-    categoryLabel: 'Allgemeine Baustoffkunde',
+    categoryLabel: inhalt.werte.allgemeineBaustoffkunde2,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-8462-0538-9',
-    description: 'Enzyklopädisches Lehr- und Nachschlagewerk mit stark analytischem Fokus. Herausragende Detailtiefe bei der Gefügecharakterisierung mineralischer und metallischer Werkstoffe, normativen Prüfzeugnissen und bauaufsichtlichen Zulassungen.',
-    coreTopics: ['Natursteine', 'Gesteinskörnungen', 'Kalk & Gips', 'Bitumen & Asphalt', 'Gefügekunde', 'Werkstoffprüfung']
+    isbnOrDoi: inhalt.werte.isbn97838462,
+    description: inhalt.werte.enzyklopädischesLehrUndNachschlagewerk,
+    coreTopics: ['Natursteine', 'Gesteinskörnungen', 'Kalk & Gips', inhalt.werte.bitumenAsphalt, 'Gefügekunde', 'Werkstoffprüfung']
   },
   {
     id: 'bendix_baustoffkunde',
-    title: 'Physik im Bauwesen',
-    subtitle: 'Ein einführendes Lehrbuch mit Beispielen',
-    authors: 'Krawietz, R.; Heimke, W.',
+    title: inhalt.werte.physikImBauwesen,
+    subtitle: inhalt.werte.einEinführendesLehrbuchMit,
+    authors: inhalt.werte.krawietzRHeimkeW,
     yearOrEdition: '2021',
-    publisher: 'Carl Hanser Verlag, München',
+    publisher: inhalt.werte.carlHanserVerlagMünchen,
     category: 'allgemein',
-    categoryLabel: 'Allgemeine Baustoffkunde',
+    categoryLabel: inhalt.werte.allgemeineBaustoffkunde3,
     badge: 'Grundlagenlehrbuch',
-    isbnOrDoi: 'ISBN 978-3-446-46487-2',
-    description: 'Einführendes Lehrbuch zu den physikalischen Grundlagen des Bauwesens mit Rechenbeispielen – geeignet als Brücke zwischen Physik-Grundlagen und Baustoffkunde/Bauphysik.',
+    isbnOrDoi: inhalt.werte.isbn9783446,
+    description: inhalt.werte.einführendesLehrbuchZuDen,
     coreTopics: ['Mechanik', 'Wärme', 'Feuchte', 'Akustik', 'Rechenbeispiele']
   },
   {
     id: 'bargel_werkstoffkunde',
     title: 'Werkstoffkunde',
-    subtitle: 'Metalle, Keramiken, Polymere und Verbundwerkstoffe',
-    authors: 'Bargel, H. J., Schulze, G. (Hrsg.)',
-    yearOrEdition: '12. Auflage 2018',
-    publisher: 'Springer Vieweg, Berlin/Heidelberg',
+    subtitle: inhalt.werte.metalleKeramikenPolymereUnd,
+    authors: inhalt.werte.bargelHJSchulze,
+    yearOrEdition: inhalt.werte.t12Auflage2018,
+    publisher: inhalt.werte.springerViewegBerlinHeidelberg,
     category: 'allgemein',
-    categoryLabel: 'Allgemeine Baustoffkunde',
+    categoryLabel: inhalt.werte.allgemeineBaustoffkunde4,
     badge: 'Forschung & Vertiefung',
-    isbnOrDoi: 'ISBN 978-3-662-48628-3',
+    isbnOrDoi: inhalt.werte.isbn9783662,
     url: 'https://link.springer.com/book/10.1007/978-3-662-48629-0',
-    description: 'Das klassische werkstoffwissenschaftliche Standardwerk der Ingenieurwissenschaften. Liefert das atomare und kristallographische Tiefenverständnis (Gitterfehler, Versetzungsmechanismen, Phasendiagramme, Diffusionsvorgänge).',
+    description: inhalt.werte.dasKlassischeWerkstoffwissenschaftlicheS,
     coreTopics: ['Kristallographie', 'Eisen-Kohlenstoff-Diagramm', 'Bruchmechanik', 'Gefügelehre', 'Wärmebehandlung']
   },
 
   // 2. Betontechnologie, Zement & Bindemittel
   {
     id: 'locher_zement',
-    title: 'Zement – Grundlagen der Herstellung und Verwendung',
-    subtitle: 'Chemische Reaktionen, Klinkermineralogie und Erhärtungskinetik',
-    authors: 'Locher, F. W.',
+    title: inhalt.werte.zementGrundlagenDerHerstellung,
+    subtitle: inhalt.werte.chemischeReaktionenKlinkermineralogieUnd,
+    authors: inhalt.werte.locherFW,
     yearOrEdition: '2000',
-    publisher: 'Verlag Bau+Technik, Düsseldorf',
+    publisher: inhalt.werte.verlagBauTechnikDüsseldorf,
     category: 'beton',
-    categoryLabel: 'Beton, Zement & Bindemittel',
+    categoryLabel: inhalt.werte.betonZementBindemittel,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-7640-0400-2',
-    description: 'Das Referenzwerk schlechthin zur Zementchemie im deutschsprachigen Raum. Erläutert detailliert den Brennprozess, die Entstehung der Klinkerphasen (Alit, Belit, Aluminat, Ferrit), thermodynamische Reaktionsgleichungen und Sulfatträgersteuerungen.',
-    coreTopics: ['Klinkerphasen C3S/C2S', 'Hydratation', 'Erhärtungskinetik', 'Sulfatwiderstand', 'Zementchemie']
+    isbnOrDoi: inhalt.werte.isbn97837640,
+    description: inhalt.werte.dasReferenzwerkSchlechthinZur,
+    coreTopics: [inhalt.werte.klinkerphasenC3sC2s, 'Hydratation', 'Erhärtungskinetik', 'Sulfatwiderstand', 'Zementchemie']
   },
   {
     id: 'stark_dauerhaftigkeit_beton',
-    title: 'Dauerhaftigkeit von Beton',
-    subtitle: 'Umweltbeanspruchungen, Schadensmechanismen und Schutzkonzepte',
-    authors: 'Stark, J., Wicht, B.',
-    yearOrEdition: '2. Auflage 2013',
-    publisher: 'Springer Vieweg, Berlin/Heidelberg',
+    title: inhalt.werte.dauerhaftigkeitVonBeton,
+    subtitle: inhalt.werte.umweltbeanspruchungenSchadensmechanismen,
+    authors: inhalt.werte.starkJWichtB,
+    yearOrEdition: inhalt.werte.t2Auflage2013,
+    publisher: inhalt.werte.springerViewegBerlinHeidelberg2,
     category: 'beton',
-    categoryLabel: 'Beton, Zement & Bindemittel',
+    categoryLabel: inhalt.werte.betonZementBindemittel2,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-642-35277-5',
+    isbnOrDoi: inhalt.werte.isbn9783642,
     url: 'https://link.springer.com/book/10.1007/978-3-642-35298-0',
-    description: 'Tiefgründige wissenschaftliche Analyse aller schädigenden Transport- und Korrosionsprozesse im Zementstein und an der Bewehrung: Carbonatisierung, Chlorideindringung, Frost-Tausalz-Angriff, Alkali-Kieselsäure-Reaktion (AKR) und Säurekorrosion.',
+    description: inhalt.werte.tiefgründigeWissenschaftlicheAnalyseAlle,
     coreTopics: ['Karbonatisierung', 'Chloridkorrosion', 'AKR', 'Frost-Tau-Widerstand', 'Instandsetzung']
   },
   {
     id: 'beton_kalender',
-    title: 'Beton-Kalender (Jahresreihen)',
-    subtitle: 'Schwerpunkte: Dauerhaftigkeit, Hochleistungsbetone, Bemessung nach Eurocode 2',
-    authors: 'Bergmeister, K., Fingerloos, F., Wörner, J.-D. (Hrsg.)',
-    yearOrEdition: 'Jährlich neu erscheinende Ausgabe (Ernst & Sohn)',
-    publisher: 'Wilhelm Ernst & Sohn, Berlin',
+    title: inhalt.werte.betonKalenderJahresreihen,
+    subtitle: inhalt.werte.schwerpunkteDauerhaftigkeitHochleistungs,
+    authors: inhalt.werte.bergmeisterKFingerloosF,
+    yearOrEdition: inhalt.werte.jährlichNeuErscheinendeAusgabe,
+    publisher: inhalt.werte.wilhelmErnstSohnBerlin,
     category: 'beton',
-    categoryLabel: 'Beton, Zement & Bindemittel',
+    categoryLabel: inhalt.werte.betonZementBindemittel3,
     badge: 'Bemessungspraxis',
     url: 'https://www.ernst-und-sohn.de/beton-kalender',
-    description: 'Zweibändiges Handbuch für Tragwerksplanung und Materialprüfung im Massivbau. Führt neueste Normentwicklungen, Zulassungen und Bemessungshilfsmittel für Stahlbeton, Spannbeton und Faserbeton praxisnah zusammen.',
+    description: inhalt.werte.zweibändigesHandbuchFürTragwerksplanung,
     coreTopics: ['Eurocode 2', 'Expositionsklassen', 'Rissbreitenbeschränkung', 'UHPC', 'Fertigteile']
   },
   {
     id: 'vdz_zement_taschenbuch',
     title: 'Zement-Taschenbuch',
-    subtitle: 'Praxiswissen Zement und Beton',
-    authors: 'Verein Deutscher Zementwerke (VDZ e.V.)',
-    yearOrEdition: 'Erscheinungsverlauf 1949–2008 (letzte Ausgabe: 51. Ausgabe 2008)',
-    publisher: 'Verlag Bau+Technik, Düsseldorf',
+    subtitle: inhalt.werte.praxiswissenZementUndBeton,
+    authors: inhalt.werte.vereinDeutscherZementwerkeVdz,
+    yearOrEdition: inhalt.werte.erscheinungsverlauf19492008Letzte,
+    publisher: inhalt.werte.verlagBauTechnikDüsseldorf2,
     category: 'beton',
-    categoryLabel: 'Beton, Zement & Bindemittel',
+    categoryLabel: inhalt.werte.betonZementBindemittel4,
     badge: 'Standardwerk',
-    description: 'Das kompakte Taschenbuch der deutschen Zementindustrie für Ingenieurbüro und Baustelle. Enthält Tabellen zu Zementarten (CEM I bis CEM VI), Klinkereffizienz, Frischbetoneigenschaften, Sieblinienberechnungen und Nachbehandlungsmethoden.',
+    description: inhalt.werte.dasKompakteTaschenbuchDer,
     coreTopics: ['CEM-Klassifikation', 'Wasserzementwert', 'Sieblinien', 'Konsistenzprüfung', 'Nachbehandlung']
   },
 
   // 3. Metallbau, Stahl & Korrosionsschutz
   {
     id: 'stahlbau_kalender',
-    title: 'Stahlbau-Kalender (Jahresreihen)',
-    subtitle: 'Schwerpunkte: Eurocode 3, Werkstoffauswahl, Schweißverbindungen und Korrosionsschutz',
-    authors: 'Kuhlmann, U. (Hrsg.)',
-    yearOrEdition: 'Jährliche Ausgabe (Ernst & Sohn)',
-    publisher: 'Wilhelm Ernst & Sohn, Berlin',
+    title: inhalt.werte.stahlbauKalenderJahresreihen,
+    subtitle: inhalt.werte.schwerpunkteEurocode3Werkstoffauswahl,
+    authors: inhalt.werte.kuhlmannUHrsg,
+    yearOrEdition: inhalt.werte.jährlicheAusgabeErnstSohn,
+    publisher: inhalt.werte.wilhelmErnstSohnBerlin2,
     category: 'stahl',
-    categoryLabel: 'Stahl, Metalle & Korrosionsschutz',
+    categoryLabel: inhalt.werte.stahlMetalleKorrosionsschutz,
     badge: 'Bemessungspraxis',
     url: 'https://www.ernst-und-sohn.de/stahlbau-kalender',
-    description: 'Das zentrale Standardnachschlagewerk für den Stahlbau. Behandelt neben Stabilitätstheorie und Verbindungen die metallurgischen Eigenschaften hochfester Stähle, Schweißzusatzwerkstoffe, Ermüdungsfestigkeiten und Schichtdicken nach DIN EN ISO 12944.',
-    coreTopics: ['DIN EN 1993', 'DIN EN 10025', 'Wetterfeste Stähle', 'Feuerverzinken', 'Ermüdung']
+    description: inhalt.werte.dasZentraleStandardnachschlagewerkFür,
+    coreTopics: ['DIN EN 1993', inhalt.werte.dinEn10025, inhalt.werte.wetterfesteStähle, 'Feuerverzinken', 'Ermüdung']
   },
   {
     id: 'iser_merkblaetter',
-    title: 'Dokumentationen & Merkblätter Nichtrostender Stahl',
-    subtitle: 'Korrosionsverhalten, Werkstoffwahl und Verarbeitung von Edelstahl Rostfrei',
-    authors: 'Informationsstelle Edelstahl Rostfrei (ISER)',
-    yearOrEdition: 'Aktuelle Fachpublikationen (ISER Düsseldorf)',
-    publisher: 'ISER, Düsseldorf',
+    title: inhalt.werte.dokumentationenMerkblätterNichtrostender,
+    subtitle: inhalt.werte.korrosionsverhaltenWerkstoffwahlUndVerar,
+    authors: inhalt.werte.informationsstelleEdelstahlRostfreiIser,
+    yearOrEdition: inhalt.werte.aktuelleFachpublikationenIserDüsseldorf,
+    publisher: inhalt.werte.iserDüsseldorf,
     category: 'stahl',
-    categoryLabel: 'Stahl, Metalle & Korrosionsschutz',
+    categoryLabel: inhalt.werte.stahlMetalleKorrosionsschutz2,
     badge: 'Standardwerk',
     url: 'https://www.edelstahl-rostfrei.de/',
-    description: 'Umfassende wissenschaftlich fundierte Richtlinien und Merkblätter zur Vermeidung von Bimetall- und Lochfraßkorrosion, Auswahl der Korrosionswiderstandsklassen (CRC I bis V nach DIN EN 1993-1-4) und sachgerechten Oberflächenpassivierung.',
-    coreTopics: ['Edelstahl A2 / A4', 'CRC-Klassen', 'Lochfraßindex PREN', 'Spannungsrisskorrosion', 'Fließregel']
+    description: inhalt.werte.umfassendeWissenschaftlichFundierteRicht,
+    coreTopics: [inhalt.werte.edelstahlA2A4, 'CRC-Klassen', inhalt.werte.lochfraßindexPren, 'Spannungsrisskorrosion', 'Fließregel']
   },
 
   // 4. Holzbau & Nachwachsende Baustoffe
   {
     id: 'neuhaus_holzbau',
-    title: 'Ingenieurholzbau – Grundlagen, Bemessung nach Eurocode 5',
-    subtitle: 'Holzwerkstoffe, Holzschutz, Verbindungen und Tragsysteme',
+    title: inhalt.werte.ingenieurholzbauGrundlagenBemessungNach,
+    subtitle: inhalt.werte.holzwerkstoffeHolzschutzVerbindungenUnd,
     authors: 'Neuhaus, H.',
-    yearOrEdition: 'Neuauflage 2026 (Vorauflage 4. Aufl. 2017)',
-    publisher: 'Springer Vieweg, Wiesbaden',
+    yearOrEdition: inhalt.werte.neuauflage2026Vorauflage4,
+    publisher: inhalt.werte.springerViewegWiesbaden,
     category: 'holz',
-    categoryLabel: 'Holzbau & Biogene Werkstoffe',
+    categoryLabel: inhalt.werte.holzbauBiogeneWerkstoffe,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-658-44966-7',
-    description: 'Umfassendes Lehrbuch über das anisotrope Trag- und Verformungsverhalten von Vollholz, Brettschichtholz (BSH) und Brettsperrholz (CLT). Behandelt Feuchtequellung, Kriechverformungen (k_def), Modifikationsbeiwerte (k_mod) und baulichen Holzschutz nach DIN 68800.',
-    coreTopics: ['Anisotropie', 'Eurocode 5 (DIN EN 1995)', 'Holzschutz DIN 68800', 'Brettsperrholz CLT', 'Kriechen']
+    isbnOrDoi: inhalt.werte.isbn9783658,
+    description: inhalt.werte.umfassendesLehrbuchÜberDas,
+    coreTopics: ['Anisotropie', inhalt.werte.eurocode5DinEn, inhalt.werte.holzschutzDin68800, inhalt.werte.brettsperrholzClt, 'Kriechen']
   },
   {
     id: 'infodienst_holz_schriften',
-    title: 'Informationsdienst Holz – Schriftenreihe',
-    subtitle: 'Konstruktionsdetails, Brand- und Schallschutz, Hybride Bauweisen',
-    authors: 'Informationsverein Holz e. V. / Holzbau Deutschland Institut',
-    yearOrEdition: 'Umfangreiche Fachschriftenreihe (Laufend aktualisiert)',
-    publisher: 'Informationsdienst Holz, Berlin',
+    title: inhalt.werte.informationsdienstHolzSchriftenreihe,
+    subtitle: inhalt.werte.konstruktionsdetailsBrandUndSchallschutz,
+    authors: inhalt.werte.informationsvereinHolzEV,
+    yearOrEdition: inhalt.werte.umfangreicheFachschriftenreiheLaufendAkt,
+    publisher: inhalt.werte.informationsdienstHolzBerlin,
     category: 'holz',
-    categoryLabel: 'Holzbau & Biogene Werkstoffe',
+    categoryLabel: inhalt.werte.holzbauBiogeneWerkstoffe2,
     badge: 'Bemessungspraxis',
     url: 'https://informationsdienst-holz.de/',
-    description: 'Die bedeutendste deutschsprachige Schriftenreihe für Architekten und Holzbauingenieure. Bietet geprüfte Schall- und Brandschutzaufbauten (REI 30–90), Holz-Beton-Verbunddecken und mehrgeschossige Holzbau-Details.',
-    coreTopics: ['Brandschutz im Holzbau', 'Schallschutz', 'Mehrgeschossiger Holzbau', 'Holz-Beton-Verbund']
+    description: inhalt.werte.dieBedeutendsteDeutschsprachigeSchriften,
+    coreTopics: [inhalt.werte.brandschutzImHolzbau, 'Schallschutz', inhalt.werte.mehrgeschossigerHolzbau, 'Holz-Beton-Verbund']
   },
 
   // 5. Mauerwerksbau, Mörtel & mineralische Bindemittel
   {
     id: 'mauerwerk_kalender',
-    title: 'Mauerwerk-Kalender (Jahresreihen)',
-    subtitle: 'Schwerpunkte: Eurocode 6, Steine, Mörtel, Befestigungstechnik und Bauwerkserhaltung',
-    authors: 'Jäger, W. (Hrsg.)',
-    yearOrEdition: 'Jährliche Ausgabe (Ernst & Sohn)',
-    publisher: 'Wilhelm Ernst & Sohn, Berlin',
+    title: inhalt.werte.mauerwerkKalenderJahresreihen,
+    subtitle: inhalt.werte.schwerpunkteEurocode6Steine,
+    authors: inhalt.werte.jägerWHrsg,
+    yearOrEdition: inhalt.werte.jährlicheAusgabeErnstSohn2,
+    publisher: inhalt.werte.wilhelmErnstSohnBerlin3,
     category: 'mauerwerk',
-    categoryLabel: 'Mauerwerk, Steine & Mörtel',
+    categoryLabel: inhalt.werte.mauerwerkSteineMörtel,
     badge: 'Bemessungspraxis',
     url: 'https://www.ernst-und-sohn.de/mauerwerk-kalender',
-    description: 'Das maßgebliche Nachschlagewerk für den Mauerwerksbau. Behandelt Mauerziegel, Kalksandsteine, Porenbeton und Leichtbetonsteine sowie Dünnbett-, Normal- und Kalkmörtel inklusive seismischer Nachweise nach DIN EN 1996.',
+    description: inhalt.werte.dasMaßgeblicheNachschlagewerkFür,
     coreTopics: ['Eurocode 6', 'Mauerziegel', 'Kalksandstein', 'Porenbeton', 'Dünnbettmörtel', 'Schubfestigkeit']
   },
 
   // 6. Bauphysik, Energieeffizienz & Bauwerkserhaltung
   {
     id: 'wendehorst_bauphysik',
-    title: 'Lohmeyer Praktische Bauphysik',
-    subtitle: 'Eine Einführung mit Berechnungsbeispielen',
-    authors: 'Willems, W. M. u. a.',
-    yearOrEdition: 'Auflage 2024',
-    publisher: 'Springer Vieweg, Wiesbaden',
+    title: inhalt.werte.lohmeyerPraktischeBauphysik,
+    subtitle: inhalt.werte.eineEinführungMitBerechnungsbeispielen,
+    authors: inhalt.werte.willemsWMU,
+    yearOrEdition: inhalt.werte.auflage2024,
+    publisher: inhalt.werte.springerViewegWiesbaden2,
     category: 'bauphysik',
-    categoryLabel: 'Bauphysik & Energieeffizienz',
+    categoryLabel: inhalt.werte.bauphysikEnergieeffizienz,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-658-42603-3',
+    isbnOrDoi: inhalt.werte.isbn97836582,
     url: 'https://link.springer.com/book/10.1007/978-3-658-42604-0',
-    description: 'Etabliertes Lehrbuch der Bauphysik mit Berechnungsbeispielen zu Wärme-, Feuchte-, Schall- und Brandschutz.',
-    coreTopics: ['U-Wert-Berechnung', 'DIN 4108', 'Glaser-Diagramm', 'GEG', 'Schallschutz DIN 4109', 'Wärmebrücken']
+    description: inhalt.werte.etabliertesLehrbuchDerBauphysik,
+    coreTopics: ['U-Wert-Berechnung', 'DIN 4108', 'Glaser-Diagramm', 'GEG', inhalt.werte.schallschutzDin4109, 'Wärmebrücken']
   },
 
   // 7. Nachhaltigkeit, Ökobilanzierung & Zirkuläres Bauen
   {
     id: 'hillebrandt_kreislauf',
-    title: 'Atlas Recycling – Gebäude als Materialressource',
-    subtitle: 'Manuale zur zirkulären Architektur, Fügetechnik und Demontierbarkeit',
-    authors: 'Hillebrandt, A., Riegler-Floors, P., Rosen, A., Seggewies, J.-K.',
+    title: inhalt.werte.atlasRecyclingGebäudeAls,
+    subtitle: inhalt.werte.manualeZurZirkulärenArchitektur,
+    authors: inhalt.werte.hillebrandtARieglerFloors,
     yearOrEdition: '2018',
-    publisher: 'Edition Detail, München',
+    publisher: inhalt.werte.editionDetailMünchen,
     category: 'nachhaltigkeit',
-    categoryLabel: 'Nachhaltigkeit & Zirkuläres Bauen',
+    categoryLabel: inhalt.werte.nachhaltigkeitZirkuläresBauen,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-95553-415-8',
-    description: 'Das wegweisende Fachbuch zum kreislaufgerechten Konstruieren. Liefert konkrete Konstruktionsdetails für sortenrein trennbare, trockene Fügungen, Materialpässe, Urban-Mining-Strategien und quantitative Recyclingpotenziale im Hochbau.',
-    coreTopics: ['Urban Mining', 'Design for Deconstruction', 'Sortenreinheit', 'Materialpass', 'Graue Energie']
+    isbnOrDoi: inhalt.werte.isbn978395553,
+    description: inhalt.werte.dasWegweisendeFachbuchZum,
+    coreTopics: [inhalt.werte.urbanMining, inhalt.werte.designForDeconstruction, 'Sortenreinheit', 'Materialpass', inhalt.werte.graueEnergie]
   },
   {
     id: 'essig_oekologische_baustoffkunde',
-    title: 'Zertifizierungssysteme für Gebäude',
-    subtitle: 'Nachhaltigkeit bewerten – internationaler Systemvergleich – Zertifizierung und Ökonomie',
-    authors: 'Ebert, T.; Eßig, N.; Hauser, G.',
+    title: inhalt.werte.zertifizierungssystemeFürGebäude,
+    subtitle: inhalt.werte.nachhaltigkeitBewertenInternationalerSys,
+    authors: inhalt.werte.ebertTEßigN,
     yearOrEdition: '2010',
-    publisher: 'Edition Detail, München',
+    publisher: inhalt.werte.editionDetailMünchen2,
     category: 'nachhaltigkeit',
-    categoryLabel: 'Nachhaltigkeit & Zirkuläres Bauen',
+    categoryLabel: inhalt.werte.nachhaltigkeitZirkuläresBauen2,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-920034-46-1',
-    description: 'Vergleich internationaler Zertifizierungssysteme für nachhaltige Gebäude (u. a. DGNB, BNB, LEED, BREEAM) mit Bewertungsmethodik und ökonomischen Aspekten; Stand 2010, aktuelle Systemversionen gesondert prüfen.',
+    isbnOrDoi: inhalt.werte.isbn9783920034,
+    description: inhalt.werte.vergleichInternationalerZertifizierungss,
     coreTopics: ['DGNB', 'BNB', 'LEED', 'BREEAM', 'Systemvergleich']
   },
 
   // 8. Glasbau, Fenstertechnik & Fassaden (Neu)
   {
     id: 'feldmann_kasper_glasbau',
-    title: 'Glas für tragende Bauteile',
-    authors: 'Feldmann, M., Kasper, R., Langosch, K.',
+    title: inhalt.werte.glasFürTragendeBauteile,
+    authors: inhalt.werte.feldmannMKasperR,
     yearOrEdition: '2012',
-    publisher: 'Werner Verlag, Köln',
+    publisher: inhalt.werte.wernerVerlagKöln,
     category: 'allgemein',
-    categoryLabel: 'Glas- & Fenstertechnik',
+    categoryLabel: inhalt.werte.glasFenstertechnik,
     badge: 'Bemessungspraxis',
-    isbnOrDoi: 'ISBN 978-3-8041-1626-9',
-    description: 'Das massgebliche Praxishandbuch für konstruktiven Glasbau in Deutschland. Erläutert das Teilsicherheitskonzept der DIN 18008, Bemessungsregeln für Floatglas, ESG und VSG, Pendelschlagprüfungen nach DIN EN 12600 sowie Klimalasten bei Isoliergläsern.',
-    coreTopics: ['DIN 18008', 'ESG / VSG / TVG', 'Pendelschlagprüfung', 'Klimalasten', 'Absturzsicherung']
+    isbnOrDoi: inhalt.werte.isbn97838041,
+    description: inhalt.werte.dasMassgeblichePraxishandbuchFür,
+    coreTopics: ['DIN 18008', inhalt.werte.esgVsgTvg, 'Pendelschlagprüfung', 'Klimalasten', 'Absturzsicherung']
   },
   {
     id: 'wurm_glass_structures',
-    title: 'Glass Structures – Design and Construction of Self-Supporting Skins',
-    subtitle: 'Konstruktive Glasarchitektur, Punkthalterungen und Schalenstrukturen',
+    title: inhalt.werte.glassStructuresDesignAnd,
+    subtitle: inhalt.werte.konstruktiveGlasarchitekturPunkthalterun,
     authors: 'Wurm, J.',
     yearOrEdition: '2007',
-    publisher: 'Birkhäuser, Basel',
+    publisher: inhalt.werte.birkhäuserBasel,
     category: 'allgemein',
-    categoryLabel: 'Glas- & Fenstertechnik',
+    categoryLabel: inhalt.werte.glasFenstertechnik2,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-7643-7608-6',
-    description: 'Internationales Grundlagenwerk zur Konstruktionslehre von Ganzglaskonstruktionen, Punkthaltern, Glasrippen und strukturell verklebten Structural-Glazing-Fassaden (SSGS).',
-    coreTopics: ['Structural Glazing', 'Glasfassaden', 'Schalenstrukturen', 'Punkthalterungen']
+    isbnOrDoi: inhalt.werte.isbn97837643,
+    description: inhalt.werte.internationalesGrundlagenwerkZurKonstruk,
+    coreTopics: [inhalt.werte.structuralGlazing, 'Glasfassaden', 'Schalenstrukturen', 'Punkthalterungen']
   },
 
   // 9. Straßen- & Verkehrswegebau (Neu)
   {
     id: 'wendehorst_strassenbau',
-    title: 'Straßenbau, Straßenbautechnik',
-    authors: 'Velske, S.; Mentlein, H.; Eymann, P.',
+    title: inhalt.werte.straßenbauStraßenbautechnik,
+    authors: inhalt.werte.velskeSMentleinH,
     yearOrEdition: '2009',
-    publisher: 'Werner Verlag, Köln',
+    publisher: inhalt.werte.wernerVerlagKöln2,
     category: 'allgemein',
-    categoryLabel: 'Verkehrswegebau & Infrastruktur',
+    categoryLabel: inhalt.werte.verkehrswegebauInfrastruktur,
     badge: 'Standardwerk',
-    isbnOrDoi: 'ISBN 978-3-8041-3879-7',
-    description: 'Lehrbuch zu Straßenbau und Straßenbautechnik (Oberbau, Bauweisen, Baustoffe); Stand 2009 – für die Dimensionierung ist die aktuelle Fassung der RStO maßgebend.',
+    isbnOrDoi: inhalt.werte.isbn978380412,
+    description: inhalt.werte.lehrbuchZuStraßenbauUnd,
     coreTopics: ['Oberbau', 'Asphaltbauweisen', 'Betonbauweisen', 'Baustoffe', 'RStO']
   },
 
   // 10. Fachzeitschriften & Internationale Journale
   {
     id: 'journal_beton_stahlbetonbau',
-    title: 'Beton- und Stahlbetonbau',
-    subtitle: 'Internationale Fachzeitschrift für Massivbau, Werkstoffe und Instandsetzung',
-    authors: 'Wissenschaftlicher Beirat (Herausgeber)',
-    yearOrEdition: 'Monatlich erscheinende Zeitschrift (Ernst & Sohn)',
-    publisher: 'Wilhelm Ernst & Sohn, Berlin',
+    title: inhalt.werte.betonUndStahlbetonbau,
+    subtitle: inhalt.werte.internationaleFachzeitschriftFürMassivba,
+    authors: inhalt.werte.wissenschaftlicherBeiratHerausgeber,
+    yearOrEdition: inhalt.werte.monatlichErscheinendeZeitschriftErnst,
+    publisher: inhalt.werte.wilhelmErnstSohnBerlin4,
     category: 'journale',
-    categoryLabel: 'Fachzeitschriften & Journale',
+    categoryLabel: inhalt.werte.fachzeitschriftenJournale,
     badge: 'Fachjournal',
-    isbnOrDoi: 'ISSN 0005-9900',
+    isbnOrDoi: inhalt.werte.issn00059900,
     url: 'https://onlinelibrary.wiley.com/journal/14371006',
-    description: 'Führendes deutschsprachiges Fachorgan für den gesamten Betonbau. Veröffentlicht peer-reviewte wissenschaftliche Artikel zu Carbonbeton, rezyklierten Gesteinskörnungen, CO₂-reduzierten Zementen und monumentalen Brückenprojekten.',
-    coreTopics: ['Peer-Reviewed', 'Massivbauforschung', 'CO2-armer Beton', 'Zustandsanalyse', 'Monitoring']
+    description: inhalt.werte.führendesDeutschsprachigesFachorganFür,
+    coreTopics: ['Peer-Reviewed', 'Massivbauforschung', inhalt.werte.co2ArmerBeton, 'Zustandsanalyse', 'Monitoring']
   },
   {
     id: 'journal_nbau',
-    title: 'nbau. Nachhaltig Bauen',
-    subtitle: 'Fachzeitschrift für zirkuläres Planen, Ökobilanzen und Dekarbonisierung',
-    authors: 'Redaktion & Expertenbeirat nbau',
-    yearOrEdition: 'Zweimonatlich (Ernst & Sohn / Wiley)',
-    publisher: 'Ernst & Sohn / Wiley, Berlin',
+    title: inhalt.werte.nbauNachhaltigBauen,
+    subtitle: inhalt.werte.fachzeitschriftFürZirkuläresPlanen,
+    authors: inhalt.werte.redaktionExpertenbeiratNbau,
+    yearOrEdition: inhalt.werte.zweimonatlichErnstSohnWiley,
+    publisher: inhalt.werte.ernstSohnWileyBerlin,
     category: 'journale',
-    categoryLabel: 'Fachzeitschriften & Journale',
+    categoryLabel: inhalt.werte.fachzeitschriftenJournale2,
     badge: 'Fachjournal',
     url: 'https://www.nbau.org/',
-    description: 'Zukunftsweisende Fachzeitschrift für den Wandel zur Kreislaufwirtschaft im Bausektor. Diskutiert Re-Use-Projekte, ESG-Kriterien, Gebäuderessourcenpässe und politische Normenrahmen.',
+    description: inhalt.werte.zukunftsweisendeFachzeitschriftFürDen,
     coreTopics: ['Zirkularität', 'ESG-Reporting', 'Sekundärrohstoffe', 'Taxonomie', 'Klimaneutralität']
   },
   {
     id: 'journal_ccr',
-    title: 'Cement and Concrete Research',
-    subtitle: 'The Premier International Journal on Cementitious Materials',
-    authors: 'Scrivener, K. et al. (Editors-in-Chief)',
-    yearOrEdition: 'Monatlich peer-reviewed (Elsevier)',
-    publisher: 'Elsevier Science, Oxford',
+    title: inhalt.werte.cementAndConcreteResearch,
+    subtitle: inhalt.werte.thePremierInternationalJournal,
+    authors: inhalt.werte.scrivenerKEtAl,
+    yearOrEdition: inhalt.werte.monatlichPeerReviewedElsevier,
+    publisher: inhalt.werte.elsevierScienceOxford,
     category: 'journale',
-    categoryLabel: 'Fachzeitschriften & Journale',
+    categoryLabel: inhalt.werte.fachzeitschriftenJournale3,
     badge: 'Fachjournal',
-    isbnOrDoi: 'ISSN 0008-8846',
+    isbnOrDoi: inhalt.werte.issn00088846,
     url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research',
-    description: 'Das international einflussreichste wissenschaftliche Journal der Zement- und Betonforschung (Impact Factor > 10). Schwerpunkte: Klinkerreduzierte Bindemittel (LC3-Zemente), atomare Simulation von C-S-H-Phasen und chemomechanische Schädigung.',
-    coreTopics: ['Global Impact', 'LC3-Zemente', 'C-S-H-Nanostruktur', 'Alkali-Activated Materials', 'Microscopy']
+    description: inhalt.werte.dasInternationalEinflussreichsteWissensc,
+    coreTopics: [inhalt.werte.globalImpact, 'LC3-Zemente', 'C-S-H-Nanostruktur', inhalt.werte.alkaliActivatedMaterials, 'Microscopy']
   },
   {
     id: 'journal_materials_and_structures',
-    title: 'Materials and Structures (RILEM)',
-    subtitle: 'International Union of Laboratories and Experts in Construction Materials',
-    authors: 'RILEM International',
-    yearOrEdition: 'Erscheint kontinuierlich (Springer Nature)',
-    publisher: 'Springer, Dordrecht',
+    title: inhalt.werte.materialsAndStructuresRilem,
+    subtitle: inhalt.werte.internationalUnionOfLaboratories,
+    authors: inhalt.werte.rilemInternational,
+    yearOrEdition: inhalt.werte.erscheintKontinuierlichSpringerNature,
+    publisher: inhalt.werte.springerDordrecht,
     category: 'journale',
-    categoryLabel: 'Fachzeitschriften & Journale',
+    categoryLabel: inhalt.werte.fachzeitschriftenJournale4,
     badge: 'Fachjournal',
-    isbnOrDoi: 'ISSN 1359-5997',
+    isbnOrDoi: inhalt.werte.issn13595997,
     url: 'https://link.springer.com/journal/11527',
-    description: 'Offizielles Journal des internationalen Baustoffprüfverbandes RILEM. Setzt globale Maßstäbe bei standardisierten Prüfverfahren, rheologischen Messungen und Zerstörungsfreier Prüfung (ZfP) an Bauwerken.',
-    coreTopics: ['RILEM Recommendations', 'ZfP-Prüfmethoden', 'Rheologie', 'Langzeitbeständigkeit']
+    description: inhalt.werte.offiziellesJournalDesInternationalen,
+    coreTopics: [inhalt.werte.rilemRecommendations, 'ZfP-Prüfmethoden', 'Rheologie', 'Langzeitbeständigkeit']
   }
 ];
 
@@ -381,13 +383,13 @@ export default function Literatur() {
 
   const categories = [
     { key: 'alle', label: 'Alle Werke' },
-    { key: 'allgemein', label: 'Allg. Baustoffkunde' },
-    { key: 'beton', label: 'Beton & Zement' },
-    { key: 'stahl', label: 'Stahl & Metalle' },
-    { key: 'holz', label: 'Holz & Biogen' },
+    { key: 'allgemein', label: inhalt.werte.allgBaustoffkunde },
+    { key: 'beton', label: inhalt.werte.betonZement },
+    { key: 'stahl', label: inhalt.werte.stahlMetalle },
+    { key: 'holz', label: inhalt.werte.holzBiogen },
     { key: 'mauerwerk', label: 'Mauerwerk' },
     { key: 'bauphysik', label: 'Bauphysik' },
-    { key: 'nachhaltigkeit', label: 'Nachhaltigkeit & LCA' },
+    { key: 'nachhaltigkeit', label: inhalt.werte.nachhaltigkeitLca },
     { key: 'journale', label: 'Fachzeitschriften' }
   ];
 
@@ -414,11 +416,8 @@ export default function Literatur() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Library className="text-shiraz" size={24} /> Literatur & Standardwerke der Baustofflehre
-            </h2>
-            <p className="text-xs text-home-grau mt-1">
-              Kuratierte wissenschaftliche Fachbibliothek, Standardlehrbücher, Normenkommentare und internationale Peer-Reviewed Journale
-            </p>
+              <Library className="text-shiraz" size={24} /><MdText text={inhalt.texte.literaturStandardwerkeDerBaustofflehre} /></h2>
+            <p className="text-xs text-home-grau mt-1"><MdText text={inhalt.texte.kuratierteWissenschaftlicheFachbibliothe} /></p>
           </div>
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 bg-shiraz/10 text-shiraz rounded-full text-xs font-bold border border-shiraz/20">
@@ -428,12 +427,7 @@ export default function Literatur() {
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Fundierte Ingenieurentscheidungen und wissenschaftliche Studienleistungen basieren auf verifizierten Quellen. 
-            Diese kuratierte Fachliteraturübersicht deckt die fundamentalen Lehr- und Nachschlagewerke der 
-            deutschsprachigen Baustoffkunde ab – vom universitären Grundlagenklassiker <em>Wendehorst</em> über 
-            monografische Zementchemie bis hin zu internationalen High-Impact-Fachjournalen für Masterstudium und Promotion.
-          </p>
+          <p><MdText text={inhalt.texte.fundierteIngenieurentscheidungenUndWisse} /></p>
         </div>
 
         {/* Suchfeld und Kategoriefilter */}
@@ -442,7 +436,7 @@ export default function Literatur() {
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-home-grau" size={18} />
             <input 
               type="text"
-              placeholder="Suchen Sie nach Titel, Autor (z. B. Vollenschaar, Locher), Verlag, Stichwort (z. B. C-S-H, Eurocode, EPD)..."
+              placeholder={inhalt.werte.suchenSieNachTitel}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-11 pr-4 py-2.5 bg-off-white border border-home-grau/30 rounded-xl text-sm text-text-main placeholder-home-grau focus:outline-none focus:ring-2 focus:ring-shiraz/40 focus:border-shiraz transition-all"
@@ -480,10 +474,8 @@ export default function Literatur() {
       {filteredLiterature.length === 0 ? (
         <div className="bg-white p-12 rounded-2xl shadow-sm border border-home-grau/30 text-center">
           <BookOpen className="text-home-grau mx-auto mb-3 opacity-50" size={40} />
-          <h3 className="text-base font-bold text-text-main">Keine Literaturtreffer gefunden</h3>
-          <p className="text-sm text-home-grau mt-1">
-            Versuchen Sie einen allgemeineren Suchbegriff oder wählen Sie &quot;Alle Werke&quot; als Kategorie.
-          </p>
+          <h3 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.keineLiteraturtrefferGefunden} /></h3>
+          <p className="text-sm text-home-grau mt-1"><MdText text={inhalt.texte.versuchenSieEinenAllgemeineren} /></p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -559,8 +551,7 @@ export default function Literatur() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="text-shiraz hover:underline font-bold flex items-center gap-1"
-                  >
-                    Verlag / Quelle <ExternalLink size={12} />
+                  ><MdText text={inhalt.texte.verlagQuelle} /><ExternalLink size={12} />
                   </a>
                 )}
               </div>
@@ -572,35 +563,24 @@ export default function Literatur() {
       {/* Zitier- & Recherchehinweise für wissenschaftliche Arbeiten */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Sparkles className="text-shiraz" size={18} />
-          Leitfaden zum wissenschaftlichen Zitieren in Bauingenieur- und Architekturarbeiten
-        </h3>
+          <Sparkles className="text-shiraz" size={18} /><MdText text={inhalt.texte.leitfadenZumWissenschaftlichenZitieren} /></h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-text-main/80">
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <CheckCircle2 size={14} className="text-shiraz" /> 1. Primärquellen & DIN-Normen
-            </h4>
-            <p className="leading-relaxed">
-              Zitieren Sie bautechnische Kenndaten (z. B. Festigkeitsklassen, Teilsicherheitsbeiwerte) bevorzugt direkt aus den aktuellen Grundnormen (Eurocodes 0 bis 9) oder den jeweiligen Produktnormen über das Portal <em>DIN Media</em>.
-            </p>
+              <CheckCircle2 size={14} className="text-shiraz" /><MdText text={inhalt.texte.t1PrimärquellenDinNormen} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.zitierenSieBautechnischeKenndaten} /></p>
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <Layers size={14} className="text-shiraz" /> 2. EPDs & Ökobilanzdaten
-            </h4>
-            <p className="leading-relaxed">
-              Für Lebenszyklusanalysen und Ökobilanzierungsnachweise (QNG, BNB, DGNB) sind Datensätze zwingend unter Angabe der Deklarationsnummer und des Gültigkeitszeitraums aus der amtlichen Datenbank <em>ÖKOBAUDAT</em> oder <em>WECOBIS</em> zu referenzieren.
-            </p>
+              <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2EpdsÖkobilanzdaten} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.fürLebenszyklusanalysenUndÖkobilanzierun} /></p>
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/25">
             <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5">
-              <BookOpen size={14} className="text-shiraz" /> 3. Zitierstandard nach DIN ISO 690
-            </h4>
-            <p className="leading-relaxed">
-              Verwenden Sie für Abschlussarbeiten ein einheitliches Zitierschema (Autor-Jahr oder numerischer Harvard-Stil) mit Angabe von Autor, Erscheinungsjahr, Buchtitel, Auflage, Verlag und Seitenzahl bei konkreten Zahlenwerten.
-            </p>
+              <BookOpen size={14} className="text-shiraz" /><MdText text={inhalt.texte.t3ZitierstandardNachDin} /></h4>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.verwendenSieFürAbschlussarbeiten} /></p>
           </div>
         </div>
       </div>
@@ -610,47 +590,12 @@ export default function Literatur() {
         wikipedia={[
           { title: 'Fachliteratur', url: 'https://de.wikipedia.org/wiki/Fachliteratur' },
           { title: 'Baustoff', url: 'https://de.wikipedia.org/wiki/Baustoff' },
-          { title: 'Wendehorst Bautechnische Zahlentafeln', url: 'https://de.wikipedia.org/wiki/Wendehorst_Bautechnische_Zahlentafeln' }
+          { title: inhalt.werte.wendehorstBautechnischeZahlentafeln, url: 'https://de.wikipedia.org/wiki/Wendehorst_Bautechnische_Zahlentafeln' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Bergmeister, K.; Fingerloos, F.; Wörner, J.-D. (Hrsg.): Beton-Kalender (Ernst & Sohn, aktuelle Jahresausgaben)',
-          'Locher, F. W.: Zement - Grundlagen der Herstellung und Verwendung (Verlag Bau+Technik)',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)',
-          'Kuhlmann, U. (Hrsg.): Stahlbau-Kalender (Wilhelm Ernst & Sohn, Berlin)',
-          'Hillebrandt, A. et al.: Atlas Recycling – Gebäude als Materialressource (Edition Detail)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen' },
-          { title: 'DIN ISO 690:2013-10 (Titelangaben und Zitierung; ersetzt DIN 1505-2)' },
-          { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)' }
-        ]}
-        weblinks={[
-          { title: 'SpringerLink – Bautechnische Fachbücher & Journale', url: 'https://link.springer.com/' },
-          { title: 'Wiley Online Library – Beton- und Stahlbetonbau', url: 'https://onlinelibrary.wiley.com/' },
-          { title: 'ScienceDirect – Cement and Concrete Research', url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research' },
-          { title: 'ÖKOBAUDAT – BMWSB Ökobilanzierungsdatenbank', url: 'https://www.oekobaudat.de/' },
-          { title: 'WECOBIS – Ökologisches Baustoffinformationssystem', url: 'https://www.wecobis.de/' },
-          { title: 'ift Rosenheim – Fachpublikationen, Richtlinien & Forschungsberichte', url: 'https://www.ift-rosenheim.de/' },
-          { title: 'FGSV Verlag – Regelwerke & Tagungsbände für Straßen- und Verkehrswesen', url: 'https://www.fgsv-verlag.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'X_d = \\eta \\cdot \\frac{X_k}{\\gamma_M}',
-            erklaerung: 'Allgemeine Bemessungsgleichung nach Eurocode (DIN EN 1990): Überführung tabellierter charakteristischer Materialkennwerte X_k (5%-Fraktilwerte aus der bautechnischen Fachliteratur) in rechnerische Bemessungswerte X_d mittels Teilsicherheitsbeiwert γ_M und Umrechnungsbeiwert η.',
-            quelle: 'DIN EN 1990'
-          },
-          {
-            formel: 'X_k = \\bar{x} \\cdot (1 - k_n \\cdot v_x)',
-            erklaerung: 'Statistische Ermittlung charakteristischer Werkstoffkennwerte nach DIN EN 1990 Anhang D: Mittelwert bar{x} mit Variationskoeffizient v_x und statistischem Fraktilbeiwert k_n bei unbekannter Varianz.',
-            quelle: 'DIN EN 1990 Anhang D'
-          },
-          {
-            formel: 'f_{ck} = f_{cm} - 1{,}64 \\cdot s \\quad [\\text{N/mm}^2]',
-            erklaerung: 'Berechnung der charakteristischen Zylinderdruckfestigkeit von Beton (f_ck als 5%-Fraktil) aus dem Mittelwert der Druckfestigkeit (f_cm) und der Standardabweichung s der Prüfserie.',
-            quelle: 'DIN EN 206 / DIN EN 1992-1-1'
-          }
-        ]}
+        literatur={inhalt.daten["Literatur.literatur"]}
+        regelwerke={inhalt.daten["Literatur.regelwerke"]}
+        weblinks={inhalt.daten["Literatur.weblinks"]}
+        formeln={inhalt.daten["Literatur.formeln"]}
       />
     </div>
   );

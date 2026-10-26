@@ -22,6 +22,8 @@ import { EraData, baustoffRecyclingData } from './rueckbau/daten';
 import { AktualitaetTab } from './rueckbau/AktualitaetTab';
 import { RechnerTab } from './rueckbau/RechnerTab';
 import { BaustoffrecyclingTab } from './rueckbau/BaustoffrecyclingTab';
+import inhalt from '@/content/rueckbau/Rueckbau.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Rueckbau() {
   const [activeTab, setActiveTab] = useState<'lfu_leitfaden' | 'schadstoffe' | 'baustoffrecycling' | 'rechner' | 'aktualitaet' | 'praxis'>('lfu_leitfaden');
@@ -35,182 +37,116 @@ export default function Rueckbau() {
   const [showCalculations, setShowCalculations] = useState<boolean>(false);
 
   // LfU 5-Phase selective dismantling process definitions
-  const processPhases = [
-    {
-      num: 1,
-      title: 'Bestandsaufnahme & Historische Erkundung',
-      subtitle: 'Voruntersuchung & Archivrecherche',
-      description: 'Zusammentragen von Altunterlagen (Statik, Pläne, Baugenehmigungen), Baujahr-Recherche und Analyse früherer Nutzungen (z.B. Gewerbebetriebe mit Ölen, Lösungsmitteln). Erstbegehung zur Feststellung von offensichtlich schadstoffverdächtigen Bauteilen.',
-      checklists: [
-        'Prüfung der Bauakte (Baujahr, Umbauten, Sanierungen)',
-        'Ermittlung früherer Funktionen (z.B. chemische Reinigung, Werkstatt, Zahnarzt)',
-        'Erfassen sichtbarer Schadstoffe (Leuchtstoffröhren, Kondensatoren, Asbestwellplatten)',
-        'Erste Abstimmung mit der Kreisverwaltungsbehörde (Landratsamt/kreisfreie Stadt)'
-      ],
-      lfuStandard: 'Leitfaden Kap. 2.1: Grundlage für das weitere Vorgehen ist die lückenlose Dokumentation der Nutzungsgeschichte.'
-    },
-    {
-      num: 2,
-      title: 'Schadstoffkataster & Rückbaukonzept',
-      subtitle: 'Baustoff- und Schadstoffinventar',
-      description: 'Systematische Beprobung aller fraglichen Materialien durch akkreditierte Gutachter. Erstellung eines Schadstoffkatasters nach VDI 6202 Blatt 1 sowie eines strukturierten Rückbau- und Entsorgungskonzepts, das Mengen, Schadstoffklassen und Ziel-Recycling-Anlagen festlegt.',
-      checklists: [
-        'Probenahme von Wandputzen, Fliesenklebern (Asbestverdacht) und Fugendichtungsmassen (PCB)',
-        'Quantifizierung aller schadstoffhaltigen Abfälle (Einstufung nach AVV)',
-        'Erstellung des Abbruch- und Rückbaukonzepts (Anzeige bei der Unteren Bauaufsichtsbehörde)',
-        'Ausarbeitung von Arbeits- und Sicherheitsplänen (AaS) gem. TRGS 524 / DGUV Regel 101-004'
-      ],
-      lfuStandard: 'Leitfaden Kap. 2.2: Beprobungspflicht für Lacke, Estriche, Kleber und künstliche Mineralfasern (KMF) vor Vergabe von Abbruchleistungen.'
-    },
-    {
-      num: 3,
-      title: 'Schadstoffsanierung & Entfrachtung',
-      subtitle: 'Ausbau schadstoffbelasteter Bauteile vor dem Abbruch',
-      description: 'Sämtliche Gefahrstoffe müssen staubdicht abgereiht, unter Unterdruckbedingungen ausgebaut und separat verpackt und entsorgt werden. Erst nach erfolgreicher Freigabemessung darf der mineralische Abbruch (Rohbauabbruch) beginnen, um Kreuzkontaminationen zu verhindern.',
-      checklists: [
-        'Fachgerechte Sanierung von Asbest (TRGS 519) und KMF (TRGS 521) durch zertifizierte Fachbetriebe',
-        'Separierte Verpackung (z.B. Asbest in BigBags, KMF in staubdichten Säcken)',
-        'Ausschleusen aus dem Gebäude, Vorlegen der Entsorgungsbelege (eANV für gefährliche Abfälle)',
-        'Freigabe und Staubprüfung des entfrachteten Rohbaus'
-      ],
-      lfuStandard: 'Leitfaden Kap. 3.1 & 4.1: Eine Kontamination unbelasteten Bauschutts durch Schadstoffe beim Abbruch ist durch strikte Trennung zu verhindern.'
-    },
-    {
-      num: 4,
-      title: 'Sortenreiner Rückbau & Demontage',
-      subtitle: 'Der selektive Rohbau-Rückbau',
-      description: 'Der tatsächliche mineralische Abbruch erfolgt "von oben nach unten" und "von innen nach außen". Die Getrennthaltungspflichten der Gewerbeabfallverordnung (GewAbfV) greifen hier strikt: Ziegel, Beton, Holz, Metalle und Kunststoffe werden getrennt erfasst.',
-      checklists: [
-        'Abbruch in koordinierten Phasen: Zuerst Dachstuhl (Holz), dann nichttragendes Mauerwerk, zuletzt Stahlbetontragwerk',
-        'Strikte stoffliche Trennung unmittelbar an der Abbruchstelle (keine Mischcontainer!)',
-        'Gewährleistung von Staub- und Lärmschutz (Wasserberieselung zum Binden feiner Partikel)',
-        'Erhalt von recyclingfähigem, hochwertigem Bauschutt zur Aufbereitung in RC-Großanlagen'
-      ],
-      lfuStandard: 'Leitfaden Kap. 4.2: Demontage von Fensterrahmen, Gipskarton und Bitumenbahnen ist zwingend vor dem Betonabbruch auszuführen.'
-    },
-    {
-      num: 5,
-      title: 'Aufbereitung, Verwertung & Deponierung',
-      subtitle: 'Umgang mit den Abbruchstoffen',
-      description: 'Der gewonnene mineralische Bauschutt wird zu güteüberwachtem Recycling-Baustoff (RC-Baustoffe) gebrochen und gesiebt. Nicht verwertbare Reststoffe (z.B. Gipsstaub, stark kontaminierte Mineralik) werden ordnungsgemäß auf Deponien (DK 0 bis DK III) entsorgt.',
-      checklists: [
-        'Transport mit Entsorgungsnachweisen an zugelassene stationäre oder mobile Recyclinganlagen',
-        'Prüfung der Einbaufähigkeit nach der neuen Ersatzbaustoffverordnung (EBV) 2023',
-        'Deponierung unlösbarer mineralischer Verbundstoffe unter Einhaltung der Grenzwerte der DepV',
-        'Abschließende Dokumentation und Einreichen des Verwertungsnachweises bei den Aufsichtsbehörden'
-      ],
-      lfuStandard: 'Leitfaden Kap. 5 & 6: Bevorzugung von gütegesichertem RC-Material im Straßen- und Erdbau. Letzte Instanz ist die Deponie.'
-    }
-  ];
+  const processPhases = inhalt.daten["Rueckbau.processPhases"];
 
   // Era-based pollutant matrix data (LfU-specific & TRGS rules)
   const eraPollutants: Record<'pre1970' | 'era1970_1990' | 'post1990', EraData> = {
     pre1970: {
-      title: 'Bis 1970 (Hochrisiko-Epoche)',
-      description: 'In dieser Phase gab es kaum Einschränkungen für asbesthaltige Baustoffe, Steinkohlenteer-Produkte und hochgiftige Holzschutzmittel. Viele Schadstoffe sind unsichtbar im Putz, Estrich, Bitumen oder in Fugendichtungen verbaut.',
-      dominantMaterials: ['Naturwerksteine, Ziegelmauerwerk', 'Bimsbeton, Schlackenbeton als Füllstoffe', 'Gerade und genietete Stahlträger', 'Erste Generation von Stahlbetonplatten (dünne Decken)'],
+      title: inhalt.werte.bis1970HochrisikoEpoche,
+      description: inhalt.werte.inDieserPhaseGab,
+      dominantMaterials: [inhalt.werte.naturwerksteineZiegelmauerwerk, inhalt.werte.bimsbetonSchlackenbetonAlsFüllstoffe, inhalt.werte.geradeUndGenieteteStahlträger, inhalt.werte.ersteGenerationVonStahlbetonplatten],
       pollutants: [
         {
-          name: 'Asbest (fest & schwach gebunden)',
-          chemical: 'Silikatminerale (Chrysotil, Krokydolith)',
-          foundIn: 'Faserzementplatten (Eternit), Spritzasbest an Trägern, Fliesenkleber, Putz, Fensterkitte.',
+          name: inhalt.werte.asbestFestSchwachGebunden,
+          chemical: inhalt.werte.silikatmineraleChrysotilKrokydolith,
+          foundIn: inhalt.werte.faserzementplattenEternitSpritzasbestAn,
           probability: 'Sehr hoch',
-          handling: 'Staubfreier Ausbau unter Unterdruck, Personenschleusen, Vollschutz, TRGS 519 Zertifikat zwingend.',
-          rules: 'Gefahrstoffverordnung (GefStoffV), TRGS 519'
+          handling: inhalt.werte.staubfreierAusbauUnterUnterdruck,
+          rules: inhalt.werte.gefahrstoffverordnungGefstoffvTrgs519
         },
         {
-          name: 'Teer & Pech (PAK)',
-          chemical: 'Polyzyklische Aromatische Kohlenwasserstoffe',
-          foundIn: 'Estrichkleber (Asphaltkleber), Dachpappen, teerhaltiger Holzpflasterkleber, Kaltbitumen-Anstriche.',
+          name: inhalt.werte.teerPechPak,
+          chemical: inhalt.werte.polyzyklischeAromatischeKohlenwasserstof,
+          foundIn: inhalt.werte.estrichkleberAsphaltkleberDachpappenTeer,
           probability: 'Sehr hoch',
-          handling: 'Fräs- und Stemmarbeiten nur unter Atemschutz. PAK-verdächtiger Bauschutt darf nicht in normale Brechanlagen (Krebsgefahr!).',
-          rules: 'DGUV Regel 101-004 (ehemals BGR 128), Ruva-StB (in Bayern historisch)'
+          handling: inhalt.werte.fräsUndStemmarbeitenNur,
+          rules: inhalt.werte.dguvRegel101004
         },
         {
-          name: 'Polychlorierte Biphenyle (PCB)',
-          chemical: 'PCB-Gemische (Weichmacher)',
-          foundIn: 'Dauerelastische Fugendichtungsmassen (Thiokolfugen), Flammschutzanstriche, Deckenplatten kleber.',
+          name: inhalt.werte.polychlorierteBiphenylePcb,
+          chemical: inhalt.werte.pcbGemischeWeichmacher,
+          foundIn: inhalt.werte.dauerelastischeFugendichtungsmassenThiok,
           probability: 'Mittel',
-          handling: 'Herausschneiden der Fugenflanken, Unterdruck, PCB-Richtlinie: Raumluft ≤ 300 ng/m³ Zielwert (langfristig tolerierbar), 300–3000 ng/m³ Quellensuche und mittelfristige Sanierung, > 3000 ng/m³ unverzügliche Sanierung (Gefahrenwert).',
-          rules: 'PCB-Richtlinie (Bayern), TRGS 524'
+          handling: inhalt.werte.herausschneidenDerFugenflankenUnterdruck,
+          rules: inhalt.werte.pcbRichtlinieBayernTrgs
         },
         {
-          name: 'Blei & Schwermetalle',
+          name: inhalt.werte.bleiSchwermetalle,
           chemical: 'Schwermetalloxide',
-          foundIn: 'Rote Bleimennige-Anstriche (Rostschutz auf Altstahl), Bleirohre in Sanitärinstallationen.',
+          foundIn: inhalt.werte.roteBleimennigeAnstricheRostschutz,
           probability: 'Sehr hoch',
-          handling: 'Staubarmes Absaugen, kein mechanisches Schleifen ohne Absaugung der Staubklasse M/H.',
-          rules: 'TRGS 505 (Blei)'
+          handling: inhalt.werte.staubarmesAbsaugenKeinMechanisches,
+          rules: inhalt.werte.trgs505Blei
         }
       ]
     },
     era1970_1990: {
-      title: '1970 - 1990 (Konsolidierungs- und Übergangsphase)',
-      description: 'Zunehmende Industrialisierung des Bauens (Fertigteile, Sandwichwände). Beginnende Verbote von Spritzasbest (1979) und PCP (1989), jedoch extrem hoher Einsatz von künstlichen Mineralfasern (alte lungenvergängliche Steinwolle) und Formaldehyd-Platten.',
-      dominantMaterials: ['Großtafelbauwerke (Plattenbau)', 'Standardisierte Fertigteildecken', 'Extrem viel Gipskarton und Leichtbauplatten', 'Gegossener Transportbeton (normiert)'],
+      title: inhalt.werte.t19701990KonsolidierungsUnd,
+      description: inhalt.werte.zunehmendeIndustrialisierungDesBauens,
+      dominantMaterials: [inhalt.werte.großtafelbauwerkePlattenbau, inhalt.werte.standardisierteFertigteildecken, inhalt.werte.extremVielGipskartonUnd, inhalt.werte.gegossenerTransportbetonNormiert],
       pollutants: [
         {
-          name: 'Asbest (v.a. in Bauchemikalien)',
+          name: inhalt.werte.asbestVAIn,
           chemical: 'Chrysotilasbest',
-          foundIn: 'Putzträger, Spachtelmassen, Fliesenkleber, Dichtungsbänder, Vinyl-Asbest-Bodenplatten (Flex-Platten).',
+          foundIn: inhalt.werte.putzträgerSpachtelmassenFliesenkleberDic,
           probability: 'Sehr hoch',
-          handling: 'Bohr- und Schleifverfahren nur unter anerkannten staubarmen Schutzverfahren (BT-Verfahren gem. DGUV).',
+          handling: inhalt.werte.bohrUndSchleifverfahrenNur,
           rules: 'TRGS 519'
         },
         {
-          name: 'Künstliche Mineralfasern (KMF - alt)',
-          chemical: 'Glaswolle/Steinwolle (KI < 40)',
-          foundIn: 'Lose Dachbodendämmungen, Trittschalldämmungen unter Estrich, Rohrleitungsisolierungen.',
+          name: inhalt.werte.künstlicheMineralfasernKmfAlt,
+          chemical: inhalt.werte.glaswolleSteinwolleKi40,
+          foundIn: inhalt.werte.loseDachbodendämmungenTrittschalldämmung,
           probability: 'Sehr hoch',
-          handling: 'Alte Mineralwolle gilt als krebserzeugend. Ausbau nur im Schutzanzug und mit Atemschutz (Stb-Maske P2), Staubbindung durch Benetzung.',
+          handling: inhalt.werte.alteMineralwolleGiltAls,
           rules: 'TRGS 521'
         },
         {
-          name: 'Holzschutzmittel (PCP & Lindan)',
-          chemical: 'Pentachlorphenol, Hexachlorcyclohexan',
-          foundIn: 'Imprägnierte Holzkonstruktionen (Dachstühle, Fachwerk), Holzzäune, Holzpaneele.',
+          name: inhalt.werte.holzschutzmittelPcpLindan,
+          chemical: inhalt.werte.pentachlorphenolHexachlorcyclohexan,
+          foundIn: inhalt.werte.imprägnierteHolzkonstruktionenDachstühle,
           probability: 'Hoch',
-          handling: 'Belastete Hölzer müssen separiert und als gefährlicher Abfall (Altholzkategorie A IV) in Spezial-Müllverbrennungsanlagen verbrannt werden.',
-          rules: 'Altholzverordnung (AltholzV), PCP-Richtlinie'
+          handling: inhalt.werte.belasteteHölzerMüssenSepariert,
+          rules: inhalt.werte.altholzverordnungAltholzvPcpRichtlinie
         },
         {
           name: 'Formaldehyd',
-          chemical: 'Methanal (Gasförmig gelöst)',
-          foundIn: 'Spanplatten (Fertighäuser, Trennwände), Spanplatten-Klebstoff (Harnstoff-Formaldehyd-Harz).',
+          chemical: inhalt.werte.methanalGasförmigGelöst,
+          foundIn: inhalt.werte.spanplattenFertighäuserTrennwändeSpanpla,
           probability: 'Hoch',
-          handling: 'Gute Durchlüftung beim Abbruch, staubarmes Schneiden zur Vermeidung freigesetzter Formaldehydstäube.',
-          rules: 'Gefahrstoffverordnung, Grenzwerte für Luftbelastung'
+          handling: inhalt.werte.guteDurchlüftungBeimAbbruch,
+          rules: inhalt.werte.gefahrstoffverordnungGrenzwerteFürLuftbe
         }
       ]
     },
     post1990: {
-      title: 'Ab 1990 (Moderne Bauära mit Restrisiken)',
-      description: 'Asbestverbot ab 1993 in Deutschland. Die Schadstoffbelastung sinkt drastisch, allerdings müssen neuere Verbundstoffe, Flammschutzmittel wie HBCD (in EPS) und künstliche Mineralfasern (ohne Krebspotenzial, aber lungengängig) beachtet werden.',
-      dominantMaterials: ['Hochfester Stahlbeton (C50/60+), filigrane Elementdecken', 'Wärmedämmverbundsysteme (WDVS)', 'Schnittstellenmauerwerke (Porenbeton, Planziegel)', 'Verbundwerkstoffe (GFK, carbonbewehrter Beton)'],
+      title: inhalt.werte.ab1990ModerneBauära,
+      description: inhalt.werte.asbestverbotAb1993In,
+      dominantMaterials: [inhalt.werte.hochfesterStahlbetonC5060, inhalt.werte.wärmedämmverbundsystemeWdvs, inhalt.werte.schnittstellenmauerwerkePorenbetonPlanzi, inhalt.werte.verbundwerkstoffeGfkCarbonbewehrterBeton],
       pollutants: [
         {
-          name: 'HBCD (Dämmstoffe)',
-          chemical: 'Hexabromcyclododecan (Flammschutzmittel)',
-          foundIn: 'Polystyrol-Dämmplatten (EPS/XPS) in Wärmedämmverbundsystemen (WDVS) vor Baujahr 2014.',
+          name: inhalt.werte.hbcdDämmstoffe,
+          chemical: inhalt.werte.hexabromcyclododecanFlammschutzmittel,
+          foundIn: inhalt.werte.polystyrolDämmplattenEpsXps,
           probability: 'Hoch',
-          handling: 'Gilt als POP (Persistent Organic Pollutant). Abfallschlüssel für gefährliche Baustoffe bei HBCD-Gehalt > 1000 mg/kg. Getrennthaltungspflicht vom normalen Bauschutt!',
-          rules: 'POP-Verordnung der EU, Abfallverzeichnis-Verordnung (AVV)'
+          handling: inhalt.werte.giltAlsPopPersistent,
+          rules: inhalt.werte.popVerordnungDerEu
         },
         {
-          name: 'Fluorierte Treibgase (FCKW/HFKW)',
+          name: inhalt.werte.fluorierteTreibgaseFckwHfkw,
           chemical: 'Chlorfluorkohlenwasserstoffe',
-          foundIn: 'PU-Hartschaumdämmstoffe (Ortschaum-Isolierungen, Rohrschalen, Sandwichpaneele).',
+          foundIn: inhalt.werte.puHartschaumdämmstoffeOrtschaumIsolierun,
           probability: 'Mittel',
-          handling: 'Geordneter Ausbau ohne Zerstückelung, um Ausgasen zu verhindern. Spezialentsorgung zur Zerstörung der Treibgase.',
-          rules: 'FCKW-Halon-Verordnung / POP-V'
+          handling: inhalt.werte.geordneterAusbauOhneZerstückelung,
+          rules: inhalt.werte.fckwHalonVerordnungPop
         },
         {
-          name: 'Künstliche Mineralfasern (KMF - neu)',
-          chemical: 'Glas- und Steinwolle (KI >= 40)',
-          foundIn: 'Wärme- und Brandschutzdämmungen.',
+          name: inhalt.werte.künstlicheMineralfasernKmfNeu,
+          chemical: inhalt.werte.glasUndSteinwolleKi,
+          foundIn: inhalt.werte.wärmeUndBrandschutzdämmungen,
           probability: 'Sehr hoch',
-          handling: 'Verschärfter Staubschutz, da Fasern mechanisch reizend sind. Jedoch bio-löslich und nicht krebserzeugend nachgewiesen.',
-          rules: 'TRGS 521 (Schutzstufe II)'
+          handling: inhalt.werte.verschärfterStaubschutzDaFasern,
+          rules: inhalt.werte.trgs521SchutzstufeIi
         }
       ]
     }
@@ -244,25 +180,21 @@ export default function Rueckbau() {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <span className="bg-shiraz/10 text-shiraz text-xs font-bold uppercase px-2.5 py-1 rounded">
-              Zirkuläres Bauen & Kreislaufwirtschaft
-            </span>
-            <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          Baukörper-Rückbau & Material
-        </h2>
+            <span className="bg-shiraz/10 text-shiraz text-xs font-bold uppercase px-2.5 py-1 rounded"><MdText text={inhalt.texte.zirkuläresBauenKreislaufwirtschaft} /></span>
+            <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.baukörperRückbauMaterial} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
             Systematische Entfrachtung, selektiver Abbruch und mineralische Aufbereitung nach den Richtlinien des 
-              <strong> Bayerischen Landesamtes für Umwelt (LfU)</strong>. Aktualisiert mit den strengen Vorgaben der 
-              <strong> Ersatzbaustoffverordnung (EBV) 2023</strong>.
+              <strong><MdText text={inhalt.texte.bayerischenLandesamtesFürUmwelt} /></strong>. Aktualisiert mit den strengen Vorgaben der 
+              <strong><MdText text={inhalt.texte.ersatzbaustoffverordnungEbv2023} /></strong>.
           </p>
         </div>
           </div>
           <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 p-3 rounded-lg flex-shrink-0">
             <ShieldCheck size={28} className="text-emerald-600" />
             <div>
-              <div className="text-xs font-bold text-emerald-800">Gesetzlicher Status</div>
-              <div className="text-xs font-medium text-emerald-700">Bundesweit harmonisiert (EBV)</div>
+              <div className="text-xs font-bold text-emerald-800"><MdText text={inhalt.texte.gesetzlicherStatus} /></div>
+              <div className="text-xs font-medium text-emerald-700"><MdText text={inhalt.texte.bundesweitHarmonisiertEbv} /></div>
             </div>
           </div>
         </div>
@@ -277,8 +209,7 @@ export default function Rueckbau() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <BookOpen size={14} /> LfU Rückbau-Leitfaden
-          </button>
+            <BookOpen size={14} /><MdText text={inhalt.texte.lfuRückbauLeitfaden} /></button>
           <button aria-pressed={activeTab === 'schadstoffe'}
             onClick={() => setActiveTab('schadstoffe')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
@@ -287,8 +218,7 @@ export default function Rueckbau() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <AlertTriangle size={14} /> Schadstoff-Erkundung (VDI)
-          </button>
+            <AlertTriangle size={14} /><MdText text={inhalt.texte.schadstoffErkundungVdi} /></button>
           <button aria-pressed={activeTab === 'baustoffrecycling'}
             onClick={() => setActiveTab('baustoffrecycling')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
@@ -307,8 +237,7 @@ export default function Rueckbau() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <Hammer size={14} /> Masse- & Abfallrechner
-          </button>
+            <Hammer size={14} /><MdText text={inhalt.texte.masseAbfallrechner} /></button>
           <button aria-pressed={activeTab === 'aktualitaet'}
             onClick={() => setActiveTab('aktualitaet')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
@@ -317,8 +246,7 @@ export default function Rueckbau() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <Recycle size={14} /> Aktualitäts-Check (EBV)
-          </button>
+            <Recycle size={14} /><MdText text={inhalt.texte.aktualitätsCheckEbv} /></button>
           <button aria-pressed={activeTab === 'praxis'}
             onClick={() => setActiveTab('praxis')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
@@ -327,8 +255,7 @@ export default function Rueckbau() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <FileText size={14} /> Praxis-Szenarien & Behörden
-          </button>
+            <FileText size={14} /><MdText text={inhalt.texte.praxisSzenarienBehörden} /></button>
         </div>
       </div>
 
@@ -339,11 +266,8 @@ export default function Rueckbau() {
           <div className="lg:col-span-5 space-y-3">
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main mb-3 flex items-center gap-2">
-                <Clock size={16} className="text-shiraz" /> Phasen des selektiven Rückbaus
-              </h3>
-              <p className="text-xs text-text-main/70 mb-4">
-                Der LfU-Leitfaden empfiehlt ein stufenweises Vorgehen, um schadstofffreien Bauschutt zu erhalten.
-              </p>
+                <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.phasenDesSelektivenRückbaus} /></h3>
+              <p className="text-xs text-text-main/70 mb-4"><MdText text={inhalt.texte.derLfuLeitfadenEmpfiehlt} /></p>
               
               <div className="space-y-1">
                 {processPhases.map((phase) => (
@@ -374,13 +298,8 @@ export default function Rueckbau() {
 
             <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 p-4 rounded-xl">
               <h4 className="text-xs font-bold text-amber-900 flex items-center gap-1.5 mb-1">
-                <AlertTriangle size={14} className="text-amber-700" /> Getrennthaltung und Schadstoffentfrachtung vor dem Abbruch (Vermischungsverbot, § 9 Abs. 2 KrWG / GewAbfV)
-              </h4>
-              <p className="text-xs text-amber-800 leading-relaxed">
-                Bauschutt gilt abfallrechtlich nach dem Vermischungsverbot bereits als 
-                kontaminiert, wenn er vor dem Abbruch nicht ordnungsgemäß von anhaftenden Fremd- und Schadstoffen 
-                (wie asbesthaltigem Putz, PAK-Kleber oder Bitumen) entfrachtet wurde!
-              </p>
+                <AlertTriangle size={14} className="text-amber-700" /><MdText text={inhalt.texte.getrennthaltungUndSchadstoffentfrachtung} /></h4>
+              <p className="text-xs text-amber-800 leading-relaxed"><MdText text={inhalt.texte.bauschuttGiltAbfallrechtlichNach} /></p>
             </div>
           </div>
 
@@ -408,7 +327,7 @@ export default function Rueckbau() {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/70 mb-2">Checkliste zur Umsetzung</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/70 mb-2"><MdText text={inhalt.texte.checklisteZurUmsetzung} /></h4>
                   <ul className="space-y-2">
                     {processPhases[selectedPhase - 1].checklists.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-xs text-text-main">
@@ -423,8 +342,7 @@ export default function Rueckbau() {
 
             <div className="mt-6 pt-4 border-t border-home-grau/15 bg-slate-50 p-4 rounded-lg">
               <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5 mb-1 uppercase tracking-wider">
-                <Info size={13} className="text-shiraz" /> Original-Anforderung (LfU Leitfaden)
-              </h4>
+                <Info size={13} className="text-shiraz" /><MdText text={inhalt.texte.originalAnforderungLfuLeitfaden} /></h4>
               <p className="text-xs italic text-slate-700 font-medium leading-relaxed">
                 "{processPhases[selectedPhase - 1].lfuStandard}"
               </p>
@@ -441,9 +359,7 @@ export default function Rueckbau() {
               <div>
                 <h3 className="text-base font-bold text-text-main">Epochen-Schadstoff-Matrix</h3>
                 <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-                  <p>
-                    Wählen Sie die Bauwerksepoche aus, um die baujahrtypischen Schadstoffquellen nach VDI 6202 und LfU-Kriterien zu visualisieren.
-                  </p>
+                  <p><MdText text={inhalt.texte.wählenSieDieBauwerksepoche} /></p>
                 </div>
               </div>
               
@@ -487,7 +403,7 @@ export default function Rueckbau() {
                 </div>
                 
                 <div className="border-t border-home-grau/30 pt-3">
-                  <h5 className="text-xs font-bold text-text-main uppercase tracking-wider mb-2">Dominierende Tragwerkstypen:</h5>
+                  <h5 className="text-xs font-bold text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.dominierendeTragwerkstypen} /></h5>
                   <ul className="space-y-1">
                     {eraPollutants[selectedEra].dominantMaterials.map((mat, i) => (
                       <li key={i} className="text-xs text-text-main/70 flex items-center gap-1.5">
@@ -523,7 +439,7 @@ export default function Rueckbau() {
                             <span className="text-xs text-text-main leading-relaxed">{pollutant.foundIn}</span>
                           </div>
                           <div>
-                            <span className="text-xs font-bold text-text-main/60 block">Sanierung & Demontageschutz:</span>
+                            <span className="text-xs font-bold text-text-main/60 block"><MdText text={inhalt.texte.sanierungDemontageschutz} /></span>
                             <span className="text-xs text-text-main leading-relaxed italic">{pollutant.handling}</span>
                           </div>
                         </div>
@@ -544,27 +460,18 @@ export default function Rueckbau() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
               <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-red-600 block"></span> TRGS 519 (Asbest)
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Regelt Abbruch-, Sanierungs- und Instandhaltungsarbeiten (ASI) mit Asbest. Fachkunde nach Anlage 3 oder 4 ist zwingend erforderlich. Arbeiten müssen 7 Tage vorab beim Gewerbeaufsichtsamt angemeldet werden.
-              </p>
+                <span className="w-2 h-2 rounded-full bg-red-600 block"></span><MdText text={inhalt.texte.trgs519Asbest} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.regeltAbbruchSanierungsUnd} /></p>
             </div>
             <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
               <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-600 block"></span> TRGS 521 (Mineralfasern)
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Regelt den Schutz bei mineralischen Dämmstoffen. Für krebserzeugendes "altes" KMF (Einbau vor 2000) gelten strikte Schutzmaßnahmen (Staubschutzstufe II: Ganzkörperanzug, Masken, Staubunterdrückung).
-              </p>
+                <span className="w-2 h-2 rounded-full bg-amber-600 block"></span><MdText text={inhalt.texte.trgs521Mineralfasern} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.regeltDenSchutzBei} /></p>
             </div>
             <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
               <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 block"></span> TRGS 524 / DGUV 101-004
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Sicherheit und Gesundheitsschutz bei der Arbeit in kontaminierten Bereichen (z.B. PCB in dauerelastischen Fugen oder PAK-kontaminierte Böden und Untergründe). Erfordert Sachkundennachweis.
-              </p>
+                <span className="w-2 h-2 rounded-full bg-emerald-600 block"></span><MdText text={inhalt.texte.trgs524Dguv101} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.sicherheitUndGesundheitsschutzBei} /></p>
             </div>
           </div>
         </div>
@@ -591,79 +498,57 @@ export default function Rueckbau() {
           {/* Bavaria specific workflow map */}
           <div className="md:col-span-4 bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h3 className="text-sm font-bold text-text-main flex items-center gap-1.5 pb-2 border-b border-home-grau/10">
-              <FileCheck size={16} className="text-shiraz" /> Behördenwegweiser Bayern
-            </h3>
-            <p className="text-xs text-text-main/70 leading-relaxed">
-              Die bauordnungs- und abfallrechtliche Vorbereitung eines Rückbaus in einer bayerischen Gemeinde / Kreisstadt erfordert feste Schritte:
-            </p>
+              <FileCheck size={16} className="text-shiraz" /><MdText text={inhalt.texte.behördenwegweiserBayern} /></h3>
+            <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.dieBauordnungsUndAbfallrechtliche} /></p>
 
             <div className="relative border-l border-shiraz pl-4 space-y-4 ml-2">
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">1</span>
-                <span className="text-xs font-bold text-text-main block">Gemeinde / Bauordnungsamt</span>
-                <p className="text-xs text-text-main/70">Beseitigung baulicher Anlagen nach BayBO Art. 57 Abs. 5 (verfahrensfrei, je nach Anlage mit Anzeige vorab; Fristen im Gesetzestext prüfen).
-          </p>
+                <span className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.gemeindeBauordnungsamt} /></span>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.beseitigungBaulicherAnlagenNach} /></p>
         </div>
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">2</span>
-                <span className="text-xs font-bold text-text-main block">Untere Umweltschutzbehörde</span>
-                <p className="text-xs text-text-main/70">Vorlage des Schadstoffkatasters (VDI 6202 Blatt 1) für asbestbelastete Putze oder PCB-Fugen.</p>
+                <span className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.untereUmweltschutzbehörde} /></span>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.vorlageDesSchadstoffkatastersVdi} /></p>
               </div>
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">3</span>
-                <span className="text-xs font-bold text-text-main block">Gewerbeaufsichtsamt (GAA)</span>
-                <p className="text-xs text-text-main/70">Anzeige der Asbesttätigkeiten mindestens eine Woche vor Beginn (§ 11a GefStoffV, TRGS 519).</p>
+                <span className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.gewerbeaufsichtsamtGaa} /></span>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.anzeigeDerAsbesttätigkeitenMindestens} /></p>
               </div>
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">4</span>
-                <span className="text-xs font-bold text-text-main block">LfU / Abfallregister (eANV)</span>
-                <p className="text-xs text-text-main/70">Elektronisches Nachweisverfahren (Begleitscheine und Übernahmescheine gefährlicher Abfälle).</p>
+                <span className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.lfuAbfallregisterEanv} /></span>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.elektronischesNachweisverfahrenBegleitsc} /></p>
               </div>
             </div>
           </div>
 
           {/* Real-world Scenarios (8 cols) */}
           <div className="md:col-span-8 bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
-            <h3 className="text-sm font-bold text-text-main mb-4">Typische Rückbaufehler & Pitfalls aus der Praxis</h3>
+            <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.typischeRückbaufehlerPitfallsAus} /></h3>
             
             <div className="space-y-4">
               <div className="border border-red-200 bg-red-50/20 p-4 rounded-lg">
                 <h4 className="text-xs font-bold text-red-900 flex items-center gap-1.5 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 block"></span> Schadstoffverschleppung im Putz (Asbestfalle)
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-2">
-                  <strong>Szenario:</strong> Ein altes Bürogebäude (Baujahr 1978) wird maschinell abgebrochen. Der Putz enthält 
-                  flächig verteilt 0,1 % Asbest (früher üblich als Haftvermittler). 
-                </p>
-                <div className="text-xs text-red-800 font-semibold bg-red-100/30 p-2 rounded">
-                  <strong>Die LfU-Konsequenz:</strong> Ohne vorherige Entfrachtung des asbesthaltigen Putzes (durch Fräsverfahren) 
-                  kontaminiert der Abbruch den gesamten Ziegel- und Betonabbruch. Tonnenweise Material muss unter extrem 
-                  hohen Kosten als Sondermüll auf Deponien (DK III) entsorgt werden, anstatt hochwertig aufbereitet zu werden.
-                </div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 block"></span><MdText text={inhalt.texte.schadstoffverschleppungImPutzAsbestfalle} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-2"><MdText text={inhalt.texte.szenarioEinAltesBürogebäude} /></p>
+                <div className="text-xs text-red-800 font-semibold bg-red-100/30 p-2 rounded"><MdText text={inhalt.texte.dieLfuKonsequenzOhne} /></div>
               </div>
 
               <div className="border border-orange-200 bg-orange-50/20 p-4 rounded-lg">
                 <h4 className="text-xs font-bold text-orange-950 flex items-center gap-1.5 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-600 block"></span> Mangelhafte Dokumentation der GewAbfV
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-2">
-                  <strong>Szenario:</strong> Ein Generalunternehmer mischt Altholz (A II-Fensterrahmen) und Gipskartonplatten im Bauschuttcontainer, um Transportkosten zu sparen.
-                </p>
-                <div className="text-xs text-orange-900 font-semibold bg-orange-100/30 p-2 rounded">
-                  <strong>Die Kontrollreaktion:</strong> Der Deponiebetreiber bzw. die Aufbereitungsanlage weist die Charge zurück (Gipsstaub sulfatiert Asphaltdeckschichten). Das LfU ordnet ein empfindliches Bußgeld an und beschlagnahmt die nicht deklarierten Transportfahrzeuge.
-                </div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-600 block"></span><MdText text={inhalt.texte.mangelhafteDokumentationDerGewabfv} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-2"><MdText text={inhalt.texte.szenarioEinGeneralunternehmerMischt} /></p>
+                <div className="text-xs text-orange-900 font-semibold bg-orange-100/30 p-2 rounded"><MdText text={inhalt.texte.dieKontrollreaktionDerDeponiebetreiber} /></div>
               </div>
 
               <div className="border border-blue-200 bg-blue-50/20 p-4 rounded-lg">
                 <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 block"></span> Verwertung von Asphalt im Wegebau
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-2">
-                  <strong>Szenario:</strong> Ausbauasphalt aus einer alten Betriebseinfahrt wird ohne Voruntersuchung (Teerfreiheit) aufbereitet und als Frostschutzschicht im Wegebau wieder eingebaut.
-                </p>
-                <div className="text-xs text-indigo-900 font-semibold bg-blue-100/30 p-2 rounded">
-                  <strong>Die gesetzliche Hürde (EBV):</strong> Teerhaltiger Straßenaufbruch (PAK-reich) hat im Erdbau absolut nichts verloren (Gefahr der Auswaschung ins Grundwasser). Vor Einbau ist eine Bindemittelanalyse zwingend erforderlich. Belasteter Asphalt muss thermisch dekarbonisiert werden.
-                </div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 block"></span><MdText text={inhalt.texte.verwertungVonAsphaltIm} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-2"><MdText text={inhalt.texte.szenarioAusbauasphaltAusEiner} /></p>
+                <div className="text-xs text-indigo-900 font-semibold bg-blue-100/30 p-2 rounded"><MdText text={inhalt.texte.dieGesetzlicheHürdeEbv} /></div>
               </div>
             </div>
           </div>
@@ -673,64 +558,33 @@ export default function Rueckbau() {
       {/* Footer references */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Massenbilanz für den Rückbau eines Bürogebäudes"
+        title={inhalt.werte.beispiel1MassenbilanzFür}
         zielGleichung="m_i = V_i \cdot \rho_i, \quad Q_{min} = \frac{\sum m_{min}}{\sum m_i}"
-        schritte={[
-          { titel: 'Mengen aus dem Rückbaukonzept', erklaerung: 'Beton 1 200 m³ (ρ = 2,4 t/m³), Mauerwerk 300 m³ (1,6 t/m³), Holz 60 m³ (0,5 t/m³), Metalle 40 t:', formel: 'm_B = 2\\,880\\,\\text{t}, \\; m_Z = 480\\,\\text{t}, \\; m_H = 30\\,\\text{t}, \\; m_M = 40\\,\\text{t}' },
-          { titel: 'Gesamtmasse', erklaerung: 'Summe der Hauptfraktionen:', formel: '\\sum m_i = 2\\,880 + 480 + 30 + 40 = 3\\,430\\,\\text{t}' },
-          { titel: 'Mineralischer Anteil', erklaerung: 'Beton und Mauerwerk:', formel: 'Q_{min} = \\frac{3\\,360}{3\\,430} = 0{,}98 = 98\\,\\%' }
-        ]}
-        ergebnisHinweis="Die mineralischen Fraktionen bestimmen Logistik und Verwertung. Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und wirtschaftlich zumutbar; ab 10 m³ Abfall ist die Getrennthaltung zu dokumentieren."
-        normQuelle="GewAbfV § 8; DIN SPEC 91484:2023-09"
+        schritte={inhalt.daten["Rueckbau.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieMineralischenFraktionenBestimmen}
+        normQuelle={inhalt.werte.gewabfv8DinSpec}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Kostenvergleich selektiver Rückbau gegen Gemischentsorgung"
+        title={inhalt.werte.beispiel2KostenvergleichSelektiver}
         zielGleichung="\Delta K = m \cdot (p_{Gemisch} - p_{getrennt}) - K_{Sortierung}"
-        schritte={[
-          { titel: 'Ansatz', erklaerung: 'Mauerwerks- und Betonabbruch 3 360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):', formel: 'p_{Gemisch} - p_{getrennt} = 23\\,\\text{€/t}' },
-          { titel: 'Mehrkosten Entkernung', erklaerung: 'Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.', formel: 'K_{Sortierung} = 40\\,000\\,\\text{€}' },
-          { titel: 'Ergebnis', erklaerung: 'Einsparung durch selektiven Rückbau:', formel: '\\Delta K = 3\\,360 \\cdot 23 - 40\\,000 = 37\\,280\\,\\text{€}' }
-        ]}
-        ergebnisHinweis="Regionale Annahmepreise schwanken stark; die Rechnung zeigt das Prinzip. Bei Schadstofffunden (z. B. asbesthaltiger Putz) kann die gesamte Charge als gefährlicher Abfall gelten – deshalb Schadstofferkundung vor dem Abbruch."
-        normQuelle="GewAbfV §§ 8, 9; VDI 6210 Blatt 1:2025-10"
+        schritte={inhalt.daten["Rueckbau.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.regionaleAnnahmepreiseSchwankenStark}
+        normQuelle={inhalt.werte.gewabfv89Vdi}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="rueckbau" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: GewAbfV §§ 8/9, EBV §§ 19/22, GefStoffV § 5a, Normausgaben DIN 18007, VDI 6210, DIN SPEC 91484/91525 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap9}
         wikipedia={[
-          { title: 'Rückbau (Bauwesen)', url: 'https://de.wikipedia.org/wiki/R%C3%BCckbau' },
+          { title: inhalt.werte.rückbauBauwesen, url: 'https://de.wikipedia.org/wiki/R%C3%BCckbau' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' }
         ]}
-        literatur={[
-          'Bayerisches Landesamt für Umwelt (LfU): Leitfaden für den umweltgerechten Rückbau von Gebäuden (Augsburg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN 18007:2022-09 (Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche)' },
-          { title: 'VDI 6210 Blatt 1:2025-10 (Abbruch von baulichen und technischen Anlagen)' },
-          { title: 'DIN SPEC 91484:2023-09 (Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten, Pre-Demolition Audit)' },
-          { title: 'DIN SPEC 91525:2026-02 (Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden)' },
-          { title: 'VDI/GVSS 6202 Blatt 1:2013-10 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)' },
-          { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-          { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
-          { title: 'TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' }
-        ]}
-        formeln={[
-          {
-            formel: 'Q_{\\text{getrennt}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}}',
-            erklaerung: 'Getrenntsammlungsquote als Kennzahl zur Dokumentation der Getrennthaltung der zehn Fraktionen nach § 8 GewAbfV. Eine feste Mindestquote gibt es für Bauabfälle nicht; die 90-%-Quote des § 4 Abs. 3 betrifft gewerbliche Siedlungsabfälle.',
-            quelle: 'GewAbfV §§ 4, 8'
-          },
-          {
-            formel: 'C_{\\text{Eluat}} \\le C_{\\text{MEW}} \\quad [\\mu\\text{g/l bzw. mg/l}]',
-            erklaerung: 'Eluat-Grenzwerteinhaltung nach Ersatzbaustoffverordnung (EBV) zur Klassifizierung mineralischer Ersatzbaustoffe (z.B. RC-1, RC-2) und Vermeidung von Grundwassereinträgen.',
-            quelle: 'EBV Anlage 1 & 2'
-          }
-        ]}
+        literatur={inhalt.daten["Rueckbau.literatur"]}
+        regelwerke={inhalt.daten["Rueckbau.regelwerke"]}
+        formeln={inhalt.daten["Rueckbau.formeln"]}
       />
     </div>
   );

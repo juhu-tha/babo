@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Layers, Mountain } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import inhalt from '@/content/leichtbeton/Leichtbeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Leichtbeton() {
   const [dichte, setDichte] = useState(1.4);
@@ -14,43 +16,30 @@ export default function Leichtbeton() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Leichtbeton (LB)
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.leichtbetonLb} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>
-            Konstruktionsleichtbeton (Rohdichte 800 bis 2000 kg/m³) zeichnet sich durch ein poriges Gefüge aus. 
-            Dies wird durch offenporige Gesteinskörnung (z. B. Bims, Blähton) erreicht. Porenbeton ist ein eigenes, dampfgehärtetes Bauprodukt und kein Leichtbeton nach DIN EN 206. Leichtbeton vereint Tragfähigkeit mit verbesserter Wärmedämmung.
-          </p>
+          <p><MdText text={inhalt.texte.konstruktionsleichtbetonRohdichte800Bis} /></p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm">
           <h3 className="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
-            <Mountain className="w-5 h-5 text-shiraz" /> Eigenschaften &amp; Bemessung
-          </h3>
-          <p className="text-sm text-text-main/80 mb-4">
-            Bei Leichtbeton ist das Korn oft weicher als die Zementsteinmatrix. Der Bruch verläuft 
-            daher i. d. R. mitten durch das Korn. Dichte und Festigkeit korrelieren stark miteinander.
-          </p>
+            <Mountain className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.eigenschaftenBemessung} /></h3>
+          <p className="text-sm text-text-main/80 mb-4"><MdText text={inhalt.texte.beiLeichtbetonIstDas} /></p>
           <div className="bg-off-white border border-home-grau/20 rounded-xl p-4 mb-4">
             <div className="text-sm text-shiraz font-semibold mb-2"><FormulaText text="\eta_E = ( \rho / 2200 )^2" /></div>
-            <p className="text-xs text-text-main/70">
-              Modifikationsbeiwert für den E-Modul. Wegen der weichen Körner hat Leichtbeton 
-              einen geringeren E-Modul als Normalbeton gleicher Druckfestigkeit.
-            </p>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.modifikationsbeiwertFürDenE} /></p>
           </div>
           <div className="bg-off-white border border-home-grau/20 rounded-xl p-4">
             <div className="text-sm text-shiraz font-semibold mb-2"><FormulaText text="\eta_1 = 0.40 + 0.60 \cdot (\rho / 2200)" /></div>
-            <p className="text-xs text-text-main/70">
-              Abminderung der Zugfestigkeit im Vergleich zu Normalbeton. Formeln nach Eurocode 2 (DIN EN 1992-1-1).
-            </p>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.abminderungDerZugfestigkeitIm} /></p>
           </div>
         </div>
 
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm relative overflow-hidden">
-          <h3 className="text-lg font-bold text-text-main mb-4 relative z-10">Dichte-Abhängigkeit (Näherung)</h3>
+          <h3 className="text-lg font-bold text-text-main mb-4 relative z-10"><MdText text={inhalt.texte.dichteAbhängigkeitNäherung} /></h3>
           
           <div className="space-y-6 relative z-10">
             <div>
@@ -71,7 +60,7 @@ export default function Leichtbeton() {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-50 border border-home-grau/20 p-4 rounded-xl text-center">
-                <div className="text-xs text-text-main/70 mb-1 font-semibold uppercase tracking-wider">Geschätzte Festigkeit</div>
+                <div className="text-xs text-text-main/70 mb-1 font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.geschätzteFestigkeit} /></div>
                 <div className="text-2xl font-bold text-shiraz"><FormulaText text={`\\approx ${formatDeTeX(fc, 1)}`} /> <span className="text-sm">MPa</span></div>
               </div>
               <div className="bg-slate-50 border border-home-grau/20 p-4 rounded-xl text-center">
@@ -79,14 +68,12 @@ export default function Leichtbeton() {
                 <div className="text-2xl font-bold text-slate-800"><FormulaText text={`\\approx ${formatDeTeX(lambda, 2)}`} /> <span className="text-sm">W/(m·K)</span></div>
               </div>
             </div>
-            <p className="text-[10px] text-text-main/50 text-center">
-              Achtung: Dies sind stark vereinfachte empirische Zusammenhänge zur Veranschaulichung der Zielkonflikte (Tragfähigkeit vs. Dämmwirkung).
-            </p>
+            <p className="text-[10px] text-text-main/50 text-center"><MdText text={inhalt.texte.achtungDiesSindStark} /></p>
           </div>
         </div>
       
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 md:col-span-2">
-          <h3 className="font-bold text-text-main mb-4 flex items-center gap-2">Beispielrezeptur (Richtwerte)</h3>
+          <h3 className="font-bold text-text-main mb-4 flex items-center gap-2"><MdText text={inhalt.texte.beispielrezepturRichtwerte} /></h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[300px]">
               <thead>
@@ -105,7 +92,7 @@ export default function Leichtbeton() {
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 170 kg/m³</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Leichte Gesteinskörnung</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium"><MdText text={inhalt.texte.leichteGesteinskörnung} /></td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 600 kg/m³</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">

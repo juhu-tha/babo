@@ -1,0 +1,214 @@
+{
+  "texte": {
+    "festigkeitsberechnungenTurmbauReißlänge": " Festigkeitsberechnungen (Turmbau & Reißlänge)",
+    "festigkeitsberechnungenDienenDemNachweis": "Festigkeitsberechnungen dienen dem Nachweis, dass die auftretenden Spannungen in einem Bauteil die Festigkeit des Werkstoffs (in der Bemessung: den Bemessungswert nach Eurocode) nicht überschreiten. Die folgenden Gedankenexperimente arbeiten ohne Teilsicherheitsbeiwerte und ohne Stabilitätsversagen.",
+    "vergleichenSieZweiMaterialien": "Vergleichen Sie zwei Materialien hinsichtlich ihrer theoretischen Grenzen unter Eigengewicht.<br><br>**Turmbau (Druck):** Wie hoch kann ein Turm gestapelt werden, bis das Material unten zerdrückt wird? ",
+    "brReißlängeZugWie": "<br>**Reißlänge (Zug):** Wie lang kann ein frei hängendes Seil/Stab sein, bis es unter seinem eigenen Gewicht reißt? ",
+    "maxTurmhöhe": "Max. Turmhöhe",
+    "maxReißlänge": "Max. Reißlänge",
+    "maxTurmhöhe2": "Max. Turmhöhe",
+    "maxReißlänge2": "Max. Reißlänge",
+    "logarithmischeSkalaFürExtreme": "Logarithmische Skala (für extreme Unterschiede)",
+    "dasWürfelstapelProblem": " Das Würfelstapel-Problem",
+    "esSollenWürfelSolange": "Es sollen Würfel solange aufeinandergestapelt werden, bis der unterste aufgrund des Gewichts auf Druck versagt (kein Stabilitätsversagen, keine Horizontalkräfte, keine Sicherheitsbeiwerte). Die Verformung wird linear-elastisch über den E-Modul berechnet.",
+    "maxAnzahlWürfelN": "Max. Anzahl Würfel (N)",
+    "gesamthöheDesStapels": "Gesamthöhe des Stapels",
+    "stauchungUntersterWürfel": "Stauchung unterster Würfel",
+    "gesamtstauchungDesStapels": "Gesamtstauchung des Stapels",
+    "summeAllerEinzelverformungen": "Summe aller Einzelverformungen"
+  },
+  "werte": {
+    "maxTurmhöheDruck": "Max. Turmhöhe (Druck)",
+    "maxReißlängeZug": "Max. Reißlänge (Zug)",
+    "längeHöheM": "Länge / Höhe [m]",
+    "auswahlDesZuUntersuchenden": "Auswahl des zu untersuchenden Werkstoffs.",
+    "kantenlängeA": "Kantenlänge a",
+    "längeDerKanteDes": "Länge der Kante des Probekörpers.",
+    "eingabenInSiEinheiten": "Eingaben in SI-Einheiten",
+    "kantenlängeInMeterFestigkeit": "Kantenlänge in Meter, Festigkeit in N/m²:",
+    "anzahlDerWürfel": "Anzahl der Würfel",
+    "jederWürfelErhöhtDie": "Jeder Würfel erhöht die Spannung am Fuß um ρ·g·a; es zählen nur ganze Würfel (abrunden):",
+    "anzahlMalKantenlänge": "Anzahl mal Kantenlänge:",
+    "spannungUndStauchungAm": "Spannung und Stauchung am Fuß",
+    "derITeWürfel": "Der i-te Würfel von oben trägt i Würfel; die Summe 1 + 2 + … + N ergibt N(N+1)/2:",
+    "gedankenexperimentOhneTeilsicherheitsbei": "Gedankenexperiment ohne Teilsicherheitsbeiwerte und ohne Stabilitätsversagen.",
+    "technischeMechanikGleichgewichtHookesche": "Technische Mechanik (Gleichgewicht, Hookesches Gesetz)",
+    "beispiel1WieHoch": "Beispiel 1: Wie hoch könnte eine Betonsäule aus C20/25 werden?",
+    "mitBemessungswertenFCd": "Mit Bemessungswerten (f_cd = 0,85 · 20/1,5 = 11,3 N/mm², γ_G = 1,35) schrumpft die Höhe auf rund 356 m – und lange vorher wird Knicken maßgebend.",
+    "gleichgewichtBemessungswerteNachDin": "Gleichgewicht; Bemessungswerte nach DIN EN 1990/1992-1-1",
+    "beispiel2ReißlängeVon": "Beispiel 2: Reißlänge von Baustahl S235",
+    "dieReißlängeIstEine": "Die Reißlänge ist eine spezifische Festigkeit (Festigkeit je Gewicht) – deshalb schneiden leichte Fasern wie CFK oder Aramid um ein Vielfaches besser ab als Stahl.",
+    "technischeMechanikFU": "Technische Mechanik; f_u nach DIN EN 10025-2",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Werkstoffwerte und Grenzhöhen-/Reißlängenmodell geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "hookeschesGesetz": "Hookesches Gesetz"
+  },
+  "daten": {
+    "materials": {
+      "beton_c20": {
+        "name": "Beton C20/25",
+        "rho": 2400,
+        "fc": 20,
+        "ft": 2.2,
+        "E": 30000,
+        "color": "#94a3b8"
+      },
+      "beton_c50": {
+        "name": "Beton C50/60",
+        "rho": 2400,
+        "fc": 50,
+        "ft": 4.1,
+        "E": 37000,
+        "color": "#64748b"
+      },
+      "beton_uhpc": {
+        "name": "UHPC",
+        "rho": 2500,
+        "fc": 150,
+        "ft": 8,
+        "E": 50000,
+        "color": "#475569"
+      },
+      "stahl_s235": {
+        "name": "Baustahl S235 (f_y / f_u)",
+        "rho": 7850,
+        "fc": 235,
+        "ft": 360,
+        "E": 210000,
+        "color": "#475569"
+      },
+      "stahl_hochfest": {
+        "name": "Hochfester Stahl S690 (f_y / f_u)",
+        "rho": 7850,
+        "fc": 690,
+        "ft": 770,
+        "E": 210000,
+        "color": "#334155"
+      },
+      "alu": {
+        "name": "Aluminium (EN AW-6060, Richtwert)",
+        "rho": 2700,
+        "fc": 160,
+        "ft": 200,
+        "E": 70000,
+        "color": "#94a3b8"
+      },
+      "holz_fichte_par": {
+        "name": "Holz C24 (faserparallel, charakt.)",
+        "rho": 450,
+        "fc": 21,
+        "ft": 14,
+        "E": 11000,
+        "color": "#475569"
+      },
+      "mauerwerk": {
+        "name": "Mauerwerk (Richtwert)",
+        "rho": 1800,
+        "fc": 12,
+        "ft": 0.5,
+        "E": 4000,
+        "color": "#A3113E"
+      },
+      "glas": {
+        "name": "Glas",
+        "rho": 2500,
+        "fc": 500,
+        "ft": 45,
+        "E": 70000,
+        "color": "#64748b"
+      },
+      "titan": {
+        "name": "Titan",
+        "rho": 4430,
+        "fc": 830,
+        "ft": 900,
+        "E": 105000,
+        "color": "#64748b"
+      },
+      "carbon": {
+        "name": "Carbon (CFK)",
+        "rho": 1500,
+        "fc": 600,
+        "ft": 1500,
+        "E": 150000,
+        "color": "#475569"
+      },
+      "kevlar": {
+        "name": "Kevlar",
+        "rho": 1440,
+        "fc": 300,
+        "ft": 3600,
+        "E": 112000,
+        "color": "#94a3b8"
+      },
+      "spinnenseide": {
+        "name": "Spinnenseide (Faser, Literaturwert)",
+        "rho": 1300,
+        "fc": 100,
+        "ft": 1100,
+        "E": 30000,
+        "color": "#A3113E"
+      }
+    },
+    "Festigkeitsberechnungen.schritte": [
+      {
+        "titel": "Gleichgewicht",
+        "erklaerung": "Am Fuß einer prismatischen Säule wirkt das Eigengewicht ρ·g·A·H auf die Fläche A – die Querschnittsfläche kürzt sich heraus:",
+        "formel": "\\sigma = \\rho \\cdot g \\cdot H"
+      },
+      {
+        "titel": "Einheiten",
+        "erklaerung": "f_c = 20 N/mm² = 20 · 10⁶ N/m², ρ = 2400 kg/m³, g = 9,81 m/s².",
+        "formel": "H = \\frac{20 \\cdot 10^{6}}{2400 \\cdot 9{,}81}"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Theoretische Grenzhöhe ohne Sicherheiten und ohne Knicken:",
+        "formel": "H = 849\\,\\text{m}"
+      }
+    ],
+    "Festigkeitsberechnungen.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Zugfestigkeit f_u = 360 N/mm² (Mindestwert), ρ = 7850 kg/m³.",
+        "formel": "f_u = 360 \\cdot 10^{6}\\,\\text{N/m}^2"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Länge, bei der ein frei hängender Stab an der Aufhängung reißt:",
+        "formel": "L = \\frac{360 \\cdot 10^{6}}{7850 \\cdot 9{,}81} = 4\\,675\\,\\text{m} \\approx 4{,}7\\,\\text{km}"
+      }
+    ],
+    "Festigkeitsberechnungen.regelwerke": [
+      {
+        "title": "DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)"
+      },
+      {
+        "title": "DIN EN 1992 bis EN 1999 (Werkstoffspezifische Eurocodes)"
+      },
+      {
+        "title": "DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)"
+      }
+    ],
+    "Festigkeitsberechnungen.literatur": [
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Festigkeitsberechnungen.formeln": [
+      {
+        "formel": "H = \\frac{f_c}{\\rho \\cdot g}",
+        "erklaerung": "Maximale Turmhöhe unter Eigengewicht (Druck)\n$\\rho$: Dichte [kg/m³]\n$f_c$: Druckfestigkeit [N/m²] (1 N/mm² = 10⁶ N/m²)\n$H$: Höhe [m]\n$g$: Erdbeschleunigung [m/s²]",
+        "quelle": "Technische Mechanik (Gleichgewicht am Prisma)"
+      },
+      {
+        "formel": "L = \\frac{f_t}{\\rho \\cdot g}",
+        "erklaerung": "Maximale Reißlänge unter Eigengewicht (Zug)\n$\\rho$: Dichte [kg/m³]\n$f_t$: Zugfestigkeit [N/m²]\n$g$: Erdbeschleunigung [m/s²]\n$L$: Länge [m]",
+        "quelle": "Technische Mechanik (Gleichgewicht am Seil)"
+      },
+      {
+        "formel": "\\Delta l = \\frac{\\sigma}{E} \\cdot l",
+        "erklaerung": "Elastische Verformung (Hookesches Gesetz)\n$\\Delta l$: Längenänderung (Einheit wie l)\n$\\sigma$: Normalspannung [N/mm²]\n$l$: Länge\n$E$: Elastizitätsmodul [N/mm²]",
+        "quelle": "Hookesches Gesetz"
+      }
+    ]
+  }
+}

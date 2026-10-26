@@ -1,0 +1,217 @@
+{
+  "texte": {
+    "setztEineAbgestimmteNeufassung": " Setzt eine abgestimmte Neufassung von DIN 1045-2 voraus; ein Termin ist öffentlich nicht bekannt.",
+    "forschungsberichtZurAnwendbarkeit2025": " Forschungsbericht zur Anwendbarkeit (2025): Einführung „ab 2027 (Plan A)“ möglich.",
+    "fachveröffentlichungRwth2025Erwartet": " Fachveröffentlichung (RWTH, 2025) erwartet die Einführung 2027 einschließlich NA – keine amtliche Festlegung.",
+    "ausblickNeueNormengenerationBeton": " Ausblick: neue Normengeneration (Beton und Eurocodes)",
+    "dinEn2061": "DIN EN 206-1/-2:2026, Expositionswiderstandsklassen und Eurocodes der 2. Generation – was erschienen ist und was (noch) gilt",
+    "standOktober2026Für": "**Stand Oktober 2026:** Für Bemessung und Ausführung in Deutschland gelten weiterhin die bauaufsichtlich eingeführten Ausgaben (MVV TB 2025/1): DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und die Eurocodes der Ausgaben ab 2010-12 mit Nationalen Anhängen. Dieses Modul gibt einen Ausblick auf Grundlage öffentlich zugänglicher Quellen; die Normtexte selbst wurden nicht ausgewertet. Punkte mit ",
+    "sindÖffentlichNichtBelegt": " sind öffentlich nicht belegt.",
+    "dieErsteEurocodeGeneration": "Die erste Eurocode-Generation wurde in Deutschland ab 2012 bauaufsichtlich eingeführt. Schon 2012 erteilte die EU-Kommission den Normungsauftrag **M/515**, die Eurocodes zu überarbeiten und ihren Anwendungsbereich zu erweitern; CEN/TC 250 begann 2016 mit der Arbeit. Parallel überarbeitete CEN/TC 104 die Betonnorm EN 206. Beide Vorhaben sind aufeinander bezogen: EN 206-1:2026 wurde an die überarbeitete EN 1992-1-1:2023 angeglichen.",
+    "anwendbarkeitEaseOfUse": "Anwendbarkeit („Ease of Use“)",
+    "wenigerNationalFestzulegendeParameter": "Weniger national festzulegende Parameter (NDP), mehr Harmonisierung und eine geringere Gesamtgröße waren zentrale Ziele. Ein vom DIBt geförderter Forschungsbericht (2025) kommt zu dem Ergebnis, dass diese Ziele „nur teilweise erreicht“ werden.",
+    "erweiterterAnwendungsbereich": "Erweiterter Anwendungsbereich",
+    "neueInhalteEtwaFür": "Neue Inhalte etwa für die Bewertung bestehender Tragwerke, Stahlfaserbeton, Beton mit rezyklierter Gesteinskörnung, nichtmetallische Bewehrung (EC2) oder Brettsperrholz (EC5). Teile für Brücken und Behälter gingen im EC2 im Hauptteil auf.",
+    "leistungsbezogeneDauerhaftigkeit": "Leistungsbezogene Dauerhaftigkeit",
+    "expositionswiderstandsklassenErc": " Expositionswiderstandsklassen (ERC)",
+    "warumDasFürBaustoffe": "Warum das für Baustoffe wichtig ist",
+    "dieBisherigenGrenzwerteFür": "Die bisherigen Grenzwerte für w/z-Wert, Mindestzementgehalt und Zementart beschreiben bewährte Rezepturen (deskriptives Konzept). Ein leistungsbezogenes Konzept fragt dagegen, welchen Karbonatisierungs- oder Chlorideindringwiderstand der Beton tatsächlich hat. Damit rücken Prüfverfahren wie die Schnellkarbonatisierung und der CO₂-Fußabdruck des Betons in den Mittelpunkt.",
+    "imJuli2026Sind": "Im Juli 2026 sind **DIN EN 206-1:2026-07** (Teil 1: Eigenschaften, Anforderungen, werkseigene Produktionskontrolle und Bewertungskriterien für einzelne Werte) und **DIN EN 206-2:2026-07** (Teil 2: Konformitätsbewertung und Zertifizierung) erschienen. Beide ersetzen DIN EN 206:2021-06 *teilweise*. Auf europäischer Ebene ist EN 206-1:2026 seit April 2026 veröffentlicht.",
+    "eigenschaftenUndAnforderungenAn": "Eigenschaften und Anforderungen an Beton, Ausgangsstoffe, Frisch- und Festbeton, Lieferung, werkseigene Produktionskontrolle, Bewertungskriterien für Einzelwerte.",
+    "alleAspekteDerKonformitätsbewertung": "Alle Aspekte der Konformitätsbewertung und Zertifizierung; mit der Trennung von Teil 1 und Teil 2 wird laut Änderungsvermerk das Neutralitätsprinzip umgesetzt.",
+    "zusätzlicheAnforderungenFürBeton": "Zusätzliche Anforderungen für Beton im Spezialtiefbau; der bisherige Anhang D (Beton für geotechnische Zwecke) wurde dorthin überführt.",
+    "wesentlicheÄnderungenLautÄnderungsvermer": "Wesentliche Änderungen laut Änderungsvermerk und öffentlicher Ankündigung",
+    "wasÖffentlichBekanntIst": "Was öffentlich bekannt ist",
+    "grenzeDerAussage": "Grenze der Aussage",
+    "neueTerminologieFürBindemittel": "Neue Terminologie für Bindemittel aufgenommen.",
+    "welcheBegriffeUndOb": " Welche Begriffe und ob sich die Anrechnung von Zusatzstoffen (k-Wert-Ansatz) ändert, ist in den öffentlichen Texten nicht beschrieben.",
+    "neuerAbschnitt54": "Neuer Abschnitt 5.4 „Klassen bezüglich CO₂-Emissionen“. Im Entwurf prEN 206-1:2024 wird Beton nach der prozentualen GWP-Minderung gegenüber einem Referenzbeton gleicher Leistung (CEM I ohne Zusatzstoffe) in 10-%-Stufen von GWR 0 bis GWR 9 eingeteilt; die Klassen dürfen in Festlegung und Lieferschein angegeben werden.",
+    "dieEinzelheitenStammenAus": " Die Einzelheiten stammen aus der Entwurfsfassung (Bericht des Zementverbands GCCA); ob die Endfassung sie unverändert enthält, ist öffentlich nicht bestätigt.",
+    "öffnungFürNationaleRegeln": "„Öffnung für nationale Regeln zu Expositionswiderstandsklassen“ (siehe Reiter ERC).",
+    "eigeneEuropäischeErcRegeln": "Eigene europäische ERC-Regeln enthält die Norm nach den öffentlichen Angaben nicht.",
+    "informativeInhalteZuDen": "Informative Inhalte zu den Expositionsklassen in Anhang C verschoben; XC, XD, XS, XF, XA bleiben als Einwirkungsklassen erhalten.",
+    "dieDeutschenGrenzwerteStehen": "Die deutschen Grenzwerte stehen bis auf Weiteres in DIN 1045-2:2023-08.",
+    "anhangMBestimmungenAm": "Anhang M (Bestimmungen am Verwendungsort) in die Einleitung, Anhang L in den Haupttext; Angleichung an EN 1992-1-1:2023.",
+    "warumDinEn206": "Warum DIN EN 206:2021-06 noch maßgebend ist",
+    "inDeutschlandWirdDin": "In Deutschland wird DIN EN 206 nur zusammen mit dem nationalen Anwendungsdokument DIN 1045-2 angewendet; dort stehen etwa die Grenzwerte je Expositionsklasse. Eine auf DIN EN 206-1:2026 abgestimmte Neufassung von DIN 1045-2 und deren bauaufsichtliche Einführung stehen aus. ",
+    "dieHeuteGeltendenGrenzwerte": "Die heute geltenden Grenzwerte nach DIN 1045-2:2023-08 und die Mindestbetondeckung nach DIN EN 1992-1-1/NA behandelt das Modul Dauerhaftigkeit.",
+    "en199211": "EN 1992-1-1:2023 führt **Expositionswiderstandsklassen (ERC)** ein. Sie ersetzen die bisherigen Anforderungsklassen (S1 bis S6) als Zwischenschritt zur Betondeckung: Die Mindestbetondeckung für die Dauerhaftigkeit ergibt sich aus der Expositionsklasse *und* der ERC des Betons. Erfasst werden die bewehrungskorrosionsrelevanten Einwirkungen Karbonatisierung (XRC) und Chlorideindringen (XRDS); Frost und chemischer Angriff nicht.",
+    "xrcKarbonatisierung": "XRC – Karbonatisierung",
+    "abgeleitetAusDerCharakteristischen": "Abgeleitet aus der charakteristischen Karbonatisierungstiefe (90-%-Quantil) nach 50 Jahren unter Referenzbedingungen (400 ppm CO₂, 65 % r. F., 20 °C). Die Klassenzahl hat die Dimension einer Karbonatisierungsrate in mm/√a. Klassen: XRC 0,5 – 1 – 2 – 3 – 4 – 5 – 6 – 7.",
+    "xrdsChloride": "XRDS – Chloride",
+    "abgeleitetAusDerCharakteristischen2": "Abgeleitet aus der charakteristischen Chlorideindringtiefe bei einer Referenz-Chloridkonzentration. Die Klassenzahl hat die Dimension eines Diffusionskoeffizienten in 10⁻¹³ m²/s. Klassen: XRDS 0,5 – 1 – 1,5 – 2 – 3 – 4 – 5 – 6 – 8 – 10.",
+    "lesebeispielNachDemWurzel": "Lesebeispiel nach dem Wurzel-t-Gesetz: Eine kleinere Klassenzahl bedeutet einen höheren Karbonatisierungswiderstand.",
+    "nachweisÜberPrüfung": "Nachweis über Prüfung",
+    "referenzverfahrenFürXrcIst": "Referenzverfahren für XRC ist nach der Fachliteratur die Prüfung bei atmosphärischer CO₂-Konzentration (DIN EN 12390-10), für XRDS DIN EN 12390-11. Nationale Bestimmungen dürfen das beschleunigte Verfahren nach **DIN EN 12390-12** (3 % CO₂) verwenden, wenn ein Umrechnungsfaktor auf natürliche Bedingungen festgelegt ist. Für bewährte Betone sind auch vorab zugeordnete Klassen (Deemed-to-satisfy) vorgesehen.",
+    "europäischKeineGemeinsameBetonnorm": "Europäisch: keine gemeinsame Betonnorm für ERC",
+    "eineEigeneNormEn": "Eine eigene Norm EN 206-100 sollte die ERC-Anforderungen an den Beton regeln; das CEN-Projekt wurde im Juni 2024 gelöscht. Nach einem schwedischen Fachvortrag (2025) fehlte der europäische Konsens, die ERC-Regeln sollen deshalb in nationale Anwendungsdokumente zu EN 206. Dazu passt die „Öffnung für nationale Regeln“ in EN 206-1:2026.",
+    "deutschlandKonzeptInArbeit": "Deutschland: Konzept in Arbeit",
+    "dafstbHeft6662025": "DAfStb-Heft 666 (2025) untersucht ein „deutsches ERC-Konzept“ für XC1 bis XC4. Danach erreicht die Mehrheit der untersuchten Betone XRC 5; je nach Expositionsklasse, Bauteildicke und Zementart ergeben sich bis zu 22 % geringere Treibhausgasemissionen als bei den Referenzrezepturen nach DIN 1045-2.",
+    "dasModulSchnellkarbonatisierungErmittelt": "Das Modul Schnellkarbonatisierung ermittelt K_AC nach DIN EN 12390-12 und rechnet näherungsweise auf natürliche Bedingungen um. Das Ergebnis K_nat in mm/√a hat dieselbe Dimension wie die XRC-Klassenzahl – eine Zuordnung zu einer Klasse setzt aber den national festgelegten Umrechnungsfaktor und die Prüfvorgaben voraus.",
+    "europäischerZeitplan": " Europäischer Zeitplan",
+    "zwischenDerSpätestenNationalen": "Zwischen der spätesten nationalen Veröffentlichung und der Zurückziehung liegt eine Koexistenzphase, in der beide Generationen nebeneinander stehen; die irische Normungsorganisation NSAI spricht für ihren Zeitplan von zwölf Monaten. Nationale Anhänge müssen neu erarbeitet werden.",
+    "standInDeutschland": "Stand in Deutschland",
+    "dieDinFassungenErscheinen": "Die DIN-Fassungen erscheinen schrittweise (z. B. EC3-1-1 im April 2025, EC2-1-1 im September 2025, EC5-1-1 im September 2026). Bauaufsichtlich eingeführt ist nach MVV TB 2025/1 weiterhin die 1. Generation. Die Zurückziehung einer DIN-Norm allein ändert daran nichts: Maßgebend für das Bauordnungsrecht ist, welche Ausgabe die Technischen Baubestimmungen nennen. Bei der 1. Generation wurde das Paket aus EC 0 bis 9 zum 01.07.2012 verbindlich, nachdem Normen und Nationale Anhänge vorlagen.",
+    "einForschungsberichtDerInitiative": "Ein Forschungsbericht der Initiative Praxisgerechte Regelwerke (2025) hält die Einführung „ab 2027 (Plan A)“ für möglich; eine abschließende Bewertung sei erst nach Vorlage aller finalen Nationalen Anhänge möglich. Für EC2 wird in einer Fachveröffentlichung die Einführung 2027 einschließlich NA erwartet. ",
+    "ec2DinEn1992": "EC2 – DIN EN 1992-1-1:2025-09",
+    "vollständigeTechnischeÜberarbeitungInhal": "vollständige technische Überarbeitung; Inhalte von EN 1992-2 (Brücken) und EN 1992-3 (Behälter) aufgenommen, neue Anhänge K bis S",
+    "dauerhaftigkeitÜberExpositionswiderstand": "Dauerhaftigkeit über Expositionswiderstandsklassen (ERC) statt Anforderungsklassen",
+    "neueMechanischBegründeteModelle": "neue, mechanisch begründete Modelle für Querkraft ohne Querkraftbewehrung und Durchstanzen",
+    "informativeAnhängeUA": "informative Anhänge u. a. zu Bestandsbewertung, Stahlfaserbeton, rezyklierter Gesteinskörnung und FVK-Bewehrung; nichtrostender Betonstahl normativ",
+    "ec5DinEn1995": "EC5 – DIN EN 1995-1-1:2026-09",
+    "brettsperrholzUndWeitereHolzprodukte": "Brettsperrholz und weitere Holzprodukte, gegliedert nach Produktgruppen mit Materialkennwerten",
+    "verbesserteHinweiseZurDauerhaftigkeit": "verbesserte Hinweise zur Dauerhaftigkeit",
+    "neueRegelnFürDurchbrüche": "neue Regeln für Durchbrüche, Verstärkungen, zimmermannsmäßige Verbindungen, eingeklebte Stahlstäbe und Holzpfähle",
+    "erweiterteQuerdrucknachweiseSchwingungsn": "erweiterte Querdrucknachweise, Schwingungsnachweis überarbeitet, Ermüdungsnachweis neu, Robustheit verbessert",
+    "ec0En19902023": "EC0 – EN 1990:2023",
+    "geänderterAnsatzFürDen": "Geänderter Ansatz für den Nachweis im Grenzzustand der Tragfähigkeit, ergänzte Festlegungen zu Robustheit, Ermüdung, geotechnischen Bauwerken, Nachhaltigkeit und Zuverlässigkeitsanalyse; Anwendungsbereich um Lager erweitert. DIN-Fassung angekündigt. ",
+    "ec3DinEn1993": "EC3 – DIN EN 1993-1-1:2025-04",
+    "stahlsortenBisS700Elliptische": "Stahlsorten bis S700, elliptische Hohlprofile, neue Verfahren für Querschnitte der Klasse 3 und für den Biegedrillknicknachweis, Ablaufdiagramm zur Tragwerksberechnung.",
+    "teilsicherheitsbeiwerteUndKombinationsre": "Teilsicherheitsbeiwerte und Kombinationsregeln nach der eingeführten DIN EN 1990 mit NA behandelt das Modul Eurocode-Sicherheitskonzept.",
+    "normenstandOktober2026Deutschland": "Normenstand Oktober 2026 (Deutschland)",
+    "giltHeuteBauaufsichtlich": "Gilt heute (bauaufsichtlich)",
+    "neuErschienen": "Neu erschienen",
+    "voraussichtlichEingeführt": "Voraussichtlich eingeführt",
+    "wasHeißtDasFür": "Was heißt das für Planung und Studium?",
+    "nachweiseWeiterhinNachDen": "Nachweise weiterhin nach den eingeführten Ausgaben führen und im Bericht die Ausgabe angeben.",
+    "neueAusgabenNichtMit": "Neue Ausgaben nicht mit Nationalen Anhängen der alten Generation kombinieren.",
+    "beiNeuenKlinkerarmenBetonen": "Bei neuen, klinkerarmen Betonen: Karbonatisierungswiderstand früh prüfen lassen – er wird mit ERC zur Planungsgröße.",
+    "offenePunkteStandDieses": "Offene Punkte (Stand dieses Moduls)",
+    "terminDerBauaufsichtlichenEinführung": "Termin der bauaufsichtlichen Einführung (MVV TB) für EN 206-1/-2 und die Eurocodes der 2. Generation",
+    "inhaltDerNeuenNationalen": "Inhalt der neuen Nationalen Anhänge und einer Neufassung von DIN 1045-2",
+    "verbindlicheDeutscheErcRegeln": "verbindliche deutsche ERC-Regeln und Umrechnungsfaktor für DIN EN 12390-12",
+    "wortlautDerNeuenBindemittelbegriffe": "Wortlaut der neuen Bindemittelbegriffe und der CO₂-Klassen in der Endfassung",
+    "denWegVonDer": "Den Weg von der Norm über die MVV TB in das Landesrecht und den Unterschied zwischen Norm und Technischer Baubestimmung behandelt das Modul Regulatives & Normung."
+  },
+  "werte": {
+    "dinEn2061": "DIN EN 206-1/-2:2026",
+    "expositionswiderstandErc": "Expositionswiderstand (ERC)",
+    "eurocodes2Generation": "Eurocodes 2. Generation",
+    "wasGiltWann": "Was gilt wann?",
+    "betonFestlegungEigenschaftenHerstellung": "Beton: Festlegung, Eigenschaften, Herstellung, Konformität",
+    "dinEn2062021": "DIN EN 206:2021-06 zusammen mit DIN 1045-2:2023-08",
+    "dinEn20612": "DIN EN 206-1:2026-07 und DIN EN 206-2:2026-07 (ersetzen DIN EN 206:2021-06 teilweise); EN 206-3 (Geotechnik): DIN-Ausgabe hier nicht geprüft",
+    "eurocode0GrundlagenDer": "Eurocode 0: Grundlagen der Tragwerksplanung",
+    "dinEn19901": "DIN EN 1990 (1. Generation, aktuelle DIN-Ausgabe 2021-10) mit NA",
+    "en19902023Erschienen": "EN 1990:2023 erschienen; die Deutsche Fassung führt DIN Media als „vorbestellbar“ (Ausgabedatum noch nicht genannt)",
+    "eurocode2Betonbau": "Eurocode 2: Betonbau",
+    "dinEn19921": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04",
+    "dinEn199212": "DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023; ersetzt auch DIN EN 1992-2 und DIN EN 1992-3); neuer NA: noch offen",
+    "eurocode3Stahlbau": "Eurocode 3: Stahlbau",
+    "dinEn19931": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA",
+    "dinEn199312": "DIN EN 1993-1-1:2025-04 (Deutsche Fassung EN 1993-1-1:2022); neuer NA: noch offen",
+    "eurocode5Holzbau": "Eurocode 5: Holzbau",
+    "dinEn19951": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08",
+    "dinEn199512": "DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025); NA ausstehend",
+    "bereicheDesModulsAusblick": "Bereiche des Moduls Ausblick neue Normengeneration",
+    "dinAusgabeNichtGeprüft": "DIN-Ausgabe nicht geprüft",
+    "änderungenInDinEn": "Änderungen in DIN EN 206-1:2026-07",
+    "heutigeRegelnFürExpositionsklassen": "Heutige Regeln für Expositionsklassen und Betondeckung",
+    "zumModulDauerhaftigkeit": "Zum Modul Dauerhaftigkeit",
+    "lesartNormtextNichtEingesehen": "Lesart, Normtext nicht eingesehen",
+    "verbindlicheNationaleErcRegeln": "verbindliche nationale ERC-Regeln: noch offen",
+    "karbonatisierungswiderstandSelbstBestimm": "Karbonatisierungswiderstand selbst bestimmen",
+    "zumModulSchnellkarbonatisierung": "Zum Modul Schnellkarbonatisierung",
+    "heutigesSicherheitskonzept": "Heutiges Sicherheitskonzept",
+    "zumModulEurocodeSicherheitskonzept": "Zum Modul Eurocode-Sicherheitskonzept",
+    "übersichtGiltHeuteNeu": "Übersicht: gilt heute, neu erschienen, voraussichtlich eingeführt",
+    "wieNormenVerbindlichWerden": "Wie Normen verbindlich werden",
+    "zumModulRegulativesNormung": "Zum Modul Regulatives & Normung",
+    "oktober2026ModulNeu": "Oktober 2026 (Modul neu erstellt aus öffentlichen Quellen; fachliche Freigabe durch den Autor ausstehend)",
+    "dinMediaDinEn": "DIN Media: DIN EN 206-1:2026-07 (Änderungsvermerk)",
+    "dinMediaDinEn2": "DIN Media: DIN EN 206-2:2026-07 (Änderungsvermerk)",
+    "dinMediaDinEn3": "DIN Media: DIN EN 1992-1-1:2025-09 (Änderungsvermerk)",
+    "dinMediaDinEn4": "DIN Media: DIN EN 1995-1-1:2026-09 (Änderungsvermerk)",
+    "dinMediaDinEn5": "DIN Media: DIN EN 1993-1-1:2025-04 (Änderungsvermerk)",
+    "dinMediaDafstbHeft": "DIN Media: DAfStb-Heft 666 (deutsches ERC-Konzept)",
+    "nsaiPublicConsultationPren": "NSAI: Public consultation prEN 206-1 (Änderungsliste)",
+    "nsai2ndGenerationEurocodes": "NSAI: 2nd Generation Eurocodes – Ireland’s adoption plan (Koexistenz)",
+    "gccaEn206Report": "GCCA: EN 206 Report (CO₂-Klassen GWR im Entwurf)",
+    "theConcreteCentreNext": "The Concrete Centre: Next Generation Eurocode 2",
+    "rwthCampusCbiThe": "RWTH Campus CBI: The second generation of Eurocode 2 in practice (2025)",
+    "irbKurzberichtEaseOf": "IRB: Kurzbericht Ease of Use der künftigen Eurocodes (2025)",
+    "bauforumstahlEurocodesAufCen": "bauforumstahl: Eurocodes auf CEN-Ebene veröffentlicht (März 2026)",
+    "energiforskPetersonErcBetongdagen": "Energiforsk: Peterson, ERC (Betongdagen 2025)",
+    "fachkommissionBautechnikSchreibenZur": "Fachkommission Bautechnik: Schreiben zur Einführung der Eurocodes (2010)"
+  },
+  "daten": {
+    "ZEITSTRAHL": [
+      {
+        "wann": "2012",
+        "was": "Normungsauftrag M/515 der EU-Kommission an CEN zur Überarbeitung und Erweiterung der Eurocodes",
+        "quelle": "JRC"
+      },
+      {
+        "wann": "2016",
+        "was": "Beginn der Arbeiten in CEN/TC 250",
+        "quelle": "JRC"
+      },
+      {
+        "wann": "bis 30.03.2026",
+        "was": "endgültige Texte an die nationalen Normungsorganisationen (DAV)",
+        "quelle": "JRC"
+      },
+      {
+        "wann": "März 2026",
+        "was": "alle vorgesehenen Teile auf CEN-Ebene veröffentlicht (74 Normteile und ergänzende Spezifikationen)",
+        "quelle": "bauforumstahl"
+      },
+      {
+        "wann": "30.09.2027",
+        "was": "spätester Termin für die nationale Veröffentlichung (DoP)",
+        "quelle": "JRC"
+      },
+      {
+        "wann": "30.03.2028",
+        "was": "Zurückziehung entgegenstehender nationaler Normen, also der 1. Generation (DoW)",
+        "quelle": "JRC"
+      }
+    ],
+    "NormenAusblick.literatur": [
+      "Andrade, C.; Izquierdo, D.: Durability and cover depth provisions in next Eurocode 2. Background modelling and calculations. Hormigón y Acero 74 (2023), Nr. 299–300, S. 19–40",
+      "Hermerschmidt, W.: Wissenschaftliche Studie zur Ermittlung des CO2-Reduktionspotenzials durch das deutsche ERC-Konzept. DAfStb-Heft 666. Berlin: Beuth/DIN Media 2025",
+      "Initiative Praxisgerechte Regelwerke im Bauwesen e. V.: Analyse der künftigen Eurocodes hinsichtlich der tatsächlich erreichten Verbesserung der Anwendbarkeit (Ease of Use) – Fortsetzung. Kurzbericht, Stand 06.08.2025 (IRB)",
+      "GCCA – Global Cement and Concrete Association: EN 206 Clause 5.4 (prEN 206-1:2024) und GCCA Low Carbon Ratings. Bericht 2025",
+      "Peterson, M.: Exponeringsresistensklasser (ERC). Vortrag Betongdagen 2025, Energiforsk"
+    ],
+    "NormenAusblick.regelwerke": [
+      "DIN_EN_206",
+      {
+        "title": "DIN EN 206-1:2026-07 (Beton – Teil 1: Eigenschaften, Anforderungen, werkseigene Produktionskontrolle und Bewertungskriterien für einzelne Werte; bauaufsichtlich noch nicht eingeführt)"
+      },
+      {
+        "title": "DIN EN 206-2:2026-07 (Beton – Teil 2: Konformitätsbewertung und Zertifizierung; bauaufsichtlich noch nicht eingeführt)"
+      },
+      "DIN_EN_1992_1_1",
+      "DIN_EN_1993_1_1",
+      "DIN_EN_1995_1_1",
+      {
+        "title": "DIN EN 1990 mit NA (1. Generation, eingeführt); EN 1990:2023 (2. Generation, DIN-Fassung angekündigt)"
+      },
+      {
+        "title": "DIN EN 12390-12:2020-04 (Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren)"
+      },
+      {
+        "title": "MVV TB 2025/1 (Muster-Verwaltungsvorschrift Technische Baubestimmungen)"
+      }
+    ],
+    "NormenAusblick.weblinks.0": {
+      "title": "JRC: Second generation of Eurocodes (Mandat M/515, DAV, DoP, DoW)",
+      "url": "https://eurocodes.jrc.ec.europa.eu/second-generation-eurocodes"
+    },
+    "NormenAusblick.weblinks.6": {
+      "title": "DIN Media: DIN EN 1990 (Deutsche Fassung EN 1990:2023, vorbestellbar)",
+      "url": "https://www.dinmedia.de/de/norm/din-en-1990/357122321"
+    },
+    "NormenAusblick.weblinks.11": {
+      "title": "Genorma: CEN-Projekt EN 206-100 (ERC-Beton, gelöscht 2024)",
+      "url": "https://genorma.com/en/standards/cen-proj-76490"
+    },
+    "NormenAusblick.formeln": [
+      {
+        "formel": "x_{c,50} \\approx \\mathrm{XRC} \\cdot \\sqrt{50\\,\\text{a}}",
+        "erklaerung": "Lesebeispiel: XRC-Klassenzahl als Karbonatisierungsrate in mm/√a, Tiefe nach 50 Jahren unter Referenzbedingungen (Lesart nach Andrade/Izquierdo 2023, nicht aus dem Normtext)."
+      }
+    ]
+  }
+}

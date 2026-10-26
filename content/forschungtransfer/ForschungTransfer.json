@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "textDurchProfHuber": "[Text durch Prof. Huber]",
+    "öffnetInNeuemFenster": "(öffnet in neuem Fenster)",
+    "forschungUndTransfer": " Forschung und Transfer",
+    "dasBaustoffboardEntstehtAus": "Das BaustoffBoard entsteht aus Lehre und Forschung an der Technischen Hochschule Augsburg (THA). Diese Seite gibt einen Überblick über das Lehrgebiet, den Bezug zum Technologietransferzentrum Aichach und die Forschungsthemen, zu denen es im BaustoffBoard eigene Lernmodule gibt.",
+    "werkstoffeUndStoffkreisläufeIm": "**Werkstoffe und Stoffkreisläufe im Bauwesen** – Prof. Dr.-Ing. Jürgen Huber, Fakultät für Architektur und Bauwesen der Technischen Hochschule Augsburg.",
+    "imBaustofflaborWerdenBaustoffe": "Im Baustofflabor werden Baustoffe in Lehre und Forschung geprüft und untersucht. ",
+    "hinweiseZumSicherenArbeiten": "Hinweise zum sicheren Arbeiten im Labor: ",
+    "dasTtzAichachIst": "Das TTZ Aichach ist ein Technologietransferzentrum der THA mit dem Schwerpunkt digitale Planung und Produktion im Bauwesen. Laut THA arbeitet es unter anderem zu Mauerwerksbau und digitalem Holzbau, ressourceneffizienten Baustoffen, additiven und digitalen Fertigungsverfahren und digitalen Planungswerkzeugen.",
+    "forschungUndTransferAnwendungsnahe": "**Forschung und Transfer:** anwendungsnahe Forschung, deren Ergebnisse in Unternehmen und Bauprojekte überführt werden.",
+    "weiterbildungAusUndWeiterbildungsangebot": "**Weiterbildung:** Aus- und Weiterbildungsangebote für Fachkräfte.",
+    "bezugDesLehrgebietsZum": "Bezug des Lehrgebiets zum TTZ Aichach: ",
+    "zuDenFolgendenThemen": "Zu den folgenden Themen bietet das BaustoffBoard Lernmodule mit Grundlagen, Rechenwegen und Selbsttests. Die Module vermitteln den allgemeinen Stand des Wissens; sie geben keine Projektergebnisse wieder.",
+    "dieThemenFließenIn": "Die Themen fließen in Lehrveranstaltungen der Bachelor- und Masterstudiengänge der Fakultät für Architektur und Bauwesen ein. ",
+    "abschlussarbeitenUndSemesterprojekte": "Abschlussarbeiten und Semesterprojekte: ",
+    "anfragenZuForschungTransfer": "Anfragen zu Forschung, Transfer und Abschlussarbeiten richten Sie bitte über die offiziellen Kontaktwege der Technischen Hochschule Augsburg an die Fakultät für Architektur und Bauwesen.",
+    "rechtlicheAngabenZumBaustoffboard": "Rechtliche Angaben zum BaustoffBoard: "
+  },
+  "werte": {
+    "betonMitPflanzenkohleAls": "Beton mit Pflanzenkohle als Beitrag zur Kohlenstoffspeicherung im Baustoff.",
+    "beschleunigteKarbonatisierungsprüfungZur": "Beschleunigte Karbonatisierungsprüfung zur Bewertung der Dauerhaftigkeit von Beton.",
+    "altholzNirSortierungUnd": "Altholz, NIR-Sortierung und Urban Mining",
+    "sortierungUndStofflicheVerwertung": "Sortierung und stoffliche Verwertung von Altholz aus dem Rückbau; Bauwerke als Rohstofflager.",
+    "pfasInBaustoffen": "PFAS in Baustoffen",
+    "perUndPolyfluorierteAlkylsubstanzen": "Per- und polyfluorierte Alkylsubstanzen in Bauprodukten, Erkundung im Bestand und Rückbau.",
+    "kreislaufwirtschaftUndÖkobilanzierung": "Kreislaufwirtschaft und Ökobilanzierung",
+    "stoffkreisläufeImBauwesenRessourceneffiz": "Stoffkreisläufe im Bauwesen, Ressourceneffizienz und Ökobilanz (LCA) von Baustoffen und Bauwerken.",
+    "technologietransferzentrumTtzAichach": "Technologietransferzentrum (TTZ) Aichach",
+    "ttzAichachAufTha": "TTZ Aichach auf tha.de",
+    "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen auf tha.de"
+  }
+}

@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Gauge, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { PruefverfahrenDetail } from './pruefverfahrenData';
+import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenSimulatoren.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface SimulatorProps {
   method: PruefverfahrenDetail;
@@ -98,13 +100,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const factor = ((1 + nu) * (1 - 2 * nu)) / (1 - nu);
     const edyn = usDensity * Math.pow(vp, 2) * factor * 1e-9; // GPa
 
-    let status = 'Hervorragendes, sehr dichtes Betongefüge';
+    let status = inhalt.werte.hervorragendesSehrDichtesBetongefüge;
     let color = 'text-emerald-600 bg-emerald-50 border-emerald-200';
     if (vp < 3000) {
-      status = 'Kritischer Gefügemangel / Ausgeprägte Hohlstellen';
+      status = inhalt.werte.kritischerGefügemangelAusgeprägteHohlste;
       color = 'text-rose-600 bg-rose-50 border-rose-200';
     } else if (vp < 3800) {
-      status = 'Mäßige Gefügequalität / Lokale Mikrorissigkeit';
+      status = inhalt.werte.mäßigeGefügequalitätLokaleMikrorissigkei;
       color = 'text-amber-600 bg-amber-50 border-amber-200';
     }
 
@@ -118,19 +120,19 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Potentialfeld
   const potentialCalc = useMemo(() => {
-    let prob = 'Sehr gering (< 10 %)';
-    let state = 'Passiver, intakter Bewehrungsstahl';
+    let prob = inhalt.werte.sehrGering10;
+    let state = inhalt.werte.passiverIntakterBewehrungsstahl;
     let badgeColor = 'bg-emerald-500 text-white';
     let borderColor = 'border-emerald-200 bg-emerald-50/50';
 
     if (potentialVal < -350) {
-      prob = 'Sehr hoch (> 90 %)';
-      state = 'Akute, fortschreitende Lochfraßkorrosion (Anode)';
+      prob = inhalt.werte.sehrHoch90;
+      state = inhalt.werte.akuteFortschreitendeLochfraßkorrosionAno;
       badgeColor = 'bg-rose-600 text-white';
       borderColor = 'border-rose-200 bg-rose-50/50';
     } else if (potentialVal <= -200) {
-      prob = 'Ungewiss (10 % bis 90 %)';
-      state = 'Übergangsbereich / beginnende Depassivierung';
+      prob = inhalt.werte.ungewiss10Bis90;
+      state = inhalt.werte.übergangsbereichBeginnendeDepassivierung;
       badgeColor = 'bg-amber-500 text-white';
       borderColor = 'border-amber-200 bg-amber-50/50';
     }
@@ -165,7 +167,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     // Kein Normwert: Anhaltswert ≈ 0,5 M.-% bez. Zement (Einzelfallbewertung); Spannstahl: kein gesicherter Grenzwert
     const limit = 0.5;
     const isExceeded = isPrestressed ? chlorideVal >= 0.2 : chlorideVal >= limit;
-    const stufe = chlorideVal < 0.2 ? 'unkritisch' : chlorideVal < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
+    const stufe = chlorideVal < 0.2 ? 'unkritisch' : chlorideVal < 0.5 ? inhalt.werte.beobachtungPrävention : inhalt.werte.korrosionWahrscheinlich;
     const ratio = formatDeZahl(chlorideVal / limit, 1) + ' (' + stufe + ')';
 
     return {
@@ -195,13 +197,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     // w_kap = (deltaV * 1e-3 kg) / (0.00045 m² * 1) = deltaV * 2.22 kg/(m²*sqrt(h))
     const w = waterLoss60 * 2.222;
     // Einstufung nach DIN 4108-3: w ≤ 0,5 wasserabweisend, w ≤ 2,0 wasserhemmend, darüber wassersaugend
-    let evalText = 'Wasserabweisend (w ≤ 0,5 kg/(m²·√h), DIN 4108-3)';
+    let evalText = inhalt.werte.wasserabweisendW05;
     let badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
     if (w > 2.0) {
-      evalText = 'Wassersaugend (w > 2,0 kg/(m²·√h)) – kein Schlagregenschutz';
+      evalText = inhalt.werte.wassersaugendW20;
       badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
     } else if (w > 0.5) {
-      evalText = 'Wasserhemmend (0,5 < w ≤ 2,0 kg/(m²·√h), DIN 4108-3)';
+      evalText = inhalt.werte.wasserhemmend05W;
       badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
     }
 
@@ -270,12 +272,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <Gauge size={16} />
           </span>
           <div>
-            <h4 className="font-bold text-sm text-text-main">
-              Interaktiver Prüf- &amp; Auswertungs-Simulator
-            </h4>
-            <p className="text-[11px] text-text-main/70">
-              Prüfparameter in-situ einstellen und normative Grenzwerte direkt validieren
-            </p>
+            <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.interaktiverPrüfAuswertungsSimulator} /></h4>
+            <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.prüfparameterInSituEinstellen} /></p>
           </div>
         </div>
         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-shiraz/10 text-shiraz font-bold">
@@ -289,7 +287,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Rückprallwert R (Median aus 10 Schlägen):</span>
+                <span><MdText text={inhalt.texte.rückprallwertRMedianAus} /></span>
                 <span className="font-bold text-shiraz">{formatDeWert(rebound)}</span>
               </div>
               <input
@@ -310,29 +308,23 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   type="button"
                   onClick={() => setImpactAngle('horiz')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'horiz' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Horizontal (0°)
-                </button>
+                ><MdText text={inhalt.texte.horizontal0} /></button>
                 <button aria-pressed={impactAngle === 'down'}
                   type="button"
                   onClick={() => setImpactAngle('down')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'down' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Boden (-90°)
-                </button>
+                ><MdText text={inhalt.texte.boden90} /></button>
                 <button aria-pressed={impactAngle === 'up'}
                   type="button"
                   onClick={() => setImpactAngle('up')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'up' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Decke (+90°)
-                </button>
+                ><MdText text={inhalt.texte.decke90} /></button>
               </div>
             </div>
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Karbonatisierungstiefe d_k:</span>
+                <span><MdText text={inhalt.texte.karbonatisierungstiefeDK} /></span>
                 <span className="font-bold text-slate-800">{formatDeWert(carbDepth)} mm</span>
               </div>
               <input
@@ -349,24 +341,22 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                In-situ-Druckfestigkeit (DIN EN 13791)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.inSituDruckfestigkeitDin} /></span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{schmidtCalc.fc_est}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="flex items-center gap-2 pt-1">
-                <span className="text-xs font-semibold text-slate-600">Abgeschätzte Festigkeitsklasse:</span>
+                <span className="text-xs font-semibold text-slate-600"><MdText text={inhalt.texte.abgeschätzteFestigkeitsklasse} /></span>
                 <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-mono font-bold text-xs">
                   {schmidtCalc.grade}
                 </span>
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-3 border-t border-slate-100 space-y-1">
-              <p>• Richtungsbereinigter Rückprallwert: <strong>{schmidtCalc.r_corr}</strong></p>
-              <p>• Karbonatisierungs-Korrekturfaktor k_carb: <strong>{schmidtCalc.k_carb}</strong></p>
-              <p className="text-[10px] text-amber-700">Hinweis: Nach DIN EN 13791 dürfen Rückprallwerte nur über eine Kalibrierung an Bohrkernen desselben Bauteils in Festigkeiten umgerechnet werden.</p>
+              <p><MdText text={inhalt.texte.richtungsbereinigterRückprallwert} /><strong>{schmidtCalc.r_corr}</strong></p>
+              <p><MdText text={inhalt.texte.karbonatisierungsKorrekturfaktorKCarb} /><strong>{schmidtCalc.k_carb}</strong></p>
+              <p className="text-[10px] text-amber-700"><MdText text={inhalt.texte.hinweisNachDinEn} /></p>
             </div>
           </div>
         </div>
@@ -378,7 +368,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Messstrecke s (Durchschallungsdicke):</span>
+                <span><MdText text={inhalt.texte.messstreckeSDurchschallungsdicke} /></span>
                 <span className="font-bold text-shiraz">{formatDeZahl((usDistance * 100), 0)} cm</span>
               </div>
               <input
@@ -394,7 +384,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Gemessene P-Wellenlaufzeit Δt:</span>
+                <span><MdText text={inhalt.texte.gemessenePWellenlaufzeitT} /></span>
                 <span className="font-bold text-shiraz">{formatDeWert(usTime)} µs</span>
               </div>
               <input
@@ -411,17 +401,15 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-3">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Akustische Kennwerte in-situ
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.akustischeKennwerteInSitu} /></span>
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Schallgeschwindigkeit v_p</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.schallgeschwindigkeitVP} /></span>
                   <span className="text-xl font-black text-slate-900 font-mono">{formatDeWert(usCalc.vp)}</span>
                   <span className="text-[10px] text-slate-500 ml-1">m/s</span>
                 </div>
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Dyn. Elastizitätsmodul E_dyn</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.dynElastizitätsmodulEDyn} /></span>
                   <span className="text-xl font-black text-slate-900 font-mono">{usCalc.edyn}</span>
                   <span className="text-[10px] text-slate-500 ml-1">GPa</span>
                 </div>
@@ -440,7 +428,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Halbzellenpotential E_cell (Cu/CuSO₄):</span>
+                <span><MdText text={inhalt.texte.halbzellenpotentialECellCu} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeWert(potentialVal)} mV</span>
               </div>
               <input
@@ -454,17 +442,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               />
             </div>
             <div className="text-[11px] text-slate-600 bg-white p-3 rounded-xl border border-slate-200">
-              <span className="font-bold block mb-1 text-slate-800">Messindikator:</span>
-              Je stärker negativ das Halbzellenpotential ausfällt, desto höher ist die thermodynamische Triebkraft für anodische Eisenauflösung (Lochfraß).
-            </div>
+              <span className="font-bold block mb-1 text-slate-800">Messindikator:</span><MdText text={inhalt.texte.jeStärkerNegativDas} /></div>
           </div>
 
           <div className={`md:col-span-6 p-4 rounded-xl border flex flex-col justify-between ${potentialCalc.borderColor}`}>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
-                  Korrosionswahrscheinlichkeit (DGZfP B1)
-                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600"><MdText text={inhalt.texte.korrosionswahrscheinlichkeitDgzfpB1} /></span>
                 <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase ${potentialCalc.badgeColor}`}>
                   {potentialCalc.prob}
                 </span>
@@ -475,10 +459,10 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             </div>
             <div className="text-[11px] text-slate-600 pt-3 border-t border-slate-200/60">
               {potentialVal < -350 
-                ? '⚠️ Handlungsbedarf: Betondeckung partiell abtragen, Bewehrung inspizieren und chloridbelasteten Beton bis hinter die Bewehrungsebene entfernen.'
+                ? inhalt.werte.handlungsbedarfBetondeckungPartiellAbtra
                 : potentialVal <= -200
-                ? '🔍 Kontrollbefund: Erhöhte Feuchte- oder Carbonatisierungsneigung. Engmaschige Nachmessung oder Chloridanalyse einplanen.'
-                : '✅ Unkritisch: Die Passivschicht der Bewehrung ist vollkommen intakt. Keine Instandsetzung erforderlich.'}
+                ? inhalt.werte.kontrollbefundErhöhteFeuchteOder
+                : inhalt.werte.unkritischDiePassivschichtDer}
             </div>
           </div>
         </div>
@@ -489,7 +473,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
           <div className="md:col-span-6 space-y-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 block mb-1">Expositionsklasse nach Eurocode 2:</label>
+              <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.expositionsklasseNachEurocode2} /></label>
               <div className="grid grid-cols-5 gap-1.5 text-xs">
                 {(['XC1', 'XC3', 'XC4', 'XD1', 'XD3'] as const).map((exp) => (
                   <button
@@ -506,7 +490,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Gemessene Betondeckung c_ist:</span>
+                <span><MdText text={inhalt.texte.gemesseneBetondeckungCIst} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeWert(measuredCover)} mm</span>
               </div>
               <input
@@ -523,19 +507,17 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Soll-Ist-Abgleich Betondeckung (DIN EN 1992-1-1)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.sollIstAbgleichBetondeckung} /></span>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-600">Gefordertes Nennmaß c_nom:</span>
+                <span className="text-xs text-slate-600"><MdText text={inhalt.texte.gefordertesNennmaßCNom} /></span>
                 <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_nom)} mm</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-600">Mindestdeckung c_min:</span>
+                <span className="text-xs text-slate-600"><MdText text={inhalt.texte.mindestdeckungCMin} /></span>
                 <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_min)} mm</span>
               </div>
               <div className="flex items-center justify-between pt-1">
-                <span className="text-xs font-semibold text-slate-700">Deckungsdifferenz Δc:</span>
+                <span className="text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.deckungsdifferenzC} /></span>
                 <span className={`font-mono font-bold text-xs ${coverCalc.isOk ? 'text-emerald-700' : 'text-rose-700'}`}>
                   {coverCalc.diff} mm
                 </span>
@@ -547,7 +529,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 : 'bg-rose-50 text-rose-800 border-rose-200'
             }`}>
               {coverCalc.isOk ? <CheckCircle2 size={16} /> : <AlertTriangle size={16} />}
-              <span>{coverCalc.isOk ? 'Konform: Dauerhafter Passivierungsschutz gewährleistet' : 'Unzureichend: Akute Depassivierungs- und Rostgefahr!'}</span>
+              <span>{coverCalc.isOk ? inhalt.werte.konformDauerhafterPassivierungsschutzGew : inhalt.werte.unzureichendAkuteDepassivierungsUnd}</span>
             </div>
           </div>
         </div>
@@ -564,22 +546,18 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   type="button"
                   onClick={() => setIsPrestressed(false)}
                   className={`py-2 px-3 rounded-lg border font-bold ${!isPrestressed ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Stahlbeton (schlaff bewehrt)
-                </button>
+                ><MdText text={inhalt.texte.stahlbetonSchlaffBewehrt} /></button>
                 <button
                   type="button"
                   onClick={() => setIsPrestressed(true)}
                   className={`py-2 px-3 rounded-lg border font-bold ${isPrestressed ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Spannbeton (Spannglieder)
-                </button>
+                ><MdText text={inhalt.texte.spannbetonSpannglieder} /></button>
               </div>
             </div>
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Chloridgehalt an Bewehrungslage:</span>
+                <span><MdText text={inhalt.texte.chloridgehaltAnBewehrungslage} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeZahl(chlorideVal, 2)} M.-%</span>
               </div>
               <input
@@ -591,7 +569,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 onChange={(e) => setChlorideVal(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
-              <span className="text-[10px] text-slate-400 block mt-1">Gew.-% Chloridionen bezogen auf Zementmasse</span>
+              <span className="text-[10px] text-slate-400 block mt-1"><MdText text={inhalt.texte.gewChloridionenBezogenAuf} /></span>
             </div>
           </div>
 
@@ -599,15 +577,13 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             chlorideCalc.isExceeded ? 'bg-rose-50 border-rose-200' : 'bg-emerald-50 border-emerald-200'
           }`}>
             <div className="space-y-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block">
-                Chloridgehalt an der Bewehrung (Anhaltswert, kein Normwert)
-              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block"><MdText text={inhalt.texte.chloridgehaltAnDerBewehrung} /></span>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Anhaltswert korrosionsauslösend:</span>
-                <span className="font-mono font-bold text-slate-900">≈ {formatDeZahl(chlorideCalc.limit, 1)} M.-% bez. Zement</span>
+                <span className="text-xs text-slate-700"><MdText text={inhalt.texte.anhaltswertKorrosionsauslösend} /></span>
+                <span className="font-mono font-bold text-slate-900">≈ {formatDeZahl(chlorideCalc.limit, 1)}<MdText text={inhalt.texte.mBezZement} /></span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Verhältnis Ist/Anhaltswert:</span>
+                <span className="text-xs text-slate-700"><MdText text={inhalt.texte.verhältnisIstAnhaltswert} /></span>
                 <span className={`font-mono font-bold text-sm ${chlorideCalc.isExceeded ? 'text-rose-700' : 'text-emerald-700'}`}>
                   {chlorideCalc.ratio}
                 </span>
@@ -615,8 +591,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             </div>
             <div className="text-xs font-bold pt-3 border-t border-slate-200">
               {chlorideCalc.isExceeded 
-                ? (isPrestressed ? '❌ Chloride am Spannglied: immer kritisch – gesonderte Beurteilung (SpRK, Lochkorrosion) erforderlich.' : '❌ Korrosionsgefahr erhöht: Instandsetzungsprinzip nach TR Instandhaltung wählen (Chloridentfernung, Beschichtung/Trocknung, KKS nach DIN EN ISO 12696).')
-                : '✅ Unterhalb des Anhaltswerts – Bewertung im Einzelfall (Feuchte, Karbonatisierung, Potentialfeld).'}
+                ? (isPrestressed ? inhalt.werte.chlorideAmSpanngliedImmer : inhalt.werte.korrosionsgefahrErhöhtInstandsetzungspri)
+                : inhalt.werte.unterhalbDesAnhaltswertsBewertung}
             </div>
           </div>
         </div>
@@ -628,7 +604,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Bruchlast F_break am Manometer:</span>
+                <span><MdText text={inhalt.texte.bruchlastFBreakAm} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeZahl(breakForce, 1)} kN</span>
               </div>
               <input
@@ -643,45 +619,36 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-700 block mb-1">Klassifizierung des Bruchbilds:</label>
+              <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.klassifizierungDesBruchbilds} /></label>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <button aria-pressed={failureType === 'beton'}
                   type="button"
                   onClick={() => setFailureType('beton')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'beton' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Betonbruch (A)
-                </button>
+                ><MdText text={inhalt.texte.betonbruchA} /></button>
                 <button aria-pressed={failureType === 'verbund'}
                   type="button"
                   onClick={() => setFailureType('verbund')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'verbund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Verbundfuge (A/B)
-                </button>
+                ><MdText text={inhalt.texte.verbundfugeAB} /></button>
                 <button aria-pressed={failureType === 'kleber'}
                   type="button"
                   onClick={() => setFailureType('kleber')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'kleber' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
-                >
-                  Kleberversagen (Y)
-                </button>
+                ><MdText text={inhalt.texte.kleberversagenY} /></button>
               </div>
             </div>
           </div>
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Abreißfestigkeit f_ct (DIN EN 1542)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.abreißfestigkeitFCtDin} /></span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{haftCalc.fct}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Stempelfläche: {formatDeWert(haftCalc.area)} mm² (Ø 50 mm)
-              </div>
+                Stempelfläche: {formatDeWert(haftCalc.area)}<MdText text={inhalt.texte.mm50Mm} /></div>
             </div>
             <div className={`p-2.5 rounded-lg border text-xs font-bold ${
               haftCalc.isNormOk 
@@ -689,8 +656,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 : 'bg-rose-50 text-rose-800 border-rose-200'
             }`}>
               {haftCalc.isNormOk 
-                ? '✅ Erfüllt: f_ct ≥ 1,5 N/mm² bei reinem Betonbruch (Untergrund tragfähig).' 
-                : '❌ Nicht erfüllt: Entweder f_ct < 1,5 N/mm² oder Verbund-/Kleberversagen (Neuvorbereitung nötig)!'}
+                ? inhalt.werte.erfülltFCt1 
+                : inhalt.werte.nichtErfülltEntwederF}
             </div>
           </div>
         </div>
@@ -702,7 +669,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Eingesaugtes Wasservolumen nach 60 min:</span>
+                <span><MdText text={inhalt.texte.eingesaugtesWasservolumenNach60} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeZahl(waterLoss60, 2)} ml</span>
               </div>
               <input
@@ -715,19 +682,15 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 className="w-full accent-shiraz cursor-pointer"
               />
             </div>
-            <p className="text-[11px] text-slate-600 bg-white p-3 rounded-xl border border-slate-200">
-              Prüfröhrchen mit 10 cm Wassersäule übt ca. 1.000 Pa hydrostatischen Druck aus (Schlagregen-Simulation).
-            </p>
+            <p className="text-[11px] text-slate-600 bg-white p-3 rounded-xl border border-slate-200"><MdText text={inhalt.texte.prüfröhrchenMit10Cm} /></p>
           </div>
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Wasseraufnahme (Karsten, Richtwert – nicht w nach DIN EN ISO 15148)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.wasseraufnahmeKarstenRichtwertNicht} /></span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{karstenCalc.w}</span>
-                <span className="text-xs font-bold text-slate-600">kg / (m² · √h)</span>
+                <span className="text-xs font-bold text-slate-600"><MdText text={inhalt.texte.kgMH} /></span>
               </div>
             </div>
             <div className={`p-2.5 rounded-lg border text-xs font-bold ${karstenCalc.badgeClass}`}>
@@ -743,7 +706,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Gemessene Karbonatisierungstiefe d_k:</span>
+                <span><MdText text={inhalt.texte.gemesseneKarbonatisierungstiefeDK} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeWert(carbMeasured)} mm</span>
               </div>
               <input
@@ -775,7 +738,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Vorhandene Betondeckung c:</span>
+                <span><MdText text={inhalt.texte.vorhandeneBetondeckungC} /></span>
                 <span className="font-bold text-slate-800">{formatDeWert(elementCover)} mm</span>
               </div>
               <input
@@ -792,21 +755,19 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Diffusions-Koeffizient &amp; Rest-Passivierungsdauer
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.diffusionsKoeffizientRestPassivierungsda} /></span>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-600">Karbonatisierungsbeiwert k_carb:</span>
+                <span className="text-xs text-slate-600"><MdText text={inhalt.texte.karbonatisierungsbeiwertKCarb} /></span>
                 <span className="font-mono font-bold text-slate-900">{carbCalc.k_carb} mm/√a</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-600">Errechnete Gesamtdauer bis Stahl:</span>
+                <span className="text-xs text-slate-600"><MdText text={inhalt.texte.errechneteGesamtdauerBisStahl} /></span>
                 <span className="font-mono font-bold text-slate-900">{formatDeWert(carbCalc.t_depass)} Jahre</span>
               </div>
               <div className="flex items-center justify-between pt-1">
-                <span className="text-xs font-semibold text-slate-800">Verbleibende Schutzdauer:</span>
+                <span className="text-xs font-semibold text-slate-800"><MdText text={inhalt.texte.verbleibendeSchutzdauer} /></span>
                 <span className={`font-mono font-black text-sm ${carbCalc.depassivated ? 'text-rose-700' : 'text-emerald-700'}`}>
-                  {carbCalc.depassivated ? '0 Jahre (bereits depassiviert!)' : `ca. ${carbCalc.restJahre} Jahre`}
+                  {carbCalc.depassivated ? inhalt.werte.t0JahreBereitsDepassiviert : `ca. ${carbCalc.restJahre} Jahre`}
                 </span>
               </div>
             </div>
@@ -814,8 +775,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               carbCalc.depassivated ? 'bg-rose-50 text-rose-800 border-rose-200' : 'bg-emerald-50 text-emerald-800 border-emerald-200'
             }`}>
               {carbCalc.depassivated 
-                ? '⚠️ Bewehrungsstahl ist karbonatisiert! Bei Zutritt von Feuchte setzt unmittelbare Rostbildung ein.'
-                : '🛡️ Passivierungsschutz besteht noch für die angegebene Restdauer.'}
+                ? inhalt.werte.bewehrungsstahlIstKarbonatisiertBei
+                : inhalt.werte.passivierungsschutzBestehtNochFür}
             </div>
           </div>
         </div>
@@ -827,7 +788,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <div className="text-xs font-semibold text-slate-700 mb-1">Durchmesser D:</div>
+                <div className="text-xs font-semibold text-slate-700 mb-1"><MdText text={inhalt.texte.durchmesserD} /></div>
                 <div className="font-bold text-shiraz text-sm font-mono">{formatDeWert(coreDiameter)} mm</div>
               </div>
               <div>
@@ -849,7 +810,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Bruchkraft F_max in der Laborpresse:</span>
+                <span><MdText text={inhalt.texte.bruchkraftFMaxIn} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeWert(coreMaxForce)} kN</span>
               </div>
               <input
@@ -866,20 +827,15 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Kerndruckfestigkeit f_c,core (DIN EN 12504-1)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.kerndruckfestigkeitFCCore} /></span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{bohrkernCalc.f_corr}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
-              <div className="text-xs text-slate-600">
-                Schlankheit L/D = {formatDeZahl(Number(bohrkernCalc.lambda), 2)}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? 'entspricht etwa einem 150-mm-Würfel' : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? 'entspricht etwa einem Zylinder 150/300' : 'kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen'}
+              <div className="text-xs text-slate-600"><MdText text={inhalt.texte.schlankheitLD} />{formatDeZahl(Number(bohrkernCalc.lambda), 2)}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? inhalt.werte.entsprichtEtwaEinem150 : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? inhalt.werte.entsprichtEtwaEinemZylinder : inhalt.werte.keinBezugskörperNachDin}
               </div>
             </div>
-            <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-              Referenzverfahren. Charakteristischer Wert erst aus n ≥ 8 Kernen: f_ck,is = min(f_m − k_n·s; f_lowest + M), Einstufung mit f_ck = f_ck,is / 0,85 (DIN EN 13791:2020-02).
-            </div>
+            <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><MdText text={inhalt.texte.referenzverfahrenCharakteristischerWertE} /></div>
           </div>
         </div>
       )}
@@ -890,7 +846,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 space-y-3">
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Dominante Resonanzfrequenz f_peak:</span>
+                <span><MdText text={inhalt.texte.dominanteResonanzfrequenzFPeak} /></span>
                 <span className="font-bold text-shiraz font-mono">{formatDeZahl(ieFreq, 1)} kHz</span>
               </div>
               <input
@@ -906,7 +862,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                <span>Soll-Bauteildicke (Plattenstärke):</span>
+                <span><MdText text={inhalt.texte.sollBauteildickePlattenstärke} /></span>
                 <span className="font-bold text-slate-800">{formatDeWert(ieNominalThickness)} cm</span>
               </div>
               <input
@@ -923,9 +879,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Errechnete Reflektortiefe d (DGZfP B11)
-              </span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.errechneteReflektortiefeDDgzfp} /></span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{ieCalc.d_cm}</span>
                 <span className="text-xs font-bold text-slate-600">cm</span>
@@ -937,8 +891,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 : 'bg-emerald-50 text-emerald-800 border-emerald-200'
             }`}>
               {ieCalc.isDelam 
-                ? '⚠️ Interne Fehlstelle/Delamination! Frequenzpeak reflektiert vor der Bauteilrückwand.' 
-                : '✅ Bauteildicken-Resonanz: Schallwelle reflektiert an der Rückwand (keine inneren Trennlagen).'}
+                ? inhalt.werte.interneFehlstelleDelaminationFrequenzpea 
+                : inhalt.werte.bauteildickenResonanzSchallwelleReflekti}
             </div>
           </div>
         </div>
@@ -949,7 +903,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
           <div className="md:col-span-6 space-y-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 block mb-1">Holzart auswählen:</label>
+              <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.holzartAuswählen} /></label>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 {(['fichte', 'kiefer', 'eiche'] as const).map((t) => (
                   <button
@@ -965,7 +919,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-700 block mb-1">Gefügezustand des Querschnitts:</label>
+              <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.gefügezustandDesQuerschnitts} /></label>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <button aria-pressed={timberCondition === 'gesund'}
                   type="button"
@@ -994,9 +948,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
           <div className="md:col-span-6 bg-slate-900 text-white p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
             <div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-2">
-                Resistogramm-Kurvensimulation (0 bis 100 mm Bohrtiefe)
-              </span>
+              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-2"><MdText text={inhalt.texte.resistogrammKurvensimulation0Bis} /></span>
               <div className="h-16 w-full bg-slate-950 rounded-lg p-2 flex items-center relative overflow-hidden">
                 <svg viewBox="0 0 100 40" className="w-full h-full">
                   <polyline
@@ -1015,9 +967,9 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </div>
             </div>
             <div className="text-[11px] text-slate-300 pt-2 border-t border-slate-800">
-              {timberCondition === 'gesund' && 'Regelmäßige Dichte-Oszillationen zwischen Frühholz und Spätholz.'}
-              {timberCondition === 'faeule' && 'Einbruch des Bohrdrehmoments im Kernbereich um ca. 70 % (braune Fäulepilze).'}
-              {timberCondition === 'hohl' && 'Totaler Widerstandseinbruch auf Nadelwellen-Reibungswert (Nullamplitude).'}
+              {timberCondition === 'gesund' && inhalt.werte.regelmäßigeDichteOszillationenZwischen}
+              {timberCondition === 'faeule' && inhalt.werte.einbruchDesBohrdrehmomentsIm}
+              {timberCondition === 'hohl' && inhalt.werte.totalerWiderstandseinbruchAufNadelwellen}
             </div>
           </div>
         </div>
@@ -1027,12 +979,10 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
       {method.id === 'darrmethode' && (
         <div className="p-4 bg-white rounded-xl border border-home-grau/30 text-xs text-slate-700 space-y-2">
           <div className="flex justify-between font-bold">
-            <span>Darrfeuchte-Referenz nach DIN EN ISO 12570:</span>
-            <span className="font-mono text-shiraz">105 °C Umluftofen bis Massekonstanz</span>
+            <span><MdText text={inhalt.texte.darrfeuchteReferenzNachDin} /></span>
+            <span className="font-mono text-shiraz"><MdText text={inhalt.texte.t105CUmluftofenBis} /></span>
           </div>
-          <p className="text-slate-600 text-[11px] leading-relaxed">
-            Als fundamentale Eichbasis werden ca. 100 g Festbetonfeinbruch gewogen (m_feucht), bei 105 °C getrocknet und nach Abkühlung im Exsikkator zurückgewogen (m_trocken). Ausgleichsfeuchte im trockenen Innenraum liegt bei ca. 2,0–3,0 M.-%, im Außenbereich bei 4,5–5,5 M.-%.
-          </p>
+          <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.alsFundamentaleEichbasisWerden} /></p>
         </div>
       )}
     </div>

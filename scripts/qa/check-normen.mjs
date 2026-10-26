@@ -9,6 +9,7 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { inhaltsDateien } from './inhaltDateien.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 const NORM = /\b((?:DIN(?:\s+(?:EN|ISO|IEC|CEN\/TS|SPEC|CEN\/TR))*(?:\s+ISO)?|EN(?:\s+ISO)?|ISO)\s+\d+(?:[-–]\d+)*(?:\/NA)?(?:\/A\d+)?)\s*:\s*((?:19|20)\d{2}(?:-\d{2})?)/;
@@ -36,17 +37,25 @@ const haupt = new Map(); // Norm → Map(Ausgabe → [Fundstellen])
 for (const f of dateien(path.join(ROOT, 'src'))) {
   const s = fs.readFileSync(f, 'utf8');
   for (const block of s.matchAll(/regelwerke=\{\[([\s\S]*?)\]\}/g)) {
-    for (const t of block[1].matchAll(/title:\s*'((?:[^'\\]|\\.)*)'/g)) {
-      const titel = t[1];
-      const n = titel.match(NORM);
-      if (!n || n.index > 2 || AUSNAHME.test(titel)) continue;
-      const k = norm(n[1]);
-      if (!haupt.has(k)) haupt.set(k, new Map());
-      const m = haupt.get(k);
-      if (!m.has(n[2])) m.set(n[2], []);
-      m.get(n[2]).push(path.relative(ROOT, f));
-    }
+    for (const t of block[1].matchAll(/title:\s*'((?:[^'\\]|\\.)*)'/g)) erfasse(t[1], f);
   }
+}
+// ausgelagerte Fußzeilen (AP 5.3): content/**/*.json → daten["<Komponente>.regelwerke"] = [{ title, … }]
+for (const f of inhaltsDateien()) {
+  const daten = JSON.parse(fs.readFileSync(f, 'utf8')).daten ?? {};
+  for (const [k, v] of Object.entries(daten)) {
+    if (/(^|\.)regelwerke(_\d+)?$/.test(k) && Array.isArray(v)) for (const e of v) if (e && typeof e.title === 'string') erfasse(e.title, f);
+  }
+}
+
+function erfasse(titel, f) {
+  const n = titel.match(NORM);
+  if (!n || n.index > 2 || AUSNAHME.test(titel)) return;
+  const k = norm(n[1]);
+  if (!haupt.has(k)) haupt.set(k, new Map());
+  const m = haupt.get(k);
+  if (!m.has(n[2])) m.set(n[2], []);
+  m.get(n[2]).push(path.relative(ROOT, f));
 }
 
 const fehler = [];

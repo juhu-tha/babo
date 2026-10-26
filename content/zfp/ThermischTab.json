@@ -1,0 +1,14 @@
+{
+  "texte": {
+    "erfasstDieOberflächentemperaturHohlräume": "Erfasst die Oberflächentemperatur. Hohlräume oder Ablösungen unter der Oberfläche erwärmen sich bei Sonneneinstrahlung schneller als massiver Beton.",
+    "durchstrahlungsprüfungRadiographie": "Durchstrahlungsprüfung (Radiographie)",
+    "nutztRöntgenOderGammastrahlung": "Nutzt Röntgen- oder Gammastrahlung zur Abbildung des Bauteilinneren (z.B. Spannglieder). Die Schwächung hängt von Dicke und Dichte ab.",
+    "transmissionBildqualität": "Transmission & Bildqualität"
+  },
+  "werte": {
+    "parameterZurAnpassungDer": "Parameter zur Anpassung der Berechnung.",
+    "parameterZurAnpassungDer2": "Parameter zur Anpassung der Berechnung.",
+    "bauteildickeD": "Bauteildicke (d)",
+    "höhereEnergieDurchdringtDickere": "Höhere Energie durchdringt dickere Bauteile."
+  }
+}

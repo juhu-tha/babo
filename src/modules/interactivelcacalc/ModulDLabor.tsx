@@ -3,6 +3,8 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
 import { CustomRow } from './daten';
+import inhalt from '@/content/interactivelcacalc/ModulDLabor.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ModulDLaborProps {
   results: { totalWeightTons: number; totalCircularWeightTons: number; overallCircularityRate: number; gwpA1A3: number; gwpBioStorageInstalled: number; gwpA4: number; gwpC: number; gwpD: number; gwpAC: number; gwpPerSqmYearAC: number; totalGwpNet: number; gwpPerSqmYearNet: number; gwpPerSqmYearD: number; weightedUmi: number; totalPenrtMj: number; penrtKwhPerSqmYear: number; rowModulDDetails: { rowId: string; matName: string; category: string; unit: string; qty: number; weightTons: number; circularQuota: number; sortingRate: number; recoveryType: string; circularMassTons: number; effectiveRecoveredMassTons: number; rowGwpD: number; substitutesPrimary: string; }[]; };
@@ -23,14 +25,10 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-teal-700 text-white font-mono">
-                  DIN EN 15804+A2 / DIN EN 17472
-                </span>
-                <span className="text-[10px] text-slate-500 font-mono">Modul D: Außerhalb der Systemgrenze</span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-teal-700 text-white font-mono"><MdText text={inhalt.texte.dinEn15804A2} /></span>
+                <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.modulDAußerhalbDer} /></span>
               </div>
-              <h3 className="text-lg font-bold text-text-main mt-0.5">
-                Eingabemaske Modul D – Wiederverwendungs-, Rückgewinnungs- &amp; Recyclingpotenziale
-              </h3>
+              <h3 className="text-lg font-bold text-text-main mt-0.5"><MdText text={inhalt.texte.eingabemaskeModulDWiederverwendungs} /></h3>
             </div>
           </div>
           <div className="text-right text-xs font-mono font-bold text-teal-800 bg-teal-50 p-2.5 rounded-xl border border-teal-200">
@@ -39,43 +37,37 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
         </div>
     
         <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
-          <p>
-            <strong>Modul D</strong> bilanziert das <em>zukünftige Entlastungspotenzial</em> für nachfolgende Generationen: Wenn Baustoffe am Lebensende nicht auf der Deponie landen, sondern als Sekundärrohstoffe recycelt oder direkt wiederverwendet werden, verdrängen sie energieintensive Primärmaterialien (z. B. Hochofen-Stahl oder Neukies).
-          </p>
-          <p>
-            <strong>Normativer Grundsatz:</strong> Nach DIN EN 15804 und QNG 2026 muss Modul D <em>separat ausgewiesen</em> werden. Es darf <strong>nicht</strong> vom offiziellen Errichtungsnachweiswert (Module A1–C4) abgezogen werden, um Schönrechnungen zu verhindern, dient aber als Kernindikator für die <strong>echte Kreislaufwirtschaft (Circular Economy / UMI)</strong>.
-          </p>
+          <p><MdText text={inhalt.texte.modulDBilanziertDas} /></p>
+          <p><MdText text={inhalt.texte.normativerGrundsatzNachDin} /></p>
         </div>
     
         {/* Quick Strategy Buttons */}
         <div className="space-y-2 pt-2">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono block">
-            Schnell-Szenarien für Rückbaubarkeit &amp; Zirkularitätsstrategie anwenden:
-          </span>
+          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono block"><MdText text={inhalt.texte.schnellSzenarienFürRückbaubarkeit} /></span>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
             {[
               {
                 id: 'linear' as const,
-                title: '1. Linear / Deponie',
-                desc: 'Geringe Trennung (20-35%), Downcycling / Bauschuttverfüllung',
+                title: inhalt.werte.t1LinearDeponie,
+                desc: inhalt.werte.geringeTrennung2035,
                 color: 'hover:border-rose-300'
               },
               {
                 id: 'standard' as const,
-                title: '2. EPD-Referenzstandard',
-                desc: 'ÖKOBAUDAT Standardquoten nach aktuellem Marktdurchschnitt',
+                title: inhalt.werte.t2EpdReferenzstandard,
+                desc: inhalt.werte.ökobaudatStandardquotenNachAktuellem,
                 color: 'hover:border-slate-400'
               },
               {
                 id: 'selective' as const,
-                title: '3. Selektiver Rückbau',
-                desc: 'Hohe Sortenreinheit (95%) nach VDI 6210, Schrott- & RC-Korn-Kreislauf',
+                title: inhalt.werte.t3SelektiverRückbau,
+                desc: inhalt.werte.hoheSortenreinheit95Nach,
                 color: 'hover:border-teal-300'
               },
               {
                 id: 'pioneer' as const,
-                title: '4. Maximum Reuse / Urban Mining',
-                desc: '100% zirkulär, Bauteilbörsen, maximale Primärrohstoffverdrängung',
+                title: inhalt.werte.t4MaximumReuseUrban,
+                desc: inhalt.werte.t100ZirkulärBauteilbörsenMaximale,
                 color: 'hover:border-emerald-300'
               }
             ].map((strat) => (
@@ -98,16 +90,11 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
         <div className="flex items-center justify-between border-b pb-3">
           <div>
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-              <SlidersHorizontal size={16} className="text-teal-700" />
-              Detaillierte Baustoff-Eingabemaske (Zeile für Zeile)
-            </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Steuern Sie für jeden Baustoff den <strong>kreislauffähigen Stoffanteil</strong>, den <strong>Sortenreinheitsgrad</strong> und den <strong>Verwertungspfad</strong>.
-            </p>
+              <SlidersHorizontal size={16} className="text-teal-700" /><MdText text={inhalt.texte.detaillierteBaustoffEingabemaskeZeile} /></h4>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.steuernSieFürJeden} /></p>
           </div>
           <span className="text-xs font-mono font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-lg">
-            {rows.length} Baustoffe erfasst
-          </span>
+            {rows.length}<MdText text={inhalt.texte.baustoffeErfasst} /></span>
         </div>
     
         <div className="space-y-4">
@@ -122,14 +109,13 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                         {detail.category}
                       </span>
                     </div>
-                    <span className="text-[11px] text-slate-500 font-mono block mt-0.5">
-                      Eingebaute Masse: <strong>{formatDeZahl(detail.qty, 1)} {detail.unit}</strong> = <strong>{formatDeZahl(detail.weightTons, 2)} t</strong>
+                    <span className="text-[11px] text-slate-500 font-mono block mt-0.5"><MdText text={inhalt.texte.eingebauteMasse} /><strong>{formatDeZahl(detail.qty, 1)} {detail.unit}</strong> = <strong>{formatDeZahl(detail.weightTons, 2)} t</strong>
                     </span>
                   </div>
     
                   <div className="flex items-center gap-3">
                     <div className="text-right">
-                      <span className="text-[10px] text-slate-400 block font-mono">Modul D Gutschrift</span>
+                      <span className="text-[10px] text-slate-400 block font-mono"><MdText text={inhalt.texte.modulDGutschrift} /></span>
                       <strong className="text-sm font-black font-mono text-teal-700">
                         {formatDeZahl(detail.rowGwpD, 1)} kg CO₂-eq
                       </strong>
@@ -142,8 +128,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                   <div className="bg-white p-3 rounded-lg border border-slate-200/80 space-y-1.5">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-slate-700 flex items-center gap-1">
-                        <span>Kreislauffähiger Anteil:</span>
-                        <InfoTooltip text="Prozentualer Massenanteil des Baustoffs, der technisch und wirtschaftlich nach Rückbau einer Verwertung zugeführt werden kann (z. B. 95% bei Stahl, 88% bei RC-Beton)." />
+                        <span><MdText text={inhalt.texte.kreislauffähigerAnteil} /></span>
+                        <InfoTooltip text={inhalt.werte.prozentualerMassenanteilDesBaustoffs} />
                       </span>
                       <span className="font-mono font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
                         {formatDeZahl(detail.circularQuota, 0)} %
@@ -159,8 +145,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                       className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
                     />
                     <div className="flex justify-between text-[9px] text-slate-400 font-mono">
-                      <span>0% (Verlust)</span>
-                      <span>100% (Voll zirkulär)</span>
+                      <span><MdText text={inhalt.texte.t0Verlust} /></span>
+                      <span><MdText text={inhalt.texte.t100VollZirkulär} /></span>
                     </div>
                   </div>
     
@@ -168,8 +154,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                   <div className="bg-white p-3 rounded-lg border border-slate-200/80 space-y-1.5">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-slate-700 flex items-center gap-1">
-                        <span>Sortenreinheit (Rückbau):</span>
-                        <InfoTooltip text="Qualität der Bauteiltrennung nach VDI 6210. Schraub- und Steckverbindungen erlauben 95-100%, vollflächige Klebeverbindungen oft nur 50-70%." />
+                        <span><MdText text={inhalt.texte.sortenreinheitRückbau} /></span>
+                        <InfoTooltip text={inhalt.werte.qualitätDerBauteiltrennungNach} />
                       </span>
                       <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border">
                         {formatDeZahl(detail.sortingRate, 0)} %
@@ -185,8 +171,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                       className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                     <div className="flex justify-between text-[9px] text-slate-400 font-mono">
-                      <span>30% (Verklebt)</span>
-                      <span>100% (Demontierbar)</span>
+                      <span><MdText text={inhalt.texte.t30Verklebt} /></span>
+                      <span><MdText text={inhalt.texte.t100Demontierbar} /></span>
                     </div>
                   </div>
     
@@ -210,8 +196,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                 </div>
     
                 <div className="text-[10.5px] text-slate-500 bg-slate-100/70 p-2 rounded-lg font-mono flex flex-wrap items-center justify-between gap-2">
-                  <span>Effektiv wiedergewonnene Sekundärmasse: <strong>{formatDeZahl(detail.effectiveRecoveredMassTons, 2)} t</strong> (von {formatDeZahl(detail.weightTons, 2)} t)</span>
-                  <span>Spezifische Gutschrift je Tonne: <strong>{formatDeZahl(detail.rowGwpD / (detail.weightTons || 1), 1)} kg CO₂-eq/t</strong></span>
+                  <span><MdText text={inhalt.texte.effektivWiedergewonneneSekundärmasse} /><strong>{formatDeZahl(detail.effectiveRecoveredMassTons, 2)} t</strong> (von {formatDeZahl(detail.weightTons, 2)} t)</span>
+                  <span><MdText text={inhalt.texte.spezifischeGutschriftJeTonne} /><strong>{formatDeZahl(detail.rowGwpD / (detail.weightTons || 1), 1)} kg CO₂-eq/t</strong></span>
                 </div>
               </div>
             );
@@ -223,19 +209,17 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Aggregate Balance Card */}
         <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">
-            Aggregierte Zirkularitäts- &amp; Gutschriften-Bilanz
-          </h4>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono"><MdText text={inhalt.texte.aggregierteZirkularitätsGutschriftenBila} /></h4>
     
           <div className="grid grid-cols-2 gap-3 text-center">
             <div className="p-3 bg-teal-50 border border-teal-200 rounded-xl space-y-0.5">
-              <span className="text-[10px] uppercase font-bold text-teal-700 block font-mono">Modul D Gutschrift</span>
+              <span className="text-[10px] uppercase font-bold text-teal-700 block font-mono"><MdText text={inhalt.texte.modulDGutschrift2} /></span>
               <strong className="text-xl font-black text-teal-900 font-mono">{formatDeZahl(results.gwpD, 0)} kg</strong>
-              <span className="text-[9px] text-teal-700/80 block">CO₂-eq Gutschrift</span>
+              <span className="text-[9px] text-teal-700/80 block"><MdText text={inhalt.texte.coEqGutschrift} /></span>
             </div>
     
             <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl space-y-0.5">
-              <span className="text-[10px] uppercase font-bold text-emerald-700 block font-mono">Zirkuläre Gesamtmasse</span>
+              <span className="text-[10px] uppercase font-bold text-emerald-700 block font-mono"><MdText text={inhalt.texte.zirkuläreGesamtmasse} /></span>
               <strong className="text-xl font-black text-emerald-900 font-mono">{formatDeZahl(results.totalCircularWeightTons, 1)} t</strong>
               <span className="text-[9px] text-emerald-700/80 block">von {formatDeZahl(results.totalWeightTons, 1)} t ({formatDeZahl(results.overallCircularityRate, 1)}%)</span>
             </div>
@@ -243,15 +227,15 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
     
           <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
             <div className="flex justify-between items-center text-slate-700">
-              <span>Brutto-Herstellung &amp; Entsorgung (Module A1–C4):</span>
+              <span><MdText text={inhalt.texte.bruttoHerstellungEntsorgungModule} /></span>
               <strong className="font-mono text-slate-900">{formatDeZahl(results.gwpAC, 0)} kg CO₂-eq</strong>
             </div>
             <div className="flex justify-between items-center text-teal-700">
-              <span>Modul D Gutschrift (Gutschrift außerhalb Bilanzgrenze):</span>
+              <span><MdText text={inhalt.texte.modulDGutschriftGutschrift} /></span>
               <strong className="font-mono text-teal-800">{formatDeZahl(results.gwpD, 0)} kg CO₂-eq</strong>
             </div>
             <div className="flex justify-between items-center border-t border-slate-200 pt-2 font-bold text-slate-900">
-              <span>Netto-Gesamtbilanz (A1–D):</span>
+              <span><MdText text={inhalt.texte.nettoGesamtbilanzA1D} /></span>
               <strong className={`font-mono text-sm ${results.totalGwpNet < 0 ? 'text-emerald-700' : 'text-slate-900'}`}>
                 {results.totalGwpNet > 0 ? "+" : ""}{formatDeZahl(results.totalGwpNet, 0)} kg CO₂-eq
               </strong>
@@ -261,19 +245,15 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
     
         {/* Normative Formula Card */}
         <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-3">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">
-            Berechnungsmethode nach DIN EN 15804+A2 &amp; DIN EN 17472
-          </h4>
-          <p className="text-xs text-text-main/80 leading-relaxed">
-            Die Gutschrift in Modul D wird berechnet aus der Netto-Menge an Sekundärstoffen, dem Substitutionswirkungsgrad und den vermiedenen Primärlasten:
-          </p>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono"><MdText text={inhalt.texte.berechnungsmethodeNachDinEn} /></h4>
+          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieGutschriftInModul} /></p>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
             <BlockMath math="\text{GWP}_{D,i} = - \left( m_i \cdot \frac{r_{\text{circ},i}}{100} \cdot \frac{s_{\text{sort},i}}{100} \cdot \eta_{\text{subst}} \cdot \text{GWP}_{\text{primär,verdrängt}} \right)" />
           </div>
           <ul className="text-[11px] text-slate-600 space-y-1 list-disc pl-4 font-mono">
-            <li><InlineMath math="r_{\text{circ}}" />: Kreislauffähiger Stoffanteil (Zirkularitätsquote)</li>
-            <li><InlineMath math="s_{\text{sort}}" />: Sortenreinheitsgrad / Rückbautrennbarkeit (VDI 6210)</li>
-            <li><InlineMath math="\eta_{\text{subst}}" />: Substitutionswirkungsgrad der Kaskade (Reuse, Recycling, Downcycling)</li>
+            <li><MdText text={inhalt.texte.rTextCircKreislauffähiger} /></li>
+            <li><MdText text={inhalt.texte.sTextSortSortenreinheitsgrad} /></li>
+            <li><MdText text={inhalt.texte.etaTextSubstSubstitutionswirkungsgrad} /></li>
           </ul>
         </div>
       </div>

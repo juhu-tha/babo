@@ -1,0 +1,27 @@
+{
+  "texte": {
+    "massenbetonMassigerBeton": " Massenbeton (Massiger Beton)",
+    "vonMassivenBauteilenSpricht": "Von massiven Bauteilen spricht man in der Regel ab einer Dicke von ca. 0,80 m bis 1,00 m (je nach Bauteiltyp und Betonmischung). Aufgrund des großen Volumens im Verhältnis zur Oberfläche kann die Hydratationswärme des Zements im Kern des Bauteils nur sehr langsam abfließen.",
+    "hydratationFolgenMassigeBauteile": "Hydratation & Folgen → Massige Bauteile",
+    "temperaturverlaufRechenbeispielZurAdiaba": "Temperaturverlauf, Rechenbeispiel zur adiabatischen Erwärmung und Simulation:",
+    "mindestabmessungNachDafstbRichtlinie": "(Mindestabmessung nach DAfStb-Richtlinie Massige Bauteile: 0,80 m)",
+    "dieHydratationswärmeProblematik": " Die Hydratationswärme-Problematik",
+    "beimAbbindenVonBeton": "Beim Abbinden von Beton entsteht Wärme. In massigen Bauteilen führt dies zu Rissen durch Zwangsspannungen:",
+    "temperaturgradientDerKernWird": "**Temperaturgradient:** Der Kern wird stark erwärmt (dehnt sich aus), die Randbereiche kühlen ab (wollen sich zusammenziehen).",
+    "risseEntstehenÄußerlichDurch": "Risse entstehen äußerlich durch Eigenspannungen und innerlich bei zentrischem Zwang in der Abkühlphase.",
+    "typischesAuftretenInBodenplatten": "Typisches Auftreten in Bodenplatten, Fundamenten, Schleusen und Talsperren.",
+    "maßnahmenMischungsentwurf": " Maßnahmen & Mischungsentwurf",
+    "umSchädenInMassigen": "Um Schäden in massigen Bauteilen entgegenzuwirken, muss die Wärmeentwicklung begrenzt werden:",
+    "nutzungVonZementenMit": "Nutzung von **Zementen mit niedriger Wärmeentwicklung** (Zusatz LH: \"Low Heat\"). Hüttensandreiche (CEM III) oder flugaschehaltige Zemente.",
+    "zementgehaltMinimierenDafürEinsatz": "Zementgehalt minimieren, dafür Einsatz von ungebrochener Gesteinskörnung & Fließmitteln.",
+    "aktiveKühlungDurchKühlrohrsysteme": "Aktive Kühlung durch **Kühlrohrsysteme** im Kern (flüssigkeitsbasiert).",
+    "vorkühlenDerAusgangsstoffeKühlmittel": "Vorkühlen der Ausgangsstoffe (Kühlmittel, Scherbeneis).",
+    "dieWalzbetonAlternativeRcc": "Die \"Walzbeton\"-Alternative (RCC)",
+    "vorAllemImStaudammbau": "Vor allem im Staudammbau wird Walzbeton (Roller Compacted Concrete) genutzt. Er ist extrem erdfeucht, hat einen minimalen Zementgehalt (fast keine Wärmeentwicklung) und wird wie im Erdbau in Lagen eingebaut und mittels Vibrationswalzen abverdichtet. Dies ist eine spezielle Unterart des Massenbetons für extreme Volumina.",
+    "typischeMischungszusammensetzungProM": "Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)",
+    "zementZBCem": "Zement (z.B. CEM III/B mit niedriger Hydratationswärme)",
+    "zusatzstoffFlugascheReaktionsträge": "Zusatzstoff (Flugasche reaktionsträge)",
+    "wasserWZ0": "Wasser (w/z ≈ 0,58)",
+    "gesteinskörnungGrößtkornBis32": "Gesteinskörnung (Größtkorn bis 32 mm oder 63 mm)"
+  }
+}

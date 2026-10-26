@@ -1,0 +1,19 @@
+{
+  "texte": {
+    "interaktiverPraxisSimulatorWarum": "Interaktiver Praxis-Simulator: Warum RAG für Bauingenieure lebenswichtig ist",
+    "erlebenSieDenUnterschied": "Erleben Sie den Unterschied: Ein reines LLM schätzt vage aus dem Gedächtnis – während RAG die verifizierte DIN-Norm als \"Spickzettel\" hinzuzieht.",
+    "wählenSieEineTypische": "Wählen Sie eine typische bautechnische Fachfrage:",
+    "betondeckungXc4": "Betondeckung XC4",
+    "dinEn19921": "DIN EN 1992-1-1 (EC2)",
+    "wZGrenzwertTaumittel": "w/z-Grenzwert Taumittel XF4",
+    "din10452Din": "DIN 1045-2 / DIN EN 206",
+    "rcBetonInSpannbeton": "RC-Beton in Spannbeton?",
+    "zulässigkeitNachDin1045": "Zulässigkeit nach DIN 1045-2",
+    "modusAReinesLlm": "Modus A: Reines LLM (ohne RAG)",
+    "modusBLlmRag": "Modus B: LLM + RAG (mit Normendatenbank)",
+    "antwortDesReinenLlm": " Antwort des reinen LLM (auswendig gelernt):",
+    "fachlicheKritik": "**Fachliche Kritik:** ",
+    "antwortMitRagDin": " Antwort mit RAG (DIN-Normen-Kontext eingebunden):",
+    "automatischZitierteNormenquelle": "**Automatisch zitierte Normenquelle:** "
+  }
+}

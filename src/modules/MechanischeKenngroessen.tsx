@@ -11,6 +11,8 @@ import Steifigkeiten from './mechanischekenngroessen/Steifigkeiten';
 import KriechenSchwinden from './mechanischekenngroessen/KriechenSchwinden';
 import Zugversuchsimulator from './mechanischekenngroessen/Zugversuchsimulator';
 import Beispiele from './mechanischekenngroessen/Beispiele';
+import inhalt from '@/content/mechanischekenngroessen/MechanischeKenngroessen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function MechanischeKenngroessen() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'hooke_emodul' | 'steifigkeiten' | 'kriechen_schwinden' | 'simulator' | 'matrix' | 'beispiele'>('grundlagen');
@@ -212,11 +214,8 @@ export default function MechanischeKenngroessen() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Scale className="text-shiraz" /> Mechanische Kenngrößen: Spannung, Dehnung &amp; Steifigkeit
-          </h2>
-          <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20">
-            Elastostatik, Rheologie &amp; Werkstoffmechanik
-          </span>
+            <Scale className="text-shiraz" /><MdText text={inhalt.texte.mechanischeKenngrößenSpannungDehnung} /></h2>
+          <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20"><MdText text={inhalt.texte.elastostatikRheologieWerkstoffmechanik} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
@@ -224,7 +223,7 @@ export default function MechanischeKenngroessen() {
             Mechanische Kenngrößen bilden das Fundament der Baustatik und Tragwerkslehre. 
             Neben den Kurzzeit-Größen <strong>Spannung (<InlineMath math="\sigma, \tau" />)</strong>, 
             <strong> Dehnung (<InlineMath math="\varepsilon" />)</strong>, <strong>E-Modul (<InlineMath math="E" />)</strong>, 
-            <strong> Dehnsteifigkeit (<InlineMath math="EA" />)</strong> und <strong>Biegesteifigkeit (<InlineMath math="EI" />)</strong> 
+            <strong><MdText text={inhalt.texte.dehnsteifigkeitEa} /></strong> und <strong><MdText text={inhalt.texte.biegesteifigkeitEi} /></strong> 
             prägen zeitabhängige rheologische Prozesse wie <strong>Kriechen</strong>, <strong>Schwinden</strong> und 
             <strong> Relaxation</strong> die Dauerhaftigkeit und Gebrauchstauglichkeit moderner Tragwerke.
           </p>
@@ -240,8 +239,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('grundlagen')}
           >
-            <Activity size={16} /> 1. Spannung &amp; Dehnung
-          </button>
+            <Activity size={16} /><MdText text={inhalt.texte.t1SpannungDehnung} /></button>
           <button aria-pressed={activeTab === 'hooke_emodul'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'hooke_emodul'
@@ -250,8 +248,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('hooke_emodul')}
           >
-            <Sparkles size={16} /> 2. E-Modul &amp; Hooke
-          </button>
+            <Sparkles size={16} /><MdText text={inhalt.texte.t2EModulHooke} /></button>
           <button aria-pressed={activeTab === 'steifigkeiten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steifigkeiten'
@@ -260,8 +257,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('steifigkeiten')}
           >
-            <MoveHorizontal size={16} /> 3. Dehn- &amp; Biegesteifigkeit (EA &amp; EI)
-          </button>
+            <MoveHorizontal size={16} /><MdText text={inhalt.texte.t3DehnBiegesteifigkeitEa} /></button>
           <button aria-pressed={activeTab === 'kriechen_schwinden'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kriechen_schwinden'
@@ -270,8 +266,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('kriechen_schwinden')}
           >
-            <Clock size={16} /> 4. Kriechen, Schwinden &amp; Relaxation
-          </button>
+            <Clock size={16} /><MdText text={inhalt.texte.t4KriechenSchwindenRelaxation} /></button>
           <button aria-pressed={activeTab === 'simulator'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'simulator'
@@ -280,8 +275,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('simulator')}
           >
-            <Sliders size={16} /> 5. Interaktiver Simulator
-          </button>
+            <Sliders size={16} /><MdText text={inhalt.texte.t5InteraktiverSimulator} /></button>
           <button aria-pressed={activeTab === 'matrix'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'matrix'
@@ -290,8 +284,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('matrix')}
           >
-            <Layers size={16} /> 6. Werkstoff-Matrix
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.t6WerkstoffMatrix} /></button>
           <button aria-pressed={activeTab === 'beispiele'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'beispiele'
@@ -300,8 +293,7 @@ export default function MechanischeKenngroessen() {
             }`}
             onClick={() => setActiveTab('beispiele')}
           >
-            <BookOpen size={16} /> 7. Praxis-Beispiele
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.t7PraxisBeispiele} /></button>
         </div>
       </div>
 
@@ -317,71 +309,51 @@ export default function MechanischeKenngroessen() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-                  <TrendingUp className="text-shiraz" size={18} /> 1. Das Hooke’sche Gesetz (1D &amp; 3D)
-                </h3>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                  Im Jahr 1678 formulierte Robert Hooke: <em>„Ut tensio, sic vis“</em> (Wie die Dehnung, so die Kraft). 
-                  Im linear-elastischen Bereich verhält sich die Spannung direkt proportional zur Dehnung:
-                </p>
+                  <TrendingUp className="text-shiraz" size={18} /><MdText text={inhalt.texte.t1DasHookeSche} /></h3>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.imJahr1678Formulierte} /></p>
 
                 <div className="bg-off-white p-3.5 rounded-xl border border-home-grau/25 mb-4">
-                  <div className="text-xs font-bold text-text-main mb-1">Eindimensionaler Fall (Stab):</div>
+                  <div className="text-xs font-bold text-text-main mb-1"><MdText text={inhalt.texte.eindimensionalerFallStab} /></div>
                   <BlockMath math="\sigma = E \cdot \varepsilon \iff \varepsilon = \frac{\sigma}{E}" />
-                  <div className="text-[11px] text-slate-500 text-center">
-                    Steigung der Hooke'schen Geraden im <InlineMath math="\sigma\text{-}\varepsilon" />-Diagramm entspricht dem E-Modul.
-                  </div>
+                  <div className="text-[11px] text-slate-500 text-center"><MdText text={inhalt.texte.steigungDerHookeSchen} /></div>
                 </div>
 
                 <div className="space-y-2 text-xs text-text-main/80">
-                  <div><strong>Dreidimensionales verallgemeinertes Hooke'sches Gesetz (Isotropie):</strong></div>
-                  <p className="text-[11px] text-text-main/75 leading-relaxed">
-                    Spannungen in einer Raumrichtung erzeugen durch den Poisson-Effekt auch Dehnungen in den beiden Querrichtungen:
-                  </p>
+                  <div><MdText text={inhalt.texte.dreidimensionalesVerallgemeinertesHookeS} /></div>
+                  <p className="text-[11px] text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.spannungenInEinerRaumrichtung} /></p>
                   <BlockMath math="\varepsilon_x = \frac{1}{E} \left[ \sigma_x - \nu (\sigma_y + \sigma_z) \right]" />
                   <BlockMath math="\gamma_{xy} = \frac{\tau_{xy}}{G}, \quad \gamma_{yz} = \frac{\tau_{yz}}{G}, \quad \gamma_{zx} = \frac{\tau_{zx}}{G}" />
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono">
-                Gültigkeitsgrenze: Bis zur Proportionalitätsgrenze fp bzw. Streckgrenze fy
-              </div>
+              <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.gültigkeitsgrenzeBisZurProportionalitäts} /></div>
             </div>
 
             {/* Box 2: Moduln-Beziehungen (E, G, K) */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-                  <Layers className="text-shiraz" size={18} /> 2. Schubmodul (<InlineMath math="G" />) &amp; Kompressionsmodul (<InlineMath math="K" />)
-                </h3>
-                <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                  Für isotrope Materialien reichen <strong>zwei unabhängige elastische Konstanten</strong> aus 
-                  (z. B. <InlineMath math="E" /> und <InlineMath math="\nu" />), um sämtliche elastische Verformungen zu beschreiben:
-                </p>
+                  <Layers className="text-shiraz" size={18} /><MdText text={inhalt.texte.t2SchubmodulGKompressionsmodul} /></h3>
+                <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.fürIsotropeMaterialienReichen} /></p>
 
                 <div className="bg-off-white p-3.5 rounded-xl border border-home-grau/25 mb-4 space-y-3">
                   <div>
-                    <div className="text-xs font-bold text-text-main">Schubmodul G (Widerstand gegen Scherung / Gestaltänderung):</div>
+                    <div className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.schubmodulGWiderstandGegen} /></div>
                     <BlockMath math="G = \frac{E}{2 \cdot (1 + \nu)}" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-text-main">Kompressionsmodul K (Widerstand gegen allseitigen hydrostatischen Druck):</div>
+                    <div className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.kompressionsmodulKWiderstandGegen} /></div>
                     <BlockMath math="K = \frac{E}{3 \cdot (1 - 2\nu)}" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5 text-xs text-text-main/80">
-                  <div><strong>Berechnungsbeispiel Baustahl:</strong></div>
-                  <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 text-[11px] font-mono">
-                    E = 210.000 MPa, ν = 0,30<br />
-                    G = 210.000 / (2 · 1,30) ≈ <strong>80.769 MPa</strong><br />
-                    K = 210.000 / (3 · 0,40) ≈ <strong>175.000 MPa</strong>
-                  </div>
+                  <div><MdText text={inhalt.texte.berechnungsbeispielBaustahl} /></div>
+                  <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 text-[11px] font-mono"><MdText text={inhalt.texte.e210000Mpa} /></div>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono">
-                Hinweis: Geht ν gegen 0,5, strebt der Kompressionsmodul K gegen Unendlich (reine Inkompressibilität).
-              </div>
+              <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.hinweisGehtGegen0} /></div>
             </div>
 
           </div>
@@ -403,15 +375,10 @@ export default function MechanischeKenngroessen() {
           <div className="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-home-grau/20">
             <div>
               <h3 className="font-bold text-base text-text-main flex items-center gap-2">
-                <Layers className="text-shiraz" size={18} /> Vergleichende Werkstoffkennwerte im Bauwesen
-              </h3>
-              <p className="text-xs text-text-main/70">
-                Gegenüberstellung typischer elastischer, rheologischer und bruchmechanischer Kennwerte nach Eurocodes (EC2, EC3, EC5, DIN 18008).
-              </p>
+                <Layers className="text-shiraz" size={18} /><MdText text={inhalt.texte.vergleichendeWerkstoffkennwerteImBauwese} /></h3>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.gegenüberstellungTypischerElastischerRhe} /></p>
             </div>
-            <span className="text-xs font-mono font-semibold bg-off-white px-2.5 py-1 rounded border border-home-grau/30">
-              7 Baustoffgruppen
-            </span>
+            <span className="text-xs font-mono font-semibold bg-off-white px-2.5 py-1 rounded border border-home-grau/30"><MdText text={inhalt.texte.t7Baustoffgruppen} /></span>
           </div>
 
           <div className="overflow-x-auto">
@@ -420,12 +387,12 @@ export default function MechanischeKenngroessen() {
                 <tr>
                   <th className="p-3">Werkstoff</th>
                   <th className="p-3">Kategorie</th>
-                  <th className="p-3 text-right">E-Modul [MPa]</th>
-                  <th className="p-3 text-right">Querdehnzahl ν [-]</th>
-                  <th className="p-3 text-right">Schubmodul G [MPa]</th>
-                  <th className="p-3 text-right">Kriechzahl φ [-]</th>
-                  <th className="p-3 text-right">Streckgrenze fy [MPa]</th>
-                  <th className="p-3 text-right">Dichte ρ [kg/m³]</th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.eModulMpa} /></th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.querdehnzahl} /></th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.schubmodulGMpa} /></th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.kriechzahl} /></th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.streckgrenzeFyMpa} /></th>
+                  <th className="p-3 text-right"><MdText text={inhalt.texte.dichteKgM} /></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-home-grau/20">
@@ -453,11 +420,11 @@ export default function MechanischeKenngroessen() {
           </div>
 
           <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs text-text-main/80 space-y-2 mt-4">
-            <div className="font-bold text-text-main">Wichtige baustoffliche Faustregeln:</div>
+            <div className="font-bold text-text-main"><MdText text={inhalt.texte.wichtigeBaustofflicheFaustregeln} /></div>
             <ul className="list-disc list-inside space-y-1 text-[11px] text-text-main/75 pl-1">
-              <li><strong>Baustahl (S235/S355):</strong> Der E-Modul ist mit <InlineMath math="210.000\text{ MPa}" /> für alle Festigkeitsklassen identisch! Höherfester Stahl ist nicht dehnsteifer, sondern beginnt erst bei höherer Last zu fließen.</li>
-              <li><strong>Dehnsteifigkeit vs. Biegesteifigkeit:</strong> Bei Verdopplung der Bauteilhöhe verdoppelt sich die Dehnsteifigkeit (<InlineMath math="EA \propto h" />), während sich die Biegesteifigkeit <strong>verachtfacht</strong> (<InlineMath math="EI \propto h^3" />).</li>
-              <li><strong>Betonkriechen:</strong> Bei dauerbelasteten Bauteilen sinkt der effektive E-Modul auf <InlineMath math="E_{c,\text{eff}} = \frac{E_{cm}}{1+\varphi}" /> (z. B. von 33.000 MPa auf 11.000 MPa bei <InlineMath math="\varphi = 2{,}0" />).</li>
+              <li><MdText text={inhalt.texte.baustahlS235S355Der} /></li>
+              <li><MdText text={inhalt.texte.dehnsteifigkeitVsBiegesteifigkeitBei} /></li>
+              <li><MdText text={inhalt.texte.betonkriechenBeiDauerbelastetenBauteilen} /></li>
             </ul>
           </div>
         </div>
@@ -467,100 +434,36 @@ export default function MechanischeKenngroessen() {
       {activeTab === 'beispiele' && <Beispiele />}
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <Querverweis ziel="normen_ausblick" titel="Neue Eurocode-Generation erschienen" linkText="Zum Modul Ausblick: neue Normengeneration">
-        <p>Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen.</p>
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
       </Querverweis>
 
       <ModulTest moduleId="mechanische_kenngroessen" />
 
       {/* FOOTER */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Rechenbeispiele nachgerechnet, Relaxationsklasse und Durchbiegungsgrenze korrigiert, Normausgaben ergänzt; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
-          { title: 'Mechanische Spannung', url: 'https://de.wikipedia.org/wiki/Mechanische_Spannung' },
+          { title: inhalt.werte.mechanischeSpannung, url: 'https://de.wikipedia.org/wiki/Mechanische_Spannung' },
           { title: 'Dehnung', url: 'https://de.wikipedia.org/wiki/Dehnung' },
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
-          { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+          { title: inhalt.werte.kriechenWerkstoffe, url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden' },
           { title: 'Spannungsrelaxation', url: 'https://de.wikipedia.org/wiki/Spannungsrelaxation' },
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe – Zugversuch – Teil 1: Prüfverfahren bei Raumtemperatur)' },
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 3.2.6 Werkstoffkennwerte); neue Generation DIN EN 1993-1-1:2025-04' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.4 Kriechen und Schwinden, 3.3.2 Relaxation); neue Generation DIN EN 1992-1-1:2025-09' },
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5, 2.2.3 Verformungen, 3.2 k_def); Neue Ausgabe 2026-09 erschienen; bauaufsichtlich noch nicht eingeführt' }
-        ]}
-        literatur={[
-          'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007'
-        ]}
+        regelwerke={inhalt.daten["MechanischeKenngroessen.regelwerke"]}
+        literatur={inhalt.daten["MechanischeKenngroessen.literatur"]}
         formeln={
           activeTab === 'grundlagen'
-            ? [
-                {
-                  formel: '\\sigma = \\frac{F}{A_0}, \\quad \\varepsilon = \\frac{\\Delta L}{L_0}',
-                  erklaerung: 'Definition der Normalspannung als Schnittkraft pro Flächeneinheit und der Dehnung als relative Längenänderung.',
-                  quelle: 'Gross et al.: Technische Mechanik 2'
-                },
-                {
-                  formel: '\\nu = - \\frac{\\varepsilon_q}{\\varepsilon_{\\text{ax}}} = - \\frac{\\Delta d / d_0}{\\Delta L / L_0}',
-                  erklaerung: 'Poissonzahl (Querdehnzahl) als negatives Verhältnis von Querdehnung zu Längsdehnung.',
-                  quelle: 'DIN EN ISO 6892-1'
-                }
-              ]
+            ? inhalt.daten.MechanischeKenngroessen
             : activeTab === 'hooke_emodul'
-            ? [
-                {
-                  formel: '\\sigma = E \\cdot \\varepsilon \\iff \\varepsilon = \\frac{\\sigma}{E}',
-                  erklaerung: 'Eindimensionales Hooke\'sches Gesetz für linear-elastische isotrope Festkörper.',
-                  quelle: 'Elastizitätstheorie (Hooke)'
-                },
-                {
-                  formel: 'G = \\frac{E}{2(1+\\nu)}, \\quad K = \\frac{E}{3(1-2\\nu)}',
-                  erklaerung: 'Beziehungen zwischen Elastizitätsmodul E, Schubmodul G, Kompressionsmodul K und Querdehnzahl ν.',
-                  quelle: 'Elastizitätstheorie'
-                }
-              ]
+            ? inhalt.daten.MechanischeKenngroessen_2
             : activeTab === 'steifigkeiten'
-            ? [
-                {
-                  formel: 'EA = E \\cdot A, \\quad \\Delta L = \\frac{N \\cdot L_0}{EA}',
-                  erklaerung: 'Dehnsteifigkeit EA eines Stabs und daraus resultierende Längenänderung unter axialer Normalkraft N.',
-                  quelle: 'Gross et al.: Technische Mechanik 2'
-                },
-                {
-                  formel: 'EI = E \\cdot I, \\quad \\kappa(x) = -w\'\'(x) = \\frac{M(x)}{EI}',
-                  erklaerung: 'Biegesteifigkeit EI und Bernoulli-Euler-Momenten-Krümmungsbeziehung.',
-                  quelle: 'Balkentheorie'
-                }
-              ]
+            ? inhalt.daten.MechanischeKenngroessen_3
             : activeTab === 'kriechen_schwinden'
-            ? [
-                {
-                  formel: '\\varepsilon(t) = \\varepsilon_{\\text{el}} \\cdot \\left[ 1 + \\varphi(t, t_0) \\right] = \\frac{\\sigma_0}{E_{c,\\text{eff}}}',
-                  erklaerung: 'Gesamtverformung unter Kriecheinwirkung mit Kriechzahl φ und effektivem Kriechmodul Ec,eff.',
-                  quelle: 'DIN EN 1992-1-1'
-                },
-                {
-                  formel: '\\sigma(t) = \\sigma_0 \\cdot \\exp\\left(-\\frac{t}{\\tau_{\\text{rel}}}\\right)',
-                  erklaerung: 'Exponentieller Spannungsabbau unter erzwungener konstanter Dehnung (Maxwell-Relaxation).',
-                  quelle: 'Kontinuumsmechanik / Rheologie'
-                }
-              ]
-            : [
-                {
-                  formel: '\\Delta L = \\frac{F \\cdot L_0}{E \\cdot A_0}',
-                  erklaerung: 'Elastische Federverlängerung eines prismatischen Zugstabs konstanter Steifigkeit EA.',
-                  quelle: 'Technische Mechanik'
-                },
-                {
-                  formel: 'U = \\frac{1}{2} F \\cdot \\Delta L = \\frac{1}{2} \\frac{F^2 L_0}{E A_0}',
-                  erklaerung: 'Elastische Formänderungsenergie (Federarbeit) unter quasi-statischer Lasteinleitung.',
-                  quelle: 'Arbeitssatz der Elastomechanik'
-                }
-              ]
+            ? inhalt.daten.MechanischeKenngroessen_4
+            : inhalt.daten.MechanischeKenngroessen_5
         }
       />
 

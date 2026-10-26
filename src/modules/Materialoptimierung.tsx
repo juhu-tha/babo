@@ -8,6 +8,8 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { SAEULEN_DATA, BETON_PRINZIPIEN } from './materialoptimierung/daten';
 import { DafstbRichtlinieTab } from './materialoptimierung/DafstbRichtlinieTab';
+import inhalt from '@/content/materialoptimierung/Materialoptimierung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Materialoptimierung() {
   const [activeSubTab, setActiveSubTab] = useState<'saeulen' | 'betonoptimierung' | 'dafstb_richtlinie'>('saeulen');
@@ -31,14 +33,14 @@ export default function Materialoptimierung() {
     let refBetonVol = 26.0;
     let refStahlKg = 2860;
     let refArea = 100;
-    let areaUnit = 'm² Deckenfläche';
-    let label = 'Geschossdecke (100 m² Fläche)';
+    let areaUnit = inhalt.werte.mDeckenfläche;
+    let label = inhalt.werte.geschossdecke100MFläche;
 
     let optBetonVol = 26.0;
     let optStahlKg = 2860;
 
     if (dafstbBauteil === 'decke') {
-      label = 'Geschossdecke (100 m² Fläche)';
+      label = inhalt.werte.geschossdecke100MFläche2;
       refArea = 100;
       areaUnit = 'm² Decke';
       refBetonVol = 26.0; // 26 cm Massivplatte
@@ -54,7 +56,7 @@ export default function Materialoptimierung() {
         optStahlKg = 1400; // 70 kg/m³ Spann- und Zulagebewehrung
       }
     } else if (dafstbBauteil === 'stuetze') {
-      label = 'Innenstützen (4 Stützen à 3,50 m = 14 m Gesamtlänge)';
+      label = inhalt.werte.innenstützen4Stützen3;
       refArea = 14;
       areaUnit = 'm Stütze';
       refBetonVol = 2.835; // 45x45 cm C25/30
@@ -67,7 +69,7 @@ export default function Materialoptimierung() {
         optStahlKg = 397;
       }
     } else if (dafstbBauteil === 'wand') {
-      label = 'Tragwand / Kernwand (60 m² Ansichtsfläche)';
+      label = inhalt.werte.tragwandKernwand60M;
       refArea = 60;
       areaUnit = 'm² Wand';
       refBetonVol = 14.4; // 24 cm Dicke
@@ -80,7 +82,7 @@ export default function Materialoptimierung() {
         optStahlKg = 1152;
       }
     } else if (dafstbBauteil === 'bodenplatte') {
-      label = 'Fundamentplatte / Bodenplatte (120 m² Grundfläche)';
+      label = inhalt.werte.fundamentplatteBodenplatte120M;
       refArea = 120;
       areaUnit = 'm² Platte';
       refBetonVol = 42.0; // 35 cm Dicke
@@ -131,23 +133,23 @@ export default function Materialoptimierung() {
     // DAfStb Efficiency Class
     let efficiencyClass = 'Referenz';
     let efficiencyBadge = 'bg-slate-100 text-slate-800 border-slate-300';
-    let classLabel = 'Konventioneller Standard';
+    let classLabel = inhalt.werte.konventionellerStandard;
     let classStar = 'Basis';
 
     if (diffPct >= 50) {
       efficiencyClass = 'Klasse A+';
       efficiencyBadge = 'bg-emerald-100 text-emerald-900 border-emerald-300';
-      classLabel = 'THG-Exzellenz (Ultra-Low-Carbon)';
+      classLabel = inhalt.werte.thgExzellenzUltraLow;
       classStar = '★★★★★';
     } else if (diffPct >= 40) {
       efficiencyClass = 'Klasse A';
       efficiencyBadge = 'bg-green-100 text-green-900 border-green-300';
-      classLabel = 'Ambitionierte Dekarbonisierung';
+      classLabel = inhalt.werte.ambitionierteDekarbonisierung;
       classStar = '★★★★☆';
     } else if (diffPct >= 25) {
       efficiencyClass = 'Klasse B';
       efficiencyBadge = 'bg-amber-100 text-amber-900 border-amber-300';
-      classLabel = 'Wirtschaftliches Optimum';
+      classLabel = inhalt.werte.wirtschaftlichesOptimum;
       classStar = '★★★☆☆';
     } else if (diffPct >= 10) {
       efficiencyClass = 'Klasse C';
@@ -188,12 +190,9 @@ export default function Materialoptimierung() {
       {/* --- Header Panel --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm">
         <h2 className="text-xl font-bold tracking-tight text-text-main flex items-center gap-2">
-          <Leaf className="text-shiraz" /> Material- &amp; Stoffoptimierung
-        </h2>
+          <Leaf className="text-shiraz" /><MdText text={inhalt.texte.materialStoffoptimierung} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-          <p>
-            Ökologische Bilanzverbesserung durch stoffliche Optimierungspfade. Erschließen Sie Potenziale mit den Säulen der Kreislaufwirtschaft und analysiere klinkerarme Bindemittel- und Substitutionskonzepte nach DIN EN 15804+A2 und VDI 4800.
-          </p>
+          <p><MdText text={inhalt.texte.ökologischeBilanzverbesserungDurchStoffl} /></p>
         </div>
       </div>
 
@@ -205,24 +204,21 @@ export default function Materialoptimierung() {
           }`}
           onClick={() => setActiveSubTab('saeulen')}
         >
-          <Layers size={14} /> Die 4 Säulen der Stoffoptimierung
-        </button>
+          <Layers size={14} /><MdText text={inhalt.texte.die4SäulenDer} /></button>
         <button aria-pressed={activeSubTab === 'betonoptimierung'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'betonoptimierung' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
           onClick={() => setActiveSubTab('betonoptimierung')}
         >
-          <Beaker size={14} /> Betonoptimierungs-Leitfaden (Prinzipien)
-        </button>
+          <Beaker size={14} /><MdText text={inhalt.texte.betonoptimierungsLeitfadenPrinzipien} /></button>
         <button aria-pressed={activeSubTab === 'dafstb_richtlinie'}
           className={`flex-1 min-w-[180px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer ${
             activeSubTab === 'dafstb_richtlinie' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}
           onClick={() => setActiveSubTab('dafstb_richtlinie')}
         >
-          <Scale size={14} /> DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton
-        </button>
+          <Scale size={14} /><MdText text={inhalt.texte.dafstbRichtlinieTreibhausgasreduzierteTr} /></button>
       </div>
 
       {/* --- Tab 1: 4 Pillars of Optimization --- */}
@@ -230,12 +226,9 @@ export default function Materialoptimierung() {
         <div className="space-y-6">
           <div className="bg-white border border-home-grau/30 rounded-xl p-6 shadow-sm">
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Sparkles className="text-shiraz" size={18} /> Strategische Dimensionen für kreislaufgerechte Gebäude
-        </h2>
+          <Sparkles className="text-shiraz" size={18} /><MdText text={inhalt.texte.strategischeDimensionenFürKreislaufgerec} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Eine verbesserte Ökobilanz (LCA) lässt sich nicht allein durch nachlaufende Dämmstoffverbesserungen erzielen. Vielmehr greift die systemische Stoffoptimierung an der Tragwerksplanung an. Durch geschicktes Ineinandergreifen von Suffizienz, Effizienz, Konsistenz und Resilienz wird mineralischer Müll verhindert und der Carbon footprint drastisch minimiert.
-          </p>
+          <p><MdText text={inhalt.texte.eineVerbesserteÖkobilanzLca} /></p>
         </div>
 
             {/* Left selector, right details */}
@@ -287,9 +280,7 @@ export default function Materialoptimierung() {
                   </p>
 
                   <div className="space-y-2 mb-4">
-                    <span className="text-[11px] font-bold text-slate-800 block">
-                      Maßgebliche Optimierungsansätze:
-                    </span>
+                    <span className="text-[11px] font-bold text-slate-800 block"><MdText text={inhalt.texte.maßgeblicheOptimierungsansätze} /></span>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                       {activeSaeuleData.strategies.map((strat, idx) => (
                         <li key={idx} className="flex gap-2 items-start bg-slate-50 p-2 rounded border border-home-grau/30">
@@ -302,9 +293,7 @@ export default function Materialoptimierung() {
                 </div>
 
                 <div className="bg-rose-50/20 border border-rose-200 p-3.5 rounded-lg mt-4">
-                  <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block mb-1 font-mono">
-                    🎓 Praxisbeispiel aus dem Ingenieurbüro
-                  </span>
+                  <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block mb-1 font-mono"><MdText text={inhalt.texte.praxisbeispielAusDemIngenieurbüro} /></span>
                   <p className="text-[11px] leading-relaxed text-slate-700 font-sans italic">
                     &quot;{activeSaeuleData.example}&quot;
                   </p>
@@ -325,13 +314,9 @@ export default function Materialoptimierung() {
             <div className="bg-rose-50 p-3 rounded-xl border border-rose-200/60 shrink-0">
               <Beaker className="text-shiraz" size={26} />
             </div>
-            <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-                Wissenschaftliche Prinzipien der Betonoptimierung
-              </h3>
+            <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.wissenschaftlichePrinzipienDerBetonoptim} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Über 60% der CO₂-Emissionen des klassischen Betons basieren auf rohstoff- und prozessbedingten Prozeduren beim Entsäuern des Kalksteins im Ofen, während ~40% auf thermischen Brennstoffen lagern. Hier sind die vier baupraktischen Kern-Sektoren der systematischen Treibhausgasminimierung strukturiesystematisch gelistet.
-          </p>
+          <p><MdText text={inhalt.texte.über60DerCo} /></p>
         </div>
           </div>
 
@@ -339,11 +324,8 @@ export default function Materialoptimierung() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-slate-50/75 border border-slate-200 rounded-xl gap-3">
             <div>
               <span className="text-xs font-extrabold text-shiraz uppercase tracking-widest block font-mono flex items-center gap-1.5">
-                <Layers size={13} className="text-shiraz" /> Klappbare Menüpunkte (Leitfaden-Struktur)
-              </span>
-              <span className="text-[11px] text-slate-500 block mt-0.5">
-                Klicken Sie auf einzelne Kategorieüberschriften, um spezifische Optimierungswege ein- oder auszublenden.
-              </span>
+                <Layers size={13} className="text-shiraz" /><MdText text={inhalt.texte.klappbareMenüpunkteLeitfadenStruktur} /></span>
+              <span className="text-[11px] text-slate-500 block mt-0.5"><MdText text={inhalt.texte.klickenSieAufEinzelne} /></span>
             </div>
             <div className="flex gap-2">
               <button
@@ -358,18 +340,14 @@ export default function Materialoptimierung() {
                   setExpandedCategories(allKeys);
                 }}
                 className="px-3 py-1.5 text-[10.5px] font-bold text-shiraz bg-white border border-rose-300 hover:bg-rose-50 rounded-lg cursor-pointer transition-all shadow-xxs"
-              >
-                📂 Alle aufklappen
-              </button>
+              ><MdText text={inhalt.texte.alleAufklappen} /></button>
               <button
                 type="button"
                 onClick={() => {
                   setExpandedCategories({});
                 }}
                 className="px-3 py-1.5 text-[10.5px] font-bold text-slate-700 bg-white border border-slate-250 hover:bg-slate-50 rounded-lg cursor-pointer transition-all shadow-xxs"
-              >
-                📁 Alle einklappen
-              </button>
+              ><MdText text={inhalt.texte.alleEinklappen} /></button>
             </div>
           </div>
 
@@ -509,14 +487,9 @@ export default function Materialoptimierung() {
             <div className="bg-gradient-to-r from-shiraz via-fuchsia-900 to-slate-950 p-6 text-white flex justify-between items-start">
               <div className="space-y-1.5">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-rose-500/20 text-shiraz-300 border border-rose-500/30 text-xxs font-bold uppercase tracking-wider">
-                  <Trees size={12} /> Klimapositiver Betonbestandteil
-                </div>
-                <h3 className="text-lg md:text-xl font-extrabold tracking-tight">
-                  Pyrogene Pflanzenkohle im Betongefüge
-                </h3>
-                <p className="text-fuchsia-200/80 text-xs font-normal">
-                  Wissenschaftliche Hintergründe zur Kohlenstoffsenke im Tragwerk
-                </p>
+                  <Trees size={12} /><MdText text={inhalt.texte.klimapositiverBetonbestandteil} /></div>
+                <h3 className="text-lg md:text-xl font-extrabold tracking-tight"><MdText text={inhalt.texte.pyrogenePflanzenkohleImBetongefüge} /></h3>
+                <p className="text-fuchsia-200/80 text-xs font-normal"><MdText text={inhalt.texte.wissenschaftlicheHintergründeZurKohlenst} /></p>
               </div>
               <button 
                 onClick={() => setShowPflanzenkohleModal(false)}
@@ -533,84 +506,62 @@ export default function Materialoptimierung() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-4 bg-rose-50/40 rounded-xl border border-rose-100 flex flex-col justify-between text-center">
                   <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block mb-1">CO₂-Bindungspotenzial</span>
-                  <strong className="text-xl font-black text-rose-900">~ 2,5 - 3,0 t</strong>
-                  <span className="text-[10px] text-slate-500 block leading-snug mt-1">CO₂-Äq lagern dauerhaft pro 1 t reiner Pflanzenkohle</span>
+                  <strong className="text-xl font-black text-rose-900"><MdText text={inhalt.texte.t2530} /></strong>
+                  <span className="text-[10px] text-slate-500 block leading-snug mt-1"><MdText text={inhalt.texte.coÄqLagernDauerhaft} /></span>
                 </div>
                 <div className="p-4 bg-blue-50/40 rounded-xl border border-blue-100 flex flex-col justify-between text-center">
                   <span className="text-[10px] font-bold text-blue-800 uppercase tracking-widest block mb-1">Gefüge-Hydratation</span>
-                  <strong className="text-xl font-black text-blue-900">Internal Curing</strong>
-                  <span className="text-[10px] text-slate-500 block leading-snug mt-1">Porenspeicher mindert Schwindrisse signifikant</span>
+                  <strong className="text-xl font-black text-blue-900"><MdText text={inhalt.texte.internalCuring} /></strong>
+                  <span className="text-[10px] text-slate-500 block leading-snug mt-1"><MdText text={inhalt.texte.porenspeicherMindertSchwindrisseSignifik} /></span>
                 </div>
                 <div className="p-4 bg-amber-50/40 rounded-xl border border-amber-100 flex flex-col justify-between text-center">
-                  <span className="text-[10px] font-bold text-amber-800 uppercase tracking-widest block mb-1">Empfohlene Dosierung</span>
+                  <span className="text-[10px] font-bold text-amber-800 uppercase tracking-widest block mb-1"><MdText text={inhalt.texte.empfohleneDosierung} /></span>
                   <strong className="text-xl font-black text-amber-900">2% bis 5%</strong>
-                  <span className="text-[10px] text-slate-500 block leading-snug mt-1">bezogen auf das Zementgewicht als inerte Feinstsubstitution</span>
+                  <span className="text-[10px] text-slate-500 block leading-snug mt-1"><MdText text={inhalt.texte.bezogenAufDasZementgewicht} /></span>
                 </div>
               </div>
 
               {/* Carbon sink mechanism */}
               <div className="space-y-2">
                 <h4 className="text-xs font-black text-rose-900 uppercase tracking-widest flex items-center gap-1 font-mono">
-                  <Leaf size={14} className="text-shiraz" /> 1. Wie funktioniert die dauerhafte Carbon-Senke?
-                </h4>
-                <p className="text-slate-600 text-xs font-normal">
-                  Bäume entziehen der Luft während des Wachstums Kohlendioxid. Stirbt der Baum oder verrottet Holzschutt, geht das CO₂ zurück in die Atmosphäre. 
-                  Durch die <strong>thermochemische Pyrolyse</strong> (Erhitzung unter Sauerstoffentzug bei 500 °C bis 800 °C) wird der biologische Kohlenstoff hochgradig in aromatische Kohlenstoffringe strukturiert. Über Jahrhunderte ist diese feste Kohle resistent gegen Verrottung (inert). 
-                  Wird dieser stabilisierte Kohlenstoff homogen im Zementstein des Betons umschlossen, entsteht ein künstliches, unlösliches Endlager im Fundament oder der Decke.
-                </p>
+                  <Leaf size={14} className="text-shiraz" /><MdText text={inhalt.texte.t1WieFunktioniertDie} /></h4>
+                <p className="text-slate-600 text-xs font-normal"><MdText text={inhalt.texte.bäumeEntziehenDerLuft} /></p>
               </div>
 
               {/* Physikalisch-chemischer Mechanismus */}
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <h5 className="font-extrabold text-xs text-slate-900 flex items-center gap-1">
-                    <Activity size={12} className="text-blue-600" /> Gefüge-Vorteil (Internal Curing)
-                  </h5>
-                  <p className="text-[11px] text-slate-500 leading-normal font-normal">
-                    Pflanzenkohle besitzt eine enorme spezifische Oberfläche (bis zu 350 m²/g) und ein ausgeprägtes Porensystem. Beim Betonmischen saugt sie überschüssiges Anmachwasser auf und speichert es. 
-                    Während der 28-tägigen Hydratation (Erstarren des Zements) gibt sie dieses Wasser langsam wieder ab. Dies sichert eine konstante Feuchte im Mikromilieu und verhindert autogenes Schwinden und Mikrorisse.
-                  </p>
+                    <Activity size={12} className="text-blue-600" /><MdText text={inhalt.texte.gefügeVorteilInternalCuring} /></h5>
+                  <p className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.pflanzenkohleBesitztEineEnorme} /></p>
                 </div>
                 <div className="space-y-1.5">
                   <h5 className="font-extrabold text-xs text-slate-900 flex items-center gap-1">
-                    <Calculator size={12} className="text-amber-600" /> Praktisches Rechenbeispiel
-                  </h5>
-                  <p className="text-[11px] text-slate-500 leading-normal font-normal">
-                    Ein Standardbeton C25/30 verursacht ca. 240 kg CO₂ pro Kubikmeter. 
-                    Substituiert man 10 kg Feinstsand durch 10 kg hochaktive Pflanzenkohle (Erhöhung des Biochar-Anteils um ca. 3% des Zementgewichts), filtert und bindet diese Menge rechnerisch rund <strong>25 bis 30 kg CO₂</strong> im Bauteil. 
-                    Damit reduziert sich die herstellungsbedingte Gesamtbilanz auf einen Schlag um <strong>über 10 %</strong>!
-                  </p>
+                    <Calculator size={12} className="text-amber-600" /><MdText text={inhalt.texte.praktischesRechenbeispiel} /></h5>
+                  <p className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.einStandardbetonC2530} /></p>
                 </div>
               </div>
 
               {/* Bautechnische Anforderungen */}
               <div className="space-y-3">
                 <h4 className="text-xs font-black text-rose-950 uppercase tracking-widest flex items-center gap-1 font-mono">
-                  <AlertTriangle size={14} className="text-rose-700" /> 2. Technische Herausforderungen im Betonwerk
-                </h4>
+                  <AlertTriangle size={14} className="text-rose-700" /><MdText text={inhalt.texte.t2TechnischeHerausforderungenIm} /></h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div className="p-3 bg-red-50/30 rounded-xl border border-red-100 space-y-1">
-                    <span className="font-extrabold text-xs text-rose-900 block">Extreme Feuchtekorrektur</span>
-                    <p className="text-[11px] text-slate-500 font-normal">
-                      Aufgrund der hohen Porosität der Kohle muss das wirksame Wasser beim Mischen peinlichst korrigiert werden. Geschieht dies nicht, entzieht die Kohle dem Zementleim das Hydratationswasser und bricht das Ausbreitmaß (Konsistenz) ein.
-                    </p>
+                    <span className="font-extrabold text-xs text-rose-900 block"><MdText text={inhalt.texte.extremeFeuchtekorrektur} /></span>
+                    <p className="text-[11px] text-slate-500 font-normal"><MdText text={inhalt.texte.aufgrundDerHohenPorosität} /></p>
                   </div>
                   <div className="p-3 bg-indigo-50/25 rounded-xl border border-indigo-100 space-y-1">
-                    <span className="font-extrabold text-xs text-indigo-900 block">k-Wert &amp; anrechenbarer Anteil</span>
-                    <p className="text-[11px] text-slate-500 font-normal">
-                      Pflanzenkohle dient als inerter Zusatzstoff (Typ I). Sie besitzt keine hydraulischen oder nennenswert puzzeolane Eigenreaktionen, weswegen die Festigkeitsklasse geringfügig absinken kann. Ihre Korngrößenverteilung muss präzise auf die Fuller-Sieblinie abgestimmt sein.
-                    </p>
+                    <span className="font-extrabold text-xs text-indigo-900 block"><MdText text={inhalt.texte.kWertAnrechenbarerAnteil} /></span>
+                    <p className="text-[11px] text-slate-500 font-normal"><MdText text={inhalt.texte.pflanzenkohleDientAlsInerter} /></p>
                   </div>
                 </div>
               </div>
 
               {/* Zulassungs- und Prüfsituation */}
               <div className="p-4 bg-shiraz/5 text-rose-950 rounded-xl border border-rose-200/40 space-y-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-shiraz block font-mono">Normative Einordnung &amp; Zertifizierung</span>
-                <p className="text-xs text-slate-600 font-normal leading-relaxed">
-                  Pflanzenkohle fällt derzeit noch nicht unter das Standardregelwerk der DIN EN 206 (kein genormter Typ-II-Zusatzstoff). Für tragende Teile ist eine <strong>Zustimmung im Einzelfall (ZiE)</strong> oder eine vorzeitige bauaufsichtliche Zulassung (abZ) erforderlich. 
-                  Die Zertifizierung über das <strong>European Biochar Certificate (EBC-Bau)</strong> garantiert, dass die Aktivkohle schadstofffrei ist (Einheit über polyzyklische aromatische Kohlenwasserstoffe - PAKs) und unbedenklich verbaut werden darf.
-                </p>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-shiraz block font-mono"><MdText text={inhalt.texte.normativeEinordnungZertifizierung} /></span>
+                <p className="text-xs text-slate-600 font-normal leading-relaxed"><MdText text={inhalt.texte.pflanzenkohleFälltDerzeitNoch} /></p>
               </div>
 
             </div>
@@ -620,9 +571,7 @@ export default function Materialoptimierung() {
               <button
                 onClick={() => setShowPflanzenkohleModal(false)}
                 className="bg-shiraz hover:bg-shiraz text-white px-5 py-2 rounded-xl text-xs font-bold shadow transition-all hover:shadow-md cursor-pointer"
-              >
-                Verstanden &amp; Schließen ✓
-              </button>
+              ><MdText text={inhalt.texte.verstandenSchließen} /></button>
             </div>
 
           </div>
@@ -631,79 +580,39 @@ export default function Materialoptimierung() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Treibhausgas einer Stahlbetondecke je m² – Standard gegen optimiert"
+        title={inhalt.werte.beispiel1TreibhausgasEiner}
         zielGleichung="\text{GWP} = V_c \cdot \text{gwp}_c + m_s \cdot \text{gwp}_s"
-        schritte={[
-          { titel: 'Standard', erklaerung: 'Vollplatte 20 cm, C25/30 mit CEM I (Lehrwert 245 kg CO₂-Äq./m³), Bewehrung 20 kg/m² (Elektrostahl, Lehrwert 0,7 kg CO₂-Äq./kg):', formel: '0{,}20 \\cdot 245 + 20 \\cdot 0{,}7 = 49{,}0 + 14{,}0 = 63{,}0\\,\\text{kg CO}_2\\text{-Äq./m}^2' },
-          { titel: 'Optimiert', erklaerung: 'Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (174 kg CO₂-Äq./m³), Bewehrung 18 kg/m²:', formel: '0{,}15 \\cdot 174 + 18 \\cdot 0{,}7 = 26{,}1 + 12{,}6 = 38{,}7\\,\\text{kg CO}_2\\text{-Äq./m}^2' },
-          { titel: 'Einsparung', erklaerung: 'Relative Minderung:', formel: '\\frac{63{,}0 - 38{,}7}{63{,}0} = 39\\,\\%' }
-        ]}
-        ergebnisHinweis="Geometrie (Masse) und Zementart wirken multiplikativ. Tragfähigkeit, Durchstanzen, Schall- und Brandschutz der Hohlkörperdecke sind gesondert nachzuweisen."
-        normQuelle="Lehrwerte; Projektwerte aus EPD (DIN EN 15804+A2) bzw. ÖKOBAUDAT"
+        schritte={inhalt.daten["Materialoptimierung.schritte"]}
+        ergebnisHinweis={inhalt.werte.geometrieMasseUndZementart}
+        normQuelle={inhalt.werte.lehrwerteProjektwerteAusEpd}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Äquivalenter w/z-Wert mit Flugasche"
+        title={inhalt.werte.beispiel2ÄquivalenterW}
         zielGleichung="(w/z)_{eq} = \frac{w}{z + k_f \cdot f}"
-        schritte={[
-          { titel: 'Rezeptur', erklaerung: 'Wasser 165 kg/m³, Zement 280 kg/m³, Flugasche 60 kg/m³, k_f = 0,4:', formel: 'w = 165,\\; z = 280,\\; f = 60' },
-          { titel: 'Anrechenbarer Bindemittelgehalt', erklaerung: 'Flugasche wird nur mit dem k-Wert angerechnet:', formel: 'z + 0{,}4 \\cdot 60 = 304\\,\\text{kg/m}^3' },
-          { titel: 'Äquivalenter w/z-Wert', erklaerung: 'Vergleich mit Grenzwerten der Expositionsklassen (z. B. XC4: max. 0,60):', formel: '(w/z)_{eq} = \\frac{165}{304} = 0{,}54 \\le 0{,}60' }
-        ]}
-        ergebnisHinweis="Der k-Wert-Ansatz erlaubt Klinkereinsparung ohne Dauerhaftigkeitsverlust. Für Hüttensandmehl ist er in Deutschland nur eingeschränkt anwendbar; Höchstmengen an Flugasche je Zementart sind zu beachten."
-        normQuelle="DIN EN 206:2021-06 / DIN 1045-2:2023-08 (k-Wert-Ansatz)"
+        schritte={inhalt.daten["Materialoptimierung.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.derKWertAnsatz}
+        normQuelle={inhalt.werte.dinEn2062021}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <Querverweis ziel="normen_ausblick" titel="Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation" linkText="Zum Modul Ausblick: neue Normengeneration">
-        <p>Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen.</p>
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
       </Querverweis>
 
       <ModulTest moduleId="materialoptimierung" />
 
       {/* --- Module Footer --- */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: Bilanzformeln, k-Wert-Ansatz und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap7} 
         wikipedia={[
-          { title: "Deutscher Ausschuss für Stahlbeton", url: "https://de.wikipedia.org/wiki/Deutscher_Ausschuss_f%C3%BCr_Stahlbeton" },
+          { title: inhalt.werte.deutscherAusschussFürStahlbeton, url: "https://de.wikipedia.org/wiki/Deutscher_Ausschuss_f%C3%BCr_Stahlbeton" },
           { title: "Bionik", url: "https://de.wikipedia.org/wiki/Bionik" },
           { title: "Carbonbeton", url: "https://de.wikipedia.org/wiki/Carbonbeton" },
           { title: "Materialeffizienz", url: "https://de.wikipedia.org/wiki/Materialeffizienz" }
         ]}
-        literatur={[
-          "Deutscher Ausschuss für Stahlbeton (DAfStb): DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton – Teil 1: Grundlagen und Nachweis am gesamten Tragwerk; Teil 2: Deckenbauteile. Ausgabe August 2024. Berlin: DIN Media 2024",
-          "Sobek, W.: non nobis – über das Bauen in der Zukunft. Band 1: Ausgehen muss man von dem, was ist. Stuttgart: av edition 2022",
-          "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
-          "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013"
-        ]}
-        regelwerke={[
-          { title: "DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton (Teile 1 und 2), Ausgabe August 2024", url: "https://www.dafstb.de/" },
-          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09" },
-          { title: "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Neuausgaben DIN EN 206-1 und -2:2026-07 erschienen)" },
-          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)" },
-          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien" }
-        ]}
-        formeln={[
-          {
-            formel: "GWP_{\\text{Bauteil}} = V_{\\text{c}} \\cdot gwp_{\\text{c}} + m_{\\text{s}} \\cdot gwp_{\\text{s}} \\quad [\\text{kg CO}_2\\text{-eq}]",
-            erklaerung: "Treibhausgasbilanzierung von Stahlbetonbauteilen über Beton- und Bewehrungsstahlanteile (Modul A1–A3).",
-            quelle: "Bilanzierung nach DIN EN 15804+A2 / DIN EN 15978 (Module A1–A3)"
-          },
-          {
-            formel: "(w/c)_{\\text{eq}} = \\frac{w}{c + k \\cdot z} \\quad [\\text{k-Wert nach DIN 1045-2}]",
-            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); für Hüttensandmehl nach DIN EN 15167-1 enthält DIN 1045-2:2023-08 einen eigenen k-Wert-Ansatz (Abschn. 5.2.5.2.5).",
-            quelle: "DIN 1045-2 / DIN EN 206"
-          },
-          {
-            formel: "\\eta_{\\text{Material}} = \\frac{m_{\\text{Soll}}}{m_{\\text{Ist}}} \\cdot 100 \\quad [\\%]",
-            erklaerung: "Materialnutzungsgrad zur Quantifizierung bionischer oder topologieoptimierter Leichtbaustrukturen.",
-            quelle: "VDI 4800 Blatt 1"
-          },
-          {
-            formel: "\\Delta G = \\left(1 - \\frac{\\rho_{\\text{leicht}}}{\\rho_{\\text{standard}}}\\right) \\cdot 100 \\quad [\\%]",
-            erklaerung: "Gewichtseinsparungsquote bei Substitution von Normalbeton durch gradierte Strukturen oder leichte Gesteinskörnungen.",
-            quelle: "Massivbau-Leichtbaupraxis"
-          }
-        ]}
+        literatur={inhalt.daten["Materialoptimierung.literatur"]}
+        regelwerke={inhalt.daten["Materialoptimierung.regelwerke"]}
+        formeln={inhalt.daten["Materialoptimierung.formeln"]}
       />
 
     </div>

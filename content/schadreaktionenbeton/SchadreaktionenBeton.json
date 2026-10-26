@@ -1,0 +1,161 @@
+{
+  "texte": {
+    "mikrostrukturelleSimulationDerAlkali": "**Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):** Alkalilösliche Kieselsäure ($\\text{SiO}_2$) aus empfindlichen Gesteinskörnern (Opalsandstein, Flinte) reagiert mit Alkalihydroxiden ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zement und externen Tausalzen. Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck die Betonzugfestigkeit ($f_{\\text{ctm}} \\approx 3{,}0\\text{ MPa}$) übersteigt, entstehen charakteristische **Drei-Sterne-Radialrisse** und das typische netzartige Oberflächenrissmuster.",
+    "t1Reaktionsbedingungen": " 1. Reaktionsbedingungen",
+    "alkaligehaltNaOÄquivalent": "Alkaligehalt (Na₂O-Äquivalent):",
+    "naGrenze060": "NA-Grenze: 0,60 %",
+    "t160SehrHoch": "1,60 % (Sehr hoch)",
+    "alkaliempfindlichkeitsklasseGestein": "Alkaliempfindlichkeitsklasse Gestein:",
+    "feuchteTausalzExposition": "Feuchte- & Tausalz-Exposition:",
+    "fctm30Mpa": "fctm ≈ 3,0 MPa",
+    "dehnungAkr": "Dehnung ε_AKR",
+    "t2MikrogefügeGelquellenMikroskopie": " 2. Mikrogefüge & Gelquellen (Mikroskopie)",
+    "reaktivesOpalkornImZementsteingefüge": "Reaktives Opalkorn im Zementsteingefüge",
+    "vergrößerung200": "Vergrößerung: 200×",
+    "schadensmechanismusDerAlkaliKieselsäure": "Schadensmechanismus der Alkali-Kieselsäure-Reaktion:",
+    "hydroxidionenSpaltenDieFesten": "Hydroxidionen spalten die festen Siloxanbrücken ($\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv$) des amorphen Quarzes. Die positiv geladenen Alkali-Kationen ($\\text{Na}^+, \\text{K}^+$) lagern sich an die negativ geladenen Silanolatgruppen an. Das entstehende hygroskopische Gel saugt Porenwasser auf und baut Sprengdrücke von über $10\\text{ MPa}$ auf, die den Beton von innen her sprengen.",
+    "alkalitreibenAkr": " Alkalitreiben (AKR)",
+    "eingabeparameterAkr": "Eingabeparameter (AKR)",
+    "bewertungAlkalieintrag": "Bewertung & Alkalieintrag",
+    "alkalieintragZement": "Alkalieintrag (Zement)",
+    "alkalieintragÜberZementgehalt": "Alkalieintrag über Zementgehalt",
+    "eingabeparameterFrost": "Eingabeparameter (Frost)",
+    "frostTausalzAngriffXf2": "Frost-Tausalz-Angriff (XF2, XF4)",
+    "bewertungKennwerte": "Bewertung & Kennwerte",
+    "abstandsfaktorLBar": "Abstandsfaktor L_bar",
+    "diagnoseMaßnahmen": " Diagnose & Maßnahmen",
+    "abstandsfaktorLBarVs": "Abstandsfaktor L_bar vs. Luftporengehalt",
+    "eingabeparameterSulfat": "Eingabeparameter (Sulfat)",
+    "schematischeDarstellungSulfattreiben": "Schematische Darstellung: Sulfattreiben",
+    "sulfationenReagierenMitC3a": "Sulfationen reagieren mit C3A aus dem Zement zu Ettringit. Diese Kristallbildung ist mit einer starken Volumenzunahme verbunden und sprengt das Gefüge.",
+    "bewertungExpositionsklasse": "Bewertung & Expositionsklasse"
+  },
+  "werte": {
+    "keineAkrDauerhaft": "Keine AKR (Dauerhaft)",
+    "gelbildungsphaseLatenzzeit": "Gelbildungsphase (Latenzzeit)",
+    "mikrorissbildungDreiSterneRisse": "Mikrorissbildung (Drei-Sterne-Risse)",
+    "netzrissmusterGelaustritt": "Netzrissmuster & Gelaustritt",
+    "strukturellesVersagenBetonkrebs": "Strukturelles Versagen (\"Betonkrebs\")",
+    "eIUnbedenklich": "E I (unbedenklich)",
+    "eIiBedenklich": "E II (bedenklich)",
+    "zBKiesMit": "z. B. Kies mit Flint",
+    "eIiiSchädlich": "E III (schädlich)",
+    "woTrocken": "WO (Trocken)",
+    "wsTausalz": "WS (Tausalz)",
+    "aktivQuellend": "Aktiv quellend",
+    "inaktivStabil": "Inaktiv (Stabil)",
+    "inertesKorn": "Inertes Korn",
+    "keineBesonderenMaßnahmenErforderlich": "Keine besonderen Maßnahmen erforderlich.",
+    "betonIstTrockenKeine": "Beton ist trocken. Keine AKR möglich.",
+    "unbedenklicheGesteinskörnungKeineWeitere": "Unbedenkliche Gesteinskörnung. Keine weiteren Maßnahmen erforderlich.",
+    "alkalimenge30Kg": "Alkalimenge ≤ 3,0 kg/m³ (vereinfachte Lehrgrenze nach britischem Ansatz). In Deutschland: Maßnahme nach Tabelle der Alkali-Richtlinie, z. B. NA-Zement oder begrenzter Zementgehalt.",
+    "alkalimenge30Kg2": "Alkalimenge > 3,0 kg/m³ (vereinfachte Lehrgrenze). Maßnahmen nach Alkali-Richtlinie erforderlich: NA-Zement, Zementgehalt begrenzen oder Gesteinskörnung E I wählen.",
+    "feuchtigkeitsklasseWsMitE": "Feuchtigkeitsklasse WS mit E III: Gesteinskörnung austauschen oder gutachterliche Stellungnahme bzw. Performance-Prüfung erforderlich (Alkali-Richtlinie).",
+    "naZement060": "NA-Zement (0,60 M.-%)",
+    "betonIstAusreichendFrostbeständig": "Beton ist ausreichend frostbeständig.",
+    "sehrHochFrostsprengung": "Sehr Hoch (Frostsprengung)",
+    "hochOberflächenabwitterung": "Hoch (Oberflächenabwitterung)",
+    "beiFrostTausalzAngriff": "Bei Frost-Tausalz-Angriff (XF4) ist ein w/z-Wert ≤ 0.50 und ausreichend künstliche Luftporen (LP ≥ 4,0 Vol.-%, Abstandsfaktor ≤ 0,20 mm) zwingend erforderlich.",
+    "geringFrostTausalzBeständig": "Gering (Frost-Tausalz-beständig)",
+    "ausreichenderLuftporengehaltUndNiedriger": "Ausreichender Luftporengehalt und niedriger w/z-Wert schützen vor osmotischem Druck und Abwitterung.",
+    "mittelMikrorissbildung": "Mittel (Mikrorissbildung)",
+    "hoherWZWert": "Hoher w/z-Wert führt zu hoher Kapillarporosität. Bei hoher Sättigung drohen Mikrorisse durch Eisdruck.",
+    "geringFrostbeständig": "Gering (Frostbeständig)",
+    "betonIstFürReinen": "Beton ist für reinen Frostangriff ohne Tausalz ausreichend ausgelegt.",
+    "abstandsfaktorLBarMm": "Abstandsfaktor L_bar [mm]",
+    "aktuellerWert": "Aktueller Wert",
+    "keineBesonderenMaßnahmenErforderlich2": "Keine besonderen Maßnahmen erforderlich.",
+    "sulfatkonzentrationUnbedenklich": "Sulfatkonzentration unbedenklich.",
+    "schwachAngreifend": "Schwach angreifend",
+    "verwendungVonZementenMit": "Verwendung von Zementen mit mäßigem Sulfatwiderstand empfohlen.",
+    "mäßigAngreifend": "Mäßig angreifend",
+    "zwingendSrZementHoher": "Zwingend SR-Zement (hoher Sulfatwiderstand) oder CEM III/B / CEM III/C verwenden!",
+    "srZementOderHochofenzement": "SR-Zement oder Hochofenzement schützt vor Ettringitbildung.",
+    "starkAngreifend": "Stark angreifend",
+    "zwingendSrZementOder": "Zwingend SR-Zement oder CEM III/B / CEM III/C verwenden! Ggf. zusätzliche Schutzbeschichtung erforderlich.",
+    "zusätzlicheSchutzmaßnahmenZB": "Zusätzliche Schutzmaßnahmen (z.B. Beschichtung) bei XA3 oft erforderlich, trotz SR-Zement.",
+    "schadreaktionenImBetonKönnen": "Schadreaktionen im Beton können durch innere chemische Reaktionen (AKR), physikalische Einwirkungen (Frost-Tau) oder äußere chemische Angriffe (Sulfattreiben) entstehen. Alle diese Prozesse führen zu einer Volumenvergrößerung und damit zu Rissen und Abplatzungen.",
+    "mengeAnZementIm": "Menge an Zement im Beton.",
+    "alkaligehaltZementNa2o": "Alkaligehalt Zement (Na_2O-Äq.)",
+    "naZementeHabenI": "NA-Zemente haben i.d.R. ≤ 0,60 M.-%",
+    "luftporengehaltLp": "Luftporengehalt (LP)",
+    "sättigungsgradWasser": "Sättigungsgrad (Wasser)",
+    "sulfatkonzentrationImGrundwasser": "Sulfatkonzentration im Grundwasser",
+    "beispiel1AlkaligehaltEines": "Beispiel 1: Alkaligehalt eines Betons und Vergleich mit NA-Zement",
+    "inDeutschlandRichtenSich": "In Deutschland richten sich die Maßnahmen nicht nach einem Grenzwert in kg/m³, sondern nach der Maßnahmentabelle der Alkali-Richtlinie (Alkaliempfindlichkeitsklasse E I bis E III, Feuchtigkeitsklasse WO/WF/WA/WS, Zementgehalt, NA-Zement oder Gutachten).",
+    "dafstbAlkaliRichtlinie2013": "DAfStb-Alkali-Richtlinie (2013-10); DIN 1164-10 (NA-Zement)",
+    "beispiel2KritischerSättigungsgrad": "Beispiel 2: Kritischer Sättigungsgrad bei Frost",
+    "deshalbFordertDin1045": "Deshalb fordert DIN 1045-2 bei XF2 bis XF4 (bzw. alternativ sehr dichten Beton bei XF3) Luftporenbildner mit einem Abstandsfaktor der Poren unter etwa 0,20 mm.",
+    "powers1949Din1045": "Powers (1949); DIN 1045-2:2023-08",
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "SchadreaktionenBeton.schritte": [
+      {
+        "titel": "Zementanalyse",
+        "erklaerung": "CEM I 42,5 R: Na₂O = 0,25 M.-%, K₂O = 0,95 M.-%:",
+        "formel": "\\mathrm{Na_2O_{eq}} = 0{,}25 + 0{,}658 \\cdot 0{,}95 = 0{,}88\\,\\text{M.-\\%}"
+      },
+      {
+        "titel": "Alkalimenge im Beton",
+        "erklaerung": "Zementgehalt z = 360 kg/m³:",
+        "formel": "A = 360 \\cdot 0{,}0088 = 3{,}2\\,\\text{kg/m}^3"
+      },
+      {
+        "titel": "Mit NA-Zement",
+        "erklaerung": "CEM I-NA (Na₂O-Äq. ≤ 0,60 M.-%):",
+        "formel": "A_{NA} \\le 360 \\cdot 0{,}0060 = 2{,}2\\,\\text{kg/m}^3"
+      }
+    ],
+    "SchadreaktionenBeton.schritte_2": [
+      {
+        "titel": "Volumenzunahme",
+        "erklaerung": "Wasser dehnt sich beim Gefrieren um etwa 9 % aus:",
+        "formel": "\\Delta V_{Eis} = 0{,}09"
+      },
+      {
+        "titel": "Grenzsättigung",
+        "erklaerung": "Bis zu diesem Füllungsgrad findet das Eis noch Platz im Porenraum:",
+        "formel": "S_{krit} = \\frac{1}{1{,}09} = 0{,}917 = 91{,}7\\,\\%"
+      },
+      {
+        "titel": "Folgerung",
+        "erklaerung": "Künstliche Luftporen bleiben bei kapillarem Saugen weitgehend luftgefüllt und senken den Sättigungsgrad:",
+        "formel": "S < S_{krit} \\Rightarrow \\text{kein Frostschaden}"
+      }
+    ],
+    "SchadreaktionenBeton.literatur": [
+      "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013",
+      "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (aktuelle Ausgabe)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "SchadreaktionenBeton.regelwerke": [
+      {
+        "title": "DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10"
+      },
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 19573:2026-06 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden)"
+      }
+    ],
+    "SchadreaktionenBeton.formeln": [
+      {
+        "formel": "3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot \\text{CaSO}_4 \\cdot 12\\text{H}_2\\text{O} + 2\\text{Ca}^{2+} + 2\\text{SO}_4^{2-} + 20\\text{H}_2\\text{O} \\rightarrow 3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot 3\\text{CaSO}_4 \\cdot 32\\text{H}_2\\text{O}",
+        "erklaerung": "Klassisches Sulfattreiben: Reaktion von Monosulfat (im erhärteten Hydratgefüge) mit eindringenden Sulfationen und Calciumionen zu expansivem, kristallwasserreichem Ettringit (Trisulfat, 32 H2O). Die drastische Volumenvergrößerung sprengt die gehärtete Zementsteinmatrix.",
+        "quelle": "Stark/Wicht: Dauerhaftigkeit von Beton"
+      },
+      {
+        "formel": "\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv + \\, 2\\text{Na}^+ + 2\\text{OH}^- \\rightarrow 2(\\equiv\\text{Si}-\\text{O}^-\\text{Na}^+) + \\text{H}_2\\text{O}",
+        "erklaerung": "Spaltung stabiler Neutralsiloxanbrücken des amorphen Quarzes durch hochalkalisches Porenwasser (OH-Ionen) bei der Alkali-Kieselsäure-Reaktion (AKR). Es bildet sich quellfähiges, stark wasseranziehendes Natrium-Alkali-Kieselgel, das Risse initiiert.",
+        "quelle": "DAfStb-Alkali-Richtlinie / Stark & Wicht"
+      },
+      {
+        "formel": "S_{\\text{crit}} = \\frac{V_w}{V_p} \\approx 91{,}7\\,\\% \\quad (\\Delta V_{\\text{Eis}} \\approx +9\\,\\%)",
+        "erklaerung": "Kritischer Wassersättigungsgrad bei Frostbeanspruchung. Überschreitet der Füllungsgrad der Kapillarporen 91,7%, kann das Wasser die 9-prozentige Volumenzunahme beim Phasenübergang zu Eis nicht mehr schadlos in freie Luftporen verdrängen; es entsteht zerstörerischer hydraulischer Sprengdruck.",
+        "quelle": "Powers: Freezing in Hardened Cement Paste"
+      }
+    ]
+  }
+}

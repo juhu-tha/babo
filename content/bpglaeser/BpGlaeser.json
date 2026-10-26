@@ -1,0 +1,225 @@
+{
+  "texte": {
+    "gläserFenstertechnikBauprodukte": " Gläser & Fenstertechnik (Bauprodukte)",
+    "bauartenGlasdickenNanobeschichtungenGasf": "Bauarten, Glasdicken, Nanobeschichtungen, Gasfüllungen, Fensterprofile, Normen & Kostenanalysen",
+    "dinEn1279Din": "DIN EN 1279 • DIN 18008 • GModG (vormals GEG)",
+    "moderneFensterUndGlasfassaden": "Moderne Fenster und Glasfassaden sind hochkomplexe multifunktionale Bauteilsysteme. Sie verbinden Tageslichtnutzung mit extremem Wärmeschutz ($U_w \\le 0{,}80\\,\\text{W}/(\\text{m}^2\\text{K})$), sommerlicher Hitzeabschirmung ($g\\text{-Wert}$), Schallschutz ($R_w \\ge 45\\,\\text{dB}$) und statischer Personensicherheit nach **DIN 18008**. Hier erfahren Sie die physikalischen Wirkungsweisen von Low-E-Beschichtungen, Scheibenzwischenraum-Füllungen, Sicherheitsgläsern und Rahmenmaterialien.",
+    "übersichtAufbau": " Übersicht & Aufbau",
+    "glasprodukteDicken": " Glasprodukte & Dicken",
+    "bedampfungSchichtenGase": " Bedampfung, Schichten & Gase",
+    "fensterartenRahmen": " Fensterarten & Rahmen",
+    "interaktiverUwRechner": " Interaktiver Uw-Rechner",
+    "normenPrüfungen": " Normen & Prüfungen",
+    "anatomieDesModernenMehrscheiben": "Anatomie des modernen Mehrscheiben-Isolierglases (MIG nach DIN EN 1279)",
+    "einModernesIsolierglasBesteht": "Ein modernes Isolierglas besteht aus weit mehr als nur zwei Glasscheiben. Es ist ein hermetisch abgeschlossener, gasgefüllter Hohlkörper mit Nanobeschichtungen und hochpräziser Randsiegelung. Die Bezeichnungsweise der Glasoberflächen erfolgt immer von **außen nach innen** mit den Ziffern 1 bis 4 (bei 2-fach) bzw. 1 bis 6 (bei 3-fach Verglasung).",
+    "scheibenaufbau3FachIsolierglas": " Scheibenaufbau 3-fach Isolierglas (Position 1 bis 6)",
+    "außenscheibePos12": "Außenscheibe (Pos. 1 & 2)",
+    "pos1WetterseiteUnbeschichtet": "Pos. 1: Wetterseite unbeschichtet | Pos. 2: Sonnenschutz-Bedampfung (optional)",
+    "t48MmFloat": "4 – 8 mm Float/ESG",
+    "scheibenzwischenraum1Szr1": "Scheibenzwischenraum 1 (SZR 1)",
+    "t1418Mm90": "14 – 18 mm (90 % Argon / Krypton)",
+    "mittelscheibePos34": "Mittelscheibe (Pos. 3 & 4)",
+    "pos34Meist": "Pos. 3 / 4: Meist unbeschichtet oder zusätzliche Funktionsschicht",
+    "t4MmFloatTvg": "4 mm Float/TVG",
+    "scheibenzwischenraum2Szr2": "Scheibenzwischenraum 2 (SZR 2)",
+    "t1418Mm902": "14 – 18 mm (90 % Argon / Krypton)",
+    "innenscheibePos56": "Innenscheibe (Pos. 5 & 6)",
+    "pos5LowE": "Pos. 5: Low-E-Wärmeschutzschicht (Silber) | Pos. 6: Raumseite (VSG bei Absturzsicherung)",
+    "t48MmFloat2": "4 – 8 mm Float/VSG",
+    "merksatzDieLowE": "**Merksatz:** Die Low-E-Schicht liegt geschützt im Zwischenraum (Pos. 3 bei 2-IV, Pos. 2 & 5 bei 3-IV), niemals frei auf der Außenseite, um Oxidation zu verhindern.",
+    "derRandverbundZweistufig": "Der Randverbund (Zweistufig)",
+    "primärdichtungPolyisobutylenButylDichtet": "**Primärdichtung (Polyisobutylen / Butyl):** Dichtet gegen Gasaustritt und verhindert das Eindringen von Wasserdampf (Diffusionssperre).",
+    "abstandhalterHohlprofilMitMolekularsieb": "**Abstandhalter:** Hohlprofil mit Molekularsieb (Zeolith-Trocknungsmittel) bindet eventuelle Restfeuchte.",
+    "sekundärdichtungPolysulfidSilikonVerkleb": "**Sekundärdichtung (Polysulfid / Silikon):** Verklebt die Scheiben mechanisch elastisch im Kantenbereich (3–5 mm Tiefe).",
+    "achtungKonventionelleAluminiumAbstandhal": "**Achtung:** Konventionelle Aluminium-Abstandhalter bilden eine massive Kältebrücke ($\\Psi \\approx 0{,}08\\,\\text{W}/(\\text{mK})$). Standard ist heute die **\"Warme Kante\"** aus Kunststoff/Edelstahl ($\\Psi \\le 0{,}04\\,\\text{W}/(\\text{mK})$).",
+    "wichtigeBauphysikalischeKennwerteIm": "Wichtige bauphysikalische Kennwerte im Fensterbau",
+    "symbolEinheit": "Symbol / Einheit",
+    "physikalischeBedeutung": "Physikalische Bedeutung",
+    "typischeWerteStand2026": "Typische Werte (Stand 2026)",
+    "ugWMK": "Ug [W/(m²K)]",
+    "gibtDenWärmeverlustDurch": "Gibt den Wärmeverlust durch das Verbundglas an (je kleiner, desto besser dämmend).",
+    "t2Iv11": "2-IV: 1,1 | 3-IV: 0,5 – 0,7 | VIG: 0,5",
+    "ufWMK": "Uf [W/(m²K)]",
+    "wärmeverlustDesFensterrahmensAbhängig": "Wärmeverlust des Fensterrahmens (abhängig von Kammern, Holzstärke, thermischer Trennung).",
+    "pvc091": "PVC: 0,9–1,2 | Holz: 1,1–1,3 | Alu: 1,1–1,4",
+    "uwWMK": "Uw [W/(m²K)]",
+    "gesamterWärmeverlustDesFensters": "Gesamter Wärmeverlust des Fensters inkl. Glas, Rahmen und Glasrandverbund ($\\Psi_g$).",
+    "gegMax130": "GEG-Max: 1,30 | Standard: 0,80 – 0,95",
+    "gWert": "g-Wert [- / %]",
+    "anteilDerGesamtenSonnenenergie": "Anteil der gesamten Sonnenenergie, die durch das Glas in den Raum gelangt (0 bis 1).",
+    "wärmeschutz0500": "Wärmeschutz: 0,50–0,62 | Sonnenschutz: 0,22–0,38",
+    "vTl": "τ_v (TL) [%]",
+    "anteilDerFürDas": "Anteil der für das menschliche Auge sichtbaren Sonnenstrahlung (380–780 nm).",
+    "float903Iv": "Float: ~90 % | 3-IV: 70–75 % | Sonnenschutz: 50–70 %",
+    "lineareWärmebrückeGlasrand": "Lineare Wärmebrücke Glasrand",
+    "zusatzwärmeverlustDurchDenAbstandhalter": "Zusatzwärmeverlust durch den Abstandhalter im Randverbund des Isolierglases.",
+    "alu0080Edelstahl": "Alu: 0,080 | Edelstahl: 0,060 | Warme Kante: 0,035–0,040",
+    "schallbewertetesSchalldämmmaß": "Schallbewertetes Schalldämmmaß",
+    "rwCCtrDb": "Rw (C; Ctr) [dB]",
+    "schalldämmungGegenüberAußenlärmMit": "Schalldämmung gegenüber Außenlärm mit Spektrum-Anpassungswerten für Stadtverkehr (Ctr).",
+    "standard3234Db": "Standard: 32–34 dB | Akustik-VSG: 42–48 dB",
+    "typischeDicken": "Typische Dicken:",
+    "richtpreisGlas": "Richtpreis (Glas):",
+    "typischeEinsatzbereiche": "Typische Einsatzbereiche:",
+    "imRechnerTesten": "Im Rechner testen ",
+    "bruchmechanikPersonensicherheitFloatglas": "Bruchmechanik & Personensicherheit: Floatglas vs. ESG vs. TVG vs. VSG",
+    "floatglasKühlglas": "Floatglas (Kühlglas)",
+    "fK45N": "f_k = 45 N/mm²",
+    "brichtInGroßeScharfkantige": "Bricht in große, scharfkantige Bruchstücke.**Nicht zulässig** als alleinige Glasart für absturzsichernde Verglasungen (DIN 18008-4).",
+    "esgVollVorgespannt": "ESG (Voll vorgespannt)",
+    "fK120N": "f_k = 120 N/mm²",
+    "hoheEigenspannungZerfälltBei": "Hohe Eigenspannung. Zerfällt bei Bruch schlagartig in tausende stumpfkantige Krümel (< 1 cm²). Gefahrlose Bergung, aber **keine Resttragfähigkeit** (Scheibe fällt komplett heraus).",
+    "tvgTeilvorgespannt": "TVG (Teilvorgespannt)",
+    "fK70N": "f_k = 70 N/mm²",
+    "brichtInGroßformatigeIneinander": "Bricht in großformatige, ineinander verkrallte Schollen. Nur im VSG-Verbund zulässig! Garantiert sehr gute **statische Resttragfähigkeit** bei Überkopf- und Brüstungsgläsern.",
+    "vsgVerbundglas": "VSG (Verbundglas)",
+    "splitterbindendZäh": "Splitterbindend + Zäh",
+    "mindestensZweiScheibenMit": "Mindestens zwei Scheiben mit zäher PVB-Folie (0,38 bis 1,52 mm). Splitter haften fest an der Folie; schützt vor Absturz und Durchsturz; mit geeignetem Aufbau auch durchwurf- und durchbruchhemmend (DIN EN 356, z. B. P4A).",
+    "nanobeschichtungenBedampfungsverfahrenAu": "Nanobeschichtungen & Bedampfungsverfahren auf Flachglas",
+    "reinesGlasBesitztEin": "Reines Glas besitzt ein hohes Strahlungsemissionsvermögen ($\\varepsilon \\approx 0{,}84$), wodurch rund zwei Drittel des Wärmeverlusts auf langwellige Wärmestrahlung zurückzuführen sind. Durch das Aufbringen hauchdünner metallischer Funktionsschichten (typisch 10 bis 100 Nanometer) wird die Wärmestrahlung wie von einem Spiegel reflektiert, während das sichtbare Sonnenlicht fast ungedämpft hindurchtritt.",
+    "t1MagnetronSputternOffline": "1. Magnetron-Sputtern (Offline-Beschichtung / Soft Coatings)",
+    "dasModerneHochleistungsverfahrenIm": "Das moderne Hochleistungsverfahren im Vakuum (PVD - Physical Vapour Deposition). Das fertige Floatglas wird durch eine Vakuum-Beschichtungsanlage gefahren, in der Targetmaterialien (Silber, Titan, Zinkoxid) mittels Magnetron-Plasma atomar aufgedampft werden.",
+    "schichtaufbauSilberMultilayer": "Schichtaufbau (Silber-Multilayer):",
+    "glasDielektrikumEntspiegelungSilber": "Glas → Dielektrikum (Entspiegelung) → Silber-Funktionsschicht (ca. 10 nm) → Opferschicht (Blocker) → Schutzschicht. Erreicht eine sehr niedrige Emissivität ($\\varepsilon_n \\approx 0{,}01\\text{ bis }0{,}04$).",
+    "einschränkungNichtWitterungsstabilMuss": "**Einschränkung:** Nicht witterungsstabil – muss zwingend auf der geschützten SZR-Seite eingebaut werden.",
+    "t2PyrolytischeBeschichtungOnline": "2. Pyrolytische Beschichtung (Online-Beschichtung / Hard Coatings)",
+    "erfolgtDirektImFloatglas": "Erfolgt direkt im Floatglas-Zinnbad bei ca. 600 °C. Zinnchlorid oder Silane werden auf das noch weiche Glas gesprüht und verschmelzen pyrolytisch mit der Glasoberfläche zu einer extrem harten Zinnoxidschicht (SnO₂:F).",
+    "mechanischUndChemischSehr": "Mechanisch und chemisch sehr robust; kann auch auf einer Außenseite liegen. Die Emissivität ist mit $\\varepsilon_n \\approx 0{,}15$ jedoch deutlich schlechter als bei Sputter-Silberschichten.",
+    "anwendungSelbstreinigendeGläserTio": "**Anwendung:** Selbstreinigende Gläser (TiO₂-Photokatalyse), Heizelemente, historische Fenster.",
+    "gasfüllungenImScheibenzwischenraumSzr": "Gasfüllungen im Scheibenzwischenraum (SZR) im Vergleich",
+    "wärmeleitfähigkeitBei10C": "Wärmeleitfähigkeit λ bei 10 °C",
+    "dichteKgM": "Dichte ρ [kg/m³]",
+    "optimalerSzrAbstand": "Optimaler SZR-Abstand",
+    "erreichbarerUg3Iv": "Erreichbarer Ug (3-IV)",
+    "kostenVerfügbarkeit": "Kosten & Verfügbarkeit",
+    "luftTrocken": "Luft (trocken)",
+    "t00250WMk": "0,0250 W/(mK)",
+    "t09WM": "~ 0,9 W/(m²K)",
+    "kostenlosHeuteNurNoch": "Kostenlos (heute nur noch bei Billig- oder Altglas)",
+    "argonAr90Industriestandard": "Argon (Ar, 90 %) - Industriestandard",
+    "t00170WMk": "0,0170 W/(mK)",
+    "t0607": "0,6 – 0,7 W/(m²K)",
+    "sehrGünstig093": "Sehr günstig (~0,93 % in Luft), Standard bei > 95 % aller Fenster",
+    "kryptonKr90": "Krypton (Kr, 90 %)",
+    "t00094WMk": "0,0094 W/(mK)",
+    "teuerFürSchmaleScheibenzwischenräume": "Teuer; für schmale Scheibenzwischenräume",
+    "t00056WMk": "0,0056 W/(mK)",
+    "t04WM": "< 0,4 W/(m²K)",
+    "sehrTeuerImBauwesen": "Sehr teuer; im Bauwesen kaum noch eingesetzt",
+    "vakuumP01": "Vakuum (p < 0,1 Pa)",
+    "t00000WMk": "0,0000 W/(mK) (Keine Konvektion!)",
+    "t0203": "0,2 – 0,3 mm!",
+    "t0407": "0,4 – 0,7 W/(m²K)",
+    "aufwendigeRandversiegelungZukunftstechno": "Aufwendige Randversiegelung, Zukunftstechnologie VIG für Denkmalschutz",
+    "diffusionsverlustÜberDieLebensdauer": "**Diffusionsverlust über die Lebensdauer:**Nach DIN EN 1279-3 darf der jährliche Gasaustritt aus dem Randverbund höchstens **1,0 % pro Jahr** betragen ($L_i \\le 1{,}0\\,\\%/a$). Bei 1 %/a Verlust verbleiben nach 25–30 Jahren noch rund 75 % der Füllung; gute Randverbünde liegen deutlich darunter.",
+    "typischerUwWert": "Typischer Uw-Wert:",
+    "richtpreisElement": "Richtpreis Element:",
+    "geometrieSimulieren": "Geometrie simulieren ",
+    "ökologischeTechnischeLebenszyklusbetrach": "Ökologische & Technische Lebenszyklusbetrachtung der Rahmenwerkstoffe",
+    "kunststoffPvcU": "Kunststoff (PVC-U)",
+    "geringsteAnschaffungskostenLebensdauer30": "Geringste Anschaffungskosten, Lebensdauer ~30 Jahre. Rezyklatanteil in Kernprofilen bis zu 60 %. Aufgrund von Stabilisatoren (Calcium/Zink statt Blei) voll recyclingfähig im Rewindo-System.",
+    "holzKieferEiche": "Holz (Kiefer / Eiche)",
+    "besteCoBilanzAller": "Beste CO₂-Bilanz aller Werkstoffe (-15 bis -30 kg CO₂-Äq pro Fenster). Erfordert jedoch regelmäßige Anstriche alle 5–8 Jahre, um Pilzbefall und Verzug vorzubeugen.",
+    "höchsteLebensdauer45Jahre": "Höchste Lebensdauer (> 45 Jahre) ohne Sanierungsanstriche. Trotz höherer Grauer Energie der Aluschale durch die lange Lebensdauer im Gebäude-LCA überaus positiv bewertet.",
+    "hohePrimärenergieBeiNeualuminium": "Hohe Primärenergie bei Neualuminium (~14 kWh/kg). Rezyklat-Aluminium (Hydro CIRCAL mit ≥ 75 % Post-Consumer-Schrott) senkt den Carbon Footprint um über 80 % auf unter 2,3 kg CO₂/kg Alu.",
+    "relevanteNormenPrüfungenFür": "Relevante Normen & Prüfungen für Glas und Fenster",
+    "t1BemessungImBauwesen": "1. Bemessung im Bauwesen: DIN 18008 Reihe",
+    "din180081Begriffe": "**DIN 18008-1:** Begriffe, allgemeine Grundlagen und Teilsicherheitskonzept nach Eurocode.",
+    "din180082Linienförmig": "**DIN 18008-2:** Linienförmig gelagerte Verglasungen (Standardfenster, Fassadenriegel).",
+    "din180083Punktförmig": "**DIN 18008-3:** Punktförmig gelagerte Verglasungen (Punkthalter, Glasklammern).",
+    "din180084Zusatzanforderungen": "**DIN 18008-4:** Zusatzanforderungen an absturzsichernde Verglasungen (Pendelschlagversuch mit Doppelreifen nach DIN EN 12600).",
+    "din180085Begehbare": "**DIN 18008-5:** Begehbare Verglasungen (Treppenstufen, Glasböden; mind. 3 Scheiben VSG).",
+    "t2ProduktnormenCeKennzeichnung": "2. Produktnormen & CE-Kennzeichnung",
+    "dinEn143511": "**DIN EN 14351-1:** Fenster und Außentüren – Produktnorm, Leistungseigenschaften (CE-Kennzeichnung, Windlast, Schlagregen).",
+    "dinEn1279Teile": "**DIN EN 1279 (Teile 1–6):** Glas im Bauwesen – Mehrscheiben-Isolierglas (Feuchteaufnahme, Gasaustrittsrate, Alterungsbeständigkeit).",
+    "dinEn12150Thermisch": "**DIN EN 12150:** Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas (ESG).",
+    "dinEnIso12543": "**DIN EN ISO 12543:** Verbundglas und Verbund-Sicherheitsglas (VSG).",
+    "dinEnIso10077": "**DIN EN ISO 10077:** Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen (Berechnung von Uw und Uf).",
+    "zertifizierungsPrüfungenAmFensterprüfsta": "Zertifizierungs-Prüfungen am Fensterprüfstand (ift Rosenheim / Prüfinstitute)",
+    "t1LuftdurchlässigkeitDinEn": "1. Luftdurchlässigkeit (DIN EN 1026)",
+    "druckstufenBis600Pa": "Druckstufen bis 600 Pa. Klasse 4 ist Standard für Neubauten (höchste Dichtheit gegen Zugluft).",
+    "t2SchlagregendichtheitDinEn": "2. Schlagregendichtheit (DIN EN 1027)",
+    "berieselungMitWasserBei": "Berieselung mit Wasser bei pulsierendem Überdruck. Klasse E900: dicht bis 900 Pa Prüfdruck (DIN EN 12208).",
+    "t3EinbruchhemmungDinEn": "3. Einbruchhemmung (DIN EN 1627)",
+    "widerstandsklassenRc1N": "Widerstandsklassen RC 1 N bis RC 4. Prüfung statisch, dynamisch (Pendel) und manueller Werkzeugangriff (Kuhfuß)."
+  },
+  "werte": {
+    "anwendungsbeispielBemessungsfestigkeitVo": "Anwendungsbeispiel: Bemessungsfestigkeit von Float, TVG und ESG",
+    "din180081Und": "DIN 18008-1 und -2 (Windlast: Float k_mod = 0,7, γ_M = 1,8, k_c = 1,8 bei linienförmiger Lagerung; vorgespanntes Glas k_mod = 1,0, k_c = 1,0, γ_M = 1,5)",
+    "esgHatRundDie": "ESG hat rund die 2,5-fache Bemessungsfestigkeit von linienförmig gelagertem Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung."
+  },
+  "daten": {
+    "BpGlaeser.schritte": [
+      {
+        "titel": "1. Floatglas (linienförmig gelagert)",
+        "formel": "f_{g,d} = 0{,}7 \\cdot 1{,}8 \\cdot 45 / 1{,}8 = 31{,}5\\,\\text{N/mm}^2",
+        "erklaerung": "f_g,k = 45 N/mm², k_c = 1,8 nach DIN 18008-2 für allseitig linienförmig gelagerte Vertikalverglasungen; bei punktgestützter Lagerung k_c = 1,0 → 17,5 N/mm²."
+      },
+      {
+        "titel": "2. TVG",
+        "formel": "f_{g,d} = 1{,}0 \\cdot 70 / 1{,}5 = 46{,}7\\,\\text{N/mm}^2",
+        "erklaerung": "Vorgespanntes Glas: k_mod = 1,0, γ_M = 1,5."
+      },
+      {
+        "titel": "3. ESG",
+        "formel": "f_{g,d} = 1{,}0 \\cdot 120 / 1{,}5 = 80\\,\\text{N/mm}^2",
+        "erklaerung": "Vorgespanntes Glas: Festigkeit kaum lastdauerabhängig."
+      }
+    ],
+    "BpGlaeser.regelwerke": [
+      {
+        "title": "DIN EN 14351-1: Fenster und Außentüren – Produktnorm, Leistungseigenschaften"
+      },
+      {
+        "title": "DIN EN 1279-1 bis 6: Glas im Bauwesen – Mehrscheiben-Isolierglas"
+      },
+      {
+        "title": "DIN 18008-1 bis 5: Glas im Bauwesen – Bemessungs- und Konstruktionsregeln"
+      },
+      {
+        "title": "DIN EN ISO 10077-1: Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen – Berechnung des Wärmedurchgangskoeffizienten"
+      },
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG): Anforderungen an den sommerlichen und winterlichen Wärmeschutz von Fenstern",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      }
+    ],
+    "BpGlaeser.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Weller, B.; Härth, K.; Tasche, S.; Unnewehr, S.: Konstruktiver Glasbau. München: Edition Detail 2008",
+      "Wurm, J.: Glass Structures – Design and Construction of Self-Supporting Skins. Basel: Birkhäuser 2007",
+      "ift Rosenheim: Richtlinien und Fachinformationen zur Fenster- und Fassadentechnik"
+    ],
+    "BpGlaeser.weblinks": [
+      {
+        "title": "Bundesverband Flachglas (BF) – Technische Richtlinien",
+        "url": "https://www.bundesverband-flachglas.de/"
+      },
+      {
+        "title": "ift Rosenheim – Institut für Fenstertechnik",
+        "url": "https://www.ift-rosenheim.de/"
+      },
+      {
+        "title": "Verband Fenster + Fassade (VFF)",
+        "url": "https://www.window.de/"
+      }
+    ],
+    "BpGlaeser.formeln": [
+      {
+        "formel": "U_w = \\frac{A_g \\cdot U_g + A_f \\cdot U_f + l_g \\cdot \\Psi_g}{A_g + A_f}",
+        "erklaerung": "Berechnung des gesamten Wärmedurchgangskoeffizienten U_w eines Fensters nach DIN EN ISO 10077-1: Zusammensetzung aus Glasfläche A_g mit U_g, Rahmenfläche A_f mit U_f und dem linearen Wärmedurchgangskoeffizienten des Glasrandes Ψ_g über den Umfang l_g.",
+        "quelle": "DIN EN ISO 10077-1"
+      },
+      {
+        "formel": "S = \\frac{\\tau_v}{g}",
+        "erklaerung": "Selektivitätskennzahl S von Sonnenschutzverglasungen: Verhältnis von Lichttransmission τ_v zum Gesamtenergiedurchlassgrad g. Hochselektive Gläser erreichen Werte von S ≈ 1,8 bis 2,0 (viel Licht bei wenig Wärme).",
+        "quelle": "DIN EN 410"
+      },
+      {
+        "formel": "\\sigma_{\\text{max}} = \\frac{3 \\cdot F \\cdot L}{2 \\cdot b \\cdot h^2} \\le f_{g,d} = \\frac{k_{\\text{mod}} \\cdot f_{g,k}}{\\gamma_M}",
+        "erklaerung": "Nachweis der Biegezugspannung im Glas nach DIN 18008 mit charakteristischer Festigkeit f_{g,k} (Float: 45 N/mm², TVG: 70 N/mm², ESG: 120 N/mm²), Modifikationsbeiwert k_{mod} für Lasteinwirkungsdauer und Teilsicherheitsbeiwert γ_M.",
+        "quelle": "DIN 18008-1"
+      }
+    ]
+  }
+}

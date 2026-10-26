@@ -13,6 +13,8 @@ import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/schutzgrundlagen/SchutzGrundlagen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function SchutzGrundlagen() {
   const [activeTab, setActiveTab] = useState<'prinzipien' | 'mechanismen' | 'lebensdauer' | 'verfahrenswahl'>('prinzipien');
@@ -26,23 +28,14 @@ export default function SchutzGrundlagen() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-home-grau/20 pb-4 mb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <ShieldCheck className="text-shiraz" size={24} /> Schutz: Grundlagen &amp; Instandsetzungsprinzipien
-            </h2>
-            <p className="text-xs text-text-main/70 mt-1">
-              Systematik des Bauwerksschutzes, normative Instandsetzungsprinzipien nach DIN EN 1504 / TR Instandhaltung und physiko-chemische Schutzmechanismen
-            </p>
+              <ShieldCheck className="text-shiraz" size={24} /><MdText text={inhalt.texte.schutzGrundlagenInstandsetzungsprinzipie} /></h2>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.systematikDesBauwerksschutzesNormative} /></p>
           </div>
-          <span className="text-xs font-semibold px-3 py-1 rounded-lg bg-shiraz/10 text-shiraz border border-shiraz/20 self-start md:self-auto">
-            DIN EN 1504-9 • TR Instandhaltung (DIBt) • DIN 31051
-          </span>
+          <span className="text-xs font-semibold px-3 py-1 rounded-lg bg-shiraz/10 text-shiraz border border-shiraz/20 self-start md:self-auto"><MdText text={inhalt.texte.dinEn15049} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Der Schutz und die Instandsetzung von Tragwerken und Bauteilen erfordert ein fundiertes Verständnis der Degradationsprozesse und der physikalisch-chemischen Schutzmechanismen. 
-            Während <strong>passive Schutzsysteme</strong> durch Barrierewirkung das Vordringen von Schadstoffen (Wasser, CO₂, Chloride) unterbinden, greifen <strong>aktive Schutzverfahren</strong> (z. B. kathodischer Korrosionsschutz oder Realkalisierung) direkt in elektrochemische Reaktionsketten ein. 
-            Grundlage jeder qualifizierten Planung ist die Zuordnung zu den europaweit harmonisierten Instandsetzungsprinzipien nach <strong>DIN EN 1504-9</strong> sowie den nationalen baurechtlichen Anforderungen der <strong>TR Instandhaltung</strong> des DIBt.
-          </p>
+          <p><MdText text={inhalt.texte.derSchutzUndDie} /></p>
         </div>
 
         {/* Tab Navigation */}
@@ -55,8 +48,7 @@ export default function SchutzGrundlagen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
           >
-            <Layers size={16} /> 1. Instandsetzungsprinzipien (DIN EN 1504 / TR)
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.t1InstandsetzungsprinzipienDinEn} /></button>
           <button aria-pressed={activeTab === 'mechanismen'}
             onClick={() => setActiveTab('mechanismen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -65,8 +57,7 @@ export default function SchutzGrundlagen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
           >
-            <Shield size={16} /> 2. Schutzmechanismen (Passiv vs. Aktiv)
-          </button>
+            <Shield size={16} /><MdText text={inhalt.texte.t2SchutzmechanismenPassivVs} /></button>
           <button aria-pressed={activeTab === 'lebensdauer'}
             onClick={() => setActiveTab('lebensdauer')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -75,8 +66,7 @@ export default function SchutzGrundlagen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
           >
-            <TrendingUp size={16} /> 3. Lebenszyklus &amp; Degradation (Tuutti / De Sitter)
-          </button>
+            <TrendingUp size={16} /><MdText text={inhalt.texte.t3LebenszyklusDegradationTuutti} /></button>
           <button aria-pressed={activeTab === 'verfahrenswahl'}
             onClick={() => setActiveTab('verfahrenswahl')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -85,8 +75,7 @@ export default function SchutzGrundlagen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
           >
-            <Compass size={16} /> 4. Verfahrenswahl-Matrix
-          </button>
+            <Compass size={16} /><MdText text={inhalt.texte.t4VerfahrenswahlMatrix} /></button>
         </div>
       </div>
 
@@ -97,103 +86,71 @@ export default function SchutzGrundlagen() {
           {/* Normativer Kontext */}
           <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
             <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2 mb-3">
-              <FileText className="text-shiraz shrink-0" size={18} />
-              Harmonisiertes europäisches Prinzipiensystem (DIN EN 1504-9)
-            </h3>
-            <p className="text-sm text-slate-800 leading-relaxed">
-              Die europäische Norm <strong>DIN EN 1504 Teil 9</strong> definiert elf Grundprinzipien für den Schutz und die Instandsetzung von Betontragwerken. 
-              Sie gliedern sich in <strong>Prinzipien 1 bis 6 für Betonschäden</strong> (Defekte im Zementsteingefüge) und <strong>Prinzipien 7 bis 11 für Bewehrungskorrosion</strong>. 
-              Im deutschen Baurecht werden diese Prinzipien durch die <strong>Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung, DIBt)</strong> für standsicherheitsrelevante Bauteile verbindlich konkretisiert (Prinzipien und Verfahren nach DIN EN 1504-9 / TR Instandhaltung Teil 1 Tab. 1 &amp; 2).
-            </p>
+              <FileText className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.harmonisiertesEuropäischesPrinzipiensyst} /></h3>
+            <p className="text-sm text-slate-800 leading-relaxed"><MdText text={inhalt.texte.dieEuropäischeNormDin} /></p>
           </div>
 
           {/* Übersicht Prinzipien 1 bis 6: Betonschutz */}
           <div className="bg-white border border-home-grau/30 p-5 rounded-xl shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
               <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-shiraz/10 text-shiraz flex items-center justify-center text-xs font-bold">A</span>
-                Prinzipien für Betonschäden (Gefügeschutz &amp; Reprofilierung)
-              </h4>
-              <span className="text-[11px] text-slate-500 font-mono">Prinzip 1 bis 6</span>
+                <span className="w-6 h-6 rounded-full bg-shiraz/10 text-shiraz flex items-center justify-center text-xs font-bold">A</span><MdText text={inhalt.texte.prinzipienFürBetonschädenGefügeschutz} /></h4>
+              <span className="text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.prinzip1Bis6} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 1 (PI): Schutz gegen Eindringen</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Protection against Ingress</span>
+                  <span><MdText text={inhalt.texte.prinzip1PiSchutz} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.protectionAgainstIngress} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Reduzierung oder Verhinderung des Eindringens aggressiver Stoffe (Wasser, Gase, Ionen) durch Beschichtung, Hydrophobierung oder Rissschließung.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Hydrophobierende Imprägnierung, Versiegelung, rissüberbrückende Beschichtung (z. B. OS 5a/5b, OS 11).
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.reduzierungOderVerhinderungDes} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenHydrophobierendeImprägnierungVe} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 2 (MC): Feuchtegehalt regulieren</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Moisture Control</span>
+                  <span><MdText text={inhalt.texte.prinzip2McFeuchtegehalt} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.moistureControl} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Einstellen und Halten des Feuchtegehalts im Beton auf ein unkritisches Niveau, sodass korrosive Reaktionen mangels Elektrolyt erliegen.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Wasserableitende Beschichtungen, Schutzdächer, diffusionsoffene Versiegelungen, Klimasteuerung.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.einstellenUndHaltenDes} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenWasserableitendeBeschichtungenS} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 3 (CR): Betonersatz</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Concrete Restoration</span>
+                  <span><MdText text={inhalt.texte.prinzip3CrBetonersatz} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.concreteRestoration} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Wiederherstellung des ursprünglichen Bauteilquerschnitts und der Betondeckung durch Abtragen von Schadstellen und Reprofilierung.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Manueller Mörtelauftrag (PCC), Spritzmörtel/Spritzbeton (SPCC), Vergussmörtel.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.wiederherstellungDesUrsprünglichenBautei} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenManuellerMörtelauftragPcc} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 4 (SS): Tragwerksverstärkung</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Structural Strengthening</span>
+                  <span><MdText text={inhalt.texte.prinzip4SsTragwerksverstärkung} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.structuralStrengthening} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Erhöhung oder Wiederherstellung der statischen Tragfähigkeit von Bauteilen bei Querschnittsverlust oder Laststeigerung.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Aufgeklebte CFK-Lamellen, Stahlbandagen, Aufbeton, externe Vorspannung, Verpressanker.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.erhöhungOderWiederherstellungDer} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenAufgeklebteCfkLamellen} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 5 (PR): Physikalische Beständigkeit</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Physical Resistance</span>
+                  <span><MdText text={inhalt.texte.prinzip5PrPhysikalische} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.physicalResistance} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Erhöhung des Widerstandes gegen mechanischen Abrieb, Stoß, Verschleiß oder Frost-Tausalz-Angriff.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Hartstoffestriche, Verschleißschichten (OS 8), Reaktionsharzversiegelungen.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.erhöhungDesWiderstandesGegen} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenHartstoffestricheVerschleißschi} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 6 (RC): Chemische Beständigkeit</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Resistance to Chemicals</span>
+                  <span><MdText text={inhalt.texte.prinzip6RcChemische} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.resistanceToChemicals} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Schutz gegen zersetzende Chemikalien, Säuren, biogene Schwefelsäure (Kanalsanierung) oder Silagesäfte.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Epoxidharz- und Vinylesterbeschichtungen, säurefeste Klinkerauskleidungen.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.schutzGegenZersetzendeChemikalien} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenEpoxidharzUndVinylesterbeschich} /></div>
               </div>
             </div>
           </div>
@@ -202,94 +159,68 @@ export default function SchutzGrundlagen() {
           <div className="bg-white border border-home-grau/30 p-5 rounded-xl shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
               <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-shiraz/10 text-shiraz flex items-center justify-center text-xs font-bold">B</span>
-                Prinzipien für Bewehrungskorrosion (Elektrochemischer Schutz &amp; Passivierung)
-              </h4>
-              <span className="text-[11px] text-slate-500 font-mono">Prinzip 7 bis 11</span>
+                <span className="w-6 h-6 rounded-full bg-shiraz/10 text-shiraz flex items-center justify-center text-xs font-bold">B</span><MdText text={inhalt.texte.prinzipienFürBewehrungskorrosionElektroc} /></h4>
+              <span className="text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.prinzip7Bis11} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 7 (RP): Erhalt/Wiederherstellung Passivität</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Restoring Passivity</span>
+                  <span><MdText text={inhalt.texte.prinzip7RpErhalt} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.restoringPassivity} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Schaffung von chemischen Bedingungen, unter denen sich die natürliche Passivschicht auf dem Stahl spontan neu bildet (pH-Wert &gt; 12,5).
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Erhöhung der Betondeckung mit hochalkalischem Mörtel, elektrochemische Realkalisierung (ER).
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.schaffungVonChemischenBedingungen} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenErhöhungDerBetondeckung} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 8 (IR): Erhöhung spezifischer Widerstand</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Increasing Resistivity</span>
+                  <span><MdText text={inhalt.texte.prinzip8IrErhöhung} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.increasingResistivity} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Steigerung des elektrischen Widerstands des Betongefüges zur Drosselung des Korrosionsstroms zwischen Anode und Kathode.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Wasserentzug, Hydrophobierung, dichte Oberflächenbeschichtungen (Verfahren W nach DAfStb).
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.steigerungDesElektrischenWiderstands} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenWasserentzugHydrophobierungDich} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 9 (CC): Kathodische Kontrolle</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Cathodic Control</span>
+                  <span><MdText text={inhalt.texte.prinzip9CcKathodische} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.cathodicControl} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Behinderung des kathodischen Teilprozesses (Sauerstoffreduktion) durch diffusionsdichte Beschichtungen.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Sauerstoffbremsende Beschichtungen auf Bewehrungsstäben oder Betonoberflächen.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.behinderungDesKathodischenTeilprozesses} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenSauerstoffbremsendeBeschichtung} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 10 (CP): Kathodischer Korrosionsschutz (KKS)</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Cathodic Protection</span>
+                  <span><MdText text={inhalt.texte.prinzip10CpKathodischer} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.cathodicProtection} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Verschiebung des Stahlpotentials in den thermodynamisch immunen oder passiven Bereich mittels Fremdstrom oder galvanischen Opferanoden.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Titan-Mischoxid-Anodenbänder (MMO) mit Gleichstromquelle (ICCP), Zinkanoden.
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.verschiebungDesStahlpotentialsIn} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenTitanMischoxidAnodenbänder} /></div>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
                 <div className="font-bold text-shiraz mb-1 flex items-center justify-between">
-                  <span>Prinzip 11 (CA): Anodenkontrolle</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600">Anodic Control</span>
+                  <span><MdText text={inhalt.texte.prinzip11CaAnodenkontrolle} /></span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.anodicControl} /></span>
                 </div>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Behinderung des anodischen Metallauflösungsprozesses an freigelegtem oder geschädigtem Bewehrungsstahl.
-                </p>
-                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20">
-                  <strong>Verfahren:</strong> Auftrag aktiver Korrosionsschutzanstriche (mineralische Zementschlämmen oder zinkstaubhaltige EP-Primer).
-                </div>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.behinderungDesAnodischenMetallauflösungs} /></p>
+                <div className="text-[11px] text-slate-600 bg-white p-2 rounded border border-home-grau/20"><MdText text={inhalt.texte.verfahrenAuftragAktiverKorrosionsschutza} /></div>
               </div>
 
               <div className="p-3 bg-rose-50/50 rounded-lg border border-shiraz/20 flex flex-col justify-between">
                 <div>
-                  <span className="font-bold text-shiraz block mb-1">Historisch: Instandsetzungsprinzipien der DAfStb-Rili-SIB (2001)</span>
-                  <p className="text-[11px] text-slate-700 leading-relaxed">
-                    Nationale Definitionen der historischen DAfStb-Richtlinie:
-                  </p>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.historischInstandsetzungsprinzipienDerDa} /></span>
+                  <p className="text-[11px] text-slate-700 leading-relaxed"><MdText text={inhalt.texte.nationaleDefinitionenDerHistorischen} /></p>
                   <ul className="list-disc list-inside mt-1 space-y-0.5 text-[11px] text-slate-700">
-                    <li><strong>Prinzip W:</strong> Absenkung des Wassergehalts im Beton</li>
-                    <li><strong>Prinzip C:</strong> Beschichtung der Bewehrung (Coating)</li>
-                    <li><strong>Prinzip R:</strong> Repassivierung (Wiederherstellung des alkalischen Milieus)</li>
-                    <li><strong>Prinzip K:</strong> Kathodischer Korrosionsschutz</li>
+                    <li><MdText text={inhalt.texte.prinzipWAbsenkungDes} /></li>
+                    <li><MdText text={inhalt.texte.prinzipCBeschichtungDer} /></li>
+                    <li><MdText text={inhalt.texte.prinzipRRepassivierungWiederherstellung} /></li>
+                    <li><MdText text={inhalt.texte.prinzipKKathodischerKorrosionsschutz} /></li>
                   </ul>
                 </div>
-                <span className="text-[10px] text-slate-500 mt-2 block border-t border-shiraz/10 pt-1">
-                  TR Instandhaltung Teil 1: Prinzipien und Verfahren nach DIN EN 1504-9 Tab. 1 &amp; 2
-                </span>
+                <span className="text-[10px] text-slate-500 mt-2 block border-t border-shiraz/10 pt-1"><MdText text={inhalt.texte.trInstandhaltungTeil1} /></span>
               </div>
             </div>
           </div>
@@ -303,11 +234,8 @@ export default function SchutzGrundlagen() {
           {/* Einleitende didaktische Gegenüberstellung */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs">
             <h3 className="font-bold text-base text-slate-900 mb-2 flex items-center gap-2">
-              <Shield className="text-shiraz" size={20} /> Grundprinzipien: Physikalischer Barriereschutz vs. Elektrochemische Steuerung
-            </h3>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              In der Baustoffkunde und Bauwerkserhaltung unterscheidet man fundamental zwischen <strong>passiven Schutzmaßnahmen</strong> (die das Eindringen korrosiver Medien rein physikalisch blockieren oder verzögern) und <strong>aktiven Schutzmaßnahmen</strong> (die thermodynamisch oder kinetisch direkt in die elektrochemischen und biochemischen Reaktionspfade eingreifen). Während passive Systeme bei mechanischer Beschädigung oder Unterwanderung ihre Schutzwirkung lokal komplett verlieren, vermögen aktive Systeme das Bauteil selbst bei voller Elektrolyt- und Chloridanwesenheit dauerhaft vor Zerstörung zu bewahren.
-            </p>
+              <Shield className="text-shiraz" size={20} /><MdText text={inhalt.texte.grundprinzipienPhysikalischerBarrieresch} /></h3>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.inDerBaustoffkundeUnd} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -317,42 +245,32 @@ export default function SchutzGrundlagen() {
               <div className="flex items-center gap-2 border-b border-home-grau/20 pb-3">
                 <Shield className="text-blue-600 shrink-0" size={20} />
                 <div>
-                  <h3 className="font-bold text-base text-slate-900">Passive Schutzmaßnahmen (Barriereschutz)</h3>
-                  <span className="text-xs text-slate-500">Physikalische Trennung &amp; Diffusionshemmung</span>
+                  <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.passiveSchutzmaßnahmenBarriereschutz} /></h3>
+                  <span className="text-xs text-slate-500"><MdText text={inhalt.texte.physikalischeTrennungDiffusionshemmung} /></span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-700 leading-relaxed">
-                Passive Schutzsysteme errichten eine geometrisch-stoffliche Barriere zwischen dem empfindlichen Werkstoff (z. B. Bewehrungsstahl, Holz, Fassadenmetall) und der angreifenden Umgebung (Wasser, Sauerstoff, Kohlendioxid, Chloride, Säuren).
-              </p>
+              <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.passiveSchutzsystemeErrichtenEine} /></p>
 
               <div className="space-y-3 text-xs">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">1. Primärer Baustoffschutz: Alkalische Selbstpassivierung</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Im intakten Beton liegt der pH-Wert der Porenlösung durch gelöstes Calciumhydroxid (<InlineMath math="\text{Ca(OH)}_2" />) und Alkalien bei <InlineMath math="\text{pH} \ge 12{,}5 \dots 13{,}5" />. Unter diesen stark alkalischen Bedingungen bildet sich auf der Stahloberfläche spontan eine wenige Nanometer dichte, porenfreie Oxidhaut (<InlineMath math="\gamma\text{-Fe}_2\text{O}_3 / \text{Fe}_3\text{O}_4" />). Die Korrosionsgeschwindigkeit sinkt auf vernachlässigbare Werte (<InlineMath math="v_{\text{korr}} < 1\,\mu\text{m/Jahr}" />).
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t1PrimärerBaustoffschutzAlkalische} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.imIntaktenBetonLiegt} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">2. Hydrophobierung (Tiefenimprägnierung nach DIN EN 1504-2)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Niedermolekulare Silane oder Siloxane penetrieren <InlineMath math="2\text{ bis }8\text{ mm}" /> tief in die Kapillarporen und binden kovalent an die Silikatmatrix an. Ihre unpolaren organischen Alkylketten richten sich in den Porenraum aus. Der Benetzungswinkel steigt von <InlineMath math="\theta \approx 30^\circ" /> auf <InlineMath math="\theta > 90^\circ" />: Der Kapillarsog wird in einen Kapillardruck umgekehrt. Flüssiges Wasser perlt ab, während Wasserdampfdiffusion (<InlineMath math="s_d < 0{,}1\text{ m}" />) voll erhalten bleibt.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t2HydrophobierungTiefenimprägnierungNach} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.niedermolekulareSilaneOderSiloxane} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">3. Filmbildende Beschichtungen (OS 1 bis OS 11 / DIN V 18026)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Synthetische Polymerfilme (Epoxidharz, Polyurethan, Polyharnstoff, Acrylat) schließen die Betonoberfläche porenfrei ab. Sie fungieren als Diffusionsbremse gegen saures Kohlendioxid (<InlineMath math="s_{d,\text{CO}_2} \ge 50\text{ m}" />) und sperren flüssige Chloridlösungen ab. Rissüberbrückende Systeme (OS 10, OS 11a/b) nehmen thermische und dynamische Rissbreitenänderungen bis <InlineMath math="0{,}3\text{ mm}" /> rissfrei auf.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t3FilmbildendeBeschichtungenOs} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.synthetischePolymerfilmeEpoxidharzPolyur} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">4. Konstruktiv-geometrischer Schutz</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Vermeidung von Wasserstau und Schmutznestern durch Mindestgefälle (<InlineMath math="\ge 2\,\%" />), großzügige Tropfkanten, Entwässerungsrinnen, ausreichende Betondeckung (<InlineMath math="c_{\text{nom}} \ge 40\dots 55\text{ mm}" /> bei XD/XS) sowie dauerelastische Fugenprofile.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t4KonstruktivGeometrischerSchutz} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.vermeidungVonWasserstauUnd} /></p>
                 </div>
               </div>
             </div>
@@ -362,55 +280,37 @@ export default function SchutzGrundlagen() {
               <div className="flex items-center gap-2 border-b border-home-grau/20 pb-3">
                 <Zap className="text-amber-600 shrink-0" size={20} />
                 <div>
-                  <h3 className="font-bold text-base text-slate-900">Aktive Schutzmaßnahmen (Elektrochemisch &amp; Chemisch)</h3>
-                  <span className="text-xs text-slate-500">Thermodynamische oder kinetische Steuerung</span>
+                  <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.aktiveSchutzmaßnahmenElektrochemischChem} /></h3>
+                  <span className="text-xs text-slate-500"><MdText text={inhalt.texte.thermodynamischeOderKinetischeSteuerung} /></span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-700 leading-relaxed">
-                Aktive Systeme greifen direkt in das elektrochemische Korrosionspotenzial oder die chemische Reaktionskinetik ein. Sie verhindern den Metallabtrag selbst in nasser und hochgradig chloridkontaminierter Umgebung.
-              </p>
+              <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.aktiveSystemeGreifenDirekt} /></p>
 
               <div className="space-y-3 text-xs">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">1. Kathodischer Korrosionsschutz (KKS nach DIN EN ISO 12696:2022-09)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Der Bewehrungsstahl wird durch ein Gleichstromfeld zur Kathode polarisiert. Anode ist ein edles Titan-Mischoxid-Gitter (MMO) oder eine thermisch aufgespritzte Zinkschicht. 
-                    <br />
-                    Reaktion an der Kathode (Stahl): <InlineMath math="\text{O}_2 + 2\text{H}_2\text{O} + 4e^- \rightarrow 4\text{OH}^-" /> (Hydroxidbildung verhindert Säurefraß).
-                    <br />
-                    Reaktion an der Anode: <InlineMath math="2\text{H}_2\text{O} \rightarrow \text{O}_2 + 4\text{H}^+ + 4e^-" />.
-                    <br />
-                    Der anodische Eisenabtrag (<InlineMath math="\text{Fe} \rightarrow \text{Fe}^{2+} + 2e^-" />) wird thermodynamisch unterdrückt. Schutzkriterium: <InlineMath math="E_{\text{off}} \le -720\text{ mV}_{\text{Ag/AgCl}}" /> oder <InlineMath math="\Delta E_{\text{depol}} \ge 100\text{ mV}" /> innerhalb von 24 bis 72 h.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t1KathodischerKorrosionsschutzKks} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.derBewehrungsstahlWirdDurch} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">2. Galvanischer Opferschutz (Feuerverzinkung DIN EN ISO 1461:2022-12)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Zink besitzt ein negativeres Normalpotenzial (<InlineMath math="E^\circ = -0{,}76\text{ V}" />) als Eisen (<InlineMath math="E^\circ = -0{,}44\text{ V}" />). Bei Verletzung der Zinkschicht (Kratzer, Schnittkanten bis ca. <InlineMath math="1{,}5\text{ bis }2{,}0\text{ mm}" />) bildet sich ein Lokalelement: Das unedlere Zink geht anodisch in Lösung (<InlineMath math="\text{Zn} \rightarrow \text{Zn}^{2+} + 2e^-" />) und schützt den freiliegenden Stahl kathodisch vor Rost.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t2GalvanischerOpferschutzFeuerverzinkung} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.zinkBesitztEinNegativeres} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">3. Elektrochemische Chloridextraktion (ECE nach DIN EN 14038-1:2021-03)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Temporäre Gleichstrombehandlung (<InlineMath math="1\text{ bis }2\text{ A/m}^2" /> Stahloberfläche über mehrere Wochen). Die negativ geladenen Chloridionen (<InlineMath math="\text{Cl}^-" />) wandern durch Elektromigration von der negativ geladenen Bewehrung (Kathode) weg zur temporären Außenanode in den getränkten Zellstoffwickel.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t3ElektrochemischeChloridextraktionEce} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.temporäreGleichstrombehandlung1textBis} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">4. Elektrochemische Realkalisierung (ER nach DIN EN 14038-2:2020-09)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Temporärer Gleichstromeinsatz an karbonatisiertem Beton. Durch Kathodenreaktionen (<InlineMath math="2\text{H}_2\text{O} + 2e^- \rightarrow \text{H}_2 \uparrow + 2\text{OH}^-" />) sowie elektrosmotischen Transport von Natrium- und Kaliumcarbonatlösungen wird der pH-Wert in der Bewehrungszone wieder von <InlineMath math="\approx 8{,}5" /> auf über <InlineMath math="12{,}5" /> angehoben, sodass sich die Passivschicht regeneriert.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t4ElektrochemischeRealkalisierungEr} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.temporärerGleichstromeinsatzAnKarbonatis} /></p>
                 </div>
 
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">5. Wandernde Korrosionsinhibitoren (MCI)</strong>
-                  <p className="text-slate-700 leading-relaxed">
-                    Organische Alkanolamine mit hohem Dampfdruck diffundieren über die Gas- und Porenphase zur Bewehrung und bilden dort einen monomolekularen Adsorptionsfilm, der anodische und kathodische Teilreaktionen kinetisch blockiert.
-                  </p>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.t5WanderndeKorrosionsinhibitorenMci} /></strong>
+                  <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.organischeAlkanolamineMitHohem} /></p>
                 </div>
               </div>
             </div>
@@ -419,51 +319,51 @@ export default function SchutzGrundlagen() {
 
           {/* Detaillierte Systemvergleichs-Tabelle */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs">
-            <h4 className="font-bold text-sm text-text-main mb-3">Ausführliche Matrix: Passiver vs. Aktiver Schutz im Ingenieurbau</h4>
+            <h4 className="font-bold text-sm text-text-main mb-3"><MdText text={inhalt.texte.ausführlicheMatrixPassiverVs} /></h4>
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="bg-off-white border-b border-home-grau/30 text-slate-800">
-                    <th className="p-2.5 font-bold w-1/4">Merkmal / Kriterium</th>
-                    <th className="p-2.5 font-bold text-blue-700 w-3/8">Passiver Schutz (Barriere / OS-Systeme)</th>
-                    <th className="p-2.5 font-bold text-amber-700 w-3/8">Aktiver Schutz (KKS / Opferschutz / ECE)</th>
+                    <th className="p-2.5 font-bold w-1/4"><MdText text={inhalt.texte.merkmalKriterium} /></th>
+                    <th className="p-2.5 font-bold text-blue-700 w-3/8"><MdText text={inhalt.texte.passiverSchutzBarriereOs} /></th>
+                    <th className="p-2.5 font-bold text-amber-700 w-3/8"><MdText text={inhalt.texte.aktiverSchutzKksOpferschutz} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20 text-slate-700">
                   <tr>
-                    <td className="p-2.5 font-semibold">Triebkraft der Schutzwirkung</td>
-                    <td className="p-2.5">Mechanische Barriere behindert Diffusions- und Kapillartransport</td>
-                    <td className="p-2.5">Elektrische Potenzialverschiebung in die Immunitätszone (Pourbaix-Diagramm)</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.triebkraftDerSchutzwirkung} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.mechanischeBarriereBehindertDiffusions} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.elektrischePotenzialverschiebungInDie} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-semibold">Verhalten bei Beschädigung / Fehlstellen</td>
-                    <td className="p-2.5 text-rose-700 font-medium">Katastrophal: Konzentrierte Lochkorrosion an Rissen, Poren und Fehlstellen</td>
-                    <td className="p-2.5 text-emerald-700 font-medium">Robust: Fernschutzwirkung schützt Fehlstellen und Kratzer vollumfänglich weiter</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.verhaltenBeiBeschädigungFehlstellen} /></td>
+                    <td className="p-2.5 text-rose-700 font-medium"><MdText text={inhalt.texte.katastrophalKonzentrierteLochkorrosionAn} /></td>
+                    <td className="p-2.5 text-emerald-700 font-medium"><MdText text={inhalt.texte.robustFernschutzwirkungSchütztFehlstelle} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-semibold">Umgang mit vorhandener Chloridlast</td>
-                    <td className="p-2.5 text-rose-700">Chloridhaltiger Beton muss zwingend bis hinter die Bewehrung gestemmt werden</td>
-                    <td className="p-2.5 text-emerald-700">Chloridbelasteter Beton kann im Bauteil verbleiben; spart Lärm, Statikabstützung und Kosten</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.umgangMitVorhandenerChloridlast} /></td>
+                    <td className="p-2.5 text-rose-700"><MdText text={inhalt.texte.chloridhaltigerBetonMussZwingend} /></td>
+                    <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.chloridbelasteterBetonKannIm} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-semibold">Anlagen- und Installationsaufwand</td>
-                    <td className="p-2.5">Gering bis mittel (Kugelstrahlen, Grundierung, Schichtauftrag)</td>
-                    <td className="p-2.5">Hoch (Gleichrichter, Kabelverbindungen, Anodengitter, Referenzelektroden)</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.anlagenUndInstallationsaufwand} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.geringBisMittelKugelstrahlen} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.hochGleichrichterKabelverbindungenAnoden} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-semibold">Monitoring &amp; Dauerüberwachung</td>
-                    <td className="p-2.5">Visuelle Inspektion auf Blasen, Risse, Abplatzungen (DIN 1076 / VDI 6200)</td>
-                    <td className="p-2.5">Kontinuierliche Fernüberwachung: Schutzstromdichte, Ausschaltpotenzial, 100-mV-Depolarisation</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.monitoringDauerüberwachung} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.visuelleInspektionAufBlasen} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.kontinuierlicheFernüberwachungSchutzstro} /></td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 font-semibold">Einsatzgrenzen &amp; Risiken</td>
-                    <td className="p-2.5">Osmotische Blasenbildung bei rückseitiger Durchfeuchtung; UV-Alterung</td>
-                    <td className="p-2.5">Gefahr von Wasserstoffversprödung bei hochfesten Spannstählen (<InlineMath math="R_m > 1.000\text{ N/mm}^2" />)</td>
+                    <td className="p-2.5 font-semibold"><MdText text={inhalt.texte.einsatzgrenzenRisiken} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.osmotischeBlasenbildungBeiRückseitiger} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.gefahrVonWasserstoffversprödungBei} /></td>
                   </tr>
                   <tr>
                     <td className="p-2.5 font-semibold">Hauptanwendungsgebiete</td>
-                    <td className="p-2.5">Neubauten, Parkdecks (OS 8/11), Tunnelwände, Balkone, Fassaden</td>
-                    <td className="p-2.5">Salzbelastete Brückenpfeiler, Tiefgaragenstützen, Hafenkaimauern, historische Baudenkmäler</td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.neubautenParkdecksOs8} /></td>
+                    <td className="p-2.5"><MdText text={inhalt.texte.salzbelasteteBrückenpfeilerTiefgaragenst} /></td>
                   </tr>
                 </tbody>
               </table>
@@ -472,42 +372,42 @@ export default function SchutzGrundlagen() {
 
           {/* Fachübergreifende Analogien in anderen Disziplinen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs">
-            <h4 className="font-bold text-sm text-text-main mb-3">Analogie: Aktive und passive Schutzkonzepte in weiteren Baustoffdisziplinen</h4>
+            <h4 className="font-bold text-sm text-text-main mb-3"><MdText text={inhalt.texte.analogieAktiveUndPassive} /></h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               
               <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1">Holzschutz (DIN 68800:2019-06)</span>
+                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1"><MdText text={inhalt.texte.holzschutzDin688002019} /></span>
                 <div>
-                  <strong className="text-blue-700">Passiv (Baulich-konstruktiv, Teil 2):</strong>
-                  <p className="text-slate-600">Dachüberstände, Tropfkanten, Sockelabstand <InlineMath math="\ge 30\text{ cm}" />, Hinterlüftung. Hält die Holzfeuchte sicher unter <InlineMath math="u < 20\,\%" /> (Pilzbefall biologisch unmöglich).</p>
+                  <strong className="text-blue-700"><MdText text={inhalt.texte.passivBaulichKonstruktivTeil} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.dachüberständeTropfkantenSockelabstandGe} /></p>
                 </div>
                 <div>
-                  <strong className="text-amber-700">Aktiv (Chemisch, Teil 3):</strong>
-                  <p className="text-slate-600">Kesseldruckimprägnierung mit Bioziden (Borate, Kupferverbindungen). Vergiftet die Nährstoffquelle für holzzerstörende Pilze und Insekten bei ständiger Nässe (GK 3/4).</p>
-                </div>
-              </div>
-
-              <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1">Brandschutz (DIN 4102 / DIN EN 13501)</span>
-                <div>
-                  <strong className="text-blue-700">Passiv (Baulich-konstruktiv):</strong>
-                  <p className="text-slate-600">Feuerwiderstandsfähige Bauteile (REI 30 bis REI 120), Brandwände, Feuerschutztüren, Gipskartonbekleidungen, intumeszierende Dämmschichtbildner (schäumen bei Hitze zu Isolierschaum auf).</p>
-                </div>
-                <div>
-                  <strong className="text-amber-700">Aktiv (Anlagentechnisch &amp; abwehrend):</strong>
-                  <p className="text-slate-600">Automatische Sprinkleranlagen, Gaslöschanlagen, Brandmeldeanlagen (BMA), Rauch-Wärme-Abzugsanlagen (RWA), Druckbelüftungsanlagen in Sicherheitstreppenräumen.</p>
+                  <strong className="text-amber-700"><MdText text={inhalt.texte.aktivChemischTeil3} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.kesseldruckimprägnierungMitBiozidenBorat} /></p>
                 </div>
               </div>
 
               <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1">Metallbau (DIN EN ISO 12944:2018-06)</span>
+                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1"><MdText text={inhalt.texte.brandschutzDin4102Din} /></span>
                 <div>
-                  <strong className="text-blue-700">Passiv (Barriereüberzüge):</strong>
-                  <p className="text-slate-600">Pulverbeschichtungen, Epoxidharz-Zwischenschichten mit Eisenglimmer (Schuppenpanzer-Effekt bremst Diffusionswege), Eloxalschicht auf Aluminium (<InlineMath math="15\dots 25\,\mu\text{m}" /> dichtes <InlineMath math="\text{Al}_2\text{O}_3" />).</p>
+                  <strong className="text-blue-700"><MdText text={inhalt.texte.passivBaulichKonstruktiv} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.feuerwiderstandsfähigeBauteileRei30} /></p>
                 </div>
                 <div>
-                  <strong className="text-amber-700">Aktiv (Galvanischer Opferschutz):</strong>
-                  <p className="text-slate-600">Zinkstaubgrundierungen und Feuerverzinkung (Schutzstrom zum Stahl bei Schnittkanten). Duplex-Systeme (Zink + Beschichtung) vereinen aktive Opferwirkung mit passivem Barriereschutz.</p>
+                  <strong className="text-amber-700"><MdText text={inhalt.texte.aktivAnlagentechnischAbwehrend} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.automatischeSprinkleranlagenGaslöschanla} /></p>
+                </div>
+              </div>
+
+              <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
+                <span className="font-bold text-slate-900 block border-b border-home-grau/20 pb-1"><MdText text={inhalt.texte.metallbauDinEnIso} /></span>
+                <div>
+                  <strong className="text-blue-700"><MdText text={inhalt.texte.passivBarriereüberzüge} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.pulverbeschichtungenEpoxidharzZwischensc} /></p>
+                </div>
+                <div>
+                  <strong className="text-amber-700"><MdText text={inhalt.texte.aktivGalvanischerOpferschutz} /></strong>
+                  <p className="text-slate-600"><MdText text={inhalt.texte.zinkstaubgrundierungenUndFeuerverzinkung} /></p>
                 </div>
               </div>
 
@@ -525,51 +425,41 @@ export default function SchutzGrundlagen() {
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
               <div>
-                <h3 className="font-bold text-base text-slate-900">Das Tuutti-Modell der Bewehrungskorrosion (1982)</h3>
-                <span className="text-xs text-slate-500">Klassische Phaseneinteilung der Bauwerksalterung</span>
+                <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.dasTuuttiModellDer} /></h3>
+                <span className="text-xs text-slate-500"><MdText text={inhalt.texte.klassischePhaseneinteilungDerBauwerksalt} /></span>
               </div>
-              <span className="text-xs font-mono bg-off-white px-2 py-1 rounded border border-home-grau/30 text-slate-600">
-                t_service = t_initiation + t_propagation
-              </span>
+              <span className="text-xs font-mono bg-off-white px-2 py-1 rounded border border-home-grau/30 text-slate-600"><MdText text={inhalt.texte.tServiceTInitiation} /></span>
             </div>
 
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Nach dem Modell von <em>Kyösti Tuutti</em> verläuft die Lebensdauer eines bewehrten Betonbauteils in zwei klar getrennten Phasen:
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.nachDemModellVon} /></p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="p-4 bg-off-white rounded-lg border border-home-grau/20">
-                <span className="font-bold text-blue-700 block mb-1">1. Initiierungsphase (t₀)</span>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Dauer vom Neubau bis zum Erreichen der Depassivierungsfront am Bewehrungsstahl. Schadstoffe dringen diffusiv durch die Betondeckung ein (Carbonatisierungsfront oder kritischer Chloridgehalt <InlineMath math="C_{\text{krit}} \approx 0{,}4\text{ bis }0{,}5\text{ M.-\% / Zement}" />). Am Bauteil sind noch keinerlei Schäden sichtbar!
-                </p>
+                <span className="font-bold text-blue-700 block mb-1"><MdText text={inhalt.texte.t1InitiierungsphaseT} /></span>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.dauerVomNeubauBis} /></p>
                 <div className="p-2 bg-white rounded border border-home-grau/30 text-[11px] font-mono text-slate-600">
                   <InlineMath math="x(t) = k \cdot \sqrt{t} \quad \rightarrow \quad t_0 = \left(\frac{c}{k}\right)^2" />
                 </div>
               </div>
 
               <div className="p-4 bg-off-white rounded-lg border border-home-grau/20">
-                <span className="font-bold text-rose-700 block mb-1">2. Propagationsphase (t₁)</span>
-                <p className="text-slate-700 leading-relaxed mb-2">
-                  Nach Zerstörung der Passivschicht setzt bei Vorhandensein von Feuchte und Sauerstoff aktiver Rostabtrag ein. Durch die Volumenexpansion der Eisenkorrosionsprodukte (<InlineMath math="\text{Faktor }2\text{ bis }6" />) entstehen Gefügespannungen, Risse parallel zur Bewehrung, Hohlstellen und schließlich Betonabplatzungen bis hin zum Einsturz.
-                </p>
+                <span className="font-bold text-rose-700 block mb-1"><MdText text={inhalt.texte.t2PropagationsphaseT} /></span>
+                <p className="text-slate-700 leading-relaxed mb-2"><MdText text={inhalt.texte.nachZerstörungDerPassivschicht} /></p>
                 <div className="p-2 bg-white rounded border border-home-grau/30 text-[11px] font-mono text-slate-600">
                   <InlineMath math="\Delta d(t) = v_{\text{korr}} \cdot (t - t_0)" />
                 </div>
               </div>
             </div>
 
-            <div className="p-3 bg-amber-50/60 border border-amber-200 rounded-lg text-xs text-amber-900">
-              <strong>Ingenieurmäßige Konsequenz:</strong> Präventive Instandhaltung muss in der <em>Initiierungsphase</em> stattfinden! Sobald die Propagationsphase beginnt, steigen die Sanierungskosten exponentiell an, da geschädigter Beton aufwendig gestemmt und Bewehrungsquerschnitte statisch nachgewiesen werden müssen.
-            </div>
+            <div className="p-3 bg-amber-50/60 border border-amber-200 rounded-lg text-xs text-amber-900"><MdText text={inhalt.texte.ingenieurmäßigeKonsequenzPräventiveInsta} /></div>
           </div>
 
           {/* De-Sitter-Regel ("Law of Fives") Interaktiver Rechner */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-home-grau/20 pb-3">
               <div>
-                <h3 className="font-bold text-base text-slate-900">De-Sitter-Gesetz: Die Kosten-Regel der Fünf ("Law of Fives")</h3>
-                <span className="text-xs text-slate-500">Exponentieller Kostenanstieg bei verzögerter Instandhaltung</span>
+                <h3 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.deSitterGesetzDie} /></h3>
+                <span className="text-xs text-slate-500"><MdText text={inhalt.texte.exponentiellerKostenanstiegBeiVerzögerte} /></span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-600">Basisinvestition:</span>
@@ -584,49 +474,39 @@ export default function SchutzGrundlagen() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Die von <em>De Sitter (1984)</em> formulierte Regel besagt: 1 Euro, der in der Entwurfs- und Planungsphase für dauerhaften Schutz eingespart wird, verursacht in den Folgephasen um den Faktor 5 höhere Instandhaltungskosten:
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.dieVonDeSitter} /></p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-slate-500 font-bold block mb-1">Entwurf und Bau (1)</span>
+                <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.entwurfUndBau1} /></span>
                 <span className="text-lg font-bold text-slate-800 block">
                   {deSitterInitialCost.toLocaleString('de-DE')} €
                 </span>
-                <span className="text-[11px] text-slate-500 block mt-1">
-                  Qualitätszement, Betondeckung +15 mm, Gefälleausbildung &amp; OS-System
-                </span>
+                <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.qualitätszementBetondeckung15Mm} /></span>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-slate-500 font-bold block mb-1">vor Schadensbeginn (5)</span>
+                <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.vorSchadensbeginn5} /></span>
                 <span className="text-lg font-bold text-blue-700 block">
                   {(deSitterInitialCost * 5).toLocaleString('de-DE')} €
                 </span>
-                <span className="text-[11px] text-slate-500 block mt-1">
-                  Präventive Hydrophobierung vor Beginn der Karbonatisierungsfront
-                </span>
+                <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.präventiveHydrophobierungVorBeginn} /></span>
               </div>
 
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                <span className="text-slate-500 font-bold block mb-1">Schadensfortschritt lokal (25)</span>
+                <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.schadensfortschrittLokal25} /></span>
                 <span className="text-lg font-bold text-amber-700 block">
                   {(deSitterInitialCost * 25).toLocaleString('de-DE')} €
                 </span>
-                <span className="text-[11px] text-slate-500 block mt-1">
-                  Lokale Betoninstandsetzung bei ersten sichtbaren Rissen und Abplatzungen
-                </span>
+                <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.lokaleBetoninstandsetzungBeiErsten} /></span>
               </div>
 
               <div className="p-3 bg-rose-50 rounded-lg border border-rose-200 text-center">
-                <span className="text-rose-800 font-bold block mb-1">umfassende Instandsetzung (125)</span>
+                <span className="text-rose-800 font-bold block mb-1"><MdText text={inhalt.texte.umfassendeInstandsetzung125} /></span>
                 <span className="text-lg font-bold text-rose-700 block">
                   {(deSitterInitialCost * 125).toLocaleString('de-DE')} €
                 </span>
-                <span className="text-[11px] text-rose-700 block mt-1">
-                  Umfassende Betonsanierung, Querschnittsverlust, Bauwerksstillstand
-                </span>
+                <span className="text-[11px] text-rose-700 block mt-1"><MdText text={inhalt.texte.umfassendeBetonsanierungQuerschnittsverl} /></span>
               </div>
             </div>
           </div>
@@ -639,22 +519,12 @@ export default function SchutzGrundlagen() {
           
           <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
             <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2 mb-3">
-              <Compass className="text-shiraz shrink-0" size={18} />
-              Entscheidungsmatrix: Welches Schutz- und Instandsetzungsverfahren ist indiziert?
-            </h3>
-            <p className="text-sm text-slate-800 leading-relaxed mb-4">
-              Wählen Sie die primäre Schadensursache aus, um die bauaufsichtlich anerkannten Instandsetzungsprinzipien nach DIN EN 1504-9 und TR Instandhaltung aufzurufen:
-            </p>
+              <Compass className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.entscheidungsmatrixWelchesSchutzUnd} /></h3>
+            <p className="text-sm text-slate-800 leading-relaxed mb-4"><MdText text={inhalt.texte.wählenSieDiePrimäre} /></p>
 
             {/* Selector Buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
-              {[
-                { id: 'carbonatisierung', label: 'Carbonatisierung (pH < 9)' },
-                { id: 'chloride', label: 'Chloridbelastung (Tausalze / Meerwasser)' },
-                { id: 'feuchte', label: 'Durchfeuchtung & drückendes Wasser' },
-                { id: 'risse', label: 'Trennrisse & Fugenbewegungen' },
-                { id: 'verschleiss', label: 'Mechanischer Verschleiß & Abrieb' },
-              ].map((item) => (
+              {inhalt.daten.SchutzGrundlagen.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setSelectedDamageSource(item.id as typeof selectedDamageSource)}
@@ -674,18 +544,11 @@ export default function SchutzGrundlagen() {
               {selectedDamageSource === 'carbonatisierung' && (
                 <div>
                   <div className="flex items-center gap-2 text-shiraz font-bold text-sm border-b border-home-grau/20 pb-2 mb-2">
-                    <CheckCircle2 size={16} /> Empfohlene Prinzipien bei Carbonatisierungsschäden
-                  </div>
+                    <CheckCircle2 size={16} /><MdText text={inhalt.texte.empfohlenePrinzipienBeiCarbonatisierungs} /></div>
                   <ul className="space-y-2 text-slate-700">
-                    <li>
-                      <strong>Prinzip 7 (RP) mit Betonersatz nach Prinzip 3 (CR) / Rili-SIB Prinzip R:</strong> Vollständiger Abtrag des carbonatisierten Betons bis 15 mm hinter die Bewehrung. Reprofilierung mit hochalkalischem PCC- oder SPCC-Mörtel zur Repassivierung.
-                    </li>
-                    <li>
-                      <strong>Prinzip 1 (PI) bzw. bei bereits depassivierter Bewehrung Prinzip 8 (IR) / Rili-SIB Prinzip W:</strong> Bei noch intaktem Beton oder beginnender Carbonatisierung: Aufbringen einer carbonatisierungsbremsenden Beschichtung (<InlineMath math="s_{d,\text{CO}_2} \ge 50\text{ m}" />) zur Austrocknung.
-                    </li>
-                    <li>
-                      <strong>Prinzip 7 (RP):</strong> Elektrochemische Realkalisierung (ER) bei denkmalgeschützten Sichtbetonflächen ohne Substanzverlust.
-                    </li>
+                    <li><MdText text={inhalt.texte.prinzip7RpMit} /></li>
+                    <li><MdText text={inhalt.texte.prinzip1PiBzw} /></li>
+                    <li><MdText text={inhalt.texte.prinzip7RpElektrochemische} /></li>
                   </ul>
                 </div>
               )}
@@ -693,18 +556,11 @@ export default function SchutzGrundlagen() {
               {selectedDamageSource === 'chloride' && (
                 <div>
                   <div className="flex items-center gap-2 text-shiraz font-bold text-sm border-b border-home-grau/20 pb-2 mb-2">
-                    <CheckCircle2 size={16} /> Empfohlene Prinzipien bei Tausalz- &amp; Chloridschäden
-                  </div>
+                    <CheckCircle2 size={16} /><MdText text={inhalt.texte.empfohlenePrinzipienBeiTausalz} /></div>
                   <ul className="space-y-2 text-slate-700">
-                    <li>
-                      <strong>Prinzip 3 (CR) konventionell:</strong> Vollständiger HDW-Abtrag allen Betons mit Chloridgehalten <InlineMath math="> 0{,}5\text{ M.-\% / Zement}" />. Hoher Substanzverlust und Notwendigkeit statischer Abstützungen!
-                    </li>
-                    <li>
-                      <strong>Prinzip 10 (CP) / DAfStb Prinzip K (KKS):</strong> Kathodischer Korrosionsschutz mittels Fremdstromanoden. Der chloridverseuchte Beton kann im Bauteil verbleiben, da der Korrosionsstrom die Lochfraßkorrosion stoppt.
-                    </li>
-                    <li>
-                      <strong>Präventiv:</strong> Oberflächenschutzsystem OS 8 (starre Parkhausbeschichtung) oder OS 11 (rissüberbrückende Membran) vor Erstbeaufschlagung.
-                    </li>
+                    <li><MdText text={inhalt.texte.prinzip3CrKonventionell} /></li>
+                    <li><MdText text={inhalt.texte.prinzip10CpDafstb} /></li>
+                    <li><MdText text={inhalt.texte.präventivOberflächenschutzsystemOs8} /></li>
                   </ul>
                 </div>
               )}
@@ -712,18 +568,11 @@ export default function SchutzGrundlagen() {
               {selectedDamageSource === 'feuchte' && (
                 <div>
                   <div className="flex items-center gap-2 text-shiraz font-bold text-sm border-b border-home-grau/20 pb-2 mb-2">
-                    <CheckCircle2 size={16} /> Empfohlene Prinzipien bei Durchfeuchtung &amp; drückendem Wasser
-                  </div>
+                    <CheckCircle2 size={16} /><MdText text={inhalt.texte.empfohlenePrinzipienBeiDurchfeuchtung} /></div>
                   <ul className="space-y-2 text-slate-700">
-                    <li>
-                      <strong>Prinzip 2 (MC):</strong> Wasserhaltung, Drainageertüchtigung nach DIN 4095 und Trockenlegung.
-                    </li>
-                    <li>
-                      <strong>Injektionsverfahren nach DIN EN 1504-5:</strong> Druckinjektion mit quellfähigen Polyurethanharzen (PUR) zum temporären Stoppen von Wassereinbrüchen, gefolgt von dauerelastischem Acrylatgel (Schleierinjektion) oder Epoxidharz.
-                    </li>
-                    <li>
-                      <strong>Nachträgliche Innenabdichtung (Kellersanierung):</strong> Dichtschlämmen nach WTA-Merkblatt 4-6 in Kombination mit Sanierputzsystemen.
-                    </li>
+                    <li><MdText text={inhalt.texte.prinzip2McWasserhaltung} /></li>
+                    <li><MdText text={inhalt.texte.injektionsverfahrenNachDinEn} /></li>
+                    <li><MdText text={inhalt.texte.nachträglicheInnenabdichtungKellersanier} /></li>
                   </ul>
                 </div>
               )}
@@ -731,20 +580,11 @@ export default function SchutzGrundlagen() {
               {selectedDamageSource === 'risse' && (
                 <div>
                   <div className="flex items-center gap-2 text-shiraz font-bold text-sm border-b border-home-grau/20 pb-2 mb-2">
-                    <CheckCircle2 size={16} /> Empfohlene Prinzipien bei Rissbildung &amp; Fugenbewegungen
-                  </div>
+                    <CheckCircle2 size={16} /><MdText text={inhalt.texte.empfohlenePrinzipienBeiRissbildung} /></div>
                   <ul className="space-y-2 text-slate-700">
-                    <li>
-                      <strong>Füllen von Rissen (DIN EN 1504-5):</strong> 
-                      <br />• <em>Kraftschlüssiges Schließen (F):</em> Epoxidharz (EP) bei ruhenden Rissen zur Wiederherstellung der Zug- und Druckfestigkeit.
-                      <br />• <em>Dehnfähiges Schließen (D):</em> Polyurethanharz (PUR) bei dynamisch bewegten Rissen zur dauerhaften Abdichtung.
-                    </li>
-                    <li>
-                      <strong>Prinzip 1 (PI):</strong> Rissüberbrückende Oberflächenschutzsysteme Klasse OS 4 oder OS 5a/b (DIN V 18026).
-                    </li>
-                    <li>
-                      <strong>Fugensanierung:</strong> Heraustrennen gealterter Fugenmassen, Einlegen von PE-Rundschnur (Zweiflankenhaftung!) und Neuverfugung nach DIN 18540.
-                    </li>
+                    <li><MdText text={inhalt.texte.füllenVonRissenDin} /></li>
+                    <li><MdText text={inhalt.texte.prinzip1PiRissüberbrückende} /></li>
+                    <li><MdText text={inhalt.texte.fugensanierungHeraustrennenGealterterFug} /></li>
                   </ul>
                 </div>
               )}
@@ -752,15 +592,10 @@ export default function SchutzGrundlagen() {
               {selectedDamageSource === 'verschleiss' && (
                 <div>
                   <div className="flex items-center gap-2 text-shiraz font-bold text-sm border-b border-home-grau/20 pb-2 mb-2">
-                    <CheckCircle2 size={16} /> Empfohlene Prinzipien bei mechanischem Verschleiß &amp; Abrieb
-                  </div>
+                    <CheckCircle2 size={16} /><MdText text={inhalt.texte.empfohlenePrinzipienBeiMechanischem} /></div>
                   <ul className="space-y-2 text-slate-700">
-                    <li>
-                      <strong>Prinzip 5 (PR):</strong> Applikation von verschleißfesten Hartstoffestrichen nach DIN 18560 oder Reaktionsharzmörtelbelägen.
-                    </li>
-                    <li>
-                      <strong>Oberflächenschutzsystem OS 8:</strong> Starre Epoxidharzbeschichtung mit dichter Quarzsandabstreuung (0,4–0,8 mm) und Kopfversiegelung für befahrbare Industrieböden und Rampen.
-                    </li>
+                    <li><MdText text={inhalt.texte.prinzip5PrApplikation} /></li>
+                    <li><MdText text={inhalt.texte.oberflächenschutzsystemOs8Starre} /></li>
                   </ul>
                 </div>
               )}
@@ -773,73 +608,34 @@ export default function SchutzGrundlagen() {
       {/* ModuleFooter */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Kostenfolge nach der Fünferregel (de Sitter)"
+        title={inhalt.werte.beispiel1KostenfolgeNach}
         zielGleichung="K_n = K_0 \cdot 5^n"
-        schritte={[
-          { titel: 'Planung', erklaerung: 'Erhöhung der Betondeckung und bessere Nachbehandlung kosten im Entwurf (n = 0):', formel: 'K_0 = 2\\,000\\,\\text{€}' },
-          { titel: 'Vor Schadensbeginn', erklaerung: 'Vorbeugende Oberflächenschutzmaßnahme (n = 1):', formel: 'K_1 = 2\\,000 \\cdot 5 = 10\\,000\\,\\text{€}' },
-          { titel: 'Umfassende Instandsetzung', erklaerung: 'Nach Schadensausbreitung (n = 3):', formel: 'K_3 = 2\\,000 \\cdot 125 = 250\\,000\\,\\text{€}' }
-        ]}
-        ergebnisHinweis="Die Fünferregel ist eine Faustregel zur Größenordnung, kein Rechenmodell. Sie begründet frühzeitige Inspektion und vorbeugende Instandhaltung."
-        normQuelle="de Sitter (1984); DIN 31051:2019-06"
+        schritte={inhalt.daten["SchutzGrundlagen.schritte"]}
+        ergebnisHinweis={inhalt.werte.dieFünferregelIstEine}
+        normQuelle={inhalt.werte.deSitter1984Din}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: CO₂-Sperrwirkung einer Beschichtung (Klopfer-Kriterium)"
+        title={inhalt.werte.beispiel2CoSperrwirkung}
         zielGleichung="s_{d,CO_2} = \mu_{CO_2} \cdot d \ge 50\,\text{m}"
-        schritte={[
-          { titel: 'Kennwert', erklaerung: 'Acrylat-Dispersionsbeschichtung, CO₂-Diffusionswiderstandszahl μ = 4 · 10⁵ (Herstellerangabe):', formel: '\\mu_{CO_2} = 400\\,000' },
-          { titel: 'Trockenschichtdicke', erklaerung: 'Zwei Arbeitsgänge, zusammen 0,25 mm:', formel: 'd = 0{,}25 \\cdot 10^{-3}\\,\\text{m}' },
-          { titel: 'Nachweis', erklaerung: 'Diffusionsäquivalente Luftschichtdicke:', formel: 's_{d,CO_2} = 400\\,000 \\cdot 0{,}00025 = 100\\,\\text{m} \\ge 50\\,\\text{m}' }
-        ]}
-        ergebnisHinweis="Gleichzeitig muss die Beschichtung wasserdampfdurchlässig bleiben (s_d,H2O klein), damit Feuchte aus dem Beton entweichen kann."
-        normQuelle="Klopfer (1978); DIN EN 1504-2"
+        schritte={inhalt.daten["SchutzGrundlagen.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.gleichzeitigMussDieBeschichtung}
+        normQuelle={inhalt.werte.klopfer1978DinEn}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="schutz_grundlagen" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: EN-1504-9-Prinzipien und Rili-SIB-Zuordnung, TR Instandhaltung, DIN EN 14038 geprüft; fachliche Freigabe durch den Autor ausstehend)"
-        weblinks={[
-          { title: "DIBt - Deutsches Institut für Bautechnik (TR Instandhaltung)", url: "https://www.dibt.de" },
-          { title: "DAfStb - Deutscher Ausschuss für Stahlbeton", url: "https://www.dafstb.de" },
-          { title: "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (BÜV)", url: "https://www.buev.de" }
-        ]}
+        lastReviewed={inhalt.werte.oktober2026Ap12}
+        weblinks={inhalt.daten["SchutzGrundlagen.weblinks"]}
         wikipedia={[
           { title: "Betoninstandsetzung", url: "https://de.wikipedia.org/wiki/Betoninstandsetzung" },
-          { title: "Kathodischer Korrosionsschutz", url: "https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz" },
+          { title: inhalt.werte.kathodischerKorrosionsschutz, url: "https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz" },
           { title: "Oberflächenschutzsystem", url: "https://de.wikipedia.org/wiki/Oberfl%C3%A4chenschutzsystem" }
         ]}
-        literatur={[
-          'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Tuutti, K.: Corrosion of Steel in Concrete. CBI Research 5:82, Stockholm: Swedish Cement and Concrete Research Institute 1982'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)' },
-          { title: 'TR Instandhaltung (DIBt, Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
-          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)' },
-          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)' },
-          { title: 'DIN EN 14038-1:2016-10 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für Stahlbeton – Teil 1: Realkalisierung)' },
-          { title: 'DIN EN 14038-2:2020-12 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für Stahlbeton – Teil 2: Chloridextraktion)' }
-        ]}
-        formeln={[
-          {
-            formel: 't_{\\text{service}} = t_0 + t_1 = \\left(\\frac{c}{k}\\right)^2 + \\frac{\\Delta d_{\\text{krit}}}{v_{\\text{korr}}}',
-            erklaerung: 'Tuutti-Degradationsmodell der Lebensdauer: Summe aus Initiierungszeit t₀ (Dauer bis zum Erreichen der Depassivierung bei Betondeckung c und Karbonatisierungsbeiwert k) und Propagationszeit t₁ (aktive Korrosionsphase bis zum kritischen Querschnittsverlust).',
-            quelle: 'Tuutti (1982) / Dauerhaftigkeitsbemessung'
-          },
-          {
-            formel: 'K_n = K_0 \\cdot 5^n',
-            erklaerung: 'De-Sitter-Regel ("Law of Fives"): Phasen: Entwurf und Bau (1) – vor Schadensbeginn (5) – Schadensfortschritt lokal (25) – umfassende Instandsetzung (125). Jeder Euro im Entwurf spart exponentielle Folgekosten.',
-            quelle: 'De Sitter (1984)'
-          },
-          {
-            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0{,}5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
-            erklaerung: 'KKS-Schutzkriterien (DIN EN ISO 12696): Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h (-850 mV gegen CSE gilt für erdberührte Stähle).',
-            quelle: 'DIN EN ISO 12696'
-          }
-        ]}
+        literatur={inhalt.daten["SchutzGrundlagen.literatur"]}
+        regelwerke={inhalt.daten["SchutzGrundlagen.regelwerke"]}
+        formeln={inhalt.daten["SchutzGrundlagen.formeln"]}
       />
     </div>
   );

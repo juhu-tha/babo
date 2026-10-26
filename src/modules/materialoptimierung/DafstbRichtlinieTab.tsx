@@ -2,6 +2,8 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Beaker, Layers, CheckCircle2, Calculator, BookOpen, Scale, Award, Building2, Sliders } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/materialoptimierung/DafstbRichtlinieTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface DafstbRichtlinieTabProps {
   dafstbCalc: { label: string; areaUnit: string; refArea: number; refBetonVol: number; refStahlKg: number; optBetonVol: number; optStahlKg: number; optConcreteGwpPerM3: number; refTotalGwp: number; optTotalGwp: number; refConcreteGwpTotal: number; optConcreteGwpTotal: number; refSteelGwpTotal: number; optSteelGwpTotal: number; refSpecificGwp: number; optSpecificGwp: number; diffAbs: number; diffPct: number; efficiencyClass: string; efficiencyBadge: string; classLabel: string; classStar: string; };
@@ -26,82 +28,55 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-rose-50 text-shiraz border border-rose-200 text-xs font-bold uppercase tracking-wider mb-1 font-mono">
-              <Scale size={13} /> DAfStb-Regelwerk • Gründruck / Richtlinie
-            </div>
-            <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-              DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton
-            </h3>
+              <Scale size={13} /><MdText text={inhalt.texte.dafstbRegelwerkGründruckRichtlinie} /></div>
+            <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.dafstbRichtlinieTreibhausgasreduzierteTr} /></h3>
           </div>
-          <span className="text-xs font-mono font-bold px-3 py-1 bg-slate-100 text-slate-700 rounded-lg border border-slate-200">
-            Deutscher Ausschuss für Stahlbeton e.V.
-          </span>
+          <span className="text-xs font-mono font-bold px-3 py-1 bg-slate-100 text-slate-700 rounded-lg border border-slate-200"><MdText text={inhalt.texte.deutscherAusschussFürStahlbeton} /></span>
         </div>
     
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Rund <strong>60 bis 70 % der gebundenen Treibhausgasemissionen (Embodied Carbon / Modul A1–A5)</strong> eines Rohbaus entfallen auf das tragende Massivbaugerüst – vor allem auf Decken, Stützen und Wände.
-            Die <strong>DAfStb-Richtlinie „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“</strong> schließt die Lücke zwischen der rein standsicherheitsorientierten Tragwerksplanung nach <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> und den zwingenden Dekarbonisierungsanforderungen (EU-Taxonomie, EPBD 2024, QNG, DGNB).
-            Sie definiert erstmals verbindliche <strong>THG-Referenzwerte, Nachweisverfahren und Effizienzklassen</strong> für Bauteile und Tragwerke über ihren Lebenszyklus.
-          </p>
+          <p><MdText text={inhalt.texte.rund60Bis70} /></p>
         </div>
       </div>
     
       {/* 3-Ebenen-Systematik der DAfStb-Richtlinie */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm space-y-4">
         <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Building2 className="text-shiraz" size={18} /> Das 3-Ebenen-Nachweiskonzept der Richtlinie
-        </h4>
-        <p className="text-xs text-slate-600">
-          Die Richtlinie verknüpft Baustoffherstellung, Bauteilgeometrie und Gesamttragwerk zu einer geschlossenen Bilanzkette:
-        </p>
+          <Building2 className="text-shiraz" size={18} /><MdText text={inhalt.texte.das3EbenenNachweiskonzept} /></h4>
+        <p className="text-xs text-slate-600"><MdText text={inhalt.texte.dieRichtlinieVerknüpftBaustoffherstellun} /></p>
     
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-1">Ebene 1</span>
               <h5 className="font-bold text-sm text-text-main mb-1.5 flex items-center gap-1.5">
-                <Beaker size={15} className="text-shiraz" /> Baustoffebene (Beton &amp; Stahl)
-              </h5>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                Quantifizierung der spezifischen Emissionen pro Kubikmeter Beton (<InlineMath math="GWP_{\text{c}}" /> in <InlineMath math="\text{kg CO}_2\text{-eq}/\text{m}^3" />) und pro Tonne Bewehrungsstahl (<InlineMath math="GWP_{\text{s}}" />) basierend auf EPDs nach DIN EN 15804+A2.
-              </p>
+                <Beaker size={15} className="text-shiraz" /><MdText text={inhalt.texte.baustoffebeneBetonStahl} /></h5>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.quantifizierungDerSpezifischenEmissionen} /></p>
             </div>
-            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500">
-              Fokus: Klinkerfaktor, Zementart, k-Wert, EAF-Stahl
-            </div>
+            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.fokusKlinkerfaktorZementartK} /></div>
           </div>
     
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-1">Ebene 2</span>
               <h5 className="font-bold text-sm text-text-main mb-1.5 flex items-center gap-1.5">
-                <Layers size={15} className="text-shiraz" /> Bauteilebene (Decken, Stützen, Wände)
-              </h5>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                Zusammenführung von Baustoff-GWP, Bauteilgeometrie und Bewehrungsgehalt. Bildung flächen- oder längenbezogener Kennwerte (<InlineMath math="\text{kg CO}_2\text{-eq}/\text{m}^2" /> bzw. <InlineMath math="\text{kg CO}_2\text{-eq}/\text{m}" />).
-              </p>
+                <Layers size={15} className="text-shiraz" /><MdText text={inhalt.texte.bauteilebeneDeckenStützenWände} /></h5>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.zusammenführungVonBaustoffGwp} /></p>
             </div>
-            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500">
-              Fokus: Schlankheit, Hohlkörper, Vorspannung, Bewehrungsgrad
-            </div>
+            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.fokusSchlankheitHohlkörperVorspannung} /></div>
           </div>
     
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/30 flex flex-col justify-between">
             <div>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-1">Ebene 3</span>
               <h5 className="font-bold text-sm text-text-main mb-1.5 flex items-center gap-1.5">
-                <Award size={15} className="text-shiraz" /> Gesamttragwerk (Gebäudeebene)
-              </h5>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                Summation aller Tragwerkselemente bezogen auf die Nettogrundfläche (NGF) des Gebäudes. Nachweisbedingung nach DAfStb:
-              </p>
+                <Award size={15} className="text-shiraz" /><MdText text={inhalt.texte.gesamttragwerkGebäudeebene} /></h5>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.summationAllerTragwerkselementeBezogen} /></p>
               <div className="bg-white p-2 rounded-lg border border-home-grau/30 text-center my-1">
                 <InlineMath math="GWP_{\text{Ist}} \le GWP_{\text{Ziel}} \le GWP_{\text{Referenz}}" />
               </div>
             </div>
-            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500">
-              Fokus: Lastabtrag, Stützenraster, Fundamentierung
-            </div>
+            <div className="pt-2 border-t border-slate-200/80 text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.fokusLastabtragStützenrasterFundamentier} /></div>
           </div>
         </div>
       </div>
@@ -111,15 +86,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
         <div className="border-b border-home-grau/20 pb-3 flex flex-wrap items-center justify-between gap-2">
           <div>
             <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Award className="text-shiraz" size={18} /> THG-Effizienzklassen nach DAfStb
-            </h4>
-            <p className="text-xs text-slate-600 mt-0.5">
-              Klassifizierung der Treibhausgasminderung gegenüber dem normativen Benchmark (konventioneller Standard mit CEM I)
-            </p>
+              <Award className="text-shiraz" size={18} /><MdText text={inhalt.texte.thgEffizienzklassenNachDafstb} /></h4>
+            <p className="text-xs text-slate-600 mt-0.5"><MdText text={inhalt.texte.klassifizierungDerTreibhausgasminderungG} /></p>
           </div>
-          <span className="text-[11px] font-bold px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200">
-            5 Dekarbonisierungsstufen
-          </span>
+          <span className="text-[11px] font-bold px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200"><MdText text={inhalt.texte.t5Dekarbonisierungsstufen} /></span>
         </div>
     
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -129,12 +99,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <span className="font-mono font-black text-xs text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Klasse A+</span>
                 <span className="text-xs text-emerald-700">★★★★★</span>
               </div>
-              <strong className="text-xs font-bold text-emerald-950 block mb-1">THG-Minderung &ge; 50 %</strong>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Ultra-Low-Carbon Standard. Zement CEM III/B oder CEM II/C-M, 56d-Prüfalter, Hohlkörper-/Vorspanndecke, 100% Elektroofenstahl.
-              </p>
+              <strong className="text-xs font-bold text-emerald-950 block mb-1"><MdText text={inhalt.texte.thgMinderung50} /></strong>
+              <p className="text-[11px] text-slate-600 leading-snug"><MdText text={inhalt.texte.ultraLowCarbonStandard} /></p>
             </div>
-            <span className="text-[10px] font-bold text-emerald-800 mt-3 pt-2 border-t border-emerald-200/60 block">DGNB/QNG Platin-Level</span>
+            <span className="text-[10px] font-bold text-emerald-800 mt-3 pt-2 border-t border-emerald-200/60 block"><MdText text={inhalt.texte.dgnbQngPlatinLevel} /></span>
           </div>
     
           <div className="p-3.5 rounded-xl border border-green-200 bg-green-50/40 flex flex-col justify-between">
@@ -143,12 +111,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <span className="font-mono font-black text-xs text-green-900 bg-green-100 px-2 py-0.5 rounded border border-green-300">Klasse A</span>
                 <span className="text-xs text-green-700">★★★★☆</span>
               </div>
-              <strong className="text-xs font-bold text-green-950 block mb-1">THG-Minderung 40–49 %</strong>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Ambitioniertes Ziel. CEM III/A oder CEM II/B-S mit k-Wert, schlankere Deckenquerschnitte, optimierte Bewehrungsführung.
-              </p>
+              <strong className="text-xs font-bold text-green-950 block mb-1"><MdText text={inhalt.texte.thgMinderung4049} /></strong>
+              <p className="text-[11px] text-slate-600 leading-snug"><MdText text={inhalt.texte.ambitioniertesZielCemIii} /></p>
             </div>
-            <span className="text-[10px] font-bold text-green-800 mt-3 pt-2 border-t border-green-200/60 block">QNG-Premium tauglich</span>
+            <span className="text-[10px] font-bold text-green-800 mt-3 pt-2 border-t border-green-200/60 block"><MdText text={inhalt.texte.qngPremiumTauglich} /></span>
           </div>
     
           <div className="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 flex flex-col justify-between">
@@ -157,12 +123,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <span className="font-mono font-black text-xs text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">Klasse B</span>
                 <span className="text-xs text-amber-700">★★★☆☆</span>
               </div>
-              <strong className="text-xs font-bold text-amber-950 block mb-1">THG-Minderung 25–39 %</strong>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Wirtschaftliches Optimum. CEM II/A-LL / CEM II/B, moderater Klinkerersatz, konsequenter Verzicht auf Überdimensionierung.
-              </p>
+              <strong className="text-xs font-bold text-amber-950 block mb-1"><MdText text={inhalt.texte.thgMinderung2539} /></strong>
+              <p className="text-[11px] text-slate-600 leading-snug"><MdText text={inhalt.texte.wirtschaftlichesOptimumCemIi} /></p>
             </div>
-            <span className="text-[10px] font-bold text-amber-800 mt-3 pt-2 border-t border-amber-200/60 block">QNG-Plus Standard</span>
+            <span className="text-[10px] font-bold text-amber-800 mt-3 pt-2 border-t border-amber-200/60 block"><MdText text={inhalt.texte.qngPlusStandard} /></span>
           </div>
     
           <div className="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 flex flex-col justify-between">
@@ -171,10 +135,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <span className="font-mono font-black text-xs text-blue-900 bg-blue-100 px-2 py-0.5 rounded border border-blue-300">Klasse C</span>
                 <span className="text-xs text-blue-700">★★☆☆☆</span>
               </div>
-              <strong className="text-xs font-bold text-blue-950 block mb-1">THG-Minderung 10–24 %</strong>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Einstiegsstandard. Leichte Zementoptimierung, Standardbewehrung, minimale Bauteilreduktion ohne Bauablaufanpassung.
-              </p>
+              <strong className="text-xs font-bold text-blue-950 block mb-1"><MdText text={inhalt.texte.thgMinderung1024} /></strong>
+              <p className="text-[11px] text-slate-600 leading-snug"><MdText text={inhalt.texte.einstiegsstandardLeichteZementoptimierun} /></p>
             </div>
             <span className="text-[10px] font-bold text-blue-800 mt-3 pt-2 border-t border-blue-200/60 block">Basis-Verbesserung</span>
           </div>
@@ -185,10 +147,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <span className="font-mono font-black text-xs text-slate-700 bg-slate-200 px-2 py-0.5 rounded border border-slate-300">Referenz</span>
                 <span className="text-xs text-slate-500">Basis</span>
               </div>
-              <strong className="text-xs font-bold text-slate-900 block mb-1">Benchmark (0 %)</strong>
-              <p className="text-[11px] text-slate-500 leading-snug">
-                Historisch-konventionelle Bauweise nach DIN EN 206 mit reinem CEM I (Klinker &ge; 95%) und BOF-Standardstahl.
-              </p>
+              <strong className="text-xs font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.benchmark0} /></strong>
+              <p className="text-[11px] text-slate-500 leading-snug"><MdText text={inhalt.texte.historischKonventionelleBauweiseNach} /></p>
             </div>
             <span className="text-[10px] font-bold text-slate-600 mt-3 pt-2 border-t border-slate-200 block">Ausgangs-Baseline</span>
           </div>
@@ -198,54 +158,47 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
       {/* 4 Planerische Hebel */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm space-y-4">
         <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Sliders className="text-shiraz" size={18} /> Die 4 planerischen Hebel des Tragwerksplaners nach DAfStb
-        </h4>
+          <Sliders className="text-shiraz" size={18} /><MdText text={inhalt.texte.die4PlanerischenHebel} /></h4>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-4 rounded-xl border border-home-grau/30 bg-off-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main">
               <div className="w-6 h-6 rounded-md bg-shiraz text-white flex items-center justify-center text-xs font-mono font-bold">1</div>
-              <span>Tragwerksgeometrie &amp; Leichtbau</span>
+              <span><MdText text={inhalt.texte.tragwerksgeometrieLeichtbau} /></span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
               Material nur dort anordnen, wo Zug- oder Druckkräfte fließen.
               <strong> Hohlkörperdecken</strong> verdrängen bis zu 35 % Beton in der statischen Nullzone ohne Traglastverlust.
-              <strong> Vorspannung mit sofortigem oder nachträglichem Verbund</strong> verringert Deckendicken um 20 bis 25 % und spart tonnenweise Durchstanz- und Biegebewehrung.
-              <strong> Hochfester Beton (C50/60 bis C80/95) für Stützen</strong> spart trotz zementreicherer Mischung über 50 % Querschnittsvolumen – netto sinkt der CO₂-Ausstoß der Stütze um rund 35 %!
+              <strong><MdText text={inhalt.texte.vorspannungMitSofortigemOder} /></strong> verringert Deckendicken um 20 bis 25 % und spart tonnenweise Durchstanz- und Biegebewehrung.
+              <strong><MdText text={inhalt.texte.hochfesterBetonC5060} /></strong> spart trotz zementreicherer Mischung über 50 % Querschnittsvolumen – netto sinkt der CO₂-Ausstoß der Stütze um rund 35 %!
             </p>
           </div>
     
           <div className="p-4 rounded-xl border border-home-grau/30 bg-off-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main">
               <div className="w-6 h-6 rounded-md bg-shiraz text-white flex items-center justify-center text-xs font-mono font-bold">2</div>
-              <span>Klinkerfaktor &amp; Prüfalter 56 d</span>
+              <span><MdText text={inhalt.texte.klinkerfaktorPrüfalter56D} /></span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
               Portlandzementklinker ist der Hauptemittent. Substitution durch Hüttensandmehl (CEM III/A), calcinierte Tone (LC3) oder Kalksteinmehl (CEM II/C-M) senkt den Zement-GWP um 50 bis 70 %.
-              <strong> DAfStb-Regel zum Prüfalter:</strong> Wer die Konformitätsprüfung auf <strong>56 Tage statt 28 Tage</strong> festlegt (DIN EN 206), nutzt die langsame Puzzolan- und Hüttensandhydratation vollständig aus und kann die Zementdosierung um ca. 8 bis 10 % reduzieren.
+              <strong><MdText text={inhalt.texte.dafstbRegelZumPrüfalter} /></strong> Wer die Konformitätsprüfung auf <strong><MdText text={inhalt.texte.t56TageStatt28} /></strong> festlegt (DIN EN 206), nutzt die langsame Puzzolan- und Hüttensandhydratation vollständig aus und kann die Zementdosierung um ca. 8 bis 10 % reduzieren.
             </p>
           </div>
     
           <div className="p-4 rounded-xl border border-home-grau/30 bg-off-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main">
               <div className="w-6 h-6 rounded-md bg-shiraz text-white flex items-center justify-center text-xs font-mono font-bold">3</div>
-              <span>Bewehrungsstahl &amp; Herstellroute</span>
+              <span><MdText text={inhalt.texte.bewehrungsstahlHerstellroute} /></span>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Bewehrungsstahl emittiert über die Hochofenroute (BOF) rund <strong>0,95 bis 1,2 kg CO₂-eq/kg</strong>, über die Elektrolichtbogenroute (EAF / 100% Stahlschrott mit Grünstrom) nur <strong>0,35 bis 0,45 kg CO₂-eq/kg</strong> – eine Reduktion um fast 60 %!
-              Zusätzlich lässt sich die Zwangsbewehrung zur Rissbreitenbegrenzung (<InlineMath math="w_{\text{max}}" />) durch den Einsatz von Zementen mit geringer Hydratationswärme (LH-Zemente) und optimierte Nachbehandlung drastisch reduzieren.
-            </p>
+            <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.bewehrungsstahlEmittiertÜberDie} /></p>
           </div>
     
           <div className="p-4 rounded-xl border border-home-grau/30 bg-off-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main">
               <div className="w-6 h-6 rounded-md bg-shiraz text-white flex items-center justify-center text-xs font-mono font-bold">4</div>
-              <span>Bauablauf &amp; Nachbehandlung (DIN EN 13670)</span>
+              <span><MdText text={inhalt.texte.bauablaufNachbehandlungDinEn} /></span>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Klinkerarme Betone erhärten langsamer und besitzen in den ersten Tagen eine empfindlichere Randzone.
-              Die DAfStb-Richtlinie fordert daher eine <strong>angepasste Nachbehandlung (Nachbehandlungsklasse 3 oder 4 nach DIN EN 13670 / DIN 1045-3)</strong>: längeres Belassen der Schalung, Feuchthalten oder Nachbehandlungsfilme verhindern das vorzeitige Austrocknen und garantieren eine dichte, karbonatisierungsresistente Betondeckung.
-            </p>
+            <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.klinkerarmeBetoneErhärtenLangsamer} /></p>
           </div>
         </div>
       </div>
@@ -255,11 +208,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
         <div className="border-b border-home-grau/20 pb-3 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Calculator className="text-shiraz" size={18} /> Interaktiver DAfStb-Bauteilrechner &amp; Variantenvergleich
-            </h4>
-            <p className="text-xs text-slate-600 mt-0.5">
-              Simulieren Sie den THG-Unterschied zwischen konventionellem Tragwerks-Benchmark und DAfStb-optimierter Bauweise.
-            </p>
+              <Calculator className="text-shiraz" size={18} /><MdText text={inhalt.texte.interaktiverDafstbBauteilrechnerVariante} /></h4>
+            <p className="text-xs text-slate-600 mt-0.5"><MdText text={inhalt.texte.simulierenSieDenThg} /></p>
           </div>
           <div className={`px-3 py-1 rounded-xl border font-bold text-xs flex items-center gap-1.5 ${dafstbCalc.efficiencyBadge}`}>
             <Award size={14} /> {dafstbCalc.efficiencyClass} ({dafstbCalc.classLabel})
@@ -271,10 +221,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
           
           {/* Bauteil-Auswahl */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
-              1. Bauteiltyp
-            </label>
-            <select aria-label="1. Bauteiltyp"
+            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono"><MdText text={inhalt.texte.t1Bauteiltyp} /></label>
+            <select aria-label={inhalt.werte.t1Bauteiltyp}
               value={dafstbBauteil}
               onChange={(e) => {
                 const b = e.target.value as typeof dafstbBauteil;
@@ -291,15 +239,13 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               <option value="wand">Tragwand / Kernwand (60 m²)</option>
               <option value="bodenplatte">Fundamentplatte (120 m²)</option>
             </select>
-            <span className="text-[10px] text-slate-500 block">Referenz: massives Standardbauteil</span>
+            <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.referenzMassivesStandardbauteil} /></span>
           </div>
     
           {/* Bauweise & Geometrie-Optimierung */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
-              2. Geometrie &amp; Bauweise
-            </label>
-            <select aria-label="2. Geometrie &amp; Bauweise"
+            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono"><MdText text={inhalt.texte.t2GeometrieBauweise} /></label>
+            <select aria-label={inhalt.werte.t2GeometrieBauweise}
               value={dafstbBauweise}
               onChange={(e) => setDafstbBauweise(e.target.value)}
               className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -330,15 +276,13 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 </>
               )}
             </select>
-            <span className="text-[10px] text-slate-500 block">Gewichts- und Querschnittsreduktion</span>
+            <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.gewichtsUndQuerschnittsreduktion} /></span>
           </div>
     
           {/* Bindemittel & Zementtyp */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
-              3. Zement- &amp; Bindemittelart
-            </label>
-            <select aria-label="3. Zement- &amp; Bindemittelart"
+            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono"><MdText text={inhalt.texte.t3ZementBindemittelart} /></label>
+            <select aria-label={inhalt.werte.t3ZementBindemittelart}
               value={dafstbZement}
               onChange={(e) => setDafstbZement(e.target.value as "cem1" | "cem2_all" | "cem2_bs" | "cem3_a" | "cem2_cm")}
               className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -349,16 +293,14 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               <option value="cem3_a">CEM III/A (Hochofenzement - 135 kg/m³)</option>
               <option value="cem2_cm">CEM II/C-M / LC3 (Ultra-Low - 105 kg/m³)</option>
             </select>
-            <span className="text-[10px] text-slate-500 block">Klinkerersatz nach DIN EN 197-1/-5</span>
+            <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.klinkerersatzNachDinEn} /></span>
           </div>
     
           {/* Prüfalter & Stahlroute */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
-              4. Prüfalter &amp; Stahlroute
-            </label>
+            <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono"><MdText text={inhalt.texte.t4PrüfalterStahlroute} /></label>
             <div className="flex gap-2">
-              <select aria-label="4. Prüfalter &amp; Stahlroute"
+              <select aria-label={inhalt.werte.t4PrüfalterStahlroute}
                 value={dafstbPruefalter}
                 onChange={(e) => setDafstbPruefalter(Number(e.target.value) as 28 | 56)}
                 className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -375,7 +317,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <option value="gruen_eaf">EAF Grün (0,42 kg)</option>
               </select>
             </div>
-            <span className="text-[10px] text-slate-500 block">Nachweispfad &amp; Schrott-Elektroofenstahl</span>
+            <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.nachweispfadSchrottElektroofenstahl} /></span>
           </div>
     
         </div>
@@ -385,12 +327,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
           
           {/* Box 1: Absolute CO2-Bilanz */}
           <div className="p-4 rounded-xl border border-home-grau/30 bg-white space-y-3 shadow-2xs">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-              Gesamte Treibhausgasemissionen (A1–A3)
-            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block font-mono"><MdText text={inhalt.texte.gesamteTreibhausgasemissionenA1A3} /></span>
             <div className="flex items-baseline justify-between">
               <div>
-                <span className="text-xs text-slate-500 block">Referenz (CEM I + BOF):</span>
+                <span className="text-xs text-slate-500 block"><MdText text={inhalt.texte.referenzCemIBof} /></span>
                 <strong className="text-lg font-bold text-slate-700 line-through decoration-slate-400">
                   {dafstbCalc.refTotalGwp.toLocaleString('de-DE')} kg
                 </strong>
@@ -404,7 +344,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             </div>
     
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-              <span className="text-slate-600">Eingespartes CO₂-Äquivalent:</span>
+              <span className="text-slate-600"><MdText text={inhalt.texte.eingespartesCoÄquivalent} /></span>
               <span className="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                 - {dafstbCalc.diffAbs.toLocaleString('de-DE')} kg CO₂-eq
               </span>
@@ -413,9 +353,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
     
           {/* Box 2: Spezifischer Bauteil-Kennwert */}
           <div className="p-4 rounded-xl border border-home-grau/30 bg-white space-y-3 shadow-2xs">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-              Spezifischer Bauteil-Kennwert
-            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block font-mono"><MdText text={inhalt.texte.spezifischerBauteilKennwert} /></span>
             <div className="flex items-baseline justify-between">
               <div>
                 <span className="text-xs text-slate-500 block">Referenz:</span>
@@ -459,10 +397,10 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
     
             <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-500">
               {dafstbCalc.diffPct >= 40 
-                ? '✓ Erfüllt höchste Fördervorgaben nach QNG-Premium und DGNB-Kriterium ENV 1.1.'
+                ? inhalt.werte.erfülltHöchsteFördervorgabenNach
                 : dafstbCalc.diffPct >= 25
-                ? '✓ Erfüllt Anforderungen für QNG-Plus und ambitionierte Nachhaltigkeitskriterien.'
-                : 'Basisverbesserung. Für QNG/DGNB-Zertifizierung wird Klasse B oder A empfohlen.'}
+                ? inhalt.werte.erfülltAnforderungenFürQng
+                : inhalt.werte.basisverbesserungFürQngDgnb}
             </div>
           </div>
     
@@ -470,9 +408,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
     
         {/* Split Comparison Bars: Concrete vs. Steel */}
         <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/20 space-y-3">
-          <span className="text-xs font-bold text-slate-800 block">
-            Emissionsanteile nach Baustoff (Beton vs. Bewehrungsstahl)
-          </span>
+          <span className="text-xs font-bold text-slate-800 block"><MdText text={inhalt.texte.emissionsanteileNachBaustoffBeton} /></span>
     
           <div className="space-y-2 text-xs">
             {/* Reference bar */}
@@ -519,11 +455,11 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
           <div className="flex flex-wrap items-center gap-4 text-[11px] text-slate-500 pt-2 border-t border-slate-200/60">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded bg-emerald-600"></span>
-              <span>Beton optimiert ({formatDeWert(dafstbCalc.optConcreteGwpPerM3)} kg/m³)</span>
+              <span><MdText text={inhalt.texte.betonOptimiert} />{formatDeWert(dafstbCalc.optConcreteGwpPerM3)} kg/m³)</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded bg-teal-500"></span>
-              <span>Bewehrungsstahl ({dafstbStahlRoute === 'gruen_eaf' ? 'EAF Grün 0,42 kg/kg' : 'BOF Standard 0,98 kg/kg'})</span>
+              <span><MdText text={inhalt.texte.bewehrungsstahl} />{dafstbStahlRoute === 'gruen_eaf' ? inhalt.werte.eafGrün042 : inhalt.werte.bofStandard098})</span>
             </div>
             <div className="flex items-center gap-1.5 ml-auto font-mono">
               Betonvolumen: {formatDeZahl(dafstbCalc.optBetonVol, 1)} m³ (Ref: {formatDeZahl(dafstbCalc.refBetonVol, 1)} m³)
@@ -534,18 +470,11 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
         {/* Praxis- & Bemessungsempfehlungen */}
         <div className="p-4 rounded-xl border border-rose-200 bg-rose-50/20 text-xs text-slate-700 space-y-2">
           <strong className="font-bold text-shiraz flex items-center gap-1.5">
-            <CheckCircle2 size={15} /> Tragwerksplanerische Umsetzung nach DAfStb in der Praxis:
-          </strong>
+            <CheckCircle2 size={15} /><MdText text={inhalt.texte.tragwerksplanerischeUmsetzungNachDafstb} /></strong>
           <ul className="list-disc pl-5 space-y-1 text-slate-600 leading-relaxed text-[11px]">
-            <li>
-              <strong>Leistungsphase 2 &amp; 3 (Entwurf):</strong> Festlegung des Zielwertes <InlineMath math="GWP_{\text{Ziel}}" /> in der Tragwerksausschreibung und Wahl des Tragsystems (Hohlkörper, Vorspannung oder hochfeste Querschnitte).
-            </li>
-            <li>
-              <strong>Leistungsphase 6 (Vorbereitung Vergabe):</strong> Formulierung der Betonbestellung nach DIN EN 206 / DIN 1045-2 unter Nennung von <InlineMath math="\text{CEM III/A}" /> bzw. <InlineMath math="\text{CEM II/C-M}" /> sowie <strong>Prüfalter 56 Tage</strong> für den statischen Festigkeitsnachweis.
-            </li>
-            <li>
-              <strong>Ausführung &amp; Bauleitung:</strong> Einhaltung der verlängerten Ausschalfristen und Überwachung der Nachbehandlungsdauer nach DIN EN 13670 (Nachbehandlungsklasse 3 oder 4) zum dauerhaften Schutz der Betondeckung vor Frühkarbonatisierung.
-            </li>
+            <li><MdText text={inhalt.texte.leistungsphase23Entwurf} /></li>
+            <li><MdText text={inhalt.texte.leistungsphase6VorbereitungVergabe} /></li>
+            <li><MdText text={inhalt.texte.ausführungBauleitungEinhaltungDer} /></li>
           </ul>
         </div>
       </div>
@@ -553,48 +482,31 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
       {/* Formelsammlung DAfStb */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm space-y-4">
         <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-          <BookOpen className="text-shiraz" size={18} /> Normative Berechnungsformeln der DAfStb-Richtlinie
-        </h4>
+          <BookOpen className="text-shiraz" size={18} /><MdText text={inhalt.texte.normativeBerechnungsformelnDerDafstb} /></h4>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/20 space-y-2">
-            <strong className="text-xs font-bold text-slate-900 block">
-              1. Treibhausgasbilanz des Bauteils (Modul A1–A3)
-            </strong>
+            <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.t1TreibhausgasbilanzDesBauteils} /></strong>
             <BlockMath math="GWP_{\text{Bauteil}} = V_{\text{c}} \cdot gwp_{\text{c}} + m_{\text{s}} \cdot gwp_{\text{s}} \quad [\text{kg CO}_2\text{-eq}]" />
-            <p className="text-[11px] text-slate-500 leading-relaxed">
-              Mit <InlineMath math="V_{\text{c}}" /> als Betonvolumen in <InlineMath math="\text{m}^3" />, <InlineMath math="gwp_{\text{c}}" /> als spezifischem Beton-GWP in <InlineMath math="\text{kg CO}_2\text{-eq}/\text{m}^3" />, <InlineMath math="m_{\text{s}}" /> als Bewehrungsmasse in <InlineMath math="\text{kg}" /> und <InlineMath math="gwp_{\text{s}}" /> als Stahl-GWP in <InlineMath math="\text{kg CO}_2\text{-eq}/\text{kg}" />.
-            </p>
+            <p className="text-[11px] text-slate-500 leading-relaxed"><MdText text={inhalt.texte.mitVTextC} /></p>
           </div>
     
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/20 space-y-2">
-            <strong className="text-xs font-bold text-slate-900 block">
-              2. Spezifischer Bauteil-Emissionswert
-            </strong>
+            <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.t2SpezifischerBauteilEmissionswert} /></strong>
             <BlockMath math="gwp_{\text{Fläche}} = \frac{GWP_{\text{Bauteil}}}{A_{\text{Bauteil}}} \quad [\text{kg CO}_2\text{-eq}/\text{m}^2]" />
-            <p className="text-[11px] text-slate-500 leading-relaxed">
-              Bezug auf die Bauteilfläche <InlineMath math="A_{\text{Bauteil}}" /> (Decken, Wände, Bodenplatten) oder Bauteillänge <InlineMath math="L" /> (Stützen, Unterzüge) zur normativen Prüfung gegen die DAfStb-Referenzwerte.
-            </p>
+            <p className="text-[11px] text-slate-500 leading-relaxed"><MdText text={inhalt.texte.bezugAufDieBauteilfläche} /></p>
           </div>
     
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/20 space-y-2">
-            <strong className="text-xs font-bold text-slate-900 block">
-              3. Relativer Minderungswert der Effizienzklasse
-            </strong>
+            <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.t3RelativerMinderungswertDer} /></strong>
             <BlockMath math="\Delta_{\text{THG}} = \left( 1 - \frac{GWP_{\text{opt}}}{GWP_{\text{ref}}} \right) \cdot 100 \quad [\%]" />
-            <p className="text-[11px] text-slate-500 leading-relaxed">
-              Bestimmt die Einstufung in die DAfStb-Effizienzklassen A+ (&ge; 50%), A (40–49%), B (25–39%), C (10–24%) gegenüber dem Referenztragwerk.
-            </p>
+            <p className="text-[11px] text-slate-500 leading-relaxed"><MdText text={inhalt.texte.bestimmtDieEinstufungIn} /></p>
           </div>
     
           <div className="p-4 rounded-xl bg-slate-50 border border-home-grau/20 space-y-2">
-            <strong className="text-xs font-bold text-slate-900 block">
-              4. Äquivalenter Wasserzementwert mit k-Wert (DIN 1045-2)
-            </strong>
+            <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.t4ÄquivalenterWasserzementwertMit} /></strong>
             <BlockMath math="(w/z)_{\text{eq}} = \frac{w}{z + k \cdot f} \quad \text{mit } k_{\text{FA}} = 0{,}4; \: k_{\text{HS}} = 0{,}6" />
-            <p className="text-[11px] text-slate-500 leading-relaxed">
-              Mit z = Zementgehalt und f = Gehalt des anrechenbaren Zusatzstoffs (jeweils kg/m³). Erlaubt die normative Anrechnung von Flugasche (FA) und Hüttensandmehl (HS) als zementersetzende Zusatzstoffe Typ II zur Klinkerreduktion.
-            </p>
+            <p className="text-[11px] text-slate-500 leading-relaxed"><MdText text={inhalt.texte.mitZZementgehaltUnd} /></p>
           </div>
         </div>
       </div>

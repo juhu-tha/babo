@@ -1,0 +1,78 @@
+{
+  "texte": {
+    "grenzwerteKlassen": " Grenzwerte & Klassen",
+    "geprüfteBeispielrechnungen": " Geprüfte Beispielrechnungen",
+    "mischungsberechnungBetonrezeptur": "Mischungsberechnung & Betonrezeptur",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
+    "dieMischungsberechnungStoffraumrechnungE": "Die Mischungsberechnung (Stoffraumrechnung) ermittelt die Volumina aller Betonbestandteile, die zusammen genau 1 m³ (1000 dm³) ergeben müssen. Hierbei werden auch Zusatzstoffe (mit k-Wert-Ansatz), die Gesteinsfeuchte (für das Zugabewasser) und der detaillierte CO₂-Fußabdruck berücksichtigt. Zudem wird geprüft, ob die normativen Grenzwerte für Zementgehalt und w/z-Wert eingehalten werden."
+  },
+  "werte": {
+    "c3037NurMit": "C30/37 (nur mit LP zulässig)",
+    "karbonatisierungXc": "Karbonatisierung (XC)",
+    "chlorideXdXs": "Chloride (XD/XS)",
+    "verschleißXm": "Verschleiß (XM)",
+    "berechnungDerVolumetrischenZusammensetzu": "Berechnung der volumetrischen Zusammensetzung, Rezeptur mit Gesteinsfeuchte und detailliertem CO2-Fußabdruck.",
+    "rechenwegNachweisDerGrenzwerte": "Rechenweg: Nachweis der Grenzwerte für die gewählte Mischung",
+    "din104522023": "DIN 1045-2:2023-08 (Grenzwerte je Expositionsklasse); k-Werte siehe Eingabe",
+    "t1Wasserzementwert": "1. Wasserzementwert",
+    "wirksamerWassergehaltBezogenAuf": "Wirksamer Wassergehalt bezogen auf den Zementgehalt.",
+    "t2ÄquivalenterWasserzementwert": "2. Äquivalenter Wasserzementwert",
+    "angerechnetWerdenNurDie": "Angerechnet werden nur die zulässigen Mengen der Zusatzstoffe (Flugasche f/z ≤ 0,33).",
+    "t3MaßgebendeAnforderungen": "3. Maßgebende Anforderungen",
+    "beideAnforderungenSindErfüllt": "Beide Anforderungen sind erfüllt.",
+    "mindestensEineAnforderungIst": "Mindestens eine Anforderung ist nicht erfüllt – Rezeptur anpassen.",
+    "derRechenwegFolgtDen": "Der Rechenweg folgt den aktuellen Eingaben des Rechners.",
+    "betonWikiMischungsberechnung": "Beton.wiki: Mischungsberechnung",
+    "zementMerkblattB12Entwurf": "Zement-Merkblatt B12: Entwurf und Herstellung von Beton",
+    "betonWikiMischungsentwurf": "Beton.wiki: Mischungsentwurf",
+    "zementMerkblätterÜbersicht": "Zement-Merkblätter Übersicht"
+  },
+  "daten": {
+    "Mischungsberechnung.literatur": [
+      "Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)",
+      "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Auflage, Verlag Bau+Technik)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Mischungsberechnung.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)"
+      },
+      {
+        "title": "DAfStb-Richtlinie: Stahlfaserbeton:2021-06",
+        "url": "https://www.dafstb.de/"
+      },
+      {
+        "title": "DIN EN 197-1:2011-11 & DIN EN 197-5:2021-07 (Zement)",
+        "url": "https://www.dinmedia.de/de/suche?q=DIN+EN+197"
+      },
+      {
+        "title": "DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)",
+        "url": "https://www.dinmedia.de/de/suche?q=DIN+EN+12620"
+      },
+      {
+        "title": "DAfStb-Richtlinie: Massige Bauteile aus Beton:2010-04",
+        "url": "https://www.dafstb.de/"
+      }
+    ],
+    "Mischungsberechnung.formeln": [
+      {
+        "formel": "V_{ges} = \\frac{z}{\\rho_z} + \\frac{w_{eff}}{\\rho_w} + \\frac{g}{\\rho_g} + \\frac{f}{\\rho_f} + \\frac{zm}{\\rho_{zm}} + \\frac{m_{\\text{faser}}}{\\rho_{\\text{faser}}} + v_l = 1000\\,\\text{dm}^3",
+        "erklaerung": "Stoffraumgleichung für 1 m³ Beton nach DIN EN 206:2021-06 / DIN 1045-2:2023-08: Summe der Feststoffvolumina (Zement z, Gestein g, Zusatzstoff f, Zusatzmittel zm, Fasern) sowie wirksamem Wasser weff und Eigenluftgehalt vl.",
+        "quelle": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 / DIN EN 14889:2006-11"
+      },
+      {
+        "formel": "w/z_{eq} = \\frac{w_{eff}}{z + k \\cdot f}",
+        "erklaerung": "Äquivalenter Wasserzementwert (w/z)eq unter Anrechnung von Zusatzstoffen (z.B. Flugasche mit k = 0,4 oder Silikastaub mit k = 1,0 nach DIN 1045-2:2023-08; der Wert k = 2,0 ist eine EC-Empfehlung und in DE nicht zulässig).",
+        "quelle": "DIN 1045-2:2023-08 / DIN EN 206:2021-06"
+      },
+      {
+        "formel": "w_{zugabe} = w_{eff} - \\sum \\left( g_i \\cdot \\frac{h_i}{100} \\right)",
+        "erklaerung": "Tatsächlich beizumischendes Zugabewasser unter Abzug der in der feuchten Gesteinskörnung bereits enthaltenen Eigenfeuchte hi [%].",
+        "quelle": "DIN 1045-2:2023-08 / DBV-Merkblatt Beton"
+      }
+    ]
+  }
+}

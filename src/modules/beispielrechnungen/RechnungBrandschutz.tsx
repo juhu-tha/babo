@@ -2,6 +2,8 @@ import { Flame, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeWert, formatDeTeXWert, formatDeTeX, formatDeZahl } from '@/src/utils/numberFormat';
 import React from 'react';
+import inhalt from '@/content/beispielrechnungen/RechnungBrandschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungBrandschutzProps {
   M_fi_Ed: number;
@@ -36,13 +38,9 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
           <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
             <Flame className="text-shiraz" size={18} />
-            <span>Brandschutz: Heißbemessung nach Eurocode 5 (Holz) &amp; Eurocode 2 (Beton)</span>
+            <span><MdText text={inhalt.texte.brandschutzHeißbemessungNachEurocode} /></span>
           </h3>
-          <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-            <strong>Was?</strong> Berechnung des Brandwiderstands tragender Bauteile unter der <strong>Einheits-Temperaturzeitkurve (ETK)</strong> nach DIN EN 1363-1 / DIN 4102-2. <br />
-            <strong>Warum?</strong> Nachweis der Mindest-Feuerwiderstandsdauer (R30 bis R120) zur Rettung von Menschenleben und Gewährleistung sicherer Löscharbeiten der Feuerwehr gemäß Musterbauordnung (MBO). <br />
-            <strong>Wie?</strong> Im Holzbau über die <strong>Methode des effektiven Restquerschnitts</strong> (konstante Abbrandrate <InlineMath math="\beta" /> plus Entfestigungszone <InlineMath math="d_0 = 7\,\text{mm}" />). Im Massivbau über Mindestbauteilbreiten und Achsabstände der Bewehrung.
-          </p>
+          <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnungDesBrandwiderstands} /></p>
         </div>
 
         {/* Sub-Tab Selector for Brandschutz */}
@@ -55,9 +53,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     ? 'bg-shiraz text-white shadow-xs'
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
-          >
-            🌲 Holzbau: Effektiver Restquerschnitt (EC5-1-2)
-          </button>
+          ><MdText text={inhalt.texte.holzbauEffektiverRestquerschnittEc5} /></button>
           <button aria-pressed={brandSubTab === 'beton_tabelle'}
             type="button"
             onClick={() => setBrandSubTab('beton_tabelle')}
@@ -66,9 +62,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     ? 'bg-shiraz text-white shadow-xs'
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
-          >
-            🧱 Stahlbeton: Mindestabmessungen &amp; Achsabstand (EC2-1-2)
-          </button>
+          ><MdText text={inhalt.texte.stahlbetonMindestabmessungenAchsabstandE} /></button>
         </div>
 
         {brandSubTab === 'holz_abbrand' && (
@@ -76,14 +70,14 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
             {/* Controls Left */}
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
               <h3 className="font-bold text-sm text-slate-800 border-b border-slate-200 pb-2 flex items-center justify-between">
-                <span>Holzträger-Eingaben (Brandfall)</span>
+                <span><MdText text={inhalt.texte.holzträgerEingabenBrandfall} /></span>
                 <Flame size={16} className="text-shiraz" />
               </h3>
 
               {/* Holzart */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 block">Holzart &amp; Festigkeit:</label>
-                <select aria-label="Holzart &amp; Festigkeit"
+                <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.holzartFestigkeit} /></label>
+                <select aria-label={inhalt.werte.holzartFestigkeit}
                   value={holzArtBrand}
                   onChange={(e) => setHolzArtBrand(e.target.value as "laubholz" | "bsh" | "c24")}
                   className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -97,8 +91,8 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
               {/* Querschnitt b x h */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Breite b [cm]:</label>
-                  <input aria-label="Breite b [cm]" 
+                  <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.breiteBCm} /></label>
+                  <input aria-label={inhalt.werte.breiteBCm} 
                     type="number" min="0" 
                     value={holzBreite}
                     onChange={(e) => setHolzBreite(Math.max(8, parseFloat(e.target.value) || 8))}
@@ -106,7 +100,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Höhe h [cm]:</label>
+                  <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.höheHCm} /></label>
                   <input aria-label="Höhe h [cm]" 
                     type="number" min="0" 
                     value={holzHoehe}
@@ -128,9 +122,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                             ? 'bg-shiraz text-white border-shiraz font-bold shadow-xs'
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
-                  >
-                    3-seitig (Deckenbalken)
-                  </button>
+                  ><MdText text={inhalt.texte.t3SeitigDeckenbalken} /></button>
                   <button aria-pressed={brandBeanspruchung === '4_seitig'}
                     type="button"
                     onClick={() => setBrandBeanspruchung('4_seitig')}
@@ -139,9 +131,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                             ? 'bg-shiraz text-white border-shiraz font-bold shadow-xs'
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
-                  >
-                    4-seitig (freie Stütze)
-                  </button>
+                  ><MdText text={inhalt.texte.t4SeitigFreieStütze} /></button>
                 </div>
               </div>
 
@@ -169,7 +159,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
               {/* Biegemoment Kaltzustand */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs font-bold text-slate-700">
-                  <span>Biegemoment Kaltzustand (M_Ed):</span>
+                  <span><MdText text={inhalt.texte.biegemomentKaltzustandMEd} /></span>
                   <span className="text-shiraz font-mono">{formatDeWert(momentKaltEd)} kNm</span>
                 </div>
                 <input 
@@ -186,34 +176,24 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
 
             {/* Calculation Right */}
             <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-              <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-                Nachweis nach DIN EN 1995-1-2 (Restquerschnittsmethode)
-              </h3>
+              <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.nachweisNachDinEn} /></h3>
 
               <div className="space-y-3.5 text-xs text-text-main/80 font-sans">
-                <div>
-                  <strong>Schritt 1: Rechnerische Abbrandtiefe d_char,n &amp; d_ef</strong>
-                  <p className="mt-0.5 text-xxs text-slate-500">
-                    Zuschlag <InlineMath math="d_0 = 7\,\text{mm}" /> für die temperaturgeschädigte Kohleschicht:
-                  </p>
+                <div><MdText text={inhalt.texte.schritt1RechnerischeAbbrandtiefe} /><p className="mt-0.5 text-xxs text-slate-500"><MdText text={inhalt.texte.zuschlagD07} /></p>
                   <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`d_{\\text{char},n} = ${formatDeTeXWert(beta_char)} \\cdot ${brandDauerMin} = ${formatDeTeX(d_char_n, 1)} \\, \\text{mm}`} />
                     <BlockMath math={`d_{\\text{ef}} = ${formatDeTeX(d_char_n, 1)} + 7{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(d_ef, 1)}}} \\, \\text{mm}`} />
                   </div>
                 </div>
 
-                <div className="border-t border-slate-100 pt-2.5">
-                  <strong>Schritt 2: Effektiver Restquerschnitt b_ef × h_ef</strong>
-                  <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
+                <div className="border-t border-slate-100 pt-2.5"><MdText text={inhalt.texte.schritt2EffektiverRestquerschnitt} /><div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`b_{\\text{ef}} = ${formatDeTeXWert(holzBreite * 10)} - 2 \\cdot ${formatDeTeX(d_ef, 1)} = \\mathbf{${formatDeTeX(b_ef_mm, 1)}} \\, \\text{mm}`} />
                     <BlockMath math={`h_{\\text{ef}} = ${holzHoehe * 10} - ${brandBeanspruchung === '4_seitig' ? '2 \\cdot ' : ''}${formatDeTeX(d_ef, 1)} = \\mathbf{${formatDeTeX(h_ef_mm, 1)}} \\, \\text{mm}`} />
                     <BlockMath math={`W_{\\text{ef}} = \\frac{b_{\\text{ef}} \\cdot h_{\\text{ef}}^2}{6} = \\mathbf{${formatDeTeX((W_ef_mm3 / 1000), 0)}} \\, \\text{cm}^3`} />
                   </div>
                 </div>
 
-                <div className="border-t border-slate-100 pt-2.5">
-                  <strong>Schritt 3: Heißtragfähigkeit M_fi,Rd vs. Einwirkung M_fi,Ed</strong>
-                  <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
+                <div className="border-t border-slate-100 pt-2.5"><MdText text={inhalt.texte.schritt3HeißtragfähigkeitM} /><div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
                     <BlockMath math={`M_{\\text{fi,Ed}} = 0{,}60 \\cdot ${formatDeTeXWert(momentKaltEd)} = \\mathbf{${formatDeTeX(M_fi_Ed, 1)}} \\, \\text{kNm}`} />
                     <BlockMath math={`M_{\\text{fi,Rd}} = W_{\\text{ef}} \\cdot f_{m,\\text{fi},d} = \\mathbf{${formatDeTeX(M_fi_Rd, 1)}} \\, \\text{kNm}`} />
                     <BlockMath math={`\\eta_{\\text{fi}} = \\frac{${formatDeTeX(M_fi_Ed, 1)}}{${formatDeTeX(M_fi_Rd, 1)}} = \\color{#A3113E}{\\mathbf{${formatDeTeX(eta_brand_holz, 2)}}} \\, ${brand_holz_passed ? '\\le 1{,}0' : '> 1{,}0'}`} />
@@ -237,60 +217,54 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
 
         {brandSubTab === 'beton_tabelle' && (
           <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4 animate-in fade-in duration-200">
-            <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-              Stahlbeton-Brandschutz: Tabellarische Mindestmaße nach DIN EN 1992-1-2
-            </h4>
-            <p className="text-xs text-text-main/70">
-              Die Heißbemessung von Betonbauteilen erfolgt in der Praxis meist über das normative Tabellenverfahren. Maßgebend sind die Mindestbauteildicke <InlineMath math="b_{\text{min}}" /> und der Achsabstand <InlineMath math="a" /> der Bewehrungsstäbe zum Brandrand, um die Stahltemperatur unter <InlineMath math="500^\circ\text{C}" /> zu halten.
-            </p>
+            <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.stahlbetonBrandschutzTabellarischeMindes} /></h4>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.dieHeißbemessungVonBetonbauteilen} /></p>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-500 font-mono text-[10px] uppercase">
                     <th className="py-2">Brandklasse</th>
-                    <th className="py-2">Einfeldträger Mindestbreite b_min</th>
-                    <th className="py-2">Achsabstand a (Balken)</th>
-                    <th className="py-2">Plattendicke h_min</th>
-                    <th className="py-2">Stützen Mindestmaß b_min</th>
+                    <th className="py-2"><MdText text={inhalt.texte.einfeldträgerMindestbreiteBMin} /></th>
+                    <th className="py-2"><MdText text={inhalt.texte.achsabstandABalken} /></th>
+                    <th className="py-2"><MdText text={inhalt.texte.plattendickeHMin} /></th>
+                    <th className="py-2"><MdText text={inhalt.texte.stützenMindestmaßBMin} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700 text-[11px]">
                   <tr>
-                    <td className="py-2.5 font-bold text-shiraz">R30 (30 min)</td>
+                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r3030Min} /></td>
                     <td className="py-2.5 font-mono">80 mm</td>
                     <td className="py-2.5 font-mono">25 mm</td>
                     <td className="py-2.5 font-mono">60 mm</td>
-                    <td className="py-2.5 font-mono">200 mm (a = 25 mm)</td>
+                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t200MmA25} /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-shiraz">R60 (60 min)</td>
+                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r6060Min} /></td>
                     <td className="py-2.5 font-mono">120 mm</td>
                     <td className="py-2.5 font-mono">35 mm</td>
                     <td className="py-2.5 font-mono">80 mm</td>
-                    <td className="py-2.5 font-mono">250 mm (a = 35 mm)</td>
+                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t250MmA35} /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-shiraz">R90 (90 min)</td>
+                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r9090Min} /></td>
                     <td className="py-2.5 font-mono">160 mm</td>
                     <td className="py-2.5 font-mono">45 mm</td>
                     <td className="py-2.5 font-mono">100 mm</td>
-                    <td className="py-2.5 font-mono">300 mm (a = 45 mm)</td>
+                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t300MmA45} /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-shiraz">R120 (120 min)</td>
+                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r120120Min} /></td>
                     <td className="py-2.5 font-mono">200 mm</td>
                     <td className="py-2.5 font-mono">55 mm</td>
                     <td className="py-2.5 font-mono">120 mm</td>
-                    <td className="py-2.5 font-mono">350 mm (a = 55 mm)</td>
+                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t350MmA55} /></td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-900">
-              <strong>Achtung bei hochfestem Beton (UHPC / &gt; C55/67):</strong> Abplatzungsgefahr durch inneren Dampfdruck! Nach DIN EN 1992-1-2 ist bei hochfestem Beton die Zugabe von mindestens 2 kg/m³ Polypropylen-Fasern (PP-Fasern) zwingend erforderlich.
-            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-900"><MdText text={inhalt.texte.achtungBeiHochfestemBeton} /></div>
           </div>
         )}
       </div>

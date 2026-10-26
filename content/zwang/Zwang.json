@@ -1,0 +1,55 @@
+{
+  "texte": {
+    "zwangEntstehtWennEin": "Zwang entsteht, wenn ein Bauteil sich verformen möchte (z.B. durch Temperaturänderung oder Schwinden), aber daran gehindert wird (Festhaltung). Dies führt zu Zwangspannungen. Überschreiten diese die Zugfestigkeit des Materials, entstehen Risse.",
+    "bauteilMaterialeigenschaften": "Bauteil- & Materialeigenschaften",
+    "freieDehnungVerhindert": "Freie Dehnung (verhindert): ",
+    "schwinden": " ‰ | Schwinden: ",
+    "spannungÜberFesthaltungsgrad": "Spannung über Festhaltungsgrad",
+    "schematischeDarstellungEntstehungVon": "Schematische Darstellung: Entstehung von Zwang",
+    "zwangEntstehtWennEine": "Zwang entsteht, wenn eine freie Verformung (z.B. durch Schwinden oder Abkühlen) durch angrenzende Bauteile behindert wird. Die verhinderte Dehnung erzeugt Zugspannungen, die zu Rissen führen können."
+  },
+  "werte": {
+    "zwangspannungZMpa": "Zwangspannung σ_z (MPa)",
+    "zugfestigkeitFCtMpa": "Zugfestigkeit f_ct (MPa)",
+    "ursachenDieZuEiner": "Ursachen, die zu einer Längenänderung führen würden, wenn das Bauteil frei beweglich wäre.",
+    "temperaturabfallDesBauteilsBspw": "Temperaturabfall des Bauteils (bspw. durch Abkühlen nach dem Hydratationsmaximum).",
+    "freiesSchwindmaßDesBetons": "Freies Schwindmaß des Betons in Promille, das zu Verkürzungen führt.",
+    "festhaltungsgradR": "Festhaltungsgrad R",
+    "maßFürDieBehinderung": "Maß für die Behinderung der freien Verformung des Bauteils (R = 0 %: frei verformbar; R = 100 %: voll eingespannt).",
+    "effektiverElastizitätsmodulDesBetons": "Effektiver Elastizitätsmodul des Betons zur Ermittlung der Zwangkraft.",
+    "dieWirksameZugfestigkeitDes": "Die wirksame Zugfestigkeit des Betons im Risszeitpunkt (meist 3 bis 28 Tage).",
+    "zugfestigkeitFCt": "Zugfestigkeit f_{ct}",
+    "festhaltungsgradR2": "Festhaltungsgrad R (%)",
+    "spannungMpa": "Spannung (MPa)"
+  },
+  "daten": {
+    "ZwangCalculator.literatur": [
+      "Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (2. Auflage, Springer-Verlag)",
+      "Fingerloos, F.; Hegger, J.; Zilch, K. (2016): Eurocode 2 für Deutschland (3. Auflage, Ernst & Sohn / Beuth)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "ZwangCalculator.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)"
+      },
+      {
+        "title": "DAfStb Heft 466: Bemessungshilfen zu Eurocode 2 (Beuth Verlag)"
+      },
+      {
+        "title": "DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton"
+      }
+    ],
+    "ZwangCalculator.formeln": [
+      {
+        "formel": "\\sigma_z(t) = E_{c,\\text{eff}}(t) \\cdot \\varepsilon_{\\text{beh}} = \\frac{E_{cm}(t)}{1 + \\varphi(t, t_0)} \\cdot R_{\\text{ax}} \\cdot (\\alpha_T \\cdot \\Delta T + \\varepsilon_{cs})",
+        "erklaerung": "Zwangzugspannung infolge behinderter thermischer Verkürzung und Schwinddehnung unter Berücksichtigung des Kriechbeiwerts φ und des axialen Festhaltungsgrads R_ax.",
+        "quelle": "DIN EN 1992-1-1 / DAfStb Heft 466"
+      },
+      {
+        "formel": "A_{s,\\text{min}} = k_c \\cdot k \\cdot f_{ct,\\text{eff}} \\cdot \\frac{A_{ct}}{\\sigma_s}",
+        "erklaerung": "Mindestbewehrung zur Begrenzung der Rissbreite unter Zwangbeanspruchung nach Eurocode 2: kc = Beiwert für Spannungsverteilung, k = Beiwert für nichtlineare Eigenspannungen, fct,eff = wirksame Zugfestigkeit.",
+        "quelle": "DIN EN 1992-1-1 Gl. 7.1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "texte": {
+    "expositionsklassenNachDinEn": "Expositionsklassen nach DIN EN 206 / DIN 1045-2",
+    "normativeGrenzwerteFürUmweltbeanspruchun": "Normative Grenzwerte für Umweltbeanspruchung, Zementgehalte, w/z-Werte, Luftporen und Betondeckung",
+    "din104522023": "DIN 1045-2:2023-08 (Tab. F.2.1/F.2.2)",
+    "dieBemessungDauerhafterBetonbauteile": "Die Bemessung dauerhafter Betonbauteile basiert nach **DIN EN 206** und den nationalen Anwendungsregeln der **DIN 1045-2** auf der Zuordnung aller planmäßig auftretenden Umwelteinflüsse zu standardisierten **Expositionsklassen** (X0, XC, XD, XS, XF, XA, XM) sowie **Feuchtigkeitsklassen** (WO, WF, WA, WS nach Alkali-Richtlinie). Jede Klasse definiert verbindliche Mindestanforderungen an den maximalen äquivalenten Wasserzementwert $(w/z)_{\\text{eq}}$, die Mindestdruckfestigkeitsklasse, den Mindestzementgehalt $z_{\\min}$ und die erforderliche Betondeckung nach Eurocode 2.",
+    "t1GrundlagenKlassenkatalog": " 1. Grundlagen & Klassenkatalog",
+    "t2LaborBaustellenprüfungen": " 2. Labor- & Baustellenprüfungen",
+    "t3InteraktiverHüllwertK": " 3. Interaktiver Hüllwert- & k-Wert-Rechner",
+    "normativesSchutzkonzeptBetonUnd": "Normatives Schutzkonzept: Beton- und Bewehrungsschutz",
+    "karbonatisierungXcChlorideXd": "Karbonatisierung (XC) & Chloride (XD / XS)",
+    "zementsteinSchütztStahlbewehrungDurch": "Zementstein schützt Stahlbewehrung durch hochalkalisches Porenwasser ($\\text{pH} \\approx 12{,}5 - 13{,}5$) passivierend. Dringt $\\text{CO}_2$ ein, sinkt der pH-Wert unter 9 (Depassivierung). Chloride zerstören den Passivfilm punktuell (Lochfraßkorrosion ohne vorherige pH-Wert-Absenkung).",
+    "gefügezerstörungFrost": "Gefügezerstörung Frost",
+    "frostFrostTausalzAngriff": "Frost- & Frost-Tausalz-Angriff (XF)",
+    "gefrierendesPorenwasserExpandiertUm": "Gefrierendes Porenwasser expandiert um ca. 9 Vol.-%. Bei hoher Wassersättigung ($S_r > 91\\,\\%$) entsteht hydrostatischer Sprengdruck. Tausalze verschärfen den Angriff drastisch durch osmotischen Druck und Kälteschock (oberflächliche Skalierung / Abplatzungen).",
+    "chemischerBetonangriff": "Chemischer Betonangriff",
+    "säurenSulfateXaAkr": "Säuren, Sulfate (XA) & AKR (WO–WS)",
+    "säurenLösenCalciumhydroxidAus": "Säuren lösen Calciumhydroxid aus dem Gefüge auf. Sulfate reagieren mit Aluminationen zu Ettringit oder Thaumasit unter massiver Volumenzunahme (Sulfattreiben). Alkaliempfindliche Kieselsäure bildet mit Porenalkalien quellfähiges Gel (AKR).",
+    "klassenkatalogDinEn206": "Klassenkatalog DIN EN 206 / DIN 1045-2 (Tabelle F.2.1 & F.2.2)",
+    "wählenSieEineExpositionsgruppen": "Wählen Sie eine Expositionsgruppen-Kategorie zur Detailansicht:",
+    "bezeichnungUmgebungsbedingungen": "Bezeichnung & Umgebungsbedingungen",
+    "maxWZEq": "max. (w/z)eq",
+    "zMinKgM": "z_min (kg/m³)",
+    "cMinDurMm": "c_min,dur (mm)",
+    "besondereAnforderungen": "Besondere Anforderungen",
+    "chemischeGrenzwerteNachDin": "Chemische Grenzwerte nach DIN EN 206:2021-06 Tabelle 2 (Klassen XA1, XA2, XA3)",
+    "fürDieEinstufungIn": "Für die Einstufung in XA1 bis XA3 ist der jeweils strengste Einzelwert aller untersuchten Wasser- bzw. Bodenparameter maßgebend:",
+    "chemischerParameter": "Chemischer Parameter",
+    "xa1Schwach": "XA1 (schwach)",
+    "feuchtigkeitsklassenGegenAlkaliKieselsäu": "Feuchtigkeitsklassen gegen Alkali-Kieselsäure-Reaktion (AKR) nach DIN 1045-2 Anhang D",
+    "prüfverfahrenZurVerifikationVon": "Prüfverfahren zur Verifikation von Dauerhaftigkeit & Expositionskonformität",
+    "forensischeNachweiseUndGenormte": "Forensische Nachweise und genormte Prüfungen für Karbonatisierung, Frost, Chloride und Abrieb:",
+    "karbonatisierungstiefeMitPhenolphthalein": " Karbonatisierungstiefe mit Phenolphthalein",
+    "normDinEn14630": "**Norm:** DIN EN 14630 (Bestimmung der Karbonatisierungstiefe an frischen Bruchflächen)",
+    "prinzip1IgeEthanolische": "**Prinzip:** 1%ige ethanolische Phenolphthaleinlösung wird auf die frisch gebrochene Betonfläche gesprüht.",
+    "farbumschlagUnkarbonatisierterBetonText": "**Farbumschlag:** Unkarbonatisierter Beton ($\\text{pH} > 9{,}0$) verfärbt sich kräftig violett/magenta; karbonatisierter Beton bleibt farblos.",
+    "frostTausalzPrüfungCdf": " Frost-Tausalz-Prüfung (CDF / CIF-Verfahren)",
+    "normDinCenTs": "**Norm:** DIN CEN/TS 12390-9 / BAW-Merkblatt Frostprüfung",
+    "cdfTestPrüfungMit": "**CDF-Test:** Prüfung mit 3%iger NaCl-Lösung und 28 Frost-Tau-Wechseln (-20 °C bis +20 °C).",
+    "kriteriumXf4MittlereAbwitterung": "**Kriterium XF4:** Mittlere Abwitterung $m_{28} \\le 1.500\\text{ g/m}^2$ (für ZTV-ING oft $\\le 1.000\\text{ g/m}^2$).",
+    "cifTestZusätzlicheMessung": "**CIF-Test:** Zusätzliche Messung des relativen dynamischen E-Moduls (RDM) zur Detektion innerer Gefügeschädigung ($RDM \\ge 75\\,\\%$).",
+    "chloridMigrationsversuchRcmTest": " Chlorid-Migrationsversuch (RCM-Test)",
+    "normRichtlinieBawMerkblatt": "**Norm / Richtlinie:** BAW-Merkblatt MDCC / NT BUILD 492",
+    "prinzipAnlegenEinerElektrischen": "**Prinzip:** Anlegen einer elektrischen Gleichspannung (10–60 V) an einen Betonbohrkern zur Beschleunigung der Chloridionenwanderung.",
+    "auswertungSpaltenDesPrüfkörpers": "**Auswertung:** Spalten des Prüfkörpers und Besprühen mit $0{,}1\\text{ M } \\text{AgNO}_3$-Lösung. Weißer Silbersalz-Niederschlag markiert die Eindringfront $x_d$.",
+    "frischbetonLuftporenprüfungDruckausgleic": " Frischbeton-Luftporenprüfung (Druckausgleich)",
+    "normDinEn12350": "**Norm:** DIN EN 12350-7 (Prüfung von Frischbeton – Luftgehalt – Druckverfahren)",
+    "gerät8LiterLuftporentopf": "**Gerät:** 8-Liter-Luftporentopf mit Druckkammer und Manometer.",
+    "grenzwerteXfMindestluftgehaltJe": "**Grenzwerte XF:** Mindestluftgehalt je nach Größtkorn: 4,0 Vol.-% ($d_{\\max}=32\\text{ mm}$), 4,5 Vol.-% (16 mm), 5,5 Vol.-% (8 mm).",
+    "festbetonprüfungBestimmungVonLuftporengr": "**Festbetonprüfung:** Bestimmung von Luftporengrößenverteilung und Abstandsfaktor $L \\le 0{,}20\\text{ mm}$ nach DIN EN 480-11 am Dünnschliff.",
+    "aInteraktiverExpositionsklassenSelektor": "A. Interaktiver Expositionsklassen-Selektor & Hüllwert-Ermittler",
+    "wählenSieAlleFür": "Wählen Sie alle für das Bauteil gleichzeitig zutreffenden Expositionsklassen. Das Tool ermittelt automatisch die strengsten Grenzwert-Hüllwerte nach DIN 1045-2:",
+    "t1ExpositionsklassenAnwählenMehrfachauswa": "1. Expositionsklassen anwählen (Mehrfachauswahl):",
+    "größtkornDMaxNur": "Größtkorn $d_{\\max}$ (nur für den LP-Gehalt):",
+    "vorhaltemaßDerBetondeckungDelta": "Vorhaltemaß der Betondeckung $\\Delta c_{\\text{dev}}$:",
+    "t2MaßgebendeHüllwerteGrenzwerte": "2. Maßgebende Hüllwerte (Grenzwerte nach DIN 1045-2):",
+    "maxWZEq2": "max. (w/z)eq",
+    "strengsterEinzelwert": "Strengster Einzelwert",
+    "höchsteAnforderung": "Höchste Anforderung",
+    "minZementgehaltZMin": "Min.-Zementgehalt z_min",
+    "luftporengehaltLp": "Luftporengehalt (LP)",
+    "nennmaßBetondeckung": "Nennmaß Betondeckung",
+    "wichtigeBauchemischeKonstruktiveSonderan": "Wichtige bauchemische & konstruktive Sonderanforderungen:",
+    "bKWertRechner": "B. k-Wert-Rechner für Zusatzstoffe (Flugasche & Silikastaub)",
+    "berechnungDesÄquivalentenWasserzementwer": "Berechnung des äquivalenten Wasserzementwerts nach der Formel: $(w/z)_{\\text{eq}} = \\frac{w}{z + k_f \\cdot f + k_s \\cdot s}$",
+    "zementgehaltZKgM": "Zementgehalt z (kg/m³):",
+    "wassergehaltWKgM": "Wassergehalt w (kg/m³):",
+    "flugascheFKgM": "Flugasche f (kg/m³):",
+    "k040Max": "k = 0,40 (max. f/z = 0,33)",
+    "silikastaubSKgM": "Silikastaub s (kg/m³):",
+    "maxSZ0": " (max. s/z = 0,11)",
+    "klassischerWasserzementwertWZ": "Klassischer Wasserzementwert w/z:",
+    "ohneZusatzstoffanrechnung": "Ohne Zusatzstoffanrechnung",
+    "äquivalenterBindemittelgehaltBEq": "Äquivalenter Bindemittelgehalt b_eq:",
+    "äquivalenterWZEq": "Äquivalenter (w/z)eq:",
+    "eingehaltenGrenzwert": "✓ Eingehalten (Grenzwert: ",
+    "überschrittenGrenzwert": "✕ Überschritten (Grenzwert: "
+  },
+  "werte": {
+    "beiSulfatangriff600Mg": "Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.",
+    "xa3ZusätzlichSchutzDes": "XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).",
+    "xm2OberflächenbehandlungDesBetons": "XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.",
+    "xm3HartstoffeNachDin": "XM3: Hartstoffe nach DIN 1100.",
+    "xf4NurLuftporenbeton": "XF4: nur Luftporenbeton.",
+    "nurXc1CDev": "Nur XC1: Δc_dev darf auf 10 mm verringert werden.",
+    "nichtGefordert": "Nicht gefordert",
+    "zementgehaltZKgM": "Zementgehalt z (kg/m³)",
+    "wassergehaltWKgM": "Wassergehalt w (kg/m³)",
+    "flugascheFKgM": "Flugasche f (kg/m³)",
+    "silikastaubSKgM": "Silikastaub s (kg/m³)",
+    "maßgeblicherPrüfwert": "Maßgeblicher Prüfwert",
+    "normativeHerleitungDasK": "Normative Herleitung: Das k-Wert-Konzept nach DIN EN 206 & DIN 1045-2",
+    "dinEn2062021": "DIN EN 206:2021-06 (Abschnitt 5.2.5.2) & DIN 1045-2:2023-08",
+    "anwendungsbeispielBetondeckungEinerAußen": "Anwendungsbeispiel: Betondeckung einer Außenwand (XC4 + XF1)",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE",
+    "cNom40Mm": "c_nom = 40 mm; Beton mindestens C25/30 mit (w/z)eq ≤ 0,60 und z ≥ 280 kg/m³.",
+    "betonAbschnittDauerhaftigkeit": "Beton (Abschnitt Dauerhaftigkeit)",
+    "karbonatisierungBeton": "Karbonatisierung (Beton)"
+  },
+  "daten": {
+    "Expositionsklassen": [
+      {
+        "val": 15,
+        "label": "15 mm (Regelfall)"
+      },
+      {
+        "val": 10,
+        "label": "10 mm (XC1 bzw. mit Qualitätskontrolle)"
+      }
+    ],
+    "Expositionsklassen.schritte": [
+      {
+        "titel": "1. Wirkungsfaktor für Flugasche (k_f)",
+        "formel": "k_f = 0{,}40, \\quad f / z \\le 0{,}33",
+        "erklaerung": "Flugasche nach DIN EN 450-1 reagiert puzzolanisch mit Ca(OH)2. Bei Verwendung von CEM I darf Flugasche mit k = 0,40 angerechnet werden, jedoch nur bis zu maximal 33 % des Zementgehalts."
+      },
+      {
+        "titel": "2. Wirkungsfaktor für Silikastaub (k_s)",
+        "formel": "k_s = 1{,}0 \\text{ (für } w/z \\le 0{,}45\\text{)} \\quad \\text{bzw.} \\quad k_s = 2{,}0 \\text{ (für } w/z > 0{,}45\\text{)}, \\quad s / z \\le 0{,}11",
+        "erklaerung": "Hochfeiner Silikastaub nach DIN EN 13263-1 weist eine extrem hohe puzzolanische Reaktivität auf. Die anrechenbare Menge ist auf 11 % des Zementgewichts begrenzt."
+      },
+      {
+        "titel": "3. Mindestzementgehalt-Prüfung",
+        "formel": "z \\ge z_{\\min} - k_f \\cdot f \\quad \\text{bzw.} \\quad z \\ge 240 \\text{ kg/m}^3",
+        "erklaerung": "Trotz Flugascheanrechnung darf der tatsächliche Zementgehalt aus Gründen des Korrosionsschutzes und der Karbonatisierungsbremse die normativen Mindestwerte nicht unzulässig unterschreiten."
+      }
+    ],
+    "Expositionsklassen.schritte_2": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "\\text{XC4 + XF1},\\; \\varnothing = 12\\,\\text{mm}",
+        "erklaerung": "XF1 stellt keine eigene Anforderung an die Betondeckung."
+      },
+      {
+        "titel": "2. Mindestbetondeckung",
+        "formel": "c_{min} = \\max\\{12;\\, 25;\\, 10\\} = 25\\,\\text{mm}",
+        "erklaerung": "c_min,b = Stabdurchmesser; c_min,dur für XC4 = 25 mm."
+      },
+      {
+        "titel": "3. Nennmaß",
+        "formel": "c_{nom} = 25 + 15 = 40\\,\\text{mm}",
+        "erklaerung": "Vorhaltemaß Δc_dev = 15 mm (Regelfall)."
+      },
+      {
+        "titel": "4. Beton",
+        "formel": "(w/z)_{eq} \\le 0{,}60;\\; \\ge \\text{C25/30};\\; z \\ge 280\\,\\text{kg/m}^3",
+        "erklaerung": "XC4 und XF1 fordern dieselben Grenzwerte."
+      }
+    ],
+    "Expositionsklassen.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001",
+      "DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020",
+      "DBV-Merkblatt Betondeckung und Bewehrung nach Eurocode 2 (Fassung Dezember 2015)"
+    ],
+    "Expositionsklassen.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Teil 2: Beton; Anwendungsregeln zu DIN EN 206)"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2); Neuausgabe DIN EN 1992-1-1:2025-09 – Übergangsregeln beachten"
+      },
+      {
+        "title": "DAfStb Alkali-Richtlinie (Ausgabe 2013-10)"
+      }
+    ],
+    "Expositionsklassen_2": [
+      {
+        "formel": "(w/z)_{\\text{eq}} = \\frac{w}{z + k_f \\cdot f + k_s \\cdot s}",
+        "erklaerung": "Äquivalenter w/z-Wert mit Anrechnung von Flugasche (k_f = 0,4; f/z ≤ 0,33) und Silikastaub (k_s = 1,0; s/z ≤ 0,11) nach DIN 1045-2.",
+        "quelle": "DIN EN 206"
+      },
+      {
+        "formel": "c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}} = \\max\\{c_{\\text{min},b}; c_{\\text{min},\\text{dur}}; 10\\text{ mm}\\} + \\Delta c_{\\text{dev}}",
+        "erklaerung": "Nennmaß der Betondeckung nach Eurocode 2 (DIN EN 1992-1-1) aus Mindestbetondeckung zur Verbundsicherung, Dauerhaftigkeitsmindestmaß c_min,dur und dem Vorhaltemaß Delta c_dev.",
+        "quelle": "DIN EN 1992-1-1"
+      }
+    ]
+  }
+}

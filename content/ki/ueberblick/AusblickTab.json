@@ -1,0 +1,18 @@
+{
+  "texte": {
+    "blickNachVornWie": "Blick nach vorn: Wie sieht das Bauingenieurwesen 2030+ aus?",
+    "vierSchlüsseltechnologienDieDas": "Vier Schlüsseltechnologien, die das Planen und Bauen im kommenden Jahrzehnt grundlegend transformieren:",
+    "physicsInformedNeuralNetworks": "Physics-Informed Neural Networks (PINNs)",
+    "bisherigeKiLerntNur": "Bisherige KI lernt nur aus Daten – oft entgegen den Gesetzen der Physik. **PINNs** betten fundamentale Differentialgleichungen (Elastizitätstheorie, Navier-Stokes, Wärmeleitung) direkt in die Verlustfunktion des Netzes ein.",
+    "effektFemSimulationenUnd": "**Effekt:** FEM-Simulationen und dynamische Erdbebenanalysen, die früher Tage auf Servern rechneten, laufen künftig in Millisekunden auf dem Tablet.",
+    "autonomeBaustellenrobotik3dDruck": "Autonome Baustellenrobotik & 3D-Druck",
+    "der3dBetondruckLeidet": "Der 3D-Betondruck leidet heute noch an schwankenden rheologischen Eigenschaften (z.B. Temperatur- und Feuchteeinfluss beim Abbinden). KI-Regelkreise messen den Frischbetondruck und die Viskosität an der Düse in Echtzeit und regeln Beschleunigerzusätze mikrosekundengenau nach.",
+    "effektFehlerfreierFreiformBetondruck": "**Effekt:** Fehlerfreier Freiform-Betondruck ohne Schalung für filigrane, materialsparende Deckenstrukturen.",
+    "multimodaleAgentenSchwärme": "Multimodale Agenten-Schwärme",
+    "spezialisierteKiAgentenArbeiten": "Spezialisierte KI-Agenten arbeiten Hand in Hand: Ein Agent liest das Baugrundgutachten, ein zweiter modelliert die Gründung im BIM-Modell, ein dritter prüft die Konformität mit dem Bebauungsplan und ein vierter berechnet die Ökobilanz (LCA / CO₂-Äquivalente).",
+    "effektDerVorentwurfBeschleunigt": "**Effekt:** Der Vorentwurf beschleunigt sich von Monaten auf wenige Tage; Ingenieure fokussieren sich auf kreative Variantenentscheidungen.",
+    "zirkuläresBauenUrbanMining": "Zirkuläres Bauen & Urban Mining",
+    "vorDemRückbauEines": "Vor dem Rückbau eines Bestandsgebäudes erfasst ein KI-gestützter Laserscan automatisch alle wiederverwendbaren Bauteile (Stahlträger, Mauerziegel, Fenster). Die KI gleicht Maße und Tragfähigkeiten automatisch mit einer Bauteilbörse für Neubauten ab.",
+    "effektDirekteWiederverwendungRe": "**Effekt:** Direkte Wiederverwendung (Re-Use) statt energieintensivem Downcycling."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "texte": {
+    "mechanischeKenngrößenSpannungDehnung": " Mechanische Kenngrößen: Spannung, Dehnung & Steifigkeit",
+    "elastostatikRheologieWerkstoffmechanik": "Elastostatik, Rheologie & Werkstoffmechanik",
+    "dehnsteifigkeitEa": " Dehnsteifigkeit ($EA$)",
+    "biegesteifigkeitEi": "Biegesteifigkeit ($EI$)",
+    "t1SpannungDehnung": " 1. Spannung & Dehnung",
+    "t2EModulHooke": " 2. E-Modul & Hooke",
+    "t3DehnBiegesteifigkeitEa": " 3. Dehn- & Biegesteifigkeit (EA & EI)",
+    "t4KriechenSchwindenRelaxation": " 4. Kriechen, Schwinden & Relaxation",
+    "t5InteraktiverSimulator": " 5. Interaktiver Simulator",
+    "t6WerkstoffMatrix": " 6. Werkstoff-Matrix",
+    "t7PraxisBeispiele": " 7. Praxis-Beispiele",
+    "t1DasHookeSche": " 1. Das Hooke’sche Gesetz (1D & 3D)",
+    "imJahr1678Formulierte": "Im Jahr 1678 formulierte Robert Hooke: *„Ut tensio, sic vis“* (Wie die Dehnung, so die Kraft). Im linear-elastischen Bereich verhält sich die Spannung direkt proportional zur Dehnung:",
+    "eindimensionalerFallStab": "Eindimensionaler Fall (Stab):",
+    "steigungDerHookeSchen": "Steigung der Hooke'schen Geraden im $\\sigma\\text{-}\\varepsilon$-Diagramm entspricht dem E-Modul.",
+    "dreidimensionalesVerallgemeinertesHookeS": "**Dreidimensionales verallgemeinertes Hooke'sches Gesetz (Isotropie):**",
+    "spannungenInEinerRaumrichtung": "Spannungen in einer Raumrichtung erzeugen durch den Poisson-Effekt auch Dehnungen in den beiden Querrichtungen:",
+    "gültigkeitsgrenzeBisZurProportionalitäts": "Gültigkeitsgrenze: Bis zur Proportionalitätsgrenze fp bzw. Streckgrenze fy",
+    "t2SchubmodulGKompressionsmodul": " 2. Schubmodul ($G$) & Kompressionsmodul ($K$)",
+    "fürIsotropeMaterialienReichen": "Für isotrope Materialien reichen **zwei unabhängige elastische Konstanten** aus (z. B. $E$ und $\\nu$), um sämtliche elastische Verformungen zu beschreiben:",
+    "schubmodulGWiderstandGegen": "Schubmodul G (Widerstand gegen Scherung / Gestaltänderung):",
+    "kompressionsmodulKWiderstandGegen": "Kompressionsmodul K (Widerstand gegen allseitigen hydrostatischen Druck):",
+    "berechnungsbeispielBaustahl": "**Berechnungsbeispiel Baustahl:**",
+    "e210000Mpa": "E = 210.000 MPa, ν = 0,30<br>G = 210.000 / (2 · 1,30) ≈ **80.769 MPa**<br>K = 210.000 / (3 · 0,40) ≈ **175.000 MPa**",
+    "hinweisGehtGegen0": "Hinweis: Geht ν gegen 0,5, strebt der Kompressionsmodul K gegen Unendlich (reine Inkompressibilität).",
+    "vergleichendeWerkstoffkennwerteImBauwese": " Vergleichende Werkstoffkennwerte im Bauwesen",
+    "gegenüberstellungTypischerElastischerRhe": "Gegenüberstellung typischer elastischer, rheologischer und bruchmechanischer Kennwerte nach Eurocodes (EC2, EC3, EC5, DIN 18008).",
+    "t7Baustoffgruppen": "7 Baustoffgruppen",
+    "eModulMpa": "E-Modul [MPa]",
+    "querdehnzahl": "Querdehnzahl ν [-]",
+    "schubmodulGMpa": "Schubmodul G [MPa]",
+    "kriechzahl": "Kriechzahl φ [-]",
+    "streckgrenzeFyMpa": "Streckgrenze fy [MPa]",
+    "dichteKgM": "Dichte ρ [kg/m³]",
+    "wichtigeBaustofflicheFaustregeln": "Wichtige baustoffliche Faustregeln:",
+    "baustahlS235S355Der": "**Baustahl (S235/S355):** Der E-Modul ist mit $210.000\\text{ MPa}$ für alle Festigkeitsklassen identisch! Höherfester Stahl ist nicht dehnsteifer, sondern beginnt erst bei höherer Last zu fließen.",
+    "dehnsteifigkeitVsBiegesteifigkeitBei": "**Dehnsteifigkeit vs. Biegesteifigkeit:** Bei Verdopplung der Bauteilhöhe verdoppelt sich die Dehnsteifigkeit ($EA \\propto h$), während sich die Biegesteifigkeit **verachtfacht** ($EI \\propto h^3$).",
+    "betonkriechenBeiDauerbelastetenBauteilen": "**Betonkriechen:** Bei dauerbelasteten Bauteilen sinkt der effektive E-Modul auf $E_{c,\\text{eff}} = \\frac{E_{cm}}{1+\\varphi}$ (z. B. von 33.000 MPa auf 11.000 MPa bei $\\varphi = 2{,}0$).",
+    "maßgebendBleibenDieBauaufsichtlich": "Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen."
+  },
+  "werte": {
+    "neueEurocodeGenerationErschienen": "Neue Eurocode-Generation erschienen",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Rechenbeispiele nachgerechnet, Relaxationsklasse und Durchbiegungsgrenze korrigiert, Normausgaben ergänzt; fachliche Freigabe durch den Autor ausstehend)",
+    "mechanischeSpannung": "Mechanische Spannung",
+    "kriechenWerkstoffe": "Kriechen (Werkstoffe)"
+  },
+  "daten": {
+    "MechanischeKenngroessen.regelwerke": [
+      {
+        "title": "DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe – Zugversuch – Teil 1: Prüfverfahren bei Raumtemperatur)"
+      },
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 3.2.6 Werkstoffkennwerte); neue Generation DIN EN 1993-1-1:2025-04"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.4 Kriechen und Schwinden, 3.3.2 Relaxation); neue Generation DIN EN 1992-1-1:2025-09"
+      },
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5, 2.2.3 Verformungen, 3.2 k_def); Neue Ausgabe 2026-09 erschienen; bauaufsichtlich noch nicht eingeführt"
+      }
+    ],
+    "MechanischeKenngroessen.literatur": [
+      "Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007"
+    ],
+    "MechanischeKenngroessen": [
+      {
+        "formel": "\\sigma = \\frac{F}{A_0}, \\quad \\varepsilon = \\frac{\\Delta L}{L_0}",
+        "erklaerung": "Definition der Normalspannung als Schnittkraft pro Flächeneinheit und der Dehnung als relative Längenänderung.",
+        "quelle": "Gross et al.: Technische Mechanik 2"
+      },
+      {
+        "formel": "\\nu = - \\frac{\\varepsilon_q}{\\varepsilon_{\\text{ax}}} = - \\frac{\\Delta d / d_0}{\\Delta L / L_0}",
+        "erklaerung": "Poissonzahl (Querdehnzahl) als negatives Verhältnis von Querdehnung zu Längsdehnung.",
+        "quelle": "DIN EN ISO 6892-1"
+      }
+    ],
+    "MechanischeKenngroessen_2": [
+      {
+        "formel": "\\sigma = E \\cdot \\varepsilon \\iff \\varepsilon = \\frac{\\sigma}{E}",
+        "erklaerung": "Eindimensionales Hooke'sches Gesetz für linear-elastische isotrope Festkörper.",
+        "quelle": "Elastizitätstheorie (Hooke)"
+      },
+      {
+        "formel": "G = \\frac{E}{2(1+\\nu)}, \\quad K = \\frac{E}{3(1-2\\nu)}",
+        "erklaerung": "Beziehungen zwischen Elastizitätsmodul E, Schubmodul G, Kompressionsmodul K und Querdehnzahl ν.",
+        "quelle": "Elastizitätstheorie"
+      }
+    ],
+    "MechanischeKenngroessen_3": [
+      {
+        "formel": "EA = E \\cdot A, \\quad \\Delta L = \\frac{N \\cdot L_0}{EA}",
+        "erklaerung": "Dehnsteifigkeit EA eines Stabs und daraus resultierende Längenänderung unter axialer Normalkraft N.",
+        "quelle": "Gross et al.: Technische Mechanik 2"
+      },
+      {
+        "formel": "EI = E \\cdot I, \\quad \\kappa(x) = -w''(x) = \\frac{M(x)}{EI}",
+        "erklaerung": "Biegesteifigkeit EI und Bernoulli-Euler-Momenten-Krümmungsbeziehung.",
+        "quelle": "Balkentheorie"
+      }
+    ],
+    "MechanischeKenngroessen_4": [
+      {
+        "formel": "\\varepsilon(t) = \\varepsilon_{\\text{el}} \\cdot \\left[ 1 + \\varphi(t, t_0) \\right] = \\frac{\\sigma_0}{E_{c,\\text{eff}}}",
+        "erklaerung": "Gesamtverformung unter Kriecheinwirkung mit Kriechzahl φ und effektivem Kriechmodul Ec,eff.",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "\\sigma(t) = \\sigma_0 \\cdot \\exp\\left(-\\frac{t}{\\tau_{\\text{rel}}}\\right)",
+        "erklaerung": "Exponentieller Spannungsabbau unter erzwungener konstanter Dehnung (Maxwell-Relaxation).",
+        "quelle": "Kontinuumsmechanik / Rheologie"
+      }
+    ],
+    "MechanischeKenngroessen_5": [
+      {
+        "formel": "\\Delta L = \\frac{F \\cdot L_0}{E \\cdot A_0}",
+        "erklaerung": "Elastische Federverlängerung eines prismatischen Zugstabs konstanter Steifigkeit EA.",
+        "quelle": "Technische Mechanik"
+      },
+      {
+        "formel": "U = \\frac{1}{2} F \\cdot \\Delta L = \\frac{1}{2} \\frac{F^2 L_0}{E A_0}",
+        "erklaerung": "Elastische Formänderungsenergie (Federarbeit) unter quasi-statischer Lasteinleitung.",
+        "quelle": "Arbeitssatz der Elastomechanik"
+      }
+    ]
+  }
+}

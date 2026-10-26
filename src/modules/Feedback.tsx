@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { MessageSquare, Send, AlertCircle, Lightbulb, ThumbsUp, Star } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/feedback/Feedback.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 function EvaluierungContent() {
   const [ratings, setRatings] = useState({
@@ -24,7 +26,7 @@ function EvaluierungContent() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent('Evaluierung Baustoff-Dashboard');
+    const subject = encodeURIComponent(inhalt.werte.evaluierungBaustoffDashboard);
     const body = encodeURIComponent(
       `Bewertung durch Studierende:\n\n` +
       `Inhalte: ${formatDeWert(ratings.inhalte)}/5\n` +
@@ -61,17 +63,12 @@ function EvaluierungContent() {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-        <p>
-          Ihre Meinung ist uns wichtig! Bitte bewerten Sie die folgenden Aspekte des Dashboards (1 Stern = sehr schlecht, 5 Sterne = sehr gut). 
-          Die Ergebnisse werden per E-Mail an juergen.huber@tha.de gesendet.
-        </p>
+        <p><MdText text={inhalt.texte.ihreMeinungIstUns} /></p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center p-4 bg-off-white rounded-xl border border-home-grau/20">
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Qualität der Inhalte
-            <InfoTooltip text="Wie bewerten Sie die fachliche Korrektheit und Tiefe?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.qualitätDerInhalte} /><InfoTooltip text={inhalt.werte.wieBewertenSieDie} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('inhalte')}
@@ -79,7 +76,7 @@ function EvaluierungContent() {
           
           <label className="text-sm font-bold text-text-main flex items-center gap-2">
             Vollständigkeit
-            <InfoTooltip text="Ist das Thema des Moduls fachlich vollständig abgebildet?" />
+            <InfoTooltip text={inhalt.werte.istDasThemaDes} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('umfang')}
@@ -87,47 +84,37 @@ function EvaluierungContent() {
           
           <label className="text-sm font-bold text-text-main flex items-center gap-2">
             Verständlichkeit
-            <InfoTooltip text="Ist die Bedienung intuitiv und sind die Erklärungen klar und verständlich?" />
+            <InfoTooltip text={inhalt.werte.istDieBedienungIntuitiv} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('verstaendlichkeit')}
           </div>
           
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Nutzen & Praxisrelevanz
-            <InfoTooltip text="Hilft Ihnen dieses Tool beim Lernen und Verstehen für Studium und Baupraxis?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.nutzenPraxisrelevanz} /><InfoTooltip text={inhalt.werte.hilftIhnenDiesesTool} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('nutzen')}
           </div>
           
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Bedienbarkeit & Design
-            <InfoTooltip text="Wie ansprechend und intuitiv ist das Dashboard gestaltet?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.bedienbarkeitDesign} /><InfoTooltip text={inhalt.werte.wieAnsprechendUndIntuitiv} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('design')}
           </div>
           
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Interaktive Elemente
-            <InfoTooltip text="Wie hilfreich sind die Rechner, Slider, Simulatoren und Diagramme?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.interaktiveElemente} /><InfoTooltip text={inhalt.werte.wieHilfreichSindDie} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('interaktivitaet')}
           </div>
           
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Konsistenz & Struktur
-            <InfoTooltip text="Ist das Modul in sich logisch aufgebaut? Sind alle notwendigen Informationen zum Verständnis in anderen Modulen vorhanden?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.konsistenzStruktur} /><InfoTooltip text={inhalt.werte.istDasModulIn} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('performance')}
           </div>
           
-          <label className="text-sm font-bold text-text-main flex items-center gap-2">
-            Lernmotivation & Spaß
-            <InfoTooltip text="Motiviert das Dashboard, sich mit den Inhalten zu beschäftigen?" />
+          <label className="text-sm font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.lernmotivationSpaß} /><InfoTooltip text={inhalt.werte.motiviertDasDashboardSich} />
           </label>
           <div className="flex sm:justify-end">
             {renderStars('motivation')}
@@ -135,12 +122,12 @@ function EvaluierungContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="freitext" className="text-sm font-bold text-text-main">Weiteres Feedback (optional)</label>
+          <label htmlFor="freitext" className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.weiteresFeedbackOptional} /></label>
           <textarea
             id="freitext"
             value={freitext}
             onChange={(e) => setFreitext(e.target.value)}
-            placeholder="Was gefällt Ihnen besonders gut? Was könnte verbessert werden?"
+            placeholder={inhalt.werte.wasGefälltIhnenBesonders}
             rows={4}
             className="p-3 rounded-xl border border-home-grau/30 bg-off-white focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all resize-none"
           />
@@ -152,7 +139,7 @@ function EvaluierungContent() {
           disabled={Object.values(ratings).some(v => v === 0)}
         >
           <Send size={20} />
-          <span>Ergebnisse absenden</span>
+          <span><MdText text={inhalt.texte.ergebnisseAbsenden} /></span>
         </button>
       </form>
     </div>
@@ -167,12 +154,12 @@ function FeedbackContent() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    let subjectType = 'Fehler gefunden';
+    let subjectType = inhalt.werte.fehlerGefunden;
     if (type === 'idee') subjectType = 'Ergänzungsvorschlag';
     if (type === 'lob') subjectType = 'Lob';
     
     const finalMessage = (type === 'lob' && !message) 
-      ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' 
+      ? inhalt.werte.ganzGroßartigesToolVielen 
       : message;
 
     const subject = encodeURIComponent(`Feedback Baustoff-Dashboard: ${subjectType}`);
@@ -185,15 +172,12 @@ function FeedbackContent() {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-        <p>
-          Haben Sie einen Fehler gefunden oder eine Idee, wie das Dashboard verbessert werden kann? 
-          Nutzen Sie dieses Formular, um direkt eine E-Mail an Jürgen Huber (juergen.huber@tha.de) zu generieren.
-        </p>
+        <p><MdText text={inhalt.texte.habenSieEinenFehler} /></p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2"><label className="text-sm font-bold text-text-main">Art des Feedbacks</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
+          <div className="flex items-center gap-2"><label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.artDesFeedbacks} /></label><InfoTooltip text={inhalt.werte.parameterZurAnpassungDer} /></div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <button aria-pressed={type === 'fehler'}
               type="button"
@@ -205,7 +189,7 @@ function FeedbackContent() {
               }`}
             >
               <AlertCircle size={18} />
-              <span>Fehler melden</span>
+              <span><MdText text={inhalt.texte.fehlerMelden} /></span>
             </button>
             <button aria-pressed={type === 'idee'}
               type="button"
@@ -217,7 +201,7 @@ function FeedbackContent() {
               }`}
             >
               <Lightbulb size={18} />
-              <span>Ergänzung vorschlagen</span>
+              <span><MdText text={inhalt.texte.ergänzungVorschlagen} /></span>
             </button>
             <button aria-pressed={type === 'lob'}
               type="button"
@@ -235,25 +219,25 @@ function FeedbackContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2"><label htmlFor="module" className="text-sm font-bold text-text-main">Betroffenes Modul (optional)</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
+          <div className="flex items-center gap-2"><label htmlFor="module" className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.betroffenesModulOptional} /></label><InfoTooltip text={inhalt.werte.parameterZurAnpassungDer2} /></div>
           <input
             id="module"
             type="text"
             value={module}
             onChange={(e) => setModule(e.target.value)}
-            placeholder="z.B. Zementchemie, EPD, ..."
+            placeholder={inhalt.werte.zBZementchemieEpd}
             className="p-3 rounded-xl border border-home-grau/30 bg-off-white focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main">Ihre Nachricht</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
+          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.ihreNachricht} /></label><InfoTooltip text={inhalt.werte.parameterZurAnpassungDer3} /></div>
           <textarea
             id="message"
             required={type !== 'lob'}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={type === 'fehler' ? 'Beschreiben Sie den Fehler möglichst genau...' : type === 'lob' ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' : 'Welches Thema oder welche Funktion fehlt Ihnen?'}
+            placeholder={type === 'fehler' ? inhalt.werte.beschreibenSieDenFehler : type === 'lob' ? inhalt.werte.ganzGroßartigesToolVielen2 : inhalt.werte.welchesThemaOderWelche}
             rows={5}
             className="p-3 rounded-xl border border-home-grau/30 bg-off-white focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all resize-none"
           />
@@ -264,7 +248,7 @@ function FeedbackContent() {
           className="mt-2 bg-shiraz text-white p-4 rounded-xl font-bold hover:bg-torch-red transition-colors flex items-center justify-center gap-2"
         >
           <Send size={20} />
-          <span>E-Mail vorbereiten</span>
+          <span><MdText text={inhalt.texte.eMailVorbereiten} /></span>
         </button>
       </form>
     </div>
@@ -282,7 +266,7 @@ export default function Feedback() {
             <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
               <MessageSquare size={24} />
             </div>
-            <h2 className="text-xl font-bold text-text-main">Feedback & Evaluierung</h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.feedbackEvaluierung} /></h2>
           </div>
         </div>
 
@@ -296,9 +280,7 @@ export default function Feedback() {
           <button aria-pressed={activeTab === 'evaluierung'}
             onClick={() => setActiveTab('evaluierung')}
             className={`px-4 py-2 font-bold text-sm rounded-lg transition-colors ${activeTab === 'evaluierung' ? 'bg-shiraz text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-          >
-            Evaluierung Tool
-          </button>
+          ><MdText text={inhalt.texte.evaluierungTool} /></button>
         </div>
 
         {activeTab === 'feedback' ? <FeedbackContent /> : <EvaluierungContent />}
@@ -308,18 +290,10 @@ export default function Feedback() {
         wikipedia={[
           { title: 'Evaluation', url: 'https://de.wikipedia.org/wiki/Evaluation' },
           { title: 'Qualitätsmanagement', url: 'https://de.wikipedia.org/wiki/Qualit%C3%A4tsmanagement' },
-          { title: 'Empirische Sozialforschung', url: 'https://de.wikipedia.org/wiki/Empirische_Sozialforschung' }
+          { title: inhalt.werte.empirischeSozialforschung, url: 'https://de.wikipedia.org/wiki/Empirische_Sozialforschung' }
         ]}
-        literatur={[
-          'Kromrey, H.; Roose, J.; Strübing, J. (2016): Empirische Sozialforschung (13. Auflage, UTB / UVK)',
-          'Wissenschaftsrat: Empfehlungen zur Qualitätsverbesserung von Lehre und Studium an deutschen Hochschulen',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'Bayerisches Hochschulinnovationsgesetz (BayHIG - Art. 18 Evaluation und Qualitätssicherung)', url: 'https://www.gesetze-bayern.de/' },
-          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)' },
-          { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)' }
-        ]}
+        literatur={inhalt.daten["Feedback.literatur"]}
+        regelwerke={inhalt.daten["Feedback.regelwerke"]}
         hideFormeln={true}
       />
     </div>

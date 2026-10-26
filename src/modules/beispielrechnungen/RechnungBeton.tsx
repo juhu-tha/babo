@@ -2,6 +2,8 @@ import { BookOpen, Sliders } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React from 'react';
+import inhalt from '@/content/beispielrechnungen/RechnungBeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungBetonProps {
   V_a: number;
@@ -86,9 +88,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                     : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
                 }`}
             onClick={() => setBetonSubTab('mischung')}
-          >
-            Mischungsentwurf (Stoffraum)
-          </button>
+          ><MdText text={inhalt.texte.mischungsentwurfStoffraum} /></button>
           <button aria-pressed={betonSubTab === 'k_wert'}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
@@ -97,9 +97,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                     : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
                 }`}
             onClick={() => setBetonSubTab('k_wert')}
-          >
-            k-Wert-Ansatz (Zusatzstoffe)
-          </button>
+          ><MdText text={inhalt.texte.kWertAnsatzZusatzstoffe} /></button>
           <button aria-pressed={betonSubTab === 'temperatur'}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
@@ -130,27 +128,22 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
-                <span>Normativer Mischungsentwurf für Frischbeton (Stoffraumberechnung)</span>
+                <span><MdText text={inhalt.texte.normativerMischungsentwurfFürFrischbeton} /></span>
               </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-                <strong>Was?</strong> Berechnet wird die detaillierte Materialrezeptur für <InlineMath math="1 \, \text{m}^3" /> verdichteten Frischbeton unter Berücksichtigung von Expositionsklassen, Konsistenz und Zielsieblinien. <br />
-                <strong>Warum?</strong> Eine genaue Stoffraumberechnung stellt sicher, dass das angenommene Betonvolumen hohlraumfrei verdichtet genau <InlineMath math="1000 \, \text{dm}^3" /> ausfüllt. So werden Abweichungen in der Frischbetondichte und Fehlmengen auf der Baustelle vermieden. <br />
-                <strong>Wie?</strong> Über das <strong>Absolutvolumen-Verfahren</strong> nach DIN 1045-2 (Gleichung des dichten Gefüges).
-              </p>
+              <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetWirdDie} /></p>
             </div>
 
             {/* INTERACTIVE CONTROLS */}
             <div className="bg-slate-50/50 p-5 rounded-xl border border-home-grau/30 space-y-4">
               <h4 className="font-bold text-xs text-slate-700 flex items-center gap-1.5 uppercase tracking-wider">
-                <Sliders size={14} className="text-shiraz" /> Expositions- und Baustoffklasse wählen
-              </h4>
+                <Sliders size={14} className="text-shiraz" /><MdText text={inhalt.texte.expositionsUndBaustoffklasseWählen} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
                 {/* Exposure Class */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Expositionsklasse:</label>
-                  <p className="text-[10px] text-text-main/70 mb-2">Bestimmt max. w/z-Wert &amp; Mindestzementgehalt</p>
-                  <select aria-label="Bestimmt max. w/z-Wert &amp; Mindestzementgehalt" 
+                  <p className="text-[10px] text-text-main/70 mb-2"><MdText text={inhalt.texte.bestimmtMaxWZ} /></p>
+                  <select aria-label={inhalt.werte.bestimmtMaxWZ} 
                     value={targetExposure} 
                     onChange={(e) => setTargetExposure(e.target.value as 'XC4' | 'XD3')}
                     className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -163,8 +156,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 {/* Consistency */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Konsistenzklasse:</label>
-                  <p className="text-[10px] text-text-main/70 mb-2">Bestimmt den Richtwert für Wasseranspruch</p>
-                  <select aria-label="Bestimmt den Richtwert für Wasseranspruch" 
+                  <p className="text-[10px] text-text-main/70 mb-2"><MdText text={inhalt.texte.bestimmtDenRichtwertFür} /></p>
+                  <select aria-label={inhalt.werte.bestimmtDenRichtwertFür} 
                     value={consClass} 
                     onChange={(e) => setConsClass(e.target.value as 'F2' | 'F3' | 'F4')}
                     className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -177,8 +170,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Max Grain Size */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
-                  <label className="font-bold text-slate-700 block">Größtkorn Aggregat:</label>
-                  <p className="text-[10px] text-text-main/70 mb-2">Große Gesteinskörnung mindert Wasserbedarf</p>
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.größtkornAggregat} /></label>
+                  <p className="text-[10px] text-text-main/70 mb-2"><MdText text={inhalt.texte.großeGesteinskörnungMindertWasserbedarf} /></p>
                   <div className="flex gap-2 mt-1">
                     <button 
                       type="button"
@@ -199,10 +192,10 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Info Display */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xxs leading-relaxed font-normal text-slate-600">
-                  <span className="font-bold text-slate-800 block text-xs mb-1">Randbedingungen DIN 1045-2:</span>
-                  <div>• Maximaler <InlineMath math="(w/z)_{max}" />: <strong className="text-shiraz font-black">{formatDeZahl(maxWz, 2)}</strong></div>
-                  <div>• Mindestzement <InlineMath math="z_{min}" />: <strong className="text-slate-800 font-bold">{minCement} kg/m³</strong></div>
-                  <div>• Angenommene Reindichte Zement: <strong>3,10 kg/dm³</strong></div>
+                  <span className="font-bold text-slate-800 block text-xs mb-1"><MdText text={inhalt.texte.randbedingungenDin10452} /></span>
+                  <div><MdText text={inhalt.texte.maximalerWZMax} /><strong className="text-shiraz font-black">{formatDeZahl(maxWz, 2)}</strong></div>
+                  <div><MdText text={inhalt.texte.mindestzementZMin} /><strong className="text-slate-800 font-bold">{minCement} kg/m³</strong></div>
+                  <div><MdText text={inhalt.texte.angenommeneReindichteZement3} /></div>
                 </div>
 
               </div>
@@ -210,49 +203,34 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
             {/* STEP-BY-STEP RECIPE CALCULATION */}
             <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-              <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">
-                Stoffraumberechnung (Absolutvolumen) Schritt für Schritt
-              </h4>
+              <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.stoffraumberechnungAbsolutvolumenSchritt} /></h4>
 
               <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal">
-                <div>
-                  <strong>Schritt 1: Wasser- und Zementgehalt bestimmen</strong>
-                  <p className="mt-1">
-                    Der Wasserbedarf richtet sich nach dem Größtkorn und der Konsistenzklasse (Erfahrungswerte nach DBV): <br />
-                    Für Konsistenz <span className="text-shiraz font-bold">{consClass}</span> und Größtkorn <span className="text-shiraz font-bold">dmax = {maxGrainSize} mm</span> ergibt sich ein Wasseranspruch von:
-                  </p>
+                <div><MdText text={inhalt.texte.schritt1WasserUnd} /><p className="mt-1"><MdText text={inhalt.texte.derWasserbedarfRichtetSich} /><span className="text-shiraz font-bold">{consClass}</span><MdText text={inhalt.texte.undGrößtkorn} /><span className="text-shiraz font-bold">dmax = {maxGrainSize} mm</span><MdText text={inhalt.texte.ergibtSichEinWasseranspruch} /></p>
                   <BlockMath math={`w = \\color{#A3113E}{${waterDemand}} \\, \\text{l/m}^3 \\quad (\\approx \\color{#A3113E}{${waterDemand}} \\, \\text{kg/m}^3)`} />
-                  <p className="mt-1">
-                    Die erforderliche Zementmenge <InlineMath math="c" /> ergibt sich aus dem maximal zulässigen <InlineMath math="w/z" />-Verhältnis der Expositionsklasse <span className="text-shiraz font-bold">{targetExposure}</span>:
+                  <p className="mt-1"><MdText text={inhalt.texte.dieErforderlicheZementmengeC} /><span className="text-shiraz font-bold">{targetExposure}</span>:
                   </p>
                   <BlockMath math={`c_{\\text{erf}} = \\frac{w}{(w/z)_{max}} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${formatDeTeX(maxWz, 2)}}} = \\color{#A3113E}{${formatDeTeX(cementFromWz, 1)}} \\, \\text{kg/m}^3`} />
                   <p className="mt-1">
-                    Da <InlineMath math={`c_{\\text{erf}} = ${formatDeTeX(cementFromWz, 1)} \\, \\text{kg/m}^3`} /> mit dem normativen Mindestzementgehalt <InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /> abgeglichen werden muss, wählen wir:
-                  </p>
+                    Da <InlineMath math={`c_{\\text{erf}} = ${formatDeTeX(cementFromWz, 1)} \\, \\text{kg/m}^3`} /><MdText text={inhalt.texte.mitDemNormativenMindestzementgehalt} /><InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /><MdText text={inhalt.texte.abgeglichenWerdenMussWählen} /></p>
                   <BlockMath math={`c = \\max(c_{\\text{erf}}, z_{min}) = \\color{#A3113E}{${formatDeTeX(cementContent, 1)}} \\, \\text{kg/m}^3`} />
-                  <p className="mt-1">Daraus resultiert der tatsächliche (wirksame) w/z-Wert:</p>
+                  <p className="mt-1"><MdText text={inhalt.texte.darausResultiertDerTatsächliche} /></p>
                   <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${formatDeTeX(cementContent, 1)}}} = \\color{#A3113E}{${formatDeTeX(actualWz, 3)}}`} />
                 </div>
 
-                <div className="border-t border-slate-100 pt-3">
-                  <strong>Schritt 2: Stoffraumbilanz für Gesteinskörnung aufstellen</strong>
-                  <p className="mt-1">
-                    Nach der Gleichung für dichten Frischbeton addieren sich die Absolutvolumina der festen, flüssigen und gasförmigen Bestandteile auf <InlineMath math="1000 \, \text{dm}^3" /> pro Kubikmeter:
-                  </p>
+                <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2StoffraumbilanzFür} /><p className="mt-1"><MdText text={inhalt.texte.nachDerGleichungFür} /></p>
                   <BlockMath math={`V_c + V_w + V_{\\text{air}} + V_a = 1000 \\, \\text{dm}^3`} />
-                  <p className="mt-1">Wir berechnen die bekannten Volumenanteile:</p>
+                  <p className="mt-1"><MdText text={inhalt.texte.wirBerechnenDieBekannten} /></p>
                   <div className="space-y-1 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
-                    <p>• Zementvolumen: V_c = c / ρ_c = <span className="text-shiraz font-bold">{formatDeWert(cementContent)}</span> kg / 3,10 kg/dm³ = <span className="text-shiraz font-bold">{formatDeZahl(V_c, 2)}</span> dm³</p>
-                    <p>• Wasservolumen: V_w = w / ρ_w = <span className="text-shiraz font-bold">{waterDemand}</span> kg / 1,00 kg/dm³ = <span className="text-shiraz font-bold">{formatDeZahl(V_w, 2)}</span> dm³</p>
-                    <p>• Verdichtungsporen (1,5% Luft): V_air = {V_air} dm³</p>
+                    <p><MdText text={inhalt.texte.zementvolumenVCC} /><span className="text-shiraz font-bold">{formatDeWert(cementContent)}</span><MdText text={inhalt.texte.kg310Kg} /><span className="text-shiraz font-bold">{formatDeZahl(V_c, 2)}</span> dm³</p>
+                    <p><MdText text={inhalt.texte.wasservolumenVWW} /><span className="text-shiraz font-bold">{waterDemand}</span><MdText text={inhalt.texte.kg100Kg} /><span className="text-shiraz font-bold">{formatDeZahl(V_w, 2)}</span> dm³</p>
+                    <p><MdText text={inhalt.texte.verdichtungsporen15Luft} />{V_air} dm³</p>
                   </div>
-                  <p className="mt-2">Das verbleibende Restvolumen entfällt vollständig auf die Gesteinskörnung (früher: Zuschlag) <InlineMath math="V_a" />:</p>
+                  <p className="mt-2"><MdText text={inhalt.texte.dasVerbleibendeRestvolumenEntfällt} /></p>
                   <BlockMath math={`V_a = 1000 - (\\color{#A3113E}{${formatDeTeX(V_c, 2)}} + \\color{#A3113E}{${formatDeTeX(V_w, 2)}} + ${V_air}) = \\color{#A3113E}{${formatDeTeX(V_a, 2)}} \\, \\text{dm}^3`} />
                 </div>
 
-                <div className="border-t border-slate-100 pt-3">
-                  <strong>Schritt 3: Masse der Gesteinskörnung ermitteln</strong>
-                  <p className="mt-1">Unter Annahme einer mittleren Gesteinsreindichte von <InlineMath math="\rho_a = 2{,}65 \, \text{kg/dm}^3" />:</p>
+                <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3MasseDer} /><p className="mt-1"><MdText text={inhalt.texte.unterAnnahmeEinerMittleren} /></p>
                   <BlockMath math={`m_a = V_a \\cdot \\rho_a = \\color{#A3113E}{${formatDeTeX(V_a, 2)}} \\cdot 2{,}65 = \\color{#A3113E}{${formatDeTeX(aggregateMass, 1)}} \\, \\text{kg/m}^3`} />
                 </div>
               </div>
@@ -260,16 +238,14 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
             {/* RECIPE SUMMARY */}
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-              <h4 className="font-bold text-xs text-slate-800 uppercase tracking-wider mb-3">
-                Zusammenfassung der Betonrezeptur (Soll-Werte für Mischer)
-              </h4>
+              <h4 className="font-bold text-xs text-slate-800 uppercase tracking-wider mb-3"><MdText text={inhalt.texte.zusammenfassungDerBetonrezepturSoll} /></h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="bg-white p-3 rounded-xl border border-slate-200">
-                  <span className="text-xxs text-slate-400 block font-normal">Zement CEM I</span>
+                  <span className="text-xxs text-slate-400 block font-normal"><MdText text={inhalt.texte.zementCemI} /></span>
                   <strong className="text-sm text-slate-800">{formatDeWert(cementContent)} kg</strong>
                 </div>
                 <div className="bg-white p-3 rounded-xl border border-slate-200">
-                  <span className="text-xxs text-slate-400 block font-normal">Wasser (wirksam)</span>
+                  <span className="text-xxs text-slate-400 block font-normal"><MdText text={inhalt.texte.wasserWirksam} /></span>
                   <strong className="text-sm text-slate-800">{waterDemand} l</strong>
                 </div>
                 <div className="bg-white p-3 rounded-xl border border-slate-200">
@@ -282,11 +258,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 </div>
               </div>
 
-              <div className="text-xxs font-normal text-slate-500 mt-4 leading-relaxed bg-white/50 p-2.5 rounded-lg border border-slate-200/50">
-                <strong>Bewertung:</strong> Der tatsächliche w/z-Wert von <strong>{formatDeZahl(actualWz, 3)}</strong> hält den Grenzwert von <strong>{formatDeZahl(maxWz, 2)}</strong> sicher ein. 
-                Die berechnete Frischbetondichte liegt mit {formatDeZahl(freshConcreteDensity, 0)} kg/m³ im typischen Bereich für Normalbeton (2000 bis 2600 kg/m³ nach DIN EN 206). 
-                Diese Rezeptur stellt sicher, dass der Beton nach dem Erhärten das erforderliche Porengefüge aufweist, um Karbonatisierung (XC4) bzw. Chlorideindringen (XD3) dauerhaft zu widerstehen.
-              </div>
+              <div className="text-xxs font-normal text-slate-500 mt-4 leading-relaxed bg-white/50 p-2.5 rounded-lg border border-slate-200/50"><MdText text={inhalt.texte.bewertungDerTatsächlicheW} /><strong>{formatDeZahl(actualWz, 3)}</strong><MdText text={inhalt.texte.hältDenGrenzwertVon} /><strong>{formatDeZahl(maxWz, 2)}</strong><MdText text={inhalt.texte.sicherEinDieBerechnete} />{formatDeZahl(freshConcreteDensity, 0)}<MdText text={inhalt.texte.kgMImTypischen} /></div>
             </div>
           </div>
         )}
@@ -297,24 +269,20 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
-                <span>k-Wert-Ansatz für Zusatzstoffe nach DIN EN 206</span>
+                <span><MdText text={inhalt.texte.kWertAnsatzFür} /></span>
               </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-                <strong>Was?</strong> Berechnet die Anrechenbarkeit von reaktiven mineralischen Zusatzstoffen (Zusatzstoffe vom Typ II) wie Flugasche oder Silikastaub auf das wirksame Wasser-Zement-Verhältnis. <br />
-                <strong>Warum?</strong> Die Verwertung von Flugasche schont Ressourcen und verringert das Porenvolumen sowie die Hydratationswärme des Betons. Die Norm gestattet daher die bilanzielle Erhöhung des Zementvolumens um einen Faktor <InlineMath math="k \cdot f" />. <br />
-                <strong>Wie?</strong> Über die Ermittlung der maximal zulässigen Anrechenbarkeit <InlineMath math="f_{max} = \text{Anteil} \cdot c" /> und Bildung des äquivalenten Wasserzementwerts <InlineMath math="(w/z)_{eq} = \frac{w}{c + k \cdot f_{anr}}" />.
-              </p>
+              <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetDieAnrechenbarkeit} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* CONTROLS */}
               <div className="md:col-span-1 bg-slate-50/50 p-4 rounded-xl border border-home-grau/30 space-y-4">
-                <h4 className="font-bold text-xs text-slate-700 uppercase tracking-wider">Parameter einstellen</h4>
+                <h4 className="font-bold text-xs text-slate-700 uppercase tracking-wider"><MdText text={inhalt.texte.parameterEinstellen} /></h4>
 
                 {/* Additive Type */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
-                  <label className="font-bold text-slate-700 block">Zusatzstoff Typ II:</label>
-                  <select aria-label="Zusatzstoff Typ II" 
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.zusatzstoffTypIi} /></label>
+                  <select aria-label={inhalt.werte.zusatzstoffTypIi} 
                     value={kAddType} 
                     onChange={(e) => {
                       const type = e.target.value as 'flugasche' | 'silikastaub';
@@ -330,8 +298,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Cement content */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Zementgehalt <InlineMath math="c" /> (kg/m³):</label>
-                  <input aria-label="Zementgehalt (kg/m³)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.zementgehaltCKgM} /></label>
+                  <input aria-label={inhalt.werte.zementgehaltKgM} 
                     type="range" min="200" max="450" step="10"
                     value={kCement}
                     onChange={(e) => setKCement(Number(e.target.value))}
@@ -342,8 +310,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Addition content */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Zusatzstoffmenge <InlineMath math="f" /> (kg/m³):</label>
-                  <input aria-label="Zusatzstoffmenge (kg/m³)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.zusatzstoffmengeFKgM} /></label>
+                  <input aria-label={inhalt.werte.zusatzstoffmengeKgM} 
                     type="range" min="0" max="150" step="5"
                     value={kAddition}
                     onChange={(e) => setKAddition(Number(e.target.value))}
@@ -354,8 +322,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Water content */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Wassergehalt <InlineMath math="w" /> (l/m³):</label>
-                  <input aria-label="Wassergehalt (l/m³)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.wassergehaltWLM} /></label>
+                  <input aria-label={inhalt.werte.wassergehaltLM} 
                     type="range" min="120" max="220" step="5"
                     value={kWater}
                     onChange={(e) => setKWater(Number(e.target.value))}
@@ -367,41 +335,26 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
               {/* STEP-BY-STEP */}
               <div className="md:col-span-2 bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">Rechnerischer Nachweis</h4>
+                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.rechnerischerNachweis} /></h4>
 
                 <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal">
-                  <div>
-                    <strong>Schritt 1: k-Beiwert und Anrechnungsgrenze ermitteln</strong>
-                    <p className="mt-1">
-                      Für <span className="text-shiraz font-bold">{kAddType === 'flugasche' ? 'Flugasche' : 'Silikastaub'}</span> ist normativ ein k-Beiwert von <InlineMath math={`k = ${formatDeTeXWert(k_factor)}`} /> vorgegeben. 
-                      Die maximale anrechenbare Menge beträgt das <InlineMath math={`${formatDeTeX((k_max_ratio*100), 0)}\\%`} /> des Zementgehalts (bei CEM I):
-                    </p>
+                  <div><MdText text={inhalt.texte.schritt1KBeiwert} /><p className="mt-1">
+                      Für <span className="text-shiraz font-bold">{kAddType === 'flugasche' ? 'Flugasche' : 'Silikastaub'}</span><MdText text={inhalt.texte.istNormativEinK} /><InlineMath math={`k = ${formatDeTeXWert(k_factor)}`} /><MdText text={inhalt.texte.vorgegebenDieMaximaleAnrechenbare} /><InlineMath math={`${formatDeTeX((k_max_ratio*100), 0)}\\%`} /><MdText text={inhalt.texte.desZementgehaltsBeiCem} /></p>
                     <BlockMath math={`f_{max} = ${k_max_ratio} \\cdot c = ${k_max_ratio} \\cdot \\color{#A3113E}{${kCement}} = \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}} \\, \\text{kg/m}^3`} />
-                    <p className="mt-1">
-                      Die anrechenbare Zusatzstoffmenge <InlineMath math="f_{anr}" /> ergibt sich als Minimum aus der tatsächlichen Zugabe und der Begrenzung:
-                    </p>
+                    <p className="mt-1"><MdText text={inhalt.texte.dieAnrechenbareZusatzstoffmengeF} /></p>
                     <BlockMath math={`f_{anr} = \\min(f, f_{max}) = \\min(\\color{#A3113E}{${kAddition}}, \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}}) = \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}} \\, \\text{kg/m}^3`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Schritt 2: Äquivalenten Wasserzementwert berechnen</strong>
-                    <p className="mt-1">
-                      Die klassische w/z-Zahl beträgt:
-                    </p>
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2ÄquivalentenWasserzementwert} /><p className="mt-1"><MdText text={inhalt.texte.dieKlassischeWZ} /></p>
                     <BlockMath math={`w/z = \\frac{w}{c} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_pure, 3)}}`} />
-                    <p className="mt-1">
-                      Durch Anrechnung des Zusatzstoffs ergibt sich das wirksame äquivalente Wasser-Zement-Verhältnis <InlineMath math="(w/z)_{eq}" />:
-                    </p>
+                    <p className="mt-1"><MdText text={inhalt.texte.durchAnrechnungDesZusatzstoffs} /></p>
                     <BlockMath math={`(w/z)_{eq} = \\frac{w}{c + k \\cdot f_{anr}} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}} + ${k_factor} \\cdot \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_eq, 3)}}`} />
                   </div>
                 </div>
 
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
-                  <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1">Ergebnis und Einsparung</span>
-                  <p className="text-xs font-normal">
-                    Ihr äquivalenter Wasserzementwert sinkt um <strong className="text-shiraz">{formatDeZahl(Math.max(0, k_w_z_pure - k_w_z_eq), 3)}</strong> von <span className="text-shiraz font-bold">{formatDeZahl(k_w_z_pure, 3)}</span> auf <strong className="text-shiraz">{formatDeZahl(k_w_z_eq, 3)}</strong>. 
-                    Dies entspricht rechnerisch einer fiktiven Zementeinsparung von ca. <strong className="text-shiraz">{formatDeZahl((k_factor * k_credited_addition), 1)} kg</strong> Portlandzement-Klinker pro Kubikmeter Beton bei identischer hydratationschemischer Wirksamkeit!
-                  </p>
+                  <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1"><MdText text={inhalt.texte.ergebnisUndEinsparung} /></span>
+                  <p className="text-xs font-normal"><MdText text={inhalt.texte.ihrÄquivalenterWasserzementwertSinkt} /><strong className="text-shiraz">{formatDeZahl(Math.max(0, k_w_z_pure - k_w_z_eq), 3)}</strong> von <span className="text-shiraz font-bold">{formatDeZahl(k_w_z_pure, 3)}</span> auf <strong className="text-shiraz">{formatDeZahl(k_w_z_eq, 3)}</strong><MdText text={inhalt.texte.diesEntsprichtRechnerischEiner} /><strong className="text-shiraz">{formatDeZahl((k_factor * k_credited_addition), 1)} kg</strong><MdText text={inhalt.texte.portlandzementKlinkerProKubikmeter} /></p>
                 </div>
               </div>
             </div>
@@ -414,24 +367,20 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
-                <span>Berechnung der Frischbetontemperatur (Winter- & Sommerbetonieren)</span>
+                <span><MdText text={inhalt.texte.berechnungDerFrischbetontemperaturWinter} /></span>
               </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-                <strong>Was?</strong> Berechnet die Mischtemperatur des Frischbetons aus den Einzel-Eingangstemperaturen von Zement, Gesteinskörnung, Wasser und eventueller Eisbeigabe. <br />
-                <strong>Warum?</strong> Bei kaltem Wetter (Winterbaustellen) darf Beton beim Einbringen nicht einfrieren (<InlineMath math="T_b \ge +5\,^\circ\text{C}" />). Bei heißem Wetter beschleunigt Hitze die Hydratation und führt zu thermischen Rissen (<InlineMath math="T_b \le +30\,^\circ\text{C}" />). <br />
-                <strong>Wie?</strong> Über eine thermodynamische Mischungsrechnung (Energiebilanz unter Berücksichtigung der spezifischen Wärmekapazitäten und der Schmelzenthalpie von Eis).
-              </p>
+              <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetDieMischtemperatur} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* CONTROLS */}
               <div className="md:col-span-1 bg-slate-50/50 p-4 rounded-xl border border-home-grau/30 space-y-4">
-                <h4 className="font-bold text-xs text-slate-700 uppercase tracking-wider">Temperaturen &amp; Mengen</h4>
+                <h4 className="font-bold text-xs text-slate-700 uppercase tracking-wider"><MdText text={inhalt.texte.temperaturenMengen} /></h4>
 
                 {/* Aggregate Temp */}
                 <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Gesteinskörnung <InlineMath math="T_A" /> (°C):</label>
-                  <input aria-label="Gesteinskörnung (°C)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.gesteinskörnungTAC} /></label>
+                  <input aria-label={inhalt.werte.gesteinskörnungC} 
                     type="range" min="-10" max="35" step="1"
                     value={tempAggregate}
                     onChange={(e) => setTempAggregate(Number(e.target.value))}
@@ -445,7 +394,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Cement Temp */}
                 <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Zement <InlineMath math="T_C" /> (°C):</label>
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.zementTCC} /></label>
                   <input aria-label="Zement (°C)" 
                     type="range" min="0" max="60" step="2"
                     value={tempCement}
@@ -460,8 +409,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Water Temp */}
                 <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Anmachwasser <InlineMath math="T_W" /> (°C):</label>
-                  <input aria-label="Anmachwasser (°C)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.anmachwasserTWC} /></label>
+                  <input aria-label={inhalt.werte.anmachwasserC} 
                     type="range" min="2" max="80" step="2"
                     value={tempWater}
                     onChange={(e) => setTempWater(Number(e.target.value))}
@@ -476,17 +425,17 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 {/* Flake Ice Option */}
                 <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
                   <div className="flex justify-between items-center">
-                    <label className="text-xs text-text-main/80 block font-bold">Schuppeneis <InlineMath math="m_{Eis}" /> (kg):</label>
-                    <span className="text-[10px] text-slate-400 font-bold">Ersetzt Wasser</span>
+                    <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.schuppeneisMEisKg} /></label>
+                    <span className="text-[10px] text-slate-400 font-bold"><MdText text={inhalt.texte.ersetztWasser} /></span>
                   </div>
-                  <input aria-label="Schuppeneis (kg): Ersetzt Wasser" 
+                  <input aria-label={inhalt.werte.schuppeneisKgErsetztWasser} 
                     type="range" min="0" max="50" step="5"
                     value={mIceInput}
                     onChange={(e) => setMIceInput(Math.min(Number(e.target.value), mWaterInput))}
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                    <span>Melting latent: 334 kJ/kg</span>
+                    <span><MdText text={inhalt.texte.meltingLatent334Kj} /></span>
                     <span className="font-bold text-shiraz">{formatDeWert(mIceInput)} kg</span>
                   </div>
                 </div>
@@ -494,28 +443,22 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
               {/* CALCULATION AND VISUALIZATION */}
               <div className="md:col-span-2 bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">Thermodynamische Mischungsrechnung</h4>
+                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.thermodynamischeMischungsrechnung} /></h4>
 
                 <div className="space-y-3.5 text-xs text-text-main/80 leading-relaxed font-normal">
-                  <div>
-                    <strong>Mischformel nach Energiebilanz (Referenz 0 °C):</strong>
-                    <p className="mt-1">
-                      Die Enthalpiebeträge ergeben sich aus Masse <InlineMath math="m_i" />, Temperatur <InlineMath math="T_i" /> und spezifischer Wärme <InlineMath math="c_i" />:
-                    </p>
+                  <div><MdText text={inhalt.texte.mischformelNachEnergiebilanzReferenz} /><p className="mt-1"><MdText text={inhalt.texte.dieEnthalpiebeträgeErgebenSich} /></p>
                     <div className="bg-slate-50 p-2.5 rounded-lg space-y-1 font-mono text-xxs my-2 border border-home-grau/20">
-                      <p>• Gestein: {formatDeWert(mAggregateInput)} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempAggregate)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_agg, 0)}</span> kJ</p>
-                      <p>• Zement: {formatDeWert(mCementInput)} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempCement)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_cement, 0)}</span> kJ</p>
-                      <p>• Flüssiges Wasser: <span className="text-shiraz font-bold">{formatDeWert(mLiquidWater)}</span> kg · 4,18 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempWater)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_liquid_water, 0)}</span> kJ</p>
+                      <p>• Gestein: {formatDeWert(mAggregateInput)}<MdText text={inhalt.texte.kg084Kj} /><span className="text-shiraz font-bold">{formatDeWert(tempAggregate)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_agg, 0)}</span> kJ</p>
+                      <p>• Zement: {formatDeWert(mCementInput)}<MdText text={inhalt.texte.kg084Kj2} /><span className="text-shiraz font-bold">{formatDeWert(tempCement)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_cement, 0)}</span> kJ</p>
+                      <p><MdText text={inhalt.texte.flüssigesWasser} /><span className="text-shiraz font-bold">{formatDeWert(mLiquidWater)}</span><MdText text={inhalt.texte.kg418Kj} /><span className="text-shiraz font-bold">{formatDeWert(tempWater)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_liquid_water, 0)}</span> kJ</p>
                       {mIceInput > 0 && (
-                        <p className="text-blue-600 font-bold">• Schmelzwärme Eis: -(<span className="text-shiraz">{formatDeWert(mIceInput)}</span> kg · 334 kJ/kg) = <span className="text-shiraz">{formatDeZahl(heat_ice_melting, 0)}</span> kJ</p>
+                        <p className="text-blue-600 font-bold"><MdText text={inhalt.texte.schmelzwärmeEis} /><span className="text-shiraz">{formatDeWert(mIceInput)}</span><MdText text={inhalt.texte.kg334KjKg} /><span className="text-shiraz">{formatDeZahl(heat_ice_melting, 0)}</span> kJ</p>
                       )}
-                      <p className="border-t border-slate-200 pt-1 font-bold">Summe der Enthalpien Q = <span className="text-shiraz font-bold">{formatDeZahl(total_heat, 0)}</span> kJ</p>
+                      <p className="border-t border-slate-200 pt-1 font-bold"><MdText text={inhalt.texte.summeDerEnthalpienQ} /><span className="text-shiraz font-bold">{formatDeZahl(total_heat, 0)}</span> kJ</p>
                     </div>
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Berechnung der Frischbetontemperatur <InlineMath math="T_{Beton}" />:</strong>
-                    <BlockMath math={`T_B = \\frac{\\sum Q}{\\sum (m_i \\cdot c_i)} = \\frac{\\color{#A3113E}{${formatDeTeX(total_heat, 0)}} \\, \\text{kJ}}{${formatDeTeX(total_heat_capacity, 0)} \\, \\text{kJ/K}} = \\color{#A3113E}{${formatDeTeX(finalFreshTemp, 1)}} \\, ^\\circ\\text{C}`} />
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.berechnungDerFrischbetontemperaturT} /><BlockMath math={`T_B = \\frac{\\sum Q}{\\sum (m_i \\cdot c_i)} = \\frac{\\color{#A3113E}{${formatDeTeX(total_heat, 0)}} \\, \\text{kJ}}{${formatDeTeX(total_heat_capacity, 0)} \\, \\text{kJ/K}} = \\color{#A3113E}{${formatDeTeX(finalFreshTemp, 1)}} \\, ^\\circ\\text{C}`} />
                   </div>
                 </div>
 
@@ -531,15 +474,15 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                   <div>
                     <strong className="block font-bold">
                       Betontemperatur: {formatDeZahl(finalFreshTemp, 1)} °C ({
-                        finalFreshTemp < 5 ? 'Frostgefahr / zu kalt' :
-                        finalFreshTemp > 30 ? 'Zu heiß / Rissgefahr' :
+                        finalFreshTemp < 5 ? inhalt.werte.frostgefahrZuKalt :
+                        finalFreshTemp > 30 ? inhalt.werte.zuHeißRissgefahr :
                         'Optimal'
                       })
                     </strong>
                     <span className="text-xxs opacity-90">
-                      {finalFreshTemp < 5 ? 'Der Beton droht einzufrieren und die Hydratation stagniert. Maßnahme: Heizen Sie das Anmachwasser (T_W > 50°C) oder erwärmen Sie die Zuschläge.' :
-                       finalFreshTemp > 30 ? 'Die Erhärtungsreaktion läuft zu schnell ab, was Spannungsrisse begünstigt. Maßnahme: Kühlen Sie das Wasser oder setze Schuppeneis ein.' :
-                       'Die Frischbetontemperatur entspricht den baustellenpraktischen Vorschriften der DIN EN 206.'}
+                      {finalFreshTemp < 5 ? inhalt.werte.derBetonDrohtEinzufrieren :
+                       finalFreshTemp > 30 ? inhalt.werte.dieErhärtungsreaktionLäuftZu :
+                       inhalt.werte.dieFrischbetontemperaturEntsprichtDen}
                     </span>
                   </div>
                 </div>
@@ -554,13 +497,9 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
-                <span>Druckfestigkeitsverlauf &amp; Reifeentwicklung nach Eurocode 2</span>
+                <span><MdText text={inhalt.texte.druckfestigkeitsverlaufReifeentwicklungN} /></span>
               </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed font-normal">
-                <strong>Was?</strong> Schätzt die tatsächliche Druckfestigkeit des Betons im Bauteil nach <InlineMath math="t" /> Tagen bei einer bestimmten, konstanten mittleren Nachbehandlungstemperatur. <br />
-                <strong>Warum?</strong> Auf Baustellen muss für Ausschalfristen oder Vorspannungen gewusst werden, wann der Beton eine ausreichende Mindestfestigkeit (z.B. <InlineMath math="15 \, \text{N/mm}^2" />) erreicht hat. <br />
-                <strong>Wie?</strong> Bestimmung des temperaturkorrigierten Äquivalenten Reifealters nach <strong>Arrhenius</strong> und Berechnung der zeitlichen Festigkeit nach Eurocode 2 (DIN EN 1992-1-1).
-              </p>
+              <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasSchätztDieTatsächliche} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -570,8 +509,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Concrete class */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
-                  <label className="font-bold text-slate-700 block">Festigkeitsklasse f_ck (28d):</label>
-                  <select aria-label="Festigkeitsklasse f_ck (28d)" 
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.festigkeitsklasseFCk28d} /></label>
+                  <select aria-label={inhalt.werte.festigkeitsklasseFCk28d} 
                     value={strengthClassFck} 
                     onChange={(e) => setStrengthClassFck(Number(e.target.value))}
                     className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -587,8 +526,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Cement type rapidness */}
                 <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
-                  <label className="font-bold text-slate-700 block">Zementerhärtungsklasse (s-Wert):</label>
-                  <select aria-label="Zementerhärtungsklasse (s-Wert)" 
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.zementerhärtungsklasseSWert} /></label>
+                  <select aria-label={inhalt.werte.zementerhärtungsklasseSWert} 
                     value={strengthCementType} 
                     onChange={(e) => setStrengthCementType(e.target.value as 'S' | 'N' | 'R')}
                     className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -601,8 +540,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Curing Temperature */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Mittlere Bauteiltemperatur (°C):</label>
-                  <input aria-label="Mittlere Bauteiltemperatur (°C)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.mittlereBauteiltemperaturC} /></label>
+                  <input aria-label={inhalt.werte.mittlereBauteiltemperaturC} 
                     type="range" min="2" max="40" step="1"
                     value={strengthCureTemp}
                     onChange={(e) => setStrengthCureTemp(Number(e.target.value))}
@@ -613,8 +552,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* Age in days */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
-                  <label className="text-xs text-text-main/80 block font-bold">Aktuelles Alter <InlineMath math="t" /> (Tage):</label>
-                  <input aria-label="Aktuelles Alter (Tage)" 
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.aktuellesAlterTTage} /></label>
+                  <input aria-label={inhalt.werte.aktuellesAlterTage} 
                     type="range" min="1" max="90" step="1"
                     value={strengthCureAge}
                     onChange={(e) => setStrengthCureAge(Number(e.target.value))}
@@ -626,36 +565,28 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
               {/* CALCULATIONS */}
               <div className="md:col-span-2 bg-white p-5 rounded-xl border border-slate-200 space-y-4">
-                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">Erhärtungsfortschritt nach EN 1992-1-1</h4>
+                <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.erhärtungsfortschrittNachEn1992} /></h4>
 
                 <div className="space-y-3.5 text-xs text-text-main/80 leading-relaxed font-normal">
-                  <div>
-                    <strong>Schritt 1: Reifealter (Arrhenius) berechnen</strong>
-                    <p className="mt-1">
-                      Aufgrund erhöhter oder verringerter Hydratationstemperatur wird die wirksame Reifezeit normativ skaliert:
-                    </p>
+                  <div><MdText text={inhalt.texte.schritt1ReifealterArrhenius} /><p className="mt-1"><MdText text={inhalt.texte.aufgrundErhöhterOderVerringerter} /></p>
                     <BlockMath math={`t_T = t \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + T} \\right] \\right)`} />
                     <BlockMath math={`t_T = \\color{#A3113E}{${formatDeTeXWert(strengthCureAge)}} \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + \\color{#A3113E}{${formatDeTeXWert(strengthCureTemp)}}} \\right] \\right) = \\color{#A3113E}{${formatDeTeX(maturityAge, 2)}} \\, \\text{Tage}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Schritt 2: Festigkeitsbeiwert <InlineMath math="\beta_{cc}" /> ermitteln</strong>
-                    <BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( s \\cdot \\left[ 1 - \\sqrt{\\frac{28}{t_T}} \\right] \\right)`} />
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2FestigkeitsbeiwertBeta} /><BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( s \\cdot \\left[ 1 - \\sqrt{\\frac{28}{t_T}} \\right] \\right)`} />
                     <BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( ${formatDeTeXWert(s_param)} \\cdot \\left[ 1 - \\sqrt{\\frac{28}{\\color{#A3113E}{${formatDeTeX(maturityAge, 2)}}}} \\right] \\right) = \\color{#A3113E}{${formatDeTeX(beta_cc, 4)}}`} />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-3">
-                    <strong>Schritt 3: Erreichte Druckfestigkeiten</strong>
-                    <div className="grid grid-cols-2 gap-4 mt-2 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
+                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3ErreichteDruckfestigkeiten} /><div className="grid grid-cols-2 gap-4 mt-2 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
                       <div>
-                        <p className="font-bold text-slate-700">Mittlere Festigkeit f_cm(t):</p>
+                        <p className="font-bold text-slate-700"><MdText text={inhalt.texte.mittlereFestigkeitFCm} /></p>
                         <p className="text-xs text-slate-900 font-extrabold mt-1"><span className="text-shiraz">{formatDeZahl(f_cm_t, 2)}</span> N/mm²</p>
-                        <p className="text-[10px] text-slate-500">von f_cm,28 = {formatDeWert(f_cm_28)} MPa</p>
+                        <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.vonFCm28} />{formatDeWert(f_cm_28)} MPa</p>
                       </div>
                       <div>
-                        <p className="font-bold text-slate-700">Charakteristische Festigkeit f_ck(t):</p>
+                        <p className="font-bold text-slate-700"><MdText text={inhalt.texte.charakteristischeFestigkeitFCk} /></p>
                         <p className="text-xs text-shiraz font-extrabold mt-1">{formatDeZahl(f_ck_t, 2)} N/mm²</p>
-                        <p className="text-[10px] text-slate-500">von f_ck,28 = {formatDeWert(strengthClassFck)} MPa</p>
+                        <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.vonFCk28} />{formatDeWert(strengthClassFck)} MPa</p>
                       </div>
                     </div>
                   </div>
@@ -663,15 +594,13 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 {/* STATUS AND EXCLUSION ASSESSMENT */}
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2 text-xs">
-                  <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1">Ausschaleignung (CEN-Richtwert)</span>
+                  <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1"><MdText text={inhalt.texte.ausschaleignungCenRichtwert} /></span>
                   <div className="flex items-center gap-2 mt-1">
                     <span className={`w-3 h-3 rounded-full ${beta_cc >= 0.5 ? 'bg-green-500' : 'bg-amber-500'}`} />
-                    <p className="font-normal">
-                      Der Beton hat <strong>{formatDeZahl((beta_cc * 100), 1)}%</strong> seiner 28-Tage-Nennfestigkeit erreicht. 
-                      {beta_cc >= 0.5 ? (
-                        <span className="text-green-800"> Ein Ausschalen tragender Bauteile ist nach DBV-Leitfaden im Regelfall zulässig (&gt; 50% Festigkeit).</span>
+                    <p className="font-normal"><MdText text={inhalt.texte.derBetonHat} /><strong>{formatDeZahl((beta_cc * 100), 1)}%</strong><MdText text={inhalt.texte.seiner28TageNennfestigkeit} />{beta_cc >= 0.5 ? (
+                        <span className="text-green-800"><MdText text={inhalt.texte.einAusschalenTragenderBauteile} /></span>
                       ) : (
-                        <span className="text-amber-800"> Ein Ausschalen tragender Bauteile wird noch nicht empfohlen (erforderlich sind i.d.R. ≥ 50% der charakteristischen Nennfestigkeit).</span>
+                        <span className="text-amber-800"><MdText text={inhalt.texte.einAusschalenTragenderBauteile2} /></span>
                       )}
                     </p>
                   </div>

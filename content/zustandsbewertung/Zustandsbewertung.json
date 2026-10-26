@@ -1,0 +1,478 @@
+{
+  "texte": {
+    "din1076BrückenIngenieurbauten": " DIN 1076 (Brücken & Ingenieurbauten)",
+    "vdi6200StandsicherheitIm": " VDI 6200 (Standsicherheit im Hochbau)",
+    "typischeBauschäden": " Typische Bauschäden ↗",
+    "notenrechnerKonverter": " Notenrechner & Konverter",
+    "überwachungPrüfungNachDin": "Überwachung & Prüfung nach DIN 1076",
+    "dieDeutscheNormDin": "Die deutsche Norm **DIN 1076** \"Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung\" (Ausgabe 2026-01; ersetzt 1999-11, Einführung durch die Baulastträger schrittweise) regelt die systematische Überprüfung der Verkehrssicherheit, Standsicherheit und Dauerhaftigkeit von Ingenieurbauwerken wie Brücken, Tunneln, Trogbauwerken, Stützwänden und Lärmschutzwänden im öffentlichen Straßennetz. Sie bildet das Fundament der staatlichen Brückenüberwachung in Deutschland.",
+    "hauptprüfungH": "Hauptprüfung (H)",
+    "alle6JahreEingehende": "**Alle 6 Jahre:** Eingehende, handnahe Prüfung aller Bauteile unter Zuhilfenahme von Prüfgeräten (Hubsteiger, Brückenuntersichtsgeräte) und Messtechnik durch einen besonders qualifizierten Prüfingenieur. Alle Risse, Hohlstellen, Chloridwerte und Carbonatisierungstiefen werden exakt analysiert.",
+    "einfachePrüfungE": "Einfache Prüfung (E)",
+    "t3JahreNachHauptprüfung": "**3 Jahre nach Hauptprüfung:** Eine Funktions- und Sichtprüfung ohne schwere Hilfs- und Zugangsgeräte (Zwischenprüfung). Es wird kontrolliert, ob seit der letzten Hauptprüfung neue Schäden entstanden sind oder sich dokumentierte Verschlechterungen beschleunigt haben.",
+    "besichtigungB": "Besichtigung (B)",
+    "jährlichAußerImH": "**Jährlich (außer im H/E-Jahr):** Grobe Funktionsprüfung und allgemeine Sichtkontrolle durch geschulte Techniker oder Meister der Straßenbauverwaltung. Ziel ist das Entdecken offensichtlicher neuer Risse, Fugenschäden, Auswaschungen oder Betonausbrüche.",
+    "laufendeBeobachtungL": "Laufende Beobachtung (L)",
+    "inDerRegelZweimal": "**In der Regel zweimal jährlich:** Überwachung durch das Straßenunterhaltungspersonal (Straßenwärter) im Zuge ihrer regulären Kontrollfahrten. Dokumentiert werden plötzliche Anomalien wie Anfahrschäden, akute Setzungen oder Hochwasserbeeinflussungen.",
+    "sonderprüfungS": "Sonderprüfung (S)",
+    "anlassbezogenEingehendeBauwerksprüfungUn": "**Anlassbezogen:** Eingehende Bauwerksprüfung unabhängig von den Regelintervallen nach außergewöhnlichen Ereignissen wie Orkanen, Erdbeben, extremen Schwerlasttransporten oder Schiffsanprall, um unbemerkt entstandene Strukturschäden auszuschließen.",
+    "prüfungVorAbnahmeVor": "Prüfung vor Abnahme / vor Ablauf der Verjährungsfrist",
+    "jeweilsAlsHauptprüfungPrüfung": "**Jeweils als Hauptprüfung:** Prüfung vor der Abnahme des Neubaus und Prüfung vor Ablauf der Verjährungsfrist für Mängelansprüche, damit Mängel rechtzeitig geltend gemacht werden können.",
+    "bauwerksbewertungZustandsnotenNachRi": "Bauwerksbewertung (Zustandsnoten nach RI-EBW-PRÜF)",
+    "dieBewertungEinesIngenieurbauwerks": "Die Bewertung eines Ingenieurbauwerks erfolgt in Deutschland standardisiert über das IT-System **SIB-Bauwerke** auf Grundlage der Richtlinie **RI-EBW-PRÜF**. Die Note ist ein nach festgelegtem Algorithmus ermittelter Indikator für den Handlungsbedarf, der auf den Einzelbewertungen des Prüfers beruht.",
+    "dasBauwerksbauteilWeistKeine": "Das Bauwerksbauteil weist keine oder nur unerhebliche Mängel auf. Standsicherheit, Verkehrssicherheit und Dauerhaftigkeit sind vollumfänglich und ohne Einschränkung gegeben.",
+    "geringeMängelVorhandenZ": "Geringe Mängel vorhanden (z.B. oberflächlicher Algenbewuchs, minimale Ausblühungen). Standsicherheit und Verkehrssicherheit sind unbeeinträchtigt. Die Dauerhaftigkeit kann langfristig gemindert werden.",
+    "mittlereMängelErkennbarZ": "Mittlere Mängel erkennbar (z.B. oberflächennahe Trennrisse im Beton, Moosbildung). Standsicherheit und Verkehrssicherheit sind gegeben. Die Dauerhaftigkeit ist örtlich beeinträchtigt. Sanierungsmaßnahmen sind mittelfristig einzuplanen (Beobachtungsstatus).",
+    "größereMängelImEinzelnen": "Größere Mängel im Einzelnen oder erhebliche Häufung kleinerer Schäden (z.B. tiefe carbonatisierte Risse, beginnende großflächige Korrosion). Die Standsicherheit und Verkehrssicherheit sind kurzfristig gegeben, jedoch ist die Dauerhaftigkeit akut gefährdet. Rechtzeitige Planung der Sanierung geboten.",
+    "nichtAusreichend": "Nicht ausreichend",
+    "schwereMängelBeeinträchtigenDas": "Schwere Mängel beeinträchtigen das Bauteil (z.B. klaffende Risse & Abplatzungen an der Zugbewehrung, starker Querschnittsentzug an Elementen). Die Standsicherheit und/oder die Verkehrssicherheit sind erheblich beeinträchtigt. Eine zeitnahe Instandsetzung ist zwingend erforderlich.",
+    "kritischerZustandSehrSchwere": "Kritischer Zustand! Sehr schwere Mängel gefährden die Standsicherheit (z.B. Versagen von Spanngliedern, akuter Bruchverdacht, herabfallende große Betonteile über Verkehrswegen). Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben; sofortige Maßnahmen (Sperrung, Lastbeschränkung, Instandsetzung) sind erforderlich.",
+    "mängelEinzelnoten04": "Mängel-Einzelnoten (0 - 4) & Bewertungsschema nach RI-EBW-PRÜF / DIN 1076",
+    "nachRiEbwPrüf": "Nach **RI-EBW-PRÜF (DIN 1076)** werden einzelne Schäden und Abweichungen an Bauteilen strukturiert erfasst. Dabei wird jeder Mangel bezüglich der drei Hauptkriterien **Standsicherheit (S)**, **Verkehrssicherheit (V)** und **Dauerhaftigkeit (D)** in eine Bewertungsstufe von **0 bis 4** eingestuft. Für den Hochbau enthält VDI 6200 Blatt 1.1:2026-06 ein eigenes Bewertungs- und Notensystem; die folgende Darstellung bezieht sich auf RI-EBW-PRÜF.",
+    "keinOderNurEin": "Kein oder nur ein vernachlässigbar kleiner Mangel. Keine Auswirkungen auf Standsicherheit, Verkehrssicherheit oder Dauerhaftigkeit.",
+    "maßnahmeKeineNötig": "Maßnahme: Keine nötig.",
+    "geringerMangel": "Geringer Mangel",
+    "kleinererLokalerMangelKeine": "Kleinerer, lokaler Mangel. Keine Beeinträchtigung von S oder V. Extrem langfristige, geringe Auswirkung auf D.",
+    "maßnahmeLaufendeBeobachtung": "Maßnahme: Laufende Beobachtung.",
+    "mäßigerMangel": "Mäßiger Mangel",
+    "deutlicherMangelZB": "Deutlicher Mangel (z.B. flache Betonabplatzung, Flugrost). Keine Gefährdung für S/V, Dauerhaftigkeit D mittelfristig reduziert.",
+    "maßnahmeMittelfristigeSanierung": "Maßnahme: Mittelfristige Sanierung.",
+    "schwererMangel": "Schwerer Mangel",
+    "schwerwiegenderMangelSOder": "Schwerwiegender Mangel. S oder V sind spürbar eingeschränkt. D ist akut gefährdet. Handnahe statische Begutachtung ratsam.",
+    "maßnahmeKurzfristigeSanierung": "Maßnahme: Kurzfristige Sanierung.",
+    "sehrSchwererMangelStandsicherheit": "Sehr schwerer Mangel: Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.",
+    "maßnahmeSofortmaßnahmenSperrung": "Maßnahme: Sofortmaßnahmen (Sperrung).",
+    "dasBewertungsschemaZurGesamtbauwerksnote": "Das Bewertungsschema zur Gesamtbauwerksnote",
+    "vereinfachteDarstellungDesAlgorithmus": "Vereinfachte Darstellung des Algorithmus (maßgebend sind RI-EBW-PRÜF und SIB-Bauwerke):",
+    "basiszahlJeBauteilgruppeErgibt": "**Basiszahl:** Je Bauteilgruppe ergibt sich eine Basiszahl aus der ungünstigsten Einzelbewertung (S, V, D).",
+    "zuUndAbschlägeSchadensumfang": "**Zu- und Abschläge:** Schadensumfang und Anzahl der Schäden führen zu Zu- bzw. Abschlägen. Der Rechner setzt didaktisch vereinfacht +0,1 je weiterem Schaden an; feste Inkremente schreibt das Regelwerk nicht vor.",
+    "bauwerksnoteMaßgebendIstDie": "**Bauwerksnote:** Maßgebend ist die ungünstigste Bauteilgruppe (Notenbereich 1,0 bis 4,0).",
+    "überprüfungNachVdi6200": "Überprüfung nach VDI 6200",
+    "dieRichtlinieVdi6200": "Die Richtlinie **VDI 6200 \"Standsicherheit von Bauwerken - Regelmäßige Überprüfung\"** regelt im Hoch- und Industriebau (im Gegensatz zur DIN 1076 für Straßeninfrastruktur) die regelmäßige und methodische Prüfung der Standsicherheit. Die Reihe VDI 6200 ist ein privates technisches Regelwerk, keine Rechtsnorm und nicht als Technische Baubestimmung eingeführt. Sie konkretisiert die Instandhaltungspflicht des Eigentümers (§ 3 MBO bzw. Art. 3 BayBO, §§ 823, 836–838 BGB) und gilt als anerkannte Regel der Technik; verbindlich wird sie durch Vertrag. Für Bundesbauten gilt zusätzlich die RÜV (2008). Ausgaben: VDI 6200:2010-02 (Grundrichtlinie) und VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation, Bewertung und Zustandsnote).",
+    "prüfungsartenNachVdi6200": "Prüfungsarten nach VDI 6200",
+    "sichtkontrolleDurchDenEigentümer": "Sichtkontrolle durch den Eigentümer/Verfügungsberechtigten oder eine beauftragte Person. Erkennen von offensichtlichen Mängeln, starken Rissen, großem Bewuchs, Feuchtpunkte oder Verformungen.",
+    "eingehendeSichtprüfungDurchEine": "Eingehende Sichtprüfung durch eine fachkundige Person. Systematische Erfassung aller Bauteile, Protokollierung, ggf. vereinfachte Messungen des Rissfortschritts oder der Holznässe.",
+    "eingehendeÜberprüfung": "Eingehende Überprüfung",
+    "detaillierteTiefgreifendeBauwerksuntersu": "Detaillierte, tiefgreifende Bauwerksuntersuchung durch eine besonders fachkundige Person (handnahe Prüfung, ggf. Materialentnahmen, Sicherheitsanalyse). Häufiger Einsatz zerstörungsfreier Prüfverfahren (ZfP), Endoskopie, Bauteilöffnungen oder rechnerischer Standsicherheitsnachweise.",
+    "matrixWerPrüftWann": "Matrix: Wer prüft wann, was, wie und warum?",
+    "eingehendeÜberprüfung2": "Eingehende Überprüfung",
+    "werQualifikation": "Wer? (Qualifikation)",
+    "eigentümerVerfügungsberechtigterOderEine": "**Eigentümer/Verfügungsberechtigter** oder eine von ihm beauftragte Person.",
+    "fachkundigePersonAnforderungenNach": "**Fachkundige Person** (Anforderungen nach VDI 6200; ein eigenes Blatt zu Qualifikationen ist in Bearbeitung).",
+    "besondersFachkundigePersonMit": "**Besonders fachkundige Person** mit vertiefter Erfahrung in Tragwerksplanung und Bauwerksdiagnostik.",
+    "wannIntervall": "Wann? (Intervall)",
+    "vdi6200Tab3": "VDI 6200 Tab. 3: CC3 alle 1–2 Jahre, CC2 alle 2–3 Jahre, CC1 alle 3–5 Jahre; zusätzlich nach außergewöhnlichen Ereignissen (Sturm, Schnee, Brand).",
+    "cc3Alle23": "CC3 alle 2–3 Jahre, CC2 alle 4–5 Jahre, CC1 nach Erfordernis.",
+    "cc3Alle69": "CC3 alle 6–9 Jahre, CC2 alle 12–15 Jahre, CC1 nach Erfordernis; außerdem anlassbezogen.",
+    "wasUmfang": "Was? (Umfang)",
+    "offensichtlicheMängelGrobeRisse": "Offensichtliche Mängel, grobe Risse, Feuchtigkeitsschäden, extreme Verformungen, Bauteilbewuchs.",
+    "systematischeUndMesstechnischeErfassung": "Systematische und messtechnische Erfassung aller tragenden und sicherheitsrelevanten Bauteile, Kartierung von Rissbreiten und Rissfortschritt.",
+    "detaillierteMaterialprüfungKarbonatisier": "Detaillierte Materialprüfung (Karbonatisierungstiefe, Chloridprofile, Festigkeit, Bewehrungsscan), Bauteilöffnungen und ggf. statische Nachrechnung.",
+    "wieMethode": "Wie? (Methode)",
+    "einfacheSichtprüfungVomBegehbaren": "Einfache Sichtprüfung vom begehbaren Boden aus (ohne technische Hilfsmittel).",
+    "handnaheSichtprüfungMithilfeVon": "Handnahe Sichtprüfung mithilfe von Leitern, Arbeitsbühnen, einfachem Werkzeug (z.B. Klopfhammer, Risslineal).",
+    "zerstörungsfreiePrüfverfahrenZfpEndoskop": "Zerstörungsfreie Prüfverfahren (ZfP), Endoskopie, Magnetinduktive Bewehrungsortung, Ultraschallprüfung, Bohrkernentnahmen.",
+    "warumZiel": "Warum? (Ziel)",
+    "früherkennungOffensichtlicherAkuterGefah": "Früherkennung offensichtlicher akuter Gefahren zur Verkehrssicherung.",
+    "detaillierteBeurteilungDerStandsicherhei": "Detaillierte Beurteilung der Standsicherheit und Dauerhaftigkeit, Ermittlung des Instandsetzungsbedarfs.",
+    "ermittlungTiefererSchadensursachenResttr": "Ermittlung tieferer Schadensursachen, Resttragfähigkeitsberechnung, finale Vorbereitung des Instandsetzungskonstrukts.",
+    "bewertungskriterienSVD": "Bewertungskriterien S, V, D (RI-EBW-PRÜF; VDI 6200 Blatt 1.1)",
+    "tragfähigkeitUndVerformungsverhaltenDer": "Tragfähigkeit und Verformungsverhalten der lasttragenden Struktur. Querschnittsschwächungen, Risse in den Zugzonen oder fehlgeschlagene Verbindungen an Statikelementen haben direkte Relevanz auf die Sicherheit vor Einsturz.",
+    "verkehrssicherheitGebrauchstauglichkeit": "Verkehrssicherheit / Gebrauchstauglichkeit",
+    "unmittelbareMechanischeGefahrenFür": "unmittelbare mechanische Gefahren für Nutzer und Unbefugte. Typische Klassiker sind akute herabfallende Betonteile (Betonabplatzung an Fassaden durch Frost/Rost), lose Brüstungsgeländer oder scharfkantige Treppenstufen.",
+    "fortschreitenderVerschleißUndLangfristig": "Fortschreitender Verschleiß und langfristiges Korrosions- oder Materialermüdungsrisiko. Ein feiner Carbonatisierungsriss im Beton gefährdet akut noch keine Standsicherheit, vernichtet aber ohne präventiven Schutz langfristig die Bewehrung.",
+    "schadensfolgeklassenCcNachVdi": "Schadensfolgeklassen (CC) nach VDI 6200, Tab. 1",
+    "vdi6200KnüpftDie": "VDI 6200 knüpft die Überprüfungsintervalle an Schadensfolgeklassen (CC, angelehnt an DIN EN 1990) und nennt dafür Gebäudebeispiele.",
+    "cc1NiedrigeFolgen": "CC 1 (Niedrige Folgen)",
+    "geringesRisikoFürMenschenleben": "Geringes Risiko für Menschenleben. Kleine wirtschaftliche, umwelttechnische oder soziale Versagensfolgen.",
+    "beispieleEinUndMehrfamilienhäuser": "Beispiele: Ein- und Mehrfamilienhäuser, landwirtschaftliche Gebäude, robuste Bauwerke mit Stützweiten < 6 m.",
+    "cc2MittlereFolgen": "CC 2 (Mittlere Folgen)",
+    "mittleresRisikoFürMenschenleben": "Mittleres Risiko für Menschenleben. Beträchtliche wirtschaftliche Schäden im Falle eines Bauteilversagens.",
+    "beispieleBürogebäudeIndustriebautenKrank": "Beispiele: Bürogebäude, Industriebauten, Krankenhäuser, Schulen, Hallenbäder, Sporthallen, Bauwerke über 60 m Höhe, große Vordächer, Balkone, vorgehängte Fassaden, Kuppeln.",
+    "cc3HoheFolgen": "CC 3 (Hohe Folgen)",
+    "extremesRisikoFürMenschenleben": "Extremes Risiko für Menschenleben. Enorme wirtschaftliche, gesellschaftliche oder umweltbezogene Folgeverluste.",
+    "beispieleVersammlungsstättenFürMehr": "Beispiele: Versammlungsstätten für mehr als 5 000 Personen, Stadien, Kongresshallen, Mehrzweckarenen.",
+    "robustheitsklassenRcDesTragwerks": "Robustheitsklassen (RC) des Tragwerks nach VDI 6200, Abschn. 4.2",
+    "nebenDenVersagensfolgenSpielt": "Neben den Versagensfolgen spielt die Tragwerkkonstruktion und ihre Unempfindlichkeit gegenüber unerwarteten Schädigungen (Robustheit) eine tragende Rolle bei der Definition der notwendigen Überwachungsabstände.",
+    "rc1GeringeRobustheit": "RC 1 – geringe Robustheit",
+    "statischBestimmtOhneSystemreserven": "Statisch bestimmt, ohne Systemreserven, imperfektionsempfindlich bzw. spröde.",
+    "beispieleEinfeldträgerSchlankeSchalen": "Beispiele: Einfeldträger, schlanke Schalen, Glas- und Gusskonstruktionen.",
+    "statischUnbestimmtMitSystemreserven": "Statisch unbestimmt mit Systemreserven, elastisch-plastisches Verhalten.",
+    "beispieleDurchlaufträgerEingeschossigeRa": "Beispiele: Durchlaufträger, eingeschossige Rahmen.",
+    "großeSystemredundanz": "Große Systemredundanz.",
+    "beispieleMehrgeschossigeRahmenVielfach": "Beispiele: mehrgeschossige Rahmen, vielfach unbestimmte und seilverspannte Systeme.",
+    "rc4NachgewieseneRobustheit": "RC 4 – nachgewiesene Robustheit",
+    "robustheitFürAlternativeGefährdungsszena": "Robustheit für alternative Gefährdungsszenarien rechnerisch nachgewiesen.",
+    "beispielNachweisDesStützenausfalls": "Beispiel: Nachweis des Stützenausfalls.",
+    "didaktischesModellNichtBestandteil": "Didaktisches Modell (nicht Bestandteil von VDI 6200): Prüfklassen PK 1 – PK 4",
+    "eigeneVeranschaulichungWieSchadensfolge": "Eigene Veranschaulichung, wie Schadensfolge (CC) und Robustheit (RC) zusammenwirken. VDI 6200 selbst legt die Intervalle über die Schadensfolgeklasse fest (Tab. 3); eine geringe Robustheit spricht für Intervalle an der unteren Grenze:",
+    "schadensfolgeklasseRobustheit": "Schadensfolgeklasse / Robustheit",
+    "rc34Robust": "RC 3/4 (robust)",
+    "rc1GeringRobust": "RC 1 (gering robust)",
+    "cc1GeringeFolgen": "CC1 (Geringe Folgen)",
+    "pk1Gering": "PK 1 (Gering)",
+    "pk1Gering2": "PK 1 (Gering)",
+    "pk2Mitte": "PK 2 (Mitte)",
+    "cc2MittlereFolgen2": "CC2 (Mittlere Folgen)",
+    "pk2Mitte2": "PK 2 (Mitte)",
+    "pk3Erhöht": "PK 3 (Erhöht)",
+    "pk4SehrHoch": "PK 4 (Sehr hoch)",
+    "cc3HoheFolgen2": "CC3 (Hohe Folgen)",
+    "pk3Erhöht2": "PK 3 (Erhöht)",
+    "pk4SehrHoch2": "PK 4 (Sehr hoch)",
+    "pk4SehrHoch3": "PK 4 (Sehr hoch)",
+    "notenrechnerSchulnotenKonverter": "Notenrechner & Schulnoten-Konverter",
+    "didaktischeVeranschaulichungDerZustandsn": "Didaktische Veranschaulichung der Zustandsnote (RI-EBW-PRÜF) über die sechs Notenbereiche – keine Regelwerksgröße; eine einheitliche oder normative Umrechnung in Schulnoten gibt es nicht.",
+    "sVDEinzelprüfung": "S-V-D Einzelprüfung",
+    "manuelleBaustoffBauwerksnoteZustandsnote": "Manuelle Baustoff- / Bauwerksnote (Zustandsnote)",
+    "din1076Vdi6200": "DIN 1076 / VDI 6200",
+    "t10SehrGut": "1,0 (Sehr gut)",
+    "t40Ungenügend": "4,0 (Ungenügend)",
+    "t10SehrGut2": "1,0 (sehr gut)",
+    "t20Befriedigend": "2,0 (befriedigend)",
+    "t30NichtAusreichend": "3,0 (nicht ausreichend)",
+    "t40Ungenügend2": "4,0 (ungenügend)",
+    "sVDEinzelbewertung": "S, V, D Einzelbewertung (angelehnt an RI-EBW-PRÜF bzw. VDI 6200 Blatt 1.1)",
+    "weitereSchädenVereinfachterZuschlag": "Weitere Schäden (vereinfachter Zuschlag +0,1)",
+    "didaktischeVereinfachungRiEbw": "Didaktische Vereinfachung – RI-EBW-PRÜF arbeitet mit Zu-/Abschlägen nach Umfang",
+    "prüfszenarienLaden": "Prüfszenarien laden:",
+    "neubauNote10": "Neubau (Note 1,0)",
+    "normalerVerschleißNote2": "Normaler Verschleiß (Note 2,2)",
+    "sanierungsstauNote33": "Sanierungsstau (Note 3,3)",
+    "kritischerZustandNote4": "Kritischer Zustand (Note 4,0)",
+    "hintergrundHerkunft": "Hintergrund & Herkunft:",
+    "dieZustandsnoteNachRi": "Die Zustandsnote nach RI-EBW-PRÜF kennt sechs Notenbereiche. Zur Veranschaulichung wird jeder Bereich kategorial einer Schulnote zugeordnet (Praxisbeispiele für Umrechnungen existieren, eine normative Umrechnung nicht):",
+    "sehrGut1Gut": "sehr gut → 1 · gut → 2 · befriedigend → 3 · ausreichend → 4 · nicht ausreichend → 5 · ungenügend → 6",
+    "eineLineareUmrechnungPasst": "Eine lineare Umrechnung passt nicht zu den RI-EBW-Bereichen (z. B. ZN 1,4 „sehr gut“ würde sonst 1,7 ergeben).",
+    "berechnungsKonverterergebnis": "Berechnungs- & Konverterergebnis",
+    "schulnoteDidaktisch": "Schulnote (didaktisch)",
+    "erforderlicheMaßnahmen": "Erforderliche Maßnahmen:",
+    "handlungsbedarfDidaktischAngelehntAn": "Handlungsbedarf (didaktisch, angelehnt an RI-EBW-PRÜF)",
+    "typischeMaßnahmenBeispiele": "Typische Maßnahmen (Beispiele):",
+    "sehrGut1": "Sehr gut (1)",
+    "befriedigend3": "Befriedigend (3)",
+    "ungenügend6": "Ungenügend (6)"
+  },
+  "werte": {
+    "alleKategorien": "Alle Kategorien",
+    "öffnetDasUntermodulTypische": "Öffnet das Untermodul „Typische Bauschäden“",
+    "sStandsicherheit": "S - Standsicherheit",
+    "auswirkungAufTragfähigkeitUnd": "Auswirkung auf Tragfähigkeit und Bauteileigengewicht.",
+    "vVerkehrssicherheitBzwGebrauchstauglichk": "V - Verkehrssicherheit bzw. Gebrauchstauglichkeit",
+    "unmittelbareGefahrFürNutzer": "Unmittelbare Gefahr für Nutzer durch herabfallende Teile o.ä.",
+    "dDauerhaftigkeit": "D - Dauerhaftigkeit",
+    "restnutzungsdauerVerschleißrisikoZB": "Restnutzungsdauer- & Verschleißrisiko (z.B. Korrosion).",
+    "bauwerkBefindetSichIm": "Bauwerk befindet sich im ordnungsgemäßen Regelbetrieb. Keine sicherheitsrelevanten Abweichungen.",
+    "nächsteHauptprüfungImRegelzyklus": "Nächste Hauptprüfung im Regelzyklus nach DIN 1076.",
+    "ungenügendSofortigerHandlungsbedarf": "Ungenügend: sofortiger Handlungsbedarf",
+    "einzelbewertungS4Standsicherheit": "Einzelbewertung S = 4: Standsicherheit nicht mehr gegeben.",
+    "einzelbewertungV4Verkehrssicherheit": "Einzelbewertung V = 4: Verkehrssicherheit nicht mehr gegeben (z. B. herabfallende Teile).",
+    "standsicherheitUndOderVerkehrssicherheit": "Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.",
+    "sofortmaßnahmenSperrungLastbeschränkungN": "Sofortmaßnahmen (Sperrung, Lastbeschränkung, Notsicherung); weitere Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.",
+    "nichtAusreichendKurzfristigerHandlungsbe": "Nicht ausreichend: kurzfristiger Handlungsbedarf",
+    "deutlicheMängelAnStandsicherheitsrelevan": "Deutliche Mängel an standsicherheitsrelevanten Tragelementen. Schnelles Handeln erforderlich.",
+    "fristenLegtDerPrüfer": "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.",
+    "ausreichendInstandsetzungPlanen": "Ausreichend: Instandsetzung planen",
+    "größereMängelBeeinträchtigenDie": "Größere Mängel beeinträchtigen die Dauerhaftigkeit des Ingenieurbauwerks erheblich.",
+    "fristenLegtDerPrüfer2": "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.",
+    "befriedigendBeobachtungMittelfristigeIns": "Befriedigend: Beobachtung, mittelfristige Instandsetzung",
+    "mängelVorhandenWelcheDie": "Mängel vorhanden, welche die Dauerhaftigkeit des Baustoff-Gefüges beeinträchtigen.",
+    "fristenLegtDerPrüfer3": "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.",
+    "gutBeobachtungImRegelzyklus": "Gut: Beobachtung im Regelzyklus",
+    "geringfügigeVerschleißmängelOhneUnmittel": "Geringfügige Verschleißmängel ohne unmittelbare statische Auswirkung am Bauteil.",
+    "instandhaltungBeiRegulärenWartungszyklen": "Instandhaltung bei regulären Wartungszyklen.",
+    "beispiel1PrüfplanEiner": "Beispiel 1: Prüfplan einer Brücke nach DIN 1076",
+    "nachDin10762026": "Nach DIN 1076:2026-01 kommen u. a. Anforderungen an die Qualifikation des Prüfpersonals, das Bauwerksbuch und Sonderprüfungen hinzu; anlassbezogene Prüfungen (Unfall, Hochwasser) bleiben unabhängig vom Turnus.",
+    "din1076202601": "DIN 1076:2026-01; RI-EBW-PRÜF",
+    "beispiel2ZuverlässigkeitsindexEines": "Beispiel 2: Zuverlässigkeitsindex eines bestehenden Bauteils",
+    "fürBestehendeTragwerkeDürfen": "Für bestehende Tragwerke dürfen nach EN 1990-2:2026 abweichende Zielwerte begründet werden (z. B. Restnutzungsdauer, Kosten der Ertüchtigung). Die Berechnung zeigt das Prinzip – reale Nachweise berücksichtigen Verteilungstypen und Modellunsicherheiten.",
+    "dinEn1990Anhang": "DIN EN 1990, Anhang C; EN 1990-2:2026",
+    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, VDI 6200 Blatt 1.1:2026-06, Zuverlässigkeit geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "SCHAEDEN": [
+      {
+        "id": 1,
+        "kategorie": "beton",
+        "titel": "Risse im Beton",
+        "beschreibung": "Trennungsrisse, Biegerisse, Schwindrisse oder Setzungsrisse, die die Dauerhaftigkeit oder Tragfähigkeit beeinträchtigen können.",
+        "ursachen": [
+          "Überlastung",
+          "Schwinden",
+          "Temperaturzwang",
+          "Baugrundsetzungen"
+        ],
+        "bewertung": "Abhängig von Rissbreite, Tiefe und Rissursache. Risse > 0,3 mm (je nach Expositionsklasse) erfordern oft Instandsetzung.",
+        "massnahmen": [
+          "Rissinjektion (kraftschlüssig oder dehnfähig)",
+          "Verstärkung",
+          "Ursachenbehebung"
+        ]
+      },
+      {
+        "id": 2,
+        "kategorie": "beton",
+        "titel": "Bewehrungskorrosion",
+        "beschreibung": "Rosten der Stahleinlagen, oft einhergehend mit Betonabplatzungen und Querschnittsverlust der Bewehrung.",
+        "ursachen": [
+          "Karbonatisierung",
+          "Chlorideindringung (Tausalz)",
+          "Ungenügende Betondeckung"
+        ],
+        "bewertung": "Kritisch für Tragfähigkeit und Dauerhaftigkeit. Querschnittsverlust muss statisch bewertet werden.",
+        "massnahmen": [
+          "Betonersatz (Instandsetzungsprinzipien nach RiLi-SIB/TR Instandhaltung)",
+          "Kathodischer Korrosionsschutz (KKS)"
+        ]
+      },
+      {
+        "id": 3,
+        "kategorie": "stahl",
+        "titel": "Korrosion von Stahlbauteilen",
+        "beschreibung": "Flächenkorrosion, Lochfraß oder Kontaktkorrosion an Stahlträgern, Stützen oder Verbindungen.",
+        "ursachen": [
+          "Fehlender/beschädigter Korrosionsschutz",
+          "Feuchtigkeit",
+          "Aggressive Umgebungsbedingungen"
+        ],
+        "bewertung": "Ermittlung des Restquerschnitts erforderlich. Bei starkem Abtrag statische Nachrechnung.",
+        "massnahmen": [
+          "Entrosten (Sandstrahlen)",
+          "Neuer Korrosionsschutz",
+          "Verstärkung oder Austausch"
+        ]
+      },
+      {
+        "id": 4,
+        "kategorie": "holz",
+        "titel": "Holzzerstörende Pilze",
+        "beschreibung": "Befall durch Echten Hausschwamm, Kellerschwamm oder Blättlinge, führt zu Braun- oder Weißfäule (Festigkeitsverlust).",
+        "ursachen": [
+          "Erhöhte Holzfeuchte (> 20%)",
+          "Wasserschäden",
+          "Mangelhafte Belüftung"
+        ],
+        "bewertung": "Sehr kritisch. Tragfähigkeit oft massiv reduziert. Hausschwamm erfordert spezielle Sanierung nach DIN 68800-4.",
+        "massnahmen": [
+          "Ursache beheben (Trockenlegung)",
+          "Befallenes Holz großzügig entfernen (Gesundschnitt)",
+          "Chemischer Holzschutz (falls zulässig)"
+        ]
+      },
+      {
+        "id": 5,
+        "kategorie": "holz",
+        "titel": "Holzzerstörende Insekten",
+        "beschreibung": "Befall durch Hausbock, Nagekäfer (Holzwurm) oder Splintholzkäfer. Fraßgänge im Holzinneren.",
+        "ursachen": [
+          "Ausreichende Holzfeuchte",
+          "Fehlender chemischer Holzschutz (bei gefährdeten Bauteilen)"
+        ],
+        "bewertung": "Tragfähigkeitsverlust durch Querschnittsschwächung. Ausmaß oft äußerlich schwer erkennbar.",
+        "massnahmen": [
+          "Heißluftverfahren",
+          "Begasung",
+          "Chemische Bekämpfung",
+          "Austausch stark geschädigter Hölzer"
+        ]
+      },
+      {
+        "id": 6,
+        "kategorie": "mauerwerk",
+        "titel": "Feuchteschäden und Ausblühungen",
+        "beschreibung": "Durchfeuchtung des Mauerwerks, oft begleitet von weißen Salzausblühungen an der Oberfläche.",
+        "ursachen": [
+          "Fehlende/defekte Horizontalsperre",
+          "Schlagregen",
+          "Hygroskopische Feuchte durch Salze"
+        ],
+        "bewertung": "Führt zu Frostschäden, Putzabplatzungen und reduzierter Wärmedämmung.",
+        "massnahmen": [
+          "Nachträgliche Horizontalsperre (Injektion)",
+          "Sanierputzsysteme",
+          "Fassadenimprägnierung"
+        ]
+      },
+      {
+        "id": 7,
+        "kategorie": "mauerwerk",
+        "titel": "Risse im Mauerwerk",
+        "beschreibung": "Setzungsrisse (oft treppenförmig), thermische Risse oder Risse durch Überlastung.",
+        "ursachen": [
+          "Ungleichmäßige Baugrundsetzungen",
+          "Temperaturdehnungen",
+          "Fehlende Dehnfugen"
+        ],
+        "bewertung": "Unterscheidung zwischen statisch relevanten (trennenden) und oberflächlichen Rissen.",
+        "massnahmen": [
+          "Vernadelung",
+          "Spiralanker",
+          "Rissverpressung",
+          "Unterfangung (bei Setzungen)"
+        ]
+      }
+    ],
+    "getSchulnoteInfo": {
+      "grade": 1,
+      "label": "Sehr guter Bauwerkszustand",
+      "color": "bg-emerald-500 text-white",
+      "borderCol": "border-emerald-500",
+      "textColor": "text-emerald-700",
+      "desc": "Sehr guter Bauwerkszustand. Keine oder nur äußerst marginale Mängel erkennbar. Die Standsicherheit, Verkehrssicherheit und Dauerhaftigkeit sind vollumfänglich gegeben.",
+      "action": "Normale Überwachung gem. Regelintervall der VDI 6200 bzw. DIN 1076."
+    },
+    "getSchulnoteInfo_2": {
+      "grade": 2,
+      "label": "Guter Bauwerkszustand",
+      "color": "bg-[#84cc16] text-[#1a3804]",
+      "borderCol": "border-[#84cc16]",
+      "textColor": "text-lime-700",
+      "desc": "Guter Bauwerkszustand. Kleinere Verschleißerscheinungen oder oberflächliche Schäden, welche die Tragwirkung und allgemeine Stabilität nicht beeinflussen.",
+      "action": "Beobachtung im Rahmen regulärer Begehungen, Behebung bei turnusmäßiger Wartung."
+    },
+    "getSchulnoteInfo_3": {
+      "grade": 3,
+      "label": "Befriedigender Bauwerkszustand",
+      "color": "bg-yellow-400 text-text-main",
+      "borderCol": "border-yellow-400",
+      "textColor": "text-yellow-600",
+      "desc": "Befriedigender Bauwerkszustand. Mängel vorhanden, welche die Dauerhaftigkeit (D) beeinträchtigen können, aber die Standsicherheit (S) und Verkehrssicherheit (V) sind zurzeit gewährleistet.",
+      "action": "Instandsetzungsmaßnahmen mittelfristig einplanen, Schadensausbreitung beobachten."
+    },
+    "getSchulnoteInfo_4": {
+      "grade": 4,
+      "label": "Ausreichender Bauwerkszustand",
+      "color": "bg-orange-400 text-white",
+      "borderCol": "border-orange-400",
+      "textColor": "text-orange-600",
+      "desc": "Ausreichender Bauwerkszustand. Größere Mängel. Die Standsicherheit und Verkehrssicherheit sind kurzfristig gegeben, jedoch ist die Dauerhaftigkeit der Bauteile akut gefährdet.",
+      "action": "Planung von Instandsetzungen in naher Zukunft, engere Überwachungsabstände."
+    },
+    "getSchulnoteInfo_5": {
+      "grade": 5,
+      "label": "Nicht ausreichender Bauwerkszustand",
+      "color": "bg-orange-600 text-white",
+      "borderCol": "border-orange-600",
+      "textColor": "text-orange-700",
+      "desc": "Nicht ausreichender Bauwerkszustand. Deutliche Einschränkung der Standsicherheit (S) oder der Verkehrssicherheit (V).",
+      "action": "Feinere statisch-konstruktive Bauwerksuntersuchung sowie kurzfristige Instandsetzung anfordern."
+    },
+    "getSchulnoteInfo_6": {
+      "grade": 6,
+      "label": "Ungenügender Bauwerkszustand",
+      "color": "bg-red-600 text-white",
+      "borderCol": "border-red-600",
+      "textColor": "text-red-600",
+      "desc": "Ungenügender Bauwerkszustand: Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.",
+      "action": "Sofortige Notmaßnahmen: Sperrung der betroffenen Bereiche, provisorische Abstützung, Sicherung lockerer Bauteile."
+    },
+    "Zustandsbewertung.protocol": [
+      "Besichtigung und laufende Beobachtung durch den Baulastträger.",
+      "Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre danach (DIN 1076).",
+      "Fortlaufende Datenpflege in SIB-Bauwerke."
+    ],
+    "Zustandsbewertung": [
+      "Sofortige Sperrung des Bauwerks oder intensive Lastbegrenzung (z.B. Tonnagebegrenzung).",
+      "Einleitung von Not-Abstützungen (Traggerüst / Hilfsunterstützungen).",
+      "Unverzügliche Information des Baulastträgers bzw. der zuständigen Straßenbauverwaltung.",
+      "Statische Nachrechnung und Instandsetzungsplanung durch Fachplaner."
+    ],
+    "Zustandsbewertung_2": [
+      "Detaillierte Sonderprüfung (z.B. Ultraschall- oder Endoskopiemessungen an Spanngliedern).",
+      "Aufstellung eines bautechnischen Instandsetzungsentwurfs nach RI-EBW-PRÜF.",
+      "Provisorische Sicherungsmaßnahmen (z.B. Abfangnetze gegen Betonabplatzungen).",
+      "Ggf. ergänzende Überwachung (z. B. Monitoring) bis zur Instandsetzung."
+    ],
+    "Zustandsbewertung_3": [
+      "Objektbezogene baudynamische Schadensanalysen (ZfP-Prüfungen).",
+      "Aufnahme des Objekts in das mittelfristige Erhaltungsprogramm des Baulastträgers.",
+      "Installation temporärer bauphysikalischer Messwertaufnehmer (z.B. Riss-Monitoring)."
+    ],
+    "Zustandsbewertung_4": [
+      "Fortlaufende Erfassung und Vermessung der Rissfortschritte bei Begehungen.",
+      "Lokale Sanierungsmaßnahmen (z.B. Erneuerung von schadhaften Dehnfugen, Epoxidharz-Injektionen).",
+      "Dokumentation im IT-System SIB-Bauwerke."
+    ],
+    "Zustandsbewertung_5": [
+      "Fotografische Erfassung auffälliger Abplatzungen oder Flecken zur Verlaufskontrolle.",
+      "Instandhaltung von Entwässerungspfaden und Reinigung der Brückenlager.",
+      "Verbleib im standardmäßigen DIN 1076 Prüfzyklus."
+    ],
+    "Zustandsbewertung.schritte": [
+      {
+        "titel": "Hauptprüfung",
+        "erklaerung": "Letzte Hauptprüfung 2026:",
+        "formel": "H = 2026 \\Rightarrow H_{n+1} = 2032"
+      },
+      {
+        "titel": "Einfache Prüfung",
+        "erklaerung": "Drei Jahre nach der Hauptprüfung:",
+        "formel": "E = 2029"
+      },
+      {
+        "titel": "Besichtigung",
+        "erklaerung": "In den übrigen Jahren jährlich; laufende Beobachtung im Rahmen der Streckenkontrolle:",
+        "formel": "B = 2027,\\; 2028,\\; 2030,\\; 2031"
+      }
+    ],
+    "Zustandsbewertung.schritte_2": [
+      {
+        "titel": "Kennwerte",
+        "erklaerung": "Widerstand μ_R = 500 kN, σ_R = 50 kN; Einwirkung μ_S = 300 kN, σ_S = 30 kN (normalverteilt):",
+        "formel": "\\mu_R - \\mu_S = 200\\,\\text{kN}"
+      },
+      {
+        "titel": "Index",
+        "erklaerung": "Einsetzen:",
+        "formel": "\\beta = \\frac{200}{\\sqrt{2\\,500 + 900}} = \\frac{200}{58{,}3} = 3{,}43"
+      },
+      {
+        "titel": "Versagenswahrscheinlichkeit",
+        "erklaerung": "Vergleich mit dem Zielwert 3,8 (RC2, 50 Jahre):",
+        "formel": "P_f = \\Phi(-3{,}43) = 3{,}0 \\cdot 10^{-4}; \\; 3{,}43 < 3{,}8"
+      }
+    ],
+    "Zustandsbewertung.regelwerke": [
+      {
+        "title": "DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)"
+      },
+      {
+        "title": "VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)",
+        "url": "https://www.vdi.de/"
+      },
+      {
+        "title": "VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation der Überprüfung)",
+        "url": "https://www.vdi.de/"
+      },
+      {
+        "title": "ARGEBAU: Hinweise für die Überprüfung der Standsicherheit von baulichen Anlagen durch den Eigentümer/Verfügungsberechtigten (09/2006)",
+        "url": "https://www.is-argebau.de/"
+      },
+      {
+        "title": "RI-EBW-PRÜF (Richtlinie zur einheitlichen Erfassung, Bewertung und Aufzeichnung der Ergebnisse der Bauwerksprüfungen nach DIN 1076)",
+        "url": "https://www.bmdv.bund.de/"
+      },
+      {
+        "title": "DAfStb-Richtlinien zur Bauwerkserhaltung & Instandhaltung",
+        "url": "https://www.dafstb.de/"
+      }
+    ],
+    "Zustandsbewertung.literatur": [
+      "Bundesministerium für Digitales und Verkehr (BMDV): SIB-Bauwerke Programmdokumentation",
+      "VDI-Gesellschaft Bauen und Gebäudetechnik: VDI 6200:2010-02 und VDI 6200 Blatt 1.1:2026-06",
+      "RI-EBW-PRÜF (aktuelle Ausgabe, BMV)"
+    ],
+    "Zustandsbewertung.formeln": [
+      {
+        "formel": "Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1{,}0 \\le Z_N \\le 4{,}0)",
+        "erklaerung": "Zustandsnotenermittlung ZN nach RI-EBW-PRÜF: Bewertung von Standsicherheit (S), Verkehrssicherheit (V) und Dauerhaftigkeit (D). Noten von 1,0 (sehr gut) bis 4,0 (ungenügend / sofortiger Handlungsbedarf).",
+        "quelle": "RI-EBW-PRÜF / DIN 1076"
+      },
+      {
+        "formel": "\\beta = \\frac{\\mu_R - \\mu_S}{\\sqrt{\\sigma_R^2 + \\sigma_S^2}} \\ge \\beta_{\\text{target}} = 3{,}8 \\quad (P_f = \\Phi(-\\beta))",
+        "erklaerung": "Zuverlässigkeitsindex beta (ULS): Zielwert 3,8 für RC2 und 50 Jahre Bezugszeitraum (DIN EN 1990, Anhang B/C). Für bestehende Tragwerke kann die Zielzuverlässigkeit nach EN 1990-2:2026 abweichen.",
+        "quelle": "DIN EN 1990 Anhang B/C; EN 1990-2:2026"
+      }
+    ]
+  }
+}

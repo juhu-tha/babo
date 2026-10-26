@@ -1,0 +1,103 @@
+{
+  "texte": {
+    "typischeLebensdauernAustauschzyklenAp": " Typische Lebensdauern & Austauschzyklen (AP 14)",
+    "richtwerteFürDieTechnische": "Richtwerte für die technische und wirtschaftliche Nutzungsdauer von Bauteilen und Konstruktionsschichten nach den offiziellen Vorgaben des **Bundesinstituts für Bau-, Stadt- und Raumforschung (BBSR / BNB)** und **VDI 2067**. Ermitteln Sie die Anzahl an Erneuerungszyklen über den Gebäudelebenszyklus zur fundierten Lebenszykluskostenrechnung (LCC) und Ökobilanzierung (LCA).",
+    "lebensdauerSpannenDiagramm": " Lebensdauer-Spannen (Diagramm)",
+    "bauteiltabelleBnbBbsr": " Bauteiltabelle (BNB / BBSR)",
+    "faktorenmethodeIso15686": " Faktorenmethode & ISO 15686",
+    "gebäudeBetrachtungszeitraumLcaLcc": "Gebäude-Betrachtungszeitraum (LCA / LCC)",
+    "typischerReferenzStudienzeitraumFür": "Typischer Referenz-Studienzeitraum für Wohn- und Nichtwohngebäude nach BNB / DGNB: 50 Jahre.",
+    "bauteilgruppeBaustoff": "Bauteilgruppe / Baustoff",
+    "spannweiteMinMax": "Spannweite (Min - Max)",
+    "nutzungsdauer": "Ø Nutzungsdauer",
+    "austauschzyklenBei": "Austauschzyklen bei ",
+    "schematischeDarstellungAustauschzyklenIm": "Schematische Darstellung: Austauschzyklen im Gebäudelebenszyklus",
+    "bauteileMitEinerKürzeren": "Bauteile mit einer kürzeren Lebensdauer als der Gebäude-Betrachtungszeitraum müssen mehrfach ausgetauscht werden. Jeder Zyklus erfordert erneute Materialherstellung (Modul A1–A3) und Entsorgung (Modul C1–C4) in der Ökobilanz.",
+    "lebensdauerSpannweitenZentralerBauteilsc": "Lebensdauer-Spannweiten zentraler Bauteilschichten nach BNB",
+    "übersichtDerMinimalenUnd": "Übersicht der minimalen und maximalen technischen Nutzungsdauern nach dem Bewertungssystem Nachhaltiges Bauen (BNB).",
+    "filterNachGewerk": "Filter nach Gewerk:",
+    "minimaleDauer": "Minimale Dauer",
+    "maximaleDauer": "Maximale Dauer",
+    "mittelwertReferenz": "Mittelwert (Referenz)",
+    "faktorenmethodeNachIso15686": "Faktorenmethode nach ISO 15686-1",
+    "dieTatsächlicheNutzungsdauerEines": "Die tatsächliche Nutzungsdauer eines Bauteils weicht oft von den tabellierten Richtwerten ab. Die internationale Norm **ISO 15686-1** definiert die sogenannte Faktorenmethode zur Schätzung der erwarteten Nutzungsdauer (Estimated Service Life – ESLC):",
+    "rslcReferenzNutzungsdauerNach": "• **RSLC:** Referenz-Nutzungsdauer nach BBSR / BNB",
+    "aWerkstoffUndKomponentenqualität": "• **A:** Werkstoff- und Komponentenqualität (Zulassungen, Güteüberwachung)",
+    "bEntwurfsUndKonstruktionsqualität": "• **B:** Entwurfs- und Konstruktionsqualität (konstruktiver Schutz, Detaillierung)",
+    "cAusführungsqualitätAufDer": "• **C:** Ausführungsqualität auf der Baustelle (fachgerechter Einbau)",
+    "dInnenklimaUndChemische": "• **D:** Innenklima und chemische Beanspruchung",
+    "eAußenklimaSchlagregenUv": "• **E:** Außenklima (Schlagregen, UV-Belastung, Frostzyklen)",
+    "fNutzungsbeanspruchungVerkehrMechanische": "• **F:** Nutzungsbeanspruchung (Verkehr, mechanische Belastung)",
+    "gInstandhaltungsUndWartungsniveau": "• **G:** Instandhaltungs- und Wartungsniveau",
+    "relevanzFürLccÖkobilanzierung": "Relevanz für LCC & Ökobilanzierung (LCA)",
+    "inDerLebenszykluskostenrechnungLcc": "In der **Lebenszykluskostenrechnung (LCC nach DIN EN 16627)** bestimmen die Austauschzyklen maßgeblich die Diskontierungskosten über 50 Jahre:",
+    "ersatzinvestitionenReinvestitionen": "Ersatzinvestitionen (Reinvestitionen):",
+    "fallenZuDenZeitpunkten": "Fallen zu den Zeitpunkten $t_i = i \\cdot \\text{avg}$ an und müssen mit dem Barwertfaktor $(1+r)^{-t_i}$ abgezinst werden.",
+    "graueEmissionenEmbodiedCarbon": "Graue Emissionen (Embodied Carbon):",
+    "kurzlebigeBauteileZB": "Kurzlebige Bauteile (z. B. Teppichböden mit 10–12 Jahren) verursachen bei 50 Jahren Betrachtungszeitraum das bis zu Fünffache der ursprünglichen Produktions-Emissionen."
+  },
+  "werte": {
+    "tragwerkStahlbeton": "Tragwerk (Stahlbeton)",
+    "tragwerkMauerwerk": "Tragwerk (Mauerwerk)",
+    "tragwerkHolz": "Tragwerk (Holz)",
+    "tragwerkStahl": "Tragwerk (Stahl)",
+    "dachkonstruktionHolzStahl": "Dachkonstruktion (Holz/Stahl)",
+    "dacheindeckungZiegelDachstein": "Dacheindeckung (Ziegel/Dachstein)",
+    "dacheindeckungBlechKupferZink": "Dacheindeckung (Blech/Kupfer/Zink)",
+    "flachdachabdichtungBitumenKunststoff": "Flachdachabdichtung (Bitumen/Kunststoff)",
+    "dachbegrünungExtensiv": "Dachbegrünung (Extensiv)",
+    "fassadePutzWdvs": "Fassade (Putz/WDVS)",
+    "fassadeKlinkerVormauerziegel": "Fassade (Klinker/Vormauerziegel)",
+    "fassadeHolzschalung": "Fassade (Holzschalung)",
+    "fassadeGlasPfostenRiegel": "Fassade (Glas/Pfosten-Riegel)",
+    "dämmungEpsXpsMineralwolle": "Dämmung (EPS/XPS/Mineralwolle)",
+    "dämmungHolzfaserZellulose": "Dämmung (Holzfaser/Zellulose)",
+    "dämmungPurPir": "Dämmung (PUR/PIR)",
+    "dämmungSchaumglas": "Dämmung (Schaumglas)",
+    "fensterHolz": "Fenster (Holz)",
+    "fensterKunststoff": "Fenster (Kunststoff)",
+    "fensterAluminium": "Fenster (Aluminium)",
+    "sonnenschutzAußenjalousien": "Sonnenschutz (Außenjalousien)",
+    "innentürenHolzRöhrenspan": "Innentüren (Holz/Röhrenspan)",
+    "außentürenAluStahl": "Außentüren (Alu/Stahl)",
+    "innenwändeTrockenbau": "Innenwände (Trockenbau)",
+    "innenwändeMassiv": "Innenwände (Massiv)",
+    "bodenbelägeParkett": "Bodenbeläge (Parkett)",
+    "bodenbelägeKeramikfliesen": "Bodenbeläge (Keramikfliesen)",
+    "bodenbelägeNaturstein": "Bodenbeläge (Naturstein)",
+    "bodenbelägeTeppichLaminat": "Bodenbeläge (Teppich/Laminat)",
+    "estrichZementAnhydrit": "Estrich (Zement/Anhydrit)",
+    "anstrichTapeteInnen": "Anstrich/Tapete (Innen)",
+    "abdichtungEpdmFpo": "Abdichtung (EPDM/FPO)",
+    "lebensdauerSpannweiteMinMax": "Lebensdauer-Spannweite (Min - Max)",
+    "nutzungsdauerJahre": "Nutzungsdauer [Jahre]",
+    "t0Dauerhaft": "0 (Dauerhaft)",
+    "lebensdauerTechnik": "Lebensdauer (Technik)",
+    "faktorenmethodeNachIso15686": "Faktorenmethode nach ISO 15686-1 zur Schätzung der erwarteten Nutzungsdauer (Estimated Service Life of Component - ESLC) aus der Referenz-Nutzungsdauer (RSLC) multipliziert mit 7 Bewertungsfaktoren für Werkstoff-, Entwurfs-, Ausführungs-, Umwelt- und Instandhaltungsqualität.",
+    "dinEnIso15686": "DIN EN ISO 15686-1",
+    "berechnungDerAnzahlErforderlicher": "Berechnung der Anzahl erforderlicher Austauschzyklen eines Bauteils innerhalb des Gebäude-Betrachtungszeitraums für Lebenszyklusanalysen (LCA / LCC).",
+    "bnbLeitfadenNachhaltigesBauen": "BNB Leitfaden Nachhaltiges Bauen"
+  },
+  "daten": {
+    "Lebensdauern.regelwerke": [
+      {
+        "title": "BNB - Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach dem Bewertungssystem Nachhaltiges Bauen",
+        "url": "https://www.nachhaltigesbauen.de/"
+      },
+      {
+        "title": "ISO 15686-1:2011 (Buildings and constructed assets – Service life planning – Part 1: General principles; Revision als ISO/FDIS in Arbeit)"
+      },
+      {
+        "title": "VDI 2067 Blatt 1:2012-09 (Wirtschaftlichkeit gebäudetechnischer Anlagen – Grundlagen und Kostenberechnung)"
+      },
+      {
+        "title": "DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden – Berechnungsmethoden)"
+      }
+    ],
+    "Lebensdauern.literatur": [
+      "Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR): Tabelle Nutzungsdauern von Bauteilen zur Lebenszyklusanalyse",
+      "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
+      "Schneider – Bautabellen für Ingenieure, 26. Auflage, Reguvis 2024"
+    ]
+  }
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Clock, Milestone, Calendar, HardDrive } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { VERSION_HISTORY, CURRENT_VERSION } from '@/src/data/versionData';
+import inhalt from '@/content/versionen/Versionen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Versionen() {
   return (
@@ -14,17 +16,13 @@ export default function Versionen() {
               <Clock className="w-5 h-5 animate-pulse" />
             </div>
             <div>
-              <h2 className="text-xl font-bold font-sans text-slate-900 flex items-center gap-2"><Clock className="text-shiraz" />
-                Changelog &amp; Revisionshistorie
-              </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Dokumentationsprotokoll und kontinuierliche Weiterentwicklung der akademischen Plattform.
-              </p>
+              <h2 className="text-xl font-bold font-sans text-slate-900 flex items-center gap-2"><Clock className="text-shiraz" /><MdText text={inhalt.texte.changelogRevisionshistorie} /></h2>
+              <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.dokumentationsprotokollUndKontinuierlich} /></p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700 font-mono font-medium">
             <HardDrive className="w-3.5 h-3.5 text-slate-500" />
-            <span>Aktueller Stand: {CURRENT_VERSION.version} ({CURRENT_VERSION.date})</span>
+            <span><MdText text={inhalt.texte.aktuellerStand} />{CURRENT_VERSION.version} ({CURRENT_VERSION.date})</span>
           </div>
         </div>
 
@@ -98,16 +96,10 @@ export default function Versionen() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Versionsverwaltung', url: 'https://de.wikipedia.org/wiki/Versionsverwaltung' },
-          { title: 'Semantic Versioning', url: 'https://de.wikipedia.org/wiki/Semantic_Versioning' }
+          { title: inhalt.werte.semanticVersioning, url: 'https://de.wikipedia.org/wiki/Semantic_Versioning' }
         ]}
-        literatur={[
-          'Sommerville, I.: Software Engineering (Pearson Studium)',
-          'Preston-Werner, T.: Semantic Versioning 2.0.0 Spezifikation'
-        ]}
-        regelwerke={[
-          { title: 'SemVer 2.0.0 (Semantic Versioning Specification)', url: 'https://semver.org/' },
-          { title: 'DIN EN ISO 9001 (Qualitätsmanagementsysteme - Dokumentierte Information)' }
-        ]}
+        literatur={inhalt.daten["Versionen.literatur"]}
+        regelwerke={inhalt.daten["Versionen.regelwerke"]}
         hideFormeln={true}
       />
     </div>

@@ -22,6 +22,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/korrosion/Korrosion.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -77,23 +79,17 @@ function LokalelementSimulator() {
 
   const fctm = 3.0; // MPa Betonzugfestigkeit
   const crackState = useMemo(() => {
-    if (!isDepassivated) return { code: 'passiv', title: 'Passiv (Geschützt)', color: 'text-emerald-700 bg-emerald-50 border-emerald-300' };
-    if (radialStressMPa < fctm * 0.7) return { code: 'initiierung', title: 'Lochfraß aktiv (Mikrokorrosion)', color: 'text-amber-700 bg-amber-50 border-amber-300' };
-    if (radialStressMPa < fctm * 1.5) return { code: 'rissbildung', title: 'Spaltzugriss im Betoninneren', color: 'text-orange-700 bg-orange-50 border-orange-300' };
-    if (radialStressMPa < fctm * 2.8) return { code: 'oberflaechenriss', title: 'Durchgehender Längsriss an Oberfläche', color: 'text-rose-700 bg-rose-50 border-rose-300' };
-    return { code: 'abplatzung', title: 'Betondeckung abgeplatzt (Spalling)', color: 'text-red-700 bg-red-100 border-red-500 font-bold animate-pulse' };
+    if (!isDepassivated) return { code: 'passiv', title: inhalt.werte.passivGeschützt, color: 'text-emerald-700 bg-emerald-50 border-emerald-300' };
+    if (radialStressMPa < fctm * 0.7) return { code: 'initiierung', title: inhalt.werte.lochfraßAktivMikrokorrosion, color: 'text-amber-700 bg-amber-50 border-amber-300' };
+    if (radialStressMPa < fctm * 1.5) return { code: 'rissbildung', title: inhalt.werte.spaltzugrissImBetoninneren, color: 'text-orange-700 bg-orange-50 border-orange-300' };
+    if (radialStressMPa < fctm * 2.8) return { code: 'oberflaechenriss', title: inhalt.werte.durchgehenderLängsrissAnOberfläche, color: 'text-rose-700 bg-rose-50 border-rose-300' };
+    return { code: 'abplatzung', title: inhalt.werte.betondeckungAbgeplatztSpalling, color: 'text-red-700 bg-red-100 border-red-500 font-bold animate-pulse' };
   }, [isDepassivated, radialStressMPa]);
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-        <p>
-          <strong>Elektrochemische Korrosionszelle im Stahlbeton:</strong> Wenn Depassivierung eintritt 
-          (durch Chloride <InlineMath math="Cl^-" /> oder Absinken des pH-Wertes durch Karbonatisierung unter 9,5), 
-          bilden sich kurzgeschlossene galvanische Lokalelemente aus <strong>Anode</strong> (Eisenauflösung im Lochfraßkrater) 
-          und <strong>Kathode</strong> (Sauerstoffreduktion an der intakten Passivschicht). 
-          Der entstehende Rost expandiert um das 2- bis 6-fache seines Ursprungsvolumens und sprengt die Betondeckung ab.
-        </p>
+        <p><MdText text={inhalt.texte.elektrochemischeKorrosionszelleImStahlbe} /></p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -102,13 +98,12 @@ function LokalelementSimulator() {
         <div className="lg:col-span-5 flex flex-col gap-5">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/20 pb-2">
-              <Zap size={16} className="text-shiraz" /> 1. Korrosions-Parameter
-            </h3>
+              <Zap size={16} className="text-shiraz" /><MdText text={inhalt.texte.t1KorrosionsParameter} /></h3>
 
             {/* Chloride Content Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Chloridgehalt am Bewehrungsstahl:</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.chloridgehaltAmBewehrungsstahl} /></span>
                 <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs ${
                   clContent >= 0.50 ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
                 }`}>
@@ -125,16 +120,16 @@ function LokalelementSimulator() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
-                <span>0,10 % (Passiv)</span>
-                <span className="font-bold text-shiraz">Kritisch: 0,50 %</span>
-                <span>2,50 % (Extrem)</span>
+                <span><MdText text={inhalt.texte.t010Passiv} /></span>
+                <span className="font-bold text-shiraz"><MdText text={inhalt.texte.kritisch050} /></span>
+                <span><MdText text={inhalt.texte.t250Extrem} /></span>
               </div>
             </div>
 
             {/* Relative Humidity Slider */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Relative Betonfeuchte (RH):</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.relativeBetonfeuchteRh} /></span>
                 <span className="font-mono font-bold bg-slate-100 text-text-main px-2 py-0.5 rounded text-xs">
                   {formatDeWert(relHum)} %
                 </span>
@@ -150,17 +145,17 @@ function LokalelementSimulator() {
               />
               <p className="text-[10px] text-text-main/60">
                 {relHum < 60
-                  ? 'Geringe Feuchte: Trockener Beton, hoher elektrolytischer Widerstand hemmt Ionenstrom.'
+                  ? inhalt.werte.geringeFeuchteTrockenerBeton
                   : relHum <= 85
-                  ? 'Kritischer Feuchtebereich (75-85 %): Optimale Bedingungen für rasenden Korrosionsfortschritt!'
-                  : 'Wassergesättigt: Sauerstoffdiffusionswiderstand bremst die kathodische Reaktion stark ab.'}
+                  ? inhalt.werte.kritischerFeuchtebereich7585
+                  : inhalt.werte.wassergesättigtSauerstoffdiffusionswider}
               </p>
             </div>
 
             {/* Concrete Cover Slider */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Betondeckung (cnom):</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.betondeckungCnom} /></span>
                 <span className="font-mono font-bold bg-slate-100 text-text-main px-2 py-0.5 rounded text-xs">
                   {formatDeWert(coverMm)} mm
                 </span>
@@ -179,7 +174,7 @@ function LokalelementSimulator() {
             {/* Duration Slider */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main">Wirkungsdauer (t):</span>
+                <span className="font-bold text-text-main"><MdText text={inhalt.texte.wirkungsdauerT} /></span>
                 <span className="font-mono font-bold bg-slate-100 text-text-main px-2 py-0.5 rounded text-xs">
                   {durationYears} Jahre
                 </span>
@@ -198,11 +193,11 @@ function LokalelementSimulator() {
             {/* Live Metrics Cards */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Korrosionsstrom icorr</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.korrosionsstromIcorr} /></span>
                 <span className="text-xl font-mono font-bold text-shiraz">{formatDeZahl(iCorr, 2)} µA/cm²</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Abtragsrate vcorr</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.abtragsrateVcorr} /></span>
                 <span className="text-xl font-mono font-bold text-amber-700">{formatDeZahl(vCorrMicronYear, 1)} µm/a</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -210,7 +205,7 @@ function LokalelementSimulator() {
                 <span className="text-xl font-mono font-bold text-red-600">{formatDeZahl(radialStressMPa, 1)} MPa</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Stahlverlust Δd</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.stahlverlustD} /></span>
                 <span className="text-xl font-mono font-bold text-text-main">{formatDeZahl(totalLossMicron, 0)} µm</span>
               </div>
             </div>
@@ -230,14 +225,13 @@ function LokalelementSimulator() {
             <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
               <div>
                 <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                  <Activity size={18} className="text-shiraz" /> 2. Elektrochemische Zelle &amp; Rissfortschritt
-                </h3>
-                <span className="text-xs text-text-main/70 font-medium">Querschnitt Betondeckung mit Rebar Ø 16 mm</span>
+                  <Activity size={18} className="text-shiraz" /><MdText text={inhalt.texte.t2ElektrochemischeZelleRissfortschritt} /></h3>
+                <span className="text-xs text-text-main/70 font-medium"><MdText text={inhalt.texte.querschnittBetondeckungMitRebar} /></span>
               </div>
               <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${
                 isDepassivated ? 'bg-red-100 text-red-800 border-red-300' : 'bg-emerald-100 text-emerald-800 border-emerald-300'
               }`}>
-                {isDepassivated ? 'Depassiviert' : 'Passiviert (pH > 12,5)'}
+                {isDepassivated ? 'Depassiviert' : inhalt.werte.passiviertPh125}
               </span>
             </div>
 
@@ -432,23 +426,19 @@ function LokalelementSimulator() {
             {/* Chemical & Mechanical Summary Box */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 text-xs">
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
-                <span className="font-bold text-shiraz block">1. Anodische Teilreaktion (Lochfraß):</span>
+                <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.t1AnodischeTeilreaktionLochfraß} /></span>
                 <div className="overflow-x-auto py-0.5">
                   <InlineMath math="Fe \rightarrow Fe^{2+} + 2\,e^-" />
                 </div>
-                <p className="text-[11px] text-text-main/70 leading-relaxed">
-                  Eisen geht als hydratisiertes Kation in Lösung. Die Elektronen fließen durch die metallische Bewehrung zur Kathode.
-                </p>
+                <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.eisenGehtAlsHydratisiertes} /></p>
               </div>
 
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
-                <span className="font-bold text-emerald-700 block">2. Kathodische Teilreaktion (Passivfläche):</span>
+                <span className="font-bold text-emerald-700 block"><MdText text={inhalt.texte.t2KathodischeTeilreaktionPassivfläche} /></span>
                 <div className="overflow-x-auto py-0.5">
                   <InlineMath math="O_2 + 2\,H_2O + 4\,e^- \rightarrow 4\,OH^-" />
                 </div>
-                <p className="text-[11px] text-text-main/70 leading-relaxed">
-                  Sauerstoff aus der Porenluft verbraucht die Elektronen. Bildet Hydroxidionen, die den Stromkreis im Porenwasser schließen.
-                </p>
+                <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.sauerstoffAusDerPorenluft} /></p>
               </div>
             </div>
 
@@ -504,7 +494,7 @@ export default function Korrosion() {
       labels: depths,
       datasets: [
         {
-          label: "Chloridgehalt (%)",
+          label: inhalt.werte.chloridgehalt,
           data: cValues,
           borderColor: "#A3113E", // Shiraz
           backgroundColor: "rgba(255, 119, 165, 0.4)", // Tickle Me Pink
@@ -514,7 +504,7 @@ export default function Korrosion() {
           pointRadius: 0,
         },
         {
-          label: "Betondeckung (c_nom)",
+          label: inhalt.werte.betondeckungCNom,
           data: depths.map((x) => (x === cNom ? 5 : null)),
           borderColor: isCorroding ? "#A3113E" : "#A3113E", // Torch Red or Middle Blue
           borderWidth: 3,
@@ -523,7 +513,7 @@ export default function Korrosion() {
           fill: false,
         },
         {
-          label: "Kritischer Gehalt (0,5%)",
+          label: inhalt.werte.kritischerGehalt05,
           data: depths.map(() => 0.5),
           borderColor: "#1e293b",
           borderWidth: 1,
@@ -547,7 +537,7 @@ export default function Korrosion() {
       labels: years,
       datasets: [
         {
-          label: "Karbonatisierungstiefe (mm)",
+          label: inhalt.werte.karbonatisierungstiefeMm,
           data: depths,
           borderColor: "#A3113E", // Middle Blue
           backgroundColor: "rgba(14, 85, 140, 0.2)",
@@ -557,7 +547,7 @@ export default function Korrosion() {
           pointRadius: 0,
         },
         {
-          label: "Betondeckung (c_nom)",
+          label: inhalt.werte.betondeckungCNom2,
           data: years.map(() => cNomKarb),
           borderColor: isCorroding ? "#A3113E" : "#1e293b",
           borderWidth: 2,
@@ -566,7 +556,7 @@ export default function Korrosion() {
           fill: false,
         },
         {
-          label: "Aktuelles Jahr",
+          label: inhalt.werte.aktuellesJahr,
           data: years.map((y) => (y === tKarb ? 100 : null)),
           borderColor: "#A3113E",
           borderWidth: 2,
@@ -596,7 +586,7 @@ export default function Korrosion() {
       labels: days,
       datasets: [
         {
-          label: "Tiefe Schnellkarbonatisierung (mm)",
+          label: inhalt.werte.tiefeSchnellkarbonatisierungMm,
           data: depthsSchnell,
           borderColor: "#A3113E", // Shiraz
           backgroundColor: "rgba(163, 17, 62, 0.2)",
@@ -606,7 +596,7 @@ export default function Korrosion() {
           pointRadius: 0,
         },
         {
-          label: "Äquivalente natürliche Tiefe (mm)",
+          label: inhalt.werte.äquivalenteNatürlicheTiefeMm,
           data: depthsNatEquivalent,
           borderColor: "#A3113E", // Middle Blue
           borderWidth: 2,
@@ -637,14 +627,14 @@ export default function Korrosion() {
         max: 5,
         title: {
           display: true,
-          text: "Chloridgehalt (Gew.-%)",
+          text: inhalt.werte.chloridgehaltGew,
           font: { family: "Work Sans", weight: "bold" as const },
         },
       },
       x: {
         title: {
           display: true,
-          text: "Tiefe ins Bauteil x (mm)",
+          text: inhalt.werte.tiefeInsBauteilX,
           font: { family: "Work Sans", weight: "bold" as const },
         },
       },
@@ -668,7 +658,7 @@ export default function Korrosion() {
       x: {
         title: {
           display: true,
-          text: "Zeit t (Jahre)",
+          text: inhalt.werte.zeitTJahre,
           font: { family: "Work Sans", weight: "bold" as const },
         },
       },
@@ -692,7 +682,7 @@ export default function Korrosion() {
       x: {
         title: {
           display: true,
-          text: "Zeit t (Tage)",
+          text: inhalt.werte.zeitTTage,
           font: { family: "Work Sans", weight: "bold" as const },
         },
       },
@@ -713,7 +703,7 @@ export default function Korrosion() {
 
       <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
         <p>
-          <FormulaText text="Die Dauerhaftigkeit von Stahlbeton hängt vom Schutz der Bewehrung ab. Karbonatisierung (CO2) senkt den pH-Wert, Chloride zerstören die Passivschicht direkt. Beide Prozesse sind diffusionsgesteuert und zeitabhängig." />
+          <FormulaText text={inhalt.werte.dieDauerhaftigkeitVonStahlbeton} />
         </p>
       </div>
 
@@ -736,8 +726,7 @@ export default function Korrosion() {
           }`}
           onClick={() => setActiveTab("karbonatisierung")}
         >
-          <Cloud size={16} /> Natürliche Karbonatisierung
-        </button>
+          <Cloud size={16} /><MdText text={inhalt.texte.natürlicheKarbonatisierung} /></button>
         <button
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === "schnellkarbonatisierung"
@@ -756,53 +745,50 @@ export default function Korrosion() {
           }`}
           onClick={() => setActiveTab("lokalelement")}
         >
-          <Zap size={16} /> Elektrochemische Korrosionszelle &amp; Lochfraß
-        </button>
+          <Zap size={16} /><MdText text={inhalt.texte.elektrochemischeKorrosionszelleLochfraß} /></button>
       </div>
 
       {activeTab === "chlorid" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">
-              Parameter (2. Fick'sches Gesetz)
-            </h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.parameter2FickSches} /></h2>
 
             <Slider
-              label="Expositionszeit (t)"
+              label={inhalt.werte.expositionszeitT}
               min={1}
               max={100}
               step={1}
               value={t}
               unit="Jahre"
-              info="Geplante Nutzungsdauer oder Betrachtungszeitpunkt. Üblich im Hochbau: 50 Jahre, Brückenbau: 100 Jahre."
+              info={inhalt.werte.geplanteNutzungsdauerOderBetrachtungszei}
               onChange={(e) => setT(Number(e.target.value))}
             />
 
             <Slider
-              label={<FormulaText text="Betondeckung (c_{nom})" />}
+              label={<FormulaText text={inhalt.werte.betondeckungCNom3} />}
               min={10}
               max={70}
               step={1}
               value={cNom}
               unit="mm"
-              info="Abstand von der Betonoberfläche bis zur äußeren Bewehrung. Schützt den Stahl vor Korrosion. Üblich: 35-50 mm je nach Expositionsklasse (XD/XS)."
+              info={inhalt.werte.abstandVonDerBetonoberfläche}
               onChange={(e) => setCNom(Number(e.target.value))}
             />
 
             <Slider
-              info="Apparenter Chloriddiffusionskoeffizient, der den Transportwiderstand des Betons gegen Chloride beschreibt."
-              label={<FormulaText text="Diffusionskoeffizient (D_{app})" />}
+              info={inhalt.werte.apparenterChloriddiffusionskoeffizientDe}
+              label={<FormulaText text={inhalt.werte.diffusionskoeffizientDApp} />}
               min={1.0}
               max={10.0}
               step={0.1}
               value={dApp}
-              unit={<FormulaText text="×10^{-12} m2/s" />}
+              unit={<FormulaText text={inhalt.werte.t1012M2S} />}
               onChange={(e) => setDApp(Number(e.target.value))}
             />
 
             <Slider
-              info="Chloridgehalt an der geländeseitigen Betonoberfläche, abhängig von Exposureklassen (Tausalze, Meerwasser)."
-              label={<FormulaText text="Oberflächenkonzentration (C_s)" />}
+              info={inhalt.werte.chloridgehaltAnDerGeländeseitigen}
+              label={<FormulaText text={inhalt.werte.oberflächenkonzentrationCS} />}
               min={1.0}
               max={5.0}
               step={0.1}
@@ -812,13 +798,13 @@ export default function Korrosion() {
             />
 
             <Slider
-              label="Alterungsexponent (a)"
+              label={inhalt.werte.alterungsexponentA}
               min={0.0}
               max={0.8}
               step={0.05}
               value={a}
               unit=""
-              info="Beschreibt die Abnahme des Diffusionskoeffizienten über die Zeit durch fortschreitende Hydratation. Richtwerte nach fib Bulletin 34: Portlandzement ≈ 0,30, mit Flugasche ≈ 0,60, Hochofenzement ≈ 0,45."
+              info={inhalt.werte.beschreibtDieAbnahmeDes}
               onChange={(e) => setA(Number(e.target.value))}
             />
           </div>
@@ -830,10 +816,7 @@ export default function Korrosion() {
               </h2>
 
               {chloridChartData.isCorroding && (
-                <div className="bg-torch-red/10 text-torch-red p-4 rounded-lg mb-4 font-bold border border-torch-red/30 animate-pulse">
-                  ACHTUNG: Depassivierung erreicht! Restnutzungsdauer
-                  überschritten.
-                </div>
+                <div className="bg-torch-red/10 text-torch-red p-4 rounded-lg mb-4 font-bold border border-torch-red/30 animate-pulse"><MdText text={inhalt.texte.achtungDepassivierungErreichtRestnutzung} /></div>
               )}
 
               <div className="flex-1 relative w-full h-full">
@@ -843,9 +826,7 @@ export default function Korrosion() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">
-                Schematische Darstellung: Chloridfront & Bewehrung
-              </h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungChloridfrontBeweh} /></h3>
               <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
                 <svg
                   width="100%"
@@ -1024,41 +1005,22 @@ export default function Korrosion() {
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-              <h2 className="text-xl font-bold text-text-main mb-4">
-                Normen & Formeln
-              </h2>
+              <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.normenFormeln} /></h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-text-main/80">
                 <div>
-                  <strong className="text-text-main">Grundlage:</strong> fib
-                  Model Code 2010 / DIN EN 1992-1-1 (Dauerhaftigkeit)
-                  <br />
-                  <br />
-                  <strong className="text-text-main">
-                    2. Fick'sches Diffusionsgesetz:
-                  </strong>
+                  <strong className="text-text-main">Grundlage:</strong><MdText text={inhalt.texte.fibModelCode2010} /><strong className="text-text-main"><MdText text={inhalt.texte.t2FickSchesDiffusionsgesetz} /></strong>
                   <div className="bg-off-white p-2 rounded mt-1 font-mono text-xs border border-home-grau/30">
                     <FormulaText text="C(x,t) = C_s \cdot [ 1 - erf( x / (2 \cdot \sqrt{D_{app}(t) \cdot t}) ) ]" />
                   </div>
-                  <p className="text-xs mt-1">
-                    erf(): Gaußsche Fehlerfunktion
-                    <br />
-                    <FormulaText text="C_{crit} \approx 0{,}5" /> M.-% bezogen auf den Zement
-                    (Orientierungswert; objektspezifisch durch den sachkundigen Planer festzulegen)
-                  </p>
+                  <p className="text-xs mt-1"><MdText text={inhalt.texte.erfGaußscheFehlerfunktionBr} /><FormulaText text="C_{crit} \approx 0{,}5" /><MdText text={inhalt.texte.mBezogenAufDen} /></p>
                 </div>
                 <div>
-                  <strong className="text-text-main">
-                    Zeitabhängiger Diffusionskoeffizient:
-                  </strong>
+                  <strong className="text-text-main"><MdText text={inhalt.texte.zeitabhängigerDiffusionskoeffizient} /></strong>
                   <div className="bg-off-white p-2 rounded mt-1 font-mono text-xs border border-home-grau/30">
                     <FormulaText text="D_{app}(t) = D_{app}(t_0) \cdot (t_0 / t)^a" />
                   </div>
                   <p className="text-xs mt-1">
-                    <FormulaText text="t_0" />: Referenzzeitpunkt (meist 28
-                    Tage)
-                    <br />
-                    a: Alterungsexponent
-                  </p>
+                    <FormulaText text="t_0" /><MdText text={inhalt.texte.referenzzeitpunktMeist28Tage} /></p>
                 </div>
               </div>
             </div>
@@ -1069,12 +1031,10 @@ export default function Korrosion() {
       {activeTab === "karbonatisierung" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">
-              Parameter (Wurzel-t-Gesetz)
-            </h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.parameterWurzelTGesetz} /></h2>
 
             <Slider
-              label="Betrachtungszeitpunkt (t)"
+              label={inhalt.werte.betrachtungszeitpunktT}
               min={1}
               max={100}
               step={1}
@@ -1084,8 +1044,8 @@ export default function Korrosion() {
             />
 
             <Slider
-              info="Nennmaß der Betondeckung für die karbonatisierte Zone."
-              label={<FormulaText text="Betondeckung (c_{nom})" />}
+              info={inhalt.werte.nennmaßDerBetondeckungFür}
+              label={<FormulaText text={inhalt.werte.betondeckungCNom4} />}
               min={10}
               max={70}
               step={1}
@@ -1095,13 +1055,13 @@ export default function Korrosion() {
             />
 
             <Slider
-              label="Karbonatisierungsgeschwindigkeit (K)"
+              label={inhalt.werte.karbonatisierungsgeschwindigkeitK}
               min={0.5}
               max={10.0}
               step={0.1}
               value={kKarb}
               unit="mm/√a"
-              info="Hängt von der Betonqualität (w/z-Wert) und der Umgebung (Feuchte) ab. Trockene Innenräume (XC1): K ≈ 3-5. Außenbauteile (XC4): K ≈ 1-2."
+              info={inhalt.werte.hängtVonDerBetonqualität}
               onChange={(e) => setKKarb(Number(e.target.value))}
             />
           </div>
@@ -1113,10 +1073,7 @@ export default function Korrosion() {
               </h2>
 
               {karbonatisierungChartData.isCorroding && (
-                <div className="bg-torch-red/10 text-torch-red p-4 rounded-lg mb-4 font-bold border border-torch-red/30 animate-pulse">
-                  ACHTUNG: Depassivierung erreicht! Die Karbonatisierungsfront
-                  hat die Bewehrung erreicht.
-                </div>
+                <div className="bg-torch-red/10 text-torch-red p-4 rounded-lg mb-4 font-bold border border-torch-red/30 animate-pulse"><MdText text={inhalt.texte.achtungDepassivierungErreichtDie} /></div>
               )}
 
               <div className="flex-1 relative w-full h-full">
@@ -1132,12 +1089,10 @@ export default function Korrosion() {
       {activeTab === "schnellkarbonatisierung" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-text-main">
-              Parameter (Schnelltest)
-            </h2>
+            <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.parameterSchnelltest} /></h2>
 
             <Slider
-              label="Prüfdauer (t)"
+              label={inhalt.werte.prüfdauerT}
               min={1}
               max={90}
               step={1}
@@ -1147,18 +1102,18 @@ export default function Korrosion() {
             />
 
             <Slider
-              label="CO2-Konzentration (Kammer)"
+              label={inhalt.werte.co2KonzentrationKammer}
               min={0.5}
               max={4.0}
               step={0.1}
               value={co2KonzSchnell}
               unit="Vol.-%"
-              info="Erhöhte CO2-Konzentration im Prüfschrank zur Beschleunigung. Üblich: 1% bis 3%."
+              info={inhalt.werte.erhöhteCo2KonzentrationIm}
               onChange={(e) => setCo2KonzSchnell(Number(e.target.value))}
             />
 
             <Slider
-              label="Natürliche CO2-Konzentration"
+              label={inhalt.werte.natürlicheCo2Konzentration}
               min={0.03}
               max={0.1}
               step={0.01}
@@ -1168,9 +1123,9 @@ export default function Korrosion() {
             />
 
             <Slider
-              info="Im laborbeschleunigten Schnellprüfverfahren (erhöhte CO2-Konzentration) ermittelte Karbonatisierungsgeschwindigkeit."
+              info={inhalt.werte.imLaborbeschleunigtenSchnellprüfverfahre}
               label={
-                <FormulaText text="Karbonatisierungsgeschwindigkeit (K_schnell)" />
+                <FormulaText text={inhalt.werte.karbonatisierungsgeschwindigkeitKSchnell} />
               }
               min={1.0}
               max={30.0}
@@ -1183,20 +1138,16 @@ export default function Korrosion() {
 
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">
-              <h2 className="text-xl font-bold text-text-main mb-2">
-                Schnellkarbonatisierung vs. Natürlich
-              </h2>
+              <h2 className="text-xl font-bold text-text-main mb-2"><MdText text={inhalt.texte.schnellkarbonatisierungVsNatürlich} /></h2>
 
               <div className="bg-off-white p-4 rounded-lg mb-4 border border-home-grau/30">
-                <div className="font-bold text-text-main">
-                  Äquivalenter natürlicher K-Wert:
-                </div>
+                <div className="font-bold text-text-main"><MdText text={inhalt.texte.äquivalenterNatürlicherKWert} /></div>
                 <div className="text-2xl font-bold text-shiraz mt-1">
                   {formatDeZahl(schnellkarbonatisierungChartData.kNatEquivalent, 2)}{" "}
                   mm/√a
                 </div>
                 <div className="text-xs text-text-main/70 mt-1">
-                  <FormulaText text="(Berechnet über das Verhältnis der CO2-Konzentrationen)" />
+                  <FormulaText text={inhalt.werte.berechnetÜberDasVerhältnis} />
                 </div>
               </div>
 
@@ -1218,61 +1169,33 @@ export default function Korrosion() {
       {/* Global ModuleFooter */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Chloridgehalt an der Bewehrung nach 50 Jahren (2. Ficksches Gesetz)"
+        title={inhalt.werte.beispiel1ChloridgehaltAn}
         zielGleichung="C(x,t) = C_s \cdot \left[1 - \mathrm{erf}\left(\frac{x}{2\sqrt{D_{app} \cdot t}}\right)\right]"
-        schritte={[
-          { titel: 'Eingangswerte', erklaerung: 'Oberflächenchloridgehalt C_s = 3,0 M.-% v. z., Diffusionskoeffizient D_app = 0,3 · 10⁻¹² m²/s (konstant angesetzt), Betondeckung x = 45 mm, t = 50 a:', formel: 'D_{app} = 0{,}3 \\cdot 10^{-12}\\,\\tfrac{\\text{m}^2}{\\text{s}} = 9{,}47\\,\\tfrac{\\text{mm}^2}{\\text{a}}' },
-          { titel: 'Argument der Fehlerfunktion', erklaerung: 'Einsetzen:', formel: 'z = \\frac{45}{2\\sqrt{9{,}47 \\cdot 50}} = \\frac{45}{43{,}5} = 1{,}03 \\Rightarrow \\mathrm{erf}(z) = 0{,}856' },
-          { titel: 'Chloridgehalt', erklaerung: 'Vergleich mit dem kritischen Gehalt (Orientierungswert 0,5 M.-% v. z.):', formel: 'C = 3{,}0 \\cdot (1 - 0{,}856) = 0{,}43 < 0{,}5 \\Rightarrow \\text{noch passiv}' }
-        ]}
-        ergebnisHinweis="Mit 35 mm Deckung ergäbe sich bereits 0,77 M.-% v. z. – die Deckung wirkt quadratisch auf die Zeit. Zeitabhängiges D_app (Alterungsexponent) und probabilistische Ansätze nach fib Bulletin 34 verfeinern die Prognose."
-        normQuelle="fib Bulletin 34 (2006); fib Model Code 2010"
+        schritte={inhalt.daten["Korrosion.schritte"]}
+        ergebnisHinweis={inhalt.werte.mit35MmDeckung}
+        normQuelle={inhalt.werte.fibBulletin342006}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Querschnittsverlust eines Bewehrungsstabes aus der Korrosionsstromdichte"
+        title={inhalt.werte.beispiel2QuerschnittsverlustEines}
         zielGleichung="v_{corr} = \frac{M \cdot i_{corr}}{z \cdot F \cdot \rho}"
-        schritte={[
-          { titel: 'Abtragsrate', erklaerung: 'Eisen: M = 55,85 g/mol, z = 2, ρ = 7,87 g/cm³, i_corr = 1 µA/cm²:', formel: 'v_{corr} = 11{,}6\\,\\mu\\text{m/a}' },
-          { titel: 'Radiusabnahme', erklaerung: 'Gleichmäßiger Abtrag über 10 Jahre an einem Stab Ø 12 mm:', formel: 'd = 12 - 2 \\cdot 0{,}116 = 11{,}77\\,\\text{mm}' },
-          { titel: 'Querschnittsverlust', erklaerung: 'Bezogen auf den Ausgangsquerschnitt:', formel: '\\Delta A / A = 1 - (11{,}77/12)^2 = 3{,}8\\,\\%' }
-        ]}
-        ergebnisHinweis="Bei chloridinduziertem Lochfraß ist der lokale Abtrag 4- bis 8-mal größer als der Mittelwert (Lochfraßfaktor) – der Querschnittsverlust kann lokal ein Vielfaches betragen, ohne dass Abplatzungen vorwarnen."
-        normQuelle="Faradaysches Gesetz; DIN EN ISO 8044"
+        schritte={inhalt.daten["Korrosion.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.beiChloridinduziertemLochfraßIst}
+        normQuelle={inhalt.werte.faradayschesGesetzDinEn}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="korrosion" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Chlorid- und Karbonatisierungsmodelle, Alterungsexponenten, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap10}
         wikipedia={[
           { title: 'Bewehrungskorrosion' },
-          { title: 'Karbonatisierung (Beton)' },
+          { title: inhalt.werte.karbonatisierungBeton },
           { title: 'Lochfraßkorrosion', url: 'https://de.wikipedia.org/wiki/Lochfra%C3%9Fkorrosion' }
         ]}
-        literatur={[
-          'fib Model Code for Concrete Structures 2010 (International Federation for Structural Concrete)',
-          'DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620, 2. überarb. Aufl. Berlin: Beuth 2011 (keine Neuausgabe zur DIN 1045:2023, Stand 10/2026)',
-          'fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 12390-12:2020-04 (Bestimmung des Karbonatisierungswiderstandes – beschleunigtes Verfahren)' },
-          { title: 'DIN EN 12390-10:2019-02 (Karbonatisierungswiderstand bei atmosphärischer CO₂-Konzentration)' },
-          { title: 'DIN EN 1992-1-1:2011-01 + NA (Eurocode 2: Betondeckung cnom und Expositionsklassen)' }
-        ]}
-        formeln={[
-          {
-            formel: 'C(x,t) = C_0 + (C_s - C_0) \\cdot \\left[1 - \\text{erf}\\left(\\frac{x}{2 \\cdot \\sqrt{D_{\\text{app}} \\cdot t}}\\right)\\right]',
-            erklaerung: '2. Fick\'sches Diffusionsgesetz zur Modellierung des instationären Chlorideindringens in das poröse Zementsteingefüge.',
-            quelle: 'fib Bulletin 34 / fib Model Code 2010'
-          },
-          {
-            formel: 'x_c(t) = K_{\\text{karb}} \\cdot \\sqrt{t} \\quad [\\text{mm}], \\quad K_{\\text{nat}} \\approx K_{\\text{schnell}} \\cdot \\sqrt{\\frac{\\text{CO}_{2,\\text{nat}}}{\\text{CO}_{2,\\text{schnell}}}}',
-            erklaerung: 'Quadratisches Wurzel-Zeit-Gesetz der Karbonatisierungstiefe xc(t) und Umrechnung beschleunigter CO2-Kammerprüfungen auf atmosphärische Verhältnisse.',
-            quelle: 'DIN EN 12390-12 / fib Model Code'
-          }
-        ]}
+        literatur={inhalt.daten["Korrosion.literatur"]}
+        regelwerke={inhalt.daten["Korrosion.regelwerke"]}
+        formeln={inhalt.daten["Korrosion.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,125 @@
+{
+  "daten": {
+    "baustoffRecyclingData": [
+      {
+        "name": "Beton & Betonerzeugnisse",
+        "avv": "17 01 01",
+        "rating": "Sehr hoch",
+        "percentage": 95,
+        "subtitle": "Wichtigste stoffliche Fraktion der mineralischen Ersatzbaustoffe im Hoch- und Tiefbau",
+        "process": "Brechen (Prallbrecher), Absieben in definierte Fraktionen (0/4, 4/8, 8/16, 16/32), Nassklassierung zur Leichtstoffabtrennung, Magnetscheidung für Bewehrungsstahl.",
+        "useCases": [
+          "Gesteinskörnung für R-Beton im Hochbau (Ersatz von Primärkies bis zu 35/45 Gew.-% nach DIN EN 206 / DIN 1045-2).",
+          "Ungebundene Tragschichten im Straßenbau (Frostschutzschichten) nach Ersatzbaustoffverordnung (EBV) Güteklasse RC-1 / RC-2.",
+          "Gesteinskörnungen für die Asphaltproduktion (feine Gesteinsmehle)."
+        ],
+        "risks": "Anhaftender Gipsputz (Gefahr von Ettringittreiben), organische Anhaftungen (Holz, Kunststoffe), Farbanstriche (historisch asbesthaltig oder bleihaltig), Karbonatisierungstiefe.",
+        "regulations": "Ersatzbaustoffverordnung (EBV) 2023: Die Materialklasse des Recycling-Baustoffs (RC-1, RC-2, RC-3) bestimmt die zulässigen Einbauweisen und hydrogeologischen Einbaubedingungen (BM-Klassen gelten für Bodenmaterial)."
+      },
+      {
+        "name": "Ziegel & Mauerwerk",
+        "avv": "17 01 02",
+        "rating": "Hoch",
+        "percentage": 85,
+        "subtitle": "Wertstoffpotenzial aus dem traditionellen Massivbau",
+        "process": "Schonende Zerkleinerung zur Vermeidung zu hoher Feinanteile, Windsichtung zur Abscheidung von Mörtelsand und Leichtfraktionen.",
+        "useCases": [
+          "Produktion von Vegetationssubstraten für extensive und intensive Dachbegrünungen (hohe Wasserspeicherkapazität).",
+          "Zusatzstoff für Tennissand und Sportplatzböden.",
+          "Leichte Gesteinskörnung für wärmedämmende R-Ziegel (geschlossener Kreislauf im Ziegelwerk).",
+          "Unterbau im Erd- und Wegebau (EBV-Klasse Ziegelmaterial)."
+        ],
+        "risks": "Sulphathaltige Mörtelreste (Gipsmörtel). Gips im Ziegel führt bei Recycling-Einsatz im Beton zu enormen Quellschäden. Dämmmörtel-Anhaftungen.",
+        "regulations": "GewAbfV § 8 Abs. 1 verlangt die getrennte Sammlung von Ziegeln als eigene Fraktion von Bau- und Abbruchabfällen an der Anfallstelle, um Störstoffe (z. B. Gips) aus dem Recycling herauszuhalten."
+      },
+      {
+        "name": "Gips- und Calciumsulfatbaustoffe",
+        "avv": "17 08 02",
+        "rating": "Hoch (theoretisch) / Gering (praktisch)",
+        "percentage": 35,
+        "subtitle": "Kritischer Störstoff im Bauschutzkreislauf mit hohem Upcycling-Potenzial",
+        "process": "Strikte manuelle Demontage vor dem Rohbauabbruch, mechanisches Mahlen und anschließende thermische Entwässerung (Kalzinierung) zu Stuckgips in speziellen RC-Gipswerken.",
+        "useCases": [
+          "Vollständiges stoffliches Recycling zu neuen Gipskartonplatten (geschlossener Produktkreislauf).",
+          "Bodenverbesserer in der Landwirtschaft (Calciumsulfat als Schwefelquelle).",
+          "Abbinderegler in der Zementindustrie (Begrenzt auf saubere Monofraktionen)."
+        ],
+        "risks": "Gips ist der schädlichste Störstoff im mineralischen Recycling! Durch Wasserzutritt bildet sich Ettringit ('Gipstreiben'), das Beton und Asphalt sprengt. Staubentwicklung beim Abbruch bindet Feuchtigkeit.",
+        "regulations": "DepV: Gips darf aufgrund des Sulfatgehalts nicht auf DK-0-Deponien ohne Abdichtung abgelagert werden. Ersatzbaustoffverordnung schränkt Gips im Gemisch drastisch ein."
+      },
+      {
+        "name": "Holz (Altholz)",
+        "avv": "17 02 01",
+        "rating": "Sehr hoch (A I - A II) / Thermisch (A III - A IV)",
+        "percentage": 90,
+        "subtitle": "Regenerativer Baustoff mit anspruchsvoller Schadstoff-Kaskadierung",
+        "process": "Sortierung nach Altholzverordnung (AltholzV) in die Kategorien A I bis A IV. Mechanisches Schreddern, Metallabscheidung, optische Sortierung zur Fremdstoffbeseitigung.",
+        "useCases": [
+          "Stoffliche Verwertung (A I & A II): Rohstoff für die Spanplatten- und Holzwerkstoffindustrie (Kreislaufwirtschaft).",
+          "Thermische Verwertung (A III & A IV): Energetische Nutzung in Biomasseheizkraftwerken mit zertifizierter Rauchgasreinigung.",
+          "Koppelnutzung: Einsatz im temporären Holzbau (Wiederverwendung von Balken)."
+        ],
+        "risks": "Holzschutzmittel (PCP, Lindan, DDT, kupfer- und chromhaltige Salze), Teeröle (Karbolineum) im Außenbereich (Bahnschwellen, Pfähle). Halogenorganische Verbindungen in Beschichtungen.",
+        "regulations": "Altholzverordnung (AltholzV): Regelt die Einstufung und schließt belastetes Holz der Kategorie A IV von der stofflichen Verwertung rigoros aus."
+      },
+      {
+        "name": "Baustahl & Bewehrung",
+        "avv": "17 04 05",
+        "rating": "Nahezu 100%",
+        "percentage": 99,
+        "subtitle": "Das Paradebeispiel für echtes geschlossenes Metall-Upcycling",
+        "process": "Magnetscheidung aus dem Brecherstrom, Schopfscherenzerkleinerung, Einschmelzen im Elektrolichtbogenofen (EAF) unter Beigabe von Schlackenbildnern zur Raffination.",
+        "useCases": [
+          "100%iges Reproduzieren von neuem Betonstahl, Profilstahl oder Blechen mit exakt identischen mechanisch-physikalischen Eigenschaften.",
+          "Maschinenbauteile und Gussprodukte."
+        ],
+        "risks": "Geringe Schadstoffrisiken. Beschichtungen (historisch bleihaltiger Korrosionsschutz wie Bleimennige), Zinkanhaftungen (erfordern Filterung des Zinkstaubs im Elektroofen-Rauchgas)."
+      },
+      {
+        "name": "Flachglas & Fensterscheiben",
+        "avv": "17 02 02",
+        "rating": "Mittel",
+        "percentage": 50,
+        "subtitle": "Gefügiger Werkstoff mit hohen Reinheitsanforderungen an den Schmelzprozess",
+        "process": "Manueller Scheibenausbau aus dem Holz-/Kunststoffrahmen. Aufmahlen, optoelektronische Trennung nach Farbreinheit, Entfernung von Metall- und Folienresten.",
+        "useCases": [
+          "Wiederaufladung der Floatglas-Produktion (Sparen von Schmelzenergie um ca. 25% bei Scherbeneinsatz).",
+          "Blähglas-Herstellung (hochwertige wärmedämmende leichte Gesteinskörnung).",
+          "Rohstoff für Dämmmaterialien (Glaswolle).",
+          "Rohstoffzusatz in der Fliesen- und Sanitärkeramikindustrie."
+        ],
+        "risks": "Verbundsicherheitsglas (VSG): Die zähelastische Polyvinylbutyral-Folie (PVB) haftet extrem fest am Glas und erfordert Spezial-Schälmühlen. Blei- oder Cadmiumschichten bei historischen Bedruckungen.",
+        "regulations": "Bayerischer LfU-Rückbauleitfaden fordert den Ausbau der kompletten Fensterbaugruppe vor dem maschinellen Abbruch."
+      },
+      {
+        "name": "Kunststoffe & Dämmstoffe",
+        "avv": "17 02 03",
+        "rating": "Gering bis Mittel",
+        "percentage": 25,
+        "subtitle": "Komplizierte Verbundstrukturen und historische Schadstoff-Altlasten",
+        "process": "Sortenreine Erfassung (Hart-PVC, PE, PP). Mechanisches Zerkleinern und Extrudieren (Regranulierung). Chemisches Recycling (z. B. lösungsmittelbasiertes CreaSolv-Verfahren für Polystyrol).",
+        "useCases": [
+          "Einsatz im Fensterprofilbau (Co-Extrusion von Neukunststoff mit RC-Kern, Cradle-to-Cradle).",
+          "Kabelkanäle, Abstandshalter und baustellenspezifische Spritzgussteile.",
+          "Ersatzbrennstoff in Zementwerken (Thermische Verwertung hochkalorischer, zersplitterter Fraktionen)."
+        ],
+        "risks": "Hexabromcyclododecan (HBCD) in Dämmstoffen des Typs EPS/XPS bis Baujahr ca. 2015 (Flammschutzmittel, giftig/schädlich). Weichmacher (Phthalate in PVC-Böden, chlorierte Paraffine).",
+        "regulations": "POP-Verordnung der EU: Dämmstoffe mit > 1000 mg/kg HBCD gelten als persistente organische Abfälle und müssen in zugelassenen Müllverbrennungsanlagen zerstört werden."
+      },
+      {
+        "name": "Teerfreie Bitumenmischungen (Asphalt)",
+        "avv": "17 03 02",
+        "rating": "Sehr hoch",
+        "percentage": 92,
+        "subtitle": "Ressourcenschonung im Verkehrswegebau",
+        "process": "Kaltfräsen im Straßenoberbau, mechanisches Brechen des Rückbauträgers, thermische Vorerwärmung in Asphaltmischwerken (Paralleltrommel) unter kontrollierter Sauerstoffzufuhr.",
+        "useCases": [
+          "Direkte stoffliche Heißzugabe von Asphaltgranulat (bis zu 60% im Asphaltmischwerk für Trag-, Binder- und Deckschichten).",
+          "Ungebundener Frostschutz- und Schotterunterbau nach Ersatzbaustoffverordnung (Klasse RC-Asphalt)."
+        ],
+        "risks": "Verwechslungsgefahr mit teer- und pechhaltigen Mischungen (AVV 17 03 01*, enthalten krebserregendes PAK). Geringfügige Asphaltkleberrückstände müssen PAK-frei sein.",
+        "regulations": "Ersatzbaustoffverordnung (EBV) regelt Grenzwerte für PAK-Auswaschungen. Teerhaltiges Material darf auf keinen Fall wieder eingebaut werden."
+      }
+    ]
+  }
+}

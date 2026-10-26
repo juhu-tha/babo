@@ -1,0 +1,15 @@
+{
+  "texte": {
+    "leichtbetonLb": " Leichtbeton (LB)",
+    "konstruktionsleichtbetonRohdichte800Bis": "Konstruktionsleichtbeton (Rohdichte 800 bis 2000 kg/m³) zeichnet sich durch ein poriges Gefüge aus. Dies wird durch offenporige Gesteinskörnung (z. B. Bims, Blähton) erreicht. Porenbeton ist ein eigenes, dampfgehärtetes Bauprodukt und kein Leichtbeton nach DIN EN 206. Leichtbeton vereint Tragfähigkeit mit verbesserter Wärmedämmung.",
+    "eigenschaftenBemessung": " Eigenschaften & Bemessung",
+    "beiLeichtbetonIstDas": "Bei Leichtbeton ist das Korn oft weicher als die Zementsteinmatrix. Der Bruch verläuft daher i. d. R. mitten durch das Korn. Dichte und Festigkeit korrelieren stark miteinander.",
+    "modifikationsbeiwertFürDenE": "Modifikationsbeiwert für den E-Modul. Wegen der weichen Körner hat Leichtbeton einen geringeren E-Modul als Normalbeton gleicher Druckfestigkeit.",
+    "abminderungDerZugfestigkeitIm": "Abminderung der Zugfestigkeit im Vergleich zu Normalbeton. Formeln nach Eurocode 2 (DIN EN 1992-1-1).",
+    "dichteAbhängigkeitNäherung": "Dichte-Abhängigkeit (Näherung)",
+    "geschätzteFestigkeit": "Geschätzte Festigkeit",
+    "achtungDiesSindStark": "Achtung: Dies sind stark vereinfachte empirische Zusammenhänge zur Veranschaulichung der Zielkonflikte (Tragfähigkeit vs. Dämmwirkung).",
+    "beispielrezepturRichtwerte": "Beispielrezeptur (Richtwerte)",
+    "leichteGesteinskörnung": "Leichte Gesteinskörnung"
+  }
+}

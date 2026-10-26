@@ -22,6 +22,8 @@ import {
 import type { BemessungSubTab } from '../Stahlbetonbemessung';
 
 import { betonAuswahl } from '@/src/data/kennwerte';
+import inhalt from '@/content/stahlbeton/StahlbetonNullBisHundert.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 interface Props {
   onNavigateTab?: (tab: BemessungSubTab) => void;
 }
@@ -44,50 +46,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
     q2: null,
   });
 
-  const steps = [
-    {
-      id: 0,
-      title: '1. Das Verbundprinzip von Stahl & Beton',
-      progress: '0% – 15%',
-      subtitle: 'Thermische Dehnkompatibilität, alkalischer Passivierungsschutz und Verbundmechanik',
-      badge: 'Grundlagen',
-    },
-    {
-      id: 1,
-      title: '2. Werkstoffgesetze (σ-ε) nach EC2',
-      progress: '15% – 35%',
-      subtitle: 'Parabel-Rechteck-Diagramm für Beton und Fließplateau für Betonstahl B500',
-      badge: 'Materialgesetze',
-    },
-    {
-      id: 2,
-      title: '3. Biegebemessung im GZT (μ-Verfahren)',
-      progress: '35% – 55%',
-      subtitle: 'Bernoulli-Hypothese, innerer Hebelarm, Druckzonenhöhe und Bewehrungsermittlung',
-      badge: 'Biegung',
-    },
-    {
-      id: 3,
-      title: '4. Querkraft & Fachwerkmodell',
-      progress: '55% – 75%',
-      subtitle: 'Plattentragfähigkeit ohne Schubbewehrung (VRd,c) und Bügelbemessung nach Ritter-Mörsch',
-      badge: 'Querkraft',
-    },
-    {
-      id: 4,
-      title: '5. Stützen, Durchstanzen & Verankerung',
-      progress: '75% – 90%',
-      subtitle: 'Knicken nach Theorie II. Ordnung, kritischer Rundschnitt und Verbundspannungen',
-      badge: 'Sondernachweise',
-    },
-    {
-      id: 5,
-      title: '6. Gebrauchstauglichkeit (GZG) & Praxis',
-      progress: '90% – 100%',
-      subtitle: 'Rissbreitenbegrenzung, Mindestbewehrung und Orientierung im Berechnungsmodul',
-      badge: 'Praxis & GZG',
-    },
-  ];
+  const steps = inhalt.daten["StahlbetonNullBisHundert.steps"];
 
   // Concrete classes database for demonstrator 1
   // Kennwerte nach EC2 Tab. 3.1 aus der zentralen Tabelle (src/data/kennwerte.ts)
@@ -117,35 +76,23 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-md font-mono">
-              Didaktischer Leitfaden • Von 0 auf 100
-            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-md font-mono"><MdText text={inhalt.texte.didaktischerLeitfadenVon0} /></span>
             <h2 className="text-xl md:text-2xl font-bold text-text-main flex items-center gap-2.5 mt-1.5">
-              <GraduationCap className="text-shiraz" size={24} />
-              Stahlbetonbau: Systematische Einführung von den Grundlagen bis zur Bauteilbemessung
-            </h2>
+              <GraduationCap className="text-shiraz" size={24} /><MdText text={inhalt.texte.stahlbetonbauSystematischeEinführungVon} /></h2>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg border border-home-grau/20">
-              Eurocode 2 • DIN EN 1992-1-1
-            </span>
+            <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.eurocode2DinEn} /></span>
           </div>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Dieser modulare Leitfaden vermittelt die baustatischen, werkstofflichen und normativen 
-            Zusammenhänge des Stahlbetonbaus nach DIN EN 1992-1-1 (Eurocode 2). In sechs systematischen 
-            Lektionen lernen Sie das Verbundprinzip, die Werkstoffgesetze, die Biege- und Querkraftbemessung 
-            im Grenzzustand der Tragfähigkeit (GZT) sowie die Nachweise im Grenzzustand der Gebrauchstauglichkeit (GZG) 
-            kennen und beherrschen die entsprechenden Fachreiter dieser Plattform.
-          </p>
+          <p><MdText text={inhalt.texte.dieserModulareLeitfadenVermittelt} /></p>
         </div>
 
         {/* Fortschritts-Indikator */}
         <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-text-main/70">Aktueller Themenbereich:</span>
+            <span className="font-semibold text-text-main/70"><MdText text={inhalt.texte.aktuellerThemenbereich} /></span>
             <span className="font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-1 rounded">
               {steps[activeStep].progress}
             </span>
@@ -160,7 +107,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
       {/* Interaktive Kapitel-Navigation */}
       <div className="bg-white p-4 rounded-2xl border border-home-grau/30 shadow-sm">
         <div className="text-xs font-bold text-text-main/70 uppercase tracking-wider mb-3 flex items-center justify-between">
-          <span>Themenübersicht (Kapitelauswahl)</span>
+          <span><MdText text={inhalt.texte.themenübersichtKapitelauswahl} /></span>
           <span className="text-shiraz font-mono font-bold">{steps[activeStep].progress}</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
@@ -210,15 +157,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 0 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 1 von 6 • 0% bis 15%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Das Verbundprinzip von Stahl & Beton
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Warum zwei völlig unterschiedliche Baustoffe einen der leistungsfähigsten Verbundwerkstoffe der Baugeschichte bilden.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion1Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.dasVerbundprinzipVonStahl} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.warumZweiVölligUnterschiedliche} /></p>
             </div>
 
             {/* Sachliche Einführung */}
@@ -228,17 +169,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Mechanische Komplementarität der beiden Partner:
-                  </p>
-                  <p>
-                    Beton ist druckfest, aber spröde und zugschwach (mittlere Zugfestigkeit <InlineMath math="f_{ctm} \approx 2{,}2\dots 4{,}1\,\text{N/mm}^2" />). 
-                    Stahl hingegen ist hochelastisch und extrem zugfest (<InlineMath math="f_{yk} = 500\,\text{N/mm}^2" />), knickt aber bei schlanker Druckbeanspruchung aus.
-                  </p>
-                  <p>
-                    Im Verbundwerkstoff Stahlbeton bettet der Beton den Stahl ein, schützt ihn vor Knicken und Brandeinwirkung, 
-                    während der Bewehrungsstahl die Zugspannungen im gerissenen Zustand (Zustand II) zuverlässig aufnimmt.
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.mechanischeKomplementaritätDerBeiden} /></p>
+                  <p><MdText text={inhalt.texte.betonIstDruckfestAber} /></p>
+                  <p><MdText text={inhalt.texte.imVerbundwerkstoffStahlbetonBettet} /></p>
                 </div>
               </div>
             </div>
@@ -247,24 +180,15 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-3 gap-5">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
-                    Physikalischer Glücksfall
-                  </span>
+                  <span className="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><MdText text={inhalt.texte.physikalischerGlücksfall} /></span>
                   <span className="text-xs font-bold text-shiraz">Faktor 1</span>
                 </div>
-                <h4 className="font-bold text-sm text-text-main">
-                  Thermische Dehnkompatibilität
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">
-                  Beton und Stahl besitzen nahezu den identischen thermischen Längenausdehnungskoeffizienten:
-                </p>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.thermischeDehnkompatibilität} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.betonUndStahlBesitzen} /></p>
                 <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center text-xs text-slate-800">
                   <InlineMath math="\alpha_T \approx 10 \cdot 10^{-6}\,\text{K}^{-1}" />
                 </div>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Bei Temperaturänderungen (Sommer/Winter) dehnt sich der Verbundkörper einheitlich aus, 
-                  ohne dass innere Eigenspannungen den Verbund zerstören.
-                </p>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.beiTemperaturänderungenSommerWinter} /></p>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
@@ -274,19 +198,12 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   </span>
                   <span className="text-xs font-bold text-shiraz">Faktor 2</span>
                 </div>
-                <h4 className="font-bold text-sm text-text-main">
-                  Alkalischer Korrosionsschutz
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">
-                  Das Porenwasser des erhärteten Zementsteins enthält gelöstes Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" /> und ist stark alkalisch:
-                </p>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.alkalischerKorrosionsschutz} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dasPorenwasserDesErhärteten} /></p>
                 <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center text-xs text-emerald-800 font-bold">
                   <InlineMath math="\text{pH-Wert} \ge 12{,}5" />
                 </div>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  In diesem Milieu bildet sich auf dem Stahl eine dichte Eisenoxid-Passivschicht, 
-                  die die Korrosion dauerhaft unterbindet, solange kein Karbonatisierungs- oder Chlorideintrag vorliegt.
-                </p>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.inDiesemMilieuBildet} /></p>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
@@ -296,33 +213,23 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   </span>
                   <span className="text-xs font-bold text-shiraz">Faktor 3</span>
                 </div>
-                <h4 className="font-bold text-sm text-text-main">
-                  Formschlüssiger Rippenverbund
-                </h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">
-                  Moderner Betonstahl (B500A/B nach DIN 488) besitzt schräg gewalzte Rippen.
-                </p>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.formschlüssigerRippenverbund} /></h4>
+                <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.modernerBetonstahlB500aB} /></p>
                 <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center text-xs text-blue-900 font-bold">
                   <InlineMath math="f_{bd} = 2{,}25 \cdot \eta_1 \cdot \eta_2 \cdot f_{ctd}" />
                 </div>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Kräfte werden nicht nur durch Adhäsion und Reibung, sondern vor allem durch 
-                  mechanischen Formschluss der Rippen gegen den umgebenden Beton übertragen.
-                </p>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.kräfteWerdenNichtNur} /></p>
               </div>
             </div>
 
             {/* Navigation */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex justify-between items-center">
-              <span className="text-xs text-text-main/70 font-medium">
-                Als Nächstes: Die normativen Werkstoffkurven für Beton und Stahl nach DIN EN 1992-1-1.
-              </span>
+              <span className="text-xs text-text-main/70 font-medium"><MdText text={inhalt.texte.alsNächstesDieNormativen} /></span>
               <button
                 type="button"
                 onClick={() => setActiveStep(1)}
                 className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-              >
-                Weiter zu Kapitel 2 <ArrowRight size={14} />
+              ><MdText text={inhalt.texte.weiterZuKapitel2} /><ArrowRight size={14} />
               </button>
             </div>
           </div>
@@ -334,15 +241,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 1 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 2 von 6 • 15% bis 35%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Werkstoffgesetze (σ-ε) nach Eurocode 2
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Das Parabel-Rechteck-Diagramm für Beton und das bilineare Fließplateau für Betonstahl B500.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion2Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.werkstoffgesetzeNachEurocode2} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.dasParabelRechteckDiagramm} /></p>
             </div>
 
             {/* Sachliche Einführung */}
@@ -352,13 +253,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Sicherheitskonzept & Bemessungswerte:
-                  </p>
-                  <p>
-                    Eurocode 2 arbeitet im Grenzzustand der Tragfähigkeit (GZT) mit dem semi-probabilistischen Sicherheitskonzept. 
-                    Aus den charakteristischen Werkstofffestigkeiten werden durch Teilsicherheitsbeiwerte die Bemessungswerte gebildet:
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.sicherheitskonzeptBemessungswerte} /></p>
+                  <p><MdText text={inhalt.texte.eurocode2ArbeitetIm} /></p>
                   <div className="grid sm:grid-cols-2 gap-3 pt-1">
                     <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 font-mono text-xs">
                       <strong>Beton:</strong> <InlineMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_C} = 0{,}85 \cdot \frac{f_{ck}}{1{,}5}" />
@@ -375,40 +271,29 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-text-main flex items-center justify-between">
-                  <span>Beton: Parabel-Rechteck (EC2 3.1.7)</span>
-                  <span className="text-xs font-mono text-shiraz font-bold">εc2 = -2,0 ‰</span>
+                  <span><MdText text={inhalt.texte.betonParabelRechteckEc2} /></span>
+                  <span className="text-xs font-mono text-shiraz font-bold"><MdText text={inhalt.texte.c220} /></span>
                 </h4>
                 <div className="space-y-2 text-xs text-text-main/80 leading-relaxed">
-                  <p>
-                    Für Normalbeton bis C50/60 setzt sich die Druckspannungs-Dehnungslinie aus einer quadratischen Parabel 
-                    bis zur Stauchung <InlineMath math="\varepsilon_{c2} = -2{,}0\,\text{‰}" /> und einem anschließenden Rechteck-Plateau 
-                    bis zur Bruchdehnung <InlineMath math="\varepsilon_{cu2} = -3{,}5\,\text{‰}" /> zusammen.
-                  </p>
+                  <p><MdText text={inhalt.texte.fürNormalbetonBisC50} /></p>
                   <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center">
                     <InlineMath math="\sigma_c = f_{cd} \cdot \left[1 - \left(1 - \frac{|\varepsilon_c|}{2{,}0}\right)^2\right] \quad (0 \le |\varepsilon_c| \le 2{,}0\,\text{‰})" />
                   </div>
-                  <p className="text-[11px] text-slate-500">
-                    Für die Handberechnung darf alternativ das Rechteckmodell mit wirksamer Druckzonenhöhe <InlineMath math="x_{eff} = 0{,}8 \cdot x" /> angesetzt werden.
-                  </p>
+                  <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.fürDieHandberechnungDarf} /></p>
                 </div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-text-main flex items-center justify-between">
-                  <span>Betonstahl B500 (EC2 3.2.7)</span>
-                  <span className="text-xs font-mono text-shiraz font-bold">εyd = 2.175 ‰</span>
+                  <span><MdText text={inhalt.texte.betonstahlB500Ec23} /></span>
+                  <span className="text-xs font-mono text-shiraz font-bold"><MdText text={inhalt.texte.yd2175} /></span>
                 </h4>
                 <div className="space-y-2 text-xs text-text-main/80 leading-relaxed">
-                  <p>
-                    Betonstahl B500 weist ein idealisiertes linear-elastisches, ideal-plastisches Verhalten auf. 
-                    Bis zur Fließgrenzdehnung gilt das Hooke'sche Gesetz mit <InlineMath math="E_s = 200\,000\,\text{N/mm}^2" />:
-                  </p>
+                  <p><MdText text={inhalt.texte.betonstahlB500WeistEin} /></p>
                   <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 font-mono text-center">
                     <InlineMath math="\varepsilon_{yd} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\text{‰}" />
                   </div>
-                  <p className="text-[11px] text-slate-500">
-                    Bei Dehnungen <InlineMath math="\varepsilon_s > \varepsilon_{yd}" /> bleibt die Spannung konstant bei <InlineMath math="f_{yd}" /> (horizontaler oberer Ast).
-                  </p>
+                  <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.beiDehnungenVarepsilonS} /></p>
                 </div>
               </div>
             </div>
@@ -417,17 +302,14 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                  <Activity size={15} /> Interaktiver Kennwerte-Vergleich nach DIN EN 1992-1-1
-                </span>
+                  <Activity size={15} /><MdText text={inhalt.texte.interaktiverKennwerteVergleichNach} /></span>
                 <span className="text-xs font-mono font-bold text-slate-700">
                   Ausgewählt: <strong className="text-shiraz">{selectedConcrete}</strong>
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-text-main/70 mb-1.5">
-                  Betonfestigkeitsklasse wählen:
-                </label>
+                <label className="block text-xs font-semibold text-text-main/70 mb-1.5"><MdText text={inhalt.texte.betonfestigkeitsklasseWählen} /></label>
                 <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                   {Object.keys(CONCRETE_DATA).map((cls) => (
                     <button
@@ -448,33 +330,31 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                  <span className="text-[10px] text-text-main/60 uppercase font-bold block">Charakt. Druckfestigkeit</span>
+                  <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.charaktDruckfestigkeit} /></span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeWert(currentConcrete.fck)} N/mm²</span>
-                  <span className="text-[10px] text-slate-500 block font-mono">f_ck (Zylinder)</span>
+                  <span className="text-[10px] text-slate-500 block font-mono"><MdText text={inhalt.texte.fCkZylinder} /></span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Bemessungsfestigkeit</span>
                   <span className="text-lg font-mono font-black text-shiraz">{formatDeZahl(fcd, 2)} N/mm²</span>
-                  <span className="text-[10px] text-shiraz/80 block font-mono">f_cd = 0,85 · f_ck / 1.5</span>
+                  <span className="text-[10px] text-shiraz/80 block font-mono"><MdText text={inhalt.texte.fCd085} /></span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                  <span className="text-[10px] text-text-main/60 uppercase font-bold block">Mittlere Zugfestigkeit</span>
+                  <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.mittlereZugfestigkeit} /></span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeWert(currentConcrete.fctm)} N/mm²</span>
-                  <span className="text-[10px] text-slate-500 block font-mono">f_ctm = 0,30 · f_ck^(2/3)</span>
+                  <span className="text-[10px] text-slate-500 block font-mono"><MdText text={inhalt.texte.fCtm030} /></span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Elastizitätsmodul</span>
                   <span className="text-lg font-mono font-black text-emerald-700">{formatDeZahl((currentConcrete.Ecm / 1000), 0)} kN/mm²</span>
-                  <span className="text-[10px] text-emerald-600 block font-mono">E_cm (Sekantenmodul)</span>
+                  <span className="text-[10px] text-emerald-600 block font-mono"><MdText text={inhalt.texte.eCmSekantenmodul} /></span>
                 </div>
               </div>
             </div>
 
             {/* Navigation & Link in Reiter 1 */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs text-text-main/80">
-                Im Unterrechner <strong>"1. Spannung-Dehnung (σ-ε)"</strong> können Sie die Kurven interaktiv als Diagramm auswerten.
-              </div>
+              <div className="text-xs text-text-main/80"><MdText text={inhalt.texte.imUnterrechner1Spannung} /></div>
               <div className="flex gap-2">
                 {onNavigateTab && (
                   <button
@@ -482,15 +362,13 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     onClick={() => onNavigateTab('spannung')}
                     className="px-3.5 py-2 bg-white text-shiraz border border-shiraz/40 hover:bg-shiraz/10 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all cursor-pointer"
                   >
-                    <Activity size={13} /> Zu Spannung-Dehnung
-                  </button>
+                    <Activity size={13} /><MdText text={inhalt.texte.zuSpannungDehnung} /></button>
                 )}
                 <button
                   type="button"
                   onClick={() => setActiveStep(2)}
                   className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-                >
-                  Weiter zu Kapitel 3 <ArrowRight size={14} />
+                ><MdText text={inhalt.texte.weiterZuKapitel3} /><ArrowRight size={14} />
                 </button>
               </div>
             </div>
@@ -503,15 +381,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 2 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 3 von 6 • 35% bis 55%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Biegebemessung im GZT & Das dimensionslose μ-Verfahren
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Ebenbleiben der Querschnitte (Bernoulli), innerer Hebelarm und rechnerische Ermittlung der Biegebewehrung.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion3Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.biegebemessungImGztDas} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.ebenbleibenDerQuerschnitteBernoulli} /></p>
             </div>
 
             {/* Sachliche Einführung */}
@@ -521,20 +393,12 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Das innere Kräftepaar bei Biegung:
-                  </p>
-                  <p>
-                    Ein Biegemoment <InlineMath math="M_{Ed}" /> wird im Querschnitt durch ein inneres Kräftepaar aus 
-                    Betondruckkraft <InlineMath math="F_{cd}" /> und Stahlzugkraft <InlineMath math="F_{sd}" /> abgetragen:
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.dasInnereKräftepaarBei} /></p>
+                  <p><MdText text={inhalt.texte.einBiegemomentMEd} /></p>
                   <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 font-mono text-center text-xs text-slate-800">
                     <InlineMath math="M_{Ed} = F_{cd} \cdot z = F_{sd} \cdot z \quad \text{mit innerem Hebelarm } z = \zeta \cdot d" />
                   </div>
-                  <p>
-                    Das bewährte <strong>dimensionslose Momentenbeiwert-Verfahren (<InlineMath math="\mu" />-Verfahren)</strong> 
-                    erlaubt die rasche Ermittlung der Zugbewehrung <InlineMath math="A_{s,erf}" /> ohne iterative Gleichgewichtsberechnung.
-                  </p>
+                  <p><MdText text={inhalt.texte.dasBewährteDimensionsloseMomentenbeiwert} /></p>
                 </div>
               </div>
             </div>
@@ -543,24 +407,17 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-shiraz flex items-center gap-2">
-                  <Box size={16} /> Schrittweise Bemessungsgleichungen
-                </h4>
+                  <Box size={16} /><MdText text={inhalt.texte.schrittweiseBemessungsgleichungen} /></h4>
                 <div className="space-y-2 text-xs text-text-main/85 leading-relaxed">
-                  <div>
-                    <strong>1. Bezogenes Bemessungsmoment:</strong>
-                    <div className="p-2 bg-off-white rounded font-mono text-center my-1">
+                  <div><MdText text={inhalt.texte.t1BezogenesBemessungsmoment} /><div className="p-2 bg-off-white rounded font-mono text-center my-1">
                       <InlineMath math="\mu_{Eds} = \frac{M_{Eds}}{b \cdot d^2 \cdot f_{cd}}" />
                     </div>
                   </div>
-                  <div>
-                    <strong>2. Bezogener innerer Hebelarm (<InlineMath math="\zeta" />):</strong>
-                    <div className="p-2 bg-off-white rounded font-mono text-center my-1">
+                  <div><MdText text={inhalt.texte.t2BezogenerInnererHebelarm} /><div className="p-2 bg-off-white rounded font-mono text-center my-1">
                       <InlineMath math="\zeta = 0{,}5 \cdot \left(1 + \sqrt{1 - 2 \cdot \mu_{Eds}}\right)" />
                     </div>
                   </div>
-                  <div>
-                    <strong>3. Erforderliche Zugbewehrung:</strong>
-                    <div className="p-2 bg-off-white rounded font-mono text-center my-1 text-shiraz font-bold">
+                  <div><MdText text={inhalt.texte.t3ErforderlicheZugbewehrung} /><div className="p-2 bg-off-white rounded font-mono text-center my-1 text-shiraz font-bold">
                       <InlineMath math="A_{s,erf} = \frac{M_{Eds}}{\zeta \cdot d \cdot f_{yd}}" />
                     </div>
                   </div>
@@ -569,22 +426,11 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
 
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
                 <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
-                  <Scale size={16} className="text-shiraz" /> Grenzwerte & Duktilität
-                </h4>
+                  <Scale size={16} className="text-shiraz" /><MdText text={inhalt.texte.grenzwerteDuktilität} /></h4>
                 <div className="text-xs text-slate-700 space-y-2 leading-relaxed">
-                  <p>
-                    <strong>Einfache Bewehrung (<InlineMath math="\mu_{Eds} \le \mu_{lim} \approx 0{,}296" />):</strong><br />
-                    Die Zugbewehrung fließt vor dem Betonbruch (<InlineMath math="\varepsilon_s \ge 2{,}175\,\text{‰}" />). 
-                    Dies garantiert ein duktiles Bauteilverhalten mit deutlicher Vorankündigung durch Rissbildung.
-                  </p>
-                  <p>
-                    <strong>Druckbewehrung erforderlich (<InlineMath math="\mu_{Eds} > \mu_{lim}" />):</strong><br />
-                    Übersteigt das Moment den Grenzwert, reicht die Betondruckzone allein nicht mehr aus. 
-                    Es muss entweder die Querschnittshöhe vergrößert oder eine Druckbewehrung <InlineMath math="A_{s2}" /> eingebaut werden.
-                  </p>
-                  <p className="text-[11px] text-slate-500 italic">
-                    Tipp: Nach DIN EN 1992-1-1 gilt stets eine Mindestbewehrung <InlineMath math="A_{s,min} = 0{,}26 \cdot (f_{ctm}/f_{yk}) \cdot b_t \cdot d \ge 0{,}0013 \cdot b_t \cdot d" /> zur Vermeidung von Sprödbruch.
-                  </p>
+                  <p><MdText text={inhalt.texte.einfacheBewehrungMuEds} /></p>
+                  <p><MdText text={inhalt.texte.druckbewehrungErforderlichMuEds} /></p>
+                  <p className="text-[11px] text-slate-500 italic"><MdText text={inhalt.texte.tippNachDinEn} /></p>
                 </div>
               </div>
             </div>
@@ -593,17 +439,14 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                  <Activity size={15} /> Interaktiver Schnelldemonstrator: Rechteck-Biegebemessung
-                </span>
-                <span className="text-xs font-mono font-bold text-slate-700">
-                  Beton: C30/37 (<InlineMath math="f_{cd} = 17{,}0\,\text{N/mm}^2" />) • B500B
-                </span>
+                  <Activity size={15} /><MdText text={inhalt.texte.interaktiverSchnelldemonstratorRechteckB} /></span>
+                <span className="text-xs font-mono font-bold text-slate-700"><MdText text={inhalt.texte.betonC3037F} /></span>
               </div>
 
               <div className="grid sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
-                    <span>Bemessungsmoment (M_Ed):</span>
+                    <span><MdText text={inhalt.texte.bemessungsmomentMEd} /></span>
                     <span className="font-mono text-shiraz font-bold">{formatDeWert(calcMed)} kNm</span>
                   </label>
                   <input
@@ -619,7 +462,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
 
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
-                    <span>Balkenbreite (b):</span>
+                    <span><MdText text={inhalt.texte.balkenbreiteB} /></span>
                     <span className="font-mono text-shiraz font-bold">{formatDeWert(calcWidth)} cm</span>
                   </label>
                   <input
@@ -635,7 +478,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
 
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
-                    <span>Nutzhöhe (d):</span>
+                    <span><MdText text={inhalt.texte.nutzhöheD} /></span>
                     <span className="font-mono text-shiraz font-bold">{formatDeWert(calcDepth)} cm</span>
                   </label>
                   <input
@@ -653,32 +496,29 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               {/* Ergebnis-Karten */}
               <div className="grid sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                  <span className="text-[10px] text-text-main/60 uppercase font-bold block">Beiwert μ_Eds</span>
+                  <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.beiwertEds} /></span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeZahl(mu_Eds, 3)}</span>
                   <span className="text-[10px] text-slate-500 block font-mono">
-                    {mu_Eds <= MU_LIM_STAHL ? '✓ Einfach bewehrt' : '⚠ Druckbewehrung nötig'}
+                    {mu_Eds <= MU_LIM_STAHL ? inhalt.werte.einfachBewehrt : inhalt.werte.druckbewehrungNötig}
                   </span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                  <span className="text-[10px] text-text-main/60 uppercase font-bold block">Hebelarm-Faktor ζ</span>
+                  <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.hebelarmFaktor} /></span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeZahl(zeta, 3)}</span>
                   <span className="text-[10px] text-slate-500 block font-mono">z = {formatDeZahl((zeta * calcDepth), 1)} cm</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
-                  <span className="text-[10px] text-text-main/60 uppercase font-bold block">Erforderliche Bewehrung</span>
+                  <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.erforderlicheBewehrung} /></span>
                   <span className="text-lg font-mono font-black text-shiraz">{formatDeZahl(As_erf_cm2, 2)} cm²</span>
                   <span className="text-[10px] text-shiraz/80 block font-mono">
-                    z. B. {formatDeWert(Math.ceil(As_erf_cm2 / 2.01))} ⌀ 16 mm Stäbe
-                  </span>
+                    z. B. {formatDeWert(Math.ceil(As_erf_cm2 / 2.01))}<MdText text={inhalt.texte.t16MmStäbe} /></span>
                 </div>
               </div>
             </div>
 
             {/* Navigation & Link in Reiter 2 */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs text-text-main/80">
-                Im Unterrechner <strong>"2. Biegebemessung"</strong> bemessen Sie Rechteckquerschnitte – auch mit Druckbewehrung und nichtmetallischer Bewehrung.
-              </div>
+              <div className="text-xs text-text-main/80"><MdText text={inhalt.texte.imUnterrechner2Biegebemessung} /></div>
               <div className="flex gap-2">
                 {onNavigateTab && (
                   <button
@@ -686,15 +526,13 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     onClick={() => onNavigateTab('biegebemessung')}
                     className="px-3.5 py-2 bg-white text-shiraz border border-shiraz/40 hover:bg-shiraz/10 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all cursor-pointer"
                   >
-                    <Box size={13} /> Zur Biegebemessung
-                  </button>
+                    <Box size={13} /><MdText text={inhalt.texte.zurBiegebemessung} /></button>
                 )}
                 <button
                   type="button"
                   onClick={() => setActiveStep(3)}
                   className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-                >
-                  Weiter zu Kapitel 4 <ArrowRight size={14} />
+                ><MdText text={inhalt.texte.weiterZuKapitel4} /><ArrowRight size={14} />
                 </button>
               </div>
             </div>
@@ -707,15 +545,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 3 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 4 von 6 • 55% bis 75%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Querkraftbemessung & Das Fachwerkmodell nach Ritter-Mörsch
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Nachweisführung für Bauteile ohne Querkraftbewehrung (<InlineMath math="V_{Rd,c}" />) und Bemessung von Bügeln nach der Fachwerktheorie.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion4Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.querkraftbemessungDasFachwerkmodellNach} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.nachweisführungFürBauteileOhne} /></p>
             </div>
 
             {/* Sachliche Einführung */}
@@ -725,20 +557,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <BookOpen size={20} />
                 </div>
                 <div className="text-sm text-text-main leading-relaxed space-y-2">
-                  <p className="font-bold text-slate-900">
-                    Schubspannungen & Schrägrisse:
-                  </p>
-                  <p>
-                    Querkräfte erzeugen im Trägersteg Hauptzugspannungen unter ca. 45° Neigung zur Bauteilachse. 
-                    Da Beton kaum Zug aufnehmen kann, bilden sich charakteristische <strong>Schubschrägrisse</strong>.
-                  </p>
-                  <p>
-                    DIN EN 1992-1-1 unterscheidet grundlegend zwei Fälle:
-                    <br />
-                    1. <strong>Ohne Querkraftbewehrung:</strong> Weitflächige Bauteile (Platten, Fundamente), bei denen der ungerissene Druckgurt und die Rissreibung die Querkraft <InlineMath math="V_{Rd,c}" /> allein abtragen.
-                    <br />
-                    2. <strong>Mit Querkraftbewehrung:</strong> Balken und Träger, bei denen geschlossene Bügel oder Schrägstäbe als Zugstreben in einem gedachten Fachwerk modelliert werden.
-                  </p>
+                  <p className="font-bold text-slate-900"><MdText text={inhalt.texte.schubspannungenSchrägrisse} /></p>
+                  <p><MdText text={inhalt.texte.querkräfteErzeugenImTrägersteg} /></p>
+                  <p><MdText text={inhalt.texte.dinEn19921} /></p>
                 </div>
               </div>
             </div>
@@ -747,40 +568,36 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-shiraz flex items-center justify-between">
-                  <span>1. Ohne Querkraftbewehrung (VRd,c)</span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 rounded text-slate-700">Platten & Decken</span>
+                  <span><MdText text={inhalt.texte.t1OhneQuerkraftbewehrungVrd} /></span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 rounded text-slate-700"><MdText text={inhalt.texte.plattenDecken} /></span>
                 </h4>
                 <div className="space-y-2 text-xs text-text-main/85 leading-relaxed">
-                  <p>
-                    Die Tragfähigkeit <InlineMath math="V_{Rd,c}" /> berechnet sich nach der empirischen Potenzformel:
-                  </p>
+                  <p><MdText text={inhalt.texte.dieTragfähigkeitVRd} /></p>
                   <div className="p-2.5 bg-off-white rounded font-mono text-center">
                     <InlineMath math="V_{Rd,c} = \left[C_{Rd,c} \cdot k \cdot (100 \cdot \rho_l \cdot f_{ck})^{1/3}\right] b_w \cdot d" />
                   </div>
                   <div className="p-2 bg-white rounded border border-home-grau/20 space-y-1 text-[11px]">
-                    <div>• <strong>Maßstabsbeiwert:</strong> <InlineMath math="k = 1 + \sqrt{200/d} \le 2{,}0" /> (dickere Platten tragen spezifisch weniger Schub!)</div>
-                    <div>• <strong>Längsbewehrungsgrad:</strong> <InlineMath math="\rho_l = A_{sl} / (b_w \cdot d) \le 0{,}02" /></div>
-                    <div>• <strong>Mindestwert:</strong> <InlineMath math="V_{Rd,c} \ge v_{min} \cdot b_w \cdot d" /></div>
+                    <div><MdText text={inhalt.texte.maßstabsbeiwertK1Sqrt} /></div>
+                    <div><MdText text={inhalt.texte.längsbewehrungsgradRhoLA} /></div>
+                    <div><MdText text={inhalt.texte.mindestwertVRdC} /></div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-shiraz flex items-center justify-between">
-                  <span>2. Fachwerkmodell mit variablem Winkel</span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 rounded text-slate-700">Balken & Träger</span>
+                  <span><MdText text={inhalt.texte.t2FachwerkmodellMitVariablem} /></span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 rounded text-slate-700"><MdText text={inhalt.texte.balkenTräger} /></span>
                 </h4>
                 <div className="space-y-2 text-xs text-text-main/85 leading-relaxed">
-                  <p>
-                    Das Tragmodell besteht aus Betondruckstreben unter dem Winkel <InlineMath math="\theta" /> und vertikalen Bügeln als Zugstreben:
-                  </p>
+                  <p><MdText text={inhalt.texte.dasTragmodellBestehtAus} /></p>
                   <div className="p-2.5 bg-off-white rounded font-mono text-center">
                     <InlineMath math="V_{Rd,s} = \frac{A_{sw}}{s} \cdot z \cdot f_{ywd} \cdot \cot \theta" />
                   </div>
                   <div className="p-2 bg-white rounded border border-home-grau/20 space-y-1 text-[11px]">
-                    <div>• <strong>Druckstrebenwinkel:</strong> <InlineMath math="1{,}0 \le \cot \theta \le 3{,}0" /> nach NA, zusätzlich begrenzt nach Gl. (6.7aDE)</div>
-                    <div>• <strong>Betondruckstrebennachweis:</strong> <InlineMath math="V_{Ed} \le V_{Rd,max}" /> zur Vermeidung von Betonzerquetschen im Steg.</div>
-                    <div>• <strong>Versatzmaß:</strong> Zugkraftdeckungslinie um <InlineMath math="a_l = z \cdot \cot \theta / 2" /> versetzen!</div>
+                    <div><MdText text={inhalt.texte.druckstrebenwinkel10Le} /></div>
+                    <div><MdText text={inhalt.texte.betondruckstrebennachweisVEdLe} /></div>
+                    <div><MdText text={inhalt.texte.versatzmaßZugkraftdeckungslinieUmA} /></div>
                   </div>
                 </div>
               </div>
@@ -788,9 +605,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
 
             {/* Navigation & Link in Reiter 3 */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs text-text-main/80">
-                Im Unterrechner <strong>"3. Querkraftbemessung"</strong> können Sie Druckstrebenwinkel optimieren und Bügelabstände dimensionieren.
-              </div>
+              <div className="text-xs text-text-main/80"><MdText text={inhalt.texte.imUnterrechner3Querkraftbemessung} /></div>
               <div className="flex gap-2">
                 {onNavigateTab && (
                   <button
@@ -798,15 +613,13 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     onClick={() => onNavigateTab('querkraftbemessung')}
                     className="px-3.5 py-2 bg-white text-shiraz border border-shiraz/40 hover:bg-shiraz/10 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all cursor-pointer"
                   >
-                    <Scissors size={13} /> Zur Querkraftbemessung
-                  </button>
+                    <Scissors size={13} /><MdText text={inhalt.texte.zurQuerkraftbemessung} /></button>
                 )}
                 <button
                   type="button"
                   onClick={() => setActiveStep(4)}
                   className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-                >
-                  Weiter zu Kapitel 5 <ArrowRight size={14} />
+                ><MdText text={inhalt.texte.weiterZuKapitel5} /><ArrowRight size={14} />
                 </button>
               </div>
             </div>
@@ -819,15 +632,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 4 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 5 von 6 • 75% bis 90%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Sondernachweise: Stützenknicken, Durchstanzen & Verankerungslänge
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Theorie II. Ordnung bei schlanken Druckgliedern, lokales Plattenversagen und Kraftübertragung an Stabenden.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion5Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.sondernachweiseStützenknickenDurchstanze} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.theorieIiOrdnungBei} /></p>
             </div>
 
             {/* 3 Sonder-Themen */}
@@ -836,92 +643,58 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between space-y-3">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
-                      EC2 Kap. 5.8
-                    </span>
+                    <span className="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><MdText text={inhalt.texte.ec2Kap58} /></span>
                     <Columns size={16} className="text-shiraz" />
                   </div>
-                  <h4 className="font-bold text-sm text-text-main">
-                    1. Stützen nach Theorie II. Ordnung
-                  </h4>
+                  <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.t1StützenNachTheorie} /></h4>
                   <div className="text-xs text-text-main/80 space-y-2 mt-2 leading-relaxed">
-                    <p>
-                      Schlanke Druckglieder knicken aus, bevor die reine Querschnittstragfähigkeit erreicht wird. 
-                      Die Schlankheit <InlineMath math="\lambda = l_0 / i" /> entscheidet, ob Theorie II. Ordnung erforderlich ist.
-                    </p>
-                    <p>
-                      Das Gesamtmoment setzt sich zusammen aus:
-                    </p>
+                    <p><MdText text={inhalt.texte.schlankeDruckgliederKnickenAus} /></p>
+                    <p><MdText text={inhalt.texte.dasGesamtmomentSetztSich} /></p>
                     <div className="p-2 bg-off-white rounded font-mono text-center text-[11px]">
                       <InlineMath math="M_{Ed} = M_{0Ed} + N_{Ed} \cdot e_2" />
                     </div>
-                    <p className="text-[11px] text-slate-500">
-                      Zusatzexzentrizität <InlineMath math="e_2" /> berücksichtigt Krümmung und Betonkriechen.
-                    </p>
+                    <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.zusatzexzentrizitätE2Berücksichtigt} /></p>
                   </div>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700">
-                  <strong>Typische Anwendung:</strong> Geschossstützen, Hallenstützen, Brückenpfeiler.
-                </div>
+                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700"><MdText text={inhalt.texte.typischeAnwendungGeschossstützenHallenst} /></div>
               </div>
 
               {/* Durchstanzen */}
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between space-y-3">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
-                      EC2 Kap. 6.4
-                    </span>
+                    <span className="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded"><MdText text={inhalt.texte.ec2Kap64} /></span>
                     <CircleDashed size={16} className="text-shiraz" />
                   </div>
-                  <h4 className="font-bold text-sm text-text-main">
-                    2. Durchstanzen an Flachdecken
-                  </h4>
+                  <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.t2DurchstanzenAnFlachdecken} /></h4>
                   <div className="text-xs text-text-main/80 space-y-2 mt-2 leading-relaxed">
-                    <p>
-                      An Stützenköpfen punktgestützter Platten konzentrieren sich extrem hohe Querkräfte. 
-                      Das Versagen erfolgt durch Ausbrechen eines pyramidenförmigen Bruchkörpers.
-                    </p>
-                    <p>
-                      Der Nachweis erfolgt im kritischen Rundschnitt im Abstand <InlineMath math="2{,}0\,d" /> vom Stützenrand:
-                    </p>
+                    <p><MdText text={inhalt.texte.anStützenköpfenPunktgestützterPlatten} /></p>
+                    <p><MdText text={inhalt.texte.derNachweisErfolgtIm} /></p>
                     <div className="p-2 bg-off-white rounded font-mono text-center text-[11px]">
                       <InlineMath math="v_{Ed} = \beta \cdot \frac{V_{Ed}}{u_1 \cdot d} \le v_{Rd,c}" />
                     </div>
                   </div>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700">
-                  <strong>Lösung bei Überlastung:</strong> Durchstanzbewehrung (Bügel oder Doppelkopfanker).
-                </div>
+                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700"><MdText text={inhalt.texte.lösungBeiÜberlastungDurchstanzbewehrung} /></div>
               </div>
 
               {/* Verankerung */}
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between space-y-3">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
-                      EC2 Kap. 8.4
-                    </span>
+                    <span className="text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded"><MdText text={inhalt.texte.ec2Kap84} /></span>
                     <GitCommit size={16} className="text-shiraz" />
                   </div>
-                  <h4 className="font-bold text-sm text-text-main">
-                    3. Verankerungslänge von Stäben
-                  </h4>
+                  <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.t3VerankerungslängeVonStäben} /></h4>
                   <div className="text-xs text-text-main/80 space-y-2 mt-2 leading-relaxed">
-                    <p>
-                      Um die volle Stahlkraft in den Beton einzuleiten, ist eine rechnerische Verankerungslänge erforderlich:
-                    </p>
+                    <p><MdText text={inhalt.texte.umDieVolleStahlkraft} /></p>
                     <div className="p-2 bg-off-white rounded font-mono text-center text-[11px]">
                       <InlineMath math="l_{b,rqd} = \frac{\phi}{4} \cdot \frac{\sigma_{sd}}{f_{bd}}" />
                     </div>
-                    <p className="text-[11px] text-slate-600">
-                      Unterscheidung nach Verbundbereichen: <strong>Gute Bedingungen</strong> (untenliegende Bewehrung) vs. <strong>mäßige Bedingungen</strong> (obenliegend wegen aufsteigendem Anmachwasser / Bluten).
-                    </p>
+                    <p className="text-[11px] text-slate-600"><MdText text={inhalt.texte.unterscheidungNachVerbundbereichenGute} /></p>
                   </div>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700">
-                  <strong>Formgebung:</strong> Gerade Enden, Haken, Winkelhaken oder angeschweißte Querstäbe.
-                </div>
+                <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20 text-[11px] text-slate-700"><MdText text={inhalt.texte.formgebungGeradeEndenHaken} /></div>
               </div>
             </div>
 
@@ -932,14 +705,12 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 onClick={() => setActiveStep(3)}
                 className="px-3.5 py-2 bg-white text-text-main hover:bg-slate-100 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all border border-home-grau/30 cursor-pointer"
               >
-                <ArrowLeft size={14} /> Zurück zu Kapitel 4
-              </button>
+                <ArrowLeft size={14} /><MdText text={inhalt.texte.zurückZuKapitel4} /></button>
               <button
                 type="button"
                 onClick={() => setActiveStep(5)}
                 className="px-4 py-2 bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm cursor-pointer"
-              >
-                Weiter zu Kapitel 6 <ArrowRight size={14} />
+              ><MdText text={inhalt.texte.weiterZuKapitel6} /><ArrowRight size={14} />
               </button>
             </div>
           </div>
@@ -951,77 +722,44 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
         {activeStep === 5 && (
           <div className="space-y-6">
             <div className="border-b border-home-grau/20 pb-4">
-              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md">
-                Lektion 6 von 6 • 90% bis 100%
-              </span>
-              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2">
-                Gebrauchstauglichkeit (GZG), 5 Kernregeln & Modulnavigator
-              </h3>
-              <p className="text-sm text-text-main/80 mt-1">
-                Rissbreitenbegrenzung nach EC2 Kap. 7, Mindestbewehrung für Zwang und Nutzung der acht Berechnungsreiter.
-              </p>
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.lektion6Von6} /></span>
+              <h3 className="text-xl md:text-2xl font-black text-text-main mt-2"><MdText text={inhalt.texte.gebrauchstauglichkeitGzg5Kernregeln} /></h3>
+              <p className="text-sm text-text-main/80 mt-1"><MdText text={inhalt.texte.rissbreitenbegrenzungNachEc2Kap} /></p>
             </div>
 
             {/* Die 5 Kernregeln */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h4 className="font-bold text-sm text-shiraz flex items-center gap-2 uppercase tracking-wider">
-                <Sparkles size={16} /> Die 5 fundamentalen Stahlbeton-Regeln
-              </h4>
+                <Sparkles size={16} /><MdText text={inhalt.texte.die5FundamentalenStahlbeton} /></h4>
               <div className="grid sm:grid-cols-2 gap-3.5 text-xs">
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">1</span>
-                    Zustand II ist der Regelfall
-                  </div>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Stahlbeton funktioniert im Grenzzustand der Tragfähigkeit erst durch kontrolliertes Aufreißen 
-                    des Betons. Ein Riss ist kein Bauschaden, solange die berechnete Rissbreite <InlineMath math="w_k \le w_{max}" /> (z. B. 0,3 mm) eingehalten wird.
-                  </p>
+                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">1</span><MdText text={inhalt.texte.zustandIiIstDer} /></div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.stahlbetonFunktioniertImGrenzzustand} /></p>
                 </div>
 
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">2</span>
-                    Duktilität geht vor Traglastüberhöhung
-                  </div>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Überbewehrte Querschnitte (<InlineMath math="\mu_{Eds} > 0{,}296" />) müssen vermieden werden, 
-                    da der Beton vor dem Fließen des Stahls schlagartig versagt. Stahlbetonbauteile müssen sich vor dem Bruch durch große Durchbiegungen ankündigen.
-                  </p>
+                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">2</span><MdText text={inhalt.texte.duktilitätGehtVorTraglastüberhöhung} /></div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.überbewehrteQuerschnitteMuEds} /></p>
                 </div>
 
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">3</span>
-                    Mindestbewehrung für Zwangskräfte
-                  </div>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Beim Erhärten (Hydratationswärme) behindern Fundamente die Kontraktion junger Bauteile (früher Zwang). 
-                    Es ist stets eine Mindestbewehrung <InlineMath math="A_{s,min} = k_c \cdot k \cdot f_{ct,eff} \cdot A_{ct} / \sigma_s" /> einzubauen.
-                  </p>
+                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">3</span><MdText text={inhalt.texte.mindestbewehrungFürZwangskräfte} /></div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.beimErhärtenHydratationswärmeBehindern} /></p>
                 </div>
 
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">4</span>
-                    Maßstabseffekt bei Schub
-                  </div>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Dickere Bauteile ohne Querkraftbewehrung haben eine geringere bezogene Schubtragfähigkeit als dünne Platten (<InlineMath math="k = 1 + \sqrt{200/d} \le 2{,}0" />). 
-                    Dies ist bei dicken Bodenplatten und Fundamenten stets zu beachten.
-                  </p>
+                    <span className="w-5 h-5 rounded-full bg-shiraz text-white flex items-center justify-center text-[10px] font-mono">4</span><MdText text={inhalt.texte.maßstabseffektBeiSchub} /></div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.dickereBauteileOhneQuerkraftbewehrung} /></p>
                 </div>
 
                 <div className="p-3.5 bg-amber-50 rounded-xl border border-amber-200 space-y-1 sm:col-span-2">
                   <div className="font-bold text-amber-950 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-amber-700 text-white flex items-center justify-center text-[10px] font-mono">5</span>
-                    Zugkraftdeckung & Verankerungsversatz
-                  </div>
-                  <p className="text-amber-900 text-[11px] leading-relaxed">
-                    Infolge der Fachwerkwirkung bei Querkraftbelastung sind die Längszugkräfte gegenüber der 
-                    Biegemomentenlinie um das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> zur Auflagerseite hin verschoben. 
-                    Längsstäbe dürfen erst dort abgemindert werden, wo die verschobene Zugkraftlinie dies erlaubt!
-                  </p>
+                    <span className="w-5 h-5 rounded-full bg-amber-700 text-white flex items-center justify-center text-[10px] font-mono">5</span><MdText text={inhalt.texte.zugkraftdeckungVerankerungsversatz} /></div>
+                  <p className="text-amber-900 text-[11px] leading-relaxed"><MdText text={inhalt.texte.infolgeDerFachwerkwirkungBei} /></p>
                 </div>
               </div>
             </div>
@@ -1030,18 +768,13 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
                 <span className="text-xs font-bold text-text-main uppercase tracking-wider flex items-center gap-2">
-                  <HelpCircle size={15} className="text-shiraz" /> Wissensprüfung: Stahlbetonbau-Grundlagen
-                </span>
-                <span className="text-[10px] font-mono font-bold text-text-main/70 bg-white px-2 py-0.5 rounded border border-home-grau/20">
-                  2 Kontrollfragen
-                </span>
+                  <HelpCircle size={15} className="text-shiraz" /><MdText text={inhalt.texte.wissensprüfungStahlbetonbauGrundlagen} /></span>
+                <span className="text-[10px] font-mono font-bold text-text-main/70 bg-white px-2 py-0.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.t2Kontrollfragen} /></span>
               </div>
 
               {/* Frage 1 */}
               <div className="space-y-2">
-                <p className="text-xs font-bold text-text-main">
-                  Frage 1: Warum ist der identische thermische Ausdehnungskoeffizient von Stahl und Beton (<InlineMath math="\alpha_T \approx 10^{-5}\,\text{K}^{-1}" />) so elementar?
-                </p>
+                <p className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.frage1WarumIst} /></p>
                 <div className="grid sm:grid-cols-2 gap-2 text-xs">
                   <button
                     type="button"
@@ -1051,9 +784,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                         ? 'bg-emerald-100 border-emerald-400 text-emerald-950 font-bold'
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
-                  >
-                    A) Weil sich bei Temperaturwechseln keine zerstörenden inneren Verbund-Zwangsspannungen aufbauen.
-                  </button>
+                  ><MdText text={inhalt.texte.aWeilSichBei} /></button>
                   <button
                     type="button"
                     onClick={() => setQuizAnswers(prev => ({ ...prev, q1: 2 }))}
@@ -1062,27 +793,19 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                         ? 'bg-red-100 border-red-300 text-red-900'
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
-                  >
-                    B) Weil dadurch der Schmelzpunkt des Verbunds im Brandfall steigt.
-                  </button>
+                  ><MdText text={inhalt.texte.bWeilDadurchDer} /></button>
                 </div>
                 {quizAnswers.q1 === 1 && (
-                  <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Vollkommen richtig! Wären die Ausdehnungskoeffizienten verschieden, würde der Verbundkörper bei Frost oder Hitze intern zerreißen.
-                  </p>
+                  <p className="text-[11px] text-emerald-700 font-medium"><MdText text={inhalt.texte.vollkommenRichtigWärenDie} /></p>
                 )}
                 {quizAnswers.q1 === 2 && (
-                  <p className="text-[11px] text-red-600 font-medium">
-                    ✗ Nicht zutreffend: Der Brandschutz wird durch die Betondeckung (c_nom) gewährleistet, nicht durch den Schmelzpunkt.
-                  </p>
+                  <p className="text-[11px] text-red-600 font-medium"><MdText text={inhalt.texte.nichtZutreffendDerBrandschutz} /></p>
                 )}
               </div>
 
               {/* Frage 2 */}
               <div className="space-y-2 pt-2 border-t border-home-grau/15">
-                <p className="text-xs font-bold text-text-main">
-                  Frage 2: Was beschreibt das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> bei der Querkraftbemessung?
-                </p>
+                <p className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.frage2WasBeschreibt} /></p>
                 <div className="grid sm:grid-cols-2 gap-2 text-xs">
                   <button
                     type="button"
@@ -1092,9 +815,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                         ? 'bg-red-100 border-red-300 text-red-900'
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
-                  >
-                    A) Den horizontalen Abstand zwischen zwei aufeinanderfolgenden Bügeln.
-                  </button>
+                  ><MdText text={inhalt.texte.aDenHorizontalenAbstand} /></button>
                   <button
                     type="button"
                     onClick={() => setQuizAnswers(prev => ({ ...prev, q2: 2 }))}
@@ -1103,14 +824,10 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                         ? 'bg-emerald-100 border-emerald-400 text-emerald-950 font-bold'
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
-                  >
-                    B) Die Verschiebung der Zugkraftdeckungslinie gegenüber der reinen Biegemomentenlinie infolge der Fachwerkwirkung.
-                  </button>
+                  ><MdText text={inhalt.texte.bDieVerschiebungDer} /></button>
                 </div>
                 {quizAnswers.q2 === 2 && (
-                  <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Exakt: Die geneigten Betondruckstreben leiten zusätzliche Längszugkräfte in das Zugband ein, weshalb Bewehrungsstäbe weiter zum Auflager hin geführt werden müssen.
-                  </p>
+                  <p className="text-[11px] text-emerald-700 font-medium"><MdText text={inhalt.texte.exaktDieGeneigtenBetondruckstreben} /></p>
                 )}
               </div>
             </div>
@@ -1118,15 +835,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             {/* Übersicht und Weiterleitung in alle Fachreiter */}
             <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
               <div>
-                <span className="text-xs font-bold text-shiraz uppercase tracking-wider font-mono">
-                  Leitfaden abgeschlossen • 100 % Wissensstand
-                </span>
-                <h4 className="text-lg md:text-xl font-bold text-text-main mt-1">
-                  Werkzeugübersicht: Alle Berechnungsmodule von Stahlbeton
-                </h4>
-                <p className="text-xs md:text-sm text-text-main/80 mt-1 max-w-2xl leading-relaxed">
-                  Nutzen Sie die spezialisierten Reiter dieses Moduls zur quantitativen Bemessung nach Eurocode 2:
-                </p>
+                <span className="text-xs font-bold text-shiraz uppercase tracking-wider font-mono"><MdText text={inhalt.texte.leitfadenAbgeschlossen100Wissensstand} /></span>
+                <h4 className="text-lg md:text-xl font-bold text-text-main mt-1"><MdText text={inhalt.texte.werkzeugübersichtAlleBerechnungsmoduleVo} /></h4>
+                <p className="text-xs md:text-sm text-text-main/80 mt-1 max-w-2xl leading-relaxed"><MdText text={inhalt.texte.nutzenSieDieSpezialisierten} /></p>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
@@ -1139,10 +850,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Activity className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">1. Spannung-Dehnung</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Parabel-Rechteck & B500 Werkstofflinien.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t1SpannungDehnung} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.parabelRechteckB500Werkstofflinien} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1156,10 +865,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Box className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">2. Biegebemessung</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Rechteckquerschnitte nach dem μ-Verfahren.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t2Biegebemessung} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.rechteckquerschnitteNachDemVerfahren} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1173,10 +880,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Scissors className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">3. Querkraftbemessung</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          VRd,c ohne Schubbewehrung & Bügelnachweis.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t3Querkraftbemessung} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.vrdCOhneSchubbewehrung} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1190,10 +895,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Columns className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">4. Stützenbemessung</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Schlankheit, Knicken & Theorie II. Ordnung.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t4Stützenbemessung} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.schlankheitKnickenTheorieIi} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1207,10 +910,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <CircleDashed className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">5. Durchstanzen</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Kritischer Rundschnitt an Flachdeckenstützen.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t5Durchstanzen} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.kritischerRundschnittAnFlachdeckenstütze} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1224,10 +925,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <GitCommit className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">6. Verankerungslänge</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Gute vs. mäßige Verbundbedingungen (lb,rqd).
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t6Verankerungslänge} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.guteVsMäßigeVerbundbedingungen} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1241,10 +940,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Layers className="text-shiraz mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">7. Rissbreite (GZG)</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Begrenzung der Rissbreite wk & Mindestbewehrung.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t7RissbreiteGzg} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.begrenzungDerRissbreiteWk} /></span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1258,10 +955,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     >
                       <div>
                         <Sparkles className="text-amber-500 mb-2" size={18} />
-                        <span className="font-bold text-xs block text-text-main">8. EC2 (2. Generation)</span>
-                        <span className="text-[11px] text-text-main/70 mt-1 block">
-                          CSCT-Schubmodell & Exposure Resistance Classes.
-                        </span>
+                        <span className="font-bold text-xs block text-text-main"><MdText text={inhalt.texte.t8Ec22Generation} /></span>
+                        <span className="text-[11px] text-text-main/70 mt-1 block"><MdText text={inhalt.texte.csctSchubmodellExposureResistance} /></span>
                       </div>
                       <span className="text-[10px] text-amber-600 font-bold mt-2 flex items-center gap-1">
                         Öffnen <ArrowRight size={10} />
@@ -1279,8 +974,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 onClick={() => setActiveStep(4)}
                 className="px-3.5 py-2 bg-white text-text-main hover:bg-slate-100 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all border border-home-grau/30 cursor-pointer"
               >
-                <ArrowLeft size={14} /> Zurück zu Kapitel 5
-              </button>
+                <ArrowLeft size={14} /><MdText text={inhalt.texte.zurückZuKapitel5} /></button>
             </div>
           </div>
         )}

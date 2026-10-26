@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
 import { Activity, Thermometer, Layers, AlertOctagon, HelpCircle, CheckCircle, Flame, BarChart2 } from 'lucide-react';
+import inhalt from '@/content/hydratationpruefverfahren/HydratationPruefverfahren.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface CementProfile {
   name: string;
@@ -10,18 +12,13 @@ interface CementProfile {
   strengthSpeed: number;
 }
 
-const CEMENT_MAP: Record<string, CementProfile> = {
-  'CEM I 52.5 R (Schnell)': { name: 'CEM I 52.5 R (Sehr schnell erhärtend, hohe Hydratationswärme)', baseHeat: 380, hydrationSpeed: 1.4, strengthSpeed: 1.3 },
-  'CEM I 42.5 N (Standard)': { name: 'CEM I 42.5 N (Standardzement, mittlere Wärmeentwicklung)', baseHeat: 320, hydrationSpeed: 1.0, strengthSpeed: 1.0 },
-  'CEM II/B-M 32.5 R': { name: 'CEM II/B-M 32.5 R (Klinkerreduziert, mäßige Wärme)', baseHeat: 265, hydrationSpeed: 0.85, strengthSpeed: 0.8 },
-  'CEM III/B 32.5 N-LH (Slow)': { name: 'CEM III/B 32.5 N-LH (Hochofenzement, extrem niedrige Wärme)', baseHeat: 210, hydrationSpeed: 0.5, strengthSpeed: 0.55 },
-};
+const CEMENT_MAP: Record<string, CementProfile> = inhalt.daten.CEMENT_MAP;
 
 export default function HydratationPruefverfahren() {
   const [panelTab, setPanelTab] = useState<'reissrahmen' | 'schwindrinne' | 'kalorimetrie'>('reissrahmen');
 
   // Interactive state for Reißrahmen-Sim
-  const [selectedCement, setSelectedCement] = useState<string>('CEM I 42.5 N (Standard)');
+  const [selectedCement, setSelectedCement] = useState<string>(inhalt.werte.cemI425);
   const [freshTemp, setFreshTemp] = useState<number>(20); // °C
   const [ambientTemp, setAmbientTemp] = useState<number>(20); // °C
   const [fiberContent, setFiberContent] = useState<number>(0); // kg/m³ PP- bzw. Stahlfasern
@@ -133,13 +130,9 @@ export default function HydratationPruefverfahren() {
       {/* Intro Header */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Activity className="text-shiraz" /> Hydratation &amp; Zwang: Labormessverfahren
-        </h2>
+          <Activity className="text-shiraz" /><MdText text={inhalt.texte.hydratationZwangLabormessverfahren} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
-          <p>
-            Die baupraktische Beherrschung von Zwang- und Eigenspannungen ruht auf der präzisen labortechnischen Kennwertermittlung.
-            Dazu gehören das Erfassen der adiabaten Hydratationswärme, das freie Schwindverhalten in jungen Altersstufen und vor allem die direkte Zwangsprüfung in hoch- und teilstarr gefesselten Reißrahmen.
-          </p>
+          <p><MdText text={inhalt.texte.dieBaupraktischeBeherrschungVon} /></p>
         </div>
       </div>
 
@@ -153,8 +146,7 @@ export default function HydratationPruefverfahren() {
               : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
           }`}
         >
-          <Activity size={16} /> 1. Reißrahmen / Cracking Frame
-        </button>
+          <Activity size={16} /><MdText text={inhalt.texte.t1ReißrahmenCrackingFrame} /></button>
         <button aria-pressed={panelTab === 'schwindrinne'}
           onClick={() => setPanelTab('schwindrinne')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -163,8 +155,7 @@ export default function HydratationPruefverfahren() {
               : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
           }`}
         >
-          <Layers size={16} /> 2. Schwindmessrinne
-        </button>
+          <Layers size={16} /><MdText text={inhalt.texte.t2Schwindmessrinne} /></button>
         <button aria-pressed={panelTab === 'kalorimetrie'}
           onClick={() => setPanelTab('kalorimetrie')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -173,8 +164,7 @@ export default function HydratationPruefverfahren() {
               : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
           }`}
         >
-          <Flame size={16} /> 3. Kalorimetrische Wärmemessung
-        </button>
+          <Flame size={16} /><MdText text={inhalt.texte.t3KalorimetrischeWärmemessung} /></button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -186,8 +176,7 @@ export default function HydratationPruefverfahren() {
             <div className="lg:col-span-5 flex flex-col gap-6">
               <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider border-b border-home-grau/20 pb-2 flex items-center gap-1.5">
-                  <Thermometer size={16} className="text-shiraz" /> Reißrahmen Parameter-Steuerung
-                </h3>
+                  <Thermometer size={16} className="text-shiraz" /><MdText text={inhalt.texte.reißrahmenParameterSteuerung} /></h3>
 
                 {/* Zementauswahl */}
                 <div className="flex flex-col gap-1.5">
@@ -201,15 +190,13 @@ export default function HydratationPruefverfahren() {
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                  <p className="text-[10px] text-slate-500 italic">
-                    Beeinflusst die Hydratationsgeschwindigkeit und die Spitzenwärmeentwicklung (J/g).
-                  </p>
+                  <p className="text-[10px] text-slate-500 italic"><MdText text={inhalt.texte.beeinflusstDieHydratationsgeschwindigkei} /></p>
                 </div>
 
                 {/* Frischbetontemperatur */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
-                    <span>Frischbeton-Temp. (T_frisch)</span>
+                    <span><MdText text={inhalt.texte.frischbetonTempTFrisch} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(freshTemp)} °C</span>
                   </div>
                   <input
@@ -218,15 +205,13 @@ export default function HydratationPruefverfahren() {
                     onChange={(e) => setFreshTemp(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
-                  <span className="text-[10px] text-slate-500">
-                    Eine Absenkung der Betontemperatur verringert die thermodehnungsbasierten Zwangkräfte im Reißrahmen drastisch.
-                  </span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.eineAbsenkungDerBetontemperatur} /></span>
                 </div>
 
                 {/* Umgebungstemperatur */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
-                    <span>Umgebungstemp. (T_umg)</span>
+                    <span><MdText text={inhalt.texte.umgebungstempTUmg} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(ambientTemp)} °C</span>
                   </div>
                   <input
@@ -240,7 +225,7 @@ export default function HydratationPruefverfahren() {
                 {/* Faserbewehrung */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
-                    <span>Fasergehalt (PP / Stahl)</span>
+                    <span><MdText text={inhalt.texte.fasergehaltPpStahl} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(fiberContent)} kg/m³</span>
                   </div>
                   <input
@@ -249,15 +234,13 @@ export default function HydratationPruefverfahren() {
                     onChange={(e) => setFiberContent(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
-                  <span className="text-[10px] text-slate-500">
-                    Fasern erhöhen die Zugfestigkeit des Gefüges frühzeitig und bieten nach der Erstbruchstufe ein signifikantes Arbeitsvermögen.
-                  </span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.fasernErhöhenDieZugfestigkeit} /></span>
                 </div>
 
                 {/* Rahmen-Steifigkeit */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
-                    <span>Rahmenfesselungsgrad (restraint stiffness)</span>
+                    <span><MdText text={inhalt.texte.rahmenfesselungsgradRestraintStiffness} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(stiffnessFrame)} %</span>
                   </div>
                   <input
@@ -268,7 +251,7 @@ export default function HydratationPruefverfahren() {
                   />
                   <div className="text-[10px] text-slate-500">
                     {stiffnessFrame === 100 
-                      ? 'Starrer Stahlrahmen (100% Einspannung; maximaler Zwang)' 
+                      ? inhalt.werte.starrerStahlrahmen100Einspannung 
                       : `Teilnachgiebiger Rahmen (${formatDeWert(stiffnessFrame)}% Festhaltungsgrad)`}
                   </div>
                 </div>
@@ -279,28 +262,24 @@ export default function HydratationPruefverfahren() {
               <div className="bg-[#FCF8F2] p-5 rounded-2xl border border-home-grau/25 text-xs text-text-main flex flex-col gap-3">
                 <div>
                   <h4 className="font-bold text-shiraz flex items-center gap-1.5 mb-2">
-                    <HelpCircle size={15} /> Wie funktioniert der Reißrahmen?
-                  </h4>
-                  <p className="leading-relaxed text-text-main/80">
-                    Im Gegensatz zur freien Dehnungsmessung wird der Betonprisma-Körper hier sofort nach Gießen an beiden Enden fest eingespannt. 
-                  </p>
+                    <HelpCircle size={15} /><MdText text={inhalt.texte.wieFunktioniertDerReißrahmen} /></h4>
+                  <p className="leading-relaxed text-text-main/80"><MdText text={inhalt.texte.imGegensatzZurFreien} /></p>
                   <ol className="list-decimal pl-4 mt-2 space-y-1 text-text-main/80 text-[11px]">
-                    <li><strong>Abbindeflattern (0-5 h):</strong> Zementleim geliert, thermische Expansion wandelt sich in ersten Druck im Rahmen um (negative Spannungen).</li>
-                    <li><strong>Kernaufheizung (5-18 h):</strong> Bei Maximaltemperatur ist das elastische Material im Kriechexpress; es baut Druckspannungen ab.</li>
-                    <li><strong>Abkühlphase &amp; Kontraktion (18-72 h):</strong> Der Beton kühlt ab und erleidet irreversibles autogenes Schwinden. Aufgrund der starren Fesselung steigen die <strong>Zugspannungen (<InlineMath math="\sigma_z(t)" />)</strong> stark an.</li>
-                    <li><strong>Schnittpunkt (Riss):</strong> Schneidet die Zugspannung die anwachsende Zugfestigkeitslinie <InlineMath math="f_{ct}(t)" />, kommt es zum lautstarken Trennriss!</li>
+                    <li><MdText text={inhalt.texte.abbindeflattern05H} /></li>
+                    <li><MdText text={inhalt.texte.kernaufheizung518H} /></li>
+                    <li><MdText text={inhalt.texte.abkühlphaseKontraktion1872} /></li>
+                    <li><MdText text={inhalt.texte.schnittpunktRissSchneidetDie} /></li>
                   </ol>
                 </div>
 
                 <div className="border-t border-home-grau/20 pt-3">
                   <h4 className="font-bold text-shiraz flex items-center gap-1.5 mb-1.5">
-                    <CheckCircle size={14} /> Normung &amp; Prüfvorschriften (Reißrahmen)
-                  </h4>
+                    <CheckCircle size={14} /><MdText text={inhalt.texte.normungPrüfvorschriftenReißrahmen} /></h4>
                   <ul className="list-disc pl-4 space-y-1.5 text-text-main/80 text-[11px]">
-                    <li><strong>RILEM TC 119-TCE / TC 195-ATG:</strong> Internationale Empfehlungen für standardisierte Zwangsprüfrahmen (Cracking Frames) zur Bestimmung thermo-mechanischer Werkstoffkennwerte.</li>
-                    <li><strong>DAfStb-Richtlinie „Massige Bauteile“:</strong> Regelt die messtechnische Einordnung für Bauteile mit einer kleinsten Abmessung <InlineMath math="d \ge 0{,}80\,\text{m}" /> zur Rissvermeidung.</li>
-                    <li><strong>Soll-Steifigkeit:</strong> Der Prüfrahmen muss eine Dehnsteifigkeit von mindestens <InlineMath math="500\,\text{kN/mm}" /> aufweisen, um starre Randbedingungen abzubilden.</li>
-                    <li><strong>Temperatursimulation:</strong> Prüfungen werden entweder temperaturgeregelt (z.B. Nachfahren eines adiabatischen Hydratationsverlaufs im Kern) oder isotherm bei <InlineMath math="20\,^{\circ}\text{C}" /> durchgeführt.</li>
+                    <li><MdText text={inhalt.texte.rilemTc119Tce} /></li>
+                    <li><MdText text={inhalt.texte.dafstbRichtlinieMassigeBauteile} /></li>
+                    <li><MdText text={inhalt.texte.sollSteifigkeitDerPrüfrahmen} /></li>
+                    <li><MdText text={inhalt.texte.temperatursimulationPrüfungenWerdenEntwe} /></li>
                   </ul>
                 </div>
               </div>
@@ -316,15 +295,13 @@ export default function HydratationPruefverfahren() {
                   : 'bg-emerald-50 border-emerald-200 text-emerald-950'
               }`}>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold uppercase tracking-wider opacity-90">Messergebnis im Reißrahmen</span>
+                  <span className="text-xs font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.messergebnisImReißrahmen} /></span>
                   {reissrahmenSimData.crackedHour !== -1 ? (
                     <span className="bg-red-200 text-red-800 text-xs font-black px-3 py-1 rounded-full uppercase flex items-center gap-1">
-                      <AlertOctagon size={13} /> Riss eingetreten
-                    </span>
+                      <AlertOctagon size={13} /><MdText text={inhalt.texte.rissEingetreten} /></span>
                   ) : (
                     <span className="bg-emerald-200 text-emerald-800 text-xs font-black px-3 py-1 rounded-full uppercase flex items-center gap-1">
-                      <CheckCircle size={13} /> Probe rissfrei
-                    </span>
+                      <CheckCircle size={13} /><MdText text={inhalt.texte.probeRissfrei} /></span>
                   )}
                 </div>
 
@@ -334,19 +311,19 @@ export default function HydratationPruefverfahren() {
                     <span className="text-xl font-bold font-mono">{formatDeZahl(reissrahmenSimData.maxTemp, 1)} °C</span>
                   </div>
                   <div>
-                    <span className="text-xs opacity-75 block">Status Rissereignis</span>
+                    <span className="text-xs opacity-75 block"><MdText text={inhalt.texte.statusRissereignis} /></span>
                     <span className="text-xl font-bold font-mono">
                       {reissrahmenSimData.crackedHour !== -1 
                         ? `Nach t = ${formatDeWert(reissrahmenSimData.crackedHour)} Std.` 
-                        : 'Kein Riss (72h)'}
+                        : inhalt.werte.keinRiss72h}
                     </span>
                   </div>
                 </div>
                 
                 <p className="text-xs mt-3 opacity-90 leading-relaxed border-t border-black/10 pt-3">
                   {reissrahmenSimData.crackedHour !== -1 
-                    ? `Der Beton riss frühzeitig infolge hoher Hydratationstemperatur und unzureichender Kriechrelaxation. Tipp: Reduzieren Sie die Frischbetontemperatur oder wählen Sie einen langsameren LH-Zement (z.B. CEM III/B).`
-                    : `Hervorragend! Die induzierten Zugspannungen blieben im gesamten Zeitlauf sicher unterhalb der Zugfestigkeitslinie. Die Kombination aus geringerer Wärme und hohem viskoelastischen Kriechen verhinderte Rissbildung.`
+                    ? inhalt.werte.derBetonRissFrühzeitig
+                    : inhalt.werte.hervorragendDieInduziertenZugspannungen
                   }
                 </p>
               </div>
@@ -355,12 +332,11 @@ export default function HydratationPruefverfahren() {
               <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
                 <div className="flex justify-between items-center mb-4">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                    <BarChart2 size={16} className="text-shiraz" /> Spannungs- und Festigkeitsverlauf σ_z(t) / f_ct(t)
-                  </h4>
+                    <BarChart2 size={16} className="text-shiraz" /><MdText text={inhalt.texte.spannungsUndFestigkeitsverlaufZ} /></h4>
                   <div className="flex gap-3 text-[10px] font-semibold">
-                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-shiraz inline-block"></span> Zugfestigkeit f_ct</span>
-                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-blue-600 inline-block"></span> Zwangspannung σ_z</span>
-                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-amber-500 inline-block"></span> Temperatur T(°C)</span>
+                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-shiraz inline-block"></span><MdText text={inhalt.texte.zugfestigkeitFCt} /></span>
+                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-blue-600 inline-block"></span><MdText text={inhalt.texte.zwangspannungZ} /></span>
+                    <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-amber-500 inline-block"></span><MdText text={inhalt.texte.temperaturTC} /></span>
                   </div>
                 </div>
 
@@ -473,8 +449,7 @@ export default function HydratationPruefverfahren() {
                 </div>
                 
                 {/* Formulas & Specs inside SVG */}
-                <div className="mt-4 text-[10px] text-slate-500 leading-normal font-serif text-center">
-                  Spannungsberechnung im Reißrahmen: <span className="italic font-sans text-xs bg-slate-50 px-2 py-1 rounded border inline-block">σ(t) = ∫ [E_cm(τ) · d(-α_T · dT(τ) + dε_cs(τ))] · k_relax</span>
+                <div className="mt-4 text-[10px] text-slate-500 leading-normal font-serif text-center"><MdText text={inhalt.texte.spannungsberechnungImReißrahmen} /><span className="italic font-sans text-xs bg-slate-50 px-2 py-1 rounded border inline-block"><MdText text={inhalt.texte.tECmD} /></span>
                 </div>
               </div>
 
@@ -487,43 +462,36 @@ export default function HydratationPruefverfahren() {
           <div className="lg:col-span-12 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-base font-bold text-text-main uppercase tracking-wider border-b border-home-grau/20 pb-3 mb-4 flex items-center gap-2">
-                <Layers className="text-shiraz" /> Die Schwindmessrinne: Grundlagen &amp; Auswertung
-              </h3>
+                <Layers className="text-shiraz" /><MdText text={inhalt.texte.dieSchwindmessrinneGrundlagenAuswertung} /></h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                 <div className="space-y-4 text-sm text-text-main/90">
-                  <p>
-                    Betongemische fangen direkt nach dem Mischen und Einbringen an, an Volumen zu verlieren. Dieser Prozess teilt sich in:
-                  </p>
+                  <p><MdText text={inhalt.texte.betongemischeFangenDirektNach} /></p>
                   <ul className="list-disc pl-5 space-y-2 text-xs">
-                    <li><strong>Plastisches Schwinden (0 - 6 h):</strong> Kapillarer Wasserentzug durch Oberflächenverdunstung in flüssiger Phase vor Erstarrungsbeginn.</li>
-                    <li><strong>Autogenes Schwinden (ab 5 h / Hydratationsbeginn):</strong> Chemische Volumenminderung (Kontraktion) infolge der Zementreaktion. Da das Hydratationsprodukt dichter gepackt ist als die Ausgangsstoffe (Zement + Wasser), entsteht eine starke Kapillarentfeuchtung im Gefüge.</li>
-                    <li><strong>Trocknungsschwinden (Langfristig):</strong> Diffusionsbedingtes Entweichen physikalischen Überschusswassers an die Umwelt.</li>
+                    <li><MdText text={inhalt.texte.plastischesSchwinden06} /></li>
+                    <li><MdText text={inhalt.texte.autogenesSchwindenAb5} /></li>
+                    <li><MdText text={inhalt.texte.trocknungsschwindenLangfristigDiffusions} /></li>
                   </ul>
                   
                   <div className="bg-[#FCF8F2] p-4 rounded-xl border border-scratch/30 text-xs">
-                    <span className="font-bold block text-shiraz mb-1">Prüfungsaufbau Schwindrinne:</span>
-                    Eine Gussform (oft u-förmiges Profil mit PTFE-Antihaftfolie, Länge meist 1,0 m) wird mit Frischbeton befüllt. 
-                    Am festen Anschlag lagert eine Ankerplatte, während am entgegengesetzten freien Ende eine Ankerplatte mit einem hochempfindlichen **Wegaufnehmer (LVDT-Taster)** verbunden ist.
-                    Die Längenänderung wird kontinuierlich mit einer Auflösung von <InlineMath math="< 1\,\mu\text{m}" /> aufgezeichnet.
-                  </div>
+                    <span className="font-bold block text-shiraz mb-1"><MdText text={inhalt.texte.prüfungsaufbauSchwindrinne} /></span><MdText text={inhalt.texte.eineGussformOftU} /></div>
                 </div>
 
                 <div className="space-y-4">
                   <div className="p-5 bg-off-white rounded-2xl border border-home-grau/30">
-                    <h4 className="font-bold text-xs uppercase tracking-wider text-slate-700 mb-2">Schematische Prinzipskizze</h4>
+                    <h4 className="font-bold text-xs uppercase tracking-wider text-slate-700 mb-2"><MdText text={inhalt.texte.schematischePrinzipskizze} /></h4>
                     <div className="w-full h-44 bg-slate-900 rounded-xl relative flex flex-col justify-center items-center text-white p-4 font-mono text-[10px]">
                       {/* Drawing the shrinkage rig */}
                       <div className="w-4/5 h-8 bg-slate-700 rounded border-2 border-slate-500 flex justify-between items-center px-4 relative">
-                        <span className="text-white text-[9px] z-10">PTFE-Gussrinne (1000 mm)</span>
+                        <span className="text-white text-[9px] z-10"><MdText text={inhalt.texte.ptfeGussrinne1000Mm} /></span>
                         <div className="absolute left-0 top-0 bottom-0 w-2 bg-red-500" title="Festpunkt"></div>
                         <div className="absolute right-0 top-0 bottom-0 w-2 bg-emerald-500 flex items-center" title="Messanker">
                           <span className="absolute left-4 bg-orange-400 p-1 rounded text-black text-[8px] border">LVDT Sensor</span>
                         </div>
                       </div>
                       <div className="w-full flex justify-between px-10 mt-6 text-slate-400">
-                        <span>[Festlager links]</span>
-                        <span>[Konstante Temperatursteuerung]</span>
+                        <span><MdText text={inhalt.texte.festlagerLinks} /></span>
+                        <span><MdText text={inhalt.texte.konstanteTemperatursteuerung} /></span>
                         <span>[Gleitbett-Rinne]</span>
                       </div>
                     </div>
@@ -532,17 +500,15 @@ export default function HydratationPruefverfahren() {
                   <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-2 flex flex-col">
                     <div>
                       <span className="font-bold text-blue-950 block">Prüfgrundlagen:</span>
-                      <p className="leading-relaxed">
-                        Prüfgrundlagen sind z. B. DIN EN 12617-4:2002-08 (Schwinden und Quellen) und ASTM C1581/C1581M-24 (Ringversuch unter behindertem Schwinden); die Schwindrinne selbst ist in keiner der beiden Normen geregelt. Die Schwindmessrinne liefert den präzisen Dehnungsverlauf <InlineMath math="\varepsilon_{cs}(t)" /> für thermo-mechanische Finite-Elemente-Analysen (FE-Simulationen).
-                      </p>
+                      <p className="leading-relaxed"><MdText text={inhalt.texte.prüfgrundlagenSindZB} /></p>
                     </div>
                     <div className="border-t border-blue-100 pt-2 text-blue-950/90">
-                      <span className="font-bold block text-[11px] mb-1">Prüfvorschriften &amp; Prüfbedingungen:</span>
+                      <span className="font-bold block text-[11px] mb-1"><MdText text={inhalt.texte.prüfvorschriftenPrüfbedingungen} /></span>
                       <ul className="list-disc pl-4 space-y-1 text-[10.5px]">
-                        <li><strong>Reibungsfreie Lagerung:</strong> Nachbehandlung mit doppelter PTFE-Gleitfolie zur freien Verformbarkeit ohne Eigenreibungswiderstände.</li>
-                        <li><strong>Klimaüberwachung:</strong> Temperatur von <InlineMath math="20 \pm 1\,^{\circ}\text{C}" /> und relative Feuchte von <InlineMath math="65 \pm 5\%" /> müssen im Klimaraum strikt konstant gehalten werden.</li>
-                        <li><strong>ASTM C1581 / C1581M:</strong> Verwandtes amerikanisches Verfahren zur Bestimmung der Rissneigung unter behinderter Schwinddehnung an Ringprüfkörpern.</li>
-                        <li><strong>DIN EN 12617-4:</strong> Bestimmung des Schwindens und Quellens von Instandsetzungsmörteln.</li>
+                        <li><MdText text={inhalt.texte.reibungsfreieLagerungNachbehandlungMit} /></li>
+                        <li><MdText text={inhalt.texte.klimaüberwachungTemperaturVon20} /></li>
+                        <li><MdText text={inhalt.texte.astmC1581C1581mVerwandtes} /></li>
+                        <li><MdText text={inhalt.texte.dinEn126174} /></li>
                       </ul>
                     </div>
                   </div>
@@ -558,64 +524,47 @@ export default function HydratationPruefverfahren() {
           <div className="lg:col-span-12 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-base font-bold text-text-main uppercase tracking-wider border-b border-home-grau/20 pb-3 mb-4 flex items-center gap-2">
-                <Flame className="text-shiraz" /> Kalorimetrische Wärmemessung (Hydratationswärmekurven)
-              </h3>
+                <Flame className="text-shiraz" /><MdText text={inhalt.texte.kalorimetrischeWärmemessungHydratationsw} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <div className="space-y-4 text-sm text-text-main/90">
-                  <p>
-                    Die Hydratation von Zementklinkern ist eine stark <strong>exotherme chemische Reaktion</strong>. 
-                    Um den zeitlichen Verlauf der Wärmefreisetzung (<InlineMath math="q = \text{Wärmefluss in J/g}\cdot\text{h}" />) und die kumulierte Gesamthydratationswärme (<InlineMath math="Q = \text{Gesamtwärme in J/g}" />) präzise zu bestimmen, definiert die Normung drei fundamentale Laborprüfverfahren:
-                  </p>
+                  <p><MdText text={inhalt.texte.dieHydratationVonZementklinkern} /></p>
 
                   <div className="space-y-3">
                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block">1. Teil-adiabatisches Verfahren (DIN EN 196-9 / Langavant)</span>
-                      <p className="text-xs text-slate-600 mt-1 leading-normal">
-                        Hierzu wird der frisch angemischte Mörtel/Beton in ein hochisoliertes Dewar-Gefäß eingesetzt. Über die gemessene Temperaturdifferenz zur Referenzflasche wird die freigesetzte Wärmemenge <InlineMath math="Q(t)" /> ermittelt. Dieses Verfahren ist baustellentauglich und ideal für die ersten 48 Stunden geeignet.
-                      </p>
+                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.t1TeilAdiabatischesVerfahren} /></span>
+                      <p className="text-xs text-slate-600 mt-1 leading-normal"><MdText text={inhalt.texte.hierzuWirdDerFrisch} /></p>
                     </div>
 
                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block">2. Isothermes Konduktionskalorimeter (DIN EN 196-11 / ICC)</span>
-                      <p className="text-xs text-slate-600 mt-1 leading-normal">
-                        Messung des kontinuierlichen Wärmestroms bei einer konstant geregelten Temperatur (meist <InlineMath math="20\,^{\circ}\text{C}" />). Hochsensible thermoelektrische Sensoren leiten die Hydratationsenergie ab. Das ICC-Verfahren ist die präziseste Methode, um das exotherme Peak-Verhalten im ersten kritischen Erstarrungsfenster zu charakterisieren.
-                      </p>
+                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.t2IsothermesKonduktionskalorimeterDin} /></span>
+                      <p className="text-xs text-slate-600 mt-1 leading-normal"><MdText text={inhalt.texte.messungDesKontinuierlichenWärmestroms} /></p>
                     </div>
 
                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block">3. Lösungswärmeverfahren (DIN EN 196-8)</span>
-                      <p className="text-xs text-slate-600 mt-1 leading-normal">
-                        Ein nasschemischer Vergleichstest: Die Lösungswärme von unhydratisiertem Zement wird jener einer teils oder vollhydratisierten Probe (z.B. nach 7 oder 28 Tagen) in Säure gegenübergestellt. Die Differenz liefert die kumulierte Gesamthydratationswärme.
-                      </p>
+                      <span className="font-bold text-xs text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.t3LösungswärmeverfahrenDinEn} /></span>
+                      <p className="text-xs text-slate-600 mt-1 leading-normal"><MdText text={inhalt.texte.einNasschemischerVergleichstestDie} /></p>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div className="bg-[#FCF8F2] p-5 rounded-2xl border border-home-grau/25 space-y-3">
-                    <span className="font-bold text-shiraz block text-xs uppercase tracking-wider">Warum messen wir das? (Der Praxisnutzen)</span>
-                    <p className="text-xs leading-normal">
-                      Über die kalorimetrischen Daten lässt sich die Festigkeitsentwicklung von Beton im realen Bauteil über das **Reifegradmodell nach de Vree (Arrhenius)** abbilden. 
-                      Da Bauteile sich ungleichmäßig erwärmen (Kern kühlt mangels Oberfläche kaum ab, Ränder kühlen schnell), entstehen gewaltige thermische Gradienten:
-                    </p>
+                    <span className="font-bold text-shiraz block text-xs uppercase tracking-wider"><MdText text={inhalt.texte.warumMessenWirDas} /></span>
+                    <p className="text-xs leading-normal"><MdText text={inhalt.texte.überDieKalorimetrischenDaten} /></p>
                     <div className="bg-white p-3 rounded-lg border text-xs font-mono space-y-1 text-slate-800">
                       <div className="flex justify-between">
-                        <span>Zementwärme (Spitze)</span>
-                        <span className="font-bold text-shiraz">CEM I: ~350-400 J/g</span>
+                        <span><MdText text={inhalt.texte.zementwärmeSpitze} /></span>
+                        <span className="font-bold text-shiraz"><MdText text={inhalt.texte.cemI350400} /></span>
                       </div>
                       <div className="flex justify-between">
-                        <span>LH-Zementwärme (Spitze)</span>
-                        <span className="font-bold text-emerald-700">CEM III LH: &lt;270 J/g</span>
+                        <span><MdText text={inhalt.texte.lhZementwärmeSpitze} /></span>
+                        <span className="font-bold text-emerald-700"><MdText text={inhalt.texte.cemIiiLh270} /></span>
                       </div>
-                      <div className="text-[10px] text-slate-500 italic mt-1 pt-1 border-t border-slate-100">
-                        *LH = Low Heat (Zement mit niedriger Hydratationswärmeentwicklung)
-                      </div>
+                      <div className="text-[10px] text-slate-500 italic mt-1 pt-1 border-t border-slate-100"><MdText text={inhalt.texte.lhLowHeatZement} /></div>
                     </div>
-                    <p className="text-xs">
-                      Durch den gezielten Einsatz von Zusatzstoffen wie Flugasche wird die exotherme Klinkerreaktivität "verdünnt", wodurch Bauteilschäden verlässlich gemindert werden.
-                    </p>
+                    <p className="text-xs"><MdText text={inhalt.texte.durchDenGezieltenEinsatz} /></p>
                   </div>
                 </div>
 

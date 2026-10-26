@@ -21,6 +21,8 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
+import inhalt from '@/content/bodenmechanik/Bodenmechanik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -80,7 +82,7 @@ export default function Bodenmechanik() {
     const chartData = {
       datasets: [
         {
-          label: 'Bruchgerade (Mohr-Coulomb)',
+          label: inhalt.werte.bruchgeradeMohrCoulomb,
           data: envelopeData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -88,7 +90,7 @@ export default function Bodenmechanik() {
           fill: false,
         },
         {
-          label: 'Mohrscher Spannungskreis',
+          label: inhalt.werte.mohrscherSpannungskreis,
           data: circleData,
           borderColor: isFailing ? '#A3113E' : '#A3113E',
           backgroundColor: isFailing ? 'rgba(239, 68, 68, 0.2)' : 'rgba(139, 21, 56, 0.2)',
@@ -115,7 +117,7 @@ export default function Bodenmechanik() {
     const chartData = {
       datasets: [
         {
-          label: 'Aktiver Erddruck e_a',
+          label: inhalt.werte.aktiverErddruckEA,
           data: [{x: 0, y: 0}, {x: e_a, y: h}],
           borderColor: '#A3113E',
           backgroundColor: 'rgba(239, 68, 68, 0.2)',
@@ -123,7 +125,7 @@ export default function Bodenmechanik() {
           borderWidth: 2,
         },
         {
-          label: 'Erdruhedruck e_0',
+          label: inhalt.werte.erdruhedruckE0,
           data: [{x: 0, y: 0}, {x: e_0, y: h}],
           borderColor: '#475569',
           backgroundColor: 'rgba(59, 130, 246, 0.2)',
@@ -131,7 +133,7 @@ export default function Bodenmechanik() {
           borderWidth: 2,
         },
         {
-          label: 'Passiver Erddruck e_p',
+          label: inhalt.werte.passiverErddruckEP,
           data: [{x: 0, y: 0}, {x: e_p, y: h}],
           borderColor: '#475569',
           backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -160,7 +162,7 @@ export default function Bodenmechanik() {
     const chartData = {
       datasets: [
         {
-          label: 'Setzung s(t) [mm]',
+          label: inhalt.werte.setzungSTMm,
           data: setzungsData,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -183,12 +185,12 @@ export default function Bodenmechanik() {
     scales: {
       x: {
         type: 'linear' as const,
-        title: { display: true, text: 'Normalspannung σ (kN/m²)', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.normalspannungKnM, font: { weight: 'bold' as const } },
         min: 0,
         max: shearResults.maxSigma
       },
       y: {
-        title: { display: true, text: 'Scherspannung τ (kN/m²)', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.scherspannungKnM, font: { weight: 'bold' as const } },
         min: 0,
       }
     }
@@ -204,7 +206,7 @@ export default function Bodenmechanik() {
     scales: {
       x: {
         type: 'linear' as const,
-        title: { display: true, text: 'Erddruckordinate e (kN/m²)', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.erddruckordinateEKnM, font: { weight: 'bold' as const } },
         min: 0,
       },
       y: {
@@ -226,11 +228,11 @@ export default function Bodenmechanik() {
     scales: {
       x: {
         type: 'linear' as const,
-        title: { display: true, text: 'Zeit t [Jahre]', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.zeitTJahre, font: { weight: 'bold' as const } },
         min: 0,
       },
       y: {
-        title: { display: true, text: 'Setzung s [mm]', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.setzungSMm, font: { weight: 'bold' as const } },
         reverse: true, // Setzung nach unten
         min: 0,
       }
@@ -281,37 +283,34 @@ export default function Bodenmechanik() {
       {activeTab === 'konsistenz' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-          <Droplets className="text-shiraz" /> Erdbau &amp; Bodenmechanik (Konsistenzgrenzen)
-          <InfoTooltip text="Berechnung von Plastizitätszahl und Konsistenzzahl nach Atterberg zur Klassifikation bindiger Böden." />
+          <Droplets className="text-shiraz" /><MdText text={inhalt.texte.erdbauBodenmechanikKonsistenzgrenzen} /><InfoTooltip text={inhalt.werte.berechnungVonPlastizitätszahlUnd} />
         </h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Bindige Böden (Ton, Schluff) ändern ihre Eigenschaften stark mit dem Wassergehalt (w). Die Atterbergschen Grenzen definieren die Übergänge zwischen den Zustandsformen: Die Ausrollgrenze (w_P) trennt halbfest von plastisch, die Fließgrenze (w_L) trennt plastisch von flüssig. Die Plastizitätszahl (I_P = w_L - w_P) gibt den Bereich an, in dem der Boden plastisch verformbar ist. Die Konsistenzzahl (I_c) beschreibt den aktuellen Zustand des Bodens in der Natur.
-          </p>
+          <p><MdText text={inhalt.texte.bindigeBödenTonSchluff} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Eingabeparameter (Wassergehalte in %)</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.eingabeparameterWassergehalteIn} /></h3>
               
               <div className="grid grid-cols-1 gap-4">
-                <Slider info="Aktueller, natürlicher Wassergehalt des Bodens in Prozent." label={<FormulaText text="Natürlicher Wassergehalt (w)" />} min={5} max={80} step={1} value={w} unit="%" onChange={(e) => setW(Number(e.target.value))} />
-                <Slider label={<FormulaText text="Fließgrenze (w_L)" />} info="Liquid Limit: Wassergehalt am Übergang vom plastischen zum flüssigen Zustand (Casagrande-Gerät)." min={20} max={100} step={1} value={wL} unit="%" onChange={(e) => setWL(Number(e.target.value))} />
-                <Slider info="Plastic Limit: Wassergehalt am Übergang vom halbfesten zum plastischen Zustand (Faden-Ausroll-Versuch)." label={<FormulaText text="Ausrollgrenze (w_P)" />}  min={10} max={50} step={1} value={wP} unit="%" onChange={(e) => setWP(Number(e.target.value))} />
+                <Slider info={inhalt.werte.aktuellerNatürlicherWassergehaltDes} label={<FormulaText text={inhalt.werte.natürlicherWassergehaltW} />} min={5} max={80} step={1} value={w} unit="%" onChange={(e) => setW(Number(e.target.value))} />
+                <Slider label={<FormulaText text={inhalt.werte.fließgrenzeWL} />} info={inhalt.werte.liquidLimitWassergehaltAm} min={20} max={100} step={1} value={wL} unit="%" onChange={(e) => setWL(Number(e.target.value))} />
+                <Slider info={inhalt.werte.plasticLimitWassergehaltAm} label={<FormulaText text={inhalt.werte.ausrollgrenzeWP} />}  min={10} max={50} step={1} value={wP} unit="%" onChange={(e) => setWP(Number(e.target.value))} />
               </div>
               
               {wP >= wL && (
                 <div className="mt-4 text-xs font-bold text-red-500 bg-red-50 p-2 rounded border border-red-200">
-                  <FormulaText text="Fehler: Die Fließgrenze (w_L) muss größer sein als die Ausrollgrenze (w_P)!" />
+                  <FormulaText text={inhalt.werte.fehlerDieFließgrenzeW} />
                 </div>
               )}
             </div>
 
             {/* Schematische Darstellung: Konsistenz */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Konsistenzbereiche</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungKonsistenzbereich} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="100" viewBox="0 0 350 100">
                   {/* Achse */}
@@ -356,9 +355,7 @@ export default function Bodenmechanik() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Die Konsistenzgrenzen w_P (Ausrollgrenze) und w_L (Fließgrenze) teilen das Verhalten bindiger Böden in fest/halbfest, plastisch und flüssig ein. Der rote Marker zeigt den aktuellen Zustand w.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.dieKonsistenzgrenzenWP} /></div>
               </div>
             </div>
           </div>
@@ -369,22 +366,21 @@ export default function Bodenmechanik() {
               <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
-                    <FormulaText text="Plastizitätszahl (I_P)" />
-                    <InfoTooltip text="I_P = w_L - w_P. Maß für die Plastizität des Bodens." />
+                    <FormulaText text={inhalt.werte.plastizitätszahlIP} />
+                    <InfoTooltip text={inhalt.werte.iPWL} />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(results.iP, 1)} %</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
-                    <FormulaText text="Konsistenzzahl (I_c)" />
-                    <InfoTooltip text="I_c = (w_L - w) / I_P. Beschreibt den aktuellen Zustand." />
+                    <FormulaText text={inhalt.werte.konsistenzzahlIC} />
+                    <InfoTooltip text={inhalt.werte.iCWL} />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(results.iC, 2)}</div>
                 </div>
                 <div className="col-span-2">
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
-                    <Droplets size={16} /> Zustandsform (Konsistenz)
-                  </div>
+                    <Droplets size={16} /><MdText text={inhalt.texte.zustandsformKonsistenz} /></div>
                   <div className="text-2xl font-bold uppercase tracking-wide">{results.zustand}</div>
                 </div>
               </div>
@@ -392,8 +388,7 @@ export default function Bodenmechanik() {
               <EingabeHinweise hinweise={results.hinweise} />
               <div className="bg-white/10 p-4 rounded-lg border border-white/20">
                 <div className="text-sm font-bold mb-1 flex items-center gap-2">
-                  <Mountain size={16} /> Bodenklassifikation (vereinfacht)
-                </div>
+                  <Mountain size={16} /><MdText text={inhalt.texte.bodenklassifikationVereinfacht} /></div>
                 <div className="text-sm leading-relaxed">
                   {results.klasse}
                 </div>
@@ -403,12 +398,12 @@ export default function Bodenmechanik() {
             {/* Live-Rechenweg (AP 3.7) mit den aktuellen Wassergehalten */}
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Konsistenz und Bodengruppe"
+              title={inhalt.werte.ihrRechenwegKonsistenzUnd}
               zielGleichung="I_P = w_L - w_P, \quad I_C = \frac{w_L - w}{I_P}"
               schritte={[
                 {
                   titel: 'Plastizitätszahl',
-                  erklaerung: 'Spanne des plastischen Bereichs zwischen Fließ- und Ausrollgrenze:',
+                  erklaerung: inhalt.werte.spanneDesPlastischenBereichs,
                   formel: `I_P = ${formatDeTeX(wL, 1)} - ${formatDeTeX(wP, 1)} = ${formatDeTeX(results.iP, 1)}\\,\\%`
                 },
                 {
@@ -422,13 +417,13 @@ export default function Bodenmechanik() {
                   formel: `I_C = ${formatDeTeX(results.iC, 2)} \\;\\Rightarrow\\; \\text{${results.zustand}}`
                 },
                 {
-                  titel: 'Lage zur A-Linie',
+                  titel: inhalt.werte.lageZurALinie,
                   erklaerung: `Liegt I_P über der A-Linie (und I_P ≥ 7 %), handelt es sich um einen Ton, sonst um einen Schluff: ${results.klasse}.`,
                   formel: `I_{P,A} = 0{,}73 \\cdot (${formatDeTeX(wL, 1)} - 20) = ${formatDeTeX(0.73 * (wL - 20), 1)}\\,\\% \\quad I_P = ${formatDeTeX(results.iP, 1)}\\,\\% ${results.iP >= 0.73 * (wL - 20) ? '\\ge' : '<'} I_{P,A}`
                 }
               ]}
-              ergebnisHinweis="Plastizitätsdiagramm nach DIN 18196; organische Beimengungen sind gesondert zu prüfen."
-              normQuelle="DIN EN ISO 17892-12:2022-08; DIN EN ISO 14688-2; DIN 18196:2023-02"
+              ergebnisHinweis={inhalt.werte.plastizitätsdiagrammNachDin18196}
+              normQuelle={inhalt.werte.dinEnIso17892}
             />
           </div>
         </div>
@@ -438,17 +433,11 @@ export default function Bodenmechanik() {
       {activeTab === 'scherfestigkeit' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-            <Scissors className="text-shiraz" /> Scherfestigkeit nach Mohr-Coulomb
-            <InfoTooltip text="Berechnung der Scherfestigkeit eines Bodens in Abhängigkeit von Kohäsion, Reibungswinkel und Normalspannung." />
+            <Scissors className="text-shiraz" /><MdText text={inhalt.texte.scherfestigkeitNachMohrCoulomb} /><InfoTooltip text={inhalt.werte.berechnungDerScherfestigkeitEines} />
           </h2>
 
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-            <p>
-              Das Bruchkriterium nach Mohr-Coulomb beschreibt die Scherfestigkeit von Böden. 
-              Die Bruchbedingung lautet <strong>τ = c + σ · tan(φ)</strong>. 
-              Der Spannungszustand im Boden wird durch den <strong>Mohrschen Spannungskreis</strong> (definiert durch die Hauptspannungen σ₁ und σ₃) dargestellt. 
-              Berührt oder schneidet der Kreis die Bruchgerade, kommt es zum Versagen (Bruch) des Bodens.
-            </p>
+            <p><MdText text={inhalt.texte.dasBruchkriteriumNachMohr} /></p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -456,7 +445,7 @@ export default function Bodenmechanik() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Bodenparameter</h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider info="Kohäsion des Bodens." label={<FormulaText text="Kohäsion (c)" />} min={0} max={100} step={1} value={c} unit="kN/m²" onChange={(e) => setC(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.kohäsionDesBodens} label={<FormulaText text={inhalt.werte.kohäsionC} />} min={0} max={100} step={1} value={c} unit="kN/m²" onChange={(e) => setC(Number(e.target.value))} />
                   <Slider  label={<FormulaText text="Reibungswinkel (\varphi)" />} min={0} max={45} step={1} value={phi} unit="°" onChange={(e) => setPhi(Number(e.target.value))} />
                 </div>
               </div>
@@ -464,12 +453,12 @@ export default function Bodenmechanik() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Spannungszustand</h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider info="Kleinste Hauptspannung (z.B. Seitendruck im Triaxialversuch)." label={<FormulaText text="Kleinste Hauptspannung (\sigma_3)" />} min={0} max={200} step={5} value={sigma3} unit="kN/m²" onChange={(e) => {
+                  <Slider info={inhalt.werte.kleinsteHauptspannungZB} label={<FormulaText text="Kleinste Hauptspannung (\sigma_3)" />} min={0} max={200} step={5} value={sigma3} unit="kN/m²" onChange={(e) => {
                     const val = Number(e.target.value);
                     setSigma3(val);
                     if (val > sigma1) setSigma1(val);
                   }} />
-                  <Slider info="Größte Hauptspannung (z.B. Vertikaldruck)." label={<FormulaText text="Größte Hauptspannung (\sigma_1)" />} min={0} max={500} step={5} value={sigma1} unit="kN/m²" onChange={(e) => {
+                  <Slider info={inhalt.werte.größteHauptspannungZB} label={<FormulaText text="Größte Hauptspannung (\sigma_1)" />} min={0} max={500} step={5} value={sigma1} unit="kN/m²" onChange={(e) => {
                     const val = Number(e.target.value);
                     setSigma1(val);
                     if (val < sigma3) setSigma3(val);
@@ -482,7 +471,7 @@ export default function Bodenmechanik() {
                 <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Zustandsbewertung</h3>
                 <div>
                   <div className="text-2xl font-bold mb-2">
-                    {shearResults.isFailing ? 'Bruchzustand erreicht!' : 'Boden ist standsicher'}
+                    {shearResults.isFailing ? inhalt.werte.bruchzustandErreicht : inhalt.werte.bodenIstStandsicher}
                   </div>
                   <div className="text-white/80 text-sm">
                     <FormulaText text={`Max. ertragbare \\sigma_1 bei aktuellem \\sigma_3: ${formatDeZahl(shearResults.sigma1_f, 1)} kN/m²`} />
@@ -493,7 +482,7 @@ export default function Bodenmechanik() {
 
             <div className="lg:col-span-8 flex flex-col gap-6">
               <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[500px] flex flex-col">
-                <h3 className="text-sm font-bold text-center mb-4">Mohr-Coulomb Bruchkriterium</h3>
+                <h3 className="text-sm font-bold text-center mb-4"><MdText text={inhalt.texte.mohrCoulombBruchkriterium} /></h3>
                 <div className="flex-1 relative">
                   <Line data={shearResults.chartData} options={scherfestigkeitChartOptions} />
                 </div>
@@ -506,27 +495,21 @@ export default function Bodenmechanik() {
       {activeTab === 'erddruck' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-            <ArrowDownToLine className="text-shiraz" /> Erddruck nach Rankine
-            <InfoTooltip text="Berechnung von aktivem, passivem und Erdruhedruck für eine senkrechte Wand und horizontale Geländeoberfläche." />
+            <ArrowDownToLine className="text-shiraz" /><MdText text={inhalt.texte.erddruckNachRankine} /><InfoTooltip text={inhalt.werte.berechnungVonAktivemPassivem} />
           </h2>
 
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-            <p>
-              Der Erddruck beschreibt die Belastung von Stützwänden durch den anstehenden Boden. 
-              Der <strong>aktive Erddruck (E_a)</strong> entsteht, wenn die Wand vom Boden weg nachgibt. 
-              Der <strong>passive Erddruck (E_p)</strong> entsteht, wenn die Wand in den Boden gedrückt wird (Erddruckwiderstand). 
-              Der <strong>Erdruhedruck (E_0)</strong> wirkt auf eine unverschiebliche Wand (z.B. Kellerwand).
-            </p>
+            <p><MdText text={inhalt.texte.derErddruckBeschreibtDie} /></p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4 flex flex-col gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Geometrie & Boden</h3>
+                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.geometrieBoden} /></h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider label={<FormulaText text="Wandhöhe (h)" />} info="Höhe der Stützwand bzw. der vertikalen Geländestufe." min={1} max={10} step={0.5} value={h} unit="m" onChange={(e) => setH(Number(e.target.value))} />
-                  <Slider label={<FormulaText text="Wichte (\gamma)" />} info="Die Wichte (feuchtes Raumgewicht) des anstehenden Bodens." min={15} max={22} step={0.5} value={gamma} unit="kN/m³" onChange={(e) => setGamma(Number(e.target.value))} />
-                  <Slider info="Der charakteristische Reibungswinkel des Bodens zur Scherfestigkeitsberechnung." label={<FormulaText text="Reibungswinkel (\varphi)" />} min={15} max={45} step={1} value={phiErddruck} unit="°" onChange={(e) => setPhiErddruck(Number(e.target.value))} />
+                  <Slider label={<FormulaText text={inhalt.werte.wandhöheH} />} info={inhalt.werte.höheDerStützwandBzw} min={1} max={10} step={0.5} value={h} unit="m" onChange={(e) => setH(Number(e.target.value))} />
+                  <Slider label={<FormulaText text="Wichte (\gamma)" />} info={inhalt.werte.dieWichteFeuchtesRaumgewicht} min={15} max={22} step={0.5} value={gamma} unit="kN/m³" onChange={(e) => setGamma(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.derCharakteristischeReibungswinkelDes} label={<FormulaText text="Reibungswinkel (\varphi)" />} min={15} max={45} step={1} value={phiErddruck} unit="°" onChange={(e) => setPhiErddruck(Number(e.target.value))} />
                 </div>
               </div>
 
@@ -549,18 +532,18 @@ export default function Bodenmechanik() {
               </div>
 
               <div className="p-6 rounded-xl shadow-md text-white bg-shiraz transition-colors">
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Resultierende Kräfte</h3>
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.resultierendeKräfte} /></h3>
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                    <span className="text-white/80 text-sm"><FormulaText text="Aktiver Erddruck (E_a)" /></span>
+                    <span className="text-white/80 text-sm"><FormulaText text={inhalt.werte.aktiverErddruckEA2} /></span>
                     <span className="text-xl font-bold">{formatDeZahl(erddruckResults.E_a, 1)} kN/m</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                    <span className="text-white/80 text-sm"><FormulaText text="Erdruhedruck (E_0)" /></span>
+                    <span className="text-white/80 text-sm"><FormulaText text={inhalt.werte.erdruhedruckE02} /></span>
                     <span className="text-xl font-bold">{formatDeZahl(erddruckResults.E_0, 1)} kN/m</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-sm"><FormulaText text="Passiver Erddruck (E_p)" /></span>
+                    <span className="text-white/80 text-sm"><FormulaText text={inhalt.werte.passiverErddruckEP2} /></span>
                     <span className="text-xl font-bold">{formatDeZahl(erddruckResults.E_p, 1)} kN/m</span>
                   </div>
                 </div>
@@ -569,7 +552,7 @@ export default function Bodenmechanik() {
 
             <div className="lg:col-span-8 flex flex-col gap-6">
               <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[500px] flex flex-col">
-                <h3 className="text-sm font-bold text-center mb-4">Erddruckverteilung über die Tiefe</h3>
+                <h3 className="text-sm font-bold text-center mb-4"><MdText text={inhalt.texte.erddruckverteilungÜberDieTiefe} /></h3>
                 <div className="flex-1 relative">
                   <Line data={erddruckResults.chartData} options={erddruckChartOptions} />
                 </div>
@@ -582,28 +565,25 @@ export default function Bodenmechanik() {
       {activeTab === 'konsolidierung' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-            <Timer className="text-shiraz" /> Konsolidierung (Eindimensionale Setzung)
-            <InfoTooltip text="Berechnung der zeitlichen Entwicklung von Setzungen in bindigen Böden nach der Terzaghi-Theorie." />
+            <Timer className="text-shiraz" /><MdText text={inhalt.texte.konsolidierungEindimensionaleSetzung} /><InfoTooltip text={inhalt.werte.berechnungDerZeitlichenEntwicklung} />
           </h2>
 
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-            <p>
-              Bei bindigen, wassergesättigten Böden (z.B. Ton) führt eine Lasterhöhung zunächst zu einem Porenwasserüberdruck. Die Setzung erfolgt erst zeitverzögert, wenn das Wasser aus den Poren ausgepresst wird (Konsolidierung). Die Endsetzung s hängt von der Steifigkeit (E_s) ab, die Dauer vom Konsolidierungsbeiwert (c_v) und dem Entwässerungsweg (d).
-            </p>
+            <p><MdText text={inhalt.texte.beiBindigenWassergesättigtenBöden} /></p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4 flex flex-col gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Boden & Belastung</h3>
+                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.bodenBelastung} /></h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider info="Dicke der Bodenschicht." label={<FormulaText text="Schichtdicke (h)" />} min={1} max={20} step={0.5} value={hSchicht} unit="m" onChange={(e) => setHSchicht(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.dickeDerBodenschicht} label={<FormulaText text={inhalt.werte.schichtdickeH} />} min={1} max={20} step={0.5} value={hSchicht} unit="m" onChange={(e) => setHSchicht(Number(e.target.value))} />
                   <Slider  label={<FormulaText text="Zusatzspannung (\Delta\sigma)" />} min={10} max={200} step={5} value={deltaSigma} unit="kN/m²" onChange={(e) => setDeltaSigma(Number(e.target.value))} />
-                  <Slider info="Steifemodul des Bodens." label={<FormulaText text="Steifemodul (E_s)" />} min={1} max={20} step={0.5} value={es} unit="MN/m²" onChange={(e) => setEs(Number(e.target.value))} />
-                  <Slider  label={<FormulaText text="Konsolidierungsbeiwert (c_v)" />} min={0.1} max={10} step={0.1} value={cv} unit="m²/Jahr" onChange={(e) => setCv(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.steifemodulDesBodens} label={<FormulaText text={inhalt.werte.steifemodulES} />} min={1} max={20} step={0.5} value={es} unit="MN/m²" onChange={(e) => setEs(Number(e.target.value))} />
+                  <Slider  label={<FormulaText text={inhalt.werte.konsolidierungsbeiwertCV} />} min={0.1} max={10} step={0.1} value={cv} unit="m²/Jahr" onChange={(e) => setCv(Number(e.target.value))} />
                   
                   <div className="flex flex-col gap-2 mt-2">
-                    <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Entwässerung</label><InfoTooltip text="Art der Wasserableitung vom Bauteil." /></div>
+                    <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Entwässerung</label><InfoTooltip text={inhalt.werte.artDerWasserableitungVom} /></div>
                     <select aria-label="Entwässerung" 
                       className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                       value={drainage}
@@ -620,7 +600,7 @@ export default function Bodenmechanik() {
                 <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Ergebnisse</h3>
                 <div className="flex flex-col gap-4">
                   <div>
-                    <div className="text-white/80 text-sm mb-1"><FormulaText text="Endsetzung (s_{end})" /></div>
+                    <div className="text-white/80 text-sm mb-1"><FormulaText text={inhalt.werte.endsetzungSEnd} /></div>
                     <div className="text-3xl font-bold">{formatDeZahl(konsolidierungResults.s_end, 1)} mm</div>
                   </div>
                   <div className="grid grid-cols-2 gap-4 border-t border-white/20 pt-4">
@@ -651,35 +631,25 @@ export default function Bodenmechanik() {
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Zustandsform und Bodengruppe eines bindigen Bodens"
+        title={inhalt.werte.beispiel1ZustandsformUnd}
         zielGleichung="I_C = \frac{w_L - w}{w_L - w_P}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Laborwerte: natürlicher Wassergehalt w = 25 %, Fließgrenze w_L = 45 %, Ausrollgrenze w_P = 20 %.', formel: 'w = 25\\,\\%,\\; w_L = 45\\,\\%,\\; w_P = 20\\,\\%' },
-          { titel: 'Plastizitäts- und Konsistenzzahl', erklaerung: 'Plastizitätsbereich und Lage des Wassergehalts darin:', formel: 'I_P = 45 - 20 = 25\\,\\%, \\quad I_C = \\frac{45 - 25}{25} = 0{,}80' },
-          { titel: 'Zustandsform', erklaerung: 'I_C zwischen 0,75 und 1,00 bedeutet steif.', formel: '0{,}75 \\le I_C = 0{,}80 < 1{,}00 \\Rightarrow \\text{steif}' },
-          { titel: 'Bodengruppe', erklaerung: 'A-Linie im Plastizitätsdiagramm; I_P liegt darüber, w_L zwischen 35 und 50 %:', formel: 'I_{P,A} = 0{,}73 \\cdot (45 - 20) = 18{,}3\\,\\% < 25\\,\\% \\Rightarrow \\text{TM}' }
-        ]}
-        ergebnisHinweis="Ein steifer, mittelplastischer Ton (TM) ist ein typischer Baugrund für Flachgründungen, aber setzungs- und frostempfindlich. Steigt w auf 35 %, sinkt I_C auf 0,40 (breiig)."
-        normQuelle="DIN EN ISO 17892-12:2022-08; DIN 18196:2023-02"
+        schritte={inhalt.daten["Bodenmechanik.schritte"]}
+        ergebnisHinweis={inhalt.werte.einSteiferMittelplastischerTon}
+        normQuelle={inhalt.werte.dinEnIso178922}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Aktiver Erddruck auf eine Stützwand und Konsolidationssetzung"
+        title={inhalt.werte.beispiel2AktiverErddruck}
         zielGleichung="E_a = \frac{1}{2} \cdot K_a \cdot \gamma \cdot h^2"
-        schritte={[
-          { titel: 'Erddruckbeiwert', erklaerung: 'Rankine, φ = 30°, Wand lotrecht und glatt:', formel: 'K_a = \\tan^2(45^\\circ - 15^\\circ) = 0{,}333' },
-          { titel: 'Erddruckkraft', erklaerung: 'γ = 20 kN/m³, Wandhöhe h = 5 m; dreieckförmige Verteilung, Angriff bei h/3 über dem Wandfuß:', formel: 'e_a = 0{,}333 \\cdot 20 \\cdot 5 = 33{,}3\\,\\text{kN/m}^2, \\quad E_a = \\tfrac{1}{2} \\cdot 33{,}3 \\cdot 5 = 83{,}3\\,\\text{kN/m}' },
-          { titel: 'Endsetzung', erklaerung: 'Tonschicht h = 4 m, Zusatzspannung Δσ = 50 kN/m², Steifemodul E_s = 5 MN/m²:', formel: 's_\\infty = \\frac{50}{5\\,000} \\cdot 4\\,000\\,\\text{mm} = 40\\,\\text{mm}' },
-          { titel: 'Zeitpunkt 90 % Konsolidierung', erklaerung: 'Zweiseitige Entwässerung (d = 2 m), c_v = 2 m²/Jahr, T_v(90 %) = 0,848:', formel: 't_{90} = \\frac{0{,}848 \\cdot 2^2}{2} = 1{,}70\\,\\text{Jahre}' }
-        ]}
-        ergebnisHinweis="Bei einseitiger Entwässerung verdoppelt sich d und die Konsolidationszeit vervierfacht sich (etwa 6,8 Jahre) – Dränschichten oder Vertikaldräns verkürzen sie gezielt."
-        normQuelle="DIN 4085:2017-08 (Erddruck); DIN 4019:2015-05 (Setzungen); Terzaghi-Konsolidationstheorie"
+        schritte={inhalt.daten["Bodenmechanik.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.beiEinseitigerEntwässerungVerdoppelt}
+        normQuelle={inhalt.werte.din4085201708}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bodenmechanik" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Konsistenzgrenzen, Bodengruppen nach DIN 18196, Mohr-Coulomb, Rankine-Erddruck und Terzaghi-Konsolidation geprüft, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
         { title: 'Bodenmechanik', url: 'https://de.wikipedia.org/wiki/Bodenmechanik' },
         
@@ -687,46 +657,9 @@ export default function Bodenmechanik() {
         { title: 'Erddruck', url: 'https://de.wikipedia.org/wiki/Erddruck' },
         { title: 'Konsolidierung', url: 'https://de.wikipedia.org/wiki/Konsolidation_(Bodenmechanik)' }
       ]}
-        literatur={[
-          'Kolymbas, D.: Geotechnik – Bodenmechanik, Grundbau und Tunnelbau. 5. Aufl., Berlin: Springer Vieweg 2019',
-          'Witt, K. J. (Hrsg.): Grundbau-Taschenbuch, Teil 1: Geotechnische Grundlagen. 8. Aufl., Berlin: Ernst & Sohn 2017',
-          'Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1997-1:2014-03 mit DIN EN 1997-1/NA:2010-12 und DIN 1054:2021-04 (Eurocode 7; MVV TB 2025/1 führt DIN EN 1997-1:2009-09 als eingeführte Fassung); neue Generation EN 1997-1:2024 – DIN-Fassung noch nicht erschienen (geplant 2027)' },
-          { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)' },
-          { title: 'DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)' },
-          { title: 'DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)' },
-          { title: 'DIN 4019:2015-05 (Baugrund – Setzungsberechnungen)' },
-          { title: 'DIN 4085:2017-08 (Baugrund – Berechnung des Erddrucks)' }
-        ]}
-        formeln={[
-          {
-            formel: 'I_c = \\frac{w_L - w}{I_P}',
-            erklaerung: 'Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).',
-            quelle: 'DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2'
-          },
-          {
-            formel: '\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)',
-            erklaerung: 'Bruchkriterium nach Mohr-Coulomb: \\tau_f = Scherfestigkeit, c = Kohäsion, \\sigma = wirksame Normalspannung, \\varphi = Reibungswinkel (wirksame Scherparameter).',
-            quelle: 'Mohr-Coulomb; Scherparameter nach DIN EN 1997-1 / DIN 1054'
-          },
-          {
-            formel: 'K_a = \\tan^2\\left(45^\\circ - \\frac{\\varphi}{2}\\right)',
-            erklaerung: 'Aktiver Erddruckbeiwert nach Rankine bei lotrechter, reibungsfreier Wand (δ = 0) und horizontaler Geländeoberfläche; DIN 4085 erfasst zusätzlich Wandreibung und Geländeneigung.',
-            quelle: 'Rankine (1857); DIN 4085'
-          },
-          {
-            formel: 's = \\frac{\\Delta \\sigma}{E_s} \\cdot h',
-            erklaerung: 'Eindimensionale Endsetzung einer Bodenschicht: \\Delta \\sigma = Spannungszuwachs, E_s = Steifemodul (Ödometerversuch), h = Schichtdicke.',
-            quelle: 'DIN 4019:2015-05'
-          },
-          {
-            formel: 'T_v = \\frac{c_v \\cdot t}{d^2}',
-            erklaerung: 'Zeitfaktor der Konsolidierung nach Terzaghi: c_v = Konsolidierungsbeiwert, d = maximaler Entwässerungsweg, t = Konsolidierungszeit.',
-            quelle: 'Terzaghi: Theoretical Soil Mechanics'
-          }
-        ]}
+        literatur={inhalt.daten["Bodenmechanik.literatur"]}
+        regelwerke={inhalt.daten["Bodenmechanik.regelwerke"]}
+        formeln={inhalt.daten["Bodenmechanik.formeln"]}
       />
     </div>
   );

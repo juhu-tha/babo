@@ -1,0 +1,1519 @@
+{
+  "werte": {
+    "mathematischePhysikalischeUndChemische": "Mathematische, physikalische und chemische Basiskonzepte für Tragwerk und Baustoffkunde",
+    "wissenschaftlicheSäulenDesBauingenieurwe": "Wissenschaftliche Säulen des Bauingenieurwesens",
+    "jedesBauwerkBasiertAuf": "Jedes Bauwerk basiert auf Naturgesetzen und deren strukturierter Anwendung. Die Grundlagen verbinden formale Maßeinheiten, materialübergreifende Kennwerte sowie mechanische Beanspruchungsmodelle zu einem einheitlichen Tragsicherheits- und Bemessungsrahmen.",
+    "durchDasErfassenElementarer": "Durch das Erfassen elementarer physikalisch-chemischer Vorgänge wie Hydratationswärme, Säurebelastung und Teilsicherheitsfaktoren wird das Fundament für alle vertiefenden Disziplinen wie Massivbau, Geotechnik und Bauphysik gelegt.",
+    "umrechnerUndErklärungenFür": "Umrechner und Erklärungen für Spannungen, Kräfte, Drücke, Momente, Energie und Temperatur.",
+    "din13011Din": "DIN 1301-1, DIN EN ISO 80000-1",
+    "umrechnenVonPascalBar": "Umrechnen von Pascal, bar und Newton je Quadratmillimeter; Momente von kNm in Nmm.",
+    "schnellübersichtCharakteristischerBausto": "Schnellübersicht charakteristischer Baustoffparameter verschiedenster Materialklassen.",
+    "albertAHrsgSchneider": "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+    "ablesenDesElastizitätsmodulsVon": "Ablesen des Elastizitätsmoduls von Buchenholz oder Baustahl S235.",
+    "physikalischeKennziffernWiePorosität": "Physikalische Kennziffern wie Porosität, Dichtegrade, Feuchtegehalt und Wasseraufnahme.",
+    "dinEnIso10456": "DIN EN ISO 10456, DIN 4108-3/-4, DIN EN ISO 12570/15148",
+    "bestimmungDerPorositätAus": "Bestimmung der Porosität aus Rein- und Rohdichte; s_d- und w-Wert einer Putzschicht.",
+    "hydratationZusatzmittelChemischeAngriffe": "Hydratation, Zusatzmittel, chemische Angriffe, Salze, Korrosion sowie Kleb- und Dichtstoffe.",
+    "dinEn206Din": "DIN EN 206/DIN 1045-2, DIN EN 934-2, DIN EN 1504, DIN EN 15651",
+    "berechnungDesKorrosionskritischenCarbona": "Berechnung des korrosionskritischen Carbonatisierungsfortschritts.",
+    "einführungInDasSemiprobabilistische": "Einführung in das semiprobabilistische Sicherheitskonzept mit Teilsicherheitsbeiwerten.",
+    "dinEn1990Eurocode": "DIN EN 1990 (Eurocode 0)",
+    "ermittlungDerMaßgebendenEinwirkungskombi": "Ermittlung der maßgebenden Einwirkungskombination für Grundkombinationen nach Gl. 6.10.",
+    "systematischeKlassifikationAllerWerkstof": "Systematische Klassifikation aller Werkstoffklassen (mineralisch, metallisch, organisch, Verbundstoffe) und Gefügearten.",
+    "dinEnNormengruppenWendehorst": "DIN EN-Normengruppen / Wendehorst",
+    "grundlagenorientierteWerkstoffauswahlNac": "Grundlagenorientierte Werkstoffauswahl nach Festigkeits-, Dauerhaftigkeits- und Umweltkriterien.",
+    "übersichtÜberBaurechtlicheRegelungen": "Übersicht über baurechtliche Regelungen, Baugesetzbuch, Landesbauordnungen und harmonisierte europäische Normen.",
+    "baupvoEu20243110": "BauPVO (EU) 2024/3110, MBO/LBO, MVV TB, BGB/VOB",
+    "prüfenDerNotwendigkeitEiner": "Prüfen der Notwendigkeit einer allgemeinen bauaufsichtlichen Zulassung (abZ).",
+    "zurVorbereitungAufKlausuren": "Zur Vorbereitung auf Klausuren in Baustoffkunde, Statik und Technischer Mechanik.",
+    "schnellesNachschlagenVonSicherheitsbeiwe": "Schnelles Nachschlagen von Sicherheitsbeiwerten und Materialkennwerten; maßgebend bleiben die aktuellen Regelwerke.",
+    "internationalesEinheitensystem": "Internationales Einheitensystem",
+    "laborSensorikAnalytik": "Labor, Sensorik & Analytik",
+    "praxisnahePrüfverfahrenModerneBauwerksdi": "Praxisnahe Prüfverfahren, moderne Bauwerksdiagnostik und statistische Versuchsplanung",
+    "qualitätssicherungDurchMesstechnischeVer": "Qualitätssicherung durch messtechnische Verifikation",
+    "ingenieurbaustoffeUndBauwerkeUnterliegen": "Ingenieurbaustoffe und Bauwerke unterliegen Alterungsprozessen und Fertigungsschwankungen. Dieses Modul bündelt das Wissen über physikalische Versuche im Labor, zerstörungsfreie Prüfverfahren (ZfP) vor Ort sowie die fundierte mathematische Analyse.",
+    "durchKontrollierteZerstörungBiegezug": "Durch kontrollierte Zerstörung (Biegezug, Druckversuche) und moderne Diagnostik (Mikroskopie, XRD, Ultraschall) ermitteln wir die tatsächlichen Ist-Zustände, um Tragreserven zu bewerten und Schäden einzugrenzen.",
+    "probenahmeErkundung": "Probenahme & Erkundung",
+    "repräsentativeBeprobungVonHaufwerken": "Repräsentative Beprobung von Haufwerken sowie Entnahme von Bohrkernen, Bohrmehl und Rückprallmessungen am Bauwerk.",
+    "lagaPn98Din": "LAGA PN 98, DIN 19698-1, DIN EN 12504-1/-2, DIN EN 13791",
+    "planungVonBohrkernUnd": "Planung von Bohrkern- und Bohrmehlentnahmen an einer Parkdeckstütze.",
+    "messenPrüfen": "Messen & Prüfen",
+    "messtechnischeBegriffeKalibrierenJustier": "Messtechnische Begriffe (Kalibrieren, Justieren, Eichen), Richtigkeit und Präzision, Messunsicherheit nach GUM und Eignungsprüfungen.",
+    "jcgm100GumIso": "JCGM 100 (GUM), ISO 5725-1, DIN ISO 13528, DIN EN ISO 7500-1",
+    "unsicherheitsbudgetEinerDruckprüfungUnd": "Unsicherheitsbudget einer Druckprüfung und Bewertung eines Ringversuchs (z-Score, En-Zahl).",
+    "analytikDiagnostik": "Analytik & Diagnostik",
+    "chemischeUndMineralogischeLaborverfahren": "Chemische und mineralogische Laborverfahren wie TGA, Röntgendiffraktometrie, RFA, Porosimetrie und Rasterelektronenmikroskopie.",
+    "dinEn14629Din": "DIN EN 14629, DIN ISO 15901-1, DIN EN 13925-1",
+    "nachweisVonEttringitNadeln": "Nachweis von Ettringit-Nadeln im rasterelektronenmikroskopischen Bild.",
+    "mechanischePrüfungen": "Mechanische Prüfungen",
+    "durchführungZerstörenderFestigkeitsprüfu": "Durchführung zerstörender Festigkeitsprüfungen im Labor, Druckprüfmaschinen, Biegezugvorrichtungen.",
+    "dinEn123903": "DIN EN 12390-3",
+    "ermittlungDer28Tage": "Ermittlung der 28-Tage-Zylinderdruckfestigkeit.",
+    "virtuelleVersuche": "Virtuelle Versuche",
+    "lehrsimulationenVonStandardversuchenMit": "Lehrsimulationen von Standardversuchen mit Messreihen, Lastkurven und Rissbildung.",
+    "dinEn12390Din": "DIN EN 12390, DIN EN 1542, DIN EN 12350, DIN EN 12504-2",
+    "ermittlungDerSpannungsDehnungs": "Ermittlung der Spannungs-Dehnungs-Linie im interaktiven Zugversuch.",
+    "statistikAuswertung": "Statistik & Auswertung",
+    "berechnungVonVertrauensbereichenQuantilw": "Berechnung von Vertrauensbereichen, Quantilwerten und Gauß'schen Normalverteilungen.",
+    "dinEn1990Anhang": "DIN EN 1990, Anhang D; ISO 12491",
+    "berechnungDerCharakteristischen5": "Berechnung der charakteristischen 5%-Quantil-Festigkeit aus 10 Probekörpern.",
+    "festbetonStatistik": "Festbeton (Statistik)",
+    "interaktiveKonformitätskontrolleUndStati": "Interaktive Konformitätskontrolle und statistische Festigkeitsauswertung von Beton-Güteserien.",
+    "dinEn206Tab": "DIN EN 206, Tab. 14",
+    "prüfungDerKonformitätskriterienFür": "Prüfung der Konformitätskriterien für Normal- oder Leichtbeton-Druckfestigkeit im Werk.",
+    "hilftStudierendenLaborpraktikaVirtuell": "Hilft Studierenden, Laborpraktika virtuell vorzubereiten, Versuche nachzuvollziehen und wissenschaftlich saubere Laborberichte zu schreiben.",
+    "unterstütztPrüfingenieureUndBetonprüfer": "Unterstützt Prüfingenieure und Betonprüfer bei der statistischen Bewertung von Baustellen-Würfelserien und Abnahmeentscheidungen.",
+    "zerstörungsfreiePrüfung": "Zerstörungsfreie Prüfung",
+    "baustoffkundeImDetail": "Baustoffkunde im Detail",
+    "dasGesamteSpektrumKlassischer": "Das gesamte Spektrum klassischer und zukunftsweisender Strukturmaterialien",
+    "vomNatursteinBisZum": "Vom Naturstein bis zum biologischen Funktionswerkstoff",
+    "dieBaustoffkundeVermitteltEin": "Die Baustoffkunde vermittelt ein tiefes Verständnis für den Zusammenhang zwischen atomarem Aufbau, stofflicher Zusammensetzung, Fertigungstechnologie und den makroskopischen Baustoffeigenschaften aller Bauwerksteile.",
+    "wirGliedernDenStoffraum": "Wir gliedern den Stoffraum didaktisch in mineralische, metallische, organische sowie Verbund- und Dämmstoffe. Jedes Material besitzt ein individuelles Anforderungsprofil bezüglich Tragfähigkeit, Formbeständigkeit und Dauerhaftigkeit.",
+    "eigenschaftenUndHerkunftNatürlicher": "Eigenschaften und Herkunft natürlicher Gesteinskörnungen, Magmatite, Sedimentite, Metamorphite.",
+    "dinEn12620Din": "DIN EN 12620, DIN EN 771-6",
+    "bestimmungDerFrostbeständigkeitVon": "Bestimmung der Frostbeständigkeit von Granitschotter.",
+    "zusammenwirkenVonMauersteinenKalksandste": "Zusammenwirken von Mauersteinen (Kalksandstein, Hochlochziegel) und Mauermörtel.",
+    "dinEn1996Eurocode": "DIN EN 1996 (Eurocode 6)",
+    "berechnungDerTragfähigkeitVon": "Berechnung der Tragfähigkeit von Mauerwerkswänden.",
+    "putzeMörtel": "Putze & Mörtel",
+    "unterscheidungVonBaugipsenLuftkalk": "Unterscheidung von Baugipsen, Luftkalk, hydraulischem Kalk und Zementmörteln.",
+    "dinEn9981": "DIN EN 998-1/2",
+    "auswahlDesRichtigenAußenputzes": "Auswahl des richtigen Außenputzes bei hoher Schlagregenbeanspruchung.",
+    "calciumsulfatBindemittelHalbhydratAnhydr": "Calciumsulfat-Bindemittel (Halbhydrat, Anhydrit), Brennstufen, Abbindemechanismen und Stuckarbeiten.",
+    "dinEn13279": "DIN EN 13279",
+    "gipsputzUndEstrichauslegungMit": "Gipsputz- und Estrichauslegung mit Feuchteschutz-Randbedingungen.",
+    "kalkkreislaufVomKalksteinÜber": "Kalkkreislauf vom Kalkstein über Branntkalk zum Löschkalk, Luftkalke vs. hydraulische Kalke.",
+    "einsatzHochdiffusionsoffenerKalkmörtelIm": "Einsatz hochdiffusionsoffener Kalkmörtel im Denkmalschutz und ökologischen Wohnungsbau.",
+    "heutigeRenaissanceÖkologischerLehmsteine": "Heutige Renaissance ökologischer Lehmsteine, Stampflehmwände und Lehmputze.",
+    "din18945Din18948": "DIN 18945 - DIN 18948 (Lehmbaunormen)",
+    "sichererEntwurfVonStampflehmbauteilen": "Sicherer Entwurf von Stampflehmbauteilen mit konstruktivem Feuchteschutz.",
+    "erdbauBöden": "Erdbau & Böden",
+    "bodenmechanischeKlassifikationVerdichtun": "Bodenmechanische Klassifikation, Verdichtungskriterien, Proctordichte und bodenphysikalische Kennwerte.",
+    "din18196Din18127": "DIN 18196 / DIN 18127",
+    "festlegungDesOptimalenWassergehalts": "Festlegung des optimalen Wassergehalts für Tragschichten im Erdbau.",
+    "glasImBauwesen": "Glas im Bauwesen",
+    "floatglasThermischVorgespanntesGlas": "Floatglas, thermisch vorgespanntes Glas (ESG, TVG), Verbund-Sicherheitsglas (VSG) und Isolierglas.",
+    "din18008GlasIm": "DIN 18008 (Glas im Bauwesen)",
+    "tragfähigkeitsnachweisAbsturzsichernderS": "Tragfähigkeitsnachweis absturzsichernder Scheiben.",
+    "stahlMetallbau": "Stahl- & Metallbau",
+    "eisenKohlenstoffDiagrammGefügebeeinfluss": "Eisen-Kohlenstoff-Diagramm, Gefügebeeinflussung und Eigenschaftsprofil von Baustählen.",
+    "dinEn10025Eurocode": "DIN EN 10025, Eurocode 3",
+    "plastischeMomenttragfähigkeitVonS355": "Plastische Momenttragfähigkeit von S355 Profilen.",
+    "metalleNeMetalle": "Metalle & NE-Metalle",
+    "aluminiumKupferZinkBlei": "Aluminium, Kupfer, Zink, Blei und korrosionsbeständige Edelstähle für Fassaden und Dachdeckungen.",
+    "dinEn485Din": "DIN EN 485 / DIN EN 1172",
+    "vermeidungVonKontaktkorrosionZwischen": "Vermeidung von Kontaktkorrosion zwischen Aluminium-Unterkonstruktionen und Edelstahl-Befestigern.",
+    "holzHolzwerkstoffe": "Holz & Holzwerkstoffe",
+    "anisotropieHolzfeuchteQuellenUnd": "Anisotropie, Holzfeuchte, Quellen und Schwinden, Festigkeitsklassen und Holzwerkstoffe wie BSH und Brettsperrholz.",
+    "dinEn1995Eurocode": "DIN EN 1995 (Eurocode 5)",
+    "bemessungVonBrettschichtholzträgern": "Bemessung von Brettschichtholzträgern.",
+    "biogeneBaustoffeNawaro": "Biogene Baustoffe (NaWaRo)",
+    "nachwachsendeRohstoffeStrohballenbauHanf": "Nachwachsende Rohstoffe: Strohballenbau, Hanffasern, Flachs, Schafwolle und zellulosebasierte Dämmstoffe.",
+    "ökobaudatDibtZulassungen": "ÖKOBAUDAT / DIBt-Zulassungen",
+    "ökobilanziellOptimierteHolzrahmenbauwand": "Ökobilanziell optimierte Holzrahmenbauwand mit Stroheinblasdämmung.",
+    "asphaltBitumen": "Asphalt & Bitumen",
+    "viskoelastischesVerhaltenBitumenprüfunge": "Viskoelastisches Verhalten, Bitumenprüfungen (Erweichungspunkt RuK, Nadelpenetration) und Mischungsentwürfe.",
+    "ztvAsphaltStbDin": "ZTV Asphalt-StB / DIN EN 13108",
+    "optimierungVonDeckschichtenMit": "Optimierung von Deckschichten mit polymermodifiziertem Bitumen.",
+    "kunststoffeImBauwesen": "Kunststoffe im Bauwesen",
+    "thermoplasteDuroplasteElastomereFür": "Thermoplaste, Duroplaste, Elastomere für Rohre, Fensterprofile, Folien und Geotextilien.",
+    "dinEnIso1043": "DIN EN ISO 1043 / DVS Richtlinien",
+    "wahlDesGeeignetenRohrwerkstoffs": "Wahl des geeigneten Rohrwerkstoffs (PE-HD vs. PVC-U) für grabenlose Rohrverlegung.",
+    "vergleichOrganischerAnorganischerUnd": "Vergleich organischer, anorganischer und synthetischer Dämmstoffe bzgl. Wärmeleitfähigkeit, Brandverhalten und Feuchte.",
+    "din410810Gmodg": "DIN 4108-10 / GModG (vormals GEG)",
+    "dämmdickeFürEinenZiel": "Dämmdicke für einen Ziel-U-Wert abschätzen.",
+    "ausbauAbdichtung": "Ausbau & Abdichtung",
+    "bauwerksabdichtungenGegenBodenfeuchteUnd": "Bauwerksabdichtungen gegen Bodenfeuchte und drückendes Wasser, Trockenbausysteme und Fugenabdichtungen.",
+    "din18533Din18181": "DIN 18533 / DIN 18181",
+    "auslegungEinerZweilagigenBitumenbahnenab": "Auslegung einer zweilagigen Bitumenbahnenabdichtung nach Wassereinwirkungsklasse W2.1-E.",
+    "werkstoffKombinationenFaserverbund": "Werkstoff-Kombinationen & Faserverbund",
+    "schichtenaufbautenTragenDämmenSchützen": "Schichtenaufbauten (Tragen, Dämmen, Schützen), Faserverbunde (CFK/GFK, Voigt/Reuss), Verbundwerkstoffe (Stahlbeton, Sandwich, VSG) und Schutzschichtsysteme.",
+    "dinEn15042": "DIN EN 1504-2, DIN EN ISO 12944, DIN 4108-3, DIN EN ISO 6946, VDI 2014",
+    "auslegungUndBauphysikalischePrüfung": "Auslegung und bauphysikalische Prüfung von Schichtenwänden sowie Mikromechanik und Tragwerksverstärkung mit CFK/GFK.",
+    "sonstigeInnovationen": "Sonstige & Innovationen",
+    "phasenwechselmaterialienLeichtzuschlägeA": "Phasenwechselmaterialien, Leichtzuschläge, Aerogele, selbstheilender Beton, Photokatalyse, Vakuumisolationspaneele und Myzelwerkstoffe.",
+    "dinEn13055Din": "DIN EN 13055, DIN EN 17140, abZ/ETA",
+    "vakuumisolationspaneeleBeiBegrenzterAufb": "Vakuumisolationspaneele bei begrenzter Aufbauhöhe (z. B. Terrassenanschluss).",
+    "begleitungVonBaustoffvorlesungenVom": "Begleitung von Baustoffvorlesungen vom ersten Semester bis zur Abschlussarbeit.",
+    "nachschlagewerkFürTragwerksplanungUnd": "Nachschlagewerk für Tragwerksplanung und Architektur bei Materialwahl und -substitution.",
+    "bauproduktrechtSpezifikation": "Bauproduktrecht & Spezifikation",
+    "zulassungssystemeKonformitätsbewertungen": "Zulassungssysteme, Konformitätsbewertungen und baurechtliche Pflichten",
+    "sicherheitImHarmonisiertenEuropäischen": "Sicherheit im harmonisierten europäischen Bauproduktrecht",
+    "bauprodukteDürfenNurVerwendet": "Bauprodukte dürfen nur verwendet werden, wenn ihre Leistung nachgewiesen ist und das Bauwerk damit die bauordnungsrechtlichen Anforderungen erfüllt. Das Modul erläutert die Bauproduktenverordnung (BauPVO) und die ergänzenden nationalen Regelungen.",
+    "behandeltWerdenCeKennzeichnung": "Behandelt werden CE-Kennzeichnung, Europäische Bewertungsdokumente (EAD) und Technische Bewertungen (ETA) sowie MVV TB, nationale Verwendbarkeitsnachweise und Ü-Zeichen.",
+    "wertschöpfungskettenRohstoffgewinnungEne": "Wertschöpfungsketten, Rohstoffgewinnung, Energieeinsatz und Zukunftsstrategien der deutschen und europäischen Baustoffindustrie.",
+    "bbsBundesverbandBaustoffeSteine": "bbs (Bundesverband Baustoffe – Steine und Erden)",
+    "analyseVonCo2Minderungskostenpfaden": "Analyse von CO2-Minderungskostenpfaden in der Zement- und Ziegelherstellung.",
+    "ceVsÜMvv": "CE vs. Ü & MVV TB",
+    "abgrenzungZwischenEuropäischerBaupvo": "Abgrenzung zwischen europäischer BauPVO und nationalen Regelungen (MBO, MVV TB).",
+    "musterbauordnungMbo16b25": "Musterbauordnung (MBO) §§ 16b–25",
+    "klärenObFürEin": "Klären, ob für ein CE-gekennzeichnetes Produkt zusätzliche nationale Nachweise nötig sind.",
+    "aufschlüsselungDerSystemeZur": "Aufschlüsselung der Systeme zur Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 3+, 4).",
+    "baupvoEu202431102": "BauPVO (EU) 2024/3110 Anhang IX / VO (EU) 305/2011 Anhang V",
+    "prüfablaufFürTragendenBaustahl": "Prüfablauf für tragenden Baustahl im Vergleich zu Estrichmörtel.",
+    "konformitätAuditierung": "Konformität & Auditierung",
+    "ablaufVonAuditsDurch": "Ablauf von Audits durch notifizierte Stellen, werkseigene Produktionskontrolle (WPK) und Zertifizierung.",
+    "dinEnIsoIec": "DIN EN ISO/IEC 17065",
+    "vorbereitungEinerFertigteilwerksprüfungZ": "Vorbereitung einer Fertigteilwerksprüfung zur CE-Zertifizierung.",
+    "normenarbeitImBauwesen": "Normenarbeit im Bauwesen",
+    "prozessDerNormenentwicklungCen": "Prozess der Normenentwicklung (CEN, DIN, NA), Einspruchsverfahren und Veröffentlichung.",
+    "din820Normungsarbeit": "DIN 820 (Normungsarbeit)",
+    "klärungDesUnterschiedsZwischen": "Klärung des Unterschieds zwischen Weißdruck, Entwurf und harmonisierter Norm.",
+    "betonFrischFestBetonwaren": "Beton (Frisch/Fest) & Betonwaren",
+    "spezifikationenVonTransportbetonPflaster": "Spezifikationen von Transportbeton, Pflastersteinen, Bordsteinen und Rohren.",
+    "dinEn206Din2": "DIN EN 206 / DIN EN 1338",
+    "ausschreibungFrostTausalzbeständigerBeto": "Ausschreibung frost-tausalzbeständiger Betonpflastersteine mit Güteüberwachung.",
+    "spannbetonHohldielenElementdeckenDoppelw": "Spannbeton-Hohldielen, Elementdecken, Doppelwandelemente und Fertigteilstützen mit Transportankern.",
+    "dinEn1168Din": "DIN EN 1168 / DIN EN 13747 / DIN EN 13225",
+    "bemessungUndMontagekontrolleVon": "Bemessung und Montagekontrolle von Elementdecken im Geschosswohnungsbau.",
+    "mauerwerkDachFassade": "Mauerwerk, Dach & Fassade",
+    "mauersteineDachziegelBetondachsteineVorg": "Mauersteine, Dachziegel, Betondachsteine, vorgehängte hinterlüftete Fassaden (VHF) und Wärmedämm-Verbundsysteme.",
+    "dinEn771Din": "DIN EN 771 / DIN EN 490 / DIN 18516",
+    "auswahlWindlastbeständigerFassadenbeklei": "Auswahl windlastbeständiger Fassadenbekleidungen und Unterkonstruktionen.",
+    "verkehrswegebauRsto1224": "Verkehrswegebau & RStO 12/24",
+    "asphalttragschichtenAsphaltbinderDecksch": "Asphalttragschichten, Asphaltbinder, Deckschichten, Bitumen und Gesteinskörnungen nach den Richtlinien für die Standardisierung des Oberbaus (RStO).",
+    "rsto1224Ztv": "RStO 12/24 / ZTV Asphalt-StB",
+    "dimensionierungDesStraßenoberbausNach": "Dimensionierung des Straßenoberbaus nach Belastungsklassen Bk100 bis Bk0,3.",
+    "tiefbauBahnbauTunnel": "Tiefbau, Bahnbau & Tunnel",
+    "kanalrohreSchachtbauwerkeGleisschotterDb": "Kanalrohre, Schachtbauwerke, Gleisschotter (DBS 918 061), Tübbinge und Spritzbeton im bergmännischen Vortrieb.",
+    "dinEn1610Ztv": "DIN EN 1610 / ZTV-ING / DIN EN 14487",
+    "festlegungDerBetonzusammensetzungFür": "Festlegung der Betonzusammensetzung für wasserdichte Tunneltübbinge.",
+    "trockenbauPutzEstrich": "Trockenbau, Putz & Estrich",
+    "gipsplattenMetallständerwändeZementCalci": "Gipsplatten, Metallständerwände, Zement-, Calciumsulfat- und Gussasphaltestriche sowie Innen- und Außenputze.",
+    "din18180Din18560": "DIN 18180 / DIN 18560 / DIN EN 13813",
+    "prüfungDerBelegreifeVon": "Prüfung der Belegreife von Heizestrichen mittels CM-Feuchtemessung.",
+    "abdichtungenDämmstoffe": "Abdichtungen & Dämmstoffe",
+    "bitumenUndKunststoffbahnenMineralische": "Bitumen- und Kunststoffbahnen, mineralische Dichtungsschlämmen (MDS), EPS-, XPS-, Mineralwolle- und PU-Dämmstoffe.",
+    "din18531Din18535": "DIN 18531 - DIN 18535 / DIN 4108-10",
+    "auswahlDesAbdichtungsaufbausFür": "Auswahl des Abdichtungsaufbaus für erdberührte Kellerwände nach DIN 18533.",
+    "befestigungstechnikBauchemie": "Befestigungstechnik & Bauchemie",
+    "mechanischeUndChemischeDübelsysteme": "Mechanische und chemische Dübelsysteme (ETA-Bemessung), Kleb- und Dichtstoffe, Farben, Lacke und Betonzusatzmittel.",
+    "eotaEad330232Din": "EOTA EAD 330232 / DIN EN 934",
+    "bemessungVonSchwerlastVerbundankern": "Bemessung von Schwerlast-Verbundankern in gerissenem Beton nach Eurocode 2 Teil 4.",
+    "gläserFenstertechnik": "Gläser & Fenstertechnik",
+    "floatEsgTvgUnd": "Float-, ESG-, TVG- und VSG-Verbundgläser, Mehrscheiben-Isoliergläser mit Low-E-Bedampfung, Edelgasfüllungen (Argon/Krypton), Rahmenwerkstoffe und Uw-Berechnung.",
+    "dinEn1279Din": "DIN EN 1279 / DIN 18008 / DIN EN 14351-1 / DIN EN ISO 10077",
+    "wärmeschutzUndAbsturzsicherungBei": "Wärmeschutz und Absturzsicherung bei Dreifach-Isolierglasfenstern.",
+    "werkstoffspezifischeProdukte": "Werkstoffspezifische Produkte",
+    "spezifikationenFürVollholzBsh": "Spezifikationen für Vollholz/BSH/CLT, Kunststoffe, mineralische Werkstoffe, Lehmbausteine und Walzstahlprofile.",
+    "dinEn14080Din": "DIN EN 14080 / DIN EN 10025 / DIN 18945",
+    "überprüfungDerKonformitätsnachweiseFür": "Überprüfung der Konformitätsnachweise für tragende Brettschichtholzbinder im Hallenbau.",
+    "einführungInDasBauproduktenrecht": "Einführung in das Bauproduktenrecht für Lehrveranstaltungen in Baubetrieb, Projektmanagement und Baustoffkunde.",
+    "überblickFürPlanendeHerstellende": "Überblick für Planende, Herstellende und Bauherren zur Prüfung von Verwendbarkeitsnachweisen; ersetzt keine Rechtsberatung.",
+    "wissenschaftlicheLeitgrundlageGefügechem": "Wissenschaftliche Leitgrundlage, Gefügechemie und Anwendungsbereiche des Baustoffs der Moderne",
+    "wissenschaftlicheGrundlagenDerBetontechn": "Wissenschaftliche Grundlagen der Betontechnologie",
+    "betontechnologieBefasstSichMit": "Betontechnologie befasst sich mit der materialwissenschaftlichen Erforschung, Zusammensetzung und baupraktischen Herstellung des Drei-Komponenten-Systems aus Bindemitteln, Gesteinskörnungen und Anmachwasser unter gezieltem Einsatz von Betonzusatzmitteln und Zusatzstoffen.",
+    "zielIstEsDen": "Ziel ist es, den Beton im frischen Zustand für den Einbau optimal einzustellen (Verarbeitbarkeit) und im festen Zustand die geforderten mechanischen Parameter sowie Schutzfunktionen (Dauerhaftigkeit gegenüber Frost, chemischen Angriffen und Bewehrungskorrosion) nachzuweisen.",
+    "integriertesNachschlagewerkFürFachbegrif": "Integriertes Nachschlagewerk für Fachbegriffe, Abkürzungen und Definitionen.",
+    "schnellesKlärenVonBegriffen": "Schnelles Klären von Begriffen wie Mehlkorngehalt oder k-Wert.",
+    "tabellarischeÜbersichtenAllerNormativen": "Tabellarische Übersichten aller normativen Grenzwerte nach DIN EN 206 / DIN 1045-2.",
+    "dinEn206Din3": "DIN EN 206, DIN 1045-2",
+    "bestimmungVonMaxW": "Bestimmung von max. w/z-Wert und Mindestzementgehalt.",
+    "chemischerAufbauKinetikUnd": "Chemischer Aufbau, Kinetik und Wirkungsweise von Zementen (CEM I bis CEM VI) und Puzzolanen.",
+    "dinEn1971": "DIN EN 197-1 / EN 197-5",
+    "bewertungDerPuzzolanischenReaktion": "Bewertung der puzzolanischen Reaktion von Flugasche und Silikastaub.",
+    "interaktiverEntwurfsUndOptimierungsrechn": "Interaktiver Entwurfs- und Optimierungsrechner auf Basis der Stoffraumrechnung.",
+    "berechnungVonZementbedarfWasserverbrauch": "Berechnung von Zementbedarf, Wasserverbrauch und Sieblinien.",
+    "herstellungEinbau": "Herstellung & Einbau",
+    "transportbetonLogistischeSteuerungVerdic": "Transportbeton, logistische Steuerung, Verdichtungsdauer und Schalungsfristen.",
+    "dinEn13670Ztv": "DIN EN 13670 / ZTV-ING",
+    "festlegungVonEinbauUnd": "Festlegung von Einbau- und Verdichtungsschritten.",
+    "prüfverfahrenZurFrischbetoncharakterisie": "Prüfverfahren zur Frischbetoncharakterisierung (Konsistenz, Luftgehalt, Temperatur, Rohdichte).",
+    "dinEn12350": "DIN EN 12350",
+    "qualitätskontrolleAufDerBaustelle": "Qualitätskontrolle auf der Baustelle beim Wareneingang.",
+    "hydratationFolgen": "Hydratation & Folgen",
+    "exothermeHydratationswärmeentwicklungEig": "Exotherme Hydratationswärmeentwicklung, Eigenspannungsentstehung und Schwindphasen.",
+    "ermittlungDesRissrisikosIn": "Ermittlung des Rissrisikos in massigen Bauteilen.",
+    "auswahlDerNachbehandlungsmethodenUnd": "Auswahl der Nachbehandlungsmethoden und Berechnung der Mindestdauer.",
+    "ermittlungNotwendigerTageFür": "Ermittlung notwendiger Tage für Schalungs- und Nachbehandlungsfristen.",
+    "physikalischMechanischeEigenschaftenDes": "Physikalisch-mechanische Eigenschaften des erhärteten Gefüges (Druckfestigkeit, E-Modul, Schwinden).",
+    "dinEn12390": "DIN EN 12390",
+    "nachweisDer28Tage": "Nachweis der 28-Tage-Druckfestigkeit.",
+    "vorbereitungAufVorlesungenKlausuren": "Vorbereitung auf Vorlesungen, Klausuren und Laborübungen der Betontechnologie.",
+    "praxisleitfadenFürMischungsentwürfeE": "Praxisleitfaden für Mischungsentwürfe, E-Schein-Inhaber, Transportbetonwerke und bauleitende Ingenieure.",
+    "holzbauIngenieurholzbau": "Holzbau (Ingenieurholzbau)",
+    "konstruktiverIngenieurholzbauWerkstoffke": "Konstruktiver Ingenieurholzbau, Werkstoffkennwerte, Stabilitätsnachweise und Brandschutz",
+    "wissenschaftlicheSäulenDesIngenieurholzb": "Wissenschaftliche Säulen des Ingenieurholzbaus",
+    "holzIstEinNachwachsender": "Holz ist ein nachwachsender, anisotroper Werkstoff mit hoher Festigkeit im Verhältnis zur Dichte; er speichert biogenen Kohlenstoff, solange er genutzt wird.",
+    "moderneHolzwerkstoffeWieBrettschichtholz": "Moderne Holzwerkstoffe wie Brettschichtholz (BSH) und Brettsperrholz (BSP / CLT) ermöglichen weitgespannte Hallentragwerke und mehrgeschossige Gebäude; bemessen wird nach Eurocode 5.",
+    "werkstoffeDataholz": "Werkstoffe & dataholz",
+    "charakteristischeFestigkeitenVonVollholz": "Charakteristische Festigkeiten von Vollholz (C24), BSH (GL24h–GL30h) und dataholz-Aufbauten.",
+    "dinEn338En": "DIN EN 338 / EN 14080",
+    "auswahlVonLamellenUnd": "Auswahl von Lamellen und Bauteilschichten.",
+    "holzrahmenbauMassivholzbauCltUnd": "Holzrahmenbau, Massivholzbau (CLT) und Holz-Hybridbau.",
+    "mholzbaurlInformationsdienstHolz": "MHolzBauRL / Informationsdienst Holz",
+    "systementscheidungFürGeschossdeckenUnd": "Systementscheidung für Geschossdecken und tragende Wandscheiben.",
+    "bemessungEc5": "Bemessung (EC5)",
+    "stabilitätsnachweiseFürDruckstäbeUnd": "Stabilitätsnachweise für Druckstäbe und Biegeträger mit k_mod und gamma_M.",
+    "dinEn19951": "DIN EN 1995-1-1",
+    "ermittlungVonKnickbeiwertK": "Ermittlung von Knickbeiwert k_c und Querschnittsausnutzung.",
+    "verbindungenAnschlüsse": "Verbindungen & Anschlüsse",
+    "johansenTheorieFürStabdübel": "Johansen-Theorie für Stabdübel, Passbolzen und Holzschrauben (Vollgewinde nach ETA).",
+    "dinEn199512": "DIN EN 1995-1-1 Kap. 8",
+    "berechnungVonAbscherUnd": "Berechnung von Abscher- und Ausziehtragfähigkeiten.",
+    "bauphysikBrandschutz": "Bauphysik & Brandschutz",
+    "bemessungImBrandfallMit": "Bemessung im Brandfall mit der Methode des reduzierten Querschnitts (d_ef).",
+    "dinEn199513": "DIN EN 1995-1-2",
+    "nachweisDerTragfähigkeitIm": "Nachweis der Tragfähigkeit im Brandfall für R 30 bis R 90.",
+    "begleitungVonHolzbauvorlesungenIm": "Begleitung von Holzbauvorlesungen im Bachelor- und Masterstudium Bauingenieurwesen.",
+    "überblickUndRechenbeispieleFür": "Überblick und Rechenbeispiele für den Holz- und Holz-Hybridbau; ersetzt keine Tragwerksplanung.",
+    "tragwerksplanungImMassivbau": "Tragwerksplanung im Massivbau",
+    "grenzzuständeDerTragfähigkeitUnd": "Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit nach Eurocode 2",
+    "dasVerbundverhaltenImMassivbau": "Das Verbundverhalten im Massivbau",
+    "derMassivbauStahlbetonSpannbeton": "Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton) verbindet die hohe Druckfestigkeit des Betons mit der Zugfestigkeit der Bewehrung (Betonstahl, Carbon). Voraussetzung sind ein ausreichender Verbund und bei Stahl eine ähnliche Wärmedehnung.",
+    "inDiesemBerechnungsUnd": "In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.",
+    "kontrolleDerRechnerischenRissbreiten": "Kontrolle der rechnerischen Rissbreiten w_k im Grenzzustand der Gebrauchstauglichkeit.",
+    "dinEn19921": "DIN EN 1992-1-1 (EC2) Kap. 7.3",
+    "auslegungEinerDeckenplatteBzgl": "Auslegung einer Deckenplatte bzgl. Mindestbewehrung zur Begrenzung von Rissen infolge abfließender Hydratationswärme.",
+    "gegenüberstellungDerParabelRechteck": "Gegenüberstellung der Parabel-Rechteck-Diagramme für Beton und der elastisch-plastischen Bewehrungsstahllinien.",
+    "dinEn199212": "DIN EN 1992-1-1 Kap. 3",
+    "bestimmungDerBetondehnungAn": "Bestimmung der Betondehnung an der Querschnittsoberseite im Bruchzustand.",
+    "querschnittsbemessungVonRechteckquerschn": "Querschnittsbemessung von Rechteckquerschnitten mit dem μ-Verfahren (auch mit Druckbewehrung).",
+    "dinEn199213": "DIN EN 1992-1-1 Kap. 6.1",
+    "schnittgrößenbasierteBerechnungDerTragbe": "Schnittgrößenbasierte Berechnung der Tragbewehrung eines Einfeldbalkens.",
+    "tragfähigkeitsnachweisFürQuerkräfteBerec": "Tragfähigkeitsnachweis für Querkräfte, Berechnung der Bügelbewehrung (Druckstrebenwinkel theta).",
+    "dinEn199214": "DIN EN 1992-1-1 Kap. 6.2",
+    "nachweisDerDruckstrebenfestigkeitVrd": "Nachweis der Druckstrebenfestigkeit VRd,max zur Vermeidung von Stegbruch.",
+    "interaktionsdiagrammFürBiegungMit": "Interaktionsdiagramm für Biegung mit Längskraft, Mindestausmitte und Prüfung der Grenzschlankheit (Theorie II. Ordnung nur als Hinweis).",
+    "dinEn199215": "DIN EN 1992-1-1 Kap. 5.8",
+    "tragfähigkeitsnachweisEinerSchlankenPend": "Tragfähigkeitsnachweis einer schlanken Pendelstütze mit Imperfektionen.",
+    "abschätzungDesDurchstanzkriteriumsAn": "Abschätzung des Durchstanzkriteriums an Flachdecken im kritischen Rundschnitt.",
+    "dinEn199216": "DIN EN 1992-1-1 Kap. 6.4",
+    "dimensionierungEinerDurchstanzbewehrungZ": "Dimensionierung einer Durchstanzbewehrung (z.B. Dübelleisten) zur Stützenauflagerung.",
+    "berechnungDesGrundwertesDer": "Berechnung des Grundwertes der Verankerungslänge von Betonstahl im Verbund.",
+    "dinEn199217": "DIN EN 1992-1-1 Kap. 8.4",
+    "ermittlungDesNotwendigenÜbergreifungssto": "Ermittlung des notwendigen Übergreifungsstoßes zweier Bewehrungslagen.",
+    "prinzipienDesVorgespanntenBetons": "Prinzipien des vorgespannten Betons, sofortiger und nachträglicher Verbund, Spannkraftverluste.",
+    "dinEn199218": "DIN EN 1992-1-1 Kap. 5.10",
+    "tragfähigkeitssteigerungSchlankerBrücken": "Tragfähigkeitssteigerung schlanker Brückenträger.",
+    "wasserundurchlässigeBetonbauteileWeißeWa": "Wasserundurchlässige Betonbauteile (\"Weiße Wannen\"), Mindestbauteildicken, Fugenplanung.",
+    "dafstbWuRichtlinie": "DAfStb WU-Richtlinie",
+    "rissbreitennachweisZurErzielungVon": "Rissbreitennachweis zur Erzielung von Wasserdichtigkeit bei drückendem Wasser.",
+    "hochfesteTextileHochleistungsbewehrungen": "Hochfeste textile Hochleistungsbewehrungen zur Konstruktion ultradünner Schalen.",
+    "dafstbRichtlinieNichtmetallischeBewehrun": "DAfStb-Richtlinie nichtmetallische Bewehrung (2024); Zulassungen",
+    "instandstellungEinerSchadhaftenFußgänger": "Instandstellung einer schadhaften Fußgängerbrücke mit Carbon-Spritzmörtel.",
+    "begleitetVorlesungenImMassivbau": "Begleitet Vorlesungen im Massivbau und schult das Gefühl für Bewehrungsmengen.",
+    "plausibilitätsprüfungUndVordimensionieru": "Plausibilitätsprüfung und Vordimensionierung; ersetzt keine Tragwerksplanung.",
+    "werkstoffmechanikFestigkeitslehre": "Werkstoffmechanik & Festigkeitslehre",
+    "deformationenFließkriterienFiniteAnsätze": "Deformationen, Fließkriterien, Finite Ansätze, Stabilität und Bruchmechanik",
+    "mechanischesVerhaltenUnterBelastung": "Mechanisches Verhalten unter Belastung",
+    "dasModulBehandeltDie": "Das Modul behandelt die werkstoffübergreifende Strukturmechanik. Es untersucht, wie Kräfte in Bauteilen Spannungen hervorrufen und zu makroskopischen Verformungen (Verschiebungen, Krümmungen) führen.",
+    "wirBetrachtenElastischeVerformung": "Wir betrachten elastische Verformung nach Hooke, plastische Fließgesetze (von Mises), statisch unbestimmte Kraft- und Weggrößenverfahren sowie Stabilitätsphänomene (Knickgefahr nach Euler) und die Ausbreitungsenergetik mikroskopischer Risse.",
+    "mechanischeKenngrößen": "Mechanische Kenngrößen",
+    "spannungDehnungQuerdehnzahlDehn": "Spannung, Dehnung, Querdehnzahl, Dehn- und Biegesteifigkeit sowie Kriechen und Relaxation mit gerechneten Beispielen.",
+    "dinEnIso6892": "DIN EN ISO 6892-1; DIN EN 1992-1-1, 3.1.4 / 3.3.2",
+    "verlängerungEinesZugstabsUnd": "Verlängerung eines Zugstabs und Endstauchung einer Betonstütze unter Dauerlast.",
+    "lastunabhängigeUndZeitabhängigeVerformun": "Lastunabhängige und zeitabhängige Verformungen: Temperaturdehnung, Schwinden und Kriechen der Baustoffe.",
+    "dinEn199219": "DIN EN 1992-1-1, 3.1.4; DIN EN 12390-16",
+    "bemessungVonDehnfugenUnd": "Bemessung von Dehnfugen und Abschätzung der Kriechverformung einer Stütze.",
+    "mathematischeModellierungVonElastoplasti": "Mathematische Modellierung von Elastoplastizität, Viskoplastizität und Kriechansätzen der Baustoffe.",
+    "dinEn1992110": "DIN EN 1992-1-1 (Arbeitslinien 3.1.5, 3.1.7, Bild 3.8); DIN 1342",
+    "einstellungElastischPlastischerVerfestig": "Einstellung elastisch-plastischer Verfestigungsparameter im FE-Programm.",
+    "eModulMikromechanik": "E-Modul & Mikromechanik",
+    "ermittlungDesElastizitätsmodulsAus": "Ermittlung des Elastizitätsmoduls aus Spannungs-Dehnungs-Messkurven und mikromechanischen Mischungsregeln.",
+    "dinEnIso527": "DIN EN ISO 527-1",
+    "bestimmungDesHomogenisiertenQuer": "Bestimmung des homogenisierten Quer-E-Moduls eines Faserverbundes.",
+    "festigkeitskennwerteImVergleichSpezifisc": "Festigkeitskennwerte im Vergleich, spezifische Festigkeit und Reißlänge (Grenzlänge unter Eigengewicht).",
+    "dinEn1992111": "DIN EN 1992-1-1 / DIN EN 1993-1-1 (charakteristische Festigkeiten)",
+    "materialvergleichÜberDieReißlänge": "Materialvergleich über die Reißlänge und Grenzhöhe unter Eigengewicht.",
+    "auflagerkräfteUndSchnittgrößenN": "Auflagerkräfte und Schnittgrößen (N, V, M) von Einfeldträger, Kragarm und Dreigelenkrahmen sowie des einfach statisch unbestimmten Zweifeldträgers (Dreimomentengleichung).",
+    "technischeMechanikEinwirkungenNach": "Technische Mechanik; Einwirkungen nach DIN EN 1990 / DIN EN 1991-1-1",
+    "momentenmaximumUnterEinzellastUnd": "Momentenmaximum unter Einzellast und Stützmoment eines Durchlaufträgers.",
+    "knickenEuler": "Knicken (Euler)",
+    "stabilitätsversagenSchlankerStäbeUnter": "Stabilitätsversagen schlanker Stäbe unter Druckbelastung, Knickfälle 1 bis 4 nach Euler und Vergrößerung von Vorkrümmungen nach Theorie II. Ordnung.",
+    "dinEn19931": "DIN EN 1993-1-1 (EC3), 6.3",
+    "ermittlungDerKritischenEuler": "Ermittlung der kritischen Euler-Knicklast für ein beidseitig gelenkig gelagertes Stützenprofil.",
+    "spannungsintensitätsfaktorenKKonzeptEner": "Spannungsintensitätsfaktoren (K-Konzept), Energiefreisetzungsrate G und Rissausbreitungskriterien von Griffith.",
+    "iso12737MetalleFib": "ISO 12737 (Metalle); fib Model Code 2010 (Beton)",
+    "abschätzungDerKritischenRisslänge": "Abschätzung der kritischen Risslänge bzw. Bruchspannung bei spröden Glas- und Keramikbauteilen.",
+    "konsistenzgrenzenUndBodengruppenScherfes": "Konsistenzgrenzen und Bodengruppen, Scherfestigkeit nach Mohr-Coulomb, Erddruck nach Rankine sowie Setzung und Konsolidation nach Terzaghi.",
+    "dinEn19971": "DIN EN 1997-1 / DIN 1054; DIN 4085; DIN 18196; DIN 4019",
+    "berechnungDesAktivenErddrucks": "Berechnung des aktiven Erddrucks auf eine Stützmauer.",
+    "interaktivesRepetitoriumFürTechnische": "Interaktives Repetitorium für Technische Mechanik, Baustatik und Werkstoffmechanik.",
+    "hilfeBeiPlausibilitätsprüfungenVon": "Hilfe bei Plausibilitätsprüfungen von Programmergebnissen und bei der Vordimensionierung.",
+    "gebäudeBauphysikBrandschutz": "Gebäude-Bauphysik & Brandschutz",
+    "stationärerUndInstationärerWärme": "Stationärer und instationärer Wärme- und Feuchtetransport, Akustik und Brandschutz bemessen",
+    "behaglichkeitDauerhaftigkeitFunktionssch": "Behaglichkeit, Dauerhaftigkeit & Funktionsschutz",
+    "dieBauphysikGestaltetDas": "Die Bauphysik gestaltet das Innenklima von Gebäuden und schützt das Tragwerk vor vorzeitiger Zerstörung durch Feuchtigkeits- und Temperatureinflüsse. Die Kerndisziplinen sind Wärmeschutz, Feuchteschutz, Bauakustik (Schall) und Brandschutz.",
+    "dieInteraktivenModuleOptimieren": "Die interaktiven Module optimieren Schichtenfolgen, lokalisieren Tauwasserebenen nach dem Glaser-Verfahren, berechnen das Schalldämm-Maß massiver Bauteile und die Nachhallzeit von Räumen und zeigen Brandverhalten, Feuerwiderstand und Holzabbrand.",
+    "bauphysikGrundlagen": "Bauphysik (Grundlagen)",
+    "uWertTemperaturverlaufTemperaturfaktor": "U-Wert, Temperaturverlauf, Temperaturfaktor f_Rsi, sommerlicher Wärmeschutz sowie Nachhallzeit von Räumen.",
+    "dinEnIso6946": "DIN EN ISO 6946; DIN 4108-2; DIN 18041",
+    "nachweisEinerGedämmtenAußenwand": "Nachweis einer gedämmten Außenwand und akustische Ertüchtigung eines Klassenraums.",
+    "thermischeEigenschaften": "Thermische Eigenschaften",
+    "wärmeleitfähigkeitenDämmdickenSpezifisch": "Wärmeleitfähigkeiten, Dämmdicken, spezifische Wärmekapazitäten gängiger Baustoffe.",
+    "din41084Din": "DIN 4108-4; DIN EN ISO 10456",
+    "erforderlicheDämmdickeFürDie": "Erforderliche Dämmdicke für die nachträgliche Außendämmung einer Bestandswand.",
+    "feuchteschutzTauwasser": "Feuchteschutz & Tauwasser",
+    "stationäreTransportrechnungVonWasserdamp": "Stationäre Transportrechnung von Wasserdampf (Glaser-Verfahren), relative Luftfeuchten berechnen.",
+    "din410832024": "DIN 4108-3:2024-03; DIN EN ISO 13788",
+    "nachweisDerTauwasserfreiheitIm": "Nachweis der Tauwasserfreiheit im Bauteilinneren einer Holzständerwand.",
+    "dämmungImVergleich": "Dämmung im Vergleich",
+    "vorUndNachteileVon": "Vor- und Nachteile von Innendämmung (Taupunkt verlagert sich) versus Außendämmung (WDVS).",
+    "din41083Wta": "DIN 4108-3; WTA-Merkblätter 6-4 / 6-5",
+    "sanierungskonzeptFürEineErhaltenswerte": "Sanierungskonzept für eine erhaltenswerte Ziegelfassade.",
+    "luftschalldämmungEinschaligerMassivbaute": "Luftschalldämmung einschaliger Massivbauteile über die flächenbezogene Masse (Massekurve).",
+    "din410912": "DIN 4109-1/-2:2018-01; DIN 4109-32:2016-07",
+    "dimensionierungEinerMassivenWohnungstren": "Dimensionierung einer massiven Wohnungstrennwand für R′w ≥ 53 dB.",
+    "brandverhaltenA1BisB3": "Brandverhalten (A1 bis B3 bzw. Euroklassen A1 bis F), Feuerwiderstand (F 30 bis F 90 bzw. REI 30 bis REI 90), Einheitstemperaturzeitkurve und Holzabbrand.",
+    "din4102DinEn": "DIN 4102; DIN EN 13501-1/-2; DIN EN 1995-1-2",
+    "einordnungEinesDämmstoffsAls": "Einordnung eines Dämmstoffs als nichtbrennbar (Steinwolle, A1) oder normalentflammbar (EPS, meist Euroklasse E).",
+    "ermittlungVonEndUnd": "Ermittlung von End- und Primärenergiebedarf, Referenzgebäudeverfahren und Effizienzklassen.",
+    "gmodgVormalsGegDin": "GModG (vormals GEG); DIN V 18599:2018-09",
+    "erstellungDesEnergiebedarfsausweisesFür": "Erstellung des Energiebedarfsausweises für ein neu geplantes Mehrfamilienhaus.",
+    "unterstützungBeiBauphysikalischenÜbungen": "Unterstützung bei bauphysikalischen Übungen und Entwurfsarbeiten im Bachelor und Master.",
+    "orientierungFürEnergieberatungArchitektu": "Orientierung für Energieberatung, Architektur und Bauphysik; Nachweise erfolgen mit geeigneter Software und aktuellen Normen.",
+    "ökologieGebäudezertifizierung": "Ökologie & Gebäudezertifizierung",
+    "lebenszyklusanalysenLcaCo2Äquivalente": "Lebenszyklusanalysen (LCA), CO2-Äquivalente, DGNB, BNB und QNG-Kriterien absichern",
+    "nachhaltigesBauenAlsKernkompetenz": "Nachhaltiges Bauen als Kernkompetenz moderner Tragwerksschaffung",
+    "dieMaterialwahlBeeinflusstDie": "Die Materialwahl beeinflusst die Treibhausgasbilanz eines Gebäudes wesentlich. Nachhaltiges Bauen blickt über den Moment des Einbaus hinaus und bewertet den gesamten energetischen Aufwand von der Wiege bis zur Bahre (Cradle-to-Grave).",
+    "wirAnalysierenTreibhausgaspotenzialeGwp": "Wir analysieren Treibhausgaspotenziale (GWP), erfassen Primärenergiebedarfe (PERT/PENRT), bilanzieren Umweltwirkungen über EPDs und vergleichen Nachhaltigkeitssiegel (DGNB, BNB, QNG) als Voraussetzung staatlicher Förderprogramme.",
+    "datenRegeln": "Daten & Regeln",
+    "globaleKennzahlenRechtsrahmenEpbd": "Globale Kennzahlen, Rechtsrahmen (EPBD, EU-Taxonomie, GModG, EBV, QNG) und Dekarbonisierungspfade (CRREM).",
+    "epbdEu20241275": "EPBD (EU) 2024/1275; VO (EU) 2020/852; GModG",
+    "prüfungObEinNeubau": "Prüfung, ob ein Neubau die Taxonomie-Kriterien für Klimaschutz erfüllt.",
+    "wegeZurCo2Reduzierung": "Wege zur CO2-Reduzierung im Hochbau, klinkereffiziente Betone, rezyklierte Komponenten.",
+    "dinEn15804A2": "DIN EN 15804+A2; DIN EN 206 / DIN 1045-2",
+    "reduzierungDesCarbonFußabdrucks": "Reduzierung des Carbon-Fußabdrucks durch Substitution von Portlandzement durch Hüttensand.",
+    "ökobilanzierungLca": "Ökobilanzierung (LCA)",
+    "berechnungDesTreibhausgaspotenzialsGwp": "Berechnung des Treibhausgaspotenzials GWP in kg CO2-Äq sowie Versauerungspotenzial (AP).",
+    "dinEnIso14040": "DIN EN ISO 14040/14044; DIN EN 15804+A2; DIN EN 15978:2026-09; DIN EN 17472",
+    "erstellungEinerÖkobilanzFür": "Erstellung einer Ökobilanz für eine Geschossdecke und QNG-Nachweis eines Wohngebäudes.",
+    "zertifizierungDeklarationen": "Zertifizierung & Deklarationen",
+    "aufbauVonUmweltproduktdeklarationenEpds": "Aufbau von Umweltproduktdeklarationen (EPDs) für Herstellerbaustoffe und Gebäudezertifizierungen.",
+    "iso1402414025Dgnb": "ISO 14024/14025; DGNB, BNB, QNG",
+    "heraussuchenDerPrimärenergieZahlen": "Heraussuchen der Primärenergie-Zahlen aus einer typischen Gipskartonplatten-EPD.",
+    "zirkuläresBauenLanglebigkeitSortenreiner": "Zirkuläres Bauen, Langlebigkeit, sortenreiner Rückbau und rezyklierbare Werkstoffe im Hochbau.",
+    "krwgEbvEsprEu": "KrWG; EBV; ESPR (EU) 2024/1781",
+    "entwurfEinerSchraubbarenDemontierbaren": "Entwurf einer schraubbaren, demontierbaren Fassade.",
+    "ressourcenUmwelt": "Ressourcen & Umwelt",
+    "analyseStofflicherGlobalerRessourcenents": "Analyse stofflicher globaler Ressourcenentscheidungen, NaWaRo (Holz, Hanf, Schafwolle).",
+    "ökobaudatDinEn16449": "ÖKOBAUDAT; DIN EN 16449",
+    "erfassungDesPenrtVerbrauchs": "Erfassung des PENRT-Verbrauchs von Steinwolle im Vergleich zu Holzfaserplatten.",
+    "lebenszyklusKosten": "Lebenszyklus & Kosten",
+    "barwertmethodeLccKünftigeErsatzinvestiti": "Barwertmethode (LCC), künftige Ersatzinvestitionen und Instandhaltungskosten über 50 Jahre simulieren.",
+    "iso1568652017": "ISO 15686-5:2017; DIN EN 16627; DIN 18960",
+    "berechnungDesLebenszyklusBarwertvorteils": "Berechnung des Lebenszyklus-Barwertvorteils eines Schieferdachs gegenüber Ziegeldeckung.",
+    "strukturiertePrüffragenZuDgnb": "Strukturierte Prüffragen zu DGNB-, BNB- und QNG-Kriterien, Baustoffauswahl und Zirkularitätsnachweisen.",
+    "dgnbQngHandbücher": "DGNB / QNG Handbücher",
+    "auditVorbereitungFürDie": "Audit-Vorbereitung für die Zertifizierung eines nachhaltigen Bürogebäudes.",
+    "orientierungFürIntegrierteEntwurfskonzep": "Orientierung für integrierte Entwurfskonzepte und bauökologische Abschlussarbeiten.",
+    "überblickFürAuditorenUnd": "Überblick für Auditoren und Planende zu Bilanzierungsregeln und Zertifizierungssystemen (DGNB, BNB, QNG).",
+    "nachhaltigesBauen": "Nachhaltiges Bauen",
+    "digitalisierungImBauwesen": "Digitalisierung im Bauwesen",
+    "buildingInformationModelingBim": "Building Information Modeling (BIM), automatisierte Baustoffpässe und strukturierte Datenbanken",
+    "derDigitaleZwillingAls": "Der Digitale Zwilling als Datenrückgrat",
+    "digitaleMethodenHelfenInformationen": "Digitale Methoden helfen, Informationen im Bauwesen zu strukturieren. Im Zentrum steht der Digitale Zwilling (Digital Twin) - ein geometrisches und semantisches Datenmodell, das den gesamten Lebenszyklus eines Bauwerks digital begleitet.",
+    "wirErfassenBimKlassen": "Wir erfassen BIM-Klassen (IFC), binden Materialdatenbanken automatisch an CAD-Systeme an und behandeln Material- und Ressourcenpässe sowie den Digitalen Produktpass (DPP), um die Wiederverwertbarkeit von Sekundärbaustoffen abzusichern.",
+    "bimFürBaustoffe": "BIM für Baustoffe",
+    "semantischeDatenanreicherungInCad": "Semantische Datenanreicherung in CAD-Modellen, IFC-Klassen (IfcMaterial), Schnittstellen.",
+    "iso1673912024": "ISO 16739-1:2024 (IFC 4.3) / DIN EN ISO 19650 / bSDD",
+    "zuweisungEinerBrandschutzrelevantenRohdi": "Zuweisung einer brandschutzrelevanten Rohdichte an eine IFC-Stahlbetonwand.",
+    "anbindungExternerStoffdatenquellenWie": "Anbindung externer Stoffdatenquellen wie ÖKOBAUDAT, MAWEG, WECOBIS in den BIM-Prozess.",
+    "ökobaudatEn15804A2": "ÖKOBAUDAT (EN 15804+A2), WECOBIS, Datenbankschnittstellen (API)",
+    "automatischerImportDerWärmeleitfähigkeit": "Automatischer Import der Wärmeleitfähigkeit aus einer Weblink-Stoffdatenbank.",
+    "materialUndGebäuderessourcenpässeZ": "Material- und Gebäuderessourcenpässe (z. B. Madaster, DGNB-Gebäuderessourcenpass) zur Quantifizierung der Kreislauffähigkeit; derzeit keine gesetzliche Pflicht.",
+    "mciEllenMacarthurFoundation": "MCI (Ellen MacArthur Foundation) / DGNB TEC 1.6 / ISO 20887",
+    "berechnungDesZirkularitätsIndex": "Berechnung des Zirkularitäts-Index für ein neu geplantes Parkhaus.",
+    "digitalerProduktpassDpp": "Digitaler Produktpass (DPP)",
+    "digitalerProduktpassDerSchrittweise": "Digitaler Produktpass, der schrittweise per delegierten Rechtsakten für einzelne Produktgruppen verpflichtend wird.",
+    "verordnungEu20241781": "Verordnung (EU) 2024/1781 (ESPR) / Verordnung (EU) 2024/3110 (BauPVO)",
+    "scannenEinesBaustoffQr": "Scannen eines Baustoff-QR-Codes auf der Baustelle zum lückenlosen Abruf der Leistungserklärung.",
+    "llmPraxisClaudeChatgpt": "LLM-Praxis (Claude & ChatGPT)",
+    "effizienterEinsatzVonClaude": "Effizienter Einsatz von Claude & ChatGPT: Skills, MCP-Konnektoren, Markdown-Standardisierung, kuratierte Projektordner (CLAUDE.md) und quellenbasiertes Web-Grounding.",
+    "modelContextProtocolMcp": "Model Context Protocol (MCP), KI-VO (EU) 2024/1689, DSGVO",
+    "vorstrukturierungVonVobBedenkenhinweisen": "Vorstrukturierung von VOB-Bedenkenhinweisen und Prüfprotokollen aus Projektunterlagen – mit fachlicher Endprüfung durch den Ingenieur.",
+    "vermitteltGrundlagenDerDigitalen": "Vermittelt Grundlagen der digitalen Ingenieurpraxis, des IFC-Datenmodells und der Schnittstellen.",
+    "nachschlagewerkFürBimManagement": "Nachschlagewerk für BIM-Management, Koordination und Nachhaltigkeitsbewertung.",
+    "buildingInformationModeling": "Building Information Modeling",
+    "industrieFoundationClasses": "Industrie Foundation Classes",
+    "bauenImBestandDenkmalpflege": "Bauen im Bestand & Denkmalpflege",
+    "altbausanierungDenkmalpflegepraxisGmodgA": "Altbausanierung, Denkmalpflegepraxis, GModG-Anforderungen und historische Werkstoffkennwerte",
+    "erhaltGrauerEnergieDurch": "Erhalt grauer Energie durch nachhaltiges Sanieren",
+    "rundZweiDrittelDes": "Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Die historische Bausubstanz enthält viel graue Energie. Ihr Erhalt erfordert tiefgreifendes Wissen über historische Herstellungsverfahren und Tragwerkseigenschaften.",
+    "wirStellenDenAltbauatlas": "Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des Gebäudemodernisierungsgesetzes (GModG, vormals GEG) für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.",
+    "klassifizierungTypischerSchadensmechanis": "Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.",
+    "bekanntmachungDerRegelnZur": "Bekanntmachung der Regeln zur Datenaufnahme im Wohngebäudebestand (2020); WTA",
+    "sanierungFeuchterKellerdeckenAus": "Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).",
+    "zusammenstellungVonHandaufmaß3d": "Zusammenstellung von Handaufmaß, 3D-Verformungsaufmaß, Photogrammetrie und TLS (Laserscan).",
+    "ecksteinEmpfehlungenFürBaudokumentatione": "Eckstein: Empfehlungen für Baudokumentationen (LDA Baden-Württemberg)",
+    "erstellungEinerZentimetergenauenPunktwol": "Erstellung einer zentimetergenauen Punktwolke einer Kirchdachstruktur.",
+    "denkmalschutzgesetzlicheVorgabenReversib": "Denkmalschutzgesetzliche Vorgaben, reversible Sanierungsverfahren, historische Putze und Baustoffe.",
+    "chartaVonVenedigWta": "Charta von Venedig / WTA",
+    "rekonstruktionEinesBarockenLuftkalk": "Rekonstruktion eines barocken Luftkalk-Außenputzes.",
+    "modernisierungGmodg": "Modernisierung & GModG",
+    "vorgabenDesGebäudemodernisierungsgesetze": "Vorgaben des Gebäudemodernisierungsgesetzes (vormals GEG) bei Nachrüstung und Änderung der Gebäudehülle, Bio-Treppe beim Heizungstausch, Erleichterungen für Baudenkmäler.",
+    "gmodg3537Anlage": "GModG §§ 35–37, Anlage 7, § 105",
+    "nachweisDerWirtschaftlichkeitVon": "Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.",
+    "bauwerksdiagnoseZfpKatalog": "Bauwerksdiagnose & ZfP-Katalog",
+    "systematischeVorOrtZustandserfassung": "Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.",
+    "dgzfpMerkblätterReiheB": "DGZfP-Merkblätter (Reihe B), DBV-Merkblätter, DIN EN 12504, DIN EN 13791",
+    "zustandserfassungEinerTiefgarageUnd": "Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.",
+    "historischeKennwerte": "Historische Kennwerte",
+    "materialkennwerteAlterBaustoffeWie": "Materialkennwerte alter Baustoffe wie Schweißeisen, Gussstahl und historisches Ziegelmauerwerk.",
+    "dbvMerkblätterBauenIm": "DBV-Merkblätter Bauen im Bestand, historische Normen (DIN 1045, DIN 1050, DIN 4074)",
+    "tragfähigkeitsnachweisEinerIndustriehall": "Tragfähigkeitsnachweis einer Industriehalle von 1910.",
+    "historischeBauweisen": "Historische Bauweisen",
+    "epochenspezifischeTragsystemeWieHolzbalk": "Epochenspezifische Tragsysteme wie Holzbalkendecken, Kappendecken, Monier-Gewölbe, Rabitzwände und Fachwerk.",
+    "wtaMerkblätterDenkmalbauArchive": "WTA-Merkblätter / Denkmalbau-Archive",
+    "ertüchtigungUndStatischeBegutachtung": "Ertüchtigung und statische Begutachtung einer preußischen Kappendecke.",
+    "historischeBauprodukte": "Historische Bauprodukte",
+    "rezepturenBrandgradeUndSchadensanfälligk": "Rezepturen, Brandgrade und Schadensanfälligkeiten historischer Bindemittel, Ziegel, Zemente und Schmiedemetalle.",
+    "historischeDinNormenarchive": "Historische DIN-Normenarchive",
+    "identifikationVonRomanzementUnd": "Identifikation von Romanzement und hydraulischen Kalken in Gründerzeitfassaden.",
+    "systematischeBegehungsbögenZurZustandser": "Systematische Begehungsbögen zur Zustandserfassung, Holzschadensanalyse, Feuchtemessung und Denkmalschutzauflagen.",
+    "wtaVdi6200": "WTA / VDI 6200",
+    "strukturierteVorOrtBegehung": "Strukturierte Vor-Ort-Begehung eines denkmalgeschützten Speichergebäudes.",
+    "begleitungVonProjektarbeitenIn": "Begleitung von Projektarbeiten in Denkmalpflege und Bauforschung.",
+    "orientierungFürTragwerksplanungUnd": "Orientierung für Tragwerksplanung und Sanierung bei Erfassung und Ertüchtigung historischer Bauteile.",
+    "bauenImBestand": "Bauen im Bestand",
+    "rückbauAbfälleSchadstoffe": "Rückbau, Abfälle & Schadstoffe",
+    "gefahrstoffdetektionEntsorgungswegeUrban": "Gefahrstoffdetektion, Entsorgungswege, Urban Mining und Schadstoffsanierung",
+    "schadstofffreieKreislaufwirtschaftImTief": "Schadstofffreie Kreislaufwirtschaft im Tief- und Hochbau",
+    "derGeordneteRückbauHat": "Der geordnete Rückbau hat den klassischen Abbruch abgelöst. Ziel ist es, Schadstoffe frühzeitig zu detektieren, auszuschleusen und die mineralischen Massen möglichst hochwertig zu verwerten.",
+    "diesesModulDecktDas": "Dieses Modul deckt das gesamte schadstoffliche Spektrum ab (Asbest, KMF, PCB, PAK, Schwermetalle), zeigt Entsorgungswege (u. a. Deponieverordnung, Ersatzbaustoffverordnung) und Sortierkonzepte.",
+    "rückbauMaterial": "Rückbau & Material",
+    "rückbaukonzepteVorerkundungDerAbbruchsub": "Rückbaukonzepte, Vorerkundung der Abbruchsubstanz, selektiver Rückbau als Voraussetzung für hochwertigen RC-Beton.",
+    "dinSpec914842023": "DIN SPEC 91484:2023-09 / DIN SPEC 91525:2026-02 / VDI 6210 Blatt 1:2025-10 / DIN 18007:2022-09",
+    "ausarbeitungEinesRückbauUnd": "Ausarbeitung eines Rückbau- und Verwertungskonzepts einer Industrieanlage.",
+    "bodenMaterialaufbereitung": "Boden- & Materialaufbereitung",
+    "bodenwaschanlagenBrecherUndSiebtechnik": "Bodenwaschanlagen, Brecher- und Siebtechnik, Bauschuttaufbereitung und Sekundärbaustoffe.",
+    "ersatzbaustoffvLagaPn98": "ErsatzbaustoffV / LAGA PN 98 / DIN 19698-1 / DIN 18196",
+    "konzeptionEinerMobilenBrecheranlage": "Konzeption einer mobilen Brecheranlage auf einer Großbaustelle zur Kantenbruch-Erzeugung.",
+    "abfälleAltlasten": "Abfälle & Altlasten",
+    "zuordnungNachAbfallverzeichnisVerordnung": "Zuordnung nach Abfallverzeichnis-Verordnung (AVV), Bestimmung der Deponieklassen DK 0 bis DK III.",
+    "ersatzbaustoffverordnungEbvDeponieverord": "Ersatzbaustoffverordnung (EBV) / Deponieverordnung (DepV) / AVV (LAGA M20 nur noch historisch)",
+    "klassifizierungTeerhaltigenStraßenaufbru": "Klassifizierung teerhaltigen Straßenaufbruchs zur schadstofffreien Entsorgung.",
+    "schadUndGefahrstoffe": "Schad- und Gefahrstoffe",
+    "erkennungUndSanierungswegeVon": "Erkennung und Sanierungswege von Asbest, KMF (künstliche Mineralfasern), PCB, Holzschutzmittel-Altlasten.",
+    "gefstoffv5a11aTrgs": "GefStoffV §§ 5a, 11a / TRGS 519 (Asbest) / TRGS 521 (KMF, Neufassung 2026) / TRGS 524 (2026) / VDI 6202",
+    "planungVonSchutzmaßnahmenBeim": "Planung von Schutzmaßnahmen beim Absaugen asbesthaltiger Spachtelmassen.",
+    "urbanMiningMaterialkatasterZirkularitäts": "Urban Mining, Materialkataster, Zirkularitätsnachweise und Recyclingquoten im Hoch- und Tiefbau.",
+    "kreislaufwirtschaftsgesetzKrwg14Vdi": "Kreislaufwirtschaftsgesetz (KrWG § 14) / VDI 4800 Blatt 1",
+    "berechnungDerMassenbilanzUnd": "Berechnung der Massenbilanz und Recyclingquote eines rückzubauenden Gewerbekomplexes.",
+    "prüflistenFürSchadstofferkundungEntsorgu": "Prüflisten für Schadstofferkundung, Entsorgungsnachweise, Abbruchanträge und Arbeitssicherheit.",
+    "gewabfv8Trgs519": "GewAbfV § 8 / TRGS 519 / VDI 6210 Blatt 1 / LAGA PN 98",
+    "freigabeprotokollVorAbbruchbeginnMit": "Freigabeprotokoll vor Abbruchbeginn mit Schwarz-Weiß-Bereichskontrolle.",
+    "einführungInRückbauSchadstoffsanierung": "Einführung in Rückbau, Schadstoffsanierung und Abfallrecht für angehende Bauleitung und Umweltkoordination.",
+    "arbeitshilfeFürRückbauplanungEntsorgungs": "Arbeitshilfe für Rückbauplanung, Entsorgungskoordination, Bauleitung und SiGeKo; ersetzt keine Fachkunde nach TRGS 519/524.",
+    "dauerhaftigkeitKorrosionschemie": "Dauerhaftigkeit & Korrosionschemie",
+    "vermeidungVonFrostTau": "Vermeidung von Frost-Tau-Schäden, physikalisch-chemische Transportprozesse, Baustahl- und Holzzerstörung sowie Polymeralterung und mineralische Gipssprengungen",
+    "lebensdauerbegrenzendeSchädigungsprozess": "Lebensdauerbegrenzende Schädigungsprozesse im Ingenieurbau",
+    "jedesBauwerkAltertUnter": "Jedes Bauwerk altert unter wechselnden klimatischen, biologischen, elektrochemischen und chemischen Einflüssen. Ein Bauwerk gilt als dauerhaft, wenn es seine standsichere und gebrauchstaugliche Funktion über die geplante Nutzungsdauer (nach DIN EN 1990 z. B. 50 Jahre für übliche Hochbauten, 100 Jahre für Brücken) bei planmäßiger Instandhaltung erfüllt. Leistungsbezogene Nachweise über Expositionswiderstandsklassen (ERK) sollen künftig mit der DAfStb-ERK-Richtlinie (Entwurf 2026) als Alternative zu den deskriptiven Regeln der DIN-1045-Reihe 2023 möglich werden.",
+    "dasModulBehandeltWerkstoffübergreifende": "Das Modul behandelt werkstoffübergreifende Alterungsprozesse: von Transportprozessen im zementgebundenen Porensystem (Karbonatisierung, Chlorideindringen, Frost-Tausalz-Angriff, treibende Reaktionen wie AKR und Sulfatangriff) über das temperaturabhängige Verhalten viskoelastischer Asphalte, elektrochemische Redoxreaktionen metallischer Korrosionszellen (DIN EN ISO 12944), biologischen Holzabbau (DIN 68800) und physiko-chemische Alterung von Kunststoffen bis hin zur Natursteinverwitterung (WTA) und Spontanbrüchen von ESG durch Nickelsulfid-Einschlüsse (Heißlagerungstest, HST).",
+    "prinzipienKonzepte": "Prinzipien & Konzepte",
+    "werkstoffübergreifendeSäulenKonstruktive": "Werkstoffübergreifende Säulen (Konstruktiver Schutz, Materialanpassung, Barriere- & Opfersysteme) sowie fundamentale Triebkräfte der Diffusionsvorgänge.",
+    "dinEn1990Eurocode2": "DIN EN 1990 / Eurocode-Reihe",
+    "planungVonDauerhaftDurchlüfteten": "Planung von dauerhaft durchlüfteten Holzfassaden oder Gefälleausführungen zur schadensfreien Wasserableitung.",
+    "quadratischesZeitgesetzDesCo": "Quadratisches Zeitgesetz des CO₂-Eindringens unter Zerstörung des alkalischen pH-Puffers. Lebensdauersimulation vor Depassivierung.",
+    "dinEn2062021": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 / DIN EN 1992-1-1 + NA",
+    "sollIstAbgleichDer": "Soll-Ist-Abgleich der Betondeckung (c_min) zur Sicherstellung von 50 oder 100 Jahren karbonatisierungsfreier Nutzungsdauer.",
+    "betonkorrosiveSchadensbilder": "Betonkorrosive Schadensbilder",
+    "innereUndÄußereTreibprozesse": "Innere und äußere Treibprozesse: Alkali-Kieselsäure-Reaktion (AKR), Ettringit-Sulfattreiben, chloridinduzierter Lochfraß und Frost-Tau-Abplatzungen (XF/XA/XM).",
+    "dafstbAlkaliRichtlinie2013": "DAfStb-Alkali-Richtlinie (2013-10) / DIN 1045-2 (XA, XF) / DBV-Merkblätter",
+    "auswahlEinesSehrDichten": "Auswahl eines sehr dichten LP-Betons für Autobahndecken oder sulfatbeständiger SR-Zemente für Kanalisationsrohre.",
+    "korrosionDerMetalle": "Korrosion der Metalle",
+    "anodischeUndKathodischeRedoxvorgänge": "Anodische und kathodische Redoxvorgänge, saurer/neutraler Elektrolytfluss, galvanische Verträglichkeiten der elektrochemischen Spannungsreihe.",
+    "dinEnIso12944": "DIN EN ISO 12944 (Teile 1–9) / DIN EN ISO 9223:2012-05 / DIN EN ISO 14713",
+    "bimetallVerträglichkeitsbewertungVonVerb": "Bimetall-Verträglichkeitsbewertung von Verbindungsschrauben (Edelstahl A4 vs. Baustahl verzinkt in Nassbereichen).",
+    "holzbiologischerAbbau": "Holzbiologischer Abbau",
+    "physiologischerBefallDurchHolzzerstörend": "Physiologischer Befall durch holzzerstörende Pilze (Weiß-, Braun-, Moderfäule) und Insektenlarven bei u >= 20% Holzfeuchte.",
+    "din688001Bis": "DIN 68800-1 bis -4 (2019–2022) / DIN EN 350:2016-12 / DIN EN 351-1:2023-07",
+    "bestimmungDerPassendenKernholzart": "Bestimmung der passenden Kernholzart (z.B. Robinie Klasse 1 oder Eiche Klasse 2) für voll bewitterte Strukturen der Gebrauchsklasse (GK) 3 oder 4.",
+    "oxidativeAlterungsprozesseAsphalteneErhö": "Oxidative Alterungsprozesse (Asphaltene-Erhöhung), Tieftemperatur-Querrisse und plastische Spurrinnenbildung (Hitze-Verformung).",
+    "ztvAsphaltStbTl": "ZTV Asphalt-StB / TL Asphalt-StB / AL Sp-Asphalt",
+    "einsatzPolymerModifizierterElastomerbitu": "Einsatz polymer-modifizierter Elastomerbitumine (PmB) und rheometrische Validierung im Scherrheometer (DSR).",
+    "spannungsrisseInPolymeren": "Spannungsrisse in Polymeren",
+    "physikalischeUndChemischeAlterung": "Physikalische und chemische Alterung von Bau-Kunststoffen, UV-Zersetzung, Weichmacher-Migration und tensidinduzierte ESC-Risse.",
+    "isoRandspezifikationenDvsRichtlinien": "ISO Randspezifikationen / DVS Richtlinien (Kunststoffrohre)",
+    "auslegungUndKonstruktiveTrennung": "Auslegung und konstruktive Trennung von Weich-PVC-Abdichtungsbahnen und unverträglichen Polystyrol-Dämmmatten.",
+    "natursteinMauerwerkserhalt": "Naturstein- & Mauerwerkserhalt",
+    "kryptofloreszenzSalzkristallisationUnter": "Kryptofloreszenz (Salzkristallisation unter Druck), saurer Gips-Krustenabbau kalkiger Gesteine und Frostsprengungen.",
+    "wtaMerkblätterWissenschaftlichTechnische": "WTA-Merkblätter (Wissenschaftlich-Technische Arbeitsgemeinschaft)",
+    "konzeptionVonMakroporösenSanierputzsyste": "Konzeption von makroporösen Sanierputzsystemen nach WTA 2-9 zur schadensfreien Salzaufnahme an feuchten Altbausockeln.",
+    "esgGlasbruchHydrolyse": "ESG-Glasbruch & Hydrolyse",
+    "glaskorrosionDurchStehendeNässe": "Glaskorrosion durch stehende Nässe (pH > 9) und verzögerter NiS-Spontanbruch durch Phasenumwandlung im vorgespannten Gefüge.",
+    "dinEn14179Din": "DIN EN 14179 / DIN EN 12150",
+    "ausschreibungUndQualitätssicherungDes": "Ausschreibung und Qualitätssicherung des Heat-Soak-Sicherheitsprüftests (HST) für Außen-Fassadengläser.",
+    "systematischePrüflistenZuExpositionsklas": "Systematische Prüflisten zu Expositionsklassen, Betondeckung, chemischer Beständigkeit und konstruktivem Holzschutz.",
+    "dinEn1990Din": "DIN EN 1990 / DIN EN 206 / DIN 68800",
+    "dauerhaftigkeitsAuditInDer": "Dauerhaftigkeits-Audit in der Entwurfsphase eines Parkhauses oder einer Fußgängerbrücke.",
+    "vorbereitungAufVertiefungsprüfungenIn": "Vorbereitung auf Vertiefungsprüfungen in Massivbau, Stahl- und Holzbau, Bauchemie und Denkmalpflege.",
+    "wissensbasisFürGutachtenTragwerks": "Wissensbasis für Gutachten, Tragwerks- und Sanierungsplanung bei der Ursachenermittlung.",
+    "mängelSchädenImBauwesen": "Mängel & Schäden im Bauwesen",
+    "mängelUndSchadensursachenSystematisch": "Mängel und Schadensursachen systematisch erfassen, baustatische Standsicherheit bewerten und forensisch dokumentieren",
+    "wissenschaftlicheMängelUndSchadensanalys": "Wissenschaftliche Mängel- und Schadensanalyse",
+    "planungsfehlerAusführungsmängelOderÜberm": "Planungsfehler, Ausführungsmängel oder übermäßige Nutzungs- und Umwelteinwirkungen führen zu Baumängeln und Bauschäden. Dieses Modul vermittelt die methodische Erfassung von Mängeln & Schäden von der Risskartierung bis zur zerstörungsfreien Prüfung.",
+    "wirBehandelnBaurechtlichePflichten": "Wir behandeln baurechtliche Pflichten nach BGB und VOB/B, typische Schadens- und Mängelbilder (Schimmel, Feuchte, Trennrisse, Abplatzungen), Überprüfungen nach VDI 6200 (anerkannte Regel der Technik, keine Rechtsnorm; konkretisiert die Instandhaltungs- und Verkehrssicherungspflicht des Eigentümers nach § 3 MBO / Art. 3 BayBO und §§ 823, 836 BGB) sowie beweissichernde Dokumentation.",
+    "rechtGrundlagen": "Recht & Grundlagen",
+    "rechtlicheEinordnungVonBaumängeln": "Rechtliche Einordnung von Baumängeln und Bauschäden, Beweissicherungsverfahren, Mängelrügen und Gewährleistungsfristen.",
+    "vobB13Mängelansprüche": "VOB/B § 13 (Mängelansprüche)",
+    "durchführungEinerMangelfreienBeweissiche": "Durchführung einer mangelfreien Beweissicherung vor Beginn einer innerstädtischen Baugrubenspundung.",
+    "typischeBauschädenMängel": "Typische Bauschäden & Mängel",
+    "systematischerSchadensUndMängelatlas": "Systematischer Schadens- und Mängelatlas: Aufsteigende Feuchte, Setzungsrisse, thermische Spannungsbrüche, WDVS-Schäden und Ausführungsfehler.",
+    "ursachenermittlungBeiSchrägenRissen": "Ursachenermittlung bei schrägen Rissen über Fensteröffnungen.",
+    "tragwerksmonitoringSensorikShm": "Tragwerksmonitoring & Sensorik (SHM)",
+    "kontinuierlicheSchwingungsUndVerformungs": "Kontinuierliche Schwingungs- und Verformungsüberwachung (SHM) zur Vermeidung von Tragwerksversagen, Sensornetzwerke (LVDT, DMS, Piezogeber, Neigung), Schwellenwert- & Alarmierungsmatrizen nach VDI 6200, Holzdiagnostik mit Resistographen-Bohrwiderstandssimulation sowie konsolidierter ZfP-Prüfkatalog.",
+    "vdi6200Din1076": "VDI 6200 / DIN 1076 / DGZfP",
+    "messtechnischeRissbreitenüberwachungLvdt": "Messtechnische Rissbreitenüberwachung (LVDT) und Schwingungsmessung an einer Spannbetonbrücke unter Schwerlastverkehr mit automatischer Grenzwertalarmierung.",
+    "zustandsbewertungVdi6200": "Zustandsbewertung (VDI 6200)",
+    "überprüfungBestehenderTragwerkeNach": "Überprüfung bestehender Tragwerke nach VDI 6200 (Begehung, Inspektion, eingehende Überprüfung) und Zustandsnoten nach DIN 1076 / RI-EBW-PRÜF.",
+    "vdi6200Vdi6200": "VDI 6200 / VDI 6200 Blatt 1.1 / DIN 1076",
+    "vorbereitungDerRegelmäßigenSichtprüfung": "Vorbereitung der regelmäßigen Sichtprüfung für eine weitgespannte Holzhalle.",
+    "großeMaterialschädenEinstürze": "Große Materialschäden & Einstürze",
+    "forensischeFallstudienHistorischerKatast": "Forensische Fallstudien historischer Katastrophen (AKR an Betonschwellen Garmisch, Eishalle Bad Reichenhall, Ponte Morandi, Carolabrücke Dresden, Hyatt Regency, Stava, Schiersteiner Brücke, Silver Bridge, Kongresshalle, Reichsbrücke) mit Projektdaten, Historie, Materialursachen und Lehren.",
+    "dafstbAlkaliRichtlinieVdi": "DAfStb Alkali-Richtlinie / VDI 6200 / DIN 1076 / Eurocodes",
+    "analyseWerkstoffbedingterEinsturzursache": "Analyse werkstoffbedingter Einsturzursachen wie Alkali-Kieselsäure-Reaktion, Spannungsrisskorrosion oder Leimhydrolyse für Gutachten und Lehre.",
+    "mängelSchadensChecklisten": "Mängel- & Schadens-Checklisten",
+    "strukturierteErfassungsbögenUndPrüfliste": "Strukturierte Erfassungsbögen und Prüflisten für Begehungen, Risskataster, Mängelrügen und Gutachten.",
+    "vdi6200VobB": "VDI 6200 / VOB/B § 4 Abs. 7, § 13 / DIN 4123",
+    "beweissicherndeDokumentationVonMängeln": "Beweissichernde Dokumentation von Mängeln und Rissprotokollen bei Nachbarbebauung.",
+    "einführungInDieArbeit": "Einführung in die Arbeit von Sachverständigenbüros, Bauämtern und Prüfinstituten.",
+    "digitalerLeitfadenFürBausachverständige": "Digitaler Leitfaden für Bausachverständige, Prüfingenieure, Bauleiter und Gutachter vor Ort.",
+    "baustatischePrüfung": "Baustatische Prüfung",
+    "schutzInstandsetzung": "Schutz & Instandsetzung",
+    "bauwerkserhaltungSchutzprinzipienNachDin": "Bauwerkserhaltung, Schutzprinzipien nach DIN EN 1504-9 und werkstoffspezifische Sanierungskonzepte",
+    "dauerhafteBauwerkserhaltungSanierungstec": "Dauerhafte Bauwerkserhaltung & Sanierungstechnik",
+    "bestehendeBausubstanzZuSchützen": "Bestehende Bausubstanz zu schützen, instandzusetzen und zu ertüchtigen ist ökologisch und ökonomisch eine zentrale Bauaufgabe. Dieses Modul bündelt werkstoffübergreifende und baustoffspezifischen Sanierungsverfahren.",
+    "vomNormativenInstandsetzungsrahmenNach": "Vom normativen Instandsetzungsrahmen nach DIN EN 1504 und TR Instandhaltung über werkstoffspezifische Verfahren (Holzprothesen DIN 68800, Stahlkorrosionsschutz ISO 12944, Kunststoffschweißen DVS, Asphaltsanierung ZTV BEA-StB) bis hin zu WTA-zertifizierten Sanierputzen.",
+    "schutzInstandsGrundlagen": "Schutz- & Instands.-Grundlagen",
+    "europäischeInstandsetzungsprinzipienPass": "Europäische Instandsetzungsprinzipien, passive vs. aktive Schutzkonzepte, Tuutti-Lebensdauermodell und De-Sitter-Regel.",
+    "dinEn15049": "DIN EN 1504-9 / TR Instandhaltung",
+    "festlegungDesSanierungsprinzipsW": "Festlegung des Sanierungsprinzips W vs. C für ein chloridbelastetes Parkhausdeck.",
+    "instandsetzungNachMaterial": "Instandsetzung nach Material",
+    "werkstoffspezifischerSchutzUndReparatur": "Werkstoffspezifischer Schutz und Reparatur: Holz (DIN 68800), Stahl (ISO 12944), Kunststoffe (DVS), Asphalt (ZTV BEA-StB), Mauerwerk (WTA).",
+    "din68800Iso12944": "DIN 68800 / ISO 12944 / ZTV BEA-StB",
+    "planungVonHolzprothesenAn": "Planung von Holzprothesen an morschen Balkenköpfen und Duplex-Beschichtung auf Altstahl.",
+    "instandsetzungskonzepteUntergrundvorbere": "Instandsetzungskonzepte, Untergrundvorbereitung mit HDW, Reprofilierung (PCC/SPCC), OS-Systeme und Rissinjektion.",
+    "trInstandhaltungDibtNachfolgerin": "TR Instandhaltung (DIBt; Nachfolgerin der Rili-SIB) / DIN EN 1504",
+    "ausschreibungVonPccMörtel": "Ausschreibung von PCC-Mörtel und OS 11b-Beschichtung auf befahrbaren Parkdeckflächen.",
+    "bauwerksabdichtungInjektion": "Bauwerksabdichtung & Injektion",
+    "nachträglicheBauwerksabdichtungErdberühr": "Nachträgliche Bauwerksabdichtung erdberührter Bauteile, Schleierinjektion und Rissverpressung mit EP/PU.",
+    "din18533DinEn": "DIN 18533 / DIN EN 1504-5 / WTA 4-6-24/D / WTA 4-10",
+    "sanierungEinerFeuchtenTiefgaragen": "Sanierung einer feuchten Tiefgaragen-Bodenplatte mit kraftschlüssiger Rissinjektion.",
+    "richtlinienZurMauerwerksinstandsetzungSa": "Richtlinien zur Mauerwerksinstandsetzung, salzresistenten Sanierputzen und nachträglichen Horizontalsperren.",
+    "wtaMerkblätter29": "WTA-Merkblätter 2-9-20/D, 4-6-24/D, 4-10, 6-5-14/D",
+    "vorgabeDerHorizontalsperrendosierungNach": "Vorgabe der Horizontalsperrendosierung nach WTA-Merkblatt 4-4.",
+    "prüfformulareFürSachkundigePlaner": "Prüfformulare für Sachkundige Planer (SKP), HDW-Untergrundvorbereitung, Haftzugprüfung und QS-Dokumentation.",
+    "trInstandhaltungDinEn": "TR Instandhaltung / DIN EN 1504-10",
+    "überprüfungDerMattfeuchteUnd": "Überprüfung der Mattfeuchte und Abreißfestigkeit vor dem Auftrag von Instandsetzungsmörtel.",
+    "vermitteltGrundlagenFürDie": "Vermittelt Grundlagen für die Qualifikation als Sachkundiger Planer (SKP).",
+    "praxisleitfadenFürSachkundigePlaner": "Praxisleitfaden für Sachkundige Planer, Sanierungsplaner, SIVV-Fachkräfte und Bauleiter.",
+    "baubetriebKalkulationKarriere": "Baubetrieb, Kalkulation & Karriere",
+    "ausschreibungenBauleitungVorOrt": "Ausschreibungen, Bauleitung vor Ort, Kalkulationsschemata und Soft Skills für Ingenieure",
+    "erfolgreichesUmsetzenAufBaustelle": "Erfolgreiches Umsetzen auf Baustelle und im Büro",
+    "einDetailMussWirtschaftlich": "Ein Detail muss wirtschaftlich umsetzbar sein und auf der Baustelle richtig ausgeführt werden. Das Modul verbindet Theorie und Baupraxis.",
+    "wirVermittelnKenntnisseZur": "Wir vermitteln Kenntnisse zur Ausarbeitung sauberer Leistungsverzeichnisse (LV) nach VOB, beleuchten die logistische Steuerung und Qualitätskontrollen des Bauleiters, erörtern Kalkulationsannahmen und geben Starthilfe zur persönlichen Karriereplanung.",
+    "planungAusschreibung": "Planung & Ausschreibung",
+    "erstellungVonLeistungsverzeichnissenLv": "Erstellung von Leistungsverzeichnissen (LV), Bieterverfahren und Vertragsgestaltung.",
+    "vobAAusschreibungsordnung": "VOB/A (Ausschreibungsordnung)",
+    "verfassenEinerFehlerfreienVob": "Verfassen einer fehlerfreien VOB-Funktionalbeschreibung für Erdbauleistungen.",
+    "bauleitungBaustelle": "Bauleitung & Baustelle",
+    "bautagebuchFührenBauablaufsteuerungAbnah": "Bautagebuch führen, Bauablaufsteuerung, Abnahmeverfahren, Baustellenkoordination und Sicherheitsbelehrung.",
+    "vobBAusführungArbschg": "VOB/B (Ausführung) / ArbSchG",
+    "durchführungEinerFörmlichenMängelrüge": "Durchführung einer förmlichen Mängelrüge wegen fehlerhaft verlegter Trittschalldämmung.",
+    "rechtlichBelastbareBaubetrieblicheDokume": "Rechtlich belastbare baubetriebliche Dokumentation und Beweissicherung von Baustellenprojekten unter Witterungseinflüssen.",
+    "hoai2021Anlage10": "HOAI 2021 Anlage 10 Lph 8 / VOB/B § 4 Abs. 3, § 6",
+    "dokumentationVonSchlechtwetterereignisse": "Dokumentation von Schlechtwetterereignissen (Bohrpfahlbeton, Frostbetonieren) und Mängelrügen im Baustellenprojekt.",
+    "produktherstellungQs": "Produktherstellung & QS",
+    "abläufeInZementBeton": "Abläufe in Zement-, Beton- und Fertigteilwerken, Prozessüberwachung vom Rohstoff bis zur Auslieferung.",
+    "dinEn206Din4": "DIN EN 206 / DIN 1045-2 / BauPVO (WPK)",
+    "optimierungDesVerdichtungszyklusIn": "Optimierung des Verdichtungszyklus in einer automatischen Hohldielen-Schalungsbahn.",
+    "karrierestartSoftSkills": "Karrierestart & Soft Skills",
+    "tippsZumBerufseinstiegIn": "Tipps zum Berufseinstieg in Bauleitung oder Tragwerksplanung, Bauprojektmanagement, Kommunikation im Bauteam.",
+    "baukagBayernFortbildungsordnungDer": "BauKaG Bayern / Fortbildungsordnung der Kammer",
+    "vorbereitungAufDieAufnahme": "Vorbereitung auf die Aufnahme in die Bayerische Ingenieurekammer-Bau.",
+    "weiterbildungAnDerTha": "Weiterbildung an der THA",
+    "masterUndZertifikatsprogrammeAn": "Master- und Zertifikatsprogramme an der Technischen Hochschule Augsburg (THA) für Bauingenieure und Architekten.",
+    "akkreditierungsratDqrStufe7": "Akkreditierungsrat / DQR Stufe 7",
+    "berufsbegleitendeWeiterbildungImProjektm": "Berufsbegleitende Weiterbildung im Projektmanagement oder der Fassadentechnologie.",
+    "studiumAnDerTha": "Studium an der THA",
+    "studiengängeBauingenieurwesenEnergieeffi": "Studiengänge Bauingenieurwesen, Energieeffizientes Planen und Bauen (E2D) sowie Architektur an der THA.",
+    "modulhandbücherTha": "Modulhandbücher THA",
+    "orientierungFürStudieninteressierteUnd": "Orientierung für Studieninteressierte und Vertiefungswahl im Hauptstudium.",
+    "thesenForschungsprojekte": "Thesen & Forschungsprojekte",
+    "themenkatalogeFürBachelorUnd": "Themenkataloge für Bachelor- und Masterarbeiten, aktuelle Forschungsprojekte im Labor für Baustoffe.",
+    "wissenschaftlicheRichtlinien": "Wissenschaftliche Richtlinien",
+    "findungEinesPraxisrelevantenThemas": "Findung eines praxisrelevanten Themas für die Abschlussarbeit mit Industriepartnern.",
+    "kuriositätenFundstücke": "Kuriositäten & Fundstücke",
+    "ungewöhnlicheBaustoffphänomeneHistorisch": "Ungewöhnliche Baustoffphänomene, historische Bauanekdoten, spektakuläre Materialprüfungen und Rekorde.",
+    "anschaulichesLehrbeispielÜberRömischen": "Anschauliches Lehrbeispiel über römischen Puzzolanbeton oder historische Gusseisenschäden.",
+    "bereitetAufDenBaustellenalltag": "Bereitet auf den Baustellenalltag und den Berufseinstieg vor.",
+    "orientierungFürBerufseinsteigendeIn": "Orientierung für Berufseinsteigende in Bauleitung und Projektabwicklung.",
+    "vergabeUndVertragsordnungFür": "Vergabe- und Vertragsordnung für Bauleistungen"
+  },
+  "daten": {
+    "MODULES_DATA.grundlagen.basicsCards": [
+      {
+        "title": "Dimensionsanalyse",
+        "desc": "Sichere Handhabung physikalischer Größen (Spannungen, Festigkeiten, Schwingungen) im SI-Einheitensystem."
+      },
+      {
+        "title": "Materialkenndaten",
+        "desc": "Umfassendes tabellarisches Zahlenwerk für Rohdichten, Bruchspannungen, Dehnungen und thermische Ausdehnungen."
+      }
+    ],
+    "MODULES_DATA.grundlagen.didacticCards": [
+      {
+        "title": "Theoretische Herleitung",
+        "desc": "Kompakte physikalische Gesetzmäßigkeiten verständlich auf den Punkt gebracht."
+      },
+      {
+        "title": "Mathematische Strenge",
+        "desc": "Verwendung normkonformer LaTeX-Formelsätze und eindeutiger Variablenbezeichnungen."
+      },
+      {
+        "title": "Regulativer Abgleich",
+        "desc": "Einordnung nationaler (DIN) und europäischer (EN) Normungsstrategien im Wandel des Baurechts."
+      }
+    ],
+    "MODULES_DATA.grundlagen.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+    ],
+    "MODULES_DATA.grundlagen.regelwerke": [
+      {
+        "title": "DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung"
+      },
+      {
+        "title": "DIN 1301-1:2010-10: Einheiten – Einheitennamen, Einheitenzeichen"
+      },
+      {
+        "title": "DIN EN ISO 10456: Wärme- und feuchtetechnische Eigenschaften – Tabellierte Bemessungswerte"
+      },
+      {
+        "title": "Bauproduktenverordnung (EU) 2024/3110",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/3110/oj"
+      }
+    ],
+    "MODULES_DATA.grundlagen.formeln": [
+      {
+        "formel": "E_d \\leq R_d",
+        "erklaerung": "Grundformel des semiprobabilistischen Sicherheitskonzepts. Die Bemessungswerte der Beanspruchungen E_d müssen kleiner/gleich den Bemessungswerten der Tragwiderstände R_d sein.",
+        "quelle": "DIN EN 1990"
+      }
+    ],
+    "MODULES_DATA.labor.basicsCards": [
+      {
+        "title": "Laborversuche",
+        "desc": "Virtuelle Labore zur zerstörenden und zerstörungsfreien Werkstoffprüfung (Haftzugprüfung nach DIN EN 1542, Biege- & Spaltzug, E-Modul, Schmidt-Hammer)."
+      },
+      {
+        "title": "Statistische Absicherung",
+        "desc": "Beurteilung von Prozessdaten, Standardabweichung, Signifikanztests und Konformitätsnachweisen."
+      }
+    ],
+    "MODULES_DATA.labor.didacticCards": [
+      {
+        "title": "Praxisnahes Labordesign",
+        "desc": "Verbindung von haptischer Werkstoffprüfung mit numerischer Rechenpräzision."
+      },
+      {
+        "title": "Nachvollziehbare Auswertungen",
+        "desc": "Ausreißertests nach etablierten Verfahren – Werte werden nur mit technischer Begründung ausgeschlossen."
+      },
+      {
+        "title": "Validierung der Sensorik",
+        "desc": "Verstehen von Messabweichungen, Fehlergrenzen und Genauigkeitsklassen von Prüfmaschinen."
+      }
+    ],
+    "MODULES_DATA.labor.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018",
+      "Scrivener, K.; Snellings, R.; Lothenbach, B. (Hrsg.): A Practical Guide to Microstructural Analysis of Cementitious Materials. Boca Raton: CRC Press 2016"
+    ],
+    "MODULES_DATA.labor.regelwerke": [
+      {
+        "title": "DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben"
+      },
+      {
+        "title": "ISO 12491:1997-05: Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen"
+      },
+      {
+        "title": "DIN EN 206:2021-06: Beton – Festlegung, Eigenschaften, Herstellung und Konformität"
+      },
+      {
+        "title": "DIN EN 13791:2020-02: Bewertung der Druckfestigkeit von Beton in Bauwerken"
+      }
+    ],
+    "MODULES_DATA.labor.formeln": [
+      {
+        "formel": "f_{ck} = f_{m} - 1{,}64 \\cdot s",
+        "erklaerung": "Charakteristischer Festigkeitswert (5-%-Quantil) bei bekannter Standardabweichung und Normalverteilung; bei aus wenigen Proben geschätzter Streuung ist 1,64 durch k_n nach DIN EN 1990, Anhang D zu ersetzen.",
+        "quelle": "DIN EN 1990, Anhang D; ISO 12491"
+      },
+      {
+        "formel": "s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}",
+        "erklaerung": "Empirische Standardabweichung s einer Stichprobe der Größe n.",
+        "quelle": "Standardstatistik"
+      }
+    ],
+    "MODULES_DATA.baustoffe.basicsCards": [
+      {
+        "title": "Materialdiversität",
+        "desc": "Exploration von über 20 Einzelmaterialien aus Mauerwerk, Glas, Metallen, Hölzern und Asphalt."
+      },
+      {
+        "title": "Kennwertvergleich",
+        "desc": "Detaillierter tabellarischer und interaktiver Abgleich spezifischer Dichten, Festigkeiten und E-Moduln."
+      }
+    ],
+    "MODULES_DATA.baustoffe.didacticCards": [
+      {
+        "title": "Werkstoffübergreifende Logik",
+        "desc": "Gegenüberstellung von Verformungsverhalten (elastisch, plastisch, viskose Fließprozesse)."
+      },
+      {
+        "title": "Ressourcenschonung",
+        "desc": "Fokus auf regenerative Rohstoffe (Holz, Lehm) im direkten Vergleich zu energieintensiven Stählen."
+      },
+      {
+        "title": "Grenzbereiche im Spannungs-Dehnungs-Bild",
+        "desc": "Detailliertes Verstehen spröder versus zäher Bruchmechanismen."
+      }
+    ],
+    "MODULES_DATA.baustoffe.literatur": [
+      "Scholz, W. (begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. 19. Aufl., Köln: Bundesanzeiger Verlag 2016",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "MODULES_DATA.baustoffe.regelwerke": [
+      {
+        "title": "DIN EN 1996: Eurocode 6 - Bemessung und Konstruktion von Mauerwerksbauten"
+      },
+      {
+        "title": "DIN 18008: Glas im Bauwesen - Bemessungs- und Konstruktionsregeln"
+      }
+    ],
+    "MODULES_DATA.baustoffe.formeln": [
+      {
+        "formel": "\\sigma = E \\cdot \\epsilon",
+        "erklaerung": "Hookesches Gesetz für linear-elastisches Werkstoffverhalten. Bestimmt die proportionale Verknüpfung von Normalspannung und elastischer Dehnung.",
+        "quelle": "Physikalische Grundlagen"
+      },
+      {
+        "formel": "f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}",
+        "erklaerung": "Bemessungswert der Festigkeit im Holzbau: charakteristischer Wert f_k, Modifikationsbeiwert k_mod (Lasteinwirkungsdauer, Nutzungsklasse), Teilsicherheitsbeiwert γ_M = 1,3 (NA).",
+        "quelle": "DIN EN 1995-1-1 mit NA"
+      }
+    ],
+    "MODULES_DATA.bauprodukte.basicsCards": [
+      {
+        "title": "AVCP-Systeme inkl. System 3+",
+        "desc": "Prüfumfang von System 1+ bis System 4 sowie das neue System 3+ (Validierung der Umweltleistungsbewertung / LCA nach DIN EN 15804+A2 durch notifizierte Stellen nach VO (EU) 2024/3110)."
+      },
+      {
+        "title": "DoPC & Digitaler Produktpass (DPP)",
+        "desc": "Kombinierte Leistungs- und Konformitätserklärung (Declaration of Performance and Conformity, DoPC) mit je Produktfamilie verpflichtend werdenden Umweltangaben (zunächst GWP, ab Geltung der neuen harmonisierten technischen Spezifikation) und digitalem Produktpass über einen Datenträger (z. B. QR-Code; verpflichtend 18 Monate nach dem delegierten Rechtsakt nach Art. 75 VO (EU) 2024/3110)."
+      }
+    ],
+    "MODULES_DATA.bauprodukte.didacticCards": [
+      {
+        "title": "Rechtliche Einordnung",
+        "desc": "Europäische und nationale Regelungen werden getrennt dargestellt; Vereinfachungen sind gekennzeichnet."
+      },
+      {
+        "title": "Entscheidungshilfen",
+        "desc": "Schrittweise Klärung, welcher Verwendbarkeitsnachweis für ein Bauprodukt erforderlich ist."
+      },
+      {
+        "title": "Marktüberwachung & Haftung",
+        "desc": "Grundzüge der Marktüberwachung und der zivilrechtlichen Haftung bei mangelhaften Bauprodukten (keine Rechtsberatung)."
+      }
+    ],
+    "MODULES_DATA.bauprodukte.literatur": [
+      "Gerhold, P.: Bauproduktenrecht in der Praxis – Von der Bauproduktleistung bis zur Baudokumentation. 2. Aufl., Köln: Rudolf Müller 2021",
+      "Gerhold, P.: Neues Bauproduktenrecht in der Praxis – Bauordnung und MVV TB verstehen und anwenden. Köln: Rudolf Müller 2019"
+    ],
+    "MODULES_DATA.bauprodukte.regelwerke": [
+      {
+        "title": "Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)",
+        "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "Verordnung (EU) 2024/3110 (BauPVO, seit 08.01.2026; übergangsweise VO (EU) 305/2011)",
+        "url": "https://eur-lex.europa.eu/"
+      }
+    ],
+    "MODULES_DATA.bauprodukte.formeln": [
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma",
+        "erklaerung": "Konformitätskriterium der Druckfestigkeit bei stetiger Herstellung (Mittelwert aus mindestens 15 Ergebnissen, σ = Standardabweichung); Beispiel für eine statistische Konformitätsbewertung in der WPK.",
+        "quelle": "DIN EN 206, Abschn. 8.2.1"
+      }
+    ],
+    "MODULES_DATA.beton.basicsCards": [
+      {
+        "title": "Hydratations- und Gefügechemie",
+        "desc": "Erhärtungsreaktionen (C-S-H-Phasensynthese), Steuerung der Hydratationsgeschwindigkeit und Optimierung der Mikroporosität."
+      },
+      {
+        "title": "Normatives Regelwert-Konzept",
+        "desc": "Entwurf nach DIN EN 206 und DIN 1045-2 über Expositionsklassen (XC, XD, XS, XF, XA, XM)."
+      }
+    ],
+    "MODULES_DATA.beton.didacticCards": [
+      {
+        "title": "Stoffraumrechnung",
+        "desc": "Verständnis der absoluten Volumina aller Komponenten für 1000 dm³ verdichteten Beton."
+      },
+      {
+        "title": "Expositionsklassensystem",
+        "desc": "Sichere Zuordnung von Umweltbeanspruchungen und Ableitung von Betonzusammensetzungen."
+      },
+      {
+        "title": "Dekarbonisierung",
+        "desc": "Klinkereffiziente Mehrstoffzemente und zukunftsfähige CO2-neutrale Bindemittel."
+      }
+    ],
+    "MODULES_DATA.beton.literatur": [
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001",
+      "Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008"
+    ],
+    "MODULES_DATA.beton.regelwerke": [
+      {
+        "title": "DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2 (Nationale Anwendungsregeln zur DIN EN 206)"
+      }
+    ],
+    "MODULES_DATA.beton.formeln": [
+      {
+        "formel": "V = \\frac{m_z}{\\rho_z} + \\frac{m_w}{\\rho_w} + \\sum \\frac{m_{g,i}}{\\rho_{g,i}} + V_l = 1000\\,\\text{dm}^3",
+        "erklaerung": "Stoffraumgleichung für 1 m³ verdichteten Frischbeton.",
+        "quelle": "DIN EN 206 / DIN 1045-2"
+      }
+    ],
+    "MODULES_DATA.holzbau.basicsCards": [
+      {
+        "title": "Anisotropie & Nutzungsklassen",
+        "desc": "Faserrichtungsabhängige Kennwerte (parallel vs. rechtwinklig zur Faser) und feuchteabhängige Nutzungsklassen (NKL 1 bis 3)."
+      },
+      {
+        "title": "Stabilität & Verbindungsmittel",
+        "desc": "Knick- und Biegedrillknicknachweise sowie stiftförmige Verbindungsmittel mit Seilwirkung."
+      }
+    ],
+    "MODULES_DATA.holzbau.didacticCards": [
+      {
+        "title": "KLED & Feuchteeinfluss",
+        "desc": "Verknüpfung von Lasteinwirkungsdauer (KLED) und Nutzungsklasse über k_mod."
+      },
+      {
+        "title": "Restquerschnitts-Verfahren",
+        "desc": "Brandbemessung über die ideelle Abbrandrate β_n und die Schicht ohne Festigkeit d₀ = 7 mm."
+      },
+      {
+        "title": "Vorfertigung & Taktung",
+        "desc": "Werkseitige Vorfertigung verkürzt die Montage und verringert Baufeuchte."
+      }
+    ],
+    "MODULES_DATA.holzbau.literatur": [
+      "Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5",
+      "Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016",
+      "Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017"
+    ],
+    "MODULES_DATA.holzbau.regelwerke": [
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5)"
+      },
+      {
+        "title": "DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Brandfall)"
+      },
+      {
+        "title": "Muster-Holzbaurichtlinie (MHolzBauRL), DIBt"
+      }
+    ],
+    "MODULES_DATA.holzbau.formeln": [
+      {
+        "formel": "f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}",
+        "erklaerung": "Bemessungswert einer Festigkeit: k_mod erfasst Nutzungsklasse und Lasteinwirkungsdauer, γ_M = 1,3 für Vollholz und BSH (NA).",
+        "quelle": "DIN EN 1995-1-1, Gl. (2.14)"
+      }
+    ],
+    "MODULES_DATA.stahlbeton.basicsCards": [
+      {
+        "title": "Interaktive Bemessung",
+        "desc": "Echtzeitrechner für Biegezug, Rissbreitenverteilung und erforderliche Bewehrungsflächen."
+      },
+      {
+        "title": "Gebrauchstauglichkeit (SLS)",
+        "desc": "Begrenzung der charakteristischen Rissbreiten (w_max = 0,3 mm) zum Schutz vor karbonatisierungsinduzierter Korrosion."
+      }
+    ],
+    "MODULES_DATA.stahlbeton.didacticCards": [
+      {
+        "title": "Spannungsintegration",
+        "desc": "Verständnis des Kräftepaars (Betondruckkraft und Stahldruck-/Zugkraft) am verbogenen Querschnitt."
+      },
+      {
+        "title": "Normkonformes Bemessungsziel",
+        "desc": "Erzielung eines duktilen, rechtzeitig ankündigenden Biegebruchs im Gegensatz zu spröden Bauteilversagen."
+      },
+      {
+        "title": "Konstruktive Details",
+        "desc": "Verständnis für Betondeckung, Randeinfassungen und Schalungsabgrenzung."
+      }
+    ],
+    "MODULES_DATA.stahlbeton.literatur": [
+      "Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010",
+      "Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2. Band 1: Grundlagen, Bemessung, Beispiele; Band 2: Schnittgrößen, Gesamtstabilität, Bewehrung und Konstruktion, Beispiele. 7., überarb. u. erw. Aufl., Berlin: Beuth 2023"
+    ],
+    "MODULES_DATA.stahlbeton.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken"
+      },
+      {
+        "title": "DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)"
+      }
+    ],
+    "MODULES_DATA.stahlbeton.formeln": [
+      {
+        "formel": "a_s = \\frac{M_{Ed}}{z \\cdot f_{yd}}",
+        "erklaerung": "Näherungsweise Berechnung der erforderlichen Zugbewehrungsfläche a_s eines biegebeanspruchten Querschnitts bei geschätztem inneren Hebelarm z (ca. 0.9·d).",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "w_k = s_{r,max} \\cdot (\\epsilon_{sm} - \\epsilon_{cm})",
+        "erklaerung": "Berechnung der charakteristischen Rissbreite w_k aus dem maximalen Rissabstand s_{r,max} multipliziert mit der mittleren Dehnungsdifferenz zwischen Stahl und Beton.",
+        "quelle": "DIN EN 1992-1-1 Kap. 7.3.4"
+      }
+    ],
+    "MODULES_DATA.mechanik.basicsCards": [
+      {
+        "title": "Verformungsintegration",
+        "desc": "Berechnung von Durchbiegungen mittels Doppelintegration der Momentenlinie oder virtuellen Kräften."
+      },
+      {
+        "title": "Plastische Reserven",
+        "desc": "Ausnutzung überelastischer Werkstoffkapazitäten bei duktilen Stählen zur Gewichtsoptimierung."
+      }
+    ],
+    "MODULES_DATA.mechanik.didacticCards": [
+      {
+        "title": "Werkstoffübergreifende Abstraktion",
+        "desc": "Dieselben mathematischen Bewegungsgleichungen steuern das Verhalten von Holz, Stahl und Felsen."
+      },
+      {
+        "title": "Analytische Lösungen",
+        "desc": "Fokus auf geschlossene analytische Auswertungsmethoden anstelle intransparenter \"Black-Box\"-FEM."
+      },
+      {
+        "title": "Stabilität vs. Festigkeit",
+        "desc": "Frühzeitiges Begreifen, dass geometrische Bauteilschlankheit oft vor dem Werkstoffversagen die Tragfähigkeit limitiert."
+      }
+    ],
+    "MODULES_DATA.mechanik.literatur": [
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)",
+      "Meschede, D. (2015): Gerthsen Physik (Springer)"
+    ],
+    "MODULES_DATA.mechanik.regelwerke": [
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3 – Bemessung und Konstruktion von Stahlbauten); neue Generation DIN EN 1993-1-1:2025-04"
+      },
+      {
+        "title": "DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7 – Entwurf, Berechnung und Bemessung in der Geotechnik)"
+      }
+    ],
+    "MODULES_DATA.mechanik.formeln": [
+      {
+        "formel": "w''(x) = -\\frac{M(x)}{E \\cdot I}",
+        "erklaerung": "Differentialgleichung der elastischen Biegelinie. Verknüpft die Krümmung w''(x) des Balkens mit dem Biegemoment M(x), dem Elastizitätsmodul E und dem Flächenträgheitsmoment I.",
+        "quelle": "Technische Mechanik / Elastostatik"
+      },
+      {
+        "formel": "F_{ki} = \\frac{\\pi^2 \\cdot E \\cdot I}{s_k^2}",
+        "erklaerung": "Eulersche Knicklast (Kritische Kraft). Bestimmt die Grenze der elastischen Stabilität einer ideal geraden Stütze bei Knicklänge s_k.",
+        "quelle": "Euler (1744); als N_cr in DIN EN 1993-1-1, 6.3.1.2"
+      }
+    ],
+    "MODULES_DATA.bauphysik.basicsCards": [
+      {
+        "title": "Wärmespeicherung",
+        "desc": "Wärmespeicherfähigkeit, Temperaturleitfähigkeit und Wärmeeindringfähigkeit als Grundlage für sommerlichen Wärmeschutz und Behaglichkeit."
+      },
+      {
+        "title": "Taupunkt-Lokalisator",
+        "desc": "Berechnung des Wasserdampfdruckverlaufs zur Verhinderung schädlichen Schimmelpilzwachstums."
+      }
+    ],
+    "MODULES_DATA.bauphysik.didacticCards": [
+      {
+        "title": "Transportphänomene verstehen",
+        "desc": "Gegenüberstellung von Wärmeleitung (Fourier) und Dampfdiffusion (Fick) als analoge Transportvorgänge; Konvektion und Luftundichtheiten als zusätzliche Risiken."
+      },
+      {
+        "title": "Schnittstellenschäden meiden",
+        "desc": "Sicheres Aufzeigen konstruktiver Wärmebrücken (Geometrie vs. Werkstoffwechsel)."
+      },
+      {
+        "title": "Ganzheitlicher Ansatz",
+        "desc": "Verbindung bauphysikalischer Qualität mit ökologischer Bewertung und gesundem Raumkomfort."
+      }
+    ],
+    "MODULES_DATA.bauphysik.literatur": [
+      "Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017",
+      "Lohmeyer, G.; Post, M.: Praktische Bauphysik – Eine Einführung mit Berechnungsbeispielen. Wiesbaden: Springer Vieweg (aktuelle Auflage)"
+    ],
+    "MODULES_DATA.bauphysik.regelwerke": [
+      {
+        "title": "DIN 4108 (Wärmeschutz und Energie-Einsparung in Gebäuden): Teil 2 2026-05, Teil 3 2024-03, Teil 4 2020-11"
+      },
+      {
+        "title": "DIN 4109-1/-2:2018-01 (Schallschutz im Hochbau – Mindestanforderungen und rechnerische Nachweise)"
+      },
+      {
+        "title": "DIN 18041:2016-03 (Hörsamkeit in Räumen)"
+      },
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      }
+    ],
+    "MODULES_DATA.bauphysik.formeln": [
+      {
+        "formel": "q = -\\lambda \\cdot \\frac{\\Delta T}{\\Delta x}",
+        "erklaerung": "Fouriersches Gesetz der eindimensionalen stationären Wärmeleitung. Der Wärmestrom q ist proportional zum Temperaturgradienten.",
+        "quelle": "Physikalische Grundlagen"
+      },
+      {
+        "formel": "g = -D_p \\cdot \\frac{\\partial p}{\\partial x}",
+        "erklaerung": "Ficksches Diffusionsgesetz für Wasserdampfstrom g unter dem Einfluss eines Partialdruckgefälles \\partial p.",
+        "quelle": "DIN 4108-3"
+      }
+    ],
+    "MODULES_DATA.nachhaltigkeit.basicsCards": [
+      {
+        "title": "Ökobilanzierung (LCA)",
+        "desc": "Interaktive Modellierung des CO2-Fußabdrucks für Bauteile durch direkten Komponentenvergleich."
+      },
+      {
+        "title": "Zertifizierungssysteme",
+        "desc": "Bedeutung der Nachhaltigkeitssysteme DGNB, BNB und QNG zur Absicherung zukunftssicherer Investitionen."
+      }
+    ],
+    "MODULES_DATA.nachhaltigkeit.didacticCards": [
+      {
+        "title": "Lebenszyklusphasen verstehen",
+        "desc": "Sichere Differenzierung der Module A1-A3 (Herstellung), B1-B7 (Nutzung), C1-C4 (Entsorgung) und D (Gutschriften)."
+      },
+      {
+        "title": "Transparente Bewertung",
+        "desc": "Nutzung realer ÖKOBAUDAT-Referenzdaten als wissenschaftliche Berechnungsgrundlage."
+      },
+      {
+        "title": "Ökologie und Ökonomie verbinden",
+        "desc": "Gemeinsame Betrachtung von Ökobilanz (LCA) und Lebenszykluskosten (LCC) über denselben Betrachtungszeitraum."
+      }
+    ],
+    "MODULES_DATA.nachhaltigkeit.literatur": [
+      "König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009",
+      "Bauer, M.; Mösle, P.; Schwarz, M.: Green Building – Leitfaden für nachhaltiges Bauen. 2. Aufl., Berlin: Springer Vieweg 2013"
+    ],
+    "MODULES_DATA.nachhaltigkeit.regelwerke": [
+      {
+        "title": "DIN EN 15804:2022-03 (Umweltproduktdeklarationen; EN 15804+A2)"
+      },
+      {
+        "title": "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden)"
+      },
+      {
+        "title": "QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024): WG23 PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)",
+        "url": "https://www.qng.info/"
+      }
+    ],
+    "MODULES_DATA.nachhaltigkeit.formeln": [
+      {
+        "formel": "\\text{GWP}_{\\text{Gesamt}} = \\sum a_i \\cdot GWP_{\\text{Ref},i}",
+        "erklaerung": "Ökologische Bilanzierungsformel. Das Gesamt-Treibhausgaspotenzial errechnet sich aus den Massen/Volumina a_i der Baustoffe multipliziert mit den spezifischen GWP-Emissionswerten laut EPD / ÖKOBAUDAT.",
+        "quelle": "DIN EN 15978"
+      },
+      {
+        "formel": "NPV = C_0 + \\sum_{t=1}^{N} \\frac{C_t}{(1 + d)^t}",
+        "erklaerung": "Nettobarwert-Formel (Net Present Value, NPV) zur Berechnung der gesamten Lebenszykluskosten unter Abzinsung künftiger Ausgaben mit Diskontsatz d.",
+        "quelle": "ISO 15686-5"
+      }
+    ],
+    "MODULES_DATA.digitales.basicsCards": [
+      {
+        "title": "BIM-Eigenschaften",
+        "desc": "Ausstattung dreidimensionaler CAD-Objekte mit baustofflichen Attributen (Dichte, Brandschutz, GWP-Werte)."
+      },
+      {
+        "title": "Digitale Baustoffpässe",
+        "desc": "Transparenter Nachweis aller verbauten Inhalts- und Schadstoffe zur sortenreinen Trennung beim späteren Rückbau."
+      }
+    ],
+    "MODULES_DATA.digitales.didacticCards": [
+      {
+        "title": "Fehlerfreie Interoperabilität",
+        "desc": "Vermeidung proprietärer Dateninseln durch konsequente Förderung des offenen openBIM-Ansatzes."
+      },
+      {
+        "title": "Präzise Datenqualität",
+        "desc": "Sensibilisierung für die Unterscheidung zwischen groben Schätzwerten (LOD 100) und ausführungsreifen Modelldaten (LOD 400)."
+      },
+      {
+        "title": "Zukunftssichere Nachverfolgung",
+        "desc": "Nutzung standardisierter Ontologien und semantischer Netze."
+      }
+    ],
+    "MODULES_DATA.digitales.literatur": [
+      "Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021",
+      "Hausknecht, K.; Liebich, T.: BIM-Kompendium – Building Information Modeling als neue Planungsmethode. Stuttgart: Fraunhofer IRB 2016"
+    ],
+    "MODULES_DATA.digitales.regelwerke": [
+      {
+        "title": "DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)"
+      },
+      {
+        "title": "VDI 2552 (BIM-Richtlinienreihe)"
+      }
+    ],
+    "MODULES_DATA.digitales.formeln": [
+      {
+        "formel": "MCI = \\max\\left(0;\\; 1 - LFI \\cdot F(X)\\right), \\quad F(X) = \\frac{0{,}9}{X}",
+        "erklaerung": "Material Circularity Indicator mit linearer Flussrate LFI und Nutzungsfaktor F(X); Grundlage u. a. der Zirkularitätsbewertung in Madaster.",
+        "quelle": "Ellen MacArthur Foundation: Circularity Indicators (2015/2019)"
+      }
+    ],
+    "MODULES_DATA.bestand.basicsCards": [
+      {
+        "title": "Historische Kennwerte",
+        "desc": "Verlässliches Datenarchiv für Ziegelmauerwerk, Naturstein, frühe Betone und Profile aus der Zeit von 1850 bis 1960."
+      },
+      {
+        "title": "Bauwerksdiagnostik",
+        "desc": "Verwendung moderner zerstörungsfreier Prüfverfahren (ZfP) zur Aufspürung innerer Fehlstellen."
+      }
+    ],
+    "MODULES_DATA.bestand.didacticCards": [
+      {
+        "title": "Blick für die Historie",
+        "desc": "Sensibilisierung für stoffliche Unverträglichkeiten bei moderner Zementsubstitution auf historischem Mörtel."
+      },
+      {
+        "title": "Geringster Eingriff (Minimaler Eingriff)",
+        "desc": "Förderung reversibler und zerstörungsarmer statischer Reparaturmaßnahmen."
+      },
+      {
+        "title": "Lebensdauerverlängerung",
+        "desc": "Umdeutung alternder Bausubstanz zur wertvollen Zukunftsquelle (Urban Mining)."
+      }
+    ],
+    "MODULES_DATA.bestand.literatur": [
+      "WTA-Merkblattreihe (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.)"
+    ],
+    "MODULES_DATA.bestand.regelwerke": [
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 35 Nachrüstung, § 36 Änderung, § 37 U-Wert, Anlage 7, § 105 Baudenkmäler",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      },
+      {
+        "title": "EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen"
+      },
+      {
+        "title": "DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)"
+      }
+    ],
+    "MODULES_DATA.bestand.formeln": [
+      {
+        "formel": "X_k = \\exp\\left(m_y - k_n \\cdot s_y\\right)",
+        "erklaerung": "Charakteristischer Wert (5-%-Fraktile) aus n Prüfwerten bei log-normaler Verteilung; m_y, s_y = Mittelwert und Standardabweichung der logarithmierten Werte, k_n nach Tab. D.1.",
+        "quelle": "DIN EN 1990, Anhang D.7.2"
+      }
+    ],
+    "MODULES_DATA.rueckbau.basicsCards": [
+      {
+        "title": "Gefahrstoffanalyse",
+        "desc": "Sichere Identifikation gesundheitsgefährdender Altlasten in Estrichen, Klebern, Dichtstoffen und Isolierungen."
+      },
+      {
+        "title": "Deponieklassierung",
+        "desc": "Einstufungsrichtwerte von unbelastetem Erdaushub (DK 0) bis zu gefährlichen Sonderabfällen (DK III)."
+      }
+    ],
+    "MODULES_DATA.rueckbau.didacticCards": [
+      {
+        "title": "Lückenlose Dokumentation",
+        "desc": "Die Wichtigkeit schadstofffreier \"Zutatenlisten\" für das Gebäude der Zukunft."
+      },
+      {
+        "title": "Schutz vor Kontamination",
+        "desc": "Verhindern der Verschleppung von Gefahrenstoffen in den Recyclingkreislauf."
+      },
+      {
+        "title": "Gesundheitsschutz",
+        "desc": "Rechtlich belastbare Umsetzung strenger Arbeitsschutzregeln beim Hantieren mit Staub- und Schadstoffquellen."
+      }
+    ],
+    "MODULES_DATA.rueckbau.literatur": [
+      "Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018",
+      "Kranert, M. (Hrsg.): Einführung in die Kreislaufwirtschaft. 5. Aufl., Wiesbaden: Springer Vieweg 2017"
+    ],
+    "MODULES_DATA.rueckbau.regelwerke": [
+      {
+        "title": "Ersatzbaustoffverordnung (EBV), Art. 1 der Mantelverordnung vom 9.7.2021 (BGBl. I S. 2598), in Kraft seit 01.08.2023",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
+      },
+      {
+        "title": "Gefahrstoffverordnung (GefStoffV) – § 5a Veranlasser, § 11a Asbest (Fassung seit 05.12.2024)",
+        "url": "https://www.gesetze-im-internet.de/gefstoffv_2010/"
+      },
+      {
+        "title": "Gewerbeabfallverordnung (GewAbfV) – §§ 8, 9 Bau- und Abbruchabfälle",
+        "url": "https://www.gesetze-im-internet.de/gewabfv_2017/"
+      },
+      {
+        "title": "TRGS 519: Asbest – Abbruch-, Sanierungs- oder Instandhaltungsarbeiten (Fassung 2014, zuletzt geändert 28.01.2025)",
+        "url": "https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519"
+      },
+      {
+        "title": "Deponieverordnung (DepV) – Anhang 3 Zuordnungswerte",
+        "url": "https://www.gesetze-im-internet.de/depv_2009/"
+      }
+    ],
+    "MODULES_DATA.rueckbau.formeln": [
+      {
+        "formel": "\\max_i \\frac{c_i}{MW_{i,k}} \\le 1 \\Rightarrow \\text{Materialklasse } k",
+        "erklaerung": "Einstufung in eine Materialklasse: Jeder Parameter i muss den Materialwert MW der Klasse k einhalten; maßgebend ist der ungünstigste Quotient (keine Summenbildung).",
+        "quelle": "Ersatzbaustoffverordnung (EBV), Anlage 1"
+      }
+    ],
+    "MODULES_DATA.dauerhaftigkeit.basicsCards": [
+      {
+        "title": "Porentransport-Phänomene",
+        "desc": "Wasser, Sulfat und Chloride penetrieren Baustoffe gerichtet über Kapillarporen (Saugwirkung) oder Konzentrationsgradienten (Ficksche Gesetze). Der w/z-Wert steuert hierbei direkt die porensegmentierende Hydratation."
+      },
+      {
+        "title": "Bewehrungspassivierung",
+        "desc": "Das alkalische Porenmilieu (pH-Wert ≈ 12,5–13,5) erzeugt auf dem Stahl eine hauchdünne Passivschicht aus Fe-Oxiden. Diese wird durch Absäuerung (CO₂-Eintrag) oder punktuellen Chloriddurchbruch aufgelöst."
+      },
+      {
+        "title": "Material-Inkompatibilität",
+        "desc": "Direkte stoffliche Kontakte können zerstörend wirken: Galvanische Bimetallkorrosion an Fassadenschrauben, Weichmacherwanderung aus PVC in EPS-Schäume, oder die alkalische Zersetzung unedler Metalle im Frischbeton."
+      },
+      {
+        "title": "Konstruktiver Wetterschutz",
+        "desc": "Das oberste Dogma zur Minimierung von Instandhaltungskosten lautet: Wasserableitung, Tropfkanten, Fugenvermeidung und Lüftungsebenen schlagen chemisch-toxische Barriere- und Imprägnierungssysteme."
+      }
+    ],
+    "MODULES_DATA.dauerhaftigkeit.didacticCards": [
+      {
+        "title": "Interdisziplinäre Chemie",
+        "desc": "Werkstoffdegradation ist kein unkontrollierbares Schicksal, sondern die logische Konsequenz bekannter physikalischer und elektrochemischer Massentransport-Redoxgesetze."
+      },
+      {
+        "title": "Konstruktion vor Chemie",
+        "desc": "Bester und umweltfreundlichster Bautenschatz gelingt stets konstruktiv: Wasser und Staunässe gezielt abführen, um biologischen und elektrochemischen Reaktionen die Reaktionsgrundlage zu entziehen."
+      },
+      {
+        "title": "Lebenszyklus-Betrachtung",
+        "desc": "Investitionen in hochqualitative Baustoffe (z.B. niedriger w/z-Wert, Edelstahl, TMT-Holz) rentieren sich über die Nutzungsphase durch minimalen Wartungsaufwand um ein Vielfaches."
+      }
+    ],
+    "MODULES_DATA.dauerhaftigkeit.literatur": [
+      "Stark, J.; Wicht, B. (2013): Dauerhaftigkeit von Beton (Springer Vieweg)",
+      "DIN e. V. (Hrsg.): Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Berlin: DIN Media (aktuelle Auflage)",
+      "Bertolini, L.; Elsener, B.; Pedeferri, P.; Redaelli, E.; Polder, R.: Corrosion of Steel in Concrete. 2. Aufl., Weinheim: Wiley-VCH 2013",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "MODULES_DATA.dauerhaftigkeit.regelwerke": [
+      {
+        "title": "DIN 68800: Holzschutz (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)"
+      },
+      {
+        "title": "DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme"
+      },
+      {
+        "title": "DIN 1045-2:2023-08: Tragwerke aus Beton, Stahlbeton und Spannbeton – Beton (Anwendungsregeln zu DIN EN 206)"
+      },
+      {
+        "title": "WTA-Merkblatt 2-9: Sanierputzsysteme - Kriterien für Planung und Ausführung",
+        "url": "https://www.wta-gmbh.de/"
+      },
+      {
+        "title": "DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)"
+      }
+    ],
+    "MODULES_DATA.dauerhaftigkeit.formeln": [
+      {
+        "formel": "s(t) = k \\cdot \\sqrt{t}",
+        "erklaerung": "Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Die Norm gibt keine k-Werte vor; Anhaltswerte liefern Messungen oder Modelle nach fib Bulletin 34.",
+        "quelle": "Stark/Wicht: Dauerhaftigkeit von Beton"
+      },
+      {
+        "formel": "\\text{w/z} = \\frac{W}{Z} \\le \\text{w/z}_{\\text{max}}",
+        "erklaerung": "Wasserzementwert: Massenverhaltnis von wirksamem Wassergehalt W [kg/m³] zu Zementgehalt Z [kg/m³]. Bestimmt direkt die Porenradienverteilung und Porenstruktur.",
+        "quelle": "DIN EN 206"
+      },
+      {
+        "formel": "\\Delta d_{\\text{loss}} = r_{\\text{corr}} \\cdot t",
+        "erklaerung": "Linearer Korrosionsabtrag von Baustählen und metallischen Zinkbeschichtungen über die Zeit t auf Basis konstanter lufthygienischer Abtragsgeschwindigkeiten r_corr [μm/Jahr] nach DIN EN ISO 12944-2 (Klassen C1 bis CX).",
+        "quelle": "DIN EN ISO 12944-2"
+      },
+      {
+        "formel": "J = -D_p \\cdot \\frac{\\partial C}{\\partial x}",
+        "erklaerung": "1. Ficksches Gesetz zur Beschreibung des eindringenden diffusiven Schadstoffionen-Massenflusses (z.B. Chloride Cl⁻ oder Sulfate SO₄²⁻) durch das kapillare Zementsteinporennetzwerk.",
+        "quelle": "Ficksches Diffusionsgesetz"
+      }
+    ],
+    "MODULES_DATA.schaeden.basicsCards": [
+      {
+        "title": "VDI 6200 Tragwerksinspektion",
+        "desc": "Strukturierte Beurteilungsverfahren von visuellen Kontrollen bis zu messtechnischen Tiefenprüfungen zur Abwendung von Tragwerkseinstürzen."
+      },
+      {
+        "title": "ZfP & Sensorik-Monitoring",
+        "desc": "Einsatz von LVDT-Rissaufnehmern, Potentialfeldmessungen, Holzbohrwiderstandsmessungen und Endoskopie."
+      }
+    ],
+    "MODULES_DATA.schaeden.didacticCards": [
+      {
+        "title": "Schadensursache vor Schadensbehebung",
+        "desc": "Sanierungen ohne vorherige Beseitigung der Ursache (z.B. Abdichtungsfehler) führen unausweichlich zu Folgeschäden."
+      },
+      {
+        "title": "Systematische Diagnostik",
+        "desc": "Verwendung standardisierter Prüfprotokolle für reproduzierbare, nachvollziehbare Gutachtenergebnisse (die Beweiswürdigung obliegt dem Gericht, § 286 ZPO)."
+      },
+      {
+        "title": "Gefahrenabwehr & Standsicherheit",
+        "desc": "Sofortige Identifizierung statisch kritischer Schädigungen zur Verhütung von Personenschäden."
+      }
+    ],
+    "MODULES_DATA.schaeden.literatur": [
+      "Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg (aktuelle Auflage)",
+      "Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag (mehrbändig)",
+      "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Vieweg+Teubner",
+      "Scheer, J.: Versagen von Bauwerken. Band 1: Brücken; Band 2: Hochbauten und Sonderbauwerke. Ernst & Sohn"
+    ],
+    "MODULES_DATA.schaeden.regelwerke": [
+      {
+        "title": "VDI 6200:2010-02: Standsicherheit von Bauwerken – Regelmäßige Überprüfung",
+        "url": "https://www.vdi.de/richtlinien"
+      },
+      {
+        "title": "VDI 6200 Blatt 1.1:2026-06: Berichtsdokumentation der Überprüfung",
+        "url": "https://www.vdi.de/richtlinien"
+      },
+      {
+        "title": "DIN 1076:2026-01: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung (ersetzt 1999-11)"
+      },
+      {
+        "title": "VOB/B (Fassung 2016, weiterhin gültig): Vergabe- und Vertragsordnung für Bauleistungen – Teil B",
+        "url": "https://www.bauprofessor.de/vob/"
+      }
+    ],
+    "MODULES_DATA.schaeden.formeln": [
+      {
+        "formel": "w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})",
+        "erklaerung": "Rechenwert der Rissbreite als Produkt aus maximalem Rissabstand s_r,max und Dehnungsdifferenz zwischen Betonstahl und Beton (ohne zusätzlichen Beiwert). s_r,max nach Gl. 7.11 bzw. NA(DE).",
+        "quelle": "DIN EN 1992-1-1, Gl. (7.8)"
+      }
+    ],
+    "MODULES_DATA.instandsetzung.basicsCards": [
+      {
+        "title": "DIN EN 1504-9 Prinzipien",
+        "desc": "11 europäische Prinzipien gegen Betondegradation und Bewehrungskorrosion von Schutzschichten bis zum KKS."
+      },
+      {
+        "title": "Werkstoffspezifischer Bautenschutz",
+        "desc": "Maßgeschneiderte Sanierungs- und Schutztechnologien für mineralische, metallische, organische und bituminöse Baustoffe."
+      }
+    ],
+    "MODULES_DATA.instandsetzung.didacticCards": [
+      {
+        "title": "De-Sitter: Gesetz der Fünf",
+        "desc": "Jeder aufgeschobene Euro in der Instandhaltungsphase verfünffacht näherungsweise die Sanierungskosten in der nächsten Phase."
+      },
+      {
+        "title": "Systemverträglichkeit & Nachbehandlung",
+        "desc": "Instandsetzungsmörtel müssen bezüglich E-Modul und thermischer Dehnung mit dem Altbeton kompatibel sein."
+      },
+      {
+        "title": "Substanzschonung vor Totalersatz",
+        "desc": "Präzise Teilerneuerung durch Holzprothesen, Reparaturschweißungen und Dünnschichtasphalte spart Ressourcen."
+      }
+    ],
+    "MODULES_DATA.instandsetzung.literatur": [
+      "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "MODULES_DATA.instandsetzung.regelwerke": [
+      {
+        "title": "DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)"
+      },
+      {
+        "title": "TR Instandhaltung: DIBt Technische Regel Instandhaltung von Betonbauwerken (Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)",
+        "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "DIN 68800: Holzschutz (Teil 4:2020-12 Bekämpfung und Sanierung)"
+      },
+      {
+        "title": "DIN EN ISO 12944: Korrosionsschutz von Stahlbauten"
+      }
+    ],
+    "MODULES_DATA.instandsetzung.formeln": [
+      {
+        "formel": "K_n = K_0 \\cdot 5^n",
+        "erklaerung": "De-Sitter-Regel (Law of Fives): Der finanzielle Instandsetzungsaufwand K_n verfünffacht sich näherungsweise in jeder aufeinanderfolgenden Lebenszyklusphase n bei unterlassener Vorsorge.",
+        "quelle": "De Sitter (1984)"
+      },
+      {
+        "formel": "f_{\\text{ct,req}} \\ge 1{,}5\\text{ N/mm}^2",
+        "erklaerung": "Üblicher Anhaltswert der Abreißfestigkeit des Betonuntergrunds (Prüfung nach DIN EN 1542) vor dem Auftrag von Instandsetzungsmörteln (Einzelwert mindestens 1,0 N/mm²); maßgebend ist der Instandhaltungsplan.",
+        "quelle": "DIN EN 1542 / TR Instandhaltung"
+      }
+    ],
+    "MODULES_DATA.praxiswissen.basicsCards": [
+      {
+        "title": "Projektsteuerung",
+        "desc": "Verständnis des magischen Dreiecks aus Kosten, Terminen und Qualitäten im Baubetrieb."
+      },
+      {
+        "title": "Mängel- & Schadensvermeidung",
+        "desc": "Rechtlich belastbares Erstellen von Bautagebüchern und Abnahmeprotokollen vor Ort."
+      }
+    ],
+    "MODULES_DATA.praxiswissen.didacticCards": [
+      {
+        "title": "Kostenbewusstes Konstruieren",
+        "desc": "Bauwerke scheitern weit häufiger an Budgetüberschreitungen als an statischem Versagen."
+      },
+      {
+        "title": "Menschlicher Faktor",
+        "desc": "Verständnis für interkulturelle Kommunikation und flache Hierarchien auf der Baustelle."
+      },
+      {
+        "title": "Haftungsminimierung",
+        "desc": "Vermittlung klarer Verhaltensregeln im Schadenfall und zur Dokumentationsdisziplin."
+      }
+    ],
+    "MODULES_DATA.praxiswissen.literatur": [
+      "Kochendörfer, B.; Liebchen, J. H.; Viering, M. G.: Bau-Projekt-Management. 5. Aufl., Wiesbaden: Springer Vieweg 2018",
+      "Ingenstau, H.; Korbion, H.: VOB Teile A und B – Kommentar. Köln: Werner (aktuelle Auflage)"
+    ],
+    "MODULES_DATA.praxiswissen.regelwerke": [
+      {
+        "title": "VOB Teil A (2019), Teil B (2016), Teil C (aktuelle Ausgabe)"
+      },
+      {
+        "title": "HOAI 2021 – Honorarordnung für Architekten und Ingenieure",
+        "url": "https://www.gesetze-im-internet.de/hoai_2021/"
+      },
+      {
+        "title": "BGB §§ 650a–650v (Bauvertragsrecht, seit 01.01.2018)",
+        "url": "https://www.gesetze-im-internet.de/bgb/__650a.html"
+      }
+    ],
+    "MODULES_DATA.praxiswissen.formeln": [
+      {
+        "formel": "K_{Angebot} = (S_{Herstell} + FG_{Zuschlag}) \\cdot (1 + W_G)",
+        "erklaerung": "Kalkulatorische Angebotsbestimmung. Ermittlung des Angebotspreises aus den direkten Herstellkosten plus prozentualem Firmen-Gemeinkostenzuschlag (FG) und Wagnis & Gewinn (W_G).",
+        "quelle": "Baubetriebliche Kalkulation"
+      }
+    ]
+  }
+}

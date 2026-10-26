@@ -1,0 +1,331 @@
+{
+  "texte": {
+    "materialLehrpfadMetalleIm": "Material-Lehrpfad: Metalle im Bauwesen",
+    "weiterZuDenAnderen": "Weiter zu den anderen Teilen des Lehrpfads (Basis, Anwendung, Alterung):",
+    "t1BaustoffKennwerte": "1. Baustoff-Kennwerte",
+    "physikalischeEigenschaftenSchmelzpunktLe": "Physikalische Eigenschaften, Schmelzpunkt & Legierungen der Metalle.",
+    "t2MechanikPraxis": "2. Mechanik & Praxis",
+    "plattenrechnerKontaktkorrosionsPrüfungLi": "Plattenrechner, Kontaktkorrosions-Prüfung & Lieferantenlisten der BauPVO.",
+    "t3Dauerhaftigkeit": "3. Dauerhaftigkeit",
+    "galvanischeZellenKorrosionsartenSchutz": "Galvanische Zellen, Korrosionsarten & Schutz nach DIN EN ISO 12944.",
+    "metallischeBauprodukteTragwerkHülle": "Metallische Bauprodukte: Tragwerk, Hülle & Verbindungstechnik",
+    "werkstofflicheCharakteristikenPhysikalis": "Werkstoffliche Charakteristiken, physikalische Kennwerte, CE-Leistungsprofile & Bimetallkorrosion",
+    "metalleHabenHoheZug": "Metalle haben hohe Zug- und Fließfestigkeiten und eine gute Duktilität. Wegen Wärmedehnung, Wärmeleitung und Korrosionsneigung sind Temperaturverformungen und Kontaktkorrosion konstruktiv zu beachten.",
+    "verfügbareKonstruktionsmetalle": "Verfügbare Konstruktionsmetalle:",
+    "dieAnodenKathodenFlächenregel": "Die Anoden/Kathoden \"Flächenregel\"",
+    "besondersKritischIstKontaktkorrosion": "Besonders kritisch ist Kontaktkorrosion, wenn ein **kleines unedleres Metall (z. B. feuerverzinkte Schraube)** in Verbindung steht mit einem **großen edleren Metall (z. B. Edelstahlblech oder Kupferbahn)**. Hier bündelt sich der Stromfluss auf kleinstem Raum und kann das Verbindungsmittel in kurzer Zeit zerstören.",
+    "leistungswerteNachBaupvoDin": "LEISTUNGSWERTE NACH BAUPVO / DIN EN",
+    "grenzPotentialU": "Grenz-Potential (U₀)",
+    "dichteRohdichte": "Dichte (Rohdichte)",
+    "wärmeleitfähigkeit": "Wärmeleitfähigkeit λ",
+    "wärmedehnung": "Wärmedehnung α",
+    "werkstofflicheCharakteristik": " Werkstoffliche Charakteristik:",
+    "kristallgitterGefüge": "Kristallgitter / Gefüge",
+    "eModulSteifigkeit": "E-Modul (Steifigkeit)",
+    "streckgrenzeFyRp02": "Streckgrenze (fy / Rp0,2)",
+    "querdehnzahlPoisson": "Querdehnzahl ν (Poisson)",
+    "bruchdehnungDuktilität": "Bruchdehnung (Duktilität)",
+    "recyclingZirkularität": "Recycling & Zirkularität",
+    "praxisAusführungshinweis": "Praxis- & Ausführungshinweis: ",
+    "aluminiumWeistEineUm": "Aluminium weist eine um ein Vielfaches höhere Wärmeleitung (220 W/(m·K)) auf als Edelstahl (15 W/(m·K)). Wärmebrücken an Fassadenkonsolen müssen daher thermisch entkoppelt werden!",
+    "opferanodenKontaktkorrosionsPrüfung": " Opferanoden & Kontaktkorrosions-Prüfung",
+    "interaktiveVerbindungsmittelKompatibilit": "Interaktive Verbindungsmittel-Kompatibilitätsprüfung nach der galvanischen Spannungsreihe (Lehrmodell; Begriffe nach DIN EN ISO 8044)",
+    "verbindungspaarAuswählen": "Verbindungspaar auswählen",
+    "t1MetallMeistDas": "1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode):",
+    "t2MetallProfilblechAbdeckung": "2. Metall (Profilblech, Abdeckung oder Schiene - Kathode):",
+    "spannungsdifferenzU": "Spannungsdifferenz ΔU₀:",
+    "grenzschwelleLehrannahme": "Grenzschwelle (Lehrannahme):",
+    "t150MvEmpfohlen": "≤ 150 mV empfohlen",
+    "elektrochemischeRisikobewertung": "Elektrochemische Risikobewertung:",
+    "praxisRegelImFreien": "**Praxis-Regel:** Im Freien müssen ungleiche Metalle durch isolierende Zwischenlagen (z.B. EPDM-Unterlegscheiben, Polyamid-Hülsen, Bitumenanstriche) elektrisch voneinander getrennt werden.",
+    "blechProfilGewichtsrechner": " Blech- & Profil-Gewichtsrechner",
+    "ermittlungVonEigenlastenGk": "Ermittlung von Eigenlasten gk [kN/m²] und Gesamtmasse für Kranlogistik, Transport und statische Bemessung",
+    "blechdickeMm": "Blechdicke (mm):",
+    "blechbreiteM": "Blechbreite (m):",
+    "blechlängeM": "Blechlänge (m):",
+    "flächenbezogeneMasse": "Flächenbezogene Masse",
+    "charakteristischesEigengewichtGk": "Charakteristisches Eigengewicht (gk)",
+    "bauproduktGruppenNachweissystemeEn": " Bauprodukt-Gruppen & Nachweissysteme (EN 1090)",
+    "tragendeStahlUndAluminiumbauteile": "Tragende Stahl- und Aluminiumbauteile werden nach DIN EN 1090 hergestellt (Herstellerzertifizierung nach EN 1090-1, Ausführungsklassen EXC nach EN 1090-2/-3) und nach genormten Güten spezifiziert:",
+    "produktgruppeSystem": "Produktgruppe / System",
+    "typischeErzeugnisseSpezifikationen": "Typische Erzeugnisse & Spezifikationen",
+    "güteklassenZertifikate": "Güteklassen / Zertifikate",
+    "bedeutungImModernenTragwerks": "Bedeutung im modernen Tragwerks- & Leichtbau",
+    "dachUndFassadenprofileFeinbleche": "Dach- und Fassadenprofile (Feinbleche)",
+    "trapezblecheWellprofileSandwichelementeK": "Trapezbleche, Wellprofile, Sandwichelemente, korrosionsschützende Schmelztauchveredelungen.",
+    "dinEn10346S220gd": "DIN EN 10346 (S220GD - S550GD), EN 10169 (Organische Bandbeschichtungen)",
+    "weitVerbreitetImGroßflächigen": "Weit verbreitet im großflächigen Industrie- und Hallenleichtbau im Wand- und Dachbereich.",
+    "formUndProfilstähleProfilwalzerzeugnisse": "Form- und Profilstähle (Profilwalzerzeugnisse)",
+    "warmgewalzteTrägerHebIpe": "Warmgewalzte Träger (HEB, IPE, HEA), U-Profile, Hohlprofile für Schweißkonstruktionen.",
+    "dinEn10025S235jr": "DIN EN 10025 (S235JR bis S460QL), EN 1090-2 (EXC1-EXC4)",
+    "rückgratDesKlassischenSkelett": "Rückgrat des klassischen Skelett-, Hochhaus- und Brückenbaus sowie für Rahmenkonstruktionen.",
+    "bewehrungsstähleBetonstähle": "Bewehrungsstähle (Betonstähle)",
+    "gerippterBetonstahlInStäben": "Gerippter Betonstahl in Stäben, standardisierte Betonstahlmatten (Q- und R-Matten), Bewehrungskörbe.",
+    "din488B500aB500b": "DIN 488 (B500A, B500B), Gütezeichen Betonstahl",
+    "verbundpartnerImStahlbetonbauZur": "Verbundpartner im Stahlbetonbau zur Aufnahme von Zugspannungen."
+  },
+  "werte": {
+    "edelstahlRostfreiA2A4": "Edelstahl rostfrei (A2 / A4, 1.4301 / 1.4404)",
+    "kubischFlächenzentriertKfzAustenit": "Kubisch flächenzentriert (kfz, Austenit)",
+    "rp02200240": "Rp0,2 = 200 – 240 N/mm² (Rm = 500 – 700 N/mm²)",
+    "dinEn10088Din": "DIN EN 10088, DIN EN 1993-1-4 (EC 3 Edelstahl), Z-30.3-6",
+    "crcIiA2Bis": "CRC II (A2) bis CRC III / IV (A4 / Sonderedelstähle)",
+    "a4045Hohe": "A ≥ 40 – 45 % (hohe Kaltverfestigung)",
+    "t100WichtigerTrägerVon": "100 % (wichtiger Träger von Legierungselementen Cr, Ni, Mo)",
+    "austenitischerChromNickelBzw": "Austenitischer Chrom-Nickel- bzw. Chrom-Nickel-Molybdän-Stahl mit dichtester kubisch-flächenzentrierter Atompackung. Durch mindestens 10,5 % Chrom bildet sich an sauerstoffhaltiger Luft spontan eine nanometerdünne, extrem dichte und unsichtbare Passivschicht aus Chrom(III)-oxid (Cr₂O₃), die sich bei mechanischer Beschädigung selbstständig regeneriert.\n\nLegierungsunterschiede:\n• A2 (Werkstoff 1.4301 / X5CrNi18-10): Standard für normale Außenluft, Fassadenunterkonstruktionen und Geländer (Korrosionswiderstandsklasse CRC II).\n• A4 (Werkstoff 1.4404 / X2CrNiMo17-12-2): Durch 2–2,5 % Molybdänzusatz stark erhöhter Lochfraßwiderstand (PREN ≥ 23); für chloridbelastete Umgebungen (Meeresnähe, Tausalz-Spritzwasser) – Auswahl nach Korrosionswiderstandsklasse CRC (DIN EN 1993-1-4 mit NA).\n\nBesondere Gefahren: In chloridhaltigen Hallenschwimmbad-Atmosphären können Standard-Austenite unter Zugspannung durch Spannungsrisskorrosion (SCC) versagen – oft ohne sichtbare Vorwarnung. Für tragende Bauteile gelten dort Stähle hoher Korrosionswiderstandsklasse (z. B. CRC V, 1.4529).",
+    "inHallenbädernStraßentunnelnUnd": "In Hallenbädern, Straßentunneln und Küstenklima keinen Standard-A2-Stahl für tragende Befestigungen einsetzen. Edelstahlwerkzeuge für die Montage verwenden, um Fremdrost-Kontaminationen (Kontakt mit Eisenabrieb) zu verhindern.",
+    "titanReintitanGrad1": "Titan (Reintitan Grad 1 / Grad 2)",
+    "hexagonalDichtesteKugelpackungHdp": "Hexagonal dichteste Kugelpackung (hdp, α-Titan)",
+    "rp02275345": "Rp0,2 = 275 – 345 N/mm² (Grad 2 nach ASTM B265)",
+    "dinEnIso28438": "DIN EN ISO 28438, ASTM B265, DIN 17850",
+    "höchsteKorrosionsbeständigkeitMeerwasser": "Höchste Korrosionsbeständigkeit (Meerwasser, CX, chloridresistent)",
+    "t90AlsTitanschrottFerro": "> 90 % als Titanschrott & Ferro-Titan",
+    "hochleistungsLeichtmetallMitHerausragend": "Hochleistungs-Leichtmetall mit herausragendem Festigkeits-zu-Dichte-Verhältnis und dem geringsten thermischen Längenausdehnungskoeffizienten (α = 8,6 × 10⁻⁶/K) aller Fassadenmetalle. Dies verhindert thermisch bedingte Wellenbildung bei großflächigen Kassetten und ermöglicht verzugsfreie Fassadenkonstruktionen.\n\nÜberragende Passivierung: Titan bildet unter allen atmosphärischen Bedingungen spontan eine sehr beständige, festhaftende TiO₂-Oxidschicht. Es ist in Meerwasser, saurem Regen und Industrieatmosphäre praktisch korrosionsbeständig.\n\nEinsatzbereiche: Aufgrund der anspruchsvollen Gewinnung (Kroll-Verfahren) und Schmelzführung ist Titan kostspielig und wird vorrangig bei ikonischen Monumentalbauten (z.B. Guggenheim-Museum Bilbao) eingesetzt. Es behält über Jahrhunderte seine silbergraue, samtmatte Optik ohne jeglichen Wartungsaufwand.",
+    "fügenVonTitanelementenAuf": "Fügen von Titanelementen auf der Baustelle nur durch mechanische Falzungen oder Nieten. Schweißarbeiten müssen unter 100 % hochreinem Schutzgas (Argon 5.0) erfolgen, da Titan ab ca. 300 °C Sauerstoff und Stickstoff aus der Luft löst und versprödet.",
+    "kupferBauKupferCu": "Kupfer (Bau-Kupfer Cu-DHP)",
+    "kubischFlächenzentriertKfz": "Kubisch flächenzentriert (kfz)",
+    "rp02140250": "Rp0,2 = 140 – 250 N/mm² (R220 weich / R240 halbhart)",
+    "dinEn1172Kupfer": "DIN EN 1172 (Kupfer für das Bauwesen), DIN EN 1993",
+    "äußerstBeständigBildetSchützende": "Äußerst beständig, bildet schützende Patina",
+    "a5033R220Weich": "A50 ≥ 33 % (R220 weich)",
+    "t95OhneQualitätsverlustRecyclierbar": "> 95 % ohne Qualitätsverlust recyclierbar",
+    "halbedelmetallMitKubischFlächenzentriert": "Halbedelmetall mit kubisch-flächenzentriertem Gitter, überragender thermischer Leitfähigkeit (λ = 380 W/(m·K)) und sehr guter Falzbarkeit selbst bei Minusgraden. Seit Jahrhunderten der bevorzugte Werkstoff für repräsentative Dacheindeckungen, Stehfalzfassaden und Dachentwässerungen.\n\nPatinabildung im Lebenszyklus:\nFrisch gewalztes Kupfer glänzt lachsrot, oxidiert rasch zu dunkelbraunem Kupfer(I)-oxid (Cu₂O) und wandelt sich an der Atmosphäre über Jahre unter Einwirkung von CO₂, SO₂ und Feuchtigkeit in die samtartige grüne Patina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit) um. Diese Schicht ist wasserunlöslich und schützt das Metall für Jahrhunderte.\n\nDie „Fließregel“ (Fachregel): Da Kupfer im sauren Niederschlag geringe Mengen Kupferionen (Cu²⁺) freisetzt, darf ablaufendes Wasser niemals auf tieferliegende, unedlere Metalle (verzinkter Stahl, Zink, Aluminium) geleitet werden. Kupfer scheidet sich dort ab und verursacht Lochfraß am unedleren Metall.",
+    "fließregelZwingendEinhaltenKupferrinnen": "Fließregel zwingend einhalten: Kupferrinnen niemals über verzinkte Fallrohre entwässern! Kupferbefestigungen nur mit Edelstahlschrauben (A4) oder Kupfernägeln ausführen.",
+    "t1MetallMeistDas": "1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode)",
+    "t2MetallProfilblechAbdeckung": "2. Metall (Profilblech, Abdeckung oder Schiene - Kathode)",
+    "blechdickeMm": "Blechdicke (mm)",
+    "blechbreiteM": "Blechbreite (m)",
+    "blechlängeM": "Blechlänge (m)",
+    "anwendungsbeispielEigenlastUndWärmedehnu": "Anwendungsbeispiel: Eigenlast und Wärmedehnung einer Titanzink-Dachbahn",
+    "lehrbeispiel7200KgM": "Lehrbeispiel (ρ = 7200 kg/m³, α_T ≈ 22 · 10⁻⁶ 1/K für Titanzink in Walzrichtung)",
+    "t22MmLängenänderungAuf": "22 mm Längenänderung auf 10 m: Titanzinkbahnen brauchen Schiebehafte und begrenzte Bahnlängen – fest fixierte Bahnen reißen oder wellen sich."
+  },
+  "daten": {
+    "metalsDb.zinc": {
+      "id": "zinc",
+      "name": "Verzinkter Stahl (Zinküberzug)",
+      "density": 7850,
+      "potential": -0.76,
+      "lambda": 50,
+      "alpha": 12,
+      "crystalStructure": "Grundstahl krz; Zinküberzug hexagonal dichteste Kugelpackung (hdp)",
+      "eModul": 210000,
+      "yieldStrength": "fy = 220 – 350 N/mm² (DX51D / S250GD)",
+      "standards": "DIN EN ISO 1461, DIN EN 10346, DIN EN 988",
+      "corrosionCategory": "C1 bis C4 (Abtragsrate Zink: 0,2–2 µm/Jahr)",
+      "poissonRatio": 0.3,
+      "elongationAtBreak": "A80 ≥ 22 % (Tiefziehgüte)",
+      "recyclingRate": "> 95 % im Elektrostahlwerk",
+      "description": "Stahl geschützt durch einen metallischen Zinküberzug (Stückverzinkung im Tauchbad bei ca. 450 °C mit diffusionsbedingter Eisen-Zink-Phasenbildung Γ-, δ- und ζ-Phase oder kontinuierliche Bandverzinkung mit Zink-Aluminium-Magnesium-Überzügen ZM). Zink bildet auf der Oberfläche durch Reaktion mit Sauerstoff, Feuchte und Kohlendioxid eine dichte, festhaftende Schutzschicht aus basischem Zinkcarbonat (2 ZnCO₃ · 3 Zn(OH)₂).\n\nHerausragende werkstoffliche Eigenschaft ist der aktive kathodische Opferschutz: Da Zink mit U₀ = -0,76 V deutlich unedler ist als Eisen (-0,44 V), opfert es sich an Schnittkanten, Bohrungen und Kratzern bis zu einer Breite von 1,5 mm als galvanische Anode auf, sodass der Grundstahl vollkommen rostfrei bleibt.\n\nBei behinderter Belüftung oder feuchter Lagerung kann sich poröser, voluminöser Weißrost (Zinkhydroxid Zn(OH)₂) bilden, der die Schutzschicht zersetzt. Zinkbleche (Titanzink nach DIN EN 988 mit 0,08–0,2 % Titan und Kupfer zur Kriechhemmung) besitzen hervorragende Falzeigenschaften, bedürfen jedoch wegen der hohen Wärmedehnung ausreichender Schiebehafte.",
+      "practicalAdvice": "Titanzinkdächer und verzinkte Fassadenelemente müssen an der Unterseite zwingend hinterlüftet werden (Tauwasser-Abtrocknung), um Weißrostbildung zu vermeiden. Niemals unterhalb von Kupfer einbauen (Fließregel!)."
+    },
+    "metalsDb.aluminum": {
+      "id": "aluminum",
+      "name": "Aluminium & -Legierungen",
+      "density": 2700,
+      "potential": -0.5,
+      "lambda": 220,
+      "alpha": 23,
+      "crystalStructure": "Kubisch flächenzentriert (kfz)",
+      "eModul": 70000,
+      "yieldStrength": "Rp0,2 = 120 – 240 N/mm² (EN AW-6060 T6)",
+      "standards": "DIN EN 1999 (EC 9), DIN EN 573, DIN 17611 (Eloxal)",
+      "corrosionCategory": "C1 bis C4 (Eloxiert / Pulverbeschichtet)",
+      "poissonRatio": 0.33,
+      "elongationAtBreak": "A50 ≥ 8 – 12 % (aushärtbare Knetlegierung)",
+      "recyclingRate": "> 95 % (Sekundäraluminium spart 95 % Schmelzenergie)",
+      "description": "Leichtmetall mit kubisch-flächenzentriertem Gitter, sehr guter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.\n\nAggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphotere Oxidschicht unter Wasserstoffbildung auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.\n\nIn der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schichtdicke 15–25 µm nach DIN 17611) oder einbrennpulverbeschichtet. Aufgrund des niedrigen E-Moduls (ca. 1/3 des Stahls) sind Profile mit größeren Trägheitsmomenten Iy auszuführen. Die Wärmedehnung ist mit 23 × 10⁻⁶/K fast doppelt so hoch wie bei Baustahl.",
+      "practicalAdvice": "Aluminium-Fassadenunterkonstruktionen stellen erhebliche Wärmebrücken dar (hohe Wärmeleitfähigkeit λ = 220 W/(m·K)) und müssen zwingend mit thermischen Trennelementen (Thermostopps) an der Massivwand verankert werden."
+    },
+    "metalsDb.steel": {
+      "id": "steel",
+      "name": "Baustahl (unlegiert S235 / S355)",
+      "density": 7850,
+      "potential": -0.44,
+      "lambda": 50,
+      "alpha": 12,
+      "crystalStructure": "Raumzentriert kubisch (krz, Ferrit + Perlit)",
+      "eModul": 210000,
+      "yieldStrength": "fy = 235 N/mm² (S235) bzw. 355 N/mm² (S355)",
+      "standards": "DIN EN 1993 (EC 3), DIN EN 10025-2, DIN EN ISO 12944",
+      "corrosionCategory": "Erfordert Schutzsysteme nach ISO 12944 (C1–CX)",
+      "poissonRatio": 0.3,
+      "elongationAtBreak": "A ≥ 20 – 26 % (ausgeprägtes Fließplateau)",
+      "recyclingRate": "Hohe Recyclingquote (Branchenangaben > 90 %); Stahl ist ohne Qualitätsverlust wiederverwertbar",
+      "description": "Ferritisch-perlitischer Konstruktionswerkstoff und das universelle Rückgrat des modernen Hoch-, Hallen- und Brückenbaus. Zeichnet sich durch ein ausgeprägtes Fließplateau, sehr gute Schweißbarkeit und hohe Bruchdehnungen (A ≥ 20 %) aus, was die Ausbildung stabiler Fließgelenke und plastischer Schnittgrößenumlagerungen nach Eurocode 3 ermöglicht.\n\nKorrosionsverhalten: Baustahl ist an feuchter Atmosphäre thermodynamisch unedel und bildet porösen Rost (FeO(OH) und Fe₂O₃ · n H₂O). Da das Rostvolumen bis zum 6-fachen des Ausgangsstahls anwächst, haftet der Rost nicht dicht an, sondern blättert kontinuierlich ab, sodass der Querschnitt ohne Schutzschicht linear abgetragen wird.\n\nSchutzsysteme: Baustahl erfordert im Außenbereich zwingend hochwertige Mehrschicht-Flüssigbeschichtungen (Zinkstaub-Grundierung, Eisenglimmer-Zwischenschicht, PU-Decklack nach DIN EN ISO 12944) oder Stückfeuerverzinkung. In Betonbauteilen bewirkt die alkalische Porenlösung des Zements (pH > 12,5) eine selbsttätige Passivierung (dünner γ-Fe₂O₃-Film).",
+      "practicalAdvice": "Konstruktiven Korrosionsschutz beachten: Schmutz- und Wassersäcke (z.B. nach oben offene U-Profile) vermeiden, kontinuierliche Schweißnähte statt Heftschweißung wählen und scharfe Profilkanten vor der Beschichtung abrunden."
+    },
+    "metalsDb.lead": {
+      "id": "lead",
+      "name": "Blei (Bauwalzblei DIN EN 12588)",
+      "density": 11340,
+      "potential": -0.13,
+      "lambda": 35,
+      "alpha": 29,
+      "crystalStructure": "Kubisch flächenzentriert (kfz, Mohshärte 1,5)",
+      "eModul": 16000,
+      "yieldStrength": "Rp0,2 ≈ 10 – 15 N/mm² (viskoses Kriechverhalten)",
+      "standards": "DIN EN 12588, DIN EN 1991, ZVDH-Fachregeln",
+      "corrosionCategory": "Sehr witterungsbeständig durch basische Bleicarbonatpatina",
+      "poissonRatio": 0.44,
+      "elongationAtBreak": "A > 50 % (keine Kaltverfestigung)",
+      "recyclingRate": "> 95 % geschlossene Kreisläufe",
+      "description": "Extrem dichtes, weiches und leicht verformbares Schwermetall (Dichte 11.340 kg/m³). Da die Rekristallisationstemperatur von reinem Blei unterhalb der Raumtemperatur liegt, verfestigt sich Blei beim Kaltumformen nicht, sondern lässt sich mühelos von Hand an dreidimensionale Dachdetails, Kamineinfassungen und Ziegelanschlüsse anformen.\n\nDeckschichten & Beständigkeit: An der Atmosphäre reagiert Blei mit Kohlendioxid und Feuchte zu einer unlöslichen, dichten Schutzschicht aus basischem Bleicarbonat (2 PbCO₃ · Pb(OH)₂), die über Jahrzehnte hinweg wetterfest bleibt.\n\nToxikologie & Korrosionsrisiken: Blei ist anfällig für Angriffe durch organische Säuren (z.B. Essigsäuredämpfe aus feuchtem Eichenholz) sowie durch stark alkalische Medien (frischer Zementmörtel). Wegen der Schwermetalltoxizität (REACH) wird Bauwalzblei heute zunehmend durch bitumenbasierte oder polymere Verbund-Bleiersatzbänder mit Aluminiumstreckgitter-Einlage substituiert.",
+      "practicalAdvice": "Beim Einbau von Walzblech an Dachanschlüssen direkten Kontakt zu frischem Mörtel und gerbstoffreicher Eiche durch Bitumentrennlagen verhindern. Schutzkleidung tragen und Staubentwicklung meiden."
+    },
+    "metalsDb.corten": {
+      "id": "corten",
+      "name": "Wetterfester Baustahl (Cortenstahl S355J2W)",
+      "density": 7850,
+      "potential": -0.4,
+      "lambda": 48,
+      "alpha": 12,
+      "crystalStructure": "Raumzentriert kubisch (krz)",
+      "eModul": 210000,
+      "yieldStrength": "fy = 355 N/mm² (Zugfestigkeit Rm = 470 – 630 N/mm²)",
+      "standards": "DIN EN 10025-5, DASt-Richtlinie 007, DIN EN 1993",
+      "corrosionCategory": "Selbstschützend unter zyklischer Feuchte-Trocken-Einwirkung",
+      "poissonRatio": 0.3,
+      "elongationAtBreak": "A ≥ 22 %",
+      "recyclingRate": "> 98 % voll recyclierbar im Schrottkreislauf",
+      "description": "Niedriglegierter Konstruktionsstahl mit Beimengungen von Kupfer (0,25–0,55 %), Chrom, Nickel und Phosphor. Unter freier Bewitterung bildet Cortenstahl durch den kontinuierlichen Wechsel von Befeuchtung (Regen) und vollständiger Austrocknung (Sonne/Wind) binnen 1,5 bis 3 Jahren eine außergewöhnlich dichte, fest haftende Sperrschicht (Edelrost-Patina) aus amorphem Eisenoxihydroxid und dotiertem α-FeOOH.\n\nSchutzmechanismus: Die Sperrschicht verlangsamt die Sauerstoffdiffusion an den Grundstahl drastisch. Der jährliche Materialabtrag sinkt nach Ausbildung der Patina auf unter 2–5 µm/Jahr ab, sodass auf Lackierungen oder Verzinkungen vollständig verzichtet werden kann.\n\nKritische Einsatzgrenzen: Cortenstahl benötigt zwingend vollständige Trocknungszyklen. Im Erdreich, im permanenten Spritzwasserbereich mit Tausalzkontakt oder in unbelüfteten Hohlräumen versagt der Passivierungsmechanismus und das Material rostet wie unlegierter Stahl kontinuierlich durch.",
+      "practicalAdvice": "Bei Fassadenkonstruktionen das Abwaschen von braunem Rostwasser während der 2- bis 3-jährigen Patinierungsphase baulich einplanen: Vorstehende Bauteile, helle Natursteine oder Sichtbetonflächen müssen vor abtropfendem Rostwasser durch Tropfkanten und Rinnen geschützt werden."
+    },
+    "metalsDb.brass": {
+      "id": "brass",
+      "name": "Messing (CuZn-Legierung CuZn39Pb3 / CW614N)",
+      "density": 8470,
+      "potential": -0.1,
+      "lambda": 120,
+      "alpha": 19,
+      "crystalStructure": "Mischkristall aus kfz (α-Phase) und krz (β-Phase)",
+      "eModul": 105000,
+      "yieldStrength": "Rp0,2 = 250 – 350 N/mm² (Rm = 450 – 550 N/mm²)",
+      "standards": "DIN EN 12164, DIN EN 12165, DIN EN 12449",
+      "corrosionCategory": "Gute Witterungsbeständigkeit an normaler Atmosphäre",
+      "poissonRatio": 0.35,
+      "elongationAtBreak": "A ≥ 12 – 18 %",
+      "recyclingRate": "> 95 % als Späne & Gussrücklauf",
+      "description": "Kupfer-Zink-Knetlegierung mit ca. 58 % Kupfer, 39 % Zink und geringem Bleianteil zur Spanbrechung. Häufig verwendet für hochwertige Architektur- und Türbeschläge, Fassadenverankerungen, Sanitärinstallationen und hochpräzise mechanische Befestigungsmittel.\n\nGefüge & Festigkeit: Das zweiphasige (α + β)-Gefüge vereint gute Festigkeit mit hoher Härte und ausgezeichneter Warmumformbarkeit beim Strangpressen. An trockener Luft bildet sich eine schützende Zinkoxid-Kupferoxid-Deckschicht.\n\nBesondere Korrosionsrisiken: Bei gleichzeitiger Einwirkung von Zugspannungen und ammoniakhaltiger Umgebung (z.B. Stallungen, Fäulnisgase, feuchtes Holz mit Amin-Ausgasungen) neigt unentspanntes Messing zu interkristalliner Spannungsrisskorrosion (sog. Saisonrissigkeit). In stark chloridhaltigem Wasser kann es zudem zur \"Entzinkung\" kommen, bei der das Zink selektiv herausgelöst wird und ein poröses, mechanisch instabiles Kupferschwämmchen zurückbleibt.",
+      "practicalAdvice": "In landwirtschaftlichen Bauten und Schwimmbädern keine einfachen Standard-Messingdübel oder -Schrauben unter Zuglast einsetzen. Hierfür entzinkungsbeständiges Messing (DZR) oder Edelstahl A4 wählen."
+    },
+    "metalsDb.cast_iron": {
+      "id": "cast_iron",
+      "name": "Gusseisen mit Kugelgraphit (Sphäroguss EN-GJS)",
+      "density": 7200,
+      "potential": -0.42,
+      "lambda": 36,
+      "alpha": 11.5,
+      "crystalStructure": "Ferritisch-perlitische Matrix mit kugelförmigem Graphit",
+      "eModul": 170000,
+      "yieldStrength": "Rp0,2 = 250 – 400 N/mm² (EN-GJS-400 bis EN-GJS-600)",
+      "standards": "DIN EN 1563 (Sphäroguss), DIN EN 124 (Schachtabdeckungen)",
+      "corrosionCategory": "Hohe Beständigkeit gegen Erdreich- und Abwasserkorrosion",
+      "poissonRatio": 0.28,
+      "elongationAtBreak": "A ≥ 12 – 18 % (EN-GJS-400-18)",
+      "recyclingRate": "> 95 % in Gießereien",
+      "description": "Eisen-Kohlenstoff-Gusswerkstoff mit 3,2 bis 3,8 % Kohlenstoff. Durch eine gezielte Schmelzenbehandlung mit Magnesium erstarrt der freie Kohlenstoff nicht in scharfkantigen Lamellen (wie beim spröden Grauguss EN-GJL), sondern in Form feinverteilter mikroskopischer Graphitkugeln (Nodules).\n\nMechanische Überlegenheit: Die Kugelform verhindert Spannungsspitzen an den Graphiträndern. Dadurch erreicht Sphäroguss stahlähnliche Festigkeiten bei hervorragender plastischer Dehnbarkeit (Bruchdehnung A bis 18 %) und hoher Kerbschlagzähigkeit. Zudem besitzt er erstklassige Schwingungsdämpfungseigenschaften.\n\nBauanwendungen: Der Standardwerkstoff für hochbelastete Kanalisationsguss-Erzeugnisse nach DIN EN 124 (Schachtabdeckungen Klassen D400 bis F900 im Straßen- und Flughafenbau), Druckrohrleitungen für Trinkwasser und Abwasser sowie historisierende Stützen und Brückenauflager. Er ist wesentlich korrosionsbeständiger gegenüber Erdreich und Grundwasser als unlegierter Walzstahl.",
+      "practicalAdvice": "Gusseiserne Bauteile sind für Schweißverbindungen auf der Baustelle ungeeignet (Gefahr von Aufhärtung und Rissbildung). Verbindungen müssen formschlüssig oder über Flansche und Schrauben ausgeführt werden."
+    },
+    "getCorrosionRating": {
+      "rating": "Keine (Gleiche Metalle)",
+      "color": "bg-emerald-100 text-emerald-800 border-emerald-300",
+      "icon": "check",
+      "desc": "Identisches Material. Es tritt kein elektrochemischer Stromfluss auf."
+    },
+    "getCorrosionRating_2": {
+      "rating": "Sehr hohes Korrosionsrisiko",
+      "color": "bg-red-100 text-red-900 border-red-300",
+      "icon": "danger",
+      "desc": "Große Potentialdifferenz zum edlen Kupfer: In feuchter Außenluft korrodieren kleine unedle Verbindungsmittel schnell (Flächenregel beachten)."
+    },
+    "getCorrosionRating_3": {
+      "rating": "Sicher (Geringes Risiko)",
+      "color": "bg-emerald-150 text-emerald-800 border-emerald-300",
+      "icon": "check",
+      "desc": "Geringes Potentialgefälle (ΔU ≤ 150 mV). Bei normalen Witterungsbedingungen im Außenbereich unbedenklich."
+    },
+    "getCorrosionRating_4": {
+      "rating": "Bedenklich (Nutzung einschränken)",
+      "color": "bg-amber-100 text-amber-800 border-amber-300",
+      "icon": "warning",
+      "desc": "Mäßiges Potentialgefälle. Für trockene Innenräume sicher; im Außenbereich ist eine elektrische Trennung (Polyamid- oder EPDM-Dichtscheiben) zwingend erforderlich."
+    },
+    "getCorrosionRating_5": {
+      "rating": "Hohes Korrosionsrisiko",
+      "color": "bg-red-100 text-red-800 border-red-200",
+      "icon": "danger",
+      "desc": "Starkes Potentialgefälle. Das unedlere Metall opfert sich rasch auf. Direkten mechanischen Kontakt unbedingt verhindern!"
+    },
+    "BpMetallisch.schritte": [
+      {
+        "titel": "1. Eigenlast einer Bahn",
+        "formel": "G_k = 10 \\cdot 0{,}5 \\cdot 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}25\\,\\text{kN}",
+        "erklaerung": "Länge 10 m, Breite 0,5 m, Dicke 0,7 mm (≈ 25 kg)."
+      },
+      {
+        "titel": "2. Flächenlast",
+        "formel": "g_k = 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}05\\,\\text{kN/m}^2",
+        "erklaerung": "Sehr leichte Deckung."
+      },
+      {
+        "titel": "3. Wärmedehnung",
+        "formel": "\\Delta L = 10\\,000 \\cdot 22 \\cdot 10^{-6} \\cdot 100 = 22\\,\\text{mm}",
+        "erklaerung": "Temperaturspanne der Dachoberfläche ca. 100 K (−20 °C bis +80 °C)."
+      }
+    ],
+    "BpMetallisch.literatur": [
+      "Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3 (Bauwerk Verlag)",
+      "Bargel, H.-J.; Schulze, G.: Werkstoffkunde (Springer Vieweg)",
+      "Kupferverband e. V. (ehem. Deutsches Kupferinstitut): Informationsdrucke 'Kupfer in der Architektur' (03/2020), 'Dachdeckung und Außenwandbekleidung mit Kupfer' (05/2002), 'Nachhaltiges Bauen mit Kupfer' (08/2022)"
+    ],
+    "BpMetallisch.regelwerke": [
+      {
+        "title": "DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)"
+      },
+      {
+        "title": "DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)"
+      },
+      {
+        "title": "DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)"
+      },
+      {
+        "title": "DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)"
+      },
+      {
+        "title": "DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)"
+      }
+    ],
+    "BpMetallisch.weblinks": [
+      {
+        "title": "bauforumstahl e.V. – Bemessungshilfen & Nachhaltigkeitsdaten",
+        "url": "https://www.bauforumstahl.de/"
+      },
+      {
+        "title": "Gütegemeinschaft Verzinken e.V. – Korrosionsschutz durch Feuerverzinken",
+        "url": "https://www.feuerverzinken.com/"
+      },
+      {
+        "title": "Informationsplattform Nichtrostender Stahl (ISER)",
+        "url": "https://www.edelstahl-rostfrei.de/"
+      }
+    ],
+    "BpMetallisch.formeln": [
+      {
+        "formel": "G_k = L \\cdot W \\cdot \\frac{t}{1000} \\cdot \\rho_{\\text{metal}} \\cdot 9{,}81 \\cdot 10^{-3} \\quad [\\text{kN}]",
+        "erklaerung": "Charakteristische Eigengewichtslast Gk flächiger Bleche: L = Länge [m], W = Breite [m], t = Blechdicke [mm], rho = Dichte [kg/m³].",
+        "quelle": "DIN EN 1991-1-1"
+      },
+      {
+        "formel": "\\Delta U_0 = |U_{\\text{Kathode}} - U_{\\text{Anode}}| \\ge 150\\,\\text{mV}",
+        "erklaerung": "Faustregel: Ab Potentialdifferenzen von etwa 150–200 mV (in der praktischen Spannungsreihe im jeweiligen Medium) steigt die Gefahr der Kontaktkorrosion des unedleren Metalls deutlich; entscheidend sind auch Flächenverhältnis und Elektrolyt.",
+        "quelle": "Lehrannahme (Begriffe nach DIN EN ISO 8044)"
+      },
+      {
+        "formel": "\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T \\quad [\\text{mm}]",
+        "erklaerung": "Thermische Längenänderung von Metallbauteilen: L0 = Ausgangslänge [m], alpha_T = thermischer Längenausdehnungskoeffizient [1/K], delta_T = Temperaturdifferenz [K].",
+        "quelle": "DIN EN 1991-1-5"
+      }
+    ]
+  }
+}

@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/lca/IngenieurbauLCA.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function IngenieurbauLCA() {
   // Simulator State
@@ -126,37 +128,27 @@ export default function IngenieurbauLCA() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono">
-                  DIN EN 17472:2024-06
-                </span>
-                <span className="text-[10px] text-slate-500 font-mono">CEN/TC 350 Infrastruktur</span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono"><MdText text={inhalt.texte.dinEn174722024} /></span>
+                <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.cenTc350Infrastruktur} /></span>
               </div>
-              <h3 className="text-lg font-bold text-text-main mt-0.5">
-                Nachhaltigkeit von Bauwerken – Ökobilanzierung von Ingenieurbauwerken
-              </h3>
+              <h3 className="text-lg font-bold text-text-main mt-0.5"><MdText text={inhalt.texte.nachhaltigkeitVonBauwerkenÖkobilanzierun} /></h3>
             </div>
           </div>
-          <div className="text-right text-xs text-slate-500">
-            Pendant zu <strong>DIN EN 15978</strong> (Hochbau)
-          </div>
+          <div className="text-right text-xs text-slate-500"><MdText text={inhalt.texte.pendantZuDinEn} /></div>
         </div>
 
         <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
-          <p>
-            Während die klassische <strong>DIN EN 15978</strong> ausschließlich die Ökobilanzierung von Hochbauten (Wohn- und Nichtwohngebäude) über typischerweise 50 Jahre Betrachtungszeitraum regelt, schließt die europäische Norm <strong>DIN EN 17472:2024-06</strong> die Lücke für die gesamte Verkehrsinfrastruktur und den Tiefbau: <strong>Brücken, Tunnel, Straßen, Eisenbahntrassen, Wasserbauwerke, Staudämme und Leitungsnetze</strong>.
-          </p>
-          <p>
-            Sie definiert eigene funktionelle Einheiten, verankert <strong>Nutzungsdauern von 80 bis 100+ Jahren</strong> (nach DIN EN 1990 Auslegungskategorie 5) und quantifiziert zusätzlich die <strong>baustellenbedingten Nutzer- und Stauemissionen im Modul B8</strong>.
-          </p>
+          <p><MdText text={inhalt.texte.währendDieKlassischeDin} /></p>
+          <p><MdText text={inhalt.texte.sieDefiniertEigeneFunktionelle} /></p>
         </div>
 
         {/* Sub-Navigation */}
         <div className="flex flex-wrap gap-2 mt-5 pt-3 border-t border-home-grau/20">
           {[
-            { id: 'uebersicht' as const, label: 'Normen-Architektur & Prinzipien', icon: Layers },
-            { id: 'vergleich' as const, label: 'Differenzierungsmatrix: Hochbau vs. Tiefbau', icon: Scale },
-            { id: 'stau_b8' as const, label: 'Das Modul B8: Baustellen-Stauemissionen', icon: Car },
-            { id: 'simulator' as const, label: 'Interaktiver Brücken-LCA-Simulator (100 Jahre)', icon: Activity }
+            { id: 'uebersicht' as const, label: inhalt.werte.normenArchitekturPrinzipien, icon: Layers },
+            { id: 'vergleich' as const, label: inhalt.werte.differenzierungsmatrixHochbauVsTiefbau, icon: Scale },
+            { id: 'stau_b8' as const, label: inhalt.werte.dasModulB8Baustellen, icon: Car },
+            { id: 'simulator' as const, label: inhalt.werte.interaktiverBrückenLcaSimulator, icon: Activity }
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeSubTab === tab.id;
@@ -185,16 +177,14 @@ export default function IngenieurbauLCA() {
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main border-b border-home-grau/20 pb-2">
               <span className="w-6 h-6 rounded-lg bg-shiraz/10 text-shiraz font-mono text-xs flex items-center justify-center font-bold">1</span>
-              <span>Dachnorm &amp; CEN/TC 350</span>
+              <span><MdText text={inhalt.texte.dachnormCenTc350} /></span>
             </div>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Die Normenfamilie des Technischen Komitees <strong>CEN/TC 350</strong> teilt sich auf zwei Ebenen auf:
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieNormenfamilieDesTechnischen} /></p>
             <ul className="text-xs space-y-2 text-text-main/80 list-disc pl-4">
-              <li><strong>DIN EN 15643:</strong> Allgemeine Dachnorm mit den Grundsätzen für die Nachhaltigkeitsbewertung aller baulichen Anlagen.</li>
-              <li><strong>DIN EN 15804+A2:</strong> Produktkategorieregeln (Core-PCR) für Typ-III-EPDs auf Materialebene.</li>
-              <li><strong>DIN EN 15978:</strong> Berechnungsmethode für Gebäude (Hochbau).</li>
-              <li><strong>DIN EN 17472:</strong> Berechnungsmethode für Ingenieurbauwerke (Tiefbau &amp; Infrastruktur).</li>
+              <li><MdText text={inhalt.texte.dinEn15643Allgemeine} /></li>
+              <li><MdText text={inhalt.texte.dinEn15804A2} /></li>
+              <li><MdText text={inhalt.texte.dinEn15978Berechnungsmethode} /></li>
+              <li><MdText text={inhalt.texte.dinEn17472Berechnungsmethode} /></li>
             </ul>
           </div>
 
@@ -203,21 +193,19 @@ export default function IngenieurbauLCA() {
               <span className="w-6 h-6 rounded-lg bg-shiraz/10 text-shiraz font-mono text-xs flex items-center justify-center font-bold">2</span>
               <span>Drei-Säulen-Integration</span>
             </div>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              DIN EN 17472 verlangt ausdrücklich die ganzheitliche Betrachtung über drei Hauptdimensionen:
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dinEn17472Verlangt} /></p>
             <ul className="text-xs space-y-2 text-text-main/80">
               <li className="flex items-start gap-1.5">
                 <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Umweltqualität (LCA):</strong> 13 Kernindikatoren nach EN 15804 (GWP-total, ODP, AP, EP, POCP, PENRT, etc.).</span>
+                <span><MdText text={inhalt.texte.umweltqualitätLca13Kernindikatoren} /></span>
               </li>
               <li className="flex items-start gap-1.5">
                 <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Wirtschaftsqualität (LCC):</strong> Lebenszykluskosten nach ISO 15686-5 (Herstellung, Instandhaltung, Rückbau).</span>
+                <span><MdText text={inhalt.texte.wirtschaftsqualitätLccLebenszykluskosten} /></span>
               </li>
               <li className="flex items-start gap-1.5">
                 <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Soziale &amp; funktionale Leistung:</strong> Verkehrssicherheit, Zugänglichkeit, Lärmemissionen und Verkehrsbehinderungen.</span>
+                <span><MdText text={inhalt.texte.sozialeFunktionaleLeistungVerkehrssicher} /></span>
               </li>
             </ul>
           </div>
@@ -225,11 +213,9 @@ export default function IngenieurbauLCA() {
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main border-b border-home-grau/20 pb-2">
               <span className="w-6 h-6 rounded-lg bg-shiraz/10 text-shiraz font-mono text-xs flex items-center justify-center font-bold">3</span>
-              <span>Regulative Normformel</span>
+              <span><MdText text={inhalt.texte.regulativeNormformel} /></span>
             </div>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Die spezifische Umweltwirkung nach DIN EN 17472 bezieht alle Phasen auf die funktionelle Bauwerksfläche und den Betrachtungszeitraum:
-            </p>
+            <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieSpezifischeUmweltwirkungNach} /></p>
             <div className="p-2.5 bg-off-white rounded-xl border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
               <BlockMath math="\text{GWP}_{\text{Ing}} = \frac{\text{GWP}_{\text{A}} + \sum \text{GWP}_{\text{B2-B5}} + \text{GWP}_{\text{B8}} + \text{GWP}_{\text{C}}}{A_{\text{Deck}} \cdot t_{\text{ref}}}" />
             </div>
@@ -245,12 +231,8 @@ export default function IngenieurbauLCA() {
         <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-4 animate-in fade-in duration-200">
           <div className="border-b border-home-grau/20 pb-3">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-              <Scale size={16} className="text-shiraz" />
-              Gegenüberstellung: DIN EN 15978 (Hochbau) vs. DIN EN 17472 (Ingenieurbauwerke)
-            </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Wesentliche methodische und baupraktische Unterschiede der beiden europäischen Ökobilanz-Normen.
-            </p>
+              <Scale size={16} className="text-shiraz" /><MdText text={inhalt.texte.gegenüberstellungDinEn15978} /></h4>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.wesentlicheMethodischeUndBaupraktische} /></p>
           </div>
 
           <div className="overflow-x-auto">
@@ -258,61 +240,45 @@ export default function IngenieurbauLCA() {
               <thead className="bg-off-white text-text-main font-bold border-b border-home-grau/25">
                 <tr>
                   <th className="p-3 w-1/4">Kriterium</th>
-                  <th className="p-3 w-3/8 text-slate-700">Gebäude (DIN EN 15978)</th>
-                  <th className="p-3 w-3/8 text-shiraz font-bold">Ingenieurbauwerke (DIN EN 17472)</th>
+                  <th className="p-3 w-3/8 text-slate-700"><MdText text={inhalt.texte.gebäudeDinEn15978} /></th>
+                  <th className="p-3 w-3/8 text-shiraz font-bold"><MdText text={inhalt.texte.ingenieurbauwerkeDinEn17472} /></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-home-grau/15 text-slate-700">
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Typische Anwendungsbereiche</td>
-                  <td className="p-3">Wohngebäude, Bürogebäude, Schulen, Hallen</td>
-                  <td className="p-3 font-medium text-slate-900">Brücken, Tunnel, Straßen, Eisenbahnstrecken, Schleusen, Staudämme</td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.typischeAnwendungsbereiche} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.wohngebäudeBürogebäudeSchulenHallen} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.brückenTunnelStraßenEisenbahnstrecken} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Referenz-Betrachtungszeitraum (RSP)</td>
-                  <td className="p-3">Typisch <strong>50 Jahre</strong> (gemäß QNG / DGNB / BNB)</td>
-                  <td className="p-3 font-medium text-slate-900">
-                    Typisch <strong>80 bis 100+ Jahre</strong> (DIN EN 1990 Auslegungskategorie 5 für Brücken)
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.referenzBetrachtungszeitraumRsp} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.typisch50JahreGemäß} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.typisch80Bis100} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Funktionelle Einheit (Bezugsgröße)</td>
-                  <td className="p-3">
-                    <InlineMath math="1\text{ m}^2" /> Nettoraumfläche (NRF) oder Brutto-Grundfläche (BGF)
-                  </td>
-                  <td className="p-3 font-medium text-slate-900">
-                    <InlineMath math="1\text{ m}^2" /> Brückendeckfläche, 1 km Trassenlänge, Durchflussmenge (<InlineMath math="\text{m}^3/\text{h}" />), Verkehrsleistung (<InlineMath math="\text{tkm}" />)
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.funktionelleEinheitBezugsgröße} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.t1textM2Nettoraumfläche} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.t1textM2Brückendeckfläche} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Dominierende Lebenszyklusphase</td>
-                  <td className="p-3">
-                    Oft Betriebsphase <strong>B6</strong> (Heizung, Kühlung) + Herstellung <strong>A1–A3</strong>
-                  </td>
-                  <td className="p-3 font-medium text-slate-900">
-                    Herstellung <strong>A1–A3</strong> + Austauschzyklen <strong>B2–B5</strong> + Nutzerstau <strong>B8</strong>
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.dominierendeLebenszyklusphase} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.oftBetriebsphaseB6Heizung} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.herstellungA1A3Austauschzyklen} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Austauschzyklen in der Nutzung (B2–B5)</td>
-                  <td className="p-3">Bodenbeläge (15–20 a), Fenster (25–30 a), Haustechnik/TGA (20 a)</td>
-                  <td className="p-3 font-medium text-slate-900">
-                    Fahrbahnbelag (12–15 a), Dichtung (25–30 a), Lager &amp; Übergänge (25–30 a), Korrosionsschutz (20–25 a)
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.austauschzyklenInDerNutzung} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.bodenbeläge1520A} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.fahrbahnbelag1215A} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Berücksichtigung von Nutzeraktivitäten</td>
-                  <td className="p-3">Im Hochbau meist nicht erfasst (kein Modul B8)</td>
-                  <td className="p-3 font-medium text-slate-900">
-                    <strong>Modul B8 verpflichtend darstellbar:</strong> Zusätzliche Kraftstoffemissionen durch Baustellenstaus und Umleitungen
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.berücksichtigungVonNutzeraktivitäten} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.imHochbauMeistNicht} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.modulB8VerpflichtendDarstellbar} /></td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="p-3 font-semibold text-text-main">Kreislaufwirtschaft &amp; End-of-Life</td>
-                  <td className="p-3">Selektiver Rückbau von Ausbau- und Dämmschichten</td>
-                  <td className="p-3 font-medium text-slate-900">
-                    Massenverwertung: Ausbauasphalt (Heißmischgut), RC-Betonkörnung, Stahl-Einschmelzung nach EBV
-                  </td>
+                  <td className="p-3 font-semibold text-text-main"><MdText text={inhalt.texte.kreislaufwirtschaftEndOfLife} /></td>
+                  <td className="p-3"><MdText text={inhalt.texte.selektiverRückbauVonAusbau} /></td>
+                  <td className="p-3 font-medium text-slate-900"><MdText text={inhalt.texte.massenverwertungAusbauasphaltHeißmischgu} /></td>
                 </tr>
               </tbody>
             </table>
@@ -325,49 +291,31 @@ export default function IngenieurbauLCA() {
         <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-5 animate-in fade-in duration-200">
           <div className="border-b border-home-grau/20 pb-3">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-              <Car size={16} className="text-shiraz" />
-              Modul B8 nach DIN EN 17472: Baustellenbedingte Nutzer- und Stauemissionen
-            </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Warum die Bauzeit und die Baustellenverkehrsführung bei Autobahnbrücken oft wichtiger sind als die Herstellungsmasse.
-            </p>
+              <Car size={16} className="text-shiraz" /><MdText text={inhalt.texte.modulB8NachDin} /></h4>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.warumDieBauzeitUnd} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3 text-xs text-text-main/80 leading-relaxed">
-              <p>
-                Ein wesentliches Alleinstellungsmerkmal der <strong>DIN EN 17472</strong> ist das <strong>Modul B8 (Nutzeraktivitäten während des Betriebs und der Instandhaltung)</strong>.
-              </p>
-              <p>
-                Wird eine Brücke saniert, ein Fahrbahnbelag abgefräst oder ein Fahrbahnübergang getauscht, muss die Fahrbahn ganz oder teilweise gesperrt werden (z. B. 4+0-Verkehrsführung oder Teilsperrung). Dies führt zu:
-              </p>
+              <p><MdText text={inhalt.texte.einWesentlichesAlleinstellungsmerkmalDer} /></p>
+              <p><MdText text={inhalt.texte.wirdEineBrückeSaniert} /></p>
               <ul className="list-disc pl-4 space-y-1.5 text-slate-700">
-                <li>Geschwindigkeitsreduzierungen (z. B. von 120 km/h auf 60 km/h oder 80 km/h).</li>
-                <li>Stopp-and-Go-Verkehr und Kolonnenbildung mit extrem erhöhtem spezifischen Treibstoffverbrauch.</li>
-                <li>Umwegfahrten des Schwerlastverkehrs über das nachgeordnete Landstraßennetz.</li>
+                <li><MdText text={inhalt.texte.geschwindigkeitsreduzierungenZBVon} /></li>
+                <li><MdText text={inhalt.texte.stoppAndGoVerkehr} /></li>
+                <li><MdText text={inhalt.texte.umwegfahrtenDesSchwerlastverkehrsÜber} /></li>
               </ul>
-              <div className="p-3.5 bg-amber-50/60 border border-amber-200/70 rounded-xl text-amber-950 text-xs">
-                <strong>Verblüffendes Praxisfaktum:</strong> Auf einer Bundesautobahn mit <InlineMath math="5.000" /> Schwerlast-Fahrzeugen pro Tag verursacht eine 30-tägige Baustellen-Verzögerung nach dem vereinfachten Modell dieses Rechners (40 % der Lkw betroffen, 0,95 kg CO₂-Äq. je Lkw) rund <InlineMath math="57\text{ t CO}_2\text{-eq}" /> an reinen Stau-Mehrverbräuchen – oft mehr als die gesamte Herstellungsenergie des eingebauten Asphalts!
-              </div>
+              <div className="p-3.5 bg-amber-50/60 border border-amber-200/70 rounded-xl text-amber-950 text-xs"><MdText text={inhalt.texte.verblüffendesPraxisfaktumAufEiner} /></div>
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/25 space-y-4">
-              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-900 border-b border-home-grau/20 pb-2">
-                Ingenieurtechnische Optimierungshebel nach DIN EN 17472
-              </h5>
+              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-900 border-b border-home-grau/20 pb-2"><MdText text={inhalt.texte.ingenieurtechnischeOptimierungshebelNach} /></h5>
               <div className="space-y-3 text-xs">
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20">
-                  <strong className="text-shiraz block mb-1">1. Modulare Vorfertigung &amp; Schnellbaumethoden:</strong>
-                  Vorgefertigte Verbundträger oder Fertigteil-Fahrbahnplatten verkürzen die Sperrzeiten auf wenige Tage (z. B. Brückeneinschub an einem Wochenende).
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t1ModulareVorfertigungSchnellbaumethoden} /></strong><MdText text={inhalt.texte.vorgefertigteVerbundträgerOderFertigteil} /></div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20">
-                  <strong className="text-shiraz block mb-1">2. Wartungsfreie oder extrem langlebige Komponenten:</strong>
-                  Fugenlose oder lagerlose Brücken (integrale / semi-integrale Tragwerke) eliminieren mechanische Fahrbahnübergänge und Elastomerlager komplett – null Wartungsstau über 100 Jahre!
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t2WartungsfreieOderExtrem} /></strong><MdText text={inhalt.texte.fugenloseOderLagerloseBrücken} /></div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20">
-                  <strong className="text-shiraz block mb-1">3. Hochleistungs-Asphaltbeläge (SMA / Kompaktasphalt):</strong>
-                  Einsatz von polymermodifizierten Bitumen (PmB) zur Verlängerung der Liegedauer der Deckschicht von 12 auf 20 Jahre.
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t3HochleistungsAsphaltbelägeSma} /></strong><MdText text={inhalt.texte.einsatzVonPolymermodifiziertenBitumen} /></div>
               </div>
             </div>
           </div>
@@ -380,12 +328,8 @@ export default function IngenieurbauLCA() {
           <div className="border-b border-home-grau/20 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <Activity size={16} className="text-shiraz" />
-                Interaktiver Brücken-LCA-Simulator (100 Jahre nach DIN EN 17472)
-              </h4>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Vergleich: <strong>Spannbeton-Hohlkasten</strong> vs. <strong>Stahlverbundbrücke</strong> über den Lebenszyklus.
-              </p>
+                <Activity size={16} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverBrückenLcaSimulator} /></h4>
+              <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.vergleichSpannbetonHohlkastenVs} /></p>
             </div>
             <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-shiraz/10 text-shiraz border border-shiraz/20">
               RSP = {formatDeWert(studyPeriod)} Jahre
@@ -397,7 +341,7 @@ export default function IngenieurbauLCA() {
             {/* Control 1: Deckfläche */}
             <div className="space-y-1.5">
               <div className="flex justify-between font-bold text-slate-700">
-                <label>Brückendeckfläche (<InlineMath math="A_{\text{Deck}}" />):</label>
+                <label><MdText text={inhalt.texte.brückendeckflächeATextDeck} /></label>
                 <span className="font-mono bg-white px-1.5 py-0.5 rounded border">{formatDeZahl(deckArea, 0)} m²</span>
               </div>
               <input
@@ -415,7 +359,7 @@ export default function IngenieurbauLCA() {
             {/* Control 2: Betrachtungszeitraum */}
             <div className="space-y-1.5">
               <div className="flex justify-between font-bold text-slate-700">
-                <label>Betrachtungszeitraum (<InlineMath math="t_{\text{ref}}" />):</label>
+                <label><MdText text={inhalt.texte.betrachtungszeitraumTTextRef} /></label>
                 <span className="font-mono bg-white px-1.5 py-0.5 rounded border">{formatDeWert(studyPeriod)} Jahre</span>
               </div>
               <input
@@ -427,13 +371,13 @@ export default function IngenieurbauLCA() {
                 onChange={(e) => setStudyPeriod(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
-              <span className="text-[10px] text-slate-400 block text-right font-mono">DIN EN 1990: 100 a</span>
+              <span className="text-[10px] text-slate-400 block text-right font-mono"><MdText text={inhalt.texte.dinEn1990100} /></span>
             </div>
 
             {/* Control 3: Schwerverkehr DTV-SV */}
             <div className="space-y-1.5">
               <div className="flex justify-between font-bold text-slate-700">
-                <label>Schwerverkehr (<InlineMath math="DTV_{\text{SV}}" />):</label>
+                <label><MdText text={inhalt.texte.schwerverkehrDtvTextSv} /></label>
                 <span className="font-mono bg-white px-1.5 py-0.5 rounded border">{formatDeZahl(dtvSchwerverkehr, 0)} LKW/d</span>
               </div>
               <input
@@ -445,12 +389,12 @@ export default function IngenieurbauLCA() {
                 onChange={(e) => setDtvSchwerverkehr(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
-              <span className="text-[10px] text-slate-400 block text-right font-mono">Für Stau-Modul B8</span>
+              <span className="text-[10px] text-slate-400 block text-right font-mono"><MdText text={inhalt.texte.fürStauModulB8} /></span>
             </div>
 
             {/* Control 4: Baustellen-Strategie */}
             <div className="space-y-1.5">
-              <label className="font-bold text-slate-700 block">Baustellenführung (B8):</label>
+              <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.baustellenführungB8} /></label>
               <div className="grid grid-cols-2 gap-1.5">
                 <button aria-pressed={constructionStrategy === 'standard'}
                   type="button"
@@ -471,12 +415,10 @@ export default function IngenieurbauLCA() {
                       ? 'bg-shiraz text-white border-shiraz'
                       : 'bg-white text-slate-600 border-home-grau/25 hover:bg-slate-50'
                   }`}
-                >
-                  Schnellbau ⚡
-                </button>
+                ><MdText text={inhalt.texte.schnellbau} /></button>
               </div>
               <span className="text-[10px] text-slate-400 block text-center">
-                {constructionStrategy === 'accelerated' ? '-65% Sperrzeit' : 'Volle Teilsperrung'}
+                {constructionStrategy === 'accelerated' ? inhalt.werte.t65Sperrzeit : inhalt.werte.volleTeilsperrung}
               </span>
             </div>
           </div>
@@ -495,38 +437,37 @@ export default function IngenieurbauLCA() {
                   <span className="text-lg font-black text-shiraz font-mono">
                     {formatDeZahl(results.beton.perM2Year, 2)}
                   </span>
-                  <span className="text-[10px] text-slate-500 block">kg CO₂e / (m²·a)</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.kgCoEM} /></span>
                 </div>
               </div>
 
               {/* Lifecycle Phase Breakdown Table */}
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Herstellung (A1–A3) Beton + Spannstahl:</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.herstellungA1A3Beton} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.beton.a1a3, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Transport &amp; Errichtung (A4–A5):</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.transportErrichtungA4A5} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.beton.a4a5, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">
-                    Instandhaltung (B2–B5) [{formatDeWert(results.asphaltCycles)}x Belag, {formatDeWert(results.bearingCycles)}x Lager]:
+                  <span className="text-slate-600"><MdText text={inhalt.texte.instandhaltungB2B5} />{formatDeWert(results.asphaltCycles)}x Belag, {formatDeWert(results.bearingCycles)}x Lager]:
                   </span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.beton.b2b5, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15 bg-amber-50/50 px-2 rounded">
                   <span className="text-amber-900 font-semibold flex items-center gap-1">
-                    <Car size={13} /> Modul B8 (Stauemissionen, {formatDeZahl(results.beton.stautage, 0)} d):
+                    <Car size={13} /><MdText text={inhalt.texte.modulB8Stauemissionen} />{formatDeZahl(results.beton.stautage, 0)} d):
                   </span>
                   <strong className="font-mono text-amber-950 font-bold">{formatDeZahl(results.beton.b8, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Rückbau &amp; Entsorgung (C1–C4):</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.rückbauEntsorgungC1C4} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.beton.c, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15 text-emerald-700">
-                  <span>Modul D (RC-Korn &amp; Stahlschrott):</span>
+                  <span><MdText text={inhalt.texte.modulDRcKorn} /></span>
                   <strong className="font-mono">{formatDeZahl(results.beton.d, 1)} t CO₂e</strong>
                 </div>
               </div>
@@ -534,14 +475,12 @@ export default function IngenieurbauLCA() {
               {/* Total Footprint Summary */}
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center text-xs">
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Lebenszyklus-Bilanz Netto</span>
+                  <span className="text-[10px] text-slate-500 uppercase font-bold block"><MdText text={inhalt.texte.lebenszyklusBilanzNetto} /></span>
                   <strong className="text-sm font-bold text-slate-900 font-mono">
-                    {formatDeZahl(results.beton.net, 1)} t CO₂-Äquivalent
-                  </strong>
+                    {formatDeZahl(results.beton.net, 1)}<MdText text={inhalt.texte.tCoÄquivalent} /></strong>
                 </div>
                 <span className="text-[10px] text-slate-500 max-w-[140px] text-right">
-                  Über {formatDeWert(studyPeriod)} Jahre Betriebszeit
-                </span>
+                  Über {formatDeWert(studyPeriod)}<MdText text={inhalt.texte.jahreBetriebszeit} /></span>
               </div>
             </div>
 
@@ -550,44 +489,43 @@ export default function IngenieurbauLCA() {
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <div>
                   <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">Variante B</span>
-                  <h5 className="font-bold text-sm text-text-main">Stahlverbundbrücke (S355 + Beton)</h5>
+                  <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.stahlverbundbrückeS355Beton} /></h5>
                 </div>
                 <div className="text-right">
                   <span className="text-lg font-black text-shiraz font-mono">
                     {formatDeZahl(results.stahl.perM2Year, 2)}
                   </span>
-                  <span className="text-[10px] text-slate-500 block">kg CO₂e / (m²·a)</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.kgCoEM2} /></span>
                 </div>
               </div>
 
               {/* Lifecycle Phase Breakdown Table */}
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Herstellung (A1–A3) Stahl + Platte:</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.herstellungA1A3Stahl} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.stahl.a1a3, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Transport &amp; Montage (A4–A5):</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.transportMontageA4A5} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.stahl.a4a5, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">
-                    Instandhaltung (B2–B5) [{formatDeWert(results.coatingCycles)}x Anstrich, {formatDeWert(results.asphaltCycles)}x Belag]:
+                  <span className="text-slate-600"><MdText text={inhalt.texte.instandhaltungB2B52} />{formatDeWert(results.coatingCycles)}x Anstrich, {formatDeWert(results.asphaltCycles)}x Belag]:
                   </span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.stahl.b2b5, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15 bg-amber-50/50 px-2 rounded">
                   <span className="text-amber-900 font-semibold flex items-center gap-1">
-                    <Car size={13} /> Modul B8 (Stauemissionen, {formatDeZahl(results.stahl.stautage, 0)} d):
+                    <Car size={13} /><MdText text={inhalt.texte.modulB8Stauemissionen2} />{formatDeZahl(results.stahl.stautage, 0)} d):
                   </span>
                   <strong className="font-mono text-amber-950 font-bold">{formatDeZahl(results.stahl.b8, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
-                  <span className="text-slate-600">Rückbau &amp; Demontage (C1–C4):</span>
+                  <span className="text-slate-600"><MdText text={inhalt.texte.rückbauDemontageC1C4} /></span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.stahl.c, 1)} t CO₂e</strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15 text-emerald-700">
-                  <span>Modul D (100% Stahlschrott-Gutschrift):</span>
+                  <span><MdText text={inhalt.texte.modulD100Stahlschrott} /></span>
                   <strong className="font-mono">{formatDeZahl(results.stahl.d, 1)} t CO₂e</strong>
                 </div>
               </div>
@@ -595,14 +533,11 @@ export default function IngenieurbauLCA() {
               {/* Total Footprint Summary */}
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center text-xs">
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Lebenszyklus-Bilanz Netto</span>
+                  <span className="text-[10px] text-slate-500 uppercase font-bold block"><MdText text={inhalt.texte.lebenszyklusBilanzNetto2} /></span>
                   <strong className="text-sm font-bold text-slate-900 font-mono">
-                    {formatDeZahl(results.stahl.net, 1)} t CO₂-Äquivalent
-                  </strong>
+                    {formatDeZahl(results.stahl.net, 1)}<MdText text={inhalt.texte.tCoÄquivalent2} /></strong>
                 </div>
-                <span className="text-[10px] text-slate-500 max-w-[140px] text-right">
-                  Sehr hohes Modul-D-Recyclingpotenzial
-                </span>
+                <span className="text-[10px] text-slate-500 max-w-[140px] text-right"><MdText text={inhalt.texte.sehrHohesModulD} /></span>
               </div>
             </div>
 
@@ -611,18 +546,11 @@ export default function IngenieurbauLCA() {
           {/* Key Insights & Didactic Takeaways */}
           <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2 text-xs">
             <h5 className="font-bold text-shiraz flex items-center gap-1.5">
-              <Info size={14} /> Didaktische Auswertung nach DIN EN 17472:
-            </h5>
+              <Info size={14} /><MdText text={inhalt.texte.didaktischeAuswertungNachDin} /></h5>
             <ul className="list-disc pl-5 space-y-1 text-slate-700 leading-relaxed">
-              <li>
-                <strong>Der Stau-Impact im Modul B8:</strong> Bei hohem LKW-Aufkommen (<InlineMath math="DTV_{\text{SV}} \ge 4.500" />) verursacht der Verkehrsstau während der Sanierungsphasen ({formatDeZahl(results.beton.b8, 0)} t CO₂e) einen maßgeblichen Anteil der Gesamtbilanz. Eine beschleunigte Schnellbau-Strategie spart auf einen Schlag massiv Emissionen ein!
-              </li>
-              <li>
-                <strong>Materialspezifische Lebenszyklus-Eigenschaften:</strong> Die Stahlverbundbrücke startet mit geringerer Anfangsfracht (A1–A3) und punktet beim Rückbau mit einer gigantischen Modul-D-Gutschrift (Stahlschrott im Elektroofen). Dafür erfordert sie in Phase B4 regelmäßige, aufwendige Korrosionsschutz-Erneuerungen.
-              </li>
-              <li>
-                <strong>Vergleichsmaßstab nach EN 17472:</strong> Durch die Normierung auf <InlineMath math="1\text{ m}^2" /> Deckfläche und Jahr (<InlineMath math="\text{kg CO}_2\text{e}/(\text{m}^2\cdot\text{a})" />) können unterschiedliche Brücken-Tragwerke über 100 Jahre objektiv verglichen werden.
-              </li>
+              <li><MdText text={inhalt.texte.derStauImpactIm} />{formatDeZahl(results.beton.b8, 0)}<MdText text={inhalt.texte.tCoEEinen} /></li>
+              <li><MdText text={inhalt.texte.materialspezifischeLebenszyklusEigenscha} /></li>
+              <li><MdText text={inhalt.texte.vergleichsmaßstabNachEn17472} /></li>
             </ul>
           </div>
         </div>

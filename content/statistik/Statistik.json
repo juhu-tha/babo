@@ -1,0 +1,179 @@
+{
+  "texte": {
+    "statistikAuswertung": "Statistik & Auswertung",
+    "mathematischStatistischeAuswertungVon": "Mathematisch-statistische Auswertung von Baustoffuntersuchungen zur Ermittlung charakteristischer Festigkeitswerte nach DIN EN 1990, Anhang D.",
+    "grundlagenBegriffserklärer": " Grundlagen & Begriffserklärer",
+    "statistischeVersuchsplanungDoe": " Statistische Versuchsplanung (DoE)",
+    "statistischeAuswertungVonMaterialkennwer": "**Statistische Auswertung von Materialkennwerten:** Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.",
+    "interaktiverStatistikBegriffserklärerBau": "Interaktiver Statistik-Begriffserklärer (Baustoff-Prüfsandbox)",
+    "anleitungZiehenSieDie": "**Anleitung:** Ziehen Sie die kreisförmigen Proben (P1 bis P6) **direkt im Diagramm** nach links/rechts, nutzen Sie die Zylinderschieberegler darunter oder schalten Sie zwischen der **Dichte-** und **Verteilungsfunktion** um!",
+    "dichtefunktionPdfGlocke": "Dichtefunktion (PDF / Glocke)",
+    "verteilungsfunktionCdfSKurve": "Verteilungsfunktion (CDF / S-Kurve)",
+    "glockenVerteilungsfunktionenDerNormalver": "Glocken- & Verteilungsfunktionen der Normalverteilung (MPa)",
+    "klickenZiehenSieDie": "Klicken & Ziehen Sie die Messpunkte",
+    "zerstörendePrüfungSimulierenZylinder": "Zerstörende Prüfung simulieren (Zylinder-Bohrkerne feineinstellen):",
+    "mittelwertArithmetischesMittel": "Mittelwert (Arithmetisches Mittel)",
+    "tippSchiebenSieProbe": "📈 Tipp: Schieben Sie Probe 6 ganz nach rechts (80) und beobachten Sie den Mittelwert!",
+    "derSchwerpunktDerWerte": "Der **Schwerpunkt** der Werte – wie bei einem Waagebalken. Jeder Wert zieht an der Waage. Ein extremer Ausreißer verschiebt den Mittelwert stark mit.",
+    "medianZentralwert": "Median (Zentralwert)",
+    "sortierteMessreihe": "Sortierte Messreihe: ",
+    "teiltDieSortierteStichprobe": "Teilt die sortierte Stichprobe exakt in **zwei Hälften** (50% kleiner, 50% größer). Der Median ist **robust gegen Ausreißer**: Egal wie hoch der Maximalwert ist – der Median bleibt in der Mitte der sortierten Reihe.",
+    "standardabweichungStreuungsbreite": "Standardabweichung (Streuungsbreite)",
+    "einMaßFürDie": "Ein Maß für die typische Abweichung der Einzelwerte vom Mittelwert (Wurzel aus der Varianz). Sie spannt das **gestreifte orange Band** im Diagramm auf. Je homogener die Werte (enger beieinander), desto geringer ist die Standardabweichung und desto schmaler das Band.",
+    "variationskoeffizientVarKoeff": "Variationskoeffizient (Var.Koeff.)",
+    "dasRelativeMaßFür": "Das relative Maß für die Streuung, normiert auf den Mittelwert. Macht die Streuung verschiedener Baustoffgüten direkt vergleichbar. Richtwerte: Transportbeton bei guter Produktionskontrolle etwa 8–12 %, Betonstahl meist unter 5 %, Bauholz 15–25 % (Orientierungswerte).",
+    "statistischeAuswertungVonMaterialkennwer2": "**Statistische Auswertung von Materialkennwerten (Probengenerator):** Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.",
+    "materialWählen": "Material wählen",
+    "anzahlDerPrüfwerteN": "Anzahl der Prüfwerte (n)",
+    "probenGenerieren": " Proben generieren",
+    "bereitFürDieAuswertung": "Bereit für die Auswertung.",
+    "klickenSieLinksAuf": "Klicken Sie links auf \"15 Proben generieren\".",
+    "generiereUndAnalysiere15": "Generiere und analysiere 15 Proben...",
+    "rohdatenAusreißertest": "Rohdaten & Ausreißertest (",
+    "wertEAlsAusreißer": " Wert(e) als Ausreißer markiert und von der Auswertung ausgeschlossen. In der Praxis nur mit technischer Begründung (z. B. Prüffehler) zulässig.",
+    "mittelwert": "Mittelwert (μ)",
+    "stdAbw": "Std.Abw. (σ)",
+    "varKoeffV": "Var.Koeff. (V)",
+    "bemessungswerteNachDinEn": "Bemessungswerte nach DIN EN 1990",
+    "bereinigterMittelwert": "Bereinigter Mittelwert",
+    "charaktWertXK": "Charakt. Wert (X_k)",
+    "t5QuantilDinEn": "5-%-Quantil, DIN EN 1990 Tab. D1 (k_n = ",
+    "bemessungswertXD": "Bemessungswert (X_d)"
+  },
+  "werte": {
+    "wirdNachGenerierungBerechnet": "Wird nach Generierung berechnet...",
+    "t2Faustregel": "± 2σ (Faustregel)",
+    "gültigeWerte": "Gültige Werte",
+    "mittelwertBereinigt": "Mittelwert (bereinigt)",
+    "charaktWertXK": "Charakt. Wert (X_k)",
+    "bemessungswertXD": "Bemessungswert (X_d)",
+    "ausreißerGrenzeOben": "Ausreißer-Grenze (Oben)",
+    "ausreißerGrenzeUnten": "Ausreißer-Grenze (Unten)",
+    "normalverteilungBereinigt": "Normalverteilung (bereinigt)",
+    "summeAllerEinzelwerteGeteilt": "Summe aller Einzelwerte geteilt durch die Anzahl n:",
+    "beiGeraderAnzahlIst": "Bei gerader Anzahl ist der Median der Mittelwert der beiden mittleren Werte der sortierten Reihe:",
+    "beiUngeraderAnzahlIst": "Bei ungerader Anzahl ist der Median der mittlere Wert der sortierten Reihe:",
+    "quadratsummeDerAbweichungen": "Quadratsumme der Abweichungen",
+    "jedeAbweichungVomMittelwert": "Jede Abweichung vom Mittelwert wird quadriert und aufsummiert:",
+    "standardabweichungDerStichprobe": "Standardabweichung der Stichprobe",
+    "geteiltDurchN1": "Geteilt durch n − 1 (Freiheitsgrade), dann die Wurzel gezogen:",
+    "streuungRelativZumMittelwert": "Streuung relativ zum Mittelwert:",
+    "verschiebenSieEinenMesswert": "Verschieben Sie einen Messwert im Diagramm oder per Regler – der Rechenweg rechnet sofort mit.",
+    "dinEn19902021": "DIN EN 1990:2021-10, Anhang D",
+    "beispiel1CharakteristischerWert": "Beispiel 1: Charakteristischer Wert aus 10 Bohrkernen",
+    "mitNurN3": "Mit nur n = 3 Kernen wäre k_n = 3,37 und X_k = 27,8 N/mm² – mehr Proben lohnen sich, weil der Sicherheitsabschlag für die unsichere Streuung sinkt.",
+    "dinEn199020212": "DIN EN 1990:2021-10, Anhang D, Tab. D1",
+    "beispiel2IstDer": "Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)",
+    "derTestZeigtNur": "Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten.",
+    "grubbsTestKritischeWerte": "Grubbs-Test, kritische Werte z. B. nach ISO 5725-2",
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "anzahlDerPrüfwerteN": "Anzahl der Prüfwerte (n)",
+    "vereinfachtOhneKMod": " (vereinfacht ohne k_mod nach DIN EN 1995-1-1)",
+    "oktober2026Ap42": "Oktober 2026 (AP 4 Labor: Probengenerator, Ausreißertests und Fraktilwerte geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "statistischeVersuchsplanung": "Statistische Versuchsplanung"
+  },
+  "daten": {
+    "Statistik.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Zehn Bohrkerne aus einer Bestandsdecke, Mittelwert 38,2 N/mm², Standardabweichung 3,1 N/mm²; Variationskoeffizient vorab unbekannt.",
+        "formel": "n = 10,\\quad \\bar{x} = 38{,}2,\\quad s = 3{,}1\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Fraktilfaktor",
+        "erklaerung": "DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt) für n = 10:",
+        "formel": "k_n = 1{,}92"
+      },
+      {
+        "titel": "Charakteristischer Wert",
+        "erklaerung": "5-%-Quantil mit Aussagewahrscheinlichkeit nach Anhang D:",
+        "formel": "X_k = 38{,}2 - 1{,}92 \\cdot 3{,}1 = 32{,}2\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Bemessungswert (vereinfacht)",
+        "erklaerung": "Mit γ_M = 1,5 (Beton) ohne weitere Beiwerte:",
+        "formel": "X_d = \\frac{32{,}2}{1{,}5} = 21{,}5\\,\\text{N/mm}^2"
+      }
+    ],
+    "Statistik.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "n = 10 Würfelergebnisse, Mittelwert 37,6 N/mm², s = 3,4 N/mm², verdächtiger Höchstwert 46,9 N/mm².",
+        "formel": "x_{ext} = 46{,}9\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Prüfgröße",
+        "erklaerung": "Abstand des Extremwerts in Vielfachen der Standardabweichung:",
+        "formel": "G = \\frac{46{,}9 - 37{,}6}{3{,}4} = 2{,}74"
+      },
+      {
+        "titel": "Vergleich",
+        "erklaerung": "Kritischer Wert (einseitig, α = 5 %) für n = 10:",
+        "formel": "G = 2{,}74 > G_{krit} = 2{,}18 \\;\\Rightarrow\\; \\text{auffällig}"
+      }
+    ],
+    "Statistik.literatur": [
+      "Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+      "DIN EN 1990:2021-10: Eurocode – Grundlagen der Tragwerksplanung, Anhang D: Versuchsgestützte Bemessung"
+    ],
+    "Statistik.regelwerke": [
+      {
+        "title": "DIN EN 1990:2021-10 mit NA, Anhang D (Versuchsgestützte Bemessung); Nachfolger DIN EN 1990 (EN 1990:2023) angekündigt"
+      },
+      {
+        "title": "ISO 2394:2015 (General principles on reliability for structures)",
+        "url": "https://www.iso.org/"
+      },
+      {
+        "title": "ISO 12491:1997-05 (Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen)"
+      }
+    ],
+    "Statistik.formeln": [
+      {
+        "formel": "s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\mu)^2}",
+        "erklaerung": "Empirische Standardabweichung:\ns: Standardabweichung\nn: Anzahl der Proben\nx_i: Einzelmesswert\nμ: Mittelwert",
+        "quelle": "Allgemeine Fachliteratur"
+      },
+      {
+        "formel": "v = \\frac{s}{\\mu}",
+        "erklaerung": "Variationskoeffizient:\nv: Variationskoeffizient (oft in %)\ns: Standardabweichung\nμ: Mittelwert",
+        "quelle": "Allgemeine Fachliteratur"
+      }
+    ],
+    "Statistik.literatur_2": [
+      "Montgomery, D. C.: Design and Analysis of Experiments. 9th ed., Hoboken: Wiley 2017",
+      "Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018"
+    ],
+    "Statistik.regelwerke_2": [
+      {
+        "title": "DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)"
+      },
+      {
+        "title": "DIN ISO 2859-1 (Annahmestichprobenprüfung)"
+      }
+    ],
+    "Statistik.formeln_2": [
+      {
+        "formel": "s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}",
+        "erklaerung": "Empirische Standardabweichung s zur quantitativen Erfassung der Messwertstreuung einer Stichprobe vom Umfang n um den arithmetischen Mittelwert.",
+        "quelle": "DIN ISO 3534-1"
+      },
+      {
+        "formel": "v = \\frac{s}{\\bar{x}} \\cdot 100\\,\\%",
+        "erklaerung": "Variationskoeffizient v als dimensionsloses relatives Streumaß (Standardabweichung bezogen auf den Mittelwert).",
+        "quelle": "DIN ISO 3534-1"
+      },
+      {
+        "formel": "X_k = \\bar{x} - k_n \\cdot s",
+        "erklaerung": "Charakteristischer Kennwert (5 %-Fraktil) nach DIN EN 1990 Anhang D unter Berücksichtigung des Stichprobenfaktors k_n für unbekannte Varianz.",
+        "quelle": "DIN EN 1990 Anhang D"
+      },
+      {
+        "formel": "X_d = \\frac{X_k}{\\gamma_M}",
+        "erklaerung": "Bemessungswert X_d für den Grenzzustand der Tragfähigkeit (GZT) unter Abminderung durch den materialspezifischen Teilsicherheitsbeiwert γ_M.",
+        "quelle": "DIN EN 1990"
+      }
+    ]
+  }
+}

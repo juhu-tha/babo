@@ -1,0 +1,70 @@
+{
+  "texte": {
+    "vollständigerAkademischerWissensbaumDes": "Vollständiger akademischer Wissensbaum des BaustoffBoards TH Augsburg · Gleichzeitige Anzeige aller Fachmodule, Rechner und Normen",
+    "alleAufklappen": "Alle aufklappen",
+    "alleEinklappen": "Alle einklappen",
+    "moduleGesamt": "Module gesamt",
+    "interaktiveRechner": "Interaktive Rechner",
+    "normbezügeDinEn": "Normbezüge (DIN/EN)",
+    "rootDirectory": "Root Directory",
+    "thaBaustoffboard": "THA BaustoffBoard · ",
+    "gesamterAkademischerLehrWerkstoffbaum": "Gesamter akademischer Lehr- & Werkstoffbaum",
+    "didaktischerLeitfaden6Prüfdimensionen": "Didaktischer Leitfaden & 6 Prüfdimensionen der Qualitätssicherung",
+    "erfahrenSieMehrÜber": "Erfahren Sie mehr über die curriculare Gliederung, den 4-Stufen-Lehrpfad und die akkreditierungskonforme Ausrichtung im Modul **Anleitung**.",
+    "zurAnleitung": "Zur Anleitung "
+  },
+  "werte": {
+    "allgemeinSystem": "Allgemein & System",
+    "campusPortalNavigationHandbuch": "Campus-Portal, Navigation, Handbuch & Dokumentation",
+    "grundlagenLabor": "Grundlagen & Labor",
+    "stoffphysikBauchemieWerkstoffmechanikBau": "Stoffphysik, Bauchemie, Werkstoffmechanik, Bauphysik & Prüftechnik",
+    "materialienProdukte": "Materialien & Produkte",
+    "werkstoffkundeSchichtenverbundeFaserverb": "Werkstoffkunde, Schichtenverbunde, Faserverbund, Schutzschichten & Bauproduktenrecht",
+    "entwurfBemessung": "Entwurf & Bemessung",
+    "betontechnologieStahlbetonbauEc2": "Betontechnologie, Stahlbetonbau (EC 2), Ingenieurholzbau (EC 5) & Innenausbau",
+    "bestandNachhaltigkeit": "Bestand & Nachhaltigkeit",
+    "bauwerksdiagnoseZfpSchadensatlasDauerhaf": "Bauwerksdiagnose (ZfP), Schadensatlas, Dauerhaftigkeit, Instandsetzung, Rückbau & LCA",
+    "digitalesPraxis": "Digitales & Praxis",
+    "bimKünstlicheIntelligenzAva": "BIM, Künstliche Intelligenz, AVA, Bauleitung, Bautagebuch, Software & Kuriositäten",
+    "studiumLehre": "Studium & Lehre",
+    "vorlesungsportalThaBaustofflaborÜbungsau": "Vorlesungsportal THA, Baustofflabor, Übungsaufgaben, Beispielrechnungen, Weiterbildung & Thesen",
+    "moduleRechnerNormenOder": "Module, Rechner, Normen oder Stichwörter im Wissensbaum suchen...",
+    "vollständigerBaumMitVerbindungslinien": "Vollständiger Baum mit Verbindungslinien (Standard)",
+    "spaltenBaumMultiColumn": "Spalten-Baum (Multi-Column Grid)",
+    "curriculumPädagogik": "Curriculum (Pädagogik)",
+    "blendedLearning": "Blended Learning"
+  },
+  "daten": {
+    "Modulstruktur.literatur": [
+      "Modulhandbuch Bachelor Bauingenieurwesen (Fakultät für Architektur und Bauwesen, TH Augsburg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+    ],
+    "Modulstruktur.regelwerke": [
+      {
+        "title": "Allgemeine Prüfungsordnung (APO THA)",
+        "url": "https://www.tha.de/"
+      },
+      {
+        "title": "ASIIN-Fachkriterien für die Akkreditierung von Bauingenieurstudiengängen (Fachausschuss 02)",
+        "url": "https://www.asiin.de/"
+      },
+      {
+        "title": "Bayerisches Hochschulinnovationsgesetz (BayHIG)",
+        "url": "https://www.gesetze-bayern.de/"
+      }
+    ],
+    "Modulstruktur.formeln": [
+      {
+        "formel": "\\sum \\text{ECTS}_{\\text{Bachelor}} = 210\\,\\text{CP} \\quad \\Longleftrightarrow \\quad \\text{Workload} = 210 \\cdot 30\\,\\text{h} = 6300\\,\\text{h}",
+        "erklaerung": "ECTS-Workload-Bilanzierung nach dem European Credit Transfer and Accumulation System (ECTS): 1 Credit Point entspricht 25 bis 30 Arbeitsstunden für Präsenzstudium, Selbststudium und Prüfungsvorbereitung.",
+        "quelle": "Bayerisches Hochschulinnovationsgesetz / ECTS User’s Guide"
+      },
+      {
+        "formel": "\\text{Semester-Workload} = 30\\,\\text{ECTS} \\cdot 30\\,\\frac{\\text{h}}{\\text{ECTS}} = 900\\,\\text{h} \\approx 40\\,\\frac{\\text{h}}{\\text{Woche}}",
+        "erklaerung": "Konzeptioneller Vollzeit-Arbeitsaufwand je Studiensemester bei 30 ECTS und einer rechnerischen Vorlesungs- und Prüfungszeit von ca. 22-23 Wochen.",
+        "quelle": "ASIIN-Akkreditierungsrichtlinie"
+      }
+    ]
+  }
+}

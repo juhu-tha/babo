@@ -2,6 +2,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Layers, Calculator, AlertTriangle, Milestone, Droplets } from 'lucide-react';
+import inhalt from '@/content/bpverkehrswegebau/BetondeckenTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface BetondeckenTabProps {
   betonAchslast: number;
@@ -30,30 +32,17 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
       {/* Academic Briefing banner */}
       <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 space-y-3">
         <h3 className="font-bold text-text-main text-sm uppercase tracking-wider flex items-center gap-2">
-          <Layers size={16} className="text-shiraz" />
-          Fahrbahndecken aus Beton nach ZTV Beton-StB &amp; RLaO
-        </h3>
-        <p className="text-xs text-text-main/80 leading-relaxed">
-          Fahrbahndecken aus Beton (starre Befestigungen) haben eine hohe Tragfähigkeit und bilden <strong>keine Spurrinnen durch plastische Verformung</strong>. Sie erreichen oft Nutzungsdauern von <span className="font-bold">mehr als 30 Jahren</span>. 
-          Die konstruktiven Kriterien für Autobahnen und Bundesstraßen sind in den <strong>Zusätzlichen Technischen Vertragsbedingungen für Fahrbahndecken aus Beton (ZTV Beton-StB)</strong> sowie in den <strong>RDO Beton</strong> (Richtlinien für die rechnerische Dimensionierung von Betondecken) verankert.
-        </p>
+          <Layers size={16} className="text-shiraz" /><MdText text={inhalt.texte.fahrbahndeckenAusBetonNach} /></h3>
+        <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.fahrbahndeckenAusBetonStarre} /><span className="font-bold"><MdText text={inhalt.texte.mehrAls30Jahren} /></span><MdText text={inhalt.texte.dieKonstruktivenKriterienFür} /></p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-1 text-[11px]">
           <div className="bg-white p-2.5 rounded border border-zinc-200">
-            <span className="font-bold text-shiraz block">Betonfestigkeit</span>
-            Standardmäßig <strong>C30/37</strong> (Biegezugprüfung m_fct,sp ≥ 4,5 MPa).
-          </div>
+            <span className="font-bold text-shiraz block">Betonfestigkeit</span><MdText text={inhalt.texte.standardmäßigC3037Biegezugprüfung} /></div>
           <div className="bg-white p-2.5 rounded border border-zinc-200">
-            <span className="font-bold text-shiraz block">Expositionsklassen</span>
-            <strong>XF4 &amp; XM2</strong> (sehr hoher Frost-Tausalz- &amp; mechanischer Verschleiß-Widerstand).
-          </div>
+            <span className="font-bold text-shiraz block">Expositionsklassen</span><MdText text={inhalt.texte.xf4Xm2SehrHoher} /></div>
           <div className="bg-white p-2.5 rounded border border-zinc-200">
-            <span className="font-bold text-shiraz block">Oberflächentextur</span>
-            Waschbeton-Struktur (Erzeugung eines rauen Freilegens des Edelsplitts zur Lärmreduktion).
-          </div>
+            <span className="font-bold text-shiraz block">Oberflächentextur</span><MdText text={inhalt.texte.waschbetonStrukturErzeugungEines} /></div>
           <div className="bg-white p-2.5 rounded border border-zinc-200">
-            <span className="font-bold text-shiraz block">Wassereinfluss</span>
-            Gefährdung durch <strong>Alkali-Kieselsäure-Reaktion (AKR)</strong> bei reaktivem Quarz und Tausalz.
-          </div>
+            <span className="font-bold text-shiraz block">Wassereinfluss</span><MdText text={inhalt.texte.gefährdungDurchAlkaliKieselsäure} /></div>
         </div>
       </div>
 
@@ -66,18 +55,14 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
           {/* Panel 1: Plattendicken-Dimensionierer (Westergaard) */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h4 className="font-extrabold text-sm text-text-main flex items-center gap-1 border-b border-zinc-100 pb-2">
-              <Calculator size={15} className="text-shiraz" />
-              1. Plattenstärken-Prüfer (elastischer Halbraum nach Westergaard)
-            </h4>
-            <p className="text-[11px] text-gray-500 leading-normal">
-              Berechnet die kritische Biegezugspannung am unbelasteten Plattenrand (kritischster Lastfall im Fugenkantenbereich) nach der klassischen Westergaard-Gleichung für den Plattenrand (Lehrmodell).
-            </p>
+              <Calculator size={15} className="text-shiraz" /><MdText text={inhalt.texte.t1PlattenstärkenPrüferElastischer} /></h4>
+            <p className="text-[11px] text-gray-500 leading-normal"><MdText text={inhalt.texte.berechnetDieKritischeBiegezugspannung} /></p>
 
             <div className="space-y-4">
               {/* Plattendicke h */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Deckendicke (h):</span>
+                  <span><MdText text={inhalt.texte.deckendickeH} /></span>
                   <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonSlabThickness)} cm</span>
                 </div>
                 <input 
@@ -90,15 +75,15 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   className="w-full accent-shiraz" 
                 />
                 <div className="flex justify-between text-[10px] text-zinc-400">
-                  <span>Typisch Bk0.3: 18-20 cm</span>
-                  <span>Autobahn Bk100: 28-30 cm/WASH-Beton</span>
+                  <span><MdText text={inhalt.texte.typischBk0318} /></span>
+                  <span><MdText text={inhalt.texte.autobahnBk1002830} /></span>
                 </div>
               </div>
 
               {/* Belastungsklasse & Achslast P */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Bemessungs-Achsübergang (P_achse):</span>
+                  <span><MdText text={inhalt.texte.bemessungsAchsübergangPAchse} /></span>
                   <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonAchslast)} kN</span>
                 </div>
                 <input 
@@ -110,15 +95,13 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   onChange={(e) => setBetonAchslast(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
-                <div className="text-[10px] text-zinc-500">
-                  Radlast (P_rad) = P_achse / 2 = {formatDeZahl((betonAchslast / 2), 0)} kN. Typisches Lkw-Rad für Dimensionierungen.
-                </div>
+                <div className="text-[10px] text-zinc-500"><MdText text={inhalt.texte.radlastPRadP} />{formatDeZahl((betonAchslast / 2), 0)}<MdText text={inhalt.texte.knTypischesLkwRad} /></div>
               </div>
 
               {/* Bettungsmodul k */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Bettungsmodul des Unterbaus (k-Wert):</span>
+                  <span><MdText text={inhalt.texte.bettungsmodulDesUnterbausK} /></span>
                   <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonBettung)} MN/m³</span>
                 </div>
                 <input 
@@ -131,8 +114,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   className="w-full accent-shiraz" 
                 />
                 <div className="flex justify-between text-[10px] text-zinc-400">
-                  <span>Erdbau (weich): 30 MN/m³</span>
-                  <span>Stabile HGT/Zement: 100-120 MN/m³</span>
+                  <span><MdText text={inhalt.texte.erdbauWeich30Mn} /></span>
+                  <span><MdText text={inhalt.texte.stabileHgtZement100} /></span>
                 </div>
               </div>
 
@@ -163,21 +146,21 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
                 return (
                   <div className="bg-zinc-50 p-4 border border-zinc-200 rounded-lg space-y-3 mt-3 text-xs">
-                    <h5 className="font-bold text-zinc-800">Spannungsermittlung nach Westergaard-Theorie:</h5>
+                    <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.spannungsermittlungNachWestergaardTheori} /></h5>
                     <div className="grid grid-cols-2 font-mono gap-y-1 text-[11px]">
-                      <div className="text-zinc-500">Radaufstandsfläche (r_t):</div>
+                      <div className="text-zinc-500"><MdText text={inhalt.texte.radaufstandsflächeRT} /></div>
                       <div className="text-right text-zinc-800">ø {formatDeZahl((r_mm * 2 / 10), 1)} cm (r = {formatDeZahl(r_mm, 0)} mm)</div>
                       
-                      <div className="text-zinc-500">Elastische Steifigkeitslänge (l):</div>
+                      <div className="text-zinc-500"><MdText text={inhalt.texte.elastischeSteifigkeitslängeL} /></div>
                       <div className="text-right text-zinc-800">{formatDeZahl((l_mm / 10), 1)} cm (l = {formatDeZahl(l_mm, 0)} mm)</div>
 
-                      <div className="text-zinc-500">Berechnete Dehnspannung (σ_e):</div>
+                      <div className="text-zinc-500"><MdText text={inhalt.texte.berechneteDehnspannungE} /></div>
                       <div className="text-right text-shiraz font-black">{formatDeZahl(sigma_e, 2)} N/mm² (MPa)</div>
 
-                      <div className="text-zinc-500">Zul. Dehnspannung (Dauerlast):</div>
+                      <div className="text-zinc-500"><MdText text={inhalt.texte.zulDehnspannungDauerlast} /></div>
                       <div className="text-right text-emerald-800 font-bold">{formatDeZahl(allowed_sigma, 2)} N/mm²</div>
 
-                      <div className="text-zinc-500">Ausnutzungsgrad (η_Biege):</div>
+                      <div className="text-zinc-500"><MdText text={inhalt.texte.ausnutzungsgradBiege} /></div>
                       <div className={`text-right font-black ${isThicknessOK ? 'text-emerald-700' : 'text-red-700'}`}>{formatDeZahl(ratio, 1)} %</div>
                     </div>
 
@@ -185,9 +168,9 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                       isThicknessOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-red-50 text-red-800 border-red-200'
                     }`}>
                       {isThicknessOK ? (
-                        <span>✓ <strong>Dimensionierung ausreichend!</strong> Die Betondecke mit d = {formatDeWert(betonSlabThickness)} cm hält den Dauer-Biegezugspannungen der Lkw-Verkehrslast stand.</span>
+                        <span><MdText text={inhalt.texte.dimensionierungAusreichendDieBetondecke} />{formatDeWert(betonSlabThickness)}<MdText text={inhalt.texte.cmHältDenDauer} /></span>
                       ) : (
-                        <span>✗ <strong>MANGELHAFT (Bruchgefahr):</strong> Die Randspannung übersteigt die angesetzte Biegezugfestigkeit – Rissgefahr. Erhöhen Sie d oder verbessern Sie die Bettung (k-Wert).</span>
+                        <span><MdText text={inhalt.texte.mangelhaftBruchgefahrDieRandspannung} /></span>
                       )}
                     </div>
                   </div>
@@ -199,18 +182,14 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
           {/* Panel 2: LP-Frischbetongehalts-Rechner */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h4 className="font-extrabold text-sm text-text-main flex items-center gap-1.5 border-b border-zinc-100 pb-2">
-              <Droplets size={15} className="text-shiraz" />
-              2. Frost-Tausalz-LP-Prüfer (ZTV Beton-StB)
-            </h4>
-            <p className="text-[11px] text-gray-500 leading-normal">
-              Fahrbahndecken erhalten künstliche Mikroluftporen (LP-Mittel), die den Druck gefrierenden Wassers abbauen. Die Mindest-LP-Gehälter hängen vom Größtkorn ab (Grenzwerte im Rechner: Lehrwerte, maßgebend ZTV Beton-StB).
-            </p>
+              <Droplets size={15} className="text-shiraz" /><MdText text={inhalt.texte.t2FrostTausalzLp} /></h4>
+            <p className="text-[11px] text-gray-500 leading-normal"><MdText text={inhalt.texte.fahrbahndeckenErhaltenKünstlicheMikroluf} /></p>
 
             <div className="space-y-3">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-text-main mb-1">Maximales Größtkorn:</label>
-                  <select aria-label="Maximales Größtkorn" 
+                  <label className="block text-xs font-semibold text-text-main mb-1"><MdText text={inhalt.texte.maximalesGrößtkorn} /></label>
+                  <select aria-label={inhalt.werte.maximalesGrößtkorn} 
                     value={betonMaxAggregateSize}
                     onChange={(e) => setBetonMaxAggregateSize(parseInt(e.target.value) as 32 | 22)}
                     className="w-full text-xs p-2 rounded-lg border border-zinc-200 font-sans"
@@ -221,9 +200,9 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-text-main mb-1">Gemessener Luftporenhintergrund:</label>
+                  <label className="block text-xs font-semibold text-text-main mb-1"><MdText text={inhalt.texte.gemessenerLuftporenhintergrund} /></label>
                   <div className="flex items-center gap-2">
-                    <input aria-label="Gemessener Luftporenhintergrund" 
+                    <input aria-label={inhalt.werte.gemessenerLuftporenhintergrund} 
                       type="number" 
                       step="0.1"
                       min="2"
@@ -262,7 +241,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                 return (
                   <div className={`p-3 rounded-lg border space-y-1.5 text-xs ${lpColor}`}>
                     <div className="font-bold flex justify-between items-center">
-                      <span>Soll-LP-Bereich für GK {betonMaxAggregateSize}:</span>
+                      <span><MdText text={inhalt.texte.sollLpBereichFür} />{betonMaxAggregateSize}:</span>
                       <span className="font-mono">{formatDeWert(reqMin)}% bis {formatDeWert(reqMax)}%</span>
                     </div>
                     <p className="leading-relaxed text-[11px] font-sans">
@@ -283,18 +262,14 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
           {/* Panel 3: Fugen-Dimensionierung (Joint Config) */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h4 className="font-extrabold text-sm text-text-main flex items-center gap-1.5 border-b border-zinc-100 pb-2">
-              <Milestone size={15} className="text-shiraz" />
-              3. Fugengeometrie &amp; Bewehrungsbedarf
-            </h4>
-            <p className="text-[11px] text-gray-500 leading-normal">
-              Fahrstreifendecken im Straßenbau werden thermisch bedingt segmentiert. Zu lange unbewehrte Platten reißen unkontrolliert.
-            </p>
+              <Milestone size={15} className="text-shiraz" /><MdText text={inhalt.texte.t3FugengeometrieBewehrungsbedarf} /></h4>
+            <p className="text-[11px] text-gray-500 leading-normal"><MdText text={inhalt.texte.fahrstreifendeckenImStraßenbauWerden} /></p>
 
             <div className="space-y-4">
               {/* Fugenabstand L */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Längsabstand der Scheinfugen (Plattenlänge L):</span>
+                  <span><MdText text={inhalt.texte.längsabstandDerScheinfugenPlattenlänge} /></span>
                   <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(betonFugenAbstand, 1)} m</span>
                 </div>
                 <input 
@@ -307,8 +282,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   className="w-full accent-shiraz" 
                 />
                 <div className="flex justify-between text-[10px] text-zinc-400">
-                  <span>ZTV Standard: ≤ 5,0 m</span>
-                  <span>Kritischer Baufehler: &gt; 5,0 m</span>
+                  <span><MdText text={inhalt.texte.ztvStandard50} /></span>
+                  <span><MdText text={inhalt.texte.kritischerBaufehler50} /></span>
                 </div>
               </div>
 
@@ -329,17 +304,17 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                       isFugenOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-rose-50 text-rose-800 border-red-200'
                     }`}>
                       {isFugenOK ? (
-                        <span>✓ <strong>Fugenabstand konform:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m ist kleiner als das Maximum von {formatDeZahl(maxAllowedL, 2)} m (Lehrannahme: ≤ 25·h und ≤ 5,0 m).</span>
+                        <span><MdText text={inhalt.texte.fugenabstandKonformL} />{formatDeZahl(betonFugenAbstand, 1)}<MdText text={inhalt.texte.mIstKleinerAls} />{formatDeZahl(maxAllowedL, 2)}<MdText text={inhalt.texte.mLehrannahme25H} /></span>
                       ) : (
-                        <span>✗ <strong>Rissgefahr:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m übersteigt den rechnerischen Grenzwert ({formatDeZahl(maxAllowedL, 2)} m) für unbewehrte Platten – unkontrollierte Querrisse sind zu erwarten.</span>
+                        <span><MdText text={inhalt.texte.rissgefahrL} />{formatDeZahl(betonFugenAbstand, 1)}<MdText text={inhalt.texte.mÜbersteigtDenRechnerischen} />{formatDeZahl(maxAllowedL, 2)}<MdText text={inhalt.texte.mFürUnbewehrtePlatten} /></span>
                       )}
                     </div>
 
                     <div className="border-t border-zinc-200 pt-2.5 space-y-1.5 font-sans">
-                      <span className="font-bold text-zinc-700 block text-xs">Konstruktive Fugenausführung pro Platte (ZTV):</span>
+                      <span className="font-bold text-zinc-700 block text-xs"><MdText text={inhalt.texte.konstruktiveFugenausführungProPlatte} /></span>
                       <ul className="list-disc pl-4 space-y-1 text-[11px] text-zinc-650 font-sans">
-                        <li>Querscheinfugen: <strong>{dowelCount}x Runddübel (ø 25 mm, l = 500 mm)</strong> auf Dübelkörben. Sie übertragen Querkräfte und verhindern Stufenbildung an den Fugen.</li>
-                        <li>Längsscheinfugen: <strong>{tieBarCount}x profilierte Anker (ø 20 mm, l = 800 mm)</strong> zur Verhinderung von Längskampf-Auseinanderdriften der Spurplatten.</li>
+                        <li>Querscheinfugen: <strong>{dowelCount}<MdText text={inhalt.texte.xRunddübel25Mm} /></strong><MdText text={inhalt.texte.aufDübelkörbenSieÜbertragen} /></li>
+                        <li>Längsscheinfugen: <strong>{tieBarCount}<MdText text={inhalt.texte.xProfilierteAnker20} /></strong><MdText text={inhalt.texte.zurVerhinderungVonLängskampf} /></li>
                       </ul>
                     </div>
                   </div>
@@ -352,18 +327,14 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
           {/* Panel 4: Alkali-Kieselsäure-Reaktion (AKR) / Betonkrebs */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h4 className="font-extrabold text-sm text-[#A3113E] flex items-center gap-1.5 border-b border-zinc-100 pb-2 font-sans">
-              <AlertTriangle size={15} />
-              4. Alkali-Kieselsäure-Reaktion (AKR) Screening
-            </h4>
-            <p className="text-[11px] text-gray-500 leading-normal">
-              Die zerstörerische AKR ("Betonkrebs") tritt auf, wenn amorphe Kieselsäuren in der Gesteinskörnung mit Alkalien aus dem Zement unter Wassereinfluss (Sprühnebel + Tausalz) ein quellfähiges Alkalisilikatgel bilden. Dies zersprengt den Beton von innen.
-            </p>
+              <AlertTriangle size={15} /><MdText text={inhalt.texte.t4AlkaliKieselsäureReaktion} /></h4>
+            <p className="text-[11px] text-gray-500 leading-normal"><MdText text={inhalt.texte.dieZerstörerischeAkrBetonkrebs} /></p>
 
             <div className="space-y-3 text-xs">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-text-main mb-1">Gesteinskörnung (Edelsplitt):</label>
-                  <select aria-label="Gesteinskörnung (Edelsplitt)" 
+                  <label className="block text-[11px] font-bold text-text-main mb-1"><MdText text={inhalt.texte.gesteinskörnungEdelsplitt} /></label>
+                  <select aria-label={inhalt.werte.gesteinskörnungEdelsplitt} 
                     value={betonAggregate}
                     onChange={(e) => setBetonAggregate(e.target.value as "basalt" | "kalk" | "quarz")}
                     className="w-full text-xs p-2 rounded border border-zinc-200 bg-white"
@@ -375,8 +346,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-text-main mb-1">Alkaligehalt des Zements:</label>
-                  <select aria-label="Alkaligehalt des Zements" 
+                  <label className="block text-[11px] font-bold text-text-main mb-1"><MdText text={inhalt.texte.alkaligehaltDesZements} /></label>
+                  <select aria-label={inhalt.werte.alkaligehaltDesZements} 
                     value={betonCementAlkali}
                     onChange={(e) => setBetonCementAlkali(e.target.value as "low" | "high")}
                     className="w-full text-xs p-1.5 rounded border border-zinc-200 bg-white"
@@ -395,18 +366,18 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
                 if (betonAggregate === 'quarz') {
                   if (betonCementAlkali === 'high') {
-                    riskTitle = "AKUTES SCHADENSRISIKO (Betonkrebs-Gefahr EXTREM HOCH!)";
+                    riskTitle = inhalt.werte.akutesSchadensrisikoBetonkrebsGefahr;
                     riskColor = "bg-red-50 text-red-800 border-red-200";
-                    riskAdvice = "Alkaliempfindliche Gesteinskörnung mit üblichem Zement und Tausalzzufuhr (Feuchtigkeitsklasse WS): hohes AKR-Risiko, Schäden können nach einigen Jahren auftreten. Unzulässig ohne Gutachten bzw. Maßnahmen nach Alkali-Richtlinie, TL Beton-StB und den jeweils aktuellen ARS (WS ist nicht Teil der DIN 1045-2).";
+                    riskAdvice = inhalt.werte.alkaliempfindlicheGesteinskörnungMitÜbli;
                   } else {
-                    riskTitle = "Mäßiges Risiko (Beherrscht durch NA-Zement)";
+                    riskTitle = inhalt.werte.mäßigesRisikoBeherrschtDurch;
                     riskColor = "bg-amber-50 text-amber-800 border-amber-200";
-                    riskAdvice = "Ein Zement mit niedrigem wirksamen Alkaligehalt (NA-Zement, Na2O-Äquivalent ≤ 0,60 %) senkt den Alkalieintrag aus dem Zement. Bei Feuchtigkeitsklasse WS bleibt äußere Alkalizufuhr durch Tausalz – Gesteinskörnung muss geprüft sein.";
+                    riskAdvice = inhalt.werte.einZementMitNiedrigem;
                   }
                 } else {
-                  riskTitle = "Geringes AKR-Risiko";
+                  riskTitle = inhalt.werte.geringesAkrRisiko;
                   riskColor = "bg-emerald-50 text-emerald-800 border-emerald-100";
-                  riskAdvice = "Gesteinskörnungen der Alkaliempfindlichkeitsklasse E I (z. B. viele Kalksteine) gelten als unbedenklich. Fahrbahndecken gehören stets zur Feuchtigkeitsklasse WS.";
+                  riskAdvice = inhalt.werte.gesteinskörnungenDerAlkaliempfindlichkei;
                 }
 
                 return (
@@ -422,14 +393,14 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                         onClick={() => setBetonShowAKRDetails(!betonShowAKRDetails)}
                         className="text-[10px] font-bold underline hover:opacity-80 cursor-pointer"
                       >
-                        {betonShowAKRDetails ? 'Zusammenfassung ausblenden' : 'Technische Erläuterungen einblenden...'}
+                        {betonShowAKRDetails ? inhalt.werte.zusammenfassungAusblenden : inhalt.werte.technischeErläuterungenEinblenden}
                       </button>
                       {betonShowAKRDetails && (
                         <div className="mt-2 text-[10px] bg-white/60 p-2 rounded border border-current leading-relaxed space-y-1 leading-normal">
-                          <div><strong>Chemismus der AKR:</strong></div>
-                          <div>1. Gelbildungsverfahren: SiO_2 (Gesteinskörnung) + 2 NaOH (Zement) + H_2O → Na_2SiO_3·H_2O (Alkaligel)</div>
-                          <div>2. Volumendehnung: Das Gel zieht im Frost-Tausalz-Zyklus kapillares Wasser an und quillt massiv auf.</div>
-                          <div>3. Zerrüttung: Überschreitet der Spaltdruck die Zugfestigkeit des Betons (ca. 3,0 MPa), zerreißt das monolithische Aggregatgefüge netzartig.</div>
+                          <div><MdText text={inhalt.texte.chemismusDerAkr} /></div>
+                          <div><MdText text={inhalt.texte.t1GelbildungsverfahrenSio2} /></div>
+                          <div><MdText text={inhalt.texte.t2VolumendehnungDasGel} /></div>
+                          <div><MdText text={inhalt.texte.t3ZerrüttungÜberschreitetDer} /></div>
                         </div>
                       )}
                     </div>

@@ -5,6 +5,8 @@ import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
 import type { ExtendedSteelGrade, StructuralProfile } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
+import inhalt from '@/content/stahl/Stahlsorten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface StahlsortenProps {
   activeGradedData: ExtendedSteelGrade;
@@ -31,38 +33,35 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
             <div className="p-1.5 bg-shiraz/10 rounded-lg text-shiraz">
               <BookOpen size={18} />
             </div>
-            <h3 className="text-lg font-bold text-text-main">Systematik der Stahlbezeichnung (DIN EN 10027-1)</h3>
+            <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.systematikDerStahlbezeichnungDin} /></h3>
           </div>
-          <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Baustähle werden im Bauwesen standardisiert benannt. Die Kurzbezeichnung schlüsselt mechanische Mindestwerte, technologische Zähigkeiten, Herstellungsverfahren und Lieferzustände präzise auf:
-          </p>
+          <p className="text-sm text-text-main/80 mb-4 leading-relaxed"><MdText text={inhalt.texte.baustähleWerdenImBauwesen} /></p>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-sm mb-4">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
               <span className="font-black text-shiraz text-2xl mb-1">S</span>
               <span className="font-bold text-xs text-slate-500 uppercase tracking-widest mb-1">Stahltyp</span>
-              <p className="text-xs text-text-main/85"><strong>Structural Steel:</strong> Kennzeichnet den herkömmlichen Verwendungszweck als tragender Baustahl.</p>
+              <p className="text-xs text-text-main/85"><MdText text={inhalt.texte.structuralSteelKennzeichnetDen} /></p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
               <span className="font-black text-shiraz text-2xl mb-1">355</span>
               <span className="font-bold text-xs text-slate-500 uppercase tracking-widest mb-1">Streckgrenze</span>
-              <p className="text-xs text-text-main/85">Nennwert der Mindeststreckgrenze <InlineMath math="f_y" /> in N/mm² (MPa) für Bauteildicken <InlineMath math="t \le 16\text{ mm}" />.</p>
+              <p className="text-xs text-text-main/85"><MdText text={inhalt.texte.nennwertDerMindeststreckgrenzeF} /></p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
               <span className="font-black text-shiraz text-2xl mb-1">J2</span>
               <span className="font-bold text-xs text-slate-500 uppercase tracking-widest mb-1">Zähigkeitsstufe</span>
-              <p className="text-xs text-text-main/85">Kerbschlagarbeit mind. <strong>27 Joule</strong> bei <strong>-20 °C</strong>. Sichert das Tragwerk optimal gegen Sprödbruch.</p>
+              <p className="text-xs text-text-main/85"><MdText text={inhalt.texte.kerbschlagarbeitMind27Joule} /></p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
               <span className="font-black text-shiraz text-2xl mb-1">+N</span>
               <span className="font-bold text-xs text-slate-500 uppercase tracking-widest mb-1">Lieferzustand</span>
-              <p className="text-xs text-text-main/85"><strong>Normalisierend gewalzt</strong> bzw. normalgeglüht (+N). Weitere Zustände: thermo-mechanisch (+M).</p>
+              <p className="text-xs text-text-main/85"><MdText text={inhalt.texte.normalisierendGewalztBzwNormalgeglüht} /></p>
             </div>
           </div>
 
           <div className="p-3.5 bg-shiraz/5 text-shiraz rounded-xl border border-shiraz/10 text-center font-mono text-xs md:text-sm font-bold flex items-center justify-center gap-2">
-            <Sparkles size={16} /> Entschlüsseltes Praxisbeispiel: <span className="underline decoration-wavy text-text-main">S355J2+N</span> (Baustahl mit fy = 355 MPa, kerbschlagzäh bei -20°C, normalbehandelt)
-          </div>
+            <Sparkles size={16} /><MdText text={inhalt.texte.entschlüsseltesPraxisbeispiel} /><span className="underline decoration-wavy text-text-main">S355J2+N</span><MdText text={inhalt.texte.baustahlMitFy355} /></div>
         </div>
 
         {/* 2. FACHWISSEN: BEWEHRUNGSSTÄHLE & SPANNSTÄHLE IM BETONBAU */}
@@ -73,12 +72,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                 <Layers size={20} />
               </div>
               <div>
-                <h4 className="text-base font-bold text-text-main">
-                  Fachwissen: Bewehrungsstähle &amp; Spannstähle im Beton- &amp; Spannbetonbau
-                </h4>
-                <p className="text-xs text-text-main/70">
-                  Normative Grundlagen nach DIN 488, Spannstahl-Zulassungen (abZ; prEN 10138 nur Entwurf) und Eurocode 2 (DIN EN 1992-1-1)
-                </p>
+                <h4 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.fachwissenBewehrungsstähleSpannstähleIm} /></h4>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.normativeGrundlagenNachDin} /></p>
               </div>
             </div>
 
@@ -90,9 +85,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       ? 'bg-shiraz text-white shadow-xs' 
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
-              >
-                Bewehrungsstähle (DIN 488 / EC2)
-              </button>
+              ><MdText text={inhalt.texte.bewehrungsstähleDin488Ec2} /></button>
               <button aria-pressed={reinforcementDeepDiveTab === 'spannstahl'}
                 onClick={() => setReinforcementDeepDiveTab('spannstahl')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -100,9 +93,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       ? 'bg-shiraz text-white shadow-xs' 
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
-              >
-                Spannstähle (abZ / prEN 10138)
-              </button>
+              ><MdText text={inhalt.texte.spannstähleAbzPren10138} /></button>
             </div>
           </div>
 
@@ -116,10 +107,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Klasse A</span>
                       <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono font-semibold">Normalduktil</span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">B500A (z.B. Matten Q/R)</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      Kaltgezogen oder kaltgerippt. Für ebene, flächige Bauteile mit verteilten Lasten ohne seismische Anforderungen.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.b500aZBMatten} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.kaltgezogenOderKaltgeripptFür} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-slate-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-slate-600">
@@ -138,12 +127,10 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-emerald-800 uppercase tracking-wider">Klasse B</span>
-                      <span className="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-mono font-semibold">Hochduktil (Standard)</span>
+                      <span className="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-mono font-semibold"><MdText text={inhalt.texte.hochduktilStandard} /></span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">B500B (Betonstabstahl)</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      Warmgewalzt mit Thermex-Vergütung. Standard im Hoch- und Ingenieurbau zur Bildung plastischer Fließgelenke.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.b500bBetonstabstahl} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.warmgewalztMitThermexVergütung} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-emerald-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-emerald-900">
@@ -164,10 +151,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       <span className="font-bold text-xs text-purple-800 uppercase tracking-wider">Klasse C</span>
                       <span className="text-[10px] bg-purple-200 text-purple-800 px-2 py-0.5 rounded font-mono font-semibold">Erdbebenfest</span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">B500C (Erdbebenstahl)</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      Höchste dissipative Rotationskapazität für seismische Zonen, Brückenpfeiler und Explosionsschutzbauwerke.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.b500cErdbebenstahl} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.höchsteDissipativeRotationskapazitätFür} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-purple-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-purple-900">
@@ -184,33 +169,21 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs pt-1">
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
-                  <strong className="text-text-main block text-xs uppercase tracking-wide">
-                    Verbundwirkung: Rippenprofilierung &amp; Kraftübertragung
-                  </strong>
-                  <p className="text-text-main/80 leading-relaxed">
-                    Glatter Rundstahl besitzt fast nur Haft- und Reibungsverbund. Betonstähle nach DIN 488 besitzen daher <strong>Schrägrippen</strong> (2- oder 4-reihig), sodass der Zementstein formschlüssig in die Rippenzwischenräume greift.
-                  </p>
+                  <strong className="text-text-main block text-xs uppercase tracking-wide"><MdText text={inhalt.texte.verbundwirkungRippenprofilierungKraftübe} /></strong>
+                  <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.glatterRundstahlBesitztFast} /></p>
                   <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 font-mono text-[11px] text-center">
                     <InlineMath math="f_{bd} = 2{,}25 \cdot \eta_1 \cdot \eta_2 \cdot f_{ctd}" />
                   </div>
-                  <p className="text-[11px] text-slate-500">
-                    <InlineMath math="\eta_1 = 1{,}0" /> für gute Verbundbedingungen (untere Bauteilhälfte); <InlineMath math="\eta_1 = 0{,}7" /> für mäßigen Verbund (oberste 25 cm wegen Wasseraufstieg/Bleeding).
-                  </p>
+                  <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.eta110} /></p>
                 </div>
 
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
-                  <strong className="text-text-main block text-xs uppercase tracking-wide">
-                    Das Thermex-Verfahren (Tempcore)
-                  </strong>
-                  <p className="text-text-main/80 leading-relaxed">
-                    Wie erreicht man hohe Festigkeit bei geringem Kohlenstoffgehalt (<InlineMath math="\le 0{,}22\%" /> für perfekte Schweißbarkeit)?
-                  </p>
-                  <p className="text-text-main/80 leading-relaxed">
-                    Aus der Walzhitze (<InlineMath math="\approx 950^\circ\text{C}" />) durchläuft der Stab eine intensive Wasser-Kühlstrecke. Die äußere Randschicht kühlt schlagartig ab und wandelt sich in harten Martensit um. Der heiße Kern kühlt danach langsam an Luft ab und <strong>lässt die Randschicht von innen heraus thermisch an</strong>.
-                  </p>
+                  <strong className="text-text-main block text-xs uppercase tracking-wide"><MdText text={inhalt.texte.dasThermexVerfahrenTempcore} /></strong>
+                  <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.wieErreichtManHohe} /></p>
+                  <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.ausDerWalzhitzeApprox} /></p>
                   <div className="flex gap-2 text-[11px] font-medium text-emerald-800 bg-emerald-50 p-2 rounded border border-emerald-200">
                     <span>✓</span>
-                    <span>Ergebnis: Zäher, elastischer Ferrit-Perlit-Kern mit hochfestem Anlassmartensit-Randring.</span>
+                    <span><MdText text={inhalt.texte.ergebnisZäherElastischerFerrit} /></span>
                   </div>
                 </div>
               </div>
@@ -223,20 +196,18 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spannlitzen</span>
-                      <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-3 / abZ</span>
+                      <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono font-semibold"><MdText text={inhalt.texte.pren101383Abz} /></span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">Y1860 S7 (7-drähtig)</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      6 schraubenförmig um 1 Kerndraht verseilte Runddrähte. Höchste Flexibilität für gekrümmte Spanngliedführungen in Brückenüberbauten.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.y1860S77Drähtig} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.t6SchraubenförmigUm1} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-slate-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-slate-600">
-                      <span>fpk (Zugfestigkeit):</span>
+                      <span><MdText text={inhalt.texte.fpkZugfestigkeit} /></span>
                       <span className="font-bold text-shiraz">1860 N/mm²</span>
                     </div>
                     <div className="flex justify-between text-slate-600">
-                      <span>fp0,1k (0,1%-Grenze):</span>
+                      <span><MdText text={inhalt.texte.fp01k01} /></span>
                       <span className="font-bold text-slate-800">1600 N/mm²</span>
                     </div>
                   </div>
@@ -247,12 +218,10 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spannstäbe</span>
-                      <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-4 / abZ</span>
+                      <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-mono font-semibold"><MdText text={inhalt.texte.pren101384Abz} /></span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">SAS 670 / SAS 950</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      Warmgewalzter Rundstahl mit aufgewalzten Gewinderippen. Beliebiges bauseitiges Ablängen und Koppelung mittels Gewindemuffen.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.sas670Sas950} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.warmgewalzterRundstahlMitAufgewalzten} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-slate-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-slate-600">
@@ -261,7 +230,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                     </div>
                     <div className="flex justify-between text-slate-600">
                       <span>Einsatz:</span>
-                      <span className="font-bold text-slate-800">Geotechnik / Quervorsp.</span>
+                      <span className="font-bold text-slate-800"><MdText text={inhalt.texte.geotechnikQuervorsp} /></span>
                     </div>
                   </div>
                 </div>
@@ -271,21 +240,19 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-700 uppercase tracking-wider">Spanndrähte</span>
-                      <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono font-semibold">prEN 10138-2 / abZ</span>
+                      <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono font-semibold"><MdText text={inhalt.texte.pren101382Abz} /></span>
                     </div>
-                    <div className="text-sm font-bold text-text-main">Y1770 C (Einzeldraht)</div>
-                    <p className="text-xs text-text-main/75 leading-relaxed">
-                      Kaltgezogene Einzeldrähte, glatt oder profiliert. Standard für Spannbeton-Eisenbahnschwellen und Hohlkörper-Deckenplatten.
-                    </p>
+                    <div className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.y1770CEinzeldraht} /></div>
+                    <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.kaltgezogeneEinzeldrähteGlattOder} /></p>
                   </div>
                   <div className="mt-3 pt-2.5 border-t border-slate-200/80 space-y-1 text-xs font-mono">
                     <div className="flex justify-between text-slate-600">
-                      <span>fpk (Zugfestigkeit):</span>
+                      <span><MdText text={inhalt.texte.fpkZugfestigkeit2} /></span>
                       <span className="font-bold text-slate-800">1570 &dots; 1770 N/mm²</span>
                     </div>
                     <div className="flex justify-between text-slate-600">
                       <span>Verfahren:</span>
-                      <span className="font-bold text-slate-800">Sofortiger Verbund</span>
+                      <span className="font-bold text-slate-800"><MdText text={inhalt.texte.sofortigerVerbund} /></span>
                     </div>
                   </div>
                 </div>
@@ -293,34 +260,20 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs pt-1">
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
-                  <strong className="text-text-main block text-xs uppercase tracking-wide">
-                    Spannungsrelaxation unter Dauerlast (EC2 Gl. 3.28–3.30)
-                  </strong>
-                  <p className="text-text-main/80 leading-relaxed">
-                    Unter hoher konstanter Vorspannung (<InlineMath math="\sigma_{p0} \approx 0{,}7 \dots 0{,}8 f_{pk}" />) wandern Versetzungen kontinuierlich weiter. Dadurch sinkt die elastische Zugspannung zeitabhängig ab – ohne dass sich die Bauteillänge ändert!
-                  </p>
+                  <strong className="text-text-main block text-xs uppercase tracking-wide"><MdText text={inhalt.texte.spannungsrelaxationUnterDauerlastEc2} /></strong>
+                  <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.unterHoherKonstanterVorspannung} /></p>
                   <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
                     <InlineMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} \approx 0{,}66 \cdot \rho_{1000} \cdot e^{9{,}1 \mu} \cdot \left(\frac{t}{1000}\right)^{0{,}75(1-\mu)}" />
                   </div>
-                  <p className="text-[11px] text-slate-500">
-                    Moderne Spannlitzen erfüllen <strong>Klasse 2 (sehr niedrige Relaxation)</strong> mit einem 1000-Stunden-Verlust von <InlineMath math="\rho_{1000} \le 2{,}5\%" /> bei 20 °C.
-                  </p>
+                  <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.moderneSpannlitzenErfüllenKlasse} /></p>
                 </div>
 
                 <div className="p-4 bg-rose-50/60 rounded-xl border border-rose-200/80 space-y-2">
                   <strong className="text-rose-900 block text-xs uppercase tracking-wide flex items-center gap-1.5">
-                    <Flame className="text-rose-600 h-4 w-4" />
-                    Sicherheitskritisches Schweißverbot für Spannstähle!
-                  </strong>
-                  <p className="text-rose-950/85 leading-relaxed">
-                    <strong>WARUM DARF AN SPANNSTAHL UNTER KEINEN UMSTÄNDEN GESCHWEISST WERDEN?</strong>
-                  </p>
-                  <p className="text-rose-950/85 leading-relaxed">
-                    Spannstahl besitzt ca. <strong>0,80 bis 0,85 % Kohlenstoff</strong> und eine durch mehrfaches Kaltziehen erzeugte feinfaserige Kristalltextur.
-                  </p>
-                  <p className="text-rose-950/85 leading-relaxed">
-                    Bereits ein minimaler Funkenüberschlag (Lichtbogenzündung) erhitzt den Stahl über die Austenitisierungstemperatur. Das umliegende kalte Material kühlt die Stelle blitzartig ab (Selbstabschreckung). Es entsteht <strong>glasharter, extrem spröder Martensit mit Mikrorissen</strong>. Unter der gigantischen Vorspannung reißt das Spannglied schlagartig und ohne Vorwarnung ab!
-                  </p>
+                    <Flame className="text-rose-600 h-4 w-4" /><MdText text={inhalt.texte.sicherheitskritischesSchweißverbotFürSpa} /></strong>
+                  <p className="text-rose-950/85 leading-relaxed"><MdText text={inhalt.texte.warumDarfAnSpannstahl} /></p>
+                  <p className="text-rose-950/85 leading-relaxed"><MdText text={inhalt.texte.spannstahlBesitztCa0} /></p>
+                  <p className="text-rose-950/85 leading-relaxed"><MdText text={inhalt.texte.bereitsEinMinimalerFunkenüberschlag} /></p>
                 </div>
               </div>
             </div>
@@ -331,7 +284,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
         <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col gap-5">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/15 pb-3">
             <h4 className="font-bold text-text-main text-base flex items-center gap-2">
-              <Layers size={18} className="text-shiraz" /> Register der Stahlwerkstoffe ({filteredSteelGrades.length} Güten)
+              <Layers size={18} className="text-shiraz" /><MdText text={inhalt.texte.registerDerStahlwerkstoffe} />{filteredSteelGrades.length} Güten)
             </h4>
 
             {/* Kategorie Filter-Pills */}
@@ -363,8 +316,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       ? 'bg-emerald-600 text-white shadow-xs'
                       : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200'
                   }`}
-              >
-                Bewehrungsstähle ({extendedSteelGrades.filter(g => g.category === 'bewehrung').length})
+              ><MdText text={inhalt.texte.bewehrungsstähle} />{extendedSteelGrades.filter(g => g.category === 'bewehrung').length})
               </button>
               <button aria-pressed={steelCatalogFilter === 'spannstahl'}
                 onClick={() => setSteelCatalogFilter('spannstahl')}
@@ -373,8 +325,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       ? 'bg-sky-600 text-white shadow-xs'
                       : 'bg-sky-50 text-sky-800 hover:bg-sky-100 border border-sky-200'
                   }`}
-              >
-                Spannstähle ({extendedSteelGrades.filter(g => g.category === 'spannstahl').length})
+              ><MdText text={inhalt.texte.spannstähle} />{extendedSteelGrades.filter(g => g.category === 'spannstahl').length})
               </button>
               <button aria-pressed={steelCatalogFilter === 'edelstahl'}
                 onClick={() => setSteelCatalogFilter('edelstahl')}
@@ -383,8 +334,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       ? 'bg-purple-600 text-white shadow-xs'
                       : 'bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200'
                   }`}
-              >
-                Edelstähle ({extendedSteelGrades.filter(g => g.category === 'edelstahl').length})
+              ><MdText text={inhalt.texte.edelstähle} />{extendedSteelGrades.filter(g => g.category === 'edelstahl').length})
               </button>
             </div>
           </div>
@@ -450,24 +400,24 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               {/* Gefügedaten & Werkstoffkenngrößen als Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
                 <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Streckgrenze fy</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><MdText text={inhalt.texte.streckgrenzeFy} /></span>
                   <span className="text-base font-bold text-shiraz font-mono mt-0.5">{formatDeWert(activeGradedData.fy)} MPa</span>
                   <span className="text-[9px] text-slate-400 mt-0.5">Mindestfließgrenze</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Zugfestigkeit fu</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><MdText text={inhalt.texte.zugfestigkeitFu} /></span>
                   <span className="text-base font-bold text-text-main font-mono mt-0.5">{formatDeWert(activeGradedData.fu)} MPa</span>
                   <span className="text-[9px] text-slate-400 mt-0.5">Bruchspannung</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">C-Gehalt</span>
                   <span className="text-base font-bold text-text-main font-mono mt-0.5">{activeGradedData.carbonContent}</span>
-                  <span className="text-[9px] text-slate-400 mt-0.5">Max. Massenanteil</span>
+                  <span className="text-[9px] text-slate-400 mt-0.5"><MdText text={inhalt.texte.maxMassenanteil} /></span>
                 </div>
                 <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Schweißbarkeit</span>
                   <span className="text-xs font-bold text-teal-600 mt-1 line-clamp-1">{activeGradedData.weldability.split(';')[0]}</span>
-                  <span className="text-[9px] text-slate-400 mt-0.5">Technologische Eignung</span>
+                  <span className="text-[9px] text-slate-400 mt-0.5"><MdText text={inhalt.texte.technologischeEignung} /></span>
                 </div>
               </div>
 
@@ -475,8 +425,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-1">
                 <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col gap-2">
                   <h5 className="font-bold text-text-main text-xs uppercase tracking-wider text-slate-500 pb-1.5 border-b border-dashed border-slate-100 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span> Typische Anwendungen
-                  </h5>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.typischeAnwendungen} /></h5>
                   <ul className="text-xs text-text-main/80 space-y-2 list-none font-normal">
                     {activeGradedData.applications.map((app, uidx) => (
                       <li key={uidx} className="flex gap-1.5 items-start">
@@ -489,8 +438,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
 
                 <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col gap-2">
                   <h5 className="font-bold text-text-main text-xs uppercase tracking-wider text-slate-500 pb-1.5 border-b border-dashed border-slate-100 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span> Werkstofftechnische Vorteile
-                  </h5>
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span><MdText text={inhalt.texte.werkstofftechnischeVorteile} /></h5>
                   <ul className="text-xs text-text-main/80 space-y-2 list-none font-normal">
                     {activeGradedData.advantages.map((adv, adidx) => (
                       <li key={adidx} className="flex gap-1.5 items-start">
@@ -509,7 +457,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                     <div className="p-1 bg-shiraz/10 text-shiraz rounded">
                       <Activity size={12} />
                     </div>
-                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider">Praxis- &amp; Referenzbeispiel für {activeGradedData.name}</span>
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.praxisReferenzbeispielFür} />{activeGradedData.name}</span>
                   </div>
                   <span className="text-[10px] bg-slate-200/60 text-slate-600 px-2 py-0.5 rounded font-mono font-medium">{activeGradedData.exampleObject.location}</span>
                 </div>
@@ -532,8 +480,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                 <Scale size={18} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-text-main">Interaktives Dimensionierungsbeispiel &amp; CO₂-Bilanz</h3>
-                <p className="text-xs text-text-main/70">Wahl der Stahlsorte zur Gewichtsreduktion und Erhöhung der materialeffizienten Tragfähigkeit</p>
+                <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.interaktivesDimensionierungsbeispielCoBi} /></h3>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wahlDerStahlsorteZur} /></p>
               </div>
             </div>
           </div>
@@ -542,9 +490,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-4 rounded-xl bg-slate-50 border border-slate-100">
             <div className="space-y-3.5">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-bold text-text-main flex items-center gap-1.5">
-                  1. Gewähltes Trägerprofil (Walzstahl)
-                </label>
+                <label className="text-sm font-bold text-text-main flex items-center gap-1.5"><MdText text={inhalt.texte.t1GewähltesTrägerprofilWalzstahl} /></label>
                 <span className="text-xs bg-shiraz/10 text-shiraz font-semibold px-2 py-0.5 rounded">
                   {activeProfile.type}
                 </span>
@@ -572,9 +518,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
 
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-bold text-text-main flex items-center gap-1.5">
-                  2. Bemessungsbiegemoment <InlineMath math="M_{Ed}" />
-                </label>
+                <label className="text-sm font-bold text-text-main flex items-center gap-1.5"><MdText text={inhalt.texte.t2BemessungsbiegemomentMEd} /></label>
                 <span className="text-sm font-black text-shiraz bg-white px-2.5 py-1 rounded border shadow-sm font-mono">
                   {formatDeWert(designMoment)} kNm
                 </span>
@@ -593,27 +537,24 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                 </div>
                 <span className="text-[11px] font-bold text-slate-400">600 kNm</span>
               </div>
-              <p className="text-[10px] text-slate-500 font-normal">
-                * Entspricht der maximalen Biegungsbeanspruchung im Feld eines Einfeldträgers durch äußere Lasten. Es gilt d. Tragsicherheitsnachweis: <InlineMath math="M_{Ed} \le M_{pl,Rd}" />.
-              </p>
+              <p className="text-[10px] text-slate-500 font-normal"><MdText text={inhalt.texte.entsprichtDerMaximalenBiegungsbeanspruch} /></p>
             </div>
           </div>
 
           {/* Live Vergleichsergebnisse */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-              <Activity size={14} className="text-shiraz" /> Live-Festigkeitsvergleich des Profils {activeProfile.name} in Abhängigkeit der Stahlgüten:
-            </h4>
+              <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.liveFestigkeitsvergleichDesProfils} />{activeProfile.name}<MdText text={inhalt.texte.inAbhängigkeitDerStahlgüten} /></h4>
             <div className="overflow-x-auto rounded-xl border border-slate-150">
               <table className="w-full text-xs md:text-sm text-left font-sans">
                 <thead className="bg-slate-50 text-slate-700">
                   <tr>
                     <th className="px-4 py-3 font-bold">Stahlgüte</th>
                     <th className="px-4 py-3 text-center">Faktor fy</th>
-                    <th className="px-4 py-3">Plastischer Momentenwiderstand Mpl,Rd</th>
-                    <th className="px-4 py-3">Zentrische Normalkraftkapazität Npl,Rd</th>
+                    <th className="px-4 py-3"><MdText text={inhalt.texte.plastischerMomentenwiderstandMplRd} /></th>
+                    <th className="px-4 py-3"><MdText text={inhalt.texte.zentrischeNormalkraftkapazitätNplRd} /></th>
                     <th className="px-4 py-3 text-center">Tragfähigkeits-Status</th>
-                    <th className="px-4 py-3 text-right">Massen-Effizienz (Rel.)</th>
+                    <th className="px-4 py-3 text-right"><MdText text={inhalt.texte.massenEffizienzRel} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-150">
@@ -645,12 +586,9 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                         <td className="px-4 py-3 text-center font-bold">
                           {isSufficient ? (
                             <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] px-2.5 py-1 rounded-full border border-emerald-200">
-                              <Check size={10} className="stroke-[3px]" /> Erreicht (OK)
-                            </span>
+                              <Check size={10} className="stroke-[3px]" /><MdText text={inhalt.texte.erreichtOk} /></span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 bg-red-100 text-red-800 text-[10px] px-2.5 py-1 rounded-full border border-red-200">
-                              ✕ Nicht ausr.
-                            </span>
+                            <span className="inline-flex items-center gap-1 bg-red-100 text-red-800 text-[10px] px-2.5 py-1 rounded-full border border-red-200"><MdText text={inhalt.texte.nichtAusr} /></span>
                           )}
                         </td>
                         <td className="px-4 py-3 text-right font-mono font-bold text-teal-600">
@@ -671,31 +609,25 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                 <Scale size={11} className="text-shiraz" /> Tragwerkseigengewicht
               </span>
               <span className="text-xl font-mono font-black text-text-main">{formatDeZahl(activeProfile.weight, 1)} kg/m </span>
-              <span className="text-[11px] text-slate-500 font-normal">Trägerlänge unbeeinflusst vom Stahlwerkstoff.</span>
+              <span className="text-[11px] text-slate-500 font-normal"><MdText text={inhalt.texte.trägerlängeUnbeeinflusstVomStahlwerkstof} /></span>
             </div>
 
             <div className="flex flex-col gap-1 border-y md:border-y-0 md:border-x border-slate-200 md:px-4 py-2 md:py-0">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                <TrendingDown size={11} className="text-teal-600" /> Profilhöhen-Reduzierung (S235 vs. S690)
-              </span>
+                <TrendingDown size={11} className="text-teal-600" /><MdText text={inhalt.texte.profilhöhenReduzierungS235Vs} /></span>
               <span className="text-xl font-bold text-teal-600 font-mono">
                 -33,3 %
               </span>
-              <span className="text-[11px] text-slate-500 leading-normal font-normal">
-                IPE 300 (42,2 kg) kann beansprucht wie IPE 200 (22,4 kg) in S690 ausgeführt werden!
-              </span>
+              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.ipe300422} /></span>
             </div>
 
             <div className="flex flex-col gap-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                <Flame size={11} className="text-shiraz" /> CO₂-Emissionsvorteil bei Optimierung
-              </span>
+                <Flame size={11} className="text-shiraz" /><MdText text={inhalt.texte.coEmissionsvorteilBeiOptimierung} /></span>
               <span className="text-xl font-mono font-black text-emerald-600">
                 ~ {formatDeZahl(((activeProfile.weight * 1.8) * 0.45), 1)} kg CO₂ / m
               </span>
-              <span className="text-[11px] text-slate-500 leading-normal font-normal">
-                Vermeidete CO₂-Emissionen durch d. verringerten Vormaterialbedarf (Emissionsbasis: 1,8 kg CO₂/kg Baustahl).
-              </span>
+              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.vermeideteCoEmissionenDurch} /></span>
             </div>
           </div>
         </div>

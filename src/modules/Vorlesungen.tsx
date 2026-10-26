@@ -19,6 +19,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import LecturePollSession from '@/src/components/polls/LecturePollSession';
+import inhalt from '@/content/vorlesungen/Vorlesungen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export type VorlesungTab = 
   | 'bauen_im_bestand'
@@ -63,12 +65,8 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4 mb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <GraduationCap className="text-shiraz h-6 w-6" />
-              Vorlesungen &amp; Lehrveranstaltungen (THA)
-            </h2>
-            <p className="text-xs text-text-main/70 mt-1">
-              Fakultät für Architektur und Bauwesen • Technische Hochschule Augsburg • Wintersemester 2026/2027
-            </p>
+              <GraduationCap className="text-shiraz h-6 w-6" /><MdText text={inhalt.texte.vorlesungenLehrveranstaltungenTha} /></h2>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.fakultätFürArchitekturUnd} /></p>
           </div>
         </div>
 
@@ -77,7 +75,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           <p>
             Willkommen im digitalen Vorlesungsbereich des BaustoffBoards. Hier finden Sie die Vorlesungsgliederungen,
             die passenden Fachmodule und die Live-Abstimmungen zu den fünf Kernfächern: 
-            <strong> Bauen im Bestand</strong>, <strong>Nachhaltiges Bauen</strong>, <strong>Bauschäden</strong>, 
+            <strong><MdText text={inhalt.texte.bauenImBestand} /></strong>, <strong><MdText text={inhalt.texte.nachhaltigesBauen} /></strong>, <strong>Bauschäden</strong>, 
             <strong> Baustoffkunde</strong> und <strong>Instandhaltung</strong>.
           </p>
         </div>
@@ -94,8 +92,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             }`}
             onClick={() => setActiveSubTab('bauen_im_bestand')}
           >
-            <Building2 size={16} /> 1. Bauen im Bestand
-          </button>
+            <Building2 size={16} /><MdText text={inhalt.texte.t1BauenImBestand} /></button>
 
           <button aria-pressed={activeSubTab === 'nachhaltiges_bauen'}
             type="button"
@@ -106,8 +103,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             }`}
             onClick={() => setActiveSubTab('nachhaltiges_bauen')}
           >
-            <Leaf size={16} /> 2. Nachhaltiges Bauen
-          </button>
+            <Leaf size={16} /><MdText text={inhalt.texte.t2NachhaltigesBauen} /></button>
 
           <button aria-pressed={activeSubTab === 'bauschaeden'}
             type="button"
@@ -118,8 +114,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             }`}
             onClick={() => setActiveSubTab('bauschaeden')}
           >
-            <AlertTriangle size={16} /> 3. Bauschäden
-          </button>
+            <AlertTriangle size={16} /><MdText text={inhalt.texte.t3Bauschäden} /></button>
 
           <button aria-pressed={activeSubTab === 'baustoffkunde'}
             type="button"
@@ -130,8 +125,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             }`}
             onClick={() => setActiveSubTab('baustoffkunde')}
           >
-            <Layers size={16} /> 4. Baustoffkunde
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.t4Baustoffkunde} /></button>
 
           <button aria-pressed={activeSubTab === 'instandhaltung'}
             type="button"
@@ -142,8 +136,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             }`}
             onClick={() => setActiveSubTab('instandhaltung')}
           >
-            <Wrench size={16} /> 5. Instandhaltung
-          </button>
+            <Wrench size={16} /><MdText text={inhalt.texte.t5Instandhaltung} /></button>
         </div>
       </div>
 
@@ -155,34 +148,13 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {activeSubTab === 'bauen_im_bestand' && (
         <LectureModuleView
           lectureId="bauen_im_bestand"
-          title="Vorlesung: Bauen im Bestand"
-          subtitle="Bestandserfassung, historische Werkstoffe, ZfP-Diagnostik und probabilistische Nachrechnung (EN 1990-2:2026)"
+          title={inhalt.werte.vorlesungBauenImBestand}
+          subtitle={inhalt.werte.bestandserfassungHistorischeWerkstoffeZf}
           icon={Building2}
-          modulDetails={{
-            sws: '1/2',
-            ects: 5,
-            semester: 'Wintersemester',
-            pruefung: 'Schriftliche Klausur (90 min)',
-            dozent: 'Professur für Bauwerkserhaltung & Tragwerksdiagnose'
-          }}
+          modulDetails={inhalt.daten["Vorlesungen.modulDetails"]}
           relatedBoardTab="bestand"
-          relatedBoardTabLabel="Zum Fachmodul Bauen im Bestand (Altbauatlas & Kennwerte)"
-          units={[
-            { nr: 1, title: 'Einführung & baupolitischer Rahmen', topic: 'Graue Energie, Adaptive Reuse, Paradigmenwechsel vom Entwerfen zum Diagnostizieren' },
-            { nr: 2, title: 'Bauaufnahme & Archivrecherche', topic: 'Koldewey-Genauigkeitsstufen 1–4, Imperfektionen und Theorie II. Ordnung, Dendrochronologie' },
-            { nr: 3, title: 'Schadenskartierung & Kausalkette', topic: 'Systematische Schadensanalyse, Trennung konstruktiver und hygrothermischer Schadensursachen' },
-            { nr: 4, title: 'Zerstörungsfreie Prüfung (ZfP)', topic: 'Radar, Ultraschall-Echo, Impact-Echo und magnetische Bewehrungsortung' },
-            { nr: 5, title: 'Holzdiagnostik & Bohrwiderstandsmessung', topic: 'Resistograph (1,5–3 mm Nadel, Vorschub bis 1500 mm/min), Jahrringkurven, Restquerschnitt' },
-            { nr: 6, title: 'Mauerwerksdiagnose & Flachpressenversuche', topic: 'Single Flat-Jack (in-situ Normalspannung) und Double Flat-Jack (E-Modul und Druckfestigkeit)' },
-            { nr: 7, title: 'Hygrophysikalische Diagnose', topic: 'Karstensches Prüfrohr (10 cm Wassersäule / 1000 Pa), 3D-Transport, Pleyers-Röhrchen' },
-            { nr: 8, title: 'Historische Mauerwerksbaustoffe', topic: 'DIN 105 Historie, 1957 Farbkennzeichnung (grüner Balken 150 vs. weißer Balken 250 Hartbrandziegel)' },
-            { nr: 9, title: 'Historische Betonstähle', topic: 'BSt 22/34 (glatt, Hakenpflicht), BSt 34/50 (Profilstahl), BSt 42/50 Torstahl (R. Schmidt 1936, Kaltverdrillung)' },
-            { nr: 10, title: 'Historische Eisenwerkstoffe', topic: 'Gusseisen (reduzierter E-Modul 80–140 GPa, Knicken), Puddelstahl (Anisotropie), Flussstahl St 37' },
-            { nr: 11, title: 'Bauordnungsrecht & Bestandsschutz', topic: 'Rechtmäßige Errichtung, Erlöschensgründe, WTA-Merkblätter (Referate 1–11)' },
-            { nr: 12, title: 'Statische Nachweise im Bestand', topic: 'Grenzen des semiprobabilistischen Konzepts (β = 3,8), rechnerische Bestrafung im Bestand' },
-            { nr: 13, title: 'DBV-Merkblatt Modifizierte Teilsicherheitsbeiwerte', topic: 'Abminderung von γ_c auf 1,30 und γ_G auf 1,20 bei duktilem Biegezugversagen' },
-            { nr: 14, title: 'Eurocode EN 1990-2:2026 & Bayes\'sches Updating', topic: 'Preliminary vs. Detailed Assessment, Formel f_yd = f_ym · exp(-α_R β V_f - 0,5 V_f²)' }
-          ]}
+          relatedBoardTabLabel={inhalt.werte.zumFachmodulBauenIm}
+          units={inhalt.daten["Vorlesungen.units"]}
         />
       )}
 
@@ -192,34 +164,13 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {activeSubTab === 'nachhaltiges_bauen' && (
         <LectureModuleView
           lectureId="nachhaltiges_bauen"
-          title="Vorlesung: Nachhaltiges Bauen"
-          subtitle="Ökobilanzierung (LCA), UN-SDGs, EU-Taxonomie, EPBD 2024/1275, Zirkuläre Stoffströme & Digitaler Produktpass"
+          title={inhalt.werte.vorlesungNachhaltigesBauen}
+          subtitle={inhalt.werte.ökobilanzierungLcaUnSdgs}
           icon={Leaf}
-          modulDetails={{
-            sws: 2,
-            ects: 5,
-            semester: 'Wintersemester',
-            pruefung: 'Projektarbeit mit Präsentation & Kolloquium',
-            dozent: 'Professur für Nachhaltiges Bauen & Bauphysik'
-          }}
+          modulDetails={inhalt.daten["Vorlesungen.modulDetails_2"]}
           relatedBoardTab="nachhaltigkeit_daten_regeln"
-          relatedBoardTabLabel="Zum Fachmodul Nachhaltigkeit: Daten & Regeln"
-          units={[
-            { nr: 1, title: 'Globale Umweltkennzahlen des Bauens', topic: 'THG-Emissionen (~40 %), Rohstoffabbau (>50 %), deutsches Bauabfallaufkommen (220–230 Mio. t)' },
-            { nr: 2, title: 'Internationale Klimapolitik & Konferenzen', topic: 'UN-Klimakonferenzen (Kyoto, Paris 1,5°C-Ziel, COP 28 Dubai), European Green Deal' },
-            { nr: 3, title: 'Die 17 UN-SDGs im Bauingenieurwesen', topic: 'SDG 11 (Städte), SDG 12 (Kreislauf), SDG 13 (Klimaschutz), SDG 9 (Innovation)' },
-            { nr: 4, title: 'EU-Taxonomie-Verordnung (EU 2020/852)', topic: '6 Umweltziele, DNSH-Prinzip (Do No Significant Harm), Substantial Contribution, CapEx/OpEx' },
-            { nr: 5, title: 'EU-Gebäuderichtlinie (EPBD 2024/1275)', topic: 'Stufenplan 2028/2030, Nullemissionsgebäude (ZEB), Whole-Life Carbon Pflicht' },
-            { nr: 6, title: 'Ökobilanzierung (LCA) nach DIN EN 15978', topic: 'Lebenszyklusphasen A1–A3, A4–A5, B1–B7, C1–C4, Modul D, funktionelle Einheit' },
-            { nr: 7, title: 'Wirkungsindikatoren & Treibhauspotenzial', topic: 'GWP-total, GWP-fossil, GWP-biogenic, GWP-luluc, Primärenergie PE-gesamt' },
-            { nr: 8, title: 'Umweltproduktdeklarationen (EPD)', topic: 'DIN EN 15804+A2, Typ-III-Deklarationen, generische (ÖKOBAUDAT) vs. spezifische EPDs (IBU)' },
-            { nr: 9, title: 'Digitaler Produktpass (DPP) & Materialpässe', topic: 'EU-Ökodesign ESPR, novellierte BauPVO (CPR), Madaster Circularity Index (CI)' },
-            { nr: 10, title: 'Design for Disassembly & Zirkuläres Konstruieren', topic: 'Trennungsverbindungen, Kaskadennutzung, Urban Mining und Rezyklat-Betone' },
-            { nr: 11, title: 'Ersatzbaustoffverordnung (EBV) & KrWG', topic: 'Qualitätsklassen RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Katasterpflicht ab 250 m³' },
-            { nr: 12, title: 'Suffizienz & Gebäudetyp E (Gesetzesvorhaben)', topic: 'Einfaches Bauen, rechtlich belastbare Abweichung von DIN-Komfortnormen' },
-            { nr: 13, title: 'Zertifizierungssysteme (DGNB / BNB / LEED / QNG)', topic: 'Kriterienmatrizen, Lebenszykluskosten LCC, KFN-Förderung des Bundes' },
-            { nr: 14, title: 'CRREM Decarbonization Pathway', topic: '1,5°C-Pfad für Bestandsgebäude, Stranded Assets Risiko und Brown Discount' }
-          ]}
+          relatedBoardTabLabel={inhalt.werte.zumFachmodulNachhaltigkeitDaten}
+          units={inhalt.daten["Vorlesungen.units_2"]}
         />
       )}
 
@@ -229,34 +180,13 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {activeSubTab === 'bauschaeden' && (
         <LectureModuleView
           lectureId="bauschaeden"
-          title="Vorlesung: Bauschäden & Schadensanalyse"
-          subtitle="Forensische Bauschadensbegutachtung, Ursachenforschung, Rissmechanik und Baugrundschäden"
+          title={inhalt.werte.vorlesungBauschädenSchadensanalyse}
+          subtitle={inhalt.werte.forensischeBauschadensbegutachtungUrsach}
           icon={AlertTriangle}
-          modulDetails={{
-            sws: '1/2',
-            ects: 5,
-            semester: 'Wintersemester',
-            pruefung: 'Klausur (90 min) & Schadensgutachten-Hausarbeit',
-            dozent: 'Professur für Bauschäden, Bauwerkserhaltung & Baustoffprüfung'
-          }}
+          modulDetails={inhalt.daten["Vorlesungen.modulDetails_3"]}
           relatedBoardTab="bauschaeden"
-          relatedBoardTabLabel="Zum Fachmodul Bauschäden & Zustandsbewertung"
-          units={[
-            { nr: 1, title: 'Einführung in das Bausachverständigenwesen', topic: 'Mangel vs. Schaden (§ 633 BGB), anerkannte Regeln der Technik (a.R.d.T.), Gutachtenaufbau' },
-            { nr: 2, title: 'Methodik der Schadensdokumentation', topic: 'Kausalkette Ursache–Wirkung, Schadenskartierung, Probenahmepläne und Messraster' },
-            { nr: 3, title: 'Rissursachen & Rissmechanik im Massivbau', topic: 'Frühschwinden, Hydratationswärme, Zwangsspannungen, Biege- und Querkraftrisse' },
-            { nr: 4, title: 'Feuchteschäden & Bauwerksabdichtung', topic: 'Aufsteigende Feuchte, drückendes Grundwasser, Schlagregen, Kondensation, Schimmelpilze' },
-            { nr: 5, title: 'Baugrund- und Gründungsbedingte Schäden', topic: 'Ungleichförmige Setzungen, Grundbruch, Schrumpfung bindiger Böden, Setzungsrisse' },
-            { nr: 6, title: 'Schäden an Mauerwerksbauten', topic: 'Fehlender Mauerwerksverband, Überbindemaße, Schalensturz-Probleme, Frostabsprengungen' },
-            { nr: 7, title: 'Schäden an Holztragwerken', topic: 'Echter Hausschwamm (Serpula lacrymans), Nassfäule, Nagekäfer, Hausbock, Feuchtestau' },
-            { nr: 8, title: 'Schadensreaktionen im Beton', topic: 'Alkali-Kieselsäure-Reaktion (AKR), Ettringittreiben, Frost-Tausalz-Angriff, Treibmineralien' },
-            { nr: 9, title: 'Bewehrungskorrosion & Lochfraß', topic: 'Karbonatisierung des Betons, chloridinduzierter Lochfraß, Potentialfeldmessung' },
-            { nr: 10, title: 'Fassaden-, Putz- und WDVS-Schäden', topic: 'Haftzugversagen, Dübelabzeichnungen, Veralgung, Abriss an Anschlüssen, Brandrisiken' },
-            { nr: 11, title: 'Flachdach- und Dachschäden', topic: 'Dampfsperrenversagen, stehendes Wasser, UV-Degradation von Bitumen- und Kunststoffbahnen' },
-            { nr: 12, title: 'Zustandsbewertung nach VDI 6200', topic: 'Schadensklassen, Überwachungsstufen (Begehung, Inspektion, eingehende Überprüfung)' },
-            { nr: 13, title: 'Historische Großschäden & Einstürze', topic: 'Bad Reichenhall (Leimholzversagen), Kongresshalle Berlin (Spannungsrisskorrosion)' },
-            { nr: 14, title: 'Forensische Messtechnik & Messtechnik-Praxis', topic: 'Rissmonitoring (Rissmessklemmen, Schallemission), Schiedsgutachten und Beweissicherung' }
-          ]}
+          relatedBoardTabLabel={inhalt.werte.zumFachmodulBauschädenZustandsbewertung}
+          units={inhalt.daten["Vorlesungen.units_3"]}
         />
       )}
 
@@ -266,34 +196,13 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {activeSubTab === 'baustoffkunde' && (
         <LectureModuleView
           lectureId="baustoffkunde"
-          title="Vorlesung: Baustoffkunde"
-          subtitle="Chemisch-physikalische Grundlagen mineralischer, metallischer und organischer Baustoffe"
+          title={inhalt.werte.vorlesungBaustoffkunde}
+          subtitle={inhalt.werte.chemischPhysikalischeGrundlagenMineralis}
           icon={Layers}
-          modulDetails={{
-            sws: '2-4',
-            ects: 6,
-            semester: 'Wintersemester',
-            pruefung: 'Klausur (120 min) & Laborpraktikum mit Protokollabnahme',
-            dozent: 'Professur für Baustoffkunde & Bauchemie'
-          }}
+          modulDetails={inhalt.daten["Vorlesungen.modulDetails_4"]}
           relatedBoardTab="baustoffkunde"
-          relatedBoardTabLabel="Zum Fachmodul Baustoffe & Bauprodukte"
-          units={[
-            { nr: 1, title: 'Einführung & Kenngrößen der Baustoffe', topic: 'Rohdichte, Reindichte, Porosität, Wasseraufnahme, Festigkeitsdefinitionen' },
-            { nr: 2, title: 'Physikalisch-chemische Bindungsarten', topic: 'Atom- und Molekülbindungen, Kristallgitter, amorphe Gefüge, Phasendiagramme' },
-            { nr: 3, title: 'Mineralische Bindemittel: Baukalk & Gips', topic: 'Kalkkreislauf (Brennen, Löschen, Erhärten), Luftkalke, hydraulische Kalke, Calciumsulfatphasen' },
-            { nr: 4, title: 'Zementchemie & Zementherstellung', topic: 'Klinkerbrennen, Klinkerphasen C3S, C2S, C3A, C4AF, Zementarten nach DIN EN 197-1' },
-            { nr: 5, title: 'Hydratation des Zements', topic: 'CSH-Phasenbildung, Portlandit, Wärmeentwicklung, Porenstruktur des Zementsteins' },
-            { nr: 6, title: 'Gesteinskörnungen für Mörtel & Beton', topic: 'DIN EN 12620, Sieblinien (A/B/C-Kurven nach DIN 1045-2), Kornform, Schüttdichte, Feinanteile' },
-            { nr: 7, title: 'Betonchemie & Zusatzmittel', topic: 'Fließmittel (PCE), Luftporenbildner, Verzögerer, Beschleuniger, Zusatzstoffe (Flugasche, Silikastaub)' },
-            { nr: 8, title: 'Frisch- & Festbetoneigenschaften', topic: 'Konsistenzprüfungen, w/z-Wert-Gesetz nach Walz, Druckfestigkeitsklassen C, E-Modul' },
-            { nr: 9, title: 'Künstliche & natürliche Steine', topic: 'Ziegel, Kalksandstein, Porenbeton, magmatische, metamorphe und sedimentäre Natursteine' },
-            { nr: 10, title: 'Eisen- und Stahlwerkstoffe', topic: 'Eisen-Kohlenstoff-Diagramm (EKD), Gefügearten (Ferrit, Perlit, Austenit, Martensit), Baustähle' },
-            { nr: 11, title: 'Nichteisenmetalle & Metallkorrosion', topic: 'Aluminium, Kupfer, Zink, elektrochemische Spannungsreihe, Kontaktkorrosion' },
-            { nr: 12, title: 'Holz als biologischer Werkstoff', topic: 'Aufbau des Holzes, Früh-/Spätholz, Feuchtegehalt, Fasersättigung, Schwinden und Quellen' },
-            { nr: 13, title: 'Kunststoffe & Bitumen im Bauwesen', topic: 'Thermoplaste, Duroplaste, Elastomere, Dämmstoffe (EPS, XPS, Mineralwolle), Bitumenprüfungen' },
-            { nr: 14, title: 'Zukunftswerkstoffe & Recycling', topic: 'Geopolymere, Carbonbeton, Lehmbaustoffe nach DIN 18940, Rezyklat-Gesteinskörnungen' }
-          ]}
+          relatedBoardTabLabel={inhalt.werte.zumFachmodulBaustoffeBauprodukte}
+          units={inhalt.daten["Vorlesungen.units_4"]}
         />
       )}
 
@@ -303,57 +212,27 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {activeSubTab === 'instandhaltung' && (
         <LectureModuleView
           lectureId="instandhaltung"
-          title="Vorlesung: Instandhaltung von Bauwerken"
-          subtitle="Bauwerkserhaltung, Schutz- und Instandsetzungsprinzipien nach DIN EN 1504, RL SIB & WTA"
+          title={inhalt.werte.vorlesungInstandhaltungVonBauwerken}
+          subtitle={inhalt.werte.bauwerkserhaltungSchutzUndInstandsetzung}
           icon={Wrench}
-          modulDetails={{
-            sws: 4,
-            ects: 5,
-            semester: 'Wintersemester',
-            pruefung: 'Klausur (90 min) & Instandsetzungskonzept-Übungsnachweis',
-            dozent: 'Professur für Bautenschutz, Instandhaltung & Betoninstandsetzung'
-          }}
+          modulDetails={inhalt.daten["Vorlesungen.modulDetails_5"]}
           relatedBoardTab="instandhaltung"
-          relatedBoardTabLabel="Zum Fachmodul Schutz & Instandsetzung"
-          units={[
-            { nr: 1, title: 'Grundlagen der Bauwerksinstandhaltung', topic: 'Begriffe nach DIN 31051: Wartung, Inspektion, Instandsetzung, Verbesserung, Lebenszyklus' },
-            { nr: 2, title: 'Regelwerke der Betoninstandhaltung', topic: 'DIN EN 1504 Teile 1–10, DAfStb-Richtlinie Schutz und Instandsetzung (RL SIB), TR Instandhaltung DIBt' },
-            { nr: 3, title: 'Zustandsanalyse & Instandsetzungskonzept', topic: 'Befundung, Schadensursachen, statische Relevanz, Instandhaltungsziel und Restnutzungsdauer' },
-            { nr: 4, title: 'Schutzprinzipien der DIN EN 1504-9', topic: 'Prinzipien 1–11: Oberflächenschutz, Feuchtesteuerung, Betonersatz, Tragwerksverstärkung' },
-            { nr: 5, title: 'Untergrundvorbereitung für Instandsetzungen', topic: 'Höchstdruckwasserstrahlen (HDW), Kugelstrahlen, Fräsen, Abreißfestigkeit des Betonuntergrunds' },
-            { nr: 6, title: 'Betonersatzsysteme (Mörtel & Betone)', topic: 'PCC (Polymer-Zement-Beton), SPCC (Spritzmörtel), ECC (Epoxidharzmörtel), Schwindkompensation' },
-            { nr: 7, title: 'Oberflächenschutzsysteme (OS 1 bis OS 11)', topic: 'Hydrophobierung (OS 1), Imprägnierung (OS 2), rissüberbrückende Beschichtungen (OS 4, OS 5, OS 8, OS 11)' },
-            { nr: 8, title: 'Rissinstandsetzung im Betonbau', topic: 'Rissfüllstoffe: Epoxidharz (kraftschlüssig), Polyurethanharz (abdichtend elastisch), Zementsuspension' },
-            { nr: 9, title: 'Korrosionsschutz der Bewehrung', topic: 'Realkalisierung, kathodischer Korrosionsschutz (KKS) nach DIN EN ISO 12696, Opferanoden' },
-            { nr: 10, title: 'Nachträgliche Tragwerksverstärkung', topic: 'CFK-Lamellen (aufgeklebte Kohlenstofffaserverbundwerkstoffe), Spritzbetonverstärkung, Zusatzbewehrung' },
-            { nr: 11, title: 'Instandsetzung von Mauerwerk & Fugen', topic: 'WTA-Merkblätter Mauerwerksinjektion, Spiralanker, Entsalzungskompressen, Sanierputzsysteme' },
-            { nr: 12, title: 'Instandhaltung von Holz- und Fachwerkkonstruktionen', topic: 'Zimmermannsmäßige Holzverbindungen, Anblattungen, Epoxidharz-Holzergänzung, Holzschutz nach WTA' },
-            { nr: 13, title: 'Qualitätssicherung & Eigenüberwachung', topic: 'SIVV-Schein-Voraussetzungen, Baustellenprüfungen, Haftzugprüfungen, Schichtdickenmessungen' },
-            { nr: 14, title: 'Bauwerksmonitoring (SHM) & Langzeitwartung', topic: 'Dauerüberwachung mit Sensorik, Korrosionssensoren, Faseroptik, Instandhaltungsmanagement' }
-          ]}
+          relatedBoardTabLabel={inhalt.werte.zumFachmodulSchutzInstandsetzung}
+          units={inhalt.daten["Vorlesungen.units_5"]}
         />
       )}
 
       {/* Standardized ModuleFooter according to Styleguide */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Bauingenieurwesen Studium', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' },
-          { title: 'Bauen im Bestand', url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
-          { title: 'Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
+          { title: inhalt.werte.bauingenieurwesenStudium, url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' },
+          { title: inhalt.werte.bauenImBestand, url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
+          { title: inhalt.werte.nachhaltigesBauen, url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
           { title: 'Bauschaden', url: 'https://de.wikipedia.org/wiki/Bauschaden' },
           { title: 'Instandhaltung', url: 'https://de.wikipedia.org/wiki/Instandhaltung' }
         ]}
-        literatur={[
-          'Modulhandbuch Bachelor Bauingenieurwesen (Fakultät für Architektur und Bauwesen, THA)',
-          'Modulhandbuch Master Bauingenieurwesen (Fakultät für Architektur und Bauwesen, THA)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde (Springer Vieweg)',
-          'Holschemacher, K.: Entwurfs- und Berechnungshilfen für Bauingenieure (Ernst & Sohn)'
-        ]}
-        regelwerke={[
-          { title: 'Rahmenprüfungsordnung der Technischen Hochschule Augsburg (THA)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung' },
-          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke' }
-        ]}
+        literatur={inhalt.daten["Vorlesungen.literatur"]}
+        regelwerke={inhalt.daten["Vorlesungen.regelwerke"]}
         formeln={[]}
       />
     </div>
@@ -443,7 +322,7 @@ function LectureModuleView({
             </strong>
           </div>
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 col-span-2 sm:col-span-1">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Lehrstuhl / Dozentur</span>
+            <span className="text-[10px] uppercase font-bold text-slate-400 block"><MdText text={inhalt.texte.lehrstuhlDozentur} /></span>
             <strong className="text-xs font-bold text-slate-900 mt-0.5 block truncate" title={modulDetails.dozent}>
               {modulDetails.dozent}
             </strong>
@@ -459,11 +338,8 @@ function LectureModuleView({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Download className="text-shiraz" size={18} /> Vorlesungsunterlagen, Skripte &amp; Downloads
-            </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Begleitmaterialien für immatrikulierte Studierende des Semesters.
-            </p>
+              <Download className="text-shiraz" size={18} /><MdText text={inhalt.texte.vorlesungsunterlagenSkripteDownloads} /></h4>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.begleitmaterialienFürImmatrikulierteStud} /></p>
           </div>
           <span className="text-xs font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-600 font-bold">
             WS 2026/27
@@ -479,13 +355,11 @@ function LectureModuleView({
                   PDF-Skript
                 </span>
               </div>
-              <strong className="text-xs font-bold text-slate-900 block">Vollständiges Vorlesungsskript</strong>
-              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                Umfassendes Lehrskript mit Theoriekapiteln, Abbildungen, Quellennachweisen und Formelsammlung.
-              </p>
+              <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.vollständigesVorlesungsskript} /></strong>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.umfassendesLehrskriptMitTheoriekapiteln} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
-              <span className="text-[10px] text-slate-400 font-mono">In Vorbereitung</span>
+              <span className="text-[10px] text-slate-400 font-mono"><MdText text={inhalt.texte.inVorbereitung} /></span>
               <button
                 type="button"
                 className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-600 cursor-not-allowed"
@@ -504,13 +378,11 @@ function LectureModuleView({
                   Folien
                 </span>
               </div>
-              <strong className="text-xs font-bold text-slate-900 block">Vorlesungsfoliensatz (Kapitel 1–14)</strong>
-              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                Präsentationsfolien der Vorlesung mit Merksätzen, Bildbeispielen und Praxisexkursen.
-              </p>
+              <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.vorlesungsfoliensatzKapitel114} /></strong>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.präsentationsfolienDerVorlesungMit} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
-              <span className="text-[10px] text-slate-400 font-mono">In Vorbereitung</span>
+              <span className="text-[10px] text-slate-400 font-mono"><MdText text={inhalt.texte.inVorbereitung2} /></span>
               <button
                 type="button"
                 className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-600 cursor-not-allowed"
@@ -529,13 +401,11 @@ function LectureModuleView({
                   Übungsblätter
                 </span>
               </div>
-              <strong className="text-xs font-bold text-slate-900 block">Übungsaufgaben &amp; Klausurhinweise</strong>
-              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                Semesterbegleitende Rechen- und Verständnisübungen mit Musterlösungen zur Klausurvorbereitung.
-              </p>
+              <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.übungsaufgabenKlausurhinweise} /></strong>
+              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.semesterbegleitendeRechenUndVerständnisü} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
-              <span className="text-[10px] text-slate-400 font-mono">In Vorbereitung</span>
+              <span className="text-[10px] text-slate-400 font-mono"><MdText text={inhalt.texte.inVorbereitung3} /></span>
               <button
                 type="button"
                 className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-600 cursor-not-allowed"
@@ -553,17 +423,14 @@ function LectureModuleView({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Calendar className="text-shiraz" size={18} /> Vorlesungsgliederung &amp; Semesterplan (14 Lehreinheiten)
-            </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Thematische Übersicht aller 14 Termine des Semesters mit Kerninhalten und Lernzielen.
-            </p>
+              <Calendar className="text-shiraz" size={18} /><MdText text={inhalt.texte.vorlesungsgliederungSemesterplan14Lehrei} /></h4>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.thematischeÜbersichtAller14} /></p>
           </div>
 
           <div className="relative min-w-[220px]">
             <input
               type="text"
-              placeholder="Vorlesungsthema suchen..."
+              placeholder={inhalt.werte.vorlesungsthemaSuchen}
               value={unitSearch}
               onChange={(e) => setUnitSearch(e.target.value)}
               className="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz"
@@ -574,9 +441,7 @@ function LectureModuleView({
 
         <div className="space-y-2.5">
           {filteredUnits.length === 0 ? (
-            <div className="p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200">
-              Keine Vorlesungseinheiten für den Suchbegriff gefunden.
-            </div>
+            <div className="p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200"><MdText text={inhalt.texte.keineVorlesungseinheitenFürDen} /></div>
           ) : (
             filteredUnits.map((unit) => (
               <div
@@ -599,9 +464,7 @@ function LectureModuleView({
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200">
                     90 min
                   </span>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
-                    In Vorbereitung
-                  </span>
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200"><MdText text={inhalt.texte.inVorbereitung4} /></span>
                 </div>
               </div>
             ))
