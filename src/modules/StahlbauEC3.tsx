@@ -497,6 +497,10 @@ export default function StahlbauEC3() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel="Neue Eurocode-Generation erschienen" linkText="Zum Modul Ausblick: neue Normengeneration">
+        <p>Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen.</p>
+      </Querverweis>
+
       <ModulTest moduleId="stahlbau_ec3" />
 
       <ModuleFooter

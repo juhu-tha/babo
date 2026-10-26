@@ -198,6 +198,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   nachbehandlung: { status: 'offen' },
   nachhaltigkeit_daten_regeln: { status: 'offen' },
   nawaro: { status: 'offen' },
+  normen_ausblick: { status: 'offen' },
   oekobilanz_lca: { status: 'offen' },
   online_tools: { status: 'offen' },
   pfas_baustoffe: { status: 'offen' },

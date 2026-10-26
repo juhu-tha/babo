@@ -187,6 +187,7 @@ const DaemmungVergleich = React.lazy(() => import('../modules/DaemmungVergleich'
 const InnovativeWerkstoffe = React.lazy(() => import('../modules/InnovativeWerkstoffe'));
 const Biokohlebeton = React.lazy(() => import('../modules/Biokohlebeton'));
 const Schnellkarbonatisierung = React.lazy(() => import('../modules/Schnellkarbonatisierung'));
+const NormenAusblick = React.lazy(() => import('../modules/NormenAusblick'));
 const Praxiswissen = React.lazy(() => import('../modules/Praxiswissen'));
 const Bautagebuch = React.lazy(() => import('../modules/Bautagebuch'));
 const WeiterTHA = React.lazy(() => import('../modules/WeiterTHA'));
@@ -430,6 +431,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {/* Info */}
     {activeTab === 'glossar' && <Glossar />}
     {activeTab === 'regularien' && <Regularien />}
+    {activeTab === 'normen_ausblick' && <NormenAusblick />}
     {activeTab === 'fortbildungen' && <Fortbildungen />}
     {activeTab === 'informationsquellen' && <Informationsquellen />}
     {activeTab === 'literatur' && <Literatur />}

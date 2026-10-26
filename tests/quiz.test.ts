@@ -42,6 +42,14 @@ for (const q of QUIZ_QUESTIONS) {
   // Überarbeitete Fragen (AP 3.3) tragen Bloom-Stufe, Niveau und Rückmeldungen; freigegebene Altfragen folgen mit der Freigabe
   if (!q.verified) pruefe(!!q.bloom && !!q.niveau && !!q.distraktorFeedback, `${q.id}: Bloom-Stufe, Niveau oder Rückmeldungen fehlen`);
   if (q.verified) pruefe(!!q.reviewer && /^\d{4}-\d{2}-\d{2}$/.test(q.reviewedAt ?? ''), `${q.id}: freigegeben ohne Prüfer oder Datum`);
+  // 3c'. Technische Vorprüfung (optional): Datum, Ergebnis, bei „korrigiert“/„fraglich“ ein Hinweis
+  if (q.vorpruefung !== undefined) {
+    const v = q.vorpruefung;
+    pruefe(/^\d{4}-\d{2}-\d{2}$/.test(v.am ?? ''), `${q.id}: vorpruefung.am ist kein Datum`);
+    pruefe(['ok', 'korrigiert', 'fraglich'].includes(v.ergebnis), `${q.id}: vorpruefung.ergebnis „${v.ergebnis}“ unbekannt`);
+    pruefe(v.ergebnis === 'ok' || !!v.hinweis?.trim(), `${q.id}: vorpruefung „${v.ergebnis}“ ohne Hinweis`);
+    pruefe(Object.keys(v).every(k => ['am', 'ergebnis', 'hinweis'].includes(k)), `${q.id}: vorpruefung mit unbekanntem Feld`);
+  }
 }
 
 // 3c. Qualität der Antwortoptionen (AP 3.3) – Ratschen, Ziel: ≤ 30 % / 0 / ≤ 5

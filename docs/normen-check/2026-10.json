@@ -1,26 +1,26 @@
 {
   "version": 1,
-  "datum": "2026-10-25",
+  "datum": "2026-10-26",
   "quellen": {
     "dinMedia": "347659 Sitemap-Einträge",
     "gii": "gesetze-im-internet.de"
   },
   "abrufe": {
-    "abrufe": 76,
+    "abrufe": 90,
     "cache": 1,
     "fehler": 0,
     "gesperrt": 18
   },
   "zusammenfassung": {
-    "normenGeprueft": 62,
-    "normenAktuell": 45,
-    "normenHandlungsbedarf": 9,
+    "normenGeprueft": 77,
+    "normenAktuell": 69,
+    "normenHandlungsbedarf": 0,
     "normenManuell": 8,
     "gesetzeGeprueft": 18,
     "gesetzeGeaendert": 0,
     "gesetzeManuell": 18,
     "weitereManuell": 7,
-    "handlungsbedarf": 9,
+    "handlungsbedarf": 0,
     "quelleErreicht": true
   },
   "normen": [
@@ -31,7 +31,7 @@
         "2021-06"
       ],
       "registryId": "DIN_EN_206",
-      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08",
+      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)",
       "herkunft": "registry",
       "module": [
         "beton_a_z",
@@ -59,6 +59,7 @@
           "src/modules/Frischbeton.tsx"
         ],
         "2021-06": [
+          "src/data/lernziele.ts",
           "src/data/standards/din1045_2.ts",
           "src/data/standards/index.ts",
           "src/modules/BetonAZ.tsx",
@@ -76,12 +77,14 @@
           "src/modules/Mischungsberechnung.tsx",
           "src/modules/MischungsberechnungAnleitung.tsx",
           "src/modules/Nachbehandlung.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Praxiswissen.tsx",
           "src/modules/Qualitaetssicherung.tsx",
           "src/modules/SchadreaktionenBeton.tsx",
           "src/modules/Sonderbetone.tsx",
           "src/modules/Spannbeton.tsx",
           "src/modules/WUBauwerke.tsx",
+          "src/modules/bauwerksuntersuchung/diagnoseData.ts",
           "src/modules/expositionsklassen/daten.ts",
           "src/modules/mischungsberechnung/MischungErgebnisse.tsx",
           "src/modules/moduleinfo/daten.tsx"
@@ -96,7 +99,7 @@
         "2023-08"
       ],
       "registryId": "DIN_EN_206",
-      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08",
+      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)",
       "herkunft": "registry",
       "module": [
         "beton_a_z",
@@ -163,6 +166,7 @@
           "src/modules/Mischungsberechnung.tsx",
           "src/modules/MischungsberechnungAnleitung.tsx",
           "src/modules/Nachbehandlung.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Praxiswissen.tsx",
           "src/modules/Qualitaetssicherung.tsx",
           "src/modules/Recyclingbeton.tsx",
@@ -177,6 +181,64 @@
         ]
       },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+1045-2"
+    },
+    {
+      "nummer": "DIN EN 206-1",
+      "soll": "2026-07",
+      "ausgaben": [
+        "2026-07"
+      ],
+      "registryId": "DIN_EN_206",
+      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)",
+      "herkunft": "registry",
+      "module": [
+        "beton_a_z",
+        "mischungsberechnung",
+        "dauerhaftigkeit",
+        "labor",
+        "sonderbetone"
+      ],
+      "befund": "nicht_gefunden",
+      "kette": [],
+      "fundstellen": {
+        "2001": [
+          "src/data/moduleHistoryData.ts"
+        ],
+        "2026": [
+          "src/modules/NormenAusblick.tsx",
+          "src/registry/modules.ts"
+        ],
+        "2026-07": [
+          "src/modules/NormenAusblick.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+206-1"
+    },
+    {
+      "nummer": "DIN EN 206-2",
+      "soll": "2026-07",
+      "ausgaben": [
+        "2026-07"
+      ],
+      "registryId": "DIN_EN_206",
+      "registryCode": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)",
+      "herkunft": "registry",
+      "module": [
+        "beton_a_z",
+        "mischungsberechnung",
+        "dauerhaftigkeit",
+        "labor",
+        "sonderbetone"
+      ],
+      "befund": "nicht_gefunden",
+      "kette": [],
+      "fundstellen": {
+        "2026-07": [
+          "src/data/lernziele.ts",
+          "src/modules/NormenAusblick.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+206-2"
     },
     {
       "nummer": "DIN 1045-3",
@@ -298,7 +360,8 @@
           "src/modules/Anleitung.tsx",
           "src/modules/Bindemittel.tsx",
           "src/modules/Biokohlebeton.tsx",
-          "src/modules/Mischungsberechnung.tsx"
+          "src/modules/Mischungsberechnung.tsx",
+          "src/modules/laborhandouts/Moertelprismen.tsx"
         ]
       },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+197-1"
@@ -510,6 +573,7 @@
           "src/modules/Materialmodelle.tsx",
           "src/modules/Materialoptimierung.tsx",
           "src/modules/MechanischeKenngroessen.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Sonderbetone.tsx",
           "src/modules/Spannbeton.tsx",
           "src/modules/Stahlbetonbemessung.tsx",
@@ -536,6 +600,7 @@
           "src/modules/Materialmodelle.tsx",
           "src/modules/Materialoptimierung.tsx",
           "src/modules/MechanischeKenngroessen.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Schnellkarbonatisierung.tsx",
           "src/modules/Sicherheitskonzept.tsx",
           "src/modules/Sonderbetone.tsx",
@@ -580,6 +645,273 @@
         ]
       },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+459-1"
+    },
+    {
+      "nummer": "DIN EN 12350-1",
+      "soll": "2019-09",
+      "ausgaben": [
+        "2019-09"
+      ],
+      "registryId": "DIN_EN_12350_1",
+      "registryCode": "DIN EN 12350-1:2019-09",
+      "herkunft": "registry",
+      "module": [
+        "labor_frischbeton",
+        "frischbeton"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12350-1",
+        "ausgabe": "2019-09"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12350-1:2019-09",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12350-1/302669958",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {},
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12350-1"
+    },
+    {
+      "nummer": "DIN EN 12350-5",
+      "soll": "2019-09",
+      "ausgaben": [
+        "2019-09"
+      ],
+      "registryId": "DIN_EN_12350_5",
+      "registryCode": "DIN EN 12350-5:2019-09",
+      "herkunft": "registry",
+      "module": [
+        "labor_frischbeton",
+        "frischbeton"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12350-5",
+        "ausgabe": "2019-09"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12350-5:2019-09",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12350-5/302671075",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-09": [
+          "src/modules/laborhandouts/FrischbetonHandout.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12350-5"
+    },
+    {
+      "nummer": "DIN EN 12350-6",
+      "soll": "2019-09",
+      "ausgaben": [
+        "2019-09"
+      ],
+      "registryId": "DIN_EN_12350_6",
+      "registryCode": "DIN EN 12350-6:2019-09",
+      "herkunft": "registry",
+      "module": [
+        "labor_frischbeton",
+        "frischbeton"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12350-6",
+        "ausgabe": "2019-09"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12350-6:2019-09",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12350-6/302671501",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-09": [
+          "src/modules/laborhandouts/FrischbetonHandout.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12350-6"
+    },
+    {
+      "nummer": "DIN EN 12350-7",
+      "soll": "2022-05",
+      "ausgaben": [
+        "2022-05"
+      ],
+      "registryId": "DIN_EN_12350_7",
+      "registryCode": "DIN EN 12350-7:2022-05",
+      "herkunft": "registry",
+      "module": [
+        "labor_frischbeton",
+        "frischbeton"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12350-7",
+        "ausgabe": "2022-05"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12350-7:2022-05",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12350-7/351190384",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2022-05": [
+          "src/modules/laborhandouts/FrischbetonHandout.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12350-7"
+    },
+    {
+      "nummer": "DIN EN 12390-2",
+      "soll": "2019-10",
+      "ausgaben": [
+        "2019-10"
+      ],
+      "registryId": "DIN_EN_12390_2",
+      "registryCode": "DIN EN 12390-2:2019-10",
+      "herkunft": "registry",
+      "module": [
+        "labor_druckfestigkeit",
+        "festbeton"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12390-2",
+        "ausgabe": "2019-10"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12390-2:2019-10",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12390-2/302672048",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-10": [
+          "src/modules/laborhandouts/DruckfestigkeitWuerfel.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12390-2"
+    },
+    {
+      "nummer": "DIN EN 12390-3",
+      "soll": "2019-10",
+      "ausgaben": [
+        "2019-10"
+      ],
+      "registryId": "DIN_EN_12390_3",
+      "registryCode": "DIN EN 12390-3:2019-10",
+      "herkunft": "registry",
+      "module": [
+        "labor_druckfestigkeit",
+        "festbeton",
+        "mechanische_pruefungen"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 12390-3",
+        "ausgabe": "2019-10"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 12390-3:2019-10",
+          "url": "https://www.dinmedia.de/de/norm/din-en-12390-3/302672177",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-10": [
+          "src/modules/Festbeton.tsx",
+          "src/modules/FestbetonStatistik.tsx",
+          "src/modules/Labor.tsx",
+          "src/modules/MechanischePruefungen.tsx",
+          "src/modules/Qualitaetssicherung.tsx",
+          "src/modules/bauwerksuntersuchung/diagnoseData.ts",
+          "src/modules/laborhandouts/DruckfestigkeitWuerfel.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3"
+    },
+    {
+      "nummer": "DIN EN 196-1",
+      "soll": "2016-11",
+      "ausgaben": [
+        "2016-11"
+      ],
+      "registryId": "DIN_EN_196_1",
+      "registryCode": "DIN EN 196-1:2016-11",
+      "herkunft": "registry",
+      "module": [
+        "labor_moertelprismen",
+        "bindemittel"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 196-1",
+        "ausgabe": "2016-11"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 196-1:2016-11",
+          "url": "https://www.dinmedia.de/de/norm/din-en-196-1/252980793",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2016-11": [
+          "src/modules/laborhandouts/Moertelprismen.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+196-1"
+    },
+    {
+      "nummer": "DIN EN ISO 8407",
+      "soll": "2025-08",
+      "ausgaben": [
+        "2025-08"
+      ],
+      "registryId": "DIN_EN_ISO_8407",
+      "registryCode": "DIN EN ISO 8407:2025-08",
+      "herkunft": "registry",
+      "module": [
+        "labor_auslagerung",
+        "metallkorrosion"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN ISO 8407",
+        "ausgabe": "2025-08"
+      },
+      "kette": [
+        {
+          "code": "DIN EN ISO 8407:2025-08",
+          "url": "https://www.dinmedia.de/de/norm/din-en-iso-8407/390580914",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2025-08": [
+          "src/modules/laborhandouts/Auslagerung.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+8407"
     },
     {
       "nummer": "DIN EN 1996-1-1",
@@ -723,12 +1055,13 @@
     },
     {
       "nummer": "DIN EN 1995-1-1",
-      "soll": "2010-12",
+      "soll": "2026-09",
       "ausgaben": [
-        "2010-12"
+        "2010-12",
+        "2026-09"
       ],
       "registryId": "DIN_EN_1995_1_1",
-      "registryCode": "DIN EN 1995-1-1:2010-12 (Eurocode 5)",
+      "registryCode": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (eingeführt) / DIN EN 1995-1-1:2026-09 (2. Generation)",
       "herkunft": "registry",
       "module": [
         "holz",
@@ -736,7 +1069,7 @@
         "holzbau_beta",
         "knicken"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN EN 1995-1-1",
         "ausgabe": "2026-09"
@@ -764,15 +1097,15 @@
           "src/modules/HolzbauBeta.tsx",
           "src/modules/Knicken.tsx",
           "src/modules/MechanischeKenngroessen.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/OnlineTools.tsx",
           "src/modules/moduleinfo/daten.tsx"
         ],
-        "2024-03": [
-          "src/modules/Admin.tsx"
-        ],
         "2026-09": [
+          "src/modules/Admin.tsx",
           "src/modules/BpHolzprodukte.tsx",
-          "src/modules/Holz.tsx"
+          "src/modules/Holz.tsx",
+          "src/modules/NormenAusblick.tsx"
         ]
       },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1"
@@ -842,7 +1175,7 @@
         "2006-09"
       ],
       "registryId": "DIN_EN_300",
-      "registryCode": "DIN EN 300:2006-09 / DIN EN 310",
+      "registryCode": "DIN EN 300:2006-09 / DIN EN 310:1993-08",
       "herkunft": "registry",
       "module": [
         "holzwerkstoffe",
@@ -870,16 +1203,18 @@
     },
     {
       "nummer": "DIN EN 310",
-      "soll": null,
-      "ausgaben": [],
+      "soll": "1993-08",
+      "ausgaben": [
+        "1993-08"
+      ],
       "registryId": "DIN_EN_300",
-      "registryCode": "DIN EN 300:2006-09 / DIN EN 310",
+      "registryCode": "DIN EN 300:2006-09 / DIN EN 310:1993-08",
       "herkunft": "registry",
       "module": [
         "holzwerkstoffe",
         "holz"
       ],
-      "befund": "ohne_registry_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN EN 310",
         "ausgabe": "1993-08"
@@ -962,6 +1297,7 @@
           "src/modules/Knicken.tsx",
           "src/modules/Materialmodelle.tsx",
           "src/modules/MechanischeKenngroessen.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Stahl.tsx",
           "src/modules/StahlbauEC3.tsx",
           "src/modules/moduleinfo/daten.tsx"
@@ -971,6 +1307,7 @@
           "src/modules/Knicken.tsx",
           "src/modules/Materialmodelle.tsx",
           "src/modules/MechanischeKenngroessen.tsx",
+          "src/modules/NormenAusblick.tsx",
           "src/modules/Sicherheitskonzept.tsx",
           "src/modules/Stahl.tsx",
           "src/modules/StahlbauEC3.tsx",
@@ -981,19 +1318,19 @@
     },
     {
       "nummer": "DIN EN 10025-1",
-      "soll": "2019-10",
+      "soll": "2005-02",
       "ausgaben": [
-        "2019-10"
+        "2005-02"
       ],
       "registryId": "DIN_EN_10025",
-      "registryCode": "DIN EN 10025-1 bis -6:2019-10",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
       "herkunft": "registry",
       "module": [
         "metalle",
         "stahl",
         "bp_stahlbauprofile"
       ],
-      "befund": "registry_neuer",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN EN 10025-1",
         "ausgabe": "2005-02"
@@ -1010,20 +1347,183 @@
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-1"
     },
     {
-      "nummer": "DIN EN ISO 12944-1",
-      "soll": "2018-06",
+      "nummer": "DIN EN 10025-2",
+      "soll": "2019-10",
       "ausgaben": [
-        "2018-06"
+        "2019-10"
+      ],
+      "registryId": "DIN_EN_10025",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
+      "herkunft": "registry",
+      "module": [
+        "metalle",
+        "stahl",
+        "bp_stahlbauprofile"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 10025-2",
+        "ausgabe": "2019-10"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 10025-2:2019-10",
+          "url": "https://www.dinmedia.de/de/norm/din-en-10025-2/300863966",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-10": [
+          "src/modules/Stahl.tsx",
+          "src/modules/StahlbauEC3.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-2"
+    },
+    {
+      "nummer": "DIN EN 10025-3",
+      "soll": "2019-10",
+      "ausgaben": [
+        "2019-10"
+      ],
+      "registryId": "DIN_EN_10025",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
+      "herkunft": "registry",
+      "module": [
+        "metalle",
+        "stahl",
+        "bp_stahlbauprofile"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 10025-3",
+        "ausgabe": "2019-10"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 10025-3:2019-10",
+          "url": "https://www.dinmedia.de/de/norm/din-en-10025-3/300863990",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-10": [
+          "src/modules/StahlbauEC3.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-3"
+    },
+    {
+      "nummer": "DIN EN 10025-4",
+      "soll": "2023-02",
+      "ausgaben": [
+        "2023-02"
+      ],
+      "registryId": "DIN_EN_10025",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
+      "herkunft": "registry",
+      "module": [
+        "metalle",
+        "stahl",
+        "bp_stahlbauprofile"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 10025-4",
+        "ausgabe": "2023-02"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 10025-4:2023-02",
+          "url": "https://www.dinmedia.de/de/norm/din-en-10025-4/360800893",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {},
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-4"
+    },
+    {
+      "nummer": "DIN EN 10025-5",
+      "soll": "2019-10",
+      "ausgaben": [
+        "2019-10"
+      ],
+      "registryId": "DIN_EN_10025",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
+      "herkunft": "registry",
+      "module": [
+        "metalle",
+        "stahl",
+        "bp_stahlbauprofile"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 10025-5",
+        "ausgabe": "2019-10"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 10025-5:2019-10",
+          "url": "https://www.dinmedia.de/de/norm/din-en-10025-5/300864039",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {
+        "2019-10": [
+          "src/modules/Metalle.tsx"
+        ]
+      },
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-5"
+    },
+    {
+      "nummer": "DIN EN 10025-6",
+      "soll": "2023-06",
+      "ausgaben": [
+        "2023-06"
+      ],
+      "registryId": "DIN_EN_10025",
+      "registryCode": "DIN EN 10025-1:2005-02, -2:2019-10, -3:2019-10, -4:2023-02, -5:2019-10, -6:2023-06",
+      "herkunft": "registry",
+      "module": [
+        "metalle",
+        "stahl",
+        "bp_stahlbauprofile"
+      ],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN EN 10025-6",
+        "ausgabe": "2023-06"
+      },
+      "kette": [
+        {
+          "code": "DIN EN 10025-6:2023-06",
+          "url": "https://www.dinmedia.de/de/norm/din-en-10025-6/366216503",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
+      "fundstellen": {},
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-6"
+    },
+    {
+      "nummer": "DIN EN ISO 12944-1",
+      "soll": "2019-01",
+      "ausgaben": [
+        "2019-01"
       ],
       "registryId": "DIN_EN_ISO_12944",
-      "registryCode": "DIN EN ISO 12944-1 bis -9:2018-06",
+      "registryCode": "DIN EN ISO 12944-1:2019-01 (Teil 1; Reihe Teile 1 bis 9)",
       "herkunft": "registry",
       "module": [
         "metallkorrosion",
         "korrosion",
         "instandsetzung_materialien"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN EN ISO 12944-1",
         "ausgabe": "2019-01"
@@ -1040,7 +1540,8 @@
         "2019-01": [
           "src/calc/korrosionsschutz.ts",
           "src/modules/Kombinationen.tsx",
-          "src/modules/KorrosionsschutzBeschichtungen.tsx"
+          "src/modules/KorrosionsschutzBeschichtungen.tsx",
+          "src/modules/Metalle.tsx"
         ]
       },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944-1"
@@ -1249,12 +1750,12 @@
     },
     {
       "nummer": "DIN 4102-1",
-      "soll": "2016-05",
+      "soll": "1998-05",
       "ausgaben": [
-        "2016-05"
+        "1998-05"
       ],
       "registryId": "DIN_4102_1",
-      "registryCode": "DIN 4102-1 bis -22",
+      "registryCode": "DIN 4102-1:1998-05 (Teil 1; Reihe Teile 1 bis 22)",
       "herkunft": "registry",
       "module": [
         "brandschutz",
@@ -1313,20 +1814,20 @@
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1"
     },
     {
-      "nummer": "DIN 18531",
-      "soll": "2017-07",
+      "nummer": "DIN 18531-1",
+      "soll": "2025-08",
       "ausgaben": [
-        "2017-07"
+        "2025-08"
       ],
       "registryId": "DIN_18531",
-      "registryCode": "DIN 18531:2017-07",
+      "registryCode": "DIN 18531-1:2025-08 (Reihe Teile 1 bis 5)",
       "herkunft": "registry",
       "module": [
         "feuchteschutz",
         "bauphysik",
         "ausbau"
       ],
-      "befund": "ersetzt_durch_andere",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN 18531-1",
         "ausgabe": "2025-08"
@@ -1340,16 +1841,16 @@
         }
       ],
       "fundstellen": {},
-      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18531"
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18531-1"
     },
     {
       "nummer": "DIN 18533-1",
-      "soll": "2017-07",
+      "soll": "2026-06",
       "ausgaben": [
-        "2017-07"
+        "2026-06"
       ],
       "registryId": "DIN_18533",
-      "registryCode": "DIN 18533-1 bis -3:2017-07",
+      "registryCode": "DIN 18533-1 bis -3:2026-06",
       "herkunft": "registry",
       "module": [
         "feuchteschutz",
@@ -1357,7 +1858,7 @@
         "wu_bauwerke",
         "instandsetzung_materialien"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN 18533-1",
         "ausgabe": "2026-06"
@@ -1377,10 +1878,12 @@
         }
       ],
       "fundstellen": {
-        "2017": [
+        "2017-07": [
+          "src/modules/WTA.tsx",
           "src/modules/ki/RagDemonstrator.tsx"
         ],
-        "2017-07": [
+        "2026-06": [
+          "src/modules/WTA.tsx",
           "src/modules/WUBauwerke.tsx",
           "src/modules/ki/FehlerRechtEthik.tsx"
         ]
@@ -1389,18 +1892,18 @@
     },
     {
       "nummer": "DIN 18534-1",
-      "soll": "2017-07",
+      "soll": "2025-10",
       "ausgaben": [
-        "2017-07"
+        "2025-10"
       ],
       "registryId": "DIN_18534",
-      "registryCode": "DIN 18534-1 bis -6:2017-07",
+      "registryCode": "DIN 18534-1 bis -6:2025-10",
       "herkunft": "registry",
       "module": [
         "feuchteschutz",
         "ausbau"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN 18534-1",
         "ausgabe": "2025-10"
@@ -1417,19 +1920,19 @@
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18534-1"
     },
     {
-      "nummer": "DIN 18535",
+      "nummer": "DIN 18535-1",
       "soll": "2017-07",
       "ausgaben": [
         "2017-07"
       ],
       "registryId": "DIN_18535",
-      "registryCode": "DIN 18535:2017-07",
+      "registryCode": "DIN 18535-1 bis -3:2017-07",
       "herkunft": "registry",
       "module": [
         "feuchteschutz",
         "wu_bauwerke"
       ],
-      "befund": "ersetzt_durch_andere",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN 18535-1",
         "ausgabe": "2017-07"
@@ -1443,22 +1946,22 @@
         }
       ],
       "fundstellen": {},
-      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18535"
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18535-1"
     },
     {
       "nummer": "DIN 18195",
-      "soll": "2017-07",
+      "soll": "2025-12",
       "ausgaben": [
-        "2017-07"
+        "2025-12"
       ],
       "registryId": "DIN_18195",
-      "registryCode": "DIN 18195:2017-07",
+      "registryCode": "DIN 18195:2025-12",
       "herkunft": "registry",
       "module": [
         "feuchteschutz",
         "bauphysik"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN 18195",
         "ausgabe": "2025-12"
@@ -1471,7 +1974,11 @@
           "ausVermerk": false
         }
       ],
-      "fundstellen": {},
+      "fundstellen": {
+        "2025-12": [
+          "src/modules/Bauschaeden.tsx"
+        ]
+      },
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18195"
     },
     {
@@ -1911,19 +2418,19 @@
     },
     {
       "nummer": "DIN EN 17472",
-      "soll": "2022-09",
+      "soll": "2024-06",
       "ausgaben": [
-        "2022-09"
+        "2024-06"
       ],
       "registryId": "DIN_EN_17472",
-      "registryCode": "DIN EN 17472:2022-09",
+      "registryCode": "DIN EN 17472:2024-06 (berichtigte Fassung von 2022-09)",
       "herkunft": "registry",
       "module": [
         "nachhaltigkeit",
         "lca",
         "interactive_lca"
       ],
-      "befund": "neuere_ausgabe",
+      "befund": "aktuell",
       "aktuell": {
         "nummer": "DIN EN 17472",
         "ausgabe": "2024-06"
@@ -1937,7 +2444,7 @@
         }
       ],
       "fundstellen": {
-        "2022-09": [
+        "2024-06": [
           "src/modules/InteractiveLCACalc.tsx",
           "src/modules/LCA.tsx",
           "src/modules/OekobilanzLCA.tsx",
@@ -2092,22 +2599,33 @@
       "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18202"
     },
     {
-      "nummer": "DIN 18203-1",
-      "soll": "2014-08",
+      "nummer": "DIN 18203-3",
+      "soll": "2008-08",
       "ausgaben": [
-        "2014-08"
+        "2008-08"
       ],
       "registryId": "DIN_18203",
-      "registryCode": "DIN 18203-1 bis -3:2014-08",
+      "registryCode": "DIN 18203-3:2008-08 (Teile 1 und 2 zurückgezogen)",
       "herkunft": "registry",
       "module": [
         "qualitaetssicherung",
         "betonpraxis"
       ],
-      "befund": "nicht_gefunden",
-      "kette": [],
+      "befund": "aktuell",
+      "aktuell": {
+        "nummer": "DIN 18203-3",
+        "ausgabe": "2008-08"
+      },
+      "kette": [
+        {
+          "code": "DIN 18203-3:2008-08",
+          "url": "https://www.dinmedia.de/de/norm/din-18203-3/108498855",
+          "zurueckgezogen": false,
+          "ausVermerk": false
+        }
+      ],
       "fundstellen": {},
-      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18203-1"
+      "dinMediaSuche": "https://www.dinmedia.de/de/suche?q=DIN+18203-3"
     },
     {
       "nummer": "DIN 18040-1",
@@ -2390,6 +2908,7 @@
         "src/data/kiUebungen.ts",
         "src/data/kurzfassung.ts",
         "src/data/lecturePollsData.ts",
+        "src/data/lernpfade.ts",
         "src/data/lernziele.ts",
         "src/data/moduleHistoryData.ts",
         "src/data/moduleOverviewsData.ts",
@@ -2490,6 +3009,7 @@
       "dateien": [
         "src/components/ui/RechtsrahmenKompendium.tsx",
         "src/data/kurzfassung.ts",
+        "src/data/lernpfade.ts",
         "src/data/lernziele.ts",
         "src/data/tasks/rueckbauTasks.ts",
         "src/modules/Abfaelle.tsx",
@@ -2523,6 +3043,7 @@
         "src/data/glossaryTerms.ts",
         "src/data/kurzfassung.ts",
         "src/data/lecturePollsData.ts",
+        "src/data/lernpfade.ts",
         "src/data/lernziele.ts",
         "src/data/moduleHistoryData.ts",
         "src/data/moduleOverviewsData.ts",
@@ -2601,6 +3122,7 @@
         "src/components/ui/RechtsrahmenKompendium.tsx",
         "src/data/kurzfassung.ts",
         "src/data/lecturePollsData.ts",
+        "src/data/lernpfade.ts",
         "src/data/moduleHistoryData.ts",
         "src/data/moduleOverviewsData.ts",
         "src/data/tasks/rueckbauTasks.ts",
@@ -2825,6 +3347,8 @@
       "url": "https://www.gesetze-im-internet.de/urhg/index.html",
       "basis": null,
       "dateien": [
+        "src/data/lizenz.ts",
+        "src/data/lizenzTexte.ts",
         "src/modules/Impressum.tsx",
         "src/modules/KiBaustoffe.tsx",
         "src/modules/ki/FehlerRechtEthik.tsx",

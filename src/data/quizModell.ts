@@ -64,6 +64,8 @@ export interface QuizQuestion {
   reviewer?: string;
   reviewedAt?: string;
   verified?: boolean;
+  /** technische Vorprüfung (zweites Augenpaar vor der Freigabe; ersetzt verified nicht) */
+  vorpruefung?: { am: string; ergebnis: 'ok' | 'korrigiert' | 'fraglich'; hinweis?: string };
 }
 
 export const QUIZ_CATEGORIES: { id: QuizCategory; label: string; icon: string }[] = [
