@@ -29,6 +29,7 @@
  * Temperaturen in °C, Längen in mm. Lehr- und Vorbemessungswerkzeug – geprüft in tests/werkstoffmodelle.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
+import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL } from '../data/kennwerte';
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
@@ -77,7 +78,7 @@ export interface StahlBrandErgebnis {
   gueltig: boolean; hinweise: Hinweis[];
 }
 
-export const STAHL_E = 210000;
+export const STAHL_E = E_BAUSTAHL;
 
 export function stahlBrand(e: StahlBrandEingabe): StahlBrandErgebnis {
   const hinweise: Hinweis[] = [];
@@ -387,13 +388,14 @@ export interface BetonstahlParameter {
   eu: number; ey: number; fyd: number; eyd: number; eud: number;
 }
 
-/** B500 nach DIN 488-1 / DIN EN 1992-1-1, 3.2.7 (NA DE): E_s = 200 000, ε_ud = 25 ‰ */
+/** B500 nach DIN 488-1 / DIN EN 1992-1-1, 3.2.7 und Anhang C (NA DE): E_s = 200 000, ε_ud = 25 ‰ – Werte aus src/data/kennwerte.ts */
 export function betonstahlParameter(sorte: Betonstahlsorte): BetonstahlParameter {
-  const E = 200000;
-  const fy = 500;
-  const k = sorte === 'B500A' ? 1.05 : 1.08;
-  const fu = k * fy;
-  const eu = sorte === 'B500A' ? 25 : 50;
+  const b = BETONSTAHL[sorte] ?? BETONSTAHL.B500B;
+  const E = E_BETONSTAHL;
+  const fy = b.fyk;
+  const k = b.k;
+  const fu = b.ftk;
+  const eu = b.euk;
   const ey = (fy / E) * 1000;
   const fyd = fy / EC2_NA_DE.gammaS;
   const eyd = (fyd / E) * 1000;

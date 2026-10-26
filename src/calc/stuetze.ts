@@ -4,6 +4,7 @@
  * Betonstahl bilinear mit horizontalem Ast. Reiner Rechenkern – geprüft in tests/stuetze.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
+import { E_BETONSTAHL } from '../data/kennwerte';
 import { formatDeZahl } from '../utils/numberFormat';
 import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
 
@@ -26,7 +27,7 @@ export interface StuetzeErgebnis {
   hinweise: Hinweis[];
 }
 
-const ES = 200000;
+const ES = E_BETONSTAHL;
 
 /** Interaktionskurve (µ, ν) für den bezogenen Gesamtbewehrungsgrad ω = A_s,tot·f_yd/(b·h·f_cd); Druck negativ. */
 export function interaktionskurve(omega: number, b_m: number, h_m: number, d1_m: number, fcd: number, fyd: number): Kurve {

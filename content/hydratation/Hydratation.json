@@ -58,7 +58,7 @@
     "prozentsatzDerCharakteristischenDruckfes": "Prozentsatz der charakteristischen Druckfestigkeit, der zum Ausschalen erreicht sein muss.",
     "berechnungsmodellFürDasÄquivalentalter": "Berechnungsmodell für das Äquivalentalter.",
     "fibModelCode2010": "fib Model Code 2010",
-    "din10453Rastrup": "DIN 1045-3 (Rastrup)",
+    "din10453Rastrup": "Rastrup (1954)",
     "aktivierungsenergieEA": "Aktivierungsenergie (E_a)",
     "scheinbareAktivierungsenergieBeschreibtD": "Scheinbare Aktivierungsenergie. Beschreibt die Temperaturabhängigkeit der Reaktionsgeschwindigkeit. Häufig zwischen 30 und 50 kJ/mol.",
     "vergleichtDruckZugfestigkeitUnd": "Vergleicht Druck-, Zugfestigkeit und E-Modul normiert auf 100 % nach DIN EN 1992-1-1",

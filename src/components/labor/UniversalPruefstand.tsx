@@ -18,6 +18,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
+import { BETONSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -86,9 +87,9 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           name: 'Betonstahl (B500B)',
           norm: 'DIN EN ISO 6892-1 / DIN 488',
           density: 7850,
-          E: 200000,
-          fy: 500, // Streckgrenze
-          fu: 550, // Zugfestigkeit
+          E: E_BETONSTAHL,
+          fy: BETONSTAHL.B500B.fyk, // Streckgrenze
+          fu: BETONSTAHL.B500B.ftk, // Zugfestigkeit f_tk = 1,08 · f_yk (vorher 550)
           yieldStrain: 2.5, // ‰
           failureStrain: 50, // ‰
           color: '#64748b',

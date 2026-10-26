@@ -1,14 +1,16 @@
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahl/daten.json';
 import { abminderungStahlBrand, stahlSpannungBeiDehnung, stahlKennlinienPunkte, stahlVerformungsphase, proportionalAnteil } from '@/src/calc/werkstoffmodelle';
+import { BAUSTAHL_EC3, BETONSTAHL, E_BAUSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 
+// S235/S355/S460 und B500A/B500B zentral aus src/data/kennwerte.ts (EN 1993-1-1 Tab. 3.1, t ≤ 40 mm; DIN 488 / EC2 Anhang C)
 export const steelGrades = {
-  'S235': { fy: 235, fu: 360 },
-  'S355': { fy: 355, fu: 470 },
-  'S460': { fy: 460, fu: 540 },
+  'S235': { ...BAUSTAHL_EC3.S235 },
+  'S355': { ...BAUSTAHL_EC3.S355 },
+  'S460': { ...BAUSTAHL_EC3.S460 },
   'S690': { fy: 690, fu: 770 },
-  'B500B': { fy: 500, fu: 540 },
-  'B500A': { fy: 500, fu: 525 },
+  'B500B': { fy: BETONSTAHL.B500B.fyk, fu: BETONSTAHL.B500B.ftk },
+  'B500A': { fy: BETONSTAHL.B500A.fyk, fu: BETONSTAHL.B500A.ftk },
   'Y1860': { fy: 1660, fu: 1860 },
   'SAS670': { fy: 670, fu: 800 },
 };
@@ -20,7 +22,7 @@ export const steelProperties = {
   lambda: 50, // W/(mK) – vereinfachter Konstantwert; EC3-1-2: 54 W/(mK) bei 20 °C, temperaturabhängig
   alpha: 1.2e-5, // 1/K
   cp: 440, // J/(kgK)
-  E: 210000, // MPa
+  E: E_BAUSTAHL, // MPa
   G: 81000, // MPa
   nu: 0.3 // Poissonzahl
 };
@@ -72,8 +74,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'baustahl',
     categoryLabel: inhalt.werte.konventionellerBaustahl,
     norm: inhalt.werte.dinEn100252,
-    fy: 235,
-    fu: 360,
+    fy: BAUSTAHL_EC3.S235.fy,
+    fu: BAUSTAHL_EC3.S235.fu,
     description: inhalt.werte.derMeistgenutzteAllroundStahl,
     applications: [
       inhalt.werte.gewerblicheStandardhallenUndLandwirtscha,
@@ -105,8 +107,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'baustahl',
     categoryLabel: inhalt.werte.konventionellerBaustahl2,
     norm: inhalt.werte.dinEn1002522,
-    fy: 355,
-    fu: 470,
+    fy: BAUSTAHL_EC3.S355.fy,
+    fu: BAUSTAHL_EC3.S355.fu, // EN 1993-1-1 Tab. 3.1, t ≤ 40 mm (vorher 470)
     description: inhalt.werte.dasUnangefochteneStandardarbeitstierIm,
     applications: [
       inhalt.werte.hochbelasteteRahmentragwerkeImGeschoss,
@@ -138,8 +140,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'baustahl',
     categoryLabel: inhalt.werte.hochfesterFeinkornbaustahl,
     norm: inhalt.werte.dinEn100253,
-    fy: 460,
-    fu: 540,
+    fy: BAUSTAHL_EC3.S460.fy,
+    fu: BAUSTAHL_EC3.S460.fu,
     description: inhalt.werte.einThermoMechanischGewalzter,
     applications: [
       inhalt.werte.hochhausVerbundstützenZurMinimierung,
@@ -204,8 +206,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'baustahl',
     categoryLabel: inhalt.werte.wetterfesterBaustahl,
     norm: inhalt.werte.dinEn100255,
-    fy: 355,
-    fu: 470,
+    fy: BAUSTAHL_EC3.S355.fy,
+    fu: BAUSTAHL_EC3.S355.fu, // S355W wie S355 nach EN 1993-1-1 Tab. 3.1 (vorher 470)
     description: inhalt.werte.wetterfesterBaustahlDerKupfer,
     applications: [
       inhalt.werte.wartungsfreieFassadenbekleidungenImReprä,
@@ -270,8 +272,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'bewehrung',
     categoryLabel: inhalt.werte.bewehrungsstahlHochduktilB,
     norm: inhalt.werte.din488Ec2,
-    fy: 500,
-    fu: 540, // f_tk = k · f_yk mit k ≥ 1,08
+    fy: BETONSTAHL.B500B.fyk,
+    fu: BETONSTAHL.B500B.ftk, // f_tk = k · f_yk mit k ≥ 1,08
     description: inhalt.werte.warmgewalzterUndAusDer,
     applications: [
       inhalt.werte.biegeUndSchubbewehrungIn,
@@ -303,8 +305,8 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     category: 'bewehrung',
     categoryLabel: inhalt.werte.bewehrungsstahlNormalduktilA,
     norm: 'DIN 488-4',
-    fy: 500,
-    fu: 525,
+    fy: BETONSTAHL.B500A.fyk,
+    fu: BETONSTAHL.B500A.ftk,
     description: inhalt.werte.kaltgezogenerOderKaltgerippterBetonstahl,
     applications: [
       inhalt.werte.geschossdeckenplattenUndElementdeckenFil,
@@ -467,9 +469,9 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     color: '#2563eb', // Blau
     category: 'baustahl',
     categoryLabel: inhalt.werte.konventionellerBaustahl3,
-    E: 210000,
-    fy: 235,
-    fu: 360,
+    E: E_BAUSTAHL,
+    fy: BAUSTAHL_EC3.S235.fy,
+    fu: BAUSTAHL_EC3.S235.fu,
     A: 26.0,
     sh_strain: 2.2,
     fu_strain: 15.0,
@@ -487,9 +489,9 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     color: '#A3113E', // Shiraz
     category: 'baustahl',
     categoryLabel: inhalt.werte.konventionellerBaustahl4,
-    E: 210000,
-    fy: 355,
-    fu: 510,
+    E: E_BAUSTAHL,
+    fy: BAUSTAHL_EC3.S355.fy,
+    fu: BAUSTAHL_EC3.S355.fu, // Nennwert EN 1993-1-1 Tab. 3.1 (vorher typischer Istwert 510)
     A: 22.0,
     sh_strain: 1.8,
     fu_strain: 13.0,
@@ -567,9 +569,9 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     color: '#059669', // Smaragdgrün
     category: 'sonder',
     categoryLabel: inhalt.werte.bewehrungsSpannstahl,
-    E: 205000,
-    fy: 500,
-    fu: 560,
+    E: E_BETONSTAHL, // EC2 3.2.7(4) (vorher 205 000)
+    fy: BETONSTAHL.B500B.fyk,
+    fu: BETONSTAHL.B500B.ftk, // f_tk = 1,08 · f_yk (vorher 560)
     A: 12.0,
     sh_strain: 0.6,
     fu_strain: 5.0,
@@ -607,9 +609,9 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     color: '#10b981', // Helles Grün
     category: 'sonder',
     categoryLabel: inhalt.werte.bewehrungsSpannstahl3,
-    E: 205000,
-    fy: 500,
-    fu: 525,
+    E: E_BETONSTAHL, // EC2 3.2.7(4) (vorher 205 000)
+    fy: BETONSTAHL.B500A.fyk,
+    fu: BETONSTAHL.B500A.ftk,
     A: 6.0,
     sh_strain: 0.35,
     fu_strain: 2.5,

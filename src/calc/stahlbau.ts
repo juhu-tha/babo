@@ -5,17 +5,18 @@
  */
 import { formatDeZahl } from '../utils/numberFormat';
 import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
+import { BAUSTAHL_EC3, E_BAUSTAHL } from '../data/kennwerte';
 
-/** Teilsicherheitsbeiwerte nach DIN EN 1993-1-1/NA (DE) und E-Modul nach 3.2.6 */
-export const EC3_NA_DE = { E: 210000, gammaM0: 1.0, gammaM1: 1.1, gammaM2: 1.25 } as const;
+/** Teilsicherheitsbeiwerte nach DIN EN 1993-1-1/NA (DE) und E-Modul nach 3.2.6 (zentral in src/data/kennwerte.ts) */
+export const EC3_NA_DE = { E: E_BAUSTAHL, gammaM0: 1.0, gammaM1: 1.1, gammaM2: 1.25 } as const;
 
 export type Stahlguete = 'S235' | 'S355' | 'S460';
 
-/** Nennwerte f_y und f_u für t ≤ 40 mm nach DIN EN 1993-1-1, Tab. 3.1 [N/mm²] */
+/** Nennwerte f_y und f_u für t ≤ 40 mm nach DIN EN 1993-1-1, Tab. 3.1 [N/mm²] – zentral aus src/data/kennwerte.ts */
 export const STAHLGUETEN: Readonly<Record<Stahlguete, { fy: number; fu: number; norm: string }>> = {
-  S235: { fy: 235, fu: 360, norm: 'DIN EN 10025-2 (S235)' },
-  S355: { fy: 355, fu: 490, norm: 'DIN EN 10025-2 (S355)' },
-  S460: { fy: 460, fu: 540, norm: 'DIN EN 10025-3 (S460N/NL)' },
+  S235: { ...BAUSTAHL_EC3.S235, norm: 'DIN EN 10025-2 (S235)' },
+  S355: { ...BAUSTAHL_EC3.S355, norm: 'DIN EN 10025-2 (S355)' },
+  S460: { ...BAUSTAHL_EC3.S460, norm: 'DIN EN 10025-3 (S460N/NL)' },
 };
 
 export type Knicklinie = 'a0' | 'a' | 'b' | 'c' | 'd';

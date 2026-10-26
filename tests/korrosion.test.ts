@@ -2,7 +2,7 @@
 import {
   abtragsrateFaraday, querschnittsverlust, ABTRAG_UM_JE_UA_CM2, EISEN,
   dAppAlterung, chloridGehalt, chloridProfil, T0_CHLORID, CL_KRITISCH,
-  karbonatisierungsFront, karbonatisierungsKurve, schnellUmrechnung,
+  karbonatisierungsFront, karbonatisierungsKurve, schnellUmrechnung, CO2_KAMMER_EN12390_12,
   feuchteFaktor, iCorrLehrmodell, schadensStufe, lokalelement, LOKALELEMENT, I_PASSIV,
 } from '../src/calc/korrosion';
 import { erf } from '../src/lib/math';
@@ -67,6 +67,11 @@ pruefe(s.tiefenSchnell.length === 91 && s.tiefenSchnell[9] === 6, 'x_acc(9 d) = 
 pruefe(nahe(s.tiefenNat[90], s.kNat * Math.sqrt(90 / 365), 1e-12), 'x_nat(90 d)');
 pruefe(schnellUmrechnung(2, 0.04, 0.04).hinweise.some(h => h.stufe === 'warnung'), 'c_nat = c_acc → Warnung');
 pruefe(!schnellUmrechnung(2, 0, 0.04).gueltig, 'c_acc = 0 → Fehler');
+// Runde 4 (bewusst geändert): Kammer-Standard 3,0 Vol.-% CO₂ nach DIN EN 12390-12 (vorher 2,0 Vol.-% im Modul).
+// K_acc = 2 mm/√d bei 3 %, c_nat = 0,04 % → K_nat = 2·√(0,04/3)·√365 = 4,412 mm/√a
+const s3 = schnellUmrechnung(2, CO2_KAMMER_EN12390_12, 0.04, 90);
+pruefe(CO2_KAMMER_EN12390_12 === 3 && nahe(s3.kNat, 2 * Math.sqrt(0.04 / 3) * Math.sqrt(365), 1e-12) && nahe(s3.kNat, 4.412, 0.001), `K_nat(3 %) ${s3.kNat}`);
+pruefe(!s3.hinweise.some(h => h.feld === 'cAcc') && s.hinweise.some(h => h.feld === 'cAcc'), '3 % ohne, 2 % mit Hinweis auf DIN EN 12390-12');
 
 // 7. Lokalelement-Lehrmodell: Referenz = bisherige Komponentenrechnung (wörtlich), Schwellen und Grenzen
 function alt(cl: number, rh: number, c: number, j: number) {

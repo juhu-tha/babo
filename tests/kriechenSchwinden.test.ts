@@ -1,7 +1,7 @@
 // Rechenkern Kriechen und Schwinden (Umsetzungsplan Phase 4, AP 4.2): DIN EN 1992-1-1, 3.1.4, 3.3.2 und Anhang B
 import {
   kriechSchwindModell, kriechzahl, trocknungsschwinden, autogenesSchwinden, gesamtschwinden, wirksamerEModul,
-  kriechSchwindVerlauf, diagrammZeitpunkte, stuetzenVerformung, STUETZE_LEHRWERTE, betaDs, betaAs, betaC, beiwertKh,
+  kriechSchwindVerlauf, diagrammZeitpunkte, stuetzenVerformung, STUETZE_LEHRWERTE, EC_TANGENTENFAKTOR, betaDs, betaAs, betaC, beiwertKh,
   spannstahlRelaxation, relaxationsVerlauf, RELAXATION_ZEITPUNKTE_H, rheologieKennwerte, maxwellRelaxation, zenerRelaxation,
   kelvinKriechen, maxwellKriechen, zenerKriechen, halbwertszeit, lehrDehnungPromille,
   type KriechSchwindEingabe, type Zementklasse, type Relaxationsklasse,
@@ -121,7 +121,11 @@ const v = kriechSchwindVerlauf(m0);
 pruefe(v.kriechzahl.length === zp.length && relNahe(v.gesamt[5], (trocknungsschwinden(m0, zp[5]) + autogenesSchwinden(m0, zp[5])) * 1e6), 'Verlauf');
 pruefe(wirksamerEModul(m0, 20) === m0.Ecm && relNahe(wirksamerEModul(m0, 365), m0.Ecm / (1 + kriechzahl(m0, 365))), 'E_c,eff (Gl. 7.20)');
 const st = stuetzenVerformung(m0, 18250);
-pruefe(relNahe(st.epsEl, STUETZE_LEHRWERTE.sigmaC / m0.Ecm) && relNahe(st.dL_tot, (st.epsEl * (1 + st.phiT) + gesamtschwinden(m0, 18250)) * 3000, 1e-12), 'Stütze ε_tot = σ/E·(1 + φ) + ε_cs');
+// Runde 4 (bewusste Änderung, Entscheidung Prof. Huber 26.10.): Kriechdehnung nach DIN EN 1992-1-1, 3.1.4(3)
+// mit E_c = 1,05·E_cm, d. h. ε_cr = φ·σ/(1,05·E_cm). Früher: ε_cr = φ·σ/E_cm (Kriechanteil um 5 % zu groß).
+pruefe(relNahe(st.epsEl, STUETZE_LEHRWERTE.sigmaC / m0.Ecm) && relNahe(st.epsCr, st.phiT * STUETZE_LEHRWERTE.sigmaC / (1.05 * m0.Ecm), 1e-12)
+  && relNahe(st.dL_tot, (st.epsEl * (1 + st.phiT / 1.05) + gesamtschwinden(m0, 18250)) * 3000, 1e-12), 'Stütze ε_tot = σ/E_cm·(1 + φ/1,05) + ε_cs');
+pruefe(EC_TANGENTENFAKTOR === 1.05 && relNahe(st.epsCr * 1.05, st.phiT * st.epsEl, 1e-12), 'ε_cr·1,05 = φ·ε_el (alter Wert / 1,05)');
 const st0 = stuetzenVerformung(m0, 28);
 pruefe(st0.phiT > 0 && st0.phiT < 0.15 && relNahe(st0.phiT, kriechzahl(m0, 28.01)), 'Stütze bei t = t₀: φ(t₀ + 0,01 d)');
 

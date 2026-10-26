@@ -1,4 +1,5 @@
 import inhalt from '@/content/mechanischekenngroessen/daten.json';
+import { BAUSTAHL_EC3, E_BAUSTAHL } from '@/src/data/kennwerte';
 export interface MaterialData {
   id: string;
   name: string;
@@ -20,10 +21,10 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     id: 's235',
     name: inhalt.werte.baustahlS235jr,
     kategorie: 'Metall',
-    E: 210000,
+    E: E_BAUSTAHL,
     nu: 0.30,
-    fy: 235,
-    fu: 360,
+    fy: BAUSTAHL_EC3.S235.fy,
+    fu: BAUSTAHL_EC3.S235.fu,
     epsBreak: 26.0,
     dichte: 7850,
     alphaT: 12.0,
@@ -35,10 +36,10 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     id: 's355',
     name: inhalt.werte.baustahlS355j2,
     kategorie: 'Metall',
-    E: 210000,
+    E: E_BAUSTAHL,
     nu: 0.30,
-    fy: 355,
-    fu: 510,
+    fy: BAUSTAHL_EC3.S355.fy,
+    fu: BAUSTAHL_EC3.S355.fu, // EN 1993-1-1 Tab. 3.1, t ≤ 40 mm (vorher 510)
     epsBreak: 22.0,
     dichte: 7850,
     alphaT: 12.0,
