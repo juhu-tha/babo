@@ -1,0 +1,91 @@
+/** Versuchs-Handout (AP 6.4): Daten für src/modules/laborhandouts/Auslagerung.tsx – reine Werte, geprüft in tests/handoutExport.test.ts */
+import type { VersuchsHandoutDaten } from '@/src/components/handout/handoutTypen';
+
+export const AUSLAGERUNG_HANDOUT: VersuchsHandoutDaten = {
+  id: 'labor_auslagerung',
+  titel: '4-Wochen-Auslagerungsversuch an Betonstahl (Gravimetrie)',
+  normen: ['DIN EN ISO 8407 (Beizen)', 'ASTM G1 / G31 (Auswertung, Leitfaden)'],
+  dauer: 'Ansetzen 2 h, Auslagerung 28 Tage, Beizen und Wägen 3 h',
+  gruppe: '3 Parallelproben je Medium, 2 bis 4 Studierende',
+  ziel: [
+    'Stahlproben in unterschiedlichen Medien (z. B. gesättigte Ca(OH)₂-Lösung mit und ohne NaCl, Leitungswasser) 4 Wochen auslagern,',
+    'den Massenverlust gravimetrisch bestimmen: wiegen – auslagern – Korrosionsprodukte beizen – wiegen, mit Blindprobe,',
+    'Massenverlustrate in g/(m²·d) und gleichmäßige Abtragsrate in µm/a berechnen und die Medien vergleichen,',
+    'Grenzen des Verfahrens bei örtlicher Korrosion (Lochfraß) erkennen.',
+  ],
+  geraete: [
+    { name: 'Analysenwaage', hinweis: 'Ablesung 0,1 mg, mindestens 1 mg', laborAnpassen: true },
+    { name: 'Messschieber (0,01 mm)' },
+    { name: 'verschließbare Kunststoffgefäße', hinweis: 'je Probe etwa 0,5 L, Probe frei hängend oder auf Kunststoffstegen', laborAnpassen: true },
+    { name: 'Ultraschallbad, Exsikkator, Trockenschrank (bis 105 °C)' },
+    { name: 'Abzug für das Beizen' },
+  ],
+  material: [
+    { name: 'Betonstahlabschnitte B500B, z. B. Ø 12 mm × 100 mm', hinweis: 'gleiche Charge, mindestens 3 je Medium plus 1 Blindprobe', laborAnpassen: true },
+    { name: 'Prüfmedien', hinweis: 'z. B. gesättigte Ca(OH)₂-Lösung, dieselbe mit 3 % NaCl, 3%ige NaCl-Lösung, Leitungswasser', laborAnpassen: true },
+    { name: 'Beizlösung für Eisen und Stahl', hinweis: 'inhibierte Salzsäure nach DIN EN ISO 8407 (Rezeptur und Einwirkzeit aus der Norm bzw. Betriebsanweisung)', laborAnpassen: true },
+    { name: 'Ethanol oder Aceton, Kunststoffbürste, Schleifpapier, wasserfester Marker oder Schlagzahlen' },
+  ],
+  sicherheit: [
+    { gefahr: 'Beizlösung (Salzsäure, ätzend, reizende Dämpfe)', massnahme: 'nur unter dem Abzug, Schutzbrille bzw. Gesichtsschild, säurefeste Handschuhe, Kittel; Säure ins Wasser, nie umgekehrt.' },
+    { gefahr: 'Calciumhydroxid (stark alkalisch)', massnahme: 'Schutzbrille und Handschuhe, Spritzer sofort abspülen.' },
+    { gefahr: 'Wasserstoffbildung beim Beizen', massnahme: 'offene Gefäße, keine Zündquellen, gute Lüftung.' },
+    { gefahr: 'Entsorgung von Säure und Metallsalzlösung', massnahme: 'getrennt sammeln bzw. neutralisieren nach Betriebsanweisung des Labors.' },
+  ],
+  ablauf: [
+    { titel: 'Proben vorbereiten', text: 'Proben kennzeichnen, schleifen bzw. strahlen, entfetten, im Exsikkator trocknen. Durchmesser und Länge messen, Masse m₀ auf 0,1 mg bestimmen.' },
+    { titel: 'Auslagern', text: 'Je Medium mindestens drei Proben einzeln in verschlossene Gefäße hängen; Verhältnis Lösungsvolumen zu Oberfläche konstant halten (z. B. mindestens 20 mL je cm²). Temperatur notieren, Gefäße nicht bewegen.', laborAnpassen: true },
+    { titel: 'Beobachten', text: 'Wöchentlich Aussehen (Rostfahnen, Lochfraß, Verfärbung der Lösung) protokollieren und fotografieren; Verdunstung mit entionisiertem Wasser ausgleichen.', dauer: '4 × 15 min' },
+    { titel: 'Ausbauen und reinigen', text: 'Nach 28 Tagen ausbauen, lose Produkte mit der Kunststoffbürste unter fließendem Wasser entfernen.' },
+    { titel: 'Beizen mit Blindprobe', text: 'Proben und eine nicht ausgelagerte Blindprobe gleich lang beizen (nach DIN EN ISO 8407), spülen, mit Ethanol trocknen. Die Blindprobe liefert den Massenverlust des Grundmetalls durch das Beizen.', laborAnpassen: true },
+    { titel: 'Wägen', text: 'Nach dem Abkühlen im Exsikkator Masse m₁ bestimmen. Bei Zweifel Beizen in kurzen Schritten wiederholen, bis die Masse konstant ist.' },
+  ],
+  protokoll: {
+    titel: 'Messprotokoll Auslagerung und Gravimetrie',
+    hinweis: 'Je Zeile eine Probe. Proben desselben Mediums werden gemeinsam gemittelt – das Medium daher in allen Zeilen gleich schreiben.',
+    kopf: [
+      { id: 'beginn', label: 'Beginn der Auslagerung (Datum)', typ: 'text' },
+      { id: 'tage', label: 'Auslagerungsdauer', einheit: 'd', typ: 'zahl', standard: '28' },
+      { id: 'rho', label: 'Dichte des Stahls', einheit: 'g/cm³', typ: 'zahl', standard: '7,85' },
+      { id: 'blind', label: 'Massenverlust Blindprobe beim Beizen', einheit: 'g', typ: 'zahl', standard: '0' },
+      { id: 'temperatur', label: 'Lagerungstemperatur', einheit: '°C', typ: 'zahl', standard: '20' },
+    ],
+    spalten: [
+      { id: 'probe', label: 'Probe', typ: 'text' },
+      { id: 'medium', label: 'Medium', typ: 'text' },
+      { id: 'd', label: 'Durchmesser d', einheit: 'mm', typ: 'zahl' },
+      { id: 'l', label: 'Länge l', einheit: 'mm', typ: 'zahl' },
+      { id: 'm0', label: 'Masse vorher m₀', einheit: 'g', typ: 'zahl' },
+      { id: 'm1', label: 'Masse nach Beizen m₁', einheit: 'g', typ: 'zahl' },
+      { id: 'befund', label: 'Befund', typ: 'text' },
+    ],
+    zeilen: 7,
+    beispiel: {
+      kopf: { beginn: 'Lehrbeispiel', tage: '28', rho: '7,85', blind: '0,010', temperatur: '20' },
+      zeilen: [
+        { probe: 'P1', medium: 'Ca(OH)₂ + 3 % NaCl', d: '12,0', l: '100,0', m0: '88,512', m1: '88,262', befund: 'Lochfraß, 4 Stellen' },
+        { probe: 'P2', medium: 'Ca(OH)₂ + 3 % NaCl', d: '12,0', l: '100,1', m0: '88,430', m1: '88,198', befund: 'Lochfraß, 2 Stellen' },
+        { probe: 'P3', medium: 'Ca(OH)₂ + 3 % NaCl', d: '12,0', l: '99,9', m0: '88,655', m1: '88,390', befund: 'Lochfraß, 5 Stellen' },
+        { probe: 'P4', medium: 'Ca(OH)₂ gesättigt', d: '12,0', l: '100,0', m0: '88,600', m1: '88,588', befund: 'blank' },
+        { probe: 'P5', medium: 'Ca(OH)₂ gesättigt', d: '12,0', l: '100,0', m0: '88,541', m1: '88,530', befund: 'blank' },
+        { probe: 'P6', medium: 'Ca(OH)₂ gesättigt', d: '12,0', l: '100,0', m0: '88,577', m1: '88,565', befund: 'blank' },
+      ],
+    },
+  },
+  fehlerquellen: [
+    { quelle: 'Blindwert nicht abgezogen', wirkung: 'Abtrag des Grundmetalls beim Beizen wird als Korrosion gezählt – bei geringer Korrosion großer relativer Fehler', abhilfe: 'Blindprobe gleich lang beizen und ihren Verlust abziehen' },
+    { quelle: 'Korrosionsprodukte nicht vollständig entfernt', wirkung: 'Massenverlust zu klein', abhilfe: 'Beizen schrittweise bis zur Massenkonstanz' },
+    { quelle: 'Feuchte oder Fingerabdrücke bei der Wägung', wirkung: 'Streuung im Milligrammbereich', abhilfe: 'im Exsikkator abkühlen, mit Handschuhen bzw. Pinzette arbeiten' },
+    { quelle: 'Lochfraß statt Flächenkorrosion', wirkung: 'mittlere Abtragsrate unterschätzt die örtliche Eindringtiefe um ein Vielfaches', abhilfe: 'Lochtiefen zusätzlich messen (Messuhr, Mikroskop) und gesondert angeben' },
+    { quelle: 'Kontakt der Probe mit dem Gefäß, Spaltbildung', wirkung: 'Spaltkorrosion, Streuung zwischen Parallelproben', abhilfe: 'Proben frei hängend an Kunststofffaden auslagern' },
+    { quelle: 'Hochrechnung kurzer Versuche auf ein Jahr', wirkung: 'Rate wird überschätzt, weil Deckschichten die Korrosion mit der Zeit bremsen', abhilfe: 'Versuchsdauer angeben, Ergebnis nur vergleichend nutzen' },
+  ],
+  fragen: [
+    'Warum korrodiert der Stahl in chloridfreier Ca(OH)₂-Lösung praktisch nicht, mit NaCl dagegen deutlich?',
+    'Berechnen Sie für eine Probe die Abtragsrate von Hand und vergleichen Sie mit dem Rechner. Welche Größe beeinflusst das Ergebnis am stärksten?',
+    'Wie groß ist der relative Fehler, wenn der Blindwert bei der chloridfreien Lösung vergessen wird?',
+    'Warum ist die gravimetrische Abtragsrate bei Lochfraß kein geeignetes Maß für die Gefährdung eines Bauteils?',
+    'Wie würden Sie den Versuch erweitern, um den Einfluss des Sauerstoffs zu untersuchen?',
+    'Welche Aussagekraft hat eine auf ein Jahr hochgerechnete Rate aus einem 28-Tage-Versuch?',
+  ],
+};

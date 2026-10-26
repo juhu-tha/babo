@@ -31,6 +31,7 @@ for (const [id, v] of Object.entries(PRUEFVERMERKE)) {
 
 // 3. Anzeige-Logik
 pruefe(pruefvermerkFuer('start') === undefined && pruefvermerkFuer('impressum') === undefined, 'Nicht-Fachmodule bekommen einen Prüfvermerk');
+pruefe(!istFachmodul(MODUL_BY_ID.get('forschung_transfer')) && pruefvermerkFuer('forschung_transfer') === undefined, 'forschung_transfer (Info-Seite) wird als Fachmodul gezählt');
 pruefe(pruefvermerkFuer('ki_uebungen')?.status === 'offen', 'ki_uebungen: Prüfvermerk fehlt');
 pruefe(datumDe('2026-11-03') === '03.11.2026', 'datumDe formatiert falsch');
 

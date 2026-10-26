@@ -8,7 +8,8 @@ import {
   Info, 
   ShieldAlert,
   Clock,
-  Tag
+  Tag,
+  Landmark
 } from 'lucide-react';
 import { useTabContext } from '../contexts/TabContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -215,7 +216,7 @@ export default function Startseite() {
 
       <div className="mt-8 text-sm text-text-main/60 flex flex-col items-center gap-1.5">
         <p>&copy; Prof. Huber / THA</p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
           <button
             onClick={() => setActiveTab('versionen')}
             className="text-xs text-text-main/50 hover:text-shiraz hover:underline inline-flex items-center gap-1.5 font-mono cursor-pointer transition-colors"
@@ -232,6 +233,15 @@ export default function Startseite() {
           >
             <ShieldAlert size={12} className="text-shiraz" />
             <span>Admin-Bereich</span>
+          </button>
+          <span className="text-text-main/30" aria-hidden="true">•</span>
+          <button
+            type="button"
+            onClick={() => setActiveTab('forschung_transfer')}
+            className="text-xs text-text-main/70 hover:text-shiraz hover:underline inline-flex items-center gap-1.5 font-semibold cursor-pointer transition-colors"
+          >
+            <Landmark size={12} className="text-shiraz" aria-hidden="true" />
+            <span>Forschung und Transfer</span>
           </button>
         </div>
       </div>
