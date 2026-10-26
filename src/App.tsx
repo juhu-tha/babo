@@ -22,17 +22,17 @@ import { TabProvider, useTabContext } from './contexts/TabContext';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/navigation/LanguageSwitcher';
 import { LanguageBanner } from './components/navigation/LanguageBanner';
-import { TAB_DESCRIPTIONS } from './metaDescriptions';
+import { ladeBeschreibungen } from './metaDescriptions';
 import { AccessibilityToolbar } from './components/a11y/AccessibilityToolbar';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
-import { MODUL_BY_ID } from './registry/modules';
+import { MODUL_KERN } from './registry/kern';
 import { MODULTEST_IN_APP } from './data/quizZuordnung';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
 // Nur die Versionsnummer aus package.json (tree-shakebar); tests/versionData.test.ts sichert den Gleichstand
 // mit VERSION_HISTORY[0] – so bleibt die Änderungshistorie aus dem Einstiegs-Chunk (Phase 5, AP 5.4)
 import { version as PAKET_VERSION } from '../package.json';
 import { tabGroups } from './routing/tabGroups';
-import { ModulNavigation } from './components/navigation/ModulNavigation';
+import { ModulNavigation, suchbegriffeLaden } from './components/navigation/ModulNavigation';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LIZENZ_AKTIV } from './data/lizenz';
 
@@ -136,6 +136,15 @@ function AppContent() {
 
   const [seoLogs, setSeoLogs] = React.useState<string[]>([]);
   const [showMetadataModal, setShowMetadataModal] = useState(false);
+  // Meta-Beschreibungen liegen in der vollständigen Registry: erst nach dem Laden der Seite nachladen (AP 5.5)
+  const [TAB_DESCRIPTIONS, setTabDescriptions] = useState<Record<string, string>>({});
+  useEffect(() => {
+    let aktiv = true;
+    const lade = () => { ladeBeschreibungen().then(b => { if (aktiv) setTabDescriptions(b); }).catch(() => {}); };
+    if (document.readyState === 'complete') { const t = window.setTimeout(lade, 0); return () => { aktiv = false; window.clearTimeout(t); }; }
+    window.addEventListener('load', lade, { once: true });
+    return () => { aktiv = false; window.removeEventListener('load', lade); };
+  }, []);
 
   const printMetadataConsoleTable = () => {
     const rows: Record<string, string | number>[] = [];
@@ -340,7 +349,7 @@ function AppContent() {
     if (ogDesc) ogDesc.setAttribute('content', descriptionText);
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl && typeof window !== 'undefined') ogUrl.setAttribute('content', `${window.location.origin}/#${activeTab}`);
-  }, [activeTab]);
+  }, [activeTab, TAB_DESCRIPTIONS]);
 
   if (activePollParam) {
     return (
@@ -415,6 +424,7 @@ function AppContent() {
             className="w-full pl-9 pr-8 py-2 border border-home-grau/30 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-shiraz focus:border-transparent bg-white dark:bg-slate-800 dark:text-white" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
+            onFocus={() => { void suchbegriffeLaden().catch(() => {}); }}
             aria-label={language === 'en' ? 'Search modules and content' : 'Module und Inhalte durchsuchen'}
           />
           {searchQuery && (
@@ -462,7 +472,7 @@ function AppContent() {
                >
                 <GraduationCap size={16} className="text-shiraz shrink-0" aria-hidden="true"/>
                 <span className="truncate max-w-[52vw]">{(() => {
-                  const m = activeTab !== 'start' ? MODUL_BY_ID.get(activeTab) : undefined;
+                  const m = activeTab !== 'start' ? MODUL_KERN.get(activeTab) : undefined;
                   return m ? getTabLabel(m.id, m.label) : 'BaustoffBoard';
                 })()}</span>
               </button>
@@ -654,8 +664,8 @@ function AppContent() {
       <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar focus:outline-none" id="scroll-container" tabIndex={-1}>
         {/* Genau eine Hauptüberschrift je Seite: der Modulname (Phase 2, AP 2.2) */}
         <h1 className="sr-only">{(() => {
-          const m = MODUL_BY_ID.get(activeTab);
-          const label = m ? getTabLabel(m.id, m.baum?.titel ?? m.label) : 'BaustoffBoard';
+          const m = MODUL_KERN.get(activeTab);
+          const label = m ? getTabLabel(m.id, m.titel ?? m.label) : 'BaustoffBoard';
           return activeTab === 'start' ? 'BaustoffBoard – Lern- und Wissensplattform der TH Augsburg' : `${label} – BaustoffBoard`;
         })()}</h1>
         <div 

@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <script src="/boot/vite-ws-filter.js"></script>
+    <!-- async: blockiert weder den Parser (sonst startet das Vorladen der Modul-Chunks erst nach einem weiteren Abruf)
+         noch die Ausführung des Einstiegs (defer würde ihn in Dokumentreihenfolge warten lassen), AP 5.5 Nachtrag -->
+    <script async src="/boot/vite-ws-filter.js"></script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Grundschrift früh laden (LCP/CLS, AP 5.5); fett wird bei Bedarf nachgeladen -->
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#800020" />
@@ -237,7 +238,7 @@
     </script>
 
     <!-- JSON-LD Validierungs-Check für Webmaster & Crawler -->
-    <script src="/boot/jsonld-check.js"></script>
+    <script async src="/boot/jsonld-check.js"></script>
   </head>
   <body>
     <!-- Fallback-Inhalt ohne JavaScript (Crawler, Textbrowser). Als <noscript>, damit die App genau ein

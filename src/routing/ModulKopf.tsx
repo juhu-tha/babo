@@ -4,7 +4,7 @@
 // aktuellen Moduls (wenige kB) statt aller Lernziele/Kurzfassungen/Erkundungen/Grenzen (~87 kB gzip).
 import React from 'react';
 import type { TabId } from '../contexts/TabContext';
-import { MODUL_BY_ID } from '../registry/modules';
+import { MODUL_KERN } from '../registry/kern';
 import { CalculatorDisclaimerBanner } from '../components/ui/CalculatorDisclaimerBanner';
 import { ModulLernziele } from '../components/ui/ModulLernziele';
 import { ErkundungsAuftrag } from '../components/ui/ErkundungsAuftrag';
@@ -30,7 +30,7 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
       {/* Erkundungsauftrag „Ausprobieren“ für Rechner (Phase 3, AP 3.7) */}
       {erkundung && <ErkundungsAuftrag key={activeTab} daten={erkundung} />}
       {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
-      {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzen) && (
+      {(MODUL_KERN.get(activeTab)?.typ === 'calculator' || grenzen) && (
         <CalculatorDisclaimerBanner
           className="mb-4"
           grenzen={grenzen}

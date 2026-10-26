@@ -6,10 +6,20 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { BloomLernziele } from '@/src/components/ui/BloomLernziele';
-import { KlausurSimulator } from '@/src/components/klausur/KlausurSimulator';
-import { InteractiveQuizSystem } from '@/src/components/quiz/InteractiveQuizSystem';
-import { DynamischerAufgabenGenerator } from '@/src/components/trainer/DynamischerAufgabenGenerator';
-import { SchadensforensikSimulator } from '@/src/components/forensik/SchadensforensikSimulator';
+// Klausur, Quiz, Trainer und Forensik je Modus als eigener Chunk (Phase 5, AP 5.5 Nachtrag): Die Seite lud
+// sonst alle vier samt Diagrammbibliothek (~200 kB gzip). Der Modus des Direktaufrufs wird sofort angefordert.
+const ladeKlausur = () => import('@/src/components/klausur/KlausurSimulator').then(m => ({ default: m.KlausurSimulator }));
+const ladeQuiz = () => import('@/src/components/quiz/InteractiveQuizSystem').then(m => ({ default: m.InteractiveQuizSystem }));
+const ladeTrainer = () => import('@/src/components/trainer/DynamischerAufgabenGenerator').then(m => ({ default: m.DynamischerAufgabenGenerator }));
+const ladeForensik = () => import('@/src/components/forensik/SchadensforensikSimulator').then(m => ({ default: m.SchadensforensikSimulator }));
+const KlausurSimulator = React.lazy(ladeKlausur);
+const InteractiveQuizSystem = React.lazy(ladeQuiz);
+const DynamischerAufgabenGenerator = React.lazy(ladeTrainer);
+const SchadensforensikSimulator = React.lazy(ladeForensik);
+try {
+  const direkt: Record<string, () => Promise<unknown>> = { aufgaben_klausur: ladeKlausur, aufgaben_quiz: ladeQuiz, aufgaben_trainer: ladeTrainer, aufgaben_komplex: ladeForensik };
+  void direkt[decodeURIComponent(window.location.hash.slice(1)).trim().toLowerCase()]?.();
+} catch { /* nur Beschleunigung */ }
 import { taskCategories } from '../data/aufgabenData';
 
 const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
@@ -151,6 +161,7 @@ export default function Aufgaben() {
         </button>
       </div>
 
+      <React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
       {mode === 'klausur' ? (
         <KlausurSimulator />
       ) : mode === 'quizzes' ? (
@@ -365,8 +376,9 @@ export default function Aufgaben() {
             </div>
           </div>
         )}
+      </React.Suspense>
 
-      <ModuleFooter 
+      <ModuleFooter
         wikipedia={[
           { title: 'Übungsaufgabe' },
           { title: 'Klausur', url: 'https://de.wikipedia.org/wiki/Klausur_(Pr%C3%BCfung)' }

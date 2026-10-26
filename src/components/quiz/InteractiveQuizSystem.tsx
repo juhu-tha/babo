@@ -23,7 +23,8 @@ import {
   QuizGapItem,
   QuizSessionResult
 } from '@/src/utils/studyStorage';
-import { QuizDashboard } from './QuizDashboard';
+// Lernstands-Dashboard (mit Diagrammbibliothek recharts) erst beim Öffnen laden (Phase 5, AP 5.5 Nachtrag)
+const QuizDashboard = React.lazy(() => import('./QuizDashboard'));
 
 export type QuizMode = 'diagnose_15' | 'full' | 'express_10' | 'cluster' | 'module' | 'gaps_retest' | 'gruppe';
 export type FeedbackMode = 'instant' | 'exam';
@@ -397,6 +398,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
 
       {/* DASHBOARD TAB VIEW */}
       {activeMainTab === 'dashboard' && (
+        <React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
         <QuizDashboard
           history={sessionHistory}
           activeGaps={storedGaps}
@@ -406,6 +408,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
           }}
           onNavigateToTab={(tab) => setActiveTab(tab as TabType)}
         />
+        </React.Suspense>
       )}
 
       {/* QUIZ TAB VIEW */}

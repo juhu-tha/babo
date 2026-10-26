@@ -955,7 +955,7 @@ export default function Zertifizierung() {
                         <div className="p-3 bg-white border border-home-grau/15 rounded-xl">
                           <strong className="block text-text-main font-bold mb-1">Wer ist systembeteiligt im Ablauf?</strong>
                           <p className="text-text-main/70 text-[11px] leading-relaxed">
-                            Der <strong>Bauherr</strong> (Kreditnehmer), der spezialisierte <strong>QNG Auditor</strong>, ein registriertes Bewertungssystem-Institut (z.B. DGNB, BiRN, bnb, NaWoh) als Prüfungsorgan und das <strong>BMWSB (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen)</strong> als oberste Siegelvergabestelle, die das offizielle QNG-Prüfsiegel zuteilt.
+                            Der <strong>Bauherr</strong> (Kreditnehmer), der spezialisierte <strong>QNG Auditor</strong>, ein registriertes Bewertungssystem-Institut (z.B. DGNB, BiRN, bnb, NaWoh) als Prüfungsorgan und eine von der DAkkS <strong>akkreditierte Zertifizierungsstelle</strong>, die das QNG-Siegel vergibt. Das <strong>BMWSB (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen)</strong> ist Eigentümer des Siegels und legt die Anforderungen fest.
                           </p>
                         </div>
                         <div className="p-3 bg-white border border-home-grau/15 rounded-xl flex flex-col gap-1.5">

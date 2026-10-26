@@ -8,12 +8,21 @@ import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InlineMath } from 'react-katex';
-import SpannbetonKennwerte from './spannbeton/SpannbetonKennwerte';
-import SpannbetonDauerhaftigkeit from './spannbeton/SpannbetonDauerhaftigkeit';
-import SpannbetonPrinzipien from './spannbeton/SpannbetonPrinzipien';
+// Reiter Grundprinzipien, Kennwerte und Dauerhaftigkeit je als eigener Chunk (Phase 5, AP 5.5 Nachtrag):
+// Beim Aufruf erscheint der Reiter „0–100“; die übrigen (~60 % des Moduls) kommen beim ersten Zeigen auf die
+// Reiterleiste bzw. beim Wechsel.
+const ladePrinzipien = () => import('./spannbeton/SpannbetonPrinzipien');
+const ladeKennwerte = () => import('./spannbeton/SpannbetonKennwerte');
+const ladeDauerhaftigkeit = () => import('./spannbeton/SpannbetonDauerhaftigkeit');
+const SpannbetonPrinzipien = React.lazy(ladePrinzipien);
+const SpannbetonKennwerte = React.lazy(ladeKennwerte);
+const SpannbetonDauerhaftigkeit = React.lazy(ladeDauerhaftigkeit);
+const ladeReiter = () => { void ladePrinzipien(); void ladeKennwerte(); void ladeDauerhaftigkeit(); };
+const Reiterplatz = () => <div className="min-h-screen" aria-busy="true" />;
 import SpannbetonNullBisHundert from './spannbeton/SpannbetonNullBisHundert';
 import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass } from '@/src/calc/spannbeton';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import {
   Settings,
   Activity,
@@ -379,7 +388,7 @@ export default function Spannbeton() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20 mt-6">
+        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20 mt-6" onPointerEnter={ladeReiter} onFocus={ladeReiter} onTouchStart={ladeReiter}>
           <button aria-pressed={mainTab === 'null_bis_hundert'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -448,14 +457,14 @@ export default function Spannbeton() {
       {/* 1. TAB: GRUNDPRINZIPIEN & TRAGWERKSTHEORIE */}
       {mainTab === 'grundprinzipien' && (
         <div className="animate-in fade-in duration-300">
-          <SpannbetonPrinzipien />
+          <React.Suspense fallback={<Reiterplatz />}><SpannbetonPrinzipien /></React.Suspense>
         </div>
       )}
 
       {/* 2. TAB: BAUSTOFFKENNWERTE */}
       {mainTab === 'kennwerte' && (
         <div className="animate-in fade-in duration-300">
-          <SpannbetonKennwerte />
+          <React.Suspense fallback={<Reiterplatz />}><SpannbetonKennwerte /></React.Suspense>
         </div>
       )}
 
@@ -1337,10 +1346,12 @@ export default function Spannbeton() {
 
       {mainTab === 'dauerhaftigkeit' && (
         <div className="animate-in fade-in duration-300">
-          <SpannbetonDauerhaftigkeit />
+          <React.Suspense fallback={<Reiterplatz />}><SpannbetonDauerhaftigkeit /></React.Suspense>
         </div>
       )}
 
+      {/* unterhalb des Bildausschnitts: erst nach dem ersten Bild rendern (AP 5.5 Nachtrag) */}
+      <NachErstemBild minHoehe="40rem">
       {/* Vernetzte Fachmodule & Querverweise */}
       <RelatedModules
         title="Verwandte Fachmodule zu Spannbeton &amp; Materialverhalten"
@@ -1493,6 +1504,7 @@ export default function Spannbeton() {
           }
         ]}
       />
+      </NachErstemBild>
     </div>
   );
 }

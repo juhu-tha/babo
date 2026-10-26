@@ -1,6 +1,7 @@
 // Redaktionsmodell (Umsetzungsplan Phase 6, AP 6.6): jedes Fachmodul hat einen Prüfvermerk
 import { MODUL_BY_ID } from '../src/registry/modules';
-import { FACHMODULE, PRUEFVERMERKE, clusterVon, datumDe, istFachmodul, pruefvermerkFuer } from '../src/data/pruefvermerke';
+import { FACHMODULE, PRUEFVERMERKE, datumDe, istFachmodul, pruefvermerkFuer } from '../src/data/pruefvermerke';
+import { clusterVon } from '../src/data/modulCluster';
 import { PATEN_JE_CLUSTER, CLUSTER_NAMEN } from '../src/data/paten';
 
 const fehler: string[] = [];
