@@ -21,6 +21,7 @@ const STAHLBETON: RechnerGrenzen = {
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
     'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
+    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105; Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
 };
 
@@ -99,6 +100,24 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Rohdichten der Zusatzstoffe, Zusatzmittel und Fasern als feste Lehrwerte.',
       'Anrechenbarkeit von Flugasche vereinfacht nach Zementart; Präzisierung nach DIN 1045-2 offen.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
+      'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
+    ],
+  },
+  stahl: {
+    kurz: 'Lehrmodelle zu Baustahl: Abminderung im Brandfall (DIN EN 1993-1-2), Wöhlerlinie (DIN EN 1993-1-9), Walz- und Schweißeigenspannungen, σ-ε-Linien und M_pl,Rd je Stahlgüte.',
+    grenzen: [
+      'Brandfall: k_y,θ und k_E,θ nach Tab. 3.1 linear interpoliert; die σ-ε-Linie ist trilinear (Plateau bis 2 %, Verfestigung bis 20 %) statt elliptisch und ohne k_p,θ.',
+      'Ermüdung: Wöhlerlinie mit Δσ_D bei 5·10⁶ und Δσ_L bei 10⁸ ohne Teilsicherheitsbeiwerte γ_Ff, γ_Mf und ohne Schadensakkumulation; die Neigung m ist frei wählbar.',
+      'Walz- und Schweißeigenspannungen sowie die σ-ε-Linien der Stahlsorten sind qualitative Lehrkurven (Parabel- bzw. Gauß-Näherung), keine Prüf- oder Bemessungswerte.',
+      'M_pl,Rd = W_pl·f_y/γ_M0 setzt Querschnittsklasse 1 oder 2 voraus; Biegedrillknicken und Interaktion mit Querkraft bleiben unberücksichtigt.',
+    ],
+  },
+  kunststoffe: {
+    kurz: 'E-Modul von Kunststoffen über der Temperatur als Lehrmodell je Strukturtyp (amorph, teilkristallin, Elastomer, Duroplast) und Wärmedehnung ΔL = L₀·α_T·ΔT.',
+    grenzen: [
+      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
+      'Kurzzeitmodul ohne Zeit- und Lasteinfluss: Kriechen, Relaxation, Alterung und Feuchte sind nicht abgebildet.',
+      'Werte unter 0,1 MPa werden für die logarithmische Darstellung auf 0,1 MPa gesetzt (Fließ- bzw. Schmelzbereich ohne Tragfunktion).',
     ],
   },
   bodenmechanik: {
@@ -206,8 +225,14 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
+      "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
+      "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
+      "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
+      "Reißrahmen: qualitatives Lehrmodell mit festen Kurvenparametern; kein Ersatz für Versuche nach RILEM TC 119-TCE.",
+      "Kriechen und Schwinden: lineares Kriechen nach EC2 Anhang B bei 20 °C, h₀ direkt vorgegeben, E_cm für Quarzit.",
     ],
   },
+
   betonkennwerte: {
     kurz: "EC2-Kennwerte aus der Festigkeitsklasse sowie Zeitentwicklung, Schwinden und Kriechen nach EC2 Anhang B.",
     grenzen: [
@@ -215,6 +240,16 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Konstante Umgebungstemperatur über das gesamte Alter.",
       "Relative Luftfeuchte auf 20–100 % und h₀ auf 20–1500 mm begrenzt.",
       "Nichtlineares Kriechen ohne Obergrenze bei 0,6·f_ck(t₀).",
+    ],
+  },
+  kriechen: {
+    kurz: "Kriechzahl φ(t,t₀), Trocknungs- und autogenes Schwinden ε_cs = ε_cd + ε_ca nach EC2 3.1.4 und Anhang B, wirksamer E-Modul sowie Relaxation von Spannstahl nach 3.3.2.",
+    grenzen: [
+      "Nur lineares Kriechen (σ_c ≤ 0,45·f_ck(t₀)); kein nichtlineares Kriechen nach Gl. (3.7).",
+      "Konstante Temperatur von 20 °C (keine Temperaturanpassung von t₀ nach Gl. B.10), E_cm für quarzitische Gesteinskörnung.",
+      "h₀ wird direkt vorgegeben; k_h nach Tab. 3.3 mit 1,0 unter 100 mm und 0,70 über 500 mm.",
+      "Stützenbeispiel: ε_tot = σ_c/E_cm·(1 + φ) + ε_cs mit σ_c = 8,5 N/mm² und L = 3 m als Lehrannahmen; ohne Bewehrung.",
+      "Relaxation: Verlust für σ_pi/f_pk ≤ 0,5 vernachlässigt; ohne Temperatureinfluss und ohne Kopplung an Kriechen und Schwinden.",
     ],
   },
   expositionsklassen: {

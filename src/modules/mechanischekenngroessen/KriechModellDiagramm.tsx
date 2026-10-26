@@ -3,6 +3,7 @@ import { Timer } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/mechanischekenngroessen/KriechModellDiagramm.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { maxwellRelaxation, zenerRelaxation, kelvinKriechen, maxwellKriechen, zenerKriechen, lehrDehnungPromille, rheologieKennwerte } from '@/src/calc/kriechenSchwinden';
 
 interface KriechModellDiagrammProps {
   rheoModus: "relaxieren" | "kriechen";
@@ -42,8 +43,8 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
         const t = (i / 100) * maxTime;
         const x = tToX(t);
 
-        const sMax = rheoWert0 * Math.exp(-t / rheoTauSec);
-        const sZen = rheoWert0 * (0.4 + 0.6 * Math.exp(-t / rheoTauSec));
+        const sMax = maxwellRelaxation(rheoWert0, t, rheoTauSec);
+        const sZen = zenerRelaxation(rheoWert0, t, rheoTauSec);
         const sKel = rheoWert0;
         const sHoo = rheoWert0;
 
@@ -53,10 +54,12 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
         hookePts += `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${yToY(sHoo).toFixed(1)} `;
       }
 
-      const sigEndMaxwell = rheoWert0 * Math.exp(-maxTime / rheoTauSec);
-      const sigEndZener = rheoWert0 * (0.4 + 0.6 * Math.exp(-maxTime / rheoTauSec));
-      const relaxRateMaxwell = ((rheoWert0 - sigEndMaxwell) / rheoWert0) * 100;
-      const halfLife = rheoTauSec * Math.LN2;
+      // Kennwerte aus dem Rechenkern src/calc/kriechenSchwinden.ts (Teil C, qualitative Lehrkurven)
+      const kw = rheologieKennwerte(rheoWert0, rheoTauSec, maxTime);
+      const sigEndMaxwell = kw.sigmaEndeMaxwell;
+      const sigEndZener = kw.sigmaEndeZener;
+      const relaxRateMaxwell = kw.abbauMaxwellProzent;
+      const halfLife = kw.halbwertszeit;
 
       return (
         <div className="space-y-4">
@@ -217,7 +220,7 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
     } else {
       // KRIECHEN: eps(t)
       // Kelvin-Voigt vs. Maxwell vs. Hooke
-      const epsEl = rheoWert0 / 10; // Promille
+      const epsEl = lehrDehnungPromille(rheoWert0); // Promille
       const maxEps = epsEl * 3.5;
       const yToY = (yVal: number) => padT + plotH - (Math.max(0, Math.min(yVal, maxEps)) / maxEps) * plotH;
 
@@ -230,9 +233,9 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
         const t = (i / 100) * maxTime;
         const x = tToX(t);
 
-        const eKel = epsEl * (1 + 1.5 * (1 - Math.exp(-t / rheoTauSec)));
-        const eMax = epsEl * (1 + (t / rheoTauSec));
-        const eZen = epsEl * (1 + 1.2 * (1 - Math.exp(-t / rheoTauSec)));
+        const eKel = kelvinKriechen(epsEl, t, rheoTauSec);
+        const eMax = maxwellKriechen(epsEl, t, rheoTauSec);
+        const eZen = zenerKriechen(epsEl, t, rheoTauSec);
         const eHoo = epsEl;
 
         kelvinPts += `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${yToY(eKel).toFixed(1)} `;
@@ -241,8 +244,9 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
         hookePts += `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${yToY(eHoo).toFixed(1)} `;
       }
 
-      const epsEndKelvin = epsEl * (1 + 1.5 * (1 - Math.exp(-maxTime / rheoTauSec)));
-      const epsEndMaxwell = epsEl * (1 + (maxTime / rheoTauSec));
+      const kw = rheologieKennwerte(rheoWert0, rheoTauSec, maxTime);
+      const epsEndKelvin = kw.epsEndeKelvin;
+      const epsEndMaxwell = kw.epsEndeMaxwell;
 
       return (
         <div className="space-y-4">

@@ -16,7 +16,8 @@ import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { EC2_NA_DE } from '@/src/data/normParams';
+import { betonSdLinien, betonstahlLinien } from '@/src/calc/werkstoffmodelle';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/spannungdehnung/SpannungDehnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -35,64 +36,15 @@ export default function SpannungDehnung() {
   const [fck, setFck] = useState(30);
   const [stahlSorte, setStahlSorte] = useState<'B500A' | 'B500B'>('B500B');
 
-  // --- BETON BERECHNUNGEN ---
-  const betonProps = useMemo(() => {
-    // Parabel-Rechteck-Diagramm (Bemessung)
-    const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC; // α_cc = 0,85 (NA DE)
-    const fcm = fck + 8;
-    const Ecm = 22000 * Math.pow(fcm / 10, 0.3); // MPa
-    
-    let ec2, ecu2, n;
-    if (fck <= 50) {
-      ec2 = 2.0;
-      ecu2 = 3.5;
-      n = 2.0;
-    } else {
-      ec2 = 2.0 + 0.085 * Math.pow(fck - 50, 0.53);
-      ecu2 = 2.6 + 35 * Math.pow((90 - fck) / 100, 4);
-      n = 1.4 + 23.4 * Math.pow((90 - fck) / 100, 4);
-    }
-
-    // Nichtlineare Berechnung (Wirklichkeit / Verformungsberechnung)
-    const ec1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
-    let ecu1 = 3.5;
-    if (fck > 50) {
-      ecu1 = 2.8 + 27 * Math.pow((90 - fck) / 100, 4);
-    }
-    const k = 1.05 * Ecm * (ec1 / 1000) / fcm;
-
-    return { fcd, fcm, Ecm, ec2, ecu2, n, ec1, ecu1, k };
-  }, [fck]);
+  // --- BETON BERECHNUNGEN (Rechenkern src/calc/werkstoffmodelle.ts) ---
+  const betonSd = useMemo(() => betonSdLinien(fck), [fck]);
+  const betonProps = betonSd.param;
 
   const betonData = useMemo(() => {
-    const { fcd, fcm, ec2, ecu2, n, ec1, ecu1, k } = betonProps;
-    const step = 0.1;
-    const labels = [];
-    const dataDesign = [];
-    const dataReal = [];
-    
-    for (let e = 0; e <= 5.0; e += step) {
-      labels.push(e.toFixed(1));
-      
-      // 1. Bemessungsdiagramm (Parabel-Rechteck)
-      if (e <= ec2) {
-        dataDesign.push(fcd * (1 - Math.pow(1 - e / ec2, n)));
-      } else if (e <= ecu2) {
-        dataDesign.push(fcd);
-      } else {
-        dataDesign.push(null);
-      }
-
-      // 2. Wirkliches Verhalten (Nichtlinear nach EC2)
-      if (e <= ecu1) {
-        const eta = e / ec1;
-        const num = k * eta - Math.pow(eta, 2);
-        const den = 1 + (k - 2) * eta;
-        dataReal.push(fcm * (num / den));
-      } else {
-        dataReal.push(null);
-      }
-    }
+    const { fcd, fcm } = betonProps;
+    const labels = betonSd.punkte.map(p => formatDeZahl(p.eps, 1));
+    const dataDesign = betonSd.punkte.map(p => p.bemessung);
+    const dataReal = betonSd.punkte.map(p => p.real);
 
     return {
       labels,
@@ -120,40 +72,18 @@ export default function SpannungDehnung() {
         }
       ]
     };
-  }, [fck, betonProps]);
+  }, [betonSd, betonProps]);
 
   // --- STAHL BERECHNUNGEN ---
-  // Betonstahl B500 nach DIN 488-1 / EC2 3.2.7 (idealisiert, bilinear)
-  const stahlProps = useMemo(() => {
-    const E = 200000; // E_s in MPa
-    const fy = 500; // f_yk in MPa
-    const k = stahlSorte === 'B500A' ? 1.05 : 1.08; // (f_t/f_y)_k
-    const fu = k * fy; // f_tk
-    const eu = stahlSorte === 'B500A' ? 25 : 50; // ε_uk in ‰
-    const ey = (fy / E) * 1000; // ε_yk in ‰
-    const fyd = fy / EC2_NA_DE.gammaS; // 435 MPa
-    const eyd = (fyd / E) * 1000; // 2,17 ‰
-    const eud = 25; // ε_ud nach NA DE in ‰
-    return { E, fy, fu, eu, ey, k, fyd, eyd, eud };
-  }, [stahlSorte]);
+  // Betonstahl B500 nach DIN 488-1 / EC2 3.2.7 (idealisiert, bilinear) – Rechenkern
+  const stahlLinien = useMemo(() => betonstahlLinien(stahlSorte), [stahlSorte]);
+  const stahlProps = stahlLinien.param;
 
   const stahlData = useMemo(() => {
-    const { E, fy, fu, eu, ey, fyd, eyd, eud } = stahlProps;
-    const step = 0.5;
-    const labels: string[] = [];
-    const dataChar: (number | null)[] = [];
-    const dataDesign: (number | null)[] = [];
-    for (let e = 0; e <= 55 + 1e-9; e += step) {
-      labels.push(formatDeZahl(e, 1));
-      // charakteristische Linie: elastisch bis ε_yk, dann linear bis (ε_uk; k·f_yk)
-      if (e <= ey) dataChar.push(E * (e / 1000));
-      else if (e <= eu) dataChar.push(fy + (fu - fy) * (e - ey) / (eu - ey));
-      else dataChar.push(null);
-      // Bemessungslinie: elastisch bis ε_yd, dann horizontal f_yd bis ε_ud
-      if (e <= eyd) dataDesign.push(E * (e / 1000));
-      else if (e <= eud) dataDesign.push(fyd);
-      else dataDesign.push(null);
-    }
+    const { fyd } = stahlProps;
+    const labels = stahlLinien.punkte.map(p => formatDeZahl(p.eps, 1));
+    const dataChar = stahlLinien.punkte.map(p => p.char);
+    const dataDesign = stahlLinien.punkte.map(p => p.bemessung);
     return {
       labels,
       datasets: [
@@ -180,7 +110,7 @@ export default function SpannungDehnung() {
         }
       ]
     };
-  }, [stahlSorte, stahlProps]);
+  }, [stahlSorte, stahlLinien, stahlProps]);
 
   const commonOptions = {
     responsive: true,
@@ -215,6 +145,7 @@ export default function SpannungDehnung() {
               onChange={(e) => setFck(Number(e.target.value))} 
             />
             <p className="text-[11px] text-slate-500 mt-2"><MdText text={inhalt.texte.hinweisDieFormelnDer} /></p>
+            <EingabeHinweise hinweise={betonSd.hinweise} />
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
