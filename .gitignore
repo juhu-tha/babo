@@ -17,3 +17,6 @@ __pycache__/
 
 # Normen-Check (AP 6.7): Abruf-Cache
 .cache/
+
+# Arbeitsreste (Skripte, Zwischenstände) nicht einchecken
+tmp/

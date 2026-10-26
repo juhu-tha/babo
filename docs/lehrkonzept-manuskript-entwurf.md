@@ -82,7 +82,7 @@
 
 ## 4. Erste Kennzahlen (Stand 25.10.2026)
 
-Erzeugt mit `node scripts/qa/metriken.mjs`, `node scripts/qa/check-katex.mjs` und einer Auswertung der Registry-
+Erzeugt mit `npx tsx scripts/qa/metriken.mjs`, `node scripts/qa/check-katex.mjs` und einer Auswertung der Registry-
 und Didaktik-Daten (`src/registry/modules.ts`, `src/data/lernziele.ts`, `src/data/erkundung.ts`,
 `src/data/pruefvermerke.ts`). Vor einer Veröffentlichung neu erzeugen.
 
