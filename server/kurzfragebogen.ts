@@ -9,7 +9,8 @@
  *     damit die Reihenfolge keinen Rückschluss auf den Eingangszeitpunkt erlaubt.
  * Persistenz wie beim Besuchszähler: JSON-Datei im Container (Standard laufzeitdaten/kurzfragebogen.json,
  * per FEEDBACK_DATEI änderbar, nicht im Repository). Auf Cloud Run geht sie bei Neustart oder neuer Revision
- * verloren und gilt je Instanz.
+ * verloren und gilt je Instanz – es sei denn, an das Verzeichnis ist ein Cloud-Storage-Volume eingehängt
+ * (docs/betrieb-cloud-run.md, Schritt 7).
  */
 import fs from 'fs';
 import path from 'path';
