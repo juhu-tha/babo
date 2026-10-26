@@ -24,6 +24,7 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/mauerwerk/Mauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { fkEmpfehlungEN, fdAusFk, phiAusmitte } from '@/src/calc/mauerwerk';
 
 ChartJS.register(
   CategoryScale,
@@ -161,33 +162,22 @@ export default function Mauerwerk() {
   const [stoneHeight, setStoneHeight] = useState(113); // mm
 
   const results = useMemo(() => {
-    // 1. Mauerwerksdruckfestigkeit fk
-    const K = stoneTypes[stone].K[mortar] || 0.45;
-    let fk = 0;
-    if (mortar === 'DM') {
-      if (stone === 'HLZ') {
-        fk = K * Math.pow(fb, 0.7); // Für Dünnbettmörtel und Hochlochziegel (Gruppe 2)
-      } else {
-        fk = K * Math.pow(fb, 0.85); // Für Dünnbettmörtel (Vollsteine etc.)
-      }
-    } else if (mortar === 'LM') {
-      fk = K * Math.pow(fb, 0.7); // Leichtmörtel: EN 1996-1-1 Gl. (3.4), ohne f_m
-    } else {
-      fk = K * Math.pow(fb, 0.7) * Math.pow(fm, 0.3); // Normalmörtel: EN 1996-1-1 Gl. (3.2)
-    }
-    const fd = (0.85 * fk) / 1.5; // NA DE: f_d = ζ · f_k / γ_M mit ζ = 0,85, γ_M = 1,5
+    // 1. Mauerwerksdruckfestigkeit fk – EN-Empfehlung K (Vergleich); NA-Ansatz und vereinfachtes Verfahren
+    //    nach DIN EN 1996-3/NA in der Beispielrechnung „Mauerwerk: Tragfähigkeit“ (src/calc/mauerwerk.ts)
+    const K = stoneTypes[stone].K[mortar];
+    const fk = fkEmpfehlungEN(K, fb, fm, mortar, stone === 'HLZ');
+    const fd = fdAusFk(fk); // NA DE: f_d = ζ · f_k / γ_M mit ζ = 0,85, γ_M = 1,5
 
-    // 2. Knicken (vereinfacht)
+    // 2. Lastausmitte am Wandkopf/-fuß: Φ_i = 1 − 2e/t (Slider begrenzt e ≤ t/2)
     const slenderness = height / thickness;
-    // phi_i,m = 1 - 2(e/t)
-    const phi = Math.max(0, 1 - 2 * (eccentricity / thickness));
-    
+    const phi = phiAusmitte(eccentricity, thickness);
+
     // Tragfähigkeit N_Rd = Phi * A * fd
     const A = thickness * 1.0; // pro lfm
     const NRd = phi * A * fd * 1000; // in kN/m
 
     // 3. Schubfestigkeit fvk
-    const fvk0 = stoneTypes[stone].fvk0[mortar] || 0.20;
+    const fvk0 = stoneTypes[stone].fvk0[mortar];
     // fvk = fvk0 + 0.4 * sigma_d (vereinfacht nach EC6)
     // Begrenzung auf max Werte je nach Stein/Mörtel (hier vereinfacht)
     const fvk_calc = fvk0 + 0.4 * sigmaD;

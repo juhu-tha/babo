@@ -88,8 +88,8 @@
       },
       {
         "formel": "N_{Rd} = \\Phi \\cdot t \\cdot f_d",
-        "erklaerung": "Vertikaler Traglastwiderstand pro Meter Wandlänge unter Berücksichtigung von Schlankheit und Lastexzentrizität.",
-        "quelle": "DIN EN 1996-3"
+        "erklaerung": "Vertikaler Traglastwiderstand pro Meter Wandlänge mit Φ = min(Φ1; Φ2) aus Deckenverdrehung am Endauflager und Knicken in Wandmitte.",
+        "quelle": "DIN EN 1996-3/NA"
       },
       {
         "formel": "d_k = k \\cdot \\sqrt{t}",

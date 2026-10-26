@@ -246,31 +246,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const maxAllowedStress = k_c_final * f_c0d; // N/mm²
   const utilizationWood = sigma_c0d / maxAllowedStress;
 
-  // --- 5. STATE FOR MAUERWERK TRAGFÄHIGKEIT ---
-  const [wallHeight, setWallHeight] = useState<number>(2.75); // in m
-  const [wallThick, setWallThick] = useState<number>(17.5); // in cm
-  const [masonryType, setMasonryType] = useState<'KS' | 'HLZ'>('KS');
-  const [verticalLoad, setVerticalLoad] = useState<number>(90); // N_Ed in kN/m
-
-  // Material parameters (simplified)
-  const f_k = masonryType === 'KS' ? 5.6 : 3.2; // Characteristic strength in N/mm² (MPa)
-  const gamma_M_mauer = 1.5; // Partial factor for simplified method
-  const f_d = f_k / gamma_M_mauer; // Design strength in N/mm²
-
-  // Wall slenderness and reduction factor Phi (DIN EN 1996-3 / simplified method)
-  // Effective height: assuming bilateral bearing with slab top and bottom, so rho_2 = 1.0 (or 0.75 if rigid slabs). Let's assume rho = 1.0
-  const h_ef = wallHeight; // m
-  const t_m = wallThick / 100; // m
-  const slenderness_mauer = h_ef / t_m;
-
-  // Reduction factor Phi in the middle of the wall: Phi = 0.85 - 0.0011 * (h_ef/t)^2 (for simplified method)
-  const phi_factor = 0.85 - 0.0011 * Math.pow(slenderness_mauer, 2);
-  const phi_final = Math.max(0, phi_factor);
-
-  // Design vertical resistance per meter length of wall: N_Rd = Phi * t * f_d
-  // Units: t in m, f_d in MPa (MN/m²), so N_Rd in MN/m = * 1000 to get kN/m
-  const n_Rd = phi_final * t_m * f_d * 1000; // kN/m
-  const utilizationMauer = n_Rd > 0 ? verticalLoad / n_Rd : Infinity; // Φ = 0 bei h_ef/t > 27,8: keine Tragfähigkeit
+  // --- 5. MAUERWERK: Zustand und Rechenkern in RechnungMauerwerk (src/calc/mauerwerk.ts) ---
 
   // --- 6. STATE FOR NACHHALTIGKEIT & ÖKOBILANZ ---
   const [co2SubTab, setCo2SubTab] = useState<'karbonatisierung' | 'gwp_vergleich'>('karbonatisierung');
@@ -441,7 +417,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {activeTab === 'holzbau' && <RechnungHolzbau A_wood={A_wood} E_005={E_005} colHeight={colHeight} colLength={colLength} colWidth={colWidth} designForce={designForce} f_c0d={f_c0d} f_c0k={f_c0k} i_radius={i_radius} k_c_final={k_c_final} k_factor_wood={k_factor_wood} lambda_rel={lambda_rel} setColHeight={setColHeight} setColLength={setColLength} setColWidth={setColWidth} setDesignForce={setDesignForce} setTimberGrade={setTimberGrade} sigma_c0d={sigma_c0d} slenderness={slenderness} timberGrade={timberGrade} utilizationWood={utilizationWood} />}
 
         {/* --- 5. TAB CONTENT: MAUERWERK TRAGFÄHIGKEIT --- */}
-        {activeTab === 'mauerwerk' && <RechnungMauerwerk f_d={f_d} f_k={f_k} masonryType={masonryType} n_Rd={n_Rd} phi_final={phi_final} setMasonryType={setMasonryType} setVerticalLoad={setVerticalLoad} setWallHeight={setWallHeight} setWallThick={setWallThick} slenderness_mauer={slenderness_mauer} t_m={t_m} utilizationMauer={utilizationMauer} verticalLoad={verticalLoad} wallHeight={wallHeight} wallThick={wallThick} />}
+        {activeTab === 'mauerwerk' && <RechnungMauerwerk />}
 
         {/* --- 6. TAB CONTENT: NACHHALTIGKEIT & ÖKOBILANZ --- */}
         {activeTab === 'nachhaltigkeit' && <RechnungNachhaltigkeit bauteilVol={bauteilVol} caoAnteil={caoAnteil} caoMassPerM2={caoMassPerM2} carbGrad={carbGrad} carbonationDepth={carbonationDepth} cementGehalt={cementGehalt} cementGehaltA={cementGehaltA} cementGehaltB={cementGehaltB} cementMassPerM2={cementMassPerM2} co2SubTab={co2SubTab} co2UptakePerM2={co2UptakePerM2} deltaGwp={deltaGwp} durabilityYears={durabilityYears} gwpZementA={gwpZementA} gwpZementB={gwpZementB} kFactor={kFactor} percentSavings={percentSavings} reactedCaoMassPerM2={reactedCaoMassPerM2} setBauteilVol={setBauteilVol} setCaoAnteil={setCaoAnteil} setCarbGrad={setCarbGrad} setCementGehalt={setCementGehalt} setCementGehaltA={setCementGehaltA} setCementGehaltB={setCementGehaltB} setCo2SubTab={setCo2SubTab} setDurabilityYears={setDurabilityYears} setGwpZementA={setGwpZementA} setGwpZementB={setGwpZementB} setKFactor={setKFactor} totalCementA={totalCementA} totalCementB={totalCementB} totalGwpA={totalGwpA} totalGwpB={totalGwpB} />}
