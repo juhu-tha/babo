@@ -27,6 +27,9 @@ export function ladeDiagramme(): Promise<Bibliothek> {
   // diese Datei ist von der Umlenkung ausgenommen → echtes chart.js / react-chartjs-2
   laden ??= Promise.all([import('react-chartjs-2'), import('chart.js')]).then(([rc, cj]) => {
     const echt = cj as unknown as Record<string, unknown>;
+    // Achsen und Tooltips im deutschen Zahlformat (Dezimalkomma, Punkt als Tausendertrenner), passend zu formatDeWert;
+    // einzelne Diagramme können options.locale weiterhin selbst setzen.
+    cj.Chart.defaults.locale = 'de-DE';
     verbinde(eintraege => cj.Chart.register(...eintraege.map(e => (istMarke(e) ? echt[e.__chartBaustein] : e)) as Parameters<typeof cj.Chart.register>));
     bibliothek = rc;
     warten.forEach(f => f());
