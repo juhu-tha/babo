@@ -19,6 +19,8 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/waermeeigenschaften/Waermeeigenschaften.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { thermischeKennwerte, waermeeindringkoeffizient, erforderlicheDaemmdicke } from '@/src/calc/waermeschutz';
 
 ChartJS.register(
   CategoryScale,
@@ -74,29 +76,15 @@ export default function Waermeeigenschaften() {
   };
 
   const results = useMemo(() => {
-    // Wärmespeicherkapazität (volumenbezogen) C = rho * c [J/(m³K)]
-    const capVol = rho * c; 
-    const capVolMJ = capVol / 1e6; // MJ/(m³K)
-
-    // Temperaturleitfähigkeit a = lambda / (rho * c) [m²/s]
-    const a = lambda / capVol;
-    const a_mm2_s = a * 1e6; // mm²/s
-
-    // Wärmeeindringfähigkeit b = sqrt(lambda * rho * c) [J/(m²K*sqrt(s))]
-    const b = Math.sqrt(lambda * rho * c);
-
-    // Kontakttemperatur (Haut berührt Material)
-    // T_m = (b_skin * T_skin + b_mat * T_mat) / (b_skin + b_mat)
-    const b_skin = 1100; // J/(m²K*sqrt(s))
-    const T_skin = 33; // °C
-    const T_mat = 20; // °C
-    const T_contact = (b_skin * T_skin + b * T_mat) / (b_skin + b);
+    // Rechenkern src/calc/waermeschutz.ts: ρ·c, a = λ/(ρc), b = √(λρc), Kontakttemperatur Haut (33 °C) auf Stoff (20 °C)
+    const kw = thermischeKennwerte(lambda, rho, c);
+    const { C_MJ: capVolMJ, a_mm2s: a_mm2_s, b, thetaKontakt: T_contact } = kw;
 
     // Chart Data: Vergleich der Wärmeeindringfähigkeit (b)
     const chartLabels = Object.keys(PRESET_MATERIALS);
     const chartDataB = chartLabels.map(key => {
       const mat = PRESET_MATERIALS[key as keyof typeof PRESET_MATERIALS];
-      return Math.sqrt(mat.lambda * mat.rho * mat.c);
+      return waermeeindringkoeffizient(mat.lambda, mat.rho, mat.c);
     });
 
     // Füge aktuelles Material hinzu, falls benutzerdefiniert
@@ -106,6 +94,7 @@ export default function Waermeeigenschaften() {
     }
 
     return {
+      hinweise: kw.hinweise,
       capVolMJ,
       a_mm2_s,
       b,
@@ -125,17 +114,12 @@ export default function Waermeeigenschaften() {
   }, [lambda, rho, c, selectedPreset]);
 
   const daemmResults = useMemo(() => {
-    const rSiSe = 0.17; 
-    const rBase = (baseThickness / 100) / baseLambda;
-    const rTotalReq = 1 / targetU;
-    const rInsReq = rTotalReq - rSiSe - rBase;
-
-    const thicknesses = daemmMaterials.map(mat => {
-      if (rInsReq <= 0) return 0;
-      return (rInsReq * mat.lambda) * 100;
-    });
+    // Rechenkern src/calc/waermeschutz.ts: R_D,erf = 1/U − (R_si + R_se) − d/λ, d_D = R_D,erf · λ_D
+    const erf = erforderlicheDaemmdicke(targetU, baseThickness / 100, baseLambda, daemmMaterials.map(m => m.lambda));
+    const { rBestand: rBase, rGesamtErf: rTotalReq, rDaemmErf: rInsReq, dickenCm: thicknesses } = erf;
 
     return {
+      hinweise: erf.hinweise,
       rBase,
       rTotalReq,
       rInsReq,
@@ -260,6 +244,7 @@ export default function Waermeeigenschaften() {
                   <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.T_contact, 1)} <span className="text-xs font-normal">°C</span></div>
                 </div>
               </div>
+              <EingabeHinweise hinweise={results.hinweise} />
               <div className="h-48">
                 <Bar 
                   data={results.chartData} 
@@ -278,6 +263,7 @@ export default function Waermeeigenschaften() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.erforderlicheDämmdicke} /></h3>
               
+              <EingabeHinweise hinweise={daemmResults.hinweise} />
               {daemmResults.rInsReq <= 0 ? (
                 <div className="p-4 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200"><MdText text={inhalt.texte.dieBestandswandErreichtDen} /></div>
               ) : (

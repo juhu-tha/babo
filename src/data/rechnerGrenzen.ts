@@ -421,6 +421,38 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Kein Standsicherheitsnachweis der Verglasung nach DIN 18008.",
     ],
   },
+  holz: {
+    kurz: "Gleichgewichtsfeuchte, Feuchteangleich und anisotropes Schwinden von Holz sowie Bemessungswerte der Festigkeiten, Druck unter Winkel (6.16) und k_def nach DIN EN 1995-1-1.",
+    grenzen: [
+      "Gleichgewichtsfeuchte als Polynom-Lehrmodell (bei 20 °C/65 % rund 13,7 % statt üblicher 12 %), Temperaturkorrektur −1 % je K, begrenzt auf 30 % Fasersättigung.",
+      "Feuchteangleich exponentiell mit τ = 15 d · (d/20 mm)²; Kalibrierung als Lehrannahme, ohne Oberflächenbeschichtung und Feuchtegradient.",
+      "Schwinden linear mit differentiellen Schwindmaßen je Richtung; Verdrehen, Rissbildung und Jahrringlage nur in der 3D-Darstellung qualitativ.",
+      "Festigkeitswerte für ausgewählte Klassen, γ_M = 1,3; kein Bauteilnachweis.",
+    ],
+  },
+  bp_holzprodukte: {
+    kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr und Anfangsdurchbiegung nach DIN EN 1995-1-1 mit NA (DE).",
+    grenzen: [
+      "k_mod = 0,8 (NKL 1, mittlere Lasteinwirkung), γ_G = 1,35, γ_Q = 1,5; nur eine Lastfallkombination.",
+      "Durchbiegung w_inst mit E_0,mean und der charakteristischen Kombination gegen l/300; Kriechen (w_fin, k_def) und Schwingungen fehlen.",
+      "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
+    ],
+  },
+  waermeeigenschaften: {
+    kurz: "Wärmespeicherfähigkeit ρc, Temperaturleitfähigkeit a, Wärmeeindringkoeffizient b und Kontakttemperatur eines Stoffs sowie erforderliche Dämmdicke für einen Ziel-U-Wert.",
+    grenzen: [
+      "Kontakttemperatur für halbunendliche Körper mit Lehrwerten der Haut (b = 1100 J/(m²K√s), 33 °C) und Stoff bei 20 °C.",
+      "Dämmdicke für eine einschalige Bestandswand mit R_si + R_se = 0,17 m²K/W; Wärmebrücken, Befestiger und Luftschichten werden nicht berücksichtigt.",
+    ],
+  },
+  bauwerkserfassung: {
+    kurz: "Druck- und Biegeausnutzung eines verformten Holzsparrens mit gemessener Vorverformung e₀ und Moment nach Theorie II. Ordnung im Vergleich zum idealisiert geraden Stab.",
+    grenzen: [
+      "Lineare Interaktion σ_c/f_c,0,d + σ_m/f_m,d; der Ersatzstabnachweis mit k_c nach 6.3.2 ist gesondert zu führen.",
+      "Vergrößerungsfaktor 1/(1 − N/N_cr) mit N_cr aus E_0,mean und Knicklänge = Stablänge; keine Abminderung der Steifigkeit.",
+      "k_mod = 0,9 (kurze Lasteinwirkung), γ_M = 1,3; Vorverformung als Stich in Feldmitte, Querschnitt ungeschwächt.",
+    ],
+  },
   modernisierung: {
     kurz: "U-Wert nach Zusatzdämmung, Vergleich mit dem GEG-Höchstwert, Endenergieeinsparung, Kosten, CO₂ und statische Amortisation.",
     grenzen: [
