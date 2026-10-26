@@ -8,6 +8,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
 import inhalt from '@/content/nachbehandlung/Nachbehandlung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { verdunstungsrate, nachbehandlungsdauer, type Festigkeitsentwicklung, type ExpositionNB, type OberflaechenTemp } from '@/src/calc/hydratation';
 
 export default function Nachbehandlung() {
   const [tempAir, setTempAir] = useState(25); // °C
@@ -16,33 +18,21 @@ export default function Nachbehandlung() {
   const [windSpeed, setWindSpeed] = useState(15); // km/h
 
   // States für Nachbehandlungsdauer
-  const [festigkeitsEntwicklung, setFestigkeitsEntwicklung] = useState<'schnell'|'mittel'|'langsam'|'sehr_langsam'>('mittel');
-  const [expositionsklasse, setExpositionsklasse] = useState<'x0_xc1'|'andere'|'xm'>('andere');
-  const [oberflaechentemp, setOberflaechentemp] = useState<'ge25'|'15_25'|'10_15'|'5_10'|'<5'>('10_15');
+  const [festigkeitsEntwicklung, setFestigkeitsEntwicklung] = useState<Festigkeitsentwicklung>('mittel');
+  const [expositionsklasse, setExpositionsklasse] = useState<ExpositionNB>('andere');
+  const [oberflaechentemp, setOberflaechentemp] = useState<OberflaechenTemp>('10_15');
 
-  // Evaporation rate formula (ACI 305R metric)
-  // E = 5 * ([Tc + 18]^2.5 - r * [Ta + 18]^2.5) * (V + 4) * 10^-6
-  const evaporationRate = useMemo(() => {
-    const r = rh / 100;
-    const Tc = tempConcrete;
-    const Ta = tempAir;
-    const V = windSpeed;
-    
-    const term1 = Math.pow(Tc + 18, 2.5);
-    const term2 = r * Math.pow(Ta + 18, 2.5);
-    const E = 5 * (term1 - term2) * (V + 4) * Math.pow(10, -6);
-    
-    return Math.max(0, E);
-  }, [tempAir, tempConcrete, rh, windSpeed]);
+  // Verdunstungsrate nach ACI 305R (Gleichung nach Uno, metrisch) und Mindestdauer nach DIN 1045-3: Rechenkern src/calc/hydratation.ts
+  const verdunstung = useMemo(
+    () => verdunstungsrate({ tLuft: tempAir, tBeton: tempConcrete, rh, wind: windSpeed }),
+    [tempAir, tempConcrete, rh, windSpeed]
+  );
+  const evaporationRate = verdunstung.E;
+  const isCritical = verdunstung.kritisch;
 
-  const isCritical = evaporationRate > 1.0;
-
-  // Mindestdauer nach DIN 1045-3:2023-08, Abschn. 9.6 (Nachbehandlungsklasse 3)
   const curingTime = useMemo(() => {
-    if (oberflaechentemp === '<5') return -1; // Sondermaßnahmen erforderlich
-    if (expositionsklasse === 'x0_xc1') return DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage;
-    const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaechentemp][festigkeitsEntwicklung];
-    return expositionsklasse === 'xm' ? tage * 2 : tage;
+    const { tage } = nachbehandlungsdauer(festigkeitsEntwicklung, expositionsklasse, oberflaechentemp);
+    return tage === null ? -1 : tage; // -1: Sondermaßnahmen erforderlich
   }, [festigkeitsEntwicklung, expositionsklasse, oberflaechentemp]);
 
   return (
@@ -92,6 +82,8 @@ export default function Nachbehandlung() {
           
           onChange={(e) => setWindSpeed(Number(e.target.value))}
         />
+
+        <EingabeHinweise hinweise={verdunstung.hinweise} />
 
         <div className={`mt-4 p-4 rounded-xl border ${isCritical ? 'bg-torch-red/10 border-torch-red/30' : 'bg-emerald-50 border-emerald-200'}`}>
           <h3 className="text-sm font-bold text-text-main mb-2">Ergebnis</h3>
