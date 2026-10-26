@@ -1,83 +1,73 @@
 {
-  "stand": "2026-10-23",
+  "stand": "2026-10-26",
   "didaktik": {
-    "moduldateien": 251,
-    "mit_ModuleFooter": 190,
-    "mit_Herleitung": 142,
-    "mit_ModulTest": 146,
-    "mit_Lernzielen": 1,
-    "freigabe_ausstehend": 83,
-    "quizfragen": 427,
-    "quiz_moduleIds": 165,
-    "quiz_median_je_modul": 2,
-    "quiz_module_unter_5": 153,
-    "quiz_richtige_ist_laengste_pct": 53,
-    "quiz_laengenverhaeltnis": 1.81,
-    "quiz_absolutwoerter_distraktoren": 51,
+    "moduldateien": 419,
+    "mit_ModuleFooter": 206,
+    "mit_Herleitung": 167,
+    "mit_ModulTest": 165,
+    "fachmodule": 189,
+    "mit_Lernzielen": 189,
+    "freigabe_ausstehend": 99,
+    "quizfragen": 1240,
+    "quiz_moduleIds": 203,
+    "quiz_median_je_modul": 6,
+    "quiz_module_unter_5": 2,
+    "quiz_richtige_ist_laengste_pct": 7,
+    "quiz_laengenverhaeltnis": 1.01,
+    "quiz_absolutwoerter_distraktoren": 10,
     "quiz_geprueft": 26,
-    "module_ueber_5000_woerter": 6
+    "module_ueber_5000_woerter": 4
   },
   "technik": {
-    "quelldateien": 346,
-    "zeilen_gesamt": 237071,
-    "any": 294,
-    "dateien_ueber_1500_zeilen": 31,
+    "quelldateien": 613,
+    "zeilen_gesamt": 254535,
+    "any": 0,
+    "dateien_ueber_1500_zeilen": 2,
     "groesste_dateien": [
       {
-        "datei": "src/modules/Nachhaltigkeit.tsx",
-        "zeilen": 3689
+        "datei": "src/data/lernziele.ts",
+        "zeilen": 1685
       },
       {
-        "datei": "src/modules/Stahl.tsx",
-        "zeilen": 3188
-      },
-      {
-        "datei": "src/modules/spannbeton/SpannbetonKennwerte.tsx",
-        "zeilen": 3107
-      },
-      {
-        "datei": "src/modules/Abfaelle.tsx",
-        "zeilen": 2932
-      },
-      {
-        "datei": "src/modules/Beispielrechnungen.tsx",
-        "zeilen": 2922
+        "datei": "src/modules/Spannbeton.tsx",
+        "zeilen": 1511
       }
     ],
     "ts_ignore": 0,
-    "tests": 7,
+    "tests": 65,
     "lockfile": false,
-    "ci_workflow": false
+    "ci_workflow": true
   },
   "bundle": {
-    "chunks": 280,
-    "gesamt_kB": 14580,
-    "einstieg_gzip_kB": 150,
+    "chunks": 671,
+    "gesamt_kB": 19551,
+    "einstieg_chunks": 1,
+    "einstieg_gzip_kB": 101.5,
     "groesste": [
       {
-        "datei": "shapes-BaTwSEsi.js",
+        "datei": "shapes-D212jJqi.js",
         "kB": 916,
         "gzip_kB": 248
       },
       {
-        "datei": "OekobilanzLCA-Df1qJnDh.js",
-        "kB": 716,
-        "gzip_kB": 206
-      },
-      {
-        "datei": "Aufgaben-DaGn_6aU.js",
-        "kB": 687,
-        "gzip_kB": 204
-      },
-      {
-        "datei": "KiBaustoffe-D1qPGZ5F.js",
-        "kB": 622,
+        "datei": "KiBaustoffe-Dn3ZcS8C.js",
+        "kB": 621,
         "gzip_kB": 175
       },
       {
-        "datei": "Spannbeton-D-6fP-5A.js",
-        "kB": 518,
-        "gzip_kB": 111
+        "datei": "quiz-teil-3-f2sN3rOJ.js",
+        "kB": 489,
+        "gzip_kB": 120
+      },
+      {
+        "datei": "quiz-teil-1-CsmJhrp2.js",
+        "kB": 488,
+        "gzip_kB": 122
+      },
+      {
+        "datei": "quiz-teil-2-zFuuXhns.js",
+        "kB": 488,
+        "gzip_kB": 117
       }
     ]
   }
