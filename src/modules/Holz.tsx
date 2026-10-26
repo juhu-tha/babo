@@ -26,6 +26,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/holz/Holz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -153,8 +154,17 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
 // three.js nur für den Reiter „Schwinden“ nachladen (Phase 5, AP 5.4)
 const HolzSchwinden3D = React.lazy(() => import('./holz/HolzSchwinden3D'));
 
+type HolzReiter = 'steckbrief' | 'grundlagen' | 'schwinden' | 'festigkeit' | 'kriechen';
+const REITER: readonly ModulTab<HolzReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'grundlagen', label: inhalt.texte.grundlagenTheorie.trim(), icon: Info },
+  { id: 'schwinden', label: inhalt.texte.schwindenQuellen.trim(), icon: Droplets },
+  { id: 'festigkeit', label: inhalt.texte.festigkeitEc5.trim(), icon: Activity },
+  { id: 'kriechen', label: inhalt.texte.kriechenVerformung.trim(), icon: Timer },
+];
+
 export default function Holz() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'grundlagen' | 'schwinden' | 'festigkeit' | 'kriechen'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<HolzReiter>('steckbrief');
 
   const [holz, setHolz] = useState<keyof typeof holzArten>('Fichte (Vollholz)');
   const [querschnitt, setQuerschnitt] = useState(crossSections[0].id);
@@ -317,54 +327,8 @@ export default function Holz() {
           <p><MdText text={inhalt.texte.holzIstEinNatürlicher} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Info size={16} /><MdText text={inhalt.texte.grundlagenTheorie} /></button>
-          <button aria-pressed={activeTab === 'schwinden'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'schwinden' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('schwinden')}
-          >
-            <Droplets size={16} /><MdText text={inhalt.texte.schwindenQuellen} /></button>
-          <button aria-pressed={activeTab === 'festigkeit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'festigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('festigkeit')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.festigkeitEc5} /></button>
-          <button aria-pressed={activeTab === 'kriechen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kriechen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kriechen')}
-          >
-            <Timer size={16} /><MdText text={inhalt.texte.kriechenVerformung} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+        <div className="flex flex-col gap-6">
 
         {activeTab !== 'steckbrief' && (
         <div className="animate-in fade-in duration-300 flex flex-col gap-6">
@@ -1032,6 +996,8 @@ export default function Holz() {
           <BaustoffProfil materialKey="holz" />
         </div>
       )}
+        </div>
+        </ModuleTabs>
       </div>
     
       <WoodThematicLinks current="baustoff" />

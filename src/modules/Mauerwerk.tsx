@@ -23,6 +23,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/mauerwerk/Mauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -132,8 +133,17 @@ function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt
 // three.js nur für die 3D-Verbandsansicht nachladen (Phase 5, AP 5.4)
 const MauerwerkVerband3D = React.lazy(() => import('./mauerwerk/MauerwerkVerband3D'));
 
+type MauerwerkReiter = 'material' | 'verband' | 'bemessung' | 'ziegellexikon' | 'steckbrief';
+const REITER: readonly ModulTab<MauerwerkReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'material', label: inhalt.texte.steineMörtel.trim(), icon: Layers },
+  { id: 'verband', label: 'Mauerwerksverband', icon: Ruler },
+  { id: 'bemessung', label: inhalt.texte.festigkeitBemessung.trim(), icon: Calculator },
+  { id: 'ziegellexikon', label: 'Ziegel-Lexikon', icon: BookOpen },
+];
+
 export default function Mauerwerk() {
-  const [activeTab, setActiveTab] = useState<'material' | 'verband' | 'bemessung' | 'ziegellexikon' | 'steckbrief'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<MauerwerkReiter>('steckbrief');
   const [steckbriefMaterial, setSteckbriefMaterial] = useState<'mauerziegel' | 'kalksandstein' | 'porenbeton' | 'leichtbeton' | 'lehmstein'>('mauerziegel');
 
   const [stone, setStone] = useState<keyof typeof stoneTypes>('MZ');
@@ -261,57 +271,8 @@ export default function Mauerwerk() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p><MdText text={inhalt.texte.mauerwerkIstEinExtrem} /></p>
         </div>
-
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'material'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'material' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('material')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.steineMörtel} /></button>
-          <button aria-pressed={activeTab === 'verband'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'verband' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('verband')}
-          >
-            <Ruler size={16} /> Mauerwerksverband
-          </button>
-          <button aria-pressed={activeTab === 'bemessung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bemessung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bemessung')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.festigkeitBemessung} /></button>
-          <button aria-pressed={activeTab === 'ziegellexikon'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'ziegellexikon' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('ziegellexikon')}
-          >
-            <BookOpen size={16} /> Ziegel-Lexikon
-          </button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+        <div className="flex flex-col gap-6">
 
         {activeTab === 'material' && (
           <div className="animate-in fade-in duration-300 flex flex-col gap-6">
@@ -758,6 +719,8 @@ export default function Mauerwerk() {
           <BaustoffProfil materialKey={steckbriefMaterial} />
         </div>
       )}
+        </div>
+        </ModuleTabs>
       </div>
     
       <MauerwerkThematicLinks current="baustoff" />

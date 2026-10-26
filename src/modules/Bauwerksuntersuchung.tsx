@@ -12,11 +12,21 @@ import { Scale } from 'lucide-react';
 import type { TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/bauwerksuntersuchung/Bauwerksuntersuchung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 const ZfP = React.lazy(() => import('./ZfP'));
+
+type UntersuchungReiter = 'diagnose' | 'probenahme' | 'interpretation' | 'katalog' | 'zfp';
+const REITER: readonly ModulTab<UntersuchungReiter>[] = [
+  { id: 'diagnose', label: 'Diagnose-Phasen', icon: Search },
+  { id: 'probenahme', label: inhalt.texte.prüfumfangKonditionierung, icon: ClipboardCheck },
+  { id: 'interpretation', label: inhalt.texte.interpretationAnwendung, icon: Scale },
+  { id: 'katalog', label: inhalt.texte.prüfkatalog14Verf, icon: Layers },
+  { id: 'zfp', label: inhalt.texte.dgzfpAusbildung, icon: Activity },
+];
 
 export default function Bauwerksuntersuchung() {
   const { activeTab, setActiveTab } = useTabContext();
-  const [subTab, setSubTab] = useState<'diagnose' | 'probenahme' | 'interpretation' | 'katalog' | 'zfp'>(activeTab === 'zfp' ? 'zfp' : 'diagnose');
+  const [subTab, setSubTab] = useState<UntersuchungReiter>(activeTab === 'zfp' ? 'zfp' : 'diagnose');
   const [activeStep, setActiveStep] = useState<number>(1);
 
   // Sync state if activeTab changes externally
@@ -27,6 +37,13 @@ export default function Bauwerksuntersuchung() {
       setSubTab('diagnose');
     }
   }, [activeTab]);
+
+  // Reiterwechsel; „zfp“ ist zugleich eigene Route (Direktlink), die übrigen Bereiche gehören zu „bauwerksuntersuchung“
+  const wechsleBereich = (id: UntersuchungReiter) => {
+    setSubTab(id);
+    if (id === 'zfp') { if (activeTab === 'bauwerksuntersuchung') setActiveTab('zfp'); }
+    else if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
+  };
 
   const stepsDetails = [
     {
@@ -78,83 +95,8 @@ export default function Bauwerksuntersuchung() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       
-      {/* Sub-tab Switcher Toolbar mit 5 Kernmodulen */}
-      <div className="flex border border-home-grau/30 bg-white p-1 rounded-2xl shadow-sm gap-2 flex-wrap">
-        <button
-          className={`flex-1 min-w-[180px] py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            subTab === 'diagnose'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => {
-            setSubTab('diagnose');
-            if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
-          }}
-        >
-          <Search size={16} />
-          <span>Diagnose-Phasen</span>
-        </button>
-
-        <button
-          className={`flex-1 min-w-[200px] py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            subTab === 'probenahme'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => {
-            setSubTab('probenahme');
-            if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
-          }}
-        >
-          <ClipboardCheck size={16} />
-          <span><MdText text={inhalt.texte.prüfumfangKonditionierung} /></span>
-        </button>
-
-        <button
-          className={`flex-1 min-w-[200px] py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            subTab === 'interpretation'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => {
-            setSubTab('interpretation');
-            if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
-          }}
-        >
-          <Scale size={16} />
-          <span><MdText text={inhalt.texte.interpretationAnwendung} /></span>
-        </button>
-
-        <button
-          className={`flex-1 min-w-[190px] py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            subTab === 'katalog'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => {
-            setSubTab('katalog');
-            if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
-          }}
-        >
-          <Layers size={16} />
-          <span><MdText text={inhalt.texte.prüfkatalog14Verf} /></span>
-        </button>
-
-        <button
-          className={`flex-1 min-w-[170px] py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            subTab === 'zfp'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => {
-            setSubTab('zfp');
-            if (activeTab === 'bauwerksuntersuchung') setActiveTab('zfp');
-          }}
-        >
-          <Activity size={16} />
-          <span><MdText text={inhalt.texte.dgzfpAusbildung} /></span>
-        </button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={subTab} onWechsel={wechsleBereich} className="flex flex-col gap-6 [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm">
+      <div className="flex flex-col gap-6">
 
       {subTab === 'diagnose' && (
         <>
@@ -342,6 +284,8 @@ export default function Bauwerksuntersuchung() {
           <ZfP />
         </React.Suspense>
       )}
+      </div>
+      </ModuleTabs>
 
       {/* Standardisierter ModuleFooter für Bauwerksuntersuchung */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

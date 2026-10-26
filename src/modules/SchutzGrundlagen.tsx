@@ -15,9 +15,18 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/schutzgrundlagen/SchutzGrundlagen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type SchutzReiter = 'prinzipien' | 'mechanismen' | 'lebensdauer' | 'verfahrenswahl';
+const REITER: readonly ModulTab<SchutzReiter>[] = [
+  { id: 'prinzipien', label: inhalt.texte.t1InstandsetzungsprinzipienDinEn.trim(), icon: Layers },
+  { id: 'mechanismen', label: inhalt.texte.t2SchutzmechanismenPassivVs.trim(), icon: Shield },
+  { id: 'lebensdauer', label: inhalt.texte.t3LebenszyklusDegradationTuutti.trim(), icon: TrendingUp },
+  { id: 'verfahrenswahl', label: inhalt.texte.t4VerfahrenswahlMatrix.trim(), icon: Compass },
+];
 
 export default function SchutzGrundlagen() {
-  const [activeTab, setActiveTab] = useState<'prinzipien' | 'mechanismen' | 'lebensdauer' | 'verfahrenswahl'>('prinzipien');
+  const [activeTab, setActiveTab] = useState<SchutzReiter>('prinzipien');
   const [deSitterInitialCost, setDeSitterInitialCost] = useState<number>(1000);
   const [selectedDamageSource, setSelectedDamageSource] = useState<'carbonatisierung' | 'chloride' | 'feuchte' | 'risse' | 'verschleiss'>('carbonatisierung');
 
@@ -37,47 +46,9 @@ export default function SchutzGrundlagen() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
           <p><MdText text={inhalt.texte.derSchutzUndDie} /></p>
         </div>
-
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-home-grau/20 mt-4">
-          <button aria-pressed={activeTab === 'prinzipien'}
-            onClick={() => setActiveTab('prinzipien')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'prinzipien'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.t1InstandsetzungsprinzipienDinEn} /></button>
-          <button aria-pressed={activeTab === 'mechanismen'}
-            onClick={() => setActiveTab('mechanismen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'mechanismen'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Shield size={16} /><MdText text={inhalt.texte.t2SchutzmechanismenPassivVs} /></button>
-          <button aria-pressed={activeTab === 'lebensdauer'}
-            onClick={() => setActiveTab('lebensdauer')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'lebensdauer'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <TrendingUp size={16} /><MdText text={inhalt.texte.t3LebenszyklusDegradationTuutti} /></button>
-          <button aria-pressed={activeTab === 'verfahrenswahl'}
-            onClick={() => setActiveTab('verfahrenswahl')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'verfahrenswahl'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Compass size={16} /><MdText text={inhalt.texte.t4VerfahrenswahlMatrix} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6">
 
       {/* Tab 1: Instandsetzungsprinzipien nach DIN EN 1504-9 & TR Instandhaltung */}
       {activeTab === 'prinzipien' && (
@@ -604,6 +575,7 @@ export default function SchutzGrundlagen() {
 
         </div>
       )}
+      </ModuleTabs>
 
       {/* ModuleFooter */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

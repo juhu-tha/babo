@@ -20,7 +20,8 @@
     "anwendungsbeispielPlastischerBiegewiders": "Anwendungsbeispiel: Plastischer Biegewiderstand eines IPE 300 aus S355",
     "dinEn19931": "DIN EN 1993-1-1 mit NA, 6.2.5 (Querschnittsklasse 1, γ_M0 = 1,0)",
     "ausnutzung54BiegedrillknickenUnd": "Ausnutzung 54 % – Biegedrillknicken und Gebrauchstauglichkeit sind gesondert nachzuweisen.",
-    "ermüdungWerkstoff": "Ermüdung (Werkstoff)"
+    "ermüdungWerkstoff": "Ermüdung (Werkstoff)",
+    "reiterBereiche": "Bereiche des Moduls Stahl"
   },
   "daten": {
     "Stahl.schritte": [

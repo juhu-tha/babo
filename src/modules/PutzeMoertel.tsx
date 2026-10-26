@@ -11,6 +11,7 @@ import {
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/putzemoertel/PutzeMoertel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface MortarProduct {
   id: string;
@@ -145,8 +146,17 @@ const BUILDING_SYSTEMS: BuildingSystem[] = [
   }
 ];
 
+type PutzeMoertelReiter = 'steckbrief' | 'moertel' | 'putze' | 'rechner' | 'reaktionen';
+const REITER: readonly ModulTab<PutzeMoertelReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'moertel', label: inhalt.texte.t1Mauermörtel.trim(), icon: Hammer },
+  { id: 'putze', label: inhalt.texte.t2Putzmörtel.trim(), icon: Droplets },
+  { id: 'rechner', label: inhalt.texte.t3MaterialRechner.trim(), icon: Calculator },
+  { id: 'reaktionen', label: inhalt.texte.t4ErhärtungBauphysik.trim(), icon: Sparkles },
+];
+
 export default function PutzeMoertel() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'moertel' | 'putze' | 'rechner' | 'reaktionen'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<PutzeMoertelReiter>('steckbrief');
   const [selectedMortarId, setSelectedMortarId] = useState<string>('normal_m5');
   const [selectedPlasterId, setSelectedPlasterId] = useState<string>('gips_gp');
   const [selectedSystemId, setSelectedSystemId] = useState<string>('planstein_sys');
@@ -253,54 +263,7 @@ export default function PutzeMoertel() {
         </div>
 
         {/* Tab switchers */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            onClick={() => setActiveTab('steckbrief')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'moertel'}
-            onClick={() => setActiveTab('moertel')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'moertel' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Hammer size={16} /><MdText text={inhalt.texte.t1Mauermörtel} /></button>
-          <button aria-pressed={activeTab === 'putze'}
-            onClick={() => setActiveTab('putze')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'putze' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Droplets size={16} /><MdText text={inhalt.texte.t2Putzmörtel} /></button>
-          <button aria-pressed={activeTab === 'rechner'}
-            onClick={() => setActiveTab('rechner')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.t3MaterialRechner} /></button>
-          <button aria-pressed={activeTab === 'reaktionen'}
-            onClick={() => setActiveTab('reaktionen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'reaktionen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Sparkles size={16} /><MdText text={inhalt.texte.t4ErhärtungBauphysik} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6">
 
         {/* Tab 0: Steckbrief */}
         {activeTab === 'steckbrief' && (
@@ -965,6 +928,7 @@ export default function PutzeMoertel() {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       {/* Module Footer component with Literature and Wikipedia references */}

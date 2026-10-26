@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/wta/WTA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 // Hygrothermal evaluation for combination of WTA horizontal barrier and interior insulation
 const evaluateKombination = (
@@ -93,8 +94,18 @@ const evaluateKombination = (
   return { score, suitabilityLabel, ampelColor, criticalAlarms, recommendations };
 };
 
+type WtaReiter = 'injektion' | 'sanierputz' | 'innendaemmung' | 'pruefung' | 'kombination' | 'abdichtung_4_6';
+const REITER: readonly ModulTab<WtaReiter>[] = [
+  { id: 'injektion', label: inhalt.texte.wta410Horizontalsperre.trim(), icon: Droplets },
+  { id: 'sanierputz', label: inhalt.texte.wta29Sanierputzsysteme.trim(), icon: Building },
+  { id: 'innendaemmung', label: inhalt.texte.wta65Innendämmung.trim(), icon: Thermometer },
+  { id: 'pruefung', label: inhalt.texte.qualitätsprüfungQs.trim(), icon: ShieldCheck },
+  { id: 'kombination', label: inhalt.texte.kombiPlanerTab5.trim(), icon: Sliders },
+  { id: 'abdichtung_4_6', label: inhalt.texte.wta46Din.trim(), icon: Compass },
+];
+
 export default function WTA() {
-  const [activeTab, setActiveTab] = useState<'injektion' | 'sanierputz' | 'innendaemmung' | 'pruefung' | 'kombination' | 'abdichtung_4_6'>('injektion');
+  const [activeTab, setActiveTab] = useState<WtaReiter>('injektion');
   
   // Tab 5: Kombination WTA-Sanierung & Innendämmung States
   const [kombiDaemm, setKombiDaemm] = useState<'calciumsilicat' | 'holzfaser' | 'mineralschaum' | 'pur_foelie'>('calciumsilicat');
@@ -238,53 +249,7 @@ export default function WTA() {
           </div>
         </div>
       </section>
-
-      {/* Interactive WTA Modular Content Section */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto gap-2 mb-6">
-        <button aria-pressed={activeTab === 'injektion'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'injektion' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('injektion')}
-        >
-          <Droplets size={16} /><MdText text={inhalt.texte.wta410Horizontalsperre} /></button>
-        <button aria-pressed={activeTab === 'sanierputz'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'sanierputz' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('sanierputz')}
-        >
-          <Building size={16} /><MdText text={inhalt.texte.wta29Sanierputzsysteme} /></button>
-        <button aria-pressed={activeTab === 'innendaemmung'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'innendaemmung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('innendaemmung')}
-        >
-          <Thermometer size={16} /><MdText text={inhalt.texte.wta65Innendämmung} /></button>
-        <button aria-pressed={activeTab === 'pruefung'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'pruefung' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('pruefung')}
-        >
-          <ShieldCheck size={16} /><MdText text={inhalt.texte.qualitätsprüfungQs} /></button>
-        <button aria-pressed={activeTab === 'kombination'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'kombination' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('kombination')}
-          id="wta-tab-5-btn"
-        >
-          <Sliders size={16} /><MdText text={inhalt.texte.kombiPlanerTab5} /></button>
-        <button aria-pressed={activeTab === 'abdichtung_4_6'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'abdichtung_4_6' ? 'border-shiraz text-shiraz font-black' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('abdichtung_4_6')}
-        >
-          <Compass size={16} /><MdText text={inhalt.texte.wta46Din} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:pb-3">
 
       {activeTab === 'injektion' && (
         <section className="bg-white rounded-2xl border border-home-grau/30 shadow-md p-6 space-y-6">
@@ -1040,6 +1005,7 @@ export default function WTA() {
           </div>
         </section>
       )}
+      </ModuleTabs>
 
       {/* Module Footer (Wikipedia, Regelwerke, Literatur) aligned with WTA */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

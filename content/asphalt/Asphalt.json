@@ -159,7 +159,8 @@
     "niedrigviskos02Pa": "Niedrigviskos (> 0,2 Pa.s)",
     "idealbereich021": "Idealbereich (0,2–1,8 Pa.s)",
     "erschwertVerdichtbar18": "Erschwert verdichtbar (1,8–4,5 Pa.s)",
-    "verarbeitbarkeitBlockiert45": "Verarbeitbarkeit blockiert (> 4,5 Pa.s)"
+    "verarbeitbarkeitBlockiert45": "Verarbeitbarkeit blockiert (> 4,5 Pa.s)",
+    "reiterBereiche": "Bereiche des Moduls Asphalt"
   },
   "daten": {
     "Asphalt.schritte": [

@@ -27,6 +27,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/innenausbau/Innenausbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface AusbauToolItem {
   id: string;
@@ -43,9 +44,18 @@ interface AusbauToolItem {
   quickFact: string;
 }
 
+type InnenausbauReiter = 'uebersicht' | 'estriche' | 'trockenbau' | 'abdichtung' | 'rechner';
+const REITER: readonly ModulTab<InnenausbauReiter>[] = [
+  { id: 'uebersicht', label: 'Modul-Navigator', icon: LayoutGrid },
+  { id: 'estriche', label: inhalt.texte.estricheCtCaAs.trim(), icon: Layers },
+  { id: 'trockenbau', label: inhalt.texte.trockenbauGipsplatten.trim(), icon: Box },
+  { id: 'abdichtung', label: inhalt.texte.verbundabdichtungDin18534.trim(), icon: Droplets },
+  { id: 'rechner', label: 'CM-Restfeuchte-Rechner', icon: Calculator },
+];
+
 export default function Innenausbau() {
   const { setActiveTab } = useTabContext();
-  const [mainTab, setMainTab] = useState<'uebersicht' | 'estriche' | 'trockenbau' | 'abdichtung' | 'rechner'>('uebersicht');
+  const [mainTab, setMainTab] = useState<InnenausbauReiter>('uebersicht');
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'trockenbau' | 'estrich_putz' | 'physik_labor' | 'normen_aufgaben'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -255,7 +265,7 @@ export default function Innenausbau() {
     <div className="flex flex-col gap-6 w-full">
       {/* Header Container */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <span className="text-[11px] font-bold text-shiraz tracking-widest uppercase font-mono"><MdText text={inhalt.texte.clusterIiiEntwurfBemessung} /></span>
             <h2 className="text-2xl font-bold text-text-main flex items-center gap-2 mt-1">
@@ -268,58 +278,9 @@ export default function Innenausbau() {
               <HardHat size={14} /><MdText text={inhalt.texte.fachingenieurAusbauIbi} /></span>
           </div>
         </div>
-
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 pt-4 pb-1">
-          <button aria-pressed={mainTab === 'uebersicht'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              mainTab === 'uebersicht' 
-                ? 'bg-shiraz text-white border-shiraz shadow-sm' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('uebersicht')}
-          >
-            <LayoutGrid size={15} /> Modul-Navigator
-          </button>
-          <button aria-pressed={mainTab === 'estriche'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              mainTab === 'estriche' 
-                ? 'bg-shiraz text-white border-shiraz shadow-sm' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('estriche')}
-          >
-            <Layers size={15} /><MdText text={inhalt.texte.estricheCtCaAs} /></button>
-          <button aria-pressed={mainTab === 'trockenbau'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              mainTab === 'trockenbau' 
-                ? 'bg-shiraz text-white border-shiraz shadow-sm' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('trockenbau')}
-          >
-            <Box size={15} /><MdText text={inhalt.texte.trockenbauGipsplatten} /></button>
-          <button aria-pressed={mainTab === 'abdichtung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              mainTab === 'abdichtung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-sm' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('abdichtung')}
-          >
-            <Droplets size={15} /><MdText text={inhalt.texte.verbundabdichtungDin18534} /></button>
-          <button aria-pressed={mainTab === 'rechner'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              mainTab === 'rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-sm' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMainTab('rechner')}
-          >
-            <Calculator size={15} /> CM-Restfeuchte-Rechner
-          </button>
-        </div>
       </div>
+
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={mainTab} onWechsel={setMainTab} className="flex flex-col gap-6">
 
       {/* TAB 1: UEBERSICHT / MODUL-NAVIGATOR */}
       {mainTab === 'uebersicht' && (
@@ -799,6 +760,7 @@ export default function Innenausbau() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox

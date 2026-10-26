@@ -5,7 +5,7 @@
  *  - Rückprallhammer: Schlagrichtung −3,0 (abwärts) / +3,5 (aufwärts), Karbonatisierungsabminderung
  *    k = max(0,75; 1 − 0,015·(d_k − 5)) für d_k > 5 mm, f_c ≈ 0,0125·R^2,22 (Lehr-Näherung, keine Normkurve)
  *  - Ultraschall: v_p = s/t, E_dyn = ρ·v_p²·(1 + ν)(1 − 2ν)/(1 − ν) mit ν = 0,2
- *  - Potentialfeld (gegen Cu/CuSO₄, ASTM C876): > −200 mV gering, −200 … −350 mV ungewiss, < −350 mV hoch
+ *  - Potentialfeld (gegen Cu/CuSO₄, ASTM C876): > −200 mV gering, −200 … > −350 mV ungewiss, ≤ −350 mV hoch
  *  - Betondeckung: c_nom = c_min,dur + Δc_dev nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl)
  *  - Chlorid: Anhaltswert 0,5 M.-% bez. Zement (Spannstahl 0,2 M.-%)
  *  - Haftzug: f_ht = F/A mit Stempel Ø 50 mm; Anforderung ≥ 1,5 N/mm² und Bruch im Beton
@@ -74,13 +74,14 @@ export function ultraschall(abstandM: number, laufzeitUs: number, dichte: number
 
 // ---------------------------------------------------------------- Potentialfeld
 export type KorrosionsWahrscheinlichkeit = 'gering' | 'ungewiss' | 'hoch';
-/** Einstufung im Prüfsimulator: < −350 mV hoch, ≤ −200 mV ungewiss (Potential in mV gegen Cu/CuSO₄) */
+/** Einstufung im Prüfsimulator: ≤ −350 mV hoch, ≤ −200 mV ungewiss (Potential in mV gegen Cu/CuSO₄);
+ *  Grenze −350 mV wie im Interpretations-Navigator (potentialStatus) eingeschlossen (Befund 9 aus #160) */
 export function potentialStufe(potentialMv: number): KorrosionsWahrscheinlichkeit {
-  if (potentialMv < -350) return 'hoch';
+  if (potentialMv <= -350) return 'hoch';
   if (potentialMv <= -200) return 'ungewiss';
   return 'gering';
 }
-/** Einstufung im Interpretations-Navigator: ≤ −350 mV aktiv (abweichend vom Simulator genau bei −350 mV) */
+/** Einstufung im Interpretations-Navigator: ≤ −350 mV aktiv, ≤ −200 mV unsicher (gleiche Grenzen wie potentialStufe) */
 export function potentialStatus(potentialMv: number): 'passiv' | 'unsicher' | 'aktiv' {
   if (potentialMv <= -350) return 'aktiv';
   if (potentialMv <= -200) return 'unsicher';
@@ -243,32 +244,48 @@ export interface BefundErgebnis extends Ergebnis {
   isChlorideCritical: boolean; isChlorideSevere: boolean;
   potentialStatus: 'passiv' | 'unsicher' | 'aktiv';
   festigkeitsVerhaeltnis: number; isStrengthDeficient: boolean;
-  isHaftzugOk: boolean; isHolzCrit: boolean;
+  /** Haftzug gemessen und bestanden (≥ 1,5 N/mm², Bruch im Beton) */
+  isHaftzugOk: boolean;
+  /** Haftzug gemessen und nicht bestanden (ungemessen = weder bestanden noch nicht bestanden) */
+  isHaftzugFailed: boolean;
+  isHolzCrit: boolean;
+  /** 0 bzw. leer = „nicht gemessen“ (Befund 12 aus #160): Deckung, Haftzug, In-situ-Festigkeit */
+  deckungGemessen: boolean; haftzugGemessen: boolean; festigkeitGemessen: boolean;
   /** Restwiderstandsmoment in % bei Höhenverlust (W ∝ h²) */
   holzRestWiderstand: number;
   overallRisk: 'gering' | 'mittel' | 'hoch' | 'akut';
 }
+/** Messwert liegt vor: endlich und > 0 (0 oder leer = nicht gemessen) */
+const gemessen = (x: number) => Number.isFinite(x) && x > 0;
 export function befundSynthese(e: BefundEingabe): BefundErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(e.chlorid, e.deckung, e.karbonatisierung, e.fckIs, e.fckPlan, e.potential, e.haftzug, e.holzRest), 'eingabe', 'Alle Messwerte müssen Zahlen sein.');
+  const deckungGemessen = gemessen(e.deckung);
+  const haftzugGemessen = gemessen(e.haftzug);
+  const festigkeitGemessen = gemessen(e.fckIs) && gemessen(e.fckPlan);
   const passivierungsReserve = e.deckung - e.karbonatisierung;
-  const isCarbDepassivated = passivierungsReserve <= 0;
+  const isCarbDepassivated = deckungGemessen && passivierungsReserve <= 0;
   const isChlorideCritical = e.chlorid >= 0.50;
   const isChlorideSevere = e.chlorid >= 0.80;
   const pStatus = potentialStatus(e.potential);
-  const festigkeitsVerhaeltnis = e.fckPlan > 0 ? e.fckIs / e.fckPlan : 1;
+  const festigkeitsVerhaeltnis = festigkeitGemessen ? e.fckIs / e.fckPlan : 1;
   const isStrengthDeficient = festigkeitsVerhaeltnis < 0.85;
-  const isHaftzugOk = e.haftzug >= 1.5 && e.bruchTyp === 'A';
+  const haftzugBestanden = e.haftzug >= 1.5 && e.bruchTyp === 'A';
+  const isHaftzugOk = haftzugGemessen && haftzugBestanden;
+  const isHaftzugFailed = haftzugGemessen && !haftzugBestanden;
   const isHolzCrit = e.holzRest < 70;
   let overallRisk: BefundErgebnis['overallRisk'] = 'gering';
   if (isChlorideSevere || (isCarbDepassivated && pStatus === 'aktiv') || isHolzCrit || festigkeitsVerhaeltnis < 0.65) overallRisk = 'akut';
-  else if (isChlorideCritical || isCarbDepassivated || isStrengthDeficient || !isHaftzugOk) overallRisk = 'hoch';
-  else if (pStatus === 'unsicher' || passivierungsReserve < 10) overallRisk = 'mittel';
-  if (e.haftzug === 0) h.push({ stufe: 'warnung', feld: 'haftzug', text: 'Haftzug = 0 (nicht gemessen) wird als „nicht bestanden“ gewertet und hebt das Risiko mindestens auf „hoch“.' });
-  if (e.deckung === 0 && e.karbonatisierung === 0) h.push({ stufe: 'warnung', feld: 'deckung', text: 'Deckung und Karbonatisierungstiefe 0 (nicht gemessen) gelten als depassiviert.' });
+  else if (isChlorideCritical || isCarbDepassivated || isStrengthDeficient || isHaftzugFailed) overallRisk = 'hoch';
+  else if (pStatus === 'unsicher' || (deckungGemessen && passivierungsReserve < 10)) overallRisk = 'mittel';
+  if (!haftzugGemessen) h.push({ stufe: 'warnung', feld: 'haftzug', text: 'Haftzug = 0 gilt als „nicht gemessen“ und geht nicht in die Risikostufe ein.' });
+  if (!deckungGemessen) h.push({ stufe: 'warnung', feld: 'deckung', text: 'Betondeckung = 0 gilt als „nicht gemessen“: keine Aussage zur Depassivierung.' });
+  if (!festigkeitGemessen) h.push({ stufe: 'warnung', feld: 'fckIs', text: 'In-situ- oder Planfestigkeit = 0 gilt als „nicht gemessen“: kein Festigkeitsvergleich.' });
   return {
     passivierungsReserve, isCarbDepassivated, isChlorideCritical, isChlorideSevere, potentialStatus: pStatus,
-    festigkeitsVerhaeltnis, isStrengthDeficient, isHaftzugOk, isHolzCrit, holzRestWiderstand: Math.pow(e.holzRest / 100, 2) * 100,
+    festigkeitsVerhaeltnis, isStrengthDeficient, isHaftzugOk, isHaftzugFailed, isHolzCrit,
+    deckungGemessen, haftzugGemessen, festigkeitGemessen,
+    holzRestWiderstand: Math.pow(e.holzRest / 100, 2) * 100,
     overallRisk, ...abschluss(h),
   };
 }

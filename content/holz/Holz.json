@@ -167,7 +167,8 @@
     "fürDieseKombinationNicht": "Für diese Kombination nicht zulässig/definiert.",
     "berücksichtigtDieKriechverformungÜber": "Berücksichtigt die Kriechverformung über die Lebensdauer.",
     "eMeanFinE": "E_{mean,fin} = E_{mean} / (1 + k_{def})",
-    "schwindmaßHolz": "Schwindmaß (Holz)"
+    "schwindmaßHolz": "Schwindmaß (Holz)",
+    "reiterBereiche": "Bereiche des Moduls Holz"
   },
   "daten": {
     "Holz.schritte": [

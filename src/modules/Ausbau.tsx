@@ -5,72 +5,24 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PaintRoller, Layers, Droplets, Grid, Hammer, Box } from 'lucide-react';
 import inhalt from '@/content/ausbau/Ausbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type AusbauReiter = 'trockenbau' | 'anstrich' | 'abdichtung' | 'keramik' | 'estriche' | 'kleben';
+const REITER: readonly ModulTab<AusbauReiter>[] = [
+  { id: 'trockenbau', label: 'Trockenbau', icon: Layers },
+  { id: 'estriche', label: inhalt.texte.estricheBöden.trim(), icon: Box },
+  { id: 'keramik', label: inhalt.texte.keramikFliesen.trim(), icon: Grid },
+  { id: 'anstrich', label: 'Anstrichsysteme', icon: PaintRoller },
+  { id: 'abdichtung', label: 'Abdichtungen', icon: Droplets },
+  { id: 'kleben', label: 'Kleben', icon: Hammer },
+];
 
 export default function Ausbau() {
-  const [activeTab, setActiveTab] = useState<'trockenbau' | 'anstrich' | 'abdichtung' | 'keramik' | 'estriche' | 'kleben'>('trockenbau');
+  const [activeTab, setActiveTab] = useState<AusbauReiter>('trockenbau');
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'trockenbau'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'trockenbau' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('trockenbau')}
-        >
-          <Layers size={16} /> Trockenbau
-        </button>
-        <button aria-pressed={activeTab === 'estriche'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'estriche' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('estriche')}
-        >
-          <Box size={16} /><MdText text={inhalt.texte.estricheBöden} /></button>
-        <button aria-pressed={activeTab === 'keramik'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'keramik' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('keramik')}
-        >
-          <Grid size={16} /><MdText text={inhalt.texte.keramikFliesen} /></button>
-        <button aria-pressed={activeTab === 'anstrich'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'anstrich' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('anstrich')}
-        >
-          <PaintRoller size={16} /> Anstrichsysteme
-        </button>
-        <button aria-pressed={activeTab === 'abdichtung'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'abdichtung' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('abdichtung')}
-        >
-          <Droplets size={16} /> Abdichtungen
-        </button>
-        <button aria-pressed={activeTab === 'kleben'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'kleben' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('kleben')}
-        >
-          <Hammer size={16} /> Kleben
-        </button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         {activeTab === 'trockenbau' && (
@@ -273,6 +225,7 @@ export default function Ausbau() {
           </div>
         )}
       </div>
+      </ModuleTabs>
 
       <ModulTest moduleId="ausbau" />
 

@@ -36,6 +36,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import inhalt from '@/content/asphalt/Asphalt.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -47,8 +48,17 @@ ChartJS.register(
   Legend
 );
 
+type AsphaltReiter = 'steckbrief' | 'grundlagen' | 'arten' | 'eigenschaften' | 'nta';
+const REITER: readonly ModulTab<AsphaltReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'grundlagen', label: inhalt.texte.grundlagenZusammensetzung.trim(), icon: Layers },
+  { id: 'arten', label: 'Asphaltarten', icon: Layers },
+  { id: 'eigenschaften', label: inhalt.texte.materialProdukteigenschaften.trim(), icon: Layers },
+  { id: 'nta', label: inhalt.texte.niedrigtemperaturasphalteNta.trim(), icon: ThermometerSun },
+];
+
 export default function Asphalt() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'grundlagen' | 'arten' | 'eigenschaften' | 'nta'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<AsphaltReiter>('steckbrief');
   const [bitumen, setBitumen] = useState(5.0); // M.-%
   const [hohlraum, setHohlraum] = useState(3.0); // Vol.-%
   const [rhoG, setRhoG] = useState(2.65); // g/cm³
@@ -147,55 +157,8 @@ export default function Asphalt() {
           <p><MdText text={inhalt.texte.asphaltIstEinViskoelastisches} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.grundlagenZusammensetzung} /></button>
-          <button aria-pressed={activeTab === 'arten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'arten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('arten')}
-          >
-            <Layers size={16} /> Asphaltarten
-          </button>
-          <button aria-pressed={activeTab === 'eigenschaften'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'eigenschaften' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('eigenschaften')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.materialProdukteigenschaften} /></button>
-          <button aria-pressed={activeTab === 'nta'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'nta' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('nta')}
-          >
-            <ThermometerSun size={16} /><MdText text={inhalt.texte.niedrigtemperaturasphalteNta} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+        <div className="flex flex-col gap-6">
 
         {activeTab === 'grundlagen' && (
           <>
@@ -945,13 +908,15 @@ export default function Asphalt() {
             </div>
           );
         })()}
+        {activeTab === 'steckbrief' && (
+          <div className="animate-in fade-in duration-300">
+            <BaustoffProfil materialKey="asphalt" />
+          </div>
+        )}
+        </div>
+        </ModuleTabs>
       </div>
 
-      {activeTab === 'steckbrief' && (
-        <div className="animate-in fade-in duration-300">
-          <BaustoffProfil materialKey="asphalt" />
-        </div>
-      )}
     
       <ModulTest moduleId="asphalt" />
 

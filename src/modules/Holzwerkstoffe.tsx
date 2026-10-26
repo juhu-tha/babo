@@ -6,6 +6,15 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/holzwerkstoffe/Holzwerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type HolzwerkstoffReiter = 'steckbrief' | 'arten' | 'herstellung' | 'nachhaltigkeit';
+const REITER: readonly ModulTab<HolzwerkstoffReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'arten', label: inhalt.texte.artenEigenschaften.trim(), icon: Layers },
+  { id: 'herstellung', label: 'Herstellung', icon: Wrench },
+  { id: 'nachhaltigkeit', label: inhalt.texte.umweltNachhaltigkeit.trim(), icon: Leaf },
+];
 
 export default function Holzwerkstoffe() {
   const [activeTab, setActiveTab] = useState<'steckbrief' | 'arten' | 'herstellung' | 'nachhaltigkeit'>('steckbrief');
@@ -22,46 +31,7 @@ export default function Holzwerkstoffe() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'steckbrief'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'steckbrief' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('steckbrief')}
-        >
-          <BookOpen size={16} /> Baustoff-Steckbrief
-        </button>
-        <button aria-pressed={activeTab === 'arten'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'arten' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('arten')}
-        >
-          <Layers size={16} /><MdText text={inhalt.texte.artenEigenschaften} /></button>
-        <button aria-pressed={activeTab === 'herstellung'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'herstellung' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('herstellung')}
-        >
-          <Wrench size={16} /> Herstellung
-        </button>
-        <button aria-pressed={activeTab === 'nachhaltigkeit'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'nachhaltigkeit' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('nachhaltigkeit')}
-        >
-          <Leaf size={16} /><MdText text={inhalt.texte.umweltNachhaltigkeit} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       {activeTab === 'arten' && (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-300">
@@ -205,6 +175,7 @@ export default function Holzwerkstoffe() {
           <BaustoffProfil materialKey="holzwerkstoffe" />
         </div>
       )}
+      </ModuleTabs>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox

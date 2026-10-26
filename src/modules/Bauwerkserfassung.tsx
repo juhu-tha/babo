@@ -9,9 +9,18 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/bauwerkserfassung/Bauwerkserfassung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type ErfassungReiter = 'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung';
+const REITER: readonly ModulTab<ErfassungReiter>[] = [
+  { id: 'grundlagen', label: inhalt.texte.grundlagenGenauigkeitsstufen.trim(), icon: Building2 },
+  { id: 'methoden', label: inhalt.texte.messverfahrenImVergleich.trim(), icon: Compass },
+  { id: 'leica_workflow', label: inhalt.texte.leicaPunktwolkenWorkflow.trim(), icon: Monitor },
+  { id: 'tragwerksplanung', label: inhalt.texte.bimStatikRevitRstab.trim(), icon: Calculator },
+];
 
 export default function Bauwerkserfassung() {
-  const [activeSubTab, setActiveSubTab] = useState<'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung'>('grundlagen');
+  const [activeSubTab, setActiveSubTab] = useState<ErfassungReiter>('grundlagen');
 
   // Tab 1: Genauigkeitsstufe Selector
   const [selectedStufe, setSelectedStufe] = useState<number>(3); // Default level III (Denkmalpflege)
@@ -125,37 +134,7 @@ export default function Bauwerkserfassung() {
         </div>
       </div>
 
-      {/* --- Module-Level Tabs --- */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border">
-        <button aria-pressed={activeSubTab === 'grundlagen'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'grundlagen' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('grundlagen')}
-        >
-          <Building2 size={14} /><MdText text={inhalt.texte.grundlagenGenauigkeitsstufen} /></button>
-        <button aria-pressed={activeSubTab === 'methoden'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'methoden' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('methoden')}
-        >
-          <Compass size={14} /><MdText text={inhalt.texte.messverfahrenImVergleich} /></button>
-        <button aria-pressed={activeSubTab === 'leica_workflow'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'leica_workflow' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('leica_workflow')}
-        >
-          <Monitor size={14} /><MdText text={inhalt.texte.leicaPunktwolkenWorkflow} /></button>
-        <button aria-pressed={activeSubTab === 'tragwerksplanung'}
-          className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
-            activeSubTab === 'tragwerksplanung' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-          onClick={() => setActiveSubTab('tragwerksplanung')}
-        >
-          <Calculator size={14} /><MdText text={inhalt.texte.bimStatikRevitRstab} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeSubTab} onWechsel={setActiveSubTab} className="flex flex-col gap-6 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30">
 
       {/* --- Tab 1: Grundlagen & Genauigkeitsstufen --- */}
       {activeSubTab === 'grundlagen' && (
@@ -316,7 +295,7 @@ export default function Bauwerkserfassung() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {inhalt.daten.Bauwerkserfassung_3.map((w, idx) => (
                 <div key={idx} className="bg-slate-50 border border-home-grau/30 rounded-xl p-4 relative hover:shadow-md transition-shadow">
-                  <span className="text-3xl font-extrabold text-indigo-100 font-mono absolute top-2 right-4 leading-none">
+                  <span className="text-3xl font-extrabold text-slate-500 font-mono absolute top-2 right-4 leading-none">
                     {w.step}
                   </span>
                   <h4 className="font-extrabold text-xs text-slate-900 mt-2 font-sans flex items-center gap-1.5">
@@ -576,6 +555,7 @@ export default function Bauwerkserfassung() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       {/* --- Module Footer --- */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

@@ -29,6 +29,7 @@ import SpannungsDehnung from './stahl/SpannungsDehnung';
 import Stahlsorten from './stahl/Stahlsorten';
 import inhalt from '@/content/stahl/Stahl.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 export type { ExtendedSteelGrade } from './stahl/daten';
 export type { StructuralProfile } from './stahl/daten';
 export { extendedSteelGrades } from './stahl/daten';
@@ -51,8 +52,19 @@ ChartJS.register(
   Filler
 );
 
+type StahlReiter = 'steckbrief' | 'spannungsdehnung' | 'stahlsorten' | 'allgemein' | 'walzen' | 'schweissen' | 'legierungen';
+const REITER: readonly ModulTab<StahlReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'spannungsdehnung', label: 'Spannungs-Dehnungs-Linien', icon: Activity },
+  { id: 'stahlsorten', label: inhalt.texte.stahlwerkstoffeGüten.trim(), icon: Layers },
+  { id: 'allgemein', label: inhalt.texte.allgemeinErmüdung.trim(), icon: Shield },
+  { id: 'walzen', label: inhalt.texte.walzprofileEigenspannungen.trim(), icon: Minimize2 },
+  { id: 'schweissen', label: 'Schweißverbindungen', icon: Flame },
+  { id: 'legierungen', label: inhalt.texte.legierungenEdelstahl.trim(), icon: Sparkles },
+];
+
 export default function Stahl() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'spannungsdehnung' | 'stahlsorten' | 'allgemein' | 'walzen' | 'schweissen' | 'legierungen'>('spannungsdehnung');
+  const [activeTab, setActiveTab] = useState<StahlReiter>('spannungsdehnung');
 
   // Spannungs-Dehnungs-Linien State
   const [selectedCurves, setSelectedCurves] = useState<string[]>(['S235', 'S355', 'S460', 'S690', 'B500B', 'Edelstahl']);
@@ -535,74 +547,7 @@ export default function Stahl() {
           <p><MdText text={inhalt.texte.stahlIstEinerDer} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'spannungsdehnung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'spannungsdehnung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('spannungsdehnung')}
-          >
-            <Activity size={16} /> Spannungs-Dehnungs-Linien
-          </button>
-          <button aria-pressed={activeTab === 'stahlsorten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'stahlsorten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('stahlsorten')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.stahlwerkstoffeGüten} /></button>
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <Shield size={16} /><MdText text={inhalt.texte.allgemeinErmüdung} /></button>
-          <button aria-pressed={activeTab === 'walzen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'walzen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('walzen')}
-          >
-            <Minimize2 size={16} /><MdText text={inhalt.texte.walzprofileEigenspannungen} /></button>
-          <button aria-pressed={activeTab === 'schweissen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'schweissen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('schweissen')}
-          >
-            <Flame size={16} /> Schweißverbindungen
-          </button>
-          <button aria-pressed={activeTab === 'legierungen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'legierungen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('legierungen')}
-          >
-            <Sparkles size={16} /><MdText text={inhalt.texte.legierungenEdelstahl} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
         {(activeTab === 'allgemein' || activeTab === 'walzen' || activeTab === 'schweissen' || activeTab === 'legierungen') && <StahlWerkstoffkunde activeTab={activeTab} alloyC={alloyC} alloyCr={alloyCr} alloyMo={alloyMo} alloyNi={alloyNi} corrosion={corrosion} deltaSigma={deltaSigma} detailCategory={detailCategory} fy={fy} grade={grade} heatInput={heatInput} kE={kE} ky={ky} m1={m1} nR={nR} plateThickness={plateThickness} profileType={profileType} setAlloyC={setAlloyC} setAlloyCr={setAlloyCr} setAlloyMo={setAlloyMo} setAlloyNi={setAlloyNi} setCorrosion={setCorrosion} setDeltaSigma={setDeltaSigma} setDetailCategory={setDetailCategory} setGrade={setGrade} setHeatInput={setHeatInput} setM1={setM1} setPlateThickness={setPlateThickness} setProfileType={setProfileType} setTemp={setTemp} stressStrainData={stressStrainData} temp={temp} walzResults={walzResults} weldResults={weldResults} woehlerData={woehlerData} />}
 
@@ -617,6 +562,7 @@ export default function Stahl() {
           <BaustoffProfil materialKey="stahl" />
         </div>
       )}
+        </ModuleTabs>
       </div>
     
       <FormulaDerivationBox

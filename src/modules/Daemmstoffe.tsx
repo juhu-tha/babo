@@ -6,9 +6,16 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/daemmstoffe/Daemmstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type DaemmstoffReiter = 'steckbrief' | 'info';
+const REITER: readonly ModulTab<DaemmstoffReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'info', label: inhalt.texte.materialienDämmung.trim(), icon: Layers },
+];
 
 export default function Daemmstoffe() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'info'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<DaemmstoffReiter>('steckbrief');
 
   return (
     <div className="space-y-8">
@@ -21,27 +28,7 @@ export default function Daemmstoffe() {
           <p><MdText text={inhalt.texte.materialienZurWärmedämmungDeren} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-2">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'info'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-              activeTab === 'info' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('info')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.materialienDämmung} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-2">
 
         {activeTab === 'info' && (
           <div className="p-6 space-y-8 animate-in fade-in duration-300">
@@ -149,6 +136,7 @@ export default function Daemmstoffe() {
             <BaustoffProfil materialKey="daemmstoffe" />
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

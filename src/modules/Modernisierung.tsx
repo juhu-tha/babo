@@ -22,6 +22,7 @@ import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/
 import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
 import inhalt from '@/content/modernisierung/Modernisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
@@ -86,6 +87,14 @@ interface InsulationMaterial {
 }
 
 const INSULATION_MATERIALS: Record<string, InsulationMaterial> = inhalt.daten.INSULATION_MATERIALS;
+
+const REITER: readonly ModulTab<TabKey>[] = [
+  { id: 'begriffe', label: inhalt.texte.sanremoSystematikMerkhilfe.trim(), icon: Target },
+  { id: 'nachruestpflichten', label: inhalt.texte.gmodgPflichtenGrenzwerte.trim(), icon: Scale },
+  { id: 'bauphysik', label: inhalt.texte.uWertAmortisationsRechner.trim(), icon: Calculator },
+  { id: 'gebaeudetechnik', label: inhalt.texte.heizungstechnikBioTreppe.trim(), icon: Leaf },
+  { id: 'isfp', label: inhalt.texte.sanierungsfahrplanIsfp.trim(), icon: FileText },
+];
 
 export default function Modernisierung() {
   const [activeTab, setActiveTab] = useState<TabKey>('begriffe');
@@ -182,63 +191,7 @@ export default function Modernisierung() {
           </div>
         </div>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6" id="modernisierung-tabs">
-          <button aria-pressed={activeTab === 'begriffe'}
-            id="tab-begriffe-btn"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'begriffe' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('begriffe')}
-          >
-            <Target size={16} /><MdText text={inhalt.texte.sanremoSystematikMerkhilfe} /></button>
-          
-          <button aria-pressed={activeTab === 'nachruestpflichten'}
-            id="tab-nachruest-btn"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'nachruestpflichten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('nachruestpflichten')}
-          >
-            <Scale size={16} /><MdText text={inhalt.texte.gmodgPflichtenGrenzwerte} /></button>
-
-          <button aria-pressed={activeTab === 'bauphysik'}
-            id="tab-bauphysik-btn"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bauphysik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bauphysik')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.uWertAmortisationsRechner} /></button>
-
-          <button aria-pressed={activeTab === 'gebaeudetechnik'}
-            id="tab-technik-btn"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'gebaeudetechnik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('gebaeudetechnik')}
-          >
-            <Leaf size={16} /><MdText text={inhalt.texte.heizungstechnikBioTreppe} /></button>
-
-          <button aria-pressed={activeTab === 'isfp'}
-            id="tab-isfp-btn"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'isfp' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('isfp')}
-          >
-            <FileText size={16} /><MdText text={inhalt.texte.sanierungsfahrplanIsfp} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* TAB 1: SANREMO-SYSTEMATIK & BEGRIFFE */}
         {activeTab === 'begriffe' && (
@@ -879,6 +832,7 @@ export default function Modernisierung() {
           </div>
         )}
 
+        </ModuleTabs>
       </div>
 
       {/* Structured Footer nach RULE[GEMINI_md] */}

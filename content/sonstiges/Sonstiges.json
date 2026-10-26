@@ -77,7 +77,8 @@
     "hMFürParaffin": "Δh_m für Paraffin als Richtwert (Produktdatenblatt maßgebend)",
     "imSchmalenKomfortbereichSpeichert": "Im schmalen Komfortbereich speichert PCM rund 30-mal mehr Wärme je kg als Beton. PCM-Gipsplatten enthalten aber nur einen Teil PCM – der Vorteil je m² Wand ist entsprechend kleiner.",
     "leichteGesteinskörnungBeton": "Leichte Gesteinskörnung (Beton)",
-    "opusCaementiciumRömischerBeton": "Opus caementicium (römischer Beton)"
+    "opusCaementiciumRömischerBeton": "Opus caementicium (römischer Beton)",
+    "reiterBereiche": "Bereiche des Moduls Sonstige Innovationen"
   },
   "daten": {
     "Sonstiges.schritte": [

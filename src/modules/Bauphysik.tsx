@@ -31,6 +31,7 @@ import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDiscla
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/bauphysik/Bauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
 const materialLibrary = inhalt.daten.materialLibrary;
@@ -38,9 +39,16 @@ const materialLibrary = inhalt.daten.materialLibrary;
 // Room acoustics materials library with scalar and frequency octave band (125, 250, 500, 1000, 2000, 4000 Hz) absorption coefficients
 const acousticMaterials = inhalt.daten.acousticMaterials;
 
+type BauphysikReiter = 'thermal_hygric' | 'summer_heat' | 'acoustics';
+const REITER: readonly ModulTab<BauphysikReiter>[] = [
+  { id: 'thermal_hygric', label: inhalt.texte.wärmeschutzUWertF.trim(), icon: Thermometer },
+  { id: 'summer_heat', label: inhalt.texte.sommerlicherWärmeschutzTrägheit.trim(), icon: Sun },
+  { id: 'acoustics', label: inhalt.texte.raumakustikNachhallzeitT.trim(), icon: Volume2 },
+];
+
 export default function Bauphysik() {
   // Main tab controller: 'thermal_hygric' | 'summer_heat' | 'acoustics'
-  const [activeTab, setActiveTab] = useState<'thermal_hygric' | 'summer_heat' | 'acoustics'>('thermal_hygric');
+  const [activeTab, setActiveTab] = useState<BauphysikReiter>('thermal_hygric');
 
   // Bauteil-Auswahl nach GEG (Außenwand, Steildach, Flachdach, Kellerdecke)
   const [buildingPart, setBuildingPart] = useState<'wall' | 'pitched_roof' | 'flat_roof' | 'basement'>('wall');
@@ -424,40 +432,10 @@ export default function Bauphysik() {
             </div>
           </div>
         </div>
-
-        {/* COMPREHENSIVE TAB CONTROLLER */}
-        <div className="flex space-x-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button aria-pressed={activeTab === 'thermal_hygric'}
-            onClick={() => setActiveTab('thermal_hygric')}
-            className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-              activeTab === 'thermal_hygric' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <Thermometer size={14} /><MdText text={inhalt.texte.wärmeschutzUWertF} /></button>
-          
-          <button aria-pressed={activeTab === 'summer_heat'}
-            onClick={() => setActiveTab('summer_heat')}
-            className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-              activeTab === 'summer_heat' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <Sun size={14} /><MdText text={inhalt.texte.sommerlicherWärmeschutzTrägheit} /></button>
-
-          <button aria-pressed={activeTab === 'acoustics'}
-            onClick={() => setActiveTab('acoustics')}
-            className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-              activeTab === 'acoustics' 
-                ? 'bg-shiraz text-white shadow-sm' 
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <Volume2 size={14} /><MdText text={inhalt.texte.raumakustikNachhallzeitT} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="space-y-6 [&>[role=tablist]]:bg-slate-100 [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-xl [&>[role=tablist]]:border [&>[role=tablist]]:border-slate-200">
+      <div className="space-y-6">
 
       {/* 2. TAB CONTENT 1: WÄRMESCHUTZ (U-Wert, Temperaturverlauf, f_Rsi) */}
       {activeTab === 'thermal_hygric' && (
@@ -1317,7 +1295,10 @@ export default function Bauphysik() {
             </div>
           </div>
         </div>
-      )}      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      )}
+      </div>
+      </ModuleTabs>
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <NachErstemBild minHoehe="30rem">
       <FormulaDerivationBox
         title={inhalt.werte.beispiel1UWert}

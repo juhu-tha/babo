@@ -181,7 +181,8 @@
     "gleichzeitigMussDieBeschichtung": "Gleichzeitig muss die Beschichtung wasserdampfdurchlässig bleiben (s_d,H2O klein), damit Feuchte aus dem Beton entweichen kann.",
     "klopfer1978DinEn": "Klopfer (1978); DIN EN 1504-2",
     "oktober2026Ap12": "Oktober 2026 (AP 12 Schutz & Instandsetzung: EN-1504-9-Prinzipien und Rili-SIB-Zuordnung, TR Instandhaltung, DIN EN 14038 geprüft; fachliche Freigabe durch den Autor ausstehend)",
-    "kathodischerKorrosionsschutz": "Kathodischer Korrosionsschutz"
+    "kathodischerKorrosionsschutz": "Kathodischer Korrosionsschutz",
+    "reiterBereiche": "Bereiche des Moduls Schutz-Grundlagen"
   },
   "daten": {
     "SchutzGrundlagen": [

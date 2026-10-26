@@ -7,6 +7,7 @@ import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, Coins, Leaf, Scale, 
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/innovativewerkstoffe/InnovativeWerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface MaterialProfile {
   id: string;
@@ -163,8 +164,26 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
   }
 ];
 
+type DruckReiter = 'verfahren' | 'rheologie' | 'bemessung' | 'bewehrung' | 'simulator';
+const DRUCK_REITER: readonly ModulTab<DruckReiter>[] = [
+  { id: 'verfahren', label: inhalt.texte.t1Druckverfahren.trim(), icon: Layers },
+  { id: 'rheologie', label: inhalt.texte.t2RheologieEigenschaften.trim(), icon: Activity },
+  { id: 'bemessung', label: inhalt.texte.t3StandsicherheitNachweise.trim(), icon: Scale },
+  { id: 'bewehrung', label: inhalt.texte.t4Bewehrungstechniken.trim(), icon: Wrench },
+  { id: 'simulator', label: inhalt.texte.t5InteraktiverSimulator.trim(), icon: Cpu },
+];
+
+type InnovativReiter = 'katalog' | 'druck' | 'finder' | 'vergleich' | 'trends';
+const REITER: readonly ModulTab<InnovativReiter>[] = [
+  { id: 'katalog', label: 'Material-Spezifikationen', icon: Layers },
+  { id: 'druck', label: inhalt.texte.t3dBetondruck3dcp.trim(), icon: Cpu },
+  { id: 'finder', label: 'Baustoff-Wegweiser', icon: Settings },
+  { id: 'vergleich', label: inhalt.texte.coKostenTradeOff.trim(), icon: Scale },
+  { id: 'trends', label: inhalt.texte.smartMaterialsTrends.trim(), icon: Sparkles },
+];
+
 export default function InnovativeWerkstoffe() {
-  const [activeSubTab, setActiveSubTab] = useState<'katalog' | 'druck' | 'finder' | 'vergleich' | 'trends'>('katalog');
+  const [activeSubTab, setActiveSubTab] = useState<InnovativReiter>('katalog');
   const [selectedMat, setSelectedMat] = useState<string>('3dcp');
   
   // 3DCP Simulator State
@@ -177,7 +196,7 @@ export default function InnovativeWerkstoffe() {
   const [layerWidth3d, setLayerWidth3d] = useState<number>(80); // layer width in mm
   const [useAccelerator, setUseAccelerator] = useState<boolean>(true); // nozzle accelerator active?
   const [structuralShape, setStructuralShape] = useState<'straight' | 'rounded' | 'folded'>('rounded'); // wall shape
-  const [druckSubTab, setDruckSubTab] = useState<'verfahren' | 'rheologie' | 'bemessung' | 'bewehrung' | 'simulator'>('verfahren');
+  const [druckSubTab, setDruckSubTab] = useState<DruckReiter>('verfahren');
 
   // Decision Tool State
   const [reqProperty, setReqProperty] = useState<string>('co2');
@@ -286,108 +305,14 @@ export default function InnovativeWerkstoffe() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="bg-slate-50 p-1.5 rounded-2xl border border-home-grau/30 shadow-sm grid grid-cols-2 md:grid-cols-5 gap-2">
-        <button aria-pressed={activeSubTab === 'katalog'}
-          onClick={() => setActiveSubTab('katalog')}
-          className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'katalog'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-          }`}
-        >
-          <Layers size={14} /> Material-Spezifikationen
-        </button>
-        <button aria-pressed={activeSubTab === 'druck'}
-          onClick={() => setActiveSubTab('druck')}
-          className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'druck'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-          }`}
-        >
-          <Cpu size={14} /><MdText text={inhalt.texte.t3dBetondruck3dcp} /></button>
-        <button aria-pressed={activeSubTab === 'finder'}
-          onClick={() => setActiveSubTab('finder')}
-          className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'finder'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-          }`}
-        >
-          <Settings size={14} /> Baustoff-Wegweiser
-        </button>
-        <button aria-pressed={activeSubTab === 'vergleich'}
-          onClick={() => setActiveSubTab('vergleich')}
-          className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'vergleich'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-          }`}
-        >
-          <Scale size={14} /><MdText text={inhalt.texte.coKostenTradeOff} /></button>
-        <button aria-pressed={activeSubTab === 'trends'}
-          onClick={() => setActiveSubTab('trends')}
-          className={`px-4 py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer ${
-            activeSubTab === 'trends'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-          }`}
-        >
-          <Sparkles size={14} /><MdText text={inhalt.texte.smartMaterialsTrends} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeSubTab} onWechsel={setActiveSubTab} className="flex flex-col gap-8 [&>[role=tablist]]:bg-slate-50 [&>[role=tablist]]:p-1.5 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:shadow-sm">
 
       {/* Main Content Areas */}
       <div className="min-h-[450px]">
         {activeSubTab === 'druck' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             {/* Secondary chapter pills */}
-            <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-              <button aria-pressed={druckSubTab === 'verfahren'}
-                onClick={() => setDruckSubTab('verfahren')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  druckSubTab === 'verfahren'
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-                }`}
-              >
-                <Layers size={12} /><MdText text={inhalt.texte.t1Druckverfahren} /></button>
-              <button aria-pressed={druckSubTab === 'rheologie'}
-                onClick={() => setDruckSubTab('rheologie')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  druckSubTab === 'rheologie'
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-                }`}
-              >
-                <Activity size={12} /><MdText text={inhalt.texte.t2RheologieEigenschaften} /></button>
-              <button aria-pressed={druckSubTab === 'bemessung'}
-                onClick={() => setDruckSubTab('bemessung')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  druckSubTab === 'bemessung'
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-                }`}
-              >
-                <Scale size={12} /><MdText text={inhalt.texte.t3StandsicherheitNachweise} /></button>
-              <button aria-pressed={druckSubTab === 'bewehrung'}
-                onClick={() => setDruckSubTab('bewehrung')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  druckSubTab === 'bewehrung'
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-                }`}
-              >
-                <Wrench size={12} /><MdText text={inhalt.texte.t4Bewehrungstechniken} /></button>
-              <button aria-pressed={druckSubTab === 'simulator'}
-                onClick={() => setDruckSubTab('simulator')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  druckSubTab === 'simulator'
-                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                    : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-                }`}
-              >
-                <Cpu size={12} /><MdText text={inhalt.texte.t5InteraktiverSimulator} /></button>
-            </div>
+            <ModuleTabs label={inhalt.werte.reiterDruck} tabs={DRUCK_REITER} aktiv={druckSubTab} onWechsel={setDruckSubTab} className="space-y-8 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
             {/* Chapter 1: Druckverfahren */}
             {druckSubTab === 'verfahren' && (
@@ -885,6 +810,7 @@ export default function InnovativeWerkstoffe() {
                 </div>
               );
             })()}
+            </ModuleTabs>
           </div>
         )}
 
@@ -1315,6 +1241,7 @@ export default function InnovativeWerkstoffe() {
           </div>
         )}
       </div>
+      </ModuleTabs>
 
       {/* Module Footer */}
       <FormulaDerivationBox

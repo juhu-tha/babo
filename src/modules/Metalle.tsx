@@ -8,6 +8,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/metalle/Metalle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -91,8 +92,14 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
 
 const METALS_DATA = inhalt.daten.METALS_DATA;
 
+type MetalleReiter = 'steckbrief' | 'kennwerte';
+const REITER: readonly ModulTab<MetalleReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'kennwerte', label: inhalt.texte.metalleKennwerte.trim(), icon: Sparkles },
+];
+
 export default function Metalle() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'kennwerte'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<MetalleReiter>('steckbrief');
   const [selectedMetal, setSelectedMetal] = useState(METALS_DATA[0].name);
   const [selectedSteckbriefMetal, setSelectedSteckbriefMetal] = useState<string>('aluminium');
 
@@ -111,28 +118,8 @@ export default function Metalle() {
           <p><MdText text={inhalt.texte.metalleInsbBaustahlEdelstahl} /></p>
         </div>
         
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            onClick={() => setActiveTab('steckbrief')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief'
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <BookOpen size={16} />
-            Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'kennwerte'}
-            onClick={() => setActiveTab('kennwerte')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kennwerte'
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Sparkles size={16} /><MdText text={inhalt.texte.metalleKennwerte} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+        <div className="flex flex-col gap-6">
 
         {activeTab === 'steckbrief' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
@@ -282,6 +269,8 @@ export default function Metalle() {
             </div>
           </>
         )}
+        </div>
+        </ModuleTabs>
       </div>
 
       <MetalThematicLinks current="baustoff" />

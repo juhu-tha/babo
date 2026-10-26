@@ -6,6 +6,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/zustandsbewertung/Zustandsbewertung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: inhalt.werte.alleKategorien },
@@ -17,8 +18,15 @@ const SCHADEN_KATEGORIEN = [
 
 const SCHAEDEN = inhalt.daten.SCHAEDEN;
 
+type ZustandReiter = 'din1076' | 'vdi6200' | 'rechner';
+const REITER: readonly ModulTab<ZustandReiter>[] = [
+  { id: 'din1076', label: inhalt.texte.din1076BrückenIngenieurbauten.trim(), icon: BookOpen },
+  { id: 'vdi6200', label: inhalt.texte.vdi6200StandsicherheitIm.trim(), icon: AlertTriangle },
+  { id: 'rechner', label: inhalt.texte.notenrechnerKonverter.trim(), icon: Calculator },
+];
+
 export default function Zustandsbewertung() {
-  const [activeTab, setActiveTab] = useState<'din1076' | 'vdi6200' | 'datenbank' | 'rechner'>('din1076');
+  const [activeTab, setActiveTab] = useState<ZustandReiter>('din1076');
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -38,37 +46,16 @@ export default function Zustandsbewertung() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Tab Navigation header */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto">
-        <button aria-pressed={activeTab === 'din1076'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'din1076' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('din1076')}
-        >
-          <BookOpen size={16} /><MdText text={inhalt.texte.din1076BrückenIngenieurbauten} /></button>
-        <button aria-pressed={activeTab === 'vdi6200'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'vdi6200' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('vdi6200')}
-        >
-          <AlertTriangle size={16} /><MdText text={inhalt.texte.vdi6200StandsicherheitIm} /></button>
-        <button
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'datenbank' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:pb-3">
+      <div className="flex flex-col gap-6">
+      {/* Querverweis (kein Reiter): öffnet das Untermodul „Typische Bauschäden“ */}
+      <div className="flex justify-end -mt-3">
+        <button type="button"
+          className="px-3 py-1.5 font-bold text-xs flex items-center gap-2 text-home-grau hover:text-text-main cursor-pointer"
           onClick={() => { window.location.hash = 'schadensbilder'; }}
           title={inhalt.werte.öffnetDasUntermodulTypische}
         >
-          <Search size={16} /><MdText text={inhalt.texte.typischeBauschäden} /></button>
-        <button aria-pressed={activeTab === 'rechner'}
-          className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-            activeTab === 'rechner' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('rechner')}
-        >
-          <Calculator size={16} /><MdText text={inhalt.texte.notenrechnerKonverter} /></button>
+          <Search size={14} aria-hidden={true} /><MdText text={inhalt.texte.typischeBauschäden} /></button>
       </div>
 
       {/* TAB Content 1: DIN 1076 */}
@@ -878,6 +865,8 @@ export default function Zustandsbewertung() {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

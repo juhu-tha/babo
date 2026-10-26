@@ -47,7 +47,8 @@
   "werte": {
     "anwendungsbeispielErforderlicheDämmstoff": "Anwendungsbeispiel: Erforderliche Dämmstoffdicke für einen Ziel-U-Wert",
     "dinEnIso6946": "DIN EN ISO 6946; Bemessungswerte λ nach DIN 4108-4 bzw. Produktangabe",
-    "dieWärmeleitfähigkeitBestimmtDie": "Die Wärmeleitfähigkeit bestimmt die Dicke direkt: 20 % höheres λ bedeutet 20 % mehr Dämmstoffdicke. Dübel und Befestigungen (ΔU) sind hier nicht berücksichtigt."
+    "dieWärmeleitfähigkeitBestimmtDie": "Die Wärmeleitfähigkeit bestimmt die Dicke direkt: 20 % höheres λ bedeutet 20 % mehr Dämmstoffdicke. Dübel und Befestigungen (ΔU) sind hier nicht berücksichtigt.",
+    "reiterBereiche": "Bereiche des Moduls Dämmstoffe"
   },
   "daten": {
     "Daemmstoffe.schritte": [

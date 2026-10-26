@@ -20,6 +20,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/nawaro/Nawaro.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 // Define FNR Product Type
 interface FnrProduct {
@@ -37,8 +38,16 @@ interface FnrProduct {
   fnrUsage: string; // Typical FNR recommendation / application area
 }
 
+type NawaroReiter = 'overview' | 'fnr_db' | 'navigator' | 'comparison';
+const REITER: readonly ModulTab<NawaroReiter>[] = [
+  { id: 'overview', label: inhalt.texte.übersichtCKreislauf.trim(), icon: Layers },
+  { id: 'fnr_db', label: inhalt.texte.fnrBaustoffDatenbank.trim(), icon: BookOpen },
+  { id: 'navigator', label: inhalt.texte.interaktiverDämmNavigator.trim(), icon: Calculator },
+  { id: 'comparison', label: inhalt.texte.technischeVergleiche.trim(), icon: Scale },
+];
+
 export default function Nawaro() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'fnr_db' | 'navigator' | 'comparison'>('overview');
+  const [activeTab, setActiveTab] = useState<NawaroReiter>('overview');
   
   // Database filter states
   const [dbCategory, setDbCategory] = useState<string>('all');
@@ -158,51 +167,7 @@ export default function Nawaro() {
         </div>
 
         {/* Outer Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20" id="nawaro_nav_tabs">
-          <button aria-pressed={activeTab === 'overview'}
-            id="tab_overview"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'overview' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('overview')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.übersichtCKreislauf} /></button>
-          
-          <button aria-pressed={activeTab === 'fnr_db'}
-            id="tab_fnr_db"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'fnr_db' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('fnr_db')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.fnrBaustoffDatenbank} /></button>
-          
-          <button aria-pressed={activeTab === 'navigator'}
-            id="tab_navigator"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'navigator' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('navigator')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.interaktiverDämmNavigator} /></button>
-
-          <button aria-pressed={activeTab === 'comparison'}
-            id="tab_comparison"
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'comparison' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('comparison')}
-          >
-            <Scale size={16} /><MdText text={inhalt.texte.technischeVergleiche} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
         {/* Tab content 1: OVERVIEW */}
         {activeTab === 'overview' && (
@@ -745,6 +710,7 @@ export default function Nawaro() {
           </div>
         )}
 
+        </ModuleTabs>
       </div>
       
       

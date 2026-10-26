@@ -37,7 +37,8 @@
     "fürDieNachrechnungWird": "Für die Nachrechnung wird die In-situ-Festigkeit direkt verwendet; Probenanzahl, Bohrkernlage und Bewehrungsfreiheit bestimmen die Aussagekraft. Faktoren und Mindeststandardabweichung nach DIN EN 13791 sind am Normtext zu prüfen.",
     "dinEn137912020": "DIN EN 13791:2020-02 + A20:2022-04; DIN EN 12504-1:2021-02",
     "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: ZfP-Normausgaben, WTA-Zuordnung, Karbonatisierungs- und Bohrkernauswertung geprüft; fachliche Freigabe durch den Autor ausstehend)",
-    "zerstörungsfreieWerkstoffprüfung": "Zerstörungsfreie Werkstoffprüfung"
+    "zerstörungsfreieWerkstoffprüfung": "Zerstörungsfreie Werkstoffprüfung",
+    "reiterBereiche": "Bereiche des Moduls Bauwerksuntersuchung"
   },
   "daten": {
     "Bauwerksuntersuchung.stepsDetails.0.bullets": [

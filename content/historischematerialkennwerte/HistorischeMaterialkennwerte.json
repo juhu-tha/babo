@@ -22,7 +22,8 @@
     "beispiel2ZugversuchAn": "Beispiel 2: Zugversuch an einem historischen Flussstahl",
     "dieWerteLiegenIm": "Die Werte liegen im Bereich heutiger S235-Stähle. Vor einer Schweißung sind Schweißeignung (chemische Analyse, P- und S-Gehalt, Alterung) und Sprödbruchneigung zu prüfen; Flussstahl vor etwa 1900 kann auch Puddeleisen sein.",
     "dinEnIso6892": "DIN EN ISO 6892-1",
-    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "reiterBereiche": "Bereiche des Moduls Historische Materialkennwerte"
   },
   "daten": {
     "HistorischeMaterialkennwerte.schritte": [

@@ -17,9 +17,20 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/sonstiges/Sonstiges.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type SonstigesReiter = 'pcm' | 'leichtzuschlaege' | 'aerogele' | 'selfhealing' | 'photokatalyse' | 'vip';
+const REITER: readonly ModulTab<SonstigesReiter>[] = [
+  { id: 'pcm', label: inhalt.texte.pcmPhasenwechsel.trim(), icon: ThermometerSun },
+  { id: 'leichtzuschlaege', label: 'Leichtzuschläge', icon: CircleDashed },
+  { id: 'aerogele', label: 'Aerogele', icon: Box },
+  { id: 'selfhealing', label: inhalt.texte.selbstheilenderBeton.trim(), icon: Droplets },
+  { id: 'photokatalyse', label: inhalt.texte.smarteBaustoffeTio.trim(), icon: Cpu },
+  { id: 'vip', label: inhalt.texte.vakuumDämmungVipMyzel.trim(), icon: Maximize },
+];
 
 export default function Sonstiges() {
-  const [activeTab, setActiveTab] = useState<'pcm' | 'leichtzuschlaege' | 'aerogele' | 'selfhealing' | 'photokatalyse' | 'vip'>('pcm');
+  const [activeTab, setActiveTab] = useState<SonstigesReiter>('pcm');
 
   return (
     <div className="flex flex-col gap-8">
@@ -32,69 +43,7 @@ export default function Sonstiges() {
         </div>
 
         {/* Dynamic Navigation Sub-tabs */}
-        <div className="flex flex-wrap gap-2 py-4 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'pcm'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'pcm' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('pcm')}
-          >
-            <ThermometerSun size={16} /><MdText text={inhalt.texte.pcmPhasenwechsel} /></button>
-          
-          <button aria-pressed={activeTab === 'leichtzuschlaege'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'leichtzuschlaege' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('leichtzuschlaege')}
-          >
-            <CircleDashed size={16} /> Leichtzuschläge
-          </button>
-          
-          <button aria-pressed={activeTab === 'aerogele'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'aerogele' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('aerogele')}
-          >
-            <Box size={16} /> Aerogele
-          </button>
-
-          <button aria-pressed={activeTab === 'selfhealing'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'selfhealing' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('selfhealing')}
-          >
-            <Droplets size={16} /><MdText text={inhalt.texte.selbstheilenderBeton} /></button>
-
-          <button aria-pressed={activeTab === 'photokatalyse'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'photokatalyse' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('photokatalyse')}
-          >
-            <Cpu size={16} /><MdText text={inhalt.texte.smarteBaustoffeTio} /></button>
-
-          <button aria-pressed={activeTab === 'vip'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'vip' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('vip')}
-          >
-            <Maximize size={16} /><MdText text={inhalt.texte.vakuumDämmungVipMyzel} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:py-4 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* 1. SECTION: PCM */}
         {activeTab === 'pcm' && (
@@ -308,6 +257,7 @@ export default function Sonstiges() {
           </div>
         )}
 
+        </ModuleTabs>
       </div>
       
       <ModulTest moduleId="sonstiges" />

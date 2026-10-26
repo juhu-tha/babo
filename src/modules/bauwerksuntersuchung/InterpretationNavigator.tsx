@@ -10,6 +10,7 @@ import {
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bauwerksuntersuchung/InterpretationNavigator.json';
+import { befundSynthese } from '@/src/calc/bauwerksuntersuchung';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 interface DiagnosticScenario {
@@ -153,53 +154,13 @@ export default function InterpretationNavigator() {
   // ---------------------------------------------------------
   // Ingenieurtechnische Auswertung & Befundsynthese
   // ---------------------------------------------------------
-  const evaluation = useMemo(() => {
-    // 1. Passivierungsreserve (Karbonatisierung vs Betondeckung)
-    const passivierungsReserve = deckungVal - karbVal;
-    const isCarbDepassivated = passivierungsReserve <= 0;
-
-    // 2. Chlorid-Status
-    const isChlorideCritical = chloridVal >= 0.50; // M.-% bzgl. Zement
-    const isChlorideSevere = chloridVal >= 0.80;
-
-    // 3. Potentialfeld-Korrosionsrisiko
-    let potentialStatus: 'passiv' | 'unsicher' | 'aktiv' = 'passiv';
-    if (potentialVal <= -350) potentialStatus = 'aktiv';
-    else if (potentialVal <= -200) potentialStatus = 'unsicher';
-
-    // 4. In-situ-Festigkeitseinstufung: DIN EN 13791 – Klasse erreicht, wenn f_ck,is ≥ 0,85·f_ck (nicht α_cc aus EC2)
-    const festigkeitsVerhaeltnis = fckPlanVal > 0 ? (fckIsVal / fckPlanVal) : 1;
-    const isStrengthDeficient = festigkeitsVerhaeltnis < 0.85; // f_ck,is < 0,85·f_ck(Plan) → Planklasse nicht erreicht
-
-    // 5. Haftzugstatus
-    const isHaftzugOk = haftzugVal >= 1.5 && bruchTyp === 'A';
-
-    // 6. Holzstatus
-    const isHolzCrit = holzRestVal < 70;
-
-    // Gesamte Risikostufe
-    let overallRisk: 'gering' | 'mittel' | 'hoch' | 'akut' = 'gering';
-    if (isChlorideSevere || isCarbDepassivated && potentialStatus === 'aktiv' || isHolzCrit || festigkeitsVerhaeltnis < 0.65) {
-      overallRisk = 'akut';
-    } else if (isChlorideCritical || isCarbDepassivated || isStrengthDeficient || !isHaftzugOk) {
-      overallRisk = 'hoch';
-    } else if (potentialStatus === 'unsicher' || passivierungsReserve < 10) {
-      overallRisk = 'mittel';
-    }
-
-    return {
-      passivierungsReserve,
-      isCarbDepassivated,
-      isChlorideCritical,
-      isChlorideSevere,
-      potentialStatus,
-      festigkeitsVerhaeltnis,
-      isStrengthDeficient,
-      isHaftzugOk,
-      isHolzCrit,
-      overallRisk
-    };
-  }, [chloridVal, deckungVal, karbVal, fckIsVal, fckPlanVal, potentialVal, haftzugVal, bruchTyp, holzRestVal]);
+  // Rechenkern (src/calc/bauwerksuntersuchung.ts): Passivierungsreserve, Chlorid ≥ 0,5/0,8 M.-%, Potential ≤ −350/−200 mV,
+  // f_ck,is/f_ck ≥ 0,85 (DIN EN 13791), Haftzug ≥ 1,5 N/mm² mit Bruch im Beton, Holz-Restquerschnitt ≥ 70 %;
+  // 0 = nicht gemessen (geht nicht als „nicht bestanden“ in die Risikostufe ein)
+  const evaluation = useMemo(() => befundSynthese({
+    chlorid: chloridVal, deckung: deckungVal, karbonatisierung: karbVal, fckIs: fckIsVal, fckPlan: fckPlanVal,
+    potential: potentialVal, haftzug: haftzugVal, bruchTyp, holzRest: holzRestVal,
+  }), [chloridVal, deckungVal, karbVal, fckIsVal, fckPlanVal, potentialVal, haftzugVal, bruchTyp, holzRestVal]);
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
@@ -282,7 +243,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
                 <span className="text-slate-700"><MdText text={inhalt.texte.deckungCKarbD} /></span>
-                <span className={`font-mono ${evaluation.passivierungsReserve <= 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
+                <span className={`font-mono ${!evaluation.deckungGemessen ? 'text-slate-500' : evaluation.isCarbDepassivated ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(deckungVal, 0)} mm / {formatDeZahl(karbVal, 0)} mm
                 </span>
               </div>
@@ -317,7 +278,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
                 <span className="text-slate-700"><MdText text={inhalt.texte.halbzellenpotentialUCse} /></span>
-                <span className={`font-mono ${potentialVal <= -350 ? 'text-rose-600' : potentialVal <= -200 ? 'text-amber-600' : 'text-emerald-600'}`}>
+                <span className={`font-mono ${evaluation.potentialStatus === 'aktiv' ? 'text-rose-600' : evaluation.potentialStatus === 'unsicher' ? 'text-amber-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(potentialVal, 0)} mV
                 </span>
               </div>
@@ -358,7 +319,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
                 <span className="text-slate-700"><MdText text={inhalt.texte.haftzugFCtBruchbild} /></span>
-                <span className={`font-mono ${haftzugVal < 1.5 || bruchTyp !== 'A' ? 'text-rose-600' : 'text-emerald-600'}`}>
+                <span className={`font-mono ${!evaluation.haftzugGemessen ? 'text-slate-500' : evaluation.isHaftzugFailed ? 'text-rose-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(haftzugVal, 2)} N/mm² (Typ {bruchTyp})
                 </span>
               </div>
@@ -456,7 +417,9 @@ export default function InterpretationNavigator() {
               
               <div className="space-y-2 text-xs text-slate-700">
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.passivierungKorrosionsschutz} /><p className="text-[11px] text-slate-650">
-                    {evaluation.isCarbDepassivated ? (
+                    {!evaluation.deckungGemessen ? (
+                      <span className="text-slate-500"><MdText text={inhalt.texte.deckungNichtGemessen} /></span>
+                    ) : evaluation.isCarbDepassivated ? (
                       <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.bewehrungVollständigDepassiviertD} /></span>
                     ) : evaluation.passivierungsReserve < 10 ? (
                       <span className="text-amber-700"><MdText text={inhalt.texte.restreserveKnapp10Mm} /></span>
@@ -526,7 +489,7 @@ export default function InterpretationNavigator() {
 
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.holzWiderstandsmomentWEff} /><p className="text-[11px] text-slate-650">
                     {holzRestVal < 100 ? (
-                      <span><MdText text={inhalt.texte.restWiderstandsmomentBeträgtNur} /><strong>{formatDeZahl(Math.pow(holzRestVal / 100, 2) * 100, 0)} %</strong><MdText text={inhalt.texte.desUrsprungswertes} /></span>
+                      <span><MdText text={inhalt.texte.restWiderstandsmomentBeträgtNur} /><strong>{formatDeZahl(evaluation.holzRestWiderstand, 0)} %</strong><MdText text={inhalt.texte.desUrsprungswertes} /></span>
                     ) : (
                       <span className="text-slate-500"><MdText text={inhalt.texte.keineHolzquerschnittsschwächungRelevant} /></span>
                     )}
@@ -574,7 +537,7 @@ export default function InterpretationNavigator() {
                         <li><MdText text={inhalt.texte.coBremsendeBeschichtungMit} /></li>
                       </>
                     )}
-                    {!evaluation.isHaftzugOk && (
+                    {evaluation.isHaftzugFailed && (
                       <li className="text-rose-700 font-semibold"><MdText text={inhalt.texte.abreißfestigkeitUngenügendVorBeschichtun} /></li>
                     )}
                     {evaluation.isHolzCrit && (
