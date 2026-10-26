@@ -848,6 +848,129 @@
     }
   },
   {
+    "id": "q_bpr_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bp_recht_grundlagen",
+    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "topic": "Ü-Zeichen",
+    "difficulty": "Basis",
+    "normRef": "MBO §§ 21, 22; MVV TB",
+    "question": "Wann trägt ein Bauprodukt in Deutschland ein Ü-Zeichen?",
+    "options": [
+      "Wenn es zusätzlich zur CE-Kennzeichnung nach harmonisierter Norm geprüft wurde",
+      "Wenn es nicht harmonisiert ist und nach nationalen Regeln (abZ, abP) verwendet wird",
+      "Wenn der Hersteller freiwillig ein Gütesiegel für besonders hohe Qualität beantragt",
+      "Wenn es aus einem Staat außerhalb der EU importiert und vom Zoll freigegeben wurde"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Ü-Zeichen bestätigt die Übereinstimmung mit nationalen Technischen Baubestimmungen (MVV TB), einer abZ, einem abP oder einer ZiE. Für Produkte mit harmonisierter Norm gilt allein die CE-Kennzeichnung; ein zusätzliches Ü-Zeichen ist seit dem EuGH-Urteil C-100/13 unzulässig.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Zusätzliche nationale Zeichen auf hEN-Produkten sind seit dem EuGH-Urteil C-100/13 unzulässig.",
+      "",
+      "Das Ü-Zeichen ist kein freiwilliges Gütesiegel, sondern ein Übereinstimmungsnachweis nach Bauordnungsrecht.",
+      "Die Herkunft des Produkts ist nicht maßgebend; es kommt auf den nationalen Verwendbarkeitsnachweis an."
+    ],
+    "gapAnalysis": {
+      "topic": "Ü-Zeichen",
+      "misconception": "Das Ü-Zeichen wird als Zusatz- oder Gütezeichen zu CE verstanden.",
+      "coreRule": "Ü-Zeichen = nationaler Übereinstimmungsnachweis für nicht harmonisierte Bauprodukte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE vs. Ü-Zeichen & MVV TB“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "targetModuleTab": "bp_recht_grundlagen",
+      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+    },
+    "quelle": "Musterbauordnung §§ 21, 22; MVV TB; EuGH C-100/13",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bpr_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bp_recht_grundlagen",
+    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "topic": "Zustimmung im Einzelfall",
+    "difficulty": "Vertiefung",
+    "normRef": "MBO § 20 (Landesrecht, z. B. Art. 20 BayBO)",
+    "question": "Ein neuartiger Pflanzenkohle-Beton soll in einem einzelnen Bauvorhaben eingesetzt werden; es gibt weder eine harmonisierte Norm noch eine abZ. Welcher Verwendbarkeitsnachweis kommt für das Bauprodukt in Betracht?",
+    "options": [
+      "Eine Zustimmung im Einzelfall (ZiE) der obersten Bauaufsichtsbehörde",
+      "Eine Leistungserklärung des Herstellers mit CE-Kennzeichnung ohne Prüfstelle",
+      "Die Baugenehmigung der unteren Bauaufsicht, die das Produkt automatisch einschließt",
+      "Ein allgemeines bauaufsichtliches Prüfzeugnis (abP), ausgestellt von der Gemeinde"
+    ],
+    "correctIdx": 0,
+    "explanation": "Fehlt ein allgemeiner Verwendbarkeitsnachweis, kann die oberste Bauaufsichtsbehörde (bzw. die von ihr bestimmte Stelle) einer Verwendung im Einzelfall zustimmen (ZiE). Für eine Bauart heißt das Gegenstück vorhabenbezogene Bauartgenehmigung (vBG). Ein abP stellen anerkannte Prüfstellen aus, und nur für Produkte, die das MVV TB dafür vorsieht.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Ohne harmonisierte Norm oder ETA gibt es keine Grundlage für eine Leistungserklärung mit CE-Kennzeichnung.",
+      "Die Baugenehmigung ersetzt keinen Verwendbarkeitsnachweis für ein nicht geregeltes Bauprodukt.",
+      "Ein abP stellt eine anerkannte Prüfstelle aus, keine Gemeinde, und nur für im MVV TB dafür vorgesehene Produkte."
+    ],
+    "gapAnalysis": {
+      "topic": "Zustimmung im Einzelfall",
+      "misconception": "Baugenehmigung und Verwendbarkeitsnachweis werden gleichgesetzt.",
+      "coreRule": "Ungeregeltes Produkt im Einzelfall → ZiE; ungeregelte Bauart im Einzelfall → vBG.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nationaler Sektor & Brauchbarkeit“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "targetModuleTab": "bp_recht_grundlagen",
+      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+    },
+    "quelle": "Musterbauordnung § 20 und § 16a; Art. 20 BayBO",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bpr_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bp_recht_grundlagen",
+    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "topic": "Neue BauPVO (EU) 2024/3110",
+    "difficulty": "Vertiefung",
+    "normRef": "VO (EU) 2024/3110, Art. 94, 95",
+    "question": "Was gilt seit dem 8. Januar 2026 im europäischen Bauproduktenrecht?",
+    "options": [
+      "Die BauPVO 305/2011 ist ersatzlos aufgehoben; alle bisherigen CE-Kennzeichnungen erlöschen",
+      "Der digitale Produktpass ist für alle Bauprodukte bereits vollständig verpflichtend",
+      "Die BauPVO (EU) 2024/3110 ist anwendbar; alte hEN bleiben bis zur Ablösung gültig",
+      "Die CE-Kennzeichnung wird in Deutschland durch ein nationales Ü-Zeichen ersetzt"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die neue BauPVO trat am 07.01.2025 in Kraft und ist grundsätzlich seit 08.01.2026 anwendbar. Harmonisierte Normen nach der alten Verordnung gelten weiter, bis die Kommission sie ablöst (Art. 95 Abs. 3); neu ist die Leistungs- und Konformitätserklärung. Der digitale Produktpass folgt mit produktspezifischen Rechtsakten.",
+    "bloom": "Erinnern",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Ablösung erfolgt gestaffelt; Produkte unter alten hEN bleiben bis zu deren Ersatz CE-gekennzeichnet.",
+      "Der digitale Produktpass ist vorgesehen, wird aber erst mit späteren produktspezifischen Rechtsakten verbindlich.",
+      "",
+      "Die CE-Kennzeichnung bleibt das europäische Zeichen; nationale Zusatzzeichen sind auf hEN-Produkten unzulässig."
+    ],
+    "gapAnalysis": {
+      "topic": "Neue BauPVO (EU) 2024/3110",
+      "misconception": "Inkrafttreten, Anwendbarkeit und Übergangsfristen der neuen BauPVO werden verwechselt.",
+      "coreRule": "BauPVO 2024/3110: in Kraft 07.01.2025, anwendbar 08.01.2026, alte hEN gelten bis zur Ablösung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „BauPVO 2024/3110 & digitaler Produktpass“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "targetModuleTab": "bp_recht_grundlagen",
+      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+    },
+    "quelle": "Verordnung (EU) 2024/3110, Art. 94 und 95; IHK Bodensee-Oberschwaben (2026)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_dpp_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
@@ -1157,6 +1280,129 @@
     }
   },
   {
+    "id": "q_kenn_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Steifigkeit vs. Festigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1990 ff.",
+    "question": "Was beschreibt der Elastizitätsmodul E im Unterschied zur Festigkeit eines Baustoffs?",
+    "options": [
+      "Die größte Spannung, die der Werkstoff bis zum Bruch aufnehmen kann",
+      "Den Widerstand gegen elastische Verformung, also die Steigung σ/ε",
+      "Die bleibende Dehnung, die nach Entlastung im Werkstoff verbleibt",
+      "Die Energie, die der Werkstoff bis zum Bruch je Volumen aufnimmt"
+    ],
+    "correctIdx": 1,
+    "explanation": "E ist die Steigung der Spannungs-Dehnungs-Linie im elastischen Bereich (σ = E · ε) und steuert Verformungen; die Festigkeit ist die Grenzspannung bis zum Versagen. Ein Werkstoff kann fest, aber wenig steif sein (z. B. Glasfaserkunststoff) – und umgekehrt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist die Festigkeit; der E-Modul beschreibt die Verformbarkeit unterhalb dieser Grenze.",
+      "",
+      "Bleibende Dehnungen sind plastische Verformungen; E beschreibt den reversiblen, elastischen Anteil.",
+      "Die Arbeitsaufnahme bis zum Bruch ist die Zähigkeit, nicht der E-Modul."
+    ],
+    "gapAnalysis": {
+      "topic": "Steifigkeit vs. Festigkeit",
+      "misconception": "Steifigkeit und Festigkeit werden gleichgesetzt.",
+      "coreRule": "E = σ/ε (Verformung); Festigkeit = Grenzspannung (Tragfähigkeit).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Steifigkeit vs. Festigkeit“ im Modul Kennwerte & Materialdatenbank noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte & Materialdatenbank"
+    },
+    "quelle": "DIN EN 1992-1-1, 3.1; DIN EN 1993-1-1, 3.2",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_kenn_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Zug- vs. Druckfestigkeit von Beton",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1, Tab. 3.1",
+    "question": "Wie groß ist die mittlere zentrische Zugfestigkeit f_ctm eines Betons C30/37 nach f_ctm = 0,30 · f_ck^(2/3)?",
+    "options": [
+      "rund 2,0 N/mm²",
+      "rund 3,8 N/mm²",
+      "rund 30 N/mm²",
+      "rund 2,9 N/mm²"
+    ],
+    "correctIdx": 3,
+    "explanation": "f_ctm = 0,30 · 30^(2/3) = 0,30 · 9,65 ≈ 2,9 N/mm² (EC2 Tab. 3.1). Die Zugfestigkeit beträgt damit nur rund ein Zehntel der Druckfestigkeit; Zugkräfte übernimmt im Stahlbeton die Bewehrung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "2,0 N/mm² entspricht f_ctk,0,05 (5-%-Quantil) von C30/37, nicht dem Mittelwert f_ctm.",
+      "3,8 N/mm² entspricht f_ctk,0,95 (95-%-Quantil), nicht dem Mittelwert.",
+      "30 N/mm² ist die charakteristische Zylinderdruckfestigkeit f_ck; die Zugfestigkeit ist rund zehnmal kleiner.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Zug- vs. Druckfestigkeit von Beton",
+      "misconception": "Druck- und Zugfestigkeit von Beton werden in ähnlicher Größe angenommen.",
+      "coreRule": "f_ctm = 0,30 · f_ck^(2/3) ≈ f_ck/10 (bis C50/60).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zug- vs. Druckfestigkeit“ im Modul Kennwerte & Materialdatenbank noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte & Materialdatenbank"
+    },
+    "quelle": "DIN EN 1992-1-1:2011-01, Tabelle 3.1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_kenn_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Wärmeleitfähigkeit im Vergleich",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 10456",
+    "question": "Normalbeton hat λ ≈ 2,0 W/(m·K), Nadelholz λ ≈ 0,13 W/(m·K). Wie viel dicker muss eine Betonschicht sein, um denselben Wärmedurchlasswiderstand R = d/λ wie eine Holzschicht zu erreichen?",
+    "options": [
+      "etwa 1,5-mal so dick",
+      "etwa 4-mal so dick",
+      "etwa 15-mal so dick",
+      "etwa 150-mal so dick"
+    ],
+    "correctIdx": 2,
+    "explanation": "Gleiches R verlangt d_Beton/d_Holz = λ_Beton/λ_Holz = 2,0/0,13 ≈ 15. Massivholz ist daher ein vergleichsweise guter Wärmedämmer, Beton dagegen ein Wärmeleiter.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das wäre der Fall, wenn sich die λ-Werte nur um den Faktor 1,5 unterschieden; tatsächlich sind es etwa 15.",
+      "Der Faktor ergibt sich aus 2,0/0,13 ≈ 15, nicht 4.",
+      "",
+      "Der Faktor ist um eine Zehnerpotenz zu groß; 2,0/0,13 ergibt etwa 15."
+    ],
+    "gapAnalysis": {
+      "topic": "Wärmeleitfähigkeit im Vergleich",
+      "misconception": "Die Dämmwirkung von Massivbaustoffen wird überschätzt.",
+      "coreRule": "R = d/λ → gleiche Dämmwirkung bei d proportional zu λ.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauphysik & Dämmung“ im Modul Kennwerte & Materialdatenbank noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte & Materialdatenbank"
+    },
+    "quelle": "DIN EN ISO 10456:2010-05, Tabelle 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_ec0_1",
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
@@ -1315,6 +1561,88 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ec0_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Quasi-ständige Kombination",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1990, Gl. (6.16b); NA Tab. NA.A.1.1",
+    "question": "Eine Wohnungsdecke trägt g_k = 6,0 kN/m² und q_k = 2,0 kN/m² (Kategorie A, ψ₂ = 0,3). Wie groß ist die Belastung in der quasi-ständigen Kombination?",
+    "options": [
+      "8,0 kN/m²",
+      "6,6 kN/m²",
+      "11,1 kN/m²",
+      "7,4 kN/m²"
+    ],
+    "correctIdx": 1,
+    "explanation": "E_d,perm = Σ g_k + ψ₂ · q_k = 6,0 + 0,3 · 2,0 = 6,6 kN/m². Die quasi-ständige Kombination dient z. B. für Kriechverformungen und die Rissbreitenbegrenzung im GZG; Teilsicherheitsbeiwerte entfallen.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "8,0 kN/m² ist die charakteristische (seltene) Kombination ohne Abminderung der Nutzlast.",
+      "",
+      "11,1 kN/m² ist die GZT-Grundkombination 1,35 · 6,0 + 1,5 · 2,0; im GZG entfallen die Teilsicherheitsbeiwerte.",
+      "7,4 kN/m² ergäbe sich mit ψ₂ = 0,7; für Wohnräume gilt ψ₂ = 0,3."
+    ],
+    "gapAnalysis": {
+      "topic": "Quasi-ständige Kombination",
+      "misconception": "GZT- und GZG-Kombinationen werden vermischt.",
+      "coreRule": "Quasi-ständig: Σ G_k + Σ ψ₂ · Q_k (ohne γ).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lastkombinationen“ im Modul Eurocode – Sicherheitskonzept noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode – Sicherheitskonzept"
+    },
+    "quelle": "DIN EN 1990:2010-12, 6.5.3 mit NA, Tabelle NA.A.1.1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ec0_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Grenzzustände",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1990, 3.3/3.4",
+    "question": "Welcher Nachweis gehört zum Grenzzustand der Gebrauchstauglichkeit (GZG)?",
+    "options": [
+      "Begrenzung der Durchbiegung und der Rissbreite",
+      "Biegetragfähigkeit eines Balkens im Feld",
+      "Lagesicherheit gegen Kippen eines Stützmauerkopfes",
+      "Ermüdungsnachweis der Bewehrung einer Brücke"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der GZG betrifft Funktion, Komfort und Aussehen (Verformungen, Risse, Schwingungen). Tragfähigkeit, Lagesicherheit (EQU) und Ermüdung gehören zum Grenzzustand der Tragfähigkeit (GZT).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Biegetragfähigkeit ist ein Nachweis im GZT.",
+      "Die Lagesicherheit (EQU) gehört zum GZT.",
+      "Ermüdung ist ein Versagenszustand und wird im GZT nachgewiesen."
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzzustände",
+      "misconception": "GZT und GZG werden nicht unterschieden.",
+      "coreRule": "GZT: Versagen, Lagesicherheit, Ermüdung; GZG: Verformung, Risse, Schwingung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzzustände“ im Modul Eurocode – Sicherheitskonzept noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode – Sicherheitskonzept"
+    },
+    "quelle": "DIN EN 1990:2010-12, Abschnitte 3.3 und 3.4",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -2434,6 +2762,47 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_an_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "LIBS-Tiefenprofile",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 14629 (Vergleichsverfahren)",
+    "question": "Mit welchem Verfahren lassen sich Chlorid-Tiefenprofile auf der Spaltfläche eines Bohrkerns schnell und ortsaufgelöst bestimmen?",
+    "options": [
+      "Quecksilberdruckporosimetrie (MIP) am Bohrkernstück",
+      "Thermogravimetrische Analyse (TGA) des Bohrmehls",
+      "Laserinduzierte Plasmaspektroskopie (LIBS)",
+      "Röntgendiffraktometrie (XRD) an Pulverproben"
+    ],
+    "correctIdx": 2,
+    "explanation": "LIBS rastert die Probenoberfläche mit Laserpulsen ab und misst die Emission des Plasmas; so entstehen in kurzer Zeit Elementverteilungen (Cl, Na, S …) über die Tiefe. Die nasschemische Bestimmung nach DIN EN 14629 an Bohrmehlproben bleibt das Referenzverfahren.",
+    "bloom": "Erinnern",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die MIP misst Porengrößenverteilungen, keine Elementgehalte.",
+      "Die TGA bestimmt Masseverluste beim Erhitzen (z. B. Portlandit), aber keine Chloridverteilung.",
+      "",
+      "Die XRD identifiziert kristalline Phasen; gelöste oder gebundene Chloride lassen sich so nicht ortsaufgelöst quantifizieren."
+    ],
+    "gapAnalysis": {
+      "topic": "LIBS-Tiefenprofile",
+      "misconception": "Verfahren für Gefüge, Phasen und Elemente werden verwechselt.",
+      "coreRule": "Elementverteilung ortsaufgelöst: LIBS; Referenz für Chlorid: DIN EN 14629.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „LIPS / LIBS (Laserinduzierte Plasmaspektroskopie)“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "quelle": "BAM: LIBS für Baustoffe; DIN EN 14629:2007-06",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -4283,6 +4652,170 @@
     }
   },
   {
+    "id": "q_bs_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Zusatzklassen s und d",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13501-1",
+    "question": "Was bedeuten die Zusatzangaben in der Klassifizierung B-s1,d0 nach DIN EN 13501-1?",
+    "options": [
+      "s1: hohe Standsicherheit im Brand; d0: keine Verformung bis 30 Minuten",
+      "s1: geringe Rauchentwicklung; d0: kein brennendes Abtropfen",
+      "s1: Schmelzpunkt über 1 000 °C; d0: keine Dämpfe beim Erhitzen",
+      "s1: Schallschutzklasse 1; d0: Dichtheit gegen Rauchgase"
+    ],
+    "correctIdx": 1,
+    "explanation": "s (smoke) bewertet die Rauchentwicklung (s1 gering bis s3 stark), d (droplets) das brennende Abtropfen (d0 keines bis d2 stark). B-s1,d0 ist bauaufsichtlich schwerentflammbar.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Standsicherheit wird über die Feuerwiderstandsklasse (R) bewertet, nicht über s und d.",
+      "",
+      "Schmelzpunkte werden nicht klassifiziert; d0 beschreibt das brennende Abtropfen.",
+      "s und d stehen für smoke und droplets; Schallschutz gehört nicht zur Brandklassifizierung."
+    ],
+    "gapAnalysis": {
+      "topic": "Zusatzklassen s und d",
+      "misconception": "Die Zusatzklassen werden als Feuerwiderstand gedeutet.",
+      "coreRule": "s = Rauch (s1–s3), d = brennendes Abtropfen (d0–d2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Euroklassen“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "quelle": "DIN EN 13501-1:2019-05",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bs_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Bauaufsichtliche Benennungen",
+    "difficulty": "Vertiefung",
+    "normRef": "MVV TB, Anhang 4",
+    "question": "Welche bauaufsichtliche Anforderung erfüllt ein Baustoff der Klasse A2-s1,d0?",
+    "options": [
+      "schwerentflammbar",
+      "normalentflammbar",
+      "leichtentflammbar",
+      "nichtbrennbar"
+    ],
+    "correctIdx": 3,
+    "explanation": "Nach MVV TB Anhang 4 entsprechen A1 und A2-s1,d0 der Anforderung „nichtbrennbar“; B und C (mit Zusatzklassen) „schwerentflammbar“, D und E „normalentflammbar“. Klasse F ist leichtentflammbar und darf bauaufsichtlich nicht verwendet werden.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Schwerentflammbar sind Baustoffe der Klassen B und C; A2-s1,d0 erfüllt die höhere Anforderung.",
+      "Normalentflammbar entspricht D und E.",
+      "Leichtentflammbar entspricht F und ist im Bauwesen nicht zulässig.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Bauaufsichtliche Benennungen",
+      "misconception": "Euroklassen und bauaufsichtliche Benennungen werden nicht verknüpft.",
+      "coreRule": "A1, A2-s1,d0 = nichtbrennbar; B, C = schwerentflammbar; D, E = normalentflammbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Euroklassen“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "quelle": "MVV TB 2025/1, Anhang 4; DIN EN 13501-1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bs_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Feuerwiderstand bauaufsichtlich",
+    "difficulty": "Basis",
+    "normRef": "MBO § 26; MVV TB",
+    "question": "Welche Feuerwiderstandsdauer entspricht der bauaufsichtlichen Anforderung „hochfeuerhemmend“?",
+    "options": [
+      "30 Minuten",
+      "60 Minuten",
+      "90 Minuten",
+      "120 Minuten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Feuerhemmend = 30 min, hochfeuerhemmend = 60 min, feuerbeständig = 90 min. Brandwände müssen zusätzlich mechanischer Beanspruchung standhalten (z. B. REI-M 90).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "30 Minuten entsprechen „feuerhemmend“.",
+      "",
+      "90 Minuten entsprechen „feuerbeständig“.",
+      "120 Minuten werden z. B. für besondere Bauteile oder Sonderbauten gefordert, sind aber nicht „hochfeuerhemmend“."
+    ],
+    "gapAnalysis": {
+      "topic": "Feuerwiderstand bauaufsichtlich",
+      "misconception": "Die bauaufsichtlichen Benennungen werden falschen Zeiten zugeordnet.",
+      "coreRule": "feuerhemmend 30, hochfeuerhemmend 60, feuerbeständig 90 min.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuerwiderstand“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "quelle": "Musterbauordnung § 26; MVV TB 2025/1, Anhang 4",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bs_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Klassifizierung nichttragender Wände",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13501-2",
+    "question": "Eine nichttragende, raumabschließende Trennwand muss feuerhemmend sein. Welche Klassifizierung nach DIN EN 13501-2 ist zutreffend?",
+    "options": [
+      "EI 30",
+      "R 30",
+      "REI 30",
+      "E 30"
+    ],
+    "correctIdx": 0,
+    "explanation": "Nichttragende raumabschließende Bauteile werden nach Raumabschluss (E) und Wärmedämmung (I) klassifiziert: EI 30. R steht für die Tragfähigkeit und ist nur bei tragenden Bauteilen gefordert; E allein erfüllt die Wärmedämmanforderung nicht.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "R bewertet die Tragfähigkeit; bei einer nichttragenden Wand ist der Raumabschluss maßgebend.",
+      "REI gilt für tragende und raumabschließende Bauteile; die Wand ist nichttragend.",
+      "Ohne I wäre die Wärmedämmung auf der brandabgewandten Seite nicht nachgewiesen."
+    ],
+    "gapAnalysis": {
+      "topic": "Klassifizierung nichttragender Wände",
+      "misconception": "Die Kurzzeichen R, E und I werden nicht dem Bauteil zugeordnet.",
+      "coreRule": "Nichttragend raumabschließend: EI; tragend raumabschließend: REI.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuerwiderstand“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "quelle": "DIN EN 13501-2; MVV TB, Anhang 4",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_ea_1",
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
@@ -4443,6 +4976,252 @@
       "am": "2026-10-25",
       "ergebnis": "fraglich",
       "hinweis": "Eckpunkte BMJV/BMWSB vom 20.11.2025 bestätigt; laut BAK sollte ein Referentenentwurf nach dem Sommer 2026 folgen (Kabinett Ende 2026). Ob er im Oktober 2026 vorliegt, war nicht feststellbar – ggf. richtige Antwort aktualisieren."
+    }
+  },
+  {
+    "id": "q_ndr_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EU-Taxonomie: Konformität",
+    "difficulty": "Basis",
+    "normRef": "VO (EU) 2020/852, Art. 3",
+    "question": "Welche Bedingungen muss eine Bauaktivität nach Art. 3 der Taxonomie-Verordnung (EU) 2020/852 erfüllen, um als ökologisch nachhaltig zu gelten?",
+    "options": [
+      "Einen wesentlichen Beitrag zu allen sechs Umweltzielen gleichzeitig leisten",
+      "Ein Gebäudezertifikat nach DGNB, LEED oder BREEAM in der höchsten Stufe",
+      "Beitrag zu einem Ziel, kein erheblicher Schaden für andere (DNSH), Mindestschutz",
+      "Einen Primärenergiebedarf von null und eine vollständige Eigenversorgung mit PV-Strom"
+    ],
+    "correctIdx": 2,
+    "explanation": "Art. 3: wesentlicher Beitrag zu mindestens einem der sechs Umweltziele, keine erhebliche Beeinträchtigung der übrigen Ziele (Do No Significant Harm), Einhaltung des Mindestschutzes (Art. 18) und der technischen Bewertungskriterien der delegierten Rechtsakte.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Ein wesentlicher Beitrag zu einem Ziel genügt; für die übrigen gilt das DNSH-Prinzip.",
+      "Gebäudezertifikate können als Nachweis helfen, sind aber keine Bedingung der Taxonomie-Verordnung.",
+      "",
+      "Die Taxonomie verlangt für Neubauten einen Primärenergiebedarf mindestens 10 % unter NZEB, nicht null."
+    ],
+    "gapAnalysis": {
+      "topic": "EU-Taxonomie: Konformität",
+      "misconception": "Taxonomiekonformität wird mit Zertifikaten oder Bestwerten gleichgesetzt.",
+      "coreRule": "Taxonomie: Beitrag + DNSH + Mindestschutz + technische Bewertungskriterien.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EU-Taxonomie“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "Verordnung (EU) 2020/852, Art. 3 und 18",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ndr_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EU-Taxonomie: Primärenergie im Neubau",
+    "difficulty": "Vertiefung",
+    "normRef": "Delegierte VO (EU) 2021/2139, Anhang I, 7.1",
+    "question": "Für einen Neubau liegt die NZEB-Anforderung bei 50 kWh/(m²a) Primärenergie, geplant sind 47 kWh/(m²a). Erfüllt er das Taxonomie-Kriterium Klimaschutz für den Primärenergiebedarf?",
+    "options": [
+      "Ja, denn 47 kWh/(m²a) liegt bereits unter der NZEB-Anforderung von 50 kWh/(m²a)",
+      "Nein, verlangt sind mindestens 10 % unter NZEB, also höchstens 45 kWh/(m²a)",
+      "Ja, denn verlangt sind nur 5 % unter NZEB, also höchstens 47,5 kWh/(m²a)",
+      "Nein, verlangt sind mindestens 20 % unter NZEB, also höchstens 40 kWh/(m²a)"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach Anhang I, 7.1 muss der Primärenergiebedarf mindestens 10 % unter der NZEB-Anforderung liegen: 0,90 · 50 = 45 kWh/(m²a). Mit 47 kWh/(m²a) ist das Kriterium verfehlt. Bei Gebäuden über 5 000 m² sind zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen sowie Luftdichtheit und Wärmebrücken zu prüfen.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das Einhalten der NZEB-Anforderung genügt nicht; die Taxonomie verlangt eine Unterschreitung um mindestens 10 %.",
+      "",
+      "Der Abschlag beträgt 10 %, nicht 5 %; der zulässige Wert ist 45 kWh/(m²a).",
+      "Der Abschlag beträgt 10 %, nicht 20 %; das Ergebnis „nicht erfüllt“ stimmt, die Begründung nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "EU-Taxonomie: Primärenergie im Neubau",
+      "misconception": "Die Taxonomie-Schwelle wird mit der gesetzlichen Mindestanforderung gleichgesetzt.",
+      "coreRule": "Neubau (7.1): Primärenergie ≤ 0,90 · NZEB-Anforderung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EU-Taxonomie“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "Delegierte Verordnung (EU) 2021/2139, Anhang I, Abschnitt 7.1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ndr_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EPD: Pflichtmodule",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Welche Lebenszyklusmodule muss eine EPD nach DIN EN 15804+A2 im Regelfall mindestens deklarieren?",
+    "options": [
+      "Nur die Herstellungsphase A1–A3 (cradle to gate), ohne weitere Module",
+      "A1–A5 einschließlich Transport zur Baustelle und Einbau",
+      "A1–A3, C1–C4 und D (Herstellung, Entsorgung, Gutschriften)",
+      "A1–C4 vollständig einschließlich der Nutzungsphase B1–B7"
+    ],
+    "correctIdx": 2,
+    "explanation": "Mit der Änderung A2 sind A1–A3, C1–C4 und D für die meisten Bauprodukte Pflicht. Reine Cradle-to-gate-EPD sind nur noch unter engen Bedingungen zulässig, z. B. wenn ein Produkt am Lebensende nicht mehr abtrennbar oder identifizierbar ist.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Cradle to gate war unter EN 15804+A1 üblich; seit A2 sind Entsorgung (C1–C4) und Modul D in der Regel Pflicht.",
+      "A4 und A5 sind optional; Pflicht sind Herstellung, Entsorgung und Modul D.",
+      "",
+      "Die Nutzungsphase B1–B7 ist optional, da sie vom konkreten Gebäude abhängt."
+    ],
+    "gapAnalysis": {
+      "topic": "EPD: Pflichtmodule",
+      "misconception": "Die alte Cradle-to-gate-Praxis wird auf EN 15804+A2 übertragen.",
+      "coreRule": "EN 15804+A2: Pflicht A1–A3 + C1–C4 + D (Ausnahmen eng begrenzt).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EPD nach DIN EN 15804+A2“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021), Abschnitt 5.2",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ndr_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "KfW-Neubauförderung und QNG",
+    "difficulty": "Transfer",
+    "normRef": "KfW-Merkblatt 297/298 (07/2026), TMA",
+    "question": "Ein Wohngebäude in EH 40 mit Wärmepumpe erreicht GWP = 22,8 kg CO₂-Äq./(m² NRF·a) und PENRT = 101 kWh/(m² NRF·a). Welche Förderstufe im KfW-Programm 297/298 ist erreichbar?",
+    "options": [
+      "Die Stufe mit QNG (bis 150 000 € je Wohneinheit), da das GWP eingehalten ist",
+      "Keine Stufe, weil PENRT über dem QNG-PLUS-Grenzwert von 96 kWh/(m²a) liegt",
+      "Nur die befristete Stufe EH 55, da EH 40 ohne QNG-Siegel nicht gefördert wird",
+      "Klimafreundliches Wohngebäude (bis 100 000 € je WE), nicht aber mit QNG"
+    ],
+    "correctIdx": 3,
+    "explanation": "Die Stufe „Klimafreundliches Wohngebäude“ verlangt EH 40, keinen fossilen oder Biomasse-Wärmeerzeuger und die THG-Anforderung von QNG-PLUS (GWP ≤ 24 kg CO₂-Äq./(m² NRF·a), 50 Jahre). Für „mit QNG“ (bis 150 000 €) ist das Siegel nötig, und QNG-PLUS verlangt zusätzlich PENRT ≤ 96 kWh/(m² NRF·a) – das wird verfehlt.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Für die Stufe mit QNG muss das Siegel vorliegen; QNG-PLUS verlangt zusätzlich PENRT ≤ 96, hier 101.",
+      "PENRT ist nur für das QNG-Siegel maßgebend; die Stufe ohne QNG prüft im Lebenszyklus nur das GWP.",
+      "EH 40 wird auch ohne QNG gefördert (bis 100 000 € je WE), wenn die THG-Anforderung erfüllt ist.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "KfW-Neubauförderung und QNG",
+      "misconception": "Förderstufe ohne QNG und QNG-Siegel werden gleichgesetzt.",
+      "coreRule": "KFN: EH 40 + GWP ≤ 24 → 100 000 €/WE; zusätzlich QNG-Zertifikat (GWP und PENRT) → 150 000 €/WE.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Qualitätssiegel Nachhaltiges Gebäude (QNG)“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "KfW-Merkblatt 297/298, Stand 07/2026; Anlage TMA 297/298 (03/2023)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ndr_7",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EPBD: Nullemissionsgebäude",
+    "difficulty": "Basis",
+    "normRef": "Richtlinie (EU) 2024/1275, Art. 7",
+    "question": "Ab wann müssen neue Gebäude nach der EPBD (EU) 2024/1275 als Nullemissionsgebäude errichtet werden?",
+    "options": [
+      "Alle Neubauten ab 2026, öffentliche Neubauten schon ab 2025",
+      "Alle Neubauten erst ab 2040, zeitgleich mit dem Ende fossiler Heizungen",
+      "Öffentliche Neubauten ab 2028, alle übrigen Neubauten ab 2030",
+      "Nur öffentliche Neubauten ab 2035, private Neubauten bleiben ausgenommen"
+    ],
+    "correctIdx": 2,
+    "explanation": "Art. 7 EPBD: Neubauten im Eigentum öffentlicher Einrichtungen ab 01.01.2028, alle Neubauten ab 01.01.2030 als Nullemissionsgebäude (ZEB). Die Mitgliedstaaten setzen die Richtlinie bis Mai 2026 in nationales Recht um.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Diese Termine liegen zu früh; die Richtlinie trat erst im Mai 2024 in Kraft und gibt Übergangszeit bis 2028/2030.",
+      "2040 ist das Zieljahr für den Ausstieg aus fossilen Heizkesseln, nicht der ZEB-Stichtag für Neubauten.",
+      "",
+      "Auch private Neubauten werden erfasst, und zwar ab 2030; öffentliche Neubauten schon ab 2028."
+    ],
+    "gapAnalysis": {
+      "topic": "EPBD: Nullemissionsgebäude",
+      "misconception": "ZEB-Pflicht und Fossilausstieg werden zeitlich vermischt.",
+      "coreRule": "EPBD Art. 7: ZEB öffentlich ab 2028, alle Neubauten ab 2030.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EPBD 2024/1275“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "Richtlinie (EU) 2024/1275, Art. 7 und Art. 35",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ndr_8",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "QNG-Bilanzgrenze",
+    "difficulty": "Vertiefung",
+    "normRef": "QNG-Handbuch Anlage 3, Bilanzierungsregeln",
+    "question": "Welche Lebenszyklusmodule gehen nach den QNG-Bilanzierungsregeln in das GWP eines Wohngebäudes ein?",
+    "options": [
+      "A1–A3, B4, C3, C4 für die Baustoffe sowie B6 für den Betrieb",
+      "Nur A1–A3 der Baustoffe; der Betrieb wird getrennt über das GModG bewertet",
+      "A1–A5 und C1–C4 der Baustoffe, ohne Ersatz (B4) und ohne Betrieb (B6)",
+      "Alle Module A1 bis D, wobei die Gutschriften aus D mit A–C saldiert werden"
+    ],
+    "correctIdx": 0,
+    "explanation": "Das QNG bilanziert für die Konstruktion Herstellung (A1–A3), Ersatz (B4) und Entsorgung (C3, C4), für den Betrieb den Energiebedarf (B6) einschließlich Kältemittelverlusten (B1); Modul D wird nur informativ ausgewiesen. Betrachtungszeitraum 50 Jahre, Bezug m² NRF.",
+    "bloom": "Erinnern",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Das QNG bezieht den Betrieb (B6) ausdrücklich in den Lebenszyklus-Grenzwert ein; A1–A3 allein reicht nicht.",
+      "Transport und Einbau (A4, A5) werden im QNG nicht bilanziert, Ersatz (B4) und Betrieb (B6) dagegen schon.",
+      "Modul D wird getrennt ausgewiesen und nicht mit den Modulen A bis C verrechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "QNG-Bilanzgrenze",
+      "misconception": "Die QNG-Systemgrenze wird mit Cradle-to-gate oder mit einer Saldierung von D verwechselt.",
+      "coreRule": "QNG: A1–A3, B4, C3, C4 + B6 (und B1 Kältemittel); D nur informativ.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Qualitätssiegel Nachhaltiges Gebäude (QNG)“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "quelle": "envisys: QNG – Informationsblatt (01/2026); QNG-Handbuch Anlage 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
     }
   },
   {
@@ -4684,6 +5463,248 @@
       "am": "2026-10-25",
       "ergebnis": "ok"
     }
+  },
+  {
+    "id": "q_zs_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB-Themenfelder und Gewichtung",
+    "difficulty": "Vertiefung",
+    "normRef": "DGNB System Neubau, Version 2023/2023.2",
+    "question": "Wie sind die Themenfelder im DGNB System Gebäude Neubau (Version 2023 und 2023.2) gewichtet?",
+    "options": [
+      "Ökologie, Ökonomie, Soziokultur je 22,5 %, Technik 15 %, Prozess 12,5 %, Standort 5 %",
+      "Ökologie, Ökonomie, Soziokultur je 25 %, Technik und Prozess je 10 %, Standort 5 %",
+      "Ökologie 40 %, Ökonomie und Soziokultur je 20 %, Technik und Prozess je 10 %",
+      "Alle sechs Themenfelder gleich, also je rund 16,7 % des Gesamterfüllungsgrads"
+    ],
+    "correctIdx": 1,
+    "explanation": "Seit Version 2023 zählen die drei Säulen der Nachhaltigkeit (ökologische, ökonomische, soziokulturelle und funktionale Qualität) je 25 %, technische Qualität und Prozessqualität je 10 %, Standortqualität 5 %. Version 2023.2 (gültige Marktversion ab 01.10.2026) behält diese Gewichtung bei und reduziert die Kriterien von 29 auf 28.",
+    "bloom": "Erinnern",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "So rechnet das Lehrbeispiel des Moduls mit der Gewichtung der Version 2018; seit Version 2023 zählen die drei Säulen je 25 %.",
+      "",
+      "Die Ökologie wird nicht doppelt gewichtet; ökologische, ökonomische und soziokulturelle Qualität zählen gleich mit je 25 %.",
+      "Die Themenfelder sind nicht gleich gewichtet: Die drei Säulen zählen je 25 %, Technik und Prozess je 10 %, der Standort 5 %."
+    ],
+    "gapAnalysis": {
+      "topic": "DGNB-Themenfelder und Gewichtung",
+      "misconception": "Die Gewichtung älterer Systemversionen wird auf die aktuelle Version übertragen.",
+      "coreRule": "DGNB Neubau 2023/2023.2: ENV, ECO, SOC je 25 %; TEC, PRO je 10 %; SITE 5 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Gesamterfüllungsgrad nach DGNB“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "DGNB: System Neubau Version 2023 und 2023.2 (dgnb.de, abgerufen 26.10.2026)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_zs_4",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB-Vorzertifikat",
+    "difficulty": "Basis",
+    "normRef": "DGNB System Neubau, Version 2023.2",
+    "question": "Was bestätigt ein DGNB-Vorzertifikat für einen Neubau?",
+    "options": [
+      "Dass das fertige Gebäude die Zielstufe nach Messungen im ersten Betriebsjahr erreicht hat",
+      "Dass ein lizenzierter DGNB-Auditor für das Projekt bestellt und das Projekt registriert ist",
+      "Dass die in der frühen Planung festgelegten Ziele bei Fertigstellung erreichbar sind",
+      "Dass das Gebäude die besonderen Anforderungen des QNG erfüllt und förderfähig ist"
+    ],
+    "correctIdx": 2,
+    "explanation": "Das Vorzertifikat wird in der frühen Planungsphase vergeben und bestätigt, welche Qualitäten bei Fertigstellung erreicht werden können. Das eigentliche Zertifikat folgt nach Fertigstellung auf Basis der Nachweise des gebauten Zustands.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das beschreibt eher eine Zertifizierung im Betrieb; das Vorzertifikat wird schon in der Planung vergeben.",
+      "Registrierung und Auditor sind Voraussetzungen des Verfahrens, aber nicht Inhalt des Vorzertifikats.",
+      "",
+      "Das QNG hat eigene besondere Anforderungen und ein eigenes Zertifikat; ein DGNB-Vorzertifikat ersetzt es nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "DGNB-Vorzertifikat",
+      "misconception": "Vorzertifikat und Zertifikat werden gleichgesetzt.",
+      "coreRule": "Vorzertifikat = Zielvereinbarung in der Planung; Zertifikat = Nachweis nach Fertigstellung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Vorzertifikat“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "DGNB: System Neubau Version 2023.2 (dgnb.de, abgerufen 26.10.2026)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_zs_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB-Mindestanforderungen",
+    "difficulty": "Vertiefung",
+    "normRef": "DGNB System Neubau, Version 2023.2",
+    "question": "Welche Mindestanforderung gilt im DGNB System Neubau 2023.2 für alle Gebäude, unabhängig von der angestrebten Auszeichnungsstufe?",
+    "options": [
+      "Eine Klimarisikoanalyse für den Standort im Kriterium SITE1.1",
+      "Ein Holzbauanteil von mindestens 50 % an der tragenden Konstruktion",
+      "Eine Photovoltaikanlage auf mindestens der Hälfte der Dachfläche",
+      "Eine Luftdichtheit n50 von höchstens 0,6 h⁻¹ wie beim Passivhaus"
+    ],
+    "correctIdx": 0,
+    "explanation": "In Version 2023.2 gelten drei Mindestanforderungen für alle Gebäude: ENV1.1 (Ökobilanz und Fahrplan zum Ausstieg aus fossilen Energieträgern), SOC1.2 (Innenraumluftmessung der VOC, außer bei Industrie und Gewerbe) und SITE1.1 (Klimarisikoanalyse im Mindestumfang). Gesonderte Mindestanforderungen für Platin entfallen.",
+    "bloom": "Erinnern",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Einen Mindestanteil Holzbau verlangt die DGNB nicht; Holz geht über Ökobilanz und Ressourcenkriterien in die Bewertung ein.",
+      "Eine PV-Pflicht ist keine DGNB-Mindestanforderung; erneuerbare Energie wirkt über ENV1.1 und den Klimaschutzbeitrag.",
+      "Die Luftdichtheit ist kein Ausschlusskriterium der DGNB; n50 ≤ 0,6 h⁻¹ ist eine Kenngröße des Passivhausstandards."
+    ],
+    "gapAnalysis": {
+      "topic": "DGNB-Mindestanforderungen",
+      "misconception": "Mindestanforderungen werden mit einzelnen Effizienzmaßnahmen verwechselt.",
+      "coreRule": "DGNB 2023.2: Mindestanforderungen ENV1.1, SOC1.2, SITE1.1 für alle Gebäude.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Mindestanforderungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "DGNB: Änderungen Version 2023 zu 2023.2, Gebäude Neubau (dgnb.de, abgerufen 26.10.2026)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_zs_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB und QNG",
+    "difficulty": "Transfer",
+    "normRef": "QNG-Handbuch; KfW-Merkblatt 297/298 (07/2026)",
+    "question": "Ein Wohngebäude (EH 40, Wärmepumpe) erhält das DGNB-Zertifikat in Gold. Der Bauherr möchte den KfW-Kredit „Klimafreundliches Wohngebäude – mit QNG“. Was gilt?",
+    "options": [
+      "Das Gold-Zertifikat genügt, weil die DGNB ein registriertes Bewertungssystem ist",
+      "Es reicht, wenn der Energieeffizienz-Experte das Gold-Zertifikat bestätigt",
+      "Zusätzlich müssen die besonderen QNG-Anforderungen erfüllt und zertifiziert sein",
+      "Das QNG-Siegel ist nur mit DGNB Platin erreichbar, Gold genügt dafür nicht"
+    ],
+    "correctIdx": 2,
+    "explanation": "Das QNG verknüpft die allgemeinen Anforderungen eines registrierten Bewertungssystems (z. B. DGNB, BNB, NaWoh, BNK) mit besonderen Anforderungen nach Anlage 3 des QNG-Handbuchs: Treibhausgas und nicht erneuerbare Primärenergie im Lebenszyklus, nachhaltige Materialgewinnung, Schadstoffvermeidung, Barrierefreiheit. Eine akkreditierte Zertifizierungsstelle bestätigt QNG-PLUS oder QNG-PREMIUM; dieses Zertifikat verlangt die KfW.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das registrierte System deckt nur die allgemeinen Anforderungen ab; die besonderen QNG-Anforderungen kommen hinzu.",
+      "Der Experte bestätigt in der BnD das QNG-Zertifikat einer akkreditierten Stelle, nicht ein DGNB-Zertifikat.",
+      "",
+      "Eine bestimmte DGNB-Stufe ist nicht der Schlüssel; entscheidend sind die zusätzlichen besonderen QNG-Anforderungen."
+    ],
+    "gapAnalysis": {
+      "topic": "DGNB und QNG",
+      "misconception": "Ein Nachhaltigkeitszertifikat wird mit dem staatlichen QNG-Siegel gleichgesetzt.",
+      "coreRule": "QNG = registriertes Bewertungssystem + besondere Anforderungen (Anlage 3) + akkreditierte Zertifizierungsstelle.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG Gütesiegel“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "KfW-Merkblatt 297/298, Stand 07/2026; Anlage TMA 297/298 (03/2023); AK Berlin: QNG – Systemarchitektur (Oliva y Hausmann)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_zs_7",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "QNG-Nachweisverfahren",
+    "difficulty": "Basis",
+    "normRef": "QNG-Handbuch; KfW-Merkblatt 297/298 (07/2026)",
+    "question": "Wer bestätigt in der Bundesförderung, dass ein Gebäude die Anforderungen von QNG-PLUS oder QNG-PREMIUM erfüllt?",
+    "options": [
+      "Die KfW nach Prüfung der Ökobilanz durch ihre eigene Fachabteilung",
+      "Das BMWSB direkt auf Antrag des Bauherrn, ohne Beteiligung weiterer Stellen",
+      "Der Energieeffizienz-Experte allein mit der Bestätigung zum Antrag (BzA)",
+      "Eine akkreditierte Zertifizierungsstelle mit einem registrierten System"
+    ],
+    "correctIdx": 3,
+    "explanation": "Siegelgeber ist der Bund (BMWSB); vergeben wird das QNG von akkreditierten Zertifizierungsstellen auf Grundlage eines registrierten Bewertungssystems. Die KfW verlangt das QNG-Zertifikat einer akkreditierten Zertifizierungsstelle, das der Energieeffizienz-Experte nach Fertigstellung in der Bestätigung nach Durchführung (BnD) bestätigt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die KfW prüft Standard, Adresse und Akkreditierung der Stelle, führt die Konformitätsprüfung aber nicht selbst durch.",
+      "Das BMWSB legt als Siegelgeber die Anforderungen fest; vergeben wird das Siegel von akkreditierten Zertifizierungsstellen.",
+      "Der Energieeffizienz-Experte bestätigt EH 40 und das vorliegende QNG-Zertifikat, stellt es aber nicht selbst aus.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "QNG-Nachweisverfahren",
+      "misconception": "Siegelgeber, Fördergeber und Zertifizierungsstelle werden verwechselt.",
+      "coreRule": "QNG-Zertifikat: akkreditierte Zertifizierungsstelle; Anforderungen: BMWSB; Förderung: KfW.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG Gütesiegel“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "KfW-Merkblatt 297/298, Stand 07/2026; AK Berlin: QNG – Systemarchitektur (Oliva y Hausmann)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_zs_8",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "QNG-Anforderungswert Nichtwohngebäude",
+    "difficulty": "Vertiefung",
+    "normRef": "QNG-Handbuch Anlage 3 (NWG23)",
+    "question": "Wie wird der GWP-Anforderungswert für ein Nichtwohngebäude nach QNG (NWG23) festgelegt?",
+    "options": [
+      "Fest mit 24 kg CO₂-Äq./(m² NRF·a) wie bei den Wohngebäuden",
+      "Projektspezifisch nach den QNG-Rechenregeln aus den Nutzungen",
+      "Durch die Gemeinde im Bebauungsplan für jedes Baugrundstück",
+      "Als Mittelwert aller DGNB-Referenzgebäude der vergangenen zehn Jahre"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für Wohngebäude gelten feste Werte (PLUS 24, PREMIUM 20 kg CO₂-Äq./(m² NRF·a)). Für Nichtwohngebäude wird der Anforderungswert je Projekt nach den QNG-Rechenregeln aus den Nutzungen berechnet, weil sich z. B. Büro, Schule und Labor im Bedarf stark unterscheiden.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die festen Werte 24 und 20 gelten für Wohngebäude; für Nichtwohngebäude wird der Wert projektbezogen berechnet.",
+      "",
+      "Der Bebauungsplan regelt Art und Maß der Nutzung, aber keine Ökobilanz-Grenzwerte des Bundessiegels.",
+      "Das QNG ist ein Bundessiegel mit eigenen Rechenregeln; DGNB-Projektstatistiken sind keine Anforderungsgrundlage."
+    ],
+    "gapAnalysis": {
+      "topic": "QNG-Anforderungswert Nichtwohngebäude",
+      "misconception": "Die WG-Grenzwerte werden auf Nichtwohngebäude übertragen.",
+      "coreRule": "QNG-WG: feste Werte; QNG-NWG: projektspezifisch berechneter Anforderungswert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG Gütesiegel“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "quelle": "envisys: QNG – Informationsblatt (01/2026); QNG-Handbuch Anlage 3",
+    "verified": false
   },
   {
     "id": "q_kw_1",
@@ -5002,6 +6023,170 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bst_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "U-Wert nach Dämmung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6946",
+    "question": "Eine Bestandswand hat U = 1,40 W/(m²K). Sie erhält 12 cm Dämmung mit λ = 0,035 W/(m·K). Wie groß ist der neue U-Wert ungefähr?",
+    "options": [
+      "0,19 W/(m²K)",
+      "0,29 W/(m²K)",
+      "0,35 W/(m²K)",
+      "0,24 W/(m²K)"
+    ],
+    "correctIdx": 3,
+    "explanation": "R_alt = 1/1,40 = 0,71 m²K/W; R_Dä = 0,12/0,035 = 3,43 m²K/W; U_neu = 1/(0,71 + 3,43) = 0,24 W/(m²K). Die Widerstände werden addiert, nicht die U-Werte.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,19 W/(m²K) ergäbe sich mit rund 16 cm Dämmung; bei 12 cm bleibt U bei etwa 0,24.",
+      "0,29 W/(m²K) entspräche nur rund 10 cm Dämmung oder einem schlechteren λ.",
+      "0,35 W/(m²K) entsteht, wenn der Bestandswiderstand nicht addiert wird; richtig ist 1/(R_alt + R_Dä).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "U-Wert nach Dämmung",
+      "misconception": "U-Werte werden addiert statt der Wärmedurchlasswiderstände.",
+      "coreRule": "U_neu = 1/(1/U_alt + d/λ).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sanierungsparameter konfigurieren“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "quelle": "DIN EN ISO 6946:2018-03",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bst_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Kapillaraktive Innendämmung",
+    "difficulty": "Vertiefung",
+    "normRef": "WTA-Merkblatt 6-4/6-5",
+    "question": "Wie funktioniert eine kapillaraktive Innendämmung (z. B. Calciumsilikat) bauphysikalisch?",
+    "options": [
+      "Eine raumseitige Dampfsperre verhindert jeden Feuchteeintrag in die Wand",
+      "Anfallendes Tauwasser wird kapillar verteilt und zum Raum hin zurückgeleitet",
+      "Die Dämmung ist wasserabweisend und lässt Feuchte nur nach außen abfließen",
+      "Eine Hinterlüftung zwischen Dämmung und Bestandswand führt die Feuchte nach oben ab"
+    ],
+    "correctIdx": 1,
+    "explanation": "Kapillaraktive Systeme lassen begrenzt Diffusion zu, nehmen anfallendes Tauwasser in den Poren auf und transportieren es kapillar zurück zur Raumseite, wo es abtrocknet. Voraussetzung ist ein vollflächiger, hohlraumfreier Verbund; der Nachweis erfolgt nach WTA 6-5 bzw. hygrothermischer Simulation.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das beschreibt ein dampfdichtes System; kapillaraktive Dämmungen kommen gerade ohne Dampfsperre aus.",
+      "",
+      "Hydrophobe Dämmstoffe sind das Gegenteil; kapillaraktive Platten saugen Wasser auf und verteilen es.",
+      "Hohlräume oder Hinterlüftung hinter Innendämmung führen zu Tauwasser und sind zu vermeiden."
+    ],
+    "gapAnalysis": {
+      "topic": "Kapillaraktive Innendämmung",
+      "misconception": "Innendämmung wird nur als dampfdichtes System gedacht.",
+      "coreRule": "Kapillaraktiv: Tauwasser aufnehmen, kapillar zurückführen, vollflächig verkleben.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung nach WTA-Merkblatt 6-5“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "quelle": "WTA-Merkblätter 6-4 und 6-5; DIN 4108-3:2024-03",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bst_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Temperaturfaktor f_Rsi",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4108-2, 6.2",
+    "question": "In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemperatur von θ_si = 11,5 °C bestimmt. Ist der Mindestwärmeschutz nach DIN 4108-2 (f_Rsi ≥ 0,70) eingehalten?",
+    "options": [
+      "Ja, denn f_Rsi = 11,5/20 = 0,58 liegt über dem Bezugswert der Raumluft",
+      "Ja, denn 11,5 °C liegt über dem Taupunkt von rund 9,3 °C bei 50 % Feuchte",
+      "Nein, denn f_Rsi = (11,5 + 5)/(20 + 5) = 0,66 liegt unter 0,70",
+      "Nein, denn f_Rsi = 11,5/(20 + 5) = 0,46 liegt unter 0,70"
+    ],
+    "correctIdx": 2,
+    "explanation": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) = 16,5/25 = 0,66 < 0,70. Gefordert wären θ_si ≥ 12,6 °C; das Kriterium beruht auf 80 % relativer Feuchte an der Oberfläche als Schimmelgrenze (bei 20 °C und 50 % Raumluftfeuchte).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Außentemperatur fehlt in der Rechnung; f_Rsi bezieht sich auf die Differenz θ_i − θ_e.",
+      "Das Taupunktkriterium reicht nicht; Schimmel wächst schon ab etwa 80 % Oberflächenfeuchte, daher f_Rsi ≥ 0,70.",
+      "",
+      "Im Zähler fehlt die Außentemperatur: richtig ist (θ_si − θ_e), also 11,5 + 5."
+    ],
+    "gapAnalysis": {
+      "topic": "Temperaturfaktor f_Rsi",
+      "misconception": "Der Temperaturfaktor wird ohne Außentemperatur berechnet oder durch den Taupunkt ersetzt.",
+      "coreRule": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) ≥ 0,70 → θ_si ≥ 12,6 °C.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schadenspotenziale im Altbaubestand“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "quelle": "DIN 4108-2:2013-02, 6.2",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_bst_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Erste Wärmeschutzverordnung",
+    "difficulty": "Basis",
+    "normRef": "WärmeschutzV 1977",
+    "question": "Warum sinken die typischen U-Werte von Außenwänden in Westdeutschland ab Ende der 1970er-Jahre deutlich?",
+    "options": [
+      "Weil die DIN 1053 ab 1952 Vollziegel durch Hochlochziegel ersetzte",
+      "Weil die erste Wärmeschutzverordnung 1977 Anforderungen an die Hülle stellte",
+      "Weil die Energieeinsparverordnung 2002 den Primärenergiebedarf begrenzte",
+      "Weil die DIN 4108 im Jahr 1952 erstmals Mindestwerte des Wärmeschutzes festlegte"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach der Ölkrise trat am 01.11.1977 die erste Wärmeschutzverordnung (auf Grundlage des Energieeinsparungsgesetzes 1976) in Kraft und begrenzte erstmals den Wärmeverlust der Gebäudehülle; es folgten WSchV 1984 und 1995, EnEV 2002, GEG 2020 und GModG.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hochlochziegel verbesserten den Wärmeschutz, doch der deutliche Sprung folgt aus den Anforderungen der WSchV 1977.",
+      "",
+      "Die EnEV 2002 kam rund 25 Jahre später; der erste deutliche Sprung liegt bei 1977.",
+      "Die DIN 4108 (ab 1952) regelte nur den Mindestwärmeschutz gegen Tauwasser; energiesparende Anforderungen kamen 1977."
+    ],
+    "gapAnalysis": {
+      "topic": "Erste Wärmeschutzverordnung",
+      "misconception": "Die Entwicklung der U-Werte wird nicht mit der Energiesparrechtsetzung verknüpft.",
+      "coreRule": "WSchV 1977 → 1984 → 1995 → EnEV 2002 → GEG 2020 → GModG.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Historischer Trend der Bauteil-U-Werte von 1880 bis heute“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "quelle": "Wärmeschutzverordnung vom 11.08.1977 (BGBl. I S. 1554); Energieeinsparungsgesetz 1976",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -5406,6 +6591,166 @@
     }
   },
   {
+    "id": "q_hk_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Gusseisen im Bestand",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1990 Anhang D",
+    "question": "Eine gusseiserne Stütze von 1890 soll nachgerechnet werden. Welche Werkstoffeigenschaft ist dabei besonders kritisch?",
+    "options": [
+      "Die geringe Druckfestigkeit, die unter der von heutigem Baustahl S235 liegt",
+      "Die hohe Duktilität, die große plastische Umlagerungen im Tragwerk erzeugt",
+      "Die gute Schweißbarkeit, die zu unbemerkten Reparaturnähten verleitet",
+      "Die spröde Zugseite und der kleine E-Modul, der die Knicklast mindert"
+    ],
+    "correctIdx": 3,
+    "explanation": "Grauguss ist sehr druckfest (rund 500–800 N/mm²), versagt unter Zug aber spröde (100–200 N/mm²) und hat einen E-Modul von nur 80–140 GPa. Für Stützen sind deshalb Knicken und Biegung aus Exzentrizität maßgebend; Gusseisen ist nicht schweißbar.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Druckfestigkeit von Gusseisen ist hoch; kritisch sind Zugbeanspruchung und Steifigkeit.",
+      "Gusseisen ist spröde; plastische Umlagerungen dürfen nicht angesetzt werden.",
+      "Gusseisen gilt als nicht schweißbar; Ertüchtigungen erfolgen geklemmt oder geschraubt.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Gusseisen im Bestand",
+      "misconception": "Historisches Gusseisen wird wie duktiler Baustahl behandelt.",
+      "coreRule": "Gusseisen: druckfest, zugspröde, E = 80–140 GPa → Knicken maßgebend.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Baustahl & Eisenwerkstoffe“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Datenblatt „Baustahl & Eisenwerkstoffe“ im Modul; Käpplein/Ummenhofer: Historische Eisen- und Stahlkonstruktionen",
+    "verified": false
+  },
+  {
+    "id": "q_hk_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Puddelstahl",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6892-1",
+    "question": "Was kennzeichnet Schmiedeeisen bzw. Puddelstahl aus dem 19. Jahrhundert?",
+    "options": [
+      "Hoher Kohlenstoffgehalt, große Härte und sprödes Bruchverhalten wie beim Grauguss",
+      "Schlackezeilen mit ausgeprägter Anisotropie und kaum gegebener Schweißbarkeit",
+      "Feinkornstruktur mit hoher Zähigkeit, gut schweißbar wie heutiger S355",
+      "Kaltverformte, verdrillte Stäbe mit Längsrippe zur Betonbewehrung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beim Puddelverfahren entsteht ein teigiger, schlackenhaltiger Stahl; die eingewalzten Schlackezeilen machen ihn anisotrop (geringe Festigkeit quer zur Walzrichtung, Gefahr von Doppelungen). Schweißen ist kritisch; Verstärkungen werden geschraubt oder geklemmt.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hoher Kohlenstoffgehalt und Sprödigkeit kennzeichnen Gusseisen, nicht Puddelstahl.",
+      "",
+      "Gute Schweißbarkeit und Feinkorn sind Merkmale moderner Baustähle, nicht des Puddelstahls.",
+      "Das beschreibt den Torstahl der 1930er-Jahre, einen Betonstahl."
+    ],
+    "gapAnalysis": {
+      "topic": "Puddelstahl",
+      "misconception": "Historische Eisenwerkstoffe werden nicht unterschieden.",
+      "coreRule": "Puddelstahl: Schlackezeilen, anisotrop, kaum schweißbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Baustahl & Eisenwerkstoffe“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Datenblatt „Baustahl & Eisenwerkstoffe“ im Modul; DIN EN ISO 6892-1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hk_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Glatter Betonstahl",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045:1937",
+    "question": "Warum sind bei glattem Betonstahl der Gruppe I (BSt 22/34) Endhaken an den Stabenden erforderlich?",
+    "options": [
+      "Weil der Verbund ohne Rippen gering ist und die Haken die Verankerung übernehmen",
+      "Weil die Haken die Betondeckung vergrößern und so den Korrosionsschutz deutlich erhöhen",
+      "Weil glatter Stahl spröde ist und die Haken Risse im Stahl selbst verhindern",
+      "Weil die Haken die Stäbe beim Betonieren in der Schalung lagestabil halten"
+    ],
+    "correctIdx": 0,
+    "explanation": "Glatte Stäbe übertragen Kräfte fast nur über Haftung und Reibung; die Verankerung muss daher über Endhaken erfolgen. Bei der Nachrechnung sind Verbund und Verankerung glatter Stähle gesondert zu prüfen – sie sind zwar sehr duktil, aber verbundschwach.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Haken liegen im Bauteilinneren und ändern die Betondeckung nicht.",
+      "Glatter Weichstahl ist sehr duktil; die Haken dienen der Verankerung, nicht dem Rissschutz im Stahl.",
+      "Lagesicherung übernehmen Abstandhalter und Bindedraht; die Haken sind statisch erforderlich."
+    ],
+    "gapAnalysis": {
+      "topic": "Glatter Betonstahl",
+      "misconception": "Die Bedeutung der Haken für die Verankerung wird übersehen.",
+      "coreRule": "Glatter Stahl → geringer Verbund → Verankerung über Endhaken.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Entwicklung der Bewehrungsstähle“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "DIN 1045:1937; Datenblatt „Bewehrungsstähle“ im Modul",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hk_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Reichsformat",
+    "difficulty": "Basis",
+    "normRef": "Reichsformat (1872)",
+    "question": "Welche Abmessungen hat ein Mauerziegel im Reichsformat (RF), das ab 1872 vereinheitlicht wurde?",
+    "options": [
+      "240 × 115 × 71 mm",
+      "250 × 120 × 65 mm",
+      "240 × 115 × 52 mm",
+      "290 × 140 × 65 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Reichsformat misst 250 × 120 × 65 mm. Die heutigen Formate nach DIN 4172 beruhen auf dem Achtelmeter-Raster (z. B. NF 240 × 115 × 71 mm, DF 240 × 115 × 52 mm). Bei Bestandsmauerwerk hilft das Format bei der Datierung.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "240 × 115 × 71 mm ist das heutige Normalformat (NF) nach DIN 4172.",
+      "",
+      "240 × 115 × 52 mm ist das Dünnformat (DF).",
+      "Diese Maße entsprechen keinem genormten deutschen Ziegelformat; das RF ist 250 × 120 × 65 mm."
+    ],
+    "gapAnalysis": {
+      "topic": "Reichsformat",
+      "misconception": "Historische und heutige Ziegelformate werden verwechselt.",
+      "coreRule": "RF 250 × 120 × 65 mm; NF 240 × 115 × 71 mm; DF 240 × 115 × 52 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauerwerk“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Datenblatt „Mauerwerk“ im Modul; DIN 4172",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_hb_1",
     "category": "metalle_holz",
     "categoryLabel": "Metalle & Holzwerkstoffe",
@@ -5642,6 +6987,170 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_cl_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Feuchtegehalt nach der Darrmethode",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 12570",
+    "question": "Eine Bohrmehlprobe wiegt feucht 52,0 g und nach dem Darren bei 105 °C 48,0 g. Wie groß ist der massebezogene Feuchtegehalt u?",
+    "options": [
+      "7,7 M.-%",
+      "4,0 M.-%",
+      "92,3 M.-%",
+      "8,3 M.-%"
+    ],
+    "correctIdx": 3,
+    "explanation": "u = (m_f − m_tr)/m_tr = (52,0 − 48,0)/48,0 = 0,083 = 8,3 M.-%. Bezugsgröße ist die Trockenmasse. Für Gipsbaustoffe wird bei 40 °C getrocknet, um Kristallwasser nicht auszutreiben.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "7,7 % ergibt sich bei Bezug auf die Feuchtmasse (4,0/52,0); der Feuchtegehalt bezieht sich auf die Trockenmasse.",
+      "4,0 ist die Massendifferenz in Gramm, kein Feuchtegehalt.",
+      "92,3 % ist das Verhältnis Trocken- zu Feuchtmasse, nicht der Feuchtegehalt.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Feuchtegehalt nach der Darrmethode",
+      "misconception": "Der Feuchtegehalt wird auf die Feuchtmasse bezogen.",
+      "coreRule": "u = (m_f − m_tr)/m_tr.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauwerksdiagnostik & ZfP“ im Modul Bestands-Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Bestands-Checklisten"
+    },
+    "quelle": "DIN EN ISO 12570",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_cl_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Rückprallhammer",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12504-2; DIN EN 13791",
+    "question": "Warum dürfen Rückprallwerte des Schmidt-Hammers bei älterem Beton nicht ohne Kalibrierung an Bohrkernen in Festigkeiten umgerechnet werden?",
+    "options": [
+      "Weil der Rückprall nur bei Beton unter 28 Tagen Alter auswertbar ist",
+      "Weil der Rückprall die Bewehrung trifft und dadurch zu niedrig ausfällt",
+      "Weil der Hammer Druck- und Zugfestigkeit nicht voneinander trennen kann",
+      "Weil eine karbonatisierte Randzone härter ist und den Rückprall erhöht"
+    ],
+    "correctIdx": 3,
+    "explanation": "Der Rückprall erfasst nur die oberflächennahe Härte. Karbonatisierung, Feuchte und Oberflächenbeschaffenheit verfälschen ihn; bei altem, karbonatisiertem Beton wird die Festigkeit meist überschätzt. DIN EN 13791 verlangt daher eine Kalibrierung an Bohrkernen.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Rückprallhammer wird gerade bei älteren Bauwerken eingesetzt; das Problem ist die veränderte Randzone.",
+      "Messstellen über Bewehrung sind zu vermeiden, doch das erklärt nicht die systematische Abweichung bei altem Beton.",
+      "Der Hammer misst keine Festigkeit direkt, sondern eine Oberflächenhärte; das Problem ist deren Randzoneneinfluss.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rückprallhammer",
+      "misconception": "Der Rückprallwert wird als direkte Festigkeitsmessung angesehen.",
+      "coreRule": "Rückprall = Randzonenhärte; Kalibrierung an Bohrkernen (DIN EN 13791).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauwerksdiagnostik & ZfP“ im Modul Bestands-Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Bestands-Checklisten"
+    },
+    "quelle": "DIN EN 12504-2; DIN EN 13791:2020-02",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_cl_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Potentialfeldmessung",
+    "difficulty": "Vertiefung",
+    "normRef": "DGZfP-Merkblatt B 3; RILEM TC 154",
+    "question": "Was zeigt eine Potentialfeldmessung an einer Stahlbetonplatte an?",
+    "options": [
+      "Die genaue Betondeckung über jedem Bewehrungsstab",
+      "Die Druckfestigkeit des Betons im oberflächennahen Bereich",
+      "Bereiche mit wahrscheinlich aktiver Bewehrungskorrosion",
+      "Den Chloridgehalt in Masseprozent des Zements in jeder Tiefe"
+    ],
+    "correctIdx": 2,
+    "explanation": "Gemessen wird das elektrochemische Potential der Bewehrung gegen eine Bezugselektrode auf der Betonoberfläche. Stark negative Potentiale und große Potentialgradienten zeigen Bereiche mit wahrscheinlich aktiver Korrosion; die Bewertung erfolgt objektbezogen und wird durch Öffnungen und Chloridprofile abgesichert.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Betondeckung wird magnetinduktiv oder mit Radar gemessen, nicht über das Potential.",
+      "Die Festigkeit liefert z. B. der Rückprallhammer mit Kalibrierung, nicht die Potentialfeldmessung.",
+      "",
+      "Den Chloridgehalt liefern Bohrmehlanalysen oder LIBS; das Potential zeigt nur die Korrosionswahrscheinlichkeit."
+    ],
+    "gapAnalysis": {
+      "topic": "Potentialfeldmessung",
+      "misconception": "Die Potentialfeldmessung wird als Festigkeits- oder Chloridmessung missverstanden.",
+      "coreRule": "Potentialfeld: Korrosionswahrscheinlichkeit; absichern durch Öffnung und Chloridanalyse.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauwerksdiagnostik & ZfP“ im Modul Bestands-Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Bestands-Checklisten"
+    },
+    "quelle": "DGZfP-Merkblatt B 3 (Elektrochemische Potentialmessungen); RILEM TC 154-EMC",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_cl_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Karbonatisierungstiefe",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14630",
+    "question": "Eine frische Bruchfläche wird mit Phenolphthalein besprüht. Ein 18 mm tiefer Randbereich bleibt farblos, der Kern färbt sich violett. Was bedeutet das?",
+    "options": [
+      "Die äußeren 18 mm sind karbonatisiert (pH unter etwa 9), der Stahl dort depassiviert",
+      "Die äußeren 18 mm enthalten Chloride oberhalb des kritischen Gehalts der Bewehrung",
+      "Der violette Kern ist karbonatisiert, der farblose Rand ist noch alkalisch",
+      "Die äußeren 18 mm sind durchfeuchtet; die Färbung zeigt nur den Wassergehalt des Betons an"
+    ],
+    "correctIdx": 0,
+    "explanation": "Phenolphthalein schlägt bei pH ≈ 8,2–9,8 um: alkalischer Beton (pH > 12,5) färbt sich violett, karbonatisierter bleibt farblos. Liegt die Bewehrung innerhalb der 18 mm, ist sie depassiviert und kann bei Feuchte korrodieren.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Phenolphthalein zeigt den pH-Wert, keine Chloride; dafür sind Bohrmehlanalysen oder Silbernitrat nötig.",
+      "Die Zuordnung ist vertauscht: Violett zeigt den alkalischen, unkarbonatisierten Beton.",
+      "Der Indikator reagiert auf den pH-Wert, nicht auf Feuchte; die Fläche muss allerdings frisch gebrochen sein."
+    ],
+    "gapAnalysis": {
+      "topic": "Karbonatisierungstiefe",
+      "misconception": "Die Farbreaktion von Phenolphthalein wird falsch zugeordnet.",
+      "coreRule": "Farblos = karbonatisiert (pH < ~9); violett = alkalisch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauwerksdiagnostik & ZfP“ im Modul Bestands-Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Bestands-Checklisten"
+    },
+    "quelle": "DIN EN 14630:2007-01",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -5886,6 +7395,211 @@
     }
   },
   {
+    "id": "q_ab_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Abfallhierarchie",
+    "difficulty": "Basis",
+    "normRef": "KrWG § 6",
+    "question": "Welche Stufe folgt in der fünfstufigen Abfallhierarchie nach § 6 KrWG direkt auf die Vermeidung?",
+    "options": [
+      "Recycling, z. B. Aufbereitung von Betonbruch zu RC-Gesteinskörnung",
+      "Vorbereitung zur Wiederverwendung, z. B. Prüfen ausgebauter Türen",
+      "Sonstige Verwertung, z. B. energetische Verwertung von Altholz",
+      "Beseitigung, z. B. Ablagerung von Bauschutt auf einer Deponie DK 0"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 6 KrWG: 1. Vermeidung, 2. Vorbereitung zur Wiederverwendung, 3. Recycling, 4. sonstige Verwertung (insbesondere energetische Verwertung und Verfüllung), 5. Beseitigung. Ausgebaute Bauteile, die geprüft, gereinigt oder repariert wieder eingesetzt werden, stehen damit vor dem Recycling.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Recycling ist die dritte Stufe; davor steht die Vorbereitung zur Wiederverwendung ganzer Bauteile.",
+      "",
+      "Die sonstige (z. B. energetische) Verwertung ist erst die vierte Stufe.",
+      "Die Beseitigung ist die letzte Stufe der Hierarchie, nicht die zweite."
+    ],
+    "gapAnalysis": {
+      "topic": "Abfallhierarchie",
+      "misconception": "Recycling wird als zweitbeste Option nach der Vermeidung angesehen.",
+      "coreRule": "Vermeidung > Vorbereitung zur Wiederverwendung > Recycling > sonstige Verwertung > Beseitigung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „KrWG & Hierarchie“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "quelle": "Kreislaufwirtschaftsgesetz (KrWG) § 6 Abs. 1",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ab_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "AVV: gefährliche Abfälle",
+    "difficulty": "Basis",
+    "normRef": "AVV § 3, Kapitel 17",
+    "question": "Was bedeutet der Stern im AVV-Abfallschlüssel 17 06 05* (asbesthaltige Baustoffe)?",
+    "options": [
+      "Der Abfall ist gefährlich; Nachweis- und Getrennthaltungspflichten gelten",
+      "Der Abfall ist inert und darf ohne weitere Prüfung auf eine DK-0-Deponie",
+      "Der Abfall ist für den Wiedereinbau als Ersatzbaustoff nach EBV freigegeben",
+      "Der Abfall stammt aus privaten Haushalten und fällt nicht unter die AVV"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit * gekennzeichnete Abfallarten sind gefährlich (§ 3 AVV). Für sie gelten u. a. die Nachweispflichten der NachwV (eANV) und das Vermischungsverbot nach § 9a KrWG; bei Spiegeleinträgen entscheidet der Schadstoffgehalt, welcher der beiden Schlüssel gilt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Inert sind z. B. unbelastete mineralische Abfälle; der Stern kennzeichnet dagegen gefährliche Abfälle.",
+      "Asbesthaltige Abfälle sind vom Wiedereinbau ausgeschlossen; der Stern steht für „gefährlich“.",
+      "Kapitel 17 betrifft Bau- und Abbruchabfälle; der Stern sagt nichts über die Herkunft aus Haushalten."
+    ],
+    "gapAnalysis": {
+      "topic": "AVV: gefährliche Abfälle",
+      "misconception": "Der Stern wird als Hinweis auf Herkunft oder Verwertbarkeit gelesen.",
+      "coreRule": "AVV: * = gefährlicher Abfall → Nachweispflicht, Vermischungsverbot.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AVV & Abfallarten“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "quelle": "Abfallverzeichnis-Verordnung (AVV) § 3 und Anlage Kapitel 17",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ab_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Altholzkategorien",
+    "difficulty": "Basis",
+    "normRef": "AltholzV § 2, Anhang III",
+    "question": "Beim Rückbau fallen ausgebaute Bahnschwellen und kesseldruckimprägnierte Zaunpfähle an. Welcher Altholzkategorie sind sie zuzuordnen?",
+    "options": [
+      "A I – naturbelassenes oder nur mechanisch bearbeitetes Holz",
+      "A II – verleimtes, gestrichenes oder beschichtetes Holz ohne Holzschutzmittel",
+      "A III – Holz mit halogenorganischen Verbindungen in der Beschichtung",
+      "A IV – mit Holzschutzmitteln behandeltes Holz"
+    ],
+    "correctIdx": 3,
+    "explanation": "Holz mit Holzschutzmitteln (z. B. Teeröl, CKB/CCA-Salze aus der Kesseldruckimprägnierung) gehört zur Kategorie A IV und ist gefährlicher Abfall (AVV 17 02 04*). Typische Beispiele nach Anhang III: Bahnschwellen, Leitungsmasten, Hopfenstangen, Rebpfähle. PCB-haltiges Altholz fällt unter die PCB/PCT-Abfallverordnung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "A I setzt unbehandeltes Holz voraus; Bahnschwellen und imprägnierte Pfähle enthalten Holzschutzmittel.",
+      "A II schließt Holzschutzmittel ausdrücklich aus; imprägniertes Holz gehört in eine höhere Kategorie.",
+      "A III betrifft halogenorganische Beschichtungen ohne Holzschutzmittel; hier sind Holzschutzmittel enthalten.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Altholzkategorien",
+      "misconception": "Imprägniertes Holz wird nach dem Aussehen statt nach den Holzschutzmitteln eingestuft.",
+      "coreRule": "Holzschutzmittel → A IV (gefährlicher Abfall).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Altholzverordnung“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "quelle": "Altholzverordnung (AltholzV) § 2 und Anhang III",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ab_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Altlastenbegriff",
+    "difficulty": "Vertiefung",
+    "normRef": "BBodSchG § 2 Abs. 5",
+    "question": "Worin unterscheiden sich Altstandorte und Altablagerungen nach § 2 Abs. 5 BBodSchG?",
+    "options": [
+      "Altstandort: Fläche mit Kampfmittelverdacht; Altablagerung: Fläche mit Trümmerschutt aus dem Krieg",
+      "Altstandort: Fläche im Außenbereich nach § 35 BauGB; Altablagerung: Fläche im Innenbereich nach § 34 BauGB",
+      "Altstandort: stillgelegte Anlage mit umweltgefährdenden Stoffen; Altablagerung: frühere Abfallablagerung",
+      "Altstandort: Altlast mit Grundwasserschaden; Altablagerung: Altlast mit Schaden nur im Oberboden"
+    ],
+    "correctIdx": 2,
+    "explanation": "Altablagerungen sind stillgelegte Abfallbeseitigungsanlagen und Grundstücke, auf denen Abfälle behandelt, gelagert oder abgelagert wurden. Altstandorte sind Grundstücke stillgelegter Anlagen und sonstige Grundstücke, auf denen mit umweltgefährdenden Stoffen umgegangen wurde. Zur Altlast werden beide erst, wenn von ihnen schädliche Bodenveränderungen oder sonstige Gefahren ausgehen.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Kampfmittel und Trümmerschutt sind eigene Themen; das BBodSchG unterscheidet nach früherer Nutzung als Anlage oder Ablagerung.",
+      "Die Begriffe knüpfen an die frühere Nutzung an, nicht an die bauplanungsrechtliche Lage des Grundstücks.",
+      "",
+      "Die Unterscheidung betrifft die Entstehung, nicht den Wirkungspfad; beide können Boden und Grundwasser belasten."
+    ],
+    "gapAnalysis": {
+      "topic": "Altlastenbegriff",
+      "misconception": "Altlastenarten werden nach Lage oder Schadensbild statt nach der Entstehung unterschieden.",
+      "coreRule": "Altablagerung = früherer Abfall; Altstandort = frühere Anlage/Umgang mit umweltgefährdenden Stoffen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Altlasten (BBodSchG)“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "quelle": "Bundes-Bodenschutzgesetz (BBodSchG) § 2 Abs. 5",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ab_7",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Vermischungsverbot",
+    "difficulty": "Transfer",
+    "normRef": "KrWG § 9a; GefStoffV Anhang II",
+    "question": "Ein Abbruchunternehmen will asbesthaltige Platten mit unbelastetem Bauschutt mischen, um den Asbestgehalt des Gemischs unter einen Zuordnungswert zu drücken. Wie ist das zu bewerten?",
+    "options": [
+      "Zulässig, wenn das Gemisch anschließend beprobt wird und den Wert einhält",
+      "Unzulässig: Für gefährliche Abfälle gilt das Vermischungsverbot (§ 9a KrWG)",
+      "Zulässig, sofern das Gemisch als RC-3 mit Anzeige nach § 22 EBV eingebaut wird",
+      "Unzulässig nur in Wasserschutzgebieten, sonst als Verdünnung erlaubt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gefährliche Abfälle dürfen weder mit anderen Abfällen noch mit Stoffen vermischt oder verdünnt werden (§ 9a KrWG). Asbesthaltige Bauteile sind getrennt auszubauen, staubdicht zu verpacken und als 17 06 05* zu entsorgen; eine Verwendung als Ersatzbaustoff scheidet aus.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Eine nachträgliche Beprobung heilt die unzulässige Verdünnung nicht; das Vermischen selbst ist verboten.",
+      "",
+      "Asbesthaltiges Material ist kein Ersatzbaustoff; die EBV-Anzeige macht den Einbau nicht zulässig.",
+      "Das Vermischungsverbot gilt unabhängig vom Standort; Schutzgebiete verschärfen nur die Einbauregeln."
+    ],
+    "gapAnalysis": {
+      "topic": "Vermischungsverbot",
+      "misconception": "Verdünnung wird als zulässiger Weg zur Einhaltung von Grenzwerten angesehen.",
+      "coreRule": "Gefährliche Abfälle: Vermischungs- und Verdünnungsverbot (§ 9a KrWG).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückbau & Verwertung“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "quelle": "KrWG § 9a; GefStoffV Anhang II Nr. 1; AVV 17 06 05*",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_sch_1",
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
@@ -5962,6 +7676,129 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_sch_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "Kanzerogenitätsindex KMF",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV Anhang II Nr. 5; TRGS 905; TRGS 521",
+    "question": "Die Laboranalyse einer ausgebauten Mineralwolle ergibt einen Kanzerogenitätsindex KI = 35. Wie ist die Faser einzustufen?",
+    "options": [
+      "Krebserzeugend Kategorie 1B, da der KI unter 40 liegt",
+      "Krebsverdächtig (Kategorie 2), da 30 < KI < 40",
+      "Nicht eingestuft, da der KI über 30 liegt",
+      "Krebserzeugend Kategorie 1A wie Asbest, da KI unter 50"
+    ],
+    "correctIdx": 1,
+    "explanation": "KI ≤ 30: krebserzeugend Kategorie 1B; 30 < KI < 40: Kategorie 2 (Verdacht); KI ≥ 40: keine Einstufung. Für Arbeiten an Kategorie-1B- und -2-Fasern gilt die TRGS 521 (alte Mineralwolle).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Kategorie 1B gilt erst ab KI ≤ 30; zwischen 30 und 40 liegt die Verdachtskategorie 2.",
+      "",
+      "Ohne Einstufung bleiben Fasern erst ab KI ≥ 40.",
+      "Kategorie 1A ist für nachweislich beim Menschen krebserzeugende Stoffe wie Asbest reserviert, nicht für KMF."
+    ],
+    "gapAnalysis": {
+      "topic": "Kanzerogenitätsindex KMF",
+      "misconception": "Die KI-Grenzen 30 und 40 werden vertauscht.",
+      "coreRule": "KI ≤ 30 → 1B; 30 < KI < 40 → 2; KI ≥ 40 → keine Einstufung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Künstliche Mineralfasern (KMF)“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "quelle": "GefStoffV Anhang II Nr. 5; TRGS 905; TRGS 521 (03/2026)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_sch_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "PCB in der Innenraumluft",
+    "difficulty": "Vertiefung",
+    "normRef": "AIR-Richtwerte PCB (UBA 2025); PCB-Richtlinie",
+    "question": "In einem Klassenzimmer werden 1 200 ng/m³ PCB (PCBges) in der Raumluft gemessen. Wie ist der Wert nach den 2025 veröffentlichten Richtwerten des Ausschusses für Innenraumrichtwerte (AIR) einzuordnen?",
+    "options": [
+      "Er überschreitet den Gefahrenwert RW II von 800 ng/m³; unverzüglich handeln",
+      "Er liegt unter dem Interventionswert von 3 000 ng/m³; es besteht kein Handlungsbedarf",
+      "Er liegt unter dem Vorsorgewert RW I von 2 000 ng/m³; regelmäßiges Lüften genügt",
+      "Er überschreitet nur den Zielwert von 1 000 ng/m³; Nachmessung in fünf Jahren"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der AIR hat 2025 für PCBges (Σ PCB6 · 5) RW I = 80 ng/m³ (Vorsorgewert) und RW II = 800 ng/m³ (Gefahrenwert) abgeleitet. Oberhalb RW II besteht unverzüglicher Handlungsbedarf. Die Werte der PCB-Richtlinie von 1994 (300 bzw. 3 000 ng/m³) hält der AIR für nicht mehr ausreichend schützend.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "3 000 ng/m³ ist der Interventionswert der alten PCB-Richtlinie; nach den AIR-Werten ist RW II mit 800 ng/m³ überschritten.",
+      "Der Vorsorgewert RW I beträgt 80 ng/m³; 1 200 ng/m³ liegen sogar über dem Gefahrenwert RW II.",
+      "Einen Zielwert von 1 000 ng/m³ gibt es nicht; maßgebend sind RW I = 80 und RW II = 800 ng/m³."
+    ],
+    "gapAnalysis": {
+      "topic": "PCB in der Innenraumluft",
+      "misconception": "Die alten Werte der PCB-Richtlinie werden als aktueller Bewertungsmaßstab angesehen.",
+      "coreRule": "AIR 2025: PCB RW I 80 ng/m³, RW II 800 ng/m³ (PCBges).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PCB (Polychlorierte Biphenyle)“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "quelle": "UBA: Bekanntmachung AIR-Richtwerte PCB (14.01.2025), zitiert nach DGUV/IFA „air_pcb_2025“; PCB-Richtlinie (1994)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_sch_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "PAK-Leitsubstanz",
+    "difficulty": "Basis",
+    "normRef": "TRGS 551; PAK16 (EPA)",
+    "question": "Welche Substanz dient bei teerhaltigen Parkettklebern und Asphalten als Leitsubstanz für die PAK-Bewertung?",
+    "options": [
+      "Polychlorierte Biphenyle (PCB 6)",
+      "Pentachlorphenol (PCP)",
+      "Formaldehyd (HCHO)",
+      "Benzo[a]pyren (BaP)"
+    ],
+    "correctIdx": 3,
+    "explanation": "Benzo[a]pyren ist krebserzeugend (Kategorie 1B) und die Leitsubstanz der PAK. Neben BaP werden meist die 16 EPA-PAK (PAK16) bestimmt, z. B. für die Einstufung von Straßenaufbruch oder RC-Material.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "PCB sind chlorierte Verbindungen aus Fugenmassen und Kondensatoren, keine PAK.",
+      "PCP ist ein Holzschutzmittelwirkstoff; teerhaltige Kleber werden über PAK bewertet.",
+      "Formaldehyd stammt v. a. aus Holzwerkstoffen und Klebern auf Harnstoffharzbasis, nicht aus Teer.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "PAK-Leitsubstanz",
+      "misconception": "Schadstoffgruppen und ihre Leitparameter werden verwechselt.",
+      "coreRule": "Teer/Pech → PAK, Leitsubstanz Benzo[a]pyren; Analytik PAK16.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PAK (Polyzyklische Aromatische Kohlenwasserstoffe)“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "quelle": "TRGS 551 (Teer und andere Pyrolyseprodukte); TRGS 905",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -6679,6 +8516,170 @@
     }
   },
   {
+    "id": "q_rc_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Reihenfolge des selektiven Rückbaus",
+    "difficulty": "Basis",
+    "normRef": "VDI 6210 Blatt 1; GewAbfV § 8",
+    "question": "In welcher Reihenfolge läuft ein selektiver Rückbau nach der Rückbau-Checkliste ab?",
+    "options": [
+      "Mineralischen Rohbau abbrechen, danach Schadstoffe und Störstoffe aus dem Haufwerk sortieren",
+      "Störstoffe wie Holz und Gips ausbauen, danach Schadstoffe sanieren, zuletzt den Rohbau abbrechen",
+      "Schadstoffe sanieren, dann nicht mineralische Störstoffe ausbauen, zuletzt den Rohbau abbrechen",
+      "Rohbau und Ausbau gemeinsam abbrechen, um Staubentwicklung und Bauzeit gering zu halten"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der Rückbau läuft von innen nach außen: Zuerst werden Schadstoffe (Asbest, KMF, PCB …) nach TRGS saniert, dann Störstoffe wie Holz, Kunststoffe, Metalle und Gips ausgebaut; erst danach wird die mineralische Struktur abgebrochen. So bleiben die Fraktionen sortenrein.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Sortieren nach dem Abbruch verschleppt Schadstoffe in den Bauschutt und verhindert sortenreine Fraktionen.",
+      "Schadstoffe müssen vor allen anderen Arbeiten saniert werden, sonst werden Beschäftigte und Fraktionen belastet.",
+      "",
+      "Ein gemeinsamer Abbruch vermischt die Fraktionen und widerspricht der Getrennthaltungspflicht nach § 8 GewAbfV."
+    ],
+    "gapAnalysis": {
+      "topic": "Reihenfolge des selektiven Rückbaus",
+      "misconception": "Sortieren nach dem Abbruch wird als gleichwertig zur Entkernung angesehen.",
+      "coreRule": "Schadstoffe → Störstoffe → mineralischer Abbruch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückbau, Abbruch & Urban Mining“ im Modul Rückbau-Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Rückbau-Checklisten"
+    },
+    "quelle": "VDI 6210 Blatt 1; GewAbfV § 8",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_rc_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Getrennthaltung nach GewAbfV",
+    "difficulty": "Vertiefung",
+    "normRef": "GewAbfV § 8",
+    "question": "Bei einem kleinen Umbau fallen insgesamt 8 m³ Bau- und Abbruchabfälle an. Was gilt nach § 8 GewAbfV?",
+    "options": [
+      "Getrennt sammeln ist Pflicht, die Dokumentationspflicht entfällt bis 10 m³",
+      "Getrennt sammeln entfällt bis 10 m³; die Abfälle dürfen gemischt entsorgt werden",
+      "Getrennt sammeln und dokumentieren sind Pflicht, sobald mehr als 1 m³ anfällt",
+      "Die GewAbfV gilt nur für gewerbliche Siedlungsabfälle, nicht für Bauabfälle"
+    ],
+    "correctIdx": 0,
+    "explanation": "§ 8 GewAbfV verlangt die getrennte Sammlung von zehn Fraktionen (Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Baustoffe auf Gipsbasis, Beton, Ziegel, Fliesen und Keramik), sofern technisch möglich und wirtschaftlich zumutbar. Nur die Dokumentationspflicht entfällt bei Maßnahmen bis 10 m³ Gesamtabfall.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Die 10-m³-Grenze befreit nur von der Dokumentation, nicht von der Getrennthaltung.",
+      "Eine Schwelle von 1 m³ kennt § 8 GewAbfV nicht; die Dokumentation entfällt bis 10 m³.",
+      "Teil 3 der GewAbfV regelt ausdrücklich Bau- und Abbruchabfälle (§§ 8 bis 10)."
+    ],
+    "gapAnalysis": {
+      "topic": "Getrennthaltung nach GewAbfV",
+      "misconception": "Die Bagatellgrenze wird auf die Getrennthaltungspflicht bezogen.",
+      "coreRule": "GewAbfV § 8: zehn Fraktionen getrennt; Doku entfällt bis 10 m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Abfallwirtschaft, Recht & Deponierung“ im Modul Rückbau-Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Rückbau-Checklisten"
+    },
+    "quelle": "Gewerbeabfallverordnung (GewAbfV) § 8 Abs. 1 bis 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_rc_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Verwertungsquote nach KrWG",
+    "difficulty": "Vertiefung",
+    "normRef": "KrWG § 14 Abs. 2, § 3 Abs. 23a",
+    "question": "Was zählt zur Zielquote von mindestens 70 Gew.-% für nicht gefährliche Bau- und Abbruchabfälle nach § 14 Abs. 2 KrWG?",
+    "options": [
+      "Nur das Recycling zu neuen Baustoffen; Verfüllung und Wiederverwendung von Bauteilen zählen nicht mit",
+      "Vorbereitung zur Wiederverwendung, Recycling und stoffliche Verwertung einschließlich Verfüllung",
+      "Jede Verwertung einschließlich der energetischen Verwertung von Altholz und Kunststoffen",
+      "Alle Bauabfälle einschließlich Boden und Steine, sofern sie nicht deponiert werden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Quote umfasst Vorbereitung zur Wiederverwendung, Recycling und sonstige stoffliche Verwertung, zu der nach § 3 Abs. 23a KrWG auch die Verfüllung zählt; die energetische Verwertung zählt nicht. Natürlich vorkommendes Material (AVV 17 05 04, Boden und Steine) ist ausgenommen. Es ist ein nationales Ziel, keine Pflichtquote je Projekt.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Neben dem Recycling zählen auch Wiederverwendung und sonstige stoffliche Verwertung einschließlich Verfüllung.",
+      "",
+      "Die energetische Verwertung ist keine stoffliche Verwertung und zählt nicht zur 70-%-Quote.",
+      "Boden und Steine (AVV 17 05 04) sind von der Quote ausdrücklich ausgenommen."
+    ],
+    "gapAnalysis": {
+      "topic": "Verwertungsquote nach KrWG",
+      "misconception": "Jede Form der Verwertung wird der Quote zugerechnet.",
+      "coreRule": "§ 14 Abs. 2 KrWG: ≥ 70 Gew.-% stofflich (inkl. Verfüllung), ohne energetische Verwertung, ohne Boden und Steine.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Formeln: Verwertungsquote“ im Modul Rückbau-Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Rückbau-Checklisten"
+    },
+    "quelle": "Kreislaufwirtschaftsgesetz (KrWG) § 14 Abs. 2 und § 3 Abs. 23a",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_rc_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Zeitpunkt der Schadstofferkundung",
+    "difficulty": "Transfer",
+    "normRef": "GefStoffV § 5a; VDI 6202 Blatt 1",
+    "question": "Ein Bauherr will die Schadstofferkundung erst nach Vergabe der Abbrucharbeiten beauftragen, „damit der Abbruchunternehmer mitreden kann“. Wie ist das zu bewerten?",
+    "options": [
+      "Sinnvoll, weil der Unternehmer die Proben ohnehin selbst entnehmen und bewerten darf",
+      "Unproblematisch, solange vor Beginn der Arbeiten eine Gefährdungsbeurteilung vorliegt",
+      "Sinnvoll, weil sich die Mengen erst während des Abbruchs verlässlich bestimmen lassen",
+      "Ungünstig: Ergebnisse gehören in die Ausschreibung (Mengen, Verfahren, Entsorgung)"
+    ],
+    "correctIdx": 3,
+    "explanation": "Die Erkundung steht vor Planung und Ausschreibung: Nur so können Sanierungsverfahren, Schutzmaßnahmen, Massen und Entsorgungswege ins Leistungsverzeichnis. Zudem muss der Veranlasser nach § 5a GefStoffV vor Beginn der Tätigkeiten Informationen über Baujahr und vorhandene Gefahrstoffe bereitstellen.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Erkundung ist eine Aufgabe des Bauherrn bzw. seines Gutachters; Ergebnisse müssen vor der Kalkulation vorliegen.",
+      "Die Gefährdungsbeurteilung des Unternehmers setzt die Erkundungsergebnisse voraus, ersetzt sie aber nicht.",
+      "Gerade unbekannte Schadstoffmengen führen zu Nachträgen und Baustopps; die Erkundung muss vorher erfolgen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Zeitpunkt der Schadstofferkundung",
+      "misconception": "Schadstofferkundung wird als Teil der Ausführung statt der Planung gesehen.",
+      "coreRule": "Erkundung vor Ausschreibung; Veranlasserpflichten nach § 5a GefStoffV.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pre-Demolition-Audit & Schadstofferkundung“ im Modul Rückbau-Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Rückbau-Checklisten"
+    },
+    "quelle": "GefStoffV § 5a; VDI 6202 Blatt 1; TRGS 519",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_dh_2",
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
@@ -7320,6 +9321,170 @@
     }
   },
   {
+    "id": "q_ms_bs_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Funktionaler Mangelbegriff",
+    "difficulty": "Vertiefung",
+    "normRef": "BGB § 633",
+    "question": "Ein Unternehmer hat eine Heizungsanlage exakt nach Leistungsverzeichnis und anerkannten Regeln der Technik gebaut, sie erreicht aber die vertraglich vorausgesetzte Leistung nicht. Liegt ein Mangel vor?",
+    "options": [
+      "Nein, wer nach Leistungsverzeichnis und Regeln der Technik baut, haftet nicht",
+      "Nein, das Risiko trägt der Planer allein, weil er das Leistungsverzeichnis erstellt hat",
+      "Ja, aber nur dann, wenn der Mangel innerhalb von sechs Monaten auftritt",
+      "Ja, das Werk ist funktionsuntauglich; ohne Bedenkenhinweis haftet der Unternehmer"
+    ],
+    "correctIdx": 3,
+    "explanation": "Nach dem funktionalen Mangelbegriff (BGH, Urt. v. 08.11.2007 – VII ZR 183/05) schuldet der Unternehmer ein funktionstaugliches Werk. Erkennt er, dass die Vorgaben die Funktion verfehlen, muss er Bedenken anmelden (§ 4 Abs. 3 VOB/B); tut er das, wird er von der Haftung frei.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Einhaltung der Regeln der Technik genügt nicht, wenn die vereinbarte Funktion verfehlt wird.",
+      "Der Planerfehler entlastet den Unternehmer nur, wenn er ordnungsgemäß Bedenken angemeldet hat.",
+      "Eine Sechsmonatsfrist gilt beim Verbrauchsgüterkauf, nicht für den Mangelbegriff im Werkvertrag.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Funktionaler Mangelbegriff",
+      "misconception": "Normkonformität wird mit Mangelfreiheit gleichgesetzt.",
+      "coreRule": "Funktionaler Mangelbegriff: geschuldet ist die Funktion; Entlastung über Bedenkenanmeldung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mangel vs. Schaden“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "quelle": "BGB § 633; BGH, Urt. v. 08.11.2007 – VII ZR 183/05; VOB/B § 4 Abs. 3, § 13 Abs. 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_bs_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Bedenkenanmeldung",
+    "difficulty": "Basis",
+    "normRef": "VOB/B § 4 Abs. 3",
+    "question": "Wie muss ein Auftragnehmer nach § 4 Abs. 3 VOB/B Bedenken gegen die vorgesehene Art der Ausführung mitteilen?",
+    "options": [
+      "Mündlich gegenüber dem Polier, spätestens bei der Abnahme der Leistung",
+      "Schriftlich und möglichst vor Beginn der Arbeiten an den Auftraggeber",
+      "Per Eintrag im eigenen Bautagebuch, ohne Mitteilung an den Auftraggeber",
+      "Innerhalb der Gewährleistungsfrist, sobald ein Schaden aufgetreten ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bedenken sind unverzüglich – möglichst vor Beginn der Arbeiten – schriftlich dem Auftraggeber mitzuteilen (§ 4 Abs. 3 VOB/B). Das gilt für die Art der Ausführung, gelieferte Stoffe oder Bauteile und Leistungen anderer Unternehmer. Nur so wird der Auftragnehmer nach § 13 Abs. 3 VOB/B von der Mängelhaftung frei.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Eine mündliche Mitteilung an die eigene Baustellenleitung genügt nicht; Adressat ist der Auftraggeber, Form schriftlich.",
+      "",
+      "Ein interner Vermerk erreicht den Auftraggeber nicht und entlastet daher nicht.",
+      "Nach Schadenseintritt ist es zu spät; die Bedenken müssen vor der Ausführung vorgebracht werden."
+    ],
+    "gapAnalysis": {
+      "topic": "Bedenkenanmeldung",
+      "misconception": "Die Form und der Zeitpunkt der Bedenkenanmeldung werden unterschätzt.",
+      "coreRule": "Bedenken: schriftlich, unverzüglich, vor Ausführung, an den Auftraggeber.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktives VOB-Anzeigen- & Schriftverkehrscenter“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "quelle": "VOB/B (2016) § 4 Abs. 3, § 13 Abs. 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_bs_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Stufen der Technik",
+    "difficulty": "Vertiefung",
+    "normRef": "BVerfG „Kalkar“ 1978; BGB § 633",
+    "question": "Welche Reihenfolge beschreibt die drei Technikstufen im Baurecht von „bewährt und verbreitet“ bis „neuester Forschungsstand“?",
+    "options": [
+      "Stand von Wissenschaft und Technik – Stand der Technik – anerkannte Regeln der Technik",
+      "Stand der Technik – anerkannte Regeln der Technik – Stand von Wissenschaft und Technik",
+      "Anerkannte Regeln der Technik – Stand der Technik – Stand von Wissenschaft und Technik",
+      "Anerkannte Regeln der Technik – Stand von Wissenschaft und Technik – Stand der Technik"
+    ],
+    "correctIdx": 2,
+    "explanation": "Anerkannte Regeln der Technik: in der Wissenschaft als richtig anerkannt und in der Praxis bewährt (Werkvertrag, Mindeststandard). Stand der Technik: fortschrittliche, praktisch erprobte Verfahren (z. B. BImSchG). Stand von Wissenschaft und Technik: neueste wissenschaftliche Erkenntnisse (z. B. Atomrecht, Kalkar-Beschluss 1978).",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Die Reihenfolge ist umgekehrt: Die anerkannten Regeln der Technik sind die am weitesten verbreitete Stufe.",
+      "Der Stand der Technik ist fortschrittlicher als die anerkannten Regeln, steht also nicht am Anfang.",
+      "",
+      "Der Stand von Wissenschaft und Technik ist die anspruchsvollste Stufe und steht am Ende."
+    ],
+    "gapAnalysis": {
+      "topic": "Stufen der Technik",
+      "misconception": "Die Technikstufen werden als gleichbedeutend angesehen.",
+      "coreRule": "aRdT < Stand der Technik < Stand von Wissenschaft und Technik.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Die drei Entwicklungsstufen der Technik im Baurecht“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "quelle": "BVerfG, Beschl. v. 08.08.1978 – 2 BvL 8/77 (Kalkar)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_bs_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Selbständiges Beweisverfahren",
+    "difficulty": "Transfer",
+    "normRef": "ZPO §§ 485 ff.; BGB § 204 Abs. 1 Nr. 7",
+    "question": "Feuchteschäden zeigen sich kurz vor Ablauf der Verjährung; der Unternehmer bestreitet die Ursache. Welcher Schritt sichert Beweise und hemmt zugleich die Verjährung?",
+    "options": [
+      "Ein Privatgutachten des Bauherrn, das dem Unternehmer per Einschreiben zugeht",
+      "Ein Antrag auf ein selbständiges Beweisverfahren beim zuständigen Gericht",
+      "Eine schriftliche Mängelanzeige an den Unternehmer mit Fotodokumentation",
+      "Ein Eintrag der Schäden im Bautagebuch durch die örtliche Bauüberwachung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Im selbständigen Beweisverfahren (§§ 485 ff. ZPO) stellt ein gerichtlich bestellter Sachverständiger Zustand und Ursache fest; das Ergebnis wirkt im späteren Prozess wie eine Beweisaufnahme. Die Zustellung des Antrags hemmt die Verjährung (§ 204 Abs. 1 Nr. 7 BGB). Beim VOB/B-Vertrag bewirkt eine schriftliche Mängelrüge nach § 13 Abs. 5 zusätzlich eine neue Frist für den gerügten Mangel.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Ein Privatgutachten ist nur Parteivortrag und hemmt die Verjährung nicht.",
+      "",
+      "Die Mängelanzeige ist wichtig, hemmt die Verjährung beim BGB-Vertrag aber nicht und sichert keine gerichtsverwertbaren Beweise.",
+      "Interne Dokumentation hemmt weder die Verjährung, noch bindet sie den Unternehmer."
+    ],
+    "gapAnalysis": {
+      "topic": "Selbständiges Beweisverfahren",
+      "misconception": "Mängelanzeige oder Privatgutachten werden als verjährungshemmend angesehen.",
+      "coreRule": "Selbständiges Beweisverfahren: Beweissicherung + Hemmung (§ 204 Abs. 1 Nr. 7 BGB).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verfahrensarten vor Gericht“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "quelle": "ZPO §§ 485 ff.; BGB § 204 Abs. 1 Nr. 7; VOB/B § 13 Abs. 5",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_ms_tb_1",
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
@@ -7396,6 +9561,129 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_tb_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden",
+    "topic": "Abplatzungen durch Bewehrungskorrosion",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1504; DIN EN 1992-1-1, 4.4",
+    "question": "Warum platzt die Betondeckung über korrodierender Bewehrung ab?",
+    "options": [
+      "Weil die Rostprodukte ein Mehrfaches des Stahlvolumens einnehmen",
+      "Weil der Stahl durch Korrosion schrumpft und den Beton nach innen zieht",
+      "Weil die Karbonatisierung den Beton aufquellen lässt und dabei sprengt",
+      "Weil Wasserstoff aus der Korrosion den Zementstein chemisch auflöst"
+    ],
+    "correctIdx": 0,
+    "explanation": "Ist der Stahl depassiviert (Karbonatisierung bis zur Bewehrung oder Chlorid), bilden sich Eisenoxide und -hydroxide mit dem etwa 2- bis 6-fachen Volumen. Der Sprengdruck übersteigt die Zugfestigkeit des Betons; es entstehen Längsrisse und Abplatzungen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Der Querschnitt des Stahls nimmt zwar ab, doch die Korrosionsprodukte beanspruchen mehr Raum und drücken den Beton weg.",
+      "Karbonatisierung verdichtet den Beton eher; sie hebt nur den Korrosionsschutz der Bewehrung auf.",
+      "Wasserstoff spielt bei der Spannungsrisskorrosion eine Rolle, nicht beim Abplatzen durch Rost."
+    ],
+    "gapAnalysis": {
+      "topic": "Abplatzungen durch Bewehrungskorrosion",
+      "misconception": "Die Ursache der Abplatzung wird im Beton statt im Volumen der Rostprodukte gesucht.",
+      "coreRule": "Depassivierung → Rost mit 2- bis 6-fachem Volumen → Sprengdruck → Abplatzung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierung & Passivierungsverlust“ im Modul Typische Bauschäden noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden"
+    },
+    "quelle": "DAfStb/DBV: Instandsetzung; DIN EN 1504-9",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_tb_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden",
+    "topic": "Fließregel bei Kontaktkorrosion",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN ISO 8044; Fließregel",
+    "question": "Auf einem Flachdach läuft Regenwasser von einer Kupferabdeckung über eine verzinkte Stahlrinne. Was ist zu erwarten?",
+    "options": [
+      "Das Kupfer korrodiert, weil Zink als edleres Metall das Kupfer angreift",
+      "Keine Korrosion, da Regenwasser ohne Salze kein Elektrolyt bildet",
+      "Die Verzinkung korrodiert beschleunigt durch gelöste Kupferionen",
+      "Beide Metalle bilden eine Schutzschicht und schützen sich gegenseitig"
+    ],
+    "correctIdx": 2,
+    "explanation": "Fließregel: Edlere Metalle dürfen nicht in Fließrichtung oberhalb unedlerer Metalle liegen. Aus dem Kupfer gelöste Ionen scheiden sich auf dem Zink ab und bilden lokale Korrosionselemente; die Verzinkung wird zerstört (Lochfraß). Umgekehrt (Zink oben, Kupfer unten) ist die Anordnung unkritisch.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Zink ist das unedlere Metall; angegriffen wird die Verzinkung, nicht das Kupfer.",
+      "Regenwasser genügt als Elektrolyt, besonders mit gelösten Kupferionen und Luftschadstoffen.",
+      "",
+      "Die Kupferionen zerstören gerade die Deckschicht des Zinks; ein gegenseitiger Schutz entsteht nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Fließregel bei Kontaktkorrosion",
+      "misconception": "Die Fließrichtung des Wassers wird bei Metallkombinationen nicht beachtet.",
+      "coreRule": "Fließregel: edel (Cu) nicht oberhalb von unedel (Zn, Al, verzinkter Stahl).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Galvanische Kontaktkorrosion (DIN EN ISO 8044) & Fließregel“ im Modul Typische Bauschäden noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden"
+    },
+    "quelle": "DIN EN ISO 8044; Fachregeln des Klempnerhandwerks (ZVSHK)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ms_tb_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden",
+    "topic": "Alkali-Kieselsäure-Reaktion",
+    "difficulty": "Vertiefung",
+    "normRef": "DAfStb-Alkali-Richtlinie",
+    "question": "Welche drei Voraussetzungen müssen für eine schädigende Alkali-Kieselsäure-Reaktion (AKR) im Beton zusammentreffen?",
+    "options": [
+      "Hoher Sulfatgehalt, niedrige Temperatur und Calciumaluminat im Zement",
+      "Chloride, Sauerstoff und eine zu geringe Betondeckung der Bewehrung",
+      "Karbonatisierung, Frost-Tau-Wechsel und Taumittel auf der Oberfläche",
+      "Alkaliempfindliche Gesteinskörnung, Alkalien und ausreichend Feuchte"
+    ],
+    "correctIdx": 3,
+    "explanation": "Reaktive Kieselsäure der Gesteinskörnung reagiert mit Alkalien aus der Porenlösung zu quellfähigem Alkalisilikatgel; nur bei ausreichender Feuchte quillt das Gel und erzeugt netzartige Risse. Die Alkali-Richtlinie steuert Gegenmaßnahmen über Feuchtigkeitsklassen (WO, WF, WA, WS) und Zemente mit niedrigem wirksamem Alkaligehalt.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Sulfat und Aluminat sind Voraussetzungen für Sulfattreiben (Ettringit/Thaumasit), nicht für AKR.",
+      "Chloride, Sauerstoff und geringe Deckung begünstigen die Bewehrungskorrosion, nicht die AKR.",
+      "Frost-Tau-Wechsel mit Taumitteln führen zu Abwitterung; AKR ist eine Reaktion der Gesteinskörnung.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Alkali-Kieselsäure-Reaktion",
+      "misconception": "Treibende Betonschäden (AKR, Sulfat, Frost) werden verwechselt.",
+      "coreRule": "AKR = reaktive Gesteinskörnung + Alkalien + Feuchte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Alkali-Kieselsäure-Reaktion (AKR)“ im Modul Typische Bauschäden noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden"
+    },
+    "quelle": "DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -8280,6 +10568,170 @@
     }
   },
   {
+    "id": "q_dg_db_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "Generische und spezifische Datensätze",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2; ÖKOBAUDAT",
+    "question": "Worin unterscheiden sich generische Datensätze der ÖKOBAUDAT von herstellerspezifischen EPD?",
+    "options": [
+      "Generische Daten sind extern verifiziert, spezifische EPD dagegen reine Herstellerangaben",
+      "Generische Daten bilden Durchschnitte mit Sicherheitszuschlag, EPD ein konkretes Produkt",
+      "Generische Daten gelten nur für Holz, spezifische EPD nur für mineralische Baustoffe",
+      "Generische Daten enthalten nur das GWP, EPD zusätzlich alle weiteren Indikatoren"
+    ],
+    "correctIdx": 1,
+    "explanation": "Generische Datensätze beschreiben typische Produkte (z. B. „Beton C30/37“) und enthalten einen Sicherheitszuschlag; sie eignen sich für frühe Planungsphasen. Herstellerspezifische oder Verbands-EPD nach DIN EN 15804 sind extern verifiziert und bilden ein konkretes Produkt ab, meist mit günstigeren Werten.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Umgekehrt: EPD sind durch einen unabhängigen Verifizierer geprüft; generische Daten sind Durchschnittswerte.",
+      "",
+      "Beide Datenarten gibt es für nahezu alle Baustoffgruppen.",
+      "Beide Datenarten enthalten die Indikatoren nach EN 15804, nicht nur das GWP."
+    ],
+    "gapAnalysis": {
+      "topic": "Generische und spezifische Datensätze",
+      "misconception": "Generische und spezifische Daten werden als gleichwertig behandelt.",
+      "coreRule": "Generisch = Durchschnitt + Zuschlag (frühe Phasen); EPD = produktspezifisch, verifiziert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Datenarten in der Ökobilanzierung“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "quelle": "BBSR: ÖKOBAUDAT – Datenarten; DIN EN 15804:2022-03",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_dg_db_4",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "Wahl der Datenbank",
+    "difficulty": "Transfer",
+    "normRef": "GESTIS; WECOBIS; ÖKOBAUDAT",
+    "question": "Eine Bauleiterin braucht für ein Epoxidharz-Beschichtungssystem Angaben zu GHS-Einstufung und Schutzmaßnahmen der Inhaltsstoffe. Welche Datenbank ist dafür die erste Wahl?",
+    "options": [
+      "Die ÖKOBAUDAT mit ihren Ökobilanzdatensätzen nach DIN EN 15804",
+      "Der DGNB Navigator mit Produktangaben zu Zertifizierungskriterien",
+      "WECOBIS mit herstellerneutralen Informationen über die Lebenszyklusphasen von Bauprodukten",
+      "Die GESTIS-Stoffdatenbank der DGUV mit Stoffdaten für den Arbeitsschutz"
+    ],
+    "correctIdx": 3,
+    "explanation": "GESTIS (IFA/DGUV) liefert stoffbezogene Arbeitsschutzinformationen: Einstufung und Kennzeichnung nach GHS, Grenzwerte, Schutzmaßnahmen. WECOBIS beschreibt Produktgruppen über den Lebenszyklus, die ÖKOBAUDAT Ökobilanzdaten, der DGNB Navigator Produktmerkmale für Zertifizierungen. Für das konkrete Produkt gehört zusätzlich das Sicherheitsdatenblatt dazu.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die ÖKOBAUDAT enthält Umweltindikatoren (GWP, PENRT …), aber keine Gefahrstoffeinstufung.",
+      "Der DGNB Navigator stellt Produktangaben für die Zertifizierung bereit, keine Stoffdaten für den Arbeitsschutz.",
+      "WECOBIS informiert produktgruppenbezogen über Gesundheit und Umwelt, ersetzt aber keine Stoffdatenbank zur GHS-Einstufung.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Wahl der Datenbank",
+      "misconception": "Die Zwecke der Datenbanken werden nicht unterschieden.",
+      "coreRule": "Arbeitsschutz/GHS → GESTIS (+ Sicherheitsdatenblatt); Ökobilanz → ÖKOBAUDAT.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Materialdatenbanken & Informationssysteme“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "quelle": "IFA/DGUV: GESTIS-Stoffdatenbank; BMWSB: WECOBIS; BBSR: ÖKOBAUDAT",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_dg_db_5",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "ÖKOBAUDAT",
+    "difficulty": "Basis",
+    "normRef": "ÖKOBAUDAT; BNB; QNG",
+    "question": "Welche Rolle hat die ÖKOBAUDAT in der deutschen Gebäudeökobilanzierung?",
+    "options": [
+      "Sie ist die vereinbarte Datenbasis für Ökobilanzen nach BNB und QNG",
+      "Sie ist ein Bewertungssystem, das Gebäude in Gold, Silber und Bronze einstuft",
+      "Sie ist ein privates Herstellerportal, in dem Produkte ohne Prüfung eingetragen werden",
+      "Sie ist die EU-Datenbank für den digitalen Produktpass aller Bauprodukte"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die ÖKOBAUDAT wird vom BMWSB bereitgestellt und vom BBSR betrieben. Sie enthält generische und spezifische Datensätze nach DIN EN 15804 und ist die Datengrundlage für die Ökobilanz im BNB und im QNG; die Nutzung ist kostenfrei.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Bewertungsstufen vergeben Zertifizierungssysteme wie BNB oder DGNB; die ÖKOBAUDAT liefert nur Daten.",
+      "Die Datensätze werden vor der Aufnahme auf Konformität geprüft; es ist ein Angebot des Bundes.",
+      "Der digitale Produktpass ist ein eigenes Vorhaben der EU; die ÖKOBAUDAT ist eine nationale Ökobilanzdatenbank."
+    ],
+    "gapAnalysis": {
+      "topic": "ÖKOBAUDAT",
+      "misconception": "Datenbank und Bewertungssystem werden verwechselt.",
+      "coreRule": "ÖKOBAUDAT = Datenbasis (BMWSB/BBSR) für LCA im BNB und QNG.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Materialdatenbanken & Informationssysteme“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "quelle": "BBSR/BMWSB: oekobaudat.de",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_dg_db_6",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "GWP einer Wand aus Datenbankwerten",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 15978",
+    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1 800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,12 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?",
+    "options": [
+      "rund 21,6 kg CO₂-Äq./m²",
+      "rund 378 kg CO₂-Äq./m²",
+      "rund 3,8 kg CO₂-Äq./m²",
+      "rund 37,8 kg CO₂-Äq./m²"
+    ],
+    "correctIdx": 3,
+    "explanation": "Flächenbezogene Masse: 0,175 m · 1 800 kg/m³ = 315 kg/m²; GWP = 315 · 0,12 = 37,8 kg CO₂-Äq./m². Entscheidend ist, die deklarierte Einheit (hier kg) in die Bezugsgröße des Bauteils (m²) umzurechnen.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "21,6 ergibt sich mit einer Dicke von 10 cm statt 17,5 cm.",
+      "Hier wurde mit 1,75 m statt 0,175 m gerechnet; das Ergebnis ist zehnmal zu groß.",
+      "Hier wurde mit 1,75 cm gerechnet; das Ergebnis ist zehnmal zu klein.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "GWP einer Wand aus Datenbankwerten",
+      "misconception": "Deklarierte Einheit und Bauteilbezug werden nicht sauber umgerechnet.",
+      "coreRule": "GWP_Bauteil = d · ρ · GWP_kg.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 4: Anwendung in der Bauwerksbilanz“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "quelle": "DIN EN 15978; Lehrwert nach ÖKOBAUDAT-Größenordnung",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_dg_mp_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
@@ -8596,6 +11048,88 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ki_ub_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_ueberblick",
+    "moduleTitle": "KI: Überblick & Grundlagen",
+    "topic": "Überwachtes Lernen",
+    "difficulty": "Basis",
+    "normRef": "–",
+    "question": "Ein Modell soll Risse auf Fotos erkennen und wird dazu mit 5 000 von Fachleuten markierten Bildern trainiert. Welche Lernform ist das?",
+    "options": [
+      "Unüberwachtes Lernen (Clustering ohne Vorgaben)",
+      "Bestärkendes Lernen (Belohnung für Aktionen)",
+      "Regelbasiertes Expertensystem ohne Training",
+      "Überwachtes Lernen mit gelabelten Daten"
+    ],
+    "correctIdx": 3,
+    "explanation": "Beim überwachten Lernen liegt zu jedem Trainingsbeispiel die richtige Antwort (Label) vor; das Modell lernt die Zuordnung Bild → „Riss/kein Riss“ oder die Rissmaske. Die Qualität hängt stark von Menge und Konsistenz der Labels ab.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Unüberwachtes Lernen findet Muster ohne Labels; hier liegen markierte Bilder vor.",
+      "Bestärkendes Lernen optimiert Handlungen über Belohnungen, etwa in der Robotik.",
+      "Ein Expertensystem arbeitet mit von Menschen formulierten Regeln, nicht mit Trainingsdaten.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Überwachtes Lernen",
+      "misconception": "Lernformen des maschinellen Lernens werden verwechselt.",
+      "coreRule": "Gelabelte Beispiele → überwachtes Lernen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Machine Learning“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "targetModuleTab": "ki_ueberblick",
+      "targetModuleLabel": "KI: Überblick & Grundlagen"
+    },
+    "quelle": "Goodfellow/Bengio/Courville: Deep Learning, Kap. 5",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ki_ub_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ki_ueberblick",
+    "moduleTitle": "KI: Überblick & Grundlagen",
+    "topic": "Retrieval-Augmented Generation",
+    "difficulty": "Vertiefung",
+    "normRef": "–",
+    "question": "Was leistet Retrieval-Augmented Generation (RAG) bei einem Sprachmodell für Normtexte?",
+    "options": [
+      "Es trainiert das Modell mit den Normtexten dauerhaft neu, bis es sie auswendig kennt",
+      "Es sucht passende Textstellen und gibt sie dem Modell als Kontext für die Antwort mit",
+      "Es garantiert fehlerfreie Antworten, weil das Modell danach nur noch aus Normen zitiert",
+      "Es ersetzt das Sprachmodell durch eine klassische Volltextsuche ohne Textgenerierung"
+    ],
+    "correctIdx": 1,
+    "explanation": "RAG kombiniert eine Suche (meist über Vektor-Embeddings) in einer Dokumentensammlung mit der Textgenerierung: Die gefundenen Passagen werden in den Prompt eingefügt. Das verbessert Aktualität und Nachprüfbarkeit (Quellenangabe), schließt Fehler aber nicht aus – die Antwort bleibt zu prüfen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das beschreibt Fine-Tuning; RAG lässt das Modell unverändert und liefert Kontext zur Laufzeit.",
+      "",
+      "Auch mit RAG kann das Modell Passagen falsch auswählen oder fehlinterpretieren; die Prüfpflicht bleibt.",
+      "Die Suche ist nur der erste Schritt; das Sprachmodell formuliert die Antwort weiterhin selbst."
+    ],
+    "gapAnalysis": {
+      "topic": "Retrieval-Augmented Generation",
+      "misconception": "RAG wird mit Training oder mit fehlerfreier Suche gleichgesetzt.",
+      "coreRule": "RAG = Retrieval (Suche) + Generierung mit Kontext; Ergebnis prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „RAG und LLMs“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "targetModuleTab": "ki_ueberblick",
+      "targetModuleLabel": "KI: Überblick & Grundlagen"
+    },
+    "quelle": "Lewis et al. (2020): Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -9001,6 +11535,170 @@
     }
   },
   {
+    "id": "q_ki_re_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "Urheberrecht an KI-Ausgaben",
+    "difficulty": "Basis",
+    "normRef": "UrhG § 2 Abs. 2",
+    "question": "Ein Büro lässt eine KI ohne weitere eigene Gestaltung ein Fassadenrendering erzeugen. Ist das Bild nach deutschem Recht urheberrechtlich geschützt?",
+    "options": [
+      "Ja, das Urheberrecht liegt automatisch beim Anbieter des KI-Systems",
+      "Ja, das Urheberrecht liegt bei der Person, die den Prompt eingegeben hat",
+      "Nein, geschützt sind nur persönliche geistige Schöpfungen von Menschen",
+      "Nein, Bilder sind nur geschützt, wenn sie beim Patentamt eingetragen sind"
+    ],
+    "correctIdx": 2,
+    "explanation": "Werke im Sinne des § 2 Abs. 2 UrhG sind nur persönliche geistige Schöpfungen eines Menschen. Ein rein maschinell erzeugtes Bild ohne prägenden menschlichen Gestaltungsanteil ist nicht geschützt; Nutzungsbedingungen der Anbieter regeln nur das Vertragsverhältnis.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Anbieter regeln Nutzungsrechte vertraglich, ein Urheberrecht entsteht für sie dadurch nicht.",
+      "Ein einfacher Prompt gilt in der Regel nicht als prägende schöpferische Leistung am Bild.",
+      "",
+      "Das Urheberrecht entsteht ohne Eintragung; ein Register gibt es dafür nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Urheberrecht an KI-Ausgaben",
+      "misconception": "KI-Ausgaben werden automatisch als geschützte Werke angesehen.",
+      "coreRule": "§ 2 Abs. 2 UrhG: Schutz nur für menschliche, persönliche geistige Schöpfungen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Urheberrecht“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "quelle": "Urheberrechtsgesetz (UrhG) § 2 Abs. 2",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ki_re_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "Haftung für KI-gestützte Statik",
+    "difficulty": "Transfer",
+    "normRef": "BGB §§ 631, 633",
+    "question": "Ein Tragwerksplaner übernimmt eine von einem Sprachmodell erzeugte Bemessung ungeprüft; die Decke versagt. Wer haftet gegenüber dem Bauherrn?",
+    "options": [
+      "Der KI-Anbieter, weil das Modell die fehlerhafte Berechnung geliefert hat",
+      "Niemand, weil Fehler von KI-Systemen als höhere Gewalt eingeordnet werden",
+      "Der Bauherr selbst, weil er dem Einsatz von KI im Vertrag zugestimmt hat",
+      "Der Planer, denn er schuldet den Werkerfolg und muss Ergebnisse prüfen"
+    ],
+    "correctIdx": 3,
+    "explanation": "Der Planer schuldet dem Bauherrn ein mangelfreies Werk (§§ 631, 633 BGB); das gewählte Werkzeug ändert daran nichts. Ungeprüfte Übernahme kann zudem als grobe Fahrlässigkeit gewertet werden und den Versicherungsschutz gefährden. Ansprüche gegen den KI-Anbieter richten sich allenfalls nach dessen Vertragsbedingungen.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Anbieter steht in keinem Werkvertrag mit dem Bauherrn; verantwortlich bleibt der Planer.",
+      "Höhere Gewalt ist ein unvorhersehbares äußeres Ereignis; ein ungeprüftes Rechenergebnis ist das nicht.",
+      "Die Zustimmung zum Werkzeugeinsatz verlagert nicht die Verantwortung für den geschuldeten Werkerfolg.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Haftung für KI-gestützte Statik",
+      "misconception": "Die Verantwortung wird auf das Werkzeug verschoben.",
+      "coreRule": "Werkvertrag: Planer haftet für den Erfolg; KI-Ergebnisse ingenieurmäßig prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „BGB-Haftung & EU AI Act“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "quelle": "BGB §§ 631, 633; Modultext „BGB-Werkvertragsrecht & HOAI-Sorgfaltspflichten“",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ki_re_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "Datenpanne nach DSGVO",
+    "difficulty": "Basis",
+    "normRef": "DSGVO Art. 33",
+    "question": "Ein Mitarbeiter hat versehentlich Bauherrendaten in ein öffentlich zugängliches KI-Tool geladen; ein Risiko für die Betroffenen ist nicht auszuschließen. Innerhalb welcher Frist ist die Panne der Aufsichtsbehörde zu melden?",
+    "options": [
+      "Innerhalb von 14 Tagen nach Abschluss der internen Prüfung",
+      "Möglichst binnen 72 Stunden, nachdem die Panne bekannt wurde",
+      "Erst nach Rückfrage beim KI-Anbieter, ob Daten gespeichert wurden",
+      "Innerhalb eines Monats, gemeinsam mit der Auskunft an Betroffene"
+    ],
+    "correctIdx": 1,
+    "explanation": "Art. 33 DSGVO: Meldung an die Aufsichtsbehörde unverzüglich und möglichst binnen 72 Stunden, nachdem die Verletzung bekannt wurde, es sei denn, sie führt voraussichtlich nicht zu einem Risiko. Bei hohem Risiko sind zusätzlich die Betroffenen zu benachrichtigen (Art. 34).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Frist ist kürzer und beginnt mit Bekanntwerden, nicht nach Abschluss interner Prüfungen.",
+      "",
+      "Die Meldefrist läuft unabhängig von Rückfragen; fehlende Informationen dürfen nachgereicht werden.",
+      "Ein Monat ist die Frist für Auskunftsersuchen (Art. 12, 15), nicht für Datenpannen."
+    ],
+    "gapAnalysis": {
+      "topic": "Datenpanne nach DSGVO",
+      "misconception": "Die Meldefrist für Datenpannen wird unterschätzt.",
+      "coreRule": "Art. 33 DSGVO: Meldung möglichst binnen 72 h; Art. 34: Betroffene bei hohem Risiko.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DSGVO & Betriebsgeheimnisse“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "quelle": "DSGVO Art. 33 und 34",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_ki_re_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "Text und Data Mining",
+    "difficulty": "Vertiefung",
+    "normRef": "UrhG §§ 44b, 60d",
+    "question": "Unter welcher Bedingung ist das Auslesen frei zugänglicher Fachartikel für das Training eines KI-Modells nach § 44b UrhG erlaubt?",
+    "options": [
+      "Wenn der Rechteinhaber keinen maschinenlesbaren Nutzungsvorbehalt erklärt hat",
+      "Nur mit schriftlicher Einzelgenehmigung jedes Verlags, die vor dem Training vorliegen muss",
+      "Nur wenn die Trainingsdaten anschließend vollständig veröffentlicht werden",
+      "Wenn das Modell nur innerhalb der EU betrieben und vermarktet wird"
+    ],
+    "correctIdx": 0,
+    "explanation": "§ 44b UrhG erlaubt Vervielfältigungen rechtmäßig zugänglicher Werke für Text und Data Mining, sofern der Rechteinhaber sich die Nutzung nicht maschinenlesbar vorbehalten hat; die Kopien sind zu löschen, wenn sie nicht mehr erforderlich sind. Für die wissenschaftliche Forschung gilt die weitergehende Schranke des § 60d UrhG.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Eine Einzelgenehmigung ist nicht nötig; die Schranke greift kraft Gesetzes, solange kein Vorbehalt erklärt ist.",
+      "Eine Veröffentlichungspflicht für Trainingsdaten folgt aus § 44b UrhG nicht.",
+      "Der Ort des Betriebs ist für die Schranke nicht entscheidend; maßgebend ist der Nutzungsvorbehalt."
+    ],
+    "gapAnalysis": {
+      "topic": "Text und Data Mining",
+      "misconception": "Text und Data Mining wird als generell verboten oder generell erlaubt angesehen.",
+      "coreRule": "§ 44b UrhG: TDM erlaubt ohne maschinenlesbaren Vorbehalt; Forschung: § 60d.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Urheberrecht“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "quelle": "UrhG §§ 44b, 60d",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_ki_lk_1",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
@@ -9397,6 +12095,170 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_px_pl_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "HOAI-Leistungsphasen 6 und 7",
+    "difficulty": "Basis",
+    "normRef": "HOAI 2021, Anlage 10",
+    "question": "In welcher Leistungsphase der HOAI (Gebäude) werden die Leistungsverzeichnisse aufgestellt?",
+    "options": [
+      "LPH 5 – Ausführungsplanung",
+      "LPH 7 – Mitwirkung bei der Vergabe",
+      "LPH 8 – Objektüberwachung",
+      "LPH 6 – Vorbereitung der Vergabe"
+    ],
+    "correctIdx": 3,
+    "explanation": "In LPH 6 werden Mengen ermittelt und Leistungsbeschreibungen mit Leistungsverzeichnissen aufgestellt. LPH 7 umfasst Einholen und Prüfen der Angebote, Preisspiegel und Mitwirkung bei der Auftragserteilung.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Ausführungsplanung liefert die Pläne, aus denen in LPH 6 die Leistungsverzeichnisse entstehen.",
+      "In LPH 7 werden Angebote eingeholt und gewertet; das LV liegt dann bereits vor.",
+      "Die Objektüberwachung betrifft die Bauausführung, nicht die Ausschreibung.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "HOAI-Leistungsphasen 6 und 7",
+      "misconception": "Vorbereitung und Mitwirkung bei der Vergabe werden verwechselt.",
+      "coreRule": "LPH 6: LV aufstellen; LPH 7: Angebote einholen, prüfen, werten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "quelle": "HOAI 2021, § 34 und Anlage 10",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_px_pl_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "Gewichtung der Leistungsphasen",
+    "difficulty": "Basis",
+    "normRef": "HOAI 2021, § 34 Abs. 3",
+    "question": "Welche Leistungsphase hat beim Leistungsbild Gebäude und Innenräume nach § 34 HOAI den größten Anteil am Honorar?",
+    "options": [
+      "LPH 5 Ausführungsplanung mit 25 %",
+      "LPH 3 Entwurfsplanung mit 15 %",
+      "LPH 8 Objektüberwachung mit 32 %",
+      "LPH 6 Vorbereitung der Vergabe mit 10 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bewertung nach § 34 Abs. 3 HOAI (Gebäude): LPH 1 2 %, LPH 2 7 %, LPH 3 15 %, LPH 4 3 %, LPH 5 25 %, LPH 6 10 %, LPH 7 4 %, LPH 8 32 %, LPH 9 2 %.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Ausführungsplanung ist mit 25 % die zweitgrößte Phase; die Objektüberwachung liegt mit 32 % höher.",
+      "Die Entwurfsplanung umfasst 15 %; die Objektüberwachung liegt deutlich darüber.",
+      "",
+      "LPH 6 umfasst 10 %; die größte Phase ist die Objektüberwachung."
+    ],
+    "gapAnalysis": {
+      "topic": "Gewichtung der Leistungsphasen",
+      "misconception": "Der Aufwand der Bauüberwachung wird unterschätzt.",
+      "coreRule": "HOAI Gebäude: LPH 8 = 32 %, LPH 5 = 25 %, LPH 3 = 15 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "quelle": "HOAI 2021, § 34 Abs. 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_px_pl_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "Bedarfspositionen",
+    "difficulty": "Vertiefung",
+    "normRef": "VOB/A § 7 Abs. 1 Nr. 4",
+    "question": "Wie sind Bedarfspositionen (Eventualpositionen) in einer Leistungsbeschreibung nach VOB/A zu behandeln?",
+    "options": [
+      "Sie sind beliebig einsetzbar, da sie nur bei Bedarf beauftragt werden",
+      "Sie ersetzen Wahlpositionen und dürfen deshalb in jedem Leistungsverzeichnis stehen",
+      "Sie sind in der Regel nicht aufzunehmen, da sie die Kalkulation erschweren",
+      "Sie sind zwingend aufzunehmen, damit Nachträge ausgeschlossen werden"
+    ],
+    "correctIdx": 2,
+    "explanation": "Nach § 7 Abs. 1 Nr. 4 VOB/A sind Bedarfspositionen grundsätzlich nicht in die Leistungsbeschreibung aufzunehmen; angehängte Stundenlohnarbeiten nur im unbedingt erforderlichen Umfang. Sie erschweren die Kalkulation und laden zu Spekulationspreisen ein.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Gerade die Ungewissheit über die Ausführung macht Bedarfspositionen vergaberechtlich problematisch.",
+      "Wahl- und Bedarfspositionen sind unterschiedliche Positionsarten; beide sind nur eingeschränkt zulässig.",
+      "",
+      "Bedarfspositionen schließen Nachträge nicht aus; die VOB/A verlangt, sie möglichst zu vermeiden."
+    ],
+    "gapAnalysis": {
+      "topic": "Bedarfspositionen",
+      "misconception": "Bedarfspositionen werden als Mittel gegen Nachträge angesehen.",
+      "coreRule": "§ 7 Abs. 1 Nr. 4 VOB/A: Bedarfspositionen grundsätzlich nicht aufnehmen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "quelle": "VOB/A (2019) § 7 Abs. 1 Nr. 4",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_px_pl_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "Ungewöhnliches Wagnis",
+    "difficulty": "Transfer",
+    "normRef": "VOB/A § 7 Abs. 1 Nr. 3",
+    "question": "Ein öffentlicher Auftraggeber will im LV festschreiben: „Mehrkosten aus unvorhersehbaren Baugrundverhältnissen trägt der Auftragnehmer.“ Wie ist das zu bewerten?",
+    "options": [
+      "Unzulässig: Dem Auftragnehmer darf kein ungewöhnliches Wagnis aufgebürdet werden",
+      "Zulässig, weil der Auftragnehmer das Risiko in den Preis einkalkulieren kann",
+      "Zulässig, sofern der Auftraggeber kein Bodengutachten erstellen ließ",
+      "Unzulässig nur bei Aufträgen oberhalb der EU-Schwellenwerte, darunter frei vereinbar"
+    ],
+    "correctIdx": 0,
+    "explanation": "§ 7 Abs. 1 Nr. 3 VOB/A: Dem Auftragnehmer darf kein ungewöhnliches Wagnis für Umstände und Ereignisse aufgebürdet werden, auf die er keinen Einfluss hat und deren Einwirkung er nicht im Voraus abschätzen kann. Das Baugrundrisiko liegt grundsätzlich beim Auftraggeber; er muss den Baugrund ausreichend beschreiben.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Unkalkulierbare Risiken lassen sich nicht seriös einpreisen; genau deshalb verbietet die VOB/A die Abwälzung.",
+      "Ein fehlendes Gutachten verschärft das Problem; der Auftraggeber muss den Baugrund beschreiben.",
+      "Das Verbot gilt auch unterhalb der Schwellenwerte, also im Anwendungsbereich des Abschnitts 1 der VOB/A."
+    ],
+    "gapAnalysis": {
+      "topic": "Ungewöhnliches Wagnis",
+      "misconception": "Unkalkulierbare Risiken werden als normal einpreisbar angesehen.",
+      "coreRule": "§ 7 Abs. 1 Nr. 3 VOB/A: kein ungewöhnliches Wagnis; Baugrundrisiko beim Auftraggeber.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "quelle": "VOB/A (2019) § 7 Abs. 1 Nr. 3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
@@ -13889,6 +16751,129 @@
     }
   },
   {
+    "id": "q_dms_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Erforderliche Dämmdicke",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6946",
+    "question": "Eine Dämmschicht aus Mineralwolle (λ = 0,035 W/(m·K)) soll einen Wärmedurchlasswiderstand von R = 4,0 m²K/W erreichen. Welche Dicke ist erforderlich?",
+    "options": [
+      "11,4 cm",
+      "16 cm",
+      "14 cm",
+      "28 cm"
+    ],
+    "correctIdx": 2,
+    "explanation": "d = R · λ = 4,0 · 0,035 = 0,14 m = 14 cm. Mit λ = 0,040 W/(m·K) wären bereits 16 cm nötig.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde 4,0/0,035 = 114 gerechnet und als Millimeter gedeutet; richtig ist d = R · λ.",
+      "16 cm ergeben sich mit λ = 0,040 W/(m·K), nicht mit 0,035.",
+      "",
+      "28 cm entsprächen R = 8,0 m²K/W; der Widerstand wurde verdoppelt."
+    ],
+    "gapAnalysis": {
+      "topic": "Erforderliche Dämmdicke",
+      "misconception": "R = d/λ wird falsch umgestellt.",
+      "coreRule": "d = R · λ.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dicken je Dämmstoff“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "quelle": "DIN EN ISO 6946:2018-03, 6.7",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_dms_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Schaumglas",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13167",
+    "question": "Welche Eigenschaftskombination kennzeichnet Schaumglas als Dämmstoff?",
+    "options": [
+      "Offenzellig, diffusionsoffen und kapillaraktiv wie eine Calciumsilikatplatte",
+      "Geschlossenzellig, wasser- und dampfdicht, druckfest und nicht brennbar",
+      "Faserig, schalldämmend und als Klemmfilz zwischen Sparren verlegbar",
+      "Thermoplastisch, mit Weichmachern verschäumt und normalentflammbar"
+    ],
+    "correctIdx": 1,
+    "explanation": "Schaumglas (CG) besteht aus geschlossenen Glaszellen: Es nimmt praktisch kein Wasser auf, ist dampfdicht (μ ≈ ∞), druckfest, formstabil und nicht brennbar (A1). Daher eignet es sich für Perimeter, lastabtragende Dämmung und Flachdächer.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Diffusionsoffen und kapillaraktiv sind Calciumsilikatplatten; Schaumglas ist geschlossenzellig und dampfdicht.",
+      "",
+      "Das beschreibt Mineralwolle-Filze; Schaumglas ist eine starre, druckfeste Platte.",
+      "Schaumglas ist anorganisch und nicht brennbar (A1), kein Thermoplast."
+    ],
+    "gapAnalysis": {
+      "topic": "Schaumglas",
+      "misconception": "Schaumglas wird mit faserigen oder kapillaraktiven Dämmstoffen verwechselt.",
+      "coreRule": "Schaumglas: geschlossenzellig, dampfdicht, druckfest, A1.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schaumglas (Cellular Glass)“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "quelle": "DIN EN 13167 (Schaumglas); Herstellerangaben",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_dms_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Vakuumisolationspaneele",
+    "difficulty": "Vertiefung",
+    "normRef": "abZ (DIBt) für VIP",
+    "question": "Was ist beim Einbau von Vakuumisolationspaneelen (VIP) auf der Baustelle besonders zu beachten?",
+    "options": [
+      "VIP dürfen nicht zugeschnitten oder angebohrt werden; sie werden im Raster geplant",
+      "VIP werden wie EPS auf Maß geschnitten und mit Dübeln durch die Platte befestigt",
+      "VIP brauchen raumseitig eine Dampfsperre, weil der Kern wie Zellulose Feuchte speichert",
+      "VIP verlieren ihre Wirkung nur bei Frost, deshalb sind sie innen zu verlegen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der Dämmeffekt (λ ≈ 0,004–0,008 W/(m·K)) beruht auf dem Vakuum im Kern; eine Beschädigung der Hüllfolie lässt Luft eindringen, λ steigt auf etwa 0,02 W/(m·K). VIP werden deshalb im Plattenraster geplant, geschützt eingebaut und mit Passstücken aus konventionellem Dämmstoff ergänzt; der Bemessungswert berücksichtigt die Alterung.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Schneiden oder Dübeln zerstört die Vakuumhülle; die Dämmwirkung ginge weitgehend verloren.",
+      "Der mikroporöse Kern ist in eine gasdichte Folie eingeschweißt; die Folie selbst ist praktisch dampfdicht.",
+      "Kritisch ist die Beschädigung der Hülle, nicht der Frost; VIP werden auch außen eingesetzt."
+    ],
+    "gapAnalysis": {
+      "topic": "Vakuumisolationspaneele",
+      "misconception": "VIP werden wie herkömmliche Dämmplatten verarbeitet.",
+      "coreRule": "VIP: Hülle unversehrt lassen, Raster planen, Passstücke konventionell.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Vakuumisolationspaneele (VIP)“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "quelle": "DIBt-Zulassungen für VIP; Fraunhofer IBP: VIP-Bau",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
     "id": "q_hol_1",
     "category": "metalle_holz",
     "categoryLabel": "Metalle & Holzwerkstoffe",
@@ -17489,6 +20474,252 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "Festigkeitsklasse C24",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 338",
+    "question": "Wofür steht die Festigkeitsklasse C24 nach DIN EN 338?",
+    "options": [
+      "Nadelholz mit einer Druckfestigkeit von 24 N/mm² rechtwinklig zur Faser",
+      "Nadelholz mit einer charakteristischen Biegefestigkeit von 24 N/mm²",
+      "Laubholz (Hartholz) mit einer Rohdichte von 240 kg/m³",
+      "Brettschichtholz mit einer Zugfestigkeit von 24 N/mm² in Faserrichtung"
+    ],
+    "correctIdx": 1,
+    "explanation": "„C“ steht für Coniferous (Nadelholz), die Zahl für die charakteristische Biegefestigkeit f_m,k in N/mm² (5-%-Quantil). Laubholzklassen heißen D (z. B. D30), Brettschichtholz GL (z. B. GL24h).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Druckfestigkeit rechtwinklig zur Faser ist viel kleiner (rund 2,5 N/mm²); die Zahl nennt die Biegefestigkeit.",
+      "",
+      "Laubholz trägt den Buchstaben D; die Zahl ist eine Festigkeit, keine Rohdichte.",
+      "Brettschichtholz wird mit GL bezeichnet; C kennzeichnet Nadelvollholz."
+    ],
+    "gapAnalysis": {
+      "topic": "Festigkeitsklasse C24",
+      "misconception": "Buchstabe und Zahl der Festigkeitsklasse werden falsch gedeutet.",
+      "coreRule": "C = Nadelholz, D = Laubholz, GL = BSH; Zahl = f_m,k in N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeitswerte nach DIN EN 338 & EN 14080“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "DIN EN 338:2016-07",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "Brettschichtholz h und c",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14080",
+    "question": "Was bedeutet der Buchstabe „h“ in der Bezeichnung GL24h?",
+    "options": [
+      "Hartholz: Das Brettschichtholz besteht aus Buche oder Eiche",
+      "Hochkant: Das Bauteil darf nur hochkant auf Biegung beansprucht werden",
+      "Homogen: Alle Lamellen gehören derselben Festigkeitsklasse an",
+      "Hydrophob: Die Lamellen sind gegen Feuchte imprägniert"
+    ],
+    "correctIdx": 2,
+    "explanation": "GL24h ist homogenes Brettschichtholz: Alle Lamellen haben dieselbe Festigkeitsklasse. Bei kombiniertem BSH (z. B. GL24c) liegen in den hoch beanspruchten Randzonen höherwertige Lamellen als im Kern.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "BSH für tragende Zwecke ist überwiegend aus Nadelholz; „h“ steht nicht für Hartholz.",
+      "Die Beanspruchungsrichtung ist in der Bemessung zu berücksichtigen, aber nicht Teil der Klassenbezeichnung.",
+      "",
+      "Eine Imprägnierung ist kein Bestandteil der Festigkeitsklasse; „h“ beschreibt den Lamellenaufbau."
+    ],
+    "gapAnalysis": {
+      "topic": "Brettschichtholz h und c",
+      "misconception": "Die Kennbuchstaben h/c werden nicht dem Lamellenaufbau zugeordnet.",
+      "coreRule": "h = homogen, c = kombiniert (Randlamellen höherwertig).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeitswerte nach DIN EN 338 & EN 14080“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "DIN EN 14080:2013-09",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "Rollschub in Brettsperrholz",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 16351; DIN EN 1995-1-1/NA",
+    "question": "Welche Beanspruchung ist bei Brettsperrholz-Deckenplatten in den Querlagen häufig bemessungsrelevant?",
+    "options": [
+      "Rollschub, also Schub rechtwinklig zur Faser in den Querlagen",
+      "Zug in Faserrichtung der Querlagen infolge der Plattenbiegung",
+      "Querdruck aus dem Eigengewicht der darüber liegenden Lagen",
+      "Torsion der Einzelbretter infolge des Schwindens der Decklagen"
+    ],
+    "correctIdx": 0,
+    "explanation": "In BSP-Platten sind die Querlagen bei einachsiger Lastabtragung rechtwinklig zur Faser auf Schub beansprucht („Rollschub“). Die Rollschubfestigkeit ist mit rund 1 N/mm² sehr klein und wird bei kurzen, hoch belasteten Spannweiten maßgebend; zudem verursacht die Schubverformung der Querlagen zusätzliche Durchbiegung.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Die Querlagen tragen bei einachsiger Spannrichtung kaum Biegezug in ihrer Faserrichtung.",
+      "Querdruck tritt bei Auflagern auf, ist aber nicht die typische Beanspruchung der Querlagen in Feldmitte.",
+      "Schwindverformungen werden durch die Kreuzlagen behindert; eine Torsionsbemessung der Bretter ist nicht üblich."
+    ],
+    "gapAnalysis": {
+      "topic": "Rollschub in Brettsperrholz",
+      "misconception": "Die Schwachstelle der Querlagen wird übersehen.",
+      "coreRule": "BSP: Querlagen auf Rollschub beansprucht (f_r,k ≈ 1 N/mm²).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeitswerte nach DIN EN 338 & EN 14080“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "DIN EN 16351; Holzbau Deutschland: Informationsdienst Holz – Brettsperrholz",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "Schwinden quer zur Faser",
+    "difficulty": "Vertiefung",
+    "normRef": "Schwindmaße (Lehrwerte im Modul)",
+    "question": "Ein Fichtenbalken ist in der tangential orientierten Breite 200 mm breit und trocknet von 20 % auf 12 % Holzfeuchte. Wie stark schwindet die Breite (Schwindmaß tangential 0,33 % je % Holzfeuchte)?",
+    "options": [
+      "etwa 0,2 mm",
+      "etwa 5,3 mm",
+      "etwa 3,0 mm",
+      "etwa 13,2 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Δb = α_t · Δu · b = 0,0033 · 8 · 200 mm ≈ 5,3 mm. Radial (0,19 %/%) wären es rund 3,0 mm, längs (0,01 %/%) nur 0,2 mm. Unterhalb des Fasersättigungsbereichs schwindet Holz tangential etwa doppelt so stark wie radial.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,2 mm ergibt sich mit dem Schwindmaß in Faserrichtung (0,01 %/%), nicht tangential.",
+      "",
+      "3,0 mm ergibt sich mit dem radialen Schwindmaß (0,19 %/%).",
+      "Hier wurde mit der gesamten Holzfeuchte von 20 % statt mit der Änderung Δu = 8 % gerechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "Schwinden quer zur Faser",
+      "misconception": "Die Richtungsabhängigkeit des Schwindens wird vernachlässigt.",
+      "coreRule": "Δ = α · Δu · Maß; α_t ≈ 2 · α_r, α_l ≈ 0.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzfeuchte & Schwind-/Quellverhalten Rechner“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "Lehrwerte Fichte im Modul (Holzfeuchte & Schwind-/Quellverhalten)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "Nutzungsklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1995-1-1, 2.3.1.3",
+    "question": "In welche Nutzungsklasse nach Eurocode 5 gehört das Tragwerk eines überdachten, seitlich offenen Carports?",
+    "options": [
+      "NKL 2, weil das Holz überdacht ist, aber Außenluftfeuchte erfährt",
+      "NKL 1, weil das Holz vor direkter Bewitterung geschützt ist",
+      "NKL 3, weil das Bauwerk nicht beheizt und damit dem Außenklima ausgesetzt ist",
+      "NKL 0, weil Carports als untergeordnete, genehmigungsfreie Bauwerke gelten"
+    ],
+    "correctIdx": 0,
+    "explanation": "NKL 1: beheizte Innenräume (Holzfeuchte meist ≤ 12 %); NKL 2: überdacht, offen (meist ≤ 20 %); NKL 3: frei bewittert oder höhere Feuchte. Die Nutzungsklasse bestimmt k_mod und k_def.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Überdachung allein genügt nicht für NKL 1; dort wird ein Klima um 20 °C und höchstens kurzzeitig über 65 % rel. Feuchte vorausgesetzt.",
+      "NKL 3 gilt für frei bewitterte Bauteile; ein Dach schützt vor direkter Nässe.",
+      "Eine NKL 0 gibt es im Eurocode 5 nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Nutzungsklassen",
+      "misconception": "Die Nutzungsklasse wird nach Beheizung statt nach Klima und Bewitterung gewählt.",
+      "coreRule": "NKL 1 innen beheizt, NKL 2 überdacht offen, NKL 3 bewittert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeitswerte nach DIN EN 338 & EN 14080“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "DIN EN 1995-1-1:2010-12, 2.3.1.3",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "q_hw_6",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "holzbau_werkstoffe",
+    "moduleTitle": "Werkstoffe & dataholz",
+    "topic": "dataholz-Bauteilkatalog",
+    "difficulty": "Basis",
+    "normRef": "dataholz.eu (Holzforschung Austria)",
+    "question": "Was bietet der Bauteilkatalog dataholz.eu der Planung?",
+    "options": [
+      "Klassifizierte Holzbau-Aufbauten mit Kennwerten zu Brand-, Schall- und Wärmeschutz",
+      "Eine Preisdatenbank für Holzwerkstoffe mit tagesaktuellen Angeboten des Holzhandels",
+      "Eine Normensammlung mit dem vollständigen Text des Eurocode 5 und aller Anhänge",
+      "Eine Software zur statischen Bemessung von Brettschichtholzträgern nach EC5"
+    ],
+    "correctIdx": 0,
+    "explanation": "dataholz.eu (Holzforschung Austria) stellt geprüfte bzw. klassifizierte Bauteilaufbauten mit bauphysikalischen und ökologischen Kennwerten bereit (z. B. REI, R_w, L_n,w, U-Wert). Für die Planung gelten die klassifizierten Originaldatenblätter; die Werte im Modul sind Lehrwerte.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Preise enthält dataholz nicht; der Katalog liefert bauphysikalische und ökologische Kennwerte.",
+      "Normtexte sind urheberrechtlich geschützt und werden dort nicht bereitgestellt.",
+      "dataholz ist ein Bauteilkatalog, kein Bemessungsprogramm."
+    ],
+    "gapAnalysis": {
+      "topic": "dataholz-Bauteilkatalog",
+      "misconception": "Der Bauteilkatalog wird mit Bemessungs- oder Normenwerkzeugen verwechselt.",
+      "coreRule": "dataholz: klassifizierte Aufbauten mit Brand-, Schall-, Wärme- und Ökokennwerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver dataholz.eu Bauteilexplorer“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "targetModuleTab": "holzbau_werkstoffe",
+      "targetModuleLabel": "Werkstoffe & dataholz"
+    },
+    "quelle": "dataholz.eu (Holzforschung Austria)",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-26",
       "ergebnis": "ok"
     }
   },
