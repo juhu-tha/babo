@@ -8,6 +8,13 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/sicherheitskonzept/Sicherheitskonzept.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+
+const REITER = [
+  { id: 'eurocodes', label: inhalt.texte.dieEurocodesÜbersicht, icon: Shield },
+  { id: 'prinzip', label: inhalt.texte.prinzipTeilsicherheitsbeiwerte, icon: Activity },
+  { id: 'lastermittlung', label: inhalt.texte.interaktiveLastermittlungGl6, icon: Calculator },
+] as const;
 
 export default function Sicherheitskonzept() {
   const [activeTab, setActiveTab ] = useState<'eurocodes' | 'prinzip' | 'lastermittlung'>('eurocodes');
@@ -32,38 +39,9 @@ export default function Sicherheitskonzept() {
           <p><MdText text={inhalt.texte.dasSemiprobabilistischeSicherheitskonzep} /></p>
         </div>
 
-        {/* Dynamic Nav-Tabs */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'eurocodes'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'eurocodes' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('eurocodes')}
-          >
-            <Shield size={16} /><MdText text={inhalt.texte.dieEurocodesÜbersicht} /></button>
-          <button aria-pressed={activeTab === 'prinzip'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'prinzip' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('prinzip')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.prinzipTeilsicherheitsbeiwerte} /></button>
-          <button aria-pressed={activeTab === 'lastermittlung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'lastermittlung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('lastermittlung')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.interaktiveLastermittlungGl6} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Bereiche Sicherheitskonzept" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {/* TAB CONTENT */}
       {activeTab === 'eurocodes' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
@@ -304,6 +282,7 @@ export default function Sicherheitskonzept() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">

@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { Layers, Droplets, Droplet, Recycle, ShieldAlert, Waves, Box, Target, Zap, Circle, Weight, Package, Construction, MoveDown } from 'lucide-react';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -51,44 +52,24 @@ export default function Sonderbetone() {
     { titel: inhalt.werte.nachhaltigkeitOptik, werte: ['Recyclingbeton', 'Sichtbeton'] },
   ];
 
+  // AP 2.8/3.8: 15 Verfahren in 5 Themengruppen (zweistufige Reiter statt Kachelraster)
+  const REITER_GRUPPEN: ModulTabGruppe<typeof activeTab>[] = GRUPPEN.map(g => ({
+    id: g.titel,
+    label: g.titel,
+    mitglieder: options.filter(o => g.werte.includes(o.value)).map(o => ({ id: o.value, label: o.label, icon: o.icon })),
+  }));
+
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
           <Layers className="text-shiraz" /><MdText text={inhalt.texte.sonderbetoneSpezialanwendungen} /></h2>
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 mb-6 leading-relaxed">
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
           <p><MdText text={inhalt.texte.systematischeWerkstoffanalyseFür15} /></p>
         </div>
-
-        <h3 className="block text-xs font-bold text-text-main/70 mb-3 uppercase tracking-wider"><MdText text={inhalt.texte.sonderbetonVerfahrenAuswählen} /></h3>
-        {GRUPPEN.map(g => (
-          <div key={g.titel} className="mb-3">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-text-main/60 mb-1.5">{g.titel}</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {options.filter(o => g.werte.includes(o.value)).map((opt) => {
-            const Icon = opt.icon;
-            const isActive = activeTab === opt.value;
-            return (
-              <button
-                key={opt.value}
-                onClick={() => setActiveTab(opt.value as typeof activeTab)}
-                className={"flex flex-col items-center justify-center p-3 rounded-xl border transition-all text-xs text-center gap-2 cursor-pointer " + (
-                  isActive 
-                    ? "border-shiraz bg-shiraz text-white shadow-md scale-[1.02]" 
-                    : "border-home-grau/30 bg-off-white text-text-main hover:border-shiraz/50 hover:bg-shiraz/5 hover:scale-[1.01]"
-                )}
-              >
-                <Icon size={22} className={isActive ? "text-white" : "text-shiraz/80"} strokeWidth={isActive ? 2.5 : 2} />
-                <span className="font-semibold leading-tight">{opt.label}</span>
-              </button>
-            );
-            })}
-            </div>
-          </div>
-        ))}
       </div>
 
-      <div>
+      <GruppierteModuleTabs label={inhalt.texte.sonderbetonVerfahrenAuswählen} gruppen={REITER_GRUPPEN} aktiv={activeTab} onWechsel={setActiveTab} className="[&_[role=tabpanel]_[role=tabpanel]]:mt-6">
       {activeTab === 'Leichtbeton' && (
         <Leichtbeton />
       )}
@@ -139,7 +120,7 @@ export default function Sonderbetone() {
       {activeTab === 'Bohrpfahlbeton' && (
         <Bohrpfahlbeton />
       )}
-      </div>
+      </GruppierteModuleTabs>
 
       <FormulaDerivationBox
         title={inhalt.werte.anwendungsbeispielEModulVon}

@@ -7,9 +7,18 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/erdbau/Erdbau.json';
+import { bodengruppe as bodengruppeDin18196, frostschutz } from '@/src/calc/erdbau';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 type Tab = 'grundlagen' | 'klassifikation' | 'frostschutz' | 'steckbrief';
+
+const REITER = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'grundlagen', label: inhalt.texte.grundlagenErdbau, icon: Layers },
+  { id: 'klassifikation', label: inhalt.texte.bodenklassifikationDin18196, icon: Calculator },
+  { id: 'frostschutz', label: inhalt.texte.frostschutzRsto, icon: ThermometerSnowflake },
+] as const;
 
 export default function Erdbau() {
   const [activeTab, setActiveTab] = useState<Tab>('steckbrief');
@@ -28,52 +37,34 @@ export default function Erdbau() {
   const [bodengruppe, setBodengruppe] = useState<'F2' | 'F3'>('F3');
   const [wasserverhaeltnisse, setWasserverhaeltnisse] = useState<'guenstig' | 'unguenstig'>('unguenstig');
 
-  // Klassifikation Logic
+  // Klassifikation: Rechenkern src/calc/erdbau.ts bestimmt die Bodengruppe (vereinfacht nach DIN 18196),
+  // die angezeigten Texte bleiben in content/erdbau/Erdbau.json
   const bodenKlasse = useMemo(() => {
-    // Normalisieren Grobkorn
-    const gesamtGrob = kiesanteil + sandanteil;
-    const relativKies = gesamtGrob > 0 ? (kiesanteil / gesamtGrob) * 100 : 0;
-    
-    if (organik === 'stark') return { gruppe: 'HN / HZ / F', name: inhalt.werte.organischeBödenTorfMudde, frost: 'F3', tauglich: inhalt.werte.ungeeignetAlsBaugrund };
-    
-    if (feinanteil <= 5) {
-      if (relativKies > 50) return inhalt.daten.Erdbau;
-      return inhalt.daten.Erdbau_2;
-    } else if (feinanteil > 5 && feinanteil <= 15) {
-      if (relativKies > 50) return inhalt.daten.Erdbau_3;
-      return inhalt.daten.Erdbau_4;
-    } else if (feinanteil > 15 && feinanteil <= 40) {
-      // Gemischtkörnig mit hohem Feinanteil (DIN 18196: 15–40 %); feinkörnig erst > 40 %
-      if (relativKies > 50) return inhalt.daten.Erdbau_5;
-      return inhalt.daten.Erdbau_6;
-    } else {
-      // Feinkörnig (Feinanteil > 40 %)
-      if (plastizitaet === 'ausgeprägt') return inhalt.daten.Erdbau_7;
-      return inhalt.daten.Erdbau_8;
-    }
+    const k = bodengruppeDin18196({ feinanteil, kiesanteil, sandanteil, organik, plastizitaet });
+    const TEXTE: Record<string, { gruppe: string; name: string; frost: string; tauglich: string }> = {
+      'HN / HZ / F': { gruppe: 'HN / HZ / F', name: inhalt.werte.organischeBödenTorfMudde, frost: 'F3', tauglich: inhalt.werte.ungeeignetAlsBaugrund },
+      'GW / GI / GE': inhalt.daten.Erdbau,
+      'SW / SI / SE': inhalt.daten.Erdbau_2,
+      'GU / GT': inhalt.daten.Erdbau_3,
+      'SU / ST': inhalt.daten.Erdbau_4,
+      'GU* / GT*': inhalt.daten.Erdbau_5,
+      'SU* / ST*': inhalt.daten.Erdbau_6,
+      'TA': inhalt.daten.Erdbau_7,
+      'UL / UM': inhalt.daten.Erdbau_8,
+    };
+    return TEXTE[k.gruppe];
   }, [feinanteil, kiesanteil, sandanteil, organik, plastizitaet]);
 
-  // Frostschutz Logic (vereinfacht nach RStO)
+  // Frostschutz (vereinfacht nach RStO 12, Tab. 6/7) aus dem Rechenkern; nicht berücksichtigt sind die Zeilen B
+  // (kleinräumige Klimaunterschiede), D (Lage der Gradiente) und E (Entwässerung/Randbereiche) der Tab. 7.
+  // Lehrannahme: gebundene Schichten pauschal 15 bzw. 30 cm, Frostschutzschicht mindestens 15 cm
   const frostschutzDicke = useMemo(() => {
-    // Vereinfacht nach RStO 12, Tab. 6/7; nicht berücksichtigt sind die Zeilen B (kleinräumige Klimaunterschiede), D (Lage der Gradiente, z. B. Einschnitt/Anschnitt +5 cm) und E (Entwässerung/Randbereiche) der Tab. 7.:
-    // Ausgangswert je Frostempfindlichkeitsklasse und Belastungsklasse
-    const hoch = bauklasse === 'Bk100' || bauklasse === 'Bk32' || bauklasse === 'Bk10';
-    const mittel = bauklasse === 'BK3' || bauklasse === 'BK1';
-    let d = bodengruppe === 'F3' ? (hoch ? 65 : mittel ? 60 : 50) : (hoch ? 55 : mittel ? 50 : 40);
-    // Mehrdicke Frosteinwirkungszone: I ±0, II +5, III +15 cm
-    d += frostzone === 2 ? 5 : frostzone === 3 ? 15 : 0;
-    // Mehrdicke Wasserverhältnisse (Grund-/Schichtwasser höher als 1,5 m unter Planum): +5 cm
-    if (wasserverhaeltnisse === 'unguenstig') d += 5;
-
-    // Lehrannahme: gebundene Schichten pauschal 15 bzw. 30 cm (tatsächlich nach RStO-Tafel der gewählten Bauweise)
-    const dickeAsphalt = (bauklasse === 'Bk100' || bauklasse === 'Bk32') ? 30 : 15;
-    const dickeFSS = d - dickeAsphalt; // Notwendige Dicke der ungebundenen Frostschutzschicht (Mindestens 15cm)
-
-    return { 
-      gesamtDicke: d, 
-      dickeAsphalt, 
-      dickeFSS: Math.max(15, dickeFSS),
-      regelausfuehrung: `Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema: ${formatDeWert(d)} cm (Ausgangswert + Mehrdicken Frostzone und Wasser).`
+    const f = frostschutz({ frostzone, bauklasse, bodengruppe, wasser: wasserverhaeltnisse });
+    return {
+      gesamtDicke: f.gesamtDicke,
+      dickeAsphalt: f.dickeAsphalt,
+      dickeFSS: f.dickeFSS,
+      regelausfuehrung: `Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema: ${formatDeWert(f.gesamtDicke)} cm (Ausgangswert + Mehrdicken Frostzone und Wasser).`
     };
   }, [frostzone, bauklasse, bodengruppe, wasserverhaeltnisse]);
 
@@ -86,41 +77,7 @@ export default function Erdbau() {
           <p><MdText text={inhalt.texte.derErdbauBefasstSich} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}>
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}>
-            <Layers size={16} /><MdText text={inhalt.texte.grundlagenErdbau} /></button>
-          <button aria-pressed={activeTab === 'klassifikation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'klassifikation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('klassifikation')}>
-            <Calculator size={16} /><MdText text={inhalt.texte.bodenklassifikationDin18196} /></button>
-          <button aria-pressed={activeTab === 'frostschutz'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'frostschutz' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('frostschutz')}>
-            <ThermometerSnowflake size={16} /><MdText text={inhalt.texte.frostschutzRsto} /></button>
-        </div>
+        <ModuleTabs label="Bereiche Erdbau" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {activeTab === 'grundlagen' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -343,6 +300,7 @@ export default function Erdbau() {
             <BaustoffProfil materialKey="erdbau" />
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

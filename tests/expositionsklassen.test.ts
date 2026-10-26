@@ -1,26 +1,34 @@
 // Rechenkern Expositionsklassen (Z3): maßgebende Hüllwerte und k-Wert-Ansatz nach DIN 1045-2
 import { huellwerte, kWertAnsatz, type ExpositionsAnforderung } from '../src/calc/expositionsklassen';
+import { NORMATIVE_EXPOSURE_CLASSES } from '../src/modules/expositionsklassen/daten';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
 const nahe = (ist: number, soll: number, tol: number) => Math.abs(ist - soll) <= tol;
 console.log('--- Test: Expositionsklassen ---');
 
-// Auszug der Klassendaten aus src/modules/expositionsklassen/daten.ts (Stand 26.10.2026, unverändert übernommen;
-// XF1 dort mit LP-Pflicht – siehe Befund im PR)
+// Auszug der Klassendaten aus src/modules/expositionsklassen/daten.ts (Stand 26.10.2026).
+// Z11: XF1 ohne Luftporenpflicht wie in daten.ts und DIN 1045-2, Tab. F.2.1 (der Auszug in #160 führte XF1 fälschlich mit LP;
+// erst XF2–XF4 fordern Luftporen bzw. XF2/XF3 alternativ ohne LP mit höherer Festigkeitsklasse)
 const D: ExpositionsAnforderung[] = [
   { code: 'XC1', maxWzEq: 0.75, minStrengthClass: 'C16/20', minCement: 240, minCoverDurMm: 10 },
   { code: 'XC4', maxWzEq: 0.60, minStrengthClass: 'C25/30', minCement: 280, minCoverDurMm: 25 },
-  { code: 'XF1', maxWzEq: 0.60, minStrengthClass: 'C25/30', minCement: 280, minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 }, requiresAirEntrainment: true, minCoverDurMm: null },
+  { code: 'XF1', maxWzEq: 0.60, minStrengthClass: 'C25/30', minCement: 280, minCoverDurMm: null },
   { code: 'XF4', maxWzEq: 0.50, minStrengthClass: 'C30/37', minCement: 320, minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 }, requiresAirEntrainment: true, minCoverDurMm: null },
   { code: 'XD3', maxWzEq: 0.45, minStrengthClass: 'C35/45', minCement: 320, minCoverDurMm: 40 },
   { code: 'XA3', maxWzEq: 0.45, minStrengthClass: 'C35/45', minCement: 320, minCoverDurMm: null },
 ];
 
 // 1. Startwerte des Moduls: XC4 + XF1, Größtkorn 16 mm, Δc_dev = 15 mm
-//    (w/z)_eq = min(0,60; 0,60) = 0,60; C25/30; z_min = 280; LP 4,5 %; c_min,dur = 25 → c_nom = 40 mm
+//    (w/z)_eq = min(0,60; 0,60) = 0,60; C25/30; z_min = 280; keine Luftporen (XF1); c_min,dur = 25 → c_nom = 40 mm
 const h = huellwerte(D, ['XC4', 'XF1'], 16, 15)!;
-pruefe(h.gueltig && h.minWzEq === 0.6 && h.highestClass === 'C25/30' && h.maxCement === 280 && h.requiresLP && h.minAirVal === 4.5 && h.maxCoverDur === 25 && h.cNom === 40, `Startwerte ${JSON.stringify(h)}`);
+pruefe(h.gueltig && h.minWzEq === 0.6 && h.highestClass === 'C25/30' && h.maxCement === 280 && !h.requiresLP && h.minAirVal === null && h.maxCoverDur === 25 && h.cNom === 40, `Startwerte ${JSON.stringify(h)}`);
+//    dieselbe Startauswahl mit den vollständigen Moduldaten: kein „LP 4,5 %“
+const hm = huellwerte(NORMATIVE_EXPOSURE_CLASSES, ['XC4', 'XF1'], 16, 15)!;
+pruefe(!hm.requiresLP && hm.minAirVal === null && hm.cNom === 40 && hm.highestClass === 'C25/30', `Startwerte Moduldaten ${JSON.stringify(hm)}`);
+pruefe(NORMATIVE_EXPOSURE_CLASSES.filter(c => c.requiresAirEntrainment).map(c => c.code).join() === 'XF2,XF3,XF4', 'LP-Pflicht nur XF2–XF4');
+//    XF1 + XF4: Luftporen aus XF4, Größtkorn 16 mm → 4,5 %
+pruefe(huellwerte(D, ['XF1', 'XF4'], 16, 15)!.minAirVal === 4.5, 'XF1 + XF4 → LP 4,5 % aus XF4');
 //    XD3 + XF4 + XA3, Größtkorn 32: 0,45; C35/45; 320; LP 4,0; c_nom = 40 + 15 = 55; Sonderanforderungen XA2/3, XA3, XF4
 const s = huellwerte(D, ['XD3', 'XF4', 'XA3'], 32, 15)!;
 pruefe(s.minWzEq === 0.45 && s.highestClass === 'C35/45' && s.maxCement === 320 && s.minAirVal === 4.0 && s.cNom === 55 && s.specialReqs.length === 3, `Brücke ${JSON.stringify(s)}`);

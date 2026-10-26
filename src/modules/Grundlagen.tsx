@@ -9,6 +9,15 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/grundlagen/Grundlagen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+
+const REITER = [
+  { id: 'zement', label: 'Zementarten' },
+  { id: 'wasser', label: 'Zugabewasser' },
+  { id: 'gesteinskoernung', label: 'Gesteinskörnungen' },
+  { id: 'mehlkorn', label: 'Mehlkorngehalt' },
+  { id: 'zusatzstoffe', label: 'Zusätze' },
+] as const;
 
 export default function Grundlagen() {
   const [activeTab, setActiveTab] = useState<'zement' | 'wasser' | 'gesteinskoernung' | 'zusatzstoffe' | 'mehlkorn'>('zement');
@@ -52,38 +61,7 @@ export default function Grundlagen() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          <button aria-pressed={activeTab === 'zement'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'zement' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('zement')}
-          >
-            Zementarten
-          </button>
-          <button aria-pressed={activeTab === 'wasser'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'wasser' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('wasser')}
-          >
-            Zugabewasser
-          </button>
-          <button aria-pressed={activeTab === 'gesteinskoernung'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'gesteinskoernung' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('gesteinskoernung')}
-          >
-            Gesteinskörnungen
-          </button>
-          <button aria-pressed={activeTab === 'mehlkorn'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'mehlkorn' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('mehlkorn')}
-          >
-            Mehlkorngehalt
-          </button>
-          <button aria-pressed={activeTab === 'zusatzstoffe'}
-            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'zusatzstoffe' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
-            onClick={() => setActiveTab('zusatzstoffe')}
-          >
-            Zusätze
-          </button>
-        </div>
+        <ModuleTabs label="Ausgangsstoffe" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
 
         {activeTab === 'wasser' && (
           <div className="flex flex-col gap-6 animate-fade-in">
@@ -342,6 +320,7 @@ export default function Grundlagen() {
             <ExpositionsKurzkarte hinweis={inhalt.werte.obUndInWelchem} />
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

@@ -20,6 +20,7 @@ import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/bindemittel/Bindemittel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -285,6 +286,14 @@ export const STRENGTH_CLASSES_TABLE = [
   }
 ];
 
+const REITER = [
+  { id: 'herstellung', label: inhalt.texte.herstellungEigenschaften, icon: Factory },
+  { id: 'zement', label: inhalt.texte.zementHydratation, icon: Layers },
+  { id: 'normzemente', label: inhalt.texte.normzementeDinEn197, icon: BookOpen },
+  { id: 'zementchemie_bogue', label: 'Zementchemie', icon: Flame },
+  { id: 'zusatzstoffe', label: 'Betonzusatzstoffe', icon: FlaskConical },
+] as const;
+
 export default function Bindemittel() {
   const [activeTab, setActiveTab] = useState<'herstellung' | 'zement' | 'normzemente' | 'zementchemie_bogue' | 'zusatzstoffe'>('normzemente');
   const [cementFilter, setCementFilter] = useState<string>('ALLE');
@@ -342,55 +351,7 @@ export default function Bindemittel() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'herstellung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'herstellung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('herstellung')}
-          >
-            <Factory size={16} /><MdText text={inhalt.texte.herstellungEigenschaften} /></button>
-          <button aria-pressed={activeTab === 'zement'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zement' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('zement')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.zementHydratation} /></button>
-          <button aria-pressed={activeTab === 'normzemente'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'normzemente' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('normzemente')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.normzementeDinEn197} /></button>
-          <button aria-pressed={activeTab === 'zementchemie_bogue'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zementchemie_bogue' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('zementchemie_bogue')}
-          >
-            <Flame size={16} /> Zementchemie
-          </button>
-          <button aria-pressed={activeTab === 'zusatzstoffe'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zusatzstoffe' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('zusatzstoffe')}
-          >
-            <FlaskConical size={16} /> Betonzusatzstoffe
-          </button>
-        </div>
+        <ModuleTabs label="Bereiche Bindemittel" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
       {activeTab === 'herstellung' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -820,6 +781,7 @@ export default function Bindemittel() {
           </div>
         </div>
       )}
+        </ModuleTabs>
       </div>
 
       <ModulTest moduleId="bindemittel" />

@@ -258,7 +258,7 @@ export default function Nachbehandlung() {
 
         <FormulaDerivationBox
           title={inhalt.werte.anwendungsbeispielMindestdauerDerNachbeh}
-          zielGleichung="t_{NB} = f(r,\; T_{Oberfläche},\; \text{Expositionsklasse})"
+          zielGleichung="t_{NB} = f(r,\; T_{\text{Oberfläche}},\; \text{Expositionsklasse})"
           normQuelle={inhalt.werte.din104532023}
           schritte={inhalt.daten["Nachbehandlung.schritte_2"]}
           ergebnisHinweis={inhalt.werte.t7TageNachbehandlung}

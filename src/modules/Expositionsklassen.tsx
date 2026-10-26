@@ -24,23 +24,19 @@ import { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } 
 import { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
 import inhalt from '@/content/expositionsklassen/Expositionsklassen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { huellwerte, kWertAnsatz } from '@/src/calc/expositionsklassen';
 export { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } from './expositionsklassen/daten';
 export type { NormExposureClass } from './expositionsklassen/daten';
 export { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
 
-// Rangfolge der Festigkeitsklassen für den Hüllwert-Vergleich
-const STRENGTH_RANKS: Record<string, number> = {
-  'C8/10': 1,
-  'C12/15': 2,
-  'C16/20': 3,
-  'C20/25': 4,
-  'C25/30': 5,
-  'C30/37': 6,
-  'C35/45': 7,
-  'C40/50': 8,
-  'C45/55': 9,
-  'C50/60': 10
-};
+// Rangfolge der Festigkeitsklassen für den Hüllwert-Vergleich: FESTIGKEITS_RANG in src/calc/expositionsklassen.ts
+
+const REITER = [
+  { id: 'grundlagen', label: inhalt.texte.t1GrundlagenKlassenkatalog, icon: BookOpen },
+  { id: 'pruefungen', label: inhalt.texte.t2LaborBaustellenprüfungen, icon: Beaker },
+  { id: 'rechner', label: inhalt.texte.t3InteraktiverHüllwertK, icon: Calculator },
+] as const;
 
 export default function Expositionsklassen() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'pruefungen' | 'rechner'>('grundlagen');
@@ -72,61 +68,11 @@ export default function Expositionsklassen() {
       return null;
     }
 
-    const matched = NORMATIVE_EXPOSURE_CLASSES.filter(c => selectedClasses.includes(c.code));
-    
-    // Strengster (niedrigster) max (w/z)_eq
-    let minWzEq: number | null = null;
-    matched.forEach(c => {
-      if (c.maxWzEq !== null) {
-        if (minWzEq === null || c.maxWzEq < minWzEq) {
-          minWzEq = c.maxWzEq;
-        }
-      }
-    });
-
-    // Höchste Mindestdruckfestigkeitsklasse
-    let highestClass = 'C8/10';
-    let highestRank = 1;
-    matched.forEach(c => {
-      const rank = STRENGTH_RANKS[c.minStrengthClass] || 0;
-      if (rank > highestRank) {
-        highestRank = rank;
-        highestClass = c.minStrengthClass;
-      }
-    });
-
-    // Höchster Mindestzementgehalt z_min
-    let maxCement = 0;
-    matched.forEach(c => {
-      if (c.minCement !== null && c.minCement > maxCement) {
-        maxCement = c.minCement;
-      }
-    });
-
-    // Erforderlicher Mindestluftporengehalt (wenn mindestens eine Klasse LP fordert)
-    const requiresLP = matched.some(c => c.requiresAirEntrainment);
-    let minAirVal: number | null = null;
-    if (requiresLP) {
-      matched.forEach(c => {
-        if (c.minAirContent) {
-          const air = selectedDmax === 32 ? c.minAirContent.dmax32 :
-                      selectedDmax === 16 ? c.minAirContent.dmax16 : c.minAirContent.dmax8;
-          if (minAirVal === null || air > minAirVal) {
-            minAirVal = air;
-          }
-        }
-      });
-    }
-
-    // Größte Mindestbetondeckung c_min,dur
-    let maxCoverDur = 10;
-    matched.forEach(c => {
-      if (c.minCoverDurMm !== null && c.minCoverDurMm > maxCoverDur) {
-        maxCoverDur = c.minCoverDurMm;
-      }
-    });
-
-    const cNom = maxCoverDur + deltaCdev;
+    // Rechenkern src/calc/expositionsklassen.ts: strengste Einzelwerte der gewählten Klassen (DIN 1045-2, Tab. F.2.1/F.2.2;
+    // DIN EN 1992-1-1/NA, Tab. 4.4DE); die Texte der Sonderanforderungen bleiben in content/
+    const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, selectedClasses, selectedDmax, deltaCdev);
+    if (!h) return null;
+    const { minWzEq, highestClass, maxCement, requiresLP, minAirVal, maxCoverDur, cNom } = h;
 
     // Sonderanforderungen (SR-Zement, Hartstoffe, Beschichtung)
     const specialReqs: string[] = [];
@@ -162,34 +108,12 @@ export default function Expositionsklassen() {
   }, [selectedClasses, selectedDmax, deltaCdev]);
 
   // Berechnung k-Wert-Ansatz
+  // Berechnung k-Wert-Ansatz (Rechenkern): Flugasche k_f = 0,40 mit f ≤ 0,33·z; Silikastaub k_s = 1,0 nach DIN 1045-2
+  // (DIN EN 206 nennt bis 2,0; in Deutschland nicht anwendbar) mit s ≤ 0,11·z; z_eq = z + k_f·f + k_s·s
   const kValueCalc = useMemo(() => {
-    // Flugasche: k = 0,40 bei CEM I; max f/z = 0,33
-    const maxF = zementGehalt * 0.33;
-    const effectiveF = Math.min(flugascheGehalt, maxF);
-    const kF = 0.40;
-
-    // Silikastaub: k = 1,0 nach DIN 1045-2 (DIN EN 206 nennt bis 2,0; in Deutschland nicht anwendbar); max s/z = 0,11
-    const rawWz = zementGehalt > 0 ? wasserGehalt / zementGehalt : 0;
-    const kS = 1.0;
-    const maxS = zementGehalt * 0.11;
-    const effectiveS = Math.min(silikaGehalt, maxS);
-
-    // Äquivalenter Bindemittelgehalt
-    const beq = zementGehalt + kF * effectiveF + kS * effectiveS;
-    const wzEq = beq > 0 ? wasserGehalt / beq : 0;
-
-    // Mindestzementgehalt-Check (in D nach DIN 1045-2: bei Anrechnung von Flugasche darf Zementgehalt z_min um max. kf * f abgesenkt werden, aber i.d.R. mind. 240 bzw. 270 kg/m³)
-    return {
-      rawWz,
-      maxF,
-      effectiveF,
-      kF,
-      maxS,
-      effectiveS,
-      kS,
-      beq,
-      wzEq
-    };
+    const k = kWertAnsatz({ zement: zementGehalt, wasser: wasserGehalt, flugasche: flugascheGehalt, silika: silikaGehalt });
+    const { rawWz, maxF, effectiveF, kF, maxS, effectiveS, kS, beq, wzEq } = k;
+    return { rawWz, maxF, effectiveF, kF, maxS, effectiveS, kS, beq, wzEq };
   }, [zementGehalt, wasserGehalt, flugascheGehalt, silikaGehalt]);
 
   return (
@@ -213,38 +137,9 @@ export default function Expositionsklassen() {
           <p><MdText text={inhalt.texte.dieBemessungDauerhafterBetonbauteile} /></p>
         </div>
 
-        {/* TAB-NAVIGATION (4-Stufen-Lehrpfad) */}
-        <div className="flex flex-wrap gap-2 pt-5 border-t border-home-grau/20 mt-4">
-          <button aria-pressed={activeTab === 'grundlagen'}
-            onClick={() => setActiveTab('grundlagen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.t1GrundlagenKlassenkatalog} /></button>
-          <button aria-pressed={activeTab === 'pruefungen'}
-            onClick={() => setActiveTab('pruefungen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'pruefungen'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Beaker size={16} /><MdText text={inhalt.texte.t2LaborBaustellenprüfungen} /></button>
-          <button aria-pressed={activeTab === 'rechner'}
-            onClick={() => setActiveTab('rechner')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'rechner'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.t3InteraktiverHüllwertK} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Lehrpfad Expositionsklassen" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {/* ===================================================================== */}
       {/* TAB 1: GRUNDLAGEN & NORMATIVER KLASSENKATALOG                          */}
       {/* ===================================================================== */}
@@ -767,6 +662,7 @@ export default function Expositionsklassen() {
 
         </div>
       )}
+      </ModuleTabs>
 
       <FormulaDerivationBox
         title={inhalt.werte.anwendungsbeispielBetondeckungEinerAußen}

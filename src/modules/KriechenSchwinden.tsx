@@ -24,6 +24,7 @@ import { Timer, Activity, Layers, Clock, Sliders } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/kriechenschwinden/KriechenSchwinden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -63,6 +64,12 @@ export function ec2KriechenSchwinden(fck: number, rh: number, h0: number, t0T: n
   const epsCa = (t: number) => (1 - Math.exp(-0.2 * Math.sqrt(t))) * epsCaInf;
   return { fcm, Ecm, phi0, betaH, kh, epsCd0, epsCaInf, t0eff: t0, phi, epsCd, epsCa };
 }
+
+const REITER = [
+  { id: 'beton', label: 'Beton', icon: Activity },
+  { id: 'stahl', label: 'Spannstahl', icon: Layers },
+  { id: 'rheologie', label: inhalt.texte.rheologieSäulenverformung, icon: Sliders },
+] as const;
 
 export default function KriechenSchwinden() {
   // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
@@ -922,42 +929,13 @@ export default function KriechenSchwinden() {
           <p><MdText text={inhalt.texte.verformungsverhaltenVonBetonKriechen} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={material === 'beton'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              material === 'beton'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMaterial('beton')}
-          >
-            <Activity size={16} /> Beton
-          </button>
-          <button aria-pressed={material === 'stahl'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              material === 'stahl'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMaterial('stahl')}
-          >
-            <Layers size={16} /> Spannstahl
-          </button>
-          <button aria-pressed={material === 'rheologie'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              material === 'rheologie'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setMaterial('rheologie')}
-          >
-            <Sliders size={16} /><MdText text={inhalt.texte.rheologieSäulenverformung} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Werkstoff" tabs={REITER} aktiv={material} onWechsel={setMaterial} className="[&>[role=tablist]]:mb-6">
       {material === 'beton' && renderBeton()}
       {material === 'stahl' && renderStahl()}
       {material === 'rheologie' && renderRheologieSimulator()}
+      </ModuleTabs>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/baustoffkunde/Baustoffkunde.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface HistoricalPeriod {
   era: string;
@@ -46,6 +47,12 @@ interface Pioneer {
   achievements: string[];
   quote: string;
 }
+
+const REITER = [
+  { id: 'systematik', label: inhalt.texte.systematikFachordnung, icon: Layers },
+  { id: 'historie', label: inhalt.texte.historischeEntwicklung, icon: Clock },
+  { id: 'pioniere', label: inhalt.texte.bedeutendePioniere, icon: Users },
+] as const;
 
 export default function Baustoffkunde() {
   const [activeTab, setActiveTab] = useState<'systematik' | 'historie' | 'pioniere'>('systematik');
@@ -233,37 +240,7 @@ export default function Baustoffkunde() {
         </div>
 
         {/* Pure styling tab navigation to match Kalk.tsx */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'systematik'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'systematik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('systematik')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.systematikFachordnung} /></button>
-          
-          <button aria-pressed={activeTab === 'historie'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'historie' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('historie')}
-          >
-            <Clock size={16} /><MdText text={inhalt.texte.historischeEntwicklung} /></button>
-
-          <button aria-pressed={activeTab === 'pioniere'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'pioniere' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('pioniere')}
-          >
-            <Users size={16} /><MdText text={inhalt.texte.bedeutendePioniere} /></button>
-        </div>
+        <ModuleTabs label="Bereiche Baustoffkunde" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* 2. DYNAMIC CONTENT AREA BASED ON TAB */}
         
@@ -670,6 +647,7 @@ export default function Baustoffkunde() {
 
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

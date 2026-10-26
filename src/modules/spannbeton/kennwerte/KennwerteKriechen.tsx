@@ -114,7 +114,7 @@ export default function KennwerteKriechen() {
               </div>
               <p className="text-[11px] text-amber-900/90 leading-relaxed"><MdText text={inhalt.texte.dieKriechzahlVarphiInfty} /></p>
               <div className="text-center font-mono text-[11px] py-1 bg-amber-50/60 rounded border border-amber-200/60">
-                <InlineMath math="\varepsilon_{cc}(\infty, t_0) = \varepsilon_{\text{el}} \cdot \varphi(\infty, t_0) = \frac{\sigma_c(t_0)}{E_{cm}} \cdot \varphi(\infty, t_0) \quad [\text{in ‰ bzw. mm/m}]" />
+                <InlineMath math="\varepsilon_{cc}(\infty, t_0) = \varepsilon_{\text{el}} \cdot \varphi(\infty, t_0) = \frac{\sigma_c(t_0)}{E_{cm}} \cdot \varphi(\infty, t_0) \quad [\text{in \char8240{} bzw. mm/m}]" />
               </div>
             </div>
 
@@ -129,7 +129,7 @@ export default function KennwerteKriechen() {
                       <span><MdText text={inhalt.texte.standardEndkriechzahlC3037} /></span>
                       <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 2{,}0 \dots 2{,}5" /></span>
                     </div>
-                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}60 \dots 1{,}05\,\text{‰}" /></strong><MdText text={inhalt.texte.t060Bis1} /></div>
+                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}60 \dots 1{,}05\,\text{\char8240}" /></strong><MdText text={inhalt.texte.t060Bis1} /></div>
                     <div className="text-[10px] text-slate-500"><MdText text={inhalt.texte.gesamtstauchungVarepsilonTextEl} /></div>
                   </li>
 
@@ -138,7 +138,7 @@ export default function KennwerteKriechen() {
                       <span><MdText text={inhalt.texte.massiveBrückenH0} /></span>
                       <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 1{,}5 \dots 2{,}0" /></span>
                     </div>
-                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung2} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}40 \dots 0{,}80\,\text{‰}" /></strong><MdText text={inhalt.texte.t040Bis0} /></div>
+                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung2} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}40 \dots 0{,}80\,\text{\char8240}" /></strong><MdText text={inhalt.texte.t040Bis0} /></div>
                     <div className="text-[10px] text-slate-500"><MdText text={inhalt.texte.durchHoheWirksameDicke} /></div>
                   </li>
 
@@ -147,7 +147,7 @@ export default function KennwerteKriechen() {
                       <span><MdText text={inhalt.texte.schlankeHochbaudeckenH0} /></span>
                       <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 2{,}8 \dots 3{,}5" /></span>
                     </div>
-                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung3} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}80 \dots 1{,}45\,\text{‰}" /></strong><MdText text={inhalt.texte.t080Bis1} /></div>
+                    <div className="text-slate-700"><MdText text={inhalt.texte.kriechdehnung3} /><strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}80 \dots 1{,}45\,\text{\char8240}" /></strong><MdText text={inhalt.texte.t080Bis1} /></div>
                     <div className="text-[10px] text-slate-500"><MdText text={inhalt.texte.trockeneInnenraumluftUndDünne} /></div>
                   </li>
 
