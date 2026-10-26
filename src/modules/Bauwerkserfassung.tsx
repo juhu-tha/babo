@@ -10,6 +10,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/bauwerkserfassung/Bauwerkserfassung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { verformterDruckstab, KMOD, GAMMA_M_HOLZ } from '@/src/calc/holzbau';
 
 type ErfassungReiter = 'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung';
 const REITER: readonly ModulTab<ErfassungReiter>[] = [
@@ -18,6 +20,9 @@ const REITER: readonly ModulTab<ErfassungReiter>[] = [
   { id: 'leica_workflow', label: inhalt.texte.leicaPunktwolkenWorkflow.trim(), icon: Monitor },
   { id: 'tragwerksplanung', label: inhalt.texte.bimStatikRevitRstab.trim(), icon: Calculator },
 ];
+
+// Kennwerte nach DIN EN 338 (wie bisher im Modul hinterlegt); k_mod = 0,9 (kurze Lasteinwirkung, NKL 1/2), γ_M = 1,3
+const KLASSEN = { C16: { fmk: 16, fc0k: 17, E0mean: 8000 }, C24: { fmk: 24, fc0k: 21, E0mean: 11000 }, C30: { fmk: 30, fc0k: 23, E0mean: 12000 }, D30: { fmk: 30, fc0k: 23, E0mean: 12000 } } as const;
 
 export default function Bauwerkserfassung() {
   const [activeSubTab, setActiveSubTab] = useState<ErfassungReiter>('grundlagen');
@@ -34,81 +39,11 @@ export default function Bauwerkserfassung() {
   const [initialDeformation, setInitialDeformation] = useState<number>(45); // e_0 in mm (visualized deflection)
   const [woodClass, setWoodClass] = useState<'C16' | 'C24' | 'C30' | 'D30'>('C24');
 
-  // Wood parameters according to DIN EN 1995 (Eurocode 5)
-  // Design strength values (f_m_d = f_m_k * k_mod / gamma_M)
-  // Assuming k_mod = 0.9 (short-term load like snow), gamma_M = 1.3 (solid wood)
-  const woodParams = useMemo(() => {
-    const f_m_k = woodClass === 'C16' ? 16 : (woodClass === 'C24' ? 24 : (woodClass === 'C30' ? 30 : 30));
-    const f_c_0_k = woodClass === 'C16' ? 17 : (woodClass === 'C24' ? 21 : (woodClass === 'C30' ? 23 : 23));
-    const E_0_mean = woodClass === 'C16' ? 8000 : (woodClass === 'C24' ? 11000 : (woodClass === 'C30' ? 12000 : 12000));
-    
-    const k_mod = 0.9;
-    const gamma_M = 1.3;
-    
-    return {
-      f_m_d: (f_m_k * k_mod) / gamma_M, // Bending design stress
-      f_c_0_d: (f_c_0_k * k_mod) / gamma_M, // Compression design stress
-      E_0_mean
-    };
-  }, [woodClass]);
-
-  // Combined compression + bending stress calculation including 2nd order theory approximation (verformungsabhängig)
-  const staticsResults = useMemo(() => {
-    const b = rafterWidth;
-    const h = rafterHeight;
-    const L = spanLength;
-    const N_d = axialForce * 1000; // N
-    const q_d = bendingLoad / 1000; // N/mm
-    const e_0 = initialDeformation; // mm
-
-    // Cross-section props
-    const A = b * h; // mm^2
-    const W = (b * Math.pow(h, 2)) / 6; // mm^3
-    const I = (b * Math.pow(h, 3)) / 12; // mm^4
-
-    // Primary stresses (idealized straight rafter)
-    const M_q_d = (q_d * Math.pow(L, 2)) / 8; // Nmm (bending moment from transverse load)
-    const sigma_m_d_primary = M_q_d / W; // N/mm^2 (primary bending stress)
-    const sigma_c_d = N_d / A; // N/mm^2 (direct axial compression stress)
-
-    // Secondary stresses due to measured deformation e_0 (1st order eccentricity)
-    const M_e_d = N_d * e_0; // Nmm (eccentricity moment)
-    const sigma_m_d_eccentric = M_e_d / W; // N/mm^2 (bending stress from eccentricity)
-
-    // Euler buckling load (approximation for premium effect)
-    const E = woodParams.E_0_mean;
-    const N_crit = (Math.pow(Math.PI, 2) * E * I) / Math.pow(L, 2); // Euler Buckling Load in N
-    
-    // Magnification factor (1 / (1 - N_d / N_crit)) for second-order premium effect
-    const alpha_crit = N_crit / N_d;
-    const magFactor = alpha_crit > 1 ? alpha_crit / (alpha_crit - 1) : 1.5;
-
-    // Total moment of combined bends (with premium second-order expansion)
-    const M_total = (M_q_d + M_e_d) * magFactor;
-    const sigma_m_d_total = M_total / W;
-
-    // Design verification following Eurocode 5 (EC5) formula:
-    // sigma_c_d / f_c_0_d + sigma_m_d_total / f_m_d <= 1.0 (approximative)
-    const limitRatio = (sigma_c_d / woodParams.f_c_0_d) + (sigma_m_d_total / woodParams.f_m_d);
-    
-    // Idealized ratio ignoring measured deformation
-    const limitRatioIdeal = (sigma_c_d / woodParams.f_c_0_d) + ((M_q_d * magFactor) / W / woodParams.f_m_d);
-
-    return {
-      A,
-      W,
-      I,
-      sigma_c_d,
-      sigma_m_d_primary,
-      sigma_m_d_eccentric,
-      sigma_m_d_total,
-      N_crit_kN: N_crit / 1000,
-      magFactor,
-      limitRatio: limitRatio * 100, // as percentage
-      limitRatioIdeal: limitRatioIdeal * 100, // as percentage
-      unsafeRatioDelta: (limitRatio - limitRatioIdeal) * 100 // dangerous error gap
-    };
-  }, [rafterWidth, rafterHeight, spanLength, axialForce, bendingLoad, initialDeformation, woodParams]);
+  // Rechenkern src/calc/holzbau.ts: Druck und Biegung mit gemessener Vorverformung e₀, Moment nach Theorie II. Ordnung
+  const staticsResults = useMemo(() => verformterDruckstab({
+    b: rafterWidth, h: rafterHeight, l: spanLength, nd: axialForce, qd: bendingLoad, e0: initialDeformation,
+    ...KLASSEN[woodClass], kmod: KMOD[1].krt, gammaM: GAMMA_M_HOLZ,
+  }), [rafterWidth, rafterHeight, spanLength, axialForce, bendingLoad, initialDeformation, woodClass]);
 
   return (
     <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in">
@@ -420,7 +355,7 @@ export default function Bauwerkserfassung() {
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterWidth}
-                        onChange={(e) => setRafterWidth(Math.max(40, parseInt(e.target.value) || 1))}
+                        onChange={(e) => setRafterWidth(Number(e.target.value))}
                       />
                     </div>
                     <div>
@@ -429,7 +364,7 @@ export default function Bauwerkserfassung() {
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterHeight}
-                        onChange={(e) => setRafterHeight(Math.max(60, parseInt(e.target.value) || 1))}
+                        onChange={(e) => setRafterHeight(Number(e.target.value))}
                       />
                     </div>
                   </div>
@@ -440,7 +375,7 @@ export default function Bauwerkserfassung() {
                       type="number" min="0"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                       value={spanLength}
-                      onChange={(e) => setSpanLength(Math.max(1000, parseInt(e.target.value) || 1))}
+                      onChange={(e) => setSpanLength(Number(e.target.value))}
                     />
                   </div>
 
@@ -452,7 +387,7 @@ export default function Bauwerkserfassung() {
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={axialForce}
-                        onChange={(e) => setAxialForce(Math.max(0, parseFloat(e.target.value) || 0))}
+                        onChange={(e) => setAxialForce(Number(e.target.value))}
                       />
                     </div>
                     <div>
@@ -462,7 +397,7 @@ export default function Bauwerkserfassung() {
                         step="0.1"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={bendingLoad}
-                        onChange={(e) => setBendingLoad(Math.max(0, parseFloat(e.target.value) || 0))}
+                        onChange={(e) => setBendingLoad(Number(e.target.value))}
                       />
                     </div>
                   </div>
@@ -497,7 +432,7 @@ export default function Bauwerkserfassung() {
                       </div>
                       <div><MdText text={inhalt.texte.spannungSigmaCD} /><strong className="text-slate-800">{formatDeZahl(staticsResults.sigma_c_d, 2)} N/mm²</strong>
                       </div>
-                      <div><MdText text={inhalt.texte.sparrenAuslastungC24Ec5} /><strong className="text-slate-800">{formatDeZahl(woodParams.f_m_d, 1)} N/mm²</strong>
+                      <div><MdText text={inhalt.texte.sparrenAuslastungC24Ec5} /><strong className="text-slate-800">{formatDeZahl(staticsResults.f_md, 1)} N/mm²</strong>
                       </div>
                     </div>
 
@@ -536,9 +471,10 @@ export default function Bauwerkserfassung() {
                       </div>
                     </div>
 
+                    <EingabeHinweise hinweise={staticsResults.hinweise} />
                     {/* Stress delta message */}
                     <div className="p-3.5 rounded-lg border text-xs leading-normal">
-                      {staticsResults.limitRatio > 100 ? (
+                      {!staticsResults.gueltig ? null : staticsResults.limitRatio > 100 ? (
                         <div className="text-red-800 border-red-200 bg-red-50 p-2 rounded"><MdText text={inhalt.texte.einsturzgefahrExzentrischDurchDen} />{formatDeZahl(staticsResults.sigma_m_d_eccentric, 2)}<MdText text={inhalt.texte.nMmÜberschreitetDas} /><strong>{formatDeZahl(staticsResults.limitRatio - 100, 1)} %</strong><MdText text={inhalt.texte.dieBerechnungMitIdealisierten} />{formatDeZahl(staticsResults.limitRatioIdeal, 1)}<MdText text={inhalt.texte.hätteEinVermeintlichSicheres} /></div>
                       ) : (
                         <div className="text-slate-700 border-indigo-100 bg-indigo-50/20 p-2 rounded"><MdText text={inhalt.texte.tragverhaltenStabilDasVerformte} />{formatDeZahl(staticsResults.limitRatio, 1)}<MdText text={inhalt.texte.dieAuslastungSteigtDurch} /><strong>{formatDeZahl(staticsResults.limitRatioIdeal, 1)} %</strong> auf <strong>{formatDeZahl(staticsResults.limitRatio, 1)} %</strong><MdText text={inhalt.texte.interaktionCDF} /></div>

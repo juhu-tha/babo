@@ -101,3 +101,45 @@ export function stoffraum(e: MischungEingabe) {
     rohdichte: fehlerhaft ? NaN : (e.zement + e.wasser + e.fa + e.sf + e.hues + e.biochar + e.zusatzmittel + e.stahlfaser + e.ppFaser + masseGestein) / 1000,
   };
 }
+
+// ---------------------------------------------------------------------------------------------------
+// Walz-Kurven (src/modules/mischungsberechnung/WalzKurvenSection.tsx, AP 4.2 Runde 3)
+// Näherung nach dem Abrams-Ansatz f_cm,28 = A / B^(w/z) mit B = 5 und A = 100 / 120 / 140 N/mm² für die
+// Zementfestigkeitsklassen 32,5 / 42,5 / 52,5 (Lehrwerte, keine Normwerte; maßgebend sind Erstprüfungen).
+// Geprüft in tests/demosBeton.test.ts.
+// ---------------------------------------------------------------------------------------------------
+
+export type WalzKlasse = 32.5 | 42.5 | 52.5;
+export const WALZ_KLASSEN: readonly WalzKlasse[] = [32.5, 42.5, 52.5];
+/** Lehrwerte A [N/mm²] je Zementfestigkeitsklasse */
+export const WALZ_A: Readonly<Record<WalzKlasse, number>> = { 32.5: 100, 42.5: 120, 52.5: 140 };
+/** Basis B des Abrams-Ansatzes */
+export const WALZ_B = 5;
+/** Darstellungsbereich der Kurven (w/z) */
+export const WALZ_WZ_BEREICH = { min: 0.35, max: 0.8, schritt: 0.05 } as const;
+
+/** Mittlere Würfeldruckfestigkeit nach 28 d [N/mm²] aus w/z und Zementfestigkeitsklasse */
+export const walzFestigkeit = (wz: number, klasse: WalzKlasse) => WALZ_A[klasse] / Math.pow(WALZ_B, wz);
+
+/** Stützstellen 0,35 … 0,80 im Abstand 0,05 (10 Werte, ohne Gleitkomma-Aufsummierung) */
+export function walzStuetzstellen(): number[] {
+  const { min, max, schritt } = WALZ_WZ_BEREICH;
+  const n = Math.round((max - min) / schritt);
+  return Array.from({ length: n + 1 }, (_, i) => Math.round((min + i * schritt) * 100) / 100);
+}
+
+export function walzKurve(wz: number, klasse: WalzKlasse) {
+  const hinweise: Hinweis[] = [];
+  if (!istEndlich(wz) || !(wz > 0)) hinweise.push({ stufe: 'fehler', feld: 'wz', text: 'Der Wasserzementwert muss größer als 0 sein.' });
+  else if (wz < WALZ_WZ_BEREICH.min || wz > WALZ_WZ_BEREICH.max) hinweise.push({ stufe: 'warnung', feld: 'wz', text: 'Der w/z-Wert liegt außerhalb des dargestellten Bereichs 0,35 bis 0,80 – die Näherung ist dort nicht abgesichert.' });
+  if (!(klasse in WALZ_A)) hinweise.push({ stufe: 'fehler', feld: 'klasse', text: 'Unbekannte Zementfestigkeitsklasse.' });
+  const fehler = hinweise.some(x => x.stufe === 'fehler');
+  const stuetzstellen = walzStuetzstellen();
+  return {
+    festigkeit: fehler ? NaN : walzFestigkeit(wz, klasse),
+    stuetzstellen,
+    kurven: WALZ_KLASSEN.map(k => ({ klasse: k, werte: stuetzstellen.map(x => walzFestigkeit(x, k)) })),
+    gueltig: !fehler,
+    hinweise,
+  };
+}

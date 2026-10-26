@@ -15,8 +15,10 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/spannbeton/SpannbetonDehnungsAnimation.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { dehnungsZustand, DEHNUNG_TRAEGER, type Spanngliedlage } from '@/src/calc/spannbeton';
 
-export type TendonTrajectoryType = 'centric' | 'straight_bottom' | 'parabolic';
+export type TendonTrajectoryType = Spanngliedlage;
 
 export default function SpannbetonDehnungsAnimation() {
   // Träger- & Systemzustand (Manuelle Schieberegler-Steuerung)
@@ -37,209 +39,19 @@ export default function SpannbetonDehnungsAnimation() {
   const [activeDisplayMode, setActiveDisplayMode] = useState<'dehnung' | 'spannung' | 'superposition'>('dehnung');
   const [showExplanation, setShowExplanation] = useState<boolean>(true);
 
-  // Feste Querschnitts- und Materialparameter (Einfeldträger L=20m, C40/50 nach DIN EN 1992-1-1)
-  const L = 20.0; // m
-  const b = 500.0; // mm
-  const h = 1000.0; // mm
-  const Ac = b * h; // 500.000 mm²
-  const Ic = (b * Math.pow(h, 3)) / 12.0; // 41.666.666.667 mm⁴
-  const Wc = (b * Math.pow(h, 2)) / 6.0; // 83.333.333 mm³
-  const ku = h / 6.0; // 166.67 mm (Kernweite)
-  const Ecm = 35000.0; // N/mm² (MPa)
-  const fctm = 3.5; // N/mm² (axiale Betonzugfestigkeit)
-  const fck = 40.0; // N/mm²
+  // Feste Querschnitts- und Materialparameter (Einfeldträger L = 20 m, C40/50) und Rechnung im Rechenkern
+  const { L, h, fctm } = DEHNUNG_TRAEGER;
 
-  // Berechnungen für den aktuellen Zustand abhängig von Spanngliedlage und Schnittposition
   const calc = useMemo(() => {
-    // 1. Geometrische Exzentrizitäten nach Spanngliedlage
-    let effectiveEpMid = 0; // mm in Feldmitte
-    let effectiveEpSup = 0; // mm am Auflager
-    let u_kN_m = 0; // Umlenkkraft in kN/m
-    let w_u_m = 0; // Durchbiegung/Überhöhung aus Vorspannung
-
-    if (tendonTrajectory === 'centric') {
-      // a) Zentrisch in Schwerachse
-      effectiveEpMid = 0;
-      effectiveEpSup = 0;
-      u_kN_m = 0;
-      w_u_m = 0;
-    } else if (tendonTrajectory === 'straight_bottom') {
-      // b) Gerade unten mit Abstand Betondeckung (konstante Exzentrizität)
-      effectiveEpMid = eccentricity;
-      effectiveEpSup = eccentricity;
-      u_kN_m = 0; // Keine Krümmung im Feld -> keine kontinuierlichen Umlenkkräfte
-      // Durchbiegung aus konstantem Vormoment M_p = -P * e_p an beiden Enden:
-      // w_u = (M_p * L^2) / (8 * E * I)
-      const Mp_const = prestressForce * (eccentricity / 1000.0); // kNm
-      w_u_m = (Mp_const * 1000.0 * Math.pow(L, 2)) / (8.0 * Ecm * 1e6 * (Ic * 1e-12));
-    } else {
-      // c) Parabolisch entsprechend Momenteneinwirkung
-      effectiveEpMid = eccentricity;
-      effectiveEpSup = 0; // Am Auflager zentrisch
-      u_kN_m = (8.0 * prestressForce * (eccentricity / 1000.0)) / Math.pow(L, 2);
-      // Durchbiegung aus kontinuierlicher Umlenkkraft u:
-      const u_SI = u_kN_m * 1000.0; // N/m
-      w_u_m = (5.0 * u_SI * Math.pow(L, 4)) / (384.0 * (Ecm * 1e6) * (Ic * 1e-12));
-    }
-
-    // Eigengewicht des Trägers g = 25 kN/m³ * b * h (500 x 1000 mm -> 12,5 kN/m)
-    const beamG = (25.0 * b * h) / 1e6; // 12.5 kN/m
-    const totalQ = beamG + loadQ; // Gesamte Streckenlast (Eigengewicht + Zusatzlast)
-
-    // 2. Äußeres Lastmoment M_q aus Gesamteinwirkung (g + q)
-    const Mq_mid = (totalQ * Math.pow(L, 2)) / 8.0; // kNm in Feldmitte
-    const Mq_sup = 0; // kNm am Auflager
-
-    // 3. Vormomente M_p
-    const Mp_mid = -(prestressForce * (effectiveEpMid / 1000.0)); // kNm
-    const Mp_sup = -(prestressForce * (effectiveEpSup / 1000.0)); // kNm
-
-    // 4. Netto-Biegemomente
-    const Mnet_mid = Mq_mid + Mp_mid;
-    const Mnet_sup = Mq_sup + Mp_sup;
-
-    // 5. Normalspannung aus zentrischer Vorspannkraft P (Druck = negativ)
-    const sigma_N = -(prestressForce * 1000.0) / Ac; // MPa
-
-    // 6. Schnittbezogene Werte (Feldmitte vs. Auflager)
-    const isMidspan = viewSection === 'midspan';
-    const activeEp = isMidspan ? effectiveEpMid : effectiveEpSup;
-    const activeMq = isMidspan ? Mq_mid : Mq_sup;
-    const activeMp = isMidspan ? Mp_mid : Mp_sup;
-    const activeMnet = isMidspan ? Mnet_mid : Mnet_sup;
-
-    // Biegespannungen aus aktivem Netto-Biegemoment
-    const sigma_M_top = -(activeMnet * 1e6) / Wc; // MPa
-    const sigma_M_bot = +(activeMnet * 1e6) / Wc; // MPa
-
-    // Gesamtspannungen am betrachteten Querschnitt
-    const sigma_top = sigma_N + sigma_M_top; // MPa
-    const sigma_bot = sigma_N + sigma_M_bot; // MPa
-    const sigma_max = Math.max(sigma_top, sigma_bot);
-    const sigma_min = Math.min(sigma_top, sigma_bot);
-
-    // Dehnungen in Promille (‰ = 10^-3)
-    const eps_top = (sigma_top / Ecm) * 1000.0;
-    const eps_bot = (sigma_bot / Ecm) * 1000.0;
-
-    // Dehnung auf Spanngliedebene
-    const sigma_tendon = sigma_N + (activeMnet * 1e6 / Ic) * activeEp;
-    const eps_tendon = (sigma_tendon / Ecm) * 1000.0;
-
-    // Einzelkomponenten der Dehnungsüberlagerung
-    const eps_N = (sigma_N / Ecm) * 1000.0;
-    const eps_Mp_top = -((activeMp * 1e6) / Wc / Ecm) * 1000.0;
-    const eps_Mp_bot = +((activeMp * 1e6) / Wc / Ecm) * 1000.0;
-    const eps_Mq_top = -((activeMq * 1e6) / Wc / Ecm) * 1000.0;
-    const eps_Mq_bot = +((activeMq * 1e6) / Wc / Ecm) * 1000.0;
-
-    // Nulldurchgang der Spannungs-/Dehnungsgeraden (x von Oberkante)
-    let neutralAxisDepth = 0;
-    const deltaSigma = sigma_bot - sigma_top;
-    if (Math.abs(deltaSigma) > 1e-4) {
-      neutralAxisDepth = (-sigma_top / deltaSigma) * h;
-    } else {
-      neutralAxisDepth = h / 2;
-    }
-
-    // Auflager-Sonderzustand für die Bewertung von Kopfzugrissen (bei gerader Spanngliedlage unten)
-    const sigma_top_support = sigma_N - (Mp_sup * 1e6) / Wc; // = -P/Ac + P*ep/Wc
-    const hasSupportHeadCracks = tendonTrajectory === 'straight_bottom' && sigma_top_support > fctm;
-
-    // Durchbiegung der Biegelinie in Feldmitte
-    const q_SI = totalQ * 1000.0; // N/m (Eigengewicht + Zusatzlast)
-    const w_q_m = (5.0 * q_SI * Math.pow(L, 4)) / (384.0 * (Ecm * 1e6) * (Ic * 1e-12));
-    const w_net_mm = (w_q_m - w_u_m) * 1000.0; // positiv = Durchbiegung nach unten, negativ = Überhöhung
-
-    // Grenzwerte für Schnelltasten (bezogen auf Feldmitte)
-    let P_dek = 0;
-    let P_cr = 0;
-    let P_bal = 0;
-    if (effectiveEpMid > 0) {
-      P_dek = (Mq_mid * 1000.0) / (ku + effectiveEpMid);
-      P_cr = Math.max(0, (Mq_mid * 1000.0 - fctm * (Wc / 1000.0)) / (ku + effectiveEpMid));
-      // Lastausgleich u = g + q: P_bal = (g + q) * L^2 / (8 * ep)
-      P_bal = Math.round((totalQ * Math.pow(L, 2)) / (8.0 * (effectiveEpMid / 1000.0)));
-    } else {
-      // Zentrisch: sigma_u = -P/Ac + Mq/Wc
-      P_dek = (Mq_mid * 1000.0 * Ac) / Wc;
-      P_cr = Math.max(0, ((Mq_mid * 1000.0 / Wc) - fctm) * Ac);
-      P_bal = 0;
-    }
-
-    // Riss- und Tragwerksstadium (physikalisch konsistent)
-    let phaseKey: 'cracked' | 'limited' | 'decompressed' | 'full' | 'camber' | 'support_crack' = 'cracked';
-    let phaseTitle = '';
-    let phaseColor = '';
-    let phaseBadge = '';
-
-    if (hasSupportHeadCracks) {
-      phaseKey = 'support_crack';
-      phaseTitle = inhalt.werte.gefahrKopfzugrisseAmAuflager;
-      phaseColor = 'text-red-800 bg-red-50 border-red-300';
-      phaseBadge = 'bg-red-700 text-white';
-    } else if (sigma_top <= 0 && sigma_bot <= 0) {
-      // Voller Querschnitt überdrückt (reiner Druck an beiden Rändern)
-      if (w_net_mm < -0.5) {
-        phaseKey = 'camber';
-        phaseTitle = inhalt.werte.vollÜberdrücktMitÜberhöhung;
-        phaseColor = 'text-blue-900 bg-blue-50 border-blue-200';
-        phaseBadge = 'bg-blue-600 text-white';
-      } else {
-        phaseKey = 'full';
-        phaseTitle = inhalt.werte.vollÜberdrücktZustandI;
-        phaseColor = 'text-emerald-800 bg-emerald-50 border-emerald-200';
-        phaseBadge = 'bg-emerald-600 text-white';
-      }
-    } else if (sigma_max <= fctm) {
-      phaseKey = 'limited';
-      phaseTitle = inhalt.werte.zustandIMitZugspannungen;
-      phaseColor = 'text-amber-800 bg-amber-50 border-amber-200';
-      phaseBadge = 'bg-amber-500 text-white';
-    } else {
-      phaseKey = 'cracked';
-      phaseTitle = inhalt.werte.rissbildungZustandIiMax;
-      phaseColor = 'text-red-700 bg-red-50 border-red-200';
-      phaseBadge = 'bg-red-600 text-white';
-    }
-
-    return {
-      effectiveEpMid,
-      effectiveEpSup,
-      activeEp,
-      u_kN_m,
-      w_u_m,
-      Mq: activeMq,
-      Mp: activeMp,
-      Mnet: activeMnet,
-      Mq_mid,
-      Mp_mid,
-      Mnet_mid,
-      sigma_N,
-      sigma_M_top,
-      sigma_M_bot,
-      sigma_top,
-      sigma_bot,
-      sigma_top_support,
-      hasSupportHeadCracks,
-      eps_top,
-      eps_bot,
-      eps_tendon,
-      eps_N,
-      eps_Mp_top,
-      eps_Mp_bot,
-      eps_Mq_top,
-      eps_Mq_bot,
-      neutralAxisDepth,
-      P_dek,
-      P_cr,
-      P_bal,
-      w_net_mm,
-      phaseKey,
-      phaseTitle,
-      phaseColor,
-      phaseBadge,
-    };
+    const z = dehnungsZustand({ P: prestressForce, q: loadQ, ep: eccentricity, lage: tendonTrajectory, schnitt: viewSection });
+    const darstellung = {
+      support_crack: { phaseTitle: inhalt.werte.gefahrKopfzugrisseAmAuflager, phaseColor: 'text-red-800 bg-red-50 border-red-300', phaseBadge: 'bg-red-700 text-white' },
+      camber: { phaseTitle: inhalt.werte.vollÜberdrücktMitÜberhöhung, phaseColor: 'text-blue-900 bg-blue-50 border-blue-200', phaseBadge: 'bg-blue-600 text-white' },
+      full: { phaseTitle: inhalt.werte.vollÜberdrücktZustandI, phaseColor: 'text-emerald-800 bg-emerald-50 border-emerald-200', phaseBadge: 'bg-emerald-600 text-white' },
+      limited: { phaseTitle: inhalt.werte.zustandIMitZugspannungen, phaseColor: 'text-amber-800 bg-amber-50 border-amber-200', phaseBadge: 'bg-amber-500 text-white' },
+      cracked: { phaseTitle: inhalt.werte.rissbildungZustandIiMax, phaseColor: 'text-red-700 bg-red-50 border-red-200', phaseBadge: 'bg-red-600 text-white' },
+    }[z.zustand];
+    return { ...z, phaseKey: z.zustand, ...darstellung };
   }, [prestressForce, loadQ, eccentricity, tendonTrajectory, viewSection]);
 
   // Handlers für manuelle Kraftanpassung
@@ -303,6 +115,7 @@ export default function SpannbetonDehnungsAnimation() {
             </span>
           </div>
         </div>
+        <EingabeHinweise hinweise={calc.hinweise} />
       </div>
 
       {/* 1. SELEKTOR DER SPANNGLIEDLAGE: a) Zentrisch, b) Gerade unten, c) Parabolisch */}
@@ -1114,7 +927,7 @@ export default function SpannbetonDehnungsAnimation() {
                     M_p = {formatDeZahl(calc.Mp, 0)} kNm
                   </div>
                   <div className="text-[10px] text-slate-500 font-mono">
-                    σ_Mp = {formatDeZahl((-calc.Mp * 1e6) / Wc, 1)} MPa
+                    σ_Mp = {formatDeZahl(calc.sigma_Mp, 1)} MPa
                   </div>
                   <span className="text-[9px] text-slate-400 block">
                     {tendonTrajectory === 'centric' ? inhalt.werte.keinVormomentEp0 : inhalt.werte.gegenkrümmungDurchExzentrizität}
@@ -1127,7 +940,7 @@ export default function SpannbetonDehnungsAnimation() {
                     M_q = +{formatDeZahl(calc.Mq, 0)} kNm
                   </div>
                   <div className="text-[10px] text-slate-500 font-mono">
-                    σ_Mq = {formatDeZahl((calc.Mq * 1e6) / Wc, 1)} MPa
+                    σ_Mq = {formatDeZahl(calc.sigma_Mq, 1)} MPa
                   </div>
                   <span className="text-[9px] text-slate-400 block">
                     {viewSection === 'support' ? inhalt.werte.amAuflagerMQ : inhalt.werte.biegemomentAusGleichlastQ}

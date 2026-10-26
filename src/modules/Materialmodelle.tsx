@@ -28,6 +28,8 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/materialmodelle/Materialmodelle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { bilinearVerfestigung, bilinearKurve, lehrkurve, thixotropieKurve } from '@/src/calc/werkstoffmodelle';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 ChartJS.register(
   CategoryScale,
@@ -408,48 +410,24 @@ export default function Materialmodelle() {
 
   // Berechnete Kennwerte für Elasto-Plastisch mit Verfestigung
   const epAnalytics = useMemo(() => {
-    const epsY = fyVal / eModVal; // z.B. 500 / 200000 = 0.0025 (2.5 Promille)
-    const epsYPromille = epsY * 1000;
-    const maxEps = appliedMaxEpsPromille / 1000;
-    
-    // Spitzenspannung bei maxEps
-    let peakStress = 0;
-    if (maxEps <= epsY) {
-      peakStress = maxEps * eModVal;
-    } else {
-      peakStress = fyVal + (maxEps - epsY) * etModVal;
-    }
-
-    // Elastische Rückfederung bei Entlastung: Delta eps_e = peakStress / E
-    const epsElasticRecovery = peakStress / eModVal;
-    const epsElasticRecoveryPromille = epsElasticRecovery * 1000;
-
-    // Bleibende plastische Dehnung: eps_p = maxEps - epsElasticRecovery
-    const epsPlasticResidual = Math.max(0, maxEps - epsElasticRecovery);
-    const epsPlasticResidualPromille = epsPlasticResidual * 1000;
-
-    // Verfestigungsverhältnis k = peakStress / fyVal (nach DIN EN 1992-1-1)
-    const kVerhaeltnis = fyVal > 0 ? peakStress / fyVal : 1;
-
+    // Rechenkern src/calc/werkstoffmodelle.ts: bilineares Modell mit Verfestigung und Entlastung
+    const r = bilinearVerfestigung({ fy: fyVal, E: eModVal, Et: etModVal, epsMaxPromille: appliedMaxEpsPromille });
     return {
-      epsYPromille,
-      peakStress,
-      epsElasticRecoveryPromille,
-      epsPlasticResidualPromille,
-      kVerhaeltnis
+      epsYPromille: r.epsYPromille,
+      peakStress: r.sigmaMax,
+      epsElasticRecoveryPromille: r.epsElastischPromille,
+      epsPlasticResidualPromille: r.epsPlastischPromille,
+      kVerhaeltnis: r.k,
+      hinweise: r.hinweise
     };
   }, [fyVal, eModVal, etModVal, appliedMaxEpsPromille]);
 
   const generateData = () => {
     if (activeModel === 'thixotropy-rheopexy') {
-      const times = [];
-      const thixo_eta = [];
-      const rheo_eta = [];
-      for (let t = 0; t <= 10; t += 0.2) {
-        times.push(formatDeZahl(t, 1));
-        thixo_eta.push(20 + 80 * Math.exp(-0.5 * t));
-        rheo_eta.push(100 - 80 * Math.exp(-0.5 * t));
-      }
+      const kurve = thixotropieKurve();
+      const times = kurve.map(p => formatDeZahl(p.t, 1));
+      const thixo_eta = kurve.map(p => p.thixo);
+      const rheo_eta = kurve.map(p => p.rheo);
       return {
         labels: times,
         datasets: [
@@ -477,40 +455,11 @@ export default function Materialmodelle() {
 
     // Wenn "Elasto-Plastisch mit Verfestigung" aktiv ist:
     if (activeModel === 'elasto-plastic') {
-      const maxPlotEps = Math.max(appliedMaxEpsPromille + 5, 25); // Promille
-      const epsLabels: string[] = [];
-      const sigLoading: (number | null)[] = [];
-      const sigIdealPlastic: (number | null)[] = [];
-      const sigUnloading: (number | null)[] = [];
-
-      const epsY = fyVal / eModVal;
-      const maxEps = appliedMaxEpsPromille / 1000;
-      const peakStress = maxEps <= epsY ? maxEps * eModVal : fyVal + (maxEps - epsY) * etModVal;
-      const epsResidual = Math.max(0, maxEps - peakStress / eModVal);
-
-      for (let ep = 0; ep <= maxPlotEps; ep += 0.5) {
-        const e = ep / 1000; // Dehnung als Dezimalzahl
-        epsLabels.push(formatDeZahl(ep, 1));
-
-        // 1. Belastungsast bis zum Bruch / Maximalbereich
-        if (e <= epsY) {
-          sigLoading.push(e * eModVal);
-        } else {
-          sigLoading.push(fyVal + (e - epsY) * etModVal);
-        }
-
-        // 2. Ideal-Plastischer Vergleichsast
-        sigIdealPlastic.push(Math.min(e * eModVal, fyVal));
-
-        // 3. Entlastungsast von peakStress bei maxEps zurück zu sigma = 0
-        if (e >= epsResidual && e <= maxEps) {
-          // Gerade von (epsResidual, 0) bis (maxEps, peakStress) mit Steigung E
-          const unlSig = (e - epsResidual) * eModVal;
-          sigUnloading.push(unlSig);
-        } else {
-          sigUnloading.push(null);
-        }
-      }
+      const kurve = bilinearKurve({ fy: fyVal, E: eModVal, Et: etModVal, epsMaxPromille: appliedMaxEpsPromille });
+      const epsLabels = kurve.map(p => formatDeZahl(p.epsPromille, 1));
+      const sigLoading = kurve.map(p => p.belastung);
+      const sigIdealPlastic = kurve.map(p => p.idealPlastisch);
+      const sigUnloading = kurve.map(p => p.entlastung);
 
       return {
         labels: epsLabels,
@@ -547,26 +496,9 @@ export default function Materialmodelle() {
     }
 
     // Standard qualitative Verläufe für andere Modelle
-    const eps = [];
-    const sig = [];
-    const E = 210000; // MPa (Baustahl nach DIN EN 1993-1-1)
-    const fy = 355; // MPa (z.B. S355)
-
-    for (let e = 0; e <= 0.005; e += 0.0001) {
-      eps.push(formatDeZahl(e * 1000, 1)); // in Promille
-      
-      if (activeModel === 'linear') {
-        sig.push(e * E);
-      } else if (activeModel === 'non-linear') {
-        const e0 = 0.002;
-        sig.push((E * e) / (1 + Math.pow(e / e0, 2)));
-      } else if (activeModel === 'ideal-plastic') {
-        sig.push(Math.min(e * E, fy));
-      } else if (activeModel === 'visco-elastic') {
-        const sigma_inf = 400; // MPa
-        sig.push(sigma_inf * (1 - Math.exp(- (E * e) / sigma_inf)));
-      }
-    }
+    const kurve = lehrkurve(activeModel);
+    const eps = kurve.map(p => formatDeZahl(p.epsPromille, 1)); // in Promille
+    const sig = kurve.map(p => p.sigma);
 
     return {
       labels: eps,
@@ -805,6 +737,8 @@ export default function Materialmodelle() {
                     <span className="text-[9px] text-slate-400 font-mono"><MdText text={inhalt.texte.pMaxEPlastische} /></span>
                   </div>
                 </div>
+
+                <EingabeHinweise hinweise={epAnalytics.hinweise} />
 
                 <ul className="list-disc list-inside space-y-1 text-xs text-text-main/70">
                   <li><MdText text={inhalt.texte.entlastungsastBeiLastrücknahmeEntspannt} /></li>

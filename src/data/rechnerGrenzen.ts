@@ -47,6 +47,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
       'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
       'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
+      'Dehnungsanimation: fester Lehrträger (L = 20 m, 500 × 1000 mm, E_cm = 35 000 N/mm², f_ctm = 3,5 N/mm²), Spannungen nach Freyssinet linear-elastisch am Bruttoquerschnitt; nach Überschreiten von f_ctm nur qualitativ.',
+      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L² für Parabelspannglied am Einfeldträger, Litzenzahl überschlägig mit 150 kN je Litze (Lehrannahme).',
     ],
   },
   holzbau_bemessung: {
@@ -101,6 +103,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Anrechenbarkeit von Flugasche vereinfacht nach Zementart; Präzisierung nach DIN 1045-2 offen.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
       'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
+      'Walz-Kurven: Abrams-Näherung f = A/5^(w/z) mit A = 100/120/140 N/mm² (Lehrwerte) für w/z 0,35 bis 0,80; ersetzt keine Erstprüfung.',
     ],
   },
   stahl: {
@@ -133,8 +136,35 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Rechnet Einheiten innerhalb einer Größenart über einen Faktor zur SI-Basiseinheit um, bei Temperatur mit Nullpunktverschiebung.",
     grenzen: [
       "Nur Umrechnung innerhalb derselben Kategorie (z. B. kein kg ↔ N, kein kg/m³ ↔ kN/m³).",
-      "Angloamerikanische Faktoren gerundet (lbf 4,44822; psi 6894,76; lb 0,453592; kcal 4186,8 J).",
-      "Keine Plausibilitätsprüfung: Temperaturen unter 0 K und negative Längen werden umgerechnet.",
+      "Angloamerikanische Einheiten über ihre exakten Definitionen (1 lb = 0,45359237 kg, 1 lbf = 1 lb·9,80665 m/s², 1 psi = 1 lbf/in², 1 kcal = 4186,8 J).",
+      "Temperaturen unter 0 K werden abgelehnt; negative Längen, Flächen, Volumen, Massen und Dichten werden mit Hinweis umgerechnet.",
+      "Anzeige mit höchstens 10 signifikanten Stellen, sehr kleine und große Beträge in Zehnerpotenz-Schreibweise.",
+    ],
+  },
+  asphalt: {
+    kurz: "Raumdichte aus Bitumengehalt, Hohlraumgehalt und Dichten, schematische Marshall-Kurve und Lehrmodell Niedrigtemperaturasphalt (Viskosität, Aerosole, Energie, CO₂, Verdichtungsfenster).",
+    grenzen: [
+      "Raumdichte ρ_b = ρ_m·(1 − V_m/100) aus vorgegebenem Hohlraumgehalt; keine Prüfung nach DIN EN 12697-5/-6, Bindemittelabsorption des Gesteins unberücksichtigt.",
+      "Marshall-Stabilität ist eine schematische Lehrkurve mit Optimum bei 5,5 M.-%, keine Prüfwerte nach DIN EN 12697-34.",
+      "NTA: Viskosität, Aerosolkonzentration, Energie und CO₂ sind exponentielle bzw. lineare Lehransätze mit festen Faktoren je Verfahren; kein Nachweis des AGW nach TRGS 900.",
+      "Verdichtungsfenster nach Newton-Abkühlung für 4 cm Schicht bei 15 °C Luft, ohne Wind, Unterlage und Walzeneinsatz; CO₂-Bilanz mit Untergrenze 3,5 kg/t.",
+    ],
+  },
+  bauchemie: {
+    kurz: "Lehrmodelle für Stellmittel-Rheologie, AKR-Dehnung und Karbonatisierung (Wurzel-t-Gesetz) sowie Stöchiometrie mit molaren Massen und pH-Wert.",
+    grenzen: [
+      "Viskosität des Mörtels als scherverdünnendes Lehrmodell mit festen Beiwerten, gerundet auf 0,1 Pa·s; Bewertungsgrenzen 0,4 bis 1,5 % Stellmittel sind Lehrannahmen.",
+      "AKR-Dehnung logarithmisch über der Zeit mit Feuchtesprung bei 80 % r. F.; ersetzt keine Prüfung nach Alkali-Richtlinie des DAfStb.",
+      "Karbonatisierung mit Richtwerten K je w/z-Wert ohne Zementart, Nachbehandlung und Feuchte; kein Dauerhaftigkeitsnachweis.",
+      "Molare Massen mit gekürzten Standard-Atomgewichten (IUPAC/CIAAW); pH-Umrechnung mit pK_W = 14 (25 °C), ohne Aktivitätskoeffizienten.",
+    ],
+  },
+  materialmodelle: {
+    kurz: "Bilineares elasto-plastisches Modell mit Verfestigung und Entlastung (ε_y, σ_max, ε_e, ε_p, k) sowie qualitative σ-ε-, Thixotropie- und Rheopexie-Lehrkurven.",
+    grenzen: [
+      "Bilinear mit konstantem Verfestigungsmodul E_t, einachsig, monoton bis ε_max und eine Entlastung; keine zyklische Belastung, kein Bauschinger-Effekt, keine Einschnürung.",
+      "k = σ_max/f_y bezieht sich auf die gewählte Dehnung ε_max, nicht auf charakteristische Werte (f_t/f_y)_k nach DIN EN 1992-1-1 Anhang C.",
+      "Linear, nichtlinear, ideal-plastisch, viskoelastisch und Thixotropie/Rheopexie sind qualitative Kurven mit festen Parametern (E = 210 000, f_y = 355 N/mm²).",
     ],
   },
   baustoffkenngroessen: {
@@ -225,6 +255,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
+      "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
+      "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
@@ -375,6 +407,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Chlorid: Fehlerfunktionslösung mit konstantem C_s und D_app(t) = D₀·(t₀/t)^a ohne k_e und k_t; kritischer Gehalt 0,5 M.-% v. z. als Orientierungswert.",
       "Karbonatisierung deterministisch mit dem Wurzel-t-Gesetz; Feuchte, Beregnung und Streuung von Deckung und Material bleiben unberücksichtigt.",
+      "Lebensdauersimulator (Dauerhaftigkeit): t_krit = (c/k)² auf ganze Jahre gerundet, k-Werte der Schnellwahl als Lehrwerte; über 200 Jahre nicht abgesichert.",
       "Schnelltest-Umrechnung nur über die CO₂-Konzentration (K ∝ √c) – Größenordnung, kein Normwert.",
       "Lokalelement: i_corr, Rostvolumenfaktor 2,5, E_eff = 12 000 MPa und Schadensschwellen sind qualitative Lehrannahmen; Abtrag 11,6 µm/a je µA/cm² (Faraday, Eisen).",
     ],
@@ -386,6 +419,38 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "VSG fest 2 × 8 mm mit 1,52 mm PVB und 1 m Stützweite; Schubmoduln stark vereinfachte Lehrwerte, maßgebend sind Zulassung bzw. EN 16613.",
       "Effektive Dicke nur für die Durchbiegung (h_ef,w); β = 9,6 gilt für Einfeldträger unter Gleichlast.",
       "Kein Standsicherheitsnachweis der Verglasung nach DIN 18008.",
+    ],
+  },
+  holz: {
+    kurz: "Gleichgewichtsfeuchte, Feuchteangleich und anisotropes Schwinden von Holz sowie Bemessungswerte der Festigkeiten, Druck unter Winkel (6.16) und k_def nach DIN EN 1995-1-1.",
+    grenzen: [
+      "Gleichgewichtsfeuchte als Polynom-Lehrmodell (bei 20 °C/65 % rund 13,7 % statt üblicher 12 %), Temperaturkorrektur −1 % je K, begrenzt auf 30 % Fasersättigung.",
+      "Feuchteangleich exponentiell mit τ = 15 d · (d/20 mm)²; Kalibrierung als Lehrannahme, ohne Oberflächenbeschichtung und Feuchtegradient.",
+      "Schwinden linear mit differentiellen Schwindmaßen je Richtung; Verdrehen, Rissbildung und Jahrringlage nur in der 3D-Darstellung qualitativ.",
+      "Festigkeitswerte für ausgewählte Klassen, γ_M = 1,3; kein Bauteilnachweis.",
+    ],
+  },
+  bp_holzprodukte: {
+    kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr und Anfangsdurchbiegung nach DIN EN 1995-1-1 mit NA (DE).",
+    grenzen: [
+      "k_mod = 0,8 (NKL 1, mittlere Lasteinwirkung), γ_G = 1,35, γ_Q = 1,5; nur eine Lastfallkombination.",
+      "Durchbiegung w_inst mit E_0,mean und der charakteristischen Kombination gegen l/300; Kriechen (w_fin, k_def) und Schwingungen fehlen.",
+      "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
+    ],
+  },
+  waermeeigenschaften: {
+    kurz: "Wärmespeicherfähigkeit ρc, Temperaturleitfähigkeit a, Wärmeeindringkoeffizient b und Kontakttemperatur eines Stoffs sowie erforderliche Dämmdicke für einen Ziel-U-Wert.",
+    grenzen: [
+      "Kontakttemperatur für halbunendliche Körper mit Lehrwerten der Haut (b = 1100 J/(m²K√s), 33 °C) und Stoff bei 20 °C.",
+      "Dämmdicke für eine einschalige Bestandswand mit R_si + R_se = 0,17 m²K/W; Wärmebrücken, Befestiger und Luftschichten werden nicht berücksichtigt.",
+    ],
+  },
+  bauwerkserfassung: {
+    kurz: "Druck- und Biegeausnutzung eines verformten Holzsparrens mit gemessener Vorverformung e₀ und Moment nach Theorie II. Ordnung im Vergleich zum idealisiert geraden Stab.",
+    grenzen: [
+      "Lineare Interaktion σ_c/f_c,0,d + σ_m/f_m,d; der Ersatzstabnachweis mit k_c nach 6.3.2 ist gesondert zu führen.",
+      "Vergrößerungsfaktor 1/(1 − N/N_cr) mit N_cr aus E_0,mean und Knicklänge = Stablänge; keine Abminderung der Steifigkeit.",
+      "k_mod = 0,9 (kurze Lasteinwirkung), γ_M = 1,3; Vorverformung als Stich in Feldmitte, Querschnitt ungeschwächt.",
     ],
   },
   modernisierung: {
