@@ -21,9 +21,11 @@ const texSumme = (werte: number[], n = 0) =>
 import { exportToPDF } from '../lib/pdfExport';
 import inhalt from '@/content/lcc/LCC.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { lccVergleich, type LccOption } from '@/src/calc/lcc';
 
 // Define the scenario profiles for LCC calculation
-interface OptionConfig {
+interface OptionConfig extends LccOption {
   name: string;
   className: string;
   capex: number; // Initial cost
@@ -83,158 +85,17 @@ export default function LCC() {
     return SCENARIOS.find(s => s.id === selectedScenarioId) || SCENARIOS[0];
   }, [selectedScenarioId]);
 
-  // Comprehensive LCC calculation engine
-  const calcData = useMemo(() => {
-    const r = discountRate / 100;
-    const e = energyInflation / 100;
-    const i = generalInflation / 100;
-    const N = analysisPeriod;
-
-    const computeLCCForOption = (opt: OptionConfig, isOptionB: boolean) => {
-      // Apply government subsidy if enabled (only applies to sustainable Option B)
-      let capex = opt.capex;
-      if (subsidyEnabled && isOptionB) {
-        capex = opt.capex * (1 - subsidyPercent / 100);
-      }
-
-      let cumulativeOpEx = 0;
-      let cumulativeOpExDiscounted = 0;
-      let cumulativeMaintenance = 0;
-      let cumulativeMaintenanceDiscounted = 0;
-      let cumulativeReplacement = 0;
-      let cumulativeReplacementDiscounted = 0;
-      
-      let cumulativeCO2Nominal = 0;
-      let cumulativeCO2Discounted = 0;
-
-      // Initial Embodied Carbon CO2 shadow cost at Year 0
-      const initialCO2Tons = opt.embodiedCO2 / 1000;
-      const initialCO2Cost = co2PricingEnabled ? initialCO2Tons * co2BasePrice : 0;
-
-      let runningCumulativeDiscounted = capex + initialCO2Cost;
-
-      // Year-by-year cashflow tracking
-      const yearlyBreakdown: {
-        year: number;
-        opexNominal: number;
-        opexDiscounted: number;
-        maintNominal: number;
-        maintDiscounted: number;
-        replNominal: number;
-        replDiscounted: number;
-        co2PricePerTon: number;
-        co2Nominal: number;
-        co2Discounted: number;
-        totalNominal: number;
-        totalDiscounted: number;
-        cumulativeDiscounted: number;
-      }[] = [];
-
-      for (let yr = 1; yr <= N; yr++) {
-        // --- OpEx (Energy & standard operations) compounds with energy inflation e, then discounted with r
-        const opexNom = opt.opex0 * Math.pow(1 + e, yr);
-        const opexDisc = opexNom / Math.pow(1 + r, yr);
-        cumulativeOpEx += opexNom;
-        cumulativeOpExDiscounted += opexDisc;
-
-        // --- CO2 Price per Ton compounding annually
-        const co2PricePerTon = co2BasePrice * Math.pow(1 + co2Escalation / 100, yr);
-        let co2Nom = 0;
-        let co2Disc = 0;
-
-        if (co2PricingEnabled) {
-          const opCO2Tons = opt.operatingCO2 / 1000;
-          co2Nom = opCO2Tons * co2PricePerTon;
-          co2Disc = co2Nom / Math.pow(1 + r, yr);
-          cumulativeCO2Nominal += co2Nom;
-          cumulativeCO2Discounted += co2Disc;
-        }
-
-        // --- Maintenance compounds with general inflation i, then discounted with r
-        let maintNom = 0;
-        let maintDisc = 0;
-        if (yr % opt.maintenanceInterval === 0 && yr < N) {
-          maintNom = opt.maintenanceCost * Math.pow(1 + i, yr);
-          maintDisc = maintNom / Math.pow(1 + r, yr);
-          cumulativeMaintenance += maintNom;
-          cumulativeMaintenanceDiscounted += maintDisc;
-        }
-
-        // --- Replacement cycles compound with general inflation i, then discounted with r
-        let replNom = 0;
-        let replDisc = 0;
-        let replCO2Cost = 0;
-        let replCO2CostDisc = 0;
-        if (yr % opt.lifespan === 0 && yr < N) {
-          replNom = opt.replacementCost * Math.pow(1 + i, yr);
-          replDisc = replNom / Math.pow(1 + r, yr);
-          cumulativeReplacement += replNom;
-          cumulativeReplacementDiscounted += replDisc;
-
-          // Re-calculate embodied CO2 shadow price on material replacement
-          if (co2PricingEnabled) {
-            replCO2Cost = (opt.embodiedCO2 / 1000) * co2PricePerTon;
-            replCO2CostDisc = replCO2Cost / Math.pow(1 + r, yr);
-            cumulativeCO2Nominal += replCO2Cost;
-            cumulativeCO2Discounted += replCO2CostDisc;
-          }
-        }
-
-        const yrTotalNom = opexNom + maintNom + replNom + co2Nom + replCO2Cost;
-        const yrTotalDisc = opexDisc + maintDisc + replDisc + co2Disc + replCO2CostDisc;
-        runningCumulativeDiscounted += yrTotalDisc;
-
-        yearlyBreakdown.push({
-          year: yr,
-          opexNominal: opexNom,
-          opexDiscounted: opexDisc,
-          maintNominal: maintNom,
-          maintDiscounted: maintDisc,
-          replNominal: replNom,
-          replDiscounted: replDisc,
-          co2PricePerTon,
-          co2Nominal: co2Nom + replCO2Cost,
-          co2Discounted: co2Disc + replCO2CostDisc,
-          totalNominal: yrTotalNom,
-          totalDiscounted: yrTotalDisc,
-          cumulativeDiscounted: runningCumulativeDiscounted
-        });
-      }
-
-      // --- End of Life (EOL) cost/residue compounded with general inflation to year N, discounted with r
-      const eolNom = opt.eolCost * Math.pow(1 + i, N);
-      const eolDisc = eolNom / Math.pow(1 + r, N);
-      
-      const totalLCCDiscounted = capex + initialCO2Cost + cumulativeOpExDiscounted + cumulativeMaintenanceDiscounted + cumulativeReplacementDiscounted + cumulativeCO2Discounted + eolDisc;
-
-      return {
-        capex,
-        initialCO2Cost,
-        cumulativeOpExNominal: cumulativeOpEx,
-        cumulativeOpExDiscounted,
-        cumulativeMaintenanceNominal: cumulativeMaintenance,
-        cumulativeMaintenanceDiscounted,
-        cumulativeReplacementNominal: cumulativeReplacement,
-        cumulativeReplacementDiscounted,
-        cumulativeCO2Nominal,
-        cumulativeCO2Discounted,
-        eolNominal: eolNom,
-        eolDiscounted: eolDisc,
-        totalLCCDiscounted,
-        yearlyBreakdown
-      };
-    };
-
-    const resultA = computeLCCForOption(activeScenario.optionA, false);
-    const resultB = computeLCCForOption(activeScenario.optionB, true);
-
-    return {
-      resultA,
-      resultB,
-      saving: resultA.totalLCCDiscounted - resultB.totalLCCDiscounted,
-      percentSaving: ((resultA.totalLCCDiscounted - resultB.totalLCCDiscounted) / resultA.totalLCCDiscounted) * 100
-    };
-  }, [analysisPeriod, discountRate, energyInflation, generalInflation, co2PricingEnabled, co2BasePrice, co2Escalation, subsidyEnabled, subsidyPercent, activeScenario]);
+  // Rechenkern src/calc/lcc.ts (Barwertmethode, Förderung nur für Option B)
+  const calcData = useMemo(() => lccVergleich(activeScenario.optionA, activeScenario.optionB, {
+    r: discountRate / 100,
+    e: energyInflation / 100,
+    i: generalInflation / 100,
+    N: analysisPeriod,
+    co2Bepreisung: co2PricingEnabled,
+    co2Preis: co2BasePrice,
+    co2Steigerung: co2Escalation / 100,
+    foerderungB: subsidyEnabled ? subsidyPercent : 0,
+  }), [analysisPeriod, discountRate, energyInflation, generalInflation, co2PricingEnabled, co2BasePrice, co2Escalation, subsidyEnabled, subsidyPercent, activeScenario]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -535,6 +396,8 @@ export default function LCC() {
             {/* Results Compare Dashboard (Right) */}
             <div className="lg:col-span-8 space-y-6">
               
+              <EingabeHinweise hinweise={calcData.hinweise} />
+
               {/* Summary Savings Alert Card */}
               <div className={`p-5 rounded-2xl border flex gap-4 ${
                 calcData.saving >= 0 

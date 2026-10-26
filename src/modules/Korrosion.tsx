@@ -15,7 +15,8 @@ import { Line } from "react-chartjs-2";
 import '@/src/lib/chartSetup';
 import { ShieldAlert, Droplets, Cloud, Timer, Zap, Activity } from "lucide-react";
 import { Slider } from "@/src/components/ui/Slider";
-import { erf } from "@/src/lib/math";
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { chloridProfil, karbonatisierungsFront, karbonatisierungsKurve, schnellUmrechnung, lokalelement, LOKALELEMENT, CL_KRITISCH, type SchadensStufe } from '@/src/calc/korrosion';
 import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -43,49 +44,24 @@ function LokalelementSimulator() {
   const [coverMm, setCoverMm] = useState(35); // mm
   const [durationYears, setDurationYears] = useState(6); // Jahre
 
-  const isDepassivated = clContent >= 0.50; // Kritischer Grenzwert
-
-  // Korrosionsstromdichte icorr in µA/cm²
-  const iCorr = useMemo(() => {
-    if (!isDepassivated) return 0.08; // Passivstrombereich
-    // Peaks around 80-85% RH (good moisture + sufficient O2 diffusion)
-    let humidityFactor = 1.0;
-    if (relHum < 50) {
-      humidityFactor = Math.max(0.05, (relHum - 30) / 20 * 0.4);
-    } else if (relHum <= 85) {
-      humidityFactor = 0.4 + ((relHum - 50) / 35) * 0.6;
-    } else {
-      // water saturated -> O2 diffusion severely blocked
-      humidityFactor = Math.max(0.15, 1.0 - ((relHum - 85) / 15) * 0.85);
-    }
-    const clExcess = Math.min(3.5, clContent / 0.50);
-    return Math.min(18.0, 1.2 * clExcess * humidityFactor * 2.8);
-  }, [isDepassivated, relHum, clContent]);
-
-  // Jährlicher Abtrag nach Faraday: 1 µA/cm² ≈ 11.6 µm/Jahr
-  const vCorrMicronYear = (iCorr * 11.6);
-  const totalLossMicron = (vCorrMicronYear * durationYears);
-  
-  // Rust volume expansion factor ~ 3.0
-  const rustWedgeThicknessMm = ((totalLossMicron * 2.5) / 1000); // mm
-
-  // Radial splitting stress (approximate cylinder cavity model: sigma_t ~ E_eff * delta / c_nom)
-  // Concrete tensile strength ~ 3.0 MPa
-  const radialStressMPa = useMemo(() => {
-    if (!isDepassivated) return 0;
-    const Eeff = 12000; // MPa with creep
-    const stress = (Eeff * (rustWedgeThicknessMm / 10)) / coverMm;
-    return Math.min(14.0, stress);
-  }, [isDepassivated, rustWedgeThicknessMm, coverMm]);
-
-  const fctm = 3.0; // MPa Betonzugfestigkeit
-  const crackState = useMemo(() => {
-    if (!isDepassivated) return { code: 'passiv', title: inhalt.werte.passivGeschützt, color: 'text-emerald-700 bg-emerald-50 border-emerald-300' };
-    if (radialStressMPa < fctm * 0.7) return { code: 'initiierung', title: inhalt.werte.lochfraßAktivMikrokorrosion, color: 'text-amber-700 bg-amber-50 border-amber-300' };
-    if (radialStressMPa < fctm * 1.5) return { code: 'rissbildung', title: inhalt.werte.spaltzugrissImBetoninneren, color: 'text-orange-700 bg-orange-50 border-orange-300' };
-    if (radialStressMPa < fctm * 2.8) return { code: 'oberflaechenriss', title: inhalt.werte.durchgehenderLängsrissAnOberfläche, color: 'text-rose-700 bg-rose-50 border-rose-300' };
-    return { code: 'abplatzung', title: inhalt.werte.betondeckungAbgeplatztSpalling, color: 'text-red-700 bg-red-100 border-red-500 font-bold animate-pulse' };
-  }, [isDepassivated, radialStressMPa]);
+  // Rechenkern src/calc/korrosion.ts (qualitatives Lehrmodell)
+  const lok = useMemo(() => lokalelement({ clGehalt: clContent, relFeuchte: relHum, deckungMm: coverMm, jahre: durationYears }),
+    [clContent, relHum, coverMm, durationYears]);
+  const isDepassivated = lok.depassiviert;
+  const iCorr = lok.iCorr;
+  const vCorrMicronYear = lok.vCorr;
+  const totalLossMicron = lok.abtrag;
+  const rustWedgeThicknessMm = lok.rostDicke;
+  const radialStressMPa = lok.sigmaRadial;
+  const fctm = LOKALELEMENT.fctm;
+  const STUFEN: Record<SchadensStufe, { title: string; color: string }> = {
+    passiv: { title: inhalt.werte.passivGeschützt, color: 'text-emerald-700 bg-emerald-50 border-emerald-300' },
+    initiierung: { title: inhalt.werte.lochfraßAktivMikrokorrosion, color: 'text-amber-700 bg-amber-50 border-amber-300' },
+    rissbildung: { title: inhalt.werte.spaltzugrissImBetoninneren, color: 'text-orange-700 bg-orange-50 border-orange-300' },
+    oberflaechenriss: { title: inhalt.werte.durchgehenderLängsrissAnOberfläche, color: 'text-rose-700 bg-rose-50 border-rose-300' },
+    abplatzung: { title: inhalt.werte.betondeckungAbgeplatztSpalling, color: 'text-red-700 bg-red-100 border-red-500 font-bold animate-pulse' },
+  };
+  const crackState = { code: lok.stufe, ...STUFEN[lok.stufe] };
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -190,6 +166,8 @@ function LokalelementSimulator() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
             </div>
+
+            <EingabeHinweise hinweise={lok.hinweise} />
 
             {/* Live Metrics Cards */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
@@ -480,22 +458,12 @@ export default function Korrosion() {
   const [tSchnell, setTSchnell] = useState(28); // Tage
   const [kKarbSchnell, setKKarbSchnell] = useState(2.0); // mm/sqrt(d)
 
+  // Rechenkern src/calc/korrosion.ts (2. Ficksches Gesetz mit Alterung)
+  const chlorid = useMemo(() => chloridProfil({ t, cNom, dApp, cS, a }), [t, cNom, dApp, cS, a]);
   const chloridChartData = useMemo(() => {
-    const depths = Array.from({ length: 101 }, (_, i) => i); // 0 to 100 mm
-    const tSeconds = t * 365 * 24 * 3600;
-    const dAppActual = dApp * 1e-12;
-    const t0 = 28 / 365; // 28 days in years
-
-    const dEffActual = dAppActual * Math.pow(t0 / Math.max(t, t0), a);
-
-    const cValues = depths.map((x) => {
-      const xMeters = x / 1000;
-      const denominator = 2 * Math.sqrt(dEffActual * tSeconds);
-      const val = cS * (1 - erf(xMeters / denominator));
-      return val;
-    });
-
-    const isCorroding = cValues[cNom] >= 0.5;
+    const depths = chlorid.tiefen;
+    const cValues = chlorid.profil;
+    const isCorroding = chlorid.depassiviert;
 
     return {
       labels: depths,
@@ -521,7 +489,7 @@ export default function Korrosion() {
         },
         {
           label: inhalt.werte.kritischerGehalt05,
-          data: depths.map(() => 0.5),
+          data: depths.map(() => CL_KRITISCH),
           borderColor: "#1e293b",
           borderWidth: 1,
           borderDash: [2, 2],
@@ -530,15 +498,16 @@ export default function Korrosion() {
         }],
       isCorroding,
     };
-  }, [t, cNom, dApp, cS, a]);
+  }, [chlorid, cNom]);
 
   const karbonatisierungChartData = useMemo(() => {
     const years = Array.from({ length: 101 }, (_, i) => i); // 0 to 100 years
 
-    // d_c = K * sqrt(t)
-    const depths = years.map((year) => kKarb * Math.sqrt(year));
+    // d_c = K · √t (Rechenkern src/calc/korrosion.ts)
+    const depths = karbonatisierungsKurve(kKarb, 100);
 
-    const isCorroding = depths[tKarb] >= cNomKarb;
+    const front = karbonatisierungsFront(kKarb, tKarb, cNomKarb);
+    const isCorroding = front.depassiviert;
 
     return {
       labels: years,
@@ -571,23 +540,18 @@ export default function Korrosion() {
           fill: false,
         }],
       isCorroding,
+      hinweise: front.hinweise,
     };
   }, [tKarb, cNomKarb, kKarb]);
 
   const schnellkarbonatisierungChartData = useMemo(() => {
     const days = Array.from({ length: 91 }, (_, i) => i); // 0 to 90 days
 
-    // d_c = K_schnell * sqrt(t_tage)
-    const depthsSchnell = days.map((day) => kKarbSchnell * Math.sqrt(day));
-
-    // Umrechnung auf natürliche Karbonatisierung (vereinfachtes Modell)
-    // K_nat = K_schnell * sqrt(CO2_nat / CO2_schnell); K_schnell in mm/√d -> Umrechnung in mm/√a mit √365
-    const kNatEquivalent = kKarbSchnell * Math.sqrt(co2Konz / co2KonzSchnell) * Math.sqrt(365);
-
-    // d_c_nat = K_nat * sqrt(t_jahre) -> Umrechnung Tage in Jahre für den Vergleich
-    const depthsNatEquivalent = days.map(
-      (day) => kNatEquivalent * Math.sqrt(day / 365),
-    );
+    // Rechenkern src/calc/korrosion.ts: d_c = K_schnell · √t_Tage; K_nat = K_schnell · √(CO₂_nat/CO₂_schnell) · √365
+    const umr = schnellUmrechnung(kKarbSchnell, co2KonzSchnell, co2Konz, 90);
+    const depthsSchnell = umr.tiefenSchnell;
+    const kNatEquivalent = umr.kNat;
+    const depthsNatEquivalent = umr.tiefenNat;
 
     return {
       labels: days,
@@ -622,6 +586,7 @@ export default function Korrosion() {
           fill: false,
         }],
       kNatEquivalent,
+      hinweise: umr.hinweise,
     };
   }, [kKarbSchnell, tSchnell, co2Konz, co2KonzSchnell]);
 
@@ -775,6 +740,7 @@ export default function Korrosion() {
               info={inhalt.werte.beschreibtDieAbnahmeDes}
               onChange={(e) => setA(Number(e.target.value))}
             />
+            <EingabeHinweise hinweise={chlorid.hinweise} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -1032,6 +998,7 @@ export default function Korrosion() {
               info={inhalt.werte.hängtVonDerBetonqualität}
               onChange={(e) => setKKarb(Number(e.target.value))}
             />
+            <EingabeHinweise hinweise={karbonatisierungChartData.hinweise} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -1102,6 +1069,7 @@ export default function Korrosion() {
               unit="mm/√d"
               onChange={(e) => setKKarbSchnell(Number(e.target.value))}
             />
+            <EingabeHinweise hinweise={schnellkarbonatisierungChartData.hinweise} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">

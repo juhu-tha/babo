@@ -361,11 +361,31 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   lebenszyklus_kosten: {
-    kurz: "Barwertvergleich der Lebenszykluskosten zweier Optionen.",
+    kurz: "Barwertvergleich der Lebenszykluskosten zweier Optionen (Barwertmethode wie BNB 2.1.1) mit Energie- und allgemeiner Preissteigerung, CO₂-Schattenpreis und Förderung.",
     grenzen: [
-      "Fester Zinssatz und konstante Preissteigerungen.",
+      "Fester Zinssatz und konstante Preissteigerungen; Steigerung schon ab Jahr 1 (BNB 2.1.1: ab Jahr 2).",
       "Kein Restwert für Bauteile, deren Lebensdauer über das Betrachtungsende hinausreicht.",
       "Förderung nur für Option B als Abzug von der Investition.",
+      "Instandhaltung und Ersatz in festen Intervallen, nicht im letzten Jahr; Ersatz bepreist die Herstellungsemissionen erneut.",
+      "Kostenkennwerte der Szenarien sind Lehrannahmen; keine Wirtschaftlichkeitsberechnung nach DIN 18960 oder ISO 15686-5.",
+    ],
+  },
+  korrosion: {
+    kurz: "Chloridprofil nach dem 2. Fickschen Gesetz mit Alterung, Karbonatisierungsfront x = K·√t, Umrechnung von Schnelltests und Faraday-Abtrag im Lokalelement-Lehrmodell.",
+    grenzen: [
+      "Chlorid: Fehlerfunktionslösung mit konstantem C_s und D_app(t) = D₀·(t₀/t)^a ohne k_e und k_t; kritischer Gehalt 0,5 M.-% v. z. als Orientierungswert.",
+      "Karbonatisierung deterministisch mit dem Wurzel-t-Gesetz; Feuchte, Beregnung und Streuung von Deckung und Material bleiben unberücksichtigt.",
+      "Schnelltest-Umrechnung nur über die CO₂-Konzentration (K ∝ √c) – Größenordnung, kein Normwert.",
+      "Lokalelement: i_corr, Rostvolumenfaktor 2,5, E_eff = 12 000 MPa und Schadensschwellen sind qualitative Lehrannahmen; Abtrag 11,6 µm/a je µA/cm² (Faraday, Eisen).",
+    ],
+  },
+  glas: {
+    kurz: "Bruchwahrscheinlichkeit nach Weibull, Schubverbund und effektive Dicke von VSG (Verfahren nach Wölfel/Bennison) sowie thermische Zwängungsspannung.",
+    grenzen: [
+      "Weibull mit σ₀ = 1,5 · f_g,k als Lehrmodell; keine Normgröße, keine Lastdauer- oder Oberflächeneinflüsse.",
+      "VSG fest 2 × 8 mm mit 1,52 mm PVB und 1 m Stützweite; Schubmoduln stark vereinfachte Lehrwerte, maßgebend sind Zulassung bzw. EN 16613.",
+      "Effektive Dicke nur für die Durchbiegung (h_ef,w); β = 9,6 gilt für Einfeldträger unter Gleichlast.",
+      "Kein Standsicherheitsnachweis der Verglasung nach DIN 18008.",
     ],
   },
   modernisierung: {
