@@ -678,7 +678,9 @@ export function ExpositionsklassenSkizze({
 
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t3ChloridLochfraß} /></span>
-                <div className="text-center py-1 font-mono text-cyan-800 font-bold"><MdText text={inhalt.texte.ccrit0400} /></div>
+                <div className="text-center py-1 font-mono text-cyan-800 font-bold">
+                  Ccrit &approx; 0,40 &ndash; 0,50 M.-%
+                </div>
                 <p className="text-text-main/70"><MdText text={inhalt.texte.chlorideInitiierenLochfraßkorrosionLokal} /></p>
               </div>
             </div>
