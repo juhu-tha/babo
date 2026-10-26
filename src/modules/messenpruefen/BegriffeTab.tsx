@@ -3,6 +3,7 @@ import { Scale, Calculator, Info, Settings, CheckCircle2 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/messenpruefen/BegriffeTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { werkzeugToleranz } from '@/src/calc/pruefverfahren';
 
 export interface BegriffeTabProps {
   setSelectedTool: Dispatch<SetStateAction<"meterstab" | "messschieber" | "laser" | "risslupe" | "nivellier">>;
@@ -218,21 +219,8 @@ export function BegriffeTab({ setSelectedTool, setToolInputValue, selectedTool, 
                   <div className="bg-white p-2.5 rounded border border-indigo-100 flex flex-col justify-center">
                     <span className="text-[10px] text-slate-400 font-semibold block uppercase"><MdText text={inhalt.texte.fehlergrenzeBzwStandardabweichung} /></span>
                     <span className="text-xs font-mono font-extrabold text-indigo-700">
-                      {selectedTool === 'meterstab' && (
-                        <>± {formatDeZahl((0.3 + 0.2 * (toolInputValue / 1000)), 2)} mm</>
-                      )}
-                      {selectedTool === 'messschieber' && (
-                        <>{toolInputValue <= 100 ? '± 0,03' : '± 0,05'} mm</>
-                      )}
-                      {selectedTool === 'laser' && (
-                        <>± {formatDeZahl((1.0 + 0.05 * (toolInputValue / 1000)), 2)} mm</>
-                      )}
-                      {selectedTool === 'risslupe' && (
-                        <>± 0,05 mm</>
-                      )}
-                      {selectedTool === 'nivellier' && (
-                        <>± {formatDeZahl(Math.max(0.5, 1.5 * Math.sqrt((toolInputValue / 1000) / 1000)), 2)} mm</>
-                      )}
+                      {/* Rechenkern src/calc/pruefverfahren.ts (werkzeugToleranz) */}
+                      <>± {formatDeZahl(werkzeugToleranz(selectedTool, toolInputValue), 2)} mm</>
                     </span>
                   </div>
                 </div>

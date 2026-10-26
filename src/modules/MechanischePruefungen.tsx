@@ -18,6 +18,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/mechanischepruefungen/MechanischePruefungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { bohrkernPruefung, spaltzugfestigkeit, marshallQuotient, zugversuchStahl, holzSchaetzung } from '@/src/calc/pruefverfahren';
 
 // Define categories of building materials
 type MaterialCategory = 'beton_mineralisch' | 'asphalt_bituminoes' | 'stahl_metalle' | 'holz_organisch';
@@ -73,46 +75,12 @@ export default function MechanischePruefungen() {
   const [concreteRebars, setConcreteRebars] = useState<number>(0);
   const [boreDirection, setBoreDirection] = useState<'vertikal' | 'horizontal'>('vertikal');
 
-  const concreteRes = useMemo(() => {
-    const area = Math.PI * Math.pow(concreteDiam / 2, 2);
-    const rawStrength = (concreteForce * 1000) / area; // MPa (N/mm²)
-    const aspect = concreteHeight / concreteDiam;
-
-    // Schlankheitskorrektur auf h/d = 2 (Literaturansatz ASTM C42/C42M, linear interpoliert).
-    // DIN EN 13791 ordnet h/d = 1 der Würfel- und h/d = 2 der Zylinderfestigkeit zu.
-    // h/d < 1: nicht prüfbar (NaN → „–“); h/d > 2: Kern ist auf h/d = 2 zu kürzen (Faktor 1,0).
-    const astmStuetz: [number, number][] = [[1.0, 0.87], [1.25, 0.93], [1.5, 0.96], [1.75, 0.98], [2.0, 1.0]];
-    let lambdaAspect = aspect > 2.0 ? 1.0 : NaN;
-    for (let i = 0; i < astmStuetz.length - 1; i++) {
-      const [l0, k0] = astmStuetz[i];
-      const [l1, k1] = astmStuetz[i + 1];
-      if (aspect >= l0 && aspect <= l1) {
-        lambdaAspect = k0 + (k1 - k0) * (aspect - l0) / (l1 - l0);
-        break;
-      }
-    }
-
-    // Bewehrung im Kern: Lehrannahme (+3,5 % je querendem Stab als Ausgleich der Schwächung).
-    // Kein Normansatz – nach DIN EN 12504-1 sollen Kerne möglichst bewehrungsfrei sein.
-    const lambdaRebar = 1.0 + 0.035 * concreteRebars;
-
-    // Bohrrichtung: horizontal gebohrte Kerne liefern im Mittel etwa 8 % geringere Werte als vertikal
-    // gebohrte (Literaturansatz BS 1881-120: Faktor 2,5/2,3 ≈ 1,085).
-    const lambdaDirection = boreDirection === 'horizontal' ? 1.085 : 1.0;
-
-    const fcCore = rawStrength * lambdaAspect * lambdaRebar * lambdaDirection;
-    const equivalentCylinder = fcCore;
-    const equivalentCube = fcCore / 0.82; // Näherung Zylinder/Würfel ≈ 0,82 (vgl. C30/37: 30/37)
-
-    return {
-      area,
-      rawStrength,
-      aspect,
-      fcCore,
-      equivalentCylinder,
-      equivalentCube
-    };
-  }, [concreteDiam, concreteHeight, concreteForce, concreteRebars, boreDirection]);
+  // Rechenkern src/calc/pruefverfahren.ts: Schlankheitsfaktor ASTM C42 (h/d < 1 → NaN „–“, h/d > 2 → 1,0),
+  // Lehrfaktoren Bewehrung (+3,5 % je Stab) und Bohrrichtung (BS 1881-120: 1,085), Würfelwert ≈ f_c/0,82
+  const concreteRes = useMemo(
+    () => bohrkernPruefung({ dMm: concreteDiam, hMm: concreteHeight, kraftKn: concreteForce, staebe: concreteRebars, richtung: boreDirection }),
+    [concreteDiam, concreteHeight, concreteForce, concreteRebars, boreDirection],
+  );
 
   // 2. Asphalt Testing: Sub-selection & States
   const [asphaltSubTest, setAsphaltSubTest] = useState<'spaltzug' | 'marshall'>('spaltzug');
@@ -122,19 +90,13 @@ export default function MechanischePruefungen() {
   const [asphaltHeight, setAsphaltHeight] = useState<number>(60);
   const [asphaltForce, setAsphaltForce] = useState<number>(16.5);
 
-  const asphaltSt = useMemo(() => {
-    const forceN = asphaltForce * 1000;
-    const strength = (2 * forceN) / (Math.PI * asphaltDiam * asphaltHeight);
-    return strength;
-  }, [asphaltForce, asphaltDiam, asphaltHeight]);
+  const asphaltSt = useMemo(() => spaltzugfestigkeit(asphaltForce, asphaltDiam, asphaltHeight), [asphaltForce, asphaltDiam, asphaltHeight]);
 
   // B. Asphalt Marshall-Stabilität (Stability & Flow)
   const [marshallStability, setMarshallStability] = useState<number>(9.5);
   const [marshallFlow, setMarshallFlow] = useState<number>(3.2);
 
-  const marshallQuotient = useMemo(() => {
-    return marshallStability / marshallFlow; // kN/mm
-  }, [marshallStability, marshallFlow]);
+  const marshallQ = useMemo(() => marshallQuotient(marshallStability, marshallFlow), [marshallStability, marshallFlow]); // kN/mm
 
   // 3. Metall/Stahl Tensile Test
   const [steelDiam, setSteelDiam] = useState<number>(12); // Nominaldifferenz
@@ -143,38 +105,14 @@ export default function MechanischePruefungen() {
   const [steelLength0, setSteelLength0] = useState<number>(100); // mm iniziale
   const [steelLengthU, setSteelLengthU] = useState<number>(115); // mm frattura
 
+  // Rechenkern src/calc/pruefverfahren.ts: Einzelwertvergleich mit B500A/B500B nach DIN 488-1
+  // (R_e ≥ 500 N/mm²; R_m/R_e ≥ 1,05 bzw. 1,08; Dehnung ≥ 2,5 % bzw. 5,0 %).
+  // Hinweis: Die Norm verlangt charakteristische Werte (Quantile) aus Prüfserien.
   const steelRes = useMemo(() => {
-    const area = Math.PI * Math.pow(steelDiam / 2, 2); // mm²
-    const yieldStrength = (steelForceYield * 1000) / area; // MPa (N/mm²)
-    const ultimateStrength = (steelForceUltimate * 1000) / area; // MPa (N/mm²)
-    const ratio = ultimateStrength / yieldStrength;
-    const elongation = ((steelLengthU - steelLength0) / steelLength0) * 100; // %
-
-    // Einzelwertvergleich mit den Kennwerten von B500A/B500B nach DIN 488-1
-    // (R_e ≥ 500 N/mm²; R_m/R_e ≥ 1,05 bzw. 1,08; A_gt ≥ 2,5 % bzw. 5,0 %).
-    // Hinweis: Die Norm verlangt charakteristische Werte (Quantile) aus Prüfserien.
-    const yieldPassed = yieldStrength >= 500;
-    const ratiosPassed = ratio >= 1.08;
-    const elongationPassed = elongation >= 5.0;
-
-    let complianceClass = inhalt.werte.anforderungenB500aB500bNicht;
-    if (yieldStrength >= 500 && ratio >= 1.08 && elongation >= 5.0) {
-      complianceClass = inhalt.werte.einzelwertErfülltB500bHochduktil;
-    } else if (yieldStrength >= 500 && ratio >= 1.05 && elongation >= 2.5) {
-      complianceClass = inhalt.werte.einzelwertErfülltB500aNormalduktil;
-    }
-
-    return {
-      area,
-      yieldStrength,
-      ultimateStrength,
-      ratio,
-      elongation,
-      complianceClass,
-      yieldPassed,
-      ratiosPassed,
-      elongationPassed
-    };
+    const r = zugversuchStahl({ dMm: steelDiam, kraftReKn: steelForceYield, kraftRmKn: steelForceUltimate, l0Mm: steelLength0, luMm: steelLengthU });
+    const complianceClass = r.einstufung === 'B500B' ? inhalt.werte.einzelwertErfülltB500bHochduktil
+      : r.einstufung === 'B500A' ? inhalt.werte.einzelwertErfülltB500aNormalduktil : inhalt.werte.anforderungenB500aB500bNicht;
+    return { ...r, complianceClass };
   }, [steelDiam, steelForceYield, steelForceUltimate, steelLength0, steelLengthU]);
 
   // 4. Wood Estimator parallel & bending
@@ -185,37 +123,16 @@ export default function MechanischePruefungen() {
   const [woodSpan, setWoodSpan] = useState<number>(1800); // mm
   const [woodBendingForce, setWoodBendingForce] = useState<number>(6.5); // kN
 
+  // Rechenkern src/calc/pruefverfahren.ts: Lehr-Näherungen f_c,0 ≈ 90·ρ − 3, Feuchtefaktor (Fasersättigung ≈ 28 %),
+  // f_m = F·L/(b·h²) nach DIN EN 408 (4-Punkt-Biegung), E ≈ 25 000·ρ·k_u (kein Ansatz der DIN EN 338).
+  // Nur Orientierung: Eine Klassenzuordnung erfordert charakteristische Werte aus Prüfserien (DIN EN 384).
   const woodRes = useMemo(() => {
-    // Basic estimates for Spruce/Nadelholz: Empirische Skalierung
-    const fc0_base = 90 * woodDensity - 3; // MPa bei 12% Holzfeuchte
-
-    // Holzfeuchte-Näherung: je % Feuchte über 12 % ca. 3,5 % Festigkeitsverlust (Lehrmodell);
-    // oberhalb der Fasersättigung (ca. 28 %) keine weitere Abnahme.
-    const moistureFactor = 1.0 - 0.035 * (Math.min(woodMoisture, 28) - 12);
-    const fc0_actual = fc0_base * moistureFactor;
-
-    // Biegefestigkeit nach DIN EN 408 (4-Punkt-Biegung, Gesamtlast F, Lastpunkte in den Drittelspunkten):
-    // f_m = 3·F·a / (b·h²) mit a = L/3  →  f_m = F·L / (b·h²)
-    const forceN = woodBendingForce * 1000;
-    const f_bending = (3 * forceN * (woodSpan / 3)) / (woodWidth * Math.pow(woodHeight, 2));
-
-    // E-Modul: grobe Lehr-Näherung über die Rohdichte (kein Ansatz der DIN EN 338)
-    const e_modul = 25000 * woodDensity * moistureFactor; // MPa (N/mm²)
-
-    // Holzfestigkeitsklasse schätzen
-    // Nur Orientierung: Eine Klassenzuordnung erfordert charakteristische Werte aus Prüfserien (DIN EN 384).
-    let strengthClassName = inhalt.werte.unterC18Einzelwert;
-    if (woodDensity >= 0.65) strengthClassName = inhalt.werte.laubholzDKlassen;
-    else if (f_bending >= 30) strengthClassName = inhalt.werte.niveauC30Einzelwert;
-    else if (f_bending >= 24) strengthClassName = inhalt.werte.niveauC24Einzelwert;
-    else if (f_bending >= 18) strengthClassName = inhalt.werte.niveauC18Einzelwert;
-    
-    return {
-      fc0_actual,
-      f_bending,
-      e_modul,
-      strengthClassName
-    };
+    const r = holzSchaetzung({ rohdichte: woodDensity, feuchte: woodMoisture, bMm: woodWidth, hMm: woodHeight, stuetzweiteMm: woodSpan, kraftKn: woodBendingForce });
+    const klassenText = {
+      laubholz: inhalt.werte.laubholzDKlassen, C30: inhalt.werte.niveauC30Einzelwert, C24: inhalt.werte.niveauC24Einzelwert,
+      C18: inhalt.werte.niveauC18Einzelwert, unterC18: inhalt.werte.unterC18Einzelwert,
+    } as const;
+    return { ...r, strengthClassName: klassenText[r.niveau] };
   }, [woodDensity, woodMoisture, woodWidth, woodHeight, woodSpan, woodBendingForce]);
 
 
@@ -508,6 +425,8 @@ export default function MechanischePruefungen() {
                       <div className="text-[10px] bg-rose-50 text-rose-950 border border-rose-200 px-2 py-1.5 rounded-lg text-center font-bold flex items-center justify-center gap-1.5">
                         <ShieldAlert size={14} className="text-rose-700 shrink-0" /><MdText text={inhalt.texte.einzelwertUnterC2025} /></div>
                     )}
+                    {/* h/d < 1 meldet der Kasten oben; hier nur die Warnungen des Rechenkerns */}
+                    <EingabeHinweise hinweise={concreteRes.hinweise.filter(h => h.stufe === 'warnung')} />
                   </div>
                 </div>
               )}
@@ -649,12 +568,12 @@ export default function MechanischePruefungen() {
                         </div>
                         <div className="flex justify-between items-center pt-1 border-t border-home-grau/20">
                           <span className="text-slate-500 font-bold text-shiraz"><MdText text={inhalt.texte.marshallQuotientQS} /></span>
-                          <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(marshallQuotient, 2)} kN/mm</span>
+                          <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(marshallQ, 2)} kN/mm</span>
                         </div>
                         <div className="bg-slate-100 p-2 rounded text-[10px] text-slate-700 leading-normal font-semibold text-center">
-                          {marshallQuotient > 4.5 ? (
+                          {marshallQ > 4.5 ? (
                             <span className="text-red-900 font-bold block"><MdText text={inhalt.texte.hoherQuotientSehrSteifes} /></span>
-                          ) : marshallQuotient < 1.5 ? (
+                          ) : marshallQ < 1.5 ? (
                             <span className="text-amber-900 font-bold block"><MdText text={inhalt.texte.niedrigerQuotientPlastischesMischgut} /></span>
                           ) : (
                             <span className="text-emerald-900 font-bold block"><MdText text={inhalt.texte.mittlererBereichOrientierungMaßgebend} /></span>
@@ -778,6 +697,7 @@ export default function MechanischePruefungen() {
                       <span className="font-bold text-slate-700 block"><MdText text={inhalt.texte.duktilitätsbewertungEinzelwertNennquersc} /></span>
                       <span className="text-shiraz font-bold">{steelRes.complianceClass}</span>
                     </div>
+                    <EingabeHinweise hinweise={steelRes.hinweise} />
                   </div>
                 </div>
               )}
@@ -880,6 +800,7 @@ export default function MechanischePruefungen() {
                     </div>
 
                     <span className="block text-[10px] text-emerald-850 italic text-center"><MdText text={inhalt.texte.schätzwerteFürEineHolzfeuchte} />{formatDeWert(woodMoisture)}<MdText text={inhalt.texte.bezugsfeuchteDerFestigkeitsklassen12} /></span>
+                    <EingabeHinweise hinweise={woodRes.hinweise} />
                   </div>
                 </div>
               )}

@@ -34,6 +34,10 @@ import ThermischTab from './zfp/ThermischTab';
 import HolzTab from './zfp/HolzTab';
 import inhalt from '@/content/zfp/ZfP.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import {
+  rueckprallZfp, rueckprallKurven, ultraschallZfp, bewehrungsSignal, georadar, potentialRisikoZfp, wenner, torrentKlasse,
+  torrentFeuchte, karstenZfp, thermografieStufe, impactEchoZfp, durchstrahlung,
+} from '@/src/calc/pruefverfahren';
 
 ChartJS.register(
   CategoryScale,
@@ -121,229 +125,93 @@ export default function ZfP() {
     return geraeteList.find((item) => item.id === selectedGeraet) || null;
   }, [geraeteList, selectedGeraet]);
 
-  // Berechnungen Rückprallhammer
-  const reboundResults = useMemo(() => {
-    let deltaR = 0;
-    if (angle === '90') deltaR = -3; // nach unten (Schwerkraft erhöht Aufprallenergie -> R zu groß -> Korrektur negativ)
-    if (angle === '-90') deltaR = 3; // nach oben (Schwerkraft verringert Aufprallenergie -> R zu klein -> Korrektur positiv)
-    
-    const rCorr = rebound + deltaR;
-    // Empirische Formel: fc = 0.027 * R^2.1 (vereinfacht)
-    const fc = 0.027 * Math.pow(Math.max(10, rCorr), 2.1);
+  // Rechenkern src/calc/pruefverfahren.ts – die Komponente ordnet nur noch Texte und Farben zu
+  // Rückprallhammer: ΔR = −3 (nach unten) / +3 (nach oben), f_c ≈ 0,027·R^2,1 (Lehr-Näherung)
+  const reboundResults = useMemo(() => rueckprallZfp(rebound, angle), [rebound, angle]);
 
-    return {
-      rCorr,
-      fc
-    };
-  }, [rebound, angle]);
+  // Ultraschall: E_dyn = ρ·v²·(1+ν)(1−2ν)/(1−ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (grob)
+  const ultrasonicResults = useMemo(() => ultraschallZfp(velocity), [velocity]);
 
-  // Berechnungen Ultraschall
-  const ultrasonicResults = useMemo(() => {
-    // Edyn = rho * v^2 * (1+v)(1-2v)/(1-v)
-    // rho = 2400 kg/m3, v_poisson = 0.2 -> Faktor = 0.9
-    // v in km/s -> v * 1000 m/s
-    const eDyn = 2.4 * Math.pow(velocity, 2) * 0.9; // in GPa
-    
-    // Grobe Abschätzung der Druckfestigkeit aus Ultraschall (sehr stark vereinfacht)
-    // fc ≈ (v - 2.0) * 20
-    const fcEst = Math.max(0, (velocity - 2.0) * 20);
+  // Bewehrungssucher: vereinfachtes Anzeigemodell
+  const bewehrungssucherResults = useMemo(() => ({ signalStrength: bewehrungsSignal(cover, barDiameter) }), [cover, barDiameter]);
 
-    return {
-      eDyn,
-      fcEst
-    };
-  }, [velocity]);
+  // Georadar: v = c/√ε_r, d = v·t/2
+  const radarResults = useMemo(() => georadar(dielectric, timeOfFlight), [dielectric, timeOfFlight]);
 
-  // Berechnungen Bewehrungssucher
-  const bewehrungssucherResults = useMemo(() => {
-    // Signalstärke nimmt mit Abstand quadratisch/kubisch ab
-    // Vereinfachtes Modell für die Anzeige
-    const signalStrength = Math.max(0, 100 - (cover / barDiameter) * 20);
-    return { signalStrength };
-  }, [cover, barDiameter]);
-
-  // Berechnungen Radar (Georadar)
-  const radarResults = useMemo(() => {
-    // v = c / sqrt(epsilon_r)
-    // c = 300 mm/ns (Lichtgeschwindigkeit)
-    const vRadar = 300 / Math.sqrt(dielectric); // mm/ns
-    
-    // Tiefe d = v * t / 2 (Hin- und Rückweg)
-    const depth = (vRadar * timeOfFlight) / 2; // mm
-    
-    return { vRadar, depth };
-  }, [dielectric, timeOfFlight]);
-
-  // Berechnungen Potentialmessung
+  // Potentialmessung
   const potentialResults = useMemo(() => {
-    let risk = inhalt.werte.gering10;
-    let color = "bg-green-500";
-    if (potential < -350) {
-      risk = inhalt.werte.hoch90;
-      color = "bg-red-500";
-    } else if (potential < -200) {
-      risk = inhalt.werte.mittelUnsicher;
-      color = "bg-yellow-500";
-    }
-    return { risk, color };
+    const stufe = potentialRisikoZfp(potential);
+    if (stufe === 'hoch') return { risk: inhalt.werte.hoch90, color: "bg-red-500" };
+    if (stufe === 'mittel') return { risk: inhalt.werte.mittelUnsicher, color: "bg-yellow-500" };
+    return { risk: inhalt.werte.gering10, color: "bg-green-500" };
   }, [potential]);
 
-  // Berechnungen Wenner-Sonde (Spezifischer Widerstand)
+  // Wenner-Sonde: ρ = 2π·a·R
   const wennerResults = useMemo(() => {
-    // rho = 2 * pi * a * R
-    // a in meter = wennerSpacing / 1000
-    // R in Ohm = wennerResistance
-    const rho = 2 * Math.PI * (wennerSpacing / 1000) * wennerResistance; // Ohm*m
-    const rhoKohmCm = rho / 10; // 1 Ohm*m = 0.1 kOhm*cm
-    
-    let rate = "Vernachlässigbar";
-    let color = "bg-green-600";
-    let textClass = "text-green-800 bg-green-50";
-    let description = inhalt.werte.sehrTrockenesBauteilOder;
-
-    if (rho < 120) {
-      rate = "Sehr hoch";
-      color = "bg-red-600";
-      textClass = "text-red-800 bg-red-50 border-red-200";
-      description = inhalt.werte.feuchterChloridbelasteterOderKarbonatisi;
-    } else if (rho < 500) {
-      rate = "Mittel";
-      color = "bg-amber-500";
-      textClass = "text-amber-800 bg-amber-50 border-amber-200";
-      description = inhalt.werte.durchschnittlicherFeuchteUndCarbonatisie;
-    } else if (rho < 1000) {
-      rate = "Niedrig";
-      color = "bg-emerald-500";
-      textClass = "text-emerald-800 bg-emerald-50 border-emerald-100";
-      description = inhalt.werte.vorwiegendTrockenHoheBetondichte;
-    }
-
-    return { rho, rhoKohmCm, rate, color, textClass, description };
+    const w = wenner(wennerSpacing, wennerResistance);
+    const anzeige = {
+      sehr_hoch: { rate: "Sehr hoch", color: "bg-red-600", textClass: "text-red-800 bg-red-50 border-red-200", description: inhalt.werte.feuchterChloridbelasteterOderKarbonatisi },
+      mittel: { rate: "Mittel", color: "bg-amber-500", textClass: "text-amber-800 bg-amber-50 border-amber-200", description: inhalt.werte.durchschnittlicherFeuchteUndCarbonatisie },
+      niedrig: { rate: "Niedrig", color: "bg-emerald-500", textClass: "text-emerald-800 bg-emerald-50 border-emerald-100", description: inhalt.werte.vorwiegendTrockenHoheBetondichte },
+      vernachlaessigbar: { rate: "Vernachlässigbar", color: "bg-green-600", textClass: "text-green-800 bg-green-50", description: inhalt.werte.sehrTrockenesBauteilOder },
+    }[w.stufe];
+    return { rho: w.rho, rhoKohmCm: w.rhoKohmCm, ...anzeige };
   }, [wennerSpacing, wennerResistance]);
 
-  // Berechnungen Gaspermeationsmessung (Torrent)
+  // Gaspermeationsmessung (Torrent)
   const torrentResults = useMemo(() => {
-    let klassifizierung = inhalt.werte.klasseISehrNiedrig;
-    let bewertung = inhalt.werte.hervorragendDicht;
-    let textClass = "text-green-800 bg-green-50 border-green-200";
-    let description = inhalt.werte.maximaleDauerhaftigkeitDasBauteil;
-
-    if (torrentKt >= 10.0) {
-      klassifizierung = inhalt.werte.klasseVSehrHoch;
-      bewertung = inhalt.werte.ungenügendSehrOffenporig;
-      textClass = "text-red-800 bg-red-50 border-red-200";
-      description = inhalt.werte.extremDurchlässigesPorensystemDringender;
-    } else if (torrentKt >= 1.0) {
-      klassifizierung = inhalt.werte.klasseIvHoch;
-      bewertung = inhalt.werte.minderwertigerSchutz;
-      textClass = "text-rose-700 bg-rose-50 border-rose-200";
-      description = inhalt.werte.erhöhtesRisikoFürBewehrungskorrosion;
-    } else if (torrentKt >= 0.1) {
-      klassifizierung = inhalt.werte.klasseIiiMittel;
-      bewertung = "Durchschnittlich";
-      textClass = "text-amber-700 bg-amber-50 border-amber-200";
-      description = inhalt.werte.durchschnittlicherBetonüberdeckungswider;
-    } else if (torrentKt >= 0.01) {
-      klassifizierung = inhalt.werte.klasseIiNiedrig;
-      bewertung = inhalt.werte.guteQualität;
-      textClass = "text-emerald-700 bg-emerald-50 border-emerald-200";
-      description = inhalt.werte.sicheresBauteilverhaltenAusreichenderPor;
-    }
-
-    // Feuchtigkeitseinfluss bestimmen
-    let moistureWarning = null;
-    let moistureCritical = false;
-    if (torrentMoisture > 85) {
-      moistureWarning = inhalt.werte.kritischeBetonfeuchte85Die;
-      moistureCritical = true;
-    } else if (torrentMoisture > 70) {
-      moistureWarning = inhalt.werte.hoheBetonfeuchte70Die;
-    }
-
-    return { klassifizierung, bewertung, textClass, description, moistureWarning, moistureCritical };
+    const klasse = {
+      5: { klassifizierung: inhalt.werte.klasseVSehrHoch, bewertung: inhalt.werte.ungenügendSehrOffenporig, textClass: "text-red-800 bg-red-50 border-red-200", description: inhalt.werte.extremDurchlässigesPorensystemDringender },
+      4: { klassifizierung: inhalt.werte.klasseIvHoch, bewertung: inhalt.werte.minderwertigerSchutz, textClass: "text-rose-700 bg-rose-50 border-rose-200", description: inhalt.werte.erhöhtesRisikoFürBewehrungskorrosion },
+      3: { klassifizierung: inhalt.werte.klasseIiiMittel, bewertung: "Durchschnittlich", textClass: "text-amber-700 bg-amber-50 border-amber-200", description: inhalt.werte.durchschnittlicherBetonüberdeckungswider },
+      2: { klassifizierung: inhalt.werte.klasseIiNiedrig, bewertung: inhalt.werte.guteQualität, textClass: "text-emerald-700 bg-emerald-50 border-emerald-200", description: inhalt.werte.sicheresBauteilverhaltenAusreichenderPor },
+      1: { klassifizierung: inhalt.werte.klasseISehrNiedrig, bewertung: inhalt.werte.hervorragendDicht, textClass: "text-green-800 bg-green-50 border-green-200", description: inhalt.werte.maximaleDauerhaftigkeitDasBauteil },
+    }[torrentKlasse(torrentKt)];
+    const feuchte = torrentFeuchte(torrentMoisture);
+    const moistureWarning = feuchte === 'kritisch' ? inhalt.werte.kritischeBetonfeuchte85Die : feuchte === 'hoch' ? inhalt.werte.hoheBetonfeuchte70Die : null;
+    return { ...klasse, moistureWarning, moistureCritical: feuchte === 'kritisch' };
   }, [torrentKt, torrentMoisture]);
 
-  // Berechnungen Karstensches Röhrchen
+  // Karstensches Röhrchen: w = V/(0,491·√t)
   const karstenResults = useMemo(() => {
-    // w = V / (0.491 * sqrt(t_hours))
-    const tHours = karstenTime / 60;
-    const w = karstenAbsorbed / (0.491 * Math.sqrt(tHours)); // kg/(m² * h^0.5)
-
-    let eingruppierung = inhalt.werte.wasserabweisendHydrophob;
-    let textClass = "text-green-800 bg-green-50 border-green-200";
-    let color = "bg-green-600";
-    let detailtext = inhalt.werte.sehrGuteSperrwirkungGegen;
-
-    if (w > 0.5) {
-      eingruppierung = inhalt.werte.starkSaugendAbsorbierend;
-      textClass = "text-red-800 bg-red-50 border-red-200";
-      color = "bg-red-600";
-      detailtext = inhalt.werte.baustoffSaugtFeuchtigkeitGierig;
-    } else if (w > 0.1) {
-      eingruppierung = "Wasserhemmend";
-      textClass = "text-amber-700 bg-amber-50 border-amber-200";
-      color = "bg-amber-500";
-      detailtext = inhalt.werte.ausreichendeReduzierungDerSaugwirkung;
-    }
-
-    return { w, tHours, eingruppierung, textClass, color, detailtext };
+    const k = karstenZfp(karstenTime, karstenAbsorbed);
+    const anzeige = {
+      saugend: { eingruppierung: inhalt.werte.starkSaugendAbsorbierend, textClass: "text-red-800 bg-red-50 border-red-200", color: "bg-red-600", detailtext: inhalt.werte.baustoffSaugtFeuchtigkeitGierig },
+      hemmend: { eingruppierung: "Wasserhemmend", textClass: "text-amber-700 bg-amber-50 border-amber-200", color: "bg-amber-500", detailtext: inhalt.werte.ausreichendeReduzierungDerSaugwirkung },
+      abweisend: { eingruppierung: inhalt.werte.wasserabweisendHydrophob, textClass: "text-green-800 bg-green-50 border-green-200", color: "bg-green-600", detailtext: inhalt.werte.sehrGuteSperrwirkungGegen },
+    }[k.stufe];
+    return { w: k.w, tHours: k.tHours, hinweise: k.hinweise, ...anzeige };
   }, [karstenTime, karstenAbsorbed]);
 
-  // Berechnungen Thermografie
+  // Thermografie
   const thermographyResults = useMemo(() => {
-    let indication = inhalt.werte.keineAuffälligkeiten;
-    let color = "bg-green-500";
-    if (tempDiff > 2.0) {
-      indication = inhalt.werte.deutlicherHohlraumAblösung;
-      color = "bg-red-500";
-    } else if (tempDiff > 0.5) {
-      indication = inhalt.werte.möglicheFehlstelle;
-      color = "bg-yellow-500";
-    }
-    return { indication, color };
+    const stufe = thermografieStufe(tempDiff);
+    if (stufe === 'deutlich') return { indication: inhalt.werte.deutlicherHohlraumAblösung, color: "bg-red-500" };
+    if (stufe === 'moeglich') return { indication: inhalt.werte.möglicheFehlstelle, color: "bg-yellow-500" };
+    return { indication: inhalt.werte.keineAuffälligkeiten, color: "bg-green-500" };
   }, [tempDiff]);
 
-  // Berechnungen Impact-Echo
-  const impactEchoResults = useMemo(() => {
-    // d = β · v_p / (2 · f), Formfaktor β ≈ 0,96 für Platten (ASTM C1383); f in kHz → Hz
-    const beta = 0.96;
-    const depth = frequency > 0 ? (beta * waveVelocity) / (2 * (frequency * 1000)) : 0; // in m
-    return { depth: depth * 1000 }; // in mm
-  }, [frequency, waveVelocity]);
+  // Impact-Echo: d = β·v_p/(2f) mit β = 0,96 (ASTM C1383), Kern bauwerksuntersuchung.impactEcho
+  const impactEchoResults = useMemo(() => impactEchoZfp(frequency, waveVelocity), [frequency, waveVelocity]);
 
-  // Berechnungen Durchstrahlungsprüfung
+  // Durchstrahlungsprüfung: I/I₀ = exp(−μ·d), μ = 0,15/E (stark vereinfacht)
   const radiographyResults = useMemo(() => {
-    // Schwächungsgesetz: I = I0 * e^(-mu * d)
-    // Vereinfachte Annahme für mu (Absorptionskoeffizient) basierend auf Energie
-    const mu = 0.15 / radiationEnergy; // cm^-1 (stark vereinfacht)
-    const transmission = Math.exp(-mu * thickness) * 100; // in %
-    
-    let quality = "Gut";
-    let color = "bg-green-500";
-    if (transmission < 1) {
-      quality = inhalt.werte.schlechtZuDickDicht;
-      color = "bg-red-500";
-    } else if (transmission < 5) {
-      quality = "Ausreichend";
-      color = "bg-yellow-500";
-    }
-
-    return { transmission, quality, color };
+    const d = durchstrahlung(thickness, radiationEnergy);
+    const anzeige = {
+      schlecht: { quality: inhalt.werte.schlechtZuDickDicht, color: "bg-red-500" },
+      ausreichend: { quality: "Ausreichend", color: "bg-yellow-500" },
+      gut: { quality: "Gut", color: "bg-green-500" },
+    }[d.stufe];
+    return { transmission: d.transmission, ...anzeige };
   }, [thickness, radiationEnergy]);
 
   // Chart Data für Rückprallhammer
   const chartData = useMemo(() => {
-    const labels = [];
-    const data0 = [];
-    const data90 = [];
-    const dataMinus90 = [];
-
-    for (let r = 20; r <= 60; r += 2) {
-      labels.push(r);
-      data0.push(0.027 * Math.pow(r, 2.1));
-      data90.push(0.027 * Math.pow(Math.max(10, r - 3), 2.1));
-      dataMinus90.push(0.027 * Math.pow(r + 3, 2.1));
-    }
+    const k = rueckprallKurven(20, 60, 2);
+    const labels = k.labels;
+    const data0 = k.horizontal;
+    const data90 = k.unten;
+    const dataMinus90 = k.oben;
 
     return {
       labels,

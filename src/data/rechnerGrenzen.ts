@@ -469,6 +469,41 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Rückprall-Festigkeit nach Lehr-Näherung; Karbonatisierung nach √t-Gesetz ohne Klima- und Feuchteeinfluss.",
     ],
   },
+  zfp: {
+    kurz: "Lehrsimulatoren der zerstörungsfreien Prüfung: Rückprallhammer, Ultraschall, Impact-Echo, Bewehrungsortung, Georadar, Potentialfeld, Wenner-Sonde, Torrent, Karsten-Röhrchen, Thermografie und Durchstrahlung.",
+    grenzen: [
+      "Rückprall: f_c ≈ 0,027·R^2,1 mit ΔR = ±3 je Schlagrichtung – Lehr-Näherung ohne Bezugskurve und Kalibrierung nach DIN EN 13791.",
+      "Ultraschall: E_dyn mit fester Dichte 2400 kg/m³ und ν = 0,2; die Festigkeit aus v_p ist nur eine grobe Lehrschätzung.",
+      "Einstufungen (Potential, Wenner, Torrent, Karsten, Thermografie) mit festen Lehrschwellen; Karsten-w-Wert ist kein w-Wert nach DIN EN ISO 15148.",
+      "Bewehrungssignal und Durchstrahlung (μ = 0,15/E) sind qualitative Anzeigemodelle ohne Gerätekennlinie.",
+    ],
+  },
+  messen_pruefen: {
+    kurz: "Messunsicherheit nach GUM (Typ A, Auflösung, Kalibrierschein, U = k·u_c), Ringversuchsbewertung mit z-Score und E_n-Wert sowie Richtwerte für Messwerkzeuge.",
+    grenzen: [
+      "Unkorrelierte Eingangsgrößen mit Empfindlichkeitskoeffizient 1; k = 2 fest, ohne effektiven Freiheitsgrad nach Welch-Satterthwaite.",
+      "Ringversuch: σ_pt und Referenzwert werden vorgegeben; Youden-Plot mit simulierten Vergleichslaboren.",
+      "Werkzeugtoleranzen sind Richtwerte (z. B. Gliedermaßstab Klasse II); maßgebend sind Kalibrierschein und Herstellerangaben.",
+    ],
+  },
+  mechanische_pruefungen: {
+    kurz: "Auswertung zerstörender Prüfungen: Bohrkerndruckfestigkeit mit Schlankheitskorrektur, Spaltzug und Marshall (Asphalt), Zugversuch Betonstahl und Schätzwerte für Bauholz.",
+    grenzen: [
+      "Bohrkern: Schlankheitsfaktoren nach ASTM C42, Bewehrungs- (+3,5 % je Stab) und Bohrrichtungsfaktor (1,085) als Lehrannahmen; Würfelwert pauschal f_c/0,82.",
+      "Keine Bewertung nach DIN EN 13791 (Prüfreihen, charakteristische In-situ-Festigkeit); alle Einstufungen sind Einzelwertvergleiche.",
+      "Zugversuch: Dehnung als Bruchdehnung A = (L_u − L₀)/L₀; DIN 488-1 bewertet die Dehnung bei Höchstkraft A_gt.",
+      "Holz: Druckfestigkeit, Feuchtefaktor und E-Modul aus der Rohdichte sind Lehr-Näherungen, keine Werte nach DIN EN 338 oder DIN EN 384.",
+    ],
+  },
+  festbeton: {
+    kurz: "Bemessungswerte f_cd und f_ctd je Festigkeitsklasse, Festigkeitsentwicklung β_cc(t) mit Probekörper- und Lagerungsfaktoren, 5-%-Fraktil und Schnellevaluator der Konformitätskriterien.",
+    grenzen: [
+      "β_cc(t) nach DIN EN 1992-1-1, Gl. (3.2), ohne Temperatureinfluss und auch über 28 Tage hinaus fortgeschrieben.",
+      "Geometrie- (1,20 … 1,30) und Lagerungsfaktoren (0,85 … 0,95) sind pauschale Lehrwerte.",
+      "Statistik: Normalverteilung mit bekanntem σ, Würfelwerte pauschal × 1,25.",
+      "Konformität: σ aus derselben Stichprobe, mindestens 3 N/mm²; keine vollständige Konformitätskontrolle nach DIN EN 206 und DIN 1045-2.",
+    ],
+  },
   boden_materialaufbereitung: {
     kurz: "Tonnage, Untersuchungseinheiten, Misch- und Einzelproben nach LAGA PN 98 sowie Probenmassen eines Haufwerks.",
     grenzen: [

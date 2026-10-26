@@ -1,5 +1,5 @@
 // Rechenkern Festbeton-Statistik (Z3): f_ck = f_cm − 1,645·σ, f_cd, Würfelanzeige, Konformitätskriterien DIN EN 206
-import { festbetonStatistik, K_FRAKTIL_5, type FestbetonStatistikEingabe } from '../src/calc/festbetonStatistik';
+import { festbetonStatistik, K_FRAKTIL_5, konformitaetDruck, pruefwerteAusText, type FestbetonStatistikEingabe } from '../src/calc/festbetonStatistik';
 import { normalCDF } from '../src/calc/statistik';
 
 const fehler: string[] = [];
@@ -43,6 +43,37 @@ for (let i = 0; i < 1000; i++) {
   pruefe(nahe(a.fckCyl, x.fcm - K_FRAKTIL_5 * x.sigma, 1e-12) && a.mindestEinzelwert < a.anzeigeFck, `Fuzz ${i}: Definition`);
   if (x.pruefArt === 'stetig') pruefe(a.mindestMittelwert <= a.anzeigeFcm, `Fuzz ${i}: stetiges Kriterium ≤ f_cm`);
 }
+
+// 4. Schnellevaluator Konformität (Modul Festbeton, Reiter 4), Kriterien DIN EN 206, 8.2.1.3
+//    Startwerte C25/30 (f_ck,cube = 30), Herstellungsbeginn, 34,5; 33,2; 35,8:
+//    f_cm = 34,5 ≥ 30 + 4 = 34 (erfüllt), f_ci,min = 33,2 ≥ 26, n = 3 → konform
+const kw = pruefwerteAusText('34,5; 33,2; 35,8');
+pruefe(JSON.stringify(kw) === '[34.5,33.2,35.8]' && JSON.stringify(pruefwerteAusText('30,1 31,2;; -4 x')) === '[30.1,31.2]', 'Parser Würfelwerte');
+const k1 = konformitaetDruck({ werte: kw, fckCube: 30, pruefArt: 'erst' });
+pruefe(nahe(k1.mittelwert, 34.5, 1e-12) && k1.minimum === 33.2 && k1.sollMittelwert === 34 && k1.sollEinzelwert === 26 && k1.bestanden && k1.hinweise.length === 0, `Konformität erst ${JSON.stringify(k1)}`);
+pruefe(!konformitaetDruck({ werte: [34.5, 33.2], fckCube: 30, pruefArt: 'erst' }).bestanden, 'n = 2 < 3 → nicht konform');
+pruefe(!konformitaetDruck({ werte: [36, 36, 25.9], fckCube: 30, pruefArt: 'erst' }).einzelOk, 'Einzelwert < f_ck − 4');
+//    stetig, 15 Werte mit s < 3 → σ = 3 angesetzt: Soll = 30 + 1,48 · 3 = 34,44
+const st15 = Array.from({ length: 15 }, (_, i) => 34 + (i % 3) * 0.5);
+const k2 = konformitaetDruck({ werte: st15, fckCube: 30, pruefArt: 'stetig' });
+pruefe(k2.sigmaAngesetzt === 3 && nahe(k2.sollMittelwert, 34.44, 1e-12) && k2.anzahlOk && k2.mittelOk && k2.hinweise.some(h => h.feld === 'werte'), `Konformität stetig ${JSON.stringify(k2)}`);
+//    Referenz: bisherige Komponentenrechnung (src/modules/Festbeton.tsx vor AP 4.2)
+function altKonf(w: number[], fck: number, modus: 'erst' | 'stetig') {
+  const m = w.length > 0 ? w.reduce((a, b) => a + b, 0) / w.length : 0;
+  const mi = w.length > 0 ? Math.min(...w) : 0;
+  const v = w.length > 1 ? w.reduce((acc, x) => acc + Math.pow(x - m, 2), 0) / (w.length - 1) : 0;
+  const sd = Math.max(Math.sqrt(v), 3.0);
+  const soll = modus === 'erst' ? fck + 4.0 : fck + 1.48 * sd;
+  return { m, mi, soll, ok: m >= soll && mi >= fck - 4 && (modus === 'erst' ? w.length >= 3 : w.length >= 15) };
+}
+for (let i = 0; i < 1000; i++) {
+  const w = Array.from({ length: Math.floor(rnd() * 20) }, () => 20 + rnd() * 40);
+  const fck = [20, 25, 30, 37, 45, 55][Math.floor(rnd() * 6)];
+  const modus = rnd() < 0.5 ? 'erst' : 'stetig';
+  const n = konformitaetDruck({ werte: w, fckCube: fck, pruefArt: modus }), o = altKonf(w, fck, modus);
+  pruefe(n.gueltig && nahe(n.mittelwert, o.m, 1e-9) && n.minimum === o.mi && nahe(n.sollMittelwert, o.soll, 1e-9) && n.bestanden === o.ok && [n.s, n.sigmaAngesetzt].every(Number.isFinite), `Konformität alt/neu ${i}`);
+}
+pruefe(konformitaetDruck({ werte: [], fckCube: 30, pruefArt: 'erst' }).mittelwert === 0 && !konformitaetDruck({ werte: [NaN], fckCube: 30, pruefArt: 'erst' }).gueltig, 'leere Liste / NaN');
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log('OK: Festbeton-Statistik');
